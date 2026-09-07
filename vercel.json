@@ -1,0 +1,13 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/newsletter",
+      "schedule": "0 12 * * 1"
+    },
+    {
+      "path": "/api/cron/datos-vivos",
+      "schedule": "30 12 * * *"
+    }
+  ],
+  "ignoreCommand": "git diff HEAD^ HEAD --name-only | grep -qE '\\.(ts|tsx|js|jsx|css)$|^(app|src|components|lib|public|supabase)/|^(package\\.json|next\\.config|vercel\\.json|tsconfig)'"
+}

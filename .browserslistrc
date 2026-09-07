@@ -1,0 +1,9 @@
+# Subir estos targets NO saca los polyfills que PSI marca como "JavaScript antiguo"
+# (Array.at, Object.hasOwn, flat/flatMap, trimStart/trimEnd): los inyecta el chunk
+# precompilado del runtime de Next, que no se retranspila con browserslist. Probado
+# con safari>=15.4 en s106: el audit quedó igual. No vale perder iOS 15 a cambio de nada.
+chrome >= 87
+edge >= 88
+firefox >= 78
+safari >= 14
+opera >= 73

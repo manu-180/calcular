@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+}
+
+@theme {
+  --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snappy: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+:root {
+  color-scheme: light;
+  --ca-ring: 0 0 0 2px #fff, 0 0 0 4px rgba(16, 185, 129, 0.55);
+}
+
+/* El fondo no es blanco plano: base papel + dos lavados de luz anclados arriba.
+   `no-repeat` es lo que impide que se conviertan en un patrón que tilea al scrollear. */
+body {
+  background-color: #fafaf9;
+  background-image:
+    radial-gradient(60rem 32rem at 12% -6rem, rgba(16, 185, 129, 0.09), transparent 65%),
+    radial-gradient(52rem 30rem at 92% -10rem, rgba(56, 189, 248, 0.08), transparent 62%);
+  background-repeat: no-repeat;
+  color: var(--color-zinc-800);
+}
+
+/* Páginas públicas: sin barrita de texto parpadeante. Se restituye en todo lo que
+   sí se escribe, o el usuario pierde la referencia de dónde está tipeando. */
+body {
+  caret-color: transparent;
+}
+input,
+textarea,
+select,
+[contenteditable] {
+  caret-color: auto;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-emerald-400) 30%, transparent);
+}
+
+/* Un solo anillo de foco para todo el sitio: el del navegador no combina con la marca
+   y desaparece sobre fondos claros. Los componentes que necesiten otro lo pisan.
+   Sin `border-radius` acá: el box-shadow ya sigue el radio propio del elemento, y
+   fijarlo achicaba las esquinas de todo lo `rounded-xl` justo al recibir foco. */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ca-ring);
+}
+
+/* Navbar — entrada de los paneles y barra activa deslizante.
+   Se aíslan acá para poder anularlas con prefers-reduced-motion sin lógica en JS. */
+@keyframes ca-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ca-dropdown {
+  transform-origin: top center;
+  animation: ca-pop 0.18s var(--ease-fluid);
+}
+
+.ca-underline {
+  transition:
+    left 0.3s var(--ease-fluid),
+    width 0.3s var(--ease-fluid),
+    opacity 0.2s ease-out;
+}
+
+/* El marcador de las columnas del mega-panel entra escalonado. Solo opacity/transform,
+   y nunca sobre el elemento LCP: este panel no existe hasta que el usuario abre el menú. */
+@keyframes ca-col {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ca-col {
+  animation: ca-col 0.26s var(--ease-fluid) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ca-dropdown,
+  .ca-col {
+    animation: none;
+  }
+  .ca-underline {
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
