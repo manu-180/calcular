@@ -9,5 +9,5 @@
       "schedule": "30 12 * * *"
     }
   ],
-  "ignoreCommand": "git diff HEAD^ HEAD --name-only | grep -qE '\\.(ts|tsx|js|jsx|css)$|^(app|src|components|lib|public|supabase)/|^(package\\.json|next\\.config|vercel\\.json|tsconfig)'"
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)*.md' ':(exclude)docs' ':(exclude)marketing'"
 }
