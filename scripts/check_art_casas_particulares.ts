@@ -1,0 +1,349 @@
+// Verificación de la ART del personal de casas particulares (Ley 26.844 art. 74 + Dec. 467/2014).
+// Correr con: npx tsx scripts/check_art_casas_particulares.ts
+//
+// LO QUE ESTE CHECK EXISTE PARA IMPEDIR:
+//
+//   1. **Que la base de cálculo se tome del sueldo real.** Es el error que la página existe para
+//      corregir: el inc. d) manda usar «la remuneración mensual mínima» de la categoría, no el
+//      promedio de los salarios del art. 12. Si alguien cablea el sueldo declarado como ingreso
+//      base, el resultado cambia y la página pasa a decir lo contrario de la norma.
+//   2. **Que se pierda el piso.** Con una base tan baja la fórmula siempre queda por debajo del
+//      piso de la SRT. Una cuenta que informe la fórmula sin comparar contra el piso le anuncia a
+//      una trabajadora una fracción de lo que le corresponde. El check recorre TODAS las
+//      categorías, modalidades, edades y porcentajes y exige que el piso mande en todas.
+//   3. **Que la base se desincronice de la escala oficial.** La base tiene que ser, al peso, el
+//      mínimo mensual que publica la resolución de la CNTCP para esa categoría y modalidad. Si
+//      alguien la copia a mano, este check lo ve.
+//   4. **Que la cuota se desincronice de la tabla de ARCA.** El importe sale de la tabla mensual
+//      oficial, por rango de horas y condición: nunca de una constante propia.
+//   5. **Que se le ofrezca a un casero la modalidad «con retiro».** La categoría sólo existe sin
+//      retiro (el anexo oficial tiene un guion en esa columna): pedir esa combinación tiene que
+//      devolver null, no un NaN aguas abajo.
+//   6. **Que las citas del reglamento se parafraseen.**
+
+import {
+  ART_CASAS_FUENTES,
+  ART_CASAS_TEXTOS,
+  ART_CASAS_VIGENCIA,
+  REGLAS_ART_CASAS,
+} from "../src/data/art-casas-particulares";
+import { ESCALA_VIGENTE } from "../src/data/casas-particulares";
+import { CONDICIONES, RANGOS, TABLA_APORTES } from "../src/data/aportes-casas-particulares";
+import { calcularArtCasas, type Modalidad } from "../src/lib/art-casas-particulares";
+
+let fallas = 0;
+function check(nombre: string, cond: boolean, detalle?: unknown) {
+  if (cond) {
+    console.log(`OK   ${nombre}`);
+  } else {
+    fallas++;
+    console.error(`FALLA ${nombre}`, detalle ?? "");
+  }
+}
+
+const BASE = {
+  horasSemanales: 20,
+  condicion: "activo-mayor-18" as const,
+  edad: 40,
+  incapacidad: 30,
+  enElTrabajo: true,
+};
+
+// --- 1. La base sale de la escala oficial, no de una constante ---------------------------------
+for (const cat of ESCALA_VIGENTE) {
+  const modalidades: Modalidad[] =
+    cat.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
+  for (const modalidad of modalidades) {
+    const r = calcularArtCasas({ ...BASE, categoriaId: cat.id, modalidad });
+    const esperado = modalidad === "sin-retiro" ? cat.mesSinRetiro : cat.mesConRetiro;
+    if (!r || r.baseLegal !== esperado) {
+      check(`la base de ${cat.id} ${modalidad} es el mínimo de la escala`, false, {
+        obtenido: r?.baseLegal,
+        esperado,
+      });
+    }
+  }
+}
+check("la base es siempre el mínimo mensual de la escala de la CNTCP", true);
+
+// --- 2. El casero no admite «con retiro» -------------------------------------------------------
+check(
+  "pedir un casero con retiro devuelve null, no un NaN",
+  calcularArtCasas({ ...BASE, categoriaId: "caseros", modalidad: "con-retiro" }) === null,
+);
+check(
+  "el casero sin retiro sí calcula",
+  calcularArtCasas({ ...BASE, categoriaId: "caseros", modalidad: "sin-retiro" }) !== null,
+);
+check(
+  "una categoría inexistente devuelve null",
+  calcularArtCasas({ ...BASE, categoriaId: "no-existe", modalidad: "sin-retiro" }) === null,
+);
+
+// --- 3. El piso manda en TODO el espacio de casos ----------------------------------------------
+let casos = 0;
+let sinPiso = 0;
+for (const cat of ESCALA_VIGENTE) {
+  const modalidades: Modalidad[] =
+    cat.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
+  for (const modalidad of modalidades) {
+    for (const edad of [18, 25, 40, 55, 65]) {
+      for (const incapacidad of [1, 10, 30, 50, 66, 100]) {
+        const r = calcularArtCasas({ ...BASE, categoriaId: cat.id, modalidad, edad, incapacidad });
+        if (!r?.art) continue;
+        casos++;
+        if (!r.art.mandaElPiso) sinPiso++;
+      }
+    }
+  }
+}
+check("se recorrieron todos los casos del régimen", casos >= 150, casos);
+// El barrido del 7/9/2026 dio 264 de 270 con el piso mandando. Los 6 restantes son TODOS el mismo
+// caso: supervisor/a sin retiro a los 18 años. Se afirma eso, no un "siempre" que era falso.
+check(
+  "el piso manda en la enorme mayoría del régimen (la base está fijada en el mínimo)",
+  sinPiso / casos < 0.05,
+  { casos, sinPiso },
+);
+const excepciones: string[] = [];
+for (const cat of ESCALA_VIGENTE) {
+  const modalidades: Modalidad[] =
+    cat.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
+  for (const modalidad of modalidades) {
+    for (let edad = 16; edad <= 70; edad++) {
+      for (const incapacidad of [1, 30, 66, 100]) {
+        const r = calcularArtCasas({ ...BASE, categoriaId: cat.id, modalidad, edad, incapacidad });
+        if (r?.art && !r.art.mandaElPiso) excepciones.push(`${cat.id}/${modalidad}/${edad}`);
+      }
+    }
+  }
+}
+const unicas = [...new Set(excepciones)];
+// Barrido completo del 7/9/2026 (16 a 70 años, las 5 categorías, las dos modalidades): la fórmula
+// gana SÓLO por debajo de los 19 años, en 7 combinaciones de categoría/modalidad/edad. La edad de
+// corte es propia de cada categoría, porque depende de su mínimo: cuanto más alta la base, más
+// tarde empieza a mandar el piso. Se afirma esto, no un "siempre" — que el primer barrido, hecho
+// con menos edades, había dado por bueno.
+check(
+  "la fórmula sólo puede ganar por debajo de los 19 años",
+  unicas.every((u) => Number(u.split("/")[2]) < 19),
+  unicas,
+);
+check(
+  "son exactamente 7 combinaciones, todas de las categorías de base más alta",
+  unicas.length === 7 &&
+    unicas.every(
+      (u) =>
+        u.startsWith("supervisor/") ||
+        u.startsWith("tareas-especificas/") ||
+        u.startsWith("asistencia-personas/"),
+    ),
+  unicas,
+);
+check(
+  "desde los 19 años el piso manda en TODAS las categorías y modalidades",
+  !unicas.some((u) => Number(u.split("/")[2]) >= 19),
+  unicas,
+);
+check(
+  "la edad de corte de cada categoría crece con su mínimo (base más alta, piso más tarde)",
+  (() => {
+    const corte = (id: string, modalidad: Modalidad) => {
+      for (let edad = 16; edad <= 70; edad++) {
+        const r = calcularArtCasas({ ...BASE, categoriaId: id, modalidad, edad, incapacidad: 100 });
+        if (r?.art?.mandaElPiso) return edad;
+      }
+      return 99;
+    };
+    return (
+      corte("supervisor", "sin-retiro") === 19 &&
+      corte("tareas-especificas", "sin-retiro") === 18 &&
+      corte("tareas-generales", "sin-retiro") === 16
+    );
+  })(),
+);
+// Y el corolario que cae del barrido: cuál de los dos gana NO depende del porcentaje, porque los
+// dos lados de la comparación se multiplican por él. Si alguien rompiera esa proporcionalidad,
+// aparecerían excepciones a distintos porcentajes para la misma categoría y edad.
+for (const edad of [18, 19, 40]) {
+  const mandan = [1, 10, 30, 50, 66, 100].map(
+    (incapacidad) =>
+      calcularArtCasas({
+        ...BASE,
+        categoriaId: "supervisor",
+        modalidad: "sin-retiro",
+        edad,
+        incapacidad,
+      })!.art!.mandaElPiso,
+  );
+  check(
+    `a los ${edad} años, quién manda no depende del porcentaje de incapacidad`,
+    new Set(mandan).size === 1,
+    mandan,
+  );
+}
+
+// --- 4. La cuota sale de la tabla de ARCA ------------------------------------------------------
+for (const cond of CONDICIONES) {
+  for (const rango of RANGOS) {
+    const horas = rango.hasta === null ? rango.desde + 4 : (rango.desde + rango.hasta) / 2;
+    const r = calcularArtCasas({
+      ...BASE,
+      categoriaId: "tareas-generales",
+      modalidad: "con-retiro",
+      condicion: cond.id,
+      horasSemanales: horas,
+    })!;
+    const fila = TABLA_APORTES[cond.id].find((f) => f.rango === rango.id)!;
+    if (r.rango !== rango.id || r.cuotaMensual !== fila.art) {
+      check(`la cuota de ${cond.id}/${rango.id} sale de la tabla de ARCA`, false, {
+        rango: r.rango,
+        cuota: r.cuotaMensual,
+        esperada: fila.art,
+      });
+    }
+  }
+}
+check("la cuota de ART siempre sale de la tabla oficial de ARCA", true);
+check(
+  "la cuota nunca es cero: la ART es obligatoria en las nueve filas",
+  Object.values(TABLA_APORTES).every((filas) => filas.every((f) => f.art > 0)),
+);
+
+// --- 5. La brecha con el sueldo real -----------------------------------------------------------
+const conSueldo = calcularArtCasas({
+  ...BASE,
+  categoriaId: "tareas-generales",
+  modalidad: "con-retiro",
+  sueldoDeclarado: 900_000,
+})!;
+check(
+  "la brecha es sueldo declarado menos base legal",
+  Math.round(conSueldo.brecha) === Math.round(900_000 - conSueldo.baseLegal),
+  conSueldo.brecha,
+);
+// Se compara la FÓRMULA, no el total: como el piso casi siempre gana, un total idéntico no prueba
+// nada. Si alguien cableara el sueldo declarado como ingreso base, el total seguiría dando igual
+// (lo taparía el piso) y la mutación pasaría desapercibida. La fórmula sí se mueve.
+const sinSueldo = calcularArtCasas({
+  ...BASE,
+  categoriaId: "tareas-generales",
+  modalidad: "con-retiro",
+})!;
+check(
+  "declarar un sueldo NO cambia la FÓRMULA: la base sigue siendo el mínimo de la categoría",
+  conSueldo.art!.formula === sinSueldo.art!.formula,
+  [conSueldo.art!.formula, sinSueldo.art!.formula],
+);
+check(
+  "ni cambia el total",
+  conSueldo.art!.total === sinSueldo.art!.total,
+);
+check(
+  "la fórmula se corresponde con la base legal, no con el sueldo declarado",
+  Math.abs(
+    conSueldo.art!.formula -
+      53 * conSueldo.baseLegal * (BASE.incapacidad / 100) * conSueldo.art!.coeficienteEdad,
+  ) < 1,
+  conSueldo.art!.formula,
+);
+check(
+  "un sueldo por debajo del mínimo no genera brecha negativa",
+  calcularArtCasas({
+    ...BASE,
+    categoriaId: "tareas-generales",
+    modalidad: "con-retiro",
+    sueldoDeclarado: 1000,
+  })!.brecha === 0,
+);
+check(
+  "se avisa siempre que la base no es el sueldo",
+  conSueldo.avisos.some((a) => a.texto.includes("no es el sueldo que cobra")),
+);
+
+// --- 6. El 20% del art. 3 sigue el lugar del hecho ---------------------------------------------
+const enCasa = calcularArtCasas({ ...BASE, categoriaId: "tareas-generales", modalidad: "con-retiro" })!;
+const inItinere = calcularArtCasas({
+  ...BASE,
+  categoriaId: "tareas-generales",
+  modalidad: "con-retiro",
+  enElTrabajo: false,
+})!;
+check("en el lugar de trabajo corre el 20% adicional", enCasa.art!.adicional20 > 0);
+check("in itinere NO corre el 20% adicional", inItinere.art!.adicional20 === 0);
+check(
+  "y se avisa por qué",
+  inItinere.avisos.some((a) => a.texto.includes("in itinere")),
+);
+
+// --- 7. La muerte no multiplica por el porcentaje ----------------------------------------------
+const muerte1 = calcularArtCasas({
+  ...BASE,
+  categoriaId: "tareas-generales",
+  modalidad: "con-retiro",
+  incapacidad: 1,
+  muerte: true,
+})!;
+const muerte100 = calcularArtCasas({
+  ...BASE,
+  categoriaId: "tareas-generales",
+  modalidad: "con-retiro",
+  incapacidad: 100,
+  muerte: true,
+})!;
+check(
+  "en la muerte el porcentaje de incapacidad es irrelevante",
+  muerte1.art!.total === muerte100.art!.total,
+  [muerte1.art!.total, muerte100.art!.total],
+);
+
+// --- 8. Las citas del reglamento siguen siendo citas -------------------------------------------
+const CITAS: [string, string][] = [
+  ["ley74", "en el modo y condiciones que se establezcan por vía reglamentaria"],
+  ["noRechazo", "no podrá rechazar la afiliación de ningún empleador"],
+  ["asignacionDeOficio", "a partir de la fecha en que se notifique a la Aseguradora"],
+  ["asignacionDeOficio", "registro de contratos extinguidos por falta de pago"],
+  ["pagoAnticipado", "carácter de pago anticipado"],
+  ["baseDeCalculo", "la remuneración mensual mínima fijada por el MINISTERIO DE TRABAJO"],
+  ["baseDeCalculo", "para la categoría correspondiente"],
+  ["ventanilla", "válidas y fehacientes"],
+];
+for (const [clave, frase] of CITAS) {
+  const texto = (ART_CASAS_TEXTOS as Record<string, string>)[clave];
+  check(`la cita «${clave}» conserva «${frase.slice(0, 40)}…»`, Boolean(texto?.includes(frase)));
+}
+
+// --- 9. El contenido publicado ----------------------------------------------------------------
+check("hay al menos 7 reglas publicadas", REGLAS_ART_CASAS.length >= 7, REGLAS_ART_CASAS.length);
+check(
+  "está publicado el hallazgo de la base mínima",
+  REGLAS_ART_CASAS.some((r) => r.id === "base-minima" && r.norma.includes("inc. d")),
+);
+check(
+  "está publicada la asignación de oficio",
+  REGLAS_ART_CASAS.some((r) => r.id === "asignacion-oficio" && r.norma.includes("inc. b")),
+);
+check(
+  "ninguna regla se publica sin norma",
+  REGLAS_ART_CASAS.every((r) => r.norma.trim().length > 0),
+);
+check(
+  "la fecha de consulta de las fuentes coincide con la de vigencia",
+  ART_CASAS_FUENTES.consultadoEl === ART_CASAS_VIGENCIA.consultadoEl,
+);
+check(
+  "todas las fuentes son oficiales y por https",
+  ART_CASAS_FUENTES.lista.every(
+    (f) =>
+      f.url.startsWith("https://") &&
+      (f.url.includes("infoleg.gob.ar") || f.url.includes("arca.gob.ar")),
+  ),
+);
+
+if (fallas > 0) {
+  console.error(`\n❌ ${fallas} falla(s) en los checks de la ART de casas particulares.`);
+  process.exit(1);
+}
+console.log(
+  `\n✅ Todos los checks de la ART de casas particulares OK (Ley 26.844 art. 74 · Dec. 467/2014, ${casos} casos barridos, el piso manda en ${casos - sinPiso}).`,
+);

@@ -93,6 +93,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/art-empleada-domestica",
+    titulo: "ART de la empleada doméstica",
+    descripcion:
+      "La cobertura es obligatoria y la paga el empleador, pero la prestación no se liquida sobre el sueldo que cobra: el reglamento manda tomar el mínimo de la categoría. Por eso, casi siempre, lo que se cobra es el piso de la SRT y no la fórmula.",
+    disponible: true,
+  },
+  {
     href: "/comision-medica",
     titulo: "Comisión médica: los plazos del reclamo a la ART",
     descripcion:
@@ -434,6 +441,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
       "/indemnizacion-por-fallecimiento",
       "/indemnizacion-art",
       "/comision-medica",
+      "/art-empleada-domestica",
       "/reingreso",
       "/despido-empleada-domestica",
       "/indemnizacion-por-clientela",
