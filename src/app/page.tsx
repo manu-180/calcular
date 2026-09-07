@@ -93,6 +93,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/comision-medica",
+    titulo: "Comisión médica: los plazos del reclamo a la ART",
+    descripcion:
+      "Antes de demandarle a la ART hay que agotar la comisión médica, y tiene 60 días hábiles administrativos para expedirse. Son perentorios: vencidos, la vía judicial queda expedita sin esperar el dictamen. Y el trámite lo paga la aseguradora, no el trabajador.",
+    disponible: true,
+  },
+  {
     href: "/indemnizacion-por-fallecimiento",
     titulo: "Indemnización por fallecimiento del trabajador",
     descripcion:
@@ -426,6 +433,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
       "/actualizacion-creditos-laborales",
       "/indemnizacion-por-fallecimiento",
       "/indemnizacion-art",
+      "/comision-medica",
       "/reingreso",
       "/despido-empleada-domestica",
       "/indemnizacion-por-clientela",

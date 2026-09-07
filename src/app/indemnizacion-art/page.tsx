@@ -378,7 +378,12 @@ export default function Page() {
         <p className="pt-2">
           Esta página es informativa y aplica normas publicadas en el Boletín Oficial e InfoLEG; el
           porcentaje de incapacidad lo determina la comisión médica y el monto final lo liquida la
-          ART. Si además hubo despido, la indemnización laboral corre por separado:{" "}
+          ART. El trámite ante esa comisión es la instancia previa obligatoria y tiene sus propios
+          plazos —60 días hábiles administrativos, perentorios—:{" "}
+          <Link href="/comision-medica" className="text-emerald-700 hover:underline">
+            plazos de la comisión médica
+          </Link>
+          . Si además hubo despido, la indemnización laboral corre por separado:{" "}
           <Link href="/indemnizacion" className="text-emerald-700 hover:underline">
             calculadora de indemnización por despido
           </Link>
