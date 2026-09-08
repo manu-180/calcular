@@ -107,6 +107,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/empleador-sin-art",
+    titulo: "Mi empleador no tiene la ART al día: ¿quién me paga?",
+    descripcion:
+      "Que la empresa deba cuotas no te deja sin cobertura: la ART tiene que atenderte igual y después le cobra a ella. Y si trabajás sin registrar pero la empresa tiene ART, también. Sólo la extinción del contrato corta — y aun así quedan tres meses de atención médica.",
+    disponible: true,
+  },
+  {
     href: "/aportes-jubilatorios-obligatorios",
     titulo: "¿Tenés que aportar al sistema previsional?",
     descripcion:
@@ -457,6 +464,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
       "/comision-medica",
       "/derechohabientes-art",
       "/aportes-jubilatorios-obligatorios",
+      "/empleador-sin-art",
       "/art-empleada-domestica",
       "/reingreso",
       "/despido-empleada-domestica",
