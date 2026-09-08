@@ -107,6 +107,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/aportes-jubilatorios-obligatorios",
+    titulo: "¿Tenés que aportar al sistema previsional?",
+    descripcion:
+      "Obligatorio, voluntario o exceptuado, con el inciso exacto. El umbral del socio no es un porcentaje fijo: es cien dividido la cantidad de socios. Y quedar afuera de la relación de dependencia no es quedar exento — el que dirige aporta como autónomo aunque no cobre nada.",
+    disponible: true,
+  },
+  {
     href: "/derechohabientes-art",
     titulo: "Quién cobra la indemnización por muerte laboral",
     descripcion:
@@ -449,6 +456,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
       "/indemnizacion-art",
       "/comision-medica",
       "/derechohabientes-art",
+      "/aportes-jubilatorios-obligatorios",
       "/art-empleada-domestica",
       "/reingreso",
       "/despido-empleada-domestica",
