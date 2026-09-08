@@ -27,6 +27,13 @@ export const metadata: Metadata = {
     images: [{ url: "/og", width: 1200, height: 630 }],
   },
   twitter: { card: "summary_large_image" },
+  // Verificacion de propiedad de AdSense por meta tag. El <script> de adsbygoogle se
+  // inyecta recien despues de `load` + idle (ver components/AdSense.tsx, es lo que baja
+  // el FCP movil), asi que el publisher ID NO aparece en el HTML servido: un crawler que
+  // no ejecuta JS no encuentra nada que verificar. Esta meta es el metodo oficial
+  // alternativo de Google, cuesta cero bytes de JS y deja el pub ID en el HTML crudo.
+  // NO sacarla aunque el script parezca suficiente.
+  other: { "google-adsense-account": "ca-pub-1118110129260994" },
 };
 
 export default function RootLayout({

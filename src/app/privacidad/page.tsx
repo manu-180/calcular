@@ -29,18 +29,32 @@ export default function PrivacidadPage() {
 
       <h2 className="text-lg font-semibold text-zinc-900">Publicidad y cookies</h2>
       <p>
-        En el futuro este sitio puede mostrar anuncios de terceros (por ejemplo, Google AdSense).
-        Esos proveedores pueden usar cookies para mostrar anuncios relevantes según visitas
-        anteriores a este u otros sitios. Podés desactivar la publicidad personalizada en la{" "}
+        Este sitio muestra anuncios de Google AdSense. Es lo que nos permite mantener todas las
+        calculadoras gratis y sin registro.
+      </p>
+      <p>
+        Google y sus proveedores usan cookies para elegir qué anuncios mostrarte, a veces teniendo
+        en cuenta páginas que visitaste antes en este o en otros sitios. Vos decedís cuánto de eso
+        pasa: podés desactivar la publicidad personalizada de Google en{" "}
         <a
           href="https://myadcenter.google.com/"
           rel="nofollow noopener"
           target="_blank"
           className="text-emerald-700 underline"
         >
-          configuración de anuncios de Google
+          Mi centro de anuncios
+        </a>{" "}
+        y la del resto de los proveedores en{" "}
+        <a
+          href="https://www.aboutads.info/choices/"
+          rel="nofollow noopener"
+          target="_blank"
+          className="text-emerald-700 underline"
+        >
+          aboutads.info
         </a>
-        .
+        . Si desactivás la personalización vas a seguir viendo anuncios, pero menos relacionados
+        con vos.
       </p>
 
       <h2 className="text-lg font-semibold text-zinc-900">Enlaces externos</h2>
