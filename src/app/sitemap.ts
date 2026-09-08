@@ -45,6 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/monotributo/recategorizacion`, lastModified: new Date('2026-01-01'), changeFrequency: 'monthly', priority: 0.8  },
     { url: `${BASE}/obra-social-monotributo`,      lastModified: new Date('2026-09-06'), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/indemnizacion-art`,            lastModified: new Date('2026-09-06'), changeFrequency: 'monthly', priority: 0.95 },
+    { url: `${BASE}/derechohabientes-art`,        lastModified: new Date('2026-09-08'), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/comision-medica`,              lastModified: new Date('2026-09-07'), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/art-empleada-domestica`,       lastModified: new Date('2026-09-07'), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/inflacion`,                    lastModified: new Date('2026-06-01'), changeFrequency: 'weekly',  priority: 0.9  },

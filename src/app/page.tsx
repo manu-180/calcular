@@ -107,6 +107,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/derechohabientes-art",
+    titulo: "Quién cobra la indemnización por muerte laboral",
+    descripcion:
+      "La misma muerte dispara dos indemnizaciones con dos listas distintas de beneficiarios: la de la ART y la del empleador. Un conviviente de tres años cobra una y no la otra. Persona por persona, con la norma que lo decide.",
+    disponible: true,
+  },
+  {
     href: "/indemnizacion-por-fallecimiento",
     titulo: "Indemnización por fallecimiento del trabajador",
     descripcion:
@@ -441,6 +448,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
       "/indemnizacion-por-fallecimiento",
       "/indemnizacion-art",
       "/comision-medica",
+      "/derechohabientes-art",
       "/art-empleada-domestica",
       "/reingreso",
       "/despido-empleada-domestica",
