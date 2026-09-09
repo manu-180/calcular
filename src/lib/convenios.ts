@@ -31,6 +31,26 @@ import {
   type ZonaUocraId,
 } from "@/data/convenios/uocra";
 
+function fechaEnProsa(iso: string): string {
+  return new Intl.DateTimeFormat("es-AR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${iso}T00:00:00Z`));
+}
+
+export function textoProximaParitaria(
+  p: { fechaISO: string; define: string; publicada: boolean; comprobadoEl: string },
+  hoyISO: string,
+): string {
+  if (p.publicada) return "El acuerdo ya está cargado.";
+  if (p.fechaISO > hoyISO) {
+    return `La próxima definición es la reunión del ${fechaEnProsa(p.fechaISO)}, que fija ${p.define}.`;
+  }
+  return `La Comisión Especial se reunió el ${fechaEnProsa(p.fechaISO)} para fijar ${p.define}, y al ${fechaEnProsa(p.comprobadoEl)} el acuerdo todavía no se publicó: la tabla llega hasta el último mes acordado.`;
+}
+
 // ---------------------------------------------------------------------------
 // Empleados de Comercio
 // ---------------------------------------------------------------------------

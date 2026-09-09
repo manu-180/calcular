@@ -8,7 +8,7 @@ import {
   UOCRA_PROXIMA_PARITARIA,
   ZONAS_UOCRA,
 } from "@/data/convenios/uocra";
-import { calcularUocra } from "@/lib/convenios";
+import { calcularUocra, textoProximaParitaria } from "@/lib/convenios";
 import { PRODUCTOS } from "@/lib/mp";
 
 export const metadata: Metadata = {
@@ -126,7 +126,7 @@ export default function PlanillaUocraPage() {
         url: UOCRA_FUENTES.anexoTramo2.url,
         verificadoEl: UOCRA_FUENTES.consultadoEl,
       }}
-      actualizacion={`En la construcción las escalas se renegocian por tramos, así que la tabla cambia varias veces al año. La próxima definición es la de ${UOCRA_PROXIMA_PARITARIA}: cuando se firme y se publique el anexo con las tablas, las cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
+      actualizacion={`En la construcción las escalas se renegocian por tramos, así que la tabla cambia varias veces al año. ${textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, new Date().toISOString().slice(0, 10))} Cuando se firme y se publique el anexo con las tablas, las cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
       faqs={[
         {
           q: "¿Cómo la recibo?",

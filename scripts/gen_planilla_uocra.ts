@@ -33,6 +33,7 @@ import {
   ZONAS_UOCRA,
   type CategoriaUocraId,
 } from "../src/data/convenios/uocra";
+import { textoProximaParitaria } from "../src/lib/convenios";
 import {
   ARS_FMT,
   BORDE,
@@ -118,7 +119,7 @@ function buildInstrucciones(wb: ExcelJS.Workbook) {
     "En agosto de 2026 la SNR se absorbió al jornal: por eso ese mes figura en cero. No es un dato faltante, es el dato correcto.",
     "En la construcción NO hay adicional por antigüedad (Ley 22.250). En lugar de indemnización por despido está el fondo de cese laboral: 12% de la remuneración el primer año, 8% después. No es un descuento del sueldo del trabajador.",
     `Aportes del trabajador: ${UOCRA_APORTES_REMUNERATIVO * 100}% sobre lo remunerativo (11% jubilación + 3% PAMI + 3% obra social) más ${UOCRA_APORTE_SOLIDARIO * 100}% de aporte solidario donde corresponde. La SNR solo aporta ${UOCRA_APORTES_SNR * 100}% de obra social.`,
-    `Próxima paritaria: ${UOCRA_PROXIMA_PARITARIA}. Cuando se firme y publique la escala, actualizamos la planilla y te llega la versión nueva por email.`,
+    `${textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, new Date().toISOString().slice(0, 10))} Cuando se firme y publique la escala, actualizamos la planilla y te llega la versión nueva por email.`,
   ];
   for (const t of claves) {
     const c = ws.getCell(r, 2);

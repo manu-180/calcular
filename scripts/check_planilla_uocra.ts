@@ -21,7 +21,7 @@
 
 import ExcelJS from "exceljs";
 import path from "node:path";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import {
   CATEGORIAS_UOCRA,
   MESES_UOCRA,
@@ -30,13 +30,20 @@ import {
   UOCRA_APORTE_SOLIDARIO,
   UOCRA_ASISTENCIA_PERFECTA,
   UOCRA_HORAS_MES_PROMEDIO,
+  UOCRA_PROXIMA_PARITARIA,
   ZONAS_UOCRA,
   type CategoriaUocraId,
   type ZonaUocraId,
 } from "../src/data/convenios/uocra";
-import { calcularUocra } from "../src/lib/convenios";
+import { calcularUocra, textoProximaParitaria } from "../src/lib/convenios";
 
-const ARCHIVO = path.join(process.cwd(), "private", "planilla-uocra-2026.xlsx");
+const RAIZ = process.cwd();
+const ARCHIVO = path.join(RAIZ, "private", "planilla-uocra-2026.xlsx");
+// Pasado este margen, el silencio de la fuente deja de ser evidencia actual y obliga a revisarla.
+const DIAS_MAXIMOS_SIN_COMPROBAR = 45;
+const MS_DIA = 86_400_000;
+const INSTRUCCION_PARITARIA_VENCIDA =
+  "corré npx -y tsx tools/circulares-gremios.ts, y si el gremio publicó, cargá la escala; si no publicó, mové comprobadoEl a hoy";
 
 let fallas = 0;
 
@@ -88,7 +95,117 @@ function planillaLiquidaUocra(p: {
   return { bruto, neto: bruto - aportes }; // B19, B21
 }
 
+/** Todos los .ts/.tsx bajo un directorio, para grepear consumidores sin depender del shell. */
+function archivosTypeScript(dir: string): string[] {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const ruta = path.join(dir, e.name);
+    if (e.isDirectory()) return e.name === "node_modules" ? [] : archivosTypeScript(ruta);
+    return /\.tsx?$/.test(e.name) ? [ruta] : [];
+  });
+}
+
 async function main(): Promise<void> {
+  const esEstructura =
+    typeof UOCRA_PROXIMA_PARITARIA === "object" && UOCRA_PROXIMA_PARITARIA !== null;
+  check("la paritaria pendiente es una estructura y no un string suelto", esEstructura);
+
+  if (esEstructura) {
+    const pendiente = UOCRA_PROXIMA_PARITARIA as typeof UOCRA_PROXIMA_PARITARIA & {
+      primerMesQueDefine: string;
+    };
+    const pasado = textoProximaParitaria(pendiente, "2026-09-09");
+    const futuro = textoProximaParitaria(pendiente, "2026-07-19");
+    const publicada = textoProximaParitaria({ ...pendiente, publicada: true }, "2026-09-09");
+    const esperadoPasado =
+      "La Comisión Especial se reunió el 20 de julio de 2026 para fijar septiembre de 2026 en adelante, y al 9 de septiembre de 2026 el acuerdo todavía no se publicó: la tabla llega hasta el último mes acordado.";
+    const esperadoFuturo =
+      "La próxima definición es la reunión del 20 de julio de 2026, que fija septiembre de 2026 en adelante.";
+
+    check("una reunión pasada no se anuncia como 'La próxima definición'", !pasado.includes("La próxima definición"), pasado);
+    check("una reunión pasada no contiene la palabra 'próxima'", !pasado.toLocaleLowerCase("es-AR").includes("próxima"), pasado);
+    check("una reunión pasada se cuenta en pasado", pasado.includes("La Comisión Especial se reunió"), pasado);
+    check("la rama pasada informa el estado real y ambas fechas en prosa", pasado === esperadoPasado, pasado);
+    check("una reunión futura se cuenta en futuro", futuro === esperadoFuturo, futuro);
+    check("el helper usa hoyISO para elegir la rama temporal", pasado !== futuro, { pasado, futuro });
+    check("un acuerdo publicado se informa como cargado", publicada === "El acuerdo ya está cargado.", publicada);
+    check("los tres caminos del helper producen textos distintos", new Set([publicada, futuro, pasado]).size === 3);
+    check("ningún camino del helper usa signos de exclamación", ![publicada, futuro, pasado].some((s) => s.includes("!")));
+
+    // El modo de falla que originó todo esto: la constante era un string suelto interpolado en
+    // cuatro lugares (dos páginas públicas, la landing paga y una CELDA DEL .xlsx que se descarga
+    // el comprador). Al volverla estructura, un consumidor que no pase por el helper no rompe el
+    // build: escribe "[object Object]" en producción. Estos dos asserts hacen ruidoso eso.
+    check(
+      "ningún texto de paritaria contiene [object Object]",
+      ![publicada, futuro, pasado].some((s) => s.includes("[object Object]")),
+    );
+    const crudos = archivosTypeScript(path.resolve(RAIZ, "src"))
+      .concat(archivosTypeScript(path.resolve(RAIZ, "scripts")))
+      // Se excluyen la fuente del dato y este mismo check: los dos tocan la estructura cruda a
+      // propósito (uno la declara, el otro la usa para probar las tres ramas del helper).
+      .filter((archivo) => {
+        const r = path.resolve(archivo);
+        return (
+          r !== path.resolve(RAIZ, "src", "data", "convenios", "uocra.ts") &&
+          r !== path.resolve(RAIZ, "scripts", "check_planilla_uocra.ts")
+        );
+      })
+      .filter((archivo) => {
+        const fuente = readFileSync(archivo, "utf8");
+        return (
+          fuente.includes("UOCRA_PROXIMA_PARITARIA") &&
+          !new RegExp("textoProximaParitaria\\s*\\(\\s*UOCRA_PROXIMA_PARITARIA\\b", "s").test(fuente)
+        );
+      })
+      .map((archivo) => path.relative(RAIZ, archivo));
+    check(
+      "todo consumidor de UOCRA_PROXIMA_PARITARIA lo pasa por textoProximaParitaria",
+      crudos.length === 0,
+      crudos,
+    );
+
+    const hoyISO = new Date().toISOString().slice(0, 10);
+    const fechaReunion = Date.parse(`${pendiente.fechaISO}T00:00:00Z`);
+    const fechaComprobacion = Date.parse(`${pendiente.comprobadoEl}T00:00:00Z`);
+    const fechaHoy = Date.parse(`${hoyISO}T00:00:00Z`);
+    check("comprobadoEl no está en el futuro", fechaComprobacion <= fechaHoy, { comprobadoEl: pendiente.comprobadoEl, hoyISO });
+    check("comprobadoEl no es anterior a fechaISO", fechaComprobacion >= fechaReunion, pendiente);
+
+    const diasSinComprobar = (fechaHoy - fechaComprobacion) / MS_DIA;
+    const necesitaControlDeVigencia = !pendiente.publicada && pendiente.fechaISO <= hoyISO;
+    check(
+      `comprobadoEl no supera ${DIAS_MAXIMOS_SIN_COMPROBAR} días; ${INSTRUCCION_PARITARIA_VENCIDA}`,
+      !necesitaControlDeVigencia || diasSinComprobar <= DIAS_MAXIMOS_SIN_COMPROBAR,
+      { comprobadoEl: pendiente.comprobadoEl, hoyISO, diasSinComprobar },
+    );
+
+    const ultimoMes = MESES_UOCRA.at(-1)!;
+    const meses = [
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre",
+    ];
+    const [mesPendiente, anioPendiente] = pendiente.primerMesQueDefine.split("-");
+    const mesPendienteValido = meses.includes(mesPendiente) && /^\d{4}$/.test(anioPendiente ?? "");
+    check("primerMesQueDefine usa el formato mes-año de MESES_UOCRA", mesPendienteValido, pendiente.primerMesQueDefine);
+    const ordenUltimoMes = ultimoMes.anio * 12 + ultimoMes.mes;
+    const ordenPrimerMesPendiente = Number(anioPendiente) * 12 + meses.indexOf(mesPendiente) + 1;
+    check(
+      "si la paritaria sigue sin publicarse, la escala termina antes del primer mes que define",
+      pendiente.publicada || (mesPendienteValido && ordenUltimoMes < ordenPrimerMesPendiente),
+      { ultimoMesCargado: ultimoMes.id, primerMesQueDefine: pendiente.primerMesQueDefine },
+    );
+  }
+
   if (!existsSync(ARCHIVO)) {
     console.error(`FAIL falta el entregable: ${ARCHIVO}`);
     console.error("     regeneralo con: npx -y tsx scripts/gen_planilla_uocra.ts");

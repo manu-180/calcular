@@ -11,6 +11,7 @@ import {
   ZONAS_UOCRA,
 } from "@/data/convenios/uocra";
 import { formatARS } from "@/lib/formato";
+import { textoProximaParitaria } from "@/lib/convenios";
 import { datasetSchema, ORGANIZACION } from "@/lib/schema";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { SelloVerificado } from "@/components/SelloVerificado";
@@ -285,7 +286,7 @@ export default function UocraPage() {
             asistencia perfecta + SNR del mes.
           </p>
           <p>
-            Próxima negociación: {UOCRA_PROXIMA_PARITARIA}. Cuando haya acuerdo nuevo, la
+            {textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, new Date().toISOString().slice(0, 10))} Cuando salga, la
             escala se actualiza acá desde el documento firmado.
           </p>
         </div>

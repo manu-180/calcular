@@ -239,5 +239,17 @@ export const UOCRA_APORTES_REMUNERATIVO = 0.17;
 export const UOCRA_APORTES_SNR = 0.03;
 export const UOCRA_APORTE_SOLIDARIO = 0.02;
 
-// Próxima negociación: la Comisión Especial se reúne el 20/7/2026 para definir septiembre+.
-export const UOCRA_PROXIMA_PARITARIA = "20 de julio de 2026 (define septiembre en adelante)";
+// La Comisión Especial se reunió el 20/7/2026 para definir septiembre+. Una fecha futura
+// escrita a mano envejece sola y nadie la mira; por eso check_planilla_uocra.ts la vigila.
+export const UOCRA_PROXIMA_PARITARIA = {
+  /** Fecha de la reunión de la Comisión Especial que define el tramo siguiente. */
+  fechaISO: "2026-07-20",
+  /** Qué tramo define esa reunión. */
+  define: "septiembre de 2026 en adelante",
+  /** Primer mes del tramo, con el mismo formato que los id de MESES_UOCRA. */
+  primerMesQueDefine: "septiembre-2026",
+  /** ¿Ya se publicó el acuerdo con las tablas? Mientras sea false, la escala cargada es la última vigente. */
+  publicada: false,
+  /** Última vez que se COMPROBÓ contra la fuente que el acuerdo sigue sin publicarse. */
+  comprobadoEl: "2026-09-09",
+} as const;
