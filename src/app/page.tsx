@@ -114,6 +114,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/rechazo-art",
+    titulo: "La ART rechazó el accidente: ¿llegó en plazo?",
+    descripcion:
+      "Los 10 días se cuentan en hábiles administrativos, no corridos. La prórroga sólo vale si se avisó dentro de ese primer plazo, y la causal invocada decide si el reclamo va a comisión médica o a otra autoridad.",
+    disponible: true,
+  },
+  {
     href: "/aportes-jubilatorios-obligatorios",
     titulo: "¿Tenés que aportar al sistema previsional?",
     descripcion:
@@ -465,6 +472,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
       "/derechohabientes-art",
       "/aportes-jubilatorios-obligatorios",
       "/empleador-sin-art",
+      "/rechazo-art",
       "/art-empleada-domestica",
       "/reingreso",
       "/despido-empleada-domestica",
