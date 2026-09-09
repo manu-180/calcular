@@ -121,6 +121,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/pluriempleo-art",
+    titulo: "Dos trabajos y un accidente: ¿qué ART paga?",
+    descripcion:
+      "La ART obligada puede no ser la del lugar del accidente y la prestación puede reunir los ingresos base de varios empleos. Para un segundo siniestro, calculá la incapacidad incremental por capacidad restante.",
+    disponible: true,
+  },
+  {
     href: "/aportes-jubilatorios-obligatorios",
     titulo: "¿Tenés que aportar al sistema previsional?",
     descripcion:
@@ -473,6 +480,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
       "/aportes-jubilatorios-obligatorios",
       "/empleador-sin-art",
       "/rechazo-art",
+      "/pluriempleo-art",
       "/art-empleada-domestica",
       "/reingreso",
       "/despido-empleada-domestica",
