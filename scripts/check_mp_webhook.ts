@@ -18,6 +18,7 @@ import {
   firmaValida,
   manifiesto,
   marcaPago,
+  marcarEntrega,
   parsearFirma,
   registrarVenta,
   type Http,
@@ -209,16 +210,20 @@ check("pagoAprobado con campos vacios es false", !pagoAprobado({}, UOCRA));
 // payment.created y payment.updated del mismo pago: sin este gate el dashboard infla los
 // ingresos y el comprador recibe el mail de entrega tres veces.
 async function pruebaIdempotencia() {
-  const insertados: string[] = [];
+  const insertados: { id: number; note: string }[] = [];
   const fetchFalso: Http = async (url, init) => {
     if ((init?.method ?? "GET") === "GET") {
       const m = decodeURIComponent(url).match(/\[mp:(\d+)\]/);
       const marca = m ? `[mp:${m[1]}]` : "";
-      const hay = insertados.filter((n) => n.includes(marca));
-      return new Response(JSON.stringify(hay.map(() => ({ id: 1 }))), { status: 200 });
+      const hay = insertados.filter((f) => f.note.includes(marca));
+      return new Response(JSON.stringify(hay.map((f) => ({ id: f.id }))), { status: 200 });
     }
-    insertados.push(String(JSON.parse(String(init?.body ?? "{}")).note ?? ""));
-    return new Response("", { status: 201 });
+    const fila = {
+      id: insertados.length + 1,
+      note: String(JSON.parse(String(init?.body ?? "{}")).note ?? ""),
+    };
+    insertados.push(fila);
+    return new Response(JSON.stringify([{ id: fila.id }]), { status: 201 });
   };
 
   const deps = {
@@ -240,8 +245,11 @@ async function pruebaIdempotencia() {
   const tercera = await registrarVenta(deps, venta);
 
   check("primera notificacion: se registra la venta", primera.duplicado === false);
+  check("primera notificacion: devuelve el id de la fila propia", primera.filaId === 1, primera);
   check("segunda notificacion del MISMO pago: duplicado, no inserta", segunda.duplicado === true);
+  check("segunda notificacion duplicada: no devuelve filaId", segunda.filaId === undefined, segunda);
   check("tercera notificacion del mismo pago: sigue siendo duplicado", tercera.duplicado === true);
+  check("tercera notificacion duplicada: tampoco devuelve filaId", tercera.filaId === undefined, tercera);
   check(`quedo UNA sola fila en revenue_events (hubo ${insertados.length})`, insertados.length === 1);
   check(
     "la entrega se manda una sola vez (una sola respuesta con duplicado=false)",
@@ -257,8 +265,8 @@ async function pruebaIdempotencia() {
     conPrefijo.duplicado === false && insertados.length === 3,
   );
 
-  check("la nota guarda el slug del producto (auditable en el dashboard)", insertados[0].includes(UOCRA.slug));
-  check("la nota guarda el email del comprador", insertados[0].includes("compradora@example.com"));
+  check("la nota guarda el slug del producto (auditable en el dashboard)", insertados[0].note.includes(UOCRA.slug));
+  check("la nota guarda el email del comprador", insertados[0].note.includes("compradora@example.com"));
 
   // Supabase caido tiene que TIRAR, no devolver "duplicado": si se traga el error, la venta se
   // pierde para siempre porque MP recibe un 200 y no reintenta.
@@ -354,10 +362,96 @@ async function pruebaCarrera() {
     [a, b].filter((r) => !r.duplicado).length === 1,
     { a, b },
   );
+  const ganador = [a, b].find((r) => !r.duplicado);
+  const perdedor = [a, b].find((r) => r.duplicado);
+  check("el ganador de la carrera devuelve el id superviviente", ganador?.filaId === tabla[0]?.id, { a, b, tabla });
+  check("el perdedor de la carrera no devuelve filaId", perdedor?.filaId === undefined, { a, b });
+}
+
+async function pruebaRastroEntrega() {
+  const fecha = new Date().toISOString().slice(0, 10);
+  const notaOriginal =
+    "Venta automatica de Planilla UOCRA [mp:24680] · producto planilla-uocra · comprador compradora@example.com.";
+  let note = notaOriginal;
+  let patches = 0;
+
+  const fetchFalso: Http = async (_url, init) => {
+    const metodo = init?.method ?? "GET";
+    if (metodo === "GET") {
+      return new Response(JSON.stringify([{ note }]), { status: 200 });
+    }
+    if (metodo === "PATCH") {
+      patches++;
+      note = String(JSON.parse(String(init?.body ?? "{}")).note ?? "");
+      return new Response(null, { status: 204 });
+    }
+    return new Response("", { status: 405 });
+  };
+
+  const deps = {
+    fetch: fetchFalso,
+    supabaseUrl: "https://falso.supabase.co",
+    serviceRole: "clave-falsa",
+  };
+
+  const ok = await marcarEntrega(deps, 7, "ok", "compradora@example.com");
+  check("rastro ok: devuelve true", ok === true, ok);
+  check("rastro ok: agrega el texto fechado", note.includes(` · Entregado por email el ${fecha}.`), note);
+  check("rastro ok: conserva la marca de MercadoPago", note.includes("[mp:24680]"), note);
+  check("rastro ok: conserva el email original", note.includes("compradora@example.com"), note);
+  check("rastro ok: agrega sin reemplazar la nota anterior", note.startsWith(notaOriginal), note);
+
+  const okRepetido = await marcarEntrega(deps, 7, "ok", "compradora@example.com");
+  check("rastro ok repetido: devuelve true", okRepetido === true, okRepetido);
+  check("rastro ok repetido: no ejecuta otro PATCH", patches === 1, patches);
+  check(
+    "rastro ok repetido: deja un solo sufijo",
+    note.split("Entregado por email el").length - 1 === 1,
+    note,
+  );
+
+  note = notaOriginal;
+  const fallo = await marcarEntrega(deps, 8, "fallo", "compradora@example.com");
+  check("rastro fallo: devuelve true", fallo === true, fallo);
+  check(
+    "rastro fallo: agrega alerta fechada y email para reenvio",
+    note.includes(` · ENTREGA POR EMAIL FALLÓ el ${fecha} — reenviar a mano a compradora@example.com.`),
+    note,
+  );
+  check("rastro fallo: conserva la nota previa completa", note.startsWith(notaOriginal), note);
+
+  note = notaOriginal;
+  const sinEmail = await marcarEntrega(deps, 9, "sin-email");
+  check("rastro sin-email: devuelve true", sinEmail === true, sinEmail);
+  check(
+    "rastro sin-email: explica que la unica entrega fue la pagina de gracias",
+    note.includes(
+      " · MercadoPago no expuso el email del comprador: la única entrega fue el botón de la página de gracias.",
+    ),
+    note,
+  );
+  check("rastro sin-email: conserva la marca original", note.includes("[mp:24680]"), note);
+
+  let tiro = false;
+  const fetchPatchRoto: Http = async (_url, init) => {
+    if ((init?.method ?? "GET") === "GET") {
+      return new Response(JSON.stringify([{ note: notaOriginal }]), { status: 200 });
+    }
+    return new Response("boom", { status: 500 });
+  };
+  let resultadoRoto: boolean | undefined;
+  try {
+    resultadoRoto = await marcarEntrega({ ...deps, fetch: fetchPatchRoto }, 10, "ok");
+  } catch {
+    tiro = true;
+  }
+  check("PATCH 500: marcarEntrega no tira", tiro === false, tiro);
+  check("PATCH 500: marcarEntrega devuelve false", resultadoRoto === false, resultadoRoto);
 }
 
 pruebaIdempotencia()
   .then(pruebaCarrera)
+  .then(pruebaRastroEntrega)
   .then(() => {
 console.log(
   fallas === 0

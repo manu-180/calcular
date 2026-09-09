@@ -4,6 +4,7 @@ import {
   extraerPaymentId,
   firmaValida,
   firmar,
+  marcarEntrega,
   manifiesto,
   parsearFirma,
   registrarVenta,
@@ -134,6 +135,7 @@ export async function POST(req: NextRequest) {
 
     // La entrega va atada al mismo gate de idempotencia que el registro: un solo mail por pago.
     let entregado: boolean | null = null;
+    let rastro: boolean | null = null;
     if (!r.duplicado) {
       if (pago.payer?.email) {
         entregado = await entregarPorEmail(producto, paymentId, pago.payer.email);
@@ -144,11 +146,21 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    if (r.filaId !== undefined) {
+      const resultado = pago.payer?.email ? (entregado ? "ok" : "fallo") : "sin-email";
+      rastro = await marcarEntrega(
+        { fetch, supabaseUrl: SUPABASE_URL, serviceRole: SERVICE_ROLE },
+        r.filaId,
+        resultado,
+        pago.payer?.email,
+      );
+    }
+
     console.log(
       `[mp/webhook] pago ${paymentId} · ${producto.slug} · ${r.duplicado ? "ya registrado" : "REGISTRADO"}` +
         (entregado === null ? "" : entregado ? " · entregado por email" : " · ENTREGA POR EMAIL FALLÓ"),
     );
-    return NextResponse.json({ ok: true, registrado: !r.duplicado, producto: producto.slug, entregado });
+    return NextResponse.json({ ok: true, registrado: !r.duplicado, producto: producto.slug, entregado, rastro });
   } catch (e) {
     console.error("[mp/webhook]", e);
     // 500 a propósito: MP reintenta y no perdemos la venta.

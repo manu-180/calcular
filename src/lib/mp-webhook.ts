@@ -139,7 +139,10 @@ export type Venta = {
  *      superviviente y borran el MISMO conjunto — no importa quién llegue primero.
  *   4. Devuelve `duplicado: false` solo al dueño de la fila superviviente → un único mail.
  */
-export async function registrarVenta(deps: DepsVenta, v: Venta): Promise<{ duplicado: boolean }> {
+export async function registrarVenta(
+  deps: DepsVenta,
+  v: Venta,
+): Promise<{ duplicado: boolean; filaId?: number }> {
   const headers = {
     "Content-Type": "application/json",
     apikey: deps.serviceRole,
@@ -187,7 +190,7 @@ export async function registrarVenta(deps: DepsVenta, v: Venta): Promise<{ dupli
   // 3. Resolver la carrera. Sin id propio no se puede decidir: se prefiere NO entregar de más
   //    (la descarga sigue viva en /planillas/gracias) antes que mandar dos mails.
   const ids = await idsConLaMarca();
-  if (ids.length <= 1) return { duplicado: false };
+  if (ids.length <= 1) return { duplicado: false, filaId: miId };
 
   const superviviente = ids[0];
   const sobrantes = ids.slice(1);
@@ -202,5 +205,70 @@ export async function registrarVenta(deps: DepsVenta, v: Venta): Promise<{ dupli
   // perdida. Se loguea y se sigue — nunca romper la entrega por limpiar la tabla.
   if (!del.ok) console.error(`[revenue_events] no pude borrar las filas duplicadas ${sobrantes.join(",")}`);
 
-  return { duplicado: miId === undefined || miId !== superviviente };
+  const duplicado = miId === undefined || miId !== superviviente;
+  return duplicado ? { duplicado: true } : { duplicado: false, filaId: superviviente };
+}
+
+export async function marcarEntrega(
+  deps: DepsVenta,
+  filaId: number,
+  resultado: "ok" | "fallo" | "sin-email",
+  email?: string,
+): Promise<boolean> {
+  const headers = {
+    "Content-Type": "application/json",
+    apikey: deps.serviceRole,
+    Authorization: `Bearer ${deps.serviceRole}`,
+  };
+  const url = `${deps.supabaseUrl}/rest/v1/revenue_events?id=eq.${filaId}`;
+
+  try {
+    const res = await deps.fetch(`${url}&select=note&limit=1`, {
+      headers,
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      console.error(`[revenue_events] no pude leer el rastro de entrega de id=${filaId}: ${res.status}`);
+      return false;
+    }
+
+    const filas = (await res.json()) as { note?: string | null }[];
+    const note = Array.isArray(filas) && typeof filas[0]?.note === "string" ? filas[0].note : null;
+    if (note === null) {
+      console.error(`[revenue_events] no encontré la fila id=${filaId} para guardar el rastro de entrega`);
+      return false;
+    }
+
+    const fecha = new Date().toISOString().slice(0, 10);
+    const datos =
+      resultado === "ok"
+        ? { fijo: "Entregado por email el ", sufijo: ` · Entregado por email el ${fecha}.` }
+        : resultado === "fallo"
+          ? {
+              fijo: "ENTREGA POR EMAIL FALLÓ el ",
+              sufijo: ` · ENTREGA POR EMAIL FALLÓ el ${fecha} — reenviar a mano a ${email ?? "email no disponible"}.`,
+            }
+          : {
+              fijo: "MercadoPago no expuso el email del comprador: la única entrega fue el botón de la página de gracias.",
+              sufijo:
+                " · MercadoPago no expuso el email del comprador: la única entrega fue el botón de la página de gracias.",
+            };
+
+    if (note.includes(datos.fijo)) return true;
+
+    const patch = await deps.fetch(url, {
+      method: "PATCH",
+      headers,
+      body: JSON.stringify({ note: `${note}${datos.sufijo}` }),
+      cache: "no-store",
+    });
+    if (!patch.ok) {
+      console.error(`[revenue_events] no pude guardar el rastro de entrega de id=${filaId}: ${patch.status}`);
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error(`[revenue_events] error guardando el rastro de entrega de id=${filaId}`, e);
+    return false;
+  }
 }
