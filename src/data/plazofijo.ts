@@ -51,7 +51,7 @@ export const PLAZOFIJO_FUENTES = {
 export const BCRA_TNA_URL = "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/12?limit=1";
 
 // Fallback si la API del BCRA no responde (la fecha SIEMPRE se muestra al usuario).
-export const TNA_FALLBACK = { valor: 20.76, fechaISO: "2026-09-04" };
+export const TNA_FALLBACK = { valor: 21.05, fechaISO: "2026-09-07" };
 
 // Última inflación mensual oficial (INDEC). Editable por el usuario en la calculadora.
 export const INFLACION_DEFAULT = { mensualPct: 2.1, periodo: "julio 2026" };
