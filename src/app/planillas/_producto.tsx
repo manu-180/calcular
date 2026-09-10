@@ -91,11 +91,43 @@ export function PlanillaLanding(c: ConfigLanding) {
       price: String(producto.precio),
       priceCurrency: producto.moneda,
       availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
       seller: { "@type": "Organization", name: "CalculAR" },
       url: `https://calcular.ar${producto.rutaLanding}`,
+      // Producto digital: se entrega por mail al instante y sin costo. shippingDetails
+      // en cero es lo que Google acepta para cerrar el aviso de "Fichas de comerciantes"
+      // cuando no hay envio fisico — schema.org no tiene un flag "es digital".
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: 0,
+          currency: producto.moneda,
+        },
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "AR",
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: {
+            "@type": "QuantitativeValue",
+            minValue: 0,
+            maxValue: 0,
+            unitCode: "DAY",
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 0,
+            maxValue: 0,
+            unitCode: "DAY",
+          },
+        },
+      },
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
         applicableCountry: "AR",
+        returnPolicyCountry: "AR",
         returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
         merchantReturnDays: 7,
         returnMethod: "https://schema.org/ReturnByMail",
