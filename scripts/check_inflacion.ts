@@ -79,6 +79,7 @@ const MENSUALES_PUBLICADAS: Record<string, number> = {
   "2026-05": 2.1, // informe ipc_06_26 (11/6/2026)
   "2026-06": 1.9, // informe ipc_07_26 (julio 2026)
   "2026-07": 2.1, // serie oficial 148.3_INIVELNAL_DICI_M_26 (12076,3937 vs 11826,4103 = 2,11%)
+  "2026-08": 1.7, // informe ipc_09_26A1BE2DC4CD (11/9/2026): «alza mensual de 1,7% en agosto de 2026»
 };
 const publicadaUlt = MENSUALES_PUBLICADAS[ULTIMO_PERIODO];
 if (publicadaUlt === undefined) {

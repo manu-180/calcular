@@ -13,6 +13,7 @@ import {
   vecinos,
 } from "../src/lib/archivo-mensual";
 import { IPC_SERIE } from "../src/data/ipc-serie";
+import { sumarMeses } from "../src/lib/inflacion";
 import { MESES_UOCRA } from "../src/data/convenios/uocra";
 import { MESES_COMERCIO } from "../src/data/convenios/comercio";
 import { MESES_CAMIONEROS, CAMIONEROS_BASE_MAYO } from "../src/data/convenios/camioneros";
@@ -33,6 +34,11 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
 function aprox(a: number, b: number, tol = 1e-9) {
   return Math.abs(a - b) < tol;
 }
+
+// El mes que el INDEC todavía no publicó se DERIVA de la serie: hardcodearlo hace que estos
+// checks se pongan rojos solos cada vez que sale un IPC nuevo (pasó el 11/9/2026 con agosto).
+const ULTIMO_IPC = IPC_SERIE[IPC_SERIE.length - 1][0];
+const SIN_IPC = sumarMeses(ULTIMO_IPC, 1);
 
 // ===========================================================================
 // periodoISO / pctConSigno
@@ -72,8 +78,8 @@ check(
   variacionIpcPeriodo(IPC_SERIE[0][0]) === null,
 );
 check(
-  "variacionIpcPeriodo: un período posterior al último publicado -> null (no inventa)",
-  variacionIpcPeriodo("2026-08") === null,
+  `variacionIpcPeriodo: un período posterior al último publicado (${SIN_IPC}) -> null (no inventa)`,
+  variacionIpcPeriodo(SIN_IPC) === null,
 );
 check(
   "variacionIpcPeriodo: un período que no existe en la serie -> null",
@@ -96,8 +102,8 @@ check(
   compararConIpc(null, "2026-07") === null,
 );
 check(
-  "compararConIpc: sin IPC de ese período (agosto 2026 aún no publicado) -> null",
-  compararConIpc(5, "2026-08") === null,
+  `compararConIpc: sin IPC de ese período (${SIN_IPC} aún no publicado) -> null`,
+  compararConIpc(5, SIN_IPC) === null,
 );
 
 // ===========================================================================
@@ -171,13 +177,26 @@ check(
       (serie[serie.length - 1] / serie[0] - 1) * 100,
     ),
   );
-  // Agosto 2026 no tiene IPC publicado todavía (IPC_SERIE llega a julio): la comparación
-  // tiene que apagarse sola, no inventar un número.
-  const idxAgosto = MESES_UOCRA.findIndex((m) => m.id === "agosto-2026");
-  const periodoAgosto = periodoISO(MESES_UOCRA[idxAgosto].anio, MESES_UOCRA[idxAgosto].mes);
+  // Los meses del convenio que van por delante del IPC no pueden mostrar comparación: la
+  // página tiene que apagarla sola, no inventar un número. Cuáles son se deriva de la serie.
+  const idxAdelantados = MESES_UOCRA.map((m, i) => ({ m, i })).filter(
+    ({ m }) => periodoISO(m.anio, m.mes) > ULTIMO_IPC && m.mes !== undefined,
+  );
+  for (const { m, i } of idxAdelantados) {
+    if (i === 0) continue;
+    check(
+      `uocra: ${m.id} va por delante del IPC publicado (${ULTIMO_IPC}) -> sin comparación`,
+      compararConIpc(variacionPct(serie[i], serie[i - 1]), periodoISO(m.anio, m.mes)) === null,
+    );
+  }
   check(
-    "uocra: agosto 2026 no tiene comparación contra IPC (el INDEC todavía no lo publicó)",
-    compararConIpc(variacionPct(serie[idxAgosto], serie[idxAgosto - 1]), periodoAgosto) === null,
+    `uocra: todos los meses hasta ${ULTIMO_IPC} tienen su comparación contra IPC`,
+    MESES_UOCRA.every(
+      (m, i) =>
+        i === 0 ||
+        periodoISO(m.anio, m.mes) > ULTIMO_IPC ||
+        compararConIpc(variacionPct(serie[i], serie[i - 1]), periodoISO(m.anio, m.mes)) !== null,
+    ),
   );
 }
 

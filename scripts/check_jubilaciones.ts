@@ -331,11 +331,21 @@ const V = PRESTACIONES_VIGENTES;
     );
   }
 
-  const r = actualizarHaber(300_000, "2024-05", "2026-08");
+  // El mes final sin IPC se DERIVA del haber vigente, no se hardcodea: escrito a mano, este check
+  // se pone rojo solo cada vez que el INDEC publica un mes nuevo (pasó el 11/9/2026 con agosto).
+  const ultimoIpcPub = IPC_SERIE[IPC_SERIE.length - 1][0];
+  const r = actualizarHaber(300_000, "2024-05", HABER_MINIMO_ULTIMO.periodo);
   check("el coeficiente del tramo es > 1", r !== null && r.coeficiente > 1);
 
+  // La movilidad usa el IPC de dos meses antes (Dec. 274/2024), así que el haber vigente SIEMPRE
+  // va por delante del último IPC publicado. Si deja de cumplirse, lo dice acá y no en un null raro.
+  check(
+    `el haber vigente (${HABER_MINIMO_ULTIMO.periodo}) va por delante del último IPC publicado (${ultimoIpcPub})`,
+    HABER_MINIMO_ULTIMO.periodo > ultimoIpcPub,
+  );
+
   // La comparación contra inflación sólo existe si el IPC de AMBOS extremos ya se publicó. Para el
-  // mes vigente todavía no salió (el IPC va un mes y medio atrás): tiene que dar null, no un número.
+  // mes vigente todavía no salió: tiene que dar null, no un número.
   check(
     "sin IPC del mes final, la inflación acumulada es null (no se estima)",
     r !== null && r.inflacionAcumulada === null && r.brechaReal === null,
@@ -343,7 +353,6 @@ const V = PRESTACIONES_VIGENTES;
   );
 
   // Con ambos extremos publicados, sí informa y la brecha cierra.
-  const ultimoIpcPub = IPC_SERIE[IPC_SERIE.length - 1][0];
   const rr = actualizarHaber(300_000, "2024-05", ultimoIpcPub);
   check(
     `informa la inflación acumulada del tramo 2024-05 → ${ultimoIpcPub}`,
