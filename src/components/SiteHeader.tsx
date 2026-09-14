@@ -312,6 +312,7 @@ const TABS: Tab[] = [
       "/edad-avanzada",
       "/82-por-ciento-movil",
       "/pension-veteranos-malvinas",
+      "/descuento-pami",
     ],
     cols: [
       [
@@ -379,6 +380,11 @@ const TABS: Tab[] = [
               href: "/pension-veteranos-malvinas",
               label: "Veteranos de Malvinas",
               desc: "Tres haberes mínimos, además de la jubilación",
+            },
+            {
+              href: "/descuento-pami",
+              label: "Descuento de PAMI",
+              desc: "3% hasta el mínimo y 6% del excedente",
             },
           ],
         },

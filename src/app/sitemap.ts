@@ -102,6 +102,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/actualizacion-de-quebrantos`, lastModified: new Date('2026-09-01'), changeFrequency: 'monthly', priority: 0.8  },
     { url: `${BASE}/salario-minimo`,            lastModified: new Date('2026-09-02'), changeFrequency: 'monthly', priority: 1.0  },
     { url: `${BASE}/82-por-ciento-movil`,       lastModified: new Date('2026-09-03'), changeFrequency: 'monthly', priority: 0.9  },
+    { url: `${BASE}/descuento-pami`,            lastModified: new Date('2026-09-14'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/pension-veteranos-malvinas`,   lastModified: new Date('2026-09-03'), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/contratar-persona-con-discapacidad`, lastModified: new Date('2026-09-04'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/prescripcion-deuda-arca`,     lastModified: new Date('2026-09-04'), changeFrequency: 'monthly', priority: 0.95 },
