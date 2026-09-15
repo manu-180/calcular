@@ -13,8 +13,8 @@
 //
 // Fuente: INDEC — serie "Canasta de crianza, por tramo de edad" (enero 2020 en adelante).
 // https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_canasta_crianza.xlsx
-// Última modificación de la planilla en el servidor del INDEC: Tue, 18 Aug 2026 18:51:29 GMT
-// Consultado: 2026-09-14 · último período disponible: julio 2026
+// Última modificación de la planilla en el servidor del INDEC: Mon, 14 Sep 2026 18:53:02 GMT
+// Consultado: 2026-09-15 · último período disponible: agosto 2026
 
 export type TramoCrianzaId = "menor-1" | "1-a-3" | "4-a-5" | "6-a-12";
 
@@ -116,6 +116,7 @@ export const CANASTA_CRIANZA: MesCrianza[] = [
   { periodo: "2026-05", etiqueta: "mayo 2026", valores: { "menor-1": { bienes: 169760.35, cuidado: 350809.04, total: 520569.39 }, "1-a-3": { bienes: 219200.37, cuidado: 400924.62, total: 620124.99 }, "4-a-5": { bienes: 279177.95, cuidado: 250577.89, total: 529755.84 }, "6-a-12": { bienes: 346321.31, cuidado: 319628.4, total: 665949.71 } } },
   { periodo: "2026-06", etiqueta: "junio 2026", valores: { "menor-1": { bienes: 173467.8, cuidado: 356071.18, total: 529538.98 }, "1-a-3": { bienes: 223987.56, cuidado: 406938.49, total: 630926.05 }, "4-a-5": { bienes: 285275, cuidado: 254336.55, total: 539611.56 }, "6-a-12": { bienes: 353884.74, cuidado: 324423.12, total: 678307.86 } } },
   { periodo: "2026-07", etiqueta: "julio 2026", valores: { "menor-1": { bienes: 177233.19, cuidado: 368449.92, total: 545683.12 }, "1-a-3": { bienes: 228849.55, cuidado: 421085.63, total: 649935.19 }, "4-a-5": { bienes: 291467.34, cuidado: 263178.52, total: 554645.86 }, "6-a-12": { bienes: 361566.35, cuidado: 335701.8, total: 697268.15 } } },
+  { periodo: "2026-08", etiqueta: "agosto 2026", valores: { "menor-1": { bienes: 181852.45, cuidado: 375450.47, total: 557302.92 }, "1-a-3": { bienes: 234814.1, cuidado: 429086.25, total: 663900.36 }, "4-a-5": { bienes: 299063.9, cuidado: 268178.91, total: 567242.81 }, "6-a-12": { bienes: 370989.92, cuidado: 342079.92, total: 713069.84 } } },
 ];
 
 /** Último mes publicado por el INDEC. */
@@ -125,6 +126,6 @@ export const CANASTA_CRIANZA_FUENTE = {
   nombre: "INDEC — Valorización mensual de la canasta de crianza (serie mensual por tramo de edad)",
   url: "https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_canasta_crianza.xlsx",
   informe: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-173",
-  consultadoEl: "2026-09-14",
-  ultimoPeriodo: "2026-07",
+  consultadoEl: "2026-09-15",
+  ultimoPeriodo: "2026-08",
 };
