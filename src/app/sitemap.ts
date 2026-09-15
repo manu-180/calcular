@@ -106,6 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/pension-veteranos-malvinas`,   lastModified: new Date('2026-09-03'), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/contratar-persona-con-discapacidad`, lastModified: new Date('2026-09-04'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/prescripcion-deuda-arca`,     lastModified: new Date('2026-09-04'), changeFrequency: 'monthly', priority: 0.95 },
+    { url: `${BASE}/multas-arca`,                 lastModified: new Date('2026-09-15'), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/derivar-aportes-a-prepaga`,   lastModified: new Date('2026-09-05'), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/hasta-cuando-tengo-obra-social`, lastModified: new Date('2026-09-05'), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/temeridad-y-malicia`,        lastModified: new Date('2026-08-24'), changeFrequency: 'monthly', priority: 0.9  },
