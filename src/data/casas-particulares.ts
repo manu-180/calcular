@@ -5,20 +5,41 @@
 // una categoría (la más común) y se olvidan de las otras cuatro, del adicional por zona
 // desfavorable y de que el mínimo mensual y el valor hora son dos pisos distintos que conviven.
 //
-// LA ESCALA NO SE COPIA DE UN MEDIO. Los importes de acá salen del ANEXO IV de la Resolución
-// CNTCP 4/2026 (B.O. 10/6/2026), bajado del PDF oficial publicado en argentina.gob.ar/normativa:
-//   https://www.argentina.gob.ar/normativa/426540_res4-4_pdf/archivo
-// Verificado el 10/8/2026. Control cruzado: el valor de personal para tareas generales con retiro
-// ($3.733,72 la hora / $458.053,22 el mes) coincide con lo que publican los medios para agosto, lo
-// que confirma que en agosto sigue rigiendo la escala de julio: la CNTCP no dictó una resolución
-// posterior a la 4/2026 (verificado contra el Boletín Oficial el 10/8/2026).
+// LA ESCALA NO SE COPIA DE UN MEDIO. Los importes salen de los CINCO ANEXOS de la Resolución
+// CNTCP 6/2026 (B.O. 3/9/2026), bajados del propio BORA y parseados por coordenadas con
+// `tools/pdf-tabla.ts`. Verificado el 15/9/2026.
 //
-// CÓMO SE ROTA: cuando la CNTCP publique una resolución nueva, bajar su anexo con
-// `npx -y tsx tools/pdf-extraer.ts <url del pdf del anexo>` y reemplazar ESCALA_VIGENTE + vigencia
-// + la fuente. El PDF del aviso del BO se baja con
-// `https://www.boletinoficial.gob.ar/pdf/aviso/primera/<id>/<AAAAMMDD>`, pero OJO: ese PDF NO trae
-// los anexos («se publican en la edición web del BORA»); los anexos están en la ficha de
-// argentina.gob.ar/normativa, como `426540_res4-N_pdf/archivo`.
+// ═══ LOS DOS HALLAZGOS DE ESTA RESOLUCIÓN, VERIFICADOS CONTRA LOS ANEXOS ═══
+//
+// 1. **Septiembre NO es «agosto + 1,8%».** El art. 7 incorpora a los básicos de septiembre el 25%
+//    de la suma no remunerativa de $20.000 ANTES de aplicar el aumento, así que el mensual de
+//    septiembre es `(agosto + $5.000) × 1,018` — reproduce los NUEVE valores mensuales del Anexo 2
+//    al centavo. Quien aplique el 1,8% sobre la escala de agosto queda $5.090 corto por mes, en
+//    todas las categorías. Lo mismo en octubre con el 50% (`(septiembre + $10.000) × 1,017`).
+//
+// 2. **El Anexo 4 (noviembre) NO se reproduce con el 1,6% que dice el art. 4 de la resolución: se
+//    reproduce con 1,7%.** `(octubre + $5.000) × 1,017` da los nueve valores mensuales exactos;
+//    con 1,016 quedan entre $500 y $605 por debajo del anexo, en todas las categorías. No es un
+//    redondeo: es una diferencia sistemática. Diciembre, en cambio, sí es `noviembre × 1,016`
+//    exacto (art. 5), sin nada que incorporar — o sea que el $20.000 queda absorbido en noviembre.
+//    **Esta página publica el ANEXO, no el articulado**, porque el anexo «forma parte integrante de
+//    la presente» y es la escala que se liquida. La discrepancia se dice en voz alta en la página:
+//    ocultarla sería publicar una certeza que la norma no da.
+//
+// El valor HORA tiene su propia aritmética y NO se deriva del mensual: en septiembre el mensual
+// sube $5.000 planos en todas las categorías, pero la hora sube entre $39,40 y $40,84 según la
+// categoría y la modalidad. Por eso acá no se calcula ningún valor hora: se transcribe del anexo.
+//
+// CÓMO SE ROTA: cuando la CNTCP publique una resolución nueva, la escala se baja del BORA:
+//   1. `npx -y tsx tools/boletin-oficial.ts --buscar "CASAS PARTICULARES" --dias 45`
+//   2. abrir el aviso con `--aviso <id> --fecha <ISO>` y leer el articulado (los % y las sumas).
+//   3. los ANEXOS **no** están en el PDF del aviso («se publican en la edición web del BORA»).
+//      Se bajan con un POST a `https://www.boletinoficial.gob.ar/pdf/download_anexo` con
+//      `seccion=primera&nroAnexo=<N>&idAnexo=<id del anexo>&fechaPublicacion=<AAAAMMDD>`; el
+//      `idAnexo` sale del HTML del aviso, en las llamadas `descargarPDFAnexo(...)`. La respuesta es
+//      JSON con el PDF en base64 (`pdfBase64`).
+//   4. parsear con `npx -y tsx tools/pdf-tabla.ts <pdf>` (por coordenadas — NUNCA texto plano) y
+//      correr `scripts/check_casas_particulares.ts`, que ancla las derivaciones de arriba.
 
 export type CategoriaCasasParticulares = {
   id: string;
@@ -33,77 +54,228 @@ export type CategoriaCasasParticulares = {
   mesSinRetiro: number;
 };
 
-/**
- * ANEXO IV de la Resolución CNTCP 4/2026 — escala vigente desde julio de 2026 (y en agosto, por no
- * haber resolución posterior). El orden es el del anexo oficial.
- */
-export const ESCALA_VIGENTE: CategoriaCasasParticulares[] = [
+/** Identidad de cada categoría: es la misma en los cinco anexos, sólo cambian los importes. */
+const CATEGORIAS_META = [
   {
     id: "supervisor",
     nombre: "Supervisor/a",
-    tareas:
-      "Coordinación y control de las tareas efectuadas por dos o más personas a su cargo.",
-    horaConRetiro: 4438.77,
-    horaSinRetiro: 4829.13,
-    mesConRetiro: 553725.91,
-    mesSinRetiro: 612673.11,
+    tareas: "Coordinación y control de las tareas efectuadas por dos o más personas a su cargo.",
   },
   {
     id: "tareas-especificas",
     nombre: "Personal para tareas específicas",
     tareas:
       "Cocineros/as contratados en forma exclusiva para desempeñar dicha labor, y toda otra tarea del hogar que requiera especial idoneidad del personal para llevarla a cabo.",
-    horaConRetiro: 4223.25,
-    horaSinRetiro: 4597.18,
-    mesConRetiro: 517006.43,
-    mesSinRetiro: 571426.17,
   },
   {
     id: "caseros",
     nombre: "Caseros",
     tareas:
       "Personal que presta tareas inherentes al cuidado general y preservación de una vivienda en donde habita con motivo del contrato de trabajo.",
-    // Por definición el casero vive en la vivienda: la categoría sólo existe sin retiro, y en el
-    // anexo oficial la columna «con retiro» aparece con un guion.
-    horaConRetiro: null,
-    horaSinRetiro: 3996.45,
-    mesConRetiro: null,
-    mesSinRetiro: 505302.76,
   },
   {
     id: "asistencia-personas",
     nombre: "Asistencia y cuidado de personas",
     tareas:
       "Comprende la asistencia y cuidado no terapéutico de personas, tales como: personas enfermas, con discapacidad, niños/as, adolescentes, adultos mayores.",
-    horaConRetiro: 3996.45,
-    horaSinRetiro: 4435.86,
-    mesConRetiro: 505302.76,
-    mesSinRetiro: 558972.92,
   },
   {
     id: "tareas-generales",
     nombre: "Personal para tareas generales",
     tareas:
       "Prestación de tareas de limpieza, lavado, planchado, mantenimiento, elaboración y cocción de comidas y, en general, toda otra tarea típica del hogar.",
-    horaConRetiro: 3733.72,
-    horaSinRetiro: 3996.45,
-    mesConRetiro: 458053.22,
-    mesSinRetiro: 505302.76,
+  },
+] as const;
+
+/**
+ * Los cuatro importes de cada categoría, en el orden del anexo:
+ * [hora con retiro, hora sin retiro, mes con retiro, mes sin retiro].
+ * `null` donde el anexo trae un guion (los caseros sólo existen sin retiro).
+ */
+type Fila = [number | null, number, number | null, number];
+
+type MesEscala = {
+  id: string;
+  /** Como lo titula el propio anexo, en castellano. */
+  etiqueta: string;
+  /** Primer día del mes desde el que rige. Se compara contra la fecha de build. */
+  desdeISO: string;
+  /** Qué anexo de la Resolución 6/2026 lo publica, y el artículo que lo fija. */
+  anexo: string;
+  articulo: string;
+  /** Incremento que el ARTICULADO declara para ese mes, en %. */
+  incrementoDeclarado: number | null;
+  /**
+   * Incremento que REPRODUCE el anexo al centavo. Distinto del declarado sólo en noviembre
+   * (el art. 4 dice 1,6% y el Anexo 4 sólo sale con 1,7%).
+   */
+  incrementoDelAnexo: number | null;
+  /** Suma no remunerativa que se incorpora a los mensuales ANTES de aplicar el incremento. */
+  incorporaAlBasico: number;
+  filas: Record<string, Fila>;
+};
+
+/** Escalas mensuales de la Resolución CNTCP 6/2026 (Anexos 1 a 5). Transcriptas, no calculadas. */
+export const ESCALAS_POR_MES: MesEscala[] = [
+  {
+    id: "2026-08",
+    etiqueta: "agosto de 2026",
+    desdeISO: "2026-08-01",
+    anexo: "Anexo 1",
+    articulo: "art. 1",
+    incrementoDeclarado: 1.9,
+    incrementoDelAnexo: 1.9,
+    incorporaAlBasico: 0,
+    filas: {
+      supervisor: [4523.11, 4920.89, 564246.7, 624313.9],
+      "tareas-especificas": [4303.5, 4684.53, 526829.56, 582283.26],
+      caseros: [null, 4072.38, null, 514903.51],
+      "asistencia-personas": [4072.38, 4520.15, 514903.51, 569593.41],
+      "tareas-generales": [3804.66, 4072.38, 466756.24, 514903.51],
+    },
+  },
+  {
+    id: "2026-09",
+    etiqueta: "septiembre de 2026",
+    desdeISO: "2026-09-01",
+    anexo: "Anexo 2",
+    articulo: "art. 2",
+    incrementoDeclarado: 1.8,
+    incrementoDelAnexo: 1.8,
+    incorporaAlBasico: 5000,
+    filas: {
+      supervisor: [4645.33, 5049.58, 579493.14, 640641.55],
+      "tareas-especificas": [4422.54, 4809.8, 541402.49, 597854.36],
+      caseros: [null, 4185.94, null, 529261.78],
+      "asistencia-personas": [4185.94, 4641.9, 529261.78, 584936.09],
+      "tareas-generales": [3914.64, 4185.94, 480247.85, 529261.78],
+    },
+  },
+  {
+    id: "2026-10",
+    etiqueta: "octubre de 2026",
+    desdeISO: "2026-10-01",
+    anexo: "Anexo 3",
+    articulo: "art. 3",
+    incrementoDeclarado: 1.7,
+    incrementoDelAnexo: 1.7,
+    incorporaAlBasico: 10000,
+    filas: {
+      supervisor: [4805.82, 5215.59, 599514.52, 661702.46],
+      "tareas-especificas": [4580.8, 4973.38, 560776.33, 618187.89],
+      caseros: [null, 4337.53, null, 548429.23],
+      "asistencia-personas": [4337.53, 4801.52, 548429.23, 605050.0],
+      "tareas-generales": [4064.08, 4337.53, 498582.06, 548429.23],
+    },
+  },
+  {
+    id: "2026-11",
+    etiqueta: "noviembre de 2026",
+    desdeISO: "2026-11-01",
+    anexo: "Anexo 4",
+    articulo: "art. 4",
+    // El art. 4 dice 1,6%. El Anexo 4 sólo se reproduce con 1,7% (ver la cabecera del archivo).
+    incrementoDeclarado: 1.6,
+    incrementoDelAnexo: 1.7,
+    incorporaAlBasico: 5000,
+    filas: {
+      supervisor: [4928.28, 5344.33, 614791.27, 678036.4],
+      "tareas-especificas": [4700.21, 5098.84, 575394.53, 633782.08],
+      caseros: [null, 4451.49, null, 562837.52],
+      "asistencia-personas": [4451.49, 4923.5, 562837.52, 620420.85],
+      "tareas-generales": [4174.62, 4451.49, 512142.96, 562837.52],
+    },
+  },
+  {
+    id: "2026-12",
+    etiqueta: "diciembre de 2026",
+    desdeISO: "2026-12-01",
+    anexo: "Anexo 5",
+    articulo: "art. 5",
+    incrementoDeclarado: 1.6,
+    incrementoDelAnexo: 1.6,
+    incorporaAlBasico: 0,
+    filas: {
+      supervisor: [5007.14, 5429.84, 624627.93, 688884.98],
+      "tareas-especificas": [4775.41, 5180.42, 584600.84, 643922.59],
+      caseros: [null, 4522.71, null, 571842.92],
+      "asistencia-personas": [4522.71, 5002.28, 571842.92, 630347.58],
+      "tareas-generales": [4241.42, 4522.71, 520337.24, 571842.92],
+    },
   },
 ];
 
+export function escalaDe(mesId: string): CategoriaCasasParticulares[] {
+  const mes = ESCALAS_POR_MES.find((m) => m.id === mesId) ?? ESCALAS_POR_MES[0];
+  return CATEGORIAS_META.map((c) => {
+    const [horaConRetiro, horaSinRetiro, mesConRetiro, mesSinRetiro] = mes.filas[c.id];
+    return { ...c, horaConRetiro, horaSinRetiro, mesConRetiro, mesSinRetiro };
+  });
+}
+
+/**
+ * El último mes de la serie cuya vigencia ya empezó, resuelto en el BUILD.
+ *
+ * POR QUÉ SE DERIVA Y NO SE ESCRIBE (15/9/2026): hasta hoy `VIGENCIA.vigenteEn` era una constante
+ * a mano («agosto de 2026») y el sitio estuvo liquidando septiembre con la escala de julio, porque
+ * la resolución salió el 3/9 y nadie movió la constante. Con la serie completa cargada, el mes
+ * vigente es una consecuencia de la fecha, no una decisión que alguien puede olvidar. Cuando la
+ * serie se agote (después de diciembre) el último mes queda fijo, que es lo correcto: la escala
+ * vieja sigue rigiendo hasta que haya una nueva.
+ */
+export function mesVigente(hoy = new Date()): MesEscala {
+  const iso = hoy.toISOString().slice(0, 10);
+  const empezados = ESCALAS_POR_MES.filter((m) => m.desdeISO <= iso);
+  return empezados.at(-1) ?? ESCALAS_POR_MES[0];
+}
+
+const MES_ACTUAL = mesVigente();
+
+/** La escala del mes que se está liquidando hoy. Misma forma que siempre: el resto del sitio la usa así. */
+export const ESCALA_VIGENTE: CategoriaCasasParticulares[] = escalaDe(MES_ACTUAL.id);
+
 export const VIGENCIA = {
-  /** Mes desde el que rige la escala (el anexo la titula «jul-26»). */
-  desde: "julio de 2026",
-  /** Mes que se está liquidando con ella, por no haber resolución posterior. */
-  vigenteEn: "agosto de 2026",
-  resolucion: "Resolución CNTCP 4/2026",
-  boletinOficial: "B.O. 10/6/2026",
+  /** Mes desde el que rige la escala que se muestra. */
+  desde: MES_ACTUAL.etiqueta,
+  /** Mes que se está liquidando con ella. Con la serie cargada, son el mismo. */
+  vigenteEn: MES_ACTUAL.etiqueta,
+  mesId: MES_ACTUAL.id,
+  anexo: MES_ACTUAL.anexo,
+  resolucion: "Resolución CNTCP 6/2026",
+  boletinOficial: "B.O. 3/9/2026",
+  /** Último mes con escala publicada: después de éste hay que buscar resolución nueva. */
+  ultimoMesPublicado: ESCALAS_POR_MES.at(-1)!.etiqueta,
 } as const;
 
 /**
+ * Suma no remunerativa por única vez del art. 6 de la Resolución 6/2026: se paga con los salarios
+ * de agosto de 2026 y NO es parte del básico. Los tramos son por horas semanales, no por categoría.
+ */
+export const SUMA_NO_REMUNERATIVA = {
+  articulo: "Resolución CNTCP 6/2026, art. 6",
+  pagaderaCon: "los salarios del mes de agosto de 2026",
+  tramos: [
+    { desdeHorasSemanales: 16, hasta: null, monto: 20000, detalle: "16 horas semanales o más" },
+    { desdeHorasSemanales: 12, hasta: 16, monto: 11500, detalle: "de 12 a menos de 16 horas semanales" },
+    { desdeHorasSemanales: 0, hasta: 12, monto: 8000, detalle: "menos de 12 horas semanales" },
+  ],
+  /** Arts. 7, 8 y 9: qué porcentaje de esa suma se incorpora al básico y en qué mes. */
+  incorporacion: [
+    { mes: "septiembre de 2026", porcentaje: 25, articulo: "art. 7" },
+    { mes: "octubre de 2026", porcentaje: 50, articulo: "art. 8" },
+    { mes: "noviembre de 2026", porcentaje: 25, articulo: "art. 9" },
+  ],
+} as const;
+
+/** Monto de la suma no remunerativa del art. 6 según las horas semanales trabajadas. */
+export function sumaNoRemunerativaPorHoras(horasSemanales: number): number {
+  const tramo = SUMA_NO_REMUNERATIVA.tramos.find((t) => horasSemanales >= t.desdeHorasSemanales);
+  return tramo?.monto ?? 0;
+}
+
+/**
  * Adicional por zona desfavorable: 31% sobre el mínimo de cada categoría desde el 1/4/2026
- * (art. 7 de la Resolución 4/2026). Antes de esa resolución era del 30%.
+ * (art. 7 de la Resolución 4/2026; los anexos de la 6/2026 lo reproducen sin cambios).
  */
 export const ZONA_DESFAVORABLE = {
   porcentaje: 31,
@@ -167,19 +339,25 @@ export const CASAS_PARTICULARES_FUENTES: {
   consultadoEl: string;
   lista: FuenteCasasParticulares[];
 } = {
-  consultadoEl: "2026-08-10",
+  consultadoEl: "2026-09-15",
   lista: [
     {
-      nombre: "Resolución CNTCP 4/2026 — ANEXO IV (escala vigente)",
-      url: "https://www.argentina.gob.ar/normativa/426540_res4-4_pdf/archivo",
+      nombre: "Resolución CNTCP 6/2026 (texto completo)",
+      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346855/20260903",
       detalle:
-        "Anexo oficial con la escala de julio de 2026 por categoría, con y sin retiro, por hora y por mes, y el adicional por zona desfavorable del 31%. Es el archivo que integra la resolución: los importes de esta página salen de acá, no de un medio.",
+        "B.O. 3/9/2026 — fija los incrementos de agosto (1,9%), septiembre (1,8%), octubre (1,7%), noviembre (1,6%) y diciembre (1,6%) de 2026, la suma no remunerativa por única vez de $20.000 / $11.500 / $8.000 según horas semanales, y su incorporación al básico en tres tramos (25%, 50% y 25%).",
     },
     {
-      nombre: "Resolución CNTCP 4/2026 (texto completo)",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/342953/20260610",
+      nombre: "Resolución CNTCP 6/2026 — Anexos 1 a 5 (las escalas)",
+      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346855/20260903",
       detalle:
-        "B.O. 10/6/2026 — fija los incrementos escalonados de abril, mayo, junio y julio de 2026 y eleva el adicional por zona desfavorable al 31% desde el 1/4/2026.",
+        "Un anexo por mes, con las cinco categorías, con y sin retiro, por hora y por mes. No vienen en el PDF del aviso: se publican en la edición web del BORA y se bajan aparte. Los importes de esta página salen de ahí, parseados por coordenadas, no de un medio.",
+    },
+    {
+      nombre: "Resolución CNTCP 4/2026 — la escala anterior (abril a julio de 2026)",
+      url: "https://www.argentina.gob.ar/normativa/426540_res4-4_pdf/archivo",
+      detalle:
+        "B.O. 10/6/2026. Es la base sobre la que la 6/2026 calcula agosto, y la que fijó el adicional por zona desfavorable en el 31% desde el 1/4/2026.",
     },
     {
       nombre: "Ley 26.844 — Régimen Especial para el Personal de Casas Particulares",

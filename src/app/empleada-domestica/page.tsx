@@ -6,7 +6,9 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import {
   CASAS_PARTICULARES_FUENTES,
+  ESCALAS_POR_MES,
   ESCALA_VIGENTE,
+  SUMA_NO_REMUNERATIVA,
   HORAS_EXTRAS,
   JORNADA,
   SAC,
@@ -14,8 +16,10 @@ import {
   VIGENCIA,
   ZONA_DESFAVORABLE,
 } from "@/data/casas-particulares";
+import { escalaDe } from "@/data/casas-particulares";
 import { formatARS } from "@/lib/formato";
 
+const NOVIEMBRE = ESCALAS_POR_MES.find((m) => m.id === "2026-11")!;
 const GENERALES = ESCALA_VIGENTE.find((c) => c.id === "tareas-generales")!;
 
 export const metadata: Metadata = {
@@ -43,8 +47,20 @@ const faqs = [
     a: `Para tareas generales, ${formatARS(GENERALES.mesConRetiro!, 0)} con retiro y ${formatARS(GENERALES.mesSinRetiro, 0)} sin retiro, por la jornada completa de ${JORNADA.horasSemanales} horas semanales. Ese mínimo mensual y el valor hora son DOS pisos distintos que conviven: con jornada reducida se paga por hora, y con jornada completa no se puede pagar menos que el mínimo mensual, aunque multiplicar las horas por el valor hora diera menos.`,
   },
   {
-    q: "¿La escala de agosto es la misma que la de julio?",
-    a: `Sí. La ${VIGENCIA.resolucion} fijó aumentos escalonados hasta ${VIGENCIA.desde} y, al ${CASAS_PARTICULARES_FUENTES.consultadoEl}, la Comisión Nacional de Trabajo en Casas Particulares no dictó una resolución posterior. Mientras no salga una nueva, ${VIGENCIA.vigenteEn} se liquida con la escala de ${VIGENCIA.desde}. Esta página se actualiza cuando aparece la resolución nueva en el Boletín Oficial, no cuando lo anuncia un medio.`,
+    q: "¿Hasta cuándo sirve esta escala?",
+    a: `La ${VIGENCIA.resolucion} (${VIGENCIA.boletinOficial}) publicó cinco anexos, uno por mes, de agosto a ${VIGENCIA.ultimoMesPublicado}. Esta página los tiene todos cargados y muestra el que corresponde al mes en curso, así que no hay que esperar a que alguien la actualice para ver el valor del mes siguiente. Después de ${VIGENCIA.ultimoMesPublicado} hace falta una resolución nueva: mientras no salga, la última escala publicada sigue siendo la vigente.`,
+  },
+  {
+    q: "¿El aumento de septiembre es sólo el 1,8%?",
+    a: `No, y es el error de cuenta más frecuente de esta resolución. El artículo 7 manda incorporar al básico de septiembre el 25% de la suma no remunerativa de $20.000 —o sea $5.000— ANTES de aplicar el aumento. Por eso el mínimo mensual de septiembre no es el de agosto más 1,8%: es (agosto + $5.000) × 1,018, que reproduce los nueve valores del anexo al centavo. Quien aplique el porcentaje sobre la escala de agosto queda $5.090 corto por mes, en todas las categorías. En octubre pasa lo mismo con el 50% ($10.000).`,
+  },
+  {
+    q: "¿Y la suma no remunerativa de $20.000, quién la cobra?",
+    a: `Todo el personal, con y sin retiro, y se pagó por única vez junto con ${SUMA_NO_REMUNERATIVA.pagaderaCon} (art. 6). El monto no depende de la categoría sino de las horas semanales: ${SUMA_NO_REMUNERATIVA.tramos.map((t) => `${formatARS(t.monto, 0)} para ${t.detalle}`).join("; ")}. No es parte del básico ni entra en aportes, pero se va incorporando al básico en tres tramos: ${SUMA_NO_REMUNERATIVA.incorporacion.map((i) => `${i.porcentaje}% en ${i.mes}`).join(", ")}.`,
+  },
+  {
+    q: "¿Cuánto sube realmente en noviembre?",
+    a: `Acá hay que ser preciso, porque el articulado y el anexo de la resolución no dicen lo mismo. El artículo 4 fija el aumento de noviembre en ${NOVIEMBRE.incrementoDeclarado}%, pero los importes del Anexo 4 sólo se reproducen con ${NOVIEMBRE.incrementoDelAnexo}%: con el ${NOVIEMBRE.incrementoDeclarado}% quedan entre $500 y $605 por debajo del anexo, en las cinco categorías y en las dos modalidades. No es un redondeo, es una diferencia sistemática. Esta página publica los importes del ANEXO, porque es el que «forma parte integrante» de la resolución y el que se liquida; pero preferimos decir la discrepancia antes que esconderla.`,
   },
   {
     q: "¿Qué es el adicional por zona desfavorable y a quién le corresponde?",
@@ -94,7 +110,7 @@ export default function EmpleadaDomesticaPage() {
       articleSchema({
         titulo: `Empleada doméstica: cuánto cobra por hora y por mes en ${VIGENCIA.vigenteEn}`,
         descripcion:
-          "Escala salarial completa del personal de casas particulares (Ley 26.844) con el anexo oficial de la Resolución CNTCP 4/2026: cinco categorías, con y sin retiro, por hora y por mes, más zona desfavorable, horas extras, aguinaldo y vacaciones.",
+          "Escala salarial completa del personal de casas particulares (Ley 26.844) con los cinco anexos de la Resolución CNTCP 6/2026: cinco categorías, con y sin retiro, por hora y por mes, mes a mes de agosto a diciembre de 2026, más la suma no remunerativa, zona desfavorable, horas extras, aguinaldo y vacaciones.",
         url: "/empleada-domestica",
         modificado: CASAS_PARTICULARES_FUENTES.consultadoEl,
       }),
@@ -131,10 +147,12 @@ export default function EmpleadaDomesticaPage() {
           de <strong>{formatARS(GENERALES.horaConRetiro!, 2)} por hora</strong> y{" "}
           <strong>{formatARS(GENERALES.mesConRetiro!, 0)} por mes</strong> con retiro, y de{" "}
           {formatARS(GENERALES.horaSinRetiro, 2)} por hora y {formatARS(GENERALES.mesSinRetiro, 0)}{" "}
-          por mes sin retiro. Son los valores del anexo de la {VIGENCIA.resolucion} (
-          {VIGENCIA.boletinOficial}), que rigen desde {VIGENCIA.desde}: la CNTCP no dictó una
-          resolución posterior, así que {VIGENCIA.vigenteEn} se liquida con esa misma escala. En las
-          provincias patagónicas y en el partido de {ZONA_DESFAVORABLE.partidoBonaerense} se suma un{" "}
+          por mes sin retiro. Son los valores del {VIGENCIA.anexo} de la {VIGENCIA.resolucion} (
+          {VIGENCIA.boletinOficial}), que publicó <strong>una escala por mes hasta{" "}
+          {VIGENCIA.ultimoMesPublicado}</strong> y las cinco están acá abajo. Ojo con la cuenta: el
+          aumento de septiembre <strong>no es sólo el 1,8%</strong>, porque antes se le incorporan al
+          básico $5.000 de la suma no remunerativa. En las provincias patagónicas y en el partido de{" "}
+          {ZONA_DESFAVORABLE.partidoBonaerense} se suma un{" "}
           <strong>{ZONA_DESFAVORABLE.porcentaje}%</strong> por zona desfavorable.
         </p>
       </RespuestaPrimero>
@@ -187,6 +205,87 @@ export default function EmpleadaDomesticaPage() {
           Los caseros aparecen con un guion en la columna «con retiro» porque la categoría existe
           sólo sin retiro: por definición, quien la ocupa vive en la vivienda que cuida.
         </p>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-bold text-zinc-900">
+          Mes a mes, hasta {VIGENCIA.ultimoMesPublicado}
+        </h2>
+        <p className="text-zinc-600">
+          La {VIGENCIA.resolucion} no fijó un aumento: fijó cinco, con un anexo propio cada uno. Esta
+          tabla muestra el mínimo mensual con retiro de la categoría más común —personal para tareas
+          generales— en cada mes publicado, para que se vea el escalón completo sin tener que abrir
+          cinco PDF. El mes resaltado es el que se está liquidando.
+        </p>
+        <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[38rem] text-sm">
+              <thead>
+                <tr className="bg-zinc-50 text-left text-zinc-700">
+                  <th className="px-4 py-2.5 font-semibold">Mes</th>
+                  <th className="px-4 py-2.5 text-right font-semibold">Aumento</th>
+                  <th className="px-4 py-2.5 text-right font-semibold">Se incorpora al básico</th>
+                  <th className="px-4 py-2.5 text-right font-semibold">Mínimo mensual c/retiro</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ESCALAS_POR_MES.map((m) => {
+                  const generales = escalaDe(m.id).find((c) => c.id === "tareas-generales")!;
+                  const discrepa = m.incrementoDeclarado !== m.incrementoDelAnexo;
+                  return (
+                    <tr
+                      key={m.id}
+                      className={`border-t border-zinc-100 ${
+                        m.id === VIGENCIA.mesId ? "bg-emerald-50/60 font-semibold" : ""
+                      }`}
+                    >
+                      <td className="px-4 py-2.5 text-zinc-800">
+                        {m.etiqueta}
+                        <span className="ml-2 text-xs font-normal text-zinc-500">{m.anexo}</span>
+                      </td>
+                      <td className="px-4 py-2.5 text-right tabular-nums text-zinc-900">
+                        {m.incrementoDelAnexo?.toLocaleString("es-AR", { maximumFractionDigits: 1 })}%
+                        {discrepa ? (
+                          <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
+                            el art. {m.articulo.replace("art. ", "")} dice{" "}
+                            {m.incrementoDeclarado?.toLocaleString("es-AR", { maximumFractionDigits: 1 })}%
+                          </span>
+                        ) : null}
+                      </td>
+                      <td className="px-4 py-2.5 text-right tabular-nums text-zinc-600">
+                        {m.incorporaAlBasico === 0 ? "—" : formatARS(m.incorporaAlBasico, 0)}
+                      </td>
+                      <td className="px-4 py-2.5 text-right tabular-nums text-zinc-900">
+                        {formatARS(generales.mesConRetiro!, 0)}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p className="text-sm text-zinc-500">
+          La columna del medio es la que rompe las cuentas ajenas: los artículos 7, 8 y 9 incorporan
+          al básico el 25%, el 50% y el 25% de la suma no remunerativa de{" "}
+          {formatARS(SUMA_NO_REMUNERATIVA.tramos[0].monto, 0)} <strong>antes</strong> de aplicar el
+          aumento del mes. Por eso septiembre no es agosto más 1,8%, sino{" "}
+          <strong>(agosto + {formatARS(5000, 0)}) × 1,018</strong>.
+        </p>
+        <div className="rounded-xl border-l-4 border-amber-300 bg-amber-50/50 p-4 text-sm text-zinc-700">
+          <p className="font-semibold text-zinc-900">
+            Noviembre: el articulado y el anexo no coinciden, y lo decimos
+          </p>
+          <p className="mt-1">
+            El artículo 4 de la resolución fija el aumento de noviembre en{" "}
+            {NOVIEMBRE.incrementoDeclarado}%, pero los importes del {NOVIEMBRE.anexo} sólo se
+            reproducen con {NOVIEMBRE.incrementoDelAnexo}%: con el {NOVIEMBRE.incrementoDeclarado}%
+            quedan entre $500 y $605 por debajo del anexo, en las cinco categorías y en las dos
+            modalidades. Publicamos los importes del <strong>anexo</strong>, porque es el que «forma
+            parte integrante de la presente» y el que se liquida — pero preferimos que se vea la
+            discrepancia antes que presentar una cifra como si no tuviera discusión.
+          </p>
+        </div>
       </section>
 
       <section className="space-y-3">

@@ -2,22 +2,42 @@
 // Correr con: npx tsx scripts/check_casas_particulares.ts
 //
 // ESTE ES EL CHECK MÁS IMPORTANTE DEL ARCHIVO: los importes son PLATA que alguien va a usar para
-// exigir o para pagar un sueldo. Salen del ANEXO IV de la Resolución CNTCP 4/2026 bajado del PDF
-// oficial. Los checks anclan cada número contra el anexo, verifican el orden de la escala (una
-// categoría no puede pagar menos que la de abajo) y prueban la invariante que hace útil a la
-// página: valor hora y mínimo mensual son dos pisos y se aplica el que más favorece.
+// exigir o para pagar un sueldo. Salen de los cinco ANEXOS de la Resolución CNTCP 6/2026, bajados
+// del BORA y parseados por coordenadas. Los checks anclan cada número contra su anexo, verifican el
+// orden de la escala (una categoría no puede pagar menos que la de abajo) y prueban la invariante
+// que hace útil a la página: valor hora y mínimo mensual son dos pisos y se aplica el que más
+// favorece.
+//
+// Y ancla las TRES cosas que esta resolución le puede romper a la página (15/9/2026, s115):
+//
+//   1. **El mes vigente se DERIVA de la fecha, no se escribe.** El sitio estuvo liquidando
+//      septiembre con la escala de julio porque `vigenteEn` era una constante a mano que nadie
+//      movió cuando salió la resolución. Se ancla que `mesVigente()` elige el último mes empezado.
+//   2. **Septiembre y octubre NO son un porcentaje sobre el mes anterior:** el art. 7 y el art. 8
+//      incorporan al básico el 25% y el 50% de la suma no remunerativa ANTES del aumento. La
+//      derivación `(mes anterior + incorporación) × (1 + %)` se prueba contra los NUEVE valores
+//      mensuales de cada anexo. Si alguien "simplifica" la incorporación, esto sale rojo.
+//   3. **El Anexo 4 (noviembre) NO se reproduce con el 1,6% del art. 4, sino con 1,7%.** El data
+//      guarda los dos números (`incrementoDeclarado` y `incrementoDelAnexo`) justamente porque son
+//      distintos, y la página lo dice. Si alguien los "unifica" para que queden prolijos, la
+//      derivación deja de dar y este check lo detecta.
 
 import {
   CASAS_PARTICULARES_FUENTES,
+  ESCALAS_POR_MES,
   ESCALA_VIGENTE,
   HORAS_EXTRAS,
   JORNADA,
   SAC,
   SEMANAS_POR_MES,
+  SUMA_NO_REMUNERATIVA,
   VACACIONES,
   VACACIONES_PROPORCIONAL,
   VIGENCIA,
   ZONA_DESFAVORABLE,
+  escalaDe,
+  mesVigente,
+  sumaNoRemunerativaPorHoras,
 } from "../src/data/casas-particulares";
 import {
   calcularCasasParticulares,
@@ -39,14 +59,48 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
 // ===========================================================================
 // 1 · Los importes, uno por uno, contra el ANEXO IV de la Res. CNTCP 4/2026
 // ===========================================================================
-const ANEXO_IV: Record<string, [number | null, number, number | null, number]> = {
-  // id: [hora con retiro, hora sin retiro, mes con retiro, mes sin retiro]
-  supervisor: [4438.77, 4829.13, 553725.91, 612673.11],
-  "tareas-especificas": [4223.25, 4597.18, 517006.43, 571426.17],
-  caseros: [null, 3996.45, null, 505302.76],
-  "asistencia-personas": [3996.45, 4435.86, 505302.76, 558972.92],
-  "tareas-generales": [3733.72, 3996.45, 458053.22, 505302.76],
+// El anexo del mes que se está liquidando HOY, transcripto acá a mano una segunda vez: si el data
+// se edita por accidente, los dos no van a coincidir.
+const ANEXO_DEL_MES: Record<string, Record<string, [number | null, number, number | null, number]>> = {
+  // mesId: { categoría: [hora con retiro, hora sin retiro, mes con retiro, mes sin retiro] }
+  "2026-08": {
+    supervisor: [4523.11, 4920.89, 564246.7, 624313.9],
+    "tareas-especificas": [4303.5, 4684.53, 526829.56, 582283.26],
+    caseros: [null, 4072.38, null, 514903.51],
+    "asistencia-personas": [4072.38, 4520.15, 514903.51, 569593.41],
+    "tareas-generales": [3804.66, 4072.38, 466756.24, 514903.51],
+  },
+  "2026-09": {
+    supervisor: [4645.33, 5049.58, 579493.14, 640641.55],
+    "tareas-especificas": [4422.54, 4809.8, 541402.49, 597854.36],
+    caseros: [null, 4185.94, null, 529261.78],
+    "asistencia-personas": [4185.94, 4641.9, 529261.78, 584936.09],
+    "tareas-generales": [3914.64, 4185.94, 480247.85, 529261.78],
+  },
+  "2026-10": {
+    supervisor: [4805.82, 5215.59, 599514.52, 661702.46],
+    "tareas-especificas": [4580.8, 4973.38, 560776.33, 618187.89],
+    caseros: [null, 4337.53, null, 548429.23],
+    "asistencia-personas": [4337.53, 4801.52, 548429.23, 605050.0],
+    "tareas-generales": [4064.08, 4337.53, 498582.06, 548429.23],
+  },
+  "2026-11": {
+    supervisor: [4928.28, 5344.33, 614791.27, 678036.4],
+    "tareas-especificas": [4700.21, 5098.84, 575394.53, 633782.08],
+    caseros: [null, 4451.49, null, 562837.52],
+    "asistencia-personas": [4451.49, 4923.5, 562837.52, 620420.85],
+    "tareas-generales": [4174.62, 4451.49, 512142.96, 562837.52],
+  },
+  "2026-12": {
+    supervisor: [5007.14, 5429.84, 624627.93, 688884.98],
+    "tareas-especificas": [4775.41, 5180.42, 584600.84, 643922.59],
+    caseros: [null, 4522.71, null, 571842.92],
+    "asistencia-personas": [4522.71, 5002.28, 571842.92, 630347.58],
+    "tareas-generales": [4241.42, 4522.71, 520337.24, 571842.92],
+  },
 };
+
+const ANEXO_IV = ANEXO_DEL_MES[VIGENCIA.mesId];
 
 check("la escala tiene las 5 categorías del régimen", ESCALA_VIGENTE.length === 5, ESCALA_VIGENTE.length);
 for (const [id, [hc, hs, mc, ms]] of Object.entries(ANEXO_IV)) {
@@ -58,6 +112,112 @@ for (const [id, [hc, hs, mc, ms]] of Object.entries(ANEXO_IV)) {
   check(`${id}: mes con retiro`, c.mesConRetiro === mc, c.mesConRetiro);
   check(`${id}: mes sin retiro`, c.mesSinRetiro === ms, c.mesSinRetiro);
 }
+
+// ===========================================================================
+// 1b · La serie completa: el mes vigente se DERIVA, y cada anexo se reproduce
+// ===========================================================================
+check("la serie tiene los 5 meses que publica la Res. 6/2026", ESCALAS_POR_MES.length === 5, ESCALAS_POR_MES.length);
+check(
+  "los meses están en orden cronológico y sin huecos",
+  ESCALAS_POR_MES.every((m, i) => i === 0 || m.desdeISO > ESCALAS_POR_MES[i - 1].desdeISO),
+);
+check(
+  "cada mes trae las 5 categorías",
+  ESCALAS_POR_MES.every((m) => Object.keys(m.filas).length === 5),
+);
+check(
+  "cada mes de la serie coincide con su anexo transcripto aparte",
+  ESCALAS_POR_MES.every((m) =>
+    escalaDe(m.id).every((c) => {
+      const [hc, hs, mc, ms] = ANEXO_DEL_MES[m.id][c.id];
+      return c.horaConRetiro === hc && c.horaSinRetiro === hs && c.mesConRetiro === mc && c.mesSinRetiro === ms;
+    }),
+  ),
+);
+
+// El mes vigente sale de la fecha. Se prueba con fechas fijas, no con "hoy": un check que depende
+// del reloj prueba lo que pasa hoy y nada más.
+check("el 15/8/2026 rige agosto", mesVigente(new Date("2026-08-15")).id === "2026-08");
+check("el 1/9/2026 (primer día) ya rige septiembre", mesVigente(new Date("2026-09-01")).id === "2026-09");
+check("el 31/8/2026 todavía rige agosto", mesVigente(new Date("2026-08-31")).id === "2026-08");
+check("el 15/11/2026 rige noviembre", mesVigente(new Date("2026-11-15")).id === "2026-11");
+check(
+  "después de diciembre la serie no se cae: queda fija en el último mes publicado",
+  mesVigente(new Date("2027-03-10")).id === "2026-12",
+);
+check(
+  "antes del primer mes de la serie no devuelve undefined",
+  mesVigente(new Date("2026-01-05")).id === "2026-08",
+);
+check(
+  "VIGENCIA.vigenteEn es el mes derivado, no una constante suelta",
+  VIGENCIA.vigenteEn === mesVigente().etiqueta && VIGENCIA.mesId === mesVigente().id,
+);
+
+// La derivación: (mes anterior + lo que se incorpora) × (1 + el % DEL ANEXO). Se prueba contra los
+// nueve valores mensuales de cada anexo, al centavo.
+for (let i = 1; i < ESCALAS_POR_MES.length; i++) {
+  const previo = ESCALAS_POR_MES[i - 1];
+  const mes = ESCALAS_POR_MES[i];
+  const factor = 1 + mes.incrementoDelAnexo! / 100;
+  let mensualesOk = 0;
+  let mensualesTotal = 0;
+  for (const cat of Object.keys(mes.filas)) {
+    for (const idx of [2, 3] as const) {
+      const antes = previo.filas[cat][idx];
+      const ahora = mes.filas[cat][idx];
+      if (antes === null || ahora === null) continue;
+      mensualesTotal++;
+      if (Math.abs((antes + mes.incorporaAlBasico) * factor - ahora) <= 0.02) mensualesOk++;
+    }
+  }
+  check(
+    `${mes.etiqueta}: los ${mensualesTotal} mensuales salen de (mes anterior + ${mes.incorporaAlBasico}) × ${factor}`,
+    mensualesOk === mensualesTotal,
+    `${mensualesOk}/${mensualesTotal}`,
+  );
+}
+
+// El hallazgo de noviembre, anclado en las dos direcciones: el % del articulado NO reproduce el
+// anexo, y el del anexo SÍ. Si alguien iguala los dos campos, uno de los dos checks cae.
+const NOV = ESCALAS_POR_MES.find((m) => m.id === "2026-11")!;
+const OCT = ESCALAS_POR_MES.find((m) => m.id === "2026-10")!;
+check(
+  "noviembre: el articulado declara 1,6% y el anexo se construyó con 1,7%",
+  NOV.incrementoDeclarado === 1.6 && NOV.incrementoDelAnexo === 1.7,
+  [NOV.incrementoDeclarado, NOV.incrementoDelAnexo],
+);
+check(
+  "noviembre: con el 1,6% del art. 4 NINGÚN mensual del anexo da",
+  Object.keys(NOV.filas).every((cat) =>
+    ([2, 3] as const).every((idx) => {
+      const antes = OCT.filas[cat][idx];
+      const ahora = NOV.filas[cat][idx];
+      if (antes === null || ahora === null) return true;
+      return Math.abs((antes + NOV.incorporaAlBasico) * 1.016 - ahora) > 0.02;
+    }),
+  ),
+);
+check(
+  "diciembre no incorpora nada: el $20.000 queda absorbido en noviembre",
+  ESCALAS_POR_MES.at(-1)!.incorporaAlBasico === 0,
+);
+check(
+  "los tres tramos de incorporación suman el 100% de la suma",
+  SUMA_NO_REMUNERATIVA.incorporacion.reduce((a, t) => a + t.porcentaje, 0) === 100,
+);
+
+// La suma no remunerativa del art. 6: tres tramos por horas semanales, no por categoría.
+check("16 horas semanales o más → $20.000", sumaNoRemunerativaPorHoras(16) === 20000);
+check("40 horas semanales → también $20.000", sumaNoRemunerativaPorHoras(40) === 20000);
+check("15 horas semanales → $11.500", sumaNoRemunerativaPorHoras(15) === 11500);
+check("12 horas semanales (el borde inferior del tramo) → $11.500", sumaNoRemunerativaPorHoras(12) === 11500);
+check("11 horas semanales → $8.000", sumaNoRemunerativaPorHoras(11) === 8000);
+check("0 horas → el tramo más bajo, no un error", sumaNoRemunerativaPorHoras(0) === 8000);
+check(
+  "la suma es POR ÚNICA VEZ y se paga con los salarios de agosto",
+  SUMA_NO_REMUNERATIVA.pagaderaCon.includes("agosto de 2026"),
+);
 
 // ===========================================================================
 // 2 · Invariantes de la escala (si un dato se carga mal, alguna de estas cae)
@@ -95,10 +255,15 @@ check(
 // El anexo repite el mismo valor en dos lugares: el sin retiro de tareas generales es igual al con
 // retiro de asistencia de personas y al de caseros. Si alguien "corrige" uno solo, esto lo detecta.
 check(
-  "el valor puente 3.996,45 aparece donde el anexo lo repite",
-  categoriaPorId("tareas-generales")!.horaSinRetiro === 3996.45 &&
-    categoriaPorId("asistencia-personas")!.horaConRetiro === 3996.45 &&
-    categoriaPorId("caseros")!.horaSinRetiro === 3996.45,
+  "el valor puente del anexo aparece en los tres lugares donde se repite",
+  categoriaPorId("tareas-generales")!.horaSinRetiro ===
+    categoriaPorId("asistencia-personas")!.horaConRetiro &&
+    categoriaPorId("tareas-generales")!.horaSinRetiro === categoriaPorId("caseros")!.horaSinRetiro,
+  [
+    categoriaPorId("tareas-generales")!.horaSinRetiro,
+    categoriaPorId("asistencia-personas")!.horaConRetiro,
+    categoriaPorId("caseros")!.horaSinRetiro,
+  ],
 );
 
 // ===========================================================================
@@ -109,7 +274,7 @@ check("con distribución desigual, el tope diario son 9 horas", JORNADA.horasDia
 check("horas extras: 50% en días comunes (art. 25)", HORAS_EXTRAS.comunes === 50);
 check("horas extras: 100% sábado 13h+, domingo y feriados", HORAS_EXTRAS.finDeSemanaYFeriados === 100);
 check("aguinaldo: 50% de la MAYOR remuneración del semestre (art. 26)", SAC.porcentaje === 50 && SAC.base.includes("mayor"));
-check("zona desfavorable: 31% desde abril de 2026 (art. 7 Res. 4/2026)", ZONA_DESFAVORABLE.porcentaje === 31);
+check("zona desfavorable: 31% (art. 7 Res. 4/2026, reproducido por los anexos de la 6/2026)", ZONA_DESFAVORABLE.porcentaje === 31);
 check(
   "la zona desfavorable alcanza a las 6 jurisdicciones patagónicas",
   ZONA_DESFAVORABLE.provincias.length === 6 && ZONA_DESFAVORABLE.partidoBonaerense === "Patagones",
@@ -227,7 +392,7 @@ check(
 // ===========================================================================
 // 7 · Vigencia y fuentes: la trazabilidad es parte del dato
 // ===========================================================================
-check("la vigencia declara la resolución de origen", VIGENCIA.resolucion.includes("4/2026"));
+check("la vigencia declara la resolución de origen", VIGENCIA.resolucion.includes("6/2026"));
 check("la vigencia declara la fecha del Boletín Oficial", VIGENCIA.boletinOficial.includes("2026"));
 check(
   "todas las fuentes son oficiales",
@@ -238,7 +403,7 @@ check(
 );
 check(
   "está citado el anexo con la escala, no sólo la resolución",
-  CASAS_PARTICULARES_FUENTES.lista.some((f) => f.url.includes("res4-4")),
+  CASAS_PARTICULARES_FUENTES.lista.some((f) => /Anexos? 1 a 5/.test(f.nombre)),
 );
 check(
   "está citada la Ley 26.844 con su texto actualizado",

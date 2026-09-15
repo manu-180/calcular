@@ -119,49 +119,76 @@ for (const cat of ESCALA_VIGENTE) {
   }
 }
 const unicas = [...new Set(excepciones)];
-// Barrido completo del 7/9/2026 (16 a 70 años, las 5 categorías, las dos modalidades): la fórmula
-// gana SÓLO por debajo de los 19 años, en 7 combinaciones de categoría/modalidad/edad. La edad de
-// corte es propia de cada categoría, porque depende de su mínimo: cuanto más alta la base, más
-// tarde empieza a mandar el piso. Se afirma esto, no un "siempre" — que el primer barrido, hecho
-// con menos edades, había dado por bueno.
+
+// QUÉ SE AFIRMA ACÁ, Y POR QUÉ NO SON NÚMEROS FIJOS (reescrito el 15/9/2026, s115).
+// Hasta hoy estos checks anclaban «la fórmula sólo gana por debajo de los 19 años» y «son
+// exactamente 7 combinaciones»: números verdaderos el 7/9 con la escala de julio, y falsos el 15/9
+// con la escala de la Res. CNTCP 6/2026. Al subir la escala salarial sin que suba el piso de la
+// Res. SRT 39/2026, la fórmula pasa a ganar hasta más tarde — y la suite se puso roja por un cambio
+// de dato perfectamente correcto. **Un ancla que muere en cada rotación de dato no protege nada:
+// entrena a apagarla.** Lo que se afirma ahora es la PROPIEDAD, que no depende de la escala:
+//   · el piso manda en la enorme mayoría del régimen;
+//   · si la fórmula gana a una edad, gana en todas las menores (hay una edad de corte, no parches);
+//   · la edad de corte crece con el mínimo de la categoría — a base más alta, piso más tarde;
+//   · el cruce no depende del porcentaje de incapacidad.
+// El número concreto se IMPRIME, para que quede en el log de cada corrida sin ser una condición.
+const edadMaximaSinPiso = unicas.length
+  ? Math.max(...unicas.map((u) => Number(u.split("/")[2])))
+  : 0;
+console.log(
+  `     (barrido: ${unicas.length} combinación(es) donde gana la fórmula; edad máxima ${edadMaximaSinPiso})`,
+);
+
+const corteDe = (id: string, modalidad: Modalidad) => {
+  for (let edad = 16; edad <= 70; edad++) {
+    const r = calcularArtCasas({ ...BASE, categoriaId: id, modalidad, edad, incapacidad: 100 });
+    if (r?.art?.mandaElPiso) return edad;
+  }
+  return 99;
+};
+
 check(
-  "la fórmula sólo puede ganar por debajo de los 19 años",
-  unicas.every((u) => Number(u.split("/")[2]) < 19),
+  "la fórmula sólo puede ganar en edades jóvenes: nunca pasa de los 25 años",
+  edadMaximaSinPiso < 25,
   unicas,
 );
 check(
-  "son exactamente 7 combinaciones, todas de las categorías de base más alta",
-  unicas.length === 7 &&
-    unicas.every(
-      (u) =>
-        u.startsWith("supervisor/") ||
-        u.startsWith("tareas-especificas/") ||
-        u.startsWith("asistencia-personas/"),
-    ),
-  unicas,
-);
-check(
-  "desde los 19 años el piso manda en TODAS las categorías y modalidades",
-  !unicas.some((u) => Number(u.split("/")[2]) >= 19),
-  unicas,
-);
-check(
-  "la edad de corte de cada categoría crece con su mínimo (base más alta, piso más tarde)",
-  (() => {
-    const corte = (id: string, modalidad: Modalidad) => {
-      for (let edad = 16; edad <= 70; edad++) {
-        const r = calcularArtCasas({ ...BASE, categoriaId: id, modalidad, edad, incapacidad: 100 });
-        if (r?.art?.mandaElPiso) return edad;
+  "hay una EDAD DE CORTE por categoría: si el piso manda a una edad, manda en todas las mayores",
+  ESCALA_VIGENTE.every((cat) => {
+    const modalidades: Modalidad[] =
+      cat.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
+    return modalidades.every((modalidad) => {
+      const corte = corteDe(cat.id, modalidad);
+      for (let edad = corte; edad <= 70; edad++) {
+        const r = calcularArtCasas({ ...BASE, categoriaId: cat.id, modalidad, edad, incapacidad: 100 });
+        if (!r?.art?.mandaElPiso) return false;
       }
-      return 99;
-    };
-    return (
-      corte("supervisor", "sin-retiro") === 19 &&
-      corte("tareas-especificas", "sin-retiro") === 18 &&
-      corte("tareas-generales", "sin-retiro") === 16
-    );
+      return true;
+    });
+  }),
+);
+check(
+  "la edad de corte crece con el mínimo de la categoría (base más alta, piso más tarde)",
+  (() => {
+    const porMinimo = [...ESCALA_VIGENTE]
+      .filter((c) => c.mesConRetiro !== null)
+      .sort((a, b) => a.mesSinRetiro - b.mesSinRetiro)
+      .map((c) => ({ id: c.id, corte: corteDe(c.id, "sin-retiro") }));
+    return porMinimo.every((c, i) => i === 0 || c.corte >= porMinimo[i - 1].corte);
   })(),
 );
+check(
+  "la categoría más baja de la escala nunca le gana al piso: el corte es la edad mínima del barrido",
+  corteDe("tareas-generales", "sin-retiro") === 16,
+  corteDe("tareas-generales", "sin-retiro"),
+);
+check(
+  "la categoría mejor paga es la que más tarde cruza",
+  corteDe("supervisor", "sin-retiro") === Math.max(
+    ...ESCALA_VIGENTE.filter((c) => c.mesConRetiro !== null).map((c) => corteDe(c.id, "sin-retiro")),
+  ),
+);
+
 // Y el corolario que cae del barrido: cuál de los dos gana NO depende del porcentaje, porque los
 // dos lados de la comparación se multiplican por él. Si alguien rompiera esa proporcionalidad,
 // aparecerían excepciones a distintos porcentajes para la misma categoría y edad.
