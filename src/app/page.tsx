@@ -44,6 +44,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/deducciones-generales-ganancias",
+    titulo: "Deducciones generales de Ganancias",
+    descripcion:
+      "Prepaga, honorarios médicos, seguro de vida y de retiro, donaciones e intereses hipotecarios: cuánto entra de cada uno, el tope del seguro ajustado por IPC y cuánta plata te vuelve de verdad.",
+    disponible: true,
+  },
+  {
     href: "/deduccion-empleada-domestica",
     titulo: "Deducción de empleada doméstica en Ganancias",
     descripcion:
@@ -461,7 +468,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
   {
     titulo: "Impuestos y deducciones",
     nota: "Ganancias y lo que se puede descontar",
-    hrefs: ["/ganancias", "/deduccion-empleada-domestica", "/deduccion-alquiler"],
+    hrefs: ["/ganancias", "/deduccion-empleada-domestica", "/deduccion-alquiler", "/deducciones-generales-ganancias"],
   },
   {
     titulo: "Cuando termina el trabajo",
