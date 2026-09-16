@@ -14,13 +14,22 @@
 //
 // Solo stdlib. Spawnea cada check con tsx (cada uno hace su propio process.exit).
 
-import { readdirSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const scriptsDir = path.dirname(fileURLToPath(import.meta.url));
 const calcularRoot = path.resolve(scriptsDir, "..");
+
+// Sin node_modules, las suites que importan `next/server` o `exceljs` mueren con MODULE_NOT_FOUND
+// y el resumen dice «87/91 verdes» como si fuera código roto (pasó el 16/9/2026: una limpieza de
+// disco se había llevado la carpeta). Se corta antes para que el diagnóstico sea el correcto.
+if (!existsSync(path.join(calcularRoot, "node_modules", "next"))) {
+  console.error("❌ calcular-ar/node_modules no está instalado: corré `npm ci` dentro de calcular-ar/ y repetí.");
+  console.error("   No es una falla de los checks: sin dependencias las suites no pueden ni arrancar.");
+  process.exit(2);
+}
 
 const checks = readdirSync(scriptsDir)
   .filter((f) => /^check_.*\.ts$/.test(f)) // check_*.ts (NO check-all.ts, lleva guión)
