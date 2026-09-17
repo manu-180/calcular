@@ -118,6 +118,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/aportes-empleada-domestica`,   lastModified: new Date('2026-08-11'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/deduccion-empleada-domestica`, lastModified: new Date('2026-08-13'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/deducciones-generales-ganancias`, lastModified: new Date('2026-09-16'), changeFrequency: 'monthly', priority: 0.9  },
+    { url: `${BASE}/ganancias-sociedades`,          lastModified: new Date('2026-09-17'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/deduccion-alquiler`,          lastModified: new Date('2026-08-14'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/blog`,                         lastModified: new Date('2026-06-15'), changeFrequency: 'weekly',  priority: 0.7  },
     { url: `${BASE}/convenios`,                    lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8  },

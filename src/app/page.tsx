@@ -44,6 +44,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/ganancias-sociedades",
+    titulo: "Ganancias de sociedades",
+    descripcion:
+      "La escala del 25, 30 y 35% para SA, SAS y SRL, ajustada por IPC año por año: el impuesto del ejercicio, la alícuota efectiva y el 7% de los dividendos.",
+    disponible: true,
+  },
+  {
     href: "/deducciones-generales-ganancias",
     titulo: "Deducciones generales de Ganancias",
     descripcion:
@@ -468,7 +475,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
   {
     titulo: "Impuestos y deducciones",
     nota: "Ganancias y lo que se puede descontar",
-    hrefs: ["/ganancias", "/deduccion-empleada-domestica", "/deduccion-alquiler", "/deducciones-generales-ganancias"],
+    hrefs: ["/ganancias", "/deduccion-empleada-domestica", "/deduccion-alquiler", "/deducciones-generales-ganancias", "/ganancias-sociedades"],
   },
   {
     titulo: "Cuando termina el trabajo",
