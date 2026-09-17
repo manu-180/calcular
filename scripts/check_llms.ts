@@ -122,6 +122,9 @@ const redirects = new Set(
 // ===========================================================================
 // 3 · Higiene del archivo
 // ===========================================================================
+// Un script que escribe el archivo desde Windows en modo texto lo deja en CRLF, y entonces los dos
+// checks de secciones de abajo fallan diciendo que «falta la sección» cuando está (pasó el 17/9/2026).
+check("llms.txt está en LF, no CRLF (si falla, `sed -i 's/\\r$//' public/llms.txt`)", !texto.includes("\r\n"));
 check("llms.txt arranca con el título del sitio", texto.startsWith("# CalculAR"));
 check("tiene la sección de calculadoras", texto.includes("\n## Calculadoras\n"));
 check("tiene la sección de fuentes de datos", texto.includes("\n## Fuentes de datos\n"));
