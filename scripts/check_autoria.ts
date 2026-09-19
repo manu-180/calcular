@@ -45,6 +45,12 @@ check(`blog: los ${posts.length} posts llevan firma visible`, sinFirma.length ==
 const sello = readFileSync("src/components/SelloVerificado.tsx", "utf8");
 check("páginas de datos: el pie de fuentes lleva la firma", sello.includes("FirmaAutor"));
 
+// El footer es el único lugar que cubre las 151 URLs: las páginas de datos arman su propia
+// sección de fuentes inline y no pasan por FuentesOficiales (verificado en producción el
+// 19/9/2026 — /convenios/uocra no mostraba la firma y por eso existe esta línea).
+const layout = readFileSync("src/app/layout.tsx", "utf8");
+check("el footer firma TODAS las páginas", layout.includes("FirmaAutor"));
+
 console.log("");
 if (fallas > 0) {
   console.error(`\n${fallas} CHECK(S) FALLARON`);

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
 import SiteHeader from "@/components/SiteHeader";
 import AdSense from "@/components/AdSense";
+import { FirmaAutor } from "@/components/FirmaAutor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -63,7 +64,10 @@ export default function RootLayout({
                 profesional matriculado.
               </p>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                <span>© 2026 CalculAR · Hecho en Argentina 🇦🇷</span>
+                <span>
+                  © 2026 CalculAR · <FirmaAutor prefijo="escrito y verificado por" /> · Hecho en
+                  Argentina 🇦🇷
+                </span>
                 <Link href="/blog" className="hover:text-emerald-700">
                   Guías
                 </Link>
