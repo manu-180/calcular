@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
 import { CalculadoraUocra } from "@/components/CalculadoraUocra";
+import { PlanillaUocraCTA } from "@/components/PlanillaUocraCTA";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import {
@@ -147,6 +148,8 @@ export default function SueldoNetoConstruccionPage() {
         </p>
         <CalculadoraUocra />
       </section>
+
+      <PlanillaUocraCTA />
 
       <section className="space-y-5">
         <h2 className="text-xl font-bold text-zinc-900">

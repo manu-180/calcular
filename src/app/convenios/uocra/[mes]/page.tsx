@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
+import { PlanillaUocraCTA } from "@/components/PlanillaUocraCTA";
 import { ORGANIZACION, datasetSchema } from "@/lib/schema";
 import {
   breadcrumbSchema,
@@ -488,6 +489,8 @@ export default async function UocraMesPage({
           <span />
         )}
       </nav>
+
+      <PlanillaUocraCTA />
 
       <section className="space-y-3 rounded-xl bg-white p-5 shadow-sm">
         <h2 className="text-base font-semibold text-zinc-900">Fuentes oficiales</h2>
