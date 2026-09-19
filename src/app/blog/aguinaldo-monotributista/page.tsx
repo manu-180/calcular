@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
 import { JsonLd } from "@/components/JsonLd";
+import { FirmaAutor } from "@/components/FirmaAutor";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { formatARS } from "@/lib/formato";
@@ -84,7 +85,7 @@ export default function Post() {
 
       <header className="space-y-3">
         <p className="text-xs text-zinc-400">
-          Guías · {PUBLICADO} · Ley 23.041 y LCT 20.744 (art. 121)
+          Guías · <FirmaAutor prefijo="por" /> · {PUBLICADO} · Ley 23.041 y LCT 20.744 (art. 121)
         </p>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
           ¿El monotributista cobra aguinaldo? Qué dice la ley

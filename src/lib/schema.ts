@@ -15,6 +15,21 @@ export const ORGANIZACION = {
   url: SITIO,
   description:
     "Calculadoras laborales, fiscales y financieras de Argentina, con datos oficiales verificados y la fecha de verificación a la vista.",
+  founder: { "@id": `${SITIO}/#autor` },
+};
+
+// Persona real detrás del sitio. Existe por E-E-A-T: en temas de plata (YMYL) un sitio que no
+// dice quién responde por los números vale menos, y "un equipo chico" no es nadie. El @id se
+// referencia desde cada Article para no duplicar la entidad.
+export const AUTOR = {
+  "@type": "Person",
+  "@id": `${SITIO}/#autor`,
+  name: "Manuel Navarro",
+  url: `${SITIO}/sobre`,
+  email: "manunv97@gmail.com",
+  nationality: "AR",
+  description:
+    "Desarrollador argentino. Construye las calculadoras de CalculAR y verifica cada dato contra el documento oficial del que sale.",
 };
 
 /** Schema Article para páginas informativas/guía. `url` y `modificado` son obligatorios. */
@@ -33,7 +48,7 @@ export function articleSchema(opts: {
     mainEntityOfPage: `${SITIO}${opts.url}`,
     datePublished: opts.publicado ?? opts.modificado,
     dateModified: opts.modificado,
-    author: { "@id": `${SITIO}/#org` },
+    author: { "@id": `${SITIO}/#autor` },
     publisher: { "@id": `${SITIO}/#org` },
   };
 }

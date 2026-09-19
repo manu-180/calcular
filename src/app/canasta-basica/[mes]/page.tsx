@@ -308,34 +308,25 @@ export default async function CanastaBasicaMesPage({
         <h2 className="text-xl font-bold text-zinc-900">Qué mide y qué no mide este número</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            La <strong>CBA</strong> es el costo de los alimentos que cubren los requerimientos de un
-            varón adulto de 30 a 60 años con actividad moderada: es la línea de indigencia por
-            adulto equivalente. La <strong>CBT</strong> la amplía con el coeficiente de Engel para
-            cubrir lo no alimentario —transporte, vestimenta, salud, educación— y es la línea de
-            pobreza. Ninguna de las dos es un ingreso mínimo legal ni da acceso a un beneficio: son
-            el umbral estadístico con el que el INDEC mide pobreza por ingresos.
-          </p>
-          <p>
-            La comparación se hace contra el <strong>ingreso total del hogar</strong>, sumando lo
-            que entra por todos los miembros y por todo concepto. Por eso mirar un solo sueldo
-            subestima el ingreso real de la mayoría de los hogares. La{" "}
+            La <strong>CBA</strong> marca la línea de indigencia y la <strong>CBT</strong> la de
+            pobreza, las dos por adulto equivalente y comparadas contra el{" "}
+            <strong>ingreso total del hogar</strong>, no contra un sueldo suelto. Ninguna es un
+            mínimo legal ni da acceso a un beneficio. Cómo se arma cada canasta, de dónde sale el
+            coeficiente de Engel y qué queda afuera está desarrollado en la{" "}
             <Link href="/canasta-basica" className="font-medium text-emerald-700 hover:underline">
               calculadora de canasta básica
-            </Link>{" "}
-            hace la cuenta con tu composición y tu ingreso; para estimar el ingreso de bolsillo de
-            un sueldo registrado está la{" "}
+            </Link>
+            , que además hace la cuenta con tu composición de hogar; para el ingreso de bolsillo de
+            un sueldo registrado, la{" "}
             <Link href="/sueldo-neto" className="font-medium text-emerald-700 hover:underline">
               calculadora de sueldo neto
             </Link>
             .
           </p>
           <p className="rounded-lg bg-amber-50 p-4 text-sm text-amber-900">
-            <strong>Dos límites que conviene tener presentes.</strong> La serie mensual que publica
-            el INDEC es la del <strong>Gran Buenos Aires</strong>; para el resto del país el
-            organismo aplica coeficientes regionales que no salen en esta serie, así que fuera del
-            AMBA el valor es una referencia aproximada. Y el umbral no contempla la vivienda propia
-            ni el acceso gratuito a servicios: dos hogares con el mismo ingreso pueden estar en
-            situaciones muy distintas según paguen alquiler o no.
+            <strong>Es el dato del Gran Buenos Aires.</strong> Fuera del AMBA el INDEC aplica
+            coeficientes regionales que no salen en esta serie, y el umbral no contempla la vivienda
+            propia ni los servicios gratuitos.
           </p>
         </div>
       </section>

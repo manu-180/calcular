@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { FirmaAutor } from "@/components/FirmaAutor";
 
 export type Fuente = { nombre: string; url: string };
 
@@ -131,7 +132,7 @@ export function FuentesOficiales({
       {verificadoEl && (
         <p className="mt-4 border-t border-zinc-100 pt-3 text-xs text-zinc-500">
           Última verificación: <strong className="font-medium text-zinc-700">{verificadoEl}</strong>
-          . Si un número no está en el documento oficial, no se publica.
+          . Si un número no está en el documento oficial, no se publica. <FirmaAutor />.
         </p>
       )}
       {children && <div className="mt-3 text-xs text-zinc-500">{children}</div>}

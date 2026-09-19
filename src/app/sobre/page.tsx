@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { AUTOR, ORGANIZACION } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Sobre CalculAR: quiénes somos y cómo trabajamos",
@@ -22,6 +23,8 @@ export default function SobrePage() {
       url: "https://calcular.ar",
       description:
         "Calculadoras gratuitas para la Argentina: monotributo, aguinaldo, vacaciones, indemnización y plazo fijo, con datos oficiales verificados.",
+      author: AUTOR,
+      publisher: ORGANIZACION,
     },
   };
 
@@ -93,19 +96,33 @@ export default function SobrePage() {
         <h2 className="text-xl font-bold text-zinc-900">Quién está detrás</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            CalculAR es un <strong>proyecto independiente hecho en Argentina</strong>, mantenido
-            por un equipo chico que combina desarrollo de software con investigación normativa.
-            No pertenecemos a ningún banco, estudio contable ni organismo público, y eso nos
-            permite decir las cosas como son: si un plazo fijo pierde contra la inflación, lo vas
-            a ver en rojo.
+            CalculAR lo hace <strong>Manuel Navarro</strong>, desarrollador argentino. Yo escribo
+            las calculadoras, busco cada dato en el documento oficial que lo fija y pongo la fecha
+            en que lo verifiqué. Si un número está mal, el responsable tiene nombre y respondo el
+            mail.
           </p>
           <p>
-            ¿Encontraste un error o querés proponer una calculadora? Escribinos desde la{" "}
+            No soy contador ni abogado, y por eso el sitio funciona como funciona:{" "}
+            <strong>cada resultado viene con la cuenta a la vista y la norma de la que sale</strong>,
+            para que puedas verificarlo vos o llevárselo a un profesional. Es lo contrario de
+            pedirte que confíes.
+          </p>
+          <p>
+            CalculAR es un <strong>proyecto independiente hecho en Argentina</strong>. No pertenece
+            a ningún banco, estudio contable ni organismo público, y eso permite decir las cosas
+            como son: si un plazo fijo pierde contra la inflación, lo vas a ver en rojo.
+          </p>
+          <p>
+            ¿Encontraste un error o querés proponer una calculadora? Escribime a{" "}
+            <a href="mailto:manunv97@gmail.com" className="text-emerald-700 underline">
+              manunv97@gmail.com
+            </a>{" "}
+            o desde la{" "}
             <Link href="/contacto" className="text-emerald-700 underline">
               página de contacto
             </Link>
-            . Los errores reportados se corrigen con prioridad: la exactitud es todo nuestro
-            capital.
+            . Los errores reportados se corrigen con prioridad: la exactitud es todo el capital de
+            este sitio.
           </p>
         </div>
       </section>

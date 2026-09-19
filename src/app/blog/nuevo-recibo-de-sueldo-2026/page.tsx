@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { FirmaAutor } from "@/components/FirmaAutor";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { PlanillaComercioCTA } from "@/components/PlanillaComercioCTA";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
@@ -101,7 +102,7 @@ export default function Post() {
 
       <header className="space-y-3">
         <p className="text-xs text-zinc-400">
-          Guías · {PUBLICADO} · datos verificados al {PUBLICADO}
+          Guías · <FirmaAutor prefijo="por" /> · {PUBLICADO} · datos verificados al {PUBLICADO}
         </p>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
           Nuevo recibo de sueldo 2026: qué cambió y cómo leerlo

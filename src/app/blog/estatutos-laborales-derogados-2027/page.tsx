@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FirmaAutor } from "@/components/FirmaAutor";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
@@ -206,7 +207,9 @@ export default function EstatutosDerogados2027Post() {
       <JsonLd data={jsonLd} />
 
       <header className="space-y-3">
-        <p className="text-sm text-zinc-500">Guía · {PUBLICADO}</p>
+        <p className="text-sm text-zinc-500">
+          Guía · <FirmaAutor prefijo="por" /> · {PUBLICADO}
+        </p>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
           Los estatutos laborales que se derogan el 1 de enero de 2027
         </h1>

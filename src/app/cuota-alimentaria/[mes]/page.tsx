@@ -267,21 +267,16 @@ export default async function CuotaAlimentariaMesPage({
         <div className="space-y-3 text-zinc-600">
           <p>
             El número de arriba es <strong>el costo total del chico</strong>, no lo que paga un
-            progenitor. La ley reparte ese costo con tres reglas: los dos deben la manutención
-            (arts. 658 y 659), el cuidado cotidiano de quien convive con el hijo cuenta como aporte
-            económico (art. 660), y el reparto va según la capacidad de cada uno para que el chico
-            tenga un nivel de vida equivalente en los dos hogares (art. 666).
-          </p>
-          <p>
-            La{" "}
+            progenitor: los dos deben la manutención y el cuidado cotidiano cuenta como aporte
+            (arts. 658 a 660 y 666 CCyC). El reparto concreto, con los ingresos de cada uno, lo hace
+            la{" "}
             <Link
               href="/cuota-alimentaria"
               className="font-medium text-emerald-700 hover:underline"
             >
               calculadora de cuota alimentaria
-            </Link>{" "}
-            hace exactamente ese reparto con los ingresos de cada progenitor. Si querés entender de
-            dónde sale el dato y por qué el cuidado pesa tanto, está desarrollado en{" "}
+            </Link>
+            ; por qué el cuidado pesa tanto está desarrollado en{" "}
             <Link
               href="/blog/cuanto-cuesta-criar-un-hijo-argentina"
               className="font-medium text-emerald-700 hover:underline"

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
 import { JsonLd } from "@/components/JsonLd";
+import { FirmaAutor } from "@/components/FirmaAutor";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { calcularVacaciones } from "@/lib/vacaciones";
@@ -94,7 +95,7 @@ export default function Post() {
 
       <header className="space-y-3">
         <p className="text-xs text-zinc-400">
-          Guías · {PUBLICADO} · LCT 20.744 (arts. 150 y 155)
+          Guías · <FirmaAutor prefijo="por" /> · {PUBLICADO} · LCT 20.744 (arts. 150 y 155)
         </p>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
           Cuánto se cobra de vacaciones: el plus vacacional explicado

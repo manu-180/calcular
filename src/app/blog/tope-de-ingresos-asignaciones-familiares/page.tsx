@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FirmaAutor } from "@/components/FirmaAutor";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
@@ -152,7 +153,9 @@ export default function Post() {
       <JsonLd data={jsonLd} />
 
       <header className="space-y-3">
-        <p className="text-sm text-zinc-500">Publicado el {PUBLICADO}</p>
+        <p className="text-sm text-zinc-500">
+          <FirmaAutor prefijo="Por" /> · publicado el {PUBLICADO}
+        </p>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
           El tope de las asignaciones familiares: por qué un solo sueldo puede dejar afuera a toda la
           familia

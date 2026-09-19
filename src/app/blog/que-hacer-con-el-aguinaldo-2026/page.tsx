@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { FirmaAutor } from "@/components/FirmaAutor";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { ORGANIZACION, articleSchema } from "@/lib/schema";
 import { TNA_FALLBACK, INFLACION_DEFAULT } from "@/data/plazofijo";
@@ -47,7 +48,7 @@ export default function Post() {
 
       <header className="space-y-3">
         <p className="text-xs text-zinc-400">
-          Guías · {PUBLICADO} · datos verificados al {PUBLICADO}
+          Guías · <FirmaAutor prefijo="por" /> · {PUBLICADO} · datos verificados al {PUBLICADO}
         </p>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
           Qué hacer con el aguinaldo 2026: las opciones, con la cuenta a la vista

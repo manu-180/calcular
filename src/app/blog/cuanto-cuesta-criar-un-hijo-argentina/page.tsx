@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { FirmaAutor } from "@/components/FirmaAutor";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import {
@@ -215,7 +216,7 @@ export default function Post() {
 
       <header className="space-y-3">
         <p className="text-xs text-zinc-400">
-          Guías · {PUBLICADO} · datos del INDEC verificados al {CANASTA_CRIANZA_FUENTE.consultadoEl}
+          Guías · <FirmaAutor prefijo="por" /> · {PUBLICADO} · datos del INDEC verificados al {CANASTA_CRIANZA_FUENTE.consultadoEl}
         </p>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
           Cuánto cuesta criar un hijo en Argentina: el dato oficial del INDEC ({ULT.etiqueta})
