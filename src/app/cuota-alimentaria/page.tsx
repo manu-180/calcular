@@ -11,6 +11,7 @@ import {
   TRAMOS_CRIANZA,
 } from "@/data/canasta-crianza";
 import { MESES_CUOTA, slugDeMes } from "@/lib/canasta-meses";
+import { ArchivoMensualLinks } from "@/components/ArchivoMensualLinks";
 import { formatARS } from "@/lib/formato";
 
 export const metadata: Metadata = {
@@ -192,18 +193,13 @@ export default function CuotaAlimentariaPage() {
           inflación de ese mes y cuánto habría que actualizar un monto fijado entonces. Sirve para
           revisar una cuota vieja con el dato del mes en que se acordó.
         </p>
-        <ul className="flex flex-wrap gap-2">
-          {[...MESES_CUOTA].reverse().map((m) => (
-            <li key={m.periodo}>
-              <Link
-                href={`/cuota-alimentaria/${slugDeMes(m)}`}
-                className="inline-block rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-700 shadow-sm transition hover:border-emerald-300 hover:text-emerald-700"
-              >
-                {m.etiqueta}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <ArchivoMensualLinks
+          items={[...MESES_CUOTA].reverse().map((m) => ({
+            periodo: m.periodo,
+            href: `/cuota-alimentaria/${slugDeMes(m)}`,
+            etiqueta: m.etiqueta,
+          }))}
+        />
       </section>
 
       <section className="space-y-3">

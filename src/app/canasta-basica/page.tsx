@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraCanastaBasica } from "@/components/CalculadoraCanastaBasica";
 import { JsonLd } from "@/components/JsonLd";
+import { ArchivoMensualLinks } from "@/components/ArchivoMensualLinks";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
 import { CANASTA_BASICA, CANASTA_BASICA_FUENTE, CANASTA_BASICA_ULTIMO } from "@/data/canasta-basica";
@@ -334,18 +335,13 @@ export default function CanastaBasicaPage() {
           ejemplo del INDEC, la comparación contra la inflación de ese mismo mes y el coeficiente
           para traer un ingreso de entonces a valores de hoy.
         </p>
-        <ul className="flex flex-wrap gap-2">
-          {[...MESES_CANASTA].reverse().map((m) => (
-            <li key={m.periodo}>
-              <Link
-                href={`/canasta-basica/${slugDeMesCanasta(m)}`}
-                className="inline-block rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-700 shadow-sm transition hover:border-emerald-300 hover:text-emerald-700"
-              >
-                {etiquetaPeriodo(m.periodo)}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <ArchivoMensualLinks
+          items={[...MESES_CANASTA].reverse().map((m) => ({
+            periodo: m.periodo,
+            href: `/canasta-basica/${slugDeMesCanasta(m)}`,
+            etiqueta: etiquetaPeriodo(m.periodo),
+          }))}
+        />
       </section>
 
       <section className="space-y-2 border-t border-zinc-100 pt-6">
