@@ -19,7 +19,13 @@ const SITIO = "https://calcular.ar";
 // Es una ventana MÓVIL y eso es deliberado, al revés que el corte fijo del sitemap (que existe
 // para no 404-ear URLs ya indexadas): acá nada desaparece, solo deja de indexarse, así que puede
 // moverse sola sin romper nada. Antes de subir el número, volver a medir la similitud real.
-export const MESES_INDEXADOS = 12;
+//
+// EL NÚMERO SALE DE UNA MEDICIÓN, no de un gusto: comparando dos meses consecutivos en vivo,
+// 1.160 de 1.392 palabras (83%) son idénticas a las del mes anterior — ~333 del mega-menú y
+// ~560 del bloque explicativo fijo (qué mide la CBA, fuentes, FAQ), que es el mismo texto que
+// ya vive en el hub. Cada página mensual aporta unas 230 palabras propias. Con ese número,
+// seis meses de demanda fresca justifican índice y la cola no.
+export const MESES_INDEXADOS = 6;
 
 /** `true` si el período entra en la ventana indexable de su propia serie. `periodos` son todos
  *  los de la serie (formato ISO "2026-08", que ordena alfabéticamente). */
