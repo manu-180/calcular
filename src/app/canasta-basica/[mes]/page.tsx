@@ -15,7 +15,7 @@ import {
   slugDeMesCanasta,
   varMensualIPC,
 } from "@/lib/canasta-basica-meses";
-import { breadcrumbSchema, variacionPct } from "@/lib/archivo-mensual";
+import { breadcrumbSchema, robotsArchivoMensual, variacionPct } from "@/lib/archivo-mensual";
 import { formatARS } from "@/lib/formato";
 
 export const dynamicParams = false;
@@ -44,6 +44,10 @@ export async function generateMetadata({
     title: `Canasta básica de ${etiqueta}: la línea de pobreza del INDEC`,
     description: `Canasta básica del INDEC en ${etiqueta}: ${formatARS(mes.cbt, 0)} de CBT y ${formatARS(mes.cba, 0)} de CBA por adulto equivalente. La familia tipo necesitó ${formatARS(familiaTipo.lineaPobreza, 0)} para no ser pobre — con el umbral de otras composiciones de hogar, la comparación contra la inflación del mes y el coeficiente para traer un ingreso de ${etiqueta} a hoy.`,
     alternates: { canonical: `/canasta-basica/${slug}` },
+    robots: robotsArchivoMensual(
+      mes.periodo,
+      MESES_CANASTA.map((m) => m.periodo),
+    ),
     openGraph: {
       images: [
         {

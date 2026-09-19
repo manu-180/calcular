@@ -19,6 +19,7 @@ import {
   varMensualCanasta,
   varMensualIPC,
 } from "@/lib/canasta-meses";
+import { robotsArchivoMensual } from "@/lib/archivo-mensual";
 import { formatARS } from "@/lib/formato";
 
 export const dynamicParams = false;
@@ -43,6 +44,10 @@ export async function generateMetadata({
     title: `Cuota alimentaria ${mes.etiqueta}: la canasta de crianza del INDEC`,
     description: `Cuánto costaba criar un hijo en ${mes.etiqueta} según el INDEC: ${formatARS(mes.valores["menor-1"].total, 0)} a ${formatARS(mes.valores[REF].total, 0)} por mes según la edad, abierto en bienes y cuidado, comparado con la inflación del mes y actualizado a hoy.`,
     alternates: { canonical: `/cuota-alimentaria/${slug}` },
+    robots: robotsArchivoMensual(
+      mes.periodo,
+      MESES_CUOTA.map((m) => m.periodo),
+    ),
     openGraph: {
       images: [
         {

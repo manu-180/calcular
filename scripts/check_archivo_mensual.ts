@@ -3,11 +3,14 @@
 // borde de navegación. Correr con: npx tsx scripts/check_archivo_mensual.ts
 
 import {
+  MESES_INDEXADOS,
   acumuladoDesdeInicio,
   breadcrumbSchema,
   compararConIpc,
+  esPeriodoIndexable,
   pctConSigno,
   periodoISO,
+  robotsArchivoMensual,
   variacionIpcPeriodo,
   variacionPct,
   vecinos,
@@ -18,7 +21,9 @@ import { MESES_UOCRA } from "../src/data/convenios/uocra";
 import { MESES_COMERCIO } from "../src/data/convenios/comercio";
 import { MESES_CAMIONEROS, CAMIONEROS_BASE_MAYO } from "../src/data/convenios/camioneros";
 import { CANASTA_BASICA } from "../src/data/canasta-basica";
-import { MESES_CANASTA } from "../src/lib/canasta-basica-meses";
+import { MESES_CANASTA, slugDeMesCanasta } from "../src/lib/canasta-basica-meses";
+import { MESES_CUOTA, slugDeMes } from "../src/lib/canasta-meses";
+import sitemap from "../src/app/sitemap";
 
 let fallas = 0;
 
@@ -284,6 +289,55 @@ function checkPeriodoISO(nombre: string, lista: readonly { anio: number; mes: nu
 checkPeriodoISO("uocra", MESES_UOCRA);
 checkPeriodoISO("comercio", MESES_COMERCIO);
 checkPeriodoISO("camioneros", MESES_CAMIONEROS);
+
+// ===========================================================================
+// Ventana de indexación: el sitemap y el `robots` de la página salen del mismo
+// criterio, así que no pueden contradecirse. Este bloque es el gate: sin él,
+// alguien filtra una lista y se olvida de la otra, y el sitio queda ofreciéndole
+// a Google una URL que él mismo marca `noindex` (o al revés, indexando la cola
+// duplicada que motivó la ventana). Ver el porqué en src/lib/archivo-mensual.ts.
+// ===========================================================================
+
+const periodosCanasta = MESES_CANASTA.map((m) => m.periodo);
+const periodosCuota = MESES_CUOTA.map((m) => m.periodo);
+
+for (const [nombre, periodos] of [
+  ["canasta", periodosCanasta],
+  ["cuota", periodosCuota],
+] as const) {
+  const indexables = periodos.filter((p) => esPeriodoIndexable(p, periodos));
+  check(
+    `${nombre}: la ventana indexa exactamente los últimos ${MESES_INDEXADOS} períodos`,
+    indexables.length === Math.min(MESES_INDEXADOS, periodos.length),
+    { total: periodos.length, indexables: indexables.length },
+  );
+  const ultimo = [...periodos].sort().at(-1)!;
+  check(`${nombre}: el período más reciente SIEMPRE es indexable`, esPeriodoIndexable(ultimo, periodos), ultimo);
+  check(
+    `${nombre}: fuera de la ventana el robots es noindex,follow (no noindex,nofollow)`,
+    periodos.length <= MESES_INDEXADOS ||
+      JSON.stringify(robotsArchivoMensual([...periodos].sort()[0], periodos)) ===
+        JSON.stringify({ index: false, follow: true }),
+  );
+}
+
+const urlsSitemap = new Set(sitemap().map((e) => e.url));
+for (const [nombre, periodos, ruta, slug] of [
+  ["canasta", periodosCanasta, "canasta-basica", (p: string) => slugDeMesCanasta(MESES_CANASTA.find((m) => m.periodo === p)!)],
+  ["cuota", periodosCuota, "cuota-alimentaria", (p: string) => slugDeMes(MESES_CUOTA.find((m) => m.periodo === p)!)],
+] as const) {
+  const enSitemap = (p: string) => urlsSitemap.has(`https://calcular.ar/${ruta}/${slug(p)}`);
+  check(
+    `${nombre}: TODO período indexable está en el sitemap`,
+    periodos.filter((p) => esPeriodoIndexable(p, periodos)).every(enSitemap),
+    periodos.filter((p) => esPeriodoIndexable(p, periodos)).filter((p) => !enSitemap(p)),
+  );
+  check(
+    `${nombre}: NINGÚN período noindex está en el sitemap`,
+    periodos.filter((p) => !esPeriodoIndexable(p, periodos)).every((p) => !enSitemap(p)),
+    periodos.filter((p) => !esPeriodoIndexable(p, periodos)).filter(enSitemap),
+  );
+}
 
 console.log("");
 if (fallas > 0) {

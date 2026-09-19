@@ -3,6 +3,7 @@ import { MESES_COMERCIO } from '@/data/convenios/comercio'
 import { MESES_UOCRA } from '@/data/convenios/uocra'
 import { MESES_CAMIONEROS } from '@/data/convenios/camioneros'
 import { MESES_CUOTA, slugDeMes } from '@/lib/canasta-meses'
+import { esPeriodoIndexable } from '@/lib/archivo-mensual'
 import { MESES_CANASTA, slugDeMesCanasta } from '@/lib/canasta-basica-meses'
 
 const BASE = 'https://calcular.ar'
@@ -155,7 +156,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Mismo criterio que convenios: los ids salen de los DATOS (`MESES_CUOTA`), asÃ­ el sitemap y
   // `generateStaticParams` no pueden separarse. El set sÃ³lo crece: el corte es un perÃ­odo fijo,
   // nunca una ventana mÃ³vil (una ventana harÃ­a 404 a URLs ya indexadas).
-  const cuotaMeses: MetadataRoute.Sitemap = MESES_CUOTA.map((m) => ({
+  // Fuera de la ventana indexable la página sigue viva y enlazada desde el hub, pero no va al
+  // sitemap: el `noindex` de la página y este filtro salen del MISMO criterio (`archivo-mensual`)
+  // para que no puedan contradecirse.
+  const cuotaMeses: MetadataRoute.Sitemap = MESES_CUOTA.filter((m) =>
+    esPeriodoIndexable(m.periodo, MESES_CUOTA.map((x) => x.periodo)),
+  ).map((m) => ({
     url: `${BASE}/cuota-alimentaria/${slugDeMes(m)}`,
     lastModified: new Date(`${m.periodo}-01`),
     changeFrequency: 'monthly' as const,
@@ -163,7 +169,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // Mismo criterio que cuotaMeses: los meses salen de los DATOS, el corte es un período fijo.
-  const canastaMeses: MetadataRoute.Sitemap = MESES_CANASTA.map((m) => ({
+  const canastaMeses: MetadataRoute.Sitemap = MESES_CANASTA.filter((m) =>
+    esPeriodoIndexable(m.periodo, MESES_CANASTA.map((x) => x.periodo)),
+  ).map((m) => ({
     url: `${BASE}/canasta-basica/${slugDeMesCanasta(m)}`,
     lastModified: new Date(`${m.periodo}-01`),
     changeFrequency: 'monthly' as const,

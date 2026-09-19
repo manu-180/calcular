@@ -6,6 +6,34 @@ import { IPC_SERIE } from "@/data/ipc-serie";
 
 const SITIO = "https://calcular.ar";
 
+// Ventana de indexación del archivo mensual. El dato viejo NO se borra ni se mueve: la página
+// sigue viva y enlazada desde su hub (`follow`), pero sale del índice y del sitemap.
+//
+// POR QUÉ (19/9/2026): AdSense rechazó el sitio dos veces por "contenido de bajo valor" y la
+// medición sobre el HTML servido explicó cuál: ninguna página baja de 700 palabras (mediana
+// 1.332), pero /canasta-basica y /cuota-alimentaria eran 54 URLs con 64-68% de texto idéntico
+// ENTRE SÍ — dos meses consecutivos de la misma serie no pueden ser dos páginas distintas por
+// más números propios que tengan. La ventana deja la demanda real de búsqueda (el dato del mes
+// y los recientes) y saca del índice la cola que solo aporta repetición.
+//
+// Es una ventana MÓVIL y eso es deliberado, al revés que el corte fijo del sitemap (que existe
+// para no 404-ear URLs ya indexadas): acá nada desaparece, solo deja de indexarse, así que puede
+// moverse sola sin romper nada. Antes de subir el número, volver a medir la similitud real.
+export const MESES_INDEXADOS = 12;
+
+/** `true` si el período entra en la ventana indexable de su propia serie. `periodos` son todos
+ *  los de la serie (formato ISO "2026-08", que ordena alfabéticamente). */
+export function esPeriodoIndexable(periodo: string, periodos: readonly string[]): boolean {
+  if (periodos.length <= MESES_INDEXADOS) return true;
+  const corte = [...periodos].sort()[periodos.length - MESES_INDEXADOS];
+  return periodo >= corte;
+}
+
+/** Lo que va en `robots` de un archivo mensual: fuera de la ventana, `noindex, follow`. */
+export function robotsArchivoMensual(periodo: string, periodos: readonly string[]) {
+  return esPeriodoIndexable(periodo, periodos) ? undefined : { index: false, follow: true };
+}
+
 /** "2026-06" a partir de mes/año numéricos, con el padding que exige ISO 8601 (usado en JSON-LD). */
 export function periodoISO(anio: number, mes: number): string {
   return `${anio}-${String(mes).padStart(2, "0")}`;
