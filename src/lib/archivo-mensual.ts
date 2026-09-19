@@ -20,12 +20,18 @@ const SITIO = "https://calcular.ar";
 // para no 404-ear URLs ya indexadas): acá nada desaparece, solo deja de indexarse, así que puede
 // moverse sola sin romper nada. Antes de subir el número, volver a medir la similitud real.
 //
-// EL NÚMERO SALE DE UNA MEDICIÓN, no de un gusto: comparando dos meses consecutivos en vivo,
-// 1.160 de 1.392 palabras (83%) son idénticas a las del mes anterior — ~333 del mega-menú y
-// ~560 del bloque explicativo fijo (qué mide la CBA, fuentes, FAQ), que es el mismo texto que
-// ya vive en el hub. Cada página mensual aporta unas 230 palabras propias. Con ese número,
-// seis meses de demanda fresca justifican índice y la cola no.
-export const MESES_INDEXADOS = 6;
+// EL NÚMERO SALE DE UNA MEDICIÓN, no de un gusto, y se corrigió midiendo otra vez:
+//
+//   1. Dos meses consecutivos comparados palabra por palabra: 1.160 de 1.392 (83%) idénticas.
+//   2. Con la ventana en 6 y el bloque explicativo ya condensado, descontando menú y footer,
+//      las que sobrevivían seguían compartiendo 44-52% entre sí. Lo que queda repetido es
+//      estructural (tablas, FAQ, disclaimers YMYL que NO se tocan) — o sea que no baja
+//      reescribiendo: baja habiendo menos páginas.
+//
+// De ahí el 3: el INDEC publica con un mes de rezago, así que tres meses cubren el dato vigente
+// y los dos anteriores, que es toda la demanda de búsqueda real. Lo viejo lo sirve el hub, que
+// tiene la serie completa en una tabla — una página fuerte en vez de treinta flojas.
+export const MESES_INDEXADOS = 3;
 
 /** `true` si el período entra en la ventana indexable de su propia serie. `periodos` son todos
  *  los de la serie (formato ISO "2026-08", que ordena alfabéticamente). */
