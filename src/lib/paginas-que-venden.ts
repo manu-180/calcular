@@ -23,6 +23,7 @@
 export const RUTAS_QUE_VENDEN = [
   "/planillas",
   "/convenios/comercio",
+  "/dia-del-empleado-de-comercio",
   "/convenios/uocra",
   "/sueldo-neto/comercio",
   "/sueldo-neto/construccion",

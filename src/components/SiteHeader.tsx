@@ -265,7 +265,7 @@ const TABS: Tab[] = [
     key: "convenios",
     label: "Convenios",
     align: "right",
-    match: ["/convenios", "/planillas"],
+    match: ["/convenios", "/planillas", "/dia-del-empleado-de-comercio"],
     cols: [
       [
         {
@@ -281,6 +281,11 @@ const TABS: Tab[] = [
               desc: "FAECYS, con los no remunerativos",
             },
             {
+              href: "/dia-del-empleado-de-comercio",
+              label: "Día del Empleado de Comercio",
+              desc: "En 2026 se pasó al lunes 28/9",
+            },
+            {
               href: "/convenios/uocra",
               label: "UOCRA (construcción)",
               desc: "Por categoría, zona y jornada",
@@ -288,7 +293,7 @@ const TABS: Tab[] = [
             {
               href: "/convenios/camioneros",
               label: "Camioneros",
-              desc: "Escala del sindicato, actualizada",
+              desc: "Escala firmada de FADEEAC, mes a mes",
             },
             {
               href: "/planillas",

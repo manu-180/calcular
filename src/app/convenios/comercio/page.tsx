@@ -334,6 +334,13 @@ export default function ComercioPage() {
           )}
         </ul>
         <p className="text-xs text-zinc-400">
+          Este año el{" "}
+          <Link href="/dia-del-empleado-de-comercio" className="text-emerald-700 underline">
+            Día del Empleado de Comercio se trasladó al lunes 28 de septiembre
+          </Link>{" "}
+          y se paga como feriado.
+        </p>
+        <p className="text-xs text-zinc-400">
           Última verificación: {COMERCIO_FUENTES.consultadoEl}. Con tu sueldo de convenio,
           calculá tu{" "}
           <Link href="/aguinaldo" className="text-emerald-700 underline">
