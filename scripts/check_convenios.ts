@@ -431,7 +431,7 @@ check(
 // UOCRA — propiedades aritméticas de los acuerdos
 // ===========================================================================
 
-const [uAbril, uMayo, uJunio, uJulio] = MESES_UOCRA;
+const [uAbril, uMayo, uJunio, uJulio, uAgosto] = MESES_UOCRA;
 const catsJornal = ["oficial-especializado", "oficial", "medio-oficial", "ayudante"] as const;
 
 // Mayo = abril × 1,018 (zona A, redondeo de la tabla oficial ±$1).
@@ -457,6 +457,34 @@ check(
   "uocra: sereno julio zona A = junio × 1,02 (±1)",
   aprox(uJulio.serenoMensual.a, uJunio.serenoMensual.a * 1.02, 1)
 );
+
+// Agosto — el mes VIGENTE, y hasta el 20/9/2026 el único sin aserción automática: su tabla se
+// había leído del scan y cruzado a mano contra julio, pero nada lo verificaba en cada corrida.
+// Ese es exactamente el hueco por el que se coló la revisión de Camioneros (ver
+// `scripts/check_camioneros.ts`): el mes que la gente está liquidando HOY es el que más barato
+// sale dejar sin gate y el más caro tener mal. El factor sale del acuerdo del segundo tramo y
+// tiene que ser el MISMO en las 4 categorías y las 4 zonas — si un tramo futuro trae una
+// recomposición fuera del porcentaje pactado, esto se pone rojo en vez de confirmarla.
+{
+  const saltos: number[] = [];
+  for (const cat of catsJornal) {
+    for (const z of ZONAS_UOCRA) {
+      saltos.push(uAgosto.jornales[cat][z.id] / uJulio.jornales[cat][z.id]);
+    }
+  }
+  const min = Math.min(...saltos);
+  const max = Math.max(...saltos);
+  check(
+    `uocra: agosto sube lo mismo en las ${catsJornal.length} categorías y las ${ZONAS_UOCRA.length} zonas (+${((min - 1) * 100).toFixed(2)}%, dispersión ${(max - min).toExponential(1)})`,
+    max - min < 5e-4,
+    { min, max },
+  );
+  check(
+    "uocra: el salto de julio a agosto es el del acuerdo del segundo tramo (~+9,12%), no otro",
+    min > 1.09 && max < 1.0925,
+    { min, max },
+  );
+}
 
 // La SNR del sereno es igual a la del ayudante (así figura en las tablas firmadas).
 {
