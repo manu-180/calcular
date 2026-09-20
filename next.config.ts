@@ -3,7 +3,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // El CSS del sitio son ~14 KiB: como request aparte bloquea el render y agrega un salto
   // de red antes del primer pintado. Inline en el HTML sale gratis a ese tamaño.
-  experimental: { inlineCss: true },
+  // `cpus` sale de una env var porque el build spawnea un worker por núcleo (acá 16) y en una
+  // máquina cargada eso agota el commit charge antes que la RAM: muere con "Zone Allocation
+  // failed", que se lee como un bug del código y no lo es. BUILD_CPUS=2 lo hace sobrevivir.
+  experimental: {
+    inlineCss: true,
+    ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
+  },
   // Incluí el .xlsx de /private en el bundle de la función de descarga. Sin esto,
   // en Vercel la serverless function no lleva el archivo y la entrega rompe.
   // (Key top-level confirmada en Next 16.2.9: NextConfig.outputFileTracingIncludes.)

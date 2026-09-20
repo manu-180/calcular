@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { vendeAlgo } from "@/lib/paginas-que-venden";
 
 const SRC =
   "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1118110129260994";
@@ -12,7 +14,13 @@ const SRC =
 // con el texto por CPU ni por ancho de banda. El timeout del idle es la red de seguridad
 // para pestañas en background, donde requestIdleCallback puede no dispararse nunca.
 export default function AdSense() {
+  const pathname = usePathname();
+
   useEffect(() => {
+    // En una página que vende, el anuncio compite con el producto y pierde por 100 a 1
+    // (la cuenta está en src/lib/paginas-que-venden.ts). Acá no se carga.
+    if (vendeAlgo(pathname)) return;
+
     if (document.querySelector('script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'))
       return;
 
@@ -51,7 +59,7 @@ export default function AdSense() {
       cancelado = true;
       window.removeEventListener("load", programar);
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
