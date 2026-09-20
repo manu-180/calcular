@@ -8,6 +8,7 @@ import {
   CAMIONEROS_HOMOLOGACION,
   CATEGORIAS_CAMIONEROS,
   MESES_CAMIONEROS,
+  basicoCamioneros,
 } from "@/data/convenios/camioneros";
 import { formatARS } from "@/lib/formato";
 import { datasetSchema, ORGANIZACION } from "@/lib/schema";
@@ -47,7 +48,7 @@ const faqs = [
   },
   {
     q: "¿Hay zonas o regiones en la escala de camioneros?",
-    a: "No. El CCT 40/89 establece una escala nacional única, a diferencia de otros convenios como UOCRA que tiene cuatro zonas geográficas. Todos los trabajadores incluidos en el CCT cobran el mismo básico sin importar la provincia.",
+    a: "El básico no cambia por provincia: el CCT 40/89 tiene una escala nacional única, a diferencia de UOCRA que arma cuatro zonas. Lo que sí varía por zona son los viáticos y recargos (ítems 4.2.3 y 4.2.4): quien reside al sur del Río Colorado los cobra con coeficiente 1,20 y al sur del Río Santa Cruz con 1,40, y los ítems de comida, viático especial y pernoctada suben 20% y 40% respectivamente. O sea: mismo básico, distinto bolsillo final.",
   },
   {
     q: "¿Cómo se calcula la antigüedad en el convenio de camioneros?",
@@ -71,9 +72,9 @@ const VERIFICADO_EL = new Intl.DateTimeFormat("es-AR", { dateStyle: "long" }).fo
 export default function CamionerosPage() {
   const junio = MESES_CAMIONEROS.find((m) => m.id === "junio-2026")!;
   const junioChofer1 =
-    CAMIONEROS_BASE_MAYO["chofer-primera"] * junio.factorDesdeMayo;
+    basicoCamioneros(junio.id, "chofer-primera")!;
   const junioAyudante =
-    CAMIONEROS_BASE_MAYO["ayudante-mayor"] * junio.factorDesdeMayo;
+    basicoCamioneros(junio.id, "ayudante-mayor")!;
   // Neto computado (regla 2-2): Chofer de Primera, sin antigüedad.
   const chofer1 = calcularCamioneros({
     mesId: "junio-2026",
@@ -90,7 +91,7 @@ export default function CamionerosPage() {
       datasetSchema({
         nombre: "Escala salarial Camioneros 2026 (CCT 40/89)",
         descripcion:
-          "Básicos por categoría del CCT 40/89 (Transporte Automotor de Cargas), marzo a agosto de 2026, escala nacional única, verificados contra la Disposición DNRyRT 455/2026.",
+          "Básicos por categoría del CCT 40/89 (Transporte Automotor de Cargas), marzo a agosto de 2026, escala nacional única, transcriptos de las planillas salariales firmadas que publica FADEEAC.",
         url: "/convenios/camioneros",
         modificado: "2026-06-13",
         fuenteNombre: CAMIONEROS_HOMOLOGACION,
@@ -204,7 +205,7 @@ export default function CamionerosPage() {
                         <td className="px-4 py-2.5 text-zinc-600">{cat.nombre}</td>
                         <td className="px-4 py-2.5 text-right font-medium text-zinc-900">
                           {formatARS(
-                            CAMIONEROS_BASE_MAYO[cat.id] * junio.factorDesdeMayo,
+                            basicoCamioneros(junio.id, cat.id)!,
                             0
                           )}
                         </td>

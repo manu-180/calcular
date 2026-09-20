@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "¿De dónde salen estos valores?",
-    a: `De la paritaria 2026 de Camioneros, homologada por la ${CAMIONEROS_FUENTES.circular.nombre}. Es una escala nacional única, sin zonas diferenciadas. La verificamos contra fuentes especializadas independientes y la actualizamos en cada tramo del acuerdo.`,
+    a: `De las planillas salariales firmadas que publica FADEEAC mes a mes para el CCT 40/89, bajo el acuerdo del 13/3/2026 homologado por la Disposición DNRyRT 455/2026. No derivamos los básicos de un porcentaje: cada mes sale de su planilla. El básico es el mismo en todo el país; los coeficientes 1,20 y 1,40 del sur corren sobre viáticos y recargos por zona, no sobre el básico.`,
   },
 ];
 

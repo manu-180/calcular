@@ -9,6 +9,7 @@ import {
   CATEGORIAS_CAMIONEROS,
   MESES_CAMIONEROS,
   type CategoriaCamionerosId,
+  basicoCamioneros,
 } from "@/data/convenios/camioneros";
 import {
   CATEGORIAS_COMERCIO,
@@ -235,7 +236,7 @@ export function calcularCamioneros(params: {
     return null;
 
   const basico =
-    CAMIONEROS_BASE_MAYO[categoria.id as CategoriaCamionerosId] * mes.factorDesdeMayo;
+    basicoCamioneros(mes.id, categoria.id)!;
   const antiguedad = basico * CAMIONEROS_ANTIGUEDAD_POR_ANIO * aniosAntiguedad;
   const totalRemunerativo = basico + antiguedad;
   const descuentos = totalRemunerativo * CAMIONEROS_APORTES_REMUNERATIVO;

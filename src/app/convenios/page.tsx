@@ -7,6 +7,7 @@ import { COMERCIO_FUENTES, MESES_COMERCIO } from "@/data/convenios/comercio";
 import {
   CAMIONEROS_BASE_MAYO,
   MESES_CAMIONEROS,
+  basicoCamioneros,
 } from "@/data/convenios/camioneros";
 import { MESES_UOCRA, UOCRA_FUENTES } from "@/data/convenios/uocra";
 import { formatARS } from "@/lib/formato";
@@ -67,9 +68,9 @@ export default function ConveniosPage() {
   const junioUocra = MESES_UOCRA.find((m) => m.id === "junio-2026")!;
   const junioCamioneros = MESES_CAMIONEROS.find((m) => m.id === "junio-2026")!;
   const junioChofer1 =
-    CAMIONEROS_BASE_MAYO["chofer-primera"] * junioCamioneros.factorDesdeMayo;
+    basicoCamioneros(junioCamioneros.id, "chofer-primera")!;
   const junioAyudante =
-    CAMIONEROS_BASE_MAYO["ayudante-mayor"] * junioCamioneros.factorDesdeMayo;
+    basicoCamioneros(junioCamioneros.id, "ayudante-mayor")!;
 
   const jsonLd = {
     "@context": "https://schema.org",

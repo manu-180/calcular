@@ -12,6 +12,7 @@ import {
   CAMIONEROS_HOMOLOGACION,
   CATEGORIAS_CAMIONEROS,
   MESES_CAMIONEROS,
+  basicoCamioneros,
 } from "@/data/convenios/camioneros";
 import { formatARS } from "@/lib/formato";
 import { calcularCamioneros } from "@/lib/convenios";
@@ -41,10 +42,10 @@ export async function generateMetadata({
   if (idx === -1) return {};
   const mes = MESES_CAMIONEROS[idx];
 
-  const chofer1 = CAMIONEROS_BASE_MAYO["chofer-primera"] * mes.factorDesdeMayo;
+  const chofer1 = basicoCamioneros(mes.id, "chofer-primera")!;
   const variacion =
     idx > 0
-      ? variacionPct(chofer1, CAMIONEROS_BASE_MAYO["chofer-primera"] * MESES_CAMIONEROS[idx - 1].factorDesdeMayo)
+      ? variacionPct(chofer1, basicoCamioneros(MESES_CAMIONEROS[idx - 1].id, "chofer-primera")!)
       : null;
 
   return {
@@ -66,13 +67,13 @@ export default async function CamionerosMesPage({
   const { anterior, siguiente } = vecinos(MESES_CAMIONEROS, idx);
 
   const grupos = Array.from(new Set(CATEGORIAS_CAMIONEROS.map((c) => c.grupo)));
-  const chofer1 = CAMIONEROS_BASE_MAYO["chofer-primera"] * mes.factorDesdeMayo;
-  const chofer1Anterior = anterior ? CAMIONEROS_BASE_MAYO["chofer-primera"] * anterior.factorDesdeMayo : null;
+  const chofer1 = basicoCamioneros(mes.id, "chofer-primera")!;
+  const chofer1Anterior = anterior ? basicoCamioneros(anterior.id, "chofer-primera")! : null;
   const variacionMensual = chofer1Anterior !== null ? variacionPct(chofer1, chofer1Anterior) : null;
   const periodo = periodoISO(mes.anio, mes.mes);
   const comparacionIpc = compararConIpc(variacionMensual, periodo);
   const primerMes = MESES_CAMIONEROS[0];
-  const chofer1Primero = CAMIONEROS_BASE_MAYO["chofer-primera"] * primerMes.factorDesdeMayo;
+  const chofer1Primero = basicoCamioneros(primerMes.id, "chofer-primera")!;
   const acumulado = idx > 0 ? variacionPct(chofer1, chofer1Primero) : null;
 
   // "Qué significa para vos": Chofer de Primera sin antigüedad vs. con 10 años, mismo motor
@@ -182,7 +183,7 @@ export default async function CamionerosMesPage({
                         <td className="px-4 py-2.5 text-zinc-600">{cat.nombre}</td>
                         <td className="px-4 py-2.5 text-right font-medium text-zinc-900">
                           {formatARS(
-                            CAMIONEROS_BASE_MAYO[cat.id] * mes.factorDesdeMayo,
+                            basicoCamioneros(mes.id, cat.id)!,
                             0
                           )}
                         </td>

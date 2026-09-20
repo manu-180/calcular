@@ -19,7 +19,7 @@ import { IPC_SERIE } from "../src/data/ipc-serie";
 import { sumarMeses } from "../src/lib/inflacion";
 import { MESES_UOCRA } from "../src/data/convenios/uocra";
 import { MESES_COMERCIO } from "../src/data/convenios/comercio";
-import { MESES_CAMIONEROS, CAMIONEROS_BASE_MAYO } from "../src/data/convenios/camioneros";
+import { MESES_CAMIONEROS, CAMIONEROS_BASE_MAYO, basicoCamioneros } from "../src/data/convenios/camioneros";
 import { CANASTA_BASICA } from "../src/data/canasta-basica";
 import { MESES_CANASTA, slugDeMesCanasta } from "../src/lib/canasta-basica-meses";
 import { MESES_CUOTA, slugDeMes } from "../src/lib/canasta-meses";
@@ -229,7 +229,7 @@ check(
 // Camioneros — básico de Chofer de Primera, mes a mes.
 {
   const serie = MESES_CAMIONEROS.map(
-    (m) => CAMIONEROS_BASE_MAYO["chofer-primera"] * m.factorDesdeMayo,
+    (m) => basicoCamioneros(m.id, "chofer-primera")!,
   );
   for (let i = 1; i < serie.length; i++) {
     const manual = (serie[i] / serie[i - 1] - 1) * 100;
