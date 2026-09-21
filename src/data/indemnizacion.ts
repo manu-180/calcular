@@ -18,8 +18,21 @@ export const INDEMNIZACION_FUENTES = {
     nombre: "Ley 27.742 (Bases) — derogación de multas laborales, arts. 99 y 100",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=401266",
   },
+  ligArt26: {
+    nombre: "Ley de Impuesto a las Ganancias (t.o. Decreto 824/2019), art. 26 inc. i)",
+    url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
+  },
   consultadoEl: "11 de junio de 2026",
+  gananciasConsultadoEl: "21 de septiembre de 2026",
 };
+
+// Verbatim del texto actualizado en InfoLEG (21/9/2026, sin reformas sobre el inc. i).
+// Lo exento es una lista CERRADA: la integración del mes, el SAC y las vacaciones no están en
+// ella, y el preaviso figura del lado de lo NO exento. No suavizarlo a «puede tributar».
+export const LIG_ART26_EXENTO =
+  "Las indemnizaciones por antigüedad en los casos de despidos y las que se reciban en forma de capital o renta por causas de muerte o incapacidad producida por accidente o enfermedad";
+export const LIG_ART26_NO_EXENTO =
+  "No están exentas las jubilaciones, pensiones, retiros, subsidios, ni las remuneraciones que se continúen percibiendo durante las licencias o ausencias por enfermedad, las indemnizaciones por falta de preaviso en el despido";
 
 // Art. 92 bis: los primeros 6 meses son período de prueba (los convenios pueden ampliarlo
 // a 8 meses en empresas de 6 a 100 trabajadores y a 12 en empresas de hasta 5).

@@ -122,6 +122,19 @@ export type ResultadoIndemnizacion = {
   totalGeneral: number;
 };
 
+export type TratamientoGanancias = {
+  exento: number;
+  noExentoPorLey: number;
+  sinExencion: number;
+};
+
+export function tratamientoGanancias(r: ResultadoIndemnizacion): TratamientoGanancias {
+  const noExentoPorLey = r.preaviso ? r.preaviso.monto + r.preaviso.sac : 0;
+  const sinExencion =
+    (r.integracion ? r.integracion.monto + r.integracion.sac : 0) + r.totalLiquidacionFinal;
+  return { exento: r.indemnizacionAntiguedad, noExentoPorLey, sinExencion };
+}
+
 export function calcularIndemnizacion(params: {
   ingresoISO: string;
   despidoISO: string;

@@ -63,7 +63,7 @@ const faqs = [
   },
   {
     q: "¿La indemnización por despido paga impuesto a las Ganancias?",
-    a: "La indemnización por antigüedad del art. 245 está exenta de Ganancias (art. 26 inc. i de la ley del impuesto, y jurisprudencia consolidada). El preaviso y la integración del mes, en cambio, sí pueden estar alcanzados según el caso. La liquidación final (aguinaldo y vacaciones proporcionales) tributa como un sueldo.",
+    a: "La indemnización por antigüedad del art. 245 está exenta de Ganancias (art. 26 inc. i de la ley del impuesto). El mismo inciso dice que las indemnizaciones por falta de preaviso no están exentas, y la integración del mes no figura entre las exentas. La liquidación final (aguinaldo y vacaciones proporcionales) tributa como un sueldo. Que un rubro no esté exento no significa que te lo descuenten: solo pagás si tus ingresos del año superan las deducciones personales.",
   },
   {
     q: "¿Me corresponde indemnización si renuncio o me despiden con causa?",
@@ -219,8 +219,8 @@ export default function Post() {
         </div>
         <p className="text-xs text-zinc-400">
           Calculado con el mismo motor que la calculadora del sitio. La indemnización por antigüedad
-          ({formatARS(r.indemnizacionAntiguedad, 0)}) es la parte exenta de Ganancias; los demás
-          conceptos pueden tributar según el caso. Cambiá las fechas y el sueldo por los tuyos en la
+          ({formatARS(r.indemnizacionAntiguedad, 0)}) es la única parte exenta de Ganancias; el preaviso,
+          la integración y la liquidación final no lo están. Cambiá las fechas y el sueldo por los tuyos en la
           calculadora.
         </p>
       </section>

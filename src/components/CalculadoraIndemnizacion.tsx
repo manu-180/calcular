@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { calcularIndemnizacion } from "@/lib/indemnizacion";
+import { calcularIndemnizacion, tratamientoGanancias } from "@/lib/indemnizacion";
 import { formatARS, parseMonto } from "@/lib/formato";
 import { MESES_PERIODO_PRUEBA } from "@/data/indemnizacion";
 
@@ -14,6 +14,38 @@ function textoAntiguedad(antiguedad: { anios: number; meses: number; dias: numbe
   if (antiguedad.dias > 0 && antiguedad.anios === 0)
     partes.push(`${antiguedad.dias} ${antiguedad.dias === 1 ? "día" : "días"}`);
   return partes.length ? partes.join(" y ") : "menos de un día";
+}
+
+function GananciasDesglose({
+  t,
+}: {
+  t: { exento: number; noExentoPorLey: number; sinExencion: number };
+}) {
+  return (
+    <div className="space-y-2 rounded-lg border border-zinc-200 p-4 text-sm">
+      <p className="font-semibold text-zinc-800">¿Qué parte paga Ganancias?</p>
+      <dl className="space-y-1.5">
+        <div className="flex justify-between gap-4">
+          <dt className="text-zinc-600">Exento por ley (antigüedad, art. 26 inc. i)</dt>
+          <dd className="font-medium text-emerald-700">{formatARS(t.exento, 0)}</dd>
+        </div>
+        {t.noExentoPorLey > 0 && (
+          <div className="flex justify-between gap-4">
+            <dt className="text-zinc-600">Preaviso y su SAC: la ley lo declara no exento</dt>
+            <dd className="font-medium text-zinc-900">{formatARS(t.noExentoPorLey, 0)}</dd>
+          </div>
+        )}
+        <div className="flex justify-between gap-4">
+          <dt className="text-zinc-600">Integración, aguinaldo y vacaciones: sin exención</dt>
+          <dd className="font-medium text-zinc-900">{formatARS(t.sinExencion, 0)}</dd>
+        </div>
+      </dl>
+      <p className="text-xs text-zinc-500">
+        Que un rubro no esté exento no quiere decir que te lo descuenten: solo pagás si tus
+        ingresos del año superan las deducciones personales de la cuarta categoría.
+      </p>
+    </div>
+  );
 }
 
 function Fila({ label, monto, detalle }: { label: string; monto: number; detalle?: string }) {
@@ -271,6 +303,8 @@ export function CalculadoraIndemnizacion() {
                   </dd>
                 </div>
               </dl>
+
+              <GananciasDesglose t={tratamientoGanancias(resultado)} />
 
               {resultado.topeAplicado && (
                 <p className="rounded-lg bg-emerald-50 p-3 text-sm text-emerald-900">

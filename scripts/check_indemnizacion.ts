@@ -1,6 +1,7 @@
 // Verificación de bordes de la calculadora de indemnización (no se commitea al deploy,
 // es una herramienta de desarrollo). Correr con: npx tsx scripts/check_indemnizacion.ts
-import { antiguedadEntre, calcularIndemnizacion } from "../src/lib/indemnizacion";
+import { antiguedadEntre, calcularIndemnizacion, tratamientoGanancias } from "../src/lib/indemnizacion";
+import { LIG_ART26_EXENTO, LIG_ART26_NO_EXENTO } from "../src/data/indemnizacion";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -133,6 +134,31 @@ check("sueldo 0 → null", calcularIndemnizacion({
   ingresoISO: "2020-01-01", despidoISO: "2026-06-11",
   mejorRemuneracion: 0, preavisoOtorgado: false,
 }) === null);
+
+// --- Ganancias (art. 26 inc. i LIG): sólo la antigüedad es exenta; el preaviso, expresamente no ---
+const gSin = calcularIndemnizacion({
+  ingresoISO: "2019-03-01", despidoISO: "2026-09-11",
+  mejorRemuneracion: base, preavisoOtorgado: false,
+})!;
+const tSin = tratamientoGanancias(gSin);
+check("ganancias: exento = antigüedad", tSin.exento === gSin.indemnizacionAntiguedad);
+check("ganancias: preaviso+SAC del lado no exento",
+  aprox(tSin.noExentoPorLey, gSin.preaviso!.monto + gSin.preaviso!.sac));
+check("ganancias: las tres partes suman el total",
+  aprox(tSin.exento + tSin.noExentoPorLey + tSin.sinExencion, gSin.totalGeneral), tSin);
+const gCon = calcularIndemnizacion({
+  ingresoISO: "2019-03-01", despidoISO: "2026-09-11",
+  mejorRemuneracion: base, preavisoOtorgado: true,
+})!;
+const tCon = tratamientoGanancias(gCon);
+check("ganancias: con preaviso otorgado no hay rubro no-exento por ley", tCon.noExentoPorLey === 0);
+check("ganancias: con preaviso otorgado las sumas cierran",
+  aprox(tCon.exento + tCon.sinExencion, gCon.totalGeneral));
+check("ganancias: verbatim exento nombra la antigüedad",
+  LIG_ART26_EXENTO.startsWith("Las indemnizaciones por antigüedad en los casos de despidos"));
+check("ganancias: verbatim no-exento nombra el preaviso",
+  LIG_ART26_NO_EXENTO.startsWith("No están exentas") &&
+  LIG_ART26_NO_EXENTO.endsWith("las indemnizaciones por falta de preaviso en el despido"));
 
 console.log(fallas === 0 ? "\nTODO OK" : `\n${fallas} FALLAS`);
 process.exit(fallas === 0 ? 0 : 1);

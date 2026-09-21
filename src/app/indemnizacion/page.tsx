@@ -4,7 +4,11 @@ import { CalculadoraIndemnizacion } from "@/components/CalculadoraIndemnizacion"
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
-import { INDEMNIZACION_FUENTES } from "@/data/indemnizacion";
+import {
+  INDEMNIZACION_FUENTES,
+  LIG_ART26_EXENTO,
+  LIG_ART26_NO_EXENTO,
+} from "@/data/indemnizacion";
 
 export const metadata: Metadata = {
   title: "Calculadora de Indemnización por Despido 2026: cuánto te corresponde",
@@ -59,6 +63,10 @@ const faqs = [
     a: "Los rubros indemnizatorios (antigüedad, preaviso no otorgado, integración) no son remunerativos: no llevan aportes jubilatorios ni de obra social, los cobrás completos. El aguinaldo proporcional y los días trabajados sí son remunerativos y llevan los descuentos habituales.",
   },
   {
+    q: "¿La indemnización por despido paga Ganancias?",
+    a: "Solo una parte está exenta. El art. 26 inc. i) de la Ley de Ganancias exime la indemnización por antigüedad (la del art. 245) y los intereses judiciales de un crédito laboral. En el mismo inciso, la ley dice que las indemnizaciones por falta de preaviso no están exentas. La integración del mes, el aguinaldo y las vacaciones proporcionales no figuran entre las exentas: se suman a tus ingresos del año como cualquier sueldo. Que un rubro no esté exento no significa que te lo descuenten: solo pagás si tus ingresos anuales superan las deducciones personales.",
+  },
+  {
     q: "¿Qué es el fondo de cese laboral?",
     a: "Desde la reforma, los convenios colectivos pueden reemplazar la indemnización del art. 245 por un fondo o sistema de cese (parecido al de la construcción), siempre a cargo del empleador. Si tu convenio adoptó uno, tu liquidación por despido se rige por ese sistema y no por la fórmula clásica. Consultá con tu sindicato si tu actividad lo implementó.",
   },
@@ -85,7 +93,7 @@ export default function IndemnizacionPage() {
         descripcion:
           "Cómo se calcula la indemnización por despido sin causa en 2026: antigüedad (art. 245 LCT reformado por la Ley 27.802), preaviso, integración y liquidación final.",
         url: "/indemnizacion",
-        modificado: "2026-06-13",
+        modificado: "2026-09-21",
       }),
       {
         "@type": "FAQPage",
@@ -285,6 +293,54 @@ export default function IndemnizacionPage() {
         </div>
       </section>
 
+      <section className="space-y-3">
+        <h2 className="text-xl font-bold text-zinc-900">
+          ¿La indemnización paga Ganancias? Solo una parte está exenta
+        </h2>
+        <div className="space-y-3 text-zinc-600">
+          <p>
+            La exención está en el <strong>art. 26 inc. i) de la Ley de Impuesto a las
+            Ganancias</strong>, y es una lista cerrada. Lo que sí está exento:
+          </p>
+          <blockquote className="rounded-xl border-l-4 border-emerald-600 bg-white p-4 text-sm text-zinc-700 shadow-sm">
+            «{LIG_ART26_EXENTO} (…)»
+          </blockquote>
+          <p>
+            Y en el mismo inciso, unas líneas más abajo, la ley aclara qué queda afuera:
+          </p>
+          <blockquote className="rounded-xl border-l-4 border-zinc-400 bg-white p-4 text-sm text-zinc-700 shadow-sm">
+            «{LIG_ART26_NO_EXENTO} (…)»
+          </blockquote>
+          <p>Aplicado a tu liquidación:</p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>
+              <strong>Antigüedad (art. 245): exenta.</strong> Es casi siempre el rubro más grande.
+            </li>
+            <li>
+              <strong>Preaviso no otorgado y su aguinaldo: no exento.</strong> La ley lo nombra
+              expresamente. Es el rubro que más gente cree exento y no lo es.
+            </li>
+            <li>
+              <strong>Integración del mes, aguinaldo y vacaciones proporcionales: sin
+              exención.</strong> No aparecen en la lista, así que suman como un sueldo más.
+            </li>
+            <li>
+              <strong>Intereses de un juicio laboral: exentos</strong> (la primera oración del
+              mismo inciso).
+            </li>
+          </ul>
+          <p>
+            «No exento» no quiere decir «te lo descuentan»: el impuesto se paga solo sobre lo que
+            supera las deducciones personales del año. Si querés saber si llegás, usá la{" "}
+            <Link href="/ganancias" className="text-emerald-700 underline">
+              calculadora de Ganancias
+            </Link>{" "}
+            sumando a tu sueldo anual la parte que no está exenta. La calculadora de arriba ya te
+            separa los dos montos.
+          </p>
+        </div>
+      </section>
+
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-zinc-900">Preguntas frecuentes</h2>
         <div className="space-y-3">
@@ -337,6 +393,20 @@ export default function IndemnizacionPage() {
             >
               {INDEMNIZACION_FUENTES.ley27742.nombre}
             </a>
+          </li>
+          <li>
+            •{" "}
+            <a
+              href={INDEMNIZACION_FUENTES.ligArt26.url}
+              rel="nofollow noopener"
+              target="_blank"
+              className="text-emerald-700 underline"
+            >
+              {INDEMNIZACION_FUENTES.ligArt26.nombre}
+            </a>{" "}
+            <span className="text-xs text-zinc-400">
+              (consultado el {INDEMNIZACION_FUENTES.gananciasConsultadoEl})
+            </span>
           </li>
         </ul>
         <p className="text-xs text-zinc-400">
