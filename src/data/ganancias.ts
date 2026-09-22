@@ -20,6 +20,10 @@ export const DEDUCCIONES = {
   // Apdo 2 (relación de dependencia) = 4,8 × MNI. Es la deducción que, sumada al MNI,
   // define el piso a partir del cual un empleado empieza a tributar.
   deduccionEspecialDependencia: 26_811_537.29,
+  // Apdo 1 (autónomos que trabajan personalmente) = 3,5 × MNI; "nuevos profesionales/emprendedores"
+  // = 4 × MNI. Salen del mismo PDF de ARCA y rotan con el resto de este objeto.
+  deduccionEspecialAutonomos: 19_550_079.27,
+  deduccionEspecialNuevosProfesionales: 22_342_947.74,
 };
 
 export type TramoGanancias = {

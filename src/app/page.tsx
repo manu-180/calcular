@@ -58,6 +58,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/ganancias-autonomos",
+    titulo: "Ganancias para autónomos",
+    descripcion:
+      "Profesionales, oficios y emprendedores: la deducción especial del año, la mayor de los nuevos profesionales (hasta tres años de matrícula) y por qué dejar de aportar sube el impuesto.",
+    disponible: true,
+  },
+  {
     href: "/deducciones-generales-ganancias",
     titulo: "Deducciones generales de Ganancias",
     descripcion:
@@ -482,7 +489,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
   {
     titulo: "Impuestos y deducciones",
     nota: "Ganancias y lo que se puede descontar",
-    hrefs: ["/ganancias", "/deduccion-empleada-domestica", "/deduccion-alquiler", "/deducciones-generales-ganancias", "/ganancias-jubilados", "/ganancias-sociedades"],
+    hrefs: ["/ganancias", "/deduccion-empleada-domestica", "/deduccion-alquiler", "/deducciones-generales-ganancias", "/ganancias-jubilados", "/ganancias-autonomos", "/ganancias-sociedades"],
   },
   {
     titulo: "Cuando termina el trabajo",
