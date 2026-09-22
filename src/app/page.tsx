@@ -51,6 +51,13 @@ const herramientas = [
     disponible: true,
   },
   {
+    href: "/ganancias-jubilados",
+    titulo: "Ganancias para jubilados",
+    descripcion:
+      "Desde qué haber paga Ganancias un jubilado o pensionado, la deducción de ocho haberes mínimos sumada mes a mes, las cargas de familia que se restan aparte y cuándo se pierde.",
+    disponible: true,
+  },
+  {
     href: "/deducciones-generales-ganancias",
     titulo: "Deducciones generales de Ganancias",
     descripcion:
@@ -475,7 +482,7 @@ const SECCIONES: { titulo: string; nota: string; hrefs: string[] }[] = [
   {
     titulo: "Impuestos y deducciones",
     nota: "Ganancias y lo que se puede descontar",
-    hrefs: ["/ganancias", "/deduccion-empleada-domestica", "/deduccion-alquiler", "/deducciones-generales-ganancias", "/ganancias-sociedades"],
+    hrefs: ["/ganancias", "/deduccion-empleada-domestica", "/deduccion-alquiler", "/deducciones-generales-ganancias", "/ganancias-jubilados", "/ganancias-sociedades"],
   },
   {
     titulo: "Cuando termina el trabajo",
