@@ -6,22 +6,27 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
 import {
   ASIGNACIONES_FUENTES,
+  ASIGNACIONES_PROXIMAS,
   ASIGNACIONES_VIGENTES,
   PAGO_UNICO,
   ZONAS,
 } from "@/data/asignaciones";
-import { desglose8020, etiquetaTramo } from "@/lib/asignaciones";
+import { desglose8020, etiquetaTramo, moverAlMesSiguiente } from "@/lib/asignaciones";
 import { formatARS, formatPct } from "@/lib/formato";
 
 const V = ASIGNACIONES_VIGENTES;
 const MES = V.vigencia;
 
 const AUH = desglose8020(V.universales.hijo.general);
+const P = ASIGNACIONES_PROXIMAS;
+const AUH_PROXIMA = P ? moverAlMesSiguiente(V.universales.hijo.general, P.movilidad) : null;
+const HIJO_PROXIMO = P ? moverAlMesSiguiente(V.hijo[0].montos.general, P.movilidad) : null;
+
 const ESCALON_1_2 = V.hijo[0].montos.general - V.hijo[1].montos.general;
 
 export const metadata: Metadata = {
   title: `Asignaciones familiares ${MES}: cuánto cobrás por hijo según tu ingreso`,
-  description: `La asignación por hijo de ${MES} va de ${formatARS(V.hijo[3].montos.general, 0)} a ${formatARS(V.hijo[0].montos.general, 0)} según el ingreso del grupo familiar. Poné los sueldos de tu casa y mirá tu tramo, tu zona y a qué distancia estás del escalón que te hace perder plata. Res. ANSES 233/2026.`,
+  description: `La asignación por hijo de ${MES} va de ${formatARS(V.hijo[3].montos.general, 0)} a ${formatARS(V.hijo[0].montos.general, 0)} según el ingreso del grupo familiar. Poné los sueldos de tu casa y mirá tu tramo, tu zona y a qué distancia estás del escalón que te hace perder plata. ${V.resolucion.replace("Resolución", "Res.")}.`,
   alternates: { canonical: "/asignaciones-familiares" },
   openGraph: {
     images: [
@@ -153,6 +158,48 @@ export default function AsignacionesPage() {
       </RespuestaPrimero>
 
       <CalculadoraAsignaciones />
+
+      {P && AUH_PROXIMA !== null && HIJO_PROXIMO !== null && (
+        <section className="space-y-3">
+          <h2 className="text-xl font-bold text-zinc-900">
+            {P.vigencia.charAt(0).toUpperCase() + P.vigencia.slice(1)}: el aumento ya es oficial
+          </h2>
+          <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-sm text-emerald-900">
+            <p>
+              La{" "}
+              <a
+                href={P.resolucionUrl}
+                className="font-medium underline"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {P.resolucion}
+              </a>{" "}
+              ({P.resolucionBO}) sube las asignaciones un <strong>{formatPct(P.movilidad)}</strong>{" "}
+              desde {P.vigencia}, redondeando cada monto al peso siguiente. Aplicado a los valores de{" "}
+              {MES}:
+            </p>
+            <dl className="mt-4 grid gap-3 sm:grid-cols-3">
+              <div>
+                <dt className="text-emerald-800">AUH por hijo (valor general)</dt>
+                <dd className="font-semibold">{formatARS(AUH_PROXIMA, 0)}</dd>
+              </div>
+              <div>
+                <dt className="text-emerald-800">Asignación por hijo, primer tramo</dt>
+                <dd className="font-semibold">{formatARS(HIJO_PROXIMO, 0)}</dd>
+              </div>
+              <div>
+                <dt className="text-emerald-800">Tope individual (art. 4)</dt>
+                <dd className="font-semibold">{formatARS(P.topeIgfIndividual, 0)}</dd>
+              </div>
+            </dl>
+            <p className="mt-3">
+              La ayuda escolar y la asignación por maternidad quedan afuera del aumento, como en los
+              meses anteriores. La calculadora sigue liquidando {MES} hasta que empiece el mes nuevo.
+            </p>
+          </div>
+        </section>
+      )}
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">

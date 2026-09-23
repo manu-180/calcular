@@ -271,6 +271,11 @@ export function montoMonotributoHijo(grupo: GrupoMonotributo): number | null {
 }
 
 /** Desglose 80/20 de una asignación universal (AUH o embarazo). */
+/** Art. 3 de la resolución mensual: redondeo al entero SIGUIENTE, sobre el valor publicado. */
+export function moverAlMesSiguiente(valor: number, movilidad: number): number {
+  return Math.ceil(Math.round(valor * (1 + movilidad / 100) * 1e6) / 1e6);
+}
+
 export function desglose8020(monto: number): { mensual: number; retenido: number } {
   const mensual = r2(monto * V.universales.porcentajeMensual);
   return { mensual, retenido: r2(monto - mensual) };

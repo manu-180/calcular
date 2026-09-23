@@ -214,6 +214,30 @@ export const ASIGNACIONES_VIGENTES = {
 } as const;
 
 /**
+ * Resolución del mes SIGUIENTE dictada antes de que empiece (la de octubre de 2026 salió el 23/9).
+ * Sólo trae lo que su articulado fija de puño: el % del art. 1 y el tope individual del art. 4. Los
+ * montos que muestra la página se derivan con ceil(vigente × coef) (art. 3), y check_asignaciones
+ * exige que esa misma derivación reproduzca el tope del art. 4 al peso. Al rotar, vuelve a null.
+ */
+export const ASIGNACIONES_PROXIMAS: {
+  periodo: string;
+  vigencia: string;
+  movilidad: number;
+  topeIgfIndividual: number;
+  resolucion: string;
+  resolucionUrl: string;
+  resolucionBO: string;
+} | null = {
+  periodo: "2026-10",
+  vigencia: "octubre de 2026",
+  movilidad: 1.66,
+  topeIgfIndividual: 3_209_863,
+  resolucion: "Resolución ANSES 283/2026",
+  resolucionUrl: "https://www.boletinoficial.gob.ar/detalleAviso/primera/347831/20260923",
+  resolucionBO: "Boletín Oficial del 23 de septiembre de 2026",
+};
+
+/**
  * Snapshot del mes anterior. NO se muestra en la web: existe sólo para que check_asignaciones.ts
  * pueda verificar que cada valor vigente es el del mes previo movido por la movilidad del mes.
  * Fuente: cartilla oficial Montos-AAFF-08-2026.pdf (Resolución ANSES 233/2026).

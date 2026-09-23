@@ -17,6 +17,7 @@
 import {
   ASIGNACIONES_FUENTES,
   ASIGNACIONES_MES_ANTERIOR,
+  ASIGNACIONES_PROXIMAS,
   ASIGNACIONES_VIGENTES,
   GRUPOS_MONOTRIBUTO,
   PAGO_UNICO,
@@ -31,6 +32,7 @@ import {
   calcularIgf,
   desglose8020,
   montoMonotributoHijo,
+  moverAlMesSiguiente,
   tramoDe,
 } from "../src/lib/asignaciones";
 
@@ -510,6 +512,29 @@ const base = {
       (u) => u.startsWith("https://www.anses.gob.ar/sites/default/files/cartilla/"),
     ),
   );
+}
+
+if (ASIGNACIONES_PROXIMAS) {
+  const P = ASIGNACIONES_PROXIMAS;
+  const [a, m] = V.periodo.split("-").map(Number);
+  const siguiente = m === 12 ? `${a + 1}-01` : `${a}-${String(m + 1).padStart(2, "0")}`;
+  check("la resolución próxima es del mes siguiente al vigente", P.periodo === siguiente, P.periodo);
+  check(
+    "ancla del art. 4: ceil(tope individual vigente × coef) = tope individual publicado, al peso",
+    moverAlMesSiguiente(V.topeIgfIndividual, P.movilidad) === P.topeIgfIndividual,
+    { derivado: moverAlMesSiguiente(V.topeIgfIndividual, P.movilidad), publicado: P.topeIgfIndividual },
+  );
+  check(
+    "moverAlMesSiguiente reproduce la rotación agosto→septiembre (tope individual)",
+    moverAlMesSiguiente(ASIGNACIONES_MES_ANTERIOR.topeIgfIndividual, V.movilidad) === V.topeIgfIndividual,
+  );
+  check(
+    "moverAlMesSiguiente reproduce la rotación agosto→septiembre (AUH general)",
+    moverAlMesSiguiente(ASIGNACIONES_MES_ANTERIOR.universales.hijo.general, V.movilidad) ===
+      V.universales.hijo.general,
+  );
+} else {
+  console.log("--   sin resolución del mes siguiente dictada todavía");
 }
 
 console.log("");
