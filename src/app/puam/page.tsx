@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: `¿Cuánto cobra la PUAM en ${MES} de 2026?`,
+    q: `¿Cuánto cobra la PUAM en ${MES}?`,
     a: `El haber es ${formatARS(M.haber, 2)} y con el bono extraordinario de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma} se depositan ${formatARS(M.total, 2)}. Ese haber no sale de una resolución propia de la PUAM: el artículo 14 de la Ley 27.260 dice que equivale al 80% del haber mínimo garantizado, que en ${MES} es ${formatARS(V.haberMinimo, 2)} por la ${V.resolucion}. Por eso sube todos los meses junto con las jubilaciones, sin que se anuncie un aumento de la PUAM.`,
   },
   {

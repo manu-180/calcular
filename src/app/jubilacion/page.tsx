@@ -13,6 +13,7 @@ import {
   BONO_VIGENTE,
   PRESTACIONES_FUENTES,
   PRESTACIONES_VIGENTES,
+  RESOLUCION_PROXIMA,
 } from "@/data/prestaciones";
 import {
   etiquetaPeriodo,
@@ -27,6 +28,8 @@ const MES = etiquetaPeriodo(V.periodo);
 const TOPE_BONO = Math.round((V.haberMinimo + BONO_VIGENTE.monto) * 100) / 100;
 
 const PROXIMO = proximoMesDeterminado();
+const OFICIAL =
+  PROXIMO && RESOLUCION_PROXIMA?.periodo === PROXIMO.periodo ? RESOLUCION_PROXIMA : null;
 const INTERANUAL = varInteranualHaber(V.periodo);
 
 // Últimos 12 meses de la serie, del más nuevo al más viejo.
@@ -49,9 +52,17 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: `¿Cuánto cobra un jubilado en ${MES} de 2026?`,
+    q: `¿Cuánto cobra un jubilado en ${MES}?`,
     a: `El haber mínimo garantizado de ${MES} es de ${formatARS(V.haberMinimo, 0)}, tras la movilidad de ${formatPct(V.movilidad)} que fijó la ${V.resolucion}. Sumado el bono extraordinario de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma}, quien cobra la mínima recibe ${formatARS(TOPE_BONO, 0)}. Quien cobra por encima de la mínima recibe un bono más chico: el refuerzo sólo completa hasta ${formatARS(TOPE_BONO, 0)}.`,
   },
+  ...(OFICIAL
+    ? [
+        {
+          q: `¿Cuánto cobra un jubilado en ${etiquetaPeriodo(OFICIAL.periodo)}?`,
+          a: `La ${OFICIAL.resolucion} (${OFICIAL.resolucionBO}) fijó el haber mínimo de ${etiquetaPeriodo(OFICIAL.periodo)} en ${formatARS(OFICIAL.haberMinimo, 2)}, con una movilidad de ${formatPct(PROXIMO!.movilidad)}. La PUAM pasa a ${formatARS(OFICIAL.puam, 2)} y el haber máximo a ${formatARS(OFICIAL.haberMaximo, 2)}. El bono extraordinario de ese mes todavía no tiene decreto: se fija aparte, mes a mes.`,
+        },
+      ]
+    : []),
   {
     q: "Si cobro más que la mínima, ¿me dan los $70.000 igual?",
     a: `No, y es el punto que casi nunca se aclara. El decreto fija el bono como un máximo: quien percibe un haber superior al mínimo recibe sólo lo necesario para llegar al tope de haber mínimo más bono, o sea ${formatARS(TOPE_BONO, 0)}. En la práctica, todos los haberes entre ${formatARS(V.haberMinimo, 0)} y ${formatARS(TOPE_BONO, 0)} terminan cobrando exactamente lo mismo. Por encima de ${formatARS(TOPE_BONO, 0)} no corresponde bono.`,
@@ -173,10 +184,51 @@ export default function JubilacionPage() {
             <p className="mt-2 text-sm text-emerald-900">
               La movilidad de {etiquetaPeriodo(PROXIMO.periodo)} es{" "}
               <strong>{formatPct(PROXIMO.movilidad)}</strong>, que es la variación del IPC de{" "}
-              {etiquetaPeriodo(PROXIMO.ipcDe)} publicada por el INDEC. No es una proyección: la
-              fórmula del Decreto 274/2024 ya lo determinó. ANSES lo oficializa por resolución a fin
-              de mes.
+              {etiquetaPeriodo(PROXIMO.ipcDe)} publicada por el INDEC.{" "}
+              {OFICIAL ? (
+                <>
+                  Ya es oficial: la{" "}
+                  <a
+                    href={OFICIAL.resolucionUrl}
+                    className="font-medium underline"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {OFICIAL.resolucion}
+                  </a>{" "}
+                  ({OFICIAL.resolucionBO}) confirmó el número que la fórmula ya había dado.
+                </>
+              ) : (
+                <>
+                  No es una proyección: la fórmula del Decreto 274/2024 ya lo determinó. ANSES lo
+                  oficializa por resolución a fin de mes.
+                </>
+              )}
             </p>
+            {OFICIAL && (
+              <dl className="mt-4 grid gap-3 text-sm text-emerald-900 sm:grid-cols-3">
+                <div>
+                  <dt className="text-emerald-800">PUAM</dt>
+                  <dd className="font-semibold">{formatARS(OFICIAL.puam, 2)}</dd>
+                </div>
+                <div>
+                  <dt className="text-emerald-800">Haber máximo</dt>
+                  <dd className="font-semibold">{formatARS(OFICIAL.haberMaximo, 2)}</dd>
+                </div>
+                <div>
+                  <dt className="text-emerald-800">PBU</dt>
+                  <dd className="font-semibold">{formatARS(OFICIAL.pbu, 2)}</dd>
+                </div>
+              </dl>
+            )}
+            {OFICIAL && (
+              <p className="mt-3 text-sm text-emerald-900">
+                Lo que todavía no existe es el bono de {etiquetaPeriodo(PROXIMO.periodo)}: lo fija
+                un decreto aparte, mes a mes, y suele salir el último día hábil del mes anterior.
+                Hasta entonces, cualquier monto de bono para {etiquetaPeriodo(PROXIMO.periodo)} es
+                una suposición.
+              </p>
+            )}
           </div>
         ) : (
           <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">

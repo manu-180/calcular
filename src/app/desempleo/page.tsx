@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: `¿Cuánto se cobra de desempleo en ${MES} de 2026?`,
+    q: `¿Cuánto se cobra de desempleo en ${MES}?`,
     a: `Depende de tu sueldo: la prestación es el 75% del importe neto de tu mejor remuneración mensual, normal y habitual, de los seis meses anteriores al despido. Ese resultado nunca puede ser menor a ${formatARS(PISO, 0)} ni mayor a ${formatARS(TECHO, 0)} en ${MES}, porque la Resolución 4/2026 del Consejo del Salario fija el piso en el 50% del salario mínimo vital y móvil y el techo en el 100%. Como el salario mínimo sube casi todos los meses, esos dos números se mueven con él.`,
   },
   {

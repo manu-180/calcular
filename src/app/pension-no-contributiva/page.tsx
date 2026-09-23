@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: `¿Cuánto cobra una pensión no contributiva en ${MES} de 2026?`,
+    q: `¿Cuánto cobra una pensión no contributiva en ${MES}?`,
     a: `Depende de cuál sea. La Pensión no Contributiva por Discapacidad para Protección Social y la pensión a la vejez pagan el 70% del haber mínimo, o sea ${formatARS(DISCAPACIDAD.haber, 2)}, y con el bono extraordinario de ${formatARS(BONO_VIGENTE.monto, 0)} llegan a ${formatARS(DISCAPACIDAD.total, 2)}. La pensión vitalicia para madres de 7 hijos o más equivale al 100% del haber mínimo: ${formatARS(MADRE7.haber, 2)}, y ${formatARS(MADRE7.total, 2)} con el bono. La PUAM es el 80%.`,
   },
   {

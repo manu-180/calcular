@@ -37,6 +37,37 @@ export const PRESTACIONES_VIGENTES = {
 } as const;
 
 /**
+ * Resolución del mes SIGUIENTE, cuando ANSES la dicta antes de que empiece ese mes (la de octubre de
+ * 2026 salió el 23/9). No reemplaza a PRESTACIONES_VIGENTES: el mes en curso se sigue liquidando con
+ * su resolución, y el bono del mes nuevo todavía no tiene decreto. Al rotar, estos valores pasan a
+ * PRESTACIONES_VIGENTES y esto vuelve a null. check_jubilaciones exige que el haber mínimo coincida
+ * al centavo con el que ya derivaba la fórmula (proximoMesDeterminado).
+ */
+export const RESOLUCION_PROXIMA: {
+  periodo: string;
+  haberMinimo: number;
+  haberMaximo: number;
+  pbu: number;
+  puam: number;
+  baseImponibleMinima: number;
+  baseImponibleMaxima: number;
+  resolucion: string;
+  resolucionUrl: string;
+  resolucionBO: string;
+} | null = {
+  periodo: "2026-10",
+  haberMinimo: 435_748.51,
+  haberMaximo: 2_932_174.85,
+  pbu: 199_335.05,
+  puam: 348_598.81,
+  baseImponibleMinima: 146_759.98,
+  baseImponibleMaxima: 4_769_631.49,
+  resolucion: "Resolución ANSES 284/2026",
+  resolucionUrl: "https://www.boletinoficial.gob.ar/detalleAviso/primera/347832/20260923",
+  resolucionBO: "Boletín Oficial del 23 de septiembre de 2026",
+};
+
+/**
  * Bono extraordinario previsional del mes. Es DISCRECIONAL: lo fija un decreto mes a mes y puede
  * no existir. Nunca se proyecta hacia adelante — si no hay decreto del mes, no hay bono que mostrar.
  *

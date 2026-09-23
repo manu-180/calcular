@@ -15,7 +15,7 @@
 // el turno del 3/8). Ahora un tope viejo o mal tipeado rompe el check antes de llegar a producción.
 
 import { HABER_MINIMO_SERIE, HABER_MINIMO_ULTIMO, NORMAS_POR_PERIODO } from "../src/data/jubilaciones";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "../src/data/prestaciones";
+import { BONO_VIGENTE, PRESTACIONES_VIGENTES, RESOLUCION_PROXIMA } from "../src/data/prestaciones";
 import { TOPE_SIPA } from "../src/data/sueldo";
 import { IPC_SERIE } from "../src/data/ipc-serie";
 import {
@@ -395,6 +395,36 @@ const V = PRESTACIONES_VIGENTES;
   check("el haber máximo es mayor al mínimo", V.haberMaximo > V.haberMinimo);
   check("la PBU es menor al haber mínimo", V.pbu < V.haberMinimo);
   check("la base imponible mínima es menor a la máxima", V.baseImponibleMinima < V.baseImponibleMaxima);
+}
+
+// ===========================================================================
+// 9 · Resolución del mes siguiente dictada antes de tiempo
+// ===========================================================================
+if (RESOLUCION_PROXIMA) {
+  const R = RESOLUCION_PROXIMA;
+  const prox = proximoMesDeterminado();
+  check("la resolución próxima es del mes siguiente al vigente", R.periodo === sumarMeses(V.periodo, 1));
+  check("la resolución próxima no quedó vieja (el vigente no la alcanzó)", R.periodo > V.periodo);
+  check(
+    "el haber mínimo de la resolución próxima coincide al centavo con la fórmula",
+    prox !== null && prox.periodo === R.periodo && Math.abs(prox.haberMinimo - R.haberMinimo) < 0.005,
+    { formula: prox?.haberMinimo, resolucion: R.haberMinimo },
+  );
+  const mov = movilidadDe(R.periodo);
+  const mover = (x: number) => Math.round(x * (1 + (mov ?? NaN) / 100) * 100) / 100;
+  for (const campo of ["haberMaximo", "pbu", "baseImponibleMinima", "baseImponibleMaxima"] as const) {
+    check(
+      `${campo} de la resolución próxima = vigente × movilidad`,
+      Math.abs(mover(V[campo]) - R[campo]) < 0.005,
+      { derivado: mover(V[campo]), resolucion: R[campo] },
+    );
+  }
+  check(
+    "la PUAM de la resolución próxima es el 80% de su haber mínimo",
+    Math.abs(Math.round(R.haberMinimo * 0.8 * 100) / 100 - R.puam) < 0.005,
+  );
+} else {
+  console.log("--   sin resolución del mes siguiente dictada todavía");
 }
 
 console.log("");

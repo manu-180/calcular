@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: `¿Cuánto se cobra por la prestación por edad avanzada en ${MES} de 2026?`,
+    q: `¿Cuánto se cobra por la prestación por edad avanzada en ${MES}?`,
     a: `En la enorme mayoría de los casos, el haber mínimo garantizado: ${formatARS(V.haberMinimo, 2)}, más el bono de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma}, o sea ${formatARS(BASE.total, 2)} depositados. El número que repiten las notas —el 70% de la PBU, ${formatARS(BASE.componentePbu, 2)} en ${MES}— es una cita correcta del artículo 34 bis apartado 3, pero no es lo que se cobra: queda ${formatARS(BRECHA, 2)} por debajo del mínimo. Y el artículo 125 de la Ley 24.241 garantiza a los beneficiarios del Régimen Previsional Público el haber mínimo del artículo 17, donde esta prestación está en el inciso f).`,
   },
   {

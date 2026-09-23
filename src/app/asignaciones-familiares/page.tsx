@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: `¿Cuánto se cobra por hijo en ${MES} de 2026?`,
+    q: `¿Cuánto se cobra por hijo en ${MES}?`,
     a: `Depende del Ingreso del Grupo Familiar (IGF). En ${MES}, para el valor general: ${formatARS(V.hijo[0].montos.general, 0)} con un IGF de hasta ${formatARS(V.hijo[0].hasta ?? 0, 0)}; ${formatARS(V.hijo[1].montos.general, 0)} hasta ${formatARS(V.hijo[1].hasta ?? 0, 0)}; ${formatARS(V.hijo[2].montos.general, 0)} hasta ${formatARS(V.hijo[2].hasta ?? 0, 0)}; y ${formatARS(V.hijo[3].montos.general, 0)} hasta el tope de ${formatARS(V.topeIgfGrupo, 0)}. En las zonas 1 a 4 los montos son más altos. Los valores salen de la ${V.resolucion}, que fijó un aumento de ${formatPct(V.movilidad)}.`,
   },
   {
