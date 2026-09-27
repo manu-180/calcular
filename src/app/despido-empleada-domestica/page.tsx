@@ -15,6 +15,7 @@ import {
   PRUEBA_TOPE_MESES_ANTERIOR_CON_RETIRO,
   VIGENCIA_REFORMA,
 } from "@/data/despido-casas-particulares";
+import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 export const metadata: Metadata = {
   title: "Despido de empleada doméstica: liquidación final con el texto 2026",
@@ -152,6 +153,8 @@ export default function DespidoEmpleadaDomesticaPage() {
         </p>
         <CalculadoraDespidoCasas />
       </section>
+
+      <PlanillaCTA producto="planilla-casas-particulares" desde="despido-empleada-domestica" />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">

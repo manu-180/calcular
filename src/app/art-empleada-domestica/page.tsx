@@ -13,6 +13,7 @@ import {
 } from "@/data/art-casas-particulares";
 import { VIGENCIA } from "@/data/casas-particulares";
 import { VIGENCIA_APORTES } from "@/data/aportes-casas-particulares";
+import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 export const metadata: Metadata = {
   title: "ART de la empleada doméstica: sobre qué sueldo se liquida (no es el que cobra)",
@@ -155,6 +156,8 @@ export default function Page() {
         </p>
         <CalculadoraArtCasas />
       </section>
+
+      <PlanillaCTA producto="planilla-casas-particulares" desde="art-empleada-domestica" />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Lo que la ley delegó, con sus palabras</h2>

@@ -8,6 +8,7 @@
 
 import {
   ESCALA_VIGENTE,
+  escalaDe,
   HORAS_EXTRAS,
   JORNADA,
   SEMANAS_POR_MES,
@@ -30,6 +31,9 @@ export type EntradaCasasParticulares = {
   horasExtrasComunes: number;
   /** Horas extras del mes en sábado después de las 13, domingo o feriado. */
   horasExtrasFinDeSemana: number;
+  /** Mes de la escala (`2026-09`…). Sin él, el vigente. La planilla paga liquida cualquier mes
+   *  de la serie y su check compara contra este mismo motor, mes por mes. */
+  mesId?: string;
 };
 
 export type AvisoCasasParticulares = { tono: "ok" | "atencion" | "bloqueante"; texto: string };
@@ -82,7 +86,9 @@ const redondear = (n: number) => Math.round(n * 100) / 100;
 export function calcularCasasParticulares(
   e: EntradaCasasParticulares,
 ): ResultadoCasasParticulares | null {
-  const categoria = categoriaPorId(e.categoriaId);
+  const categoria = e.mesId
+    ? (escalaDe(e.mesId).find((c) => c.id === e.categoriaId) ?? null)
+    : categoriaPorId(e.categoriaId);
   if (!categoria) return null;
 
   const conRetiro = e.modalidad === "con-retiro";

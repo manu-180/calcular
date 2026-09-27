@@ -1,0 +1,165 @@
+import type { Metadata } from "next";
+import { PlanillaLanding, type FilaPreview } from "../_producto";
+import {
+  CASAS_PARTICULARES_FUENTES,
+  ESCALA_VIGENTE,
+  VIGENCIA,
+} from "@/data/casas-particulares";
+import { calcularCasasParticulares } from "@/lib/casas-particulares";
+import { calcularAportes } from "@/lib/aportes-casas-particulares";
+import { formatARS } from "@/lib/formato";
+import { PRODUCTOS } from "@/lib/mp";
+
+const PRODUCTO = PRODUCTOS["planilla-casas-particulares"];
+const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
+
+export const metadata: Metadata = {
+  title: "Planilla de sueldo de empleada doméstica 2026 en Excel",
+  description: `Planilla de Excel y Google Sheets para liquidar el sueldo de personal de casas particulares: escala oficial de la CNTCP, horas extras, zona desfavorable, aguinaldo, lo que se paga a ARCA y un recibo para imprimir. $${PRECIO} pago único.`,
+  alternates: { canonical: "/planillas/casas-particulares" },
+  openGraph: {
+    images: [
+      {
+        url: `/og?t=${encodeURIComponent("Planilla de sueldo de Casas Particulares 2026")}&s=${encodeURIComponent("Sueldo, aguinaldo, ARCA y recibo · Ley 26.844")}`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
+
+const fechaLarga = (iso: string) => {
+  const [a, m, d] = iso.split("-").map(Number);
+  const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  return `${d} de ${meses[m - 1]} de ${a}`;
+};
+
+// Caso de la vista previa: el más común en las consultas — tareas generales, con retiro, unas
+// horas por semana. Se calcula EN EL SERVER con los motores de /empleada-domestica y
+// /aportes-empleada-domestica: la previa no puede mostrar un número que la planilla no dé.
+const CATEGORIA = ESCALA_VIGENTE.find((c) => c.id === "tareas-generales")!;
+const HORAS = 20;
+const DEMO = calcularCasasParticulares({
+  categoriaId: CATEGORIA.id,
+  modalidad: "con-retiro",
+  horasSemanales: HORAS,
+  zonaDesfavorable: false,
+  horasExtrasComunes: 0,
+  horasExtrasFinDeSemana: 0,
+})!;
+const APORTES = calcularAportes({ horasSemanales: HORAS, condicion: "activo-mayor-18", cantidadTrabajadores: 1 });
+const centavos = (n: number) => formatARS(n, 2);
+
+const preview: FilaPreview[] = [
+  { etiqueta: "Categoría", valor: CATEGORIA.nombre, tono: "input" },
+  { etiqueta: "Modalidad", valor: "Con retiro", tono: "input" },
+  { etiqueta: "Mes a liquidar", valor: VIGENCIA.vigenteEn, tono: "input" },
+  { etiqueta: "Horas por semana", valor: String(HORAS), tono: "input" },
+  { etiqueta: "Valor de la hora", valor: centavos(DEMO.valorHora) },
+  { etiqueta: "Horas del mes", valor: DEMO.horasMensuales.toFixed(2).replace(".", ","), nota: `${HORAS} × 52 ÷ 12` },
+  { etiqueta: "Sueldo del mes", valor: centavos(DEMO.total), tono: "total" },
+  { etiqueta: "Aguinaldo que va generando", valor: centavos(DEMO.aguinaldoEstimado), nota: "50%" },
+  { etiqueta: "Pago mensual a ARCA", valor: centavos(APORTES.totalPorTrabajador), nota: "aportes, contribuciones y ART" },
+  { etiqueta: "Costo total del mes", valor: centavos(DEMO.total + APORTES.totalPorTrabajador), tono: "total" },
+];
+
+export default function PlanillaCasasPage() {
+  return (
+    <PlanillaLanding
+      producto={PRODUCTO}
+      etiquetaConvenio="Ley 26.844 — Casas Particulares"
+      h1={
+        <>
+          El sueldo de quien trabaja en tu casa,
+          <br />
+          <span className="text-emerald-600">bien calculado todos los meses</span>
+        </>
+      }
+      bajada="La planilla de Excel y Google Sheets para familias empleadoras: cargás categoría, horas y mes, y te da el sueldo con la escala oficial, lo que le pagás a ARCA, el aguinaldo de junio y diciembre, y un recibo listo para imprimir."
+      respuestaPrimero={
+        <p>
+          La planilla de sueldo de casas particulares es una hoja de <strong>Excel y Google Sheets</strong> con la
+          escala oficial de la <strong>Resolución CNTCP 6/2026</strong> ya cargada, mes por mes: elegís la categoría,
+          si es con o sin retiro y cuántas horas trabaja por semana, y te calcula el{" "}
+          <strong>sueldo del mes con horas extras y zona desfavorable</strong>, el aguinaldo, las vacaciones y{" "}
+          <strong>lo que tenés que pagarle a ARCA</strong>, incluido cuánto falta para que tenga obra social cuando
+          trabaja menos de 16 horas. Pago único de <strong>${PRECIO}</strong>, con las actualizaciones del año
+          incluidas y devolución dentro de los 7 días si no te sirve.
+        </p>
+      }
+      previewTitulo={`${CATEGORIA.nombre} · con retiro · ${HORAS} h por semana · ${VIGENCIA.vigenteEn}`}
+      previewSubtitulo="Cambiás la categoría, las horas, el mes o sumás horas extras y todo se recalcula solo."
+      preview={preview}
+      calculadoraGratis={{ href: "/empleada-domestica", texto: "Probar la calculadora gratis de sueldo de empleada doméstica" }}
+      hojas={[
+        {
+          titulo: "Liquidador",
+          descripcion:
+            "Categoría, modalidad, horas, zona y horas extras. Te da el valor de la hora, el básico (con la regla de los dos pisos: por hora o mínimo mensual), el total del mes, el aguinaldo que genera y lo que le pagás a ARCA.",
+        },
+        {
+          titulo: "Pagos del año",
+          descripcion:
+            "Anotás lo que pagaste cada mes y te calcula el aguinaldo de junio y de diciembre con la regla de la ley (50% del mejor sueldo del semestre) y los días de vacaciones según la antigüedad.",
+        },
+        {
+          titulo: "Recibo",
+          descripcion:
+            "Se completa solo con el mes liquidado. Cargás los nombres una vez, lo imprimís por duplicado y cada parte se queda con una copia firmada.",
+        },
+        {
+          titulo: "Escala, aportes y fuentes",
+          descripcion: `Las ${ESCALA_VIGENTE.length} categorías con y sin retiro, por hora y por mes, de agosto a ${VIGENCIA.ultimoMesPublicado}; la tabla de ARCA de aportes, contribuciones y ART; y el link a cada documento oficial.`,
+        },
+      ]}
+      fuente={{
+        nombre: CASAS_PARTICULARES_FUENTES.lista[0].nombre,
+        url: CASAS_PARTICULARES_FUENTES.lista[0].url,
+        verificadoEl: fechaLarga(CASAS_PARTICULARES_FUENTES.consultadoEl),
+      }}
+      tituloActualizacion="Qué pasa cuando cambia la escala"
+      actualizacion={`La escala de casas particulares la fija la Comisión Nacional de Trabajo en Casas Particulares, y la vigente llega hasta ${VIGENCIA.ultimoMesPublicado}. Cuando se publique la resolución siguiente —y cada mes, cuando ARCA publica la tabla de aportes— la cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
+      faqs={[
+        {
+          q: "¿Cómo la recibo?",
+          a: "Apenas MercadoPago confirma el pago te llega un mail con el enlace de descarga. Es inmediato. Guardá ese mail: el enlace es permanente y siempre te baja la última versión, así que también es por ahí que te llegan las actualizaciones.",
+        },
+        {
+          q: "¿Sirve si trabaja por horas y no todo el mes?",
+          a: "Sí, es el caso más común. Con menos de 48 horas semanales se paga por hora, y la planilla pasa las horas semanales a horas del mes. Con jornada completa aplica el mínimo mensual de la categoría si es más alto. Esos son los dos pisos de la escala, y la planilla usa el que corresponde.",
+        },
+        {
+          q: "¿Incluye lo que le tengo que pagar a ARCA?",
+          a: "Sí. Según las horas semanales y la condición de la trabajadora, te dice el pago mensual a ARCA (obra social, jubilación y ART) y, si trabaja menos de 16 horas, cuánto falta para que tenga obra social y le compute la jubilación: en regla y todo, sin esa diferencia se queda sin cobertura.",
+        },
+        {
+          q: "¿Calcula el aguinaldo y las vacaciones?",
+          a: "Sí. En la hoja «Pagos del año» anotás lo que pagaste cada mes y te calcula el aguinaldo de junio y de diciembre (50% del mejor sueldo del semestre, art. 26 de la Ley 26.844) y los días de vacaciones según la antigüedad.",
+        },
+        {
+          q: "¿Sirve para calcular un despido o una renuncia?",
+          a: "No: la liquidación final tiene reglas propias (preaviso, integración del mes, antigüedad, proporcionales) y cambió con la reforma de 2026. Para eso está la calculadora gratis de despido de empleada doméstica del sitio.",
+        },
+        {
+          q: "¿Los números son los mismos que los de la calculadora gratis?",
+          a: "Sí. La planilla se genera desde los mismos datos que las calculadoras de calcular.ar, y antes de publicar cada versión una verificación automática recalcula el archivo en más de 2.000 casos —todas las categorías, modalidades, horas y meses— y lo compara contra la calculadora. Si alguna vez no coinciden, escribinos.",
+        },
+        {
+          q: "¿Y si la compro y no me sirve?",
+          a: `Tenés 7 días para pedir la devolución. Respondés el mail de la entrega y te devolvemos los $${PRECIO} por MercadoPago. No hace falta que expliques nada.`,
+        },
+        {
+          q: "¿Reemplaza el registro en ARCA?",
+          a: "No. El alta de la trabajadora y el pago mensual se siguen haciendo en ARCA. La planilla te dice cuánto pagar y te arma el recibo, para que no tengas que buscar la escala ni hacer la cuenta a mano.",
+        },
+      ]}
+      relacionadas={[
+        { href: "/empleada-domestica", texto: "Sueldo de empleada doméstica" },
+        { href: "/aportes-empleada-domestica", texto: "Aportes a ARCA" },
+        { href: "/despido-empleada-domestica", texto: "Despido de empleada doméstica" },
+        { href: "/art-empleada-domestica", texto: "ART de casas particulares" },
+        { href: "/deduccion-empleada-domestica", texto: "Deducción en Ganancias" },
+      ]}
+    />
+  );
+}

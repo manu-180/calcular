@@ -60,6 +60,10 @@ export function nota(ws: ExcelJS.Worksheet, rango: string, texto: string): void 
  *  si el listado creciera (12 meses, 40 categorías) hay que pasarlo a un rango con nombre,
  *  y este throw es el que avisa antes de entregar un archivo con dropdowns rotos. */
 export function desplegable(opciones: string[], mensajeError: string): ExcelJS.DataValidation {
+  // Una coma dentro de una opción la parte en dos en el desplegable de Excel y el valor elegido
+  // deja de matchear contra la tabla: la planilla da cero sin avisar.
+  const conComa = opciones.find((o) => o.includes(","));
+  if (conComa) throw new Error(`Opción de desplegable con coma: «${conComa}». Usá una etiqueta sin comas.`);
   const lista = opciones.join(",");
   if (lista.length > 250) {
     throw new Error(
@@ -127,6 +131,7 @@ export function hojaFuentes(
   fuentes: { nombre: string; url: string }[],
   consultadoEl: string,
   homologaciones: string[] = [],
+  pie = "Planilla de calcular.ar. Las actualizaciones del año están incluidas en el precio: cuando se firma una paritaria nueva, la versión actualizada te llega por email al mismo enlace de descarga.",
 ): void {
   const ws = wb.addWorksheet("Fuentes", { properties: { tabColor: { argb: "FF37474F" } } });
   ws.columns = [{ width: 62 }, { width: 76 }];
@@ -176,9 +181,5 @@ export function hojaFuentes(
     }
     r++;
   }
-  nota(
-    ws,
-    `A${r}:B${r}`,
-    "Planilla de calcular.ar. Las actualizaciones del año están incluidas en el precio: cuando se firma una paritaria nueva, la versión actualizada te llega por email al mismo enlace de descarga.",
-  );
+  nota(ws, `A${r}:B${r}`, pie);
 }

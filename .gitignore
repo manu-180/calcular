@@ -27,3 +27,6 @@ next-env.d.ts
 
 .vercel
 .env*
+# .envkit fija el namespace de la bóveda (texto plano, sin secretos): va al final porque el
+# `.env*` de arriba lo volvería a ignorar
+!.envkit

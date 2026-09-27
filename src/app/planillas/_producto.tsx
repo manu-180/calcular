@@ -16,6 +16,10 @@
 
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { AvisoPago } from "@/components/AvisoPago";
+import { BarraCompraMovil } from "@/components/BarraCompraMovil";
+import { CatalogoPlanillas, OtrasPlanillas } from "@/components/CatalogoPlanillas";
+import { CompraDialogo } from "@/components/CompraDialogo";
 import { JsonLd } from "@/components/JsonLd";
 import { PlanillaComprarBtn } from "@/components/PlanillaComprarBtn";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
@@ -39,19 +43,19 @@ export type ConfigLanding = {
   /** Encabezado de la vista previa: qué caso concreto se está liquidando. */
   previewTitulo: string;
   previewSubtitulo: string;
+  /** Nombre de la hoja que muestra la vista previa. */
+  previewHoja?: string;
   preview: FilaPreview[];
   /** Link a la calculadora gratis que da estos mismos números. */
   calculadoraGratis: { href: string; texto: string };
   hojas: { titulo: string; descripcion: string }[];
   fuente: { nombre: string; url: string; verificadoEl: string };
   actualizacion: string;
+  /** Título de la sección de actualizaciones: no todo producto depende de una paritaria. */
+  tituloActualizacion?: string;
   faqs: { q: string; a: string }[];
   relacionadas: { href: string; texto: string }[];
-  /** La otra planilla del catálogo, para no perder al que cayó en la equivocada. */
-  otraPlanilla: { href: string; titulo: string; detalle: string };
 };
-
-const CHECKOUT_BASE = "/api/mp/checkout";
 
 function Check() {
   return (
@@ -66,14 +70,7 @@ function Check() {
 }
 
 function Comprar({ producto, id }: { producto: Producto; id?: string }) {
-  return (
-    <PlanillaComprarBtn
-      href={`${CHECKOUT_BASE}?p=${producto.slug}`}
-      producto={producto.slug}
-      precio={producto.precio}
-      id={id}
-    />
-  );
+  return <PlanillaComprarBtn producto={producto.slug} precio={producto.precio} id={id} />;
 }
 
 export function PlanillaLanding(c: ConfigLanding) {
@@ -150,6 +147,12 @@ export function PlanillaLanding(c: ConfigLanding) {
     <>
       <JsonLd data={jsonLd} />
       <JsonLd data={faqLd} />
+      <CompraDialogo
+        producto={{ slug: producto.slug, tituloCorto: producto.tituloCorto, precio: producto.precio }}
+      />
+
+      <CatalogoPlanillas actual={producto.slug} />
+      <AvisoPago />
 
       {/* ── Hero: promesa + precio + CTA, todo arriba del pliegue ── */}
       <section className="mb-10">
@@ -170,7 +173,7 @@ export function PlanillaLanding(c: ConfigLanding) {
             <p className="text-3xl font-bold text-zinc-900">{precio}</p>
             <p className="text-sm text-zinc-600">pago único · sin suscripción</p>
           </div>
-          <div className="mt-4 flex-1 sm:mt-0">
+          <div id="compra-hero" className="mt-4 flex-1 sm:mt-0">
             <Comprar producto={producto} id="cta-hero" />
             <p className="mt-2 text-center text-xs text-zinc-600">
               Pagás con MercadoPago (tarjeta, débito o dinero en cuenta) y te llega al mail al instante.
@@ -202,14 +205,14 @@ export function PlanillaLanding(c: ConfigLanding) {
             <h2 className="mb-1 text-xl font-semibold text-zinc-900">Esto es lo que vas a ver al abrirla</h2>
             <p className="mb-4 text-sm text-zinc-600">
               No es una captura de pantalla: son los números que la planilla devuelve hoy, calculados
-              con la escala vigente. Si mañana cambia la paritaria, cambia esto y cambia el archivo.
+              con la escala vigente. Si mañana cambia la escala oficial, cambia esto y cambia el archivo.
             </p>
 
             <div className="overflow-hidden rounded-xl border border-zinc-300 shadow-sm">
               <div className="flex items-center justify-between gap-3 border-b border-zinc-300 bg-zinc-800 px-4 py-2.5">
                 <p className="text-sm font-semibold text-white">{c.previewTitulo}</p>
                 <span className="hidden shrink-0 rounded bg-zinc-700 px-2 py-0.5 text-[11px] font-medium text-zinc-200 sm:inline">
-                  hoja «Liquidador»
+                  hoja «{c.previewHoja ?? "Liquidador"}»
                 </span>
               </div>
               <p className="border-b border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-600">
@@ -312,7 +315,7 @@ export function PlanillaLanding(c: ConfigLanding) {
           {/* ── 4. Qué pasa cuando cambia la paritaria ── */}
           <section>
             <h2 className="mb-2 text-xl font-semibold text-zinc-900">
-              Qué pasa cuando cambia la paritaria
+              {c.tituloActualizacion ?? "Qué pasa cuando cambia la paritaria"}
             </h2>
             <p className="text-zinc-600">{c.actualizacion}</p>
             <p className="mt-2 text-sm text-zinc-600">
@@ -359,8 +362,8 @@ export function PlanillaLanding(c: ConfigLanding) {
             <p className="text-sm text-zinc-600">
               CalculAR es un proyecto argentino de calculadoras laborales y fiscales con datos de
               fuentes oficiales verificadas. Las calculadoras del sitio son gratis y siempre lo van a
-              ser; estas planillas son la versión que te llevás puesta, para liquidar sin depender de
-              tener internet ni de entrar cada mes.
+              ser; estas planillas son la versión que te llevás puesta, para hacer la cuenta sin depender
+              de tener internet ni de entrar cada mes.
             </p>
             <div className="mt-3 flex flex-wrap gap-4 text-sm font-semibold">
               <Link href="/sobre" className="text-emerald-700 underline hover:text-emerald-900">
@@ -380,7 +383,7 @@ export function PlanillaLanding(c: ConfigLanding) {
             <p className="mx-auto mt-1 max-w-md text-sm text-zinc-600">
               Con las actualizaciones del año y 7 días para arrepentirte.
             </p>
-            <div className="mx-auto mt-4 max-w-xs">
+            <div id="compra-cierre" className="mx-auto mt-4 max-w-xs">
               <Comprar producto={producto} id="cta-cierre" />
             </div>
           </section>
@@ -423,16 +426,7 @@ export function PlanillaLanding(c: ConfigLanding) {
             </p>
           </div>
 
-          <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm">
-            <p className="font-semibold text-amber-900">{c.otraPlanilla.titulo}</p>
-            <p className="mt-1 text-amber-800">{c.otraPlanilla.detalle}</p>
-            <Link
-              href={c.otraPlanilla.href}
-              className="mt-2 inline-block font-semibold text-amber-700 underline hover:text-amber-900"
-            >
-              Verla →
-            </Link>
-          </div>
+          <OtrasPlanillas actual={producto.slug} />
         </aside>
       </div>
 
@@ -450,6 +444,8 @@ export function PlanillaLanding(c: ConfigLanding) {
           ))}
         </div>
       </section>
+
+      <BarraCompraMovil slug={producto.slug} tituloCorto={producto.tituloCorto} precio={producto.precio} />
     </>
   );
 }

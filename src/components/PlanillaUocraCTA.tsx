@@ -26,7 +26,7 @@ export function PlanillaUocraCTA() {
           </p>
         </div>
         <Link
-          href="/planillas/uocra"
+          href="/planillas/uocra?desde=cta-uocra"
           className="shrink-0 rounded-lg bg-emerald-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 hover:shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 active:translate-y-px"
         >
           Ver la planilla →

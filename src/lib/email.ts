@@ -113,10 +113,15 @@ export function newsletterEmailHtml(opts: {
 
 <table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;">
   <tr><td style="padding:16px;">
-    <p style="margin:0 0 4px;font-size:11px;color:#92400e;text-transform:uppercase;letter-spacing:.06em;">Para quien liquida sueldos de Comercio</p>
-    <p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#111827;">Planilla de liquidación — CCT 130/75</p>
-    <p style="margin:0 0 12px;font-size:13px;color:#374151;line-height:1.5;">El recibo completo en Excel: básico, antigüedad, presentismo, sumas no remunerativas y aportes, con las escalas oficiales ya cargadas. Lista para usar.</p>
-    <a href="${BASE}/planillas" style="color:#b45309;font-size:14px;font-weight:600;text-decoration:none;">→ Conocé la planilla</a>
+    <p style="margin:0 0 4px;font-size:11px;color:#92400e;text-transform:uppercase;letter-spacing:.06em;">Planillas de calcular.ar</p>
+    <p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#111827;">La misma cuenta, en Excel y actualizada todo el año</p>
+    <p style="margin:0 0 12px;font-size:13px;color:#374151;line-height:1.7;">
+      <a href="${BASE}/planillas/casas-particulares" style="color:#b45309;">Sueldo de empleada doméstica</a> ·
+      <a href="${BASE}/planillas/monotributo" style="color:#b45309;">Control de monotributo</a> ·
+      <a href="${BASE}/planillas" style="color:#b45309;">Sueldos de Comercio</a> ·
+      <a href="${BASE}/planillas/uocra" style="color:#b45309;">Jornales UOCRA</a>
+    </p>
+    <p style="margin:0;font-size:12px;color:#6b7280;">Pago único, con las actualizaciones del año y 7 días para pedir la devolución.</p>
   </td></tr>
 </table>
 
@@ -137,7 +142,7 @@ export function newsletterEmailHtml(opts: {
 // MercadoPago y sirve SIEMPRE la última versión del .xlsx, así que "todas las actualizaciones
 // del año incluidas" se cumple sola, sin mandar un archivo nuevo cada paritaria.
 
-function shellTransaccional(content: string): string {
+function shellTransaccional(content: string, pie?: string): string {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -155,8 +160,8 @@ function shellTransaccional(content: string): string {
   <tr><td style="padding:32px;">${content}</td></tr>
   <tr><td style="background:#f9fafb;padding:16px 32px;border-top:1px solid #e5e7eb;">
     <p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;">
-      Este es el comprobante de tu compra en <a href="${BASE}" style="color:#059669;">calcular.ar</a>.
-      Guardalo: el enlace de descarga es permanente.<br>
+      ${pie ?? `Este es el comprobante de tu compra en <a href="${BASE}" style="color:#059669;">calcular.ar</a>.
+      Guardalo: el enlace de descarga es permanente.`}<br>
       ¿Algún problema? Respondé este mail o escribinos desde <a href="${BASE}/contacto" style="color:#059669;">calcular.ar/contacto</a>.
     </p>
   </td></tr>
@@ -172,7 +177,16 @@ export function planillaEntregaHtml(opts: {
   convenio: string;
   urlDescarga: string;
   urlLanding: string;
+  /** Qué dispara una versión nueva. Monotributo no tiene paritaria: tiene escalas semestrales. */
+  disparadorActualizacion?: string;
+  otras?: { titulo: string; paraQuien: string; url: string }[];
 }): string {
+  const otras = opts.otras?.length
+    ? `<p style="margin:24px 0 8px;font-size:13px;color:#6b7280;">Otras planillas de calcular.ar, por si te sirven:</p>
+<ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:1.9;">
+${opts.otras.map((o) => `  <li><a href="${o.url}" style="color:#059669;">${o.titulo}</a> — ${o.paraQuien.charAt(0).toLowerCase()}${o.paraQuien.slice(1)}</li>`).join("\n")}
+</ul>`
+    : "";
   return shellTransaccional(`
 <h2 style="margin:0 0 16px;font-size:22px;color:#111827;">Tu planilla está lista</h2>
 <p style="margin:0 0 20px;font-size:15px;color:#374151;line-height:1.6;">
@@ -192,9 +206,9 @@ export function planillaEntregaHtml(opts: {
   <tr><td style="padding:16px 20px;">
     <p style="margin:0 0 6px;font-size:15px;font-weight:600;color:#065f46;">Guardá este mail</p>
     <p style="margin:0;font-size:14px;color:#047857;line-height:1.6;">
-      Ese enlace es tuyo y no vence: cada vez que se firma una paritaria nueva actualizamos la
-      planilla y el mismo enlace te descarga la versión al día. No tenés que pagar de nuevo ni
-      pedirnos nada.
+      Ese enlace es tuyo y no vence: ${opts.disparadorActualizacion ?? "cada vez que se firma una paritaria nueva"}
+      actualizamos la planilla y el mismo enlace te descarga la versión al día. No tenés que pagar
+      de nuevo ni pedirnos nada.
     </p>
   </td></tr>
 </table>
@@ -206,7 +220,47 @@ export function planillaEntregaHtml(opts: {
 <p style="margin:0;font-size:14px;color:#374151;line-height:1.6;">
   Si la planilla no te sirve, respondé este mail dentro de los 7 días y te devolvemos el dinero.
 </p>
+${otras}
   `);
+}
+
+// ─── Recordatorio de compra sin terminar ─────────────────────────────────────
+//
+// Uno solo por intento (ver src/lib/mp-recupero.ts). El tono es el de alguien que te guardó el
+// lugar, no el de un cobrador: nada de urgencia ni de "últimas unidades", y la salida
+// ("no hace falta que hagas nada") va escrita, para que ignorarlo no se sienta como deuda.
+export function recordatorioCompraHtml(opts: {
+  tituloCorto: string;
+  precio: string;
+  urlRetomar: string;
+}): string {
+  return shellTransaccional(
+    `
+<h2 style="margin:0 0 16px;font-size:21px;color:#111827;">Te quedó pendiente la ${opts.tituloCorto}</h2>
+<p style="margin:0 0 16px;font-size:15px;color:#374151;line-height:1.6;">
+  Ayer empezaste a comprarla en calcular.ar y el pago no llegó a completarse. Si fue un problema
+  con la tarjeta, suele alcanzar con probar con débito o con dinero en cuenta de MercadoPago.
+</p>
+<table cellpadding="0" cellspacing="0" style="margin:0 0 20px;">
+  <tr>
+    <td style="background:#059669;border-radius:8px;padding:14px 28px;">
+      <a href="${opts.urlRetomar}" style="color:#fff;font-size:16px;font-weight:600;text-decoration:none;">Retomar la compra · ${opts.precio} →</a>
+    </td>
+  </tr>
+</table>
+<p style="margin:0 0 16px;font-size:14px;color:#374151;line-height:1.6;">
+  Es un pago único, con las actualizaciones del año incluidas y 7 días para pedir la devolución
+  si no te sirve.
+</p>
+<p style="margin:0 0 16px;font-size:14px;color:#374151;line-height:1.6;">
+  ¿Te frenó una duda? Respondé este mail y te contestamos.
+</p>
+<p style="margin:0;font-size:13px;color:#6b7280;line-height:1.6;">
+  Si cambiaste de idea no hace falta que hagas nada: no te vamos a volver a escribir por esto.
+</p>
+  `,
+    "Te escribimos porque dejaste este mail al empezar una compra en calcular.ar. Es el único recordatorio.",
+  );
 }
 
 // ─── Envío ────────────────────────────────────────────────────────────────────

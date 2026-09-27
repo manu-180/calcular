@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CATALOGO } from "@/lib/mp";
 
 export const metadata: Metadata = {
   title: "CalculAR — Calculadoras gratuitas para la Argentina",
@@ -576,7 +577,7 @@ function Tarjeta({ h }: { h: (typeof herramientas)[number] }) {
   return (
     <Link
       href={h.href}
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-zinc-200/90 bg-white p-5 shadow-[0_1px_2px_rgba(16,24,40,0.04)] outline-none transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-[0_14px_34px_-20px_rgba(16,185,129,0.55)] motion-reduce:hover:translate-y-0"
+      className="group relative flex flex-col overflow-hidden rounded-xl border border-zinc-200/90 bg-white p-5 shadow-[0_1px_2px_rgba(16,24,40,0.04)] outline-none transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-[0_14px_30px_-18px_rgba(0,0,0,0.22)] motion-reduce:hover:translate-y-0"
     >
       {/* Filete que se pinta al pasar: da respuesta al hover sin mover el layout */}
       <span
@@ -672,43 +673,42 @@ export default function Home() {
 
       <section className="space-y-4">
         <div className="border-b border-zinc-200/80 pb-2.5">
-          <h2 className="text-lg font-bold tracking-tight text-zinc-900">Para profesionales</h2>
+          <h2 className="text-lg font-bold tracking-tight text-zinc-900">Planillas para llevarte</h2>
           <p className="text-sm text-zinc-500">
-            Para estudios contables y quien liquida sueldos todos los meses
+            La misma cuenta de la calculadora, en Excel y Google Sheets, actualizada todo el año
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link
-            href="/planillas"
-            className="group relative overflow-hidden rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-5 outline-none transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-emerald-400 hover:shadow-[0_14px_34px_-20px_rgba(16,185,129,0.6)] motion-reduce:hover:translate-y-0"
-          >
-            <span className="inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-800">
-              Disponible · ARS 14.900
-            </span>
-            <h3 className="mt-2 font-semibold text-zinc-900 transition-colors group-hover:text-emerald-700">
-              Planilla de sueldos Comercio 2026
-            </h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">
-              Escala oficial CCT 130/75 embebida, con antigüedad, presentismo y jornada parcial.
-              Actualización garantizada con cada paritaria.
-            </p>
-          </Link>
-          <Link
-            href="/convenios"
-            className="group relative overflow-hidden rounded-xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-5 outline-none transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-amber-400 hover:shadow-[0_14px_34px_-20px_rgba(217,119,6,0.55)] motion-reduce:hover:translate-y-0"
-          >
-            <span className="inline-flex rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800">
-              Gratis · escalas oficiales
-            </span>
-            <h3 className="mt-2 font-semibold text-zinc-900 transition-colors group-hover:text-amber-700">
-              Escalas por convenio, mes por mes
-            </h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">
-              Comercio, UOCRA y Camioneros con los básicos de cada mes. Solo cargamos un mes nuevo
-              con la circular oficial del gremio en la mano.
-            </p>
-          </Link>
+          {CATALOGO.map((p) => (
+            <Link
+              key={p.slug}
+              href={`${p.rutaLanding}?desde=home`}
+              className="group relative overflow-hidden rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-5 outline-none transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-emerald-400 hover:shadow-[0_14px_30px_-18px_rgba(0,0,0,0.22)] motion-reduce:hover:translate-y-0"
+            >
+              <span className="inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-800">
+                ARS {p.precio.toLocaleString("es-AR")} · pago único
+              </span>
+              <h3 className="mt-2 font-semibold text-zinc-900 transition-colors group-hover:text-emerald-700">
+                {p.titulo}
+              </h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">{p.paraQuien}.</p>
+            </Link>
+          ))}
         </div>
+        <Link
+          href="/convenios"
+          className="group flex items-center justify-between gap-4 rounded-xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-4 outline-none transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-amber-400 hover:shadow-[0_14px_30px_-18px_rgba(0,0,0,0.22)] motion-reduce:hover:translate-y-0"
+        >
+          <span>
+            <span className="block font-semibold text-zinc-900 group-hover:text-amber-700">
+              Escalas por convenio, mes por mes · gratis
+            </span>
+            <span className="block text-sm text-zinc-600">
+              Comercio, UOCRA y Camioneros, cargados solo con la circular oficial del gremio en la mano.
+            </span>
+          </span>
+          <span aria-hidden className="text-amber-700">→</span>
+        </Link>
       </section>
 
       <section className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-[0_1px_2px_rgba(16,24,40,0.04)]">

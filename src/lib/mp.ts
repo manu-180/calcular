@@ -21,7 +21,11 @@ function accessToken(): string {
 
 // ─── Catálogo ────────────────────────────────────────────────────────────────
 
-export type ProductoSlug = "planilla-comercio" | "planilla-uocra";
+export type ProductoSlug =
+  | "planilla-comercio"
+  | "planilla-uocra"
+  | "planilla-casas-particulares"
+  | "planilla-monotributo";
 
 export type Producto = {
   slug: ProductoSlug;
@@ -32,6 +36,11 @@ export type Producto = {
   titulo: string;
   tituloCorto: string;
   convenio: string;
+  /** Para quién es, en una línea: lo usan el catálogo, el cross-sell y el mail de recupero. */
+  paraQuien: string;
+  /** Qué dispara una versión nueva del archivo (va en el mail de entrega, completando la frase
+   *  «Ese enlace no vence: …, actualizamos la planilla»). */
+  disparadorActualizacion: string;
   precio: number;
   moneda: "ARS";
   archivo: string;
@@ -48,6 +57,8 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     titulo: "Planilla de sueldos Empleados de Comercio 2026",
     tituloCorto: "Planilla Comercio 2026",
     convenio: "CCT 130/75 — Empleados de Comercio",
+    paraQuien: "Para liquidar sueldos de comercio con la escala de FAECYS ya cargada",
+    disparadorActualizacion: "cada vez que FAECYS publica una circular con escala nueva",
     precio: 14900,
     moneda: "ARS",
     archivo: "planilla-comercio-2026.xlsx",
@@ -59,13 +70,52 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     titulo: "Planilla de sueldos UOCRA 2026",
     tituloCorto: "Planilla UOCRA 2026",
     convenio: "CCT 76/75 — Construcción (UOCRA)",
+    paraQuien: "Para liquidar jornales de la construcción en las cuatro zonas",
+    disparadorActualizacion: "cada vez que UOCRA y CAMARCO firman un tramo nuevo",
     precio: 14900,
     moneda: "ARS",
     archivo: "planilla-uocra-2026.xlsx",
     rutaDescarga: "/api/planilla-uocra/download",
     rutaLanding: "/planillas/uocra",
   },
+  // Los dos productos de audiencia masiva valen menos que los de liquidación por convenio a
+  // propósito: quien compra la de Comercio es un comercio o un estudio (gasto del negocio);
+  // éstas las paga una familia o un monotributista de su bolsillo.
+  "planilla-casas-particulares": {
+    slug: "planilla-casas-particulares",
+    titulo: "Planilla de sueldo de Casas Particulares 2026",
+    tituloCorto: "Planilla Casas Particulares 2026",
+    convenio: "Ley 26.844 — Personal de Casas Particulares",
+    paraQuien: "Para la familia que le paga el sueldo a una empleada doméstica",
+    disparadorActualizacion: "cada vez que la Comisión Nacional de Trabajo en Casas Particulares fija una escala nueva",
+    precio: 9900,
+    moneda: "ARS",
+    archivo: "planilla-casas-particulares-2026.xlsx",
+    rutaDescarga: "/api/planilla-casas-particulares/download",
+    rutaLanding: "/planillas/casas-particulares",
+  },
+  "planilla-monotributo": {
+    slug: "planilla-monotributo",
+    titulo: "Planilla de control de Monotributo 2026",
+    tituloCorto: "Planilla Monotributo 2026",
+    convenio: "Régimen Simplificado (Monotributo) — ARCA",
+    paraQuien: "Para el monotributista que quiere saber cuánto más puede facturar sin saltar de categoría",
+    disparadorActualizacion: "cada vez que ARCA actualiza las categorías (febrero y agosto)",
+    precio: 9900,
+    moneda: "ARS",
+    archivo: "planilla-monotributo-2026.xlsx",
+    rutaDescarga: "/api/planilla-monotributo/download",
+    rutaLanding: "/planillas/monotributo",
+  },
 };
+
+/** Orden en que se muestran en el catálogo y en los cross-sell. */
+export const CATALOGO: Producto[] = [
+  PRODUCTOS["planilla-comercio"],
+  PRODUCTOS["planilla-casas-particulares"],
+  PRODUCTOS["planilla-monotributo"],
+  PRODUCTOS["planilla-uocra"],
+];
 
 /** Alias histórico: había un único producto y medio repo lo importa así. */
 export const PRODUCTO = PRODUCTOS["planilla-comercio"];
@@ -77,11 +127,40 @@ export function productoPorSlug(slug: string | null | undefined): Producto | nul
   return Object.values(PRODUCTOS).find((p) => p.slugLegado === slug) ?? null;
 }
 
-/** `external_reference` de la preferencia: `<slug>:<uuid>`. El slug viaja adelante porque MP
- *  devuelve `external_reference` SIEMPRE en el pago (a diferencia de `metadata`, que depende
- *  de la integración), y es lo que le deja al webhook y a la descarga saber qué se compró. */
-export function referenciaExterna(slug: ProductoSlug): string {
-  return `${slug}:${crypto.randomUUID()}`;
+/** `external_reference` de la preferencia: `<slug>:<uuid>[:<desde>]`. El slug viaja adelante porque
+ *  MP devuelve `external_reference` SIEMPRE en el pago (a diferencia de `metadata`, que depende
+ *  de la integración), y es lo que le deja al webhook y a la descarga saber qué se compró.
+ *  `desde` (de qué página vino el comprador) va al final porque la búsqueda de preferencias de MP
+ *  no devuelve `metadata`: es la única forma de medir qué página vende sin una base propia. */
+export function referenciaExterna(slug: ProductoSlug, desde?: string | null): string {
+  const base = `${slug}:${crypto.randomUUID()}`;
+  const origen = normalizarDesde(desde);
+  return origen ? `${base}:${origen}` : base;
+}
+
+/** Deja `desde` en un slug corto y seguro para la referencia (MP corta en 256 caracteres). */
+export function normalizarDesde(desde: string | null | undefined): string {
+  if (!desde) return "";
+  return desde
+    .toLowerCase()
+    .replace(/^https?:\/\//, "")
+    .replace(/[^a-z0-9._/-]+/g, "-")
+    .replace(/^[-/]+|[-/]+$/g, "")
+    .slice(0, 60);
+}
+
+/** Lee el tercer segmento de la referencia. Vacío en referencias viejas (sin origen). */
+export function desdeDeReferencia(ref: string | null | undefined): string {
+  const partes = (ref ?? "").split(":");
+  return partes.length >= 3 ? partes.slice(2).join(":") : "";
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/** Email de comprador apto para la preferencia, o null. */
+export function emailValido(email: string | null | undefined): string | null {
+  const e = (email ?? "").trim().toLowerCase();
+  return e.length <= 254 && EMAIL_RE.test(e) ? e : null;
 }
 
 /**
@@ -139,6 +218,9 @@ export type CrearPreferenciaParams = {
   externalReference: string;
   backUrls: { success: string; pending: string; failure: string };
   notificationUrl?: string; // v1.1 (webhook); v1 entrega sin esto
+  /** Prellena el checkout y queda en la preferencia (`payer_email` en la búsqueda de MP): es lo
+   *  que permite mandar UN recordatorio a quien no terminó de pagar, sin tabla propia. */
+  emailComprador?: string | null;
 };
 
 // Crea la preferencia de Checkout Pro y devuelve el init_point al que redirigir.
@@ -160,6 +242,7 @@ export async function crearPreferencia(p: CrearPreferenciaParams): Promise<MpPre
       ],
       back_urls: p.backUrls,
       auto_return: "approved",
+      ...(p.emailComprador ? { payer: { email: p.emailComprador } } : {}),
       external_reference: p.externalReference,
       metadata: { producto: p.producto.slug },
       ...(p.notificationUrl ? { notification_url: p.notificationUrl } : {}),

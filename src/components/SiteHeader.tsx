@@ -64,6 +64,13 @@ const TABS: Tab[] = [
               label: "Obra social",
               desc: "Desde cuándo te cubre y qué te pueden negar",
             },
+            {
+              href: "/planillas/monotributo",
+              label: "Planilla de control",
+              desc: "Cuánto más podés facturar sin cambiar de categoría",
+              badge: "Pro",
+              featured: true,
+            },
           ],
         },
       ],
@@ -213,6 +220,7 @@ const TABS: Tab[] = [
             { href: "/empleada-domestica", label: "Empleada doméstica" },
             { href: "/aportes-empleada-domestica", label: "Aportes a ARCA (doméstica)" },
             { href: "/despido-empleada-domestica", label: "Despido de empleada doméstica" },
+            { href: "/planillas/casas-particulares", label: "Planilla de sueldo doméstica", badge: "Pro" },
             { href: "/repartidores-de-apps", label: "Repartidores de apps" },
             { href: "/rifl", label: "RIFL (contratar más barato)" },
             {
@@ -769,7 +777,7 @@ export default function SiteHeader() {
           WebkitBackdropFilter: "blur(16px) saturate(160%)",
           borderColor: scrolled ? "rgba(16,185,129,0.18)" : "rgba(228,228,231,0.6)",
           boxShadow: scrolled
-            ? "0 10px 30px -22px rgba(16,185,129,0.35), 0 1px 0 0 rgba(16,185,129,0.05)"
+            ? "0 10px 30px -22px rgba(0,0,0,0.25), 0 1px 0 0 rgba(0,0,0,0.04)"
             : "none",
         }}
       >
@@ -859,7 +867,6 @@ export default function SiteHeader() {
                     left: underline.left,
                     width: underline.width,
                     opacity: underlineOpacity,
-                    boxShadow: "0 0 10px rgba(16,185,129,0.55)",
                   }}
                 />
               )}

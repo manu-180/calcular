@@ -13,6 +13,7 @@ import {
 import { VIGENCIA_APORTES } from "@/data/aportes-casas-particulares";
 import { calcularDeduccionDomestica } from "@/lib/deduccion-domestica";
 import { formatARS } from "@/lib/formato";
+import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 // Dos casos testigo, calculados con el mismo motor que usa la calculadora (si el motor cambia,
 // el texto cambia con él: acá no hay números escritos a mano).
@@ -164,6 +165,8 @@ export default function DeduccionEmpleadaDomesticaPage() {
       </RespuestaPrimero>
 
       <CalculadoraDeduccionDomestica />
+
+      <PlanillaCTA producto="planilla-casas-particulares" desde="deduccion-empleada-domestica" />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">

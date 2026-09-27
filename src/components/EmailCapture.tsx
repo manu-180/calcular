@@ -87,7 +87,7 @@ export function EmailCapture({
   }
 
   return (
-    <div className="group/ec rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-shadow duration-300 hover:shadow-[0_10px_32px_-20px_rgba(16,185,129,0.45)]">
+    <div className="group/ec rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-shadow duration-300 hover:shadow-[0_10px_28px_-18px_rgba(0,0,0,0.18)]">
       <div className="flex items-start gap-3">
         <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100 transition-transform duration-300 ease-out group-hover/ec:scale-105">
           <Campana className="size-5" />
@@ -119,7 +119,7 @@ export function EmailCapture({
         <button
           type="submit"
           disabled={cargando}
-          className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 text-[15px] font-semibold text-white shadow-sm outline-none transition-[background-color,transform,box-shadow] duration-200 hover:bg-emerald-700 hover:shadow-[0_8px_20px_-10px_rgba(5,150,105,0.8)] active:scale-[0.98] disabled:cursor-wait disabled:opacity-70"
+          className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 text-[15px] font-semibold text-white shadow-sm outline-none transition-[background-color,transform,box-shadow] duration-200 hover:bg-emerald-700 hover:shadow-[0_6px_16px_-8px_rgba(0,0,0,0.22)] active:scale-[0.98] disabled:cursor-wait disabled:opacity-70"
         >
           {cargando && (
             <span

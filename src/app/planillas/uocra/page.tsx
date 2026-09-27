@@ -167,12 +167,6 @@ export default function PlanillaUocraPage() {
         { href: "/horas-extras", texto: "Calculadora de horas extras" },
         { href: "/vacaciones", texto: "Calculadora de vacaciones" },
       ]}
-      otraPlanilla={{
-        href: "/planillas",
-        titulo: "¿También liquidás comercio?",
-        detalle:
-          "La planilla de Empleados de Comercio (CCT 130/75) tiene las 21 categorías con antigüedad, presentismo y jornada parcial.",
-      }}
     />
   );
 }

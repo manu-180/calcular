@@ -13,6 +13,7 @@ import {
   VIGENCIA_APORTES,
 } from "@/data/aportes-casas-particulares";
 import { formatARS } from "@/lib/formato";
+import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 const ACTIVO = TABLA_APORTES["activo-mayor-18"];
 const MENOS12 = ACTIVO.find((f) => f.rango === "menos-12")!;
@@ -152,6 +153,8 @@ export default function AportesEmpleadaDomesticaPage() {
       </RespuestaPrimero>
 
       <CalculadoraAportesCasas />
+
+      <PlanillaCTA producto="planilla-casas-particulares" desde="aportes-empleada-domestica" />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">

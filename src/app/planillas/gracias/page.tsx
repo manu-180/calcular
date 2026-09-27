@@ -6,6 +6,7 @@ import { PRODUCTO, habilitaDescarga, obtenerPago, productoDePago, type MpPayment
 import { TrackEvento } from "@/components/TrackEvento";
 import { ConversionGoogleAds } from "@/components/ConversionGoogleAds";
 import { CONVERSION_COMPRA_PLANILLA } from "@/lib/ads";
+import { OtrasPlanillas } from "@/components/CatalogoPlanillas";
 
 // Transaccional: se re-verifica el pago en cada carga, nunca se cachea.
 export const dynamic = "force-dynamic";
@@ -122,6 +123,7 @@ export default async function GraciasPage({
           </Link>{" "}
           y te lo enviamos por email.
         </div>
+        <OtrasPlanillas actual={producto.slug} titulo="Otras planillas que te pueden servir" />
       </Marco>
     );
   }

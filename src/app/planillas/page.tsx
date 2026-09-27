@@ -149,12 +149,6 @@ export default function PlanillasPage() {
         { href: "/indemnizacion", texto: "Calculadora de indemnización" },
         { href: "/vacaciones", texto: "Calculadora de vacaciones" },
       ]}
-      otraPlanilla={{
-        href: "/planillas/uocra",
-        titulo: "¿También liquidás construcción?",
-        detalle:
-          "La planilla de UOCRA (CCT 76/75) tiene los jornales por categoría y zona, la asistencia perfecta y la suma no remunerativa.",
-      }}
     />
   );
 }

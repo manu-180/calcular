@@ -6,6 +6,7 @@ import { formatARS } from "@/lib/monotributo";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
+import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 // RECATEGORIZACION.proximaVentana se deriva de la fecha (data/monotributo.ts): revalidar cada
 // hora evita que la FAQ quede hablando de una ventana ya cerrada entre deploys.
@@ -112,6 +113,8 @@ export default function MonotributoPage() {
       </RespuestaPrimero>
 
       <CalculadoraMonotributo />
+
+      <PlanillaCTA producto="planilla-monotributo" desde="monotributo" />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">

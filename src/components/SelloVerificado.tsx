@@ -54,7 +54,7 @@ export function SelloVerificado({
   norma?: string;
 }) {
   return (
-    <div className="group/sello relative overflow-hidden rounded-2xl border border-emerald-200/80 bg-gradient-to-br from-emerald-50/90 via-white to-white p-4 shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-shadow duration-300 hover:shadow-[0_8px_28px_-18px_rgba(16,185,129,0.5)] sm:px-5">
+    <div className="group/sello relative overflow-hidden rounded-2xl border border-emerald-200/80 bg-gradient-to-br from-emerald-50/90 via-white to-white p-4 shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-shadow duration-300 hover:shadow-[0_8px_24px_-16px_rgba(0,0,0,0.18)] sm:px-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
         <div className="flex items-center gap-3">
           <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-white text-emerald-600 shadow-sm ring-1 ring-emerald-100 transition-transform duration-300 ease-out group-hover/sello:scale-105">

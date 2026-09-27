@@ -43,6 +43,7 @@ const EXCLUIDAS = new Set<string>([
   "/privacidad",
   "/terminos",
   "/planillas/gracias", // página de agradecimiento post-compra, sin contenido propio
+  "/planillas/comprar", // formulario de compra sin JS (noindex), el contenido vive en cada landing
   "/blog", // el índice del blog; los posts se listan aparte cuando corresponde
 ]);
 

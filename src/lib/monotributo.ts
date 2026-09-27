@@ -56,6 +56,50 @@ export function calcular(
   };
 }
 
+export type ParametrosMonotributo = {
+  /** Ingresos brutos de los últimos 12 meses. */
+  ingresos: number;
+  /** Superficie afectada a la actividad hoy, en m². 0 = no se informa. */
+  superficieM2?: number;
+  /** Energía eléctrica consumida en los últimos 12 meses, en kW. 0 = no se informa. */
+  energiaKw?: number;
+  /** Alquileres devengados en los últimos 12 meses. 0 = no se informa. */
+  alquileres?: number;
+};
+
+export type CategoriaPorParametros =
+  | { tipo: "ok"; categoria: Categoria; porIngresos: Categoria; manda: "ingresos" | "superficie" | "energia" | "alquileres" }
+  | { tipo: "excedido"; parametro: "ingresos" | "superficie" | "energia" | "alquileres" };
+
+/**
+ * La categoría que corresponde mirando TODOS los parámetros, no solo la facturación. Ley 24.977,
+ * Anexo, art. 9: «Se considerará al responsable correctamente categorizado, cuando se encuadre en
+ * la categoría que corresponda al mayor valor de sus parámetros —ingresos brutos, magnitudes
+ * físicas o alquileres devengados—». Superar el máximo de K en cualquiera es exclusión.
+ */
+export function categoriaPorParametros(p: ParametrosMonotributo): CategoriaPorParametros {
+  const criterios = [
+    ["ingresos", p.ingresos, (c: Categoria) => c.ingresosBrutosMax],
+    ["superficie", p.superficieM2 ?? 0, (c: Categoria) => c.superficieM2],
+    ["energia", p.energiaKw ?? 0, (c: Categoria) => c.energiaKw],
+    ["alquileres", p.alquileres ?? 0, (c: Categoria) => c.alquileresMax],
+  ] as const;
+
+  let indice = 0;
+  let manda: "ingresos" | "superficie" | "energia" | "alquileres" = "ingresos";
+  let porIngresos = CATEGORIAS[0];
+  for (const [nombre, valor, tope] of criterios) {
+    const i = CATEGORIAS.findIndex((c) => valor <= tope(c));
+    if (i === -1) return { tipo: "excedido", parametro: nombre };
+    if (nombre === "ingresos") porIngresos = CATEGORIAS[i];
+    if (i > indice) {
+      indice = i;
+      manda = nombre;
+    }
+  }
+  return { tipo: "ok", categoria: CATEGORIAS[indice], porIngresos, manda };
+}
+
 export type ResultadoRecategorizacion =
   | { tipo: "excedido"; tope: number; actual: Categoria }
   | {

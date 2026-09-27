@@ -109,3 +109,63 @@ select,
     scroll-behavior: auto !important;
   }
 }
+
+/* Diálogo de compra: hoja que sube desde abajo en mobile, tarjeta que se asienta en desktop.
+   Solo opacity/transform. El velo se oscurece aparte para que el foco quede en la tarjeta. */
+@keyframes ca-hoja {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ca-tarjeta {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ca-velo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ca-compra[open] {
+  animation: ca-hoja 0.36s var(--ease-fluid);
+}
+
+.ca-compra::backdrop {
+  background: rgba(24, 24, 27, 0.5);
+  backdrop-filter: blur(2px);
+  animation: ca-velo 0.22s ease-out;
+}
+
+@media (min-width: 640px) {
+  .ca-compra[open] {
+    animation-name: ca-tarjeta;
+    animation-duration: 0.28s;
+  }
+}
+
+/* Barra de compra mobile: entra y sale deslizando, con el easing «snappy» del sitio. */
+.ca-barra {
+  transform: translateY(110%);
+  transition: transform 0.42s var(--ease-snappy);
+}
+
+.ca-barra[data-visible="true"] {
+  transform: none;
+}

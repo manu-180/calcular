@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { obtenerPagoSiExiste, pagoAprobado, productoDePago, type Producto } from "@/lib/mp";
+import { CATALOGO, obtenerPagoSiExiste, pagoAprobado, productoDePago, type Producto } from "@/lib/mp";
 import {
   extraerPaymentId,
   firmaValida,
@@ -42,6 +42,12 @@ async function entregarPorEmail(producto: Producto, paymentId: string, email: st
         convenio: producto.convenio,
         urlDescarga,
         urlLanding: `${SITE}${producto.rutaLanding}`,
+        disparadorActualizacion: producto.disparadorActualizacion,
+        otras: CATALOGO.filter((p) => p.slug !== producto.slug).map((p) => ({
+          titulo: p.tituloCorto,
+          paraQuien: p.paraQuien,
+          url: `${SITE}${p.rutaLanding}`,
+        })),
       }),
     });
     if (!ok) console.error("[mp/webhook] Resend rechazó la entrega del pago", paymentId, email);

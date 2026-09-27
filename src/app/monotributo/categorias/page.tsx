@@ -6,6 +6,7 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { CATEGORIAS, VIGENCIA } from "@/data/monotributo";
 import { formatARS } from "@/lib/monotributo";
 import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
+import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 export const metadata: Metadata = {
   title: "Categorías del Monotributo 2026: tabla completa y actualizada",
@@ -197,6 +198,8 @@ export default function CategoriasPage() {
           </li>
         </ul>
       </section>
+      <PlanillaCTA producto="planilla-monotributo" desde="monotributo-categorias" />
+
       <EmailCapture
         source="monotributo-categorias"
         headline="Avisame cuando cambien las escalas del monotributo"

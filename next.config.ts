@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/planilla-comercio/download": ["./private/**"],
     "/api/planilla-uocra/download": ["./private/**"],
+    "/api/planilla-casas-particulares/download": ["./private/**"],
+    "/api/planilla-monotributo/download": ["./private/**"],
   },
   async redirects() {
     return [

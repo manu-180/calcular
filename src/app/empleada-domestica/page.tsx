@@ -18,6 +18,7 @@ import {
 } from "@/data/casas-particulares";
 import { escalaDe } from "@/data/casas-particulares";
 import { formatARS } from "@/lib/formato";
+import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 const NOVIEMBRE = ESCALAS_POR_MES.find((m) => m.id === "2026-11")!;
 const GENERALES = ESCALA_VIGENTE.find((c) => c.id === "tareas-generales")!;
@@ -158,6 +159,8 @@ export default function EmpleadaDomesticaPage() {
       </RespuestaPrimero>
 
       <CalculadoraCasasParticulares />
+
+      <PlanillaCTA producto="planilla-casas-particulares" desde="empleada-domestica" />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
