@@ -1,0 +1,96 @@
+name: datos-vivos
+
+# El motor que mantiene calcular.ar al día sin que nadie lo corra. Tres veces por día trae los datos
+# oficiales (INDEC, BCRA, ANSES/Boletín Oficial, datos.gob.ar), valida cada uno contra sus checks y
+# contra check-all, y si algo cambió lo commitea a main: Vercel está conectado al repo, así que ese
+# push ES el deploy a producción. El detalle está en scripts/datos-vivos/correr.ts.
+#
+# Horarios (ART): 03:10 → toma el cambio de mes del día 1 y el B.O. de la madrugada; 12:30 → B.O. del
+# día; 18:30 → el INDEC publica IPC y canastas a las 16:00.
+#
+# Lo que no se puede cargar solo (circulares de gremios, PDFs de ARCA, una resolución que no pasó
+# su ancla) abre o actualiza el issue "datos-vivos" y deja un mensaje en el dashboard.
+
+on:
+  schedule:
+    - cron: "10 6 * * *"
+    - cron: "30 15 * * *"
+    - cron: "30 21 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: datos-vivos
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Correr el motor
+        run: npx tsx scripts/datos-vivos/correr.ts
+
+      # El autor tiene que ser manu-180: Vercel bloquea (BLOCKED, sin avisar) los deploys cuyo autor
+      # no es miembro del equipo del proyecto. El committer lo dice el mensaje: es el workflow.
+      - name: Publicar (commit a main = deploy)
+        run: |
+          if [ -z "$(git status --porcelain -- src scripts private)" ]; then
+            echo "Nada que publicar."
+            exit 0
+          fi
+          git config user.name "manu-180"
+          git config user.email "157671390+manu-180@users.noreply.github.com"
+          git add -A -- src scripts private
+          git commit -q -F .datos-vivos/commit.txt
+          for intento in 1 2 3; do
+            if git pull --rebase -q origin main && git push -q origin HEAD:main; then
+              echo "Publicado: $(git log --oneline -1)"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::No pude pushear después de 3 intentos"
+          exit 1
+
+      - name: Issue de alerta
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITULO="datos-vivos: calcular.ar tiene datos que requieren atención"
+          ABIERTO=$(gh issue list --state open --label datos-vivos --json number --jq '.[0].number // empty' 2>/dev/null || true)
+          if [ -s .datos-vivos/alerta.md ]; then
+            gh label create datos-vivos --color D93F0B --description "Avisos del workflow datos-vivos" 2>/dev/null || true
+            if [ -z "$ABIERTO" ]; then
+              gh issue create --title "$TITULO" --label datos-vivos --body-file .datos-vivos/alerta.md
+            else
+              gh issue view "$ABIERTO" --json body --jq .body > /tmp/previo.md
+              if ! diff -q <(sed '1d' /tmp/previo.md) <(sed '1d' .datos-vivos/alerta.md) >/dev/null; then
+                gh issue edit "$ABIERTO" --body-file .datos-vivos/alerta.md
+                gh issue comment "$ABIERTO" --body "Cambió el estado — ver el cuerpo del issue (corrida $GITHUB_RUN_ID)."
+              fi
+            fi
+          elif [ -n "$ABIERTO" ]; then
+            gh issue close "$ABIERTO" --comment "Todo al día: la corrida $GITHUB_RUN_ID no encontró nada pendiente."
+          fi
+
+      - name: Aviso en el dashboard
+        if: always()
+        continue-on-error: true
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npx tsx scripts/datos-vivos/avisar.ts

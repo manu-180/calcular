@@ -179,7 +179,13 @@ function main(): void {
 
   const semaforo = tsx("scripts/vigia/check-datos-vencen.ts", [], 900).salida;
   const lineasSemaforo = semaforo.split("\n").map((l) => l.trimEnd());
-  const vencidos = lineasSemaforo.filter((l) => /^\s*(🔴|⛔)/.test(l)).map((l) => l.replace(/\s{2,}/g, " · ").trim());
+  // Mismo contrato que el detector: sólo hay algo que avisar si hay veredicto ⛔ (vencido Y con
+  // reemplazo publicado). Un 🔴 "vence esta semana" cuya fuente todavía no publicó no es accionable:
+  // avisarlo entrena a ignorar el aviso.
+  const veredicto = lineasSemaforo.find((l) => l.trimStart().startsWith("⛔"));
+  const vencidos = veredicto
+    ? [veredicto.trim(), ...lineasSemaforo.filter((l) => /^\s*🔴/.test(l)).map((l) => l.replace(/\s{2,}/g, " · ").trim())]
+    : [];
 
   const actualizados = resultados.filter((r) => r.estado === "actualizado" || r.estado === "solo-fecha" || (r.estado === "aviso" && r.archivos.length));
   const problemas = resultados.filter((r) => ["rechazado", "error", "aviso"].includes(r.estado));

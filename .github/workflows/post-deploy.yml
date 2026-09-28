@@ -1,0 +1,48 @@
+name: post-deploy
+
+# Después de cada deploy de producción (Vercel lo avisa como deployment "Production" de GitHub):
+# smoke en vivo que exige ver EL DATO VIGENTE en las páginas clave, y ping a IndexNow para que los
+# buscadores relean el sitio. Si el smoke falla, abre un issue: producción quedó mal.
+
+on: deployment_status
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  smoke:
+    if: github.event.deployment_status.state == 'success' && startsWith(github.event.deployment.environment, 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      # El alias del dominio se mueve apenas después del "success": se le da un margen.
+      - name: Smoke en vivo contra calcular.ar
+        run: |
+          sleep 30
+          npx tsx scripts/datos-vivos/smoke.ts || (sleep 60 && npx tsx scripts/datos-vivos/smoke.ts)
+
+      - name: IndexNow
+        continue-on-error: true
+        run: npx tsx scripts/indexnow_ping.ts
+
+      - name: Issue si producción quedó mal
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create produccion --color B60205 --description "Producción sirve algo mal" 2>/dev/null || true
+          gh issue create --label produccion \
+            --title "post-deploy: calcular.ar no muestra el dato vigente (${GITHUB_SHA::7})" \
+            --body "El smoke en vivo falló después del deploy de ${{ github.event.deployment.sha }}. Ver la corrida: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
