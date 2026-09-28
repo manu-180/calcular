@@ -30,3 +30,8 @@ next-env.d.ts
 # .envkit fija el namespace de la bóveda (texto plano, sin secretos): va al final porque el
 # `.env*` de arriba lo volvería a ignorar
 !.envkit
+
+# datos-vivos: salida efímera del motor (resumen, alerta, mensaje de commit)
+.datos-vivos/
+# vigia: caché diaria de "¿la fuente publicó?"
+scripts/vigia/.cache/

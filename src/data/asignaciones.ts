@@ -432,6 +432,9 @@ const CADENA: TablaAsignaciones[] = RESOLUCIONES_ASIGNACIONES_SIGUIENTES.reduce(
 );
 const I_VIGENTE = CADENA.indexOf(vigenteEn(CADENA, (t) => t.periodo));
 
+/** La última tabla de la cadena (la del último mes con resolución cargada): la usa el cargador automático. */
+export const ASIGNACIONES_ULTIMA_CARGADA: TablaAsignaciones = CADENA[CADENA.length - 1];
+
 /** La tabla del mes que se liquida hoy: la publicada o, si ya empezó un mes posterior, la derivada. */
 export const ASIGNACIONES_VIGENTES: TablaAsignaciones = CADENA[I_VIGENTE];
 
