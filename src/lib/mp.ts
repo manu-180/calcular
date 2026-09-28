@@ -260,26 +260,15 @@ export async function crearPreferencia(p: CrearPreferenciaParams): Promise<MpPre
   return (await res.json()) as MpPreference;
 }
 
-// Re-consulta el pago a MP por id. Es la verificación que gatea TODA entrega.
-export async function obtenerPago(id: string): Promise<MpPayment> {
-  const res = await fetch(`${MP_API}/v1/payments/${encodeURIComponent(id)}`, {
-    headers: { Authorization: `Bearer ${accessToken()}` },
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    const detalle = await res.text().catch(() => "");
-    throw new Error(`MP obtenerPago ${res.status}: ${detalle}`);
-  }
-  return (await res.json()) as MpPayment;
-}
+// Desde el 28/9/2026 calcular.ar cobra con una cuenta de MP propia («CalculAR»). Los pagos
+// anteriores viven en la cuenta personal de Manuel (hoy APEX) y sus compradores siguen bajando la
+// planilla con el enlace del mail: por eso un pago que la cuenta nueva no conoce se busca en la
+// vieja (MP_ACCESS_TOKEN_LEGADO). Sacar el legado corta la descarga de esos compradores.
+export type PagoEncontrado = { pago: MpPayment; legado: boolean };
 
-// Igual que obtenerPago, pero un 404 devuelve null en vez de tirar. Existe para el webhook:
-// una notificación con un id que MP no reconoce como nuestro NO es un error de nuestro lado
-// (nadie nos va a notificar un pago ajeno), así que responderle 500 solo genera reintentos
-// eternos. Cualquier otro estado (401, 429, 5xx) SÍ tira: ahí el reintento de MP es lo correcto.
-export async function obtenerPagoSiExiste(id: string): Promise<MpPayment | null> {
+async function consultarPago(id: string, token: string): Promise<MpPayment | null> {
   const res = await fetch(`${MP_API}/v1/payments/${encodeURIComponent(id)}`, {
-    headers: { Authorization: `Bearer ${accessToken()}` },
+    headers: { Authorization: `Bearer ${token}` },
     cache: "no-store",
   });
   if (res.status === 404) return null;
@@ -288,6 +277,29 @@ export async function obtenerPagoSiExiste(id: string): Promise<MpPayment | null>
     throw new Error(`MP obtenerPago ${res.status}: ${detalle}`);
   }
   return (await res.json()) as MpPayment;
+}
+
+// Un 404 en las dos cuentas devuelve null: una notificación con un id que MP no reconoce como
+// nuestro no es un error de nuestro lado, y responderle 500 al webhook solo genera reintentos
+// eternos. Cualquier otro estado (401, 429, 5xx) SÍ tira: ahí el reintento de MP es lo correcto.
+export async function buscarPago(id: string): Promise<PagoEncontrado | null> {
+  const actual = await consultarPago(id, accessToken());
+  if (actual) return { pago: actual, legado: false };
+  const legado = process.env.MP_ACCESS_TOKEN_LEGADO;
+  if (!legado || legado === accessToken()) return null;
+  const viejo = await consultarPago(id, legado);
+  return viejo ? { pago: viejo, legado: true } : null;
+}
+
+// Re-consulta el pago a MP por id. Es la verificación que gatea TODA entrega.
+export async function obtenerPago(id: string): Promise<MpPayment> {
+  const r = await buscarPago(id);
+  if (!r) throw new Error("MP obtenerPago 404: pago inexistente en las cuentas de calcular");
+  return r.pago;
+}
+
+export async function obtenerPagoSiExiste(id: string): Promise<MpPayment | null> {
+  return (await buscarPago(id))?.pago ?? null;
 }
 
 // ¿El pago habilita la entrega DE ESTE producto? approved + monto EXACTO + moneda EXACTA.

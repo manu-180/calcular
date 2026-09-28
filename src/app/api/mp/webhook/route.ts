@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { CATALOGO, obtenerPagoSiExiste, pagoAprobado, productoDePago, type Producto } from "@/lib/mp";
+import { CATALOGO, buscarPago, pagoAprobado, productoDePago, type Producto } from "@/lib/mp";
 import {
   extraerPaymentId,
   firmaValida,
@@ -82,28 +82,26 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, ignorado: "evento sin payment id" });
   }
 
-  // Firma: se exige solo si el secret está cargado (se saca del panel de MP y va a Vercel).
-  // Sin secret, el gate real sigue siendo la re-consulta del pago a MP más abajo.
+  // Firma: el secret es el de la app de la cuenta CalculAR. La cuenta vieja nunca tuvo secret,
+  // así que una notificación de un pago de esa cuenta llega sin firma válida y se acepta igual:
+  // el gate real es la re-consulta del pago a MP más abajo.
   const secret = process.env.MP_WEBHOOK_SECRET;
+  let firmaOk = !secret;
   if (secret) {
     const firma = parsearFirma(req.headers.get("x-signature"));
-    if (!firma) {
-      console.error("[mp/webhook] falta x-signature con MP_WEBHOOK_SECRET cargado");
-      return NextResponse.json({ error: "firma ausente" }, { status: 401 });
-    }
-    const esperado = firmar(
-      manifiesto(paymentId, req.headers.get("x-request-id"), firma.ts),
-      secret,
-    );
-    if (!firmaValida(esperado, firma.v1)) {
-      console.error("[mp/webhook] firma inválida para el pago", paymentId);
-      return NextResponse.json({ error: "firma inválida" }, { status: 401 });
-    }
+    firmaOk =
+      !!firma &&
+      firmaValida(firmar(manifiesto(paymentId, req.headers.get("x-request-id"), firma.ts), secret), firma.v1);
   }
 
   try {
     // FUENTE DE VERDAD: el pago según MP, nunca el cuerpo de la notificación.
-    const pago = await obtenerPagoSiExiste(paymentId);
+    const encontrado = await buscarPago(paymentId);
+    if (encontrado && !encontrado.legado && !firmaOk) {
+      console.error("[mp/webhook] firma ausente o inválida para el pago", paymentId);
+      return NextResponse.json({ error: "firma inválida" }, { status: 401 });
+    }
+    const pago = encontrado?.pago ?? null;
     if (!pago) {
       // MP no conoce ese pago con nuestro token: notificación ajena o falsificada. 200 para
       // que no reintente eternamente; no se registra nada.
@@ -188,6 +186,7 @@ export async function GET() {
     servicio: "webhook de MercadoPago",
     config: {
       mpToken: Boolean(process.env.MP_ACCESS_TOKEN),
+      cuentaLegado: Boolean(process.env.MP_ACCESS_TOKEN_LEGADO),
       supabase: Boolean(SUPABASE_URL && SERVICE_ROLE),
       firmaExigida: Boolean(process.env.MP_WEBHOOK_SECRET),
       entregaPorEmail: Boolean(process.env.RESEND_API_KEY),

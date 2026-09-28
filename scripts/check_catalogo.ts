@@ -16,6 +16,7 @@ import { NextRequest } from "next/server";
 import { servirPlanilla } from "../src/lib/entrega";
 import {
   CATALOGO,
+  buscarPago,
   PRODUCTOS,
   desdeDeReferencia,
   emailValido,
@@ -110,6 +111,24 @@ async function main() {
   respuesta = pago({ external_reference: "planilla-monotributo:x", transaction_amount: 9900 });
   ({ res, cuerpo } = await pedir());
   check("casas: un pago de Monotributo (mismo precio) → 403 sin bytes", res.status === 403 && !(cuerpo[0] === 0x50 && cuerpo[1] === 0x4b), res.status);
+
+  // ── 5. Cuenta vieja (legado): un pago que la cuenta nueva no conoce se busca en la vieja ──
+  process.env.MP_ACCESS_TOKEN_LEGADO = "APP_USR-token-legado-de-prueba";
+  const vistos: string[] = [];
+  globalThis.fetch = (async (_: RequestInfo | URL, init?: RequestInit) => {
+    const auth = String((init?.headers as Record<string, string>)?.Authorization ?? "");
+    vistos.push(auth.includes("legado") ? "legado" : "nueva");
+    if (!auth.includes("legado")) return new Response("Not Found", { status: 404 });
+    return new Response(JSON.stringify(pago({ external_reference: `${casas.slug}:viejo`, transaction_amount: casas.precio })), { status: 200 });
+  }) as typeof fetch;
+  ({ res } = await pedir());
+  check("legado: un pago de la cuenta vieja sigue entregando la planilla", res.status === 200, res.status);
+  check("legado: se consulta primero la cuenta nueva", vistos.join() === "nueva,legado", vistos);
+  const hallado = await buscarPago("1");
+  check("legado: buscarPago marca el pago como de la cuenta vieja", hallado?.legado === true);
+  globalThis.fetch = (async () => new Response("Not Found", { status: 404 })) as typeof fetch;
+  check("en ninguna cuenta → null (el webhook responde 200 y no reintenta)", (await buscarPago("1")) === null);
+  delete process.env.MP_ACCESS_TOKEN_LEGADO;
 }
 
 main()
