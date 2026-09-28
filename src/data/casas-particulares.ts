@@ -17,14 +17,16 @@
 //    al centavo. Quien aplique el 1,8% sobre la escala de agosto queda $5.090 corto por mes, en
 //    todas las categorías. Lo mismo en octubre con el 50% (`(septiembre + $10.000) × 1,017`).
 //
-// 2. **El Anexo 4 (noviembre) NO se reproduce con el 1,6% que dice el art. 4 de la resolución: se
-//    reproduce con 1,7%.** `(octubre + $5.000) × 1,017` da los nueve valores mensuales exactos;
-//    con 1,016 quedan entre $500 y $605 por debajo del anexo, en todas las categorías. No es un
-//    redondeo: es una diferencia sistemática. Diciembre, en cambio, sí es `noviembre × 1,016`
-//    exacto (art. 5), sin nada que incorporar — o sea que el $20.000 queda absorbido en noviembre.
-//    **Esta página publica el ANEXO, no el articulado**, porque el anexo «forma parte integrante de
-//    la presente» y es la escala que se liquida. La discrepancia se dice en voz alta en la página:
-//    ocultarla sería publicar una certeza que la norma no da.
+// 2. **Noviembre y diciembre salen de los anexos RECTIFICADOS por la Res. CNTCP 7/2026 (B.O.
+//    18/9/2026).** La 6/2026 citó como Anexos 4 y 5 dos documentos equivocados: el "Anexo 4" que
+//    se cargó el 15/9 sólo se reproducía con 1,7% aunque el art. 4 dice 1,6%, y así quedó
+//    publicado once días (un supervisor con retiro, $604 de más por mes en noviembre). La 7/2026
+//    rectificó los números de informe (IF-2026-85628114 y IF-2026-85636281) y sus anexos
+//    reproducen el articulado al centavo: noviembre = `(octubre + $5.000) × 1,016` y diciembre =
+//    `noviembre × 1,016`, sin nada que incorporar (el $20.000 queda absorbido en noviembre).
+//    Lo detectó el semáforo del workflow datos-vivos el 28/9/2026. Lección: una discrepancia entre
+//    el articulado y un anexo no es "un hallazgo a publicar", es un aviso de que el anexo puede
+//    estar mal; se vigila el B.O. hasta que la norma se corrija.
 //
 // El valor HORA tiene su propia aritmética y NO se deriva del mensual: en septiembre el mensual
 // sube $5.000 planos en todas las categorías, pero la hora sube entre $39,40 y $40,84 según la
@@ -40,6 +42,8 @@
 //      JSON con el PDF en base64 (`pdfBase64`).
 //   4. parsear con `npx -y tsx tools/pdf-tabla.ts <pdf>` (por coordenadas — NUNCA texto plano) y
 //      correr `scripts/check_casas_particulares.ts`, que ancla las derivaciones de arriba.
+
+import { hoyAR } from "../lib/hoy";
 
 export type CategoriaCasasParticulares = {
   id: string;
@@ -174,16 +178,15 @@ export const ESCALAS_POR_MES: MesEscala[] = [
     desdeISO: "2026-11-01",
     anexo: "Anexo 4",
     articulo: "art. 4",
-    // El art. 4 dice 1,6%. El Anexo 4 sólo se reproduce con 1,7% (ver la cabecera del archivo).
     incrementoDeclarado: 1.6,
-    incrementoDelAnexo: 1.7,
+    incrementoDelAnexo: 1.6,
     incorporaAlBasico: 5000,
     filas: {
-      supervisor: [4928.28, 5344.33, 614791.27, 678036.4],
-      "tareas-especificas": [4700.21, 5098.84, 575394.53, 633782.08],
-      caseros: [null, 4451.49, null, 562837.52],
-      "asistencia-personas": [4451.49, 4923.5, 562837.52, 620420.85],
-      "tareas-generales": [4174.62, 4451.49, 512142.96, 562837.52],
+      supervisor: [4923.44, 5339.08, 614186.76, 677369.7],
+      "tareas-especificas": [4695.59, 5093.82, 574828.75, 633158.89],
+      caseros: [null, 4447.11, null, 562284.09],
+      "asistencia-personas": [4447.11, 4918.66, 562284.09, 619810.8],
+      "tareas-generales": [4170.52, 4447.11, 511639.37, 562284.09],
     },
   },
   {
@@ -196,11 +199,11 @@ export const ESCALAS_POR_MES: MesEscala[] = [
     incrementoDelAnexo: 1.6,
     incorporaAlBasico: 0,
     filas: {
-      supervisor: [5007.14, 5429.84, 624627.93, 688884.98],
-      "tareas-especificas": [4775.41, 5180.42, 584600.84, 643922.59],
-      caseros: [null, 4522.71, null, 571842.92],
-      "asistencia-personas": [4522.71, 5002.28, 571842.92, 630347.58],
-      "tareas-generales": [4241.42, 4522.71, 520337.24, 571842.92],
+      supervisor: [5002.21, 5424.5, 624013.75, 688207.61],
+      "tareas-especificas": [4770.72, 5175.33, 584026.01, 643289.43],
+      caseros: [null, 4518.27, null, 571280.64],
+      "asistencia-personas": [4518.27, 4997.36, 571280.64, 629727.77],
+      "tareas-generales": [4237.25, 4518.27, 519825.6, 571280.64],
     },
   },
 ];
@@ -223,8 +226,8 @@ export function escalaDe(mesId: string): CategoriaCasasParticulares[] {
  * serie se agote (después de diciembre) el último mes queda fijo, que es lo correcto: la escala
  * vieja sigue rigiendo hasta que haya una nueva.
  */
-export function mesVigente(hoy = new Date()): MesEscala {
-  const iso = hoy.toISOString().slice(0, 10);
+export function mesVigente(hoy: Date | string = hoyAR()): MesEscala {
+  const iso = typeof hoy === "string" ? hoy : hoy.toISOString().slice(0, 10);
   const empezados = ESCALAS_POR_MES.filter((m) => m.desdeISO <= iso);
   return empezados.at(-1) ?? ESCALAS_POR_MES[0];
 }
@@ -243,6 +246,8 @@ export const VIGENCIA = {
   anexo: MES_ACTUAL.anexo,
   resolucion: "Resolución CNTCP 6/2026",
   boletinOficial: "B.O. 3/9/2026",
+  /** Rectificó los anexos de noviembre y diciembre. El rastreador la cuenta como ya cargada. */
+  rectificadaPor: "Resolución CNTCP 7/2026",
   /** Último mes con escala publicada: después de éste hay que buscar resolución nueva. */
   ultimoMesPublicado: ESCALAS_POR_MES.at(-1)!.etiqueta,
 } as const;
@@ -339,8 +344,14 @@ export const CASAS_PARTICULARES_FUENTES: {
   consultadoEl: string;
   lista: FuenteCasasParticulares[];
 } = {
-  consultadoEl: "2026-09-15",
+  consultadoEl: "2026-09-28",
   lista: [
+    {
+      nombre: "Resolución CNTCP 7/2026 — rectifica los Anexos 4 y 5 (noviembre y diciembre)",
+      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/347648/20260918",
+      detalle:
+        "B.O. 18/9/2026. Corrige los números de informe de los anexos de noviembre y diciembre de la 6/2026: los anexos correctos aplican el 1,6% del articulado. De acá salen los importes de esos dos meses.",
+    },
     {
       nombre: "Resolución CNTCP 6/2026 (texto completo)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346855/20260903",

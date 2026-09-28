@@ -17,10 +17,9 @@
 //      incorporan al básico el 25% y el 50% de la suma no remunerativa ANTES del aumento. La
 //      derivación `(mes anterior + incorporación) × (1 + %)` se prueba contra los NUEVE valores
 //      mensuales de cada anexo. Si alguien "simplifica" la incorporación, esto sale rojo.
-//   3. **El Anexo 4 (noviembre) NO se reproduce con el 1,6% del art. 4, sino con 1,7%.** El data
-//      guarda los dos números (`incrementoDeclarado` y `incrementoDelAnexo`) justamente porque son
-//      distintos, y la página lo dice. Si alguien los "unifica" para que queden prolijos, la
-//      derivación deja de dar y este check lo detecta.
+//   3. **Noviembre y diciembre salen de los anexos rectificados por la Res. 7/2026** y reproducen
+//      el 1,6% del articulado al centavo. El "Anexo 4" original (1,7%) era otro documento: se
+//      ancla que ningún mensual de noviembre vuelva a salir con 1,7%.
 
 import {
   CASAS_PARTICULARES_FUENTES,
@@ -85,18 +84,18 @@ const ANEXO_DEL_MES: Record<string, Record<string, [number | null, number, numbe
     "tareas-generales": [4064.08, 4337.53, 498582.06, 548429.23],
   },
   "2026-11": {
-    supervisor: [4928.28, 5344.33, 614791.27, 678036.4],
-    "tareas-especificas": [4700.21, 5098.84, 575394.53, 633782.08],
-    caseros: [null, 4451.49, null, 562837.52],
-    "asistencia-personas": [4451.49, 4923.5, 562837.52, 620420.85],
-    "tareas-generales": [4174.62, 4451.49, 512142.96, 562837.52],
+    supervisor: [4923.44, 5339.08, 614186.76, 677369.7],
+    "tareas-especificas": [4695.59, 5093.82, 574828.75, 633158.89],
+    caseros: [null, 4447.11, null, 562284.09],
+    "asistencia-personas": [4447.11, 4918.66, 562284.09, 619810.8],
+    "tareas-generales": [4170.52, 4447.11, 511639.37, 562284.09],
   },
   "2026-12": {
-    supervisor: [5007.14, 5429.84, 624627.93, 688884.98],
-    "tareas-especificas": [4775.41, 5180.42, 584600.84, 643922.59],
-    caseros: [null, 4522.71, null, 571842.92],
-    "asistencia-personas": [4522.71, 5002.28, 571842.92, 630347.58],
-    "tareas-generales": [4241.42, 4522.71, 520337.24, 571842.92],
+    supervisor: [5002.21, 5424.5, 624013.75, 688207.61],
+    "tareas-especificas": [4770.72, 5175.33, 584026.01, 643289.43],
+    caseros: [null, 4518.27, null, 571280.64],
+    "asistencia-personas": [4518.27, 4997.36, 571280.64, 629727.77],
+    "tareas-generales": [4237.25, 4518.27, 519825.6, 571280.64],
   },
 };
 
@@ -178,23 +177,23 @@ for (let i = 1; i < ESCALAS_POR_MES.length; i++) {
   );
 }
 
-// El hallazgo de noviembre, anclado en las dos direcciones: el % del articulado NO reproduce el
-// anexo, y el del anexo SÍ. Si alguien iguala los dos campos, uno de los dos checks cae.
+// Noviembre con los anexos rectificados (Res. 7/2026): articulado y anexo coinciden en 1,6%, y
+// ningún mensual sale con el 1,7% del anexo equivocado que se había cargado.
 const NOV = ESCALAS_POR_MES.find((m) => m.id === "2026-11")!;
 const OCT = ESCALAS_POR_MES.find((m) => m.id === "2026-10")!;
 check(
-  "noviembre: el articulado declara 1,6% y el anexo se construyó con 1,7%",
-  NOV.incrementoDeclarado === 1.6 && NOV.incrementoDelAnexo === 1.7,
+  "noviembre: articulado y anexo rectificado coinciden en 1,6%",
+  NOV.incrementoDeclarado === 1.6 && NOV.incrementoDelAnexo === 1.6,
   [NOV.incrementoDeclarado, NOV.incrementoDelAnexo],
 );
 check(
-  "noviembre: con el 1,6% del art. 4 NINGÚN mensual del anexo da",
+  "noviembre: con el 1,7% del anexo equivocado NINGÚN mensual da",
   Object.keys(NOV.filas).every((cat) =>
     ([2, 3] as const).every((idx) => {
       const antes = OCT.filas[cat][idx];
       const ahora = NOV.filas[cat][idx];
       if (antes === null || ahora === null) return true;
-      return Math.abs((antes + NOV.incorporaAlBasico) * 1.016 - ahora) > 0.02;
+      return Math.abs((antes + NOV.incorporaAlBasico) * 1.017 - ahora) > 0.02;
     }),
   ),
 );

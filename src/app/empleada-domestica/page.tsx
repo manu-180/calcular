@@ -61,7 +61,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto sube realmente en noviembre?",
-    a: `Acá hay que ser preciso, porque el articulado y el anexo de la resolución no dicen lo mismo. El artículo 4 fija el aumento de noviembre en ${NOVIEMBRE.incrementoDeclarado}%, pero los importes del Anexo 4 sólo se reproducen con ${NOVIEMBRE.incrementoDelAnexo}%: con el ${NOVIEMBRE.incrementoDeclarado}% quedan entre $500 y $605 por debajo del anexo, en las cinco categorías y en las dos modalidades. No es un redondeo, es una diferencia sistemática. Esta página publica los importes del ANEXO, porque es el que «forma parte integrante» de la resolución y el que se liquida; pero preferimos decir la discrepancia antes que esconderla.`,
+    a: `Un ${NOVIEMBRE.incrementoDeclarado}%, sobre el básico de octubre más los ${formatARS(NOVIEMBRE.incorporaAlBasico, 0)} que se incorporan ese mes (el último tramo de la suma de $20.000). Ojo si viste otra cifra: la resolución original citó como anexo de noviembre un documento equivocado, cuyos importes salían con 1,7%. La Resolución 7/2026 de la Comisión (Boletín Oficial del 18/9/2026) corrigió los anexos de noviembre y diciembre, y los importes correctos son los que usa esta página. Diciembre suma otro ${ESCALAS_POR_MES.at(-1)!.incrementoDeclarado}% sobre noviembre.`,
   },
   {
     q: "¿Qué es el adicional por zona desfavorable y a quién le corresponde?",
@@ -277,16 +277,15 @@ export default function EmpleadaDomesticaPage() {
         </p>
         <div className="rounded-xl border-l-4 border-amber-300 bg-amber-50/50 p-4 text-sm text-zinc-700">
           <p className="font-semibold text-zinc-900">
-            Noviembre: el articulado y el anexo no coinciden, y lo decimos
+            Noviembre y diciembre: los importes corregidos
           </p>
           <p className="mt-1">
-            El artículo 4 de la resolución fija el aumento de noviembre en{" "}
-            {NOVIEMBRE.incrementoDeclarado}%, pero los importes del {NOVIEMBRE.anexo} sólo se
-            reproducen con {NOVIEMBRE.incrementoDelAnexo}%: con el {NOVIEMBRE.incrementoDeclarado}%
-            quedan entre $500 y $605 por debajo del anexo, en las cinco categorías y en las dos
-            modalidades. Publicamos los importes del <strong>anexo</strong>, porque es el que «forma
-            parte integrante de la presente» y el que se liquida — pero preferimos que se vea la
-            discrepancia antes que presentar una cifra como si no tuviera discusión.
+            La resolución original citó para noviembre y diciembre dos anexos equivocados, y sus
+            importes circularon con un 1,7% de aumento. La <strong>Resolución 7/2026</strong> de la
+            Comisión (Boletín Oficial del 18/9/2026) los corrigió: noviembre sube{" "}
+            {NOVIEMBRE.incrementoDeclarado}% sobre octubre más {formatARS(NOVIEMBRE.incorporaAlBasico, 0)}{" "}
+            incorporados, y diciembre otro {NOVIEMBRE.incrementoDeclarado}%. Si liquidás con una tabla
+            vieja de noviembre, vas a pagar unos $500 a $600 de más por mes.
           </p>
         </div>
       </section>

@@ -65,9 +65,12 @@ export function resolucionCargada(): { numero: number; anio: number } | null {
   } catch {
     return null;
   }
-  const m = texto.match(/resolucion:\s*"Resoluci[óo]n CNTCP (\d+)\/(\d{4})"/);
-  if (!m) return null;
-  return { numero: Number(m[1]), anio: Number(m[2]) };
+  // La más nueva entre la que fijó la escala y la que la rectificó: una rectificación ya leída y
+  // cargada no es "resolución nueva" (28/9/2026: la 7/2026 aparecía como escala sin cargar).
+  const normas = [...texto.matchAll(/(?:resolucion|rectificadaPor):\s*"Resoluci[óo]n CNTCP (\d+)\/(\d{4})"/g)]
+    .map((m) => ({ numero: Number(m[1]), anio: Number(m[2]) }))
+    .sort((a, b) => b.anio - a.anio || b.numero - a.numero);
+  return normas[0] ?? null;
 }
 
 export type AvisoCntcp = {
