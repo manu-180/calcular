@@ -1,7 +1,7 @@
 // Serie histórica del IPC Nacional (INDEC) — nivel general, base diciembre 2016 = 100.
 // GENERADO por scripts/gen_ipc_serie.ts desde la API oficial de series de tiempo: NO editar a mano.
 //   https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=1000
-// Descargado el 2026-09-12. Último período: agosto 2026 (índice 12276.766).
+// Descargado el 2026-09-28. Último período: agosto 2026 (índice 12276.766).
 // El INDEC publica cada mes ~día 10-15 del mes siguiente: regenerar en cada redeploy mensual.
 
 // [período "YYYY-MM", índice]
@@ -125,4 +125,4 @@ export const IPC_SERIE: ReadonlyArray<readonly [string, number]> = [
   ["2026-08", 12276.766],
 ];
 
-export const IPC_DESCARGADO_EL = "2026-09-12";
+export const IPC_DESCARGADO_EL = "2026-09-28";
