@@ -242,6 +242,9 @@ export async function crearPreferencia(p: CrearPreferenciaParams): Promise<MpPre
       ],
       back_urls: p.backUrls,
       auto_return: "approved",
+      // Lo que ve el comprador en el resumen de la tarjeta. El nombre de la pantalla de pago NO
+      // sale de acá: es el de la cuenta de MP de Manuel (decía «Programador freelance» el 27/9).
+      statement_descriptor: "CALCULAR",
       ...(p.emailComprador ? { payer: { email: p.emailComprador } } : {}),
       external_reference: p.externalReference,
       metadata: { producto: p.producto.slug },
