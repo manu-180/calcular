@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useRef } from "react";
+import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 import {
   CATEGORIAS_COMERCIO,
   JORNADAS_COMERCIO,
@@ -15,7 +16,7 @@ import { CompartirWhatsApp } from "@/components/CompartirWhatsApp";
 const GRUPOS = [...new Set(CATEGORIAS_COMERCIO.map((c) => c.grupo))];
 
 export function CalculadoraComercio() {
-  const [mesId, setMesId] = useState("junio-2026");
+  const [mesId, setMesId] = useState(() => vigenteEn(MESES_COMERCIO, periodoDeMes).id);
   const [categoriaId, setCategoriaId] = useState("vendedor-b");
   const [aniosStr, setAniosStr] = useState("");
   const [jornadaId, setJornadaId] = useState<JornadaComercioId>("8");

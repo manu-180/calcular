@@ -32,6 +32,8 @@
 // CÓMO SE ROTA: no se rota. Se mueve solo cuando se actualiza `prestaciones.ts` (haber mínimo del
 // mes y decreto del bono). Si aparece una norma que toque los arts. 13 a 18, se relee el `texact`.
 
+import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "./prestaciones";
+
 /** Parámetros numéricos de la PUAM, cada uno con el artículo del que sale. */
 export const PUAM = {
   /** Edad mínima para pedirla, sin distinción de género (art. 13). */
@@ -167,16 +169,16 @@ export const PUAM_FUENTES: { consultadoEl: string; lista: FuentePuam[] } = {
         "Actualizada a octubre de 2025. Es la fuente de dos cosas que la Ley 27.260 no dice: que la residencia se pierde por ausentarse más de 90 días corridos del país (Res. ANSES 918/24) y que, aunque la PUAM no genere pensión, el fallecimiento del titular sí da derecho al Subsidio de Contención Familiar.",
     },
     {
-      nombre: "Resolución ANSES 257/2026 — haber mínimo garantizado",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346683/20260901",
+      nombre: `${PRESTACIONES_VIGENTES.resolucion} — haber mínimo garantizado`,
+      url: PRESTACIONES_VIGENTES.resolucionUrl,
       detalle:
-        "B.O. 1/9/2026 — el haber mínimo del que se deriva el 80% de la PUAM, y el monto de la propia PUAM en su art. 5.",
+        `${PRESTACIONES_VIGENTES.resolucionBO} — el haber mínimo del que se deriva el 80% de la PUAM, y el monto de la propia PUAM en su art. 5.`,
     },
     {
-      nombre: "Decreto 824/2026 — bono extraordinario previsional",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346555/20260831",
+      nombre: `${BONO_VIGENTE.norma} — bono extraordinario previsional`,
+      url: BONO_VIGENTE.normaUrl,
       detalle:
-        "B.O. 31/8/2026 — alcanza expresamente a la PUAM. Arts. 3 y 4: monto y forma de liquidación. Es discrecional: lo fija un decreto mes a mes y puede no existir.",
+        `${BONO_VIGENTE.normaBO} — alcanza expresamente a la PUAM. Arts. 3 y 4: monto y forma de liquidación. Es discrecional: lo fija un decreto mes a mes y puede no existir.`,
     },
     {
       nombre: "Decreto 274/2024 — movilidad mensual por IPC",

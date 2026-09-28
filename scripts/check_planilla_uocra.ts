@@ -56,6 +56,11 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
   }
 }
 
+function avisar(nombre: string, cond: boolean, detalle?: unknown) {
+  if (cond) console.log(`OK   ${nombre}`);
+  else console.warn(`AVISO ${nombre}`, detalle ?? "");
+}
+
 function num(v: unknown): number | null {
   if (typeof v === "number") return v;
   if (v && typeof v === "object" && "result" in (v as object)) {
@@ -113,9 +118,18 @@ async function main(): Promise<void> {
     const pendiente = UOCRA_PROXIMA_PARITARIA as typeof UOCRA_PROXIMA_PARITARIA & {
       primerMesQueDefine: string;
     };
-    const pasado = textoProximaParitaria(pendiente, "2026-09-09");
-    const futuro = textoProximaParitaria(pendiente, "2026-07-19");
-    const publicada = textoProximaParitaria({ ...pendiente, publicada: true }, "2026-09-09");
+    // Las tres ramas del helper se prueban contra un caso FIJO (la reunión del 20/7/2026), no contra
+    // el dato vivo: el dato cambia cada tramo y el texto esperado no puede reescribirse cada vez.
+    const caso = {
+      fechaISO: "2026-07-20",
+      define: "septiembre de 2026 en adelante",
+      primerMesQueDefine: "septiembre-2026",
+      publicada: false,
+      comprobadoEl: "2026-09-09",
+    };
+    const pasado = textoProximaParitaria(caso, "2026-09-09");
+    const futuro = textoProximaParitaria(caso, "2026-07-19");
+    const publicada = textoProximaParitaria({ ...caso, publicada: true }, "2026-09-09");
     const esperadoPasado =
       "La Comisión Especial se reunió el 20 de julio de 2026 para fijar septiembre de 2026 en adelante, y al 9 de septiembre de 2026 el acuerdo todavía no se publicó: la tabla llega hasta el último mes acordado.";
     const esperadoFuturo =
@@ -169,11 +183,19 @@ async function main(): Promise<void> {
     const fechaComprobacion = Date.parse(`${pendiente.comprobadoEl}T00:00:00Z`);
     const fechaHoy = Date.parse(`${hoyISO}T00:00:00Z`);
     check("comprobadoEl no está en el futuro", fechaComprobacion <= fechaHoy, { comprobadoEl: pendiente.comprobadoEl, hoyISO });
-    check("comprobadoEl no es anterior a fechaISO", fechaComprobacion >= fechaReunion, pendiente);
+    // Estos dos se vencen con el paso del tiempo, no por un error del dato. Son AVISO y no FAIL
+    // porque check-all es la puerta de los deploys automáticos de datos-vivos: si un control de
+    // vigencia bloqueara, el IPC nuevo no saldría porque nadie re-miró UOCRA. El aviso llega igual
+    // por el semáforo (check-datos-vencen) y por la alerta del workflow.
+    const necesitaControlDeVigencia = !pendiente.publicada && pendiente.fechaISO <= hoyISO;
+    avisar(
+      "comprobadoEl no es anterior a la reunión que ya pasó",
+      !necesitaControlDeVigencia || fechaComprobacion >= fechaReunion,
+      pendiente,
+    );
 
     const diasSinComprobar = (fechaHoy - fechaComprobacion) / MS_DIA;
-    const necesitaControlDeVigencia = !pendiente.publicada && pendiente.fechaISO <= hoyISO;
-    check(
+    avisar(
       `comprobadoEl no supera ${DIAS_MAXIMOS_SIN_COMPROBAR} días; ${INSTRUCCION_PARITARIA_VENCIDA}`,
       !necesitaControlDeVigencia || diasSinComprobar <= DIAS_MAXIMOS_SIN_COMPROBAR,
       { comprobadoEl: pendiente.comprobadoEl, hoyISO, diasSinComprobar },

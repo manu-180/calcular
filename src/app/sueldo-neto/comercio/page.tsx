@@ -9,9 +9,12 @@ import { CATEGORIAS_COMERCIO, COMERCIO_FUENTES, MESES_COMERCIO } from "@/data/co
 import { calcularComercio } from "@/lib/convenios";
 import { formatARS } from "@/lib/formato";
 import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
+import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
-const ACTUALIZADO_EL = "30 de julio de 2026";
-const MES_ID = "agosto-2026";
+const MES = vigenteEn(MESES_COMERCIO, periodoDeMes);
+const MES_ID = MES.id;
+const MES_TXT = MES.etiqueta.toLowerCase();
+const ACTUALIZADO_EL = COMERCIO_FUENTES.consultadoEl;
 
 const faqs = [
   {
@@ -43,13 +46,12 @@ const faqs = [
 export const metadata: Metadata = {
   title: "Sueldo Neto Empleados de Comercio 2026: cuánto queda en mano",
   description:
-    "Cuánto queda en mano según la escala CCT 130/75 por categoría. Los $120.000 no remunerativos solo pagan 3% de OS, no 17% — el neto real es mayor que bruto × 0,83. Calculadora y tabla de agosto 2026.",
+    `Cuánto queda en mano según la escala CCT 130/75 por categoría. Los $120.000 no remunerativos solo pagan 3% de OS, no 17% — el neto real es mayor que bruto × 0,83. Calculadora y tabla de ${MES_TXT}.`,
   alternates: { canonical: "/sueldo-neto/comercio" },
 };
 
 export default function SueldoNetoComercioPage() {
-  const mesRef = MESES_COMERCIO.find((m) => m.id === MES_ID);
-  const mesEtiqueta = mesRef?.etiqueta ?? "Junio 2026";
+  const mesEtiqueta = MES.etiqueta;
 
   const grupos = [...new Set(CATEGORIAS_COMERCIO.map((c) => c.grupo))];
   const filas = CATEGORIAS_COMERCIO.map((cat) => ({
@@ -125,14 +127,18 @@ export default function SueldoNetoComercioPage() {
           <p>
             Un <strong>Vendedor B</strong> (la categoría más común en locales) con jornada
             completa, sin antigüedad y con presentismo tiene{" "}
-            <strong>{formatARS(vb.bruto, 0)}</strong> de bruto en agosto de 2026 y le quedan en
+            <strong>{formatARS(vb.bruto, 0)}</strong> de bruto en {MES_TXT} y le quedan en
             mano <strong>{formatARS(vb.neto, 0)}</strong> —{" "}
             {((vb.neto / vb.bruto) * 100).toLocaleString("es-AR", {
               minimumFractionDigits: 1,
               maximumFractionDigits: 1,
             })}
-            % del bruto. <strong>Es más que el 83% habitual</strong> porque los $120.000 no
-            remunerativos y la asignación extraordinaria de $25.000 solo descuentan el{" "}
+            % del bruto. <strong>Es más que el 83% habitual</strong> porque los{" "}
+            {formatARS(MES.noRemunerativo, 0)} no remunerativos
+            {MES.asignacionExtraordinaria
+              ? ` y la asignación extraordinaria de ${formatARS(MES.asignacionExtraordinaria, 0)}`
+              : ""}{" "}
+            solo descuentan el{" "}
             <strong>3% de obra social</strong>. Esa ventaja se achica cuando los $120.000 pasen
             al básico, entre diciembre de 2026 y mayo de 2027.
           </p>
@@ -215,7 +221,7 @@ export default function SueldoNetoComercioPage() {
         </p>
         {vb && (
           <p className="text-sm text-amber-800">
-            Ejemplo Vendedor B junio: los {formatARS(vb.totalRemunerativo, 0)} remunerativos
+            Ejemplo Vendedor B {MES_TXT}: los {formatARS(vb.totalRemunerativo, 0)} remunerativos
             descuentan el 17% ({formatARS(vb.totalRemunerativo * 0.17, 0)}) y los{" "}
             {formatARS(vb.totalNoRemunerativo, 0)} no remunerativos solo el 3% (
             {formatARS(vb.totalNoRemunerativo * 0.03, 0)}). Descuento real:{" "}

@@ -11,6 +11,7 @@ import {
 } from "@/data/convenios/camioneros";
 import { MESES_UOCRA, UOCRA_FUENTES } from "@/data/convenios/uocra";
 import { formatARS } from "@/lib/formato";
+import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
 export const metadata: Metadata = {
   title: "Convenios colectivos 2026: escalas salariales y calculadoras por gremio",
@@ -63,10 +64,11 @@ const faqs = [
   },
 ];
 
+
 export default function ConveniosPage() {
-  const mesComercio = MESES_COMERCIO.find((m) => m.id === "agosto-2026")!;
-  const junioUocra = MESES_UOCRA.find((m) => m.id === "junio-2026")!;
-  const junioCamioneros = MESES_CAMIONEROS.find((m) => m.id === "junio-2026")!;
+  const mesComercio = vigenteEn(MESES_COMERCIO, periodoDeMes);
+  const junioUocra = vigenteEn(MESES_UOCRA, periodoDeMes);
+  const junioCamioneros = vigenteEn(MESES_CAMIONEROS, periodoDeMes);
   const junioChofer1 =
     basicoCamioneros(junioCamioneros.id, "chofer-primera")!;
   const junioAyudante =
@@ -139,7 +141,7 @@ export default function ConveniosPage() {
             Empleados de Comercio (CCT 130/75)
           </h2>
           <p className="mt-1.5 text-sm text-zinc-600">
-            Básicos de agosto: {formatARS(mesComercio.basicos["maestranza-a"], 0)} a{" "}
+            Básicos de {mesComercio.etiqueta.toLowerCase()}: {formatARS(mesComercio.basicos["maestranza-a"], 0)} a{" "}
             {formatARS(mesComercio.basicos["vendedor-d"], 0)} +{" "}
             {formatARS(mesComercio.noRemunerativo, 0)} no remunerativos.
             Calculadora con antigüedad, presentismo y jornada parcial.
@@ -153,10 +155,10 @@ export default function ConveniosPage() {
             UOCRA — construcción (CCT 76/75)
           </h2>
           <p className="mt-1.5 text-sm text-zinc-600">
-            Jornales de junio: {formatARS(junioUocra.jornales.ayudante.a, 0)} a{" "}
+            Jornales de {junioUocra.etiqueta.toLowerCase()}: {formatARS(junioUocra.jornales.ayudante.a, 0)} a{" "}
             {formatARS(junioUocra.jornales["oficial-especializado"]["c-austral"], 0)} la hora
             según categoría y zona. Calculadora de jornal a sueldo mensual, con asistencia
-            perfecta y SNR.
+            perfecta.
           </p>
         </Link>
         <Link
@@ -167,7 +169,7 @@ export default function ConveniosPage() {
             Camioneros (CCT 40/89)
           </h2>
           <p className="mt-1.5 text-sm text-zinc-600">
-            Básicos de junio: {formatARS(junioChofer1, 0)} (Chofer 1ª) a{" "}
+            Básicos de {junioCamioneros.etiqueta.toLowerCase()}: {formatARS(junioChofer1, 0)} (Chofer 1ª) a{" "}
             {formatARS(junioAyudante, 0)} (Ayudante). Escala nacional única sin zonas.
             Calculadora con antigüedad.
           </p>

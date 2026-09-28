@@ -54,6 +54,12 @@ const RESOLUCIONES: { periodo: string; haberMinimo: number; norma: string; url: 
     norma: "Resolución ANSES 257/2026, art. 1 (Boletín Oficial, 1/9/2026)",
     url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346683/20260901",
   },
+  {
+    periodo: "2026-10",
+    haberMinimo: 435_748.51,
+    norma: "Resolución ANSES 284/2026, art. 1 (Boletín Oficial, 23/9/2026)",
+    url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/347832/20260923",
+  },
 ];
 
 const MESES = [
@@ -195,6 +201,8 @@ async function main() {
 //
 // Corte FIJO en ${CORTE} (primer mes del régimen mensual). NO convertirlo en ventana móvil.
 
+import { PRESTACIONES_VIGENTES } from "./prestaciones";
+
 export type MesJubilacion = {
   periodo: string; // "2026-08"
   /** Haber mínimo garantizado del mes, en pesos corrientes. */
@@ -203,9 +211,15 @@ export type MesJubilacion = {
   movilidad: number | null;
 };
 
-export const HABER_MINIMO_SERIE: MesJubilacion[] = [
+const SERIE_COMPLETA: MesJubilacion[] = [
 ${cuerpo}
 ];
+
+// Una resolución puede salir antes de que empiece su mes (la de octubre de 2026, el 23/9): la
+// serie que ve el sitio se corta en el mes vigente de prestaciones.ts, que ya sabe la fecha.
+export const HABER_MINIMO_SERIE: MesJubilacion[] = SERIE_COMPLETA.filter(
+  (f) => f.periodo <= PRESTACIONES_VIGENTES.periodo,
+);
 
 /** Último mes con haber mínimo publicado por fuente oficial. */
 export const HABER_MINIMO_ULTIMO: MesJubilacion =

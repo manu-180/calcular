@@ -34,7 +34,7 @@ export function generateStaticParams() {
 }
 
 // El acuerdo del 31/3/2026 fijó abril-mayo (tramo 1); el del 19/5/2026 fijó junio-agosto
-// (tramo 2). MESES_UOCRA no guarda a qué tramo pertenece cada mes: se deriva acá, no se
+// (tramo 2); el del 21/9/2026, septiembre-noviembre (tramo 3). MESES_UOCRA no guarda a qué tramo pertenece cada mes: se deriva acá, no se
 // duplica en el dato — si un mes nuevo entra en un tramo 3, este mapa se extiende una línea.
 const TRAMO_POR_MES: Record<string, { fuente: typeof UOCRA_FUENTES.acuerdoTramo1; homologacion: string }> = {
   "abril-2026": { fuente: UOCRA_FUENTES.acuerdoTramo1, homologacion: UOCRA_HOMOLOGACIONES.tramo1 },
@@ -42,6 +42,9 @@ const TRAMO_POR_MES: Record<string, { fuente: typeof UOCRA_FUENTES.acuerdoTramo1
   "junio-2026": { fuente: UOCRA_FUENTES.acuerdoTramo2, homologacion: UOCRA_HOMOLOGACIONES.tramo2 },
   "julio-2026": { fuente: UOCRA_FUENTES.acuerdoTramo2, homologacion: UOCRA_HOMOLOGACIONES.tramo2 },
   "agosto-2026": { fuente: UOCRA_FUENTES.acuerdoTramo2, homologacion: UOCRA_HOMOLOGACIONES.tramo2 },
+  "septiembre-2026": { fuente: UOCRA_FUENTES.acuerdoTramo3, homologacion: UOCRA_HOMOLOGACIONES.tramo3 },
+  "octubre-2026": { fuente: UOCRA_FUENTES.acuerdoTramo3, homologacion: UOCRA_HOMOLOGACIONES.tramo3 },
+  "noviembre-2026": { fuente: UOCRA_FUENTES.acuerdoTramo3, homologacion: UOCRA_HOMOLOGACIONES.tramo3 },
 };
 
 export async function generateMetadata({

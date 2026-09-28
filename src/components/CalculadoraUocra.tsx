@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useRef } from "react";
+import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 import {
   CATEGORIAS_UOCRA,
   MESES_UOCRA,
@@ -12,7 +13,7 @@ import { formatARS, parseDecimal } from "@/lib/formato";
 import { CompartirWhatsApp } from "@/components/CompartirWhatsApp";
 
 export function CalculadoraUocra() {
-  const [mesId, setMesId] = useState("junio-2026");
+  const [mesId, setMesId] = useState(() => vigenteEn(MESES_UOCRA, periodoDeMes).id);
   const [categoriaId, setCategoriaId] = useState("oficial");
   const [zonaId, setZonaId] = useState("a");
   const [horasStr, setHorasStr] = useState("190,67");

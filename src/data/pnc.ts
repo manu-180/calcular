@@ -41,6 +41,8 @@
 // CÓMO SE ROTA: no se rota. Se mueve solo cuando se actualiza `prestaciones.ts` (haber mínimo y
 // bono) y `desempleo.ts` (escala del SMVM, de la que sale el tope de compatibilidad laboral).
 
+import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "./prestaciones";
+
 /** Clave estable de cada prestación no contributiva que muestra la página. */
 export type ClavePnc = "discapacidad" | "vejez" | "madre7hijos" | "puam";
 
@@ -222,16 +224,16 @@ export const PNC_FUENTES: {
         "La norma madre de las pensiones no contributivas, con el artículo 9 sustituido por el art. 5 de la Ley 27.793.",
     },
     {
-      nombre: "Resolución ANSES 257/2026 — haber mínimo garantizado",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346683/20260901",
+      nombre: `${PRESTACIONES_VIGENTES.resolucion} — haber mínimo garantizado`,
+      url: PRESTACIONES_VIGENTES.resolucionUrl,
       detalle:
-        "B.O. 1/9/2026 — el haber mínimo del que se derivan todos los montos de esta página.",
+        `${PRESTACIONES_VIGENTES.resolucionBO} — el haber mínimo del que se derivan todos los montos de esta página.`,
     },
     {
-      nombre: "Decreto 824/2026 — bono extraordinario previsional",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346555/20260831",
+      nombre: `${BONO_VIGENTE.norma} — bono extraordinario previsional`,
+      url: BONO_VIGENTE.normaUrl,
       detalle:
-        "B.O. 31/8/2026 — art. 2 inc. c: alcanza expresamente a las pensiones no contributivas por vejez, invalidez, madres de 7 hijos o más y a la PUAM. Arts. 3 y 4: monto y forma de liquidación.",
+        `${BONO_VIGENTE.normaBO} — art. 2 inc. c: alcanza expresamente a las pensiones no contributivas por vejez, invalidez, madres de 7 hijos o más y a la PUAM. Arts. 3 y 4: monto y forma de liquidación.`,
     },
   ],
 };

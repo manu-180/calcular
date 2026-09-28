@@ -663,10 +663,11 @@ check(
 {
   let completos = true;
   // La SNR puede ser 0 legítimamente (cuando el acuerdo la absorbe al básico, como en agosto
-  // 2026), pero SOLO si el mes lo declara en `cambios` — así un 0 por olvido sigue siendo rojo.
+  // 2026, o cuando el tramo directamente no la trae, como sep-nov 2026), pero SOLO si el mes lo
+  // declara en `cambios` — así un 0 por olvido sigue siendo rojo.
   let snrCoherente = true;
   for (const mes of MESES_UOCRA) {
-    const declaraAbsorcion = /absor/i.test(mes.cambios) && /no tiene SNR|NO tiene SNR/i.test(mes.cambios);
+    const declaraAbsorcion = /no tiene SNR|sin suma no remunerativa/i.test(mes.cambios);
     for (const z of ZONAS_UOCRA) {
       for (const cat of CATEGORIAS_UOCRA) {
         const v = cat.mensual

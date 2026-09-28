@@ -343,7 +343,7 @@ check(
 check(
   "está citada la resolución del SMVM vigente y la de haberes de ANSES",
   GARANTIA_82_FUENTES.lista.some((f) => f.url.includes("346775")) &&
-    GARANTIA_82_FUENTES.lista.some((f) => f.url.includes("346683")),
+    GARANTIA_82_FUENTES.lista.some((f) => f.url === PRESTACIONES_VIGENTES.resolucionUrl),
 );
 check(
   "la fecha de consulta es una fecha ISO",

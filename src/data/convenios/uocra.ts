@@ -1,4 +1,4 @@
-// Datos del convenio de la construcción — UOCRA (CCT 76/75) — escalas abril a AGOSTO 2026.
+// Datos del convenio de la construcción — UOCRA (CCT 76/75) — escalas abril a NOVIEMBRE 2026.
 // Fuentes: acuerdos paritarios firmados del 31/3/2026 (marzo-mayo, homologado por
 // DI-2026-468-APN-DNRYRT#MCH) y del 19/5/2026 (junio-agosto, homologado por
 // DI-2026-712-APN-DNRYRT#MCH), publicados por las DOS partes firmantes (CAMARCO y UOCRA,
@@ -13,6 +13,12 @@
 // scan coinciden exactas con los valores ya cargados acá desde el PDF de CAMARCO. Coherencia
 // interna: agosto/julio da el mismo factor (~1,0912) en las 5 categorías y las 4 zonas.
 // Fuente: uocra.org/pdf/99db1b_segundo_tramo_paritaria_76-75_y_577-10_junio-julio-agosto.pdf
+//
+// SEPTIEMBRE A NOVIEMBRE 2026 (cargado el 28/9/2026): Anexo I del acuerdo del 21/9/2026 (tercer
+// tramo), PDF firmado publicado por CAMARCO (circular CI-067). El PDF es un scan con capa OCR, así
+// que ningún dígito se tomó sin control: los 60 valores reproducen la derivación del propio acuerdo
+// (agosto × 1,019 → × 1,018 → × 1,017, acumulativos) con diferencia ≤ $2 por redondeo de la tabla.
+// La SNR sigue en cero: este tramo no la trae.
 
 export const UOCRA_FUENTES = {
   acuerdoTramo1: {
@@ -22,6 +28,11 @@ export const UOCRA_FUENTES = {
   acuerdoTramo2: {
     nombre: "Acuerdo UOCRA-CAMARCO 19/5/2026 (junio-agosto) — PDF firmado, CAMARCO",
     url: "https://www.camarco.org.ar/laboral/acuerdo-salarial-uocra-cct-n-76-75-mayo-2026/",
+  },
+  acuerdoTramo3: {
+    nombre:
+      "Acuerdo UOCRA-CAMARCO-FAEC 21/9/2026 (septiembre-noviembre) — PDF firmado con el Anexo I de tablas, CAMARCO",
+    url: "https://www.camarco.org.ar/wp-content/uploads/2026/09/CI-067-ADJ-Ac-Sal-UOCRA-sep-nov26.pdf",
   },
   anexoTramo2: {
     nombre:
@@ -40,12 +51,13 @@ export const UOCRA_FUENTES = {
     nombre: "Ley 22.250 — régimen de la construcción (IERIC)",
     url: "https://www.ieric.org.ar/wp-content/uploads/2020/01/Ley22.250.pdf",
   },
-  consultadoEl: "30 de julio de 2026",
+  consultadoEl: "28 de septiembre de 2026",
 };
 
 export const UOCRA_HOMOLOGACIONES = {
   tramo1: "Disp. 468/2026 (DI-2026-468-APN-DNRYRT#MCH, 7/4/2026) — abril y mayo",
   tramo2: "Disp. 712/2026 (DI-2026-712-APN-DNRYRT#MCH) — junio a agosto",
+  tramo3: "Acuerdo firmado el 21/9/2026, con homologación solicitada — septiembre a noviembre",
 };
 
 export type ZonaUocraId = "a" | "b" | "c" | "c-austral";
@@ -220,6 +232,71 @@ export const MESES_UOCRA: MesUocra[] = [
       ayudante: { a: 0, b: 0, c: 0, "c-austral": 0 },
       sereno: { a: 0, b: 0, c: 0, "c-austral": 0 },
     },
+  },  {
+    id: "septiembre-2026",
+    etiqueta: "Septiembre 2026",
+    mes: 9,
+    anio: 2026,
+    cambios:
+      "Arranca el tercer tramo de la paritaria abril 2026-marzo 2027 (acuerdo del 21/9/2026): +1,9% sobre los básicos vigentes al 31 de agosto. Sin suma no remunerativa. Sigue el aporte solidario del 2% para no afiliados.",
+    jornales: {
+      "oficial-especializado": { a: 7_561, b: 8_393, c: 11_608, "c-austral": 15_123 },
+      oficial: { a: 6_468, b: 7_183, c: 10_883, "c-austral": 12_936 },
+      "medio-oficial": { a: 5_977, b: 6_626, c: 10_502, "c-austral": 11_955 },
+      ayudante: { a: 5_502, b: 6_135, c: 10_197, "c-austral": 11_003 },
+    },
+    serenoMensual: { a: 999_495, b: 1_113_481, c: 1_670_938, "c-austral": 1_998_989 },
+    snr: {
+      "oficial-especializado": { a: 0, b: 0, c: 0, "c-austral": 0 },
+      oficial: { a: 0, b: 0, c: 0, "c-austral": 0 },
+      "medio-oficial": { a: 0, b: 0, c: 0, "c-austral": 0 },
+      ayudante: { a: 0, b: 0, c: 0, "c-austral": 0 },
+      sereno: { a: 0, b: 0, c: 0, "c-austral": 0 },
+    },
+  },
+  {
+    id: "octubre-2026",
+    etiqueta: "Octubre 2026",
+    mes: 10,
+    anio: 2026,
+    cambios:
+      "+1,8% acumulativo sobre los básicos de septiembre (acuerdo del 21/9/2026). Sin suma no remunerativa.",
+    jornales: {
+      "oficial-especializado": { a: 7_697, b: 8_544, c: 11_817, "c-austral": 15_395 },
+      oficial: { a: 6_585, b: 7_313, c: 11_079, "c-austral": 13_169 },
+      "medio-oficial": { a: 6_085, b: 6_745, c: 10_691, "c-austral": 12_170 },
+      ayudante: { a: 5_601, b: 6_245, c: 10_381, "c-austral": 11_201 },
+    },
+    serenoMensual: { a: 1_017_485, b: 1_133_523, c: 1_701_015, "c-austral": 2_034_971 },
+    snr: {
+      "oficial-especializado": { a: 0, b: 0, c: 0, "c-austral": 0 },
+      oficial: { a: 0, b: 0, c: 0, "c-austral": 0 },
+      "medio-oficial": { a: 0, b: 0, c: 0, "c-austral": 0 },
+      ayudante: { a: 0, b: 0, c: 0, "c-austral": 0 },
+      sereno: { a: 0, b: 0, c: 0, "c-austral": 0 },
+    },
+  },
+  {
+    id: "noviembre-2026",
+    etiqueta: "Noviembre 2026",
+    mes: 11,
+    anio: 2026,
+    cambios:
+      "+1,7% acumulativo sobre los básicos de octubre, último mes del acuerdo del 21/9/2026. Sin suma no remunerativa. La Comisión Especial se reúne el 20/10/2026 para definir diciembre en adelante.",
+    jornales: {
+      "oficial-especializado": { a: 7_828, b: 8_689, c: 12_018, "c-austral": 15_657 },
+      oficial: { a: 6_697, b: 7_437, c: 11_267, "c-austral": 13_393 },
+      "medio-oficial": { a: 6_188, b: 6_860, c: 10_873, "c-austral": 12_377 },
+      ayudante: { a: 5_696, b: 6_351, c: 10_557, "c-austral": 11_392 },
+    },
+    serenoMensual: { a: 1_034_783, b: 1_152_793, c: 1_729_932, "c-austral": 2_069_565 },
+    snr: {
+      "oficial-especializado": { a: 0, b: 0, c: 0, "c-austral": 0 },
+      oficial: { a: 0, b: 0, c: 0, "c-austral": 0 },
+      "medio-oficial": { a: 0, b: 0, c: 0, "c-austral": 0 },
+      ayudante: { a: 0, b: 0, c: 0, "c-austral": 0 },
+      sereno: { a: 0, b: 0, c: 0, "c-austral": 0 },
+    },
   },
 ];
 
@@ -239,17 +316,17 @@ export const UOCRA_APORTES_REMUNERATIVO = 0.17;
 export const UOCRA_APORTES_SNR = 0.03;
 export const UOCRA_APORTE_SOLIDARIO = 0.02;
 
-// La Comisión Especial se reunió el 20/7/2026 para definir septiembre+. Una fecha futura
+// La Comisión Especial se reúne el 20/10/2026 para definir diciembre+. Una fecha futura
 // escrita a mano envejece sola y nadie la mira; por eso check_planilla_uocra.ts la vigila.
 export const UOCRA_PROXIMA_PARITARIA = {
   /** Fecha de la reunión de la Comisión Especial que define el tramo siguiente. */
-  fechaISO: "2026-07-20",
+  fechaISO: "2026-10-20",
   /** Qué tramo define esa reunión. */
-  define: "septiembre de 2026 en adelante",
+  define: "diciembre de 2026 en adelante",
   /** Primer mes del tramo, con el mismo formato que los id de MESES_UOCRA. */
-  primerMesQueDefine: "septiembre-2026",
+  primerMesQueDefine: "diciembre-2026",
   /** ¿Ya se publicó el acuerdo con las tablas? Mientras sea false, la escala cargada es la última vigente. */
   publicada: false,
   /** Última vez que se COMPROBÓ contra la fuente que el acuerdo sigue sin publicarse. */
-  comprobadoEl: "2026-09-09",
+  comprobadoEl: "2026-09-28",
 } as const;

@@ -1,6 +1,17 @@
 import type { NextConfig } from "next";
 
+const HOY_BUILD =
+  process.env.CALCULAR_HOY ||
+  new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Argentina/Buenos_Aires",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+
 const nextConfig: NextConfig = {
+  // Congela el "hoy" del build en server y cliente por igual: ver src/lib/hoy.ts.
+  env: { CALCULAR_HOY_BUILD: HOY_BUILD },
   // El CSS del sitio son ~14 KiB: como request aparte bloquea el render y agrega un salto
   // de red antes del primer pintado. Inline en el HTML sale gratis a ese tamaño.
   // `cpus` sale de una env var porque el build spawnea un worker por núcleo (acá 16) y en una

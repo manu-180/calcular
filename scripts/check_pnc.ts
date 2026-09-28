@@ -314,7 +314,7 @@ check(
 check("hay al menos 6 fuentes listadas", PNC_FUENTES.lista.length >= 6);
 check(
   "están citadas las cuatro normas que fijan los montos",
-  ["27.793", "432/1997", "23.746", "257/2026"].every((n) =>
+  ["27.793", "432/1997", "23.746", V.resolucion.replace("Resolución ANSES ", "")].every((n) =>
     PNC_FUENTES.lista.some((f) => f.nombre.includes(n) || f.detalle.includes(n)),
   ),
 );

@@ -2,6 +2,8 @@
 // REGLA DE ORO: verificados SOLO contra fuente oficial, nunca blogs. La fecha de
 // verificación va visible en la página.
 
+import { PRESTACIONES_VIGENTES } from "./prestaciones";
+
 // Aportes personales obligatorios sobre la remuneración bruta:
 //   jubilación (SIPA) 11% — Ley 24.241 art. 11
 //   INSSJP / PAMI    3%  — Ley 19.032
@@ -17,13 +19,13 @@ export const TOTAL_APORTES =
 
 // Base imponible del SIPA: tope sobre el que se calculan los aportes. Por encima de
 // la base máxima, los aportes dejan de crecer (la base se trunca). Se actualiza
-// MENSUALMENTE por movilidad (Dec. 274/2024). Degradación elegante: si el valor está
-// atrasado, solo afecta sueldos por encima del tope. Rotar en cada redeploy mensual.
+// MENSUALMENTE por movilidad (Dec. 274/2024) y sale del art. 3 de la misma resolución de
+// ANSES que fija los haberes: se toma de prestaciones.ts para que nunca haya dos copias.
 export const TOPE_SIPA = {
-  baseMaxima: 4_691_748.47, // remuneración devengada septiembre 2026
-  baseMinima: 144_363.55,
-  vigencia: "septiembre de 2026",
-  fuente: "Resolución ANSES 257/2026, art. 3 (Boletín Oficial, 1/9/2026)",
+  baseMaxima: PRESTACIONES_VIGENTES.baseImponibleMaxima,
+  baseMinima: PRESTACIONES_VIGENTES.baseImponibleMinima,
+  vigencia: PRESTACIONES_VIGENTES.vigencia,
+  fuente: `${PRESTACIONES_VIGENTES.resolucion}, art. 3 (${PRESTACIONES_VIGENTES.resolucionBO})`,
 };
 
 export const SUELDO_FUENTES = {

@@ -13,13 +13,18 @@ import { calcularCamioneros } from "@/lib/convenios";
 import { formatARS } from "@/lib/formato";
 import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
 
-const ACTUALIZADO_EL = "16 de junio de 2026";
-const MES_ID = "junio-2026";
+import { fechaLarga, periodoDeMes, vigenteEn } from "@/lib/hoy";
+const MES = vigenteEn(MESES_CAMIONEROS, periodoDeMes);
+const MES_ID = MES.id;
+const MES_TXT = MES.etiqueta.toLowerCase();
+const ACTUALIZADO_EL = fechaLarga(CAMIONEROS_FUENTES.verificacion.consultadoEl);
+const CP_REF = calcularCamioneros({ mesId: MES_ID, categoriaId: "chofer-primera", aniosAntiguedad: 0 })!;
+const redondeo = (n: number) => Math.round(n / 1_000) * 1_000;
 
 const faqs = [
   {
     q: "¿Cuánto cobra un camionero en mano en 2026?",
-    a: "Depende de la categoría. Un Chofer de Primera (CCT 40/89), con la escala de junio 2026 y sin antigüedad, tiene un básico de alrededor de $1.017.000 y le quedan en mano cerca de $844.000 — el 83% del bruto. A diferencia de Comercio, el convenio de Camioneros ya tiene casi todo el sueldo como remunerativo, así que el neto es directamente el 83% habitual.",
+    a: `Depende de la categoría. Un Chofer de Primera (CCT 40/89), con la escala de ${MES_TXT} y sin antigüedad, tiene un básico de alrededor de ${formatARS(redondeo(CP_REF.totalRemunerativo), 0)} y le quedan en mano cerca de ${formatARS(redondeo(CP_REF.neto), 0)} — el 83% del bruto. A diferencia de Comercio, el convenio de Camioneros ya tiene casi todo el sueldo como remunerativo, así que el neto es directamente el 83% habitual.`,
   },
   {
     q: "¿Qué descuentos incluye el neto estimado?",
@@ -42,13 +47,12 @@ const faqs = [
 export const metadata: Metadata = {
   title: "Sueldo Neto Camioneros 2026: cuánto queda en mano por categoría",
   description:
-    "Cuánto cobra un camionero en mano según la escala CCT 40/89 por categoría (junio 2026). Chofer de primera, segunda, tercera, peón y taller: bruto, descuentos y neto. Calculadora y tabla.",
+    `Cuánto cobra un camionero en mano según la escala CCT 40/89 por categoría (${MES_TXT}). Chofer de primera, segunda, tercera, peón y taller: bruto, descuentos y neto. Calculadora y tabla.`,
   alternates: { canonical: "/sueldo-neto/camioneros" },
 };
 
 export default function SueldoNetoCamionerosPage() {
-  const mesRef = MESES_CAMIONEROS.find((m) => m.id === MES_ID);
-  const mesEtiqueta = mesRef?.etiqueta ?? "Junio 2026";
+  const mesEtiqueta = MES.etiqueta;
 
   const grupos = [...new Set(CATEGORIAS_CAMIONEROS.map((c) => c.grupo))];
   const filas = CATEGORIAS_CAMIONEROS.map((cat) => ({
@@ -69,16 +73,16 @@ export default function SueldoNetoCamionerosPage() {
       articleSchema({
         titulo: "Sueldo Neto Camioneros 2026",
         descripcion:
-          "Cuánto queda en mano según la escala CCT 40/89 por categoría. Bruto, aportes (17%) y neto estimado, junio 2026.",
+          `Cuánto queda en mano según la escala CCT 40/89 por categoría. Bruto, aportes (17%) y neto estimado, ${MES_TXT}.`,
         url: "/sueldo-neto/camioneros",
-        modificado: "2026-06-16",
+        modificado: "2026-09-28",
       }),
       datasetSchema({
-        nombre: "Tabla neto por categoría — Camioneros CCT 40/89 junio 2026",
+        nombre: `Tabla neto por categoría — Camioneros CCT 40/89 ${MES_TXT}`,
         descripcion:
           "Bruto, descuentos y neto estimado para las categorías del CCT 40/89. Sin antigüedad, escala nacional única.",
         url: "/sueldo-neto/camioneros",
-        modificado: "2026-06-16",
+        modificado: "2026-09-28",
         fuenteNombre: CAMIONEROS_FUENTES.circular.nombre,
         fuenteUrl: CAMIONEROS_FUENTES.circular.url,
       }),
@@ -121,7 +125,7 @@ export default function SueldoNetoCamionerosPage() {
         <RespuestaPrimero actualizado={ACTUALIZADO_EL}>
           <p>
             Un <strong>Chofer de Primera</strong> sin antigüedad tiene{" "}
-            <strong>{formatARS(cp.totalRemunerativo, 0)}</strong> de bruto en junio de 2026 y le
+            <strong>{formatARS(cp.totalRemunerativo, 0)}</strong> de bruto en {MES_TXT} y le
             quedan en mano <strong>{formatARS(cp.neto, 0)}</strong> — el 83% del bruto. En
             Camioneros casi todo el sueldo es remunerativo, así que el neto es{" "}
             <strong>directamente bruto × 0,83</strong> (los aportes son 11% de jubilación + 3% de
@@ -204,7 +208,7 @@ export default function SueldoNetoCamionerosPage() {
         </p>
         {cp && (
           <p className="text-sm text-emerald-800">
-            Ejemplo Chofer de Primera junio: bruto {formatARS(cp.totalRemunerativo, 0)} − 17% (
+            Ejemplo Chofer de Primera {MES_TXT}: bruto {formatARS(cp.totalRemunerativo, 0)} − 17% (
             {formatARS(cp.descuentos, 0)}) = <strong>{formatARS(cp.neto, 0)}</strong> en mano.
           </p>
         )}

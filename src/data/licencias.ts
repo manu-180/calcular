@@ -18,6 +18,8 @@
 //   · «te paga la empresa» → la paga ANSES, y por eso hace falta antigüedad de 3 meses.
 //   · «cobrás lo mismo que en el recibo» → cobrás el bruto, que es más que el neto.
 
+import { ASIGNACIONES_VIGENTES } from "./asignaciones";
+
 /** Plazos de la licencia por maternidad (art. 177 LCT). */
 export const MATERNIDAD = {
   /** Días anteriores al parto en el régimen general. */
@@ -85,10 +87,10 @@ export const LICENCIAS_FUENTES: { consultadoEl: string; lista: FuenteLicencia[] 
         "Art. 6 (nómina de asignaciones), art. 11 (la asignación por maternidad es igual a la remuneración que se hubiera debido percibir y exige 3 meses de antigüedad) y art. 12 (asignación por nacimiento).",
     },
     {
-      nombre: "Resolución ANSES 260/2026 — montos de asignaciones familiares",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346684/20260901",
+      nombre: `${ASIGNACIONES_VIGENTES.resolucion} — montos de asignaciones familiares`,
+      url: ASIGNACIONES_VIGENTES.resolucionUrl,
       detalle:
-        "B.O. 1/9/2026 — importes vigentes de las asignaciones de pago único (nacimiento, adopción, matrimonio) y de la asignación prenatal.",
+        `${ASIGNACIONES_VIGENTES.resolucionBO} — importes vigentes de las asignaciones de pago único (nacimiento, adopción, matrimonio) y de la asignación prenatal.`,
     },
   ],
 };

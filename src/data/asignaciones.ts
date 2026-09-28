@@ -19,17 +19,18 @@
 // esperarla es publicar el dato una semana tarde. La resolución es además la fuente PRIMARIA: la
 // cartilla la transcribe. Cuando el PDF aparezca, cruzarlo contra estos valores.
 //
-// CÓMO SE ROTA (mensual, ~último día hábil del mes anterior, junto con prestaciones.ts):
-//   1. Leer la resolución del mes en el B.O. (`npx -y tsx tools/boletin-oficial.ts --buscar "ANSES"`)
-//      y bajar la cartilla como control cruzado:
-//      https://www.anses.gob.ar/sites/default/files/cartilla/YYYY-MM/Montos-AAFF-MM-YYYY.pdf
-//      (`npx -y tsx tools/pdf-extraer.ts <url>` desde la raíz del repo).
-//   2. Mover el bloque VIGENTE a ASIGNACIONES_MES_ANTERIOR y cargar el nuevo en ASIGNACIONES_VIGENTES.
-//   3. Correr `npx -y tsx scripts/check_asignaciones.ts`: verifica que TODOS los valores nuevos salgan
-//      de aplicar la movilidad del mes a los del mes anterior. Un número mal tipeado no llega a prod.
+// CÓMO SE CARGA UN MES NUEVO (desde el 28/9/2026 ya no se rota a mano el día 1):
+//   1. Leer la resolución del mes en el B.O. (`npx -y tsx tools/boletin-oficial.ts --buscar "ANSES"`).
+//   2. Agregar su fila (% del art. 1 + tope del art. 4) al final de RESOLUCIONES_ASIGNACIONES_SIGUIENTES.
+//   3. Correr `npx -y tsx scripts/check_asignaciones.ts`: la derivación tiene que reproducir el tope
+//      publicado al peso. El día 1 el sitio pasa solo a la tabla derivada (src/lib/hoy.ts).
+// ASIGNACIONES_PUBLICADAS se reemplaza por una tabla más nueva sólo si hace falta corregir algo contra
+// una cartilla: la cadena derivada es la fuente del mes en curso.
 //
 // POR QUÉ EL MES ANTERIOR VIVE ACÁ: es el ancla anti-tipeo. La cartilla es un PDF que se transcribe
 // a mano; sin un valor previo contra el cual cruzar, un dígito cambiado pasa desapercibido.
+
+import { vigenteEn } from "../lib/hoy";
 
 /** Las 5 columnas de la cartilla. La zona la fija el lugar de explotación declarado ante ARCA. */
 export type Zona = "general" | "zona1" | "zona2" | "zona3" | "zona4";
@@ -90,7 +91,7 @@ export const GRUPOS_MONOTRIBUTO: { id: GrupoMonotributo; etiqueta: string }[] = 
   { id: "I_K", etiqueta: "I, J y K" },
 ];
 
-export const ASIGNACIONES_VIGENTES = {
+const ASIGNACIONES_PUBLICADAS = {
   periodo: "2026-09",
   vigencia: "septiembre de 2026",
 
@@ -211,15 +212,17 @@ export const ASIGNACIONES_VIGENTES = {
   resolucionBO: "Boletín Oficial del 1 de septiembre de 2026",
   cartillaUrl:
     "https://www.anses.gob.ar/sites/default/files/cartilla/2026-09/Montos-AAFF-09-2026.pdf",
-} as const;
+};
 
 /**
- * Resolución del mes SIGUIENTE dictada antes de que empiece (la de octubre de 2026 salió el 23/9).
- * Sólo trae lo que su articulado fija de puño: el % del art. 1 y el tope individual del art. 4. Los
- * montos que muestra la página se derivan con ceil(vigente × coef) (art. 3), y check_asignaciones
- * exige que esa misma derivación reproduzca el tope del art. 4 al peso. Al rotar, vuelve a null.
+ * Resoluciones de los meses POSTERIORES a la tabla publicada, en orden. Cada una trae sólo lo que su
+ * articulado fija de puño: el % del art. 1 y el tope individual del art. 4. Los montos se derivan
+ * con ceil(anterior × coef) (art. 3) — ver `moverMes` — y check_asignaciones exige que esa
+ * derivación reproduzca el tope del art. 4 al peso: es el ancla que prueba la regla bien leída.
+ * La del mes siguiente se carga apenas sale (la de octubre de 2026 salió el 23/9); el día 1 el sitio
+ * pasa solo a la tabla derivada (src/lib/hoy.ts).
  */
-export const ASIGNACIONES_PROXIMAS: {
+export type ResolucionAsignaciones = {
   periodo: string;
   vigencia: string;
   movilidad: number;
@@ -227,22 +230,25 @@ export const ASIGNACIONES_PROXIMAS: {
   resolucion: string;
   resolucionUrl: string;
   resolucionBO: string;
-} | null = {
-  periodo: "2026-10",
-  vigencia: "octubre de 2026",
-  movilidad: 1.66,
-  topeIgfIndividual: 3_209_863,
-  resolucion: "Resolución ANSES 283/2026",
-  resolucionUrl: "https://www.boletinoficial.gob.ar/detalleAviso/primera/347831/20260923",
-  resolucionBO: "Boletín Oficial del 23 de septiembre de 2026",
 };
 
+export const RESOLUCIONES_ASIGNACIONES_SIGUIENTES: ResolucionAsignaciones[] = [
+  {
+    periodo: "2026-10",
+    vigencia: "octubre de 2026",
+    movilidad: 1.66,
+    topeIgfIndividual: 3_209_863,
+    resolucion: "Resolución ANSES 283/2026",
+    resolucionUrl: "https://www.boletinoficial.gob.ar/detalleAviso/primera/347831/20260923",
+    resolucionBO: "Boletín Oficial del 23 de septiembre de 2026",
+  },
+];
+
 /**
- * Snapshot del mes anterior. NO se muestra en la web: existe sólo para que check_asignaciones.ts
- * pueda verificar que cada valor vigente es el del mes previo movido por la movilidad del mes.
+ * Snapshot del mes anterior a la tabla publicada (ancla anti-tipeo de ASIGNACIONES_PUBLICADAS).
  * Fuente: cartilla oficial Montos-AAFF-08-2026.pdf (Resolución ANSES 233/2026).
  */
-export const ASIGNACIONES_MES_ANTERIOR = {
+const MES_ANTERIOR_PUBLICADO: SnapshotAsignaciones = {
   periodo: "2026-08",
   topeIgfGrupo: 6_184_406,
   topeIgfIndividual: 3_092_203,
@@ -302,7 +308,143 @@ export const ASIGNACIONES_MES_ANTERIOR = {
     ayudaEscolarBase: { general: 55_672, zona1: 74_257, zona2: 92_877, zona3: 110_967, zona4: 110_967 },
     ayudaEscolarRefuerzo: { general: 29_328, zona1: 10_743, zona2: 0, zona3: 0, zona4: 0 },
   },
-} as const;
+};
+
+export type TablaAsignaciones = typeof ASIGNACIONES_PUBLICADAS;
+
+export type SnapshotAsignaciones = {
+  periodo: string;
+  topeIgfGrupo: number;
+  topeIgfIndividual: number;
+  nacimiento: number;
+  adopcion: number;
+  matrimonio: number;
+  hijo: TramoIgf[];
+  hijoDiscapacidad: TramoIgf[];
+  conyuge: { general: number; zona1: number };
+  universales: {
+    embarazo: { general: number; zona1: number };
+    hijo: { general: number; zona1: number };
+    hijoDiscapacidad: { general: number; zona1: number };
+    apoyoAlimentarioMilDias: number;
+  };
+  /** Conceptos que la resolución NO mueve (se verifican iguales, no por coeficiente). */
+  congelados: {
+    topeIgfAyudaEscolar: number;
+    ayudaEscolarBase: MontosPorZona;
+    ayudaEscolarRefuerzo: MontosPorZona;
+  };
+};
+
+/** Art. 3: redondeo al entero SIGUIENTE. Misma fórmula que moverAlMesSiguiente de lib/asignaciones. */
+function mover(valor: number, movilidad: number): number {
+  return Math.ceil(Math.round(valor * (1 + movilidad / 100) * 1e6) / 1e6);
+}
+
+function moverZonas<T extends Record<string, number>>(m: T, mov: number): T {
+  return Object.fromEntries(Object.entries(m).map(([k, v]) => [k, mover(v, mov)])) as T;
+}
+
+function moverTramos(tramos: TramoIgf[], mov: number): TramoIgf[] {
+  const hastas = tramos.map((t) => (t.hasta === null ? null : mover(t.hasta, mov)));
+  return tramos.map((t, i) => ({
+    desde: i === 0 ? 0 : Math.round(((hastas[i - 1] as number) + 0.01) * 100) / 100,
+    hasta: hastas[i],
+    montos: moverZonas(t.montos, mov),
+  }));
+}
+
+/**
+ * La tabla del mes siguiente, derivada del texto de su resolución. Todo lo que la Ley 24.714 art. 6
+ * incs. d) y e) excluye del incremento (ayuda escolar: montos y su tope de IGF) queda igual.
+ */
+function moverMes(t: TablaAsignaciones, r: ResolucionAsignaciones): TablaAsignaciones {
+  const mov = r.movilidad;
+  const hijo = moverTramos(t.hijo, mov);
+  const hijoDiscapacidad = moverTramos(t.hijoDiscapacidad, mov);
+  const [mm, aaaa] = [r.periodo.slice(5, 7), r.periodo.slice(0, 4)];
+  return {
+    ...t,
+    periodo: r.periodo,
+    vigencia: r.vigencia,
+    movilidad: mov,
+    topeIgfGrupo: mover(t.topeIgfGrupo, mov),
+    topeIgfIndividual: mover(t.topeIgfIndividual, mov),
+    nacimiento: mover(t.nacimiento, mov),
+    adopcion: mover(t.adopcion, mov),
+    matrimonio: mover(t.matrimonio, mov),
+    hijo,
+    hijoDiscapacidad,
+    conyuge: moverZonas(t.conyuge, mov),
+    monotributo: {
+      hijo: Object.fromEntries(
+        Object.entries(t.monotributo.hijo).map(([k, v]) => [k, v === null ? null : mover(v, mov)]),
+      ) as TablaAsignaciones["monotributo"]["hijo"],
+      hijoDiscapacidad: moverZonas(t.monotributo.hijoDiscapacidad, mov),
+      ayudaEscolarTotal: t.monotributo.ayudaEscolarTotal,
+    },
+    universales: {
+      ...t.universales,
+      embarazo: moverZonas(t.universales.embarazo, mov),
+      hijo: moverZonas(t.universales.hijo, mov),
+      hijoDiscapacidad: moverZonas(t.universales.hijoDiscapacidad, mov),
+      nacimiento: mover(t.universales.nacimiento, mov),
+      adopcion: mover(t.universales.adopcion, mov),
+      cuidadoSaludHijo: moverZonas(t.universales.cuidadoSaludHijo, mov),
+      cuidadoSaludHijoDiscapacidad: moverZonas(t.universales.cuidadoSaludHijoDiscapacidad, mov),
+      apoyoAlimentarioMilDias: mover(t.universales.apoyoAlimentarioMilDias, mov),
+    },
+    resolucion: r.resolucion,
+    resolucionUrl: r.resolucionUrl,
+    resolucionBO: r.resolucionBO,
+    cartillaUrl: `https://www.anses.gob.ar/sites/default/files/cartilla/${aaaa}-${mm}/Montos-AAFF-${mm}-${aaaa}.pdf`,
+  };
+}
+
+function snapshot(t: TablaAsignaciones): SnapshotAsignaciones {
+  return {
+    periodo: t.periodo,
+    topeIgfGrupo: t.topeIgfGrupo,
+    topeIgfIndividual: t.topeIgfIndividual,
+    nacimiento: t.nacimiento,
+    adopcion: t.adopcion,
+    matrimonio: t.matrimonio,
+    hijo: t.hijo,
+    hijoDiscapacidad: t.hijoDiscapacidad,
+    conyuge: t.conyuge,
+    universales: {
+      embarazo: t.universales.embarazo,
+      hijo: t.universales.hijo,
+      hijoDiscapacidad: t.universales.hijoDiscapacidad,
+      apoyoAlimentarioMilDias: t.universales.apoyoAlimentarioMilDias,
+    },
+    congelados: {
+      topeIgfAyudaEscolar: t.topeIgfAyudaEscolar,
+      ayudaEscolarBase: t.ayudaEscolar.base,
+      ayudaEscolarRefuerzo: t.ayudaEscolar.refuerzo,
+    },
+  };
+}
+
+const CADENA: TablaAsignaciones[] = RESOLUCIONES_ASIGNACIONES_SIGUIENTES.reduce(
+  (acc, r) => [...acc, moverMes(acc[acc.length - 1], r)],
+  [ASIGNACIONES_PUBLICADAS],
+);
+const I_VIGENTE = CADENA.indexOf(vigenteEn(CADENA, (t) => t.periodo));
+
+/** La tabla del mes que se liquida hoy: la publicada o, si ya empezó un mes posterior, la derivada. */
+export const ASIGNACIONES_VIGENTES: TablaAsignaciones = CADENA[I_VIGENTE];
+
+/** La resolución del mes siguiente, si ya salió. */
+export const ASIGNACIONES_PROXIMAS: ResolucionAsignaciones | null =
+  RESOLUCIONES_ASIGNACIONES_SIGUIENTES[I_VIGENTE] ?? null;
+
+/**
+ * Snapshot del mes anterior. NO se muestra en la web: existe sólo para que check_asignaciones.ts
+ * pueda verificar que cada valor vigente es el del mes previo movido por la movilidad del mes.
+ */
+export const ASIGNACIONES_MES_ANTERIOR: SnapshotAsignaciones =
+  I_VIGENTE === 0 ? MES_ANTERIOR_PUBLICADO : snapshot(CADENA[I_VIGENTE - 1]);
 
 /**
  * Los tres pagos por única vez (nacimiento, adopción y matrimonio) y —lo que casi nadie publica—
@@ -381,14 +523,14 @@ export const PAGO_UNICO = {
 } as const;
 
 export const ASIGNACIONES_FUENTES = {
-  consultadoEl: "2026-09-01",
+  consultadoEl: "2026-09-28",
   resolucion: {
-    nombre: "Resolución ANSES 260/2026 — montos y rangos de asignaciones familiares",
-    url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346684/20260901",
+    nombre: `${ASIGNACIONES_VIGENTES.resolucion} — montos y rangos de asignaciones familiares`,
+    url: ASIGNACIONES_VIGENTES.resolucionUrl,
   },
   cartilla: {
-    nombre: "ANSES — Montos de asignaciones familiares, AUH y embarazo (septiembre 2026)",
-    url: "https://www.anses.gob.ar/sites/default/files/cartilla/2026-09/Montos-AAFF-09-2026.pdf",
+    nombre: `ANSES — Montos de asignaciones familiares, AUH y embarazo (${ASIGNACIONES_VIGENTES.vigencia})`,
+    url: ASIGNACIONES_VIGENTES.cartillaUrl,
   },
   ley: {
     nombre: "Ley 24.714 — Régimen de Asignaciones Familiares",

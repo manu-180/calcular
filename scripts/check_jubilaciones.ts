@@ -15,7 +15,12 @@
 // el turno del 3/8). Ahora un tope viejo o mal tipeado rompe el check antes de llegar a producción.
 
 import { HABER_MINIMO_SERIE, HABER_MINIMO_ULTIMO, NORMAS_POR_PERIODO } from "../src/data/jubilaciones";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES, RESOLUCION_PROXIMA } from "../src/data/prestaciones";
+import {
+  BONO_VIGENTE,
+  MESES_PREVISIONALES,
+  PRESTACIONES_VIGENTES,
+  RESOLUCION_PROXIMA,
+} from "../src/data/prestaciones";
 import { TOPE_SIPA } from "../src/data/sueldo";
 import { IPC_SERIE } from "../src/data/ipc-serie";
 import {
@@ -28,6 +33,7 @@ import {
   sumarMeses,
   varInteranualHaber,
 } from "../src/lib/jubilacion";
+import { periodoActualAR } from "../src/lib/hoy";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -43,9 +49,11 @@ const aprox = (a: number, b: number, tol = 0.02) => Math.abs(a - b) < tol;
 const V = PRESTACIONES_VIGENTES;
 
 // ===========================================================================
-// 1 · Los valores de la Resolución ANSES 257/2026 (B.O. 1/9/2026), transcritos del texto oficial
+// 1 · Los valores de cada resolución cargada
 // ===========================================================================
-{
+// Anclas transcriptas a mano del texto oficial, sólo para el mes en que se transcribieron. El resto
+// de los meses queda anclado por la cadena de abajo: cada uno es el anterior movido por la movilidad.
+if (V.periodo === "2026-09") {
   check("movilidad de septiembre 2026 = 2,11%", V.movilidad === 2.11, V.movilidad);
   check("haber mínimo septiembre 2026 = $428.633,20", V.haberMinimo === 428_633.20, V.haberMinimo);
   check("haber máximo septiembre 2026 = $2.884.295,54", V.haberMaximo === 2_884_295.54, V.haberMaximo);
@@ -54,10 +62,42 @@ const V = PRESTACIONES_VIGENTES;
   check("base imponible mínima = $144.363,55", V.baseImponibleMinima === 144_363.55);
   check("base imponible máxima = $4.691.748,47", V.baseImponibleMaxima === 4_691_748.47);
   check("cita la resolución del Boletín Oficial", /257\/2026/.test(V.resolucion));
+}
+{
+  check("el mes vigente ya empezó", V.periodo <= periodoActualAR(), { vigente: V.periodo, hoy: periodoActualAR() });
   check(
     "el link de la resolución apunta al Boletín Oficial",
     V.resolucionUrl.startsWith("https://www.boletinoficial.gob.ar/"),
   );
+  check(
+    "los meses cargados son consecutivos y en orden",
+    MESES_PREVISIONALES.every((m, i) => i === 0 || sumarMeses(MESES_PREVISIONALES[i - 1].periodo, 1) === m.periodo),
+  );
+  // La cadena: cada mes cargado es el anterior movido por SU movilidad, y la movilidad es la que
+  // manda el Dec. 274/2024 (IPC de dos meses antes). Así un mes cargado por adelantado queda
+  // verificado desde el día en que se carga, no recién cuando entra en vigencia.
+  for (let i = 1; i < MESES_PREVISIONALES.length; i++) {
+    const a = MESES_PREVISIONALES[i - 1];
+    const m = MESES_PREVISIONALES[i];
+    const f = 1 + m.movilidad / 100;
+    check(`${m.periodo}: la movilidad es la del IPC de dos meses antes`, movilidadDe(m.periodo) === m.movilidad, {
+      cargada: m.movilidad,
+      formula: movilidadDe(m.periodo),
+    });
+    for (const k of ["haberMinimo", "haberMaximo", "pbu", "baseImponibleMinima", "baseImponibleMaxima"] as const) {
+      check(`${m.periodo}: ${k} = ${a.periodo} × movilidad`, aprox(Math.round(a[k] * f * 100) / 100, m[k]), {
+        cargado: m[k],
+        esperado: Math.round(a[k] * f * 100) / 100,
+      });
+    }
+    check(`${m.periodo}: PUAM = 80% del haber mínimo`, aprox(m.puam, Math.round(m.haberMinimo * 0.8 * 100) / 100));
+    check(`${m.periodo}: cita una Resolución ANSES`, /^Resolución ANSES \d+\/\d{4}$/.test(m.resolucion), m.resolucion);
+    check(`${m.periodo}: el link apunta al Boletín Oficial`, m.resolucionUrl.startsWith("https://www.boletinoficial.gob.ar/"));
+    if (m.bono) {
+      check(`${m.periodo}: el bono cita un decreto`, /^Decreto \d+\/\d{4}$/.test(m.bono.norma), m.bono.norma);
+      check(`${m.periodo}: el decreto del bono es del Boletín Oficial`, m.bono.normaUrl.startsWith("https://www.boletinoficial.gob.ar/"));
+    }
+  }
 }
 
 // ===========================================================================
@@ -165,22 +205,14 @@ const V = PRESTACIONES_VIGENTES;
   );
   check(
     "TOPE_SIPA cita la misma resolución",
-    TOPE_SIPA.fuente.includes("257/2026"),
+    TOPE_SIPA.fuente.includes(V.resolucion),
     TOPE_SIPA.fuente,
   );
-  // Y que la base imponible haya seguido la movilidad: 4.594.798,23 (agosto) × 1,0211.
-  check(
-    "la base imponible máxima sigue la movilidad del mes",
-    aprox(Math.round(4_594_798.23 * (1 + V.movilidad / 100) * 100) / 100, V.baseImponibleMaxima),
-  );
-  check(
-    "la base imponible mínima sigue la movilidad del mes",
-    aprox(Math.round(141_380.42 * (1 + V.movilidad / 100) * 100) / 100, V.baseImponibleMinima),
-  );
+  // Que la base imponible siga la movilidad mes a mes lo verifica la cadena de la sección 1.
 }
 
 // ===========================================================================
-// 6 · El bono proporcional (Decreto 824/2026, arts. 3 y 4)
+// 6 · El bono proporcional (decreto del mes, arts. 3 y 4)
 // ===========================================================================
 {
   const min = V.haberMinimo;
@@ -189,7 +221,7 @@ const V = PRESTACIONES_VIGENTES;
 
   check("el bono vigente es de $70.000", b === 70_000, b);
   check("el bono es del mes vigente", BONO_VIGENTE.periodo === V.periodo);
-  check("el bono cita su decreto", /824\/2026/.test(BONO_VIGENTE.norma));
+  check("el bono cita su decreto", /^Decreto \d+\/\d{4}$/.test(BONO_VIGENTE.norma), BONO_VIGENTE.norma);
   check(
     "el link del decreto apunta al Boletín Oficial",
     BONO_VIGENTE.normaUrl.startsWith("https://www.boletinoficial.gob.ar/"),

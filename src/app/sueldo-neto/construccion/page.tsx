@@ -15,19 +15,32 @@ import {
 import { calcularUocra } from "@/lib/convenios";
 import { formatARS } from "@/lib/formato";
 import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
+import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
-const ACTUALIZADO_EL = "16 de junio de 2026";
-const MES_ID = "junio-2026";
+const ACTUALIZADO_EL = UOCRA_FUENTES.consultadoEl;
+const MES = vigenteEn(MESES_UOCRA, periodoDeMes);
+const MES_ID = MES.id;
+const MES_TXT = MES.etiqueta.toLowerCase();
 const ZONA_REF = "a"; // Zona A: la más poblada (CABA, Buenos Aires, Córdoba, Santa Fe, etc.)
+const HORAS_REF = Math.round(UOCRA_HORAS_MES_PROMEDIO);
+const OFICIAL_REF = calcularUocra({
+  mesId: MES_ID,
+  categoriaId: "oficial",
+  zonaId: ZONA_REF,
+  horasMes: HORAS_REF,
+  conAsistencia: true,
+  conAporteSindical: false,
+})!;
+const redondeo = (n: number) => Math.round(n / 10_000) * 10_000;
 
 const faqs = [
   {
     q: "¿Cuánto cobra un obrero de la construcción en mano en 2026?",
-    a: "Depende de la categoría, la zona y las horas trabajadas. Un Oficial de Zona A, con jornada completa (≈190 horas/mes) y asistencia perfecta, tiene en junio 2026 un bruto cercano a $1.360.000 y le quedan en mano alrededor de $1.140.000. El jornal es por hora, así que el sueldo final varía con las horas efectivamente trabajadas en el mes.",
+    a: `Depende de la categoría, la zona y las horas trabajadas. Un Oficial de Zona A, con jornada completa (≈${HORAS_REF} horas/mes) y asistencia perfecta, tiene en ${MES_TXT} un bruto cercano a ${formatARS(redondeo(OFICIAL_REF.bruto), 0)} y le quedan en mano alrededor de ${formatARS(redondeo(OFICIAL_REF.neto), 0)}. El jornal es por hora, así que el sueldo final varía con las horas efectivamente trabajadas en el mes.`,
   },
   {
     q: "¿Por qué el neto de la construcción puede ser más del 83% del bruto?",
-    a: "Porque parte del sueldo es una Suma No Remunerativa (SNR) que solo aporta el 3% de obra social, no el 17% completo. Igual que en Comercio, eso hace que el neto real quede algo por encima del 83% habitual. La asistencia perfecta (20% del básico) sí es remunerativa y descuenta el 17%.",
+    a: "Sólo en los meses con Suma No Remunerativa (SNR): la SNR aporta el 3% de obra social y no el 17% completo, y eso deja el neto algo por encima del 83%. En 2026 la hubo de abril a julio; desde agosto se absorbió al básico y el tramo septiembre-noviembre no la trae, así que el neto vuelve al 83% de lo remunerativo. La asistencia perfecta (20% del básico) siempre es remunerativa y descuenta el 17%.",
   },
   {
     q: "¿Qué es la asistencia perfecta?",
@@ -46,16 +59,15 @@ const faqs = [
 export const metadata: Metadata = {
   title: "Sueldo Neto Construcción (UOCRA) 2026: cuánto queda en mano",
   description:
-    "Cuánto cobra un obrero de la construcción en mano según la escala CCT 76/75 por categoría y zona (junio 2026). Oficial, medio oficial, ayudante y sereno: bruto, descuentos y neto. Calculadora y tabla.",
+    `Cuánto cobra un obrero de la construcción en mano según la escala CCT 76/75 por categoría y zona (${MES_TXT}). Oficial, medio oficial, ayudante y sereno: bruto, descuentos y neto. Calculadora y tabla.`,
   alternates: { canonical: "/sueldo-neto/construccion" },
 };
 
 export default function SueldoNetoConstruccionPage() {
-  const mesRef = MESES_UOCRA.find((m) => m.id === MES_ID);
-  const mesEtiqueta = mesRef?.etiqueta ?? "Junio 2026";
+  const mesEtiqueta = MES.etiqueta;
   const zonaRef = ZONAS_UOCRA.find((z) => z.id === ZONA_REF);
 
-  const horasMes = Math.round(UOCRA_HORAS_MES_PROMEDIO);
+  const horasMes = HORAS_REF;
 
   const filas = CATEGORIAS_UOCRA.map((cat) => ({
     cat,
@@ -78,18 +90,18 @@ export default function SueldoNetoConstruccionPage() {
       articleSchema({
         titulo: "Sueldo Neto Construcción (UOCRA) 2026",
         descripcion:
-          "Cuánto queda en mano según la escala CCT 76/75 por categoría y zona. Bruto, aportes y neto estimado, junio 2026.",
+          `Cuánto queda en mano según la escala CCT 76/75 por categoría y zona. Bruto, aportes y neto estimado, ${MES_TXT}.`,
         url: "/sueldo-neto/construccion",
-        modificado: "2026-06-16",
+        modificado: "2026-09-28",
       }),
       datasetSchema({
-        nombre: "Tabla neto por categoría — Construcción UOCRA CCT 76/75 junio 2026 (Zona A)",
+        nombre: `Tabla neto por categoría — Construcción UOCRA CCT 76/75 ${MES_TXT} (Zona A)`,
         descripcion:
           "Bruto, descuentos y neto estimado para las categorías del CCT 76/75 en Zona A, jornada completa con asistencia perfecta.",
         url: "/sueldo-neto/construccion",
-        modificado: "2026-06-16",
-        fuenteNombre: UOCRA_FUENTES.acuerdoTramo2.nombre,
-        fuenteUrl: UOCRA_FUENTES.acuerdoTramo2.url,
+        modificado: "2026-09-28",
+        fuenteNombre: UOCRA_FUENTES.acuerdoTramo3.nombre,
+        fuenteUrl: UOCRA_FUENTES.acuerdoTramo3.url,
       }),
       {
         "@type": "FAQPage",
@@ -131,11 +143,21 @@ export default function SueldoNetoConstruccionPage() {
           <p>
             Un <strong>Oficial</strong> de <strong>Zona A</strong> con jornada completa (≈
             {horasMes} horas) y asistencia perfecta tiene{" "}
-            <strong>{formatARS(oficial.bruto, 0)}</strong> de bruto en junio de 2026 y le quedan en
-            mano <strong>{formatARS(oficial.neto, 0)}</strong>. Es algo más del 83% porque la{" "}
-            <strong>suma no remunerativa</strong> solo descuenta el 3% de obra social. El sueldo de
-            la construcción es <strong>por hora</strong>, así que el monto final varía con las horas
-            del mes.
+            <strong>{formatARS(oficial.bruto, 0)}</strong> de bruto en {MES_TXT} y le quedan en
+            mano <strong>{formatARS(oficial.neto, 0)}</strong>.{" "}
+            {oficial.snr > 0 ? (
+              <>
+                Es algo más del 83% porque la <strong>suma no remunerativa</strong> solo descuenta el
+                3% de obra social.
+              </>
+            ) : (
+              <>
+                Es el 83% del bruto: {MES_TXT} no tiene suma no remunerativa, así que todo el sueldo
+                descuenta los aportes completos.
+              </>
+            )}{" "}
+            El sueldo de la construcción es <strong>por hora</strong>, así que el monto final varía
+            con las horas del mes.
           </p>
         </RespuestaPrimero>
       )}
@@ -213,7 +235,7 @@ export default function SueldoNetoConstruccionPage() {
         </p>
         {oficial && oficial.snr > 0 && (
           <p className="text-sm text-amber-800">
-            Ejemplo Oficial Zona A junio: sobre lo remunerativo (
+            Ejemplo Oficial Zona A {MES_TXT}: sobre lo remunerativo (
             {formatARS(oficial.totalRemunerativo, 0)}) se descuenta el 17%, y sobre la suma no
             remunerativa ({formatARS(oficial.snr, 0)}) solo el 3%. Por eso el neto queda algo por
             encima del 83%.

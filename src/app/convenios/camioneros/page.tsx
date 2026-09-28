@@ -16,6 +16,7 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { SelloVerificado } from "@/components/SelloVerificado";
 import { EmailCapture } from "@/components/EmailCapture";
 import { calcularCamioneros } from "@/lib/convenios";
+import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
 export const metadata: Metadata = {
   title: "Sueldo de camioneros 2026: calculadora y escala (CCT 40/89)",
@@ -33,10 +34,31 @@ export const metadata: Metadata = {
   },
 };
 
+// El mes que se muestra es el que se liquida hoy, o el último con planilla firmada si la escala
+// siguiente todavía no salió (src/lib/hoy.ts). Nunca un mes fijo escrito a mano.
+const MES = vigenteEn(MESES_CAMIONEROS, periodoDeMes);
+const MES_TXT = MES.etiqueta.toLowerCase();
+const PRIMERO = MESES_CAMIONEROS[0];
+const ULTIMO = MESES_CAMIONEROS[MESES_CAMIONEROS.length - 1];
+const CHOFER1_MES = basicoCamioneros(MES.id, "chofer-primera")!;
+const CHOFER1_NETO = calcularCamioneros({ mesId: MES.id, categoriaId: "chofer-primera", aniosAntiguedad: 0 })!.neto;
+// Variación real del básico del Chofer de Primera mes a mes, leída de las planillas firmadas. En
+// marzo no hay planilla anterior cargada: se muestra el tramo del acuerdo (+2,0%).
+const VARIACION: Record<string, string> = Object.fromEntries(
+  MESES_CAMIONEROS.map((m, i) => {
+    if (i === 0) return [m.id, "+2,0%"];
+    const v = basicoCamioneros(m.id, "chofer-primera")! / basicoCamioneros(MESES_CAMIONEROS[i - 1].id, "chofer-primera")! - 1;
+    return [m.id, `+${(v * 100).toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 2 })}%`];
+  }),
+);
+const ACUMULADO = (
+  (basicoCamioneros(ULTIMO.id, "chofer-primera")! / basicoCamioneros(PRIMERO.id, "chofer-primera")!) * 1.02 - 1
+) * 100;
+
 const faqs = [
   {
-    q: "¿Cuánto cobra un Chofer de Primera en junio 2026?",
-    a: "El básico de un Chofer de Primera en junio 2026 es $1.017.089 según la escala vigente del CCT 40/89 (homologada por la Disposición DNRyRT 455/2026). A eso se suma la antigüedad (1% por año sobre el básico). El neto, descontando el 17% de aportes de ley, queda en aproximadamente $843.984.",
+    q: `¿Cuánto cobra un Chofer de Primera en ${MES_TXT}?`,
+    a: `El básico de un Chofer de Primera en ${MES_TXT} es ${formatARS(CHOFER1_MES, 0)} según la escala del CCT 40/89 (acuerdo homologado por la Disposición DNRyRT 455/2026, con la revisión de julio). A eso se suma la antigüedad (1% por año sobre el básico). El neto, descontando el 17% de aportes de ley, queda en aproximadamente ${formatARS(CHOFER1_NETO, 0)}.`,
   },
   {
     q: "¿Qué convenio cubre a los camioneros?",
@@ -44,7 +66,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto es el aumento de camioneros en 2026?",
-    a: "La paritaria 2026 acordó aumentos escalonados: marzo +2,0%, abril +1,8%, mayo +1,7%, junio +1,6%, julio +1,5% y agosto +1,5% (todos aplicados sobre el básico del mes anterior). El acuerdo está homologado por la Disposición DNRyRT 455/2026. La acumulación total marzo-agosto 2026 es de aproximadamente +10,7%.",
+    a: `El acuerdo del 13/3/2026 (homologado por la Disposición DNRyRT 455/2026) fijó tramos mensuales sobre el básico del mes anterior: marzo +2,0%, abril +1,8% (más la incorporación al básico de la suma no remunerativa de marzo), mayo +1,7% y junio +1,6%. Julio no quedó en el +1,5% original: la revisión de la cláusula TERCERA lo llevó a +4,22% sobre junio, y agosto sumó +1,5% sobre ese julio revisado. Con todo eso, el básico del Chofer de Primera subió ${ACUMULADO.toLocaleString("es-AR", { maximumFractionDigits: 1 })}% entre febrero y agosto de 2026. La escala siguiente se negocia a partir de septiembre; cuando FADEEAC publique la planilla firmada, la cargamos.`,
   },
   {
     q: "¿Hay zonas o regiones en la escala de camioneros?",
@@ -70,17 +92,10 @@ const VERIFICADO_EL = new Intl.DateTimeFormat("es-AR", { dateStyle: "long" }).fo
 );
 
 export default function CamionerosPage() {
-  const junio = MESES_CAMIONEROS.find((m) => m.id === "junio-2026")!;
-  const junioChofer1 =
-    basicoCamioneros(junio.id, "chofer-primera")!;
-  const junioAyudante =
-    basicoCamioneros(junio.id, "ayudante-mayor")!;
-  // Neto computado (regla 2-2): Chofer de Primera, sin antigüedad.
-  const chofer1 = calcularCamioneros({
-    mesId: "junio-2026",
-    categoriaId: "chofer-primera",
-    aniosAntiguedad: 0,
-  })!;
+  const junio = MES;
+  const junioChofer1 = CHOFER1_MES;
+  const junioAyudante = basicoCamioneros(MES.id, "ayudante-mayor")!;
+  const chofer1 = { neto: CHOFER1_NETO };
 
   const grupos = Array.from(new Set(CATEGORIAS_CAMIONEROS.map((c) => c.grupo)));
 
@@ -138,7 +153,7 @@ export default function CamionerosPage() {
           Escala salarial oficial del{" "}
           <strong>Convenio Colectivo de Trabajo 40/89</strong> (Transporte Automotor de
           Cargas, Logística y Servicios), homologada por la{" "}
-          <strong>Disposición DNRyRT 455/2026</strong>. En junio 2026 el básico de un Chofer
+          <strong>Disposición DNRyRT 455/2026</strong>. En {MES_TXT} el básico de un Chofer
           de Primera es{" "}
           <strong className="text-zinc-900">{formatARS(junioChofer1, 0)}</strong> y el de
           Ayudante mayor de 18 años es{" "}
@@ -155,7 +170,7 @@ export default function CamionerosPage() {
       <RespuestaPrimero actualizado={VERIFICADO_EL}>
         <p>
           Un <strong>Chofer de Primera</strong> del convenio de Camioneros (CCT 40/89, transporte
-          automotor de cargas) cobra en junio 2026 un básico de{" "}
+          automotor de cargas) cobra en {MES_TXT} un básico de{" "}
           <strong>{formatARS(junioChofer1, 0)}</strong>; con el 17% de aportes de ley y sin
           antigüedad, el neto ronda <strong>≈ {formatARS(chofer1.neto, 0)}</strong>. El CCT 40/89
           tiene <strong>escala nacional única</strong> (sin zonas) y suma 1% por año de
@@ -174,7 +189,7 @@ export default function CamionerosPage() {
 
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-zinc-900">
-          Escala de básicos de junio 2026
+          Escala de básicos de {MES_TXT}
         </h2>
         <p className="text-sm text-zinc-600">
           Valores según la Disposición DNRyRT 455/2026. El CCT 40/89 establece una{" "}
@@ -186,7 +201,7 @@ export default function CamionerosPage() {
               <thead>
                 <tr className="bg-zinc-50 text-left text-zinc-700">
                   <th className="px-4 py-2.5 font-semibold">Categoría</th>
-                  <th className="px-4 py-2.5 text-right font-semibold">Básico junio 2026</th>
+                  <th className="px-4 py-2.5 text-right font-semibold">Básico {MES_TXT}</th>
                 </tr>
               </thead>
               <tbody>
@@ -260,15 +275,7 @@ export default function CamionerosPage() {
                   <tr key={m.id} className="border-t border-zinc-100">
                     <td className="px-4 py-2.5 text-zinc-700">{m.etiqueta}</td>
                     <td className="px-4 py-2.5 text-right font-medium text-zinc-900">
-                      {m.id === "marzo-2026"
-                        ? "+2,0%"
-                        : m.id === "abril-2026"
-                          ? "+1,8%"
-                          : m.id === "mayo-2026"
-                            ? "+1,7%"
-                            : m.id === "junio-2026"
-                              ? "+1,6%"
-                              : "+1,5%"}
+                      {VARIACION[m.id]}
                     </td>
                     <td className="px-4 py-2.5 text-sm text-zinc-500 hidden sm:table-cell">
                       {m.cambios}
@@ -279,8 +286,12 @@ export default function CamionerosPage() {
             </table>
           </div>
           <p className="text-sm text-zinc-500">
-            El acumulado marzo-agosto 2026 es de aproximadamente{" "}
-            <strong className="text-zinc-700">+10,7%</strong>. El convenio incluye una cláusula de revisión: si la inflación supera ese porcentaje, las partes deben renegociar.
+            Entre febrero y {ULTIMO.etiqueta.toLowerCase()} el básico del Chofer de Primera subió{" "}
+            <strong className="text-zinc-700">
+              +{ACUMULADO.toLocaleString("es-AR", { maximumFractionDigits: 1 })}%
+            </strong>
+            , contando la incorporación de la suma de marzo y la revisión de julio (cláusula
+            TERCERA), que reemplazó el +1,5% original por +4,22%.
           </p>
         </div>
       </section>

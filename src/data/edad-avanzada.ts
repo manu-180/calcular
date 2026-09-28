@@ -40,6 +40,8 @@
 // CÓMO SE ROTA: no se rota. Se mueve solo cuando se actualiza `prestaciones.ts`. Si aparece una
 // norma que toque los arts. 30, 34 bis, 24 o 125, se relee el `texact`.
 
+import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "./prestaciones";
+
 /** Parámetros numéricos de la PEA, cada uno con el artículo del que sale. */
 export const PEA = {
   /** Edad mínima, «cualquiera fuera su sexo» (art. 34 bis ap. 2 inc. a). */
@@ -170,16 +172,16 @@ export const PEA_FUENTES: { consultadoEl: string; lista: FuentePea[] } = {
         "Ficha del trámite. Tiene además dos variantes con requisitos propios: prestación por edad avanzada para trabajadores rurales y por invalidez.",
     },
     {
-      nombre: "Resolución ANSES 257/2026 — haber mínimo, haber máximo y PBU",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346683/20260901",
+      nombre: `${PRESTACIONES_VIGENTES.resolucion} — haber mínimo, haber máximo y PBU`,
+      url: PRESTACIONES_VIGENTES.resolucionUrl,
       detalle:
-        "B.O. 1/9/2026 — de acá salen los tres números que decide la cuenta: el haber mínimo garantizado (el piso del art. 125), el haber máximo (el techo del art. 17) y la PBU sobre la que se calcula el 70%.",
+        `${PRESTACIONES_VIGENTES.resolucionBO} — de acá salen los tres números que decide la cuenta: el haber mínimo garantizado (el piso del art. 125), el haber máximo (el techo del art. 17) y la PBU sobre la que se calcula el 70%.`,
     },
     {
-      nombre: "Decreto 824/2026 — bono extraordinario previsional",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346555/20260831",
+      nombre: `${BONO_VIGENTE.norma} — bono extraordinario previsional`,
+      url: BONO_VIGENTE.normaUrl,
       detalle:
-        "B.O. 31/8/2026 — arts. 3 y 4: bono completo para quien cobra hasta el mínimo y parcial hasta mínimo + bono. Es discrecional: lo fija un decreto mes a mes y puede no salir.",
+        `${BONO_VIGENTE.normaBO} — arts. 3 y 4: bono completo para quien cobra hasta el mínimo y parcial hasta mínimo + bono. Es discrecional: lo fija un decreto mes a mes y puede no salir.`,
     },
     {
       nombre: "Decreto 274/2024 — movilidad mensual por IPC",

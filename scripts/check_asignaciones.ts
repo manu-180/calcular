@@ -20,6 +20,7 @@ import {
   ASIGNACIONES_PROXIMAS,
   ASIGNACIONES_VIGENTES,
   GRUPOS_MONOTRIBUTO,
+  RESOLUCIONES_ASIGNACIONES_SIGUIENTES,
   PAGO_UNICO,
   ZONAS,
   type MontosPorZona,
@@ -35,6 +36,7 @@ import {
   moverAlMesSiguiente,
   tramoDe,
 } from "../src/lib/asignaciones";
+import { periodoActualAR } from "../src/lib/hoy";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -75,9 +77,13 @@ function checkRazonPorZona(nombre: string, nuevo: MontosPorZona, viejo: MontosPo
 }
 
 // ===========================================================================
-// 1 · Los valores vigentes, derivados del texto de la Res. ANSES 260/2026 (B.O. 1/9/2026)
+// 1 · Los valores vigentes. Anclas transcriptas a mano sólo para la tabla publicada (Res. 260/2026)
 // ===========================================================================
 {
+  check("el mes vigente ya empezó", V.periodo <= periodoActualAR(), { vigente: V.periodo, hoy: periodoActualAR() });
+  check("cita una Resolución ANSES", /^Resolución ANSES \d+\/\d{4}$/.test(V.resolucion), V.resolucion);
+}
+if (V.periodo === "2026-09") {
   check("período vigente = 2026-09", V.periodo === "2026-09", V.periodo);
   check("movilidad de septiembre 2026 = 2,11%", V.movilidad === 2.11, V.movilidad);
   check("tope de IGF del grupo = $6.314.897", V.topeIgfGrupo === 6_314_897, V.topeIgfGrupo);
@@ -91,6 +97,8 @@ function checkRazonPorZona(nombre: string, nuevo: MontosPorZona, viejo: MontosPo
   check("AUH (valor general) = $154.031", V.universales.hijo.general === 154_031);
   check("AUH zona 1 = $200.241", V.universales.hijo.zona1 === 200_241);
   check("cita la Resolución ANSES 260/2026", /260\/2026/.test(V.resolucion), V.resolucion);
+}
+{
   check(
     "el link de la resolución apunta al Boletín Oficial",
     V.resolucionUrl.startsWith("https://www.boletinoficial.gob.ar/"),
@@ -111,7 +119,11 @@ function checkRazonPorZona(nombre: string, nuevo: MontosPorZona, viejo: MontosPo
 // 2 · Ancla anti-tipeo: todo lo vigente sale del mes anterior movido por la movilidad
 // ===========================================================================
 {
-  check("el snapshot anterior es el mes previo", P.periodo === "2026-08", P.periodo);
+  {
+    const [a, m] = V.periodo.split("-").map(Number);
+    const previo = m === 1 ? `${a - 1}-12` : `${a}-${String(m - 1).padStart(2, "0")}`;
+    check("el snapshot anterior es el mes previo", P.periodo === previo, { anterior: P.periodo, esperado: previo });
+  }
 
   checkRazon("tope de IGF del grupo", V.topeIgfGrupo, P.topeIgfGrupo);
   checkRazon("tope de IGF individual", V.topeIgfIndividual, P.topeIgfIndividual);
@@ -288,16 +300,16 @@ function checkRazonPorZona(nombre: string, nuevo: MontosPorZona, viejo: MontosPo
 // ===========================================================================
 {
   const auh = desglose8020(V.universales.hijo.general);
-  check("el 80% mensual de la AUH general = $123.224,80", auh.mensual === 123_224.8, auh);
-  check("el 20% retenido de la AUH general = $30.806,20", auh.retenido === 30_806.2, auh);
+  check("el 80% mensual de la AUH general es el 80% al centavo", auh.mensual === Math.round(V.universales.hijo.general * 80) / 100, auh);
+  check("el 20% retenido de la AUH general es el resto", auh.retenido === Math.round((V.universales.hijo.general - auh.mensual) * 100) / 100, auh);
   check(
     "80% + 20% reconstruyen el valor total",
     auh.mensual + auh.retenido === V.universales.hijo.general,
   );
 
   const disc = desglose8020(V.universales.hijoDiscapacidad.zona1);
-  check("AUH discapacidad zona 1: 80% = $521.598,40", disc.mensual === 521_598.4, disc);
-  check("AUH discapacidad zona 1: 20% = $130.399,60", disc.retenido === 130_399.6, disc);
+  check("AUH discapacidad zona 1: 80% al centavo", disc.mensual === Math.round(V.universales.hijoDiscapacidad.zona1 * 80) / 100, disc);
+  check("AUH discapacidad zona 1: 20% es el resto", disc.retenido === Math.round((V.universales.hijoDiscapacidad.zona1 - disc.mensual) * 100) / 100, disc);
 
   check(
     "la AUH por embarazo paga lo mismo que la AUH por hijo",
@@ -325,6 +337,12 @@ const base = {
   ayudaEscolar: false,
 };
 
+const T1 = V.hijo[0].montos.general;
+const T2 = V.hijo[1].montos.general;
+const T3 = V.hijo[2].montos.general;
+const LIMITE_T1 = V.hijo[0].hasta as number;
+const DISC_T3 = V.hijoDiscapacidad[2].montos.general;
+
 {
   check("el IGF suma los ingresos del grupo", calcularIgf([800_000, 400_000]) === 1_200_000);
   check("los ingresos vacíos o negativos no restan", calcularIgf([500_000, 0, -100]) === 500_000);
@@ -333,36 +351,36 @@ const base = {
   const r1 = calcularAsignaciones({ ...base, ingresos: [600_000, 500_000], hijos: 2 });
   check("IGF $1.100.000 cae en el tramo 1", r1.tramo === 0, r1.tramo);
   check(
-    "dos hijos en el tramo 1 cobran $154.050",
-    r1.totalMensual === 77_025 * 2,
+    "dos hijos en el tramo 1 cobran dos veces el monto del tramo 1",
+    r1.totalMensual === T1 * 2,
     r1.totalMensual,
   );
   check("sin exclusión", r1.exclusion === null);
 
   // Justo en el límite del primer tramo y un peso más.
-  const enElLimite = calcularAsignaciones({ ...base, ingresos: [1_192_505], hijos: 1 });
-  const unPesoMas = calcularAsignaciones({ ...base, ingresos: [1_192_506], hijos: 1 });
-  check("el límite del tramo 1 todavía cobra el máximo", enElLimite.totalMensual === 77_025);
-  check("un peso más cae al tramo 2", unPesoMas.tramo === 1 && unPesoMas.totalMensual === 51_958, {
+  const enElLimite = calcularAsignaciones({ ...base, ingresos: [LIMITE_T1], hijos: 1 });
+  const unPesoMas = calcularAsignaciones({ ...base, ingresos: [LIMITE_T1 + 1], hijos: 1 });
+  check("el límite del tramo 1 todavía cobra el máximo", enElLimite.totalMensual === T1);
+  check("un peso más cae al tramo 2", unPesoMas.tramo === 1 && unPesoMas.totalMensual === T2, {
     tramo: unPesoMas.tramo,
     total: unPesoMas.totalMensual,
   });
   check(
-    "cruzar el escalón cuesta $25.067 por hijo",
-    enElLimite.totalMensual - unPesoMas.totalMensual === 25_067,
+    "cruzar el escalón cuesta la diferencia entre tramo 1 y tramo 2 por hijo",
+    enElLimite.totalMensual - unPesoMas.totalMensual === T1 - T2,
   );
 
   // El escalón, con dos hijos.
   const conEscalon = calcularAsignaciones({ ...base, ingresos: [1_100_000], hijos: 2 });
   check("hay escalón detectado", conEscalon.escalon !== null);
   check(
-    "el margen al escalón es $92.505",
-    conEscalon.escalon?.margen === 92_505,
+    "el margen al escalón es el límite del tramo 1 menos el IGF",
+    conEscalon.escalon?.margen === LIMITE_T1 - 1_100_000,
     conEscalon.escalon,
   );
   check(
-    "cruzarlo con dos hijos cuesta $50.134 por mes",
-    conEscalon.escalon?.perdidaMensual === 25_067 * 2,
+    "cruzarlo con dos hijos cuesta dos veces el escalón por mes",
+    conEscalon.escalon?.perdidaMensual === (T1 - T2) * 2,
     conEscalon.escalon,
   );
 
@@ -370,7 +388,7 @@ const base = {
   // es imposible pasarse del grupal sin que alguno se pase del individual — hacen falta tres.
   const sobreTope = calcularAsignaciones({
     ...base,
-    ingresos: [2_500_000, 2_500_000, 1_500_000],
+    ingresos: [0.8, 0.8, 0.8].map((f) => Math.round(V.topeIgfIndividual * f)),
     hijos: 1,
   });
   check(
@@ -383,9 +401,10 @@ const base = {
   check("no hay escalón cuando ya está excluido", sobreTope.escalon === null);
 
   // Tope individual: el grupo NO se pasa del grupal, pero una persona sí del individual.
-  const individual = calcularAsignaciones({ ...base, ingresos: [3_200_000, 100_000], hijos: 1 });
+  const SOBRE_INDIVIDUAL = V.topeIgfIndividual + 50_000;
+  const individual = calcularAsignaciones({ ...base, ingresos: [SOBRE_INDIVIDUAL, 100_000], hijos: 1 });
   check(
-    "IGF $3.300.000 está por debajo del tope grupal",
+    "el IGF está por debajo del tope grupal",
     individual.igf < V.topeIgfGrupo,
     individual.igf,
   );
@@ -394,7 +413,7 @@ const base = {
     individual.exclusion === "tope-individual",
     individual.exclusion,
   );
-  check("y reporta cuál es ese ingreso", individual.ingresoQueExcluye === 3_200_000);
+  check("y reporta cuál es ese ingreso", individual.ingresoQueExcluye === SOBRE_INDIVIDUAL);
   check("no cobra asignación por hijo", individual.totalMensual === 0);
 
   // La excepción: hijo con discapacidad no tiene tope.
@@ -410,15 +429,15 @@ const base = {
     disc.conceptos.find((c) => c.clave === "hijo")?.total === 0,
   );
   check(
-    "pero el hijo con discapacidad cobra igual ($111.970)",
-    disc.conceptos.find((c) => c.clave === "hijo-discapacidad")?.total === 111_970,
+    "pero el hijo con discapacidad cobra igual (monto del último tramo)",
+    disc.conceptos.find((c) => c.clave === "hijo-discapacidad")?.total === DISC_T3,
     disc.conceptos,
   );
-  check("el total mensual es sólo la de discapacidad", disc.totalMensual === 111_970);
+  check("el total mensual es sólo la de discapacidad", disc.totalMensual === DISC_T3);
 
   // Zonas.
   const zona3 = calcularAsignaciones({ ...base, ingresos: [900_000], zona: "zona3", hijos: 1 });
-  check("zona 3 en el tramo 1 paga $153.826", zona3.totalMensual === 153_826, zona3.totalMensual);
+  check("zona 3 en el tramo 1 paga el monto de zona 3", zona3.totalMensual === V.hijo[0].montos.zona3, zona3.totalMensual);
   check(
     "zona 3 paga el doble que el valor general en el tramo 1",
     zona3.totalMensual > calcularAsignaciones({ ...base, ingresos: [900_000], hijos: 1 }).totalMensual,
@@ -426,16 +445,16 @@ const base = {
 
   // Prenatal y cónyuge.
   const prenatal = calcularAsignaciones({ ...base, ingresos: [900_000], prenatal: true });
-  check("la prenatal paga lo mismo que un hijo", prenatal.totalMensual === 77_025);
+  check("la prenatal paga lo mismo que un hijo", prenatal.totalMensual === T1);
   const conyuge = calcularAsignaciones({ ...base, ingresos: [900_000], conyuge: true });
-  check("la asignación por cónyuge es $18.691", conyuge.totalMensual === 18_691);
+  check("la asignación por cónyuge es la de la tabla", conyuge.totalMensual === V.conyuge.general);
 
   // Ayuda escolar: pago único, no entra en el total mensual.
   const escolar = calcularAsignaciones({ ...base, ingresos: [900_000], hijos: 2, ayudaEscolar: true });
-  check("la ayuda escolar de 2 hijos es $170.000", escolar.totalUnico === 170_000, escolar.totalUnico);
+  check("la ayuda escolar de 2 hijos es dos veces el total", escolar.totalUnico === V.ayudaEscolar.total.general * 2, escolar.totalUnico);
   check(
     "y no se suma al total mensual",
-    escolar.totalMensual === 77_025 * 2,
+    escolar.totalMensual === T1 * 2,
     escolar.totalMensual,
   );
 
@@ -471,8 +490,8 @@ const base = {
   );
   check("y el límite de ese escalón es el tope grupal", ultimo?.limite === V.topeIgfGrupo, ultimo);
   check(
-    "el escalón de un hijo en el tramo 2 vale $20.531",
-    calcularEscalon(1_500_000, "general", 1, 0, null)?.perdidaMensual === 51_958 - 31_427,
+    "el escalón de un hijo en el tramo 2 vale la diferencia entre tramo 2 y tramo 3",
+    calcularEscalon(1_500_000, "general", 1, 0, null)?.perdidaMensual === T2 - T3,
     calcularEscalon(1_500_000, "general", 1, 0, null),
   );
 }
@@ -525,16 +544,27 @@ if (ASIGNACIONES_PROXIMAS) {
     { derivado: moverAlMesSiguiente(V.topeIgfIndividual, P.movilidad), publicado: P.topeIgfIndividual },
   );
   check(
-    "moverAlMesSiguiente reproduce la rotación agosto→septiembre (tope individual)",
+    "moverAlMesSiguiente reproduce la rotación del mes anterior al vigente (tope individual)",
     moverAlMesSiguiente(ASIGNACIONES_MES_ANTERIOR.topeIgfIndividual, V.movilidad) === V.topeIgfIndividual,
   );
   check(
-    "moverAlMesSiguiente reproduce la rotación agosto→septiembre (AUH general)",
+    "moverAlMesSiguiente reproduce la rotación del mes anterior al vigente (AUH general)",
     moverAlMesSiguiente(ASIGNACIONES_MES_ANTERIOR.universales.hijo.general, V.movilidad) ===
       V.universales.hijo.general,
   );
 } else {
   console.log("--   sin resolución del mes siguiente dictada todavía");
+}
+
+// Toda resolución cargada por adelantado se cruza contra su ancla SIEMPRE, no sólo mientras es "la
+// próxima": el día que entra en vigencia, este es el único lugar donde el tope que publica su art. 4
+// se sigue comparando contra la tabla derivada.
+for (const r of RESOLUCIONES_ASIGNACIONES_SIGUIENTES.filter((x) => x.periodo === V.periodo)) {
+  check(
+    `ancla del art. 4 de la ${r.resolucion} (vigente): la tabla derivada tiene el tope publicado`,
+    V.topeIgfIndividual === r.topeIgfIndividual,
+    { derivado: V.topeIgfIndividual, publicado: r.topeIgfIndividual },
+  );
 }
 
 console.log("");

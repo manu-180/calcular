@@ -53,6 +53,8 @@
 //     los aportes de los incisos a) y c) del art. 10 de la Ley 24.241.
 //   · Ley 26.682 texto actualizado (id 182180) — arts. 9, 10, 12 y 23.
 
+import { PRESTACIONES_VIGENTES } from "./prestaciones";
+
 /** Desde cuándo rige el reparto plano 85/15. Dec. 600/2024, art. 6°: el 1° del mes siguiente al B.O. */
 export const VIGENCIA_REPARTO = "1 de agosto de 2024";
 export const VIGENCIA_REPARTO_ISO = "2024-08-01";
@@ -172,8 +174,8 @@ export const OBRA_SOCIAL_FUENTES = {
         "Deja el tope de la base imponible del art. 9 de la Ley 24.241 sólo para los aportes de los incisos a) y c) del art. 10: la contribución del empleador dejó de tener límite máximo.",
     },
     {
-      nombre: "Resolución ANSES 257/2026 — bases imponibles vigentes",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346683/20260901",
+      nombre: `${PRESTACIONES_VIGENTES.resolucion} — bases imponibles vigentes`,
+      url: PRESTACIONES_VIGENTES.resolucionUrl,
       detalle: "La base máxima sobre la que se calculan los aportes personales.",
     },
   ],

@@ -15,6 +15,7 @@ import { PlanillaComercioCTA } from "@/components/PlanillaComercioCTA";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { SelloVerificado } from "@/components/SelloVerificado";
 import { calcularComercio } from "@/lib/convenios";
+import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
 export const metadata: Metadata = {
   title: "Sueldo de Empleados de Comercio 2026: calculadora y escala CCT 130/75",
@@ -33,10 +34,12 @@ export const metadata: Metadata = {
 };
 
 // Ejemplo de referencia de las FAQ, computado desde la escala (regla 2-2: cero números a
-// mano — al rotar la escala, las respuestas se actualizan solas).
-const AGOSTO = MESES_COMERCIO.find((m) => m.id === "agosto-2026")!;
+// mano — al rotar la escala, las respuestas se actualizan solas). El mes es el que se liquida
+// hoy (src/lib/hoy.ts), no uno fijo: la página no se queda anclada en un mes viejo.
+const AGOSTO = vigenteEn(MESES_COMERCIO, periodoDeMes);
+const MES_TXT = AGOSTO.etiqueta.toLowerCase();
 const AGOSTO_VENDEDOR_B = calcularComercio({
-  mesId: "agosto-2026",
+  mesId: AGOSTO.id,
   categoriaId: "vendedor-b",
   aniosAntiguedad: 0,
   jornadaFactor: 1,
@@ -48,8 +51,8 @@ const $ = (n: number) => formatARS(n, 0);
 
 const faqs = [
   {
-    q: "¿Cuánto cobra un empleado de comercio en agosto de 2026?",
-    a: `Para la categoría más común en locales (Vendedor B), jornada completa y sin antigüedad: ${$(AGOSTO.basicos["vendedor-b"])} de básico + ${$(AGOSTO.noRemunerativo)} no remunerativos + ${$(AGOSTO.asignacionExtraordinaria ?? 0)} de asignación extraordinaria por única vez = ${$(AGOSTO.basicos["vendedor-b"] + AGOSTO.noRemunerativo + (AGOSTO.asignacionExtraordinaria ?? 0))} brutos; con presentismo sube a ${$(AGOSTO_VENDEDOR_B.bruto)}, y en mano quedan aproximadamente ${$(AGOSTO_VENDEDOR_B.neto)} (antes de cuota sindical y Ganancias). Las demás categorías van de ${$(AGOSTO_MIN)} (Maestranza A) a ${$(AGOSTO_MAX)} (Vendedor D / Administrativo F) de básico, siempre más los ${$(AGOSTO.noRemunerativo)}.`,
+    q: `¿Cuánto cobra un empleado de comercio en ${MES_TXT}?`,
+    a: `Para la categoría más común en locales (Vendedor B), jornada completa y sin antigüedad: ${$(AGOSTO.basicos["vendedor-b"])} de básico + ${$(AGOSTO.noRemunerativo)} no remunerativos${AGOSTO.asignacionExtraordinaria ? ` + ${$(AGOSTO.asignacionExtraordinaria)} de asignación extraordinaria por única vez` : ""} = ${$(AGOSTO.basicos["vendedor-b"] + AGOSTO.noRemunerativo + (AGOSTO.asignacionExtraordinaria ?? 0))} brutos; con presentismo sube a ${$(AGOSTO_VENDEDOR_B.bruto)}, y en mano quedan aproximadamente ${$(AGOSTO_VENDEDOR_B.neto)} (antes de cuota sindical y Ganancias). Las demás categorías van de ${$(AGOSTO_MIN)} (Maestranza A) a ${$(AGOSTO_MAX)} (Vendedor D / Administrativo F) de básico, siempre más los ${$(AGOSTO.noRemunerativo)}.`,
   },
   {
     q: "¿El bono de comercio es de $20.000, de $50.000 o de $120.000?",
@@ -98,7 +101,7 @@ const faqs = [
 ];
 
 export default function ComercioPage() {
-  // Mes destacado = el último cargado con aumento vigente (agosto 2026).
+  // Mes destacado = el que se liquida hoy.
   const destacado = AGOSTO;
   const vendedorB = AGOSTO_VENDEDOR_B;
   const vendedorBSinPresentismo =
@@ -169,12 +172,20 @@ export default function ComercioPage() {
       <RespuestaPrimero actualizado={COMERCIO_FUENTES.consultadoEl}>
         <p>
           El sueldo de un Empleado de Comercio (CCT 130/75) se arma con el{" "}
-          <strong>básico de la categoría</strong> + los <strong>$120.000 no remunerativos</strong>{" "}
-          + la <strong>antigüedad</strong> (1% por año) + el{" "}
-          <strong>presentismo</strong> (8,33%), y en julio y agosto de 2026 se suma la{" "}
-          <strong>asignación extraordinaria de $25.000</strong> por única vez. Para Vendedor B
-          —la categoría más común en locales— en agosto 2026, jornada completa y sin
-          antigüedad:{" "}
+          <strong>básico de la categoría</strong> + los{" "}
+          <strong>{formatARS(destacado.noRemunerativo, 0)} no remunerativos</strong> + la{" "}
+          <strong>antigüedad</strong> (1% por año) + el <strong>presentismo</strong> (8,33%)
+          {destacado.asignacionExtraordinaria ? (
+            <>
+              , y este mes se suma la{" "}
+              <strong>
+                asignación extraordinaria de {formatARS(destacado.asignacionExtraordinaria, 0)}
+              </strong>{" "}
+              por única vez
+            </>
+          ) : null}
+          . Para Vendedor B —la categoría más común en locales— en {MES_TXT}, jornada completa
+          y sin antigüedad:{" "}
           <strong>{formatARS(vendedorBSinPresentismo, 0)} brutos</strong> (
           {formatARS(vendedorB.bruto, 0)} con presentismo) y{" "}
           <strong>≈ {formatARS(vendedorB.neto, 0)} en mano</strong>. La escala de FAECYS es un
@@ -190,14 +201,15 @@ export default function ComercioPage() {
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
-          Escala salarial de agosto 2026, completa
+          Escala salarial de {MES_TXT}, completa
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
             Básicos de convenio de <strong>jornada completa</strong> publicados por FAECYS en la
             circular del acuerdo 07/2026. A todas las categorías se les suman los{" "}
-            <strong>$120.000 no remunerativos</strong> del mes ($100.000 prorrogados de 2025 +
-            $20.000 del acuerdo de marzo) y, solo en julio y agosto, la{" "}
+            <strong>{formatARS(destacado.noRemunerativo, 0)} no remunerativos</strong> del mes
+            (hasta noviembre: $100.000 prorrogados de 2025 + $20.000 del acuerdo de marzo) y,
+            solo en julio y agosto de 2026, la{" "}
             <strong>asignación extraordinaria de $25.000</strong> por única vez, que no figura
             en esta tabla porque no suma antigüedad ni presentismo:
           </p>
@@ -208,7 +220,7 @@ export default function ComercioPage() {
               <thead>
                 <tr className="bg-zinc-50 text-left text-zinc-700">
                   <th className="px-4 py-2.5 font-semibold">Categoría</th>
-                  <th className="px-4 py-2.5 text-right font-semibold">Básico agosto</th>
+                  <th className="px-4 py-2.5 text-right font-semibold">Básico {MES_TXT.split(" ")[0]}</th>
                   <th className="px-4 py-2.5 text-right font-semibold">+ No remunerativo</th>
                   <th className="px-4 py-2.5 text-right font-semibold">Total</th>
                 </tr>

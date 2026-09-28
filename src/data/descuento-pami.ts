@@ -163,7 +163,7 @@ export const PAMI_FUENTES = {
         "Arts. 11 a 13 — la opción de obra social, su periodicidad anual, la vigencia al tercer mes y la cápita que ANSeS transfiere de los recursos del INSSJP; arts. 17, 19 y 20 — el traspaso de las PNC y su cobertura médica a cargo del Estado, salvo la Ley 23.848.",
     },
     {
-      nombre: "Resolución ANSES 257/2026 — haber mínimo garantizado vigente",
+      nombre: `${PRESTACIONES_VIGENTES.resolucion} — haber mínimo garantizado vigente`,
       url: PRESTACIONES_VIGENTES.resolucionUrl,
       detalle:
         "Fija el haber mínimo del mes, que es el punto exacto donde el aporte del inciso a) pasa del 3% al 6%. Se redetermina todos los meses por la movilidad del Decreto 274/2024.",

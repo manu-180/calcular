@@ -18,6 +18,23 @@ import { SelloVerificado } from "@/components/SelloVerificado";
 import { EmailCapture } from "@/components/EmailCapture";
 import { PlanillaUocraCTA } from "@/components/PlanillaUocraCTA";
 import { calcularUocra } from "@/lib/convenios";
+import { hoyAR, periodoDeMes, vigenteEn } from "@/lib/hoy";
+
+// El mes que se muestra es el que se liquida hoy (o el último cargado si la escala no llegó): así
+// la página no se queda anclada en un mes viejo cuando entra una escala nueva.
+const MES = vigenteEn(MESES_UOCRA, periodoDeMes);
+const MES_TXT = MES.etiqueta.toLowerCase();
+const ULTIMO = MESES_UOCRA[MESES_UOCRA.length - 1];
+const OFICIAL_A = calcularUocra({
+  mesId: MES.id,
+  categoriaId: "oficial",
+  zonaId: "a",
+  horasMes: 190.67,
+  conAsistencia: true,
+  conAporteSindical: false,
+})!;
+const SNR_OFICIAL_A = MES.snr.oficial.a;
+const TIENE_SNR = SNR_OFICIAL_A > 0;
 
 export const metadata: Metadata = {
   title: "Sueldos UOCRA 2026: calculadora y escala por zona (CCT 76/75)",
@@ -37,8 +54,14 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: "¿Cuánto cobra un oficial de la construcción en junio de 2026?",
-    a: "El jornal oficial de un Oficial en Zona A (CABA, Buenos Aires y la mayoría de las provincias) es de $5.703 la hora. En un mes de jornada completa (44 hs semanales ≈ 190,67 hs) son unos $1.087.372 de básico; con asistencia perfecta (+20%) sube a $1.304.846, y con la suma no remunerativa de junio ($58.300) el bruto ronda $1.363.146 — en mano quedan aproximadamente $1.113.477.",
+    q: `¿Cuánto cobra un oficial de la construcción en ${MES_TXT}?`,
+    a:
+      `El jornal oficial de un Oficial en Zona A (CABA, Buenos Aires y la mayoría de las provincias) es de ${formatARS(MES.jornales.oficial.a, 0)} la hora. ` +
+      `En un mes de jornada completa (44 hs semanales ≈ 190,67 hs) son unos ${formatARS(OFICIAL_A.basicoMensual, 0)} de básico; con asistencia perfecta (+20%) sube a ${formatARS(OFICIAL_A.totalRemunerativo, 0)}` +
+      (TIENE_SNR
+        ? `, y con la suma no remunerativa del mes (${formatARS(SNR_OFICIAL_A, 0)}) el bruto ronda ${formatARS(OFICIAL_A.bruto, 0)}`
+        : `, que es todo el bruto: ${MES_TXT} no tiene suma no remunerativa`) +
+      ` — en mano quedan aproximadamente ${formatARS(OFICIAL_A.neto, 0)}.`,
   },
   {
     q: "¿Cómo paso del jornal por hora al sueldo mensual?",
@@ -54,7 +77,7 @@ const faqs = [
   },
   {
     q: "¿Qué es la suma no remunerativa (SNR) que figura en los acuerdos?",
-    a: "Un monto fijo por categoría y zona que acompaña a los aumentos de 2026: se paga el 50% con cada quincena y solo descuenta el aporte a la obra social (3%). Es transitoria: el acuerdo vigente la absorbe al básico en agosto de 2026.",
+    a: "Un monto fijo por categoría y zona que acompañó a los aumentos de abril a julio de 2026: se paga el 50% con cada quincena y solo descuenta el aporte a la obra social (3%). Es transitoria: en agosto de 2026 se absorbió al básico, y el tramo de septiembre a noviembre ya no la trae.",
   },
   {
     q: "¿En la construcción se cobra antigüedad?",
@@ -66,11 +89,13 @@ const faqs = [
   },
   {
     q: "¿Cuándo es el próximo aumento de UOCRA?",
-    a: "El último tramo del acuerdo del 19/5/2026 ya está cargado y verificado: agosto 2026 sube +1,9% sobre los básicos de julio y además absorbe al jornal toda la suma no remunerativa, así que el jornal salta un 9,1% de una vez y el mes queda sin SNR (un Oficial en Zona A pasa de $5.817 a $6.348 la hora). De septiembre en adelante todavía no hay escala: el acuerdo la deja en manos de la Comisión Especial, que se reunió el 20 de julio de 2026 — cuando se firme y publique la tabla, la cargamos acá.",
+    a:
+      `El acuerdo del 21/9/2026 (tercer tramo de la paritaria abril 2026-marzo 2027) fija +1,9% en septiembre, +1,8% en octubre y +1,7% en noviembre, acumulativos y sin suma no remunerativa; la escala está cargada hasta ${ULTIMO.etiqueta.toLowerCase()}. ` +
+      `${textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, hoyAR())} Cuando se firme y se publique la tabla, la cargamos acá.`,
   },
   {
     q: "¿El sereno cómo cobra?",
-    a: "Es la única categoría con sueldo mensual fijo del convenio (en junio 2026: $881.193 en Zona A), porque su jornada de vigilancia es de 12 horas corridas (art. 12 del CCT). Su suma no remunerativa es igual a la del ayudante.",
+    a: `Es la única categoría con sueldo mensual fijo del convenio (en ${MES_TXT}: ${formatARS(MES.serenoMensual.a, 0)} en Zona A), porque su jornada de vigilancia es de 12 horas corridas (art. 12 del CCT). Cuando el mes tiene suma no remunerativa, la del sereno es igual a la del ayudante.`,
   },
   {
     q: "¿Cuánto queda en mano de un sueldo de UOCRA?",
@@ -83,18 +108,8 @@ const faqs = [
 ];
 
 export default function UocraPage() {
-  const junio = MESES_UOCRA.find((m) => m.id === "junio-2026")!;
   const catsJornal = CATEGORIAS_UOCRA.filter((c) => !c.mensual);
   const sereno = CATEGORIAS_UOCRA.find((c) => c.mensual)!;
-  // Caso computado (regla 2-2): Oficial, Zona A, jornada completa (190,67 hs), con asistencia.
-  const oficialA = calcularUocra({
-    mesId: "junio-2026",
-    categoriaId: "oficial",
-    zonaId: "a",
-    horasMes: 190.67,
-    conAsistencia: true,
-    conAporteSindical: false,
-  })!;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -103,10 +118,10 @@ export default function UocraPage() {
       datasetSchema({
         nombre: "Escala salarial UOCRA 2026 (CCT 76/75)",
         descripcion:
-          "Jornales por categoría y zona del CCT 76/75 (construcción), de abril a julio de 2026, con asistencia perfecta y suma no remunerativa, verificados contra los acuerdos firmados UOCRA-CAMARCO homologados.",
+          `Jornales por categoría y zona del CCT 76/75 (construcción), de ${MESES_UOCRA[0].etiqueta.toLowerCase()} a ${ULTIMO.etiqueta.toLowerCase()}, con asistencia perfecta y suma no remunerativa, verificados contra los acuerdos firmados UOCRA-CAMARCO.`,
         url: "/convenios/uocra",
-        modificado: "2026-06-13",
-        fuenteNombre: UOCRA_HOMOLOGACIONES.tramo2,
+        modificado: "2026-09-28",
+        fuenteNombre: UOCRA_HOMOLOGACIONES.tramo3,
       }),
       {
         "@type": "WebApplication",
@@ -154,17 +169,18 @@ export default function UocraPage() {
 
       <SelloVerificado
         verificadoEl={UOCRA_FUENTES.consultadoEl}
-        fuente={UOCRA_FUENTES.acuerdoTramo2}
-        norma={`CCT 76/75 · ${UOCRA_HOMOLOGACIONES.tramo2}`}
+        fuente={UOCRA_FUENTES.acuerdoTramo3}
+        norma={`CCT 76/75 · ${UOCRA_HOMOLOGACIONES.tramo3}`}
       />
 
       <RespuestaPrimero actualizado={UOCRA_FUENTES.consultadoEl}>
         <p>
           Un <strong>Oficial</strong> de la construcción (UOCRA, CCT 76/75) en Zona A cobra en
-          junio 2026 un jornal de <strong>{formatARS(junio.jornales.oficial.a, 0)}/hora</strong>.
-          Una jornada completa (190,67 hs/mes) con asistencia perfecta (+20%) y la suma no
-          remunerativa del mes da <strong>≈ {formatARS(oficialA.bruto, 0)} brutos</strong> y{" "}
-          <strong>≈ {formatARS(oficialA.neto, 0)} en mano</strong>. Los jornales varían por zona
+          {MES_TXT} un jornal de <strong>{formatARS(MES.jornales.oficial.a, 0)}/hora</strong>.
+          Una jornada completa (190,67 hs/mes) con asistencia perfecta (+20%)
+          {TIENE_SNR ? " y la suma no remunerativa del mes" : ""} da{" "}
+          <strong>≈ {formatARS(OFICIAL_A.bruto, 0)} brutos</strong> y{" "}
+          <strong>≈ {formatARS(OFICIAL_A.neto, 0)} en mano</strong>. Los jornales varían por zona
           (A a C Austral) y salen de los acuerdos UOCRA-CAMARCO homologados. En la construcción no
           hay antigüedad como % del sueldo: rige el fondo de cese laboral (Ley 22.250).
         </p>
@@ -176,7 +192,7 @@ export default function UocraPage() {
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
-          Jornales de junio 2026, por categoría y zona
+          Jornales de {MES_TXT}, por categoría y zona
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
@@ -204,7 +220,7 @@ export default function UocraPage() {
                     {ZONAS_UOCRA.map((z) => (
                       <td key={z.id} className="px-4 py-2.5 text-right text-zinc-900">
                         {formatARS(
-                          junio.jornales[cat.id as Exclude<typeof cat.id, "sereno">][z.id],
+                          MES.jornales[cat.id as Exclude<typeof cat.id, "sereno">][z.id],
                           0
                         )}
                       </td>
@@ -218,7 +234,7 @@ export default function UocraPage() {
                       key={z.id}
                       className="px-4 py-2.5 text-right font-medium text-zinc-900"
                     >
-                      {formatARS(junio.serenoMensual[z.id], 0)}
+                      {formatARS(MES.serenoMensual[z.id], 0)}
                     </td>
                   ))}
                 </tr>
@@ -227,9 +243,16 @@ export default function UocraPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          A esto se suma la <strong>SNR de junio</strong> (de{" "}
-          {formatARS(junio.snr.ayudante.a, 0)} a {formatARS(junio.snr["oficial-especializado"]["c-austral"], 0)}{" "}
-          según categoría y zona). La escala de cada mes:{" "}
+          {TIENE_SNR ? (
+            <>
+              A esto se suma la <strong>SNR de {MES_TXT}</strong> (de{" "}
+              {formatARS(MES.snr.ayudante.a, 0)} a{" "}
+              {formatARS(MES.snr["oficial-especializado"]["c-austral"], 0)} según categoría y zona).{" "}
+            </>
+          ) : (
+            <>{MES.etiqueta} no tiene suma no remunerativa: todo el jornal es remunerativo. </>
+          )}
+          La escala de cada mes:{" "}
           {MESES_UOCRA.map((m, i) => (
             <span key={m.id}>
               {i > 0 && " · "}
@@ -278,15 +301,18 @@ export default function UocraPage() {
             La paritaria 2026 de la construcción avanza por tramos cortos. El acuerdo del
             31/3/2026 dio +2% en marzo, +1,9% en abril y +1,8% en mayo; el del 19/5/2026 suma{" "}
             <strong>+2,1% en junio, +2% en julio y +1,9% en agosto</strong>, siempre
-            acumulativos y acompañados por una SNR mensual que en agosto se absorbe al básico.
+            acumulativos y acompañados por una SNR mensual que en agosto se absorbió al básico.
             Ambos están homologados ({UOCRA_HOMOLOGACIONES.tramo1}; {UOCRA_HOMOLOGACIONES.tramo2}).
+            El tercer tramo, firmado el 21/9/2026 por UOCRA, CAMARCO y FAEC, da{" "}
+            <strong>+1,9% en septiembre, +1,8% en octubre y +1,7% en noviembre</strong>, sin SNR,
+            y mantiene el aporte solidario del 2% para los no afiliados.
           </p>
           <p className="rounded-xl bg-white p-4 font-medium text-zinc-800 shadow-sm">
             Sueldo mensual ≈ jornal × horas del mes (190,67 hs la jornada completa) + 20% de
             asistencia perfecta + SNR del mes.
           </p>
           <p>
-            {textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, new Date().toISOString().slice(0, 10))} Cuando salga, la
+            {textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, hoyAR())} Cuando salga, la
             escala se actualiza acá desde el documento firmado.
           </p>
         </div>
@@ -319,6 +345,7 @@ export default function UocraPage() {
         <h2 className="text-base font-semibold text-zinc-900">Fuentes oficiales</h2>
         <ul className="space-y-1.5 text-sm text-zinc-600">
           {[
+            UOCRA_FUENTES.acuerdoTramo3,
             UOCRA_FUENTES.acuerdoTramo2,
             UOCRA_FUENTES.acuerdoTramo1,
             UOCRA_FUENTES.cct,

@@ -1,13 +1,14 @@
 "use client";
 
 import { useMemo, useState, useRef } from "react";
+import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 import { CATEGORIAS_CAMIONEROS, MESES_CAMIONEROS } from "@/data/convenios/camioneros";
 import { calcularCamioneros } from "@/lib/convenios";
 import { formatARS } from "@/lib/formato";
 import { CompartirWhatsApp } from "@/components/CompartirWhatsApp";
 
 export function CalculadoraCamioneros() {
-  const [mesId, setMesId] = useState("junio-2026");
+  const [mesId, setMesId] = useState(() => vigenteEn(MESES_CAMIONEROS, periodoDeMes).id);
   const [categoriaId, setCategoriaId] = useState("chofer-primera");
   const [aniosStr, setAniosStr] = useState("0");
 

@@ -1,7 +1,7 @@
 // Haber mínimo jubilatorio garantizado (ANSES), mes a mes, bajo el régimen de movilidad MENSUAL.
 // GENERADO por scripts/gen_jubilaciones.ts — NO editar a mano.
 //   https://apis.datos.gob.ar/series/api/series/?ids=58.1_MP_0_M_24&format=json&limit=5000&start_date=2024-01-01
-// Descargado el 2026-09-01. Último período: septiembre 2026 ($428633.2).
+// Descargado el 2026-09-28. Último período: octubre 2026 ($435748.51).
 //
 // EL MOTOR (Decreto 274/2024): la movilidad de cada mes es la variación del IPC del INDEC de DOS
 // MESES ANTES, redondeada a dos decimales en porcentaje. El generador reconstruye toda la serie con
@@ -13,6 +13,8 @@
 //
 // Corte FIJO en 2024-05 (primer mes del régimen mensual). NO convertirlo en ventana móvil.
 
+import { PRESTACIONES_VIGENTES } from "./prestaciones";
+
 export type MesJubilacion = {
   periodo: string; // "2026-08"
   /** Haber mínimo garantizado del mes, en pesos corrientes. */
@@ -21,7 +23,7 @@ export type MesJubilacion = {
   movilidad: number | null;
 };
 
-export const HABER_MINIMO_SERIE: MesJubilacion[] = [
+const SERIE_COMPLETA: MesJubilacion[] = [
   { periodo: "2024-05", haberMinimo: 190141.6, movilidad: null },
   { periodo: "2024-06", haberMinimo: 206931.1, movilidad: 8.83 },
   { periodo: "2024-07", haberMinimo: 215580.82, movilidad: 4.18 },
@@ -51,7 +53,14 @@ export const HABER_MINIMO_SERIE: MesJubilacion[] = [
   { periodo: "2026-07", haberMinimo: 411989.33, movilidad: 2.15 },
   { periodo: "2026-08", haberMinimo: 419775.93, movilidad: 1.89 },
   { periodo: "2026-09", haberMinimo: 428633.2, movilidad: 2.11 },
+  { periodo: "2026-10", haberMinimo: 435748.51, movilidad: 1.66 },
 ];
+
+// Una resolución puede salir antes de que empiece su mes (la de octubre de 2026, el 23/9): la
+// serie que ve el sitio se corta en el mes vigente de prestaciones.ts, que ya sabe la fecha.
+export const HABER_MINIMO_SERIE: MesJubilacion[] = SERIE_COMPLETA.filter(
+  (f) => f.periodo <= PRESTACIONES_VIGENTES.periodo,
+);
 
 /** Último mes con haber mínimo publicado por fuente oficial. */
 export const HABER_MINIMO_ULTIMO: MesJubilacion =
@@ -64,6 +73,7 @@ export const HABER_MINIMO_ULTIMO: MesJubilacion =
 export const NORMAS_POR_PERIODO: Record<string, { norma: string; url: string }> = {
   "2026-08": { norma: "Resolución ANSES 232/2026, art. 1 (Boletín Oficial, 30/7/2026)", url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/345155/20260730" },
   "2026-09": { norma: "Resolución ANSES 257/2026, art. 1 (Boletín Oficial, 1/9/2026)", url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346683/20260901" },
+  "2026-10": { norma: "Resolución ANSES 284/2026, art. 1 (Boletín Oficial, 23/9/2026)", url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/347832/20260923" },
 };
 
 export const HABER_MINIMO_FUENTE = {
@@ -73,6 +83,6 @@ export const HABER_MINIMO_FUENTE = {
   movilidad:
     "Decreto 274/2024 — movilidad mensual por IPC (INDEC), con dos meses de rezago",
   movilidadUrl: "https://www.boletinoficial.gob.ar/detalleAviso/primera/305905/20240322",
-  consultadoEl: "2026-09-01",
-  ultimoPeriodo: "2026-09",
+  consultadoEl: "2026-09-28",
+  ultimoPeriodo: "2026-10",
 };

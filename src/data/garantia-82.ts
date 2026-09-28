@@ -33,6 +33,8 @@
 // LA ESCALA DEL SMVM NO VIVE ACÁ: vive en `SMVM_SERIE` de `desempleo.ts`, y el haber mínimo en
 // `prestaciones.ts` / `jubilaciones.ts`. Acá no se copia ni un monto: se copian REGLAS.
 
+import { PRESTACIONES_VIGENTES } from "./prestaciones";
+
 /** Art. 125 bis: la garantía es el 82% del SMVM vigente en cada período. */
 export const FACTOR_GARANTIA = 0.82;
 
@@ -168,10 +170,10 @@ export const GARANTIA_82_FUENTES: { consultadoEl: string; lista: FuenteGarantia[
         "B.O. 2/9/2026 — laudo que fija el salario mínimo mes a mes desde septiembre de 2026 hasta abril de 2027. Es el valor sobre el que se calcula el 82%.",
     },
     {
-      nombre: "Resolución ANSES 257/2026 — haber mínimo garantizado de septiembre de 2026",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346683/20260901",
+      nombre: `${PRESTACIONES_VIGENTES.resolucion} — haber mínimo garantizado de ${PRESTACIONES_VIGENTES.vigencia}`,
+      url: PRESTACIONES_VIGENTES.resolucionUrl,
       detalle:
-        "B.O. 1/9/2026 — el haber mínimo del art. 125, que es el piso que hoy efectivamente cubre a todo el mundo y está por encima del nivel del art. 125 bis.",
+        `${PRESTACIONES_VIGENTES.resolucionBO} — el haber mínimo del art. 125, que es el piso que hoy efectivamente cubre a todo el mundo y está por encima del nivel del art. 125 bis.`,
     },
   ],
 };
