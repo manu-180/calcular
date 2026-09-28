@@ -66,7 +66,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto es el aumento de camioneros en 2026?",
-    a: `El acuerdo del 13/3/2026 (homologado por la Disposición DNRyRT 455/2026) fijó tramos mensuales sobre el básico del mes anterior: marzo +2,0%, abril +1,8% (más la incorporación al básico de la suma no remunerativa de marzo), mayo +1,7% y junio +1,6%. Julio no quedó en el +1,5% original: la revisión de la cláusula TERCERA lo llevó a +4,22% sobre junio, y agosto sumó +1,5% sobre ese julio revisado. Con todo eso, el básico del Chofer de Primera subió ${ACUMULADO.toLocaleString("es-AR", { maximumFractionDigits: 1 })}% entre febrero y agosto de 2026. La escala siguiente se negocia a partir de septiembre; cuando FADEEAC publique la planilla firmada, la cargamos.`,
+    a: `El acuerdo del 13/3/2026 (homologado por la Disposición DNRyRT 455/2026) fijó tramos mensuales sobre el básico del mes anterior: marzo +2,0%, abril +1,8% (más la incorporación al básico de la suma no remunerativa de marzo), mayo +1,7% y junio +1,6%. Julio no quedó en el +1,5% original: la revisión de la cláusula TERCERA lo llevó a +4,22% sobre junio, y agosto sumó +1,5% sobre ese julio revisado. Con todo eso, el básico del Chofer de Primera subió ${ACUMULADO.toLocaleString("es-AR", { maximumFractionDigits: 1 })}% entre febrero y agosto de 2026. El 18/9/2026 se firmó el acuerdo que sigue (septiembre de 2026 a febrero de 2027). Los básicos se cargan acá recién cuando FADEEAC publique las planillas firmadas: hasta entonces, la de ${ULTIMO.etiqueta.toLowerCase()} es la última escala con planilla oficial.`,
   },
   {
     q: "¿Hay zonas o regiones en la escala de camioneros?",

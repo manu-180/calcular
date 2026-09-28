@@ -260,6 +260,27 @@ async function main(): Promise<void> {
   for (const f of filas.sort((a, b) => a.resolucionFecha.localeCompare(b.resolucionFecha))) porDesde.set(f.desde, f);
   const orden = [...porDesde.values()].sort((a, b) => b.desde.localeCompare(a.desde));
 
+  // --escribir: lo usa el workflow datos-vivos. Sólo toca uma.ts si apareció una vigencia que el repo
+  // no tenía; si no, el archivo queda igual (las escaneadas se vuelven a bajar siempre y nunca entran,
+  // así que "hubo algo para bajar" no significa "hubo algo nuevo").
+  if (tiene("escribir")) {
+    const nuevas = orden.filter((f) => !serieRepo.some((r) => r.docId === f.docId));
+    if (nuevas.length === 0) {
+      console.log(`✅ nada nuevo: la UMA vigente sigue siendo $${orden[0].valor.toLocaleString("es-AR")} desde ${orden[0].desde}.`);
+      return;
+    }
+    const destino = resolve(import.meta.dirname, "..", "src", "data", "uma.ts");
+    const actual = readFileSync(destino, "utf8");
+    const ini = actual.indexOf("export const SERIE_UMA: FilaUma[] = [");
+    const fin = actual.indexOf("\n];", ini);
+    const cuerpo = orden
+      .map((f) => `  { desde: "${f.desde}", valor: ${f.valor}, resolucion: "${f.resolucion}", resolucionFecha: "${f.resolucionFecha}", docId: ${f.docId} },`)
+      .join("\n");
+    writeFileSync(destino, `${actual.slice(0, ini)}export const SERIE_UMA: FilaUma[] = [\n${cuerpo}${actual.slice(fin)}`);
+    for (const n of nuevas) console.log(`🔄 UMA nueva: $${n.valor.toLocaleString("es-AR")} desde ${n.desde} (Res. SGA ${n.resolucion})`);
+    return;
+  }
+
   console.log(`\n=== pegá esto en calcular-ar/src/data/uma.ts (${orden.length} valores) ===\n`);
   console.log("export const SERIE_UMA: FilaUma[] = [");
   for (const f of orden)

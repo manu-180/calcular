@@ -41,6 +41,8 @@ const PASOS: Paso[] = [
     checks: ["check_jubilaciones", "check_asignaciones", "check_puam", "check_pnc", "check_edad_avanzada", "check_descuento_pami", "check_garantia_82", "check_sueldo"],
     timeoutS: 600,
   },
+  { id: "aportes-casas", que: "Aportes, contribuciones y ART de casas particulares (PDF de ARCA)", script: "scripts/gen_aportes_casas.ts", args: ["--escribir"], checks: ["check_aportes_casas", "check_art_casas_particulares", "check_deduccion_domestica"] },
+  { id: "uma", que: "UMA de honorarios (resoluciones de la CSJN)", script: "scripts/gen_uma.ts", args: ["--escribir"], checks: ["check_honorarios_periciales"], timeoutS: 600 },
   { id: "jubilaciones", que: "Serie del haber mínimo (ANSES vía datos.gob.ar)", script: "scripts/gen_jubilaciones.ts", checks: ["check_jubilaciones"] },
   { id: "vigencias", que: "Mes vigente de cada dato elegido por fecha", script: "scripts/datos-vivos/vigencias.ts", checks: [] },
 ];
@@ -178,6 +180,7 @@ function main(): void {
   }
 
   const semaforo = tsx("scripts/vigia/check-datos-vencen.ts", [], 900).salida;
+  console.log(`\n── semáforo\n${semaforo}`);
   const lineasSemaforo = semaforo.split("\n").map((l) => l.trimEnd());
   // Mismo contrato que el detector: sólo hay algo que avisar si hay veredicto ⛔ (vencido Y con
   // reemplazo publicado). Un 🔴 "vence esta semana" cuya fuente todavía no publicó no es accionable:

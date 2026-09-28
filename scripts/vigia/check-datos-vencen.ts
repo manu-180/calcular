@@ -440,7 +440,7 @@ for (const gremio of ["comercio", "uocra", "camioneros"] as const) {
         valorActual: `tabla de ${mesVigente ? mesVigente[1] : `${archivo[1]}/${archivo[2]}`} (PDF ${archivo[1]}-${archivo[2]})`,
         venceTexto: fmtFecha(vence),
         accion:
-          "Correr `npx -y tsx calcular-ar/scripts/gen_aportes_casas.ts` (prueba si ARCA publicó el mes siguiente, baja el PDF y lo parsea por coordenadas). Si salió: reemplazar TABLA_APORTES + VIGENCIA_APORTES + la URL de la fuente en calcular-ar/src/data/aportes-casas-particulares.ts, actualizar el bloque PDF_ARCA de scripts/check_aportes_casas.ts y correrlo. NUNCA cargar esta tabla desde el texto plano del PDF: los encabezados vienen desordenados y se cruzan las columnas (mina de s77).",
+          "Nada a mano mientras el workflow datos-vivos esté verde: `gen_aportes_casas.ts --escribir` carga la tabla sola apenas ARCA sube el PDF (por coordenadas, con prueba aritmética y banda contra el mes anterior). Si el workflow avisó que NO pasó esas guardas, correr `npx -y tsx calcular-ar/scripts/gen_aportes_casas.ts` a mano y revisar. NUNCA cargar esta tabla desde el texto plano del PDF (mina de s77).",
       };
       filas.push(filaAportesCasas);
     }
@@ -564,10 +564,14 @@ for (const gremio of ["comercio", "uocra", "camioneros"] as const) {
 // 🔴 de más que ocultar un dato realmente vencido.
 
 const SERIE_IPC = "148.3_INIVELNAL_DICI_M_26"; // la misma que usa tools/check-apis.ts
-const TIMEOUT_VERIFICACION_MS = 15_000; // corto a propósito: esto corre en cada arranque
+// En el workflow datos-vivos (CI) los techos son otros: ahí no hay un arranque esperando, y desde
+// un runner de GitHub en EE.UU. el rastreo de los tres gremios tarda más que los 45 s que alcanzan
+// desde Argentina (28/9/2026: 35 s acá, expiraba allá y Camioneros salía ⛔ por calendario).
+const EN_CI = !!process.env.CI;
+const TIMEOUT_VERIFICACION_MS = EN_CI ? 60_000 : 15_000; // corto a propósito: esto corre en cada arranque
 // El rastreo de gremios visita varias páginas por gremio, así que va con techo propio y
 // más holgado. Si expira, el semáforo se queda con el calendario: nunca cuelga el arranque.
-const TIMEOUT_RASTREO_MS = 45_000;
+const TIMEOUT_RASTREO_MS = EN_CI ? 240_000 : 45_000;
 
 async function confirmarVencimientoIpc(): Promise<void> {
   if (!filaIpc || !periodoIpcGuardado) return;

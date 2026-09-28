@@ -17,7 +17,7 @@
 // Salida esperada cuando todavía no publicaron: "ARCA no publicó todavía el PDF de MM-AA" y exit 0.
 // Es la respuesta correcta, no un error: la tabla vieja sigue siendo la vigente.
 
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import https from "node:https";
 import { resolve } from "node:path";
@@ -271,6 +271,85 @@ function comparar(nueva: Record<CondicionTrabajador, Fila[]>): number {
   return cambios;
 }
 
+const MESES_ES = [
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+];
+const nombreMes = (mmaa: string) => `${MESES_ES[Number(mmaa.slice(0, 2)) - 1]} de ${2000 + Number(mmaa.slice(3))}`;
+
+/**
+ * --escribir (lo usa el workflow datos-vivos): carga la tabla nueva sola. Además de la prueba
+ * aritmética que ya pasó, exige que el PDF declare el mes que se buscaba y que ningún importe se
+ * mueva más de un 40% contra el mes anterior (los aportes se mueven con la movilidad, ~2% por mes:
+ * un salto así es una columna mal leída, no un aumento). Sale 2 si no pasa: aviso, no se escribe.
+ */
+function escribir(tabla: Record<CondicionTrabajador, Fila[]>, vigencia: string[], mmaa: string, url: string): void {
+  const mes = nombreMes(mmaa);
+  const errores: string[] = [];
+  const declarado = vigencia.join(" ").toLowerCase();
+  if (!declarado.includes(MESES_ES[Number(mmaa.slice(0, 2)) - 1])) errores.push(`el PDF no declara ${mes} ("${declarado || "sin vigencia"}")`);
+  for (const cond of ["activo-mayor-18", "activo-menor-18", "jubilado"] as CondicionTrabajador[]) {
+    tabla[cond].forEach((f, i) => {
+      const v = TABLA_APORTES[cond][i];
+      for (const campo of ["total", "obraSocial", "sipa", "art"] as const) {
+        const a = v[campo], b = f[campo];
+        if ((a === null) !== (b === null)) errores.push(`${cond}/${RANGOS[i]} ${campo}: cambió de ${a} a ${b}`);
+        else if (a !== null && b !== null && (b / a < 0.6 || b / a > 1.4)) errores.push(`${cond}/${RANGOS[i]} ${campo}: ${a} → ${b} (fuera de banda)`);
+      }
+    });
+  }
+  if (errores.length) {
+    console.log(`\n🔴 La tabla de ${mes} NO se carga sola:\n   · ${errores.join("\n   · ")}`);
+    process.exit(2);
+  }
+
+  const num = (n: number | null) => (n === null ? "null" : String(n));
+  const bloque = (["activo-mayor-18", "activo-menor-18", "jubilado"] as CondicionTrabajador[])
+    .map((cond) => {
+      const clave = cond === "jubilado" ? "jubilado" : `"${cond}"`;
+      const filas = tabla[cond]
+        .map((f, i) => `    { rango: "${RANGOS[i]}", total: ${f.total}, obraSocial: ${num(f.obraSocial)}, sipa: ${num(f.sipa)}, art: ${f.art} },`)
+        .join("\n");
+      return `  ${clave}: [\n${filas}\n  ],`;
+    })
+    .join("\n");
+  const vence = nombreMes(mesSiguiente(mmaa));
+  const archivoNuevo = `Casas-particulares-aportes-y-contribuciones-${mmaa}.pdf`;
+  const hoy = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Argentina/Buenos_Aires" }).format(new Date());
+
+  const fData = resolve(import.meta.dirname, "..", "src", "data", "aportes-casas-particulares.ts");
+  let d = readFileSync(fData, "utf8");
+  const ini = d.indexOf("export const TABLA_APORTES");
+  const fin = d.indexOf("\n};", ini);
+  d = `${d.slice(0, ini)}export const TABLA_APORTES: Record<CondicionTrabajador, FilaAportes[]> = {\n${bloque}${d.slice(fin)}`;
+  d = d
+    .replace(/"Valores vigentes para [^"]+"/, `"Valores vigentes para ${mes.replace(" de ", " ")}, con vencimiento en ${vence.replace(" de ", " ")}"`)
+    .replace(/(mesVigente:\s*")[^"]+"/, `$1${mes}"`)
+    .replace(/(mesDeVencimiento:\s*")[^"]+"/, `$1${vence}"`)
+    .replace(/(archivoPdf:\s*")[^"]+"/, `$1${archivoNuevo}"`)
+    .replace(/(export const APORTES_FUENTES[\s\S]*?consultadoEl:\s*")[^"]+"/, `$1${hoy}"`)
+    .replace(/https:\/\/www\.arca\.gob\.ar\/casasparticulares\/aportes-contribuciones-ART\/documentos\/\d{4}\/Casas-particulares-aportes-y-contribuciones-\d{2}-\d{2}\.pdf/, url)
+    .replace(/importes vigentes para [a-z]+ de \d{4} \(vencimiento en [a-z]+\)/, `importes vigentes para ${mes} (vencimiento en ${vence.split(" de ")[0]})`);
+  writeFileSync(fData, d);
+
+  // El ancla del check se lee del MISMO PDF por coordenadas y ya pasó la prueba aritmética y la
+  // banda: se reescribe para que el check siga comparando dato contra PDF, fila por fila.
+  const fCheck = resolve(import.meta.dirname, "check_aportes_casas.ts");
+  let c = readFileSync(fCheck, "utf8");
+  const ci = c.indexOf("const PDF_ARCA");
+  const cf = c.indexOf("\n};", ci);
+  const anclas = (["activo-mayor-18", "activo-menor-18", "jubilado"] as CondicionTrabajador[])
+    .map((cond) => {
+      const clave = cond === "jubilado" ? "jubilado" : `"${cond}"`;
+      const filas = tabla[cond].map((f, i) => `    "${RANGOS[i]}": [${f.total}, ${num(f.obraSocial)}, ${num(f.sipa)}, ${f.art}],`).join("\n");
+      return `  ${clave}: {\n${filas}\n  },`;
+    })
+    .join("\n");
+  c = `${c.slice(0, ci)}const PDF_ARCA: Record<CondicionTrabajador, Record<string, [number, number | null, number | null, number]>> = {\n${anclas}${c.slice(cf)}`;
+  writeFileSync(fCheck, c);
+  console.log(`\n🔄 Aportes de casas particulares: tabla de ${mes} cargada desde ${archivoNuevo} (aritmética y banda OK).`);
+}
+
 async function main(): Promise<void> {
   const mmaaCargado = VIGENCIA_APORTES.archivoPdf.match(/-(\d{2}-\d{2})\.pdf$/)![1];
   const objetivo = arg("mes") ?? (process.argv.includes("--verificar") ? mmaaCargado : mesSiguiente(mmaaCargado));
@@ -302,6 +381,11 @@ async function main(): Promise<void> {
   const cambios = comparar(tabla);
   if (cambios === 0) {
     console.log("   · ninguna: el PDF trae los mismos importes.");
+    return;
+  }
+
+  if (process.argv.includes("--escribir")) {
+    escribir(tabla, vigencia, objetivo, url);
     return;
   }
 
