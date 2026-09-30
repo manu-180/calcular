@@ -272,7 +272,7 @@ export default function ConvenioVencidoPage() {
         <h2 className="text-xl font-bold text-zinc-900">Los ocho cambios del Título XIV, en orden</h2>
         <div className="space-y-3">
           {CAMBIOS.map((c) => (
-            <details key={c.articulo} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <details key={c.articulo} className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <summary className="cursor-pointer font-semibold text-zinc-800">
                 Ley 14.250, {c.articulo} — {c.titulo}
               </summary>
@@ -318,7 +318,7 @@ export default function ConvenioVencidoPage() {
         <h2 className="text-xl font-bold text-zinc-900">Preguntas frecuentes</h2>
         <div className="space-y-3">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <details key={f.q} className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <summary className="cursor-pointer font-semibold text-zinc-800">{f.q}</summary>
               <p className="mt-2 text-sm text-zinc-600">{f.a}</p>
             </details>

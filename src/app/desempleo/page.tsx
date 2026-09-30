@@ -413,7 +413,7 @@ export default function DesempleoPage() {
           {faqs.map((f) => (
             <details
               key={f.q}
-              className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
+              className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
             >
               <summary className="cursor-pointer font-semibold text-zinc-800">{f.q}</summary>
               <p className="mt-2 text-sm text-zinc-600">{f.a}</p>

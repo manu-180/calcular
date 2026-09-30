@@ -342,17 +342,8 @@ export function PlanillaLanding(c: ConfigLanding) {
             <h2 className="mb-4 text-xl font-semibold text-zinc-900">Preguntas frecuentes</h2>
             <div className="space-y-3">
               {c.faqs.map((faq, i) => (
-                <details key={i} className="group rounded-lg border border-zinc-200 bg-white p-4 open:shadow-sm">
-                  <summary className="cursor-pointer list-none font-semibold text-zinc-900 marker:content-none">
-                    <span className="flex items-start justify-between gap-3">
-                      {faq.q}
-                      <span className="mt-1 shrink-0 text-zinc-400 transition group-open:rotate-180" aria-hidden>
-                        <svg className="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="m5 8 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                    </span>
-                  </summary>
+                <details key={i} className="ca-acordeon group rounded-lg border border-zinc-200 bg-white p-4 open:shadow-sm">
+                  <summary className="cursor-pointer font-semibold text-zinc-900">{faq.q}</summary>
                   <p className="mt-2 text-sm text-zinc-600">{faq.a}</p>
                 </details>
               ))}

@@ -272,7 +272,7 @@ export default function FondoDeAsistenciaLaboralPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Los dos plazos que dejan afuera</h2>
         <div className="space-y-3">
-          <details className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+          <details className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
             <summary className="cursor-pointer font-semibold text-zinc-800">
               Carencia de {PERIODOS_CARENCIA} períodos — art. 65 de la ley y art. 15 del decreto
             </summary>
@@ -284,7 +284,7 @@ export default function FondoDeAsistenciaLaboralPage() {
               que ARCA registra la primera contribución efectivamente integrada.
             </p>
           </details>
-          <details className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+          <details className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
             <summary className="cursor-pointer font-semibold text-zinc-800">
               Antigüedad de {MESES_ANTIGUEDAD_MINIMA} meses del trabajador — art. 58
             </summary>
@@ -323,7 +323,7 @@ export default function FondoDeAsistenciaLaboralPage() {
           ].map((a) => (
             <details
               key={a.art}
-              className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
+              className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
             >
               <summary className="cursor-pointer font-semibold text-zinc-800">{a.art}</summary>
               <p className="mt-2 text-sm italic text-zinc-600">«{a.texto}»</p>
@@ -337,7 +337,7 @@ export default function FondoDeAsistenciaLaboralPage() {
         <h2 className="text-xl font-bold text-zinc-900">Preguntas frecuentes</h2>
         <div className="space-y-3">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <details key={f.q} className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <summary className="cursor-pointer font-semibold text-zinc-800">{f.q}</summary>
               <p className="mt-2 text-sm text-zinc-600">{f.a}</p>
             </details>

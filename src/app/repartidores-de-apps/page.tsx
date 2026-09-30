@@ -275,7 +275,7 @@ export default function RepartidoresDeAppsPage() {
         <h2 className="text-xl font-bold text-zinc-900">Preguntas frecuentes</h2>
         <div className="space-y-3">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <details key={f.q} className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <summary className="cursor-pointer font-semibold text-zinc-800">{f.q}</summary>
               <p className="mt-2 text-sm text-zinc-600">{f.a}</p>
             </details>
@@ -351,7 +351,7 @@ function Articulo({
 }) {
   return (
     <details
-      className={`rounded-xl border p-4 ${
+      className={`ca-acordeon rounded-xl border p-4 ${
         destacado ? "border-emerald-300 bg-emerald-50/40" : "border-zinc-200 bg-white"
       }`}
       open={destacado}

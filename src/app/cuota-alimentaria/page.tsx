@@ -270,7 +270,7 @@ export default function CuotaAlimentariaPage() {
           {faqs.map((f) => (
             <details
               key={f.q}
-              className="group rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
+              className="ca-acordeon group rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
             >
               <summary className="cursor-pointer font-semibold text-zinc-900 marker:content-none">
                 {f.q}

@@ -33,7 +33,7 @@ export function ArchivoMensualLinks({ items }: { items: Item[] }) {
       </ul>
 
       {anteriores.length > 0 && (
-        <details className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+        <details className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
           <summary className="cursor-pointer text-sm font-semibold text-zinc-700">
             Meses anteriores ({anteriores.length})
           </summary>

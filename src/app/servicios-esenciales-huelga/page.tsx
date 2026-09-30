@@ -314,7 +314,7 @@ export default function ServiciosEsencialesPage() {
             { art: "Apartado 24.5 — paro nacional", texto: TEXTOS.paroNacional },
             { art: "Apartado 24.6 — sanciones", texto: TEXTOS.sanciones },
           ].map((a) => (
-            <details key={a.art} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <details key={a.art} className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <summary className="cursor-pointer font-semibold text-zinc-800">{a.art}</summary>
               <p className="mt-2 text-sm italic text-zinc-600">«{a.texto}»</p>
             </details>
@@ -369,7 +369,7 @@ export default function ServiciosEsencialesPage() {
         <h2 className="text-xl font-bold text-zinc-900">Preguntas frecuentes</h2>
         <div className="space-y-3">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <details key={f.q} className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <summary className="cursor-pointer font-semibold text-zinc-800">{f.q}</summary>
               <p className="mt-2 text-sm text-zinc-600">{f.a}</p>
             </details>

@@ -487,7 +487,34 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
     }
   };
 
-  const underlineOpacity = hoveredKey && hoveredKey !== activeKey ? 0.7 : 1;
+  // Los paneles angostos nacen bajo su pestaña y se frenan en los bordes del contenedor:
+  // anclarlos a izquierda/derecha fija los dejaba corridos respecto del tab que los abrió.
+  const panelWrapRef = useRef<HTMLDivElement>(null);
+  const [panelLeft, setPanelLeft] = useState(0);
+  const posicionarPanel = useCallback(() => {
+    const wrap = panelWrapRef.current;
+    const panel = panelRef.current;
+    const trigger = openKey ? tabRefs.current[openKey] : null;
+    if (!wrap || !panel || !trigger) return;
+    const cs = getComputedStyle(wrap);
+    const wr = wrap.getBoundingClientRect();
+    const inicio = wr.left + parseFloat(cs.paddingLeft);
+    const ancho = wr.width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const deseado = trigger.getBoundingClientRect().left - inicio - 12;
+    setPanelLeft(Math.round(Math.min(Math.max(0, deseado), Math.max(0, ancho - panel.offsetWidth))));
+  }, [openKey]);
+
+  useLayoutEffect(() => {
+    if (openKey && columnas) posicionarPanel();
+  }, [openKey, columnas, posicionarPanel]);
+
+  useEffect(() => {
+    if (!openKey) return;
+    window.addEventListener("resize", posicionarPanel);
+    return () => window.removeEventListener("resize", posicionarPanel);
+  }, [openKey, posicionarPanel]);
+
+  const underlineOpacity =hoveredKey && hoveredKey !== activeKey ? 0.7 : 1;
   const cols = columnas?.length ?? 1;
   const showDesc = cols <= 2;
   const secciones = nav ? nav.seccionesDelMenu() : null;
@@ -636,7 +663,7 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
           depender de la posición del tab. El `max-h` + scroll interno garantiza que nunca se corte. */}
       {openTab && columnas && (
         <div className="pointer-events-none absolute inset-x-0 top-full hidden lg:block">
-          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <div ref={panelWrapRef} className="mx-auto w-full max-w-6xl px-4 sm:px-6">
             <div
               ref={panelRef}
               id={`ca-panel-${openTab.key}`}
@@ -650,8 +677,9 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
                 cols === 1 && "w-[22rem]",
                 cols === 2 && "w-[44rem]",
                 cols >= 3 && "w-full",
-                openTab.align === "right" && cols <= 2 && "ml-auto",
+                "max-w-full",
               )}
+              style={cols <= 2 ? { marginLeft: panelLeft } : undefined}
             >
               <div
                 className={cx(

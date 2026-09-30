@@ -212,7 +212,7 @@ export function CalculadoraCertificadoTrabajo() {
           </ol>
 
           {res.plazoEntrega && res.plazoEntrega.salteados.length > 0 && (
-            <details className="mt-4 rounded-lg border border-zinc-200 bg-white p-3">
+            <details className="ca-acordeon mt-4 rounded-lg border border-zinc-200 bg-white p-3">
               <summary className="cursor-pointer text-sm font-semibold text-zinc-800">
                 Los {res.plazoEntrega.salteados.length} días que el plazo salteó
               </summary>

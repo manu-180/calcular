@@ -4,6 +4,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AdSense from "@/components/AdSense";
 import { Rastreador } from "@/components/Rastreador";
+import { AcordeonesFluidos } from "@/components/AcordeonesFluidos";
 import { HerramientasCalculo } from "@/components/herramientas/HerramientasCalculo";
 import { tabsDelEncabezado } from "@/data/navegacion";
 import "./globals.css";
@@ -70,6 +71,7 @@ export default function RootLayout({
           <SiteFooter />
         </div>
         <Rastreador />
+        <AcordeonesFluidos />
         <HerramientasCalculo />
         <AdSense />
       </body>

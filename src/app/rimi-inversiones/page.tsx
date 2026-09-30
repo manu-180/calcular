@@ -246,7 +246,7 @@ export default function RimiPage() {
           {EXCLUSIONES.map((e) => (
             <details
               key={e.titulo}
-              className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
+              className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
             >
               <summary className="cursor-pointer font-semibold text-zinc-800">{e.titulo}</summary>
               <p className="mt-2 text-sm text-zinc-600">{e.detalle}</p>
@@ -290,7 +290,7 @@ export default function RimiPage() {
           ].map((a) => (
             <details
               key={a.art}
-              className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
+              className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
             >
               <summary className="cursor-pointer font-semibold text-zinc-800">{a.art}</summary>
               <p className="mt-2 text-sm italic text-zinc-600">«{a.texto}»</p>
@@ -304,7 +304,7 @@ export default function RimiPage() {
         <h2 className="text-xl font-bold text-zinc-900">Preguntas frecuentes</h2>
         <div className="space-y-3">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <details key={f.q} className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <summary className="cursor-pointer font-semibold text-zinc-800">{f.q}</summary>
               <p className="mt-2 text-sm text-zinc-600">{f.a}</p>
             </details>

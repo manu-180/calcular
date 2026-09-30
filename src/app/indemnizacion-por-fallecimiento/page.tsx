@@ -220,7 +220,7 @@ export default function IndemnizacionPorFallecimientoPage() {
         <h2 className="text-xl font-semibold text-zinc-900">Preguntas frecuentes</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-lg border border-zinc-200 p-4">
+            <details key={f.q} className="ca-acordeon rounded-lg border border-zinc-200 p-4">
               <summary className="cursor-pointer font-medium text-zinc-900">{f.q}</summary>
               <p className="mt-2 text-sm text-zinc-600">{f.a}</p>
             </details>

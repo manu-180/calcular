@@ -855,20 +855,19 @@ export function paginasDelGrupo(id: GrupoId, { soloMenu = true } = {}): Pagina[]
 // "Sueldo y trabajo" (~80 páginas) entre en pantalla: una sola lista medía más que el viewport.
 
 export type Tab =
-  | { type: "group"; key: string; label: string; align: "left" | "right"; cols: GrupoId[][]; extra?: string[] }
+  | { type: "group"; key: string; label: string; cols: GrupoId[][]; extra?: string[] }
   | { type: "link"; key: string; label: string; href: string; match: string[] };
 
 export const TABS: Tab[] = [
-  { type: "group", key: "monotributo", label: "Monotributo", align: "left", cols: [["monotributo"]] },
+  { type: "group", key: "monotributo", label: "Monotributo", cols: [["monotributo"]] },
   {
     type: "group",
     key: "sueldo",
     label: "Sueldo y trabajo",
-    align: "left",
     cols: [["sueldo", "licencias"], ["fin"], ["regimenes"], ["impuestos", "sindical"]],
   },
-  { type: "group", key: "convenios", label: "Convenios", align: "right", cols: [["convenios"]], extra: ["/planillas"] },
-  { type: "group", key: "finanzas", label: "Finanzas y ANSES", align: "right", cols: [["plata"], ["anses"]] },
+  { type: "group", key: "convenios", label: "Convenios", cols: [["convenios"]], extra: ["/planillas"] },
+  { type: "group", key: "finanzas", label: "Finanzas y ANSES", cols: [["plata"], ["anses"]] },
   { type: "link", key: "guias", label: "Guías", href: "/blog", match: ["/blog"] },
 ];
 
@@ -877,21 +876,20 @@ export type TabEncabezado = {
   key: string;
   label: string;
   type: "group" | "link";
-  align: "left" | "right";
   href?: string;
   match: string[];
 };
 
 export function tabsDelEncabezado(): TabEncabezado[] {
   return TABS.map((t) => {
-    if (t.type === "link") return { key: t.key, label: t.label, type: "link", align: "right", href: t.href, match: t.match };
+    if (t.type === "link") return { key: t.key, label: t.label, type: "link", href: t.href, match: t.match };
     const ids = t.cols.flat();
     const match = new Set<string>(t.extra ?? []);
     for (const id of ids) {
       for (const p of paginasDelGrupo(id, { soloMenu: false })) match.add(p.href);
       for (const d of grupo(id).destacados ?? []) match.add(d);
     }
-    return { key: t.key, label: t.label, type: "group", align: t.align, match: [...match] };
+    return { key: t.key, label: t.label, type: "group", match: [...match] };
   });
 }
 

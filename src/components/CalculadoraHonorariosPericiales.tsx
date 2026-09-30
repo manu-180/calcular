@@ -202,7 +202,7 @@ export function CalculadoraHonorariosPericiales() {
                 ))}
               </div>
 
-              <details className="mt-5 rounded-xl border border-zinc-200 bg-white p-4">
+              <details className="ca-acordeon mt-5 rounded-xl border border-zinc-200 bg-white p-4">
                 <summary className="cursor-pointer text-sm font-semibold text-zinc-800">
                   El artículo, textual — {piso.supuesto.articulo}
                 </summary>

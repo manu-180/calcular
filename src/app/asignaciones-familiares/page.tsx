@@ -505,7 +505,7 @@ export default function AsignacionesPage() {
         <h2 className="text-xl font-bold text-zinc-900">Qué localidades entran en cada zona</h2>
         <div className="space-y-2">
           {ZONAS.filter((z) => z.id !== "general").map((z) => (
-            <details key={z.id} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <details key={z.id} className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <summary className="cursor-pointer font-semibold text-zinc-800">{z.nombre}</summary>
               <p className="mt-2 text-sm text-zinc-600">{z.detalle}</p>
             </details>
@@ -523,7 +523,7 @@ export default function AsignacionesPage() {
         <h2 className="text-xl font-bold text-zinc-900">Preguntas frecuentes</h2>
         <div className="space-y-3">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <details key={f.q} className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <summary className="cursor-pointer font-semibold text-zinc-800">{f.q}</summary>
               <p className="mt-2 text-sm text-zinc-600">{f.a}</p>
             </details>

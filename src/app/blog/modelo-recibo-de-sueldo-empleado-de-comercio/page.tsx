@@ -358,7 +358,7 @@ export default function Post() {
           {faqs.map((f) => (
             <details
               key={f.q}
-              className="group rounded-xl border border-zinc-200 bg-white p-4 open:shadow-sm"
+              className="ca-acordeon group rounded-xl border border-zinc-200 bg-white p-4 open:shadow-sm"
             >
               <summary className="cursor-pointer font-semibold text-zinc-800 group-open:text-emerald-700">
                 {f.q}
