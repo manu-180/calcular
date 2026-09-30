@@ -341,29 +341,30 @@ html:has(dialog.ca-bloquea[open]) {
   transform: scale(0.97);
 }
 
-/* El "=" del logo, dibujado debajo de la palabra clave del titular. Es un pseudo-elemento:
-   el texto (candidato a LCP) se pinta de entrada y sólo la raya entra después. */
+/* Trazo de resaltador detrás de la palabra clave del titular. Es un pseudo-elemento: el texto
+   (candidato a LCP) se pinta de entrada y sólo el trazo entra después. */
 .ca-igual {
   position: relative;
+  isolation: isolate;
   white-space: nowrap;
 }
 .ca-igual::after {
   content: "";
   position: absolute;
-  left: 0.04em;
-  right: 0.06em;
-  bottom: -0.1em;
-  height: 0.17em;
-  background:
-    linear-gradient(var(--color-emerald-500), var(--color-emerald-500)) top / 100% 0.055em no-repeat,
-    linear-gradient(var(--color-emerald-500), var(--color-emerald-500)) bottom / 100% 0.055em no-repeat;
-  border-radius: 1px;
+  z-index: -1;
+  left: -0.06em;
+  right: -0.08em;
+  bottom: 0.06em;
+  height: 0.42em;
+  background: color-mix(in srgb, var(--color-emerald-400) 32%, transparent);
+  border-radius: 0.12em 0.3em 0.16em 0.26em;
+  transform: rotate(-1.2deg);
   transform-origin: left center;
-  animation: ca-trazo 0.7s var(--ease-fluid) 0.25s backwards;
+  animation: ca-trazo 0.75s var(--ease-fluid) 0.3s backwards;
 }
 @keyframes ca-trazo {
   from {
-    transform: scaleX(0);
+    transform: rotate(-1.2deg) scaleX(0);
   }
 }
 
