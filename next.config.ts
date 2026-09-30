@@ -35,8 +35,9 @@ const nextConfig: NextConfig = {
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
   // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.
-  // Tampoco form-action en lo público: el checkout redirige a MercadoPago y Chrome aplica
-  // form-action también a ese redirect.
+  // Sin form-action en NINGUNA ruta: el checkout redirige a MercadoPago y Chrome aplica form-action
+  // también a ese redirect. Y el CSP es del documento: entrar por /cuenta y navegar sin recargar a
+  // una planilla arrastraba el form-action privado y el pago quedaba colgado en «Te llevamos…».
   async headers() {
     // En dev sobre http://localhost, upgrade-insecure-requests pasa a https los redirects de fetch.
     const upgrade = process.env.NODE_ENV === "production" ? "; upgrade-insecure-requests" : "";
@@ -47,7 +48,7 @@ const nextConfig: NextConfig = {
       { key: "Content-Security-Policy", value: `frame-ancestors 'self'; base-uri 'self'; object-src 'none'${upgrade}` },
     ];
     const privado = [
-      { key: "Content-Security-Policy", value: `frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'${upgrade}` },
+      { key: "Content-Security-Policy", value: `frame-ancestors 'none'; base-uri 'self'; object-src 'none'${upgrade}` },
       { key: "X-Robots-Tag", value: "noindex, nofollow" },
       { key: "Cache-Control", value: "private, no-store" },
     ];
