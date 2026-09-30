@@ -1,0 +1,134 @@
+/* Estilos que sólo existen en /dashboard: este archivo lo importa Panel.tsx y no entra en el
+   CSS del resto del sitio. Los fallbacks de las curvas cubren el caso en que Tailwind no emita
+   la variable porque ningún utility del sitio la usó. */
+
+@keyframes panel-latido {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  70%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.panel-latido {
+  position: relative;
+}
+
+.panel-latido::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: currentColor;
+  animation: panel-latido 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes panel-aparece {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.panel-aparece {
+  animation: panel-aparece 0.55s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes panel-entra {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.panel-entra {
+  animation: panel-entra 0.3s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)) both;
+}
+
+.panel-barra {
+  transition: clip-path 0.6s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+/* Hoja de detalle en el celular. Es un <dialog> modal: el resto de la página queda inerte
+   (la trampa de foco la da el navegador) y Esc dispara `cancel`. */
+.panel-hoja {
+  position: fixed;
+  inset: auto 0 0 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: min(90dvh, 100%);
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: #fff;
+  color: inherit;
+  box-shadow: 0 -10px 40px -16px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  display: none;
+}
+
+.panel-hoja[open] {
+  display: flex;
+  flex-direction: column;
+  animation: panel-hoja-sube 0.44s var(--ease-snappy, cubic-bezier(0.32, 0.72, 0, 1));
+}
+
+.panel-hoja::backdrop {
+  background: rgba(24, 24, 27, 0.42);
+  animation: panel-velo 0.3s ease-out;
+  transition: opacity 0.24s ease;
+}
+
+.panel-hoja[data-cerrando] {
+  transform: translateY(100%) !important;
+  transition: transform 0.26s var(--ease-snappy, cubic-bezier(0.32, 0.72, 0, 1));
+}
+
+.panel-hoja[data-cerrando]::backdrop {
+  opacity: 0;
+}
+
+@keyframes panel-hoja-sube {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes panel-velo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-latido::after {
+    animation: none;
+    opacity: 0;
+  }
+  .panel-aparece,
+  .panel-entra {
+    animation: none;
+  }
+}

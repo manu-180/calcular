@@ -1,472 +1,72 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import type { PointerEvent as ReactPointerEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import type { Pagina, SeccionMenu, TabEncabezado } from "@/data/navegacion";
+import { SesionLink } from "@/components/SesionLink";
+import { Buscador } from "@/components/buscador/Buscador";
+import { useAtajo } from "@/components/buscador/atajo";
+import {
+  abrirBuscador,
+  cargarNavegacion,
+  precargarMotor,
+  precargarNavegacion,
+} from "@/components/buscador/control";
+import { IconoLupa } from "@/components/buscador/iconos";
+import { registrarVisita } from "@/components/buscador/recientes";
 
-// Une clases condicionales sin dependencias (calcular-ar no tiene clsx/cn).
 function cx(...parts: Array<string | false | null | undefined>): string {
   return parts.filter(Boolean).join(" ");
 }
 
-// ── Modelo de navegación ──────────────────────────────────────────────────
-// Un grupo se dibuja en COLUMNAS, y cada columna apila secciones con título.
-// Es lo que hace que "Sueldo" (53 calculadoras) entre en pantalla: una sola
-// lista vertical medía más que cualquier viewport y quedaba cortada sin scroll.
-// `match` define qué prefijos de ruta marcan al tab como activo.
-type NavLink = {
-  href: string;
-  label: string;
-  desc?: string;
-  badge?: string;
-  featured?: boolean;
-};
-type Seccion = { title?: string; items: NavLink[] };
-type Tab =
-  | {
-      type: "group";
-      key: string;
-      label: string;
-      align: "left" | "right";
-      match: string[];
-      cols: Seccion[][];
-    }
-  | { type: "link"; key: string; label: string; href: string; match: string[] };
+type Nav = Awaited<ReturnType<typeof cargarNavegacion>>;
 
-const TABS: Tab[] = [
-  {
-    type: "group",
-    key: "monotributo",
-    label: "Monotributo",
-    align: "left",
-    match: ["/monotributo"],
-    cols: [
-      [
-        {
-          items: [
-            {
-              href: "/monotributo",
-              label: "Calculadora",
-              desc: "Tu categoría y cuánto pagás por mes",
-            },
-            {
-              href: "/monotributo/categorias",
-              label: "Categorías 2026",
-              desc: "La tabla oficial completa de ARCA",
-            },
-            {
-              href: "/monotributo/recategorizacion",
-              label: "Recategorización",
-              desc: "Cuándo es y si te toca cambiar",
-            },
-            {
-              href: "/obra-social-monotributo",
-              label: "Obra social",
-              desc: "Desde cuándo te cubre y qué te pueden negar",
-            },
-            {
-              href: "/planillas/monotributo",
-              label: "Planilla de control",
-              desc: "Cuánto más podés facturar sin cambiar de categoría",
-              badge: "Pro",
-              featured: true,
-            },
-          ],
-        },
-      ],
-    ],
-  },
-  {
-    type: "group",
-    key: "sueldo",
-    label: "Sueldo y trabajo",
-    align: "left",
-    match: [
-      "/sueldo-neto",
-      "/aguinaldo",
-      "/vacaciones",
-      "/indemnizacion",
-      "/indemnizacion-por-fallecimiento",
-      "/indemnizacion-art",
-      "/comision-medica",
-      "/derechohabientes-art",
-      "/aportes-jubilatorios-obligatorios",
-      "/empleador-sin-art",
-      "/rechazo-art",
-      "/pluriempleo-art",
-      "/art-empleada-domestica",
-      "/actualizacion-creditos-laborales",
-      "/propinas",
-      "/certificado-de-trabajo",
-      "/tiempo-parcial",
-      "/reingreso",
-      "/horas-extras",
-      "/periodo-de-prueba",
-      "/descuentos-del-sueldo",
-      "/derivar-aportes-a-prepaga",
-      "/hasta-cuando-tengo-obra-social",
-      "/obra-social-monotributo",
-      "/repartidores-de-apps",
-      "/rifl",
-      "/contratar-persona-con-discapacidad",
-      "/prescripcion-deuda-arca",
-      "/multas-arca",
-      "/despido-de-delegado-gremial",
-      "/practicas-desleales-sindicales",
-      "/trabajo-de-mujeres",
-      "/temeridad-y-malicia",
-      "/renuncia",
-      "/reserva-del-empleo",
-      "/libro-de-sueldos",
-      "/despido-plazo-fijo",
-      "/ius-variandi",
-      "/transferencia-del-establecimiento",
-      "/conservacion-de-recibos",
-      "/despido-trabajador-rural",
-      "/fondo-de-asistencia-laboral",
-      "/rimi-inversiones",
-      "/servicios-esenciales-huelga",
-      "/negociacion-de-buena-fe",
-      "/caducidad-de-instancia-laboral",
-      "/impuestos-internos",
-      "/venta-de-inmuebles",
-      "/honorarios-periciales",
-      "/convenio-vencido",
-      "/actualizacion-de-quebrantos",
-      "/indemnizacion-por-clientela",
-      "/indemnizacion-periodista",
-      "/despido-empleada-domestica",
-      "/salario-minimo",
-      "/desempleo",
-      "/licencia-por-maternidad",
-      "/licencia-por-enfermedad",
-      "/licencias-especiales",
-      "/empleada-domestica",
-      "/aportes-empleada-domestica",
-      "/deduccion-empleada-domestica",
-      "/deduccion-alquiler",
-      "/deducciones-generales-ganancias",
-      "/ganancias-jubilados",
-      "/ganancias-autonomos",
-      "/ganancias-sociedades",
-      "/ganancias",
-      "/cuota-alimentaria",
-    ],
-    cols: [
-      [
-        {
-          title: "Tu sueldo, mes a mes",
-          items: [
-            { href: "/sueldo-neto", label: "Sueldo neto" },
-            { href: "/aguinaldo", label: "Aguinaldo (SAC)" },
-            { href: "/vacaciones", label: "Vacaciones" },
-            { href: "/horas-extras", label: "Horas extras" },
-            { href: "/salario-minimo", label: "Salario mínimo" },
-            { href: "/tiempo-parcial", label: "Media jornada" },
-            { href: "/descuentos-del-sueldo", label: "Descuentos y embargo" },
-            { href: "/derivar-aportes-a-prepaga", label: "Aportes de obra social" },
-            { href: "/hasta-cuando-tengo-obra-social", label: "Obra social al irte" },
-            { href: "/obra-social-monotributo", label: "Obra social del monotributo" },
-            { href: "/propinas", label: "Propinas" },
-            { href: "/libro-de-sueldos", label: "Libro de sueldos" },
-            { href: "/conservacion-de-recibos", label: "Guardar recibos" },
-          ],
-        },
-        {
-          title: "Licencias y ausencias",
-          items: [
-            { href: "/licencia-por-maternidad", label: "Licencia por maternidad" },
-            { href: "/licencia-por-enfermedad", label: "Licencia por enfermedad" },
-            { href: "/licencias-especiales", label: "Licencias especiales" },
-            { href: "/reserva-del-empleo", label: "Reserva del empleo" },
-            { href: "/trabajo-de-mujeres", label: "Trabajo de mujeres" },
-          ],
-        },
-      ],
-      [
-        {
-          title: "Cuando termina el trabajo",
-          items: [
-            { href: "/indemnizacion", label: "Indemnización por despido" },
-            { href: "/periodo-de-prueba", label: "Período de prueba" },
-            { href: "/renuncia", label: "Renuncia" },
-            { href: "/desempleo", label: "Prestación por desempleo" },
-            { href: "/certificado-de-trabajo", label: "Certificado de trabajo" },
-            {
-              href: "/actualizacion-creditos-laborales",
-              label: "Actualizar lo que te deben",
-            },
-            { href: "/despido-plazo-fijo", label: "Despido antes del plazo" },
-            { href: "/indemnizacion-por-fallecimiento", label: "Muerte del trabajador" },
-            { href: "/indemnizacion-art", label: "Accidente de trabajo (ART)" },
-            { href: "/comision-medica", label: "Comisión médica (plazos)" },
-            { href: "/derechohabientes-art", label: "Quién cobra la muerte laboral" },
-            { href: "/aportes-jubilatorios-obligatorios", label: "¿Tenés que aportar?" },
-            { href: "/empleador-sin-art", label: "Empleador sin ART al día" },
-            { href: "/rechazo-art", label: "Rechazo de la ART" },
-            { href: "/pluriempleo-art", label: "Pluriempleo y ART" },
-            { href: "/art-empleada-domestica", label: "ART de casas particulares" },
-            { href: "/reingreso", label: "Reingreso al mismo empleador" },
-            { href: "/despido-trabajador-rural", label: "Despido rural" },
-            { href: "/ius-variandi", label: "Ius variandi" },
-            { href: "/transferencia-del-establecimiento", label: "Cambio de dueño" },
-          ],
-        },
-      ],
-      [
-        {
-          title: "Regímenes especiales",
-          items: [
-            { href: "/empleada-domestica", label: "Empleada doméstica" },
-            { href: "/aportes-empleada-domestica", label: "Aportes a ARCA (doméstica)" },
-            { href: "/despido-empleada-domestica", label: "Despido de empleada doméstica" },
-            { href: "/planillas/casas-particulares", label: "Planilla de sueldo doméstica", badge: "Pro" },
-            { href: "/repartidores-de-apps", label: "Repartidores de apps" },
-            { href: "/rifl", label: "RIFL (contratar más barato)" },
-            {
-              href: "/contratar-persona-con-discapacidad",
-              label: "Contratar con discapacidad",
-            },
-            { href: "/fondo-de-asistencia-laboral", label: "Fondo de Asistencia Laboral" },
-            { href: "/indemnizacion-por-clientela", label: "Indemnización por clientela" },
-            { href: "/indemnizacion-periodista", label: "Indemnización del periodista" },
-            { href: "/cuota-alimentaria", label: "Cuota alimentaria" },
-          ],
-        },
-      ],
-      [
-        {
-          title: "Impuestos y deducciones",
-          items: [
-            { href: "/ganancias", label: "Ganancias 4.ª categoría" },
-            {
-              href: "/deduccion-empleada-domestica",
-              label: "Deducción de empleada doméstica",
-            },
-            { href: "/deduccion-alquiler", label: "Deducción de alquiler" },
-            { href: "/deducciones-generales-ganancias", label: "Prepaga, médicos y seguros" },
-            { href: "/ganancias-jubilados", label: "Ganancias para jubilados" },
-            { href: "/ganancias-autonomos", label: "Ganancias para autónomos" },
-            { href: "/ganancias-sociedades", label: "Ganancias de sociedades" },
-            { href: "/prescripcion-deuda-arca", label: "Prescripción de deuda con ARCA" },
-            { href: "/multas-arca", label: "Multas de ARCA" },
-            { href: "/actualizacion-de-quebrantos", label: "Quebrantos por IPC" },
-            { href: "/venta-de-inmuebles", label: "Vender un inmueble" },
-            { href: "/impuestos-internos", label: "Impuestos internos" },
-            { href: "/rimi-inversiones", label: "RIMI" },
-          ],
-        },
-        {
-          title: "Sindical y juicio laboral",
-          items: [
-            { href: "/despido-de-delegado-gremial", label: "Despido de delegado gremial" },
-            { href: "/practicas-desleales-sindicales", label: "Prácticas desleales" },
-            { href: "/servicios-esenciales-huelga", label: "Servicios esenciales" },
-            { href: "/negociacion-de-buena-fe", label: "Negociar de buena fe" },
-            { href: "/convenio-vencido", label: "Convenio vencido" },
-            { href: "/caducidad-de-instancia-laboral", label: "Caducidad de instancia" },
-            { href: "/temeridad-y-malicia", label: "Temeridad y malicia" },
-            { href: "/honorarios-periciales", label: "Honorarios de peritos" },
-          ],
-        },
-      ],
-    ],
-  },
-  {
-    type: "group",
-    key: "convenios",
-    label: "Convenios",
-    align: "right",
-    match: ["/convenios", "/planillas", "/dia-del-empleado-de-comercio"],
-    cols: [
-      [
-        {
-          items: [
-            {
-              href: "/convenios",
-              label: "Todos los convenios",
-              desc: "Escalas verificadas por gremio",
-            },
-            {
-              href: "/convenios/comercio",
-              label: "Empleados de Comercio",
-              desc: "FAECYS, con los no remunerativos",
-            },
-            {
-              href: "/dia-del-empleado-de-comercio",
-              label: "Día del Empleado de Comercio",
-              desc: "En 2026 se pasó al lunes 28/9",
-            },
-            {
-              href: "/convenios/uocra",
-              label: "UOCRA (construcción)",
-              desc: "Por categoría, zona y jornada",
-            },
-            {
-              href: "/convenios/camioneros",
-              label: "Camioneros",
-              desc: "Escala firmada de FADEEAC, mes a mes",
-            },
-            {
-              href: "/planillas",
-              label: "Planilla de sueldos Comercio",
-              desc: "Para liquidar, con la escala embebida",
-              badge: "Pro",
-              featured: true,
-            },
-          ],
-        },
-      ],
-    ],
-  },
-  {
-    type: "group",
-    key: "finanzas",
-    label: "Finanzas y ANSES",
-    align: "right",
-    match: [
-      "/inflacion",
-      "/plazo-fijo",
-      "/canasta-basica",
-      "/jubilacion",
-      "/asignaciones-familiares",
-      "/pension-no-contributiva",
-      "/puam",
-      "/edad-avanzada",
-      "/82-por-ciento-movil",
-      "/pension-veteranos-malvinas",
-      "/descuento-pami",
-    ],
-    cols: [
-      [
-        {
-          title: "Plata y precios",
-          items: [
-            {
-              href: "/inflacion",
-              label: "Inflación (IPC)",
-              desc: "Actualizá montos con el IPC del INDEC",
-            },
-            {
-              href: "/inflacion/alquiler",
-              label: "Ajuste de alquiler",
-              desc: "El cronograma de aumentos por IPC",
-            },
-            {
-              href: "/plazo-fijo",
-              label: "Plazo fijo",
-              desc: "Cuánto rinde, con la tasa del BCRA",
-            },
-            {
-              href: "/canasta-basica",
-              label: "Canasta básica",
-              desc: "La línea de pobreza de tu hogar",
-            },
-          ],
-        },
-      ],
-      [
-        {
-          title: "Jubilaciones y pensiones",
-          items: [
-            {
-              href: "/jubilacion",
-              label: "Jubilación y bono",
-              desc: "Con tu haber real, no con la mínima",
-            },
-            {
-              href: "/asignaciones-familiares",
-              label: "Asignaciones familiares",
-              desc: "Cuánto cobrás por hijo según tu casa",
-            },
-            {
-              href: "/puam",
-              label: "PUAM (adulto mayor)",
-              desc: "A los 65 sin 30 años de aportes",
-            },
-            {
-              href: "/edad-avanzada",
-              label: "Prestación por edad avanzada",
-              desc: "A los 70 con 10 años de aportes",
-            },
-            {
-              href: "/pension-no-contributiva",
-              label: "Pensiones no contributivas",
-              desc: "Cuánto paga cada una y el tope para trabajar",
-            },
-            {
-              href: "/82-por-ciento-movil",
-              label: "82% móvil (art. 125 bis)",
-              desc: "La garantía existe: cuánto paga y a quién",
-            },
-            {
-              href: "/pension-veteranos-malvinas",
-              label: "Veteranos de Malvinas",
-              desc: "Tres haberes mínimos, además de la jubilación",
-            },
-            {
-              href: "/descuento-pami",
-              label: "Descuento de PAMI",
-              desc: "3% hasta el mínimo y 6% del excedente",
-            },
-          ],
-        },
-      ],
-    ],
-  },
-  { type: "link", key: "guias", label: "Guías", href: "/blog", match: ["/blog"] },
-];
-
-// Links del drawer que no son calculadoras (van en una sección "Más").
-const EXTRA_LINKS: NavLink[] = [
-  { href: "/sobre", label: "Sobre CalculAR" },
-  { href: "/contacto", label: "Contacto" },
-];
+// El contenido de los menús (~110 links) no viaja en el JS de cada página: se pide recién
+// cuando hay intención (hover sobre la barra, toque en el menú) y queda en caché del navegador.
+function useNavegacion(activa: boolean): Nav | null {
+  const [nav, setNav] = useState<Nav | null>(null);
+  useEffect(() => {
+    if (!activa || nav) return;
+    let vivo = true;
+    cargarNavegacion().then(
+      (m) => vivo && setNav(m),
+      () => {},
+    );
+    return () => {
+      vivo = false;
+    };
+  }, [activa, nav]);
+  return nav;
+}
 
 function isActiveMatch(match: string[], pathname: string): boolean {
   return match.some((m) => pathname === m || pathname.startsWith(`${m}/`));
 }
 
-function secciones(tab: Extract<Tab, { type: "group" }>): Seccion[] {
-  return tab.cols.flat();
+function enRuta(href: string, pathname: string): boolean {
+  return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
 }
 
-// ── Íconos (SVG inline, sin librería) ──────────────────────────────────────
 function ChevronDown({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden className={className}>
-      <path
-        d="M4 6l4 4 4-4"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 function ArrowRight({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden className={className}>
-      <path
-        d="M3 8h9M8.5 4l4 4-4 4"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 function MenuIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden className={className}>
-      <path
-        d="M4 7h16M4 12h16M4 17h16"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
+      <path d="M4 8h16M4 16h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }
@@ -488,12 +88,12 @@ function Logo({ onClick }: { onClick?: () => void }) {
       className="group flex shrink-0 items-center gap-2.5 rounded-lg outline-none"
     >
       <span
-        className="grid size-9 place-items-center rounded-xl shadow-sm transition-transform duration-300 ease-out group-hover:scale-105 group-active:scale-95"
+        className="grid size-9 place-items-center rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.25)] transition-transform duration-300 ease-fluid group-hover:-rotate-3 group-active:scale-95"
         style={{ backgroundImage: "linear-gradient(135deg, #34d399 0%, #059669 100%)" }}
       >
         <span className="flex flex-col gap-[3px]">
           <span className="block h-[3px] w-4 rounded-full bg-white" />
-          <span className="block h-[3px] w-4 rounded-full bg-white" />
+          <span className="block h-[3px] w-4 rounded-full bg-white transition-transform duration-300 ease-fluid group-hover:translate-x-[2px]" />
         </span>
       </span>
       <span className="text-[1.35rem] font-bold leading-none tracking-tight text-zinc-900">
@@ -511,33 +111,31 @@ function Badge({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ── Item del panel de escritorio ────────────────────────────────────────────
 function PanelItem({
-  item,
+  pagina,
+  destacado,
   active,
   showDesc,
   onNavigate,
 }: {
-  item: NavLink;
+  pagina: Pagina;
+  destacado?: boolean;
   active: boolean;
   showDesc: boolean;
   onNavigate: () => void;
 }) {
+  const label = pagina.corto ?? pagina.titulo;
   return (
     <Link
-      href={item.href}
+      href={pagina.href}
       prefetch={false}
       onClick={onNavigate}
       aria-current={active ? "page" : undefined}
       className={cx(
         "group/i flex items-start gap-2 rounded-lg outline-none transition-colors duration-150",
         showDesc ? "px-3 py-2.5" : "min-h-8 px-2.5 py-1.5",
-        item.featured && "ring-1 ring-emerald-100",
-        active
-          ? "bg-emerald-50"
-          : item.featured
-            ? "bg-emerald-50/60 hover:bg-emerald-50"
-            : "hover:bg-zinc-100/80",
+        destacado && "ring-1 ring-emerald-100",
+        active ? "bg-emerald-50" : destacado ? "bg-emerald-50/60 hover:bg-emerald-50" : "hover:bg-zinc-100/80",
       )}
     >
       <div className="min-w-0 flex-1">
@@ -545,20 +143,20 @@ function PanelItem({
           className={cx(
             "flex items-center gap-2 font-medium",
             showDesc ? "text-sm font-semibold" : "text-[13.5px] leading-snug",
-            active || item.featured ? "text-emerald-700" : "text-zinc-700",
-            !active && !item.featured && "group-hover/i:text-zinc-950",
+            active || destacado ? "text-emerald-700" : "text-zinc-700",
+            !active && !destacado && "group-hover/i:text-zinc-950",
           )}
         >
-          <span className={showDesc ? "truncate" : ""}>{item.label}</span>
-          {item.badge && <Badge>{item.badge}</Badge>}
+          <span className={showDesc ? "truncate" : ""}>{label}</span>
+          {destacado && <Badge>Excel</Badge>}
         </div>
-        {showDesc && item.desc && (
-          <p className="mt-0.5 text-xs leading-snug text-zinc-500">{item.desc}</p>
+        {showDesc && pagina.descripcion && (
+          <p className="mt-0.5 text-xs leading-snug text-zinc-500">{pagina.descripcion}</p>
         )}
       </div>
       <ArrowRight
         className={cx(
-          "shrink-0 -translate-x-1 text-emerald-500 opacity-0 transition-all duration-200 group-hover/i:translate-x-0 group-hover/i:opacity-100",
+          "shrink-0 -translate-x-1 text-emerald-500 opacity-0 transition-[opacity,translate] duration-200 group-hover/i:translate-x-0 group-hover/i:opacity-100",
           showDesc ? "mt-0.5 size-4" : "mt-[3px] size-3.5",
         )}
       />
@@ -566,36 +164,124 @@ function PanelItem({
   );
 }
 
-export default function SiteHeader() {
+function SeccionCajon({
+  seccion,
+  pathname,
+  onNavigate,
+}: {
+  seccion: SeccionMenu;
+  pathname: string;
+  onNavigate: () => void;
+}) {
+  const items = [...seccion.paginas, ...seccion.destacados];
+  const activa = items.some((p) => enRuta(p.href, pathname));
+  return (
+    <details open={activa} className="group/d">
+      <summary
+        className={cx(
+          "flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 text-[15px] font-semibold outline-none transition-colors active:bg-zinc-100 [&::-webkit-details-marker]:hidden",
+          activa ? "text-emerald-700" : "text-zinc-800 hover:bg-zinc-50",
+        )}
+      >
+        <span className="min-w-0 truncate">{seccion.titulo}</span>
+        <span className="flex shrink-0 items-center gap-2">
+          <span className="text-xs font-medium tabular-nums text-zinc-400">{seccion.paginas.length}</span>
+          <ChevronDown className="size-4 text-zinc-400 transition-transform duration-200 group-open/d:rotate-180" />
+        </span>
+      </summary>
+      <div className="mb-1 pb-2 pl-2">
+        {items.map((p) => {
+          const itemActive = enRuta(p.href, pathname);
+          const destacado = seccion.destacados.includes(p);
+          return (
+            <Link
+              key={p.href}
+              href={p.href}
+              prefetch={false}
+              onClick={onNavigate}
+              aria-current={itemActive ? "page" : undefined}
+              className={cx(
+                "flex min-h-11 items-center gap-2 rounded-xl px-3 py-1.5 text-[14.5px] outline-none transition-colors active:bg-zinc-100",
+                itemActive
+                  ? "bg-emerald-50 font-medium text-emerald-700"
+                  : destacado
+                    ? "font-medium text-emerald-700 hover:bg-emerald-50/70"
+                    : "text-zinc-700 hover:bg-zinc-50",
+              )}
+            >
+              {p.corto ?? p.titulo}
+              {destacado && <Badge>Excel</Badge>}
+            </Link>
+          );
+        })}
+      </div>
+    </details>
+  );
+}
+
+const MAS_LINKS = [
+  { href: "/blog", label: "Guías" },
+  { href: "/sobre", label: "Sobre CalculAR" },
+  { href: "/contacto", label: "Contacto" },
+];
+
+export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
   const pathname = usePathname();
+  const atajo = useAtajo();
 
   const [scrolled, setScrolled] = useState(false);
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [quiereNav, setQuiereNav] = useState(false);
+
+  const nav = useNavegacion(quiereNav || !!openKey || mobileOpen);
 
   const headerRef = useRef<HTMLElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<Record<string, HTMLElement | null>>({});
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const drawerRef = useRef<HTMLDivElement>(null);
-  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const cajonRef = useRef<HTMLDialogElement>(null);
+  const cajonPanelRef = useRef<HTMLDivElement>(null);
+  const cerrarCajonRef = useRef<HTMLButtonElement>(null);
 
   const [underline, setUnderline] = useState<{ left: number; width: number } | null>(null);
 
-  const activeKey = TABS.find((t) => isActiveMatch(t.match, pathname))?.key ?? null;
-  const openTab = TABS.find((t) => t.key === openKey && t.type === "group") as
-    | Extract<Tab, { type: "group" }>
-    | undefined;
+  const activeKey = tabs.find((t) => isActiveMatch(t.match, pathname))?.key ?? null;
+  const openTab = tabs.find((t) => t.key === openKey && t.type === "group");
+  const columnas = openTab && nav ? nav.columnasDelTab(openTab.key) : null;
 
-  // Cerrar todo al navegar (el pathname cambia con cada ruta).
+  const pedirNav = useCallback(() => {
+    setQuiereNav(true);
+    precargarNavegacion();
+  }, []);
+
+  const cerrarCajon = useCallback(() => {
+    const d = cajonRef.current;
+    const panel = cajonPanelRef.current;
+    if (panel) {
+      panel.style.transition = "";
+      panel.style.translate = "";
+    }
+    if (d?.open) d.close();
+  }, []);
+
+  const abrirCajon = useCallback(() => {
+    const d = cajonRef.current;
+    if (!d || d.open) return;
+    d.showModal();
+    cerrarCajonRef.current?.focus();
+    setMobileOpen(true);
+    pedirNav();
+  }, [pedirNav]);
+
   useEffect(() => {
+    registrarVisita(pathname);
     setOpenKey(null);
-    setMobileOpen(false);
-  }, [pathname]);
+    cerrarCajon();
+  }, [pathname, cerrarCajon]);
 
-  // Glass reactivo al scroll: una vez desplazado, gana borde + sombra.
   useEffect(() => {
     let raf = 0;
     const onScroll = () => {
@@ -609,6 +295,16 @@ export default function SiteHeader() {
       cancelAnimationFrame(raf);
     };
   }, []);
+
+  // Si el cajón queda abierto al pasar a escritorio, el resto de la página quedaría inerte
+  // detrás de un diálogo que ya no se ve (el cajón es lg:hidden).
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => mq.matches && cerrarCajon();
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [mobileOpen, cerrarCajon]);
 
   // Barra activa deslizante: descansa bajo el tab de la sección actual y se
   // desliza al tab bajo el cursor. La animación la hace CSS (.ca-underline).
@@ -680,16 +376,14 @@ export default function SiteHeader() {
     return () => window.removeEventListener("pointerdown", onDown);
   }, [openKey]);
 
-  // Escape cierra drawer o panel; con el panel, el foco vuelve al disparador.
   useEffect(() => {
+    if (!openKey) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== "Escape") return;
-      if (mobileOpen) setMobileOpen(false);
-      else if (openKey) closeAndFocusTrigger();
+      if (e.key === "Escape") closeAndFocusTrigger();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [mobileOpen, openKey, closeAndFocusTrigger]);
+  }, [openKey, closeAndFocusTrigger]);
 
   // Tabular fuera del header cierra el panel: si no, queda abierto y tapando
   // contenido mientras el foco ya está en la página.
@@ -705,25 +399,11 @@ export default function SiteHeader() {
     return () => document.removeEventListener("focusin", onFocusIn);
   }, [openKey]);
 
-  // Drawer abierto: lock de scroll del body, foco al primer control, restaurar al cerrar.
-  useEffect(() => {
-    if (!mobileOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const opener = document.activeElement as HTMLElement | null;
-    const first = drawerRef.current?.querySelector<HTMLElement>("a[href], button:not([disabled])");
-    first?.focus();
-    return () => {
-      document.body.style.overflow = prev;
-      (opener && document.contains(opener) ? opener : hamburgerRef.current)?.focus();
-    };
-  }, [mobileOpen]);
-
   // Solo el mouse abre por hover: en touch, `pointerenter` dispara junto al tap y
   // el click posterior cerraba el panel que se acababa de abrir.
   const openedByHover = useRef(false);
   const handleTabEnter = useCallback(
-    (tab: Tab, pointerType: string) => {
+    (tab: TabEncabezado, pointerType: string) => {
       if (pointerType !== "mouse") return;
       cancelClose();
       setHoveredKey(tab.key);
@@ -748,8 +428,8 @@ export default function SiteHeader() {
     setOpenKey(open ? null : key);
   }, []);
 
-  // El foco se mueve en un efecto, no en un rAF junto al setState: el panel todavía
-  // no está en el DOM cuando corre el frame, y el foco se quedaba en el disparador.
+  // El foco se mueve en un efecto y no junto al setState: el panel todavía no está en el DOM
+  // en ese momento, y ahora además espera a que lleguen los datos del menú.
   const enfocarPrimero = useRef(false);
   const openAndFocusFirst = useCallback((key: string) => {
     enfocarPrimero.current = true;
@@ -758,46 +438,86 @@ export default function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    if (!openKey || !enfocarPrimero.current) return;
+    if (!openKey || !columnas || !enfocarPrimero.current) return;
     enfocarPrimero.current = false;
     panelRef.current?.querySelector<HTMLElement>("a[href]")?.focus();
-  }, [openKey]);
+  }, [openKey, columnas]);
+
+  // Deslizar el cajón hacia la derecha lo cierra. Sólo con el dedo: con mouse se usa la cruz.
+  // `touch-action: pan-y` deja el scroll vertical al navegador y nos manda el horizontal.
+  const arrastre = useRef<{ x: number; y: number; t: number; id: number; activo: boolean; dx: number } | null>(null);
+  const alApoyar = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === "mouse" || arrastre.current) return;
+    arrastre.current = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId, activo: false, dx: 0 };
+  };
+  const alMover = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const a = arrastre.current;
+    const panel = cajonPanelRef.current;
+    if (!a || a.id !== e.pointerId || !panel) return;
+    const dx = e.clientX - a.x;
+    const dy = e.clientY - a.y;
+    if (!a.activo) {
+      if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+      if (dx <= 0 || Math.abs(dy) > Math.abs(dx)) {
+        arrastre.current = null;
+        return;
+      }
+      a.activo = true;
+      a.t = performance.now();
+      a.x = e.clientX;
+      panel.setPointerCapture(e.pointerId);
+      panel.style.transition = "none";
+      return;
+    }
+    a.dx = Math.max(0, e.clientX - a.x);
+    panel.style.translate = `${a.dx}px 0`;
+  };
+  const alSoltar = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const a = arrastre.current;
+    const panel = cajonPanelRef.current;
+    if (!a || a.id !== e.pointerId) return;
+    arrastre.current = null;
+    if (!a.activo || !panel) return;
+    const velocidad = a.dx / Math.max(1, performance.now() - a.t);
+    if (a.dx > panel.offsetWidth * 0.32 || (velocidad > 0.45 && a.dx > 24)) {
+      cerrarCajon();
+    } else {
+      panel.style.transition = "";
+      panel.style.translate = "";
+    }
+  };
 
   const underlineOpacity = hoveredKey && hoveredKey !== activeKey ? 0.7 : 1;
-  const cols = openTab?.cols.length ?? 1;
+  const cols = columnas?.length ?? 1;
   const showDesc = cols <= 2;
+  const secciones = nav ? nav.seccionesDelMenu() : null;
 
   return (
     <header ref={headerRef} className="sticky top-0 z-50">
       <div
         className="w-full border-b transition-[background-color,border-color,box-shadow] duration-300 ease-out"
         style={{
-          backgroundColor: scrolled ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.72)",
+          backgroundColor: scrolled ? "rgba(255,255,255,0.86)" : "rgba(255,255,255,0.7)",
           backdropFilter: "blur(16px) saturate(160%)",
           WebkitBackdropFilter: "blur(16px) saturate(160%)",
-          borderColor: scrolled ? "rgba(16,185,129,0.18)" : "rgba(228,228,231,0.6)",
-          boxShadow: scrolled
-            ? "0 10px 30px -22px rgba(0,0,0,0.25), 0 1px 0 0 rgba(0,0,0,0.04)"
-            : "none",
+          borderColor: scrolled ? "rgba(24,24,27,0.09)" : "rgba(228,228,231,0.6)",
+          boxShadow: scrolled ? "0 10px 30px -22px rgba(0,0,0,0.25), 0 1px 0 0 rgba(0,0,0,0.03)" : "none",
         }}
       >
-        <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
+        <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-4 sm:px-6">
           <Logo />
 
-          {/* Navegación de escritorio */}
-          <nav className="hidden lg:block" aria-label="Principal">
+          <nav className="ml-4 hidden lg:block xl:ml-8" aria-label="Principal" onPointerEnter={pedirNav} onFocusCapture={pedirNav}>
             <div ref={rowRef} className="relative flex items-center gap-0.5">
-              {TABS.map((tab) => {
+              {tabs.map((tab) => {
                 const active = activeKey === tab.key;
                 const open = openKey === tab.key;
                 const triggerCls = cx(
                   "relative inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium outline-none transition-colors duration-200",
-                  active || open
-                    ? "text-emerald-700"
-                    : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-900/[0.035]",
+                  active || open ? "text-emerald-700" : "text-zinc-600 hover:bg-zinc-900/[0.035] hover:text-zinc-900",
                 );
 
-                if (tab.type === "link") {
+                if (tab.type === "link" && tab.href) {
                   return (
                     <div
                       key={tab.key}
@@ -827,8 +547,8 @@ export default function SiteHeader() {
                     key={tab.key}
                     onPointerEnter={(e) => handleTabEnter(tab, e.pointerType)}
                     onPointerLeave={(e) => {
-                        if (e.pointerType === "mouse") scheduleClose();
-                      }}
+                      if (e.pointerType === "mouse") scheduleClose();
+                    }}
                   >
                     <button
                       ref={(el) => {
@@ -849,10 +569,7 @@ export default function SiteHeader() {
                     >
                       {tab.label}
                       <ChevronDown
-                        className={cx(
-                          "size-3.5 text-zinc-400 transition-transform duration-200",
-                          open && "rotate-180 text-emerald-500",
-                        )}
+                        className={cx("size-3.5 text-zinc-400 transition-transform duration-200", open && "rotate-180 text-emerald-500")}
                       />
                     </button>
                   </div>
@@ -863,49 +580,71 @@ export default function SiteHeader() {
                 <span
                   aria-hidden
                   className="ca-underline pointer-events-none absolute bottom-0.5 left-0 h-[2px] rounded-full bg-emerald-500"
-                  style={{
-                    left: underline.left,
-                    width: underline.width,
-                    opacity: underlineOpacity,
-                  }}
+                  style={{ left: underline.left, width: underline.width, opacity: underlineOpacity }}
                 />
               )}
             </div>
           </nav>
 
-          {/* Botón hamburguesa (mobile) */}
-          <button
-            ref={hamburgerRef}
-            type="button"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Abrir menú"
-            aria-expanded={mobileOpen}
-            aria-haspopup="dialog"
-            className="grid size-11 place-items-center rounded-lg text-zinc-700 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-900/[0.05] active:scale-95 lg:hidden"
-          >
-            <MenuIcon className="size-6" />
-          </button>
+          <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+            <button
+              type="button"
+              onClick={() => abrirBuscador()}
+              onPointerEnter={precargarMotor}
+              onFocus={precargarMotor}
+              aria-haspopup="dialog"
+              aria-keyshortcuts="Control+K Meta+K /"
+              aria-label="Buscar una calculadora"
+              className="group hidden h-10 items-center gap-2 rounded-full border border-zinc-200/90 bg-white/80 pl-3.5 pr-2 text-sm text-zinc-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] outline-none transition-[border-color,background-color,color,transform] duration-200 ease-fluid hover:border-zinc-300 hover:bg-white hover:text-zinc-800 active:scale-[0.97] lg:inline-flex"
+            >
+              <IconoLupa className="size-4 transition-transform duration-300 ease-fluid group-hover:-rotate-6" />
+              <span className="pr-1">Buscar</span>
+              <kbd className="ca-tecla hidden xl:inline-flex">{atajo}</kbd>
+            </button>
+
+            <SesionLink className="hidden h-10 items-center rounded-full px-3.5 text-sm font-medium text-zinc-600 outline-none transition-[background-color,color,transform] duration-200 hover:bg-zinc-900/[0.04] hover:text-zinc-900 active:scale-[0.97] lg:inline-flex" />
+
+            <button
+              type="button"
+              onClick={() => abrirBuscador()}
+              onTouchStart={precargarMotor}
+              onPointerDown={precargarMotor}
+              aria-haspopup="dialog"
+              aria-label="Buscar una calculadora"
+              className="grid size-11 place-items-center rounded-full text-zinc-700 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-900/[0.05] active:scale-95 lg:hidden"
+            >
+              <IconoLupa className="size-[22px]" />
+            </button>
+
+            <button
+              type="button"
+              onClick={abrirCajon}
+              onTouchStart={pedirNav}
+              onPointerDown={pedirNav}
+              aria-label="Abrir el menú"
+              aria-expanded={mobileOpen}
+              aria-haspopup="dialog"
+              className="-mr-1.5 grid size-11 place-items-center rounded-full text-zinc-700 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-900/[0.05] active:scale-95 lg:hidden"
+            >
+              <MenuIcon className="size-6" />
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* ── Mega-panel de escritorio ──────────────────────────────────────────
-          Vive fuera de la barra (no dentro del <nav>) para poder ocupar el ancho
-          del contenedor sin depender de la posición del tab que lo abrió. El
-          `max-h` + scroll interno es la garantía dura de que nunca se corta. */}
-      {openTab && (
-        <div
-          className="pointer-events-none absolute inset-x-0 top-full hidden lg:block"
-          aria-hidden={false}
-        >
-          <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
+      {/* Mega-panel de escritorio: vive fuera de la barra para ocupar el ancho del contenedor sin
+          depender de la posición del tab. El `max-h` + scroll interno garantiza que nunca se corte. */}
+      {openTab && columnas && (
+        <div className="pointer-events-none absolute inset-x-0 top-full hidden lg:block">
+          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
             <div
               ref={panelRef}
               id={`ca-panel-${openTab.key}`}
               aria-label={openTab.label}
               onPointerEnter={cancelClose}
               onPointerLeave={(e) => {
-                        if (e.pointerType === "mouse") scheduleClose();
-                      }}
+                if (e.pointerType === "mouse") scheduleClose();
+              }}
               className={cx(
                 "ca-dropdown pointer-events-auto mt-2 max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain rounded-2xl border border-zinc-200/80 bg-white/97 p-3 shadow-[0_28px_70px_-24px_rgba(24,24,27,0.32)] backdrop-blur-xl [scrollbar-width:thin]",
                 cols === 1 && "w-[22rem]",
@@ -922,36 +661,36 @@ export default function SiteHeader() {
                   cols >= 4 && "grid-cols-4",
                 )}
               >
-                {openTab.cols.map((col, ci) => (
-                  <div
-                    key={ci}
-                    className="ca-col space-y-4"
-                    style={{ animationDelay: `${ci * 45}ms` }}
-                  >
-                    {col.map((sec, si) => (
-                      <div key={sec.title ?? si}>
-                        {sec.title && (
+                {columnas.map((col, ci) => (
+                  <div key={ci} className="ca-col space-y-4" style={{ animationDelay: `${ci * 45}ms` }}>
+                    {col.map((sec) => (
+                      <div key={sec.id}>
+                        {cols > 1 && (
                           <p className="px-2.5 pb-1.5 text-[10.5px] font-bold uppercase tracking-[0.08em] text-zinc-400">
-                            {sec.title}
+                            {sec.titulo}
                           </p>
                         )}
                         <div className="flex flex-col">
-                          {sec.items.map((item, i) => {
-                            const itemActive =
-                              pathname === item.href || pathname.startsWith(`${item.href}/`);
-                            const showDivider = item.featured && !sec.items[i - 1]?.featured;
-                            return (
-                              <div key={item.href}>
-                                {showDivider && <div className="my-1.5 h-px bg-zinc-100" />}
-                                <PanelItem
-                                  item={item}
-                                  active={itemActive}
-                                  showDesc={showDesc}
-                                  onNavigate={() => setOpenKey(null)}
-                                />
-                              </div>
-                            );
-                          })}
+                          {sec.paginas.map((p) => (
+                            <PanelItem
+                              key={p.href}
+                              pagina={p}
+                              active={enRuta(p.href, pathname)}
+                              showDesc={showDesc}
+                              onNavigate={() => setOpenKey(null)}
+                            />
+                          ))}
+                          {sec.destacados.length > 0 && <div className="my-1.5 h-px bg-zinc-100" />}
+                          {sec.destacados.map((p) => (
+                            <PanelItem
+                              key={p.href}
+                              pagina={p}
+                              destacado
+                              active={enRuta(p.href, pathname)}
+                              showDesc={showDesc}
+                              onNavigate={() => setOpenKey(null)}
+                            />
+                          ))}
                         </div>
                       </div>
                     ))}
@@ -963,149 +702,97 @@ export default function SiteHeader() {
         </div>
       )}
 
-      {/* ── Drawer mobile ── (siempre montado para animar entrada/salida)
-          Sus ~90 <Link> van con prefetch={false}: montados de entrada, Next los prefetchea
-          por viewport y en móvil eso eran 27 requests RSC compitiendo con el primer pintado.
-          Con false igual prefetchea al hover/touch, así que la navegación sigue instantánea. */}
-      <div
-        aria-hidden
-        onClick={() => setMobileOpen(false)}
-        className={cx(
-          "fixed inset-0 z-[60] bg-zinc-950/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden",
-          mobileOpen ? "opacity-100" : "pointer-events-none opacity-0",
-        )}
-      />
-      <div
-        ref={drawerRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Menú de navegación"
-        inert={!mobileOpen}
-        className={cx(
-          "fixed inset-y-0 right-0 z-[70] flex w-[min(88vw,380px)] flex-col bg-white shadow-[-16px_0_48px_-12px_rgba(24,24,27,0.25)] transition-transform duration-300 ease-out motion-reduce:transition-none lg:hidden",
-          mobileOpen ? "translate-x-0" : "translate-x-full",
-        )}
+      {/* Cajón mobile: <dialog> modal da la trampa de foco, Esc, el fondo inerte y el regreso
+          del foco al botón que lo abrió, sin reimplementarlos. Sus links van con prefetch={false}:
+          Next igual prefetchea al tocar, y montados de golpe competían con el primer pintado. */}
+      <dialog
+        ref={cajonRef}
+        className="ca-cajon ca-bloquea lg:hidden"
+        aria-label="Menú"
+        onClose={() => setMobileOpen(false)}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) cerrarCajon();
+        }}
       >
-        <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-4">
-          <Logo onClick={() => setMobileOpen(false)} />
-          <button
-            type="button"
-            onClick={() => setMobileOpen(false)}
-            aria-label="Cerrar menú"
-            className="grid size-11 place-items-center rounded-lg text-zinc-500 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-100 active:scale-95"
-          >
-            <CloseIcon className="size-5" />
-          </button>
-        </div>
-
-        {/* Acordeón nativo: 53 calculadoras bajo "Sueldo" no pueden abrir desplegadas.
-            <details> da el patrón accesible (teclado + lectores) sin estado ni JS. */}
-        <nav
-          aria-label="Principal (mobile)"
-          className="flex-1 overflow-y-auto overscroll-contain px-3 py-3 [scrollbar-width:thin]"
+        <div
+          ref={cajonPanelRef}
+          className="ca-cajon-panel"
+          onPointerDown={alApoyar}
+          onPointerMove={alMover}
+          onPointerUp={alSoltar}
+          onPointerCancel={alSoltar}
         >
-          {TABS.map((tab) => {
-            const active = activeKey === tab.key;
+          <div className="flex shrink-0 items-center justify-between gap-3 px-4 pb-2 pt-3">
+            <Logo onClick={cerrarCajon} />
+            <button
+              ref={cerrarCajonRef}
+              type="button"
+              onClick={cerrarCajon}
+              aria-label="Cerrar el menú"
+              className="-mr-1.5 grid size-11 place-items-center rounded-full text-zinc-500 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-100 active:scale-95"
+            >
+              <CloseIcon className="size-5" />
+            </button>
+          </div>
 
-            if (tab.type === "link") {
-              return (
-                <Link
-                  key={tab.key}
-                  href={tab.href}
-                  prefetch={false}
-                  onClick={() => setMobileOpen(false)}
-                  aria-current={active ? "page" : undefined}
-                  className={cx(
-                    "flex min-h-12 items-center rounded-xl px-3 text-[15px] font-semibold outline-none transition-colors",
-                    active ? "bg-emerald-50 text-emerald-700" : "text-zinc-800 hover:bg-zinc-50",
-                  )}
-                >
-                  {tab.label}
-                </Link>
-              );
-            }
+          <div className="shrink-0 px-4 pb-3">
+            <button
+              type="button"
+              onClick={() => {
+                cerrarCajon();
+                abrirBuscador();
+              }}
+              onTouchStart={precargarMotor}
+              className="flex h-12 w-full items-center gap-3 rounded-2xl border border-zinc-200 bg-zinc-50/80 px-4 text-left text-[15px] text-zinc-500 outline-none transition-[background-color,transform] duration-150 active:scale-[0.98] active:bg-zinc-100"
+            >
+              <IconoLupa className="size-5 text-zinc-400" />
+              Buscar una calculadora
+            </button>
+          </div>
 
-            const total = secciones(tab).reduce((n, s) => n + s.items.length, 0);
-            return (
-              <details key={tab.key} open={active} className="group/d">
-                <summary
-                  className={cx(
-                    "flex min-h-12 cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 text-[15px] font-semibold outline-none transition-colors [&::-webkit-details-marker]:hidden",
-                    active ? "text-emerald-700" : "text-zinc-800 hover:bg-zinc-50",
-                  )}
-                >
-                  <span>{tab.label}</span>
-                  <span className="flex items-center gap-2">
-                    <span className="text-xs font-medium tabular-nums text-zinc-400">{total}</span>
-                    <ChevronDown className="size-4 text-zinc-400 transition-transform duration-200 group-open/d:rotate-180" />
-                  </span>
-                </summary>
-
-                <div className="mb-1 space-y-3 pb-2 pl-2">
-                  {secciones(tab).map((sec, si) => (
-                    <div key={sec.title ?? si}>
-                      {sec.title && (
-                        <p className="px-3 pb-0.5 pt-2 text-[10.5px] font-bold uppercase tracking-[0.08em] text-zinc-400">
-                          {sec.title}
-                        </p>
+          <nav aria-label="Todas las calculadoras" className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 pb-3 [scrollbar-width:thin]">
+            {secciones ? (
+              <div className="ca-cajon-lista">
+                {secciones.map((s) => (
+                  <SeccionCajon key={s.id} seccion={s} pathname={pathname} onNavigate={cerrarCajon} />
+                ))}
+                <div className="mt-2 border-t border-zinc-100 pt-2">
+                  {MAS_LINKS.map((l) => (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      prefetch={false}
+                      onClick={cerrarCajon}
+                      aria-current={enRuta(l.href, pathname) ? "page" : undefined}
+                      className={cx(
+                        "flex min-h-11 items-center rounded-xl px-3 text-[14.5px] outline-none transition-colors active:bg-zinc-100",
+                        enRuta(l.href, pathname) ? "bg-emerald-50 text-emerald-700" : "text-zinc-600 hover:bg-zinc-50",
                       )}
-                      {sec.items.map((item) => {
-                        const itemActive =
-                          pathname === item.href || pathname.startsWith(`${item.href}/`);
-                        return (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            prefetch={false}
-                            onClick={() => setMobileOpen(false)}
-                            aria-current={itemActive ? "page" : undefined}
-                            className={cx(
-                              "flex min-h-11 items-center gap-2 rounded-xl px-3 py-1.5 text-[14.5px] outline-none transition-colors",
-                              itemActive
-                                ? "bg-emerald-50 font-medium text-emerald-700"
-                                : item.featured
-                                  ? "font-medium text-emerald-700 hover:bg-emerald-50/70"
-                                  : "text-zinc-700 hover:bg-zinc-50",
-                            )}
-                          >
-                            {item.label}
-                            {item.badge && <Badge>{item.badge}</Badge>}
-                          </Link>
-                        );
-                      })}
-                    </div>
+                    >
+                      {l.label}
+                    </Link>
                   ))}
                 </div>
-              </details>
-            );
-          })}
+              </div>
+            ) : (
+              <div className="space-y-2 px-3 pt-2" aria-hidden>
+                {[64, 48, 72, 56, 40, 60].map((w, i) => (
+                  <div key={i} className="flex h-12 items-center">
+                    <span className="h-3.5 rounded-full bg-zinc-100" style={{ width: `${w}%` }} />
+                  </div>
+                ))}
+              </div>
+            )}
+          </nav>
 
-          <div className="mt-2 border-t border-zinc-100 pt-2">
-            {EXTRA_LINKS.map((item) => {
-              const itemActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  prefetch={false}
-                  onClick={() => setMobileOpen(false)}
-                  aria-current={itemActive ? "page" : undefined}
-                  className={cx(
-                    "flex min-h-11 items-center rounded-xl px-3 text-[14.5px] outline-none transition-colors",
-                    itemActive ? "bg-emerald-50 text-emerald-700" : "text-zinc-600 hover:bg-zinc-50",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+          <div className="shrink-0 border-t border-zinc-200/80 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3">
+            <SesionLink className="flex h-12 w-full items-center justify-center rounded-2xl bg-zinc-900 text-[15px] font-semibold text-white outline-none transition-[background-color,transform] duration-150 active:scale-[0.98] active:bg-zinc-800" />
+            <p className="mt-3 text-center text-xs text-zinc-500">Datos de fuentes oficiales · Hecho en Argentina</p>
           </div>
-        </nav>
-
-        <div className="border-t border-zinc-200 px-5 py-4 text-xs text-zinc-500">
-          Datos de fuentes oficiales · Hecho en Argentina
         </div>
-      </div>
+      </dialog>
+
+      <Buscador />
     </header>
   );
 }

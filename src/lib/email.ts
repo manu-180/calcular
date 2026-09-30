@@ -1,6 +1,8 @@
 // Helpers de email — usa la API REST de Resend directamente (sin SDK).
 // FROM debe coincidir con un dominio verificado en la cuenta Resend.
 
+import { CUENTAS_ACTIVAS } from "@/lib/funciones";
+
 const RESEND_API = "https://api.resend.com";
 export const FROM = "CalculAR <soporte@theapexweb.com>";
 const BASE = "https://calcular.ar";
@@ -172,6 +174,27 @@ function shellTransaccional(content: string, pie?: string): string {
 </html>`;
 }
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+function bloqueCuenta(checkoutId?: string | null): string {
+  if (!CUENTAS_ACTIVAS) return "";
+  const registro = checkoutId && UUID_RE.test(checkoutId)
+    ? `${BASE}/registro?compra=${checkoutId.toLowerCase()}`
+    : `${BASE}/registro`;
+  return `<table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;border:1px solid #e4e4e7;border-radius:8px;">
+  <tr><td style="padding:16px 20px;">
+    <p style="margin:0 0 6px;font-size:15px;font-weight:600;color:#18181b;">Tenela siempre a mano en tu cuenta</p>
+    <p style="margin:0 0 12px;font-size:14px;color:#3f3f46;line-height:1.6;">
+      Creá tu cuenta gratis con este mismo mail y la planilla queda guardada ahí, siempre en su
+      última versión. Si perdés este mail, la bajás desde tu cuenta.
+    </p>
+    <a href="${registro}" style="color:#047857;font-size:14px;font-weight:600;">Crear mi cuenta →</a>
+    <span style="color:#a1a1aa;font-size:14px;">&nbsp;·&nbsp;</span>
+    <a href="${BASE}/login?next=%2Fcuenta" style="color:#52525b;font-size:14px;">Ya tengo cuenta</a>
+  </td></tr>
+</table>`;
+}
+
 export function planillaEntregaHtml(opts: {
   titulo: string;
   convenio: string;
@@ -180,6 +203,8 @@ export function planillaEntregaHtml(opts: {
   /** Qué dispara una versión nueva. Monotributo no tiene paritaria: tiene escalas semestrales. */
   disparadorActualizacion?: string;
   otras?: { titulo: string; paraQuien: string; url: string }[];
+  /** uuid del checkout (`ca_checkouts.id`): prellena el registro sin poner el mail en la URL. */
+  checkoutId?: string | null;
 }): string {
   const otras = opts.otras?.length
     ? `<p style="margin:24px 0 8px;font-size:13px;color:#6b7280;">Otras planillas de calcular.ar, por si te sirven:</p>
@@ -212,6 +237,7 @@ ${opts.otras.map((o) => `  <li><a href="${o.url}" style="color:#059669;">${o.tit
     </p>
   </td></tr>
 </table>
+${bloqueCuenta(opts.checkoutId)}
 <p style="margin:0 0 8px;font-size:14px;color:#374151;line-height:1.6;">
   Los números de la planilla son los mismos que los de la
   <a href="${opts.urlLanding}" style="color:#059669;">calculadora gratuita de calcular.ar</a>:
@@ -263,6 +289,107 @@ export function recordatorioCompraHtml(opts: {
   );
 }
 
+// ─── Mails de la cuenta (alta, enlace para entrar, clave nueva) ──────────────
+//
+// Los manda calcular.ar y no Supabase (decisión 5 del SPEC). El botón apunta a /auth/confirmar,
+// que pide un toque más antes de canjear el token: los antivirus de correo abren los enlaces
+// para escanearlos y, con un GET que canjea, le quemarían el enlace a quien lo recibe.
+
+export type MailCuenta = "alta" | "confirmar" | "entrar" | "ya-tenias" | "recuperar" | "sin-cuenta";
+
+const COPY_CUENTA: Record<MailCuenta, { asunto: string; titulo: string; parrafos: string[]; boton: string; nota: string }> = {
+  alta: {
+    asunto: "Confirmá tu cuenta de CalculAR",
+    titulo: "Confirmá tu mail y listo",
+    parrafos: ["Gracias por crear tu cuenta en CalculAR. Tocá el botón para confirmar que este mail es tuyo y entrar."],
+    boton: "Confirmar mi cuenta",
+    nota: "Si no creaste una cuenta, ignorá este mail: sin confirmar no se activa nada.",
+  },
+  confirmar: {
+    asunto: "Confirmá tu mail en CalculAR",
+    titulo: "Confirmá que este mail es tuyo",
+    parrafos: ["Te falta un paso para terminar de activar tu cuenta de CalculAR. Tocá el botón y queda confirmada."],
+    boton: "Confirmar mi mail",
+    nota: "Si no lo pediste vos, ignorá este mail: tu cuenta sigue igual.",
+  },
+  entrar: {
+    asunto: "Tu enlace para entrar a CalculAR",
+    titulo: "Entrá a tu cuenta",
+    parrafos: ["Pediste entrar a CalculAR sin clave. Tocá el botón y ya estás adentro."],
+    boton: "Entrar a mi cuenta",
+    nota: "Si no lo pediste vos, ignorá este mail: tu cuenta sigue igual.",
+  },
+  "ya-tenias": {
+    asunto: "Ya tenés una cuenta en CalculAR",
+    titulo: "Ya tenías cuenta con este mail",
+    parrafos: [
+      "Se quiso crear una cuenta en CalculAR con este mail, pero ya hay una. Podés entrar directo con el botón, sin clave.",
+      "Si no te acordás la clave, una vez adentro la cambiás desde Mi cuenta, en Seguridad.",
+    ],
+    boton: "Entrar a mi cuenta",
+    nota: "Si no fuiste vos, ignorá este mail: tu cuenta sigue igual.",
+  },
+  recuperar: {
+    asunto: "Elegí una clave nueva para CalculAR",
+    titulo: "Elegí una clave nueva",
+    parrafos: ["Pediste cambiar la clave de tu cuenta de CalculAR. Tocá el botón y elegí una nueva."],
+    boton: "Elegir clave nueva",
+    nota: "Si no lo pediste vos, ignorá este mail: tu clave actual sigue funcionando.",
+  },
+  "sin-cuenta": {
+    asunto: "No encontramos una cuenta con este mail",
+    titulo: "Todavía no tenés cuenta",
+    parrafos: [
+      "Se pidió entrar a CalculAR con este mail, pero no hay ninguna cuenta creada con él.",
+      "Si fuiste vos, crear una es gratis y lleva un minuto: ahí quedan guardadas tus planillas y tus cálculos.",
+    ],
+    boton: "Crear mi cuenta",
+    nota: "Si no fuiste vos, ignorá este mail. No te vamos a volver a escribir por esto.",
+  },
+};
+
+const AVISO_VENCE = "Por seguridad, el enlace sirve una sola vez y vence en poco tiempo.";
+
+function esc(v: string): string {
+  return v.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+export function mailCuenta(tipo: MailCuenta, url: string): { asunto: string; html: string; texto: string } {
+  const c = COPY_CUENTA[tipo];
+  const conVencimiento = tipo !== "sin-cuenta";
+  const html = shellTransaccional(
+    `
+<h2 style="margin:0 0 16px;font-size:22px;color:#111827;">${c.titulo}</h2>
+${c.parrafos.map((p) => `<p style="margin:0 0 16px;font-size:15px;color:#374151;line-height:1.6;">${p}</p>`).join("\n")}
+<table cellpadding="0" cellspacing="0" style="margin:8px 0 24px;">
+  <tr>
+    <td style="background:#059669;border-radius:10px;">
+      <a href="${esc(url)}" style="display:inline-block;padding:16px 32px;color:#fff;font-size:16px;font-weight:600;text-decoration:none;">${c.boton} →</a>
+    </td>
+  </tr>
+</table>
+<p style="margin:0 0 12px;font-size:13px;color:#6b7280;line-height:1.6;">
+  ${conVencimiento ? `${AVISO_VENCE} ` : ""}${c.nota}
+</p>
+<p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;word-break:break-all;">
+  ¿El botón no anda? Copiá este enlace en el navegador:<br>${esc(url)}
+</p>
+  `,
+    "Te escribimos porque se pidió este acceso en calcular.ar con tu mail.",
+  );
+  const texto = [
+    c.titulo,
+    "",
+    ...c.parrafos.flatMap((p) => [p, ""]),
+    `${c.boton}: ${url}`,
+    "",
+    conVencimiento ? `${AVISO_VENCE} ${c.nota}` : c.nota,
+    "",
+    "CalculAR · calcular.ar",
+  ].join("\n");
+  return { asunto: c.asunto, html, texto };
+}
+
 // ─── Envío ────────────────────────────────────────────────────────────────────
 
 interface ResendPayload {
@@ -270,6 +397,7 @@ interface ResendPayload {
   to: string[];
   subject: string;
   html: string;
+  text?: string;
   headers?: Record<string, string>;
 }
 

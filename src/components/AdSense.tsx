@@ -20,6 +20,8 @@ export default function AdSense() {
     // En una página que vende, el anuncio compite con el producto y pierde por 100 a 1
     // (la cuenta está en src/lib/paginas-que-venden.ts). Acá no se carga.
     if (vendeAlgo(pathname)) return;
+    // Las rutas privadas manejan tokens de un solo uso y datos de la cuenta: sin scripts de terceros.
+    if (/^\/(dashboard|cuenta|login|registro|recuperar|auth)(\/|$)/.test(pathname)) return;
 
     if (document.querySelector('script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'))
       return;

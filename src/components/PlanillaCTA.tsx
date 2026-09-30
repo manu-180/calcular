@@ -26,7 +26,7 @@ export function PlanillaCTA({ producto, desde }: { producto: keyof typeof COPY; 
   const p = PRODUCTOS[producto];
   const c = COPY[producto];
   return (
-    <section className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+    <section data-oferta={producto} className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-semibold text-emerald-900">{c.titulo}</p>
@@ -37,6 +37,9 @@ export function PlanillaCTA({ producto, desde }: { producto: keyof typeof COPY; 
         </div>
         <Link
           href={`${p.rutaLanding}?desde=${desde}`}
+          data-evento="cta_compra"
+          data-producto={producto}
+          data-ubicacion="calculadora"
           className="shrink-0 rounded-lg bg-emerald-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.16)] transition-[background-color,transform] duration-200 hover:bg-emerald-700 active:translate-y-px"
         >
           Ver la planilla →

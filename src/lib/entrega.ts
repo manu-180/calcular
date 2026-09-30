@@ -32,6 +32,12 @@ export async function servirPlanilla(req: NextRequest, producto: Producto): Prom
     return new NextResponse("Pago no aprobado para este producto", { status: 403 });
   }
 
+  return servirArchivoProducto(producto);
+}
+
+// Sin gate: quien la llame ya verificó el derecho a la descarga (el pago en MP, o la compra propia
+// en /api/cuenta/descargar).
+export async function servirArchivoProducto(producto: Producto): Promise<NextResponse> {
   let bytes: Buffer;
   try {
     bytes = await leerArchivoProducto(producto);

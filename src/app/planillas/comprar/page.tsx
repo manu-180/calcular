@@ -22,7 +22,7 @@ export default async function ComprarPage({ searchParams }: { searchParams: Prom
 
   return (
     <div className="mx-auto max-w-md py-4">
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.06)]">
+      <div data-oferta={producto.slug} className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.06)]">
         <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Estás comprando</p>
         <h1 className="mt-0.5 text-xl font-bold text-zinc-900">{producto.tituloCorto}</h1>
         <p className="mb-5 text-sm text-zinc-600">
@@ -33,6 +33,7 @@ export default async function ComprarPage({ searchParams }: { searchParams: Prom
           producto={{ slug: producto.slug, tituloCorto: producto.tituloCorto, precio: producto.precio }}
           errorEmail={sp.error === "email"}
           autoFocus
+          enPagina
         />
       </div>
       <p className="mt-4 text-center text-sm">

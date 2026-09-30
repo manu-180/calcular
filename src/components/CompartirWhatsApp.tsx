@@ -21,6 +21,8 @@ export function CompartirWhatsApp({ mensaje, path, campania }: Props) {
       href={`https://wa.me/?text=${texto}`}
       target="_blank"
       rel="noopener"
+      data-evento="compartir"
+      data-canal="whatsapp"
       className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-95"
     >
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]" aria-hidden="true">

@@ -11,7 +11,7 @@
 // en exactamente una corrida. Si un día el cron no corre, esas se pierden — es preferible a
 // escribirle dos veces a alguien.
 
-import { productoPorSlug, type Producto } from "@/lib/mp";
+import { esPagoDePlanilla, productoPorSlug, type MpPayment, type Producto } from "@/lib/mp";
 
 const MP_API = "https://api.mercadopago.com";
 const HORA = 3_600_000;
@@ -132,6 +132,28 @@ export async function pagosDesde(desdeISO: string, token: string): Promise<PagoM
     for (const p of res) {
       if (slugDeRef(p.external_reference).startsWith("planilla-")) salida.push(p);
     }
+    if (res.length < 100) break;
+  }
+  return salida;
+}
+
+/** Pagos de planillas desde `desdeISO`, completos, incluidos los previos al catálogo (marcados sólo
+ *  en `metadata`, sin prefijo en la referencia): la primera venta del 8/8/2026 es de esos. */
+export async function pagosDePlanillasDesde(desdeISO: string, token: string): Promise<MpPayment[]> {
+  const salida: MpPayment[] = [];
+  for (let offset = 0; offset < 5000; offset += 100) {
+    const q = new URLSearchParams({
+      sort: "date_created",
+      criteria: "desc",
+      range: "date_created",
+      begin_date: desdeISO,
+      end_date: "NOW",
+      limit: "100",
+      offset: String(offset),
+    });
+    const pagina = await mpGet<{ results?: MpPayment[] }>(`/v1/payments/search?${q}`, token);
+    const res = pagina.results ?? [];
+    salida.push(...res.filter(esPagoDePlanilla));
     if (res.length < 100) break;
   }
   return salida;

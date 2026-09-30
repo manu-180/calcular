@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { createHash } from "node:crypto";
 import Link from "next/link";
-import { PRODUCTO, habilitaDescarga, obtenerPago, productoDePago, type MpPayment, type Producto } from "@/lib/mp";
-import { TrackEvento } from "@/components/TrackEvento";
+import { PRODUCTO, checkoutIdDeReferencia, habilitaDescarga, obtenerPago, productoDePago, type MpPayment, type Producto } from "@/lib/mp";
 import { ConversionGoogleAds } from "@/components/ConversionGoogleAds";
 import { CONVERSION_COMPRA_PLANILLA } from "@/lib/ads";
 import { OtrasPlanillas } from "@/components/CatalogoPlanillas";
+import { cookies } from "next/headers";
+import { COOKIE_PISTA } from "@/lib/sesion-cliente";
+import { usuarioActual } from "@/lib/auth/sesion";
+import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 
 // Transaccional: se re-verifica el pago en cada carga, nunca se cachea.
 export const dynamic = "force-dynamic";
@@ -91,10 +94,6 @@ export default async function GraciasPage({
     if (pago.payer?.email) await capturarEmailComprador(pago.payer.email, producto.slug);
     return (
       <Marco titulo="¡Listo! Tu pago se acreditó" tono="ok" icono="check">
-        <TrackEvento
-          evento="planilla_compra_completada"
-          propiedades={{ producto: producto.slug, precio: producto.precio }}
-        />
         <ConversionGoogleAds
           sendTo={CONVERSION_COMPRA_PLANILLA}
           value={producto.precio}
@@ -115,6 +114,12 @@ export default async function GraciasPage({
         <p className="text-center text-xs text-zinc-500">
           Funciona en Google Sheets y en Microsoft Excel, sin instalar nada.
         </p>
+        {CUENTAS_ACTIVAS ? (
+          <GuardarEnCuenta
+            checkoutId={checkoutIdDeReferencia(pago.external_reference)}
+            emailCompra={pago.payer?.email ?? null}
+          />
+        ) : null}
         <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-600">
           ¿No baja el archivo? Volvé a tocar el botón o entrá de nuevo a este
           enlace desde el mismo dispositivo. Si seguís sin poder,{" "}
@@ -160,6 +165,59 @@ export default async function GraciasPage({
         </Link>
       </div>
     </Marco>
+  );
+}
+
+// La pista (cookie no sensible) decide si vale la pena preguntarle a Supabase por la sesión: el
+// comprador sin cuenta, que es casi todos, no paga ese viaje.
+async function GuardarEnCuenta({ checkoutId, emailCompra }: { checkoutId: string | null; emailCompra: string | null }) {
+  const conPista = (await cookies()).get(COOKIE_PISTA)?.value === "1";
+  const usuario = conPista ? await usuarioActual() : null;
+
+  if (usuario) {
+    const mismoMail = !!emailCompra && emailCompra.trim().toLowerCase() === usuario.email;
+    return (
+      <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4 text-sm leading-relaxed text-emerald-900">
+        <p className="font-semibold">
+          {mismoMail && usuario.verificado ? "Ya la tenés en tu cuenta" : "Sumala a tu cuenta"}
+        </p>
+        <p className="mt-1 text-emerald-900/80">
+          {mismoMail && usuario.verificado
+            ? "Cuando la necesites, la bajás desde Mi cuenta, siempre en su última versión."
+            : mismoMail
+              ? "Confirmá tu mail desde Mi cuenta y la planilla aparece ahí sola."
+              : "La compraste con otro mail que el de tu cuenta. Escribinos y la sumamos."}
+        </p>
+        <Link
+          href={mismoMail ? "/cuenta" : "/contacto"}
+          className="mt-3 inline-flex font-semibold text-emerald-800 underline decoration-emerald-800/30 underline-offset-4 hover:decoration-emerald-800"
+        >
+          {mismoMail ? "Ir a Mi cuenta →" : "Escribinos →"}
+        </Link>
+      </div>
+    );
+  }
+
+  const registro = checkoutId ? `/registro?compra=${checkoutId}` : "/registro";
+  return (
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4 text-sm leading-relaxed text-zinc-600">
+      <p className="font-semibold text-zinc-900">Guardala en tu cuenta</p>
+      <p className="mt-1">
+        Creá tu cuenta gratis con el mismo mail de la compra y la planilla queda guardada, siempre en
+        su última versión. Si algún día perdés el mail, la bajás desde ahí.
+      </p>
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <Link
+          href={registro}
+          className="inline-flex h-10 items-center rounded-full bg-zinc-900 px-4 font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.18)] transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-zinc-800"
+        >
+          Crear mi cuenta
+        </Link>
+        <Link href="/login?next=%2Fcuenta" className="font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-600">
+          Ya tengo cuenta
+        </Link>
+      </div>
+    </div>
   );
 }
 

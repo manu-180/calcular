@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
-import Link from "next/link";
-import { Analytics } from "@vercel/analytics/next";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import AdSense from "@/components/AdSense";
-import { FirmaAutor } from "@/components/FirmaAutor";
+import { Rastreador } from "@/components/Rastreador";
+import { HerramientasCalculo } from "@/components/herramientas/HerramientasCalculo";
+import { tabsDelEncabezado } from "@/data/navegacion";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -37,6 +38,14 @@ export const metadata: Metadata = {
   other: { "google-adsense-account": "ca-pub-1118110129260994" },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#fafaf9",
+};
+
+// Se calcula en el servidor y viaja como prop: el header sabe qué tab marcar sin cargar
+// el modelo de navegación entero en el JS de cada página.
+const TABS = tabsDelEncabezado();
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,49 +54,23 @@ export default function RootLayout({
   return (
     <html lang="es-AR" className={`${geistSans.variable} h-full antialiased`}>
       <body className="font-sans">
+        <a href="#contenido" className="ca-saltar">
+          Saltar al contenido
+        </a>
         {/* La columna flex va en este wrapper y NO en <body> a propósito: AdSense y el CMP
             (FundingChoices) inyectan nodos como hijos directos de <body> — ya está ahí el
             <ins class="adsbygoogle-noablate"> del anchor ad. Con display:flex en <body> esos
             nodos entran como flex items y redistribuyen la columna (main tiene flex-1),
             moviendo la página entera. Con el wrapper caen fuera del layout de la app. */}
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
+        <div className="flex min-h-dvh flex-col">
+          <SiteHeader tabs={TABS} />
+          <main id="contenido" className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
             {children}
           </main>
-          <footer className="border-t border-zinc-200 bg-white">
-            <div className="mx-auto w-full max-w-4xl space-y-3 px-4 py-6 text-xs text-zinc-500 sm:px-6">
-              <p>
-                Los cálculos de este sitio son orientativos y se basan en fuentes oficiales (ARCA,
-                BCRA, INDEC y la legislación vigente). No constituyen asesoramiento impositivo,
-                contable, legal ni financiero: ante una decisión importante, consultá con un
-                profesional matriculado.
-              </p>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                <span>
-                  © 2026 CalculAR · <FirmaAutor prefijo="escrito y verificado por" /> · Hecho en
-                  Argentina 🇦🇷
-                </span>
-                <Link href="/blog" className="hover:text-emerald-700">
-                  Guías
-                </Link>
-                <Link href="/sobre" className="hover:text-emerald-700">
-                  Sobre CalculAR
-                </Link>
-                <Link href="/privacidad" className="hover:text-emerald-700">
-                  Privacidad
-                </Link>
-                <Link href="/terminos" className="hover:text-emerald-700">
-                  Términos
-                </Link>
-                <Link href="/contacto" className="hover:text-emerald-700">
-                  Contacto
-                </Link>
-              </div>
-            </div>
-          </footer>
+          <SiteFooter />
         </div>
-        <Analytics />
+        <Rastreador />
+        <HerramientasCalculo />
         <AdSense />
       </body>
     </html>

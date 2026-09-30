@@ -12,13 +12,15 @@ const HOY_BUILD =
 const nextConfig: NextConfig = {
   // Congela el "hoy" del build en server y cliente por igual: ver src/lib/hoy.ts.
   env: { CALCULAR_HOY_BUILD: HOY_BUILD },
-  // El CSS del sitio son ~14 KiB: como request aparte bloquea el render y agrega un salto
-  // de red antes del primer pintado. Inline en el HTML sale gratis a ese tamaño.
+  // inlineCss apagado a propósito (30/9/2026): Next mete el CSS inline TRES veces por página (el
+  // <style> y dos copias en el payload RSC). Con 127 KB de CSS, /aguinaldo pesaba 508 KB de HTML y
+  // Lighthouse móvil daba 83-88 (TBT 320-430 ms); como archivo aparte, cacheado entre páginas,
+  // 123 KB y 94-95 (FCP 0,9 s, TBT 110-170 ms). No volver a prenderlo sin medir las dos variantes.
   // `cpus` sale de una env var porque el build spawnea un worker por núcleo (acá 16) y en una
   // máquina cargada eso agota el commit charge antes que la RAM: muere con "Zone Allocation
   // failed", que se lee como un bug del código y no lo es. BUILD_CPUS=2 lo hace sobrevivir.
   experimental: {
-    inlineCss: true,
+    inlineCss: false,
     ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
   },
   // Incluí el .xlsx de /private en el bundle de la función de descarga. Sin esto,
@@ -29,6 +31,34 @@ const nextConfig: NextConfig = {
     "/api/planilla-uocra/download": ["./private/**"],
     "/api/planilla-casas-particulares/download": ["./private/**"],
     "/api/planilla-monotributo/download": ["./private/**"],
+    "/api/cuenta/descargar/[id]": ["./private/**"],
+  },
+  // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
+  // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.
+  // Tampoco form-action en lo público: el checkout redirige a MercadoPago y Chrome aplica
+  // form-action también a ese redirect.
+  async headers() {
+    // En dev sobre http://localhost, upgrade-insecure-requests pasa a https los redirects de fetch.
+    const upgrade = process.env.NODE_ENV === "production" ? "; upgrade-insecure-requests" : "";
+    const base = [
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
+      { key: "Content-Security-Policy", value: `frame-ancestors 'self'; base-uri 'self'; object-src 'none'${upgrade}` },
+    ];
+    const privado = [
+      { key: "Content-Security-Policy", value: `frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'${upgrade}` },
+      { key: "X-Robots-Tag", value: "noindex, nofollow" },
+      { key: "Cache-Control", value: "private, no-store" },
+    ];
+    const rutasPrivadas = ["/dashboard", "/cuenta", "/login", "/registro", "/recuperar", "/auth"];
+    return [
+      { source: "/:path*", headers: base },
+      ...rutasPrivadas.flatMap((r) => [
+        { source: r, headers: privado },
+        { source: `${r}/:path*`, headers: privado },
+      ]),
+    ];
   },
   async redirects() {
     return [

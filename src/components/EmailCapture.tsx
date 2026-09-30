@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { rastrear } from "@/lib/rastreo";
 
 interface Props {
   source: string;
@@ -62,6 +63,7 @@ export function EmailCapture({
         body: JSON.stringify({ email, source }),
       });
       setStatus(res.ok ? "ok" : "error");
+      if (res.ok) rastrear("suscripcion", { props: { origen: source } });
     } catch {
       setStatus("error");
     }

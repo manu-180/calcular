@@ -168,7 +168,10 @@ export function PlanillaLanding(c: ConfigLanding) {
         <h1 className="mb-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">{c.h1}</h1>
         <p className="max-w-2xl text-lg text-zinc-600">{c.bajada}</p>
 
-        <div className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50/60 p-5 sm:flex sm:items-center sm:gap-6">
+        <div
+          data-oferta={producto.slug}
+          className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50/60 p-5 sm:flex sm:items-center sm:gap-6"
+        >
           <div className="shrink-0">
             <p className="text-3xl font-bold text-zinc-900">{precio}</p>
             <p className="text-sm text-zinc-600">pago único · sin suscripción</p>
@@ -376,7 +379,7 @@ export function PlanillaLanding(c: ConfigLanding) {
           </section>
 
           {/* ── CTA de cierre: el que llegó hasta acá ya leyó todo ── */}
-          <section className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-center">
+          <section data-oferta={producto.slug} className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-center">
             <p className="text-lg font-semibold text-zinc-900">
               {c.producto.tituloCorto} — {precio}, pago único
             </p>
@@ -391,7 +394,7 @@ export function PlanillaLanding(c: ConfigLanding) {
 
         {/* ── Sidebar de compra ── */}
         <aside className="space-y-4">
-          <div className="sticky top-6 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
+          <div data-oferta={producto.slug} className="sticky top-6 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
             <p className="text-sm font-medium text-zinc-900">{producto.tituloCorto}</p>
             <p className="mt-2 text-4xl font-bold text-zinc-900">{precio}</p>
             <p className="mt-0.5 text-sm text-zinc-500">pago único · actualizaciones del año incluidas</p>

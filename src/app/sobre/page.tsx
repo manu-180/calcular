@@ -87,7 +87,8 @@ export default function SobrePage() {
             son <strong>orientativos</strong> y cada situación personal tiene matices que una
             calculadora no puede capturar. Para decisiones importantes, consultá con un
             profesional matriculado. Tampoco pedimos datos personales: calculás y te vas, sin
-            registro y sin guardar lo que ingresás.
+            registrarte, y lo que ingresás no sale de tu navegador. La cuenta existe para quien quiera
+            guardar cálculos o tener sus planillas a mano, y es opcional.
           </p>
         </div>
       </section>

@@ -9,7 +9,7 @@ import Link from "next/link";
 // Single-source: si cambia el copy o el destino, se cambia acá y se actualiza en todo el embudo.
 export function PlanillaUocraCTA() {
   return (
-    <section className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+    <section data-oferta="planilla-uocra" className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-semibold text-emerald-900">
@@ -27,6 +27,9 @@ export function PlanillaUocraCTA() {
         </div>
         <Link
           href="/planillas/uocra?desde=cta-uocra"
+          data-evento="cta_compra"
+          data-producto="planilla-uocra"
+          data-ubicacion="calculadora"
           className="shrink-0 rounded-lg bg-emerald-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 hover:shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 active:translate-y-px"
         >
           Ver la planilla →

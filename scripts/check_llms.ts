@@ -45,10 +45,16 @@ const EXCLUIDAS = new Set<string>([
   "/planillas/gracias", // página de agradecimiento post-compra, sin contenido propio
   "/planillas/comprar", // formulario de compra sin JS (noindex), el contenido vive en cada landing
   "/blog", // el índice del blog; los posts se listan aparte cuando corresponde
+  // Cuentas y panel: privadas, noindex y fuera del sitemap.
+  "/login",
+  "/registro",
+  "/recuperar",
+  "/cuenta",
+  "/dashboard",
 ]);
 
 /** Prefijos excluidos por rama entera (los posts del blog no se enumeran uno por uno). */
-const PREFIJOS_EXCLUIDOS = ["/blog/"];
+const PREFIJOS_EXCLUIDOS = ["/blog/", "/auth/", "/cuenta/", "/dashboard/"];
 
 /** Rutas de disco: toda carpeta bajo src/app con page.tsx, salteando los segmentos dinámicos. */
 function rutasEnDisco(dir: string, base = ""): string[] {

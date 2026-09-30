@@ -22,6 +22,14 @@ export default function ContactoPage() {
         </a>{" "}
         y te respondemos a la brevedad.
       </p>
+      <p>
+        Si querés una copia de tus datos o que borremos tu cuenta, escribinos desde el mail de la
+        cuenta y lo resolvemos. El detalle está en la{" "}
+        <a href="/privacidad#derechos" className="text-emerald-700 underline">
+          política de privacidad
+        </a>
+        .
+      </p>
       <p className="text-sm text-zinc-500">
         Si tu consulta es sobre tu situación impositiva particular, te recomendamos hablar con un
         contador matriculado: nosotros hacemos herramientas, no asesoramiento profesional.

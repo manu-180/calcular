@@ -10,7 +10,7 @@ import Link from "next/link";
 // tomado ninguna decisión — y la landing tenía que vender desde cero.
 export function PlanillaComercioCTA() {
   return (
-    <section className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+    <section data-oferta="planilla-comercio" className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-semibold text-emerald-900">
@@ -28,6 +28,9 @@ export function PlanillaComercioCTA() {
         </div>
         <Link
           href="/planillas?desde=cta-comercio"
+          data-evento="cta_compra"
+          data-producto="planilla-comercio"
+          data-ubicacion="calculadora"
           className="shrink-0 rounded-lg bg-emerald-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 hover:shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 active:translate-y-px"
         >
           Ver la planilla →

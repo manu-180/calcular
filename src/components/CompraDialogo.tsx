@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { track } from "@vercel/analytics";
+import { idVisitante, normalizarRuta, rastrear } from "@/lib/rastreo";
 
 export type DatosCompra = { slug: string; tituloCorto: string; precio: number };
 
@@ -12,7 +12,10 @@ const selector = (slug: string) => `dialog[data-compra="${slug}"]`;
 export function abrirCompra(slug: string): boolean {
   const d = document.querySelector<HTMLDialogElement>(selector(slug));
   if (!d || typeof d.showModal !== "function") return false;
-  if (!d.open) d.showModal();
+  if (!d.open) {
+    d.showModal();
+    rastrear("dialogo_compra", { producto: slug });
+  }
   return true;
 }
 
@@ -34,18 +37,43 @@ function origen(): string {
   return "directo";
 }
 
+// `desde` es la marca que viaja en la referencia de MP (la lee tools/embudo-planillas.ts); `ruta`,
+// la página donde se abrió la compra, que es lo que va a ca_checkouts.
+function ocultos(): Record<string, string> {
+  return { desde: `${origen()}_${location.pathname}`, ruta: normalizarRuta(location.pathname), vid: idVisitante() };
+}
+
 export function FormularioCompra({
   producto,
   errorEmail = false,
   autoFocus = false,
+  enPagina = false,
 }: {
   producto: DatosCompra;
   errorEmail?: boolean;
   autoFocus?: boolean;
+  /** En /planillas/comprar el formulario ES el paso «abrió la compra» del embudo. */
+  enPagina?: boolean;
 }) {
   const [enviando, setEnviando] = useState(false);
-  const desdeRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const precio = `$${producto.precio.toLocaleString("es-AR")}`;
+
+  useEffect(() => {
+    if (enPagina) rastrear("dialogo_compra", { producto: producto.slug, props: { ubicacion: "pagina" } });
+  }, [enPagina, producto.slug]);
+
+  // Los ocultos se escriben al armar el POST y no en onSubmit: el re-render de setEnviando corre
+  // antes de que el navegador junte los campos, y con un defaultValue React los volvía a vaciar.
+  useEffect(() => {
+    const f = formRef.current;
+    if (!f) return;
+    const completar = (e: FormDataEvent) => {
+      for (const [k, v] of Object.entries(ocultos())) e.formData.set(k, v);
+    };
+    f.addEventListener("formdata", completar);
+    return () => f.removeEventListener("formdata", completar);
+  }, []);
 
   // Volver con el botón «atrás» desde MercadoPago restaura la página del bfcache con el botón
   // todavía en «Te llevamos…»: sin esto el comprador arrepentido no puede reintentar.
@@ -57,17 +85,24 @@ export function FormularioCompra({
 
   return (
     <form
+      ref={formRef}
       method="post"
       action="/api/mp/checkout"
-      onSubmit={() => {
-        if (desdeRef.current) desdeRef.current.value = `${origen()}_${location.pathname}`;
+      onSubmit={(e) => {
+        const campos = e.currentTarget.elements;
+        for (const [k, v] of Object.entries(ocultos())) {
+          const input = campos.namedItem(k);
+          if (input instanceof HTMLInputElement) input.value = v;
+        }
         setEnviando(true);
-        track("planilla_checkout_email", { producto: producto.slug, precio: producto.precio });
+        rastrear("checkout", { producto: producto.slug, valor: producto.precio });
       }}
       className="space-y-4"
     >
       <input type="hidden" name="p" value={producto.slug} />
-      <input type="hidden" name="desde" ref={desdeRef} defaultValue="" />
+      <input type="hidden" name="desde" />
+      <input type="hidden" name="ruta" />
+      <input type="hidden" name="vid" />
       {/* Campo trampa (ver POST de /api/mp/checkout): invisible para personas y lectores de pantalla. */}
       <input type="text" name="sitio" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] size-px opacity-0" defaultValue="" />
 
@@ -154,8 +189,8 @@ export function CompraDialogo({ producto }: { producto: DatosCompra }) {
   // El mail de recordatorio linkea a la landing con #comprar: un toque y está de nuevo en el
   // formulario, sin tener que buscar el botón.
   useEffect(() => {
-    if (location.hash === "#comprar") ref.current?.showModal();
-  }, []);
+    if (location.hash === "#comprar") abrirCompra(producto.slug);
+  }, [producto.slug]);
 
   return (
     <dialog

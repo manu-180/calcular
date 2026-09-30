@@ -16,6 +16,27 @@
 // re-consulta (un id inventado devuelve 404 y no inserta nada).
 
 import { createHmac, timingSafeEqual } from "node:crypto";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import {
+  checkoutIdDeReferencia,
+  emailValido,
+  esPagoDePlanilla,
+  pagoAprobado,
+  productoDePago,
+  rutaDeReferencia,
+  type MpPayment,
+  type PagoEncontrado,
+  type Producto,
+  type ProductoSlug,
+} from "./mp";
+
+/** La cuenta legado es la personal de Manuel y cobra otras cosas: un pago de ahí sin la marca de
+ *  una planilla no es una venta nuestra, aunque cueste lo mismo que una. `productoDePago` lo daría
+ *  por Comercio y saldría el mail de entrega. Las ventas viejas (8/8, 25/8) llevan
+ *  `metadata.producto`, así que siguen pasando. */
+export function esPagoAjeno(e: PagoEncontrado): boolean {
+  return e.legado && !esPagoDePlanilla(e.pago);
+}
 
 /** Marca canónica del pago dentro de `note`. Es la clave de dedupe: `revenue_events` no
  *  tiene columna propia para el id de MercadoPago, así que la idempotencia se apoya en
@@ -143,42 +164,56 @@ export async function registrarVenta(
   deps: DepsVenta,
   v: Venta,
 ): Promise<{ duplicado: boolean; filaId?: number }> {
-  const headers = {
+  const marca = marcaPago(v.paymentId);
+  return asentarUnaVez(deps, marca, {
+    project_slug: "planillas-ar",
+    source: "mercadopago",
+    amount: v.monto,
+    currency: v.moneda,
+    note:
+      `Venta automática de ${v.productoTitulo} ${marca}` +
+      ` · producto ${v.productoSlug}` +
+      (v.email ? ` · comprador ${v.email}` : "") +
+      ". Registrada por el webhook de MercadoPago. Monto bruto, sin descontar comisión.",
+  });
+}
+
+function cabeceras(deps: DepsVenta) {
+  return {
     "Content-Type": "application/json",
     apikey: deps.serviceRole,
     Authorization: `Bearer ${deps.serviceRole}`,
   };
-  const marca = marcaPago(v.paymentId);
-  const filtro = `note=ilike.*${encodeURIComponent(marca)}*`;
+}
 
-  async function idsConLaMarca(): Promise<number[]> {
-    const res = await deps.fetch(
-      `${deps.supabaseUrl}/rest/v1/revenue_events?select=id&${filtro}&order=id.asc`,
-      { headers, cache: "no-store" },
-    );
-    if (!res.ok) throw new Error(`Supabase dedupe ${res.status}`);
-    return ((await res.json()) as { id: number }[]).map((f) => f.id);
-  }
+async function idsConLaMarca(deps: DepsVenta, marca: string): Promise<number[]> {
+  const filtro = `note=ilike.*${encodeURIComponent(marca)}*`;
+  const res = await deps.fetch(
+    `${deps.supabaseUrl}/rest/v1/revenue_events?select=id&${filtro}&order=id.asc`,
+    { headers: cabeceras(deps), cache: "no-store" },
+  );
+  if (!res.ok) throw new Error(`Supabase dedupe ${res.status}`);
+  return ((await res.json()) as { id: number }[]).map((f) => f.id);
+}
+
+/** Los pasos 1–4 de arriba, para cualquier fila de `revenue_events` que tenga que existir una sola
+ *  vez por marca (la venta y, si la hay, su devolución). */
+async function asentarUnaVez(
+  deps: DepsVenta,
+  marca: string,
+  fila: Record<string, unknown>,
+): Promise<{ duplicado: boolean; filaId?: number }> {
+  const headers = cabeceras(deps);
 
   // 1. Atajo para el reintento normal de MP (llega segundos después y sí ve la fila).
-  if ((await idsConLaMarca()).length > 0) return { duplicado: true };
+  if ((await idsConLaMarca(deps, marca)).length > 0) return { duplicado: true };
 
   // 2. Insertar pidiendo la fila de vuelta: sin el id propio no hay forma de saber, después,
   //    si la superviviente es la nuestra.
   const res = await deps.fetch(`${deps.supabaseUrl}/rest/v1/revenue_events`, {
     method: "POST",
     headers: { ...headers, Prefer: "return=representation" },
-    body: JSON.stringify({
-      project_slug: "planillas-ar",
-      source: "mercadopago",
-      amount: v.monto,
-      currency: v.moneda,
-      note:
-        `Venta automática de ${v.productoTitulo} ${marca}` +
-        ` · producto ${v.productoSlug}` +
-        (v.email ? ` · comprador ${v.email}` : "") +
-        ". Registrada por el webhook de MercadoPago. Monto bruto, sin descontar comisión.",
-    }),
+    body: JSON.stringify(fila),
     cache: "no-store",
   });
   if (!res.ok) {
@@ -189,7 +224,7 @@ export async function registrarVenta(
 
   // 3. Resolver la carrera. Sin id propio no se puede decidir: se prefiere NO entregar de más
   //    (la descarga sigue viva en /planillas/gracias) antes que mandar dos mails.
-  const ids = await idsConLaMarca();
+  const ids = await idsConLaMarca(deps, marca);
   if (ids.length <= 1) return { duplicado: false, filaId: miId };
 
   const superviviente = ids[0];
@@ -207,6 +242,41 @@ export async function registrarVenta(
 
   const duplicado = miId === undefined || miId !== superviviente;
   return duplicado ? { duplicado: true } : { duplicado: false, filaId: superviviente };
+}
+
+/** Marca de la devolución (reembolso o contracargo) de un pago. No contiene `[mp:<id>]`: si lo
+ *  contuviera, el dedupe de la venta la tomaría por la venta y un reintento no se asentaría. */
+export function marcaDevolucion(paymentId: string): string {
+  return `[mp-devuelto:${paymentId}]`;
+}
+
+export type Devolucion = {
+  paymentId: string;
+  monto: number;
+  moneda: string;
+  motivo: "reembolso" | "contracargo";
+  productoTitulo: string;
+  productoSlug: string;
+};
+
+/** Asienta el monto negativo de un pago devuelto, una sola vez y sólo si la venta se había
+ *  asentado: descontar algo que nunca se sumó dejaría los ingresos por debajo de la realidad. */
+export async function registrarDevolucion(
+  deps: DepsVenta,
+  d: Devolucion,
+): Promise<{ duplicado: boolean; sinVenta?: boolean; filaId?: number }> {
+  if ((await idsConLaMarca(deps, marcaPago(d.paymentId))).length === 0) return { duplicado: false, sinVenta: true };
+  const marca = marcaDevolucion(d.paymentId);
+  return asentarUnaVez(deps, marca, {
+    project_slug: "planillas-ar",
+    source: "mercadopago",
+    amount: -Math.abs(d.monto),
+    currency: d.moneda,
+    note:
+      `${d.motivo === "reembolso" ? "Reembolso" : "Contracargo"} de ${d.productoTitulo} ${marca}` +
+      ` · producto ${d.productoSlug} · descuenta la venta del pago ${d.paymentId}.` +
+      " Registrado por el webhook de MercadoPago.",
+  });
 }
 
 export async function marcarEntrega(
@@ -270,5 +340,151 @@ export async function marcarEntrega(
   } catch (e) {
     console.error(`[revenue_events] error guardando el rastro de entrega de id=${filaId}`, e);
     return false;
+  }
+}
+
+// ─── Embudo propio y biblioteca del comprador (ca_checkouts / ca_compras) ────────────────────
+//
+// Todo esto es ADICIONAL a revenue_events + mail de entrega: corre después de responderle a MP
+// y nunca tira. Si las tablas no están o la base no contesta, la venta ya quedó asentada y
+// entregada por el camino de siempre.
+
+export type EstadoCheckout = "pendiente" | "pagado" | "rechazado" | "reembolsado";
+export type EstadoCompra = "aprobado" | "reembolsado" | "contracargo";
+
+export function estadoCheckout(status: string | undefined): EstadoCheckout | null {
+  switch (status) {
+    case "approved":
+    case "authorized":
+      return "pagado";
+    case "pending":
+    case "in_process":
+    case "in_mediation":
+      return "pendiente";
+    case "rejected":
+    case "cancelled":
+      return "rechazado";
+    case "refunded":
+    case "charged_back":
+      return "reembolsado";
+    default:
+      return null;
+  }
+}
+
+export function estadoCompra(status: string | undefined): EstadoCompra | null {
+  if (status === "approved") return "aprobado";
+  if (status === "refunded") return "reembolsado";
+  if (status === "charged_back") return "contracargo";
+  return null;
+}
+
+export type FilaCompra = {
+  mp_payment_id: string;
+  producto: ProductoSlug;
+  email: string | null;
+  monto: number;
+  moneda: string;
+  estado: EstadoCompra;
+  legado: boolean;
+  checkout_id: string | null;
+  pagado_at: string;
+};
+
+export function filaCompra(
+  pago: MpPayment,
+  e: { paymentId: string; legado: boolean; producto: Producto; estado: EstadoCompra; emailCheckout?: string | null },
+): FilaCompra {
+  return {
+    mp_payment_id: e.paymentId,
+    producto: e.producto.slug,
+    email: emailValido(pago.payer?.email) ?? emailValido(e.emailCheckout),
+    monto: pago.transaction_amount ?? e.producto.precio,
+    moneda: pago.currency_id ?? e.producto.moneda,
+    estado: e.estado,
+    legado: e.legado,
+    checkout_id: checkoutIdDeReferencia(pago.external_reference),
+    pagado_at: pago.date_approved ?? pago.date_created ?? new Date().toISOString(),
+  };
+}
+
+const tope = () => AbortSignal.timeout(4000);
+
+async function sincronizarCheckout(
+  db: SupabaseClient,
+  pago: MpPayment,
+  paymentId: string,
+  producto: Producto,
+): Promise<string | null> {
+  const id = checkoutIdDeReferencia(pago.external_reference);
+  const estado = estadoCheckout(pago.status);
+  if (!id || !estado) return null;
+  const ahora = new Date().toISOString();
+
+  // Una misma preferencia puede tener varios pagos (tarjeta rechazada y después aprobada). Un
+  // aviso tardío del rechazado no puede bajar a «rechazado» un checkout que otro pago ya pagó.
+  const { data, error } = await db
+    .from("ca_checkouts")
+    .update({ estado, mp_payment_id: paymentId, updated_at: ahora })
+    .eq("id", id)
+    .or(`estado.is.null,estado.in.(iniciado,pendiente,rechazado),mp_payment_id.eq.${paymentId}`)
+    .select("email")
+    .abortSignal(tope());
+  if (error) {
+    console.error("[mp/webhook] ca_checkouts:", error.code, error.message);
+    return null;
+  }
+  if (data.length) return (data[0] as { email: string | null }).email;
+
+  const { error: e2 } = await db
+    .from("ca_checkouts")
+    .upsert(
+      {
+        id,
+        producto: producto.slug,
+        email: emailValido(pago.payer?.email),
+        desde: rutaDeReferencia(pago.external_reference),
+        estado,
+        mp_payment_id: paymentId,
+        monto: pago.transaction_amount ?? producto.precio,
+        updated_at: ahora,
+      },
+      { onConflict: "id", ignoreDuplicates: true },
+    )
+    .abortSignal(tope());
+  if (e2) console.error("[mp/webhook] ca_checkouts (alta):", e2.code, e2.message);
+  return null;
+}
+
+export async function sincronizarPago(
+  db: SupabaseClient,
+  e: { pago: MpPayment; paymentId: string; legado: boolean },
+): Promise<void> {
+  try {
+    const { pago, paymentId, legado } = e;
+    if (!esPagoDePlanilla(pago)) return;
+    const producto = productoDePago(pago);
+    if (!producto) return;
+
+    const emailCheckout = await sincronizarCheckout(db, pago, paymentId, producto);
+
+    const estado = estadoCompra(pago.status);
+    if (!estado) return;
+    if (estado === "aprobado" && !pagoAprobado(pago, producto)) {
+      console.warn("[mp/webhook] pago aprobado que no cierra con el producto, no va a ca_compras:", paymentId);
+      return;
+    }
+    const fila = filaCompra(pago, { paymentId, legado, producto, estado, emailCheckout });
+    // Alta: ignoreDuplicates, así un reintento no pisa el user_id que completó el trigger.
+    // Devolución: merge, para que el estado cambie en la fila que ya existe.
+    const cuerpo: Record<string, unknown> =
+      estado === "aprobado" ? fila : { ...fila, updated_at: new Date().toISOString() };
+    const { error } = await db
+      .from("ca_compras")
+      .upsert(cuerpo, { onConflict: "mp_payment_id", ignoreDuplicates: estado === "aprobado" })
+      .abortSignal(tope());
+    if (error) console.error("[mp/webhook] ca_compras:", error.code, error.message);
+  } catch (err) {
+    console.error("[mp/webhook] sincronizarPago:", err instanceof Error ? err.message : err);
   }
 }

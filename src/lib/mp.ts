@@ -10,6 +10,7 @@
 
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { limpiarRuta } from "./rastreo";
 
 const MP_API = "https://api.mercadopago.com";
 
@@ -155,6 +156,59 @@ export function desdeDeReferencia(ref: string | null | undefined): string {
   return partes.length >= 3 ? partes.slice(2).join(":") : "";
 }
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/** El uuid de la referencia es la PK de `ca_checkouts`. Null en referencias viejas sin uuid. */
+export function checkoutIdDeReferencia(ref: string | null | undefined): string | null {
+  const id = (ref ?? "").split(":")[1] ?? "";
+  return UUID_RE.test(id) ? id.toLowerCase() : null;
+}
+
+export type FilaCheckout = {
+  id: string;
+  producto: ProductoSlug;
+  email: string | null;
+  vid: string | null;
+  user_id: string | null;
+  desde: string | null;
+  estado: "iniciado";
+  monto: number;
+};
+
+/** `ca_checkouts.desde` es la ruta donde se abrió la compra (`/planillas`, `/aguinaldo`), nunca la
+ *  marca de la referencia: qué página vendió lo resuelve el panel por `vid`. */
+export function filaCheckout(p: {
+  referencia: string;
+  producto: Producto;
+  ruta?: string | null;
+  email?: string | null;
+  vid?: string | null;
+  userId?: string | null;
+}): FilaCheckout | null {
+  const id = checkoutIdDeReferencia(p.referencia);
+  if (!id) return null;
+  return {
+    id,
+    producto: p.producto.slug,
+    email: emailValido(p.email),
+    vid: p.vid && UUID_RE.test(p.vid) ? p.vid.toLowerCase() : null,
+    user_id: p.userId && UUID_RE.test(p.userId) ? p.userId : null,
+    desde: limpiarRuta(p.ruta),
+    estado: "iniciado",
+    monto: p.producto.precio,
+  };
+}
+
+/** La ruta que el diálogo dejó al final de la marca (`<origen>_<ruta>`), para los checkouts que
+ *  sólo se conocen por la referencia. Una marca sin ruta (un slug de CTA) o que pudo haberse
+ *  cortado en los 60 caracteres da null: mejor sin dato que con una ruta inventada. */
+export function rutaDeReferencia(ref: string | null | undefined): string | null {
+  const marca = desdeDeReferencia(ref);
+  const i = marca.lastIndexOf("_/");
+  if (i < 0 || marca.length >= 55) return null;
+  return limpiarRuta(marca.slice(i + 1));
+}
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /** Email de comprador apto para la preferencia, o null. */
@@ -184,6 +238,16 @@ export function productoDePago(p: MpPayment): Producto | null {
   return PRODUCTOS["planilla-comercio"];
 }
 
+/** ¿El pago lo marcamos nosotros como de una planilla? `productoDePago` cae en Comercio con
+ *  cualquier pago sin marca, y la cuenta legado tiene cobros que no son de calcular: todo lo que
+ *  escriba en `ca_compras` o descuente ingresos tiene que pasar por acá antes. */
+export function esPagoDePlanilla(p: MpPayment): boolean {
+  const prefijo = (p.external_reference ?? "").split(":")[0];
+  if (productoPorSlug(prefijo)) return true;
+  const meta = p.metadata?.producto;
+  return typeof meta === "string" && productoPorSlug(meta) !== null;
+}
+
 /** Lee el .xlsx entregable. Vive en /private (fuera de /public): solo sale por una ruta
  *  gateada por el pago. Lo regenera scripts/gen_planilla_todas.ts en cada build. */
 export async function leerArchivoProducto(producto: Producto): Promise<Buffer> {
@@ -210,6 +274,7 @@ export type MpPayment = {
   external_reference?: string;
   metadata?: Record<string, unknown>;
   date_approved?: string;
+  date_created?: string;
   payer?: { email?: string };
 };
 

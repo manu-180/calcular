@@ -17,7 +17,9 @@ const AI_BOTS = [
 ]
 
 export default function robots(): MetadataRoute.Robots {
-  const disallow = ['/api/', '/og/']
+  // `$` + `/` y no el prefijo pelado: 'Disallow: /cuenta' también taparía una futura /cuenta-corriente.
+  const privadas = ['/cuenta', '/dashboard', '/login', '/registro', '/recuperar', '/auth'].flatMap((r) => [`${r}$`, `${r}/`])
+  const disallow = ['/api/', '/og/', ...privadas]
   return {
     rules: [
       { userAgent: '*', allow: '/', disallow },

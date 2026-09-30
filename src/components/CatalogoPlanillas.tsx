@@ -45,7 +45,13 @@ export function OtrasPlanillas({ actual, titulo = "Otras planillas" }: { actual:
       <ul className="mt-2 divide-y divide-zinc-100">
         {otras.map((p) => (
           <li key={p.slug}>
-            <Link href={p.rutaLanding} className="group flex items-start justify-between gap-3 py-2.5">
+            <Link
+              href={p.rutaLanding}
+              data-evento="cta_compra"
+              data-producto={p.slug}
+              data-ubicacion="otras-planillas"
+              className="group flex items-start justify-between gap-3 py-2.5"
+            >
               <span>
                 <span className="block font-medium text-zinc-800 group-hover:text-emerald-700">{p.tituloCorto}</span>
                 <span className="block text-xs text-zinc-500">{p.paraQuien}</span>

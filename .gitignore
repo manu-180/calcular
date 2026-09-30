@@ -35,3 +35,5 @@ next-env.d.ts
 .datos-vivos/
 # vigia: caché diaria de "¿la fuente publicó?"
 scripts/vigia/.cache/
+
+/supabase/.temp
