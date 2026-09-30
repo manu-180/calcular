@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
+import { servicio } from "@/lib/supabase/servicio";
 
-const SUPABASE_URL = process.env.SUPABASE_URL!;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY!;
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 function htmlPage(ok: boolean): Response {
@@ -45,21 +44,13 @@ export async function GET(req: NextRequest) {
 
   if (!UUID_RE.test(token)) return htmlPage(false);
 
-  // UPDATE subscribers SET active=false WHERE unsubscribe_token=token
-  // Usa anon key + política RLS "unsubscribe by token"
-  const res = await fetch(
-    `${SUPABASE_URL}/rest/v1/subscribers?unsubscribe_token=eq.${token}`,
-    {
-      method: "PATCH",
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-        "Content-Type": "application/json",
-        Prefer: "return=minimal",
-      },
-      body: JSON.stringify({ active: false }),
-    }
-  );
-
-  return htmlPage(res.ok);
+  // Con service role: la policy pública de UPDATE que usaba antes dejaba a cualquiera con la anon
+  // key modificar CUALQUIER fila de subscribers (qual true); se borró en la migración 120400.
+  const { data, error } = await servicio()
+    .from("subscribers")
+    .update({ active: false })
+    .eq("unsubscribe_token", token)
+    .select("id");
+  if (error) console.error("[unsubscribe]", error.code, error.message);
+  return htmlPage(!error && (data?.length ?? 0) > 0);
 }
