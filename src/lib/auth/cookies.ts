@@ -36,6 +36,16 @@ export const OPCIONES_ALTA = {
   maxAge: 24 * 60 * 60,
 };
 
+// state y nonce del ida y vuelta con Google: sólo viajan a /auth/google y viven lo que dura elegir la cuenta.
+export const COOKIE_GOOGLE = "ca_google";
+export const OPCIONES_GOOGLE = {
+  path: "/auth/google",
+  sameSite: "lax" as const,
+  httpOnly: true,
+  secure: EN_PRODUCCION,
+  maxAge: 10 * 60,
+};
+
 type Almacen = {
   set: (nombre: string, valor: string, opciones?: typeof OPCIONES_PISTA) => unknown;
   delete: (nombre: string) => unknown;
