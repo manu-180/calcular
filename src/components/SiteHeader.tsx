@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Pagina, SeccionMenu, TabEncabezado } from "@/data/navegacion";
 import { SesionLink } from "@/components/SesionLink";
+import { MenuCuenta } from "@/components/MenuCuenta";
 import { Buscador } from "@/components/buscador/Buscador";
 import { useAtajo } from "@/components/buscador/atajo";
 import {
@@ -629,7 +630,7 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
               <kbd className="ca-tecla hidden xl:inline-flex">{atajo}</kbd>
             </button>
 
-            <SesionLink className="hidden h-10 items-center rounded-full px-3.5 text-sm font-medium text-zinc-600 outline-none transition-[background-color,color,transform] duration-200 hover:bg-zinc-900/[0.04] hover:text-zinc-900 active:scale-[0.97] lg:inline-flex" />
+            <MenuCuenta claseIngresar="hidden h-10 items-center rounded-full px-3.5 text-sm font-medium text-zinc-600 outline-none transition-[background-color,color,transform] duration-200 hover:bg-zinc-900/[0.04] hover:text-zinc-900 active:scale-[0.97] lg:inline-flex" />
 
             <button
               type="button"
