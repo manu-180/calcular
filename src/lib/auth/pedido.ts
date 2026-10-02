@@ -40,6 +40,7 @@ export const LIMITES = {
   enlace: { ip: { max: 10, ventanaSeg: 3600 }, email: { max: 3, ventanaSeg: 3600 } },
   recuperar: { ip: { max: 10, ventanaSeg: 3600 }, email: { max: 3, ventanaSeg: 3600 } },
   confirmar: { ip: { max: 30, ventanaSeg: 900 }, email: { max: 10, ventanaSeg: 900 } },
+  google: { ip: { max: 30, ventanaSeg: 900 }, email: { max: 10, ventanaSeg: 900 } },
 } satisfies Record<string, { ip: Regla; email: Regla }>;
 
 export type Accion = keyof typeof LIMITES;

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MarcoAuth } from "@/components/cuenta/MarcoAuth";
 import { FormLogin } from "@/components/cuenta/FormLogin";
 import { destinoSeguro } from "@/lib/auth/destino";
+import { Aviso } from "@/components/cuenta/Campos";
 
 export const metadata: Metadata = {
   title: "Entrá a tu cuenta",
@@ -14,6 +15,12 @@ type SP = Record<string, string | string[] | undefined>;
 export default async function LoginPage({ searchParams }: { searchParams: Promise<SP> }) {
   const sp = await searchParams;
   const next = destinoSeguro(typeof sp.next === "string" ? sp.next : "", "");
+  const falla =
+    sp.error === "google"
+      ? "No pudimos entrar con Google. Probá de nuevo o entrá con tu mail."
+      : sp.error === "limite"
+        ? "Hubo muchos intentos seguidos desde acá. Esperá unos minutos y probá de nuevo."
+        : null;
   const registro = next ? `/registro?next=${encodeURIComponent(next)}` : "/registro";
 
   return (
@@ -30,6 +37,11 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         </>
       }
     >
+      {falla ? (
+        <div className="mb-5">
+          <Aviso tono="error">{falla}</Aviso>
+        </div>
+      ) : null}
       <FormLogin next={next} />
     </MarcoAuth>
   );

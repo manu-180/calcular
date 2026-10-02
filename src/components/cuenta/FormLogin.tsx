@@ -6,6 +6,8 @@ import { ingresarConClave, pedirEnlace } from "@/lib/auth/acciones";
 import { ESTADO_INICIAL } from "@/lib/auth/estado";
 import { Aviso, BotonEnviar, Campo, CampoClave } from "@/components/cuenta/Campos";
 import { Enviado, useFocoEnError } from "@/components/cuenta/Enviado";
+import { BotonGoogle } from "@/components/cuenta/BotonGoogle";
+import { GOOGLE_ACTIVO } from "@/lib/funciones";
 
 type Modo = "clave" | "enlace";
 
@@ -16,6 +18,7 @@ export function FormLogin({ next }: { next?: string }) {
 
   return (
     <div>
+      {GOOGLE_ACTIVO ? <BotonGoogle next={next} conTerminos /> : null}
       <div role="group" aria-label="Cómo querés entrar" className="relative mb-6 grid grid-cols-2 rounded-full bg-zinc-100 p-1 text-sm font-medium">
         <span
           aria-hidden
