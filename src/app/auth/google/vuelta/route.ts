@@ -6,9 +6,9 @@ import { servicio } from "@/lib/supabase/servicio";
 import { registrarEvento } from "@/lib/rastreo-servidor";
 import { GOOGLE_ACTIVO } from "@/lib/funciones";
 import { esAdminEmail } from "@/lib/auth/admin";
-import { ponerPista } from "@/lib/auth/cookies";
+import { COOKIE_GOOGLE, OPCIONES_GOOGLE, ponerPista } from "@/lib/auth/cookies";
 import { destinoSeguro } from "@/lib/auth/destino";
-import { limitePorIp } from "@/lib/auth/pedido";
+import { limitePorIp, origenDelSitio } from "@/lib/auth/pedido";
 import { asegurarPerfil, verificadoPrevio, vincularCompras } from "@/lib/auth/perfil";
 
 export const dynamic = "force-dynamic";
@@ -16,21 +16,65 @@ export const dynamic = "force-dynamic";
 const ir = (req: NextRequest, ruta: string) => {
   const r = NextResponse.redirect(new URL(ruta, req.url), 303);
   r.headers.set("Cache-Control", "private, no-store");
+  r.cookies.set(COOKIE_GOOGLE, "", { ...OPCIONES_GOOGLE, maxAge: 0 });
   return r;
 };
 
+function leerIda(crudo: string | undefined): { state: string; nonce: string; next: string } | null {
+  try {
+    const v = JSON.parse(crudo ?? "");
+    if (typeof v?.state === "string" && typeof v?.nonce === "string") {
+      return { state: v.state, nonce: v.nonce, next: typeof v.next === "string" ? v.next : "" };
+    }
+  } catch {}
+  return null;
+}
+
+async function canjearCodigo(code: string): Promise<{ id_token: string; access_token: string } | null> {
+  const r = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      code,
+      client_id: process.env.GOOGLE_OAUTH_CLIENT_ID ?? "",
+      client_secret: process.env.GOOGLE_OAUTH_CLIENT_SECRET ?? "",
+      redirect_uri: `${await origenDelSitio()}/auth/google/vuelta`,
+      grant_type: "authorization_code",
+    }),
+    cache: "no-store",
+  });
+  const j = await r.json().catch(() => null);
+  if (!r.ok || typeof j?.id_token !== "string") {
+    console.error("[auth] google token:", r.status, j?.error, j?.error_description);
+    return null;
+  }
+  return { id_token: j.id_token, access_token: String(j.access_token ?? "") };
+}
+
 export async function GET(req: NextRequest) {
-  if (!GOOGLE_ACTIVO) return new NextResponse(null, { status: 404 });
+  if (!GOOGLE_ACTIVO || !process.env.GOOGLE_OAUTH_CLIENT_ID) return new NextResponse(null, { status: 404 });
   const sp = req.nextUrl.searchParams;
   const code = sp.get("code");
   // Cancelar en la pantalla de Google vuelve con ?error=access_denied: no es una falla, es volver.
   if (!code) return ir(req, sp.get("error") === "access_denied" ? "/login" : "/login?error=google");
   if (!(await limitePorIp("google"))) return ir(req, "/login?error=limite");
 
+  const store = await cookies();
+  const ida = leerIda(store.get(COOKIE_GOOGLE)?.value);
+  if (!ida || sp.get("state") !== ida.state) return ir(req, "/login?error=google");
+
+  const tokens = await canjearCodigo(code);
+  if (!tokens) return ir(req, "/login?error=google");
+
   const supabase = await clienteServidor();
-  const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+  const { data, error } = await supabase.auth.signInWithIdToken({
+    provider: "google",
+    token: tokens.id_token,
+    access_token: tokens.access_token || undefined,
+    nonce: ida.nonce,
+  });
   if (error || !data.user?.email) {
-    console.error("[auth] exchangeCodeForSession google:", error?.code ?? error?.status, error?.message);
+    console.error("[auth] signInWithIdToken google:", error?.code ?? error?.status, error?.message);
     return ir(req, "/login?error=google");
   }
 
@@ -68,12 +112,12 @@ export async function GET(req: NextRequest) {
   // El orden importa: ca_vincular_compras exige el perfil ya verificado.
   const verificado = await asegurarPerfil(userId, email, true);
   if (verificado) await vincularCompras(supabase);
-  ponerPista(await cookies());
+  ponerPista(store);
   const nueva = Date.now() - Date.parse(usuario.created_at) < 2 * 60_000;
   after(() =>
     registrarEvento({ tipo: nueva ? "registro" : "login", path: "/auth/google", userId, props: { via: "google" } }),
   );
 
   const porDefecto = verificado && esAdminEmail(email) ? "/dashboard" : "/cuenta";
-  return ir(req, destinoSeguro(sp.get("next"), porDefecto));
+  return ir(req, destinoSeguro(ida.next, porDefecto));
 }
