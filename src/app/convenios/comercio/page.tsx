@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraComercio } from "@/components/CalculadoraComercio";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import {
   CATEGORIAS_COMERCIO,
@@ -11,7 +12,6 @@ import {
 } from "@/data/convenios/comercio";
 import { formatARS } from "@/lib/formato";
 import { datasetSchema, ORGANIZACION } from "@/lib/schema";
-import { PlanillaComercioCTA } from "@/components/PlanillaComercioCTA";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { SelloVerificado } from "@/components/SelloVerificado";
 import { calcularComercio } from "@/lib/convenios";
@@ -193,11 +193,9 @@ export default function ComercioPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraComercio />
-
-      {/* Va pegado a la calculadora, no al pie: el momento de máxima intención es cuando
-          la persona acaba de ver su número, no 900 palabras después. */}
-      <PlanillaComercioCTA />
+      {/* La oferta de la planilla vive adentro de la calculadora, debajo del resultado: el
+          momento de máxima intención es cuando la persona acaba de ver su número. */}
+      <CalculadoraComercio oferta={datosOferta("planilla-comercio")} />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">

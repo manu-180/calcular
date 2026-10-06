@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { FROM, recordatorioCompraHtml, sendSingle } from "@/lib/email";
+import { conArticulo } from "@/lib/mp";
 import { VENTANA, elegirRecordatorios, pagosDesde, preferenciasDesde } from "@/lib/mp-recupero";
 
 // Vercel cron, una vez por día (vercel.json). La ventana de 48→24 h de mp-recupero.ts depende
@@ -52,11 +53,12 @@ export async function GET(req: NextRequest) {
       const ok = await sendSingle({
         from: FROM,
         to: [r.email],
-        subject: `Te quedó pendiente la ${r.producto.tituloCorto}`,
+        subject: `Te quedó pendiente ${conArticulo(r.producto)}`,
         html: recordatorioCompraHtml({
           tituloCorto: r.producto.tituloCorto,
           precio: `$${r.producto.precio.toLocaleString("es-AR")}`,
           urlRetomar: `${SITE}${r.producto.rutaLanding}?utm_source=recordatorio&utm_medium=email#comprar`,
+          informe: r.producto.entrega === "informe",
         }),
       }).catch(() => false);
       if (ok) enviados++;

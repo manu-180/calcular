@@ -9,7 +9,7 @@
 
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { RUTAS_QUE_VENDEN, vendeAlgo } from "../src/lib/paginas-que-venden";
+import { RUTAS_QUE_VENDEN, RUTAS_QUE_VENDEN_EXACTAS, vendeAlgo } from "../src/lib/paginas-que-venden";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -20,7 +20,7 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
   }
 }
 
-const CTAS = ["<PlanillaComercioCTA", "<PlanillaUocraCTA", "<PlanillaComprarBtn"];
+const CTAS = ["<PlanillaComercioCTA", "<PlanillaUocraCTA", "<PlanillaComprarBtn", "<CalculadoraAlquiler", "<CalculadoraCuotaAlimentaria", "oferta={datosOferta("];
 
 /** Recorre src/app y devuelve la ruta pública de cada page.tsx que renderiza un CTA de venta. */
 function rutasConCta(dir = "src/app", base = ""): string[] {
@@ -50,7 +50,10 @@ check(
 );
 
 // Al revés: una ruta excluida que ya no vende nada es plata dejada sobre la mesa.
-const sobran = RUTAS_QUE_VENDEN.filter((r) => !conCta.some((c) => c === r || c.startsWith(`${r}/`)));
+const sobran = [
+  ...RUTAS_QUE_VENDEN.filter((r) => !conCta.some((c) => c === r || c.startsWith(`${r}/`))),
+  ...RUTAS_QUE_VENDEN_EXACTAS.filter((r) => !conCta.includes(r)),
+];
 check(
   "ninguna ruta está excluida de más (excluir sin vender es regalar ingresos)",
   sobran.length === 0,
@@ -59,7 +62,7 @@ check(
 
 // Las páginas informativas SÍ tienen que poder monetizar: si el guard se generalizara por error,
 // el sitio se quedaría sin anuncios en todos lados y nadie lo notaría hasta fin de mes.
-for (const ruta of ["/", "/monotributo", "/canasta-basica/agosto-2026", "/inflacion/2026", "/jubilacion"]) {
+for (const ruta of ["/", "/monotributo", "/canasta-basica/agosto-2026", "/inflacion/2026", "/jubilacion", "/cuota-alimentaria/agosto-2026"]) {
   check(`${ruta} puede servir anuncios`, !vendeAlgo(ruta));
 }
 

@@ -65,7 +65,7 @@ export default async function CuentaPage({ searchParams }: { searchParams: Promi
       {aviso ? <Aviso tono={aviso.tono}>{aviso.texto}</Aviso> : null}
       {usuario.verificado ? null : <BannerVerificar email={usuario.email} />}
 
-      <Seccion id="planillas" titulo="Mis planillas" bajada="Siempre bajás la última versión, con las escalas al día." orden={1}>
+      <Seccion id="planillas" titulo="Mis compras" bajada="Las planillas siempre en su última versión, con las escalas al día." orden={1}>
         <MisPlanillas compras={compras} error={error} verificado={usuario.verificado} />
       </Seccion>
 

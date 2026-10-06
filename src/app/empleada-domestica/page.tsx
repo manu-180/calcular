@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraCasasParticulares } from "@/components/CalculadoraCasasParticulares";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
@@ -18,7 +19,6 @@ import {
 } from "@/data/casas-particulares";
 import { escalaDe } from "@/data/casas-particulares";
 import { formatARS } from "@/lib/formato";
-import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 const NOVIEMBRE = ESCALAS_POR_MES.find((m) => m.id === "2026-11")!;
 const GENERALES = ESCALA_VIGENTE.find((c) => c.id === "tareas-generales")!;
@@ -158,9 +158,7 @@ export default function EmpleadaDomesticaPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraCasasParticulares />
-
-      <PlanillaCTA producto="planilla-casas-particulares" desde="empleada-domestica" />
+      <CalculadoraCasasParticulares oferta={datosOferta("planilla-casas-particulares")} />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">

@@ -26,9 +26,11 @@ export type ProductoSlug =
   | "planilla-comercio"
   | "planilla-uocra"
   | "planilla-casas-particulares"
-  | "planilla-monotributo";
+  | "planilla-monotributo"
+  | "planilla-alquileres"
+  | "informe-cuota-alimentaria";
 
-export type Producto = {
+type ProductoComun = {
   slug: ProductoSlug;
   /** Slug con el que se guardó `metadata.producto` en pagos viejos. Sin esto, la compra del
    *  8/8/2026 (la primera del imperio) dejaría de resolverse y esa clienta perdería el acceso
@@ -44,10 +46,16 @@ export type Producto = {
   disparadorActualizacion: string;
   precio: number;
   moneda: "ARS";
-  archivo: string;
+  /** Dónde se entrega, con `?payment_id=`: la ruta de descarga del .xlsx o la página del informe.
+   *  Es el enlace del mail de entrega y del botón de gracias, y siempre re-verifica el pago. */
   rutaDescarga: string;
   rutaLanding: string;
 };
+
+// `entrega` decide todo lo que cambia entre productos: el informe no tiene archivo en /private ni
+// ruta /api/*/download, se arma en una página con los datos que la persona cargó.
+export type Producto = ProductoComun &
+  ({ entrega: "xlsx"; archivo: string } | { entrega: "informe"; archivo: null });
 
 // Single source of truth de precio/moneda/archivo: el cobro, la validación del pago y la
 // entrega leen de acá, así no hay drift entre lo que se cobra y lo que se valida.
@@ -62,6 +70,7 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     disparadorActualizacion: "cada vez que FAECYS publica una circular con escala nueva",
     precio: 14900,
     moneda: "ARS",
+    entrega: "xlsx",
     archivo: "planilla-comercio-2026.xlsx",
     rutaDescarga: "/api/planilla-comercio/download",
     rutaLanding: "/planillas",
@@ -75,6 +84,7 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     disparadorActualizacion: "cada vez que UOCRA y CAMARCO firman un tramo nuevo",
     precio: 14900,
     moneda: "ARS",
+    entrega: "xlsx",
     archivo: "planilla-uocra-2026.xlsx",
     rutaDescarga: "/api/planilla-uocra/download",
     rutaLanding: "/planillas/uocra",
@@ -91,6 +101,7 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     disparadorActualizacion: "cada vez que la Comisión Nacional de Trabajo en Casas Particulares fija una escala nueva",
     precio: 9900,
     moneda: "ARS",
+    entrega: "xlsx",
     archivo: "planilla-casas-particulares-2026.xlsx",
     rutaDescarga: "/api/planilla-casas-particulares/download",
     rutaLanding: "/planillas/casas-particulares",
@@ -104,9 +115,38 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     disparadorActualizacion: "cada vez que ARCA actualiza las categorías (febrero y agosto)",
     precio: 9900,
     moneda: "ARS",
+    entrega: "xlsx",
     archivo: "planilla-monotributo-2026.xlsx",
     rutaDescarga: "/api/planilla-monotributo/download",
     rutaLanding: "/planillas/monotributo",
+  },
+  "planilla-alquileres": {
+    slug: "planilla-alquileres",
+    titulo: "Planilla de alquileres 2026",
+    tituloCorto: "Planilla de alquileres 2026",
+    convenio: "Contratos de alquiler — ajustes por IPC",
+    paraQuien: "Para el dueño que alquila una o varias propiedades: ajustes, recibos y la carta de aumento",
+    disparadorActualizacion: "cada mes, cuando el INDEC publica el IPC nuevo,",
+    precio: 9900,
+    moneda: "ARS",
+    entrega: "xlsx",
+    archivo: "planilla-alquileres-2026.xlsx",
+    rutaDescarga: "/api/planilla-alquileres/download",
+    rutaLanding: "/planillas/alquileres",
+  },
+  "informe-cuota-alimentaria": {
+    slug: "informe-cuota-alimentaria",
+    titulo: "Informe de cuota alimentaria",
+    tituloCorto: "Informe de cuota alimentaria",
+    convenio: "Referencia con la Canasta de Crianza del INDEC",
+    paraQuien: "Para llevar a la mediación o al abogado la cuenta de la cuota, explicada y con fuentes",
+    disparadorActualizacion: "cada mes, cuando el INDEC publica la canasta de crianza,",
+    precio: 4900,
+    moneda: "ARS",
+    entrega: "informe",
+    archivo: null,
+    rutaDescarga: "/informes/cuota-alimentaria/ver",
+    rutaLanding: "/informes/cuota-alimentaria",
   },
 };
 
@@ -115,11 +155,23 @@ export const CATALOGO: Producto[] = [
   PRODUCTOS["planilla-comercio"],
   PRODUCTOS["planilla-casas-particulares"],
   PRODUCTOS["planilla-monotributo"],
+  PRODUCTOS["planilla-alquileres"],
   PRODUCTOS["planilla-uocra"],
+  PRODUCTOS["informe-cuota-alimentaria"],
 ];
 
 /** Alias histórico: había un único producto y medio repo lo importa así. */
 export const PRODUCTO = PRODUCTOS["planilla-comercio"];
+
+/** «la Planilla …» / «el Informe …», para el copy que nombra el producto en una frase. */
+export function conArticulo(p: Producto): string {
+  return `${p.entrega === "informe" ? "el" : "la"} ${p.tituloCorto}`;
+}
+
+/** Enlace permanente de entrega de un pago (relativo; el mail le antepone el dominio). */
+export function rutaEntrega(p: Producto, paymentId: string): string {
+  return `${p.rutaDescarga}?payment_id=${encodeURIComponent(paymentId)}`;
+}
 
 export function productoPorSlug(slug: string | null | undefined): Producto | null {
   if (!slug) return null;
@@ -251,6 +303,7 @@ export function esPagoDePlanilla(p: MpPayment): boolean {
 /** Lee el .xlsx entregable. Vive en /private (fuera de /public): solo sale por una ruta
  *  gateada por el pago. Lo regenera scripts/gen_planilla_todas.ts en cada build. */
 export async function leerArchivoProducto(producto: Producto): Promise<Buffer> {
+  if (producto.entrega !== "xlsx") throw new Error(`${producto.slug} no se entrega como archivo`);
   return readFile(path.join(process.cwd(), "private", producto.archivo));
 }
 
@@ -286,11 +339,28 @@ export type CrearPreferenciaParams = {
   /** Prellena el checkout y queda en la preferencia (`payer_email` en la búsqueda de MP): es lo
    *  que permite mandar UN recordatorio a quien no terminó de pagar, sin tabla propia. */
   emailComprador?: string | null;
+  /** Lo que la persona cargó en la calculadora, ya validado y serializado (ver prefill/servidor.ts). */
+  datos?: string | null;
 };
 
-// Crea la preferencia de Checkout Pro y devuelve el init_point al que redirigir.
-export async function crearPreferencia(p: CrearPreferenciaParams): Promise<MpPreference> {
-  const res = await fetch(`${MP_API}/checkout/preferences`, {
+/** Tope de `metadata` serializada que acepta MP: con más, responde 400 «metadata field is invalid;
+ *  it must be less than 4000 chars length» (probado el 6/10/2026). Se deja margen. */
+export const METADATA_MAX = 3800;
+
+/** Metadata de la preferencia. MP la copia al pago (`GET /v1/payments/:id` la devuelve: así se
+ *  resuelven las ventas viejas por `metadata.producto`) y en el pago puede pasar las claves a
+ *  snake_case (en la preferencia quedan como se mandaron). Por eso las claves son una palabra en
+ *  minúscula y `datos` viaja como texto JSON: sus claves internas no las toca nadie. Si no entra
+ *  en el tope, sale sin `datos`. */
+export function metadataPreferencia(producto: Producto, datos?: string | null): Record<string, string> {
+  const base = { producto: producto.slug };
+  if (!datos) return base;
+  const con = { ...base, datos };
+  return JSON.stringify(con).length <= METADATA_MAX ? con : base;
+}
+
+async function postPreferencia(p: CrearPreferenciaParams, metadata: Record<string, string>): Promise<Response> {
+  return fetch(`${MP_API}/checkout/preferences`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${accessToken()}`,
@@ -312,11 +382,25 @@ export async function crearPreferencia(p: CrearPreferenciaParams): Promise<MpPre
       statement_descriptor: "CALCULAR",
       ...(p.emailComprador ? { payer: { email: p.emailComprador } } : {}),
       external_reference: p.externalReference,
-      metadata: { producto: p.producto.slug },
+      metadata,
       ...(p.notificationUrl ? { notification_url: p.notificationUrl } : {}),
     }),
     cache: "no-store",
   });
+}
+
+// Crea la preferencia de Checkout Pro y devuelve el init_point al que redirigir.
+export async function crearPreferencia(p: CrearPreferenciaParams): Promise<MpPreference> {
+  const metadata = metadataPreferencia(p.producto, p.datos);
+  let res = await postPreferencia(p, metadata);
+  // Los datos de la calculadora son un extra: si MP rechaza la preferencia por su contenido (400),
+  // se cobra igual sin ellos y la persona recibe el entregable genérico. Un 401/403/429 no es por
+  // los datos: reintentar sólo duplicaría la llamada que va a fallar igual.
+  if (res.status === 400 && "datos" in metadata) {
+    const detalle = await res.text().catch(() => "");
+    console.error(`[mp] preferencia rechazada con datos (${res.status}), reintento sin datos:`, p.producto.slug, detalle.slice(0, 200));
+    res = await postPreferencia(p, metadataPreferencia(p.producto, null));
+  }
 
   if (!res.ok) {
     const detalle = await res.text().catch(() => "");

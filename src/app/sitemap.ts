@@ -59,6 +59,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/planillas/uocra`,              lastModified: new Date('2026-09-04'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/planillas/casas-particulares`, lastModified: new Date('2026-09-27'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/planillas/monotributo`,        lastModified: new Date('2026-09-27'), changeFrequency: 'monthly', priority: 0.9  },
+    { url: `${BASE}/planillas/alquileres`,         lastModified: new Date('2026-10-06'), changeFrequency: 'monthly', priority: 0.9  },
+    { url: `${BASE}/informes/cuota-alimentaria`,   lastModified: new Date('2026-10-06'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/plazo-fijo`,                   lastModified: new Date('2026-06-01'), changeFrequency: 'weekly',  priority: 0.8  },
     { url: `${BASE}/vacaciones`,                   lastModified: new Date('2026-01-01'), changeFrequency: 'monthly', priority: 0.8  },
     { url: `${BASE}/cuota-alimentaria`,            lastModified: new Date('2026-07-30'), changeFrequency: 'monthly', priority: 0.9  },

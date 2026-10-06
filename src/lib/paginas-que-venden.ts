@@ -19,9 +19,10 @@
 // por una página con anuncios y navega hacia acá, el script ya está vivo. Cerrar eso del todo se
 // hace en el panel de AdSense (excluir estas URLs de los auto ads), y está anotado en el INBOX.
 
-/** Rutas con CTA de producto pago. Los `[mes]` van como prefijo porque son familias enteras. */
+/** Rutas con CTA de producto pago, con sus subrutas: los `[mes]` de un convenio también venden. */
 export const RUTAS_QUE_VENDEN = [
   "/planillas",
+  "/informes",
   "/convenios/comercio",
   "/dia-del-empleado-de-comercio",
   "/convenios/uocra",
@@ -34,8 +35,13 @@ export const RUTAS_QUE_VENDEN = [
   "/blog/nuevo-recibo-de-sueldo-2026",
 ] as const;
 
-/** `true` si en esa ruta hay algo a la venta (incluye sus subrutas: `/convenios/uocra/julio-2026`). */
+/** Rutas que venden sólo en la página misma: `/cuota-alimentaria/[mes]` es la serie mensual, sin CTA,
+ *  y apagarle los anuncios por prefijo era regalar ingresos. */
+export const RUTAS_QUE_VENDEN_EXACTAS = ["/inflacion/alquiler", "/cuota-alimentaria", "/empleada-domestica"] as const;
+
+/** `true` si en esa ruta hay algo a la venta (incluye las subrutas de RUTAS_QUE_VENDEN). */
 export function vendeAlgo(pathname: string): boolean {
   const ruta = pathname.replace(/\/+$/, "") || "/";
+  if ((RUTAS_QUE_VENDEN_EXACTAS as readonly string[]).includes(ruta)) return true;
   return RUTAS_QUE_VENDEN.some((r) => ruta === r || ruta.startsWith(`${r}/`));
 }

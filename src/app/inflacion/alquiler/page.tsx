@@ -8,6 +8,9 @@ import { ORGANIZACION, articleSchema } from "@/lib/schema";
 import { INFLACION_FUENTES, IPC_DIA_PUBLICACION } from "@/data/inflacion";
 import { nombrePeriodo, ULTIMO_PERIODO, variacionMensual } from "@/lib/inflacion";
 import { formatPct } from "@/lib/formato";
+import { PRODUCTOS } from "@/lib/mp";
+
+const PLANILLA = PRODUCTOS["planilla-alquileres"];
 
 export const metadata: Metadata = {
   title: "Ajuste de alquiler por IPC: calculá cuánto aumenta tu alquiler",
@@ -81,7 +84,7 @@ export default function AlquilerPage() {
         descripcion:
           "Cómo se ajusta un alquiler por IPC del INDEC: la fórmula (los porcentajes se componen, no se suman), la base legal del DNU 70/2023 y la demora de publicación del índice.",
         url: "/inflacion/alquiler",
-        modificado: "2026-06-19",
+        modificado: "2026-10-06",
       }),
     ],
   };
@@ -115,7 +118,13 @@ export default function AlquilerPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraAlquiler />
+      <CalculadoraAlquiler oferta={{ precio: PLANILLA.precio, rutaLanding: PLANILLA.rutaLanding }} />
+
+      <EmailCapture
+        source="inflacion-alquiler"
+        headline="¿Sos inquilino? Recibí el IPC nuevo cada lunes"
+        subtext="Con ese dato se calcula tu próximo aumento. Cada lunes te mandamos un resumen corto con el último IPC del INDEC y las tasas del momento. Te das de baja con un clic."
+      />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Cómo se ajusta un alquiler por IPC</h2>
@@ -196,11 +205,6 @@ export default function AlquilerPage() {
           .
         </p>
       </section>
-      <EmailCapture
-        source="inflacion-alquiler"
-        headline="Avisame cuando cambie el índice de tu alquiler"
-        subtext="El ajuste de tu alquiler depende del IPC del INDEC. Te aviso cuando salga el dato nuevo, así sabés cuánto te toca pagar. Sin spam."
-      />
     </article>
   );
 }

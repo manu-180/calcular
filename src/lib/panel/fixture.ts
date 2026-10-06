@@ -51,15 +51,17 @@ function repartir(total: number, pesos: number[]): number[] {
 }
 
 const PRODUCTOS = [
-  { producto: "planilla-comercio", titulo: "Planilla Comercio 2026", precio: 14900, peso: 0.45 },
-  { producto: "planilla-monotributo", titulo: "Planilla Monotributo 2026", precio: 9900, peso: 0.22 },
+  { producto: "planilla-comercio", titulo: "Planilla Comercio 2026", precio: 14900, peso: 0.42 },
+  { producto: "planilla-monotributo", titulo: "Planilla Monotributo 2026", precio: 9900, peso: 0.2 },
   {
     producto: "planilla-casas-particulares",
     titulo: "Planilla Casas Particulares 2026",
     precio: 9900,
-    peso: 0.21,
+    peso: 0.2,
   },
-  { producto: "planilla-uocra", titulo: "Planilla UOCRA 2026", precio: 14900, peso: 0.12 },
+  { producto: "planilla-uocra", titulo: "Planilla UOCRA 2026", precio: 14900, peso: 0.1 },
+  { producto: "planilla-alquileres", titulo: "Planilla de alquileres 2026", precio: 9900, peso: 0.05 },
+  { producto: "informe-cuota-alimentaria", titulo: "Informe de cuota alimentaria", precio: 4900, peso: 0.03 },
 ] as const;
 
 type Prod = (typeof PRODUCTOS)[number]["producto"];
@@ -96,7 +98,7 @@ const PAGINAS: {
   { path: "/planillas", titulo: "Planillas (catálogo)", peso: 0.011, tasa: 0.08, tiempo: 41_000, producto: "planilla-comercio", tendencia: 1.15 },
   { path: "/desempleo", titulo: "Seguro de desempleo", peso: 0.01, tasa: 0.42, tiempo: 76_000, producto: null, tendencia: 0.96 },
   { path: "/canasta-basica", titulo: "Canasta básica", peso: 0.009, tasa: 0.33, tiempo: 49_000, producto: null, tendencia: 1.0 },
-  { path: "/cuota-alimentaria", titulo: "Cuota alimentaria", peso: 0.008, tasa: 0.55, tiempo: 138_000, producto: null, tendencia: 1.02 },
+  { path: "/cuota-alimentaria", titulo: "Cuota alimentaria", peso: 0.008, tasa: 0.55, tiempo: 138_000, producto: "informe-cuota-alimentaria", tendencia: 1.02 },
 ];
 
 const FUENTES = [

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
+import { datosOferta } from "@/lib/oferta";
 import { CalculadoraComercio } from "@/components/CalculadoraComercio";
 import { JsonLd } from "@/components/JsonLd";
 import { PlanillaComercioCTA } from "@/components/PlanillaComercioCTA";
@@ -151,7 +152,7 @@ export default function SueldoNetoComercioPage() {
           Seleccioná tu categoría, mes y antigüedad para ver el desglose exacto de bruto, aportes
           y neto.
         </p>
-        <CalculadoraComercio />
+        <CalculadoraComercio oferta={datosOferta("planilla-comercio")} />
       </section>
 
       <section className="space-y-5">

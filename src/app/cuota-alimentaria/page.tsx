@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraCuotaAlimentaria } from "@/components/CalculadoraCuotaAlimentaria";
+import { EmailCapture } from "@/components/EmailCapture";
+import { productoPorSlug } from "@/lib/mp";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
@@ -40,7 +42,7 @@ const faqs = [
   },
   {
     q: "¿Quién fija el monto de la cuota alimentaria?",
-    a: "Lo acuerdan los progenitores y, si no hay acuerdo, lo fija un juez (art. 721 del Código Civil y Comercial). El juez pondera dos cosas: las necesidades concretas del hijo y la capacidad económica real de cada progenitor. Ninguna calculadora reemplaza esa decisión: sirve para llegar a la conversación con un número fundado en datos oficiales.",
+    a: "Lo acuerdan los progenitores y, si no hay acuerdo, lo fija un juez. La ley dice que los alimentos son proporcionales a las necesidades del hijo y a las posibilidades económicas de cada progenitor (art. 659 del Código Civil y Comercial), y eso es lo que se pondera. Ninguna calculadora reemplaza esa decisión: sirve para llegar a la conversación con un número fundado en datos oficiales.",
   },
   {
     q: "¿Por qué el cuidado cuenta como aporte y no solo la plata?",
@@ -48,7 +50,7 @@ const faqs = [
   },
   {
     q: "¿Se reparte mitad y mitad entre los dos progenitores?",
-    a: "No necesariamente. Los dos deben la manutención (arts. 658 y 659), pero el art. 666 apunta a que el hijo mantenga un nivel de vida equivalente en los dos hogares: si uno tiene más recursos, aporta más. Por eso la calculadora reparte el costo en proporción a los ingresos de cada uno en lugar de dividirlo por dos.",
+    a: "No necesariamente. Los dos deben la manutención (art. 658), pero en proporción a sus posibilidades económicas (art. 659): si uno tiene más recursos, aporta más. Con cuidado compartido, el art. 666 agrega que quien gana más pase una cuota para que el hijo tenga el mismo nivel de vida en las dos casas. Por eso la calculadora reparte el costo en proporción a los ingresos de cada uno en lugar de dividirlo por dos.",
   },
   {
     q: "¿Hasta qué edad se paga la cuota alimentaria?",
@@ -87,9 +89,9 @@ export default function CuotaAlimentariaPage() {
         titulo:
           "Cuota alimentaria 2026: cuánto es por hijo según la canasta de crianza del INDEC",
         descripcion:
-          "Monto de referencia de la cuota alimentaria a partir del costo oficial de crianza del INDEC y del reparto por capacidad económica entre progenitores (arts. 658, 660 y 666 CCyC).",
+          "Monto de referencia de la cuota alimentaria a partir del costo oficial de crianza del INDEC y del reparto por capacidad económica entre progenitores (arts. 658, 659 y 660 CCyC).",
         url: "/cuota-alimentaria",
-        modificado: "2026-07-30",
+        modificado: "2026-10-06",
       }),
       {
         "@type": "FAQPage",
@@ -121,18 +123,20 @@ export default function CuotaAlimentariaPage() {
       <RespuestaPrimero actualizado={CANASTA_CRIANZA_FUENTE.consultadoEl}>
         <p>
           No existe un monto legal de cuota alimentaria: el monto lo acuerdan los progenitores o lo
-          fija un juez (art. 721 CCyC), ponderando las necesidades del hijo y la capacidad económica
+          fija un juez, ponderando las necesidades del hijo y la capacidad económica
           de cada uno. El dato oficial de referencia es la{" "}
           <strong>canasta de crianza del INDEC</strong>: en {U.etiqueta}, criar a un chico cuesta
           entre <strong>{formatARS(menor, 0)}</strong> (menor de 1 año) y{" "}
           <strong>{formatARS(mayor, 0)}</strong> (6 a 12 años) por mes, incluyendo bienes, servicios
           y el valor del cuidado. Ese costo lo deben <strong>los dos</strong> progenitores en
-          proporción a sus ingresos (art. 666), y el trabajo de cuidado de quien convive con el hijo
+          proporción a sus posibilidades económicas (art. 659), y el trabajo de cuidado de quien convive con el hijo
           cuenta como aporte económico (art. 660).
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraCuotaAlimentaria />
+      <div>
+        <CalculadoraCuotaAlimentaria precioInforme={productoPorSlug("informe-cuota-alimentaria")?.precio} />
+      </div>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
@@ -202,6 +206,14 @@ export default function CuotaAlimentariaPage() {
         />
       </section>
 
+      {/* El newsletter semanal trae el IPC del INDEC: es la promesa que se puede cumplir hoy. No
+          prometer un aviso de la canasta de crianza mientras el newsletter no la incluya. */}
+      <EmailCapture
+        source="cuota-alimentaria"
+        headline="Sabé cuándo conviene actualizar la cuota"
+        subtext="Una vez por semana te mandamos los números oficiales que cambiaron, empezando por la inflación del INDEC, que es con lo que se actualizan muchas cuotas. Sin spam: te das de baja con un clic."
+      />
+
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
           Cómo se pasa del costo de crianza a la cuota
@@ -225,8 +237,8 @@ export default function CuotaAlimentariaPage() {
               poniendo esa parte.
             </li>
             <li>
-              <strong>Se reparte según la capacidad de cada uno</strong> (art. 666): el objetivo es
-              que el hijo tenga un nivel de vida equivalente en los dos hogares, así que quien más
+              <strong>Se reparte según la capacidad de cada uno</strong> (art. 659): los alimentos son
+              proporcionales a las posibilidades económicas de cada progenitor, así que quien más
               recursos tiene aporta más. No es automáticamente mitad y mitad.
             </li>
           </ol>
@@ -314,8 +326,19 @@ export default function CuotaAlimentariaPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              Ministerio de Justicia — Los alimentos de los hijos (arts. 658, 659, 660, 663, 666 y
-              721 del Código Civil y Comercial)
+              Ministerio de Justicia — Los alimentos de los hijos (arts. 658 a 663 del Código Civil y
+              Comercial)
+            </a>
+          </li>
+          <li>
+            •{" "}
+            <a
+              href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/235000-239999/235975/norma.htm"
+              rel="nofollow noopener"
+              target="_blank"
+              className="text-emerald-700 underline"
+            >
+              InfoLEG — Código Civil y Comercial de la Nación, texto oficial (arts. 658 a 670)
             </a>
           </li>
         </ul>

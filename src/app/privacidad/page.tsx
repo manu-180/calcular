@@ -29,7 +29,7 @@ export default function PrivacidadPage() {
     <article className="mx-auto max-w-2xl space-y-10">
       <header className="space-y-3">
         <h1 className="text-titular font-bold text-zinc-900">Política de privacidad</h1>
-        <p className="text-xs text-zinc-500">Última actualización: 30 de septiembre de 2026</p>
+        <p className="text-xs text-zinc-500">Última actualización: 6 de octubre de 2026</p>
         <p className="text-[15px] leading-relaxed text-pretty text-zinc-600">
           Podés usar todas las calculadoras sin registrarte y sin darnos ningún dato. Acá te contamos qué
           se guarda cuando usás el sitio, para qué, y cómo pedir que lo borremos.
@@ -39,7 +39,10 @@ export default function PrivacidadPage() {
       <nav aria-label="En esta página" className="rounded-2xl border border-zinc-900/[0.06] bg-white/70 p-5">
         <p className="text-xs font-semibold text-zinc-900">En resumen</p>
         <ul className="mt-3 space-y-2 text-sm leading-relaxed text-zinc-600">
-          <li>Lo que escribís en una calculadora se queda en tu navegador.</li>
+          <li>
+            Lo que escribís en una calculadora se queda en tu navegador. Sólo si comprás una planilla o un
+            informe, los valores de esa calculadora viajan con el pago para armártelo.
+          </li>
           <li>Medimos el uso del sitio con una herramienta propia que no usa cookies ni guarda tu IP.</li>
           <li>La cuenta es opcional. Si la creás, guardamos tu mail y lo que elijas guardar.</li>
           <li>Los pagos los procesa MercadoPago: nunca vemos los datos de tu tarjeta.</li>
@@ -55,14 +58,27 @@ export default function PrivacidadPage() {
 
       <Seccion id="calculadoras" titulo="Lo que escribís en las calculadoras">
         <p>
-          Los valores que cargás (tu sueldo, tu facturación, una fecha) se procesan en tu navegador. No
-          se mandan a nuestros servidores ni quedan guardados en ningún lado.
+          Los valores que cargás (tu sueldo, tu facturación, una fecha) se procesan en tu navegador. Mientras
+          usás el sitio no se mandan a nuestros servidores.
         </p>
         <p>
-          La única excepción la decidís vos: si tenés cuenta y tocás «Guardar», guardamos ese cálculo —la
-          página, los valores que cargaste y un resumen del resultado— para que lo encuentres después.
-          Podés borrarlo cuando quieras desde tu cuenta.
+          En las calculadoras que tienen una planilla o un informe para comprar, tu navegador recuerda
+          durante 7 días los últimos valores que cargaste, para que lo que compres salga con tus números.
+          Queda sólo en tu dispositivo: si cambiás los datos, se reemplazan, y si los dejás incompletos, se
+          borran.
         </p>
+        <p>Hay dos casos en que los valores sí salen de tu navegador, y los dos los decidís vos:</p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>
+            si tenés cuenta y tocás «Guardar», guardamos ese cálculo —la página, los valores que cargaste y
+            un resumen del resultado— para que lo encuentres después. Podés borrarlo cuando quieras desde
+            tu cuenta;
+          </li>
+          <li>
+            si comprás, te contamos en la sección de compras qué viaja con el pago. Lo podés evitar
+            destildando «Usar los datos que cargué en la calculadora» antes de pagar.
+          </li>
+        </ul>
       </Seccion>
 
       <Seccion id="medicion" titulo="Cómo medimos el uso del sitio">
@@ -110,11 +126,38 @@ export default function PrivacidadPage() {
         </p>
       </Seccion>
 
-      <Seccion id="compras" titulo="Si comprás una planilla">
+      <Seccion id="compras" titulo="Si comprás una planilla o un informe">
         <p>
           El pago lo procesa MercadoPago: nosotros nunca vemos ni guardamos los datos de tu tarjeta ni de
-          tu cuenta de MercadoPago. Para mandarte la planilla guardamos el mail que nos diste, el producto,
-          el monto, el número de operación y si el pago se aprobó.
+          tu cuenta de MercadoPago. Para mandarte lo que compraste guardamos el mail que nos diste, el
+          producto, el monto, el número de operación y si el pago se aprobó.
+        </p>
+        <p>
+          Si al comprar dejás tildado «Usar los datos que cargué en la calculadora», los valores de esa
+          calculadora viajan con el pago a MercadoPago y vuelven cuando abrís tu enlace, para armarte el
+          archivo o el informe con tus números. Son sólo estos, según lo que compres:
+        </p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>planilla de Comercio: mes, categoría, años de antigüedad, jornada y si cobra presentismo;</li>
+          <li>planilla UOCRA: mes, categoría, zona, horas del mes, asistencia y aporte solidario;</li>
+          <li>
+            planilla de Casas Particulares: mes, categoría, con o sin retiro, horas por semana, zona
+            desfavorable y horas extras;
+          </li>
+          <li>planilla de alquileres: el alquiler inicial, el mes en que empezó el contrato y cada cuánto se ajusta;</li>
+          <li>
+            informe de cuota alimentaria: la edad de cada hijo (por tramo), el ingreso de quien paga, el del
+            otro progenitor si lo cargaste y si el cuidado es compartido.
+          </li>
+        </ul>
+        <p>
+          Nunca viajan nombres, direcciones ni documentos: los nombres que escribas en el informe quedan en
+          tu navegador. Esos valores quedan asociados al pago en MercadoPago mientras exista la operación.
+          Si querés que los borremos, escribinos a{" "}
+          <a href={`mailto:${CONTACTO}`} className={enlace}>
+            {CONTACTO}
+          </a>{" "}
+          con el número de operación y nos ocupamos.
         </p>
         <p>
           Si tenés una cuenta con ese mismo mail confirmado, la compra aparece también ahí. Y si empezaste

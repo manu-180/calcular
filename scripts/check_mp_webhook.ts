@@ -12,6 +12,7 @@
 //
 // Correr con: npx tsx scripts/check_mp_webhook.ts  (o vía scripts/check-all.ts)
 
+import "./sin-server-only";
 import {
   extraerPaymentId,
   firmar,
@@ -24,6 +25,9 @@ import {
   type Http,
 } from "../src/lib/mp-webhook";
 import {
+  METADATA_MAX,
+  crearPreferencia,
+  metadataPreferencia,
   PRODUCTOS,
   habilitaDescarga,
   pagoAprobado,
@@ -32,6 +36,9 @@ import {
   referenciaExterna,
   type MpPayment,
 } from "../src/lib/mp";
+import { DATOS_MAX, datosDelPago, datosParaCheckout } from "../src/lib/prefill/servidor";
+import { PREFILLS } from "../src/lib/prefill";
+import type { Prefill } from "../src/lib/prefill/tipos";
 
 let fallas = 0;
 
@@ -449,7 +456,162 @@ async function pruebaRastroEntrega() {
   check("PATCH 500: marcarEntrega devuelve false", resultadoRoto === false, resultadoRoto);
 }
 
-pruebaIdempotencia()
+// ── Datos de la calculadora: del formulario a la metadata de MP y de vuelta en el pago ──────────
+// `datos` lo manda el navegador: input hostil. Se prueba con un prefill de prueba enchufado en el
+// registro, así el check no depende de cómo valide cada producto.
+async function pruebaMetadata() {
+  type D = { sueldo: number; nombre: string };
+  const PRUEBA: Prefill<D> = {
+    validar(raw) {
+      if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
+      const r = raw as Record<string, unknown>;
+      if (typeof r.sueldo !== "number" || !Number.isFinite(r.sueldo) || r.sueldo < 0 || r.sueldo > 1e9) return null;
+      if (typeof r.nombre !== "string" || r.nombre.length > 60) return null;
+      return { sueldo: r.sueldo, nombre: r.nombre };
+    },
+  };
+  const original = { uocra: PREFILLS["planilla-uocra"], casas: PREFILLS["planilla-casas-particulares"] };
+  const fetchReal = globalThis.fetch;
+  process.env.MP_ACCESS_TOKEN ??= "APP_USR-token-de-prueba-no-es-el-real";
+  try {
+    PREFILLS["planilla-uocra"] = PRUEBA as Prefill<unknown>;
+    PREFILLS["planilla-casas-particulares"] = {
+      validar: () => {
+        throw new Error("roto");
+      },
+    };
+    const UOCRA = PRODUCTOS["planilla-uocra"];
+
+    const bueno = JSON.stringify({ sueldo: 850000, nombre: "Ana" });
+    check("datos válidos → JSON canónico", datosParaCheckout("planilla-uocra", bueno) === bueno);
+    check(
+      "campos extra (y __proto__) se descartan: viaja sólo lo que devolvió validar",
+      datosParaCheckout("planilla-uocra", '{"sueldo":1,"nombre":"Ana","__proto__":{"admin":true},"extra":"<script>"}') ===
+        '{"sueldo":1,"nombre":"Ana"}',
+    );
+    const hostiles: Array<[string, string, unknown]> = [
+      ["JSON roto", "planilla-uocra", "{sueldo:"],
+      ["más de 2 KB", "planilla-uocra", JSON.stringify({ sueldo: 1, nombre: "a", relleno: "x".repeat(DATOS_MAX) })],
+      ["slug desconocido", "planilla-trucha", bueno],
+      ["producto sin prefill (monotributo)", "planilla-monotributo", bueno],
+      ["fuera de rango", "planilla-uocra", JSON.stringify({ sueldo: -5, nombre: "Ana" })],
+      ["tipo equivocado", "planilla-uocra", JSON.stringify({ sueldo: "850000", nombre: "Ana" })],
+      ["un array", "planilla-uocra", "[1,2,3]"],
+      ["null", "planilla-uocra", "null"],
+      ["vacío", "planilla-uocra", ""],
+      ["no es texto (un File del form)", "planilla-uocra", { name: "x" }],
+      ["validar que tira", "planilla-casas-particulares", bueno],
+    ];
+    for (const [nombre, slug, crudo] of hostiles) {
+      let r: string | null = "tiró";
+      try {
+        r = datosParaCheckout(slug, crudo);
+      } catch {
+        r = "tiró";
+      }
+      check(`datos hostiles: ${nombre} → null, sin tirar`, r === null, r);
+    }
+
+    // Metadata: `datos` como texto y claves de una palabra (MP pasa las del pago a snake_case).
+    const meta = metadataPreferencia(UOCRA, bueno);
+    check("metadata lleva producto y datos", meta.producto === "planilla-uocra" && meta.datos === bueno, meta);
+    check("metadata sin datos queda como siempre", JSON.stringify(metadataPreferencia(UOCRA, null)) === '{"producto":"planilla-uocra"}');
+    check("las claves de la metadata no cambian con snake_case", Object.keys(meta).every((k) => /^[a-z]+$/.test(k)));
+    const enorme = metadataPreferencia(UOCRA, JSON.stringify({ x: '"'.repeat(DATOS_MAX) }));
+    check(
+      `metadata que no entra en el tope de MP (${METADATA_MAX}) sale sin datos`,
+      !("datos" in enorme) && JSON.stringify(enorme).length <= METADATA_MAX,
+    );
+
+    // crearPreferencia: los datos van en el cuerpo; si MP rechaza la preferencia por ellos, se cobra igual sin ellos.
+    const cuerpos: Record<string, unknown>[] = [];
+    let respuestas: Array<[number, unknown]> = [];
+    globalThis.fetch = (async (_u: RequestInfo | URL, init?: RequestInit) => {
+      cuerpos.push(JSON.parse(String(init?.body ?? "{}")));
+      const [status, body] = respuestas.shift() ?? [201, { id: "p", init_point: "https://mp/ok" }];
+      return new Response(JSON.stringify(body), { status });
+    }) as typeof fetch;
+    const params = {
+      producto: UOCRA,
+      externalReference: "planilla-uocra:x",
+      backUrls: { success: "s", pending: "p", failure: "f" },
+      datos: bueno,
+    };
+    const ok = await crearPreferencia(params);
+    check("preferencia con datos: una sola llamada", cuerpos.length === 1 && ok.init_point === "https://mp/ok");
+    check("y la metadata enviada trae los datos", (cuerpos[0].metadata as Record<string, string>)?.datos === bueno, cuerpos[0].metadata);
+
+    cuerpos.length = 0;
+    respuestas = [[400, { message: "metadata field is invalid" }]];
+    const reintento = await crearPreferencia(params);
+    check("MP rechaza con datos (400) → reintenta sin datos y cobra igual", cuerpos.length === 2 && reintento.init_point === "https://mp/ok");
+    const meta2 = (cuerpos[1]?.metadata ?? {}) as Record<string, string>;
+    check("el reintento no lleva datos", !("datos" in meta2) && meta2.producto === "planilla-uocra", meta2);
+
+    cuerpos.length = 0;
+    respuestas = [[500, { message: "boom" }]];
+    let tiro = false;
+    try {
+      await crearPreferencia(params);
+    } catch {
+      tiro = true;
+    }
+    check("un 500 de MP no se reintenta (el checkout vuelve a la landing con error, como siempre)", tiro && cuerpos.length === 1);
+
+    for (const status of [401, 403, 404, 429]) {
+      cuerpos.length = 0;
+      respuestas = [[status, { message: "no es por los datos" }]];
+      let tiroOtro = false;
+      try {
+        await crearPreferencia(params);
+      } catch {
+        tiroOtro = true;
+      }
+      check(`un ${status} de MP no se reintenta sin datos (no es culpa de los datos)`, tiroOtro && cuerpos.length === 1, cuerpos.length);
+    }
+
+    // Ida y vuelta: lo que se guardó en la preferencia vuelve en el pago y se re-valida.
+    const pagoCon = (metadata: Record<string, unknown>, ref = "planilla-uocra:abc"): MpPayment => ({
+      status: "approved",
+      transaction_amount: UOCRA.precio,
+      currency_id: "ARS",
+      external_reference: ref,
+      metadata,
+    });
+    const vuelta = datosDelPago(pagoCon({ producto: "planilla-uocra", datos: bueno }), UOCRA);
+    check("ida y vuelta: los datos del pago son los que se mandaron", JSON.stringify(vuelta) === bueno, vuelta);
+    check(
+      "datos del pago de OTRO producto no se usan",
+      datosDelPago(pagoCon({ producto: "planilla-comercio", datos: bueno }, "planilla-comercio:abc"), UOCRA) === null,
+    );
+    check("pago sin datos → null", datosDelPago(pagoCon({ producto: "planilla-uocra" }), UOCRA) === null);
+    check("datos corruptos en el pago → null", datosDelPago(pagoCon({ producto: "planilla-uocra", datos: "{x" }), UOCRA) === null);
+    check(
+      "datos de más de 2 KB en el pago → null",
+      datosDelPago(pagoCon({ producto: "planilla-uocra", datos: JSON.stringify({ sueldo: 1, nombre: "y".repeat(DATOS_MAX) }) }), UOCRA) === null,
+    );
+    check(
+      "datos que ya no pasan validar → null",
+      datosDelPago(pagoCon({ producto: "planilla-uocra", datos: JSON.stringify({ sueldo: 1e12, nombre: "Ana" }) }), UOCRA) === null,
+    );
+    check(
+      "si MP los devolviera parseados, también sirven",
+      JSON.stringify(datosDelPago(pagoCon({ producto: "planilla-uocra", datos: { sueldo: 5, nombre: "Bo" } }), UOCRA)) ===
+        '{"sueldo":5,"nombre":"Bo"}',
+    );
+    check(
+      "la metadata nunca habilita: un pago pendiente con datos sigue sin habilitar la descarga",
+      !habilitaDescarga({ ...pagoCon({ producto: "planilla-uocra", datos: bueno }), status: "pending" }, UOCRA),
+    );
+  } finally {
+    PREFILLS["planilla-uocra"] = original.uocra;
+    PREFILLS["planilla-casas-particulares"] = original.casas;
+    globalThis.fetch = fetchReal;
+  }
+}
+
+pruebaMetadata()
+  .then(pruebaIdempotencia)
   .then(pruebaCarrera)
   .then(pruebaRastroEntrega)
   .then(() => {

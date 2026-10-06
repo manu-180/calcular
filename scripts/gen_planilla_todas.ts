@@ -1,4 +1,5 @@
-// Regenera TODOS los .xlsx entregables desde src/data/ (convenios, casas particulares, monotributo).
+// Regenera TODOS los .xlsx entregables desde src/data/ (convenios, casas particulares, monotributo,
+// alquileres con el IPC).
 //
 // Está pensado para correr en el build (package.json → "prebuild"), no a mano: el archivo que
 // se le manda al comprador tiene que nacer del deploy, no de que alguien se acuerde de
@@ -11,6 +12,7 @@ import { generarPlanillaComercio } from "./gen_planilla_comercio";
 import { generarPlanillaUocra } from "./gen_planilla_uocra";
 import { generarPlanillaCasas } from "./gen_planilla_casas";
 import { generarPlanillaMonotributo } from "./gen_planilla_monotributo";
+import { generarPlanillaAlquileres } from "./gen_planilla_alquileres";
 
 async function main() {
   const salidas = [
@@ -18,6 +20,7 @@ async function main() {
     ["UOCRA (CCT 76/75)", await generarPlanillaUocra()],
     ["Casas Particulares", await generarPlanillaCasas()],
     ["Monotributo", await generarPlanillaMonotributo()],
+    ["Alquileres", await generarPlanillaAlquileres()],
   ] as const;
 
   for (const [nombre, ruta] of salidas) {

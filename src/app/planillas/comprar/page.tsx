@@ -9,7 +9,7 @@ import { productoPorSlug } from "@/lib/mp";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Comprar planilla",
+  title: "Comprar",
   robots: { index: false, follow: false },
 };
 
@@ -27,10 +27,15 @@ export default async function ComprarPage({ searchParams }: { searchParams: Prom
         <h1 className="mt-0.5 text-xl font-bold text-zinc-900">{producto.tituloCorto}</h1>
         <p className="mb-5 text-sm text-zinc-600">
           <span className="font-semibold text-zinc-900">${producto.precio.toLocaleString("es-AR")}</span> · pago
-          único · Excel y Google Sheets
+          único · {producto.entrega === "informe" ? "lo ves apenas pagás" : "Excel y Google Sheets"}
         </p>
         <FormularioCompra
-          producto={{ slug: producto.slug, tituloCorto: producto.tituloCorto, precio: producto.precio }}
+          producto={{
+            slug: producto.slug,
+            tituloCorto: producto.tituloCorto,
+            precio: producto.precio,
+            entrega: producto.entrega,
+          }}
           errorEmail={sp.error === "email"}
           autoFocus
           enPagina
@@ -38,7 +43,7 @@ export default async function ComprarPage({ searchParams }: { searchParams: Prom
       </div>
       <p className="mt-4 text-center text-sm">
         <Link href={producto.rutaLanding} className="font-semibold text-emerald-700 underline">
-          Volver a ver la planilla
+          {producto.entrega === "informe" ? "Volver a ver el informe" : "Volver a ver la planilla"}
         </Link>
       </p>
     </div>

@@ -705,7 +705,20 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
   igual(armado.kpis[0].serie[0].t, "2026-09-01T03:00:00.000Z", "las fechas salen en ISO UTC");
   ok(armado.paginas.every((x) => x.serieUsos.length === 7 && x.titulo.length > 0), "páginas con título y serie completa");
   igual(armado.paginas[0].tasaUso, 0.5, "tasaUso = usos / vistas");
-  igual(armado.embudos.map((e) => e.producto), ["planilla-comercio", "planilla-casas-particulares", "planilla-monotributo", "planilla-uocra"], "siempre los 4 productos del catálogo");
+  igual(
+    armado.embudos.map((e) => e.producto),
+    ["planilla-comercio", "planilla-casas-particulares", "planilla-monotributo", "planilla-alquileres", "planilla-uocra", "informe-cuota-alimentaria"],
+    "siempre los 6 productos del catálogo, aunque no tengan movimiento",
+  );
+  const cuota = mods.datos.armarPanel("7d", desde, hasta, {
+    ...p,
+    paginas: [{ path: "/cuota-alimentaria", vistas: 1 }, { path: "/inflacion/alquiler", vistas: 1 }],
+  });
+  igual(
+    cuota.paginas.map((x) => x.producto),
+    ["informe-cuota-alimentaria", "planilla-alquileres"],
+    "la calculadora de cuota vende el informe y la de alquiler la planilla de alquileres",
+  );
   igual(armado.embudos.find((e) => e.producto === "planilla-monotributo")?.pasos.map((x) => x.n), [0, 0, 2, 1], "una venta con checkout sin visitante (fuente null) no rompe nada");
   ok(armado.embudos.every((e) => e.titulo && e.precio > 0), "títulos y precios del catálogo");
   igual([armado.sinDatos, armado.lecturas.length, armado.rango, armado.desde], [false, 0, "7d", desde.toISOString()], "sin señal suficiente no inventa lecturas");
