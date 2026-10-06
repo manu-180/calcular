@@ -115,7 +115,8 @@ export function celdaResultado(
   if (opts.total) lc.font = { bold: true };
 
   const vc = ws.getCell(`B${fila}`);
-  vc.value = { formula };
+  // OOXML guarda la fórmula sin el «=»: con él, Excel ofrece «reparar» el archivo.
+  vc.value = { formula: formula.replace(/^=/, "") };
   vc.fill = fill;
   vc.border = BORDE;
   vc.numFmt = opts.formato ?? ARS_FMT;

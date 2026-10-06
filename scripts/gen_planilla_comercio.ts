@@ -57,6 +57,25 @@ const ESC_COL_INI = "B";
 const ESC_COL_FIN = String.fromCharCode("B".charCodeAt(0) + MESES.length - 1);
 if (MESES.length > 25) throw new Error("Más de 25 meses: el layout de columnas no alcanza.");
 
+// Coordenadas de la Liquidación que lee src/lib/prefill/comercio.ts para entregar la planilla con
+// los datos de la calculadora. scripts/check_prefill_planillas.ts compara las dos copias.
+export const HOJA_LIQUIDACION_COMERCIO = "Liquidación";
+export const CELDAS_COMERCIO = {
+  categoria: "B5",
+  mes: "B6",
+  antiguedad: "B7",
+  jornada: "B8",
+  presentismo: "B9",
+  bruto: "B17",
+  neto: "B19",
+} as const;
+// Las opciones del desplegable de jornada, por id de JORNADAS_COMERCIO.
+export const JORNADAS_PLANILLA_COMERCIO = {
+  "8": "Jornada completa (8hs)",
+  "6": "Jornada de 6hs (¾)",
+  "4": "Media jornada (4hs)",
+} as const;
+
 // ─── Estilos ─────────────────────────────────────────────────────────────────
 
 const S = {
@@ -245,7 +264,8 @@ function buildLiquidacion(wb: ExcelJS.Workbook) {
     labelCell.font = isTotal ? { bold: true } : {};
 
     const valCell = ws.getCell(`B${r}`);
-    valCell.value = { formula };
+    // OOXML guarda la fórmula sin el «=»: con él, Excel ofrece «reparar» el archivo.
+    valCell.value = { formula: formula.replace(/^=/, "") };
     valCell.fill = isTotal ? S.total : S.output;
     valCell.border = BORDER_THIN;
     valCell.numFmt = ARS_FMT;
@@ -431,7 +451,7 @@ function buildSac(wb: ExcelJS.Workbook) {
     lc.font = isTotal ? { bold: true } : {};
 
     const vc = ws.getCell(`B${r}`);
-    vc.value = { formula };
+    vc.value = { formula: formula.replace(/^=/, "") };
     vc.fill = isTotal ? S.total : S.output;
     vc.border = BORDER_THIN;
     vc.numFmt = ARS_FMT;

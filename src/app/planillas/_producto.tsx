@@ -20,6 +20,8 @@ import { AvisoPago } from "@/components/AvisoPago";
 import { BarraCompraMovil } from "@/components/BarraCompraMovil";
 import { CatalogoPlanillas, OtrasPlanillas } from "@/components/CatalogoPlanillas";
 import { CompraDialogo } from "@/components/CompraDialogo";
+import { HojaCalculo, type FilaHoja, type HojaPrevia } from "@/components/HojaCalculo";
+import { AvisoDatosCargados, PreviaPersonal, type SlugPersonalizable } from "@/components/oferta/PreviaPersonal";
 import { JsonLd } from "@/components/JsonLd";
 import { PlanillaComprarBtn } from "@/components/PlanillaComprarBtn";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
@@ -45,7 +47,10 @@ export type ConfigLanding = {
   previewSubtitulo: string;
   /** Nombre de la hoja que muestra la vista previa. */
   previewHoja?: string;
-  preview: FilaPreview[];
+  /** Filas de la vista previa. Lo usan las landings que no arman `hoja`. */
+  preview?: FilaPreview[];
+  /** Vista previa completa (filas con su número real, pestañas del libro). Si está, manda sobre `preview`. */
+  hoja?: HojaPrevia;
   /** Link a la calculadora gratis que da estos mismos números. */
   calculadoraGratis: { href: string; texto: string };
   hojas: { titulo: string; descripcion: string }[];
@@ -54,6 +59,12 @@ export type ConfigLanding = {
   /** Título de la sección de actualizaciones: no todo producto depende de una paritaria. */
   tituloActualizacion?: string;
   faqs: { q: string; a: string }[];
+  /** Bajo «Esto es lo que vas a ver al abrirla». Default: el texto de las planillas con escala oficial. */
+  textoPreview?: string;
+  /** Cuerpo del recuadro «Comprobalo antes de pagar» (landings sin prefill). Default: el de la escala. */
+  textoComprobar?: string;
+  /** Tercer punto de la lista de la sidebar. Default: «Escala oficial embebida, no la buscás más». */
+  beneficioDatos?: string;
   relacionadas: { href: string; texto: string }[];
 };
 
@@ -69,6 +80,21 @@ function Check() {
   );
 }
 
+// Las planillas cuya calculadora deja los datos para la compra (src/lib/prefill/cliente.ts): en su
+// landing, quien viene de la calculadora ve su propio caso en vez del ejemplo.
+const PERSONALIZABLES = new Set<string>(["planilla-comercio", "planilla-uocra", "planilla-casas-particulares"]);
+
+function hojaDesdeFilas(c: ConfigLanding): HojaPrevia {
+  const hoja = c.previewHoja ?? "Liquidador";
+  const filas: FilaHoja[] = (c.preview ?? []).map((f) => ({
+    etiqueta: f.etiqueta,
+    valor: f.valor,
+    nota: f.nota,
+    tono: f.tono === "total" ? "total" : f.tono === "input" ? "input" : "resultado",
+  }));
+  return { archivo: c.producto.archivo ?? c.producto.tituloCorto, pestanas: [hoja], hoja, filas };
+}
+
 function Comprar({ producto, id }: { producto: Producto; id?: string }) {
   return <PlanillaComprarBtn producto={producto.slug} precio={producto.precio} id={id} />;
 }
@@ -76,6 +102,11 @@ function Comprar({ producto, id }: { producto: Producto; id?: string }) {
 export function PlanillaLanding(c: ConfigLanding) {
   const { producto } = c;
   const precio = formatARS(producto.precio, 0);
+  const personal =
+    PERSONALIZABLES.has(producto.slug) && producto.archivo
+      ? { producto: producto.slug as SlugPersonalizable, archivo: producto.archivo }
+      : null;
+  const hojaEjemplo = c.hoja ?? hojaDesdeFilas(c);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -156,14 +187,10 @@ export function PlanillaLanding(c: ConfigLanding) {
 
       {/* ── Hero: promesa + precio + CTA, todo arriba del pliegue ── */}
       <section className="mb-10">
-        <div className="mb-3 flex flex-wrap items-center gap-2">
-          <span className="rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-semibold text-emerald-800">
-            {c.etiquetaConvenio}
-          </span>
-          <span className="rounded-full bg-zinc-100 px-3 py-0.5 text-xs font-semibold text-zinc-700">
-            Excel y Google Sheets
-          </span>
-        </div>
+        <p className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold">
+          <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-800">{c.etiquetaConvenio}</span>
+          <span className="text-zinc-500">Excel y Google Sheets</span>
+        </p>
 
         <h1 className="mb-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">{c.h1}</h1>
         <p className="max-w-2xl text-lg text-zinc-600">{c.bajada}</p>
@@ -183,6 +210,7 @@ export function PlanillaLanding(c: ConfigLanding) {
             </p>
           </div>
         </div>
+        {personal ? <AvisoDatosCargados producto={personal.producto} archivo={personal.archivo} /> : null}
 
         <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-600">
           <li className="flex items-start gap-1.5">
@@ -207,69 +235,49 @@ export function PlanillaLanding(c: ConfigLanding) {
           <section>
             <h2 className="mb-1 text-xl font-semibold text-zinc-900">Esto es lo que vas a ver al abrirla</h2>
             <p className="mb-4 text-sm text-zinc-600">
-              No es una captura de pantalla: son los números que la planilla devuelve hoy, calculados
-              con la escala vigente. Si mañana cambia la escala oficial, cambia esto y cambia el archivo.
+              {c.textoPreview ??
+                "No es una captura de pantalla: son los números que la planilla devuelve hoy, calculados con la escala vigente. Si mañana cambia la escala oficial, cambia esto y cambia el archivo."}
             </p>
 
-            <div className="overflow-hidden rounded-xl border border-zinc-300 shadow-sm">
-              <div className="flex items-center justify-between gap-3 border-b border-zinc-300 bg-zinc-800 px-4 py-2.5">
-                <p className="text-sm font-semibold text-white">{c.previewTitulo}</p>
-                <span className="hidden shrink-0 rounded bg-zinc-700 px-2 py-0.5 text-[11px] font-medium text-zinc-200 sm:inline">
-                  hoja «{c.previewHoja ?? "Liquidador"}»
-                </span>
-              </div>
-              <p className="border-b border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-600">
-                {c.previewSubtitulo}
-              </p>
-              <table className="w-full text-sm">
-                <tbody>
-                  {c.preview.map((f, i) => {
-                    const total = f.tono === "total";
-                    const input = f.tono === "input";
-                    return (
-                      <tr
-                        key={i}
-                        className={
-                          total
-                            ? "bg-emerald-100/80 font-semibold text-zinc-900"
-                            : input
-                              ? "bg-amber-50/70 text-zinc-700"
-                              : "bg-white text-zinc-700"
-                        }
-                      >
-                        <th
-                          scope="row"
-                          className="border-b border-zinc-200 px-4 py-2 text-left font-normal first-letter:uppercase"
-                        >
-                          <span className={total ? "font-semibold" : undefined}>{f.etiqueta}</span>
-                          {f.nota ? <span className="ml-2 text-xs text-zinc-500">{f.nota}</span> : null}
-                        </th>
-                        <td className="border-b border-zinc-200 px-4 py-2 text-right tabular-nums">
-                          {typeof f.valor === "number" ? formatARS(f.valor, 0) : f.valor}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-              <div className="flex flex-wrap items-center gap-2 bg-zinc-50 px-4 py-2.5 text-xs text-zinc-600">
-                <span className="rounded bg-amber-100 px-1.5 py-0.5 font-medium text-amber-900">amarillo</span>
-                lo completás vos ·
-                <span className="rounded bg-white px-1.5 py-0.5 font-medium text-zinc-700 ring-1 ring-zinc-200">
-                  blanco
-                </span>
+            {personal ? (
+              <PreviaPersonal producto={personal.producto} archivo={personal.archivo}>
+                <Ejemplo titulo={c.previewTitulo} hoja={hojaEjemplo} />
+              </PreviaPersonal>
+            ) : (
+              <Ejemplo titulo={c.previewTitulo} hoja={hojaEjemplo} />
+            )}
+            <p className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-600">
+              <span className="inline-flex items-center gap-1.5">
+                <span aria-hidden className="inline-block size-2.5 rounded-sm bg-[#FFFDE7] ring-1 ring-amber-300/70" />
+                lo completás vos
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <span aria-hidden className="inline-block size-2.5 rounded-sm bg-[#C8E6C9] ring-1 ring-emerald-600/30" />
                 lo calcula la planilla
-              </div>
-            </div>
+              </span>
+              <span>· {c.previewSubtitulo}</span>
+            </p>
 
             <div className="mt-4 rounded-xl border border-zinc-200 bg-white p-4">
-              <p className="text-sm font-semibold text-zinc-900">
-                Comprobalo antes de pagar: da los mismos números que la calculadora gratis
-              </p>
-              <p className="mt-1 text-sm text-zinc-600">
-                Es la misma escala y la misma fórmula. Meté el mismo caso en la calculadora del sitio
-                y compará: si alguna vez no coinciden, escribinos y lo corregimos.
-              </p>
+              {personal ? (
+                <>
+                  <p className="text-sm font-semibold text-zinc-900">¿Querés verla con tus números antes de pagar?</p>
+                  <p className="mt-1 text-sm text-zinc-600">
+                    Cargá tu caso en la calculadora gratis: da exactamente los mismos números que la planilla, y
+                    la planilla que compres sale con esos datos ya cargados.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="text-sm font-semibold text-zinc-900">
+                    Comprobalo antes de pagar: da los mismos números que la calculadora gratis
+                  </p>
+                  <p className="mt-1 text-sm text-zinc-600">
+                    {c.textoComprobar ??
+                      "Es la misma escala y la misma fórmula. Meté el mismo caso en la calculadora del sitio y compará: si alguna vez no coinciden, escribinos y lo corregimos."}
+                  </p>
+                </>
+              )}
               <Link
                 href={c.calculadoraGratis.href}
                 className="mt-2 inline-block text-sm font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-900"
@@ -402,7 +410,7 @@ export function PlanillaLanding(c: ConfigLanding) {
                 <Check /> Excel (.xlsx) y Google Sheets
               </li>
               <li className="flex items-start gap-2">
-                <Check /> Escala oficial embebida, no la buscás más
+                <Check /> {c.beneficioDatos ?? "Escala oficial embebida, no la buscás más"}
               </li>
               <li className="flex items-start gap-2">
                 <Check /> Los mismos números que la calculadora gratis
@@ -441,5 +449,16 @@ export function PlanillaLanding(c: ConfigLanding) {
 
       <BarraCompraMovil slug={producto.slug} tituloCorto={producto.tituloCorto} precio={producto.precio} />
     </>
+  );
+}
+
+function Ejemplo({ titulo, hoja }: { titulo: string; hoja: HojaPrevia }) {
+  return (
+    <div>
+      <p className="mb-3 text-sm text-zinc-600">
+        Ejemplo: <strong className="font-semibold text-zinc-900">{titulo}</strong>
+      </p>
+      <HojaCalculo hoja={hoja} />
+    </div>
   );
 }

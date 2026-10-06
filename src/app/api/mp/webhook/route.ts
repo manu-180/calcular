@@ -6,6 +6,7 @@ import {
   esPagoDePlanilla,
   pagoAprobado,
   productoDePago,
+  rutaEntrega,
   type Producto,
 } from "@/lib/mp";
 import {
@@ -21,7 +22,8 @@ import {
   sincronizarPago,
   type CuerpoNotificacion,
 } from "@/lib/mp-webhook";
-import { FROM, planillaEntregaHtml, sendSingle } from "@/lib/email";
+import { FROM, informeEntregaHtml, planillaEntregaHtml, sendSingle } from "@/lib/email";
+import { datosDelPago } from "@/lib/prefill/servidor";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { servicio } from "@/lib/supabase/servicio";
 
@@ -48,26 +50,41 @@ async function entregarPorEmail(
   paymentId: string,
   email: string,
   checkoutId: string | null,
+  conDatos: boolean,
 ): Promise<boolean> {
-  const urlDescarga = `${SITE}${producto.rutaDescarga}?payment_id=${encodeURIComponent(paymentId)}`;
+  const urlEntrega = `${SITE}${rutaEntrega(producto, paymentId)}`;
+  const otras = CATALOGO.filter((p) => p.slug !== producto.slug).map((p) => ({
+    titulo: p.tituloCorto,
+    paraQuien: p.paraQuien,
+    url: `${SITE}${p.rutaLanding}`,
+  }));
   try {
     const ok = await sendSingle({
       from: FROM,
       to: [email],
-      subject: `Tu ${producto.tituloCorto} — descarga y actualizaciones`,
-      html: planillaEntregaHtml({
-        titulo: producto.titulo,
-        convenio: producto.convenio,
-        urlDescarga,
-        urlLanding: `${SITE}${producto.rutaLanding}`,
-        disparadorActualizacion: producto.disparadorActualizacion,
-        checkoutId,
-        otras: CATALOGO.filter((p) => p.slug !== producto.slug).map((p) => ({
-          titulo: p.tituloCorto,
-          paraQuien: p.paraQuien,
-          url: `${SITE}${p.rutaLanding}`,
-        })),
-      }),
+      subject:
+        producto.entrega === "informe"
+          ? `Tu ${producto.tituloCorto} está listo`
+          : `Tu ${producto.tituloCorto} — descarga y actualizaciones`,
+      html:
+        producto.entrega === "informe"
+          ? informeEntregaHtml({
+              titulo: producto.titulo,
+              urlInforme: urlEntrega,
+              urlLanding: `${SITE}${producto.rutaLanding}`,
+              conDatos,
+              checkoutId,
+              otras,
+            })
+          : planillaEntregaHtml({
+              titulo: producto.titulo,
+              convenio: producto.convenio,
+              urlDescarga: urlEntrega,
+              urlLanding: `${SITE}${producto.rutaLanding}`,
+              disparadorActualizacion: producto.disparadorActualizacion,
+              checkoutId,
+              otras,
+            }),
     });
     if (!ok) console.error("[mp/webhook] Resend rechazó la entrega del pago", paymentId, email);
     return ok;
@@ -215,6 +232,7 @@ export async function POST(req: NextRequest) {
           paymentId,
           pago.payer.email,
           checkoutIdDeReferencia(pago.external_reference),
+          datosDelPago(pago, producto) !== null,
         );
       } else {
         // MP puede no exponer el mail del pagador. No es fatal: la descarga sigue viva en

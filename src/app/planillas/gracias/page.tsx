@@ -2,7 +2,17 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { createHash } from "node:crypto";
 import Link from "next/link";
-import { PRODUCTO, checkoutIdDeReferencia, habilitaDescarga, obtenerPago, productoDePago, type MpPayment, type Producto } from "@/lib/mp";
+import {
+  PRODUCTO,
+  checkoutIdDeReferencia,
+  habilitaDescarga,
+  obtenerPago,
+  productoDePago,
+  rutaEntrega,
+  type MpPayment,
+  type Producto,
+} from "@/lib/mp";
+import { datosDelPago } from "@/lib/prefill/servidor";
 import { ConversionGoogleAds } from "@/components/ConversionGoogleAds";
 import { CONVERSION_COMPRA_PLANILLA } from "@/lib/ads";
 import { OtrasPlanillas } from "@/components/CatalogoPlanillas";
@@ -82,7 +92,8 @@ export default async function GraciasPage({
   let pago: MpPayment | null = null;
   try {
     pago = await obtenerPago(paymentId);
-  } catch {
+  } catch (e) {
+    console.error("[gracias] verificación MP falló", paymentId, e);
     pago = null;
   }
 
@@ -99,36 +110,65 @@ export default async function GraciasPage({
           value={producto.precio}
           transactionId={idTransaccionParaAds(paymentId)}
         />
-        <p className="text-zinc-600">
-          Compraste la <strong>{producto.tituloCorto}</strong>. Descargala acá abajo.{" "}
-          {pago.payer?.email
-            ? "También te la mandamos por email con el enlace permanente: guardá ese mail, porque es por ahí que te van a llegar las actualizaciones del año."
-            : "Guardá este enlace: no vence, y cada vez que actualicemos la planilla te descarga la versión nueva."}
-        </p>
-        <a
-          href={`${producto.rutaDescarga}?payment_id=${encodeURIComponent(paymentId)}`}
-          className="mt-2 block rounded-lg bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-emerald-700"
-        >
-          Descargar la planilla (.xlsx)
-        </a>
-        <p className="text-center text-xs text-zinc-500">
-          Funciona en Google Sheets y en Microsoft Excel, sin instalar nada.
-        </p>
+        {producto.entrega === "informe" ? (
+          <>
+            <p className="text-zinc-600">
+              Compraste el <strong>{producto.tituloCorto}</strong>.{" "}
+              {datosDelPago(pago, producto) !== null
+                ? "Ya está armado con los datos que cargaste en la calculadora."
+                : "Lo abrís con el botón de abajo, cargás tus datos y se arma al instante."}{" "}
+              {pago.payer?.email
+                ? "También te mandamos el enlace por email: guardalo y lo abrís cuando lo necesites."
+                : "Guardá este enlace: no vence y lo podés abrir las veces que quieras."}
+            </p>
+            <a
+              href={rutaEntrega(producto, paymentId)}
+              className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-emerald-700"
+            >
+              Ver mi informe
+              <svg className="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M4 10h12M11.5 5.5 16 10l-4.5 4.5" />
+              </svg>
+            </a>
+            <p className="text-center text-xs text-zinc-500">
+              Se abre en el navegador, desde la compu o el celular.
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="text-zinc-600">
+              Compraste la <strong>{producto.tituloCorto}</strong>. Descargala acá abajo.{" "}
+              {pago.payer?.email
+                ? "También te la mandamos por email con el enlace permanente: guardá ese mail, porque es por ahí que te van a llegar las actualizaciones del año."
+                : "Guardá este enlace: no vence, y cada vez que actualicemos la planilla te descarga la versión nueva."}
+            </p>
+            <a
+              href={rutaEntrega(producto, paymentId)}
+              className="mt-2 block rounded-lg bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-emerald-700"
+            >
+              Descargar la planilla (.xlsx)
+            </a>
+            <p className="text-center text-xs text-zinc-500">
+              Funciona en Google Sheets y en Microsoft Excel, sin instalar nada.
+            </p>
+          </>
+        )}
         {CUENTAS_ACTIVAS ? (
           <GuardarEnCuenta
             checkoutId={checkoutIdDeReferencia(pago.external_reference)}
             emailCompra={pago.payer?.email ?? null}
+            informe={producto.entrega === "informe"}
           />
         ) : null}
         <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-600">
-          ¿No baja el archivo? Volvé a tocar el botón o entrá de nuevo a este
+          {producto.entrega === "informe" ? "¿No se abre el informe?" : "¿No baja el archivo?"} Volvé a tocar el botón o entrá de nuevo a este
           enlace desde el mismo dispositivo. Si seguís sin poder,{" "}
           <Link href="/contacto" className="font-semibold text-emerald-700 underline">
             escribinos
           </Link>{" "}
           y te lo enviamos por email.
         </div>
-        <OtrasPlanillas actual={producto.slug} titulo="Otras planillas que te pueden servir" />
+        <OtrasPlanillas actual={producto.slug} titulo="Otras cosas que te pueden servir" />
       </Marco>
     );
   }
@@ -139,7 +179,7 @@ export default async function GraciasPage({
       <Marco titulo="Tu pago está en proceso" tono="espera" icono="clock">
         <p className="text-zinc-600">
           Cuando MercadoPago confirme el pago —suele ser cuestión de minutos— te
-          mandamos la planilla por email. No hace falta que pagues de nuevo.
+          mandamos {producto.entrega === "informe" ? "el informe" : "la planilla"} por email. No hace falta que pagues de nuevo.
         </p>
         <Volver />
       </Marco>
@@ -158,7 +198,7 @@ export default async function GraciasPage({
           href={producto.rutaLanding}
           className="block rounded-lg bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-emerald-700"
         >
-          Volver a la planilla
+          {producto.entrega === "informe" ? "Volver al informe" : "Volver a la planilla"}
         </Link>
         <Link href="/contacto" className="text-center text-sm font-semibold text-emerald-700 underline">
           Escribinos
@@ -170,7 +210,15 @@ export default async function GraciasPage({
 
 // La pista (cookie no sensible) decide si vale la pena preguntarle a Supabase por la sesión: el
 // comprador sin cuenta, que es casi todos, no paga ese viaje.
-async function GuardarEnCuenta({ checkoutId, emailCompra }: { checkoutId: string | null; emailCompra: string | null }) {
+async function GuardarEnCuenta({
+  checkoutId,
+  emailCompra,
+  informe,
+}: {
+  checkoutId: string | null;
+  emailCompra: string | null;
+  informe: boolean;
+}) {
   const conPista = (await cookies()).get(COOKIE_PISTA)?.value === "1";
   const usuario = conPista ? await usuarioActual() : null;
 
@@ -179,14 +227,18 @@ async function GuardarEnCuenta({ checkoutId, emailCompra }: { checkoutId: string
     return (
       <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4 text-sm leading-relaxed text-emerald-900">
         <p className="font-semibold">
-          {mismoMail && usuario.verificado ? "Ya la tenés en tu cuenta" : "Sumala a tu cuenta"}
+          {mismoMail && usuario.verificado
+            ? informe ? "Ya lo tenés en tu cuenta" : "Ya la tenés en tu cuenta"
+            : informe ? "Sumalo a tu cuenta" : "Sumala a tu cuenta"}
         </p>
         <p className="mt-1 text-emerald-900/80">
           {mismoMail && usuario.verificado
-            ? "Cuando la necesites, la bajás desde Mi cuenta, siempre en su última versión."
+            ? informe
+              ? "Cuando lo necesites, lo abrís desde Mi cuenta."
+              : "Cuando la necesites, la bajás desde Mi cuenta, siempre en su última versión."
             : mismoMail
-              ? "Confirmá tu mail desde Mi cuenta y la planilla aparece ahí sola."
-              : "La compraste con otro mail que el de tu cuenta. Escribinos y la sumamos."}
+              ? `Confirmá tu mail desde Mi cuenta y ${informe ? "el informe" : "la planilla"} aparece ahí solo${informe ? "" : "a"}.`
+              : `${informe ? "Lo" : "La"} compraste con otro mail que el de tu cuenta. Escribinos y ${informe ? "lo" : "la"} sumamos.`}
         </p>
         <Link
           href={mismoMail ? "/cuenta" : "/contacto"}
@@ -201,10 +253,11 @@ async function GuardarEnCuenta({ checkoutId, emailCompra }: { checkoutId: string
   const registro = checkoutId ? `/registro?compra=${checkoutId}` : "/registro";
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white p-4 text-sm leading-relaxed text-zinc-600">
-      <p className="font-semibold text-zinc-900">Guardala en tu cuenta</p>
+      <p className="font-semibold text-zinc-900">{informe ? "Guardalo en tu cuenta" : "Guardala en tu cuenta"}</p>
       <p className="mt-1">
-        Creá tu cuenta gratis con el mismo mail de la compra y la planilla queda guardada, siempre en
-        su última versión. Si algún día perdés el mail, la bajás desde ahí.
+        {informe
+          ? "Creá tu cuenta gratis con el mismo mail de la compra y el informe queda guardado. Si algún día perdés el mail, lo abrís desde ahí."
+          : "Creá tu cuenta gratis con el mismo mail de la compra y la planilla queda guardada, siempre en su última versión. Si algún día perdés el mail, la bajás desde ahí."}
       </p>
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
         <Link

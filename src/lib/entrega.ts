@@ -5,7 +5,9 @@
 // payment_id que MP confirme aprobado y que corresponda a ESTE producto.
 
 import { NextRequest, NextResponse } from "next/server";
-import { habilitaDescarga, leerArchivoProducto, obtenerPago, type Producto } from "@/lib/mp";
+import { habilitaDescarga, leerArchivoProducto, obtenerPago, type MpPayment, type Producto } from "@/lib/mp";
+import { datosDelPago, personalizable, xlsxConDatos } from "@/lib/prefill/servidor";
+import { ID_PAGO, dentroDelCupoEntrega, ipDelPedido } from "@/lib/acceso-entrega";
 
 export async function servirPlanilla(req: NextRequest, producto: Producto): Promise<NextResponse> {
   const sp = req.nextUrl.searchParams;
@@ -13,6 +15,16 @@ export async function servirPlanilla(req: NextRequest, producto: Producto): Prom
   const paymentId = sp.get("payment_id") ?? sp.get("collection_id");
   if (!paymentId) {
     return new NextResponse("Falta payment_id", { status: 400 });
+  }
+  if (!ID_PAGO.test(paymentId)) {
+    return new NextResponse("payment_id inválido", { status: 400 });
+  }
+  if (!(await dentroDelCupoEntrega(ipDelPedido(req.headers)))) {
+    console.warn(`[descarga/${producto.slug}] fuera de cupo, no se consulta MP`, paymentId);
+    return new NextResponse("Demasiados intentos. Probá de nuevo en unos minutos.", {
+      status: 429,
+      headers: { "Retry-After": "600" },
+    });
   }
 
   let pago;
@@ -32,12 +44,30 @@ export async function servirPlanilla(req: NextRequest, producto: Producto): Prom
     return new NextResponse("Pago no aprobado para este producto", { status: 403 });
   }
 
-  return servirArchivoProducto(producto);
+  return servirArchivoProducto(producto, pago);
+}
+
+/** El archivo con los datos que la persona cargó en la calculadora, o el genérico si no hay datos,
+ *  no sirven o algo falla al cargarlos: una descarga pagada nunca se rompe por el prefill. */
+async function conDatosDelComprador(bytes: Buffer, producto: Producto, pago: MpPayment | null | undefined): Promise<Buffer> {
+  if (!pago || !personalizable(producto)) return bytes;
+  try {
+    const datos = datosDelPago(pago, producto);
+    if (datos === null) return bytes;
+    return await xlsxConDatos(bytes, producto, datos);
+  } catch (e) {
+    console.error(`[descarga/${producto.slug}] no pude cargar los datos del pago ${pago.id ?? "?"}, va la genérica`, e);
+    return bytes;
+  }
 }
 
 // Sin gate: quien la llame ya verificó el derecho a la descarga (el pago en MP, o la compra propia
-// en /api/cuenta/descargar).
-export async function servirArchivoProducto(producto: Producto): Promise<NextResponse> {
+// en /api/cuenta/descargar). `pago` sólo decide si el archivo sale con los datos del comprador.
+export async function servirArchivoProducto(producto: Producto, pago?: MpPayment | null): Promise<NextResponse> {
+  if (producto.entrega !== "xlsx") {
+    console.error(`[descarga/${producto.slug}] se pidió como archivo un producto que no lo es`);
+    return new NextResponse("Este producto no se descarga", { status: 404 });
+  }
   let bytes: Buffer;
   try {
     bytes = await leerArchivoProducto(producto);
@@ -47,6 +77,7 @@ export async function servirArchivoProducto(producto: Producto): Promise<NextRes
     console.error(`[descarga/${producto.slug}] archivo no disponible en el bundle`, producto.archivo, e);
     return new NextResponse("Archivo no disponible", { status: 500 });
   }
+  bytes = await conDatosDelComprador(bytes, producto, pago);
 
   return new NextResponse(new Uint8Array(bytes), {
     status: 200,

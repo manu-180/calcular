@@ -6,12 +6,14 @@ const CORTO: Record<ProductoSlug, string> = {
   "planilla-casas-particulares": "Casas particulares",
   "planilla-monotributo": "Monotributo",
   "planilla-uocra": "UOCRA",
+  "planilla-alquileres": "Alquileres",
+  "informe-cuota-alimentaria": "Cuota alimentaria",
 };
 
-/** Navegación entre las planillas: el que cayó en la equivocada encuentra la suya en un toque. */
+/** Navegación entre los productos: el que cayó en el equivocado encuentra el suyo en un toque. */
 export function CatalogoPlanillas({ actual }: { actual: ProductoSlug }) {
   return (
-    <nav aria-label="Planillas" className="mb-6 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+    <nav aria-label="Planillas e informes" className="mb-6 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
       <ul className="flex w-max gap-1.5 rounded-xl border border-zinc-200 bg-white/70 p-1 text-sm">
         {CATALOGO.map((p) => {
           const activo = p.slug === actual;
@@ -36,8 +38,8 @@ export function CatalogoPlanillas({ actual }: { actual: ProductoSlug }) {
   );
 }
 
-/** Las otras planillas del catálogo, para la sidebar y la página de gracias. */
-export function OtrasPlanillas({ actual, titulo = "Otras planillas" }: { actual: ProductoSlug; titulo?: string }) {
+/** El resto del catálogo, para la sidebar y la página de gracias. */
+export function OtrasPlanillas({ actual, titulo = "También te puede servir" }: { actual: ProductoSlug; titulo?: string }) {
   const otras = CATALOGO.filter((p) => p.slug !== actual);
   return (
     <div className="rounded-xl border border-zinc-200 bg-white p-4 text-sm">

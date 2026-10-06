@@ -6,6 +6,7 @@
 
 import { readFileSync } from "node:fs";
 import { MAXIMO_POR_CORRIDA, elegirRecordatorios, type PagoMp, type PreferenciaMp } from "../src/lib/mp-recupero";
+import { recordatorioCompraHtml } from "../src/lib/email";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -67,6 +68,19 @@ check(
   "pago rechazado → sí se le recuerda (probar con otro medio)",
   emails([pref(30, "a@x.com", "planilla-uocra:1")], [{ status: "rejected", external_reference: "planilla-uocra:1" }]).length === 1,
 );
+
+// Los productos nuevos también se recuperan (antes se filtraba por el prefijo «planilla-»).
+const delInforme = elegirRecordatorios([pref(30, "c@x.com", "informe-cuota-alimentaria:1")], [], AHORA);
+check("informe abandonado → recordatorio", delInforme.length === 1 && delInforme[0].producto.entrega === "informe");
+check("planilla de alquileres abandonada → recordatorio", emails([pref(30, "d@x.com", "planilla-alquileres:1")]).join() === "d@x.com");
+check(
+  "pagó el informe → nada",
+  emails([pref(30, "c@x.com", "informe-cuota-alimentaria:1")], [{ status: "approved", external_reference: "informe-cuota-alimentaria:1" }]).length === 0,
+);
+const mailInforme = recordatorioCompraHtml({ tituloCorto: "Informe de cuota alimentaria", precio: "$4.900", urlRetomar: "https://calcular.ar/x", informe: true });
+check("el recordatorio del informe usa «el» y no promete actualizaciones", mailInforme.includes("pendiente el Informe") && !mailInforme.includes("actualizaciones"));
+const mailPlanilla = recordatorioCompraHtml({ tituloCorto: "Planilla UOCRA 2026", precio: "$14.900", urlRetomar: "https://calcular.ar/x" });
+check("el de una planilla queda como siempre", mailPlanilla.includes("pendiente la Planilla") && mailPlanilla.includes("actualizaciones del año"));
 
 // Un mail por persona, del intento más reciente.
 const doble = elegirRecordatorios(

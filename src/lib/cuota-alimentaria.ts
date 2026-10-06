@@ -1,19 +1,19 @@
 // Motor de estimación de cuota alimentaria a partir de la canasta de crianza del INDEC.
 //
 // ⚠️ ENCUADRE LEGAL — leer antes de tocar esto. Esto NO calcula "la cuota": la cuota la fija un
-// juez o la acuerdan los progenitores (art. 721 CCyC). Lo que sí se puede estimar con datos
+// juez o la acuerdan los progenitores. Lo que sí se puede estimar con datos
 // oficiales es (a) cuánto CUESTA por mes criar a esos hijos, y (b) cómo se reparte ese costo
 // entre los progenitores según su capacidad económica. Eso es exactamente lo que dice la ley:
 //
 //   · arts. 658 y 659 — ambos progenitores deben la manutención (vivienda, salud, educación,
-//     esparcimiento, vestimenta, aprendizaje de un oficio).
+//     esparcimiento, vestimenta, aprendizaje de un oficio), en proporción a sus posibilidades
+//     económicas (659). De ahí el prorrateo por ingresos.
 //   · art. 660 — las tareas cotidianas de cuidado que hace el progenitor conviviente TIENEN
 //     VALOR ECONÓMICO y se computan como aporte a la manutención. Por eso el modelo separa
 //     bienes/servicios de cuidado: el conviviente ya está aportando el segundo, en especie.
-//   · art. 666 — si un progenitor tiene más recursos, contribuye más, para que el hijo
-//     mantenga el mismo nivel de vida en los dos hogares. De ahí el prorrateo por ingresos.
+//   · art. 666 — sólo con cuidado personal compartido: si los recursos no son equivalentes, el
+//     de más ingresos pasa una cuota para que el hijo tenga el mismo nivel de vida en los dos hogares.
 //   · art. 663 — la obligación llega a los 21 años (25 si estudia y no puede mantenerse).
-//   · art. 721 — el monto lo acuerdan los progenitores; si no hay acuerdo, lo fija el juez.
 //
 // Fuente de la numeración y del alcance: Ministerio de Justicia, "Los alimentos de los hijos"
 // https://www.argentina.gob.ar/justicia/derechofacil/aplicalaley/los-alimentos-de-los-hijos
@@ -63,7 +63,7 @@ export type ResultadoCuota = {
   /** Hijos efectivamente computados. */
   hijosComputados: number;
   /**
-   * Proporción del costo que le toca al alimentante según su capacidad (art. 666).
+   * Proporción del costo que le toca al alimentante según su capacidad (art. 659).
    * null cuando no se informó el ingreso del otro progenitor.
    */
   participacion: number | null;

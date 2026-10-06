@@ -469,13 +469,13 @@ export default function Post() {
           <p>
             La canasta es el punto de partida más objetivo que hay para discutir una cuota, porque
             es un dato oficial, mensual y actualizado. Pero <strong>no es la cuota</strong>: el
-            monto lo fija un juez caso por caso (art. 721 del CCyC) ponderando las necesidades
+            monto lo acuerdan los progenitores o lo fija un juez caso por caso, ponderando las necesidades
             concretas del chico y la capacidad económica real de cada progenitor.
           </p>
           <ul className="ml-5 list-disc space-y-1.5">
             <li>
               Los dos progenitores deben la manutención (arts. 658 y 659), y el reparto se hace{" "}
-              <strong>según los ingresos de cada uno</strong> (art. 666), no mitad y mitad.
+              <strong>según los ingresos de cada uno</strong> (art. 659), no mitad y mitad.
             </li>
             <li>
               El trabajo de cuidado de quien convive con el chico{" "}

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
+import { datosOferta } from "@/lib/oferta";
 import { CalculadoraUocra } from "@/components/CalculadoraUocra";
-import { PlanillaUocraCTA } from "@/components/PlanillaUocraCTA";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import {
@@ -168,10 +168,8 @@ export default function SueldoNetoConstruccionPage() {
           Seleccioná tu categoría, zona, mes y horas trabajadas para ver el desglose exacto de
           bruto, aportes y neto.
         </p>
-        <CalculadoraUocra />
+        <CalculadoraUocra oferta={datosOferta("planilla-uocra")} />
       </section>
-
-      <PlanillaUocraCTA />
 
       <section className="space-y-5">
         <h2 className="text-xl font-bold text-zinc-900">

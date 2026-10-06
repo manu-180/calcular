@@ -51,6 +51,20 @@ import {
 
 const ESC = "Escala 2026";
 
+// Coordenadas del Liquidador que lee src/lib/prefill/uocra.ts para entregar la planilla con los
+// datos de la calculadora. scripts/check_prefill_planillas.ts compara las dos copias.
+export const HOJA_LIQUIDADOR_UOCRA = "Liquidador";
+export const CELDAS_UOCRA = {
+  categoria: "B5",
+  zona: "B6",
+  mes: "B7",
+  horas: "B8",
+  asistencia: "B9",
+  solidario: "B10",
+  bruto: "B19",
+  neto: "B21",
+} as const;
+
 // Layout de la hoja Escala. El Liquidador y scripts/check_planilla_uocra.ts leen estas
 // mismas coordenadas: si cambian acá, cambian en los dos lados o el check se pone rojo.
 const FILA_HEADER = 2;

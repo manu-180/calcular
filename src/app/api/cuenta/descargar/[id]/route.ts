@@ -1,13 +1,15 @@
 import { NextResponse, after, type NextRequest } from "next/server";
-import { productoPorSlug } from "@/lib/mp";
+import { obtenerPagoSiExiste, productoPorSlug, rutaEntrega, type MpPayment } from "@/lib/mp";
 import { servirArchivoProducto } from "@/lib/entrega";
+import { personalizable } from "@/lib/prefill/servidor";
 import { clienteServidor } from "@/lib/supabase/servidor";
 import { registrarEvento } from "@/lib/rastreo-servidor";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// GET /api/cuenta/descargar/:id — la versión actual del .xlsx de una compra propia. La propiedad
+// GET /api/cuenta/descargar/:id — la versión actual del .xlsx de una compra propia (o, si es un
+// informe, la página del informe). La propiedad
 // la decide la RLS de ca_compras (user_id = auth.uid()); el filtro por user_id es un segundo cerrojo.
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -29,7 +31,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
 
   const { data: compra, error } = await supabase
     .from("ca_compras")
-    .select("id, producto, estado")
+    .select("id, producto, estado, mp_payment_id")
     .eq("id", id)
     .eq("user_id", auth.user.id)
     .maybeSingle();
@@ -46,6 +48,27 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
     return new NextResponse("Producto no disponible", { status: 500 });
   }
 
+  const paymentId = typeof compra.mp_payment_id === "string" && /^\d{1,20}$/.test(compra.mp_payment_id) ? compra.mp_payment_id : null;
+
+  // El informe se arma en su página, que vuelve a verificar el pago con MercadoPago.
+  if (producto.entrega === "informe") {
+    if (!paymentId) {
+      console.error("[cuenta/descargar] informe sin payment id en la compra", id);
+      return new NextResponse("No encontramos el pago de este informe", { status: 404 });
+    }
+    return NextResponse.redirect(new URL(rutaEntrega(producto, paymentId), req.url), 303);
+  }
+
+  // El pago sólo aporta los datos de la calculadora: si MP no contesta, sale la versión genérica.
+  let pago: MpPayment | null = null;
+  if (paymentId && personalizable(producto)) {
+    try {
+      pago = await obtenerPagoSiExiste(paymentId);
+    } catch (e) {
+      console.error("[cuenta/descargar] no pude leer el pago para personalizar, va la genérica", id, e);
+    }
+  }
+
   after(() => registrarEvento({ tipo: "descarga", path: "/cuenta", producto: producto.slug, userId: auth.user.id, props: { via: "cuenta" } }));
-  return servirArchivoProducto(producto);
+  return servirArchivoProducto(producto, pago);
 }

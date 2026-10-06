@@ -21,6 +21,11 @@ export function parseDecimal(input: string): number {
   return Number.isFinite(n) ? n : 0;
 }
 
+/** Siempre con `decimales` decimales («12,0%»): es el formato del informe de cuota alimentaria. */
+export function formatPctFijo(n: number, decimales = 1): string {
+  return `${n.toLocaleString("es-AR", { minimumFractionDigits: decimales, maximumFractionDigits: decimales })}%`;
+}
+
 export function formatPct(n: number, decimales = 2): string {
   return `${n.toLocaleString("es-AR", {
     minimumFractionDigits: 0,

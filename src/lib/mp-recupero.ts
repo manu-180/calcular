@@ -44,6 +44,10 @@ const ESTADOS_QUE_CUENTAN = new Set(["approved", "authorized", "pending", "in_pr
 
 const slugDeRef = (ref: string | undefined) => (ref ?? "").split(":")[0];
 
+/** La referencia empieza con un slug del catálogo (planillas e informes). Antes se miraba el prefijo
+ *  «planilla-»: un informe abandonado no recibía su recordatorio. */
+const esDelCatalogo = (ref: string | undefined) => productoPorSlug(slugDeRef(ref)) !== null;
+
 /** Función pura: qué preferencias merecen recordatorio en esta corrida. */
 export function elegirRecordatorios(
   preferencias: PreferenciaMp[],
@@ -106,7 +110,7 @@ export async function preferenciasDesde(desdeISO: string, token: string): Promis
     );
     const el = pagina.elements ?? [];
     for (const p of el) {
-      if (slugDeRef(p.external_reference).startsWith("planilla-")) salida.push(p);
+      if (esDelCatalogo(p.external_reference)) salida.push(p);
     }
     const ultima = Date.parse(el.at(-1)?.date_created ?? "");
     if (el.length < 50 || (Number.isFinite(ultima) && ultima < limite)) break;
@@ -130,7 +134,7 @@ export async function pagosDesde(desdeISO: string, token: string): Promise<PagoM
     const pagina = await mpGet<{ results?: PagoMp[] }>(`/v1/payments/search?${q}`, token);
     const res = pagina.results ?? [];
     for (const p of res) {
-      if (slugDeRef(p.external_reference).startsWith("planilla-")) salida.push(p);
+      if (esDelCatalogo(p.external_reference)) salida.push(p);
     }
     if (res.length < 100) break;
   }

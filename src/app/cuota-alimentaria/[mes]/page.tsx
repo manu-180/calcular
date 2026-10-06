@@ -124,7 +124,7 @@ export default async function CuotaAlimentariaMesPage({
           <strong>{formatARS(mes.valores[REF].total, 0)}</strong> (de 6 a 12 años), según la canasta
           de crianza del INDEC — bienes, servicios y el valor del cuidado incluidos.{" "}
           <strong>Ese número no es la cuota alimentaria</strong>: es el costo total del chico, que
-          los dos progenitores deben cubrir en proporción a lo que gana cada uno (art. 666 CCyC),
+          los dos progenitores deben cubrir en proporción a sus posibilidades económicas (art. 659 CCyC),
           computando el cuidado cotidiano como aporte (art. 660). Para pasar del costo a la cuota,
           usá la <Link href="/cuota-alimentaria">calculadora de cuota alimentaria</Link>.
         </p>
@@ -268,7 +268,7 @@ export default async function CuotaAlimentariaMesPage({
           <p>
             El número de arriba es <strong>el costo total del chico</strong>, no lo que paga un
             progenitor: los dos deben la manutención y el cuidado cotidiano cuenta como aporte
-            (arts. 658 a 660 y 666 CCyC). El reparto concreto, con los ingresos de cada uno, lo hace
+            (arts. 658 a 660 CCyC). El reparto concreto, con los ingresos de cada uno, lo hace
             la{" "}
             <Link
               href="/cuota-alimentaria"
@@ -288,8 +288,8 @@ export default async function CuotaAlimentariaMesPage({
           <p className="rounded-lg bg-amber-50 p-4 text-sm text-amber-900">
             <strong>Esto no es asesoramiento legal.</strong> La canasta de crianza es una medición
             estadística del INDEC para el Gran Buenos Aires, no un mínimo legal ni una cuota fijada:
-            el monto lo acuerdan los progenitores o lo determina un juez caso por caso (art. 721
-            CCyC), mirando las necesidades concretas del hijo y la capacidad económica real de cada
+            el monto lo acuerdan los progenitores o lo determina un juez caso por caso,
+            mirando las necesidades concretas del hijo y la capacidad económica real de cada
             uno. Antes de firmar un acuerdo o presentar un reclamo, consultá con un abogado de
             familia; en la mayoría de las provincias hay defensorías y patrocinio jurídico gratuito
             para temas de alimentos.
@@ -353,8 +353,7 @@ export default async function CuotaAlimentariaMesPage({
               target="_blank"
               className="text-emerald-700 underline"
             >
-              Ministerio de Justicia — Los alimentos de los hijos (arts. 658, 659, 660, 663, 666 y
-              721 CCyC)
+              Ministerio de Justicia — Los alimentos de los hijos (arts. 658 a 663 CCyC)
             </a>
           </li>
         </ul>

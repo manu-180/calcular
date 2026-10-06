@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { PlanillaLanding, type FilaPreview } from "../_producto";
+import { PlanillaLanding } from "../_producto";
+import { hojaUocra } from "@/components/oferta/hojas";
+import { datosOferta } from "@/lib/oferta";
 import {
   CATEGORIAS_UOCRA,
   MESES_UOCRA,
@@ -8,7 +10,7 @@ import {
   UOCRA_PROXIMA_PARITARIA,
   ZONAS_UOCRA,
 } from "@/data/convenios/uocra";
-import { calcularUocra, textoProximaParitaria } from "@/lib/convenios";
+import { textoProximaParitaria } from "@/lib/convenios";
 import { PRODUCTOS } from "@/lib/mp";
 
 export const metadata: Metadata = {
@@ -28,42 +30,20 @@ export const metadata: Metadata = {
 };
 
 // Caso de la vista previa: Oficial en Zona A (la categoría y la zona más frecuentes), mes
-// completo, con asistencia perfecta. Se calcula EN EL SERVER con calcularUocra, el mismo motor
-// de /convenios/uocra: la previa no puede mostrar un número que la planilla no dé.
+// completo, con asistencia perfecta. Sale del mismo armado que la oferta de la calculadora (motor
+// de /convenios/uocra): la previa no puede mostrar un número que la planilla no dé. Quien viene de
+// la calculadora ve su propio caso en lugar de éste.
 const MES = MESES_UOCRA.at(-1)!;
 const CATEGORIA = CATEGORIAS_UOCRA.find((c) => c.id === "oficial")!;
 const ZONA = ZONAS_UOCRA.find((z) => z.id === "a")!;
-const HORAS = UOCRA_HORAS_MES_PROMEDIO;
-const DEMO = calcularUocra({
+const EJEMPLO = hojaUocra(datosOferta("planilla-uocra").archivo, {
   mesId: MES.id,
   categoriaId: CATEGORIA.id,
   zonaId: ZONA.id,
-  horasMes: HORAS,
-  conAsistencia: true,
-  conAporteSindical: true,
+  horas: UOCRA_HORAS_MES_PROMEDIO,
+  asistencia: true,
+  aporteSolidario: true,
 })!;
-
-const preview: FilaPreview[] = [
-  { etiqueta: "Categoría", valor: CATEGORIA.nombre, tono: "input" },
-  { etiqueta: "Zona", valor: ZONA.nombre, tono: "input" },
-  { etiqueta: "Mes a liquidar", valor: MES.etiqueta, tono: "input" },
-  { etiqueta: "Horas trabajadas", valor: HORAS.toFixed(2).replace(".", ","), tono: "input", nota: "mes completo" },
-  { etiqueta: "¿Asistencia perfecta?", valor: "Sí", tono: "input" },
-  { etiqueta: "Jornal por hora", valor: DEMO.jornal ?? 0 },
-  { etiqueta: "Básico del mes", valor: DEMO.basicoMensual },
-  { etiqueta: "Asistencia perfecta", valor: DEMO.asistenciaPerfecta, nota: "20% · art. 52" },
-  // Un $0 sin explicación en una vista previa de venta parece un error del producto. En agosto
-  // de 2026 el cero es el dato correcto (la SNR se absorbió al jornal) y decirlo es prueba de
-  // que la planilla sigue los tramos de verdad, no una tabla copiada.
-  {
-    etiqueta: "Suma no remunerativa",
-    valor: DEMO.snr,
-    nota: DEMO.snr === 0 ? "absorbida al jornal en este tramo" : undefined,
-  },
-  { etiqueta: "Total bruto", valor: DEMO.bruto, tono: "total" },
-  { etiqueta: "Aportes del trabajador", valor: -DEMO.descuentos },
-  { etiqueta: "Neto estimado", valor: DEMO.neto, tono: "total" },
-];
 
 export default function PlanillaUocraPage() {
   return (
@@ -95,7 +75,7 @@ export default function PlanillaUocraPage() {
       }
       previewTitulo={`${CATEGORIA.nombre} · ${ZONA.nombre} · ${MES.etiqueta} · mes completo`}
       previewSubtitulo="Cambiás la categoría, la zona, el mes o las horas y todo lo demás se recalcula solo."
-      preview={preview}
+      hoja={EJEMPLO.hoja}
       calculadoraGratis={{
         href: "/convenios/uocra",
         texto: "Probar la calculadora gratis de UOCRA",
@@ -131,6 +111,14 @@ export default function PlanillaUocraPage() {
         {
           q: "¿Cómo la recibo?",
           a: "Apenas MercadoPago confirma el pago te llega un mail con el enlace de descarga. Es inmediato. Guardá ese mail: el enlace es permanente y siempre te baja la última versión, así que también es por ahí que te llegan las actualizaciones.",
+        },
+        {
+          q: "¿Qué tiene la planilla que no tenga la calculadora gratis?",
+          a: "La calculadora resuelve un caso por vez y no guarda nada. La planilla queda en tu computadora: cambiás categoría, zona y horas para cada trabajador y tenés su liquidación, con el fondo de cese que te toca depositar como empleador y los jornales de todos los tramos. Cuando se firma el tramo siguiente, te llega actualizada sin pagar de nuevo.",
+        },
+        {
+          q: "¿Viene con mis datos o la tengo que completar?",
+          a: "Si hiciste tu cuenta en la calculadora del sitio en los últimos 7 días, desde este mismo navegador, la planilla te llega con esos datos ya cargados en las celdas amarillas. Si no, viene con un ejemplo y la completás en un minuto: son desplegables.",
         },
         {
           q: "¿Trae las cuatro zonas o solo la mía?",

@@ -1,9 +1,43 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { idVisitante, normalizarRuta, rastrear } from "@/lib/rastreo";
+import { leerDatosCompra, suscribirDatosCompra } from "@/lib/prefill/cliente";
 
-export type DatosCompra = { slug: string; tituloCorto: string; precio: number };
+export type DatosCompra = {
+  slug: string;
+  tituloCorto: string;
+  precio: number;
+  /** Sin esto se deduce del slug: los informes empiezan con «informe-». */
+  entrega?: "xlsx" | "informe";
+};
+
+const esInforme = (p: DatosCompra) => (p.entrega ?? (p.slug.startsWith("informe-") ? "informe" : "xlsx")) === "informe";
+
+// Mismo tope que el servidor (DATOS_MAX en prefill/servidor.ts): más grande se descarta allá igual,
+// y así no viaja un formulario pesado para nada.
+const DATOS_MAX = 2048;
+
+function datosGuardados(slug: string): string {
+  const datos = leerDatosCompra(slug);
+  if (datos === null || datos === undefined) return "";
+  try {
+    const texto = JSON.stringify(datos);
+    return texto.length <= DATOS_MAX ? texto : "";
+  } catch {
+    return "";
+  }
+}
+
+/** Si la calculadora dejó datos para este producto. En el servidor (y al hidratar) da false. */
+function useHayDatos(slug: string): boolean {
+  return useSyncExternalStore(
+    suscribirDatosCompra,
+    () => datosGuardados(slug) !== "",
+    () => false,
+  );
+}
 
 const selector = (slug: string) => `dialog[data-compra="${slug}"]`;
 
@@ -39,8 +73,15 @@ function origen(): string {
 
 // `desde` es la marca que viaja en la referencia de MP (la lee tools/embudo-planillas.ts); `ruta`,
 // la página donde se abrió la compra, que es lo que va a ca_checkouts.
-function ocultos(): Record<string, string> {
-  return { desde: `${origen()}_${location.pathname}`, ruta: normalizarRuta(location.pathname), vid: idVisitante() };
+// `datos`, lo que la persona cargó en la calculadora: viaja con el pago y vuelve en la entrega.
+// Sólo si vio la casilla y la dejó tildada; sin casilla a la vista no viaja nada.
+function ocultos(slug: string, usarDatos: boolean): Record<string, string> {
+  return {
+    desde: `${origen()}_${location.pathname}`,
+    ruta: normalizarRuta(location.pathname),
+    vid: idVisitante(),
+    datos: usarDatos ? datosGuardados(slug) : "",
+  };
 }
 
 export function FormularioCompra({
@@ -57,7 +98,10 @@ export function FormularioCompra({
 }) {
   const [enviando, setEnviando] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const usarDatosRef = useRef<HTMLInputElement>(null);
   const precio = `$${producto.precio.toLocaleString("es-AR")}`;
+  const informe = esInforme(producto);
+  const hayDatos = useHayDatos(producto.slug);
 
   useEffect(() => {
     if (enPagina) rastrear("dialogo_compra", { producto: producto.slug, props: { ubicacion: "pagina" } });
@@ -69,11 +113,11 @@ export function FormularioCompra({
     const f = formRef.current;
     if (!f) return;
     const completar = (e: FormDataEvent) => {
-      for (const [k, v] of Object.entries(ocultos())) e.formData.set(k, v);
+      for (const [k, v] of Object.entries(ocultos(producto.slug, usarDatosRef.current?.checked === true))) e.formData.set(k, v);
     };
     f.addEventListener("formdata", completar);
     return () => f.removeEventListener("formdata", completar);
-  }, []);
+  }, [producto.slug]);
 
   // Volver con el botón «atrás» desde MercadoPago restaura la página del bfcache con el botón
   // todavía en «Te llevamos…»: sin esto el comprador arrepentido no puede reintentar.
@@ -90,7 +134,7 @@ export function FormularioCompra({
       action="/api/mp/checkout"
       onSubmit={(e) => {
         const campos = e.currentTarget.elements;
-        for (const [k, v] of Object.entries(ocultos())) {
+        for (const [k, v] of Object.entries(ocultos(producto.slug, usarDatosRef.current?.checked === true))) {
           const input = campos.namedItem(k);
           if (input instanceof HTMLInputElement) input.value = v;
         }
@@ -103,12 +147,13 @@ export function FormularioCompra({
       <input type="hidden" name="desde" />
       <input type="hidden" name="ruta" />
       <input type="hidden" name="vid" />
+      <input type="hidden" name="datos" />
       {/* Campo trampa (ver POST de /api/mp/checkout): invisible para personas y lectores de pantalla. */}
       <input type="text" name="sitio" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] size-px opacity-0" defaultValue="" />
 
       <div>
         <label htmlFor={`email-${producto.slug}`} className="block text-sm font-semibold text-zinc-900">
-          ¿A qué mail te la mandamos?
+          {informe ? "¿A qué mail te lo mandamos?" : "¿A qué mail te la mandamos?"}
         </label>
         <input
           id={`email-${producto.slug}`}
@@ -127,10 +172,38 @@ export function FormularioCompra({
           <p className="mt-1.5 text-sm font-medium text-red-700">Revisá el mail: parece que le falta algo.</p>
         ) : null}
         <p id={`email-ayuda-${producto.slug}`} className="mt-1.5 text-xs leading-relaxed text-zinc-500">
-          Ahí te llega el enlace de descarga apenas se acredita el pago, y las actualizaciones del año.
+          {informe
+            ? "Ahí te llega el enlace a tu informe apenas se acredita el pago, para abrirlo cuando lo necesites."
+            : "Ahí te llega el enlace de descarga apenas se acredita el pago, y las actualizaciones del año."}{" "}
           Si no terminás de pagar, te escribimos una sola vez para recordártelo.
         </p>
       </div>
+
+      {hayDatos ? (
+        <label
+          htmlFor={`usar-datos-${producto.slug}`}
+          className="flex cursor-pointer items-start gap-2.5 rounded-lg bg-emerald-50/80 px-3 py-2.5 text-[13px] leading-snug text-emerald-900 ring-1 ring-emerald-600/10"
+        >
+          {/* Sin `name`: no viaja en el form; decide si `datos` va lleno o vacío (ver ocultos). */}
+          <input
+            ref={usarDatosRef}
+            id={`usar-datos-${producto.slug}`}
+            type="checkbox"
+            defaultChecked
+            className="mt-0.5 size-4 shrink-0 accent-emerald-600"
+          />
+          <span>
+            <span className="font-semibold">Usar los datos que cargué en la calculadora</span>
+            <span className="mt-0.5 block text-emerald-900/75">
+              {informe ? "Así el informe te llega armado con tu caso." : "Así la planilla te llega con tus valores ya cargados."}{" "}
+              Viajan con el pago a MercadoPago, sin nombres.{" "}
+              <Link href="/privacidad#compras" target="_blank" className="underline decoration-emerald-600/40 underline-offset-2 hover:decoration-emerald-600">
+                Qué datos son
+              </Link>
+            </span>
+          </span>
+        </label>
+      ) : null}
 
       <button
         type="submit"
@@ -212,7 +285,8 @@ export function CompraDialogo({ producto }: { producto: DatosCompra }) {
               {producto.tituloCorto}
             </h2>
             <p className="text-sm text-zinc-600">
-              <span className="font-semibold text-zinc-900">{precio}</span> · pago único · Excel y Google Sheets
+              <span className="font-semibold text-zinc-900">{precio}</span> · pago único ·{" "}
+              {esInforme(producto) ? "lo ves apenas pagás" : "Excel y Google Sheets"}
             </p>
           </div>
           <button

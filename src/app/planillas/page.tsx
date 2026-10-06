@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { PlanillaLanding, type FilaPreview } from "./_producto";
+import { PlanillaLanding } from "./_producto";
 import { CATEGORIAS_COMERCIO, COMERCIO_FUENTES, MESES_COMERCIO } from "@/data/convenios/comercio";
-import { calcularComercio } from "@/lib/convenios";
+import { hojaComercio } from "@/components/oferta/hojas";
+import { datosOferta } from "@/lib/oferta";
 import { PRODUCTOS } from "@/lib/mp";
 
 // URL histórica del producto de Comercio. NO se convierte en hub ni se redirige: está en el
@@ -24,35 +25,18 @@ export const metadata: Metadata = {
 };
 
 // Caso de la vista previa: Vendedor B (la categoría más frecuente), 5 años, jornada completa,
-// con presentismo, en el último mes publicado. Se calcula EN EL SERVER con el mismo motor que
-// /convenios/comercio: es imposible que la previa muestre un número que la planilla no dé.
+// con presentismo, en el último mes publicado. Sale del mismo armado que la oferta de la
+// calculadora (motor de /convenios/comercio): la previa no puede mostrar un número que la planilla
+// no dé. Quien viene de la calculadora ve su propio caso en lugar de éste.
 const MES = MESES_COMERCIO.at(-1)!;
 const CATEGORIA = CATEGORIAS_COMERCIO.find((c) => c.id === "vendedor-b")!;
-const DEMO = calcularComercio({
+const EJEMPLO = hojaComercio(datosOferta("planilla-comercio").archivo, {
   mesId: MES.id,
   categoriaId: CATEGORIA.id,
-  aniosAntiguedad: 5,
-  jornadaFactor: 1,
-  conPresentismo: true,
+  anios: 5,
+  jornadaId: "8",
+  presentismo: true,
 })!;
-
-const preview: FilaPreview[] = [
-  { etiqueta: "Categoría", valor: CATEGORIA.nombre, tono: "input" },
-  { etiqueta: "Mes a liquidar", valor: MES.etiqueta, tono: "input" },
-  { etiqueta: "Años de antigüedad", valor: "5", tono: "input" },
-  { etiqueta: "Jornada", valor: "Completa (8 hs)", tono: "input" },
-  { etiqueta: "¿Cobró presentismo?", valor: "Sí", tono: "input" },
-  { etiqueta: "Básico convencional", valor: DEMO.basico },
-  { etiqueta: "Sumas no remunerativas", valor: DEMO.noRemunerativo },
-  { etiqueta: "Adicional por antigüedad", valor: DEMO.antiguedadTotal, nota: "1% por año" },
-  { etiqueta: "Presentismo", valor: DEMO.presentismoTotal, nota: "1/12" },
-  ...(DEMO.asignacionExtraordinaria > 0
-    ? [{ etiqueta: "Asignación extraordinaria", valor: DEMO.asignacionExtraordinaria } as FilaPreview]
-    : []),
-  { etiqueta: "Total bruto", valor: DEMO.bruto, tono: "total" },
-  { etiqueta: "Aportes del trabajador", valor: -DEMO.descuentos },
-  { etiqueta: "Neto estimado", valor: DEMO.neto, tono: "total" },
-];
 
 export default function PlanillasPage() {
   return (
@@ -81,7 +65,7 @@ export default function PlanillasPage() {
       }
       previewTitulo={`${CATEGORIA.nombre} · ${MES.etiqueta} · 5 años de antigüedad`}
       previewSubtitulo="Cambiás cualquiera de los datos amarillos y todo lo demás se recalcula solo."
-      preview={preview}
+      hoja={EJEMPLO.hoja}
       calculadoraGratis={{
         href: "/convenios/comercio",
         texto: "Probar la calculadora gratis de Comercio",
@@ -117,6 +101,14 @@ export default function PlanillasPage() {
         {
           q: "¿Cómo la recibo?",
           a: "Apenas MercadoPago confirma el pago te llega un mail con el enlace de descarga. Es inmediato: no hay que esperar a que nadie te la mande a mano. Guardá ese mail, porque el enlace es permanente y siempre te baja la última versión.",
+        },
+        {
+          q: "¿Qué tiene la planilla que no tenga la calculadora gratis?",
+          a: "La calculadora resuelve un caso por vez y no guarda nada. La planilla queda en tu computadora: la abrís cada mes, cambiás el mes o la categoría y tenés la liquidación desglosada, con la hoja de aguinaldo y sin depender de internet. Y cuando FAECYS publica una escala nueva, te llega actualizada sin pagar de nuevo.",
+        },
+        {
+          q: "¿Viene con mis datos o la tengo que completar?",
+          a: "Si hiciste tu cuenta en la calculadora del sitio en los últimos 7 días, desde este mismo navegador, la planilla te llega con esos datos ya cargados en las celdas amarillas. Si no, viene con un ejemplo y la completás en un minuto: son desplegables.",
         },
         {
           q: "¿Funciona en Google Sheets o necesito Excel?",

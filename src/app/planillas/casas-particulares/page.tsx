@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { PlanillaLanding, type FilaPreview } from "../_producto";
+import { PlanillaLanding } from "../_producto";
+import { hojaCasas } from "@/components/oferta/hojas";
+import { datosOferta } from "@/lib/oferta";
 import {
   CASAS_PARTICULARES_FUENTES,
   ESCALA_VIGENTE,
   VIGENCIA,
 } from "@/data/casas-particulares";
-import { calcularCasasParticulares } from "@/lib/casas-particulares";
-import { calcularAportes } from "@/lib/aportes-casas-particulares";
-import { formatARS } from "@/lib/formato";
 import { PRODUCTOS } from "@/lib/mp";
 
 const PRODUCTO = PRODUCTOS["planilla-casas-particulares"];
@@ -35,33 +34,20 @@ const fechaLarga = (iso: string) => {
 };
 
 // Caso de la vista previa: el más común en las consultas — tareas generales, con retiro, unas
-// horas por semana. Se calcula EN EL SERVER con los motores de /empleada-domestica y
-// /aportes-empleada-domestica: la previa no puede mostrar un número que la planilla no dé.
+// horas por semana. Sale del mismo armado que la oferta de /empleada-domestica (motores de esa
+// calculadora y de /aportes-empleada-domestica): la previa no puede mostrar un número que la
+// planilla no dé. Quien viene de la calculadora ve su propio caso en lugar de éste.
 const CATEGORIA = ESCALA_VIGENTE.find((c) => c.id === "tareas-generales")!;
 const HORAS = 20;
-const DEMO = calcularCasasParticulares({
+const EJEMPLO = hojaCasas(datosOferta("planilla-casas-particulares").archivo, {
+  mesId: VIGENCIA.mesId,
   categoriaId: CATEGORIA.id,
   modalidad: "con-retiro",
   horasSemanales: HORAS,
   zonaDesfavorable: false,
-  horasExtrasComunes: 0,
-  horasExtrasFinDeSemana: 0,
+  extrasComunes: 0,
+  extrasFinDeSemana: 0,
 })!;
-const APORTES = calcularAportes({ horasSemanales: HORAS, condicion: "activo-mayor-18", cantidadTrabajadores: 1 });
-const centavos = (n: number) => formatARS(n, 2);
-
-const preview: FilaPreview[] = [
-  { etiqueta: "Categoría", valor: CATEGORIA.nombre, tono: "input" },
-  { etiqueta: "Modalidad", valor: "Con retiro", tono: "input" },
-  { etiqueta: "Mes a liquidar", valor: VIGENCIA.vigenteEn, tono: "input" },
-  { etiqueta: "Horas por semana", valor: String(HORAS), tono: "input" },
-  { etiqueta: "Valor de la hora", valor: centavos(DEMO.valorHora) },
-  { etiqueta: "Horas del mes", valor: DEMO.horasMensuales.toFixed(2).replace(".", ","), nota: `${HORAS} × 52 ÷ 12` },
-  { etiqueta: "Sueldo del mes", valor: centavos(DEMO.total), tono: "total" },
-  { etiqueta: "Aguinaldo que va generando", valor: centavos(DEMO.aguinaldoEstimado), nota: "50%" },
-  { etiqueta: "Pago mensual a ARCA", valor: centavos(APORTES.totalPorTrabajador), nota: "aportes, contribuciones y ART" },
-  { etiqueta: "Costo total del mes", valor: centavos(DEMO.total + APORTES.totalPorTrabajador), tono: "total" },
-];
 
 export default function PlanillaCasasPage() {
   return (
@@ -70,12 +56,11 @@ export default function PlanillaCasasPage() {
       etiquetaConvenio="Ley 26.844 — Casas Particulares"
       h1={
         <>
-          El sueldo de quien trabaja en tu casa,
-          <br />
-          <span className="text-emerald-600">bien calculado todos los meses</span>
+          Sueldo, recibo y ARCA de quien trabaja en tu casa,{" "}
+          <span className="text-emerald-600">en una sola planilla</span>
         </>
       }
-      bajada="La planilla de Excel y Google Sheets para familias empleadoras: cargás categoría, horas y mes, y te da el sueldo con la escala oficial, lo que le pagás a ARCA, el aguinaldo de junio y diciembre, y un recibo listo para imprimir."
+      bajada="Cargás la categoría y las horas una vez. Cada mes te dice cuánto pagarle, cuánto va a ARCA y te arma el recibo para firmar, con la escala oficial ya cargada."
       respuestaPrimero={
         <p>
           La planilla de sueldo de casas particulares es una hoja de <strong>Excel y Google Sheets</strong> con la
@@ -89,7 +74,7 @@ export default function PlanillaCasasPage() {
       }
       previewTitulo={`${CATEGORIA.nombre} · con retiro · ${HORAS} h por semana · ${VIGENCIA.vigenteEn}`}
       previewSubtitulo="Cambiás la categoría, las horas, el mes o sumás horas extras y todo se recalcula solo."
-      preview={preview}
+      hoja={EJEMPLO.hoja}
       calculadoraGratis={{ href: "/empleada-domestica", texto: "Probar la calculadora gratis de sueldo de empleada doméstica" }}
       hojas={[
         {
@@ -123,6 +108,14 @@ export default function PlanillaCasasPage() {
         {
           q: "¿Cómo la recibo?",
           a: "Apenas MercadoPago confirma el pago te llega un mail con el enlace de descarga. Es inmediato. Guardá ese mail: el enlace es permanente y siempre te baja la última versión, así que también es por ahí que te llegan las actualizaciones.",
+        },
+        {
+          q: "¿Qué tiene la planilla que no tenga la calculadora gratis?",
+          a: "La calculadora te dice el sueldo del mes. La planilla, además, te dice cuánto pagarle a ARCA y el costo total, te arma el recibo para imprimir y firmar, y lleva los pagos del año para calcular el aguinaldo de junio y diciembre y las vacaciones. Queda en tu computadora: el mes que viene cambiás el mes y listo.",
+        },
+        {
+          q: "¿Viene con mis datos o la tengo que completar?",
+          a: "Si hiciste la cuenta en la calculadora del sitio en los últimos 7 días, desde este mismo navegador, la planilla te llega con esos datos ya cargados: categoría, modalidad, horas, zona y horas extras. Si no, viene con un ejemplo y la completás en un minuto: son desplegables.",
         },
         {
           q: "¿Sirve si trabaja por horas y no todo el mes?",

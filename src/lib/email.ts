@@ -176,7 +176,7 @@ function shellTransaccional(content: string, pie?: string): string {
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-function bloqueCuenta(checkoutId?: string | null): string {
+function bloqueCuenta(checkoutId?: string | null, informe = false): string {
   if (!CUENTAS_ACTIVAS) return "";
   const registro = checkoutId && UUID_RE.test(checkoutId)
     ? `${BASE}/registro?compra=${checkoutId.toLowerCase()}`
@@ -185,8 +185,10 @@ function bloqueCuenta(checkoutId?: string | null): string {
   <tr><td style="padding:16px 20px;">
     <p style="margin:0 0 6px;font-size:15px;font-weight:600;color:#18181b;">Tenela siempre a mano en tu cuenta</p>
     <p style="margin:0 0 12px;font-size:14px;color:#3f3f46;line-height:1.6;">
-      Creá tu cuenta gratis con este mismo mail y la planilla queda guardada ahí, siempre en su
-      última versión. Si perdés este mail, la bajás desde tu cuenta.
+      ${informe
+        ? "Creá tu cuenta gratis con este mismo mail y el informe queda guardado ahí. Si perdés este mail, lo abrís desde tu cuenta."
+        : `Creá tu cuenta gratis con este mismo mail y la planilla queda guardada ahí, siempre en su
+      última versión. Si perdés este mail, la bajás desde tu cuenta.`}
     </p>
     <a href="${registro}" style="color:#047857;font-size:14px;font-weight:600;">Crear mi cuenta →</a>
     <span style="color:#a1a1aa;font-size:14px;">&nbsp;·&nbsp;</span>
@@ -207,7 +209,7 @@ export function planillaEntregaHtml(opts: {
   checkoutId?: string | null;
 }): string {
   const otras = opts.otras?.length
-    ? `<p style="margin:24px 0 8px;font-size:13px;color:#6b7280;">Otras planillas de calcular.ar, por si te sirven:</p>
+    ? `<p style="margin:24px 0 8px;font-size:13px;color:#6b7280;">Más de calcular.ar, por si te sirve:</p>
 <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:1.9;">
 ${opts.otras.map((o) => `  <li><a href="${o.url}" style="color:#059669;">${o.titulo}</a> — ${o.paraQuien.charAt(0).toLowerCase()}${o.paraQuien.slice(1)}</li>`).join("\n")}
 </ul>`
@@ -250,6 +252,66 @@ ${otras}
   `);
 }
 
+/** Entrega de un informe: no hay archivo ni actualizaciones, hay una página que se arma con los datos
+ *  que la persona cargó y que re-verifica el pago cada vez que se abre. */
+export function informeEntregaHtml(opts: {
+  titulo: string;
+  /** El pago trae datos válidos de la calculadora (`datosDelPago`). Sin ellos, el informe se completa
+   *  en la página: prometer «tus datos» sería mentir. */
+  conDatos?: boolean;
+  urlInforme: string;
+  urlLanding: string;
+  otras?: { titulo: string; paraQuien: string; url: string }[];
+  checkoutId?: string | null;
+}): string {
+  const otras = opts.otras?.length
+    ? `<p style="margin:24px 0 8px;font-size:13px;color:#6b7280;">Otras herramientas de calcular.ar, por si te sirven:</p>
+<ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:1.9;">
+${opts.otras.map((o) => `  <li><a href="${o.url}" style="color:#059669;">${o.titulo}</a> — ${o.paraQuien.charAt(0).toLowerCase()}${o.paraQuien.slice(1)}</li>`).join("\n")}
+</ul>`
+    : "";
+  return shellTransaccional(
+    `
+<h2 style="margin:0 0 16px;font-size:22px;color:#111827;">Tu informe está listo</h2>
+<p style="margin:0 0 20px;font-size:15px;color:#374151;line-height:1.6;">
+  Gracias por comprar el <strong>${opts.titulo}</strong>. ${
+    opts.conDatos
+      ? "Lo armamos con los datos que cargaste en la calculadora; lo abrís desde acá:"
+      : "Lo abrís desde acá, cargás tus datos y se arma al instante:"
+  }
+</p>
+<table cellpadding="0" cellspacing="0" style="margin:0 0 20px;">
+  <tr>
+    <td style="background:#059669;border-radius:8px;padding:14px 28px;">
+      <a href="${opts.urlInforme}" style="color:#fff;font-size:16px;font-weight:600;text-decoration:none;">Ver mi informe →</a>
+    </td>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;">
+  <tr><td style="padding:16px 20px;">
+    <p style="margin:0 0 6px;font-size:15px;font-weight:600;color:#065f46;">Guardá este mail</p>
+    <p style="margin:0;font-size:14px;color:#047857;line-height:1.6;">
+      Ese enlace es tuyo y no vence: lo podés abrir las veces que quieras, desde la compu o el
+      celular, para imprimirlo o mostrarlo cuando lo necesites.
+    </p>
+  </td></tr>
+</table>
+${bloqueCuenta(opts.checkoutId, true)}
+<p style="margin:0 0 8px;font-size:14px;color:#374151;line-height:1.6;">
+  Los números del informe salen de la misma cuenta que la
+  <a href="${opts.urlLanding}" style="color:#059669;">calculadora de calcular.ar</a>, con datos
+  oficiales. Si alguna vez algo no te cierra, avisanos y lo revisamos.
+</p>
+<p style="margin:0;font-size:14px;color:#374151;line-height:1.6;">
+  Si el informe no te sirve, respondé este mail dentro de los 7 días y te devolvemos el dinero.
+</p>
+${otras}
+  `,
+    `Este es el comprobante de tu compra en <a href="${BASE}" style="color:#059669;">calcular.ar</a>.
+      Guardalo: el enlace a tu informe es permanente.`,
+  );
+}
+
 // ─── Recordatorio de compra sin terminar ─────────────────────────────────────
 //
 // Uno solo por intento (ver src/lib/mp-recupero.ts). El tono es el de alguien que te guardó el
@@ -259,12 +321,19 @@ export function recordatorioCompraHtml(opts: {
   tituloCorto: string;
   precio: string;
   urlRetomar: string;
+  /** El informe no tiene actualizaciones del año y es masculino: cambia el artículo y la promesa. */
+  informe?: boolean;
 }): string {
+  const articulo = opts.informe ? "el" : "la";
+  const incluye = opts.informe
+    ? "Es un pago único, lo ves apenas se acredita y tenés 7 días para pedir la devolución si no te sirve."
+    : `Es un pago único, con las actualizaciones del año incluidas y 7 días para pedir la devolución
+  si no te sirve.`;
   return shellTransaccional(
     `
-<h2 style="margin:0 0 16px;font-size:21px;color:#111827;">Te quedó pendiente la ${opts.tituloCorto}</h2>
+<h2 style="margin:0 0 16px;font-size:21px;color:#111827;">Te quedó pendiente ${articulo} ${opts.tituloCorto}</h2>
 <p style="margin:0 0 16px;font-size:15px;color:#374151;line-height:1.6;">
-  Ayer empezaste a comprarla en calcular.ar y el pago no llegó a completarse. Si fue un problema
+  Ayer empezaste a ${opts.informe ? "comprarlo" : "comprarla"} en calcular.ar y el pago no llegó a completarse. Si fue un problema
   con la tarjeta, suele alcanzar con probar con débito o con dinero en cuenta de MercadoPago.
 </p>
 <table cellpadding="0" cellspacing="0" style="margin:0 0 20px;">
@@ -275,8 +344,7 @@ export function recordatorioCompraHtml(opts: {
   </tr>
 </table>
 <p style="margin:0 0 16px;font-size:14px;color:#374151;line-height:1.6;">
-  Es un pago único, con las actualizaciones del año incluidas y 7 días para pedir la devolución
-  si no te sirve.
+  ${incluye}
 </p>
 <p style="margin:0 0 16px;font-size:14px;color:#374151;line-height:1.6;">
   ¿Te frenó una duda? Respondé este mail y te contestamos.

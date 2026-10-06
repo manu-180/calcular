@@ -23,6 +23,9 @@ const nextConfig: NextConfig = {
     inlineCss: false,
     ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
   },
+  // exceljs se carga con require nativo y no dentro del bundle del servidor: abre y reescribe el
+  // .xlsx de la entrega personalizada (src/lib/prefill/servidor.ts).
+  serverExternalPackages: ["exceljs"],
   // Incluí el .xlsx de /private en el bundle de la función de descarga. Sin esto,
   // en Vercel la serverless function no lleva el archivo y la entrega rompe.
   // (Key top-level confirmada en Next 16.2.9: NextConfig.outputFileTracingIncludes.)
@@ -31,6 +34,7 @@ const nextConfig: NextConfig = {
     "/api/planilla-uocra/download": ["./private/**"],
     "/api/planilla-casas-particulares/download": ["./private/**"],
     "/api/planilla-monotributo/download": ["./private/**"],
+    "/api/planilla-alquileres/download": ["./private/**"],
     "/api/cuenta/descargar/[id]": ["./private/**"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
@@ -51,8 +55,12 @@ const nextConfig: NextConfig = {
       { key: "Content-Security-Policy", value: `frame-ancestors 'none'; base-uri 'self'; object-src 'none'${upgrade}` },
       { key: "X-Robots-Tag", value: "noindex, nofollow" },
       { key: "Cache-Control", value: "private, no-store" },
+      // Va después de `base` y la pisa: la URL de estas rutas puede llevar la llave (payment_id, token).
+      { key: "Referrer-Policy", value: "no-referrer" },
     ];
-    const rutasPrivadas = ["/dashboard", "/cuenta", "/login", "/registro", "/recuperar", "/auth"];
+    // /informes/cuota-alimentaria/ver lleva el payment_id en la URL (es la llave del informe): nunca se
+    // indexa, nunca se cachea y nunca se embebe.
+    const rutasPrivadas = ["/dashboard", "/cuenta", "/login", "/registro", "/recuperar", "/auth", "/informes/cuota-alimentaria/ver"];
     return [
       { source: "/:path*", headers: base },
       ...rutasPrivadas.flatMap((r) => [

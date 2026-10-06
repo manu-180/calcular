@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraUocra } from "@/components/CalculadoraUocra";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import {
   CATEGORIAS_UOCRA,
@@ -16,7 +17,6 @@ import { datasetSchema, ORGANIZACION } from "@/lib/schema";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { SelloVerificado } from "@/components/SelloVerificado";
 import { EmailCapture } from "@/components/EmailCapture";
-import { PlanillaUocraCTA } from "@/components/PlanillaUocraCTA";
 import { calcularUocra } from "@/lib/convenios";
 import { hoyAR, periodoDeMes, vigenteEn } from "@/lib/hoy";
 
@@ -186,9 +186,7 @@ export default function UocraPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraUocra />
-
-      <PlanillaUocraCTA />
+      <CalculadoraUocra oferta={datosOferta("planilla-uocra")} />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">

@@ -14,6 +14,7 @@ import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { permitido } from "@/lib/limite";
 import { limpiarRuta } from "@/lib/rastreo";
 import { servicio } from "@/lib/supabase/servicio";
+import { datosParaCheckout } from "@/lib/prefill/servidor";
 import { claveCliente, dentroDelLimite, esBot } from "@/app/api/e/protocolo";
 
 // Necesita Node (no edge): crypto.randomUUID y el fetch server-side con el token.
@@ -77,6 +78,7 @@ async function irAPagar(
     ruta?: string | null;
     vid?: string | null;
     registrar?: boolean;
+    datos?: string | null;
   } = {},
 ): Promise<NextResponse> {
   // El slug viaja adentro de la referencia: es lo que le deja al webhook y a la descarga saber
@@ -100,6 +102,7 @@ async function irAPagar(
       // depende de esta URL.
       notificationUrl: `${SITE}/api/mp/webhook`,
       emailComprador: opciones.email,
+      datos: opciones.datos,
     });
 
     if (!pref.init_point) {
@@ -185,10 +188,20 @@ export async function POST(req: NextRequest) {
   const sospechoso = (origen !== null && !ORIGENES.has(origen)) || String(datos.get("sitio") ?? "") !== "";
   if (sospechoso) console.warn("[mp/checkout] POST sospechoso, se sigue sin guardar el mail", producto.slug, origen);
 
+  // Lo que la persona cargó en la calculadora: input hostil, se re-valida con el prefill del
+  // producto. Si no sirve, se paga igual y se entrega la versión genérica.
+  let datosCompra: string | null = null;
+  const crudo = datos.get("datos");
+  if (typeof crudo === "string" && crudo !== "") {
+    datosCompra = datosParaCheckout(producto.slug, crudo);
+    if (!datosCompra) console.warn("[mp/checkout] datos de la calculadora descartados", producto.slug, crudo.length);
+  }
+
   return irAPagar(producto, {
     email: sospechoso ? null : email,
     desde: String(datos.get("desde") ?? ""),
     ruta: String(datos.get("ruta") ?? ""),
     vid: String(datos.get("vid") ?? ""),
+    datos: datosCompra,
   });
 }

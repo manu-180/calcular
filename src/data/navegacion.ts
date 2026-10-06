@@ -96,11 +96,12 @@ export const GRUPOS: Grupo[] = [
     id: "plata",
     titulo: "Plata y precios",
     nota: "Inflación, alquiler y rendimientos con datos del INDEC y el BCRA",
+    destacados: ["/planillas/alquileres", "/informes/cuota-alimentaria"],
   },
   {
     id: "planillas",
     titulo: "Planillas",
-    nota: "La cuenta de la calculadora, en Excel y Google Sheets",
+    nota: "La cuenta de la calculadora, en Excel o en un informe listo",
   },
   { id: "guias", titulo: "Guías", nota: "Tu plata explicada con datos oficiales" },
   { id: "sitio", titulo: "CalculAR", nota: "El sitio" },
@@ -126,6 +127,8 @@ const COMERCIO = "planilla-comercio";
 const UOCRA = "planilla-uocra";
 const CASAS = "planilla-casas-particulares";
 const MONO = "planilla-monotributo";
+const ALQUILERES = "planilla-alquileres";
+const CUOTA = "informe-cuota-alimentaria";
 
 const DEFS: Record<GrupoId, Def[]> = {
   monotributo: [
@@ -716,6 +719,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/inflacion/alquiler",
       titulo: "Ajuste de alquiler",
       descripcion: "El cronograma de aumentos por IPC",
+      vende: ALQUILERES,
       claves: ["aumento de alquiler", "ipc", "icl", "contrato de alquiler", "inquilino"],
     },
     {
@@ -734,6 +738,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/cuota-alimentaria",
       titulo: "Cuota alimentaria",
       descripcion: "Una referencia con la canasta de crianza",
+      vende: CUOTA,
       claves: ["alimentos", "manutencion", "hijos", "canasta de crianza", "divorcio"],
     },
     ...["2026", "2025", "2024", "2023", "2022", "2021", "2020"].map(
@@ -780,6 +785,22 @@ const DEFS: Record<GrupoId, Def[]> = {
       vende: MONO,
       tipo: "planilla",
       claves: ["excel", "facturacion", "recategorizacion"],
+    },
+    {
+      href: "/planillas/alquileres",
+      titulo: "Planilla de alquileres",
+      descripcion: "Ajustes, recibos y carta de aumento para el dueño",
+      vende: ALQUILERES,
+      tipo: "planilla",
+      claves: ["excel", "alquiler", "propietario", "inquilino", "recibo de alquiler", "aumento"],
+    },
+    {
+      href: "/informes/cuota-alimentaria",
+      titulo: "Informe de cuota alimentaria",
+      descripcion: "La cuenta de la cuota, explicada y con fuentes",
+      vende: CUOTA,
+      tipo: "planilla",
+      claves: ["informe", "alimentos", "mediacion", "abogado", "hijos", "canasta de crianza"],
     },
   ],
   guias: [

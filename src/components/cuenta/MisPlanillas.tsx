@@ -62,12 +62,12 @@ export function MisPlanillas({
             style={{ animationDelay: `${i * 45}ms` }}
           >
             <div className="flex flex-1 items-start gap-4">
-              <IconoPlanilla />
+              {producto.entrega === "informe" ? <IconoInforme /> : <IconoPlanilla />}
               <div className="min-w-0">
                 <p className="font-semibold text-zinc-900">{producto.tituloCorto}</p>
                 <p className="mt-0.5 text-sm text-zinc-500">{producto.convenio}</p>
                 <p className="mt-2 text-[13px] leading-relaxed text-zinc-500">
-                  {fecha ? `Comprada el ${fecha}` : "Compra registrada"}
+                  {fecha ? `${producto.entrega === "informe" ? "Comprado" : "Comprada"} el ${fecha}` : "Compra registrada"}
                   {activa && anio(producto) ? (
                     <>
                       <span aria-hidden> · </span>
@@ -82,16 +82,18 @@ export function MisPlanillas({
                 href={`/api/cuenta/descargar/${compra.id}`}
                 className="group inline-flex h-11 shrink-0 items-center justify-center gap-2.5 rounded-full bg-zinc-900 pl-5 pr-1.5 text-sm font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.18)] transition-[background-color,transform,box-shadow] duration-300 ease-[var(--ease-snappy)] hover:-translate-y-px hover:bg-zinc-800 hover:shadow-[0_10px_22px_-10px_rgba(0,0,0,0.35)] active:translate-y-0 active:scale-[0.99]"
               >
-                Bajar la versión actual
-                <span className="grid size-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-[var(--ease-snappy)] group-hover:translate-y-0.5">
+                {producto.entrega === "informe" ? "Ver el informe" : "Bajar la versión actual"}
+                <span
+                  className={`grid size-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-[var(--ease-snappy)] ${producto.entrega === "informe" ? "group-hover:translate-x-0.5" : "group-hover:translate-y-0.5"}`}
+                >
                   <svg className="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M10 3.5v10M5.5 9.5 10 14l4.5-4.5M4 16.5h12" />
+                    <path d={producto.entrega === "informe" ? "M4 10h12M11.5 5.5 16 10l-4.5 4.5" : "M10 3.5v10M5.5 9.5 10 14l4.5-4.5M4 16.5h12"} />
                   </svg>
                 </span>
               </a>
             ) : (
               <span className="inline-flex h-9 shrink-0 items-center rounded-full bg-zinc-100 px-4 text-[13px] font-medium text-zinc-500">
-                {compra.estado === "reembolsado" ? "Reembolsada" : "No disponible"}
+                {compra.estado === "reembolsado" ? (producto.entrega === "informe" ? "Reembolsado" : "Reembolsada") : "No disponible"}
               </span>
             )}
           </li>
@@ -121,7 +123,7 @@ function SinPlanillas({ verificado }: { verificado: boolean }) {
               <span className="mt-3 flex items-center justify-between text-[13px]">
                 <span className="font-medium tabular-nums text-zinc-700">{PRECIO.format(p.precio)}</span>
                 <span className="font-semibold text-emerald-700 transition-transform duration-300 ease-[var(--ease-snappy)] group-hover:translate-x-0.5">
-                  Ver la planilla →
+                  {p.entrega === "informe" ? "Ver el informe →" : "Ver la planilla →"}
                 </span>
               </span>
             </Link>
@@ -145,6 +147,17 @@ function IconoPlanilla() {
       <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="3.5" width="16" height="17" rx="2.5" />
         <path d="M4 9h16M4 14.5h16M10 9v11.5" />
+      </svg>
+    </span>
+  );
+}
+
+function IconoInforme() {
+  return (
+    <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/10" aria-hidden>
+      <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 3.5H7.5A2.5 2.5 0 0 0 5 6v12a2.5 2.5 0 0 0 2.5 2.5h9A2.5 2.5 0 0 0 19 18V8.5z" />
+        <path d="M14 3.5v5h5M8.5 13h7M8.5 16.5h4.5" />
       </svg>
     </span>
   );

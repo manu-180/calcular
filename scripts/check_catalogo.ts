@@ -5,6 +5,7 @@
 //
 // Correr con: npx tsx scripts/check_catalogo.ts  (o vía scripts/check-all.ts)
 
+import "./sin-server-only";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { existsSync, readFileSync } from "node:fs";
@@ -13,10 +14,12 @@ process.chdir(path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."));
 process.env.MP_ACCESS_TOKEN = "APP_USR-token-de-prueba-no-es-el-real";
 
 import { NextRequest } from "next/server";
-import { servirPlanilla } from "../src/lib/entrega";
+import { servirArchivoProducto, servirPlanilla } from "../src/lib/entrega";
+import { informeEntregaHtml } from "../src/lib/email";
 import {
   CATALOGO,
   buscarPago,
+  rutaEntrega,
   PRODUCTOS,
   desdeDeReferencia,
   emailValido,
@@ -48,22 +51,43 @@ const GENERADOR: Record<string, string> = {
   "planilla-uocra": "generarPlanillaUocra",
   "planilla-casas-particulares": "generarPlanillaCasas",
   "planilla-monotributo": "generarPlanillaMonotributo",
+  "planilla-alquileres": "generarPlanillaAlquileres",
 };
 
 // ── 1. Cada producto del catálogo está completo ───────────────────────────────────────
 check("CATALOGO lista todos los productos, sin repetir", new Set(CATALOGO.map((p) => p.slug)).size === Object.keys(PRODUCTOS).length);
+check(
+  "el catálogo tiene los 6 productos (4 planillas de sueldo/monotributo, alquileres e informe de cuota)",
+  JSON.stringify(Object.keys(PRODUCTOS).sort()) ===
+    JSON.stringify([
+      "informe-cuota-alimentaria",
+      "planilla-alquileres",
+      "planilla-casas-particulares",
+      "planilla-comercio",
+      "planilla-monotributo",
+      "planilla-uocra",
+    ]),
+  Object.keys(PRODUCTOS),
+);
 for (const p of Object.values(PRODUCTOS)) {
-  const ruta = path.join("src/app", p.rutaDescarga, "route.ts");
-  check(`${p.slug}: existe la ruta de descarga ${p.rutaDescarga}`, existsSync(ruta), ruta);
-  check(`${p.slug}: la ruta de descarga sirve ESTE producto`, existsSync(ruta) && readFileSync(ruta, "utf8").includes(`PRODUCTOS["${p.slug}"]`));
-  check(`${p.slug}: la descarga lleva /private en el bundle (outputFileTracingIncludes)`, nextConfig.includes(`"${p.rutaDescarga}": ["./private/**"]`));
   check(`${p.slug}: existe la landing ${p.rutaLanding}`, existsSync(path.join("src/app", p.rutaLanding, "page.tsx")));
   check(`${p.slug}: la landing está en el sitemap`, sitemap.includes("`${BASE}" + p.rutaLanding + "`"));
   check(`${p.slug}: la landing está en llms.txt`, llms.includes(`https://calcular.ar${p.rutaLanding})`));
-  check(`${p.slug}: el entregable existe en private/`, existsSync(path.join("private", p.archivo)));
-  const generador = GENERADOR[p.slug];
-  check(`${p.slug}: el prebuild lo regenera (${generador ?? "sin generador declarado en este check"})`, !!generador && generadores.includes(`await ${generador}()`));
   check(`${p.slug}: precio entero en pesos`, Number.isInteger(p.precio) && p.precio > 0);
+  check(`${p.slug}: el slug lleva el tipo de entrega adelante`, p.slug.startsWith(p.entrega === "informe" ? "informe-" : "planilla-"));
+  if (p.entrega === "xlsx") {
+    const ruta = path.join("src/app", p.rutaDescarga, "route.ts");
+    check(`${p.slug}: existe la ruta de descarga ${p.rutaDescarga}`, existsSync(ruta), ruta);
+    check(`${p.slug}: la ruta de descarga sirve ESTE producto`, existsSync(ruta) && readFileSync(ruta, "utf8").includes(`PRODUCTOS["${p.slug}"]`));
+    check(`${p.slug}: la descarga lleva /private en el bundle (outputFileTracingIncludes)`, nextConfig.includes(`"${p.rutaDescarga}": ["./private/**"]`));
+    check(`${p.slug}: el entregable existe en private/`, existsSync(path.join("private", p.archivo)));
+    const generador = GENERADOR[p.slug];
+    check(`${p.slug}: el prebuild lo regenera (${generador ?? "sin generador declarado en este check"})`, !!generador && generadores.includes(`await ${generador}()`));
+  } else {
+    check(`${p.slug}: un informe no tiene archivo`, p.archivo === null);
+    check(`${p.slug}: se entrega en una página, no en /api`, !p.rutaDescarga.startsWith("/api/"), p.rutaDescarga);
+    check(`${p.slug}: existe la página de entrega ${p.rutaDescarga}`, existsSync(path.join("src/app", p.rutaDescarga, "page.tsx")));
+  }
 }
 
 // ── 2. La referencia lleva el origen sin romper la resolución del producto ─────────────
@@ -86,11 +110,45 @@ for (const p of [PRODUCTOS["planilla-casas-particulares"], PRODUCTOS["planilla-m
 const deComercio = pago({ external_reference: "planilla-comercio:abc", transaction_amount: 14900 });
 check("un pago de Comercio NO habilita la de Casas Particulares", !habilitaDescarga(deComercio, PRODUCTOS["planilla-casas-particulares"]));
 
+// Los productos nuevos: alquileres vale lo mismo que Casas y Monotributo; el gate es el slug.
+const alquileres = PRODUCTOS["planilla-alquileres"];
+const informe = PRODUCTOS["informe-cuota-alimentaria"];
+const deAlquileres = pago({ external_reference: referenciaExterna(alquileres.slug, "inflacion"), transaction_amount: alquileres.precio });
+const deInforme = pago({ external_reference: referenciaExterna(informe.slug, "cuota"), transaction_amount: informe.precio });
+check("alquileres: su pago habilita su planilla", habilitaDescarga(deAlquileres, alquileres));
+for (const otro of [PRODUCTOS["planilla-casas-particulares"], PRODUCTOS["planilla-monotributo"], informe]) {
+  check(`alquileres: su pago NO habilita ${otro.slug}`, !habilitaDescarga(deAlquileres, otro));
+}
+check("informe: su pago habilita el informe", habilitaDescarga(deInforme, informe));
+for (const otro of Object.values(PRODUCTOS).filter((p) => p.slug !== informe.slug)) {
+  check(`informe: su pago ($4.900) NO habilita ${otro.slug}`, !habilitaDescarga(deInforme, otro));
+}
+check("informe: un pago por el precio de una planilla no lo aprueba", !pagoAprobado({ ...deInforme, transaction_amount: 9900 }, informe));
+check(
+  "un pago viejo sin marca sigue siendo Comercio, nunca un producto nuevo",
+  productoDePago(pago({ transaction_amount: 4900 }))?.slug === "planilla-comercio",
+);
+
 // ── 3. Mail del comprador ──────────────────────────────────────────────────────────────
 check("emailValido normaliza", emailValido("  Ana@Mail.COM ") === "ana@mail.com");
 for (const malo of ["", "ana", "ana@", "ana@mail", "a b@mail.com", "@mail.com"]) {
   check(`emailValido rechaza «${malo}»`, emailValido(malo) === null);
 }
+
+// ── 3b. Enlace de entrega del informe (mail y gracias usan el mismo helper) ─────────────
+check(
+  "informe: el enlace de entrega es /informes/cuota-alimentaria/ver?payment_id=<id>",
+  rutaEntrega(informe, "123") === "/informes/cuota-alimentaria/ver?payment_id=123",
+);
+check("planilla: el enlace de entrega es su descarga", rutaEntrega(alquileres, "1/2") === "/api/planilla-alquileres/download?payment_id=1%2F2");
+const mailInforme = informeEntregaHtml({ titulo: informe.titulo, urlInforme: "https://calcular.ar/informes/cuota-alimentaria/ver?payment_id=9", urlLanding: "https://calcular.ar/informes/cuota-alimentaria" });
+check("mail del informe: botón «Ver mi informe» al enlace de entrega", mailInforme.includes("Ver mi informe") && mailInforme.includes("/informes/cuota-alimentaria/ver?payment_id=9"));
+check("mail del informe sin datos: no promete «los datos que cargaste»", !mailInforme.includes("cargaste"));
+check(
+  "mail del informe con datos: dice que sale con lo que cargó",
+  informeEntregaHtml({ titulo: informe.titulo, urlInforme: "x", urlLanding: "y", conDatos: true }).includes("los datos que cargaste"),
+);
+check("mail del informe: no habla de .xlsx ni de descargar una planilla", !mailInforme.includes(".xlsx") && !/planilla/i.test(mailInforme.replace(/Más de calcular\.ar[\s\S]*$/, "")));
 
 // ── 4. La descarga de un producto nuevo entrega SU archivo real ─────────────────────────
 const fetchReal = globalThis.fetch;
@@ -100,7 +158,7 @@ async function main() {
   globalThis.fetch = (async () => new Response(JSON.stringify(respuesta), { status: 200 })) as typeof fetch;
 
   const pedir = async () => {
-    const req = new NextRequest(new URL(`https://calcular.ar${casas.rutaDescarga}?payment_id=1`));
+    const req = new NextRequest(new URL(`https://calcular.ar${casas.rutaDescarga}?payment_id=1000001`));
     const res = await servirPlanilla(req, casas);
     return { res, cuerpo: Buffer.from(await res.arrayBuffer()) };
   };
@@ -111,6 +169,13 @@ async function main() {
   respuesta = pago({ external_reference: "planilla-monotributo:x", transaction_amount: 9900 });
   ({ res, cuerpo } = await pedir());
   check("casas: un pago de Monotributo (mismo precio) → 403 sin bytes", res.status === 403 && !(cuerpo[0] === 0x50 && cuerpo[1] === 0x4b), res.status);
+
+  // ── 4b. Un informe nunca sale como archivo ───────────────────────────────────────────
+  {
+    const res = await servirArchivoProducto(PRODUCTOS["informe-cuota-alimentaria"], deInforme);
+    const cuerpo = Buffer.from(await res.arrayBuffer());
+    check("informe: pedirlo como archivo → 404 sin bytes de planilla", res.status === 404 && !(cuerpo[0] === 0x50 && cuerpo[1] === 0x4b), res.status);
+  }
 
   // ── 5. Cuenta vieja (legado): un pago que la cuenta nueva no conoce se busca en la vieja ──
   process.env.MP_ACCESS_TOKEN_LEGADO = "APP_USR-token-legado-de-prueba";

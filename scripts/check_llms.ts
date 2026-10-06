@@ -44,6 +44,7 @@ const EXCLUIDAS = new Set<string>([
   "/terminos",
   "/planillas/gracias", // página de agradecimiento post-compra, sin contenido propio
   "/planillas/comprar", // formulario de compra sin JS (noindex), el contenido vive en cada landing
+  "/informes/cuota-alimentaria/ver", // entrega del informe pago: lleva el payment_id, noindex
   "/blog", // el índice del blog; los posts se listan aparte cuando corresponde
   // Cuentas y panel: privadas, noindex y fuera del sitemap.
   "/login",
