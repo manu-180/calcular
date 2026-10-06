@@ -35,6 +35,10 @@ const nextConfig: NextConfig = {
     "/api/planilla-casas-particulares/download": ["./private/**"],
     "/api/planilla-monotributo/download": ["./private/**"],
     "/api/planilla-alquileres/download": ["./private/**"],
+    "/api/planilla-camioneros/download": ["./private/**"],
+    "/api/planilla-mi-sueldo/download": ["./private/**"],
+    "/api/planilla-vacaciones/download": ["./private/**"],
+    "/api/planilla-plazo-fijo/download": ["./private/**"],
     "/api/cuenta/descargar/[id]": ["./private/**"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios

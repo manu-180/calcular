@@ -3,6 +3,7 @@ import { PlanillaLanding } from "../_producto";
 import { hojaCamioneros } from "@/components/camioneros/hoja";
 import { VIATICOS_CAMIONEROS, ZONAS_CAMIONEROS } from "@/components/camioneros/viaticos";
 import { datosOferta } from "@/lib/oferta";
+import { AvisoCamioneros, PreviaCamioneros } from "@/components/camioneros/PreviaCamioneros";
 import {
   CAMIONEROS_FUENTES,
   CAMIONEROS_HOMOLOGACION,
@@ -41,7 +42,8 @@ export const metadata: Metadata = {
 // último mes con planilla firmada. Sale del motor de /convenios/camioneros, igual que la oferta de la
 // calculadora: la previa no puede mostrar un número que la planilla no dé
 // (scripts/check_planilla_camioneros.ts lo verifica contra el archivo).
-const EJEMPLO = hojaCamioneros(datosOferta("planilla-camioneros").archivo, {
+const ARCHIVO = datosOferta("planilla-camioneros").archivo;
+const EJEMPLO = hojaCamioneros(ARCHIVO, {
   mesId: ULTIMO.id,
   categoriaId: "chofer-primera",
   anios: 5,
@@ -55,6 +57,10 @@ export default function PlanillaCamionerosPage() {
   return (
     <PlanillaLanding
       producto={PRODUCTO}
+      personal={{
+        previa: (ejemplo) => <PreviaCamioneros archivo={ARCHIVO}>{ejemplo}</PreviaCamioneros>,
+        aviso: <AvisoCamioneros archivo={ARCHIVO} />,
+      }}
       etiquetaConvenio="CCT 40/89 — Camioneros (FADEEAC)"
       h1={
         <>

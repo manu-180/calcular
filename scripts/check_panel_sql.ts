@@ -707,8 +707,23 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
   igual(armado.paginas[0].tasaUso, 0.5, "tasaUso = usos / vistas");
   igual(
     armado.embudos.map((e) => e.producto),
-    ["planilla-comercio", "planilla-casas-particulares", "planilla-monotributo", "planilla-alquileres", "planilla-uocra", "informe-cuota-alimentaria"],
-    "siempre los 6 productos del catálogo, aunque no tengan movimiento",
+    [
+      "planilla-comercio",
+      "planilla-casas-particulares",
+      "planilla-monotributo",
+      "planilla-alquileres",
+      "planilla-uocra",
+      "informe-cuota-alimentaria",
+      "planilla-camioneros",
+      "planilla-vacaciones",
+      "planilla-mi-sueldo",
+      "planilla-plazo-fijo",
+      "informe-indemnizacion",
+      "informe-ganancias",
+      "informe-credito-laboral",
+      "informe-inflacion",
+    ],
+    "siempre todos los productos del catálogo, aunque no tengan movimiento",
   );
   const cuota = mods.datos.armarPanel("7d", desde, hasta, {
     ...p,

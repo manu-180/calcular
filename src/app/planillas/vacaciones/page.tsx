@@ -6,6 +6,7 @@ import { ANIO_VACACIONES, VACACIONES_FUENTES } from "@/data/vacaciones";
 import { hojaVacaciones } from "@/components/vacaciones/previa";
 import { fechaConDia, inicioSugerido } from "@/components/vacaciones/cronograma";
 import { hoyAR } from "@/lib/hoy";
+import { AvisoDatosVacaciones, PreviaPersonalVacaciones } from "@/components/vacaciones/PreviaPersonalVacaciones";
 
 const PRODUCTO = PRODUCTOS["planilla-vacaciones"];
 const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
@@ -31,11 +32,16 @@ export const metadata: Metadata = {
 // que la oferta de /vacaciones; check_planilla_vacaciones.ts exige que el archivo dé lo mismo.
 const HOY = hoyAR();
 const CASO = { ingresoISO: `${ANIO_VACACIONES - 7}-03-11`, sueldo: 1450000, diasTramo: 0, inicioISO: inicioSugerido(HOY) };
-const EJEMPLO = hojaVacaciones(datosOferta("planilla-vacaciones").archivo, CASO, HOY)!;
+const ARCHIVO = datosOferta("planilla-vacaciones").archivo;
+const EJEMPLO = hojaVacaciones(ARCHIVO, CASO, HOY)!;
 
 export default function PlanillaVacacionesPage() {
   return (
     <PlanillaLanding
+      personal={{
+        previa: (ejemplo) => <PreviaPersonalVacaciones archivo={ARCHIVO}>{ejemplo}</PreviaPersonalVacaciones>,
+        aviso: <AvisoDatosVacaciones archivo={ARCHIVO} />,
+      }}
       producto={PRODUCTO}
       etiquetaConvenio="LCT arts. 150 a 157 · Ley 27.802"
       h1={

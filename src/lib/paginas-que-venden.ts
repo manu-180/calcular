@@ -26,6 +26,8 @@ export const RUTAS_QUE_VENDEN = [
   "/convenios/comercio",
   "/dia-del-empleado-de-comercio",
   "/convenios/uocra",
+  "/convenios/camioneros",
+  "/sueldo-neto/camioneros",
   "/sueldo-neto/comercio",
   "/sueldo-neto/construccion",
   "/blog/aumento-comercio-agosto-2026",
@@ -37,7 +39,18 @@ export const RUTAS_QUE_VENDEN = [
 
 /** Rutas que venden sólo en la página misma: `/cuota-alimentaria/[mes]` es la serie mensual, sin CTA,
  *  y apagarle los anuncios por prefijo era regalar ingresos. */
-export const RUTAS_QUE_VENDEN_EXACTAS = ["/inflacion/alquiler", "/cuota-alimentaria", "/empleada-domestica"] as const;
+export const RUTAS_QUE_VENDEN_EXACTAS = [
+  "/inflacion/alquiler",
+  "/cuota-alimentaria",
+  "/empleada-domestica",
+  "/sueldo-neto",
+  "/indemnizacion",
+  "/inflacion",
+  "/ganancias",
+  "/plazo-fijo",
+  "/actualizacion-creditos-laborales",
+  "/vacaciones",
+] as const;
 
 /** `true` si en esa ruta hay algo a la venta (incluye las subrutas de RUTAS_QUE_VENDEN). */
 export function vendeAlgo(pathname: string): boolean {

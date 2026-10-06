@@ -145,6 +145,35 @@ export default function PrivacidadPage() {
             desfavorable y horas extras;
           </li>
           <li>planilla de alquileres: el alquiler inicial, el mes en que empezó el contrato y cada cuánto se ajusta;</li>
+          <li>planilla de Camioneros: mes, categoría y años de antigüedad;</li>
+          <li>
+            planilla Mi Sueldo: el sueldo bruto, el porcentaje de cuota sindical, el mes de la cuenta, el mes de tu
+            último aumento y, si pediste estimar Ganancias, cónyuge e hijos a cargo y otras deducciones;
+          </li>
+          <li>
+            planilla de vacaciones: la fecha de ingreso, el sueldo bruto, los días del tramo y la fecha de inicio de las
+            vacaciones (el nombre de la persona no viaja: se escribe en el archivo);
+          </li>
+          <li>
+            informe de liquidación por despido: el sueldo bruto, las fechas de ingreso y de despido, si hubo preaviso y el
+            tope del convenio si lo informaste (tu nombre, la empresa y los montos que te ofrecen se escriben en la página
+            y no salen de tu navegador);
+          </li>
+          <li>
+            informe de Ganancias: el sueldo bruto mensual, si tenés cónyuge a cargo, cuántos hijos a cargo, el porcentaje
+            de cuota sindical y el monto mensual de otras deducciones que ya declarás (lo que cargues después en el
+            informe, como alquiler, prepaga o colegio, queda sólo en tu navegador);
+          </li>
+          <li>
+            informe de actualización por inflación: el monto, el mes de origen, el mes de llegada (o «último dato»), el
+            sueldo actual si lo cargaste y para qué es la carta (tu nombre, el del destinatario, la ciudad y el concepto
+            no salen de tu navegador);
+          </li>
+          <li>
+            informe de crédito laboral: el tipo de cada rubro (de una lista fija), su monto, el mes en que se hizo
+            exigible, el mes de pago y el porcentaje de cuota litis (la carátula, las partes, el expediente y los nombres
+            de los rubros no se envían);
+          </li>
           <li>
             informe de cuota alimentaria: la edad de cada hijo (por tramo), el ingreso de quien paga, el del
             otro progenitor si lo cargaste y si el cuidado es compartido.

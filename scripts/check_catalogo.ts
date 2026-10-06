@@ -52,20 +52,32 @@ const GENERADOR: Record<string, string> = {
   "planilla-casas-particulares": "generarPlanillaCasas",
   "planilla-monotributo": "generarPlanillaMonotributo",
   "planilla-alquileres": "generarPlanillaAlquileres",
+  "planilla-camioneros": "generarPlanillaCamioneros",
+  "planilla-mi-sueldo": "generarPlanillaMiSueldo",
+  "planilla-vacaciones": "generarPlanillaVacaciones",
+  "planilla-plazo-fijo": "generarPlanillaPlazoFijo",
 };
 
 // ── 1. Cada producto del catálogo está completo ───────────────────────────────────────
 check("CATALOGO lista todos los productos, sin repetir", new Set(CATALOGO.map((p) => p.slug)).size === Object.keys(PRODUCTOS).length);
 check(
-  "el catálogo tiene los 6 productos (4 planillas de sueldo/monotributo, alquileres e informe de cuota)",
+  "el catálogo tiene los 14 productos (9 planillas y 5 informes)",
   JSON.stringify(Object.keys(PRODUCTOS).sort()) ===
     JSON.stringify([
+      "informe-credito-laboral",
       "informe-cuota-alimentaria",
+      "informe-ganancias",
+      "informe-indemnizacion",
+      "informe-inflacion",
       "planilla-alquileres",
+      "planilla-camioneros",
       "planilla-casas-particulares",
       "planilla-comercio",
+      "planilla-mi-sueldo",
       "planilla-monotributo",
+      "planilla-plazo-fijo",
       "planilla-uocra",
+      "planilla-vacaciones",
     ]),
   Object.keys(PRODUCTOS),
 );
