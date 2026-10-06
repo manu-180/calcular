@@ -114,8 +114,7 @@ export function calcularArtCasas(e: EntradaArtCasas): ResultadoArtCasas | null {
   } else if (art) {
     avisos.push({
       tono: "atencion",
-      texto:
-        "Acá la fórmula supera al piso, que es lo excepcional en este régimen: sólo pasa por debajo de los 19 años y en las categorías de base más alta, donde el coeficiente 65/edad es máximo. Desde los 19 años vuelve a mandar el piso en todas las categorías y modalidades.",
+      texto: `Acá la fórmula supera al piso, que es lo excepcional en este régimen: sólo pasa en las edades más jóvenes, donde el coeficiente 65/edad es máximo, y llega más lejos cuanto más alta es la base de la categoría. Desde los ${EDAD_PISO_SIEMPRE} años manda el piso en todas las categorías y modalidades.`,
     });
   }
 
@@ -138,4 +137,52 @@ export function calcularArtCasas(e: EntradaArtCasas): ResultadoArtCasas | null {
     art,
     avisos,
   };
+}
+
+export type CorteArtCasas = {
+  categoria: CategoriaCasasParticulares;
+  modalidad: Modalidad;
+  /** Primera edad del barrido desde la que manda el piso. */
+  edad: number;
+};
+
+export const EDAD_MINIMA_BARRIDO = 16;
+export const EDAD_MAXIMA_BARRIDO = 70;
+
+// Las edades de corte se DERIVAN de la escala vigente y del piso de la SRT, nunca se escriben: la
+// escala sube todos los meses y el piso cada seis, así que una edad escrita a mano queda falsa al
+// mes siguiente (pasó el 1/10/2026: la página decía «desde los 19 años» y supervisor/a sin retiro
+// ya cortaba a los 20). El porcentaje es irrelevante para el cruce porque multiplica a los dos
+// lados; se barre con 100. Usa `calcularART` y no `calcularArtCasas` porque esta corre al cargar el
+// módulo y `calcularArtCasas` lee EDAD_PISO_SIEMPRE: llamarla acá es un ReferenceError (TDZ).
+export function cortesDelPiso(): CorteArtCasas[] {
+  const cortes: CorteArtCasas[] = [];
+  for (const categoria of ESCALA_VIGENTE) {
+    const modalidades: Modalidad[] =
+      categoria.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
+    for (const modalidad of modalidades) {
+      const ingresoBase =
+        modalidad === "sin-retiro" ? categoria.mesSinRetiro : (categoria.mesConRetiro as number);
+      let edad = EDAD_MAXIMA_BARRIDO + 1;
+      for (let e = EDAD_MINIMA_BARRIDO; e <= EDAD_MAXIMA_BARRIDO; e++) {
+        const r = calcularART({ ingresoBase, edad: e, incapacidad: 100, enElTrabajo: true });
+        if (r?.mandaElPiso) {
+          edad = e;
+          break;
+        }
+      }
+      cortes.push({ categoria, modalidad, edad });
+    }
+  }
+  return cortes;
+}
+
+export const CORTES_ART_CASAS = cortesDelPiso();
+/** Desde esta edad el piso manda en todas las categorías y modalidades. */
+export const EDAD_PISO_SIEMPRE = Math.max(...CORTES_ART_CASAS.map((c) => c.edad));
+export const CORTE_MAS_TEMPRANO = CORTES_ART_CASAS.reduce((a, b) => (b.edad < a.edad ? b : a));
+export const CORTE_MAS_TARDIO = CORTES_ART_CASAS.reduce((a, b) => (b.edad > a.edad ? b : a));
+
+export function describirCorte(c: CorteArtCasas): string {
+  return `${c.categoria.nombre.toLowerCase()} ${c.modalidad === "con-retiro" ? "con retiro" : "sin retiro"}`;
 }

@@ -26,11 +26,11 @@
 //
 // Y ACÁ VA EL LÍMITE EXACTO, PORQUE «SIEMPRE» ERA FALSO — y el primer barrido, hecho con pocas
 // edades, casi lo deja pasar. Barriendo de 16 a 70 años las 5 categorías y las dos modalidades
-// (7/9/2026): **desde los 19 años el piso manda en todas, sin excepción**. Por debajo de los 19 la
-// fórmula gana en 7 combinaciones, todas de las categorías con la base más alta, porque ahí el
-// coeficiente 65/edad es máximo. La edad de corte es propia de cada categoría y crece con su
-// mínimo: tareas generales y caseros ya desde los 16, asistencia y cuidado desde los 17, tareas
-// específicas desde los 18, supervisor/a recién desde los 19. Y un detalle que cae solo del
+// hay una edad desde la que el piso manda en todas, sin excepción, y por debajo la fórmula gana
+// hasta más tarde cuanto más alta es la base de la categoría, porque el coeficiente 65/edad es
+// máximo. Esas edades NO se escriben acá: las calcula `cortesDelPiso()` en
+// `lib/art-casas-particulares.ts` con la escala vigente. El 7/9/2026 el corte general era 19; el
+// 1/10/2026, con la escala de octubre y el mismo piso, pasó a 20. Y un detalle que cae solo del
 // barrido: **cuál de los dos manda no depende del porcentaje de incapacidad**, porque los dos
 // lados de la comparación se multiplican por él. Depende sólo de la categoría, la modalidad y la
 // edad.
@@ -63,6 +63,8 @@
 //   · Decreto 467/2014 (id 228927), reglamentación del art. 74, incisos a) a e).
 // Los importes de cuota salen de la tabla mensual de ARCA que ya vive en el repo, y los pisos de
 // la Res. SRT vigente que ya vive en `data/riesgos-trabajo.ts`. Este archivo no duplica ninguno.
+
+import { EDAD_PISO_SIEMPRE } from "@/lib/art-casas-particulares";
 
 export const ART_CASAS_VIGENCIA = {
   consultadoEl: "7 de septiembre de 2026",
@@ -97,9 +99,8 @@ export const REGLAS_ART_CASAS: ReglaArtCasas[] = [
   },
   {
     id: "manda-el-piso",
-    titulo: "Por eso, salvo un caso en toda la escala, lo que se cobra es el piso de la SRT",
-    texto:
-      "Con una base tan baja, la fórmula del art. 14 ap. 2 (53 × ingreso base × % de incapacidad × 65/edad) queda por debajo del piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso no depende de la categoría ni del sueldo: es el mismo para todos, y por eso protege más a quien menos base tiene. Desde los 19 años el piso manda en todas las categorías y modalidades, sin excepción; por debajo de esa edad la fórmula puede ganar, y sólo en las categorías de base más alta, porque el coeficiente 65/edad es máximo. Y cuál de los dos manda no depende del porcentaje de incapacidad, porque los dos lados se multiplican por él.",
+    titulo: "Por eso, salvo en las edades más jóvenes, lo que se cobra es el piso de la SRT",
+    texto: `Con una base tan baja, la fórmula del art. 14 ap. 2 (53 × ingreso base × % de incapacidad × 65/edad) queda por debajo del piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso no depende de la categoría ni del sueldo: es el mismo para todos, y por eso protege más a quien menos base tiene. Con la escala vigente, desde los ${EDAD_PISO_SIEMPRE} años el piso manda en todas las categorías y modalidades, sin excepción; por debajo de esa edad la fórmula puede ganar, y gana hasta más tarde cuanto más alta es la base de la categoría, porque el coeficiente 65/edad es máximo. Y cuál de los dos manda no depende del porcentaje de incapacidad, porque los dos lados se multiplican por él.`,
     norma: "Decreto 1694/2009, arts. 2 a 4 · Res. SRT vigente (art. 17 bis de la Ley 26.773)",
   },
   {
