@@ -26,6 +26,7 @@ import {
   variacionMensual,
 } from "@/lib/inflacion";
 import { formatARS, formatPct } from "@/lib/formato";
+import { productoPorSlug } from "@/lib/mp";
 
 /** El caso testigo de la página: un millón de pesos debidos hace dos años. */
 const EJEMPLO_MONTO = 1_000_000;
@@ -96,8 +97,8 @@ const faqs = [
     a: `Sí. El art. 277 permite cancelar la sentencia en hasta ${CUOTAS_GRANDES_EMPRESAS} cuotas mensuales consecutivas cuando el condenado es una gran empresa, y en hasta ${CUOTAS_PYME} cuando es una micro, pequeña o mediana empresa. Y acá hay una asimetría del texto que conviene mirar: la norma aclara «ajustadas conforme la pauta establecida en el artículo 276» para el supuesto de las ${CUOTAS_GRANDES_EMPRESAS} cuotas, y no repite esa frase para el de las ${CUOTAS_PYME}. Quién paga esa diferencia depende de cómo se interprete: ${CUOTAS_PYME_SIN_AJUSTE ? `si ${CUOTAS_PYME} cuotas no se ajustaran, con una inflación mensual como la última publicada el trabajador cobraría en términos reales un ${formatPct(CUOTAS_PYME_SIN_AJUSTE.perdidaPct, 0)} menos que el monto de la sentencia` : "sin ajuste, la inflación del período se la come el acreedor"}.`,
   },
   {
-    q: "¿Qué pasa con los períodos anteriores a marzo de 2026?",
-    a: `Es la discusión abierta. El texto nuevo rige desde su publicación en el Boletín Oficial (${VIGENCIA_ART_276}) y no dice qué hacer con los tramos ya corridos bajo el régimen anterior; los tribunales lo están resolviendo. Esta calculadora aplica el texto vigente a todo el período que le cargues y te lo dice de frente, para que sepas exactamente qué estás mirando: es una estimación con la regla de hoy, no una liquidación judicial.`,
+    q: "¿Qué pasa con los juicios que ya estaban en trámite en marzo de 2026?",
+    a: `La misma ley tiene una regla especial para ellos. El art. 55 de la Ley 27.802 dice que en los juicios en trámite y sin sentencia definitiva al ${VIGENCIA_ART_276} los créditos se actualizan con intereses a la tasa pasiva que determine el BCRA, con un tope y un piso: el resultado no puede superar la cuenta de IPC más ${formatPct(TASA_PURA_ANUAL * 100, 0)} anual ni quedar por debajo del 67% de esa cuenta. Esta calculadora muestra esa cuenta, que es el tope; no calcula la tasa pasiva. Es una norma nueva y su aplicación se discute: al menos una sala de la Cámara Nacional de Apelaciones del Trabajo declaró inconstitucional el art. 55 en un caso y aplicó el art. 276. Qué regla rige en cada expediente lo decide el juez de la causa.`,
   },
 ];
 
@@ -177,7 +178,9 @@ export default function ActualizacionCreditosPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraActualizacionCreditos />
+      <CalculadoraActualizacionCreditos
+        precioInforme={productoPorSlug("informe-credito-laboral")?.precio}
+      />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Lo que dice el artículo, entero</h2>
