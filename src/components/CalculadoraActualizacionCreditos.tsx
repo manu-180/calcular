@@ -15,7 +15,7 @@ import {
   sumarMeses,
   type Periodo,
 } from "@/lib/inflacion";
-import { formatARS, formatPct } from "@/lib/formato";
+import { formatARS, formatPct, parseMonto } from "@/lib/formato";
 import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
 import { datosDeLaCalculadora, prefill } from "@/lib/prefill/credito-laboral";
 import { CreditoInformeCTA } from "@/components/informe-credito-laboral/CreditoInformeCTA";
@@ -48,7 +48,7 @@ export function CalculadoraActualizacionCreditos({
   const res = useMemo(
     () =>
       actualizarCreditoLaboral({
-        monto: Number(monto) || 0,
+        monto: parseMonto(monto),
         desde,
         hasta,
         cuotaLitisPct: Number(cuotaLitisPct) || 0,
@@ -177,7 +177,7 @@ export function CalculadoraActualizacionCreditos({
             <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
               <div className="flex justify-between border-b border-zinc-200 pb-1.5">
                 <dt className="text-zinc-600">Monto nominal</dt>
-                <dd className="font-medium text-zinc-900">{formatARS(Number(monto) || 0, 2)}</dd>
+                <dd className="font-medium text-zinc-900">{formatARS(parseMonto(monto), 2)}</dd>
               </div>
               <div className="flex justify-between border-b border-zinc-200 pb-1.5">
                 <dt className="text-zinc-600">
@@ -256,7 +256,7 @@ export function CalculadoraActualizacionCreditos({
         )}
       </div>
       {!imposible && res && res.meses > 0 ? (
-        <CreditoInformeCTA r={res} monto={Number(monto) || 0} precio={precioInforme} />
+        <CreditoInformeCTA r={res} monto={parseMonto(monto)} precio={precioInforme} />
       ) : null}
     </>
   );

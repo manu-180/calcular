@@ -16,6 +16,7 @@ import { PRIMER_PERIODO, ULTIMO_PERIODO, indiceDe, sumarMeses, variacionMensual 
 import { MAX_RUBROS, MESES_PAGO_FUTURO, datosDeLaCalculadora, prefill, type Datos } from "../src/lib/prefill/credito-laboral";
 import { PISO_ART_55, PRECIO_INFORME_REFERENCIA, armarInforme, casoEjemplo } from "../src/app/informes/credito-laboral/_modelo";
 import { PRODUCTOS } from "../src/lib/mp";
+import { parseMonto } from "../src/lib/formato";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -33,7 +34,7 @@ const cerca = (a: number, b: number, tol = 0.005) => Math.abs(a - b) <= tol;
 {
   const fuente = readFileSync(join(__dirname, "..", "src", "components", "CalculadoraActualizacionCreditos.tsx"), "utf8");
   for (const linea of [
-    "monto: Number(monto) || 0,",
+    "monto: parseMonto(monto),",
     "cuotaLitisPct: Number(cuotaLitisPct) || 0,",
     "datosDeLaCalculadora({ monto, desde, hasta, cuotaLitisPct })",
     "recordarDatosCompra(SLUG_INFORME, datosCompra)",
@@ -52,7 +53,7 @@ type Estado = { monto: string; desde: string; hasta: string; cuotaLitisPct: stri
 // Réplica literal de lo que hace CalculadoraActualizacionCreditos con su estado.
 function web(e: Estado) {
   return actualizarCreditoLaboral({
-    monto: Number(e.monto) || 0,
+    monto: parseMonto(e.monto),
     desde: e.desde,
     hasta: e.hasta,
     cuotaLitisPct: Number(e.cuotaLitisPct) || 0,

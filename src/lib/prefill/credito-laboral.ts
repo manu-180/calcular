@@ -1,5 +1,6 @@
 import type { Prefill } from "./tipos";
 import { numero, objeto, opcion } from "./_campos";
+import { parseMonto } from "@/lib/formato";
 import { PRIMER_PERIODO, ULTIMO_PERIODO, existePeriodo, mesesEntre, sumarMeses, type Periodo } from "@/lib/inflacion";
 
 // Sólo lo que hace falta para rehacer la cuenta: qué tipo de rubro, cuánto y desde qué mes. La
@@ -87,7 +88,7 @@ function validar(raw: unknown): Datos | null {
 export const prefill: Prefill<Datos> = { validar };
 
 /** Lo que la calculadora deja para el informe: su único rubro, leído como lo lee ella
- *  (`Number(x) || 0`). La cuota litis se acota igual que en el motor, que la topea en 0–20: así
+ *  (`parseMonto`, que entiende «3.000.000»). La cuota litis se acota igual que en el motor, que la topea en 0–20: así
  *  un «25» escrito da en el informe el mismo número que en pantalla. */
 export function datosDeLaCalculadora(estado: {
   monto: string;
@@ -96,7 +97,7 @@ export function datosDeLaCalculadora(estado: {
   cuotaLitisPct: string;
 }): Datos {
   return {
-    rubros: [{ concepto: "credito", monto: Number(estado.monto) || 0, desde: estado.desde }],
+    rubros: [{ concepto: "credito", monto: parseMonto(estado.monto), desde: estado.desde }],
     hasta: estado.hasta,
     litis: Math.min(Math.max(Number(estado.cuotaLitisPct) || 0, 0), 20),
   };
