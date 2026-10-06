@@ -29,7 +29,13 @@ import {
 } from "../src/data/art-casas-particulares";
 import { ESCALA_VIGENTE } from "../src/data/casas-particulares";
 import { CONDICIONES, RANGOS, TABLA_APORTES } from "../src/data/aportes-casas-particulares";
-import { calcularArtCasas, type Modalidad } from "../src/lib/art-casas-particulares";
+import {
+  CORTES_ART_CASAS,
+  EDAD_MINIMA_BARRIDO,
+  EDAD_PISO_SIEMPRE,
+  calcularArtCasas,
+  type Modalidad,
+} from "../src/lib/art-casas-particulares";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -98,14 +104,10 @@ for (const cat of ESCALA_VIGENTE) {
   }
 }
 check("se recorrieron todos los casos del régimen", casos >= 150, casos);
-// El barrido del 7/9/2026 dio 264 de 270 con el piso mandando. Los 6 restantes son TODOS el mismo
-// caso: supervisor/a sin retiro a los 18 años. Se afirma eso, no un "siempre" que era falso.
-check(
-  "el piso manda en la enorme mayoría del régimen (la base está fijada en el mínimo)",
-  sinPiso / casos < 0.05,
-  { casos, sinPiso },
-);
+console.log(`     (muestra de 5 edades: ${sinPiso} de ${casos} casos con la fórmula ganando)`);
 const excepciones: string[] = [];
+let celdasBarrido = 0;
+let celdasSinPiso = 0;
 for (const cat of ESCALA_VIGENTE) {
   const modalidades: Modalidad[] =
     cat.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
@@ -113,12 +115,28 @@ for (const cat of ESCALA_VIGENTE) {
     for (let edad = 16; edad <= 70; edad++) {
       for (const incapacidad of [1, 30, 66, 100]) {
         const r = calcularArtCasas({ ...BASE, categoriaId: cat.id, modalidad, edad, incapacidad });
-        if (r?.art && !r.art.mandaElPiso) excepciones.push(`${cat.id}/${modalidad}/${edad}`);
+        if (!r?.art) continue;
+        celdasBarrido++;
+        if (!r.art.mandaElPiso) {
+          celdasSinPiso++;
+          excepciones.push(`${cat.id}/${modalidad}/${edad}`);
+        }
       }
     }
   }
 }
 const unicas = [...new Set(excepciones)];
+// La «enorme mayoría» se mide sobre el barrido completo de 16 a 70, no sobre la muestra de 5 edades
+// de arriba: esa muestra incluye los 18, justo donde vive el cruce, y una sola edad pesa el 20% —
+// con la escala de octubre de 2026 dio 24 de 270 (8,9%) y el ancla del 5% se puso roja por un dato
+// correcto. Sobre el barrido completo, aun con el corte en los 25 que permite el check de abajo, el
+// techo teórico es 9 de 55 edades (16%); el 10% deja margen para las subas de escala del semestre y
+// salta si la base se desacopla del mínimo.
+check(
+  "el piso manda en la enorme mayoría del régimen (la base está fijada en el mínimo)",
+  celdasSinPiso / celdasBarrido < 0.1,
+  { celdasBarrido, celdasSinPiso },
+);
 
 // QUÉ SE AFIRMA ACÁ, Y POR QUÉ NO SON NÚMEROS FIJOS (reescrito el 15/9/2026, s115).
 // Hasta hoy estos checks anclaban «la fórmula sólo gana por debajo de los 19 años» y «son
@@ -177,10 +195,36 @@ check(
     return porMinimo.every((c, i) => i === 0 || c.corte >= porMinimo[i - 1].corte);
   })(),
 );
+// Hasta el 6/10/2026 acá se afirmaba que tareas generales sin retiro tenía corte 16 (el piso
+// siempre). Con la escala de octubre su mínimo ($548.429,23) pasó el punto de cruce de los 16 años
+// (piso ÷ 53 × 16/65) y la fórmula le gana a esa edad: dato correcto, ancla muerta. Lo que no
+// cambia con la escala es el orden: la base más baja es la que antes cruza.
 check(
-  "la categoría más baja de la escala nunca le gana al piso: el corte es la edad mínima del barrido",
-  corteDe("tareas-generales", "sin-retiro") === 16,
-  corteDe("tareas-generales", "sin-retiro"),
+  "la base más baja de la escala es la que antes cruza al piso",
+  (() => {
+    const base = (c: (typeof ESCALA_VIGENTE)[number], m: Modalidad) =>
+      m === "sin-retiro" ? c.mesSinRetiro : (c.mesConRetiro as number);
+    const pares = ESCALA_VIGENTE.flatMap((c) =>
+      (c.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"]).map((m) => ({
+        base: base(c, m as Modalidad),
+        corte: corteDe(c.id, m as Modalidad),
+      })),
+    );
+    const masBaja = pares.reduce((a, b) => (b.base < a.base ? b : a));
+    return masBaja.corte === Math.min(...pares.map((p) => p.corte));
+  })(),
+);
+check(
+  "las edades de corte publicadas son las del barrido",
+  CORTES_ART_CASAS.every((c) => c.edad === corteDe(c.categoria.id, c.modalidad)) &&
+    EDAD_PISO_SIEMPRE === (unicas.length ? edadMaximaSinPiso + 1 : EDAD_MINIMA_BARRIDO),
+  { EDAD_PISO_SIEMPRE, edadMaximaSinPiso },
+);
+check(
+  "la regla publicada cita la edad del barrido, no una escrita a mano",
+  REGLAS_ART_CASAS.find((r) => r.id === "manda-el-piso")!.texto.includes(
+    `desde los ${EDAD_PISO_SIEMPRE} años`,
+  ),
 );
 check(
   "la categoría mejor paga es la que más tarde cruza",

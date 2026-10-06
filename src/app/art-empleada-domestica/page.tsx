@@ -14,6 +14,14 @@ import {
 import { VIGENCIA } from "@/data/casas-particulares";
 import { VIGENCIA_APORTES } from "@/data/aportes-casas-particulares";
 import { PlanillaCTA } from "@/components/PlanillaCTA";
+import {
+  CORTE_MAS_TARDIO,
+  CORTE_MAS_TEMPRANO,
+  EDAD_MAXIMA_BARRIDO,
+  EDAD_MINIMA_BARRIDO,
+  EDAD_PISO_SIEMPRE,
+  describirCorte,
+} from "@/lib/art-casas-particulares";
 
 export const metadata: Metadata = {
   title: "ART de la empleada doméstica: sobre qué sueldo se liquida (no es el que cobra)",
@@ -50,7 +58,7 @@ const faqs = [
   },
   {
     q: "Entonces, ¿cobra menos que otro trabajador?",
-    a: "En la fórmula sí, pero ahí entra el piso. Como la base es baja, el resultado de la fórmula (53 × ingreso base × porcentaje de incapacidad × 65/edad) queda por debajo del piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso no depende de la categoría ni del sueldo: es el mismo para todos, así que protege más a quien menos base tiene. Desde los 19 años el piso manda en todas las categorías y modalidades, sin excepción. Por debajo de esa edad la fórmula puede ganar, y sólo en las categorías de base más alta: la edad de corte crece con el mínimo de cada categoría, desde los 16 años en tareas generales hasta los 19 en supervisor/a.",
+    a: `En la fórmula sí, pero ahí entra el piso. Como la base es baja, el resultado de la fórmula (53 × ingreso base × porcentaje de incapacidad × 65/edad) queda por debajo del piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso no depende de la categoría ni del sueldo: es el mismo para todos, así que protege más a quien menos base tiene. Con la escala vigente, desde los ${EDAD_PISO_SIEMPRE} años el piso manda en todas las categorías y modalidades, sin excepción. Por debajo de esa edad la fórmula puede ganar, y gana hasta más tarde cuanto más alta es la base: el piso manda desde los ${CORTE_MAS_TEMPRANO.edad} años en ${describirCorte(CORTE_MAS_TEMPRANO)} y recién desde los ${CORTE_MAS_TARDIO.edad} en ${describirCorte(CORTE_MAS_TARDIO)}.`,
   },
   {
     q: "¿Puede una ART negarse a asegurar a un empleador de casa particular?",
@@ -195,11 +203,12 @@ export default function Page() {
           ap. 2 multiplica 53 por el ingreso base, por el porcentaje de incapacidad y por 65/edad;
           con un mínimo de categoría no llega al piso ni en los casos más graves, y el piso no
           depende del sueldo. Barriendo la escala entera —5 categorías, las dos modalidades,
-          de los 16 a los 70 años— el límite es nítido: <strong>desde los 19 años manda el piso
-          siempre</strong>. Por debajo de esa edad la fórmula puede ganar, y sólo en las categorías
-          de base más alta, porque ahí el coeficiente 65/edad es máximo: la edad de corte crece con
-          el mínimo de cada categoría, desde los 16 años en tareas generales hasta los 19 en
-          supervisor/a. Y cuál de los dos gana{" "}
+          de los {EDAD_MINIMA_BARRIDO} a los {EDAD_MAXIMA_BARRIDO} años— el límite es nítido:{" "}
+          <strong>desde los {EDAD_PISO_SIEMPRE} años manda el piso siempre</strong>. Por debajo de
+          esa edad la fórmula puede ganar, porque ahí el coeficiente 65/edad es máximo, y gana
+          hasta más tarde cuanto más alta es la base: el piso manda desde los{" "}
+          {CORTE_MAS_TEMPRANO.edad} años en {describirCorte(CORTE_MAS_TEMPRANO)} y recién desde
+          los {CORTE_MAS_TARDIO.edad} en {describirCorte(CORTE_MAS_TARDIO)}. Y cuál de los dos gana{" "}
           <strong>no depende del porcentaje de incapacidad</strong>, porque los dos lados de la
           comparación se multiplican por él. Cómo se llega a ese número, paso por paso,
           está en{" "}
