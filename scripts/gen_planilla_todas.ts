@@ -16,6 +16,7 @@ import { generarPlanillaAlquileres } from "./gen_planilla_alquileres";
 import { generarPlanillaCamioneros } from "./gen_planilla_camioneros";
 import { generarPlanillaMiSueldo } from "./gen_planilla_mi_sueldo";
 import { generarPlanillaVacaciones } from "./gen_planilla_vacaciones";
+import { generarPlanillaPlazoFijo } from "./gen_planilla_plazo_fijo";
 
 async function main() {
   const salidas = [
@@ -27,6 +28,7 @@ async function main() {
     ["Camioneros (CCT 40/89)", await generarPlanillaCamioneros()],
     ["Mi Sueldo", await generarPlanillaMiSueldo()],
     ["Vacaciones", await generarPlanillaVacaciones()],
+    ["Plazos fijos", await generarPlanillaPlazoFijo()],
   ] as const;
 
   for (const [nombre, ruta] of salidas) {

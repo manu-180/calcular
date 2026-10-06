@@ -147,6 +147,10 @@ export default function PrivacidadPage() {
           <li>planilla de alquileres: el alquiler inicial, el mes en que empezó el contrato y cada cuánto se ajusta;</li>
           <li>planilla de Camioneros: mes, categoría y años de antigüedad;</li>
           <li>
+            planilla de plazos fijos: el capital, la TNA, los días, las renovaciones, la inflación mensual y la tasa
+            adicional del UVA que cargaste, y la fecha del día en que hiciste la cuenta;
+          </li>
+          <li>
             planilla Mi Sueldo: el sueldo bruto, el porcentaje de cuota sindical, el mes de la cuenta, el mes de tu
             último aumento y, si pediste estimar Ganancias, cónyuge e hijos a cargo y otras deducciones;
           </li>

@@ -22,6 +22,7 @@ export const ROUNDTRIP_VERIFICADO: ReadonlySet<ProductoSlug> = new Set<ProductoS
   "planilla-camioneros",
   "planilla-mi-sueldo",
   "planilla-vacaciones",
+  "planilla-plazo-fijo",
 ]);
 
 function validar(slug: string, raw: unknown): unknown | null {

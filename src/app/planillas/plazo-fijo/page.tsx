@@ -9,6 +9,7 @@ import { fechaLarga, hoyAR } from "@/lib/hoy";
 import { formatARS } from "@/lib/formato";
 import { PLANILLA_PF } from "@/lib/prefill/plazo-fijo";
 import { PRODUCTOS } from "@/lib/mp";
+import { AvisoDatosPlazoFijo, PreviaPersonalPlazoFijo } from "@/components/plazo-fijo/PreviaPersonalPlazoFijo";
 
 const PRODUCTO = PRODUCTOS["planilla-plazo-fijo"];
 const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
@@ -46,6 +47,10 @@ const EJEMPLO = previaPlazoFijo(PRODUCTO.archivo!, {
 export default function PlanillaPlazoFijoPage() {
   return (
     <PlanillaLanding
+      personal={{
+        previa: (ejemplo) => <PreviaPersonalPlazoFijo archivo={PRODUCTOS["planilla-plazo-fijo"].archivo!}>{ejemplo}</PreviaPersonalPlazoFijo>,
+        aviso: <AvisoDatosPlazoFijo archivo={PRODUCTOS["planilla-plazo-fijo"].archivo!} />,
+      }}
       producto={PRODUCTO}
       etiquetaConvenio="Plazo fijo · IPC del INDEC y tasas del BCRA"
       h1={

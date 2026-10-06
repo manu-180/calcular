@@ -828,6 +828,14 @@ const DEFS: Record<GrupoId, Def[]> = {
       claves: ["excel", "camioneros", "transporte", "viaticos", "liquidar"],
     },
     {
+      href: "/planillas/plazo-fijo",
+      titulo: "Planilla de plazos fijos",
+      descripcion: "Vencimientos y si le ganaron a la inflación",
+      vende: PLAZO_FIJO,
+      tipo: "planilla",
+      claves: ["excel", "plazo fijo", "tasa real", "inflacion", "uva", "vencimientos"],
+    },
+    {
       href: "/planillas/vacaciones",
       titulo: "Planilla de vacaciones",
       descripcion: "Días, aviso, pago y nota para firmar de todo tu equipo",

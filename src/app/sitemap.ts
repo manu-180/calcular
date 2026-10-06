@@ -63,6 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/informes/cuota-alimentaria`,   lastModified: new Date('2026-10-06'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/planillas/camioneros`, lastModified: new Date('2026-10-06'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/planillas/mi-sueldo`, lastModified: new Date('2026-10-06'), changeFrequency: 'monthly', priority: 0.9  },
+    { url: `${BASE}/planillas/plazo-fijo`, lastModified: new Date('2026-10-06'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/planillas/vacaciones`, lastModified: new Date('2026-10-06'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/informes/indemnizacion`, lastModified: new Date('2026-10-06'), changeFrequency: 'monthly', priority: 0.9  },
     { url: `${BASE}/informes/ganancias`, lastModified: new Date('2026-10-06'), changeFrequency: 'monthly', priority: 0.9  },

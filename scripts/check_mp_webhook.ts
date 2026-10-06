@@ -185,7 +185,7 @@ check(
   "un external_reference trucho NO habilita el producto nuevo",
   productoDePago(pago({ external_reference: "planilla-uocra-trucha:1" }))?.slug === "planilla-comercio",
 );
-check("productoPorSlug con slug inexistente da null", productoPorSlug("planilla-camioneros") === null);
+check("productoPorSlug con slug inexistente da null", productoPorSlug("planilla-gastronomicos") === null);
 check("productoPorSlug con vacio da null", productoPorSlug("") === null && productoPorSlug(null) === null);
 
 // -- 6. El gate de descarga no deja cruzar productos --------------------------------
