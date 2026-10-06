@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
 import { CalculadoraPlazoFijo } from "@/components/CalculadoraPlazoFijo";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
@@ -9,6 +10,7 @@ import { interesPlazoFijo, tem, tea } from "@/lib/plazofijo";
 import { formatPct } from "@/lib/formato";
 import {
   GARANTIA_DEPOSITOS,
+  INFLACION_DEFAULT,
   PLAZOFIJO_FUENTES,
   TNA_FALLBACK,
   UVA,
@@ -29,6 +31,8 @@ const ejInteresStr = "$" + ejInteres.toLocaleString("es-AR");
 const ejTotalStr = "$" + (EJ_CAPITAL + ejInteres).toLocaleString("es-AR");
 const ejTemStr = formatPct(tem(ejTna), 2);
 const ejTeaStr = formatPct(tea(ejTna, EJ_DIAS), 0);
+const ejLeGana = tem(ejTna) >= INFLACION_DEFAULT.mensualPct;
+const ejInflStr = formatPct(INFLACION_DEFAULT.mensualPct, 1);
 
 export const metadata: Metadata = {
   title: "Calculadora de Plazo Fijo 2026: cuánto ganás con tu plata a 30 días o más",
@@ -40,7 +44,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Cuánto gana un plazo fijo de $1.000.000 a 30 días?",
-    a: `Depende de la TNA que pague tu banco. Con la tasa promedio de referencia de junio de 2026 (${ejTnaStr}% TNA), $${EJ_CAPITAL.toLocaleString("es-AR")} a ${EJ_DIAS} días generan unos ${ejInteresStr} de interés: retirás ${ejTotalStr}. La cuenta exacta la hacés arriba con la tasa de tu banco, que puede ser mayor o menor al promedio.`,
+    a: `Depende de la TNA que pague tu banco. Con la tasa promedio de referencia del BCRA al ${TNA_FALLBACK.fechaISO.split("-").reverse().join("/")} (${ejTnaStr}% TNA), $${EJ_CAPITAL.toLocaleString("es-AR")} a ${EJ_DIAS} días generan unos ${ejInteresStr} de interés: retirás ${ejTotalStr}. La cuenta exacta la hacés arriba con la tasa de tu banco, que puede ser mayor o menor al promedio.`,
   },
   {
     q: "¿Cómo se calcula el interés de un plazo fijo?",
@@ -153,14 +157,15 @@ export default function PlazoFijoPage() {
           <strong>{TNA_FALLBACK.valor.toLocaleString("es-AR")}% TNA</strong>), depositar{" "}
           <strong>${EJ_CAPITAL.toLocaleString("es-AR")} a {EJ_DIAS} días</strong> rinde unos{" "}
           <strong>{ejInteresStr}</strong> de interés. Eso equivale a una{" "}
-          <strong>TEM de ~{ejTemStr}</strong>, todavía por debajo de la inflación mensual
-          (~2,1%), así que hoy un plazo fijo tradicional <strong>no le gana a la inflación</strong>:
-          para eso conviene mirar el <strong>plazo fijo UVA</strong> (mínimo 90 días). La tasa exacta
-          la pone tu banco y la simulás arriba.
+          <strong>TEM de ~{ejTemStr}</strong>, {ejLeGana ? "por encima" : "por debajo"} de la
+          última inflación mensual del INDEC ({ejInflStr} en {INFLACION_DEFAULT.periodo}): con esos
+          números, un plazo fijo tradicional <strong>{ejLeGana ? "le gana" : "no le gana"} a la inflación</strong>.
+          La inflación de los próximos meses puede ser otra, y la tasa exacta la pone tu banco: lo
+          simulás arriba, y también contra un <strong>plazo fijo UVA</strong> (mínimo 90 días).
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraPlazoFijo />
+      <CalculadoraPlazoFijo oferta={datosOferta("planilla-plazo-fijo")} />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Cómo se calcula un plazo fijo</h2>

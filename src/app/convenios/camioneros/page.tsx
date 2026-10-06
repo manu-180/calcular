@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraCamioneros } from "@/components/CalculadoraCamioneros";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import {
   CAMIONEROS_BASE_MAYO,
@@ -179,7 +180,7 @@ export default function CamionerosPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraCamioneros />
+      <CalculadoraCamioneros oferta={datosOferta("planilla-camioneros")} />
 
       <EmailCapture
         source="convenio-camioneros"

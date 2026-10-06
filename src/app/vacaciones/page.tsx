@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraVacaciones } from "@/components/CalculadoraVacaciones";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
@@ -118,7 +119,7 @@ export default function VacacionesPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraVacaciones />
+      <CalculadoraVacaciones oferta={datosOferta("planilla-vacaciones")} />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
@@ -228,6 +229,29 @@ export default function VacacionesPage() {
             El período general de otorgamiento no cambió: entre el{" "}
             <strong>1 de octubre y el 30 de abril</strong> del año siguiente, salvo acuerdo de
             partes para otra fecha.
+          </p>
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-bold text-zinc-900">Si sos empleador: cómo organizar la temporada</h2>
+        <div className="space-y-3 text-zinc-600">
+          <p>
+            Por cada persona del equipo hay tres pasos: calcular los días que le tocan, elegir una fecha
+            de inicio que caiga en lunes y entregarle el aviso por escrito con 30 días de anticipación.
+            La retribución se paga al empezar las vacaciones, así que conviene saber de antemano cuánto
+            sale en cada mes de octubre a abril.
+          </p>
+          <p>
+            Si tenés varias personas a cargo, la{" "}
+            <Link
+              href="/planillas/vacaciones?desde=vacaciones-guia"
+              className="font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-900"
+            >
+              planilla de vacaciones 2026
+            </Link>{" "}
+            hace esta cuenta para todo el equipo, te avisa cuando una fecha o un plazo no cierra y arma
+            la nota de vacaciones lista para firmar.
           </p>
         </div>
       </section>

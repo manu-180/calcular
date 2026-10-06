@@ -66,6 +66,9 @@ export type ConfigLanding = {
   /** Tercer punto de la lista de la sidebar. Default: «Escala oficial embebida, no la buscás más». */
   beneficioDatos?: string;
   relacionadas: { href: string; texto: string }[];
+  /** Vista previa con el caso de quien viene de la calculadora, para planillas que no pasan por
+   *  `PreviaPersonal`. `previa` recibe el ejemplo para mostrarlo mientras no haya datos. */
+  personal?: { previa: (ejemplo: ReactNode) => ReactNode; aviso: ReactNode };
 };
 
 function Check() {
@@ -210,7 +213,7 @@ export function PlanillaLanding(c: ConfigLanding) {
             </p>
           </div>
         </div>
-        {personal ? <AvisoDatosCargados producto={personal.producto} archivo={personal.archivo} /> : null}
+        {c.personal ? c.personal.aviso : personal ? <AvisoDatosCargados producto={personal.producto} archivo={personal.archivo} /> : null}
 
         <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-600">
           <li className="flex items-start gap-1.5">
@@ -230,7 +233,7 @@ export function PlanillaLanding(c: ConfigLanding) {
       </div>
 
       <div className="grid gap-10 lg:grid-cols-3">
-        <div className="space-y-10 lg:col-span-2">
+        <div className="min-w-0 space-y-10 lg:col-span-2">
           {/* ── 1. Qué me llevo: la hoja de verdad, con números de verdad ── */}
           <section>
             <h2 className="mb-1 text-xl font-semibold text-zinc-900">Esto es lo que vas a ver al abrirla</h2>
@@ -239,7 +242,9 @@ export function PlanillaLanding(c: ConfigLanding) {
                 "No es una captura de pantalla: son los números que la planilla devuelve hoy, calculados con la escala vigente. Si mañana cambia la escala oficial, cambia esto y cambia el archivo."}
             </p>
 
-            {personal ? (
+            {c.personal ? (
+              c.personal.previa(<Ejemplo titulo={c.previewTitulo} hoja={hojaEjemplo} />)
+            ) : personal ? (
               <PreviaPersonal producto={personal.producto} archivo={personal.archivo}>
                 <Ejemplo titulo={c.previewTitulo} hoja={hojaEjemplo} />
               </PreviaPersonal>
@@ -259,7 +264,7 @@ export function PlanillaLanding(c: ConfigLanding) {
             </p>
 
             <div className="mt-4 rounded-xl border border-zinc-200 bg-white p-4">
-              {personal ? (
+              {personal || c.personal ? (
                 <>
                   <p className="text-sm font-semibold text-zinc-900">¿Querés verla con tus números antes de pagar?</p>
                   <p className="mt-1 text-sm text-zinc-600">

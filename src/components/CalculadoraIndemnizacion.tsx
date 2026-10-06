@@ -1,9 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { calcularIndemnizacion, tratamientoGanancias } from "@/lib/indemnizacion";
 import { formatARS, parseMonto } from "@/lib/formato";
 import { MESES_PERIODO_PRUEBA } from "@/data/indemnizacion";
+import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
+import { datosDeLaCalculadora, prefill } from "@/lib/prefill/indemnizacion";
+import { OfertaInformeIndemnizacion } from "@/components/informe-indemnizacion/OfertaInforme";
+import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/informes/indemnizacion/_modelo";
 
 function textoAntiguedad(antiguedad: { anios: number; meses: number; dias: number }): string {
   const partes: string[] = [];
@@ -60,13 +64,19 @@ function Fila({ label, monto, detalle }: { label: string; monto: number; detalle
   );
 }
 
-export function CalculadoraIndemnizacion() {
+export function CalculadoraIndemnizacion({
+  precioInforme = PRECIO_INFORME_REFERENCIA,
+}: {
+  /** Viene del catálogo (src/lib/mp.ts) desde la página: este componente no puede importarlo. */
+  precioInforme?: number;
+}) {
   const [sueldoInput, setSueldoInput] = useState("");
   const [ingresoISO, setIngresoISO] = useState("");
   const [despidoISO, setDespidoISO] = useState("");
   const [preavisoOtorgado, setPreavisoOtorgado] = useState(false);
   const [conoceTope, setConoceTope] = useState(false);
   const [topeInput, setTopeInput] = useState("");
+  const [tocado, setTocado] = useState(false);
 
   const sueldo = useMemo(() => parseMonto(sueldoInput), [sueldoInput]);
   const tope = useMemo(() => parseMonto(topeInput), [topeInput]);
@@ -87,8 +97,25 @@ export function CalculadoraIndemnizacion() {
     [sueldo, ingresoISO, despidoISO, fechasInvertidas, preavisoOtorgado, conoceTope, tope]
   );
 
+  // Lo que el informe necesita para salir con este mismo caso. Sólo cuando hay resultado y si pasa
+  // el `validar` del servidor: si no, el informe saldría vacío aunque acá se vea un número.
+  const datosCompra = useMemo(
+    () =>
+      resultado
+        ? prefill.validar(
+            datosDeLaCalculadora({ sueldo, ingresoISO, despidoISO, preavisoOtorgado, conoceTope, topeInput })
+          )
+        : null,
+    [resultado, sueldo, ingresoISO, despidoISO, preavisoOtorgado, conoceTope, topeInput]
+  );
+  useEffect(() => {
+    if (datosCompra) recordarDatosCompra(SLUG_INFORME, datosCompra);
+    else if (tocado) olvidarDatosCompra(SLUG_INFORME);
+  }, [tocado, datosCompra]);
+
   return (
-    <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
+    <>
+    <div onChange={() => setTocado(true)} className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="space-y-5">
         <div>
           <label htmlFor="mejor-sueldo" className="block text-sm font-semibold text-zinc-800">
@@ -330,5 +357,7 @@ export function CalculadoraIndemnizacion() {
         </div>
       )}
     </div>
+    {resultado && datosCompra && <OfertaInformeIndemnizacion r={resultado} precio={precioInforme} />}
+    </>
   );
 }

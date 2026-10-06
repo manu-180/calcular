@@ -35,6 +35,10 @@ const nextConfig: NextConfig = {
     "/api/planilla-casas-particulares/download": ["./private/**"],
     "/api/planilla-monotributo/download": ["./private/**"],
     "/api/planilla-alquileres/download": ["./private/**"],
+    "/api/planilla-camioneros/download": ["./private/**"],
+    "/api/planilla-mi-sueldo/download": ["./private/**"],
+    "/api/planilla-vacaciones/download": ["./private/**"],
+    "/api/planilla-plazo-fijo/download": ["./private/**"],
     "/api/cuenta/descargar/[id]": ["./private/**"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
@@ -60,7 +64,19 @@ const nextConfig: NextConfig = {
     ];
     // /informes/cuota-alimentaria/ver lleva el payment_id en la URL (es la llave del informe): nunca se
     // indexa, nunca se cachea y nunca se embebe.
-    const rutasPrivadas = ["/dashboard", "/cuenta", "/login", "/registro", "/recuperar", "/auth", "/informes/cuota-alimentaria/ver"];
+    const rutasPrivadas = [
+      "/dashboard",
+      "/cuenta",
+      "/login",
+      "/registro",
+      "/recuperar",
+      "/auth",
+      "/informes/cuota-alimentaria/ver",
+      "/informes/indemnizacion/ver",
+      "/informes/ganancias/ver",
+      "/informes/inflacion/ver",
+      "/informes/credito-laboral/ver",
+    ];
     return [
       { source: "/:path*", headers: base },
       ...rutasPrivadas.flatMap((r) => [

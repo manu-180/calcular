@@ -17,6 +17,7 @@ import {
   variacionMensual,
 } from "@/lib/inflacion";
 import { formatPct } from "@/lib/formato";
+import { productoPorSlug } from "@/lib/mp";
 
 export const metadata: Metadata = {
   title: "Actualizar un monto por inflación: cuánto vale hoy tu plata (IPC INDEC)",
@@ -143,7 +144,7 @@ export default function InflacionPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraInflacion />
+      <CalculadoraInflacion precioInforme={productoPorSlug("informe-inflacion")?.precio} />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">La inflación, mes a mes</h2>
@@ -228,6 +229,33 @@ export default function InflacionPage() {
           })}
         </div>
         <p className="text-xs text-zinc-400">* acumulado parcial del año en curso.</p>
+      </section>
+
+      <section
+        data-oferta="informe-inflacion"
+        className="rounded-[1.5rem] bg-zinc-900/[0.035] p-1.5 ring-1 ring-zinc-900/5"
+      >
+        <div className="flex flex-col gap-4 rounded-[calc(1.5rem-0.375rem)] bg-white p-5 shadow-[var(--shadow-apoyo)] sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div>
+            <h2 className="text-base font-semibold text-zinc-900">
+              ¿Tenés que justificar un aumento?
+            </h2>
+            <p className="mt-1.5 max-w-xl text-sm text-zinc-600">
+              Para pedir aumento de sueldo, subir honorarios, actualizar un presupuesto o una plata
+              prestada: un informe con la cuenta mes a mes del INDEC y la carta escrita con tus
+              números, lista para mandar.
+            </p>
+          </div>
+          <Link
+            href="/informes/inflacion?desde=inflacion"
+            data-evento="cta_compra"
+            data-producto="informe-inflacion"
+            data-ubicacion="inflacion-cuerpo"
+            className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-zinc-300 px-5 text-sm font-semibold text-zinc-800 transition-colors hover:border-zinc-400 hover:bg-zinc-50"
+          >
+            Ver el informe
+          </Link>
+        </div>
       </section>
 
       <section className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">

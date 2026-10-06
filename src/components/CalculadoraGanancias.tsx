@@ -1,37 +1,53 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { calcularRetencionMensual } from "@/lib/ganancias";
-import { formatARS, parseMonto, parseDecimal } from "@/lib/formato";
-import Link from "next/link";
+import { GANANCIAS_VIGENCIA } from "@/data/ganancias";
+import { formatARS } from "@/lib/formato";
+import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
+import { datosDeLaCalculadora, entradaDelMotor, prefill } from "@/lib/prefill/ganancias";
+import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME, armarInforme } from "@/app/informes/ganancias/_modelo";
+import { GananciasInformeCTA } from "@/components/informe-ganancias/OfertaCTA";
 
-export function CalculadoraGanancias() {
+export function CalculadoraGanancias({
+  precioInforme = PRECIO_INFORME_REFERENCIA,
+}: {
+  /** Viene del catálogo (src/lib/mp.ts) desde la página: este componente no puede importarlo. */
+  precioInforme?: number;
+}) {
   const [brutoInput, setBrutoInput] = useState("");
   const [conyuge, setConyuge] = useState(false);
   const [hijosInput, setHijosInput] = useState("");
   const [sindicalInput, setSindicalInput] = useState("");
   const [otrasInput, setOtrasInput] = useState("");
+  const [tocado, setTocado] = useState(false);
 
-  const bruto = useMemo(() => parseMonto(brutoInput), [brutoInput]);
-  const hijos = useMemo(() => Math.max(0, Math.floor(parseMonto(hijosInput))), [hijosInput]);
-  const sindicalPct = useMemo(
-    () => Math.min(Math.max(0, parseDecimal(sindicalInput)), 100) / 100,
-    [sindicalInput],
+  const datos = useMemo(
+    () => datosDeLaCalculadora({ brutoInput, conyuge, hijosInput, sindicalInput, otrasInput }),
+    [brutoInput, conyuge, hijosInput, sindicalInput, otrasInput],
   );
-  const otrasDeduccionesAnual = useMemo(() => Math.max(0, parseMonto(otrasInput)) * 12, [otrasInput]);
 
   const filas = useMemo(() => {
-    if (bruto <= 0) return null;
-    return calcularRetencionMensual({ brutoMensual: bruto, conyuge, hijos, sindicalPct, otrasDeduccionesAnual });
-  }, [bruto, conyuge, hijos, sindicalPct, otrasDeduccionesAnual]);
+    if (datos.bruto <= 0) return null;
+    return calcularRetencionMensual(entradaDelMotor(datos));
+  }, [datos]);
 
   const noRetiene = filas && filas.every((f) => f.retencionMes === 0);
   const totalAnual = filas ? filas[11].retencionAcumulada : 0;
 
+  // El informe sale con este mismo caso sólo si hay impuesto que bajar y si pasa el `validar` del
+  // servidor: si no, se ofrecería un informe que llega vacío.
+  const datosCompra = useMemo(() => (filas && !noRetiene ? prefill.validar(datos) : null), [filas, noRetiene, datos]);
+  const informe = useMemo(() => (datosCompra ? armarInforme(datosCompra) : null), [datosCompra]);
+  useEffect(() => {
+    if (datosCompra) recordarDatosCompra(SLUG_INFORME, datosCompra);
+    else if (tocado) olvidarDatosCompra(SLUG_INFORME);
+  }, [tocado, datosCompra]);
+
   return (
     <div className="space-y-6">
       {/* Inputs */}
-      <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
+      <div onChange={() => setTocado(true)} className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
         <div className="space-y-5">
           {/* Bruto */}
           <div>
@@ -228,28 +244,12 @@ export function CalculadoraGanancias() {
 
               <p className="text-xs text-zinc-400">
                 Estimación orientativa basada en la escala y deducciones del{" "}
-                <strong>1er semestre 2026</strong> (RG ARCA 5008). Asume sueldo fijo todo el año y
+                <strong>{GANANCIAS_VIGENCIA}</strong> (RG ARCA 5008). Asume sueldo fijo todo el año y
                 SAC = 50% del bruto mensual. No reemplaza la liquidación de tu empleador, que puede
                 contemplar variables adicionales (antigüedad, presentismo, horas extras).
               </p>
 
-              {/* CTA /planillas */}
-              <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
-                <p className="font-semibold text-zinc-900">
-                  ¿Liquidás sueldos de comercio?
-                </p>
-                <p className="mt-1 text-sm text-zinc-600">
-                  La Planilla de Sueldos Comercio 2026 tiene la escala CCT 130/75 embebida,
-                  antigüedad, presentismo y jornada parcial — todo en Excel, con una sola
-                  actualización por paritaria.
-                </p>
-                <Link
-                  href="/planillas"
-                  className="mt-3 inline-block rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
-                >
-                  Ver la planilla →
-                </Link>
-              </div>
+              {informe?.paga ? <GananciasInformeCTA informe={informe} precio={precioInforme} /> : null}
             </>
           )}
         </div>

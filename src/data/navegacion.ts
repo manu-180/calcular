@@ -129,6 +129,14 @@ const CASAS = "planilla-casas-particulares";
 const MONO = "planilla-monotributo";
 const ALQUILERES = "planilla-alquileres";
 const CUOTA = "informe-cuota-alimentaria";
+const CAMIONEROS = "planilla-camioneros";
+const MI_SUELDO = "planilla-mi-sueldo";
+const VACACIONES = "planilla-vacaciones";
+const PLAZO_FIJO = "planilla-plazo-fijo";
+const DESPIDO = "informe-indemnizacion";
+const GANANCIAS = "informe-ganancias";
+const INFLACION = "informe-inflacion";
+const CREDITO = "informe-credito-laboral";
 
 const DEFS: Record<GrupoId, Def[]> = {
   monotributo: [
@@ -170,6 +178,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/sueldo-neto",
       titulo: "Sueldo neto",
       descripcion: "De bruto a en mano, y al revés",
+      vende: MI_SUELDO,
       claves: ["sueldo en mano", "bruto a neto", "neto a bruto", "aportes", "recibo", "cuanto cobro", "salario", "descuentos de ley", "17%"],
     },
     {
@@ -196,6 +205,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/vacaciones",
       titulo: "Vacaciones",
       descripcion: "Días por antigüedad y plus vacacional",
+      vende: VACACIONES,
       claves: ["dias de vacaciones", "plus vacacional", "licencia anual", "antiguedad", "no gozadas"],
     },
     {
@@ -301,6 +311,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/convenios/camioneros",
       titulo: "Camioneros",
       descripcion: "La escala firmada de FADEEAC, mes a mes",
+      vende: CAMIONEROS,
       claves: ["camionero", "chofer", "fadeeac", "40/89", "transporte", "moyano"],
     },
     {
@@ -308,6 +319,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       titulo: "Sueldo neto de camioneros",
       descripcion: "Cuánto queda en mano por categoría",
       menu: false,
+      vende: CAMIONEROS,
       claves: ["camionero en mano"],
     },
   ],
@@ -316,6 +328,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/ganancias",
       titulo: "Ganancias 4.ª categoría",
       descripcion: "Cuánto te retienen de Ganancias por mes",
+      vende: GANANCIAS,
       claves: ["impuesto a las ganancias", "retencion", "cuarta categoria", "4ta", "sueldo", "siradig", "f572"],
     },
     {
@@ -396,6 +409,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/indemnizacion",
       titulo: "Indemnización por despido",
       descripcion: "Antigüedad, preaviso, aguinaldo y vacaciones",
+      vende: DESPIDO,
       claves: ["despido", "me echaron", "me despidieron", "despido sin causa", "liquidacion final", "art 245", "preaviso", "finiquito", "cuanto me corresponde"],
     },
     {
@@ -426,6 +440,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/actualizacion-creditos-laborales",
       titulo: "Actualizar lo que te deben",
       descripcion: "IPC más 3 % anual desde que se debe",
+      vende: CREDITO,
       claves: ["intereses", "actualizacion", "deuda laboral", "juicio", "art 276", "credito laboral"],
     },
     {
@@ -713,6 +728,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/inflacion",
       titulo: "Inflación (IPC)",
       descripcion: "Actualizá montos con el IPC del INDEC",
+      vende: INFLACION,
       claves: ["ipc", "indec", "actualizar monto", "poder adquisitivo", "cuanto vale hoy", "le gane a la inflacion"],
     },
     {
@@ -726,6 +742,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/plazo-fijo",
       titulo: "Plazo fijo",
       descripcion: "Cuánto rinde con la tasa del BCRA",
+      vende: PLAZO_FIJO,
       claves: ["tasa", "tna", "tea", "interes", "bcra", "banco", "inversion", "uva"],
     },
     {
@@ -801,6 +818,70 @@ const DEFS: Record<GrupoId, Def[]> = {
       vende: CUOTA,
       tipo: "planilla",
       claves: ["informe", "alimentos", "mediacion", "abogado", "hijos", "canasta de crianza"],
+    },
+    {
+      href: "/planillas/camioneros",
+      titulo: "Planilla de sueldos Camioneros",
+      descripcion: "Excel con km, viáticos y recibo",
+      vende: CAMIONEROS,
+      tipo: "planilla",
+      claves: ["excel", "camioneros", "transporte", "viaticos", "liquidar"],
+    },
+    {
+      href: "/planillas/plazo-fijo",
+      titulo: "Planilla de plazos fijos",
+      descripcion: "Vencimientos y si le ganaron a la inflación",
+      vende: PLAZO_FIJO,
+      tipo: "planilla",
+      claves: ["excel", "plazo fijo", "tasa real", "inflacion", "uva", "vencimientos"],
+    },
+    {
+      href: "/planillas/vacaciones",
+      titulo: "Planilla de vacaciones",
+      descripcion: "Días, aviso, pago y nota para firmar de todo tu equipo",
+      vende: VACACIONES,
+      tipo: "planilla",
+      claves: ["excel", "vacaciones", "notificacion de vacaciones", "plus vacacional", "empleador"],
+    },
+    {
+      href: "/planillas/mi-sueldo",
+      titulo: "Planilla Mi Sueldo",
+      descripcion: "Controlá tu recibo y tu sueldo contra la inflación",
+      vende: MI_SUELDO,
+      tipo: "planilla",
+      claves: ["excel", "recibo", "aumento", "poder de compra", "empleado"],
+    },
+    {
+      href: "/informes/indemnizacion",
+      titulo: "Informe de liquidación por despido",
+      descripcion: "Rubro por rubro, para comparar antes de firmar",
+      vende: DESPIDO,
+      tipo: "planilla",
+      claves: ["informe", "despido", "liquidacion final", "seclo", "abogado"],
+    },
+    {
+      href: "/informes/ganancias",
+      titulo: "Informe de Ganancias 2026",
+      descripcion: "Cuánto pagás en el año y qué deducciones te devuelven plata",
+      vende: GANANCIAS,
+      tipo: "planilla",
+      claves: ["informe", "ganancias", "deducciones", "siradig", "f572", "cuarta categoria", "pagar menos"],
+    },
+    {
+      href: "/informes/credito-laboral",
+      titulo: "Informe de crédito laboral",
+      descripcion: "La deuda laboral actualizada, rubro por rubro",
+      vende: CREDITO,
+      tipo: "planilla",
+      claves: ["informe", "juicio", "actualizacion", "art 276", "abogado"],
+    },
+    {
+      href: "/informes/inflacion",
+      titulo: "Informe de actualización por IPC",
+      descripcion: "El monto actualizado y la carta para pedir el aumento",
+      vende: INFLACION,
+      tipo: "planilla",
+      claves: ["informe", "ipc", "aumento de sueldo", "honorarios", "carta"],
     },
   ],
   guias: [

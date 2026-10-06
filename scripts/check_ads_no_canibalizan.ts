@@ -20,7 +20,7 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
   }
 }
 
-const CTAS = ["<PlanillaComercioCTA", "<PlanillaUocraCTA", "<PlanillaComprarBtn", "<CalculadoraAlquiler", "<CalculadoraCuotaAlimentaria", "oferta={datosOferta("];
+const CTAS = ["<PlanillaComercioCTA", "<PlanillaUocraCTA", "<PlanillaComprarBtn", "<CalculadoraAlquiler", "<CalculadoraCuotaAlimentaria", "oferta={datosOferta(", "precioInforme={"];
 
 /** Recorre src/app y devuelve la ruta pública de cada page.tsx que renderiza un CTA de venta. */
 function rutasConCta(dir = "src/app", base = ""): string[] {

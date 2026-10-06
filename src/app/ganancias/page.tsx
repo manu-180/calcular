@@ -7,6 +7,7 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
 import { ESCALA_GANANCIAS, GANANCIAS_FUENTES, GANANCIAS_VIGENCIA, DEDUCCIONES } from "@/data/ganancias";
 import { formatARS } from "@/lib/formato";
+import { productoPorSlug } from "@/lib/mp";
 
 const ACTUALIZADO_EL = "15 de junio de 2026";
 
@@ -133,7 +134,7 @@ export default function GananciasPage() {
           </p>
         </RespuestaPrimero>
 
-        <CalculadoraGanancias />
+        <CalculadoraGanancias precioInforme={productoPorSlug("informe-ganancias")?.precio} />
 
         {/* Explicación del método */}
         <section className="space-y-4">
@@ -289,6 +290,28 @@ export default function GananciasPage() {
               </p>
               <p className="mt-1 text-sm text-zinc-600">
                 CCT 130/75 con antigüedad y jornada reducida — todos los valores de la paritaria.
+              </p>
+            </Link>
+            <Link
+              href="/deduccion-alquiler"
+              className="group rounded-xl border border-zinc-200 bg-white p-4 hover:border-emerald-400 hover:shadow-sm"
+            >
+              <p className="font-semibold text-zinc-900 group-hover:text-emerald-700">
+                Deducción por alquiler
+              </p>
+              <p className="mt-1 text-sm text-zinc-600">
+                Cuánto te devuelve el 40% del alquiler a tu alícuota, y por qué el 10% ya no corre en 2026.
+              </p>
+            </Link>
+            <Link
+              href="/deducciones-generales-ganancias"
+              className="group rounded-xl border border-zinc-200 bg-white p-4 hover:border-emerald-400 hover:shadow-sm"
+            >
+              <p className="font-semibold text-zinc-900 group-hover:text-emerald-700">
+                Deducciones generales
+              </p>
+              <p className="mt-1 text-sm text-zinc-600">
+                Prepaga, médicos, seguros y donaciones: el tope de cada una y lo que te ahorra.
               </p>
             </Link>
             <Link
