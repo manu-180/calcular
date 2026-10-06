@@ -8,6 +8,14 @@ const CORTO: Record<ProductoSlug, string> = {
   "planilla-uocra": "UOCRA",
   "planilla-alquileres": "Alquileres",
   "informe-cuota-alimentaria": "Cuota alimentaria",
+  "planilla-camioneros": "Camioneros",
+  "planilla-vacaciones": "Vacaciones",
+  "planilla-mi-sueldo": "Mi sueldo",
+  "planilla-plazo-fijo": "Plazo fijo",
+  "informe-indemnizacion": "Despido",
+  "informe-ganancias": "Ganancias",
+  "informe-credito-laboral": "Crédito laboral",
+  "informe-inflacion": "Inflación",
 };
 
 /** Navegación entre los productos: el que cayó en el equivocado encuentra el suyo en un toque. */

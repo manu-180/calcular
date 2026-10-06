@@ -28,7 +28,15 @@ export type ProductoSlug =
   | "planilla-casas-particulares"
   | "planilla-monotributo"
   | "planilla-alquileres"
-  | "informe-cuota-alimentaria";
+  | "informe-cuota-alimentaria"
+  | "planilla-mi-sueldo"
+  | "planilla-camioneros"
+  | "planilla-vacaciones"
+  | "planilla-plazo-fijo"
+  | "informe-indemnizacion"
+  | "informe-ganancias"
+  | "informe-inflacion"
+  | "informe-credito-laboral";
 
 type ProductoComun = {
   slug: ProductoSlug;
@@ -148,6 +156,118 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     rutaDescarga: "/informes/cuota-alimentaria/ver",
     rutaLanding: "/informes/cuota-alimentaria",
   },
+  "planilla-mi-sueldo": {
+    slug: "planilla-mi-sueldo",
+    titulo: "Planilla Mi Sueldo 2026",
+    tituloCorto: "Planilla Mi Sueldo 2026",
+    convenio: "Control de recibos de sueldo — LCT y aportes de ley",
+    paraQuien: "Para el empleado que quiere controlar cada recibo y saber cuánto le comió la inflación",
+    disparadorActualizacion: "cada mes, cuando el INDEC publica el IPC nuevo,",
+    precio: 6900,
+    moneda: "ARS",
+    entrega: "xlsx",
+    archivo: "planilla-mi-sueldo-2026.xlsx",
+    rutaDescarga: "/api/planilla-mi-sueldo/download",
+    rutaLanding: "/planillas/mi-sueldo",
+  },
+  "planilla-camioneros": {
+    slug: "planilla-camioneros",
+    titulo: "Planilla de sueldos Camioneros 2026",
+    tituloCorto: "Planilla Camioneros 2026",
+    convenio: "CCT 40/89 — Camioneros (FADEEAC)",
+    paraQuien: "Para liquidar sueldos de choferes y personal de transporte con la escala firmada cargada",
+    disparadorActualizacion: "cada vez que Camioneros y FADEEAC firman una escala nueva",
+    precio: 14900,
+    moneda: "ARS",
+    entrega: "xlsx",
+    archivo: "planilla-camioneros-2026.xlsx",
+    rutaDescarga: "/api/planilla-camioneros/download",
+    rutaLanding: "/planillas/camioneros",
+  },
+  "planilla-vacaciones": {
+    slug: "planilla-vacaciones",
+    titulo: "Planilla de vacaciones 2026",
+    tituloCorto: "Planilla de vacaciones 2026",
+    convenio: "LCT arts. 150 a 157 — Vacaciones anuales",
+    paraQuien: "Para el empleador que organiza y liquida las vacaciones de su equipo sin errores",
+    disparadorActualizacion: "cada vez que cambia una norma o un feriado que afecta las vacaciones",
+    precio: 9900,
+    moneda: "ARS",
+    entrega: "xlsx",
+    archivo: "planilla-vacaciones-2026.xlsx",
+    rutaDescarga: "/api/planilla-vacaciones/download",
+    rutaLanding: "/planillas/vacaciones",
+  },
+  "planilla-plazo-fijo": {
+    slug: "planilla-plazo-fijo",
+    titulo: "Planilla de plazos fijos 2026",
+    tituloCorto: "Planilla de plazos fijos 2026",
+    convenio: "Plazo fijo tradicional y UVA — tasas del BCRA e IPC del INDEC",
+    paraQuien: "Para el ahorrista que quiere seguir sus plazos fijos y saber si le ganan a la inflación",
+    disparadorActualizacion: "cada mes, cuando el INDEC publica el IPC nuevo,",
+    precio: 5900,
+    moneda: "ARS",
+    entrega: "xlsx",
+    archivo: "planilla-plazo-fijo-2026.xlsx",
+    rutaDescarga: "/api/planilla-plazo-fijo/download",
+    rutaLanding: "/planillas/plazo-fijo",
+  },
+  "informe-indemnizacion": {
+    slug: "informe-indemnizacion",
+    titulo: "Informe de liquidación final por despido",
+    tituloCorto: "Informe de liquidación por despido",
+    convenio: "Ley de Contrato de Trabajo — liquidación final por despido",
+    paraQuien: "Para quien fue despedido y quiere comparar, rubro por rubro, lo que le ofrecen con lo que le corresponde",
+    disparadorActualizacion: "cada vez que cambia una norma que afecta la liquidación final",
+    precio: 7900,
+    moneda: "ARS",
+    entrega: "informe",
+    archivo: null,
+    rutaDescarga: "/informes/indemnizacion/ver",
+    rutaLanding: "/informes/indemnizacion",
+  },
+  "informe-ganancias": {
+    slug: "informe-ganancias",
+    titulo: "Informe de Ganancias 2026",
+    tituloCorto: "Informe de Ganancias 2026",
+    convenio: "Impuesto a las Ganancias — 4.ª categoría",
+    paraQuien: "Para el empleado al que le retienen Ganancias y quiere saber cuánto paga en el año y cómo pagar menos",
+    disparadorActualizacion: "cada vez que ARCA actualiza las deducciones y la escala,",
+    precio: 5900,
+    moneda: "ARS",
+    entrega: "informe",
+    archivo: null,
+    rutaDescarga: "/informes/ganancias/ver",
+    rutaLanding: "/informes/ganancias",
+  },
+  "informe-inflacion": {
+    slug: "informe-inflacion",
+    titulo: "Informe de actualización por inflación",
+    tituloCorto: "Informe de actualización por IPC",
+    convenio: "Índice de Precios al Consumidor (IPC) — INDEC",
+    paraQuien: "Para justificar con el dato oficial un aumento de sueldo, de honorarios o de precio",
+    disparadorActualizacion: "cada mes, cuando el INDEC publica el IPC nuevo,",
+    precio: 3900,
+    moneda: "ARS",
+    entrega: "informe",
+    archivo: null,
+    rutaDescarga: "/informes/inflacion/ver",
+    rutaLanding: "/informes/inflacion",
+  },
+  "informe-credito-laboral": {
+    slug: "informe-credito-laboral",
+    titulo: "Informe de actualización de crédito laboral",
+    tituloCorto: "Informe de crédito laboral",
+    convenio: "Actualización de créditos laborales — IPC más 3 % anual",
+    paraQuien: "Para el trabajador o el abogado que necesita la deuda laboral actualizada, mes a mes y con fuentes",
+    disparadorActualizacion: "cada mes, cuando el INDEC publica el IPC nuevo,",
+    precio: 6900,
+    moneda: "ARS",
+    entrega: "informe",
+    archivo: null,
+    rutaDescarga: "/informes/credito-laboral/ver",
+    rutaLanding: "/informes/credito-laboral",
+  },
 };
 
 /** Orden en que se muestran en el catálogo y en los cross-sell. */
@@ -158,6 +278,14 @@ export const CATALOGO: Producto[] = [
   PRODUCTOS["planilla-alquileres"],
   PRODUCTOS["planilla-uocra"],
   PRODUCTOS["informe-cuota-alimentaria"],
+  PRODUCTOS["planilla-camioneros"],
+  PRODUCTOS["planilla-vacaciones"],
+  PRODUCTOS["planilla-mi-sueldo"],
+  PRODUCTOS["planilla-plazo-fijo"],
+  PRODUCTOS["informe-indemnizacion"],
+  PRODUCTOS["informe-ganancias"],
+  PRODUCTOS["informe-credito-laboral"],
+  PRODUCTOS["informe-inflacion"],
 ];
 
 /** Alias histórico: había un único producto y medio repo lo importa así. */
