@@ -186,6 +186,7 @@ check(
   productoDePago(pago({ external_reference: "planilla-uocra-trucha:1" }))?.slug === "planilla-comercio",
 );
 check("productoPorSlug con slug inexistente da null", productoPorSlug("planilla-gastronomicos") === null);
+check("productoPorSlug no toma propiedades del prototipo", productoPorSlug("__proto__") === null && productoPorSlug("toString") === null);
 check("productoPorSlug con vacio da null", productoPorSlug("") === null && productoPorSlug(null) === null);
 
 // -- 6. El gate de descarga no deja cruzar productos --------------------------------

@@ -82,6 +82,8 @@ check(
   Object.keys(PRODUCTOS),
 );
 for (const p of Object.values(PRODUCTOS)) {
+  // La URL de entrega lleva el payment_id: sin los headers privados se filtra por Referer.
+  if (p.entrega === "informe") check(`${p.slug}: la entrega tiene headers privados`, nextConfig.includes(`"${p.rutaDescarga}"`));
   check(`${p.slug}: existe la landing ${p.rutaLanding}`, existsSync(path.join("src/app", p.rutaLanding, "page.tsx")));
   check(`${p.slug}: la landing está en el sitemap`, sitemap.includes("`${BASE}" + p.rutaLanding + "`"));
   check(`${p.slug}: la landing está en llms.txt`, llms.includes(`https://calcular.ar${p.rutaLanding})`));

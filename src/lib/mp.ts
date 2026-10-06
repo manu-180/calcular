@@ -303,8 +303,7 @@ export function rutaEntrega(p: Producto, paymentId: string): string {
 
 export function productoPorSlug(slug: string | null | undefined): Producto | null {
   if (!slug) return null;
-  const directo = PRODUCTOS[slug as ProductoSlug];
-  if (directo) return directo;
+  if (Object.prototype.hasOwnProperty.call(PRODUCTOS, slug)) return PRODUCTOS[slug as ProductoSlug];
   return Object.values(PRODUCTOS).find((p) => p.slugLegado === slug) ?? null;
 }
 
