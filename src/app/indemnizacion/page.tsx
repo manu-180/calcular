@@ -4,6 +4,7 @@ import { CalculadoraIndemnizacion } from "@/components/CalculadoraIndemnizacion"
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
+import { productoPorSlug } from "@/lib/mp";
 import {
   INDEMNIZACION_FUENTES,
   LIG_ART26_EXENTO,
@@ -136,7 +137,7 @@ export default function IndemnizacionPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraIndemnizacion />
+      <CalculadoraIndemnizacion precioInforme={productoPorSlug("informe-indemnizacion")?.precio} />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
