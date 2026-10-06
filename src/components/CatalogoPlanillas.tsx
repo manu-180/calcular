@@ -21,8 +21,11 @@ const CORTO: Record<ProductoSlug, string> = {
 /** Navegación entre los productos: el que cayó en el equivocado encuentra el suyo en un toque. */
 export function CatalogoPlanillas({ actual }: { actual: ProductoSlug }) {
   return (
-    <nav aria-label="Planillas e informes" className="mb-6 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-      <ul className="flex w-max gap-1.5 rounded-xl border border-zinc-200 bg-white/70 p-1 text-sm">
+    <nav
+      aria-label="Planillas e informes"
+      className="mb-6 -mx-4 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
+    >
+      <ul className="flex w-max gap-1.5 rounded-xl border border-zinc-200 bg-white/70 p-1 text-sm sm:w-auto sm:flex-wrap">
         {CATALOGO.map((p) => {
           const activo = p.slug === actual;
           return (
