@@ -16,7 +16,7 @@ import { PRIMER_PERIODO, ULTIMO_PERIODO, indiceDe, sumarMeses, variacionMensual 
 import { MAX_RUBROS, MESES_PAGO_FUTURO, datosDeLaCalculadora, prefill, type Datos } from "../src/lib/prefill/credito-laboral";
 import { PISO_ART_55, PRECIO_INFORME_REFERENCIA, armarInforme, casoEjemplo } from "../src/app/informes/credito-laboral/_modelo";
 import { PRODUCTOS } from "../src/lib/mp";
-import { parseMonto } from "../src/lib/formato";
+import { parseDecimal, parseMonto } from "../src/lib/formato";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -35,7 +35,7 @@ const cerca = (a: number, b: number, tol = 0.005) => Math.abs(a - b) <= tol;
   const fuente = readFileSync(join(__dirname, "..", "src", "components", "CalculadoraActualizacionCreditos.tsx"), "utf8");
   for (const linea of [
     "monto: parseMonto(monto),",
-    "cuotaLitisPct: Number(cuotaLitisPct) || 0,",
+    "cuotaLitisPct: parseDecimal(cuotaLitisPct),",
     "datosDeLaCalculadora({ monto, desde, hasta, cuotaLitisPct })",
     "recordarDatosCompra(SLUG_INFORME, datosCompra)",
     "<CreditoInformeCTA",
@@ -56,7 +56,7 @@ function web(e: Estado) {
     monto: parseMonto(e.monto),
     desde: e.desde,
     hasta: e.hasta,
-    cuotaLitisPct: Number(e.cuotaLitisPct) || 0,
+    cuotaLitisPct: parseDecimal(e.cuotaLitisPct),
   });
 }
 
@@ -224,6 +224,13 @@ check(
   "un monto escrito con puntos de miles se lee entero",
   datosDeLaCalculadora({ monto: "3.000.000", desde: PRIMER_PERIODO, hasta: ULTIMO_PERIODO, cuotaLitisPct: "" }).rubros[0].monto === 3_000_000,
 );
+
+// La cuota litis es un porcentaje: «12.5» y «12,5» son 12,5 % en la calculadora, en validar y al reabrir el informe.
+for (const escrito of ["12.5", "12,5"]) {
+  const d = prefill.validar(datosDeLaCalculadora({ monto: "1000000", desde: sumarMeses(ULTIMO_PERIODO, -12), hasta: ULTIMO_PERIODO, cuotaLitisPct: escrito }));
+  const reabierto = d ? parseDecimal(d.litis.toLocaleString("es-AR", { maximumFractionDigits: 2 })) : NaN;
+  check(`cuota litis «${escrito}» viaja y vuelve como 12,5 %`, d?.litis === 12.5 && reabierto === 12.5, { litis: d?.litis, reabierto });
+}
 
 if (fallas) {
   console.error(`\n${fallas} chequeo(s) fallaron`);

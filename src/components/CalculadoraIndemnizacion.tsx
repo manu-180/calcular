@@ -357,7 +357,7 @@ export function CalculadoraIndemnizacion({
         </div>
       )}
     </div>
-    {resultado && <OfertaInformeIndemnizacion r={resultado} precio={precioInforme} />}
+    {resultado && datosCompra && <OfertaInformeIndemnizacion r={resultado} precio={precioInforme} />}
     </>
   );
 }

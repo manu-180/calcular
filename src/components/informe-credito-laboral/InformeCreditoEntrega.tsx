@@ -2,7 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import { SelectorPeriodo } from "@/components/SelectorPeriodo";
-import { parseMonto } from "@/lib/formato";
+import { parseDecimal, parseMonto } from "@/lib/formato";
 import { PRIMER_PERIODO, ULTIMO_PERIODO, mesesEntre, nombrePeriodo, sumarMeses, type Periodo } from "@/lib/inflacion";
 import { CONCEPTOS, MAX_RUBROS, type ConceptoId, type Datos } from "@/lib/prefill/credito-laboral";
 import { armarInforme } from "@/app/informes/credito-laboral/_modelo";
@@ -53,7 +53,7 @@ export function InformeCreditoEntrega({
   const [editando, setEditando] = useState(inicial === null);
   const [rubros, setRubros] = useState<RubroEditable[]>(() => rubrosIniciales(inicial));
   const [hasta, setHasta] = useState<Periodo>(inicial?.hasta ?? ULTIMO_PERIODO);
-  const [litis, setLitis] = useState(inicial && inicial.litis > 0 ? String(inicial.litis) : "");
+  const [litis, setLitis] = useState(inicial && inicial.litis > 0 ? inicial.litis.toLocaleString("es-AR", { maximumFractionDigits: 2 }) : "");
   const [causa, setCausa] = useState<Omit<DatosCausa, "etiquetas">>({
     autos: "",
     expediente: "",
@@ -67,7 +67,7 @@ export function InformeCreditoEntrega({
     () => ({
       rubros: rubros.map((r) => ({ concepto: r.concepto, monto: parseMonto(r.monto), desde: r.desde })),
       hasta,
-      litis: Math.min(Math.max(parseMonto(litis), 0), 20),
+      litis: Math.min(Math.max(parseDecimal(litis), 0), 20),
     }),
     [rubros, hasta, litis],
   );

@@ -15,7 +15,7 @@ import {
   sumarMeses,
   type Periodo,
 } from "@/lib/inflacion";
-import { formatARS, formatPct, parseMonto } from "@/lib/formato";
+import { formatARS, formatPct, parseDecimal, parseMonto } from "@/lib/formato";
 import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
 import { datosDeLaCalculadora, prefill } from "@/lib/prefill/credito-laboral";
 import { CreditoInformeCTA } from "@/components/informe-credito-laboral/CreditoInformeCTA";
@@ -51,13 +51,13 @@ export function CalculadoraActualizacionCreditos({
         monto: parseMonto(monto),
         desde,
         hasta,
-        cuotaLitisPct: Number(cuotaLitisPct) || 0,
+        cuotaLitisPct: parseDecimal(cuotaLitisPct),
       }),
     [monto, desde, hasta, cuotaLitisPct],
   );
 
   const imposible = motivoImposible(desde, hasta);
-  const litis = Number(cuotaLitisPct) || 0;
+  const litis = parseDecimal(cuotaLitisPct);
 
   // Sólo después de que la persona tocó algo: el caso de arranque es nuestro, no suyo, y no tiene
   // que llegar a la landing como «tu crédito». Y sólo si pasa el `validar` del servidor: si no, el
@@ -255,7 +255,7 @@ export function CalculadoraActualizacionCreditos({
           </div>
         )}
       </div>
-      {!imposible && res && res.meses > 0 ? (
+      {!imposible && res && datosCompra && res.meses > 0 ? (
         <CreditoInformeCTA r={res} monto={parseMonto(monto)} precio={precioInforme} />
       ) : null}
     </>

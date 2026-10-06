@@ -1,6 +1,6 @@
 import type { Prefill } from "./tipos";
 import { numero, objeto, opcion } from "./_campos";
-import { parseMonto } from "@/lib/formato";
+import { parseDecimal, parseMonto } from "@/lib/formato";
 import { PRIMER_PERIODO, ULTIMO_PERIODO, existePeriodo, mesesEntre, sumarMeses, type Periodo } from "@/lib/inflacion";
 
 // Sólo lo que hace falta para rehacer la cuenta: qué tipo de rubro, cuánto y desde qué mes. La
@@ -99,6 +99,6 @@ export function datosDeLaCalculadora(estado: {
   return {
     rubros: [{ concepto: "credito", monto: parseMonto(estado.monto), desde: estado.desde }],
     hasta: estado.hasta,
-    litis: Math.min(Math.max(Number(estado.cuotaLitisPct) || 0, 0), 20),
+    litis: Math.min(Math.max(parseDecimal(estado.cuotaLitisPct), 0), 20),
   };
 }
