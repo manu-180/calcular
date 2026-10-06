@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
 import { CalculadoraCamioneros } from "@/components/CalculadoraCamioneros";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import {
@@ -140,7 +141,7 @@ export default function SueldoNetoCamionerosPage() {
           Seleccioná tu categoría, mes y antigüedad para ver el desglose exacto de bruto, aportes
           y neto.
         </p>
-        <CalculadoraCamioneros />
+        <CalculadoraCamioneros oferta={datosOferta("planilla-camioneros")} />
       </section>
 
       <section className="space-y-5">
