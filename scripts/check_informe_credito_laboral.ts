@@ -219,6 +219,12 @@ for (const [nombre, raw] of hostiles) check(`hostil: ${nombre} → null`, v(raw)
   check("el JSON canónico más largo entra holgado en la metadata (2048)", lleno !== null && JSON.stringify(lleno).length < 1400, lleno && JSON.stringify(lleno).length);
 }
 
+// Bug viejo: la calculadora leía el monto con Number(), y «3.000.000» (como lo escribe cualquiera acá) daba $0.
+check(
+  "un monto escrito con puntos de miles se lee entero",
+  datosDeLaCalculadora({ monto: "3.000.000", desde: PRIMER_PERIODO, hasta: ULTIMO_PERIODO, cuotaLitisPct: "" }).rubros[0].monto === 3_000_000,
+);
+
 if (fallas) {
   console.error(`\n${fallas} chequeo(s) fallaron`);
   process.exit(1);
