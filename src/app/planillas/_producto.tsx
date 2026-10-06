@@ -233,7 +233,7 @@ export function PlanillaLanding(c: ConfigLanding) {
       </div>
 
       <div className="grid gap-10 lg:grid-cols-3">
-        <div className="space-y-10 lg:col-span-2">
+        <div className="min-w-0 space-y-10 lg:col-span-2">
           {/* ── 1. Qué me llevo: la hoja de verdad, con números de verdad ── */}
           <section>
             <h2 className="mb-1 text-xl font-semibold text-zinc-900">Esto es lo que vas a ver al abrirla</h2>
