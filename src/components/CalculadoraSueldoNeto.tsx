@@ -1,16 +1,23 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { brutoANeto, netoABruto } from "@/lib/sueldo";
 import { estimarGananciasAnual } from "@/lib/ganancias";
 import { TOPE_SIPA } from "@/data/sueldo";
 import { formatARS, parseMonto, parseDecimal } from "@/lib/formato";
 import { CompartirWhatsApp } from "@/components/CompartirWhatsApp";
+import { OfertaMiSueldo } from "@/components/mi-sueldo/OfertaMiSueldo";
+import { PLANILLA_MS, prefill } from "@/lib/prefill/mi-sueldo";
+import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
+import { periodoActualAR } from "@/lib/hoy";
+import type { DatosOferta } from "@/lib/oferta";
 
 type Direccion = "brutoANeto" | "netoABruto";
 
-export function CalculadoraSueldoNeto() {
+export function CalculadoraSueldoNeto({ oferta }: { oferta?: DatosOferta }) {
   const [montoInput, setMontoInput] = useState("");
+  const [tocado, setTocado] = useState(false);
+  const [ultimoAumento, setUltimoAumento] = useState<string | null>(null);
   const [direccion, setDireccion] = useState<Direccion>("brutoANeto");
   const [sindicalInput, setSindicalInput] = useState("");
   const [pagaGanancias, setPagaGanancias] = useState(false);
@@ -47,9 +54,33 @@ export function CalculadoraSueldoNeto() {
     return { tipo: "netoABruto" as const, d, gan: null, netoObjetivo: monto };
   }, [monto, direccion, sindicalPct, pagaGanancias, conyuge, hijos, otrasDeduccionesAnual]);
 
+  // Lo que viaja con la compra y se escribe en la planilla. Las cargas de familia sólo cuentan si
+  // la persona pidió estimar Ganancias: si no, las casillas quedan como estaban y no son sus datos.
+  const datosCompra = useMemo(
+    () =>
+      r
+        ? prefill.validar({
+            bruto: r.d.bruto,
+            sindicalPct: Math.round(sindicalPct * 10000) / 100,
+            periodo: periodoActualAR(),
+            ultimoAumento,
+            conyuge: r.tipo === "brutoANeto" && pagaGanancias ? conyuge : false,
+            hijos: r.tipo === "brutoANeto" && pagaGanancias ? Math.min(hijos, PLANILLA_MS.hijosMax) : 0,
+            otrasDeducciones: r.tipo === "brutoANeto" && pagaGanancias ? otrasDeduccionesAnual : 0,
+          })
+        : null,
+    [r, sindicalPct, ultimoAumento, pagaGanancias, conyuge, hijos, otrasDeduccionesAnual],
+  );
+  useEffect(() => {
+    if (!tocado) return;
+    if (datosCompra) recordarDatosCompra("planilla-mi-sueldo", datosCompra);
+    else olvidarDatosCompra("planilla-mi-sueldo");
+  }, [tocado, datosCompra]);
+
   const inputId = "monto-sueldo";
 
   return (
+    <div className="space-y-6">
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="space-y-5">
         {/* Dirección */}
@@ -101,7 +132,10 @@ export function CalculadoraSueldoNeto() {
               inputMode="numeric"
               placeholder="Ej: 1.200.000"
               value={montoInput}
-              onChange={(e) => setMontoInput(e.target.value)}
+              onChange={(e) => {
+                setMontoInput(e.target.value);
+                setTocado(true);
+              }}
               className="w-full rounded-lg border border-zinc-300 py-2.5 pl-7 pr-3 text-lg font-medium text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200"
             />
           </div>
@@ -314,6 +348,11 @@ export function CalculadoraSueldoNeto() {
             )}
           </div>
         </div>
+      )}
+    </div>
+
+      {oferta && datosCompra && (
+        <OfertaMiSueldo producto={oferta} datos={datosCompra} onUltimoAumento={setUltimoAumento} />
       )}
     </div>
   );

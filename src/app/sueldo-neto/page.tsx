@@ -14,6 +14,7 @@ import {
   GANANCIAS_VIGENCIA,
 } from "@/data/ganancias";
 import { formatARS } from "@/lib/formato";
+import { datosOferta } from "@/lib/oferta";
 
 const ACTUALIZADO_EL = "13 de junio de 2026";
 
@@ -136,7 +137,7 @@ export default function SueldoNetoPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraSueldoNeto />
+      <CalculadoraSueldoNeto oferta={datosOferta("planilla-mi-sueldo")} />
 
       {/* Moat: neto por convenio */}
       <section className="space-y-3">
