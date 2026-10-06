@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { formatARS, formatPct, parseMonto } from "@/lib/formato";
 import {
   actualizarMonto,
@@ -12,13 +12,24 @@ import {
   type Periodo,
 } from "@/lib/inflacion";
 import { SelectorPeriodo } from "@/components/SelectorPeriodo";
+import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
+import { datosDeLaCalculadora, prefill, type Caso } from "@/lib/prefill/inflacion";
+import { InflacionInformeOferta } from "@/components/informe-inflacion/InflacionInformeOferta";
+import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/informes/inflacion/_modelo";
 
 type Modo = "monto" | "sueldo";
 
 const HACE_12_MESES = sumarMeses(ULTIMO_PERIODO, -12);
 
-export function CalculadoraInflacion() {
+export function CalculadoraInflacion({
+  precioInforme = PRECIO_INFORME_REFERENCIA,
+}: {
+  /** Viene del catálogo (src/lib/mp.ts) desde la página: este componente no puede importarlo. */
+  precioInforme?: number;
+}) {
   const [modo, setModo] = useState<Modo>("monto");
+  const [tocado, setTocado] = useState(false);
+  const [casoElegido, setCasoElegido] = useState<Caso | null>(null);
 
   // Modo "actualizar un monto"
   const [montoInput, setMontoInput] = useState("");
@@ -46,6 +57,29 @@ export function CalculadoraInflacion() {
     [sueldoAntes, periodoSueldo, sueldoHoy]
   );
 
+  const caso: Caso = casoElegido ?? (modo === "sueldo" ? "sueldo" : "precio");
+
+  // Lo que el informe necesita para salir con este mismo caso, y sólo si pasa el `validar` del
+  // servidor (si no, el informe saldría vacío aunque acá se vea un número). Deflactar (llegada
+  // anterior al origen) no tiene informe: no justifica que nada suba.
+  const datosCompra = useMemo(() => {
+    if (modo === "monto") {
+      if (!resultadoMonto) return null;
+      return prefill.validar(datosDeLaCalculadora({ modo, monto, desde, hasta, caso }));
+    }
+    if (!resultadoSueldo) return null;
+    return prefill.validar(datosDeLaCalculadora({ modo, sueldoAntes, periodoSueldo, sueldoHoy, caso }));
+  }, [modo, resultadoMonto, monto, desde, hasta, resultadoSueldo, sueldoAntes, periodoSueldo, sueldoHoy, caso]);
+  useEffect(() => {
+    if (datosCompra) recordarDatosCompra(SLUG_INFORME, datosCompra);
+    else if (tocado) olvidarDatosCompra(SLUG_INFORME);
+  }, [tocado, datosCompra]);
+
+  const elegirCaso = (c: Caso) => {
+    setTocado(true);
+    setCasoElegido(c);
+  };
+
   const clasePestania = (activo: boolean) =>
     `rounded-full px-4 py-1.5 text-sm font-medium transition ${
       activo
@@ -54,7 +88,8 @@ export function CalculadoraInflacion() {
     }`;
 
   return (
-    <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
+    <>
+    <div onChange={() => setTocado(true)} className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Modo de cálculo">
         <button
           type="button"
@@ -260,5 +295,7 @@ export function CalculadoraInflacion() {
         </div>
       )}
     </div>
+    {datosCompra ? <InflacionInformeOferta datos={datosCompra} precio={precioInforme} onCaso={elegirCaso} /> : null}
+    </>
   );
 }
