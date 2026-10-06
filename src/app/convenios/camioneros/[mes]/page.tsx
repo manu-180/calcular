@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
+import { PlanillaCamionerosCTA } from "@/components/camioneros/PlanillaCamionerosCTA";
 import { ORGANIZACION, datasetSchema } from "@/lib/schema";
 import {
   CAMIONEROS_ANTIGUEDAD_POR_ANIO,
@@ -362,6 +363,8 @@ export default async function CamionerosMesPage({
           </div>
         </div>
       </section>
+
+      <PlanillaCamionerosCTA mesEtiqueta={mes.etiqueta} />
 
       <nav className="flex items-center justify-between text-sm font-medium">
         {anterior ? (
