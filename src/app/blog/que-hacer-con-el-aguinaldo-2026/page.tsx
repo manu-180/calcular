@@ -7,9 +7,9 @@ import { ORGANIZACION, articleSchema } from "@/lib/schema";
 import { TNA_FALLBACK, INFLACION_DEFAULT } from "@/data/plazofijo";
 
 export const metadata: Metadata = {
-  title: "Qué hacer con el aguinaldo 2026: las opciones, con la cuenta a la vista",
+  title: "Qué hacer con el aguinaldo 2026: opciones con números",
   description:
-    "Pagar deudas caras, plazo fijo tradicional o UVA, dólares o adelantar consumo: qué dice la matemática hoy, con la tasa del BCRA y el IPC de junio sobre la mesa.",
+    "Pagar deudas caras, plazo fijo tradicional o UVA, dólares o adelantar compras: qué conviene hoy con la tasa del BCRA y el IPC sobre la mesa.",
   alternates: { canonical: "/blog/que-hacer-con-el-aguinaldo-2026" },
   openGraph: {
     type: "article",
@@ -32,9 +32,9 @@ export default function Post() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "Qué hacer con el aguinaldo 2026: las opciones, con la cuenta a la vista",
+        titulo: "Qué hacer con el aguinaldo 2026: opciones con números",
         descripcion:
-          "Pagar deudas caras, plazo fijo tradicional o UVA, dólares o adelantar consumo: qué dice la matemática hoy, con la tasa del BCRA y el IPC de junio sobre la mesa.",
+          "Pagar deudas caras, plazo fijo tradicional o UVA, dólares o adelantar compras: qué conviene hoy con la tasa del BCRA y el IPC sobre la mesa.",
         url: "/blog/que-hacer-con-el-aguinaldo-2026",
         publicado: "2026-06-12",
         modificado: "2026-06-20",
@@ -54,9 +54,10 @@ export default function Post() {
           Qué hacer con el aguinaldo 2026: las opciones, con la cuenta a la vista
         </h1>
         <p className="text-zinc-600">
-          Antes del 30 de junio te depositan la primera cuota del SAC. Estas son las opciones
-          típicas, ordenadas por lo que dice la matemática — no por lo que conviene venderte.
-          Los números: tasa de plazo fijo {TNA_FALLBACK.valor.toLocaleString("es-AR")}% TNA
+          Hasta el 18 de diciembre tienen tiempo de depositarte la segunda cuota del aguinaldo.
+          Estas son las opciones de siempre, ordenadas por lo que dicen los números y no por lo que
+          te quieren vender. Los números: tasa de plazo fijo{" "}
+          {TNA_FALLBACK.valor.toLocaleString("es-AR")}% TNA
           (BCRA, {TNA_FALLBACK.fechaISO.split("-").reverse().join("/")}) e inflación de{" "}
           {INFLACION_DEFAULT.mensualPct.toLocaleString("es-AR")}% mensual (INDEC,{" "}
           {INFLACION_DEFAULT.periodo}).
@@ -65,8 +66,8 @@ export default function Post() {
 
       <RespuestaPrimero actualizado={PUBLICADO}>
         <p>
-          Ordenado por lo que dice la matemática: <strong>1) si tenés deudas de tarjeta o préstamo,
-          cancelarlas primero</strong> rinde más que cualquier inversión conservadora.{" "}
+          Ordenado por lo que dicen los números: <strong>1) si tenés deudas de tarjeta o préstamo,
+          pagarlas primero</strong> rinde más que cualquier inversión conservadora.{" "}
           <strong>2) Plazo fijo tradicional</strong> ({TNA_FALLBACK.valor.toLocaleString("es-AR")}%
           TNA del BCRA) corre apenas por debajo de la inflación de{" "}
           {INFLACION_DEFAULT.mensualPct.toLocaleString("es-AR")}% mensual: sirve para que la plata no
@@ -82,10 +83,10 @@ export default function Post() {
           1. Si tenés deudas caras, no hay debate
         </h2>
         <p className="text-zinc-600">
-          El financiamiento del resumen de la tarjeta y los préstamos personales cuestan, según
-          el banco, varias veces lo que rinde cualquier inversión conservadora. Cancelar deuda
-          que te cobra 5%, 8% o más por mes es un &laquo;rendimiento&raquo; garantizado que
-          ningún plazo fijo te da. Primero se apaga ese incendio; lo demás viene después.
+          Financiar el resumen de la tarjeta o tomar un préstamo personal cuesta, según el banco,
+          varias veces lo que rinde cualquier inversión conservadora. Pagar una deuda que te cobra
+          5%, 8% o más por mes es un &laquo;rendimiento&raquo; seguro que ningún plazo fijo te da.
+          Primero apagá ese incendio; lo demás viene después.
         </p>
       </section>
 
@@ -107,8 +108,12 @@ export default function Post() {
           <Link href="/plazo-fijo" className="text-emerald-700 underline">
             calculadora de plazo fijo
           </Link>{" "}
-          trae la tasa en vivo, calcula renovaciones compuestas y te muestra la comparación
-          contra la inflación que vos esperes.
+          trae la tasa del día, calcula renovaciones y te compara el resultado con la inflación que
+          vos esperes. Si querés seguir varios plazos fijos a la vez, está la{" "}
+          <Link href="/planillas/plazo-fijo" className="text-emerald-700 underline">
+            planilla de plazos fijos
+          </Link>
+          .
         </p>
       </section>
 
@@ -117,11 +122,11 @@ export default function Post() {
           3. Plazo fijo UVA: empata a la inflación, pero a 90 días
         </h2>
         <p className="text-zinc-600">
-          El plazo fijo UVA ajusta tu capital por inflación (CER) y suma una tasa adicional que
-          fija cada banco. La regla vigente (Comunicación &laquo;A&raquo; 8246 del BCRA): mínimo{" "}
-          <strong>90 días</strong>, con opción de precancelar desde el día 30 — pero si
-          precancelás, perdés el ajuste. Si podés inmovilizar el aguinaldo tres meses, es la
-          opción en pesos que por diseño no pierde contra el IPC. La misma{" "}
+          El plazo fijo UVA ajusta tu plata por inflación (CER) y suma una tasa extra que fija cada
+          banco. La regla vigente (Comunicación &laquo;A&raquo; 8246 del BCRA): mínimo{" "}
+          <strong>90 días</strong>, con opción de cancelarlo antes desde el día 30, pero si lo
+          cancelás, perdés el ajuste. Si podés dejar el aguinaldo quieto tres meses, es la opción en
+          pesos que, por cómo está armada, no pierde contra el IPC. La misma{" "}
           <Link href="/plazo-fijo" className="text-emerald-700 underline">
             calculadora
           </Link>{" "}
@@ -132,11 +137,11 @@ export default function Post() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">4. Dólares: cobertura, no rendimiento</h2>
         <p className="text-zinc-600">
-          Comprar dólares es un seguro contra sorpresas cambiarias, no una inversión que rinde:
-          el billete guardado no paga interés y, en meses de calma cambiaria, pierde contra la
-          inflación en pesos. La decisión acá no es matemática sino de tranquilidad personal:
-          qué porcentaje de tu colchón querés en cada moneda. Si lo hacés, comprá por canales
-          oficiales y compará cotizaciones.
+          Comprar dólares es un seguro contra sorpresas con el tipo de cambio, no una inversión que
+          rinde: el billete guardado no paga interés y, en meses tranquilos, pierde contra la
+          inflación en pesos. Acá la decisión no es de números sino de tranquilidad: qué parte de
+          tu colchón querés en cada moneda. Si comprás, hacelo por canales oficiales y compará
+          cotizaciones.
         </p>
       </section>
 
@@ -162,10 +167,10 @@ export default function Post() {
           6. El colchón de emergencia, si todavía no existe
         </h2>
         <p className="text-zinc-600">
-          La regla clásica: tener entre 3 y 6 gastos mensuales en algo líquido y seguro. Si no
-          lo tenés, el aguinaldo es la oportunidad perfecta para arrancarlo — en una cuenta
-          remunerada, un fondo money market o plazos fijos cortos renovables. No rinde glamour:
-          rinde dormir tranquilo.
+          La regla de siempre: tener entre 3 y 6 meses de gastos en algo que puedas sacar rápido y
+          sea seguro. Si no lo tenés, el aguinaldo es el momento ideal para empezarlo, en una cuenta
+          remunerada, un fondo money market o plazos fijos cortos que vas renovando. No es
+          emocionante, pero te deja dormir tranquilo.
         </p>
       </section>
 
@@ -190,8 +195,8 @@ export default function Post() {
 
       <p className="text-xs text-zinc-400">
         Este artículo es informativo y general: no es asesoramiento financiero ni una
-        recomendación de inversión. Los datos citados tienen fuente oficial (BCRA, INDEC) y
-        fecha visible; verificalos antes de decidir, porque cambian todos los meses.
+        recomendación de inversión. Los datos tienen fuente oficial (BCRA, INDEC) y fecha a la
+        vista. Revisalos antes de decidir, porque cambian todos los meses.
       </p>
     </article>
   );

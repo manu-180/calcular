@@ -3,23 +3,20 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
+import { openGraphDe } from "@/lib/seo";
 import { AGUINALDO_FUENTES, APORTES_PERSONALES } from "@/data/aguinaldo";
 import { formatARS } from "@/lib/formato";
 
 export const metadata: Metadata = {
-  title: "Aguinaldo bruto o neto: cuánto queda en mano en 2026 (tabla por sueldo)",
+  title: "Aguinaldo neto 2026: cuánto queda en mano",
   description:
-    "El aguinaldo se cobra neto: es el 50% de tu mejor sueldo bruto menos un 17% de aportes. En mano queda ~41,5% de tu mejor sueldo. Tabla por rangos de sueldo, actualizada.",
+    "El aguinaldo se cobra neto: 50% del mejor sueldo bruto menos 17% de aportes. En mano queda cerca del 41,5% del mejor sueldo. Tabla por sueldo.",
   alternates: { canonical: "/aguinaldo/neto" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Aguinaldo: ¿bruto o neto?")}&s=${encodeURIComponent("En mano queda ~41,5% de tu mejor sueldo. Tabla por rangos, actualizada.")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/aguinaldo/neto",
+    titulo: "Aguinaldo: ¿bruto o neto?",
+    bajada: "En mano queda cerca del 41,5% de tu mejor sueldo. Tabla por sueldo.",
+  }),
 };
 
 // Fecha de la última revisión del contenido de esta página (mantener al rotar datos).
@@ -39,23 +36,23 @@ const SUELDOS_TABLA = [
 const faqs = [
   {
     q: "¿El aguinaldo se calcula sobre el sueldo bruto o el neto?",
-    a: "Se calcula sobre el bruto: la cuota es el 50% de la mayor remuneración mensual bruta del semestre (Ley 23.041). Pero se cobra en neto: como es remunerativo, sufre los mismos aportes que un sueldo (11% jubilación + 3% PAMI + 3% obra social = 17%). En mano queda aproximadamente el 41,5% de tu mejor sueldo bruto.",
+    a: "Se calcula sobre el bruto: la cuota es el 50% de tu mejor sueldo bruto del semestre (Ley 23.041). Pero se cobra en neto. Como es remunerativo, tiene los mismos aportes que un sueldo (11% jubilación + 3% PAMI + 3% obra social = 17%). En mano te queda cerca del 41,5% de tu mejor sueldo bruto.",
   },
   {
     q: "¿Qué porcentaje se descuenta del aguinaldo?",
-    a: "Un 17% de aportes de ley: 11% de jubilación (SIPA), 3% de PAMI (Ley 19.032) y 3% de obra social — exactamente igual que en el sueldo. A eso pueden sumarse la cuota sindical de tu convenio y, en sueldos altos, la retención del impuesto a las Ganancias.",
+    a: "Un 17% de aportes de ley: 11% de jubilación (SIPA), 3% de PAMI (Ley 19.032) y 3% de obra social. Es lo mismo que en el sueldo. Además se puede descontar la cuota sindical de tu convenio y, si tu sueldo es alto, Ganancias.",
   },
   {
     q: "¿El aguinaldo paga impuesto a las Ganancias?",
-    a: "El aguinaldo es ganancia gravada, pero no se retiene todo junto en junio: el empleador computa el SAC en forma prorrateada mes a mes durante el año. Con las deducciones vigentes para enero-junio 2026 (tablas de ARCA), la retención recién aparece en sueldos brutos de alrededor de $3.000.000 para un soltero sin deducciones; el número exacto depende de cada caso (cargas de familia, deducciones del SIRADIG, etc.).",
+    a: "Sí, es ganancia gravada, pero no se retiene todo junto: el empleador reparte el SAC mes a mes durante el año. Con las deducciones vigentes para enero a junio 2026 (tablas de ARCA), la retención recién aparece con sueldos brutos de alrededor de $3.000.000, para una persona soltera sin deducciones. El número exacto depende de tu caso (cargas de familia, deducciones del SIRADIG, etc.).",
   },
   {
     q: "¿Por qué me depositaron un monto distinto al de la tabla?",
-    a: "Las causas más comunes: tenés cuota sindical (1% a 3% según convenio), tu sueldo supera la base imponible máxima de aportes (el 17% deja de crecer por encima del tope legal), te retuvieron Ganancias, o tu mejor sueldo incluía conceptos no remunerativos (que no descuentan aportes pero tampoco suman para el SAC). La tabla es una estimación con los aportes de ley puros.",
+    a: "Lo más común: pagás cuota sindical (de 1% a 3% según el convenio), tu sueldo pasa la base imponible máxima de aportes (por encima del tope, el 17% deja de crecer), te retuvieron Ganancias, o tu mejor sueldo tenía conceptos no remunerativos (no pagan aportes, pero tampoco suman para el aguinaldo). La tabla es una estimación con los aportes de ley solos.",
   },
   {
     q: "¿El neto del aguinaldo es la mitad de mi sueldo de bolsillo?",
-    a: "Aproximadamente sí, si tu mejor sueldo del semestre fue el último y no pagás Ganancias: como el aguinaldo sufre los mismos descuentos porcentuales que el sueldo, la cuota en mano es muy parecida a la mitad de lo que cobrás de bolsillo en un mes normal.",
+    a: "Más o menos sí, si tu mejor sueldo del semestre fue el último y no pagás Ganancias. Como el aguinaldo tiene los mismos descuentos que el sueldo, lo que cobrás en mano se parece mucho a la mitad de tu sueldo de bolsillo de un mes normal.",
   },
 ];
 
@@ -65,9 +62,9 @@ export default function AguinaldoNetoPage() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "Aguinaldo bruto o neto: cuánto queda en mano en 2026",
+        titulo: "Aguinaldo neto 2026: cuánto queda en mano",
         descripcion:
-          "El aguinaldo se calcula en bruto (50% del mejor sueldo del semestre) y se cobra en neto: tras el 17% de aportes en mano queda ~41,5% de tu mejor sueldo bruto.",
+          "El aguinaldo se calcula en bruto (50% del mejor sueldo del semestre) y se cobra en neto: después del 17% de aportes, en mano queda cerca del 41,5% de tu mejor sueldo bruto.",
         url: "/aguinaldo/neto",
         modificado: "2026-06-19",
       }),
@@ -92,26 +89,25 @@ export default function AguinaldoNetoPage() {
           Aguinaldo: ¿bruto o neto? Cuánto te queda en mano
         </h1>
         <p className="text-zinc-600">
-          Respuesta corta: <strong>el aguinaldo se calcula en bruto y se cobra en neto</strong>.
-          La cuota es el 50% de tu mejor sueldo bruto del semestre, y sobre ese monto se
-          descuenta un <strong>17% de aportes</strong> (jubilación, PAMI y obra social), igual
-          que en un sueldo. En mano te queda{" "}
-          <strong>aproximadamente el 41,5% de tu mejor sueldo bruto</strong>.
+          En corto: <strong>el aguinaldo se calcula en bruto y se cobra en neto</strong>. La cuota
+          es el 50% de tu mejor sueldo bruto del semestre, y a ese monto se le descuenta un{" "}
+          <strong>17% de aportes</strong> (jubilación, PAMI y obra social), igual que a un sueldo.
+          En mano te queda <strong>cerca del 41,5% de tu mejor sueldo bruto</strong>.
         </p>
         <p className="text-sm text-zinc-500">
-          Actualizado al {ACTUALIZADO_EL} · primera cuota 2026: vence el 30 de junio.
+          Actualizado al {ACTUALIZADO_EL} · segunda cuota 2026: vence el 18 de diciembre.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={ACTUALIZADO_EL}>
         <p>
           El aguinaldo <strong>se calcula en bruto y se cobra en neto</strong>. La cuota es el{" "}
-          <strong>50% de tu mejor sueldo bruto</strong> del semestre (Ley 23.041), y sobre ese
-          monto se descuenta el <strong>17% de aportes</strong> (11% jubilación + 3% PAMI + 3% obra
-          social), igual que en un sueldo. Resultado: en mano queda{" "}
-          <strong>aproximadamente el 41,5% de tu mejor sueldo bruto</strong> (atajo: mejor sueldo ×
-          0,415). En sueldos altos pueden sumarse cuota sindical y retención de Ganancias. Mirá tu
-          caso en la tabla de abajo o calculá el proporcional exacto en la{" "}
+          <strong>50% de tu mejor sueldo bruto</strong> del semestre (Ley 23.041), y se le
+          descuenta el <strong>17% de aportes</strong> (11% jubilación + 3% PAMI + 3% obra social),
+          igual que a un sueldo. En mano queda{" "}
+          <strong>cerca del 41,5% de tu mejor sueldo bruto</strong> (atajo: mejor sueldo × 0,415).
+          Si tu sueldo es alto, también pueden descontarte cuota sindical y Ganancias. Buscá tu caso
+          en la tabla de abajo o calculá el proporcional exacto en la{" "}
           <Link href="/aguinaldo">calculadora de aguinaldo</Link>.
         </p>
       </RespuestaPrimero>
@@ -121,8 +117,8 @@ export default function AguinaldoNetoPage() {
           Tabla: aguinaldo bruto y en mano según tu sueldo
         </h2>
         <p className="text-zinc-600">
-          Estimación con los aportes de ley (17%), sin Ganancias ni cuota sindical. Buscá tu
-          mejor sueldo bruto del semestre:
+          Es una estimación con los aportes de ley (17%), sin Ganancias ni cuota sindical. Buscá
+          tu mejor sueldo bruto del semestre:
         </p>
         <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white shadow-sm">
           <table className="w-full min-w-[520px] text-sm">
@@ -156,12 +152,20 @@ export default function AguinaldoNetoPage() {
         </div>
         <p className="text-xs text-zinc-400">
           Por encima de la base imponible máxima de aportes, el descuento del 17% deja de crecer
-          (tope legal) y en esos sueldos suele aplicar también la retención de Ganancias: la
-          estimación pierde precisión. ¿Trabajaste solo parte del semestre? Usá la{" "}
+          (es un tope legal), y en esos sueldos suele haber retención de Ganancias. Ahí la
+          estimación es menos precisa: mirá{" "}
+          <Link href="/blog/aguinaldo-paga-ganancias" className="text-emerald-700 underline">
+            si tu aguinaldo paga Ganancias
+          </Link>
+          . ¿Trabajaste solo parte del semestre? Usá la{" "}
           <Link href="/aguinaldo" className="text-emerald-700 underline">
             calculadora de aguinaldo
           </Link>{" "}
-          para el proporcional exacto.
+          para el proporcional exacto. Para tu sueldo de todos los meses, está la{" "}
+          <Link href="/sueldo-neto" className="text-emerald-700 underline">
+            calculadora de sueldo neto
+          </Link>
+          .
         </p>
       </section>
 
@@ -240,7 +244,7 @@ export default function AguinaldoNetoPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              ARCA — Ganancias para empleados: deducciones y tablas vigentes
+              ARCA: Ganancias para empleados, deducciones y tablas vigentes
             </a>
           </li>
         </ul>

@@ -24,9 +24,12 @@ const HIJO_PROXIMO = P ? moverAlMesSiguiente(V.hijo[0].montos.general, P.movilid
 
 const ESCALON_1_2 = V.hijo[0].montos.general - V.hijo[1].montos.general;
 
+const MES_CORTO = MES.replace(" de ", " ");
+const TITULO = `Asignaciones familiares ${MES_CORTO}: cuánto por hijo`;
+
 export const metadata: Metadata = {
-  title: `Asignaciones familiares ${MES}: cuánto cobrás por hijo según tu ingreso`,
-  description: `La asignación por hijo de ${MES} va de ${formatARS(V.hijo[3].montos.general, 0)} a ${formatARS(V.hijo[0].montos.general, 0)} según el ingreso del grupo familiar. Poné los sueldos de tu casa y mirá tu tramo, tu zona y a qué distancia estás del escalón que te hace perder plata. ${V.resolucion.replace("Resolución", "Res.")}.`,
+  title: TITULO,
+  description: `Montos por hijo de ${MES_CORTO} según el ingreso del grupo familiar. Cargá los sueldos de tu casa y mirá tu tramo, tu zona y el tope.`,
   alternates: { canonical: "/asignaciones-familiares" },
   openGraph: {
     images: [
@@ -42,43 +45,43 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: `¿Cuánto se cobra por hijo en ${MES}?`,
-    a: `Depende del Ingreso del Grupo Familiar (IGF). En ${MES}, para el valor general: ${formatARS(V.hijo[0].montos.general, 0)} con un IGF de hasta ${formatARS(V.hijo[0].hasta ?? 0, 0)}; ${formatARS(V.hijo[1].montos.general, 0)} hasta ${formatARS(V.hijo[1].hasta ?? 0, 0)}; ${formatARS(V.hijo[2].montos.general, 0)} hasta ${formatARS(V.hijo[2].hasta ?? 0, 0)}; y ${formatARS(V.hijo[3].montos.general, 0)} hasta el tope de ${formatARS(V.topeIgfGrupo, 0)}. En las zonas 1 a 4 los montos son más altos. Los valores salen de la ${V.resolucion}, que fijó un aumento de ${formatPct(V.movilidad)}.`,
+    a: `Depende del Ingreso del Grupo Familiar (IGF). En ${MES}, con el valor general: ${formatARS(V.hijo[0].montos.general, 0)} con un IGF de hasta ${formatARS(V.hijo[0].hasta ?? 0, 0)}; ${formatARS(V.hijo[1].montos.general, 0)} hasta ${formatARS(V.hijo[1].hasta ?? 0, 0)}; ${formatARS(V.hijo[2].montos.general, 0)} hasta ${formatARS(V.hijo[2].hasta ?? 0, 0)}; y ${formatARS(V.hijo[3].montos.general, 0)} hasta el tope de ${formatARS(V.topeIgfGrupo, 0)}. En las zonas 1 a 4 los montos son más altos. Los valores salen de la ${V.resolucion}, que dio un aumento de ${formatPct(V.movilidad)}.`,
   },
   {
     q: "¿Qué es el IGF y qué se suma para calcularlo?",
-    a: "El Ingreso del Grupo Familiar es la suma de los ingresos brutos de todos los integrantes del grupo: remuneraciones y sumas no remunerativas declaradas por el empleador en el formulario 931, rentas de referencia de autónomos, monotributistas y personal de casas particulares, jubilaciones y pensiones, prestación por desempleo, planes sociales y cualquier otra prestación contributiva o no contributiva. Lo importante es lo que NO se suma: horas extras, el plus por zona desfavorable y el aguinaldo quedan afuera del cálculo. Por eso el número que hay que mirar casi nunca es el bruto que figura abajo del recibo.",
+    a: "El Ingreso del Grupo Familiar es la suma de los ingresos brutos de todos los integrantes: sueldos y sumas no remunerativas que el empleador declara en el formulario 931, rentas de referencia de autónomos, monotributistas y personal de casas particulares, jubilaciones y pensiones, prestación por desempleo, planes sociales y cualquier otra prestación, contributiva o no. Lo importante es lo que NO se suma: horas extras, plus por zona desfavorable y aguinaldo quedan afuera. Por eso el número que hay que mirar casi nunca es el bruto que figura abajo en el recibo.",
   },
   {
     q: "Gano poco pero mi pareja gana mucho: ¿cobramos igual?",
-    a: `No, y acá está la regla que menos se explica. Además del tope del grupo (${formatARS(V.topeIgfGrupo, 0)}) hay un tope individual de ${formatARS(V.topeIgfIndividual, 0)}: si una sola persona del grupo lo supera, se excluye del cobro a todo el grupo familiar, aunque la suma esté por debajo del tope grupal. Es decir que un grupo puede quedar afuera sin haber llegado nunca al tope general, sólo porque uno de los dos ingresos es alto.`,
+    a: `No, y es la regla que menos se explica. Además del tope del grupo (${formatARS(V.topeIgfGrupo, 0)}) hay un tope individual de ${formatARS(V.topeIgfIndividual, 0)}. Si una sola persona del grupo lo supera, queda afuera todo el grupo familiar, aunque la suma esté por debajo del tope grupal. O sea que un grupo puede quedar afuera sin llegar nunca al tope general, solo porque uno de los dos ingresos es alto.`,
   },
   {
     q: "¿Conviene aceptar un aumento si me hace cambiar de tramo?",
-    a: `Los tramos son escalones, no una rampa: un peso más de IGF puede bajar la asignación de golpe. En ${MES}, pasar del primer al segundo tramo hace perder ${formatARS(ESCALON_1_2, 0)} por hijo y por mes. Con dos hijos son ${formatARS(ESCALON_1_2 * 2, 0)} mensuales, así que un aumento menor a esa cifra que cruce el límite deja al grupo cobrando menos que antes. La calculadora de esta página muestra a qué distancia estás del próximo escalón y cuánto cuesta cruzarlo con tu grupo familiar.`,
+    a: `Los tramos son escalones, no una rampa: un peso más de IGF puede bajar la asignación de golpe. En ${MES}, pasar del primer al segundo tramo te hace perder ${formatARS(ESCALON_1_2, 0)} por hijo y por mes. Con dos hijos son ${formatARS(ESCALON_1_2 * 2, 0)} por mes. Entonces, un aumento menor a esa cifra que te haga cruzar el límite deja a tu grupo cobrando menos que antes. La calculadora de esta página te muestra a qué distancia estás del próximo escalón y cuánto te cuesta cruzarlo.`,
   },
   {
     q: "¿La asignación por hijo con discapacidad tiene tope de ingresos?",
-    a: "No. Con la autorización de ANSES vigente, para la asignación por hijo con discapacidad no rigen topes máximos de ingreso, ni individuales ni del grupo familiar. Se cobra aunque el grupo esté excluido del resto de las asignaciones por superar los topes, y corresponde también cuando el hijo es mayor de 18 años. Es la excepción más valiosa del régimen y la que menos aparece en las notas.",
+    a: "No. Con la autorización de ANSES vigente, la asignación por hijo con discapacidad no tiene topes de ingreso, ni individuales ni del grupo familiar. Se cobra aunque el grupo quede afuera del resto de las asignaciones por pasarse de los topes, y también cuando el hijo es mayor de 18 años. Es la excepción más valiosa del régimen y la que menos aparece en las notas.",
   },
   {
     q: `¿Cuánto es la AUH en ${MES} y por qué me depositan menos?`,
-    a: `La AUH por hijo de ${MES} es de ${formatARS(V.universales.hijo.general, 0)} en el valor general, pero ANSES deposita el 80% (${formatARS(AUH.mensual, 0)}) y retiene el 20% (${formatARS(AUH.retenido, 0)}). Ese 20% se acumula y se cobra una vez al año, contra la presentación de la Libreta AUH con los controles de salud y la escolaridad al día. En doce meses son ${formatARS(AUH.retenido * 12, 0)} que se pierden si la libreta no se presenta. Para la Asignación por Embarazo el mecanismo es el mismo, con el formulario y la constancia del Plan Nacer/Sumar.`,
+    a: `La AUH por hijo de ${MES} es de ${formatARS(V.universales.hijo.general, 0)} en el valor general, pero ANSES deposita el 80% (${formatARS(AUH.mensual, 0)}) y guarda el 20% (${formatARS(AUH.retenido, 0)}). Ese 20% se junta y se cobra una vez por año, cuando presentás la Libreta AUH con los controles de salud y la escuela al día. En doce meses son ${formatARS(AUH.retenido * 12, 0)} que perdés si no presentás la libreta. La Asignación por Embarazo funciona igual, con el formulario y la constancia del Plan Nacer/Sumar.`,
   },
   {
     q: "Soy monotributista, ¿cuánto me corresponde?",
-    a: `El monto lo fija la categoría, no el ingreso del grupo familiar: ${formatARS(V.monotributo.hijo.A ?? 0, 0)} por hijo en la categoría A, ${formatARS(V.monotributo.hijo.B ?? 0, 0)} en la B, ${formatARS(V.monotributo.hijo.C ?? 0, 0)} en la C y ${formatARS(V.monotributo.hijo.D_H ?? 0, 0)} de la D a la H. Las categorías I, J y K no perciben asignación por hijo ni prenatal, pero sí la de hijo con discapacidad (${formatARS(V.monotributo.hijoDiscapacidad.I_K, 0)}). Hay que estar al día con los pagos del monotributo. No hay diferencia por zona: siempre se cobra el valor general.`,
+    a: `El monto lo fija tu categoría, no el ingreso del grupo familiar: ${formatARS(V.monotributo.hijo.A ?? 0, 0)} por hijo en la categoría A, ${formatARS(V.monotributo.hijo.B ?? 0, 0)} en la B, ${formatARS(V.monotributo.hijo.C ?? 0, 0)} en la C y ${formatARS(V.monotributo.hijo.D_H ?? 0, 0)} de la D a la H. Las categorías I, J y K no cobran asignación por hijo ni prenatal, pero sí la de hijo con discapacidad (${formatARS(V.monotributo.hijoDiscapacidad.I_K, 0)}). Tenés que estar al día con el monotributo. No hay diferencia por zona: siempre se cobra el valor general.`,
   },
   {
     q: "¿Cuándo aumentan las asignaciones familiares?",
-    a: "Todos los meses. Desde el Decreto 274/2024 rige la movilidad mensual: los montos y los rangos de ingreso se actualizan por la variación del índice de precios al consumidor del INDEC de dos meses antes. ANSES lo oficializa con una resolución a fin del mes anterior. Como es la misma fórmula que la de las jubilaciones, en cuanto el INDEC publica el IPC (alrededor del día 12) el aumento de dos meses después ya queda determinado.",
+    a: "Todos los meses. Desde el Decreto 274/2024 rige la movilidad mensual: los montos y los rangos de ingreso suben según el índice de precios al consumidor del INDEC de dos meses antes. ANSES lo hace oficial con una resolución a fin del mes anterior. Es la misma fórmula que la de las jubilaciones, así que apenas el INDEC publica el IPC (cerca del día 12) ya se sabe el aumento de dos meses después.",
   },
   {
     q: "¿La ayuda escolar anual también aumentó?",
-    a: `No este mes. Según la cartilla oficial de ${MES}, la ayuda escolar anual mantiene el monto de julio: ${formatARS(V.ayudaEscolar.base.general, 0)} más el refuerzo extraordinario del Decreto 115/26 de ${formatARS(V.ayudaEscolar.refuerzo.general, 0)}, o sea ${formatARS(V.ayudaEscolar.total.general, 0)} en total para el valor general. También conserva su propio tope de IGF, de ${formatARS(V.topeIgfAyudaEscolar, 0)}, que quedó por debajo del tope general. Se cobra una vez por ciclo lectivo, por hijo, contra el certificado de escolaridad.`,
+    a: `No este mes. Según la cartilla oficial de ${MES}, la ayuda escolar anual sigue con el monto de julio: ${formatARS(V.ayudaEscolar.base.general, 0)} más el refuerzo extraordinario del Decreto 115/26 de ${formatARS(V.ayudaEscolar.refuerzo.general, 0)}. En total, ${formatARS(V.ayudaEscolar.total.general, 0)} con el valor general. También mantiene su propio tope de IGF, de ${formatARS(V.topeIgfAyudaEscolar, 0)}, que quedó por debajo del tope general. Se cobra una vez por ciclo lectivo, por hijo, con el certificado de escolaridad.`,
   },
   {
     q: "¿Esto es lo que me va a depositar ANSES?",
-    a: "Es lo que sale de aplicar la tabla oficial del mes al ingreso que cargaste, no una liquidación. El importe real puede diferir por la fecha de alta del beneficio, por altas y bajas en el grupo familiar durante el mes, por la zona que declaró el empleador ante ARCA (que no siempre coincide con dónde vivís) y por retenciones. Para tu caso puntual, la fuente es ANSES.",
+    a: "Es lo que da la tabla oficial del mes con el ingreso que cargaste, no una liquidación. Lo que te depositen puede cambiar por la fecha de alta del beneficio, por altas y bajas en el grupo familiar durante el mes, por la zona que declaró tu empleador ante ARCA (que no siempre es donde vivís) y por retenciones. Para tu caso puntual, la fuente es ANSES.",
   },
 ];
 
@@ -98,7 +101,7 @@ export default function AsignacionesPage() {
         inLanguage: "es-AR",
       },
       datasetSchema({
-        nombre: `Montos y rangos de asignaciones familiares, AUH y embarazo — ${MES} (ANSES)`,
+        nombre: `Montos y rangos de asignaciones familiares, AUH y embarazo, ${MES} (ANSES)`,
         descripcion: `Tabla completa de asignaciones familiares de ${MES}: cuatro tramos de Ingreso del Grupo Familiar por las cinco zonas, asignación por hijo con discapacidad sin tope, montos por categoría de monotributo, AUH y Asignación por Embarazo con el desglose 80/20, ayuda escolar anual y topes de ingreso individual y grupal. Fuente: ${V.resolucion}.`,
         url: "/asignaciones-familiares",
         modificado: `${V.periodo}-01`,
@@ -106,7 +109,7 @@ export default function AsignacionesPage() {
         fuenteUrl: V.cartillaUrl,
       }),
       articleSchema({
-        titulo: `Asignaciones familiares ${MES}: cuánto cobrás por hijo según tu ingreso`,
+        titulo: TITULO,
         descripcion:
           "Tramos de ingreso, zonas, topes individual y grupal, monotributo y AUH, calculados sobre la resolución oficial del mes.",
         url: "/asignaciones-familiares",
@@ -133,8 +136,8 @@ export default function AsignacionesPage() {
         </h1>
         <p className="text-zinc-600">
           Las notas del mes publican el monto máximo, el del primer tramo. Pero lo que cobrás depende
-          de cuánto suma tu casa, de la zona y de dos topes distintos —uno de ellos deja afuera a
-          todo el grupo por el sueldo de una sola persona. Cargá los ingresos reales y mirá tu
+          de cuánto suma tu casa, de la zona y de dos topes distintos. Uno de esos topes deja afuera
+          a todo el grupo por el sueldo de una sola persona. Cargá los ingresos reales y mirá tu
           número, con la tabla oficial de ANSES.
         </p>
       </header>
@@ -207,7 +210,14 @@ export default function AsignacionesPage() {
         </h2>
         <p className="text-zinc-600">
           Casi todas las notas publican un solo número, el tope del grupo familiar. Pero la cartilla
-          oficial fija dos, y el segundo es el que sorprende.
+          oficial fija dos, y el segundo es el que sorprende. Lo explicamos con ejemplos en{" "}
+          <Link
+            href="/blog/tope-de-ingresos-asignaciones-familiares"
+            className="font-medium text-emerald-700 hover:underline"
+          >
+            los dos topes de las asignaciones familiares
+          </Link>
+          .
         </p>
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">
@@ -236,9 +246,9 @@ export default function AsignacionesPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          Como el tope individual es exactamente la mitad del grupal, en una pareja de dos sueldos es
-          imposible pasarse del grupal sin que alguno se pase antes del individual: en la práctica,
-          el que decide es casi siempre el tope individual.
+          Como el tope individual es justo la mitad del grupal, en una pareja con dos sueldos es
+          imposible pasarse del grupal sin que uno se pase antes del individual. En la práctica,
+          el que decide casi siempre es el tope individual.
         </p>
       </section>
 
@@ -247,8 +257,8 @@ export default function AsignacionesPage() {
           Tabla completa de {MES}: asignación por hijo y prenatal
         </h2>
         <p className="text-zinc-600">
-          Los mismos montos valen para la asignación prenatal. La zona la fija el lugar de
-          explotación que el empleador declara ante ARCA; para jubilados y pensionados, el domicilio.
+          Los mismos montos valen para la asignación prenatal. La zona la define el lugar de trabajo
+          que el empleador declara ante ARCA. Para jubilados y pensionados, el domicilio.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -335,8 +345,8 @@ export default function AsignacionesPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          El último tramo no tiene techo a propósito: con la autorización de ANSES vigente, para esta
-          asignación no rigen topes de ingreso ni individuales ni del grupo familiar.
+          El último tramo no tiene techo a propósito: con la autorización de ANSES vigente, esta
+          asignación no tiene topes de ingreso, ni individuales ni del grupo familiar.
         </p>
       </section>
 
@@ -402,7 +412,7 @@ export default function AsignacionesPage() {
                 </tr>
                 <tr className="border-t border-zinc-100">
                   <td className="px-4 py-2.5 text-zinc-600">
-                    Apoyo alimentario — Ley 1.000 días
+                    Apoyo alimentario (Ley 1.000 días)
                     <span className="block text-xs text-zinc-400">
                       titulares de AUH y embarazo
                     </span>
@@ -422,9 +432,9 @@ export default function AsignacionesPage() {
           Nacimiento, adopción y matrimonio: el plazo que no está en la ley
         </h2>
         <p className="text-zinc-600">
-          De estos tres pagos todo el mundo publica el monto y nadie publica la condición que los
-          hace perder. La Ley 24.714 dice que la asignación se abona «una vez acreditado el hecho
-          ante ANSES», sin plazo alguno. El plazo está en las cartillas del organismo:{" "}
+          De estos tres pagos todos publican el monto, y nadie publica la condición que te los hace
+          perder. La Ley 24.714 dice que la asignación se paga «una vez acreditado el hecho ante
+          ANSES», sin ningún plazo. El plazo está en las cartillas de ANSES:{" "}
           <strong>
             no se puede pedir antes de los {PAGO_UNICO.esperaMeses} meses y se pierde a los{" "}
             {PAGO_UNICO.caducidadAnios} años
@@ -449,8 +459,8 @@ export default function AsignacionesPage() {
         <h2 className="text-xl font-bold text-zinc-900">AUH: el 20% que no te depositan</h2>
         <p className="text-zinc-600">
           El monto que se publica no es el que llega a la cuenta. ANSES paga el 80% todos los meses y
-          acumula el 20%, que se cobra junto una vez al año contra la presentación de la Libreta AUH
-          con los controles de salud y la escolaridad al día.
+          guarda el 20%, que se cobra todo junto una vez por año cuando presentás la Libreta AUH con
+          los controles de salud y la escuela al día.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -466,10 +476,10 @@ export default function AsignacionesPage() {
               <tbody>
                 {[
                   { n: "AUH por hijo", v: V.universales.hijo.general },
-                  { n: "AUH por hijo — zona 1", v: V.universales.hijo.zona1 },
+                  { n: "AUH por hijo (zona 1)", v: V.universales.hijo.zona1 },
                   { n: "AUH por hijo con discapacidad", v: V.universales.hijoDiscapacidad.general },
                   {
-                    n: "AUH por hijo con discapacidad — zona 1",
+                    n: "AUH por hijo con discapacidad (zona 1)",
                     v: V.universales.hijoDiscapacidad.zona1,
                   },
                   { n: "Asignación por embarazo", v: V.universales.embarazo.general },
@@ -537,20 +547,35 @@ export default function AsignacionesPage() {
           <li>
             <Link href="/jubilacion" className="font-medium text-emerald-700 hover:underline">
               Jubilación de {MES}
-            </Link>{" "}
-            — el aumento sale de la misma movilidad mensual y de la resolución hermana de ANSES.
+            </Link>
+            : el aumento sale de la misma movilidad mensual y de la resolución hermana de ANSES.
+          </li>
+          <li>
+            <Link
+              href="/blog/tope-de-ingresos-asignaciones-familiares"
+              className="font-medium text-emerald-700 hover:underline"
+            >
+              El tope de las asignaciones familiares
+            </Link>
+            : por qué un solo sueldo alto deja afuera a toda la familia.
+          </li>
+          <li>
+            <Link href="/desempleo" className="font-medium text-emerald-700 hover:underline">
+              Seguro de desempleo
+            </Link>
+            : si te quedaste sin trabajo, la prestación también cuenta en el IGF.
           </li>
           <li>
             <Link href="/sueldo-neto" className="font-medium text-emerald-700 hover:underline">
               Sueldo neto
-            </Link>{" "}
-            — para saber el bruto exacto que entra en el IGF.
+            </Link>
+            : para saber el bruto exacto que entra en el IGF.
           </li>
           <li>
             <Link href="/canasta-basica" className="font-medium text-emerald-700 hover:underline">
               Canasta básica
-            </Link>{" "}
-            — cuánto necesita tu hogar para no quedar bajo la línea de pobreza.
+            </Link>
+            : cuánto necesita tu hogar para no quedar bajo la línea de pobreza.
           </li>
         </ul>
       </section>
@@ -566,8 +591,8 @@ export default function AsignacionesPage() {
               className="text-emerald-700 hover:underline"
             >
               {V.resolucion}
-            </a>{" "}
-            — aumento del {formatPct(V.movilidad)} en montos, límites y rangos de las asignaciones
+            </a>
+            : aumento del {formatPct(V.movilidad)} en montos, límites y rangos de las asignaciones
             familiares de {MES} ({V.resolucionBO}).
           </li>
           <li>
@@ -578,8 +603,8 @@ export default function AsignacionesPage() {
               className="text-emerald-700 hover:underline"
             >
               {ASIGNACIONES_FUENTES.cartilla.nombre}
-            </a>{" "}
-            — tabla completa por tramo, zona y categoría de monotributo.
+            </a>
+            : tabla completa por tramo, zona y categoría de monotributo.
           </li>
           <li>
             <a
@@ -609,8 +634,8 @@ export default function AsignacionesPage() {
               className="text-emerald-700 hover:underline"
             >
               {ASIGNACIONES_FUENTES.cartillaMatrimonio.nombre}
-            </a>{" "}
-            — de ahí sale la ventana de {PAGO_UNICO.esperaMeses} meses a {PAGO_UNICO.caducidadAnios}{" "}
+            </a>
+            : de ahí sale la ventana de {PAGO_UNICO.esperaMeses} meses a {PAGO_UNICO.caducidadAnios}{" "}
             años para pedir los pagos únicos, que la ley no menciona.
           </li>
           <li>
@@ -621,14 +646,14 @@ export default function AsignacionesPage() {
               className="text-emerald-700 hover:underline"
             >
               {ASIGNACIONES_FUENTES.ley.nombre}
-            </a>{" "}
-            — régimen y beneficiarios. Consultado el {ASIGNACIONES_FUENTES.consultadoEl}.
+            </a>
+            : régimen y beneficiarios. Consultado el {ASIGNACIONES_FUENTES.consultadoEl}.
           </li>
         </ul>
         <p className="pt-2">
-          Esta página es informativa y usa los valores oficiales publicados por ANSES. No es una
-          liquidación ni reemplaza a ANSES: el importe que se acredita puede variar según la fecha de
-          alta del beneficio, la composición del grupo familiar y la zona declarada por el empleador.
+          Esta página es informativa y usa los valores oficiales de ANSES. No es una liquidación ni
+          reemplaza a ANSES: lo que te depositen puede cambiar según la fecha de alta del beneficio,
+          quiénes forman el grupo familiar y la zona que declaró el empleador.
         </p>
       </section>
     </article>

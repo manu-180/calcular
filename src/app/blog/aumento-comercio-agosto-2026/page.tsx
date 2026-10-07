@@ -74,8 +74,8 @@ const escalaAgosto = CATEGORIAS_COMERCIO.map((cat) => ({
 }));
 
 export const metadata: Metadata = {
-  title: "Aumento de comercio agosto 2026: escala, bono de $50.000 y cuánto cobrás",
-  description: `El acuerdo del 22/7/2026 da +${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}% en tres tramos que NO se acumulan, más un bono de ${$(bonoTotal)} en dos cuotas. La escala oficial de agosto por categoría, verificada contra la circular de FAECYS.`,
+  title: "Aumento de Comercio agosto 2026: escala y bono de $50.000",
+  description: `El acuerdo del 22/7/2026 da ${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}% en tres tramos que no se acumulan y un bono de ${$(bonoTotal)} en dos cuotas. La escala oficial de agosto por categoría.`,
   alternates: { canonical: SLUG },
   openGraph: {
     type: "article",
@@ -92,31 +92,31 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿De cuánto es el aumento de comercio en agosto de 2026?",
-    a: `El acuerdo del 22/7/2026 entre FAECYS y las cámaras (CAC, CAME y UDECA) fija un ${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}% para el trimestre, repartido en tres tramos que se calculan sobre el mismo total de junio y NO se acumulan entre sí: +${pct(COMERCIO_TRAMOS_ACUERDO_2026[0].porcentaje)}% en julio, +${pct(COMERCIO_TRAMOS_ACUERDO_2026[1].porcentaje)}% en agosto y +${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}% en septiembre. Para un ${CAT_REF_NOMBRE}, el total de convenio pasa de ${$(totalJunio)} en junio a ${$(tramos[1].total)} en agosto.`,
+    a: `El acuerdo del 22/7/2026 entre FAECYS y las cámaras (CAC, CAME y UDECA) da un ${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}% para el trimestre, en tres tramos. Los tres se calculan sobre el mismo total de junio y NO se acumulan entre sí: +${pct(COMERCIO_TRAMOS_ACUERDO_2026[0].porcentaje)}% en julio, +${pct(COMERCIO_TRAMOS_ACUERDO_2026[1].porcentaje)}% en agosto y +${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}% en septiembre. Para un ${CAT_REF_NOMBRE}, el total de convenio pasa de ${$(totalJunio)} en junio a ${$(tramos[1].total)} en agosto.`,
   },
   {
     q: "¿Cuándo se cobra el bono de $50.000 de comercio?",
-    a: `En dos cuotas de ${$(JULIO.asignacionExtraordinaria ?? 0)}: una con el sueldo de julio y otra con el de agosto de 2026. En la escala oficial figura como «asignación extraordinaria por única vez». Es no remunerativa y la circular la excluye expresamente de la antigüedad y del presentismo, así que se suma plana al recibo: no la multiplica ningún adicional. Tampoco entra en la base del aguinaldo.`,
+    a: `En dos cuotas de ${$(JULIO.asignacionExtraordinaria ?? 0)}: una con el sueldo de julio y otra con el de agosto de 2026. En la escala oficial figura como «asignación extraordinaria por única vez». Es no remunerativa, y la circular dice expresamente que no cuenta para antigüedad ni presentismo. Se suma tal cual al recibo, sin que ningún adicional la multiplique. Tampoco entra en la base del aguinaldo.`,
   },
   {
     q: "¿El aumento del 1,9% de julio, agosto y septiembre se acumula?",
-    a: `No, y es el error más repetido. Los tres tramos se calculan siempre sobre la MISMA base (el total de junio de 2026), así que el efecto final es ${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}%, no ${pct(acumuladoTeorico)}%. Se ve en la propia escala de FAECYS: si fueran acumulativos, en septiembre un ${CAT_REF_NOMBRE} tendría que cobrar ${$(Math.round(totalSiFueraAcumulativo))} y la tabla oficial dice ${$(totalSeptiembre)} — ${$(Math.round(diferenciaAcumulativo))} de diferencia.`,
+    a: `No, y es el error más repetido. Los tres tramos se calculan siempre sobre la MISMA base (el total de junio de 2026), así que el efecto final es ${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}%, no ${pct(acumuladoTeorico)}%. Se ve en la misma escala de FAECYS: si se acumularan, en septiembre un ${CAT_REF_NOMBRE} tendría que cobrar ${$(Math.round(totalSiFueraAcumulativo))}, y la tabla oficial dice ${$(totalSeptiembre)}. Son ${$(Math.round(diferenciaAcumulativo))} de diferencia.`,
   },
   {
     q: "¿Los $120.000 no remunerativos se incorporaron al básico en julio?",
-    a: `No. El acuerdo anterior (26/3/2026) preveía incorporarlos de golpe en julio, pero el acuerdo del 22/7/2026 corrió esa absorción: los $120.000 siguen como suma no remunerativa hasta noviembre y recién pasan al básico de a $20.000 por mes, entre diciembre de 2026 y mayo de 2027. Si tu recibo de julio muestra el básico sin las sumas no remunerativas, está mal armado.`,
+    a: `No. El acuerdo anterior (26/3/2026) preveía pasarlos al básico de una vez en julio, pero el acuerdo del 22/7/2026 lo postergó. Los $120.000 siguen como suma no remunerativa hasta noviembre, y recién pasan al básico de a $20.000 por mes, entre diciembre de 2026 y mayo de 2027. Si tu recibo de julio muestra el básico sin las sumas no remunerativas, está mal armado.`,
   },
   {
     q: "¿Cuánto cobra un empleado de comercio en agosto de 2026?",
-    a: `Un ${CAT_REF_NOMBRE} de jornada completa, sin antigüedad y cobrando presentismo tiene ${$(agostoRef.bruto)} de bruto en agosto (incluye el básico de ${$(AGOSTO.basicos[CAT_REF])}, los ${$(AGOSTO.noRemunerativo)} no remunerativos, el presentismo y la cuota de ${$(AGOSTO.asignacionExtraordinaria ?? 0)} del bono) y le quedan aproximadamente ${$(agostoRef.neto)} en mano, antes de cuota sindical y Ganancias. El número exacto para tu categoría, antigüedad y jornada lo da la calculadora de comercio.`,
+    a: `Un ${CAT_REF_NOMBRE} de jornada completa, sin antigüedad y con presentismo cobra ${$(agostoRef.bruto)} brutos en agosto (incluye el básico de ${$(AGOSTO.basicos[CAT_REF])}, los ${$(AGOSTO.noRemunerativo)} no remunerativos, el presentismo y la cuota de ${$(AGOSTO.asignacionExtraordinaria ?? 0)} del bono). En mano le quedan cerca de ${$(agostoRef.neto)}, antes de cuota sindical y Ganancias. El número exacto para tu categoría, antigüedad y jornada te lo da la calculadora de comercio.`,
   },
   {
     q: "¿La escala de septiembre vale también para octubre y noviembre?",
-    a: "Sí: la circular publica una sola fila para «SEPT.-NOV./2026», así que los tres meses tienen los mismos valores. El movimiento siguiente es en diciembre y no cambia cuánto cobrás: cambia la composición, porque $20.000 pasan del no remunerativo al básico.",
+    a: "Sí: la circular publica una sola fila para «SEPT.-NOV./2026», así que los tres meses tienen los mismos valores. El próximo cambio es en diciembre y no cambia cuánto cobrás: cambia cómo se compone, porque $20.000 pasan del no remunerativo al básico.",
   },
   {
     q: "¿De dónde salen estos números?",
-    a: `De la circular oficial «ACUERDO 07/2026» que FAECYS publicó el 28 de julio de 2026, con las escalas de julio de 2026 a mayo de 2027. Verificamos las 21 categorías contra la escala de junio (que venía de la circular anterior): los tres tramos reproducen +${pct(COMERCIO_TRAMOS_ACUERDO_2026[0].porcentaje)}%, +${pct(COMERCIO_TRAMOS_ACUERDO_2026[1].porcentaje)}% y +${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}% exactos en todas. No usamos versiones publicadas en medios.`,
+    a: `De la circular oficial «ACUERDO 07/2026» que FAECYS publicó el 28 de julio de 2026, con las escalas de julio de 2026 a mayo de 2027. Verificamos las 21 categorías contra la escala de junio (que venía de la circular anterior): en todas, los tres tramos dan exactamente +${pct(COMERCIO_TRAMOS_ACUERDO_2026[0].porcentaje)}%, +${pct(COMERCIO_TRAMOS_ACUERDO_2026[1].porcentaje)}% y +${pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}%. No usamos versiones publicadas en medios.`,
   },
 ];
 
@@ -126,7 +126,7 @@ export default function Post() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "Aumento de comercio agosto 2026: escala, bono de $50.000 y cuánto cobrás",
+        titulo: "Aumento de Comercio agosto 2026: escala y bono de $50.000",
         descripcion:
           "El acuerdo paritario del 22/7/2026 de Empleados de Comercio (CCT 130/75): los tres tramos no acumulativos, el bono de $50.000 en dos cuotas, la escala oficial de agosto por categoría y el nuevo cronograma de incorporación de los $120.000 al básico.",
         url: SLUG,
@@ -153,14 +153,14 @@ export default function Post() {
           Guías · <FirmaAutor prefijo="por" /> · {PUBLICADO} · datos verificados al {COMERCIO_FUENTES.consultadoEl}
         </p>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
-          Aumento de comercio en agosto 2026: la escala, el bono de $50.000 y cuánto cobrás
+          Aumento de Comercio en agosto 2026: la escala, el bono de $50.000 y cuánto cobrás
         </h1>
         <p className="text-zinc-600">
           FAECYS publicó el 28 de julio la circular con las escalas del acuerdo paritario del 22
-          de julio. Trae tres cosas que conviene separar bien: un aumento en tramos que{" "}
+          de julio. Trae tres cosas que conviene separar: un aumento en tramos que{" "}
           <strong>no se acumulan</strong>, un bono de {$(bonoTotal)} en dos cuotas, y un cambio
-          en el cronograma de los $120.000 no remunerativos que muchos todavía dan por
-          incorporados al básico.
+          en el calendario de los $120.000 no remunerativos, que muchos todavía creen que ya pasaron
+          al básico.
         </p>
       </header>
 
@@ -177,8 +177,8 @@ export default function Post() {
           un {CAT_REF_NOMBRE} de jornada completa, sin antigüedad y con presentismo cobra{" "}
           <strong>{$(agostoRef.bruto)} brutos</strong> y le quedan{" "}
           <strong>≈ {$(agostoRef.neto)} en mano</strong>. Los $120.000 no remunerativos{" "}
-          <strong>no se incorporaron al básico en julio</strong>: recién se absorben entre
-          diciembre de 2026 y mayo de 2027.
+          <strong>no pasaron al básico en julio</strong>: recién pasan entre diciembre de 2026 y
+          mayo de 2027.
         </p>
       </RespuestaPrimero>
 
@@ -187,7 +187,11 @@ export default function Post() {
         <Link href="/convenios/comercio" className="text-emerald-700 underline">
           calculadora de sueldo de comercio
         </Link>
-        , y el neto en mano en{" "}
+        , con la{" "}
+        <Link href="/convenios/comercio/agosto-2026" className="text-emerald-700 underline">
+          escala de Comercio de agosto 2026
+        </Link>{" "}
+        completa. El neto en mano está en{" "}
         <Link href="/sueldo-neto/comercio" className="text-emerald-700 underline">
           sueldo neto de comercio
         </Link>
@@ -200,8 +204,8 @@ export default function Post() {
         </h2>
         <p className="text-zinc-600">
           Casi todas las notas cuentan el aumento como «tres subas del{" "}
-          {pct(COMERCIO_TRAMOS_ACUERDO_2026[0].porcentaje)}%». Es cierto de dónde sale, pero
-          induce al error de multiplicarlas. En la escala oficial, cada tramo se aplica sobre el{" "}
+          {pct(COMERCIO_TRAMOS_ACUERDO_2026[0].porcentaje)}%». Es cierto, pero lleva al error de
+          multiplicarlas. En la escala oficial, cada tramo se aplica sobre el{" "}
           <strong>total de junio de 2026</strong> (básico + los {$(JUNIO.noRemunerativo)} no
           remunerativos), no sobre el mes anterior. Por eso el efecto acumulado del trimestre es{" "}
           {pct(COMERCIO_TRAMOS_ACUERDO_2026[2].porcentaje)}% y no{" "}
@@ -264,9 +268,9 @@ export default function Post() {
           septiembre un {CAT_REF_NOMBRE} tendría que cobrar{" "}
           {$(Math.round(totalSiFueraAcumulativo))} de convenio. La tabla oficial de FAECYS dice{" "}
           {$(totalSeptiembre)}: {$(Math.round(diferenciaAcumulativo))} menos. La columna «sobre
-          junio» de arriba sale de dividir cada total por el de junio, categoría por categoría —
-          da {pct(tramos[0].porcentaje)}%, {pct(tramos[1].porcentaje)}% y{" "}
-          {pct(tramos[2].porcentaje)}% exactos en las 21.
+          junio» de arriba sale de dividir cada total por el de junio, categoría por categoría. Da
+          exactamente {pct(tramos[0].porcentaje)}%, {pct(tramos[1].porcentaje)}% y{" "}
+          {pct(tramos[2].porcentaje)}% en las 21.
         </p>
       </section>
 
@@ -278,20 +282,20 @@ export default function Post() {
           <p>
             En la escala figura como <strong>«asignación extraordinaria por única vez»</strong> y
             se paga en dos cuotas de {$(JULIO.asignacionExtraordinaria ?? 0)}: una con el sueldo
-            de julio y otra con el de agosto. Es no remunerativa, así que solo descuenta el 3% de
-            obra social en vez del 17% completo.
+            de julio y otra con el de agosto. Es no remunerativa, así que solo tiene el 3% de
+            obra social, no el 17% completo.
           </p>
           <p>
             El detalle que más plata mueve está al pie de cada tabla de la circular:{" "}
             <strong>
               la asignación queda expresamente afuera de la antigüedad y del presentismo
             </strong>
-            . O sea, no se multiplica por nada. Un empleado con 20 años de antigüedad cobra los
-            mismos {$(JULIO.asignacionExtraordinaria ?? 0)} que uno que entró el mes pasado. Por
-            la misma razón no integra la base del aguinaldo de diciembre.
+            . O sea, no se multiplica por nada. Alguien con 20 años de antigüedad cobra los mismos{" "}
+            {$(JULIO.asignacionExtraordinaria ?? 0)} que alguien que entró el mes pasado. Por la
+            misma razón, no suma para el aguinaldo de diciembre.
           </p>
           <p>
-            Si trabajás jornada reducida, sí se prorratea: la escala de 6 horas de la propia
+            Si trabajás jornada reducida, sí es proporcional: la escala de 6 horas de la misma
             circular la muestra en {$((JULIO.asignacionExtraordinaria ?? 0) * 0.75)}, el 75%.
           </p>
         </div>
@@ -358,16 +362,16 @@ export default function Post() {
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Este es el punto que más recibos mal armados va a generar. El acuerdo de marzo de
-            2026 decía que los {$(JUNIO.noRemunerativo)} no remunerativos pasaban al básico en
-            julio. El acuerdo del 22 de julio <strong>cambió eso</strong>: siguen como suma no
-            remunerativa hasta noviembre, y se absorben de a $20.000 por mes desde diciembre.
+            Este punto va a generar muchos recibos mal armados. El acuerdo de marzo de 2026 decía
+            que los {$(JUNIO.noRemunerativo)} no remunerativos pasaban al básico en julio. El
+            acuerdo del 22 de julio <strong>cambió eso</strong>: siguen como suma no remunerativa
+            hasta noviembre, y pasan al básico de a $20.000 por mes desde diciembre.
           </p>
           <p>
-            Mientras dura la absorción, <strong>el total del mes no se mueve</strong>. Lo que
-            cambia es cuánto de ese total es remunerativo — y eso sí te afecta: cada tramo que
-            pasa al básico descuenta 17% en vez de 3% (menos plata en mano), pero también sube tu
-            base de jubilación, de indemnización, de vacaciones y de horas extra.
+            Mientras dura ese pase, <strong>el total del mes no cambia</strong>. Lo que cambia es
+            cuánto de ese total es remunerativo, y eso sí te afecta. Cada tramo que pasa al básico
+            paga 17% de descuentos en vez de 3% (te queda menos en mano), pero también sube tu base
+            de jubilación, de indemnización, de vacaciones y de horas extra.
           </p>
         </div>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">

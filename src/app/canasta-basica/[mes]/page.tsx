@@ -41,8 +41,8 @@ export async function generateMetadata({
   const familiaTipo = hogaresDelMes(mes)[1].r;
 
   return {
-    title: `Canasta básica de ${etiqueta}: la línea de pobreza del INDEC`,
-    description: `Canasta básica del INDEC en ${etiqueta}: ${formatARS(mes.cbt, 0)} de CBT y ${formatARS(mes.cba, 0)} de CBA por adulto equivalente. La familia tipo necesitó ${formatARS(familiaTipo.lineaPobreza, 0)} para no ser pobre — con el umbral de otras composiciones de hogar, la comparación contra la inflación del mes y el coeficiente para traer un ingreso de ${etiqueta} a hoy.`,
+    title: `Canasta básica ${etiqueta}: línea de pobreza del INDEC`,
+    description: `CBT de ${formatARS(mes.cbt, 0)} y CBA de ${formatARS(mes.cba, 0)} por adulto equivalente en ${etiqueta}. La familia tipo necesitó ${formatARS(familiaTipo.lineaPobreza, 0)} para no ser pobre. Dato del INDEC.`,
     alternates: { canonical: `/canasta-basica/${slug}` },
     robots: robotsArchivoMensual(
       mes.periodo,
@@ -106,7 +106,7 @@ export default async function CanastaBasicaMesPage({
       ORGANIZACION,
       {
         ...datasetSchema({
-          nombre: `Canasta básica alimentaria y total del INDEC — ${etiqueta}`,
+          nombre: `Canasta básica alimentaria y total del INDEC, ${etiqueta}`,
           descripcion: `Valores de la canasta básica alimentaria (línea de indigencia) y de la canasta básica total (línea de pobreza) por adulto equivalente publicados por el INDEC para ${etiqueta}, con el umbral resultante para tres composiciones de hogar y la variación contra el mes anterior.`,
           url: `/canasta-basica/${slug}`,
           modificado: `${mes.periodo}-01`,
@@ -137,9 +137,9 @@ export default async function CanastaBasicaMesPage({
           Canasta básica de {etiqueta}: cuánto era la línea de pobreza
         </h1>
         <p className="text-zinc-600">
-          El dato oficial de ese mes, abierto: cuánto valía la canasta por adulto equivalente, qué
-          umbral le tocaba a distintos hogares, cómo se movió contra la inflación de {etiqueta}
-          {esUltimo ? "" : " y cuánto representa ese ingreso hoy"}.
+          El dato oficial de ese mes, explicado: cuánto valía la canasta por adulto equivalente, qué
+          umbral le tocaba a cada tipo de hogar, cómo se movió frente a la inflación de {etiqueta}
+          {esUltimo ? "" : " y cuánto vale hoy un ingreso de entonces"}.
         </p>
       </header>
 
@@ -147,12 +147,12 @@ export default async function CanastaBasicaMesPage({
         <p>
           En {etiqueta} la canasta básica total del INDEC fue de{" "}
           <strong>{formatARS(mes.cbt, 0)}</strong> por adulto equivalente y la alimentaria, de{" "}
-          <strong>{formatARS(mes.cba, 0)}</strong>. Para la «familia tipo» —dos adultos y dos hijos
-          de 6 y 8 años, que suman 3,09 adultos equivalentes— eso significaba{" "}
+          <strong>{formatARS(mes.cba, 0)}</strong>. La «familia tipo» (dos adultos y dos hijos de 6 y
+          8 años, que suman 3,09 adultos equivalentes) necesitaba{" "}
           <strong>{formatARS(familiaTipo.lineaPobreza, 0)}</strong> para no ser pobre y{" "}
           <strong>{formatARS(familiaTipo.lineaIndigencia, 0)}</strong> para no ser indigente.{" "}
           <strong>Ese número no es el de tu hogar</strong>: el umbral depende de la edad y el sexo de
-          cada integrante, no de cuántos son. Poné tu composición real en la{" "}
+          cada integrante, no de cuántos son. Cargá tu hogar real en la{" "}
           <Link href="/canasta-basica">calculadora de canasta básica</Link>.
         </p>
       </RespuestaPrimero>
@@ -195,11 +195,11 @@ export default async function CanastaBasicaMesPage({
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          Son los tres hogares que el propio INDEC publica como ejemplo. Fijate que el de 3
+          Son los tres hogares que el mismo INDEC publica como ejemplo. Fijate que el de 3
           integrantes no está a tres cuartos del de 4: lo que manda es <strong>quiénes</strong> lo
-          componen —un varón de 18 años pesa más que un chico de 6— y no cuántos son. Los valores
-          salen de multiplicar la canasta del mes por los adultos equivalentes del hogar, la misma
-          cuenta que hace el INDEC.
+          forman (un varón de 18 años pesa más que un chico de 6), no cuántos son. Los valores salen
+          de multiplicar la canasta del mes por los adultos equivalentes del hogar, igual que hace
+          el INDEC.
         </p>
       </section>
 
@@ -386,7 +386,7 @@ export default async function CanastaBasicaMesPage({
                   {coberturaSmvmPct !== null ? (
                     <>
                       : cubría el <strong>{coberturaSmvmPct}%</strong> de la línea de pobreza de la
-                      familia tipo ({formatARS(familiaTipo.lineaPobreza, 0)}) — un solo SMVM
+                      familia tipo ({formatARS(familiaTipo.lineaPobreza, 0)}). Un solo SMVM
                       {coberturaSmvmPct < 100 ? " no alcanzaba" : " superaba"} esa línea por sí solo, sin
                       sumar el resto de los ingresos del hogar.
                     </>
@@ -440,7 +440,7 @@ export default async function CanastaBasicaMesPage({
               target="_blank"
               className="text-emerald-700 underline"
             >
-              INDEC — Valorización mensual de la canasta básica alimentaria y total (informes
+              INDEC: valorización mensual de la canasta básica alimentaria y total (informes
               técnicos)
             </a>
           </li>
@@ -452,7 +452,7 @@ export default async function CanastaBasicaMesPage({
               target="_blank"
               className="text-emerald-700 underline"
             >
-              INDEC — Metodología N° 22: la medición de la pobreza y la indigencia por ingresos
+              INDEC, Metodología N° 22: la medición de la pobreza y la indigencia por ingresos
             </a>
           </li>
         </ul>

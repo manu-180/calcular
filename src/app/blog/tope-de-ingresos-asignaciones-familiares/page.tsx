@@ -83,8 +83,9 @@ const CASO_REPARTIDO = calcularAsignaciones({
 const AUH = desglose8020(V.universales.hijo.general);
 
 export const metadata: Metadata = {
-  title: `Tope de las asignaciones familiares ${MES}: por qué un solo sueldo deja afuera a toda la familia`,
-  description: `Hay dos topes, no uno: el del grupo familiar (${$(V.topeIgfGrupo)}) y uno individual de ${$(V.topeIgfIndividual)} que excluye al grupo entero si una sola persona lo supera. Además los tramos son escalones: cruzar el primero cuesta ${$(ESCALONES[0].perdida)} por hijo y por mes, así que un aumento chico puede dejarte cobrando menos.`,
+  title: "El tope de las asignaciones familiares: los dos límites",
+  description:
+    "Hay un tope del grupo familiar y uno individual que deja afuera a toda la familia si una persona lo supera. Los montos del mes y los escalones.",
   alternates: { canonical: SLUG },
   openGraph: {
     type: "article",
@@ -101,27 +102,27 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: `¿Cuál es el tope para cobrar asignaciones familiares en ${MES}?`,
-    a: `Hay dos y los dos tienen que cumplirse. El Ingreso del Grupo Familiar no puede superar ${$(V.topeIgfGrupo)}, y ningún integrante por separado puede superar ${$(V.topeIgfIndividual)}. Si una sola persona pasa el tope individual, queda excluido todo el grupo familiar, aunque la suma esté por debajo del tope grupal. Los valores son de ${MES} según la ${V.resolucion} y se actualizan todos los meses.`,
+    a: `Hay dos, y tenés que cumplir los dos. El Ingreso del Grupo Familiar no puede pasar de ${$(V.topeIgfGrupo)}, y ninguna persona del grupo, por separado, puede pasar de ${$(V.topeIgfIndividual)}. Si una sola persona supera el tope individual, queda afuera todo el grupo familiar, aunque la suma esté por debajo del tope grupal. Los valores son de ${MES}, según la ${V.resolucion}, y cambian todos los meses.`,
   },
   {
     q: "Me aumentaron el sueldo y ahora cobro menos, ¿es un error?",
-    a: `No, es cómo está armada la tabla: los tramos son escalones, no una rampa. Cruzar el primer límite (${$(ESCALONES[0].limite)} de ingreso del grupo) baja la asignación de ${$(ESCALONES[0].antes)} a ${$(ESCALONES[0].despues)} por hijo, o sea ${$(ESCALONES[0].perdida)} menos por mes y por hijo. Con dos hijos son ${$(ESCALONES[0].perdida * 2)} mensuales: cualquier aumento menor a esa cifra que cruce el límite deja al grupo con menos plata que antes.`,
+    a: `No, así está armada la tabla: los tramos son escalones, no una rampa. Cruzar el primer límite (${$(ESCALONES[0].limite)} de ingreso del grupo) baja la asignación de ${$(ESCALONES[0].antes)} a ${$(ESCALONES[0].despues)} por hijo, o sea ${$(ESCALONES[0].perdida)} menos por mes y por hijo. Con dos hijos son ${$(ESCALONES[0].perdida * 2)} por mes. Cualquier aumento menor a esa cifra que te haga cruzar el límite deja al grupo con menos plata que antes.`,
   },
   {
     q: "¿Qué ingresos se cuentan para el IGF?",
-    a: "Se suman las remuneraciones brutas y las sumas no remunerativas declaradas por el empleador en el formulario 931, las rentas de referencia de autónomos, monotributistas y personal de casas particulares, las jubilaciones y pensiones, la prestación por desempleo, los planes sociales y cualquier otra prestación contributiva o no contributiva. Quedan expresamente afuera las horas extras, el plus por zona desfavorable y el aguinaldo.",
+    a: "Se suman los sueldos brutos y las sumas no remunerativas que el empleador declara en el formulario 931, las rentas de referencia de autónomos, monotributistas y personal de casas particulares, las jubilaciones y pensiones, la prestación por desempleo, los planes sociales y cualquier otra prestación, contributiva o no. Quedan afuera, de forma expresa, las horas extras, el plus por zona desfavorable y el aguinaldo.",
   },
   {
     q: "¿A los hijos con discapacidad también les aplica el tope?",
-    a: "No. Con la autorización de ANSES vigente, para la asignación por hijo con discapacidad no rigen topes máximos de ingreso, ni individuales ni del grupo familiar. Se cobra aunque el grupo esté excluido del resto de las asignaciones, y corresponde también cuando el hijo es mayor de 18 años.",
+    a: "No. Con la autorización de ANSES vigente, la asignación por hijo con discapacidad no tiene topes de ingreso, ni individuales ni del grupo familiar. Se cobra aunque el grupo quede afuera del resto de las asignaciones, y también cuando el hijo es mayor de 18 años.",
   },
   {
     q: "Nos separamos, ¿sigue contando el ingreso del otro progenitor?",
-    a: "El IGF es el del grupo familiar, no el de los dos progenitores por definición. Si el grupo cambió (separación, fallecimiento, un hijo que dejó de estar a cargo), hay que actualizar la composición del grupo familiar en Mi ANSES: mientras el dato viejo siga cargado, el cálculo va a seguir usándolo. Es una de las causas más comunes de que alguien deje de cobrar sin haber cambiado de sueldo.",
+    a: "El IGF es el del grupo familiar, que no siempre son los dos progenitores. Si el grupo cambió (separación, fallecimiento, un hijo que dejó de estar a cargo), tenés que actualizarlo en Mi ANSES: mientras siga el dato viejo, la cuenta lo sigue usando. Es una de las causas más comunes de que alguien deje de cobrar sin haber cambiado de sueldo.",
   },
   {
     q: "¿Cada cuánto cambian los topes?",
-    a: "Todos los meses. Desde el Decreto 274/2024 los montos y los rangos se actualizan por la variación del índice de precios al consumidor del INDEC de dos meses antes, con una resolución de ANSES a fin del mes anterior. Es la misma movilidad que la de las jubilaciones, así que quedar afuera un mes no significa quedar afuera para siempre: los límites suben todos los meses.",
+    a: "Todos los meses. Desde el Decreto 274/2024, los montos y los rangos suben según el índice de precios al consumidor del INDEC de dos meses antes, con una resolución de ANSES a fin del mes anterior. Es la misma movilidad que la de las jubilaciones. Así que quedar afuera un mes no es quedar afuera para siempre: los límites suben todos los meses.",
   },
 ];
 
@@ -131,9 +132,9 @@ export default function Post() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: `Tope de las asignaciones familiares ${MES}: por qué un solo sueldo deja afuera a toda la familia`,
+        titulo: "El tope de las asignaciones familiares: los dos límites",
         descripcion:
-          "Los dos topes de ingreso del régimen de asignaciones familiares, qué entra y qué no entra en el IGF, y los escalones que hacen que un aumento chico signifique cobrar menos.",
+          "Los dos topes de ingreso de las asignaciones familiares, qué entra y qué no en el IGF, y los escalones que hacen que un aumento chico te haga cobrar menos.",
         url: SLUG,
         modificado: ASIGNACIONES_FUENTES.consultadoEl,
       }),
@@ -184,8 +185,8 @@ export default function Post() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Son dos topes, no uno</h2>
         <p className="text-zinc-600">
-          La cartilla oficial de ANSES fija los dos en la misma página, pero las notas suelen citar
-          sólo el primero. El segundo es el que en la práctica decide casi todos los casos.
+          La cartilla oficial de ANSES pone los dos en la misma página, pero las notas suelen citar
+          solo el primero. En la práctica, el segundo es el que decide casi todos los casos.
         </p>
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">
@@ -225,7 +226,7 @@ export default function Post() {
             <div className="rounded-lg bg-rose-50 p-4">
               <p className="text-sm text-rose-900">Una persona gana {$(3_200_000)}, la otra {$(300_000)}</p>
               <p className="mt-1 text-xs text-rose-800">
-                IGF {$(CASO_INDIVIDUAL.igf)} — por debajo del tope grupal
+                IGF {$(CASO_INDIVIDUAL.igf)}, por debajo del tope grupal
               </p>
               <p className="mt-2 text-2xl font-bold text-rose-900">
                 {$(CASO_INDIVIDUAL.totalMensual)}
@@ -240,7 +241,7 @@ export default function Post() {
                 Cada una gana {$(1_750_000)}
               </p>
               <p className="mt-1 text-xs text-emerald-800">
-                IGF {$(CASO_REPARTIDO.igf)} — el mismo total
+                IGF {$(CASO_REPARTIDO.igf)}, el mismo total
               </p>
               <p className="mt-2 text-2xl font-bold text-emerald-900">
                 {$(CASO_REPARTIDO.totalMensual)} por mes
@@ -360,11 +361,11 @@ export default function Post() {
         <div className="rounded-xl bg-amber-50 p-5 text-amber-900">
           <p className="font-semibold">La regla práctica</p>
           <p className="mt-1 text-sm">
-            Un aumento que cruza un escalón sólo conviene si es mayor a lo que se pierde. En el
-            primer escalón, con dos hijos, eso son {$(ESCALONES[0].perdida * 2)} por mes — o{" "}
-            {$(PERDIDA_ANUAL_2_HIJOS)} por año. No es un argumento para rechazar aumentos: los topes
-            y los tramos suben todos los meses con la inflación, así que la caída suele ser
-            transitoria. Pero conviene saber cuándo va a pasar, porque el mes que pasa duele.
+            Un aumento que te hace cruzar un escalón solo conviene si es mayor a lo que perdés. En
+            el primer escalón, con dos hijos, eso son {$(ESCALONES[0].perdida * 2)} por mes, o{" "}
+            {$(PERDIDA_ANUAL_2_HIJOS)} por año. No es para rechazar aumentos: los topes y los tramos
+            suben todos los meses con la inflación, así que la caída suele durar poco. Pero conviene
+            saber cuándo va a pasar, porque ese mes duele.
           </p>
         </div>
         <p className="text-zinc-600">
@@ -388,11 +389,11 @@ export default function Post() {
               La asignación por hijo con discapacidad no tiene tope
             </p>
             <p className="mt-1 text-sm text-emerald-900">
-              Con la autorización de ANSES vigente no rigen topes máximos de ingreso, ni individuales
-              ni del grupo familiar. Se cobra aunque el grupo esté excluido del resto de las
-              asignaciones y corresponde también cuando el hijo es mayor de 18 años. En {MES} va de{" "}
+              Con la autorización de ANSES vigente no tiene topes de ingreso, ni individuales ni del
+              grupo familiar. Se cobra aunque el grupo quede afuera del resto de las asignaciones, y
+              también cuando el hijo es mayor de 18 años. En {MES} va de{" "}
               {$(V.hijoDiscapacidad[2].montos.general)} a {$(V.hijoDiscapacidad[0].montos.general)}{" "}
-              por mes en el valor general, según el tramo — pero sin puerta de salida.
+              por mes en el valor general, según el tramo, pero nunca te deja afuera.
             </p>
           </div>
           <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">
@@ -470,20 +471,26 @@ export default function Post() {
               className="font-medium text-emerald-700 hover:underline"
             >
               Calculadora de asignaciones familiares y AUH
-            </Link>{" "}
-            — tu tramo, tu zona y a qué distancia estás del escalón.
+            </Link>
+            : tu tramo, tu zona y a qué distancia estás del escalón.
           </li>
           <li>
             <Link href="/sueldo-neto" className="font-medium text-emerald-700 hover:underline">
               Calculadora de sueldo neto
-            </Link>{" "}
-            — para saber el bruto exacto que entra en el IGF.
+            </Link>
+            : para saber el bruto exacto que entra en el IGF.
           </li>
           <li>
             <Link href="/jubilacion" className="font-medium text-emerald-700 hover:underline">
               Jubilación: aumento y bono
-            </Link>{" "}
-            — la misma movilidad mensual que mueve estos topes.
+            </Link>
+            : la misma movilidad mensual que mueve estos topes.
+          </li>
+          <li>
+            <Link href="/canasta-basica" className="font-medium text-emerald-700 hover:underline">
+              Canasta básica
+            </Link>
+            : cuánto necesita tu hogar para no quedar bajo la línea de pobreza.
           </li>
         </ul>
       </section>
@@ -499,8 +506,8 @@ export default function Post() {
               className="text-emerald-700 hover:underline"
             >
               {V.resolucion}
-            </a>{" "}
-            — aumento del {formatPct(V.movilidad)} en montos, límites y rangos de {MES} (
+            </a>
+            : aumento del {formatPct(V.movilidad)} en montos, límites y rangos de {MES} (
             {V.resolucionBO}).
           </li>
           <li>
@@ -511,8 +518,8 @@ export default function Post() {
               className="text-emerald-700 hover:underline"
             >
               {ASIGNACIONES_FUENTES.cartilla.nombre}
-            </a>{" "}
-            — topes, tramos y montos por zona.
+            </a>
+            : topes, tramos y montos por zona.
           </li>
           <li>
             <a
@@ -533,8 +540,8 @@ export default function Post() {
               className="text-emerald-700 hover:underline"
             >
               {ASIGNACIONES_FUENTES.ley.nombre}
-            </a>{" "}
-            — consultada el {ASIGNACIONES_FUENTES.consultadoEl}.
+            </a>
+            : consultada el {ASIGNACIONES_FUENTES.consultadoEl}.
           </li>
         </ul>
         <p className="pt-2">

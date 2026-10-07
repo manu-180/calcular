@@ -11,10 +11,9 @@ import { formatARS } from "@/lib/formato";
 const PUBLICADO = "25 de junio de 2026";
 const PUBLICADO_ISO = "2026-06-25";
 
-const titulo =
-  "Cómo se calcula la indemnización por despido en 2026 (ejemplo paso a paso)";
+const titulo = "Cómo se calcula la indemnización por despido 2026";
 const descripcion =
-  "El método completo del art. 245 de la LCT con la reforma de la Ley 27.802: antigüedad, preaviso, integración del mes y liquidación final. Un ejemplo real desarrollado peso por peso y la calculadora que lo resuelve por vos.";
+  "El art. 245 de la LCT con la reforma de la Ley 27.802: antigüedad, preaviso, integración y liquidación final, con un ejemplo real peso por peso.";
 
 export const metadata: Metadata = {
   title: titulo,
@@ -47,7 +46,7 @@ const r = calcularIndemnizacion({
 const faqs = [
   {
     q: "¿Cuál es la fórmula de la indemnización por antigüedad?",
-    a: "Un mes de tu mejor sueldo por cada año trabajado o fracción mayor de 3 meses (art. 245 LCT). Se toma la mejor remuneración mensual, normal y habitual del último año. Por ejemplo, con 6 años computables y un mejor sueldo de $1.500.000, la indemnización por antigüedad es 6 × $1.500.000 = $9.000.000. A eso se suman el preaviso, la integración del mes y la liquidación final.",
+    a: "Un mes de tu mejor sueldo por cada año trabajado o fracción de más de 3 meses (art. 245 LCT). Se toma la mejor remuneración mensual, normal y habitual del último año. Por ejemplo, con 6 años que cuentan y un mejor sueldo de $1.500.000, la indemnización por antigüedad es 6 × $1.500.000 = $9.000.000. A eso se suman el preaviso, la integración del mes y la liquidación final.",
   },
   {
     q: "¿Una fracción de año cuenta como un año entero?",
@@ -55,19 +54,19 @@ const faqs = [
   },
   {
     q: "¿Qué cambió con la reforma de la Ley 27.802 en 2026?",
-    a: "El piso del tope quedó escrito en la ley: aunque tu convenio tenga un tope (3 veces el sueldo promedio del CCT), la base de cálculo nunca puede bajar del 67% de tu remuneración real. Antes ese piso era solo jurisprudencia (el fallo «Vizzoti»); desde la Ley 27.802 (B.O. 6/3/2026) es texto legal del art. 245. También se precisó la definición de la base y el preaviso del art. 231.",
+    a: "El piso del tope quedó escrito en la ley: aunque tu convenio tenga un tope (3 veces el sueldo promedio del CCT), la base de cálculo nunca puede bajar del 67% de tu sueldo real. Antes ese piso venía solo de los fallos (el caso «Vizzoti»); desde la Ley 27.802 (B.O. 6/3/2026) está en el texto del art. 245. También se aclaró cómo se define la base y el preaviso del art. 231.",
   },
   {
     q: "¿Siguen vigentes la doble indemnización y las multas por trabajo en negro?",
-    a: "No. La Ley 27.742 (julio de 2024) derogó las multas por empleo no registrado (Ley 24.013) y las indemnizaciones agravadas (Leyes 25.323 y 25.345), incluida la «doble indemnización». Si tu relación no estaba registrada conservás el derecho a la indemnización común y a reclamar los aportes adeudados, pero las multas agravadas ya no corren.",
+    a: "No. La Ley 27.742 (julio de 2024) derogó las multas por empleo no registrado (Ley 24.013) y las indemnizaciones agravadas (Leyes 25.323 y 25.345), incluida la «doble indemnización». Si trabajabas sin registrar, seguís teniendo derecho a la indemnización común y a reclamar los aportes que te deben, pero las multas extra ya no corren.",
   },
   {
     q: "¿La indemnización por despido paga impuesto a las Ganancias?",
-    a: "La indemnización por antigüedad del art. 245 está exenta de Ganancias (art. 26 inc. i de la ley del impuesto). El mismo inciso dice que las indemnizaciones por falta de preaviso no están exentas, y la integración del mes no figura entre las exentas. La liquidación final (aguinaldo y vacaciones proporcionales) tributa como un sueldo. Que un rubro no esté exento no significa que te lo descuenten: solo pagás si tus ingresos del año superan las deducciones personales.",
+    a: "La indemnización por antigüedad del art. 245 no paga Ganancias (art. 26 inc. i de la ley del impuesto). El mismo inciso dice que la indemnización por falta de preaviso sí paga, y la integración del mes no está entre las exentas. La liquidación final (aguinaldo y vacaciones proporcionales) paga como un sueldo. Que un rubro no esté exento no quiere decir que te lo descuenten: solo pagás si tus ingresos del año superan tus deducciones personales.",
   },
   {
     q: "¿Me corresponde indemnización si renuncio o me despiden con causa?",
-    a: "No corresponde la indemnización por antigüedad ni el preaviso. Pero siempre te deben la liquidación final: los días trabajados del mes, el aguinaldo proporcional del semestre y las vacaciones proporcionales no gozadas (arts. 123 y 156 LCT). Si la «justa causa» que invocó el empleador no es real, podés discutirla judicialmente.",
+    a: "No te corresponde la indemnización por antigüedad ni el preaviso. Pero siempre te deben la liquidación final: los días trabajados del mes, el aguinaldo proporcional del semestre y las vacaciones proporcionales que no tomaste (arts. 123 y 156 LCT). Si la «justa causa» que dice el empleador no es real, podés discutirla en la Justicia.",
   },
 ];
 
@@ -101,9 +100,9 @@ export default function Post() {
         </h1>
         <p className="text-zinc-600">
           Si te despiden sin causa, lo que cobrás no es un solo número: son cuatro conceptos que se
-          suman. Acá está el método completo del art. 245 de la Ley de Contrato de Trabajo —con la
-          reforma de la Ley 27.802 ya incorporada— desarrollado con un ejemplo real, peso por peso,
-          y la calculadora que lo resuelve por vos.
+          suman. Acá tenés el método completo del art. 245 de la Ley de Contrato de Trabajo (con la
+          reforma de la Ley 27.802 ya incluida), un ejemplo real peso por peso y la calculadora que
+          hace la cuenta.
         </p>
       </header>
 
@@ -218,18 +217,23 @@ export default function Post() {
           </table>
         </div>
         <p className="text-xs text-zinc-400">
-          Calculado con el mismo motor que la calculadora del sitio. La indemnización por antigüedad
-          ({formatARS(r.indemnizacionAntiguedad, 0)}) es la única parte exenta de Ganancias; el preaviso,
-          la integración y la liquidación final no lo están. Cambiá las fechas y el sueldo por los tuyos en la
-          calculadora.
+          Calculado con la misma cuenta que la calculadora del sitio. La indemnización por
+          antigüedad ({formatARS(r.indemnizacionAntiguedad, 0)}) es la única parte que no paga
+          Ganancias; el preaviso, la integración y la liquidación final sí pueden pagar. Cambiá las
+          fechas y el sueldo por los tuyos en la calculadora. Si querés el detalle de tu caso por
+          escrito, está el{" "}
+          <Link href="/informes/indemnizacion" className="text-emerald-700 underline">
+            informe de indemnización
+          </Link>
+          .
         </p>
       </section>
 
       <section className="space-y-3 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6">
         <h2 className="text-lg font-bold text-emerald-900">Calculá tu indemnización exacta</h2>
         <p className="text-sm text-emerald-800">
-          Poné tu fecha de ingreso, la de despido y tu mejor sueldo. La calculadora arma los cuatro
-          conceptos, aplica el tope de convenio con el piso del 67% y te muestra el total:
+          Poné tu fecha de ingreso, la del despido y tu mejor sueldo. La calculadora arma los cuatro
+          conceptos, aplica el tope del convenio con el piso del 67% y te muestra el total:
         </p>
         <div className="flex flex-wrap gap-3">
           <Link
@@ -279,9 +283,14 @@ export default function Post() {
         <h2 className="text-xl font-bold text-zinc-900">Cuándo NO cobrás la indemnización</h2>
         <ul className="space-y-2 text-zinc-600">
           <li>
-            • <strong>Período de prueba</strong>: en los primeros 6 meses (ampliables por convenio)
-            cualquiera puede extinguir el contrato sin indemnización y, desde la Ley 27.802, sin
-            preaviso. Pero la liquidación final te corresponde igual.
+            • <strong>Período de prueba</strong>: en los primeros 6 meses (el convenio los puede
+            ampliar), cualquiera de las partes puede terminar el contrato sin indemnización y,
+            desde la Ley 27.802, sin preaviso. Pero la liquidación final te corresponde igual.
+            Calculala en{" "}
+            <Link href="/periodo-de-prueba" className="text-emerald-700 underline">
+              despido en período de prueba
+            </Link>
+            .
           </li>
           <li>
             • <strong>Renuncia</strong>: no hay indemnización por antigüedad ni preaviso, pero sí
@@ -349,7 +358,7 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              Ley 27.802 — nuevo art. 245 LCT (B.O. 6/3/2026)
+              Ley 27.802: nuevo art. 245 LCT (B.O. 6/3/2026)
             </a>
           </li>
           <li>
@@ -360,14 +369,14 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              Ley 27.742 (Bases) — derogación de multas laborales
+              Ley 27.742 (Bases): derogación de multas laborales
             </a>
           </li>
         </ul>
         <p className="text-xs text-zinc-400">
-          Esta guía es informativa y orientativa, no asesoramiento legal. El cálculo definitivo
-          depende de tu convenio, tu antigüedad exacta y las particularidades de tu caso: ante un
-          despido, consultá con un abogado laboralista o tu sindicato antes de firmar nada.
+          Esta guía es informativa, no es asesoramiento legal. El número final depende de tu
+          convenio, tu antigüedad exacta y los detalles de tu caso. Si te despiden, consultá con un
+          abogado laboralista o con tu sindicato antes de firmar nada.
         </p>
       </section>
     </article>

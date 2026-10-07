@@ -14,9 +14,9 @@ import { formatARS } from "@/lib/formato";
 import { DECRETO_407, RECIBO_SECCIONES, RECIBO_RUBROS_COSTO } from "@/data/recibo-sueldo";
 
 export const metadata: Metadata = {
-  title: "Modelo de recibo de sueldo de Empleado de Comercio 2026 (nuevo formato)",
+  title: "Modelo de recibo de sueldo de Comercio 2026",
   description:
-    "Cómo es el recibo de sueldo de Comercio (CCT 130/75) con el nuevo formato del Decreto 407/2026: las 4 secciones obligatorias, el resumen del costo laboral y un modelo con números reales de junio 2026 según la escala oficial de FAECYS.",
+    "El recibo del CCT 130/75 con el formato del Decreto 407/2026: las 4 secciones obligatorias, el costo laboral y un modelo con números reales.",
   alternates: { canonical: "/blog/modelo-recibo-de-sueldo-empleado-de-comercio" },
   openGraph: {
     type: "article",
@@ -35,23 +35,23 @@ const PUBLICADO = "15 de junio de 2026";
 const faqs = [
   {
     q: "¿Qué cambió en el recibo de sueldo en 2026?",
-    a: "Desde el 1 de junio de 2026, el Decreto 407/2026 (que reglamenta la Ley 27.802 de Modernización Laboral) cambió el modelo del recibo. Ahora se estructura en 4 secciones y, además del sueldo del trabajador, debe mostrar un resumen del costo laboral total que asume el empleador (contribuciones patronales discriminadas). El objetivo es dar más transparencia a cuánto cuesta realmente un puesto de trabajo.",
+    a: "Desde el 1 de junio de 2026, el Decreto 407/2026 (que reglamenta la Ley 27.802 de Modernización Laboral) cambió el modelo del recibo. Ahora tiene 4 secciones y, además del sueldo del trabajador, tiene que mostrar un resumen del costo laboral total que paga el empleador (con las contribuciones patronales una por una). La idea es que se vea cuánto cuesta de verdad un puesto de trabajo.",
   },
   {
     q: "¿Qué datos no pueden faltar en un recibo de comercio?",
-    a: "Según el art. 140 de la LCT con la redacción del Decreto 407/2026: datos del empleador (CUIT) y del trabajador (CUIL, fecha de ingreso, antigüedad y categoría); el detalle de las contribuciones a cargo del empleador; la remuneración bruta con su determinación y las deducciones; y la remuneración neta. En Comercio, además, deben verse por separado el básico de convenio, las sumas no remunerativas, la antigüedad y el presentismo.",
+    a: "Según el art. 140 de la LCT con el texto del Decreto 407/2026: los datos del empleador (CUIT) y del trabajador (CUIL, fecha de ingreso, antigüedad y categoría); el detalle de las contribuciones a cargo del empleador; el sueldo bruto, cómo se calcula y sus descuentos; y el sueldo neto. En Comercio, además, tienen que verse por separado el básico de convenio, las sumas no remunerativas, la antigüedad y el presentismo.",
   },
   {
     q: "¿Cuánto cobra un Vendedor B de comercio en junio de 2026?",
-    a: "Jornada completa y sin antigüedad: $1.153.746 de básico + $120.000 no remunerativos = $1.273.746 brutos; con presentismo (8,33%) sube a $1.379.892, y en mano quedan aproximadamente $1.163.510 antes de cuota sindical y Ganancias. El número exacto para cualquier categoría y antigüedad lo da la calculadora de comercio.",
+    a: "Con jornada completa y sin antigüedad: $1.153.746 de básico + $120.000 no remunerativos = $1.273.746 brutos. Con presentismo (8,33%) sube a $1.379.892, y en mano quedan cerca de $1.163.510 antes de cuota sindical y Ganancias. El número exacto para cualquier categoría y antigüedad te lo da la calculadora de comercio.",
   },
   {
     q: "¿Por qué el descuento no es el 17% sobre todo el bruto?",
-    a: "Porque las sumas no remunerativas ($120.000 hasta junio 2026) solo aportan el 3% de obra social, no el 17% completo. El 17% (11% jubilación + 3% PAMI + 3% obra social) se aplica únicamente sobre la parte remunerativa. Por eso lo no remunerativo «rinde» más en mano.",
+    a: "Porque las sumas no remunerativas ($120.000 hasta junio 2026) solo pagan el 3% de obra social, no el 17% completo. El 17% (11% jubilación + 3% PAMI + 3% obra social) va solo sobre la parte remunerativa. Por eso lo no remunerativo «rinde» más en mano.",
   },
   {
     q: "¿Este modelo sirve para emitir recibos oficiales?",
-    a: "Es un modelo de referencia para entender y controlar el recibo. Para emitir recibos de sueldo oficiales de una empresa conviene un contador matriculado o un sistema de liquidación habilitado. La planilla y la calculadora sirven para estimar, verificar que el recibo esté bien y liquidar más rápido mes a mes.",
+    a: "Es un modelo de referencia para entender y controlar el recibo. Para emitir los recibos oficiales de una empresa conviene un contador matriculado o un sistema de liquidación habilitado. La planilla y la calculadora sirven para estimar, revisar que el recibo esté bien y liquidar más rápido cada mes.",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function Post() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "Modelo de recibo de sueldo de Empleado de Comercio 2026 (nuevo formato)",
+        titulo: "Modelo de recibo de sueldo de Comercio 2026",
         descripcion:
           "El recibo de sueldo de Comercio (CCT 130/75) con el formato del Decreto 407/2026: las 4 secciones obligatorias, el resumen del costo laboral y un modelo con números reales de junio 2026 según la escala oficial de FAECYS.",
         url: "/blog/modelo-recibo-de-sueldo-empleado-de-comercio",
@@ -111,14 +111,19 @@ export default function Post() {
         <p className="text-zinc-600">
           Desde junio de 2026 el recibo de sueldo cambió de formato. Acá tenés cómo queda el de un
           Empleado de Comercio (CCT 130/75) con el nuevo modelo del Decreto 407/2026: qué secciones
-          lleva, qué se agregó, y un recibo de ejemplo con números reales de junio 2026 según la
-          escala oficial de FAECYS.
+          lleva, qué se agregó y un recibo de ejemplo con números reales de junio 2026, según la
+          escala oficial de FAECYS. Si querés ver el cambio en general, para cualquier actividad,
+          mirá{" "}
+          <Link href="/blog/nuevo-recibo-de-sueldo-2026" className="text-emerald-700 underline">
+            el nuevo recibo de sueldo 2026
+          </Link>
+          .
         </p>
       </header>
 
       <RespuestaPrimero actualizado={PUBLICADO}>
         <p>
-          El recibo de sueldo de Comercio debe tener, según el <strong>Decreto 407/2026</strong>{" "}
+          El recibo de sueldo de Comercio tiene que tener, según el <strong>Decreto 407/2026</strong>{" "}
           (vigente desde el 1/6/2026), <strong>cuatro secciones</strong>: (a) datos del empleador y
           del trabajador (con categoría y antigüedad); (b) las contribuciones a cargo del empleador;
           (c) la remuneración bruta y las deducciones; y (d) el neto. La novedad es que ahora también
@@ -176,9 +181,9 @@ export default function Post() {
           ))}
         </ol>
         <p className="rounded-xl bg-white p-4 text-sm font-medium text-zinc-800 shadow-sm">
-          La novedad de fondo: el recibo dejó de mostrar solo lo que cobra el empleado. Ahora también
-          expone, en el anverso, un <strong>resumen de la composición total del costo laboral</strong>{" "}
-          a cargo del empleador — para que se vea cuánto cuesta el puesto completo, no solo el sueldo.
+          Lo realmente nuevo: el recibo ya no muestra solo lo que cobra el empleado. Ahora también
+          muestra, en el frente, un <strong>resumen del costo laboral total</strong> que paga el
+          empleador. Así se ve cuánto cuesta el puesto completo, no solo el sueldo.
         </p>
       </section>
 
@@ -187,9 +192,9 @@ export default function Post() {
           Modelo de recibo: Vendedor B, junio 2026
         </h2>
         <p className="text-zinc-600">
-          Un ejemplo armado con el nuevo formato. Jornada completa, sin antigüedad, cobrando
-          presentismo. Los básicos salen de la circular oficial de FAECYS; los importes los calcula
-          la misma lógica que la calculadora del sitio (no son números cargados a mano).
+          Un ejemplo armado con el nuevo formato. Jornada completa, sin antigüedad y con
+          presentismo. Los básicos salen de la circular oficial de FAECYS, y los importes los calcula
+          la misma cuenta que la calculadora del sitio (no son números cargados a mano).
         </p>
 
         <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm">
@@ -199,9 +204,9 @@ export default function Post() {
               a) Empleador y trabajador
             </p>
             <p className="mt-1">
-              Empleador: (razón social) · CUIT (xx-xxxxxxxx-x) — Trabajador: (nombre) · CUIL
+              Empleador: (razón social) · CUIT (xx-xxxxxxxx-x) · Trabajador: (nombre) · CUIL
               (xx-xxxxxxxx-x) · Ingreso (dd/mm/aaaa) · Antigüedad: 0 años · Categoría:{" "}
-              <span className="font-medium text-zinc-700">Vendedor B — CCT 130/75</span>
+              <span className="font-medium text-zinc-700">Vendedor B, CCT 130/75</span>
             </p>
           </div>
 
@@ -267,7 +272,7 @@ export default function Post() {
                 </td>
               </tr>
               <tr className="border-b border-zinc-100">
-                <td className="px-4 py-2.5">Ley 19.032 — PAMI (3% s/ remunerativo)</td>
+                <td className="px-4 py-2.5">Ley 19.032: PAMI (3% s/ remunerativo)</td>
                 <td className="px-4 py-2.5 text-right text-rose-600">− {formatARS(dedPami)}</td>
               </tr>
               <tr className="border-b border-zinc-100">
@@ -315,7 +320,7 @@ export default function Post() {
         <h2 className="text-xl font-bold text-zinc-900">El nuevo resumen del costo laboral</h2>
         <p className="text-zinc-600">
           Además del sueldo del trabajador, el recibo ahora incluye un resumen de lo que paga el
-          empleador por encima de ese sueldo. El Decreto 407/2026 pide discriminar el costo laboral,
+          empleador por encima de ese sueldo. El Decreto 407/2026 pide separar el costo laboral,
           como mínimo, en estos rubros:
         </p>
         <ul className="grid gap-2 sm:grid-cols-2">
@@ -331,9 +336,9 @@ export default function Post() {
         </ul>
         <p className="text-xs text-zinc-400">
           Las alícuotas de las contribuciones patronales dependen del Decreto 814/2001 y de la
-          actividad de la empresa, por eso no las fijamos acá: el monto exacto lo determina cada
-          empleador o su contador. Lo que el recibo nuevo garantiza es que esos conceptos figuren
-          discriminados.
+          actividad de la empresa, por eso no las ponemos acá: el monto exacto lo define cada
+          empleador o su contador. Lo que asegura el recibo nuevo es que esos conceptos aparezcan
+          separados.
         </p>
       </section>
 
@@ -341,11 +346,11 @@ export default function Post() {
         <h2 className="text-xl font-bold text-zinc-900">Si liquidás todos los meses</h2>
         <p className="text-zinc-600">
           Armar el recibo una vez es fácil. Lo que cansa es{" "}
-          <strong>volver a buscar la escala nueva cada paritaria</strong> y rehacer los números para
-          cada categoría. Para eso armamos la planilla de Excel/Google Sheets con la escala oficial
-          de Comercio embebida y actualización garantizada con cada acuerdo: ponés categoría, mes y
-          jornada, y tenés el bruto y el neto desglosados — los mismos importes que este modelo, que
-          después pasás al recibo.
+          <strong>buscar la escala nueva en cada paritaria</strong> y rehacer los números para cada
+          categoría. Para eso armamos la planilla de Excel/Google Sheets con la escala oficial de
+          Comercio adentro y actualizada con cada acuerdo: ponés categoría, mes y jornada, y tenés
+          el bruto y el neto desglosados, con los mismos importes que este modelo, listos para pasar
+          al recibo.
         </p>
       </section>
 

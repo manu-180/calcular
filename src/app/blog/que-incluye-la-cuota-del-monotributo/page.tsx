@@ -13,9 +13,9 @@ const PUBLICADO_ISO = "2026-06-22";
 
 const catA = CATEGORIAS[0];
 
-const titulo = "Qué incluye la cuota del monotributo 2026 (con el desglose por categoría)";
+const titulo = "Qué incluye la cuota del monotributo 2026, por categoría";
 const descripcion =
-  "La cuota del monotributo no es solo un impuesto: incluye tres cosas — impuesto integrado (reemplaza IVA y Ganancias), aporte jubilatorio (SIPA) y obra social. Cuánto va a cada componente en 2026, categoría por categoría, con los valores oficiales de ARCA.";
+  "La cuota suma impuesto integrado, aporte jubilatorio y obra social. Cuánto va a cada parte en 2026, categoría por categoría, con valores de ARCA.";
 
 export const metadata: Metadata = {
   title: titulo,
@@ -36,23 +36,23 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿La cuota del monotributo es solo un impuesto?",
-    a: "No. La cuota tiene tres componentes: el impuesto integrado (que reemplaza al IVA y al impuesto a las Ganancias), el aporte jubilatorio al SIPA y el aporte a la obra social. Por eso con una sola cuota mensual quedás al día con el impuesto, tu jubilación y tu cobertura de salud.",
+    a: "No. La cuota tiene tres partes: el impuesto integrado (que reemplaza al IVA y a Ganancias), el aporte jubilatorio al SIPA y el aporte a la obra social. Por eso, con una sola cuota por mes, quedás al día con el impuesto, tu jubilación y tu cobertura de salud.",
   },
   {
     q: "¿Cuánto de la cuota va a la jubilación?",
-    a: `Depende de tu categoría. El aporte jubilatorio (SIPA) arranca en ${formatARS(catA.sipa, 0)} en la categoría A y sube en cada categoría: un 10% hasta la F, y un 40% desde la G en adelante. Es un componente fijo: no cambia entre prestación de servicios y venta de cosas muebles.`,
+    a: `Depende de tu categoría. El aporte jubilatorio (SIPA) arranca en ${formatARS(catA.sipa, 0)} en la categoría A y sube en cada categoría: un 10% hasta la F, y un 40% desde la G. Es fijo: no cambia entre prestación de servicios y venta de cosas muebles.`,
   },
   {
     q: "¿Por qué el monotributo de venta de cosas muebles paga menos?",
-    a: "Porque el único componente que cambia entre actividades es el impuesto integrado: en venta de cosas muebles es más bajo que en prestación de servicios. La jubilación (SIPA) y la obra social son iguales para las dos. Por eso, a igual categoría, un comerciante paga una cuota total menor que un prestador de servicios.",
+    a: "Porque lo único que cambia entre actividades es el impuesto integrado: en venta de cosas muebles es más bajo que en servicios. La jubilación (SIPA) y la obra social son iguales en las dos. Por eso, en la misma categoría, quien vende paga una cuota total menor que quien presta servicios.",
   },
   {
     q: "¿Puedo pagar solo una parte de la cuota?",
-    a: "Hay casos donde algún componente no corresponde. Por ejemplo, un jubilado por la Ley 24.241 que sigue como monotributista no paga obra social (ya tiene PAMI), pero sí el aporte jubilatorio. En el Monotributo Social se paga el 50% del componente de obra social. Fuera de esos casos, la cuota se paga completa.",
+    a: "En algunos casos una de las partes no corresponde. Por ejemplo, un jubilado por la Ley 24.241 que sigue como monotributista no paga obra social (ya tiene PAMI), pero sí el aporte jubilatorio. En el Monotributo Social se paga el 50% de la obra social. Fuera de esos casos, la cuota se paga completa.",
   },
   {
     q: "¿La obra social del monotributo cubre a mi familia?",
-    a: "El aporte obligatorio cubre solo al titular. Para sumar al grupo familiar hay un aporte optativo: cada adherente paga el mismo importe del componente de obra social que abona el titular. Ese monto se suma a la cuota base.",
+    a: "El aporte obligatorio cubre solo al titular. Para sumar a tu familia hay un aporte opcional: por cada persona que sumás pagás lo mismo que paga el titular de obra social. Ese monto se suma a la cuota.",
   },
 ];
 
@@ -84,21 +84,25 @@ export default function Post() {
         </h1>
         <p className="text-zinc-600">
           Pagás una sola cuota por mes, pero ¿sabés qué estás pagando? La cuota del monotributo no
-          es un solo impuesto: son tres cosas juntas. Acá está el desglose, categoría por categoría,
-          con los valores oficiales de ARCA y la cuenta a la vista.
+          es un solo impuesto: son tres cosas juntas. Acá tenés el desglose, categoría por
+          categoría, con los valores oficiales de ARCA y la cuenta a la vista.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={PUBLICADO}>
         <p>
-          La cuota del monotributo incluye <strong>tres componentes</strong>: el{" "}
-          <strong>impuesto integrado</strong> (que reemplaza al IVA y al impuesto a las Ganancias),
-          el <strong>aporte jubilatorio</strong> con destino al SIPA y el aporte a la{" "}
-          <strong>obra social</strong>. Por eso con un solo pago mensual quedás al día con el
-          impuesto, tu jubilación y tu cobertura de salud. El único componente que cambia entre{" "}
-          <strong>prestación de servicios</strong> y <strong>venta de cosas muebles</strong> es el
-          impuesto integrado (más bajo en venta); la jubilación y la obra social son iguales para
-          las dos.
+          La cuota del monotributo tiene <strong>tres partes</strong>: el{" "}
+          <strong>impuesto integrado</strong> (que reemplaza al IVA y a Ganancias), el{" "}
+          <strong>aporte jubilatorio</strong> al SIPA y el aporte a la <strong>obra social</strong>.
+          Por eso, con un solo pago por mes, quedás al día con el impuesto, tu jubilación y tu
+          cobertura de salud. Lo único que cambia entre <strong>prestación de servicios</strong> y{" "}
+          <strong>venta de cosas muebles</strong> es el impuesto integrado (más bajo en venta). La
+          jubilación y la obra social son iguales en las dos. La obra social, con todo el detalle,
+          está en{" "}
+          <Link href="/obra-social-monotributo" className="text-emerald-700 underline">
+            la obra social del monotributo
+          </Link>
+          .
         </p>
       </RespuestaPrimero>
 
@@ -108,17 +112,17 @@ export default function Post() {
           {[
             {
               t: "Impuesto integrado",
-              d: "Reemplaza al IVA y al impuesto a las Ganancias en un solo monto fijo. Es el único componente que cambia según tu actividad: en venta de cosas muebles es más bajo que en prestación de servicios.",
+              d: "Reemplaza al IVA y a Ganancias con un solo monto fijo. Es la única parte que cambia según tu actividad: en venta de cosas muebles es más bajo que en prestación de servicios.",
               color: "bg-emerald-500",
             },
             {
               t: "Aporte jubilatorio (SIPA)",
-              d: "Es tu aporte previsional obligatorio al Sistema Integrado Previsional Argentino. Sube un 10% en cada categoría hasta la F, y un 40% desde la G. Es igual para servicios y venta.",
+              d: "Es tu aporte obligatorio para la jubilación, al Sistema Integrado Previsional Argentino. Sube un 10% en cada categoría hasta la F, y un 40% desde la G. Es igual para servicios y venta.",
               color: "bg-sky-500",
             },
             {
               t: "Obra social",
-              d: "El aporte obligatorio al Sistema Nacional del Seguro de Salud, que te da cobertura de salud. Cubre al titular; sumar al grupo familiar tiene un costo optativo adicional por adherente.",
+              d: "El aporte obligatorio al Sistema Nacional del Seguro de Salud, que te da cobertura de salud. Cubre al titular; sumar a tu familia cuesta un monto extra opcional por cada persona.",
               color: "bg-violet-500",
             },
           ].map((c) => (
@@ -275,7 +279,7 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              ARCA — Categorías y valores del monotributo
+              ARCA: categorías y valores del monotributo
             </a>
           </li>
           <li>
@@ -286,13 +290,13 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              ARCA — Jubilación y obra social del monotributo
+              ARCA: jubilación y obra social del monotributo
             </a>
           </li>
         </ul>
         <p className="text-xs text-zinc-400">
           Escalas vigentes desde {VIGENCIA.desde}. Última verificación: {VIGENCIA.consultadoEl}.
-          Esta guía es informativa; para tu caso puntual consultá con tu contador o con ARCA.
+          Esta guía es informativa. Para tu caso puntual, consultá con tu contador o con ARCA.
         </p>
         <p className="text-sm text-zinc-600">
           ¿Y si te pasás del tope? Leé{" "}

@@ -6,9 +6,9 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { ORGANIZACION, articleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "¿El aguinaldo paga impuesto a las Ganancias en 2026?",
+  title: "¿El aguinaldo paga Ganancias en 2026?",
   description:
-    "Solo si tu sueldo es alto — y no se retiene todo junto en junio: el SAC se prorratea mes a mes. Desde qué sueldo te alcanza Ganancias y cómo verlo en tu recibo.",
+    "Solo si tu sueldo es alto, y no se retiene todo junto: el SAC se prorratea mes a mes. Desde qué sueldo te alcanza y cómo verlo en tu recibo.",
   alternates: { canonical: "/blog/aguinaldo-paga-ganancias" },
   openGraph: {
     type: "article",
@@ -27,19 +27,19 @@ const PUBLICADO = "12 de junio de 2026";
 const faqs = [
   {
     q: "¿Me descuentan Ganancias del aguinaldo en junio?",
-    a: "No todo junto. El régimen de retención prorratea una doceava parte del SAC en cada mes del año, así que el impacto del aguinaldo ya viene repartido en tus recibos. En junio podés ver una retención algo mayor, pero no el impuesto de toda la cuota de una sola vez.",
+    a: "No todo junto. El régimen de retención reparte una doceava parte del aguinaldo en cada mes del año, así que su efecto ya viene distribuido en tus recibos. En junio o diciembre podés ver una retención un poco más alta, pero no el impuesto de toda la cuota de una vez.",
   },
   {
     q: "¿Desde qué sueldo se paga Ganancias en 2026?",
-    a: "Con las deducciones del período enero-junio 2026 publicadas por ARCA, un empleado soltero sin deducciones extra empieza a sufrir retenciones con sueldos brutos de alrededor de $3.000.000 mensuales; con cónyuge e hijos a cargo el piso es más alto. El número exacto depende de tus deducciones cargadas en el SIRADIG.",
+    a: "Con las deducciones de enero a junio 2026 que publicó ARCA, un empleado soltero sin deducciones extra empieza a tener retenciones con sueldos brutos de alrededor de $3.000.000 por mes. Con cónyuge e hijos a cargo, el piso es más alto. El número exacto depende de las deducciones que cargaste en el SIRADIG.",
   },
   {
     q: "¿El aguinaldo de los jubilados paga Ganancias?",
-    a: "Los jubilados tienen su propio esquema de deducciones (deducción específica). Solo los haberes más altos quedan alcanzados; la enorme mayoría de las jubilaciones no sufre retención por el medio aguinaldo.",
+    a: "Los jubilados tienen sus propias deducciones (la deducción específica). Solo pagan los haberes más altos: a la gran mayoría de los jubilados no les retienen nada por el medio aguinaldo.",
   },
   {
     q: "¿Cómo sé si me retuvieron bien?",
-    a: "Mirá en tu recibo el concepto 'Retención Impuesto a las Ganancias' y compará tus deducciones con lo que declaraste en SIRADIG (F.572 web). Si te retuvieron de más, la devolución llega con la liquidación anual (abril-mayo del año siguiente) o al actualizar el SIRADIG.",
+    a: "Buscá en tu recibo el concepto 'Retención Impuesto a las Ganancias' y compará tus deducciones con lo que declaraste en el SIRADIG (F.572 web). Si te retuvieron de más, te lo devuelven con la liquidación anual (abril o mayo del año siguiente) o cuando actualizás el SIRADIG.",
   },
 ];
 
@@ -49,9 +49,9 @@ export default function Post() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "¿El aguinaldo paga impuesto a las Ganancias en 2026?",
+        titulo: "¿El aguinaldo paga Ganancias en 2026?",
         descripcion:
-          "El aguinaldo es ganancia gravada, pero solo lo sienten los sueldos altos y no se retiene todo junto en junio: el SAC se prorratea mes a mes durante el año.",
+          "El aguinaldo es ganancia gravada, pero solo lo pagan los sueldos altos y no se retiene todo junto: el SAC se reparte mes a mes durante el año.",
         url: "/blog/aguinaldo-paga-ganancias",
         publicado: "2026-06-12",
         modificado: "2026-06-20",
@@ -71,21 +71,21 @@ export default function Post() {
           ¿El aguinaldo paga impuesto a las Ganancias en 2026?
         </h1>
         <p className="text-zinc-600">
-          Respuesta corta: <strong>el aguinaldo es ganancia gravada, pero solo lo sienten los
-          sueldos altos</strong> — con las deducciones de enero-junio 2026, la retención
-          aparece alrededor de los $3.000.000 brutos mensuales para un soltero sin deducciones.
-          Y no se descuenta todo junto en junio: se prorratea durante el año.
+          En corto: <strong>el aguinaldo es ganancia gravada, pero solo lo pagan los sueldos
+          altos</strong>. Con las deducciones de enero a junio 2026, la retención aparece cerca de
+          los $3.000.000 brutos por mes para una persona soltera sin deducciones. Y no se descuenta
+          todo junto: se reparte durante el año.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={PUBLICADO}>
         <p>
           <strong>El aguinaldo sí es ganancia gravada, pero solo lo pagan los sueldos altos.</strong>{" "}
-          Con las deducciones de enero-junio 2026 (tablas de ARCA), un soltero sin deducciones
-          recién empieza a sufrir retención alrededor de los <strong>$3.000.000 brutos
-          mensuales</strong>; con cónyuge e hijos a cargo el piso sube. Y no te lo descuentan todo
-          junto en junio: el régimen <strong>prorratea una doceava parte del SAC en cada mes</strong>,
-          así que el impacto ya viene repartido en tus recibos. ¿Cuánto te queda del aguinaldo en
+          Con las deducciones de enero a junio 2026 (tablas de ARCA), una persona soltera sin
+          deducciones recién empieza a tener retención cerca de los <strong>$3.000.000 brutos
+          por mes</strong>. Con cónyuge e hijos a cargo, el piso sube. Y no te lo descuentan todo
+          junto: el régimen <strong>reparte una doceava parte del aguinaldo en cada mes</strong>,
+          así que el efecto ya viene distribuido en tus recibos. ¿Cuánto te queda del aguinaldo en
           mano? Mirá la tabla en{" "}
           <Link href="/aguinaldo/neto">aguinaldo: bruto o neto</Link>.
         </p>
@@ -95,18 +95,25 @@ export default function Post() {
         <h2 className="text-xl font-bold text-zinc-900">Cómo funciona el prorrateo del SAC</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            El régimen de retención para empleados establece que el empleador compute{" "}
-            <strong>una doceava parte del aguinaldo en cada mes del año</strong>, en lugar de
-            sumar toda la cuota al sueldo de junio o diciembre. El objetivo es que el SAC no te
-            &laquo;dispare&raquo; de tramo en la escala del impuesto justo el mes que lo
-            cobrás.
+            El régimen de retención para empleados dice que el empleador cuente{" "}
+            <strong>una doceava parte del aguinaldo en cada mes del año</strong>, en vez de sumar
+            toda la cuota al sueldo de junio o diciembre. Así el aguinaldo no te &laquo;dispara&raquo;
+            a un tramo más alto del impuesto justo el mes que lo cobrás.
           </p>
           <p>
-            En la práctica: si estás alcanzado por Ganancias, una parte del impuesto de tu
-            aguinaldo ya se viene reteniendo mes a mes en tus recibos. En la liquidación anual
-            (la hace tu empleador en abril-mayo del año siguiente) se ajusta cualquier
-            diferencia entre lo retenido y lo que correspondía: si te retuvieron de más, hay
-            devolución.
+            En la práctica: si pagás Ganancias, una parte del impuesto de tu aguinaldo ya te la
+            vienen reteniendo mes a mes en los recibos. En la liquidación anual (la hace tu
+            empleador en abril o mayo del año siguiente) se corrige cualquier diferencia entre lo
+            retenido y lo que correspondía. Si te retuvieron de más, te lo devuelven. Para ver
+            cuánto pagás en total, usá la{" "}
+            <Link href="/ganancias" className="text-emerald-700 underline">
+              calculadora de Ganancias
+            </Link>{" "}
+            o pedí el{" "}
+            <Link href="/informes/ganancias" className="text-emerald-700 underline">
+              informe de Ganancias con tu caso
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -125,8 +132,8 @@ export default function Post() {
               <tr className="border-b border-zinc-100">
                 <td className="px-4 py-2.5">Sueldo bruto hasta ~$2.900.000</td>
                 <td className="px-4 py-2.5">
-                  <strong className="text-emerald-700">No</strong> — por debajo del piso, el SAC
-                  no genera retención
+                  <strong className="text-emerald-700">No</strong>: por debajo del piso, el
+                  aguinaldo no tiene retención
                 </td>
               </tr>
               <tr className="border-b border-zinc-100">
@@ -147,9 +154,9 @@ export default function Post() {
           </table>
         </div>
         <p className="text-xs text-zinc-400">
-          Los valores exactos surgen de las tablas semestrales de deducciones y escalas del art.
-          94 que publica ARCA (se actualizan por IPC en enero y julio). El piso citado es una
-          referencia para el período enero-junio 2026: tu caso depende de tus deducciones.
+          Los valores exactos salen de las tablas semestrales de deducciones y escalas del art. 94
+          que publica ARCA (se actualizan por IPC en enero y julio). El piso es una referencia para
+          enero a junio 2026: tu caso depende de tus deducciones.
         </p>
       </section>
 
@@ -158,10 +165,10 @@ export default function Post() {
           Y al revés: el aguinaldo de los plazos fijos no paga nada
         </h2>
         <p className="text-zinc-600">
-          Dato aparte que confunde a muchos: si ponés tu aguinaldo en un plazo fijo, los{" "}
-          <strong>intereses están exentos de Ganancias</strong> para personas humanas (art. 26
-          inc. h de la ley, que desde los ejercicios 2026 ya no distingue moneda). Lo que
-          ganás ahí no tributa ni se informa en el recibo.{" "}
+          Un dato aparte que confunde a muchos: si ponés tu aguinaldo en un plazo fijo, los{" "}
+          <strong>intereses no pagan Ganancias</strong> para personas humanas (art. 26 inc. h de
+          la ley, que desde los ejercicios 2026 ya no distingue moneda). Lo que ganás ahí no paga
+          impuesto ni aparece en el recibo.{" "}
           <Link href="/plazo-fijo" className="text-emerald-700 underline">
             Calculá cuánto rinde
           </Link>
@@ -197,7 +204,7 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              ARCA — Ganancias para empleados y jubilados: deducciones y tablas vigentes
+              ARCA: Ganancias para empleados y jubilados, deducciones y tablas vigentes
             </a>
           </li>
           <li>

@@ -20,7 +20,7 @@ export default function ContactoPage() {
         <a href="mailto:manunv97@gmail.com" className="text-emerald-700 underline">
           manunv97@gmail.com
         </a>{" "}
-        y te respondemos a la brevedad.
+        y te respondemos lo antes posible.
       </p>
       <p>
         Si querés una copia de tus datos o que borremos tu cuenta, escribinos desde el mail de la
@@ -31,8 +31,8 @@ export default function ContactoPage() {
         .
       </p>
       <p className="text-sm text-zinc-500">
-        Si tu consulta es sobre tu situación impositiva particular, te recomendamos hablar con un
-        contador matriculado: nosotros hacemos herramientas, no asesoramiento profesional.
+        Si tu consulta es sobre tus impuestos en particular, hablá con un contador matriculado:
+        nosotros hacemos herramientas, no damos asesoramiento profesional.
       </p>
     </article>
   );

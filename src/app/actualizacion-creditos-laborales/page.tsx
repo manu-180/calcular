@@ -46,8 +46,9 @@ const COSTO_MENSUAL_PCT =
 const CUOTAS_PYME_SIN_AJUSTE = cuotasSinAjuste(EJEMPLO.total, CUOTAS_PYME);
 
 export const metadata: Metadata = {
-  title: "Actualización de créditos laborales: IPC + 3% anual (art. 276 LCT)",
-  description: `Desde el ${VIGENCIA_ART_276} la ley dice cómo se actualiza un crédito laboral: IPC Nivel General del INDEC más 3% anual, desde que la suma es debida hasta el pago. Calculadora con la serie oficial hasta ${nombrePeriodo(ULTIMO_PERIODO)}, el desfasaje del IPC que nadie descuenta y los topes del art. 277 (cuota litis 20%, costas 25%, pago en cuotas).`,
+  title: "Actualización de créditos laborales: IPC + 3% anual",
+  description:
+    "Calculá cuánto vale hoy una deuda laboral con el IPC del INDEC más 3% anual (art. 276 LCT), con la serie oficial y los topes del art. 277.",
   alternates: { canonical: "/actualizacion-creditos-laborales" },
   openGraph: {
     images: [
@@ -63,42 +64,42 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Cómo se actualiza hoy un crédito laboral?",
-    a: `Por ley, y desde el ${VIGENCIA_ART_276}: el art. 276 de la Ley de Contrato de Trabajo, con el texto que le puso el art. 54 de la Ley 27.802, dice que los créditos de las relaciones individuales de trabajo se actualizan por la variación del Índice de Precios al Consumidor Nivel General del INDEC, con más una tasa de interés del ${formatPct(TASA_PURA_ANUAL * 100, 0)} anual, desde que cada suma es debida y hasta el momento del efectivo pago. Antes de esa reforma no había una regla legal: cada fuero aplicaba la tasa que decidía su jurisprudencia, y por eso el mismo crédito daba montos muy distintos según dónde tramitara. Cualquier calculadora o nota anterior a marzo de 2026 está explicando el régimen anterior.`,
+    a: `Por ley, desde el ${VIGENCIA_ART_276}. El art. 276 de la Ley de Contrato de Trabajo (con el texto que le dio el art. 54 de la Ley 27.802) dice que los créditos laborales se actualizan por el Índice de Precios al Consumidor Nivel General del INDEC, más un interés del ${formatPct(TASA_PURA_ANUAL * 100, 0)} anual. Corre desde que cada suma se debe hasta que se paga. Antes de la reforma no había una regla en la ley: cada fuero usaba la tasa que decidía su jurisprudencia, y el mismo crédito daba montos muy distintos según dónde tramitara. Cualquier calculadora o nota anterior a marzo de 2026 explica el régimen viejo.`,
   },
   {
     q: "¿El 3% anual se calcula sobre el monto original o sobre el actualizado?",
-    a: "Sobre el actualizado. La norma enumera en ese orden —«serán actualizados por la variación… con más una tasa de interés del 3% anual»—, así que primero se repotencia el capital por IPC y sobre ese valor corre el interés. Es la única lectura que le da sentido al número: un 3% anual sobre un capital nominal licuado por la inflación no compensaría nada. En la práctica se lo llama tasa pura o interés puro, porque la depreciación monetaria ya está cubierta por el índice.",
+    a: "Sobre el actualizado. La norma lo dice en ese orden («serán actualizados por la variación… con más una tasa de interés del 3% anual»): primero se actualiza el capital por IPC y sobre ese valor corre el interés. Es la única lectura que tiene sentido, porque un 3% anual sobre un capital comido por la inflación no compensaría nada. Por eso se lo llama tasa pura o interés puro: la inflación ya la cubre el índice.",
   },
   {
     q: "¿El 3% se capitaliza?",
-    a: `La ley no lo dice, y sin norma que lo autorice el interés no se capitaliza: por eso el número principal de esta página es el interés simple. Igual mostramos el resultado con capitalización anual al lado, porque es el mismo texto leído con la otra hipótesis y la diferencia es plata. En el ejemplo de ${formatARS(EJEMPLO_MONTO, 0)} debidos en ${nombrePeriodo(EJEMPLO_DESDE)} la brecha entre las dos lecturas es de ${formatARS(EJEMPLO.totalCompuesto - EJEMPLO.total, 2)}: existe, pero es chica al lado de lo que mueve el índice.`,
+    a: `La ley no lo dice, y sin una norma que lo autorice el interés no se capitaliza. Por eso el número principal de esta página es con interés simple. Igual mostramos al lado el resultado con capitalización anual, porque es el mismo texto leído de la otra forma y la diferencia es plata. En el ejemplo de ${formatARS(EJEMPLO_MONTO, 0)} debidos en ${nombrePeriodo(EJEMPLO_DESDE)}, la diferencia entre las dos lecturas es de ${formatARS(EJEMPLO.totalCompuesto - EJEMPLO.total, 2)}. Existe, pero es chica al lado de lo que mueve el índice.`,
   },
   {
     q: "El IPC se publica con atraso. ¿Hasta cuándo se puede actualizar realmente?",
-    a: `Hasta el último índice publicado, que hoy es el de ${nombrePeriodo(ULTIMO_PERIODO)}. El INDEC publica cada mes alrededor del día 10 al 15 del mes siguiente, así que un pago que se hace hoy nunca se puede repotenciar «hasta hoy»: siempre quedan uno o dos meses de inflación sin cubrir. Es un desfasaje estructural que ninguna liquidación puede evitar y que casi ninguna calculadora te muestra. El interés del 3% anual, en cambio, corre por tiempo transcurrido y sí llega hasta la fecha real del pago.`,
+    a: `Hasta el último índice publicado, que hoy es el de ${nombrePeriodo(ULTIMO_PERIODO)}. El INDEC publica cada mes entre el día 10 y el 15 del mes siguiente. Entonces, un pago que se hace hoy nunca se puede actualizar «hasta hoy»: siempre quedan uno o dos meses de inflación afuera. Ninguna liquidación lo puede evitar, y casi ninguna calculadora te lo muestra. El interés del 3% anual, en cambio, corre por el tiempo que pasa y sí llega hasta el día del pago.`,
   },
   {
     q: "¿Se puede actualizar un crédito anterior a 2017?",
-    a: `Con este índice, no. La serie del IPC Nacional Nivel General del INDEC —la que nombra el artículo— arranca en ${nombrePeriodo(PRIMER_PERIODO)}. Para un crédito anterior habría que empalmar series distintas (IPC GBA, índices provinciales, IPIM), y eso ya no es aplicar la norma: es elegir un criterio, que es exactamente lo que la reforma vino a sacar de la discusión. Esta calculadora prefiere decírtelo antes que darte un número inventado.`,
+    a: `Con este índice, no. La serie del IPC Nacional Nivel General del INDEC (la que nombra el artículo) arranca en ${nombrePeriodo(PRIMER_PERIODO)}. Para un crédito anterior habría que unir series distintas (IPC GBA, índices provinciales, IPIM). Eso ya no es aplicar la norma: es elegir un criterio, que es justo lo que la reforma quiso sacar de la discusión. Preferimos decírtelo antes que darte un número inventado.`,
   },
   {
     q: "¿Cuánto cuesta cada mes de demora?",
     a:
       COSTO_MENSUAL_PCT === null
         ? "Depende de la inflación del mes más la doceava parte del 3% anual."
-        : `Con el último IPC publicado —${formatPct(MENSUAL!, 1)} en ${nombrePeriodo(ULTIMO_PERIODO)}— cada mes que pasa suma alrededor de ${formatPct(COSTO_MENSUAL_PCT, 2)} al crédito: la inflación del mes más la doceava parte del ${formatPct(TASA_PURA_ANUAL * 100, 0)} anual. Es la cuenta que decide si conviene aceptar una propuesta hoy o seguir: una oferta que no supera al crédito actualizado del mes siguiente está ofreciendo menos de lo que la ley ya reconoce.`,
+        : `Con el último IPC publicado (${formatPct(MENSUAL!, 1)} en ${nombrePeriodo(ULTIMO_PERIODO)}), cada mes que pasa le suma cerca de ${formatPct(COSTO_MENSUAL_PCT, 2)} al crédito: la inflación del mes más la doceava parte del ${formatPct(TASA_PURA_ANUAL * 100, 0)} anual. Con esa cuenta decidís si te conviene aceptar una propuesta hoy o seguir. Una oferta que no supera al crédito actualizado del mes siguiente te ofrece menos de lo que la ley ya te reconoce.`,
   },
   {
     q: "¿Cuánto puede quedarse el abogado?",
-    a: `Como máximo el ${formatPct(CUOTA_LITIS_MAXIMA * 100, 0)} del monto del proceso: lo fija el art. 277 de la LCT, también sustituido por la Ley 27.802 (art. 56). Además exige ratificación personal en el juicio y homologación judicial; sin esos dos requisitos el pacto es nulo de pleno derecho. Aparte corren las costas: el mismo artículo topea la responsabilidad por costas de primera o única instancia —honorarios de todo tipo incluidos— en el ${formatPct(COSTAS_MAXIMAS * 100, 0)} del monto de la sentencia, y si las regulaciones lo superan el juez prorratea entre los beneficiarios.`,
+    a: `Como máximo el ${formatPct(CUOTA_LITIS_MAXIMA * 100, 0)} del monto del proceso. Lo fija el art. 277 de la LCT, que también cambió con la Ley 27.802 (art. 56). Además, el pacto tiene que ratificarse en persona en el juicio y homologarlo el juez; sin esas dos cosas es nulo. Las costas van aparte: el mismo artículo pone un tope a las costas de primera o única instancia (con todos los honorarios incluidos) del ${formatPct(COSTAS_MAXIMAS * 100, 0)} del monto de la sentencia. Si los honorarios regulados lo superan, el juez los reparte en proporción.`,
   },
   {
     q: "¿Pueden pagarme la sentencia en cuotas?",
-    a: `Sí. El art. 277 permite cancelar la sentencia en hasta ${CUOTAS_GRANDES_EMPRESAS} cuotas mensuales consecutivas cuando el condenado es una gran empresa, y en hasta ${CUOTAS_PYME} cuando es una micro, pequeña o mediana empresa. Y acá hay una asimetría del texto que conviene mirar: la norma aclara «ajustadas conforme la pauta establecida en el artículo 276» para el supuesto de las ${CUOTAS_GRANDES_EMPRESAS} cuotas, y no repite esa frase para el de las ${CUOTAS_PYME}. Quién paga esa diferencia depende de cómo se interprete: ${CUOTAS_PYME_SIN_AJUSTE ? `si ${CUOTAS_PYME} cuotas no se ajustaran, con una inflación mensual como la última publicada el trabajador cobraría en términos reales un ${formatPct(CUOTAS_PYME_SIN_AJUSTE.perdidaPct, 0)} menos que el monto de la sentencia` : "sin ajuste, la inflación del período se la come el acreedor"}.`,
+    a: `Sí. El art. 277 permite pagar la sentencia en hasta ${CUOTAS_GRANDES_EMPRESAS} cuotas mensuales seguidas si quien perdió es una gran empresa, y en hasta ${CUOTAS_PYME} si es una micro, pequeña o mediana empresa. Hay una diferencia en el texto que conviene mirar: para las ${CUOTAS_GRANDES_EMPRESAS} cuotas aclara «ajustadas conforme la pauta establecida en el artículo 276», y para las ${CUOTAS_PYME} no repite esa frase. Quién paga esa diferencia depende de cómo se interprete: ${CUOTAS_PYME_SIN_AJUSTE ? `si las ${CUOTAS_PYME} cuotas no se ajustaran, con una inflación mensual como la última publicada, el trabajador cobraría en valores reales un ${formatPct(CUOTAS_PYME_SIN_AJUSTE.perdidaPct, 0)} menos que el monto de la sentencia` : "sin ajuste, la inflación del período la pierde quien cobra"}.`,
   },
   {
     q: "¿Qué pasa con los juicios que ya estaban en trámite en marzo de 2026?",
-    a: `La misma ley tiene una regla especial para ellos. El art. 55 de la Ley 27.802 dice que en los juicios en trámite y sin sentencia definitiva al ${VIGENCIA_ART_276} los créditos se actualizan con intereses a la tasa pasiva que determine el BCRA, con un tope y un piso: el resultado no puede superar la cuenta de IPC más ${formatPct(TASA_PURA_ANUAL * 100, 0)} anual ni quedar por debajo del 67% de esa cuenta. Esta calculadora muestra esa cuenta, que es el tope; no calcula la tasa pasiva. Es una norma nueva y su aplicación se discute: al menos una sala de la Cámara Nacional de Apelaciones del Trabajo declaró inconstitucional el art. 55 en un caso y aplicó el art. 276. Qué regla rige en cada expediente lo decide el juez de la causa.`,
+    a: `La misma ley tiene una regla especial para esos casos. El art. 55 de la Ley 27.802 dice que en los juicios en trámite y sin sentencia definitiva al ${VIGENCIA_ART_276}, los créditos se actualizan con la tasa pasiva que fije el BCRA, con un techo y un piso: el resultado no puede pasar la cuenta de IPC más ${formatPct(TASA_PURA_ANUAL * 100, 0)} anual, ni quedar por debajo del 67% de esa cuenta. Esta calculadora muestra esa cuenta, que es el techo; no calcula la tasa pasiva. La norma es nueva y se discute: al menos una sala de la Cámara Nacional de Apelaciones del Trabajo declaró inconstitucional el art. 55 en un caso y aplicó el art. 276. Qué regla rige en cada expediente lo decide el juez de la causa.`,
   },
 ];
 
@@ -118,7 +119,7 @@ export default function ActualizacionCreditosPage() {
         inLanguage: "es-AR",
       },
       datasetSchema({
-        nombre: "Actualización de créditos laborales — art. 276 LCT (IPC + 3% anual)",
+        nombre: "Actualización de créditos laborales: art. 276 LCT (IPC + 3% anual)",
         descripcion: `Cálculo de la actualización de créditos laborales según el art. 276 de la Ley 20.744 con el texto del art. 54 de la Ley 27.802 (B.O. ${VIGENCIA_ART_276}): coeficiente del IPC Nacional Nivel General del INDEC entre el mes en que la suma se hizo debida y el del efectivo pago, más una tasa de interés del ${formatPct(TASA_PURA_ANUAL * 100, 0)} anual. Serie del IPC disponible desde ${nombrePeriodo(PRIMER_PERIODO)} hasta ${nombrePeriodo(ULTIMO_PERIODO)}.`,
         url: "/actualizacion-creditos-laborales",
         modificado: `${ULTIMO_PERIODO}-01`,
@@ -126,7 +127,7 @@ export default function ActualizacionCreditosPage() {
         fuenteUrl: CREDITOS_FUENTES.lista[0].url,
       }),
       articleSchema({
-        titulo: "Actualización de créditos laborales: IPC + 3% anual (art. 276 LCT)",
+        titulo: "Actualización de créditos laborales: IPC + 3% anual",
         descripcion:
           "Cómo se actualiza hoy un crédito laboral por ley, sobre qué capital corre el 3%, hasta dónde llega realmente el IPC publicado y los topes del art. 277.",
         url: "/actualizacion-creditos-laborales",
@@ -156,23 +157,23 @@ export default function ActualizacionCreditosPage() {
           activa, actas de la Cámara, CER más un porcentaje. Desde el {VIGENCIA_ART_276} lo dice la
           ley, en una sola oración del art. 276 de la LCT:{" "}
           <strong>IPC Nivel General del INDEC más {formatPct(TASA_PURA_ANUAL * 100, 0)} anual</strong>,
-          desde que cada suma es debida hasta el efectivo pago. Acá se aplica ese texto con la serie
-          oficial del INDEC, y se muestra lo que la fórmula no cubre.
+          desde que cada suma se debe hasta que se paga. Acá aplicamos ese texto con la serie
+          oficial del INDEC y te mostramos lo que la fórmula no cubre.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={CREDITOS_FUENTES.consultadoEl}>
         <p>
-          {formatARS(EJEMPLO_MONTO, 0)} que se hicieron debidos en {nombrePeriodo(EJEMPLO_DESDE)}{" "}
-          valen hoy <strong>{formatARS(EJEMPLO.total, 2)}</strong>:{" "}
-          {formatARS(EJEMPLO.capitalActualizado, 2)} de capital repotenciado por el IPC —el
+          {formatARS(EJEMPLO_MONTO, 0)} que se deben desde {nombrePeriodo(EJEMPLO_DESDE)} valen hoy{" "}
+          <strong>{formatARS(EJEMPLO.total, 2)}</strong>:{" "}
+          {formatARS(EJEMPLO.capitalActualizado, 2)} de capital actualizado por el IPC (el
           coeficiente del tramo es{" "}
-          {EJEMPLO.coeficiente.toLocaleString("es-AR", { maximumFractionDigits: 4 })}— más{" "}
-          {formatARS(EJEMPLO.interesPuro, 2)} del {formatPct(TASA_PURA_ANUAL * 100, 0)} anual. Es{" "}
+          {EJEMPLO.coeficiente.toLocaleString("es-AR", { maximumFractionDigits: 4 })}) más{" "}
+          {formatARS(EJEMPLO.interesPuro, 2)} del {formatPct(TASA_PURA_ANUAL * 100, 0)} anual. Son{" "}
           <strong>
             {EJEMPLO.multiplicador.toLocaleString("es-AR", { maximumFractionDigits: 2 })} veces
           </strong>{" "}
-          el nominal en {EJEMPLO.meses} meses. La letra chica que decide casos:{" "}
+          el monto original en {EJEMPLO.meses} meses. Ojo con un detalle que decide casos:{" "}
           <strong>la actualización llega hasta el último IPC publicado</strong> (
           {nombrePeriodo(ULTIMO_PERIODO)}), nunca hasta el día del pago.
         </p>
@@ -185,7 +186,7 @@ export default function ActualizacionCreditosPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Lo que dice el artículo, entero</h2>
         <blockquote className="rounded-xl border-l-4 border-emerald-500 bg-emerald-50/40 px-4 py-3 text-sm text-zinc-700">
-          <p className="font-medium text-zinc-800">Art. 276 — Ley de Contrato de Trabajo 20.744</p>
+          <p className="font-medium text-zinc-800">Art. 276 de la Ley de Contrato de Trabajo 20.744</p>
           <p className="mt-2 italic">{CREDITOS_TEXTOS.art276}</p>
           <p className="mt-2 text-xs text-zinc-500">
             Artículo sustituido por el art. 54 de la Ley 27.802 (B.O. {VIGENCIA_ART_276}). Vigencia:
@@ -193,12 +194,12 @@ export default function ActualizacionCreditosPage() {
           </p>
         </blockquote>
         <p className="text-zinc-600">
-          Son cuatro decisiones metidas en una oración, y cada una cambia el número: <strong>qué
+          Son cuatro decisiones en una oración, y cada una cambia el número: <strong>qué
           índice</strong> (el IPC Nivel General del INDEC, no el de tu provincia ni el mayorista),{" "}
-          <strong>qué tasa</strong> ({formatPct(TASA_PURA_ANUAL * 100, 0)} anual, que es una tasa
-          pura porque la inflación ya la cubre el índice), <strong>desde cuándo</strong> (desde que
-          cada suma es debida, no desde la demanda ni desde la sentencia) y{" "}
-          <strong>hasta cuándo</strong> (el efectivo pago, no la fecha de la liquidación).
+          <strong>qué tasa</strong> ({formatPct(TASA_PURA_ANUAL * 100, 0)} anual, una tasa pura
+          porque la inflación ya la cubre el índice), <strong>desde cuándo</strong> (desde que cada
+          suma se debe, no desde la demanda ni desde la sentencia) y{" "}
+          <strong>hasta cuándo</strong> (hasta el pago, no hasta la fecha de la liquidación).
         </p>
       </section>
 
@@ -207,11 +208,11 @@ export default function ActualizacionCreditosPage() {
           El desfasaje del IPC: por qué nunca se actualiza «hasta hoy»
         </h2>
         <p className="text-zinc-600">
-          El INDEC publica el IPC de cada mes alrededor del día 10 al 15 del mes siguiente. Hoy el
-          último índice disponible es el de <strong>{nombrePeriodo(ULTIMO_PERIODO)}</strong>. Eso
-          significa que un pago que se concreta este mes se repotencia con un índice que ya tiene
-          semanas de atraso, y esa inflación no vuelve nunca: no hay un índice futuro que la
-          recupere retroactivamente sobre un crédito ya cancelado.
+          El INDEC publica el IPC de cada mes entre el día 10 y el 15 del mes siguiente. Hoy el
+          último índice disponible es el de <strong>{nombrePeriodo(ULTIMO_PERIODO)}</strong>. Un
+          pago que se hace este mes se actualiza con un índice que ya tiene semanas de atraso, y esa
+          inflación no se recupera nunca: una vez pagado el crédito, ningún índice futuro la
+          compensa.
         </p>
         {COSTO_MENSUAL_PCT !== null && (
           <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
@@ -231,9 +232,13 @@ export default function ActualizacionCreditosPage() {
           </div>
         )}
         <p className="text-sm text-zinc-500">
-          Ese número es el que conviene tener a mano frente a una propuesta de acuerdo: una oferta
-          que no le gana al crédito actualizado del mes que viene está ofreciendo menos de lo que la
-          ley ya reconoce. La inflación mes a mes, con la serie completa, está en{" "}
+          Tené ese número a mano cuando te hagan una propuesta de acuerdo. Una oferta que no le gana
+          al crédito actualizado del mes que viene te ofrece menos de lo que la ley ya te reconoce.
+          Para llevar la cuenta de tu caso completo, con cada rubro desde su fecha, está el{" "}
+          <Link href="/informes/credito-laboral" className="font-medium text-emerald-700 hover:underline">
+            informe de crédito laboral
+          </Link>
+          . La inflación mes a mes, con la serie completa, está en{" "}
           <Link href="/inflacion" className="font-medium text-emerald-700 hover:underline">
             la calculadora de inflación
           </Link>
@@ -246,8 +251,8 @@ export default function ActualizacionCreditosPage() {
           El art. 277: cuánto se descuenta antes de que llegue a tus manos
         </h2>
         <p className="text-zinc-600">
-          La misma ley sustituyó el artículo siguiente, y ahí están los tres números que definen
-          cuánto del crédito actualizado termina en la cuenta del trabajador.
+          La misma ley cambió el artículo siguiente. Ahí están los tres números que definen cuánto
+          del crédito actualizado llega a la cuenta del trabajador.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -296,12 +301,11 @@ export default function ActualizacionCreditosPage() {
         </div>
 
         <div className="rounded-xl border border-amber-200 bg-amber-50/60 p-4 text-sm text-amber-900">
-          <p className="font-semibold">Una asimetría del texto que casi nadie señala</p>
+          <p className="font-semibold">Una diferencia del texto que casi nadie marca</p>
           <p className="mt-2">
-            Para las {CUOTAS_GRANDES_EMPRESAS} cuotas de las grandes empresas la norma dice
-            expresamente que van «ajustadas conforme la pauta establecida en el artículo 276». En la
-            oración siguiente, la que habilita {CUOTAS_PYME} cuotas para las MiPyME, esa frase no
-            aparece.
+            Para las {CUOTAS_GRANDES_EMPRESAS} cuotas de las grandes empresas, la norma dice que van
+            «ajustadas conforme la pauta establecida en el artículo 276». En la oración siguiente,
+            la que permite {CUOTAS_PYME} cuotas para las MiPyME, esa frase no está.
           </p>
           {CUOTAS_PYME_SIN_AJUSTE && (
             <p className="mt-2">
@@ -309,13 +313,13 @@ export default function ActualizacionCreditosPage() {
               publicada ({formatPct(CUOTAS_PYME_SIN_AJUSTE.mensualUsadaPct, 1)}), la última cuota
               valdría en términos reales{" "}
               <strong>{formatARS(CUOTAS_PYME_SIN_AJUSTE.valorRealUltimaCuota, 0)}</strong> en vez de{" "}
-              {formatARS(CUOTAS_PYME_SIN_AJUSTE.valorCuotaNominal, 0)}, y el cobro total se licuaría
-              un <strong>{formatPct(CUOTAS_PYME_SIN_AJUSTE.perdidaPct, 0)}</strong> — más de lo que
-              paga el {formatPct(TASA_PURA_ANUAL * 100, 0)} anual en tres años.
+              {formatARS(CUOTAS_PYME_SIN_AJUSTE.valorCuotaNominal, 0)}, y el cobro total perdería un{" "}
+              <strong>{formatPct(CUOTAS_PYME_SIN_AJUSTE.perdidaPct, 0)}</strong> de su valor. Es más
+              de lo que paga el {formatPct(TASA_PURA_ANUAL * 100, 0)} anual en tres años.
             </p>
           )}
           <p className="mt-2 text-xs">
-            No es una conclusión jurídica: es lo que dice el texto, transcripto abajo, para que lo
+            No es una conclusión jurídica: es lo que dice el texto, que copiamos abajo para que lo
             leas vos. Cómo se resuelve esa diferencia lo van a decidir los tribunales.
           </p>
         </div>
@@ -339,9 +343,8 @@ export default function ActualizacionCreditosPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Antes de actualizar, hay que tener el monto</h2>
         <p className="text-zinc-600">
-          El art. 276 dice cómo crece un crédito, no cuál es. Si todavía estás en la etapa de
-          calcular cuánto te corresponde, estas tres calculadoras dan el número que después se trae
-          acá:
+          El art. 276 dice cómo crece un crédito, no cuánto es. Si todavía estás calculando cuánto
+          te corresponde, estas tres calculadoras te dan el número que después traés acá:
         </p>
         <div className="grid gap-3 sm:grid-cols-3">
           <Link
@@ -398,17 +401,25 @@ export default function ActualizacionCreditosPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página es informativa y aplica el texto ACTUALIZADO de la Ley de Contrato de Trabajo
-          publicado en InfoLEG sobre la serie oficial del IPC Nacional del INDEC. No es una
-          liquidación judicial: en un expediente cada rubro se actualiza desde su propia fecha de
-          exigibilidad, pueden intervenir topes, compensaciones y depósitos parciales, y la
-          aplicación del texto nuevo a tramos anteriores al {VIGENCIA_ART_276} está en discusión.
+          Esta página es informativa. Aplica el texto ACTUALIZADO de la Ley de Contrato de Trabajo
+          publicado en InfoLEG a la serie oficial del IPC Nacional del INDEC. No es una liquidación
+          judicial: en un expediente cada rubro se actualiza desde su propia fecha, puede haber
+          topes, compensaciones y depósitos parciales, y se discute si el texto nuevo vale para
+          tramos anteriores al {VIGENCIA_ART_276}. Si tenés un juicio en marcha, mirá también{" "}
+          <Link href="/caducidad-de-instancia-laboral" className="text-emerald-700 hover:underline">
+            los plazos de caducidad de instancia
+          </Link>{" "}
+          y{" "}
+          <Link href="/honorarios-periciales" className="text-emerald-700 hover:underline">
+            los honorarios de los peritos
+          </Link>
+          .
           Texto legal consultado el {CREDITOS_FUENTES.consultadoEl}. Serie del IPC hasta{" "}
           {nombrePeriodo(ULTIMO_PERIODO)}.
         </p>

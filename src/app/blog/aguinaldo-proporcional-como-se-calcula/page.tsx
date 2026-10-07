@@ -12,10 +12,9 @@ import { formatARS } from "@/lib/formato";
 const PUBLICADO = "23 de junio de 2026";
 const PUBLICADO_ISO = "2026-06-23";
 
-const titulo =
-  "Aguinaldo proporcional 2026: cómo se calcula si no trabajaste todo el semestre";
+const titulo = "Aguinaldo proporcional 2026: cómo se calcula por días";
 const descripcion =
-  "Si entraste o saliste del trabajo a mitad de año, el aguinaldo es proporcional a los días trabajados — no a los meses redondeados. La fórmula correcta de la LCT, ejemplos con números reales y la calculadora que lo computa por vos.";
+  "Si entraste o saliste a mitad de semestre, el aguinaldo es proporcional a los días trabajados. La fórmula de la LCT con ejemplos reales y calculadora.";
 
 export const metadata: Metadata = {
   title: titulo,
@@ -68,23 +67,23 @@ const porMeses = (SUELDO_EJEMPLO / 12) * 4; // marzo, abril, mayo, junio
 const faqs = [
   {
     q: "¿Cómo se calcula el aguinaldo si no trabajé los 6 meses completos?",
-    a: "El aguinaldo proporcional toma el 50% de tu mejor sueldo del semestre y lo multiplica por los días que efectivamente trabajaste sobre los días totales del semestre. La fórmula es: (mejor sueldo ÷ 2) × (días trabajados ÷ días del semestre). El cálculo correcto es por días, no por meses redondeados.",
+    a: "Se toma el 50% de tu mejor sueldo del semestre y se multiplica por los días que trabajaste, divididos por los días del semestre. La fórmula es: (mejor sueldo ÷ 2) × (días trabajados ÷ días del semestre). La cuenta correcta es por días, no por meses redondeados.",
   },
   {
     q: "¿Es lo mismo calcular por meses que por días?",
-    a: "No siempre. Muchas guías simplifican dividiendo por 12 y multiplicando por los meses trabajados, pero eso redondea. La Ley de Contrato de Trabajo manda calcular sobre el tiempo efectivo de trabajo, que se mide en días. Si entraste o saliste a mitad de mes, el cálculo por días es el correcto y puede dar distinto.",
+    a: "No siempre. Muchas guías dividen por 12 y multiplican por los meses trabajados, pero eso redondea. La Ley de Contrato de Trabajo manda calcular sobre el tiempo trabajado de verdad, que se mide en días. Si entraste o saliste a mitad de mes, la cuenta por días es la correcta y puede dar distinto.",
   },
   {
     q: "Si me despiden o renuncio, ¿cobro el aguinaldo proporcional?",
-    a: "Sí. Al terminar la relación laboral te corresponde el SAC proporcional a los días trabajados en el semestre en curso, y se paga dentro de la liquidación final. Aplica tanto en despido como en renuncia (art. 123 de la LCT).",
+    a: "Sí. Cuando termina el trabajo te corresponde el aguinaldo proporcional a los días trabajados en el semestre en curso, y se paga con la liquidación final. Vale tanto si te despiden como si renunciás (art. 123 de la LCT).",
   },
   {
     q: "¿El aguinaldo proporcional también tiene descuentos?",
-    a: "Sí. El SAC es remunerativo, así que se le aplican los mismos aportes personales que al sueldo: 11% de jubilación (SIPA), 3% de PAMI y 3% de obra social. Por eso el neto que cobrás en mano es menor que el bruto calculado.",
+    a: "Sí. El aguinaldo es remunerativo, así que tiene los mismos aportes que el sueldo: 11% de jubilación (SIPA), 3% de PAMI y 3% de obra social. Por eso lo que cobrás en mano es menos que el bruto.",
   },
   {
     q: "Si trabajé el semestre completo pero falté varios días, ¿es proporcional?",
-    a: "No. Las ausencias por enfermedad, vacaciones o licencias legales no reducen el aguinaldo. El SAC solo se prorratea cuando no estuviste vinculado todo el semestre (ingreso o egreso a mitad de período), no por faltas dentro de una relación laboral vigente.",
+    a: "No. Las faltas por enfermedad, vacaciones o licencias legales no bajan el aguinaldo. Solo es proporcional cuando no estuviste todo el semestre en ese trabajo (porque entraste o te fuiste en el medio), no por faltas mientras seguías trabajando.",
   },
 ];
 
@@ -117,8 +116,8 @@ export default function Post() {
         <p className="text-zinc-600">
           Si entraste a trabajar a mitad de año, o te fuiste antes de que cierre el semestre, no
           cobrás el aguinaldo completo: cobrás la parte proporcional al tiempo que trabajaste. Acá
-          está la fórmula correcta —la que manda la ley, por días— con ejemplos reales y la
-          calculadora que la resuelve por vos.
+          tenés la fórmula correcta (la que manda la ley, por días), con ejemplos reales y la
+          calculadora que hace la cuenta.
         </p>
       </header>
 
@@ -132,8 +131,8 @@ export default function Post() {
           (mejor sueldo ÷ 2) × (días trabajados ÷ días del semestre)
         </p>
         <p className="mt-2">
-          La clave: el cálculo correcto es <strong>por días</strong>, no por meses redondeados.
-          La Ley de Contrato de Trabajo lo mide sobre el tiempo efectivo de trabajo, así que si
+          La clave: la cuenta correcta es <strong>por días</strong>, no por meses redondeados. La
+          Ley de Contrato de Trabajo la mide sobre el tiempo que trabajaste de verdad, así que si
           entraste o saliste a mitad de mes, contar días te da el número exacto.
         </p>
       </RespuestaPrimero>
@@ -142,8 +141,8 @@ export default function Post() {
         <h2 className="text-xl font-bold text-zinc-900">El error de calcular &quot;por meses&quot;</h2>
         <p className="text-zinc-600">
           La mayoría de las guías simplifican: dividen el sueldo por 12 y lo multiplican por los
-          meses trabajados. Funciona como aproximación, pero redondea. La Ley de Contrato de
-          Trabajo manda calcular sobre el <strong>tiempo efectivo</strong>, que se mide en días.
+          meses trabajados. Sirve como aproximación, pero redondea. La Ley de Contrato de Trabajo
+          manda calcular sobre el <strong>tiempo trabajado de verdad</strong>, que se mide en días.
           Mirá la diferencia con un sueldo de {formatARS(SUELDO_EJEMPLO, 0)} y un ingreso el 1 de
           marzo de 2026:
         </p>
@@ -177,7 +176,7 @@ export default function Post() {
         <p className="text-sm text-zinc-600">
           Aguinaldo del 1er semestre 2026 (enero a junio, {completo.diasTotales} días), con un mejor
           sueldo de {formatARS(SUELDO_EJEMPLO, 0)}. El bruto es lo que se calcula; el neto es lo que
-          cobrás en mano tras los aportes de ley (17%).
+          cobrás en mano después de los aportes de ley (17%).
         </p>
         <div className="overflow-x-auto rounded-xl border border-zinc-200">
           <table className="w-full text-sm">
@@ -251,17 +250,22 @@ export default function Post() {
           Si te despiden o renunciás: el SAC va en la liquidación final
         </h2>
         <p className="text-zinc-600">
-          Cuando termina la relación laboral —por despido o por renuncia— te corresponde el
-          aguinaldo proporcional a los días trabajados del semestre en curso. No se pierde: se
-          liquida junto con el resto de la liquidación final (art. 123 de la LCT). El cálculo es el
-          mismo: 50% del mejor sueldo del semestre por los días trabajados sobre el total.
+          Cuando termina el trabajo (por despido o por renuncia), te corresponde el aguinaldo
+          proporcional a los días trabajados del semestre en curso. No se pierde: se paga con el
+          resto de la liquidación final (art. 123 de la LCT). La cuenta es la misma: 50% del mejor
+          sueldo del semestre por los días trabajados sobre el total.
         </p>
         <p className="text-sm text-zinc-600">
-          ¿Te están por despedir? Mirá también cómo se calcula la{" "}
+          ¿Te están por despedir? Mirá cómo se calcula la{" "}
           <Link href="/indemnizacion" className="text-emerald-700 underline">
             indemnización por despido
           </Link>
-          , que incluye el SAC proporcional sobre el preaviso y la integración del mes.
+          , que incluye el aguinaldo proporcional sobre el preaviso y la integración del mes. Si
+          renunciás, calculá tu{" "}
+          <Link href="/renuncia" className="text-emerald-700 underline">
+            liquidación final por renuncia
+          </Link>
+          .
         </p>
       </section>
 
@@ -299,7 +303,7 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              Ley 23.041 — Sueldo Anual Complementario
+              Ley 23.041: Sueldo Anual Complementario
             </a>
           </li>
           <li>
@@ -315,8 +319,8 @@ export default function Post() {
           </li>
         </ul>
         <p className="text-xs text-zinc-400">
-          Esta guía es informativa; para tu caso puntual consultá con tu empleador, tu sindicato o
-          un profesional. Los aportes personales son los de ley vigentes en 2026.
+          Esta guía es informativa. Para tu caso puntual, consultá con tu empleador, tu sindicato o
+          un profesional. Los aportes son los de ley vigentes en 2026.
         </p>
         <p className="text-sm text-zinc-600">
           ¿El aguinaldo paga Ganancias? Leé{" "}
