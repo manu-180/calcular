@@ -78,7 +78,8 @@ for (const archivo of paisesYScripts) {
     }
     const otro = paisDe(r.ruta);
     if (otro !== null && otro !== propio) fallas.push(`${donde}: un país no importa de otro país (${otro})`);
-    else if (otro === null && !dentro(r.ruta, path.join(SRC, "motor"))) fallas.push(`${donde}: un país solo importa de su carpeta y de src/motor`);
+    // Los scripts de prueba de un país usan el mismo Http que el cron para probar sus detectores igual que en producción.
+    else if (otro === null && !dentro(r.ruta, path.join(SRC, "motor")) && !(rel(archivo).startsWith("scripts/") && dentro(r.ruta, path.join(RAIZ, "scripts", "datos-paises", "lib")))) fallas.push(`${donde}: un país solo importa de su carpeta y de src/motor`);
   }
 }
 
