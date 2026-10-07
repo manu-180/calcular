@@ -1,0 +1,36 @@
+{
+  "mercado": "do",
+  "avisos": [
+    {
+      "id": "do.isr-2027",
+      "nivel": "info",
+      "desde": "2026-06-18",
+      "hasta": "2026-12-31",
+      "aplicaA": ["do.isr-asalariados", "do.salario-neto"],
+      "titulo": "Nueva escala del ISR en 2027",
+      "texto": "La Ley 30-26 cambia la escala del ISR desde enero de 2027: el monto exento sube a RD$480,000 al año y se agrega un tramo de 27 % para rentas de más de RD$4,800,000. Hasta el 31 de diciembre de 2026 se calcula con la escala actual, que es la que usa este cálculo.",
+      "fuente": {
+        "organismo": "Dirección General de Impuestos Internos (DGII)",
+        "titulo": "Ley 30-26, artículo 10, y calendario de implementación (Aviso del 26/6/2026)",
+        "url": "https://dgii.gov.do/publicacionesOficiales/avisosInformativos/Documents/2026/10-26.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "do.salarios-sectorizados",
+      "nivel": "info",
+      "desde": "2025-04-01",
+      "aplicaA": ["do.salario-minimo", "do.regalia-pascual"],
+      "titulo": "Sectores con salario mínimo propio",
+      "texto": "Zonas francas, hoteles y restaurantes, construcción y algunas tareas agrícolas tienen tarifas propias del Comité Nacional de Salarios. Los montos de este cálculo son los del sector privado no sectorizado.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo",
+        "titulo": "Resolución CNS-04-2026, salario mínimo de la construcción (comunicado del 25/8/2026)",
+        "url": "https://mt.gob.do/gobierno-acuerda-aumento-de-20-al-salario-minimo-de-los-trabajadores-de-la-construccion/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}

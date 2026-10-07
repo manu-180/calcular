@@ -1,0 +1,737 @@
+{
+  "mercado": "do",
+  "datos": [
+    {
+      "id": "do.salario-minimo",
+      "nombre": "Salario mínimo mensual del sector privado no sectorizado, por tamaño de empresa",
+      "tipo": "mapa",
+      "unidad": "DOP",
+      "etiquetas": {
+        "grande": "Empresa grande",
+        "mediana": "Empresa mediana",
+        "pequena": "Empresa pequeña",
+        "micro": "Microempresa"
+      },
+      "nota": "La Resolución CNS-01-2025 subió 20 % en dos tramos: 12 % desde el 1/4/2025 y 8 % desde el 1/2/2026. No fija fecha para la próxima revisión.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-01-31",
+          "valor": {
+            "grande": 27988.8,
+            "mediana": 25656.96,
+            "pequena": 17193.12,
+            "micro": 15860.32
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Resolución CNS-01-2025 leída en el acto del 26/02/2025 (sector privado no sectorizado)",
+            "url": "https://mt.gob.do/presidente-luis-abinader-anuncia-aumento-salarial-de-20-para-el-sector-privado-no-sectorizado/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": {
+            "grande": 29988.0,
+            "mediana": 27489.6,
+            "pequena": 18421.2,
+            "micro": 16993.2
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Aumento del 8 % del salario mínimo desde el 1/2/2026 (comunicado del 3/2/2026)",
+            "url": "https://mt.gob.do/ministerio-de-trabajo-llama-a-empresarios-a-cumplir-con-el-pago-del-aumento-del-8-del-salario-minimo/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Coincide con el segundo tramo leído en la Resolución CNS-01-2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.salario-minimo-hogar",
+      "nombre": "Salario mínimo mensual de las trabajadoras del hogar",
+      "tipo": "numero",
+      "unidad": "DOP",
+      "nota": "El comunicado no menciona un segundo tramo.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "valor": 13000,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Aumento del 30 % para las trabajadoras del hogar (comunicado del 14/4/2025)",
+            "url": "https://mt.gob.do/gobierno-anuncia-aumento-salarial-del-30-para-las-trabajadoras-del-hogar/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.salario-minimo-zona-franca",
+      "nombre": "Salario mínimo mensual de zonas francas industriales",
+      "tipo": "numero",
+      "unidad": "DOP",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-06-01",
+          "valor": 20875,
+          "motivo": "El comunicado del Ministerio de Trabajo (29/4/2025) da los porcentajes (13 % y 12 %) pero no el monto. El monto solo aparece en una alerta de EY; falta leer la Resolución CNS-03-2025.",
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Aumento salarial de 25 % al sector zonas francas industriales",
+            "url": "https://mt.gob.do/gobierno-anuncia-aumento-salarial-de-un-25-al-sector-zonas-francas-industriales/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.salario-minimo-nacional",
+      "nombre": "Salario mínimo nacional para los topes de la TSS",
+      "tipo": "numero",
+      "unidad": "DOP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 23223,
+          "fuente": {
+            "organismo": "Tesorería de la Seguridad Social (TSS)",
+            "titulo": "TSS informa nuevos topes de cotización del Régimen Contributivo del SDSS",
+            "url": "https://tss.gob.do/tss-informa-nuevos-topes-de-cotizacion-del-regimen-contributivo-del-sdss/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.tope-sfs",
+      "nombre": "Tope de cotización del Seguro Familiar de Salud (10 salarios mínimos nacionales)",
+      "tipo": "numero",
+      "unidad": "DOP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 232230,
+          "fuente": {
+            "organismo": "Tesorería de la Seguridad Social (TSS)",
+            "titulo": "Preguntas frecuentes, preguntas 13 y 14: porcentajes y topes",
+            "url": "https://tss.gob.do/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.tope-afp",
+      "nombre": "Tope de cotización del seguro de pensiones (20 salarios mínimos nacionales)",
+      "tipo": "numero",
+      "unidad": "DOP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 464460,
+          "fuente": {
+            "organismo": "Tesorería de la Seguridad Social (TSS)",
+            "titulo": "Preguntas frecuentes, preguntas 13 y 14: porcentajes y topes",
+            "url": "https://tss.gob.do/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.tope-srl",
+      "nombre": "Tope de cotización del Seguro de Riesgos Laborales (4 salarios mínimos nacionales)",
+      "tipo": "numero",
+      "unidad": "DOP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 92892,
+          "fuente": {
+            "organismo": "Tesorería de la Seguridad Social (TSS)",
+            "titulo": "Preguntas frecuentes, preguntas 13 y 14: porcentajes y topes",
+            "url": "https://tss.gob.do/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.sfs-trabajador",
+      "nombre": "Seguro Familiar de Salud a cargo del trabajador",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "La TSS publica las tasas sin fecha de inicio; se cargan desde el 1/2/2026, cuando rigen los topes que publica en la misma página.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 3.04,
+          "fuente": {
+            "organismo": "Tesorería de la Seguridad Social (TSS)",
+            "titulo": "Preguntas frecuentes, preguntas 13 y 14: porcentajes y topes",
+            "url": "https://tss.gob.do/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.afp-trabajador",
+      "nombre": "Seguro de pensiones (AFP) a cargo del trabajador",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "La TSS publica las tasas sin fecha de inicio; se cargan desde el 1/2/2026, cuando rigen los topes que publica en la misma página.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 2.87,
+          "fuente": {
+            "organismo": "Tesorería de la Seguridad Social (TSS)",
+            "titulo": "Preguntas frecuentes, preguntas 13 y 14: porcentajes y topes",
+            "url": "https://tss.gob.do/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.sfs-empleador",
+      "nombre": "Seguro Familiar de Salud a cargo del empleador",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "La TSS publica las tasas sin fecha de inicio; se cargan desde el 1/2/2026, cuando rigen los topes que publica en la misma página.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 7.09,
+          "fuente": {
+            "organismo": "Tesorería de la Seguridad Social (TSS)",
+            "titulo": "Preguntas frecuentes, preguntas 13 y 14: porcentajes y topes",
+            "url": "https://tss.gob.do/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.afp-empleador",
+      "nombre": "Seguro de pensiones (AFP) a cargo del empleador",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "La TSS publica las tasas sin fecha de inicio; se cargan desde el 1/2/2026, cuando rigen los topes que publica en la misma página.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 7.1,
+          "fuente": {
+            "organismo": "Tesorería de la Seguridad Social (TSS)",
+            "titulo": "Preguntas frecuentes, preguntas 13 y 14: porcentajes y topes",
+            "url": "https://tss.gob.do/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.srl-fijo",
+      "nombre": "Seguro de Riesgos Laborales, cuota fija del empleador",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "La TSS publica las tasas sin fecha de inicio; se cargan desde el 1/2/2026, cuando rigen los topes que publica en la misma página.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Tesorería de la Seguridad Social (TSS)",
+            "titulo": "Preguntas frecuentes, preguntas 13 y 14: porcentajes y topes",
+            "url": "https://tss.gob.do/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.isr-asalariados",
+      "nombre": "Escala anual del impuesto sobre la renta de las personas físicas",
+      "tipo": "escala",
+      "unidad": "DOP",
+      "proximaRevision": "2027-01-01",
+      "nota": "La base es el salario menos los aportes del trabajador a la TSS (DGII, Guía del Contribuyente 11: «se debe excluir el monto cotizable a la Seguridad Social»).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 416220.0,
+              "tasa": 0
+            },
+            {
+              "desde": 416220.01,
+              "hasta": 624329.0,
+              "tasa": 15,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 624329.01,
+              "hasta": 867123.0,
+              "tasa": 20,
+              "cuotaFija": 31216
+            },
+            {
+              "desde": 867123.01,
+              "hasta": null,
+              "tasa": 25,
+              "cuotaFija": 79776
+            }
+          ],
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Impuesto sobre la Renta: escala retención asalariados 2026",
+            "url": "https://dgii.gov.do/cicloContribuyente/obligacionesTributarias/principalesImpuestos/Paginas/impuestoSobreRenta.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Cruzada con la Tabla de retención mensual para asalariados de la DGII (34,700 retiene 2.25; 60,000 retiene 4,195.85; 80,000 retiene 8,582.94)."
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 480000.0,
+              "tasa": 0
+            },
+            {
+              "desde": 480000.01,
+              "hasta": 685000.0,
+              "tasa": 15,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 685000.01,
+              "hasta": 910000.0,
+              "tasa": 20,
+              "cuotaFija": 30750
+            },
+            {
+              "desde": 910000.01,
+              "hasta": 4800000.0,
+              "tasa": 25,
+              "cuotaFija": 75750
+            },
+            {
+              "desde": 4800000.01,
+              "hasta": null,
+              "tasa": 27,
+              "cuotaFija": 1048250
+            }
+          ],
+          "motivo": "Los montos están leídos en la Ley 30-26 (art. 10), pero su párrafo I ordena ajustar la escala cada año por la inflación del año anterior. Falta confirmar si la DGII publica la escala de 2027 ya ajustada.",
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26, artículo 10 (nuevo artículo 296 del Código Tributario)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.itbis",
+      "nombre": "Tasa general del ITBIS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "ITBIS: tasa general desde 2016 (Ley 253-12, art. 23)",
+            "url": "https://dgii.gov.do/cicloContribuyente/obligacionesTributarias/principalesImpuestos/Paginas/Itbis.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.divisor-salario-diario",
+      "nombre": "Divisor para pasar el salario mensual a diario",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-12-30",
+          "valor": 23.83,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, arts. 14 y 32 del Reglamento (Decreto 565-99)",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.preaviso-dias",
+      "nombre": "Días de preaviso según la antigüedad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "tres-a-seis-meses": "De 3 a 6 meses",
+        "seis-a-doce-meses": "Más de 6 meses y hasta 1 año",
+        "un-anio-o-mas": "Más de 1 año"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": {
+            "tres-a-seis-meses": 7,
+            "seis-a-doce-meses": 14,
+            "un-anio-o-mas": 28
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 76",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.cesantia-dias",
+      "nombre": "Días de auxilio de cesantía según la antigüedad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "tres-a-seis-meses": "De 3 a 6 meses",
+        "seis-a-doce-meses": "De 6 meses a 1 año",
+        "uno-a-cinco-anios": "De 1 a 5 años, por año",
+        "cinco-anios-o-mas": "5 años o más, por año"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": {
+            "tres-a-seis-meses": 6,
+            "seis-a-doce-meses": 13,
+            "uno-a-cinco-anios": 21,
+            "cinco-anios-o-mas": 23
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 80",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.vacaciones-dias",
+      "nombre": "Días laborables de vacaciones por año",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "uno-a-cinco-anios": "De 1 a 5 años",
+        "cinco-anios-o-mas": "5 años o más"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-05-31",
+          "valor": {
+            "uno-a-cinco-anios": 14,
+            "cinco-anios-o-mas": 18
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 177 (modificado por la Ley 97-97)",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.vacaciones-proporcionales",
+      "nombre": "Días de vacaciones proporcionales por meses trabajados",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": {
+            "5": 6,
+            "6": 7,
+            "7": 8,
+            "8": 9,
+            "9": 10,
+            "10": 11,
+            "11": 12
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, arts. 179 y 180",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "La clave son los meses cumplidos: «más de cinco meses» da 6 días, «más de once meses» da 12."
+    },
+    {
+      "id": "do.jornada-diaria",
+      "nombre": "Jornada máxima diaria",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 147",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.jornada-semanal",
+      "nombre": "Jornada máxima semanal",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 44,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 147",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.limite-horas-recargo-35",
+      "nombre": "Horas por semana hasta las que la hora extra se paga con 35 %",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 68,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 203",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.recargo-hora-extra",
+      "nombre": "Recargo de la hora extra hasta 68 horas semanales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 203, ordinal 1",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.recargo-hora-extra-68",
+      "nombre": "Recargo de la hora extra por encima de 68 horas semanales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 203, ordinal 2",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.recargo-nocturno",
+      "nombre": "Recargo de la hora nocturna",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 204",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.recargo-feriado",
+      "nombre": "Recargo por trabajar en día feriado o de descanso semanal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, arts. 164 y 205",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.tope-regalia",
+      "nombre": "Tope del salario de Navidad en salarios mínimos",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 219",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.participacion-beneficios",
+      "nombre": "Participación de los trabajadores en las utilidades netas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 223",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.bonificacion-dias-tope",
+      "nombre": "Tope individual de la bonificación en días de salario",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "menos-de-tres-anios": "Menos de 3 años",
+        "tres-anios-o-mas": "3 años o más"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": {
+            "menos-de-tres-anios": 45,
+            "tres-anios-o-mas": 60
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 223 y art. 38 del Reglamento",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    }
+  ]
+}
