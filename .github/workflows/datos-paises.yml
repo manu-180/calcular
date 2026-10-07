@@ -1,0 +1,200 @@
+name: datos-paises
+
+# Mantiene al día las series de los países de calcularya.com (ADR 0001, D5 y enmienda del 7/10/2026).
+# Un job por mercado corre scripts/datos-paises/correr.ts: detectores, bandas, checks del país y
+# check-all. Lo que pasa todo viaja como parche a un único job "publicar", que hace un solo commit a
+# main (= deploy en Vercel): una corrida es un deploy, no uno por país. Las normas nunca se publican
+# solas: abren o actualizan el issue del país (etiqueta datos-<m>).
+#
+# Horarios en UTC: 11:20 (mañana en todo LatAm, diarios oficiales del día), 17:20 (mediodía, tipos de
+# cambio de la mañana) y 23:50 (cierre de BCRP, Banxico, BanRep y BCU).
+#
+# Un workflow_dispatch desde una rama que no es main corre los detectores y deja el resumen, pero no
+# publica ni toca issues.
+
+on:
+  schedule:
+    - cron: "20 11 * * *"
+    - cron: "20 17 * * *"
+    - cron: "50 23 * * *"
+  workflow_dispatch:
+    inputs:
+      mercado:
+        description: "Código del mercado (vacío = todos los de la matriz)"
+        required: false
+        default: ""
+        type: string
+
+concurrency:
+  group: datos-paises
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  matriz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      mercados: ${{ steps.lista.outputs.mercados }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Mercados registrados con detectores
+        id: lista
+        env:
+          MERCADO: ${{ inputs.mercado }}
+        run: |
+          if [ -n "$MERCADO" ]; then
+            LISTA=$(npx tsx scripts/datos-paises/matriz.ts --mercado "$MERCADO")
+          else
+            LISTA=$(npx tsx scripts/datos-paises/matriz.ts --detalle)
+          fi
+          echo "Mercados: $LISTA"
+          echo "mercados=$LISTA" >> "$GITHUB_OUTPUT"
+
+  actualizar:
+    needs: matriz
+    if: needs.matriz.outputs.mercados != '[]' && needs.matriz.outputs.mercados != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        mercado: ${{ fromJSON(needs.matriz.outputs.mercados) }}
+    env:
+      M: ${{ matrix.mercado }}
+      SALIDA: .datos-vivos/paises/${{ matrix.mercado }}
+      EN_MAIN: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      # Los marcadores <!-- norma:... --> de los issues del país, abiertos y cerrados, son la memoria
+      # de lo ya avisado: sin esto cada corrida repetiría las mismas normas.
+      - name: Memoria de avisos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$SALIDA"
+          gh issue list --label "datos-$M" --state all --limit 50 --json number,state,body > "$SALIDA/issues.json" 2>/dev/null || echo "[]" > "$SALIDA/issues.json"
+
+      - name: Correr el runner
+        run: npx tsx scripts/datos-paises/correr.ts --mercado "$M" --issues "$SALIDA/issues.json"
+
+      - name: Preparar el parche
+        run: |
+          mkdir -p "publicar/$M"
+          if [ -s "$SALIDA/archivos.txt" ]; then
+            mapfile -t ARCHIVOS < "$SALIDA/archivos.txt"
+            git diff --binary -- "${ARCHIVOS[@]}" > "publicar/$M/cambios.patch"
+            cp "$SALIDA/commit.txt" "publicar/$M/commit.txt"
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: hashFiles(format('publicar/{0}/cambios.patch', matrix.mercado)) != ''
+        with:
+          name: publicar-${{ matrix.mercado }}
+          path: publicar/
+          retention-days: 3
+
+      - name: Issue del país
+        if: always() && env.EN_MAIN == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f "$SALIDA/issue.md" ]; then
+            echo "::warning::El runner no dejó salida para $M: no toco el issue."
+            exit 0
+          fi
+          TITULO=$(cat "$SALIDA/titulo.txt")
+          ETIQUETA=$(cat "$SALIDA/etiqueta.txt")
+          ABIERTO=$(gh issue list --state open --label "$ETIQUETA" --json number --jq '.[0].number // empty' 2>/dev/null || true)
+          if [ -s "$SALIDA/issue.md" ]; then
+            gh label create "$ETIQUETA" --color 1D76DB --description "Avisos del workflow datos-paises" 2>/dev/null || true
+            if [ -z "$ABIERTO" ]; then
+              gh issue create --title "$TITULO" --label "$ETIQUETA" --body-file "$SALIDA/issue.md"
+            else
+              gh issue edit "$ABIERTO" --title "$TITULO" --body-file "$SALIDA/issue.md"
+              if [ -s "$SALIDA/comentario.md" ]; then
+                gh issue comment "$ABIERTO" --body-file "$SALIDA/comentario.md"
+              fi
+            fi
+          elif [ -n "$ABIERTO" ]; then
+            gh issue close "$ABIERTO" --comment "Todo al día: la corrida $GITHUB_RUN_ID no encontró nada pendiente."
+          fi
+
+  publicar:
+    needs: [matriz, actualizar]
+    if: always() && needs.matriz.result == 'success' && needs.matriz.outputs.mercados != '[]' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: publicar-*
+          merge-multiple: true
+          path: publicar
+
+      # Cada parche se aplica sobre el main de ahora y solo si aplica limpio: si alguien tocó el mismo
+      # series.json entre la corrida y este paso, ese mercado no se publica y lo reintenta la próxima.
+      - name: Aplicar los parches
+        run: |
+          : > mensaje.txt
+          PUBLICADOS=()
+          shopt -s nullglob
+          for P in publicar/*/cambios.patch; do
+            M=$(basename "$(dirname "$P")")
+            if git apply --check "$P" && git apply --index "$P"; then
+              PUBLICADOS+=("$M")
+              cat "$(dirname "$P")/commit.txt" >> mensaje.txt
+              echo "" >> mensaje.txt
+            else
+              echo "::warning::El parche de $M no aplica sobre main: no se publica en esta corrida."
+            fi
+          done
+          if [ ${#PUBLICADOS[@]} -eq 0 ]; then
+            echo "Nada que publicar."
+            exit 0
+          fi
+          { echo "datos-paises: ${PUBLICADOS[*]} ($(date -u +%F))"; echo ""; cat mensaje.txt; } > commit.txt
+          echo "PUBLICAR=1" >> "$GITHUB_ENV"
+
+      # El autor tiene que ser manu-180 con su noreply: Vercel bloquea (BLOCKED, sin avisar) los deploys
+      # cuyo autor no es miembro del equipo del proyecto.
+      - name: Publicar (commit a main = deploy)
+        if: env.PUBLICAR == '1'
+        run: |
+          git config user.name "manu-180"
+          git config user.email "157671390+manu-180@users.noreply.github.com"
+          git commit -q -F commit.txt
+          for intento in 1 2 3 4 5; do
+            if git pull --rebase -q origin main && git push -q origin HEAD:main; then
+              echo "Publicado: $(git log --oneline -1)"
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((intento * 10))
+          done
+          echo "::error::No pude pushear a main después de 5 intentos"
+          exit 1
