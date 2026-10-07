@@ -41,8 +41,8 @@ export async function generateMetadata({
   if (!mes) return {};
 
   return {
-    title: `Cuota alimentaria ${mes.etiqueta}: la canasta de crianza del INDEC`,
-    description: `Cuánto costaba criar un hijo en ${mes.etiqueta} según el INDEC: ${formatARS(mes.valores["menor-1"].total, 0)} a ${formatARS(mes.valores[REF].total, 0)} por mes según la edad, abierto en bienes y cuidado, comparado con la inflación del mes y actualizado a hoy.`,
+    title: `Cuota alimentaria ${mes.etiqueta}: canasta de crianza INDEC`,
+    description: `Cuánto costaba criar un hijo en ${mes.etiqueta} según el INDEC: de ${formatARS(mes.valores["menor-1"].total, 0)} a ${formatARS(mes.valores[REF].total, 0)} por mes, abierto en bienes y cuidado y actualizado a hoy.`,
     alternates: { canonical: `/cuota-alimentaria/${slug}` },
     robots: robotsArchivoMensual(
       mes.periodo,
@@ -86,7 +86,7 @@ export default async function CuotaAlimentariaMesPage({
     "@graph": [
       ORGANIZACION,
       datasetSchema({
-        nombre: `Canasta de crianza del INDEC — ${mes.etiqueta}, por tramo de edad`,
+        nombre: `Canasta de crianza del INDEC de ${mes.etiqueta}, por tramo de edad`,
         descripcion: `Costo mensual de criar un hijo en ${mes.etiqueta} según el INDEC, abierto en bienes y servicios y en costo del cuidado, para los cuatro tramos de edad (menor de 1 año, 1 a 3, 4 a 5 y 6 a 12 años). Es el dato oficial que se usa como referencia del costo en una cuota alimentaria.`,
         url: `/cuota-alimentaria/${slug}`,
         modificado: modificadoISO,
@@ -111,9 +111,9 @@ export default async function CuotaAlimentariaMesPage({
           Cuota alimentaria en {mes.etiqueta}: cuánto costaba criar un hijo
         </h1>
         <p className="text-zinc-600">
-          El dato oficial del mes, sin vueltas: la canasta de crianza que el INDEC publicó para{" "}
-          {mes.etiqueta}, abierta en lo que se gasta y lo que se cuida, comparada con la inflación
-          de ese mismo mes{esUltimo ? "" : " y actualizada a hoy"}.
+          El dato oficial del mes, sin vueltas: la canasta de crianza que publicó el INDEC para{" "}
+          {mes.etiqueta}, separada en lo que se gasta y lo que se cuida, y comparada con la
+          inflación de ese mes{esUltimo ? "" : ". También la llevamos a valores de hoy"}.
         </p>
       </header>
 
@@ -122,11 +122,11 @@ export default async function CuotaAlimentariaMesPage({
           En {mes.etiqueta}, criar a un chico costaba entre{" "}
           <strong>{formatARS(mes.valores["menor-1"].total, 0)}</strong> por mes (menor de 1 año) y{" "}
           <strong>{formatARS(mes.valores[REF].total, 0)}</strong> (de 6 a 12 años), según la canasta
-          de crianza del INDEC — bienes, servicios y el valor del cuidado incluidos.{" "}
-          <strong>Ese número no es la cuota alimentaria</strong>: es el costo total del chico, que
-          los dos progenitores deben cubrir en proporción a sus posibilidades económicas (art. 659 CCyC),
-          computando el cuidado cotidiano como aporte (art. 660). Para pasar del costo a la cuota,
-          usá la <Link href="/cuota-alimentaria">calculadora de cuota alimentaria</Link>.
+          de crianza del INDEC (con bienes, servicios y el valor del cuidado).{" "}
+          <strong>Ese número no es la cuota alimentaria</strong>: es el costo total del chico. Lo
+          cubren los dos progenitores, cada uno según lo que puede (art. 659 CCyC), y el cuidado de
+          todos los días cuenta como aporte (art. 660). Para pasar del costo a la cuota, usá la{" "}
+          <Link href="/cuota-alimentaria">calculadora de cuota alimentaria</Link>.
         </p>
       </RespuestaPrimero>
 
@@ -177,9 +177,9 @@ export default async function CuotaAlimentariaMesPage({
         </div>
         <p className="text-sm text-zinc-500">
           Fuente: INDEC, serie mensual de la canasta de crianza. El componente{" "}
-          <strong>cuidado</strong> es el tiempo de crianza valorizado en plata: por eso el tramo de
-          4 a 5 años baja respecto del de 1 a 3 pese a gastar más en bienes — con el nivel inicial,
-          el chico pasa horas escolarizado y se necesitan menos horas de cuidado pagas.
+          <strong>cuidado</strong> es el tiempo de crianza pasado a plata. Por eso el tramo de 4 a 5
+          años es más barato que el de 1 a 3, aunque gaste más en bienes: con el jardín, el chico
+          pasa horas en la escuela y hacen falta menos horas de cuidado pagas.
         </p>
       </section>
 
@@ -225,8 +225,8 @@ export default async function CuotaAlimentariaMesPage({
               <>
                 En {mes.etiqueta} la canasta de crianza subió{" "}
                 <strong>menos que la inflación general</strong> ({formatPct(varCanasta)} contra{" "}
-                {formatPct(varIPC)}). Suele pasar cuando el componente de cuidado —que se actualiza
-                a saltos, no todos los meses— queda quieto mientras los precios corren.
+                {formatPct(varIPC)}). Suele pasar cuando el cuidado (que se actualiza a saltos, no
+                todos los meses) queda quieto mientras los precios suben.
               </>
             )}{" "}
             Podés actualizar cualquier monto por IPC en la{" "}
@@ -248,14 +248,14 @@ export default async function CuotaAlimentariaMesPage({
               Desde {mes.etiqueta} hasta {act.hasta.etiqueta}, el costo de criar un chico de 6 a 12
               años pasó de <strong>{formatARS(mes.valores[REF].total, 0)}</strong> a{" "}
               <strong>{formatARS(act.hasta.valores[REF].total, 0)}</strong>: un{" "}
-              <strong>{formatPct(act.pct)}</strong>. Un monto acordado en {mes.etiqueta} y nunca
-              actualizado hoy cubre, en términos reales, alrededor de{" "}
+              <strong>{formatPct(act.pct)}</strong>. Si acordaron un monto en {mes.etiqueta} y nunca
+              lo actualizaron, hoy cubre más o menos el{" "}
               <strong>{Math.round((1 / act.coeficiente) * 100)}%</strong> de lo que cubría entonces.
             </p>
             <p className="mt-3 text-sm text-zinc-600">
               Para actualizar el monto por la propia canasta, multiplicalo por{" "}
               <strong>{act.coeficiente.toFixed(3).replace(".", ",")}</strong>. Es una cuenta de
-              referencia: cómo se actualiza una cuota depende de lo que diga el acuerdo o la
+              referencia. Cómo se actualiza tu cuota depende de lo que diga el acuerdo o la
               sentencia (índice pactado, porcentaje del sueldo, revisión judicial).
             </p>
           </div>
@@ -267,16 +267,15 @@ export default async function CuotaAlimentariaMesPage({
         <div className="space-y-3 text-zinc-600">
           <p>
             El número de arriba es <strong>el costo total del chico</strong>, no lo que paga un
-            progenitor: los dos deben la manutención y el cuidado cotidiano cuenta como aporte
-            (arts. 658 a 660 CCyC). El reparto concreto, con los ingresos de cada uno, lo hace
-            la{" "}
+            progenitor. Los dos deben la manutención y el cuidado de todos los días cuenta como
+            aporte (arts. 658 a 660 CCyC). El reparto con los ingresos de cada uno lo hace la{" "}
             <Link
               href="/cuota-alimentaria"
               className="font-medium text-emerald-700 hover:underline"
             >
               calculadora de cuota alimentaria
             </Link>
-            ; por qué el cuidado pesa tanto está desarrollado en{" "}
+            . Por qué el cuidado pesa tanto lo explicamos en{" "}
             <Link
               href="/blog/cuanto-cuesta-criar-un-hijo-argentina"
               className="font-medium text-emerald-700 hover:underline"
@@ -287,12 +286,11 @@ export default async function CuotaAlimentariaMesPage({
           </p>
           <p className="rounded-lg bg-amber-50 p-4 text-sm text-amber-900">
             <strong>Esto no es asesoramiento legal.</strong> La canasta de crianza es una medición
-            estadística del INDEC para el Gran Buenos Aires, no un mínimo legal ni una cuota fijada:
-            el monto lo acuerdan los progenitores o lo determina un juez caso por caso,
-            mirando las necesidades concretas del hijo y la capacidad económica real de cada
-            uno. Antes de firmar un acuerdo o presentar un reclamo, consultá con un abogado de
-            familia; en la mayoría de las provincias hay defensorías y patrocinio jurídico gratuito
-            para temas de alimentos.
+            del INDEC para el Gran Buenos Aires. No es un mínimo legal ni una cuota fijada: el monto
+            lo acuerdan los progenitores o lo decide un juez en cada caso, mirando lo que necesita
+            el hijo y lo que puede pagar cada uno. Antes de firmar un acuerdo o hacer un reclamo,
+            consultá con un abogado de familia. En la mayoría de las provincias hay defensorías y
+            patrocinio jurídico gratis para temas de alimentos.
           </p>
         </div>
       </section>
@@ -331,7 +329,7 @@ export default async function CuotaAlimentariaMesPage({
               target="_blank"
               className="text-emerald-700 underline"
             >
-              INDEC — serie mensual de la canasta de crianza por tramo de edad (planilla oficial)
+              INDEC: serie mensual de la canasta de crianza por tramo de edad (planilla oficial)
             </a>
           </li>
           <li>
@@ -342,7 +340,7 @@ export default async function CuotaAlimentariaMesPage({
               target="_blank"
               className="text-emerald-700 underline"
             >
-              INDEC — Valorización mensual de la canasta de crianza (informes técnicos)
+              INDEC: valorización mensual de la canasta de crianza (informes técnicos)
             </a>
           </li>
           <li>
@@ -353,7 +351,7 @@ export default async function CuotaAlimentariaMesPage({
               target="_blank"
               className="text-emerald-700 underline"
             >
-              Ministerio de Justicia — Los alimentos de los hijos (arts. 658 a 663 CCyC)
+              Ministerio de Justicia: los alimentos de los hijos (arts. 658 a 663 CCyC)
             </a>
           </li>
         </ul>

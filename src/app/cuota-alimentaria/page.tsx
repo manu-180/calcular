@@ -17,9 +17,9 @@ import { ArchivoMensualLinks } from "@/components/ArchivoMensualLinks";
 import { formatARS } from "@/lib/formato";
 
 export const metadata: Metadata = {
-  title: "Cuota alimentaria 2026: cuánto es por hijo según la canasta de crianza del INDEC",
+  title: "Cuota alimentaria 2026: cuánto es por hijo (INDEC)",
   description:
-    "Calculá gratis el monto de referencia de la cuota alimentaria con el último dato oficial del INDEC: cuánto cuesta criar un hijo por mes y cómo se reparte ese costo entre los progenitores.",
+    "Calculá la cuota alimentaria de referencia con el último dato del INDEC: cuánto cuesta criar a cada hijo por mes y cómo se reparte entre los progenitores.",
   alternates: { canonical: "/cuota-alimentaria" },
 };
 
@@ -34,23 +34,23 @@ const varAnual = Math.round((U.valores["6-a-12"].total / hace12.valores["6-a-12"
 const faqs = [
   {
     q: "¿Cuánto es la cuota alimentaria en 2026?",
-    a: `No hay un monto único: la ley no fija una suma ni un porcentaje del sueldo. Lo que sí existe es un dato oficial de referencia, la canasta de crianza del INDEC, que mide cuánto cuesta por mes mantener y cuidar a un hijo. En ${U.etiqueta} va de ${formatARS(menor, 0)} para un bebé menor de 1 año a ${formatARS(mayor, 0)} para un chico de 6 a 12 años. Ese costo lo tienen que cubrir los dos progenitores en proporción a lo que gana cada uno, así que la cuota de uno solo es una parte de ese total, no el total.`,
+    a: `No hay un monto único: la ley no fija una suma ni un porcentaje del sueldo. Lo que sí hay es un dato oficial de referencia, la canasta de crianza del INDEC, que mide cuánto cuesta por mes mantener y cuidar a un hijo. En ${U.etiqueta} va de ${formatARS(menor, 0)} para un bebé menor de 1 año a ${formatARS(mayor, 0)} para un chico de 6 a 12 años. Ese costo lo cubren los dos progenitores, cada uno según lo que gana. Así que la cuota de uno es una parte de ese total, no el total.`,
   },
   {
     q: "¿Qué es la canasta de crianza del INDEC?",
-    a: "Es la valorización mensual de lo que cuesta criar a un chico, que el INDEC publica desde 2020. Tiene dos componentes: los bienes y servicios (comida, ropa, salud, educación, transporte, vivienda) y el costo del cuidado, que es el tiempo de crianza valorizado en plata. Se calcula para cuatro tramos de edad, hasta los 12 años inclusive. No es una cuota alimentaria ni un mínimo legal: es una medición estadística que los jueces y los abogados usan como referencia del costo real.",
+    a: "Es lo que cuesta por mes criar a un chico, medido en pesos. El INDEC la publica desde 2020. Tiene dos partes: los bienes y servicios (comida, ropa, salud, educación, transporte, vivienda) y el cuidado, que es el tiempo de crianza pasado a plata. Se calcula para cuatro tramos de edad, hasta los 12 años inclusive. No es una cuota alimentaria ni un mínimo legal. Es una medición que jueces y abogados usan como referencia del costo real.",
   },
   {
     q: "¿Quién fija el monto de la cuota alimentaria?",
-    a: "Lo acuerdan los progenitores y, si no hay acuerdo, lo fija un juez. La ley dice que los alimentos son proporcionales a las necesidades del hijo y a las posibilidades económicas de cada progenitor (art. 659 del Código Civil y Comercial), y eso es lo que se pondera. Ninguna calculadora reemplaza esa decisión: sirve para llegar a la conversación con un número fundado en datos oficiales.",
+    a: "Lo acuerdan los progenitores. Si no se ponen de acuerdo, lo fija un juez. La ley dice que los alimentos dependen de lo que necesita el hijo y de lo que puede pagar cada progenitor (art. 659 del Código Civil y Comercial). Ninguna calculadora reemplaza esa decisión. Sirve para llegar a la charla con un número basado en datos oficiales.",
   },
   {
     q: "¿Por qué el cuidado cuenta como aporte y no solo la plata?",
-    a: "Porque lo dice la ley: el art. 660 del Código Civil y Comercial establece que las tareas cotidianas que hace el progenitor que tiene el cuidado del hijo tienen valor económico y son un aporte a su manutención. Por eso la canasta separa el componente de cuidado: quien lleva el día a día ya está aportando esa parte en especie, y eso se computa a la hora de fijar cuánto pone el otro en dinero.",
+    a: "Porque lo dice la ley. El art. 660 del Código Civil y Comercial dice que las tareas de todos los días del progenitor que cuida al hijo valen plata y cuentan como aporte. Por eso la canasta separa el cuidado: quien lleva el día a día ya pone esa parte con su tiempo. Eso se tiene en cuenta al fijar cuánto pone el otro en dinero.",
   },
   {
     q: "¿Se reparte mitad y mitad entre los dos progenitores?",
-    a: "No necesariamente. Los dos deben la manutención (art. 658), pero en proporción a sus posibilidades económicas (art. 659): si uno tiene más recursos, aporta más. Con cuidado compartido, el art. 666 agrega que quien gana más pase una cuota para que el hijo tenga el mismo nivel de vida en las dos casas. Por eso la calculadora reparte el costo en proporción a los ingresos de cada uno en lugar de dividirlo por dos.",
+    a: "No siempre. Los dos deben la manutención (art. 658), pero cada uno según lo que puede (art. 659): si uno tiene más plata, aporta más. Con cuidado compartido, el art. 666 agrega que quien gana más pase una cuota para que el hijo viva igual en las dos casas. Por eso la calculadora reparte el costo según los ingresos de cada uno, en vez de dividirlo por dos.",
   },
   {
     q: "¿Hasta qué edad se paga la cuota alimentaria?",
@@ -58,15 +58,15 @@ const faqs = [
   },
   {
     q: "Mi hijo tiene más de 12 años, ¿cuánto cuesta criarlo?",
-    a: "El INDEC no publica ese tramo: la canasta de crianza llega hasta los 12 años inclusive. Preferimos decirlo antes que extrapolar un número que nadie midió. Como referencia, el tramo de 6 a 12 años es el más caro de los cuatro, y a partir de la adolescencia los gastos de educación, transporte y vestimenta siguen subiendo — así que tomá ese valor como piso, no como techo.",
+    a: "El INDEC no publica ese tramo: la canasta de crianza llega hasta los 12 años inclusive. Preferimos decirlo antes que inventar un número que nadie midió. Como referencia, el tramo de 6 a 12 años es el más caro de los cuatro. En la adolescencia los gastos de educación, transporte y ropa siguen subiendo, así que tomá ese valor como piso, no como techo.",
   },
   {
     q: "¿La cuota alimentaria se actualiza?",
-    a: "Sí, y conviene que el acuerdo o la sentencia diga cómo. Es habitual atarla a un índice (el IPC del INDEC o la propia canasta de crianza) o a un porcentaje del ingreso del alimentante, justamente para que no haya que volver a litigar cada vez que suben los precios. Esta página usa siempre el último mes publicado por el INDEC, así que el número de referencia se actualiza solo.",
+    a: "Sí, y conviene que el acuerdo o la sentencia diga cómo. Lo común es atarla a un índice (el IPC del INDEC o la misma canasta de crianza) o a un porcentaje del ingreso de quien paga. Así no hay que volver a juicio cada vez que suben los precios. Esta página usa siempre el último mes que publicó el INDEC, así que el número de referencia se actualiza solo.",
   },
   {
     q: "¿Qué pasa si no se paga la cuota?",
-    a: "El incumplimiento se reclama judicialmente y puede derivar en medidas como el embargo de sueldo, la inscripción en el Registro de Deudores Alimentarios Morosos de la jurisdicción (que traba trámites como renovar el registro de conducir u obtener créditos) e intereses sobre la deuda. Es un tema que conviene ver con un abogado, porque el procedimiento y los registros varían por provincia.",
+    a: "Se reclama ante la Justicia. Puede terminar en embargo del sueldo, intereses sobre la deuda y la inscripción en el Registro de Deudores Alimentarios Morosos de cada jurisdicción (que traba trámites como renovar el registro de conducir o pedir un crédito). Conviene verlo con un abogado, porque el trámite y los registros cambian según la provincia.",
   },
 ];
 
@@ -114,23 +114,22 @@ export default function CuotaAlimentariaPage() {
         </h1>
         <p className="text-zinc-600">
           La ley no fija un monto ni un porcentaje: fija un <strong>criterio</strong>. Acá lo
-          aplicamos con números oficiales — cuánto cuesta criar a esos hijos según la{" "}
-          <strong>canasta de crianza del INDEC</strong> y cómo se reparte ese costo entre los dos
+          aplicamos con números oficiales: cuánto cuesta criar a tus hijos según la{" "}
+          <strong>canasta de crianza del INDEC</strong>, y cómo se reparte ese costo entre los dos
           progenitores según lo que gana cada uno.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={CANASTA_CRIANZA_FUENTE.consultadoEl}>
         <p>
-          No existe un monto legal de cuota alimentaria: el monto lo acuerdan los progenitores o lo
-          fija un juez, ponderando las necesidades del hijo y la capacidad económica
-          de cada uno. El dato oficial de referencia es la{" "}
-          <strong>canasta de crianza del INDEC</strong>: en {U.etiqueta}, criar a un chico cuesta
-          entre <strong>{formatARS(menor, 0)}</strong> (menor de 1 año) y{" "}
-          <strong>{formatARS(mayor, 0)}</strong> (6 a 12 años) por mes, incluyendo bienes, servicios
-          y el valor del cuidado. Ese costo lo deben <strong>los dos</strong> progenitores en
-          proporción a sus posibilidades económicas (art. 659), y el trabajo de cuidado de quien convive con el hijo
-          cuenta como aporte económico (art. 660).
+          No hay un monto legal de cuota alimentaria. Lo acuerdan los progenitores o lo fija un
+          juez, mirando lo que necesita el hijo y lo que puede pagar cada uno. El dato oficial de
+          referencia es la <strong>canasta de crianza del INDEC</strong>: en {U.etiqueta}, criar a
+          un chico cuesta entre <strong>{formatARS(menor, 0)}</strong> (menor de 1 año) y{" "}
+          <strong>{formatARS(mayor, 0)}</strong> (6 a 12 años) por mes, con bienes, servicios y el
+          valor del cuidado. Ese costo lo deben <strong>los dos</strong> progenitores, cada uno
+          según lo que puede (art. 659). Y el cuidado de quien vive con el hijo cuenta como aporte
+          (art. 660).
         </p>
       </RespuestaPrimero>
 
@@ -144,9 +143,14 @@ export default function CuotaAlimentariaPage() {
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Estos son los valores oficiales del INDEC para el último mes publicado, abiertos en sus
-            dos componentes: los <strong>bienes y servicios</strong> que consume el chico y el{" "}
-            <strong>costo del cuidado</strong> (las horas de crianza, valorizadas en plata).
+            Son los valores oficiales del INDEC del último mes publicado, separados en sus dos
+            partes: los <strong>bienes y servicios</strong> que consume el chico y el{" "}
+            <strong>costo del cuidado</strong> (las horas de crianza, pasadas a plata). Si querés
+            entender de dónde sale cada número, mirá{" "}
+            <Link href="/blog/cuanto-cuesta-criar-un-hijo-argentina" className="text-emerald-700 underline">
+              cuánto cuesta criar un hijo en la Argentina
+            </Link>
+            .
           </p>
         </div>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
@@ -186,7 +190,7 @@ export default function CuotaAlimentariaPage() {
           Fuente: INDEC, canasta de crianza de {U.etiqueta}. En doce meses, el tramo de 6 a 12 años
           pasó de {formatARS(hace12.valores["6-a-12"].total, 0)} ({hace12.etiqueta}) a{" "}
           {formatARS(U.valores["6-a-12"].total, 0)}: un <strong>{varAnual.toFixed(1)}%</strong> más.
-          Por eso conviene que el acuerdo o la sentencia prevea cómo se actualiza la cuota.
+          Por eso conviene que el acuerdo o la sentencia diga cómo se actualiza la cuota.
         </p>
       </section>
 
@@ -194,8 +198,8 @@ export default function CuotaAlimentariaPage() {
         <h2 className="text-xl font-bold text-zinc-900">La canasta de crianza, mes por mes</h2>
         <p className="text-zinc-600">
           Cada mes tiene su página con los valores de los cuatro tramos, cuánto se movió contra la
-          inflación de ese mes y cuánto habría que actualizar un monto fijado entonces. Sirve para
-          revisar una cuota vieja con el dato del mes en que se acordó.
+          inflación de ese mes y cuánto habría que actualizar un monto fijado en ese momento. Sirve
+          para revisar una cuota vieja con el dato del mes en que se acordó.
         </p>
         <ArchivoMensualLinks
           items={[...MESES_CUOTA].reverse().map((m) => ({
@@ -211,7 +215,7 @@ export default function CuotaAlimentariaPage() {
       <EmailCapture
         source="cuota-alimentaria"
         headline="Sabé cuándo conviene actualizar la cuota"
-        subtext="Una vez por semana te mandamos los números oficiales que cambiaron, empezando por la inflación del INDEC, que es con lo que se actualizan muchas cuotas. Sin spam: te das de baja con un clic."
+        subtext="Una vez por semana te mandamos los números oficiales que cambiaron. Arrancamos por la inflación del INDEC, que es con lo que se actualizan muchas cuotas. Sin spam: te das de baja con un clic."
       />
 
       <section className="space-y-3">
@@ -221,7 +225,7 @@ export default function CuotaAlimentariaPage() {
         <div className="space-y-3 text-zinc-600">
           <p>
             El costo de criar al hijo no es la cuota: es el <strong>total a cubrir</strong>. La
-            cuota es la parte que le toca al progenitor que no convive con el chico. La ley da tres
+            cuota es la parte que le toca al progenitor que no vive con el chico. La ley da tres
             reglas para repartir:
           </p>
           <ol className="ml-5 list-decimal space-y-2">
@@ -231,20 +235,23 @@ export default function CuotaAlimentariaPage() {
               profesión.
             </li>
             <li>
-              <strong>El cuidado también es un aporte</strong> (art. 660): las tareas cotidianas de
-              quien convive con el hijo tienen valor económico y se computan. Es la razón por la que
-              separamos el componente de cuidado en la tabla: quien lleva el día a día ya está
-              poniendo esa parte.
+              <strong>El cuidado también es un aporte</strong> (art. 660): las tareas de todos los
+              días de quien vive con el hijo valen plata y cuentan. Por eso separamos el cuidado en
+              la tabla: quien lleva el día a día ya está poniendo esa parte.
             </li>
             <li>
-              <strong>Se reparte según la capacidad de cada uno</strong> (art. 659): los alimentos son
-              proporcionales a las posibilidades económicas de cada progenitor, así que quien más
-              recursos tiene aporta más. No es automáticamente mitad y mitad.
+              <strong>Se reparte según lo que puede cada uno</strong> (art. 659): quien tiene más
+              plata aporta más. No es mitad y mitad de entrada.
             </li>
           </ol>
           <p>
-            La calculadora aplica exactamente eso: suma el costo de crianza de los hijos y lo
-            prorratea por los ingresos declarados. Es un punto de partida fundado, no una sentencia.
+            La calculadora hace exactamente eso: suma el costo de crianza de los hijos y lo reparte
+            según los ingresos que cargues. Es un punto de partida con base, no una sentencia. Si
+            necesitás el cálculo explicado por escrito para llevar a una mediación, está el{" "}
+            <Link href="/informes/cuota-alimentaria" className="text-emerald-700 underline">
+              informe de cuota alimentaria
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -253,8 +260,8 @@ export default function CuotaAlimentariaPage() {
         <h2 className="text-xl font-bold text-zinc-900">Lo que esta calculadora no puede saber</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Honestidad primero: la canasta del INDEC es un promedio del Gran Buenos Aires y la
-            realidad de cada familia tiene cosas que ninguna tabla mide. Un juez sí las mira:
+            Te lo decimos de entrada: la canasta del INDEC es un promedio del Gran Buenos Aires, y
+            cada familia tiene cosas que ninguna tabla mide. Un juez sí las mira:
           </p>
           <ul className="ml-5 list-disc space-y-1.5">
             <li>Colegio privado, obra social o prepaga, y tratamientos de salud específicos.</li>
@@ -304,7 +311,7 @@ export default function CuotaAlimentariaPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              INDEC — Valorización mensual de la canasta de crianza (informes técnicos)
+              INDEC: valorización mensual de la canasta de crianza (informes técnicos)
             </a>
           </li>
           <li>
@@ -315,7 +322,7 @@ export default function CuotaAlimentariaPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              INDEC — serie mensual por tramo de edad (planilla oficial, enero 2020 en adelante)
+              INDEC: serie mensual por tramo de edad (planilla oficial, de enero 2020 en adelante)
             </a>
           </li>
           <li>
@@ -326,7 +333,7 @@ export default function CuotaAlimentariaPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              Ministerio de Justicia — Los alimentos de los hijos (arts. 658 a 663 del Código Civil y
+              Ministerio de Justicia: los alimentos de los hijos (arts. 658 a 663 del Código Civil y
               Comercial)
             </a>
           </li>
@@ -338,7 +345,7 @@ export default function CuotaAlimentariaPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              InfoLEG — Código Civil y Comercial de la Nación, texto oficial (arts. 658 a 670)
+              InfoLEG: Código Civil y Comercial de la Nación, texto oficial (arts. 658 a 670)
             </a>
           </li>
         </ul>
@@ -352,9 +359,13 @@ export default function CuotaAlimentariaPage() {
           <Link href="/inflacion" className="text-emerald-700 underline">
             calculadora de inflación
           </Link>{" "}
-          para actualizar una cuota vieja, y la{" "}
+          para actualizar una cuota vieja, la{" "}
           <Link href="/aguinaldo" className="text-emerald-700 underline">
             calculadora de aguinaldo
+          </Link>{" "}
+          y la{" "}
+          <Link href="/canasta-basica" className="text-emerald-700 underline">
+            canasta básica de tu hogar
           </Link>
           .
         </p>

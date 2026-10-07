@@ -18,14 +18,14 @@ import { calcularComercio } from "@/lib/convenios";
 import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
 export const metadata: Metadata = {
-  title: "Sueldo de Empleados de Comercio 2026: calculadora y escala CCT 130/75",
+  title: "Sueldo de Comercio 2026: escala CCT 130/75 y calculadora",
   description:
-    "Cuánto cobra un empleado de comercio en 2026: calculadora por categoría con antigüedad, presentismo y jornada parcial + la escala oficial de FAECYS de abril a diciembre, con el acuerdo del 22/7/2026 (+5,7% y bono de $50.000) ya cargado.",
+    "Cuánto cobra un empleado de comercio en 2026 por categoría, con antigüedad, presentismo y jornada parcial. Escala oficial de FAECYS mes a mes.",
   alternates: { canonical: "/convenios/comercio" },
   openGraph: {
     images: [
       {
-        url: `/og?t=${encodeURIComponent("Empleados de Comercio 2026")}&s=${encodeURIComponent("Calculadora + escala oficial CCT 130/75")}`,
+        url: `/og?t=${encodeURIComponent("Empleados de Comercio 2026")}&s=${encodeURIComponent("Calculadora y escala oficial CCT 130/75")}`,
         width: 1200,
         height: 630,
       },
@@ -52,51 +52,51 @@ const $ = (n: number) => formatARS(n, 0);
 const faqs = [
   {
     q: `¿Cuánto cobra un empleado de comercio en ${MES_TXT}?`,
-    a: `Para la categoría más común en locales (Vendedor B), jornada completa y sin antigüedad: ${$(AGOSTO.basicos["vendedor-b"])} de básico + ${$(AGOSTO.noRemunerativo)} no remunerativos${AGOSTO.asignacionExtraordinaria ? ` + ${$(AGOSTO.asignacionExtraordinaria)} de asignación extraordinaria por única vez` : ""} = ${$(AGOSTO.basicos["vendedor-b"] + AGOSTO.noRemunerativo + (AGOSTO.asignacionExtraordinaria ?? 0))} brutos; con presentismo sube a ${$(AGOSTO_VENDEDOR_B.bruto)}, y en mano quedan aproximadamente ${$(AGOSTO_VENDEDOR_B.neto)} (antes de cuota sindical y Ganancias). Las demás categorías van de ${$(AGOSTO_MIN)} (Maestranza A) a ${$(AGOSTO_MAX)} (Vendedor D / Administrativo F) de básico, siempre más los ${$(AGOSTO.noRemunerativo)}.`,
+    a: `Tomemos la categoría más común en locales (Vendedor B), con jornada completa y sin antigüedad: ${$(AGOSTO.basicos["vendedor-b"])} de básico + ${$(AGOSTO.noRemunerativo)} no remunerativos${AGOSTO.asignacionExtraordinaria ? ` + ${$(AGOSTO.asignacionExtraordinaria)} de asignación extraordinaria por única vez` : ""} = ${$(AGOSTO.basicos["vendedor-b"] + AGOSTO.noRemunerativo + (AGOSTO.asignacionExtraordinaria ?? 0))} brutos. Con presentismo sube a ${$(AGOSTO_VENDEDOR_B.bruto)}. En mano quedan unos ${$(AGOSTO_VENDEDOR_B.neto)} (antes de la cuota sindical y Ganancias). Las demás categorías van de ${$(AGOSTO_MIN)} (Maestranza A) a ${$(AGOSTO_MAX)} (Vendedor D y Administrativo F) de básico, siempre más los ${$(AGOSTO.noRemunerativo)}.`,
   },
   {
     q: "¿El bono de comercio es de $20.000, de $50.000 o de $120.000?",
-    a: "Las tres cifras existen y por eso hay tanta confusión. Los $120.000 son la suma no remunerativa que cobrás TODOS los meses: $100.000 prorrogados de los acuerdos de 2025 ($40.000 + $60.000) más los $20.000 nuevos que creó el acuerdo del 26/3/2026. Los $50.000 son otra cosa: el bono del acuerdo del 22/7/2026, una asignación extraordinaria por única vez que se paga en dos cuotas de $25.000, en julio y en agosto de 2026, y que no suma antigüedad ni presentismo. Los $120.000 no se incorporaron al básico en julio como estaba previsto: el acuerdo nuevo corrió esa absorción a diciembre de 2026 - mayo de 2027.",
+    a: "Las tres cifras existen, y por eso hay tanta confusión. Los $120.000 son la suma no remunerativa que cobrás todos los meses: $100.000 que vienen de los acuerdos de 2025 ($40.000 + $60.000) más los $20.000 nuevos del acuerdo del 26/3/2026. Los $50.000 son otra cosa: el bono del acuerdo del 22/7/2026. Se paga una sola vez, en dos cuotas de $25.000 (julio y agosto de 2026), y no suma antigüedad ni presentismo. Los $120.000 no pasaron al básico en julio, como estaba previsto: el acuerdo nuevo lo corrió al período de diciembre de 2026 a mayo de 2027.",
   },
   {
     q: "¿Qué aumento tiene comercio en 2026?",
-    a: "Hubo dos acuerdos. El del 26/3/2026 dio un 5% en tres tramos no acumulativos (+2% abril, +1,5% mayo, +1,5% junio) sobre los básicos de marzo más las sumas no remunerativas. El del 22/7/2026 dio un 5,7% trimestral, también en tramos no acumulativos y calculado sobre el total de junio (básico + $120.000): +1,9% en julio, +3,8% en agosto y +5,7% en septiembre, escala que se mantiene hasta noviembre. Se suma el bono de $50.000 en dos cuotas (julio y agosto).",
+    a: "Hubo dos acuerdos. El del 26/3/2026 dio un 5% en tres tramos no acumulativos (+2% abril, +1,5% mayo, +1,5% junio) sobre los básicos de marzo más las sumas no remunerativas. El del 22/7/2026 dio un 5,7% en tres meses, también en tramos no acumulativos y sobre el total de junio (básico + $120.000): +1,9% en julio, +3,8% en agosto y +5,7% en septiembre. Esa escala sigue hasta noviembre. Aparte está el bono de $50.000 en dos cuotas (julio y agosto).",
   },
   {
     q: "¿Cómo se calcula la antigüedad en comercio?",
-    a: "Es el 1% del sueldo por cada año trabajado en la empresa (art. 24 del CCT 130/75) y, por instrucción expresa de la circular de FAECYS, se aplica tanto sobre el básico como sobre las sumas no remunerativas. Con 10 años de antigüedad, por ejemplo, sumás un 10%.",
+    a: "Es el 1% del sueldo por cada año que trabajaste en la empresa (art. 24 del CCT 130/75). La circular de FAECYS aclara que se aplica sobre el básico y también sobre las sumas no remunerativas. Con 10 años de antigüedad, por ejemplo, sumás un 10%.",
   },
   {
     q: "¿Qué es el presentismo y cuándo se pierde?",
-    a: "Es la «asignación por asistencia y puntualidad» del art. 40 del CCT: una doceava parte (8,33%) de la remuneración del mes, incluida la antigüedad y las sumas no remunerativas. Se pierde si tenés más de una ausencia injustificada en el mes; las faltas por enfermedad, accidente, vacaciones o licencias legales no computan.",
+    a: "Es la «asignación por asistencia y puntualidad» del art. 40 del CCT: una doceava parte (8,33%) de lo que cobrás en el mes, incluidas la antigüedad y las sumas no remunerativas. Lo perdés si faltás sin justificar más de una vez en el mes. Las faltas por enfermedad, accidente, vacaciones o licencias legales no cuentan.",
   },
   {
     q: "¿Cuánto cobro si trabajo 6 horas o media jornada?",
-    a: "Proporcional a la jornada: con 6 horas cobrás el 75% del básico y de las sumas no remunerativas ($90.000 en vez de $120.000), y con 4 horas el 50% ($60.000). La jornada completa del sector es de 8 horas. La proporción surge de la LCT y de la cláusula cuarta del acuerdo 2026.",
+    a: "En proporción a tus horas. Con 6 horas cobrás el 75% del básico y de las sumas no remunerativas ($90.000 en vez de $120.000). Con 4 horas, el 50% ($60.000). La jornada completa del sector es de 8 horas. La proporción sale de la LCT y de la cláusula cuarta del acuerdo 2026.",
   },
   {
     q: "¿Cuándo se incorporan al básico los $120.000 no remunerativos?",
-    a: "De a poco, entre diciembre de 2026 y mayo de 2027. El acuerdo de marzo preveía absorberlos de golpe en julio, pero el acuerdo del 22/7/2026 cambió el cronograma: los $120.000 siguen no remunerativos hasta noviembre y desde diciembre pasan al básico a razón de $20.000 por mes ($100.000 en diciembre, $80.000 en enero, y así hasta $0 en mayo de 2027). El total que cobrás no cambia por eso: cambia cuánto de ese total es remunerativo, lo que sube tus aportes pero también tu jubilación, tu indemnización y tus vacaciones.",
+    a: "De a poco, entre diciembre de 2026 y mayo de 2027. El acuerdo de marzo pensaba pasarlos de golpe en julio, pero el del 22/7/2026 cambió el calendario. Los $120.000 siguen siendo no remunerativos hasta noviembre. Desde diciembre pasan al básico de a $20.000 por mes ($100.000 en diciembre, $80.000 en enero, y así hasta $0 en mayo de 2027). El total que cobrás no cambia. Lo que cambia es cuánto de ese total es remunerativo: suben tus aportes, pero también tu jubilación, tu indemnización y tus vacaciones.",
   },
   {
     q: "¿Cuándo es la próxima paritaria de comercio?",
-    a: "El acuerdo del 22/7/2026 cubre hasta septiembre de 2026 en aumentos (la escala rige hasta noviembre), así que la próxima negociación de porcentajes se espera para el último trimestre de 2026. Actualizamos esta página apenas FAECYS publique la circular oficial — nunca antes, y nunca desde versiones que circulan en medios.",
+    a: "El acuerdo del 22/7/2026 trae aumentos hasta septiembre de 2026 (la escala sigue hasta noviembre). La próxima negociación se espera para el último trimestre de 2026. Actualizamos esta página apenas FAECYS publique la circular oficial. Nunca antes, y nunca con versiones que circulan en los medios.",
   },
   {
     q: "¿Me pueden pagar menos que la escala?",
-    a: "No: la escala del convenio es un piso obligatorio para todos los empleadores de la actividad, estés o no afiliado al sindicato. Sí pueden pagarte más. Si te pagan por debajo, podés reclamar las diferencias salariales (prescriben a los 2 años, art. 256 LCT).",
+    a: "No. La escala del convenio es un piso obligatorio para todos los empleadores de la actividad, estés afiliado al sindicato o no. Sí pueden pagarte más. Si te pagan menos, podés reclamar la diferencia. Tenés 2 años para hacerlo (art. 256 LCT).",
   },
   {
     q: "¿Cuánto queda en mano del sueldo de comercio?",
-    a: "Del sueldo remunerativo se descuentan los aportes de ley: 11% jubilación + 3% PAMI + 3% obra social = 17%. Las sumas no remunerativas solo descuentan el 3% de obra social (OSECAC) — por eso «rinden» más en mano. Aparte pueden descontarte la cuota sindical (2% si estás afiliado) y, en sueldos altos, Ganancias.",
+    a: "Del sueldo remunerativo se descuentan los aportes de ley: 11% de jubilación, 3% de PAMI y 3% de obra social. En total, 17%. Las sumas no remunerativas solo pagan el 3% de obra social (OSECAC), por eso «rinden» más en mano. Aparte te pueden descontar la cuota sindical (2% si estás afiliado) y, en sueldos altos, Ganancias.",
   },
   {
     q: "¿Las sumas no remunerativas cuentan para el aguinaldo?",
-    a: "Sí: el acuerdo 2026 establece expresamente que los importes no remunerativos se computan para el aguinaldo (SAC), las vacaciones, las horas extra, el presentismo, la antigüedad y las indemnizaciones por despido. Tu mejor sueldo del semestre, a los efectos del aguinaldo, incluye los $120.000.",
+    a: "Sí. El acuerdo 2026 lo dice con todas las letras: los montos no remunerativos cuentan para el aguinaldo (SAC), las vacaciones, las horas extra, el presentismo, la antigüedad y la indemnización por despido. Para el aguinaldo, tu mejor sueldo del semestre incluye los $120.000.",
   },
   {
     q: "¿Qué categoría me corresponde?",
-    a: "El CCT 130/75 agrupa al personal en Maestranza y servicios (limpieza, mantenimiento), Administrativos (A a F según complejidad), Cajeros (A a C), Personal auxiliar (depósito, reparto), Auxiliares especializados y Vendedores (A a D). La categoría figura en tu recibo de sueldo; si hacés tareas de una categoría superior, corresponde que te paguen como tal.",
+    a: "El CCT 130/75 agrupa al personal en Maestranza y servicios (limpieza, mantenimiento), Administrativos (A a F según la complejidad), Cajeros (A a C), Personal auxiliar (depósito, reparto), Auxiliares especializados y Vendedores (A a D). Tu categoría figura en el recibo de sueldo. Si hacés tareas de una categoría más alta, te tienen que pagar como tal.",
   },
 ];
 
@@ -156,10 +156,10 @@ export default function ComercioPage() {
           Sueldo de Empleados de Comercio 2026 (CCT 130/75)
         </h1>
         <p className="text-zinc-600">
-          Elegí tu categoría y descubrí al instante <strong>tu sueldo de convenio</strong> con
-          antigüedad, presentismo y jornada parcial, según la{" "}
-          <strong>escala oficial de FAECYS</strong> — incluidos los $120.000 no remunerativos
-          que tanta confusión generan. Verificado contra la circular, no contra blogs.
+          Elegí tu categoría y mirá <strong>tu sueldo de convenio</strong> con antigüedad,
+          presentismo y jornada parcial, según la <strong>escala oficial de FAECYS</strong>.
+          Incluye los $120.000 no remunerativos que tanto confunden. Lo chequeamos contra la
+          circular, no contra blogs.
         </p>
       </header>
 
@@ -184,12 +184,12 @@ export default function ComercioPage() {
               por única vez
             </>
           ) : null}
-          . Para Vendedor B —la categoría más común en locales— en {MES_TXT}, jornada completa
-          y sin antigüedad:{" "}
+          . Un Vendedor B (la categoría más común en locales) en {MES_TXT}, con jornada completa
+          y sin antigüedad, cobra{" "}
           <strong>{formatARS(vendedorBSinPresentismo, 0)} brutos</strong> (
-          {formatARS(vendedorB.bruto, 0)} con presentismo) y{" "}
-          <strong>≈ {formatARS(vendedorB.neto, 0)} en mano</strong>. La escala de FAECYS es un
-          piso obligatorio para toda la actividad, estés o no afiliado al sindicato.
+          {formatARS(vendedorB.bruto, 0)} con presentismo) y le quedan{" "}
+          <strong>unos {formatARS(vendedorB.neto, 0)} en mano</strong>. La escala de FAECYS es un
+          piso obligatorio para toda la actividad, estés afiliado al sindicato o no.
         </p>
       </RespuestaPrimero>
 
@@ -203,13 +203,13 @@ export default function ComercioPage() {
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Básicos de convenio de <strong>jornada completa</strong> publicados por FAECYS en la
+            Son los básicos de <strong>jornada completa</strong> que publicó FAECYS en la
             circular del acuerdo 07/2026. A todas las categorías se les suman los{" "}
             <strong>{formatARS(destacado.noRemunerativo, 0)} no remunerativos</strong> del mes
-            (hasta noviembre: $100.000 prorrogados de 2025 + $20.000 del acuerdo de marzo) y,
-            solo en julio y agosto de 2026, la{" "}
-            <strong>asignación extraordinaria de $25.000</strong> por única vez, que no figura
-            en esta tabla porque no suma antigüedad ni presentismo:
+            (hasta noviembre: $100.000 que vienen de 2025 + $20.000 del acuerdo de marzo).
+            Solo en julio y agosto de 2026 se suma además la{" "}
+            <strong>asignación extraordinaria de $25.000</strong> por única vez. No está en la
+            tabla porque no suma antigüedad ni presentismo.
           </p>
         </div>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
@@ -265,27 +265,31 @@ export default function ComercioPage() {
           <p>
             Tu sueldo de convenio se arma con el <strong>básico de tu categoría</strong> + las{" "}
             <strong>sumas no remunerativas</strong> del mes + la{" "}
-            <strong>antigüedad</strong> (1% por año trabajado, sobre las cifras remunerativas
-            y no remunerativas) + el <strong>presentismo</strong> (8,33% de la remuneración del
-            mes, si no tuviste más de una ausencia injustificada).
+            <strong>antigüedad</strong> (1% por año trabajado, sobre lo remunerativo y lo no
+            remunerativo) + el <strong>presentismo</strong> (8,33% de lo que cobrás en el mes, si
+            no faltaste sin justificar más de una vez).
           </p>
           <p className="rounded-xl bg-white p-4 font-medium text-zinc-800 shadow-sm">
             Sueldo bruto = (básico + $120.000) × (1 + 1% × años de antigüedad) × (1 + 8,33% si
-            cobrás presentismo), proporcional a tu jornada. En julio y agosto de 2026 se suma
-            aparte la asignación extraordinaria de $25.000, que va sola: no la multiplica ni la
+            cobrás presentismo), en proporción a tu jornada. En julio y agosto de 2026 se suma
+            aparte la asignación extraordinaria de $25.000. Va sola: no la multiplican ni la
             antigüedad ni el presentismo.
           </p>
           <p>
-            El acuerdo del 26 de marzo de 2026 ({COMERCIO_HOMOLOGACION}) dispuso un{" "}
+            El acuerdo del 26 de marzo de 2026 ({COMERCIO_HOMOLOGACION}) dio un{" "}
             <strong>5% en tres tramos</strong> sobre los básicos de marzo (+2% abril, +1,5%
-            mayo, +1,5% junio). El <strong>acuerdo del 22 de julio de 2026</strong> (FAECYS +
-            CAC + CAME + UDECA) fijó el tramo siguiente: un <strong>5,7% trimestral</strong>{" "}
-            sobre el total de junio, otra vez en tramos no acumulativos (+1,9% julio, +3,8%
-            agosto, +5,7% septiembre, escala que rige hasta noviembre), más un{" "}
+            mayo, +1,5% junio). El <strong>acuerdo del 22 de julio de 2026</strong> (FAECYS,
+            CAC, CAME y UDECA) fijó lo que sigue: un <strong>5,7% en tres meses</strong> sobre el
+            total de junio, otra vez en tramos no acumulativos (+1,9% julio, +3,8% agosto, +5,7%
+            septiembre). Esa escala sigue hasta noviembre. Además dio un{" "}
             <strong>bono de $50.000</strong> en dos cuotas de $25.000 (julio y agosto). Ese
-            mismo acuerdo corrió la incorporación de los $120.000 al básico: en vez de
-            absorberse de golpe en julio, pasan de a $20.000 por mes entre diciembre de 2026 y
-            mayo de 2027.
+            mismo acuerdo cambió cuándo pasan los $120.000 al básico: en vez de hacerlo de golpe
+            en julio, pasan de a $20.000 por mes entre diciembre de 2026 y mayo de 2027. Si querés
+            el detalle del último aumento, está en{" "}
+            <Link href="/blog/aumento-comercio-agosto-2026" className="text-emerald-700 underline">
+              la guía del aumento de agosto de Comercio
+            </Link>
+            .
           </p>
           <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
             <table className="w-full text-sm">
@@ -346,17 +350,28 @@ export default function ComercioPage() {
         <p className="text-xs text-zinc-400">
           Este año el{" "}
           <Link href="/dia-del-empleado-de-comercio" className="text-emerald-700 underline">
-            Día del Empleado de Comercio se trasladó al lunes 28 de septiembre
+            Día del Empleado de Comercio se pasó al lunes 28 de septiembre
           </Link>{" "}
           y se paga como feriado.
         </p>
         <p className="text-xs text-zinc-400">
-          Última verificación: {COMERCIO_FUENTES.consultadoEl}. Con tu sueldo de convenio,
-          calculá tu{" "}
+          Última verificación: {COMERCIO_FUENTES.consultadoEl}. Para saber cuánto te queda en
+          mano, mirá el{" "}
+          <Link href="/sueldo-neto/comercio" className="text-emerald-700 underline">
+            sueldo neto de Comercio
+          </Link>
+          . Si liquidás sueldos, seguí{" "}
+          <Link
+            href="/blog/como-liquidar-sueldo-empleado-de-comercio"
+            className="text-emerald-700 underline"
+          >
+            cómo liquidar el sueldo de un empleado de comercio
+          </Link>
+          . Con tu sueldo de convenio, calculá tu{" "}
           <Link href="/aguinaldo" className="text-emerald-700 underline">
             aguinaldo
           </Link>{" "}
-          (los $120.000 computan —{" "}
+          (los $120.000 cuentan:{" "}
           <Link
             href="/blog/como-calcular-aguinaldo-empleado-de-comercio"
             className="text-emerald-700 underline"

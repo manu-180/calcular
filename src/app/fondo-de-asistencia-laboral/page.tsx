@@ -21,12 +21,12 @@ import {
 } from "@/data/fal";
 
 export const metadata: Metadata = {
-  title: "Fondo de Asistencia Laboral (FAL): cuánto se aporta desde el 1/11/2026",
-  description: `El Título II de la Ley 27.802 arranca el ${VIGENCIA_FAL}: ${ALICUOTAS.vigentes.pyme}% para MiPyME y ${ALICUOTAS.vigentes.grande}% para grandes empresas, con una reducción equivalente de contribuciones patronales. No reemplaza la indemnización. Calculá tu aporte.`,
+  title: "Fondo de Asistencia Laboral (FAL): aporte desde noviembre",
+  description: `Desde el ${VIGENCIA_FAL} las empresas aportan ${ALICUOTAS.vigentes.pyme}% (MiPyME) o ${ALICUOTAS.vigentes.grande}% (grandes) al FAL, con una baja equivalente de contribuciones. Calculá tu aporte.`,
   alternates: { canonical: "/fondo-de-asistencia-laboral" },
   openGraph: {
     title: "FAL: no es un impuesto nuevo, y no reemplaza la indemnización",
-    description: `Las dos alícuotas del art. 60 (${ALICUOTAS.vigentes.pyme}% y ${ALICUOTAS.vigentes.grande}%), la reducción equivalente del art. 76, la carencia de ${PERIODOS_CARENCIA} períodos y la prórroga al ${VIGENCIA_FAL} — la única de toda la Ley de Modernización Laboral.`,
+    description: `Las dos alícuotas del art. 60 (${ALICUOTAS.vigentes.pyme}% y ${ALICUOTAS.vigentes.grande}%), la reducción equivalente del art. 76, la carencia de ${PERIODOS_CARENCIA} períodos y la prórroga al ${VIGENCIA_FAL}, la única de toda la Ley de Modernización Laboral.`,
     url: "https://calcular.ar/fondo-de-asistencia-laboral",
     images: [
       {
@@ -41,47 +41,47 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Cuándo empieza a regir el Fondo de Asistencia Laboral?",
-    a: `El ${VIGENCIA_FAL}. El art. 77 de la Ley 27.802 lo había fijado para el ${VIGENCIA_ORIGINAL} y facultaba al Poder Ejecutivo a prorrogarlo «por el plazo máximo de seis (6) meses»: el art. 27 del Decreto 408/2026 (B.O. 1/6/2026) usó ese plazo entero. Es la única prórroga de toda la ley — el resto del articulado rige desde el 6 de marzo de 2026.`,
+    a: `El ${VIGENCIA_FAL}. El art. 77 de la Ley 27.802 lo había fijado para el ${VIGENCIA_ORIGINAL} y dejaba que el Poder Ejecutivo lo corriera «por el plazo máximo de seis (6) meses». El art. 27 del Decreto 408/2026 (B.O. 1/6/2026) usó ese plazo entero. Es la única prórroga de toda la ley: el resto rige desde el 6 de marzo de 2026.`,
   },
   {
     q: "¿Cuánto hay que aportar?",
-    a: `El art. 60 fija dos alícuotas sobre la misma base que las contribuciones patronales al SIPA: ${ALICUOTAS.vigentes.grande}% para las grandes empresas y ${ALICUOTAS.vigentes.pyme}% para las Micro, Pequeñas y Medianas de la Ley 24.467. El segundo párrafo del mismo artículo permite subirlas hasta ${ALICUOTAS.maximas.grande}% y ${ALICUOTAS.maximas.pyme}% respectivamente, pero sólo si lo dispone el Poder Ejecutivo «atendiendo al cumplimiento de las metas asociadas a las políticas de equilibrio fiscal» y con aprobación previa de la Comisión Bicameral de Control de Fondos de la Seguridad Social.`,
+    a: `El art. 60 fija dos porcentajes sobre la misma base que las contribuciones patronales al SIPA: ${ALICUOTAS.vigentes.grande}% para las grandes empresas y ${ALICUOTAS.vigentes.pyme}% para las micro, pequeñas y medianas de la Ley 24.467. El segundo párrafo del mismo artículo permite subirlos hasta ${ALICUOTAS.maximas.grande}% y ${ALICUOTAS.maximas.pyme}% en cada caso. Pero solo si lo decide el Poder Ejecutivo «atendiendo al cumplimiento de las metas asociadas a las políticas de equilibrio fiscal» y con el visto bueno previo de la Comisión Bicameral de Control de Fondos de la Seguridad Social.`,
   },
   {
     q: "¿Es un impuesto nuevo al trabajo?",
-    a: `No, y está escrito en dos lugares. El art. 76 de la ley da al empleador «una reducción en las contribuciones patronales con destino a la seguridad social equivalente» a lo que aporta al Fondo, y el art. 24 del Decreto 408/2026 explica cómo: «los empleadores detraerán mensualmente la alícuota de contribución al Fondo de Asistencia Laboral (…) de aquella que les corresponde». O sea que el peso se desvía de la seguridad social a una cuenta del propio empleador. La única excepción está escrita: las relaciones alcanzadas por el RIFL «mientras persista sus efectos» no tienen esa reducción, y ahí sí el aporte es plata adicional.`,
+    a: `No, y está escrito en dos lugares. El art. 76 de la ley le da al empleador «una reducción en las contribuciones patronales con destino a la seguridad social equivalente» a lo que pone en el Fondo. Y el art. 24 del Decreto 408/2026 explica cómo: «los empleadores detraerán mensualmente la alícuota de contribución al Fondo de Asistencia Laboral (…) de aquella que les corresponde». O sea, la plata que iba a la seguridad social pasa a una cuenta del mismo empleador. Hay una sola excepción, y está escrita: los trabajadores del RIFL, «mientras persista sus efectos», no tienen esa reducción. Ahí el aporte sí es plata extra.`,
   },
   {
     q: "¿El fondo reemplaza la indemnización por despido?",
-    a: `No. Es la confusión más cara y la ley la desmiente en su propio texto: «${FAL_TEXTOS.noSustituye}» (art. 58, último párrafo). El art. 64 lo repite del lado del dinero: «${FAL_TEXTOS.responsabilidadIntegra}». Y el art. 68 cierra el círculo: las entidades administradoras «en ningún caso se considerarán sujetos obligados frente al trabajador». El trabajador le sigue cobrando al empleador, por los mismos importes de siempre; el fondo es una caja del empleador para pagarlos.`,
+    a: `No. Es la confusión más cara, y la misma ley la desmiente: «${FAL_TEXTOS.noSustituye}» (art. 58, último párrafo). El art. 64 lo repite desde el lado de la plata: «${FAL_TEXTOS.responsabilidadIntegra}». Y el art. 68 lo cierra: las entidades que administran el fondo «en ningún caso se considerarán sujetos obligados frente al trabajador». El trabajador le sigue cobrando al empleador, los mismos montos de siempre. El fondo es una caja del empleador para pagarlos.`,
   },
   {
     q: "¿Desde cuándo el fondo puede pagar una indemnización?",
-    a: `No antes de ${PERIODOS_CARENCIA} períodos. El art. 65 dice que el fondo «no responderá» hasta haber recibido las contribuciones de al menos seis períodos mensuales, y el art. 15 del decreto precisa el cómputo: se cuenta desde el mes calendario en que ARCA registra la efectiva integración de la primera contribución, y son seis períodos de devengamiento y pago «completos y consecutivos».`,
+    a: `No antes de ${PERIODOS_CARENCIA} períodos. El art. 65 dice que el fondo «no responderá» hasta haber recibido los aportes de al menos seis meses. El art. 15 del decreto aclara cómo se cuentan: desde el mes en que ARCA registra que entró el primer aporte, y tienen que ser seis meses de aporte y pago «completos y consecutivos».`,
   },
   {
     q: "¿Cubre a todos los trabajadores?",
-    a: `No. El art. 58 pone dos filtros. El primero: sólo hay cobertura respecto de «trabajadores registrados con una antelación no menor a doce (12) meses de la fecha de la extinción de la relación laboral». El segundo, más tajante: «En ningún caso y bajo ninguna circunstancia prestarán cobertura respecto de trabajadores no registrados». Y si la relación está registrada de modo deficiente, el art. 64 y el art. 13 del decreto limitan la cobertura a lo que correspondería según los datos efectivamente registrados — el empleador paga la diferencia igual.`,
+    a: `No. El art. 58 pone dos filtros. El primero: solo cubre a «trabajadores registrados con una antelación no menor a doce (12) meses de la fecha de la extinción de la relación laboral». El segundo, más tajante: «En ningún caso y bajo ninguna circunstancia prestarán cobertura respecto de trabajadores no registrados». Y si el trabajador está mal registrado, el art. 64 y el art. 13 del decreto limitan la cobertura a lo que figura registrado. La diferencia la paga el empleador igual.`,
   },
   {
     q: "¿Quiénes quedan fuera del régimen?",
-    a: `Tres grupos. El último párrafo del art. 58 excluye a la industria de la construcción (Ley 22.250) y al personal de casas particulares (Ley 26.844); el art. 2 del Decreto 408/2026 agrega al Sector Público, definido por el art. 8° de la Ley 24.156. La construcción es el caso interesante: ya tiene un fondo de cese desde 1980, y ése sí reemplaza a la indemnización — que es exactamente lo que el FAL no hace.`,
+    a: `Tres grupos. El último párrafo del art. 58 deja afuera a la construcción (Ley 22.250) y al personal de casas particulares (Ley 26.844). El art. 2 del Decreto 408/2026 suma al Sector Público, como lo define el art. 8° de la Ley 24.156. La construcción es el caso curioso: ya tiene un fondo de cese desde 1980, y ese sí reemplaza a la indemnización. Justo lo que el FAL no hace.`,
   },
   {
     q: "¿La plata del fondo sigue siendo del empleador?",
-    a: `Sí. La cuenta es «un patrimonio separado, de afectación específica, independiente, inajenable e inembargable» (art. 59), es del empleador y «de carácter común y no individualizable por trabajador» (art. 62). Los rendimientos están exentos del Impuesto a las Ganancias (art. 67) y las cuentas de los fondos, del impuesto al cheque (art. 25 del decreto). Si el empleador se queda sin trabajadores registrados durante ${MESES_SIN_TRABAJADORES} meses continuos, la cuenta se extingue y el remanente se transfiere a una cuenta bancaria de su titularidad (art. 72).`,
+    a: `Sí. La cuenta es «un patrimonio separado, de afectación específica, independiente, inajenable e inembargable» (art. 59), es del empleador y «de carácter común y no individualizable por trabajador» (art. 62). Lo que rinde no paga Ganancias (art. 67) y las cuentas de los fondos no pagan el impuesto al cheque (art. 25 del decreto). Si el empleador se queda sin trabajadores registrados ${MESES_SIN_TRABAJADORES} meses seguidos, la cuenta se cierra y lo que queda pasa a una cuenta bancaria a su nombre (art. 72).`,
   },
   {
     q: "¿Cuánto cobra la administradora?",
-    a: `Hasta ${TOPE_COMISION_ANUAL}%. El art. 71 fija ese tope y el art. 20 del decreto lo define sin lugar a interpretaciones: «${FAL_TEXTOS.decretoArt20}». O sea que no hay comisiones adicionales por fuera de ese techo. El empleador elige la entidad, pero el art. 62 le prohíbe elegir una en la que tenga participación directa o indirecta, bajo la multa del art. 75.`,
+    a: `Hasta ${TOPE_COMISION_ANUAL}%. El art. 71 fija ese tope y el art. 20 del decreto lo deja claro: «${FAL_TEXTOS.decretoArt20}». O sea, no hay comisiones extra por fuera de ese techo. El empleador elige la entidad, pero el art. 62 le prohíbe elegir una en la que tenga participación directa o indirecta, con la multa del art. 75.`,
   },
   {
     q: "¿Qué pasa si el empleador usa la plata para otra cosa?",
-    a: `El art. 75 prevé una multa de hasta ${MULTA_MULTIPLO} veces el monto ingresado al Fondo, más su rendimiento devengado a la fecha de la multa, «sin perjuicio de las acciones civiles y/o penales que pudieran corresponder». La misma sanción alcanza a quien elija una entidad habilitada con la que tenga vinculación.`,
+    a: `El art. 75 pone una multa de hasta ${MULTA_MULTIPLO} veces lo que se depositó en el Fondo, más lo que rindió hasta la fecha de la multa, «sin perjuicio de las acciones civiles y/o penales que pudieran corresponder». La misma multa vale para quien elija una entidad con la que tenga vínculo.`,
   },
   {
     q: "¿Cuánto tarda en llegarle la plata al trabajador?",
-    a: `El art. 69 le da a la entidad administradora un plazo máximo de ${DIAS_HABILES_TRANSFERENCIA} días hábiles para transferir a la cuenta bancaria del trabajador, una vez verificada la declaración jurada que presenta el empleador. Pero el uso del fondo es una opción del empleador, no una obligación: «${FAL_TEXTOS.opcionDelEmpleador}».`,
+    a: `El art. 69 le da a la entidad que administra el fondo ${DIAS_HABILES_TRANSFERENCIA} días hábiles como máximo para transferir a la cuenta del trabajador, después de verificar la declaración jurada del empleador. Pero usar el fondo es una opción del empleador, no una obligación: «${FAL_TEXTOS.opcionDelEmpleador}».`,
   },
 ];
 
@@ -127,38 +127,39 @@ export default function FondoDeAsistenciaLaboralPage() {
           Fondo de Asistencia Laboral: qué se aporta desde el {VIGENCIA_FAL}
         </h1>
         <p className="text-zinc-600">
-          Es el único tramo de la reforma laboral que todavía no arrancó, y el que más se cuenta
-          mal. Dos cosas hay que sacar del medio antes de mirar los números:{" "}
-          <strong>no reemplaza la indemnización por despido</strong> y, salvo un caso escrito en la
-          ley, <strong>no aumenta el costo laboral</strong> — porque lo que se aporta al Fondo se
-          detrae de las contribuciones patronales.
+          <strong>El FAL arranca el {VIGENCIA_FAL}.</strong> Es la única parte de la reforma laboral
+          que todavía no empezó, y la que más se cuenta mal. Antes de mirar los números, dos
+          aclaraciones: <strong>no reemplaza la indemnización por despido</strong> y, salvo un caso
+          escrito en la ley, <strong>no aumenta el costo laboral</strong>, porque lo que se pone en
+          el Fondo se descuenta de las contribuciones patronales.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={FAL_FUENTES.consultadoEl}>
         <p>
-          <strong>El FAL empieza el {VIGENCIA_FAL}</strong>, tras la prórroga del art. 27 del
-          Decreto 408/2026 —la única de toda la Ley de Modernización Laboral—. Cada empleador privado
-          abre una cuenta propia, inembargable, en una entidad habilitada por la CNV, y aporta{" "}
+          <strong>El FAL empieza el {VIGENCIA_FAL}</strong>, después de la prórroga del art. 27 del
+          Decreto 408/2026 (la única de toda la Ley de Modernización Laboral). Cada empleador privado
+          abre una cuenta propia, que no se puede embargar, en una entidad habilitada por la CNV, y
+          aporta{" "}
           <strong>
             {ALICUOTAS.vigentes.pyme}% (MiPyME) o {ALICUOTAS.vigentes.grande}% (gran empresa)
           </strong>{" "}
-          de la base de contribuciones patronales al SIPA. El art. 76 le devuelve esa misma alícuota
-          como reducción de contribuciones patronales, así que el impacto neto es cero — salvo en las
-          relaciones alcanzadas por el RIFL, que quedan expresamente afuera de esa reducción. El
-          fondo no responde durante los primeros {PERIODOS_CARENCIA} períodos (art. 65) ni por
-          trabajadores con menos de {MESES_ANTIGUEDAD_MINIMA} meses de registración (art. 58). Y no
-          cambia un peso de lo que cobra el trabajador: «{FAL_TEXTOS.noSustituye}».
+          de la base de contribuciones patronales al SIPA. El art. 76 le devuelve ese mismo
+          porcentaje como baja de contribuciones patronales, así que el efecto neto es cero. Salvo
+          con los trabajadores del RIFL, que la ley deja afuera de esa baja. El fondo no paga nada en
+          los primeros {PERIODOS_CARENCIA} períodos (art. 65) ni por trabajadores con menos de{" "}
+          {MESES_ANTIGUEDAD_MINIMA} meses registrados (art. 58). Y no cambia un peso de lo que cobra
+          el trabajador: «{FAL_TEXTOS.noSustituye}».
         </p>
       </RespuestaPrimero>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Calculá tu aporte</h2>
         <p className="text-sm text-zinc-600">
-          Cargá tu masa salarial y el mes de la primera contribución. La calculadora hace la
-          aritmética que está en la ley: la alícuota, la reducción del art. 76, el corrimiento de la
-          carencia y el tope de comisión. No proyecta rendimientos, porque no hay un rendimiento
-          legal que publicar.
+          Cargá el total de sueldos de tu empresa y el mes del primer aporte. La calculadora hace
+          las cuentas que pide la ley: el porcentaje, la baja del art. 76, cuándo termina la
+          carencia y el tope de comisión. No estima cuánto va a rendir, porque la ley no fija un
+          rendimiento.
         </p>
         <CalculadoraFal />
       </section>
@@ -168,8 +169,8 @@ export default function FondoDeAsistenciaLaboralPage() {
           Las tres oraciones que desmienten el titular
         </h2>
         <p className="text-sm text-zinc-600">
-          «El fondo reemplaza la indemnización» es lo que más se lee y lo que la ley niega en tres
-          artículos distintos. Los tres textos, completos:
+          «El fondo reemplaza la indemnización» es lo que más se lee, y la ley lo niega en tres
+          artículos distintos. Acá van los tres textos completos:
         </p>
         <div className="space-y-3">
           <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
@@ -188,9 +189,8 @@ export default function FondoDeAsistenciaLaboralPage() {
           </blockquote>
         </div>
         <p className="text-sm text-zinc-600">
-          Leídas juntas dicen una sola cosa: el obligado sigue siendo el empleador, por el importe
-          completo, y el Fondo es una caja suya para afrontarlo. Si la cuenta no alcanza, la
-          diferencia la pone él igual.
+          Juntas dicen una sola cosa: el que paga sigue siendo el empleador, el monto completo, y el
+          Fondo es una caja suya para hacerlo. Si la cuenta no alcanza, la diferencia la pone él.
         </p>
       </section>
 
@@ -199,13 +199,13 @@ export default function FondoDeAsistenciaLaboralPage() {
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="rounded-xl border border-emerald-200 bg-white p-4 shadow-sm">
             <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
-              La ley — art. 76
+              La ley: art. 76
             </p>
             <p className="mt-2 text-sm italic text-zinc-700">«{FAL_TEXTOS.art76}»</p>
           </div>
           <div className="rounded-xl border border-emerald-200 bg-white p-4 shadow-sm">
             <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
-              El decreto — art. 24
+              El decreto: art. 24
             </p>
             <p className="mt-2 text-sm italic text-zinc-700">«{FAL_TEXTOS.decretoArt24}»</p>
           </div>
@@ -217,9 +217,9 @@ export default function FondoDeAsistenciaLaboralPage() {
             <Link href="/rifl" className="font-medium text-emerald-700 hover:underline">
               Régimen de Incentivo a la Formalización Laboral (RIFL)
             </Link>{" "}
-            quedan fuera de la reducción «mientras persista sus efectos». Para esas relaciones —y
-            sólo para esas—, el aporte al Fondo es plata adicional. Es una diferencia del 100% del
-            costo, y depende de un solo dato.
+            quedan fuera de la baja «mientras persista sus efectos». Para esos trabajadores (y solo
+            para esos), el aporte al Fondo es plata extra. Es una diferencia del 100% del costo, y
+            depende de un solo dato.
           </p>
         </div>
       </section>
@@ -227,9 +227,9 @@ export default function FondoDeAsistenciaLaboralPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Qué se puede pagar con el Fondo</h2>
         <p className="text-sm text-zinc-600">
-          El art. 58 enumera los artículos de la LCT cuyo pago el fondo puede «coadyuvar» a cumplir,
+          El art. 58 nombra los artículos de la LCT que el fondo puede ayudar («coadyuvar») a pagar,
           más las indemnizaciones de preaviso, integración y despido de los estatutos profesionales
-          y las de la Ley 26.727 de trabajo agrario. La lista es taxativa:
+          y las de la Ley 26.727 de trabajo agrario. La lista es cerrada:
         </p>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[30rem] text-sm">
@@ -250,8 +250,8 @@ export default function FondoDeAsistenciaLaboralPage() {
           </table>
         </div>
         <p className="text-sm text-zinc-500">
-          Nótese qué NO está: las multas e indemnizaciones agravadas por falta de registración. El
-          Fondo asiste al pago de la extinción regular, no al costo de haber estado mal registrado.
+          Fijate lo que NO está: las multas e indemnizaciones extra por no registrar al trabajador.
+          El Fondo ayuda a pagar un despido normal, no el costo de haber tenido gente mal registrada.
         </p>
       </section>
 
@@ -261,7 +261,7 @@ export default function FondoDeAsistenciaLaboralPage() {
           {EXCLUIDOS.map((e) => (
             <div key={e.norma} className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
               <p className="text-sm font-semibold text-zinc-800">
-                {e.quienes} <span className="font-normal text-zinc-500">— {e.norma}</span>
+                {e.quienes} <span className="font-normal text-zinc-500">({e.norma})</span>
               </p>
               <p className="mt-1 text-sm text-zinc-600">{e.porQue}</p>
             </div>
@@ -274,26 +274,26 @@ export default function FondoDeAsistenciaLaboralPage() {
         <div className="space-y-3">
           <details className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
             <summary className="cursor-pointer font-semibold text-zinc-800">
-              Carencia de {PERIODOS_CARENCIA} períodos — art. 65 de la ley y art. 15 del decreto
+              Carencia de {PERIODOS_CARENCIA} períodos (art. 65 de la ley y art. 15 del decreto)
             </summary>
             <p className="mt-2 text-sm italic text-zinc-600">«{FAL_TEXTOS.art65}»</p>
             <p className="mt-2 text-sm italic text-zinc-600">«{FAL_TEXTOS.decretoArt15}»</p>
             <p className="mt-2 text-sm text-zinc-700">
-              El decreto es el que evita la discusión: no se cuentan meses corridos desde que arranca
-              el régimen, sino seis períodos de devengamiento y pago completos y consecutivos desde
-              que ARCA registra la primera contribución efectivamente integrada.
+              El decreto evita la discusión. No se cuentan meses corridos desde que arranca el
+              régimen, sino seis meses completos y seguidos de aporte y pago, desde que ARCA registra
+              que entró el primer aporte.
             </p>
           </details>
           <details className="ca-acordeon rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
             <summary className="cursor-pointer font-semibold text-zinc-800">
-              Antigüedad de {MESES_ANTIGUEDAD_MINIMA} meses del trabajador — art. 58
+              Antigüedad de {MESES_ANTIGUEDAD_MINIMA} meses del trabajador (art. 58)
             </summary>
             <p className="mt-2 text-sm italic text-zinc-600">«{FAL_TEXTOS.noRegistrados}»</p>
             <p className="mt-2 text-sm text-zinc-700">
-              Dos filtros en una sola oración. El de los doce meses deja fuera del Fondo justamente a
-              las relaciones más cortas —que son las que más se extinguen—, y el de los no
-              registrados es absoluto: «en ningún caso y bajo ninguna circunstancia». La
-              indemnización se paga igual; lo que no se puede es pagarla con la cuenta.
+              Dos filtros en una sola oración. El de los doce meses deja fuera del Fondo justo a los
+              trabajos más cortos, que son los que más terminan. Y el de los no registrados es
+              absoluto: «en ningún caso y bajo ninguna circunstancia». La indemnización se paga
+              igual; lo que no se puede es pagarla con la cuenta.
             </p>
           </details>
         </div>
@@ -304,19 +304,19 @@ export default function FondoDeAsistenciaLaboralPage() {
         <div className="space-y-3">
           {[
             {
-              art: "Art. 11 — la plata se queda en el país",
+              art: "Art. 11: la plata se queda en el país",
               texto: FAL_TEXTOS.decretoArt11,
               porQue:
-                "Define el universo de inversión del fondo. Ningún activo con subyacente emitido o negociado en el exterior.",
+                "Define en qué puede invertir el fondo. Nada que dependa de activos emitidos o negociados en el exterior.",
             },
             {
-              art: `Art. 20 — el ${TOPE_COMISION_ANUAL}% de comisión es global y anual`,
+              art: `Art. 20: el ${TOPE_COMISION_ANUAL}% de comisión es total y por año`,
               texto: FAL_TEXTOS.decretoArt20,
               porQue:
-                "Cierra la puerta a comisiones adicionales por fuera del tope: comprende «cualquier otro interviniente».",
+                "No deja cobrar comisiones extra por fuera del tope: incluye a «cualquier otro interviniente».",
             },
             {
-              art: `Art. 27 — la prórroga al ${VIGENCIA_FAL}`,
+              art: `Art. 27: la prórroga al ${VIGENCIA_FAL}`,
               texto: FAL_TEXTOS.decretoArt27,
               porQue: `El art. 77 de la ley fijaba el ${VIGENCIA_ORIGINAL} y permitía correrlo hasta seis meses. El Poder Ejecutivo usó el plazo entero. Es la única prórroga de toda la Ley de Modernización Laboral.`,
             },
@@ -378,14 +378,14 @@ export default function FondoDeAsistenciaLaboralPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
           Esta página cita el texto oficial de la Ley 27.802 y del Decreto 408/2026 publicados en
-          InfoLEG — no un resumen de prensa. Es informativa y orientativa: no reemplaza el
+          InfoLEG, no un resumen de prensa. Es informativa y orientativa: no reemplaza el
           asesoramiento de un profesional ni una liquidación. Consultada el {FAL_FUENTES.consultadoEl}
           .
         </p>

@@ -14,9 +14,9 @@ import { formatARS } from "@/lib/formato";
 import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
 export const metadata: Metadata = {
-  title: "Convenios colectivos 2026: escalas salariales y calculadoras por gremio",
+  title: "Escalas salariales 2026 por convenio colectivo",
   description:
-    "Cuánto se cobra por convenio en 2026: Empleados de Comercio (CCT 130/75) y UOCRA (CCT 76/75) con calculadora, escala del mes y paritarias al día. Verificado contra las circulares oficiales.",
+    "Cuánto se cobra en 2026 por convenio: Comercio, UOCRA y Camioneros, con calculadora, la escala del mes y la paritaria verificada contra la fuente oficial.",
   alternates: { canonical: "/convenios" },
   openGraph: {
     images: [
@@ -32,35 +32,35 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Qué es un convenio colectivo de trabajo (CCT)?",
-    a: "Es un acuerdo entre el sindicato de una actividad y las cámaras empresarias, homologado por la Secretaría de Trabajo, que fija las condiciones mínimas de ese sector: categorías, sueldos básicos, adicionales, jornada y licencias. Aplica a todos los trabajadores de la actividad, estén o no afiliados al sindicato.",
+    a: "Es un acuerdo entre el sindicato de una actividad y las cámaras de empresas, aprobado (homologado) por la Secretaría de Trabajo. Fija lo mínimo de ese sector: categorías, sueldos básicos, adicionales, jornada y licencias. Vale para todos los que trabajan en la actividad, estén afiliados al sindicato o no.",
   },
   {
     q: "¿Cómo sé qué convenio me corresponde?",
-    a: "Depende de la actividad principal de tu empleador, no de tu tarea puntual: un administrativo de un supermercado está en Comercio (CCT 130/75) y un administrativo de una constructora, en UOCRA o en el convenio de empleados de la construcción según su rol. El convenio y tu categoría figuran en el recibo de sueldo; si no aparecen, podés pedirlos en tu empleo o consultar al sindicato de la actividad.",
+    a: "Depende de a qué se dedica tu empleador, no de tu tarea. Un administrativo de un supermercado está en Comercio (CCT 130/75). Un administrativo de una constructora está en UOCRA o en el convenio de empleados de la construcción, según su rol. El convenio y tu categoría figuran en el recibo de sueldo. Si no aparecen, pedilos en tu trabajo o consultá al sindicato de la actividad.",
   },
   {
     q: "¿Me pueden pagar menos que la escala del convenio?",
-    a: "No. La escala salarial del convenio es un piso de orden público laboral: ningún acuerdo individual puede estar por debajo. Sí te pueden pagar más — muchos empleadores pagan por encima del básico — y ese excedente suele figurar como «a cuenta de futuros aumentos» o como adicional voluntario.",
+    a: "No. La escala del convenio es un piso obligatorio (de orden público laboral): ningún acuerdo individual puede quedar por debajo. Sí te pueden pagar más, y muchos empleadores lo hacen. Esa diferencia suele figurar como «a cuenta de futuros aumentos» o como adicional voluntario.",
   },
   {
     q: "¿Qué es una paritaria?",
-    a: "Es la negociación periódica entre sindicato y cámaras para actualizar las escalas del convenio. En 2026 la mayoría de los gremios negocia aumentos en tramos mensuales cortos (1,5% a 2% por mes) y los complementa con sumas no remunerativas que después se incorporan al básico.",
+    a: "Es la negociación periódica entre el sindicato y las cámaras para actualizar las escalas del convenio. En 2026 la mayoría de los gremios acuerda aumentos chicos mes a mes (1,5% a 2% por mes). Además suman montos no remunerativos que después pasan al básico.",
   },
   {
     q: "¿Qué diferencia hay entre el básico y una suma no remunerativa?",
-    a: "El básico es remunerativo: paga aportes (jubilación, PAMI, obra social) y computa para todo. Las sumas no remunerativas, en cambio, no pagan la mayoría de los aportes — por eso «rinden» más en mano — pero son transitorias: los acuerdos las suelen incorporar al básico después de unos meses. En Comercio, por ejemplo, los $120.000 no remunerativos que se cobran desde 2025 se incorporan al básico recién entre diciembre de 2026 y mayo de 2027, de a $20.000 por mes.",
+    a: "El básico es remunerativo: paga aportes (jubilación, PAMI, obra social) y cuenta para todo. Las sumas no remunerativas no pagan la mayoría de los aportes, por eso «rinden» más en mano. Pero son transitorias: los acuerdos suelen pasarlas al básico después de unos meses. En Comercio, por ejemplo, los $120.000 no remunerativos que se cobran desde 2025 pasan al básico entre diciembre de 2026 y mayo de 2027, de a $20.000 por mes.",
   },
   {
     q: "¿Cada cuánto se actualizan las escalas de esta página?",
-    a: "Cada vez que el gremio publica una circular o se firma un acuerdo nuevo: nuestro pipeline verifica las escalas contra el documento oficial (FAECYS, UOCRA-CAMARCO) antes de publicarlas, y cada página muestra la fecha de la última verificación. Si una escala todavía no tiene circular oficial, no la publicamos.",
+    a: "Cada vez que el gremio publica una circular o se firma un acuerdo nuevo. Antes de publicar, chequeamos las escalas contra el documento oficial (FAECYS, UOCRA-CAMARCO). Cada página muestra la fecha del último chequeo. Si una escala todavía no tiene circular oficial, no la publicamos.",
   },
   {
     q: "¿Por qué acá hay menos gremios que en otros sitios?",
-    a: "Porque solo publicamos escalas conciliadas contra la circular oficial del gremio o el acuerdo firmado — nunca contra blogs o terceros, que suelen contradecirse. Estamos sumando gremios (Camioneros, UOM, Plástico) a medida que verificamos sus escalas.",
+    a: "Porque solo publicamos escalas chequeadas contra la circular oficial del gremio o el acuerdo firmado. Nunca contra blogs o terceros, que suelen contradecirse. Vamos sumando gremios (Camioneros, UOM, Plástico) a medida que verificamos sus escalas.",
   },
   {
     q: "¿El convenio define también mi aguinaldo y mis vacaciones?",
-    a: "El aguinaldo (SAC) y las vacaciones tienen un piso legal para todos los trabajadores (Ley 23.041 y LCT); los convenios pueden mejorarlos o sumar adicionales propios. Tu sueldo de convenio sí impacta directo: el aguinaldo es el 50% del mejor sueldo del semestre, y las vacaciones se pagan sobre tu sueldo habitual.",
+    a: "El aguinaldo (SAC) y las vacaciones tienen un piso legal para todos (Ley 23.041 y LCT). Los convenios pueden mejorarlos o sumar adicionales propios. Tu sueldo de convenio sí pesa directo: el aguinaldo es el 50% del mejor sueldo del semestre y las vacaciones se pagan sobre tu sueldo habitual.",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function ConveniosPage() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        name: "Convenios colectivos 2026 — escalas salariales por gremio",
+        name: "Convenios colectivos 2026: escalas salariales por gremio",
         url: "https://calcular.ar/convenios",
         inLanguage: "es-AR",
         hasPart: [
@@ -108,9 +108,9 @@ export default function ConveniosPage() {
           Convenios colectivos 2026: cuánto se cobra por gremio
         </h1>
         <p className="text-zinc-600">
-          Escalas salariales <strong>verificadas contra la circular oficial</strong> de cada
-          gremio, con calculadora por categoría, antigüedad y zona, y las tablas de cada mes.
-          Sin blogs de por medio: si un número no está en el documento oficial, no se publica.
+          Las escalas de cada gremio, <strong>chequeadas contra la circular oficial</strong>.
+          Con calculadora por categoría, antigüedad y zona, y la tabla de cada mes. Si un número
+          no está en el documento oficial, no lo publicamos.
         </p>
       </header>
 
@@ -122,13 +122,12 @@ export default function ConveniosPage() {
 
       <RespuestaPrimero actualizado={COMERCIO_FUENTES.consultadoEl}>
         <p>
-          Un <strong>convenio colectivo de trabajo (CCT)</strong> fija el piso salarial
-          obligatorio de una actividad: ningún empleador puede pagar menos que su escala, estés o
-          no afiliado al sindicato. Acá tenés las escalas <strong>verificadas contra la circular
-          o el acuerdo oficial</strong> de cada gremio —Empleados de Comercio (CCT 130/75),
-          UOCRA-construcción (CCT 76/75) y Camioneros (CCT 40/89)— con calculadora por categoría,
-          antigüedad y zona, y la tabla de cada mes. Si un número no está en el documento oficial,
-          no se publica.
+          Un <strong>convenio colectivo de trabajo (CCT)</strong> fija el sueldo mínimo de una
+          actividad. Ningún empleador puede pagar menos que su escala, estés afiliado al sindicato
+          o no. Acá tenés las escalas de Empleados de Comercio (CCT 130/75), UOCRA construcción
+          (CCT 76/75) y Camioneros (CCT 40/89), <strong>chequeadas contra la circular o el acuerdo
+          oficial</strong>. Cada una trae calculadora por categoría, antigüedad y zona, y la tabla
+          de cada mes.
         </p>
       </RespuestaPrimero>
 
@@ -152,7 +151,7 @@ export default function ConveniosPage() {
           className="group rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:border-emerald-400 hover:shadow"
         >
           <h2 className="font-semibold text-zinc-900 group-hover:text-emerald-700">
-            UOCRA — construcción (CCT 76/75)
+            UOCRA construcción (CCT 76/75)
           </h2>
           <p className="mt-1.5 text-sm text-zinc-600">
             Jornales de {junioUocra.etiqueta.toLowerCase()}: {formatARS(junioUocra.jornales.ayudante.a, 0)} a{" "}
@@ -197,9 +196,9 @@ export default function ConveniosPage() {
         <h2 className="text-xl font-bold text-zinc-900">Cómo verificamos cada escala</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Las escalas de convenio son el terreno donde más se equivocan los sitios de
-            sueldos: las fuentes secundarias se contradicen entre sí, mezclan sumas fijas con
-            bonos y publican tablas viejas. Acá el método es uno solo:{" "}
+            En las escalas de convenio es donde más se equivocan los sitios de sueldos. Las
+            fuentes de segunda mano se contradicen, mezclan sumas fijas con bonos y publican
+            tablas viejas. Acá el método es uno solo:{" "}
             <strong>el documento oficial o nada</strong>.
           </p>
           <ul className="list-inside list-disc space-y-1.5">
@@ -213,9 +212,9 @@ export default function ConveniosPage() {
               zona).
             </li>
             <li>
-              Cada página muestra la fuente y la fecha de la última verificación. Cuando un
-              gremio firma un acuerdo nuevo, actualizamos la escala desde el documento, no
-              desde las noticias.
+              Cada página muestra la fuente y la fecha del último chequeo. Cuando un gremio
+              firma un acuerdo nuevo, actualizamos la escala desde el documento, no desde las
+              noticias.
             </li>
           </ul>
         </div>
@@ -262,6 +261,26 @@ export default function ConveniosPage() {
         , o ver si tu paritaria le gana a la{" "}
         <Link href="/inflacion" className="text-emerald-700 underline underline-offset-2">
           inflación
+        </Link>
+        . Para saber cuánto te queda en mano, está el sueldo neto de{" "}
+        <Link href="/sueldo-neto/comercio" className="text-emerald-700 underline underline-offset-2">
+          Comercio
+        </Link>
+        , de{" "}
+        <Link href="/sueldo-neto/construccion" className="text-emerald-700 underline underline-offset-2">
+          la construcción
+        </Link>{" "}
+        y de{" "}
+        <Link href="/sueldo-neto/camioneros" className="text-emerald-700 underline underline-offset-2">
+          Camioneros
+        </Link>
+        . Si tu convenio venció, mirá{" "}
+        <Link href="/convenio-vencido" className="text-emerald-700 underline underline-offset-2">
+          qué pasa con un convenio vencido
+        </Link>
+        . Y si liquidás sueldos, tenés las{" "}
+        <Link href="/planillas" className="text-emerald-700 underline underline-offset-2">
+          planillas de Excel por convenio
         </Link>
         .
       </FuentesOficiales>

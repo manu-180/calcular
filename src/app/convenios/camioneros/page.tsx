@@ -20,14 +20,14 @@ import { calcularCamioneros } from "@/lib/convenios";
 import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
 export const metadata: Metadata = {
-  title: "Sueldo de camioneros 2026: calculadora y escala (CCT 40/89)",
+  title: "Sueldo de camioneros 2026: escala CCT 40/89",
   description:
-    "Calculadora de sueldo para camioneros en Argentina 2026 según CCT 40/89. Escala salarial oficial por categoría — Chofer 1ª, 2ª, 3ª, peones y taller — con antigüedad. Paritaria verificada contra la Disposición DNRyRT 455/2026.",
+    "Escala salarial de Camioneros 2026 por categoría (chofer de 1ª, 2ª y 3ª, peones y taller) con antigüedad y calculadora, homologada por la DNRyRT.",
   alternates: { canonical: "/convenios/camioneros" },
   openGraph: {
     images: [
       {
-        url: `/og?t=${encodeURIComponent("Sueldo de camioneros 2026")}&s=${encodeURIComponent("Escala CCT 40/89 verificada — Disposición DNRyRT 455/2026")}`,
+        url: `/og?t=${encodeURIComponent("Sueldo de camioneros 2026")}&s=${encodeURIComponent("Escala CCT 40/89 verificada (Disposición DNRyRT 455/2026)")}`,
         width: 1200,
         height: 630,
       },
@@ -59,31 +59,31 @@ const ACUMULADO = (
 const faqs = [
   {
     q: `¿Cuánto cobra un Chofer de Primera en ${MES_TXT}?`,
-    a: `El básico de un Chofer de Primera en ${MES_TXT} es ${formatARS(CHOFER1_MES, 0)} según la escala del CCT 40/89 (acuerdo homologado por la Disposición DNRyRT 455/2026, con la revisión de julio). A eso se suma la antigüedad (1% por año sobre el básico). El neto, descontando el 17% de aportes de ley, queda en aproximadamente ${formatARS(CHOFER1_NETO, 0)}.`,
+    a: `El básico de un Chofer de Primera en ${MES_TXT} es ${formatARS(CHOFER1_MES, 0)}, según la escala del CCT 40/89 (acuerdo homologado por la Disposición DNRyRT 455/2026, con la revisión de julio). A eso se suma la antigüedad: 1% del básico por cada año. Después de descontar el 17% de aportes de ley, te quedan unos ${formatARS(CHOFER1_NETO, 0)} en mano.`,
   },
   {
     q: "¿Qué convenio cubre a los camioneros?",
-    a: "El CCT 40/89 (Convenio Colectivo de Trabajo 40/89) cubre al Transporte Automotor de Cargas, Logística y Servicios. Lo negocia la Federación Nacional de Trabajadores Camioneros y Obreros del Transporte Automotor de Cargas, Logística y Servicios (FETIAMP / Camioneros).",
+    a: "El CCT 40/89 (Convenio Colectivo de Trabajo 40/89), que cubre el transporte automotor de cargas, la logística y los servicios. Lo negocia la Federación Nacional de Trabajadores Camioneros y Obreros del Transporte Automotor de Cargas, Logística y Servicios (FETIAMP, Camioneros).",
   },
   {
     q: "¿Cuánto es el aumento de camioneros en 2026?",
-    a: `El acuerdo del 13/3/2026 (homologado por la Disposición DNRyRT 455/2026) fijó tramos mensuales sobre el básico del mes anterior: marzo +2,0%, abril +1,8% (más la incorporación al básico de la suma no remunerativa de marzo), mayo +1,7% y junio +1,6%. Julio no quedó en el +1,5% original: la revisión de la cláusula TERCERA lo llevó a +4,22% sobre junio, y agosto sumó +1,5% sobre ese julio revisado. Con todo eso, el básico del Chofer de Primera subió ${ACUMULADO.toLocaleString("es-AR", { maximumFractionDigits: 1 })}% entre febrero y agosto de 2026. El 18/9/2026 se firmó el acuerdo que sigue (septiembre de 2026 a febrero de 2027). Los básicos se cargan acá recién cuando FADEEAC publique las planillas firmadas: hasta entonces, la de ${ULTIMO.etiqueta.toLowerCase()} es la última escala con planilla oficial.`,
+    a: `El acuerdo del 13/3/2026 (homologado por la Disposición DNRyRT 455/2026) fijó aumentos mensuales sobre el básico del mes anterior: marzo +2,0%, abril +1,8% (y la suma no remunerativa de marzo pasó al básico), mayo +1,7% y junio +1,6%. Julio no quedó en el +1,5% original: la revisión de la cláusula TERCERA lo llevó a +4,22% sobre junio. Agosto sumó +1,5% sobre ese julio revisado. En total, el básico del Chofer de Primera subió ${ACUMULADO.toLocaleString("es-AR", { maximumFractionDigits: 1 })}% entre febrero y agosto de 2026. El 18/9/2026 se firmó el acuerdo siguiente (septiembre de 2026 a febrero de 2027). Cargamos esos básicos cuando FADEEAC publique las planillas firmadas. Hasta entonces, la de ${ULTIMO.etiqueta.toLowerCase()} es la última escala con planilla oficial.`,
   },
   {
     q: "¿Hay zonas o regiones en la escala de camioneros?",
-    a: "El básico no cambia por provincia: el CCT 40/89 tiene una escala nacional única, a diferencia de UOCRA que arma cuatro zonas. Lo que sí varía por zona son los viáticos y recargos (ítems 4.2.3 y 4.2.4): quien reside al sur del Río Colorado los cobra con coeficiente 1,20 y al sur del Río Santa Cruz con 1,40, y los ítems de comida, viático especial y pernoctada suben 20% y 40% respectivamente. O sea: mismo básico, distinto bolsillo final.",
+    a: "El básico no cambia por provincia: el CCT 40/89 tiene una sola escala nacional (UOCRA, en cambio, tiene cuatro zonas). Lo que sí cambia por zona son los viáticos y recargos (ítems 4.2.3 y 4.2.4). Si vivís al sur del Río Colorado los cobrás con coeficiente 1,20, y al sur del Río Santa Cruz con 1,40. Los ítems de comida, viático especial y pernoctada suben 20% y 40% en cada caso. O sea: mismo básico, distinto bolsillo final.",
   },
   {
     q: "¿Cómo se calcula la antigüedad en el convenio de camioneros?",
-    a: "El CCT 40/89 reconoce un adicional por antigüedad del 1% del sueldo básico por cada año de servicio en la empresa. Con 10 años de antigüedad, por ejemplo, el adicional es el 10% del básico del mes.",
+    a: "El CCT 40/89 paga un adicional del 1% del básico por cada año que trabajaste en la empresa. Con 10 años de antigüedad, por ejemplo, el adicional es el 10% del básico del mes.",
   },
   {
     q: "¿Qué diferencia hay entre Chofer de Primera, Segunda y Tercera?",
-    a: "Las categorías de chofer se distinguen principalmente por el tipo de vehículo y la responsabilidad. Chofer de Primera maneja equipos de mayor tonelaje o complejidad; Chofer de Segunda y Tercera tienen escala menor de acuerdo a las características del trabajo definidas en el CCT. Las diferencias salariales reflejan esa gradación.",
+    a: "Se distinguen sobre todo por el tipo de vehículo y la responsabilidad. El Chofer de Primera maneja equipos más pesados o más complejos. Segunda y Tercera cobran menos, según las tareas que define el CCT para cada una. Los sueldos siguen ese mismo orden.",
   },
   {
     q: "¿El sueldo del convenio ya incluye el SAC (aguinaldo)?",
-    a: "No. El básico del convenio es el sueldo mensual regular. El SAC (aguinaldo) es adicional: equivale al 50% del mejor sueldo mensual del semestre y se paga en dos cuotas anuales (30 de junio y 18 de diciembre). Podés calcularlo en la calculadora de aguinaldo.",
+    a: "No. El básico del convenio es el sueldo de todos los meses. El aguinaldo (en la ley se llama SAC) va aparte: es el 50% del mejor sueldo del semestre y se paga en dos cuotas por año (30 de junio y 18 de diciembre). Lo podés calcular en la calculadora de aguinaldo.",
   },
 ];
 
@@ -148,12 +148,12 @@ export default function CamionerosPage() {
           /
         </nav>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
-          Sueldo de camioneros 2026 — calculadora CCT 40/89
+          Sueldo de camioneros 2026: calculadora CCT 40/89
         </h1>
         <p className="text-zinc-600">
-          Escala salarial oficial del{" "}
-          <strong>Convenio Colectivo de Trabajo 40/89</strong> (Transporte Automotor de
-          Cargas, Logística y Servicios), homologada por la{" "}
+          La escala oficial del{" "}
+          <strong>Convenio Colectivo de Trabajo 40/89</strong> (transporte automotor de
+          cargas, logística y servicios), homologada por la{" "}
           <strong>Disposición DNRyRT 455/2026</strong>. En {MES_TXT} el básico de un Chofer
           de Primera es{" "}
           <strong className="text-zinc-900">{formatARS(junioChofer1, 0)}</strong> y el de
@@ -172,10 +172,10 @@ export default function CamionerosPage() {
         <p>
           Un <strong>Chofer de Primera</strong> del convenio de Camioneros (CCT 40/89, transporte
           automotor de cargas) cobra en {MES_TXT} un básico de{" "}
-          <strong>{formatARS(junioChofer1, 0)}</strong>; con el 17% de aportes de ley y sin
-          antigüedad, el neto ronda <strong>≈ {formatARS(chofer1.neto, 0)}</strong>. El CCT 40/89
-          tiene <strong>escala nacional única</strong> (sin zonas) y suma 1% por año de
-          antigüedad; los valores salen de la paritaria homologada por la Disposición DNRyRT
+          <strong>{formatARS(junioChofer1, 0)}</strong>. Sin antigüedad y con el 17% de aportes
+          de ley, en mano le quedan unos <strong>{formatARS(chofer1.neto, 0)}</strong>. El CCT
+          40/89 tiene <strong>una sola escala para todo el país</strong> (sin zonas) y suma 1% por
+          año de antigüedad. Los valores salen de la paritaria homologada por la Disposición DNRyRT
           455/2026.
         </p>
       </RespuestaPrimero>
@@ -185,7 +185,7 @@ export default function CamionerosPage() {
       <EmailCapture
         source="convenio-camioneros"
         headline="Avisame cuando cambie la escala de Camioneros"
-        subtext="El CCT 40/89 se actualiza varias veces al año. Actualizamos esta página apenas sale el acuerdo homologado y te avisamos por mail el mismo día. Sin spam."
+        subtext="El CCT 40/89 cambia varias veces por año. Actualizamos esta página apenas sale el acuerdo homologado y te avisamos por mail ese mismo día. Sin spam."
       />
 
       <section className="space-y-4">
@@ -193,8 +193,8 @@ export default function CamionerosPage() {
           Escala de básicos de {MES_TXT}
         </h2>
         <p className="text-sm text-zinc-600">
-          Valores según la Disposición DNRyRT 455/2026. El CCT 40/89 establece una{" "}
-          <strong>escala nacional única</strong> — no hay diferencias por zona o provincia.
+          Valores según la Disposición DNRyRT 455/2026. El CCT 40/89 tiene{" "}
+          <strong>una sola escala nacional</strong>: no cambia por zona ni por provincia.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -256,9 +256,8 @@ export default function CamionerosPage() {
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            La Disposición DNRyRT 455/2026 homologó el acuerdo salarial de Camioneros para
-            el período marzo-agosto 2026. Los aumentos se aplican en tramos mensuales sobre
-            el básico del mes anterior:
+            La Disposición DNRyRT 455/2026 homologó el acuerdo salarial de Camioneros de marzo
+            a agosto de 2026. Cada mes, el aumento se aplica sobre el básico del mes anterior:
           </p>
           <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
             <table className="w-full text-sm">

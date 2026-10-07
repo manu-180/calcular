@@ -22,10 +22,11 @@ import { formatARS } from "@/lib/formato";
 
 const NOVIEMBRE = ESCALAS_POR_MES.find((m) => m.id === "2026-11")!;
 const GENERALES = ESCALA_VIGENTE.find((c) => c.id === "tareas-generales")!;
+const MES_CORTO = VIGENCIA.vigenteEn.replace(" de ", " ");
 
 export const metadata: Metadata = {
-  title: `Empleada doméstica: cuánto cobra por hora y por mes en ${VIGENCIA.vigenteEn}`,
-  description: `La escala completa de las 5 categorías de casas particulares, con y sin retiro, por hora y por mes, según el anexo oficial de la ${VIGENCIA.resolucion}. Tareas generales con retiro: ${formatARS(GENERALES.horaConRetiro!, 2)} la hora y ${formatARS(GENERALES.mesConRetiro!, 0)} el mes. Calculá el sueldo por las horas reales, con extras y zona desfavorable.`,
+  title: `Sueldo de empleada doméstica ${MES_CORTO}: por hora y mes`,
+  description: "Escala oficial de las 5 categorías de casas particulares, con y sin retiro, por hora y por mes. Calculá el sueldo por horas reales, con extras y zona.",
   alternates: { canonical: "/empleada-domestica" },
   openGraph: {
     images: [
@@ -41,55 +42,55 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: `¿Cuánto cobra por hora una empleada doméstica en ${VIGENCIA.vigenteEn}?`,
-    a: `Para la categoría más común —personal para tareas generales— el mínimo es de ${formatARS(GENERALES.horaConRetiro!, 2)} por hora con retiro y ${formatARS(GENERALES.horaSinRetiro, 2)} sin retiro, según el anexo de la ${VIGENCIA.resolucion} (${VIGENCIA.boletinOficial}), vigente desde ${VIGENCIA.desde}. Pero hay cinco categorías y cada una tiene su valor: supervisor/a, tareas específicas, caseros, asistencia y cuidado de personas y tareas generales. La categoría la define la tarea principal que se hace con habitualidad, no el nombre que le pongan al puesto.`,
+    a: `En la categoría más común (personal para tareas generales), el mínimo es de ${formatARS(GENERALES.horaConRetiro!, 2)} por hora con retiro y ${formatARS(GENERALES.horaSinRetiro, 2)} sin retiro, según el anexo de la ${VIGENCIA.resolucion} (${VIGENCIA.boletinOficial}), vigente desde ${VIGENCIA.desde}. Pero hay cinco categorías y cada una tiene su valor: supervisor/a, tareas específicas, caseros, asistencia y cuidado de personas, y tareas generales. La categoría la define la tarea principal que se hace todos los días, no el nombre que le pongan al puesto.`,
   },
   {
     q: "¿Cuál es el sueldo mensual mínimo?",
-    a: `Para tareas generales, ${formatARS(GENERALES.mesConRetiro!, 0)} con retiro y ${formatARS(GENERALES.mesSinRetiro, 0)} sin retiro, por la jornada completa de ${JORNADA.horasSemanales} horas semanales. Ese mínimo mensual y el valor hora son DOS pisos distintos que conviven: con jornada reducida se paga por hora, y con jornada completa no se puede pagar menos que el mínimo mensual, aunque multiplicar las horas por el valor hora diera menos.`,
+    a: `Para tareas generales, ${formatARS(GENERALES.mesConRetiro!, 0)} con retiro y ${formatARS(GENERALES.mesSinRetiro, 0)} sin retiro, por la jornada completa de ${JORNADA.horasSemanales} horas semanales. Ese mínimo mensual y el valor hora son dos pisos distintos que conviven. Con jornada reducida se paga por hora. Con jornada completa no se puede pagar menos que el mínimo mensual, aunque horas por valor hora diera menos.`,
   },
   {
     q: "¿Hasta cuándo sirve esta escala?",
-    a: `La ${VIGENCIA.resolucion} (${VIGENCIA.boletinOficial}) publicó cinco anexos, uno por mes, de agosto a ${VIGENCIA.ultimoMesPublicado}. Esta página los tiene todos cargados y muestra el que corresponde al mes en curso, así que no hay que esperar a que alguien la actualice para ver el valor del mes siguiente. Después de ${VIGENCIA.ultimoMesPublicado} hace falta una resolución nueva: mientras no salga, la última escala publicada sigue siendo la vigente.`,
+    a: `La ${VIGENCIA.resolucion} (${VIGENCIA.boletinOficial}) publicó cinco anexos, uno por mes, de agosto a ${VIGENCIA.ultimoMesPublicado}. Esta página los tiene todos cargados y muestra el del mes en curso, así que no hay que esperar a que alguien la actualice para ver el valor del mes siguiente. Después de ${VIGENCIA.ultimoMesPublicado} hace falta una resolución nueva. Mientras no salga, sigue rigiendo la última escala publicada.`,
   },
   {
     q: "¿El aumento de septiembre es sólo el 1,8%?",
-    a: `No, y es el error de cuenta más frecuente de esta resolución. El artículo 7 manda incorporar al básico de septiembre el 25% de la suma no remunerativa de $20.000 —o sea $5.000— ANTES de aplicar el aumento. Por eso el mínimo mensual de septiembre no es el de agosto más 1,8%: es (agosto + $5.000) × 1,018, que reproduce los nueve valores del anexo al centavo. Quien aplique el porcentaje sobre la escala de agosto queda $5.090 corto por mes, en todas las categorías. En octubre pasa lo mismo con el 50% ($10.000).`,
+    a: `No, y es el error de cuenta más común con esta resolución. El artículo 7 manda sumar al básico de septiembre el 25% de la suma no remunerativa de $20.000 (o sea $5.000) antes de aplicar el aumento. Por eso el mínimo mensual de septiembre no es el de agosto más 1,8%: es (agosto + $5.000) × 1,018, que da los nueve valores del anexo al centavo. Si aplicás el porcentaje sobre la escala de agosto, te quedás $5.090 corto por mes, en todas las categorías. En octubre pasa lo mismo con el 50% ($10.000).`,
   },
   {
     q: "¿Y la suma no remunerativa de $20.000, quién la cobra?",
-    a: `Todo el personal, con y sin retiro, y se pagó por única vez junto con ${SUMA_NO_REMUNERATIVA.pagaderaCon} (art. 6). El monto no depende de la categoría sino de las horas semanales: ${SUMA_NO_REMUNERATIVA.tramos.map((t) => `${formatARS(t.monto, 0)} para ${t.detalle}`).join("; ")}. No es parte del básico ni entra en aportes, pero se va incorporando al básico en tres tramos: ${SUMA_NO_REMUNERATIVA.incorporacion.map((i) => `${i.porcentaje}% en ${i.mes}`).join(", ")}.`,
+    a: `Todo el personal, con y sin retiro. Se pagó una sola vez junto con ${SUMA_NO_REMUNERATIVA.pagaderaCon} (art. 6). El monto no depende de la categoría sino de las horas por semana: ${SUMA_NO_REMUNERATIVA.tramos.map((t) => `${formatARS(t.monto, 0)} para ${t.detalle}`).join("; ")}. No es parte del básico ni paga aportes, pero va pasando al básico en tres tramos: ${SUMA_NO_REMUNERATIVA.incorporacion.map((i) => `${i.porcentaje}% en ${i.mes}`).join(", ")}.`,
   },
   {
     q: "¿Cuánto sube realmente en noviembre?",
-    a: `Un ${NOVIEMBRE.incrementoDeclarado}%, sobre el básico de octubre más los ${formatARS(NOVIEMBRE.incorporaAlBasico, 0)} que se incorporan ese mes (el último tramo de la suma de $20.000). Ojo si viste otra cifra: la resolución original citó como anexo de noviembre un documento equivocado, cuyos importes salían con 1,7%. La Resolución 7/2026 de la Comisión (Boletín Oficial del 18/9/2026) corrigió los anexos de noviembre y diciembre, y los importes correctos son los que usa esta página. Diciembre suma otro ${ESCALAS_POR_MES.at(-1)!.incrementoDeclarado}% sobre noviembre.`,
+    a: `Un ${NOVIEMBRE.incrementoDeclarado}%, sobre el básico de octubre más los ${formatARS(NOVIEMBRE.incorporaAlBasico, 0)} que pasan al básico ese mes (el último tramo de la suma de $20.000). Ojo si viste otra cifra: la resolución original citó como anexo de noviembre un documento equivocado, con importes al 1,7%. La Resolución 7/2026 de la Comisión (Boletín Oficial del 18/9/2026) corrigió los anexos de noviembre y diciembre, y esta página usa los importes correctos. Diciembre suma otro ${ESCALAS_POR_MES.at(-1)!.incrementoDeclarado}% sobre noviembre.`,
   },
   {
     q: "¿Qué es el adicional por zona desfavorable y a quién le corresponde?",
-    a: `Es un ${ZONA_DESFAVORABLE.porcentaje}% que se suma sobre el mínimo de cada categoría para quienes trabajan en ${ZONA_DESFAVORABLE.provincias.join(", ")} o en el partido de ${ZONA_DESFAVORABLE.partidoBonaerense}, en la provincia de Buenos Aires. Subió del 30% al ${ZONA_DESFAVORABLE.porcentaje}% desde el ${ZONA_DESFAVORABLE.desde} por el artículo 7 de la resolución, y es de los datos que más seguido quedan desactualizados en las tablas que circulan.`,
+    a: `Es un ${ZONA_DESFAVORABLE.porcentaje}% que se suma al mínimo de cada categoría si trabajás en ${ZONA_DESFAVORABLE.provincias.join(", ")} o en el partido de ${ZONA_DESFAVORABLE.partidoBonaerense}, en la provincia de Buenos Aires. Subió del 30% al ${ZONA_DESFAVORABLE.porcentaje}% desde el ${ZONA_DESFAVORABLE.desde} por el artículo 7 de la resolución, y es de los datos que más seguido aparecen viejos en las tablas que circulan.`,
   },
   {
     q: "¿Cómo se pagan las horas extras?",
-    a: `Con un recargo del ${HORAS_EXTRAS.comunes}% sobre el salario habitual en días comunes y del ${HORAS_EXTRAS.finDeSemanaYFeriados}% los sábados después de las 13, los domingos y los feriados (art. ${HORAS_EXTRAS.articulo.split("art. ")[1]}). Se cuentan como suplementarias las que exceden la jornada: ${JORNADA.horasDiarias} horas diarias o ${JORNADA.horasSemanales} semanales, con un tope de ${JORNADA.horasDiariasMaximoDesigual} horas cuando la distribución semanal es desigual.`,
+    a: `Con un recargo del ${HORAS_EXTRAS.comunes}% sobre el sueldo habitual en días comunes, y del ${HORAS_EXTRAS.finDeSemanaYFeriados}% los sábados después de las 13, los domingos y los feriados (art. ${HORAS_EXTRAS.articulo.split("art. ")[1]}). Son extras las que pasan la jornada: ${JORNADA.horasDiarias} horas por día o ${JORNADA.horasSemanales} por semana, con un tope de ${JORNADA.horasDiariasMaximoDesigual} horas cuando los días de la semana son desparejos.`,
   },
   {
     q: "¿Cómo se calcula el aguinaldo?",
-    a: `Es el ${SAC.porcentaje}% de ${SAC.base} (art. 26 de la Ley 26.844) y se paga en dos cuotas: la última jornada laboral de junio y la última de diciembre. Ojo con un detalle: la base es la MAYOR remuneración del semestre, no el promedio ni el último sueldo, así que un mes con muchas horas extras levanta todo el aguinaldo.`,
+    a: `Es el ${SAC.porcentaje}% de ${SAC.base} (art. 26 de la Ley 26.844) y se paga en dos cuotas: el último día de trabajo de junio y el de diciembre. Ojo con un detalle: la base es el sueldo más alto del semestre, no el promedio ni el último, así que un mes con muchas horas extras sube todo el aguinaldo.`,
   },
   {
     q: "¿Cuántos días de vacaciones le corresponden?",
-    a: `Según la antigüedad al 31 de diciembre (art. 29): ${VACACIONES.map((v) => `${v.dias} días corridos con ${v.detalle}`).join("; ")}. Si todavía no llegó a los 6 meses de servicio, corresponde un día de descanso por cada 20 días efectivamente trabajados. En la modalidad sin retiro, la habitación y la comida que pone el empleador deben pagarse en dinero antes de que empiecen las vacaciones.`,
+    a: `Según la antigüedad al 31 de diciembre (art. 29): ${VACACIONES.map((v) => `${v.dias} días corridos con ${v.detalle}`).join("; ")}. Si todavía no llegó a los 6 meses de trabajo, le corresponde un día de descanso por cada 20 días trabajados. Si es sin retiro, la habitación y la comida que pone el empleador se le tienen que pagar en plata antes de que empiecen las vacaciones.`,
   },
   {
     q: "Trabaja en varias casas, ¿cómo se liquida?",
-    a: `Cada empleo es una relación laboral independiente. Cada empleador paga su propio sueldo por las horas que le trabaja, su propio aguinaldo, sus propias vacaciones y hace su propio aporte. La jornada máxima y los mínimos se miran empleo por empleo, no sumando todo. Por eso la calculadora de arriba se completa una vez por cada casa.`,
+    a: `Cada trabajo es una relación aparte. Cada empleador paga el sueldo por las horas que le trabaja, su aguinaldo, sus vacaciones y sus aportes. La jornada máxima y los mínimos se miran casa por casa, no sumando todo. Por eso la calculadora de arriba se completa una vez por cada casa.`,
   },
   {
     q: "¿El recibo puede seguir siendo de papel?",
-    a: `No. La Ley 27.802 (B.O. 6/3/2026) sustituyó el artículo 20 de la Ley 26.844: el recibo debe instrumentarse de forma electrónica, emitido por el sistema que determine ARCA. Es un cambio reciente que muchas guías todavía no reflejan. El contenido mínimo del recibo sigue estando en el artículo 21, e incluye —para el trabajo por hora— el número de horas trabajadas y el período al que corresponden.`,
+    a: `No. La Ley 27.802 (B.O. 6/3/2026) reemplazó el artículo 20 de la Ley 26.844: el recibo tiene que ser electrónico, emitido por el sistema que defina ARCA. Es un cambio reciente que muchas guías todavía no tienen. Lo mínimo que debe decir el recibo sigue en el artículo 21 e incluye, si se trabaja por hora, la cantidad de horas y el período al que corresponden.`,
   },
   {
     q: "¿La licencia por maternidad es igual que en el resto de los trabajos?",
-    a: `Casi, pero con una diferencia que sorprende: el artículo 39 de la Ley 26.844 prohíbe el trabajo 45 días antes y 45 después del parto, igual que la LCT, pero el piso al que se puede reducir el tramo anterior es de 30 días corridos, no de 10 como en el régimen general. El resto del período se acumula al descanso posterior.`,
+    a: `Casi, pero con una diferencia que sorprende. El artículo 39 de la Ley 26.844 prohíbe trabajar 45 días antes y 45 después del parto, igual que la LCT. Pero el tramo de antes del parto se puede achicar hasta 30 días corridos, no hasta 10 como en el régimen general. Lo que no se usa antes se suma al descanso de después.`,
   },
 ];
 
@@ -135,9 +136,9 @@ export default function EmpleadaDomesticaPage() {
           Empleada doméstica: la escala oficial de {VIGENCIA.vigenteEn}, con las cinco categorías
         </h1>
         <p className="text-zinc-600">
-          Casi todas las notas publican una sola fila de la tabla —tareas generales— y se olvidan de
+          Casi todas las notas publican una sola fila de la tabla (tareas generales) y se olvidan de
           las otras cuatro categorías, del adicional por zona y de que el valor hora y el mínimo
-          mensual son <strong>dos pisos distintos</strong>. Acá está el anexo oficial completo, y una
+          mensual son <strong>dos pisos distintos</strong>. Acá tenés el anexo oficial completo y una
           calculadora que hace la cuenta con las horas que se trabajan de verdad.
         </p>
       </header>
@@ -150,9 +151,9 @@ export default function EmpleadaDomesticaPage() {
           {formatARS(GENERALES.horaSinRetiro, 2)} por hora y {formatARS(GENERALES.mesSinRetiro, 0)}{" "}
           por mes sin retiro. Son los valores del {VIGENCIA.anexo} de la {VIGENCIA.resolucion} (
           {VIGENCIA.boletinOficial}), que publicó <strong>una escala por mes hasta{" "}
-          {VIGENCIA.ultimoMesPublicado}</strong> y las cinco están acá abajo. Ojo con la cuenta: el
-          aumento de septiembre <strong>no es sólo el 1,8%</strong>, porque antes se le incorporan al
-          básico $5.000 de la suma no remunerativa. En las provincias patagónicas y en el partido de{" "}
+          {VIGENCIA.ultimoMesPublicado}</strong>, y las cinco están acá abajo. Ojo con la cuenta: el
+          aumento de septiembre <strong>no es solo el 1,8%</strong>, porque antes se suman al básico
+          $5.000 de la suma no remunerativa. En las provincias patagónicas y en el partido de{" "}
           {ZONA_DESFAVORABLE.partidoBonaerense} se suma un{" "}
           <strong>{ZONA_DESFAVORABLE.porcentaje}%</strong> por zona desfavorable.
         </p>
@@ -165,9 +166,9 @@ export default function EmpleadaDomesticaPage() {
           La escala completa · {VIGENCIA.vigenteEn}
         </h2>
         <p className="text-zinc-600">
-          Los cinco casos del anexo oficial, sin recortes. La categoría la define la tarea principal
-          que se desempeña con habitualidad: quien hace tareas de más de una queda comprendida en la
-          que resulte principal.
+          Las cinco categorías del anexo oficial, sin recortes. La categoría la define la tarea
+          principal que se hace todos los días. Si hace tareas de más de una, va en la que sea la
+          principal.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -203,8 +204,8 @@ export default function EmpleadaDomesticaPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          Los caseros aparecen con un guion en la columna «con retiro» porque la categoría existe
-          sólo sin retiro: por definición, quien la ocupa vive en la vivienda que cuida.
+          Los caseros aparecen sin valor en la columna «con retiro» porque esa categoría existe solo
+          sin retiro: el casero vive en la casa que cuida.
         </p>
       </section>
 
@@ -213,10 +214,10 @@ export default function EmpleadaDomesticaPage() {
           Mes a mes, hasta {VIGENCIA.ultimoMesPublicado}
         </h2>
         <p className="text-zinc-600">
-          La {VIGENCIA.resolucion} no fijó un aumento: fijó cinco, con un anexo propio cada uno. Esta
-          tabla muestra el mínimo mensual con retiro de la categoría más común —personal para tareas
-          generales— en cada mes publicado, para que se vea el escalón completo sin tener que abrir
-          cinco PDF. El mes resaltado es el que se está liquidando.
+          La {VIGENCIA.resolucion} no fijó un aumento: fijó cinco, cada uno con su anexo. Esta tabla
+          muestra el mínimo mensual con retiro de la categoría más común (personal para tareas
+          generales) en cada mes publicado, así ves la escalera completa sin abrir cinco PDF. El mes
+          resaltado es el que se está liquidando.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -267,8 +268,8 @@ export default function EmpleadaDomesticaPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          La columna del medio es la que rompe las cuentas ajenas: los artículos 7, 8 y 9 incorporan
-          al básico el 25%, el 50% y el 25% de la suma no remunerativa de{" "}
+          La columna del medio es la que hace fallar las cuentas de otros sitios: los artículos 7, 8
+          y 9 pasan al básico el 25%, el 50% y el 25% de la suma no remunerativa de{" "}
           {formatARS(SUMA_NO_REMUNERATIVA.tramos[0].monto, 0)} <strong>antes</strong> de aplicar el
           aumento del mes. Por eso septiembre no es agosto más 1,8%, sino{" "}
           <strong>(agosto + {formatARS(5000, 0)}) × 1,018</strong>.
@@ -282,8 +283,8 @@ export default function EmpleadaDomesticaPage() {
             importes circularon con un 1,7% de aumento. La <strong>Resolución 7/2026</strong> de la
             Comisión (Boletín Oficial del 18/9/2026) los corrigió: noviembre sube{" "}
             {NOVIEMBRE.incrementoDeclarado}% sobre octubre más {formatARS(NOVIEMBRE.incorporaAlBasico, 0)}{" "}
-            incorporados, y diciembre otro {NOVIEMBRE.incrementoDeclarado}%. Si liquidás con una tabla
-            vieja de noviembre, vas a pagar unos $500 a $600 de más por mes.
+            que pasan al básico, y diciembre otro {NOVIEMBRE.incrementoDeclarado}%. Si liquidás con
+            una tabla vieja de noviembre, vas a pagar unos $500 a $600 de más por mes.
           </p>
         </div>
       </section>
@@ -293,16 +294,16 @@ export default function EmpleadaDomesticaPage() {
           Valor hora o mínimo mensual: cuál manda
         </h2>
         <p className="text-zinc-600">
-          Es la confusión más común del régimen. El anexo publica los dos pisos y no son
-          intercambiables: quien trabaja pocas horas por semana cobra <strong>por hora</strong>, y
-          quien cumple la jornada de {JORNADA.horasSemanales} horas semanales no puede cobrar menos
-          que el <strong>mínimo mensual</strong> de su categoría, aunque la cuenta de horas por valor
-          hora diera un número más bajo. La calculadora de arriba muestra las dos cifras al mismo
-          tiempo justamente para que se vea cuál se está aplicando.
+          Es la confusión más común del régimen. El anexo publica los dos pisos y no se pueden
+          cambiar uno por otro. Quien trabaja pocas horas por semana cobra <strong>por hora</strong>.
+          Quien cumple la jornada de {JORNADA.horasSemanales} horas semanales no puede cobrar menos
+          que el <strong>mínimo mensual</strong> de su categoría, aunque horas por valor hora diera
+          un número más bajo. La calculadora de arriba muestra las dos cifras juntas para que veas
+          cuál se aplica.
         </p>
         <p className="text-sm text-zinc-500">
-          Para pasar de horas semanales a horas del mes se multiplica por 52/12 ≈ 4,33, el promedio
-          real de semanas por mes. Multiplicar por 4 subestima el sueldo casi un 8%.
+          Para pasar de horas por semana a horas por mes se multiplica por 52/12 ≈ 4,33, que es el
+          promedio real de semanas por mes. Si multiplicás por 4, el sueldo te da casi un 8% menos.
         </p>
       </section>
 
@@ -328,6 +329,21 @@ export default function EmpleadaDomesticaPage() {
             {HORAS_EXTRAS.finDeSemanaYFeriados}% los sábados después de las 13, domingos y feriados.
           </li>
         </ul>
+        <p className="text-sm text-zinc-500">
+          Lo que el empleador paga a ARCA cada mes está en{" "}
+          <Link href="/aportes-empleada-domestica" className="font-medium text-emerald-700 hover:underline">
+            los aportes de empleada doméstica
+          </Link>
+          . Si la relación termina, mirá{" "}
+          <Link href="/despido-empleada-domestica" className="font-medium text-emerald-700 hover:underline">
+            la liquidación final por despido
+          </Link>
+          . Y si pagás Ganancias, parte de lo que le pagás se puede restar:{" "}
+          <Link href="/deduccion-empleada-domestica" className="font-medium text-emerald-700 hover:underline">
+            deducción de empleada doméstica
+          </Link>
+          .
+        </p>
       </section>
 
       <section className="space-y-3">
@@ -354,15 +370,15 @@ export default function EmpleadaDomesticaPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Los importes salen del anexo oficial de la resolución, no de tablas publicadas por medios.
-          Esta página es informativa: los valores son mínimos legales y cada relación laboral puede
-          pactar por encima. Consultada el {CASAS_PARTICULARES_FUENTES.consultadoEl}.
+          Los importes salen del anexo oficial de la resolución, no de tablas de los medios. Esta
+          página es informativa: los valores son mínimos legales y cada empleador puede pagar más.
+          Consultada el {CASAS_PARTICULARES_FUENTES.consultadoEl}.
         </p>
       </section>
     </article>
