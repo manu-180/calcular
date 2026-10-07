@@ -234,11 +234,11 @@ ${normasTxt}
 };
 
 export const HABER_MINIMO_FUENTE = {
-  nombre: "ANSES — Haber mínimo jubilatorio (serie mensual en pesos corrientes)",
+  nombre: "ANSES: Haber mínimo jubilatorio (serie mensual en pesos corrientes)",
   api: "${API_URL}",
   serie: "https://datos.gob.ar/dataset/sspm-haber-minimo-jubilatorio-pesos-corrientes",
   movilidad:
-    "Decreto 274/2024 — movilidad mensual por IPC (INDEC), con dos meses de rezago",
+    "Decreto 274/2024: movilidad mensual por IPC (INDEC), con dos meses de rezago",
   movilidadUrl: "https://www.boletinoficial.gob.ar/detalleAviso/primera/305905/20240322",
   consultadoEl: "${hoy}",
   ultimoPeriodo: "${ultimo.periodo}",
