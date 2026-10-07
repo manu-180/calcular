@@ -104,7 +104,7 @@ export default async function GraciasPage({
   if (pago && habilitaDescarga(pago, producto)) {
     if (pago.payer?.email) await capturarEmailComprador(pago.payer.email, producto.slug);
     return (
-      <Marco titulo="¡Listo! Tu pago se acreditó" tono="ok" icono="check">
+      <Marco titulo="Listo, tu pago se acreditó" tono="ok" icono="check">
         <ConversionGoogleAds
           sendTo={CONVERSION_COMPRA_PLANILLA}
           value={producto.precio}
@@ -178,7 +178,7 @@ export default async function GraciasPage({
     return (
       <Marco titulo="Tu pago está en proceso" tono="espera" icono="clock">
         <p className="text-zinc-600">
-          Cuando MercadoPago confirme el pago —suele ser cuestión de minutos— te
+          Cuando MercadoPago confirme el pago (suele tardar unos minutos), te
           mandamos {producto.entrega === "informe" ? "el informe" : "la planilla"} por email. No hace falta que pagues de nuevo.
         </p>
         <Volver />

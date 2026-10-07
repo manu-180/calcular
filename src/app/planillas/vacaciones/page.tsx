@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PlanillaLanding } from "../_producto";
 import { PRODUCTOS } from "@/lib/mp";
+import { openGraphDe } from "@/lib/seo";
 import { datosOferta } from "@/lib/oferta";
 import { ANIO_VACACIONES, VACACIONES_FUENTES } from "@/data/vacaciones";
 import { hojaVacaciones } from "@/components/vacaciones/previa";
@@ -12,18 +13,15 @@ const PRODUCTO = PRODUCTOS["planilla-vacaciones"];
 const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
 
 export const metadata: Metadata = {
-  title: `Planilla de vacaciones ${ANIO_VACACIONES} en Excel: días, aviso, pago y nota para firmar`,
-  description: `Planilla de Excel y Google Sheets para organizar las vacaciones de tu equipo: días por antigüedad, fecha de inicio válida, plazo del aviso de 30 días, pago a sueldo ÷ 25 y la notificación lista para imprimir. Con la Ley 27.802. $${PRECIO} pago único.`,
+  title: `Planilla de vacaciones ${ANIO_VACACIONES} en Excel para empleadores`,
+  description:
+    "Organizá las vacaciones de tu equipo: días por antigüedad, inicio válido, aviso de 30 días, pago a sueldo dividido 25 y la nota para firmar. Pago único.",
   alternates: { canonical: "/planillas/vacaciones" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent(`Planilla de vacaciones ${ANIO_VACACIONES}`)}&s=${encodeURIComponent("Días, aviso, pago y nota para firmar · LCT y Ley 27.802")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/planillas/vacaciones",
+    titulo: `Planilla de vacaciones ${ANIO_VACACIONES}`,
+    bajada: "Días, aviso, pago y nota para firmar · LCT y Ley 27.802",
+  }),
 };
 
 // Caso de la vista previa: una empleada con unos siete años de antigüedad y la primera fecha de
@@ -54,13 +52,13 @@ export default function PlanillaVacacionesPage() {
       respuestaPrimero={
         <p>
           La planilla de vacaciones {ANIO_VACACIONES} es un archivo de <strong>Excel y Google Sheets</strong> para quien
-          tiene empleados: cargás la fecha de ingreso y el sueldo de cada persona (hasta 40) y te calcula los{" "}
+          tiene empleados. Cargás la fecha de ingreso y el sueldo de cada persona (hasta 40) y te calcula los{" "}
           <strong>días que le corresponden</strong> por antigüedad al 31 de diciembre, el{" "}
           <strong>pago a sueldo ÷ 25</strong> con el plus vacacional y, con la fecha de inicio, el{" "}
           <strong>último día para entregar el aviso por escrito</strong> (30 días antes, art. 154 según la Ley 27.802).
           Te avisa si la fecha no cae en lunes o se pasa del 30 de abril, suma cuánto pagás en cada mes de la temporada
           y arma la <strong>notificación de vacaciones</strong> por duplicado, lista para firmar. Pago único de{" "}
-          <strong>${PRECIO}</strong>, con las actualizaciones del año y devolución dentro de los 7 días.
+          <strong>${PRECIO}</strong>, con las actualizaciones del año y 7 días para pedir la devolución.
         </p>
       }
       previewTitulo={`7 años de antigüedad · $1.450.000 · desde el ${fechaConDia(EJEMPLO.resumen.cronograma.inicio)}`}
@@ -138,7 +136,7 @@ export default function PlanillaVacacionesPage() {
         },
         {
           q: "¿Los números son los mismos que los de la calculadora gratis?",
-          a: "Sí. Antes de publicar cada versión, una verificación automática carga más de 2.000 casos en el archivo —antigüedades límite, ingresos durante el año, tramos, fechas con feriados— y exige que den exactamente lo mismo que la calculadora del sitio.",
+          a: "Sí. Antes de publicar cada versión, una verificación automática carga más de 2.000 casos en el archivo (antigüedades límite, ingresos durante el año, tramos, fechas con feriados) y exige que den exactamente lo mismo que la calculadora del sitio.",
         },
         {
           q: "¿Es asesoramiento legal?",

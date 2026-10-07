@@ -12,21 +12,18 @@ import {
 } from "@/data/convenios/uocra";
 import { textoProximaParitaria } from "@/lib/convenios";
 import { PRODUCTOS } from "@/lib/mp";
+import { openGraphDe } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Planilla de sueldos UOCRA 2026 en Excel (CCT 76/75)",
   description:
-    "Planilla de liquidación de sueldos de la construcción en Excel y Google Sheets: jornales oficiales UOCRA por categoría y zona, asistencia perfecta del 20%, suma no remunerativa y neto estimado. Da los mismos números que la calculadora gratis. $14.900 pago único.",
+    "Excel y Google Sheets para liquidar la construcción: jornales de UOCRA por categoría y zona, asistencia perfecta, no remunerativos y neto. Pago único.",
   alternates: { canonical: "/planillas/uocra" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Planilla de sueldos UOCRA 2026")}&s=${encodeURIComponent("CCT 76/75 · jornales por categoría y zona")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/planillas/uocra",
+    titulo: "Planilla de sueldos UOCRA 2026",
+    bajada: "CCT 76/75 · jornales por categoría y zona",
+  }),
 };
 
 // Caso de la vista previa: Oficial en Zona A (la categoría y la zona más frecuentes), mes
@@ -49,7 +46,7 @@ export default function PlanillaUocraPage() {
   return (
     <PlanillaLanding
       producto={PRODUCTOS["planilla-uocra"]}
-      etiquetaConvenio="CCT 76/75 — Construcción (UOCRA)"
+      etiquetaConvenio="CCT 76/75 · Construcción (UOCRA)"
       h1={
         <>
           Liquidá sueldos de UOCRA con los jornales oficiales
@@ -57,7 +54,7 @@ export default function PlanillaUocraPage() {
           <span className="text-emerald-600">de las cuatro zonas, ya cargados</span>
         </>
       }
-      bajada="La planilla de Excel y Google Sheets para la construcción: elegís categoría, zona, mes y horas, y te da el básico, la asistencia perfecta del 20%, la suma no remunerativa y el neto. Los jornales salen de los acuerdos UOCRA-CAMARCO firmados, no de un resumen."
+      bajada="La planilla de Excel y Google Sheets para la construcción. Elegís categoría, zona, mes y horas, y te da el básico, la asistencia perfecta del 20%, la suma no remunerativa y el neto. Los jornales salen de los acuerdos firmados por UOCRA y CAMARCO, no de un resumen."
       respuestaPrimero={
         <p>
           La planilla de sueldos de UOCRA (CCT 76/75) es una hoja de{" "}
@@ -65,12 +62,12 @@ export default function PlanillaUocraPage() {
           <strong>
             {CATEGORIAS_UOCRA.length} categorías y las {ZONAS_UOCRA.length} zonas
           </strong>{" "}
-          ya cargados: elegís categoría, zona, mes y horas trabajadas, y te da el{" "}
+          ya cargados. Elegís categoría, zona, mes y horas trabajadas, y te da el{" "}
           <strong>bruto desglosado y el neto estimado</strong>, con la asistencia perfecta del 20%
-          (art. 52) y la suma no remunerativa que corresponde a ese mes. Los valores están
-          verificados el {UOCRA_FUENTES.consultadoEl} contra los acuerdos paritarios firmados por
-          UOCRA y CAMARCO. Pago único de <strong>$14.900</strong>, con las actualizaciones del año
-          incluidas y devolución dentro de los 7 días si no te sirve.
+          (art. 52) y la suma no remunerativa de ese mes. Verificamos los valores el{" "}
+          {UOCRA_FUENTES.consultadoEl} contra los acuerdos paritarios firmados por UOCRA y CAMARCO.
+          Pago único de <strong>$14.900</strong>, con las actualizaciones del año incluidas y 7 días
+          para pedir la devolución si no te sirve.
         </p>
       }
       previewTitulo={`${CATEGORIA.nombre} · ${ZONA.nombre} · ${MES.etiqueta} · mes completo`}
@@ -138,7 +135,7 @@ export default function PlanillaUocraPage() {
         },
         {
           q: "¿Los números son los mismos que los de la calculadora gratis del sitio?",
-          a: "Sí. La planilla se genera desde los mismos datos que alimentan la calculadora de calcular.ar/convenios/uocra, y hay una verificación automática que compara las dos en 800 casos —todas las categorías, zonas, meses y combinaciones de asistencia y aporte solidario— antes de publicar. Si alguna vez no coinciden, escribinos: es un error nuestro.",
+          a: "Sí. La planilla sale de los mismos datos que usa la calculadora de calcular.ar/convenios/uocra. Antes de publicar, una verificación automática compara las dos en 800 casos (todas las categorías, zonas, meses y combinaciones de asistencia y aporte solidario). Si alguna vez no coinciden, escribinos: es un error nuestro.",
         },
         {
           q: "¿Y si la compro y no me sirve?",
@@ -151,6 +148,7 @@ export default function PlanillaUocraPage() {
       ]}
       relacionadas={[
         { href: "/convenios/uocra", texto: "Calculadora de sueldo UOCRA" },
+        { href: "/sueldo-neto/construccion", texto: "Sueldo neto en la construcción" },
         { href: "/aguinaldo", texto: "Calculadora de aguinaldo" },
         { href: "/horas-extras", texto: "Calculadora de horas extras" },
         { href: "/vacaciones", texto: "Calculadora de vacaciones" },

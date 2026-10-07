@@ -9,6 +9,7 @@ import { fechaLarga, hoyAR } from "@/lib/hoy";
 import { formatARS } from "@/lib/formato";
 import { PLANILLA_PF } from "@/lib/prefill/plazo-fijo";
 import { PRODUCTOS } from "@/lib/mp";
+import { openGraphDe } from "@/lib/seo";
 import { AvisoDatosPlazoFijo, PreviaPersonalPlazoFijo } from "@/components/plazo-fijo/PreviaPersonalPlazoFijo";
 
 const PRODUCTO = PRODUCTOS["planilla-plazo-fijo"];
@@ -16,18 +17,15 @@ const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
 const TNA = TNA_FALLBACK.valor.toLocaleString("es-AR");
 
 export const metadata: Metadata = {
-  title: "Planilla de plazos fijos 2026 en Excel: vencimientos y tasa real contra el IPC",
-  description: `Planilla de Excel y Google Sheets para seguir tus plazos fijos de todos los bancos: vencimientos, interés, TEA y si le ganaron a la inflación con el IPC oficial del INDEC. Simulá renovar, compará con un UVA y armá una escalera. $${PRECIO} pago único.`,
+  title: "Planilla de plazos fijos 2026 en Excel vs. inflación",
+  description:
+    "Seguí tus plazos fijos de todos los bancos: vencimientos, interés, TEA y tasa real contra el IPC del INDEC. Simulá renovar y compará con un UVA.",
   alternates: { canonical: "/planillas/plazo-fijo" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Planilla de plazos fijos 2026")}&s=${encodeURIComponent("Vencimientos y tasa real contra el IPC del INDEC")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/planillas/plazo-fijo",
+    titulo: "Planilla de plazos fijos 2026",
+    bajada: "Vencimientos y tasa real contra el IPC del INDEC",
+  }),
 };
 
 // Caso de la vista previa: $1.000.000 a 30 días con la TNA promedio del BCRA, renovado un año, con
@@ -63,14 +61,14 @@ export default function PlanillaPlazoFijoPage() {
       respuestaPrimero={
         <p>
           La planilla de plazos fijos es un archivo de <strong>Excel y Google Sheets</strong> para
-          llevar hasta <strong>{PLANILLA_PF.registro.filas} plazos fijos</strong> de cualquier banco:
-          cargás la fecha, el capital, la TNA y los días, y te calcula el{" "}
+          llevar hasta <strong>{PLANILLA_PF.registro.filas} plazos fijos</strong> de cualquier banco.
+          Cargás la fecha, el capital, la TNA y los días, y te calcula el{" "}
           <strong>vencimiento, el interés, la TEA y la tasa real</strong> contra el IPC oficial del
           INDEC (cargado hasta {nombrePeriodo(ULTIMO_PERIODO)}). Trae un calendario de
           vencimientos, un simulador de renovación, la comparación con el plazo fijo UVA según la
           regla del BCRA, una escalera de plazos y el resumen del año. Da los mismos números que la
           calculadora gratis de calcular.ar. Pago único de <strong>${PRECIO}</strong>, con el IPC
-          actualizado todos los meses y devolución dentro de los 7 días. Es una herramienta de
+          actualizado todos los meses y 7 días para pedir la devolución. Es una herramienta de
           cálculo, no asesoramiento financiero.
         </p>
       }

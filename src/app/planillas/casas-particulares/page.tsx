@@ -8,23 +8,21 @@ import {
   VIGENCIA,
 } from "@/data/casas-particulares";
 import { PRODUCTOS } from "@/lib/mp";
+import { openGraphDe } from "@/lib/seo";
 
 const PRODUCTO = PRODUCTOS["planilla-casas-particulares"];
 const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
 
 export const metadata: Metadata = {
-  title: "Planilla de sueldo de empleada doméstica 2026 en Excel",
-  description: `Planilla de Excel y Google Sheets para liquidar el sueldo de personal de casas particulares: escala oficial de la CNTCP, horas extras, zona desfavorable, aguinaldo, lo que se paga a ARCA y un recibo para imprimir. $${PRECIO} pago único.`,
+  title: "Planilla de sueldo de empleada doméstica 2026 (Excel)",
+  description:
+    "Excel y Google Sheets para liquidar casas particulares: escala de la CNTCP, horas extras, zona, aguinaldo, lo que se paga a ARCA y recibo. Pago único.",
   alternates: { canonical: "/planillas/casas-particulares" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Planilla de sueldo de Casas Particulares 2026")}&s=${encodeURIComponent("Sueldo, aguinaldo, ARCA y recibo · Ley 26.844")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/planillas/casas-particulares",
+    titulo: "Planilla de sueldo de Casas Particulares 2026",
+    bajada: "Sueldo, aguinaldo, ARCA y recibo · Ley 26.844",
+  }),
 };
 
 const fechaLarga = (iso: string) => {
@@ -53,7 +51,7 @@ export default function PlanillaCasasPage() {
   return (
     <PlanillaLanding
       producto={PRODUCTO}
-      etiquetaConvenio="Ley 26.844 — Casas Particulares"
+      etiquetaConvenio="Ley 26.844 · Casas Particulares"
       h1={
         <>
           Sueldo, recibo y ARCA de quien trabaja en tu casa,{" "}
@@ -64,12 +62,12 @@ export default function PlanillaCasasPage() {
       respuestaPrimero={
         <p>
           La planilla de sueldo de casas particulares es una hoja de <strong>Excel y Google Sheets</strong> con la
-          escala oficial de la <strong>Resolución CNTCP 6/2026</strong> ya cargada, mes por mes: elegís la categoría,
-          si es con o sin retiro y cuántas horas trabaja por semana, y te calcula el{" "}
+          escala oficial de la <strong>Resolución CNTCP 6/2026</strong> ya cargada, mes por mes. Elegís la categoría,
+          si es con o sin retiro y cuántas horas trabaja por semana. Te calcula el{" "}
           <strong>sueldo del mes con horas extras y zona desfavorable</strong>, el aguinaldo, las vacaciones y{" "}
-          <strong>lo que tenés que pagarle a ARCA</strong>, incluido cuánto falta para que tenga obra social cuando
-          trabaja menos de 16 horas. Pago único de <strong>${PRECIO}</strong>, con las actualizaciones del año
-          incluidas y devolución dentro de los 7 días si no te sirve.
+          <strong>lo que tenés que pagarle a ARCA</strong>. Si trabaja menos de 16 horas, también te dice cuánto
+          falta para que tenga obra social. Pago único de <strong>${PRECIO}</strong>, con las actualizaciones del
+          año incluidas y 7 días para pedir la devolución si no te sirve.
         </p>
       }
       previewTitulo={`${CATEGORIA.nombre} · con retiro · ${HORAS} h por semana · ${VIGENCIA.vigenteEn}`}
@@ -103,7 +101,7 @@ export default function PlanillaCasasPage() {
         verificadoEl: fechaLarga(CASAS_PARTICULARES_FUENTES.consultadoEl),
       }}
       tituloActualizacion="Qué pasa cuando cambia la escala"
-      actualizacion={`La escala de casas particulares la fija la Comisión Nacional de Trabajo en Casas Particulares, y la vigente llega hasta ${VIGENCIA.ultimoMesPublicado}. Cuando se publique la resolución siguiente —y cada mes, cuando ARCA publica la tabla de aportes— la cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
+      actualizacion={`La escala de casas particulares la fija la Comisión Nacional de Trabajo en Casas Particulares, y la vigente llega hasta ${VIGENCIA.ultimoMesPublicado}. Cuando sale la resolución siguiente (y cada mes, cuando ARCA publica la tabla de aportes), la cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
       faqs={[
         {
           q: "¿Cómo la recibo?",
@@ -123,7 +121,7 @@ export default function PlanillaCasasPage() {
         },
         {
           q: "¿Incluye lo que le tengo que pagar a ARCA?",
-          a: "Sí. Según las horas semanales y la condición de la trabajadora, te dice el pago mensual a ARCA (obra social, jubilación y ART) y, si trabaja menos de 16 horas, cuánto falta para que tenga obra social y le compute la jubilación: en regla y todo, sin esa diferencia se queda sin cobertura.",
+          a: "Sí. Según las horas semanales y la situación de la trabajadora, te dice el pago mensual a ARCA (obra social, jubilación y ART). Si trabaja menos de 16 horas, te dice cuánto falta para que tenga obra social y le cuente para la jubilación. Aunque esté registrada, sin esa diferencia se queda sin cobertura.",
         },
         {
           q: "¿Calcula el aguinaldo y las vacaciones?",
@@ -131,11 +129,11 @@ export default function PlanillaCasasPage() {
         },
         {
           q: "¿Sirve para calcular un despido o una renuncia?",
-          a: "No: la liquidación final tiene reglas propias (preaviso, integración del mes, antigüedad, proporcionales) y cambió con la reforma de 2026. Para eso está la calculadora gratis de despido de empleada doméstica del sitio.",
+          a: "No. La liquidación final tiene reglas propias (preaviso, integración del mes, antigüedad, proporcionales) y cambió con la reforma de 2026. Para eso está la calculadora gratis de despido de empleada doméstica del sitio.",
         },
         {
           q: "¿Los números son los mismos que los de la calculadora gratis?",
-          a: "Sí. La planilla se genera desde los mismos datos que las calculadoras de calcular.ar, y antes de publicar cada versión una verificación automática recalcula el archivo en más de 2.000 casos —todas las categorías, modalidades, horas y meses— y lo compara contra la calculadora. Si alguna vez no coinciden, escribinos.",
+          a: "Sí. La planilla sale de los mismos datos que las calculadoras de calcular.ar. Antes de publicar cada versión, una verificación automática recalcula el archivo en más de 2.000 casos (todas las categorías, modalidades, horas y meses) y lo compara con la calculadora. Si alguna vez no coinciden, escribinos.",
         },
         {
           q: "¿Y si la compro y no me sirve?",

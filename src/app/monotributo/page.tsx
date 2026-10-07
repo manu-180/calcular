@@ -13,40 +13,40 @@ import { PlanillaCTA } from "@/components/PlanillaCTA";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Calculadora de Monotributo 2026: categoría y cuota mensual",
+  title: "Calculadora de monotributo 2026: categoría y cuota",
   description:
-    "Calculá gratis tu categoría de monotributo y cuánto pagás por mes en 2026. Con los valores oficiales de ARCA vigentes y el detalle de impuesto, jubilación y obra social.",
+    "Calculá tu categoría de monotributo y cuánto pagás por mes en 2026, con los valores oficiales de ARCA y el desglose de impuesto, jubilación y obra social.",
   alternates: { canonical: "/monotributo" },
 };
 
 const faqs = [
   {
     q: "¿Cómo sé qué categoría de monotributo me corresponde?",
-    a: `La categoría depende principalmente de tus ingresos brutos de los últimos 12 meses: te corresponde la primera categoría cuyo tope de facturación no superes. Por ejemplo, con los valores vigentes desde el ${VIGENCIA.desde}, si facturaste hasta ${formatARS(CATEGORIAS[0].ingresosBrutosMax, 0)} sos categoría A. También se consideran la superficie del local, la energía eléctrica consumida y los alquileres pagados, si aplican a tu actividad.`,
+    a: `Sobre todo, por lo que facturaste en los últimos 12 meses. Te toca la primera categoría cuyo tope no pasaste. Por ejemplo, con los valores vigentes desde el ${VIGENCIA.desde}, si facturaste hasta ${formatARS(CATEGORIAS[0].ingresosBrutosMax, 0)} sos categoría A. Si tu actividad lo requiere, también cuentan la superficie del local, la luz que consumís y el alquiler que pagás.`,
   },
   {
     q: "¿Cuánto paga un monotributista en 2026?",
-    a: `Depende de la categoría y la actividad. Con los valores vigentes, la cuota total va desde ${formatARS(CATEGORIAS[0].totalServicios, 0)} por mes en la categoría A hasta ${formatARS(CATEGORIAS[CATEGORIAS.length - 1].totalServicios, 0)} en la categoría K para servicios. La cuota incluye tres componentes: impuesto integrado, aporte jubilatorio (SIPA) y obra social.`,
+    a: `Depende de la categoría y de la actividad. Con los valores vigentes, la cuota total va de ${formatARS(CATEGORIAS[0].totalServicios, 0)} por mes en la categoría A a ${formatARS(CATEGORIAS[CATEGORIAS.length - 1].totalServicios, 0)} en la categoría K de servicios. La cuota tiene tres partes: el impuesto integrado, el aporte jubilatorio (SIPA) y la obra social.`,
   },
   {
     q: "¿Qué incluye la cuota del monotributo?",
-    a: "La cuota mensual tiene tres partes: el impuesto integrado (reemplaza a Ganancias e IVA), el aporte jubilatorio al SIPA y el aporte a la obra social. Quienes además trabajan en relación de dependencia solo pagan el impuesto integrado, porque ya aportan jubilación y obra social por su empleo.",
+    a: "Tres partes: el impuesto integrado (reemplaza a Ganancias y al IVA), el aporte jubilatorio al SIPA y el aporte a la obra social. Si además trabajás en relación de dependencia, pagás solo el impuesto integrado, porque la jubilación y la obra social ya las aportás por tu empleo.",
   },
   {
     q: "¿Qué pasa si me paso del límite de facturación?",
-    a: `Si tus ingresos de los últimos 12 meses superan el tope de tu categoría, te corresponde recategorizarte a una superior en la próxima ventana (${RECATEGORIZACION.proximaVentana}). Si superás el tope máximo del régimen (${formatARS(CATEGORIAS[CATEGORIAS.length - 1].ingresosBrutosMax, 0)}), quedás excluido del monotributo y pasás al Régimen General como responsable inscripto.`,
+    a: `Si lo que facturaste en los últimos 12 meses pasa el tope de tu categoría, tenés que subir de categoría en la próxima recategorización (${RECATEGORIZACION.proximaVentana}). Si pasás el tope máximo del régimen (${formatARS(CATEGORIAS[CATEGORIAS.length - 1].ingresosBrutosMax, 0)}), quedás afuera del monotributo y pasás al Régimen General como responsable inscripto.`,
   },
   {
     q: "¿Cuándo se paga el monotributo?",
-    a: "La cuota vence todos los meses el día 20 (o el día hábil siguiente si cae feriado o fin de semana). Se puede pagar por débito automático, billeteras virtuales, home banking (VEP) o en efectivo con la credencial de pago.",
+    a: "Vence todos los meses el día 20 (o el día hábil siguiente si cae feriado o fin de semana). Lo podés pagar por débito automático, billetera virtual, home banking (VEP) o en efectivo con la credencial de pago.",
   },
   {
     q: "¿Cuándo cambian los valores de las categorías?",
-    a: `Las escalas se actualizan dos veces por año por inflación (IPC). Los valores actuales rigen desde el ${VIGENCIA.desde} y la próxima actualización está prevista para ${VIGENCIA.proximaActualizacion}.`,
+    a: `Las escalas se actualizan dos veces por año según la inflación (IPC). Los valores de ahora rigen desde el ${VIGENCIA.desde} y la próxima actualización está prevista para ${VIGENCIA.proximaActualizacion}.`,
   },
   {
     q: "¿Monotributo o responsable inscripto: qué conviene?",
-    a: "Mientras tu facturación entre en las categorías del monotributo, el régimen simplificado casi siempre conviene: una sola cuota fija reemplaza IVA y Ganancias, e incluye jubilación y obra social. El Régimen General puede convenir en casos puntuales (gastos deducibles muy altos o clientes que necesitan discriminar IVA). Ante la duda, consultá con un contador.",
+    a: "Si tu facturación entra en el monotributo, casi siempre conviene. Pagás una sola cuota fija que reemplaza IVA y Ganancias, y que ya incluye jubilación y obra social. El Régimen General puede convenir en casos puntuales: si tenés muchos gastos para deducir o clientes que necesitan factura con IVA discriminado. Si dudás, consultá con un contador.",
   },
 ];
 
@@ -66,9 +66,9 @@ export default function MonotributoPage() {
         inLanguage: "es-AR",
       },
       articleSchema({
-        titulo: "Calculadora de Monotributo 2026: categoría y cuota mensual",
+        titulo: "Calculadora de monotributo 2026: categoría y cuota",
         descripcion:
-          "Qué categoría de monotributo te corresponde según tu facturación y cuánto pagás por mes en 2026, con los valores oficiales de ARCA.",
+          "Qué categoría de monotributo te toca según lo que facturás y cuánto pagás por mes en 2026, con los valores oficiales de ARCA.",
         url: "/monotributo",
         modificado: "2026-06-13",
       }),
@@ -92,23 +92,21 @@ export default function MonotributoPage() {
           Calculadora de Monotributo 2026
         </h1>
         <p className="text-zinc-600">
-          Ingresá tu facturación y descubrí al instante <strong>qué categoría te corresponde</strong>{" "}
-          y <strong>cuánto vas a pagar por mes</strong>, con el detalle de impuesto, jubilación y
-          obra social. Usamos la tabla oficial de ARCA vigente desde el {VIGENCIA.desde}.
+          Poné lo que facturás y mirá en el momento <strong>qué categoría te toca</strong> y{" "}
+          <strong>cuánto vas a pagar por mes</strong>, separado en impuesto, jubilación y obra
+          social. Usamos la tabla oficial de ARCA vigente desde el {VIGENCIA.desde}.
         </p>
       </header>
 
       <RespuestaPrimero>
         <p>
-          El monotributo es un régimen simplificado: pagás{" "}
-          <strong>una sola cuota mensual fija</strong> que reemplaza IVA y Ganancias e incluye
-          jubilación y obra social. Tu <strong>categoría</strong> (de la A a la K) la define tu
-          facturación de los últimos 12 meses: te toca la primera cuya escala no superes. Con los
-          valores vigentes desde el {VIGENCIA.desde}, la cuota de servicios va desde{" "}
-          <strong>{formatARS(CATEGORIAS[0].totalServicios, 0)}</strong> (categoría A) hasta{" "}
+          En el monotributo pagás <strong>una sola cuota fija por mes</strong>. Reemplaza al IVA y a
+          Ganancias, y ya incluye jubilación y obra social. Tu <strong>categoría</strong> (de la A a
+          la K) sale de lo que facturaste en los últimos 12 meses: te toca la primera cuyo tope no
+          pasaste. Con los valores vigentes desde el {VIGENCIA.desde}, la cuota de servicios va de{" "}
+          <strong>{formatARS(CATEGORIAS[0].totalServicios, 0)}</strong> (categoría A) a{" "}
           <strong>{formatARS(CATEGORIAS[CATEGORIAS.length - 1].totalServicios, 0)}</strong>{" "}
-          (categoría K) por mes. La cuota vence el día 20 y las escalas se actualizan dos veces por
-          año.
+          (categoría K) por mes. Vence el día 20, y las escalas se actualizan dos veces por año.
         </p>
       </RespuestaPrimero>
 
@@ -121,8 +119,8 @@ export default function MonotributoPage() {
           Categorías del monotributo 2026: tabla resumida
         </h2>
         <p className="text-sm text-zinc-600">
-          Topes de facturación anual y cuota mensual total por categoría (valores vigentes desde el{" "}
-          {VIGENCIA.desde}, fuente:{" "}
+          Tope de facturación anual y cuota mensual total de cada categoría (valores vigentes desde
+          el {VIGENCIA.desde}, fuente:{" "}
           <a
             href={VIGENCIA.fuenteUrl}
             rel="nofollow noopener"
@@ -156,8 +154,7 @@ export default function MonotributoPage() {
           </table>
         </div>
         <p className="text-sm text-zinc-600">
-          ¿Querés ver todos los parámetros (superficie, energía, alquileres y el desglose completo
-          de cada cuota)? Mirá la{" "}
+          Si querés ver todo (superficie, energía, alquileres y el desglose de cada cuota), mirá la{" "}
           <Link href="/monotributo/categorias" className="text-emerald-700 underline">
             tabla completa de categorías 2026
           </Link>
@@ -169,21 +166,20 @@ export default function MonotributoPage() {
         <h2 className="text-xl font-bold text-zinc-900">Cómo funciona el cálculo</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            El monotributo es el régimen simplificado para pequeños contribuyentes: una cuota fija
-            mensual reemplaza el IVA y el impuesto a las Ganancias, e incluye el aporte jubilatorio
-            y la obra social. Tu categoría se define por la primera escala cuyo tope de{" "}
-            <strong>ingresos brutos de los últimos 12 meses</strong> no superás.
+            El monotributo es el régimen simplificado para pequeños contribuyentes. Pagás una cuota
+            fija por mes que reemplaza al IVA y a Ganancias, y que incluye jubilación y obra social.
+            Tu categoría es la primera cuyo tope de{" "}
+            <strong>facturación de los últimos 12 meses</strong> no pasás.
           </p>
           <p>
-            Además de la facturación, ARCA contempla parámetros físicos: superficie afectada a la
-            actividad, energía eléctrica consumida y alquileres devengados. Si alguno de esos
-            parámetros supera el de tu categoría según facturación, te corresponde la categoría
-            mayor. Para la venta de productos también rige un precio unitario máximo de{" "}
-            {formatARS(CATEGORIAS[0].precioUnitarioMax)}.
+            Además de la facturación, ARCA mira otras tres cosas: los metros del local, la luz que
+            consumís y el alquiler que pagás. Si alguna supera el límite de la categoría que te da la
+            facturación, te toca la categoría más alta. Si vendés productos, además hay un precio
+            máximo por unidad de {formatARS(CATEGORIAS[0].precioUnitarioMax)}.
           </p>
           <p>
             Dos veces por año (febrero y agosto) tenés que revisar si seguís en la categoría
-            correcta: eso es la{" "}
+            correcta. Eso es la{" "}
             <Link href="/monotributo/recategorizacion" className="text-emerald-700 underline">
               recategorización
             </Link>
@@ -196,8 +192,16 @@ export default function MonotributoPage() {
               className="text-emerald-700 underline"
             >
               qué pasa si te pasás del límite de facturación
-            </Link>{" "}
-            — cuándo te recategorizás y cuándo quedás excluido del régimen.
+            </Link>
+            : cuándo subís de categoría y cuándo quedás afuera del régimen.
+          </p>
+          <p>
+            Y si te preguntás desde cuándo te atiende la obra social después de inscribirte, está
+            explicado en{" "}
+            <Link href="/obra-social-monotributo" className="text-emerald-700 underline">
+              obra social del monotributo
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -221,7 +225,7 @@ export default function MonotributoPage() {
 
       <p className="text-xs text-zinc-400">
         Última verificación contra la fuente oficial: {VIGENCIA.consultadoEl}. Valores vigentes
-        desde el {VIGENCIA.desde}; próxima actualización de escalas prevista para{" "}
+        desde el {VIGENCIA.desde}. La próxima actualización de las escalas está prevista para{" "}
         {VIGENCIA.proximaActualizacion}.
       </p>
     </article>

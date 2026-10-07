@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { SelloVerificado } from "@/components/SelloVerificado";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
+import { openGraphDe } from "@/lib/seo";
 import {
   ESCALONES,
   MESES_PARA_CAMBIAR,
@@ -17,65 +18,62 @@ import {
 import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 export const metadata: Metadata = {
-  title: "Obra social del monotributo: desde cuándo te cubre (y qué te pueden negar)",
+  title: "Obra social del monotributo: desde cuándo te cubre",
   description:
-    "La cobertura no arranca completa el día uno. El Decreto 1/2010 la parte en tres escalones: ambulatorio desde el alta, internación recién a los 3 meses y las prestaciones de alto costo y discapacidad a los 6. Calculá tus tres fechas exactas.",
+    "La cobertura llega en tres escalones: ambulatorio desde el alta, internación a los 3 meses y alto costo a los 6 (Decreto 1/2010). Calculá tus fechas.",
   alternates: { canonical: "/obra-social-monotributo" },
   openGraph: {
+    ...openGraphDe({
+      ruta: "/obra-social-monotributo",
+      titulo: "Obra social del monotributo",
+      bajada: "Los tres escalones del Decreto 1/2010",
+    }),
     title: "Obra social del monotributo: desde cuándo te cubre de verdad",
     description:
       "Ambulatorio desde el alta, internación a los 3 meses, alto costo y discapacidad a los 6. Las tres fechas, calculadas.",
-    url: "https://calcular.ar/obra-social-monotributo",
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Obra social del monotributo")}&s=${encodeURIComponent("Los tres escalones del Decreto 1/2010")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
   },
 };
 
 const faqs = [
   {
     q: "Me di de alta en el monotributo: ¿desde cuándo me cubre la obra social?",
-    a: "Desde el primer día, pero sólo el nivel ambulatorio: consultas, especialidades, estudios ambulatorios, odontología del PMOE y medicamentos al 40%. La internación no está incluida todavía. El Anexo del Decreto 1/2010 llama a esto «acceso progresivo a la cobertura de salud» y lo divide en tres escalones: el ambulatorio desde el alta, la internación a los 3 meses y las prestaciones de alto costo e Integración a los 6.",
+    a: "Desde el primer día, pero solo lo ambulatorio: consultas, especialistas, estudios sin internación, odontología del PMOE y medicamentos al 40%. La internación todavía no entra. El Anexo del Decreto 1/2010 lo llama «acceso progresivo a la cobertura de salud» y lo divide en tres escalones: lo ambulatorio desde el alta, la internación a los 3 meses y las prestaciones de alto costo e Integración a los 6.",
   },
   {
     q: "¿Cuánto tengo que esperar para tener internación cubierta?",
-    a: "Tres meses desde la adhesión. Recién ahí entra el nivel internación al 100% y sin límite de tiempo, con los medicamentos oncológicos, la hemodiálisis, los cuidados paliativos y las prótesis de colocación interna. Antes de esa fecha, la obra social no está obligada a cubrirte una internación por el aporte del monotributo.",
+    a: "Tres meses desde que te adheriste. Recién ahí entra la internación al 100% y sin límite de tiempo, junto con los medicamentos oncológicos, la hemodiálisis, los cuidados paliativos y las prótesis que se colocan por dentro. Antes de esa fecha, la obra social no está obligada a cubrirte una internación por el aporte del monotributo.",
   },
   {
     q: "¿Y si necesito prestaciones por discapacidad?",
-    a: "Ese es el tercer escalón y llega a los 6 meses. El inciso c) del Anexo —sustituido por el Decreto 955/2024— incorpora las prestaciones subsidiadas por el SURGE (Res. SSS 731/2023) y las del mecanismo de «Integración» del Decreto 904/2016, que es el de discapacidad, además de las gestionables por el Fondo Solidario de Redistribución.",
+    a: "Ese es el tercer escalón y llega a los 6 meses. El inciso c) del Anexo (cambiado por el Decreto 955/2024) suma las prestaciones que subsidia el SURGE (Res. SSS 731/2023) y las del mecanismo de «Integración» del Decreto 904/2016, que es el de discapacidad. También suma las que se gestionan por el Fondo Solidario de Redistribución.",
   },
   {
     q: "¿La obra social puede rechazarme por ser categoría A?",
-    a: "Sí, y desde octubre de 2024 tiene una norma que se lo permite. El Decreto 955/2024 incorporó el art. 69 bis al Decreto 1/2010: creó en la Superintendencia de Servicios de Salud un registro de agentes que aceptan monotributistas, y las inscriptas quedan «facultadas para distinguir las categorías cuyo ingreso permitan». No es una práctica al margen de la norma: es una facultad que le dio el decreto.",
+    a: "Sí, y desde octubre de 2024 hay una norma que se lo permite. El Decreto 955/2024 sumó el art. 69 bis al Decreto 1/2010. Creó en la Superintendencia de Servicios de Salud un registro de obras sociales que aceptan monotributistas, y las anotadas quedan «facultadas para distinguir las categorías cuyo ingreso permitan». No es algo por fuera de la norma: es un permiso que les dio el decreto.",
   },
   {
     q: "Si cambio de obra social, ¿empiezo la carencia de nuevo?",
-    a: `No. El art. 74 inc. c) le prohíbe expresamente al agente receptor aplicar el acceso progresivo de los arts. 70 y 71 en las opciones de cambio: rige el régimen de compensaciones del art. 12 del Decreto 504/98. Lo que sí exige es permanecer ${MESES_PARA_CAMBIAR} meses en la obra social elegida antes de poder cambiar.`,
+    a: `No. El art. 74 inc. c) le prohíbe a la obra social nueva aplicarte el acceso progresivo de los arts. 70 y 71 cuando te cambiás: rige el sistema de compensaciones del art. 12 del Decreto 504/98. Lo que sí te pide es quedarte ${MESES_PARA_CAMBIAR} meses en la obra social que elegiste antes de poder cambiar.`,
   },
   {
     q: "Me di de baja del monotributo y volví. ¿Se me reinicia?",
-    a: "Sí, y es la asimetría que más sorprende. El art. 73 manda aplicar el acceso progresivo del art. 70 «en cualquier caso de reincorporación al Régimen Simplificado». Cambiar de obra social no reinicia el reloj; salir del régimen y volver, sí.",
+    a: "Sí, y es lo que más sorprende. El art. 73 manda aplicar el acceso progresivo del art. 70 «en cualquier caso de reincorporación al Régimen Simplificado». Cambiar de obra social no reinicia el reloj. Salir del régimen y volver, sí.",
   },
   {
     q: "¿Qué pasa si me atraso con una cuota?",
-    a: "La ley condiciona el acceso a las prestaciones a estar al día con los aportes del régimen simplificado, y el art. 76 del Decreto 1/2010 faculta a los agentes del seguro de salud a pedirte los comprobantes de pago —los tuyos y los de tu grupo familiar— como condición para prestarte el servicio.",
+    a: "Para usar las prestaciones tenés que estar al día con los aportes del monotributo. El art. 76 del Decreto 1/2010 deja que la obra social te pida los comprobantes de pago (los tuyos y los de tu grupo familiar) antes de atenderte.",
   },
   {
     q: "¿Puedo pagar un extra para no esperar?",
-    a: "La ley lo prevé: el art. 42 inc. c) habilita a la obra social a ofrecer «la plena cobertura, durante el período de carencia que fije la reglamentación, mediante el cobro del pertinente coseguro». O sea que si te ofrecen adelantar la internación pagando un adicional, eso está contemplado en la norma. No es obligatorio para la entidad ofrecerlo ni para vos aceptarlo.",
+    a: "La ley lo prevé. El art. 42 inc. c) deja que la obra social ofrezca «la plena cobertura, durante el período de carencia que fije la reglamentación, mediante el cobro del pertinente coseguro». Si te ofrecen adelantar la internación pagando un adicional, eso está permitido. Pero no es obligatorio: ni para la obra social ofrecerlo ni para vos aceptarlo.",
   },
   {
     q: "¿Cuánto de mi cuota va a la obra social?",
-    a: `El componente de obra social del monotributo es un importe fijo por categoría —igual para prestación de servicios y para venta de cosas muebles— y desde la categoría D sube en cada tramo. De ese aporte, el ${REPARTO_MONOTRIBUTO.fondo * 100}% va al Fondo Solidario de Redistribución del art. 22 de la Ley 23.661 y el ${REPARTO_MONOTRIBUTO.entidad * 100}% le llega a la entidad que elegiste. Es un reparto distinto del 85/15 que rige para el trabajador en relación de dependencia desde el Decreto 600/2024.`,
+    a: `La parte de obra social del monotributo es un monto fijo por categoría (igual para servicios y para venta de cosas muebles), y desde la categoría D sube en cada tramo. De ese aporte, el ${REPARTO_MONOTRIBUTO.fondo * 100}% va al Fondo Solidario de Redistribución del art. 22 de la Ley 23.661 y el ${REPARTO_MONOTRIBUTO.entidad * 100}% le llega a la obra social que elegiste. Es un reparto distinto del 85/15 que rige para quien trabaja en relación de dependencia desde el Decreto 600/2024.`,
   },
   {
     q: "Estoy en el monotributo desde hace años. ¿También tengo carencia?",
-    a: "No, si adheriste antes de que entraran en vigencia las modificaciones de la Ley 26.565. El art. 72 del Decreto 1/2010 los deja expresamente fuera del acceso progresivo. Sí se aplica a la incorporación de tu grupo familiar posterior a esa fecha.",
+    a: "No, si te adheriste antes de que entraran en vigencia los cambios de la Ley 26.565. El art. 72 del Decreto 1/2010 te deja afuera del acceso progresivo. Sí se aplica si sumás a tu grupo familiar después de esa fecha.",
   },
 ];
 
@@ -121,12 +119,12 @@ export default function Page() {
           Obra social del monotributo: desde cuándo te cubre de verdad
         </h1>
         <p className="text-zinc-600">
-          «El monotributo incluye obra social» es cierto y es la mitad de la respuesta. La
-          cobertura <strong>no arranca completa el día uno</strong>: el reglamento la parte en{" "}
-          <strong>tres escalones</strong>. Lo ambulatorio va desde el alta; la{" "}
-          <strong>internación recién a los tres meses</strong>; y las prestaciones de alto costo,
-          SURGE e <strong>Integración —el mecanismo de discapacidad— a los seis</strong>. Acá
-          están tus tres fechas.
+          «El monotributo incluye obra social» es cierto, pero es la mitad de la respuesta. La
+          cobertura <strong>no arranca completa el primer día</strong>: llega en{" "}
+          <strong>tres escalones</strong>. Lo ambulatorio, desde el alta. La{" "}
+          <strong>internación, recién a los tres meses</strong>. Y las prestaciones de alto costo,
+          SURGE e <strong>Integración (la de discapacidad), a los seis</strong>. Acá calculás tus
+          tres fechas.
         </p>
       </header>
 
@@ -143,19 +141,19 @@ export default function Page() {
             Integración a los 6 meses
           </strong>{" "}
           (Anexo del Decreto 1/2010, «Acceso progresivo a la cobertura de salud»). El reloj corre
-          desde tu adhesión al régimen simplificado y{" "}
-          <strong>se reinicia si te das de baja y volvés</strong> (art. 73), pero{" "}
-          <strong>no</strong> se reinicia si cambiás de obra social (art. 74 inc. c). Para poder
-          cambiar hay que quedarse {MESES_PARA_CAMBIAR} meses en la que elegiste.
+          desde que te adheriste al monotributo. <strong>Se reinicia si te das de baja y
+          volvés</strong> (art. 73), pero <strong>no</strong> se reinicia si cambiás de obra social
+          (art. 74 inc. c). Para poder cambiar, tenés que quedarte {MESES_PARA_CAMBIAR} meses en la
+          que elegiste.
         </p>
       </RespuestaPrimero>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Calculá tus tres fechas</h2>
         <p className="text-sm text-zinc-600">
-          Cargá la fecha de alta —la del reingreso, si volviste— y la categoría. Sale qué tenés
-          cubierto hoy, qué te falta, desde cuándo podés cambiar de obra social y cuánto de tu
-          aporte le llega realmente a la entidad.
+          Poné la fecha de alta (la de cuando volviste, si te diste de baja) y tu categoría. Vas a
+          ver qué tenés cubierto hoy, qué te falta, desde cuándo podés cambiar de obra social y
+          cuánto de tu aporte le llega de verdad a la obra social.
         </p>
         <CalculadoraObraSocialMonotributo />
       </section>
@@ -165,11 +163,11 @@ export default function Page() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Los tres escalones, prestación por prestación</h2>
         <p className="text-zinc-600">
-          La ley no fija los plazos: los delega. El art. 42 inc. c) del Anexo de la Ley 24.977 dice
-          que el Poder Ejecutivo «dispondrá un número determinado de meses de los aportes… que
-          deberán haberse ingresado durante un período anterior a la fecha en que corresponda
-          otorgar la cobertura». Ese número está en el Anexo del Decreto 1/2010, y son tres
-          escalones, no uno.
+          La ley no pone los plazos: se los pasa al Poder Ejecutivo. El art. 42 inc. c) del Anexo de
+          la Ley 24.977 dice que el Ejecutivo «dispondrá un número determinado de meses de los
+          aportes… que deberán haberse ingresado durante un período anterior a la fecha en que
+          corresponda otorgar la cobertura». Ese número está en el Anexo del Decreto 1/2010, y son
+          tres escalones, no uno.
         </p>
         <div className="space-y-4">
           {ESCALONES.map((e) => (
@@ -202,10 +200,10 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{MONO_OS_TEXTOS.art42}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          Dos cosas quedan escritas ahí y casi no se publican. La primera: la carencia existe por
-          mandato de la ley, no por una decisión de la obra social. La segunda: la entidad{" "}
-          <strong>puede venderte la cobertura completa durante ese período</strong> cobrando un
-          coseguro. Y el artículo cierra con la condición que decide los casos reales:
+          Ahí hay dos cosas escritas que casi nadie publica. Primero: la espera existe porque lo
+          manda la ley, no porque lo decida la obra social. Segundo: la obra social{" "}
+          <strong>te puede vender la cobertura completa durante ese tiempo</strong> cobrando un
+          coseguro. Y el artículo termina con la condición que decide los casos reales:
         </p>
         <blockquote className="rounded-xl border-l-4 border-zinc-300 bg-zinc-50 p-4">
           <p className="mt-0 text-sm text-zinc-700">«{MONO_OS_TEXTOS.art42Cierre}»</p>
@@ -217,9 +215,9 @@ export default function Page() {
           Lo que cambió el {VIGENCIA_MONO_OS.reformaReciente}
         </h2>
         <p className="text-zinc-600">
-          Es la reforma que explica algo que se cuenta como abuso y está en el texto vigente. El
-          decreto incorporó el art. 69 bis y creó un registro en la Superintendencia de Servicios
-          de Salud:
+          Esta reforma explica algo que muchos cuentan como abuso y que está en el texto vigente. El
+          decreto sumó el art. 69 bis y creó un registro en la Superintendencia de Servicios de
+          Salud:
         </p>
         <blockquote className="rounded-xl border-l-4 border-amber-400 bg-amber-50/70 p-4">
           <p className="text-sm font-semibold text-amber-900">
@@ -228,9 +226,9 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{MONO_OS_TEXTOS.art69bis}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          Que una obra social acepte monotributistas de categoría F y rechace los de categoría A
-          no es, desde octubre de 2024, una irregularidad: es una facultad expresa. El mismo
-          decreto reescribió el art. 74 —el de la opción de cambio— y el escalón de los seis
+          Desde octubre de 2024, que una obra social acepte monotributistas de categoría F y
+          rechace a los de categoría A no es una irregularidad: la norma se lo permite. El mismo
+          decreto reescribió el art. 74 (el del cambio de obra social) y el escalón de los seis
           meses.
         </p>
       </section>
@@ -255,16 +253,16 @@ export default function Page() {
           Tu aporte no llega entero: el 10% se va al Fondo
         </h2>
         <p className="text-zinc-600">
-          El art. 39 inc. b) del Anexo manda un{" "}
+          El art. 39 inc. b) del Anexo manda el{" "}
           <strong>{REPARTO_MONOTRIBUTO.fondo * 100}%</strong> del aporte de obra social al Fondo
-          Solidario de Redistribución del art. 22 de la Ley 23.661. A la entidad que elegiste le
+          Solidario de Redistribución del art. 22 de la Ley 23.661. A la obra social que elegiste le
           llega el {REPARTO_MONOTRIBUTO.entidad * 100}%. Es un reparto{" "}
-          <strong>distinto</strong> del que rige para el trabajador en relación de dependencia,
-          que desde el Decreto 600/2024 es 85/15 —lo explicamos en{" "}
+          <strong>distinto</strong> del de quien trabaja en relación de dependencia, que desde el
+          Decreto 600/2024 es 85/15 (lo explicamos en{" "}
           <Link href="/derivar-aportes-a-prepaga" className="text-emerald-700 hover:underline">
             derivar aportes a una prepaga
           </Link>
-          —. Y desde la reforma del art. 92 de la Ley 27.743, el componente de obra social{" "}
+          ). Y desde la reforma del art. 92 de la Ley 27.743, la parte de obra social{" "}
           <strong>ya no es igual en todas las categorías</strong>: sube en cada tramo desde la D.
           El detalle de toda la cuota está en la{" "}
           <Link href="/monotributo" className="text-emerald-700 hover:underline">
@@ -298,16 +296,15 @@ export default function Page() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página es informativa y aplica normas publicadas en el Boletín Oficial e InfoLEG; no
-          reemplaza la consulta con tu obra social, que es quien administra las prestaciones. Si
-          venís de un empleo en relación de dependencia, la cobertura anterior tiene su propio
-          plazo:{" "}
+          Esta página es informativa y usa normas publicadas en el Boletín Oficial e InfoLEG. No
+          reemplaza la consulta con tu obra social, que es la que maneja las prestaciones. Si venís
+          de un trabajo en relación de dependencia, la cobertura de antes tiene su propio plazo:{" "}
           <Link href="/hasta-cuando-tengo-obra-social" className="text-emerald-700 hover:underline">
             hasta cuándo tenés obra social después del trabajo
           </Link>
