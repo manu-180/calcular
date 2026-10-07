@@ -1,0 +1,51 @@
+{
+  "mercado": "pa",
+  "avisos": [
+    {
+      "id": "pa.indemnizacion-antes-de-1995",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["pa.indemnizacion-por-despido", "pa.liquidacion"],
+      "titulo": "Si empezaste a trabajar antes de agosto de 1995",
+      "texto": "La escala de 3.4 semanas por año vale para relaciones que empezaron desde el 14 de agosto de 1995. Si tu relación es anterior, la indemnización combina otras escalas del artículo 225 y conviene que la revise el MITRADEL.",
+      "fuente": {
+        "organismo": "Asamblea Legislativa",
+        "titulo": "Ley 44 de 12 de agosto de 1995, artículo 36 (artículo 225 del Código de Trabajo)",
+        "url": "https://www.defensoria.gob.pa/wp-content/uploads/Ley-No.-44-de1995-12-agosto.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "pa.css-empleador-marzo-2027",
+      "nivel": "info",
+      "desde": "2026-12-01",
+      "hasta": "2027-03-31",
+      "aplicaA": ["pa.costo-empleador"],
+      "titulo": "Sube la cuota patronal del Seguro Social",
+      "texto": "Desde el 1 de marzo de 2027 la cuota del empleador a la Caja de Seguro Social pasa del 13.25% al 14.25% de los sueldos. La calculadora ya usa la cuota de cada fecha.",
+      "fuente": {
+        "organismo": "Asamblea Nacional",
+        "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005)",
+        "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "pa.decimo-metodo",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["pa.decimo-tercer-mes"],
+      "titulo": "Cómo calculamos el décimo",
+      "texto": "Usamos el método del MITRADEL: todo lo que ganaste en el período dividido entre 12. Si tu empresa paga un aguinaldo de Navidad mayor que la tercera partida, te corresponde el monto más alto, no los dos.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo y Bienestar Social",
+        "titulo": "Decreto 19 de 7 de septiembre de 1973, artículos tercero y cuarto (Gaceta Oficial 17436)",
+        "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/1970/1973/17436_1973.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}
