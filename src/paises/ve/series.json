@@ -1,0 +1,69 @@
+{
+  "mercado": "ve",
+  "series": [
+    {
+      "id": "ve.tasa-bcv-usd",
+      "nombre": "Tipo de cambio oficial BCV (bolívares por dólar)",
+      "unidad": "VES",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Banco Central de Venezuela",
+        "titulo": "Tipo de cambio de referencia SMC, histórico 2026 (venta, Bs./US$, por fecha valor)",
+        "url": "https://www.bcv.org.ve/estadisticas/tipo-cambio-de-referencia-smc",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [
+        ["2026-09-17", 847.4442],
+        ["2026-09-18", 848.5458],
+        ["2026-09-21", 849.564],
+        ["2026-09-22", 852.4168],
+        ["2026-09-23", 853.4993],
+        ["2026-09-24", 854.4637],
+        ["2026-09-25", 855.6625],
+        ["2026-09-28", 857.0058],
+        ["2026-09-29", 857.8876],
+        ["2026-09-30", 859.0629],
+        ["2026-10-01", 860.1753],
+        ["2026-10-02", 866.5612],
+        ["2026-10-05", 871.3689],
+        ["2026-10-06", 872.3927],
+        ["2026-10-07", 873.867],
+        ["2026-10-08", 874.7321]
+      ]
+    },
+    {
+      "id": "ve.tasa-bcv-eur",
+      "nombre": "Tipo de cambio oficial BCV (bolívares por euro)",
+      "unidad": "VES",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Banco Central de Venezuela",
+        "titulo": "Tipo de cambio de referencia SMC, histórico 2026 (venta, Bs./EUR, por fecha valor)",
+        "url": "https://www.bcv.org.ve/estadisticas/tipo-cambio-de-referencia-smc",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [
+        ["2026-09-17", 977.67942465],
+        ["2026-09-18", 974.41908397],
+        ["2026-09-21", 974.09309112],
+        ["2026-09-22", 978.1738505],
+        ["2026-09-23", 976.54829408],
+        ["2026-09-24", 974.06298408],
+        ["2026-09-25", 972.648677],
+        ["2026-09-28", 976.90091142],
+        ["2026-09-29", 974.71473336],
+        ["2026-09-30", 973.30967507],
+        ["2026-10-01", 976.84087593],
+        ["2026-10-02", 973.92813268],
+        ["2026-10-05", 981.17880877],
+        ["2026-10-06", 977.21940683],
+        ["2026-10-07", 984.26261811],
+        ["2026-10-08", 979.0788922]
+      ]
+    }
+  ]
+}
