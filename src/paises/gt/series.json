@@ -1,0 +1,39 @@
+{
+  "mercado": "gt",
+  "series": [
+    {
+      "id": "gt.tipo-cambio",
+      "nombre": "Tipo de cambio de referencia del quetzal con el dólar",
+      "unidad": "GTQ",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 7,
+      "fuente": {
+        "organismo": "Banco de Guatemala",
+        "titulo": "Tipo de cambio de referencia (servicio web TipoCambio, operación TipoCambioRango, y página de tipo de cambio)",
+        "url": "https://www.banguat.gob.gt/tipo_cambio/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [
+        ["2026-09-20", 7.62938],
+        ["2026-09-21", 7.62559],
+        ["2026-09-22", 7.6288],
+        ["2026-09-23", 7.63357],
+        ["2026-09-24", 7.63682],
+        ["2026-09-25", 7.63682],
+        ["2026-09-26", 7.63682],
+        ["2026-09-27", 7.63682],
+        ["2026-09-28", 7.63147],
+        ["2026-09-29", 7.63722],
+        ["2026-09-30", 7.63856],
+        ["2026-10-01", 7.64028],
+        ["2026-10-02", 7.64136],
+        ["2026-10-03", 7.64136],
+        ["2026-10-04", 7.64136],
+        ["2026-10-05", 7.63456],
+        ["2026-10-06", 7.63715],
+        ["2026-10-07", 7.64254]
+      ]
+    }
+  ]
+}
