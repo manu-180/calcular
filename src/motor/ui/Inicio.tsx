@@ -3,7 +3,7 @@ import { formatearFecha } from "../formato";
 import { ldWebApplication, rutaIntl, urlIntl } from "../seo";
 import { hoyEn } from "../vigencia";
 import { Bandera } from "./Bandera";
-import { calculadorasDe, porCategoria, type ContextoSitio } from "./contexto";
+import { calculadorasDe, porCategoria, tarjetaDe, type ContextoSitio } from "./contexto";
 import { IconoFlecha, IconoSello } from "./Iconos";
 import { AvisoDePais, JsonLd } from "./Sitio";
 
@@ -108,8 +108,8 @@ export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
                   {g.entradas.map((e) => (
                     <li key={e.definicion.id}>
                       <a className="cy-tarjeta" href={rutaIntl(m.codigo, e.definicion.slug)}>
-                        <span className="cy-tarjeta-titulo">{e.contenido.h1}</span>
-                        <span className="cy-tarjeta-texto">{e.contenido.intro[0]}</span>
+                        <span className="cy-tarjeta-titulo">{tarjetaDe(ctx, m, e).titulo}</span>
+                        <span className="cy-tarjeta-texto">{tarjetaDe(ctx, m, e).resumen}</span>
                         <span className="cy-boton-icono">
                           <IconoFlecha />
                         </span>

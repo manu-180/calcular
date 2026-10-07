@@ -56,3 +56,11 @@ export function destinosAviso(ctx: ContextoSitio, concepto?: string): DestinoPai
       return { pais: m.pais, href: rutaIntl(m.codigo, eq?.slug), texto: ctx.textos.avisoPais.texto(m.nombre), ir: ctx.textos.avisoPais.ir(m.nombre) };
     });
 }
+
+// Título y resumen de una calculadora para tarjetas y listas, con los marcadores {{...}} ya
+// resueltos al valor vigente (el contenido crudo del registro todavía los tiene).
+export function tarjetaDe(ctx: ContextoSitio, m: Mercado, entrada: EntradaCalculadora): { titulo: string; resumen: string } {
+  const p = ctx.registro.pagina(m.codigo, entrada.definicion.slug, hoyEn(m), ctx.modo);
+  const c = p?.contenido ?? entrada.contenido;
+  return { titulo: c.h1, resumen: c.intro[0] ?? "" };
+}

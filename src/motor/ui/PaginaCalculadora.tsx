@@ -4,7 +4,7 @@ import type { PaginaResuelta } from "../registro";
 import { ldFaq, ldMigas, ldWebApplication, rutaIntl, urlIntl } from "../seo";
 import type { PropsCalculadora } from "../tipos";
 import { Bandera } from "./Bandera";
-import { calculadorasDe, type ContextoSitio } from "./contexto";
+import { calculadorasDe, tarjetaDe, type ContextoSitio } from "./contexto";
 import { IconoFlecha } from "./Iconos";
 import { Sello } from "./Sello";
 import { AvisoDePais, JsonLd, Migas } from "./Sitio";
@@ -108,8 +108,8 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
             {relacionadas.map((e) => (
               <li key={e.definicion.id}>
                 <a className="cy-tarjeta" href={rutaIntl(mercado.codigo, e.definicion.slug)}>
-                  <span className="cy-tarjeta-titulo">{e.contenido.h1}</span>
-                  <span className="cy-tarjeta-texto">{e.contenido.intro[0]}</span>
+                  <span className="cy-tarjeta-titulo">{tarjetaDe(ctx, mercado, e).titulo}</span>
+                  <span className="cy-tarjeta-texto">{tarjetaDe(ctx, mercado, e).resumen}</span>
                   <span className="cy-boton-icono">
                     <IconoFlecha />
                   </span>

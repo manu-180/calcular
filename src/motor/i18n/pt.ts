@@ -74,6 +74,7 @@ export const pt: TextosSitio = {
     region: "Região",
     series: "Valores atualizados automaticamente",
     ultimoDato: "Último dado",
+    proximo: (valor, fecha) => `Já publicado para ${fecha}: ${valor}.`,
     sinVerificar: "Sem dado verificado para hoje",
     tramos: (n) => `Tabela de ${n} faixas`,
     description: (pais) => `Os dados oficiais do ${pais} usados pelas calculadoras: valor vigente, desde quando vale, fonte e data de revisão.`,

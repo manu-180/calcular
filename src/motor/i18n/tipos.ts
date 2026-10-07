@@ -61,6 +61,7 @@ export interface TextosSitio {
     region: string;
     series: string;
     ultimoDato: string;
+    proximo: (valor: string, fecha: string) => string;
     sinVerificar: string;
     tramos: (n: number) => string;
     description: (pais: string) => string;

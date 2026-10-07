@@ -1,9 +1,8 @@
 import { formatearFecha, formatearNumero, formatearPorcentaje, formatearValorUnidad } from "../formato";
 import { ldMigas, rutaIntl, urlIntl } from "../seo";
 import type { Dato, FilaEscala, Fuente, Mercado } from "../tipos";
-import { valorSerie } from "../vigencia";
 import { Bandera } from "./Bandera";
-import { calculadorasDe, type ContextoSitio } from "./contexto";
+import { calculadorasDe, tarjetaDe, type ContextoSitio } from "./contexto";
 import { IconoExterno } from "./Iconos";
 import { AvisoDePais, JsonLd, Migas } from "./Sitio";
 
@@ -59,7 +58,7 @@ export function PaginaFuentes({ ctx }: { ctx: ContextoSitio }) {
   const t = ctx.textos;
   const m = ctx.mercado;
   const fichas = ctx.registro.fichas(m.codigo, ctx.fecha);
-  const series = ctx.registro.pais(m.codigo)?.series ?? [];
+  const series = ctx.registro.fichasSeries(m.codigo, ctx.fecha);
   const region = (id?: string) => (id ? (m.regiones?.find((r) => r.id === id)?.nombre ?? id) : null);
   const titulo = t.fuentes.titulo(m.nombre);
   return (
@@ -134,8 +133,8 @@ export function PaginaFuentes({ ctx }: { ctx: ContextoSitio }) {
             {t.fuentes.series}
           </h2>
           <ul className="cy-fichas">
-            {series.map((s) => {
-              const punto = valorSerie(s, ctx.fecha);
+            {series.map(({ serie: s, vigente: punto, ultimo }) => {
+              const adelantado = ultimo && punto && ultimo.fecha > punto.fecha ? ultimo : null;
               return (
                 <li key={s.id} className="cy-ficha">
                   <h3 className="cy-ficha-nombre">{s.nombre}</h3>
@@ -150,6 +149,11 @@ export function PaginaFuentes({ ctx }: { ctx: ContextoSitio }) {
                           <dt>{t.fuentes.ultimoDato}</dt>
                           <dd>{formatearFecha(punto.fecha, m.locale)}</dd>
                         </div>
+                        {adelantado ? (
+                          <p className="cy-ficha-nota">
+                            {t.fuentes.proximo(formatearValorUnidad(adelantado.valor, s.unidad, m.locale, m.simbolos), formatearFecha(adelantado.fecha, m.locale))}
+                          </p>
+                        ) : null}
                       </>
                     ) : (
                       <div>
@@ -216,7 +220,7 @@ export function PaginaNovedades({ ctx }: { ctx: ContextoSitio }) {
                     const c = nombreCalc(id);
                     return c ? (
                       <li key={id}>
-                        <a href={rutaIntl(m.codigo, c.definicion.slug)}>{c.contenido.h1}</a>
+                        <a href={rutaIntl(m.codigo, c.definicion.slug)}>{tarjetaDe(ctx, m, c).titulo}</a>
                       </li>
                     ) : null;
                   })}
