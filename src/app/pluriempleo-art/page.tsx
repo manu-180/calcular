@@ -14,14 +14,14 @@ import {
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Dos trabajos y un accidente: qué ART te cubre y con qué sueldo",
+  title: "Pluriempleo y ART: qué ART te cubre y con qué sueldo",
   description:
-    "Determiná qué ART responde en pluriempleo, qué ingresos base cuentan y calculá la incapacidad incremental de un segundo accidente por capacidad restante.",
+    "Con dos trabajos, qué ART responde por el accidente, qué sueldos cuentan para la base y cómo se calcula la incapacidad de un segundo accidente.",
   alternates: { canonical: "/pluriempleo-art" },
   openGraph: {
     title: "Pluriempleo y ART: quién paga y cómo se suma la incapacidad",
     description:
-      "La ART obligada no siempre es la del lugar del accidente, la base puede reunir varios ingresos y el segundo porcentaje se aplica sobre la capacidad restante.",
+      "La ART que paga no siempre es la del lugar del accidente, la base puede sumar varios sueldos y el segundo porcentaje se aplica sobre la capacidad que te quedaba.",
     url: "https://calcular.ar/pluriempleo-art",
     images: [
       {
@@ -40,31 +40,31 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "Si tengo dos trabajos, ¿paga la ART del lugar donde ocurrió el accidente?",
-    a: "No necesariamente. El art. 13 inc. a) señala a la Aseguradora del empleador cuya actividad implica la presencia del agente de riesgo. Si el hecho es atribuible a más de un empleo, el inc. b) elige a la del empleo con mayor remuneración sujeta a cotización en el mes anterior a la primera manifestación invalidante.",
+    a: "No siempre. El art. 13 inc. a) dice que paga la ART del empleador cuya actividad tiene el riesgo que causó el daño. Si el daño se puede atribuir a más de un trabajo, el inc. b) elige la ART del trabajo con mayor sueldo con aportes en el mes anterior a la primera manifestación de la incapacidad.",
   },
   {
     q: "¿Para elegir la ART se compara el ingreso base?",
-    a: "No. Cuando el hecho es atribuible a más de un empleo, la regla de elección compara la remuneración sujeta a cotización del mes anterior. El ingreso base cumple otra función: determinar la cuantía de la prestación dineraria.",
+    a: "No. Cuando el daño se puede atribuir a más de un trabajo, para elegir la ART se compara el sueldo con aportes del mes anterior. El ingreso base sirve para otra cosa: calcular cuánto te pagan.",
   },
   {
     q: "¿La indemnización se calcula con el sueldo del empleo cuya ART paga?",
-    a: "No siempre. El art. 13 inc. c) manda considerar los ingresos base de las actividades con presencia del agente de riesgo o de los empleos para los que el trabajador se encontraba trabajando al producirse el accidente.",
+    a: "No siempre. El art. 13 inc. c) manda tomar los ingresos base de las actividades que tenían ese riesgo, o de los trabajos en los que estabas trabajando cuando pasó el accidente.",
   },
   {
     q: "¿Qué pasa si dos empleos tienen exactamente la misma remuneración?",
-    a: "El art. 13 inc. b) no establece un desempate adicional. Por eso la calculadora deja el responsable indeterminado y no elige por ingreso base ni por orden de carga.",
+    a: "El art. 13 inc. b) no dice cómo desempatar. Por eso la calculadora deja sin definir qué ART responde, y no elige por ingreso base ni por el orden en que cargaste los trabajos.",
   },
   {
     q: "¿Cómo se suman dos porcentajes de incapacidad?",
-    a: "Se aplica capacidad restante. Con 30 % previo, queda 70 % de capacidad; una nueva incapacidad del 20 % se aplica sobre esos 70 puntos y agrega 14. La integral es 44 %, no 50 %.",
+    a: "Por capacidad restante. Con un 30 % previo te queda un 70 % de capacidad. Una incapacidad nueva del 20 % se aplica sobre esos 70 puntos y suma 14. La incapacidad total es 44 %, no 50 %.",
   },
   {
     q: "¿Cuánto paga la última ART en un segundo accidente?",
-    a: "Como regla general, paga la incapacidad incremental: la diferencia entre la integral y la previa. Si la incapacidad previa era definitiva y cambia la modalidad de pago, paga la integral a su exclusivo cargo. Si era provisoria, las Aseguradoras concurren proporcionalmente.",
+    a: "Por regla general, paga solo lo que se sumó: la diferencia entre la incapacidad total y la anterior. Si la incapacidad anterior era definitiva y cambia la forma de pago, paga la incapacidad total, toda a su cargo. Si era provisoria, las ART pagan en proporción.",
   },
   {
     q: "¿La calculadora conoce el porcentaje conjunto de la tabla?",
-    a: "No. Sólo lo usa si vos ingresás un porcentaje obtenido de la Tabla de Evaluación de Incapacidades Laborales y es mayor que el resultado por capacidad restante. Nunca lo inventa ni lo aproxima.",
+    a: "No. Solo lo usa si vos cargás un porcentaje sacado de la Tabla de Evaluación de Incapacidades Laborales y es mayor que el resultado por capacidad restante. Nunca lo inventa ni lo estima.",
   },
 ];
 
@@ -100,8 +100,8 @@ export default function Page() {
           Dos trabajos y un accidente: qué ART te cubre y con qué sueldo
         </h1>
         <p className="text-zinc-600">
-          La ART obligada puede no ser la del lugar donde ocurrió el accidente. Y si ya existía una
-          incapacidad, el nuevo porcentaje se aplica sobre lo que quedaba sano: no se suma directo.
+          La ART que paga puede no ser la del lugar donde pasó el accidente. Y si ya tenías una
+          incapacidad, el porcentaje nuevo se aplica sobre lo que te quedaba sano: no se suma directo.
         </p>
       </header>
 
@@ -116,19 +116,20 @@ export default function Page() {
 
       <RespuestaPrimero actualizado={VIGENCIA_PLURIEMPLEO.consultadoEl}>
         <p>
-          Si una sola actividad implica el agente de riesgo, responde su ART. Si el hecho es
-          atribuible a varios empleos, responde la ART del empleo con la <strong>mayor remuneración
-          sujeta a cotización del mes anterior</strong>. La prestación puede tomar los ingresos base
-          de más de un empleo. En siniestros sucesivos, la regla general es que la última ART pague
-          sólo la <strong>incapacidad incremental</strong> calculada por capacidad restante.
+          Si solo uno de tus trabajos tiene el riesgo que causó el daño, paga su ART. Si el daño se
+          puede atribuir a varios trabajos, paga la ART del que tuvo el{" "}
+          <strong>sueldo con aportes más alto el mes anterior</strong>. Para calcular cuánto te
+          pagan se pueden sumar los ingresos de más de un trabajo. Si es un segundo accidente, por
+          regla general la última ART paga solo la <strong>incapacidad que se sumó</strong>,
+          calculada sobre la capacidad que te quedaba.
         </p>
       </RespuestaPrimero>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Calculá la cobertura o el segundo accidente</h2>
         <p className="text-sm text-zinc-600">
-          Remuneración del mes anterior e ingreso base son datos distintos. La primera elige a la
-          ART cuando hay atribución múltiple; los segundos determinan la cuantía.
+          El sueldo del mes anterior y el ingreso base son datos distintos. El primero elige la ART
+          cuando el daño viene de varios trabajos; el segundo define cuánto te pagan.
         </p>
         <CalculadoraPluriempleoArt />
       </section>
@@ -136,7 +137,7 @@ export default function Page() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Qué dice la Ley 24.557</h2>
         <p className="text-zinc-600">
-          El art. 45 no desarrolla estas reglas. Encomienda al Poder Ejecutivo dictar normas
+          El art. 45 no trae estas reglas. Le encarga al Poder Ejecutivo dictar normas
           complementarias para estas cuatro situaciones:
         </p>
         <ul className="grid gap-3 sm:grid-cols-2">
@@ -150,8 +151,8 @@ export default function Page() {
           ))}
         </ul>
         <p className="text-sm text-zinc-600">
-          Que los incisos b) y d) no estén reglamentados por estos dos artículos no afirma que no
-          exista otra norma sobre esas materias.
+          Que estos dos artículos no reglamenten los incisos b) y d) no quiere decir que no haya
+          otra norma sobre esos temas.
         </p>
       </section>
 
@@ -193,18 +194,18 @@ export default function Page() {
         <h2 className="text-xl font-bold text-zinc-900">La cuenta de capacidad restante</h2>
         <div className="rounded-xl border border-amber-200 bg-amber-50/70 p-4 text-sm text-zinc-700">
           <p>
-            Con una incapacidad previa de <strong>30 %</strong> queda una capacidad sana de 70 %.
-            La nueva incapacidad del <strong>20 %</strong> se aplica sobre esos 70 puntos:
+            Con una incapacidad previa de <strong>30 %</strong> te queda una capacidad sana de 70 %.
+            La incapacidad nueva del <strong>20 %</strong> se aplica sobre esos 70 puntos:
           </p>
           <p className="mt-2 font-bold text-zinc-900">30 + 20 × (100 − 30) ÷ 100 = 44 %</p>
           <p className="mt-1">
-            La incapacidad incremental es <strong>44 − 30 = 14 puntos</strong>, no 20.
+            Lo que se suma es <strong>44 − 30 = 14 puntos</strong>, no 20.
           </p>
         </div>
         <p className="text-sm text-zinc-600">
-          Si la Tabla de Evaluación de Incapacidades Laborales prevé para la pérdida conjunta un
-          porcentaje mayor, rige ese valor. La tabla no está incorporada: la calculadora sólo usa el
-          porcentaje que ingreses y dice expresamente cuándo reemplaza el cálculo.
+          Si la Tabla de Evaluación de Incapacidades Laborales fija para la pérdida conjunta un
+          porcentaje mayor, vale ese. La tabla no está cargada: la calculadora solo usa el
+          porcentaje que cargues y te avisa cuándo reemplaza la cuenta.
         </p>
       </section>
 
@@ -241,9 +242,17 @@ export default function Page() {
           ))}
         </ul>
         <p className="text-sm text-zinc-600">
-          Para convertir el porcentaje aplicable en una prestación dineraria, usá la{" "}
+          Para pasar el porcentaje a pesos, usá la{" "}
           <Link href="/indemnizacion-art" className="text-emerald-700 hover:underline">
             calculadora de indemnización por accidente de trabajo
+          </Link>
+          . Si la ART te rechazó el accidente, mirá{" "}
+          <Link href="/rechazo-art" className="text-emerald-700 hover:underline">
+            si el rechazo llegó en plazo
+          </Link>
+          , y para reclamar,{" "}
+          <Link href="/comision-medica" className="text-emerald-700 hover:underline">
+            los plazos de la comisión médica
           </Link>
           .
         </p>

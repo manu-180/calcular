@@ -18,9 +18,9 @@ import {
 } from "@/data/rechazo-art";
 
 export const metadata: Metadata = {
-  title: "La ART rechazó el accidente: ¿el rechazo llegó en plazo?",
+  title: "La ART rechazó mi accidente: ¿fue en plazo?",
   description:
-    "Calculá los 10 días hábiles administrativos del rechazo de la ART, verificá si la prórroga fue válida y sabé si corresponde comisión médica u otra autoridad.",
+    "La ART tiene 10 días hábiles para rechazar un accidente. Calculá si el rechazo llegó en plazo, si la prórroga vale y si corresponde comisión médica.",
   alternates: { canonical: "/rechazo-art" },
   openGraph: {
     title: "Rechazo de la ART: plazo, silencio y vía de reclamo",
@@ -44,19 +44,19 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Los 10 días para rechazar son corridos o hábiles?",
-    a: "Son días hábiles administrativos. El art. 36 bis del Decreto 717/96 dice que «a los fines del presente procedimiento todos los plazos expresados se consideran en días hábiles administrativos». El cómputo empieza el día siguiente a la recepción de la denuncia.",
+    a: "Son días hábiles administrativos. El art. 36 bis del Decreto 717/96 dice que «a los fines del presente procedimiento todos los plazos expresados se consideran en días hábiles administrativos». Se empiezan a contar el día siguiente a que la ART recibe la denuncia.",
   },
   {
     q: "¿La ART siempre tiene 20 días para decidir?",
-    a: "No. Tiene 10 días hábiles y sólo puede sumar otros 10 si existen circunstancias objetivas que impiden conocer acabadamente la pretensión y notifica fehacientemente el uso de la prórroga al trabajador y al empleador dentro del primer plazo. Avisarla después no revive un plazo ya vencido.",
+    a: "No. Tiene 10 días hábiles, y solo puede sumar otros 10 si hay motivos objetivos que le impiden conocer bien el reclamo y si avisa de forma fehaciente la prórroga al trabajador y al empleador dentro del primer plazo. Avisarla después no revive un plazo que ya venció.",
   },
   {
     q: "¿Qué pasa si la ART no rechaza a tiempo?",
-    a: "El art. 6º establece que su silencio se entiende como aceptación de la pretensión si, vencido el plazo aplicable, no cursó la notificación fehaciente del rechazo al trabajador y al empleador.",
+    a: "El art. 6º dice que su silencio cuenta como aceptación del reclamo si, vencido el plazo, no le mandó al trabajador y al empleador la notificación fehaciente del rechazo.",
   },
   {
     q: "¿Todo rechazo se reclama ante la comisión médica?",
-    a: "No. Los rechazos de los incisos b) y c) van a comisión médica. Si el empleador desconoce la relación laboral —inciso a)—, esa existencia debe resolverse previamente ante la autoridad competente y la comisión médica no le da curso.",
+    a: "No. Los rechazos de los incisos b) y c) van a comisión médica. Si el empleador niega la relación laboral (inciso a), eso se tiene que resolver antes ante la autoridad competente, y la comisión médica no lo trata.",
   },
   {
     q: "¿La ART puede negar la relación laboral si el empleador la reconoce?",
@@ -64,11 +64,11 @@ const faqs = [
   },
   {
     q: "¿Necesito abogado para presentarme ante la comisión médica?",
-    a: "Sí. El art. 12 exige patrocinio letrado desde la primera presentación y durante todo el proceso, y el art. 36 ordena a la SRT garantizarlo en forma gratuita.",
+    a: "Sí. El art. 12 exige abogado desde la primera presentación y durante todo el trámite, y el art. 36 obliga a la SRT a garantizarlo gratis.",
   },
   {
     q: "¿Que la ART me atienda significa que aceptó el accidente?",
-    a: "No. Debe otorgar las prestaciones en especie mientras la pretensión no sea rechazada, pero el art. 6º aclara que dar esas prestaciones antes de decidir nunca equivale por sí solo a aceptar la contingencia.",
+    a: "No. Te tiene que dar la atención médica y las demás prestaciones en especie mientras no rechace el reclamo, pero el art. 6º aclara que darlas antes de decidir nunca equivale, por sí solo, a aceptar el accidente.",
   },
 ];
 
@@ -105,8 +105,8 @@ export default function Page() {
         </h1>
         <p className="text-zinc-600">
           No alcanza con contar diez casilleros del calendario. El plazo corre en{" "}
-          <strong>días hábiles administrativos</strong>, la prórroga tiene una condición y la causal
-          invocada decide por dónde sigue el reclamo.
+          <strong>días hábiles administrativos</strong>, la prórroga tiene una condición y el motivo
+          del rechazo decide por dónde sigue el reclamo.
         </p>
       </header>
 
@@ -119,17 +119,17 @@ export default function Page() {
       <RespuestaPrimero actualizado={VIGENCIA_RECHAZO.consultadoEl}>
         <p>
           La ART tiene <strong>{PLAZO_RECHAZO_HABILES} días hábiles administrativos</strong> desde
-          que recibió la denuncia. Puede sumar otros <strong>{PRORROGA_HABILES}</strong>, pero sólo
-          si notificó la prórroga dentro del primer plazo. Sin rechazo fehaciente a tiempo, el art.
-          6º dice que el silencio se entiende como <strong>aceptación de la pretensión</strong>.
+          que recibió la denuncia. Puede sumar otros <strong>{PRORROGA_HABILES}</strong>, pero solo
+          si avisó la prórroga dentro del primer plazo. Si no rechazó de forma fehaciente a tiempo,
+          el art. 6º dice que su silencio cuenta como <strong>aceptación del reclamo</strong>.
         </p>
       </RespuestaPrimero>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Calculá el plazo y la vía</h2>
         <p className="text-sm text-zinc-600">
-          Usá la fecha en que la ART recibió la denuncia y la fecha en que cursó cada notificación,
-          no el día en que llegó el correo a tus manos.
+          Usá la fecha en que la ART recibió la denuncia y la fecha en que mandó cada notificación,
+          no el día en que te llegó la carta.
         </p>
         <CalculadoraRechazoArt />
       </section>
@@ -149,10 +149,10 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{RECHAZO_TEXTOS.art36bis}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          El décimo día hábil está adentro del plazo: una notificación cursada ese día llega a
-          tiempo. El calendario contempla fines de semana y feriados nacionales conocidos; un
-          asueto administrativo puntual puede correr el vencimiento, por eso la calculadora muestra
-          la fecha más temprana posible.
+          El décimo día hábil está dentro del plazo: una notificación mandada ese día llega a tiempo.
+          El calendario tiene en cuenta fines de semana y feriados nacionales conocidos. Un asueto
+          administrativo puntual puede correr el vencimiento, por eso la calculadora muestra la fecha
+          más temprana posible.
         </p>
       </section>
 
@@ -167,7 +167,7 @@ export default function Page() {
               <p className="mt-1 text-sm text-zinc-700">{causal.texto}</p>
               <p className="mt-2 text-xs font-semibold text-emerald-700">
                 {causal.vaA === "comision-medica"
-                  ? "Va a comisión médica · el rechazo debe estar fundado"
+                  ? "Va a comisión médica · el rechazo tiene que estar fundado"
                   : "Va primero a la autoridad competente · no a comisión médica"}
               </p>
             </div>
@@ -186,11 +186,15 @@ export default function Page() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">La denuncia abre las prestaciones</h2>
         <p className="text-zinc-600">
-          El empleador debe denunciar inmediatamente, pero no es el único que puede hacerlo. La
-          denuncia también puede presentarse ante un prestador habilitado por la ART, que debe
-          remitirla dentro de <strong>{PLAZO_PRESTADOR_HORAS} horas</strong>. Ni la Aseguradora ni el
-          prestador pueden negarse a recibirla, y las prestaciones en especie deben comenzar de
-          inmediato y continuar mientras la pretensión no sea rechazada.
+          El empleador tiene que hacer la denuncia enseguida, pero no es el único que puede. También
+          se puede presentar ante un prestador habilitado por la ART, que la tiene que mandar dentro
+          de <strong>{PLAZO_PRESTADOR_HORAS} horas</strong>. Ni la ART ni el prestador se pueden negar
+          a recibirla, y la atención médica tiene que empezar en el momento y seguir mientras no
+          rechacen el reclamo. Si tu empleador no tenía la ART al día, mirá{" "}
+          <Link href="/empleador-sin-art" className="text-emerald-700 hover:underline">
+            quién te paga si tu empleador no tiene ART
+          </Link>
+          .
         </p>
         <ul className="grid gap-2 sm:grid-cols-2">
           {QUIEN_PUEDE_DENUNCIAR.map((quien) => (
@@ -219,10 +223,10 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{RECHAZO_TEXTOS.art12}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          La SRT debe garantizar ese patrocinio en forma gratuita (art. 36). Las notificaciones a
-          ART y empleadores se consideran fehacientes por la ventanilla electrónica de la SRT; para
-          trabajadores, derechohabientes y empleadores de cinco personas o menos rigen los medios de
-          la Ley 19.549 (art. 36 ter).
+          La SRT tiene que garantizar ese abogado gratis (art. 36). Las notificaciones a las ART y a
+          los empleadores valen como fehacientes por la ventanilla electrónica de la SRT. Para
+          trabajadores, derechohabientes y empleadores de cinco personas o menos, rigen los medios
+          de la Ley 19.549 (art. 36 ter).
         </p>
         <blockquote className="rounded-xl border-l-4 border-zinc-300 bg-zinc-50 p-4">
           <p className="text-sm font-semibold text-zinc-900">
@@ -248,8 +252,8 @@ export default function Page() {
         <h2 className="text-xl font-bold text-zinc-900">Fuentes</h2>
         <p className="text-sm text-zinc-600">
           Textos actualizados consultados el {RECHAZO_FUENTES.consultadoEl}. El Decreto 1475/2015
-          está identificado en las sustituciones del Decreto 717/96; no se enlaza una URL propia
-          porque el buscador local no la devolvió.
+          figura en los cambios del Decreto 717/96. No tiene enlace propio porque no encontramos su
+          página oficial.
         </p>
         <ul className="space-y-3">
           {RECHAZO_FUENTES.lista.map((fuente) => (
@@ -275,9 +279,13 @@ export default function Page() {
           <Link href="/comision-medica" className="text-emerald-700 hover:underline">
             comisión médica
           </Link>
-          . Para calcular las prestaciones dinerarias, usá la{" "}
+          . Para calcular cuánto te tiene que pagar, usá la{" "}
           <Link href="/indemnizacion-art" className="text-emerald-700 hover:underline">
             indemnización por accidente de trabajo
+          </Link>
+          . Y si tenés dos trabajos, fijate{" "}
+          <Link href="/pluriempleo-art" className="text-emerald-700 hover:underline">
+            qué ART te cubre con pluriempleo
           </Link>
           .
         </p>

@@ -29,26 +29,26 @@ export default function TerminosPage() {
 
       <Seccion titulo="Carácter orientativo">
         <p>
-          Las calculadoras y los contenidos de CalculAR tienen fines exclusivamente informativos y
-          orientativos. Los resultados se basan en los valores oficiales publicados por los organismos
-          correspondientes (como ARCA) al momento indicado en cada herramienta, pero pueden no contemplar
-          situaciones particulares de cada persona.
+          Las calculadoras y los contenidos de CalculAR son solo informativos y orientativos. Los
+          resultados usan los valores oficiales que publican los organismos (como ARCA) a la fecha que
+          indica cada herramienta, pero pueden no tener en cuenta la situación particular de cada
+          persona.
         </p>
       </Seccion>
 
       <Seccion titulo="No es asesoramiento profesional">
         <p>
-          Nada de lo publicado en este sitio constituye asesoramiento impositivo, contable, legal ni
-          financiero. Antes de tomar decisiones con impacto económico, consultá con un profesional
-          matriculado (contador o abogado, según corresponda).
+          Nada de lo que publica este sitio es asesoramiento impositivo, contable, legal ni
+          financiero. Antes de tomar decisiones que muevan plata, consultá con un profesional
+          matriculado (contador o abogado, según el caso).
         </p>
       </Seccion>
 
       <Seccion titulo="Limitación de responsabilidad">
         <p>
-          Trabajamos para mantener los datos actualizados y verificados contra fuentes oficiales, y cada
-          herramienta indica la fecha de vigencia de sus valores. Aun así, no garantizamos la ausencia de
-          errores ni nos responsabilizamos por decisiones tomadas en base a los resultados de las
+          Trabajamos para que los datos estén al día y revisados contra fuentes oficiales, y cada
+          herramienta indica desde cuándo rigen sus valores. Aun así, no garantizamos que no haya
+          errores ni nos hacemos responsables por decisiones tomadas a partir de los resultados de las
           calculadoras.
         </p>
       </Seccion>

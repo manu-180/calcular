@@ -13,12 +13,12 @@ import {
 } from "@/data/venta-inmuebles";
 
 export const metadata: Metadata = {
-  title: "¿Se paga impuesto al vender una casa? Desde 2026, no",
+  title: "Impuesto a la venta de inmuebles 2026: ¿se paga?",
   description:
-    "El impuesto cedular del 15% sobre la venta de inmuebles quedó exento para las operaciones desde el 1/1/2026 (art. 192 de la Ley 27.802), y el ITI está derogado desde julio de 2024. Calculá la ganancia con el costo actualizado por IPC oficial y mirá qué régimen te toca.",
+    "El cedular del 15% quedó exento para ventas desde el 1/1/2026 (Ley 27.802) y el ITI está derogado. Calculá la ganancia con el costo actualizado por IPC.",
   alternates: { canonical: "/venta-de-inmuebles" },
   openGraph: {
-    title: "Vender una casa hoy no paga impuesto nacional — y hacen falta tres leyes para verlo",
+    title: "Vender una casa hoy no paga impuesto nacional (y hacen falta tres leyes para verlo)",
     description:
       "Comprado antes de 2018: nunca entró al cedular y el ITI está derogado desde el 8/7/2024. Comprado desde 2018: el cedular del 15% quedó exento para las ventas desde el 1/1/2026.",
     url: "https://calcular.ar/venta-de-inmuebles",
@@ -35,43 +35,43 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Hay que pagar impuesto a las ganancias al vender un inmueble?",
-    a: `Para una persona humana, hoy no. El impuesto era el cedular del ${ALICUOTA_CEDULAR * 100}% del art. 99 de la Ley de Ganancias, y el art. 26 inc. n) —en el texto que le puso el art. 192 de la Ley 27.802 (B.O. ${BO_LEY_27802})— exime «el resultado derivado de la enajenación de inmuebles y de la transferencia de derechos sobre inmuebles, alcanzados por las disposiciones del artículo 99 (…) que se enajenen o transfieran a partir del 1° de enero de 2026». Antes de esa fecha sí se pagaba, y por eso la calculadora igual muestra la cuenta.`,
+    a: `Si sos persona humana, hoy no. El impuesto era el cedular del ${ALICUOTA_CEDULAR * 100}% del art. 99 de la Ley de Ganancias. El art. 26 inc. n), con el texto que le dio el art. 192 de la Ley 27.802 (B.O. ${BO_LEY_27802}), exime «el resultado derivado de la enajenación de inmuebles y de la transferencia de derechos sobre inmuebles, alcanzados por las disposiciones del artículo 99 (…) que se enajenen o transfieran a partir del 1° de enero de 2026». Antes de esa fecha sí se pagaba, y por eso la calculadora igual muestra la cuenta.`,
   },
   {
     q: "¿Y el ITI, el impuesto a la transferencia de inmuebles?",
-    a: `No existe más. El Título VII de la Ley 23.905, sus artículos 7° a 18, fue derogado por el art. 67 de la Ley 27.743 el ${DEROGACION_ITI}, con vigencia desde su publicación en el Boletín Oficial. En InfoLEG los dieciocho artículos figuran hoy como notas de derogación. Es un dato de 2024 que buena parte de las guías de compraventa todavía no incorporó: se sigue explicando «el 1,5% del ITI» para operaciones de 2026.`,
+    a: `Ya no existe. El Título VII de la Ley 23.905 (artículos 7° a 18) lo derogó el art. 67 de la Ley 27.743 el ${DEROGACION_ITI}, con vigencia desde su publicación en el Boletín Oficial. En InfoLEG esos artículos hoy figuran como notas de derogación. Es un dato de 2024 que muchas guías de compraventa todavía no sumaron: siguen explicando «el 1,5% del ITI» para ventas de 2026.`,
   },
   {
     q: "¿De qué depende cuál de los dos impuestos me tocaba?",
-    a: "De la fecha de COMPRA, no de la de venta. El art. 86 inc. a) de la Ley 27.430 dice que el cedular alcanza a la operación «en tanto el enajenante o cedente hubiera adquirido el bien a partir del 1° de enero de 2018», y agrega que «en tales supuestos, las operaciones no estarán alcanzadas por el Título VII de la ley 23.905». O sea: comprado desde 2018, cedular; comprado antes, ITI. Los dos se repartían el universo, sin superponerse.",
+    a: "De la fecha de compra, no de la de venta. El art. 86 inc. a) de la Ley 27.430 dice que el cedular alcanza a la operación «en tanto el enajenante o cedente hubiera adquirido el bien a partir del 1° de enero de 2018», y agrega que «en tales supuestos, las operaciones no estarán alcanzadas por el Título VII de la ley 23.905». O sea: si lo compraste desde 2018, cedular; si lo compraste antes, ITI. Se repartían todos los casos, sin superponerse.",
   },
   {
     q: "Compré antes de 2018 y vendo ahora. ¿Pago algo?",
-    a: `Ningún impuesto nacional a la transferencia. El inmueble nunca entró al cedular por el art. 86 inc. a) de la Ley 27.430, y el ITI que le habría correspondido está derogado desde el ${DEROGACION_ITI}. Es la mitad del universo que quedó sin impuesto dos años antes que la otra, y por una ley distinta.`,
+    a: `Ningún impuesto nacional a la transferencia. El inmueble nunca entró al cedular por el art. 86 inc. a) de la Ley 27.430, y el ITI que le habría tocado está derogado desde el ${DEROGACION_ITI}. Esta mitad de los casos quedó sin impuesto dos años antes que la otra, y por una ley distinta.`,
   },
   {
     q: "¿Y si heredé el inmueble?",
-    a: "El art. 86 inc. a) de la Ley 27.430 lo resuelve mirando hacia atrás: en los bienes recibidos por herencia, legado o donación, la fecha que cuenta es la de adquisición «del causante o donante». Si esa persona lo compró antes del 1/1/2018, la operación queda fuera del cedular igual que si lo hubieras comprado vos antes de esa fecha.",
+    a: "El art. 86 inc. a) de la Ley 27.430 lo resuelve mirando hacia atrás: si lo recibiste por herencia, legado o donación, cuenta la fecha en que lo compró «el causante o donante». Si esa persona lo compró antes del 1/1/2018, la venta queda fuera del cedular, igual que si lo hubieras comprado vos antes de esa fecha.",
   },
   {
     q: "¿Cómo se calculaba la ganancia del cedular?",
-    a: "El art. 99 inc. a) manda deducir del precio de venta «el costo de adquisición, actualizado mediante la aplicación del índice mencionado en el segundo párrafo del artículo 93, desde la fecha de adquisición hasta la fecha de enajenación o transferencia», y ese índice, para las compras desde 2018, es el IPC nivel general del INDEC. Después, el último párrafo del artículo deja computar los gastos «(comisiones, honorarios, impuestos, tasas, etcétera) directa o indirectamente relacionados» con la operación. El 15% se aplica sobre lo que queda.",
+    a: "El art. 99 inc. a) manda restar del precio de venta «el costo de adquisición, actualizado mediante la aplicación del índice mencionado en el segundo párrafo del artículo 93, desde la fecha de adquisición hasta la fecha de enajenación o transferencia». Para las compras desde 2018, ese índice es el IPC nivel general del INDEC. Después, el último párrafo del artículo deja restar los gastos «(comisiones, honorarios, impuestos, tasas, etcétera) directa o indirectamente relacionados» con la operación. El 15% se aplica sobre lo que queda.",
   },
   {
     q: "¿Se puede restar el mínimo no imponible?",
-    a: "No. El art. 100 es explícito: contra las ganancias de este capítulo «sólo podrán computarse (…) los costos de adquisición y gastos directa o indirectamente relacionados con ellas, no pudiendo deducirse los conceptos previstos en los artículos 29, 30 y 85 de la ley». Ni ganancia no imponible, ni cargas de familia, ni deducción especial: el impuesto cedular es una caja aparte.",
+    a: "No. El art. 100 es claro: contra las ganancias de este capítulo «sólo podrán computarse (…) los costos de adquisición y gastos directa o indirectamente relacionados con ellas, no pudiendo deducirse los conceptos previstos en los artículos 29, 30 y 85 de la ley». Ni ganancia no imponible, ni cargas de familia, ni deducción especial: el impuesto cedular es una caja aparte.",
   },
   {
     q: "¿La exención vale para una empresa que vende un inmueble?",
-    a: "No. El art. 99 habla de «las personas humanas y de las sucesiones indivisas», y la exención del inc. n) está escrita sobre las operaciones «alcanzadas por las disposiciones del artículo 99». El resultado de un inmueble que integra el activo de una empresa va por el régimen general de tercera categoría, que este artículo no toca.",
+    a: "No. El art. 99 habla de «las personas humanas y de las sucesiones indivisas», y la exención del inc. n) está escrita para las operaciones «alcanzadas por las disposiciones del artículo 99». Si el inmueble es parte del activo de una empresa, la ganancia va por el régimen general de tercera categoría, que este artículo no toca.",
   },
   {
     q: "¿Falta reglamentación?",
-    a: `El inciso n) termina diciendo «en los términos que al respecto establezca la reglamentación». La exención está en la ley y rige desde el 1/1/2026; lo que puede faltar es la operatoria —qué se presenta ante el escribano, cómo se acredita la exención—. Al ${VENTA_INMUEBLES_FUENTES.consultadoEl}, esta página publica lo que dice la ley y avisa que la parte procedimental conviene verificarla en ARCA antes de escriturar.`,
+    a: `El inciso n) termina diciendo «en los términos que al respecto establezca la reglamentación». La exención está en la ley y rige desde el 1/1/2026. Lo que puede faltar es el trámite: qué se presenta ante el escribano y cómo se demuestra la exención. Al ${VENTA_INMUEBLES_FUENTES.consultadoEl}, esta página publica lo que dice la ley, y te recomienda revisar el trámite en ARCA antes de escriturar.`,
   },
   {
     q: "¿Y los impuestos provinciales?",
-    a: "Siguen. El impuesto de sellos, ingresos brutos cuando corresponde y las tasas municipales son de cada jurisdicción y ninguna de las tres leyes que se cruzan acá los toca. Que no haya impuesto nacional a la transferencia no significa que escriturar salga cero.",
+    a: "Siguen. El impuesto de sellos, ingresos brutos cuando corresponde y las tasas municipales son de cada provincia o municipio, y ninguna de las tres leyes de esta página los toca. Que no haya impuesto nacional a la transferencia no quiere decir que escriturar salga cero.",
   },
 ];
 
@@ -93,7 +93,7 @@ export default function VentaDeInmueblesPage() {
       articleSchema({
         titulo: "Venta de inmuebles: el cedular del 15%, su exención desde 2026 y el ITI derogado",
         descripcion:
-          "El art. 99 de la Ley de Ganancias, la exención del art. 26 inc. n) que le puso el art. 192 de la Ley 27.802, la línea de 2018 del art. 86 de la Ley 27.430 y la derogación del ITI por el art. 67 de la Ley 27.743.",
+          "El art. 99 de la Ley de Ganancias, la exención del art. 26 inc. n) que le dio el art. 192 de la Ley 27.802, la línea de 2018 del art. 86 de la Ley 27.430 y la derogación del ITI por el art. 67 de la Ley 27.743.",
         url: "/venta-de-inmuebles",
         modificado: VENTA_INMUEBLES_FUENTES.consultadoEl,
       }),
@@ -117,32 +117,37 @@ export default function VentaDeInmueblesPage() {
           Vender un inmueble: ¿qué impuesto se paga hoy?
         </h1>
         <p className="text-zinc-600">
-          Para una persona humana, <strong>ninguno de los dos que existían</strong>. Pero para llegar
-          a esa respuesta hay que juntar <strong>tres leyes de tres años distintos</strong>, y por eso
-          casi ninguna guía la cuenta entera: la mitad de internet sigue explicando el ITI —derogado
-          en 2024— y la otra mitad, el cedular del 15% —exento desde 2026—.
+          Si sos persona humana, <strong>ninguno de los dos que existían</strong>. Pero para llegar
+          a esa respuesta hay que juntar <strong>tres leyes de tres años distintos</strong>, y por
+          eso casi ninguna guía la cuenta entera. La mitad de internet sigue explicando el ITI
+          (derogado en 2024) y la otra mitad, el cedular del 15% (exento desde 2026).
         </p>
       </header>
 
       <RespuestaPrimero actualizado={VENTA_INMUEBLES_FUENTES.consultadoEl}>
         <p>
           Si el inmueble se <strong>compró antes del 1/1/2018</strong>, nunca entró al impuesto
-          cedular (art. 86 inc. a) de la Ley 27.430) y le correspondía el <strong>ITI</strong>, que
-          quedó <strong>derogado el {DEROGACION_ITI}</strong> por el art. 67 de la Ley 27.743. Si se{" "}
-          <strong>compró desde el 1/1/2018</strong>, estaba alcanzado por el{" "}
-          <strong>cedular del {ALICUOTA_CEDULAR * 100}%</strong> del art. 99 de la Ley de Ganancias —
-          y ese impuesto quedó <strong>exento para las operaciones desde el 1/1/2026</strong>, por el
-          art. 26 inc. n) en el texto del art. 192 de la Ley 27.802. Las dos mitades del universo
-          llegaron al mismo lugar, por dos leyes distintas y con dos años de diferencia.
+          cedular (art. 86 inc. a) de la Ley 27.430) y le tocaba el <strong>ITI</strong>, que quedó{" "}
+          <strong>derogado el {DEROGACION_ITI}</strong> por el art. 67 de la Ley 27.743. Si se{" "}
+          <strong>compró desde el 1/1/2018</strong>, le tocaba el{" "}
+          <strong>cedular del {ALICUOTA_CEDULAR * 100}%</strong> del art. 99 de la Ley de Ganancias.
+          Ese impuesto quedó <strong>exento para las ventas desde el 1/1/2026</strong>, por el art.
+          26 inc. n) con el texto del art. 192 de la Ley 27.802. Los dos grupos llegaron al mismo
+          lugar, por dos leyes distintas y con dos años de diferencia.
         </p>
       </RespuestaPrimero>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Calculá tu caso</h2>
         <p className="text-sm text-zinc-600">
-          La calculadora resuelve qué régimen te toca según las dos fechas, y arma la cuenta del
-          cedular con el <strong>costo actualizado por la serie oficial del IPC del INDEC</strong>,
-          que es lo que manda el art. 99 inc. a) y lo que nadie hace a ojo.
+          La calculadora te dice qué régimen te toca según las dos fechas y arma la cuenta del
+          cedular con el <strong>costo actualizado por la serie oficial del IPC del INDEC</strong>.
+          Es lo que manda el art. 99 inc. a), y nadie lo hace a ojo. Si querés actualizar otro
+          monto por inflación, usá la{" "}
+          <Link href="/inflacion" className="font-medium text-emerald-700 hover:underline">
+            calculadora de inflación
+          </Link>
+          .
         </p>
         <CalculadoraVentaInmueble />
       </section>
@@ -152,22 +157,22 @@ export default function VentaDeInmueblesPage() {
         <div className="space-y-3">
           {[
             {
-              art: "1. Ley 27.430, art. 86 inc. a) (2017) — la línea de 2018 que parte el universo",
+              art: "1. Ley 27.430, art. 86 inc. a) (2017): la línea de 2018 que divide los casos",
               texto: VENTA_INMUEBLES_TEXTOS.art86Ley27430,
               porQue:
-                "Lo que decide no es cuándo vendés sino cuándo compraste. Comprado desde el 1/1/2018: cedular. Comprado antes: ITI, y el propio artículo lo dice al revés («no estarán alcanzadas por el Título VII de la ley 23.905») para el caso del cedular. En herencias y donaciones la fecha que cuenta es la del causante o donante.",
+                "Lo que decide no es cuándo vendés sino cuándo compraste. Comprado desde el 1/1/2018: cedular. Comprado antes: ITI, y el mismo artículo lo dice al revés para el caso del cedular («no estarán alcanzadas por el Título VII de la ley 23.905»). En herencias y donaciones cuenta la fecha del causante o donante.",
             },
             {
-              art: `2. Ley 27.743, art. 67 (2024) — el ITI dejó de existir el ${DEROGACION_ITI}`,
+              art: `2. Ley 27.743, art. 67 (2024): el ITI dejó de existir el ${DEROGACION_ITI}`,
               texto: VENTA_INMUEBLES_TEXTOS.derogacionIti,
               porQue:
-                "Es la nota que InfoLEG repite en los dieciocho artículos del Título VII de la Ley 23.905. Con el ITI derogado, la mitad del universo —los inmuebles comprados antes de 2018— se quedó sin ningún impuesto nacional a la transferencia, dos años antes que la otra mitad.",
+                "Es la nota que InfoLEG repite en los dieciocho artículos del Título VII de la Ley 23.905. Con el ITI derogado, los inmuebles comprados antes de 2018 se quedaron sin ningún impuesto nacional a la transferencia, dos años antes que el resto.",
             },
             {
-              art: "3. Ley 27.802, art. 192 (2026) — el cedular quedó exento",
+              art: "3. Ley 27.802, art. 192 (2026): el cedular quedó exento",
               texto: VENTA_INMUEBLES_TEXTOS.exencion,
               porQue:
-                "El art. 192 sustituyó el inciso n) del art. 26 de la Ley de Ganancias y le agregó esta segunda oración. La primera mitad del inciso exime las ganancias del alquiler de casa habitación; ésta exime el resultado de la venta. Un solo inciso, dos exenciones grandes, y ninguna de las dos estaba en el título de la reforma.",
+                "El art. 192 reescribió el inciso n) del art. 26 de la Ley de Ganancias y le sumó esta segunda oración. La primera parte del inciso exime lo que ganás por alquilar una casa habitación; esta exime lo que ganás al venderla. Un solo inciso, dos exenciones grandes, y ninguna de las dos estaba en el título de la reforma.",
             },
           ].map((a) => (
             <details
@@ -189,7 +194,7 @@ export default function VentaDeInmueblesPage() {
         </h2>
         <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
           <p className="text-sm font-semibold text-zinc-800">
-            Ley de Ganancias, art. 99 — el impuesto y a quién alcanza
+            Ley de Ganancias, art. 99: el impuesto y a quién alcanza
           </p>
           <p className="mt-1 text-sm italic text-zinc-700">«{VENTA_INMUEBLES_TEXTOS.art99}»</p>
         </blockquote>
@@ -208,15 +213,15 @@ export default function VentaDeInmueblesPage() {
           </p>
         </blockquote>
         <p className="text-sm text-zinc-600">
-          Las dos piezas encajan exactamente: el cedular sólo alcanza a los inmuebles comprados desde
-          el 1/1/2018, y la actualización por IPC se aplica justamente a «las adquisiciones o
-          inversiones efectuadas en los ejercicios fiscales que se inicien a partir del 1° de enero
-          de 2018». Todo el universo del cedular actualiza el costo por IPC. Restar el precio nominal
-          de una escritura de 2019 contra una venta de 2025 no es una simplificación: es calcular el
-          impuesto sobre inflación pura.
+          Las dos piezas encajan justo. El cedular solo alcanza a los inmuebles comprados desde el
+          1/1/2018, y la actualización por IPC se aplica a «las adquisiciones o inversiones
+          efectuadas en los ejercicios fiscales que se inicien a partir del 1° de enero de 2018». O
+          sea, en todos los casos del cedular el costo se actualiza por IPC. Restar el precio
+          nominal de una escritura de 2019 a una venta de 2025 no es simplificar: es pagar impuesto
+          sobre pura inflación.
         </p>
         <blockquote className="rounded-xl border-l-4 border-amber-400 bg-amber-50/50 p-4">
-          <p className="text-sm font-semibold text-zinc-800">Art. 99, último párrafo — los gastos</p>
+          <p className="text-sm font-semibold text-zinc-800">Art. 99, último párrafo: los gastos</p>
           <p className="mt-1 text-sm italic text-zinc-700">«{VENTA_INMUEBLES_TEXTOS.art99Gastos}»</p>
         </blockquote>
       </section>
@@ -232,8 +237,8 @@ export default function VentaDeInmueblesPage() {
         <p className="text-sm text-zinc-600">
           Los artículos que el 100 deja afuera son los tres que más se usan en una liquidación
           común: el 29 (ganancia no imponible), el 30 (deducciones personales, cargas de familia,
-          deducción especial) y el 85 (deducciones generales, donde vive la deducción del alquiler).
-          Contra la ganancia de la venta sólo se computan el costo y los gastos de la operación.
+          deducción especial) y el 85 (deducciones generales, donde está la deducción del alquiler).
+          Contra la ganancia de la venta solo se restan el costo y los gastos de la operación.
         </p>
       </section>
 
@@ -260,6 +265,13 @@ export default function VentaDeInmueblesPage() {
           <Link href="/plazo-fijo" className="font-medium text-emerald-700 hover:underline">
             la exención de los plazos fijos
           </Link>
+          . Si tenés una deuda vieja con ARCA, mirá{" "}
+          <Link
+            href="/prescripcion-deuda-arca"
+            className="font-medium text-emerald-700 hover:underline"
+          >
+            cuándo prescribe
+          </Link>
           .
         </p>
       </section>
@@ -276,15 +288,15 @@ export default function VentaDeInmueblesPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página cita los textos oficiales publicados en InfoLEG — no un resumen de prensa. Es
-          informativa y orientativa: no reemplaza el asesoramiento de un profesional ni una
-          liquidación impositiva. Consultada el {VENTA_INMUEBLES_FUENTES.consultadoEl}.
+          Esta página cita los textos oficiales publicados en InfoLEG, no un resumen de prensa. Es
+          una guía informativa: no reemplaza el consejo de un profesional ni una liquidación
+          impositiva. Consultada el {VENTA_INMUEBLES_FUENTES.consultadoEl}.
         </p>
       </section>
     </article>

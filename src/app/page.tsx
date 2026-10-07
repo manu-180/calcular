@@ -13,9 +13,9 @@ import { etiquetaPeriodo } from "@/lib/jubilacion";
 import { ultimoCambio } from "@/lib/novedades";
 
 export const metadata: Metadata = {
-  title: "CalculAR — Calculadoras gratuitas para la Argentina",
+  title: "CalculAR: calculadoras de sueldo, impuestos y ANSES",
   description:
-    "Calculadoras argentinas gratuitas y siempre actualizadas: monotributo, aguinaldo, recategorización 2026 y más. Datos oficiales, resultados claros.",
+    "Calculadoras gratis para la Argentina con datos oficiales: sueldo neto, aguinaldo, indemnización, monotributo, Ganancias y jubilación. Al día cada mes.",
 };
 
 // Texto que rankea: cada descripción es contenido indexado de la home. Se puede reordenar
@@ -25,13 +25,13 @@ const herramientas: { href: string; titulo: string; descripcion: string }[] = [
     href: "/monotributo",
     titulo: "Calculadora de monotributo",
     descripcion:
-      "Descubrí tu categoría y cuánto vas a pagar por mes según tu facturación. Con la tabla oficial de ARCA vigente.",
+      "Sabé en qué categoría estás y cuánto pagás por mes según lo que facturás. Con la tabla vigente de ARCA.",
   },
   {
     href: "/monotributo/categorias",
     titulo: "Categorías del monotributo 2026",
     descripcion:
-      "La tabla completa y actualizada: topes de facturación, cuotas, superficie, energía y alquileres de cada categoría.",
+      "La tabla completa y al día: topes de facturación, cuotas, superficie, energía y alquileres de cada categoría.",
   },
   {
     href: "/monotributo/recategorizacion",
@@ -43,61 +43,61 @@ const herramientas: { href: string; titulo: string; descripcion: string }[] = [
     href: "/sueldo-neto",
     titulo: "Calculadora de sueldo neto",
     descripcion:
-      "De bruto a en mano y al revés: aportes de ley (17%), tope de aportes, cuota sindical y estimación de Ganancias. Y qué bruto pedir para el neto que querés.",
+      "Pasá de bruto a en mano y al revés. Con los aportes de ley (17%), el tope de aportes, la cuota sindical y una estimación de Ganancias. También te dice qué bruto pedir para cobrar el neto que querés.",
   },
   {
     href: "/ganancias",
     titulo: "Calculadora de Ganancias 4ª categoría",
     descripcion:
-      "Cuánto te descuenta tu empleador de Ganancias mes a mes: método acumulado oficial (RG ARCA 5008), con el SAC incluido en junio y diciembre.",
+      "Cuánto te descuenta tu empleador de Ganancias cada mes. Usa el método acumulado oficial (RG ARCA 5008) y suma el aguinaldo en junio y diciembre.",
   },
   {
     href: "/ganancias-sociedades",
     titulo: "Ganancias de sociedades",
     descripcion:
-      "La escala del 25, 30 y 35% para SA, SAS y SRL, ajustada por IPC año por año: el impuesto del ejercicio, la alícuota efectiva y el 7% de los dividendos.",
+      "La escala del 25, 30 y 35% para SA, SAS y SRL, ajustada por IPC cada año. Te da el impuesto del ejercicio, la alícuota efectiva y el 7% de los dividendos.",
   },
   {
     href: "/ganancias-jubilados",
     titulo: "Ganancias para jubilados",
     descripcion:
-      "Desde qué haber paga Ganancias un jubilado o pensionado, la deducción de ocho haberes mínimos sumada mes a mes, las cargas de familia que se restan aparte y cuándo se pierde.",
+      "Desde qué haber paga Ganancias un jubilado o pensionado. Con la deducción de ocho haberes mínimos sumada mes a mes, las cargas de familia que se restan aparte y en qué casos se pierde.",
   },
   {
     href: "/ganancias-autonomos",
     titulo: "Ganancias para autónomos",
     descripcion:
-      "Profesionales, oficios y emprendedores: la deducción especial del año, la mayor de los nuevos profesionales (hasta tres años de matrícula) y por qué dejar de aportar sube el impuesto.",
+      "Para profesionales, oficios y emprendedores. La deducción especial del año, la más alta para nuevos profesionales (hasta tres años de matrícula) y por qué dejar de aportar te sube el impuesto.",
   },
   {
     href: "/deducciones-generales-ganancias",
     titulo: "Deducciones generales de Ganancias",
     descripcion:
-      "Prepaga, honorarios médicos, seguro de vida y de retiro, donaciones e intereses hipotecarios: cuánto entra de cada uno, el tope del seguro ajustado por IPC y cuánta plata te vuelve de verdad.",
+      "Prepaga, honorarios médicos, seguro de vida y de retiro, donaciones e intereses hipotecarios. Cuánto entra de cada uno, el tope del seguro ajustado por IPC y cuánta plata te vuelve de verdad.",
   },
   {
     href: "/deduccion-empleada-domestica",
     titulo: "Deducción de empleada doméstica en Ganancias",
     descripcion:
-      "Cuánta plata te vuelve de verdad por tener empleada registrada: el tope es la ganancia no imponible, pero una deducción devuelve tu alícuota, no el monto. Con el detalle de qué parte del pago a ARCA entra en la cuenta y cuál no.",
+      "Cuánta plata te vuelve de verdad por tener empleada registrada. El tope es la ganancia no imponible, pero una deducción te devuelve tu alícuota, no el monto. Y qué parte de lo que pagás a ARCA entra en la cuenta y cuál no.",
   },
   {
     href: "/deduccion-alquiler",
     titulo: "Deducción de alquiler en Ganancias",
     descripcion:
-      "Cuánto te vuelve por deducir el alquiler: el 40% con tope en la ganancia no imponible —un tope que recién muerde con alquileres altísimos— y el cambio de 2026 que dejó afuera al 10% del inciso k).",
+      "Cuánto te vuelve por deducir el alquiler: el 40%, con tope en la ganancia no imponible (un tope que solo pesa con alquileres altísimos). Y el cambio de 2026 que dejó afuera el 10% del inciso k).",
   },
   {
     href: "/aguinaldo",
     titulo: "Calculadora de aguinaldo",
     descripcion:
-      "Cuánto cobrás de SAC en junio y diciembre, en bruto y en mano. Con proporcional si no trabajaste el semestre completo.",
+      "Cuánto cobrás de aguinaldo (SAC) en junio y diciembre, en bruto y en mano. Con el proporcional si no trabajaste el semestre completo.",
   },
   {
     href: "/vacaciones",
     titulo: "Calculadora de vacaciones",
     descripcion:
-      "Cuántos días te corresponden por antigüedad y cuánto cobrás con el plus vacacional. Con la reforma 2026.",
+      "Cuántos días te tocan por antigüedad y cuánto cobrás con el plus vacacional. Con la reforma 2026.",
   },
   {
     href: "/indemnizacion",
@@ -109,271 +109,271 @@ const herramientas: { href: string; titulo: string; descripcion: string }[] = [
     href: "/actualizacion-creditos-laborales",
     titulo: "Actualización de créditos laborales",
     descripcion:
-      "Cuánto vale hoy lo que te deben. Desde marzo de 2026 lo dice la ley y no la jurisprudencia: IPC del INDEC más 3% anual, desde que la suma es debida hasta el pago (art. 276 LCT). Con el desfasaje del índice publicado, que nadie descuenta, y los topes del art. 277.",
+      "Cuánto vale hoy lo que te deben. Desde marzo de 2026 lo fija la ley y no los jueces: IPC del INDEC más 3% anual, desde que te lo debían hasta que te pagan (art. 276 LCT). Tiene en cuenta el atraso con que se publica el índice, que nadie descuenta, y los topes del art. 277.",
   },
   {
     href: "/indemnizacion-art",
     titulo: "Indemnización por accidente de trabajo (ART)",
     descripcion:
-      "El texto de la Ley 24.557 todavía dice que la indemnización «en ningún caso será superior» a $180.000. El Decreto 1694/2009 suprimió ese tope y convirtió el mismo número en piso: hoy vale $114.354.110 por el porcentaje de incapacidad, actualizado por RIPTE cada seis meses.",
+      "La Ley 24.557 todavía dice que la indemnización «en ningún caso será superior» a $180.000. El Decreto 1694/2009 sacó ese tope y convirtió el mismo número en piso. Hoy vale $114.354.110 por el porcentaje de incapacidad, y se actualiza por RIPTE cada seis meses.",
   },
   {
     href: "/art-empleada-domestica",
     titulo: "ART de la empleada doméstica",
     descripcion:
-      "La cobertura es obligatoria y la paga el empleador, pero la prestación no se liquida sobre el sueldo que cobra: el reglamento manda tomar el mínimo de la categoría. Por eso, casi siempre, lo que se cobra es el piso de la SRT y no la fórmula.",
+      "La cobertura es obligatoria y la paga el empleador. Pero la prestación no se calcula sobre el sueldo que cobra ella: el reglamento manda usar el mínimo de la categoría. Por eso casi siempre se cobra el piso de la SRT y no lo que da la fórmula.",
   },
   {
     href: "/comision-medica",
     titulo: "Comisión médica: los plazos del reclamo a la ART",
     descripcion:
-      "Antes de demandarle a la ART hay que agotar la comisión médica, y tiene 60 días hábiles administrativos para expedirse. Son perentorios: vencidos, la vía judicial queda expedita sin esperar el dictamen. Y el trámite lo paga la aseguradora, no el trabajador.",
+      "Antes de demandar a la ART tenés que pasar por la comisión médica, que tiene 60 días hábiles administrativos para resolver. Ese plazo no se estira: si vence, podés ir a la justicia sin esperar el dictamen. Y el trámite lo paga la ART, no vos.",
   },
   {
     href: "/empleador-sin-art",
     titulo: "Mi empleador no tiene la ART al día: ¿quién me paga?",
     descripcion:
-      "Que la empresa deba cuotas no te deja sin cobertura: la ART tiene que atenderte igual y después le cobra a ella. Y si trabajás sin registrar pero la empresa tiene ART, también. Sólo la extinción del contrato corta — y aun así quedan tres meses de atención médica.",
+      "Que la empresa deba cuotas no te deja sin cobertura: la ART te tiene que atender igual y después le cobra a ella. Si trabajás sin registrar y la empresa tiene ART, también. Solo la extinción del contrato corta la cobertura, y aun así quedan tres meses de atención médica.",
   },
   {
     href: "/rechazo-art",
     titulo: "La ART rechazó el accidente: ¿llegó en plazo?",
     descripcion:
-      "Los 10 días se cuentan en hábiles administrativos, no corridos. La prórroga sólo vale si se avisó dentro de ese primer plazo, y la causal invocada decide si el reclamo va a comisión médica o a otra autoridad.",
+      "Los 10 días se cuentan en hábiles administrativos, no corridos. La prórroga solo vale si se avisó dentro de ese primer plazo. Y el motivo del rechazo decide si el reclamo va a la comisión médica o a otra autoridad.",
   },
   {
     href: "/pluriempleo-art",
     titulo: "Dos trabajos y un accidente: ¿qué ART paga?",
     descripcion:
-      "La ART obligada puede no ser la del lugar del accidente y la prestación puede reunir los ingresos base de varios empleos. Para un segundo siniestro, calculá la incapacidad incremental por capacidad restante.",
+      "La ART que paga puede no ser la del lugar del accidente, y la prestación puede sumar los ingresos de varios trabajos. Si es un segundo accidente, calculá la incapacidad nueva sobre la capacidad que te quedaba.",
   },
   {
     href: "/aportes-jubilatorios-obligatorios",
     titulo: "¿Tenés que aportar al sistema previsional?",
     descripcion:
-      "Obligatorio, voluntario o exceptuado, con el inciso exacto. El umbral del socio no es un porcentaje fijo: es cien dividido la cantidad de socios. Y quedar afuera de la relación de dependencia no es quedar exento — el que dirige aporta como autónomo aunque no cobre nada.",
+      "Obligatorio, voluntario o exceptuado, con el inciso exacto. El umbral del socio no es un porcentaje fijo: es cien dividido la cantidad de socios. Y no estar en relación de dependencia no te deja exento: el que dirige aporta como autónomo aunque no cobre nada.",
   },
   {
     href: "/derechohabientes-art",
     titulo: "Quién cobra la indemnización por muerte laboral",
     descripcion:
-      "La misma muerte dispara dos indemnizaciones con dos listas distintas de beneficiarios: la de la ART y la del empleador. Un conviviente de tres años cobra una y no la otra. Persona por persona, con la norma que lo decide.",
+      "La misma muerte genera dos indemnizaciones con dos listas distintas de beneficiarios: la de la ART y la del empleador. Un conviviente de tres años cobra una y no la otra. Persona por persona, con la norma que lo decide.",
   },
   {
     href: "/indemnizacion-por-fallecimiento",
     titulo: "Indemnización por fallecimiento del trabajador",
     descripcion:
-      "Qué le corresponde a la familia cuando muere un trabajador. El art. 248 de la LCT tiene texto nuevo desde marzo de 2026: cambió quiénes cobran, y ahora se reparte en partes iguales contando cada titular como uno. Es la mitad de la indemnización por despido, va aparte de lo que pague la ART, y el empleador tiene 30 días para saldarla.",
+      "Qué le corresponde a la familia cuando muere un trabajador. El art. 248 de la LCT tiene texto nuevo desde marzo de 2026: cambió quiénes cobran, y ahora se reparte en partes iguales contando a cada titular como uno. Es la mitad de la indemnización por despido y va aparte de lo que pague la ART. El empleador tiene 30 días para pagarla.",
   },
   {
     href: "/certificado-de-trabajo",
     titulo: "Certificado de trabajo (art. 80 LCT)",
     descripcion:
-      "El empleador tiene 45 días hábiles desde que terminó el contrato: calculá la fecha límite exacta, descontando fines de semana y feriados. Y la noticia que casi nadie publicó: la multa de tres sueldos por no entregarlo ya no está en la ley: el artículo que la había creado fue derogado y el art. 80 se reescribió entero. Lo que se puede reclamar depende de cuándo terminó tu contrato.",
+      "El empleador tiene 45 días hábiles desde que terminó el contrato. Calculá la fecha límite exacta, sin fines de semana ni feriados. Y algo que casi nadie publicó: la multa de tres sueldos por no entregarlo ya no está en la ley. El artículo que la creaba se derogó y el art. 80 se reescribió entero, así que lo que podés reclamar depende de cuándo terminó tu contrato.",
   },
   {
     href: "/periodo-de-prueba",
     titulo: "Despido en período de prueba: qué te tienen que pagar",
     descripcion:
-      "Durante veintidós años la respuesta fue «te tienen que preavisar 15 días». El 6 de marzo de 2026 dejó de ser cierta: el art. 48 de la Ley 27.802 sacó el período de prueba de la escala del preaviso y escribió lo contrario. Pero tampoco es cierto que no te corresponda nada: el aguinaldo y las vacaciones proporcionales se cobran igual, porque el período de prueba cuenta como tiempo de servicio.",
+      "Durante veintidós años la respuesta fue «te tienen que preavisar 15 días». Desde el 6 de marzo de 2026 ya no: el art. 48 de la Ley 27.802 sacó el período de prueba de la escala del preaviso y dice lo contrario. Pero algo te corresponde igual: el aguinaldo y las vacaciones proporcionales, porque el período de prueba cuenta como tiempo de servicio.",
   },
   {
     href: "/despido-empleada-domestica",
     titulo: "Despido de empleada doméstica: la liquidación final",
     descripcion:
-      "El régimen de casas particulares se liquida con sus propios artículos: el preaviso son 10 o 30 días y la indemnización del art. 48 no tiene tope. Y el 6 de marzo de 2026 cambiaron dos cosas de fondo que casi nadie publicó — el período de prueba pasó de 30 días a seis meses, y la Ley de Contrato de Trabajo dejó de aplicarse supletoriamente a este régimen.",
+      "El régimen de casas particulares tiene sus propios artículos: el preaviso es de 10 o 30 días y la indemnización del art. 48 no tiene tope. El 6 de marzo de 2026 cambiaron dos cosas de fondo que casi nadie publicó: el período de prueba pasó de 30 días a seis meses, y la Ley de Contrato de Trabajo ya no se aplica para cubrir lo que este régimen no dice.",
   },
   {
     href: "/practicas-desleales-sindicales",
     titulo: "Prácticas desleales del sindicato: las ocho conductas nuevas y cuánto cuestan",
     descripcion:
-      "Durante 38 años la Ley 23.551 tipificó prácticas desleales de una sola parte: el empleador. El 6 de marzo de 2026 apareció el art. 53 bis con ocho conductas de las asociaciones sindicales, el art. 54 pasó a habilitar a «todo damnificado» a querellar, y la multa dejó de remitir a una ley de 1972 para pasar al Anexo II de la Ley 25.212 — que se calcula sobre el salario mínimo, y llega al 2.000% por cada trabajador afectado en las infracciones muy graves. La conducta se explicó en todos lados; el importe no.",
+      "Durante 38 años la Ley 23.551 solo castigó prácticas desleales de una parte: el empleador. El 6 de marzo de 2026 apareció el art. 53 bis, con ocho conductas de los sindicatos, y el art. 54 habilitó a «todo damnificado» a querellar. La multa ya no remite a una ley de 1972: sale del Anexo II de la Ley 25.212, se calcula sobre el salario mínimo y llega al 2.000% por cada trabajador afectado en las infracciones muy graves. Las conductas se explicaron en todos lados; el importe, no.",
   },
   {
     href: "/indemnizacion-por-clientela",
     titulo: "Indemnización por clientela: el 25% del viajante de comercio",
     descripcion:
-      "El art. 14 de la Ley 14.546 está escrito igual desde 1958 y paga el 25% de lo que correspondería por un despido intempestivo e injustificado — cualquiera sea el motivo por el que terminó el contrato, incluida la renuncia. La Ley 27.802 le puso fecha de vencimiento: el 1° de enero de 2027 se deroga el estatuto entero, y con él la clientela, la comisión indirecta y la garantía de zona.",
+      "El art. 14 de la Ley 14.546 no cambió desde 1958. Paga el 25% de lo que correspondería por un despido sin aviso y sin causa, sea cual sea el motivo por el que terminó el contrato, incluida la renuncia. La Ley 27.802 le puso fecha de vencimiento: el 1° de enero de 2027 se deroga el estatuto entero, y con él la clientela, la comisión indirecta y la garantía de zona.",
   },
   {
     href: "/indemnizacion-periodista",
     titulo: "Indemnización de un periodista: los seis sueldos que se terminan en 2027",
     descripcion:
-      "El art. 43 del Estatuto del Periodista está escrito igual desde 1965 y paga tres indemnizaciones, no una: antigüedad con piso de dos meses, sustitutiva del preaviso de dos o cuatro meses, y una indemnización especial de seis meses de sueldo que se cobra «haya o no mediado preaviso» y que la Ley de Contrato de Trabajo no tiene. El art. 197 de la Ley 27.802 deroga el estatuto entero el 1° de enero de 2027: la calculadora muestra las dos cuentas y la diferencia en pesos.",
+      "El art. 43 del Estatuto del Periodista no cambió desde 1965 y paga tres indemnizaciones, no una: antigüedad con piso de dos meses, la que reemplaza al preaviso (dos o cuatro meses) y una especial de seis meses de sueldo que se cobra «haya o no mediado preaviso». Esa última no existe en la Ley de Contrato de Trabajo. El art. 197 de la Ley 27.802 deroga el estatuto entero el 1° de enero de 2027: la calculadora muestra las dos cuentas y la diferencia en pesos.",
   },
   {
     href: "/despido-de-delegado-gremial",
     titulo: "Despido de un delegado gremial: cuánto se cobra hoy",
     descripcion:
-      "El artículo 52 de la Ley 23.551 —el que fija la indemnización agravada por violar la tutela sindical— estuvo escrito igual desde 1988, y el 6 de marzo de 2026 la Ley 27.802 lo reescribió entero. Las diferencias no son de matiz: los suplentes quedaron expresamente afuera, los congresales tienen cupo y reloj, el candidato que no llega al 5% de los votos pierde la protección, y el año extra ya no se acumula con el art. 245 bis de la LCT. Casi todo lo publicado comenta el texto viejo.",
+      "El artículo 52 de la Ley 23.551 (el que fija la indemnización agravada por violar la tutela sindical) estuvo igual desde 1988, y el 6 de marzo de 2026 la Ley 27.802 lo reescribió entero. Los cambios son de fondo: los suplentes quedaron afuera, los congresales tienen cupo y plazo, el candidato que no llega al 5% de los votos pierde la protección y el año extra ya no se suma al art. 245 bis de la LCT. Casi todo lo publicado comenta el texto viejo.",
   },
   {
     href: "/rifl",
     titulo: "RIFL: cuánto baja el costo de contratar",
     descripcion:
-      "Es el número más grande de la reforma para un empleador y circula como noticia en vez de como cuenta: por cada nueva incorporación que califique, las contribuciones patronales de SIPA, Fondo Nacional de Empleo, Asignaciones Familiares e INSSJP pasan del 18% o 20,40% a un 5% total, durante 48 meses. Y hay dos relojes que casi nadie separa: la ventana para dar el alta cierra el 30 de abril de 2027, pero el beneficio de cada contratación sigue corriendo cuatro años desde el alta.",
+      "Para un empleador es el número más grande de la reforma, y circula como noticia en vez de como cuenta. Por cada alta nueva que califique, las contribuciones patronales de SIPA, Fondo Nacional de Empleo, Asignaciones Familiares e INSSJP bajan del 18% o 20,40% a un 5% total durante 48 meses. Hay dos plazos distintos: la ventana para dar el alta cierra el 30 de abril de 2027, pero el beneficio de cada contratación sigue cuatro años desde el alta.",
   },
   {
     href: "/repartidores-de-apps",
     titulo: "Repartidor o conductor de app: cuánto te queda por mes",
     descripcion:
-      "El 6 de marzo de 2026 apareció un régimen laboral entero que antes no existía: el Título XII de la Ley 27.802 define al repartidor y al conductor de plataformas como «prestador independiente» y saca a la Ley de Contrato de Trabajo del medio. La parte jurídica se explicó en todos lados; el número no. Acá está: qué categoría de monotributo te toca, cuánto te queda limpio y cuánto vale, en pesos, el aguinaldo y el plus de vacaciones que dejaste de cobrar.",
+      "El 6 de marzo de 2026 apareció un régimen entero que antes no existía. El Título XII de la Ley 27.802 define al repartidor y al conductor de plataformas como «prestador independiente», fuera de la Ley de Contrato de Trabajo. La parte legal se explicó en todos lados; el número, no. Acá está: qué categoría de monotributo te toca, cuánto te queda limpio y cuánto valen en pesos el aguinaldo y el plus de vacaciones que dejaste de cobrar.",
   },
   {
     href: "/descuentos-del-sueldo",
     titulo: "Cuánto te pueden descontar del sueldo",
     descripcion:
-      "El tope del 20% del art. 133 es correcto y está intacto desde 1974 — por eso el tema parece cubierto y ahí termina todo lo publicado. Al lado hay tres números oficiales que casi nadie muestra: la cuota solidaria tiene desde marzo de 2026 un techo del 2% que antes no existía, la retención de Ganancias puede pasarse del 20% sin ningún límite, y el embargo judicial se calcula sobre el bruto, arrancando recién arriba de un salario mínimo.",
+      "El tope del 20% del art. 133 es correcto y sigue igual desde 1974. Por eso el tema parece cubierto, pero hay tres números oficiales más que casi nadie muestra. Desde marzo de 2026 la cuota solidaria tiene un techo del 2% que antes no existía, la retención de Ganancias puede pasar el 20% sin ningún límite, y el embargo judicial se calcula sobre el bruto, recién arriba de un salario mínimo.",
   },
   {
     href: "/derivar-aportes-a-prepaga",
     titulo: "Aportes de obra social y derivación a prepaga",
     descripcion:
-      "De los 9 puntos que se aportan sobre tu sueldo, a tu entidad le llega el 85%: el resto va al Fondo Solidario. Calculá cuánto llega y cuánto te queda de bolsillo si derivás a una prepaga.",
+      "De los 9 puntos que se aportan sobre tu sueldo, a tu obra social le llega el 85%: el resto va al Fondo Solidario. Calculá cuánto llega y cuánto ponés de tu bolsillo si derivás a una prepaga.",
   },
   {
     href: "/obra-social-monotributo",
     titulo: "Obra social del monotributo: desde cuándo te cubre",
     descripcion:
-      "La cobertura no arranca completa el día uno: el ambulatorio va desde el alta, la internación recién a los 3 meses y las prestaciones de alto costo y discapacidad a los 6. Tus tres fechas exactas.",
+      "La cobertura no arranca completa el primer día. Lo ambulatorio va desde el alta, la internación recién a los 3 meses, y alto costo y discapacidad a los 6. Tus tres fechas exactas.",
   },
   {
     href: "/hasta-cuando-tengo-obra-social",
     titulo: "¿Hasta cuándo tenés obra social?",
     descripcion:
-      "Los tres meses después del despido existen, pero sólo si trabajaste más de tres meses seguidos. Y hay otros siete supuestos con plazos distintos: la fecha exacta, caso por caso.",
+      "Los tres meses después del despido existen, pero solo si trabajaste más de tres meses seguidos. Y hay otros siete casos con plazos distintos: la fecha exacta de cada uno.",
   },
   {
     href: "/horas-extras",
     titulo: "Horas extras: 50%, 100% y el banco de horas",
     descripcion:
-      "El recargo del art. 201 no cambió desde 1974 — por eso todas las calculadoras dan el mismo número. Lo que cambió en marzo de 2026 es quién puede pactar que esas horas se compensen con francos en vez de plata: hasta entonces sólo un convenio colectivo, ahora el empleador y vos, uno a uno y por escrito. Acá el importe, los francos equivalentes en las dos lecturas posibles y el tope de 30 horas mensuales que sigue vigente.",
+      "El recargo del art. 201 no cambió desde 1974, por eso todas las calculadoras dan el mismo número. Lo que cambió en marzo de 2026 es quién puede pactar que esas horas se compensen con francos en vez de plata: antes solo un convenio colectivo, ahora vos y el empleador, uno a uno y por escrito. Acá tenés el importe, los francos equivalentes en las dos lecturas posibles y el tope de 30 horas mensuales que sigue vigente.",
   },
   {
     href: "/reingreso",
     titulo: "Reingreso al mismo empleador",
     descripcion:
-      "Te indemnizaron, te volvieron a tomar y te vuelven a despedir. Desde marzo de 2026 el art. 18 de la LCT borra la antigüedad anterior si entre el cese y el reingreso pasaron dos años, y el art. 255 deduce lo que cobraste actualizado por IPC — no en pesos de aquel momento. Con el piso que impide que ese descuento se coma el despido nuevo.",
+      "Te indemnizaron, te volvieron a tomar y te vuelven a despedir. Desde marzo de 2026 el art. 18 de la LCT borra la antigüedad anterior si entre la salida y el reingreso pasaron dos años. Y el art. 255 descuenta lo que cobraste actualizado por IPC (no en pesos de aquel momento), con un piso para que ese descuento no se coma el despido nuevo.",
   },
   {
     href: "/tiempo-parcial",
     titulo: "Media jornada: cuánto te tienen que pagar",
     descripcion:
-      "El tope de dos tercios de la jornada ya no existe, y con él se cayó la obligación de pagar el sueldo completo si se superaba: la Ley 27.802 reescribió el art. 92 ter en marzo de 2026. A cambio, las horas suplementarias pasaron de prohibidas a permitidas. Acá el piso legal de tu sueldo, las horas extra con y sin recargo, y el aporte de obra social que no se prorratea.",
+      "La Ley 27.802 reescribió el art. 92 ter en marzo de 2026. Ya no existe el tope de dos tercios de la jornada, y con él se cayó la obligación de pagar el sueldo completo si se pasaba. A cambio, las horas suplementarias pasaron de prohibidas a permitidas. Acá tenés el piso legal de tu sueldo, las horas extra con y sin recargo y el aporte de obra social, que no se reduce en proporción.",
   },
   {
     href: "/renuncia",
     titulo: "Renuncia: qué te tienen que pagar",
     descripcion:
-      "Renunciar no es irse con las manos vacías: los arts. 123 y 156 dicen «por cualquier causa», así que van los días del mes, el SAC proporcional y las vacaciones no gozadas. Y vos también debés 15 días de preaviso. Desde marzo de 2026 el telegrama puede ser digital y ya no exige presencia personal: el art. 240 se reescribió y casi nadie lo publica.",
+      "Renunciar no es irse con las manos vacías. Los arts. 123 y 156 dicen «por cualquier causa», así que te pagan los días del mes, el aguinaldo proporcional y las vacaciones no gozadas. Vos también debés 15 días de preaviso. Desde marzo de 2026 el telegrama puede ser digital y ya no hace falta ir en persona: el art. 240 se reescribió y casi nadie lo cuenta.",
   },
   {
     href: "/temeridad-y-malicia",
     titulo: "Temeridad y malicia: la sanción que ya no existe",
     descripcion:
-      "El art. 275 de la LCT condenaba al empleador que litigaba de mala fe a pagar hasta 2,5 veces el interés bancario, y desde 2011 calificaba de temeraria y maliciosa —de oficio— la falta de cumplimiento de un acuerdo homologado. La Ley 27.802 lo derogó en marzo de 2026 y, el mismo día, metió en el art. 20 las costas solidarias del trabajador y su abogado por reclamar de más. Acá, cuánta plata era cada cosa.",
+      "El art. 275 de la LCT castigaba al empleador que litigaba de mala fe con hasta 2,5 veces el interés bancario. Desde 2011, además, el juez tenía que considerar temerario y malicioso, aunque nadie lo pidiera, no cumplir un acuerdo homologado. La Ley 27.802 lo derogó en marzo de 2026 y, el mismo día, sumó al art. 20 las costas solidarias del trabajador y su abogado por reclamar de más. Acá ves cuánta plata era cada cosa.",
   },
   {
     href: "/trabajo-de-mujeres",
     titulo: "Trabajo de mujeres: qué quedó vigente",
     descripcion:
-      "El Capítulo I del Título VII de la LCT quedó vacío en marzo de 2026: se cayeron el descanso de dos horas al mediodía, la prohibición de trabajo a domicilio y la de tareas penosas, peligrosas o insalubres. Siguen en pie el art. 172 y todo el capítulo de maternidad. Acá el texto exacto de lo que se derogó —que InfoLEG ya no muestra— y cuántas horas de tu día cambian.",
+      "El Capítulo I del Título VII de la LCT quedó vacío en marzo de 2026. Se cayeron el descanso de dos horas al mediodía, la prohibición de trabajo a domicilio y la de tareas penosas, peligrosas o insalubres. Siguen en pie el art. 172 y todo el capítulo de maternidad. Acá está el texto exacto de lo que se derogó (InfoLEG ya no lo muestra) y cuántas horas de tu día cambian.",
   },
   {
     href: "/propinas",
     titulo: "Propinas: ¿son remunerativas?",
     descripcion:
-      "Ya no. Desde marzo de 2026 el art. 104 de la LCT dice que en ningún caso las propinas son remuneración, aun cuando sean habituales, y el art. 113 —el que las regulaba— quedó derogado. Se siguen cobrando, pero no cuentan para el aguinaldo, las vacaciones, la indemnización ni los aportes: acá se ve cuánta plata es.",
+      "Ya no. Desde marzo de 2026 el art. 104 de la LCT dice que las propinas nunca son remuneración, aunque sean habituales, y el art. 113 (el que las regulaba) quedó derogado. Las seguís cobrando, pero no cuentan para el aguinaldo, las vacaciones, la indemnización ni los aportes. Acá ves cuánta plata es.",
   },
   {
     href: "/salario-minimo",
     titulo: "Salario mínimo, vital y móvil",
     descripcion:
-      "El monto que se publica es el de la jornada legal completa: quien trabaja menos horas cobra la proporción, y el valor por hora no se prorratea. La escala completa hasta abril de 2027 —el laudo la fijó de una vez— y los siete números del derecho laboral que cuelgan del mínimo.",
+      "El monto que se publica es el de la jornada completa. Si trabajás menos horas cobrás la proporción, y el valor por hora no cambia. Con la escala completa hasta abril de 2027 (el laudo la fijó de una vez) y los siete números del derecho laboral que dependen del mínimo.",
   },
   {
     href: "/desempleo",
     titulo: "Prestación por desempleo",
     descripcion:
-      "Cuánto cobrás de seguro de desempleo y por cuántos meses, cuota por cuota. El 75% sale del neto, no del bruto, y a partir del quinto mes la cuota baja: acá se ve.",
+      "Cuánto cobrás de seguro de desempleo y por cuántos meses, cuota por cuota. El 75% sale del neto, no del bruto, y desde el quinto mes la cuota baja. Acá lo ves.",
   },
   {
     href: "/licencia-por-maternidad",
     titulo: "Licencia por maternidad",
     descripcion:
-      "El día exacto en que empieza y termina tu licencia según la fecha de parto. El mínimo antes del parto es de 10 días —no 15— y durante la licencia cobrás el bruto, no el neto.",
+      "El día exacto en que empieza y termina tu licencia según la fecha de parto. El mínimo antes del parto es de 10 días (no 15) y durante la licencia cobrás el bruto, no el neto.",
   },
   {
     href: "/empleada-domestica",
     titulo: "Empleada doméstica: escala oficial",
     descripcion:
-      "Las 5 categorías de casas particulares con y sin retiro, por hora y por mes, del anexo oficial de la CNTCP. Con zona desfavorable, horas extras y el cálculo por las horas que se trabajan de verdad.",
+      "Las 5 categorías de casas particulares, con y sin retiro, por hora y por mes, del anexo oficial de la CNTCP. Con zona desfavorable, horas extras y la cuenta por las horas que se trabajan de verdad.",
   },
   {
     href: "/aportes-empleada-domestica",
     titulo: "Aportes de empleada doméstica",
     descripcion:
-      "Lo que el empleador le paga a ARCA por mes, con el desglose que nadie publica: obra social, jubilación y ART por separado. Con menos de 16 horas semanales el aporte no alcanza para que tenga obra social, y acá se ve cuánto falta.",
+      "Lo que el empleador le paga a ARCA por mes, separado en obra social, jubilación y ART (un desglose que nadie publica). Con menos de 16 horas semanales el aporte no alcanza para que tenga obra social, y acá ves cuánto falta.",
   },
   {
     href: "/licencias-especiales",
     titulo: "Licencias especiales (art. 158)",
     descripcion:
-      "Matrimonio, nacimiento, fallecimiento y examen: hasta qué día exacto, con los feriados oficiales aplicados. Y lo que casi nadie liquida: el día se paga a sueldo ÷ 25, no ÷ 30.",
+      "Matrimonio, nacimiento, fallecimiento y examen: hasta qué día exacto, con los feriados oficiales. Y lo que casi nadie liquida bien: el día se paga a sueldo ÷ 25, no ÷ 30.",
   },
   {
     href: "/licencia-por-enfermedad",
     titulo: "Licencia por enfermedad",
     descripcion:
-      "Hasta qué día exacto cobrás sueldo con el art. 208: 3, 6 o 12 meses según antigüedad y cargas de familia. Si ya faltaste por lo mismo hace menos de 2 años, el plazo no se reinicia —acá se ve cuánto queda.",
+      "Hasta qué día exacto cobrás sueldo según el art. 208: 3, 6 o 12 meses según antigüedad y cargas de familia. Si ya faltaste por lo mismo hace menos de 2 años, el plazo no vuelve a cero. Acá ves cuánto te queda.",
   },
   {
     href: "/puam",
     titulo: "PUAM: pensión del adulto mayor",
     descripcion:
-      "Cuánto se cobra a los 65 sin los 30 años de aportes —el 80% del haber mínimo— y la letra chica que casi nadie publica: desde 2018 es incompatible con trabajar y no deja pensión para el cónyuge.",
+      "Cuánto se cobra a los 65 sin los 30 años de aportes (el 80% del haber mínimo). Y la letra chica que casi nadie cuenta: desde 2018 no se puede cobrar trabajando y no deja pensión para el cónyuge.",
   },
   {
     href: "/edad-avanzada",
     titulo: "Prestación por edad avanzada",
     descripcion:
-      "A los 70 años con 10 de aportes. Todas las notas publican «el 70% de la PBU» y ese número no es lo que se cobra: queda muy por debajo del haber mínimo, que es el piso garantizado. Además, el requisito que voltea más solicitudes —5 de esos años tienen que caer en los últimos 8— y el que ANSES exige sin estar en la ley.",
+      "A los 70 años con 10 de aportes. Todas las notas dicen «el 70% de la PBU», pero eso no es lo que se cobra: queda muy por debajo del haber mínimo, que es el piso garantizado. Además, el requisito que más solicitudes voltea (5 de esos años tienen que caer en los últimos 8) y el que ANSES pide sin que esté en la ley.",
   },
   {
     href: "/pension-no-contributiva",
     titulo: "Pensiones no contributivas",
     descripcion:
-      "Cuánto paga cada una este mes —discapacidad, vejez, madres de 7 hijos y PUAM— y hasta cuánto podés trabajar sin perderla: desde la Ley 27.793 el tope son dos salarios mínimos.",
+      "Cuánto paga cada una este mes (discapacidad, vejez, madres de 7 hijos y PUAM) y hasta cuánto podés trabajar sin perderla. Desde la Ley 27.793 el tope son dos salarios mínimos.",
   },
   {
     href: "/jubilacion",
     titulo: "Jubilación: aumento y bono",
     descripcion:
-      "Cuánto cobrás con TU haber, no con la mínima: el bono se recorta si cobrás por encima. Con la resolución de ANSES del mes y el aumento que ya está definido.",
+      "Cuánto cobrás con tu haber, no con la mínima: si cobrás más, el bono se recorta. Con la resolución de ANSES del mes y el aumento que ya está definido.",
   },
   {
     href: "/asignaciones-familiares",
     titulo: "Asignaciones familiares y AUH",
     descripcion:
-      "Cuánto cobrás por hijo según lo que suma tu casa: los cuatro tramos, las cinco zonas, el tope que excluye al grupo entero por un solo sueldo y el 20% que la AUH retiene.",
+      "Cuánto cobrás por hijo según lo que entra en tu casa: los cuatro tramos, las cinco zonas, el tope que deja afuera a toda la familia por un solo sueldo y el 20% que la AUH retiene.",
   },
   {
     href: "/canasta-basica",
     titulo: "Canasta básica y línea de pobreza",
     descripcion:
-      "Cuánto necesita tu hogar para no ser pobre, según quiénes lo componen. Con la canasta del INDEC y la tabla oficial de adultos equivalentes.",
+      "Cuánto necesita tu hogar para no ser pobre, según quiénes viven en él. Con la canasta del INDEC y la tabla oficial de adultos equivalentes.",
   },
   {
     href: "/cuota-alimentaria",
     titulo: "Cuota alimentaria",
     descripcion:
-      "Una referencia orientativa con la canasta de crianza del INDEC, y el coeficiente para actualizar una cuota fijada hace meses.",
+      "Una referencia con la canasta de crianza del INDEC, y el coeficiente para actualizar una cuota que se fijó hace meses.",
   },
   {
     href: "/convenios/comercio",
     titulo: "Sueldo de Empleados de Comercio",
     descripcion:
-      "Tu sueldo de convenio por categoría, con antigüedad y presentismo. Escala oficial de FAECYS y los $120.000 no remunerativos explicados.",
+      "Tu sueldo de convenio por categoría, con antigüedad y presentismo. La escala oficial de FAECYS y los $120.000 no remunerativos, explicados.",
   },
   {
     href: "/convenios",
@@ -385,19 +385,19 @@ const herramientas: { href: string; titulo: string; descripcion: string }[] = [
     href: "/plazo-fijo",
     titulo: "Calculadora de plazo fijo",
     descripcion:
-      "Cuánto gana tu plata a 30 días o más, con la tasa del BCRA precargada. Y si le ganás o no a la inflación.",
+      "Cuánto gana tu plata a 30 días o más, con la tasa del BCRA ya cargada. Y si le ganás o no a la inflación.",
   },
   {
     href: "/inflacion",
     titulo: "Calculadora de inflación",
     descripcion:
-      "Actualizá cualquier monto con el IPC oficial del INDEC y descubrí si tu sueldo le ganó o perdió a la inflación.",
+      "Actualizá cualquier monto con el IPC oficial del INDEC y fijate si tu sueldo le ganó o le perdió a la inflación.",
   },
   {
     href: "/inflacion/alquiler",
     titulo: "Ajuste de alquiler por IPC",
     descripcion:
-      "El cronograma completo de aumentos de tu contrato — cada 3, 4, 6 o 12 meses — y la estimación del próximo ajuste.",
+      "Todos los aumentos de tu contrato (cada 3, 4, 6 o 12 meses) y una estimación del próximo ajuste.",
   },
 ];
 
@@ -531,8 +531,8 @@ export default function Home() {
         </h1>
 
         <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-pretty text-zinc-600 sm:text-[17px]">
-          Resolvé en segundos las cuentas que todos hacemos —impuestos, sueldos y derechos laborales— con
-          los valores que dicen los documentos oficiales. Sin vueltas y sin letra chica.
+          Sacá en segundos las cuentas de sueldo, impuestos y derechos laborales, con los valores que
+          fijan los documentos oficiales. Sin vueltas y sin letra chica.
         </p>
 
         <div className="mt-7 max-w-2xl">
@@ -601,8 +601,8 @@ export default function Home() {
             Todas las calculadoras
           </h2>
           <p className="max-w-xl text-sm leading-relaxed text-pretty text-zinc-500">
-            Ordenadas por tema, de lo que se cobra todos los meses a lo excepcional. Si ya sabés lo que
-            buscás, el buscador llega más rápido.
+            Ordenadas por tema, de lo que se cobra todos los meses a lo que pasa una vez. Si ya sabés lo
+            que buscás, el buscador es más rápido.
           </p>
         </div>
         <nav aria-label="Temas">
@@ -665,7 +665,7 @@ export default function Home() {
                 Planillas para llevarte
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-pretty text-zinc-500">
-                La misma cuenta de la calculadora, en Excel y Google Sheets, actualizada todo el año
+                La misma cuenta de la calculadora, en Excel y Google Sheets, al día todo el año.
               </p>
               <Link
                 href="/convenios"
@@ -716,7 +716,7 @@ export default function Home() {
             },
             {
               t: "Te mostramos la cuenta",
-              d: "No te damos solo un resultado: abajo está el desglose, línea por línea, para que puedas chequearlo.",
+              d: "No te damos solo el resultado: abajo está el desglose, línea por línea, para que lo puedas chequear.",
             },
             {
               t: "Si no está verificado, no se publica",
