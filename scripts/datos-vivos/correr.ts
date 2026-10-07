@@ -9,8 +9,8 @@
 //      fecha guardada tenga más de 7 días: así el "verificado el" del sitio no envejece, pero no se
 //      redeploya todos los días por nada.
 //   4. Si quedó algún cambio real, lo anota en el registro de /novedades (scripts/datos-vivos/
-//      novedades.ts) y corre check-all completo (la puerta de siempre). Rojo → revierte todo,
-//      novedades incluidas, y avisa.
+//      novedades.ts), regenera las planillas y corre check-all completo (la puerta de siempre).
+//      Rojo → revierte todo, novedades incluidas, y avisa.
 //   5. Corre el semáforo (scripts/vigia/check-datos-vencen.ts), que mira lo que NO se puede cargar
 //      solo (circulares de gremios, PDFs de ARCA, resoluciones que no pasaron el ancla).
 //   6. Deja .datos-vivos/resumen.json, .datos-vivos/alerta.md (vacío si no hay nada que avisar) y
@@ -172,13 +172,15 @@ function main(): void {
     const n = tsx("scripts/datos-vivos/novedades.ts");
     novedadesRegistradas = n.salida.split("\n").filter((l) => l.startsWith("+ novedad registrada:"));
     console.log(`\n── novedades\n${n.salida}`);
+    // Los .xlsx de private/ los compara check-all (check_planilla_*) contra src/data. Sin regenerarlos
+    // con el dato nuevo, la puerta salía roja en CADA corrida con cambios: del 28/9 al 6/10/2026 no se
+    // publicó nada (TNA y aportes de ARCA de septiembre listos y descartados). Se commitean con el dato.
+    const g = tsx("scripts/gen_planilla_todas.ts", [], 600);
+    if (g.code !== 0) console.log(`\n── planillas: gen_planilla_todas salió ${g.code}\n${g.salida.split("\n").slice(-6).join("\n")}`);
   }
   const tocados = [...cambiados()];
   if (tocados.length) {
-    // Las planillas .xlsx se regeneran solas en cada build (prebuild): si check-all las regeneró
-    // para verificarlas, no son parte del cambio de datos.
     const r = tsx("scripts/check-all.ts", [], 1500);
-    for (const f of [...cambiados()].filter((x) => x.startsWith("private/") && !tocados.includes(x))) revertir([f]);
     if (r.code === 0) {
       puerta = "verde";
     } else {
