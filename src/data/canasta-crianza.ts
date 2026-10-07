@@ -14,7 +14,7 @@
 // Fuente: INDEC — serie "Canasta de crianza, por tramo de edad" (enero 2020 en adelante).
 // https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_canasta_crianza.xlsx
 // Última modificación de la planilla en el servidor del INDEC: Mon, 14 Sep 2026 18:53:02 GMT
-// Consultado: 2026-09-28 · último período disponible: agosto 2026
+// Consultado: 2026-10-07 · último período disponible: agosto 2026
 
 export type TramoCrianzaId = "menor-1" | "1-a-3" | "4-a-5" | "6-a-12";
 
@@ -126,6 +126,6 @@ export const CANASTA_CRIANZA_FUENTE = {
   nombre: "INDEC: Valorización mensual de la canasta de crianza (serie mensual por tramo de edad)",
   url: "https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_canasta_crianza.xlsx",
   informe: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-173",
-  consultadoEl: "2026-09-28",
+  consultadoEl: "2026-10-07",
   ultimoPeriodo: "2026-08",
 };
