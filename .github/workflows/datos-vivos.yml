@@ -30,6 +30,8 @@ jobs:
   actualizar:
     runs-on: ubuntu-latest
     timeout-minutes: 50
+    env:
+      PAISES_TOLERANTE: "1"
     steps:
       - uses: actions/checkout@v4
 

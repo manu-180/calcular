@@ -1,7 +1,7 @@
 import { esConcepto } from "./conceptos";
 import { validarArchivoAvisos, validarArchivoDatos, validarArchivoSeries, validarMercado } from "./datos";
 import { formatearFecha, formatearValorUnidad } from "./formato";
-import { avisosVigentes, hoyMasAdelantado, valorSerie, vigente, vigentePorRegion } from "./vigencia";
+import { avisosVigentes, hoyMasAdelantado, ultimoPunto, valorSerie, vigente, vigentePorRegion } from "./vigencia";
 import type {
   CodigoMercado,
   ContenidoCalculadora,
@@ -15,6 +15,7 @@ import type {
   OpcionDinamica,
   PaisDefinido,
   PropsCalculadora,
+  PuntoSerie,
   Requisito,
   Serie,
   TipoDato,
@@ -256,6 +257,14 @@ export interface FichaDato {
   vigentes: { region?: string; valor: unknown; desde: FechaISO; hasta?: FechaISO; fuente: Fuente }[];
 }
 
+// vigente es el punto que usa una calculadora ese día (con maxAntiguedadDias aplicado) y su fecha es
+// la del sello "actualizado automáticamente"; ultimo puede estar en el futuro (UF por adelantado).
+export interface FichaSerie {
+  serie: Serie;
+  vigente: PuntoSerie | null;
+  ultimo: PuntoSerie | null;
+}
+
 export interface Registro {
   readonly paises: readonly PaisDefinido[];
   pais(codigo: CodigoMercado): PaisDefinido | undefined;
@@ -267,6 +276,7 @@ export interface Registro {
   pagina(codigo: CodigoMercado, slug: string, fecha: FechaISO, modo?: ModoPublicacion): PaginaResuelta | null;
   equivalentes(concepto: string, fechaDe: (m: Mercado) => FechaISO, modo?: ModoPublicacion): Equivalente[];
   fichas(codigo: CodigoMercado, fecha: FechaISO): FichaDato[];
+  fichasSeries(codigo: CodigoMercado, fecha: FechaISO): FichaSerie[];
 }
 
 export function opcionesDinamicas(pais: PaisDefinido, definicion: DefinicionCalculadora, valores: Readonly<Record<string, ValorResuelto>>) {
@@ -367,6 +377,7 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
         return { dato, vigentes };
       });
     },
+    fichasSeries: (codigo, fecha) => (pais(codigo)?.series ?? []).map((serie) => ({ serie, vigente: valorSerie(serie, fecha), ultimo: ultimoPunto(serie) })),
   };
 }
 
