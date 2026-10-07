@@ -1,0 +1,53 @@
+{
+  "mercado": "cr",
+  "avisos": [
+    {
+      "id": "cr.vacaciones-estimacion",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["cr.vacaciones", "cr.liquidacion"],
+      "titulo": "Las vacaciones son una estimación",
+      "texto": "El Código de Trabajo da dos semanas por cada 50 semanas y, si el contrato termina antes, un día por mes. Calculamos un día por mes y su salario promedio entre 30. Según su jornada, el patrono puede contar las dos semanas como 12 o 14 días.",
+      "fuente": {
+        "organismo": "Asamblea Legislativa",
+        "titulo": "Código de Trabajo, artículos 153, 156 y 157",
+        "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "cr.jornadas-4x3",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "hasta": "2027-04-30",
+      "aplicaA": ["cr.horas-extra"],
+      "titulo": "El proyecto de jornadas 4x3 no es ley",
+      "texto": "En la Asamblea Legislativa se discute un proyecto para permitir jornadas de 12 horas en cuatro días (expediente 24.290). Mientras no se apruebe, rigen la jornada ordinaria y el límite de 12 horas diarias del Código de Trabajo, que son los que usa esta calculadora.",
+      "fuente": {
+        "organismo": "Semanario Universidad",
+        "titulo": "Gobierno anuncia mesa de negociación para reforma de jornadas 4-3",
+        "url": "https://semanariouniversidad.com/pais/gobierno-anuncia-mesa-de-negociacion-para-reforma-de-jornadas-4-3/",
+        "tipo": "secundaria",
+        "verificadoEl": "2026-10-07",
+        "nota": "No verificamos el estado del expediente en el sitio de la Asamblea Legislativa."
+      }
+    },
+    {
+      "id": "cr.ivm-escalon-2029",
+      "nivel": "info",
+      "desde": "2028-10-01",
+      "hasta": "2029-01-31",
+      "aplicaA": ["cr.salario-neto"],
+      "titulo": "Sube la cuota del IVM",
+      "texto": "Desde el 1 de enero de 2029 la cuota de la persona trabajadora al IVM pasa del 4,33 % al 4,5 %. La calculadora ya usa la cuota que corresponde a cada fecha.",
+      "fuente": {
+        "organismo": "Caja Costarricense de Seguro Social",
+        "titulo": "Reglamento del Seguro de IVM, Transitorio XI (La Gaceta 161, Alcance 191 del 28/8/2019)",
+        "url": "https://www.imprentanacional.go.cr/pub/2019/08/28/ALCA191_28_08_2019.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}
