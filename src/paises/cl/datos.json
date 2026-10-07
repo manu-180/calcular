@@ -1,0 +1,671 @@
+{
+  "mercado": "cl",
+  "datos": [
+    {
+      "id": "cl.imm",
+      "nombre": "Ingreso mínimo mensual (18 a 65 años)",
+      "tipo": "numero",
+      "unidad": "CLP",
+      "proximaRevision": "2027-01-01",
+      "nota": "Desde el 1/1/2027 se reajusta por la variación del IPC entre mayo y diciembre de 2026 (Ley 21.830, artículo 1).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "hasta": "2025-12-31",
+          "valor": 529000,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.751, publicada el 28/06/2025, artículos 1 a 3",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2025/06/28/44185/01/2665516.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-04-30",
+          "valor": 539000,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.751, publicada el 28/06/2025, artículos 1 a 3",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2025/06/28/44185/01/2665516.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 553553,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.830, publicada el 22/06/2026, artículos 1 a 3",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/06/22/44481-B/01/2829298.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.imm-menores-mayores",
+      "nombre": "Ingreso mínimo mensual (menores de 18 y mayores de 65 años)",
+      "tipo": "numero",
+      "unidad": "CLP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "hasta": "2025-12-31",
+          "valor": 394622,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.751, publicada el 28/06/2025, artículos 1 a 3",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2025/06/28/44185/01/2665516.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-04-30",
+          "valor": 402082,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.751, publicada el 28/06/2025, artículos 1 a 3",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2025/06/28/44185/01/2665516.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 412938,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.830, publicada el 22/06/2026, artículos 1 a 3",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/06/22/44481-B/01/2829298.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.imm-no-remuneracional",
+      "nombre": "Ingreso mínimo para fines no remuneracionales",
+      "tipo": "numero",
+      "unidad": "CLP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "hasta": "2025-12-31",
+          "valor": 340988,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.751, publicada el 28/06/2025, artículos 1 a 3",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2025/06/28/44185/01/2665516.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-04-30",
+          "valor": 347434,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.751, publicada el 28/06/2025, artículos 1 a 3",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2025/06/28/44185/01/2665516.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 356815,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.830, publicada el 22/06/2026, artículos 1 a 3",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/06/22/44481-B/01/2829298.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.jornada-maxima",
+      "nombre": "Jornada ordinaria máxima semanal",
+      "tipo": "numero",
+      "unidad": "horas",
+      "proximaRevision": "2028-04-26",
+      "nota": "Reducción gradual desde la publicación de la Ley 21.561 (26/04/2023): 44 horas al primer año, 42 al tercero y 40 al quinto.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-26",
+          "hasta": "2026-04-25",
+          "valor": 44,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.561 (40 horas), artículo primero transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1191554",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-26",
+          "hasta": "2028-04-25",
+          "valor": 42,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.561 (40 horas), artículo primero transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1191554",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-04-26",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.561 (40 horas), artículo primero transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1191554",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.recargo-hora-extra",
+      "nombre": "Recargo de la hora extraordinaria",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 32 (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.gratificacion-porcentaje",
+      "nombre": "Gratificación legal del artículo 50 (porcentaje de lo devengado)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 50 (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.gratificacion-tope",
+      "nombre": "Tope anual de la gratificación del artículo 50",
+      "tipo": "numero",
+      "unidad": "IMM",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4.75,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 50 (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.feriado-anual",
+      "nombre": "Feriado anual (vacaciones legales)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 67, inciso primero (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.feriado-anual-austral",
+      "nombre": "Feriado anual en Magallanes, Aysén y Palena",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 67, inciso segundo (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.indemnizacion-dias-por-anio",
+      "nombre": "Indemnización por años de servicio: días por año",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 163, inciso segundo (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.indemnizacion-tope-dias",
+      "nombre": "Indemnización por años de servicio: tope de días",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 330,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 163, inciso segundo (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.tope-indemnizacion",
+      "nombre": "Tope de la remuneración para indemnizaciones",
+      "tipo": "numero",
+      "unidad": "UF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 172, inciso final (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.cotizacion-afp",
+      "nombre": "Cotización obligatoria de pensiones (AFP)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Superintendencia de Pensiones",
+            "titulo": "Sistema de AFP: cotizaciones",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9897.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.comision-afp",
+      "nombre": "Comisión mensual de cada AFP",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "capital": "AFP Capital",
+        "cuprum": "AFP Cuprum",
+        "habitat": "AFP Habitat",
+        "modelo": "AFP Modelo",
+        "planvital": "AFP PlanVital",
+        "provida": "AFP ProVida",
+        "uno": "AFP Uno"
+      },
+      "nota": "La SP publica la tabla del mes; no informa desde cuándo rige cada comisión, salvo AFP Uno (0,46% desde el 1/10/2025).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "capital": 1.44,
+            "cuprum": 1.44,
+            "habitat": 1.27,
+            "modelo": 0.58,
+            "planvital": 1.16,
+            "provida": 1.45,
+            "uno": 0.46
+          },
+          "fuente": {
+            "organismo": "Superintendencia de Pensiones",
+            "titulo": "Infórmate y decide: comisión mensual sobre remuneración imponible, octubre 2026",
+            "url": "https://www.spensiones.cl/infoydec",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.salud",
+      "nombre": "Cotización legal de salud",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Superintendencia de Salud",
+            "titulo": "¿Cuál es la cotización legal para salud?",
+            "url": "https://www.superdesalud.gob.cl/preguntas-frecuentes/cual-es-la-cotizacion-legal-para-salud-y-en-que-plazo-deben-ser-declaradas-y-pagadas/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.cesantia-trabajador",
+      "nombre": "Seguro de cesantía a cargo de quien trabaja (contrato indefinido)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.6,
+          "fuente": {
+            "organismo": "Superintendencia de Pensiones",
+            "titulo": "Seguro de cesantía: cotizantes",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9902.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.tope-imponible",
+      "nombre": "Tope imponible mensual para AFP, salud y accidentes del trabajo",
+      "tipo": "numero",
+      "unidad": "UF",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-01-31",
+          "valor": 87.8,
+          "fuente": {
+            "organismo": "Superintendencia de Pensiones",
+            "titulo": "Topes imponibles definitivos para 2026",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-article-16921.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Superintendencia de Pensiones",
+            "titulo": "Topes imponibles definitivos para 2026",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-article-16921.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.tope-imponible-cesantia",
+      "nombre": "Tope imponible mensual del seguro de cesantía",
+      "tipo": "numero",
+      "unidad": "UF",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-01-31",
+          "valor": 131.9,
+          "fuente": {
+            "organismo": "Superintendencia de Pensiones",
+            "titulo": "Topes imponibles definitivos para 2026",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-article-16921.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 135.2,
+          "fuente": {
+            "organismo": "Superintendencia de Pensiones",
+            "titulo": "Topes imponibles definitivos para 2026",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-article-16921.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.impuesto-unico",
+      "nombre": "Impuesto Único de Segunda Categoría, tabla mensual",
+      "tipo": "escala",
+      "unidad": "UTM",
+      "nota": "Límites en UTM. cuotaFija es el impuesto acumulado al inicio de cada tramo, en UTM; equivale al factor y la cantidad a rebajar que publica el SII cada mes.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 13.5,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 13.5,
+              "hasta": 30,
+              "tasa": 4,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 30,
+              "hasta": 50,
+              "tasa": 8,
+              "cuotaFija": 0.66
+            },
+            {
+              "desde": 50,
+              "hasta": 70,
+              "tasa": 13.5,
+              "cuotaFija": 2.26
+            },
+            {
+              "desde": 70,
+              "hasta": 90,
+              "tasa": 23,
+              "cuotaFija": 4.96
+            },
+            {
+              "desde": 90,
+              "hasta": 120,
+              "tasa": 30.4,
+              "cuotaFija": 9.56
+            },
+            {
+              "desde": 120,
+              "hasta": 310,
+              "tasa": 35,
+              "cuotaFija": 18.68
+            },
+            {
+              "desde": 310,
+              "hasta": null,
+              "tasa": 40,
+              "cuotaFija": 85.18
+            }
+          ],
+          "fuente": {
+            "organismo": "Servicio de Impuestos Internos (SII)",
+            "titulo": "Impuesto Único de Segunda Categoría 2026 (tablas mensuales de enero a octubre)",
+            "url": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.retencion-honorarios",
+      "nombre": "Retención de las boletas de honorarios",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 14.5,
+          "fuente": {
+            "organismo": "Servicio de Impuestos Internos (SII)",
+            "titulo": "Retención de 15,25% en 2026 para boletas de honorarios (noticia del 26/12/2025)",
+            "url": "https://www.sii.cl/noticias/2025/261225noti01smn.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 15.25,
+          "fuente": {
+            "organismo": "Servicio de Impuestos Internos (SII)",
+            "titulo": "Retención de 15,25% en 2026 para boletas de honorarios (noticia del 26/12/2025)",
+            "url": "https://www.sii.cl/noticias/2025/261225noti01smn.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Servicio de Impuestos Internos (SII)",
+            "titulo": "Retención de 15,25% en 2026 para boletas de honorarios (noticia del 26/12/2025)",
+            "url": "https://www.sii.cl/noticias/2025/261225noti01smn.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "valor": 17,
+          "fuente": {
+            "organismo": "Servicio de Impuestos Internos (SII)",
+            "titulo": "Retención de 15,25% en 2026 para boletas de honorarios (noticia del 26/12/2025)",
+            "url": "https://www.sii.cl/noticias/2025/261225noti01smn.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.iva",
+      "nombre": "Impuesto al Valor Agregado (IVA)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 19,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "DL 825, Ley sobre Impuesto a las Ventas y Servicios, artículo 14",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=6369",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    }
+  ]
+}
