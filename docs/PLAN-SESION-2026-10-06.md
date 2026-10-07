@@ -98,3 +98,7 @@ PR aparte y urgente: #8, el sitio no se actualizaba solo desde el 28/9 (planilla
 - /deduccion-empleada-domestica: «jornada completa» para un ejemplo de 16 h semanales.
 - /despido-plazo-fijo: enlaza propinas como art. 113 (la auditoría dice art. 104).
 - /edad-avanzada: «voltea la mitad de las solicitudes» sin fuente.
+- /indemnizacion: RespuestaPrimero actualizado="13 de junio de 2026" vs articleSchema modificado 2026-09-21.
+- /indemnizacion-art: «$114.354.110» y «Res. SRT 39/2026» a mano en OG, imagen OG y FAQ (usar PISOS y VIGENCIA_ART).
+- /inflacion: modificado "2026-06-15" fijo en articleSchema y datasetSchema.
+- /jubilacion: $70.000 del bono a mano en dos FAQs (usar BONO_VIGENTE.monto).
