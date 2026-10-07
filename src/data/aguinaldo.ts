@@ -5,7 +5,7 @@
 
 export const AGUINALDO_FUENTES = {
   ley23041: {
-    nombre: "Ley 23.041 — Sueldo Anual Complementario",
+    nombre: "Ley 23.041: Sueldo Anual Complementario",
     url: "https://www.argentina.gob.ar/normativa/nacional/ley-23041-1983-28165",
   },
   lct: {

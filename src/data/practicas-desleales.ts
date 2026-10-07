@@ -33,25 +33,25 @@ export const PD_FUENTES = {
   consultadoEl: "22 de agosto de 2026",
   lista: [
     {
-      nombre: "Ley 23.551 — texto ACTUALIZADO (InfoLEG)",
+      nombre: "Ley 23.551, texto ACTUALIZADO (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/20000-24999/20993/texact.htm",
       detalle:
         "arts. 20 bis, 20 ter, 53, 53 bis, 54 y 55 con el texto vigente. El art. 53 bis se lee acá completo, con su nota de incorporación por el art. 145 de la Ley 27.802.",
     },
     {
-      nombre: "Ley 23.551 — texto ORIGINAL de 1988 (InfoLEG)",
+      nombre: "Ley 23.551, texto ORIGINAL de 1988 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/20000-24999/20993/norma.htm",
       detalle:
         "para comprobar que los arts. 54 y 55 decían otra cosa y que el 53 bis no existía. Se usa sólo para comparar.",
     },
     {
-      nombre: "Ley 27.802 — Título XV, arts. 138 a 148 (InfoLEG)",
+      nombre: "Ley 27.802: Título XV, arts. 138 a 148 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=423680",
       detalle:
         "las once modificaciones a la ley sindical. El art. 145 incorpora el 53 bis; el 146 sustituye el 54; el 147, el 55.",
     },
     {
-      nombre: "Ley 25.212 — Anexo II, art. 5º (texto actualizado, InfoLEG)",
+      nombre: "Ley 25.212: Anexo II, art. 5º (texto actualizado, InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/60000-64999/61876/texact.htm",
       detalle:
         "Régimen General de Sanciones por Infracciones Laborales. El art. 5º, con el texto de la Ley 26.941 (B.O. 2/6/2014), gradúa las multas como porcentaje del SMVM.",
@@ -219,39 +219,39 @@ export const TEXTOS = {
 /** Lo que cambió en el capítulo de prácticas desleales, con su consecuencia. */
 export const CAMBIOS = [
   {
-    articulo: "Art. 53 bis — nuevo",
+    articulo: "Art. 53 bis: nuevo",
     antes: "No existía: la ley sólo tipificaba prácticas desleales del empleador (art. 53).",
     ahora: "Ocho conductas desleales de las asociaciones sindicales, incorporadas por el art. 145 de la Ley 27.802.",
     plata: "Aparece una responsabilidad que antes no tenía sujeto: el sindicato pasa a ser sancionable con multa.",
   },
   {
-    articulo: "Art. 54 — quién puede querellar",
+    articulo: "Art. 54: quién puede querellar",
     antes: "«La asociación sindical de trabajadores o el damnificado, conjunta o indistintamente».",
     ahora: "«Todo damnificado por una acción y/u omisión que la presente ley define como práctica desleal».",
     plata: "El empleador damnificado queda legitimado por sí solo para promover la querella.",
   },
   {
-    articulo: "Art. 55 — con qué escala se multa",
+    articulo: "Art. 55: con qué escala se multa",
     antes: "Remitía a «los artículos 4 y siguiente de la ley N° 18.694».",
     ahora: "Remite al «Anexo II de la ley 25.212 y sus modificatorias», que gradúa las multas como porcentaje del SMVM vigente.",
     plata: "La multa deja de estar anclada a una ley de 1972 y pasa a moverse con el salario mínimo.",
   },
   {
-    articulo: "Art. 55 — el tope del 20%",
+    articulo: "Art. 55: el tope del 20%",
     antes: "El tope del 20% de las cuotas se aplicaba sólo «cuando la práctica desleal fuera cometida por entidades representativas de empleadores».",
     ahora: "«La multa será fijada por el juez hasta un máximo del equivalente al veinte por ciento (20%) de los ingresos provenientes de las cuotas sindicales que deban pagar los afiliados en el mes en que se cometió la infracción».",
     plata: "El tope se calcula sobre la recaudación de cuotas del mes, no sobre el patrimonio ni sobre el daño.",
   },
   {
-    articulo: "Art. 55 — la sanción que no es plata",
+    articulo: "Art. 55: la sanción que no es plata",
     antes: "El artículo no preveía ninguna consecuencia sobre la personería gremial: la sanción se agotaba en la multa.",
     ahora: "Ante conductas reiteradas del art. 53 bis, «la Justicia Nacional del Trabajo podrá revocarle la personería y/o la inscripción gremial».",
     plata: "Es la consecuencia más grave de todo el capítulo, y no tiene importe: se pierde la representación.",
   },
   {
-    articulo: "Art. 20 bis — las asambleas",
+    articulo: "Art. 20 bis: las asambleas",
     antes: "El artículo había sido incorporado por el Decreto 70/2023.",
-    ahora: "Exige autorización previa del empleador para el horario y la duración —y también para el lugar, si es dentro del establecimiento— y aclara que «el trabajador no devengará salarios durante el tiempo de la misma».",
+    ahora: "Exige autorización previa del empleador para el horario y la duración (y también para el lugar, si es dentro del establecimiento), y aclara que «el trabajador no devengará salarios durante el tiempo de la misma».",
     plata: "La hora de asamblea no se paga, y convocarla fuera de esos términos es la práctica desleal del art. 53 bis inc. b).",
   },
 ];

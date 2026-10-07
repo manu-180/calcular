@@ -81,16 +81,16 @@ export const LICENCIAS_FUENTES: { consultadoEl: string; lista: FuenteLicencia[] 
         "Art. 177 (prohibición de trabajar y opción de reducir la licencia anterior al parto), art. 158 inc. a) y 160 (licencia por nacimiento), art. 178 y 182 (estabilidad e indemnización especial), art. 179 (lactancia) y art. 183 (excedencia). Texto consolidado tras la Ley 27.802.",
     },
     {
-      nombre: "Ley 24.714 — Régimen de Asignaciones Familiares",
+      nombre: "Ley 24.714: Régimen de Asignaciones Familiares",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/39880/texact.htm",
       detalle:
         "Art. 6 (nómina de asignaciones), art. 11 (la asignación por maternidad es igual a la remuneración que se hubiera debido percibir y exige 3 meses de antigüedad) y art. 12 (asignación por nacimiento).",
     },
     {
-      nombre: `${ASIGNACIONES_VIGENTES.resolucion} — montos de asignaciones familiares`,
+      nombre: `${ASIGNACIONES_VIGENTES.resolucion}: montos de asignaciones familiares`,
       url: ASIGNACIONES_VIGENTES.resolucionUrl,
       detalle:
-        `${ASIGNACIONES_VIGENTES.resolucionBO} — importes vigentes de las asignaciones de pago único (nacimiento, adopción, matrimonio) y de la asignación prenatal.`,
+        `${ASIGNACIONES_VIGENTES.resolucionBO}: importes vigentes de las asignaciones de pago único (nacimiento, adopción, matrimonio) y de la asignación prenatal.`,
     },
   ],
 };

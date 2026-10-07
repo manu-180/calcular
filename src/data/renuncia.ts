@@ -139,19 +139,19 @@ export const RENUNCIA_FUENTES: { consultadoEl: string; lista: FuenteRenuncia[] }
   consultadoEl: "2026-08-24",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 240 (forma de la renuncia) y art. 241 (mutuo acuerdo), los dos con su nota de sustitución por la Ley 27.802; art. 123 (SAC proporcional «por cualquier causa»), art. 156 (indemnización por vacaciones no gozadas), art. 155 inc. a) (el día de vacaciones es el sueldo dividido 25), art. 150/151/153 (días por antigüedad y licencia proporcional), art. 231 (preaviso) y art. 235 (prueba por escrito).",
     },
     {
-      nombre: "Ley 27.802 — texto oficial (InfoLEG)",
+      nombre: "Ley 27.802, texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Art. 49 (sustitución del art. 240 de la LCT), art. 50 (sustitución del art. 241) y art. 99, que incorporó el inc. i) al art. 114 de la Ley 24.013: la extinción por mutuo acuerdo del art. 241 pasó a ser situación legal de desempleo.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia. Las notas de los dos artículos dicen «a partir de su publicación en el Boletín Oficial».",

@@ -49,11 +49,11 @@ export const ESCALA_GANANCIAS: TramoGanancias[] = [
 
 export const GANANCIAS_FUENTES = {
   deducciones: {
-    nombre: "ARCA — Deducciones personales art. 30 LIG (julio a diciembre 2026)",
+    nombre: "ARCA: Deducciones personales art. 30 LIG (julio a diciembre 2026)",
     url: "https://www.afip.gob.ar/gananciasYBienes/ganancias/personas-humanas-sucesiones-indivisas/deducciones/documentos/Deducciones-personales-art-30-jul-dic-2026.pdf",
   },
   escala: {
-    nombre: "ARCA — Tabla escala art. 94 LIG (julio a diciembre 2026)",
+    nombre: "ARCA: Tabla escala art. 94 LIG (julio a diciembre 2026)",
     url: "https://www.afip.gob.ar/gananciasYBienes/ganancias/personas-humanas-sucesiones-indivisas/declaracion-jurada/documentos/Tabla-Art-94-LIG-per-jul-a-dic-2026.pdf",
   },
   consultadoEl: "29 de julio de 2026",

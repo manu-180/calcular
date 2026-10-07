@@ -95,7 +95,7 @@ export const REINGRESO_FUENTES: { consultadoEl: string; lista: FuenteReingreso[]
   consultadoEl: "2026-08-18",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 255 con el texto sustituido por el art. 53 de la Ley 27.802: la deducción actualizada por IPC y el piso del último período. También los arts. 18 y 19 (cómo se computa la antigüedad, que la reforma no tocó) y el art. 245 (la indemnización de la que se deduce).",
@@ -107,13 +107,13 @@ export const REINGRESO_FUENTES: { consultadoEl: string; lista: FuenteReingreso[]
         "El texto inmediatamente anterior del art. 255, que además del IPC mandaba sumar «una tasa de interés pura del 3% anual». La Ley 27.802 conservó el IPC y eliminó esa tasa.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La reforma que sustituyó ~54 artículos de la LCT. Su art. 53 reescribió el art. 255 y su art. 54 el art. 276, que sí conserva el IPC más el 3% anual: dos fórmulas distintas en la misma ley.",
     },
     {
-      nombre: "INDEC — Índice de Precios al Consumidor, Nivel General",
+      nombre: "INDEC: Índice de Precios al Consumidor, Nivel General",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31",
       detalle:
         "La serie con la que se actualiza la suma cobrada. El INDEC publica con unos 40 días de atraso: el índice del mes en curso todavía no existe, y por eso la actualización llega hasta el último mes publicado.",

@@ -9,20 +9,20 @@
 
 export const COMERCIO_FUENTES = {
   acuerdo: {
-    nombre: "Acuerdo paritario 22/7/2026 — CCT 130/75 (+5,7% trimestral + bono $50.000)",
+    nombre: "Acuerdo paritario 22/7/2026: CCT 130/75 (+5,7% trimestral + bono $50.000)",
     url: "https://www.faecys.org.ar/acuerdo-comercio-23-07-2026-faecys-acordo-un-aumento-del-57-trimestral-y-suma-un-bono-de-50-mil/",
   },
   escalas: {
     nombre:
-      "FAECYS — circular ACUERDO 07/2026 con las escalas de julio/2026 a mayo/2027 (28/7/2026)",
+      "FAECYS: circular ACUERDO 07/2026 con las escalas de julio/2026 a mayo/2027 (28/7/2026)",
     url: "https://www.faecys.org.ar/circular-acuerdo-julio-2026/",
   },
   acuerdoAnterior: {
-    nombre: "Acuerdo paritario 26/3/2026 — circular FAECYS (escalas abril-junio 2026)",
+    nombre: "Acuerdo paritario 26/3/2026: circular FAECYS (escalas abril-junio 2026)",
     url: "https://www.faecys.org.ar/faecys-acuerdo-paritario-cct-130-75-abril-mayo-junio-2026/",
   },
   cct: {
-    nombre: "Texto del CCT 130/75 (INACAP — arts. 24, 40 y concordantes)",
+    nombre: "Texto del CCT 130/75 (INACAP, arts. 24, 40 y concordantes)",
     url: "https://institutocap.org.ar/inacap/descargarPDF/convenio",
   },
   consultadoEl: "30 de julio de 2026",
@@ -396,7 +396,7 @@ export const MESES_COMERCIO: MesComercio[] = [
     anio: 2026,
     noRemunerativo: 100_000,
     cambios:
-      "Arranca la incorporación de los no remunerativos al básico: $20.000 pasan al básico y quedan $100.000 no remunerativos. El total del mes NO cambia — cambia la composición, y eso sube la parte que aporta el 17% completo (y la base de indemnización y vacaciones). La incorporación sigue de a $20.000 por mes hasta mayo de 2027, cuando el no remunerativo llega a cero.",
+      "Arranca la incorporación de los no remunerativos al básico: $20.000 pasan al básico y quedan $100.000 no remunerativos. El total del mes NO cambia. Cambia la composición, y eso sube la parte que aporta el 17% completo (y la base de indemnización y vacaciones). La incorporación sigue de a $20.000 por mes hasta mayo de 2027, cuando el no remunerativo llega a cero.",
     basicos: {
       "maestranza-a": 1_203_900,
       "maestranza-b": 1_207_292,

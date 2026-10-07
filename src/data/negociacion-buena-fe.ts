@@ -88,7 +88,7 @@ export const CAMBIOS: Cambio[] = [
     ahora:
       "El tribunal dispondrá el cese inmediato del comportamiento violatorio del deber de negociar de buena fe y sancionará a la parte incumplidora con una multa…",
     porQue:
-      "Es una palabra: «podrá sancionar» pasó a «sancionará». Con el texto anterior el juez podía ordenar el cese y no multar; con el vigente la sanción viene junto con el cese. El porcentaje —20% de la masa salarial— es el mismo desde 2004, y por eso casi nadie miró el verbo.",
+      "Es una palabra: «podrá sancionar» pasó a «sancionará». Con el texto anterior el juez podía ordenar el cese y no multar; con el vigente la sanción viene junto con el cese. El porcentaje (20% de la masa salarial) es el mismo desde 2004, y por eso casi nadie miró el verbo.",
   },
   {
     id: "eliminacion",
@@ -98,7 +98,7 @@ export const CAMBIOS: Cambio[] = [
     ahora:
       "Cuando cesaren los actos que dieron origen a la acción entablada, dentro del plazo de diez (10) días que al efecto debe establecer la decisión judicial, el monto de la sanción podrá ser eliminada por el juez.",
     porQue:
-      "Dos cambios en una oración. El plazo dejó de quedar a criterio del juez y quedó fijo en diez días —y la sentencia «debe» establecerlo, no «puede»—. Y el premio por cumplir pasó de una quita de hasta la mitad a la eliminación total de la multa.",
+      "Dos cambios en una oración. El plazo dejó de quedar a criterio del juez y quedó fijo en diez días (y la sentencia «debe» establecerlo, no «puede»). Y el premio por cumplir pasó de una quita de hasta la mitad a la eliminación total de la multa.",
   },
   {
     id: "via-administrativa",
@@ -190,25 +190,25 @@ export const FUENTES: { consultadoEl: string; lista: Fuente[] } = {
   consultadoEl: "2026-08-28",
   lista: [
     {
-      nombre: "Ley 23.546 (t.o. 2004) — texto actualizado (InfoLEG)",
+      nombre: "Ley 23.546 (t.o. 2004), texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/20000-24999/21112/texact.htm",
       detalle:
-        "El texto vigente de los arts. 4°, 6° y 7°, con la nota que los atribuye a los arts. 149, 150 y 151 de la Ley 27.802. De acá salen el tope del 20%, el incremento del 10% cada 5 días, el 100% de la reincidencia, los 10 días para que la multa pueda eliminarse, los 15 días de la comisión negociadora y los 30 de la homologación. El art. 8° —intacto— es el que manda contar todos esos plazos en días hábiles administrativos.",
+        "El texto vigente de los arts. 4°, 6° y 7°, con la nota que los atribuye a los arts. 149, 150 y 151 de la Ley 27.802. De acá salen el tope del 20%, el incremento del 10% cada 5 días, el 100% de la reincidencia, los 10 días para que la multa pueda eliminarse, los 15 días de la comisión negociadora y los 30 de la homologación. El art. 8°, que no se tocó, es el que manda contar todos esos plazos en días hábiles administrativos.",
     },
     {
-      nombre: "Ley 23.546 — el mismo texto oficial, capturado el 1/2/2026 (Internet Archive)",
+      nombre: "Ley 23.546: el mismo texto oficial, capturado el 1/2/2026 (Internet Archive)",
       url: "https://web.archive.org/web/20260201/https://servicios.infoleg.gob.ar/infolegInternet/anexos/20000-24999/21112/texact.htm",
       detalle:
         "La versión que rigió hasta el 5/3/2026. Es la que permite comprobar que la multa era facultativa («podrá, además, sancionar»), que cesar a tiempo sólo la reducía hasta el 50% y que el art. 4° no distinguía quién negocia según el nivel.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial, Título XVI (arts. 149 a 151)",
+      nombre: "Ley 27.802, texto oficial, Título XVI (arts. 149 a 151)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "La norma que sustituyó los tres artículos. El art. 217 fija la vigencia desde la publicación en el Boletín Oficial: este Título no tiene fecha diferida ni prórroga.",
     },
     {
-      nombre: "Ley 14.786 — conciliación obligatoria (InfoLEG)",
+      nombre: "Ley 14.786: conciliación obligatoria (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/115000-119999/115423/norma.htm",
       detalle:
         "La ley a la que remite el art. 7° para los diferendos que aparezcan durante la negociación. Ojo con el contraste: su art. 11 dice «quince días» sin calificarlos, mientras que el art. 8° de la Ley 23.546 sí manda contar en días hábiles administrativos.",

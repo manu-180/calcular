@@ -120,43 +120,43 @@ export const CERTIFICADO_FUENTES: { consultadoEl: string; lista: FuenteCertifica
   consultadoEl: "2026-08-17",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 80 con el texto sustituido por el art. 25 de la Ley 27.802: plazo de 45 días hábiles, las tres formas de cumplir y la remisión a ARCA. En este texto ya no aparece la frase «tres veces la mejor remuneración»: se buscó en la norma completa y no está en ningún artículo.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
-        "La reforma que sustituyó el art. 80 (su art. 25). Vigencia: desde la publicación, sin efecto retroactivo — por eso la fecha de extinción del contrato decide qué régimen se aplica.",
+        "La reforma que sustituyó el art. 80 (su art. 25). Vigencia: desde la publicación, sin efecto retroactivo. Por eso la fecha en que terminó el contrato decide qué régimen se aplica.",
     },
     {
-      nombre: "Resolución General ARCA 5848/2026 — B.O. 18/5/2026 (InfoLEG)",
+      nombre: "Resolución General ARCA 5848/2026: B.O. 18/5/2026 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/425000-429999/425871/norma.htm",
       detalle:
         "La reglamentación: el certificado se confecciona con el F. 984 desde «Simplificación Registral», en formato digital (sin firma digital) o físico por duplicado, y el trabajador lo obtiene en «Trabajo en Blanco». Abroga la RG 2.316 y deroga el Título III de la RG 5.250.",
     },
     {
-      nombre: "Ley 25.345 — texto original, art. 45 (InfoLEG)",
+      nombre: "Ley 25.345, texto original, art. 45 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/65000-69999/65015/norma.htm",
       detalle:
         "El artículo que agregó al art. 80 el último párrafo con la indemnización de tres veces la mejor remuneración mensual, normal y habitual. Es la fuente del número que toda la web sigue publicando.",
     },
     {
-      nombre: "Ley 25.345 — texto actualizado, art. 45 derogado (InfoLEG)",
+      nombre: "Ley 25.345, texto actualizado, art. 45 derogado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/65000-69999/65015/texact.htm",
       detalle:
         "Hoy el art. 45 no muestra texto: sólo la nota «Artículo derogado por art. 99 de la Ley N° 27.742 B.O. 8/7/2024. Vigencia: a partir del día siguiente al de su publicación».",
     },
     {
-      nombre: "Decreto 146/2001 — reglamentación de los arts. 43, 44 y 45 de la Ley 25.345 (InfoLEG)",
+      nombre: "Decreto 146/2001: reglamentación de los arts. 43, 44 y 45 de la Ley 25.345 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/65000-69999/66116/norma.htm",
       detalle:
         "Su art. 3 es el que exige esperar 30 días corridos desde la extinción antes de mandar el requerimiento fehaciente. Sin ese paso, la intimación era prematura y la sanción no procedía.",
     },
     {
-      nombre: "Ley 27.399 — feriados nacionales (InfoLEG)",
+      nombre: "Ley 27.399: feriados nacionales (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/280000-284999/281835/norma.htm",
       detalle:
         "El calendario con el que se descuentan los días no hábiles del plazo de 45 días. El art. 80 dice «días hábiles» pero no define el calendario: por eso la página muestra los días que salteó.",

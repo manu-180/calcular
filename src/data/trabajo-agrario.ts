@@ -150,37 +150,37 @@ export const AGRARIO_FUENTES: { consultadoEl: string; lista: FuenteAgraria[] } =
   consultadoEl: "2026-08-27",
   lista: [
     {
-      nombre: "Ley 26.727 — Régimen de Trabajo Agrario, texto actualizado (InfoLEG)",
+      nombre: "Ley 26.727: Régimen de Trabajo Agrario, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/190000-194999/192152/texact.htm",
       detalle:
         "Arts. 16 y 17 con su texto vigente y las notas de sustitución por los arts. 113 y 112 de la Ley 27.802; arts. 13, 18 y 21 reducidos a la nota «Artículo derogado por art. 206 de la Ley N° 27.802»; y los arts. 20, 22, 32, 34 bis, 50 y 106 tal como rigen hoy. La palabra «preaviso» no aparece en todo el texto: el preaviso del rural sale de la LCT.",
     },
     {
-      nombre: "La Ley 26.727 antes de la reforma — captura del texto oficial (Internet Archive)",
+      nombre: "La Ley 26.727 antes de la reforma: captura del texto oficial (Internet Archive)",
       url: "https://web.archive.org/web/2026/https://servicios.infoleg.gob.ar/infolegInternet/anexos/190000-194999/192152/texact.htm",
       detalle:
-        "La misma página de InfoLEG capturada antes del 6 de marzo de 2026. De ahí salen, palabra por palabra, los arts. 18 y 21 derogados —la figura del trabajador permanente discontinuo y su indemnización— y el art. 17 sin la oración final que le agregó la reforma. El texto actualizado ya no los trae.",
+        "La misma página de InfoLEG capturada antes del 6 de marzo de 2026. De ahí salen, palabra por palabra, los arts. 18 y 21 derogados (la figura del trabajador permanente discontinuo y su indemnización) y el art. 17 sin la oración final que le agregó la reforma. El texto actualizado ya no los trae.",
     },
     {
-      nombre: "La Ley 26.727 en su texto original de 2011 — captura previa a la Ley 27.742",
+      nombre: "La Ley 26.727 en su texto original de 2011: captura previa a la Ley 27.742",
       url: "https://web.archive.org/web/2024/https://servicios.infoleg.gob.ar/infolegInternet/anexos/190000-194999/192152/texact.htm",
       detalle:
         "Captura anterior al 8 de julio de 2024. Ahí el art. 16 todavía decía que el contrato agrario permanente «no podrá ser celebrado a prueba por período alguno»: es la prueba de que el régimen rural no tuvo período de prueba durante sus primeros doce años.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial (InfoLEG)",
+      nombre: "Ley 27.802, texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Su Título XI (arts. 111 a 118) reescribe el régimen agrario y su art. 206 deroga los arts. 13, 18 y 21 de la Ley 26.727. Las notas fijan la vigencia «a partir de su publicación en el Boletín Oficial»: rige desde el 6 de marzo de 2026, no desde 2027.",
     },
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Arts. 92 bis (los seis meses urbanos), 123, 156, 231, 232, 233 y 245: el Título XII al que remite el art. 16 de la Ley 26.727 para la extinción del contrato agrario permanente.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia. Un despido rural anterior a esa fecha se rige por el texto viejo: con período de prueba de seis meses y con la figura del permanente discontinuo todavía en pie.",

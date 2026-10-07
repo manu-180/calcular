@@ -135,24 +135,24 @@ export const GANANCIAS_SOCIEDADES_FUENTES = {
   consultadoEl: "17 de septiembre de 2026",
   lista: [
     {
-      nombre: "Ley de Impuesto a las Ganancias (t.o. Dec. 824/2019), arts. 73 y 97 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Impuesto a las Ganancias (t.o. Dec. 824/2019), arts. 73 y 97, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
       detalle:
         "quiénes tributan por la escala, el párrafo que ajusta sus montos por el IPC de octubre y los aplica a los ejercicios que se inicien después, y el 7% sobre los dividendos que cobran las personas humanas.",
     },
     {
-      nombre: "Ley 27.630 (B.O. 16/6/2021) — Boletín Oficial",
+      nombre: "Ley 27.630 (B.O. 16/6/2021): Boletín Oficial",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/245673/20210616",
       detalle: "la escala original de $5.000.000 y $50.000.000 con los fijos de $1.250.000 y $14.750.000, y el 7% de dividendos.",
     },
     {
-      nombre: "ARCA — Personas jurídicas: escala",
+      nombre: "ARCA, personas jurídicas: escala",
       url: "https://www.afip.gob.ar/gananciasYBienes/ganancias/personas-juridicas/determinacion/escala.asp",
       detalle:
         "las escalas publicadas para los ejercicios iniciados desde 2021 hasta 2026. Son el control cruzado: la derivación reproduce al centavo las de 2023 a 2026.",
     },
     {
-      nombre: "INDEC — IPC nivel general, serie oficial (apis.datos.gob.ar)",
+      nombre: "INDEC: IPC nivel general, serie oficial (apis.datos.gob.ar)",
       url: "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=1000",
       detalle: "los índices de octubre de cada año, de donde sale el coeficiente de la escala.",
     },

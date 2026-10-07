@@ -139,25 +139,25 @@ export const ESCALONES = [
 
 export const DH_FUENTES = [
   {
-    nombre: "Ley 24.557, art. 18 — texto actualizado",
+    nombre: "Ley 24.557, art. 18, texto actualizado",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=27971",
     detalle:
       "Muerte del damnificado. Sustituido por el art. 9º del Decreto 1278/2000 (B.O. 3/1/2001): remite al art. 53 de la Ley 24.241, extiende la edad a 21 y 25 años, y abre los escalones de padres y familiares a cargo.",
   },
   {
-    nombre: "Ley 24.241, art. 53 — texto actualizado",
+    nombre: "Ley 24.241, art. 53, texto actualizado",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=639",
     detalle:
       "La lista de derechohabientes a la que remite la LRT: los cinco incisos, los plazos de convivencia (5 años, 2 con descendencia reconocida por ambos) y la regla que resuelve cónyuge contra conviviente.",
   },
   {
-    nombre: "Decreto 334/96, art. 7º — reglamentario del art. 18",
+    nombre: "Decreto 334/96, art. 7º: reglamentario del art. 18",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=36110",
     detalle:
       "El reglamento que amplía: la lista del art. 53 rige «cualquiera fuera el régimen al que el damnificado estuviera afiliado». No determina el grado de parentesco de los familiares a cargo que el art. 18 le delegó.",
   },
   {
-    nombre: "Ley 20.744 (LCT), art. 248 — texto actualizado",
+    nombre: "Ley 20.744 (LCT), art. 248, texto actualizado",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=25552",
     detalle:
       "La otra lista, la del empleador: sustituida entera por el art. 52 de la Ley 27.802 (B.O. 6/3/2026). El propio artículo declara su indemnización independiente de la del Sistema de Riesgos del Trabajo.",

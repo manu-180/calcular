@@ -158,7 +158,7 @@ export const INFRACCIONES: readonly Infraccion[] = [
         norma: "Ley 11.683, art. 50",
       },
     ],
-    nota: "El mínimo es el mismo del primer párrafo: lo que cambia es el techo, que sube a $35.000.000 para cuatro supuestos tasados — infracciones al domicilio fiscal, resistencia a la fiscalización, no dar datos para el control de operaciones internacionales y no conservar los comprobantes de los precios pactados en esas operaciones.",
+    nota: "El mínimo es el mismo del primer párrafo: lo que cambia es el techo, que sube a $35.000.000 para cuatro supuestos tasados: infracciones al domicilio fiscal, resistencia a la fiscalización, no dar datos para el control de operaciones internacionales y no conservar los comprobantes de los precios pactados en esas operaciones.",
   },
   {
     id: "empleo-no-registrado",
@@ -237,36 +237,36 @@ const TEXACT =
 export const MULTAS_FUENTES = {
   consultadoEl: VIGENCIA_MULTAS.consultadoEl,
   principal: {
-    nombre: "Ley 11.683 (t.o. 1998) — texto actualizado en InfoLEG",
+    nombre: "Ley 11.683 (t.o. 1998), texto actualizado en InfoLEG",
     url: TEXACT,
   },
   lista: [
     {
-      nombre: "Ley 11.683, arts. 38 y 38 s/n — texto actualizado",
+      nombre: "Ley 11.683, arts. 38 y 38 s/n, texto actualizado",
       url: TEXACT,
       detalle:
         "La multa automática por no presentar la declaración jurada ($220.000 / $440.000), su reducción de pleno derecho a la mitad con las dos ventanas de 15 días, y las multas de las declaraciones juradas informativas.",
     },
     {
-      nombre: "Ley 11.683, arts. 39 y 39 s/n — texto actualizado",
+      nombre: "Ley 11.683, arts. 39 y 39 s/n, texto actualizado",
       url: TEXACT,
       detalle:
         "La multa por deberes formales ($150.000 a $2.500.000), el techo agravado de $35.000.000 para los cuatro supuestos tasados, la acumulabilidad con el art. 38 y la multa por no contestar requerimientos.",
     },
     {
-      nombre: "Ley 11.683, art. 40 — texto actualizado",
+      nombre: "Ley 11.683, art. 40, texto actualizado",
       url: TEXACT,
       detalle:
         "La clausura de 2 a 6 días con su piso de valor de operación de $20.000, las siete conductas que la habilitan, la multa por empleo no registrado y la duplicación por otra infracción dentro de 2 años.",
     },
     {
-      nombre: "Ley 11.683, arts. 49 y 50 — texto actualizado",
+      nombre: "Ley 11.683, arts. 49 y 50, texto actualizado",
       url: TEXACT,
       detalle:
         "La exención por regularizar antes de la orden de intervención y la reducción al mínimo legal por reconocer la materialidad de la infracción, más las definiciones de reincidencia y error excusable.",
     },
     {
-      nombre: "Ley 27.799 (B.O. 2/1/2026) — la reforma que fijó estos montos",
+      nombre: "Ley 27.799 (B.O. 2/1/2026): la reforma que fijó estos montos",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/18771/texact.htm",
       detalle:
         "Sus arts. 15 a 29 sustituyeron cada importe de la escala. Cada monto anterior que publica esta página sale de la nota de sustitución del propio texto actualizado de la Ley 11.683.",

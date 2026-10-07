@@ -119,13 +119,13 @@ export const PLURIEMPLEO_FUENTES = {
   consultadoEl: "9 de septiembre de 2026",
   lista: [
     {
-      nombre: "Decreto 491/97 — texto actualizado",
+      nombre: "Decreto 491/97, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/40000-44999/43703/texact.htm",
       detalle:
         "Arts. 13 y 14: pluriempleo, aseguradora obligada, ingresos base, repetición, sucesión de siniestros, capacidad restante y prestaciones en especie.",
     },
     {
-      nombre: "Ley 24.557 — texto actualizado",
+      nombre: "Ley 24.557, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/27971/texact.htm",
       detalle:
         "Art. 45: delegación al Poder Ejecutivo para reglamentar las cuatro situaciones especiales enumeradas por la ley.",

@@ -124,16 +124,16 @@ export const LICENCIAS_ESPECIALES_FUENTES: {
         "Art. 158 (las cinco licencias y sus días), art. 159 (son pagas y el salario se calcula con el art. 155), art. 155 inc. a (sueldo mensual dividido por 25), art. 160 (día hábil garantizado, solo para los incisos a, c y d), art. 161 (acreditación del examen) y art. 164, último párrafo (las vacaciones pueden acumularse a la licencia por matrimonio, y el empleador debe concederlo).",
     },
     {
-      nombre: "Ley 27.399 — feriados nacionales y días no laborables",
+      nombre: "Ley 27.399: feriados nacionales y días no laborables",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/280000-284999/281835/norma.htm",
       detalle:
         "Define qué días son feriados y no laborables, que es lo que dispara la regla del art. 160 de la LCT. El calendario de cada año se deriva de sus artículos 1 y 6.",
     },
     {
-      nombre: "Resolución 164/2025 — días no laborables con fines turísticos 2026",
+      nombre: "Resolución 164/2025: días no laborables con fines turísticos 2026",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/336753/20251226",
       detalle:
-        "B.O. 26/12/2025 — el lunes 23 de marzo, el viernes 10 de julio y el lunes 7 de diciembre de 2026 también son días no laborables, y por lo tanto también cuentan para el art. 160.",
+        "B.O. 26/12/2025: el lunes 23 de marzo, el viernes 10 de julio y el lunes 7 de diciembre de 2026 también son días no laborables, y por lo tanto también cuentan para el art. 160.",
     },
   ],
 };

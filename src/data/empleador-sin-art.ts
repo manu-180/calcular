@@ -92,21 +92,21 @@ export const PRESTACIONES_EN_ESPECIE = [
 
 export const SIN_ART_FUENTES = [
   {
-    nombre: "Ley 24.557, arts. 27, 28 y 29 — texto actualizado",
+    nombre: "Ley 24.557, arts. 27, 28 y 29, texto actualizado",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=27971",
     detalle:
       "El apartado 6 del art. 27 (extinción del contrato por falta de pago, incorporado por el art. 12 de la Ley 27.348), los cuatro apartados del art. 28 (responsabilidad por omisiones) y el art. 29 (insuficiencia patrimonial y Fondo de Garantía).",
   },
   {
-    nombre: "Ley 27.348, art. 12 — texto actualizado",
+    nombre: "Ley 27.348, art. 12, texto actualizado",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=272119",
     detalle:
       "La norma que incorporó el apartado 6, con su regla de aplicación temporal: rige para las contingencias cuya primera manifestación invalidante sea posterior a su entrada en vigencia.",
   },
   {
-    nombre: "Ley 24.557, art. 20 — prestaciones en especie",
+    nombre: "Ley 24.557, art. 20: prestaciones en especie",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=27971",
     detalle:
-      "Las cinco prestaciones del Capítulo V: asistencia médica y farmacéutica, prótesis y ortopedia, rehabilitación, recalificación profesional y servicio funerario. Son las que sobreviven tres meses a la extinción del contrato — no las dinerarias.",
+      "Las cinco prestaciones del Capítulo V: asistencia médica y farmacéutica, prótesis y ortopedia, rehabilitación, recalificación profesional y servicio funerario. Son las que sobreviven tres meses a la extinción del contrato. Las dinerarias, no.",
   },
 ] as const;

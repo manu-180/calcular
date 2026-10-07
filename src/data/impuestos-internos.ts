@@ -112,7 +112,7 @@ export const RUBROS: Rubro[] = [
     tieneMontoExento: false,
     yaSuspendidoPorDecreto: false,
     detalle:
-      "«Las entidades de seguros legalmente establecidas o constituidas en el país pagarán un impuesto del uno por mil (1‰) sobre las primas de seguros que contraten». Ojo: varios seguros ya estaban exentos por el artículo sin número agregado a continuación del art. 29 — los agrícolas, los de vida individuales o colectivos, los de accidentes personales y los colectivos que cubren gastos de internación, cirugía o maternidad.",
+      "«Las entidades de seguros legalmente establecidas o constituidas en el país pagarán un impuesto del uno por mil (1‰) sobre las primas de seguros que contraten». Ojo: varios seguros ya estaban exentos por el artículo sin número agregado a continuación del art. 29: los agrícolas, los de vida individuales o colectivos, los de accidentes personales y los colectivos que cubren gastos de internación, cirugía o maternidad.",
   },
   {
     id: "seguros_exterior",
@@ -125,7 +125,7 @@ export const RUBROS: Rubro[] = [
     tieneMontoExento: false,
     yaSuspendidoPorDecreto: false,
     detalle:
-      "Los seguros sobre personas —excepto vida y accidentes personales— y sobre bienes situados o destinados a la Argentina, hechos por aseguradores radicados fuera del país, pagaban el 23% sobre las primas de riesgo generales. La misma tasa regía cuando el seguro se contrataba directamente en el extranjero, y ahí el responsable del impuesto era el asegurado, no la compañía (art. 28).",
+      "Los seguros sobre personas (excepto vida y accidentes personales) y sobre bienes situados o destinados a la Argentina, hechos por aseguradores radicados fuera del país, pagaban el 23% sobre las primas de riesgo generales. La misma tasa regía cuando el seguro se contrataba directamente en el extranjero, y ahí el responsable del impuesto era el asegurado, no la compañía (art. 28).",
   },
   {
     id: "celular",
@@ -155,7 +155,7 @@ export const RUBROS: Rubro[] = [
   },
   {
     id: "autos_35",
-    etiqueta: "Automóvil o motor — tramo superior del art. 39 (35% de la ley)",
+    etiqueta: "Automóvil o motor: tramo superior del art. 39 (35% de la ley)",
     alicuota: 0.35,
     alicuotaTexto: "35%",
     articulo: "art. 39, tercer párrafo",
@@ -168,7 +168,7 @@ export const RUBROS: Rubro[] = [
   },
   {
     id: "autos_18",
-    etiqueta: "Automóvil o motor — el 18% que dejó el Decreto 50/2025",
+    etiqueta: "Automóvil o motor: el 18% que dejó el Decreto 50/2025",
     alicuota: 0.18,
     alicuotaTexto: "18%",
     articulo: "art. 39 + Decreto 50/2025, art. 2°",
@@ -177,11 +177,11 @@ export const RUBROS: Rubro[] = [
     tieneMontoExento: true,
     yaSuspendidoPorDecreto: false,
     detalle:
-      "Es la alícuota que estaba realmente vigente antes de la eliminación: el Decreto 50/2025 «redúcese a dieciocho por ciento (18%) la alícuota del treinta y cinco por ciento (35%)» para los incisos a), b) y d), con efectos hasta el 30 de junio de 2027. Comparar contra ésta —y no contra el 35% de la ley— es lo que da el ahorro real de 2026.",
+      "Es la alícuota que estaba realmente vigente antes de la eliminación: el Decreto 50/2025 «redúcese a dieciocho por ciento (18%) la alícuota del treinta y cinco por ciento (35%)» para los incisos a), b) y d), con efectos hasta el 30 de junio de 2027. Comparar contra esta alícuota (y no contra el 35% de la ley) es lo que da el ahorro real de 2026.",
   },
   {
     id: "autos_20",
-    etiqueta: "Automóvil o motor — tramo intermedio del art. 39 (20% de la ley)",
+    etiqueta: "Automóvil o motor: tramo intermedio del art. 39 (20% de la ley)",
     alicuota: 0.2,
     alicuotaTexto: "20%",
     articulo: "art. 39, segundo párrafo",
@@ -194,7 +194,7 @@ export const RUBROS: Rubro[] = [
   },
   {
     id: "motos_30",
-    etiqueta: "Motocicleta o velocípedo con motor — 30% de la ley",
+    etiqueta: "Motocicleta o velocípedo con motor: 30% de la ley",
     alicuota: 0.3,
     alicuotaTexto: "30%",
     articulo: "art. 39, cuarto párrafo",
@@ -207,7 +207,7 @@ export const RUBROS: Rubro[] = [
   },
   {
     id: "motos_15",
-    etiqueta: "Motocicleta o velocípedo — el 15% que dejó el Decreto 50/2025",
+    etiqueta: "Motocicleta o velocípedo: el 15% que dejó el Decreto 50/2025",
     alicuota: 0.15,
     alicuotaTexto: "15%",
     articulo: "art. 39 + Decreto 50/2025, art. 3°",
@@ -310,25 +310,25 @@ export const IMPUESTOS_INTERNOS_FUENTES: {
   consultadoEl: "2026-08-30",
   lista: [
     {
-      nombre: "Ley 27.802 — texto oficial, art. 195 (Título XXV, Capítulo I)",
+      nombre: "Ley 27.802, texto oficial, art. 195 (Título XXV, Capítulo I)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "La oración que deja sin efecto el impuesto para los cinco rubros, y el art. 217 que fija la vigencia de la ley en su publicación. De la combinación de los dos sale la fecha real de la eliminación: el primer día del mes siguiente, o sea el 1 de abril de 2026.",
     },
     {
-      nombre: "Ley 24.674 de Impuestos Internos — TEXTO ACTUALIZADO (InfoLEG)",
+      nombre: "Ley 24.674 de Impuestos Internos, TEXTO ACTUALIZADO (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/38621/texact.htm",
       detalle:
         "De acá salen todas las alícuotas: el 1‰ y el 2,5% de ART del art. 27, el 23% del asegurador del exterior, el 5% del art. 30 y las tarjetas prepagas del 31, el 20% en cada etapa del art. 35 con la lista de bienes del 36, y la escala del art. 39 para vehículos, embarcaciones y aeronaves. También el art. 2° (una sola etapa, salvo el Capítulo VIII) y el art. 4° (el impuesto no se descuenta de su propia base). Al pie del art. 1° está la nota de InfoLEG que registra el art. 195 de la Ley 27.802.",
     },
     {
-      nombre: "Decreto 50/2025 (B.O. 31/1/2025) — nota de InfoLEG al pie del art. 39",
+      nombre: "Decreto 50/2025 (B.O. 31/1/2025): nota de InfoLEG al pie del art. 39",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/38621/texact.htm",
       detalle:
-        "El decreto que ya había dejado sin efecto el 20% y bajado el 35% al 18% y el 30% al 15% —hasta el 30 de junio de 2027— para los bienes de los incisos a), b), c), d) y e) del art. 38. El inciso f), aeronaves, no está en esa enumeración.",
+        "El decreto que ya había dejado sin efecto el 20% y bajado el 35% al 18% y el 30% al 15% (hasta el 30 de junio de 2027) para los bienes de los incisos a), b), c), d) y e) del art. 38. El inciso f), aeronaves, no está en esa enumeración.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia de la ley y, por el art. 195, la cuenta del mes siguiente.",

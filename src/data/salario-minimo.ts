@@ -124,10 +124,10 @@ export const SMVM_FUENTES: { consultadoEl: string; lista: FuenteSmvm[] } = {
   consultadoEl: "2026-09-02",
   lista: [
     {
-      nombre: "Resolución 4/2026 — Consejo Nacional del Empleo, la Productividad y el SMVM",
+      nombre: "Resolución 4/2026: Consejo Nacional del Empleo, la Productividad y el SMVM",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346775/20260902",
       detalle:
-        "B.O. 2/9/2026 — laudo dictado al no haber acuerdo el 28/8/2026: fija el SMVM mes a mes de septiembre de 2026 a abril de 2027 (art. 1) y mantiene la fórmula de la prestación por desempleo (art. 2).",
+        "B.O. 2/9/2026: laudo dictado al no haber acuerdo el 28/8/2026: fija el SMVM mes a mes de septiembre de 2026 a abril de 2027 (art. 1) y mantiene la fórmula de la prestación por desempleo (art. 2).",
     },
     {
       nombre: "Ley de Contrato de Trabajo, arts. 116 a 120 (texto actualizado)",
@@ -142,9 +142,9 @@ export const SMVM_FUENTES: { consultadoEl: string; lista: FuenteSmvm[] } = {
         "Crea el Consejo del Salario, le da la atribución de fijar el SMVM y regula el laudo del art. 137 cuando no hay acuerdo.",
     },
     {
-      nombre: "Resolución 9/2025 — Consejo Nacional del Empleo, la Productividad y el SMVM",
+      nombre: "Resolución 9/2025: Consejo Nacional del Empleo, la Productividad y el SMVM",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/335463/20251203",
-      detalle: "B.O. 3/12/2025 — la escala anterior, de noviembre de 2025 a agosto de 2026.",
+      detalle: "B.O. 3/12/2025: la escala anterior, de noviembre de 2025 a agosto de 2026.",
     },
   ],
 };

@@ -9,7 +9,7 @@
 
 export const DECRETO_407 = {
   nombre:
-    "Decreto 407/2026 — reglamenta la Ley 27.802 de Modernización Laboral (art. 140 LCT)",
+    "Decreto 407/2026: reglamenta la Ley 27.802 de Modernización Laboral (art. 140 LCT)",
   bo: "https://www.boletinoficial.gob.ar/detalleAviso/primera/342620/20260601",
   texto: "https://www.argentina.gob.ar/normativa/nacional/decreto-407-2026-426270/texto",
   publicacion: "1 de junio de 2026",

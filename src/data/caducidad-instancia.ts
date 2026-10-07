@@ -53,7 +53,7 @@ export const INSTANCIAS: TipoInstancia[] = [
     meses: 6,
     inciso: "1",
     detalle:
-      "El juicio ordinario laboral típico. La instancia se abre con la promoción de la demanda —aunque todavía no se haya notificado la resolución que dispone su traslado— y termina con el dictado de la sentencia.",
+      "El juicio ordinario laboral típico. La instancia se abre cuando se presenta la demanda (aunque todavía no se haya notificado el traslado) y termina con la sentencia.",
   },
   {
     id: "segunda",
@@ -137,7 +137,7 @@ export const CAMBIOS_TITULO_III: CambioProcesal[] = [
     toca: "art. 20",
     titulo: "Competencia por materia: el Estado nacional sale del fuero laboral",
     detalle:
-      "Cuando el Estado nacional —Ejecutivo, Legislativo, Judicial o Ministerio Público, incluidos los entes del art. 8° inc. a) de la Ley 24.156— es parte o tercero interesado, la causa va al Contencioso Administrativo Federal (o a la Justicia Federal contencioso administrativa en el resto del país). El artículo lo cierra con una frase que no deja margen: «En ningún caso la Justicia Nacional del Trabajo podrá expedirse en las causas aquí comprendidas», y da por modificada toda norma que le asigne esa competencia.",
+      "Cuando el Estado nacional es parte o tercero interesado, la causa va al Contencioso Administrativo Federal (o a la Justicia Federal contencioso administrativa en el resto del país). Cuentan como Estado nacional el Ejecutivo, el Legislativo, el Judicial y el Ministerio Público, incluidos los entes del art. 8° inc. a) de la Ley 24.156. El artículo lo cierra con una frase que no deja margen: «En ningún caso la Justicia Nacional del Trabajo podrá expedirse en las causas aquí comprendidas», y da por modificada toda norma que le asigne esa competencia.",
   },
   {
     art: "80",
@@ -172,7 +172,7 @@ export const CAMBIOS_TITULO_III: CambioProcesal[] = [
     toca: "art. 71",
     titulo: "Contestación de la demanda y rebeldía",
     detalle:
-      "Ajusta la contestación al art. 65 de la ley y al art. 356 del CPCCN, da traslado de la documentación al actor —que tiene tres días para reconocerla o desconocerla— y establece que el demandado citado que no contesta es declarado rebelde, «presumiéndose como ciertos los hechos expuestos» en la demanda, salvo prueba en contrario. También manda tener por enderezada la acción cuando hay discordancia entre los datos del demandado y los de quien contesta, salvo oposición expresa del actor.",
+      "Ajusta la contestación al art. 65 de la ley y al art. 356 del CPCCN, da traslado de la documentación al actor (que tiene tres días para reconocerla o desconocerla) y establece que el demandado citado que no contesta es declarado rebelde, «presumiéndose como ciertos los hechos expuestos» en la demanda, salvo prueba en contrario. También manda tener por enderezada la acción cuando hay discordancia entre los datos del demandado y los de quien contesta, salvo oposición expresa del actor.",
   },
   {
     art: "85",
@@ -193,7 +193,7 @@ export const CAMBIOS_TITULO_III: CambioProcesal[] = [
     toca: "art. 110",
     titulo: "Casi todas las apelaciones previas a la sentencia quedan diferidas",
     detalle:
-      "Regla general: las apelaciones anteriores a la sentencia se tienen presentes con efecto diferido hasta que la sentencia definitiva ponga fin al proceso de conocimiento en primera instancia — «aún en juicios prima facie inapelables». Las excepciones son cuatro: el caso del art. 146, la competencia del tribunal, la falta de legitimación pasiva y activa, y las medidas cautelares. Se lee junto con el art. 86: lo que quedó apelable de inmediato es exactamente lo que ese inciso agregó.",
+      "Regla general: las apelaciones anteriores a la sentencia se tienen presentes con efecto diferido hasta que la sentencia definitiva ponga fin al proceso de conocimiento en primera instancia, «aún en juicios prima facie inapelables». Las excepciones son cuatro: el caso del art. 146, la competencia del tribunal, la falta de legitimación pasiva y activa, y las medidas cautelares. Se lee junto con el art. 86: lo que quedó apelable de inmediato es exactamente lo que ese inciso agregó.",
   },
   {
     art: "88",
@@ -221,7 +221,7 @@ export const CAMBIOS_TITULO_III: CambioProcesal[] = [
     toca: "artículos propios",
     titulo: "Todo esto se aplica a los procesos ya en trámite",
     detalle:
-      "El art. 93 aplica el Título entero «a todos los procesos en trámite a partir del día siguiente al de la publicación», con la sola excepción de los arts. 79 y 80. Esos dos —competencia por materia y territorial— van por el art. 94: rigen desde la misma fecha, pero sólo en los procesos en trámite «en los que la competencia estuviere pendiente de resolución».",
+      "El art. 93 aplica el Título entero «a todos los procesos en trámite a partir del día siguiente al de la publicación», con la sola excepción de los arts. 79 y 80. Esos dos (competencia por materia y territorial) van por el art. 94: rigen desde la misma fecha, pero sólo en los procesos en trámite «en los que la competencia estuviere pendiente de resolución».",
   },
 ];
 
@@ -231,19 +231,19 @@ export const FUENTES: { consultadoEl: string; lista: Fuente[] } = {
   consultadoEl: "2026-08-28",
   lista: [
     {
-      nombre: "Ley 18.345 (t.o. Decreto 106/98) — texto actualizado (InfoLEG)",
+      nombre: "Ley 18.345 (t.o. Decreto 106/98), texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/45000-49999/45628/texact.htm",
       detalle:
-        "El texto vigente del art. 46, con los tres plazos de caducidad y la nota que lo atribuye al art. 82 de la Ley 27.802 —incluida la remisión expresa «Aplicación: Ver art. 93 de la norma de referencia»—. También los arts. 20, 24, 26, 65, 71, 76, 108, 110 y 124 en su redacción vigente.",
+        "El texto vigente del art. 46, con los tres plazos de caducidad y la nota que lo atribuye al art. 82 de la Ley 27.802, incluida la remisión expresa «Aplicación: Ver art. 93 de la norma de referencia». También los arts. 20, 24, 26, 65, 71, 76, 108, 110 y 124 en su redacción vigente.",
     },
     {
-      nombre: "Ley 18.345 — el mismo texto oficial, capturado el 1/2/2026 (Internet Archive)",
+      nombre: "Ley 18.345: el mismo texto oficial, capturado el 1/2/2026 (Internet Archive)",
       url: "https://web.archive.org/web/20260201/https://servicios.infoleg.gob.ar/infolegInternet/anexos/45000-49999/45628/texact.htm",
       detalle:
         "La versión que rigió hasta el 5/3/2026. Es la que prueba que el artículo se llamaba «Impulso de oficio» y decía que el procedimiento «será impulsado de oficio por los jueces»: sin ese contraste, el cambio se lee como una reglamentación de plazos y no como la inversión de la regla que es.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial, Título III (arts. 78 a 94)",
+      nombre: "Ley 27.802, texto oficial, Título III (arts. 78 a 94)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Los diecisiete artículos del Título, incluidos el art. 89 (precedentes obligatorios de la Corte), los arts. 90 a 92 (traspaso del fuero a la CABA) y los arts. 93 y 94, que fijan la aplicación a los procesos en trámite.",

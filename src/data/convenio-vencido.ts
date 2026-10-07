@@ -178,19 +178,19 @@ export type Ambito = "mayor" | "menor";
 
 export const FUENTES = [
   {
-    titulo: "Ley 14.250 (t.o. 2004) — texto actualizado (arts. 6, 7, 8, 11, 18, 19 y 21)",
+    titulo: "Ley 14.250 (t.o. 2004), texto actualizado (arts. 6, 7, 8, 11, 18, 19 y 21)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=46379",
   },
   {
-    titulo: "Ley 27.802 — Título XIV, arts. 130 a 137, y art. 211 (derogaciones)",
+    titulo: "Ley 27.802: Título XIV, arts. 130 a 137, y art. 211 (derogaciones)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=423680",
   },
   {
-    titulo: "Boletín Oficial del 6/3/2026 — Ley 27.802",
+    titulo: "Boletín Oficial del 6/3/2026: Ley 27.802",
     url: LEY_27802.avisoLey,
   },
   {
-    titulo: `Boletín Oficial del 6/3/2026 — ${LEY_27802.decretoPromulgatorio}, que la promulga el 5/3/2026`,
+    titulo: `Boletín Oficial del 6/3/2026: ${LEY_27802.decretoPromulgatorio}, que la promulga el 5/3/2026`,
     url: LEY_27802.avisoDecreto,
   },
 ] as const;
