@@ -105,6 +105,16 @@ const nextConfig: NextConfig = {
         destination: "https://calcular.ar/:path*",
         permanent: true,
       },
+      // calcularya.com es el dominio de los otros países (docs/adr/0001-multi-pais.md). Mientras no
+      // haya ningún país publicado, servirlo mostraría el sitio argentino duplicado en otro dominio.
+      // Temporal (307) a propósito: cuando salga el primer país, esta regla se reemplaza por los
+      // rewrites por mercado y Google no tiene que olvidar un 308.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "(?:www\\.)?calcularya\\.com" }],
+        destination: "https://calcular.ar/:path*",
+        permanent: false,
+      },
     ];
   },
 };
