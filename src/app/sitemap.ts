@@ -7,6 +7,7 @@ import { esPeriodoIndexable } from '@/lib/archivo-mensual'
 import { MESES_CANASTA, slugDeMesCanasta } from '@/lib/canasta-basica-meses'
 import { aniosDisponibles, ULTIMO_PERIODO } from '@/lib/inflacion'
 import { hoyAR } from '@/lib/hoy'
+import { ultimoCambio } from '@/lib/novedades'
 import { SITIO } from '@/lib/seo'
 
 const BASE = SITIO
@@ -195,6 +196,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       [`${BASE}/blog`, mayor(blog.map((e) => e.fecha))],
       [`${BASE}/convenios`, mayor([hijos('/convenios/', fijas), ...convenios.map((e) => e.fecha)])],
       [`${BASE}/planillas`, hijos('/planillas/', fijas)],
+      [`${BASE}/novedades`, ultimoCambio() ?? undefined],
     ] as const
   ).map(([url, fecha]) => ({ ruta: url.slice(BASE.length), fecha }))
 
