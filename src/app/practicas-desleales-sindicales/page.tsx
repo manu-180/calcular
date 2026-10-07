@@ -21,14 +21,14 @@ import {
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Prácticas desleales del sindicato: las 8 conductas nuevas y cuánto es la multa",
+  title: "Prácticas desleales sindicales: conductas y multas",
   description:
-    "Hasta el 6 de marzo de 2026 sólo el empleador podía cometer prácticas desleales. La Ley 27.802 incorporó el art. 53 bis a la Ley 23.551 con ocho conductas de las asociaciones sindicales, habilitó al empleador a querellar y cambió la escala de multas al Anexo II de la Ley 25.212. Calculá el importe en pesos.",
+    "La Ley 27.802 sumó el art. 53 bis a la Ley 23.551 con 8 conductas desleales de los sindicatos y habilitó al empleador a querellar. Calculá la multa.",
   alternates: { canonical: "/practicas-desleales-sindicales" },
   openGraph: {
     title: "El art. 53 bis: ocho prácticas desleales que antes no existían",
     description:
-      "Bloqueo, toma de establecimiento, afiliación compulsiva, no acatar la conciliación obligatoria. Qué escalón le pone la ley a cada una y cuánto sale, con el SMVM vigente.",
+      "Bloqueo, toma del establecimiento, afiliación compulsiva, no acatar la conciliación obligatoria. Qué escalón le pone la ley a cada una y cuánto sale, con el salario mínimo vigente.",
     url: "https://calcular.ar/practicas-desleales-sindicales",
     images: [
       {
@@ -46,49 +46,49 @@ export default function PracticasDeslealesPage() {
   const faqs = [
     {
       q: "¿Un sindicato puede cometer una práctica desleal?",
-      a: `Desde el ${REFORMA_PUBLICADA}, sí. Hasta esa fecha la Ley 23.551 sólo tipificaba prácticas desleales del empleador —el art. 53, con sus once incisos, intacto desde 1988—. La Ley 27.802 no tocó ese artículo: le agregó al lado el art. 53 bis, que define ocho conductas desleales «por parte de las asociaciones sindicales, o en su caso, de quienes las representen».`,
+      a: `Desde el ${REFORMA_PUBLICADA}, sí. Hasta esa fecha la Ley 23.551 solo castigaba prácticas desleales del empleador (el art. 53, con sus once incisos, igual desde 1988). La Ley 27.802 no tocó ese artículo: le sumó al lado el art. 53 bis, con ocho conductas desleales «por parte de las asociaciones sindicales, o en su caso, de quienes las representen».`,
     },
     {
       q: "¿Cuáles son las ocho conductas?",
-      a: "Incurrir en las acciones del art. 20 ter (bloqueo, toma, daños, afectar la libertad de trabajo de quien no adhiere); convocar asambleas violando el art. 20 bis u otras medidas de acción directa que afecten la actividad de la empresa; promover la afiliación compulsiva e involuntaria; usar mecanismos extorsivos para lograr esa afiliación; usar mecanismos extorsivos contra los empleadores; tomar represalias contra quienes no se adhieren a una medida de fuerza; rehusarse a negociar colectivamente o dilatar la negociación; y no acatar la conciliación obligatoria.",
+      a: "Hacer lo que prohíbe el art. 20 ter (bloqueo, toma, daños, afectar la libertad de trabajo de quien no adhiere); convocar asambleas violando el art. 20 bis u otras medidas de acción directa que afecten la actividad de la empresa; promover la afiliación compulsiva e involuntaria; usar mecanismos extorsivos para lograr esa afiliación; usar mecanismos extorsivos contra los empleadores; tomar represalias contra quienes no adhieren a una medida de fuerza; negarse a negociar colectivamente o demorar la negociación; y no acatar la conciliación obligatoria.",
     },
     {
       q: "¿Cuánto es la multa?",
-      a: `El art. 55 nuevo remite al Anexo II de la Ley 25.212, que gradúa las multas como porcentaje del SMVM vigente al momento de la constatación: del 25% al 150% para las infracciones leves; del 30% al 200% por cada trabajador afectado para las graves; y del ${Math.round(
+      a: `El art. 55 nuevo remite al Anexo II de la Ley 25.212, que fija las multas como porcentaje del salario mínimo vigente cuando se constata la falta. Del 25% al 150% para las infracciones leves; del 30% al 200% por cada trabajador afectado para las graves; y del ${Math.round(
         muyGrave.min * 100,
       )}% al ${Math.round(
         muyGrave.max * 100,
-      )}% por cada trabajador afectado para las muy graves. En prácticas múltiples o reincidencia, el máximo puede elevarse hasta el quíntuplo. Antes de la reforma el artículo remitía a la Ley 18.694, de 1972.`,
+      )}% por cada trabajador afectado para las muy graves. Si hay varias prácticas o reincidencia, el máximo puede subir hasta cinco veces. Antes de la reforma el artículo remitía a la Ley 18.694, de 1972.`,
     },
     {
       q: "¿Qué es una infracción muy grave acá?",
-      a: "La ley lo define en un solo lugar: el art. 20 ter dice que «serán consideradas infracciones muy graves» afectar la libertad de trabajo de quienes no adhieren a una medida de fuerza, provocar o instar u organizar el bloqueo o la toma de un establecimiento, impedir u obstruir el ingreso o egreso de personas y cosas, y ocasionar daños o retener indebidamente bienes de la empresa o de terceros. Para los demás incisos del art. 53 bis la ley no fija escalón: lo califica el juez.",
+      a: "La ley lo define en un solo lugar. El art. 20 ter dice que «serán consideradas infracciones muy graves» afectar la libertad de trabajo de quienes no adhieren a una medida de fuerza, provocar, instar u organizar el bloqueo o la toma de un establecimiento, impedir u obstruir la entrada o salida de personas y cosas, y causar daños o retener indebidamente bienes de la empresa o de terceros. Para los demás incisos del art. 53 bis la ley no fija escalón: lo decide el juez.",
     },
     {
       q: "¿Hay un techo para la multa?",
-      a: `Sí: el art. 55 dice que «la multa será fijada por el juez hasta un máximo del equivalente al ${Math.round(
+      a: `Sí. El art. 55 dice que «la multa será fijada por el juez hasta un máximo del equivalente al ${Math.round(
         TOPE_CUOTAS * 100,
-      )}% de los ingresos provenientes de las cuotas sindicales que deban pagar los afiliados en el mes en que se cometió la infracción». En el texto de 1988 ese tope existía sólo para las prácticas cometidas por entidades representativas de empleadores.`,
+      )}% de los ingresos provenientes de las cuotas sindicales que deban pagar los afiliados en el mes en que se cometió la infracción». En el texto de 1988 ese tope existía solo para las prácticas de las entidades que representan a los empleadores.`,
     },
     {
       q: "¿Y si el sindicato no cesa la medida?",
-      a: "El importe originario «se incrementará automáticamente en un diez por ciento (10%) por cada cinco (5) días de mora, mientras se mantenga el incumplimiento». Y el juez, a pedido de parte, puede además aplicar las astreintes del art. 804 del Código Civil y Comercial, «quedando los importes que así se establezcan en favor del damnificado». Al revés: si la práctica se repara dentro del plazo que fije la decisión judicial, «el importe de la sanción podrá reducirse hasta el cincuenta por ciento (50%)».",
+      a: "El monto original «se incrementará automáticamente en un diez por ciento (10%) por cada cinco (5) días de mora, mientras se mantenga el incumplimiento». Y si una parte lo pide, el juez puede sumar las astreintes del art. 804 del Código Civil y Comercial, «quedando los importes que así se establezcan en favor del damnificado». Al revés: si la práctica se repara dentro del plazo que fije el juez, «el importe de la sanción podrá reducirse hasta el cincuenta por ciento (50%)».",
     },
     {
       q: "¿Se le puede sacar la personería gremial a un sindicato?",
-      a: "Es la sanción más grave del capítulo y es nueva: «En aquellos casos en los que la asociación sindical o el empleado incurra reiteradamente en las conductas estipuladas en el artículo 53 bis del presente cuerpo normativo, la Justicia Nacional del Trabajo podrá revocarle la personería y/o la inscripción gremial». El texto anterior no preveía ninguna consecuencia sobre la personería.",
+      a: "Es la sanción más grave del capítulo, y es nueva: «En aquellos casos en los que la asociación sindical o el empleado incurra reiteradamente en las conductas estipuladas en el artículo 53 bis del presente cuerpo normativo, la Justicia Nacional del Trabajo podrá revocarle la personería y/o la inscripción gremial». El texto anterior no tenía ninguna consecuencia sobre la personería.",
     },
     {
       q: "¿Quién puede iniciar la querella?",
-      a: "Cualquier damnificado. El art. 54 pasó de «La asociación sindical de trabajadores o el damnificado, conjunta o indistintamente, podrán promover querella» a «Todo damnificado por una acción y/u omisión que la presente ley define como práctica desleal podrá promover una querella ante el juez o tribunal competente». En la práctica, el empleador damnificado queda legitimado por sí solo.",
+      a: "Cualquier damnificado. El art. 54 pasó de «La asociación sindical de trabajadores o el damnificado, conjunta o indistintamente, podrán promover querella» a «Todo damnificado por una acción y/u omisión que la presente ley define como práctica desleal podrá promover una querella ante el juez o tribunal competente». En la práctica, el empleador damnificado puede querellar por su cuenta.",
     },
     {
       q: "¿Se cobra el tiempo de asamblea?",
-      a: "No. El art. 20 bis, con el texto de la reforma, cierra diciendo: «El trabajador no devengará salarios durante el tiempo de la misma». Y agrega que la asamblea —dentro o fuera del establecimiento— necesita autorización previa del empleador respecto del horario y la duración, y también del lugar si se hace adentro. Convocarla violando esos términos es, precisamente, la práctica desleal del art. 53 bis inciso b).",
+      a: "No. El art. 20 bis, con el texto de la reforma, termina diciendo: «El trabajador no devengará salarios durante el tiempo de la misma». Y agrega que la asamblea (dentro o fuera del establecimiento) necesita autorización previa del empleador sobre el horario y la duración, y también sobre el lugar si se hace adentro. Convocarla sin respetar eso es justamente la práctica desleal del art. 53 bis inciso b).",
     },
     {
       q: "¿La multa la cobra la empresa damnificada?",
-      a: "No. El art. 55 mantiene la regla de siempre: «El importe de las multas será percibido por la autoridad administrativa del trabajo, e ingresado en una cuenta especial, y será destinado al mejoramiento de los servicios de inspección del trabajo». Lo que sí queda en favor del damnificado son las astreintes del art. 804 del Código Civil y Comercial, si el juez las aplica.",
+      a: "No. El art. 55 mantiene la regla de siempre: «El importe de las multas será percibido por la autoridad administrativa del trabajo, e ingresado en una cuenta especial, y será destinado al mejoramiento de los servicios de inspección del trabajo». Lo que sí queda para el damnificado son las astreintes del art. 804 del Código Civil y Comercial, si el juez las aplica.",
     },
   ];
 
@@ -109,7 +109,7 @@ export default function PracticasDeslealesPage() {
       articleSchema({
         titulo: "Prácticas desleales sindicales: el art. 53 bis y la multa del art. 55",
         descripcion:
-          "El Título XV de la Ley 27.802 incorporó ocho prácticas desleales de las asociaciones sindicales, habilitó a todo damnificado a querellar y cambió la escala de multas a la del Anexo II de la Ley 25.212, que se calcula sobre el SMVM vigente.",
+          "El Título XV de la Ley 27.802 sumó ocho prácticas desleales de las asociaciones sindicales, habilitó a todo damnificado a querellar y cambió la escala de multas a la del Anexo II de la Ley 25.212, que se calcula sobre el salario mínimo vigente.",
         url: "/practicas-desleales-sindicales",
         modificado: PD_FUENTES.consultadoEl,
       }),
@@ -133,30 +133,29 @@ export default function PracticasDeslealesPage() {
           Prácticas desleales del sindicato: las ocho conductas nuevas y cuánto cuestan
         </h1>
         <p className="text-zinc-600">
-          Durante 38 años la Ley 23.551 tipificó prácticas desleales de una sola parte: el
-          empleador. El {REFORMA_PUBLICADA} la Ley 27.802 le agregó el{" "}
-          <strong>artículo 53 bis</strong>, con ocho conductas de las asociaciones sindicales que
-          antes no existían como infracción. La parte jurídica se explicó en todos lados. El número,
-          no: acá está la multa en pesos.
+          Durante 38 años la Ley 23.551 castigó prácticas desleales de una sola parte: el
+          empleador. El {REFORMA_PUBLICADA} la Ley 27.802 le sumó el{" "}
+          <strong>artículo 53 bis</strong>, con ocho conductas de los sindicatos que antes no eran
+          infracción. La parte legal se explicó en todos lados. El número, no: acá está la multa en
+          pesos.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={PD_FUENTES.consultadoEl}>
         <p>
           El <strong>art. 53 bis</strong> define ocho prácticas desleales sindicales, y el{" "}
-          <strong>art. 54</strong> pasó a habilitar a «todo damnificado» a querellar — el empleador
-          incluido. La multa dejó de remitir a la Ley 18.694 de 1972 y ahora se gradúa con el{" "}
-          <strong>Anexo II de la Ley 25.212</strong>: entre el 25% y el 150% del{" "}
+          <strong>art. 54</strong> ahora habilita a «todo damnificado» a querellar, el empleador
+          incluido. La multa ya no remite a la Ley 18.694 de 1972: se calcula con el{" "}
+          <strong>Anexo II de la Ley 25.212</strong>. Va del 25% al 150% del{" "}
           <Link href="/salario-minimo" className="text-emerald-700 hover:underline">
             salario mínimo
           </Link>{" "}
-          en
-          las infracciones leves, entre el 30% y el 200% <em>por cada trabajador afectado</em> en
-          las graves, y entre el <strong>50% y el 2.000% por cada trabajador</strong> en las muy
-          graves — el escalón donde el art. 20 ter ubica al bloqueo, la toma y los daños. En
-          prácticas múltiples o reincidencia el máximo se multiplica por{" "}
-          {MULTIPLICADOR_REINCIDENCIA}, con un techo del {Math.round(TOPE_CUOTAS * 100)}% de las
-          cuotas sindicales del mes. Y si la conducta se repite, la Justicia del Trabajo puede{" "}
+          en las infracciones leves, del 30% al 200% <em>por cada trabajador afectado</em> en las
+          graves, y del <strong>50% al 2.000% por cada trabajador</strong> en las muy graves (el
+          escalón donde el art. 20 ter pone al bloqueo, la toma y los daños). Si hay varias
+          prácticas o reincidencia, el máximo se multiplica por {MULTIPLICADOR_REINCIDENCIA}, con un
+          techo del {Math.round(TOPE_CUOTAS * 100)}% de las cuotas sindicales del mes. Y si la
+          conducta se repite, la Justicia del Trabajo puede{" "}
           <strong>revocar la personería gremial</strong>.
         </p>
       </RespuestaPrimero>
@@ -164,12 +163,12 @@ export default function PracticasDeslealesPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">La multa, en pesos</h2>
         <p className="text-sm text-zinc-600">
-          El importe se deriva del SMVM vigente «al momento de la constatación de la infracción»,
-          que es el mismo dato que usa{" "}
+          El monto sale del salario mínimo vigente «al momento de la constatación de la
+          infracción», el mismo dato que usa{" "}
           <Link href="/desempleo" className="font-medium text-emerald-700 hover:underline">
             la calculadora de prestación por desempleo
           </Link>
-          . No hay dos SMVM en calcular.ar.
+          . En calcular.ar hay un solo salario mínimo para todas las cuentas.
         </p>
         <CalculadoraPracticasDesleales />
       </section>
@@ -179,8 +178,8 @@ export default function PracticasDeslealesPage() {
           Las ocho conductas del art. 53 bis
         </h2>
         <p className="text-sm text-zinc-600">
-          El artículo entero es nuevo: lo incorporó el art. 145 de la Ley 27.802. Sólo el inciso a)
-          trae escalón puesto por la ley — porque reenvía al art. 20 ter, que califica sus conductas
+          El artículo entero es nuevo: lo sumó el art. 145 de la Ley 27.802. Solo el inciso a) trae
+          el escalón puesto por la ley, porque remite al art. 20 ter, que califica esas conductas
           como muy graves. Los otros siete los califica el juez.
         </p>
         <div className="space-y-2">
@@ -217,8 +216,8 @@ export default function PracticasDeslealesPage() {
           Lo que la ley llama «muy grave», textual
         </h2>
         <p className="text-sm text-zinc-600">
-          Son las tres conductas del art. 20 ter. Importan porque son el único caso en el que el
-          escalón —y con él, el tramo de la multa— no depende de la calificación judicial.
+          Son las tres conductas del art. 20 ter. Importan porque es el único caso en que el
+          escalón (y con él, el tramo de la multa) no depende de lo que decida el juez.
         </p>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[32rem] text-sm">
@@ -261,29 +260,29 @@ export default function PracticasDeslealesPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-bold text-zinc-900">Qué dice exactamente la norma</h2>
+        <h2 className="text-xl font-bold text-zinc-900">Qué dice exactamente la ley</h2>
         <div className="space-y-3">
           <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Ley 23.551, art. 53 bis — incorporado por el art. 145 de la Ley 27.802
+              Ley 23.551, art. 53 bis (lo sumó el art. 145 de la Ley 27.802)
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art53bis}»</p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-rose-400 bg-rose-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Ley 23.551, art. 20 ter — las infracciones muy graves
+              Ley 23.551, art. 20 ter: las infracciones muy graves
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art20ter}»</p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-amber-400 bg-amber-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Ley 23.551, art. 55 — la multa, el tope y la revocación de la personería
+              Ley 23.551, art. 55: la multa, el tope y la revocación de la personería
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art55Nuevo}»</p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-zinc-300 bg-zinc-50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Ley 25.212, Anexo II, art. 5º — la escala con la que se calcula
+              Ley 25.212, Anexo II, art. 5º: la escala con la que se calcula
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art5Anexo2}»</p>
             <p className="mt-2 text-xs text-zinc-500">
@@ -293,13 +292,13 @@ export default function PracticasDeslealesPage() {
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-zinc-300 bg-zinc-50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Ley 23.551, art. 20 bis — las asambleas y el salario
+              Ley 23.551, art. 20 bis: las asambleas y el sueldo
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art20bis}»</p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-zinc-300 bg-zinc-50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Ley 23.551, art. 54 — quién puede querellar
+              Ley 23.551, art. 54: quién puede querellar
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art54Nuevo}»</p>
             <p className="mt-2 text-xs text-zinc-500">
@@ -332,7 +331,21 @@ export default function PracticasDeslealesPage() {
             href="/actualizacion-creditos-laborales"
             className="font-medium text-emerald-700 hover:underline"
           >
-            cómo se actualizan los importes hasta el efectivo pago
+            cómo se actualizan los montos hasta que se pagan
+          </Link>
+          . Negarse a negociar es una de las ocho conductas: qué exige hoy{" "}
+          <Link
+            href="/negociacion-de-buena-fe"
+            className="font-medium text-emerald-700 hover:underline"
+          >
+            la negociación de buena fe
+          </Link>
+          . Y para las medidas de fuerza,{" "}
+          <Link
+            href="/servicios-esenciales-huelga"
+            className="font-medium text-emerald-700 hover:underline"
+          >
+            las guardias mínimas en servicios esenciales
           </Link>
           .
         </p>
@@ -350,15 +363,15 @@ export default function PracticasDeslealesPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
           Los textos citados salen del <strong>texto actualizado</strong> de InfoLEG. Esta página es
-          informativa y orientativa: la multa la fija un juez dentro de la escala legal y no
-          reemplaza el asesoramiento profesional. Consultada el {PD_FUENTES.consultadoEl}.
+          una guía informativa: la multa la fija un juez dentro de la escala legal, y no reemplaza
+          el consejo de un profesional. Consultada el {PD_FUENTES.consultadoEl}.
         </p>
       </section>
     </article>

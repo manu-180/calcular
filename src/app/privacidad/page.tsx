@@ -31,8 +31,8 @@ export default function PrivacidadPage() {
         <h1 className="text-titular font-bold text-zinc-900">Política de privacidad</h1>
         <p className="text-xs text-zinc-500">Última actualización: 6 de octubre de 2026</p>
         <p className="text-[15px] leading-relaxed text-pretty text-zinc-600">
-          Podés usar todas las calculadoras sin registrarte y sin darnos ningún dato. Acá te contamos qué
-          se guarda cuando usás el sitio, para qué, y cómo pedir que lo borremos.
+          Podés usar todas las calculadoras sin registrarte y sin darnos ningún dato. Acá está qué se
+          guarda cuando usás el sitio, para qué, y cómo pedir que lo borremos.
         </p>
       </header>
 
@@ -70,12 +70,12 @@ export default function PrivacidadPage() {
         <p>Hay dos casos en que los valores sí salen de tu navegador, y los dos los decidís vos:</p>
         <ul className="list-disc space-y-1.5 pl-5">
           <li>
-            si tenés cuenta y tocás «Guardar», guardamos ese cálculo —la página, los valores que cargaste y
-            un resumen del resultado— para que lo encuentres después. Podés borrarlo cuando quieras desde
+            si tenés cuenta y tocás «Guardar», guardamos ese cálculo (la página, los valores que cargaste y
+            un resumen del resultado) para que lo encuentres después. Podés borrarlo cuando quieras desde
             tu cuenta;
           </li>
           <li>
-            si comprás, te contamos en la sección de compras qué viaja con el pago. Lo podés evitar
+            si comprás, en la sección de compras está qué viaja con el pago. Lo podés evitar
             destildando «Usar los datos que cargué en la calculadora» antes de pagar.
           </li>
         </ul>
@@ -96,7 +96,7 @@ export default function PrivacidadPage() {
         </p>
         <p>
           Si usás el buscador, guardamos lo que buscaste para mejorar los resultados. Si la búsqueda
-          parece un dato personal —un número largo como un DNI o un CUIT, o un mail— no se guarda.
+          parece un dato personal (un número largo como un DNI o un CUIT, o un mail), no se guarda.
         </p>
         <p>
           Las visitas no se asocian a tu cuenta. Algunas acciones sí quedan registradas con ella cuando
