@@ -1,0 +1,1265 @@
+{
+  "mercado": "mx",
+  "datos": [
+    {
+      "id": "mx.salario-minimo",
+      "nombre": "Salario mínimo general diario",
+      "tipo": "numero",
+      "unidad": "MXN",
+      "regiones": [
+        "general",
+        "frontera-norte"
+      ],
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "general",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 315.04,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Resolución de la CONASAMI que fija los salarios mínimos desde el 1 de enero de 2026",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5775534&fecha=09/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "frontera-norte",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 440.87,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Resolución de la CONASAMI que fija los salarios mínimos desde el 1 de enero de 2026",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5775534&fecha=09/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.uma-diaria",
+      "nombre": "UMA diaria",
+      "tipo": "numero",
+      "unidad": "MXN",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-01",
+          "hasta": "2026-01-31",
+          "valor": 113.14,
+          "fuente": {
+            "organismo": "INEGI en el DOF",
+            "titulo": "Unidad de Medida y Actualización 2025",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5746930&fecha=10/01/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "hasta": "2027-01-31",
+          "valor": 117.31,
+          "fuente": {
+            "organismo": "INEGI en el DOF",
+            "titulo": "Unidad de Medida y Actualización 2026",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5778072&fecha=09/01/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.uma-mensual",
+      "nombre": "UMA mensual",
+      "tipo": "numero",
+      "unidad": "MXN",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-01",
+          "hasta": "2026-01-31",
+          "valor": 3439.46,
+          "fuente": {
+            "organismo": "INEGI en el DOF",
+            "titulo": "Unidad de Medida y Actualización 2025",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5746930&fecha=10/01/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "hasta": "2027-01-31",
+          "valor": 3566.22,
+          "fuente": {
+            "organismo": "INEGI en el DOF",
+            "titulo": "Unidad de Medida y Actualización 2026",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5778072&fecha=09/01/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.subsidio-empleo",
+      "nombre": "Subsidio para el empleo (porcentaje de la UMA mensual)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "En enero de 2026 se aplica 15.59 % sobre la UMA mensual de 2025 (transitorio segundo).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-01-31",
+          "valor": 15.59,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto que modifica el diverso que otorga el subsidio para el empleo",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777649&fecha=31/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "hasta": "2026-12-31",
+          "valor": 15.02,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto que modifica el diverso que otorga el subsidio para el empleo",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777649&fecha=31/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.subsidio-empleo-limite",
+      "nombre": "Ingreso mensual máximo para recibir el subsidio para el empleo",
+      "tipo": "numero",
+      "unidad": "MXN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 11492.66,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto que modifica el diverso que otorga el subsidio para el empleo",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777649&fecha=31/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tarifa-isr-semanal",
+      "nombre": "Tarifa de retención del ISR para pagos de 7 días",
+      "tipo": "escala",
+      "unidad": "MXN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 194.46,
+              "tasa": 1.92,
+              "cuotaFija": 0.0
+            },
+            {
+              "desde": 194.47,
+              "hasta": 1650.67,
+              "tasa": 6.4,
+              "cuotaFija": 3.71
+            },
+            {
+              "desde": 1650.68,
+              "hasta": 2900.87,
+              "tasa": 10.88,
+              "cuotaFija": 96.95
+            },
+            {
+              "desde": 2900.88,
+              "hasta": 3372.11,
+              "tasa": 16.0,
+              "cuotaFija": 232.96
+            },
+            {
+              "desde": 3372.12,
+              "hasta": 4037.32,
+              "tasa": 17.92,
+              "cuotaFija": 308.35
+            },
+            {
+              "desde": 4037.33,
+              "hasta": 8142.75,
+              "tasa": 21.36,
+              "cuotaFija": 427.56
+            },
+            {
+              "desde": 8142.76,
+              "hasta": 12834.08,
+              "tasa": 23.52,
+              "cuotaFija": 1304.45
+            },
+            {
+              "desde": 12834.09,
+              "hasta": 24502.45,
+              "tasa": 30.0,
+              "cuotaFija": 2407.86
+            },
+            {
+              "desde": 24502.46,
+              "hasta": 32669.91,
+              "tasa": 32.0,
+              "cuotaFija": 5908.35
+            },
+            {
+              "desde": 32669.92,
+              "hasta": 98009.66,
+              "tasa": 34.0,
+              "cuotaFija": 8521.94
+            },
+            {
+              "desde": 98009.67,
+              "hasta": null,
+              "tasa": 35.0,
+              "cuotaFija": 30737.49
+            }
+          ],
+          "fuente": {
+            "organismo": "SAT en el DOF",
+            "titulo": "Anexo 8 de la RMF 2026, apartado B, tarifa II (pagos de 7 días)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777219&fecha=28/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tarifa-isr-decenal",
+      "nombre": "Tarifa de retención del ISR para pagos de 10 días",
+      "tipo": "escala",
+      "unidad": "MXN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 277.8,
+              "tasa": 1.92,
+              "cuotaFija": 0.0
+            },
+            {
+              "desde": 277.81,
+              "hasta": 2358.1,
+              "tasa": 6.4,
+              "cuotaFija": 5.3
+            },
+            {
+              "desde": 2358.11,
+              "hasta": 4144.1,
+              "tasa": 10.88,
+              "cuotaFija": 138.5
+            },
+            {
+              "desde": 4144.11,
+              "hasta": 4817.3,
+              "tasa": 16.0,
+              "cuotaFija": 332.8
+            },
+            {
+              "desde": 4817.31,
+              "hasta": 5767.6,
+              "tasa": 17.92,
+              "cuotaFija": 440.5
+            },
+            {
+              "desde": 5767.61,
+              "hasta": 11632.5,
+              "tasa": 21.36,
+              "cuotaFija": 610.8
+            },
+            {
+              "desde": 11632.51,
+              "hasta": 18334.4,
+              "tasa": 23.52,
+              "cuotaFija": 1863.5
+            },
+            {
+              "desde": 18334.41,
+              "hasta": 35003.5,
+              "tasa": 30.0,
+              "cuotaFija": 3439.8
+            },
+            {
+              "desde": 35003.51,
+              "hasta": 46671.3,
+              "tasa": 32.0,
+              "cuotaFija": 8440.5
+            },
+            {
+              "desde": 46671.31,
+              "hasta": 140013.8,
+              "tasa": 34.0,
+              "cuotaFija": 12174.2
+            },
+            {
+              "desde": 140013.81,
+              "hasta": null,
+              "tasa": 35.0,
+              "cuotaFija": 43910.7
+            }
+          ],
+          "fuente": {
+            "organismo": "SAT en el DOF",
+            "titulo": "Anexo 8 de la RMF 2026, apartado B, tarifa III (pagos de 10 días)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777219&fecha=28/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tarifa-isr-quincenal",
+      "nombre": "Tarifa de retención del ISR para pagos de 15 días",
+      "tipo": "escala",
+      "unidad": "MXN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 416.7,
+              "tasa": 1.92,
+              "cuotaFija": 0.0
+            },
+            {
+              "desde": 416.71,
+              "hasta": 3537.15,
+              "tasa": 6.4,
+              "cuotaFija": 7.95
+            },
+            {
+              "desde": 3537.16,
+              "hasta": 6216.15,
+              "tasa": 10.88,
+              "cuotaFija": 207.75
+            },
+            {
+              "desde": 6216.16,
+              "hasta": 7225.95,
+              "tasa": 16.0,
+              "cuotaFija": 499.2
+            },
+            {
+              "desde": 7225.96,
+              "hasta": 8651.4,
+              "tasa": 17.92,
+              "cuotaFija": 660.75
+            },
+            {
+              "desde": 8651.41,
+              "hasta": 17448.75,
+              "tasa": 21.36,
+              "cuotaFija": 916.2
+            },
+            {
+              "desde": 17448.76,
+              "hasta": 27501.6,
+              "tasa": 23.52,
+              "cuotaFija": 2795.25
+            },
+            {
+              "desde": 27501.61,
+              "hasta": 52505.25,
+              "tasa": 30.0,
+              "cuotaFija": 5159.7
+            },
+            {
+              "desde": 52505.26,
+              "hasta": 70006.95,
+              "tasa": 32.0,
+              "cuotaFija": 12660.75
+            },
+            {
+              "desde": 70006.96,
+              "hasta": 210020.7,
+              "tasa": 34.0,
+              "cuotaFija": 18261.3
+            },
+            {
+              "desde": 210020.71,
+              "hasta": null,
+              "tasa": 35.0,
+              "cuotaFija": 65866.05
+            }
+          ],
+          "fuente": {
+            "organismo": "SAT en el DOF",
+            "titulo": "Anexo 8 de la RMF 2026, apartado B, tarifa IV (pagos de 15 días)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777219&fecha=28/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tarifa-isr-mensual",
+      "nombre": "Tarifa de retención del ISR para pagos mensuales",
+      "tipo": "escala",
+      "unidad": "MXN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 844.59,
+              "tasa": 1.92,
+              "cuotaFija": 0.0
+            },
+            {
+              "desde": 844.6,
+              "hasta": 7168.51,
+              "tasa": 6.4,
+              "cuotaFija": 16.22
+            },
+            {
+              "desde": 7168.52,
+              "hasta": 12598.02,
+              "tasa": 10.88,
+              "cuotaFija": 420.95
+            },
+            {
+              "desde": 12598.03,
+              "hasta": 14644.64,
+              "tasa": 16.0,
+              "cuotaFija": 1011.68
+            },
+            {
+              "desde": 14644.65,
+              "hasta": 17533.64,
+              "tasa": 17.92,
+              "cuotaFija": 1339.14
+            },
+            {
+              "desde": 17533.65,
+              "hasta": 35362.83,
+              "tasa": 21.36,
+              "cuotaFija": 1856.84
+            },
+            {
+              "desde": 35362.84,
+              "hasta": 55736.68,
+              "tasa": 23.52,
+              "cuotaFija": 5665.16
+            },
+            {
+              "desde": 55736.69,
+              "hasta": 106410.5,
+              "tasa": 30.0,
+              "cuotaFija": 10457.09
+            },
+            {
+              "desde": 106410.51,
+              "hasta": 141880.66,
+              "tasa": 32.0,
+              "cuotaFija": 25659.23
+            },
+            {
+              "desde": 141880.67,
+              "hasta": 425641.99,
+              "tasa": 34.0,
+              "cuotaFija": 37009.69
+            },
+            {
+              "desde": 425642.0,
+              "hasta": null,
+              "tasa": 35.0,
+              "cuotaFija": 133488.54
+            }
+          ],
+          "fuente": {
+            "organismo": "SAT en el DOF",
+            "titulo": "Anexo 8 de la RMF 2026, apartado B, tarifa V (pagos mensuales)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777219&fecha=28/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.dias-aguinaldo",
+      "nombre": "Días mínimos de aguinaldo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1970-05-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 87",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.prima-vacacional",
+      "nombre": "Prima vacacional mínima",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1970-05-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 80",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.vacaciones-primer-anio",
+      "nombre": "Días de vacaciones al cumplir el primer año",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 76",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo. El artículo 76 vigente es el de la reforma del DOF 27/12/2022."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.dias-prima-antiguedad",
+      "nombre": "Días de salario por año de prima de antigüedad",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1970-05-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 162, fracción I",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.anios-prima-antiguedad-renuncia",
+      "nombre": "Años de servicio para cobrar la prima de antigüedad al renunciar",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1970-05-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 162, fracción III",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tope-prima-antiguedad",
+      "nombre": "Tope del salario para la prima de antigüedad (veces el salario mínimo)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1988-01-22",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículos 162, fracción II, y 486",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.meses-indemnizacion",
+      "nombre": "Indemnización constitucional por despido injustificado",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-12-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículos 48 y 50, fracción III",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.dias-indemnizacion-anio",
+      "nombre": "Días de salario por año de servicio (artículo 50, fracción II)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-12-25",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 50, fracción II",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tope-ptu-meses",
+      "nombre": "Tope de la PTU individual en meses de salario",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-04-24",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 127, fracción VIII",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.dias-minimos-ptu-eventual",
+      "nombre": "Días trabajados en el año para que una persona eventual reciba PTU",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1970-05-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 127, fracción VII",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.exencion-aguinaldo",
+      "nombre": "Aguinaldo exento de ISR",
+      "tipo": "numero",
+      "unidad": "UMA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 93, fracción XIV",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LISR compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma del 1/04/2024. Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.exencion-prima-vacacional",
+      "nombre": "Prima vacacional exenta de ISR",
+      "tipo": "numero",
+      "unidad": "UMA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 93, fracción XIV",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LISR compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma del 1/04/2024. Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.exencion-ptu",
+      "nombre": "PTU exenta de ISR",
+      "tipo": "numero",
+      "unidad": "UMA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 93, fracción XIV",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LISR compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma del 1/04/2024. Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.exencion-indemnizacion",
+      "nombre": "Indemnización exenta de ISR por año de servicio",
+      "tipo": "numero",
+      "unidad": "UMA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 93, fracción XIII",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LISR compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma del 1/04/2024. Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.horas-jornada",
+      "nombre": "Horas de la jornada diaria",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "diurna": "Diurna (8 horas)",
+        "nocturna": "Nocturna (7 horas)",
+        "mixta": "Mixta (7 horas y media)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": {
+            "diurna": 8,
+            "nocturna": 7,
+            "mixta": 7.5
+          },
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Ley Federal del Trabajo, artículo 61 (reforma DOF 1/05/2026)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.jornada-semanal",
+      "nombre": "Jornada máxima semanal",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "hasta": "2026-12-31",
+          "valor": 48,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Reforma de la jornada laboral (DOF 1/05/2026), transitorio segundo",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 46,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Reforma de la jornada laboral (DOF 1/05/2026), transitorio segundo",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "hasta": "2028-12-31",
+          "valor": 44,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Reforma de la jornada laboral (DOF 1/05/2026), transitorio segundo",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "hasta": "2029-12-31",
+          "valor": 42,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Reforma de la jornada laboral (DOF 1/05/2026), transitorio segundo",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2030-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Ley Federal del Trabajo, artículo 59 (reforma DOF 1/05/2026)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.horas-extra-semana",
+      "nombre": "Horas extra por semana que se pagan dobles",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "hasta": "2026-12-31",
+          "valor": 9,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Reforma de la jornada laboral (DOF 1/05/2026), transitorio cuarto",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 9,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Reforma de la jornada laboral (DOF 1/05/2026), transitorio cuarto",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "hasta": "2028-12-31",
+          "valor": 10,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Reforma de la jornada laboral (DOF 1/05/2026), transitorio cuarto",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "hasta": "2029-12-31",
+          "valor": 11,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Reforma de la jornada laboral (DOF 1/05/2026), transitorio cuarto",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2030-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Ley Federal del Trabajo, artículo 66 (reforma DOF 1/05/2026)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.recargo-hora-doble",
+      "nombre": "Recargo de la hora extra dentro del límite",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Ley Federal del Trabajo, artículo 66 (reforma DOF 1/05/2026)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.recargo-hora-triple",
+      "nombre": "Recargo de la hora extra que pasa el límite",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 200,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Ley Federal del Trabajo, artículo 68 (reforma DOF 1/05/2026)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.maximo-horas-dia",
+      "nombre": "Máximo de horas por día sumando jornada y horas extra",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Ley Federal del Trabajo, artículo 68 (reforma DOF 1/05/2026)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.horas-triples-semana",
+      "nombre": "Horas por semana que pueden pasar el límite (se pagan triples)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Ley Federal del Trabajo, artículo 68 (reforma DOF 1/05/2026)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01/05/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.cuotas-imss-obrero",
+      "nombre": "Cuotas obreras del IMSS sobre el salario base de cotización",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "excedente-eym": "Enfermedades y maternidad, excedente de 3 UMA",
+        "prestaciones-dinero": "Enfermedades y maternidad, prestaciones en dinero",
+        "gastos-medicos-pensionados": "Gastos médicos de pensionados",
+        "invalidez-vida": "Invalidez y vida",
+        "cesantia-vejez": "Cesantía en edad avanzada y vejez"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": {
+            "excedente-eym": 0.4,
+            "prestaciones-dinero": 0.25,
+            "gastos-medicos-pensionados": 0.375,
+            "invalidez-vida": 0.625,
+            "cesantia-vejez": 1.125
+          },
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículos 25, 106, 107, 147 y 168",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026). El 0.40 % del excedente sale del 2 % del artículo 106, fracción II, menos 0.16 puntos por año de 1998 a 2007 (transitorio décimo noveno de la ley de 1995). El 0.25 % es el 25 % de la cuota del 1 % del artículo 107."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tope-sbc-imss",
+      "nombre": "Tope del salario base de cotización del IMSS",
+      "tipo": "numero",
+      "unidad": "UMA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 25,
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículo 28",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026). El tope en salarios mínimos se lee en UMA desde la reforma constitucional del DOF 27/01/2016."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.umbral-excedente-imss",
+      "nombre": "Salario a partir del cual se paga la cuota del excedente",
+      "tipo": "numero",
+      "unidad": "UMA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 3,
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículo 106, fracción II",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.iva-general",
+      "nombre": "Tasa general del IVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Cámara de Diputados (texto publicado por la SEP)",
+            "titulo": "Ley del Impuesto al Valor Agregado, artículo 1o",
+            "url": "https://normatecainterna.sep.gob.mx/storage/recursos/2025/07/JvTL2s146m-ley_del_impuesto_al_valor_agregado.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente compilado por la Cámara de Diputados, última reforma DOF 12/11/2021. La tasa del 16 % viene de la reforma del DOF 7/12/2009."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.iva-frontera",
+      "nombre": "Tasa del IVA con el estímulo de la región fronteriza",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 8,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto de estímulos fiscales región fronteriza norte, artículo décimo primero",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5547485&fecha=31/12/2018",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Vigencia extendida hasta el 31/12/2026 por el decreto del DOF 31/12/2025 (https://dof.gob.mx/nota_detalle.php?codigo=5777697&fecha=31/12/2025)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tasas-resico",
+      "nombre": "Tasas mensuales del RESICO de personas físicas",
+      "tipo": "escala",
+      "unidad": "MXN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 25000,
+              "tasa": 1.0
+            },
+            {
+              "desde": 25000.01,
+              "hasta": 50000,
+              "tasa": 1.1
+            },
+            {
+              "desde": 50000.01,
+              "hasta": 83333.33,
+              "tasa": 1.5
+            },
+            {
+              "desde": 83333.34,
+              "hasta": 208333.33,
+              "tasa": 2.0
+            },
+            {
+              "desde": 208333.34,
+              "hasta": 3500000,
+              "tasa": 2.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 113-E",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LISR compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma del 1/04/2024. Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tope-resico",
+      "nombre": "Ingresos anuales máximos para tributar en el RESICO",
+      "tipo": "numero",
+      "unidad": "MXN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 3500000,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 113-E",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto vigente de la LISR compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma del 1/04/2024. Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    }
+  ]
+}

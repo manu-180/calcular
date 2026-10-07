@@ -105,6 +105,11 @@ export function vigentePorRegion<T extends TipoDato>(
   return salida;
 }
 
+export function ultimoPunto(serie: Pick<Serie, "puntos">): PuntoSerie | null {
+  const p = serie.puntos[serie.puntos.length - 1];
+  return p ? { fecha: p[0], valor: p[1] } : null;
+}
+
 export function valorSerie(serie: Serie, fecha: FechaISO): PuntoSerie | null {
   let elegido: PuntoSerie | null = null;
   for (const [f, v] of serie.puntos) {
