@@ -1,0 +1,437 @@
+{
+  "mercado": "cr",
+  "datos": [
+    {
+      "id": "cr.salario-minimo-mes",
+      "nombre": "Salario mínimo mensual por categoría (sector privado)",
+      "tipo": "mapa",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "no-calificado": "Trabajador en ocupación no calificada",
+        "semicalificado": "Trabajador en ocupación semicalificada",
+        "calificado": "Trabajador en ocupación calificada",
+        "especializado": "Trabajador en ocupación especializada",
+        "tecnico-medio": "Técnico medio de educación diversificada",
+        "tecnico-superior": "Técnico de educación superior",
+        "diplomado": "Diplomado de educación superior",
+        "bachiller": "Bachiller universitario",
+        "licenciado": "Licenciado universitario",
+        "trabajo-domestico": "Trabajo doméstico"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "no-calificado": 373092.3,
+            "semicalificado": 405710.7,
+            "calificado": 419755.8,
+            "especializado": 487335,
+            "tecnico-medio": 496838.17,
+            "tecnico-superior": 542096.58,
+            "diplomado": 585484.58,
+            "bachiller": 664078.07,
+            "licenciado": 796921,
+            "trabajo-domestico": 268731.31
+          },
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Trabajo y Seguridad Social",
+            "titulo": "Decreto Ejecutivo 45303-MTSS, artículo 1, incisos b) y c) (La Gaceta 229, Alcance 156, 5/12/2025)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105838&param2=148681&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto completo leído en SINALEVI (SCIJ de la PGR). Rige desde el 1/1/2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.salario-minimo-jornada",
+      "nombre": "Salario mínimo por jornada ordinaria diaria (sector privado)",
+      "tipo": "mapa",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "no-calificado": "Trabajador en ocupación no calificada",
+        "semicalificado": "Trabajador en ocupación semicalificada",
+        "calificado": "Trabajador en ocupación calificada",
+        "especializado": "Trabajador en ocupación especializada",
+        "especializacion-superior": "Trabajador de especialización superior"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "no-calificado": 12436.41,
+            "semicalificado": 13523.69,
+            "calificado": 13991.86,
+            "especializado": 16244.5,
+            "especializacion-superior": 25209.8
+          },
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Trabajo y Seguridad Social",
+            "titulo": "Decreto Ejecutivo 45303-MTSS, artículo 1, incisos a) y c)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105838&param2=148681&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.dias-mes-planilla",
+      "nombre": "Días que paga un salario mensual",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Trabajo y Seguridad Social",
+            "titulo": "Decreto Ejecutivo 45303-MTSS, artículo 7 (pago mensual a razón de 30 días por mes; un día efectivamente laborado son ocho horas)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105838&param2=148681&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.impuesto-salario",
+      "nombre": "Impuesto al salario, tramos mensuales",
+      "tipo": "escala",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 918000, "tasa": 0 },
+            { "desde": 918000, "hasta": 1347000, "tasa": 10 },
+            { "desde": 1347000, "hasta": 2364000, "tasa": 15 },
+            { "desde": 2364000, "hasta": 4727000, "tasa": 20 },
+            { "desde": 4727000, "hasta": null, "tasa": 25 }
+          ],
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo 45333-H, artículo 1 (La Gaceta 229, 5/12/2025), que modifica el artículo 33 de la Ley 7092",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105834&param2=148657&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Escala marginal: cada tramo paga su tasa «sobre el exceso». Se aplica sobre la renta total percibida en el mes (Ley 7092, art. 33), sin restar las cargas sociales."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.credito-hijo",
+      "nombre": "Crédito fiscal mensual por cada hijo",
+      "tipo": "numero",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1710,
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo 45333-H, artículo 2 (Ley 7092, art. 34, inciso i)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105834&param2=148657&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.credito-conyuge",
+      "nombre": "Crédito fiscal mensual por el cónyuge",
+      "tipo": "numero",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2590,
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo 45333-H, artículo 2 (Ley 7092, art. 34, inciso ii)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105834&param2=148657&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.ccss-sem-trabajador",
+      "nombre": "Cuota del trabajador al Seguro de Salud (SEM)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5.5,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de Salud, artículo 62, inciso 1.a)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=43463&param2=146812&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.ccss-ivm-trabajador",
+      "nombre": "Cuota del trabajador al Seguro de Invalidez, Vejez y Muerte (IVM)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2029-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2025-12-31",
+          "valor": 4.17,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de IVM, Transitorio XI (sesión 9038 de Junta Directiva), La Gaceta 161, Alcance 191 del 28/8/2019",
+            "url": "https://www.imprentanacional.go.cr/pub/2019/08/28/ALCA191_28_08_2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La tabla de escalones es una imagen en las páginas 60 y 61 del Alcance. SINALEVI no la transcribe."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2028-12-31",
+          "valor": 4.33,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de IVM, Transitorio XI (sesión 9038 de Junta Directiva), La Gaceta 161, Alcance 191 del 28/8/2019",
+            "url": "https://www.imprentanacional.go.cr/pub/2019/08/28/ALCA191_28_08_2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Escalón del 1/1/2026 al 31/12/2028: patronos 5,58 %, trabajadores 4,33 %, Estado 1,75 % (total 11,66 %)."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "valor": 4.5,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de IVM, artículo 33 y Transitorio XI (La Gaceta 161, Alcance 191 del 28/8/2019)",
+            "url": "https://www.imprentanacional.go.cr/pub/2019/08/28/ALCA191_28_08_2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.banco-popular-trabajador",
+      "nombre": "Aporte del trabajador al Banco Popular",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 4351, Ley Orgánica del Banco Popular y de Desarrollo Comunal, artículo 5, inciso b)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=35582&param2=130484&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.iva",
+      "nombre": "Tarifas del impuesto al valor agregado",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Tarifa general",
+        "reducida-4": "Tarifa reducida del 4 % (pasajes aéreos, salud privada)",
+        "reducida-2": "Tarifa reducida del 2 % (medicamentos, educación privada, seguros personales)",
+        "reducida-1": "Tarifa reducida del 1 % (canasta básica)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "general": 13, "reducida-4": 4, "reducida-2": 2, "reducida-1": 1 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 6826, Ley del Impuesto al Valor Agregado, artículos 10 y 11 (versión 31 del 7/4/2026)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=32526&param2=150649&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.preaviso-dias",
+      "nombre": "Días de preaviso según el tiempo trabajado",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "3-a-6-meses": "De 3 a 6 meses",
+        "6-a-12-meses": "Más de 6 meses y hasta un año",
+        "mas-de-un-anio": "Más de un año"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "3-a-6-meses": 7, "6-a-12-meses": 15, "mas-de-un-anio": 30 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 28",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El artículo dice una semana, quince días y un mes. El mes se toma como 30 días de salario (Decreto 45303-MTSS, art. 7)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.cesantia-dias-menos-de-un-anio",
+      "nombre": "Días de cesantía con menos de un año trabajado",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "3-a-6-meses": 7, "6-a-12-meses": 14 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 29, incisos 1 y 2 (reformado por la Ley 7983)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.cesantia-dias-por-anio",
+      "nombre": "Días de cesantía por año laborado según la antigüedad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "1": 19.5, "2": 20, "3": 20.5, "4": 21, "5": 21.24, "6": 21.5, "7": 22, "8": 22, "9": 22, "10": 21.5, "11": 21, "12": 20.5, "13": 20 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 29, inciso 3 (la fila 13 vale para 13 años y siguientes)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Cada fila cuenta el año laborado o la fracción superior a seis meses."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.cesantia-tope-anios",
+      "nombre": "Años máximos que se indemnizan por cesantía",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 29, inciso 4",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.recargo-horas-extra",
+      "nombre": "Recargo de la jornada extraordinaria",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 139",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.jornada-diaria",
+      "nombre": "Horas de la jornada ordinaria diaria",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": { "diurna": "Diurna", "mixta": "Mixta", "nocturna": "Nocturna" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "diurna": 8, "mixta": 7, "nocturna": 6 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículos 136 y 138",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.vacaciones-dias-por-mes",
+      "nombre": "Días de vacaciones por mes trabajado al terminar antes de 50 semanas",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 153 (mínimo de dos semanas por cada 50 semanas; un día por mes si el contrato termina antes)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    }
+  ]
+}
