@@ -4,23 +4,21 @@ import { CATEGORIAS, VIGENCIA, ventanaRecategorizacion } from "@/data/monotribut
 import { categoriaPorParametros, cuotaMensual } from "@/lib/monotributo";
 import { formatARS } from "@/lib/formato";
 import { PRODUCTOS } from "@/lib/mp";
+import { openGraphDe } from "@/lib/seo";
 
 const PRODUCTO = PRODUCTOS["planilla-monotributo"];
 const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
 
 export const metadata: Metadata = {
-  title: "Planilla de Monotributo 2026 en Excel: facturación y recategorización",
-  description: `Planilla de Excel y Google Sheets para monotributistas: cargás lo que facturaste mes a mes y te dice tu categoría, cuánto margen te queda antes de saltar a la siguiente y la cuota que vas a pagar. Con la tabla oficial de ARCA. $${PRECIO} pago único.`,
+  title: "Planilla de monotributo 2026 en Excel: facturación",
+  description:
+    "Cargá lo que facturás mes a mes y la planilla te dice tu categoría, cuánto margen te queda y la cuota que vas a pagar, con la tabla de ARCA. Pago único.",
   alternates: { canonical: "/planillas/monotributo" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Planilla de Monotributo 2026")}&s=${encodeURIComponent("Categoría, margen y cuota · tabla oficial de ARCA")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/planillas/monotributo",
+    titulo: "Planilla de Monotributo 2026",
+    bajada: "Categoría, margen y cuota · tabla oficial de ARCA",
+  }),
 };
 
 // Caso de la vista previa: servicios, hoy en C, con una facturación que ya la pasó. Es la
@@ -50,7 +48,7 @@ export default function PlanillaMonotributoPage() {
   return (
     <PlanillaLanding
       producto={PRODUCTO}
-      etiquetaConvenio="Monotributo — ARCA"
+      etiquetaConvenio="Monotributo · ARCA"
       h1={
         <>
           Sabé cuánto más podés facturar
@@ -58,16 +56,16 @@ export default function PlanillaMonotributoPage() {
           <span className="text-emerald-600">antes de saltar de categoría</span>
         </>
       }
-      bajada="La planilla de Excel y Google Sheets para monotributistas: cargás lo que facturaste cada mes y te dice qué categoría te corresponde, qué parámetro la define, cuánto margen te queda y cuánto vas a pagar por mes."
+      bajada="La planilla de Excel y Google Sheets para monotributistas. Cargás lo que facturaste cada mes y te dice qué categoría te toca, qué la define, cuánto margen te queda y cuánto vas a pagar por mes."
       respuestaPrimero={
         <p>
           La planilla de monotributo es una hoja de <strong>Excel y Google Sheets</strong> con la{" "}
-          <strong>tabla oficial de ARCA vigente desde el {VIGENCIA.desde}</strong>: cargás tu facturación de los
-          últimos 12 meses y, si tenés local, la superficie, la energía y los alquileres, y te dice la{" "}
-          <strong>categoría que te corresponde por el mayor de los parámetros</strong> (como exige el art. 9 de la Ley
+          <strong>tabla oficial de ARCA vigente desde el {VIGENCIA.desde}</strong>. Cargás lo que facturaste en los
+          últimos 12 meses y, si tenés local, la superficie, la energía y los alquileres. Te dice la{" "}
+          <strong>categoría que te toca según el más alto de esos datos</strong> (como pide el art. 9 de la Ley
           24.977), el <strong>margen que te queda</strong> antes de la categoría siguiente y la cuota mensual, con o
           sin relación de dependencia. Pago único de <strong>${PRECIO}</strong>, con las actualizaciones de febrero y
-          agosto incluidas y devolución dentro de los 7 días si no te sirve.
+          agosto incluidas y 7 días para pedir la devolución si no te sirve.
         </p>
       }
       previewTitulo={`Servicios · hoy en ${ACTUAL.cat} · recategorización de ${VENTANA.textoMes}`}
@@ -96,9 +94,9 @@ export default function PlanillaMonotributoPage() {
             "Cómo usarla en tres minutos, las reglas que más confunden y el link a la tabla de ARCA y al texto de la Ley 24.977, con la fecha en que se verificó.",
         },
       ]}
-      fuente={{ nombre: "ARCA — Categorías del Monotributo", url: VIGENCIA.fuenteUrl, verificadoEl: VIGENCIA.consultadoEl }}
+      fuente={{ nombre: "ARCA: categorías del monotributo", url: VIGENCIA.fuenteUrl, verificadoEl: VIGENCIA.consultadoEl }}
       tituloActualizacion="Qué pasa cuando ARCA actualiza las categorías"
-      actualizacion={`ARCA actualiza los montos dos veces por año por inflación; la próxima actualización es en ${VIGENCIA.proximaActualizacion}. Cuando se publique la tabla nueva la cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
+      actualizacion={`ARCA actualiza los montos dos veces por año según la inflación. La próxima actualización es en ${VIGENCIA.proximaActualizacion}. Cuando sale la tabla nueva la cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
       faqs={[
         {
           q: "¿Cómo la recibo?",
@@ -106,7 +104,7 @@ export default function PlanillaMonotributoPage() {
         },
         {
           q: "¿Por qué me pide superficie, energía y alquileres?",
-          a: "Porque la facturación no es el único parámetro. La Ley 24.977 (art. 9 del Anexo) dice que estás bien categorizado cuando te encuadrás en la categoría que corresponde al MAYOR de tus parámetros. Si trabajás sin local, dejalos en cero y la planilla se guía solo por la facturación.",
+          a: "Porque la facturación no es lo único que cuenta. La Ley 24.977 (art. 9 del Anexo) dice que estás bien categorizado cuando estás en la categoría que te da el MAYOR de tus datos. Si trabajás sin local, dejalos en cero y la planilla se guía solo por la facturación.",
         },
         {
           q: "¿Me sirve para la recategorización de febrero o agosto?",
@@ -122,7 +120,7 @@ export default function PlanillaMonotributoPage() {
         },
         {
           q: "¿Los números son los mismos que los de la calculadora gratis?",
-          a: "Sí. La tabla es la misma que usa la calculadora de calcular.ar/monotributo, y antes de publicar cada versión una verificación automática recalcula el archivo en 1.800 casos —cada categoría, sus topes exactos y un peso más— y lo compara contra la calculadora.",
+          a: "Sí. La tabla es la misma que usa la calculadora de calcular.ar/monotributo. Antes de publicar cada versión, una verificación automática recalcula el archivo en 1.800 casos (cada categoría, sus topes exactos y un peso más) y lo compara con la calculadora.",
         },
         {
           q: "¿Y si la compro y no me sirve?",

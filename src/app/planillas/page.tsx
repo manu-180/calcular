@@ -4,24 +4,21 @@ import { CATEGORIAS_COMERCIO, COMERCIO_FUENTES, MESES_COMERCIO } from "@/data/co
 import { hojaComercio } from "@/components/oferta/hojas";
 import { datosOferta } from "@/lib/oferta";
 import { PRODUCTOS } from "@/lib/mp";
+import { openGraphDe } from "@/lib/seo";
 
 // URL histórica del producto de Comercio. NO se convierte en hub ni se redirige: está en el
 // sitemap, tiene tráfico orgánico y es la landing de la campaña de Google Ads (la conversión
 // de compra apunta a este embudo). La planilla de UOCRA vive en /planillas/uocra.
 export const metadata: Metadata = {
-  title: "Planilla de sueldos de Empleados de Comercio 2026 (Excel)",
+  title: "Planilla de sueldos de Comercio 2026 en Excel",
   description:
-    "Planilla de liquidación de sueldos en Excel y Google Sheets para el CCT 130/75: escala oficial de FAECYS embebida, antigüedad, presentismo y jornada parcial. Da los mismos números que la calculadora gratis. $14.900 pago único, actualizaciones del año incluidas.",
+    "Planilla de Excel y Google Sheets para liquidar el CCT 130/75 con la escala de FAECYS: antigüedad, presentismo y jornada parcial. Pago único.",
   alternates: { canonical: "/planillas" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Planilla de sueldos Comercio 2026")}&s=${encodeURIComponent("CCT 130/75 · los mismos números que la calculadora")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/planillas",
+    titulo: "Planilla de sueldos Comercio 2026",
+    bajada: "CCT 130/75 · los mismos números que la calculadora",
+  }),
 };
 
 // Caso de la vista previa: Vendedor B (la categoría más frecuente), 5 años, jornada completa,
@@ -42,7 +39,7 @@ export default function PlanillasPage() {
   return (
     <PlanillaLanding
       producto={PRODUCTOS["planilla-comercio"]}
-      etiquetaConvenio="CCT 130/75 — Empleados de Comercio"
+      etiquetaConvenio="CCT 130/75 · Empleados de Comercio"
       h1={
         <>
           Liquidá sueldos de Comercio sin volver a buscar la circular
@@ -50,17 +47,17 @@ export default function PlanillasPage() {
           <span className="text-emerald-600">y sin quedarte con la escala vieja</span>
         </>
       }
-      bajada="La planilla de Excel y Google Sheets con la escala oficial de FAECYS ya cargada: elegís categoría, mes, antigüedad y jornada, y te da el bruto desglosado y el neto. Cuando sale una paritaria nueva, la actualizamos y te llega sin costo."
+      bajada="La planilla de Excel y Google Sheets con la escala oficial de FAECYS ya cargada. Elegís categoría, mes, antigüedad y jornada, y te da el bruto desglosado y el neto. Cuando sale una paritaria nueva, la actualizamos y te llega sin costo."
       respuestaPrimero={
         <p>
           La planilla de sueldos de Empleados de Comercio (CCT 130/75) es una hoja de{" "}
-          <strong>Excel y Google Sheets</strong> con la escala oficial de FAECYS embebida: elegís
+          <strong>Excel y Google Sheets</strong> con la escala oficial de FAECYS ya cargada. Elegís
           categoría, mes, antigüedad y jornada, y te da el <strong>bruto desglosado y el neto</strong>.
-          A diferencia de las planillas gratis de internet, refleja la circular oficial vigente
+          A diferencia de las planillas gratis de internet, usa la circular oficial vigente
           (verificada el {COMERCIO_FUENTES.consultadoEl}) y se{" "}
           <strong>actualiza sin costo con cada paritaria</strong>. Pago único de{" "}
-          <strong>$14.900</strong>, con todas las actualizaciones del 2026 incluidas y devolución
-          dentro de los 7 días si no te sirve.
+          <strong>$14.900</strong>, con todas las actualizaciones del 2026 incluidas y 7 días para
+          pedir la devolución si no te sirve.
         </p>
       }
       previewTitulo={`${CATEGORIA.nombre} · ${MES.etiqueta} · 5 años de antigüedad`}
@@ -120,11 +117,11 @@ export default function PlanillasPage() {
         },
         {
           q: "¿Qué pasa si sale una paritaria nueva la semana que viene?",
-          a: "La cargamos y te llega la versión actualizada sin costo, al mismo enlace. Es exactamente el motivo por el que la planilla se paga una vez y no todos los meses: el trabajo de seguir las circulares lo hacemos nosotros.",
+          a: "La cargamos y te llega la versión nueva sin costo, al mismo enlace. Por eso la planilla se paga una vez y no todos los meses: seguir las circulares es trabajo nuestro.",
         },
         {
           q: "¿Los números son los mismos que los de la calculadora gratis del sitio?",
-          a: "Sí, y es a propósito: la planilla se genera desde los mismos datos que alimentan la calculadora de calcular.ar/convenios/comercio, y tenemos una verificación automática que compara las dos en más de mil casos antes de cada publicación. Si alguna vez no coinciden, escribinos: es un error nuestro y lo corregimos.",
+          a: "Sí, y es a propósito. La planilla sale de los mismos datos que usa la calculadora de calcular.ar/convenios/comercio, y antes de cada publicación una verificación automática compara las dos en más de mil casos. Si alguna vez no coinciden, escribinos: es un error nuestro y lo corregimos.",
         },
         {
           q: "¿Y si la compro y no me sirve?",

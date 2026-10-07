@@ -4,6 +4,7 @@ import { CalculadoraLicencias } from "@/components/CalculadoraLicencias";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
+import { openGraphDe } from "@/lib/seo";
 import {
   ANTIGUEDAD_MINIMA_MESES,
   ESTABILIDAD,
@@ -20,59 +21,55 @@ const MES = A.vigencia;
 
 export const metadata: Metadata = {
   title: "Licencia por maternidad: fechas exactas y cuánto cobrás",
-  description: `Poné la fecha probable de parto y mirá el día exacto en que empieza y termina tu licencia. Son ${MATERNIDAD.diasTotal} días y podés bajar a ${MATERNIDAD.diasAntesMinimo} días antes del parto —no 15, como se publica—, acumulando el resto después. Durante la licencia cobrás el BRUTO, y lo paga ANSES. Con los artículos 177, 178, 182 y 183 de la LCT.`,
+  description: `Poné la fecha probable de parto y mirá cuándo empieza y termina tu licencia de ${MATERNIDAD.diasTotal} días, cuánto cobrás y quién paga (arts. 177 a 183 LCT).`,
   alternates: { canonical: "/licencia-por-maternidad" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Licencia por maternidad")}&s=${encodeURIComponent("Las fechas exactas, y por qué cobrás el bruto")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/licencia-por-maternidad",
+    titulo: "Licencia por maternidad",
+    bajada: "Las fechas exactas, y por qué cobrás el bruto",
+  }),
 };
 
 const faqs = [
   {
     q: "¿Cuántos días de licencia por maternidad me corresponden?",
-    a: `${MATERNIDAD.diasTotal} días en total: ${MATERNIDAD.diasAntes} anteriores al parto y ${MATERNIDAD.diasDespues} posteriores (art. 177 de la Ley de Contrato de Trabajo). Pero el reparto no es fijo: podés pedir que se te reduzca la licencia anterior al parto, que en ese caso no puede ser inferior a ${MATERNIDAD.diasAntesMinimo} días, y el resto se acumula al descanso posterior. O sea que el reparto extremo es ${MATERNIDAD.diasAntesMinimo} días antes y ${MATERNIDAD.diasTotal - MATERNIDAD.diasAntesMinimo} después.`,
+    a: `${MATERNIDAD.diasTotal} días en total: ${MATERNIDAD.diasAntes} antes del parto y ${MATERNIDAD.diasDespues} después (art. 177 de la Ley de Contrato de Trabajo). El reparto no es fijo. Podés pedir que se achique la parte de antes del parto, hasta un mínimo de ${MATERNIDAD.diasAntesMinimo} días, y lo que no uses se suma a la de después. Llevado al extremo: ${MATERNIDAD.diasAntesMinimo} días antes y ${MATERNIDAD.diasTotal - MATERNIDAD.diasAntesMinimo} después.`,
   },
   {
     q: `¿El mínimo antes del parto es de 15 días o de ${MATERNIDAD.diasAntesMinimo}?`,
-    a: `De ${MATERNIDAD.diasAntesMinimo}. Es uno de los errores más repetidos. El artículo 177 dice textualmente que la persona interesada podrá optar por que se le reduzca la licencia anterior al parto, «que en tal caso no podrá ser inferior a diez (10) días». Los 15 días eran el piso del texto anterior a la reforma de la Ley 24.716 y quedaron circulando en notas y modelos de nota que nadie actualizó.`,
+    a: `De ${MATERNIDAD.diasAntesMinimo}. Es uno de los errores más repetidos. El artículo 177 dice que podés pedir que se reduzca la licencia anterior al parto, «que en tal caso no podrá ser inferior a diez (10) días». Los 15 días eran el piso de antes de la reforma de la Ley 24.716. Quedaron dando vueltas en notas y modelos que nadie actualizó.`,
   },
   {
     q: "Durante la licencia, ¿cobro el sueldo o menos?",
-    a: `Cobrás el equivalente a tu remuneración BRUTA, y no te lo paga el empleador: es la asignación por maternidad, que paga ANSES. El artículo 177 de la LCT dice que se garantiza «la percepción de una suma igual a la retribución que corresponda al período de licencia legal», y el artículo 11 de la Ley 24.714 lo repite: una suma igual a la remuneración que hubieras debido percibir. Como es una asignación familiar y no una remuneración, no sufre aportes ni contribuciones. Por eso durante la licencia se cobra más que el neto de un mes normal.`,
+    a: `Cobrás lo mismo que tu sueldo BRUTO, y no te lo paga el empleador: es la asignación por maternidad, que paga ANSES. El artículo 177 de la LCT garantiza «la percepción de una suma igual a la retribución que corresponda al período de licencia legal», y el artículo 11 de la Ley 24.714 dice lo mismo. Como es una asignación familiar y no un sueldo, no tiene descuentos de aportes ni contribuciones. Por eso en la licencia cobrás más que el neto de un mes normal.`,
   },
   {
     q: "¿Qué antigüedad hace falta para cobrarla?",
-    a: `${ANTIGUEDAD_MINIMA_MESES} meses continuados en el empleo, y es un requisito de ANSES, no del empleador (art. 11 de la Ley 24.714). Es importante separar las dos cosas: la licencia y la conservación del empleo te corresponden desde el primer día por la LCT; lo que puede faltar con menos de ${ANTIGUEDAD_MINIMA_MESES} meses es el pago de la asignación.`,
+    a: `${ANTIGUEDAD_MINIMA_MESES} meses seguidos en el trabajo. Es un requisito de ANSES, no del empleador (art. 11 de la Ley 24.714). Conviene separar las dos cosas. La licencia y el puesto te corresponden desde el primer día por la LCT. Lo que puede faltar con menos de ${ANTIGUEDAD_MINIMA_MESES} meses es el pago de la asignación.`,
   },
   {
     q: "¿Qué pasa si el bebé nace antes de la fecha prevista?",
-    a: `No perdés días. El artículo 177 prevé el caso: «en caso de nacimiento pretérmino se acumulará al descanso posterior todo el lapso de licencia que no se hubiere gozado antes del parto, de modo de completar los noventa (90) días». Los ${MATERNIDAD.diasTotal} días están garantizados aunque el parto se adelante.`,
+    a: `No perdés días. El artículo 177 lo prevé: «en caso de nacimiento pretérmino se acumulará al descanso posterior todo el lapso de licencia que no se hubiere gozado antes del parto, de modo de completar los noventa (90) días». Los ${MATERNIDAD.diasTotal} días están garantizados aunque el parto se adelante.`,
   },
   {
     q: "¿Cuántos días de licencia tiene el padre o la otra persona progenitora?",
-    a: `${PATERNIDAD.dias} días corridos por nacimiento de hijo (art. 158 inc. a de la LCT). Hay un detalle que casi no se menciona: el artículo 160 obliga a computar necesariamente un día hábil cuando la licencia coincida con domingo, feriado o día no laborable. O sea que si el nacimiento cae un sábado, los dos días no pueden ser sábado y domingo. Muchos convenios colectivos mejoran ese piso: siempre conviene mirar el convenio antes que la ley.`,
+    a: `${PATERNIDAD.dias} días corridos por nacimiento (art. 158 inc. a de la LCT). Hay un detalle que casi nadie menciona. El artículo 160 obliga a contar sí o sí un día hábil cuando la licencia cae en domingo, feriado o día no laborable. Si el bebé nace un sábado, los dos días no pueden ser sábado y domingo. Muchos convenios mejoran ese piso, así que mirá primero tu convenio.`,
   },
   {
     q: "¿Me pueden despedir estando embarazada o recién vuelta de la licencia?",
-    a: `Despedirte no es imposible, pero sale muy caro y la ley presume la causa. El artículo 178 de la LCT presume —salvo prueba en contrario— que el despido obedece a razones de maternidad o embarazo cuando se dispone dentro de los ${ESTABILIDAD.mesesPresuncion} meses anteriores o posteriores al parto, siempre que hayas notificado y acreditado el embarazo o el nacimiento. En ese caso corresponde la indemnización especial del artículo 182: un año de remuneraciones, que se acumula a la indemnización común del artículo 245.`,
+    a: `Poder pueden, pero sale muy caro y la ley supone el motivo. Según el artículo 178 de la LCT, si te despiden dentro de los ${ESTABILIDAD.mesesPresuncion} meses anteriores o posteriores al parto, se presume que fue por el embarazo o la maternidad (salvo que el empleador pruebe lo contrario). Para eso tenés que haber avisado y acreditado el embarazo o el nacimiento. En ese caso te corresponde la indemnización especial del artículo 182: un año de sueldos, que se suma a la indemnización común del artículo 245.`,
   },
   {
     q: "¿Qué es el estado de excedencia y cuánto dura?",
-    a: `Es la opción de extender el alejamiento sin cobrar sueldo, conservando el derecho a reintegrarse a las tareas que hacías antes. Dura entre ${EXCEDENCIA.mesesMinimo} y ${EXCEDENCIA.mesesMaximo} meses (art. 183 inc. c de la LCT) y se toma al terminar la licencia. Es un período no pago: no hay asignación de ANSES ni sueldo del empleador. El artículo 183 también permite rescindir el contrato cobrando una compensación del 25% del promedio del artículo 245 por año de servicio, con tope de un salario mínimo por año.`,
+    a: `Es la opción de quedarte más tiempo en casa sin cobrar sueldo, con derecho a volver a tu puesto de antes. Dura entre ${EXCEDENCIA.mesesMinimo} y ${EXCEDENCIA.mesesMaximo} meses (art. 183 inc. c de la LCT) y empieza cuando termina la licencia. No se cobra nada: ni asignación de ANSES ni sueldo. El mismo artículo 183 también te deja terminar el contrato y cobrar una compensación del 25% del promedio del artículo 245 por cada año trabajado, con un tope de un salario mínimo por año.`,
   },
   {
     q: "Al volver a trabajar, ¿tengo derecho a pausas para amamantar?",
-    a: `Sí: ${LACTANCIA.descansosPorDia} descansos de ${LACTANCIA.minutosCadaUno} minutos por día dentro de la jornada, durante el año posterior al nacimiento, y por más tiempo si hay indicación médica (art. 179 de la LCT). El mismo artículo obliga a habilitar salas maternales y guarderías en los establecimientos que superen el número mínimo de trabajadoras que fije la reglamentación.`,
+    a: `Sí: ${LACTANCIA.descansosPorDia} descansos de ${LACTANCIA.minutosCadaUno} minutos por día dentro de la jornada, durante el año siguiente al nacimiento. Puede ser más tiempo si lo indica un médico (art. 179 de la LCT). El mismo artículo obliga a tener salas maternales y guarderías en los lugares de trabajo que pasen el mínimo de trabajadoras que fija la reglamentación.`,
   },
   {
     q: "¿Además de la licencia cobro algún pago extra por el nacimiento?",
-    a: `Sí, la asignación por nacimiento: un pago único de ${formatARS(A.nacimiento, 0)} en ${MES}, que se cobra acreditando el hecho ante ANSES (art. 12 de la Ley 24.714). Por adopción el pago único es de ${formatARS(A.adopcion, 0)}. Durante el embarazo también corresponde la asignación prenatal, que se cobra por mes y usa la misma tabla de tramos por ingreso que la asignación por hijo.`,
+    a: `Sí, la asignación por nacimiento: un pago único de ${formatARS(A.nacimiento, 0)} en ${MES}. Se cobra presentando la partida ante ANSES (art. 12 de la Ley 24.714). Por adopción, el pago único es de ${formatARS(A.adopcion, 0)}. Durante el embarazo también corresponde la asignación prenatal, que se cobra todos los meses y usa la misma tabla por ingresos que la asignación por hijo.`,
   },
 ];
 
@@ -94,7 +91,7 @@ export default function LicenciaMaternidadPage() {
       articleSchema({
         titulo: "Licencia por maternidad: fechas exactas y cuánto cobrás",
         descripcion:
-          "Cálculo de las fechas de la licencia por maternidad con el art. 177 de la LCT, la opción de reducir el tramo anterior al parto hasta 10 días, y la regla de pago de la asignación por maternidad de ANSES.",
+          "Cálculo de las fechas de la licencia por maternidad con el art. 177 de la LCT, la opción de achicar la parte anterior al parto hasta 10 días y cómo paga ANSES la asignación por maternidad.",
         url: "/licencia-por-maternidad",
         modificado: LICENCIAS_FUENTES.consultadoEl,
       }),
@@ -119,23 +116,23 @@ export default function LicenciaMaternidadPage() {
         </h1>
         <p className="text-zinc-600">
           Poné la fecha probable de parto y mirá qué día empezás, qué día terminás y qué día volvés.
-          Y dos cosas que se publican mal en casi todos lados: el mínimo antes del parto es de{" "}
-          {MATERNIDAD.diasAntesMinimo} días —no 15— y durante la licencia cobrás el{" "}
+          Hay dos cosas que casi todos publican mal. El mínimo antes del parto es de{" "}
+          {MATERNIDAD.diasAntesMinimo} días (no 15). Y durante la licencia cobrás el{" "}
           <strong>bruto</strong>, porque no es sueldo: es una asignación de ANSES.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={LICENCIAS_FUENTES.consultadoEl}>
         <p>
-          La licencia por maternidad son <strong>{MATERNIDAD.diasTotal} días</strong>:{" "}
+          La licencia por maternidad es de <strong>{MATERNIDAD.diasTotal} días</strong>:{" "}
           {MATERNIDAD.diasAntes} antes del parto y {MATERNIDAD.diasDespues} después (art. 177 de la
-          LCT). Podés pedir que el tramo anterior se reduzca hasta un mínimo de{" "}
-          <strong>{MATERNIDAD.diasAntesMinimo} días</strong>, y lo que no tomás antes se acumula
-          después. Durante todo ese período no cobrás sueldo del empleador: cobrás la{" "}
-          <strong>asignación por maternidad de ANSES</strong>, que es una suma igual a la
-          remuneración que hubieras debido percibir —el bruto, sin aportes— y exige{" "}
-          {ANTIGUEDAD_MINIMA_MESES} meses de antigüedad. Si el bebé nace antes de tiempo, los días
-          no gozados se acumulan al descanso posterior hasta completar los {MATERNIDAD.diasTotal}.
+          LCT). Podés pedir que la parte de antes baje hasta{" "}
+          <strong>{MATERNIDAD.diasAntesMinimo} días</strong>, y lo que no uses se suma después. En
+          esos días no te paga el empleador: cobrás la{" "}
+          <strong>asignación por maternidad de ANSES</strong>, que es igual a tu sueldo bruto (sin
+          descuentos). Para cobrarla necesitás {ANTIGUEDAD_MINIMA_MESES} meses de antigüedad. Si el
+          bebé nace antes de tiempo, los días que no usaste se pasan a después del parto hasta
+          completar los {MATERNIDAD.diasTotal}.
         </p>
       </RespuestaPrimero>
 
@@ -146,13 +143,13 @@ export default function LicenciaMaternidadPage() {
           Por qué durante la licencia cobrás más que un mes normal
         </h2>
         <p className="text-zinc-600">
-          Es la simetría exacta de la{" "}
+          Pasa lo contrario que con la{" "}
           <Link href="/desempleo" className="font-medium text-emerald-700 hover:underline">
             prestación por desempleo
           </Link>
-          , que se calcula sobre el neto. Acá es al revés, y por una razón concreta: la asignación
-          por maternidad no es una remuneración, así que no está sujeta a aportes ni a
-          contribuciones. El monto que llega a tu cuenta es el bruto de tu recibo.
+          , que se calcula sobre el neto. La razón es concreta: la asignación por maternidad no es
+          sueldo, así que no tiene aportes ni contribuciones. Lo que te llega a la cuenta es el
+          bruto de tu recibo.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -173,7 +170,7 @@ export default function LicenciaMaternidadPage() {
                     </span>
                   </td>
                   <td className="px-4 py-2.5 text-zinc-600">ANSES</td>
-                  <td className="px-4 py-2.5 text-zinc-900">Remuneración bruta</td>
+                  <td className="px-4 py-2.5 text-zinc-900">Sueldo bruto</td>
                 </tr>
                 <tr className="border-t border-zinc-100">
                   <td className="px-4 py-2.5 text-zinc-700">
@@ -200,7 +197,7 @@ export default function LicenciaMaternidadPage() {
                   </td>
                   <td className="px-4 py-2.5 text-zinc-600">nadie</td>
                   <td className="px-4 py-2.5 text-zinc-600">
-                    sin goce de sueldo, {EXCEDENCIA.mesesMinimo} a {EXCEDENCIA.mesesMaximo} meses
+                    sin sueldo, {EXCEDENCIA.mesesMinimo} a {EXCEDENCIA.mesesMaximo} meses
                   </td>
                 </tr>
               </tbody>
@@ -208,11 +205,11 @@ export default function LicenciaMaternidadPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          Para saber cuál es tu bruto si sólo conocés lo que cobrás en mano, pasalo por la{" "}
+          Si solo sabés lo que cobrás en mano y querés saber tu bruto, usá la{" "}
           <Link href="/sueldo-neto" className="font-medium text-emerald-700 hover:underline">
             calculadora de sueldo neto
           </Link>
-          , que también hace el camino inverso. Y si tenés hijos a cargo, mirá las{" "}
+          , que también hace la cuenta al revés. Y si tenés hijos a cargo, mirá las{" "}
           <Link
             href="/asignaciones-familiares"
             className="font-medium text-emerald-700 hover:underline"
@@ -228,14 +225,21 @@ export default function LicenciaMaternidadPage() {
           Los {PATERNIDAD.dias} días por nacimiento, y la trampa del domingo
         </h2>
         <p className="text-zinc-600">
-          La licencia por nacimiento de hijo del artículo 158 inciso a) son{" "}
-          {PATERNIDAD.dias} días corridos. Lo que casi nadie menciona es el artículo 160: cuando esos
-          días coinciden con domingo, feriado o día no laborable,{" "}
-          <strong>debe computarse necesariamente un día hábil</strong>. Un nacimiento un sábado no
-          se «paga» con sábado y domingo. Muchos convenios colectivos mejoran ese piso de dos días
-          —conviene mirar el convenio antes que la ley:{" "}
+          La licencia por nacimiento del artículo 158 inciso a) es de {PATERNIDAD.dias} días
+          corridos. Lo que casi nadie dice es lo del artículo 160: si esos días caen en domingo,
+          feriado o día no laborable,{" "}
+          <strong>se tiene que contar sí o sí un día hábil</strong>. Un nacimiento un sábado no se
+          «paga» con sábado y domingo. Muchos convenios mejoran ese piso de dos días, así que mirá tu
+          convenio antes que la ley:{" "}
           <Link href="/convenios" className="font-medium text-emerald-700 hover:underline">
-            acá están las escalas y los convenios verificados
+            escalas y convenios verificados
+          </Link>
+          . Las demás licencias (casamiento, fallecimiento, examen) están en{" "}
+          <Link
+            href="/licencias-especiales"
+            className="font-medium text-emerald-700 hover:underline"
+          >
+            licencias especiales del art. 158
           </Link>
           .
         </p>
@@ -246,23 +250,22 @@ export default function LicenciaMaternidadPage() {
           La ventana en la que un despido cuesta un año de sueldos
         </h2>
         <p className="text-zinc-600">
-          Entre los {ESTABILIDAD.mesesPresuncion} meses anteriores y los{" "}
-          {ESTABILIDAD.mesesPresuncion} meses posteriores al parto, el artículo 178 de la LCT
-          presume que el despido obedece a razones de maternidad, siempre que hayas notificado y
-          acreditado el embarazo o el nacimiento. Esa presunción admite prueba en contrario, pero
-          cuando se confirma dispara el artículo 182: una indemnización especial equivalente a{" "}
-          <strong>un año de remuneraciones</strong>, que se <em>acumula</em> a la del artículo 245.
-          La calculadora de arriba te marca las dos fechas de esa ventana; para la indemnización
-          común, está la{" "}
+          Desde {ESTABILIDAD.mesesPresuncion} meses antes hasta {ESTABILIDAD.mesesPresuncion}{" "}
+          meses después del parto, el artículo 178 de la LCT supone que un despido es por la
+          maternidad. Para eso tenés que haber avisado y acreditado el embarazo o el nacimiento. El
+          empleador puede probar lo contrario. Si no lo prueba, entra el artículo 182: una
+          indemnización especial de <strong>un año de sueldos</strong>, que se <em>suma</em> a la del
+          artículo 245. La calculadora te marca las dos fechas de esa ventana. Para la indemnización
+          común, usá la{" "}
           <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
             calculadora de despido
           </Link>
           .
         </p>
         <p className="text-sm text-zinc-500">
-          La notificación fehaciente del embarazo es la condición de todo esto: sin ella, la
-          presunción no se activa. El propio artículo 177 exige comunicar el embarazo al empleador
-          con certificado médico donde conste la fecha presunta del parto.
+          Todo esto depende de que hayas avisado del embarazo de forma fehaciente. Sin ese aviso, la
+          protección no se activa. El propio artículo 177 pide comunicar el embarazo al empleador con
+          un certificado médico que diga la fecha probable de parto.
         </p>
       </section>
 
@@ -290,16 +293,16 @@ export default function LicenciaMaternidadPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página es informativa y aplica el texto vigente de la Ley de Contrato de Trabajo y de
-          la Ley 24.714, verificado en InfoLEG. No reemplaza al asesoramiento de un profesional ni a
-          ANSES: el convenio colectivo de tu actividad puede mejorar estos pisos y la liquidación
-          concreta depende de tu situación registrada. Consultada el {LICENCIAS_FUENTES.consultadoEl}.
+          Esta página es informativa. Usa el texto vigente de la Ley de Contrato de Trabajo y de la
+          Ley 24.714, verificado en InfoLEG, y no reemplaza el consejo de un profesional ni a ANSES.
+          Tu convenio puede mejorar estos pisos, y la liquidación concreta depende de cómo esté
+          registrado tu trabajo. Consultada el {LICENCIAS_FUENTES.consultadoEl}.
         </p>
       </section>
     </article>

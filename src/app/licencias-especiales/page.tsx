@@ -4,6 +4,7 @@ import { CalculadoraLicenciasEspeciales } from "@/components/CalculadoraLicencia
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
+import { openGraphDe } from "@/lib/seo";
 import {
   DIVISOR_DIA_COMUN,
   DIVISOR_DIA_LICENCIA,
@@ -29,57 +30,52 @@ const CASO_160 = calcularLicenciaEspecial({
 })!;
 
 export const metadata: Metadata = {
-  title: "Licencias especiales del art. 158 LCT: días, fechas exactas y cuánto se paga",
-  description:
-    "Matrimonio, nacimiento, fallecimiento y examen: cuántos días te corresponden, hasta qué día exacto y cuándo volvés a trabajar, con los feriados oficiales aplicados. Y lo que casi ninguna calculadora hace: el día de licencia se paga a sueldo ÷ 25, no ÷ 30 (art. 159 → art. 155).",
+  title: "Licencias especiales (art. 158 LCT): días y pago",
+  description: `Matrimonio, nacimiento, fallecimiento y examen: cuántos días te tocan, hasta qué fecha con feriados y por qué el día se paga sueldo dividido ${DIVISOR_DIA_LICENCIA}.`,
   alternates: { canonical: "/licencias-especiales" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Licencias especiales · art. 158 LCT")}&s=${encodeURIComponent("Días, fechas exactas y cuánto se paga de verdad")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/licencias-especiales",
+    titulo: "Licencias especiales · art. 158 LCT",
+    bajada: "Días, fechas exactas y cuánto se paga de verdad",
+  }),
 };
 
 const faqs = [
   {
     q: "¿Cuántos días de licencia por matrimonio da la ley?",
-    a: "Diez días corridos (art. 158 inc. b de la LCT). Corridos quiere decir que se cuentan sábados, domingos y feriados: si el casamiento es un sábado, los diez días terminan el lunes de la semana siguiente. Y hay un derecho que casi nadie usa: el último párrafo del art. 164 dice que el empleador DEBE conceder las vacaciones acumuladas a la licencia por matrimonio si el trabajador se lo pide, aunque eso altere la época en la que le tocaban.",
+    a: "Diez días corridos (art. 158 inc. b de la LCT). Corridos quiere decir que cuentan sábados, domingos y feriados: si te casás un sábado, los diez días terminan el lunes de la semana siguiente. Y hay un derecho que casi nadie usa. Según el último párrafo del art. 164, si lo pedís, el empleador TIENE que sumarte las vacaciones a la licencia por matrimonio, aunque no fuera la época en que te tocaban.",
   },
   {
     q: "¿Cuántos días son por fallecimiento de un familiar?",
-    a: "Tres días corridos por fallecimiento del cónyuge, de la persona con la que se convivía en aparente matrimonio, de un hijo o de los padres (art. 158 inc. c). Por fallecimiento de un hermano, un día (inc. d). La ley no distingue por distancia ni por si hay que viajar: eso lo agregan algunos convenios colectivos, no la LCT.",
+    a: "Tres días corridos si muere tu cónyuge, la persona con la que convivías como pareja, un hijo o tus padres (art. 158 inc. c). Si muere un hermano, un día (inc. d). La ley no cambia los días según la distancia ni si tenés que viajar. Eso lo agregan algunos convenios, no la LCT.",
   },
   {
     q: "Si la licencia cae domingo o feriado, ¿se pierde?",
-    a: `Depende de cuál. El art. 160 dice que en las licencias de los incisos a), c) y d) —nacimiento y los dos fallecimientos— "deberá necesariamente computarse un día hábil" cuando coincidan con domingo, feriado o día no laborable. O sea: si los días caen íntegramente en días no hábiles, la licencia se estira hasta incluir uno. Ejemplo real de 2026: un fallecimiento de hermano el domingo 16 de agosto. El único día que fija la ley cae domingo y el lunes 17 es feriado por San Martín, así que la licencia llega hasta el martes 18. En cambio, la licencia por matrimonio (inc. b) y la de examen (inc. e) NO están en el art. 160: si caen en fin de semana, no se recuperan.`,
+    a: `Depende de cuál. El art. 160 dice que en las licencias de los incisos a), c) y d) (nacimiento y los dos fallecimientos) "deberá necesariamente computarse un día hábil" cuando caen en domingo, feriado o día no laborable. Si todos los días caen en días no hábiles, la licencia se estira hasta incluir uno. Un caso real de 2026: muere un hermano el domingo 16 de agosto. El único día de licencia cae domingo, y el lunes 17 es feriado por San Martín. Entonces la licencia llega hasta el martes 18. En cambio, la de matrimonio (inc. b) y la de examen (inc. e) NO están en el art. 160: si caen en fin de semana, no se recuperan.`,
   },
   {
     q: "¿Las licencias especiales se pagan?",
-    a: `Sí, y ahí está el detalle que casi ninguna calculadora hace. El art. 159 dice que las licencias del art. 158 "serán pagas, y el salario se calculará con arreglo a lo dispuesto en el artículo 155". El art. 155 inciso a, para el trabajador con sueldo mensual, manda dividir por VEINTICINCO el sueldo que percibe al momento del otorgamiento. Un día de licencia especial vale sueldo ÷ ${DIVISOR_DIA_LICENCIA}, no sueldo ÷ ${DIVISOR_DIA_COMUN}: un 20% más. Sobre los diez días de matrimonio, eso significa el 40% del sueldo bruto y no el 33,3%. Es la misma cuenta del plus vacacional, aplicada a estas licencias.`,
+    a: `Sí, y acá está el detalle que casi ninguna calculadora tiene en cuenta. El art. 159 dice que las licencias del art. 158 "serán pagas, y el salario se calculará con arreglo a lo dispuesto en el artículo 155". Y el art. 155 inciso a, para quien cobra por mes, manda dividir el sueldo por VEINTICINCO. Un día de licencia especial vale sueldo ÷ ${DIVISOR_DIA_LICENCIA}, no sueldo ÷ ${DIVISOR_DIA_COMUN}: un 20% más. En los diez días de matrimonio, eso es el 40% del sueldo bruto, no el 33,3%. Es la misma cuenta del plus vacacional, aplicada a estas licencias.`,
   },
   {
     q: "¿Cuántos días de licencia por examen me corresponden?",
-    a: "Dos días corridos por examen, con un máximo de diez días por año calendario (art. 158 inc. e). El art. 161 pone dos condiciones: que el examen corresponda a planes de enseñanza oficiales o autorizados por un organismo provincial o nacional, y que se acredite haberlo rendido con el certificado del instituto. Sin ese certificado, el empleador puede descontar los días.",
+    a: "Dos días corridos por examen, con un máximo de diez días por año calendario (art. 158 inc. e). El art. 161 pone dos condiciones. Que la carrera sea de un plan de estudios oficial o autorizado por un organismo provincial o nacional. Y que muestres el certificado de la institución que diga que rendiste. Sin ese certificado, el empleador te puede descontar los días.",
   },
   {
     q: "¿Cuántos días por nacimiento de un hijo?",
-    a: "Dos días corridos para la persona progenitora que no cursó el embarazo (art. 158 inc. a), con la garantía de día hábil del art. 160. Es el piso legal y es de los más bajos de la región; muchos convenios colectivos lo amplían. La licencia de quien dio a luz es otra cosa: son 90 días y los paga ANSES, no el empleador.",
+    a: "Dos días corridos para quien no estuvo embarazada (art. 158 inc. a), con la garantía de día hábil del art. 160. Es el piso legal y es de los más bajos de la región. Muchos convenios lo amplían. La licencia de quien dio a luz es otra cosa: son 90 días y los paga ANSES, no el empleador.",
   },
   {
     q: `¿Qué feriados hay en ${ANIO} y de dónde salen?`,
-    a: `Este sitio no copia el calendario: lo deriva de la Ley 27.399. Los feriados inamovibles tienen fecha fija en su art. 1; el Carnaval y la Semana Santa se calculan a partir del domingo de Pascua; y los trasladables se mueven con la regla del art. 6 (martes y miércoles al lunes anterior, jueves y viernes al lunes siguiente). Por eso en ${ANIO} el feriado de Güemes, que cae miércoles 17 de junio, se goza el lunes 15, y el de la Soberanía Nacional, que cae viernes 20 de noviembre, se goza el lunes 23. Lo único que no se deriva son los días con fines turísticos: los fija el Poder Ejecutivo con una norma propia, y para ${ANIO} son el lunes 23 de marzo, el viernes 10 de julio y el lunes 7 de diciembre (Resolución 164/2025).`,
+    a: `No copiamos el calendario: lo sacamos de la Ley 27.399. Los feriados inamovibles tienen fecha fija en su art. 1. El Carnaval y la Semana Santa se calculan desde el domingo de Pascua. Y los trasladables se mueven con la regla del art. 6 (si caen martes o miércoles pasan al lunes anterior; si caen jueves o viernes, al lunes siguiente). Por eso en ${ANIO} el feriado de Güemes, que cae miércoles 17 de junio, se toma el lunes 15. Y el de la Soberanía Nacional, que cae viernes 20 de noviembre, se toma el lunes 23. Lo único que no se calcula son los días turísticos: los fija el Poder Ejecutivo con una norma aparte. Para ${ANIO} son el lunes 23 de marzo, el viernes 10 de julio y el lunes 7 de diciembre (Resolución 164/2025).`,
   },
   {
     q: "¿El sábado cuenta como día hábil?",
-    a: "Para la ley, sí: el art. 160 habla de domingos, feriados y días no laborables, y el sábado no es ninguna de esas tres cosas. En la práctica, en la mayoría de los empleos no se trabaja el sábado, y eso cambia el día en que se vuelve efectivamente. Por eso la calculadora lo pregunta en vez de suponerlo: según cómo sea la jornada, el reintegro puede caer un día distinto.",
+    a: "Para la ley, sí. El art. 160 habla de domingos, feriados y días no laborables, y el sábado no es ninguno de los tres. Pero en la mayoría de los trabajos no se trabaja el sábado, y eso cambia el día en que volvés. Por eso la calculadora te lo pregunta en vez de suponerlo: según tu jornada, la vuelta puede caer otro día.",
   },
   {
     q: "¿Mi convenio puede darme más días?",
-    a: "Sí, y es lo habitual. La LCT fija un piso; el convenio colectivo puede mejorarlo con más días, con adicionales por distancia o con causales que la ley directamente no tiene (mudanza, matrimonio de un hijo, donación de sangre). Cuando el convenio dice más que la ley, manda el convenio. Esta página publica el piso legal, que es lo que rige cuando el convenio no dice nada.",
+    a: "Sí, y es lo más común. La LCT pone un piso. El convenio puede mejorarlo con más días, con adicionales por distancia o con motivos que la ley no tiene (mudanza, casamiento de un hijo, donación de sangre). Cuando el convenio da más que la ley, vale el convenio. Esta página muestra el piso legal, que es lo que rige cuando el convenio no dice nada.",
   },
 ];
 
@@ -99,9 +95,9 @@ export default function LicenciasEspecialesPage() {
         inLanguage: "es-AR",
       },
       articleSchema({
-        titulo: "Licencias especiales del art. 158 LCT: días, fechas exactas y cuánto se paga",
+        titulo: "Licencias especiales (art. 158 LCT): días y pago",
         descripcion:
-          "Los cinco incisos del art. 158, la garantía de día hábil del art. 160 aplicada con el calendario oficial de feriados, y el salario del art. 159, que remite al art. 155: sueldo dividido 25.",
+          "Los cinco incisos del art. 158, la garantía de día hábil del art. 160 con el calendario oficial de feriados, y el pago del art. 159, que remite al art. 155: sueldo dividido 25.",
         url: "/licencias-especiales",
         modificado: LICENCIAS_ESPECIALES_FUENTES.consultadoEl,
       }),
@@ -126,10 +122,10 @@ export default function LicenciasEspecialesPage() {
         </h1>
         <p className="text-zinc-600">
           Matrimonio, nacimiento, fallecimiento y examen. Los días están en el artículo 158 de la
-          Ley de Contrato de Trabajo y son fáciles de encontrar. Lo difícil son las otras dos
-          preguntas: <strong>hasta qué día exacto</strong> —porque hay un artículo que estira la
-          licencia cuando cae en feriado, y solo para tres de las cinco causas— y{" "}
-          <strong>cuánto se cobra</strong>, que no es el valor del día común.
+          Ley de Contrato de Trabajo y son fáciles de encontrar. Lo difícil son otras dos preguntas.
+          Primero, <strong>hasta qué día exacto</strong> (hay un artículo que estira la licencia si
+          cae en feriado, pero solo para tres de las cinco causas). Y segundo,{" "}
+          <strong>cuánto se cobra</strong>, que no es lo mismo que un día común.
         </p>
       </header>
 
@@ -137,10 +133,10 @@ export default function LicenciasEspecialesPage() {
         <p>
           Son <strong>10 días corridos</strong> por matrimonio, <strong>3</strong> por fallecimiento
           de cónyuge, hijo o padres, <strong>2</strong> por nacimiento, <strong>2</strong> por
-          examen (hasta 10 al año) y <strong>1</strong> por fallecimiento de hermano. En el
+          examen (hasta 10 al año) y <strong>1</strong> por fallecimiento de un hermano. En el
           nacimiento y en los dos fallecimientos, el art. 160 obliga a{" "}
-          <strong>computar un día hábil</strong> si los días caen en domingo, feriado o día no
-          laborable — en el matrimonio y en el examen, no. Y las cinco se pagan a valor día de
+          <strong>contar un día hábil</strong> si todos los días caen en domingo, feriado o día no
+          laborable. En el matrimonio y en el examen, no. Y las cinco se pagan como un día de
           vacaciones: <strong>sueldo ÷ {DIVISOR_DIA_LICENCIA}</strong>, no ÷ {DIVISOR_DIA_COMUN}{" "}
           (art. 159, que remite al art. 155).
         </p>
@@ -190,9 +186,9 @@ export default function LicenciasEspecialesPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          La columna del medio es la que se publica mal más seguido. El art. 160 nombra
-          expresamente a los incisos <strong>a), c) y d)</strong> y deja afuera al b) y al e): la
-          licencia por matrimonio que arranca un sábado se come el fin de semana y no se recupera.
+          La columna del medio es la que más se publica mal. El art. 160 nombra solo a los incisos{" "}
+          <strong>a), c) y d)</strong> y deja afuera al b) y al e). Si la licencia por matrimonio
+          arranca un sábado, el fin de semana se pierde y no se recupera.
         </p>
       </section>
 
@@ -201,8 +197,8 @@ export default function LicenciasEspecialesPage() {
           El artículo 160, con un caso de este año
         </h2>
         <p className="text-zinc-600">
-          Un fallecimiento de hermano el domingo 16 de agosto de 2026. La ley da un día, y ese día
-          cae domingo. El lunes 17 tampoco es hábil: es el feriado de San Martín. Así queda:
+          Muere un hermano el domingo 16 de agosto de 2026. La ley da un día, y ese día cae domingo.
+          El lunes 17 tampoco es hábil: es el feriado de San Martín. Queda así:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <table className="w-full text-sm">
@@ -232,9 +228,9 @@ export default function LicenciasEspecialesPage() {
           </table>
         </div>
         <p className="text-sm text-zinc-500">
-          Sin el art. 160, esa licencia no habría cubierto un solo día de trabajo. Con él, cubre{" "}
-          {CASO_160.diasHabilesCubiertos}. Es la diferencia entre tener una licencia y tenerla
-          escrita.
+          Sin el art. 160, esa licencia no habría cubierto ni un día de trabajo. Con él, cubre{" "}
+          {CASO_160.diasHabilesCubiertos}. Es la diferencia entre tener la licencia de verdad y
+          tenerla solo en el papel.
         </p>
       </section>
 
@@ -243,10 +239,10 @@ export default function LicenciasEspecialesPage() {
           Cuánto se paga: el día vale sueldo ÷ {DIVISOR_DIA_LICENCIA}, no ÷ {DIVISOR_DIA_COMUN}
         </h2>
         <p className="text-zinc-600">
-          El artículo 159 no fija un importe: manda calcular el salario de estas licencias{" "}
+          El artículo 159 no dice un monto. Dice que el pago de estas licencias se calcula{" "}
           <em>con arreglo a lo dispuesto en el artículo 155</em>. Y el artículo 155, para el sueldo
-          mensual, dice: dividir por veinticinco. Es el mismo mecanismo del plus vacacional, y casi
-          nadie lo aplica a los diez días de matrimonio o a los tres de duelo.
+          mensual, dice: dividir por veinticinco. Es lo mismo que el plus vacacional, y casi nadie lo
+          aplica a los diez días de matrimonio o a los tres de duelo.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -285,10 +281,10 @@ export default function LicenciasEspecialesPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          Honestidad sobre el punto: muchas liquidaciones de personal mensualizado pagan el mes
-          completo sin agregar ese plus, y el tema tiene discusión. Lo que está arriba es lo que
-          resulta del texto de los artículos 159 y 155, que es lo que se puede citar en un reclamo.
-          La misma cuenta, aplicada a las vacaciones, está en la{" "}
+          Para ser honestos: muchas liquidaciones de quienes cobran por mes pagan el mes completo
+          sin sumar ese plus, y el tema se discute. Lo de arriba es lo que surge del texto de los
+          artículos 159 y 155, que es lo que podés citar en un reclamo. La misma cuenta, aplicada a
+          las vacaciones, está en la{" "}
           <Link href="/vacaciones" className="font-medium text-emerald-700 hover:underline">
             calculadora de vacaciones
           </Link>
@@ -301,8 +297,8 @@ export default function LicenciasEspecialesPage() {
           Los feriados de {ANIO} que usa este cálculo
         </h2>
         <p className="text-zinc-600">
-          No están copiados de ningún lado: se derivan de la Ley 27.399. Los trasladables se mueven
-          solos con la regla del art. 6, y por eso dos de ellos no se gozan en su fecha.
+          No los copiamos de ningún lado: salen de la Ley 27.399. Los trasladables se mueven solos
+          con la regla del art. 6, y por eso dos de ellos no se toman en su fecha.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -342,8 +338,8 @@ export default function LicenciasEspecialesPage() {
         </div>
         <p className="text-sm text-zinc-500">
           Los tres días turísticos de {ANIO} los fijó la {TURISTICOS.norma} ({TURISTICOS.normaBO}).
-          No incluye feriados provinciales ni municipales, ni los días no laborables por religión de
-          los artículos 2 y 3 de la Ley 27.399, que dependen de calendarios propios.
+          No están los feriados provinciales ni municipales, ni los días no laborables por religión
+          de los artículos 2 y 3 de la Ley 27.399, que tienen calendarios propios.
         </p>
       </section>
 
@@ -358,21 +354,21 @@ export default function LicenciasEspecialesPage() {
           ))}
         </div>
         <p className="text-sm text-zinc-500">
-          Si la ausencia es por enfermedad, el plazo es otro y mucho más largo:{" "}
+          Si faltás por enfermedad, el plazo es otro y mucho más largo:{" "}
           <Link
             href="/licencia-por-enfermedad"
             className="font-medium text-emerald-700 hover:underline"
           >
             la licencia por enfermedad inculpable
           </Link>{" "}
-          va de 3 a 12 meses según antigüedad y cargas de familia. Y si el nacimiento es propio, la{" "}
+          va de 3 a 12 meses según antigüedad y cargas de familia. Y si el parto es tuyo, la{" "}
           <Link
             href="/licencia-por-maternidad"
             className="font-medium text-emerald-700 hover:underline"
           >
             licencia por maternidad
           </Link>{" "}
-          son 90 días que paga ANSES.
+          es de 90 días y la paga ANSES.
         </p>
       </section>
 
@@ -388,15 +384,15 @@ export default function LicenciasEspecialesPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página es informativa y aplica el texto ACTUALIZADO de la Ley de Contrato de Trabajo
-          publicado en InfoLEG, más la Ley 27.399 y la resolución de días turísticos del Boletín
-          Oficial. No reemplaza al convenio colectivo, que puede mejorar estos pisos. Textos legales
+          Esta página es informativa. Usa el texto ACTUALIZADO de la Ley de Contrato de Trabajo
+          publicado en InfoLEG, la Ley 27.399 y la resolución de días turísticos del Boletín
+          Oficial. No reemplaza a tu convenio, que puede mejorar estos pisos. Textos legales
           consultados el {LICENCIAS_ESPECIALES_FUENTES.consultadoEl}.
         </p>
       </section>

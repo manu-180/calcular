@@ -4,6 +4,7 @@ import { CalculadoraEnfermedad } from "@/components/CalculadoraEnfermedad";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
+import { openGraphDe } from "@/lib/seo";
 import {
   AVISO_ART_209,
   CERTIFICADO_ART_210,
@@ -16,60 +17,56 @@ import {
 const P = PLAZOS_ART_208;
 
 export const metadata: Metadata = {
-  title: "Licencia por enfermedad: cuántos meses y hasta qué día cobrás",
-  description: `Poné la fecha en que empezó la licencia y tu antigüedad, y mirá el día exacto en que se te termina el sueldo. Son ${P.sinCargas.hasta5}, ${P.sinCargas.mas5} o ${P.conCargas.mas5} meses según antigüedad y cargas de familia (art. 208 LCT), y la recaída por lo mismo dentro de ${RECIDIVA_ANIOS} años consume el mismo plazo. Después corre un año de conservación del empleo.`,
+  title: "Licencia por enfermedad: cuántos meses se cobra",
+  description: `Son ${P.sinCargas.hasta5}, ${P.sinCargas.mas5} o ${P.conCargas.mas5} meses según antigüedad y cargas de familia (art. 208 LCT). Poné la fecha de inicio y mirá el día exacto en que se termina el sueldo.`,
   alternates: { canonical: "/licencia-por-enfermedad" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Licencia por enfermedad")}&s=${encodeURIComponent("Hasta qué día cobrás, y qué pasa después")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/licencia-por-enfermedad",
+    titulo: "Licencia por enfermedad",
+    bajada: "Hasta qué día cobrás, y qué pasa después",
+  }),
 };
 
 const faqs = [
   {
     q: "¿Cuántos meses de licencia por enfermedad me corresponden?",
-    a: `Depende de dos cosas: la antigüedad y si tenés cargas de familia. Sin cargas de familia son ${P.sinCargas.hasta5} meses con menos de ${P.corteAntiguedadAnios} años de antigüedad y ${P.sinCargas.mas5} meses con más. Con cargas de familia esos plazos se duplican: ${P.conCargas.hasta5} y ${P.conCargas.mas5} meses respectivamente (art. 208 de la Ley de Contrato de Trabajo). Es licencia PAGA: durante ese período cobrás tu remuneración normal, y la paga el empleador.`,
+    a: `Depende de tu antigüedad y de si tenés cargas de familia. Sin cargas de familia son ${P.sinCargas.hasta5} meses con menos de ${P.corteAntiguedadAnios} años de antigüedad y ${P.sinCargas.mas5} meses con más. Con cargas de familia se duplican: ${P.conCargas.hasta5} y ${P.conCargas.mas5} meses (art. 208 de la Ley de Contrato de Trabajo). Es una licencia paga: cobrás tu sueldo normal y lo paga el empleador.`,
   },
   {
     q: "Si me vuelvo a enfermar de lo mismo, ¿empieza un plazo nuevo?",
-    a: `No, y es el error más caro de todos. El artículo 208 dice que «la recidiva de enfermedades crónicas no será considerada enfermedad, salvo que se manifestara transcurridos los dos (2) años». O sea: la recaída por la misma dolencia dentro de los ${RECIDIVA_ANIOS} años consume el MISMO plazo, no abre uno nuevo. Si ya usaste 45 días por esa enfermedad y tu plazo es de ${P.sinCargas.hasta5} meses, te quedan los días que falten para completarlo. El plazo vuelve a nacer entero recién si la dolencia reaparece pasados los ${RECIDIVA_ANIOS} años. Una enfermedad DISTINTA, en cambio, abre su propio plazo.`,
+    a: `No, y es el error más caro de todos. El artículo 208 dice que «la recidiva de enfermedades crónicas no será considerada enfermedad, salvo que se manifestara transcurridos los dos (2) años». En criollo: si recaés por la misma dolencia dentro de los ${RECIDIVA_ANIOS} años, gastás del mismo plazo. No se abre uno nuevo. Si ya usaste 45 días por esa enfermedad y tu plazo es de ${P.sinCargas.hasta5} meses, te quedan los días que faltan para completarlo. El plazo vuelve a estar entero recién si la dolencia aparece de nuevo después de ${RECIDIVA_ANIOS} años. Una enfermedad distinta sí abre su propio plazo.`,
   },
   {
     q: "¿Qué pasa cuando se me termina la licencia paga y sigo sin poder trabajar?",
-    a: `No te pueden despedir sin más: empieza el plazo de conservación del empleo del artículo 211, que dura ${CONSERVACION_EMPLEO_MESES} meses contados desde el vencimiento de la licencia paga. Durante ese año no cobrás sueldo, pero el empleador tiene que guardarte el puesto. Vencido ese plazo, la relación subsiste hasta que alguna de las partes notifique a la otra su voluntad de rescindirla, y esa extinción no genera responsabilidad indemnizatoria para ninguna de las dos.`,
+    a: `No te pueden despedir así nomás. Empieza la conservación del empleo del artículo 211, que dura ${CONSERVACION_EMPLEO_MESES} meses desde que vence la licencia paga. En ese año no cobrás sueldo, pero el empleador te tiene que guardar el puesto. Cuando termina, la relación sigue hasta que una de las partes le avise a la otra que quiere cortarla. Ese corte no genera indemnización para ninguna de las dos.`,
   },
   {
     q: "¿Cuánto tengo que cobrar durante la licencia?",
-    a: `La remuneración que percibías al momento de la interrupción, más los aumentos que durante la licencia se acuerden a los de tu misma categoría por ley, convenio colectivo o decisión del empleador (art. 208). Es un punto que se liquida mal seguido: el sueldo NO se congela al día en que te enfermaste. Si tu remuneración tiene parte variable —comisiones, horas extras habituales—, esa parte se liquida según el promedio de lo percibido en el último semestre de prestación de servicios, y en ningún caso podés cobrar menos de lo que hubieras cobrado sin la enfermedad. Las prestaciones en especie que dejes de percibir tienen que valorizarse.`,
+    a: `Lo que cobrabas cuando te enfermaste, más los aumentos que reciba tu categoría mientras estás de licencia (por ley, convenio o decisión del empleador, art. 208). Esto se liquida mal seguido: el sueldo no se congela el día en que te enfermaste. Si tenés una parte variable (comisiones, horas extras habituales), se paga con el promedio de lo que cobraste en el último semestre trabajado. Nunca podés cobrar menos de lo que hubieras cobrado sin la enfermedad. Y lo que recibías en especie y dejás de recibir se tiene que pagar en plata.`,
   },
   {
     q: "¿Cuándo tengo que avisar en el trabajo?",
-    a: `Dentro de ${AVISO_ART_209.plazo}, salvo caso de fuerza mayor, informando la enfermedad o accidente y el lugar en el que estás (art. 209 de la LCT, con el texto que le dio la Ley 27.802 en marzo de 2026). Mientras no avises, perdés el derecho a percibir la remuneración de esos días, salvo que después quede acreditado de manera inequívoca que estabas enfermo y que no podías avisar por el carácter y la gravedad del cuadro.`,
+    a: `Dentro de ${AVISO_ART_209.plazo}, salvo fuerza mayor. Tenés que avisar qué te pasó y dónde estás (art. 209 de la LCT, con el texto que le dio la Ley 27.802 en marzo de 2026). Mientras no avises, no cobrás esos días. La excepción es que después quede claro, sin lugar a dudas, que estabas enfermo y que el cuadro era tan grave que no podías avisar.`,
   },
   {
     q: "¿Qué tiene que decir el certificado médico?",
-    a: `Desde la reforma de marzo de 2026 el artículo 210 es explícito y bastante más exigente que antes: el certificado tiene que contener ${CERTIFICADO_ART_210.requisitos.join(", ")}, ser emitido por un profesional habilitado y estar FIRMADO DIGITALMENTE a través de las plataformas electrónicas autorizadas por la ${CERTIFICADO_ART_210.leyFirmaDigital}. Buena parte de las notas que circulan describen el texto anterior, que sólo hablaba del derecho de control del empleador. Ese control sigue existiendo: estás obligado a someterte al médico que designe la empresa, y si hay discrepancia insalvable se puede ir a una junta médica oficial o a un dictamen de un instituto de reconocida trayectoria, cuyo costo paga el empleador.`,
+    a: `Desde la reforma de marzo de 2026, el artículo 210 es claro y bastante más exigente que antes. El certificado tiene que tener ${CERTIFICADO_ART_210.requisitos.join(", ")}. Lo tiene que hacer un profesional habilitado y tiene que estar firmado digitalmente en las plataformas autorizadas por la ${CERTIFICADO_ART_210.leyFirmaDigital}. Muchas notas que circulan todavía describen el texto viejo, que solo hablaba del control del empleador. Ese control sigue: tenés que dejarte revisar por el médico que mande la empresa. Si los dos médicos no se ponen de acuerdo, se puede ir a una junta médica oficial o pedir el dictamen de un instituto de trayectoria reconocida. Ese costo lo paga el empleador.`,
   },
   {
     q: "¿Me pueden despedir estando de licencia por enfermedad?",
-    a: `Pueden, pero les sale caro. El artículo 213 dice que si el empleador despide durante el plazo de las interrupciones pagas, además de las indemnizaciones por despido injustificado tiene que abonar los salarios correspondientes a todo el tiempo que faltare para el vencimiento de la licencia o hasta la fecha del alta, lo que ocurra primero. O sea que el despido no corta el derecho a esos sueldos: los adelanta.`,
+    a: `Pueden, pero les sale caro. Según el artículo 213, si el empleador te despide durante la licencia paga, además de la indemnización por despido sin causa te tiene que pagar los sueldos de todo el tiempo que faltaba hasta el final de la licencia o hasta el alta (lo que llegue primero). El despido no te saca esos sueldos: te los adelanta.`,
   },
   {
     q: "¿Y si al alta me queda una incapacidad y no puedo hacer mi tarea de antes?",
-    a: `Lo resuelve el artículo 212. Si te queda una disminución definitiva de la capacidad laboral y no podés hacer las tareas que hacías, el empleador debe asignarte otras que puedas ejecutar, sin bajarte la remuneración. Si no puede hacerlo por una causa que no le es imputable, te debe la indemnización del artículo 247 (la reducida). Si pudiendo asignarte tareas compatibles no lo hace, te debe la indemnización completa del artículo 245. Y si de la enfermedad o accidente se deriva una incapacidad absoluta, corresponde también la indemnización del artículo 245, que se acumula con lo que dispongan los estatutos especiales o el convenio colectivo.`,
+    a: `Eso lo resuelve el artículo 212. Si te queda una incapacidad definitiva y no podés hacer tus tareas de siempre, el empleador te tiene que dar otras que sí puedas hacer, sin bajarte el sueldo. Si no puede por un motivo ajeno a él, te debe la indemnización reducida del artículo 247. Si puede darte otras tareas y no lo hace, te debe la indemnización completa del artículo 245. Y si la incapacidad es absoluta, también te corresponde la del artículo 245, que se suma a lo que digan los estatutos especiales o el convenio.`,
   },
   {
     q: "¿Esto es lo mismo que una ART?",
-    a: `No, es justo lo contrario. Los artículos 208 a 213 regulan las enfermedades y accidentes INCULPABLES: los que no tienen relación con el trabajo —una gripe, una operación, un accidente doméstico—. Los accidentes de trabajo y las enfermedades profesionales van por la Ley de Riesgos del Trabajo 24.557 y los cubre la ART, con otro régimen de prestaciones. La palabra «inculpable» no significa que no tengas la culpa del accidente: significa que la causa es ajena al trabajo.`,
+    a: `No, es justo lo contrario. Los artículos 208 a 213 cubren las enfermedades y accidentes inculpables: los que no tienen que ver con el trabajo (una gripe, una operación, un accidente en tu casa). Los accidentes de trabajo y las enfermedades profesionales van por la Ley de Riesgos del Trabajo 24.557 y los cubre la ART, con otras reglas. «Inculpable» no quiere decir que no tengas la culpa: quiere decir que la causa no es el trabajo.`,
   },
   {
     q: "¿Los días de licencia por enfermedad me descuentan las vacaciones o el aguinaldo?",
-    a: `No. Son días con derecho a remuneración, así que se computan como tiempo trabajado para la antigüedad y entran en la base del aguinaldo y de las vacaciones. Lo que sí conviene mirar es tu convenio colectivo: los plazos del artículo 208 son un piso legal y muchos convenios los mejoran.`,
+    a: `No. Son días pagos, así que cuentan como trabajados para la antigüedad y entran en el cálculo del aguinaldo y de las vacaciones. Lo que conviene revisar es tu convenio colectivo: los plazos del artículo 208 son un piso y muchos convenios los mejoran.`,
   },
 ];
 
@@ -89,9 +86,9 @@ export default function LicenciaEnfermedadPage() {
         inLanguage: "es-AR",
       },
       articleSchema({
-        titulo: "Licencia por enfermedad: cuántos meses y hasta qué día cobrás",
+        titulo: "Licencia por enfermedad: cuántos meses se cobra",
         descripcion:
-          "Cálculo de los plazos de licencia paga por enfermedad y accidente inculpable con el art. 208 de la LCT, el arrastre de la recaída dentro de los 2 años y el año de conservación del empleo del art. 211.",
+          "Cálculo de la licencia paga por enfermedad o accidente inculpable según el art. 208 de la LCT, la recaída dentro de los 2 años y el año de conservación del empleo del art. 211.",
         url: "/licencia-por-enfermedad",
         modificado: ENFERMEDAD_FUENTES.consultadoEl,
       }),
@@ -115,25 +112,26 @@ export default function LicenciaEnfermedadPage() {
           Licencia por enfermedad: hasta qué día cobrás, y qué pasa después
         </h1>
         <p className="text-zinc-600">
-          Todas las notas dicen «{P.sinCargas.hasta5}, {P.sinCargas.mas5} o {P.conCargas.mas5} meses»
-          y ahí terminan. Lo que necesitás saber es otra cosa: <strong>qué día exacto</strong> se te
-          termina el sueldo, cuánto te queda si ya faltaste por lo mismo hace unos meses, y hasta
-          cuándo te guardan el puesto sin cobrar.
+          Todos dicen «{P.sinCargas.hasta5}, {P.sinCargas.mas5} o {P.conCargas.mas5} meses» y ahí
+          cortan. Lo que vos necesitás saber es otra cosa: <strong>qué día exacto</strong> se termina
+          el sueldo, cuánto te queda si ya faltaste por lo mismo hace unos meses y hasta cuándo te
+          guardan el puesto.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={ENFERMEDAD_FUENTES.consultadoEl}>
         <p>
-          La licencia paga por enfermedad o accidente inculpable es de{" "}
-          <strong>{P.sinCargas.hasta5} meses</strong> si tenés menos de {P.corteAntiguedadAnios} años
-          de antigüedad y de <strong>{P.sinCargas.mas5} meses</strong> si tenés más. Con{" "}
-          <strong>cargas de familia</strong> esos plazos se duplican: {P.conCargas.hasta5} y{" "}
-          {P.conCargas.mas5} meses (art. 208 de la LCT). Durante ese período cobrás tu remuneración
-          normal, más los aumentos que se otorguen a tu categoría mientras estás de licencia. La{" "}
-          <strong>recaída por la misma dolencia dentro de los {RECIDIVA_ANIOS} años no abre un plazo
-          nuevo</strong>: consume el mismo. Y cuando el plazo pago se agota no viene el despido:
-          viene el año de conservación del empleo del artículo 211, sin goce de sueldo pero con el
-          puesto guardado.
+          La licencia paga por enfermedad o accidente inculpable (que no tiene que ver con el
+          trabajo) es de <strong>{P.sinCargas.hasta5} meses</strong> si tenés menos de{" "}
+          {P.corteAntiguedadAnios} años de antigüedad y de{" "}
+          <strong>{P.sinCargas.mas5} meses</strong> si tenés más. Con{" "}
+          <strong>cargas de familia</strong> se duplican: {P.conCargas.hasta5} y{" "}
+          {P.conCargas.mas5} meses (art. 208 de la LCT). Mientras dura cobrás tu sueldo normal, con
+          los aumentos que reciba tu categoría. Si{" "}
+          <strong>recaés por lo mismo dentro de los {RECIDIVA_ANIOS} años, no empieza un plazo
+          nuevo</strong>: seguís gastando el mismo. Y cuando se termina la licencia paga no te
+          despiden. Empieza un año de conservación del empleo (art. 211): no cobrás, pero el puesto
+          sigue siendo tuyo.
         </p>
       </RespuestaPrimero>
 
@@ -144,8 +142,8 @@ export default function LicenciaEnfermedadPage() {
           La tabla del artículo 208, completa
         </h2>
         <p className="text-zinc-600">
-          Son cuatro casos, y la diferencia entre el mejor y el peor es de cuatro veces. El dato que
-          más pesa no es la antigüedad: son las cargas de familia.
+          Son cuatro casos, y del mejor al peor hay cuatro veces de diferencia. Lo que más pesa no
+          es la antigüedad: son las cargas de familia.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -185,9 +183,9 @@ export default function LicenciaEnfermedadPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          Estos plazos son un piso legal: el convenio colectivo de tu actividad puede mejorarlos.{" "}
+          Estos plazos son un piso: el convenio de tu actividad puede mejorarlos.{" "}
           <Link href="/convenios" className="font-medium text-emerald-700 hover:underline">
-            Acá están las escalas y los convenios verificados
+            Mirá las escalas y los convenios verificados
           </Link>
           .
         </p>
@@ -198,17 +196,16 @@ export default function LicenciaEnfermedadPage() {
           La trampa de la recaída: el plazo no se reinicia
         </h2>
         <p className="text-zinc-600">
-          Es la parte del artículo 208 que más discusiones genera en una liquidación y la que casi
-          ninguna nota calcula. El texto es corto y terminante:{" "}
+          Es la parte del artículo 208 que más discusiones trae en una liquidación, y casi nadie la
+          calcula. El texto es corto y no deja dudas:{" "}
           <em>
             «la recidiva de enfermedades crónicas no será considerada enfermedad, salvo que se
             manifestara transcurridos los dos (2) años»
           </em>
-          . Traducido: si volvés a faltar por la <strong>misma</strong> dolencia dentro de los{" "}
-          {RECIDIVA_ANIOS} años, esos días se descuentan del plazo que ya venías usando. Una
-          enfermedad distinta, en cambio, abre su propio plazo completo. Por eso la calculadora de
-          arriba te pregunta cuántos días ya usaste: sin ese dato, la fecha de fin que te dan en
-          cualquier lado está mal.
+          . Quiere decir que si volvés a faltar por la <strong>misma</strong> dolencia dentro de los{" "}
+          {RECIDIVA_ANIOS} años, esos días se restan del plazo que ya venías usando. Una enfermedad
+          distinta abre su propio plazo completo. Por eso la calculadora te pregunta cuántos días ya
+          usaste: sin ese dato, cualquier fecha de fin que te den está mal.
         </p>
       </section>
 
@@ -217,19 +214,18 @@ export default function LicenciaEnfermedadPage() {
           El certificado cambió en marzo de 2026 y casi nadie lo publicó
         </h2>
         <p className="text-zinc-600">
-          La Ley 27.802 (B.O. 6/3/2026) sustituyó el artículo 210 completo. Antes el artículo hablaba
-          casi solo del derecho de control del empleador; hoy fija qué tiene que decir el
-          certificado: <strong>{CERTIFICADO_ART_210.requisitos.join(", ")}</strong>, emitido por un
-          profesional habilitado y{" "}
-          <strong>firmado digitalmente</strong> a través de las plataformas autorizadas por la{" "}
-          {CERTIFICADO_ART_210.leyFirmaDigital}. El control médico de la empresa sigue siendo
-          obligatorio para el trabajador, y ante una discrepancia insalvable se puede recurrir a una
-          junta médica oficial —donde la autoridad administrativa habilitó esa opción— o a un
-          dictamen de un instituto de reconocida trayectoria, que paga el empleador.
+          La Ley 27.802 (B.O. 6/3/2026) reemplazó el artículo 210 entero. Antes hablaba casi solo
+          del control del empleador. Ahora dice qué tiene que tener el certificado:{" "}
+          <strong>{CERTIFICADO_ART_210.requisitos.join(", ")}</strong>. Lo firma un profesional
+          habilitado y tiene que estar <strong>firmado digitalmente</strong> en las plataformas
+          autorizadas por la {CERTIFICADO_ART_210.leyFirmaDigital}. Vos seguís obligado a dejarte
+          revisar por el médico de la empresa. Si no hay acuerdo entre los médicos, se puede ir a una
+          junta médica oficial (donde la autoridad habilitó esa opción) o a un instituto de
+          trayectoria reconocida. Eso lo paga el empleador.
         </p>
         <p className="text-sm text-zinc-500">
-          El artículo 209, sobre el aviso, también fue sustituido por la misma ley: hay que avisar
-          dentro de {AVISO_ART_209.plazo}, indicando dónde estás.
+          La misma ley también cambió el artículo 209, el del aviso: tenés que avisar dentro de{" "}
+          {AVISO_ART_209.plazo} y decir dónde estás.
         </p>
       </section>
 
@@ -238,19 +234,39 @@ export default function LicenciaEnfermedadPage() {
           Si te despiden estando de licencia, cobrás las dos cosas
         </h2>
         <p className="text-zinc-600">
-          El artículo 213 no deja lugar a interpretación: el despido durante el plazo de las
-          interrupciones pagas obliga a abonar,{" "}
-          <strong>además de las indemnizaciones por despido injustificado</strong>, los salarios de
-          todo el tiempo que faltaba hasta el vencimiento de la licencia o hasta la fecha del alta.
-          Para calcular la parte indemnizatoria está la{" "}
+          El artículo 213 es claro. Si te despiden durante la licencia paga, te tienen que pagar{" "}
+          <strong>la indemnización por despido sin causa</strong> y, además, los sueldos de todo el
+          tiempo que faltaba hasta el final de la licencia o hasta el alta. Para la indemnización
+          usá la{" "}
           <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
             calculadora de despido
           </Link>
-          , y si lo que sigue es el desempleo, la{" "}
+          . Si después viene el desempleo, la{" "}
           <Link href="/desempleo" className="font-medium text-emerald-700 hover:underline">
             prestación por desempleo
           </Link>{" "}
-          te dice cuánto y por cuántos meses.
+          te dice cuánto cobrás y por cuántos meses.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-bold text-zinc-900">
+          Después de la licencia: el puesto y la obra social
+        </h2>
+        <p className="text-zinc-600">
+          Cuando se termina la licencia paga empieza el año en que te guardan el puesto sin cobrar.
+          Cómo funciona y qué pasa al final lo explicamos en{" "}
+          <Link href="/reserva-del-empleo" className="font-medium text-emerald-700 hover:underline">
+            reserva del puesto de trabajo
+          </Link>
+          . Y si la relación termina, mirá{" "}
+          <Link
+            href="/hasta-cuando-tengo-obra-social"
+            className="font-medium text-emerald-700 hover:underline"
+          >
+            hasta cuándo seguís teniendo obra social
+          </Link>
+          .
         </p>
       </section>
 
@@ -278,17 +294,16 @@ export default function LicenciaEnfermedadPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página es informativa y aplica el texto vigente de la Ley de Contrato de Trabajo
-          verificado en InfoLEG. No reemplaza al asesoramiento de un profesional: el convenio
-          colectivo de tu actividad puede mejorar estos pisos y cada caso concreto depende del
-          certificado médico y de la situación registrada. Consultada el{" "}
-          {ENFERMEDAD_FUENTES.consultadoEl}.
+          Esta página es informativa. Usa el texto vigente de la Ley de Contrato de Trabajo,
+          verificado en InfoLEG, y no reemplaza el consejo de un profesional. El convenio de tu
+          actividad puede mejorar estos pisos, y cada caso depende del certificado médico y de cómo
+          estés registrado. Consultada el {ENFERMEDAD_FUENTES.consultadoEl}.
         </p>
       </section>
     </article>

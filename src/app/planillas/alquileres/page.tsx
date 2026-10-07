@@ -5,23 +5,20 @@ import { IPC_DESCARGADO_EL } from "@/data/ipc-serie";
 import { ajustesAlquiler, MESES_LARGOS, nombrePeriodo, sumarMeses, ULTIMO_PERIODO } from "@/lib/inflacion";
 import { PLANILLA_ALQ } from "@/lib/prefill/alquileres";
 import { PRODUCTOS } from "@/lib/mp";
+import { openGraphDe } from "@/lib/seo";
 
 const PRODUCTO = PRODUCTOS["planilla-alquileres"];
 const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
 
 export const metadata: Metadata = {
-  title: "Planilla de alquileres 2026 en Excel: ajuste por IPC, recibo y aviso",
-  description: `Planilla de Excel y Google Sheets para propietarios: llevá hasta ${PLANILLA_ALQ.contratos} contratos con el IPC oficial del INDEC ya cargado. Te dice cuándo y cuánto aumentar, arma el recibo del mes y el mensaje para tu inquilino. $${PRECIO} pago único.`,
+  title: "Planilla de alquileres 2026 en Excel: ajuste por IPC",
+  description: `Excel y Google Sheets para propietarios: hasta ${PLANILLA_ALQ.contratos} contratos con el IPC del INDEC cargado, cuándo y cuánto aumentar, recibo y aviso al inquilino.`,
   alternates: { canonical: "/planillas/alquileres" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Planilla de alquileres 2026")}&s=${encodeURIComponent("Ajuste por IPC, recibo y aviso de aumento")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/planillas/alquileres",
+    titulo: "Planilla de alquileres 2026",
+    bajada: "Ajuste por IPC, recibo y aviso de aumento",
+  }),
 };
 
 const fechaLarga = (iso: string) => {
@@ -89,14 +86,14 @@ export default function PlanillaAlquileresPage() {
       respuestaPrimero={
         <p>
           La planilla de alquileres es un archivo de <strong>Excel y Google Sheets</strong> para
-          propietarios: cargás hasta <strong>{PLANILLA_ALQ.contratos} contratos</strong> (inicio,
+          propietarios. Cargás hasta <strong>{PLANILLA_ALQ.contratos} contratos</strong> (inicio,
           monto, índice y cada cuántos meses ajusta) y te calcula el{" "}
           <strong>alquiler de hoy, el cronograma completo de aumentos y el próximo ajuste</strong>{" "}
           con el IPC oficial del INDEC ya cargado, hasta {nombrePeriodo(ULTIMO_PERIODO)}. También
           arma el <strong>recibo del mes</strong> y el <strong>aviso de aumento</strong> para tu
           inquilino, con la cuenta y la fuente. Da los mismos números que la calculadora gratis de
           calcular.ar. Pago único de <strong>${PRECIO}</strong>, con el IPC actualizado todos los
-          meses y devolución dentro de los 7 días.
+          meses y 7 días para pedir la devolución.
         </p>
       }
       previewTitulo={`Contrato 1 · desde ${nombrePeriodo(INICIO)} · ajuste trimestral por IPC`}

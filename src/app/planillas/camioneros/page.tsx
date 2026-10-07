@@ -12,6 +12,7 @@ import {
 } from "@/data/convenios/camioneros";
 import { formatARS } from "@/lib/formato";
 import { PRODUCTOS } from "@/lib/mp";
+import { openGraphDe } from "@/lib/seo";
 
 const PRODUCTO = PRODUCTOS["planilla-camioneros"];
 const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
@@ -24,18 +25,15 @@ const VIATICOS_MES = V.etiquetaMes.toLowerCase();
 const ESCALA_HASTA_AGOSTO = ULTIMO.id === "agosto-2026";
 
 export const metadata: Metadata = {
-  title: "Planilla de sueldos Camioneros 2026 en Excel (CCT 40/89) con viáticos",
-  description: `Planilla de Excel y Google Sheets para liquidar el CCT 40/89: básicos firmados de FADEEAC por categoría, antigüedad, kilómetros, comida, pernoctada, nómina de la flota, recibo y aguinaldo. Da los mismos números que la calculadora gratis. $${PRECIO} pago único.`,
+  title: "Planilla de sueldos Camioneros 2026 en Excel",
+  description:
+    "Excel y Google Sheets para liquidar el CCT 40/89 con básicos de FADEEAC, antigüedad, kilómetros, comida, pernoctada, recibo y aguinaldo. Pago único.",
   alternates: { canonical: "/planillas/camioneros" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Planilla de sueldos Camioneros 2026")}&s=${encodeURIComponent("CCT 40/89 · básicos, kilómetros y viáticos")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/planillas/camioneros",
+    titulo: "Planilla de sueldos Camioneros 2026",
+    bajada: "CCT 40/89 · básicos, kilómetros y viáticos",
+  }),
 };
 
 // Caso de la vista previa: Chofer de Primera (la categoría más buscada) con 5 años de antigüedad en el
@@ -61,7 +59,7 @@ export default function PlanillaCamionerosPage() {
         previa: (ejemplo) => <PreviaCamioneros archivo={ARCHIVO}>{ejemplo}</PreviaCamioneros>,
         aviso: <AvisoCamioneros archivo={ARCHIVO} />,
       }}
-      etiquetaConvenio="CCT 40/89 — Camioneros (FADEEAC)"
+      etiquetaConvenio="CCT 40/89 · Camioneros (FADEEAC)"
       h1={
         <>
           Liquidá Camioneros con la escala firmada
@@ -69,17 +67,17 @@ export default function PlanillaCamionerosPage() {
           <span className="text-emerald-600">y los kilómetros, comidas y pernoctadas ya cargados</span>
         </>
       }
-      bajada="La planilla de Excel y Google Sheets para transportistas y estudios: elegís categoría, mes y antigüedad, sumás los viajes del mes y te da el bruto, los aportes, los viáticos aparte y lo que cobra el chofer. Con nómina de la flota, recibo para imprimir y aguinaldo."
+      bajada="La planilla de Excel y Google Sheets para transportistas y estudios. Elegís categoría, mes y antigüedad, sumás los viajes del mes y te da el bruto, los aportes, los viáticos aparte y lo que cobra el chofer. Trae nómina de la flota, recibo para imprimir y aguinaldo."
       respuestaPrimero={
         <p>
           La planilla de sueldos de Camioneros (CCT 40/89) es una hoja de <strong>Excel y Google Sheets</strong> con
-          los básicos de las <strong>{CATEGORIAS_CAMIONEROS.length} categorías</strong> de {RANGO}, transcriptos de
-          las planillas salariales firmadas que publica FADEEAC. Calcula la antigüedad (1% por año), las horas
-          extra por kilómetro, la comida, el viático especial, la pernoctada y el viático por km con los
-          coeficientes del sur, separando lo que lleva aportes de lo que no. Trae una <strong>nómina</strong> para
-          toda la flota, un <strong>recibo</strong> para imprimir y el <strong>aguinaldo</strong>. Básicos verificados
-          el {VERIFICADO}. Pago único de <strong>${PRECIO}</strong>, con las actualizaciones del año incluidas y
-          devolución dentro de los 7 días.
+          los básicos de las <strong>{CATEGORIAS_CAMIONEROS.length} categorías</strong> de {RANGO}, copiados de las
+          planillas salariales firmadas que publica FADEEAC. Calcula la antigüedad (1% por año), las horas extra por
+          kilómetro, la comida, el viático especial, la pernoctada y el viático por km con los coeficientes del sur.
+          Y separa lo que lleva aportes de lo que no. Trae una <strong>nómina</strong> para toda la flota, un{" "}
+          <strong>recibo</strong> para imprimir y el <strong>aguinaldo</strong>. Básicos verificados el {VERIFICADO}.
+          Pago único de <strong>${PRECIO}</strong>, con las actualizaciones del año incluidas y 7 días para pedir la
+          devolución.
         </p>
       }
       previewTitulo={`Chofer de Primera · 5 años · ${ULTIMO.etiqueta} · sin viajes`}
@@ -128,7 +126,7 @@ export default function PlanillaCamionerosPage() {
         },
         {
           q: "¿Qué tiene la planilla que no tenga la calculadora gratis?",
-          a: "La calculadora da el básico, la antigüedad y el neto de un caso por vez. La planilla suma lo que se liquida de verdad en el transporte: kilómetros, comida, viático especial y pernoctada, con los coeficientes del sur; liquida a toda la flota en la hoja Nómina; arma el recibo y calcula el aguinaldo. Y queda en tu computadora.",
+          a: "La calculadora da el básico, la antigüedad y el neto de un caso por vez. La planilla suma lo que se liquida de verdad en el transporte: kilómetros, comida, viático especial y pernoctada, con los coeficientes del sur. Liquida a toda la flota en la hoja Nómina, arma el recibo y calcula el aguinaldo. Y queda en tu computadora.",
         },
         {
           q: "¿De dónde salen los valores de viáticos?",
@@ -148,7 +146,7 @@ export default function PlanillaCamionerosPage() {
         },
         {
           q: "¿Por qué no está septiembre de 2026?",
-          a: "Porque cargamos cada mes de la planilla firmada que publica FADEEAC, no de un porcentaje que circula en los medios. Así evitamos el error de julio, cuando la revisión del acuerdo subió el básico 4,22% y no el 1,5% que se anunciaba. Cuando sale la planilla del mes, la cargamos y te llega actualizada.",
+          a: "Porque cargamos cada mes desde la planilla firmada que publica FADEEAC, no desde un porcentaje que circula en los medios. Así evitamos el error de julio, cuando la revisión del acuerdo subió el básico 4,22% y no el 1,5% que se anunciaba. Cuando sale la planilla del mes, la cargamos y te llega actualizada.",
         },
         {
           q: "¿Los números son los mismos que los de la calculadora gratis?",

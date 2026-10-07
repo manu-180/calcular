@@ -9,9 +9,9 @@ import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
 import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 export const metadata: Metadata = {
-  title: "Categorías del Monotributo 2026: tabla completa y actualizada",
+  title: "Categorías del monotributo 2026: tabla de ARCA",
   description:
-    "Tabla oficial de categorías del monotributo 2026 (A a K): topes de facturación, cuota mensual, superficie, energía y alquileres. Valores de ARCA vigentes desde febrero 2026.",
+    "Tabla oficial de categorías del monotributo 2026, de la A a la K: topes de facturación, cuota mensual, superficie, energía y alquileres vigentes.",
   alternates: { canonical: "/monotributo/categorias" },
 };
 
@@ -23,9 +23,9 @@ export default function CategoriasPage() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "Categorías del monotributo 2026: tabla completa y actualizada",
+        titulo: "Categorías del monotributo 2026: tabla de ARCA",
         descripcion:
-          "Topes de facturación, cuota mensual, superficie, energía y alquileres de las 11 categorías (A a K) del monotributo, con valores oficiales de ARCA.",
+          "Topes de facturación, cuota mensual, superficie, energía y alquileres de las 11 categorías (A a K) del monotributo, con los valores oficiales de ARCA.",
         url: "/monotributo/categorias",
         modificado: "2026-06-18",
       }),
@@ -35,7 +35,7 @@ export default function CategoriasPage() {
           "Tabla oficial de las 11 categorías del monotributo argentino vigentes desde febrero 2026: tope de ingresos brutos anuales, cuota mensual total (servicios y venta), superficie, energía eléctrica y alquileres devengados.",
         url: "/monotributo/categorias",
         modificado: "2026-06-18",
-        fuenteNombre: "ARCA — Categorías del monotributo",
+        fuenteNombre: "ARCA: categorías del monotributo",
         fuenteUrl: VIGENCIA.fuenteUrl,
       }),
     ],
@@ -50,27 +50,27 @@ export default function CategoriasPage() {
           Categorías del monotributo 2026: tabla completa
         </h1>
         <p className="text-zinc-600">
-          Todos los parámetros oficiales de las 11 categorías (A a K) vigentes desde el{" "}
-          {VIGENCIA.desde}, publicados por ARCA: tope de facturación anual, cuota mensual según
-          actividad, superficie, energía eléctrica y alquileres. ¿No sabés cuál te corresponde?{" "}
+          Todos los datos oficiales de las 11 categorías (A a K) que publicó ARCA, vigentes desde el{" "}
+          {VIGENCIA.desde}: tope de facturación anual, cuota mensual según actividad, superficie,
+          energía y alquileres. ¿No sabés cuál te toca?{" "}
           <Link href="/monotributo" className="text-emerald-700 underline">
             Usá la calculadora
           </Link>{" "}
-          y resolvelo en 10 segundos.
+          y lo sabés en 10 segundos.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={VIGENCIA.consultadoEl}>
         <p>
           El monotributo 2026 tiene <strong>11 categorías (A a K)</strong>, vigentes desde el{" "}
-          {VIGENCIA.desde} por ARCA. La categoría se define por la facturación de los últimos 12
-          meses (y, si tenés local, por superficie, energía y alquileres). La{" "}
-          <strong>categoría A</strong> abarca ingresos anuales de hasta{" "}
-          <strong>{formatARS(catA.ingresosBrutosMax)}</strong> con una cuota de{" "}
-          <strong>{formatARS(catA.totalServicios)}/mes</strong>; la más alta, la{" "}
+          {VIGENCIA.desde}. Tu categoría sale de lo que facturaste en los últimos 12 meses (y, si
+          tenés local, también de la superficie, la luz y el alquiler). La{" "}
+          <strong>categoría A</strong> llega hasta{" "}
+          <strong>{formatARS(catA.ingresosBrutosMax)}</strong> por año, con una cuota de{" "}
+          <strong>{formatARS(catA.totalServicios)}/mes</strong>. La más alta, la{" "}
           <strong>categoría {catK.cat}</strong>, llega hasta{" "}
-          <strong>{formatARS(catK.ingresosBrutosMax)}</strong> anuales. Si superás el tope de la K,
-          quedás fuera del monotributo y pasás al régimen general. Los valores se actualizan por
+          <strong>{formatARS(catK.ingresosBrutosMax)}</strong> por año. Si pasás el tope de la K,
+          quedás afuera del monotributo y pasás al régimen general. Los valores se actualizan por
           inflación dos veces al año.
         </p>
       </RespuestaPrimero>
@@ -104,8 +104,16 @@ export default function CategoriasPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Desglose de la cuota por componente</h2>
         <p className="text-sm text-zinc-600">
-          La cuota total se compone de impuesto integrado (varía según actividad), aporte
-          jubilatorio (SIPA) y obra social.
+          La cuota total suma tres cosas: el impuesto integrado (cambia según la actividad), el
+          aporte jubilatorio (SIPA) y la obra social. Si querés el detalle de qué cubre cada parte,
+          leé{" "}
+          <Link
+            href="/blog/que-incluye-la-cuota-del-monotributo"
+            className="text-emerald-700 underline"
+          >
+            qué incluye la cuota del monotributo
+          </Link>
+          .
         </p>
         <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white">
           <table className="w-full whitespace-nowrap text-sm">
@@ -138,8 +146,8 @@ export default function CategoriasPage() {
           Parámetros físicos: superficie, energía y alquileres
         </h2>
         <p className="text-sm text-zinc-600">
-          Estos parámetros aplican si tenés local u oficina afectados a la actividad. Si superás
-          el valor de tu categoría según facturación, te corresponde la categoría mayor.
+          Cuentan si tenés un local u oficina para tu actividad. Si pasás el valor de la categoría
+          que te da la facturación, te toca la categoría más alta.
         </p>
         <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white">
           <table className="w-full whitespace-nowrap text-sm">
@@ -164,7 +172,7 @@ export default function CategoriasPage() {
           </table>
         </div>
         <p className="text-sm text-zinc-600">
-          Para venta de productos rige además un precio unitario máximo de{" "}
+          Si vendés productos, además hay un precio máximo de{" "}
           {formatARS(CATEGORIAS[0].precioUnitarioMax)} por unidad.
         </p>
       </section>
@@ -173,12 +181,12 @@ export default function CategoriasPage() {
         <h2 className="text-base font-semibold text-zinc-900">Para tener en cuenta</h2>
         <ul className="space-y-2 text-sm text-zinc-600">
           <li>
-            • Las escalas se actualizan por inflación dos veces al año; estos valores rigen desde
+            • Las escalas se actualizan por inflación dos veces al año. Estos valores rigen desde
             el {VIGENCIA.desde} y la próxima actualización está prevista para{" "}
             {VIGENCIA.proximaActualizacion}.
           </li>
           <li>
-            • Si tu facturación de los últimos 12 meses cambió de escala, tenés que hacer la{" "}
+            • Si lo que facturaste en los últimos 12 meses te cambió de escala, tenés que hacer la{" "}
             <Link href="/monotributo/recategorizacion" className="text-emerald-700 underline">
               recategorización
             </Link>{" "}
@@ -192,7 +200,7 @@ export default function CategoriasPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              ARCA — categorías del monotributo
+              ARCA, categorías del monotributo
             </a>
             . Última verificación: {VIGENCIA.consultadoEl}.
           </li>
@@ -203,7 +211,7 @@ export default function CategoriasPage() {
       <EmailCapture
         source="monotributo-categorias"
         headline="Avisame cuando cambien las escalas del monotributo"
-        subtext="ARCA actualiza las categorías dos veces al año. Te aviso cuando salgan los nuevos topes y cuando abra la recategorización. Sin spam."
+        subtext="ARCA actualiza las categorías dos veces al año. Te aviso cuando salgan los topes nuevos y cuando abra la recategorización. Sin spam."
       />
     </article>
   );
