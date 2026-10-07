@@ -112,6 +112,16 @@ export default async function CuentaPage({ searchParams }: { searchParams: Promi
           </div>
         </Seccion>
       </div>
+      <Link
+        href="/cuenta/opiniones"
+        className="group mt-6 flex items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-sm transition-[border-color,transform] duration-200 ease-[var(--ease-snappy)] hover:-translate-y-px hover:border-zinc-300"
+      >
+        <span>
+          <span className="font-semibold text-zinc-900">¿Qué mejorarías de CalculAR?</span>
+          <span className="mt-0.5 block text-zinc-500">Contanos una idea o algo que anda mal. Las leemos todas.</span>
+        </span>
+        <span aria-hidden className="text-zinc-400 transition-transform group-hover:translate-x-0.5">→</span>
+      </Link>
       <IrAlAncla />
     </div>
   );

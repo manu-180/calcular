@@ -41,6 +41,11 @@ const ITEMS: { href: string; texto: string; icono: ReactNode }[] = [
     icono: <path d="M5 3.5h10v13H5v-13ZM7.5 6.5h5M7.5 10h1M11.5 10h1M7.5 13h1M11.5 13h1" />,
   },
   {
+    href: "/cuenta/opiniones",
+    texto: "Opiniones",
+    icono: <path d="M4 4.5h12v8.25H8.5L5 15.5v-2.75H4V4.5ZM7.25 8.5h5.5M7.25 10.75h3.5" />,
+  },
+  {
     href: "/cuenta#seguridad",
     texto: "Clave y seguridad",
     icono: <path d="M10 2.75 4.5 5v4.5c0 3.5 2.4 6.2 5.5 7.75 3.1-1.55 5.5-4.25 5.5-7.75V5L10 2.75ZM7.75 10l1.6 1.6 3-3.2" />,

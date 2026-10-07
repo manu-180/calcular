@@ -42,7 +42,7 @@ const FUERA_DEL_SITEMAP = new Set<string>([
   "/recuperar",
   "/dashboard",
 ]);
-const PREFIJOS_FUERA = ["/cuenta", "/auth/", "/informes/cuota-alimentaria/ver", "/informes/indemnizacion/ver", "/informes/ganancias/ver", "/informes/inflacion/ver", "/informes/credito-laboral/ver"];
+const PREFIJOS_FUERA = ["/cuenta", "/dashboard/", "/auth/", "/informes/cuota-alimentaria/ver", "/informes/indemnizacion/ver", "/informes/ganancias/ver", "/informes/inflacion/ver", "/informes/credito-laboral/ver"];
 
 function rutasEnDisco(dir: string, base = ""): string[] {
   const salida: string[] = [];
