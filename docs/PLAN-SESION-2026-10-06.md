@@ -123,3 +123,17 @@ Integrado y verificado sobre el árbol completo (tsc limpio, check-all 121/121, 
 2. Actualizar el ADR con el spike y arrancar la Fase 0 multi-país (base sin ningún país público,
    AR idéntico; 404 de AR con su header y footer en app/not-found.tsx).
 3. Revisión visual en el navegador de las páginas reescritas (375 y 1280 px).
+
+## 7/10/2026, 14:40: todo en producción
+
+- Manuel aplicó la migración de opiniones en Supabase.
+- PR #7 mergeado a main y en producción (READY). PR #8 cerrado: su arreglo ya venía en el #7.
+- PR #9: calcularya.com y www redirigen 307 a calcular.ar mientras no haya ningún país (evita
+  contenido duplicado). Manuel compró calcularya.com; el conector de Vercel es de solo lectura,
+  así que vincularlo al proyecto calcular-ar lo hace él en Vercel → Settings → Domains.
+- Disparado a mano el workflow datos-vivos para cargar lo frenado desde el 28/9.
+
+## Siguiente (sin cambios respecto de la próxima ronda de arriba)
+
+1. Datos viejos de la lista. 2. Fase 0 multi-país. 3. Primer país (Perú o Uruguay, decide Manuel).
+Pendiente de Manuel: nombre visible del sitio nuevo, primer país, cobro afuera (Lemon Squeezy o solo gratis).
