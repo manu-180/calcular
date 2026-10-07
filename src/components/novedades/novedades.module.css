@@ -1,0 +1,90 @@
+/* Entrada al hacer scroll atada a la vista, sin JS: el registro es una página estática larga y un
+   IntersectionObserver por tarjeta sería hidratar la lista entera para un efecto. Donde el navegador
+   no soporta animation-timeline, las tarjetas simplemente están. */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .revela {
+      animation: aparecer both;
+      animation-timing-function: var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+.fila {
+  transition:
+    background-color 0.2s ease,
+    transform 0.16s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
+}
+.fila:active {
+  transform: scale(0.99);
+}
+.flecha {
+  transition:
+    transform 0.25s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)),
+    color 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .fila:hover {
+    background-color: rgb(250 250 249);
+  }
+  .fila:hover .flecha {
+    color: var(--color-emerald-600, #059669);
+    transform: translateX(3px);
+  }
+}
+
+.calculadora {
+  transition:
+    transform 0.16s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.calculadora:active {
+  transform: scale(0.96);
+}
+@media (hover: hover) and (pointer: fine) {
+  .calculadora:hover {
+    background-color: #fff;
+    border-color: rgb(24 24 27 / 0.16);
+    color: var(--color-zinc-950, #09090b);
+  }
+}
+
+/* El destino de un link de la home (/novedades#id) se marca un momento: aterrizar en el medio de
+   una lista larga sin saber cuál es la tarjeta desorienta. Sólo color de fondo, una vez. */
+@keyframes marcar {
+  from {
+    background-color: rgb(236 253 245);
+  }
+  to {
+    background-color: #fff;
+  }
+}
+.entrada:target .nucleo {
+  animation: marcar 1.6s ease-out 0.2s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fila,
+  .flecha,
+  .calculadora {
+    transition: none;
+  }
+  .entrada:target .nucleo {
+    animation: none;
+    background-color: rgb(236 253 245);
+  }
+}

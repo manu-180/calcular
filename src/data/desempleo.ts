@@ -152,15 +152,15 @@ export const DESEMPLEO_FUENTES: {
 } = {
   consultadoEl: "2026-09-02",
   smvm: {
-    nombre: "Resolución 4/2026 — Consejo Nacional del Empleo, la Productividad y el SMVM",
+    nombre: "Resolución 4/2026: Consejo Nacional del Empleo, la Productividad y el SMVM",
     url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346775/20260902",
     detalle:
-      "B.O. 2/9/2026 — laudo dictado al no haber acuerdo el 28/8/2026: fija el SMVM mes a mes desde septiembre de 2026 hasta abril de 2027 (art. 1) y ratifica la fórmula de la prestación por desempleo (art. 2).",
+      "B.O. 2/9/2026: laudo dictado al no haber acuerdo el 28/8/2026: fija el SMVM mes a mes desde septiembre de 2026 hasta abril de 2027 (art. 1) y ratifica la fórmula de la prestación por desempleo (art. 2).",
   },
   smvmAnterior: {
-    nombre: "Resolución 9/2025 — Consejo Nacional del Empleo, la Productividad y el SMVM",
+    nombre: "Resolución 9/2025: Consejo Nacional del Empleo, la Productividad y el SMVM",
     url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/335463/20251203",
-    detalle: "B.O. 3/12/2025 — escala del SMVM de noviembre de 2025 a agosto de 2026.",
+    detalle: "B.O. 3/12/2025: escala del SMVM de noviembre de 2025 a agosto de 2026.",
   },
   ley: {
     nombre: "Ley 24.013, arts. 111 a 120 (texto actualizado)",
@@ -170,15 +170,15 @@ export const DESEMPLEO_FUENTES: {
   decreto267: {
     nombre: "Decreto 267/2006, art. 4",
     url: "https://www.argentina.gob.ar/normativa/nacional/decreto-267-2006-114578/texto",
-    detalle: "B.O. 13/3/2006 — extensión de 6 cuotas al 70% para trabajadores de 45 años o más.",
+    detalle: "B.O. 13/3/2006: extensión de 6 cuotas al 70% para trabajadores de 45 años o más.",
   },
   anses: {
-    nombre: "ANSES — Prestación por Desempleo para trabajadores en relación de dependencia",
+    nombre: "ANSES: Prestación por Desempleo para trabajadores en relación de dependencia",
     url: "https://www.anses.gob.ar/trabajo/desempleo/desempleo-para-trabajadores-en-relacion-de-dependencia",
     detalle: "Trámite, documentación y montos vigentes publicados por el organismo.",
   },
   ley27802: {
-    nombre: "Ley 27.802 — Ley de Modernización Laboral (B.O. 6/3/2026)",
+    nombre: "Ley 27.802: Ley de Modernización Laboral (B.O. 6/3/2026)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
     detalle:
       "Su art. 99 incorporó el inciso i) al art. 114 de la Ley 24.013: la extinción por mutuo acuerdo del art. 241 de la LCT pasó a ser situación legal de desempleo. Antes no figuraba en la lista.",

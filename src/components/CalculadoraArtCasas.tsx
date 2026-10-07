@@ -228,7 +228,7 @@ export function CalculadoraArtCasas() {
           <div className="rounded-xl bg-emerald-50 px-4 py-3">
             <p className="text-sm text-emerald-950">
               Base de cálculo que manda el reglamento:{" "}
-              <strong>{pesos(res.baseLegal)}</strong> por mes — el mínimo de{" "}
+              <strong>{pesos(res.baseLegal)}</strong> por mes. Es el mínimo de{" "}
               {res.categoria.nombre.toLowerCase()}{" "}
               {res.modalidad === "sin-retiro" ? "sin retiro" : "con retiro"} de la{" "}
               {VIGENCIA.resolucion}, vigente desde {VIGENCIA.desde}.

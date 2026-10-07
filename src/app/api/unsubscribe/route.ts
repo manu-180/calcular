@@ -9,7 +9,7 @@ function htmlPage(ok: boolean): Response {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${ok ? "Baja confirmada" : "Error"} — CalculAR</title>
+<title>${ok ? "Baja confirmada" : "Error"} · CalculAR</title>
 <style>
   body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
     background:#f4f4f5;font-family:system-ui,-apple-system,sans-serif;}

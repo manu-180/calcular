@@ -68,7 +68,7 @@ export function adultoEquivalente(edad: number, sexo: SexoAE): number | null {
 
 export const ADULTO_EQUIVALENTE_FUENTE = {
   nombre:
-    "INDEC — Cuadro 4, Unidades de adulto equivalente según sexo y edad (informe de valorización mensual de la CBA y la CBT)",
+    "INDEC: Cuadro 4, Unidades de adulto equivalente según sexo y edad (informe de valorización mensual de la CBA y la CBT)",
   metodologia: "https://www.indec.gob.ar/ftp/cuadros/sociedad/EPH_metodologia_22_pobreza.pdf",
   informe: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149",
   consultadoEl: "2026-08-01",

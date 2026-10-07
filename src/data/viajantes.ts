@@ -36,19 +36,19 @@ export const VIAJANTES_FUENTES = {
   consultadoEnTexto: "23 de agosto de 2026",
   lista: [
     {
-      nombre: "Ley 14.546 — Estatuto del viajante de comercio, texto ACTUALIZADO (InfoLEG)",
+      nombre: "Ley 14.546: Estatuto del viajante de comercio, texto ACTUALIZADO (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/95000-99999/96295/texact.htm",
       detalle:
         "el régimen completo, sancionado el 29 de septiembre de 1958. Sus «Antecedentes Normativos» no registran ninguna modificación a los arts. 5, 6, 9, 13 y 14: el texto de la indemnización por clientela es el original.",
     },
     {
-      nombre: "Ley 27.802 de Modernización Laboral — Título XXVI, art. 198 (InfoLEG)",
+      nombre: "Ley 27.802 de Modernización Laboral: Título XXVI, art. 198 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=423680",
       detalle:
         "«Derógase la ley 14.546 y sus modificatorias, a partir del 1º de enero de 2027». Publicada en el B.O. del 6 de marzo de 2026; al 23/8/2026 ninguna norma posterior modificó ese artículo (la única prórroga de la ley, el art. 27 del Dec. 408/2026, alcanza al Título II).",
     },
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "arts. 231 a 233 y 245 con el texto de la Ley 27.802: es la indemnización sobre la que se calcula el 25% de la clientela, y el régimen que queda cuando el estatuto se deroga.",
@@ -174,7 +174,7 @@ export const QUE_SE_PIERDE: Array<{
   {
     articulo: "Art. 9",
     titulo: "Conformidad expresa para cambiar la zona",
-    hoy: "El empleador necesita la conformidad expresa del viajante para cambiarlo de zona, y debe garantizarle el mismo volumen de remuneraciones —también si le reduce la zona o la nómina de clientes—.",
+    hoy: "El empleador necesita la conformidad expresa del viajante para cambiarlo de zona, y debe garantizarle el mismo volumen de remuneraciones. También si le reduce la zona o la nómina de clientes.",
     desde2027:
       "Queda el régimen general de modificación de las condiciones de trabajo de la LCT, sin la garantía específica del volumen remuneratorio.",
   },

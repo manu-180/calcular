@@ -78,7 +78,7 @@ export function CalculadoraHonorariosPericiales() {
       </div>
 
       <p className="mt-4 rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-xs text-zinc-600">
-        <strong className="text-zinc-800">UMA vigente: {pesos(UMA_VIGENTE.valor)}</strong> — desde el{" "}
+        <strong className="text-zinc-800">UMA vigente: {pesos(UMA_VIGENTE.valor)}</strong>, desde el{" "}
         {fechaLarga(UMA_VIGENTE.desde)}, por la Resolución SGA {UMA_VIGENTE.resolucion} de la Corte
         Suprema. Es el 3% del sueldo básico de un juez federal de primera instancia (art. 19 de la
         Ley 27.423).
@@ -162,7 +162,7 @@ export function CalculadoraHonorariosPericiales() {
             <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
               <p className="text-sm text-zinc-600">
                 {piso.totalPesos > 0
-                  ? "Piso legal — por debajo de esto el juez no puede regular"
+                  ? "Piso legal: por debajo de esto el juez no puede regular"
                   : "Para ese supuesto y esa fecha no hay piso escrito"}
               </p>
               <p className="mt-1 text-3xl font-bold tracking-tight text-emerald-700">
@@ -204,7 +204,7 @@ export function CalculadoraHonorariosPericiales() {
 
               <details className="ca-acordeon mt-5 rounded-xl border border-zinc-200 bg-white p-4">
                 <summary className="cursor-pointer text-sm font-semibold text-zinc-800">
-                  El artículo, textual — {piso.supuesto.articulo}
+                  El artículo, textual: {piso.supuesto.articulo}
                 </summary>
                 <p className="mt-2 text-sm italic text-zinc-600">«{piso.supuesto.texto}»</p>
                 <p className="mt-2 text-sm text-zinc-700">{piso.supuesto.requisito}</p>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import type { PointerEvent as ReactPointerEvent } from "react";
+import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Pagina, SeccionMenu, TabEncabezado } from "@/data/navegacion";
@@ -85,7 +85,7 @@ function Logo({ onClick }: { onClick?: () => void }) {
     <Link
       href="/"
       onClick={onClick}
-      aria-label="CalculAR — inicio"
+      aria-label="CalculAR, ir al inicio"
       className="group flex shrink-0 items-center gap-2.5 rounded-lg outline-none"
     >
       <span
@@ -169,15 +169,17 @@ function SeccionCajon({
   seccion,
   pathname,
   onNavigate,
+  orden,
 }: {
   seccion: SeccionMenu;
   pathname: string;
   onNavigate: () => void;
+  orden: number;
 }) {
   const items = [...seccion.paginas, ...seccion.destacados];
   const activa = items.some((p) => enRuta(p.href, pathname));
   return (
-    <details open={activa} className="group/d">
+    <details open={activa} className="ca-cajon-item group/d" style={{ "--i": orden } as CSSProperties}>
       <summary
         className={cx(
           "flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 text-[15px] font-semibold outline-none transition-colors active:bg-zinc-100 [&::-webkit-details-marker]:hidden",
@@ -258,24 +260,49 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
     precargarNavegacion();
   }, []);
 
+  const finCierre = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const terminarCierre = useCallback(() => {
+    if (finCierre.current) {
+      clearTimeout(finCierre.current);
+      finCierre.current = null;
+    }
+    const d = cajonRef.current;
+    if (d?.open) d.close();
+  }, []);
+
+  // close() recién cuando termina la transición de salida: un <dialog> cerrado desaparece al instante.
+  // El timer es la red de seguridad si el navegador no llega a disparar transitionend.
   const cerrarCajon = useCallback(() => {
     const d = cajonRef.current;
     const panel = cajonPanelRef.current;
+    if (!d?.open || finCierre.current) return;
     if (panel) {
       panel.style.transition = "";
       panel.style.translate = "";
     }
-    if (d?.open) d.close();
-  }, []);
+    d.dataset.visible = "false";
+    finCierre.current = setTimeout(terminarCierre, 360);
+  }, [terminarCierre]);
 
+  // El reflow antes de marcar data-visible deja el estado cerrado como punto de partida de la transición.
   const abrirCajon = useCallback(() => {
     const d = cajonRef.current;
     if (!d || d.open) return;
     d.showModal();
+    void d.offsetWidth;
+    d.dataset.visible = "true";
     cerrarCajonRef.current?.focus();
     setMobileOpen(true);
     pedirNav();
   }, [pedirNav]);
+
+  useEffect(
+    () => () => {
+      if (finCierre.current) clearTimeout(finCierre.current);
+    },
+    [],
+  );
 
   useEffect(() => {
     registrarVisita(pathname);
@@ -302,10 +329,10 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
   useEffect(() => {
     if (!mobileOpen) return;
     const mq = window.matchMedia("(min-width: 1024px)");
-    const onChange = () => mq.matches && cerrarCajon();
+    const onChange = () => mq.matches && terminarCierre();
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
-  }, [mobileOpen, cerrarCajon]);
+  }, [mobileOpen, terminarCierre]);
 
   // Barra activa deslizante: descansa bajo el tab de la sección actual y se
   // desliza al tab bajo el cursor. La animación la hace CSS (.ca-underline).
@@ -523,7 +550,7 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
   return (
     <header ref={headerRef} className="sticky top-0 z-50">
       <div
-        className="w-full border-b transition-[background-color,border-color,box-shadow] duration-300 ease-out"
+        className="relative w-full border-b transition-[background-color,border-color,box-shadow] duration-300 ease-out"
         style={{
           backgroundColor: scrolled ? "rgba(255,255,255,0.86)" : "rgba(255,255,255,0.7)",
           backdropFilter: "blur(16px) saturate(160%)",
@@ -739,6 +766,10 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
         className="ca-cajon ca-bloquea lg:hidden"
         aria-label="Menú"
         onClose={() => setMobileOpen(false)}
+        onCancel={(e) => {
+          e.preventDefault();
+          cerrarCajon();
+        }}
         onClick={(e) => {
           if (e.target === e.currentTarget) cerrarCajon();
         }}
@@ -750,8 +781,13 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
           onPointerMove={alMover}
           onPointerUp={alSoltar}
           onPointerCancel={alSoltar}
+          onTransitionEnd={(e) => {
+            if (e.target === e.currentTarget && e.propertyName === "translate" && cajonRef.current?.dataset.visible === "false") {
+              terminarCierre();
+            }
+          }}
         >
-          <div className="flex shrink-0 items-center justify-between gap-3 px-4 pb-2 pt-3">
+          <div className="ca-cajon-item flex shrink-0 items-center justify-between gap-3 px-4 pb-2 pt-3" style={{ "--i": 0 } as CSSProperties}>
             <Logo onClick={cerrarCajon} />
             <button
               ref={cerrarCajonRef}
@@ -764,7 +800,7 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
             </button>
           </div>
 
-          <div className="shrink-0 px-4 pb-3">
+          <div className="ca-cajon-item shrink-0 px-4 pb-3" style={{ "--i": 1 } as CSSProperties}>
             <button
               type="button"
               onClick={() => {
@@ -781,11 +817,11 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
 
           <nav aria-label="Todas las calculadoras" className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 pb-3 [scrollbar-width:thin]">
             {secciones ? (
-              <div className="ca-cajon-lista">
-                {secciones.map((s) => (
-                  <SeccionCajon key={s.id} seccion={s} pathname={pathname} onNavigate={cerrarCajon} />
+              <div>
+                {secciones.map((s, i) => (
+                  <SeccionCajon key={s.id} seccion={s} pathname={pathname} onNavigate={cerrarCajon} orden={Math.min(i + 2, 7)} />
                 ))}
-                <div className="mt-2 border-t border-zinc-100 pt-2">
+                <div className="ca-cajon-item mt-2 border-t border-zinc-100 pt-2" style={{ "--i": 7 } as CSSProperties}>
                   {MAS_LINKS.map((l) => (
                     <Link
                       key={l.href}
@@ -814,7 +850,10 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
             )}
           </nav>
 
-          <div className="shrink-0 border-t border-zinc-200/80 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3">
+          <div
+            className="ca-cajon-item shrink-0 border-t border-zinc-200/80 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3"
+            style={{ "--i": 7 } as CSSProperties}
+          >
             <SesionLink className="flex h-12 w-full items-center justify-center rounded-2xl bg-zinc-900 text-[15px] font-semibold text-white outline-none transition-[background-color,transform] duration-150 active:scale-[0.98] active:bg-zinc-800" />
             <p className="mt-3 text-center text-xs text-zinc-500">Datos de fuentes oficiales · Hecho en Argentina</p>
           </div>

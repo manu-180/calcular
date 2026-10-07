@@ -10,6 +10,7 @@ import { haberPea, pensionDerivada, promedioParaSuperarElMinimo } from "@/lib/ed
 import { formatARS, formatPct } from "@/lib/formato";
 
 const MES = V.vigencia;
+const MES_CORTO = MES.replace(" de ", " ");
 
 /** El caso típico: 10 años de aportes, todos posteriores al SIJP, sin promedio declarado. */
 const BASE = haberPea(0, PEA.aniosServiciosConAportes, 0);
@@ -18,8 +19,8 @@ const UMBRAL = promedioParaSuperarElMinimo(PEA.aniosServiciosConAportes, 0);
 const BRECHA = Math.round((V.haberMinimo - BASE.componentePbu) * 100) / 100;
 
 export const metadata: Metadata = {
-  title: `Prestación por edad avanzada ${MES}: cuánto se cobra de verdad`,
-  description: `Todas las notas dicen «el 70% de la PBU» —${formatARS(BASE.componentePbu, 0)} en ${MES}—, pero eso no es lo que se cobra: el art. 125 garantiza el haber mínimo de ${formatARS(V.haberMinimo, 0)}. Requisitos reales a los 70 años con 10 de aportes, el requisito de los 5 años en los últimos 8, y el que ANSES agrega y no está en la ley.`,
+  title: `Pensión por edad avanzada ${MES_CORTO}: cuánto se cobra`,
+  description: "Requisitos a los 70 años con 10 de aportes y cuánto se cobra de verdad: el art. 125 garantiza el haber mínimo, no el 70% de la PBU que repiten todos.",
   alternates: { canonical: "/edad-avanzada" },
   openGraph: {
     images: [
@@ -35,45 +36,45 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: `¿Cuánto se cobra por la prestación por edad avanzada en ${MES}?`,
-    a: `En la enorme mayoría de los casos, el haber mínimo garantizado: ${formatARS(V.haberMinimo, 2)}, más el bono de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma}, o sea ${formatARS(BASE.total, 2)} depositados. El número que repiten las notas —el 70% de la PBU, ${formatARS(BASE.componentePbu, 2)} en ${MES}— es una cita correcta del artículo 34 bis apartado 3, pero no es lo que se cobra: queda ${formatARS(BRECHA, 2)} por debajo del mínimo. Y el artículo 125 de la Ley 24.241 garantiza a los beneficiarios del Régimen Previsional Público el haber mínimo del artículo 17, donde esta prestación está en el inciso f).`,
+    a: `Casi siempre, el haber mínimo garantizado: ${formatARS(V.haberMinimo, 2)}, más el bono de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma}. O sea, ${formatARS(BASE.total, 2)} depositados. El número que repiten las notas (el 70% de la PBU, ${formatARS(BASE.componentePbu, 2)} en ${MES}) es una cita correcta del artículo 34 bis apartado 3, pero no es lo que se cobra: queda ${formatARS(BRECHA, 2)} por debajo del mínimo. Y el artículo 125 de la Ley 24.241 garantiza el haber mínimo del artículo 17 a quienes cobran del régimen público, y esta prestación está en el inciso f) de ese artículo.`,
   },
   {
     q: "¿Cuántos años de aportes hacen falta y cómo tienen que estar distribuidos?",
-    a: `Diez años de servicios con aportes computables, en uno o más regímenes del sistema de reciprocidad. Pero hay una segunda condición que casi nunca se enuncia y que voltea más solicitudes que la primera: de esos diez, al menos ${PEA.aniosDentroDeLaVentana} tienen que haber sido trabajados durante los ${PEA.ventanaAniosAnteriores} años inmediatamente anteriores al cese de la actividad. Tener los años sueltos no alcanza: tienen que estar cerca del final. El trabajador autónomo debe acreditar, además, una antigüedad en la afiliación no inferior a ${PEA.antiguedadAfiliacionAutonomoAnios} años, que no es lo mismo que tener los aportes pagos.`,
+    a: `Diez años de trabajo con aportes que cuenten, en una o más cajas que se reconozcan entre sí. Pero hay una segunda condición que casi nunca se dice y que deja afuera más solicitudes que la primera: de esos diez, al menos ${PEA.aniosDentroDeLaVentana} tienen que estar dentro de los ${PEA.ventanaAniosAnteriores} años justo antes de dejar de trabajar. Tener los años sueltos no alcanza: tienen que estar cerca del final. Si sos autónomo, además tenés que tener al menos ${PEA.antiguedadAfiliacionAutonomoAnios} años de inscripción, que no es lo mismo que tener los aportes pagos.`,
   },
   {
     q: "¿Se puede seguir trabajando cobrando la prestación por edad avanzada?",
-    a: "La ley no lo prohíbe. El apartado 4 del artículo 34 bis dice que el goce de esta prestación es incompatible con la percepción de toda jubilación, pensión o retiro civil o militar, nacional, provincial o municipal —con derecho a optar—, y no dice nada sobre la actividad. Es la diferencia grande con la PUAM: ahí el artículo 16 de la Ley 27.260, sustituido en 2018, sí declara la incompatibilidad con trabajar en relación de dependencia o por cuenta propia.",
+    a: "La ley no lo prohíbe. El apartado 4 del artículo 34 bis dice que no se puede cobrar junto con otra jubilación, pensión o retiro civil o militar, nacional, provincial o municipal (podés elegir cuál te quedás). Pero no dice nada sobre trabajar. Es la gran diferencia con la PUAM: ahí el artículo 16 de la Ley 27.260, reemplazado en 2018, sí prohíbe trabajar en relación de dependencia o por cuenta propia.",
   },
   {
     q: "¿Sirven los años trabajados en casas particulares?",
-    a: "Acá hay un requisito que no está en la Ley 24.241 y que por eso no aparece en ninguna nota que copie solo la ley: la cartilla oficial de ANSES para esta prestación pide expresamente «no acreditar tareas en calidad de servicio doméstico». Si tus años son de casas particulares, el trámite puede rechazarse por ese motivo y conviene consultar el caso en ANSES antes de iniciarlo. Es la clase de letra chica que solo aparece leyendo el material del organismo, no la norma.",
+    a: "Acá hay un requisito que no está en la Ley 24.241, y por eso no aparece en ninguna nota que copie solo la ley. La cartilla oficial de ANSES para esta prestación pide «no acreditar tareas en calidad de servicio doméstico». Si tus años son de casas particulares, te pueden rechazar el trámite por eso, así que conviene consultar en ANSES antes de iniciarlo. Es letra chica que solo aparece leyendo el material de ANSES, no la ley.",
   },
   {
     q: "¿A partir de qué sueldo conviene seguir aportando en vez de quedarse con el mínimo?",
     a: UMBRAL
-      ? `Es la única pregunta que cambia una decisión, y se deriva. El haber es 70% de la PBU más 1,5% por cada año de aportes sobre el promedio de las remuneraciones actualizadas de los últimos ${PEA.aniosDelPromedio} años (artículo 24 para la compensatoria, artículo 30 inciso b para la adicional por permanencia). Despejando con ${PEA.aniosServiciosConAportes} años de aportes y los valores de ${MES}, la fórmula recién le gana al haber mínimo con un sueldo promedio actualizado de ${formatARS(UMBRAL, 0)} por mes. O sea: con diez años de aportes, prácticamente nadie supera el piso. Cada año de aportes adicional baja ese umbral, porque suma otro 1,5%.`
-      : "Con los valores vigentes el componente fijo ya supera el mínimo, así que la fórmula manda desde el primer peso.",
+      ? `Es la única pregunta que cambia una decisión, y tiene una cuenta. El haber es 70% de la PBU más 1,5% por cada año de aportes sobre el promedio de los sueldos actualizados de los últimos ${PEA.aniosDelPromedio} años (artículo 24 para la compensatoria, artículo 30 inciso b para la adicional por permanencia). Con ${PEA.aniosServiciosConAportes} años de aportes y los valores de ${MES}, la fórmula recién le gana al haber mínimo con un sueldo promedio actualizado de ${formatARS(UMBRAL, 0)} por mes. O sea: con diez años de aportes, casi nadie supera el piso. Cada año de aportes de más baja ese número, porque suma otro 1,5%.`
+      : "Con los valores vigentes, la parte fija ya supera el mínimo, así que manda la fórmula desde el primer peso.",
   },
   {
     q: "¿Llega la garantía del 82% del salario mínimo?",
-    a: `No, y se confunde seguido con el mínimo garantizado. El artículo 125 bis reserva esa garantía a quienes acrediten ${PEA.aniosQueExigeEl82} años o más de servicios con aportes efectivos y sean titulares de la prestación básica universal. Quien entra por edad avanzada lo hace con ${PEA.aniosServiciosConAportes}, así que queda afuera por definición. Lo que sí lo cubre es el artículo 125: el haber mínimo garantizado, que es otra cosa.`,
+    a: `No, y se confunde seguido con el mínimo garantizado. El artículo 125 bis deja esa garantía para quienes tengan ${PEA.aniosQueExigeEl82} años o más de aportes efectivos y cobren la prestación básica universal. Quien entra por edad avanzada lo hace con ${PEA.aniosServiciosConAportes}, así que queda afuera. Lo que sí lo cubre es el artículo 125: el haber mínimo garantizado, que es otra cosa.`,
   },
   {
     q: "¿Deja pensión para el cónyuge?",
-    a: `Sí, y es una de sus ventajas frente a la PUAM. El apartado 5 del artículo 34 bis establece que la pensión por fallecimiento de los causahabientes se determina según las pautas de los artículos 28 y 98 y equivale al ${formatPct(PEA.proporcionPensionDerivada * 100, 0)} de lo que le hubiera correspondido al titular: sobre el haber mínimo de ${MES}, ${formatARS(pensionDerivada(V.haberMinimo), 2)}. La PUAM, en cambio, es personalísima y no genera derecho a pensión (artículo 15 inciso a de la Ley 27.260).`,
+    a: `Sí, y es una de sus ventajas frente a la PUAM. El apartado 5 del artículo 34 bis dice que la pensión para la familia se calcula con las reglas de los artículos 28 y 98 y es el ${formatPct(PEA.proporcionPensionDerivada * 100, 0)} de lo que le hubiera tocado al titular. Sobre el haber mínimo de ${MES}, ${formatARS(pensionDerivada(V.haberMinimo), 2)}. La PUAM, en cambio, es solo para la persona y no deja pensión (artículo 15 inciso a de la Ley 27.260).`,
   },
   {
     q: "Si mis diez años son todos posteriores a 1994, ¿cambia el cálculo?",
-    a: "Sí, y bastante. La prestación compensatoria computa únicamente servicios con aportes prestados hasta la entrada en vigencia del Libro I de la Ley 24.241 —o sea, anteriores a la puesta en marcha del SIJP— según los artículos 23 inciso b y 24. Quien llega hoy a los 70 con diez años de aportes todos posteriores no tiene compensatoria: le queda el 70% de la PBU más la prestación adicional por permanencia, que paga 1,5% por año sobre el mismo promedio. Es una razón más por la que el piso garantizado termina decidiendo el monto.",
+    a: "Sí, y bastante. La prestación compensatoria solo cuenta los años con aportes de antes de que empezara a regir el Libro I de la Ley 24.241 (o sea, antes del SIJP), según los artículos 23 inciso b y 24. Si hoy llegás a los 70 con diez años de aportes, todos posteriores, no tenés compensatoria. Te queda el 70% de la PBU más la prestación adicional por permanencia, que paga 1,5% por año sobre el mismo promedio. Es una razón más por la que termina mandando el piso garantizado.",
   },
   {
     q: "¿Qué diferencia hay entre la prestación por edad avanzada y la PUAM?",
-    a: `Cuatro cosas. La edad: 70 acá, 65 la PUAM. Los aportes: ${PEA.aniosServiciosConAportes} años acá, ninguno en la PUAM. El monto: acá el piso es el haber mínimo completo (${formatARS(V.haberMinimo, 2)}), la PUAM paga el 80% de ese mínimo. Y la letra chica, que va para los dos lados: esta prestación deja pensión y es compatible con trabajar, la PUAM no deja pensión y desde 2018 es incompatible con trabajar. Quien tiene los diez años de aportes y puede esperar a los 70 cobra más y deja más.`,
+    a: `Cuatro cosas. La edad: 70 acá, 65 la PUAM. Los aportes: ${PEA.aniosServiciosConAportes} años acá, ninguno en la PUAM. El monto: acá el piso es el haber mínimo completo (${formatARS(V.haberMinimo, 2)}); la PUAM paga el 80% de ese mínimo. Y la letra chica, que va para los dos lados: esta prestación deja pensión y te deja trabajar; la PUAM no deja pensión y desde 2018 no te deja trabajar. Si tenés los diez años de aportes y podés esperar a los 70, cobrás más y dejás más.`,
   },
   {
     q: "¿Por qué cambia el monto todos los meses sin que se anuncie un aumento?",
-    a: `Porque no tiene monto propio: se apoya en la PBU y en el haber mínimo, y los dos se actualizan mensualmente por la movilidad del Decreto 274/2024, que es el IPC de dos meses antes. En ${MES} esa movilidad fue del ${formatPct(V.movilidad, 2)} y los valores los fijó la ${V.resolucion}. No existe una resolución de aumento de la prestación por edad avanzada: cuando sube la mínima, sube esto.`,
+    a: `Porque no tiene monto propio: depende de la PBU y del haber mínimo, y los dos se actualizan todos los meses por la movilidad del Decreto 274/2024, que es el IPC de dos meses antes. En ${MES} esa movilidad fue del ${formatPct(V.movilidad, 2)} y los valores los fijó la ${V.resolucion}. No hay una resolución que aumente la prestación por edad avanzada: cuando sube la mínima, sube esto.`,
   },
 ];
 
@@ -93,7 +94,7 @@ export default function EdadAvanzadaPage() {
         inLanguage: "es-AR",
       },
       datasetSchema({
-        nombre: `Prestación por edad avanzada — haber y requisitos vigentes en ${MES}`,
+        nombre: `Prestación por edad avanzada: haber y requisitos vigentes en ${MES}`,
         descripcion: `Haber de la prestación por edad avanzada (art. 34 bis de la Ley 24.241) en ${MES}: el 70% de la PBU son ${formatARS(BASE.componentePbu, 2)}, pero el art. 125 garantiza el haber mínimo de ${formatARS(V.haberMinimo, 2)} (${V.resolucion}), que con el bono de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma} da ${formatARS(BASE.total, 2)}. Incluye los requisitos del art. 34 bis ap. 2, el requisito de servicio doméstico que agrega la cartilla de ANSES y el umbral de sueldo derivado a partir del cual la fórmula supera el piso.`,
         url: "/edad-avanzada",
         modificado: `${V.periodo}-01`,
@@ -130,25 +131,25 @@ export default function EdadAvanzadaPage() {
           Prestación por edad avanzada: cuánto se cobra de verdad a los 70 con 10 años de aportes
         </h1>
         <p className="text-zinc-600">
-          Es la puerta para quien llega a los {PEA.edadMinima} sin los 30 años de aportes pero con
-          algunos. Toda la web publica el mismo dato —«el 70% de la PBU»— y ahí termina. Ese número
-          es una cita correcta de la ley y una respuesta equivocada a la pregunta que importa: no es
-          lo que se cobra. Acá está el piso que sí manda, el requisito de distribución de los años
-          que voltea la mitad de las solicitudes, y el que ANSES exige aunque no esté en la ley.
+          Es la puerta para quien llega a los {PEA.edadMinima} sin los 30 años de aportes, pero con
+          algunos. Toda la web publica el mismo dato («el 70% de la PBU») y ahí termina. Ese número
+          cita bien la ley, pero no responde lo que importa: no es lo que se cobra. Acá tenés el piso
+          que sí manda, la regla de cuándo tienen que estar los años (que voltea la mitad de las
+          solicitudes) y el requisito que ANSES pide aunque no esté en la ley.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={PEA_FUENTES.consultadoEl}>
         <p>
-          En {MES} el 70% de la PBU son <strong>{formatARS(BASE.componentePbu, 2)}</strong> —{" "}
+          En {MES} el 70% de la PBU son <strong>{formatARS(BASE.componentePbu, 2)}</strong>:{" "}
           {formatARS(BRECHA, 2)} <strong>menos</strong> que el haber mínimo garantizado de{" "}
-          {formatARS(V.haberMinimo, 2)}. Como el art. 125 garantiza ese mínimo a los beneficiarios
-          del Régimen Previsional Público y esta prestación está en el art. 17 inc. f), lo que se
-          cobra es <strong>{formatARS(BASE.haber, 2)}</strong>, y con el bono de{" "}
+          {formatARS(V.haberMinimo, 2)}. Como el art. 125 garantiza ese mínimo a quienes cobran del
+          régimen público, y esta prestación está en el art. 17 inc. f), lo que se cobra es{" "}
+          <strong>{formatARS(BASE.haber, 2)}</strong>. Con el bono de{" "}
           {formatARS(BONO_VIGENTE.monto, 0)} se depositan <strong>{formatARS(BASE.total, 2)}</strong>
-          . Se pide a los {PEA.edadMinima} años con {PEA.aniosServiciosConAportes} de aportes, de los
-          cuales <strong>{PEA.aniosDentroDeLaVentana} tienen que caer en los últimos{" "}
-          {PEA.ventanaAniosAnteriores}</strong> antes del cese. Es <strong>compatible con seguir
+          . Se pide a los {PEA.edadMinima} años con {PEA.aniosServiciosConAportes} de aportes, y{" "}
+          <strong>{PEA.aniosDentroDeLaVentana} de ellos tienen que caer en los últimos{" "}
+          {PEA.ventanaAniosAnteriores}</strong> antes de dejar de trabajar. <strong>Te deja seguir
           trabajando</strong> y <strong>deja pensión</strong>: dos cosas que la PUAM no tiene.
         </p>
       </RespuestaPrimero>
@@ -160,9 +161,9 @@ export default function EdadAvanzadaPage() {
           El 70% de la PBU contra lo que realmente se deposita
         </h2>
         <p className="text-zinc-600">
-          Las dos filas de abajo salen del mismo mes y de la misma resolución. La primera es la que
-          publica la SERP; la segunda es la que llega al banco. La distancia entre las dos es el
-          motivo por el que esta página existe.
+          Las filas de abajo salen del mismo mes y de la misma resolución. La del 70% es la que
+          aparece en los buscadores; la última es la que llega al banco. Esa diferencia es el motivo
+          por el que existe esta página.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -182,7 +183,7 @@ export default function EdadAvanzadaPage() {
                 </tr>
                 <tr className="border-t border-zinc-100">
                   <td className="px-4 py-2.5 text-zinc-600">
-                    70% de la PBU — el número que publica toda la web
+                    70% de la PBU (el número que publica toda la web)
                   </td>
                   <td className="px-4 py-2.5 text-right text-zinc-900">
                     {formatARS(BASE.componentePbu, 2)}
@@ -232,10 +233,10 @@ export default function EdadAvanzadaPage() {
             El haber del art. 34 bis es <strong>70% de la PBU</strong> más{" "}
             <strong>{formatPct(PEA.porcentajePorAnio * 100, 1)} por cada año de aportes</strong>{" "}
             sobre el promedio de las remuneraciones actualizadas de los últimos{" "}
-            {PEA.aniosDelPromedio} años — 1,5% por los años anteriores al SIJP como prestación
+            {PEA.aniosDelPromedio} años: 1,5% por los años anteriores al SIJP como prestación
             compensatoria (art. 24) y el mismo 1,5% por los posteriores como adicional por
-            permanencia (art. 30 inc. b). Igualando esa cuenta al haber mínimo y despejando el
-            promedio sale el único número que cambia una decisión:
+            permanencia (art. 30 inc. b). Si igualás esa cuenta al haber mínimo y despejás el
+            promedio, sale el único número que cambia una decisión:
           </p>
           <div className="rounded-xl border border-zinc-200 bg-white p-4 font-mono text-sm text-zinc-700 shadow-sm">
             <p>
@@ -248,12 +249,12 @@ export default function EdadAvanzadaPage() {
             </p>
           </div>
           <p className="text-sm text-zinc-500">
-            O sea: con el mínimo de años que exige la ley, prácticamente nadie supera el piso —
-            haría falta un sueldo promedio actualizado de {formatARS(UMBRAL, 0)} durante una década.
-            Cada año de aportes de más baja el umbral, porque suma otro{" "}
+            O sea: con el mínimo de años que pide la ley, casi nadie supera el piso. Haría falta un
+            sueldo promedio actualizado de {formatARS(UMBRAL, 0)} durante diez años. Cada año de
+            aportes de más baja ese número, porque suma otro{" "}
             {formatPct(PEA.porcentajePorAnio * 100, 1)}. Es la cuenta que conviene hacer antes de
-            decidir si vale la pena seguir aportando o iniciar el trámite ya. Probá tu caso en la
-            calculadora de arriba cargando tu promedio real.
+            decidir si seguir aportando o iniciar el trámite ya. Probá tu caso en la calculadora de
+            arriba con tu promedio real.
           </p>
         </section>
       )}
@@ -273,10 +274,10 @@ export default function EdadAvanzadaPage() {
           </ul>
         </div>
         <p className="text-sm text-zinc-500">
-          ANSES tiene además dos variantes con requisitos propios que conviene no confundir con
-          esta: la prestación por edad avanzada para <strong>trabajadores rurales</strong> y la{" "}
-          <strong>por invalidez</strong>, que es la que le corresponde a quien se incapacita después
-          de los 65 (art. 34 bis ap. 5).
+          ANSES tiene además dos variantes con requisitos propios que no hay que confundir con esta:
+          la prestación por edad avanzada para <strong>trabajadores rurales</strong> y la{" "}
+          <strong>por invalidez</strong>, que es para quien queda incapacitado después de los 65
+          (art. 34 bis ap. 5).
         </p>
       </section>
 
@@ -385,7 +386,11 @@ export default function EdadAvanzadaPage() {
           >
             pensión no contributiva
           </Link>
-          , mirá primero la incompatibilidad del ap. 4.
+          , mirá primero el ap. 4, que no deja cobrar las dos. Y si el haber te queda alto, revisá{" "}
+          <Link href="/descuento-pami" className="font-medium text-emerald-700 hover:underline">
+            cuánto te descuenta el PAMI
+          </Link>
+          .
         </p>
       </section>
 
@@ -413,17 +418,17 @@ export default function EdadAvanzadaPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página es informativa y aplica el texto ACTUALIZADO de la Ley 24.241 publicado en
-          InfoLEG, más la cartilla oficial de ANSES y las normas del Boletín Oficial que fijan la
-          PBU, el haber mínimo y el bono del mes. No otorga ni liquida beneficios: el cómputo de los
-          años y el haber final los determina ANSES sobre la certificación de servicios. Texto legal
-          consultado el {PEA_FUENTES.consultadoEl}.
+          Esta página es informativa y usa el texto actualizado de la Ley 24.241 publicado en
+          InfoLEG, la cartilla oficial de ANSES y las normas del Boletín Oficial que fijan la PBU, el
+          haber mínimo y el bono del mes. No otorga ni liquida beneficios: los años que cuentan y el
+          haber final los define ANSES con tu certificación de servicios. Texto legal consultado el{" "}
+          {PEA_FUENTES.consultadoEl}.
         </p>
       </section>
     </article>

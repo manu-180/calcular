@@ -63,19 +63,19 @@ export const CREDITOS_FUENTES = {
   consultadoEl: "15 de agosto de 2026",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado, arts. 276 y 277",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado, arts. 276 y 277",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "El texto consolidado que ya incorpora la sustitución. Es la fuente que se leyó, artículo por artículo, para esta página.",
     },
     {
-      nombre: "Ley 27.802 — arts. 54 y 56 (B.O. 6/3/2026)",
+      nombre: "Ley 27.802: arts. 54 y 56 (B.O. 6/3/2026)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=423680",
       detalle:
         "La reforma que sustituyó los arts. 276 y 277 de la LCT. Rige desde su publicación en el Boletín Oficial.",
     },
     {
-      nombre: "IPC Nacional — Nivel General (INDEC), serie oficial",
+      nombre: "IPC Nacional: Nivel General (INDEC), serie oficial",
       url: "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=1000",
       detalle:
         "El índice que nombra el art. 276. Se baja de la API de series de tiempo del Estado y se regenera en cada actualización mensual.",

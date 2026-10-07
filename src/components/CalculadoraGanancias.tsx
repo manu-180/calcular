@@ -123,8 +123,8 @@ export function CalculadoraGanancias({
               <span className="font-normal text-zinc-500">(opcional)</span>
             </label>
             <p className="mt-0.5 text-xs text-zinc-500">
-              Prepaga, alquiler, honorarios médicos — lo que declarás ante tu empleador. El total
-              anual se prorratea mes a mes.
+              Prepaga, alquiler, honorarios médicos: lo que declarás ante tu empleador. El total
+              anual se reparte mes a mes.
             </p>
             <div className="relative mt-2 max-w-xs">
               <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-zinc-400">

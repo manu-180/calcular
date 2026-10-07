@@ -11,11 +11,11 @@ export const INDEMNIZACION_FUENTES = {
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
   },
   ley27802: {
-    nombre: "Ley 27.802 — nuevo art. 245 LCT (B.O. 6/3/2026)",
+    nombre: "Ley 27.802: nuevo art. 245 LCT (B.O. 6/3/2026)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=423680",
   },
   ley27742: {
-    nombre: "Ley 27.742 (Bases) — derogación de multas laborales, arts. 99 y 100",
+    nombre: "Ley 27.742 (Bases): derogación de multas laborales, arts. 99 y 100",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=401266",
   },
   ligArt26: {

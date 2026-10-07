@@ -159,7 +159,7 @@ export function CalculadoraSalarioMinimo() {
             El importe por hora del trabajador jornalizado <strong>no se prorratea</strong>: vale lo
             mismo trabajes las horas que trabajes. Tus {res.horasSemanales} horas semanales son{" "}
             {res.horasMensuales.toLocaleString("es-AR", { maximumFractionDigits: 2 })} horas
-            mensuales, que a ese valor dan {formatARS(res.mensualPorHoras, 0)} — el mismo piso, por
+            mensuales, que a ese valor dan {formatARS(res.mensualPorHoras, 0)}: el mismo piso, por
             la otra vía.
           </p>
         </div>
@@ -186,9 +186,9 @@ export function CalculadoraSalarioMinimo() {
             <>
               Tu sueldo bruto está <strong>{formatARS(res.comparacion.diferencia, 0)} por encima</strong>{" "}
               del piso legal de esa jornada. Si tenés convenio colectivo, el piso que te corresponde no
-              es este: es el básico de tu categoría —{" "}
+              es este: es el básico de tu categoría.{" "}
               <Link href="/convenios" className="underline">
-                fijate la escala de tu convenio
+                Fijate la escala de tu convenio
               </Link>
               .
             </>

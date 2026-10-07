@@ -24,9 +24,9 @@ import {
 } from "@/lib/art-casas-particulares";
 
 export const metadata: Metadata = {
-  title: "ART de la empleada doméstica: sobre qué sueldo se liquida (no es el que cobra)",
+  title: "ART de empleada doméstica: cuota y sobre qué sueldo",
   description:
-    "La cobertura de riesgos del trabajo del personal de casas particulares es obligatoria, la paga el empleador y se liquida sobre el mínimo de la categoría, no sobre el sueldo real. Calculá la cuota y la indemnización con la escala vigente.",
+    "La ART del personal de casas particulares es obligatoria y la paga el empleador sobre el mínimo de la categoría. Calculá la cuota y la indemnización.",
   alternates: { canonical: "/art-empleada-domestica" },
   openGraph: {
     title: "ART de la empleada doméstica: la base no es el sueldo que cobra",
@@ -46,43 +46,43 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿La empleada doméstica tiene ART?",
-    a: "Sí. El art. 74 de la Ley 26.844 incorporó al personal de casas particulares al régimen de las leyes 24.557 y 26.773, y el Decreto 467/2014 lo reglamentó. Hoy la cuota de ART figura en la tabla mensual de aportes y contribuciones que publica ARCA, en las nueve filas del régimen: es un concepto obligatorio, no opcional.",
+    a: "Sí. El art. 74 de la Ley 26.844 sumó al personal de casas particulares al régimen de las leyes 24.557 y 26.773, y el Decreto 467/2014 lo reglamentó. Hoy la cuota de ART está en la tabla mensual de aportes y contribuciones de ARCA, en las nueve filas del régimen. Es obligatoria, no opcional.",
   },
   {
     q: "¿Quién paga la ART, el empleador o la trabajadora?",
-    a: "El empleador. La cuota «integra y se adiciona a los aportes y contribuciones obligatorios» del art. 21 de la Ley 25.239, que ingresa la parte empleadora. No es un descuento del sueldo. En la boleta mensual del régimen suele ser el concepto más caro de los tres.",
+    a: "El empleador. La cuota «integra y se adiciona a los aportes y contribuciones obligatorios» del art. 21 de la Ley 25.239, que paga la parte empleadora. No se descuenta del sueldo. En la boleta de cada mes suele ser lo más caro de los tres conceptos.",
   },
   {
     q: "¿Sobre qué sueldo se calcula la indemnización?",
-    a: "Sobre el mínimo de la categoría, no sobre lo que la persona cobra. El inciso d) del art. 74 del Decreto 467/2014 manda tomar «la remuneración mensual mínima» fijada para el personal de casas particulares «para la categoría correspondiente», tanto para la prestación por incapacidad temporaria como para el Valor Mensual del Ingreso Base del art. 12 de la Ley 24.557. Es la diferencia más importante con cualquier otro trabajador, donde el ingreso base es el promedio de los salarios del año actualizado por RIPTE.",
+    a: "Sobre el mínimo de la categoría, no sobre lo que la persona cobra. El inciso d) del art. 74 del Decreto 467/2014 manda usar «la remuneración mensual mínima» del personal de casas particulares «para la categoría correspondiente». Vale para la incapacidad temporaria y para el Valor Mensual del Ingreso Base del art. 12 de la Ley 24.557. Es la gran diferencia con cualquier otro trabajador, donde la base es el promedio de los sueldos del año actualizado por RIPTE.",
   },
   {
     q: "Entonces, ¿cobra menos que otro trabajador?",
-    a: `En la fórmula sí, pero ahí entra el piso. Como la base es baja, el resultado de la fórmula (53 × ingreso base × porcentaje de incapacidad × 65/edad) queda por debajo del piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso no depende de la categoría ni del sueldo: es el mismo para todos, así que protege más a quien menos base tiene. Con la escala vigente, desde los ${EDAD_PISO_SIEMPRE} años el piso manda en todas las categorías y modalidades, sin excepción. Por debajo de esa edad la fórmula puede ganar, y gana hasta más tarde cuanto más alta es la base: el piso manda desde los ${CORTE_MAS_TEMPRANO.edad} años en ${describirCorte(CORTE_MAS_TEMPRANO)} y recién desde los ${CORTE_MAS_TARDIO.edad} en ${describirCorte(CORTE_MAS_TARDIO)}.`,
+    a: `Por la fórmula sí, pero ahí entra el piso. Como la base es baja, la fórmula (53 × ingreso base × porcentaje de incapacidad × 65/edad) da menos que el piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso es el mismo para todos, sin importar la categoría ni el sueldo, así que protege más a quien tiene menos base. Con la escala vigente, desde los ${EDAD_PISO_SIEMPRE} años manda el piso en todas las categorías y modalidades, sin excepción. Antes de esa edad la fórmula puede ganar, y gana hasta más tarde cuanto más alta es la base: el piso manda desde los ${CORTE_MAS_TEMPRANO.edad} años en ${describirCorte(CORTE_MAS_TEMPRANO)} y recién desde los ${CORTE_MAS_TARDIO.edad} en ${describirCorte(CORTE_MAS_TARDIO)}.`,
   },
   {
     q: "¿Puede una ART negarse a asegurar a un empleador de casa particular?",
-    a: "No. El inciso a) es expreso: «La ASEGURADORA DE RIESGOS DEL TRABAJO (ART) no podrá rechazar la afiliación de ningún empleador incluido en su ámbito de actuación». La aseguradora la elige libremente el empleador, entre las autorizadas a operar en la jurisdicción de su domicilio.",
+    a: "No. El inciso a) lo dice claro: «La ASEGURADORA DE RIESGOS DEL TRABAJO (ART) no podrá rechazar la afiliación de ningún empleador incluido en su ámbito de actuación». El empleador elige la aseguradora que quiera, entre las autorizadas en la jurisdicción de su domicilio.",
   },
   {
     q: "Vengo pagando la cuota pero nunca elegí una ART. ¿Estoy cubierto?",
-    a: "Desde que se notifique la asignación de oficio, no desde el primer pago. El inciso b) prevé que al empleador que registra pagos sin haber contratado aseguradora se le asigne una «en forma sistemática», y aclara que «tendrá cobertura de riesgos del trabajo, a partir de la fecha en que se notifique a la Aseguradora la asignación de oficio realizada». Además, la asignación no procede si el empleador figura en el registro de contratos extinguidos por falta de pago.",
+    a: "Desde que se notifica la asignación de oficio, no desde el primer pago. El inciso b) prevé que al empleador que paga sin haber contratado aseguradora se le asigne una «en forma sistemática», y aclara que «tendrá cobertura de riesgos del trabajo, a partir de la fecha en que se notifique a la Aseguradora la asignación de oficio realizada». Además, no se asigna si el empleador figura en el registro de contratos terminados por falta de pago.",
   },
   {
     q: "¿La cuota de ART se paga a mes vencido, como el resto?",
-    a: "No, y es el único concepto del régimen que no. El inciso c) le da «carácter de pago anticipado»: se declara e ingresa durante el mes en que se prestan los servicios, aunque con el mismo formulario, plazos y condiciones que los demás aportes, que sí van a mes vencido.",
+    a: "No: es el único concepto del régimen que no. El inciso c) le da «carácter de pago anticipado». Se declara y se paga durante el mes en que se trabaja, aunque con el mismo formulario, plazos y condiciones que los demás aportes, que sí van a mes vencido.",
   },
   {
     q: "¿Cómo se reclama cuando hay un accidente?",
-    a: "Por el mismo camino que cualquier trabajador del sistema: la incorporación del art. 74 es al régimen de las leyes 24.557 y 26.773 sin un procedimiento propio. Rige la instancia administrativa previa y obligatoria ante las comisiones médicas de la Ley 27.348, con patrocinio letrado a cargo de la aseguradora y un plazo perentorio de 60 días hábiles administrativos.",
+    a: "Igual que cualquier trabajador del sistema: el art. 74 suma al personal al régimen de las leyes 24.557 y 26.773 sin un trámite propio. Primero hay que pasar, sí o sí, por las comisiones médicas de la Ley 27.348, con un abogado que paga la aseguradora y un plazo de 60 días hábiles administrativos que no se puede estirar.",
   },
   {
     q: "¿Y si el accidente pasó yendo al trabajo?",
-    a: "El accidente in itinere está cubierto, pero queda afuera del 20% adicional del art. 3 de la Ley 26.773, que sólo corre cuando el daño ocurre en el lugar de trabajo o mientras la persona está a disposición del empleador.",
+    a: "El accidente en el camino (in itinere) está cubierto, pero no cobra el 20% extra del art. 3 de la Ley 26.773. Ese extra solo corre si el daño pasa en el lugar de trabajo o mientras la persona está a disposición del empleador.",
   },
   {
     q: "¿Vale para el personal contratado por una empresa de limpieza?",
-    a: "No. El art. 3 de la Ley 26.844 excluye del régimen a las personas contratadas por personas jurídicas para hacer estas tareas, entre otros supuestos. Ese caso se rige por la LCT y por el convenio que corresponda, con el régimen general de riesgos del trabajo.",
+    a: "No. El art. 3 de la Ley 26.844 deja afuera del régimen, entre otros casos, a quienes contrata una empresa (persona jurídica) para hacer estas tareas. Ese caso va por la LCT y el convenio que corresponda, con el régimen general de riesgos del trabajo.",
   },
 ];
 
@@ -128,10 +128,10 @@ export default function Page() {
           ART de la empleada doméstica: quién la paga y sobre qué sueldo se liquida
         </h1>
         <p className="text-zinc-600">
-          El art. 74 de la Ley 26.844 tiene once renglones y no dice nada liquidable: incorpora al
+          El art. 74 de la Ley 26.844 tiene once renglones y no trae nada para calcular: suma al
           personal de casas particulares al régimen de riesgos del trabajo{" "}
           <strong>«en el modo y condiciones que se establezcan por vía reglamentaria»</strong>. Todo
-          lo que decide un caso real está en el reglamento — y el hallazgo más grande es que{" "}
+          lo que decide un caso real está en el reglamento. Y lo más importante es que{" "}
           <strong>la prestación no se liquida sobre el sueldo que cobra</strong>, sino sobre el
           mínimo de su categoría.
         </p>
@@ -145,13 +145,13 @@ export default function Page() {
 
       <RespuestaPrimero actualizado={ART_CASAS_FUENTES.consultadoEl}>
         <p>
-          <strong>La ART es obligatoria y la paga el empleador</strong> (la cuota se adiciona a los
-          aportes del art. 21 de la Ley 25.239, y es el único concepto del régimen que se paga{" "}
+          <strong>La ART es obligatoria y la paga el empleador</strong> (la cuota se suma a los
+          aportes del art. 21 de la Ley 25.239, y es lo único del régimen que se paga{" "}
           <strong>por adelantado</strong>). Pero la prestación{" "}
-          <strong>no se calcula sobre el sueldo real</strong>: el inciso d) manda tomar «la
-          remuneración mensual mínima» de la categoría. Como esa base es baja, en la práctica lo que
-          se cobra es <strong>el piso que la SRT actualiza por RIPTE</strong>, no el resultado de la
-          fórmula — y el piso es el mismo para todos.
+          <strong>no se calcula sobre el sueldo real</strong>: el inciso d) manda usar «la
+          remuneración mensual mínima» de la categoría. Como esa base es baja, en la práctica se
+          cobra <strong>el piso que la SRT actualiza por RIPTE</strong>, no lo que da la fórmula. Y
+          el piso es el mismo para todos.
         </p>
       </RespuestaPrimero>
 
@@ -160,7 +160,7 @@ export default function Page() {
         <p className="text-sm text-zinc-600">
           La base sale sola de la categoría y la modalidad: es la escala de la {VIGENCIA.resolucion},
           vigente desde {VIGENCIA.desde}. La cuota sale de la tabla de ARCA de{" "}
-          {VIGENCIA_APORTES.mesVigente}. Ninguno de los dos números se carga a mano.
+          {VIGENCIA_APORTES.mesVigente}. No tenés que cargar ninguno de los dos números.
         </p>
         <CalculadoraArtCasas />
       </section>
@@ -174,9 +174,9 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{ART_CASAS_TEXTOS.ley74}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          Es el patrón que en este sitio ya pagó varias veces: cuando un artículo remite a una
-          reglamentación, el reglamento no aclara la regla — <strong>la escribe entera</strong>. Acá
-          son cinco incisos, y cada uno decide un caso.
+          Pasa seguido: cuando un artículo manda a una reglamentación, el reglamento no aclara la
+          regla, <strong>la escribe entera</strong>. Acá son cinco incisos, y cada uno decide un
+          caso.
         </p>
       </section>
 
@@ -191,27 +191,26 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{ART_CASAS_TEXTOS.baseDeCalculo}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          En cualquier otro trabajador el ingreso base del art. 12 de la Ley 24.557 es el promedio
-          de los salarios del año anterior actualizados mes a mes por RIPTE. Acá no: es el{" "}
-          <strong>mínimo mensual de la categoría</strong>. Quien cobra por encima del mínimo, cobra
-          la prestación como si cobrara el mínimo — y la calculadora de arriba muestra exactamente
+          Para cualquier otro trabajador, el ingreso base del art. 12 de la Ley 24.557 es el
+          promedio de los sueldos del año anterior, actualizados mes a mes por RIPTE. Acá no: es el{" "}
+          <strong>mínimo mensual de la categoría</strong>. Si la persona cobra más que el mínimo,
+          igual recibe la prestación como si cobrara el mínimo. La calculadora de arriba te muestra
           cuánto queda afuera.
         </p>
         <p className="text-zinc-600">
-          La consecuencia aritmética es la que casi nunca se publica:{" "}
+          La consecuencia, que casi nunca se publica:{" "}
           <strong>con esa base, el que gana es el piso de la SRT</strong>. La fórmula del art. 14
-          ap. 2 multiplica 53 por el ingreso base, por el porcentaje de incapacidad y por 65/edad;
-          con un mínimo de categoría no llega al piso ni en los casos más graves, y el piso no
-          depende del sueldo. Barriendo la escala entera —5 categorías, las dos modalidades,
-          de los {EDAD_MINIMA_BARRIDO} a los {EDAD_MAXIMA_BARRIDO} años— el límite es nítido:{" "}
-          <strong>desde los {EDAD_PISO_SIEMPRE} años manda el piso siempre</strong>. Por debajo de
-          esa edad la fórmula puede ganar, porque ahí el coeficiente 65/edad es máximo, y gana
-          hasta más tarde cuanto más alta es la base: el piso manda desde los{" "}
+          ap. 2 multiplica 53 por el ingreso base, por el porcentaje de incapacidad y por 65/edad.
+          Con un mínimo de categoría no llega al piso ni en los casos más graves, y el piso no
+          depende del sueldo. Si recorrés la escala entera (5 categorías, las dos modalidades, de
+          los {EDAD_MINIMA_BARRIDO} a los {EDAD_MAXIMA_BARRIDO} años), el límite es claro:{" "}
+          <strong>desde los {EDAD_PISO_SIEMPRE} años manda el piso siempre</strong>. Antes de esa
+          edad la fórmula puede ganar, porque ahí el coeficiente 65/edad es más alto, y gana hasta
+          más tarde cuanto más alta es la base: el piso manda desde los{" "}
           {CORTE_MAS_TEMPRANO.edad} años en {describirCorte(CORTE_MAS_TEMPRANO)} y recién desde
           los {CORTE_MAS_TARDIO.edad} en {describirCorte(CORTE_MAS_TARDIO)}. Y cuál de los dos gana{" "}
           <strong>no depende del porcentaje de incapacidad</strong>, porque los dos lados de la
-          comparación se multiplican por él. Cómo se llega a ese número, paso por paso,
-          está en{" "}
+          comparación se multiplican por él. La cuenta completa, paso por paso, está en{" "}
           <Link href="/indemnizacion-art" className="text-emerald-700 hover:underline">
             indemnización por accidente de trabajo
           </Link>
@@ -230,11 +229,10 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{ART_CASAS_TEXTOS.asignacionDeOficio}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          El empleador que paga la cuota en el formulario mensual pero nunca eligió aseguradora no
-          queda cubierto por el hecho de pagar: la cobertura arranca cuando se le notifica a la ART
-          la asignación de oficio. Y si el empleador está en el registro de contratos extinguidos
-          por falta de pago, la asignación directamente no procede. Elegir una ART es un acto
-          propio, y ninguna puede negarse:
+          Si pagás la cuota en el formulario mensual pero nunca elegiste aseguradora, pagar no te
+          cubre. La cobertura empieza cuando se le notifica a la ART la asignación de oficio. Y si
+          figurás en el registro de contratos terminados por falta de pago, directamente no te
+          asignan una. Elegir una ART lo tenés que hacer vos, y ninguna puede negarse:
         </p>
         <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/70 p-4">
           <p className="text-sm text-zinc-700">«{ART_CASAS_TEXTOS.noRechazo}»</p>
@@ -252,9 +250,9 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{ART_CASAS_TEXTOS.pagoAnticipado}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          Los aportes y contribuciones de casas particulares van a mes vencido. La ART, no: es un{" "}
-          <strong>pago anticipado</strong>, por el mes en que se están prestando los servicios,
-          aunque viaje en el mismo formulario. El desglose completo de la boleta mensual está en{" "}
+          Los aportes y contribuciones de casas particulares van a mes vencido. La ART no: es un{" "}
+          <strong>pago anticipado</strong>, por el mes en que se está trabajando, aunque vaya en el
+          mismo formulario. El desglose completo de la boleta mensual está en{" "}
           <Link href="/aportes-empleada-domestica" className="text-emerald-700 hover:underline">
             aportes de la empleada doméstica
           </Link>
@@ -301,20 +299,19 @@ export default function Page() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página es informativa: el porcentaje de incapacidad lo determina la comisión médica y
+          Esta página es informativa: el porcentaje de incapacidad lo define la comisión médica y
           el monto final lo liquida la aseguradora. El trámite para reclamar tiene sus propios
           plazos:{" "}
           <Link href="/comision-medica" className="text-emerald-700 hover:underline">
             la instancia previa obligatoria
           </Link>
-          . Y el resto del cluster de casas particulares —escala, aportes, deducción y despido—
-          arranca en{" "}
+          . Y todo lo demás de casas particulares (escala, aportes, deducción y despido) arranca en{" "}
           <Link href="/empleada-domestica" className="text-emerald-700 hover:underline">
             sueldo de la empleada doméstica
           </Link>

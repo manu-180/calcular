@@ -135,7 +135,7 @@ export function calcularVentaInmueble(params: {
   if (indiceTopeado) {
     avisos.push({
       tono: "atencion",
-      texto: `El INDEC todavía no publicó el IPC de ${nombrePeriodo(venta)}: la actualización del costo se hizo hasta ${nombrePeriodo(ULTIMO_PERIODO)}, el último mes publicado. La cuenta queda corta, no larga — y acá se dice, en vez de extrapolar un índice que no existe.`,
+      texto: `El INDEC todavía no publicó el IPC de ${nombrePeriodo(venta)}: la actualización del costo se hizo hasta ${nombrePeriodo(ULTIMO_PERIODO)}, el último mes publicado. La cuenta queda corta, no larga. Preferimos avisarlo antes que inventar un índice que no existe.`,
     });
   }
 
@@ -147,7 +147,7 @@ export function calcularVentaInmueble(params: {
     avisos.push({
       tono: "atencion",
       texto:
-        "El propio inciso agrega «en los términos que al respecto establezca la reglamentación». La exención está en la ley y rige; la operatoria concreta —qué se le presenta al escribano, cómo se acredita— puede estar en una resolución de ARCA. Antes de escriturar conviene verificar si ya salió: esta página publica lo que dice la ley, que es lo que no va a cambiar.",
+        "El propio inciso agrega «en los términos que al respecto establezca la reglamentación». La exención está en la ley y rige; la operatoria concreta (qué se le presenta al escribano, cómo se acredita) puede estar en una resolución de ARCA. Antes de escriturar conviene verificar si ya salió: esta página publica lo que dice la ley, que es lo que no va a cambiar.",
     });
   }
 
@@ -166,7 +166,7 @@ export function calcularVentaInmueble(params: {
   if (regimen === "sinImpuesto") {
     avisos.push({
       tono: "ok",
-      texto: `No hay impuesto nacional a la transferencia, y hacen falta dos leyes para verlo. El inmueble se adquirió antes del 1/1/2018, así que nunca entró al cedular: el art. 86 inc. a) de la Ley 27.430 lo alcanza sólo «en tanto el enajenante o cedente hubiera adquirido el bien a partir del 1° de enero de 2018», y para esos casos deja afuera al Título VII de la Ley 23.905. Y ese Título VII —el ITI— fue derogado por el art. 67 de la Ley 27.743 el ${DEROGACION_ITI}. Comprado antes de 2018 y vendido después de esa fecha: ninguno de los dos.`,
+      texto: `No hay impuesto nacional a la transferencia, y hacen falta dos leyes para verlo. El inmueble se adquirió antes del 1/1/2018, así que nunca entró al cedular: el art. 86 inc. a) de la Ley 27.430 lo alcanza sólo «en tanto el enajenante o cedente hubiera adquirido el bien a partir del 1° de enero de 2018», y para esos casos deja afuera al Título VII de la Ley 23.905. Y ese Título VII (el ITI) fue derogado por el art. 67 de la Ley 27.743 el ${DEROGACION_ITI}. Comprado antes de 2018 y vendido después de esa fecha: ninguno de los dos.`,
     });
   }
 

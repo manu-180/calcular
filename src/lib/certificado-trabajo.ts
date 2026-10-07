@@ -281,7 +281,7 @@ export function calcularCertificado(params: {
   if (regimen === "transicion") {
     avisos.push({
       tono: "bloqueante",
-      texto: `Zona gris. Para las extinciones ocurridas entre el ${VIGENCIA_BASES_ISO} y el día anterior al ${VIGENCIA_REFORMA_ISO}, el art. 80 todavía tenía su último párrafo, pero el art. 45 de la Ley 25.345 —el que lo había incorporado— ya estaba derogado por el art. 99 de la Ley 27.742. Si esa derogación borró o no la sanción es una discusión abierta, con fallos en los dos sentidos. El importe de acá es de referencia, no un derecho firme.`,
+      texto: `Zona gris. Para las extinciones ocurridas entre el ${VIGENCIA_BASES_ISO} y el día anterior al ${VIGENCIA_REFORMA_ISO}, el art. 80 todavía tenía su último párrafo, pero el art. 45 de la Ley 25.345 (el que lo había incorporado) ya estaba derogado por el art. 99 de la Ley 27.742. Si esa derogación borró o no la sanción es una discusión abierta, con fallos en los dos sentidos. El importe de acá es de referencia, no un derecho firme.`,
     });
   }
 

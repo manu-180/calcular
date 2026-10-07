@@ -102,7 +102,7 @@ export function armarCarta(caso: Caso, inf: Informe, p: Personales, emitido?: st
     case "honorarios": {
       const de = concepto ? ` por ${concepto}` : "";
       return {
-        asunto: `Actualización de honorarios${concepto ? ` — ${concepto}` : ""}`,
+        asunto: `Actualización de honorarios${concepto ? `: ${concepto}` : ""}`,
         saludo,
         parrafos: [
           t(`Te escribo para contarte que voy a actualizar mis honorarios${de}.`, `Le escribo para contarle que voy a actualizar mis honorarios${de}.`),
@@ -117,7 +117,7 @@ export function armarCarta(caso: Caso, inf: Informe, p: Personales, emitido?: st
     case "precio": {
       const de = concepto ? ` de ${concepto}` : "";
       return {
-        asunto: concepto ? `Actualización del presupuesto — ${concepto}` : "Actualización de precio",
+        asunto: concepto ? `Actualización del presupuesto: ${concepto}` : "Actualización de precio",
         saludo,
         parrafos: [
           t(`Te escribo por el presupuesto${de} que te pasé en ${desde}, por ${X}.`, `Le escribo por el presupuesto${de} que le pasé en ${desde}, por ${X}.`),

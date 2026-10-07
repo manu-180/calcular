@@ -41,25 +41,25 @@ export const TUTELA_FUENTES = {
   consultadoEl: "22 de agosto de 2026",
   lista: [
     {
-      nombre: "Ley 23.551 — texto ACTUALIZADO (InfoLEG)",
+      nombre: "Ley 23.551, texto ACTUALIZADO (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/20000-24999/20993/texact.htm",
       detalle:
         "arts. 40, 41, 44 inc. c), 48, 49, 50 y 52 con las sustituciones de la Ley 27.802. Es el texto vigente, distinto del que cita casi toda la web.",
     },
     {
-      nombre: "Ley 23.551 — texto ORIGINAL de 1988 (InfoLEG)",
+      nombre: "Ley 23.551, texto ORIGINAL de 1988 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/20000-24999/20993/norma.htm",
       detalle:
         "el texto que estuvo vigente 38 años y que sigue circulando como si fuera el actual. Se usa acá sólo para mostrar qué cambió.",
     },
     {
-      nombre: "Ley 27.802 — Título XV, arts. 138 a 148 (InfoLEG)",
+      nombre: "Ley 27.802: Título XV, arts. 138 a 148 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=423680",
       detalle:
         "las once modificaciones a la ley sindical, publicadas en el B.O. del 6 de marzo de 2026 y vigentes desde ese mismo día.",
     },
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado, art. 245 bis",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado, art. 245 bis",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "agravamiento por despido discriminatorio (texto de la Ley 27.742): 50% del art. 245, hasta 100% por decisión judicial, no acumulable con otros regímenes especiales.",
@@ -132,7 +132,7 @@ export const ROLES: Array<{
     id: "candidato-no-electo",
     etiqueta: "Candidato no electo (se postuló y perdió la elección)",
     descripcion:
-      "Cobra las indemnizaciones, «las remuneraciones imputables al período de tutela aún no agotado» de los seis meses del art. 50 y «un (1) año más de remuneraciones» — que ya no se acumula con el art. 245 bis de la LCT.",
+      "Cobra las indemnizaciones, «las remuneraciones imputables al período de tutela aún no agotado» de los seis meses del art. 50 y «un (1) año más de remuneraciones». Eso ya no se acumula con el art. 245 bis de la LCT.",
     cuantificado: true,
   },
   {
@@ -187,7 +187,7 @@ export const TEXTOS = {
  */
 export const CAMBIOS = [
   {
-    articulo: "Art. 52 — a quién ampara la tutela",
+    articulo: "Art. 52: a quién ampara la tutela",
     antes:
       "No traía una lista cerrada: la garantía se leía junto con los arts. 40, 48 y 50, sin excluir a nadie por ser suplente.",
     ahora:
@@ -195,7 +195,7 @@ export const CAMBIOS = [
     plata: "Un suplente despedido pasa a cobrar la indemnización común, sin el agravamiento.",
   },
   {
-    articulo: "Art. 52 — el congresal",
+    articulo: "Art. 52: el congresal",
     antes: "La ley no mencionaba a los congresales ni ponía cupo.",
     ahora:
       "Cupo de 2 (grandes empresas) o 1 (pymes, Ley 24.467), y la tutela «solo podrá ser invocada exclusivamente durante el tiempo en que el trabajador asista al congreso», avisando al empleador el inicio y la conclusión.",
@@ -203,7 +203,7 @@ export const CAMBIOS = [
       "Fuera de esos días, el congresal está en la misma situación que cualquier otro trabajador.",
   },
   {
-    articulo: "Art. 52 — el candidato no electo",
+    articulo: "Art. 52: el candidato no electo",
     antes:
       "«Además de las indemnizaciones y de las remuneraciones imputables al período de estabilidad aún no agotado, el importe de un año más de remuneraciones», sin regla de acumulación.",
     ahora:
@@ -212,7 +212,7 @@ export const CAMBIOS = [
       "Si además hubo despido discriminatorio por motivo gremial, no se suman los dos agravamientos: se elige el que convenga.",
   },
   {
-    articulo: "Art. 52 — la salida del empleador",
+    articulo: "Art. 52: la salida del empleador",
     antes:
       "La cautelar procedía si la permanencia «pudiere ocasionar peligro para la seguridad de las personas o bienes de la empresa».",
     ahora:
@@ -221,7 +221,7 @@ export const CAMBIOS = [
       "El empleador tiene una salida procesal más ancha, con plazos cortos que corren contra él si no los usa.",
   },
   {
-    articulo: "Art. 50 — la protección del postulante",
+    articulo: "Art. 50: la protección del postulante",
     antes:
       "Corría «a partir de su postulación» y sólo cesaba si la lista no se oficializaba. No preveía la reorganización del establecimiento.",
     ahora:
@@ -230,7 +230,7 @@ export const CAMBIOS = [
       "Un candidato que sacó menos del 5% pierde la protección y, con ella, el agravamiento del art. 52.",
   },
   {
-    articulo: "Art. 44 inc. c) — las horas del delegado",
+    articulo: "Art. 44 inc. c): las horas del delegado",
     antes:
       "«Un crédito de horas mensuales retribuidas de conformidad con lo que se disponga en la convención colectiva aplicable», sin techo legal.",
     ahora:

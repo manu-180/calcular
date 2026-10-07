@@ -142,30 +142,30 @@ export const ART_TEXTOS = {
 export const ART_FUENTES = {
   consultadoEl: VIGENCIA_ART.consultadoEl,
   principal: {
-    nombre: "Ley 24.557 — texto actualizado en InfoLEG",
+    nombre: "Ley 24.557, texto actualizado en InfoLEG",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/27971/texact.htm",
   },
   lista: [
     {
-      nombre: "Ley 24.557 sobre Riesgos del Trabajo — texto actualizado",
+      nombre: "Ley 24.557 sobre Riesgos del Trabajo, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/27971/texact.htm",
       detalle:
         "Art. 11 ap. 4 (compensaciones adicionales de pago único), art. 12 (ingreso base, sustituido por el Decreto 669/2019), art. 14 (incapacidad parcial), art. 15 (incapacidad total) y art. 18 (muerte y derechohabientes).",
     },
     {
-      nombre: "Decreto 1694/2009 — texto actualizado",
+      nombre: "Decreto 1694/2009, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/155000-159999/159765/texact.htm",
       detalle:
         "Art. 2º: suprime los topes de los arts. 14 ap. 2 y 15 ap. 2. Arts. 3º y 4º: convierten los $180.000 en PISO. Es la norma que invierte lo que sigue diciendo el texto de la ley.",
     },
     {
-      nombre: "Ley 26.773 — texto actualizado",
+      nombre: "Ley 26.773, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/200000-204999/203798/texact.htm",
       detalle:
         "Art. 2 (el principio indemnizatorio es de pago único), art. 3 (el 20% adicional cuando el daño ocurre en el lugar de trabajo o a disposición del empleador) y art. 17 bis (la actualización semestral por RIPTE, incorporado por el art. 21 de la Ley 27.348).",
     },
     {
-      nombre: "Resolución SRT 39/2026 — Boletín Oficial del 2/9/2026",
+      nombre: "Resolución SRT 39/2026: Boletín Oficial del 2/9/2026",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346792",
       detalle:
         "Los pisos y compensaciones vigentes del 1/9/2026 al 28/2/2027: $114.354.110 para los arts. 14 ap. 2 y 15 ap. 2; $50.824.055 / $63.530.069 / $76.236.060 para el art. 11 ap. 4; y $21.656.176 para el adicional del art. 3 de la Ley 26.773.",

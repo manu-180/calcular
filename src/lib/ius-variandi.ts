@@ -95,7 +95,7 @@ export function evaluarIusVariandi(params: {
     const nombres = vedabanAntes.map((m) => m.etiqueta.toLowerCase()).join(" y ");
     avisos.push({
       tono: "bloqueante",
-      texto: `Lo que marcaste —${nombres}— vedaba el cambio con el texto anterior del artículo 66, pero el texto vigente desde el 6 de marzo de 2026 ya no lo enuncia. Con esos motivos solos, la ley hoy no te habilita a considerarte despedido. El artículo 65, que la reforma no tocó, sigue exigiendo que las facultades de dirección se ejerzan «con carácter funcional (…) sin perjuicio de la preservación y mejora de los derechos personales y patrimoniales del trabajador»: si hay un argumento, va a tener que salir de ahí. Eso es una lectura, no un texto, y todavía no hay jurisprudencia sobre la reforma. Consultá a un profesional antes de dar por roto el contrato.`,
+      texto: `Lo que marcaste (${nombres}) vedaba el cambio con el texto anterior del artículo 66, pero el texto vigente desde el 6 de marzo de 2026 ya no lo enuncia. Con esos motivos solos, la ley hoy no te habilita a considerarte despedido. El artículo 65, que la reforma no tocó, sigue exigiendo que las facultades de dirección se ejerzan «con carácter funcional (…) sin perjuicio de la preservación y mejora de los derechos personales y patrimoniales del trabajador»: si hay un argumento, va a tener que salir de ahí. Eso es una lectura, no un texto, y todavía no hay jurisprudencia sobre la reforma. Consultá a un profesional antes de dar por roto el contrato.`,
     });
   }
 
@@ -112,7 +112,7 @@ export function evaluarIusVariandi(params: {
     avisos.push({
       tono: "bloqueante",
       texto:
-        "Falta el requisito que la reforma agregó: el artículo 66 vigente dice que la posibilidad de considerarse despedido asiste al trabajador «previa intimación y si ésta fuere desoída». Antes del 6 de marzo de 2026 el texto no la exigía. Intimá por escrito y de manera fehaciente —telegrama laboral o carta documento—, dando un plazo para que rectifiquen, y guardá la constancia. Sin ese paso, un reclamo bien fundado se cae por la forma.",
+        "Falta el requisito que la reforma agregó: el artículo 66 vigente dice que la posibilidad de considerarse despedido asiste al trabajador «previa intimación y si ésta fuere desoída». Antes del 6 de marzo de 2026 el texto no la exigía. Intimá por escrito y de manera fehaciente (telegrama laboral o carta documento), dando un plazo para que rectifiquen, y guardá la constancia. Sin ese paso, un reclamo bien fundado se cae por la forma.",
     });
   }
 

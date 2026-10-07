@@ -84,7 +84,7 @@ export function CalculadoraDescuentos() {
           >
             {PERIODOS.map((m) => (
               <option key={m.periodo} value={m.periodo}>
-                {etiquetaPeriodo(m.periodo)} — SMVM {formatARS(m.mensual, 0)}
+                {etiquetaPeriodo(m.periodo)}: SMVM {formatARS(m.mensual, 0)}
                 {m.periodo > PERIODO_VIGENTE ? " (ya fijado)" : ""}
               </option>
             ))}
@@ -202,7 +202,7 @@ export function CalculadoraDescuentos() {
               <tr className="border-b border-zinc-200 align-top">
                 <td className="py-2 pr-3">
                   <span className="font-medium text-zinc-800">
-                    Embargo — la otra lectura del inciso 2
+                    Embargo: la otra lectura del inciso 2
                   </span>
                   <span className="block text-xs text-zinc-500">
                     El inciso 2 del art. 1º dice sólo «hasta el veinte por ciento (20%)» y, a

@@ -4,6 +4,7 @@ import { cargarPanel } from "@/lib/panel/datos";
 import { RANGOS, type PanelDatos, type Rango } from "@/lib/panel/tipos";
 import Panel from "@/components/panel/Panel";
 import PanelError from "@/components/panel/PanelError";
+import { EnlaceOpiniones } from "@/components/opiniones/EnlaceOpiniones";
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +28,12 @@ export default async function DashboardPage({ searchParams }: Props) {
   if (process.env.NODE_ENV === "development" && (sp.demo === "1" || sp.demo === "vacio")) {
     const { panelDeEjemplo, panelSinDatos } = await import("@/lib/panel/fixture");
     const datos = sp.demo === "vacio" ? panelSinDatos(rango) : panelDeEjemplo(rango);
-    return <Panel inicial={datos} demo={sp.demo} />;
+    return (
+      <>
+        <EnlaceOpiniones demo={sp.demo} />
+        <Panel inicial={datos} demo={sp.demo} />
+      </>
+    );
   }
 
   await requireAdmin("/dashboard");
@@ -39,5 +45,10 @@ export default async function DashboardPage({ searchParams }: Props) {
     console.error("[dashboard] cargarPanel falló", e);
     return <PanelError detalle={e instanceof Error ? e.message : String(e)} />;
   }
-  return <Panel inicial={datos} demo={null} />;
+  return (
+    <>
+      <EnlaceOpiniones demo={null} />
+      <Panel inicial={datos} demo={null} />
+    </>
+  );
 }

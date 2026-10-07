@@ -34,9 +34,11 @@ const HOGARES = hogaresDelMes(U);
 
 const FAMILIA_TIPO = HOGARES[1].r;
 
+const TITULO = `Canasta básica ${MES}: cuánto necesita tu hogar`;
+
 export const metadata: Metadata = {
-  title: `Canasta básica ${MES}: cuánto necesita TU familia para no ser pobre`,
-  description: `Calculá la línea de pobreza y de indigencia de tu hogar con el dato oficial del INDEC de ${MES}. La familia tipo necesita ${formatARS(FAMILIA_TIPO.lineaPobreza, 0)} por mes — pero tu hogar no es la familia tipo: poné las edades reales y mirá tu propio umbral.`,
+  title: TITULO,
+  description: `La línea de pobreza e indigencia de tu hogar con el dato del INDEC de ${MES}. Poné las edades reales y mirá tu umbral, no el de la familia tipo.`,
   alternates: { canonical: "/canasta-basica" },
   openGraph: {
     images: [
@@ -52,31 +54,31 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: `¿Cuánto necesita una familia para no ser pobre en ${MES}?`,
-    a: `Depende de quiénes la componen, no del número de integrantes. La "familia tipo" que publica el INDEC (dos adultos de 35 y 31 y dos hijos de 6 y 8 años) necesitó ${formatARS(FAMILIA_TIPO.lineaPobreza, 0)} en ${MES} para no ser pobre, y ${formatARS(FAMILIA_TIPO.lineaIndigencia, 0)} para no ser indigente. Un hogar con un adolescente varón o con adultos mayores tiene un umbral distinto, porque cada persona "pesa" diferente según su requerimiento nutricional. Por eso esta calculadora pide las edades reales en lugar de asumir la familia tipo.`,
+    a: `Depende de quiénes la forman, no de cuántos son. La "familia tipo" del INDEC (dos adultos de 35 y 31 y dos hijos de 6 y 8 años) necesitó ${formatARS(FAMILIA_TIPO.lineaPobreza, 0)} en ${MES} para no ser pobre, y ${formatARS(FAMILIA_TIPO.lineaIndigencia, 0)} para no ser indigente. Un hogar con un adolescente varón o con adultos mayores tiene otro umbral, porque cada persona "pesa" distinto según lo que necesita comer. Por eso esta calculadora pide las edades reales en vez de suponer la familia tipo.`,
   },
   {
     q: "¿Qué diferencia hay entre canasta básica alimentaria y canasta básica total?",
-    a: `La canasta básica alimentaria (CBA) es el costo mensual de los alimentos que cubren los requerimientos de energía y proteínas de un adulto: define la línea de indigencia. La canasta básica total (CBT) toma esa CBA y la amplía con el coeficiente de Engel para incluir los bienes y servicios no alimentarios —vestimenta, transporte, salud, educación, vivienda—: define la línea de pobreza. En ${MES} la CBA del adulto equivalente fue de ${formatARS(U.cba, 0)} y la CBT de ${formatARS(U.cbt, 0)}.`,
+    a: `La canasta básica alimentaria (CBA) es lo que cuesta por mes la comida que cubre la energía y las proteínas que necesita un adulto. Marca la línea de indigencia. La canasta básica total (CBT) toma esa CBA y le suma, con el coeficiente de Engel, lo que no es comida (ropa, transporte, salud, educación, vivienda). Marca la línea de pobreza. En ${MES} la CBA del adulto equivalente fue de ${formatARS(U.cba, 0)} y la CBT, de ${formatARS(U.cbt, 0)}.`,
   },
   {
     q: "¿Qué es un «adulto equivalente»?",
-    a: "Es la unidad de medida del INDEC. La referencia es el requerimiento energético de un varón adulto de 30 a 60 años con actividad moderada (2.750 kcal), que vale 1 adulto equivalente. Cada persona del hogar vale una fracción según su sexo y su edad: un bebé menor de 1 año vale 0,35; un chico de 6, 0,64; una mujer de 30 a 45, 0,77; un varón de 17, 1,04. Sumando esas fracciones se obtiene cuántos adultos equivalentes tiene el hogar, y ese número multiplica la canasta.",
+    a: "Es la unidad de medida del INDEC. La referencia es lo que necesita comer un varón de 30 a 60 años con actividad moderada (2.750 kcal), que vale 1 adulto equivalente. Cada persona del hogar vale una parte según su sexo y su edad: un bebé de menos de 1 año vale 0,35; un chico de 6, 0,64; una mujer de 30 a 45, 0,77; un varón de 17, 1,04. Si sumás esas partes, tenés los adultos equivalentes del hogar, y ese número multiplica la canasta.",
   },
   {
     q: "¿Estar por debajo de la línea de pobreza tiene algún efecto legal?",
-    a: "No. Es un umbral estadístico que el INDEC usa para medir cuánta gente es pobre en el país, no una categoría legal ni un requisito para acceder a un plan, una asignación o un beneficio. Cada programa social tiene sus propios criterios de acceso, que no son estos.",
+    a: "No. Es un umbral estadístico que el INDEC usa para medir cuánta gente es pobre en el país. No es una categoría legal ni un requisito para un plan, una asignación o un beneficio. Cada programa social tiene sus propias reglas para entrar, que no son estas.",
   },
   {
-    q: "¿Sirve para todo el país o sólo para Buenos Aires?",
-    a: "La serie mensual que publica el INDEC —y que usa esta calculadora— es la del Gran Buenos Aires. Para medir la pobreza en el resto del país, el INDEC aplica coeficientes regionales sobre esa base, que no se publican en la serie mensual. Tomá el resultado como una referencia nacional aproximada: en las regiones más caras el umbral real es algo más alto y en las más baratas, algo más bajo.",
+    q: "¿Sirve para todo el país o solo para Buenos Aires?",
+    a: "La serie mensual del INDEC (la que usa esta calculadora) es la del Gran Buenos Aires. Para medir la pobreza en el resto del país, el INDEC aplica coeficientes regionales sobre esa base, y no los publica en la serie mensual. Tomá el resultado como una referencia aproximada: en las regiones más caras el umbral real es algo más alto, y en las más baratas, algo más bajo.",
   },
   {
     q: "¿Cada cuánto se actualiza este número?",
-    a: `Todos los meses. El INDEC publica la valorización de la CBA y la CBT alrededor del día 14 o 15, con los datos del mes anterior. Esta página toma la serie oficial completa, así que se actualiza sola: el último dato disponible es el de ${MES}.`,
+    a: `Todos los meses. El INDEC publica la CBA y la CBT cerca del día 14 o 15, con los datos del mes anterior. Esta página usa la serie oficial completa, así que se actualiza sola: el último dato disponible es el de ${MES}.`,
   },
   {
     q: "¿Por qué la canasta sube distinto que la inflación?",
-    a: "Porque mide otra cosa. El IPC sigue el precio de todo lo que consume un hogar promedio; la CBA sigue una lista fija de alimentos y la CBT la amplía con el coeficiente de Engel. Cuando la comida sube más rápido que el resto, la canasta corre por encima del IPC, y al revés. Podés comparar los dos en la calculadora de inflación.",
+    a: "Porque mide otra cosa. El IPC sigue el precio de todo lo que consume un hogar promedio. La CBA sigue una lista fija de alimentos, y la CBT la amplía con el coeficiente de Engel. Cuando la comida sube más rápido que el resto, la canasta corre por encima del IPC, y al revés. Podés comparar los dos en la calculadora de inflación.",
   },
 ];
 
@@ -96,7 +98,7 @@ export default function CanastaBasicaPage() {
         inLanguage: "es-AR",
       },
       datasetSchema({
-        nombre: `Canasta básica alimentaria y total del adulto equivalente — ${MES} (INDEC, Gran Buenos Aires)`,
+        nombre: `Canasta básica alimentaria y total del adulto equivalente, ${MES} (INDEC, Gran Buenos Aires)`,
         descripcion: `Valores mensuales de la canasta básica alimentaria (línea de indigencia) y de la canasta básica total (línea de pobreza) por adulto equivalente, publicados por el INDEC para el Gran Buenos Aires. En ${MES}: CBA ${formatARS(U.cba, 0)} y CBT ${formatARS(U.cbt, 0)}.`,
         url: "/canasta-basica",
         modificado: `${U.periodo}-01`,
@@ -104,7 +106,7 @@ export default function CanastaBasicaPage() {
         fuenteUrl: CANASTA_BASICA_FUENTE.informe,
       }),
       articleSchema({
-        titulo: `Canasta básica ${MES}: cuánto necesita tu familia para no ser pobre`,
+        titulo: TITULO,
         descripcion:
           "Línea de pobreza e indigencia de un hogar concreto, calculada con la canasta del INDEC y la tabla oficial de adultos equivalentes.",
         url: "/canasta-basica",
@@ -131,9 +133,8 @@ export default function CanastaBasicaPage() {
         </h1>
         <p className="text-zinc-600">
           Todos los meses sale la noticia con el número de la «familia tipo». El problema es que
-          casi nadie vive en la familia tipo: el umbral depende de la edad y el sexo de cada
-          integrante. Poné tu hogar real y mirá el número que te corresponde a vos, con el dato
-          oficial del INDEC.
+          casi nadie vive en una familia tipo: el umbral depende de la edad y el sexo de cada
+          integrante. Cargá tu hogar real y mirá tu número, con el dato oficial del INDEC.
         </p>
       </header>
 
@@ -141,12 +142,12 @@ export default function CanastaBasicaPage() {
         <p>
           En {MES}, la canasta básica total del <strong>adulto equivalente</strong> fue de{" "}
           <strong>{formatARS(U.cbt, 0)}</strong> y la alimentaria, de{" "}
-          <strong>{formatARS(U.cba, 0)}</strong> (INDEC, Gran Buenos Aires). Para la familia tipo —dos
-          adultos y dos hijos de 6 y 8 años, que suman 3,09 adultos equivalentes— eso significa{" "}
+          <strong>{formatARS(U.cba, 0)}</strong> (INDEC, Gran Buenos Aires). La familia tipo (dos
+          adultos y dos hijos de 6 y 8 años, que suman 3,09 adultos equivalentes) necesita{" "}
           <strong>{formatARS(FAMILIA_TIPO.lineaPobreza, 0)}</strong> por mes para no ser pobre y{" "}
           <strong>{formatARS(FAMILIA_TIPO.lineaIndigencia, 0)}</strong> para no ser indigente. Tu
-          hogar tiene su propio umbral: se calcula sumando los adultos equivalentes de cada
-          integrante según la tabla oficial y multiplicando por la canasta.
+          hogar tiene su propio umbral: se suman los adultos equivalentes de cada integrante según la
+          tabla oficial y se multiplica por la canasta.
         </p>
       </RespuestaPrimero>
 
@@ -157,9 +158,9 @@ export default function CanastaBasicaPage() {
           Los tres hogares que publica el INDEC en {MES}
         </h2>
         <p className="text-zinc-600">
-          Estos son los ejemplos del informe oficial. Fijate cómo un hogar de 3 personas con un
-          adolescente varón y una adulta mayor está más cerca de uno de 5 con chicos chicos que de
-          la familia tipo: lo que manda es la composición, no la cantidad.
+          Son los ejemplos del informe oficial. Fijate que un hogar de 3 personas, con un
+          adolescente varón y una adulta mayor, está más cerca de uno de 5 con chicos chicos que de
+          la familia tipo. Lo que manda es quiénes son, no cuántos.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -196,8 +197,9 @@ export default function CanastaBasicaPage() {
         </div>
         <p className="text-sm text-zinc-500">
           Fuente: INDEC, informe de valorización mensual de la CBA y la CBT de {MES}. Los valores de
-          esta tabla no están escritos a mano: los calcula el mismo motor que la calculadora de
-          arriba, y una suite de verificación los compara contra el informe oficial en cada deploy.
+          esta tabla no están escritos a mano: los calcula la misma cuenta que la calculadora de
+          arriba, y cada vez que actualizamos el sitio un control automático los compara con el
+          informe oficial.
         </p>
       </section>
 
@@ -226,8 +228,16 @@ export default function CanastaBasicaPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-600">
-          Los dos son valores por <strong>adulto equivalente</strong>, no por hogar. Para comparar
-          contra los precios generales o para actualizar un monto viejo, usá la{" "}
+          Los dos son valores por <strong>adulto equivalente</strong>, no por hogar. Si querés
+          compararlos con un ingreso, mirá cuánto es el{" "}
+          <Link href="/salario-minimo" className="font-medium text-emerald-700 hover:underline">
+            salario mínimo
+          </Link>{" "}
+          y cuánto suman las{" "}
+          <Link href="/asignaciones-familiares" className="font-medium text-emerald-700 hover:underline">
+            asignaciones familiares
+          </Link>{" "}
+          de tu casa. Para compararlos con los precios en general o actualizar un monto viejo, usá la{" "}
           <Link href="/inflacion" className="font-medium text-emerald-700 hover:underline">
             calculadora de inflación
           </Link>
@@ -244,9 +254,9 @@ export default function CanastaBasicaPage() {
           La tabla oficial de adultos equivalentes
         </h2>
         <p className="text-zinc-600">
-          Es el corazón del cálculo y casi nunca se publica completa. Sale del cuadro 4 del informe
-          del INDEC: cuánto vale cada persona en relación con el varón adulto de referencia
-          (2.750 kcal = 1). Hasta los 9 años el coeficiente es igual para ambos sexos.
+          Es la base de la cuenta y casi nunca se publica completa. Sale del cuadro 4 del informe
+          del INDEC: cuánto vale cada persona comparada con el varón adulto de referencia
+          (2.750 kcal = 1). Hasta los 9 años el coeficiente es el mismo para nenas y nenes.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -355,7 +365,7 @@ export default function CanastaBasicaPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              INDEC — Valorización mensual de la canasta básica alimentaria y total (informes técnicos)
+              INDEC: valorización mensual de la canasta básica alimentaria y total (informes técnicos)
             </a>
           </li>
           <li>
@@ -366,7 +376,7 @@ export default function CanastaBasicaPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              INDEC — serie mensual CBA/CBT desde abril de 2016 (planilla oficial)
+              INDEC: serie mensual CBA/CBT desde abril de 2016 (planilla oficial)
             </a>
           </li>
           <li>
@@ -377,7 +387,7 @@ export default function CanastaBasicaPage() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              INDEC — Metodología N° 22, La medición de la pobreza y la indigencia en la Argentina
+              INDEC: Metodología N° 22, La medición de la pobreza y la indigencia en la Argentina
             </a>
           </li>
         </ul>

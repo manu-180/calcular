@@ -56,19 +56,19 @@ export const DEDUCCION_FUENTES = {
   consultadoEl: "13 de agosto de 2026",
   lista: [
     {
-      nombre: "Ley 26.063, art. 16 — texto actualizado (InfoLEG)",
+      nombre: "Ley 26.063, art. 16, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/110000-114999/111982/texact.htm",
       detalle:
         "crea la deducción, define qué conceptos entran y fija el tope en la ganancia no imponible anual.",
     },
     {
-      nombre: "Ley 25.239, Título XVIII art. 3º — texto actualizado (InfoLEG)",
+      nombre: "Ley 25.239, Título XVIII art. 3º, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/60000-64999/61784/texact.htm",
       detalle:
         "las contribuciones a las que remite el art. 16 inc. b): una con destino al SIPA y otra al sistema de salud (texto sustituido por el Dec. 90/2023). La cuota de ART no figura en este artículo.",
     },
     {
-      nombre: "ARCA — Casas Particulares · Deducción en el Impuesto a las Ganancias",
+      nombre: "ARCA: Casas Particulares · Deducción en el Impuesto a las Ganancias",
       url: "https://www.afip.gob.ar/casasparticulares/ayuda/empleador/deduccion.asp",
       detalle:
         "el organismo describe lo deducible como la remuneración abonada y las contribuciones patronales ingresadas, y se informa por el F. 572 web (SIRADIG).",

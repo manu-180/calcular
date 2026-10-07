@@ -159,7 +159,7 @@ export function calcularPeriodoPrueba(params: {
   if (fechasValidas && !dentroDePrueba) {
     avisos.push({
       tono: "bloqueante",
-      texto: `Con ${mesesTrabajados} meses completos, el contrato ya salió del período de prueba de ${topeMeses} meses: corresponde la indemnización por antigüedad del art. 245, el preaviso del art. 231 y la integración del mes. Este cálculo no aplica — usá la calculadora de indemnización por despido.`,
+      texto: `Con ${mesesTrabajados} meses completos, el contrato ya salió del período de prueba de ${topeMeses} meses: corresponde la indemnización por antigüedad del art. 245, el preaviso del art. 231 y la integración del mes. Este cálculo no aplica: usá la calculadora de indemnización por despido.`,
     });
   }
 

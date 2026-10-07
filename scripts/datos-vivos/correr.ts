@@ -8,8 +8,9 @@
 //   3. Un cambio que es sólo la fecha de consulta ("Descargado el …") se descarta, salvo que la
 //      fecha guardada tenga más de 7 días: así el "verificado el" del sitio no envejece, pero no se
 //      redeploya todos los días por nada.
-//   4. Si quedó algún cambio real, corre check-all completo (la puerta de siempre). Rojo → revierte
-//      todo y avisa.
+//   4. Si quedó algún cambio real, lo anota en el registro de /novedades (scripts/datos-vivos/
+//      novedades.ts), regenera las planillas y corre check-all completo (la puerta de siempre).
+//      Rojo → revierte todo, novedades incluidas, y avisa.
 //   5. Corre el semáforo (scripts/vigia/check-datos-vencen.ts), que mira lo que NO se puede cargar
 //      solo (circulares de gremios, PDFs de ARCA, resoluciones que no pasaron el ancla).
 //   6. Deja .datos-vivos/resumen.json, .datos-vivos/alerta.md (vacío si no hay nada que avisar) y
@@ -164,12 +165,22 @@ function main(): void {
 
   let puerta: "sin-cambios" | "verde" | "roja" = "sin-cambios";
   let puertaDetalle = "";
+  let novedadesRegistradas: string[] = [];
+  if (cambiados().size) {
+    // Antes de check-all: si la puerta sale roja, el revert de abajo se lleva también estas entradas
+    // y /novedades nunca anuncia un dato que no se publicó.
+    const n = tsx("scripts/datos-vivos/novedades.ts");
+    novedadesRegistradas = n.salida.split("\n").filter((l) => l.startsWith("+ novedad registrada:"));
+    console.log(`\n── novedades\n${n.salida}`);
+    // Los .xlsx de private/ los compara check-all (check_planilla_*) contra src/data. Sin regenerarlos
+    // con el dato nuevo, la puerta salía roja en CADA corrida con cambios: del 28/9 al 6/10/2026 no se
+    // publicó nada (TNA y aportes de ARCA de septiembre listos y descartados). Se commitean con el dato.
+    const g = tsx("scripts/gen_planilla_todas.ts", [], 600);
+    if (g.code !== 0) console.log(`\n── planillas: gen_planilla_todas salió ${g.code}\n${g.salida.split("\n").slice(-6).join("\n")}`);
+  }
   const tocados = [...cambiados()];
   if (tocados.length) {
-    // Las planillas .xlsx se regeneran solas en cada build (prebuild): si check-all las regeneró
-    // para verificarlas, no son parte del cambio de datos.
     const r = tsx("scripts/check-all.ts", [], 1500);
-    for (const f of [...cambiados()].filter((x) => x.startsWith("private/") && !tocados.includes(x))) revertir([f]);
     if (r.code === 0) {
       puerta = "verde";
     } else {
@@ -202,6 +213,7 @@ function main(): void {
     resolve(SALIDA, "commit.txt"),
     `datos-vivos: ${titulos || "sin cambios"} (${hoy})\n\n` +
       actualizados.map((r) => `- ${r.que}: ${r.detalle}`).join("\n") +
+      (novedadesRegistradas.length ? `\n\nNovedades:\n${novedadesRegistradas.map((l) => `- ${l.replace("+ novedad registrada: ", "")}`).join("\n")}` : "") +
       "\n\nCommit automático del workflow datos-vivos: cada dato pasó sus checks y check-all completo.\n",
   );
 

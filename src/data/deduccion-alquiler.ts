@@ -55,25 +55,25 @@ export const ALQUILER_FUENTES = {
   consultadoEl: "14 de agosto de 2026",
   lista: [
     {
-      nombre: "Ley de Impuesto a las Ganancias (t.o. Dec. 824/2019), art. 85 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Impuesto a las Ganancias (t.o. Dec. 824/2019), art. 85, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
       detalle:
         "inc. h): el 40% de lo pagado por el alquiler de la casa habitación, con tope en la ganancia no imponible y sólo si no se es titular de ningún inmueble. Inc. k): el 10% adicional, incorporado por la Ley 27.737.",
     },
     {
-      nombre: "Misma norma, art. 26 inc. n) — sustituido por el art. 192 de la Ley 27.802 (B.O. 6/3/2026)",
+      nombre: "Misma norma, art. 26 inc. n): sustituido por el art. 192 de la Ley 27.802 (B.O. 6/3/2026)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
       detalle:
         "desde los ejercicios que se inicien el 1/1/2026 exime las ganancias del alquiler de casa habitación y declara que a ellas NO les resulta aplicable el inc. k) del art. 85. Es el cambio que la mayoría de las notas todavía no incorporó.",
     },
     {
-      nombre: "ARCA — SiRADIG · carga de alquileres",
+      nombre: "ARCA: SiRADIG · carga de alquileres",
       url: "https://www.afip.gob.ar/572web/carga-datos/alquileres.asp",
       detalle:
         "el organismo describe el 40% con límite anual, exige factura o documento equivalente del locador y comprobantes de pago, y explica el 10% del inc. k) con contrato registrado en el RELI.",
     },
     {
-      nombre: "ARCA — Novedad del 12/8/2024: RG 5545/2024 y RG 5547/2024",
+      nombre: "ARCA, novedad del 12/8/2024: RG 5545/2024 y RG 5547/2024",
       url: "https://servicioscf.afip.gob.ar/publico/sitio/contenido/novedad/ver.aspx?id=4234",
       detalle:
         "se eliminó la obligación general de registrar los contratos de alquiler (salvo para acceder a beneficios fiscales) y la de adjuntar copia del contrato en el SiRADIG.",

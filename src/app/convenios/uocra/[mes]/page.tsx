@@ -58,17 +58,15 @@ export async function generateMetadata({
   const mes = MESES_UOCRA[idx];
   const nombre = mes.etiqueta.toLowerCase();
   const jornalOficialA = mes.jornales["oficial"]["a"];
-  const variacion =
-    idx > 0 ? variacionPct(jornalOficialA, MESES_UOCRA[idx - 1].jornales["oficial"]["a"]) : null;
 
   return {
-    title: `Sueldos UOCRA ${nombre}: jornal Oficial ${formatARS(jornalOficialA, 0)}/hora (CCT 76/75)`,
-    description: `Los jornales oficiales de la construcción en ${nombre}: Oficial en Zona A a ${formatARS(jornalOficialA, 0)} la hora${variacion !== null ? ` (${pctConSigno(variacion)} contra el mes anterior)` : ""}, el resto de las categorías y zonas, y la suma no remunerativa del mes. Verificados contra el acuerdo firmado UOCRA-CAMARCO.`,
+    title: `Jornales UOCRA ${nombre}: Oficial ${formatARS(jornalOficialA, 0)} la hora`,
+    description: `Jornales oficiales de la construcción de ${nombre} por categoría y zona, con la variación contra el mes anterior y la suma no remunerativa.`,
     alternates: { canonical: `/convenios/uocra/${mes.id}` },
     openGraph: {
       images: [
         {
-          url: `/og?t=${encodeURIComponent(`UOCRA ${nombre}`)}&s=${encodeURIComponent("Jornales oficiales por zona — CCT 76/75")}`,
+          url: `/og?t=${encodeURIComponent(`UOCRA ${nombre}`)}&s=${encodeURIComponent("Jornales oficiales por zona (CCT 76/75)")}`,
           width: 1200,
           height: 630,
         },
@@ -135,8 +133,8 @@ export default async function UocraMesPage({
       ORGANIZACION,
       {
         ...datasetSchema({
-          nombre: `Jornales de la construcción UOCRA — ${mes.etiqueta} (CCT 76/75)`,
-          descripcion: `Jornales básicos por hora y categoría (oficial especializado, oficial, medio oficial, ayudante, sereno) del CCT 76/75 vigentes en ${nombre}, por zona${tieneSnr ? ", con la suma no remunerativa del mes" : " (este mes sin suma no remunerativa: fue absorbida al básico)"}. Verificados contra el acuerdo firmado UOCRA-CAMARCO.`,
+          nombre: `Jornales de la construcción UOCRA, ${mes.etiqueta} (CCT 76/75)`,
+          descripcion: `Jornales básicos por hora y categoría (oficial especializado, oficial, medio oficial, ayudante, sereno) del CCT 76/75 vigentes en ${nombre}, por zona${tieneSnr ? ", con la suma no remunerativa del mes" : " (este mes sin suma no remunerativa: pasó al básico)"}. Verificados contra el acuerdo firmado entre UOCRA y CAMARCO.`,
           url: `/convenios/uocra/${mes.id}`,
           modificado: `${mes.anio}-${String(mes.mes).padStart(2, "0")}-01`,
           fuenteNombre: tramo.fuente.nombre,
@@ -184,10 +182,10 @@ export default async function UocraMesPage({
             </>
           ) : null}
           {tieneSnr
-            ? ", más la suma no remunerativa del mes. La tabla completa de jornales por categoría y zona (más la SNR) está abajo,"
-            : ", y este mes no hay suma no remunerativa: el acuerdo la absorbió al básico. La tabla completa de jornales por categoría y zona está abajo,"}{" "}
-          verificada contra el acuerdo firmado UOCRA-CAMARCO. Pasá del jornal a tu sueldo mensual en
-          la <Link href="/convenios/uocra">calculadora de sueldo UOCRA</Link>.
+            ? ", más la suma no remunerativa del mes. Abajo tenés la tabla completa de jornales por categoría y zona (y la SNR),"
+            : ". Este mes no hay suma no remunerativa: el acuerdo la pasó al básico. Abajo tenés la tabla completa de jornales por categoría y zona,"}{" "}
+          chequeada contra el acuerdo firmado entre UOCRA y CAMARCO. Para pasar del jornal a tu
+          sueldo del mes, usá la <Link href="/convenios/uocra">calculadora de sueldo UOCRA</Link>.
         </p>
       </RespuestaPrimero>
 
@@ -236,8 +234,8 @@ export default async function UocraMesPage({
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          El adicional por zona desfavorable ya está incluido. Mes de jornada completa: 190,67
-          hs (44 hs semanales).
+          Ya incluye el adicional por zona desfavorable. Un mes de jornada completa tiene 190,67
+          hs (44 hs por semana).
         </p>
       </section>
 
@@ -302,9 +300,9 @@ export default async function UocraMesPage({
         {!tieneSnr ? (
           <div className="space-y-3 text-zinc-600">
             <p>
-              En {nombre} <strong>no hay suma no remunerativa</strong>: el acuerdo la incorporó
-              al jornal básico. Por eso el salto del jornal es más grande que el porcentaje del
-              tramo, y todo el sueldo pasa a ser remunerativo.
+              En {nombre} <strong>no hay suma no remunerativa</strong>: el acuerdo la pasó al
+              jornal básico. Por eso el jornal sube más que el porcentaje del tramo, y todo el
+              sueldo pasa a ser remunerativo.
             </p>
             <p>
               Eso te conviene para lo que se calcula sobre el remunerativo:{" "}
@@ -321,16 +319,16 @@ export default async function UocraMesPage({
                 className="font-medium text-emerald-700 hover:underline"
               >
                 indemnización
-              </Link>{" "}
-              — y también sube el aporte jubilatorio, porque ahora descuenta el 17% completo y
-              no el 3% de obra social.
+              </Link>
+              . También sube lo que aportás para la jubilación, porque ahora se descuenta el 17%
+              completo y no solo el 3% de obra social.
             </p>
           </div>
         ) : (
           <>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Monto mensual por categoría y zona: se paga el 50% con cada quincena y solo
+            Monto por mes, según categoría y zona. Se paga la mitad con cada quincena y solo
             descuenta el aporte a la obra social (3%).
           </p>
         </div>
@@ -365,7 +363,7 @@ export default async function UocraMesPage({
           </>
         )}
         <p className="text-sm text-zinc-500">
-          Pasá del jornal a tu sueldo mensual —con asistencia perfecta y descuentos— en la{" "}
+          Pasá del jornal a tu sueldo del mes (con asistencia perfecta y descuentos) en la{" "}
           <Link
             href="/convenios/uocra"
             className="font-medium text-emerald-700 hover:underline"
@@ -427,8 +425,8 @@ export default async function UocraMesPage({
             <p className="mt-1 text-zinc-600">
               {variacionMensual === null ? (
                 <>
-                  {mes.etiqueta} es el primer mes de nuestra serie para UOCRA: todavía no tenemos un mes
-                  anterior con el que compararlo.
+                  {mes.etiqueta} es el primer mes que tenemos de UOCRA, así que no hay un mes anterior
+                  para comparar.
                 </>
               ) : (
                 <>
@@ -442,8 +440,8 @@ export default async function UocraMesPage({
             <h3 className="font-semibold text-zinc-900">¿{mes.etiqueta} tiene suma no remunerativa?</h3>
             <p className="mt-1 text-zinc-600">
               {tieneSnr
-                ? "Sí: se paga aparte del jornal, 50% por quincena, y solo descuenta el 3% de obra social."
-                : "No: el acuerdo la absorbió al jornal básico este mes, así que todo el sueldo pasa a ser remunerativo."}
+                ? "Sí. Se paga aparte del jornal, la mitad en cada quincena, y solo descuenta el 3% de obra social."
+                : "No. Este mes el acuerdo la pasó al jornal básico, así que todo el sueldo es remunerativo."}
             </p>
           </div>
           <div>

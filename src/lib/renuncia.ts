@@ -168,7 +168,7 @@ export function calcularRenuncia(params: {
     avisos.push({
       tono: "ok",
       texto:
-        "Para una renuncia posterior al 6 de marzo de 2026 rige el art. 240 nuevo: el despacho telegráfico puede ser «en formato físico o digital», sigue siendo gratuito y ya no exige presencia personal — pide «la validación de su identidad», sin decir cómo. La vía ante la autoridad administrativa quedó remitida a la reglamentación.",
+        "Para una renuncia posterior al 6 de marzo de 2026 rige el art. 240 nuevo: el despacho telegráfico puede ser «en formato físico o digital», sigue siendo gratuito y ya no exige presencia personal. Pide «la validación de su identidad», sin decir cómo. La vía ante la autoridad administrativa quedó remitida a la reglamentación.",
     });
   } else {
     avisos.push({

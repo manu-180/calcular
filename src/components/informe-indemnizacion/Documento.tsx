@@ -18,7 +18,7 @@ const FUENTES = [
   { texto: INDEMNIZACION_FUENTES.ley27802.nombre, url: INDEMNIZACION_FUENTES.ley27802.url, consultado: CONSULTA },
   { texto: INDEMNIZACION_FUENTES.ligArt26.nombre, url: INDEMNIZACION_FUENTES.ligArt26.url, consultado: "2026-09-21" },
   { texto: DESEMPLEO_FUENTES.ley.nombre, url: DESEMPLEO_FUENTES.ley.url, consultado: DESEMPLEO_FUENTES.consultadoEl },
-  { texto: "Ministerio de Capital Humano — Servicio de Conciliación Laboral Obligatoria (SECLO)", url: "https://www.argentina.gob.ar/trabajo/seclo", consultado: CONSULTA },
+  { texto: "Ministerio de Capital Humano: Servicio de Conciliación Laboral Obligatoria (SECLO)", url: "https://www.argentina.gob.ar/trabajo/seclo", consultado: CONSULTA },
   ...CERTIFICADO_FUENTES.lista
     .filter((f) => f.url.includes("425871"))
     .map((f) => ({ texto: f.nombre, url: f.url, consultado: CERTIFICADO_FUENTES.consultadoEl })),

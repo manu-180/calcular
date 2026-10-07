@@ -298,8 +298,8 @@ export function CalculadoraTutelaSindical() {
               </dl>
               <p className="mt-3 text-xs text-emerald-900/70">
                 Son sueldos, no indemnizaciones: la ley dice «una suma equivalente al importe de las
-                remuneraciones». No se le aplica el tope del convenio ni se le suma aguinaldo — si
-                el SAC corresponde o no sobre esta suma lo discuten los tribunales, y la norma no lo
+                remuneraciones». No se le aplica el tope del convenio ni se le suma aguinaldo. Si
+                el SAC corresponde o no sobre esta suma lo discuten los tribunales: la norma no lo
                 dice.
               </p>
             </div>
@@ -364,7 +364,7 @@ export function CalculadoraTutelaSindical() {
                   <>
                     En este caso el <strong>art. 245 bis deja más</strong> aun en su piso:{" "}
                     {formatARS(res.art245bisPiso)} contra {formatARS(res.agravamientoArt52)} del
-                    art. 52 — y el juez puede llevarlo hasta {formatARS(res.art245bisTecho)}.
+                    art. 52, y el juez puede llevarlo hasta {formatARS(res.art245bisTecho)}.
                   </>
                 ) : (
                   <>Los dos caminos dan lo mismo en este caso.</>

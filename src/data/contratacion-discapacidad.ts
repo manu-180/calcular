@@ -110,7 +110,7 @@ export const DISCAPACIDAD_TEXTOS = {
 /** Lo que la exención NO alcanza: se sigue pagando entero. */
 export const FUERA_DEL_BENEFICIO = [
   {
-    que: "Contribución a la obra social — 6%",
+    que: "Contribución a la obra social: 6%",
     detalle:
       "Art. 16 inc. a) de la Ley 23.660. No está entre los cuatro subsistemas que enumera el art. 87, así que la exención no la toca.",
   },
@@ -143,43 +143,43 @@ export const DISCAPACIDAD_FUENTES: { consultadoEl: string; lista: FuenteDiscapac
   consultadoEl: "2026-09-04",
   lista: [
     {
-      nombre: "Ley 24.013, art. 87 — texto actualizado (InfoLEG)",
+      nombre: "Ley 24.013, art. 87, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/412/texact.htm",
       detalle:
-        "El texto vigente lleva la nota «Artículo sustituido por art. 17 de la Ley Nº 27.793 B.O. 22/9/2025». La versión anterior —la que sigue publicada en buena parte de la web— remitía a la exención del art. 46 por un año.",
+        "El texto vigente lleva la nota «Artículo sustituido por art. 17 de la Ley Nº 27.793 B.O. 22/9/2025». La versión anterior (la que sigue publicada en buena parte de la web) remitía a la exención del art. 46 por un año.",
     },
     {
-      nombre: "Ley 27.793 — Emergencia Nacional en Discapacidad (InfoLEG)",
+      nombre: "Ley 27.793: Emergencia Nacional en Discapacidad (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/415000-419999/417788/norma.htm",
       detalle:
         "B.O. 22/9/2025. Su art. 17 es el que reescribe el art. 87 de la Ley 24.013. Sancionada por insistencia de ambas cámaras tras el veto del Decreto 534/2025.",
     },
     {
-      nombre: "Decreto 681/2025 — promulgación y suspensión de la ejecución (InfoLEG)",
+      nombre: "Decreto 681/2025: promulgación y suspensión de la ejecución (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/415000-419999/417790/norma.htm",
       detalle:
         "B.O. 22/9/2025. Promulga la ley y, en sus considerandos y su art. 2°, la declara suspendida en su ejecución por el art. 5° de la Ley 24.629 hasta que el Congreso determine las fuentes de financiamiento.",
     },
     {
-      nombre: "Decreto 84/2026 — reglamentación de la Ley 27.793 (InfoLEG)",
+      nombre: "Decreto 84/2026: reglamentación de la Ley 27.793 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/422915/norma.htm",
       detalle:
         "B.O. 4/2/2026. Sus considerandos relatan la sentencia del Juzgado Federal de Campana del 12/12/2025 que invalidó el art. 2° del Decreto 681/25 y ordenó aplicar la ley, y que la apelación del Estado se concedió con efecto devolutivo. Su Anexo I resuelve el artículo 17 con dos palabras: «Sin reglamentar».",
     },
     {
-      nombre: "Ley 27.541, arts. 19 y 22 — alícuotas y detracción vigentes (InfoLEG)",
+      nombre: "Ley 27.541, arts. 19 y 22: alícuotas y detracción vigentes (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/333564/texact.htm",
       detalle:
         "Fija el 20,40% y el 18% con destino a los cuatro subsistemas alcanzados por la exención, y la detracción fija de $7.003,68 por trabajador. NO sustituyó el texto del Decreto 814/2001, que por eso sigue exhibiendo el 19,50% del art. 165 de la Ley 27.430.",
     },
     {
-      nombre: "Ley 22.431, art. 23 — deducción del 70% en Ganancias (InfoLEG)",
+      nombre: "Ley 22.431, art. 23: deducción del 70% en Ganancias (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/20000-24999/20620/texact.htm",
       detalle:
         "El segundo beneficio, acumulable con el anterior porque el propio art. 87 lo declara «independiente». Es a opción del contribuyente entre Ganancias y capitales, y se computa al cierre de cada período fiscal.",
     },
     {
-      nombre: "Ley 23.660, art. 16 inc. a) — la contribución que el beneficio no toca (InfoLEG)",
+      nombre: "Ley 23.660, art. 16 inc. a): la contribución que el beneficio no toca (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
       detalle:
         "El 6% de obra social a cargo del empleador. Queda fuera de los cuatro subsistemas del art. 87 y se sigue pagando entero.",

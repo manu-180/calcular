@@ -114,7 +114,7 @@ export function PlanillaLanding(c: ConfigLanding) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `${producto.titulo} — ${producto.convenio}`,
+    name: `${producto.titulo} (${producto.convenio})`,
     description: c.bajada,
     brand: { "@type": "Brand", name: "CalculAR" },
     offers: {
@@ -239,7 +239,7 @@ export function PlanillaLanding(c: ConfigLanding) {
             <h2 className="mb-1 text-xl font-semibold text-zinc-900">Esto es lo que vas a ver al abrirla</h2>
             <p className="mb-4 text-sm text-zinc-600">
               {c.textoPreview ??
-                "No es una captura de pantalla: son los números que la planilla devuelve hoy, calculados con la escala vigente. Si mañana cambia la escala oficial, cambia esto y cambia el archivo."}
+                "No es una captura de pantalla: son los números que da hoy la planilla, con la escala vigente. Si mañana cambia la escala oficial, cambia esto y cambia el archivo."}
             </p>
 
             {c.personal ? (
@@ -268,8 +268,8 @@ export function PlanillaLanding(c: ConfigLanding) {
                 <>
                   <p className="text-sm font-semibold text-zinc-900">¿Querés verla con tus números antes de pagar?</p>
                   <p className="mt-1 text-sm text-zinc-600">
-                    Cargá tu caso en la calculadora gratis: da exactamente los mismos números que la planilla, y
-                    la planilla que compres sale con esos datos ya cargados.
+                    Cargá tu caso en la calculadora gratis. Da los mismos números que la planilla, y la planilla
+                    que compres te llega con esos datos ya cargados.
                   </p>
                 </>
               ) : (
@@ -279,7 +279,7 @@ export function PlanillaLanding(c: ConfigLanding) {
                   </p>
                   <p className="mt-1 text-sm text-zinc-600">
                     {c.textoComprobar ??
-                      "Es la misma escala y la misma fórmula. Meté el mismo caso en la calculadora del sitio y compará: si alguna vez no coinciden, escribinos y lo corregimos."}
+                      "Es la misma escala y la misma cuenta. Probá el mismo caso en la calculadora del sitio y compará: si alguna vez no coinciden, escribinos y lo corregimos."}
                   </p>
                 </>
               )}
@@ -309,10 +309,10 @@ export function PlanillaLanding(c: ConfigLanding) {
           <section className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
             <h2 className="mb-2 font-semibold text-emerald-900">De dónde salen los números</h2>
             <p className="text-sm text-emerald-900/90">
-              De los documentos oficiales, leídos completos. Ni de un blog, ni de un resumen de
-              terceros, ni de otra planilla de internet. La fuente y la fecha de verificación están
-              adentro del archivo, en una hoja aparte, para que puedas mostrárselas a quien te
-              discuta un número.
+              De los documentos oficiales, leídos completos. No de un blog, ni de un resumen, ni de
+              otra planilla de internet. La fuente y la fecha en que la verificamos están dentro del
+              archivo, en una hoja aparte, para que se las puedas mostrar a quien te discuta un
+              número.
             </p>
             <div className="mt-3 rounded-lg bg-white/70 p-3 text-sm">
               <p className="font-medium text-emerald-900">{c.fuente.nombre}</p>
@@ -345,7 +345,7 @@ export function PlanillaLanding(c: ConfigLanding) {
             <h2 className="mb-2 font-semibold text-zinc-900">Si no te sirve, te devolvemos el dinero</h2>
             <p className="text-sm text-zinc-600">
               Tenés 7 días desde la compra. Respondés el mail de la entrega diciendo que no te sirvió
-              —no hace falta que expliques por qué— y te devolvemos los {precio} por MercadoPago. Sin
+              (no hace falta que expliques por qué) y te devolvemos los {precio} por MercadoPago. Sin
               formularios, sin llamadas, sin letra chica.
             </p>
           </section>
@@ -367,10 +367,10 @@ export function PlanillaLanding(c: ConfigLanding) {
           <section className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
             <h2 className="mb-2 font-semibold text-zinc-900">Quién está atrás de esto</h2>
             <p className="text-sm text-zinc-600">
-              CalculAR es un proyecto argentino de calculadoras laborales y fiscales con datos de
-              fuentes oficiales verificadas. Las calculadoras del sitio son gratis y siempre lo van a
-              ser; estas planillas son la versión que te llevás puesta, para hacer la cuenta sin depender
-              de tener internet ni de entrar cada mes.
+              CalculAR es un proyecto argentino de calculadoras laborales y fiscales, con datos de
+              fuentes oficiales verificadas. Las calculadoras del sitio son gratis y lo van a seguir
+              siendo. Las planillas son la versión que te llevás a tu computadora, para hacer la cuenta
+              sin internet y sin entrar cada mes.
             </p>
             <div className="mt-3 flex flex-wrap gap-4 text-sm font-semibold">
               <Link href="/sobre" className="text-emerald-700 underline hover:text-emerald-900">
@@ -385,7 +385,7 @@ export function PlanillaLanding(c: ConfigLanding) {
           {/* ── CTA de cierre: el que llegó hasta acá ya leyó todo ── */}
           <section data-oferta={producto.slug} className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-center">
             <p className="text-lg font-semibold text-zinc-900">
-              {c.producto.tituloCorto} — {precio}, pago único
+              {c.producto.tituloCorto}: {precio}, pago único
             </p>
             <p className="mx-auto mt-1 max-w-md text-sm text-zinc-600">
               Con las actualizaciones del año y 7 días para arrepentirte.

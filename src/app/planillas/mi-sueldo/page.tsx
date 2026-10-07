@@ -8,23 +8,21 @@ import { PLANILLA_MS } from "@/lib/prefill/mi-sueldo";
 import { datosEjemplo, hojaMiSueldo, pct } from "@/components/mi-sueldo/modelo";
 import { formatARS } from "@/lib/formato";
 import { PRODUCTOS } from "@/lib/mp";
+import { openGraphDe } from "@/lib/seo";
 
 const PRODUCTO = PRODUCTOS["planilla-mi-sueldo"];
 const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
 
 export const metadata: Metadata = {
-  title: "Planilla Mi Sueldo 2026: controlá tu recibo y tu sueldo contra la inflación",
-  description: `Planilla de Excel y Google Sheets para empleados: controlá que cada recibo tenga bien descontados los aportes de ley, mirá cuánto poder de compra perdiste con el IPC oficial del INDEC y llevate una hoja lista para pedir aumento. $${PRECIO} pago único.`,
+  title: "Planilla Mi Sueldo 2026: controlá tu recibo en Excel",
+  description:
+    "Excel y Google Sheets para controlar los aportes de cada recibo, medir tu poder de compra con el IPC del INDEC y pedir aumento con datos. Pago único.",
   alternates: { canonical: PRODUCTO.rutaLanding },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Planilla Mi Sueldo 2026")}&s=${encodeURIComponent("Tu recibo controlado y tu sueldo contra la inflación")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: PRODUCTO.rutaLanding,
+    titulo: "Planilla Mi Sueldo 2026",
+    bajada: "Tu recibo controlado y tu sueldo contra la inflación",
+  }),
 };
 
 const fechaLarga = (iso: string) => {
@@ -60,7 +58,7 @@ export default function PlanillaMiSueldoPage() {
           <strong>IPC oficial del INDEC</strong> (hasta {nombrePeriodo(ULTIMO_PERIODO)}) y te dice cuánto poder de
           compra perdiste desde tu último aumento y <strong>qué aumento lo recupera</strong>, en una hoja lista para
           imprimir. También proyecta tu aguinaldo y te avisa si te acercás al piso de Ganancias. Pago único de{" "}
-          <strong>${PRECIO}</strong>, con el IPC actualizado todos los meses y devolución dentro de los 7 días.
+          <strong>${PRECIO}</strong>, con el IPC actualizado todos los meses y 7 días para pedir la devolución.
         </p>
       }
       previewTitulo={

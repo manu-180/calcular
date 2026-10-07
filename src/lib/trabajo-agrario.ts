@@ -263,7 +263,7 @@ export function calcularDespidoRural(params: {
   if (enLaFranjaDeLosDosMeses) {
     avisos.push({
       tono: "bloqueante",
-      texto: `Estás en la franja que abrió la reforma. Con ${antiguedad.totalMeses} meses de antigüedad, en un empleo urbano ya habrías salido del período de prueba —el artículo 92 bis de la LCT lo fija en ${MESES_PERIODO_PRUEBA_LCT} meses— y cobrarías indemnización por antigüedad y preaviso. En el campo no: desde el 6 de marzo de 2026 el artículo 16 de la Ley 26.727 fija el período de prueba rural en ${MESES_PERIODO_PRUEBA_AGRARIO} meses. Sólo te corresponde la liquidación final.`,
+      texto: `Estás en la franja que abrió la reforma. Con ${antiguedad.totalMeses} meses de antigüedad, en un empleo urbano ya habrías salido del período de prueba (el artículo 92 bis de la LCT lo fija en ${MESES_PERIODO_PRUEBA_LCT} meses) y cobrarías indemnización por antigüedad y preaviso. En el campo no: desde el 6 de marzo de 2026 el artículo 16 de la Ley 26.727 fija el período de prueba rural en ${MESES_PERIODO_PRUEBA_AGRARIO} meses. Sólo te corresponde la liquidación final.`,
     });
   } else if (enPeriodoPrueba) {
     avisos.push({

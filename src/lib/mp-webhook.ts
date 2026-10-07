@@ -316,7 +316,7 @@ export async function marcarEntrega(
         : resultado === "fallo"
           ? {
               fijo: "ENTREGA POR EMAIL FALLÓ el ",
-              sufijo: ` · ENTREGA POR EMAIL FALLÓ el ${fecha} — reenviar a mano a ${email ?? "email no disponible"}.`,
+              sufijo: ` · ENTREGA POR EMAIL FALLÓ el ${fecha}: reenviar a mano a ${email ?? "email no disponible"}.`,
             }
           : {
               fijo: "MercadoPago no expuso el email del comprador: la única entrega fue el botón de la página de gracias.",

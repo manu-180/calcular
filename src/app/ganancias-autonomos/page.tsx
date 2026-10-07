@@ -20,8 +20,8 @@ const ESPECIAL = formatARS(DEDUCCIONES.deduccionEspecialAutonomos, 2);
 const ESPECIAL_NUEVOS = formatARS(DEDUCCIONES.deduccionEspecialNuevosProfesionales, 2);
 
 export const metadata: Metadata = {
-  title: `Ganancias para autónomos ${ANIO_AUTONOMOS}: deducción especial y «nuevos profesionales» (calculadora)`,
-  description: `Un autónomo que trabaja personalmente deduce ${ESPECIAL} de deducción especial en ${ANIO_AUTONOMOS}, y ${ESPECIAL_NUEVOS} si tiene menos de tres años de matrícula. Sin los aportes al día la pierde entera. Calculá cuánto pagás de Ganancias.`,
+  title: `Ganancias de autónomos ${ANIO_AUTONOMOS}: deducción especial`,
+  description: `Cuánto deduce un autónomo en ${ANIO_AUTONOMOS}, el plus para nuevos profesionales y por qué sin aportes al día se pierde entera. Calculá cuánto pagás.`,
   alternates: { canonical: "/ganancias-autonomos" },
   openGraph: {
     images: [
@@ -37,35 +37,35 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: `¿Cuánto es la deducción especial de los autónomos en ${ANIO_AUTONOMOS}?`,
-    a: `${ESPECIAL} en el año para quien trabaja personalmente en su actividad (profesionales, oficios, dueños de empresas unipersonales). La ley la define como el no imponible «incrementado» en 2,5 veces: «${AUTONOMOS_TEXTOS.apartado1}» Incrementar en 2,5 veces es sumarle 2,5 veces más, así que da 3,5 veces el no imponible (${formatARS(DEDUCCIONES.mni, 2)}). Es el número que publica ARCA.`,
+    a: `${ESPECIAL} en el año, si trabajás personalmente en tu actividad (profesionales, oficios, dueños de empresas unipersonales). La ley la define como el no imponible «incrementado» en 2,5 veces: «${AUTONOMOS_TEXTOS.apartado1}» Incrementar en 2,5 veces es sumarle 2,5 veces más. Da 3,5 veces el no imponible (${formatARS(DEDUCCIONES.mni, 2)}), que es el número que publica ARCA.`,
   },
   {
     q: "¿Qué es la deducción de «nuevos profesionales» y «nuevos emprendedores»?",
-    a: `Una deducción especial más alta: ${ESPECIAL_NUEVOS} en ${ANIO_AUTONOMOS}, ${formatARS(DIFERENCIA_ESPECIAL, 0)} más que la común. La ley dice que «${AUTONOMOS_TEXTOS.nuevos}», y el reglamento (Decreto 862/2019, art. 99) define a quiénes alcanza: «${AUTONOMOS_TEXTOS.reglamento99}».`,
+    a: `Es una deducción especial más alta: ${ESPECIAL_NUEVOS} en ${ANIO_AUTONOMOS}, o sea ${formatARS(DIFERENCIA_ESPECIAL, 0)} más que la común. La ley dice que «${AUTONOMOS_TEXTOS.nuevos}». El reglamento (Decreto 862/2019, art. 99) define a quiénes alcanza: «${AUTONOMOS_TEXTOS.reglamento99}».`,
   },
   {
     q: "¿Cuánto me ahorra ser nuevo profesional?",
-    a: `Depende de tu alícuota: la diferencia de deducción es de ${formatARS(DIFERENCIA_ESPECIAL, 0)} y vuelve multiplicada por tu tramo de la escala, así que nunca pasa del 35% de eso. En el caso de esta página —ganancia neta de ${formatARS(CASO_ENTRADA.gananciaNetaAnual, 0)} y ${formatARS(CASO_ENTRADA.aporteMensual, 0)} de aportes por mes— el impuesto baja de ${formatARS(COMUN.impuestoAnual, 0)} a ${formatARS(NUEVO.impuestoAnual, 0)}: ${formatARS(NUEVO.ahorroPorNuevo, 0)} en el año.`,
+    a: `Depende de tu tramo. La diferencia de deducción es de ${formatARS(DIFERENCIA_ESPECIAL, 0)} y te vuelve multiplicada por tu alícuota, así que nunca pasa del 35% de eso. En el ejemplo de esta página (ganancia neta de ${formatARS(CASO_ENTRADA.gananciaNetaAnual, 0)} y ${formatARS(CASO_ENTRADA.aporteMensual, 0)} de aportes por mes), el impuesto baja de ${formatARS(COMUN.impuestoAnual, 0)} a ${formatARS(NUEVO.impuestoAnual, 0)}. Son ${formatARS(NUEVO.ahorroPorNuevo, 0)} en el año.`,
   },
   {
     q: "¿Qué pasa si no pago los aportes de autónomos?",
-    a: `Perdés la deducción especial entera, no sólo la deducción de los aportes. El texto es tajante: «${AUTONOMOS_TEXTOS.condicionAportes}» En el caso testigo, dejar de pagar ${formatARS(COMUN.aportesAnual, 0)} de aportes en el año lleva el impuesto de ${formatARS(COMUN.impuestoAnual, 0)} a ${formatARS(COMUN.impuestoSinAportes, 0)}.`,
+    a: `Perdés la deducción especial entera, no solo lo que habrías restado por los aportes. La ley es clara: «${AUTONOMOS_TEXTOS.condicionAportes}» En el ejemplo, dejar de pagar ${formatARS(COMUN.aportesAnual, 0)} de aportes en el año sube el impuesto de ${formatARS(COMUN.impuestoAnual, 0)} a ${formatARS(COMUN.impuestoSinAportes, 0)}.`,
   },
   {
     q: "¿Desde cuánto paga Ganancias un autónomo?",
-    a: `Sin cargas de familia y con ${formatARS(150_000, 0)} de aportes por mes, desde una ganancia neta de ${formatARS(UMBRAL_COMUN, 0)} al año (${formatARS(UMBRAL_NUEVO, 0)} si es nuevo profesional). La ganancia neta es lo facturado menos los gastos de la actividad; después se restan los aportes, el no imponible, la especial y las cargas de familia.`,
+    a: `Sin cargas de familia y con ${formatARS(150_000, 0)} de aportes por mes, desde una ganancia neta de ${formatARS(UMBRAL_COMUN, 0)} al año (${formatARS(UMBRAL_NUEVO, 0)} si sos nuevo profesional). La ganancia neta es lo que facturaste menos los gastos de la actividad. A eso se le restan los aportes, el no imponible, la especial y las cargas de familia.`,
   },
   {
     q: "¿Es lo mismo que la deducción especial de los empleados?",
-    a: `No. Los empleados en relación de dependencia y los jubilados tienen el apartado 2, que es de 3,8 veces (${formatARS(DEDUCCIONES.deduccionEspecialDependencia, 0)} en total) y además suma la doceava parte por el aguinaldo. El apartado 1 de los autónomos es más chico y no tiene doceava parte.`,
+    a: `No. Los empleados y los jubilados tienen la del apartado 2: 3,8 veces (${formatARS(DEDUCCIONES.deduccionEspecialDependencia, 0)} en total), más la doceava parte por el aguinaldo. La de los autónomos (apartado 1) es más chica y no tiene doceava parte.`,
   },
   {
     q: "¿Los monotributistas pagan Ganancias?",
-    a: "No por la actividad por la que están en el monotributo: el régimen simplificado reemplaza a Ganancias y a IVA. Esta cuenta es para autónomos inscriptos en el régimen general.",
+    a: "No por la actividad que tienen en el monotributo, porque el monotributo reemplaza a Ganancias y a IVA. Esta cuenta es para autónomos inscriptos en el régimen general.",
   },
   {
     q: "¿Cómo y cuándo se paga?",
-    a: `Con la declaración jurada anual, que se presenta a mitad del año siguiente, y con anticipos durante el año calculados sobre el impuesto del año anterior. Los montos de esta página son los de ${GANANCIAS_VIGENCIA}, acumulados a diciembre: los que se usan para la declaración de ${ANIO_AUTONOMOS}.`,
+    a: `Con la declaración jurada anual, que se presenta a mitad del año siguiente. Durante el año pagás anticipos, calculados sobre el impuesto del año anterior. Los montos de esta página son los de ${GANANCIAS_VIGENCIA}, acumulados a diciembre: los que se usan para la declaración de ${ANIO_AUTONOMOS}.`,
   },
 ];
 
@@ -108,22 +108,21 @@ export default function GananciasAutonomosPage() {
 
       <header className="space-y-3">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
-          Ganancias para autónomos {ANIO_AUTONOMOS}: la deducción especial es de {ESPECIAL}, y de {ESPECIAL_NUEVOS} si
-          sos nuevo profesional
+          Ganancias para autónomos {ANIO_AUTONOMOS}: deducción especial de {ESPECIAL}
         </h1>
         <p className="text-zinc-600">
-          Profesionales, oficios y emprendedores que trabajan personalmente tienen su propia deducción especial, más
-          chica que la de los empleados y con una condición que se olvida: los aportes al día. Cargá tu ganancia del
-          año y te mostramos cuánto pagás.
+          Si sos profesional, tenés un oficio o emprendés y trabajás vos mismo, tenés tu propia deducción especial. Es
+          más chica que la de los empleados y tiene una condición que muchos olvidan: los aportes al día. Cargá tu
+          ganancia del año y te mostramos cuánto pagás.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={AUTONOMOS_FUENTES.consultadoEl}>
         <p>
           En {ANIO_AUTONOMOS} un autónomo resta {formatARS(DEDUCCIONES.mni, 0)} de ganancia no imponible y{" "}
-          <strong>{ESPECIAL}</strong> de deducción especial. Si tiene hasta tres años de matrícula o de inscripción,
-          la especial sube a <strong>{ESPECIAL_NUEVOS}</strong>. Y sólo la puede computar si pagó los aportes de
-          autónomos: sin ellos se pierde entera.
+          <strong>{ESPECIAL}</strong> de deducción especial. Con hasta tres años de matrícula o de inscripción, la
+          especial sube a <strong>{ESPECIAL_NUEVOS}</strong>. Pero solo la podés usar si pagaste los aportes de
+          autónomos. Sin ellos, se pierde entera.
         </p>
       </RespuestaPrimero>
 
@@ -134,10 +133,10 @@ export default function GananciasAutonomosPage() {
         <p className="text-zinc-600">
           La deducción especial no es un premio por aportar: es una condición. La ley la ata a «el pago de los aportes
           que, como trabajadores autónomos, deban realizar obligatoriamente». Con una ganancia neta de{" "}
-          {formatARS(CASO_ENTRADA.gananciaNetaAnual, 0)}, pagar {formatARS(COMUN.aportesAnual, 0)} de aportes en el
-          año deja el impuesto en {formatARS(COMUN.impuestoAnual, 0)}; no pagarlos lo lleva a{" "}
-          <strong>{formatARS(COMUN.impuestoSinAportes, 0)}</strong>. Lo que se ahorra por un lado se paga varias
-          veces por el otro, y además se pierden años de aportes para la jubilación.
+          {formatARS(CASO_ENTRADA.gananciaNetaAnual, 0)}, si pagás {formatARS(COMUN.aportesAnual, 0)} de aportes en
+          el año, el impuesto queda en {formatARS(COMUN.impuestoAnual, 0)}. Si no los pagás, sube a{" "}
+          <strong>{formatARS(COMUN.impuestoSinAportes, 0)}</strong>. Lo que ahorrás por un lado lo pagás varias
+          veces por el otro, y encima perdés años de aportes para la jubilación.
         </p>
       </section>
 
@@ -145,9 +144,9 @@ export default function GananciasAutonomosPage() {
         <h2 className="text-xl font-bold text-zinc-900">Quién es «nuevo profesional» y hasta cuándo</h2>
         <p className="text-zinc-600">
           El reglamento lo define por antigüedad: {AUTONOMOS_TEXTOS.reglamento99}. Son tres años, no tres
-          declaraciones: se cuentan desde la matrícula (profesionales) o desde la inscripción como trabajador
-          independiente (emprendedores). En el caso testigo, la diferencia vale {formatARS(NUEVO.ahorroPorNuevo, 0)}{" "}
-          en el año.
+          declaraciones. Se cuentan desde la matrícula (profesionales) o desde la inscripción como trabajador
+          independiente (emprendedores). En el ejemplo, la diferencia vale {formatARS(NUEVO.ahorroPorNuevo, 0)} en el
+          año.
         </p>
       </section>
 
@@ -166,7 +165,11 @@ export default function GananciasAutonomosPage() {
       <section className="space-y-2 rounded-xl bg-emerald-50/60 p-5 text-sm text-zinc-700">
         <h2 className="text-base font-semibold text-zinc-900">Para seguir</h2>
         <p>
-          Si todavía no sabés si te conviene el monotributo, mirá{" "}
+          Si además tenés un sueldo, tu retención mes a mes está en{" "}
+          <Link href="/ganancias" className="font-medium text-emerald-700 hover:underline">
+            la calculadora de Ganancias
+          </Link>
+          . Si todavía no sabés si te conviene el monotributo, mirá{" "}
           <Link href="/monotributo" className="font-medium text-emerald-700 hover:underline">
             la calculadora de monotributo
           </Link>
@@ -189,14 +192,14 @@ export default function GananciasAutonomosPage() {
             <li key={f.nombre}>
               <a href={f.url} target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Los textos legales se leyeron del texto ACTUALIZADO de InfoLEG y los montos de las tablas de ARCA. Es una
-          estimación anual: no reemplaza a la declaración jurada ni a un profesional. Consultada el{" "}
+          Leímos las leyes en su texto actualizado de InfoLEG y los montos en las tablas de ARCA. Es una estimación
+          anual: no reemplaza a la declaración jurada ni a un profesional. Consultada el{" "}
           {AUTONOMOS_FUENTES.consultadoEl}.
         </p>
       </section>

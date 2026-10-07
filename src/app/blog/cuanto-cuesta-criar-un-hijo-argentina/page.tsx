@@ -133,8 +133,9 @@ const bolsilloPromedio =
   filasUltimo.reduce((a, f) => a + f.bienes, 0) / filasUltimo.length;
 
 export const metadata: Metadata = {
-  title: `Cuánto cuesta criar un hijo en Argentina 2026: el dato oficial del INDEC`,
-  description: `Criar un chico costó entre ${$(MAS_BARATO.total)} y ${$(MAS_CARO.total)} por mes en ${ULT.etiqueta}, según la canasta de crianza del INDEC. Qué parte es plata que sale del bolsillo y qué parte es tiempo de cuidado, tramo por tramo, con la serie completa desde 2020.`,
+  title: "Cuánto cuesta criar un hijo en Argentina 2026 (INDEC)",
+  description:
+    "La canasta de crianza del INDEC tramo por tramo: qué parte es gasto y qué parte es tiempo de cuidado, con la serie completa desde 2020.",
   alternates: { canonical: SLUG },
   openGraph: {
     type: "article",
@@ -151,38 +152,38 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Cuánto cuesta criar un hijo en Argentina?",
-    a: `Según la canasta de crianza del INDEC de ${ULT.etiqueta}, entre ${$(MAS_BARATO.total)} y ${$(MAS_CARO.total)} por mes según la edad: ${$(BEBE.total)} para un menor de 1 año, ${$(MATERNAL.total)} de 1 a 3 años, ${$(INICIAL.total)} de 4 a 5 y ${$(PRIMARIA.total)} de 6 a 12. Ese número incluye dos cosas distintas: los bienes y servicios que se pagan (${$(BEBE.bienes)} en el caso del bebé) y el valor económico del tiempo de cuidado (${$(BEBE.cuidado)}), que no es un gasto en efectivo.`,
+    a: `Según la canasta de crianza del INDEC de ${ULT.etiqueta}, entre ${$(MAS_BARATO.total)} y ${$(MAS_CARO.total)} por mes, según la edad: ${$(BEBE.total)} para un menor de 1 año, ${$(MATERNAL.total)} de 1 a 3 años, ${$(INICIAL.total)} de 4 a 5 y ${$(PRIMARIA.total)} de 6 a 12. Ese número junta dos cosas distintas: los bienes y servicios que se pagan (${$(BEBE.bienes)} en el caso del bebé) y el valor del tiempo de cuidado (${$(BEBE.cuidado)}), que no es un gasto en efectivo.`,
   },
   {
     q: "¿Qué es la canasta de crianza del INDEC?",
-    a: "Es la valorización mensual de lo que cuesta criar a un chico en el Gran Buenos Aires, publicada por el INDEC desde 2023 con serie desde enero de 2020. Tiene dos componentes: los bienes y servicios necesarios para su desarrollo (deriva de la Canasta Básica Total) y el costo del tiempo de cuidado, valorizado según la metodología de la Dirección Nacional de Economía, Igualdad y Género con UNICEF. Se publica alrededor del día 15 de cada mes con el dato del mes anterior.",
+    a: "Es lo que cuesta por mes criar a un chico en el Gran Buenos Aires. El INDEC la publica desde 2023, con datos desde enero de 2020. Tiene dos partes: los bienes y servicios que necesita para crecer (sale de la Canasta Básica Total) y el costo del tiempo de cuidado, calculado con la metodología de la Dirección Nacional de Economía, Igualdad y Género con UNICEF. Sale cerca del día 15 de cada mes, con el dato del mes anterior.",
   },
   {
     q: "¿Toda la canasta de crianza es plata que hay que pagar?",
-    a: `No, y es el error de lectura más común. En ${ULT.etiqueta}, para un menor de 1 año el ${pct(BEBE.pctCuidado)}% del total (${$(BEBE.cuidado)}) es el valor del tiempo de cuidado: las horas que alguien dedica a criarlo, valorizadas a precio de mercado. Lo que efectivamente sale del bolsillo en bienes y servicios es ${$(BEBE.bienes)}. Si el cuidado se contrata (jardín, niñera), esa parte sí se paga; si la hace un progenitor, se aporta en especie — y el art. 660 del Código Civil y Comercial reconoce que ese trabajo tiene valor económico.`,
+    a: `No, y es el error más común al leerla. En ${ULT.etiqueta}, para un menor de 1 año, el ${pct(BEBE.pctCuidado)}% del total (${$(BEBE.cuidado)}) es el valor del tiempo de cuidado: las horas que alguien dedica a criarlo, a precio de mercado. Lo que sale del bolsillo en bienes y servicios es ${$(BEBE.bienes)}. Si el cuidado se contrata (jardín, niñera), esa parte sí se paga. Si lo hace uno de los padres, lo aporta con su tiempo, y el art. 660 del Código Civil y Comercial reconoce que ese trabajo vale plata.`,
   },
   {
     q: `¿Por qué un chico de 4 a 5 años cuesta menos que uno de 1 a 3?`,
-    a: `Porque a los 4 años empieza el nivel inicial, que es obligatorio, y eso reemplaza horas de cuidado pago. En ${ULT.etiqueta} el tramo de 4 a 5 gasta ${$(Math.abs(saltoInicial.bienes))} MÁS en bienes y servicios que el de 1 a 3, pero ${$(Math.abs(saltoInicial.cuidado))} MENOS en cuidado: el neto da ${$(Math.abs(saltoInicial.total))} menos por mes. No es que el chico consuma menos, es que la escuela cubre parte del tiempo.`,
+    a: `Porque a los 4 años empieza el nivel inicial, que es obligatorio, y eso reemplaza horas de cuidado pago. En ${ULT.etiqueta}, el tramo de 4 a 5 gasta ${$(Math.abs(saltoInicial.bienes))} MÁS en bienes y servicios que el de 1 a 3, pero ${$(Math.abs(saltoInicial.cuidado))} MENOS en cuidado. En total da ${$(Math.abs(saltoInicial.total))} menos por mes. No es que el chico consuma menos: la escuela cubre parte del tiempo.`,
   },
   {
     q: "¿La canasta de crianza sube más que la inflación?",
     a:
       crianzaAtrasoVsIpc !== null && ipcMultiplicador !== null
-        ? `No. Desde ${PRIMERO.etiqueta} la canasta de un menor de 1 año se multiplicó por ${veces(compoTotal.multiplicador)} y el IPC nacional por ${veces(ipcMultiplicador)}: quedó ${pct(Math.abs(crianzaAtrasoVsIpc))}% por debajo. El motivo está en los componentes: los bienes y servicios se multiplicaron por ${veces(compoBienes.multiplicador)} —bien pegados a la inflación— pero el cuidado apenas por ${veces(compoCuidado.multiplicador)}, porque se valoriza con el salario de las trabajadoras de casas particulares, que corrió más lento.`
+        ? `No. Desde ${PRIMERO.etiqueta}, la canasta de un menor de 1 año se multiplicó por ${veces(compoTotal.multiplicador)} y el IPC nacional por ${veces(ipcMultiplicador)}: quedó ${pct(Math.abs(crianzaAtrasoVsIpc))}% por debajo. La explicación está en las partes: los bienes y servicios se multiplicaron por ${veces(compoBienes.multiplicador)} (muy pegados a la inflación), pero el cuidado apenas por ${veces(compoCuidado.multiplicador)}, porque se calcula con el sueldo de las trabajadoras de casas particulares, que subió más lento.`
         : "La comparación con el IPC se calcula sobre la serie oficial publicada.",
   },
   {
     q: "¿Sirve la canasta de crianza para fijar una cuota alimentaria?",
-    a: "Sirve como referencia del costo, no como monto de la cuota. El juez fija el monto caso por caso ponderando las necesidades del hijo y la capacidad económica de cada progenitor (arts. 658, 659 y 666 del CCyC), y computa el trabajo de cuidado como aporte de quien convive con el chico (art. 660). La canasta da un piso objetivo y oficial para discutir con números en vez de intuiciones.",
+    a: "Sirve como referencia del costo, no como monto de la cuota. El juez fija el monto en cada caso, mirando lo que necesita el hijo y lo que puede pagar cada progenitor (arts. 658, 659 y 666 del CCyC), y cuenta el trabajo de cuidado como aporte de quien vive con el chico (art. 660). La canasta da un piso oficial para discutir con números y no con intuiciones.",
   },
   {
     q: "¿Los valores valen para todo el país?",
-    a: "La canasta se valoriza para el Gran Buenos Aires, igual que la Canasta Básica Total de la que deriva. En regiones con costos de vivienda, transporte o servicios distintos, el número real difiere; el INDEC no publica una apertura regional de esta canasta. Se usa como referencia nacional porque es el único dato oficial mensual disponible.",
+    a: "La canasta se calcula para el Gran Buenos Aires, igual que la Canasta Básica Total de la que sale. En regiones con costos de vivienda, transporte o servicios distintos, el número real cambia, y el INDEC no publica esta canasta por región. Se usa como referencia nacional porque es el único dato oficial mensual que hay.",
   },
   {
     q: `¿De cuándo es el último dato?`,
-    a: `De ${ULT.etiqueta}, publicado por el INDEC y consultado el ${CANASTA_CRIANZA_FUENTE.consultadoEl}. La serie que usamos arranca en ${PRIMERO.etiqueta} y tiene ${mesesSerie} meses. Cada vez que el INDEC publica un mes nuevo (~día 15), esta página y la calculadora se actualizan con la planilla oficial: ningún valor se copia a mano.`,
+    a: `De ${ULT.etiqueta}, publicado por el INDEC y consultado el ${CANASTA_CRIANZA_FUENTE.consultadoEl}. La serie que usamos arranca en ${PRIMERO.etiqueta} y tiene ${mesesSerie} meses. Cada vez que el INDEC publica un mes nuevo (cerca del día 15), esta página y la calculadora se actualizan con la planilla oficial: no copiamos ningún valor a mano.`,
   },
 ];
 
@@ -192,7 +193,7 @@ export default function Post() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "Cuánto cuesta criar un hijo en Argentina 2026: el dato oficial del INDEC",
+        titulo: "Cuánto cuesta criar un hijo en Argentina 2026 (INDEC)",
         descripcion:
           "La canasta de crianza del INDEC por tramo de edad, separada en bienes y servicios (lo que se paga) y tiempo de cuidado (lo que se aporta), con la serie completa desde 2020 comparada contra el IPC.",
         url: SLUG,
@@ -222,10 +223,10 @@ export default function Post() {
           Cuánto cuesta criar un hijo en Argentina: el dato oficial del INDEC ({ULT.etiqueta})
         </h1>
         <p className="text-zinc-600">
-          Todos los meses el INDEC publica cuánto cuesta criar un chico y los titulares repiten el
-          número más alto. Pero ese número mezcla dos cosas muy distintas —la plata que sale del
-          bolsillo y el valor del tiempo de cuidado— y sin separarlas se lee mal, sobre todo si lo
-          estás usando para pensar una cuota alimentaria. Acá está abierto, tramo por tramo, con la
+          Todos los meses el INDEC publica cuánto cuesta criar un chico, y los titulares repiten el
+          número más alto. Pero ese número mezcla dos cosas muy distintas: la plata que sale del
+          bolsillo y el valor del tiempo de cuidado. Si no las separás, se lee mal, sobre todo si lo
+          estás usando para pensar una cuota alimentaria. Acá está separado, tramo por tramo, con la
           serie completa de {mesesSerie} meses.
         </p>
       </header>
@@ -254,7 +255,11 @@ export default function Post() {
         <Link href="/cuota-alimentaria" className="text-emerald-700 underline">
           calculadora de cuota alimentaria
         </Link>
-        , que usa exactamente esta canasta. Acá explicamos de dónde sale cada peso.
+        , que usa exactamente esta canasta. Si necesitás presentarlo con todo el detalle, está el{" "}
+        <Link href="/informes/cuota-alimentaria" className="text-emerald-700 underline">
+          informe de cuota alimentaria
+        </Link>
+        . Abajo explicamos de dónde sale cada peso.
       </p>
 
       <section className="space-y-3">
@@ -262,8 +267,8 @@ export default function Post() {
           Los cuatro números de {ULT.etiqueta}, abiertos
         </h2>
         <p className="text-zinc-600">
-          El INDEC publica la canasta por tramo de edad —los tramos siguen los niveles de
-          escolarización— y en cada uno separa <strong>bienes y servicios</strong> (alimentos,
+          El INDEC publica la canasta por tramo de edad (los tramos siguen los niveles de la
+          escuela) y en cada uno separa <strong>bienes y servicios</strong> (alimentos,
           vestimenta, salud, educación, transporte, higiene) del <strong>cuidado</strong> (las horas
           que hay que dedicarle, valorizadas a precio de mercado).
         </p>
@@ -340,11 +345,11 @@ export default function Post() {
               parte sí es plata que sale todos los meses y el total es el total.
             </li>
             <li>
-              <strong>Si el cuidado lo hace un progenitor</strong>, no hay egreso de caja: hay
-              horas. El Código Civil y Comercial lo reconoce en el art. 660 —las tareas cotidianas
-              de quien tiene el cuidado del hijo tienen valor económico y cuentan como aporte a su
-              manutención—, y por eso una cuota alimentaria no se fija por el total de la canasta
-              contra un solo progenitor.
+              <strong>Si el cuidado lo hace uno de los padres</strong>, no sale plata: salen horas.
+              El Código Civil y Comercial lo reconoce en el art. 660: las tareas de todos los días
+              de quien cuida al hijo tienen valor económico y cuentan como aporte para mantenerlo.
+              Por eso una cuota alimentaria no se fija con el total de la canasta a cargo de uno
+              solo.
             </li>
           </ul>
           <p>
@@ -489,12 +494,12 @@ export default function Post() {
             </li>
           </ul>
           <p>
-            Con esos tres criterios, un número fundado sale en un minuto:{" "}
+            Con esos tres criterios, un número con fundamento sale en un minuto en la{" "}
             <Link href="/cuota-alimentaria" className="text-emerald-700 underline">
               calculadora de cuota alimentaria
-            </Link>{" "}
-            — cargás las edades de los hijos y los ingresos de cada progenitor y devuelve el
-            reparto proporcional sobre esta misma canasta, con el detalle de la cuenta a la vista.
+            </Link>
+            : cargás las edades de los hijos y los ingresos de cada progenitor, y te da el reparto
+            proporcional sobre esta misma canasta, con la cuenta a la vista.
           </p>
           <p className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-600">
             <strong>Esto es información, no asesoramiento legal.</strong> Los valores son una
@@ -551,7 +556,7 @@ export default function Post() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                INDEC — Canasta de crianza (informes y metodología)
+                INDEC: canasta de crianza (informes y metodología)
               </a>
             </li>
             <li>
@@ -561,7 +566,7 @@ export default function Post() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                INDEC — Serie mensual por tramo de edad (planilla oficial)
+                INDEC: serie mensual por tramo de edad (planilla oficial)
               </a>
             </li>
             <li>
@@ -571,7 +576,7 @@ export default function Post() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Código Civil y Comercial — arts. 658 a 670 (deber alimentario) en Infoleg
+                Código Civil y Comercial, arts. 658 a 670 (deber alimentario), en Infoleg
               </a>
             </li>
           </ul>

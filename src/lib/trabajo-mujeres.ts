@@ -129,7 +129,7 @@ export function calcularTrabajoMujeres(params: {
     avisos.push({
       tono: "bloqueante",
       texto:
-        "Ojo con el art. 176 derogado: además de prohibir la tarea, remitía al art. 195, que presume —sin admitir prueba en contrario— que el accidente o la enfermedad causados por una tarea prohibida son responsabilidad del empleador. Al caer el 176 cayó esa presunción para el trabajo de mujeres: hoy hay que probar la responsabilidad por la vía común.",
+        "Ojo con el art. 176 derogado: además de prohibir la tarea, remitía al art. 195, que presume (sin admitir prueba en contrario) que el accidente o la enfermedad causados por una tarea prohibida son responsabilidad del empleador. Al caer el 176 cayó esa presunción para el trabajo de mujeres: hoy hay que probar la responsabilidad por la vía común.",
     });
   } else {
     avisos.push({

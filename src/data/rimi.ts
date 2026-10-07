@@ -180,7 +180,7 @@ export const RIMI_TEXTOS = {
 export const EXCLUSIONES: { titulo: string; detalle: string }[] = [
   {
     titulo: "Condena firme en segunda instancia por la Ley 27.401",
-    detalle: "Responsabilidad penal empresaria — alcanza también a los socios o accionistas.",
+    detalle: "Responsabilidad penal empresaria: alcanza también a los socios o accionistas.",
   },
   {
     titulo: "Quiebra declarada",
@@ -208,19 +208,19 @@ export const RIMI_FUENTES: { consultadoEl: string; lista: FuenteRimi[] } = {
   consultadoEl: "2026-08-27",
   lista: [
     {
-      nombre: "Ley 27.802 — texto oficial, Título XXIII (arts. 177 a 188)",
+      nombre: "Ley 27.802, texto oficial, Título XXIII (arts. 177 a 188)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
-        "De acá salen los cuatro montos mínimos del art. 181, la excepción del art. 180 para riego, alta eficiencia energética, mallas antigranizo y semovientes, el régimen de amortización acelerada del art. 182 con sus cinco incisos, los tres períodos fiscales del IVA (art. 183), las exclusiones del art. 184 —incluida la incompatibilidad con el RIGI—, la permanencia de dos años del art. 186 y la multa del art. 187. El art. 217 fija la vigencia desde la publicación.",
+        "De acá salen los cuatro montos mínimos del art. 181, la excepción del art. 180 para riego, alta eficiencia energética, mallas antigranizo y semovientes, el régimen de amortización acelerada del art. 182 con sus cinco incisos, los tres períodos fiscales del IVA (art. 183), las exclusiones del art. 184 (incluida la incompatibilidad con el RIGI), la permanencia de dos años del art. 186 y la multa del art. 187. El art. 217 fija la vigencia desde la publicación.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia. El Título XXIII no tiene fecha propia ni prórroga: rige desde ese día, a diferencia del Título II (Fondo de Asistencia Laboral), que sí la tiene.",
     },
     {
-      nombre: "Ley 24.467 — estatuto PyME, art. 2° (InfoLEG)",
+      nombre: "Ley 24.467: estatuto PyME, art. 2° (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/15932/texact.htm",
       detalle:
         "La norma a la que remite el art. 179 para definir Micro, Pequeña y Mediana Empresa. La categorización concreta (tramos, topes de facturación por sector) la fija la autoridad de aplicación y se consulta en el Registro MiPyME, no en esta página.",

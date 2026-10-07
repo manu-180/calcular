@@ -102,7 +102,7 @@ export const QUEBRANTOS_ESPECIFICOS: { titulo: string; detalle: string }[] = [
   {
     titulo: "Quebrantos de fuente extranjera",
     detalle:
-      "Sólo se compensan con ganancias de esa misma fuente, y se rigen por el art. 131 —que, para actualizarlos, remite igual al undécimo párrafo del art. 25—.",
+      "Sólo se compensan con ganancias de esa misma fuente, y se rigen por el art. 131. Ese artículo, para actualizarlos, remite igual al undécimo párrafo del art. 25.",
   },
 ];
 
@@ -110,31 +110,31 @@ export const QUEBRANTOS_FUENTES = {
   consultadoEl: "2026-09-01",
   lista: [
     {
-      nombre: "Ley de Impuesto a las Ganancias, t.o. 2019 — art. 25 (texto actualizado, InfoLEG)",
+      nombre: "Ley de Impuesto a las Ganancias, t.o. 2019: art. 25 (texto actualizado, InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
       detalle:
         "El artículo entero de compensación de quebrantos: los específicos, el plazo de cinco años y el undécimo párrafo de actualización, con la nota que lo atribuye al art. 190 de la Ley 27.802.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial, art. 190 (Título XXIV)",
+      nombre: "Ley 27.802, texto oficial, art. 190 (Título XXIV)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "El artículo que sustituyó el undécimo párrafo del art. 25: cambió el índice a IPC, puso la fecha de corte del 1/1/2025 y excluyó expresamente el primer párrafo del art. 93.",
     },
     {
-      nombre: "Ley de Impuesto a las Ganancias, t.o. 2019 — art. 93",
+      nombre: "Ley de Impuesto a las Ganancias, t.o. 2019: art. 93",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
       detalle:
-        "Su primer párrafo remite al art. 39 de la Ley 24.073 y es el que congelaba la actualización; el segundo salva de ese congelamiento a los arts. 62 a 66, 71, 78, 87, 88, 98 y 99 —el 25 no está en la lista—.",
+        "Su primer párrafo remite al art. 39 de la Ley 24.073 y es el que congelaba la actualización; el segundo salva de ese congelamiento a los arts. 62 a 66, 71, 78, 87, 88, 98 y 99. El 25 no está en la lista.",
     },
     {
-      nombre: "Ley 24.073, art. 39 — el congelamiento de las tablas en marzo de 1992",
+      nombre: "Ley 24.073, art. 39: el congelamiento de las tablas en marzo de 1992",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/472/norma.htm",
       detalle:
         "Manda que las tablas e índices de actualización tomen «en todos los casos» como límite máximo las variaciones operadas hasta marzo de 1992. Es la razón por la que la actualización del texto viejo daba coeficiente 1.",
     },
     {
-      nombre: "INDEC — serie del IPC Nacional, nivel general (API oficial de series de tiempo)",
+      nombre: "INDEC: serie del IPC Nacional, nivel general (API oficial de series de tiempo)",
       url: "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=1000",
       detalle:
         "La serie con la que esta calculadora arma el coeficiente. Vive en el repo en `src/data/ipc-serie.ts`, generada por script desde esta API y regenerada en cada redeploy mensual.",

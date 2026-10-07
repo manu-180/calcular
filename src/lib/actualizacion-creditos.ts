@@ -174,7 +174,7 @@ export function actualizarCreditoLaboral(p: ParametrosCredito): ResultadoCredito
 /** Motivo por el que un pedido no se puede responder, para explicarlo en vez de mostrar cero. */
 export function motivoImposible(desde: Periodo, hasta: Periodo): string | null {
   if (!existePeriodo(desde)) {
-    return `La serie oficial del IPC Nacional del INDEC —la que nombra el art. 276— arranca en ${nombrePeriodo(PRIMER_PERIODO)}. Para un crédito anterior no hay índice publicado con el que actualizarlo: haría falta empalmar series distintas, y eso ya no es aplicar la norma sino elegir un criterio.`;
+    return `La serie oficial del IPC Nacional del INDEC (la que nombra el art. 276) arranca en ${nombrePeriodo(PRIMER_PERIODO)}. Para un crédito anterior no hay índice publicado con el que actualizarlo: haría falta empalmar series distintas, y eso ya no es aplicar la norma sino elegir un criterio.`;
   }
   if (mesesEntre(desde, hasta) < 0) {
     return "La fecha de pago no puede ser anterior a la fecha en que la suma se hizo debida.";

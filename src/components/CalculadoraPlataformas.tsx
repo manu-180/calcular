@@ -110,7 +110,7 @@ export function CalculadoraPlataformas() {
                 </tr>
                 <tr className="border-b border-zinc-200">
                   <td className="py-2 text-zinc-600">
-                    Aportes jubilatorios (SIPA) — los del art. 125 inc. 2
+                    Aportes jubilatorios (SIPA, art. 125 inc. 2)
                   </td>
                   <td className="py-2 text-right font-medium text-zinc-800">
                     {formatARS(res.cuota.sipa, 2)}
@@ -154,9 +154,9 @@ export function CalculadoraPlataformas() {
               bolsillo por mes
             </p>
             <p className="mt-1 text-xs text-zinc-500">
-              No es una opinión sobre el régimen: es la cuenta de los dos conceptos que la Ley de
-              Contrato de Trabajo le paga al empleado y que a vos, desde el 6 de marzo de 2026, no
-              te alcanzan — el aguinaldo (arts. 121 y 122) y el plus de los {DIAS_VACACIONES_BASE}{" "}
+              No es una opinión sobre el régimen: es la cuenta de dos cosas que la Ley de Contrato
+              de Trabajo le paga al empleado y que a vos, desde el 6 de marzo de 2026, no te
+              alcanzan. Son el aguinaldo (arts. 121 y 122) y el plus de los {DIAS_VACACIONES_BASE}{" "}
               días de vacaciones, que se pagan dividiendo por 25 en lugar de por 30 (art. 155 inc.
               a).
             </p>

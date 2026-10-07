@@ -8,9 +8,9 @@ import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { DECRETO_407, RECIBO_SECCIONES, RECIBO_RUBROS_COSTO } from "@/data/recibo-sueldo";
 
 export const metadata: Metadata = {
-  title: "Nuevo recibo de sueldo 2026: qué cambió y cómo leerlo (Decreto 407/2026)",
+  title: "Nuevo recibo de sueldo 2026: qué cambió (Decreto 407/2026)",
   description:
-    "Desde junio de 2026 el recibo de sueldo tiene formato nuevo (Decreto 407/2026): 4 secciones y el costo laboral del empleador a la vista. Qué cambió, qué NO cambia (tu sueldo neto sigue igual) y cómo leerlo, con la fuente oficial.",
+    "Desde junio de 2026 el recibo tiene 4 secciones y muestra el costo laboral del empleador. Qué cambió, qué no cambia y cómo leerlo, con la fuente oficial.",
   alternates: { canonical: "/blog/nuevo-recibo-de-sueldo-2026" },
   openGraph: {
     type: "article",
@@ -30,45 +30,45 @@ const queMirar = [
   {
     titulo: "Tus datos personales",
     cuerpo:
-      "CUIL, fecha de ingreso, antigüedad y categoría tienen que estar correctos: definen adicionales como la antigüedad y son la base de cualquier reclamo.",
+      "CUIL, fecha de ingreso, antigüedad y categoría tienen que estar bien: definen adicionales como la antigüedad y son la base de cualquier reclamo.",
   },
   {
     titulo: "El convenio y la categoría",
     cuerpo:
-      "Determinan tu sueldo básico (el piso obligatorio del convenio). Si hacés tareas de una categoría superior, corresponde que te paguen como tal.",
+      "Definen tu sueldo básico (el piso obligatorio del convenio). Si hacés tareas de una categoría más alta, te tienen que pagar como esa categoría.",
   },
   {
     titulo: "Bruto, deducciones y neto",
     cuerpo:
-      "El bruto con su determinación, las deducciones (aportes 11% + 3% + 3% = 17% sobre lo remunerativo) y el neto que cobrás. Es lo mismo que se descontaba antes: las alícuotas no cambiaron.",
+      "El bruto y cómo se calcula, los descuentos (aportes 11% + 3% + 3% = 17% sobre lo remunerativo) y el neto que cobrás. Te descuentan lo mismo que antes: los porcentajes no cambiaron.",
   },
   {
     titulo: "El resumen del costo laboral (lo nuevo)",
     cuerpo:
-      "El cuadro con lo que paga el empleador por encima de tu sueldo, discriminado por rubro. No te lo descuentan a vos: es información de transparencia sobre cuánto cuesta el puesto.",
+      "El cuadro con lo que paga el empleador por encima de tu sueldo, separado por rubro. No te lo descuentan a vos: es información para que se vea cuánto cuesta el puesto.",
   },
 ];
 
 const faqs = [
   {
     q: "¿Desde cuándo rige el nuevo recibo de sueldo?",
-    a: "Desde el 1 de junio de 2026, fecha de publicación del Decreto 407/2026 en el Boletín Oficial. Los recibos emitidos a partir de ese día deben adaptarse al nuevo modelo del artículo 140 de la LCT.",
+    a: "Desde el 1 de junio de 2026, cuando se publicó el Decreto 407/2026 en el Boletín Oficial. Los recibos emitidos desde ese día tienen que seguir el nuevo modelo del artículo 140 de la LCT.",
   },
   {
     q: "¿El nuevo recibo me cambia el sueldo que cobro?",
-    a: "No. La mayoría de los trabajadores no verá cambios en cuánto cobra: tampoco cambian los aportes ni los descuentos. El cambio es de formato y transparencia — el recibo ahora muestra también el costo laboral total que asume el empleador, pero tu neto se calcula igual que antes.",
+    a: "No. La mayoría no va a ver cambios en lo que cobra, y tampoco cambian los aportes ni los descuentos. Cambia el formato: el recibo ahora muestra también el costo laboral total que paga el empleador, pero tu neto se calcula igual que antes.",
   },
   {
     q: "¿Qué es el «costo laboral» que ahora aparece en el recibo?",
-    a: "Es el resumen de lo que paga el empleador por encima de tu sueldo: contribuciones patronales (jubilación, obra social, PAMI/INSSJP, ART), aporte sindical, cámaras empresariales y otros conceptos. No es un descuento sobre tu sueldo: es información para visibilizar cuánto cuesta sostener el puesto de trabajo.",
+    a: "Es el resumen de lo que paga el empleador por encima de tu sueldo: contribuciones patronales (jubilación, obra social, PAMI/INSSJP, ART), aporte sindical, cámaras empresariales y otros conceptos. No te lo descuentan: es información para que se vea cuánto cuesta mantener el puesto de trabajo.",
   },
   {
     q: "¿Cuáles son las 4 secciones del nuevo recibo?",
-    a: "Según el Decreto 407/2026: (a) datos del empleador (CUIT) y del trabajador (CUIL, fecha de ingreso, antigüedad y categoría); (b) las contribuciones a cargo del empleador; (c) la remuneración bruta con su determinación y las deducciones; y (d) la remuneración neta. Además, un cuadro resumen del costo laboral total.",
+    a: "Según el Decreto 407/2026: (a) los datos del empleador (CUIT) y del trabajador (CUIL, fecha de ingreso, antigüedad y categoría); (b) las contribuciones a cargo del empleador; (c) el sueldo bruto, cómo se calcula y sus descuentos; y (d) el sueldo neto. Además, un cuadro con el resumen del costo laboral total.",
   },
   {
     q: "¿Qué hago si mi recibo no tiene el formato nuevo?",
-    a: "Desde el 1/6/2026 el formato es obligación del empleador. Si tu recibo no lo refleja, podés pedírselo a tu empleador o consultar al sindicato de tu actividad. El recibo es además tu comprobante para cualquier reclamo de diferencias salariales (prescriben a los 2 años, art. 256 LCT).",
+    a: "Desde el 1/6/2026 el formato es obligación del empleador. Si tu recibo no lo tiene, pedíselo a tu empleador o consultá al sindicato de tu actividad. El recibo es además tu prueba para cualquier reclamo por diferencias de sueldo (prescriben a los 2 años, art. 256 LCT).",
   },
 ];
 
@@ -78,9 +78,9 @@ export default function Post() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "Nuevo recibo de sueldo 2026: qué cambió y cómo leerlo (Decreto 407/2026)",
+        titulo: "Nuevo recibo de sueldo 2026: qué cambió (Decreto 407/2026)",
         descripcion:
-          "El nuevo modelo del recibo de haberes (art. 140 LCT) según el Decreto 407/2026: 4 secciones, el resumen del costo laboral del empleador, desde cuándo rige y qué mirar. Tu sueldo neto no cambia.",
+          "El nuevo modelo del recibo de sueldo (art. 140 LCT) según el Decreto 407/2026: 4 secciones, el resumen del costo laboral del empleador, desde cuándo rige y qué mirar. Tu sueldo neto no cambia.",
         url: "/blog/nuevo-recibo-de-sueldo-2026",
         modificado: "2026-06-15",
         publicado: "2026-06-15",
@@ -109,9 +109,9 @@ export default function Post() {
         </h1>
         <p className="text-zinc-600">
           El 1 de junio de 2026 cambió el modelo del recibo de sueldo en Argentina. Acá tenés qué
-          cambió, qué <strong>no</strong> te cambia (spoiler: tu sueldo neto sigue igual) y cómo
-          leer el recibo nuevo — con el texto del Decreto 407/2026 verificado en la fuente oficial,
-          no en notas sueltas.
+          cambió, qué <strong>no</strong> te cambia (tu sueldo neto sigue igual) y cómo leer el
+          recibo nuevo, con el texto del Decreto 407/2026 verificado en la fuente oficial y no en
+          notas sueltas.
         </p>
       </header>
 
@@ -119,11 +119,11 @@ export default function Post() {
         <p>
           Desde el <strong>1 de junio de 2026</strong>, el <strong>Decreto 407/2026</strong>{" "}
           (reglamenta la Ley 27.802 de Modernización Laboral) cambió el formato del recibo de sueldo.
-          Ahora se estructura en <strong>4 secciones</strong> —datos del empleador y trabajador, las
-          contribuciones a cargo del empleador, el bruto con sus deducciones, y el neto— y suma un{" "}
+          Ahora tiene <strong>4 secciones</strong> (datos del empleador y del trabajador, las
+          contribuciones a cargo del empleador, el bruto con sus descuentos, y el neto) y suma un{" "}
           <strong>resumen del costo laboral total</strong> que paga la empresa por encima del sueldo.
-          Lo importante: <strong>no cambia cuánto cobrás</strong> ni tus aportes; es un cambio de
-          transparencia, no de plata. El neto se calcula igual que antes.
+          Lo importante: <strong>no cambia cuánto cobrás</strong> ni tus aportes. Cambia lo que se
+          muestra, no la plata. El neto se calcula igual que antes.
         </p>
       </RespuestaPrimero>
 
@@ -141,13 +141,13 @@ export default function Post() {
               Decreto 407/2026
             </a>{" "}
             (B.O. 1/6/2026) reglamentó la Ley 27.802 y redefinió el modelo del recibo de haberes del
-            artículo 140 de la LCT. La premisa es <strong>visibilizar el costo total</strong> que
-            asume la empresa para sostener cada puesto: el recibo dejó de mostrar solo lo que cobra
-            el trabajador y ahora también detalla lo que paga el empleador por encima del sueldo.
+            artículo 140 de la LCT. La idea es <strong>mostrar el costo total</strong> que paga la
+            empresa por cada puesto: el recibo ya no muestra solo lo que cobra el trabajador, ahora
+            también detalla lo que paga el empleador por encima del sueldo.
           </p>
           <p className="rounded-xl bg-emerald-50 p-4 font-medium text-emerald-900">
             Lo que NO cambia: tu sueldo neto, tus aportes (11% + 3% + 3%) y tus descuentos siguen
-            exactamente igual. Es un cambio de formato y transparencia, no de cuánto cobrás.
+            exactamente igual. Cambia el formato, no cuánto cobrás.
           </p>
         </div>
       </section>
@@ -172,8 +172,8 @@ export default function Post() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">El resumen del costo laboral</h2>
         <p className="text-zinc-600">
-          La novedad más visible. El recibo ahora incluye un cuadro con lo que paga el empleador por
-          encima de tu sueldo, discriminado —como mínimo— en estos rubros:
+          Es lo que más se nota. El recibo ahora incluye un cuadro con lo que paga el empleador por
+          encima de tu sueldo, separado (como mínimo) en estos rubros:
         </p>
         <ul className="grid gap-2 sm:grid-cols-2">
           {RECIBO_RUBROS_COSTO.map((rubro) => (
@@ -187,8 +187,8 @@ export default function Post() {
           ))}
         </ul>
         <p className="text-xs text-zinc-400">
-          Estos importes los paga la empresa, no se descuentan de tu sueldo. Las alícuotas dependen
-          del Decreto 814/2001 y de la actividad, por eso el monto exacto lo determina cada
+          Estos importes los paga la empresa, no se descuentan de tu sueldo. Los porcentajes
+          dependen del Decreto 814/2001 y de la actividad, por eso el monto exacto lo define cada
           empleador o su contador.
         </p>
       </section>
@@ -218,6 +218,14 @@ export default function Post() {
           o usá la{" "}
           <Link href="/convenios/comercio" className="text-emerald-700 underline">
             calculadora del CCT 130/75
+          </Link>
+          . Para seguir tu sueldo mes a mes, está la{" "}
+          <Link href="/planillas/mi-sueldo" className="text-emerald-700 underline">
+            planilla de mi sueldo
+          </Link>
+          . Y guardá cada recibo: mirá{" "}
+          <Link href="/conservacion-de-recibos" className="text-emerald-700 underline">
+            cuánto tiempo hay que guardar los recibos de sueldo
           </Link>
           .
         </p>
@@ -254,7 +262,7 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              {DECRETO_407.nombre} — texto oficial
+              {DECRETO_407.nombre}: texto oficial
             </a>
           </li>
           <li>
@@ -265,7 +273,7 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              Decreto 407/2026 — Boletín Oficial ({DECRETO_407.publicacion})
+              Decreto 407/2026, Boletín Oficial ({DECRETO_407.publicacion})
             </a>
           </li>
         </ul>

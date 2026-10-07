@@ -147,25 +147,25 @@ export const TIEMPO_PARCIAL_FUENTES: {
   consultadoEl: "2026-08-18",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 92 ter con el texto sustituido por el art. 27 de la Ley 27.802: la definición sin el tope de los dos tercios, las horas suplementarias voluntarias, las cotizaciones proporcionales (inc. 3) y el aporte de obra social de tiempo completo (inc. 4). También arts. 196 (jornada), 201 (recargos del 50% y 100%) y 89 (auxilios extraordinarios).",
     },
     {
-      nombre: "Ley 26.474 (B.O. 23/1/2009) — el texto anterior del art. 92 ter",
+      nombre: "Ley 26.474 (B.O. 23/1/2009): el texto anterior del art. 92 ter",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/145000-149999/149688/norma.htm",
       detalle:
         "El artículo 1º de esta ley es el texto que rigió hasta el 5/3/2026 y que casi todas las notas siguen publicando: las «dos terceras (2/3) partes de la jornada habitual», la obligación de pagar jornada completa si se superaba y la prohibición de hacer horas suplementarias.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La reforma que sustituyó ~54 artículos de la LCT. Su art. 27 es el que reescribió el art. 92 ter. Vigencia: desde la publicación, sin efecto retroactivo.",
     },
     {
-      nombre: "Ley 24.241 art. 11, Ley 23.660 y Ley 19.032 — aportes del trabajador",
+      nombre: "Ley 24.241 art. 11, Ley 23.660 y Ley 19.032: aportes del trabajador",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/639/texact.htm",
       detalle:
         "11% de jubilación (SIPA), 3% de obra social y 3% de PAMI. Los dos primeros y el último van sobre la remuneración proporcional; el de obra social, por el inc. 4 del art. 92 ter, se calcula como el de un trabajador de tiempo completo de la categoría.",

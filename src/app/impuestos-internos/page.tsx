@@ -19,9 +19,9 @@ const pct = (t: number) =>
 const efectiva = (t: number) => t / (1 - t);
 
 export const metadata: Metadata = {
-  title: `Impuestos internos eliminados: qué dejó de pagarse el ${VIGENCIA_ELIMINACION}`,
+  title: "Impuestos internos eliminados en 2026: qué dejó de pagarse",
   description:
-    "El art. 195 de la Ley 27.802 dejó sin efecto los impuestos internos a seguros, telefonía celular, objetos suntuarios, autos, embarcaciones y aeronaves. Desde el 1 de abril de 2026, no desde el 6 de marzo. Calculá cuánto del importe era impuesto — y por qué el 20% nominal era un 25% real.",
+    "La Ley 27.802 eliminó desde el 1/4/2026 los internos a seguros, celulares, autos, embarcaciones y suntuarios. Calculá cuánto del precio era impuesto.",
   alternates: { canonical: "/impuestos-internos" },
   openGraph: {
     title: "Impuestos internos: el 20% de la ley era un 25% en el mostrador",
@@ -41,47 +41,47 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Desde cuándo dejaron de pagarse estos impuestos internos?",
-    a: `Desde el ${VIGENCIA_ELIMINACION}. La Ley 27.802 se publicó el ${BO_LEY_27802} y rige desde ese día (art. 217), pero el art. 195 no eliminó el impuesto desde la vigencia: lo dejó sin efecto «a partir del primer día del mes inmediato siguiente al de la entrada en vigencia de esta ley». O sea que durante todo marzo de 2026 el impuesto se siguió pagando. Es la diferencia entre la fecha del titular y la fecha que importa para una factura.`,
+    a: `Desde el ${VIGENCIA_ELIMINACION}. La Ley 27.802 se publicó el ${BO_LEY_27802} y rige desde ese día (art. 217). Pero el art. 195 no eliminó el impuesto ese mismo día: lo dejó sin efecto «a partir del primer día del mes inmediato siguiente al de la entrada en vigencia de esta ley». O sea que durante todo marzo de 2026 se siguió pagando. Esa es la diferencia entre la fecha de los titulares y la que importa para una factura.`,
   },
   {
     q: "¿Qué rubros alcanza el artículo 195?",
-    a: "Cinco, y los nombra uno por uno: los seguros, los servicios de telefonía celular y satelital, los objetos suntuarios, y los vehículos automóviles y motores, embarcaciones de recreo o deportes y aeronaves. No alcanza a los demás capítulos de la Ley de Impuestos Internos: tabaco, bebidas alcohólicas, cervezas y bebidas analcohólicas siguen gravados.",
+    a: "Cinco, y los nombra uno por uno: los seguros, la telefonía celular y satelital, los objetos suntuarios, y los autos y motores, las embarcaciones de recreo o deporte y las aeronaves. No toca los demás capítulos de la Ley de Impuestos Internos: tabaco, bebidas alcohólicas, cervezas y bebidas sin alcohol siguen pagando.",
   },
   {
     q: "¿Por qué el 20% nominal era en realidad un 25%?",
-    a: "Porque el impuesto integra su propia base. El art. 4° de la Ley 24.674 manda liquidar sobre el precio neto de venta que resulta de la factura y prohíbe descontar de esa base «valor alguno en concepto del impuesto de esta ley». Si el vendedor quiere quedarse con 100 después de pagar el impuesto, tiene que facturar 125: sobre 125, el 20% son 25. La tasa efectiva es alícuota ÷ (1 − alícuota). El 35% de los autos era 53,85% y el 5% del celular, 5,26%.",
+    a: "Porque el impuesto forma parte de su propia base. El art. 4° de la Ley 24.674 manda calcularlo sobre el precio neto de la factura y prohíbe descontar de esa base «valor alguno en concepto del impuesto de esta ley». Si el vendedor quiere quedarse con 100 después de pagar el impuesto, tiene que facturar 125. Y el 20% de 125 son 25. La tasa real es alícuota ÷ (1 − alícuota). El 35% de los autos era 53,85% y el 5% del celular, 5,26%.",
   },
   {
     q: "¿Cuánto pagaba un seguro?",
-    a: "Depende de cuál, y son tres alícuotas distintas dentro del mismo artículo. El art. 27 fija el 1‰ general sobre las primas de las entidades constituidas en el país, «excepto en el caso de seguros de accidente de trabajo que pagarán el dos con cinco por ciento (2,5%)» —o sea la cuota de ART, que es veinticinco veces la alícuota general—, y el 23% para los seguros hechos por aseguradores radicados fuera del país. Varios seguros ya estaban exentos de antes: los agrícolas, los de vida, los de accidentes personales y los colectivos de internación, cirugía o maternidad.",
+    a: "Depende de cuál: hay tres alícuotas en el mismo artículo. El art. 27 fija el 1‰ general sobre las primas de las aseguradoras del país, «excepto en el caso de seguros de accidente de trabajo que pagarán el dos con cinco por ciento (2,5%)». Esa es la cuota de ART, y paga veinticinco veces la alícuota general. Y fija el 23% para los seguros contratados con aseguradoras de fuera del país. Varios seguros ya estaban exentos de antes: los agrícolas, los de vida, los de accidentes personales y los colectivos de internación, cirugía o maternidad.",
   },
   {
     q: "¿El impuesto interno a la ART lo pagaba el empleador?",
-    a: "El responsable del ingreso era la aseguradora, pero el 2,5% se calculaba sobre la prima, así que venía dentro de la cuota que el empleador paga por cada trabajador. Es el único de los cinco rubros del art. 195 que es un costo laboral directo, y prácticamente ninguna cobertura de la reforma lo menciona.",
+    a: "Lo depositaba la aseguradora, pero el 2,5% se calculaba sobre la prima, así que venía dentro de la cuota que el empleador paga por cada trabajador. Es el único de los cinco rubros del art. 195 que es un costo laboral directo, y casi ninguna nota sobre la reforma lo menciona.",
   },
   {
     q: "¿Los objetos suntuarios pagaban una vez o varias?",
-    a: "Varias, y son el único caso. El art. 2° dice que los impuestos de la ley inciden «en una sola de las etapas de su circulación, excepto en el caso de los bienes comprendidos en el Capítulo VIII», que es el de los objetos suntuarios; y el art. 35 lo confirma: el 20% se abonaba «en cada una de las etapas de su comercialización». El art. 37 amortigua el arrastre, porque fabricantes, talleristas y revendedores podían computar como pago a cuenta el impuesto pagado por los productos gravados que usaran.",
+    a: "Varias, y son el único caso. El art. 2° dice que los impuestos de la ley se cobran «en una sola de las etapas de su circulación, excepto en el caso de los bienes comprendidos en el Capítulo VIII», que es el de los objetos suntuarios. Y el art. 35 lo confirma: el 20% se pagaba «en cada una de las etapas de su comercialización». El art. 37 suavizaba la cascada: fabricantes, talleristas y revendedores podían descontar el impuesto ya pagado por los productos gravados que usaban.",
   },
   {
     q: "¿Qué era un objeto suntuario?",
-    a: "Lo enumera el art. 36: piedras preciosas o semipreciosas, piedras duras talladas y perlas; los objetos confeccionados con platino, paladio, oro, plata, cristal, jade, marfil, ámbar, carey, coral, espuma de mar o cristal de roca; las monedas de oro o plata con aditamentos extraños a su cuño; las prendas de vestir de piel de peletería; y las alfombras y tapices de punto anudado o enrollado. Y tenía exenciones curiosas y muy concretas: entre ellas, los anillos de alianza matrimonial.",
+    a: "Los enumera el art. 36: piedras preciosas o semipreciosas, piedras duras talladas y perlas; objetos hechos con platino, paladio, oro, plata, cristal, jade, marfil, ámbar, carey, coral, espuma de mar o cristal de roca; monedas de oro o plata con agregados ajenos a su cuño; prendas de piel de peletería; y alfombras y tapices de punto anudado o enrollado. Y tenía exenciones curiosas y muy concretas, como los anillos de alianza matrimonial.",
   },
   {
     q: "¿Los autos bajaron un 35%?",
-    a: "No, y ése es el punto que la mayoría de las notas se saltea. El 35% figura en el art. 39, pero el Decreto 50/2025 (B.O. 31/1/2025) ya lo había reducido al 18% —y el 30% de las motos al 15%, y había dejado sin efecto el 20%— para los bienes de los incisos a) a e) del art. 38, con efectos hasta el 30 de junio de 2027. O sea que en 2026 lo que se estaba pagando era el 18%, no el 35%. Lo que realmente cambia con la ley es que el alivio deja de depender de un decreto con fecha de vencimiento y pasa a estar en la ley.",
+    a: "No, y es lo que la mayoría de las notas se saltea. El 35% figura en el art. 39, pero el Decreto 50/2025 (B.O. 31/1/2025) ya lo había bajado al 18%. También bajó el 30% de las motos al 15% y dejó sin efecto el 20%, para los bienes de los incisos a) a e) del art. 38, hasta el 30 de junio de 2027. O sea que en 2026 se estaba pagando el 18%, no el 35%. Lo que de verdad cambia con la ley es que el alivio ya no depende de un decreto con fecha de vencimiento: pasa a estar en la ley.",
   },
   {
     q: "¿Hay algún rubro donde la eliminación sí baje algo que se pagaba?",
-    a: "Sí: las aeronaves. El Decreto 50/2025 enumera los incisos a), b), c), d) y e) del art. 38 y deja afuera al f), que son las aeronaves, aviones, hidroaviones, planeadores y helicópteros concebidos para recreo o deportes. Su 20% siguió vigente hasta el 1 de abril de 2026. Y es además el único inciso sin monto exento: el art. 39 dice expresamente «sin aplicarse monto exento para el inciso f)», así que el impuesto corría desde el primer peso.",
+    a: "Sí: las aeronaves. El Decreto 50/2025 nombra los incisos a), b), c), d) y e) del art. 38 y deja afuera el f): aeronaves, aviones, hidroaviones, planeadores y helicópteros de recreo o deporte. Su 20% siguió vigente hasta el 1 de abril de 2026. Y es el único inciso sin monto exento. El art. 39 dice de forma expresa «sin aplicarse monto exento para el inciso f)», así que el impuesto corría desde el primer peso.",
   },
   {
     q: "¿Por qué esta página no publica los montos exentos de los autos?",
-    a: `Porque no se pueden verificar contra la ley. El art. 39 escribió los importes en 2019 —$1.300.000 para autos y motores, $390.000 para motociclos, $1.700.000 para embarcaciones— y en el mismo artículo mandó actualizarlos cada ${MESES_ACTUALIZACION_MONTOS} meses por el Índice de Precios Internos al por Mayor del INDEC. El valor vigente no está en el texto legal y no se deriva de él. Publicar el número de 2019 como si fuera el de hoy sería inventar un dato: acá se explica la mecánica y se manda a la fuente.`,
+    a: `Porque no se pueden verificar con la ley. El art. 39 escribió los montos en 2019 ($1.300.000 para autos y motores, $390.000 para motos, $1.700.000 para embarcaciones). Y en el mismo artículo mandó actualizarlos cada ${MESES_ACTUALIZACION_MONTOS} meses por el Índice de Precios Internos al por Mayor del INDEC. El valor vigente no está en la ley ni se puede sacar de ella. Publicar el número de 2019 como si fuera el de hoy sería inventar un dato: acá te explicamos cómo funciona y te mandamos a la fuente.`,
   },
   {
     q: "¿La Ley 27.802 eliminó todos los impuestos internos?",
-    a: "No. El art. 195 nombra cinco rubros y deja intactos los demás capítulos de la Ley 24.674: tabaco (Capítulo I), bebidas alcohólicas (II), cervezas (III) y bebidas analcohólicas, jarabes, extractos y concentrados (IV). El Título XXV también tiene un art. 196 que toca la Ley de Fomento de la Actividad Cinematográfica, pero eso es otra cosa: no es una alícuota al consumo.",
+    a: "No. El art. 195 nombra cinco rubros y deja intactos los demás capítulos de la Ley 24.674: tabaco (Capítulo I), bebidas alcohólicas (II), cervezas (III) y bebidas sin alcohol, jarabes, extractos y concentrados (IV). El Título XXV también tiene un art. 196 que toca la Ley de Fomento de la Actividad Cinematográfica, pero eso es otra cosa: no es un impuesto al consumo.",
   },
 ];
 
@@ -129,7 +129,7 @@ export default function ImpuestosInternosPage() {
         <p className="text-zinc-600">
           El art. 195 de la Ley 27.802 dejó sin efecto los impuestos internos a{" "}
           <strong>seguros, telefonía celular, objetos suntuarios, autos, embarcaciones y
-          aeronaves</strong>. Dos cosas que casi nadie publica: no rige desde la ley sino desde el{" "}
+          aeronaves</strong>. Hay dos cosas que casi nadie publica: no rige desde la ley sino desde el{" "}
           <strong>{VIGENCIA_ELIMINACION}</strong>, y la alícuota que dice el texto{" "}
           <strong>no es lo que encarecía el precio</strong>.
         </p>
@@ -137,25 +137,25 @@ export default function ImpuestosInternosPage() {
 
       <RespuestaPrimero actualizado={IMPUESTOS_INTERNOS_FUENTES.consultadoEl}>
         <p>
-          Los cinco rubros del art. 195 dejaron de tributar impuestos internos el{" "}
-          <strong>{VIGENCIA_ELIMINACION}</strong>: la Ley 27.802 se publicó el {BO_LEY_27802} y rige
+          Los cinco rubros del art. 195 dejaron de pagar impuestos internos el{" "}
+          <strong>{VIGENCIA_ELIMINACION}</strong>. La Ley 27.802 se publicó el {BO_LEY_27802} y rige
           desde ese día, pero el artículo dice «a partir del primer día del mes inmediato siguiente».
           Las alícuotas que se fueron: <strong>1‰</strong> el seguro general y{" "}
-          <strong>2,5% el de accidentes de trabajo</strong> (art. 27), <strong>23%</strong> el
-          asegurador del exterior, <strong>5%</strong> la telefonía celular y satelital (art. 30, con
+          <strong>2,5% el de accidentes de trabajo</strong> (art. 27), <strong>23%</strong> la
+          aseguradora del exterior, <strong>5%</strong> la telefonía celular y satelital (art. 30, con
           las recargas incluidas por el 31), <strong>20% en cada etapa</strong> los objetos suntuarios
-          (art. 35) y la escala del art. 39 para vehículos, embarcaciones y aeronaves. Y como el
-          impuesto integraba su propia base (art. 4°), <strong>el 20% nominal era un 25%</strong>{" "}
-          sobre un precio limpio y el 35%, un 53,85%.
+          (art. 35) y la escala del art. 39 para autos, embarcaciones y aeronaves. Y como el impuesto
+          formaba parte de su propia base (art. 4°), <strong>el 20% nominal era un 25%</strong> sobre
+          un precio limpio, y el 35%, un 53,85%.
         </p>
       </RespuestaPrimero>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Calculá cuánto era impuesto</h2>
         <p className="text-sm text-zinc-600">
-          Elegí el rubro y cargá el importe con impuesto. La calculadora contesta lo que se puede
-          contestar con la ley: cuánto de ese importe era impuesto interno y cuánto encarecía sobre
-          un precio sin él. No cuánto va a bajar la góndola: eso lo decide el vendedor.
+          Elegí el rubro y cargá el importe con impuesto. La calculadora te dice lo que se puede
+          saber con la ley: cuánto de ese importe era impuesto interno y cuánto encarecía un precio
+          sin él. No cuánto va a bajar en el mostrador: eso lo decide el vendedor.
         </p>
         <CalculadoraImpuestosInternos />
       </section>
@@ -171,10 +171,14 @@ export default function ImpuestosInternosPage() {
           </p>
         </blockquote>
         <p className="text-sm text-zinc-600">
-          Es un artículo entero para eliminar cinco impuestos, y no toca ni un artículo de la ley que
-          los crea: la Ley 24.674 sigue con sus capítulos completos, con las alícuotas escritas, y lo
-          que cambia es que dejan de aplicarse a esos rubros. Por eso conviene leer las dos normas
-          juntas — el texto de la ley vieja sigue siendo el que dice cuánto era.
+          Un solo artículo elimina cinco impuestos, sin tocar ni un artículo de la ley que los crea.
+          La Ley 24.674 sigue con sus capítulos completos y sus alícuotas escritas: lo que cambia es
+          que dejan de aplicarse a esos rubros. Por eso conviene leer las dos normas juntas. La ley
+          vieja sigue siendo la que dice cuánto era. Otro cambio impositivo de la misma ley es{" "}
+          <Link href="/venta-de-inmuebles" className="font-medium text-emerald-700 hover:underline">
+            la venta de inmuebles sin impuesto
+          </Link>
+          .
         </p>
       </section>
 
@@ -187,10 +191,10 @@ export default function ImpuestosInternosPage() {
           <p className="mt-1 text-sm italic text-zinc-700">«{IMPUESTOS_INTERNOS_TEXTOS.art4}»</p>
         </blockquote>
         <p className="text-sm text-zinc-600">
-          Traducido: el impuesto <strong>no se descuenta de su propia base</strong>. Se calcula sobre
-          el importe facturado, que ya lo contiene. Si el vendedor quiere quedarse con $100 después
-          de pagarlo, tiene que facturar $125 — y el 20% de $125 son los $25 del impuesto. El
-          sobrecosto real sobre un precio limpio es alícuota ÷ (1 − alícuota).
+          En criollo: el impuesto <strong>no se descuenta de su propia base</strong>. Se calcula sobre
+          el importe facturado, que ya lo incluye. Si el vendedor quiere quedarse con $100 después de
+          pagarlo, tiene que facturar $125. Y el 20% de $125 son los $25 del impuesto. Lo que encarece
+          de verdad un precio limpio es alícuota ÷ (1 − alícuota).
         </p>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[34rem] text-sm">
@@ -245,20 +249,19 @@ export default function ImpuestosInternosPage() {
           </p>
         </blockquote>
         <p className="text-sm text-zinc-600">
-          El decreto dejó sin efecto el 20% y, en sus artículos 2° y 3°, redujo el 35% al{" "}
-          <strong>18%</strong> y el 30% de las motos al <strong>15%</strong>, con efectos hasta el 30
-          de junio de 2027. O sea que durante 2026, antes de la ley, la alícuota que se pagaba por un
-          auto de gama alta era el 18%. Titular y realidad no coinciden — y lo que la Ley 27.802
-          cambia de verdad es otra cosa: <strong>el alivio deja de depender de un decreto</strong> con
-          fecha de vencimiento.
+          El decreto dejó sin efecto el 20% y, en sus artículos 2° y 3°, bajó el 35% al{" "}
+          <strong>18%</strong> y el 30% de las motos al <strong>15%</strong>, hasta el 30 de junio de
+          2027. O sea que en 2026, antes de la ley, por un auto de gama alta se pagaba el 18%. El
+          titular y la realidad no coinciden. Lo que la Ley 27.802 cambia de verdad es otra cosa:{" "}
+          <strong>el alivio ya no depende de un decreto</strong> con fecha de vencimiento.
         </p>
         <p className="text-sm text-zinc-600">
-          Y hay un detalle en la enumeración del decreto que decide un rubro entero: nombra los
-          incisos <strong>a), b), c), d) y e)</strong> del art. 38 y <strong>no nombra el f)</strong>,
-          que son las aeronaves, aviones, hidroaviones, planeadores y helicópteros de recreo. Su 20%
-          nunca se suspendió, y encima el art. 39 dice «sin aplicarse monto exento para el inciso
-          f)»: corría desde el primer peso. Es el único rubro del Capítulo IX donde la eliminación
-          baja algo que efectivamente se estaba pagando.
+          Y hay un detalle en la lista del decreto que decide un rubro entero. Nombra los incisos{" "}
+          <strong>a), b), c), d) y e)</strong> del art. 38 y <strong>no nombra el f)</strong>: las
+          aeronaves, aviones, hidroaviones, planeadores y helicópteros de recreo. Su 20% nunca se
+          suspendió. Además, el art. 39 dice «sin aplicarse monto exento para el inciso f)», así que
+          corría desde el primer peso. Es el único rubro del Capítulo IX donde la eliminación baja
+          algo que de verdad se estaba pagando.
         </p>
       </section>
 
@@ -269,34 +272,34 @@ export default function ImpuestosInternosPage() {
         <div className="space-y-3">
           {[
             {
-              art: "Art. 2° — la regla de la etapa única, y su excepción",
+              art: "Art. 2°: la regla de la etapa única, y su excepción",
               texto: IMPUESTOS_INTERNOS_TEXTOS.art2,
               porQue:
-                "Todos los impuestos internos inciden una sola vez en la cadena. Todos menos el Capítulo VIII, que es el de los objetos suntuarios. La excepción está escrita en la regla general, no en el capítulo.",
+                "Todos los impuestos internos se cobran una sola vez en la cadena. Todos menos el Capítulo VIII, el de los objetos suntuarios. La excepción está escrita en la regla general, no en el capítulo.",
             },
             {
-              art: "Art. 35 — el 20% en cada etapa de comercialización",
+              art: "Art. 35: el 20% en cada etapa de venta",
               texto: IMPUESTOS_INTERNOS_TEXTOS.art35,
               porQue:
-                "Fabricante, mayorista y joyería: cada venta gravada. Por eso el impacto sobre el precio final de una joya no era el 20% ni el 25%, sino lo que resultara de la cadena concreta.",
+                "Fabricante, mayorista y joyería: cada venta pagaba. Por eso lo que encarecía el precio final de una joya no era el 20% ni el 25%, sino lo que diera la cadena concreta.",
             },
             {
-              art: "Art. 37 — el pago a cuenta que evita el arrastre completo",
+              art: "Art. 37: el pago a cuenta que frena la cascada",
               texto: IMPUESTOS_INTERNOS_TEXTOS.art37,
               porQue:
-                "Fabricantes, talleristas y revendedores podían computar contra su propio impuesto el que ya se había pagado sobre los productos gravados que usaran. Sin este artículo, el 20% se apilaría en cascada; con él, el efecto depende de cuánto de la cadena esté alcanzado.",
+                "Fabricantes, talleristas y revendedores podían descontar de su propio impuesto el que ya se había pagado por los productos gravados que usaban. Sin este artículo, el 20% se apilaría en cascada. Con él, el efecto depende de cuánto de la cadena esté alcanzado.",
             },
             {
-              art: "Art. 36 — qué era un objeto suntuario",
+              art: "Art. 36: qué era un objeto suntuario",
               texto: IMPUESTOS_INTERNOS_TEXTOS.art36,
               porQue:
-                "La lista es más ancha de lo que sugiere la palabra «suntuario»: entra el cristal, entran las alfombras de punto anudado y entra cualquier objeto que use plata «en cualquier forma o proporción».",
+                "La lista es más amplia de lo que sugiere la palabra «suntuario»: entra el cristal, entran las alfombras de punto anudado y entra cualquier objeto que use plata «en cualquier forma o proporción».",
             },
             {
-              art: "Art. 36 — las exenciones, incluida la alianza matrimonial",
+              art: "Art. 36: las exenciones, incluida la alianza matrimonial",
               texto: IMPUESTOS_INTERNOS_TEXTOS.art36Exenciones,
               porQue:
-                "Los anillos de alianza matrimonial estaban exentos por nombre propio, igual que el instrumental científico, los objetos del culto y las condecoraciones oficiales. También los artículos a los que el material precioso se agrega «bajo la forma de baño, fileteado, virola, guarda, esquinero, monograma».",
+                "Los anillos de alianza matrimonial estaban exentos con nombre propio, igual que el instrumental científico, los objetos de culto y las condecoraciones oficiales. También los artículos a los que el material precioso se agrega «bajo la forma de baño, fileteado, virola, guarda, esquinero, monograma».",
             },
           ].map((a) => (
             <details
@@ -320,23 +323,23 @@ export default function ImpuestosInternosPage() {
           <p className="mt-1 text-sm italic text-zinc-700">«{IMPUESTOS_INTERNOS_TEXTOS.art27}»</p>
         </blockquote>
         <p className="text-sm text-zinc-600">
-          La excepción va al final de la oración y es <strong>veinticinco veces</strong> la alícuota
-          general: el <strong>2,5% sobre la prima de los seguros de accidente de trabajo</strong>, o
-          sea sobre la cuota de ART que paga el empleador por cada trabajador. Es el único de los
-          cinco rubros del art. 195 que es un costo laboral directo, y prácticamente ninguna
-          cobertura de la reforma lo separa del 1‰ general.
+          La excepción está al final de la oración y es <strong>veinticinco veces</strong> la alícuota
+          general: el <strong>2,5% sobre la prima de los seguros de accidente de trabajo</strong>. O
+          sea, sobre la cuota de ART que paga el empleador por cada trabajador. Es el único de los
+          cinco rubros del art. 195 que es un costo laboral directo, y casi ninguna nota sobre la
+          reforma lo separa del 1‰ general.
         </p>
         <blockquote className="rounded-xl border-l-4 border-zinc-300 bg-zinc-50 p-4">
           <p className="text-sm font-semibold text-zinc-800">
-            Artículo sin número a continuación del art. 29 — lo que ya estaba exento
+            Artículo sin número a continuación del art. 29: lo que ya estaba exento
           </p>
           <p className="mt-1 text-sm italic text-zinc-700">
             «{IMPUESTOS_INTERNOS_TEXTOS.segurosExentos}»
           </p>
         </blockquote>
         <p className="text-sm text-zinc-600">
-          Para esos seguros el art. 195 no cambia nada: ya no tributaban. Distinguirlos importa
-          porque es la diferencia entre «me baja la póliza» y «no me cambia nada».
+          Para esos seguros el art. 195 no cambia nada, porque ya no pagaban. Importa distinguirlos:
+          es la diferencia entre «me baja la póliza» y «no me cambia nada».
         </p>
       </section>
 
@@ -353,10 +356,10 @@ export default function ImpuestosInternosPage() {
           </blockquote>
         </div>
         <p className="text-sm text-zinc-600">
-          El 5% se calculaba sobre el <strong>importe facturado al usuario</strong>, y el art. 31
-          estiraba el alcance a las tarjetas prepagas y recargables: la recarga de un prepago pagaba
-          lo mismo que el abono de una línea con factura. Con el art. 4° a la vista, el sobrecosto
-          sobre un precio sin impuesto era del {pct(efectiva(0.05))}.
+          El 5% se calculaba sobre el <strong>importe facturado al usuario</strong>, y el art. 31 lo
+          extendía a las tarjetas prepagas y recargables. La recarga de un prepago pagaba lo mismo
+          que el abono de una línea con factura. Mirando el art. 4°, lo que encarecía un precio sin
+          impuesto era el {pct(efectiva(0.05))}.
         </p>
       </section>
 
@@ -371,12 +374,12 @@ export default function ImpuestosInternosPage() {
           </p>
         </blockquote>
         <p className="text-sm text-zinc-600">
-          El art. 39 escribió los pisos en 2019 y en el mismo párrafo mandó actualizarlos cada{" "}
+          El art. 39 escribió los montos en 2019 y, en el mismo párrafo, mandó actualizarlos cada{" "}
           {MESES_ACTUALIZACION_MONTOS} meses por el Índice de Precios Internos al por Mayor. El valor
-          vigente no está en la ley y no se deriva de ella. Publicar el número de 2019 como si fuera
-          el de hoy sería fabricar un dato — el mismo error que hace que medio internet siga citando
-          «$1.300.000» siete años después. Si necesitás el monto exento de una operación concreta,
-          hay que buscarlo en la resolución de ARCA del trimestre, no en el texto legal.
+          vigente no está en la ley ni se puede sacar de ella. Publicar el número de 2019 como si
+          fuera el de hoy sería inventar un dato. Es el mismo error que hace que medio internet siga
+          citando «$1.300.000» siete años después. Si necesitás el monto exento de una operación
+          concreta, buscalo en la resolución de ARCA del trimestre, no en la ley.
         </p>
       </section>
 
@@ -419,15 +422,15 @@ export default function ImpuestosInternosPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
           Esta página cita los textos oficiales de la Ley 27.802 y de la Ley 24.674 publicados en
-          InfoLEG — no un resumen de prensa. Es informativa y orientativa: no reemplaza el
-          asesoramiento de un profesional ni una liquidación impositiva. Consultada el{" "}
+          InfoLEG, no un resumen de prensa. Es informativa: no reemplaza el consejo de un
+          profesional ni una liquidación impositiva. Consultada el{" "}
           {IMPUESTOS_INTERNOS_FUENTES.consultadoEl}.
         </p>
       </section>

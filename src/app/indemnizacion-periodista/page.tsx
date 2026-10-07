@@ -20,9 +20,9 @@ import {
 } from "@/data/periodistas";
 
 export const metadata: Metadata = {
-  title: "Indemnización de un periodista: el art. 43 del estatuto y qué cambia el 1/1/2027",
+  title: "Indemnización de periodistas: el estatuto hasta 2027",
   description:
-    "El Estatuto del Periodista paga tres indemnizaciones que la Ley de Contrato de Trabajo no tiene: antigüedad con piso de dos meses, sustitutiva de dos o cuatro meses y una especial de seis meses de sueldo. El art. 197 de la Ley 27.802 deroga todo el 1° de enero de 2027. Calculá la diferencia.",
+    "El Estatuto del Periodista suma indemnizaciones que la LCT no tiene, y la Ley 27.802 lo deroga el 1/1/2027. Calculá cuánto es hoy y cuánto desde 2027.",
   alternates: { canonical: "/indemnizacion-periodista" },
   openGraph: {
     title: "Indemnización del periodista: los seis meses que se terminan el 1/1/2027",
@@ -43,27 +43,27 @@ export default function IndemnizacionPeriodistaPage() {
   const faqs = [
     {
       q: "¿Cuánto cobra un periodista despedido sin causa?",
-      a: `Mientras rija el estatuto, tres rubros que se suman (art. 43 de la Ley 12.908): la indemnización por antigüedad del inc. c) —un mes de sueldo por año o fracción mayor de tres meses, «en ningún caso inferior a dos meses»—, la sustitutiva del preaviso del inc. b) —dos meses hasta los tres años de antigüedad, cuatro si los supera— y la indemnización especial del inc. d), equivalente a ${MESES_ESPECIAL} meses de sueldo. Un periodista con diez años y un sueldo promedio de $1.000.000 cobra 20 sueldos: 10 + 4 + 6.`,
+      a: `Mientras rija el estatuto, tres rubros que se suman (art. 43 de la Ley 12.908). La indemnización por antigüedad del inc. c): un mes de sueldo por año o fracción de más de tres meses, «en ningún caso inferior a dos meses». La que reemplaza al preaviso, del inc. b): dos meses hasta los tres años de antigüedad, cuatro si son más. Y la indemnización especial del inc. d), de ${MESES_ESPECIAL} meses de sueldo. Un periodista con diez años y un sueldo promedio de $1.000.000 cobra 20 sueldos: 10 + 4 + 6.`,
     },
     {
       q: "¿Qué es la indemnización especial de seis meses?",
-      a: "Es el inc. d) del art. 43, y no tiene equivalente en la Ley de Contrato de Trabajo: «Sin perjuicio del pago de las indemnizaciones establecidas en los incisos b) y c) que anteceden, el empleador abonará además a su dependiente, en los casos de despido injustificado, haya o no mediado preaviso, una indemnización especial equivalente a seis meses de sueldo». Se paga incluso si el empleador preavisó correctamente.",
+      a: "Es el inc. d) del art. 43, y no existe en la Ley de Contrato de Trabajo: «Sin perjuicio del pago de las indemnizaciones establecidas en los incisos b) y c) que anteceden, el empleador abonará además a su dependiente, en los casos de despido injustificado, haya o no mediado preaviso, una indemnización especial equivalente a seis meses de sueldo». Se paga aunque el empleador haya avisado bien.",
     },
     {
       q: "¿Hasta cuándo rige el Estatuto del Periodista?",
-      a: `Hasta el ${ULTIMO_DIA_VIGENTE_TEXTO} inclusive. El art. 197 de la Ley 27.802 dice, completo: «Derógase la ley 12.908 y sus modificatorias, a partir del 1º de enero de 2027». La ley está sancionada y publicada desde el ${REFORMA_PUBLICADA}: no es un proyecto. Desde el 1/1/2027 un periodista despedido cobra lo mismo que cualquier trabajador de la LCT.`,
+      a: `Hasta el ${ULTIMO_DIA_VIGENTE_TEXTO} inclusive. El art. 197 de la Ley 27.802 dice, completo: «Derógase la ley 12.908 y sus modificatorias, a partir del 1º de enero de 2027». La ley está aprobada y publicada desde el ${REFORMA_PUBLICADA}: no es un proyecto. Desde el 1/1/2027, un periodista despedido cobra lo mismo que cualquier trabajador de la LCT.`,
     },
     {
       q: "¿Cuánta plata es la diferencia?",
-      a: "Depende de la antigüedad, y la brecha es mayor cuanto menos tiempo se lleve en el puesto. Con diez años, el estatuto paga 20 sueldos contra 12,17 de la LCT (10 de antigüedad + 2 de preaviso con su SAC). Con cuatro meses de antigüedad la diferencia es total: la LCT no paga nada porque el trabajador está en el período de prueba de seis meses del art. 92 bis, y el estatuto paga 10 sueldos (2 de piso + 2 de sustitutiva + 6 de especial). La calculadora de arriba hace las dos cuentas con tus fechas.",
+      a: "Depende de la antigüedad, y la diferencia es mayor cuanto menos tiempo llevás en el puesto. Con diez años, el estatuto paga 20 sueldos contra 12,17 de la LCT (10 de antigüedad más 2 de preaviso con su aguinaldo). Con cuatro meses, la diferencia es total. La LCT no paga nada porque estás en el período de prueba de seis meses del art. 92 bis, y el estatuto paga 10 sueldos (2 de piso, 2 por el preaviso y 6 de la especial). La calculadora de arriba hace las dos cuentas con tus fechas.",
     },
     {
       q: "¿Sobre qué sueldo se calcula?",
-      a: "Sobre un promedio, no sobre el mejor sueldo. El inc. e) manda tomar «el promedio que resulte de lo percibido por el dependiente en los últimos seis meses, o durante todo el tiempo de prestación de servicios, si éste fuera inferior», computando retribuciones extras, comisiones, viáticos —salvo la parte efectivamente gastada y acreditada con comprobantes—, gratificaciones y todo pago en especie que integre el salario con permanencia y habitualidad. La LCT, en cambio, usa la mejor remuneración mensual, normal y habitual del último año.",
+      a: "Sobre un promedio, no sobre el mejor sueldo. El inc. e) manda tomar «el promedio que resulte de lo percibido por el dependiente en los últimos seis meses, o durante todo el tiempo de prestación de servicios, si éste fuera inferior». Entran las horas extra, las comisiones, los viáticos (salvo lo gastado de verdad y con comprobante), las gratificaciones y todo pago en especie que sea parte fija del sueldo. La LCT, en cambio, usa el mejor sueldo mensual, normal y habitual del último año.",
     },
     {
       q: "El preaviso del estatuto, ¿es un mes o dos?",
-      a: "El plazo del aviso (inc. a) es de uno o dos meses según la antigüedad sea menor o mayor de tres años. Lo que se paga cuando no se avisa (inc. b) es el doble: dos o cuatro meses. No es un error de lectura, son dos incisos distintos con cifras distintas.",
+      a: "El plazo del aviso (inc. a) es de uno o dos meses, según tengas menos o más de tres años de antigüedad. Lo que se paga si no te avisan (inc. b) es el doble: dos o cuatro meses. No es un error de lectura: son dos incisos distintos con números distintos.",
     },
     {
       q: "¿Quién es «periodista profesional» para el estatuto?",
@@ -71,15 +71,15 @@ export default function IndemnizacionPeriodistaPage() {
     },
     {
       q: "¿Qué otras cosas se pierden además de la indemnización?",
-      a: `Cuatro que casi no se publican: el período de prueba del estatuto es de ${DIAS_PERIODO_PRUEBA} días (art. 25) contra los seis meses del art. 92 bis de la LCT; la jornada es de ${HORAS_SEMANALES} horas semanales con las extras al 100% y tope de ${HORAS_EXTRAS_MAXIMAS_MENSUALES} mensuales (art. 34), contra 48 horas y recargo del 50% en días comunes; las vacaciones se cuentan en días HÁBILES —${ESCALA_VACACIONES_HABILES.map((e) => e.dias).join(", ")} según antigüedad (art. 35)— y la LCT las cuenta en días corridos; y ninguna suspensión sin retribución puede pasar de 30 días (art. 41).`,
+      a: `Cuatro que casi no se publican. El período de prueba del estatuto es de ${DIAS_PERIODO_PRUEBA} días (art. 25), contra los seis meses del art. 92 bis de la LCT. La jornada es de ${HORAS_SEMANALES} horas semanales, con las extras al 100% y un tope de ${HORAS_EXTRAS_MAXIMAS_MENSUALES} por mes (art. 34), contra 48 horas y recargo del 50% en días comunes. Las vacaciones se cuentan en días hábiles (${ESCALA_VACACIONES_HABILES.map((e) => e.dias).join(", ")} según antigüedad, art. 35), y la LCT las cuenta en días corridos. Y ninguna suspensión sin sueldo puede pasar de 30 días (art. 41).`,
     },
     {
       q: "¿Desde cuándo está escrito así el art. 43?",
-      a: `Desde el ${ART43_VIGENTE_DESDE}, cuando el art. 1° de la Ley 16.792 le dio su redacción actual. Sesenta años con el mismo texto: es la razón por la que hay tanto material publicado sobre él y por la que casi nada de ese material menciona que tiene fecha de vencimiento.`,
+      a: `Desde el ${ART43_VIGENTE_DESDE}, cuando el art. 1° de la Ley 16.792 le dio su texto actual. Son sesenta años con el mismo texto. Por eso hay tanto escrito sobre él, y por eso casi nada de eso menciona que tiene fecha de vencimiento.`,
     },
     {
       q: "¿Y los convenios colectivos de prensa?",
-      a: "El art. 197 deroga la ley y sus modificatorias. Los convenios colectivos son otra fuente de derechos y esta página no los evalúa: lo que se termina el 1/1/2027 es el piso legal del estatuto. A partir de esa fecha, lo que diga el convenio aplicable pasa a ser mucho más importante.",
+      a: "El art. 197 deroga la ley y sus modificatorias. Los convenios colectivos son otra fuente de derechos y esta página no los analiza. Lo que se termina el 1/1/2027 es el piso legal del estatuto. Desde esa fecha, lo que diga tu convenio pasa a importar mucho más.",
     },
   ];
 
@@ -126,9 +126,9 @@ export default function IndemnizacionPeriodistaPage() {
         </h1>
         <p className="text-zinc-600">
           El artículo 43 del Estatuto del Periodista Profesional está escrito igual desde{" "}
-          {ART43_VIGENTE_DESDE} y paga <strong>tres indemnizaciones</strong>, una de las cuales —los{" "}
-          {MESES_ESPECIAL} meses de sueldo del inciso d)— no tiene equivalente en la Ley de Contrato
-          de Trabajo. El {REFORMA_PUBLICADA} la Ley 27.802 le puso fecha de vencimiento:{" "}
+          {ART43_VIGENTE_DESDE} y paga <strong>tres indemnizaciones</strong>. Una de ellas, la
+          especial de {MESES_ESPECIAL} meses de sueldo, no existe en la Ley de Contrato de Trabajo.
+          El {REFORMA_PUBLICADA}, la Ley 27.802 le puso fecha de vencimiento:{" "}
           <strong>{DEROGACION_TEXTO}</strong>.
         </p>
       </header>
@@ -137,25 +137,25 @@ export default function IndemnizacionPeriodistaPage() {
         <p>
           Un periodista despedido sin causa cobra hoy, por el art. 43 de la Ley 12.908,{" "}
           <strong>tres rubros que se suman</strong>: la <strong>antigüedad</strong> (un mes por año
-          o fracción mayor de tres meses, nunca menos de dos meses), la{" "}
-          <strong>sustitutiva del preaviso</strong> (dos meses hasta los tres años de antigüedad,
-          cuatro si los supera) y una <strong>indemnización especial de {MESES_ESPECIAL} meses</strong>{" "}
+          o fracción de más de tres meses, nunca menos de dos meses), el{" "}
+          <strong>pago por falta de preaviso</strong> (dos meses hasta los tres años de antigüedad,
+          cuatro si son más) y una <strong>indemnización especial de {MESES_ESPECIAL} meses</strong>{" "}
           que se paga «haya o no mediado preaviso». Con diez años de antigüedad son{" "}
-          <strong>veinte sueldos</strong>, contra 12,17 que pagaría la LCT. El art. 197 de la Ley
-          27.802 <strong>deroga el estatuto entero a partir del {DEROGACION_TEXTO}</strong>: los
-          despidos hasta el {ULTIMO_DIA_VIGENTE_TEXTO} inclusive se liquidan con él; los
-          posteriores, con la Ley de Contrato de Trabajo.
+          <strong>veinte sueldos</strong>, contra 12,17 de la LCT. El art. 197 de la Ley 27.802{" "}
+          <strong>deroga el estatuto entero a partir del {DEROGACION_TEXTO}</strong>. Los despidos
+          hasta el {ULTIMO_DIA_VIGENTE_TEXTO} inclusive se liquidan con él. Los posteriores, con la
+          Ley de Contrato de Trabajo.
         </p>
       </RespuestaPrimero>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">La cuenta, y la diferencia</h2>
         <p className="text-sm text-zinc-600">
-          La columna de la Ley de Contrato de Trabajo sale del mismo motor que{" "}
+          La columna de la Ley de Contrato de Trabajo sale de la misma cuenta que{" "}
           <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
             la calculadora de despido sin causa
-          </Link>{" "}
-          — dos páginas de calcular.ar no pueden publicar dos importes distintos para el mismo caso.
+          </Link>
+          . Así, dos páginas de calcular.ar nunca te dan dos montos distintos para el mismo caso.
         </p>
         <CalculadoraPeriodista />
       </section>
@@ -164,16 +164,16 @@ export default function IndemnizacionPeriodistaPage() {
         <h2 className="text-xl font-bold text-zinc-900">Qué dice exactamente el art. 43</h2>
         <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
           <p className="text-sm font-semibold text-zinc-800">
-            Ley 12.908, art. 43 — texto vigente (Ley 16.792, B.O. {ART43_VIGENTE_DESDE})
+            Ley 12.908, art. 43: texto vigente (Ley 16.792, B.O. {ART43_VIGENTE_DESDE})
           </p>
           <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art43}»</p>
         </blockquote>
         <p className="text-sm text-zinc-600">
-          El inciso a) fija el <strong>plazo</strong> del preaviso (uno o dos meses) y el b) fija lo
-          que se paga <strong>por no darlo</strong> (dos o cuatro meses): son cifras distintas y no
-          es un error de lectura. El c) tiene un piso de <strong>dos</strong> meses —el art. 245 de
-          la LCT tiene piso de uno— y no está topeado por el convenio. Y el d) se paga siempre, aun
-          con preaviso correcto.
+          El inciso a) fija el <strong>plazo</strong> del preaviso (uno o dos meses) y el b), lo que
+          se paga <strong>si no te lo dan</strong> (dos o cuatro meses). Son números distintos y no
+          es un error de lectura. El c) tiene un piso de <strong>dos</strong> meses (el art. 245 de
+          la LCT tiene piso de uno) y no tiene el tope del convenio. Y el d) se paga siempre, aunque
+          te hayan avisado bien.
         </p>
       </section>
 
@@ -184,7 +184,14 @@ export default function IndemnizacionPeriodistaPage() {
         <p className="text-sm text-zinc-600">
           El Título XXVI de la Ley 27.802 no reescribe artículos: deroga leyes enteras. Su art. 197
           dice, completo: «{TEXTOS.art197Ley27802}». Esto es lo que el estatuto da hoy y lo que
-          queda en su lugar.
+          queda en su lugar. Las otras leyes que se van el mismo día están en{" "}
+          <Link
+            href="/blog/estatutos-laborales-derogados-2027"
+            className="font-medium text-emerald-700 hover:underline"
+          >
+            los estatutos laborales que se derogan en 2027
+          </Link>
+          .
         </p>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[46rem] text-sm">
@@ -215,35 +222,35 @@ export default function IndemnizacionPeriodistaPage() {
         <div className="space-y-3">
           <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Art. 34 — {HORAS_SEMANALES} horas semanales y las extras al 100%
+              Art. 34: {HORAS_SEMANALES} horas semanales y las extras al 100%
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art34}»</p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Art. 35 — vacaciones contadas en días hábiles
+              Art. 35: vacaciones contadas en días hábiles
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art35}»</p>
             <p className="mt-2 text-xs text-zinc-500">
               La LCT cuenta días corridos (art. 150): 14 hasta cinco años, 21 hasta diez, 28 hasta
-              veinte y 35 si los supera. Quince días hábiles y catorce corridos no son lo mismo, ni
+              veinte y 35 si son más. Quince días hábiles y catorce corridos no son lo mismo, ni
               parecido.
             </p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Art. 25 — período de prueba de {DIAS_PERIODO_PRUEBA} días
+              Art. 25: período de prueba de {DIAS_PERIODO_PRUEBA} días
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art25}»</p>
             <p className="mt-2 text-xs text-zinc-500">
-              El art. 92 bis de la LCT fija seis meses. Es la diferencia que hace que, con pocos
-              meses de antigüedad, el estatuto pague todo y el régimen general no pague nada — lo
-              que la calculadora muestra arriba.
+              El art. 92 bis de la LCT fija seis meses. Por eso, con pocos meses de antigüedad, el
+              estatuto paga todo y el régimen general no paga nada. Es lo que muestra la calculadora
+              de arriba.
             </p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-zinc-300 bg-zinc-50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Art. 2 — quién es periodista profesional
+              Art. 2: quién es periodista profesional
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{TEXTOS.art2}»</p>
           </blockquote>
@@ -296,15 +303,15 @@ export default function IndemnizacionPeriodistaPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
           Los textos citados salen del <strong>texto actualizado</strong> de InfoLEG, no de
-          resúmenes ni de notas. Esta página es informativa y orientativa: no reemplaza el
-          asesoramiento de un abogado laboralista. Consultada el{" "}
+          resúmenes ni de notas. Esta página es informativa: no reemplaza el consejo de un abogado
+          laboralista. Consultada el{" "}
           {PERIODISTAS_FUENTES.consultadoEnTexto}.
         </p>
       </section>

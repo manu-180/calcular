@@ -172,7 +172,7 @@ export function evaluarPuam(s: SituacionPuam): ResultadoPuam {
     observaciones.push({
       tono: "atencion",
       texto:
-        "El art. 13 inc. 2 pide no ser beneficiario de jubilación, pensión o retiro, contributivo o no contributivo. Pero si es una ÚNICA prestación, el inc. 4 te deja optar por la PUAM en su lugar: no es un portazo, es una opción. Antes de hacerla, comparala en pesos — si lo que cobrás hoy supera el 80% del haber mínimo, el cambio te hace perder plata.",
+        "El art. 13 inc. 2 pide no ser beneficiario de jubilación, pensión o retiro, contributivo o no contributivo. Pero si es una ÚNICA prestación, el inc. 4 te deja optar por la PUAM en su lugar: no es un portazo, es una opción. Antes de hacerla, comparala en pesos: si lo que cobrás hoy supera el 80% del haber mínimo, el cambio te hace perder plata.",
     });
   }
 

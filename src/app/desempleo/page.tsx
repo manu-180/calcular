@@ -18,6 +18,7 @@ import { formatARS } from "@/lib/formato";
 
 const { mes: SMVM } = smvmVigente();
 const MES = etiquetaMes(SMVM.periodo);
+const MES_CORTO = MES.replace(" de ", " ");
 const PISO = Math.round(SMVM.mensual * R.pisoSobreSmvm * 100) / 100;
 const TECHO = Math.round(SMVM.mensual * R.techoSobreSmvm * 100) / 100;
 
@@ -38,8 +39,8 @@ const SMVM_FIN = SMVM_SERIE[SMVM_SERIE.length - 1];
 const MES_FIN = etiquetaMes(SMVM_FIN.periodo);
 
 export const metadata: Metadata = {
-  title: `Prestación por desempleo ${MES}: cuánto cobrás y por cuántos meses`,
-  description: `El seguro de desempleo es el 75% de tu mejor sueldo NETO de los últimos 6 meses, con un piso de ${formatARS(PISO, 0)} y un techo de ${formatARS(TECHO, 0)} en ${MES}. Baja al 85% desde el quinto mes y al 70% desde el noveno: acá ves las 12 cuotas una por una y el total. Ley 24.013 y Res. 4/2026 del Consejo del Salario.`,
+  title: `Seguro de desempleo ${MES_CORTO}: monto y duración`,
+  description: "La prestación por desempleo es el 75% de tu mejor sueldo neto con piso y techo, y baja desde el quinto mes. Mirá las 12 cuotas una por una.",
   alternates: { canonical: "/desempleo" },
   openGraph: {
     images: [
@@ -55,43 +56,43 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: `¿Cuánto se cobra de desempleo en ${MES}?`,
-    a: `Depende de tu sueldo: la prestación es el 75% del importe neto de tu mejor remuneración mensual, normal y habitual, de los seis meses anteriores al despido. Ese resultado nunca puede ser menor a ${formatARS(PISO, 0)} ni mayor a ${formatARS(TECHO, 0)} en ${MES}, porque la Resolución 4/2026 del Consejo del Salario fija el piso en el 50% del salario mínimo vital y móvil y el techo en el 100%. Como el salario mínimo sube casi todos los meses, esos dos números se mueven con él.`,
+    a: `Depende de tu sueldo. La prestación es el 75% del neto de tu mejor sueldo mensual, normal y habitual, de los seis meses antes del despido. En ${MES} nunca puede ser menos de ${formatARS(PISO, 0)} ni más de ${formatARS(TECHO, 0)}, porque la Resolución 4/2026 del Consejo del Salario fija el piso en el 50% del salario mínimo vital y móvil y el techo en el 100%. Como el salario mínimo sube casi todos los meses, esos dos números se mueven con él.`,
   },
   {
     q: "¿Se calcula sobre el sueldo bruto o sobre el neto?",
-    a: "Sobre el NETO. Es el error más repetido en las notas que circulan: el artículo 2 de la Resolución 4/2026 dice textualmente «un SETENTA Y CINCO POR CIENTO (75%) del importe neto de la mejor remuneración mensual, normal y habitual del trabajador en los seis (6) meses anteriores al cese». Calcularlo sobre el bruto infla el resultado alrededor de un 17%, que es lo que se descuenta por aportes.",
+    a: "Sobre el neto. Es el error que más se repite en las notas: el artículo 2 de la Resolución 4/2026 dice textual «un SETENTA Y CINCO POR CIENTO (75%) del importe neto de la mejor remuneración mensual, normal y habitual del trabajador en los seis (6) meses anteriores al cese». Si lo calculás sobre el bruto, el resultado te da cerca de un 17% más alto, que es lo que se descuenta por aportes.",
   },
   {
     q: "¿Cobro siempre lo mismo todos los meses?",
-    a: "No, y es lo que casi nunca se explica. El artículo 118 de la Ley 24.013 escalona la prestación: los primeros 4 meses cobrás el 100%, del mes 5 al 8 el 85%, y del 9 al 12 el 70%. Sí hay una excepción práctica: como el piso mensual se aplica a cada cuota, si tu prestación ya está en el mínimo, el escalonamiento no te baja nada — la cuota se sostiene en el piso.",
+    a: "No, y es lo que casi nunca se explica. El artículo 118 de la Ley 24.013 baja la prestación por tramos: los primeros 4 meses cobrás el 100%, del mes 5 al 8 el 85% y del 9 al 12 el 70%. Hay una excepción en la práctica: el piso se aplica a cada cuota, así que si tu prestación ya está en el mínimo, no baja. La cuota se queda en el piso.",
   },
   {
     q: "¿Cuántas cuotas me corresponden?",
-    a: "Según los meses con aportes que tengas en los tres años anteriores al despido (art. 117 de la Ley 24.013): de 6 a 11 meses son 2 cuotas; de 12 a 23 meses, 4 cuotas; de 24 a 35 meses, 8 cuotas; y con 36 meses o más, 12 cuotas. Con menos de 6 meses cotizados no se accede al beneficio.",
+    a: "Depende de los meses con aportes que tengas en los tres años antes del despido (art. 117 de la Ley 24.013). De 6 a 11 meses: 2 cuotas. De 12 a 23 meses: 4 cuotas. De 24 a 35 meses: 8 cuotas. Con 36 meses o más: 12 cuotas. Con menos de 6 meses de aportes no te corresponde.",
   },
   {
     q: "Tengo más de 45 años, ¿cambia algo?",
-    a: `Sí: el artículo 4 del Decreto 267/2006 extiende el seguro por ${R.extension45.cuotasExtra} meses adicionales, con un valor equivalente al 70% de la prestación original. Es decir que quien llega a las 12 cuotas puede cobrar hasta 18. La edad se toma al momento de liquidarse la última cuota.`,
+    a: `Sí. El artículo 4 del Decreto 267/2006 alarga el seguro ${R.extension45.cuotasExtra} meses más, por el 70% de la prestación original. O sea que si llegás a las 12 cuotas, podés cobrar hasta 18. La edad que cuenta es la que tenés cuando se liquida la última cuota.`,
   },
   {
     q: "¿Qué pasa si la pido tarde?",
-    a: `Perdés plata. El artículo 115 de la Ley 24.013 da ${R.diasParaSolicitar} días desde el cese para presentar la solicitud, y aclara que los días que excedan ese plazo se descuentan del total del período de la prestación. No es que te la nieguen: te la acortan. La calculadora de arriba tiene un campo para ver exactamente cuánto te cuesta la demora.`,
+    a: `Perdés plata. El artículo 115 de la Ley 24.013 te da ${R.diasParaSolicitar} días desde que terminó el trabajo para pedirla. Los días que te pases se descuentan del total. No te la niegan: te la acortan. La calculadora de arriba tiene un campo para ver cuánto te cuesta la demora.`,
   },
   {
     q: "¿Quiénes pueden cobrar la prestación por desempleo?",
-    a: `Trabajadores en relación de dependencia registrados que hayan cotizado al Fondo Nacional de Empleo al menos ${R.mesesMinimosCotizados} meses en los ${R.aniosVentanaCotizacion} años anteriores al cese, y cuya salida encuadre en alguno de los nueve supuestos de "situación legal de desempleo" del artículo 114 de la Ley 24.013: despido sin justa causa, despido por fuerza mayor o falta de trabajo, despido indirecto, extinción colectiva, quiebra o concurso, fin del plazo o de la obra contratada, muerte o jubilación del empleador, no reinicio del contrato de temporada y —desde el ${VIGENCIA_MUTUO_ACUERDO}— la extinción por mutuo acuerdo. Quedan fuera el régimen agrario, el empleo público alcanzado por medidas de racionalización, y quien ya percibe un beneficio previsional. Si renunciaste lisa y llanamente, no corresponde.`,
+    a: `Empleados registrados en relación de dependencia que hayan aportado al Fondo Nacional de Empleo al menos ${R.mesesMinimosCotizados} meses en los ${R.aniosVentanaCotizacion} años antes de quedarse sin trabajo. Además, la salida tiene que estar entre los nueve casos de "situación legal de desempleo" del artículo 114 de la Ley 24.013: despido sin justa causa, despido por fuerza mayor o falta de trabajo, despido indirecto, despido colectivo, quiebra o concurso, fin del plazo o de la obra contratada, muerte o jubilación del empleador, que no te vuelvan a llamar en un trabajo de temporada y (desde el ${VIGENCIA_MUTUO_ACUERDO}) el mutuo acuerdo. Quedan afuera el régimen agrario, los empleados públicos alcanzados por medidas de racionalización y quien ya cobra una jubilación o pensión. Si renunciaste sin más, no corresponde.`,
   },
   {
     q: "Me fui por mutuo acuerdo, ¿cobro el desempleo?",
-    a: `Desde el ${VIGENCIA_MUTUO_ACUERDO}, sí — y es el dato que casi toda la web sigue publicando al revés. El artículo 99 de la Ley 27.802 incorporó un inciso i) al artículo 114 de la Ley 24.013: "Extinción por mutuo acuerdo de las partes en los términos del artículo 241 de la ley 20.744". Hasta esa fecha el mutuo acuerdo no figuraba en la lista de situaciones legales de desempleo, así que quien firmaba un acuerdo de desvinculación quedaba sin prestación. Ahora figura, con nombre y con remisión al artículo. Ojo con la distinción: sigue sin corresponder si lo que hubo fue una renuncia lisa y llana del artículo 240, que es otra cosa y no está en la lista. Y el resto de los requisitos no cambió: hacen falta los ${R.mesesMinimosCotizados} meses de cotización al Fondo Nacional de Empleo y pedirla dentro de los ${R.diasParaSolicitar} días.`,
+    a: `Desde el ${VIGENCIA_MUTUO_ACUERDO}, sí. Y es el dato que casi toda la web sigue publicando al revés. El artículo 99 de la Ley 27.802 sumó un inciso i) al artículo 114 de la Ley 24.013: "Extinción por mutuo acuerdo de las partes en los términos del artículo 241 de la ley 20.744". Hasta esa fecha el mutuo acuerdo no estaba en la lista, así que quien firmaba un acuerdo de desvinculación se quedaba sin prestación. Ahora está, con nombre y artículo. Ojo con la diferencia: sigue sin corresponder si renunciaste sin más (artículo 240), que es otra cosa y no está en la lista. Y el resto de los requisitos no cambió: necesitás los ${R.mesesMinimosCotizados} meses de aportes al Fondo Nacional de Empleo y pedirla dentro de los ${R.diasParaSolicitar} días.`,
   },
   {
     q: "Mientras cobro el desempleo, ¿tengo obra social y asignaciones familiares?",
-    a: "Sí. El artículo 119 de la Ley 24.013 incluye en la protección la cobertura médico-asistencial, el pago de las asignaciones familiares que correspondan y el cómputo del período a los efectos previsionales. O sea que el tiempo que cobrás el seguro te cuenta para la jubilación.",
+    a: "Sí. El artículo 119 de la Ley 24.013 incluye la cobertura médica, el pago de las asignaciones familiares que te correspondan y que ese tiempo cuente para la jubilación. O sea que los meses que cobrás el seguro suman para jubilarte.",
   },
   {
     q: "¿Lo que dice esta calculadora es lo que me va a depositar ANSES?",
-    a: "Es la aplicación de las normas vigentes al dato que cargaste, no una liquidación. ANSES reconstruye los meses cotizados desde tus aportes registrados —que pueden no coincidir con lo que uno recuerda— y toma la mejor remuneración de tu historia laboral formal. Para tu caso puntual, la fuente es ANSES.",
+    a: "Es la cuenta de las normas vigentes con el dato que cargaste, no una liquidación. ANSES arma los meses con aportes desde lo que tiene registrado (que puede no coincidir con lo que uno recuerda) y toma el mejor sueldo de tu historia laboral en blanco. Para tu caso puntual, la palabra final es de ANSES.",
   },
 ];
 
@@ -111,7 +112,7 @@ export default function DesempleoPage() {
         inLanguage: "es-AR",
       },
       datasetSchema({
-        nombre: `Topes de la prestación por desempleo y escala del SMVM — ${MES}`,
+        nombre: `Topes de la prestación por desempleo y escala del SMVM, ${MES}`,
         descripcion: `Piso y techo mensuales de la prestación por desempleo de la Ley 24.013, derivados del salario mínimo vital y móvil: en ${MES} el piso es ${formatARS(PISO, 0)} (50% del SMVM) y el techo ${formatARS(TECHO, 0)} (100% del SMVM de ${formatARS(SMVM.mensual, 0)}). Incluye la escala mensual del SMVM fijada por la Resolución 4/2026 del Consejo Nacional del Empleo, la Productividad y el SMVM, con norma dictada hasta ${MES_FIN}.`,
         url: "/desempleo",
         modificado: `${SMVM.periodo}-01`,
@@ -146,24 +147,24 @@ export default function DesempleoPage() {
         </h1>
         <p className="text-zinc-600">
           Todas las notas publican el mismo número del mes y ninguna aclara dos cosas que cambian el
-          resultado: que el 75% sale de tu sueldo <strong>neto</strong> y no del bruto, y que la
-          cuota <strong>baja</strong> a partir del quinto mes. Poné tu sueldo y mirá las cuotas una
-          por una, con los topes oficiales de {MES}.
+          resultado. El 75% sale de tu sueldo <strong>neto</strong>, no del bruto. Y la cuota{" "}
+          <strong>baja</strong> desde el quinto mes. Poné tu sueldo y mirá las cuotas una por una,
+          con los topes oficiales de {MES}.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={DESEMPLEO_FUENTES.consultadoEl}>
         <p>
-          La prestación por desempleo es el <strong>75% del importe neto</strong> de tu mejor
-          remuneración mensual, normal y habitual, de los seis meses anteriores al cese. En {MES}{" "}
-          nunca puede ser menor a <strong>{formatARS(PISO, 0)}</strong> ni mayor a{" "}
+          La prestación por desempleo es el <strong>75% del neto</strong> de tu mejor sueldo
+          mensual, normal y habitual, de los seis meses antes de quedarte sin trabajo. En {MES}{" "}
+          nunca puede ser menos de <strong>{formatARS(PISO, 0)}</strong> ni más de{" "}
           <strong>{formatARS(TECHO, 0)}</strong>, porque el piso es el 50% y el techo el 100% del
           salario mínimo vital y móvil ({formatARS(SMVM.mensual, 0)}). Cobrás entre 2 y 12 cuotas
-          según los meses con aportes de los últimos 3 años, y el importe{" "}
-          <strong>se degrada</strong>: 100% los primeros 4 meses, 85% del 5 al 8 y 70% del 9 al 12.
-          Con 45 años o más se suman {R.extension45.cuotasExtra} cuotas al 70%. Y hay{" "}
+          según los meses con aportes de los últimos 3 años, y el monto{" "}
+          <strong>va bajando</strong>: 100% los primeros 4 meses, 85% del 5 al 8 y 70% del 9 al 12.
+          Con 45 años o más se suman {R.extension45.cuotasExtra} cuotas al 70%. Y tenés{" "}
           {R.diasParaSolicitar} días para pedirla: pasado ese plazo, cada día de demora se descuenta
-          del período.
+          del total.
         </p>
       </RespuestaPrimero>
 
@@ -174,8 +175,8 @@ export default function DesempleoPage() {
           Los nueve casos que dan derecho a cobrarla (uno es nuevo)
         </h2>
         <p className="text-zinc-600">
-          No alcanza con haber dejado de trabajar: la salida tiene que encuadrar en alguno de los
-          supuestos del artículo 114 de la Ley 24.013. Eran ocho desde 1991. El{" "}
+          No alcanza con haber dejado de trabajar: la salida tiene que estar entre los casos del
+          artículo 114 de la Ley 24.013. Eran ocho desde 1991. El{" "}
           {VIGENCIA_MUTUO_ACUERDO} pasaron a ser nueve.
         </p>
         <div className="overflow-x-auto">
@@ -216,10 +217,10 @@ export default function DesempleoPage() {
           </p>
           <p className="mt-1 text-sm italic text-zinc-700">«{DESEMPLEO_TEXTOS.art114IncisoI}»</p>
           <p className="mt-2 text-xs text-zinc-500">
-            {DESEMPLEO_TEXTOS.notaVigenciaIncisoI} — Hasta el 5 de marzo de 2026, terminar el
-            contrato por mutuo acuerdo dejaba al trabajador sin prestación: el supuesto no estaba en
-            la lista. La <strong>renuncia</strong> del artículo 240, en cambio, sigue afuera: no es
-            lo mismo firmar un acuerdo de desvinculación que renunciar.
+            {DESEMPLEO_TEXTOS.notaVigenciaIncisoI}. Hasta el 5 de marzo de 2026, terminar el
+            contrato por mutuo acuerdo te dejaba sin prestación: ese caso no estaba en la lista. La{" "}
+            <strong>renuncia</strong> del artículo 240, en cambio, sigue afuera: no es lo mismo
+            firmar un acuerdo de desvinculación que renunciar.
           </p>
         </blockquote>
       </section>
@@ -230,8 +231,8 @@ export default function DesempleoPage() {
         </h2>
         <p className="text-zinc-600">
           Este es el recorrido completo de alguien con {formatARS(800_000, 0)} de sueldo neto y 3
-          años de aportes, en {MES}. La prestación arranca topeada en {formatARS(TECHO, 0)} —el
-          techo del mes— y a partir del quinto mes empieza a caer:
+          años de aportes, en {MES}. La prestación arranca en el tope de {formatARS(TECHO, 0)} (el
+          techo del mes) y desde el quinto mes empieza a bajar:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -275,9 +276,9 @@ export default function DesempleoPage() {
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          Si tu prestación quedó en el piso de {formatARS(PISO, 0)}, el escalonamiento no te afecta:
-          el texto de la resolución dice que <em>en ningún caso</em> la prestación mensual puede ser
-          inferior al mínimo, así que la cuota se sostiene ahí los doce meses.
+          Si tu prestación quedó en el piso de {formatARS(PISO, 0)}, la baja no te afecta. La
+          resolución dice que <em>en ningún caso</em> la prestación mensual puede ser menor al
+          mínimo, así que la cuota se queda ahí los doce meses.
         </p>
       </section>
 
@@ -333,18 +334,19 @@ export default function DesempleoPage() {
         <p className="text-zinc-600">
           El piso y el techo de la prestación no son montos propios: son el 50% y el 100% del
           salario mínimo vital y móvil vigente. Cada vez que sube el salario mínimo, suben los dos.
-          Esta es la escala vigente, fijada por la Resolución 4/2026 del Consejo del Salario:
+          Esta es la escala vigente, que fijó la Resolución 4/2026 del Consejo del Salario.
         </p>
         <p className="text-zinc-600">
-          Con una diferencia que casi no se cuenta: el 28 de agosto de 2026 el Consejo del Salario
-          se reunió y <strong>no hubo acuerdo</strong>, así que la escala salió por <strong>laudo</strong>
-          de la presidencia alterna (artículo 137 de la Ley 24.013). Un laudo no fija un mes: la
-          Resolución 4/2026 dejó escrito el salario mínimo <strong>mes a mes hasta {MES_FIN}</strong>.
-          Es decir que el piso y el techo de tu prestación de acá a {MES_FIN} ya están publicados en
-          el Boletín Oficial y no dependen de ninguna negociación futura. La misma resolución
-          ratificó la fórmula de la prestación —75% del neto, con piso del 50% y techo del 100% del
-          salario mínimo—, que es lo que venía de la Resolución 15/2023. Si querés ver la escala
-          completa, el valor por hora y lo proporcional para jornada reducida, está en la{" "}
+          Hay un detalle que casi no se cuenta. El 28 de agosto de 2026 el Consejo del Salario se
+          reunió y <strong>no hubo acuerdo</strong>, así que la escala la decidió la presidencia
+          alterna (un <strong>laudo</strong>, artículo 137 de la Ley 24.013). Ese laudo no fija un
+          solo mes: la Resolución 4/2026 dejó escrito el salario mínimo{" "}
+          <strong>mes a mes hasta {MES_FIN}</strong>. O sea que el piso y el techo de tu prestación
+          hasta {MES_FIN} ya están publicados en el Boletín Oficial y no dependen de ninguna
+          negociación futura. La misma resolución confirmó la fórmula de la prestación (75% del
+          neto, con piso del 50% y techo del 100% del salario mínimo), que venía de la Resolución
+          15/2023. La escala completa, el valor por hora y lo proporcional para jornada reducida
+          están en la{" "}
           <Link href="/salario-minimo" className="text-emerald-700 hover:underline">
             página del salario mínimo
           </Link>
@@ -394,14 +396,21 @@ export default function DesempleoPage() {
           Si te despidieron, mirá también cuánto te corresponde de{" "}
           <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
             indemnización por despido
-          </Link>{" "}
-          — es un pago aparte y compatible con el seguro de desempleo. Y mientras cobrás la
+          </Link>
+          . Es un pago aparte y lo cobrás además del seguro de desempleo. Mientras cobrás la
           prestación te siguen correspondiendo las{" "}
           <Link
             href="/asignaciones-familiares"
             className="font-medium text-emerald-700 hover:underline"
           >
             asignaciones familiares
+          </Link>
+          . Y si te preguntás qué pasa con tu cobertura médica, mirá{" "}
+          <Link
+            href="/hasta-cuando-tengo-obra-social"
+            className="font-medium text-emerald-700 hover:underline"
+          >
+            hasta cuándo tenés obra social después del despido
           </Link>
           .
         </p>
@@ -434,14 +443,14 @@ export default function DesempleoPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
           Esta página es informativa y aplica normas publicadas en el Boletín Oficial e InfoLEG. No
-          es una liquidación ni reemplaza a ANSES: el importe y la cantidad de cuotas dependen de tu
+          es una liquidación ni reemplaza a ANSES: el monto y la cantidad de cuotas dependen de tu
           historia laboral registrada. Consultada el {DESEMPLEO_FUENTES.consultadoEl}.
         </p>
       </section>

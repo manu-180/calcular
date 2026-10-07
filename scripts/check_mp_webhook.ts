@@ -423,7 +423,7 @@ async function pruebaRastroEntrega() {
   check("rastro fallo: devuelve true", fallo === true, fallo);
   check(
     "rastro fallo: agrega alerta fechada y email para reenvio",
-    note.includes(` · ENTREGA POR EMAIL FALLÓ el ${fecha} — reenviar a mano a compradora@example.com.`),
+    note.includes(` · ENTREGA POR EMAIL FALLÓ el ${fecha}: reenviar a mano a compradora@example.com.`),
     note,
   );
   check("rastro fallo: conserva la nota previa completa", note.startsWith(notaOriginal), note);

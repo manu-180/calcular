@@ -1,7 +1,17 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState, useSyncExternalStore, type KeyboardEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type CSSProperties,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { haySesion } from "@/lib/sesion-cliente";
 
@@ -29,6 +39,11 @@ const ITEMS: { href: string; texto: string; icono: ReactNode }[] = [
     href: "/cuenta#calculos",
     texto: "Mis cálculos",
     icono: <path d="M5 3.5h10v13H5v-13ZM7.5 6.5h5M7.5 10h1M11.5 10h1M7.5 13h1M11.5 13h1" />,
+  },
+  {
+    href: "/cuenta/opiniones",
+    texto: "Opiniones",
+    icono: <path d="M4 4.5h12v8.25H8.5L5 15.5v-2.75H4V4.5ZM7.25 8.5h5.5M7.25 10.75h3.5" />,
   },
   {
     href: "/cuenta#seguridad",
@@ -61,11 +76,36 @@ export function MenuCuenta({ claseIngresar }: { claseIngresar: string }) {
   const pathname = usePathname();
   const conSesion = useSyncExternalStore(suscribir, haySesion, () => false);
   const [abierto, setAbierto] = useState(false);
+  const [montado, setMontado] = useState(false);
   const raiz = useRef<HTMLDivElement>(null);
   const boton = useRef<HTMLButtonElement>(null);
+  const menu = useRef<HTMLDivElement>(null);
   const idMenu = useId();
 
   useEffect(() => setAbierto(false), [pathname]);
+
+  // Sigue montado 150 ms después de cerrar para que la salida se vea.
+  useEffect(() => {
+    if (abierto) {
+      setMontado(true);
+      return;
+    }
+    const t = setTimeout(() => setMontado(false), 150);
+    return () => clearTimeout(t);
+  }, [abierto]);
+
+  // Por debajo de lg el menú cuelga del borde de la grilla del header, no del avatar (con el avatar
+  // a ~100 px del borde, un menú de 15 rem se salía por la izquierda en 360 px o menos). La
+  // animación nace igual en el avatar: se mide con offsetLeft, que ignora el transform en curso.
+  const visible = abierto || montado;
+  useLayoutEffect(() => {
+    const m = menu.current;
+    const b = boton.current;
+    const padre = m?.offsetParent;
+    if (!m || !b || !padre) return;
+    const origen = b.getBoundingClientRect().left + b.offsetWidth / 2 - (padre.getBoundingClientRect().left + padre.clientLeft + m.offsetLeft);
+    m.style.transformOrigin = `${Math.round(origen)}px 0`;
+  }, [visible]);
 
   useEffect(() => {
     if (!abierto) return;
@@ -97,7 +137,7 @@ export function MenuCuenta({ claseIngresar }: { claseIngresar: string }) {
   }
 
   return (
-    <div ref={raiz} className="relative" data-sesion="si">
+    <div ref={raiz} className="lg:relative" data-sesion="si">
       <button
         ref={boton}
         type="button"
@@ -115,30 +155,34 @@ export function MenuCuenta({ claseIngresar }: { claseIngresar: string }) {
         </span>
       </button>
 
-      {abierto ? (
+      {visible ? (
         <div
+          ref={menu}
           id={idMenu}
           role="menu"
           aria-label="Tu cuenta"
+          data-estado={abierto ? "abierto" : "cerrando"}
+          inert={!abierto}
           onKeyDown={moverFoco}
-          className="ca-dropdown absolute right-0 top-[calc(100%+0.5rem)] z-50 w-60 rounded-[1.25rem] bg-zinc-900/[0.035] p-1 ring-1 ring-zinc-900/[0.07] [transform-origin:top_right]"
+          className="ca-menu-cuenta absolute right-4 top-[calc(100%+0.5rem)] z-50 w-[min(15rem,calc(100vw-2rem))] rounded-[1.25rem] bg-zinc-900/[0.035] p-1 ring-1 ring-zinc-900/[0.07] sm:right-6 lg:right-0"
         >
-          <div className="rounded-2xl bg-white p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_1px_2px_rgba(0,0,0,0.05),0_18px_40px_-16px_rgba(0,0,0,0.22)]">
+          <div className="ca-menu-cuenta-lista rounded-2xl bg-white p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_1px_2px_rgba(0,0,0,0.05),0_18px_40px_-16px_rgba(0,0,0,0.22)]">
             {ITEMS.map((it, i) => (
               <a
                 key={it.href}
                 href={it.href}
                 role="menuitem"
                 autoFocus={i === 0}
+                style={{ "--i": i } as CSSProperties}
                 className="flex h-11 items-center gap-3 rounded-xl px-3 text-[14px] font-medium text-zinc-700 outline-none transition-colors duration-150 hover:bg-zinc-100/80 hover:text-zinc-950 focus-visible:bg-zinc-100/80 focus-visible:text-zinc-950"
               >
                 <Icono className="size-[18px] text-zinc-400">{it.icono}</Icono>
                 {it.texto}
               </a>
             ))}
-            <div className="mx-2 my-1.5 h-px bg-zinc-100" />
+            <div className="mx-2 my-1.5 h-px bg-zinc-100" style={{ "--i": ITEMS.length } as CSSProperties} />
             {/* POST, como en /cuenta: /auth/salir no acepta GET para que ningún sitio te saque con un <img>. */}
-            <form action="/auth/salir" method="post">
+            <form action="/auth/salir" method="post" style={{ "--i": ITEMS.length } as CSSProperties}>
               <button
                 type="submit"
                 role="menuitem"

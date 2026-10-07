@@ -4,9 +4,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { ORGANIZACION } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Guías: tu plata explicada con datos oficiales",
+  title: "Guías de sueldo, impuestos y ANSES con datos oficiales",
   description:
-    "Guías claras sobre aguinaldo, monotributo, inflación y plazo fijo, siempre con fuentes oficiales y la cuenta a la vista.",
+    "Guías sobre aguinaldo, indemnización, monotributo, Ganancias y asignaciones, con la cuenta paso a paso y la fuente oficial de cada dato.",
   alternates: { canonical: "/blog" },
 };
 
@@ -16,7 +16,7 @@ const POSTS = [
     slug: "estatutos-laborales-derogados-2027",
     titulo: "Los estatutos laborales que se derogan el 1 de enero de 2027",
     bajada:
-      "El Título XXVI de la Ley 27.802 no sustituye artículos: deroga leyes enteras. Seis regímenes completos caen el 1/1/2027 —periodistas, viajantes de comercio, teletrabajo, peluqueros, choferes y el fondo de garantía de créditos laborales— y otras nueve derogaciones ya rigen desde marzo de 2026, incluidos nueve artículos de la Ley de Contrato de Trabajo. La lista completa con el título oficial de cada norma.",
+      "El Título XXVI de la Ley 27.802 no cambia artículos: deroga leyes enteras. Seis regímenes completos caen el 1/1/2027 (periodistas, viajantes de comercio, teletrabajo, peluqueros, choferes y el fondo de garantía de créditos laborales), y otras nueve derogaciones ya rigen desde marzo de 2026, incluidos nueve artículos de la Ley de Contrato de Trabajo. La lista completa, con el título oficial de cada norma.",
     fechaISO: "2026-08-23",
     fecha: "23 de agosto de 2026",
   },
@@ -25,7 +25,7 @@ const POSTS = [
     titulo:
       "El tope de las asignaciones familiares: por qué un solo sueldo puede dejar afuera a toda la familia",
     bajada:
-      "Los topes son dos y el que decide casi nunca es el que publican: uno individual excluye al grupo entero aunque la suma esté por debajo del límite. Más los escalones que hacen que un aumento chico signifique cobrar menos, con el caso trabajado peso por peso.",
+      "Los topes son dos, y el que decide casi nunca es el que se publica: uno individual deja afuera a todo el grupo aunque la suma esté por debajo del límite. También los escalones que hacen que un aumento chico te haga cobrar menos, con un caso resuelto peso por peso.",
     fechaISO: "2026-08-04",
     fecha: "4 de agosto de 2026",
   },
@@ -33,7 +33,7 @@ const POSTS = [
     slug: "cuanto-cuesta-criar-un-hijo-argentina",
     titulo: "Cuánto cuesta criar un hijo en Argentina 2026: el dato oficial del INDEC",
     bajada:
-      "La canasta de crianza abierta tramo por tramo: qué parte es plata que sale del bolsillo y qué parte es el valor del tiempo de cuidado. Con la serie completa desde 2020 comparada contra el IPC — y por qué un chico de 4 años «cuesta» menos que uno de 2.",
+      "La canasta de crianza tramo por tramo: qué parte es plata que sale del bolsillo y qué parte es el valor del tiempo de cuidado. Con la serie completa desde 2020 comparada con el IPC, y por qué un chico de 4 años «cuesta» menos que uno de 2.",
     fechaISO: "2026-08-01",
     fecha: "1 de agosto de 2026",
   },
@@ -57,7 +57,7 @@ const POSTS = [
     slug: "como-se-calcula-la-indemnizacion-por-despido-2026",
     titulo: "Cómo se calcula la indemnización por despido en 2026 (paso a paso)",
     bajada:
-      "Los cuatro conceptos que se suman —antigüedad, preaviso, integración del mes y liquidación final— con un ejemplo real desarrollado peso por peso y la reforma de la Ley 27.802 ya incorporada (el piso del 67% del fallo Vizzoti, ahora en la ley).",
+      "Los cuatro conceptos que se suman (antigüedad, preaviso, integración del mes y liquidación final), con un ejemplo real peso por peso y la reforma de la Ley 27.802 ya incluida (el piso del 67% del fallo Vizzoti, que ahora está en la ley).",
     fechaISO: "2026-06-25",
     fecha: "25 de junio de 2026",
   },
@@ -73,7 +73,7 @@ const POSTS = [
     slug: "aguinaldo-proporcional-como-se-calcula",
     titulo: "Aguinaldo proporcional 2026: cómo se calcula si no trabajaste todo el semestre",
     bajada:
-      "Si entraste o saliste del trabajo a mitad de año, el aguinaldo es proporcional a los días trabajados — no a los meses redondeados. La fórmula correcta de la LCT, ejemplos con números reales y la calculadora que lo computa.",
+      "Si entraste o saliste del trabajo a mitad de año, el aguinaldo es proporcional a los días trabajados, no a los meses redondeados. La fórmula correcta de la LCT, ejemplos con números reales y la calculadora que hace la cuenta.",
     fechaISO: "2026-06-23",
     fecha: "23 de junio de 2026",
   },
@@ -97,7 +97,7 @@ const POSTS = [
     slug: "como-calcular-aguinaldo-empleado-de-comercio",
     titulo: "Cómo calcular el aguinaldo de un empleado de comercio 2026 (paso a paso)",
     bajada:
-      "El SAC es el 50% del mejor sueldo del semestre — y en Comercio ese sueldo incluye los $120.000 no remunerativos. Fórmula, ejemplo real de junio 2026, el neto correcto y los errores que te hacen cobrar de menos.",
+      "El aguinaldo es el 50% del mejor sueldo del semestre, y en Comercio ese sueldo incluye los $120.000 no remunerativos. Fórmula, ejemplo real de junio 2026, el neto correcto y los errores que te hacen cobrar de menos.",
     fechaISO: "2026-06-15",
     fecha: "15 de junio de 2026",
   },
@@ -129,7 +129,7 @@ const POSTS = [
     slug: "que-hacer-con-el-aguinaldo-2026",
     titulo: "Qué hacer con el aguinaldo 2026: las opciones, con la cuenta a la vista",
     bajada:
-      "Pagar deudas, plazo fijo tradicional o UVA, dólares o consumo: qué dice la matemática hoy, con la tasa del BCRA y el IPC de mayo sobre la mesa.",
+      "Pagar deudas, plazo fijo tradicional o UVA, dólares o consumo: qué conviene según los números, con la tasa del BCRA y el IPC de mayo a la vista.",
     fechaISO: "2026-06-12",
     fecha: "12 de junio de 2026",
   },
@@ -137,7 +137,7 @@ const POSTS = [
     slug: "aguinaldo-paga-ganancias",
     titulo: "¿El aguinaldo paga impuesto a las Ganancias en 2026?",
     bajada:
-      "Solo si tu sueldo es alto — y no se retiene todo junto en junio. Cómo funciona el prorrateo del SAC y desde qué sueldo te alcanza.",
+      "Solo si tu sueldo es alto, y no se retiene todo junto. Cómo se reparte el aguinaldo mes a mes y desde qué sueldo te alcanza.",
     fechaISO: "2026-06-12",
     fecha: "12 de junio de 2026",
   },
@@ -153,9 +153,9 @@ const jsonLd = {
       "@type": "CollectionPage",
       "@id": `${SITIO}/blog`,
       url: `${SITIO}/blog`,
-      name: "Guías: tu plata explicada con datos oficiales",
+      name: "Guías de sueldo, impuestos y ANSES con datos oficiales",
       description:
-        "Guías claras sobre aguinaldo, monotributo, inflación y plazo fijo, siempre con fuentes oficiales y la cuenta a la vista.",
+        "Guías sobre aguinaldo, indemnización, monotributo, Ganancias y asignaciones, con la cuenta paso a paso y la fuente oficial de cada dato.",
       inLanguage: "es-AR",
       publisher: { "@id": `${SITIO}/#org` },
       hasPart: POSTS.map((p) => ({
@@ -186,8 +186,8 @@ export default function BlogIndexPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Guías</h1>
         <p className="text-zinc-600">
-          Tu plata explicada con datos oficiales y la cuenta a la vista. Sin humo: cada número
-          tiene su fuente y su fecha.
+          Sueldo, impuestos y ANSES explicados con datos oficiales y la cuenta a la vista. Cada
+          número tiene su fuente y su fecha.
         </p>
       </header>
 

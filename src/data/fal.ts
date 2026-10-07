@@ -183,19 +183,19 @@ export const FAL_FUENTES: { consultadoEl: string; lista: FuenteFal[] } = {
   consultadoEl: "2026-08-27",
   lista: [
     {
-      nombre: "Ley 27.802 — texto oficial, Título II (arts. 58 a 77)",
+      nombre: "Ley 27.802, texto oficial, Título II (arts. 58 a 77)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "De acá salen las dos alícuotas y sus techos (art. 60), la carencia de seis períodos (art. 65), la antigüedad de doce meses y la oración «no modifica, sustituye, ni altera el régimen indemnizatorio» (art. 58), la responsabilidad íntegra del empleador (art. 64), el tope de comisión del 1% (art. 71) y la reducción equivalente de contribuciones patronales (art. 76).",
     },
     {
-      nombre: "Decreto 408/2026 — reglamentación del Título II (InfoLEG)",
+      nombre: "Decreto 408/2026: reglamentación del Título II (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/425000-429999/426272/norma.htm",
       detalle:
-        "La reglamentación completa, B.O. 1/6/2026. Su art. 27 es el que prorroga la entrada en vigencia al 1° de noviembre de 2026 —la única prórroga de toda la Ley de Modernización Laboral—; su art. 15 fija desde cuándo se cuenta la carencia; su art. 24, cómo se detrae la contribución patronal; su art. 20, que el 1% de comisión es global y anual; y su art. 11, que el fondo no puede invertir en activos del exterior.",
+        "La reglamentación completa, B.O. 1/6/2026. Su art. 27 es el que prorroga la entrada en vigencia al 1° de noviembre de 2026 (la única prórroga de toda la Ley de Modernización Laboral); su art. 15 fija desde cuándo se cuenta la carencia; su art. 24, cómo se detrae la contribución patronal; su art. 20, que el 1% de comisión es global y anual; y su art. 11, que el fondo no puede invertir en activos del exterior.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la ley. El art. 217 fija que «salvo disposición en contrario» todo entra en vigencia con la publicación: el Título II es esa disposición en contrario, porque su art. 77 tenía fecha propia y una facultad de prórroga de hasta seis meses que el Poder Ejecutivo usó entera.",

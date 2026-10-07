@@ -130,7 +130,7 @@ export function CalculadoraContratacionDiscapacidad() {
             El art. 23 de la Ley 22.431 permite deducir el <strong>70% de las retribuciones</strong>{" "}
             del personal con discapacidad: con este sueldo son{" "}
             <strong>{formatARS(res.deduccionGananciasAnual, 0)}</strong> de deducción por año. No es
-            el impuesto ahorrado —eso depende de la alícuota que le toque a la empresa—, es la base
+            el impuesto ahorrado (eso depende de la alícuota que le toque a la empresa): es la base
             que se resta. Y es acumulable: el propio art. 87 lo declara «independiente».
           </p>
         </div>

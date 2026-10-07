@@ -38,17 +38,17 @@ export function CalculadoraObraSocial() {
 
   const filas = [
     {
-      concepto: `Aporte tuyo — ${pct(APORTE_TRABAJADOR)} del bruto`,
+      concepto: `Aporte tuyo (${pct(APORTE_TRABAJADOR)} del bruto)`,
       norma: "Ley 23.660, art. 16 inc. b)",
       monto: res.aporteTrabajador,
     },
     {
-      concepto: `Aporte adicional — ${pct(APORTE_ADICIONAL_FAMILIAR)} por cada familiar autorizado`,
+      concepto: `Aporte adicional (${pct(APORTE_ADICIONAL_FAMILIAR)} por cada familiar autorizado)`,
       norma: "Ley 23.660, art. 16 inc. b), 2ª oración",
       monto: res.aporteAdicional,
     },
     {
-      concepto: `Contribución de tu empleador — ${pct(CONTRIBUCION_EMPLEADOR)} del bruto`,
+      concepto: `Contribución de tu empleador (${pct(CONTRIBUCION_EMPLEADOR)} del bruto)`,
       norma: "Ley 23.660, art. 16 inc. a) · Ley 25.565, art. 80",
       monto: res.contribucionEmpleador,
     },
@@ -131,7 +131,7 @@ export function CalculadoraObraSocial() {
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">
           <p className="text-sm font-semibold text-emerald-900">
-            Llega a tu entidad — {pct(REPARTO_VIGENTE.entidad)} del total
+            Llega a tu obra social: {pct(REPARTO_VIGENTE.entidad)} del total
           </p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
             {formatARS(res.aLaEntidad, 0)}
@@ -157,7 +157,7 @@ export function CalculadoraObraSocial() {
 
         <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
           <p className="text-sm font-semibold text-zinc-700">
-            Al Fondo Solidario de Redistribución — {pct(REPARTO_VIGENTE.fondo)}
+            Al Fondo Solidario de Redistribución: {pct(REPARTO_VIGENTE.fondo)}
           </p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
             {formatARS(res.alFondo, 0)}

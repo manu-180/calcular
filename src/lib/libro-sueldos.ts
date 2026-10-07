@@ -69,9 +69,9 @@ function sumarAnios(iso: string, anios: number): string {
 }
 
 const ALCANCE_VIGENTE =
-  "«las circunstancias que debieron constar en el pertinente registro» — o sea, lo que la registración ante ARCA tendría que haber dicho: fecha de ingreso, remuneración, categoría.";
+  "«las circunstancias que debieron constar en el pertinente registro». O sea, lo que la registración ante ARCA tendría que haber dicho: fecha de ingreso, remuneración y categoría.";
 const ALCANCE_ANTERIOR =
-  "«las circunstancias que debían constar en tales asientos» — las del libro, los registros, las planillas y los demás elementos de contralor de los arts. 52 y 54.";
+  "«las circunstancias que debían constar en tales asientos». O sea, las del libro, los registros, las planillas y los demás elementos de contralor de los arts. 52 y 54.";
 
 export function evaluarPresuncion(params: {
   /** Fecha del despido, del reclamo o del hecho que se discute, ISO YYYY-MM-DD. */
@@ -133,7 +133,7 @@ export function evaluarPresuncion(params: {
       tono: "bloqueante",
       texto: hoy.aplica
         ? "Tu caso da distinto en cada texto, y a favor del texto NUEVO: hoy la falta de registración dispara la presunción por sí sola, sin depender de que el empleador exhiba o no los libros."
-        : "Tu caso es exactamente el que la reforma dio vuelta: el empleador te tenía registrado y NO exhibió la documentación. Con el texto anterior, esa sola negativa hacía nacer la presunción a tu favor. El texto vigente del art. 55 ya no la menciona — y el art. 54, que extendía la regla a «registros, planillas u otros elementos de contralor», fue derogado el mismo día por el art. 207.",
+        : "Tu caso es exactamente el que la reforma dio vuelta: el empleador te tenía registrado y NO exhibió la documentación. Con el texto anterior, esa sola negativa hacía nacer la presunción a tu favor. El texto vigente del art. 55 ya no la menciona. Y el art. 54, que extendía la regla a «registros, planillas u otros elementos de contralor», fue derogado el mismo día por el art. 207.",
     });
   }
 
@@ -158,7 +158,7 @@ export function evaluarPresuncion(params: {
   avisos.push({
     tono: "atencion",
     texto:
-      "Lo que esta página lee es el TEXTO de la ley. Que la negativa a exhibir documentación siga pesando en un juicio por otras vías —el art. 53, la carga dinámica de la prueba, el código procesal de tu provincia— es una discusión abierta, y la reforma es de marzo de 2026: todavía no hay jurisprudencia. Orientativo, no reemplaza a un profesional.",
+      "Lo que esta página lee es el TEXTO de la ley. Que la negativa a exhibir documentación siga pesando en un juicio por otras vías (el art. 53, la carga dinámica de la prueba, el código procesal de tu provincia) es una discusión abierta, y la reforma es de marzo de 2026: todavía no hay jurisprudencia. Orientativo, no reemplaza a un profesional.",
   });
 
   return {

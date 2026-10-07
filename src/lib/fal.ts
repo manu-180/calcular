@@ -176,7 +176,7 @@ export function calcularFal(params: {
     avisos.push({
       tono: "ok",
       texto:
-        "El aporte al Fondo no se suma al costo laboral: el artículo 76 da una reducción de contribuciones patronales «equivalente», y el artículo 24 del Decreto 408/2026 explica que se instrumenta detrayendo la alícuota del FAL de la que ya se paga. La plata cambia de destino —de la seguridad social a una cuenta del propio empleador, inembargable y con rendimientos exentos de Ganancias—, no de bolsillo.",
+        "El aporte al Fondo no se suma al costo laboral: el artículo 76 da una reducción de contribuciones patronales «equivalente», y el artículo 24 del Decreto 408/2026 explica que se instrumenta detrayendo la alícuota del FAL de la que ya se paga. La plata cambia de destino, no de bolsillo: deja de ir a la seguridad social y va a una cuenta del propio empleador, inembargable y con rendimientos exentos de Ganancias.",
     });
   }
 
@@ -189,7 +189,7 @@ export function calcularFal(params: {
 
   avisos.push({
     tono: "atencion",
-    texto: `El fondo no responde durante los primeros ${PERIODOS_CARENCIA} períodos. Con la primera contribución integrada en ${periodoEnPalabras(primerPeriodo)}, la carencia cierra con el período de ${periodoEnPalabras(ultimoPeriodoCarencia)} y el fondo puede empezar a responder por extinciones desde ${periodoEnPalabras(desdeCuandoResponde)}. Hasta entonces, cada indemnización se paga íntegramente del bolsillo del empleador — que es, además, lo que pasa siempre: el fondo asiste, no reemplaza.`,
+    texto: `El fondo no responde durante los primeros ${PERIODOS_CARENCIA} períodos. Con la primera contribución integrada en ${periodoEnPalabras(primerPeriodo)}, la carencia cierra con el período de ${periodoEnPalabras(ultimoPeriodoCarencia)} y el fondo puede empezar a responder por extinciones desde ${periodoEnPalabras(desdeCuandoResponde)}. Hasta entonces, cada indemnización se paga íntegramente del bolsillo del empleador. Y eso pasa siempre: el fondo asiste, no reemplaza.`,
   });
 
   avisos.push({

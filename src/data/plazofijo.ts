@@ -24,19 +24,19 @@
 
 export const PLAZOFIJO_FUENTES = {
   bcraTasa: {
-    nombre: "BCRA — Estadísticas monetarias, tasa de depósitos a 30 días (serie 12)",
+    nombre: "BCRA: Estadísticas monetarias, tasa de depósitos a 30 días (serie 12)",
     url: "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/12",
   },
   comunicacionUva: {
-    nombre: "BCRA — Comunicación «A» 8246/2025 (plazo fijo UVA: mínimo 90 días)",
+    nombre: "BCRA: Comunicación «A» 8246/2025 (plazo fijo UVA: mínimo 90 días)",
     url: "https://www.bcra.gob.ar/Pdfs/comytexord/A8246.pdf",
   },
   garantia: {
-    nombre: "BCRA — Comunicación «A» 8407 (garantía de los depósitos: $50.000.000)",
+    nombre: "BCRA: Comunicación «A» 8407 (garantía de los depósitos: $50.000.000)",
     url: "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8407.pdf",
   },
   ipc: {
-    nombre: "INDEC — IPC Nacional (API oficial de series de tiempo)",
+    nombre: "INDEC: IPC Nacional (API oficial de series de tiempo)",
     url: "https://datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json",
   },
   ganancias: {

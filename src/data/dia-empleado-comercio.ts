@@ -13,7 +13,7 @@
 // circular no salió todavía — la página lo dice en vez de suponer una fecha.
 
 export const LEY_DIA_COMERCIO = {
-  nombre: "Ley 26.541 — Día del Empleado de Comercio",
+  nombre: "Ley 26.541: Día del Empleado de Comercio",
   url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/160000-164999/161502/norma.htm",
   sancion: "11 de noviembre de 2009",
   /** Fecha que fija el art. 1, todos los años. */
@@ -40,7 +40,7 @@ export const TRASLADOS_POR_ANIO: Record<number, TrasladoDiaComercio> = {
     motivo: "el 26 de septiembre de 2026 cae sábado",
     circular: {
       nombre:
-        "Circular FAECYS del 7/9/2026 — traslado del Día del Empleado de Comercio (FAECYS, CAC, CAME y UDECA)",
+        "Circular FAECYS del 7/9/2026: traslado del Día del Empleado de Comercio (FAECYS, CAC, CAME y UDECA)",
       url: "https://www.faecys.org.ar/faecys/wp-content/uploads/2026/08/CIRCULAR-TRASLADO-DIA-DEL-GREMIO-SEPTIEMBRE-2026.pdf",
       firmadaEl: "2026-09-07",
     },

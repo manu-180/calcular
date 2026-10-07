@@ -35,7 +35,7 @@ const FUENTES = [
     consultado: CONSULTADO,
   },
   {
-    texto: "INDEC — IPC Nacional, Nivel General, base diciembre 2016 = 100 (API de series de tiempo del Estado)",
+    texto: "INDEC: IPC Nacional, Nivel General, base diciembre 2016 = 100 (API de series de tiempo del Estado)",
     url: CREDITOS_FUENTES.lista[2].url,
     consultado: IPC_DESCARGADO_EL,
   },

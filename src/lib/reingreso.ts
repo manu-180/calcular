@@ -148,12 +148,12 @@ export function calcularReingreso(params: {
   if (cortaLaAntiguedad) {
     avisos.push({
       tono: "bloqueante",
-      texto: `Entre el cese anterior y el reingreso pasaron ${mesesDeCorte} meses, o sea dos años o más. Desde el 6 de marzo de 2026, el artículo 18 de la LCT —sustituido por el artículo 9º de la Ley 27.802— dice que en ese caso «la antigüedad del tiempo de servicio anterior no será computada». Se liquida como un despido común de la última etapa: los ${etapaAnterior.anios} años anteriores quedan afuera del cálculo. Con el texto anterior del artículo 18 se computaban siempre, sin importar cuánto tiempo hubiera pasado.`,
+      texto: `Entre el cese anterior y el reingreso pasaron ${mesesDeCorte} meses, o sea dos años o más. Desde el 6 de marzo de 2026, el artículo 18 de la LCT (sustituido por el artículo 9º de la Ley 27.802) dice que en ese caso «la antigüedad del tiempo de servicio anterior no será computada». Se liquida como un despido común de la última etapa: los ${etapaAnterior.anios} años anteriores quedan afuera del cálculo. Con el texto anterior del artículo 18 se computaban siempre, sin importar cuánto tiempo hubiera pasado.`,
     });
     avisos.push({
       tono: "atencion",
       texto:
-        "Por eso tampoco se deduce lo que cobraste en el cese anterior: la deducción del artículo 255 existe para no pagar dos veces el mismo tramo de antigüedad, y ese tramo ya quedó fuera del cálculo. La norma no lo dice con todas las letras — es la lectura que sostiene esta calculadora, y conviene que la revise un profesional en tu caso concreto.",
+        "Por eso tampoco se deduce lo que cobraste en el cese anterior: la deducción del artículo 255 existe para no pagar dos veces el mismo tramo de antigüedad, y ese tramo ya quedó fuera del cálculo. La norma no lo dice con todas las letras: es la lectura que sostiene esta calculadora, y conviene que la revise un profesional en tu caso concreto.",
     });
   } else {
     avisos.push({

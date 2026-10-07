@@ -60,7 +60,7 @@ export function CalculadoraRimi() {
           >
             {(Object.keys(ETIQUETAS_CATEGORIA) as CategoriaPyme[]).map((c) => (
               <option key={c} value={c}>
-                {ETIQUETAS_CATEGORIA[c]} — mínimo {usd(MONTOS_MINIMOS[c])}
+                {ETIQUETAS_CATEGORIA[c]} (mínimo {usd(MONTOS_MINIMOS[c])})
               </option>
             ))}
           </select>
@@ -71,7 +71,7 @@ export function CalculadoraRimi() {
             Tipo de bien
           </label>
           <p className="mt-0.5 text-xs text-zinc-500">
-            Decide en cuántas cuotas se amortiza — y si el piso se aplica.
+            Define en cuántas cuotas se amortiza y si se aplica el piso.
           </p>
           <select
             id="tipoBien"
@@ -242,11 +242,11 @@ export function CalculadoraRimi() {
           </ul>
 
           <p className="mt-4 text-xs text-zinc-500">
-            ¿Sos monotributista y no sociedad?{" "}
+            ¿Sos monotributista y no sociedad? Mirá{" "}
             <Link href="/monotributo" className="font-medium text-emerald-700 hover:underline">
               las escalas del monotributo
-            </Link>{" "}
-            — el RIMI alcanza a los sujetos del art. 53 de la Ley de Ganancias, no al monotributo.
+            </Link>
+            . El RIMI alcanza a los sujetos del art. 53 de la Ley de Ganancias, no al monotributo.
           </p>
         </div>
       )}

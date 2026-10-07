@@ -145,19 +145,19 @@ export const SITUACIONES: Situacion[] = [
 
 export const AFILIACION_FUENTES = [
   {
-    nombre: "Ley 24.241, arts. 2º, 3º y 4º — texto actualizado",
+    nombre: "Ley 24.241, arts. 2º, 3º y 4º, texto actualizado",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=639",
     detalle:
       "Afiliación obligatoria (art. 2º, con el inciso d) que fija el umbral de participación societaria), voluntaria (art. 3º, incorporado el inciso de las amas de casa por la Ley 24.347) y las excepciones del art. 4º.",
   },
   {
-    nombre: "Ley 26.425 — unificación en el SIPA",
+    nombre: "Ley 26.425: unificación en el SIPA",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=148141",
     detalle:
       "La ley que en diciembre de 2008 unificó el sistema en el SIPA, de reparto. No sustituyó los artículos de afiliación: por eso el texto vigente sigue diciendo «SIJP».",
   },
   {
-    nombre: "Ley 24.347 — B.O. 28/6/1994",
+    nombre: "Ley 24.347 (B.O. 28/6/1994)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=729",
     detalle:
       "Su art. 1º sustituyó el inciso b) del art. 3º y es la que sumó a las amas de casa a la afiliación voluntaria, en la categoría mínima de aportes.",

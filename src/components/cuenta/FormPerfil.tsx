@@ -1,8 +1,8 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useOptimistic } from "react";
 import { guardarPerfil } from "@/lib/auth/acciones";
-import { ESTADO_INICIAL } from "@/lib/auth/estado";
+import { ESTADO_INICIAL, type EstadoForm } from "@/lib/auth/estado";
 import { Aviso, BotonEnviar, Campo, Casilla } from "@/components/cuenta/Campos";
 
 const OPCIONES: { valor: string; texto: string }[] = [
@@ -23,14 +23,34 @@ export function FormPerfil({
   perfil: string | null;
   novedades: boolean;
 }) {
-  const [estado, accion] = useActionState(guardarPerfil, ESTADO_INICIAL);
+  const [real, accion] = useActionState(guardarPerfil, ESTADO_INICIAL);
+  // Se da por guardado al tocar el botón; si el servidor dice que no, el estado real (con el error
+  // y los valores que mandó) reemplaza al adelantado cuando termina la acción.
+  const [estado, adelantar] = useOptimistic(
+    real,
+    (_: EstadoForm, valores: NonNullable<EstadoForm["valores"]>): EstadoForm => ({
+      estado: "ok",
+      mensaje: "Listo, guardamos tus datos.",
+      valores,
+    }),
+  );
   const v = estado.valores;
   const nombreActual = typeof v?.nombre === "string" ? v.nombre : (nombre ?? "");
   const perfilActual = v && "perfil" in v ? (v.perfil as string | null) : perfil;
   const novedadesActual = typeof v?.novedades === "boolean" ? v.novedades : novedades;
 
+  function enviar(fd: FormData) {
+    const elegido = fd.get("perfil");
+    adelantar({
+      nombre: String(fd.get("nombre") ?? "").trim(),
+      perfil: typeof elegido === "string" && elegido ? elegido : null,
+      novedades: fd.get("novedades") === "si",
+    });
+    accion(fd);
+  }
+
   return (
-    <form action={accion} className="space-y-6">
+    <form action={enviar} className="space-y-6">
       <Campo
         etiqueta="¿Cómo te llamamos?"
         name="nombre"
@@ -59,7 +79,7 @@ export function FormPerfil({
         Quiero recibir por mail las novedades de CalculAR.
       </Casilla>
       <div className="flex flex-wrap items-center gap-3">
-        <BotonEnviar variante="secundario" pendiente="Guardando…">
+        <BotonEnviar variante="secundario" pendiente="Guardando…" optimista>
           Guardar cambios
         </BotonEnviar>
         {estado.estado === "ok" ? (

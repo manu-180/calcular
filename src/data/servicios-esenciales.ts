@@ -227,7 +227,7 @@ export const ACTIVIDADES: Actividad[] = [
     categoriaAntes: "trascendental",
     inciso: "g",
     cambio:
-      "Sin cambios en su texto — pero el inciso vecino que nombraba a la «distribución y comercialización de alimentos y bebidas» y a la «actividad agropecuaria y su cadena de valor» desapareció. Qué queda alcanzado por «toda su cadena de valor» es hoy una discusión abierta.",
+      "Sin cambios en su texto. Pero el inciso vecino que nombraba a la «distribución y comercialización de alimentos y bebidas» y a la «actividad agropecuaria y su cadena de valor» desapareció. Qué queda alcanzado por «toda su cadena de valor» es hoy una discusión abierta.",
   },
   {
     id: "bancos",
@@ -401,7 +401,7 @@ export const HISTORIA: { fecha: string; norma: string; que: string }[] = [
   {
     fecha: "3/9/2025",
     norma: "Decreto 628/2025, art. 1°",
-    que: "Restituye la vigencia del texto del Decreto 70/2023. Ése es el que rigió hasta el 5/3/2026 — y es el que sigue circulando en la mayoría de las notas.",
+    que: "Restituye la vigencia del texto del Decreto 70/2023. Ese es el que rigió hasta el 5/3/2026, y es el que sigue circulando en la mayoría de las notas.",
   },
   {
     fecha: "6/3/2026",
@@ -416,28 +416,28 @@ export const FUENTES: { consultadoEl: string; lista: Fuente[] } = {
   consultadoEl: "2026-08-28",
   lista: [
     {
-      nombre: "Ley 25.877 — texto actualizado, art. 24 (InfoLEG)",
+      nombre: "Ley 25.877, texto actualizado, art. 24 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/90000-94999/93595/texact.htm",
       detalle:
         "El texto vigente del artículo, con los apartados 24.1 a 24.6 y las notas que identifican a cada norma modificatoria. De acá salen las dos listas de actividades, los pisos del 75% y el 50%, el 100% de las fuerzas de seguridad y todos los plazos del procedimiento.",
     },
     {
-      nombre: "Ley 25.877 — el mismo texto oficial, capturado el 1/2/2026 (Internet Archive)",
+      nombre: "Ley 25.877: el mismo texto oficial, capturado el 1/2/2026 (Internet Archive)",
       url: "https://web.archive.org/web/20260201/https://servicios.infoleg.gob.ar/infolegInternet/anexos/90000-94999/93595/texact.htm",
       detalle:
         "La versión que estuvo vigente hasta el 5/3/2026 (la del Decreto 70/2023, restituida por el Decreto 628/2025). Es el control que permite decir con precisión qué actividad entró, cuál bajó de categoría y cuáles salieron de la enumeración.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial, Título VII (arts. 101 y 102)",
+      nombre: "Ley 27.802, texto oficial, Título VII (arts. 101 y 102)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "La norma que sustituyó el art. 24 e incorporó sus apartados. El art. 217 fija la vigencia desde la publicación en el Boletín Oficial: este Título no tiene fecha diferida ni prórroga.",
     },
     {
-      nombre: "Ley 14.786 — conciliación obligatoria (InfoLEG)",
+      nombre: "Ley 14.786: conciliación obligatoria (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/115000-119999/115423/norma.htm",
       detalle:
-        "Los arts. 2° y 11 a los que remite el apartado 24.1: la instancia obligatoria de conciliación y su plazo de quince días, prorrogable por cinco. El art. 8 prohíbe las medidas de acción directa mientras ese plazo corre, y el art. 6 —que sí dice «10 días hábiles»— es la prueba de que el legislador distinguía.",
+        "Los arts. 2° y 11 a los que remite el apartado 24.1: la instancia obligatoria de conciliación y su plazo de quince días, prorrogable por cinco. El art. 8 prohíbe las medidas de acción directa mientras ese plazo corre, y el art. 6 (que sí dice «10 días hábiles») es la prueba de que el legislador distinguía.",
     },
   ],
 };

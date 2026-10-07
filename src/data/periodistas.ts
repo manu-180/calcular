@@ -42,19 +42,19 @@ export const PERIODISTAS_FUENTES = {
   consultadoEnTexto: "23 de agosto de 2026",
   lista: [
     {
-      nombre: "Ley 12.908 — Estatuto del Periodista Profesional, texto ACTUALIZADO (InfoLEG)",
+      nombre: "Ley 12.908: Estatuto del Periodista Profesional, texto ACTUALIZADO (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/40000-44999/43608/texact.htm",
       detalle:
         "el estatuto completo. Sus «Antecedentes Normativos» fechan la última redacción del art. 43 en el art. 1° de la Ley 16.792 (B.O. 21/12/1965): sesenta años con el mismo texto.",
     },
     {
-      nombre: "Ley 27.802 de Modernización Laboral — Título XXVI, art. 197 (InfoLEG)",
+      nombre: "Ley 27.802 de Modernización Laboral: Título XXVI, art. 197 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=423680",
       detalle:
         "«Derógase la ley 12.908 y sus modificatorias, a partir del 1º de enero de 2027». Publicada en el B.O. del 6 de marzo de 2026; al 23/8/2026 ninguna norma posterior modificó ese artículo.",
     },
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "arts. 92 bis, 150, 231 a 233 y 245 con el texto de la Ley 27.802: el régimen que queda cuando el estatuto se deroga.",
@@ -131,7 +131,7 @@ export const QUE_SE_PIERDE: Array<{
     articulo: "Art. 43 inc. b)",
     titulo: "Indemnización sustitutiva del preaviso",
     estatuto:
-      "Dos meses de retribución hasta los tres años de antigüedad y cuatro meses si la supera — el doble del plazo de preaviso que fija el propio inciso a).",
+      "Dos meses de retribución hasta los tres años de antigüedad y cuatro meses si la supera. Es el doble del plazo de preaviso que fija el propio inciso a).",
     lct: "Un mes hasta los cinco años de antigüedad y dos meses si la supera (art. 231 inc. b, texto de la Ley 27.802).",
   },
   {

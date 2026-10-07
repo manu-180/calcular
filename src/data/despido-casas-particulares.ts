@@ -158,7 +158,7 @@ export const CAMBIOS_TITULO_X: { articulo: string; tema: string; queCambio: stri
     articulo: "art. 70",
     tema: "Actualización de los créditos",
     queCambio:
-      "Los créditos laborales del régimen se actualizan y devengan intereses en los mismos términos del art. 276 de la LCT — la misma regla que rige para el resto de los trabajadores.",
+      "Los créditos laborales del régimen se actualizan y devengan intereses en los mismos términos del art. 276 de la LCT. Es la misma regla que rige para el resto de los trabajadores.",
   },
 ];
 
@@ -171,25 +171,25 @@ export const DESPIDO_CASAS_FUENTES: {
   consultadoEl: "2026-08-20",
   lista: [
     {
-      nombre: "Ley 26.844 — texto actualizado (InfoLEG)",
+      nombre: "Ley 26.844, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/210000-214999/210489/texact.htm",
       detalle:
         "Art. 7 con el texto del art. 107 de la Ley 27.802 y su nota de vigencia, y los arts. 26 y 28 (aguinaldo y su proporcional), 29 y 30 (vacaciones), 42 a 45 (preaviso, indemnización sustitutiva, integración del mes y las 10 horas semanales para buscar trabajo), 48 (indemnización por antigüedad) y 49 (despido indirecto).",
     },
     {
-      nombre: "Ley 26.844 — texto original (InfoLEG)",
+      nombre: "Ley 26.844, texto original (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/210000-214999/210489/norma.htm",
       detalle:
-        "El art. 7 como rigió desde 2013 hasta el 5 de marzo de 2026: 30 días para el personal sin retiro y 15 días —con tope de 3 meses— para el personal con retiro. Es la prueba palabra por palabra de cuánto se estiró el período de prueba. Su art. 72 es además el que había escrito el inciso b) del art. 2° de la LCT.",
+        "El art. 7 como rigió desde 2013 hasta el 5 de marzo de 2026: 30 días para el personal sin retiro y 15 días (con tope de 3 meses) para el personal con retiro. Es la prueba palabra por palabra de cuánto se estiró el período de prueba. Su art. 72 es además el que había escrito el inciso b) del art. 2° de la LCT.",
     },
     {
-      nombre: "Ley 27.802 — Ley de Modernización Laboral (B.O. 6/3/2026)",
+      nombre: "Ley 27.802: Ley de Modernización Laboral (B.O. 6/3/2026)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Su Título X (arts. 107 a 110) reescribió los arts. 7, 14, 20 y 70 de la Ley 26.844. Y su art. 1º, en otro título, sustituyó el art. 2° de la LCT: es el que cambió la regla de aplicación supletoria.",
     },
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 2°: el inciso b) vigente limita la aplicación de la LCT al personal de casas particulares a «aquellas normas que el régimen de la Ley (…) N° 26.844 (…) expresamente declare aplicables». El inciso c), de los trabajadores agrarios, conserva la fórmula anterior de aplicación supletoria: el contraste es la prueba de que el cambio del inciso b) fue deliberado.",

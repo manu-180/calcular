@@ -1,0 +1,125 @@
+# Sesión 2026-10-06 · SEO, velocidad, menú móvil, redacción humana, expansión LATAM
+
+Rama: `claude/seo-performance-regional-expansion-923044`. Orquestada con `/orquestador`.
+Régimen pedido por Manuel: 2 h de trabajo, 2 h de descanso, y retomar.
+
+## Pedido (en orden)
+
+1. SEO de calcular.ar: auditoría completa y mejoras donde sumen tráfico.
+2. Velocidad: /cuenta, /dashboard y todo lo privado tiene que cargar instantáneo.
+3. Menú móvil: apertura serena (hoy entra de golpe) y desplegables de perfil desfasados en celular.
+4. Redacción de Argentina más humana: sin guiones (raya «—»), paréntesis en su lugar, breve y clara.
+5. Que el usuario entienda que la información siempre está actualizada (sutil pero claro) +
+   una sección de novedades con movimiento frecuente.
+6. Feedback de usuarios con cuenta.
+7. Expansión a LATAM: misma estructura que Argentina por país (calculadoras gratis + planillas
+   pagas), datos reales con fuentes, actualización automática, detección de país + selector,
+   SEO por país. Dominio nuevo para los países (calcular.ar queda igual).
+
+No existía un plan multi-país escrito en el repo, la memoria ni el historial: se arma acá.
+
+## Rondas
+
+| Ronda | Frente | Agente · modelo | Posee |
+|---|---|---|---|
+| 1 | Auditoría SEO + infra SEO | seo-structure-architect · Opus | sitemap, robots, layout (metadata), JsonLd, llms.txt, docs/seo/ |
+| 1 | Velocidad zona privada | performance-engineer · Opus | src/app/cuenta, dashboard, login/registro/recuperar, lib/panel, lib/auth, proxy.ts, components/cuenta, components/panel |
+| 1 | Menú móvil + desplegables | frontend-developer · Sonnet | SiteHeader.tsx, MenuCuenta.tsx |
+| 1 | «Siempre actualizado» + Novedades | frontend-developer · Opus | /novedades, lib/novedades, SiteFooter, SelloVerificado |
+| 1 | Investigación países | search-specialist · Opus (x2) | docs/research/paises/ |
+| 2 | Redacción humana AR (por tandas de rutas) | copy · Opus | page.tsx por tanda + metadata de SEO |
+| 2 | Feedback de usuarios | backend + frontend | /cuenta/opiniones, migración Supabase |
+| 3 | Arquitectura multi-país (ADR + base i18n) | architect-review · Opus | ADR, src/paises/, proxy por host |
+| 4+ | Países (uno por agente) | | src/app/(paises)/... |
+
+## Decisiones de Manuel (2026-10-07)
+
+- Dominio de los países: **calcularya.com** (US$ 11,25/año, libre al 7/10). Falta comprarlo: la
+  compra pide datos de titular (WHOIS). Proyecto Vercel: calcular-ar, team_howttfzs3Q44mOpVn93EkrUm.
+- Países: **todos los válidos, mientras más mejor**; no importa si alguno no vende. Cobra con
+  MercadoPago: cómo cobrar fuera de Argentina se investiga en docs/research/paises/cobros.md.
+- calcular.ar no se toca como dominio. Sin redirección automática por IP (rompe el rastreo de
+  Google): sugerencia de país con aviso + selector, hreflang entre calcular.ar y calcularya.com.
+
+## Investigación en curso
+
+docs/research/paises/{uy,py,bo,ve,mx,pe,co,cl,ec,cr,pa,ni,do,gt,sv,hn}.md y cobros.md.
+
+## Estado al 7/10/2026, 01:15 (fin del primer bloque de trabajo)
+
+Integrado en esta rama y verificado (tsc limpio, build 232 páginas, check-all verde salvo
+check_planilla_plazo_fijo, que sólo pasa con las planillas regeneradas: lo hace el prebuild y, con
+el PR #8, también el motor de datos-vivos):
+
+- Menú móvil sereno (420 ms abre, 280 ms cierra, filas escalonadas) y desplegable de cuenta dentro
+  de la pantalla de 320 a 1280 px.
+- Zona privada instantánea: /cuenta de 296 a 23-40 ms al primer byte (simulado), esqueletos con la
+  forma real, un solo viaje a Supabase, perfil optimista. Revisado: cada página sigue validando con getUser.
+- Novedades (/novedades + RSS + bloque en la home + footer + sello) con 17 cambios reales y registro
+  que se alimenta solo desde datos-vivos. Sumado al sitemap y a la navegación.
+- SEO: JSON-LD válido en todo el sitio, grafo global, sitemap con fechas reales, gate check_seo.
+  Auditoría por ruta en docs/seo/auditoria-2026-10-06.md (titles y descriptions propuestos).
+- .gitattributes con eol=lf: los checks ya no dan rojo falso en Windows.
+- Research de 16 países en docs/research/paises/ y ADR multi-país en docs/adr/.
+
+PR aparte y urgente: #8, el sitio no se actualizaba solo desde el 28/9 (planillas sin regenerar).
+
+## Próxima ronda (al volver del descanso)
+
+1. Redacción humana de Argentina por tandas (6 agentes, archivos disjuntos), aplicando la guía y
+   los titles/descriptions de la auditoría SEO. Gate: check_guiones (ex contar_guiones) en cero.
+2. Feedback de usuarios con cuenta (/cuenta/opiniones + tabla Supabase con RLS).
+3. Multi-país Fase 0 según docs/adr/0001-plan-implementacion.md (spike de Next 16 primero).
+   Pendiente de Manuel: compra de calcularya.com, cobro fuera de AR, nombre visible del sitio nuevo.
+4. Validar demanda por país con Keyword Planner (cuenta 4869983637).
+
+## Datos viejos detectados por la redacción (corregir después de integrar todas las tandas)
+
+- /monotributo y /monotributo/categorias: «La próxima ventana cierra el 5 de agosto de 2026» fijo (ya pasó).
+  Usar RECATEGORIZACION.proximaVentana.
+- /monotributo/categorias: datasetSchema dice «vigentes desde febrero 2026» y VIGENCIA.desde es 1/8/2026.
+- /plazo-fijo «Cómo se calcula»: ejemplo fijo (0,1941; $15.953; $1.015.953) al lado de TNA_FALLBACK.valor,
+  que cambia. Usar ejTnaDecStr, ejInteresStr, ejTotalStr.
+- /plazo-fijo FAQ «¿Es seguro?»: $50.000.000 y «abril de 2026» fijos en vez de GARANTIA_DEPOSITOS.
+- src/data: 20 rayas que son puntuación de citas textuales de la ley (quedan; el gate necesita excepción).
+- Home: tarjeta de recategorización «Próxima ventana: hasta el 5 de agosto» (vencida); piso de
+  /indemnizacion-art «$114.354.110» escrito a mano (se mueve por RIPTE).
+- /servicios-esenciales-huelga: description dice 4 actividades, header y H2 dicen tres.
+- /practicas-desleales-sindicales: «las tres conductas del art. 20 ter» pero la FAQ enumera cuatro.
+- /sueldo-neto/camioneros: falta el número de artículo del CCT 40/89 en una FAQ.
+- /sueldo-neto/comercio y /sueldo-neto: datasetSchema con «agosto 2026» y «1er sem 2026» a mano.
+- /sueldo-neto/construccion: pie cita acuerdoTramo2 y datasetSchema acuerdoTramo3.
+- /puam: dos FAQs duplicadas (fallecimiento del titular).
+- dateModified futuro en meses de convenio y cuota [mes]: el código arma `${anio}-${mes}-01` (lógica).
+- /convenios/camioneros: sigla «FETIAMP» para la federación (la conocida es FEDCAM).
+- /convenios/uocra/[mes]: fuentes muestran tramos 1 y 2, los meses sep a nov citan el tramo 3.
+- /fondo-de-asistencia-laboral: alícuota pyme se ve «2.5%» con punto en description, OG y FAQ.
+- /empleada-domestica: recuadro usa NOVIEMBRE.incrementoDeclarado, la FAQ el último mes de la serie.
+- /deduccion-empleada-domestica: «jornada completa» para un ejemplo de 16 h semanales.
+- /despido-plazo-fijo: enlaza propinas como art. 113 (la auditoría dice art. 104).
+- /edad-avanzada: «voltea la mitad de las solicitudes» sin fuente.
+- /indemnizacion: RespuestaPrimero actualizado="13 de junio de 2026" vs articleSchema modificado 2026-09-21.
+- /indemnizacion-art: «$114.354.110» y «Res. SRT 39/2026» a mano en OG, imagen OG y FAQ (usar PISOS y VIGENCIA_ART).
+- /inflacion: modificado "2026-06-15" fijo en articleSchema y datasetSchema.
+- /jubilacion: $70.000 del bono a mano en dos FAQs (usar BONO_VIGENTE.monto).
+
+## Estado al 7/10/2026, 12:57 (fin del segundo bloque de trabajo)
+
+Integrado y verificado sobre el árbol completo (tsc limpio, check-all 121/121, build OK):
+
+- Redacción humana de toda la Argentina: 7 tandas, 2.116 rayas → 0 en texto visible (13 citas
+  textuales de la ley en lista explícita). Titles y descriptions de la auditoría aplicados; el aviso
+  de títulos largos bajó de 95 a 71 páginas. Gate nuevo: check_guiones.
+- Opiniones de usuarios: /cuenta/opiniones, bandeja en /dashboard/opiniones, link en el menú de
+  cuenta y en /cuenta, gate check_opiniones (59 pruebas). FALTA aplicar la migración
+  supabase/migrations/20261007120000_ca_opiniones.sql en el proyecto wsmsspeeeujynqornyrj (no hay
+  acceso desde esta máquina): hacerlo ANTES de mergear el PR #7.
+- Spike de Next 16 para multi-dominio: docs/adr/0001-spike-next16.md.
+- Keyword Planner no disponible: el developer token de Google Ads no está aprobado (test access).
+
+## Próxima ronda (al volver, 14:57)
+
+1. Corregir los datos viejos de la lista de arriba (un agente Opus, archivos disjuntos por página).
+2. Actualizar el ADR con el spike y arrancar la Fase 0 multi-país (base sin ningún país público,
+   AR idéntico; 404 de AR con su header y footer en app/not-found.tsx).
+3. Revisión visual en el navegador de las páginas reescritas (375 y 1280 px).

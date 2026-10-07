@@ -344,7 +344,7 @@ export function InformeGananciasDocumento({
         <Seccion n={4} titulo="Cómo cargarlas en el SiRADIG">
           <ol className="space-y-2.5">
             {[
-              ["Entrá con tu clave fiscal en arca.gob.ar", "Buscá el servicio «SiRADIG – Trabajador». Si no aparece, sumalo con el botón «Agregar» o desde el Administrador de Relaciones de Clave Fiscal."],
+              ["Entrá con tu clave fiscal en arca.gob.ar", "Buscá el servicio «SiRADIG - Trabajador». Si no aparece, sumalo con el botón «Agregar» o desde el Administrador de Relaciones de Clave Fiscal."],
               ["Elegí tu nombre y el período 2026", "Creá un borrador con «Crear nuevo borrador» y entrá a «Carga de formulario». Revisá que tu empleador esté cargado y marcado como agente de retención."],
               ["Cargá cada deducción", "En «Deducciones y desgravaciones», tocá «Agregar deducciones y desgravaciones» y elegí la opción. Te pide la CUIT de quien te factura, el mes (o un rango de meses) y cada comprobante."],
               ["Revisá y enviá", "Al final del menú principal, «Vista previa». Si está todo bien, «Enviar al empleador» y confirmá con «Generar presentación»."],

@@ -65,7 +65,7 @@ async function entregarPorEmail(
       subject:
         producto.entrega === "informe"
           ? `Tu ${producto.tituloCorto} está listo`
-          : `Tu ${producto.tituloCorto} — descarga y actualizaciones`,
+          : `Tu ${producto.tituloCorto}: descarga y actualizaciones`,
       html:
         producto.entrega === "informe"
           ? informeEntregaHtml({

@@ -164,25 +164,23 @@ html:has(dialog.ca-bloquea[open]) {
   overflow: hidden;
 }
 
-.ca-cajon {
-  transition:
-    display 0.34s allow-discrete,
-    overlay 0.34s allow-discrete;
+/* El cajón lo maneja SiteHeader con data-visible (no con @starting-style/allow-discrete): así
+   también entra animado en Safari viejo, y el cierre sabe cuándo terminó la salida para llamar
+   a close(). Entrada lenta y suave, salida más corta: el sistema responde, el usuario no espera.
+   Curvas: --ease-sereno llega al 49 % del recorrido a 1/5 del tiempo (la anterior, 0.32/0.72/0/1,
+   llegaba al 66 %), que es lo que hacía sentir la apertura "de golpe". */
+:root {
+  --ease-sereno: cubic-bezier(0.3, 0.7, 0.3, 1);
+  --ease-salida: cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
 .ca-cajon::backdrop {
   background: rgb(9 9 11 / 0);
-  transition:
-    background-color 0.34s var(--ease-snappy),
-    display 0.34s allow-discrete,
-    overlay 0.34s allow-discrete;
+  transition: background-color 0.26s ease-out;
 }
-.ca-cajon[open]::backdrop {
-  background: rgb(9 9 11 / 0.42);
-}
-@starting-style {
-  .ca-cajon[open]::backdrop {
-    background: rgb(9 9 11 / 0);
-  }
+.ca-cajon[data-visible="true"]::backdrop {
+  background: rgb(9 9 11 / 0.4);
+  transition-duration: 0.42s;
 }
 
 .ca-cajon-panel {
@@ -197,25 +195,67 @@ html:has(dialog.ca-bloquea[open]) {
   box-shadow: -24px 0 60px -30px rgb(0 0 0 / 0.35);
   touch-action: pan-y;
   translate: 100% 0;
-  transition: translate 0.34s var(--ease-snappy);
+  transition: translate 0.28s var(--ease-salida);
 }
-.ca-cajon[open] .ca-cajon-panel {
+.ca-cajon[data-visible="true"] .ca-cajon-panel {
   translate: 0 0;
+  transition-duration: 0.42s;
+  transition-timing-function: var(--ease-sereno);
+}
+
+.ca-cajon-item {
+  opacity: 0;
+  translate: 0 6px;
+  transition:
+    opacity 0.18s ease-out,
+    translate 0.18s ease-out;
+}
+.ca-cajon[data-visible="true"] .ca-cajon-item {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 0.32s ease-out calc(0.08s + var(--i, 0) * 0.03s),
+    translate 0.46s var(--ease-sereno) calc(0.08s + var(--i, 0) * 0.03s);
 }
 @starting-style {
-  .ca-cajon[open] .ca-cajon-panel {
-    translate: 100% 0;
+  .ca-cajon[data-visible="true"] .ca-cajon-item {
+    opacity: 0;
+    translate: 0 6px;
   }
 }
 
-.ca-cajon-lista {
-  animation: ca-aparece 0.22s var(--ease-fluid);
-}
-@keyframes ca-aparece {
+/* Desplegable de la cuenta: nace en el avatar (el origen lo mide MenuCuenta) y las filas entran
+   escalonadas. Solo opacity/transform; la salida es más corta que la entrada. */
+@keyframes ca-menu-entra {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(-6px) scale(0.96);
   }
+}
+@keyframes ca-menu-sale {
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+}
+@keyframes ca-menu-fila {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+.ca-menu-cuenta {
+  transform-origin: top right;
+  animation: ca-menu-entra 0.3s var(--ease-sereno) both;
+}
+.ca-menu-cuenta[data-estado="cerrando"] {
+  animation: ca-menu-sale 0.14s ease-out forwards;
+}
+.ca-menu-cuenta-lista > * {
+  animation: ca-menu-fila 0.32s var(--ease-sereno) calc(0.05s + var(--i, 0) * 0.03s) backwards;
+}
+.ca-menu-cuenta[data-estado="cerrando"] .ca-menu-cuenta-lista > * {
+  animation: none;
 }
 
 .ca-paleta::backdrop {
@@ -687,7 +727,8 @@ html:has(dialog.ca-bloquea[open]) {
 @media (prefers-reduced-motion: reduce) {
   .ca-dropdown,
   .ca-col,
-  .ca-cajon-lista {
+  .ca-menu-cuenta,
+  .ca-menu-cuenta-lista > * {
     animation: none;
   }
   .ca-underline {

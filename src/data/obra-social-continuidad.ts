@@ -140,18 +140,18 @@ export const CONTINUIDAD_TEXTOS = {
 export const CONTINUIDAD_FUENTES = {
   consultadoEl: "5 de septiembre de 2026",
   principal: {
-    nombre: "Ley 23.660, art. 10 — texto actualizado en InfoLEG",
+    nombre: "Ley 23.660, art. 10, texto actualizado en InfoLEG",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
   },
   lista: [
     {
-      nombre: "Ley 23.660 — texto actualizado",
+      nombre: "Ley 23.660, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
       detalle:
         "Art. 10 completo (los ocho supuestos, con el inciso e) sustituido y el f) derogado por el Decreto 70/2023) y art. 16, que fija el aporte y la contribución que hay que cubrir para seguir.",
     },
     {
-      nombre: "Ley de Contrato de Trabajo — texto actualizado",
+      nombre: "Ley de Contrato de Trabajo, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 208 (licencia paga de 3, 6 o 12 meses según antigüedad y cargas de familia) y art. 211 (el año de conservación del empleo al que remite el inciso b).",

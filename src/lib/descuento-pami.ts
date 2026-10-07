@@ -112,7 +112,7 @@ export function calcularDescuentoPami(e: EntradaPami = {}): ResultadoPami {
       tono: "info",
       texto:
         regimen.id === "dependencia"
-          ? "Tu haber supera el mínimo garantizado, así que tiene los dos tramos: el 3% corre sobre la parte de abajo y el 6% sólo sobre el excedente. No es 6% de todo — ese es el error más común al leer el artículo."
+          ? "Tu haber supera el mínimo garantizado, así que tiene los dos tramos: el 3% corre sobre la parte de abajo y el 6% sólo sobre el excedente. No es 6% de todo: ese es el error más común al leer el artículo."
           : "El inciso b) no tiene escalón: el 6% corre sobre el haber entero, sin importar el haber mínimo.",
     });
   }

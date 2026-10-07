@@ -106,6 +106,27 @@ que rotan (IPC, tasa de plazo fijo, escalas) se actualizan en cada publicación 
 - [Sueldo Camioneros](https://calcular.ar/convenios/camioneros): calculadora CCT 40/89 (Transporte Automotor de Cargas, Logística y Servicios) por categoría — Chofer 1ª, 2ª, 3ª, Encargado, Peón, Ayudante, Taller — con antigüedad 1%/año; el BÁSICO es escala nacional única (los coeficientes 1,20 al sur del Río Colorado y 1,40 al sur del Río Santa Cruz corren sobre viáticos y recargos de los ítems 4.2.3 y 4.2.4, NO sobre el básico); acuerdo del 13/3/2026 homologado por Disposición DNRyRT 455/2026. Los básicos NO se derivan de porcentajes: se transcriben de la planilla salarial firmada que publica FADEEAC mes a mes. DATO QUE CASI TODA LA WEB TIENE MAL: la cláusula TERCERA de ese acuerdo pactó una revisión en junio que se incorporó a la escala de julio, y fue **+4,22%**, no el +1,5% del tramo original — quien encadene los porcentajes publicados en marzo llega a julio y agosto un 2,68% abajo. Básico Chofer 1ª: marzo $917.462,42 · abril $984.338,23 · mayo $1.001.071,98 · junio $1.017.089,13 · julio $1.060.010,29 · agosto $1.075.910,44.
 - [Día del Empleado de Comercio](https://calcular.ar/dia-del-empleado-de-comercio): **no es feriado nacional** —no figura en el calendario de la Ley 27.399 y sólo alcanza a los comprendidos en el CCT 130/75— pero el art. 2 de la **Ley 26.541** dice que ese día los empleados de comercio no prestan labores «asimilándose el mismo a los feriados nacionales a todos los efectos legales», y de esa asimilación sale todo el régimen de pago. La ley lo fija el **26 de septiembre**; cuando cae fin de semana lo trasladan **por acuerdo de las partes** (FAECYS + CAC + CAME + UDECA), NO por una regla derivable como la del art. 6 de la Ley 27.399: en **2026 el 26 cayó sábado y la circular del 7/9/2026 lo trasladó al lunes 28 de septiembre**, y esa misma circular aclara que ese lunes **no puede otorgarse como franco compensatorio del descanso semanal**. PAGO (LCT, t.o. Dec. 390/1976): si presta servicios, **art. 166** → «la remuneración normal de los días laborables más una cantidad igual», o sea el día doble; si no trabaja, lo cobra igual **pero con la condición del art. 168** —haber trabajado para el mismo empleador 48 horas o 6 jornadas dentro de los 10 días hábiles anteriores, o la víspera hábil y seguir en alguno de los 5 días hábiles siguientes—, que es el requisito que casi ninguna nota menciona; remuneración variable o a destajo, **art. 169** → promedio de los 6 días efectivos anteriores (destajo) o de los 30 días anteriores. Para 2027 el 26/9 cae domingo y todavía no hay circular: la fecha **no se supone**.
 
+## Guías
+
+Notas largas con la cuenta desarrollada paso a paso y la norma citada, firmadas por el autor del sitio.
+
+- [Los estatutos laborales que se derogan el 1 de enero de 2027](https://calcular.ar/blog/estatutos-laborales-derogados-2027): qué regímenes completos caen por el Título XXVI de la Ley 27.802 y cuáles derogaciones ya rigen desde marzo de 2026.
+- [El tope de las asignaciones familiares](https://calcular.ar/blog/tope-de-ingresos-asignaciones-familiares): el tope individual y el del grupo familiar, y por qué un solo sueldo puede dejar afuera a toda la familia.
+- [Cuánto cuesta criar un hijo en Argentina](https://calcular.ar/blog/cuanto-cuesta-criar-un-hijo-argentina): la Canasta de Crianza del INDEC tramo por tramo, comparada contra el IPC.
+- [Aumento de Comercio de agosto 2026](https://calcular.ar/blog/aumento-comercio-agosto-2026): la escala oficial del CCT 130/75 por categoría y el bono no remunerativo del acuerdo de julio.
+- [Cuánto se cobra de vacaciones en 2026](https://calcular.ar/blog/cuanto-se-cobra-de-vacaciones-plus-vacacional-2026): por qué cada día de vacaciones se paga como sueldo dividido 25 y cuánto es el plus según la antigüedad.
+- [Cómo se calcula la indemnización por despido en 2026](https://calcular.ar/blog/como-se-calcula-la-indemnizacion-por-despido-2026): antigüedad, preaviso, integración y liquidación final con un ejemplo real y la Ley 27.802 incorporada.
+- [¿El monotributista cobra aguinaldo?](https://calcular.ar/blog/aguinaldo-monotributista): qué dice la ley para quien factura como monotributista.
+- [Aguinaldo proporcional](https://calcular.ar/blog/aguinaldo-proporcional-como-se-calcula): cómo se calcula por días cuando no se trabajó el semestre completo.
+- [Qué incluye la cuota del monotributo](https://calcular.ar/blog/que-incluye-la-cuota-del-monotributo): el desglose de la cuota por categoría.
+- [Qué pasa si me paso del límite de facturación del monotributo](https://calcular.ar/blog/que-pasa-si-me-paso-del-limite-de-facturacion-del-monotributo): qué pasa cuando la facturación supera el límite de la categoría.
+- [Cómo calcular el aguinaldo de un empleado de Comercio](https://calcular.ar/blog/como-calcular-aguinaldo-empleado-de-comercio): el SAC del CCT 130/75 paso a paso.
+- [Nuevo recibo de sueldo 2026](https://calcular.ar/blog/nuevo-recibo-de-sueldo-2026): qué cambió con el Decreto 407/2026 y cómo leer el recibo nuevo.
+- [Modelo de recibo de sueldo de Empleado de Comercio](https://calcular.ar/blog/modelo-recibo-de-sueldo-empleado-de-comercio): un recibo de Comercio con el formato nuevo.
+- [Cómo liquidar el sueldo de un empleado de Comercio](https://calcular.ar/blog/como-liquidar-sueldo-empleado-de-comercio): el sueldo del CCT 130/75 paso a paso.
+- [Qué hacer con el aguinaldo](https://calcular.ar/blog/que-hacer-con-el-aguinaldo-2026): las opciones, con la cuenta a la vista.
+- [¿El aguinaldo paga Ganancias?](https://calcular.ar/blog/aguinaldo-paga-ganancias): si el SAC paga el impuesto a las Ganancias en 2026.
+
 ## Productos
 
 - [Planilla de sueldos Comercio 2026](https://calcular.ar/planillas): planilla Excel/Google Sheets con la escala oficial CCT 130/75 embebida (21 categorías, antigüedad, presentismo, jornada parcial, SAC); actualización garantizada con cada paritaria. ARS 14.900 one-time.
@@ -125,7 +146,7 @@ que rotan (IPC, tasa de plazo fijo, escalas) se actualizan en cada publicación 
 
 ## Fuentes de datos
 
-- IPC: INDEC, serie nivel general nacional base dic-2016=100 (último dato embebido: julio 2026, 2,1% mensual).
+- IPC: INDEC, serie nivel general nacional base dic-2016=100, desde diciembre de 2016. Se suma cada mes cuando el INDEC publica el dato; el último período cargado figura en la [calculadora de inflación](https://calcular.ar/inflacion).
 - Tasa de plazo fijo: API de Estadísticas Monetarias del BCRA v4.0, serie 12 (depósitos a 30 días).
 - Escalas de monotributo: ARCA, vigencia semestral (1/2 y 1/8).
 - Haberes previsionales y bases imponibles: resolución mensual de ANSES en el Boletín Oficial, más la serie del haber mínimo de ANSES publicada en datos.gob.ar. El bono extraordinario surge de un decreto mensual: es discrecional y puede no existir, así que nunca se proyecta hacia adelante.
@@ -135,4 +156,5 @@ que rotan (IPC, tasa de plazo fijo, escalas) se actualizan en cada publicación 
 ## Sobre el sitio
 
 - [Metodología y quiénes somos](https://calcular.ar/sobre): solo fuentes oficiales, fecha de verificación visible, sin asesoramiento personalizado.
+- [Novedades](https://calcular.ar/novedades): registro con fecha de cada dato oficial nuevo que entra a las calculadoras (resoluciones de ANSES, IPC y canastas del INDEC, aportes de ARCA, UMA de la Corte, escalas de gremios), con la fecha de publicación, desde cuándo rige y el link a la fuente. También se puede seguir por RSS.
 - [Contacto](https://calcular.ar/contacto)

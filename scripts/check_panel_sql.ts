@@ -67,13 +67,13 @@ function chequeosEstaticos() {
   seccion("SQL estático");
   const todo = migraciones.map((m) => m.sql).join("\n");
   const tablas = [...todo.matchAll(/create table if not exists public\.(ca_\w+)/g)].map((m) => m[1]);
-  igual(tablas.sort(), ["ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_perfiles", "ca_resumen", "ca_vistas"], "están las 8 tablas");
+  igual(tablas.sort(), ["ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_opiniones", "ca_perfiles", "ca_resumen", "ca_vistas"], "están las 9 tablas");
   for (const t of tablas) {
     ok(todo.includes(`alter table public.${t} enable row level security;`), `${t}: enable row level security`);
     ok(todo.includes(`alter table public.${t} force row level security;`), `${t}: force row level security`);
   }
   const bloques = [...todo.matchAll(/create or replace function public\.(\w+)\(([\s\S]*?)\n\$\$;/g)];
-  igual(bloques.length, 18, "se encontraron las 18 funciones");
+  igual(bloques.length, 19, "se encontraron las 19 funciones");
   const revocadas = [...todo.matchAll(/revoke execute on function([\s\S]*?)from public, anon, authenticated;/g)].map((m) => m[1]).join("\n");
   for (const [, nombre, cuerpo] of bloques) {
     ok(/\nset search_path = ''\n/.test(cuerpo), `${nombre}: set search_path = ''`);
@@ -853,7 +853,7 @@ async function probarIdempotencia(db: Db) {
   const despues = await panel(db, SEMANA.desde, SEMANA.hasta);
   igual(JSON.stringify({ ...despues, vivo: null }) === JSON.stringify({ ...antes, vivo: null }), true, "re-aplicar las migraciones con datos no cambia nada");
   const politicas = (await filas(db, "select count(*)::int as n from pg_policies where tablename like 'ca\\_%'"))[0].n;
-  igual(politicas, 7, "7 policies, sin duplicados");
+  igual(politicas, 9, "9 policies, sin duplicados");
 }
 
 async function probarDefaultsNuevos(PGlite: new (dataDir?: string) => Db) {

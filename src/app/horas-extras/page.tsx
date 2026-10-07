@@ -17,13 +17,13 @@ import {
 } from "@/data/horas-extras";
 
 export const metadata: Metadata = {
-  title: "Horas extras 2026: cuánto se cobra y cuándo te las pueden pagar con francos",
-  description: `El recargo del 50% y del 100% no cambió, pero desde el ${VIGENCIA_REFORMA} el banco de horas se puede pactar uno a uno con el empleador: hasta esa fecha sólo podía nacer de un convenio colectivo. Calculá el importe, los francos equivalentes y el tope de ${TOPES_DECRETO_484.mensual} horas mensuales.`,
+  title: "Horas extras 2026: cuánto se pagan al 50% y al 100%",
+  description: `Calculá tus horas extra con recargo del 50% y del 100%, el tope de ${TOPES_DECRETO_484.mensual} horas por mes y los francos del banco de horas de la Ley 27.802.`,
   alternates: { canonical: "/horas-extras" },
   openGraph: {
     title: "Horas extras: qué cambió el 6/3/2026",
     description:
-      "El banco de horas dejó de ser materia exclusivamente colectiva: ahora el empleador y el trabajador pueden pactarlo uno a uno, por escrito y con cinco requisitos. Cuánto se cobra, cuántos francos equivalen y qué topes siguen vigentes.",
+      "El banco de horas ya no depende solo del convenio colectivo: ahora el empleador y el trabajador pueden pactarlo uno a uno, por escrito y con cinco requisitos. Cuánto se cobra, cuántos francos equivalen y qué topes siguen vigentes.",
     url: "https://calcular.ar/horas-extras",
     images: [
       {
@@ -38,47 +38,47 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Cuánto se paga la hora extra en 2026?",
-    a: "Con un recargo del 50% sobre el salario habitual en días comunes y del 100% los sábados después de las 13, los domingos y los feriados. Es el artículo 201 de la Ley de Contrato de Trabajo, y la reforma de 2026 no lo tocó: el recargo es el mismo desde 1974. Lo que sí cambió es que ahora esas horas pueden compensarse con francos en vez de pagarse, si hay un acuerdo escrito.",
+    a: "Con un recargo del 50% sobre tu sueldo habitual en días comunes, y del 100% los sábados después de las 13, los domingos y los feriados. Lo dice el artículo 201 de la Ley de Contrato de Trabajo, y la reforma de 2026 no lo tocó: el recargo es el mismo desde 1974. Lo que sí cambió es que ahora esas horas se pueden compensar con francos en vez de pagarse, si hay un acuerdo escrito.",
   },
   {
     q: "¿Me pueden pagar las horas extras con francos en vez de plata?",
-    a: `Desde el ${VIGENCIA_REFORMA}, sí — y esta es la respuesta que cambió. Hasta el 5 de marzo de 2026, el artículo 197 bis empezaba diciendo «Las convenciones colectivas de trabajo (…) podrán establecer regímenes»: el banco de horas era materia exclusivamente colectiva y sin convenio que lo previera no había forma de compensar, las extras se pagaban. El artículo ${ARTICULO_SUSTITUTIVO_197BIS} de la Ley 27.802 lo reescribió: «El empleador y el trabajador podrán acordar voluntariamente un régimen de compensación de horas extraordinarias de trabajo». Pasó a poder pactarse uno a uno.`,
+    a: `Desde el ${VIGENCIA_REFORMA}, sí. Esta es la respuesta que cambió. Hasta el 5 de marzo de 2026, el artículo 197 bis empezaba diciendo «Las convenciones colectivas de trabajo (…) podrán establecer regímenes». O sea, el banco de horas solo podía venir de un convenio colectivo: si tu convenio no lo preveía, las extras se pagaban. El artículo ${ARTICULO_SUSTITUTIVO_197BIS} de la Ley 27.802 lo reescribió: «El empleador y el trabajador podrán acordar voluntariamente un régimen de compensación de horas extraordinarias de trabajo». Ahora se puede pactar uno a uno.`,
   },
   {
     q: "¿Qué tiene que decir ese acuerdo para ser válido?",
-    a: "Cinco cosas, todas escritas en el mismo artículo: tiene que formalizarse por escrito, consignar la naturaleza voluntaria de la prestación de horas extras, fijar sus límites, especificar el modo de funcionamiento del sistema y establecer un método fehaciente de control que permita a ambas partes registrar las horas efectivamente trabajadas y las horas disponibles para su goce. Ese último requisito es el que más pesa en la práctica: sin un registro que las dos partes puedan ver, el saldo de horas lo lleva sólo el empleador.",
+    a: "Cinco cosas, todas en el mismo artículo. Tiene que estar por escrito, decir que las horas extras son voluntarias, fijar sus límites, explicar cómo funciona el sistema y tener un método de control confiable para que las dos partes registren las horas trabajadas y las que quedan para usar. Ese último requisito es el que más pesa en la práctica: sin un registro que las dos partes puedan ver, el saldo de horas lo lleva solo el empleador.",
   },
   {
     q: "Si me compensan con francos, ¿un franco es de una hora o de una hora y media?",
-    a: "La ley no lo dice, y conviene saberlo antes de firmar. El artículo 197 bis no fija ninguna equivalencia: lo único que exige es que el régimen respete los descansos mínimos legales «asegurando en todo momento la protección, beneficio e interés del trabajador». Si el franco fuera hora por hora, el trabajador perdería el recargo del artículo 201, que es la única razón por la que la hora extra vale más que una normal. Por eso la calculadora muestra los dos números y no elige por vos: es exactamente el punto que hay que dejar escrito en el acuerdo.",
+    a: "La ley no lo dice, y conviene saberlo antes de firmar. El artículo 197 bis no fija ninguna equivalencia. Solo exige que el régimen respete los descansos mínimos legales «asegurando en todo momento la protección, beneficio e interés del trabajador». Si el franco fuera hora por hora, perderías el recargo del artículo 201, que es justamente lo que hace que la hora extra valga más que una normal. Por eso la calculadora muestra los dos números y no elige por vos: es el punto que tenés que dejar escrito en el acuerdo.",
   },
   {
     q: "¿Cuántas horas extras me pueden hacer hacer por mes?",
-    a: `${TOPES_DECRETO_484.mensual} por mes y ${TOPES_DECRETO_484.anual} por año, sin autorización administrativa previa. Está en el artículo 1º del ${TOPES_DECRETO_484.norma} (${TOPES_DECRETO_484.boletin}), que la reforma de 2026 no derogó ni modificó. Son dos topes independientes: se puede estar dentro de las ${TOPES_DECRETO_484.mensual} de un mes y aun así haber excedido el año. Y le corren también al banco de horas, porque la hora extra existe antes de que se decida cómo se compensa.`,
+    a: `${TOPES_DECRETO_484.mensual} por mes y ${TOPES_DECRETO_484.anual} por año, sin autorización administrativa previa. Está en el artículo 1º del ${TOPES_DECRETO_484.norma} (${TOPES_DECRETO_484.boletin}), que la reforma de 2026 no derogó ni cambió. Son dos topes separados: podés estar dentro de las ${TOPES_DECRETO_484.mensual} de un mes y aun así haberte pasado en el año. Y valen también para el banco de horas, porque la hora extra existe antes de que se decida cómo se compensa.`,
   },
   {
     q: "¿Estoy obligado a hacer horas extras?",
-    a: "No. El artículo 203 dice que el trabajador «no estará obligado a prestar servicios en horas suplementarias», salvo casos de peligro o accidente ocurrido o inminente, de fuerza mayor, o por exigencias excepcionales de la economía nacional o de la empresa. La reforma lo reforzó desde el otro lado: el acuerdo de compensación tiene que consignar expresamente la naturaleza voluntaria de esas horas. Un régimen que las imponga contradice el propio artículo que lo habilita.",
+    a: "No. El artículo 203 dice que el trabajador «no estará obligado a prestar servicios en horas suplementarias». Las excepciones son peligro o accidente ocurrido o inminente, fuerza mayor, o exigencias excepcionales de la economía nacional o de la empresa. La reforma lo reforzó: el acuerdo de compensación tiene que decir de forma expresa que esas horas son voluntarias. Un régimen que las imponga va contra el mismo artículo que lo permite.",
   },
   {
     q: "¿Cuánto descanso me tienen que dar entre una jornada y otra?",
-    a: `${DESCANSOS_MINIMOS.entreJornadas} horas entre el cese de una jornada y el comienzo de la siguiente, y ${DESCANSOS_MINIMOS.semanal} horas de descanso semanal. La pausa de ${DESCANSOS_MINIMOS.entreJornadas} horas ya estaba en el artículo 197; las ${DESCANSOS_MINIMOS.semanal} horas semanales, en cambio, se derivaban del artículo 204 (de las 13 del sábado a las 24 del domingo) y el artículo ${ARTICULO_SUSTITUTIVO_198} de la Ley 27.802 las escribió con número en el artículo 198. Ningún acuerdo de compensación puede bajar de ahí: el 197 bis manda respetar los descansos mínimos legales.`,
+    a: `${DESCANSOS_MINIMOS.entreJornadas} horas entre el fin de una jornada y el comienzo de la siguiente, y ${DESCANSOS_MINIMOS.semanal} horas de descanso semanal. La pausa de ${DESCANSOS_MINIMOS.entreJornadas} horas ya estaba en el artículo 197. Las ${DESCANSOS_MINIMOS.semanal} horas semanales, en cambio, salían del artículo 204 (de las 13 del sábado a las 24 del domingo), y el artículo ${ARTICULO_SUSTITUTIVO_198} de la Ley 27.802 las escribió con número en el artículo 198. Ningún acuerdo de compensación puede bajar de ahí, porque el 197 bis manda respetar los descansos mínimos legales.`,
   },
   {
     q: "Trabajo por turnos rotativos o «por equipos». ¿Sigue el tope del promedio de tres semanas?",
-    a: "No, y es un cambio de la misma reforma que casi no se comentó, porque está en otro título: el de la Ley 11.544. El inciso b) de su artículo 3° siempre permitió prolongar la jornada más allá de las 8 horas diarias y 48 semanales cuando se trabaja por equipos, pero terminaba con una condición: «a condición de que el término medio de las horas de trabajo sobre un período de tres semanas a lo menos, no exceda de ocho horas por día o de cuarenta y ocho horas semanales». El artículo 100 de la Ley 27.802 sustituyó el artículo entero y esa condición ya no está: el inciso termina en «cuarenta y ocho (48) semanales». El promedio de tres semanas dejó de ser el techo. Lo que queda como límite son los descansos mínimos —12 horas entre jornadas y 35 semanales— que el artículo 198 de la LCT escribió con número el mismo día.",
+    a: "No. Es un cambio de la misma reforma que casi no se comentó, porque está en otra ley: la 11.544. El inciso b) de su artículo 3° siempre permitió alargar la jornada más allá de las 8 horas diarias y 48 semanales cuando se trabaja por equipos. Pero terminaba con una condición: «a condición de que el término medio de las horas de trabajo sobre un período de tres semanas a lo menos, no exceda de ocho horas por día o de cuarenta y ocho horas semanales». El artículo 100 de la Ley 27.802 reescribió el artículo entero y esa condición ya no está: el inciso termina en «cuarenta y ocho (48) semanales». El promedio de tres semanas dejó de ser el techo. El límite que queda son los descansos mínimos (12 horas entre jornadas y 35 semanales), que el artículo 198 de la LCT escribió con número el mismo día.",
   },
   {
     q: "¿Con qué divisor se calcula el valor de mi hora?",
-    a: "Con el que diga tu recibo o tu convenio, porque no hay ninguno en la ley. La Ley 11.544 y el artículo 196 de la LCT fijan la jornada por semana —48 horas—, y pasar de semanal a mensual es aritmética, no derecho. El promedio real de una jornada de 48 horas es 208 horas mensuales (48 × 52/12), pero muchísimas liquidaciones y convenios usan 200 (8 horas × 25 días), que da una hora más cara: alrededor de un 4% de diferencia. Esta página muestra los dos números para que puedas controlar tu recibo, no para reemplazarlo.",
+    a: "Con el que diga tu recibo o tu convenio, porque la ley no fija ninguno. La Ley 11.544 y el artículo 196 de la LCT fijan la jornada por semana (48 horas), y pasar de semana a mes es una cuenta, no una regla legal. El promedio real de una jornada de 48 horas es 208 horas por mes (48 × 52/12). Pero muchas liquidaciones y convenios usan 200 (8 horas × 25 días), que da una hora más cara: alrededor de un 4% de diferencia. Esta página muestra los dos números para que puedas controlar tu recibo, no para reemplazarlo.",
   },
   {
     q: "¿Las horas extras entran en el aguinaldo y en la indemnización?",
-    a: "En el aguinaldo, sí: el SAC es el 50% de la mayor remuneración mensual devengada del semestre (art. 122 LCT), y las horas extras son remuneración, así que el mes en que se cobran empuja esa base hacia arriba. Si ese resulta el mejor mes del semestre, la mitad de esas extras se vuelve a cobrar en el aguinaldo. Para la indemnización del artículo 245 la discusión es más vieja y depende de si las horas eran normales y habituales o esporádicas: la base del 245 es «la mejor remuneración mensual, normal y habitual», y las extras ocasionales suelen quedar afuera.",
+    a: "En el aguinaldo, sí. El aguinaldo (en la ley se llama SAC) es el 50% del mejor sueldo mensual del semestre (art. 122 LCT), y las horas extras son sueldo. Así que el mes en que las cobrás sube esa base. Si ese termina siendo el mejor mes del semestre, la mitad de esas extras la volvés a cobrar en el aguinaldo. Para la indemnización del artículo 245 es una discusión más vieja: depende de si las horas eran normales y habituales o de vez en cuando. La base del 245 es «la mejor remuneración mensual, normal y habitual», y las extras ocasionales suelen quedar afuera.",
   },
   {
     q: "¿Y si me pagan las horas extras «en negro» o no me las registran?",
-    a: "El artículo 201 empieza diciendo que el recargo se paga «medie o no autorización del organismo administrativo competente»: la falta de registro o de autorización no borra el derecho a cobrarlas. Y el registro es justamente lo que la reforma le exige al acuerdo de compensación —un método fehaciente que permita a ambas partes ver las horas trabajadas y las disponibles—, porque sin ese dato no se puede discutir nada.",
+    a: "El artículo 201 empieza diciendo que el recargo se paga «medie o no autorización del organismo administrativo competente». O sea, que no estén registradas ni autorizadas no te quita el derecho a cobrarlas. Y el registro es justo lo que la reforma le exige al acuerdo de compensación (un método confiable para que las dos partes vean las horas trabajadas y las disponibles), porque sin ese dato no se puede discutir nada.",
   },
 ];
 
@@ -100,7 +100,7 @@ export default function HorasExtrasPage() {
       articleSchema({
         titulo: "Horas extras: cuánto se cobra y cuándo te las pueden compensar con francos",
         descripcion:
-          "El recargo del 50% y del 100% del art. 201 no cambió, pero la Ley 27.802 reescribió el art. 197 bis: el banco de horas dejó de ser materia exclusivamente colectiva y ahora puede pactarse entre empleador y trabajador, por escrito y con cinco requisitos. Importe, francos equivalentes y topes vigentes.",
+          "El recargo del 50% y del 100% del art. 201 no cambió, pero la Ley 27.802 reescribió el art. 197 bis: el banco de horas ya no depende solo del convenio colectivo y ahora puede pactarse entre empleador y trabajador, por escrito y con cinco requisitos. Importe, francos equivalentes y topes vigentes.",
         url: "/horas-extras",
         modificado: HORAS_EXTRAS_FUENTES.consultadoEl,
       }),
@@ -124,37 +124,42 @@ export default function HorasExtrasPage() {
           Horas extras: cuánto se cobra y cuándo te las pueden pagar con francos
         </h1>
         <p className="text-zinc-600">
-          El 50% y el 100% del artículo 201 son de 1974 y no los tocó nadie: por eso todas las
+          El 50% y el 100% del artículo 201 son de 1974 y nadie los tocó. Por eso todas las
           calculadoras dan el mismo número y el tema parece cerrado. Lo que cambió el{" "}
-          {VIGENCIA_REFORMA} es otra cosa, y es la que decide el caso de la mayoría:{" "}
+          {VIGENCIA_REFORMA} es otra cosa, y es lo que decide el caso de la mayoría:{" "}
           <strong>quién puede pactar que esas horas se compensen con descanso en vez de plata</strong>.
-          Hasta esa fecha sólo podía hacerlo un convenio colectivo. Ahora, el empleador y vos.
+          Hasta esa fecha, solo un convenio colectivo. Ahora, el empleador y vos.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={HORAS_EXTRAS_FUENTES.consultadoEl}>
         <p>
           <strong>
-            El recargo sigue siendo 50% en días comunes y 100% los sábados después de las 13,
+            El recargo sigue siendo del 50% en días comunes y del 100% los sábados después de las 13,
             domingos y feriados.
           </strong>{" "}
-          Lo nuevo es el banco de horas: desde el {VIGENCIA_REFORMA}, el empleador y el trabajador
+          Lo nuevo es el banco de horas. Desde el {VIGENCIA_REFORMA}, el empleador y el trabajador
           pueden acordar <strong>voluntariamente</strong> compensar las horas extras con francos, por
-          escrito y con cinco requisitos (naturaleza voluntaria, límites, modo de funcionamiento y un
-          registro que ambas partes puedan ver). Antes eso sólo podía nacer de un convenio colectivo.
-          Lo que no se puede bajar en ningún acuerdo: {DESCANSOS_MINIMOS.entreJornadas} horas entre
-          jornada y jornada, {DESCANSOS_MINIMOS.semanal} horas de descanso semanal y el tope de{" "}
-          {TOPES_DECRETO_484.mensual} horas extras mensuales / {TOPES_DECRETO_484.anual} anuales.
+          escrito y con cinco requisitos (que sea voluntario, con límites, cómo funciona y un registro
+          que las dos partes puedan ver). Antes eso solo podía venir de un convenio colectivo. Lo que
+          ningún acuerdo puede bajar: {DESCANSOS_MINIMOS.entreJornadas} horas entre jornada y
+          jornada, {DESCANSOS_MINIMOS.semanal} horas de descanso semanal y el tope de{" "}
+          {TOPES_DECRETO_484.mensual} horas extras por mes y {TOPES_DECRETO_484.anual} por año.
         </p>
       </RespuestaPrimero>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Cuánto te corresponde</h2>
         <p className="text-sm text-zinc-600">
-          Cargá tu sueldo y las horas del mes. La calculadora devuelve el importe con el recargo del
-          art. 201, el mismo cálculo con los dos divisores de valor hora que se usan en la práctica,
+          Cargá tu sueldo y las horas del mes. La calculadora te da el importe con el recargo del
+          art. 201, la misma cuenta con los dos divisores de valor hora que se usan en la práctica,
           los francos equivalentes si te las compensan con banco de horas y cuánto margen te queda
-          antes de los topes del {TOPES_DECRETO_484.norma}.
+          antes de los topes del {TOPES_DECRETO_484.norma}. Para ver cuánto te queda en mano a fin de
+          mes, usá la{" "}
+          <Link href="/sueldo-neto" className="font-medium text-emerald-700 hover:underline">
+            calculadora de sueldo neto
+          </Link>
+          .
         </p>
         <CalculadoraHorasExtras />
       </section>
@@ -194,8 +199,8 @@ export default function HorasExtrasPage() {
           </table>
         </div>
         <p className="text-xs text-zinc-500">
-          En rojo, los cambios que dejan al trabajador en peor posición que antes; en verde, los que
-          no lo empeoran o le suman garantías.
+          En rojo, los cambios que dejan al trabajador peor que antes. En verde, los que no lo
+          empeoran o le suman garantías.
         </p>
       </section>
 
@@ -204,8 +209,8 @@ export default function HorasExtrasPage() {
           Los cinco requisitos que tiene que cumplir el acuerdo
         </h2>
         <p className="text-sm text-zinc-600">
-          Están todos en el mismo artículo 197 bis. Si al papel que te ponen a firmar le falta alguno,
-          le falta un requisito de la norma que lo habilita.
+          Están todos en el mismo artículo 197 bis. Si al papel que te dan para firmar le falta
+          alguno, no cumple con la ley que lo permite.
         </p>
         <ol className="space-y-3">
           {REQUISITOS_ACUERDO.map((r, i) => (
@@ -227,7 +232,7 @@ export default function HorasExtrasPage() {
         <div className="space-y-3">
           <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              LCT, art. 197 bis — texto vigente
+              LCT, art. 197 bis (texto vigente)
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">
               «{HORAS_EXTRAS_TEXTOS.art197bisVigente}»
@@ -238,31 +243,31 @@ export default function HorasExtrasPage() {
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-rose-400 bg-rose-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              El texto ANTERIOR, que es el que sigue circulando (DNU 70/2023, art. 79)
+              El texto anterior, que es el que sigue circulando (DNU 70/2023, art. 79)
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">
               «{HORAS_EXTRAS_TEXTOS.art197bisAnterior}»
             </p>
             <p className="mt-2 text-xs text-zinc-500">
-              Las cinco primeras palabras son todo el cambio: «Las convenciones colectivas de
+              Todo el cambio está en las cinco primeras palabras: «Las convenciones colectivas de
               trabajo». Si una nota, un modelo de acuerdo o un asesor te dice que el banco de horas
-              necesita convenio colectivo, está aplicando este texto, que rigió hasta el 5 de marzo
-              de 2026.
+              necesita convenio colectivo, está usando este texto, que rigió hasta el 5 de marzo de
+              2026.
             </p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              LCT, art. 198 — texto vigente: los pisos con número
+              LCT, art. 198 (texto vigente): los mínimos, con número
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{HORAS_EXTRAS_TEXTOS.art198Vigente}»</p>
             <p className="mt-2 text-xs text-zinc-500">
-              {HORAS_EXTRAS_TEXTOS.notaVigencia198} Es la primera vez que el articulado escribe las{" "}
-              {DESCANSOS_MINIMOS.semanal} horas de descanso semanal: antes se derivaban del art. 204.
+              {HORAS_EXTRAS_TEXTOS.notaVigencia198} Es la primera vez que la ley escribe las{" "}
+              {DESCANSOS_MINIMOS.semanal} horas de descanso semanal. Antes salían del art. 204.
             </p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-zinc-300 bg-zinc-50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              LCT, art. 201 — el recargo, que no cambió
+              LCT, art. 201: el recargo, que no cambió
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{HORAS_EXTRAS_TEXTOS.art201}»</p>
             <p className="mt-2 text-xs text-zinc-500">
@@ -271,7 +276,7 @@ export default function HorasExtrasPage() {
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-amber-400 bg-amber-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              Ley 11.544, art. 3° inc. b) — el trabajo por equipos, antes y después
+              Ley 11.544, art. 3° inc. b): el trabajo por equipos, antes y después
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">
               Vigente: «{HORAS_EXTRAS_TEXTOS.ley11544Art3IncBVigente}»
@@ -280,19 +285,19 @@ export default function HorasExtrasPage() {
               Anterior: «{HORAS_EXTRAS_TEXTOS.ley11544Art3IncBAnterior}»
             </p>
             <p className="mt-2 text-xs text-zinc-500">
-              {HORAS_EXTRAS_TEXTOS.notaVigencia11544Art3} — La diferencia es la última oración del
-              texto viejo: el <strong>promedio de tres semanas</strong> dejó de operar como techo en
-              el trabajo por equipos. Este cambio no está en el título de la LCT sino en el de la
-              Ley 11.544, y por eso pasó casi inadvertido.
+              {HORAS_EXTRAS_TEXTOS.notaVigencia11544Art3} La diferencia es la última oración del
+              texto viejo: el <strong>promedio de tres semanas</strong> dejó de ser el techo en el
+              trabajo por equipos. Este cambio no está en la LCT sino en la Ley 11.544, y por eso
+              pasó casi sin que nadie lo notara.
             </p>
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-zinc-300 bg-zinc-50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              {TOPES_DECRETO_484.norma}, art. 1º — el tope que sigue vigente
+              {TOPES_DECRETO_484.norma}, art. 1º: el tope que sigue vigente
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">«{HORAS_EXTRAS_TEXTOS.decreto484}»</p>
             <p className="mt-2 text-xs text-zinc-500">
-              Verificado el {HORAS_EXTRAS_FUENTES.consultadoEl} contra la lista de normas que lo
+              Lo revisamos el {HORAS_EXTRAS_FUENTES.consultadoEl} en la lista de normas que lo
               modifican en InfoLEG: la Ley 27.802 no lo tocó.
             </p>
           </blockquote>
@@ -338,16 +343,15 @@ export default function HorasExtrasPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página aplica el texto actualizado de la Ley de Contrato de Trabajo publicado en
-          InfoLEG, comparado contra el texto original de la norma anterior, no un resumen de prensa.
-          Es informativa y orientativa: no reemplaza el asesoramiento de un profesional ni una
-          liquidación. Consultada el {HORAS_EXTRAS_FUENTES.consultadoEl}.
+          Esta página usa el texto actualizado de la Ley de Contrato de Trabajo publicado en
+          InfoLEG, comparado con el texto original de la norma anterior, no un resumen de prensa.
+          Es informativa: no reemplaza el consejo de un profesional ni una liquidación. Consultada el {HORAS_EXTRAS_FUENTES.consultadoEl}.
         </p>
       </section>
     </article>

@@ -143,7 +143,7 @@ export function calcularPropinas(params: {
   avisos.push({
     tono: "ok",
     texto:
-      "Lo que el artículo 104 excluye es la propina, o sea lo que paga un tercero. Un adicional que pague el empleador o que fije el convenio colectivo —aunque se lo llame «por manejo de dinero»— es salario del artículo 103 y sigue integrando la base.",
+      "Lo que el artículo 104 excluye es la propina, o sea lo que paga un tercero. Un adicional que pague el empleador o que fije el convenio colectivo (aunque se lo llame «por manejo de dinero») es salario del artículo 103 y sigue integrando la base.",
   });
 
   avisos.push({

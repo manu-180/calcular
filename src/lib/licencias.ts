@@ -177,7 +177,7 @@ export function calcularMaternidad(e: EntradaMaternidad): ResultadoMaternidad | 
       if (antiguedadMeses < ANTIGUEDAD_MINIMA_MESES) {
         avisos.push({
           tono: "bloqueante",
-          texto: `Al momento del parto vas a tener ${antiguedadMeses < 0 ? 0 : antiguedadMeses} mes(es) de antigüedad. El artículo 11 de la Ley 24.714 exige ${ANTIGUEDAD_MINIMA_MESES} meses continuados para cobrar la asignación por maternidad. La licencia y la conservación del empleo te corresponden igual —eso lo da la LCT, no ANSES—, pero el pago de la asignación puede quedar fuera.`,
+          texto: `Al momento del parto vas a tener ${antiguedadMeses < 0 ? 0 : antiguedadMeses} mes(es) de antigüedad. El artículo 11 de la Ley 24.714 exige ${ANTIGUEDAD_MINIMA_MESES} meses continuados para cobrar la asignación por maternidad. La licencia y la conservación del empleo te corresponden igual (eso lo da la LCT, no ANSES), pero el pago de la asignación puede quedar fuera.`,
         });
       }
     }

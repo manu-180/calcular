@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { FirmaAutor } from "@/components/FirmaAutor";
 import { SesionLink } from "@/components/SesionLink";
+import { UltimoCambio } from "@/components/novedades/UltimoCambio";
 import { GRUPOS_DE_CALCULADORAS, grupo, paginasDelGrupo } from "@/data/navegacion";
 
 const SITIO = [
+  { href: "/novedades", label: "Novedades" },
   { href: "/blog", label: "Guías" },
   { href: "/sobre", label: "Sobre CalculAR" },
   { href: "/contacto", label: "Contacto" },
@@ -36,6 +38,7 @@ export default function SiteFooter() {
               Calculadoras claras para la Argentina. Cada número sale del documento oficial que lo fija,
               con la fecha en que se verificó.
             </p>
+            <UltimoCambio className="mt-4" />
           </div>
           <p className="text-sm text-zinc-500">
             <FirmaAutor prefijo="Escrito y verificado por" />

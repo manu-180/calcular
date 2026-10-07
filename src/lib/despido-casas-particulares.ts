@@ -186,7 +186,7 @@ export function calcularDespidoCasas(params: {
     avisos.push({
       tono: "atencion",
       texto: rigeTextoNuevo
-        ? `El contrato se extinguió dentro de los ${PRUEBA_MESES_VIGENTE} meses de prueba del art. 7 vigente: «sin generarse derecho a indemnización alguna con motivo de la extinción». Con el texto anterior —${modalidad === "sin-retiro" ? `${PRUEBA_DIAS_ANTERIOR_SIN_RETIRO} días` : `${PRUEBA_DIAS_ANTERIOR_CON_RETIRO} días de trabajo, con tope de ${PRUEBA_TOPE_MESES_ANTERIOR_CON_RETIRO} meses`}— este mismo caso ya estaba fuera del período de prueba.`
+        ? `El contrato se extinguió dentro de los ${PRUEBA_MESES_VIGENTE} meses de prueba del art. 7 vigente: «sin generarse derecho a indemnización alguna con motivo de la extinción». Con el texto anterior (${modalidad === "sin-retiro" ? `${PRUEBA_DIAS_ANTERIOR_SIN_RETIRO} días` : `${PRUEBA_DIAS_ANTERIOR_CON_RETIRO} días de trabajo, con tope de ${PRUEBA_TOPE_MESES_ANTERIOR_CON_RETIRO} meses`}), este mismo caso ya estaba fuera del período de prueba.`
         : "El contrato se extinguió dentro del período de prueba del texto anterior, que es el que rige para esta fecha: la reforma no es retroactiva.",
     });
   }
@@ -200,7 +200,7 @@ export function calcularDespidoCasas(params: {
 
   avisos.push({
     tono: "atencion",
-    texto: "La Ley 26.844 no tiene un artículo de indemnización por vacaciones no gozadas —la expresión no aparece en toda la norma— y desde el 6/3/2026 la LCT ya no se aplica supletoriamente salvo remisión expresa. El proporcional del art. 30 se calcula acá como se venía liquidando, pero su fundamento cambió: es un punto abierto.",
+    texto: "La Ley 26.844 no tiene un artículo de indemnización por vacaciones no gozadas (la expresión no aparece en toda la norma), y desde el 6/3/2026 la LCT ya no se aplica supletoriamente salvo remisión expresa. El proporcional del art. 30 se calcula acá como se venía liquidando, pero su fundamento cambió: es un punto abierto.",
   });
 
   avisos.push({

@@ -19,9 +19,9 @@ import { datosOferta } from "@/lib/oferta";
 const ACTUALIZADO_EL = "13 de junio de 2026";
 
 export const metadata: Metadata = {
-  title: "Calculadora de Sueldo Neto 2026: de bruto a en mano (y al revés)",
+  title: "Calculadora de sueldo neto 2026: de bruto a en mano",
   description:
-    "Calculá gratis tu sueldo neto 2026: bruto a en mano descontando aportes (jubilación 11% + PAMI 3% + obra social 3%), con tope SIPA, cuota sindical y estimación de Ganancias. También el inverso: qué bruto pedir para un neto.",
+    "Calculá tu sueldo en mano con jubilación 11%, PAMI 3% y obra social 3%, tope SIPA, cuota sindical y Ganancias. También de neto a bruto.",
   alternates: { canonical: "/sueldo-neto" },
   openGraph: {
     images: [
@@ -40,31 +40,31 @@ const SUELDOS_TABLA = [800_000, 1_000_000, 1_200_000, 1_500_000, 2_000_000, 2_50
 const faqs = [
   {
     q: "¿Cómo se calcula el sueldo neto en Argentina?",
-    a: "Al sueldo bruto se le descuentan los aportes personales de ley: 11% de jubilación (SIPA), 3% de PAMI (Ley 19.032) y 3% de obra social — un 17% en total. A eso pueden sumarse la cuota sindical (si estás afiliado) y, en sueldos altos, la retención del impuesto a las Ganancias. El neto es lo que queda después de esos descuentos: en la mayoría de los casos, alrededor del 83% del bruto.",
+    a: "Al sueldo bruto se le restan los aportes de ley: 11% de jubilación (SIPA), 3% de PAMI (Ley 19.032) y 3% de obra social. En total, 17%. A eso se pueden sumar la cuota sindical (si estás afiliado) y, en sueldos altos, la retención de Ganancias. El neto es lo que queda después de esos descuentos: en la mayoría de los casos, alrededor del 83% del bruto.",
   },
   {
     q: "¿Qué descuentos tiene el sueldo?",
-    a: "Los obligatorios son tres: jubilación 11%, PAMI/INSSJP 3% y obra social 3% (17% total). Son aportes a la seguridad social, no impuestos. Después, según tu caso, pueden aparecer la cuota sindical de tu convenio (1% a 3%) y la retención de Ganancias de 4ta categoría, que recién aplica desde aproximadamente $2.800.000 de sueldo bruto para un soltero sin hijos.",
+    a: "Los obligatorios son tres: jubilación 11%, PAMI/INSSJP 3% y obra social 3% (17% en total). Son aportes a la seguridad social, no impuestos. Después, según tu caso, pueden aparecer la cuota sindical de tu convenio (1% a 3%) y la retención de Ganancias de 4ta categoría, que recién empieza desde unos $2.800.000 de sueldo bruto si sos soltero y sin hijos.",
   },
   {
     q: "¿Desde cuánto se paga Ganancias en 2026?",
-    a: `Con las deducciones del segundo semestre 2026, un trabajador soltero sin hijos empieza a tributar Ganancias alrededor de los $2.800.000 a $3.000.000 de sueldo bruto mensual. El piso sube si tenés cónyuge o hijos a cargo, o deducciones como prepaga o alquiler. El mínimo no imponible vigente es de ${formatARS(DEDUCCIONES.mni, 0)} anuales y la deducción especial para empleados es de ${formatARS(DEDUCCIONES.deduccionEspecialDependencia, 0)} anuales.`,
+    a: `Con las deducciones del segundo semestre 2026, un trabajador soltero y sin hijos empieza a pagar Ganancias entre los $2.800.000 y los $3.000.000 de sueldo bruto por mes. El piso sube si tenés cónyuge o hijos a cargo, o deducciones como prepaga o alquiler. El mínimo no imponible vigente es de ${formatARS(DEDUCCIONES.mni, 0)} anuales y la deducción especial para empleados es de ${formatARS(DEDUCCIONES.deduccionEspecialDependencia, 0)} anuales.`,
   },
   {
     q: "Gano mucho y me descuentan proporcionalmente menos de aportes, ¿por qué?",
-    a: `Porque los aportes tienen un tope. Se calculan sobre la base imponible máxima del SIPA, que en ${TOPE_SIPA.vigencia} es de ${formatARS(TOPE_SIPA.baseMaxima, 0)}. Si tu sueldo bruto supera ese monto, el 17% se aplica solo hasta el tope y no sobre el excedente. Por eso, en sueldos muy altos, el porcentaje efectivo de aportes baja (aunque suele aparecer Ganancias).`,
+    a: `Porque los aportes tienen un tope. Se calculan sobre la base máxima del SIPA, que en ${TOPE_SIPA.vigencia} es de ${formatARS(TOPE_SIPA.baseMaxima, 0)}. Si tu sueldo bruto pasa ese monto, el 17% se aplica solo hasta el tope y no sobre lo que sobra. Por eso, en sueldos muy altos, el porcentaje real de aportes baja (aunque suele aparecer Ganancias).`,
   },
   {
     q: "¿El sueldo neto incluye el aguinaldo?",
-    a: "No: el sueldo neto mensual es lo que cobrás cada mes. El aguinaldo (SAC) se paga aparte, en junio y diciembre, y es el 50% de tu mejor sueldo del semestre. También sufre el 17% de aportes. Tenemos una calculadora dedicada de aguinaldo para ese cálculo.",
+    a: "No: el sueldo neto mensual es lo que cobrás cada mes. El aguinaldo (en la ley se llama SAC) se paga aparte, en junio y diciembre, y es el 50% de tu mejor sueldo del semestre. También lleva el 17% de aportes. Para esa cuenta tenemos una calculadora de aguinaldo.",
   },
   {
     q: "¿La cuota sindical es obligatoria?",
-    a: "No. Solo se descuenta si estás afiliado al sindicato de tu actividad. El porcentaje lo fija cada convenio (habitualmente 1% a 3% del sueldo). Podés desafiliarte; en ese caso deja de descontarse. Distinto es la contribución solidaria, que algunos convenios aplican a todos los trabajadores del sector por un tiempo determinado.",
+    a: "No. Solo se descuenta si estás afiliado al sindicato de tu actividad. El porcentaje lo fija cada convenio (en general, del 1% al 3% del sueldo). Si te desafiliás, deja de descontarse. Otra cosa es la contribución solidaria, que algunos convenios cobran a todos los trabajadores del sector por un tiempo.",
   },
   {
     q: "¿Qué cambió en mi recibo con la Ley 27.802?",
-    a: "La Ley 27.802 (Modernización Laboral, vigente desde marzo de 2026) no cambió los aportes que se te descuentan: seguís aportando el 17%. Lo que modificó es la transparencia del recibo: ahora debe mostrar desglosadas las contribuciones que paga el empleador por vos (jubilación, obra social, ART). Tampoco tocó el cálculo de Ganancias del sueldo.",
+    a: "La Ley 27.802 (Modernización Laboral, vigente desde marzo de 2026) no cambió los aportes que te descuentan: seguís aportando el 17%. Lo que cambió es que el recibo ahora tiene que mostrar por separado las contribuciones que paga el empleador por vos (jubilación, obra social, ART). Tampoco tocó la cuenta de Ganancias del sueldo.",
   },
 ];
 
@@ -91,7 +91,7 @@ export default function SueldoNetoPage() {
         modificado: "2026-06-13",
       }),
       datasetSchema({
-        nombre: "Escala del impuesto a las Ganancias 4ta categoría — art. 94 LIG (1er sem 2026)",
+        nombre: "Escala del impuesto a las Ganancias 4ta categoría, art. 94 LIG (1er sem 2026)",
         descripcion:
           "Tramos y alícuotas (5% a 35%) de la escala del art. 94 de la Ley de Impuesto a las Ganancias, vigentes para el primer semestre de 2026, y deducciones personales del art. 30.",
         url: "/sueldo-neto",
@@ -119,9 +119,9 @@ export default function SueldoNetoPage() {
           Calculadora de Sueldo Neto 2026
         </h1>
         <p className="text-zinc-600">
-          Pasá tu sueldo <strong>de bruto a en mano</strong> descontando los aportes de ley, la
-          cuota sindical y —si corresponde— Ganancias. O al revés:{" "}
-          <strong>qué bruto pedir</strong> para cobrar el neto que querés.
+          Pasá tu sueldo <strong>de bruto a en mano</strong> con los aportes de ley, la cuota
+          sindical y Ganancias si te toca. O al revés: <strong>qué bruto pedir</strong> para cobrar
+          el neto que querés.
         </p>
       </header>
 
@@ -130,10 +130,15 @@ export default function SueldoNetoPage() {
           Tu <strong>sueldo neto</strong> es el bruto menos los aportes de ley:{" "}
           <strong>11% de jubilación + 3% de PAMI + 3% de obra social = 17%</strong>. Para la
           mayoría, el neto es <strong>alrededor del 83% del bruto</strong>. Si estás afiliado al
-          sindicato se descuenta también la cuota sindical (1% a 3%), y desde unos{" "}
+          sindicato también se descuenta la cuota sindical (1% a 3%), y desde unos{" "}
           <strong>$2.800.000 de bruto</strong> (soltero sin hijos) aparece la retención de Ganancias.
-          Los aportes tienen tope: sobre la parte del sueldo que supera{" "}
-          {formatARS(TOPE_SIPA.baseMaxima, 0)} ({TOPE_SIPA.vigencia}) el 17% deja de crecer.
+          Los aportes tienen tope: por la parte del sueldo que pasa{" "}
+          {formatARS(TOPE_SIPA.baseMaxima, 0)} ({TOPE_SIPA.vigencia}) el 17% deja de crecer. El
+          detalle de cada descuento posible está en{" "}
+          <Link href="/descuentos-del-sueldo" className="text-emerald-700 hover:underline">
+            cuánto te pueden descontar del sueldo
+          </Link>
+          .
         </p>
       </RespuestaPrimero>
 
@@ -143,31 +148,31 @@ export default function SueldoNetoPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">¿Cobrás por convenio?</h2>
         <p className="text-zinc-600">
-          Si tu sueldo sale de una escala de convenio, partí del básico oficial de tu categoría y
-          después pasalo a neto acá. Tenemos las escalas verificadas contra la circular oficial:
+          Si tu sueldo sale de una escala de convenio, arrancá por el básico oficial de tu categoría
+          y después pasalo a neto. Tenemos las escalas revisadas contra la circular oficial:
         </p>
         <div className="grid gap-3 sm:grid-cols-3">
           <Link
             href="/sueldo-neto/comercio"
             className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm transition hover:border-emerald-400"
           >
-            <p className="font-semibold text-zinc-900">Empleados de Comercio →</p>
+            <p className="font-semibold text-zinc-900">Sueldo neto de Comercio →</p>
             <p className="mt-1 text-sm text-zinc-600">
-              Neto por categoría con los $120.000 no rem bien calculados.
+              Neto por categoría, con los $120.000 no remunerativos bien calculados.
             </p>
           </Link>
           <Link
             href="/sueldo-neto/construccion"
             className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm transition hover:border-emerald-400"
           >
-            <p className="font-semibold text-zinc-900">Construcción (UOCRA) →</p>
+            <p className="font-semibold text-zinc-900">Sueldo neto de la construcción (UOCRA) →</p>
             <p className="mt-1 text-sm text-zinc-600">Jornal a sueldo por categoría y zona.</p>
           </Link>
           <Link
             href="/sueldo-neto/camioneros"
             className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm transition hover:border-emerald-400"
           >
-            <p className="font-semibold text-zinc-900">Camioneros →</p>
+            <p className="font-semibold text-zinc-900">Sueldo neto de camioneros →</p>
             <p className="mt-1 text-sm text-zinc-600">Neto por categoría, CCT 40/89.</p>
           </Link>
         </div>
@@ -182,8 +187,8 @@ export default function SueldoNetoPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Cuánto es tu sueldo en mano</h2>
         <p className="text-zinc-600">
-          Estimación con los aportes de ley (17%), sin cuota sindical ni Ganancias. Buscá tu sueldo
-          bruto:
+          Una estimación con los aportes de ley (17%), sin cuota sindical ni Ganancias. Buscá tu
+          sueldo bruto:
         </p>
         <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white shadow-sm">
           <table className="w-full min-w-[420px] text-sm">
@@ -211,8 +216,13 @@ export default function SueldoNetoPage() {
           </table>
         </div>
         <p className="text-xs text-zinc-400">
-          Sobre $2.800.000 de bruto (soltero) suele aparecer además la retención de Ganancias, que
-          reduce el neto. Usá la calculadora de arriba con la opción de Ganancias activada.
+          Por encima de $2.800.000 de bruto (soltero) suele aparecer además la retención de
+          Ganancias, que baja el neto. Usá la calculadora de arriba con la opción de Ganancias
+          activada. Si querés llevar la cuenta de todo el año en Excel, está la{" "}
+          <Link href="/planillas/mi-sueldo" className="text-emerald-700 underline">
+            planilla de mi sueldo
+          </Link>
+          .
         </p>
       </section>
 
@@ -248,9 +258,9 @@ export default function SueldoNetoPage() {
           Escala de Ganancias 4ta categoría ({GANANCIAS_VIGENCIA})
         </h2>
         <p className="text-zinc-600">
-          La retención de Ganancias se aplica sobre la ganancia neta imponible (tu sueldo anual
-          menos aportes y deducciones) según esta escala progresiva oficial de ARCA. Cada tramo paga
-          un monto fijo más un porcentaje sobre lo que excede el piso del tramo:
+          La retención de Ganancias se aplica sobre la ganancia neta imponible (tu sueldo del año
+          menos aportes y deducciones) con esta escala oficial de ARCA, que sube por tramos. Cada
+          tramo paga un monto fijo más un porcentaje sobre lo que pasa del piso del tramo:
         </p>
         <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white shadow-sm">
           <table className="w-full min-w-[560px] text-sm">
@@ -280,8 +290,8 @@ export default function SueldoNetoPage() {
         </div>
         <p className="text-xs text-zinc-400">
           Estos valores se actualizan cada enero y julio por el IPC del semestre anterior. La
-          retención que figura en tu recibo se calcula mes a mes en forma acumulada: la opción de
-          Ganancias de la calculadora da una estimación anual orientativa, no la liquidación exacta.
+          retención de tu recibo se calcula mes a mes, acumulando el año: la opción de Ganancias de
+          la calculadora te da una estimación anual, no la liquidación exacta.
         </p>
       </section>
 

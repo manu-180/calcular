@@ -8,9 +8,9 @@ import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { ESCALA_VACACIONES, VACACIONES_FUENTES } from "@/data/vacaciones";
 
 export const metadata: Metadata = {
-  title: "Calculadora de Vacaciones 2026: cuántos días te corresponden y cuánto cobrás",
+  title: "Calculadora de vacaciones 2026: días y cuánto cobrás",
   description:
-    "Calculá gratis tus vacaciones 2026: días por antigüedad según el art. 150 de la LCT y plus vacacional (sueldo ÷ 25). Actualizada con la reforma de la Ley 27.802.",
+    "Calculá tus días de vacaciones por antigüedad (art. 150 LCT) y cuánto cobrás con el plus vacacional de sueldo dividido 25, con la Ley 27.802.",
   alternates: { canonical: "/vacaciones" },
 };
 
@@ -21,11 +21,11 @@ const faqs = [
   },
   {
     q: "¿Cómo se pagan las vacaciones?",
-    a: "Con sueldo mensual, cada día de vacaciones vale tu sueldo dividido 25 (art. 155 LCT). Como un día trabajado «vale» el sueldo dividido 30, los días de vacaciones se pagan más: esa diferencia es el plus vacacional. Además, la retribución se tiene que pagar antes de que empieces las vacaciones.",
+    a: "Si cobrás por mes, cada día de vacaciones vale tu sueldo dividido 25 (art. 155 LCT). Como un día trabajado «vale» el sueldo dividido 30, los días de vacaciones se pagan más: esa diferencia es el plus vacacional. Y te las tienen que pagar antes de que empieces las vacaciones.",
   },
   {
     q: "¿Qué es el plus vacacional?",
-    a: "No es un premio aparte: surge de la propia fórmula de la ley. Cada día de vacaciones se paga sueldo ÷ 25 en vez de sueldo ÷ 30, así que cobrás más por esos días. Por ejemplo, con un sueldo de $1.500.000 y 14 días, el plus es de $140.000.",
+    a: "No es un premio aparte: sale de la fórmula de la ley. Cada día de vacaciones se paga sueldo ÷ 25 en vez de sueldo ÷ 30, así que cobrás más por esos días. Por ejemplo, con un sueldo de $1.500.000 y 14 días, el plus es de $140.000.",
   },
   {
     q: "¿Cuándo me las pueden dar?",
@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: "¿Me pueden fraccionar las vacaciones?",
-    a: "Sí. Desde la Ley 27.802 (marzo de 2026), trabajador y empleador pueden acordar partir las vacaciones en tramos, siempre que ninguno sea menor a 7 días. Es opcional: tiene que ser de común acuerdo, no una imposición.",
+    a: "Sí. Desde la Ley 27.802 (marzo de 2026), vos y tu empleador pueden acordar partir las vacaciones en tramos, siempre que ninguno sea de menos de 7 días. Es opcional: tiene que ser de común acuerdo, no te lo pueden imponer.",
   },
   {
     q: "Entré hace poco, ¿tengo vacaciones igual?",
@@ -41,19 +41,19 @@ const faqs = [
   },
   {
     q: "¿Puedo cobrar las vacaciones en plata sin tomármelas?",
-    a: "No: la ley lo prohíbe expresamente (art. 162 LCT). La única excepción es cuando termina el contrato de trabajo: ahí se paga una indemnización por las vacaciones proporcionales no gozadas (art. 156 LCT), que se incluye en la liquidación final.",
+    a: "No: la ley lo prohíbe (art. 162 LCT). La única excepción es cuando termina el contrato de trabajo: ahí te pagan una indemnización por las vacaciones proporcionales que no te tomaste (art. 156 LCT), dentro de la liquidación final.",
   },
   {
     q: "¿Qué pasa si mi empleador no me da las vacaciones?",
-    a: "Si vencido el plazo para notificarte no te las otorgó, podés tomártelas vos: tenés que avisarle de manera fehaciente (por ejemplo, carta documento) y hacerlo de modo que terminen antes del 31 de mayo (art. 157 LCT).",
+    a: "Si venció el plazo para avisarte y no te las dio, te las podés tomar vos. Tenés que avisarle de forma fehaciente (por ejemplo, con carta documento) y organizarlas para que terminen antes del 31 de mayo (art. 157 LCT).",
   },
   {
     q: "¿Las vacaciones tienen descuentos?",
-    a: "Sí: la retribución vacacional es remunerativa, así que sufre los mismos aportes que el sueldo (jubilación, PAMI y obra social, un 17% en total) y, si corresponde, impuesto a las Ganancias y cuota sindical.",
+    a: "Sí: lo que cobrás por vacaciones es remunerativo, así que lleva los mismos aportes que el sueldo (jubilación, PAMI y obra social, un 17% en total) y, si te toca, Ganancias y cuota sindical.",
   },
   {
     q: "¿Puedo acumular vacaciones de un año para otro?",
-    a: "Solo en parte: se puede acordar con el empleador sumar a un período de vacaciones hasta un tercio de las del año anterior que no se hayan gozado (art. 164 LCT). El resto no se acumula ni se paga: por eso conviene tomárselas en término.",
+    a: "Solo en parte: podés acordar con tu empleador sumar a tus vacaciones hasta un tercio de las del año anterior que no te tomaste (art. 164 LCT). El resto no se acumula ni se paga, así que conviene tomarlas a tiempo.",
   },
 ];
 
@@ -100,10 +100,10 @@ export default function VacacionesPage() {
           Calculadora de Vacaciones 2026
         </h1>
         <p className="text-zinc-600">
-          Ingresá tu sueldo y tu fecha de ingreso y descubrí al instante{" "}
-          <strong>cuántos días de vacaciones te corresponden</strong> por antigüedad y{" "}
-          <strong>cuánto cobrás</strong>, con el plus vacacional incluido. Actualizada con la
-          reforma del art. 154 (Ley 27.802, marzo de 2026).
+          Cargá tu sueldo y tu fecha de ingreso y vas a ver{" "}
+          <strong>cuántos días de vacaciones te tocan</strong> por antigüedad y{" "}
+          <strong>cuánto cobrás</strong>, con el plus vacacional incluido. Ya tiene la reforma del
+          art. 154 (Ley 27.802, marzo de 2026).
         </p>
       </header>
 
@@ -112,9 +112,9 @@ export default function VacacionesPage() {
           Los días de vacaciones dependen de tu antigüedad al 31 de diciembre:{" "}
           <strong>hasta 5 años, 14 días corridos</strong>; hasta 10, <strong>21 días</strong>; hasta
           20, <strong>28 días</strong>; y más de 20 años, <strong>35 días</strong> (art. 150 LCT).
-          Se pagan a razón de <strong>sueldo ÷ 25 por día</strong> —más que un día normal (÷30): esa
-          diferencia es el plus vacacional—. Si entraste hace poco, te corresponde 1 día por cada 20
-          trabajados. Desde la Ley 27.802 podés fraccionarlas en tramos de 7 días o más, de común
+          Se pagan a <strong>sueldo ÷ 25 por día</strong>, más que un día normal (÷30). Esa
+          diferencia es el plus vacacional. Si entraste hace poco, te toca 1 día por cada 20
+          trabajados. Desde la Ley 27.802 las podés partir en tramos de 7 días o más, de común
           acuerdo.
         </p>
       </RespuestaPrimero>
@@ -154,8 +154,8 @@ export default function VacacionesPage() {
         </div>
         <div className="space-y-3 text-zinc-600">
           <p>
-            «Días corridos» significa que <strong>cuentan los fines de semana y feriados</strong>{" "}
-            que caen dentro del período. Para compensarlo, la licencia siempre empieza un{" "}
+            «Días corridos» quiere decir que <strong>cuentan los fines de semana y feriados</strong>{" "}
+            que caen en el medio. Para compensarlo, las vacaciones siempre empiezan un{" "}
             <strong>lunes</strong> (o el día hábil siguiente, si ese lunes es feriado, art. 151).
           </p>
           <p>
@@ -172,10 +172,10 @@ export default function VacacionesPage() {
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Si cobrás sueldo mensual, cada día de vacaciones se paga{" "}
+            Si cobrás por mes, cada día de vacaciones se paga{" "}
             <strong>el sueldo dividido 25</strong> (art. 155 inc. a). Como un día común de un mes
-            de 30 «vale» el sueldo dividido 30, los días de vacaciones se pagan más caros. Esa
-            diferencia es lo que todos conocemos como <strong>plus vacacional</strong>.
+            de 30 «vale» el sueldo dividido 30, los días de vacaciones se pagan más. Esa diferencia
+            es lo que todos conocemos como <strong>plus vacacional</strong>.
           </p>
           <p className="rounded-xl bg-white p-4 font-medium text-zinc-800 shadow-sm">
             Retribución vacacional = (sueldo ÷ 25) × días de vacaciones
@@ -188,10 +188,10 @@ export default function VacacionesPage() {
             <strong>antes de que empieces las vacaciones</strong>.
           </p>
           <p>
-            Si tu remuneración es variable (comisiones, destajo, porcentajes), se usa el promedio
-            de lo devengado en el año o, a tu opción, el de los últimos 6 meses (art. 155 inc. c).
-            Y el sueldo base incluye todo lo que cobrás habitualmente: bonificación por
-            antigüedad, horas extras y demás remuneraciones accesorias (art. 155 inc. d).
+            Si tu sueldo es variable (comisiones, destajo, porcentajes), se usa el promedio de lo
+            que ganaste en el año o, si preferís, el de los últimos 6 meses (art. 155 inc. c). Y el
+            sueldo base incluye todo lo que cobrás siempre: antigüedad, horas extras y demás
+            adicionales (art. 155 inc. d).
           </p>
         </div>
       </section>
@@ -221,14 +221,19 @@ export default function VacacionesPage() {
               <strong>una vez cada 3 años</strong>.
             </li>
             <li>
-              <strong>Enfermedad durante las vacaciones:</strong> si te enfermás y lo informás a
-              tiempo, los días no gozados se reprograman.
+              <strong>Enfermedad durante las vacaciones:</strong> si te enfermás y avisás a tiempo,
+              los días que no pudiste disfrutar se pasan para otra fecha.
             </li>
           </ul>
           <p>
-            El período general de otorgamiento no cambió: entre el{" "}
-            <strong>1 de octubre y el 30 de abril</strong> del año siguiente, salvo acuerdo de
-            partes para otra fecha.
+            La temporada general no cambió: entre el{" "}
+            <strong>1 de octubre y el 30 de abril</strong> del año siguiente, salvo que acuerden
+            otra fecha. Para los días por casamiento, nacimiento, fallecimiento o examen, que no son
+            vacaciones, está la{" "}
+            <Link href="/licencias-especiales" className="text-emerald-700 underline">
+              calculadora de licencias especiales
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -238,9 +243,9 @@ export default function VacacionesPage() {
         <div className="space-y-3 text-zinc-600">
           <p>
             Por cada persona del equipo hay tres pasos: calcular los días que le tocan, elegir una fecha
-            de inicio que caiga en lunes y entregarle el aviso por escrito con 30 días de anticipación.
-            La retribución se paga al empezar las vacaciones, así que conviene saber de antemano cuánto
-            sale en cada mes de octubre a abril.
+            de inicio que caiga en lunes y darle el aviso por escrito con 30 días de anticipación. Las
+            vacaciones se pagan al empezar, así que conviene saber de antemano cuánto sale cada mes, de
+            octubre a abril.
           </p>
           <p>
             Si tenés varias personas a cargo, la{" "}

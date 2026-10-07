@@ -12,14 +12,14 @@ import { productoPorSlug } from "@/lib/mp";
 const ACTUALIZADO_EL = "15 de junio de 2026";
 
 export const metadata: Metadata = {
-  title: "Calculadora de Ganancias 4ta Categoría 2026: retención mes a mes",
+  title: "Calculadora de Ganancias 2026: retención mes a mes",
   description:
-    "Calculá cuánto te descuenta tu empleador de Ganancias cada mes, con el método acumulado oficial (RG ARCA 5008). Escala y deducciones del 2do semestre 2026. Gratis y actualizado.",
+    "Calculá cuánto te retiene tu empleador de Ganancias 4ª categoría cada mes con el método acumulado de ARCA y la escala del segundo semestre 2026.",
   alternates: { canonical: "/ganancias" },
   openGraph: {
     images: [
       {
-        url: `/og?t=${encodeURIComponent("Calculadora Ganancias 4ta Categoría 2026")}&s=${encodeURIComponent("Retención mensual real — método acumulado ARCA. Gratis.")}`,
+        url: `/og?t=${encodeURIComponent("Calculadora Ganancias 4ta Categoría 2026")}&s=${encodeURIComponent("Retención mensual real con el método acumulado de ARCA. Gratis.")}`,
         width: 1200,
         height: 630,
       },
@@ -30,27 +30,27 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Desde qué sueldo pago Ganancias en 2026?",
-    a: `Con las deducciones del segundo semestre 2026, un trabajador soltero sin hijos empieza a tributar alrededor de los $2.800.000–$3.000.000 de sueldo bruto mensual. El piso sube si tenés cónyuge, hijos o deducciones adicionales (prepaga, alquiler). El mínimo no imponible vigente es ${formatARS(DEDUCCIONES.mni, 0)} anuales y la deducción especial para empleados es ${formatARS(DEDUCCIONES.deduccionEspecialDependencia, 0)} anuales (2do semestre 2026).`,
+    a: `Con las deducciones del segundo semestre 2026, un empleado soltero y sin hijos empieza a pagar con un sueldo bruto de entre $2.800.000 y $3.000.000 por mes. Ese piso sube si tenés cónyuge, hijos u otras deducciones (prepaga, alquiler). El mínimo no imponible vigente es de ${formatARS(DEDUCCIONES.mni, 0)} por año y la deducción especial para empleados, de ${formatARS(DEDUCCIONES.deduccionEspecialDependencia, 0)} por año (2do semestre 2026).`,
   },
   {
     q: "¿Por qué me retienen más en junio y diciembre?",
-    a: "En esos meses tu empleador incluye el SAC (aguinaldo) en la base de Ganancias: el método acumulado suma el sueldo ordinario más el 50% del mejor sueldo del semestre, y el total resulta mayor. Como la escala es progresiva, ese salto en la base hace que la retención del mes trepe notoriamente. Es normal y no significa que te estén descontando de más.",
+    a: "Porque en esos meses tu empleador suma el aguinaldo (SAC) a la base de Ganancias. El método acumulado suma el sueldo normal más el 50% del mejor sueldo del semestre, y el total da más alto. Como la escala sube por tramos, ese salto hace que la retención del mes suba bastante. Es normal y no quiere decir que te estén descontando de más.",
   },
   {
     q: "¿Qué es el método acumulado de retención?",
-    a: "Es el sistema que usa el empleador (RG ARCA 5008). En vez de retener el mismo monto todos los meses, cada mes suma todo lo que ganaste y acumuló en deducciones desde enero, extrapola a año completo, aplica la escala progresiva, y retiene la diferencia respecto a lo ya retenido. Así el impuesto se va ajustando mes a mes y en diciembre queda exactamente saldado, sin retenciones extra ni devoluciones grandes.",
+    a: "Es el sistema que usa el empleador (RG ARCA 5008). En vez de retener lo mismo todos los meses, cada mes suma todo lo que ganaste y todas tus deducciones desde enero, lo lleva a un año completo, aplica la escala y retiene la diferencia con lo que ya te retuvo. Así el impuesto se ajusta mes a mes y en diciembre queda justo, sin retenciones extra ni devoluciones grandes.",
   },
   {
     q: "¿Cuáles son las alícuotas de Ganancias 4ta categoría en 2026?",
-    a: `La escala tiene 9 tramos del 5% al 35%, aplicados sobre la ganancia neta imponible anual. Los primeros ${formatARS(ESCALA_GANANCIAS[0].hasta ?? 0, 0)} tributan al 5%; desde ${formatARS(ESCALA_GANANCIAS[4].desde, 0)} la alícuota es 19%; y desde ${formatARS(ESCALA_GANANCIAS[8].desde, 0)} paga el 35% sobre el excedente. Las deducciones (MNI, especial, familiares) reducen la base antes de aplicar los tramos.`,
+    a: `La escala tiene 9 tramos, del 5% al 35%, que se aplican sobre la ganancia neta imponible del año. Los primeros ${formatARS(ESCALA_GANANCIAS[0].hasta ?? 0, 0)} pagan el 5%. Desde ${formatARS(ESCALA_GANANCIAS[4].desde, 0)} la alícuota es 19%. Y desde ${formatARS(ESCALA_GANANCIAS[8].desde, 0)} se paga el 35% sobre lo que pase de ahí. Las deducciones (mínimo no imponible, especial y por familia) bajan la base antes de aplicar los tramos.`,
   },
   {
     q: "¿La cuota sindical y la prepaga reducen Ganancias?",
-    a: "Sí. La cuota sindical se resta directamente de la ganancia bruta acumulada antes de calcular el impuesto. La prepaga y otros gastos médicos se deducen si los declarás ante tu empleador con el formulario F.572 (SIRADIG-Trabajador). Cuanto más declarás, menor es tu ganancia neta imponible y menor la retención.",
+    a: "Sí. La cuota sindical se resta directo de lo que ganaste antes de calcular el impuesto. La prepaga y otros gastos médicos se deducen si se los informás a tu empleador en el formulario F.572 (SIRADIG Trabajador). Cuanto más declarás, más baja es tu ganancia imponible y menor la retención.",
   },
   {
     q: "¿Esta calculadora reemplaza la liquidación de mi empleador?",
-    a: "No. Es una estimación orientativa basada en sueldo fijo y el método acumulado estándar. Tu empleador puede tener variables distintas: aumentos por paritaria, bonos, horas extras, deducciones que declaraste en SIRADIG, retenciones de sueldos anteriores del año. El resultado aquí es útil para entender el orden de magnitud y detectar errores groseros, no para reclamar un centavo exacto.",
+    a: "No. Es una estimación con sueldo fijo y el método acumulado común. Tu empleador puede tener datos que acá no están: aumentos por paritaria, bonos, horas extras, deducciones que cargaste en SIRADIG o retenciones de sueldos anteriores del año. El resultado sirve para saber más o menos cuánto es y detectar errores grandes, no para reclamar al centavo.",
   },
 ];
 
@@ -72,7 +72,7 @@ export default function GananciasPage() {
           "Tabla de 12 meses con SAC en junio y diciembre",
           "Cargas de familia: cónyuge e hijos",
           "Cuota sindical y otras deducciones",
-          "Escala art. 94 LIG — 2do semestre 2026",
+          "Escala art. 94 LIG, 2do semestre 2026",
         ],
       },
       articleSchema({
@@ -84,7 +84,7 @@ export default function GananciasPage() {
         publicado: "2026-06-15",
       }),
       datasetSchema({
-        nombre: "Escala art. 94 LIG — Ganancias 4ta categoría 2do semestre 2026",
+        nombre: "Escala art. 94 LIG: Ganancias 4ta categoría, 2do semestre 2026",
         descripcion:
           "Tabla de 9 tramos de la escala progresiva del impuesto a las Ganancias 4ta categoría para el segundo semestre 2026, con alícuotas del 5% al 35% y montos fijos por tramo.",
         url: "/ganancias",
@@ -113,24 +113,24 @@ export default function GananciasPage() {
             Calculadora de Ganancias 4ª categoría 2026
           </h1>
           <p className="text-lg text-zinc-600">
-            Retención mensual real — método acumulado oficial (RG ARCA 5008)
+            Cuánto te retienen de verdad cada mes, con el método acumulado oficial (RG ARCA 5008)
           </p>
         </header>
 
         <RespuestaPrimero actualizado={ACTUALIZADO_EL}>
           <p>
-            Si tu sueldo bruto mensual supera <strong>~$2.800.000</strong> (soltero sin hijos),
-            tu empleador te retiene el impuesto a las Ganancias con el{" "}
-            <strong>método acumulado</strong>: suma lo que ganaste desde enero, aplica la escala
-            progresiva del <strong>5% al 35%</strong> y retiene la diferencia respecto a los meses
-            anteriores. Esto hace que en <strong>junio y diciembre</strong> el descuento suba porque
-            se suma el SAC (aguinaldo).
+            Si tu sueldo bruto pasa de <strong>unos $2.800.000</strong> por mes (soltero sin
+            hijos), tu empleador te retiene Ganancias con el <strong>método acumulado</strong>:
+            suma lo que ganaste desde enero, aplica la escala del <strong>5% al 35%</strong> y
+            retiene la diferencia con los meses anteriores. Por eso en{" "}
+            <strong>junio y diciembre</strong> el descuento sube: se suma el aguinaldo (SAC).
           </p>
           <p>
             Con la escala del 2do semestre 2026, un empleado soltero sin hijos con $5.000.000 de
-            bruto paga <strong>~$283.000</strong> de Ganancias en los meses sin SAC y{" "}
-            <strong>~$760.000</strong> en junio y diciembre. El total anual es{" "}
-            <strong>~$4.350.000</strong> (tasa efectiva de ~6,7% sobre el bruto anual incluido SAC).
+            bruto paga <strong>unos $283.000</strong> de Ganancias en los meses sin aguinaldo y{" "}
+            <strong>unos $760.000</strong> en junio y diciembre. En el año son{" "}
+            <strong>unos $4.350.000</strong>: cerca del 6,7% de todo lo que cobra en el año, aguinaldo
+            incluido.
           </p>
         </RespuestaPrimero>
 
@@ -143,34 +143,33 @@ export default function GananciasPage() {
           </h2>
           <div className="space-y-3 text-zinc-700">
             <p>
-              La ley no permite que el empleador retenga simplemente <em>impuesto_anual&nbsp;÷&nbsp;12</em>{" "}
-              todos los meses. En cambio usa un proceso de cuatro pasos que se repite cada mes:
+              El empleador no puede retener simplemente <em>impuesto_anual&nbsp;÷&nbsp;12</em>{" "}
+              todos los meses. Hace cuatro pasos que repite cada mes:
             </p>
             <ol className="ml-5 list-decimal space-y-2">
               <li>
-                <strong>Acumula el bruto desde enero:</strong> suma todas las remuneraciones del
-                año, incluyendo el SAC en el semestre que corresponde.
+                <strong>Suma el bruto desde enero:</strong> todos los sueldos del año, con el
+                aguinaldo en el semestre que corresponde.
               </li>
               <li>
-                <strong>Resta aportes y deducciones proporcionales:</strong> descuenta el 17% de
-                aportes (con el tope SIPA), la cuota sindical y las deducciones personales del{" "}
-                art. 30 en proporción a los meses transcurridos.
+                <strong>Resta aportes y deducciones:</strong> descuenta el 17% de aportes (con el
+                tope SIPA), la cuota sindical y las deducciones personales del art. 30, en
+                proporción a los meses que pasaron.
               </li>
               <li>
-                <strong>Extrapola a año completo:</strong> el resultado acumulado se divide por el
-                número de meses y se multiplica por 12, para estimar la ganancia neta imponible
-                anual.
+                <strong>Lo lleva a un año completo:</strong> divide el resultado por la cantidad de
+                meses y lo multiplica por 12, para estimar la ganancia imponible del año.
               </li>
               <li>
-                <strong>Aplica la escala y retiene la diferencia:</strong> calcula el impuesto
-                anual proyectado, lo multiplica por M/12, y resta lo ya retenido en meses
-                anteriores. Eso es el descuento de ese mes.
+                <strong>Aplica la escala y retiene la diferencia:</strong> calcula el impuesto del
+                año, lo multiplica por M/12 y le resta lo que ya retuvo en los meses anteriores.
+                Eso es el descuento de ese mes.
               </li>
             </ol>
             <p>
-              El efecto es que los <strong>meses normales tienen retenciones parejas</strong>, y
-              los meses de SAC tienen un pico porque el aguinaldo engrosa la base pero la
-              extrapolación lo "divide" entre menos meses.
+              Resultado: en los <strong>meses normales la retención es pareja</strong>, y en los
+              meses de aguinaldo hay un pico, porque el aguinaldo agranda la base pero la cuenta lo
+              "reparte" entre menos meses.
             </p>
           </div>
         </section>
@@ -178,10 +177,10 @@ export default function GananciasPage() {
         {/* Escala */}
         <section className="space-y-4">
           <h2 className="text-xl font-semibold text-zinc-900">
-            Escala art. 94 LIG — {GANANCIAS_VIGENCIA}
+            Escala art. 94 LIG: {GANANCIAS_VIGENCIA}
           </h2>
           <p className="text-sm text-zinc-500">
-            Valores anuales. Se aplican sobre la <em>ganancia neta imponible</em> extrapolada a año
+            Valores anuales. Se aplican sobre la <em>ganancia neta imponible</em> llevada a un año
             completo.
           </p>
           <div className="overflow-x-auto rounded-xl border border-zinc-200">
@@ -219,8 +218,8 @@ export default function GananciasPage() {
               className="text-emerald-700 underline"
             >
               {GANANCIAS_FUENTES.escala.nombre}
-            </a>{" "}
-            — consultado el {GANANCIAS_FUENTES.consultadoEl}.
+            </a>
+            , consultado el {GANANCIAS_FUENTES.consultadoEl}.
           </p>
         </section>
 
@@ -241,9 +240,9 @@ export default function GananciasPage() {
         <section className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
           <h2 className="font-semibold text-zinc-900">¿Liquidás sueldos de empleados de comercio?</h2>
           <p className="mt-2 text-sm text-zinc-700">
-            La <strong>Planilla de Sueldos Comercio 2026</strong> incluye la escala CCT 130/75
-            embebida, calcular la retención de Ganancias, horas extras y jornada parcial — todo en
-            Excel, con actualización automática por paritaria.
+            La <strong>Planilla de Sueldos Comercio 2026</strong> trae la escala del CCT 130/75
+            adentro y calcula la retención de Ganancias, las horas extras y la jornada parcial. Todo
+            en Excel, con actualización automática por paritaria.
           </p>
           <Link
             href="/planillas"
@@ -289,7 +288,7 @@ export default function GananciasPage() {
                 Escala Salarial Comercio 2026
               </p>
               <p className="mt-1 text-sm text-zinc-600">
-                CCT 130/75 con antigüedad y jornada reducida — todos los valores de la paritaria.
+                CCT 130/75 con antigüedad y jornada reducida: todos los valores de la paritaria.
               </p>
             </Link>
             <Link
@@ -322,7 +321,41 @@ export default function GananciasPage() {
                 Calculadora de Monotributo
               </p>
               <p className="mt-1 text-sm text-zinc-600">
-                Qué categoría te corresponde y cuánto pagás — con las escalas actualizadas 2026.
+                Qué categoría te corresponde y cuánto pagás, con las escalas 2026 actualizadas.
+              </p>
+            </Link>
+            <Link
+              href="/ganancias-jubilados"
+              className="group rounded-xl border border-zinc-200 bg-white p-4 hover:border-emerald-400 hover:shadow-sm"
+            >
+              <p className="font-semibold text-zinc-900 group-hover:text-emerald-700">
+                Ganancias para jubilados
+              </p>
+              <p className="mt-1 text-sm text-zinc-600">
+                Desde qué haber paga un jubilado y cómo pesa la deducción de 8 haberes mínimos.
+              </p>
+            </Link>
+            <Link
+              href="/ganancias-autonomos"
+              className="group rounded-xl border border-zinc-200 bg-white p-4 hover:border-emerald-400 hover:shadow-sm"
+            >
+              <p className="font-semibold text-zinc-900 group-hover:text-emerald-700">
+                Ganancias para autónomos
+              </p>
+              <p className="mt-1 text-sm text-zinc-600">
+                Cuánto deduce un autónomo y el plus para nuevos profesionales.
+              </p>
+            </Link>
+            <Link
+              href="/informes/ganancias"
+              className="group rounded-xl border border-zinc-200 bg-white p-4 hover:border-emerald-400 hover:shadow-sm"
+            >
+              <p className="font-semibold text-zinc-900 group-hover:text-emerald-700">
+                Informe de Ganancias
+              </p>
+              <p className="mt-1 text-sm text-zinc-600">
+                Tu retención mes a mes, tu tramo y cuánto te devuelve cada deducción, en un PDF
+                con el paso a paso para el SiRADIG.
               </p>
             </Link>
           </div>
@@ -353,7 +386,7 @@ export default function GananciasPage() {
               </a>
             </li>
             <li>
-              Valores vigentes {GANANCIAS_VIGENCIA}. Se actualizan semestralmente (enero y julio)
+              Valores vigentes {GANANCIAS_VIGENCIA}. Se actualizan dos veces por año (enero y julio)
               con el IPC del INDEC.
             </li>
             <li>Consultados el {GANANCIAS_FUENTES.consultadoEl}.</li>

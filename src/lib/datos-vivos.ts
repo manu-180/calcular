@@ -178,7 +178,7 @@ export function compararTna(
       ...base,
       severidad: "accion",
       fuente,
-      detalle: `El BCRA devolvió ${vivo.valor}%, fuera de la banda de sanidad (${BANDA_TNA.min}–${BANDA_TNA.max}%). Puede ser un cambio de unidad o de shape de la API.`,
+      detalle: `El BCRA devolvió ${vivo.valor}%, fuera de la banda de sanidad (de ${BANDA_TNA.min} a ${BANDA_TNA.max}%). Puede ser un cambio de unidad o de shape de la API.`,
       accion: "Revisar a mano la serie 12 del BCRA antes de tocar nada. NO rotar el fallback a ciegas.",
     };
   }
@@ -234,7 +234,7 @@ export function compararIpc(
       ...base,
       severidad: "accion",
       fuente,
-      detalle: `La variación derivada da ${mensualVivo}%, fuera de la banda (${BANDA_IPC.min}–${BANDA_IPC.max}%). Huele a cambio de base de la serie.`,
+      detalle: `La variación derivada da ${mensualVivo}%, fuera de la banda (de ${BANDA_IPC.min} a ${BANDA_IPC.max}%). Huele a cambio de base de la serie.`,
       accion: "Revisar la serie 148.3_INIVELNAL_DICI_M_26 a mano antes de regenerar nada.",
     }];
   }
@@ -252,7 +252,7 @@ export function compararIpc(
     detalle:
       `El INDEC publicó ${periodoANombre(vivo.periodo)} (${mensualVivo}% mensual) y el sitio sirve la serie hasta ${ultimoServido}. ` +
       `Las páginas son estáticas: hasta que no se redeploye, el usuario ve el dato viejo.` +
-      (salto ? ` OJO: salto de más de ${BANDA_IPC.saltoPpMax} p.p. contra el default guardado — verificar contra el informe del INDEC.` : ""),
+      (salto ? ` OJO: salto de más de ${BANDA_IPC.saltoPpMax} p.p. contra el default guardado: verificar contra el informe del INDEC.` : ""),
     accion:
       "npx -y tsx calcular-ar/scripts/gen_ipc_serie.ts && npx -y tsx tools/rotar-inflacion.ts, después npx -y tsx tools/deploy-calcular.ts",
   }];
