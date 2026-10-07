@@ -7,6 +7,8 @@ import { Rastreador } from "@/components/Rastreador";
 import { AcordeonesFluidos } from "@/components/AcordeonesFluidos";
 import { HerramientasCalculo } from "@/components/herramientas/HerramientasCalculo";
 import { tabsDelEncabezado } from "@/data/navegacion";
+import { JsonLd } from "@/components/JsonLd";
+import { grafoDelSitio } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,12 +18,22 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://calcular.ar"),
-  title: {
-    default: "CalculAR — Calculadoras claras para la Argentina",
-    template: "%s · CalculAR",
-  },
+  // Sin template de marca a propósito (6/10/2026): " · CalculAR" sumaba 11 caracteres y dejaba 162 de
+  // 166 títulos por encima de los 60 que muestra Google, que igual pone el nombre del sitio arriba
+  // de cada resultado a partir del WebSite de grafoDelSitio().
+  title: "CalculAR: calculadoras claras para la Argentina",
   description:
     "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
+  applicationName: "CalculAR",
+  authors: [{ name: "Manuel Navarro", url: "https://calcular.ar/sobre" }],
+  creator: "Manuel Navarro",
+  publisher: "CalculAR",
+  formatDetection: { telephone: false, email: false, address: false },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
   alternates: { canonical: "./" },
   openGraph: {
     type: "website",
@@ -46,6 +58,7 @@ export const viewport: Viewport = {
 // Se calcula en el servidor y viaja como prop: el header sabe qué tab marcar sin cargar
 // el modelo de navegación entero en el JS de cada página.
 const TABS = tabsDelEncabezado();
+const GRAFO_DEL_SITIO = grafoDelSitio();
 
 export default function RootLayout({
   children,
@@ -55,6 +68,7 @@ export default function RootLayout({
   return (
     <html lang="es-AR" className={`${geistSans.variable} h-full antialiased`}>
       <body className="font-sans">
+        <JsonLd data={GRAFO_DEL_SITIO} />
         <a href="#contenido" className="ca-saltar">
           Saltar al contenido
         </a>

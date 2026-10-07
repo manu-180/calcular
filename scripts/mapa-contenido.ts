@@ -8,6 +8,10 @@
 //
 //   npx -y tsx scripts/mapa-contenido.ts            → todas las rutas + su title
 //   npx -y tsx scripts/mapa-contenido.ts aguinaldo  → solo las que mencionan "aguinaldo"
+//   npx -y tsx scripts/mapa-contenido.ts --largos   → solo title > 60 o description > 155
+//
+// Las columnas t/d son los largos del title y la description literales: Google corta el title
+// cerca de los 60 caracteres y la description cerca de los 155 (docs/seo/auditoria-2026-10-06.md).
 //
 // Read-only, NO es un check del moat (no entra a check-all): es una ayuda del Turno.
 
@@ -52,18 +56,24 @@ function title(src: string): string {
   return "";
 }
 
+function descripcion(src: string): string {
+  const m = src.match(/export const metadata[\s\S]*?description:\s*\n?\s*["'`]([^"'`]+)["'`]/);
+  return m ? m[1].trim() : "";
+}
+
 // Canonical declarado (alternates.canonical), si existe.
 function canonical(src: string): string {
   const m = src.match(/canonical:\s*["'`]([^"'`]+)["'`]/);
   return m ? m[1] : "";
 }
 
-const filtro = (process.argv[2] ?? "").toLowerCase();
+const soloLargos = process.argv.includes("--largos");
+const filtro = (process.argv.slice(2).find((a) => !a.startsWith("--")) ?? "").toLowerCase();
 
 const filas = paginas(APP_DIR)
   .map((f) => {
     const src = readFileSync(f, "utf8");
-    return { ruta: ruta(f), title: title(src), canonical: canonical(src) };
+    return { ruta: ruta(f), title: title(src), descripcion: descripcion(src), canonical: canonical(src) };
   })
   .filter((r) => !r.ruta.includes("[")) // omite rutas dinámicas (programáticas)
   .filter(
@@ -72,13 +82,15 @@ const filas = paginas(APP_DIR)
       r.ruta.toLowerCase().includes(filtro) ||
       r.title.toLowerCase().includes(filtro)
   )
+  .filter((r) => !soloLargos || r.title.length > 60 || r.descripcion.length > 155)
   .sort((a, b) => a.ruta.localeCompare(b.ruta));
 
 const anchoRuta = Math.max(4, ...filas.map((r) => r.ruta.length));
 
-console.log(`\n🗺️  Mapa de contenido · ${filas.length} páginas${filtro ? ` · filtro "${filtro}"` : ""}\n`);
+console.log(`\nMapa de contenido · ${filas.length} páginas${filtro ? ` · filtro "${filtro}"` : ""}${soloLargos ? " · solo largos" : ""}\n`);
 for (const r of filas) {
-  console.log(`${r.ruta.padEnd(anchoRuta)}  ${r.title || "(sin title literal)"}`);
+  const largos = `t${String(r.title.length).padStart(3)} d${String(r.descripcion.length).padStart(3)}`;
+  console.log(`${r.ruta.padEnd(anchoRuta)}  ${largos}  ${r.title || "(sin title literal)"}`);
 }
 console.log(
   `\nUso: para descartar canibalización antes de un pilar nuevo, filtrá por el tema` +
