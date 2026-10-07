@@ -1,0 +1,79 @@
+{
+  "mercado": "py",
+  "avisos": [
+    {
+      "id": "py.salario-minimo-julio-2027",
+      "nivel": "info",
+      "desde": "2027-05-15",
+      "hasta": "2027-07-31",
+      "aplicaA": ["py.salario-minimo", "py.jornal-minimo", "py.vacaciones", "py.bonificacion-familiar"],
+      "titulo": "El salario mínimo cambia en julio",
+      "texto": "El salario mínimo se reajusta cada año desde el 1 de julio. Cuando salgan el decreto de 2027 y la resolución del MTESS, cargamos los montos nuevos.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+        "titulo": "Resolución MTESS N° 670/2026 (reglamenta el Decreto N° 6.225/2026)",
+        "url": "https://www.mtess.gov.py/wp-content/uploads/2026/07/Resolucion-MTESS-N%C2%B0-670-REGLAMENTACION-SALARIO-2026.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "py.actividades-especificadas",
+      "nivel": "info",
+      "desde": "2026-07-01",
+      "aplicaA": ["py.salario-minimo", "py.jornal-minimo", "py.horas-extra"],
+      "texto": "Usamos el mínimo de las actividades diversas no especificadas. Algunos oficios y profesiones (choferes, cocineros, albañiles y otros) tienen un mínimo propio más alto, que figura en el anexo de la resolución del MTESS.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+        "titulo": "Resolución MTESS N° 670/2026, anexo de actividades especificadas y profesiones escalafonadas",
+        "url": "https://www.mtess.gov.py/wp-content/uploads/2026/07/Resolucion-MTESS-N%C2%B0-670-REGLAMENTACION-SALARIO-2026.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "py.vacaciones-proporcionales",
+      "nivel": "cautela",
+      "desde": "2025-01-01",
+      "aplicaA": ["py.liquidacion"],
+      "titulo": "Vacaciones proporcionales",
+      "texto": "La ley paga vacaciones proporcionales cuando el contrato termina antes del año por causa del empleador. En un despido sin causa también sumamos las del año en curso a quien ya tiene más de un año, que es el criterio más usado, aunque la ley no lo dice de forma expresa.",
+      "fuente": {
+        "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+        "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 221",
+        "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "py.estabilidad",
+      "nivel": "info",
+      "desde": "2025-01-01",
+      "aplicaA": ["py.indemnizacion-por-despido", "py.liquidacion"],
+      "titulo": "Diez años o más en la empresa",
+      "texto": "Con diez años seguidos en la misma empresa tenés estabilidad: solo te pueden despedir por una causa probada ante el juez. Si el juez ordena reintegrarte y vos preferís no volver, o si cierra el lugar donde trabajás, la indemnización es el doble.",
+      "fuente": {
+        "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+        "titulo": "Ley N° 213/1993, Código del Trabajo, artículos 94 a 99",
+        "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "py.irp-primer-anio",
+      "nivel": "info",
+      "desde": "2025-01-01",
+      "aplicaA": ["py.irp"],
+      "texto": "El año en que pasás por primera vez el monto no alcanzado, el impuesto se calcula sobre todos tus ingresos del año, pero solo restás los gastos hechos desde el día siguiente a superarlo. Los años siguientes restás los gastos de todo el año.",
+      "fuente": {
+        "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+        "titulo": "Cartilla IRP, Rentas derivadas de la Prestación de Servicios Personales (Ley N° 6380/2019, artículo 62)",
+        "url": "https://www.dnit.gov.py/documents/20123/233435/IRP+RSP+Cartilla+6.08.24.pdf/bb45c6ef-0c98-771a-c530-ac893db6bce2?t=1722965031873.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}

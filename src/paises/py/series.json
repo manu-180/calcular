@@ -1,0 +1,34 @@
+{
+  "mercado": "py",
+  "series": [
+    {
+      "id": "py.dolar",
+      "nombre": "Dólar referencial del BCP",
+      "unidad": "PYG",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Banco Central del Paraguay (BCP)",
+        "titulo": "Cotización referencial de monedas, diaria (guaraníes por dólar estadounidense)",
+        "url": "https://www.bcp.gov.py/webapps/web/cotizacion/monedas",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07",
+        "nota": "Promedio ponderado de las operaciones interbancarias spot de 8:30 a 13:00 de cada día hábil. Valores leídos día por día en la planilla del BCP el 7/10/2026."
+      },
+      "puntos": [
+        ["2026-09-21", 5948.28],
+        ["2026-09-22", 5935.01],
+        ["2026-09-23", 5924.25],
+        ["2026-09-24", 5900.28],
+        ["2026-09-25", 5873.44],
+        ["2026-09-29", 5847.45],
+        ["2026-09-30", 5833.63],
+        ["2026-10-01", 5850.69],
+        ["2026-10-02", 5873.69],
+        ["2026-10-05", 5864.9],
+        ["2026-10-06", 5850.05],
+        ["2026-10-07", 5751.99]
+      ]
+    }
+  ]
+}

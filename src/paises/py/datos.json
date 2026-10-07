@@ -1,0 +1,511 @@
+{
+  "mercado": "py",
+  "datos": [
+    {
+      "id": "py.salario-minimo",
+      "nombre": "Salario mínimo legal mensual (actividades diversas no especificadas)",
+      "tipo": "numero",
+      "unidad": "PYG",
+      "proximaRevision": "2027-07-01",
+      "nota": "Jornada diurna. Lo fija un decreto del Poder Ejecutivo y lo reglamenta el MTESS cada julio.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": 2899048,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+            "titulo": "MTESS reglamentó reajuste de sueldos y jornales mínimos (Resolución N° 677/2025 y Decreto N° 4.122/2025)",
+            "url": "https://www.mtess.gov.py/?p=30682",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 3044000,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+            "titulo": "Resolución MTESS N° 670/2026 (reglamenta el Decreto N° 6.225/2026), considerandos y artículo 1",
+            "url": "https://www.mtess.gov.py/wp-content/uploads/2026/07/Resolucion-MTESS-N%C2%B0-670-REGLAMENTACION-SALARIO-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.minimos",
+      "nombre": "Salarios, jornales y horas mínimas",
+      "tipo": "mapa",
+      "unidad": "PYG",
+      "etiquetas": {
+        "mensual": "Salario mínimo mensual (diurno)",
+        "jornal": "Jornal mínimo (diurno)",
+        "diario": "Salario diario del mensualero (diurno)",
+        "hora": "Hora del mensualero (diurna)",
+        "mensual-nocturno": "Salario mínimo mensual (nocturno)",
+        "jornal-nocturno": "Jornal mínimo (nocturno)",
+        "diario-nocturno": "Salario diario del mensualero (nocturno)",
+        "hora-nocturna": "Hora del mensualero (nocturna)",
+        "hora-parcial": "Hora a tiempo parcial (diurna)",
+        "hora-parcial-nocturna": "Hora a tiempo parcial (nocturna)"
+      },
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "mensual": 2899048,
+            "jornal": 111502,
+            "diario": 96635,
+            "hora": 12080,
+            "mensual-nocturno": 3768763,
+            "jornal-nocturno": 144952,
+            "diario-nocturno": 125625,
+            "hora-nocturna": 17947,
+            "hora-parcial": 13937,
+            "hora-parcial-nocturna": 20708
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+            "titulo": "MTESS reglamentó reajuste de sueldos y jornales mínimos (Resolución N° 677/2025 y Decreto N° 4.122/2025)",
+            "url": "https://www.mtess.gov.py/?p=30682",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "mensual": 3044000,
+            "jornal": 117077,
+            "diario": 101467,
+            "hora": 12683,
+            "mensual-nocturno": 3957200,
+            "jornal-nocturno": 152200,
+            "diario-nocturno": 131907,
+            "hora-nocturna": 18844,
+            "hora-parcial": 14635,
+            "hora-parcial-nocturna": 21743
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+            "titulo": "Resolución MTESS N° 670/2026 (reglamenta el Decreto N° 6.225/2026), artículos 1 y 2",
+            "url": "https://www.mtess.gov.py/wp-content/uploads/2026/07/Resolucion-MTESS-N%C2%B0-670-REGLAMENTACION-SALARIO-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.divisor-salario-diario",
+      "nombre": "Días del mes para el salario diario del mensualero",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+            "titulo": "Resolución MTESS N° 670/2026 (reglamenta el Decreto N° 6.225/2026), artículo 1",
+            "url": "https://www.mtess.gov.py/wp-content/uploads/2026/07/Resolucion-MTESS-N%C2%B0-670-REGLAMENTACION-SALARIO-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.horas-jornada-diurna",
+      "nombre": "Horas de la jornada diurna",
+      "tipo": "numero",
+      "unidad": "horas",
+      "nota": "Ley N° 496, artículo 194: 8 horas diarias y 48 semanales.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+            "titulo": "Resolución MTESS N° 670/2026 (reglamenta el Decreto N° 6.225/2026), artículo 1",
+            "url": "https://www.mtess.gov.py/wp-content/uploads/2026/07/Resolucion-MTESS-N%C2%B0-670-REGLAMENTACION-SALARIO-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.horas-jornada-nocturna",
+      "nombre": "Horas de la jornada nocturna",
+      "tipo": "numero",
+      "unidad": "horas",
+      "nota": "Ley N° 496, artículo 194: 7 horas diarias y 42 semanales.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+            "titulo": "Resolución MTESS N° 670/2026 (reglamenta el Decreto N° 6.225/2026), artículo 1",
+            "url": "https://www.mtess.gov.py/wp-content/uploads/2026/07/Resolucion-MTESS-N%C2%B0-670-REGLAMENTACION-SALARIO-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.ips-trabajador",
+      "nombre": "Aporte del trabajador al IPS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Instituto de Previsión Social (IPS)",
+            "titulo": "Tabla N° 1 de bases mínimas imponibles y porcentajes de aportes al IPS, régimen general (Resolución MTESS N° 670/2026)",
+            "url": "https://portal.ips.gov.py/sistemas/ipsportal/contenido.php?c=372",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La tabla es una imagen dentro de la página: trabajador 9 %, empleador 16,5 %, total 25,5 %."
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.ips-empleador",
+      "nombre": "Aporte del empleador al IPS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 16.5,
+          "fuente": {
+            "organismo": "Instituto de Previsión Social (IPS)",
+            "titulo": "Tabla N° 1 de bases mínimas imponibles y porcentajes de aportes al IPS, régimen general (Resolución MTESS N° 670/2026)",
+            "url": "https://portal.ips.gov.py/sistemas/ipsportal/contenido.php?c=372",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La tabla es una imagen dentro de la página: trabajador 9 %, empleador 16,5 %, total 25,5 %."
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.bonificacion-familiar",
+      "nombre": "Bonificación familiar por hijo (sobre el salario mínimo)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 261",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.bonificacion-familiar-tope",
+      "nombre": "Salario máximo para cobrar bonificación familiar (sobre el salario mínimo)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 200,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 263",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.vacaciones-dias",
+      "nombre": "Días de vacaciones por antigüedad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "hasta-5": "Hasta 5 años",
+        "hasta-10": "Más de 5 y hasta 10 años",
+        "mas-10": "Más de 10 años"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "hasta-5": 12,
+            "hasta-10": 18,
+            "mas-10": 30
+          },
+          "fuente": {
+            "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+            "titulo": "Ley N° 496, que modifica el Código del Trabajo, artículo 218",
+            "url": "https://www.dnit.gov.py/web/portal-institucional/w/m-ley-n-496-94",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.preaviso-dias",
+      "nombre": "Días de preaviso por antigüedad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "hasta-1": "Hasta 1 año",
+        "hasta-5": "Más de 1 y hasta 5 años",
+        "hasta-10": "Más de 5 y hasta 10 años",
+        "mas-10": "Más de 10 años"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "hasta-1": 30,
+            "hasta-5": 45,
+            "hasta-10": 60,
+            "mas-10": 90
+          },
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 87",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.indemnizacion-dias-por-anio",
+      "nombre": "Salarios diarios de indemnización por año de servicio",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "Por cada año o fracción superior a seis meses.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+            "titulo": "Ley N° 496, que modifica el Código del Trabajo, artículo 91",
+            "url": "https://www.dnit.gov.py/web/portal-institucional/w/m-ley-n-496-94",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.recargo-hora-extra",
+      "nombre": "Recargo de la hora extra diurna",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 234",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.recargo-nocturno",
+      "nombre": "Recargo del trabajo nocturno",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 234",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.recargo-extra-nocturna",
+      "nombre": "Recargo de la hora extra nocturna (sobre la hora nocturna)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 234",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.recargo-feriado",
+      "nombre": "Recargo de la hora trabajada en feriado",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 234",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.iva-general",
+      "nombre": "IVA, tasa general",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+            "titulo": "IVA: principales características (tasas 5 % y 10 %); Ley N° 6380/2019, artículo 90",
+            "url": "https://www.dnit.gov.py/web/portal-institucional/iva",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.iva-reducida",
+      "nombre": "IVA, tasa reducida",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+            "titulo": "IVA: principales características (tasas 5 % y 10 %); Ley N° 6380/2019, artículo 90",
+            "url": "https://www.dnit.gov.py/web/portal-institucional/iva",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.irp-escala",
+      "nombre": "Escala del IRP por servicios personales (renta neta anual)",
+      "tipo": "escala",
+      "unidad": "PYG",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000000,
+              "tasa": 8
+            },
+            {
+              "desde": 50000000,
+              "hasta": 150000000,
+              "tasa": 9
+            },
+            {
+              "desde": 150000000,
+              "hasta": null,
+              "tasa": 10
+            }
+          ],
+          "fuente": {
+            "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+            "titulo": "Cartilla IRP, Rentas derivadas de la Prestación de Servicios Personales (Ley N° 6380/2019, artículos 62 y 69)",
+            "url": "https://www.dnit.gov.py/documents/20123/233435/IRP+RSP+Cartilla+6.08.24.pdf/bb45c6ef-0c98-771a-c530-ac893db6bce2?t=1722965031873.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La página del IRP de la DNIT (https://www.dnit.gov.py/web/portal-institucional/irp) confirma hoy las tasas de 8 %, 9 % y 10 %."
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.irp-monto-no-alcanzado",
+      "nombre": "Ingresos brutos anuales desde los que se paga IRP",
+      "tipo": "numero",
+      "unidad": "PYG",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 80000000,
+          "fuente": {
+            "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+            "titulo": "Cartilla IRP, Rentas derivadas de la Prestación de Servicios Personales (Ley N° 6380/2019, artículos 62 y 69)",
+            "url": "https://www.dnit.gov.py/documents/20123/233435/IRP+RSP+Cartilla+6.08.24.pdf/bb45c6ef-0c98-771a-c530-ac893db6bce2?t=1722965031873.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La página del IRP de la DNIT (https://www.dnit.gov.py/web/portal-institucional/irp) confirma hoy las tasas de 8 %, 9 % y 10 %."
+          }
+        }
+      ]
+    }
+  ]
+}
