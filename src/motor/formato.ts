@@ -127,8 +127,11 @@ function gruposValidos(entero: string, separador: string): boolean {
 // 3. Si aparece uno solo de los dos y es el decimal del locale, es decimal (una sola vez).
 // 4. Si es el separador de miles del locale: repetido o seguido de exactamente 3 dígitos, es miles;
 //    una sola vez con 1 o 2 dígitos detrás, se toma como decimal (quien escribe "1474,77" en es-PE).
+// 5. Con milesAmbiguos (campos de moneda y enteros): el decimal del locale como único separador,
+//    una sola vez y con exactamente 3 dígitos detrás ("5.000" en es-MX) da null. Quien lo escribe
+//    casi siempre quiso decir miles, y leerlo como 5 divide el resultado por mil sin avisar.
 // Cualquier otra forma devuelve null: se le pide a la persona que lo escriba de nuevo.
-export function parsearNumero(texto: string, locale: string): number | null {
+export function parsearNumero(texto: string, locale: string, opciones: { milesAmbiguos?: boolean } = {}): number | null {
   const sinEspacios = texto.replace(ESPACIOS, "");
   const negativo = /^[^\d]*-/.test(sinEspacios);
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
@@ -154,6 +157,7 @@ export function parsearNumero(texto: string, locale: string): number | null {
     if (sep === decLocale) {
       if (veces > 1) return null;
       [entero, fraccion] = limpio.split(sep);
+      if (opciones.milesAmbiguos && /[1-9]/.test(entero) && fraccion.length === 3) return null;
     } else {
       const [cabeza, ...resto] = limpio.split(sep);
       if (veces === 1 && resto[0].length !== 3) {
@@ -169,6 +173,20 @@ export function parsearNumero(texto: string, locale: string): number | null {
   const n = Number(`${entero || "0"}${fraccion ? `.${fraccion}` : ""}`);
   if (!Number.isFinite(n)) return null;
   return negativo ? -n : n;
+}
+
+// El número que la persona probablemente quiso escribir cuando parsearNumero lo rechazó por
+// milesAmbiguos ("5.000" da "5000"); null si el texto no es ese caso.
+export function sugerenciaMiles(texto: string, locale: string): { sugerido: string; separador: string } | null {
+  const sinEspacios = texto.replace(ESPACIOS, "");
+  const limpio = sinEspacios.replace(/[^\d.,]/g, "");
+  const dec = separadoresDe(locale).decimal;
+  const otro = dec === "." ? "," : ".";
+  if (limpio.includes(otro)) return null;
+  const partes = limpio.split(dec);
+  if (partes.length !== 2 || !/^\d*[1-9]\d*$/.test(partes[0]) || !/^\d{3}$/.test(partes[1])) return null;
+  const negativo = /^[^\d]*-/.test(sinEspacios);
+  return { sugerido: `${negativo ? "-" : ""}${String(Number(partes.join("")))}`, separador: dec };
 }
 
 export function parsearEntero(texto: string, locale: string): number | null {

@@ -12,6 +12,9 @@ import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
 import { CalculadoraIntl } from "./calculadora-intl";
 
+// Calculadora, fuentes y novedades dependen de la fecha del mercado (ver revalidate en layout.tsx).
+export const revalidate = 3600;
+
 type Props = { params: Promise<{ mercado: string; slug: string }> };
 
 // Lee el mismo registro filtrado que el layout: si uno se apaga y el otro no, las hojas se generan

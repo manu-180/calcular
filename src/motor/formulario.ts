@@ -1,5 +1,5 @@
 import { contextoDesdeSerializado, ErrorEntrada } from "./calculo";
-import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearFecha, parsearNumero } from "./formato";
+import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearFecha, parsearNumero, sugerenciaMiles } from "./formato";
 import { interpolar, type CodigoError, type TextosMotor } from "./textos";
 import type {
   AvisoResuelto,
@@ -10,6 +10,8 @@ import type {
   PropsCalculadora,
   ResultadoBase,
   ValorEntrada,
+  Idioma,
+  Trato,
   ValorResultado,
 } from "./tipos";
 
@@ -71,6 +73,15 @@ function ejemploDe(campo: Campo, locale: string): string {
   return formatearNumero(campo.tipo === "porcentaje" ? 12.5 : campo.tipo === "entero" ? 12 : 1234.5, locale, campo.tipo === "entero" ? 0 : undefined);
 }
 
+// Va acá y no en textos.ts porque lleva el número sugerido y el separador armados en la frase.
+function mensajeMilesAmbiguos(sugerido: string, separador: string, idioma: Idioma, trato: Trato): string {
+  if (idioma === "pt") return `Você quis dizer ${sugerido}? Escreva sem ${separador === "." ? "pontos" : "vírgulas"}.`;
+  const signos = separador === "." ? "puntos" : "comas";
+  if (trato === "usted") return `¿Quiso decir ${sugerido}? Escríbalo sin ${signos}.`;
+  if (trato === "vos") return `¿Quisiste decir ${sugerido}? Escribilo sin ${signos}.`;
+  return `¿Quisiste decir ${sugerido}? Escríbelo sin ${signos}.`;
+}
+
 export function parsearEntrada(
   campos: readonly Campo[],
   crudos: Crudos,
@@ -110,8 +121,11 @@ export function parsearEntrada(
         break;
       }
       default: {
-        const n = parsearNumero(texto, contexto.locale);
-        if (n === null) errores[c.id] = { codigo: "numero-invalido", params: { ejemplo: ejemploDe(c, contexto.locale) } };
+        const milesAmbiguos = c.tipo === "moneda" || c.tipo === "entero";
+        const n = parsearNumero(texto, contexto.locale, { milesAmbiguos });
+        const sugerencia = n === null && milesAmbiguos ? sugerenciaMiles(texto, contexto.locale) : null;
+        if (sugerencia) errores[c.id] = { mensaje: mensajeMilesAmbiguos(sugerencia.sugerido, sugerencia.separador, contexto.idioma, contexto.trato) };
+        else if (n === null) errores[c.id] = { codigo: "numero-invalido", params: { ejemplo: ejemploDe(c, contexto.locale) } };
         else if (c.tipo === "entero" && !Number.isInteger(n)) errores[c.id] = { codigo: "entero-invalido" };
         else if (c.min !== undefined && n < c.min) errores[c.id] = { codigo: "menor-que-min", params: { min: formatearNumero(c.min, contexto.locale) } };
         else if (c.max !== undefined && n > c.max) errores[c.id] = { codigo: "mayor-que-max", params: { max: formatearNumero(c.max, contexto.locale) } };
