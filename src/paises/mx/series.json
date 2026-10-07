@@ -1,0 +1,59 @@
+{
+  "mercado": "mx",
+  "series": [
+    {
+      "id": "mx.udis",
+      "nombre": "Valor de la UDI",
+      "unidad": "MXN",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Banco de México en el DOF",
+        "titulo": "Valor de la unidad de inversión (indicador 159 de la API del DOF)",
+        "url": "https://sidofqa.segob.gob.mx/dof/sidof/indicadores/159/25-09-2026/07-10-2026",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [
+        ["2026-09-25", 8.824423],
+        ["2026-09-26", 8.826356],
+        ["2026-09-27", 8.82829],
+        ["2026-09-28", 8.830224],
+        ["2026-09-29", 8.832158],
+        ["2026-09-30", 8.834094],
+        ["2026-10-01", 8.836029],
+        ["2026-10-02", 8.837965],
+        ["2026-10-03", 8.839901],
+        ["2026-10-04", 8.841838],
+        ["2026-10-05", 8.843775],
+        ["2026-10-06", 8.845713],
+        ["2026-10-07", 8.847651]
+      ]
+    },
+    {
+      "id": "mx.dolar-fix",
+      "nombre": "Tipo de cambio para solventar obligaciones en dólares (FIX publicado en el DOF)",
+      "unidad": "MXN",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 7,
+      "fuente": {
+        "organismo": "Banco de México en el DOF",
+        "titulo": "Tipo de cambio para solventar obligaciones denominadas en moneda extranjera (indicador 158 de la API del DOF)",
+        "url": "https://sidofqa.segob.gob.mx/dof/sidof/indicadores/158/25-09-2026/07-10-2026",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [
+        ["2026-09-25", 17.6425],
+        ["2026-09-28", 17.71],
+        ["2026-09-29", 17.8413],
+        ["2026-09-30", 18.071],
+        ["2026-10-01", 18.0692],
+        ["2026-10-02", 18.3688],
+        ["2026-10-05", 18.1903],
+        ["2026-10-06", 18.1343],
+        ["2026-10-07", 17.967]
+      ]
+    }
+  ]
+}
