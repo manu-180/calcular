@@ -1,0 +1,81 @@
+{
+  "mercado": "co",
+  "avisos": [
+    {
+      "id": "co.smmlv-en-juicio",
+      "nivel": "info",
+      "desde": "2026-07-17",
+      "hasta": "2026-12-31",
+      "aplicaA": [
+        "co.salario-minimo",
+        "co.liquidacion",
+        "co.prima-de-servicios",
+        "co.cesantias",
+        "co.salario-neto",
+        "co.auxilio-de-transporte",
+        "co.indemnizacion-por-despido",
+        "co.retencion-en-la-fuente"
+      ],
+      "titulo": "El decreto del salario mínimo sigue en juicio",
+      "texto": "El Consejo de Estado suspendió el Decreto 1469 de 2025 en febrero y levantó la suspensión en julio de 2026. El valor nunca cambió, pero el juicio de fondo sigue. Si el fallo cambia el salario mínimo, actualizamos estos cálculos.",
+      "fuente": {
+        "organismo": "Portafolio",
+        "titulo": "Consejo de Estado reactiva el aumento del 23 % del salario mínimo de 2026",
+        "url": "https://www.portafolio.co/economia/gobierno/consejo-de-estado-reactiva-el-aumento-del-23-del-salario-minimo-de-2026-esto-determino-498416",
+        "tipo": "secundaria",
+        "verificadoEl": "2026-10-07",
+        "nota": "No pudimos leer el auto del Consejo de Estado en fuente oficial."
+      }
+    },
+    {
+      "id": "co.reforma-pensional-2027",
+      "nivel": "cautela",
+      "desde": "2026-08-25",
+      "hasta": "2027-03-31",
+      "aplicaA": ["co.salario-neto", "co.retencion-en-la-fuente"],
+      "titulo": "La reforma pensional empieza en abril de 2027",
+      "texto": "La Corte Constitucional fijó el 1 de abril de 2027 como fecha de entrada en vigor de la reforma pensional (Ley 2381 de 2024). Ese día cambian los aportes al Fondo de Solidaridad Pensional. Hasta entonces se calcula con la regla actual, que es la que usa esta calculadora.",
+      "fuente": {
+        "organismo": "INCP",
+        "titulo": "Corte Constitucional declaró exequible la mayor parte de la reforma pensional",
+        "url": "https://incp.org.co/publicaciones/infoincp-publicaciones/informacion-para-empresas/2026/09/corte-constitucional-declaro-exequible-la-mayor-parte-de-la-reforma-pensional/",
+        "tipo": "secundaria",
+        "verificadoEl": "2026-10-07",
+        "nota": "Falta leer la Sentencia C-264 de 2026 en la relatoría de la Corte."
+      }
+    },
+    {
+      "id": "co.recargo-dominical-gradual",
+      "nivel": "info",
+      "desde": "2026-07-01",
+      "hasta": "2027-06-30",
+      "aplicaA": ["co.horas-extras"],
+      "titulo": "El recargo dominical sube por etapas",
+      "texto": "Desde el 1 de julio de 2026 el recargo por trabajar en domingo o festivo es del 90 %. Desde el 1 de julio de 2027 es del 100 %. La empresa puede pagar el 100 % desde antes si quiere.",
+      "fuente": {
+        "organismo": "Congreso de la República",
+        "titulo": "Ley 2466 de 2025, artículo 14",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=260676",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "co.proyecto-reforma-tributaria",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "hasta": "2026-12-31",
+      "aplicaA": ["co.retencion-en-la-fuente", "co.iva", "co.uvt"],
+      "titulo": "Hay un proyecto de reforma tributaria",
+      "texto": "En julio de 2026 se radicó en el Congreso un proyecto de reforma tributaria. Mientras no sea ley, rigen las tarifas actuales del Estatuto Tributario. Si se aprueba, actualizamos la calculadora.",
+      "fuente": {
+        "organismo": "PwC Colombia",
+        "titulo": "Proyecto de Ley Reforma Tributaria 2026, resumen ejecutivo",
+        "url": "https://legalytributarioenlinea.co.pwc.com/TLSTimes/boletines/Proyecto%20de%20Ley%20ReformaTributaria%202026%20-%20Resumen%20Ejecutivo.pdf",
+        "tipo": "secundaria",
+        "verificadoEl": "2026-10-07",
+        "nota": "No verificamos en qué etapa del trámite está el proyecto."
+      }
+    }
+  ]
+}
