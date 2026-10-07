@@ -48,6 +48,11 @@ Dónde quedó cada uno (reportes de pausa):
   escritos. Faltan avisos, novedades, los 11 textos, `index.ts`, checks y detectores.
 - **Guatemala** `38429ac` (WIP): solo `scripts/paises/gt/NOTAS-RETOMA.md` con todo lo verificado y el
   plan (11 calculadoras, usted, regiones ce1/ce2, Decreto 13-2026). Falta el código entero.
+- **Costa Rica** `96fa381` (WIP): `datos.json` (17 datos, 19 tramos verificados en SINALEVI y La
+  Gaceta) y `series.json` (BCCR, JSON público 317/318). Falta: `mercado.ts` (usted, es-CR, CRC),
+  `lib/fechas.ts`, las 11 calculadoras con casos, cliente y contenido, `fuentes.ts`, avisos,
+  novedades, `index.ts` y checks. El plan de cada fórmula está en su reporte (cesantía art. 29 con
+  tope de 8 años, preaviso art. 28).
 - **Paraguay**: sin trabajo propio; arranca de cero.
 
 Al retomar: `git fetch origin` y mirar el último commit de cada rama. Si dice `WIP:`, relanzar un
