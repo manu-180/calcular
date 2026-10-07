@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useId, useMemo, useState, type ComponentType, type FormEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType } from "react";
 import { ejecutar, mensajeDeError, opcionesDe, valoresIniciales, type Crudos, type EstadoCalculo } from "./formulario";
 import { textosMotor, type TextosMotor } from "./textos";
+import { PielCalculadora } from "./ui/PielCalculadora";
 import type { Campo, DefinicionCalculadora, OpcionDinamica, PropsCalculadora, Requisitos, ResultadoBase } from "./tipos";
 
 export interface CalculadoraControlada {
@@ -16,141 +17,77 @@ export interface CalculadoraControlada {
   calcular: () => void;
 }
 
-export function useCalculadora(definicion: DefinicionCalculadora, props: PropsCalculadora): CalculadoraControlada {
+// La parte visible de una calculadora (campos y filas): datos planos que el servidor puede mandar
+// como props. La función calcular() no cruza esa frontera y llega aparte.
+export type DefinicionVisible = Pick<DefinicionCalculadora, "id" | "campos" | "resultado">;
+
+type Fuente = () => DefinicionCalculadora | Promise<DefinicionCalculadora>;
+
+function useControl(visible: DefinicionVisible, props: PropsCalculadora, fuente: Fuente): CalculadoraControlada & { precargar: () => void } {
   const textos = useMemo(() => textosMotor(props.contexto.idioma, props.contexto.trato), [props.contexto.idioma, props.contexto.trato]);
-  const [crudos, setCrudos] = useState<Crudos>(() => valoresIniciales(definicion.campos, props.contexto, props.opcionesDinamicas));
+  const [crudos, setCrudos] = useState<Crudos>(() => valoresIniciales(visible.campos, props.contexto, props.opcionesDinamicas));
   const [estado, setEstado] = useState<EstadoCalculo>(() =>
     props.avisos.some((a) => a.nivel === "bloquea") ? { tipo: "bloqueado", avisos: props.avisos.filter((a) => a.nivel === "bloquea") } : { tipo: "inicial" },
   );
+  const pendiente = useRef<Promise<DefinicionCalculadora> | null>(null);
+  const resolver = useCallback((): DefinicionCalculadora | Promise<DefinicionCalculadora> => {
+    if (pendiente.current) return pendiente.current;
+    const r = fuente();
+    if (r instanceof Promise) {
+      pendiente.current = r;
+      r.catch(() => (pendiente.current = null));
+    }
+    return r;
+  }, [fuente]);
 
   const cambiar = useCallback((idCampo: string, valor: string | boolean) => setCrudos((prev) => ({ ...prev, [idCampo]: valor })), []);
-  const calcular = useCallback(() => setEstado(ejecutar(definicion, crudos, props, textos)), [definicion, crudos, props, textos]);
+  const calcular = useCallback(() => {
+    const def = resolver();
+    if (!(def instanceof Promise)) return setEstado(ejecutar(def, crudos, props, textos));
+    def.then(
+      (d) => setEstado(ejecutar(d, crudos, props, textos)),
+      (err) => {
+        console.error(`[${visible.id}] no se pudo cargar la calculadora`, err);
+        setEstado({ tipo: "fallo", mensaje: textos.errores["calculo-fallido"] });
+      },
+    );
+  }, [resolver, crudos, props, textos, visible.id]);
+  const precargar = useCallback(() => void Promise.resolve(resolver()).catch(() => {}), [resolver]);
   const error = useCallback(
     (idCampo: string) => (estado.tipo === "errores" && estado.errores[idCampo] ? mensajeDeError(estado.errores[idCampo], textos) : null),
     [estado, textos],
   );
   const opciones = useCallback((campo: Campo) => opcionesDe(campo, props.contexto, props.opcionesDinamicas), [props.contexto, props.opcionesDinamicas]);
 
-  return { campos: definicion.campos, crudos, estado, textos, opciones, error, cambiar, calcular };
+  return { campos: visible.campos, crudos, estado, textos, opciones, error, cambiar, calcular, precargar };
 }
 
-function CampoBasico({ campo, control, idBase }: { campo: Campo; control: CalculadoraControlada; idBase: string }) {
-  const id = `${idBase}-${campo.id}`;
-  const error = control.error(campo.id);
-  const describe = [campo.ayuda ? `${id}-ayuda` : null, error ? `${id}-error` : null].filter(Boolean).join(" ") || undefined;
-  const valor = control.crudos[campo.id];
-  const comunes = { id, name: campo.id, "aria-invalid": error ? true : undefined, "aria-describedby": describe };
-
-  let entrada;
-  if (campo.tipo === "si-no") {
-    entrada = <input {...comunes} type="checkbox" checked={valor === true} onChange={(ev) => control.cambiar(campo.id, ev.target.checked)} />;
-  } else if (campo.tipo === "opcion" || campo.tipo === "region" || campo.tipo === "opcion-dato") {
-    entrada = (
-      <select {...comunes} value={String(valor ?? "")} required={campo.requerido !== false} onChange={(ev) => control.cambiar(campo.id, ev.target.value)}>
-        <option value="" disabled>
-          {"…"}
-        </option>
-        {control.opciones(campo).map((o) => (
-          <option key={o.valor} value={o.valor}>
-            {o.etiqueta}
-          </option>
-        ))}
-      </select>
-    );
-  } else if (campo.tipo === "fecha") {
-    entrada = <input {...comunes} type="date" value={String(valor ?? "")} min={campo.min} max={campo.max} onChange={(ev) => control.cambiar(campo.id, ev.target.value)} />;
-  } else {
-    entrada = (
-      <input
-        {...comunes}
-        type="text"
-        inputMode={campo.tipo === "entero" ? "numeric" : "decimal"}
-        autoComplete="off"
-        value={String(valor ?? "")}
-        onChange={(ev) => control.cambiar(campo.id, ev.target.value)}
-      />
-    );
-  }
-
-  return (
-    <div data-campo={campo.id}>
-      <label htmlFor={id}>{campo.etiqueta}</label>
-      {entrada}
-      {campo.ayuda ? <p id={`${id}-ayuda`}>{campo.ayuda}</p> : null}
-      {error ? (
-        <p id={`${id}-error`} role="alert">
-          {error}
-        </p>
-      ) : null}
-    </div>
-  );
-}
-
-function ResultadoBasico({ control }: { control: CalculadoraControlada }) {
-  const { estado, textos } = control;
-  if (estado.tipo === "bloqueado") {
-    return (
-      <div>
-        <p>{textos.sinResultado}</p>
-        {estado.avisos.map((a) => (
-          <p key={a.id}>{a.texto}</p>
-        ))}
-      </div>
-    );
-  }
-  if (estado.tipo === "fallo") return <p role="alert">{estado.mensaje}</p>;
-  if (estado.tipo !== "ok") return null;
-  return (
-    <>
-      <table>
-        <caption>{textos.resultado}</caption>
-        <tbody>
-          {estado.filas.map((f) => (
-            <tr key={f.clave} data-destacada={f.destacada || undefined}>
-              <th scope="row">{f.etiqueta}</th>
-              <td>{f.texto}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {estado.observaciones.length ? (
-        <ul>
-          {estado.observaciones.map((o) => (
-            <li key={o}>{o}</li>
-          ))}
-        </ul>
-      ) : null}
-    </>
-  );
+export function useCalculadora(definicion: DefinicionCalculadora, props: PropsCalculadora): CalculadoraControlada {
+  const fuente = useCallback(() => definicion, [definicion]);
+  return useControl(definicion, props, fuente);
 }
 
 export function CalculadoraBasica({ definicion, ...props }: PropsCalculadora & { definicion: DefinicionCalculadora }) {
   const control = useCalculadora(definicion, props);
-  const idBase = useId();
-  const enviar = (ev: FormEvent<HTMLFormElement>) => {
-    ev.preventDefault();
-    control.calcular();
-  };
-  return (
-    <div data-calculadora={definicion.id}>
-      {props.avisos
-        .filter((a) => a.nivel !== "bloquea")
-        .map((a) => (
-          <p key={a.id} data-aviso={a.nivel}>
-            {a.texto}
-          </p>
-        ))}
-      <form onSubmit={enviar} noValidate>
-        {control.campos.map((c) => (
-          <CampoBasico key={c.id} campo={c} control={control} idBase={idBase} />
-        ))}
-        <button type="submit">{control.textos.calcular}</button>
-      </form>
-      <div aria-live="polite">
-        <ResultadoBasico control={control} />
-      </div>
-    </div>
-  );
+  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} />;
+}
+
+// Para el sitio intl: el formulario se pinta en el servidor con la parte visible y el código de
+// calcular() baja aparte, en un chunk propio, cuando el navegador está ocioso (o al primer
+// Calcular si todavía no llegó). Un Server Component que importa un Client Component con import()
+// no parte el bundle en Next 16: por eso la carga diferida vive del lado del cliente.
+export function CalculadoraDiferida({ definicion, cargar, ...props }: PropsCalculadora & { definicion: DefinicionVisible; cargar: () => Promise<DefinicionCalculadora> }) {
+  const control = useControl(definicion, props, cargar);
+  const { precargar } = control;
+  useEffect(() => {
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(precargar, { timeout: 2500 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = setTimeout(precargar, 800);
+    return () => clearTimeout(t);
+  }, [precargar]);
+  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} />;
 }
 
 export function crearCalculadoraCliente<C extends readonly Campo[], Q extends Requisitos, R extends ResultadoBase>(

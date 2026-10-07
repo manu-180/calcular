@@ -1,0 +1,133 @@
+import type { Trato } from "../tipos";
+import type { TextosSitio } from "./tipos";
+
+// Neutro para toda Latinoamérica. Donde se puede, sin conjugar (títulos, botones con infinitivo o
+// sustantivo); donde no, en tú, con las variantes de vos y usted abajo.
+export const es: TextosSitio = {
+  marca: { nombre: "CalcularYa", lema: "Calculadoras con datos oficiales" },
+  saltar: "Ir al contenido",
+  header: {
+    inicio: "Inicio",
+    elegirPais: "Elegir país",
+    paisActual: (pais) => `País: ${pais}`,
+    cerrar: "Cerrar",
+    todos: "Todos los países",
+    latinoamerica: "Latinoamérica",
+  },
+  footer: {
+    paises: "Países",
+    sitio: "CalcularYa",
+    fuentes: "Fuentes oficiales",
+    novedades: "Novedades",
+    privacidad: "Privacidad",
+    terminos: "Términos de uso",
+    contacto: "Contacto",
+    sobre: "Quiénes somos",
+    argentina: "¿Estás en Argentina? Tus calculadoras están en calcular.ar",
+    descargo: "Los resultados son orientativos. Para una decisión importante, confírmalos con el organismo oficial o con un profesional.",
+    derechos: (anio) => `© ${anio} CalcularYa`,
+  },
+  sello: {
+    titulo: "Datos oficiales actualizados",
+    verificado: (organismos, fecha) => `Datos verificados en ${organismos}, actualizado el ${fecha}.`,
+    serie: (nombre, organismo, fecha) => `${nombre} se actualiza solo desde ${organismo}. Último dato: ${fecha}.`,
+    verTodas: "Ver todas las fuentes",
+  },
+  calculadora: {
+    comoSeCalcula: "Cómo se calcula",
+    ejemplo: "Un ejemplo",
+    faq: "Preguntas frecuentes",
+    glosario: "Palabras clave",
+    relacionadas: "Otras calculadoras",
+    otrosPaises: "La misma cuenta en otros países",
+  },
+  global: {
+    eyebrow: "Latinoamérica",
+    titulo: "Las cuentas del trabajo, con los datos oficiales de tu país",
+    bajada: "Aguinaldo, liquidación, sueldo neto y más. Cada cifra sale de la fuente oficial, con su fecha y el enlace para revisarla.",
+    elegir: "Elige tu país",
+    calculadoras: (n) => (n === 1 ? "1 calculadora" : `${n} calculadoras`),
+    vacio: "Estamos sumando países. Mientras tanto, las calculadoras de Argentina están en calcular.ar.",
+    promesaTitulo: "Cómo trabajamos",
+    promesas: [
+      { titulo: "Dato oficial, con fuente", texto: "Cada valor muestra el organismo que lo publica, el enlace y la fecha en que lo revisamos." },
+      { titulo: "Siempre al día", texto: "Cuando cambia un valor, la calculadora cambia con él. Cada cambio queda en novedades." },
+      { titulo: "Gratis y sin registro", texto: "La cuenta se hace en tu navegador. No pedimos datos personales." },
+    ],
+  },
+  pais: {
+    eyebrow: "Datos oficiales actualizados",
+    titulo: (pais) => `Calculadoras de ${pais}`,
+    bajada: (pais) => `Con los valores vigentes en ${pais}, la fuente de cada uno y la fecha en que lo revisamos.`,
+    novedades: "Últimas novedades",
+    verNovedades: "Ver todas las novedades",
+    sinCalculadoras: "Todavía no hay calculadoras publicadas para este país.",
+    descripcion: (pais) => `Calculadoras de ${pais} con datos oficiales: el valor vigente, la fuente y la fecha de revisión de cada uno.`,
+  },
+  fuentes: {
+    titulo: (pais) => `Fuentes y datos de ${pais}`,
+    bajada: "Todos los valores que usan las calculadoras, con su vigencia y el enlace a la fuente oficial.",
+    vigente: "Valor vigente",
+    desde: "Desde",
+    hasta: "Hasta",
+    fuente: "Fuente",
+    verificado: "Revisado el",
+    region: "Zona",
+    series: "Valores que se actualizan solos",
+    ultimoDato: "Último dato",
+    sinVerificar: "Sin dato verificado para hoy",
+    tramos: (n) => `Tabla de ${n} tramos`,
+    description: (pais) => `Los datos oficiales de ${pais} que usan las calculadoras: valor vigente, desde cuándo rige, fuente y fecha de revisión.`,
+  },
+  novedades: {
+    titulo: (pais) => `Novedades de ${pais}`,
+    bajada: "Los cambios en las normas que mueven las calculadoras, con la fecha en que empiezan a regir.",
+    vigenteDesde: (fecha) => `Rige desde el ${fecha}`,
+    vacio: "Todavía no hay novedades para este país.",
+    description: (pais) => `Cambios en salarios mínimos, aportes y otras normas de ${pais}, con la fecha en que rigen y su fuente oficial.`,
+  },
+  avisoPais: {
+    texto: (pais) => `Parece que estás en ${pais}.`,
+    ir: (pais) => `Ver calculadoras de ${pais}`,
+    cerrar: "Cerrar aviso",
+  },
+  noEncontrada: {
+    titulo: "No encontramos esta página",
+    texto: "Puede que la dirección tenga un error o que la página ya no exista.",
+    volver: "Ir al inicio",
+    paises: "O elige un país",
+  },
+  categorias: {
+    sueldo: "Sueldo y pagos extra",
+    fin: "Fin del trabajo",
+    impuestos: "Aportes e impuestos",
+    dinero: "Dinero e índices",
+    familia: "Familia y hogar",
+    otras: "Otras calculadoras",
+  },
+  migas: { inicio: "Inicio", etiqueta: "Dónde estás" },
+};
+
+const porTrato: Record<Exclude<Trato, "tu">, (base: TextosSitio) => TextosSitio> = {
+  vos: (b) => ({
+    ...b,
+    footer: { ...b.footer, descargo: "Los resultados son orientativos. Para una decisión importante, confirmalos con el organismo oficial o con un profesional." },
+    global: { ...b.global, elegir: "Elegí tu país" },
+    noEncontrada: { ...b.noEncontrada, paises: "O elegí un país" },
+  }),
+  usted: (b) => ({
+    ...b,
+    footer: {
+      ...b.footer,
+      argentina: "¿Está en Argentina? Sus calculadoras están en calcular.ar",
+      descargo: "Los resultados son orientativos. Para una decisión importante, confírmelos con el organismo oficial o con un profesional.",
+    },
+    global: { ...b.global, elegir: "Elija su país" },
+    avisoPais: { ...b.avisoPais, texto: (pais) => `Parece que está en ${pais}.` },
+    noEncontrada: { ...b.noEncontrada, paises: "O elija un país" },
+  }),
+};
+
+export function textosEs(trato: Trato): TextosSitio {
+  return trato === "tu" ? es : porTrato[trato](es);
+}
