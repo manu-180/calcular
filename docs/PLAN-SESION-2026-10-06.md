@@ -102,3 +102,24 @@ PR aparte y urgente: #8, el sitio no se actualizaba solo desde el 28/9 (planilla
 - /indemnizacion-art: «$114.354.110» y «Res. SRT 39/2026» a mano en OG, imagen OG y FAQ (usar PISOS y VIGENCIA_ART).
 - /inflacion: modificado "2026-06-15" fijo en articleSchema y datasetSchema.
 - /jubilacion: $70.000 del bono a mano en dos FAQs (usar BONO_VIGENTE.monto).
+
+## Estado al 7/10/2026, 12:57 (fin del segundo bloque de trabajo)
+
+Integrado y verificado sobre el árbol completo (tsc limpio, check-all 121/121, build OK):
+
+- Redacción humana de toda la Argentina: 7 tandas, 2.116 rayas → 0 en texto visible (13 citas
+  textuales de la ley en lista explícita). Titles y descriptions de la auditoría aplicados; el aviso
+  de títulos largos bajó de 95 a 71 páginas. Gate nuevo: check_guiones.
+- Opiniones de usuarios: /cuenta/opiniones, bandeja en /dashboard/opiniones, link en el menú de
+  cuenta y en /cuenta, gate check_opiniones (59 pruebas). FALTA aplicar la migración
+  supabase/migrations/20261007120000_ca_opiniones.sql en el proyecto wsmsspeeeujynqornyrj (no hay
+  acceso desde esta máquina): hacerlo ANTES de mergear el PR #7.
+- Spike de Next 16 para multi-dominio: docs/adr/0001-spike-next16.md.
+- Keyword Planner no disponible: el developer token de Google Ads no está aprobado (test access).
+
+## Próxima ronda (al volver, 14:57)
+
+1. Corregir los datos viejos de la lista de arriba (un agente Opus, archivos disjuntos por página).
+2. Actualizar el ADR con el spike y arrancar la Fase 0 multi-país (base sin ningún país público,
+   AR idéntico; 404 de AR con su header y footer en app/not-found.tsx).
+3. Revisión visual en el navegador de las páginas reescritas (375 y 1280 px).
