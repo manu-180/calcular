@@ -109,25 +109,25 @@ export const PROPINAS_FUENTES: { consultadoEl: string; lista: FuentePropinas[] }
   consultadoEl: "2026-08-15",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 104 con el texto sustituido por el art. 32 de la Ley 27.802 («en ningún caso las propinas podrán ser consideradas como remuneración»), art. 104 bis incorporado por el art. 33, art. 103 bis sustituido por el art. 31, art. 105 (prestaciones complementarias) y art. 113 con su nota de derogación por el art. 207.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La reforma que sustituyó ~54 artículos de la LCT. Art. 31 (beneficios sociales), art. 32 (propinas), art. 33 (otros componentes remunerativos) y art. 207 (derogación del art. 113). Vigencia: desde la publicación, sin efecto retroactivo.",
     },
     {
-      nombre: "LCT art. 245 — indemnización por antigüedad",
+      nombre: "LCT art. 245: indemnización por antigüedad",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "La base es la mejor remuneración mensual, normal y habitual. Al salir las propinas de la remuneración, salen también de esa base: es el rubro donde la reforma mueve más plata.",
     },
     {
-      nombre: "Ley 24.241 art. 11, Ley 23.660 y Ley 19.032 — aportes del trabajador",
+      nombre: "Ley 24.241 art. 11, Ley 23.660 y Ley 19.032: aportes del trabajador",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/639/texact.htm",
       detalle:
         "11% de jubilación, 3% de obra social y 3% de PAMI: el 17% que se calcula sobre la remuneración y que, por definición, no se calcula sobre lo que no es remuneración.",

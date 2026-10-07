@@ -78,7 +78,7 @@ export const SUPUESTOS_RESERVA: SupuestoReserva[] = [
     titulo: "Del servicio militar y convocatorias especiales",
     quien: "Convocatoria militar, llamado ordinario, movilización o convocatorias especiales",
     cubriaElArt216: true,
-    nota: "El servicio militar obligatorio dejó de existir con la Ley 24.429 (servicio militar voluntario), pero su art. 19 conserva una convocatoria excepcional —cuando no se cubren los cupos de voluntarios y el Congreso la autoriza por ley— además de la movilización. El artículo no es letra muerta: es un supuesto poco frecuente.",
+    nota: "El servicio militar obligatorio dejó de existir con la Ley 24.429 (servicio militar voluntario), pero su art. 19 conserva una convocatoria excepcional (cuando no se cubren los cupos de voluntarios y el Congreso la autoriza por ley), además de la movilización. El artículo no es letra muerta: es un supuesto poco frecuente.",
   },
   {
     id: "electivo",
@@ -97,7 +97,7 @@ export const SUPUESTOS_RESERVA: SupuestoReserva[] = [
       "Del desempeño de cargos electivos o representativos en asociaciones profesionales de trabajadores con personería gremial",
     quien: "Cargos gremiales o representación sindical",
     cubriaElArt216: false,
-    nota: "El único de los tres que conserva protección expresa en su propio artículo: «no pudiendo ser despedidos durante los plazos que fije la ley respectiva». El art. 216 nunca lo nombró —hablaba de «los artículos 214 o 215»—, así que su derogación no le quita nada, y además le queda la Ley 23.551.",
+    nota: "El único de los tres que conserva protección expresa en su propio artículo: «no pudiendo ser despedidos durante los plazos que fije la ley respectiva». El art. 216 nunca lo nombró (hablaba de «los artículos 214 o 215»), así que su derogación no le quita nada, y además le queda la Ley 23.551.",
   },
 ];
 
@@ -131,31 +131,31 @@ export const RESERVA_FUENTES: { consultadoEl: string; lista: FuenteReserva[] } =
   consultadoEl: "2026-08-25",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Arts. 214, 215 y 217 con su texto completo e intacto, y el art. 216 reducido a la nota de derogación por el art. 207 de la Ley 27.802. Ninguno de los cuatro figura en los «Antecedentes Normativos»: llegaron sin una sola modificación desde el texto ordenado de 1976.",
     },
     {
-      nombre: "El art. 216 antes de la derogación — captura del texto oficial (Internet Archive)",
+      nombre: "El art. 216 antes de la derogación: captura del texto oficial (Internet Archive)",
       url: "https://web.archive.org/web/20251215041122/https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "La misma página de InfoLEG capturada el 15 de diciembre de 2025, antes de la reforma. De ahí sale el texto del art. 216 que se cita en esta página: el texact vigente ya no lo trae, sólo la nota.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial (InfoLEG)",
+      nombre: "Ley 27.802, texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Art. 207: la derogación de nueve artículos de la LCT (28, 54, 61, 113, 174, 175, 176, 216 y 275), sin fecha diferida.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia. La nota del art. 216 dice «a partir de su publicación en el Boletín Oficial»: rige derogado desde marzo de 2026, no desde 2027.",
     },
     {
-      nombre: "Ley 24.429 — Servicio Militar Voluntario (InfoLEG)",
+      nombre: "Ley 24.429: Servicio Militar Voluntario (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=802",
       detalle:
         "Su art. 19 conserva la convocatoria excepcional de ciudadanos cuando no se cubren los cupos de voluntarios, previa autorización del Congreso por ley. Es lo que impide tratar al art. 214 de la LCT como letra muerta.",

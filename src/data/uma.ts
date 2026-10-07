@@ -192,19 +192,19 @@ export const TEXTO_19 =
 
 export const FUENTES = [
   {
-    titulo: "Ley 27.423 — texto actualizado (arts. 19, 51, 60, 61 y 61 bis)",
+    titulo: "Ley 27.423, texto actualizado (arts. 19, 51, 60, 61 y 61 bis)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=305057",
   },
   {
-    titulo: "Ley 27.802 — Título IV, arts. 95 a 97",
+    titulo: "Ley 27.802: Título IV, arts. 95 a 97",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=423680",
   },
   {
-    titulo: "CSJN — valores de la UMA (todas las resoluciones, con su PDF)",
+    titulo: "CSJN: valores de la UMA (todas las resoluciones, con su PDF)",
     url: "https://www.csjn.gov.ar/transparencia/uma",
   },
   {
-    titulo: `CSJN — Resolución SGA ${UMA_VIGENTE.resolucion}, la que fija la UMA vigente`,
+    titulo: `CSJN: Resolución SGA ${UMA_VIGENTE.resolucion}, la que fija la UMA vigente`,
     url: `https://www.csjn.gov.ar/documentos/descargar?ID=${UMA_VIGENTE.docId}`,
   },
 ];

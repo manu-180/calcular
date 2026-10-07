@@ -49,29 +49,29 @@ export const JUBILADOS_FUENTES = {
   consultadoEl: "22 de septiembre de 2026",
   lista: [
     {
-      nombre: "Ley de Impuesto a las Ganancias (t.o. Decreto 824/2019), art. 30 — texto actualizado",
+      nombre: "Ley de Impuesto a las Ganancias (t.o. Decreto 824/2019), art. 30, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
       detalle:
         "la deducción específica de ocho haberes mínimos, a qué deducciones reemplaza, cuándo se pierde y la doceava parte del apartado 2 (texto de la Ley 27.743).",
     },
     {
-      nombre: "Resolución General AFIP 4003 — texto actualizado",
+      nombre: "Resolución General AFIP 4003, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/270000-274999/272231/texact.htm",
       detalle:
         "Anexo II, apartado E: las condiciones de la específica en el régimen de retención; apartado C: la doceava parte del aguinaldo que se suma cada mes.",
     },
     {
-      nombre: "ISSyS (Chubut), agente de retención — Preguntas frecuentes sobre retenciones de Ganancias",
+      nombre: "ISSyS (Chubut), agente de retención: Preguntas frecuentes sobre retenciones de Ganancias",
       url: "https://www.issys.gov.ar/wp-content/uploads/2024/08/Preguntas-Frecuentes-2024.pdf",
       detalle: "cómo acumula mes a mes la suma de los haberes mínimos un agente de retención previsional.",
     },
     {
-      nombre: "ARCA — Deducciones personales art. 30 LIG (julio a diciembre 2026)",
+      nombre: "ARCA: Deducciones personales art. 30 LIG (julio a diciembre 2026)",
       url: "https://www.afip.gob.ar/gananciasYBienes/ganancias/personas-humanas-sucesiones-indivisas/deducciones/documentos/Deducciones-personales-art-30-jul-dic-2026.pdf",
       detalle: "ganancia no imponible, cargas de familia y deducción especial del apartado 2.",
     },
     {
-      nombre: "ANSES — serie oficial del haber mínimo garantizado (datos.gob.ar)",
+      nombre: "ANSES: serie oficial del haber mínimo garantizado (datos.gob.ar)",
       url: "https://apis.datos.gob.ar/series/api/series/?ids=58.1_MP_0_M_24&format=json&limit=5000&start_date=2024-01-01",
       detalle: "el haber mínimo de cada mes, que es la unidad de la deducción específica.",
     },

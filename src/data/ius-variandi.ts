@@ -170,32 +170,32 @@ export const IUS_VARIANDI_FUENTES: { consultadoEl: string; lista: FuenteIusVaria
   consultadoEl: "2026-08-26",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Arts. 66 y 68 con su texto vigente y sus notas de sustitución por los arts. 23 y 24 de la Ley 27.802, más los arts. 65, 67, 69 y 246, que la reforma no tocó (ninguno de ellos lleva nota).",
     },
     {
       nombre:
-        "Los arts. 66 y 68 antes de la sustitución — captura del texto oficial (Internet Archive)",
+        "Los arts. 66 y 68 antes de la sustitución: captura del texto oficial (Internet Archive)",
       url: "https://web.archive.org/web/20251215041122/https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "La misma página de InfoLEG capturada el 15 de diciembre de 2025, antes de la reforma. De ahí salen los textos anteriores que se citan acá, incluida la acción de restablecimiento por vía sumarísima y la cláusula de dignidad y abuso del derecho del art. 68.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial (InfoLEG)",
+      nombre: "Ley 27.802, texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Sus arts. 23 y 24 son los que sustituyen los arts. 66 y 68 de la LCT. Las notas fijan la vigencia «a partir de su publicación en el Boletín Oficial».",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia. Un cambio de condiciones dispuesto antes de esa fecha se rige por los textos anteriores, con la acción de restablecimiento todavía disponible.",
     },
     {
-      nombre: "Ley 26.088 (B.O. 24/4/2006) — InfoLEG, id 115745",
+      nombre: "Ley 26.088 (B.O. 24/4/2006): InfoLEG, id 115745",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=115745",
       detalle:
         "La reforma de 2006 que había puesto en el art. 66 la opción de accionar por el restablecimiento y la prohibición de innovar. Es la que la Ley 27.802 revirtió: por eso la nota del texto anterior la citaba como su fuente.",

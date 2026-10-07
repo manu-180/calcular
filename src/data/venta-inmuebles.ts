@@ -121,25 +121,25 @@ export const VENTA_INMUEBLES_FUENTES: {
   consultadoEl: "2026-08-30",
   lista: [
     {
-      nombre: "Ley de Impuesto a las Ganancias, t.o. 2019 — TEXTO ACTUALIZADO (InfoLEG)",
+      nombre: "Ley de Impuesto a las Ganancias, t.o. 2019, TEXTO ACTUALIZADO (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
       detalle:
         "El art. 99 con la alícuota del 15%, la regla del costo actualizado de su inciso a) y los gastos computables; el art. 26 inc. n) con la exención desde el 1/1/2026 y la nota que la atribuye al art. 192 de la Ley 27.802; el art. 100, que impide deducir contra esta ganancia los conceptos de los arts. 29, 30 y 85; y el párrafo que manda actualizar por IPC del INDEC las adquisiciones desde 2018.",
     },
     {
-      nombre: "Ley 27.430, art. 86 inc. a) — texto oficial (InfoLEG)",
+      nombre: "Ley 27.430, art. 86 inc. a), texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/305000-309999/305262/norma.htm",
       detalle:
         "La regla de transición que decide todo: el cedular alcanza sólo a quien adquirió el inmueble a partir del 1/1/2018, y para esos casos deja expresamente afuera al Título VII de la Ley 23.905 (el ITI). Es el artículo que parte el universo en dos mitades por fecha de compra.",
     },
     {
-      nombre: "Ley 23.905, Título VII (ITI) — TEXTO ACTUALIZADO (InfoLEG)",
+      nombre: "Ley 23.905, Título VII (ITI), TEXTO ACTUALIZADO (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/305/texact.htm",
       detalle:
         "Los dieciocho artículos del Impuesto a la Transferencia de Inmuebles figuran hoy como derogados por el art. 67 de la Ley 27.743 (B.O. 8/7/2024), con vigencia desde su publicación. Es la prueba de que el ITI ya no existe, y por eso esta página no publica su alícuota.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial, art. 192 (Título XXIV)",
+      nombre: "Ley 27.802, texto oficial, art. 192 (Título XXIV)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "El artículo que sustituyó el inc. n) del art. 26 de la LIG e incorporó las dos exenciones: la del alquiler de casa habitación y la de la enajenación de inmuebles alcanzada por el art. 99, para operaciones desde el 1/1/2026.",

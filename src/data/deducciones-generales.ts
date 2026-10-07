@@ -124,7 +124,7 @@ export const DEDUCCIONES_GENERALES_FUENTES = {
   consultadoEl: "16 de septiembre de 2026",
   lista: [
     {
-      nombre: "Ley de Impuesto a las Ganancias (t.o. Dec. 824/2019), art. 85 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Impuesto a las Ganancias (t.o. Dec. 824/2019), art. 85, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
       detalle:
         "los incisos a) intereses hipotecarios, b) seguros de vida y mixtos, c) donaciones, f) prepaga, g) honorarios médicos e i) seguros de retiro; el párrafo que define la base del 5% y el que manda ajustar los topes de seguros por el IPC de octubre.",
@@ -136,18 +136,18 @@ export const DEDUCCIONES_GENERALES_FUENTES = {
         "sustituyó el último párrafo del art. 85 con efecto desde el año fiscal 2023: los montos del Dec. 18/2023 se ajustan cada año por la variación del IPC de octubre contra octubre.",
     },
     {
-      nombre: "Decreto 18/2023 (B.O. 13/1/2023), art. 11 — según la nota de InfoLEG al art. 85",
+      nombre: "Decreto 18/2023 (B.O. 13/1/2023), art. 11: según la nota de InfoLEG al art. 85",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm#dec18",
       detalle:
         "fijó en $42.921,24 el tope de los incisos b) e i) para el período fiscal 2022: la base del ajuste. ARCA publica el mismo número para 2022.",
     },
     {
-      nombre: "INDEC — IPC nivel general, serie oficial (apis.datos.gob.ar)",
+      nombre: "INDEC: IPC nivel general, serie oficial (apis.datos.gob.ar)",
       url: "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=1000",
       detalle: "los índices de octubre de cada año, de donde sale el coeficiente del ajuste.",
     },
     {
-      nombre: "ARCA — Deducciones generales (conceptos y topes)",
+      nombre: "ARCA: Deducciones generales (conceptos y topes)",
       url: "https://www.afip.gob.ar/gananciasYBienes/ganancias/personas-humanas-sucesiones-indivisas/deducciones/deducciones-generales.asp",
       detalle:
         "la tabla de topes de seguros por año, los $20.000 de intereses hipotecarios y los $996,23 de sepelio. Sirve de control cruzado: la derivación reproduce al centavo los cuatro años publicados con ajuste.",

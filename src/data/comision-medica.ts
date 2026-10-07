@@ -164,7 +164,7 @@ export const REGLAS_CM: ReglaCM[] = [
     id: "no-registrado",
     titulo: "Si el empleador no tenía ART, no hay que pasar por la comisión médica",
     texto:
-      "El trabajador de una relación no registrada con un empleador del apartado 1 del art. 28 de la Ley 24.557 —el que no contrató aseguradora— no está obligado a la instancia administrativa y tiene la vía judicial expedita. Es una excepción escrita en el mismo artículo que crea la obligación.",
+      "El trabajador de una relación no registrada con un empleador del apartado 1 del art. 28 de la Ley 24.557 (el que no contrató aseguradora) no está obligado a la instancia administrativa y tiene la vía judicial expedita. Es una excepción escrita en el mismo artículo que crea la obligación.",
     norma: "Ley 27.348, art. 1°, párrafo 3",
   },
   {
@@ -185,7 +185,7 @@ export const REGLAS_CM: ReglaCM[] = [
     id: "piso-homologacion",
     titulo: "No se puede homologar un acuerdo por menos de lo que manda la ley",
     texto:
-      "El Servicio de Homologación tiene prohibido homologar una propuesta cuyo monto sea menor al que surge de la estricta aplicación de la Ley 24.557. Se puede acordar por MÁS —el Anexo lo prevé expresamente cuando la disconformidad es sobre el importe—, nunca por menos.",
+      "El Servicio de Homologación tiene prohibido homologar una propuesta cuyo monto sea menor al que surge de la estricta aplicación de la Ley 24.557. Se puede acordar por MÁS, nunca por menos (el Anexo lo prevé expresamente cuando la disconformidad es sobre el importe).",
     norma: "Ley 27.348, Anexo I, art. 3°",
   },
   {
@@ -199,14 +199,14 @@ export const REGLAS_CM: ReglaCM[] = [
     id: "accion-civil",
     titulo: "La acción civil también espera: no se puede saltear la instancia",
     texto:
-      "Las acciones fundadas en otros sistemas de responsabilidad —la civil— sólo pueden iniciarse una vez agotada la vía administrativa o vencido el plazo legal para dictar la resolución. La valla no es sólo para el reclamo sistémico.",
+      "Las acciones fundadas en otros sistemas de responsabilidad (la civil) sólo pueden iniciarse una vez agotada la vía administrativa o vencido el plazo legal para dictar la resolución. La valla no es sólo para el reclamo sistémico.",
     norma: "Ley 27.348, art. 15 (sustituye el 4º párr. del art. 4° de la Ley 26.773)",
   },
   {
     id: "efecto-recursos",
     titulo: "Los recursos suspenden el pago, salvo en dos casos",
     texto:
-      "Los recursos proceden en relación y con efecto SUSPENSIVO. Hay dos excepciones donde el efecto es devolutivo —o sea, se cumple igual mientras se discute—: cuando la ART apela ante la Comisión Médica Central en el supuesto del art. 6° ap. 2 pto. c) de la Ley 24.557, y cuando apela por reagravamiento del accidente o la enfermedad.",
+      "Los recursos proceden en relación y con efecto SUSPENSIVO. Hay dos excepciones donde el efecto es devolutivo (o sea, se cumple igual mientras se discute): cuando la ART apela ante la Comisión Médica Central en el supuesto del art. 6° ap. 2 pto. c) de la Ley 24.557, y cuando apela por reagravamiento del accidente o la enfermedad.",
     norma: "Ley 27.348, art. 2°",
   },
   {
@@ -220,7 +220,7 @@ export const REGLAS_CM: ReglaCM[] = [
     id: "extincion-afiliacion",
     titulo: "Si el empleador dejó de pagar la ART, la cobertura no cae el mismo día",
     texto:
-      "La aseguradora puede extinguir el contrato por dos cuotas impagas, consecutivas o alternadas. Pero aun extinguido, debe otorgar prestaciones EN ESPECIE por las contingencias ocurridas dentro de los tres meses posteriores —después repite el costo del empleador—. Desde la extinción, el empleador queda como no asegurado.",
+      "La aseguradora puede extinguir el contrato por dos cuotas impagas, consecutivas o alternadas. Pero aun extinguido, debe otorgar prestaciones EN ESPECIE por las contingencias ocurridas dentro de los tres meses posteriores, y después le reclama ese costo al empleador. Desde la extinción, el empleador queda como no asegurado.",
     norma: "Art. 27 ap. 6 de la Ley 24.557 (incorporado por el art. 12 de la 27.348)",
   },
   {
@@ -235,24 +235,24 @@ export const REGLAS_CM: ReglaCM[] = [
 export const CM_FUENTES = {
   consultadoEl: CM_VIGENCIA.consultadoEl,
   principal: {
-    nombre: "Ley 27.348 — texto actualizado (InfoLEG)",
+    nombre: "Ley 27.348, texto actualizado (InfoLEG)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/270000-274999/272119/texact.htm",
   },
   lista: [
     {
-      nombre: "Ley 27.348 — texto actualizado (InfoLEG)",
+      nombre: "Ley 27.348, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/270000-274999/272119/texact.htm",
       detalle:
         "Complementaria de la Ley sobre Riesgos del Trabajo. Título I (comisiones médicas), arts. 1° a 4° bis; Título III, arts. 10 a 21; y el Anexo I con el procedimiento del Servicio de Homologación.",
     },
     {
-      nombre: "Ley 24.557 — Riesgos del Trabajo (InfoLEG)",
+      nombre: "Ley 24.557: Riesgos del Trabajo (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=27971",
       detalle:
         "Art. 7° (incapacidad temporaria), art. 12 (ingreso base), art. 27 ap. 6 (extinción de la afiliación), art. 28 ap. 1 (empleador no asegurado) y art. 46 (competencia judicial).",
     },
     {
-      nombre: "Ley 26.773 — ordenamiento de la reparación (InfoLEG)",
+      nombre: "Ley 26.773: ordenamiento de la reparación (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=203798",
       detalle:
         "Art. 4° (opción excluyente, con su 4º párrafo sustituido por el art. 15 de la 27.348) y art. 17 bis (actualización por RIPTE de pisos y compensaciones).",

@@ -135,15 +135,15 @@ export const MES_PREVISIONAL_SIN_BONO: string | null =
 
 export const PRESTACIONES_FUENTES = {
   movilidad: {
-    nombre: "Decreto 274/2024 — movilidad mensual por IPC con dos meses de rezago",
+    nombre: "Decreto 274/2024: movilidad mensual por IPC con dos meses de rezago",
     url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/305905/20240322",
   },
   puam: {
-    nombre: "Ley 27.260, art. 13 — la PUAM equivale al 80% del haber mínimo garantizado",
+    nombre: "Ley 27.260, art. 13: la PUAM equivale al 80% del haber mínimo garantizado",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/260000-264999/263691/texact.htm",
   },
   pbu: {
-    nombre: "Ley 24.241, art. 20 — Prestación Básica Universal",
+    nombre: "Ley 24.241, art. 20: Prestación Básica Universal",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/639/texact.htm",
   },
   consultadoEl: "28 de septiembre de 2026",

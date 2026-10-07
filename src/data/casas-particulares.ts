@@ -347,7 +347,7 @@ export const CASAS_PARTICULARES_FUENTES: {
   consultadoEl: "2026-09-28",
   lista: [
     {
-      nombre: "Resolución CNTCP 7/2026 — rectifica los Anexos 4 y 5 (noviembre y diciembre)",
+      nombre: "Resolución CNTCP 7/2026: rectifica los Anexos 4 y 5 (noviembre y diciembre)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/347648/20260918",
       detalle:
         "B.O. 18/9/2026. Corrige los números de informe de los anexos de noviembre y diciembre de la 6/2026: los anexos correctos aplican el 1,6% del articulado. De acá salen los importes de esos dos meses.",
@@ -356,22 +356,22 @@ export const CASAS_PARTICULARES_FUENTES: {
       nombre: "Resolución CNTCP 6/2026 (texto completo)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346855/20260903",
       detalle:
-        "B.O. 3/9/2026 — fija los incrementos de agosto (1,9%), septiembre (1,8%), octubre (1,7%), noviembre (1,6%) y diciembre (1,6%) de 2026, la suma no remunerativa por única vez de $20.000 / $11.500 / $8.000 según horas semanales, y su incorporación al básico en tres tramos (25%, 50% y 25%).",
+        "B.O. 3/9/2026: fija los incrementos de agosto (1,9%), septiembre (1,8%), octubre (1,7%), noviembre (1,6%) y diciembre (1,6%) de 2026, la suma no remunerativa por única vez de $20.000 / $11.500 / $8.000 según horas semanales, y su incorporación al básico en tres tramos (25%, 50% y 25%).",
     },
     {
-      nombre: "Resolución CNTCP 6/2026 — Anexos 1 a 5 (las escalas)",
+      nombre: "Resolución CNTCP 6/2026: Anexos 1 a 5 (las escalas)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346855/20260903",
       detalle:
         "Un anexo por mes, con las cinco categorías, con y sin retiro, por hora y por mes. No vienen en el PDF del aviso: se publican en la edición web del BORA y se bajan aparte. Los importes de esta página salen de ahí, parseados por coordenadas, no de un medio.",
     },
     {
-      nombre: "Resolución CNTCP 4/2026 — la escala anterior (abril a julio de 2026)",
+      nombre: "Resolución CNTCP 4/2026: la escala anterior (abril a julio de 2026)",
       url: "https://www.argentina.gob.ar/normativa/426540_res4-4_pdf/archivo",
       detalle:
         "B.O. 10/6/2026. Es la base sobre la que la 6/2026 calcula agosto, y la que fijó el adicional por zona desfavorable en el 31% desde el 1/4/2026.",
     },
     {
-      nombre: "Ley 26.844 — Régimen Especial para el Personal de Casas Particulares",
+      nombre: "Ley 26.844: Régimen Especial para el Personal de Casas Particulares",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/210000-214999/210489/texact.htm",
       detalle:
         "Texto actualizado: art. 14 (jornada de 8 horas diarias y 48 semanales), art. 18 (la CNTCP fija el salario mínimo), art. 25 (horas extras al 50% y al 100%), art. 26 (aguinaldo), arts. 29 y 30 (vacaciones) y art. 39 (maternidad, con un piso de 30 días antes del parto, distinto al de la LCT).",

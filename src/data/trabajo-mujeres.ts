@@ -92,7 +92,7 @@ export const TEXTOS_DEROGADOS: {
     texto:
       "Las mujeres que trabajen en horas de la mañana y de la tarde dispondrán de un descanso de dos (2) horas al mediodía, salvo que por la extensión de la jornada a que estuviese sometida la trabajadora, las características de las tareas que realice, los perjuicios que la interrupción del trabajo pudiese ocasionar a las propias beneficiarias o al interés general, se autorizare la adopción de horarios continuos, con supresión o reducción de dicho período de descanso.",
     loQueRigeHoy:
-      "No hay pausa legal obligatoria al mediodía para nadie. La distribución de las horas es facultad del empleador (art. 197) y lo único que la ley le fija como piso son los topes de jornada —8 horas diarias y 48 semanales (art. 196 y Ley 11.544)— y la pausa de doce horas entre el cese de una jornada y el comienzo de la otra (arts. 197 y 198). Si el descanso está en el convenio colectivo o en el contrato individual, sigue: el art. 8 de la LCT dice que las convenciones más favorables son válidas y de aplicación.",
+      "No hay pausa legal obligatoria al mediodía para nadie. La distribución de las horas es facultad del empleador (art. 197) y lo único que la ley le fija como piso son los topes de jornada (8 horas diarias y 48 semanales, según el art. 196 y la Ley 11.544) y la pausa de doce horas entre el cese de una jornada y el comienzo de la otra (arts. 197 y 198). Si el descanso está en el convenio colectivo o en el contrato individual, sigue: el art. 8 de la LCT dice que las convenciones más favorables son válidas y de aplicación.",
   },
   {
     articulo: 175,
@@ -100,7 +100,7 @@ export const TEXTOS_DEROGADOS: {
     texto:
       "Queda prohibido encargar la ejecución de trabajos a domicilio a mujeres ocupadas en algún local u otra dependencia en la empresa.",
     loQueRigeHoy:
-      "La prohibición no existe más. El trabajo a domicilio se rige por la Ley 12.713, que la misma Ley 27.802 modificó en sus arts. 105 y 106: la registración se hace por los sistemas de la Agencia de Recaudación y Control Aduanero (ARCA) —y esa inscripción alcanza para cumplir el art. 7 de la Ley 24.013— y las infracciones se sancionan por el Régimen General del Anexo II de la Ley 25.212.",
+      "La prohibición no existe más. El trabajo a domicilio se rige por la Ley 12.713, que la misma Ley 27.802 modificó en sus arts. 105 y 106: la registración se hace por los sistemas de la Agencia de Recaudación y Control Aduanero (ARCA), y esa inscripción alcanza para cumplir el art. 7 de la Ley 24.013. Las infracciones se sancionan por el Régimen General del Anexo II de la Ley 25.212.",
   },
   {
     articulo: 176,
@@ -108,7 +108,7 @@ export const TEXTOS_DEROGADOS: {
     texto:
       "Queda prohibido ocupar a mujeres en trabajos que revistan carácter penoso, peligroso o insalubre. La reglamentación determinará las industrias comprendidas en esta prohibición. Regirá con respecto al empleo de mujeres lo dispuesto en el artículo 195.",
     loQueRigeHoy:
-      "No hay tareas prohibidas por razón de sexo. Lo que queda es el régimen general del art. 200: la insalubridad no existe sin declaración previa de la autoridad de aplicación, y una vez declarada la jornada no puede pasar de seis horas diarias ni de treinta y seis semanales, sin que esa reducción baje la remuneración. Y se pierde la remisión al art. 195: la presunción de responsabilidad del empleador —«por ese solo hecho», sin admitirse prueba en contrario— ya no alcanza a la mujer que se accidenta haciendo una de esas tareas.",
+      "No hay tareas prohibidas por razón de sexo. Lo que queda es el régimen general del art. 200: la insalubridad no existe sin declaración previa de la autoridad de aplicación, y una vez declarada la jornada no puede pasar de seis horas diarias ni de treinta y seis semanales, sin que esa reducción baje la remuneración. Y se pierde la remisión al art. 195: la presunción de responsabilidad del empleador («por ese solo hecho», sin admitirse prueba en contrario) ya no alcanza a la mujer que se accidenta haciendo una de esas tareas.",
   },
 ];
 
@@ -144,7 +144,7 @@ export const TRABAJO_A_DOMICILIO_12713: { articulo: number; sustituye: string; q
   {
     articulo: 106,
     sustituye: "art. 31 de la Ley 12.713",
-    que: "Las infracciones —no inscribirse, destruir los rótulos y marcas de la mercadería, negar sin causa la exhibición de la inscripción— se sancionan por el Régimen General de Sanciones por Infracciones Laborales del Anexo II de la Ley 25.212.",
+    que: "Las infracciones (no inscribirse, destruir los rótulos y marcas de la mercadería, negar sin causa la exhibición de la inscripción) se sancionan por el Régimen General de Sanciones por Infracciones Laborales del Anexo II de la Ley 25.212.",
   },
 ];
 
@@ -173,19 +173,19 @@ export const TRABAJO_MUJERES_FUENTES: {
   consultadoEl: "2026-08-24",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Arts. 174, 175 y 176 con la nota de derogación por el art. 207 de la Ley 27.802; art. 172 intacto; art. 173 derogado por la Ley 24.013 en 1991; art. 195 (presunción de responsabilidad del empleador), art. 196 (jornada uniforme, Ley 11.544), art. 197 (pausa de 12 horas), art. 200 (6 horas / 36 semanales en insalubres) y art. 8 (convenios más favorables). Ninguno de los tres derogados figura en los «Antecedentes Normativos»: llegaron intactos desde 1976.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial (InfoLEG)",
+      nombre: "Ley 27.802, texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Art. 207 (la derogación de los nueve artículos de la LCT, sin fecha diferida) y Título IX, arts. 105 y 106, que sustituyen los arts. 6° y 31 de la Ley 12.713 de trabajo a domicilio.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia. La nota de los tres artículos dice «a partir de su publicación en el Boletín Oficial»: no esperan al 1/1/2027 como las leyes enteras que deroga el Título XXVI.",

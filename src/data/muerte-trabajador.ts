@@ -75,25 +75,25 @@ export const MUERTE_FUENTES: { consultadoEl: string; lista: FuenteMuerte[] } = {
   consultadoEl: "2026-08-16",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 248 con el texto sustituido por el art. 52 de la Ley 27.802 (beneficiarios, reparto en partes iguales, plazo de 30 días e independencia del Sistema de Riesgos del Trabajo), art. 247 (la mitad de la del art. 245) y art. 245 (base de cálculo y tope del convenio).",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La reforma que sustituyó ~54 artículos de la LCT. Su art. 52 reescribió íntegramente el art. 248. Vigencia: desde la publicación, sin efecto retroactivo.",
     },
     {
-      nombre: "LCT arts. 123 y 156 — liquidación final",
+      nombre: "LCT arts. 123 y 156: liquidación final",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "SAC proporcional al semestre trabajado (art. 123) y vacaciones proporcionales no gozadas (art. 156, pagadas a sueldo ÷ 25 según el art. 155). Corresponden cualquiera sea la causa de la extinción, también la muerte.",
     },
     {
-      nombre: "Ley 24.557 de Riesgos del Trabajo — prestaciones por fallecimiento",
+      nombre: "Ley 24.557 de Riesgos del Trabajo: prestaciones por fallecimiento",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/27971/texact.htm",
       detalle:
         "Lo que paga la ART cuando la muerte es por accidente de trabajo o enfermedad profesional. El art. 248 dice expresamente que su indemnización es independiente de esto: no se suma ni se descuenta, se cobran las dos.",

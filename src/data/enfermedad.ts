@@ -81,7 +81,7 @@ export const ENFERMEDAD_FUENTES: { consultadoEl: string; lista: FuenteEnfermedad
         "Art. 208 (plazos de licencia paga, recidiva y cómo se liquida la remuneración), art. 209 (aviso), art. 210 (certificado y control médico), art. 211 (conservación del empleo por un año), art. 212 (reincorporación e incapacidad) y art. 213 (despido durante la licencia). Texto consolidado tras la Ley 27.802.",
     },
     {
-      nombre: "Ley 27.802 — reforma laboral (B.O. 6/3/2026)",
+      nombre: "Ley 27.802: reforma laboral (B.O. 6/3/2026)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Sus arts. 44 y 45 sustituyeron los arts. 209 y 210 de la LCT: el certificado médico pasó a exigir diagnóstico, tratamiento y días de reposo, con firma digital de las plataformas autorizadas por la Ley 27.553. Los cambios ya están incorporados al texto actualizado de la LCT.",

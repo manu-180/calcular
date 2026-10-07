@@ -21,28 +21,28 @@
 export const CAMIONEROS_FUENTES = {
   circular: {
     nombre:
-      "FADEEAC — planillas salariales firmadas del CCT 40/89 (marzo a agosto 2026)",
+      "FADEEAC: planillas salariales firmadas del CCT 40/89 (marzo a agosto 2026)",
     url: "https://www.fadeeac.org.ar/departamento-legislacion-legales-y-seguros/",
     consultadoEl: "2026-09-20",
   },
   acuerdo: {
-    nombre: "Acuerdo paritario del 13/3/2026 — CCT 40/89 (marzo a agosto 2026), PDF firmado",
+    nombre: "Acuerdo paritario del 13/3/2026: CCT 40/89 (marzo a agosto 2026), PDF firmado",
     url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/03/Acuerdo-Paritario-13-3-26.pdf",
     consultadoEl: "2026-09-20",
   },
   homologacion: {
-    nombre: "Disposición DNRyRT 455/2026 — homologación del acuerdo del 13/3/2026",
+    nombre: "Disposición DNRyRT 455/2026: homologación del acuerdo del 13/3/2026",
     url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/03/Disp.-455-26-HOMOLOGACION-acuerdo-13-3-26.pdf",
     consultadoEl: "2026-09-20",
   },
   revision: {
     nombre:
-      "Revisión de la cláusula TERCERA — recompone julio y agosto 2026 (+4,22% sobre junio)",
+      "Revisión de la cláusula TERCERA: recompone julio y agosto 2026 (+4,22% sobre junio)",
     url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/08/REVISION-Acuerdo-Julio-Agosto-2026.pdf",
     consultadoEl: "2026-09-20",
   },
   verificacion: {
-    nombre: "FADEEAC — planilla salarial de agosto 2026 con revisión (PDF firmado)",
+    nombre: "FADEEAC: planilla salarial de agosto 2026 con revisión (PDF firmado)",
     url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/08/Planillas-de-escalas-salariales-agosto-2026-OK.pdf",
     consultadoEl: "2026-09-20",
   },
@@ -205,7 +205,7 @@ export const MESES_CAMIONEROS: MesCamioneros[] = [
     anio: 2026,
     planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/03/Planilla-ABRIL-26.pdf",
     cambios:
-      "Se incorporan al básico $49.471 de la suma no remunerativa de marzo —al Chofer de Primera, y proporcionalmente al resto— y encima corre el tramo de abril.",
+      "Se incorporan al básico $49.471 de la suma no remunerativa de marzo (al Chofer de Primera, y en proporción al resto). Además, corre el tramo de abril.",
   },
   {
     id: "mayo-2026",

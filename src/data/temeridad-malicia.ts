@@ -141,25 +141,25 @@ export const TEMERIDAD_FUENTES: { consultadoEl: string; lista: FuenteTemeridad[]
   consultadoEl: "2026-08-24",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 275 con la nota de derogación por el art. 207 de la Ley 27.802; art. 20 con el párrafo de pluspetición inexcusable que le agregó el art. 10 de la misma ley; art. 276 (actualización por IPC más 3% anual) y art. 277 (tope del 25% de costas de primera o única instancia).",
     },
     {
-      nombre: "Ley 27.802 — texto oficial (InfoLEG)",
+      nombre: "Ley 27.802, texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Art. 10 (sustitución del art. 20 de la LCT), art. 54 (sustitución del art. 276) y art. 207 (la derogación de los nueve artículos de la LCT, sin fecha diferida).",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia. La nota del art. 275 dice «a partir de su publicación en el Boletín Oficial»: no espera al 1/1/2027.",
     },
     {
-      nombre: "Ley 26.696 — B.O. 29/8/2011",
+      nombre: "Ley 26.696 (B.O. 29/8/2011)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/185000-189999/186021/norma.htm",
       detalle:
         "El artículo 1° incorporó como TERCER párrafo del art. 275 de la LCT el texto que calificaba automáticamente como «temeraria y maliciosa» la falta de cumplimiento de un acuerdo homologado, con el máximo del interés desde la mora. Es la única modificación que el art. 275 tuvo desde 1976, y cayó junto con el artículo.",

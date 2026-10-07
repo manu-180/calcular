@@ -9,7 +9,7 @@ export const VACACIONES_FUENTES = {
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
   },
   ley27802: {
-    nombre: "Ley 27.802 — nuevo art. 154 LCT (B.O. 6/3/2026)",
+    nombre: "Ley 27.802: nuevo art. 154 LCT (B.O. 6/3/2026)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=423680",
   },
   consultadoEl: "11 de junio de 2026",

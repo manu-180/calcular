@@ -94,7 +94,7 @@ export const REGLAS_ART_CASAS: ReglaArtCasas[] = [
     id: "base-minima",
     titulo: "La prestación no se liquida sobre el sueldo real, sino sobre el mínimo de la categoría",
     texto:
-      "Es la diferencia más grande con cualquier otro trabajador. El ingreso base del art. 12 de la Ley 24.557 —el número del que cuelga toda la indemnización— no es el promedio de lo que la persona cobró: el reglamento manda tomar «la remuneración mensual mínima» de la escala de la CNTCP para la categoría correspondiente. Quien cobra por encima del mínimo, cobra la prestación como si cobrara el mínimo.",
+      "Es la diferencia más grande con cualquier otro trabajador. El ingreso base del art. 12 de la Ley 24.557 (el número del que depende toda la indemnización) no es el promedio de lo que la persona cobró. El reglamento manda tomar «la remuneración mensual mínima» de la escala de la CNTCP para su categoría. Si cobra más que el mínimo, igual recibe la prestación como si cobrara el mínimo.",
     norma: "Decreto 467/2014, reglamentación del art. 74, inc. d)",
   },
   {
@@ -150,24 +150,24 @@ export const REGLAS_ART_CASAS: ReglaArtCasas[] = [
 export const ART_CASAS_FUENTES = {
   consultadoEl: ART_CASAS_VIGENCIA.consultadoEl,
   principal: {
-    nombre: "Decreto 467/2014 — texto actualizado (InfoLEG)",
+    nombre: "Decreto 467/2014, texto actualizado (InfoLEG)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=228927",
   },
   lista: [
     {
-      nombre: "Ley 26.844 — texto actualizado (InfoLEG)",
+      nombre: "Ley 26.844, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/210000-214999/210489/texact.htm",
       detalle:
         "Régimen Especial de Contrato de Trabajo para el Personal de Casas Particulares. El art. 74 incorpora al personal a las leyes 24.557 y 26.773 «en el modo y condiciones que se establezcan por vía reglamentaria».",
     },
     {
-      nombre: "Decreto 467/2014 — reglamentación de la Ley 26.844 (InfoLEG)",
+      nombre: "Decreto 467/2014: reglamentación de la Ley 26.844 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=228927",
       detalle:
         "La reglamentación del art. 74, incisos a) a e): elección y no rechazo de la ART, asignación de oficio, cuota como pago anticipado, base de cálculo de la ILT y del ingreso base, y ventanilla electrónica.",
     },
     {
-      nombre: "ARCA — aportes, contribuciones y ART de casas particulares",
+      nombre: "ARCA: aportes, contribuciones y ART de casas particulares",
       url: "https://www.arca.gob.ar/casasparticulares/aportes-contribuciones-ART/documentos.asp",
       detalle:
         "La tabla mensual oficial con la cuota de ART por rango de horas y condición del trabajador. Es la prueba de que el régimen opera y la fuente del importe que se paga.",

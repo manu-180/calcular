@@ -166,28 +166,28 @@ export const PLATAFORMAS_FUENTES: {
   consultadoEl: "2026-08-21",
   lista: [
     {
-      nombre: "Ley 27.802 — Ley de Modernización Laboral (B.O. 6/3/2026), texto oficial en InfoLEG",
+      nombre: "Ley 27.802: Ley de Modernización Laboral (B.O. 6/3/2026), texto oficial en InfoLEG",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Título XII «Régimen de los Servicios Privados de Movilidad de Personas y/o Reparto que utilizan plataformas tecnológicas», arts. 119 a 128. Su art. 1º sustituyó el art. 2° de la LCT e incorporó el inc. f) que excluye a estas personas de la Ley de Contrato de Trabajo. Su art. 217 fija la vigencia: publicación en el Boletín Oficial.",
     },
     {
-      nombre: "Decreto 408/2026 (B.O. 1/6/2026), art. 27 — nota de vigencia en InfoLEG",
+      nombre: "Decreto 408/2026 (B.O. 1/6/2026), art. 27: nota de vigencia en InfoLEG",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "La única prórroga de vigencia que trae la Ley 27.802: lleva al 1° de noviembre de 2026 el Título II (Fondo de Asistencia Laboral). No alcanza al Título XII, que rige desde el 6 de marzo de 2026.",
     },
     {
-      nombre: "Monotributo — categorías y valores vigentes (ARCA)",
+      nombre: "Monotributo: categorías y valores vigentes (ARCA)",
       url: "https://www.afip.gob.ar/monotributo/categorias.asp",
       detalle:
         "La escala con la que se calcula la cuota: impuesto integrado + aportes al SIPA + aportes a la obra social, por categoría de facturación anual. Es la misma tabla que usa la calculadora de monotributo del sitio.",
     },
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
-        "Art. 2° con el inc. f) vigente; arts. 121 y 122 (sueldo anual complementario) y 150 y 155 (licencia anual y su forma de pago) — los tres conceptos que el prestador independiente no cobra y que la comparación pone en pesos.",
+        "Art. 2° con el inc. f) vigente; arts. 121 y 122 (sueldo anual complementario) y 150 y 155 (licencia anual y su forma de pago). Son los tres conceptos que el prestador independiente no cobra y que la comparación pone en pesos.",
     },
   ],
 };

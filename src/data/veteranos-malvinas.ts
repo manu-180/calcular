@@ -110,7 +110,7 @@ export const COMPATIBILIDADES = [
 export const TITULARES = [
   "Ex soldados conscriptos de las Fuerzas Armadas destinados en el Teatro de Operaciones Malvinas (TOM), o que entraron efectivamente en combate en el área del Teatro de Operaciones del Atlántico Sur (TOAS).",
   "Civiles que cumplían funciones de servicio y/o apoyo en esos lugares, entre el 2 de abril y el 14 de junio de 1982.",
-  "Personal de oficiales y suboficiales de las Fuerzas Armadas y de Seguridad en situación de retiro o baja —voluntaria u obligatoria, esta última salvo las causales del art. 6º del Dec. 1357/04— que estuvo destinado en el TOM o entró en combate en el TOAS.",
+  "Personal de oficiales y suboficiales de las Fuerzas Armadas y de Seguridad en situación de retiro o baja (voluntaria u obligatoria; esta última, salvo las causales del art. 6º del Dec. 1357/04) que estuvo destinado en el TOM o entró en combate en el TOAS.",
 ] as const;
 
 export type FuenteVeteranos = { nombre: string; url: string; detalle: string };
@@ -119,25 +119,25 @@ export const VETERANOS_FUENTES: { consultadoEl: string; lista: FuenteVeteranos[]
   consultadoEl: "2026-09-03",
   lista: [
     {
-      nombre: "Decreto 1357/2004 — ANSES a cargo, monto y derechohabientes (InfoLEG)",
+      nombre: "Decreto 1357/2004: ANSES a cargo, monto y derechohabientes (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/95000-99999/99383/norma.htm",
       detalle:
         "B.O. 6/10/2004. Su art. 2º fija el monto del titular en tres veces el haber mínimo del Régimen Previsional Público; el art. 6º, las causales de pérdida del derecho; el art. 7º, que la pensión derivada es el 100% del beneficio del causante y cómo se reparte. Su validez fue declarada por ambas cámaras del Congreso en 2007.",
     },
     {
-      nombre: "Decreto 886/2005 — el nombre actual y la compatibilidad vigente (InfoLEG)",
+      nombre: "Decreto 886/2005: el nombre actual y la compatibilidad vigente (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/105000-109999/108081/norma.htm",
       detalle:
         "B.O. 2005. Le pone el nombre de «Pensiones Honoríficas», SUSTITUYE el art. 3º del Dec. 1357/04 por la compatibilidad amplia que rige hoy, extiende el beneficio a oficiales y suboficiales retirados (art. 3º), agrega las asignaciones por prenatal, nacimiento, adopción y matrimonio (art. 4º) y exige a los retirados de las FFAA desistir del complemento del Dec. 1244/98 (art. 7º).",
     },
     {
-      nombre: "Ley 23.848 — texto actualizado (InfoLEG)",
+      nombre: "Ley 23.848, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/248/texact.htm",
       detalle:
         "Crea la pensión vitalicia. Su art. 1º (texto según la Ley 24.652) define a quiénes alcanza y las fechas del conflicto; el art. 2º remite al art. 53 de la Ley 24.241 para los derechohabientes; el art. 3º la declara compatible con cualquier otro beneficio previsional permanente.",
     },
     {
-      nombre: "Resolución ANSES 257/2026 — haber mínimo garantizado de septiembre de 2026",
+      nombre: "Resolución ANSES 257/2026: haber mínimo garantizado de septiembre de 2026",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346683/20260901",
       detalle:
         "B.O. 1/9/2026. Fija el haber mínimo del que se derivan estos montos. Nótese que la resolución NO menciona la pensión honorífica: su importe no se publica, se calcula.",

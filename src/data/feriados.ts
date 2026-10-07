@@ -73,25 +73,25 @@ export const FERIADOS_FUENTES: { consultadoEl: string; lista: FuenteFeriado[] } 
   consultadoEl: "2026-08-12",
   lista: [
     {
-      nombre: "Ley 27.399 — Régimen de feriados nacionales y días no laborables",
+      nombre: "Ley 27.399: Régimen de feriados nacionales y días no laborables",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/280000-284999/281835/norma.htm",
       detalle:
-        "B.O. 18/10/2017 — art. 1 (inamovibles, trasladables y Jueves Santo como día no laborable), art. 6 (los trasladables que caen martes o miércoles pasan al lunes anterior; los que caen jueves o viernes, al lunes siguiente) y art. 7 (hasta 3 días turísticos por año, en lunes o viernes).",
+        "B.O. 18/10/2017: art. 1 (inamovibles, trasladables y Jueves Santo como día no laborable), art. 6 (los trasladables que caen martes o miércoles pasan al lunes anterior; los que caen jueves o viernes, al lunes siguiente) y art. 7 (hasta 3 días turísticos por año, en lunes o viernes).",
     },
     {
-      nombre: "Decreto 614/2025 — traslado de los feriados que caen fin de semana",
+      nombre: "Decreto 614/2025: traslado de los feriados que caen fin de semana",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/330457/20250828",
       detalle:
-        "B.O. 28/8/2025 — los feriados trasladables que coincidan con sábado o domingo pueden moverse al lunes siguiente o al viernes anterior, según lo determine la Jefatura de Gabinete. No es automático: cuando pasa, hay que buscar la resolución del año.",
+        "B.O. 28/8/2025: los feriados trasladables que coincidan con sábado o domingo pueden moverse al lunes siguiente o al viernes anterior, según lo determine la Jefatura de Gabinete. No es automático: cuando pasa, hay que buscar la resolución del año.",
     },
     {
-      nombre: "Resolución 164/2025 — días no laborables con fines turísticos 2026",
+      nombre: "Resolución 164/2025: días no laborables con fines turísticos 2026",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/336753/20251226",
       detalle:
-        "B.O. 26/12/2025 — fija para 2026 el lunes 23 de marzo, el viernes 10 de julio y el lunes 7 de diciembre.",
+        "B.O. 26/12/2025: fija para 2026 el lunes 23 de marzo, el viernes 10 de julio y el lunes 7 de diciembre.",
     },
     {
-      nombre: "Calendario oficial de feriados — Jefatura de Gabinete",
+      nombre: "Calendario oficial de feriados: Jefatura de Gabinete",
       url: "https://www.argentina.gob.ar/jefatura/feriados-nacionales-2026",
       detalle:
         "El calendario publicado por el Estado, usado como control cruzado del calendario que este sitio deriva de la ley.",

@@ -124,31 +124,31 @@ export const APORTES_FUENTES: { consultadoEl: string; lista: FuenteAportes[] } =
   consultadoEl: "2026-09-05",
   lista: [
     {
-      nombre: "ARCA — Aportes, contribuciones y ART de casas particulares (tabla oficial)",
+      nombre: "ARCA: Aportes, contribuciones y ART de casas particulares (tabla oficial)",
       url: "https://www.arca.gob.ar/casasparticulares/aportes-contribuciones-ART/documentos/2026/Casas-particulares-aportes-y-contribuciones-08-26.pdf",
       detalle:
-        "PDF oficial con los importes vigentes para agosto de 2026 (vencimiento en septiembre): las tres tablas —activo mayor de 18, de 16 a 17 años y jubilado— con el desglose de obra social, SIPA y cuota ART. Es de acá que salen todos los números de esta página.",
+        "PDF oficial con los importes vigentes para agosto de 2026 (vencimiento en septiembre). Trae las tres tablas (activo mayor de 18, de 16 a 17 años y jubilado) con el desglose de obra social, SIPA y cuota ART. De acá salen todos los números de esta página.",
     },
     {
-      nombre: "ARCA — Conceptos y valores del pago mensual",
+      nombre: "ARCA: Conceptos y valores del pago mensual",
       url: "https://www.arca.gob.ar/casasparticulares/aportes-contribuciones-ART/conceptos.asp",
       detalle:
         "Explica qué habilita el pago (obra social, jubilación y cobertura por accidentes) y la regla de oportunidad: los aportes se pagan a mes vencido y la ART a mes en curso.",
     },
     {
-      nombre: "ARCA — Obra social del personal de casas particulares",
+      nombre: "ARCA: Obra social del personal de casas particulares",
       url: "https://www.arca.gob.ar/casasparticulares/ayuda/empleador/obra-social.asp",
       detalle:
         "Fija el piso para acceder a las prestaciones: el aporte debe igualar o superar la cuota de la categoría de 16 o más horas semanales.",
     },
     {
-      nombre: "ARCA — Jubilación del personal de casas particulares",
+      nombre: "ARCA: Jubilación del personal de casas particulares",
       url: "https://www.arca.gob.ar/casasparticulares/ayuda/empleador/jubilacion.asp",
       detalle:
         "Mismo piso para el cómputo jubilatorio, con el agregado de que el trabajador puede pagar la diferencia si las contribuciones del empleador no alcanzan.",
     },
     {
-      nombre: "Ley 26.844 — Régimen Especial para el Personal de Casas Particulares",
+      nombre: "Ley 26.844: Régimen Especial para el Personal de Casas Particulares",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/210000-214999/210489/texact.htm",
       detalle:
         "Texto actualizado del régimen. El art. 14.1 inc. e) pone en cabeza del empleador la obligación de contratar un seguro por los riesgos del trabajo a favor del personal, «conforme lo establecido en el artículo 74 de la presente ley»: la ART no es opcional ni negociable.",

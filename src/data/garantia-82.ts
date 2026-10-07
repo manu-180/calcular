@@ -96,7 +96,7 @@ export const UNIVERSOS: UniversoGarantia[] = [
     etiqueta: "Titular de la PBU con 30 años o más de aportes efectivos",
     smvm: 1,
     haberesMinimos: 1,
-    normaPiso: "Ley 24.241, art. 125 — haber mínimo garantizado",
+    normaPiso: "Ley 24.241, art. 125: haber mínimo garantizado",
     detalle:
       "El caso del texto de la ley. Exige ser beneficiario de la Prestación Básica Universal y acreditar treinta años o más de servicios con aportes efectivos: aportes de verdad, no años comprados por moratoria.",
     norma: "Ley 24.241, art. 125 bis",
@@ -106,9 +106,9 @@ export const UNIVERSOS: UniversoGarantia[] = [
     etiqueta: "Régimen que exige menos de 30 años (diferencial, insalubre, invalidez, ex cajas)",
     smvm: 1,
     haberesMinimos: 1,
-    normaPiso: "Ley 24.241, art. 125 — haber mínimo garantizado",
+    normaPiso: "Ley 24.241, art. 125: haber mínimo garantizado",
     detalle:
-      "Lo que agrega la reglamentación y casi nadie publica: entran los beneficios otorgados por regímenes nacionales anteriores a la Ley 24.241, los diferenciales o insalubres, los especiales derogados por la Ley 23.966, los de los arts. 18 a 25 de la Ley 24.018, el retiro por invalidez con aportes regulares, los de las ex cajas provinciales o municipales transferidas en el marco de la Ley 24.307, y las pensiones directas o derivadas de todos ellos — aunque esas normas exijan menos de treinta años.",
+      "Lo que agrega la reglamentación y casi nadie publica: entran los beneficios otorgados por regímenes nacionales anteriores a la Ley 24.241, los diferenciales o insalubres, los especiales derogados por la Ley 23.966, los de los arts. 18 a 25 de la Ley 24.018, el retiro por invalidez con aportes regulares, los de las ex cajas provinciales o municipales transferidas en el marco de la Ley 24.307, y las pensiones directas o derivadas de todos ellos. Y entran aunque esas normas exijan menos de treinta años.",
     norma: "Res. SSS 25-E/2017, art. 2º incs. a) a g)",
   },
   {
@@ -116,7 +116,7 @@ export const UNIVERSOS: UniversoGarantia[] = [
     etiqueta: "Pensión honorífica de Veterano de Guerra del Atlántico Sur (Ley 23.848)",
     smvm: 3,
     haberesMinimos: 3,
-    normaPiso: "Decreto 1357/2004, art. 2 — tres veces el haber mínimo del SIPA",
+    normaPiso: "Decreto 1357/2004, art. 2: tres veces el haber mínimo del SIPA",
     detalle:
       "La reglamentación le asigna un nivel propio: 82% del valor de TRES salarios mínimos. Pero esta pensión ya vale, por el Decreto 1357/2004, TRES veces el haber mínimo: el numerador y el denominador quedaron multiplicados por el mismo número, así que la proporción es idéntica a la del caso general y el suplemento también da cero. Lo que sí tiene de propio, y casi no se publica, es que la pensión es compatible con cualquier otro beneficio previsional permanente (art. 3 de la Ley 23.848).",
     norma: "Res. SSS 25-E/2017, art. 2º inc. h) (texto Res. SSS 3/2018)",
@@ -146,34 +146,34 @@ export const GARANTIA_82_FUENTES: { consultadoEl: string; lista: FuenteGarantia[
   consultadoEl: "2026-09-03",
   lista: [
     {
-      nombre: "Ley 24.241, arts. 125 y 125 bis — texto actualizado (InfoLEG)",
+      nombre: "Ley 24.241, arts. 125 y 125 bis, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/639/texact.htm",
       detalle:
         "El art. 125 bis fue incorporado por el art. 5º de la Ley 27.426 (B.O. 28/12/2017) y no fue sustituido desde entonces. Es el texto del que salen el 82%, los treinta años de aportes efectivos y la exclusión de las moratorias.",
     },
     {
-      nombre: "Resolución 25-E/2017 — Secretaría de Seguridad Social (texto actualizado, InfoLEG)",
+      nombre: "Resolución 25-E/2017: Secretaría de Seguridad Social (texto actualizado, InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/305000-309999/305749/texact.htm",
       detalle:
-        "B.O. 11/1/2018 — reglamenta el art. 125 bis con vigencia desde el 1º de enero de 2018. Su art. 2º extiende la garantía a regímenes que exigen menos de treinta años, y los incisos h) e i) —incorporados por la Res. SSS 3/2018, B.O. 20/2/2018— fijan los niveles de los beneficios vinculados a la Guerra del Atlántico Sur.",
+        "B.O. 11/1/2018. Reglamenta el art. 125 bis con vigencia desde el 1º de enero de 2018. Su art. 2º extiende la garantía a regímenes que exigen menos de treinta años. Los incisos h) e i) (incorporados por la Res. SSS 3/2018, B.O. 20/2/2018) fijan los niveles de los beneficios vinculados a la Guerra del Atlántico Sur.",
     },
     {
-      nombre: "Ley 23.848 y Decreto 1357/2004 — pensión de guerra del Atlántico Sur (InfoLEG)",
+      nombre: "Ley 23.848 y Decreto 1357/2004: pensión de guerra del Atlántico Sur (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/248/texact.htm",
       detalle:
         "El art. 1º (texto según Ley 24.652) fija la pensión en el 100% de la remuneración del grado de cabo del Ejército Argentino; la nota del texto actualizado recoge el Decreto 1357/2004, que puso el otorgamiento y pago a cargo de ANSES y su monto en TRES veces el haber mínimo del Régimen Previsional Público. El art. 3º la declara compatible con cualquier otro beneficio previsional permanente nacional, provincial o municipal.",
     },
     {
-      nombre: "Resolución 4/2026 — Consejo Nacional del Empleo, la Productividad y el SMVM",
+      nombre: "Resolución 4/2026: Consejo Nacional del Empleo, la Productividad y el SMVM",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346775/20260902",
       detalle:
-        "B.O. 2/9/2026 — laudo que fija el salario mínimo mes a mes desde septiembre de 2026 hasta abril de 2027. Es el valor sobre el que se calcula el 82%.",
+        "B.O. 2/9/2026: laudo que fija el salario mínimo mes a mes desde septiembre de 2026 hasta abril de 2027. Es el valor sobre el que se calcula el 82%.",
     },
     {
-      nombre: `${PRESTACIONES_VIGENTES.resolucion} — haber mínimo garantizado de ${PRESTACIONES_VIGENTES.vigencia}`,
+      nombre: `${PRESTACIONES_VIGENTES.resolucion}: haber mínimo garantizado de ${PRESTACIONES_VIGENTES.vigencia}`,
       url: PRESTACIONES_VIGENTES.resolucionUrl,
       detalle:
-        `${PRESTACIONES_VIGENTES.resolucionBO} — el haber mínimo del art. 125, que es el piso que hoy efectivamente cubre a todo el mundo y está por encima del nivel del art. 125 bis.`,
+        `${PRESTACIONES_VIGENTES.resolucionBO}: el haber mínimo del art. 125, que es el piso que hoy efectivamente cubre a todo el mundo y está por encima del nivel del art. 125 bis.`,
     },
   ],
 };

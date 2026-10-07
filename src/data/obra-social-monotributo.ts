@@ -112,7 +112,7 @@ export const ESCALONES: Escalon[] = [
     resumen: "las prestaciones del SURGE y del mecanismo de Integración (discapacidad)",
     norma: "Decreto 1/2010, Anexo, inc. c), sustituido por el Decreto 955/2024",
     prestaciones: [
-      "Prestaciones subsidiadas por el Sistema Único de Reintegro por Gestión de Enfermedades (SURGE), Res. SSS 731/2023 — de cobertura obligatoria para el agente del seguro de salud.",
+      "Prestaciones subsidiadas por el Sistema Único de Reintegro por Gestión de Enfermedades (SURGE), Res. SSS 731/2023. Son de cobertura obligatoria para el agente del seguro de salud.",
       "Prestaciones del mecanismo de «Integración» del Decreto 904/2016, que es el de discapacidad.",
       "Prestaciones gestionables mediante el Fondo Solidario de Redistribución.",
     ],
@@ -126,7 +126,7 @@ export const REGLAS = [
     titulo: "Tenés que estar al día, y te pueden pedir los comprobantes",
     norma: "Ley 24.977, Anexo, art. 42 in fine · Decreto 1/2010, art. 76",
     texto:
-      "La ley condiciona el acceso a las prestaciones a que el contribuyente esté al día con los aportes del régimen simplificado, y el reglamento faculta expresamente a los agentes del seguro de salud a requerir los comprobantes de pago —los propios y los del grupo familiar— como condición para prestar el servicio.",
+      "La ley condiciona el acceso a las prestaciones a que el contribuyente esté al día con los aportes del régimen simplificado, y el reglamento faculta expresamente a los agentes del seguro de salud a requerir los comprobantes de pago (los propios y los del grupo familiar) como condición para prestar el servicio.",
   },
   {
     id: "registro",
@@ -175,7 +175,7 @@ export const REGLAS = [
     titulo: "Hay monotributistas que no pagan obra social",
     norma: "Ley 24.977, Anexo, art. 40",
     texto:
-      "Quedan eximidos de todas las cotizaciones del art. 39 —incluida la de obra social— los menores de 18 años, los profesionales con aportes obligatorios a una caja provincial, los trabajadores autónomos del primer párrafo del art. 13 de la Ley 24.476 y quienes además trabajan en relación de dependencia y aportan por esa vía.",
+      "Quedan eximidos de todas las cotizaciones del art. 39 (incluida la de obra social) los menores de 18 años, los profesionales con aportes obligatorios a una caja provincial, los trabajadores autónomos del primer párrafo del art. 13 de la Ley 24.476 y quienes además trabajan en relación de dependencia y aportan por esa vía.",
   },
 ];
 
@@ -193,18 +193,18 @@ export const MONO_OS_TEXTOS = {
 export const MONO_OS_FUENTES = {
   consultadoEl: VIGENCIA_MONO_OS.consultadoEl,
   principal: {
-    nombre: "Decreto 1/2010 — texto actualizado en InfoLEG",
+    nombre: "Decreto 1/2010, texto actualizado en InfoLEG",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/160000-164999/162518/texact.htm",
   },
   lista: [
     {
-      nombre: "Decreto 1/2010 — reglamentación del Anexo de la Ley 24.977",
+      nombre: "Decreto 1/2010: reglamentación del Anexo de la Ley 24.977",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/160000-164999/162518/texact.htm",
       detalle:
         "Arts. 69 a 78 y el Anexo «Acceso progresivo a la cobertura de salud» (los tres escalones), con el art. 69 bis incorporado y los arts. 74 y el inc. c) del Anexo sustituidos por el Decreto 955/2024.",
     },
     {
-      nombre: "Ley 24.977, Anexo t.o. Ley 26.565 — texto actualizado",
+      nombre: "Ley 24.977, Anexo t.o. Ley 26.565, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/50000-54999/51609/texact.htm",
       detalle:
         "Art. 39 (el aporte de obra social por categoría, con el 10% al Fondo Solidario de Redistribución, según el art. 92 de la Ley 27.743), art. 40 (exenciones), art. 42 inc. c) (la delegación de la carencia y el coseguro) y art. 45 (supletoriedad de las leyes 23.660 y 23.661).",

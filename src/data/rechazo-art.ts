@@ -106,13 +106,13 @@ export const RECHAZO_FUENTES = {
   consultadoEl: "9 de septiembre de 2026",
   lista: [
     {
-      nombre: "Decreto 717/96 — texto actualizado",
+      nombre: "Decreto 717/96, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/37813/texact.htm",
       detalle:
         "Arts. 1º a 6º bis, 10, 11, 12, 36, 36 bis y 36 ter: denuncia, recepción, prestaciones inmediatas, silencio, prórroga, causales, vías, patrocinio y cómputo administrativo.",
     },
     {
-      nombre: "Ley 24.557 — texto actualizado",
+      nombre: "Ley 24.557, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/27971/texact.htm",
       detalle:
         "Arts. 43 y 44: nacimiento del derecho a las prestaciones desde la denuncia y prescripción de las acciones derivadas de la ley.",

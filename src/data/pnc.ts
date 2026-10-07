@@ -89,7 +89,7 @@ export const PRESTACIONES_PNC: PrestacionPnc[] = [
     paga: "ANSES",
     paraQuien: "Personas con discapacidad que cuenten con el Certificado Único de Discapacidad.",
     requisitos: [
-      "Acreditar el Certificado Único de Discapacidad (CUD) — Ley 27.793, art. 6 inc. a.",
+      "Acreditar el Certificado Único de Discapacidad (CUD) (Ley 27.793, art. 6 inc. a).",
       "Acreditar identidad, edad y nacionalidad con el DNI (inc. b).",
       "Ser argentino nativo o naturalizado (inc. c); los extranjeros, 5 años continuados de residencia legal (inc. d).",
       "No percibir ingresos netos iguales o superiores a dos salarios mínimos vitales y móviles (inc. e).",
@@ -102,12 +102,12 @@ export const PRESTACIONES_PNC: PrestacionPnc[] = [
     clave: "vejez",
     nombre: "Pensión no contributiva a la vejez",
     proporcionHaberMinimo: 0.7,
-    norma: "Ley 13.478, art. 9 — reglamentada por el Decreto 432/97",
+    norma: "Ley 13.478, art. 9, reglamentada por el Decreto 432/97",
     otorga: "Ministerio de Capital Humano",
     paga: "ANSES",
     paraQuien: "Personas de 70 años o más sin recursos ni cobertura previsional.",
     requisitos: [
-      "Tener 70 años o más a la fecha de inicio del trámite — Decreto 432/97, Anexo I, punto 1 inc. a.",
+      "Tener 70 años o más a la fecha de inicio del trámite (Decreto 432/97, Anexo I, punto 1 inc. a).",
       "Ser argentino nativo o naturalizado con 5 años de residencia continuada (inc. c); los extranjeros, 40 años de residencia (inc. d).",
       "Que ni el solicitante ni su cónyuge estén amparados por un régimen de previsión, retiro o prestación no contributiva (inc. f).",
       "No tener parientes obligados a prestar alimentos, o que estén impedidos de hacerlo (inc. g).",
@@ -125,10 +125,10 @@ export const PRESTACIONES_PNC: PrestacionPnc[] = [
     paga: "ANSES",
     paraQuien: "Madres de siete o más hijos, cualquiera sea su edad y estado civil.",
     requisitos: [
-      "Ser o haber sido madre de 7 o más hijos nacidos con vida, propios o adoptados (adopción plena o simple), cualquiera sea la edad, el estado civil o la nacionalidad de los hijos — Decreto 2360/90, art. 2 inc. a.",
+      "Ser o haber sido madre de 7 o más hijos nacidos con vida, propios o adoptados (adopción plena o simple), cualquiera sea la edad, el estado civil o la nacionalidad de los hijos (Decreto 2360/90, art. 2 inc. a).",
       "Ser argentina o naturalizada con 1 año de residencia continuada inmediatamente anterior al pedido (inc. b); las extranjeras, 15 años de residencia continuada (inc. c).",
-      "No gozar de jubilación, pensión, retiro NI prestación no contributiva alguna — inc. d (la Ley 23.746, art. 2 inc. a, sólo habla de «régimen de previsión o retiro»).",
-      "No poseer bienes, ingresos ni recursos que permitan la subsistencia propia y del grupo familiar conviviente, NI parientes obligados a prestar alimentos con capacidad económica suficiente para darlos por un importe igual o mayor al de la pensión — inc. e.",
+      "No gozar de jubilación, pensión, retiro NI prestación no contributiva alguna (inc. d). La Ley 23.746, art. 2 inc. a, sólo habla de «régimen de previsión o retiro».",
+      "No poseer bienes, ingresos ni recursos que permitan la subsistencia propia y del grupo familiar conviviente, NI parientes obligados a prestar alimentos con capacidad económica suficiente para darlos por un importe igual o mayor al de la pensión (inc. e).",
       "Acreditar identidad en legal forma (inc. f) y aprobar la encuesta económico-social del art. 6.",
       "Es vitalicia e inembargable, y se cobra aunque los hijos ya sean mayores de edad (Ley 23.746, art. 1).",
     ],
@@ -137,7 +137,7 @@ export const PRESTACIONES_PNC: PrestacionPnc[] = [
       {
         titulo: "Salir del país más de 60 días al año extingue el derecho",
         detalle:
-          "El art. 12 inc. d del Decreto 2360/90 extingue la pensión por «ausencia definitiva del país», y define ausencia definitiva como la que excede los 60 días continuos O DISCONTINUOS en cada año calendario. No son 60 días de un viaje: es la suma del año. La Subsecretaría de Seguridad Social puede autorizar excepciones por resolución fundada. (En la PUAM el equivalente son 90 días — no es el mismo número.)",
+          "El art. 12 inc. d del Decreto 2360/90 extingue la pensión por «ausencia definitiva del país», y define ausencia definitiva como la que excede los 60 días continuos O DISCONTINUOS en cada año calendario. No son 60 días de un viaje: es la suma del año. La Subsecretaría de Seguridad Social puede autorizar excepciones por resolución fundada. (En la PUAM el equivalente son 90 días: no es el mismo número.)",
       },
       {
         titulo: "Se paga desde el mes siguiente al otorgamiento, no desde que se pidió",
@@ -152,7 +152,7 @@ export const PRESTACIONES_PNC: PrestacionPnc[] = [
       {
         titulo: "Al fallecer la beneficiaria, la pensión pasa al viudo incapacitado y a los hijos",
         detalle:
-          "Art. 3 del Decreto 2360/90 (reglamentando el art. 3 de la Ley 23.746): tienen derecho el viudo incapacitado para el trabajo y a cargo de la causante, en concurrencia con los hijos menores de 18 años (sin límite de edad si están incapacitados). La mitad va al viudo y la otra mitad se reparte entre los hijos; si no hay hijos, el viudo cobra todo. No le corresponde al cónyuge divorciado o separado —legalmente o de hecho— por su culpa o culpa de ambos (art. 4).",
+          "Art. 3 del Decreto 2360/90 (reglamentando el art. 3 de la Ley 23.746): tienen derecho el viudo incapacitado para el trabajo y a cargo de la causante, en concurrencia con los hijos menores de 18 años (sin límite de edad si están incapacitados). La mitad va al viudo y la otra mitad se reparte entre los hijos; si no hay hijos, el viudo cobra todo. No le corresponde al cónyuge divorciado o separado (legalmente o de hecho) por su culpa o culpa de ambos (art. 4).",
       },
     ],
   },
@@ -165,7 +165,7 @@ export const PRESTACIONES_PNC: PrestacionPnc[] = [
     paga: "ANSES",
     paraQuien: "Personas de 65 años o más que no llegan a los 30 años de aportes para jubilarse.",
     requisitos: [
-      "Tener 65 años o más, cualquiera sea el género, y sin exigencia de años de aportes — Ley 27.260, art. 13.",
+      "Tener 65 años o más, cualquiera sea el género, y sin exigencia de años de aportes (Ley 27.260, art. 13).",
       "Ser argentino nativo, por opción o naturalizado; al naturalizado se le exigen 10 años de residencia legal anteriores a la solicitud, y al extranjero 20 años, de los cuales 10 deben ser inmediatamente anteriores (art. 13 inc. 1).",
       "No ser beneficiario de jubilación, pensión o retiro, contributivo o no contributivo (inc. 2); si se percibe una única prestación, se puede optar por la PUAM en su lugar (inc. 4).",
       "No estar percibiendo la prestación por desempleo de la Ley 24.013 (inc. 3), y mantener la residencia en el país (inc. 5).",
@@ -188,34 +188,34 @@ export const PNC_FUENTES: {
   consultadoEl: "2026-08-15",
   lista: [
     {
-      nombre: "Ley 27.793 — Emergencia Nacional en Discapacidad",
+      nombre: "Ley 27.793: Emergencia Nacional en Discapacidad",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/331706/20250922",
       detalle:
-        "B.O. 22/9/2025 — art. 5 (nueva denominación y CUD), art. 6 (requisitos y el 70% del haber mínimo), art. 7 (compatibilidad con el trabajo hasta 2 SMVM) y art. 9 (conversión de oficio de las pensiones anteriores).",
+        "B.O. 22/9/2025: art. 5 (nueva denominación y CUD), art. 6 (requisitos y el 70% del haber mínimo), art. 7 (compatibilidad con el trabajo hasta 2 SMVM) y art. 9 (conversión de oficio de las pensiones anteriores).",
     },
     {
-      nombre: "Decreto 84/2026 — reglamentación de la Ley 27.793",
+      nombre: "Decreto 84/2026: reglamentación de la Ley 27.793",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/338137/20260204",
       detalle:
-        "B.O. 4/2/2026 — Anexo I art. 5: la PNC a la vejez y la de invalidez laboral siguen bajo el Decreto 432/97. Anexo II: liquidación a cargo de ANSES, suspensión, caducidad y rehabilitación.",
+        "B.O. 4/2/2026. Anexo I art. 5: la PNC a la vejez y la de invalidez laboral siguen bajo el Decreto 432/97. Anexo II: liquidación a cargo de ANSES, suspensión, caducidad y rehabilitación.",
     },
     {
-      nombre: "Decreto 432/1997 (texto actualizado) — pensiones a la vejez y por invalidez",
+      nombre: "Decreto 432/1997 (texto actualizado): pensiones a la vejez y por invalidez",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/40000-44999/43325/texact.htm",
       detalle:
         "Requisitos de la pensión a la vejez (Anexo I) y de la pensión por invalidez laboral, estos últimos sustituidos por el Decreto 843/2024 (B.O. 23/9/2024), que bajó el piso de incapacidad del 76% al 66%.",
     },
     {
-      nombre: "Ley 23.746 — pensión vitalicia para madres de 7 hijos o más",
+      nombre: "Ley 23.746: pensión vitalicia para madres de 7 hijos o más",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/147/norma.htm",
       detalle:
-        "B.O. 24/10/1989 — art. 1: el monto es igual al de la pensión mínima; art. 2: requisitos de carencia de recursos y de cobertura previsional.",
+        "B.O. 24/10/1989. Art. 1: el monto es igual al de la pensión mínima; art. 2: requisitos de carencia de recursos y de cobertura previsional.",
     },
     {
-      nombre: "Decreto 2360/1990 (texto actualizado) — reglamento de la Ley 23.746",
+      nombre: "Decreto 2360/1990 (texto actualizado): reglamento de la Ley 23.746",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/4818/texact.htm",
       detalle:
-        "B.O. 8/11/1990 — art. 2: los requisitos reales del trámite (residencia de 1 año para argentinas y 15 para extranjeras, incompatibilidad con cualquier PNC, parientes obligados a prestar alimentos). Art. 3 y 4: pensión derivada al viudo incapacitado y a los hijos. Art. 10: se paga desde el mes siguiente al acto de otorgamiento. Art. 11: causales de suspensión. Art. 12 inc. d: ausencia del país mayor a 60 días por año calendario extingue el derecho.",
+        "B.O. 8/11/1990. Art. 2: los requisitos reales del trámite (residencia de 1 año para argentinas y 15 para extranjeras, incompatibilidad con cualquier PNC, parientes obligados a prestar alimentos). Art. 3 y 4: pensión derivada al viudo incapacitado y a los hijos. Art. 10: se paga desde el mes siguiente al acto de otorgamiento. Art. 11: causales de suspensión. Art. 12 inc. d: ausencia del país mayor a 60 días por año calendario extingue el derecho.",
     },
     {
       nombre: "Ley 13.478, art. 9 (texto actualizado)",
@@ -224,16 +224,16 @@ export const PNC_FUENTES: {
         "La norma madre de las pensiones no contributivas, con el artículo 9 sustituido por el art. 5 de la Ley 27.793.",
     },
     {
-      nombre: `${PRESTACIONES_VIGENTES.resolucion} — haber mínimo garantizado`,
+      nombre: `${PRESTACIONES_VIGENTES.resolucion}: haber mínimo garantizado`,
       url: PRESTACIONES_VIGENTES.resolucionUrl,
       detalle:
-        `${PRESTACIONES_VIGENTES.resolucionBO} — el haber mínimo del que se derivan todos los montos de esta página.`,
+        `${PRESTACIONES_VIGENTES.resolucionBO}: el haber mínimo del que se derivan todos los montos de esta página.`,
     },
     {
-      nombre: `${BONO_VIGENTE.norma} — bono extraordinario previsional`,
+      nombre: `${BONO_VIGENTE.norma}: bono extraordinario previsional`,
       url: BONO_VIGENTE.normaUrl,
       detalle:
-        `${BONO_VIGENTE.normaBO} — art. 2 inc. c: alcanza expresamente a las pensiones no contributivas por vejez, invalidez, madres de 7 hijos o más y a la PUAM. Arts. 3 y 4: monto y forma de liquidación.`,
+        `${BONO_VIGENTE.normaBO}. Art. 2 inc. c: alcanza expresamente a las pensiones no contributivas por vejez, invalidez, madres de 7 hijos o más y a la PUAM. Arts. 3 y 4: monto y forma de liquidación.`,
     },
   ],
 };

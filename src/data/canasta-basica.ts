@@ -158,7 +158,7 @@ export const CANASTA_BASICA_ULTIMO: MesCanastaBasica = CANASTA_BASICA[CANASTA_BA
 
 export const CANASTA_BASICA_FUENTE = {
   nombre:
-    "INDEC — Valorización mensual de la canasta básica alimentaria y de la canasta básica total, Gran Buenos Aires",
+    "INDEC: Valorización mensual de la canasta básica alimentaria y de la canasta básica total, Gran Buenos Aires",
   api: "https://apis.datos.gob.ar/series/api/series/?ids=150.1_CSTA_BARIA_0_D_26,150.1_CSTA_BATAL_0_D_20,150.1_LA_INDICIA_0_D_16,150.1_LA_POBREZA_0_D_13&format=json&limit=1000",
   informe: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149",
   serie: "https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_cba_cbt.xls",

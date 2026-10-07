@@ -28,22 +28,22 @@ export const AUTONOMOS_FUENTES = {
   consultadoEl: "22 de septiembre de 2026",
   lista: [
     {
-      nombre: "Ley de Impuesto a las Ganancias (t.o. Decreto 824/2019), art. 30 — texto actualizado",
+      nombre: "Ley de Impuesto a las Ganancias (t.o. Decreto 824/2019), art. 30, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
       detalle: "inciso c) apartado 1: la deducción especial de 2,5 veces (3 para nuevos) y la condición de pagar los aportes.",
     },
     {
-      nombre: "Decreto 862/2019 (reglamentación de la ley), art. 99 — texto actualizado",
+      nombre: "Decreto 862/2019 (reglamentación de la ley), art. 99, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332991/texact.htm",
       detalle: "quién es «nuevo profesional» o «nuevo emprendedor»: hasta tres años de matrícula o de inscripción.",
     },
     {
-      nombre: "ARCA — Deducciones personales art. 30 LIG (julio a diciembre 2026)",
+      nombre: "ARCA: Deducciones personales art. 30 LIG (julio a diciembre 2026)",
       url: "https://www.afip.gob.ar/gananciasYBienes/ganancias/personas-humanas-sucesiones-indivisas/deducciones/documentos/Deducciones-personales-art-30-jul-dic-2026.pdf",
       detalle: "ganancia no imponible, cargas de familia y las dos deducciones especiales del apartado 1, en pesos.",
     },
     {
-      nombre: "ARCA — Tabla escala art. 94 LIG (julio a diciembre 2026)",
+      nombre: "ARCA: Tabla escala art. 94 LIG (julio a diciembre 2026)",
       url: "https://www.afip.gob.ar/gananciasYBienes/ganancias/personas-humanas-sucesiones-indivisas/declaracion-jurada/documentos/Tabla-Art-94-LIG-per-jul-a-dic-2026.pdf",
       detalle: "la escala progresiva del 5% al 35% acumulada a diciembre.",
     },

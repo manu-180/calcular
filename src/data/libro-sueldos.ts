@@ -162,31 +162,31 @@ export const LIBRO_FUENTES: { consultadoEl: string; lista: FuenteLibro[] } = {
   consultadoEl: "2026-08-25",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Arts. 52, 53 y 55 con su texto vigente y la nota de sustitución por los arts. 20, 21 y 22 de la Ley 27.802; arts. 54 y 61 reducidos a la nota de derogación por su art. 207.",
     },
     {
-      nombre: "Los textos anteriores — captura del texto oficial (Internet Archive)",
+      nombre: "Los textos anteriores: captura del texto oficial (Internet Archive)",
       url: "https://web.archive.org/web/20251215041122/https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "La misma página de InfoLEG capturada el 15 de diciembre de 2025, antes de la reforma. De ahí salen el libro especial del art. 52 con sus ocho incisos y sus cuatro prohibiciones, el art. 53 anterior, el art. 54 completo, el art. 55 con el epígrafe «Omisión de su exhibición» y el art. 61 de formularios.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial (InfoLEG)",
+      nombre: "Ley 27.802, texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Arts. 20, 21 y 22 (las sustituciones de los arts. 52, 53 y 55 de la LCT) y art. 207 (las derogaciones, entre ellas los arts. 54 y 61).",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia. Los cinco artículos rigen «a partir de su publicación en el Boletín Oficial»: no esperan a 2027.",
     },
     {
-      nombre: "Ley 27.321 (B.O. 15/12/2016) — la reforma anterior del art. 54",
+      nombre: "Ley 27.321 (B.O. 15/12/2016): la reforma anterior del art. 54",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=269015",
       detalle:
         "El art. 54 derogado llevaba el texto que le dio esta ley en 2016: es el único de los cinco que figuraba en los «Antecedentes Normativos» de la LCT antes de la reforma de 2026.",

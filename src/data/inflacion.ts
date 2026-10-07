@@ -18,15 +18,15 @@
 
 export const INFLACION_FUENTES = {
   ipc: {
-    nombre: "INDEC — IPC Nacional, nivel general (API oficial de series de tiempo)",
+    nombre: "INDEC: IPC Nacional, nivel general (API oficial de series de tiempo)",
     url: "https://datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json",
   },
   indec: {
-    nombre: "INDEC — Índice de precios al consumidor (informes técnicos mensuales)",
+    nombre: "INDEC: Índice de precios al consumidor (informes técnicos mensuales)",
     url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31",
   },
   dnu: {
-    nombre: "DNU 70/2023 — arts. 249 y 257 (alquileres: libre pacto del índice de ajuste)",
+    nombre: "DNU 70/2023: arts. 249 y 257 (alquileres: libre pacto del índice de ajuste)",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/395000-399999/395521/norma.htm",
   },
   ccyc1199: {

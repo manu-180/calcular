@@ -112,25 +112,25 @@ export const PLAZO_FIJO_FUENTES: { consultadoEl: string; lista: FuentePlazoFijo[
   consultadoEl: "2026-08-26",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 95 con su texto vigente y la nota de sustitución por el art. 28 de la Ley 27.802, más los arts. 92 bis, 93, 94, 97, 247 y 250 que lo rodean. El art. 95 no figura en los «Antecedentes Normativos»: llegó intacto desde el texto ordenado de 1976 hasta marzo de 2026.",
     },
     {
-      nombre: "El art. 95 antes de la sustitución — captura del texto oficial (Internet Archive)",
+      nombre: "El art. 95 antes de la sustitución: captura del texto oficial (Internet Archive)",
       url: "https://web.archive.org/web/20251215041122/https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
-        "La misma página de InfoLEG capturada el 15 de diciembre de 2025, antes de la reforma. De ahí sale el texto anterior del art. 95 que se cita en esta página —los tres párrafos, con los daños y perjuicios del derecho común—: el texact vigente ya no lo trae.",
+        "La misma página de InfoLEG capturada el 15 de diciembre de 2025, antes de la reforma. De ahí sale el texto anterior del art. 95 que se cita en esta página (los tres párrafos, con los daños y perjuicios del derecho común). El texto vigente de InfoLEG ya no lo trae.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial (InfoLEG)",
+      nombre: "Ley 27.802, texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Su art. 28 es el que sustituye el art. 95 de la LCT. La nota del artículo fija la vigencia «a partir de su publicación en el Boletín Oficial»: rige desde el 6 de marzo de 2026, no desde 2027.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia del texto nuevo. Un despido anticipado anterior a esa fecha se rige por el texto viejo, con los daños y perjuicios del derecho común.",

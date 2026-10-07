@@ -123,7 +123,7 @@ export const CANASTA_CRIANZA: MesCrianza[] = [
 export const CANASTA_CRIANZA_ULTIMO: MesCrianza = CANASTA_CRIANZA[CANASTA_CRIANZA.length - 1];
 
 export const CANASTA_CRIANZA_FUENTE = {
-  nombre: "INDEC — Valorización mensual de la canasta de crianza (serie mensual por tramo de edad)",
+  nombre: "INDEC: Valorización mensual de la canasta de crianza (serie mensual por tramo de edad)",
   url: "https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_canasta_crianza.xlsx",
   informe: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-173",
   consultadoEl: "2026-09-28",

@@ -169,28 +169,28 @@ export const PERIODO_PRUEBA_FUENTES: {
   consultadoEl: "2026-08-19",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
-        "Art. 231 inc. b) con el texto del art. 48 de la Ley 27.802 —el que eliminó el preaviso en período de prueba— y su nota de vigencia. También arts. 92 bis (duración y cómputo como tiempo de servicio), 123 (SAC proporcional), 150/151/153 (vacaciones y licencia proporcional), 155, 156 (indemnización por vacaciones no gozadas), 232 (indemnización sustitutiva) y 233 (integración del mes excluida).",
+        "Art. 231 inc. b) con el texto del art. 48 de la Ley 27.802 (el que eliminó el preaviso en período de prueba) y su nota de vigencia. También arts. 92 bis (duración y cómputo como tiempo de servicio), 123 (SAC proporcional), 150/151/153 (vacaciones y licencia proporcional), 155, 156 (indemnización por vacaciones no gozadas), 232 (indemnización sustitutiva) y 233 (integración del mes excluida).",
     },
     {
-      nombre: "Ley 25.877 (B.O. 19/3/2004) — el texto anterior del art. 231",
+      nombre: "Ley 25.877 (B.O. 19/3/2004): el texto anterior del art. 231",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/90000-94999/93595/norma.htm",
       detalle:
         "Su artículo 3º es el texto que rigió hasta el 5/3/2026 y que casi toda la web sigue publicando: «por el empleador, de QUINCE (15) días cuando el trabajador se encontrare en período de prueba». Es la prueba palabra por palabra de qué se borró.",
     },
     {
-      nombre: "Ley 27.742 (B.O. 8/7/2024) — el art. 92 bis vigente",
+      nombre: "Ley 27.742 (B.O. 8/7/2024): el art. 92 bis vigente",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Su art. 91 sustituyó el art. 92 bis: llevó el período de prueba a seis meses, con ampliación por convenio a ocho meses (empresas de 6 a 100 trabajadores) y a un año (hasta 5 trabajadores). La Ley 27.802 no lo modificó: lo que cambió en 2026 fue el preaviso, no la duración.",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
-        "La reforma que sustituyó ~54 artículos de la LCT. Su art. 48 reescribió el inciso b) del art. 231. Vigencia: desde la publicación, sin efecto retroactivo — los despidos anteriores al 6/3/2026 se rigen por el texto viejo.",
+        "La reforma que sustituyó ~54 artículos de la LCT. Su art. 48 reescribió el inciso b) del art. 231. Vigencia: desde la publicación, sin efecto retroactivo. Los despidos anteriores al 6/3/2026 se rigen por el texto viejo.",
     },
   ],
 };

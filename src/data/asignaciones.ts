@@ -505,7 +505,7 @@ export const PAGO_UNICO = {
       clave: "quien-puede",
       titulo: "No es sólo para quien trabaja en relación de dependencia",
       detalle:
-        "También pueden cobrarlas quienes perciben la prestación por desempleo, la prestación de una ART de empresas incorporadas al régimen, la Pensión Honorífica de Veteranos de Guerra del Atlántico Sur y —para nacimiento y adopción— los titulares de la AUH y de la Asignación por Embarazo. En esos casos la condición es haber tenido derecho al cobro en el mes en que ocurrió el hecho.",
+        "También pueden cobrarlas quienes perciben la prestación por desempleo, la prestación de una ART de empresas incorporadas al régimen, la Pensión Honorífica de Veteranos de Guerra del Atlántico Sur y, para nacimiento y adopción, los titulares de la AUH y de la Asignación por Embarazo. En esos casos, la condición es haber tenido derecho al cobro en el mes en que ocurrió el hecho.",
       fuente: "Cartilla de ANSES «Nacimiento/Adopción» (nov. 2024)",
     },
     {
@@ -528,28 +528,28 @@ export const PAGO_UNICO = {
 export const ASIGNACIONES_FUENTES = {
   consultadoEl: "2026-09-28",
   resolucion: {
-    nombre: `${ASIGNACIONES_VIGENTES.resolucion} — montos y rangos de asignaciones familiares`,
+    nombre: `${ASIGNACIONES_VIGENTES.resolucion}: montos y rangos de asignaciones familiares`,
     url: ASIGNACIONES_VIGENTES.resolucionUrl,
   },
   cartilla: {
-    nombre: `ANSES — Montos de asignaciones familiares, AUH y embarazo (${ASIGNACIONES_VIGENTES.vigencia})`,
+    nombre: `ANSES: Montos de asignaciones familiares, AUH y embarazo (${ASIGNACIONES_VIGENTES.vigencia})`,
     url: ASIGNACIONES_VIGENTES.cartillaUrl,
   },
   ley: {
-    nombre: "Ley 24.714 — Régimen de Asignaciones Familiares",
+    nombre: "Ley 24.714: Régimen de Asignaciones Familiares",
     url: "https://www.argentina.gob.ar/normativa/nacional/ley-24714-39880",
   },
   discapacidadSinTope: {
-    nombre: "ANSES — Cartilla «Asignación por hijo / hijo con discapacidad» (sin topes de ingreso)",
+    nombre: "ANSES: Cartilla «Asignación por hijo / hijo con discapacidad» (sin topes de ingreso)",
     url: "https://www.anses.gob.ar/sites/default/files/cartilla/2024-11/Cartilla-AAFF-HIJO-HIJO-CON-DISCAPACIDAD.pdf",
   },
   cartillaNacimiento: {
     nombre:
-      "ANSES — Cartilla «Asignación por Nacimiento/Adopción» (actualizada a noviembre de 2024)",
+      "ANSES: Cartilla «Asignación por Nacimiento/Adopción» (actualizada a noviembre de 2024)",
     url: "https://www.anses.gob.ar/sites/default/files/cartilla/2024-11/Cartilla-Nacimiento_adopcion.pdf",
   },
   cartillaMatrimonio: {
-    nombre: "ANSES — Cartilla «Asignación Familiar por Matrimonio»",
+    nombre: "ANSES: Cartilla «Asignación Familiar por Matrimonio»",
     url: "https://www.anses.gob.ar/sites/default/files/cartilla/2019-10/matrimonio.pdf",
   },
 } as const;

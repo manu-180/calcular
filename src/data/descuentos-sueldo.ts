@@ -170,31 +170,31 @@ export const DESCUENTOS_FUENTES: {
   consultadoEl: "2026-08-20",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Arts. 131 (prohibición), 132 (las nueve excepciones, con el inc. f) reescrito por el art. 36 de la Ley 27.802 y el inc. c) por el DNU 70/2023), 133 con el texto del art. 37 de la Ley 27.802 y su nota de vigencia, y arts. 120 y 147 (inembargabilidad). En sus Antecedentes Normativos está la nota de la Resolución MTEySS 436/2004.",
     },
     {
-      nombre: "Ley 20.744 — texto original (InfoLEG)",
+      nombre: "Ley 20.744, texto original (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/norma.htm",
       detalle:
-        "Su art. 147 —que el texto ordenado por Decreto 390/76 renumeró como art. 133— es la redacción que rigió hasta el 5 de marzo de 2026. Comparada palabra por palabra con la vigente: el 20% no se movió, y la última oración («con intervención de la asociación profesional de trabajadores representativa de la actividad») desapareció.",
+        "Su art. 147 (que el texto ordenado por Decreto 390/76 renumeró como art. 133) es la redacción que rigió hasta el 5 de marzo de 2026. Comparada palabra por palabra con la vigente: el 20% no se movió, y la última oración («con intervención de la asociación profesional de trabajadores representativa de la actividad») desapareció.",
     },
     {
-      nombre: "Ley 27.802 — Ley de Modernización Laboral (B.O. 6/3/2026)",
+      nombre: "Ley 27.802: Ley de Modernización Laboral (B.O. 6/3/2026)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
-        "Su art. 36 sustituyó el inc. f) del art. 132 de la LCT, su art. 37 sustituyó el art. 133, y su art. 133 sustituyó el art. 9º de la Ley 14.250 — el que puso el tope del 2% a los aportes convencionales a favor de asociaciones de trabajadores y el de 0,5% a los de cámaras empresarias.",
+        "Su art. 36 sustituyó el inc. f) del art. 132 de la LCT, su art. 37 sustituyó el art. 133, y su art. 133 sustituyó el art. 9º de la Ley 14.250. Ese es el que puso el tope del 2% a los aportes convencionales a favor de asociaciones de trabajadores y el de 0,5% a los de cámaras empresarias.",
     },
     {
-      nombre: "Ley 14.250 (t.o. 2004 por Decreto 1135/2004) — el art. 9º anterior",
+      nombre: "Ley 14.250 (t.o. 2004 por Decreto 1135/2004): el art. 9º anterior",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/95000-99999/98232/norma.htm",
       detalle:
         "El texto que rigió hasta el 5 de marzo de 2026: declaraba válidas las contribuciones convencionales «no sólo para los afiliados, sino también para los no afiliados» y no fijaba ningún porcentaje. Es la prueba de que el tope del 2% no existía antes.",
     },
     {
-      nombre: "Decreto 484/87 — importes inembargables de las remuneraciones",
+      nombre: "Decreto 484/87: importes inembargables de las remuneraciones",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/75000-79999/77255/norma.htm",
       detalle:
         "Reglamenta los arts. 120, 147 y 149 de la LCT: piso inembargable de un SMVM, 10% del excedente hasta el doble del SMVM y 20% por encima, cálculo sobre el importe BRUTO (art. 2º), y sin límites cuando se trata de cuotas por alimentos o litis expensas (art. 4º).",

@@ -129,7 +129,7 @@ export const REQUISITOS_ACUERDO: { titulo: string; detalle: string }[] = [
   {
     titulo: "Con sus límites",
     detalle:
-      "Cuántas horas entran en el régimen. Los topes del Decreto 484/2000 —30 mensuales y 200 anuales— siguen corriendo por arriba de lo que pacten las partes.",
+      "Cuántas horas entran en el régimen. Los topes del Decreto 484/2000 (30 mensuales y 200 anuales) siguen corriendo por arriba de lo que pacten las partes.",
   },
   {
     titulo: "Con el modo de funcionamiento del sistema",
@@ -139,7 +139,7 @@ export const REQUISITOS_ACUERDO: { titulo: string; detalle: string }[] = [
   {
     titulo: "Con un método fehaciente de control",
     detalle:
-      "Tiene que permitir a AMBAS partes registrar las horas efectivamente trabajadas y las horas disponibles para su goce. Sin ese registro compartido, el saldo lo lleva sólo el empleador — y es el dato con el que se discute todo lo demás.",
+      "Tiene que permitir a AMBAS partes registrar las horas efectivamente trabajadas y las horas disponibles para su goce. Sin ese registro compartido, el saldo lo lleva sólo el empleador. Y ese es el dato con el que se discute todo lo demás.",
   },
 ];
 
@@ -225,40 +225,40 @@ export const HORAS_EXTRAS_FUENTES: {
   consultadoEl: "2026-08-20",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 197 bis (texto del art. 42 de la Ley 27.802: el acuerdo individual de compensación y sus cinco requisitos de forma) y art. 198 (art. 43 de la misma ley: el promedio, el banco de horas y los pisos de 12 y 35 horas). También arts. 196 (jornada), 197 (pausa de 12 horas), 201 (recargos del 50% y 100%), 203 (voluntariedad) y 204 (descanso semanal).",
     },
     {
-      nombre: "Decreto de Necesidad y Urgencia 70/2023 — texto original (InfoLEG)",
+      nombre: "Decreto de Necesidad y Urgencia 70/2023, texto original (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/395000-399999/395521/norma.htm",
       detalle:
         "Su art. 79 incorporó el art. 197 bis que rigió hasta el 5/3/2026 y que empezaba «Las convenciones colectivas de trabajo (…) podrán establecer regímenes». Es la prueba de que el banco de horas era materia exclusivamente colectiva antes de la reforma.",
     },
     {
-      nombre: "Decreto 484/2000 — máximo de horas suplementarias (InfoLEG)",
+      nombre: "Decreto 484/2000: máximo de horas suplementarias (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/60000-64999/63347/norma.htm",
       detalle:
         "Art. 1º: 30 horas mensuales y 200 anuales, sin autorización administrativa previa. Verificado el 19/8/2026 contra la lista de normas que lo modifican en InfoLEG: sólo figuran dos resoluciones complementarias del año 2000 y una de 2020 sobre una empresa puntual. Sigue vigente.",
     },
     {
-      nombre: "Ley 11.544 — Jornada de Trabajo: texto actualizado y texto original (InfoLEG)",
+      nombre: "Ley 11.544 (Jornada de Trabajo), texto actualizado y texto original (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/60000-64999/63368/texact.htm",
       detalle:
         "Su art. 3° fue sustituido por el art. 100 de la Ley 27.802 (Título VI). En el inciso b), el del trabajo por equipos, desapareció la condición «a condición de que el término medio de las horas de trabajo sobre un período de tres semanas a lo menos, no exceda de ocho horas por día o de cuarenta y ocho horas semanales», que sigue palabra por palabra en el texto original (norma.htm del mismo id).",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La reforma que sustituyó ~54 artículos de la LCT en su Título I. Sus arts. 42 y 43 reescribieron el 197 bis y el 198; su art. 100, en el Título VI, el art. 3° de la Ley 11.544. Vigencia: desde la publicación, sin efecto retroactivo.",
     },
     {
-      nombre: "Ley 24.241 art. 11, Ley 23.660 y Ley 19.032 — aportes del trabajador",
+      nombre: "Ley 24.241 art. 11, Ley 23.660 y Ley 19.032: aportes del trabajador",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/639/texact.htm",
       detalle:
-        "11% de jubilación (SIPA), 3% de obra social y 3% de PAMI. Las horas extras son remuneración: el 17% se descuenta también sobre ellas — y por eso entran en la base del aguinaldo.",
+        "11% de jubilación (SIPA), 3% de obra social y 3% de PAMI. Las horas extras son remuneración: el 17% se descuenta también sobre ellas. Por eso entran en la base del aguinaldo.",
     },
   ],
 };

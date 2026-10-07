@@ -22,42 +22,42 @@
 
 export const UOCRA_FUENTES = {
   acuerdoTramo1: {
-    nombre: "Acuerdo UOCRA-CAMARCO 31/3/2026 (abril-mayo) — PDF firmado, CAMARCO",
+    nombre: "Acuerdo UOCRA-CAMARCO 31/3/2026 (abril-mayo): PDF firmado, CAMARCO",
     url: "https://www.camarco.org.ar/laboral/acuerdo-salarial-uocra-cct-n-76-75-y-577-10-abril-mayo-2026/",
   },
   acuerdoTramo2: {
-    nombre: "Acuerdo UOCRA-CAMARCO 19/5/2026 (junio-agosto) — PDF firmado, CAMARCO",
+    nombre: "Acuerdo UOCRA-CAMARCO 19/5/2026 (junio-agosto): PDF firmado, CAMARCO",
     url: "https://www.camarco.org.ar/laboral/acuerdo-salarial-uocra-cct-n-76-75-mayo-2026/",
   },
   acuerdoTramo3: {
     nombre:
-      "Acuerdo UOCRA-CAMARCO-FAEC 21/9/2026 (septiembre-noviembre) — PDF firmado con el Anexo I de tablas, CAMARCO",
+      "Acuerdo UOCRA-CAMARCO-FAEC 21/9/2026 (septiembre-noviembre): PDF firmado con el Anexo I de tablas, CAMARCO",
     url: "https://www.camarco.org.ar/wp-content/uploads/2026/09/CI-067-ADJ-Ac-Sal-UOCRA-sep-nov26.pdf",
   },
   anexoTramo2: {
     nombre:
-      "UOCRA — segundo tramo paritaria CCT 76/75 y 577/10 (junio-julio-agosto), homologado el 2/6/2026: texto + Anexo I con las tablas por categoría y zona",
+      "UOCRA: segundo tramo paritaria CCT 76/75 y 577/10 (junio-julio-agosto), homologado el 2/6/2026: texto + Anexo I con las tablas por categoría y zona",
     url: "https://www.uocra.org/pdf/99db1b_segundo_tramo_paritaria_76-75_y_577-10_junio-julio-agosto.pdf",
   },
   uocra: {
-    nombre: "UOCRA — escalas salariales y homologaciones",
+    nombre: "UOCRA: escalas salariales y homologaciones",
     url: "https://www.uocra.org/",
   },
   cct: {
-    nombre: "Texto del CCT 76/75 (UOCRA — arts. 10-12, 16 y 52)",
+    nombre: "Texto del CCT 76/75 (UOCRA, arts. 10-12, 16 y 52)",
     url: "https://www.uocra.org/pdf/9c21ef_76.75.pdf",
   },
   ley22250: {
-    nombre: "Ley 22.250 — régimen de la construcción (IERIC)",
+    nombre: "Ley 22.250: régimen de la construcción (IERIC)",
     url: "https://www.ieric.org.ar/wp-content/uploads/2020/01/Ley22.250.pdf",
   },
   consultadoEl: "28 de septiembre de 2026",
 };
 
 export const UOCRA_HOMOLOGACIONES = {
-  tramo1: "Disp. 468/2026 (DI-2026-468-APN-DNRYRT#MCH, 7/4/2026) — abril y mayo",
-  tramo2: "Disp. 712/2026 (DI-2026-712-APN-DNRYRT#MCH) — junio a agosto",
-  tramo3: "Acuerdo firmado el 21/9/2026, con homologación solicitada — septiembre a noviembre",
+  tramo1: "Disp. 468/2026 (DI-2026-468-APN-DNRYRT#MCH, 7/4/2026): abril y mayo",
+  tramo2: "Disp. 712/2026 (DI-2026-712-APN-DNRYRT#MCH): junio a agosto",
+  tramo3: "Acuerdo firmado el 21/9/2026, con homologación solicitada: septiembre a noviembre",
 };
 
 export type ZonaUocraId = "a" | "b" | "c" | "c-austral";

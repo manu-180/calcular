@@ -145,24 +145,24 @@ export const OBRA_SOCIAL_TEXTOS = {
 export const OBRA_SOCIAL_FUENTES = {
   consultadoEl: "5 de septiembre de 2026",
   principal: {
-    nombre: "Ley 23.660, art. 19 — texto actualizado en InfoLEG",
+    nombre: "Ley 23.660, art. 19, texto actualizado en InfoLEG",
     url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
   },
   lista: [
     {
-      nombre: "Ley 23.660 — texto actualizado",
+      nombre: "Ley 23.660, texto actualizado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
       detalle:
         "Arts. 9 (beneficiarios y el adicional del 1,5%), 16 (aportes y contribuciones) y 19 (el reparto 85/15).",
     },
     {
-      nombre: "Decreto 600/2024 (B.O. 10/7/2024) — texto original",
+      nombre: "Decreto 600/2024 (B.O. 10/7/2024), texto original",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/400000-404999/401319/norma.htm",
       detalle:
         "Sustituye el art. 19, deroga el art. 19 bis, reescribe los Anexos I y II del Decreto 576/93 y sustituye el art. 23 de la Ley 26.682. Rige desde el 1/8/2024.",
     },
     {
-      nombre: "Ley 26.682 — marco regulatorio de la medicina prepaga",
+      nombre: "Ley 26.682: marco regulatorio de la medicina prepaga",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/180000-184999/182180/texact.htm",
       detalle:
         "Arts. 9 (rescisión), 10 (carencias, declaración jurada y valores diferenciales), 12 (mayores de 65) y 23 (planes de adhesión voluntaria).",
@@ -174,7 +174,7 @@ export const OBRA_SOCIAL_FUENTES = {
         "Deja el tope de la base imponible del art. 9 de la Ley 24.241 sólo para los aportes de los incisos a) y c) del art. 10: la contribución del empleador dejó de tener límite máximo.",
     },
     {
-      nombre: `${PRESTACIONES_VIGENTES.resolucion} — bases imponibles vigentes`,
+      nombre: `${PRESTACIONES_VIGENTES.resolucion}: bases imponibles vigentes`,
       url: PRESTACIONES_VIGENTES.resolucionUrl,
       detalle: "La base máxima sobre la que se calculan los aportes personales.",
     },

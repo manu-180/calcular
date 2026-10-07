@@ -138,25 +138,25 @@ export const PRESCRIPCION_FUENTES: { consultadoEl: string; lista: FuentePrescrip
   consultadoEl: "2026-09-04",
   lista: [
     {
-      nombre: "Ley 11.683 — texto actualizado, arts. 56, 57, 65 y 66 (InfoLEG)",
+      nombre: "Ley 11.683, texto actualizado, arts. 56, 57, 65 y 66 (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/18771/texact.htm",
       detalle:
-        "El art. 56 lleva la nota «Artículo sustituido por art. 30 de la Ley Nº 27.799 B.O. 2/1/2026»; el artículo sin número que le sigue define la discrepancia significativa (art. 31); y el artículo sin número a continuación del 65 —la suspensión de 120 días— figura DEROGADO por el art. 32 de la misma ley.",
+        "El art. 56 lleva la nota «Artículo sustituido por art. 30 de la Ley Nº 27.799 B.O. 2/1/2026»; el artículo sin número que le sigue define la discrepancia significativa (art. 31); y el artículo sin número a continuación del 65 (la suspensión de 120 días) figura DEROGADO por el art. 32 de la misma ley.",
     },
     {
-      nombre: "Ley 27.799 — Régimen Penal Tributario y prescripción (InfoLEG)",
+      nombre: "Ley 27.799: Régimen Penal Tributario y prescripción (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/422008/norma.htm",
       detalle:
         "B.O. 2/1/2026. Es conocida por subir los montos del Régimen Penal Tributario (su art. 1° llevó el umbral de evasión simple de $1.500.000 a $100.000.000), y por eso pasó desapercibido su capítulo de prescripción: los arts. 30, 31 y 32 reescriben el régimen de la Ley 11.683 y el art. 35 hace lo propio con la Ley 23.660.",
     },
     {
-      nombre: "Ley 27.430, Título IX — Régimen Penal Tributario, arts. 1° y 5° (InfoLEG)",
+      nombre: "Ley 27.430, Título IX: Régimen Penal Tributario, arts. 1° y 5° (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/305000-309999/305262/texact.htm",
       detalle:
         "Los dos umbrales a los que remite la definición de discrepancia significativa: el art. 1° (evasión simple de tributos, $100.000.000 por tributo y por ejercicio anual) y el art. 5° (evasión simple de recursos de la seguridad social, $7.000.000 por cada mes). Ambos con la expresión sustituida por la Ley 27.799.",
     },
     {
-      nombre: "Ley 23.660, art. 24 — prescripción de la deuda de obra social (InfoLEG)",
+      nombre: "Ley 23.660, art. 24: prescripción de la deuda de obra social (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
       detalle:
         "Los dos párrafos que el art. 35 de la Ley 27.799 incorporó: la reducción de diez años a tres para el contribuyente cumplidor y las tres condiciones de discrepancia significativa, con el umbral del art. 5° del Régimen Penal Tributario.",

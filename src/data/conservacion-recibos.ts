@@ -90,25 +90,25 @@ export const CONSERVACION_FUENTES: { consultadoEl: string; lista: FuenteConserva
   consultadoEl: "2026-08-26",
   lista: [
     {
-      nombre: "Ley de Contrato de Trabajo 20.744 — texto actualizado (InfoLEG)",
+      nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
         "Art. 143 con su texto vigente y la nota de sustitución por el art. 40 de la Ley 27.802, más los arts. 144, 145, 256 y 257, que la reforma no tocó. El art. 256 es el control cruzado de los dos años.",
     },
     {
-      nombre: "El art. 143 antes de la sustitución — captura del texto oficial (Internet Archive)",
+      nombre: "El art. 143 antes de la sustitución: captura del texto oficial (Internet Archive)",
       url: "https://web.archive.org/web/20251215041122/https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
-        "La misma página de InfoLEG capturada el 15 de diciembre de 2025. Ahí se ve que el artículo remitía a «la prescripción liberatoria del beneficio de que se trate», sin ningún número — y que su versión anterior venía del art. 77 del Decreto 70/2023.",
+        "La misma página de InfoLEG capturada el 15 de diciembre de 2025. Ahí se ve que el artículo remitía a «la prescripción liberatoria del beneficio de que se trate», sin ningún número. Y que su versión anterior venía del art. 77 del Decreto 70/2023.",
     },
     {
-      nombre: "Ley 27.802 — texto oficial (InfoLEG)",
+      nombre: "Ley 27.802, texto oficial (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
       detalle:
         "Su art. 40 es el que sustituye el art. 143 de la LCT. La nota fija la vigencia «a partir de su publicación en el Boletín Oficial».",
     },
     {
-      nombre: "Ley 27.802 — B.O. 6/3/2026",
+      nombre: "Ley 27.802 (B.O. 6/3/2026)",
       url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/339542/20260306",
       detalle:
         "La publicación de la que arranca la vigencia de los dos plazos escritos en la ley.",
