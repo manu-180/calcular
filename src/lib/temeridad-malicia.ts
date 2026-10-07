@@ -111,7 +111,7 @@ export function calcularTemeridad(p: {
     avisos.push({
       tono: "bloqueante",
       texto:
-        "Con un acuerdo homologado incumplido, el tercer párrafo del art. 275 —incorporado por la Ley 26.696 en 2011— calificaba la conducta como «temeraria y maliciosa» de oficio y mandaba aplicar el MÁXIMO del interés desde la fecha de la mora. No era una facultad del juez: era automático. Ese párrafo cayó el 6 de marzo de 2026 junto con el artículo entero.",
+        "Con un acuerdo homologado incumplido, el tercer párrafo del art. 275 (incorporado por la Ley 26.696 en 2011) calificaba la conducta como «temeraria y maliciosa» de oficio y mandaba aplicar el MÁXIMO del interés desde la fecha de la mora. No era una facultad del juez: era automático. Ese párrafo cayó el 6 de marzo de 2026 junto con el artículo entero.",
     });
   } else {
     avisos.push({
@@ -130,7 +130,7 @@ export function calcularTemeridad(p: {
   avisos.push({
     tono: "bloqueante",
     texto:
-      "El riesgo que apareció en el otro sentido: el art. 20 sustituido dice que si del proceso resulta pluspetición inexcusable —«configurándose ésta de manera objetiva en caso de sobreestimación de los créditos reclamados»— las costas se soportan solidariamente entre el trabajador y su abogado. Está escrito dentro del artículo de la gratuidad, que es justo el que garantizaba que litigar no costara.",
+      "El riesgo que apareció en el otro sentido: el art. 20 sustituido dice que si del proceso resulta pluspetición inexcusable («configurándose ésta de manera objetiva en caso de sobreestimación de los créditos reclamados»), las costas se soportan solidariamente entre el trabajador y su abogado. Está escrito dentro del artículo de la gratuidad, que es justo el que garantizaba que litigar no costara.",
   });
 
   if (tasaAnual === 0) {

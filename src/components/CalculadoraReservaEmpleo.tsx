@@ -165,8 +165,8 @@ export function CalculadoraReservaEmpleo() {
           </p>
           <p className="mt-1 text-sm text-zinc-600">
             Es la diferencia entre las dos lecturas: {formatARS(res.conReserva.totalIndemnizatorio, 2)}{" "}
-            computando el período de reserva —lo que el art. {ARTICULO_DEROGADO} decía por escrito
-            hasta el 6 de marzo de 2026— contra{" "}
+            computando el período de reserva (lo que el art. {ARTICULO_DEROGADO} decía por escrito
+            hasta el 6 de marzo de 2026) contra{" "}
             {formatARS(res.sinReserva.totalIndemnizatorio, 2)} sin computarlo.
           </p>
 
@@ -234,7 +234,7 @@ export function CalculadoraReservaEmpleo() {
                     <span className="font-medium text-zinc-800">Preaviso omitido (arts. 231/232)</span>
                     <span className="block text-xs text-zinc-500">
                       con su SAC; 1 mes hasta 5 años de antigüedad, 2 meses si los supera
-                      {res.cambiaElPreaviso ? " — acá el umbral lo define la reserva" : ""}
+                      {res.cambiaElPreaviso ? ". Acá el umbral lo define la reserva" : ""}
                     </span>
                   </td>
                   <td className="py-2 text-right font-semibold text-zinc-900">
@@ -321,8 +321,8 @@ export function CalculadoraReservaEmpleo() {
           )}
 
           <p className="mt-4 text-xs text-zinc-500">
-            Estimación orientativa, no una liquidación. Para el despido completo —con vacaciones
-            proporcionales y aguinaldo— usá{" "}
+            Estimación orientativa, no una liquidación. Para el despido completo (con vacaciones
+            proporcionales y aguinaldo), usá{" "}
             <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
               la calculadora de indemnización
             </Link>

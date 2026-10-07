@@ -235,7 +235,7 @@ export function CalculadoraTemeridadMalicia() {
             El riesgo que corre en el otro sentido: si se declara pluspetición inexcusable, el
             art. 20 manda que las costas las soporten solidariamente el trabajador y su abogado. El
             art. 277 las topea en el {(TOPE_COSTAS * 100).toLocaleString("es-AR")}% del monto de la
-            sentencia — sobre este crédito, hasta {formatARS(res.costasMaximas, 2)}.
+            sentencia. Sobre este crédito, son hasta {formatARS(res.costasMaximas, 2)}.
           </p>
 
           {res.avisos.length > 0 && (

@@ -111,7 +111,7 @@ export function calcularContinuidad(e: EntradaContinuidad): ResultadoContinuidad
         mesesDesempeno,
         mesesLicenciaPaga,
         veredicto: `${mesesLicenciaPaga + CONSERVACION_EMPLEO_MESES} meses en total, sin pagar nada`,
-        detalle: `Primero corren los ${mesesLicenciaPaga} meses de licencia paga del art. 208 —con sueldo y con obra social, porque el contrato sigue vivo— y recién ahí empieza el año de conservación del empleo del art. 211, que es el plazo al que remite el inciso b). Hasta el ${finLicenciaPaga} cobrás; después seguís con obra social pero sin remuneración.`,
+        detalle: `Primero corren los ${mesesLicenciaPaga} meses de licencia paga del art. 208 (con sueldo y con obra social, porque el contrato sigue vivo), y recién ahí empieza el año de conservación del empleo del art. 211, que es el plazo al que remite el inciso b). Hasta el ${finLicenciaPaga} cobrás; después seguís con obra social pero sin remuneración.`,
       };
     }
 

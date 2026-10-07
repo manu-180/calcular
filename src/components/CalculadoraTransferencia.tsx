@@ -157,8 +157,8 @@ export function CalculadoraTransferencia() {
             {formatARS(res.diferencia, 2)}
           </p>
           <p className="mt-1 text-sm text-zinc-600">
-            {formatARS(res.conAntiguedad.totalGeneral, 2)} con la antigüedad completa —lo que manda
-            el art. 225— contra {formatARS(res.sinAntiguedad.totalGeneral, 2)} si te liquidaran
+            {formatARS(res.conAntiguedad.totalGeneral, 2)} con la antigüedad completa (lo que manda
+            el art. 225) contra {formatARS(res.sinAntiguedad.totalGeneral, 2)} si te liquidaran
             desde la transferencia.
           </p>
 
@@ -207,7 +207,7 @@ export function CalculadoraTransferencia() {
                     <span className="font-medium text-zinc-800">Preaviso omitido, con SAC</span>
                     <span className="block text-xs text-zinc-500">
                       1 mes hasta 5 años de antigüedad, 2 si los supera
-                      {res.cambiaElPreaviso ? " — acá el umbral lo define la antigüedad anterior" : ""}
+                      {res.cambiaElPreaviso ? ". Acá el umbral lo define la antigüedad anterior" : ""}
                     </span>
                   </td>
                   <td className="py-2 text-right font-semibold text-zinc-900">

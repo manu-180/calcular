@@ -151,8 +151,8 @@ export function CalculadoraVeteranos() {
           </p>
           {esTitular ? (
             <p className="mt-2 text-sm text-zinc-600">
-              Con <strong>cualquier otro beneficio previsional permanente o de retiro</strong> —
-              nacional, provincial o municipal —, con otro ingreso, con el subsidio de la Ley 22.674
+              Con <strong>cualquier otro beneficio previsional permanente o de retiro</strong>{" "}
+              (nacional, provincial o municipal), con otro ingreso, con el subsidio de la Ley 22.674
               y con las pensiones graciables de las Leyes 23.598 y 24.310. No hay que elegir: se
               cobran las dos cosas completas.
             </p>

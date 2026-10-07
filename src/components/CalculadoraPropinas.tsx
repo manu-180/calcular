@@ -196,8 +196,8 @@ export function CalculadoraPropinas() {
         )}
 
         <p className="mt-4 text-xs text-zinc-500">
-          Estimación orientativa, no una liquidación. Para el cálculo completo del despido —con
-          preaviso, integración del mes, topes y vacaciones proporcionales— usá{" "}
+          Estimación orientativa, no una liquidación. Para el cálculo completo del despido (con
+          preaviso, integración del mes, topes y vacaciones proporcionales), usá{" "}
           <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
             la calculadora de indemnización
           </Link>

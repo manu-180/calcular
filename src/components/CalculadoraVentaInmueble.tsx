@@ -106,8 +106,8 @@ export function CalculadoraVentaInmueble() {
             Gastos de la operación ($)
           </label>
           <p className="mt-0.5 text-xs text-zinc-500">
-            Comisiones, honorarios, impuestos y tasas relacionados con la operación — el último
-            párrafo del art. 99 los deja computar.
+            Comisiones, honorarios, impuestos y tasas de la operación. El último párrafo del art.
+            99 deja restarlos.
           </p>
           <input
             id="gastos"
@@ -161,7 +161,7 @@ export function CalculadoraVentaInmueble() {
                   <td className="py-2 pr-3">
                     <span className="font-medium text-zinc-800">Costo actualizado por IPC</span>
                     <span className="block text-xs text-zinc-500">
-                      art. 99 inc. a) — coeficiente ×
+                      art. 99 inc. a), coeficiente ×
                       {res.coeficiente.toLocaleString("es-AR", { maximumFractionDigits: 2 })} entre{" "}
                       {nombrePeriodo(adquisicion)} y {nombrePeriodo(venta)}
                     </span>
@@ -194,7 +194,7 @@ export function CalculadoraVentaInmueble() {
                     </span>
                     <span className="block text-xs text-zinc-500">
                       {res.regimen === "exento"
-                        ? "exento desde el 1/1/2026 — se muestra para dimensionar"
+                        ? "exento desde el 1/1/2026 (se muestra solo como referencia)"
                         : "art. 99 de la Ley de Ganancias"}
                     </span>
                   </td>
@@ -221,7 +221,7 @@ export function CalculadoraVentaInmueble() {
             <p className="mt-1 text-sm text-zinc-600">
               El art. 99 inc. a) no manda restar el precio de compra: manda restar «el costo de
               adquisición, <strong>actualizado</strong>», con el índice del segundo párrafo del art.
-              93 — que para las compras desde 2018 es el IPC nivel general del INDEC. Sin actualizar,
+              93 (para las compras desde 2018, el IPC nivel general del INDEC). Sin actualizar,
               el impuesto se calcularía sobre inflación pura: un departamento comprado en 2019
               «ganaría» miles por ciento en pesos nominales sin que su dueño haya ganado nada.
             </p>
@@ -236,11 +236,11 @@ export function CalculadoraVentaInmueble() {
           </ul>
 
           <p className="mt-4 text-xs text-zinc-500">
-            ¿Alquilás en vez de vender?{" "}
+            ¿Alquilás en vez de vender? Mirá{" "}
             <Link href="/deduccion-alquiler" className="font-medium text-emerald-700 hover:underline">
               la deducción del alquiler y la exención del locador
-            </Link>{" "}
-            — es la otra mitad del mismo inciso n).
+            </Link>
+            . Es la otra mitad del mismo inciso n).
           </p>
         </div>
       )}

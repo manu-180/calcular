@@ -140,7 +140,7 @@ export function CalculadoraPeriodista() {
                   <Fila
                     label="Sustitutiva del preaviso (art. 43 inc. b)"
                     monto={res.estatuto.sustitutiva}
-                    detalle={`${res.estatuto.mesesSustitutiva} meses — el doble del plazo de preaviso del inc. a)`}
+                    detalle={`${res.estatuto.mesesSustitutiva} meses, el doble del plazo de preaviso del inc. a)`}
                   />
                 )}
                 <Fila

@@ -183,7 +183,7 @@ export function CalculadoraAguinaldo() {
                   </dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-zinc-600">PAMI — Ley 19.032 (3%)</dt>
+                  <dt className="text-zinc-600">PAMI (Ley 19.032, 3%)</dt>
                   <dd className="font-medium text-zinc-900">
                     −{formatARS(resultado.aportes.pami)}
                   </dd>

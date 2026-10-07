@@ -272,7 +272,7 @@ export function evaluarPrelacion(
   avisos.push({
     tono: "ok",
     texto:
-      "Para esa fecha regía el texto anterior: un convenio de ámbito distinto sólo modificaba al anterior «en tanto establezca condiciones más favorables para el trabajador», y la comparación debía hacerse «por instituciones» — institución por institución, no por el total.",
+      "Para esa fecha regía el texto anterior: un convenio de ámbito distinto sólo modificaba al anterior «en tanto establezca condiciones más favorables para el trabajador», y la comparación debía hacerse «por instituciones» (institución por institución, no por el total).",
   });
   const prevalece: Ambito | "depende" = menorEsPosterior
     ? menorEsMasFavorable

@@ -114,7 +114,7 @@ export function calcularDeduccionAlquiler(e: EntradaAlquiler): ResultadoAlquiler
     avisos.push({
       tono: "bloqueante",
       texto:
-        "Si sos titular de algún inmueble —aunque sea una fracción heredada, en otra provincia o sin usar— el 40% del inciso h) no corre: la ley lo condiciona a no resultar titular de ningún inmueble, «cualquiera sea la proporción». No hay prorrateo ni excepción por no vivir ahí.",
+        "Si sos titular de algún inmueble (aunque sea una parte heredada, en otra provincia o sin usar), el 40% del inciso h) no corre: la ley lo condiciona a no resultar titular de ningún inmueble, «cualquiera sea la proporción». No hay prorrateo ni excepción por no vivir ahí.",
     });
   }
 

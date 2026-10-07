@@ -253,7 +253,7 @@ export function CalculadoraPracticasDesleales() {
       <p className="mt-4 text-xs text-zinc-500">
         Orientativo. La multa la fija el juez dentro de esta escala, y el art. 55 agrega que «los
         importes de las multas serán actualizados a la fecha del efectivo pago, de acuerdo a las
-        pautas de ajuste que correspondan a los créditos laborales» — eso se calcula aparte, con el
+        pautas de ajuste que correspondan a los créditos laborales». Eso se calcula aparte, con el
         IPC más el 3% anual del art. 276 de la LCT.
       </p>
     </div>

@@ -139,14 +139,14 @@ export function calcularTransferencia(params: {
   avisos.push({
     tono: "bloqueante",
     texto:
-      "Lo que sí cambió el 6 de marzo de 2026 es quién responde. El artículo 228 vigente exime al adquirente de la responsabilidad solidaria por «toda información oculta o viciada que no fuera de conocimiento del adquirente luego de realizar los actos de debida diligencia para ello». El texto anterior no tenía ninguna excepción. Ojo con la lectura: tu crédito no se extingue —lo que puede desaparecer es un deudor—, y el que queda es el que vendió la empresa. La solidaridad existía justamente para eso.",
+      "Lo que sí cambió el 6 de marzo de 2026 es quién responde. El artículo 228 vigente exime al adquirente de la responsabilidad solidaria por «toda información oculta o viciada que no fuera de conocimiento del adquirente luego de realizar los actos de debida diligencia para ello». El texto anterior no tenía ninguna excepción. Ojo con la lectura: tu crédito no se extingue. Lo que puede desaparecer es un deudor, y el que queda es el que vendió la empresa. La solidaridad existía justamente para eso.",
   });
 
   if (motivo === "art-226") {
     avisos.push({
       tono: "atencion",
       texto:
-        "Considerarte despedido por la transferencia no es automático: el artículo 226 pide un perjuicio «apreciado con el criterio del artículo 242», y enumera qué se pondera —que cambie el objeto de la explotación, que se alteren funciones, cargo o empleo, o que la separación entre secciones o sucursales disminuya la responsabilidad patrimonial del empleador—. El monto que ves es el del despido indirecto; la causa hay que poder probarla. Consultá a un profesional antes de dar por roto el contrato.",
+        "Considerarte despedido por la transferencia no es automático: el artículo 226 pide un perjuicio «apreciado con el criterio del artículo 242», y enumera qué se pondera: que cambie el objeto de la explotación, que se alteren funciones, cargo o empleo, o que la separación entre secciones o sucursales disminuya la responsabilidad patrimonial del empleador. El monto que ves es el del despido indirecto; la causa hay que poder probarla. Consultá a un profesional antes de dar por roto el contrato.",
     });
   }
 

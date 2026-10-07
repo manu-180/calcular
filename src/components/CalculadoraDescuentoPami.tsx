@@ -132,8 +132,8 @@ export function CalculadoraDescuentoPami() {
             {aporta ? (
               <>
                 Es el {res.alicuotaEfectiva.toLocaleString("es-AR", { maximumFractionDigits: 2 })}%
-                de tu haber de {formatARS(res.haber, 0)} — la alícuota efectiva, que no es ni el 3%
-                ni el 6% salvo en los extremos.
+                de tu haber de {formatARS(res.haber, 0)}. Esa es la alícuota efectiva: no es ni el 3%
+                ni el 6%, salvo en los extremos.
               </>
             ) : (
               <>{res.regimen.resumen}</>

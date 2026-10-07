@@ -88,7 +88,7 @@ export function calcularConservacion(params: {
   } else {
     avisos.push({
       tono: "atencion",
-      texto: `Los dos plazos del artículo 143 ya vencieron para este recibo (el laboral el ${limiteLaboralISO} y el previsional el ${limitePrevisionalISO}). Eso significa que la ley ya no obliga a conservarlo — no que convenga destruirlo si hay un reclamo abierto o una inspección en curso.`,
+      texto: `Los dos plazos del artículo 143 ya vencieron para este recibo (el laboral el ${limiteLaboralISO} y el previsional el ${limitePrevisionalISO}). Eso significa que la ley ya no obliga a conservarlo, no que convenga destruirlo si hay un reclamo abierto o una inspección en curso.`,
     });
   }
 

@@ -150,8 +150,8 @@ export function CalculadoraObraSocialMonotributo() {
                       <>desde el {fechaLarga(x.desdeISO)}</>
                     ) : (
                       <>
-                        se abre el <strong>{fechaLarga(x.desdeISO)}</strong> — faltan{" "}
-                        {x.diasQueFaltan} día(s)
+                        se abre el <strong>{fechaLarga(x.desdeISO)}</strong> (faltan{" "}
+                        {x.diasQueFaltan} día(s))
                       </>
                     )}
                   </p>

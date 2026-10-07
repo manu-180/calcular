@@ -256,7 +256,7 @@ export function CalculadoraReingreso() {
                     </span>
                     <span className="block text-xs text-zinc-500">
                       «en ningún caso» se puede cobrar menos que esto
-                      {res.pisoAplicado ? " — y es lo que definió tu resultado" : ""}
+                      {res.pisoAplicado ? ", y es lo que definió tu resultado" : ""}
                     </span>
                   </td>
                   <td
@@ -282,8 +282,8 @@ export function CalculadoraReingreso() {
           )}
 
           <p className="mt-4 text-xs text-zinc-500">
-            Estimación orientativa, no una liquidación. Para el despido completo —con preaviso,
-            integración del mes y vacaciones proporcionales— usá{" "}
+            Estimación orientativa, no una liquidación. Para el despido completo (con preaviso,
+            integración del mes y vacaciones proporcionales), usá{" "}
             <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
               la calculadora de indemnización
             </Link>

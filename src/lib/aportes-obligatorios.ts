@@ -177,7 +177,7 @@ export function calcularAfiliacion(e: Entrada): Resultado {
         estado: "obligatorio",
         norma: "Ley 24.241, art. 2º inc. b) ap. 1",
         motivo:
-          "Dirección, administración o conducción de cualquier empresa, organización, establecimiento o explotación con fines de lucro, o sociedad comercial o civil — «aunque por esas actividades no obtengan retribución, utilidad o ingreso alguno».",
+          "Dirección, administración o conducción de cualquier empresa, organización, establecimiento o explotación con fines de lucro, o sociedad comercial o civil, «aunque por esas actividades no obtengan retribución, utilidad o ingreso alguno».",
       };
       avisos.push({
         tono: "bloqueante",

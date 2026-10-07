@@ -158,8 +158,8 @@ export function CalculadoraTrabajoMujeres() {
         <p className="mt-1 text-sm text-zinc-600">
           {horas(res.liberadasPorSemana)} por semana y {horas(res.liberadasPorMes)} por mes. Las
           horas trabajadas no cambian: seguís haciendo {horas(res.horasDiarias)} por día y{" "}
-          {horas(res.horasSemanales)} por semana. Lo que se achica es la amplitud —el tiempo entre
-          la primera entrada y la última salida—, que pasa de {horas(res.amplitudAntes)} a{" "}
+          {horas(res.horasSemanales)} por semana. Lo que se achica es la amplitud (el tiempo entre
+          la primera entrada y la última salida), que pasa de {horas(res.amplitudAntes)} a{" "}
           {horas(res.amplitudAhora)}.
         </p>
 

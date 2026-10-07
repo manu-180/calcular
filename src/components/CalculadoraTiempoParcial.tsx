@@ -201,7 +201,7 @@ export function CalculadoraTiempoParcial() {
               <tr className="border-b border-zinc-200 align-top">
                 <td className="py-2 pr-3">
                   <span className="font-medium text-zinc-800">
-                    Aporte de obra social (3%) — el que no se prorratea
+                    Aporte de obra social (3%), el que no se prorratea
                   </span>
                   <span className="block text-xs text-zinc-500">
                     el inciso 4 lo calcula sobre el sueldo de un trabajador de tiempo completo. Si se

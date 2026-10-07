@@ -98,7 +98,7 @@ export function calcularImpuestoInterno(params: {
     avisos.push({
       tono: "atencion",
       texto:
-        "Los objetos suntuarios son el único rubro que se gravaba en cada etapa de comercialización, y no una sola vez: el art. 2° exceptúa expresamente al Capítulo VIII de la regla de la etapa única. El art. 37 amortigua el arrastre —fabricantes, talleristas y revendedores podían computar como pago a cuenta el impuesto pagado por los productos gravados que usaran—, así que el efecto sobre el precio final depende de la cadena concreta. Esta calculadora resuelve una etapa: es el piso, no el total.",
+        "Los objetos suntuarios son el único rubro que se gravaba en cada etapa de comercialización, y no una sola vez: el art. 2° exceptúa expresamente al Capítulo VIII de la regla de la etapa única. El art. 37 amortigua el arrastre (fabricantes, talleristas y revendedores podían computar como pago a cuenta el impuesto pagado por los productos gravados que usaran), así que el efecto sobre el precio final depende de la cadena concreta. Esta calculadora resuelve una etapa: es el piso, no el total.",
     });
   }
 
@@ -114,7 +114,7 @@ export function calcularImpuestoInterno(params: {
     avisos.push({
       tono: "atencion",
       texto:
-        "Este rubro tenía un monto exento: por debajo de cierto precio de venta —sin impuestos, incluidos los opcionales— la operación no tributaba. El art. 39 escribió esos importes en 2019 y mandó actualizarlos trimestralmente por el IPIM, así que el valor vigente no está en la ley y esta página no lo publica. Si el precio de la operación era bajo, puede que no hubiera impuesto para eliminar.",
+        "Este rubro tenía un monto exento: por debajo de cierto precio de venta (sin impuestos, incluidos los opcionales), la operación no tributaba. El art. 39 escribió esos importes en 2019 y mandó actualizarlos trimestralmente por el IPIM, así que el valor vigente no está en la ley y esta página no lo publica. Si el precio de la operación era bajo, puede que no hubiera impuesto para eliminar.",
     });
   }
 
@@ -138,7 +138,7 @@ export function calcularImpuestoInterno(params: {
     avisos.push({
       tono: "ok",
       texto:
-        "Éste es el rubro del Capítulo IX donde la eliminación baja algo que se estaba pagando de verdad: el Decreto 50/2025 enumeró los incisos a), b), c), d) y e) del art. 38 y dejó afuera al f). Las aeronaves de recreo tampoco tenían monto exento —el art. 39 dice «sin aplicarse monto exento para el inciso f)»—, así que el 20% corría desde el primer peso.",
+        "Éste es el rubro del Capítulo IX donde la eliminación baja algo que se estaba pagando de verdad: el Decreto 50/2025 enumeró los incisos a), b), c), d) y e) del art. 38 y dejó afuera al f). Las aeronaves de recreo tampoco tenían monto exento (el art. 39 dice «sin aplicarse monto exento para el inciso f)»), así que el 20% corría desde el primer peso.",
     });
   }
 

@@ -86,7 +86,7 @@ export function CalculadoraUocra({ oferta }: { oferta?: DatosOferta }) {
       await navigator.clipboard.writeText(`UOCRA · ${categoria?.nombre} · ${zona?.nombre} · ${mes?.etiqueta}
 Bruto: ${formatARS(resultado.bruto, 0)}
 En mano (estimado): ${formatARS(resultado.neto, 0)}
-Escala oficial CCT 76/75 — https://calcular.ar/convenios/uocra`);
+Escala oficial CCT 76/75: https://calcular.ar/convenios/uocra`);
       setCopia("ok");
       volverAIdle(2000);
     } catch {

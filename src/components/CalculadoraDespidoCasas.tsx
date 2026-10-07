@@ -95,9 +95,9 @@ export function CalculadoraDespidoCasas() {
           </label>
           <p className="mt-0.5 text-xs text-zinc-500">
             Con el texto vigente da igual: son {PRUEBA_MESES_VIGENTE} meses para las dos. Con el
-            anterior cambiaba —{PRUEBA_DIAS_ANTERIOR_SIN_RETIRO} días sin retiro,{" "}
+            anterior cambiaba ({PRUEBA_DIAS_ANTERIOR_SIN_RETIRO} días sin retiro,{" "}
             {PRUEBA_DIAS_ANTERIOR_CON_RETIRO} días de trabajo con tope de{" "}
-            {PRUEBA_TOPE_MESES_ANTERIOR_CON_RETIRO} meses con retiro— y por eso se pregunta.
+            {PRUEBA_TOPE_MESES_ANTERIOR_CON_RETIRO} meses con retiro), y por eso se pregunta.
           </p>
           <select
             id="modalidad"
@@ -124,7 +124,7 @@ export function CalculadoraDespidoCasas() {
           {res.dentroDePrueba !== res.dentroDePruebaOtroTexto ? (
             <>
               Con el otro texto del art. 7 este mismo caso cerraría en{" "}
-              {formatARS(res.totalOtroTexto, 2)} — una diferencia de{" "}
+              {formatARS(res.totalOtroTexto, 2)}, una diferencia de{" "}
               <strong>{formatARS(res.diferencia, 2)}</strong>. Se aplica el que corresponde a la
               fecha de egreso: la reforma no es retroactiva.
             </>
@@ -210,7 +210,7 @@ export function CalculadoraDespidoCasas() {
                   </span>
                   <span className="block text-xs opacity-80">
                     art. 44: si el despido no cae el último día del mes, se completa el mes. A
-                    diferencia de la LCT, acá el régimen no la excluye en el período de prueba —
+                    diferencia de la LCT, acá el régimen no la excluye en el período de prueba,
                     pero el art. 7 dice «sin indemnización alguna».
                   </span>
                 </td>
