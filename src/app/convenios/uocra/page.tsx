@@ -37,14 +37,14 @@ const SNR_OFICIAL_A = MES.snr.oficial.a;
 const TIENE_SNR = SNR_OFICIAL_A > 0;
 
 export const metadata: Metadata = {
-  title: "Sueldos UOCRA 2026: calculadora y escala por zona (CCT 76/75)",
+  title: "Sueldos UOCRA 2026: jornales por categoría y zona",
   description:
-    "Cuánto cobra un trabajador de la construcción en 2026: jornales oficiales UOCRA por categoría y zona, calculadora de jornal a sueldo mensual con asistencia perfecta y suma no remunerativa. Verificado contra los acuerdos firmados.",
+    "Jornales oficiales de UOCRA (CCT 76/75) por categoría y zona, de jornal a sueldo mensual con asistencia perfecta y suma no remunerativa.",
   alternates: { canonical: "/convenios/uocra" },
   openGraph: {
     images: [
       {
-        url: `/og?t=${encodeURIComponent("Sueldos UOCRA 2026")}&s=${encodeURIComponent("Jornales por zona y categoría — CCT 76/75")}`,
+        url: `/og?t=${encodeURIComponent("Sueldos UOCRA 2026")}&s=${encodeURIComponent("Jornales por zona y categoría (CCT 76/75)")}`,
         width: 1200,
         height: 630,
       },
@@ -57,53 +57,53 @@ const faqs = [
     q: `¿Cuánto cobra un oficial de la construcción en ${MES_TXT}?`,
     a:
       `El jornal oficial de un Oficial en Zona A (CABA, Buenos Aires y la mayoría de las provincias) es de ${formatARS(MES.jornales.oficial.a, 0)} la hora. ` +
-      `En un mes de jornada completa (44 hs semanales ≈ 190,67 hs) son unos ${formatARS(OFICIAL_A.basicoMensual, 0)} de básico; con asistencia perfecta (+20%) sube a ${formatARS(OFICIAL_A.totalRemunerativo, 0)}` +
+      `En un mes de jornada completa (44 hs por semana, unas 190,67 hs) son unos ${formatARS(OFICIAL_A.basicoMensual, 0)} de básico. Con asistencia perfecta (+20%) sube a ${formatARS(OFICIAL_A.totalRemunerativo, 0)}` +
       (TIENE_SNR
         ? `, y con la suma no remunerativa del mes (${formatARS(SNR_OFICIAL_A, 0)}) el bruto ronda ${formatARS(OFICIAL_A.bruto, 0)}`
-        : `, que es todo el bruto: ${MES_TXT} no tiene suma no remunerativa`) +
-      ` — en mano quedan aproximadamente ${formatARS(OFICIAL_A.neto, 0)}.`,
+        : `. Ese es todo el bruto, porque ${MES_TXT} no tiene suma no remunerativa`) +
+      `. En mano quedan unos ${formatARS(OFICIAL_A.neto, 0)}.`,
   },
   {
     q: "¿Cómo paso del jornal por hora al sueldo mensual?",
-    a: "Multiplicás el jornal por las horas trabajadas en el mes. La jornada completa del convenio es de 44 horas semanales (máximo 9 por día), que en un mes promedio son 190,67 horas (44 × 52 semanas ÷ 12 meses). En la práctica el pago es quincenal.",
+    a: "Multiplicás el jornal por las horas que trabajaste en el mes. La jornada completa del convenio es de 44 horas por semana (9 por día como máximo). En un mes promedio son 190,67 horas (44 × 52 semanas ÷ 12 meses). En la práctica se cobra cada quincena.",
   },
   {
     q: "¿Qué zona me corresponde?",
-    a: "La que corresponde al lugar donde trabajás: Zona A abarca CABA y la mayoría de las provincias; Zona B es La Pampa, Neuquén, Río Negro y Chubut; Zona C es Santa Cruz; y Zona C Austral es Tierra del Fuego, Antártida e Islas del Atlántico Sur. Las zonas B, C y C Austral cobran un adicional por zona desfavorable que ya está incluido en los jornales que publicamos.",
+    a: "La del lugar donde trabajás. Zona A: CABA y la mayoría de las provincias. Zona B: La Pampa, Neuquén, Río Negro y Chubut. Zona C: Santa Cruz. Zona C Austral: Tierra del Fuego, Antártida e Islas del Atlántico Sur. Las zonas B, C y C Austral cobran un adicional por zona desfavorable, que ya está sumado en los jornales que publicamos.",
   },
   {
     q: "¿Qué es la asistencia perfecta del 20%?",
-    a: "Un adicional del art. 52 del CCT 76/75: si en la quincena tenés asistencia perfecta, cobrás un 20% más sobre el salario básico de tu categoría. No la perdés por vacaciones, licencias especiales, feriados ni suspensiones por lluvia u otras causas ajenas.",
+    a: "Es un adicional del art. 52 del CCT 76/75. Si no faltaste en la quincena, cobrás un 20% más sobre el básico de tu categoría. No lo perdés por vacaciones, licencias especiales, feriados ni por días parados por lluvia u otras causas que no dependen de vos.",
   },
   {
     q: "¿Qué es la suma no remunerativa (SNR) que figura en los acuerdos?",
-    a: "Un monto fijo por categoría y zona que acompañó a los aumentos de abril a julio de 2026: se paga el 50% con cada quincena y solo descuenta el aporte a la obra social (3%). Es transitoria: en agosto de 2026 se absorbió al básico, y el tramo de septiembre a noviembre ya no la trae.",
+    a: "Es un monto fijo por categoría y zona que vino con los aumentos de abril a julio de 2026. Se paga la mitad con cada quincena y solo descuenta el aporte a la obra social (3%). Es transitoria: en agosto de 2026 pasó al básico, y el tramo de septiembre a noviembre ya no la trae.",
   },
   {
     q: "¿En la construcción se cobra antigüedad?",
-    a: "No como porcentaje del sueldo: el régimen de la construcción (Ley 22.250) no tiene el adicional por antigüedad típico de otros convenios. La antigüedad sí mejora tus vacaciones, y en lugar de indemnización por despido existe el fondo de cese laboral.",
+    a: "No como porcentaje del sueldo. El régimen de la construcción (Ley 22.250) no tiene el adicional por antigüedad de otros convenios. La antigüedad sí te da más días de vacaciones. Y en vez de indemnización por despido existe el fondo de cese laboral.",
   },
   {
     q: "¿Qué es el fondo de cese laboral?",
-    a: "El reemplazo de la indemnización por despido en la construcción: el empleador deposita todos los meses un 12% de tu remuneración durante el primer año (8% después del año) en una cuenta a tu nombre, y ese fondo lo cobrás cuando termina la relación laboral, sin importar la causa. No es un descuento sobre tu sueldo.",
+    a: "Es lo que reemplaza a la indemnización por despido en la construcción. Todos los meses el empleador deposita en una cuenta a tu nombre el 12% de tu sueldo durante el primer año (8% después del año). Lo cobrás cuando termina el trabajo, sea cual sea la causa. No se descuenta de tu sueldo.",
   },
   {
     q: "¿Cuándo es el próximo aumento de UOCRA?",
     a:
-      `El acuerdo del 21/9/2026 (tercer tramo de la paritaria abril 2026-marzo 2027) fija +1,9% en septiembre, +1,8% en octubre y +1,7% en noviembre, acumulativos y sin suma no remunerativa; la escala está cargada hasta ${ULTIMO.etiqueta.toLowerCase()}. ` +
+      `El acuerdo del 21/9/2026 (tercer tramo de la paritaria de abril 2026 a marzo 2027) fija +1,9% en septiembre, +1,8% en octubre y +1,7% en noviembre, acumulativos y sin suma no remunerativa. La escala está cargada hasta ${ULTIMO.etiqueta.toLowerCase()}. ` +
       `${textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, hoyAR())} Cuando se firme y se publique la tabla, la cargamos acá.`,
   },
   {
     q: "¿El sereno cómo cobra?",
-    a: `Es la única categoría con sueldo mensual fijo del convenio (en ${MES_TXT}: ${formatARS(MES.serenoMensual.a, 0)} en Zona A), porque su jornada de vigilancia es de 12 horas corridas (art. 12 del CCT). Cuando el mes tiene suma no remunerativa, la del sereno es igual a la del ayudante.`,
+    a: `Es la única categoría del convenio con sueldo mensual fijo (en ${MES_TXT}: ${formatARS(MES.serenoMensual.a, 0)} en Zona A), porque vigila 12 horas seguidas (art. 12 del CCT). Cuando el mes tiene suma no remunerativa, la del sereno es igual a la del ayudante.`,
   },
   {
     q: "¿Cuánto queda en mano de un sueldo de UOCRA?",
-    a: "De lo remunerativo (básico + asistencia perfecta) se descuenta el 17% de aportes de ley (11% jubilación + 3% PAMI + 3% obra social) más el aporte solidario del 2% que fijaron los acuerdos 2026 (a los afiliados se lo absorbe la cuota sindical del 2,5%). La SNR solo descuenta el 3% de obra social. Ganancias aplica recién en sueldos altos.",
+    a: "De lo remunerativo (básico + asistencia perfecta) se descuenta el 17% de aportes de ley: 11% de jubilación, 3% de PAMI y 3% de obra social. Se suma el aporte solidario del 2% que fijaron los acuerdos 2026 (si estás afiliado, queda dentro de la cuota sindical del 2,5%). La SNR solo descuenta el 3% de obra social. Ganancias recién aparece en sueldos altos.",
   },
   {
     q: "¿Los trabajadores de la construcción cobran aguinaldo?",
-    a: "Sí: el SAC es igual que en cualquier empleo — 50% del mejor sueldo del semestre, pagadero el 30 de junio y el 18 de diciembre. Con sueldos que varían por horas trabajadas, conviene identificar el mejor mes del semestre: calculalo con nuestra calculadora de aguinaldo.",
+    a: "Sí, igual que en cualquier trabajo: el aguinaldo (SAC) es el 50% del mejor sueldo del semestre y se paga el 30 de junio y el 18 de diciembre. Como el sueldo cambia según las horas, fijate cuál fue tu mejor mes del semestre. Lo podés calcular con nuestra calculadora de aguinaldo.",
   },
 ];
 
@@ -161,9 +161,9 @@ export default function UocraPage() {
         <p className="text-zinc-600">
           Elegí tu categoría y tu zona y pasá del <strong>jornal por hora</strong> al{" "}
           <strong>sueldo mensual</strong>, con la asistencia perfecta del 20% y la suma no
-          remunerativa del mes. Valores tomados de los{" "}
-          <strong>acuerdos firmados por UOCRA y CAMARCO</strong> — los documentos oficiales,
-          no blogs.
+          remunerativa del mes. Los valores salen de los{" "}
+          <strong>acuerdos firmados por UOCRA y CAMARCO</strong> (los documentos oficiales, no
+          blogs).
         </p>
       </header>
 
@@ -177,12 +177,13 @@ export default function UocraPage() {
         <p>
           Un <strong>Oficial</strong> de la construcción (UOCRA, CCT 76/75) en Zona A cobra en
           {MES_TXT} un jornal de <strong>{formatARS(MES.jornales.oficial.a, 0)}/hora</strong>.
-          Una jornada completa (190,67 hs/mes) con asistencia perfecta (+20%)
-          {TIENE_SNR ? " y la suma no remunerativa del mes" : ""} da{" "}
-          <strong>≈ {formatARS(OFICIAL_A.bruto, 0)} brutos</strong> y{" "}
-          <strong>≈ {formatARS(OFICIAL_A.neto, 0)} en mano</strong>. Los jornales varían por zona
-          (A a C Austral) y salen de los acuerdos UOCRA-CAMARCO homologados. En la construcción no
-          hay antigüedad como % del sueldo: rige el fondo de cese laboral (Ley 22.250).
+          Con jornada completa (190,67 hs por mes) y asistencia perfecta (+20%)
+          {TIENE_SNR ? ", más la suma no remunerativa del mes," : ""} son{" "}
+          <strong>unos {formatARS(OFICIAL_A.bruto, 0)} brutos</strong> y{" "}
+          <strong>unos {formatARS(OFICIAL_A.neto, 0)} en mano</strong>. Los jornales cambian por
+          zona (de la A a la C Austral) y salen de los acuerdos homologados entre UOCRA y CAMARCO.
+          En la construcción no hay antigüedad como porcentaje del sueldo: en su lugar está el
+          fondo de cese laboral (Ley 22.250).
         </p>
       </RespuestaPrimero>
 
@@ -194,8 +195,8 @@ export default function UocraPage() {
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Jornal horario en pesos (el adicional por zona desfavorable ya está incluido). El
-            sereno cobra mensual:
+            Jornal por hora, en pesos (ya incluye el adicional por zona desfavorable). El sereno
+            cobra por mes:
           </p>
         </div>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
@@ -287,8 +288,8 @@ export default function UocraPage() {
           </table>
         </div>
         <p className="text-sm text-zinc-500">
-          Los valores por zona salen de las tablas firmadas (oficiales); la composición
-          provincial se basa en el CCT 76/75 y sus acuerdos modificatorios.
+          Los valores por zona salen de las tablas oficiales firmadas. Qué provincia va en cada
+          zona sale del CCT 76/75 y de los acuerdos que lo modificaron.
         </p>
       </section>
 
@@ -296,22 +297,22 @@ export default function UocraPage() {
         <h2 className="text-xl font-bold text-zinc-900">Los acuerdos 2026, en corto</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            La paritaria 2026 de la construcción avanza por tramos cortos. El acuerdo del
-            31/3/2026 dio +2% en marzo, +1,9% en abril y +1,8% en mayo; el del 19/5/2026 suma{" "}
-            <strong>+2,1% en junio, +2% en julio y +1,9% en agosto</strong>, siempre
-            acumulativos y acompañados por una SNR mensual que en agosto se absorbió al básico.
-            Ambos están homologados ({UOCRA_HOMOLOGACIONES.tramo1}; {UOCRA_HOMOLOGACIONES.tramo2}).
+            La paritaria 2026 de la construcción va por tramos cortos. El acuerdo del 31/3/2026
+            dio +2% en marzo, +1,9% en abril y +1,8% en mayo. El del 19/5/2026 suma{" "}
+            <strong>+2,1% en junio, +2% en julio y +1,9% en agosto</strong>. Todos son
+            acumulativos y vinieron con una SNR mensual, que en agosto pasó al básico. Los dos
+            están homologados ({UOCRA_HOMOLOGACIONES.tramo1}; {UOCRA_HOMOLOGACIONES.tramo2}).
             El tercer tramo, firmado el 21/9/2026 por UOCRA, CAMARCO y FAEC, da{" "}
-            <strong>+1,9% en septiembre, +1,8% en octubre y +1,7% en noviembre</strong>, sin SNR,
-            y mantiene el aporte solidario del 2% para los no afiliados.
+            <strong>+1,9% en septiembre, +1,8% en octubre y +1,7% en noviembre</strong>, sin SNR.
+            Mantiene el aporte solidario del 2% para los no afiliados.
           </p>
           <p className="rounded-xl bg-white p-4 font-medium text-zinc-800 shadow-sm">
             Sueldo mensual ≈ jornal × horas del mes (190,67 hs la jornada completa) + 20% de
             asistencia perfecta + SNR del mes.
           </p>
           <p>
-            {textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, hoyAR())} Cuando salga, la
-            escala se actualiza acá desde el documento firmado.
+            {textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, hoyAR())} Cuando salga, cargamos
+            la escala acá desde el documento firmado.
           </p>
         </div>
       </section>
@@ -319,7 +320,7 @@ export default function UocraPage() {
       <EmailCapture
         source="convenio-uocra"
         headline="Avisame cuando UOCRA firme la próxima paritaria"
-        subtext="Los jornales cambian varias veces al año y esta página se actualiza el mismo día que sale el acuerdo con CAMARCO. Te mando un mail cuando pase, así no liquidás con la escala vieja. Sin spam."
+        subtext="Los jornales cambian varias veces por año. Esta página se actualiza el mismo día que sale el acuerdo con CAMARCO y te mandamos un mail, así no liquidás con la escala vieja. Sin spam."
       />
 
       <section className="space-y-4">

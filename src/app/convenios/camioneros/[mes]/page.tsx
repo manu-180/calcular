@@ -50,8 +50,8 @@ export async function generateMetadata({
       : null;
 
   return {
-    title: `Escala de camioneros ${mes.etiqueta}: Chofer de Primera ${formatARS(chofer1, 0)} (CCT 40/89)`,
-    description: `Tabla salarial de camioneros en ${mes.etiqueta}: básicos por categoría según CCT 40/89. Chofer de Primera: ${formatARS(chofer1, 0)}${variacion !== null ? ` (${pctConSigno(variacion)} contra el mes anterior)` : ""}. Homologado por ${CAMIONEROS_HOMOLOGACION}.`,
+    title: `Escala Camioneros ${mes.etiqueta}: Chofer de 1ª ${formatARS(chofer1, 0)}`,
+    description: `Básicos de ${mes.etiqueta.toLowerCase()} del CCT 40/89 por categoría${variacion !== null ? ` (Chofer de Primera ${pctConSigno(variacion)} contra el mes anterior)` : ""}, homologados por la DNRyRT.`,
     alternates: { canonical: `/convenios/camioneros/${mes.id}` },
   };
 }
@@ -96,7 +96,7 @@ export default async function CamionerosMesPage({
       ORGANIZACION,
       {
         ...datasetSchema({
-          nombre: `Escala salarial de camioneros — ${mes.etiqueta} (CCT 40/89)`,
+          nombre: `Escala salarial de camioneros, ${mes.etiqueta} (CCT 40/89)`,
           descripcion: `Básicos por categoría del CCT 40/89 (camioneros) vigentes en ${mes.etiqueta}. Chofer de Primera: ${formatARS(chofer1, 0)}. Homologado por ${CAMIONEROS_HOMOLOGACION}.`,
           url: `/convenios/camioneros/${mes.id}`,
           modificado: `${mes.anio}-${String(mes.mes).padStart(2, "0")}-01`,
@@ -129,7 +129,7 @@ export default async function CamionerosMesPage({
           /
         </nav>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
-          Escala de camioneros — {mes.etiqueta}
+          Escala de camioneros: {mes.etiqueta}
         </h1>
         <p className="text-zinc-600">
           {mes.cambios} Básico de Chofer de Primera:{" "}
@@ -146,9 +146,9 @@ export default async function CamionerosMesPage({
           {variacionMensual !== null ? (
             <> ({pctConSigno(variacionMensual)} contra {anterior!.etiqueta.toLowerCase()})</>
           ) : null}
-          , homologado por la {CAMIONEROS_HOMOLOGACION}. La
-          escala completa por categoría (choferes, peones, taller) está abajo. A esto se le suma la
-          antigüedad y los adicionales del convenio: calculá tu sueldo exacto en la{" "}
+          , homologado por la {CAMIONEROS_HOMOLOGACION}. Abajo tenés la escala completa por
+          categoría (choferes, peones, taller). A eso se suman la antigüedad y los adicionales del
+          convenio. Tu sueldo exacto lo sacás en la{" "}
           <Link href="/convenios/camioneros">calculadora de sueldo de camioneros</Link>.
         </p>
       </RespuestaPrimero>
@@ -314,8 +314,8 @@ export default async function CamionerosMesPage({
             <p className="mt-1 text-zinc-600">
               {variacionMensual === null ? (
                 <>
-                  {mes.etiqueta} es el primer mes de nuestra serie para Camioneros: todavía no tenemos un
-                  mes anterior con el que compararlo.
+                  {mes.etiqueta} es el primer mes que tenemos de Camioneros, así que no hay un mes
+                  anterior para comparar.
                 </>
               ) : (
                 <>
@@ -337,7 +337,7 @@ export default async function CamionerosMesPage({
               >
                 {CAMIONEROS_FUENTES.circular.nombre}
               </a>
-              , que fija los tramos mensuales de marzo a agosto de 2026 para toda la escala nacional.
+              . Fija los aumentos de cada mes, de marzo a agosto de 2026, para toda la escala nacional.
             </p>
           </div>
           <div>
@@ -356,7 +356,7 @@ export default async function CamionerosMesPage({
               ) : (
                 <>
                   {mes.etiqueta} es el último mes que homologó la{" "}
-                  {CAMIONEROS_HOMOLOGACION}: todavía no hay un tramo publicado después de este.
+                  {CAMIONEROS_HOMOLOGACION}. Todavía no se publicó el aumento siguiente.
                 </>
               )}
             </p>

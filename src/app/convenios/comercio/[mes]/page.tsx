@@ -45,15 +45,13 @@ export async function generateMetadata({
   const mes = MESES_COMERCIO[idx];
   const nombre = mes.etiqueta.toLowerCase();
   const baseBasico = mes.basicos["maestranza-a"];
-  const variacion =
-    idx > 0 ? variacionPct(totalMes(mes, "maestranza-a"), totalMes(MESES_COMERCIO[idx - 1], "maestranza-a")) : null;
 
   return {
-    title: `Sueldo empleados de comercio ${nombre}: Maestranza A ${formatARS(baseBasico, 0)} (CCT 130/75)`,
+    title: `Sueldo de Comercio ${nombre}: Maestranza A ${formatARS(baseBasico, 0)}`,
     description:
       mes.noRemunerativo > 0
-        ? `La escala oficial de empleados de comercio de ${nombre}: básicos por categoría + ${formatARS(mes.noRemunerativo, 0)} no remunerativos${variacion !== null ? ` (total ${pctConSigno(variacion)} contra el mes anterior)` : ""}. Verificada contra la circular de FAECYS.`
-        : `La escala oficial de empleados de comercio de ${nombre}: básicos por categoría con las sumas no remunerativas ya incorporadas${variacion !== null ? ` (${pctConSigno(variacion)} contra el mes anterior)` : ""}. Verificada contra la circular de FAECYS.`,
+        ? `Escala de ${nombre} del CCT 130/75 por categoría, con ${formatARS(mes.noRemunerativo, 0)} no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.`
+        : `Escala de ${nombre} del CCT 130/75 por categoría, con los no remunerativos ya en el básico y la variación mensual. Verificada contra la circular de FAECYS.`,
     alternates: { canonical: `/convenios/comercio/${mes.id}` },
     openGraph: {
       images: [
@@ -118,7 +116,7 @@ export default async function ComercioMesPage({
       ORGANIZACION,
       {
         ...datasetSchema({
-          nombre: `Escala salarial de empleados de comercio — ${mes.etiqueta} (CCT 130/75)`,
+          nombre: `Escala salarial de empleados de comercio, ${mes.etiqueta} (CCT 130/75)`,
           descripcion: `Básicos por categoría del CCT 130/75 (empleados de comercio) vigentes en ${nombre}${mes.noRemunerativo > 0 ? `, con ${formatARS(mes.noRemunerativo, 0)} de sumas no remunerativas` : ""}. Verificada contra la circular oficial de FAECYS.`,
           url: `/convenios/comercio/${mes.id}`,
           modificado: modificadoISO,
@@ -172,18 +170,18 @@ export default async function ComercioMesPage({
           {variacionMensual !== null ? (
             <> ({pctConSigno(variacionMensual)} contra {anterior!.etiqueta.toLowerCase()})</>
           ) : null}
-          , según el CCT 130/75 verificado contra la circular de FAECYS. A esto se le suma la
+          , según el CCT 130/75 chequeado contra la circular de FAECYS. A eso se suman la
           antigüedad (1% por año) y el presentismo (8,33%)
           {mes.asignacionExtraordinaria ? (
             <>
-              , y este mes se paga además una{" "}
+              . Este mes se paga además una{" "}
               <strong>
                 asignación extraordinaria de {formatARS(mes.asignacionExtraordinaria, 0)}
               </strong>{" "}
               por única vez, que no suma antigüedad ni presentismo
             </>
           ) : null}
-          . Mirá la escala completa por categoría abajo o calculá tu neto en la{" "}
+          . Abajo tenés la escala completa por categoría. Tu neto lo sacás en la{" "}
           <Link href="/convenios/comercio">calculadora de sueldo de comercio</Link>.
         </p>
       </RespuestaPrimero>
@@ -223,9 +221,9 @@ export default async function ComercioMesPage({
           </div>
         </div>
         <p className="text-sm text-zinc-500">
-          A estos valores se les suma la <strong>antigüedad</strong> (1% por año, también
-          sobre lo no remunerativo) y el <strong>presentismo</strong> (8,33%). Calculá tu caso
-          exacto —con jornada parcial incluida— en la{" "}
+          A estos valores se suman la <strong>antigüedad</strong> (1% por año, también sobre
+          lo no remunerativo) y el <strong>presentismo</strong> (8,33%). Calculá tu caso exacto
+          (también con jornada parcial) en la{" "}
           <Link
             href="/convenios/comercio"
             className="font-medium text-emerald-700 hover:underline"
@@ -271,11 +269,11 @@ export default async function ComercioMesPage({
         </div>
         {cambioComposicion ? (
           <p className="text-sm text-zinc-600">
-            En {nombre} el <strong>total no cambió</strong> respecto de {anterior!.etiqueta.toLowerCase()}:
-            lo que se movió fue la composición entre básico y no remunerativo (de{" "}
-            {formatARS(noRemAnterior!, 0)} a {formatARS(mes.noRemunerativo, 0)} de no remunerativo). Más
-            básico y menos no remunerativo significa más base para antigüedad, presentismo, aguinaldo,
-            vacaciones e indemnización.
+            En {nombre} el <strong>total no cambió</strong> respecto de {anterior!.etiqueta.toLowerCase()}.
+            Lo que cambió es cuánto es básico y cuánto no remunerativo (este último pasó de{" "}
+            {formatARS(noRemAnterior!, 0)} a {formatARS(mes.noRemunerativo, 0)}). Más básico significa
+            más base para la antigüedad, el presentismo, el aguinaldo, las vacaciones y la
+            indemnización.
           </p>
         ) : comparacionIpc !== null ? (
           <p className="text-sm text-zinc-600">
@@ -348,8 +346,8 @@ export default async function ComercioMesPage({
             <p className="mt-1 text-zinc-600">
               {variacionMensual === null ? (
                 <>
-                  {mes.etiqueta} es el primer mes de nuestra serie para Comercio: todavía no tenemos un
-                  mes anterior con el que compararlo.
+                  {mes.etiqueta} es el primer mes que tenemos de Comercio, así que no hay un mes
+                  anterior para comparar.
                 </>
               ) : (
                 <>
@@ -365,9 +363,9 @@ export default async function ComercioMesPage({
             <p className="mt-1 text-zinc-600">
               {mes.asignacionExtraordinaria ? (
                 <>
-                  Sí: {formatARS(mes.asignacionExtraordinaria, 0)} por única vez, parte del bono de{" "}
-                  {formatARS(COMERCIO_ASIGNACION_EXTRAORDINARIA_TOTAL, 0)} del acuerdo del 22/7/2026 (se paga
-                  en julio y agosto de 2026). No suma antigüedad, presentismo ni aguinaldo.
+                  Sí: {formatARS(mes.asignacionExtraordinaria, 0)} por única vez. Es parte del bono de{" "}
+                  {formatARS(COMERCIO_ASIGNACION_EXTRAORDINARIA_TOTAL, 0)} del acuerdo del 22/7/2026, que se
+                  paga en julio y agosto de 2026. No suma antigüedad, presentismo ni aguinaldo.
                 </>
               ) : (
                 <>
@@ -383,7 +381,7 @@ export default async function ComercioMesPage({
             </h3>
             <p className="mt-1 text-zinc-600">
               {noRemAnterior === null ? (
-                <>{mes.etiqueta} es el primer mes de la serie: no hay un no remunerativo anterior para comparar.</>
+                <>{mes.etiqueta} es el primer mes que tenemos, así que no hay un mes anterior para comparar.</>
               ) : mes.noRemunerativo === noRemAnterior ? (
                 <>
                   No: siguen en {formatARS(mes.noRemunerativo, 0)}, igual que en{" "}
@@ -391,9 +389,9 @@ export default async function ComercioMesPage({
                 </>
               ) : (
                 <>
-                  Sí: pasaron de {formatARS(noRemAnterior, 0)} a {formatARS(mes.noRemunerativo, 0)}. Es la
-                  incorporación gradual al básico que arrancó el acuerdo del 22/7/2026: de a $20.000 por mes
-                  hasta llegar a cero en mayo de 2027.
+                  Sí: pasaron de {formatARS(noRemAnterior, 0)} a {formatARS(mes.noRemunerativo, 0)}. Es el pase
+                  gradual al básico que fijó el acuerdo del 22/7/2026: de a $20.000 por mes, hasta llegar a
+                  cero en mayo de 2027.
                 </>
               )}
             </p>
