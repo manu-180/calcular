@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { revisarPuntos } from "../../../src/motor/bandas";
+import { iguales, revisarPuntos } from "../../../src/motor/bandas";
 import { esFechaISO, sumarDias } from "../../../src/motor/vigencia";
 import type { DetectorNorma, DetectorSerie, FechaISO, HallazgoNorma, Http, PaisDefinido, PuntoSerie } from "../../../src/motor/tipos";
 import { httpParaDetector, type LlamadaHttp } from "./http";
@@ -76,8 +76,6 @@ interface Opciones {
   timeoutMs?: number;
 }
 
-const iguales = (a: number, b: number) => Math.abs(a - b) <= 1e-9 * Math.max(1, Math.abs(a), Math.abs(b));
-
 async function correrSerie(pais: PaisDefinido, det: DetectorSerie, http: Http, op: Opciones, llamadas: LlamadaHttp[]) {
   const base = { id: det.id, carril: "serie" as const, objetivo: det.serie, llamadas };
   const serie = pais.series.find((s) => s.id === det.serie);
@@ -93,10 +91,12 @@ async function correrSerie(pais: PaisDefinido, det: DetectorSerie, http: Http, o
 
   const ultima = serie.puntos[serie.puntos.length - 1]?.[0] ?? "0000-00-00";
   const publicados = new Map(serie.puntos.map(([f, v]) => [f, v]));
-  // Solo se revisa desde el último punto publicado: comparar un punto de hace un mes contra el valor
-  // de hoy dispara el salto máximo en una serie que sube todos los días (UF, UDIS).
-  const recientes = traidos.filter((p) => typeof p?.fecha === "string" && p.fecha >= ultima);
-  const revisados = traidos.filter((p) => typeof p?.fecha === "string" && p.fecha < ultima);
+  // Solo se revisa después del último punto publicado: comparar un punto de hace un mes contra el
+  // valor de hoy dispara el salto máximo en una serie que sube todos los días (UF, UDIS). El último
+  // publicado va con los viejos: si la fuente lo corrigió es una nota, no un rechazo. Como rechazo
+  // bloqueaba la serie para siempre (la fuente lo devuelve en cada corrida).
+  const recientes = traidos.filter((p) => typeof p?.fecha === "string" && p.fecha > ultima);
+  const revisados = traidos.filter((p) => typeof p?.fecha === "string" && p.fecha <= ultima);
   const corregidos = revisados.filter((p) => publicados.has(p.fecha) && !iguales(publicados.get(p.fecha)!, p.valor));
   const rev = revisarPuntos(serie, recientes, det.banda, op.hoy);
   if (rev.rechazos.length) {
