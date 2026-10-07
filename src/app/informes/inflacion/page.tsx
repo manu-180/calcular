@@ -24,8 +24,9 @@ import { productoPorSlug, type Producto } from "@/lib/mp";
 import { PRECIO_INFORME_REFERENCIA, RUTA_LANDING_INFORME, SLUG_INFORME } from "./_modelo";
 
 const ULTIMO = nombrePeriodo(ULTIMO_PERIODO);
-const TITULO = "Informe de actualización por inflación, con la carta lista";
-const DESCRIPCION = `Un informe para imprimir o guardar en PDF: tu monto actualizado mes a mes con el IPC del INDEC (último dato: ${ULTIMO}), la cuenta explicada y una carta lista para pedir aumento, actualizar honorarios, un presupuesto o una deuda. Pago único.`;
+const TITULO = "Informe de actualización por inflación con carta";
+const DESCRIPCION =
+  "Tu monto actualizado mes a mes con el IPC del INDEC, la cuenta explicada y una carta lista para pedir aumento o actualizar honorarios. Pago único.";
 const LEY_23928 = "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/328/texact.htm";
 
 export const metadata: Metadata = {
@@ -95,7 +96,7 @@ const FAQS = [
   },
   {
     q: "¿Guardan mis datos?",
-    a: "Los nombres, la ciudad y el concepto no salen de tu navegador: se escriben en la página y van directo a la hoja. El monto, los meses y para qué es viajan con el pago, en MercadoPago, sólo para que el informe se arme solo cuando lo abrís.",
+    a: "Los nombres, la ciudad y el concepto no salen de tu navegador: se escriben en la página y van directo a la hoja. El monto, los meses y para qué es viajan con el pago, en MercadoPago, únicamente para que el informe se arme solo cuando lo abrís.",
   },
   {
     q: "¿Y cuando salga el IPC del mes que viene?",
@@ -136,7 +137,7 @@ export default function InformeInflacionLanding() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Informe de actualización por inflación — IPC del INDEC con carta lista para mandar",
+    name: "Informe de actualización por inflación: IPC del INDEC con carta lista para mandar",
     description: DESCRIPCION,
     brand: { "@type": "Brand", name: "CalculAR" },
     offers: {
@@ -286,7 +287,7 @@ export default function InformeInflacionLanding() {
               <ul className="mt-4 space-y-1.5 text-xs text-zinc-500">
                 <li>
                   <a href={INFLACION_FUENTES.ipc.url} target="_blank" rel="noopener noreferrer" className="text-emerald-700 underline decoration-emerald-300 underline-offset-2">
-                    INDEC — serie oficial del IPC Nacional
+                    INDEC: serie oficial del IPC Nacional
                   </a>{" "}
                   · último mes publicado: {ULTIMO}
                 </li>
@@ -364,7 +365,7 @@ export default function InformeInflacionLanding() {
               <PlanillaComprarBtn producto={SLUG_INFORME} precio={precio} id="cta-cierre" etiqueta={`Quiero mi informe · ${precioTxt}`} />
             </div>
             <p className="mt-6 text-sm text-zinc-500">
-              ¿Sólo querés ver el número?{" "}
+              ¿Solo querés ver el número?{" "}
               <Link href="/inflacion" className="font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2">
                 La calculadora es gratis
               </Link>

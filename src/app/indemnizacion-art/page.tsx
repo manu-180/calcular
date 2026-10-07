@@ -20,9 +20,9 @@ const pesos = (n: number) =>
   n.toLocaleString("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 });
 
 export const metadata: Metadata = {
-  title: "Indemnización por accidente de trabajo (ART): calculadora con los pisos vigentes",
+  title: "Indemnización por accidente de trabajo (ART) 2026",
   description:
-    "El texto de la Ley 24.557 todavía dice que la indemnización «en ningún caso será superior a $180.000». El Decreto 1694/2009 suprimió ese tope y convirtió el número en PISO, y hoy ese piso es de $114.354.110 por el porcentaje de incapacidad. Calculá el monto con la resolución SRT vigente.",
+    "Calculá la indemnización por incapacidad laboral con los pisos vigentes de la SRT. El viejo tope de $180.000 hoy es un piso actualizado.",
   alternates: { canonical: "/indemnizacion-art" },
   openGraph: {
     title: "Indemnización por accidente de trabajo (ART)",
@@ -42,39 +42,39 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Cuánto me corresponde por un accidente de trabajo?",
-    a: `La fórmula del art. 14 ap. 2 inc. a) de la Ley 24.557 es 53 × el ingreso base mensual × el porcentaje de incapacidad × (65 ÷ tu edad a la primera manifestación invalidante). Pero eso es sólo la mitad: el resultado no puede quedar por debajo del piso legal, que hoy es de ${pesos(PISOS.incapacidadParcial)} multiplicado por el porcentaje de incapacidad (Res. SRT 39/2026, vigente del ${VIGENCIA_ART.desde} al ${VIGENCIA_ART.hasta}). En incapacidades bajas y sueldos bajos, el piso es casi siempre lo que manda.`,
+    a: `La fórmula del art. 14 ap. 2 inc. a) de la Ley 24.557 es 53 × el ingreso base mensual × el porcentaje de incapacidad × (65 ÷ tu edad cuando aparecieron los primeros síntomas). Pero eso es solo la mitad. El resultado no puede quedar debajo del piso legal, que hoy es de ${pesos(PISOS.incapacidadParcial)} multiplicado por el porcentaje de incapacidad (Res. SRT 39/2026, vigente del ${VIGENCIA_ART.desde} al ${VIGENCIA_ART.hasta}). Con incapacidades bajas y sueldos bajos, casi siempre manda el piso.`,
   },
   {
     q: "La ley dice que no puede superar los $180.000. ¿Es así?",
-    a: "No, y es exactamente al revés. El texto del art. 14 sigue diciendo «en ningún caso será superior» a $180.000 por el porcentaje de incapacidad, pero el art. 2º del Decreto 1694/2009 SUPRIMIÓ ese tope y el art. 3º del mismo decreto convirtió el número en un piso: «nunca será inferior». Quien copia el artículo de la ley publica lo contrario de lo que rige, con un valor de 2009.",
+    a: "No, es justo al revés. El texto del art. 14 sigue diciendo «en ningún caso será superior» a $180.000 por el porcentaje de incapacidad. Pero el art. 2º del Decreto 1694/2009 eliminó ese tope, y el art. 3º del mismo decreto convirtió el número en un piso: «nunca será inferior». Quien copia el artículo de la ley publica lo contrario de lo que rige, y con un valor de 2009.",
   },
   {
     q: "¿De dónde sale el piso de hoy?",
-    a: `El art. 17 bis de la Ley 26.773 —incorporado por el art. 21 de la Ley 27.348— manda actualizar los pisos y las compensaciones por el índice RIPTE, y la Superintendencia de Riesgos del Trabajo dicta una resolución semestral con los valores. La vigente es la ${VIGENCIA_ART.resolucion} (${VIGENCIA_ART.boletin}): rige del ${VIGENCIA_ART.desde} al ${VIGENCIA_ART.hasta}, y llevó los $180.000 de 2009 a ${pesos(PISOS.incapacidadParcial)}.`,
+    a: `El art. 17 bis de la Ley 26.773 (que sumó el art. 21 de la Ley 27.348) manda actualizar los pisos y las compensaciones por el índice RIPTE. La Superintendencia de Riesgos del Trabajo dicta cada seis meses una resolución con los valores. La vigente es la ${VIGENCIA_ART.resolucion} (${VIGENCIA_ART.boletin}): rige del ${VIGENCIA_ART.desde} al ${VIGENCIA_ART.hasta}, y llevó los $180.000 de 2009 a ${pesos(PISOS.incapacidadParcial)}.`,
   },
   {
     q: "¿Qué es el «ingreso base» y por qué no es mi último sueldo?",
-    a: "Es el promedio mensual de todos los salarios devengados durante el año anterior a la primera manifestación invalidante —o el tiempo trabajado, si fue menor—, y cada salario mensual se actualiza por RIPTE hasta ese momento (art. 12, sustituido por el Decreto 669/2019). Además, desde la primera manifestación invalidante hasta que la ART pone la plata a disposición, el ingreso base devenga un interés igual a la variación del RIPTE del período.",
+    a: "Es el promedio mensual de todos los sueldos del año anterior a la primera manifestación invalidante (cuando aparecieron los primeros síntomas), o del tiempo trabajado si fue menos. Cada sueldo se actualiza por RIPTE hasta ese momento (art. 12, texto del Decreto 669/2019). Además, desde ese momento hasta que la ART pone la plata a disposición, el ingreso base suma un interés igual a la variación del RIPTE del período.",
   },
   {
     q: "¿Cambia si la incapacidad es total?",
-    a: `Sí, y de una forma que se calcula mal seguido: en la incapacidad permanente TOTAL (66% o más) el capital del art. 15 ap. 2 es 53 × ingreso base × (65 ÷ edad) SIN multiplicar por el porcentaje, con un piso de ${pesos(PISOS.incapacidadTotal)}. Y se suma la compensación adicional de pago único del art. 11 ap. 4 inc. b), que hoy es de ${pesos(COMPENSACIONES.total)}.`,
+    a: `Sí, y es un cálculo que se hace mal seguido. En la incapacidad permanente total (66% o más), el capital del art. 15 ap. 2 es 53 × ingreso base × (65 ÷ edad), sin multiplicar por el porcentaje, con un piso de ${pesos(PISOS.incapacidadTotal)}. Y se suma la compensación adicional de pago único del art. 11 ap. 4 inc. b), que hoy es de ${pesos(COMPENSACIONES.total)}.`,
   },
   {
     q: "¿Y si el trabajador falleció?",
-    a: `Los derechohabientes —los del art. 53 de la Ley 24.241, con el límite de edad extendido a 21 años, o 25 si estudian y estaban a cargo exclusivo— cobran la prestación del art. 15 ap. 2 más la compensación adicional del art. 11 ap. 4 inc. c), que hoy es de ${pesos(COMPENSACIONES.muerte)}. Si no hay ninguna de esas personas, acceden los padres en partes iguales.`,
+    a: `Cobran sus derechohabientes: los del art. 53 de la Ley 24.241, con el límite de edad llevado a 21 años (o 25 si estudian y dependían solo del trabajador). Reciben la prestación del art. 15 ap. 2 más la compensación adicional del art. 11 ap. 4 inc. c), que hoy es de ${pesos(COMPENSACIONES.muerte)}. Si no hay ninguna de esas personas, cobran los padres en partes iguales.`,
   },
   {
     q: "¿Siempre corresponde el 20% adicional?",
-    a: `No: el art. 3 de la Ley 26.773 lo reserva a los daños ocurridos «en el lugar de trabajo o […] mientras se encuentre a disposición del empleador». El accidente in itinere —el del camino de ida o vuelta— queda afuera de ese 20%. Cuando corresponde, en muerte o incapacidad total tiene además un piso propio de ${pesos(PISOS.adicional20)}.`,
+    a: `No. El art. 3 de la Ley 26.773 lo reserva a los daños ocurridos «en el lugar de trabajo o […] mientras se encuentre a disposición del empleador». El accidente in itinere (el del camino de ida o de vuelta) queda afuera de ese 20%. Cuando corresponde, en muerte o incapacidad total tiene además un piso propio de ${pesos(PISOS.adicional20)}.`,
   },
   {
     q: "¿Puedo cobrar una renta mensual en vez de un pago único?",
-    a: "En general no. El texto original preveía una renta periódica para las incapacidades de más del 50% y menos del 66%, pero el art. 2 de la Ley 26.773 estableció que «el principio general indemnizatorio es de pago único».",
+    a: "En general, no. El texto original preveía una renta mensual para las incapacidades de más del 50% y menos del 66%. Pero el art. 2 de la Ley 26.773 estableció que «el principio general indemnizatorio es de pago único».",
   },
   {
     q: "¿Y si la ART se demora en pagar?",
-    a: "El art. 12 ap. 3 (texto del Decreto 669/2019) prevé que si la aseguradora no pone la indemnización a disposición dentro del plazo debido, se aplica un interés igual al promedio de la tasa activa cartera general nominal anual vencida a 30 días del Banco de la Nación Argentina hasta la efectiva cancelación, capitalizándose semestralmente (art. 770 del Código Civil y Comercial). Esta calculadora no incluye esos intereses: dependen de la fecha real de pago.",
+    a: "El art. 12 ap. 3 (texto del Decreto 669/2019) dice que, si la aseguradora no paga a tiempo, se aplica un interés igual al promedio de la tasa activa cartera general nominal anual vencida a 30 días del Banco de la Nación Argentina hasta que pague, y se capitaliza cada seis meses (art. 770 del Código Civil y Comercial). Esta calculadora no incluye esos intereses, porque dependen de la fecha real de pago.",
   },
 ];
 
@@ -122,9 +122,9 @@ export default function Page() {
         <p className="text-zinc-600">
           El texto vigente de la Ley 24.557 todavía dice que la indemnización{" "}
           <strong>«en ningún caso será superior»</strong> a {pesos(VALORES_2009.piso)} por el
-          porcentaje de incapacidad. Eso es <strong>lo contrario</strong> de lo que rige: el
-          Decreto 1694/2009 suprimió ese tope y convirtió el mismo número en un{" "}
-          <strong>piso</strong>, que la SRT actualiza cada seis meses por RIPTE. Hoy vale{" "}
+          porcentaje de incapacidad. Pero rige <strong>lo contrario</strong>: el Decreto 1694/2009
+          eliminó ese tope y convirtió el mismo número en un <strong>piso</strong>, que la SRT
+          actualiza cada seis meses por RIPTE. Hoy vale{" "}
           <strong>{pesos(PISOS.incapacidadParcial)}</strong>.
         </p>
       </header>
@@ -141,21 +141,21 @@ export default function Page() {
             53 × ingreso base × % de incapacidad × (65 ÷ edad), y nunca menos de{" "}
             {pesos(PISOS.incapacidadParcial)} × % de incapacidad
           </strong>{" "}
-          (art. 14 ap. 2 inc. a de la Ley 24.557 + {VIGENCIA_ART.resolucion}). Si la incapacidad es
-          total, el capital del art. 15 ap. 2 va <strong>sin</strong> multiplicar por el
+          (art. 14 ap. 2 inc. a de la Ley 24.557 y {VIGENCIA_ART.resolucion}). Si la incapacidad
+          es total, el capital del art. 15 ap. 2 va <strong>sin</strong> multiplicar por el
           porcentaje, con piso de {pesos(PISOS.incapacidadTotal)}. A eso se suman las
-          compensaciones de pago único del art. 11 ap. 4 y, si el daño ocurrió en el lugar de
-          trabajo, el 20% del art. 3 de la Ley 26.773.
+          compensaciones de pago único del art. 11 ap. 4 y, si el daño fue en el lugar de trabajo,
+          el 20% del art. 3 de la Ley 26.773.
         </p>
       </RespuestaPrimero>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Calculá el monto</h2>
         <p className="text-sm text-zinc-600">
-          Los tres datos que deciden son el ingreso base, la edad{" "}
-          <em>a la primera manifestación invalidante</em> y el porcentaje que fijó la comisión
-          médica. La calculadora muestra la fórmula y el piso por separado, para que se vea cuál
-          de los dos manda.
+          Los tres datos que deciden son el ingreso base, tu edad{" "}
+          <em>a la primera manifestación invalidante</em> (cuando aparecieron los primeros
+          síntomas) y el porcentaje que fijó la comisión médica. La calculadora muestra la fórmula
+          y el piso por separado, para que veas cuál de los dos manda.
         </p>
         <CalculadoraART />
       </section>
@@ -182,11 +182,11 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{ART_TEXTOS.pisoParcial}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          El mismo número, dado vuelta: de techo a piso. Un artículo derogado o suprimido es peor
-          que uno incompleto — la nota que lo copia no queda a medias, queda{" "}
-          <strong>afirmando lo opuesto</strong>, y acá eso significa decirle a alguien que su
-          indemnización tiene un máximo de {pesos(VALORES_2009.piso)} cuando en realidad tiene un
-          mínimo de {pesos(PISOS.incapacidadParcial)}.
+          El mismo número, dado vuelta: de techo a piso. Un artículo eliminado es peor que uno
+          incompleto. La nota que lo copia no queda a medias: queda{" "}
+          <strong>diciendo lo opuesto</strong>. Acá eso es decirle a alguien que su indemnización
+          tiene un máximo de {pesos(VALORES_2009.piso)} cuando en realidad tiene un mínimo de{" "}
+          {pesos(PISOS.incapacidadParcial)}.
         </p>
       </section>
 
@@ -195,9 +195,9 @@ export default function Page() {
           Los valores vigentes: {VIGENCIA_ART.resolucion}
         </h2>
         <p className="text-zinc-600">
-          El art. 17 bis de la Ley 26.773 (incorporado por el art. 21 de la Ley 27.348) manda
-          actualizar estos importes por RIPTE, y la SRT dicta una resolución semestral. Estos rigen
-          del {VIGENCIA_ART.desde} al {VIGENCIA_ART.hasta}:
+          El art. 17 bis de la Ley 26.773 (que sumó el art. 21 de la Ley 27.348) manda actualizar
+          estos montos por RIPTE, y la SRT dicta una resolución cada seis meses. Estos rigen del{" "}
+          {VIGENCIA_ART.desde} al {VIGENCIA_ART.hasta}:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -235,7 +235,7 @@ export default function Page() {
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 text-zinc-900">
-                    Compensación adicional — incapacidad parcial &gt; 50%
+                    Compensación adicional: incapacidad parcial &gt; 50%
                   </td>
                   <td className="px-4 py-2.5 text-xs text-zinc-500">Art. 11 ap. 4 inc. a)</td>
                   <td className="px-4 py-2.5 text-right tabular-nums text-zinc-500">
@@ -247,7 +247,7 @@ export default function Page() {
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 text-zinc-900">
-                    Compensación adicional — incapacidad total
+                    Compensación adicional: incapacidad total
                   </td>
                   <td className="px-4 py-2.5 text-xs text-zinc-500">Art. 11 ap. 4 inc. b)</td>
                   <td className="px-4 py-2.5 text-right tabular-nums text-zinc-500">
@@ -258,7 +258,7 @@ export default function Page() {
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2.5 text-zinc-900">Compensación adicional — muerte</td>
+                  <td className="px-4 py-2.5 text-zinc-900">Compensación adicional: muerte</td>
                   <td className="px-4 py-2.5 text-xs text-zinc-500">Art. 11 ap. 4 inc. c)</td>
                   <td className="px-4 py-2.5 text-right tabular-nums text-zinc-500">
                     {pesos(VALORES_2009.compensaciones.muerte)}
@@ -301,10 +301,29 @@ export default function Page() {
           ))}
         </div>
         <p className="text-zinc-600">
-          El error de cálculo más frecuente vive entre el primero y el tercero: en la incapacidad
-          parcial la fórmula se multiplica por el porcentaje, y en la total{" "}
-          <strong>no</strong> — el art. 15 ap. 2 dice «{FORMULA.veces} veces el valor mensual del
-          ingreso base multiplicado por un coeficiente», y ahí no hay porcentaje.
+          El error de cálculo más común está entre el primero y el tercero. En la incapacidad
+          parcial la fórmula se multiplica por el porcentaje, y en la total <strong>no</strong>. El
+          art. 15 ap. 2 dice «{FORMULA.veces} veces el valor mensual del ingreso base multiplicado
+          por un coeficiente», y ahí no hay porcentaje.
+        </p>
+        <p className="text-zinc-600">
+          Si tu caso es otro, cada uno tiene su página: si la ART{" "}
+          <Link href="/rechazo-art" className="text-emerald-700 hover:underline">
+            rechazó el accidente
+          </Link>
+          , si tu{" "}
+          <Link href="/empleador-sin-art" className="text-emerald-700 hover:underline">
+            empleador no tenía ART
+          </Link>
+          , si tenés{" "}
+          <Link href="/pluriempleo-art" className="text-emerald-700 hover:underline">
+            más de un trabajo
+          </Link>{" "}
+          o si querés saber{" "}
+          <Link href="/derechohabientes-art" className="text-emerald-700 hover:underline">
+            quién cobra si el trabajador murió
+          </Link>
+          .
         </p>
       </section>
 
@@ -319,10 +338,10 @@ export default function Page() {
           <p className="mt-1 text-sm text-zinc-700">«{ART_TEXTOS.ingresoBase}»</p>
         </blockquote>
         <p className="text-zinc-600">
-          Por eso esta calculadora <strong>pide</strong> el ingreso base en vez de derivarlo de un
-          sueldo: la actualización es mes a mes por RIPTE y depende de las doce remuneraciones
-          concretas del año anterior a la primera manifestación invalidante. Y hay un segundo
-          tramo de intereses que tampoco se puede adivinar: si la ART se demora,
+          Por eso esta calculadora te <strong>pide</strong> el ingreso base en vez de sacarlo de un
+          sueldo. Se actualiza mes a mes por RIPTE y depende de los doce sueldos concretos del año
+          anterior a los primeros síntomas. Y hay otros intereses que tampoco se pueden adivinar: si
+          la ART se demora,
         </p>
         <blockquote className="rounded-xl border-l-4 border-amber-400 bg-amber-50/70 p-4">
           <p className="text-sm font-semibold text-amber-900">Ley 24.557, art. 12 ap. 3</p>
@@ -340,9 +359,9 @@ export default function Page() {
         </blockquote>
         <p className="text-zinc-600">
           «En el lugar de trabajo o […] a disposición del empleador» deja afuera al accidente{" "}
-          <em>in itinere</em>, el del camino de ida o de vuelta: está cubierto por el régimen y da
-          derecho a la indemnización, pero no a este 20%. Es la distinción que más cambia el total
-          y la que menos se explica.
+          <em>in itinere</em>, el del camino de ida o de vuelta. Está cubierto y da derecho a la
+          indemnización, pero no a este 20%. Es la diferencia que más cambia el total y la que
+          menos se explica.
         </p>
       </section>
 
@@ -370,16 +389,16 @@ export default function Page() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Esta página es informativa y aplica normas publicadas en el Boletín Oficial e InfoLEG; el
-          porcentaje de incapacidad lo determina la comisión médica y el monto final lo liquida la
-          ART. El trámite ante esa comisión es la instancia previa obligatoria y tiene sus propios
-          plazos —60 días hábiles administrativos, perentorios—:{" "}
+          Esta página es informativa y aplica normas publicadas en el Boletín Oficial e InfoLEG. El
+          porcentaje de incapacidad lo fija la comisión médica y el monto final lo liquida la ART.
+          El trámite ante esa comisión es un paso previo obligatorio y tiene sus propios plazos (60
+          días hábiles administrativos, que no se pueden estirar):{" "}
           <Link href="/comision-medica" className="text-emerald-700 hover:underline">
             plazos de la comisión médica
           </Link>

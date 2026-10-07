@@ -23,7 +23,8 @@ import { PRECIO_INFORME_REFERENCIA, RUTA_LANDING_INFORME, SLUG_INFORME } from ".
 
 const U = CANASTA_CRIANZA_ULTIMO;
 const TITULO = "Informe de cuota alimentaria para la mediación";
-const DESCRIPCION = `Un informe para imprimir o guardar en PDF: cuánto cuesta criar a tus hijos según la canasta de crianza del INDEC (${U.etiqueta}), cómo se reparte entre los dos progenitores y cómo se actualiza. Pago único.`;
+const DESCRIPCION =
+  "Informe en PDF para la mediación: cuánto cuesta criar a tus hijos según el INDEC, cómo se reparte entre los progenitores y cómo se actualiza. Pago único.";
 
 export const metadata: Metadata = {
   title: TITULO,
@@ -87,7 +88,7 @@ const FAQS = [
   },
   {
     q: "¿Guardan mis datos?",
-    a: "Los nombres no salen de tu navegador: se escriben en la página y van directo a la hoja impresa. Las edades y los ingresos viajan con el pago, en MercadoPago, sólo para que el informe se arme solo cuando lo abrís. No los cargamos en ninguna otra base.",
+    a: "Los nombres no salen de tu navegador: se escriben en la página y van directo a la hoja impresa. Las edades y los ingresos viajan con el pago, en MercadoPago, únicamente para que el informe se arme solo cuando lo abrís. No los cargamos en ninguna otra base.",
   },
   {
     q: "Mi hijo tiene más de 12 años, ¿me sirve?",
@@ -128,7 +129,7 @@ export default function InformeCuotaLanding() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Informe de cuota alimentaria — referencia con la canasta de crianza del INDEC",
+    name: "Informe de cuota alimentaria: referencia con la canasta de crianza del INDEC",
     description: DESCRIPCION,
     brand: { "@type": "Brand", name: "CalculAR" },
     offers: {
@@ -290,7 +291,7 @@ export default function InformeCuotaLanding() {
               <ul className="mt-4 space-y-1.5 text-xs text-zinc-500">
                 <li>
                   <a href={CANASTA_CRIANZA_FUENTE.informe} target="_blank" rel="noopener noreferrer" className="text-emerald-700 underline decoration-emerald-300 underline-offset-2">
-                    INDEC — canasta de crianza
+                    INDEC: canasta de crianza
                   </a>{" "}
                   · último mes publicado: {U.etiqueta}
                 </li>
@@ -301,7 +302,7 @@ export default function InformeCuotaLanding() {
                     rel="noopener noreferrer"
                     className="text-emerald-700 underline decoration-emerald-300 underline-offset-2"
                   >
-                    Ministerio de Economía — «¿Para qué sirve el Índice Crianza?» (2023)
+                    Ministerio de Economía: «¿Para qué sirve el Índice Crianza?» (2023)
                   </a>
                 </li>
               </ul>
@@ -385,7 +386,7 @@ export default function InformeCuotaLanding() {
               />
             </div>
             <p className="mt-6 text-sm text-zinc-500">
-              ¿Sólo querés ver el número?{" "}
+              ¿Solo querés ver el número?{" "}
               <Link href="/cuota-alimentaria" className="font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2">
                 La calculadora es gratis
               </Link>

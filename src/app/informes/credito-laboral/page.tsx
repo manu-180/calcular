@@ -22,8 +22,8 @@ import { PRECIO_INFORME_REFERENCIA, RUTA_LANDING_INFORME, SLUG_INFORME } from ".
 
 const IPC_MES = nombrePeriodo(ULTIMO_PERIODO);
 const TASA = formatPct(TASA_PURA_ANUAL * 100, 0);
-const TITULO = "Informe de actualización de crédito laboral (art. 276 LCT)";
-const DESCRIPCION = `Tu liquidación laboral actualizada con IPC del INDEC más ${TASA} anual, rubro por rubro y cada uno desde su fecha: tabla de índices mes a mes (último dato: ${IPC_MES}), carátula del expediente y fuentes oficiales. En A4, para imprimir o guardar en PDF. Pago único.`;
+const TITULO = "Informe de crédito laboral actualizado (art. 276 LCT)";
+const DESCRIPCION = `Tu liquidación laboral actualizada con IPC más ${TASA} anual, rubro por rubro, con tabla de índices y fuentes oficiales. En A4 para imprimir o PDF. Pago único.`;
 
 export const metadata: Metadata = {
   title: TITULO,
@@ -72,7 +72,7 @@ const CONTENIDO = [
 const FAQS = [
   {
     q: "¿Qué diferencia hay con la calculadora gratis?",
-    a: "La calculadora actualiza un monto por vez. Una liquidación real tiene varios rubros con fechas distintas —indemnización, preaviso, vacaciones, diferencias de meses anteriores—, y el art. 276 manda actualizar cada suma desde que es debida. El informe los toma todos juntos, cada uno con su coeficiente, y suma la tabla de índices, la carátula y la explicación del método en un documento que se puede presentar.",
+    a: "La calculadora actualiza un monto por vez. Una liquidación real tiene varios rubros con fechas distintas (indemnización, preaviso, vacaciones, diferencias de meses anteriores), y el art. 276 manda actualizar cada suma desde que se debe. El informe los toma todos juntos, cada uno con su coeficiente, y suma la tabla de índices, la carátula y la explicación del método en un documento que se puede presentar.",
   },
   {
     q: "¿Lo puedo presentar en un expediente?",
@@ -80,11 +80,11 @@ const FAQS = [
   },
   {
     q: "Mi juicio empezó antes de marzo de 2026, ¿me sirve?",
-    a: `Sí, con una aclaración que el informe hace por escrito. Para los juicios en trámite y sin sentencia definitiva al ${VIGENCIA_ART_276}, el art. 55 de la Ley 27.802 fija intereses a la tasa pasiva del BCRA, con un tope —la cuenta de IPC más ${TASA} anual— y un piso del 67% de esa cuenta. El informe muestra los dos valores. No calcula la tasa pasiva, y esa regla está siendo discutida en los tribunales.`,
+    a: `Sí, con una aclaración que el informe hace por escrito. Para los juicios en trámite y sin sentencia definitiva al ${VIGENCIA_ART_276}, el art. 55 de la Ley 27.802 fija intereses a la tasa pasiva del BCRA. Tienen un tope (la cuenta de IPC más ${TASA} anual) y un piso del 67% de esa cuenta. El informe muestra los dos valores. No calcula la tasa pasiva, y esa regla se está discutiendo en los tribunales.`,
   },
   {
     q: "¿Qué datos necesito?",
-    a: "El monto nominal de cada rubro —lo que valía cuando se hizo exigible, sin actualizar— y el mes en que se hizo exigible; para una indemnización, suele ser el mes del despido. Y el mes del pago, o el mes al que querés liquidar. Si venís de la calculadora, el informe ya arranca con ese crédito.",
+    a: "El monto de cada rubro sin actualizar (lo que valía cuando se empezó a deber) y el mes en que se empezó a deber. Para una indemnización, suele ser el mes del despido. Y el mes del pago, o el mes al que querés liquidar. Si venís de la calculadora, el informe ya arranca con ese crédito.",
   },
   {
     q: "¿Guardan los datos del expediente?",
@@ -125,7 +125,7 @@ export default function InformeCreditoLanding() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Informe de actualización de crédito laboral — art. 276 LCT, IPC del INDEC + 3% anual",
+    name: "Informe de actualización de crédito laboral (art. 276 LCT, IPC del INDEC + 3% anual)",
     description: DESCRIPCION,
     brand: { "@type": "Brand", name: "CalculAR" },
     offers: {
@@ -362,7 +362,7 @@ export default function InformeCreditoLanding() {
               <PlanillaComprarBtn producto={SLUG_INFORME} precio={precio} id="cta-cierre" etiqueta={`Quiero mi liquidación · ${precioTxt}`} />
             </div>
             <p className="mt-6 text-sm text-zinc-500">
-              ¿Sólo querés actualizar un monto?{" "}
+              ¿Solo querés actualizar un monto?{" "}
               <Link
                 href="/actualizacion-creditos-laborales"
                 className="font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2"

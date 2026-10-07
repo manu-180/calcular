@@ -20,9 +20,9 @@ import { formatPct } from "@/lib/formato";
 import { productoPorSlug } from "@/lib/mp";
 
 export const metadata: Metadata = {
-  title: "Actualizar un monto por inflación: cuánto vale hoy tu plata (IPC INDEC)",
+  title: "Calculadora de inflación: actualizar un monto por IPC",
   description:
-    "Convertí cualquier monto del pasado a plata de hoy con el IPC oficial del INDEC, y descubrí si tu sueldo le ganó o perdió contra la inflación. Serie completa desde 2017.",
+    "Convertí cualquier monto del pasado a pesos de hoy con el IPC oficial del INDEC y mirá si tu sueldo le ganó a la inflación. Serie desde 2017.",
   alternates: { canonical: "/inflacion" },
 };
 
@@ -47,31 +47,31 @@ export default function InflacionPage() {
     },
     {
       q: "¿Cómo se actualiza un monto por inflación?",
-      a: "Se divide el índice IPC del mes de llegada por el índice del mes de origen y se multiplica el monto por ese cociente. Por ejemplo, para llevar $100.000 de enero de 2024 a hoy: 100.000 × (índice de hoy ÷ índice de enero 2024). Es exactamente lo que hace la calculadora, con la serie oficial del INDEC.",
+      a: "Se divide el índice IPC del mes de llegada por el del mes de origen, y el monto se multiplica por ese resultado. Por ejemplo, para llevar $100.000 de enero de 2024 a hoy: 100.000 × (índice de hoy ÷ índice de enero 2024). Es lo que hace la calculadora, con la serie oficial del INDEC.",
     },
     {
       q: "¿Qué es el IPC y quién lo publica?",
-      a: "El Índice de Precios al Consumidor mide cuánto varían los precios de una canasta representativa de bienes y servicios. Lo elabora y publica el INDEC todos los meses, a nivel nacional y por regiones. Es el indicador oficial de inflación de la Argentina.",
+      a: "El Índice de Precios al Consumidor mide cuánto cambian los precios de una canasta típica de productos y servicios. Lo publica el INDEC todos los meses, para todo el país y por regiones. Es el dato oficial de inflación de la Argentina.",
     },
     {
       q: "¿Desde qué fecha puedo actualizar montos?",
-      a: "Desde diciembre de 2016, que es donde arranca la serie del IPC Nacional del INDEC (base diciembre 2016 = 100). Para fechas anteriores no existe un índice nacional comparable: había mediciones parciales como el IPC de CABA o el de San Luis, que no son empalmables de forma oficial.",
+      a: "Desde diciembre de 2016, que es donde arranca la serie del IPC Nacional del INDEC (base diciembre 2016 = 100). Para fechas anteriores no hay un índice nacional comparable. Había mediciones parciales, como el IPC de CABA o el de San Luis, que no se pueden unir de forma oficial.",
     },
     {
       q: "¿Cómo sé si mi sueldo le ganó a la inflación?",
-      a: "Usá la pestaña «Tu sueldo vs. la inflación»: ponés cuánto cobrabas, en qué mes, y cuánto cobrás hoy. La calculadora actualiza tu sueldo viejo por IPC y lo compara con el actual: si el actual es menor que el actualizado, perdiste poder de compra aunque el número haya subido.",
+      a: "Usá la pestaña «Tu sueldo vs. la inflación». Ponés cuánto cobrabas, en qué mes, y cuánto cobrás hoy. La calculadora actualiza tu sueldo viejo por IPC y lo compara con el de hoy. Si el de hoy es menor que el actualizado, perdiste poder de compra aunque el número haya subido.",
     },
     {
       q: "¿Estos números son los oficiales?",
-      a: "Sí: usamos la serie del IPC Nacional nivel general que publica el INDEC a través de la API oficial de series de tiempo del Estado argentino, sin ningún retoque. La fecha del último dato cargado se muestra siempre en la calculadora.",
+      a: "Sí. Usamos la serie del IPC Nacional nivel general que publica el INDEC en la API oficial de series de tiempo del Estado argentino, sin tocar nada. La fecha del último dato cargado siempre aparece en la calculadora.",
     },
     {
       q: "¿Sirve para ajustar el alquiler?",
-      a: "Sí, si tu contrato se ajusta por IPC. Tenemos una calculadora específica que arma el cronograma completo de ajustes (trimestral, cuatrimestral, semestral o anual) y estima el próximo: buscala como «ajuste de alquiler por IPC» en este sitio.",
+      a: "Sí, si tu contrato se ajusta por IPC. Tenemos una calculadora específica que arma todo el calendario de ajustes (cada 3, 4, 6 o 12 meses) y estima el próximo: buscala como «ajuste de alquiler por IPC» en este sitio.",
     },
     {
       q: "¿Por qué mi 'inflación personal' puede ser distinta?",
-      a: "El IPC promedia la canasta de todos los hogares. Si gastás más que el promedio en lo que más subió (por ejemplo alquiler o prepaga), tu costo de vida pudo subir más que el índice; y al revés. El IPC es la mejor referencia general, no una medición individual.",
+      a: "El IPC promedia lo que gastan todos los hogares. Si gastás más que el promedio en lo que más subió (por ejemplo, alquiler o prepaga), tu costo de vida pudo subir más que el índice. Y al revés. El IPC es la mejor referencia general, no una medición de tu caso.",
     },
   ];
 
@@ -126,8 +126,8 @@ export default function InflacionPage() {
         </h1>
         <p className="text-zinc-600">
           Elegí un monto y dos fechas, y te lo convertimos con el <strong>IPC oficial del
-          INDEC</strong>. Y si querés saber la verdad incómoda: compará tu sueldo de antes con el
-          de ahora y mirá <strong>cuánto poder de compra ganaste o perdiste</strong>.
+          INDEC</strong>. Y si te animás a la verdad incómoda, compará tu sueldo de antes con el de
+          ahora y mirá <strong>cuánto poder de compra ganaste o perdiste</strong>.
         </p>
       </header>
 
@@ -138,9 +138,9 @@ export default function InflacionPage() {
           El último dato oficial del INDEC es {nombrePeriodo(ULTIMO_PERIODO)}:{" "}
           <strong>{formatPct(mensual ?? 0, 1)} mensual</strong> y{" "}
           <strong>{formatPct(interanual ?? 0, 1)} interanual</strong>. Para saber si tu sueldo le
-          ganó a la inflación, actualizá lo que cobrabas antes y compará con lo que cobrás hoy: si el
-          número de hoy es menor que el actualizado, <strong>perdiste poder de compra</strong> aunque
-          el sueldo nominal haya subido.
+          ganó a la inflación, actualizá lo que cobrabas antes y comparalo con lo que cobrás hoy. Si
+          el número de hoy es menor que el actualizado, <strong>perdiste poder de compra</strong>{" "}
+          aunque el sueldo haya subido.
         </p>
       </RespuestaPrimero>
 
@@ -150,7 +150,7 @@ export default function InflacionPage() {
         <h2 className="text-xl font-bold text-zinc-900">La inflación, mes a mes</h2>
         <p className="text-zinc-600">
           Últimos {tabla.length} meses publicados por el INDEC. La columna «acumulada» mide desde
-          diciembre del año anterior; la «interanual», contra el mismo mes del año previo.
+          diciembre del año anterior. La «interanual», contra el mismo mes del año anterior.
         </p>
         <div className="overflow-x-auto rounded-lg border border-zinc-200 bg-white">
           <table className="w-full text-sm">
@@ -195,8 +195,8 @@ export default function InflacionPage() {
             Monto actualizado = monto × (índice del mes de llegada ÷ índice del mes de origen)
           </p>
           <p>
-            No usamos promedios ni estimaciones propias: la serie completa viene de la API oficial
-            de series de tiempo del Estado argentino y se actualiza cuando el INDEC publica cada
+            No usamos promedios ni estimaciones propias. La serie completa viene de la API oficial
+            de series de tiempo del Estado argentino y se actualiza cada vez que el INDEC publica un
             dato nuevo ({IPC_DIA_PUBLICACION} del mes siguiente). El último dato cargado es{" "}
             <strong>{nombrePeriodo(ULTIMO_PERIODO)}</strong>.
           </p>
@@ -241,8 +241,8 @@ export default function InflacionPage() {
               ¿Tenés que justificar un aumento?
             </h2>
             <p className="mt-1.5 max-w-xl text-sm text-zinc-600">
-              Para pedir aumento de sueldo, subir honorarios, actualizar un presupuesto o una plata
-              prestada: un informe con la cuenta mes a mes del INDEC y la carta escrita con tus
+              Para pedir aumento de sueldo, subir honorarios o actualizar un presupuesto o una plata
+              que prestaste: un informe con la cuenta mes a mes del INDEC y la carta escrita con tus
               números, lista para mandar.
             </p>
           </div>
@@ -263,8 +263,8 @@ export default function InflacionPage() {
           ¿Alquilás? Calculá tu próximo ajuste
         </h2>
         <p className="mt-1.5 text-sm text-zinc-600">
-          Si tu contrato se ajusta por IPC cada 3, 4, 6 o 12 meses, armamos el cronograma completo
-          de aumentos y estimamos el que viene.
+          Si tu contrato se ajusta por IPC cada 3, 4, 6 o 12 meses, te armamos el calendario de
+          aumentos y te estimamos el que viene.
         </p>
         <Link
           href="/inflacion/alquiler"

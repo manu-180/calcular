@@ -13,52 +13,52 @@ import { PRODUCTOS } from "@/lib/mp";
 const PLANILLA = PRODUCTOS["planilla-alquileres"];
 
 export const metadata: Metadata = {
-  title: "Ajuste de alquiler por IPC: calculá cuánto aumenta tu alquiler",
+  title: "Ajuste de alquiler por IPC 2026: calculadora",
   description:
-    "Calculadora de ajuste de alquiler por IPC (INDEC): cronograma completo de aumentos trimestrales, cuatrimestrales, semestrales o anuales, y estimación del próximo ajuste.",
+    "Calculá el aumento de tu alquiler con el IPC del INDEC: cronograma de ajustes cada 3, 4, 6 o 12 meses y estimación del próximo aumento.",
   alternates: { canonical: "/inflacion/alquiler" },
 };
 
 const faqs = [
   {
     q: "¿Cómo se calcula el ajuste de alquiler por IPC?",
-    a: "Se toma la variación acumulada del IPC entre los meses del período: nuevo alquiler = alquiler vigente × (índice IPC final ÷ índice IPC inicial). Por ejemplo, en un ajuste trimestral se aplica la inflación acumulada de los tres meses completos anteriores al mes del ajuste. No se suman los porcentajes mensuales: se multiplican los factores, que da un poco más.",
+    a: "Se toma la inflación acumulada del período: nuevo alquiler = alquiler vigente × (índice IPC final ÷ índice IPC inicial). Por ejemplo, en un ajuste cada tres meses se aplica la inflación acumulada de los tres meses completos anteriores al mes del ajuste. Los porcentajes de cada mes no se suman: se multiplican, y eso da un poco más.",
   },
   {
     q: "¿Se usa el IPC mensual o el acumulado del período?",
-    a: "El acumulado del período completo entre ajuste y ajuste. Un error común es sumar las variaciones mensuales (2% + 2% + 2% = 6%): lo correcto es componerlas (1,02 × 1,02 × 1,02 = 6,12%). La calculadora lo hace bien automáticamente, usando los índices oficiales.",
+    a: "El acumulado de todo el período entre un ajuste y otro. Un error común es sumar los porcentajes de cada mes (2% + 2% + 2% = 6%). Lo correcto es multiplicarlos (1,02 × 1,02 × 1,02 = 6,12%). La calculadora lo hace bien sola, con los índices oficiales.",
   },
   {
     q: "¿Mi contrato se ajusta por IPC o por ICL?",
-    a: "Lo dice tu contrato, en la cláusula de actualización del precio. En los contratos firmados desde 2024 las partes eligen libremente el índice y la periodicidad: los más comunes son el IPC (INDEC) trimestral o cuatrimestral y el ICL (BCRA). Esta calculadora es para contratos que ajustan por IPC.",
+    a: "Lo dice tu contrato, en la cláusula de actualización del precio. En los contratos firmados desde 2024 las partes eligen libremente el índice y cada cuánto se ajusta. Los más comunes son el IPC (INDEC) cada tres o cuatro meses y el ICL (BCRA). Esta calculadora es para contratos que ajustan por IPC.",
   },
   {
     q: "¿Es legal ajustar el alquiler por IPC?",
-    a: "Sí. El DNU 70/2023 derogó la ley de alquileres 27.551 (art. 249) y reescribió el artículo 1199 del Código Civil y Comercial (art. 257): las partes pueden pactar el ajuste del alquiler usando cualquier índice, público o privado, en la moneda del contrato. La periodicidad también es libre: 3, 4, 6 o 12 meses son las más usadas.",
+    a: "Sí. El DNU 70/2023 derogó la ley de alquileres 27.551 (art. 249) y reescribió el artículo 1199 del Código Civil y Comercial (art. 257). Las partes pueden pactar el ajuste del alquiler con cualquier índice, público o privado, en la moneda del contrato. Cada cuánto se ajusta también es libre: cada 3, 4, 6 o 12 meses es lo más usado.",
   },
   {
     q: "¿Qué pasa con los contratos firmados antes de 2024?",
-    a: "Los contratos firmados bajo la ley 27.551 (entre julio de 2020 y diciembre de 2023) en general mantienen el esquema con el que se firmaron — ajuste anual por ICL — hasta que terminen, porque las nuevas reglas no se aplican retroactivamente a los contratos en curso. Si renovaste o firmaste de nuevo desde 2024, ya corre la libertad de pacto.",
+    a: "Los contratos firmados con la ley 27.551 (entre julio de 2020 y diciembre de 2023) en general siguen con el esquema con el que se firmaron (ajuste anual por ICL) hasta que terminen, porque las reglas nuevas no se aplican hacia atrás a los contratos en curso. Si renovaste o firmaste de nuevo desde 2024, ya podés pactar libremente.",
   },
   {
     q: "¿Por qué mi inmobiliaria usa el IPC 'con un mes de atraso'?",
-    a: `Porque el INDEC publica cada dato ${IPC_DIA_PUBLICACION} del mes siguiente. Si tu ajuste rige desde julio, el IPC de junio recién sale a mitad de julio: muchos contratos toman entonces los últimos índices ya publicados al momento del ajuste, que corren un mes atrás. La diferencia se compensa en el ajuste siguiente; la letra del contrato define la convención exacta.`,
+    a: `Porque el INDEC publica cada dato ${IPC_DIA_PUBLICACION} del mes siguiente. Si tu ajuste rige desde julio, el IPC de junio recién sale a mitad de julio. Por eso muchos contratos toman los últimos índices ya publicados al momento del ajuste, que van un mes atrás. La diferencia se compensa en el ajuste siguiente. Lo que diga tu contrato define cómo se cuenta.`,
   },
   {
     q: "¿Puedo saber cuánto va a aumentar mi alquiler antes de que salga el dato?",
-    a: "Exacto no, porque falta publicar el IPC de los meses del período. La calculadora te lo estima proyectando la última inflación mensual conocida sobre los meses que faltan, marcándolo claramente como estimación. Cuando el INDEC publique los datos, volvé y tenés el número final.",
+    a: "Exacto no, porque falta que se publique el IPC de los meses del período. La calculadora te lo estima: repite la última inflación mensual conocida en los meses que faltan y lo marca claramente como estimación. Cuando el INDEC publique los datos, volvé y vas a tener el número final.",
   },
   {
     q: "¿El aumento se aplica automáticamente?",
-    a: "El derecho al ajuste nace del contrato, pero el número conviene verificarlo: calculalo acá con los índices oficiales y comparalo con el que te informa la inmobiliaria o el propietario. Si difiere, pedí que te muestren la cuenta y la convención usada (qué meses tomaron).",
+    a: "El derecho al ajuste sale del contrato, pero conviene verificar el número. Calculalo acá con los índices oficiales y comparalo con el que te pasa la inmobiliaria o el dueño. Si no coincide, pedí que te muestren la cuenta y qué meses tomaron.",
   },
   {
     q: "¿Se usa el IPC nacional o el de mi provincia?",
-    a: "Salvo que el contrato diga otra cosa, la referencia estándar es el IPC Nacional nivel general del INDEC, que es el que usa esta calculadora. El INDEC también publica aperturas regionales, pero es raro que un contrato las use.",
+    a: "Salvo que el contrato diga otra cosa, se usa el IPC Nacional nivel general del INDEC, que es el que usa esta calculadora. El INDEC también publica índices por región, pero es raro que un contrato los use.",
   },
   {
     q: "¿Qué conviene pactar: IPC o ICL?",
-    a: "El IPC sigue a los precios; el ICL combina inflación y salarios, así que suele moverse algo más suave cuando los sueldos pierden contra los precios. Para el inquilino, un índice que suba menos es mejor; para el propietario, al revés. Lo importante es entender qué firmás: con esta calculadora ves exactamente cómo evoluciona un contrato atado al IPC.",
+    a: "El IPC sigue a los precios. El ICL mezcla inflación y sueldos, así que suele subir un poco menos cuando los sueldos pierden contra los precios. Para el inquilino conviene un índice que suba menos; para el dueño, al revés. Lo importante es entender qué firmás: con esta calculadora ves exactamente cómo evoluciona un contrato atado al IPC.",
   },
 ];
 
@@ -98,23 +98,23 @@ export default function AlquilerPage() {
           Ajuste de alquiler por IPC: calculá tu próximo aumento
         </h1>
         <p className="text-zinc-600">
-          Poné el alquiler inicial, cuándo arrancó el contrato y cada cuánto se ajusta:
-          te armamos el <strong>cronograma completo de aumentos</strong> con el IPC oficial del
-          INDEC y te estimamos el que viene. Último dato cargado:{" "}
+          Poné el alquiler inicial, cuándo arrancó el contrato y cada cuánto se ajusta. Te armamos
+          el <strong>calendario completo de aumentos</strong> con el IPC oficial del INDEC y te
+          estimamos el que viene. Último dato cargado:{" "}
           {nombrePeriodo(ULTIMO_PERIODO)} ({formatPct(mensual ?? 0, 1)} mensual).
         </p>
       </header>
 
       <RespuestaPrimero actualizado={INFLACION_FUENTES.consultadoEl}>
         <p>
-          El alquiler se ajusta multiplicando el precio vigente por la{" "}
-          <strong>variación acumulada del IPC</strong> del período:{" "}
+          El alquiler se ajusta multiplicando el precio actual por la{" "}
+          <strong>inflación acumulada del IPC</strong> en el período:{" "}
           <strong>nuevo alquiler = alquiler actual × (IPC del mes final ÷ IPC del mes inicial)</strong>.
-          Clave: los porcentajes mensuales <strong>se componen, no se suman</strong> (tres meses de
-          2% dan 6,12%, no 6%). Desde el DNU 70/2023 el índice (IPC o ICL) y la periodicidad (3, 4,
-          6 o 12 meses) se pactan libremente en el contrato. El último IPC cargado es{" "}
+          La clave: los porcentajes de cada mes <strong>se multiplican, no se suman</strong> (tres
+          meses de 2% dan 6,12%, no 6%). Desde el DNU 70/2023, el índice (IPC o ICL) y cada cuánto se
+          ajusta (3, 4, 6 o 12 meses) se pactan libremente en el contrato. El último IPC cargado es{" "}
           {nombrePeriodo(ULTIMO_PERIODO)} ({formatPct(mensual ?? 0, 1)} mensual). Poné tus datos en
-          la calculadora de abajo para ver el cronograma completo y estimar el próximo aumento.
+          la calculadora de abajo para ver todos los aumentos y estimar el próximo.
         </p>
       </RespuestaPrimero>
 
@@ -130,7 +130,7 @@ export default function AlquilerPage() {
         <h2 className="text-xl font-bold text-zinc-900">Cómo se ajusta un alquiler por IPC</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Desde el DNU 70/2023, índice y periodicidad de ajuste se pactan libremente: el nuevo
+            Desde el DNU 70/2023, el índice y cada cuánto se ajusta se pactan libremente. El nuevo
             artículo 1199 del Código Civil y Comercial dice que «las partes podrán pactar el
             ajuste del valor de los alquileres» y que «será válido el uso de cualquier índice
             pactado por las partes, público o privado». En la práctica, la mayoría de los
@@ -142,18 +142,26 @@ export default function AlquilerPage() {
             período)
           </p>
           <p>
-            Ojo con un clásico: <strong>los porcentajes mensuales no se suman, se componen</strong>.
-            Tres meses de 2% no son 6%, son 6,12%. Parece poco, pero en contratos largos la
-            diferencia se acumula. La calculadora compone los índices oficiales mes a mes, que es
-            la cuenta correcta.
+            Ojo con un error clásico: <strong>los porcentajes de cada mes no se suman, se
+            multiplican</strong>. Tres meses de 2% no son 6%, son 6,12%. Parece poco, pero en
+            contratos largos la diferencia se acumula. La calculadora multiplica los índices
+            oficiales mes a mes, que es la cuenta correcta.
           </p>
           <p>
-            El detalle operativo que genera más dudas es la <strong>demora de publicación</strong>:
-            el INDEC publica el IPC de cada mes {IPC_DIA_PUBLICACION} del mes siguiente. Por eso
-            algunos contratos toman los meses calendario completos anteriores al ajuste (la
-            convención de esta calculadora) y otros, los últimos índices ya publicados al momento
-            de ajustar. La letra del contrato manda — si tu número difiere del nuestro por un mes
-            de corrimiento, probablemente sea eso.
+            Lo que más dudas genera es la <strong>demora en la publicación</strong>: el INDEC publica
+            el IPC de cada mes {IPC_DIA_PUBLICACION} del mes siguiente. Por eso algunos contratos
+            toman los meses completos anteriores al ajuste (como hace esta calculadora) y otros, los
+            últimos índices ya publicados al momento de ajustar. Manda lo que diga el contrato. Si tu
+            número no coincide con el nuestro por un mes de diferencia, seguramente es eso. Si sos
+            dueño y tenés varios contratos, la{" "}
+            <Link href="/planillas/alquileres" className="text-emerald-700 underline">
+              planilla de alquileres en Excel
+            </Link>{" "}
+            te los ordena. Y si sos inquilino, revisá la{" "}
+            <Link href="/deduccion-alquiler" className="text-emerald-700 underline">
+              deducción del alquiler en Ganancias
+            </Link>
+            .
           </p>
         </div>
       </section>
