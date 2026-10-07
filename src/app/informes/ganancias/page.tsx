@@ -28,9 +28,9 @@ import {
   armarInforme,
 } from "./_modelo";
 
-const TITULO = "Informe de Ganancias 2026: cuánto pagás y cómo pagar menos";
+const TITULO = "Informe de Ganancias 2026: cuánto pagás y cómo bajarlo";
 const DESCRIPCION =
-  "Un informe para imprimir o guardar en PDF con tu sueldo: la retención de Ganancias mes a mes, tu tramo, cuánto te devuelve cada deducción legal y el paso a paso para cargarlas en el SiRADIG. Pago único.";
+  "Informe en PDF con tu retención de Ganancias mes a mes, tu tramo, cuánto te devuelve cada deducción y cómo cargarlas en el SiRADIG. Pago único.";
 
 export const metadata: Metadata = {
   title: TITULO,
@@ -76,7 +76,7 @@ const FAQS = [
   },
   {
     q: "¿Guardan lo que cargo?",
-    a: "Lo que pagás de alquiler, prepaga y demás no sale de tu navegador: queda guardado ahí para que no lo vuelvas a escribir. El sueldo y las cargas de familia viajan con el pago, en MercadoPago, sólo para que el informe se arme solo cuando lo abrís.",
+    a: "Lo que pagás de alquiler, prepaga y demás no sale de tu navegador: queda guardado ahí para que no lo vuelvas a escribir. El sueldo y las cargas de familia viajan con el pago, en MercadoPago, únicamente para que el informe se arme solo cuando lo abrís.",
   },
   {
     q: "¿Coincide con lo que me retiene mi empleador?",
@@ -120,7 +120,7 @@ export default function InformeGananciasLanding() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Informe de Ganancias 2026 — proyección anual y deducciones para empleados",
+    name: "Informe de Ganancias 2026: proyección anual y deducciones para empleados",
     description: DESCRIPCION,
     brand: { "@type": "Brand", name: "CalculAR" },
     offers: {
@@ -285,7 +285,7 @@ export default function InformeGananciasLanding() {
               <ul className="mt-4 space-y-1.5 text-xs text-zinc-500">
                 <li>
                   <a href="https://www.afip.gob.ar/572Web/carga-datos/que-datos-cargar.asp" target="_blank" rel="noopener noreferrer" className="text-emerald-700 underline decoration-emerald-300 underline-offset-2">
-                    ARCA — SiRADIG: qué datos cargar
+                    ARCA, SiRADIG: qué datos cargar
                   </a>
                 </li>
                 <li>
@@ -309,7 +309,7 @@ export default function InformeGananciasLanding() {
                   ingresos, más de un empleo o bienes que declarar, conviene que alguien mire tu caso completo.
                 </li>
                 <li>
-                  <strong className="font-semibold text-zinc-800">No inventa atajos.</strong> Sólo deducciones de la ley, y
+                  <strong className="font-semibold text-zinc-800">No inventa atajos.</strong> Solo deducciones de la ley, y
                   cada una con su comprobante.
                 </li>
               </ul>
@@ -363,7 +363,7 @@ export default function InformeGananciasLanding() {
               <PlanillaComprarBtn producto={SLUG_INFORME} precio={precio} id="cta-cierre" etiqueta={`Quiero mi informe · ${precioTxt}`} />
             </div>
             <p className="mt-6 text-sm text-zinc-500">
-              ¿Sólo querés ver cuánto te retienen?{" "}
+              ¿Solo querés ver cuánto te retienen?{" "}
               <Link href="/ganancias" className="font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2">
                 La calculadora es gratis
               </Link>

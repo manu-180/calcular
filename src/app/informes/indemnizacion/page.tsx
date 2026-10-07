@@ -23,9 +23,9 @@ import { formatARS } from "@/lib/formato";
 import { productoPorSlug, type Producto } from "@/lib/mp";
 import { PRECIO_INFORME_REFERENCIA, RUTA_LANDING_INFORME, SLUG_INFORME } from "./_modelo";
 
-const TITULO = "Informe de liquidación final por despido, rubro por rubro";
+const TITULO = "Informe de liquidación final por despido";
 const DESCRIPCION =
-  "Un informe para imprimir o llevar en el celular: cada rubro de tu liquidación por despido con su artículo y la cuenta a la vista, lo que te ofrecen comparado con lo que surge de la ley, qué revisar antes de firmar y tus plazos con fecha. Texto vigente de la Ley 27.802. Pago único.";
+  "Cada rubro de tu liquidación con su artículo y la cuenta a la vista, comparado con lo que te ofrecen, y qué revisar antes de firmar. Pago único.";
 
 export const metadata: Metadata = {
   title: TITULO,
@@ -99,7 +99,7 @@ const FAQS = [
   },
   {
     q: "¿Guardan mis datos?",
-    a: "Tu nombre, el de la empresa y lo que te ofrecen no salen de tu navegador: se escriben en la página y van directo a la hoja. El sueldo, las fechas, si hubo preaviso y el tope viajan con el pago, en MercadoPago, sólo para que el informe se arme solo cuando lo abrís.",
+    a: "Tu nombre, el de la empresa y lo que te ofrecen no salen de tu navegador: se escriben en la página y van directo a la hoja. El sueldo, las fechas, si hubo preaviso y el tope viajan con el pago, en MercadoPago, únicamente para que el informe se arme solo cuando lo abrís.",
   },
   {
     q: "¿Me sirve si renuncié o me despidieron con causa?",
@@ -136,7 +136,7 @@ export default function InformeIndemnizacionLanding() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Informe de liquidación final por despido — rubro por rubro, con la Ley de Contrato de Trabajo vigente",
+    name: "Informe de liquidación final por despido, rubro por rubro, con la Ley de Contrato de Trabajo vigente",
     description: DESCRIPCION,
     brand: { "@type": "Brand", name: "CalculAR" },
     offers: {
@@ -286,12 +286,12 @@ export default function InformeIndemnizacionLanding() {
               <ul className="mt-4 space-y-1.5 text-xs text-zinc-500">
                 <li>
                   <a href={INDEMNIZACION_FUENTES.lct.url} target="_blank" rel="noopener noreferrer" className="text-emerald-700 underline decoration-emerald-300 underline-offset-2">
-                    Ley de Contrato de Trabajo — texto actualizado
+                    Ley de Contrato de Trabajo (texto actualizado)
                   </a>
                 </li>
                 <li>
                   <a href={INDEMNIZACION_FUENTES.ley27802.url} target="_blank" rel="noopener noreferrer" className="text-emerald-700 underline decoration-emerald-300 underline-offset-2">
-                    Ley 27.802 — Boletín Oficial del 6/3/2026
+                    Ley 27.802 (Boletín Oficial del 6/3/2026)
                   </a>
                 </li>
               </ul>
@@ -365,7 +365,7 @@ export default function InformeIndemnizacionLanding() {
               <PlanillaComprarBtn producto={SLUG_INFORME} precio={precio} id="cta-cierre" etiqueta={`Quiero mi informe · ${precioTxt}`} />
             </div>
             <p className="mt-6 text-sm text-zinc-500">
-              ¿Sólo querés ver el número?{" "}
+              ¿Solo querés ver el número?{" "}
               <Link href="/indemnizacion" className="font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2">
                 La calculadora es gratis
               </Link>

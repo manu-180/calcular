@@ -12,64 +12,64 @@ import {
 } from "@/data/indemnizacion";
 
 export const metadata: Metadata = {
-  title: "Calculadora de Indemnización por Despido 2026: cuánto te corresponde",
+  title: "Calculadora de indemnización por despido 2026",
   description:
-    "Calculá gratis tu indemnización por despido sin causa: antigüedad (art. 245 LCT), preaviso, integración del mes, aguinaldo y vacaciones proporcionales. Actualizada con la reforma de la Ley 27.802 (2026).",
+    "Calculá tu indemnización por despido sin causa: antigüedad (art. 245), preaviso, integración, aguinaldo y vacaciones proporcionales, con la Ley 27.802.",
   alternates: { canonical: "/indemnizacion" },
 };
 
 const faqs = [
   {
     q: "¿Cuánto me corresponde si me despiden sin causa?",
-    a: "La indemnización por antigüedad es un mes de sueldo por cada año trabajado o fracción mayor de 3 meses, tomando tu mejor remuneración mensual, normal y habitual del último año (art. 245 LCT). A eso se suman el preaviso (1 o 2 meses si no te lo dieron), la integración del mes de despido, y la liquidación final: aguinaldo y vacaciones proporcionales más los días trabajados del mes.",
+    a: "Un mes de sueldo por cada año trabajado o fracción de más de 3 meses, sobre tu mejor sueldo mensual, normal y habitual del último año. Esa es la indemnización por antigüedad (art. 245 LCT). Se suman el preaviso (1 o 2 meses si no te avisaron), la integración del mes del despido y la liquidación final: aguinaldo y vacaciones proporcionales, más los días trabajados del mes.",
   },
   {
     q: "¿Qué sueldo se usa de base para la indemnización?",
-    a: "La mejor remuneración mensual, normal y habitual devengada en el último año. Desde la Ley 27.802 (2026) la definición es precisa: cuentan los conceptos cobrados al menos 6 meses en el último año; los variables (horas extra, comisiones, premios mensuales) entran por el promedio de los últimos 6 meses o del último año, lo que te sea más favorable. El aguinaldo y los premios que no se pagan todos los meses no se incluyen.",
+    a: "Tu mejor sueldo mensual, normal y habitual del último año. Desde la Ley 27.802 (2026) la definición es precisa. Cuentan los conceptos que cobraste al menos 6 meses en el último año. Los variables (horas extra, comisiones, premios mensuales) entran por el promedio de los últimos 6 meses o del último año, el que te convenga más. El aguinaldo y los premios que no se pagan todos los meses no entran.",
   },
   {
     q: "¿La indemnización tiene tope?",
-    a: "Sí: la base no puede superar 3 veces el sueldo promedio de tu convenio colectivo. Pero hay un piso, ahora escrito en la ley: aunque se aplique el tope, la base nunca puede ser menor al 67% de tu remuneración real (art. 245, texto Ley 27.802). Antes este piso era solo jurisprudencia (el fallo «Vizzoti»); desde 2026 es texto legal.",
+    a: "Sí: la base no puede pasar de 3 veces el sueldo promedio de tu convenio colectivo. Pero hay un piso, ahora escrito en la ley. Aunque se aplique el tope, la base nunca puede ser menos del 67% de tu sueldo real (art. 245, texto Ley 27.802). Antes ese piso venía de un fallo judicial («Vizzoti»). Desde 2026 está en la ley.",
   },
   {
     q: "Me despidieron en el período de prueba, ¿cobro algo?",
-    a: "Durante el período de prueba (los primeros 6 meses, ampliables por convenio a 8 o 12 según el tamaño de la empresa) cualquiera de las partes puede extinguir el contrato sin indemnización y, desde la Ley 27.802, sin obligación de preaviso (arts. 92 bis y 231 LCT). Pero la liquidación final te corresponde igual: días trabajados, aguinaldo proporcional y vacaciones proporcionales.",
+    a: "Durante el período de prueba (los primeros 6 meses, que un convenio puede llevar a 8 o 12 según el tamaño de la empresa), cualquiera de las partes puede terminar el contrato sin indemnización. Y desde la Ley 27.802, sin preaviso (arts. 92 bis y 231 LCT). Pero la liquidación final te la deben igual: días trabajados, aguinaldo proporcional y vacaciones proporcionales.",
   },
   {
     q: "¿Qué es el preaviso y cuánto vale?",
-    a: "Es el aviso anticipado del despido: 1 mes si tenés hasta 5 años de antigüedad y 2 meses si tenés más (art. 231 LCT). Si te lo dan, trabajás ese tiempo y lo cobrás como sueldo normal. Si no te lo dan, te lo tienen que pagar como indemnización sustitutiva (art. 232), y se calcula con su parte de aguinaldo.",
+    a: "Es el aviso anticipado del despido: 1 mes si tenés hasta 5 años de antigüedad y 2 meses si tenés más (art. 231 LCT). Si te lo dan, trabajás ese tiempo y lo cobrás como sueldo normal. Si no te lo dan, te lo tienen que pagar como indemnización (art. 232), con su parte de aguinaldo.",
   },
   {
     q: "¿Qué es la integración del mes de despido?",
-    a: "Si te despiden sin preaviso un día que no es el último del mes, te tienen que pagar los días que faltan hasta fin de mes (art. 233 LCT). Por ejemplo, si te despiden el 11, te integran los días restantes del mes. No corresponde cuando el despido ocurre durante el período de prueba.",
+    a: "Si te despiden sin preaviso un día que no es el último del mes, te tienen que pagar los días que faltan hasta fin de mes (art. 233 LCT). Por ejemplo, si te despiden el 11, te pagan los días que quedan del mes. No corresponde si el despido es durante el período de prueba.",
   },
   {
     q: "Si renuncio o me despiden con causa, ¿cobro indemnización?",
-    a: "No corresponde la indemnización por antigüedad ni el preaviso, pero siempre te deben la liquidación final: los días trabajados del mes, el aguinaldo proporcional del semestre y las vacaciones proporcionales no gozadas (arts. 123 y 156 LCT). Ojo: si la «justa causa» que invocó el empleador no es real, podés discutirla judicialmente.",
+    a: "No te corresponde la indemnización por antigüedad ni el preaviso. Pero siempre te deben la liquidación final: los días trabajados del mes, el aguinaldo proporcional del semestre y las vacaciones proporcionales que no tomaste (arts. 123 y 156 LCT). Ojo: si la «justa causa» que alegó el empleador no es real, podés discutirla en un juicio.",
   },
   {
     q: "¿Qué es el despido indirecto?",
-    a: "Cuando el empleador comete incumplimientos graves (no pagar el sueldo, no registrarte, cambios abusivos de condiciones), podés intimarlo y, si no corrige, considerarte despedido. En ese caso te corresponden las mismas indemnizaciones que en un despido sin causa (art. 246 LCT). Antes de darte por despedido, asesorate con un abogado laboralista: las formas importan.",
+    a: "Si el empleador incumple algo grave (no te paga el sueldo, no te registra, te cambia las condiciones de forma abusiva), podés intimarlo. Si no lo corrige, podés considerarte despedido. En ese caso te corresponden las mismas indemnizaciones que en un despido sin causa (art. 246 LCT). Antes de darte por despedido, consultá con un abogado laboralista: las formas importan.",
   },
   {
     q: "¿Cuándo me tienen que pagar la liquidación?",
-    a: "Dentro de los 4 días hábiles desde la extinción del contrato, el mismo plazo que rige para el pago del sueldo mensual (arts. 255 bis y 128 LCT).",
+    a: "Dentro de los 4 días hábiles desde que termina el contrato, el mismo plazo que rige para pagar el sueldo de cada mes (arts. 255 bis y 128 LCT).",
   },
   {
     q: "¿Siguen existiendo las multas por trabajo en negro o la doble indemnización?",
-    a: "No. La Ley 27.742 (julio de 2024) derogó las multas por empleo no registrado de la Ley 24.013, las indemnizaciones agravadas de la Ley 25.323 (la famosa «doble indemnización» por falta de pago) y las de la Ley 25.345. Si tu relación no estaba registrada, igual conservás el derecho a la indemnización común y a reclamar los aportes adeudados.",
+    a: "No. La Ley 27.742 (julio de 2024) derogó las multas por trabajo no registrado de la Ley 24.013, los recargos de la Ley 25.323 (la famosa «doble indemnización» por falta de pago) y los de la Ley 25.345. Si trabajabas en negro, igual tenés derecho a la indemnización común y a reclamar los aportes que te deben.",
   },
   {
     q: "¿La indemnización paga aportes o descuentos?",
-    a: "Los rubros indemnizatorios (antigüedad, preaviso no otorgado, integración) no son remunerativos: no llevan aportes jubilatorios ni de obra social, los cobrás completos. El aguinaldo proporcional y los días trabajados sí son remunerativos y llevan los descuentos habituales.",
+    a: "Los rubros indemnizatorios (antigüedad, preaviso no dado, integración) no son sueldo: no llevan aportes jubilatorios ni de obra social, y los cobrás completos. El aguinaldo proporcional y los días trabajados sí son sueldo y llevan los descuentos de siempre.",
   },
   {
     q: "¿La indemnización por despido paga Ganancias?",
-    a: "Solo una parte está exenta. El art. 26 inc. i) de la Ley de Ganancias exime la indemnización por antigüedad (la del art. 245) y los intereses judiciales de un crédito laboral. En el mismo inciso, la ley dice que las indemnizaciones por falta de preaviso no están exentas. La integración del mes, el aguinaldo y las vacaciones proporcionales no figuran entre las exentas: se suman a tus ingresos del año como cualquier sueldo. Que un rubro no esté exento no significa que te lo descuenten: solo pagás si tus ingresos anuales superan las deducciones personales.",
+    a: "Solo una parte está exenta. El art. 26 inc. i) de la Ley de Ganancias exime la indemnización por antigüedad (la del art. 245) y los intereses judiciales de un crédito laboral. En el mismo inciso, la ley aclara que la indemnización por falta de preaviso no está exenta. La integración del mes, el aguinaldo y las vacaciones proporcionales no figuran entre las exentas: se suman a tus ingresos del año como cualquier sueldo. Que un rubro no esté exento no quiere decir que te lo descuenten. Solo pagás si tus ingresos del año superan las deducciones personales.",
   },
   {
     q: "¿Qué es el fondo de cese laboral?",
-    a: "Desde la reforma, los convenios colectivos pueden reemplazar la indemnización del art. 245 por un fondo o sistema de cese (parecido al de la construcción), siempre a cargo del empleador. Si tu convenio adoptó uno, tu liquidación por despido se rige por ese sistema y no por la fórmula clásica. Consultá con tu sindicato si tu actividad lo implementó.",
+    a: "Desde la reforma, los convenios colectivos pueden reemplazar la indemnización del art. 245 por un fondo o sistema de cese (parecido al de la construcción), siempre a cargo del empleador. Si tu convenio adoptó uno, tu despido se liquida con ese sistema y no con la fórmula clásica. Preguntale a tu sindicato si tu actividad lo tiene.",
   },
 ];
 
@@ -113,27 +113,26 @@ export default function IndemnizacionPage() {
 
       <header className="space-y-3">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
-          Calculadora de Indemnización por Despido 2026
+          Calculadora de indemnización por despido 2026
         </h1>
         <p className="text-zinc-600">
-          Ingresá tu sueldo y tus fechas de ingreso y egreso y descubrí{" "}
+          Poné tu sueldo y tus fechas de entrada y salida, y mirá{" "}
           <strong>cuánto te corresponde por despido sin causa</strong>: indemnización por
-          antigüedad, preaviso, integración del mes, aguinaldo y vacaciones proporcionales.
-          Actualizada con el <strong>nuevo art. 245 de la LCT</strong> (Ley 27.802, marzo de
-          2026).
+          antigüedad, preaviso, integración del mes, aguinaldo y vacaciones proporcionales. Ya
+          usa el <strong>nuevo art. 245 de la LCT</strong> (Ley 27.802, marzo de 2026).
         </p>
       </header>
 
       <RespuestaPrimero actualizado="13 de junio de 2026">
         <p>
           Si te despiden <strong>sin causa</strong>, te corresponde{" "}
-          <strong>un mes de sueldo por cada año trabajado</strong> (o fracción mayor a 3
-          meses), sobre tu mejor remuneración mensual, normal y habitual del último año
-          (art. 245 LCT). Se suman el <strong>preaviso</strong> (1 o 2 meses si no te
-          avisaron), la <strong>integración del mes</strong> y la liquidación final (aguinaldo
-          y vacaciones proporcionales). Desde la Ley 27.802 (2026), aunque se aplique el tope
-          de convenio, la base nunca baja del <strong>67% de tu sueldo real</strong>. Si
-          renunciás o te despiden con causa, cobrás solo la liquidación final.
+          <strong>un mes de sueldo por cada año trabajado</strong> (o fracción de más de 3
+          meses), sobre tu mejor sueldo mensual, normal y habitual del último año (art. 245
+          LCT). Se suman el <strong>preaviso</strong> (1 o 2 meses si no te avisaron), la{" "}
+          <strong>integración del mes</strong> y la liquidación final (aguinaldo y vacaciones
+          proporcionales). Desde la Ley 27.802 (2026), aunque se aplique el tope del convenio,
+          la base nunca baja del <strong>67% de tu sueldo real</strong>. Si renunciás o te
+          despiden con causa, cobrás solo la liquidación final.
         </p>
       </RespuestaPrimero>
 
@@ -155,12 +154,17 @@ export default function IndemnizacionPage() {
             (la fracción mayor a 3 meses cuenta como un año más)
           </p>
           <p>
-            Por ejemplo: con 4 años y 5 meses de antigüedad se pagan <strong>5</strong> sueldos;
-            con 4 años y 2 meses, <strong>4</strong>. La indemnización nunca puede ser menor a
-            un mes de sueldo. Y no viene sola: si no hubo preaviso se suman{" "}
+            Por ejemplo: con 4 años y 5 meses de antigüedad se pagan <strong>5</strong> sueldos.
+            Con 4 años y 2 meses, <strong>4</strong>. La indemnización nunca puede ser menos de un
+            mes de sueldo. Y no viene sola: si no hubo preaviso se suman{" "}
             <strong>1 o 2 meses más</strong> (art. 232), los días que falten hasta fin de mes
-            (art. 233) y la liquidación final de cualquier egreso: aguinaldo proporcional,
-            vacaciones no gozadas y días trabajados.
+            (art. 233) y la liquidación final que corresponde siempre: aguinaldo proporcional,
+            vacaciones no tomadas y días trabajados. Si querés cada rubro con su artículo y la
+            cuenta a la vista, está el{" "}
+            <Link href="/informes/indemnizacion" className="text-emerald-700 underline">
+              informe de liquidación final por despido
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -171,8 +175,8 @@ export default function IndemnizacionPage() {
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            La base es tu <strong>mejor remuneración mensual, normal y habitual</strong>{" "}
-            devengada en el último año. La Ley 27.802 definió con precisión cada palabra:
+            La base es tu <strong>mejor sueldo mensual, normal y habitual</strong> del último
+            año. La Ley 27.802 definió con precisión cada palabra:
           </p>
           <ul className="list-disc space-y-2 pl-5">
             <li>
@@ -193,15 +197,15 @@ export default function IndemnizacionPage() {
           <p>
             Además, la base tiene un <strong>tope</strong>: 3 veces el sueldo promedio de tu
             convenio colectivo. Pero aunque se aplique el tope, por ley la base nunca puede
-            quedar por debajo del <strong>67% de tu remuneración real</strong> — el criterio del
-            fallo «Vizzoti» que ahora es texto legal.
+            quedar por debajo del <strong>67% de tu sueldo real</strong>. Es el criterio del
+            fallo «Vizzoti», que ahora está en la ley.
           </p>
         </div>
       </section>
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
-          Todos los rubros de la liquidación por despido
+          Todos los rubros de la liquidación final por despido
         </h2>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <table className="w-full text-sm">
@@ -231,13 +235,13 @@ export default function IndemnizacionPage() {
                 <td className="px-4 py-2.5">Despido sin preaviso a mitad de mes</td>
               </tr>
               <tr className="border-t border-zinc-100">
-                <td className="px-4 py-2.5 font-medium text-zinc-900">SAC proporcional</td>
+                <td className="px-4 py-2.5 font-medium text-zinc-900">Aguinaldo proporcional</td>
                 <td className="px-4 py-2.5">Parte del aguinaldo del semestre en curso</td>
                 <td className="px-4 py-2.5">Siempre, sea cual sea la causa</td>
               </tr>
               <tr className="border-t border-zinc-100">
                 <td className="px-4 py-2.5 font-medium text-zinc-900">
-                  Vacaciones no gozadas (art. 156)
+                  Vacaciones no tomadas (art. 156)
                 </td>
                 <td className="px-4 py-2.5">Días proporcionales del año, a sueldo ÷ 25</td>
                 <td className="px-4 py-2.5">Siempre, sea cual sea la causa</td>
@@ -258,28 +262,28 @@ export default function IndemnizacionPage() {
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            La Ley 27.802 (B.O. 6/3/2026) reescribió el art. 245 y tocó varias piezas del
+            La Ley 27.802 (B.O. 6/3/2026) reescribió el art. 245 y cambió varias partes del
             régimen de despido. Lo importante:
           </p>
           <ul className="list-disc space-y-2 pl-5">
             <li>
-              <strong>Base de cálculo definida por ley:</strong> ya no se discute qué es
-              «normal y habitual»: habitual es lo cobrado 6 meses o más en el año, y lo variable
-              entra por promedio de 6 meses (o del año, si te favorece).
+              <strong>La base la define la ley:</strong> ya no se discute qué es «normal y
+              habitual». Habitual es lo que cobraste 6 meses o más en el año, y lo variable entra
+              por el promedio de 6 meses (o del año, si te conviene).
             </li>
             <li>
               <strong>El piso del 67% es ley:</strong> el criterio del fallo «Vizzoti» (2004)
-              quedó escrito en el artículo: el tope de convenio no puede recortar la base por
-              debajo del 67% de tu sueldo real.
+              quedó escrito en el artículo. El tope del convenio no puede bajar la base a menos
+              del 67% de tu sueldo real.
             </li>
             <li>
-              <strong>Fondos de cese laboral:</strong> los convenios colectivos pueden sustituir
-              la indemnización por un fondo tipo el de la construcción, siempre a cargo del
+              <strong>Fondos de cese laboral:</strong> los convenios colectivos pueden reemplazar
+              la indemnización por un fondo como el de la construcción, siempre a cargo del
               empleador.
             </li>
             <li>
-              <strong>Única reparación:</strong> la indemnización del 245 cierra el reclamo: ya
-              no se pueden sumar demandas civiles por el mismo despido (salvo delitos penales).
+              <strong>Única reparación:</strong> la indemnización del 245 cierra el reclamo. Ya no
+              se pueden sumar demandas civiles por el mismo despido (salvo delitos penales).
             </li>
             <li>
               <strong>Sin preaviso en período de prueba:</strong> durante la prueba ya no se
@@ -288,7 +292,7 @@ export default function IndemnizacionPage() {
           </ul>
           <p>
             Y un cambio anterior que sigue vigente: la <strong>Ley 27.742</strong> (2024) derogó
-            las multas por empleo no registrado y la «doble indemnización» de las leyes 24.013,
+            las multas por trabajo no registrado y la «doble indemnización» de las leyes 24.013,
             25.323 y 25.345.
           </p>
         </div>
@@ -301,7 +305,7 @@ export default function IndemnizacionPage() {
         <div className="space-y-3 text-zinc-600">
           <p>
             La exención está en el <strong>art. 26 inc. i) de la Ley de Impuesto a las
-            Ganancias</strong>, y es una lista cerrada. Lo que sí está exento:
+            Ganancias</strong>, y es una lista cerrada. Esto es lo que está exento:
           </p>
           <blockquote className="rounded-xl border-l-4 border-emerald-600 bg-white p-4 text-sm text-zinc-700 shadow-sm">
             «{LIG_ART26_EXENTO} (…)»
@@ -332,7 +336,7 @@ export default function IndemnizacionPage() {
           </ul>
           <p>
             «No exento» no quiere decir «te lo descuentan»: el impuesto se paga solo sobre lo que
-            supera las deducciones personales del año. Si querés saber si llegás, usá la{" "}
+            pasa de las deducciones personales del año. Si querés saber si llegás, usá la{" "}
             <Link href="/ganancias" className="text-emerald-700 underline">
               calculadora de Ganancias
             </Link>{" "}
@@ -411,13 +415,21 @@ export default function IndemnizacionPage() {
           </li>
         </ul>
         <p className="text-xs text-zinc-400">
-          Última verificación: {INDEMNIZACION_FUENTES.consultadoEl}. Esta estimación es
-          orientativa: ante un despido real, consultá con un abogado laboralista. Si el despido
-          fue sin justa causa, además de la indemnización te corresponde la{" "}
+          Última verificación: {INDEMNIZACION_FUENTES.consultadoEl}. Es una estimación: ante un
+          despido real, consultá con un abogado laboralista. Si el despido fue sin justa causa,
+          además de la indemnización te corresponde la{" "}
           <Link href="/desempleo" className="text-emerald-700 underline">
             prestación por desempleo
           </Link>
-          , que paga ANSES aparte y por hasta 12 meses. Mirá también la{" "}
+          , que paga ANSES aparte y por hasta 12 meses. Fijate también{" "}
+          <Link href="/hasta-cuando-tengo-obra-social" className="text-emerald-700 underline">
+            hasta cuándo te cubre la obra social después del despido
+          </Link>{" "}
+          y pedí tu{" "}
+          <Link href="/certificado-de-trabajo" className="text-emerald-700 underline">
+            certificado de trabajo
+          </Link>
+          . Mirá también la{" "}
           <Link href="/aguinaldo" className="text-emerald-700 underline">
             calculadora de aguinaldo
           </Link>{" "}

@@ -43,8 +43,8 @@ const DESVIO_SOLO_ARCA = ANIOS_SOLO_ARCA.map(
 );
 
 export const metadata: Metadata = {
-  title: `Escala de Ganancias para sociedades ${ANIO}: 25%, 30% y 35% (tramos y calculadora)`,
-  description: `Para los ejercicios iniciados en ${ANIO} la sociedad paga 25% hasta ${formatARS(T1.hasta ?? 0, 0)}, 30% hasta ${formatARS(T2.hasta ?? 0, 0)} y 35% por encima. La escala se ajusta sola por IPC y la elige el año de inicio del ejercicio, no el de cierre.`,
+  title: `Ganancias de sociedades ${ANIO}: escala del 25, 30 y 35%`,
+  description: `Tramos ${ANIO} del impuesto a las ganancias de sociedades, ajustados por IPC, y por qué la escala la elige el año de inicio del ejercicio. Con calculadora.`,
   alternates: { canonical: "/ganancias-sociedades" },
   openGraph: {
     images: [
@@ -60,35 +60,35 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: `¿Cuál es la escala de Ganancias para sociedades en ${ANIO}?`,
-    a: `Para los ejercicios que empiezan en ${ANIO}: 25% hasta ${formatARS(T1.hasta ?? 0, 2)} de ganancia neta imponible; entre ese monto y ${formatARS(T2.hasta ?? 0, 2)}, ${formatARS(T2.fijo, 2)} más el 30% del excedente; y por encima, ${formatARS(T3.fijo, 2)} más el 35% del excedente. Son los montos de la Ley 27.630 ajustados por el IPC de octubre, y coinciden al centavo con los que publica ARCA.`,
+    a: `Para los ejercicios que empiezan en ${ANIO}: 25% hasta ${formatARS(T1.hasta ?? 0, 2)} de ganancia neta imponible. Entre ese monto y ${formatARS(T2.hasta ?? 0, 2)}, ${formatARS(T2.fijo, 2)} más el 30% de lo que exceda. Y por encima, ${formatARS(T3.fijo, 2)} más el 35% de lo que exceda. Son los montos de la Ley 27.630 ajustados por el IPC de octubre, y coinciden al centavo con los que publica ARCA.`,
   },
   {
     q: "¿La escala se aplica por el año de cierre o por el de inicio del ejercicio?",
-    a: `Por el de inicio. El art. 73 dice que «${GANANCIAS_SOCIEDADES_TEXTOS.ejerciciosQueSeInicien}». Una sociedad que cierra el 30 de junio de ${ANIO} empezó su ejercicio en julio de ${ANIO - 1}, y liquida con la escala de ${ANIO - 1}, no con la de ${ANIO}. Con ${formatARS(GANANCIA_CASO, 0)} de ganancia, la diferencia entre una y otra es de ${formatARS(DIFERENCIA, 0)}.`,
+    a: `Por el de inicio. El art. 73 dice que «${GANANCIAS_SOCIEDADES_TEXTOS.ejerciciosQueSeInicien}». Una sociedad que cierra el 30 de junio de ${ANIO} empezó su ejercicio en julio de ${ANIO - 1}. Por eso liquida con la escala de ${ANIO - 1}, no con la de ${ANIO}. Con ${formatARS(GANANCIA_CASO, 0)} de ganancia, la diferencia entre una y otra es de ${formatARS(DIFERENCIA, 0)}.`,
   },
   {
     q: "¿Cómo se actualizan los tramos?",
-    a: `Solos, sin decreto: la ley ordena que «${GANANCIAS_SOCIEDADES_TEXTOS.ajuste}». ARCA calcula cada año sobre los montos originales de la ley multiplicados por el IPC de octubre del año anterior dividido por el de octubre de 2020. Si se encadena año contra año redondeando en el medio, el resultado ya no da exacto.`,
+    a: `Solos, sin decreto. La ley ordena que «${GANANCIAS_SOCIEDADES_TEXTOS.ajuste}». Cada año, ARCA toma los montos originales de la ley y los multiplica por el IPC de octubre del año anterior dividido por el de octubre de 2020. Si encadenás año contra año y redondeás en el medio, ya no da exacto.`,
   },
   {
     q: "¿Las SRL pagan la misma escala que las SA?",
-    a: "Sí. La escala alcanza a las sociedades anónimas (incluidas las unipersonales), las SAS, las SRL, las sociedades en comandita, las asociaciones, fundaciones, cooperativas y mutuales en cuanto no tengan otro tratamiento, los fideicomisos del país (salvo cuando el fiduciante es el beneficiario, con excepciones) y algunos fondos comunes de inversión. También las sociedades de la Sección IV de la Ley General de Sociedades (las simples o informales) que opten por tributar así.",
+    a: "Sí. La escala alcanza a las sociedades anónimas (también las unipersonales), las SAS, las SRL y las sociedades en comandita. También a asociaciones, fundaciones, cooperativas y mutuales que no tengan otro tratamiento, a los fideicomisos del país (salvo cuando el fiduciante es el beneficiario, con excepciones) y a algunos fondos comunes de inversión. Y a las sociedades de la Sección IV de la Ley General de Sociedades (las simples o informales) que elijan tributar así.",
   },
   {
     q: "¿Cuánto pagan los socios cuando la sociedad reparte dividendos?",
-    a: `Un ${pct(ALICUOTA_DIVIDENDOS, 0)} sobre lo que cobran, retenido por la sociedad al pagar. La ley dice que «${GANANCIAS_SOCIEDADES_TEXTOS.dividendos}», y que la retención tiene «el carácter de pago único y definitivo» para las personas humanas residentes no inscriptas en el impuesto. Con ${formatARS(GANANCIA_CASO, 0)} de ganancia y todo repartido, la carga total entre sociedad y socios llega al ${pct(CASO_VIGENTE.cargaTotalEfectiva)}.`,
+    a: `Un ${pct(ALICUOTA_DIVIDENDOS, 0)} sobre lo que cobran, que la sociedad retiene al pagar. La ley dice que «${GANANCIAS_SOCIEDADES_TEXTOS.dividendos}». Para las personas humanas residentes no inscriptas en el impuesto, esa retención tiene «el carácter de pago único y definitivo». Con ${formatARS(GANANCIA_CASO, 0)} de ganancia y todo repartido, entre sociedad y socios pagan el ${pct(CASO_VIGENTE.cargaTotalEfectiva)}.`,
   },
   {
     q: "¿El 35% es la alícuota de toda la ganancia?",
-    a: `No: es la marginal. Una sociedad con ${formatARS(GANANCIA_CASO, 0)} de ganancia en un ejercicio iniciado en ${ANIO} paga ${formatARS(CASO_VIGENTE.impuesto, 0)}, un ${pct(CASO_VIGENTE.alicuotaEfectiva)} efectivo, aunque su último peso tribute al ${pct(CASO_VIGENTE.alicuotaMarginal, 0)}. La efectiva se acerca al 35% recién con ganancias muy por encima del último límite.`,
+    a: `No, es la marginal (la del último peso). Una sociedad con ${formatARS(GANANCIA_CASO, 0)} de ganancia en un ejercicio iniciado en ${ANIO} paga ${formatARS(CASO_VIGENTE.impuesto, 0)}. Eso es un ${pct(CASO_VIGENTE.alicuotaEfectiva)} efectivo, aunque su último peso pague el ${pct(CASO_VIGENTE.alicuotaMarginal, 0)}. La efectiva se acerca al 35% recién con ganancias muy por encima del último límite.`,
   },
   {
     q: "¿Hay alguna actividad que no use la escala?",
-    a: `Sí: el mismo art. 73 dispone que las rentas de casinos, máquinas de apuestas y juegos de azar por plataformas digitales tributan al ${pct(ALICUOTA_JUEGOS_DE_AZAR, 1)}, tanto para personas humanas como jurídicas. Y los establecimientos permanentes de empresas del exterior usan la escala pero pagan un 7% adicional al remesar utilidades a su casa matriz.`,
+    a: `Sí. El mismo art. 73 dice que las rentas de casinos, máquinas de apuestas y juegos de azar por plataformas digitales pagan el ${pct(ALICUOTA_JUEGOS_DE_AZAR, 1)}, sean personas humanas o jurídicas. Y los establecimientos permanentes de empresas del exterior usan la escala, pero pagan un 7% adicional al girar utilidades a su casa matriz.`,
   },
   {
     q: "¿El impuesto determinado es lo que hay que pagar con la declaración jurada?",
-    a: `No necesariamente. ARCA aclara: «${GANANCIAS_SOCIEDADES_TEXTOS.arcaSaldo}». La calculadora te da el impuesto determinado; el saldo a pagar depende de lo que ya ingresó la sociedad durante el año.`,
+    a: `No necesariamente. ARCA aclara: «${GANANCIAS_SOCIEDADES_TEXTOS.arcaSaldo}». La calculadora te da el impuesto determinado. El saldo a pagar depende de lo que la sociedad ya pagó durante el año.`,
   },
 ];
 
@@ -134,9 +134,9 @@ export default function GananciasSociedadesPage() {
           Ganancias de sociedades {ANIO}: la escala del 25, 30 y 35%, y el año que de verdad la elige
         </h1>
         <p className="text-zinc-600">
-          SA, SAS y SRL pagan Ganancias con una escala cuyos tramos se ajustan solos por inflación. Cargá la ganancia
-          neta imponible y el año en que empezó el ejercicio: te mostramos el impuesto, la alícuota efectiva y cuánto
-          suma el 7% si la sociedad reparte dividendos.
+          SA, SAS y SRL pagan Ganancias con una escala que se ajusta sola por inflación. Cargá la ganancia neta
+          imponible y el año en que empezó el ejercicio. Te mostramos el impuesto, la alícuota efectiva y cuánto suma
+          el 7% si la sociedad reparte dividendos.
         </p>
       </header>
 
@@ -157,8 +157,9 @@ export default function GananciasSociedadesPage() {
         <p className="text-zinc-600">
           La Ley 27.630 fijó los tramos en {formatARS(ESCALA_LEY_27630[0].hasta ?? 0, 0)} y{" "}
           {formatARS(ESCALA_LEY_27630[1].hasta ?? 0, 0)} para los ejercicios iniciados en 2021. Desde ahí, cada año
-          es la escala de la ley multiplicada por el IPC de octubre del año anterior dividido por el de octubre de
-          2020. Probamos la cuenta contra los PDF de ARCA y da los mismos montos, al centavo, de 2023 a {ANIO}.
+          se toma la escala de la ley y se multiplica por el IPC de octubre del año anterior dividido por el de
+          octubre de 2020. Comparamos la cuenta con los PDF de ARCA: da los mismos montos, al centavo, de 2023 a{" "}
+          {ANIO}.
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -209,8 +210,8 @@ export default function GananciasSociedadesPage() {
         <h2 className="text-xl font-bold text-zinc-900">Por qué el año de inicio cambia la cuenta</h2>
         <p className="text-zinc-600">
           Muchas guías publican «la escala {ANIO}» sin aclarar para qué ejercicios rige. La ley la aplica a los
-          ejercicios que <strong>empiezan</strong> después de cada ajuste. Una sociedad con cierre en junio de {ANIO}{" "}
-          empezó en julio de {ANIO - 1} y usa la escala de {ANIO - 1}, con tramos más chicos: con{" "}
+          ejercicios que <strong>empiezan</strong> después de cada ajuste. Una sociedad que cierra en junio de {ANIO}{" "}
+          empezó en julio de {ANIO - 1}, así que usa la escala de {ANIO - 1}, con tramos más chicos. Con{" "}
           {formatARS(GANANCIA_CASO, 0)} de ganancia paga {formatARS(CASO_ANTERIOR.impuesto, 0)} en vez de{" "}
           {formatARS(CASO_VIGENTE.impuesto, 0)}. Son <strong>{formatARS(DIFERENCIA, 0)} de diferencia</strong> por
           elegir mal la tabla.
@@ -220,9 +221,9 @@ export default function GananciasSociedadesPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Sociedad más dividendos: la carga completa</h2>
         <p className="text-zinc-600">
-          El impuesto de la sociedad no es el final. Cuando reparte lo que le queda a socios que son personas
-          humanas, retiene un {pct(ALICUOTA_DIVIDENDOS, 0)} más. En el ejemplo, con toda la ganancia repartida: la
-          sociedad paga {formatARS(CASO_VIGENTE.impuesto, 0)}, los socios cobran{" "}
+          El impuesto de la sociedad no es todo. Cuando reparte lo que le queda a socios que son personas humanas,
+          retiene un {pct(ALICUOTA_DIVIDENDOS, 0)} más. En el ejemplo, con toda la ganancia repartida, la sociedad
+          paga {formatARS(CASO_VIGENTE.impuesto, 0)}, los socios cobran{" "}
           {formatARS(CASO_VIGENTE.dividendos, 0)} y se les retienen {formatARS(CASO_VIGENTE.retencionDividendos, 0)}.
           Entre los dos, el {pct(CASO_VIGENTE.cargaTotalEfectiva)} de la ganancia.
         </p>
@@ -255,6 +256,10 @@ export default function GananciasSociedadesPage() {
           <Link href="/deducciones-generales-ganancias" className="font-medium text-emerald-700 hover:underline">
             las deducciones generales
           </Link>
+          . Si la sociedad va a invertir, mirá también{" "}
+          <Link href="/rimi-inversiones" className="font-medium text-emerald-700 hover:underline">
+            el régimen de incentivo a las inversiones (RIMI)
+          </Link>
           .
         </p>
       </section>
@@ -266,14 +271,14 @@ export default function GananciasSociedadesPage() {
             <li key={f.nombre}>
               <a href={f.url} target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Los textos legales se leyeron del texto ACTUALIZADO de InfoLEG y de la Ley 27.630 en el Boletín Oficial. Las
-          escalas se calculan con la serie oficial del IPC y se controlan contra las que publica ARCA. Esta página es
+          Leímos las leyes en su texto actualizado de InfoLEG y la Ley 27.630 en el Boletín Oficial. Las escalas se
+          calculan con la serie oficial del IPC y se comparan con las que publica ARCA. Esta página es
           informativa y no reemplaza a un contador. Consultada el {GANANCIAS_SOCIEDADES_FUENTES.consultadoEl}.
         </p>
       </section>

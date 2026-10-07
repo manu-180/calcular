@@ -35,11 +35,11 @@ export async function generateMetadata({
   const pct = formatPct(r.pct, 1);
   return {
     title: r.completa
-      ? `Inflación ${anio} en Argentina: ${pct} anual, mes a mes (IPC INDEC)`
-      : `Inflación ${anio}: ${pct} acumulada hasta ${nombreMes(r.hastaPeriodo)}, mes a mes`,
+      ? `Inflación ${anio} en Argentina: ${pct} anual, mes a mes`
+      : `Inflación ${anio}: ${pct} acumulada hasta ${nombreMes(r.hastaPeriodo)}`,
     description: r.completa
-      ? `La inflación de ${anio} fue del ${pct} según el IPC del INDEC. Tabla completa mes a mes con variación mensual, acumulada e interanual, y cuánto vale hoy la plata de ${anio}.`
-      : `La inflación acumulada de ${anio} es del ${pct} hasta ${nombreMes(r.hastaPeriodo)}, según el IPC del INDEC. Tabla mes a mes actualizada con cada publicación.`,
+      ? `La inflación de ${anio} según el IPC del INDEC, con la tabla mes a mes (mensual, acumulada e interanual) y cuánto vale hoy esa plata.`
+      : `La inflación de ${anio} según el IPC del INDEC: ${pct} acumulada hasta ${nombreMes(r.hastaPeriodo)}. Tabla mes a mes que se actualiza con cada dato nuevo.`,
     alternates: { canonical: `/inflacion/${anio}` },
   };
 }
@@ -86,7 +86,7 @@ export default async function InflacionAnioPage({
     },
     {
       q: "¿De dónde salen estos datos?",
-      a: "De la serie oficial del IPC Nacional nivel general (base diciembre 2016 = 100) que publica el INDEC a través de la API de series de tiempo del Estado argentino. No usamos estimaciones privadas ni consultoras.",
+      a: "De la serie oficial del IPC Nacional nivel general (base diciembre 2016 = 100) que publica el INDEC en la API de series de tiempo del Estado argentino. No usamos estimaciones privadas ni de consultoras.",
     },
   ];
 
@@ -128,9 +128,9 @@ export default async function InflacionAnioPage({
           {acumulada.completa ? (
             <>
               En {anio} los precios subieron <strong>{formatPct(acumulada.pct, 1)}</strong> según
-              el IPC Nacional del INDEC — un promedio del {formatPct(promedioMensualPct, 1)}{" "}
-              mensual. El pico fue {nombreMes(maxMes.periodo)} (
-              {formatPct(maxMes.mensualPct!, 1)}) y el piso, {nombreMes(minMes.periodo)} (
+              el IPC Nacional del INDEC, un promedio del {formatPct(promedioMensualPct, 1)}{" "}
+              mensual. El mes más alto fue {nombreMes(maxMes.periodo)} (
+              {formatPct(maxMes.mensualPct!, 1)}) y el más bajo, {nombreMes(minMes.periodo)} (
               {formatPct(minMes.mensualPct!, 1)}).
             </>
           ) : (
