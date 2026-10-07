@@ -32,7 +32,15 @@ No existía un plan multi-país escrito en el repo, la memoria ni el historial: 
 | 3 | Arquitectura multi-país (ADR + base i18n) | architect-review · Opus | ADR, src/paises/, proxy por host |
 | 4+ | Países (uno por agente) | | src/app/(paises)/... |
 
-## Decisiones abiertas para Manuel
+## Decisiones de Manuel (2026-10-07)
 
-- Dominio para los países (calcular.com/.lat/.la/.app/.io/.net/.org/.co tomados al 2026-10-06).
-- Orden de países.
+- Dominio de los países: **calcularya.com** (US$ 11,25/año, libre al 7/10). Falta comprarlo: la
+  compra pide datos de titular (WHOIS). Proyecto Vercel: calcular-ar, team_howttfzs3Q44mOpVn93EkrUm.
+- Países: **todos los válidos, mientras más mejor**; no importa si alguno no vende. Cobra con
+  MercadoPago: cómo cobrar fuera de Argentina se investiga en docs/research/paises/cobros.md.
+- calcular.ar no se toca como dominio. Sin redirección automática por IP (rompe el rastreo de
+  Google): sugerencia de país con aviso + selector, hreflang entre calcular.ar y calcularya.com.
+
+## Investigación en curso
+
+docs/research/paises/{uy,py,bo,ve,mx,pe,co,cl,ec,cr,pa,ni,do,gt,sv,hn}.md y cobros.md.
