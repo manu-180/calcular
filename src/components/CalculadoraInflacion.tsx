@@ -281,8 +281,8 @@ export function CalculadoraInflacion({
                   <strong>{formatPct(Math.abs(resultadoSueldo.diferenciaRealPct), 1)}</strong> de
                   poder de compra
                   {resultadoSueldo.gana
-                    ? ` — ${formatARS(Math.abs(resultadoSueldo.diferencia), 0)} de más por mes en plata de hoy.`
-                    : ` — te faltan ${formatARS(Math.abs(resultadoSueldo.diferencia), 0)} por mes para empatar.`}
+                    ? `. Son ${formatARS(Math.abs(resultadoSueldo.diferencia), 0)} de más por mes en plata de hoy.`
+                    : `. Te faltan ${formatARS(Math.abs(resultadoSueldo.diferencia), 0)} por mes para empatar.`}
                 </p>
               </div>
               <p className="text-xs text-zinc-400">

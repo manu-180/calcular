@@ -69,7 +69,7 @@ export function CalculadoraRifl() {
           >
             {ALICUOTAS_GENERALES.map((a) => (
               <option key={a.inciso} value={a.inciso}>
-                {a.etiqueta} — inciso {a.inciso})
+                {a.etiqueta}, inciso {a.inciso})
               </option>
             ))}
           </select>
@@ -151,9 +151,9 @@ export function CalculadoraRifl() {
 
       <p className="mt-4 text-xs text-zinc-500">
         La comparación es sólo sobre los cuatro subsistemas que el art. 159 adecua: SIPA, Fondo
-        Nacional de Empleo, Asignaciones Familiares e INSSJP. Quedan afuera —porque el RIFL no las
-        toca— la contribución a la obra social (Ley 23.660), la cuota de la ART (Ley 24.557) y los
-        aportes del trabajador. El {pct(ALICUOTA_RIFL_SIPA_FNE_AAFF * 100)} y el{" "}
+        Nacional de Empleo, Asignaciones Familiares e INSSJP. El RIFL no toca la contribución a la
+        obra social (Ley 23.660), la cuota de la ART (Ley 24.557) ni los aportes del trabajador,
+        así que quedan afuera. El {pct(ALICUOTA_RIFL_SIPA_FNE_AAFF * 100)} y el{" "}
         {pct(ALICUOTA_RIFL_INSSJP * 100)} son los dos incisos del art. 159, y las alícuotas
         adicionales de regímenes previsionales diferenciales o especiales quedan expresamente
         excluidas del tratamiento.

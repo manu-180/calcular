@@ -137,7 +137,7 @@ export function CalculadoraMultasArca() {
           <p className="mt-1 text-sm text-zinc-600">
             {res.infraccion.articulo} de la Ley 11.683
             {res.infraccion.sinRequerimientoPrevio
-              ? " — se aplica sin requerimiento previo"
+              ? " (se aplica sin requerimiento previo)"
               : null}
             .
           </p>
@@ -154,8 +154,7 @@ export function CalculadoraMultasArca() {
               </strong>
               {res.ahorro > 0 ? (
                 <>
-                  {" "}
-                  — la diferencia es de hasta{" "}
+                  , una diferencia de hasta{" "}
                   <strong className="tabular-nums">{formatARS(res.ahorro, 0)}</strong>
                 </>
               ) : null}

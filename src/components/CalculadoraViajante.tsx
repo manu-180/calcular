@@ -247,7 +247,7 @@ export function CalculadoraViajante() {
               <Fila
                 label="Liquidación final: SAC proporcional y vacaciones no gozadas"
                 monto={res.liquidacionFinal}
-                detalle="arts. 123 y 156 LCT — corresponde cualquiera sea el motivo del egreso"
+                detalle="arts. 123 y 156 LCT: corresponde sea cual sea el motivo del egreso"
               />
             </dl>
           </div>

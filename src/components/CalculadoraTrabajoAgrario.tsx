@@ -205,7 +205,7 @@ export function CalculadoraTrabajoAgrario() {
             {formatARS(res.liquidacionFinal.total, 2)} de liquidación final, con{" "}
             {res.antiguedad.anios} año(s) y {res.antiguedad.meses} mes(es) de antigüedad
             {res.enPeriodoPrueba
-              ? ` — dentro del período de prueba de ${MESES_PERIODO_PRUEBA_AGRARIO} meses del artículo 16.`
+              ? `, dentro del período de prueba de ${MESES_PERIODO_PRUEBA_AGRARIO} meses del artículo 16.`
               : "."}
           </p>
 

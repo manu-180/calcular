@@ -136,7 +136,7 @@ export function CalculadoraDespidoPlazoFijo() {
             {formatARS(res.totalIndemnizatorio, 2)} de indemnizaciones más{" "}
             {formatARS(res.liquidacionFinal.total, 2)} de liquidación final. El artículo 245 se
             calculó sobre {res.antiguedadFicta.anios} año(s) y {res.antiguedadFicta.meses} mes(es)
-            —la antigüedad que habrías acumulado hasta el vencimiento— y no sobre los{" "}
+            (la antigüedad que habrías acumulado hasta el vencimiento) y no sobre los{" "}
             {res.antiguedadReal.anios} año(s) y {res.antiguedadReal.meses} mes(es) trabajados.
           </p>
 

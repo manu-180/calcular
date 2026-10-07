@@ -85,7 +85,7 @@ function Logo({ onClick }: { onClick?: () => void }) {
     <Link
       href="/"
       onClick={onClick}
-      aria-label="CalculAR — inicio"
+      aria-label="CalculAR, ir al inicio"
       className="group flex shrink-0 items-center gap-2.5 rounded-lg outline-none"
     >
       <span

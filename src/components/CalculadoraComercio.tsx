@@ -83,7 +83,7 @@ export function CalculadoraComercio({ oferta }: { oferta?: DatosOferta }) {
       await navigator.clipboard.writeText(`Empleados de Comercio · ${categoria?.nombre} · ${mes?.etiqueta}
 Bruto: ${formatARS(resultado.bruto, 0)}
 En mano (estimado): ${formatARS(resultado.neto, 0)}
-Escala oficial CCT 130/75 — https://calcular.ar/convenios/comercio`);
+Escala oficial CCT 130/75: https://calcular.ar/convenios/comercio`);
       setCopia("ok");
       volverAIdle(2000);
     } catch {

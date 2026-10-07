@@ -127,7 +127,7 @@ export function calcularLicenciaEspecial(
   } else if (!licencia.garantizaDiaHabil) {
     avisos.push({
       tono: "atencion",
-      texto: `El artículo 160 —el que garantiza un día hábil cuando la licencia cae en domingo o feriado— alcanza SOLO a los incisos a), c) y d): nacimiento y los dos fallecimientos. Esta licencia es el ${licencia.inciso}, así que queda afuera: si los días caen en un fin de semana o en un feriado, no se recuperan.`,
+      texto: `El artículo 160 (el que garantiza un día hábil cuando la licencia cae en domingo o feriado) alcanza SOLO a los incisos a), c) y d): nacimiento y los dos fallecimientos. Esta licencia es el ${licencia.inciso}, así que queda afuera: si los días caen en un fin de semana o en un feriado, no se recuperan.`,
     });
   }
 

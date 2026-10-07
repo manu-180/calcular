@@ -24,7 +24,7 @@ export function RespuestaPrimero({
       />
       <p className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.09em] text-emerald-700">
         <span aria-hidden className="size-1.5 rounded-full bg-emerald-500" />
-        En resumen
+        La respuesta corta
       </p>
       <div className="space-y-2 text-[15px] leading-relaxed text-zinc-700 [&_a:hover]:decoration-emerald-500 [&_a]:font-medium [&_a]:text-emerald-700 [&_a]:underline [&_a]:decoration-emerald-300 [&_a]:underline-offset-2 [&_strong]:font-semibold [&_strong]:text-zinc-900">
         {children}

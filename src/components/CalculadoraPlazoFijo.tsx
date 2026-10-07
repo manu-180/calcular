@@ -285,8 +285,8 @@ export function CalculadoraPlazoFijo({ oferta }: { oferta?: DatosOferta }) {
                   Renovando <strong>{resultado.renovaciones}</strong>{" "}
                   {resultado.renovaciones === 1 ? "vez" : "veces"} ({resultado.diasTotales} días en
                   total), terminás con{" "}
-                  <strong className="text-emerald-700">{formatARS(resultado.totalFinal, 0)}</strong>{" "}
-                  — un rendimiento total del {formatPct(resultado.rendimientoTotalPct)} gracias al
+                  <strong className="text-emerald-700">{formatARS(resultado.totalFinal, 0)}</strong>.
+                  Es un rendimiento total del {formatPct(resultado.rendimientoTotalPct)} gracias al
                   interés compuesto.
                 </p>
                 <div className="max-h-64 overflow-y-auto rounded-lg border border-zinc-200">

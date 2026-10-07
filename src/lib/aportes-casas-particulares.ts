@@ -104,7 +104,7 @@ export function calcularAportes(entrada: EntradaAportes): ResultadoAportes {
     avisos.push({
       tono: "atencion",
       texto:
-        "Por ser menor de 18 años no se ingresan contribuciones al SIPA, así que este período no computa antigüedad jubilatoria. El resto de los conceptos —obra social y ART— se pagan igual.",
+        "Por ser menor de 18 años no se ingresan contribuciones al SIPA, así que este período no computa antigüedad jubilatoria. El resto (obra social y ART) se paga igual.",
     });
   }
 

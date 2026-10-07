@@ -124,8 +124,8 @@ export function CalculadoraConservacion() {
             Del otro lado del mismo problema:{" "}
             <Link href="/libro-de-sueldos" className="font-medium text-emerald-700 hover:underline">
               la presunción del art. 55
-            </Link>{" "}
-            — desde la reforma nace de la omisión de registración, y la constancia de pago es
+            </Link>
+            . Desde la reforma nace de la falta de registración, y la constancia de pago es
             justamente la prueba que la desactiva.
           </p>
         </div>

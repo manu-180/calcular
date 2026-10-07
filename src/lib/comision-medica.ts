@@ -156,7 +156,7 @@ export function calcularComisionMedica(e: EntradaCM): ResultadoCM | null {
     avisos.push({
       tono: "ok",
       texto:
-        "El plazo todavía corre. Mientras no venza —o no salga el dictamen— la instancia administrativa sigue siendo obligatoria y excluyente: una demanda iniciada antes queda expuesta a que le opongan la falta de agotamiento de la vía.",
+        "El plazo todavía corre. Mientras no venza (o no salga el dictamen), la instancia administrativa sigue siendo obligatoria y excluyente: una demanda iniciada antes queda expuesta a que le opongan la falta de agotamiento de la vía.",
     });
   }
 

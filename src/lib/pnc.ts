@@ -136,7 +136,7 @@ export function evaluarSituacion(s: SituacionPnc): ResultadoPnc {
       observaciones.push({
         tono: "bloqueante",
         texto:
-          "Tus ingresos alcanzan o superan los dos salarios mínimos: el artículo 7 de la Ley 27.793 dispone la suspensión automática de la pensión mientras dure esa situación. No es una baja definitiva — cuando los ingresos vuelven a estar por debajo del tope, se puede pedir la rehabilitación inmediata.",
+          "Tus ingresos alcanzan o superan los dos salarios mínimos: el artículo 7 de la Ley 27.793 dispone la suspensión automática de la pensión mientras dure esa situación. No es una baja definitiva: cuando los ingresos vuelven a estar por debajo del tope, se puede pedir la rehabilitación inmediata.",
       });
     } else if (ingresos > 0) {
       observaciones.push({

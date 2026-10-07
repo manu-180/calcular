@@ -134,8 +134,8 @@ export function CalculadoraART() {
 
       {res === null ? (
         <p className="mt-6 rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          Revisá los datos: hace falta un ingreso base mayor a cero, una edad entre 14 y 100, y —
-          si no es un accidente fatal— un porcentaje de incapacidad entre 0 y 100.
+          Revisá los datos: el ingreso base tiene que ser mayor a cero y la edad, de 14 a 100. Si
+          no es un accidente fatal, la incapacidad va de 0 a 100.
         </p>
       ) : (
         <div className="mt-6 space-y-4">
@@ -221,9 +221,9 @@ export function CalculadoraART() {
               <p className="text-sm" style={{ color: "#7A5B12" }}>
                 <strong>En este caso manda el piso, no la fórmula.</strong> La fórmula del art. 14
                 da {pesos(res.formula)} y el piso de la resolución vigente es {pesos(res.piso)}: se
-                cobra el piso. Es exactamente el caso donde la web que copia el texto de la ley —
-                que todavía dice «en ningún caso será <em>superior</em> a $180.000» — publica lo
-                contrario de lo que rige.
+                cobra el piso. Justo en este caso, la web que copia el texto de la ley (que todavía
+                dice «en ningún caso será <em>superior</em> a $180.000») publica lo contrario de lo
+                que rige.
               </p>
             </div>
           )}

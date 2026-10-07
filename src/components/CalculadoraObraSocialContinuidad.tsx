@@ -194,9 +194,9 @@ export function CalculadoraObraSocialContinuidad() {
           {supuesto === "extincion" && !res.bloqueadoPorAntiguedad ? (
             <p className="mt-4 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm text-zinc-700">
               Después de esa fecha ya no sos beneficiario por la relación de trabajo. Las salidas
-              habituales —monotributo, adherente voluntario de la misma obra social, plan de
-              adhesión voluntaria de una prepaga— se pagan enteras: no hay aportes que derivar
-              mientras no haya un empleo nuevo. Cómo funciona esa derivación cuando volvés a
+              habituales (monotributo, adherente voluntario de la misma obra social o un plan de
+              adhesión voluntaria de una prepaga) se pagan enteras: no hay aportes que derivar
+              mientras no tengas un empleo nuevo. Cómo funciona esa derivación cuando volvés a
               trabajar está en{" "}
               <Link href="/derivar-aportes-a-prepaga" className="underline">
                 derivar aportes a una prepaga

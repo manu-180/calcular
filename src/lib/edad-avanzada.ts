@@ -215,7 +215,7 @@ export function evaluarPea(s: SituacionPea): ResultadoPea {
     observaciones.push({
       tono: "atencion",
       texto:
-        "El ap. 4 la declara incompatible con toda jubilación, pensión o retiro civil o militar, nacional, provincial o municipal — pero con derecho a optar: podés renunciar a la otra y quedarte con esta. Antes de hacerlo, comparalo en pesos. Ojo con la diferencia respecto de la PUAM: la incompatibilidad de la PEA es con OTRO beneficio, no con trabajar.",
+        "El ap. 4 la declara incompatible con toda jubilación, pensión o retiro civil o militar, nacional, provincial o municipal. Pero tenés derecho a optar: podés renunciar a la otra y quedarte con esta. Antes de hacerlo, comparalo en pesos. Ojo con la diferencia respecto de la PUAM: la incompatibilidad de la PEA es con OTRO beneficio, no con trabajar.",
     });
   }
 
@@ -234,7 +234,7 @@ export function evaluarPea(s: SituacionPea): ResultadoPea {
     observaciones.push({
       tono: "ok",
       texto:
-        "Acá está lo que no publica ninguna nota: la cuenta del art. 34 bis te da menos que el haber mínimo, así que lo que cobrás NO es esa cuenta — es el mínimo garantizado. El art. 125 garantiza a los beneficiarios del Régimen Previsional Público el haber mínimo del art. 17, y la prestación por edad avanzada está en el art. 17 inc. f).",
+        "Acá está lo que no publica ninguna nota: la cuenta del art. 34 bis te da menos que el haber mínimo, así que lo que cobrás NO es esa cuenta: es el mínimo garantizado. El art. 125 garantiza a los beneficiarios del Régimen Previsional Público el haber mínimo del art. 17, y la prestación por edad avanzada está en el art. 17 inc. f).",
     });
   }
 

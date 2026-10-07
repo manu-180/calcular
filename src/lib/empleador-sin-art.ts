@@ -114,7 +114,7 @@ export function calcularResponsable(e: Entrada): Resultado {
       avisos.push({
         tono: "atencion",
         texto:
-          "Por lo que no cubre esa red —la indemnización dineraria— el obligado sigue siendo el empleador, que desde la extinción «se considerará no asegurado» y queda en la situación del art. 28 ap. 1.",
+          "Por lo que no cubre esa red (la indemnización en dinero), el obligado sigue siendo el empleador, que desde la extinción «se considerará no asegurado» y queda en la situación del art. 28 ap. 1.",
       });
       return {
         responsable: "art-parcial",
@@ -165,7 +165,7 @@ export function calcularResponsable(e: Entrada): Resultado {
     if (!e.cuotasAlDia) {
       avisos.push({
         tono: "atencion",
-        texto: `Las cuotas impagas tampoco cortan la cobertura por sí solas (art. 28 ap. 4). Lo que la cortaría es que la ART extinga el contrato, y para eso necesita ${CUOTAS_PARA_EXTINGUIR} cuotas impagas —consecutivas o alternadas— o una deuda equivalente, y ajustarse a la reglamentación.`,
+        texto: `Las cuotas impagas tampoco cortan la cobertura por sí solas (art. 28 ap. 4). Lo que la cortaría es que la ART extinga el contrato, y para eso necesita ${CUOTAS_PARA_EXTINGUIR} cuotas impagas (seguidas o alternadas) o una deuda equivalente, y ajustarse a la reglamentación.`,
       });
     }
     return {
@@ -184,7 +184,7 @@ export function calcularResponsable(e: Entrada): Resultado {
   if (!e.cuotasAlDia) {
     avisos.push({
       tono: "ok",
-      texto: `Que el empleador deba cuotas no te saca la cobertura: el art. 28 ap. 4 manda a la ART a otorgar las prestaciones igual. Recién con ${CUOTAS_PARA_EXTINGUIR} cuotas impagas —o una deuda equivalente a ${CUOTAS_PARA_EXTINGUIR}, tomando la de mayor valor del último año— la aseguradora puede extinguir el contrato, y aun así te debe ${MESES_ESPECIE_TRAS_EXTINCION} meses de prestaciones en especie.`,
+      texto: `Que el empleador deba cuotas no te saca la cobertura: el art. 28 ap. 4 manda a la ART a otorgar las prestaciones igual. Recién con ${CUOTAS_PARA_EXTINGUIR} cuotas impagas (o una deuda equivalente a ${CUOTAS_PARA_EXTINGUIR}, tomando la de mayor valor del último año), la aseguradora puede extinguir el contrato, y aun así te debe ${MESES_ESPECIE_TRAS_EXTINCION} meses de prestaciones en especie.`,
     });
     return {
       responsable: "art",
@@ -192,7 +192,7 @@ export function calcularResponsable(e: Entrada): Resultado {
       alcance: "completo",
       titulo: "Responde la ART",
       detalle:
-        "«Si el empleador omitiera —total o parcialmente— el pago de las cuotas a su cargo, la ART otorgará las prestaciones»: la mora del empleador no es oponible al trabajador accidentado.",
+        "Aunque el empleador no pague las cuotas (todas o una parte), la ART tiene que dar las prestaciones: la deuda del empleador no se le puede oponer al trabajador accidentado.",
       repeticion: "La ART puede ejecutar contra el empleador las cotizaciones adeudadas.",
       avisos,
     };

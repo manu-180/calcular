@@ -276,7 +276,7 @@ export function CalculadoraSueldoNeto({ oferta }: { oferta?: DatosOferta }) {
                 <dd className="font-medium text-zinc-900">−{formatARS(r.d.aportes.jubilacion)}</dd>
               </div>
               <div className="flex justify-between">
-                <dt className="text-zinc-600">PAMI — Ley 19.032 (3%)</dt>
+                <dt className="text-zinc-600">PAMI (Ley 19.032, 3%)</dt>
                 <dd className="font-medium text-zinc-900">−{formatARS(r.d.aportes.pami)}</dd>
               </div>
               <div className="flex justify-between">

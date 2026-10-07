@@ -26,7 +26,7 @@ const HOY_DESCONOCIDO = "9999-12-31";
 const ROTULO_REGIMEN = {
   vigente: {
     titulo: "Régimen vigente",
-    detalle: `art. 80 sustituido por la Ley 27.802 — extinciones desde el ${VIGENCIA_REFORMA}`,
+    detalle: `art. 80 sustituido por la Ley 27.802 (extinciones desde el ${VIGENCIA_REFORMA})`,
     clase: "border-emerald-200 bg-emerald-50 text-emerald-900",
   },
   transicion: {

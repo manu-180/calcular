@@ -41,10 +41,10 @@ function shell(content: string, unsubUrl: string): string {
 export function welcomeEmailHtml(token: string): string {
   const unsub = `${BASE}/api/unsubscribe?t=${token}`;
   return shell(`
-<h2 style="margin:0 0 16px;font-size:22px;color:#111827;">¡Bienvenido a CalculAR!</h2>
+<h2 style="margin:0 0 16px;font-size:22px;color:#111827;">Ya estás anotado en CalculAR</h2>
 <p style="margin:0 0 16px;font-size:15px;color:#374151;line-height:1.6;">
-  Te anotaste para recibir actualizaciones de <strong>calcular.ar</strong> — la calculadora financiera
-  y laboral argentina con datos de fuentes oficiales verificadas (INDEC, ARCA, BCRA).
+  Te anotaste para recibir las novedades de <strong>calcular.ar</strong>: calculadoras laborales y
+  financieras de Argentina, con datos de fuentes oficiales verificadas (INDEC, ARCA, BCRA).
 </p>
 <p style="margin:0 0 24px;font-size:15px;color:#374151;line-height:1.6;">
   Cada semana te mandamos los números que cambiaron: IPC, tasas, paritarias. Sin spam, sin venta de datos.
@@ -58,13 +58,13 @@ export function welcomeEmailHtml(token: string): string {
 </table>
 <p style="margin:0 0 10px;font-size:14px;color:#374151;font-weight:600;">Calculadoras disponibles:</p>
 <ul style="margin:0;padding-left:20px;font-size:14px;color:#374151;line-height:2.2;">
-  <li><a href="${BASE}/monotributo" style="color:#059669;">Monotributo 2026</a> — categoría + cuota mensual</li>
-  <li><a href="${BASE}/aguinaldo" style="color:#059669;">Aguinaldo</a> — SAC + fechas de pago + neto</li>
-  <li><a href="${BASE}/indemnizacion" style="color:#059669;">Indemnización por despido</a> — todos los rubros</li>
-  <li><a href="${BASE}/vacaciones" style="color:#059669;">Vacaciones</a> — días + retribución</li>
-  <li><a href="${BASE}/inflacion" style="color:#059669;">Inflación</a> — actualizá cualquier monto por IPC</li>
-  <li><a href="${BASE}/plazo-fijo" style="color:#059669;">Plazo fijo</a> — TNA en vivo del BCRA + UVA</li>
-  <li><a href="${BASE}/convenios" style="color:#059669;">Convenios colectivos</a> — Comercio, UOCRA</li>
+  <li><a href="${BASE}/monotributo" style="color:#059669;">Monotributo 2026</a>: categoría y cuota mensual</li>
+  <li><a href="${BASE}/aguinaldo" style="color:#059669;">Aguinaldo</a>: monto, fechas de pago y neto</li>
+  <li><a href="${BASE}/indemnizacion" style="color:#059669;">Indemnización por despido</a>: todos los rubros</li>
+  <li><a href="${BASE}/vacaciones" style="color:#059669;">Vacaciones</a>: días y cuánto cobrás</li>
+  <li><a href="${BASE}/inflacion" style="color:#059669;">Inflación</a>: actualizá cualquier monto por IPC</li>
+  <li><a href="${BASE}/plazo-fijo" style="color:#059669;">Plazo fijo</a>: TNA en vivo del BCRA y UVA</li>
+  <li><a href="${BASE}/convenios" style="color:#059669;">Convenios colectivos</a>: Comercio y UOCRA</li>
 </ul>
   `, unsub);
 }
@@ -211,7 +211,7 @@ export function planillaEntregaHtml(opts: {
   const otras = opts.otras?.length
     ? `<p style="margin:24px 0 8px;font-size:13px;color:#6b7280;">Más de calcular.ar, por si te sirve:</p>
 <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:1.9;">
-${opts.otras.map((o) => `  <li><a href="${o.url}" style="color:#059669;">${o.titulo}</a> — ${o.paraQuien.charAt(0).toLowerCase()}${o.paraQuien.slice(1)}</li>`).join("\n")}
+${opts.otras.map((o) => `  <li><a href="${o.url}" style="color:#059669;">${o.titulo}</a>: ${o.paraQuien.charAt(0).toLowerCase()}${o.paraQuien.slice(1)}</li>`).join("\n")}
 </ul>`
     : "";
   return shellTransaccional(`
@@ -267,7 +267,7 @@ export function informeEntregaHtml(opts: {
   const otras = opts.otras?.length
     ? `<p style="margin:24px 0 8px;font-size:13px;color:#6b7280;">Otras herramientas de calcular.ar, por si te sirven:</p>
 <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:1.9;">
-${opts.otras.map((o) => `  <li><a href="${o.url}" style="color:#059669;">${o.titulo}</a> — ${o.paraQuien.charAt(0).toLowerCase()}${o.paraQuien.slice(1)}</li>`).join("\n")}
+${opts.otras.map((o) => `  <li><a href="${o.url}" style="color:#059669;">${o.titulo}</a>: ${o.paraQuien.charAt(0).toLowerCase()}${o.paraQuien.slice(1)}</li>`).join("\n")}
 </ul>`
     : "";
   return shellTransaccional(

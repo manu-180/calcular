@@ -196,8 +196,8 @@ export function CalculadoraComisionMedica() {
                 </>
               ) : (
                 <>
-                  La comisión médica tiene tiempo hasta el {fechaLarga(res.vencimientoISO)} —
-                  quedan {res.habilesRestantes} día(s) hábil(es) administrativo(s).
+                  La comisión médica tiene tiempo hasta el {fechaLarga(res.vencimientoISO)}.
+                  Quedan {res.habilesRestantes} día(s) hábil(es) administrativo(s).
                 </>
               )}
             </p>
@@ -262,8 +262,8 @@ export function CalculadoraComisionMedica() {
               ) : (
                 <p className="mt-1 text-sm text-zinc-600">
                   Sin recaídas, la ILT cesa como máximo el{" "}
-                  <strong>{fechaLarga(res.ilt.topeCalendarioISO)}</strong> —dos años desde la
-                  primera manifestación invalidante—{" "}
+                  <strong>{fechaLarga(res.ilt.topeCalendarioISO)}</strong> (dos años desde la
+                  primera manifestación invalidante){" "}
                   {res.ilt.diasHastaTope >= 0 ? (
                     <>y faltan {res.ilt.diasHastaTope} día(s)</>
                   ) : (

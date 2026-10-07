@@ -39,7 +39,7 @@ export function hojaCamioneros(
     { fila: 7, etiqueta: "Años de antigüedad", valor: String(d.anios), tono: "input" },
     { fila: 8, etiqueta: "Zona de residencia", valor: ZONAS_CAMIONEROS[0].nombre, tono: "input" },
     { fila: 10, etiqueta: "VIAJES Y ADICIONALES DEL MES", tono: "seccion" },
-    { fila: 11, etiqueta: "Km recorridos — horas extra", valor: "0", tono: "input", nota: "ítem 4.2.3" },
+    { fila: 11, etiqueta: "Km recorridos (horas extra)", valor: "0", tono: "input", nota: "ítem 4.2.3" },
     { fila: 13, etiqueta: "Comidas", valor: "0", tono: "input", nota: "ítem 4.1.12" },
     { fila: 15, etiqueta: "Pernoctadas", valor: "0", tono: "input", nota: "ítem 4.1.14" },
     { fila: 18, etiqueta: "LIQUIDACIÓN DEL MES", tono: "seccion" },

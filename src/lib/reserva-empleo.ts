@@ -142,7 +142,7 @@ export function calcularReservaEmpleo(params: {
 
   avisos.push({
     tono: "bloqueante",
-    texto: `Desde el 6 de marzo de 2026 no hay artículo que resuelva esto. El art. ${ARTICULO_DEROGADO} de la LCT —el que decía que «a los efectos de dichas indemnizaciones la antigüedad computable incluirá el período de reserva del empleo»— fue derogado por el art. ${ARTICULO_DEROGATORIO} de la Ley 27.802, sin fecha diferida. La diferencia entre las dos columnas es lo que quedó a discutir.`,
+    texto: `Desde el 6 de marzo de 2026 no hay artículo que resuelva esto. El art. ${ARTICULO_DEROGADO} de la LCT (el que decía que «a los efectos de dichas indemnizaciones la antigüedad computable incluirá el período de reserva del empleo») fue derogado por el art. ${ARTICULO_DEROGATORIO} de la Ley 27.802, sin fecha diferida. La diferencia entre las dos columnas es lo que quedó a discutir.`,
   });
 
   if (supuesto.cubriaElArt216) {
@@ -154,7 +154,7 @@ export function calcularReservaEmpleo(params: {
     avisos.push({
       tono: "ok",
       texto:
-        "Tu caso es el del art. 217 (cargo gremial), que la reforma NO tocó: conserva la reserva del empleo, el cómputo del tiempo «con el alcance de los artículos 214 y 215, segunda parte» y, además, la prohibición expresa de despedir durante los plazos que fije la ley sindical. El art. 216 nunca te nombró —hablaba sólo de los arts. 214 o 215—, así que su derogación no te quita el artículo propio. La calculadora te muestra igual las dos columnas porque el cómputo también se discute acá.",
+        "Tu caso es el del art. 217 (cargo gremial), que la reforma NO tocó: conserva la reserva del empleo, el cómputo del tiempo «con el alcance de los artículos 214 y 215, segunda parte» y, además, la prohibición expresa de despedir durante los plazos que fije la ley sindical. El art. 216 nunca te nombró (hablaba sólo de los arts. 214 o 215), así que su derogación no te quita el artículo propio. La calculadora te muestra igual las dos columnas porque el cómputo también se discute acá.",
     });
   }
 
@@ -201,7 +201,7 @@ export function calcularReservaEmpleo(params: {
   avisos.push({
     tono: "atencion",
     texto:
-      "Esto calcula los dos rubros que el art. 216 nombraba —indemnización por despido injustificado (art. 245) y preaviso omitido, con la integración del mes del art. 233—, no la liquidación final completa. Es orientativo y no reemplaza a un profesional: la reforma es de marzo de 2026 y todavía no hay jurisprudencia sobre el vacío que dejó.",
+      "Esto calcula los dos rubros que el art. 216 nombraba: la indemnización por despido injustificado (art. 245) y el preaviso omitido, con la integración del mes del art. 233. No es la liquidación final completa. Es orientativo y no reemplaza a un profesional: la reforma es de marzo de 2026 y todavía no hay jurisprudencia sobre el vacío que dejó.",
   });
 
   return {

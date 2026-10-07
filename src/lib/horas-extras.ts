@@ -165,7 +165,7 @@ export function calcularHorasExtras(params: {
       tono: "bloqueante",
       texto: `Con ${redondearHoras(totalHoras)} horas extras en el mes se supera el tope de ${
         TOPES_DECRETO_484.mensual
-      } horas mensuales del artículo 1º del ${TOPES_DECRETO_484.norma}. Ese tope no lo tocó la reforma de 2026: por encima hace falta autorización administrativa. Las horas trabajadas por encima del tope igual se pagan —el propio art. 201 dice «medie o no autorización del organismo administrativo competente»—, pero el exceso es una infracción del empleador, no una deuda que se le perdone.`,
+      } horas mensuales del artículo 1º del ${TOPES_DECRETO_484.norma}. Ese tope no lo tocó la reforma de 2026: por encima hace falta autorización administrativa. Las horas trabajadas por encima del tope igual se pagan (el propio art. 201 dice «medie o no autorización del organismo administrativo competente»), pero el exceso es una infracción del empleador, no una deuda que se le perdone.`,
     });
   } else if (totalHoras > 0) {
     avisos.push({
@@ -192,7 +192,7 @@ export function calcularHorasExtras(params: {
     });
     avisos.push({
       tono: "atencion",
-      texto: `Cuántas horas de franco corresponden por cada hora extra no lo dice la ley. Si el franco fuera hora por hora, el trabajador pierde el recargo del art. 201 —que es la única razón por la que la hora extra vale más—; el artículo exige que el régimen asegure «en todo momento la protección, beneficio e interés del trabajador». Por eso acá están los dos números: ${redondearHoras(
+      texto: `Cuántas horas de franco corresponden por cada hora extra no lo dice la ley. Si el franco fuera hora por hora, el trabajador pierde el recargo del art. 201, que es la única razón por la que la hora extra vale más. El artículo exige que el régimen asegure «en todo momento la protección, beneficio e interés del trabajador». Por eso acá están los dos números: ${redondearHoras(
         horasSimple,
       )} horas de franco en la lectura 1:1 y ${redondearHoras(
         horasConRecargo,

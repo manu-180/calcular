@@ -198,8 +198,8 @@ export function CalculadoraPrescripcion() {
                 {fechaLarga(res.fechaPrescripcion)}
               </p>
               <p className="mt-1 text-sm text-zinc-600">
-                El plazo empieza el <strong>{fechaLarga(res.inicioComputo)}</strong> — el 1° de enero
-                siguiente al año del vencimiento, por el artículo 57 — y corre {res.plazo} años.
+                El plazo empieza el <strong>{fechaLarga(res.inicioComputo)}</strong> (el 1° de enero
+                siguiente al año del vencimiento, por el artículo 57) y corre {res.plazo} años.
               </p>
               <p
                 className={`mt-2 rounded-lg px-3 py-2 text-sm ${

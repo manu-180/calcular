@@ -17,7 +17,7 @@ export const NOMBRES_VACIOS: NombresInforme = { hijos: [], paga: "", otro: "" };
 
 const FUENTES = [
   {
-    texto: "INDEC — Valorización mensual de la canasta de crianza, serie por tramo de edad",
+    texto: "INDEC: Valorización mensual de la canasta de crianza, serie por tramo de edad",
     url: CANASTA_CRIANZA_FUENTE.url,
     consultado: CANASTA_CRIANZA_FUENTE.consultadoEl,
   },
@@ -32,7 +32,7 @@ const FUENTES = [
     consultado: "2026-10-06",
   },
   {
-    texto: "Ministerio de Economía — «¿Para qué sirve el Índice Crianza?», análisis de 22 resoluciones judiciales (2023)",
+    texto: "Ministerio de Economía: «¿Para qué sirve el Índice Crianza?», análisis de 22 resoluciones judiciales (2023)",
     url: "https://argentina.gob.ar/sites/default/files/2023/11/informe_fallos_nov_2023.pdf",
     consultado: "2026-10-06",
   },

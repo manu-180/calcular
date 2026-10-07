@@ -105,7 +105,7 @@ export function calcularMulta(params: {
   avisos.push({
     tono: "atencion",
     texto:
-      "La base es «el total de la masa salarial del mes en que se produzca el hecho, correspondiente a los trabajadores comprendidos en el ámbito personal de la negociación» — no la nómina entera de la empresa ni la del sindicato: la del ámbito que se está negociando.",
+      "La base es «el total de la masa salarial del mes en que se produzca el hecho, correspondiente a los trabajadores comprendidos en el ámbito personal de la negociación». No es la nómina entera de la empresa ni la del sindicato: es la del ámbito que se está negociando.",
   });
 
   avisos.push({

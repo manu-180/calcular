@@ -63,7 +63,7 @@ export function CalculadoraCamioneros({ oferta }: { oferta?: DatosOferta }) {
       await navigator.clipboard.writeText(`Camioneros · ${categoria?.nombre} · ${mes?.etiqueta}
 Bruto: ${formatARS(resultado.totalRemunerativo, 0)}
 En mano (estimado): ${formatARS(resultado.neto, 0)}
-Escala oficial CCT 40/89 — https://calcular.ar/convenios/camioneros`);
+Escala oficial CCT 40/89: https://calcular.ar/convenios/camioneros`);
       setCopia("ok");
       volverAIdle(2000);
     } catch {

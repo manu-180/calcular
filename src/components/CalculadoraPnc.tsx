@@ -100,7 +100,7 @@ export function CalculadoraPnc() {
 
       <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
         <p className="text-sm text-zinc-600">
-          {monto.prestacion.nombre} — lo que se deposita este mes
+          {monto.prestacion.nombre}: lo que se deposita este mes
         </p>
         <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
           {formatARS(monto.total, 2)}

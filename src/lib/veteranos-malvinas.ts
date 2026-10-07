@@ -146,7 +146,7 @@ export function calcularVeteranos(e: EntradaVeteranos = {}): ResultadoVeteranos 
     avisos.push({
       tono: "info",
       texto:
-        "No cargaste ningún derechohabiente. A falta de los enumerados en el art. 53 de la Ley 24.241, el beneficio pasa a los padres incapacitados para el trabajo y a cargo del causante — y los padres de quienes murieron en combate acceden con la sola acreditación del vínculo.",
+        "No cargaste ningún derechohabiente. A falta de los enumerados en el art. 53 de la Ley 24.241, el beneficio pasa a los padres incapacitados para el trabajo y a cargo del causante. Los padres de quienes murieron en combate acceden con la sola acreditación del vínculo.",
     });
   } else {
     avisos.push({

@@ -199,7 +199,7 @@ export function calcularDespidoPlazoFijo(params: {
     avisos.push({
       tono: "atencion",
       texto:
-        "En tu caso la antigüedad ficta no cambia el resultado del artículo 245: la fracción que faltaba no alcanza para sumar otro año computable. El texto nuevo, entonces, no te agrega nada respecto de la antigüedad real — y el rubro de daños y perjuicios que sí agregaba el texto anterior ya no existe.",
+        "En tu caso la antigüedad ficta no cambia el resultado del artículo 245: la fracción que faltaba no alcanza para sumar otro año computable. El texto nuevo, entonces, no te agrega nada respecto de la antigüedad real. Y el rubro de daños y perjuicios que sí agregaba el texto anterior ya no existe.",
     });
   }
 

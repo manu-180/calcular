@@ -105,7 +105,7 @@ export function CalculadoraImpuestosInternos() {
                   <td className="py-2 pr-3">
                     <span className="font-medium text-zinc-800">Alícuota nominal</span>
                     <span className="block text-xs text-zinc-500">
-                      la que dice la ley — {res.rubro.articulo}
+                      la que dice la ley ({res.rubro.articulo})
                     </span>
                   </td>
                   <td className="py-2 pl-3 text-right font-semibold text-zinc-900">

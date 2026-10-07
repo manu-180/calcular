@@ -157,7 +157,7 @@ export function CalculadoraAlquiler({ oferta }: { oferta?: OfertaAlquileres }) {
                   <tbody>
                     <tr className="border-t border-zinc-100">
                       <td className="px-3 py-1.5 text-zinc-600">{nombrePeriodo(inicio)}</td>
-                      <td className="px-3 py-1.5 text-zinc-400">— (valor inicial)</td>
+                      <td className="px-3 py-1.5 text-zinc-400">Valor inicial</td>
                       <td className="px-3 py-1.5 text-right font-medium text-zinc-900">
                         {formatARS(alquilerInicial, 0)}
                       </td>
@@ -202,8 +202,8 @@ export function CalculadoraAlquiler({ oferta }: { oferta?: OfertaAlquileres }) {
                       dato), el ajuste rondaría{" "}
                       <strong>+{formatPct(resultado.proximo.estimado.variacionPct, 1)}</strong> y tu
                       alquiler pasaría a{" "}
-                      <strong>~{formatARS(resultado.proximo.estimado.alquilerNuevo, 0)}</strong> —
-                      es una estimación, no el número final.
+                      <strong>~{formatARS(resultado.proximo.estimado.alquilerNuevo, 0)}</strong>. Es
+                      una estimación, no el número final.
                     </>
                   )}
                 </p>

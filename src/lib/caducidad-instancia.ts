@@ -115,7 +115,7 @@ export function calcularCaducidad(params: {
   avisos.push({
     tono: "atencion",
     texto:
-      "Esta fecha es el vencimiento del plazo contado desde el acto que vos declaraste. No contempla actos interruptivos posteriores, suspensiones, ferias ni las particularidades del expediente — y la caducidad la declara el juez, no un calendario. Sirve para saber si hay que mirar el expediente, no para dar por perdida una instancia.",
+      "Esta fecha es el vencimiento del plazo contado desde el acto que vos declaraste. No contempla actos interruptivos posteriores, suspensiones, ferias ni las particularidades del expediente. Además, la caducidad la declara el juez, no un calendario. Sirve para saber si hay que mirar el expediente, no para dar por perdida una instancia.",
   });
 
   return {

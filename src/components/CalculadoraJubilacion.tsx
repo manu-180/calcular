@@ -163,7 +163,7 @@ export function CalculadoraJubilacion() {
                 Todavía no se puede saber: la movilidad de{" "}
                 {etiquetaPeriodo(sumarMeses(V.periodo, 1))} es la variación del IPC de{" "}
                 {etiquetaPeriodo(sumarMeses(V.periodo, -1))}, que el INDEC publica alrededor del día
-                12. Apenas salga, este número aparece acá — semanas antes de que ANSES dicte la
+                12. Apenas salga, este número aparece acá, semanas antes de que ANSES dicte la
                 resolución.
               </p>
             )}
