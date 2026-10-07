@@ -166,10 +166,12 @@ function main(): void {
   let puertaDetalle = "";
   const tocados = [...cambiados()];
   if (tocados.length) {
-    // Las planillas .xlsx se regeneran solas en cada build (prebuild): si check-all las regeneró
-    // para verificarlas, no son parte del cambio de datos.
+    // Los .xlsx de private/ los compara check-all (check_planilla_*) contra src/data. Sin regenerarlos
+    // con el dato nuevo, la puerta salía roja en CADA corrida con cambios: del 28/9 al 6/10/2026 no se
+    // publicó nada (TNA y aportes de ARCA de septiembre listos y descartados). Se commitean con el dato.
+    const g = tsx("scripts/gen_planilla_todas.ts", [], 600);
+    if (g.code !== 0) console.log(`\n── planillas: gen_planilla_todas salió ${g.code}\n${g.salida.split("\n").slice(-6).join("\n")}`);
     const r = tsx("scripts/check-all.ts", [], 1500);
-    for (const f of [...cambiados()].filter((x) => x.startsWith("private/") && !tocados.includes(x))) revertir([f]);
     if (r.code === 0) {
       puerta = "verde";
     } else {
