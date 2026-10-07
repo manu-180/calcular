@@ -1,0 +1,548 @@
+{
+  "mercado": "gt",
+  "datos": [
+    {
+      "id": "gt.salario-minimo-diario",
+      "nombre": "Salario mínimo diario por actividad",
+      "tipo": "mapa",
+      "unidad": "GTQ",
+      "regiones": [
+        "ce1",
+        "ce2"
+      ],
+      "etiquetas": {
+        "agricola": "Agrícola",
+        "no-agricola": "No agrícola",
+        "exportadora-maquila": "Exportadora y de maquila"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "agricola": 124.64,
+            "no-agricola": 131.58,
+            "exportadora-maquila": 112.1
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Acuerdo Gubernativo 256-2025, salarios mínimos para 2026, artículos 2 a 7",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Acuerdo-Gubernativo-Numero-256-2025-Salario-Minino.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          },
+          "region": "ce1"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "agricola": 119.21,
+            "no-agricola": 125.49,
+            "exportadora-maquila": 105.9
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Acuerdo Gubernativo 256-2025, salarios mínimos para 2026, artículos 2 a 7",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Acuerdo-Gubernativo-Numero-256-2025-Salario-Minino.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          },
+          "region": "ce2"
+        }
+      ]
+    },
+    {
+      "id": "gt.salario-minimo-mensual",
+      "nombre": "Salario mínimo mensual por actividad",
+      "tipo": "mapa",
+      "unidad": "GTQ",
+      "regiones": [
+        "ce1",
+        "ce2"
+      ],
+      "etiquetas": {
+        "agricola": "Agrícola",
+        "no-agricola": "No agrícola",
+        "exportadora-maquila": "Exportadora y de maquila"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "agricola": 3791.2,
+            "no-agricola": 4002.28,
+            "exportadora-maquila": 3409.73
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Acuerdo Gubernativo 256-2025, salarios mínimos para 2026, artículos 2 a 7",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Acuerdo-Gubernativo-Numero-256-2025-Salario-Minino.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          },
+          "region": "ce1"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "agricola": 3625.89,
+            "no-agricola": 3816.9,
+            "exportadora-maquila": 3221.1
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Acuerdo Gubernativo 256-2025, salarios mínimos para 2026, artículos 2 a 7",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Acuerdo-Gubernativo-Numero-256-2025-Salario-Minino.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          },
+          "region": "ce2"
+        }
+      ]
+    },
+    {
+      "id": "gt.bonificacion-incentivo",
+      "nombre": "Bonificación incentivo mensual",
+      "tipo": "numero",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2001-08-01",
+          "valor": 250,
+          "motivo": "El monto sale del Decreto 37-2001. No encontré su texto en un sitio oficial accesible: congreso.gob.gt no publica la ruta del PDF y la copia del Organismo Judicial rechaza la conexión. El Acuerdo 256-2025 y el Decreto 13-2026 la nombran sin monto."
+        }
+      ]
+    },
+    {
+      "id": "gt.aguinaldo",
+      "nombre": "Aguinaldo por año de servicios",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1978-11-30",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto 76-78, Ley Reguladora de la Prestación del Aguinaldo, artículo 1",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Ley-Reguladora-del-Aguinaldo-Decreto-76-78.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.aguinaldo-pago-diciembre",
+      "nombre": "Parte del aguinaldo que se paga en diciembre",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1978-11-30",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto 76-78, Ley Reguladora de la Prestación del Aguinaldo, artículo 2",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Ley-Reguladora-del-Aguinaldo-Decreto-76-78.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.aguinaldo-jornadas-campo",
+      "nombre": "Jornadas mínimas en el año para el aguinaldo de trabajadores de campo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1978-11-30",
+          "valor": 150,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto 76-78, Ley Reguladora de la Prestación del Aguinaldo, artículo 10",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Ley-Reguladora-del-Aguinaldo-Decreto-76-78.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.bono-14",
+      "nombre": "Bono 14 por año de servicios",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-07-02",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto 42-92, Ley de Bonificación Anual (Bono 14), artículo 2",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Ley-de-Bonificacion-Anual-para-Trabajadores-del-Sector-Privado-y-Publico-Decreto-42-92.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.indemnizacion-meses-por-anio",
+      "nombre": "Indemnización por tiempo servido, meses de salario por año",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 82",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.meses-promedio-indemnizacion",
+      "nombre": "Meses que se promedian para la indemnización",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 82, literal b",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.vacaciones-dias-habiles",
+      "nombre": "Vacaciones mínimas por año de trabajo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 130",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.vacaciones-dias-minimos",
+      "nombre": "Días trabajados en el año para tener vacaciones (contratos que no exigen todos los días)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 131",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.jornada-horas",
+      "nombre": "Horas de la jornada ordinaria diaria",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "diurna": "Diurna (entre las 6 y las 18 horas)",
+        "mixta": "Mixta",
+        "nocturna": "Nocturna (entre las 18 y las 6 horas)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": {
+            "diurna": 8,
+            "mixta": 7,
+            "nocturna": 6
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículos 116 y 117",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.recargo-horas-extra",
+      "nombre": "Recargo mínimo de la hora extra",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 121",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.tope-horas-diarias",
+      "nombre": "Máximo de horas ordinarias y extra por día",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 122",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-escala",
+      "nombre": "ISR de rentas del trabajo: escala anual",
+      "tipo": "escala",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 300000,
+              "tasa": 5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 300000,
+              "hasta": null,
+              "tasa": 7,
+              "cuotaFija": 15000
+            }
+          ],
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 5/3/2012)",
+            "titulo": "Decreto 10-2012, Ley de Actualización Tributaria, artículo 73",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2012/010-2012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-deduccion-gastos-personales",
+      "nombre": "Deducción anual por gastos personales sin comprobar",
+      "tipo": "numero",
+      "unidad": "GTQ",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 48000,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 5/3/2012)",
+            "titulo": "Decreto 10-2012, Ley de Actualización Tributaria, artículos 72 literal a y 76",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2012/010-2012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "motivo": "Desde 2027 la deducción es de 12 salarios mínimos mensuales no agrícolas más la bonificación incentivo, con el salario mínimo vigente al 1 de enero (Decreto 13-2026, artículos 1 y 2). Falta el acuerdo de salario mínimo 2027 y el monto que publique la SAT.",
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 15/5/2026)",
+            "titulo": "Decreto 13-2026, reformas a la Ley de Actualización Tributaria, artículos 1, 2 y 5",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/3bcf4-13-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-deduccion-extraordinaria",
+      "nombre": "Deducción extraordinaria del ISR de 2026",
+      "tipo": "numero",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 15/5/2026)",
+            "titulo": "Decreto 13-2026, reformas a la Ley de Actualización Tributaria, artículo 5 (la deducción rige ocho días después de su publicación del 15/5/2026)",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/3bcf4-13-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          },
+          "hasta": "2026-05-22"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-23",
+          "valor": 3024,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 15/5/2026)",
+            "titulo": "Decreto 13-2026, reformas a la Ley de Actualización Tributaria, artículos 4 y 5",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/3bcf4-13-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 15/5/2026)",
+            "titulo": "Decreto 13-2026, reformas a la Ley de Actualización Tributaria, artículo 4 (rige solo para el período 2026)",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/3bcf4-13-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-tope-planilla-iva",
+      "nombre": "Crédito máximo por la planilla del IVA",
+      "tipo": "numero",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 12000,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 5/3/2012)",
+            "titulo": "Decreto 10-2012, Ley de Actualización Tributaria, artículo 72 literal a",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2012/010-2012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-laboral-ivs",
+      "nombre": "Cuota laboral del IGSS, programa de Invalidez, Vejez y Sobrevivencia",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-12-01",
+          "valor": 1.83,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 40 (texto revisado 2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde antes. La fecha de inicio es la del texto revisado que se leyó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-laboral-ema",
+      "nombre": "Cuota laboral del IGSS, programas de Enfermedad, Maternidad y Accidentes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2003-02-27",
+          "valor": 3,
+          "motivo": "Los reglamentos 410 (artículo 62) y 1002 (artículo 46) del IGSS fijan 2 % por programa y remiten a acuerdos de extensión de cobertura (1095, 1121 y otros) para la tasa combinada. No encontré publicado el acuerdo que fija el 3 % combinado, y el sitio del IGSS no lo informa en una página legible.",
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 410 de Junta Directiva, artículo 62 (texto revisado 2018)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-410-Junta-Directiva-IGSS-1967-rev-2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.iva",
+      "nombre": "Tarifa del IVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2001-08-01",
+          "valor": 12,
+          "motivo": "Es el artículo 10 de la Ley del IVA (Decreto 27-92, reformado). El portal de la SAT está detrás de una verificación anti bots, la copia del TSE responde 403 y el PDF del Decreto 66-2002 en congreso.gob.gt devuelve una página de desafío."
+        }
+      ]
+    }
+  ]
+}

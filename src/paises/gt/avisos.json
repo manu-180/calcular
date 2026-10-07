@@ -1,0 +1,67 @@
+{
+  "mercado": "gt",
+  "avisos": [
+    {
+      "id": "gt.isr-deduccion-2027",
+      "nivel": "info",
+      "desde": "2026-05-23",
+      "hasta": "2026-12-31",
+      "aplicaA": ["gt.isr-asalariados", "gt.sueldo-liquido"],
+      "titulo": "En 2027 cambia la deducción del ISR",
+      "texto": "Desde el 1 de enero de 2027 la deducción sin comprobantes deja de ser fija y pasa a ser de 12 salarios mínimos no agrícolas más la bonificación incentivo. Se actualiza cada año con el salario mínimo nuevo. Este año se suma, por única vez, una deducción extraordinaria.",
+      "fuente": {
+        "organismo": "Congreso de la República (Diario de Centro América del 15/5/2026)",
+        "titulo": "Decreto 13-2026, reformas a la Ley de Actualización Tributaria, artículos 1, 2, 4 y 5",
+        "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/3bcf4-13-2026.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "gt.indemnizacion-sextos",
+      "nivel": "cautela",
+      "desde": "2024-10-01",
+      "aplicaA": ["gt.indemnizacion"],
+      "titulo": "Cómo entran el aguinaldo y el Bono 14 en la indemnización",
+      "texto": "La ley dice que el aguinaldo y el Bono 14 se suman a la indemnización en la proporción de seis meses de servicios. En la práctica se agrega al salario la sexta parte de lo que se cobró de cada uno en seis meses (una doceava parte del salario anual). Si su caso va a un juicio, el juzgado puede hacer la cuenta distinto.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo y Previsión Social",
+        "titulo": "Decreto 76-78, artículo 9, y Decreto 42-92, artículo 4",
+        "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Ley-Reguladora-del-Aguinaldo-Decreto-76-78.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "gt.aguinaldo-periodo",
+      "nivel": "info",
+      "desde": "2024-10-01",
+      "aplicaA": ["gt.aguinaldo", "gt.indemnizacion"],
+      "titulo": "El período del aguinaldo no está en la ley",
+      "texto": "La ley del aguinaldo habla de un año de servicios pero no dice cuándo empieza. Se usa el período de costumbre, del 1 de diciembre al 30 de noviembre. Si su empresa usa otro, el resultado cambia.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo y Previsión Social",
+        "titulo": "Decreto 76-78, artículos 1 y 2",
+        "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Ley-Reguladora-del-Aguinaldo-Decreto-76-78.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "gt.salario-minimo-2027",
+      "nivel": "info",
+      "desde": "2026-11-15",
+      "hasta": "2027-01-31",
+      "aplicaA": ["gt.salario-minimo"],
+      "titulo": "Se espera el salario mínimo de 2027",
+      "texto": "El salario mínimo de cada año se fija por acuerdo gubernativo en diciembre. Hasta que se publique el nuevo, sigue vigente el de 2026.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo y Previsión Social",
+        "titulo": "Acuerdo Gubernativo 256-2025, artículo 11",
+        "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Acuerdo-Gubernativo-Numero-256-2025-Salario-Minino.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}
