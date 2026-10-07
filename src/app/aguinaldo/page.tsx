@@ -5,76 +5,73 @@ import { EmailCapture } from "@/components/EmailCapture";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
+import { openGraphDe } from "@/lib/seo";
 import { AGUINALDO_FUENTES, SEMESTRES_2026 } from "@/data/aguinaldo";
 
 export const metadata: Metadata = {
-  title: "Calculadora de Aguinaldo 2026: cuánto cobrás de SAC y cuándo se paga",
+  title: "Calculadora de aguinaldo 2026: cuánto cobrás de SAC",
   description:
-    "Calculá gratis tu aguinaldo 2026: el 50% del mejor sueldo del semestre, proporcional si no lo trabajaste completo. Fechas de pago: 30 de junio y 18 de diciembre.",
+    "Calculá tu aguinaldo 2026: 50% del mejor sueldo del semestre, proporcional por días. Bruto y en mano, con las fechas de pago de junio y diciembre.",
   alternates: { canonical: "/aguinaldo" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Calculadora de Aguinaldo 2026")}&s=${encodeURIComponent("Cuánto cobrás de SAC, en bruto y en mano. Vence el 30 de junio.")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: openGraphDe({
+    ruta: "/aguinaldo",
+    titulo: "Calculadora de aguinaldo 2026",
+    bajada: "Cuánto cobrás de SAC, en bruto y en mano",
+  }),
 };
 
 const faqs = [
   {
     q: "¿Cuándo se paga el aguinaldo 2026?",
-    a: "La primera cuota vence el 30 de junio y la segunda el 18 de diciembre de 2026 (art. 122 de la Ley de Contrato de Trabajo, texto según Ley 27.073). Por la tolerancia general del art. 128 de la LCT, se suele admitir el pago hasta 4 días hábiles después del vencimiento.",
+    a: "La segunda cuota vence el 18 de diciembre de 2026. La primera venció el 30 de junio (art. 122 de la Ley de Contrato de Trabajo, texto según Ley 27.073). Por la tolerancia general del art. 128 de la LCT, se suele aceptar el pago hasta 4 días hábiles después de cada vencimiento.",
   },
   {
     q: "¿Cómo se calcula el aguinaldo?",
-    a: "Cada cuota es el 50% de la mayor remuneración mensual devengada por todo concepto dentro del semestre (Ley 23.041). En criollo: tu mejor sueldo bruto del semestre dividido 2. Si no trabajaste el semestre completo, cobrás la parte proporcional al tiempo trabajado.",
+    a: "Cada cuota es el 50% de tu mejor sueldo bruto del semestre. La ley lo dice así: la mayor remuneración mensual devengada por todo concepto dentro del semestre (Ley 23.041). Si no trabajaste el semestre completo, cobrás la parte proporcional.",
   },
   {
     q: "¿Qué pasa si no trabajé todo el semestre?",
-    a: "Cobrás el proporcional: el aguinaldo completo (mejor sueldo ÷ 2) multiplicado por los días trabajados sobre el total de días del semestre. Aplica si entraste durante el semestre o si el contrato terminó antes de que cierre (en ese caso se paga junto con la liquidación final).",
+    a: "Cobrás el proporcional: el aguinaldo completo (mejor sueldo ÷ 2) multiplicado por los días que trabajaste, dividido los días del semestre. Vale si entraste en la mitad del semestre o si te fuiste antes de que cierre (en ese caso se paga con la liquidación final).",
   },
   {
     q: "¿El aguinaldo tiene descuentos?",
-    a: "Sí. Es remunerativo, así que sufre los mismos aportes que el sueldo: 11% de jubilación, 3% de PAMI (Ley 19.032) y 3% de obra social — un 17% en total. Si pagás impuesto a las Ganancias o tenés cuota sindical, también se descuentan según tu caso.",
+    a: "Sí. Es remunerativo, así que tiene los mismos aportes que el sueldo: 11% de jubilación, 3% de PAMI (Ley 19.032) y 3% de obra social. En total, 17%. Si pagás Ganancias o tenés cuota sindical, también se descuentan.",
   },
   {
     q: "¿Se incluyen horas extras, comisiones y premios en el cálculo?",
-    a: "Sí: la ley toma la mayor remuneración mensual devengada «por todo concepto», así que incluye horas extras, comisiones, premios y adicionales remunerativos del mes que se toma como base. No se incluyen los conceptos no remunerativos (por ejemplo, ciertos bonos o viáticos no remunerativos).",
+    a: "Sí. La ley toma el mejor sueldo «por todo concepto», así que suma horas extras, comisiones, premios y adicionales remunerativos del mes que se usa de base. Los conceptos no remunerativos (por ejemplo, algunos bonos o viáticos) no entran.",
   },
   {
     q: "¿Quiénes cobran aguinaldo?",
-    a: "Todos los trabajadores en relación de dependencia: empleados privados, del Estado y del personal de casas particulares. Los monotributistas, autónomos y quienes facturan como independientes no cobran aguinaldo, porque no tienen empleador.",
+    a: "Todas las personas en relación de dependencia: empleados privados, estatales y personal de casas particulares. Los monotributistas, autónomos y quienes facturan por su cuenta no cobran aguinaldo, porque no tienen empleador.",
   },
   {
     q: "¿Qué hago si no me pagan el aguinaldo?",
-    a: "Primero reclamalo por escrito a tu empleador (idealmente por carta documento, intimando al pago). Si no responde, podés denunciar ante la Secretaría de Trabajo de tu provincia o iniciar un reclamo laboral. El aguinaldo es un derecho irrenunciable: no se puede pactar no cobrarlo.",
+    a: "Primero reclamalo por escrito a tu empleador (mejor por carta documento, intimando el pago). Si no responde, podés denunciarlo ante la Secretaría de Trabajo de tu provincia o hacer un reclamo laboral. El aguinaldo es irrenunciable: no se puede pactar no cobrarlo.",
   },
   {
     q: "¿El aguinaldo se cobra en junio o en julio?",
-    a: "El vencimiento legal de la primera cuota es el 30 de junio (art. 122 LCT, texto Ley 27.073). Pero por la tolerancia general del art. 128 de la LCT, el pago puede acreditarse hasta 4 días hábiles después sin que el empleador esté en infracción: en la práctica, muchos lo cobran los primeros días hábiles de julio. Pasada esa tolerancia, corresponde reclamar.",
+    a: "La primera cuota vence el 30 de junio (art. 122 LCT, texto Ley 27.073). Por la tolerancia general del art. 128 de la LCT, se puede pagar hasta 4 días hábiles después sin que el empleador esté en falta. Por eso muchos lo cobran en los primeros días hábiles de julio. Pasada esa tolerancia, corresponde reclamar. Con la cuota de diciembre pasa lo mismo a partir del 18.",
   },
   {
     q: "¿Desde cuántos meses de trabajo se cobra el aguinaldo?",
-    a: "No hay un mínimo: el derecho nace desde el primer día trabajado. Si no llegaste a trabajar el semestre completo, cobrás el proporcional a los días trabajados — incluso con un solo mes de antigüedad.",
+    a: "No hay un mínimo: el derecho empieza el primer día de trabajo. Si no trabajaste el semestre completo, cobrás la parte proporcional a los días que trabajaste. Aunque tengas un solo mes de antigüedad.",
   },
   {
     q: "¿Cuánto cobro de aguinaldo si trabajé 1, 2, 3 o 4 meses?",
-    a: "Aproximadamente, por cada mes trabajado del semestre te corresponde un sexto de la cuota completa: con 3 meses cobrás más o menos la mitad. La cuenta exacta es por días trabajados: mirá la tabla de esta página o usá la calculadora, que la hace al día exacto.",
+    a: "Más o menos, cada mes trabajado del semestre vale un sexto de la cuota completa: con 3 meses cobrás cerca de la mitad. La cuenta exacta es por días. Mirá la tabla de esta página o usá la calculadora, que la hace al día.",
   },
   {
     q: "¿El aguinaldo se descuenta del sueldo?",
-    a: "No. El aguinaldo se paga además del sueldo del mes: en junio cobrás tu salario habitual más la cuota del SAC. Es un pago extra de naturaleza salarial, no un adelanto ni una parte de tu sueldo.",
+    a: "No. El aguinaldo se paga además del sueldo del mes: en diciembre cobrás tu sueldo de siempre más la cuota del SAC. Es un pago extra, no un adelanto ni una parte de tu sueldo.",
   },
   {
     q: "¿El aguinaldo se cobra en bruto o en neto?",
-    a: "Se calcula en bruto (50% del mejor sueldo bruto del semestre) pero se cobra en neto: se le descuenta el mismo 17% de aportes que a un sueldo. En mano te queda aproximadamente el 41,5% de tu mejor sueldo bruto. En calcular.ar/aguinaldo/neto está la tabla completa por rangos de sueldo.",
+    a: "Se calcula en bruto (50% del mejor sueldo bruto del semestre) y se cobra en neto, con el mismo 17% de aportes que un sueldo. En mano te queda cerca del 41,5% de tu mejor sueldo bruto. En calcular.ar/aguinaldo/neto tenés la tabla completa por sueldo.",
   },
   {
     q: "¿Los jubilados y la AUH cobran aguinaldo?",
-    a: "Los jubilados y pensionados de ANSES sí: cobran medio haber adicional junto con la mensualidad de junio y de diciembre, según el calendario de pagos por terminación de DNI. La AUH y las asignaciones familiares no cobran aguinaldo, porque no son remuneraciones.",
+    a: "Los jubilados y pensionados de ANSES sí: cobran medio haber extra con la mensualidad de junio y la de diciembre, según el calendario por terminación de DNI. La AUH y las asignaciones familiares no tienen aguinaldo, porque no son sueldos.",
   },
 ];
 
@@ -94,8 +91,7 @@ export default function AguinaldoPage() {
         inLanguage: "es-AR",
       },
       articleSchema({
-        titulo:
-          "Calculadora de Aguinaldo 2026: cuánto cobrás de SAC y cuándo se paga",
+        titulo: "Calculadora de aguinaldo 2026: cuánto cobrás de SAC",
         descripcion:
           "Cómo se calcula el aguinaldo 2026 (50% del mejor sueldo del semestre), fechas de pago y cuánto queda en mano tras los aportes.",
         url: "/aguinaldo",
@@ -121,20 +117,28 @@ export default function AguinaldoPage() {
           Calculadora de Aguinaldo 2026
         </h1>
         <p className="text-zinc-600">
-          Ingresá tu mejor sueldo del semestre y descubrí al instante{" "}
-          <strong>cuánto te corresponde de aguinaldo</strong>, en bruto y en mano. Si no
-          trabajaste el semestre completo, calcula automáticamente el proporcional por días
-          trabajados.
+          Poné tu mejor sueldo del semestre y mirá{" "}
+          <strong>cuánto te toca de aguinaldo</strong>, en bruto y en mano. Si no trabajaste el
+          semestre completo, la calculadora saca sola el proporcional por días.
+        </p>
+        <p className="text-sm text-zinc-600">
+          La cuota de diciembre vence el <strong>18 de diciembre</strong>. ¿Sos jubilado o estatal?
+          Mirá{" "}
+          <Link href="/aguinaldo/fechas" className="font-medium text-emerald-700 underline">
+            cuándo se paga el aguinaldo en tu caso
+          </Link>
+          .
         </p>
       </header>
 
       <RespuestaPrimero actualizado="13 de junio de 2026">
         <p>
-          El aguinaldo (SAC) es <strong>el 50% de tu mejor sueldo bruto del semestre</strong>.
-          La primera cuota de 2026 vence el <strong>30 de junio</strong> y la segunda el{" "}
-          <strong>18 de diciembre</strong>. Como es remunerativo, se le descuenta el 17% de
-          aportes: <strong>en mano te queda cerca del 41,5%</strong> de tu mejor sueldo bruto.
-          Si no trabajaste el semestre completo, cobrás el proporcional a los días trabajados.
+          El aguinaldo (en la ley se llama SAC) es{" "}
+          <strong>el 50% de tu mejor sueldo bruto del semestre</strong>. La segunda cuota de 2026
+          vence el <strong>18 de diciembre</strong>; la primera venció el{" "}
+          <strong>30 de junio</strong>. Como es remunerativo, se le descuenta el 17% de aportes:{" "}
+          <strong>en mano te queda cerca del 41,5%</strong> de tu mejor sueldo bruto. Si no
+          trabajaste el semestre completo, cobrás la parte proporcional a los días trabajados.
           Monotributistas y autónomos no cobran aguinaldo.
         </p>
       </RespuestaPrimero>
@@ -203,31 +207,31 @@ export default function AguinaldoPage() {
       <EmailCapture
         source="aguinaldo"
         headline="Avisame cuando cambien los datos"
-        subtext="Cuando salga el nuevo IPC, cambien las escalas del SAC o aparezca la fecha de diciembre, te mando un aviso. Sin spam."
+        subtext="Te aviso cuando salga el nuevo IPC, cambien las escalas o se publiquen las fechas de diciembre. Sin spam."
       />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Cómo se calcula el aguinaldo</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            El aguinaldo —formalmente, <strong>Sueldo Anual Complementario (SAC)</strong>— se paga
-            en dos cuotas por año. Cada cuota es{" "}
+            El aguinaldo (en la ley se llama <strong>Sueldo Anual Complementario, SAC</strong>) se
+            paga en dos cuotas por año. Cada cuota es{" "}
             <strong>
               el 50% de la mayor remuneración mensual devengada por todo concepto
             </strong>{" "}
-            dentro del semestre (Ley 23.041). La cuenta es simple: tu mejor sueldo bruto del
-            semestre, dividido 2.
+            dentro del semestre (Ley 23.041). Dicho fácil: tu mejor sueldo bruto del semestre,
+            dividido 2.
           </p>
           <p>
-            Por ejemplo: si entre enero y junio tu mejor mes fue de $1.500.000 brutos, tu primera
-            cuota del aguinaldo es de <strong>$750.000 brutos</strong>. Sobre ese monto se aplican
-            los mismos descuentos que a un sueldo normal (jubilación, PAMI y obra social, un 17%
-            en total), así que en mano quedan unos $622.500.
+            Un ejemplo: si entre julio y diciembre tu mejor mes fue de $1.500.000 brutos, tu cuota
+            de aguinaldo es de <strong>$750.000 brutos</strong>. Ese monto tiene los mismos
+            descuentos que un sueldo (jubilación, PAMI y obra social, 17% en total), así que en mano
+            te quedan unos $622.500.
           </p>
           <p>
-            «Por todo concepto» significa que el mes que se toma como base incluye horas extras,
-            comisiones, premios y todo adicional remunerativo: si en marzo hiciste muchas horas
-            extras y fue tu mejor mes, ese es el sueldo que se usa.
+            «Por todo concepto» quiere decir que el mes que se usa de base incluye horas extras,
+            comisiones, premios y cualquier adicional remunerativo. Si en septiembre hiciste muchas
+            horas extras y fue tu mejor mes, ese es el sueldo que cuenta.
           </p>
         </div>
       </section>
@@ -249,14 +253,20 @@ export default function AguinaldoPage() {
         </div>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Esos son los vencimientos legales del art. 122 de la Ley de Contrato de Trabajo (texto
-            según la Ley 27.073). Por la tolerancia general del art. 128, en la práctica se admite
-            el pago hasta <strong>4 días hábiles después</strong> de cada vencimiento.
+            Son los vencimientos legales del art. 122 de la Ley de Contrato de Trabajo (texto según
+            la Ley 27.073). Por la tolerancia general del art. 128, en la práctica se acepta el pago
+            hasta <strong>4 días hábiles después</strong> de cada vencimiento.
           </p>
           <p>
-            Para la cuota de diciembre, el empleador estima el sueldo de ese mes para poder pagar
-            el 18: si el sueldo real termina siendo mayor, la diferencia se integra con el salario
-            de diciembre.
+            Para pagar el 18 de diciembre, el empleador estima el sueldo de ese mes. Si después el
+            sueldo real es más alto, la diferencia se paga con el sueldo de diciembre.
+          </p>
+          <p>
+            Las fechas de jubilados y estatales están en{" "}
+            <Link href="/aguinaldo/fechas" className="text-emerald-700 underline">
+              cuándo se cobra el aguinaldo
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -265,9 +275,8 @@ export default function AguinaldoPage() {
         <h2 className="text-xl font-bold text-zinc-900">Aguinaldo proporcional: cuándo aplica</h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            Si no trabajaste el semestre completo —porque entraste después de que empezó o porque
-            el contrato terminó antes del cierre— cobrás el{" "}
-            <strong>proporcional al tiempo trabajado</strong>:
+            Si no trabajaste el semestre completo (porque entraste después o porque te fuiste
+            antes), cobrás la <strong>parte proporcional al tiempo trabajado</strong>:
           </p>
           <p className="rounded-xl bg-white p-4 font-medium text-zinc-800 shadow-sm">
             Aguinaldo proporcional = (mejor sueldo del semestre ÷ 2) × (días trabajados ÷ días del
@@ -276,9 +285,9 @@ export default function AguinaldoPage() {
           <p>
             Por ejemplo: si empezaste a trabajar el 1 de abril de 2026 con un mejor sueldo de
             $1.500.000, trabajaste 91 de los 181 días del primer semestre. Tu aguinaldo bruto es
-            $750.000 × 91 ÷ 181 = <strong>$377.072</strong>. Y si te vas de un trabajo a mitad del
-            semestre, el proporcional se paga junto con la liquidación final, sin esperar a junio
-            o diciembre.
+            $750.000 × 91 ÷ 181 = <strong>$377.072</strong>. Y si dejás un trabajo a mitad del
+            semestre, el proporcional se paga con la liquidación final, sin esperar a junio o
+            diciembre.
           </p>
         </div>
       </section>
@@ -324,9 +333,9 @@ export default function AguinaldoPage() {
           </table>
         </div>
         <p className="text-xs text-zinc-400">
-          La cuenta legal exacta es por días trabajados sobre los días del semestre (181 días el
-          primero de 2026): la calculadora de arriba la hace al día, con tus fechas reales de
-          ingreso y egreso.
+          La cuenta exacta es por días trabajados sobre los días del semestre (181 días el primero
+          de 2026). La calculadora de arriba la hace al día, con tus fechas reales de entrada y
+          salida.
         </p>
       </section>
 

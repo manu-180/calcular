@@ -25,10 +25,9 @@ const catA = CATEGORIAS[0];
 const catK = CATEGORIAS[CATEGORIAS.length - 1];
 const precioUnitarioMax = catK.precioUnitarioMax;
 
-const titulo =
-  "Qué pasa si me paso del límite de facturación del monotributo (2026)";
+const titulo = "Me pasé del límite del monotributo: qué pasa (2026)";
 const descripcion =
-  "Si superás el tope de tu categoría hay dos caminos: recategorizarte (si seguís bajo el máximo) o quedar excluido y pasar al Régimen General. Cómo funciona, los topes oficiales de ARCA por categoría y cómo controlarlo para no quedar afuera.";
+  "Si superás el tope de tu categoría podés recategorizarte o quedar excluido y pasar al Régimen General. Cómo funciona y los topes oficiales de ARCA.";
 
 export const metadata: Metadata = {
   title: titulo,
@@ -51,27 +50,27 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Me pasé del límite un solo mes, quedo excluido?",
-    a: "No necesariamente. El monotributo mira los ingresos brutos de los últimos 12 meses, no un mes suelto. Lo que importa es el acumulado de un año móvil: si en ese período superaste el tope de tu categoría pero seguís por debajo del tope máximo del régimen, lo que corresponde es recategorizarte en la próxima ventana, no quedar excluido.",
+    a: "No necesariamente. El monotributo mira lo que facturaste en los últimos 12 meses, no un mes suelto. Si en ese período pasaste el tope de tu categoría pero seguís por debajo del tope máximo del régimen, lo que corresponde es recategorizarte en la próxima ventana, no quedar afuera.",
   },
   {
     q: "¿Cuál es el tope máximo de facturación del monotributo en 2026?",
-    a: `Desde ${VIGENCIA.desde}, el tope máximo es ${formatARS(TOPE_MAXIMO, 0)} de ingresos brutos en los últimos 12 meses (categoría K), tanto para prestación de servicios como para venta de cosas muebles. Si superás ese monto, quedás excluido del régimen de pleno derecho y tenés que pasar al Régimen General.`,
+    a: `Desde ${VIGENCIA.desde}, el tope máximo es ${formatARS(TOPE_MAXIMO, 0)} de ingresos brutos en los últimos 12 meses (categoría K), tanto para servicios como para venta de cosas muebles. Si superás ese monto, quedás excluido del régimen automáticamente y tenés que pasar al Régimen General.`,
   },
   {
     q: "¿Qué pasa si me excluyen del monotributo?",
-    a: "Pasás al Régimen General: empezás a tributar IVA y a inscribirte en Ganancias y en autónomos. La exclusión puede ser retroactiva al momento en que superaste el parámetro, así que podés deber IVA y Ganancias desde ese mes, más intereses. Por eso conviene controlar la facturación del año móvil antes de llegar al tope, no después.",
+    a: "Pasás al Régimen General: empezás a pagar IVA y a estar inscripto en Ganancias y en autónomos. La exclusión puede ir para atrás, hasta el momento en que pasaste el límite, así que podés deber IVA y Ganancias desde ese mes, más intereses. Por eso conviene controlar lo facturado en los últimos 12 meses antes de llegar al tope, no después.",
   },
   {
     q: "¿Solo me pueden excluir por facturar de más?",
-    a: `No. También quedás excluido si superás cualquiera de los parámetros físicos de tu actividad (superficie afectada, energía eléctrica consumida o alquileres devengados) o, en venta de cosas muebles, si el precio unitario de venta supera ${formatARS(precioUnitarioMax, 0)}. Cualquiera de estos parámetros, por sí solo, puede dejarte fuera del régimen.`,
+    a: `No. También quedás afuera si pasás cualquiera de los límites físicos de tu actividad (superficie, energía eléctrica consumida o alquileres) o, si vendés cosas muebles, si el precio de venta de una unidad supera ${formatARS(precioUnitarioMax, 0)}. Cualquiera de estos límites, por sí solo, puede dejarte fuera del régimen.`,
   },
   {
     q: "¿Cuándo me puedo recategorizar?",
-    a: `La recategorización se hace dos veces al año, en febrero y en agosto, hasta el día 5. Se evalúan ${RECATEGORIZACION.periodoEvaluado}. La próxima ventana es ${RECATEGORIZACION.proximaVentana}. Si en ese período cambiaste de categoría, ahí es donde lo regularizás.`,
+    a: `La recategorización se hace dos veces al año, en febrero y en agosto, hasta el día 5. Se evalúan ${RECATEGORIZACION.periodoEvaluado}. La próxima ventana es ${RECATEGORIZACION.proximaVentana}. Si en ese período cambiaste de categoría, ahí lo regularizás.`,
   },
   {
     q: "¿Conviene esperar a la recategorización o adelantarme?",
-    a: "Si ya sabés que superaste el tope de tu categoría, lo más prolijo es recategorizarte en la primera ventana disponible. ARCA controla la facturación electrónica en tiempo real: si detecta que superaste los parámetros y no te recategorizaste, puede excluirte de oficio. Adelantarte evita intereses y la exclusión retroactiva.",
+    a: "Si ya sabés que pasaste el tope de tu categoría, lo más prolijo es recategorizarte en la primera ventana que haya. ARCA ve la factura electrónica al instante: si detecta que pasaste los límites y no te recategorizaste, puede excluirte de oficio. Adelantarte te ahorra intereses y la exclusión hacia atrás.",
   },
 ];
 
@@ -102,10 +101,9 @@ export default function Post() {
           Qué pasa si me paso del límite de facturación del monotributo
         </h1>
         <p className="text-zinc-600">
-          Facturaste más de lo que permite tu categoría y no sabés si tenés que
-          recategorizarte o si te van a echar del monotributo. Acá está la respuesta clara, con
-          los topes oficiales de ARCA y la cuenta a la vista — sin el susto que venden los
-          estudios contables.
+          Facturaste más de lo que permite tu categoría y no sabés si tenés que recategorizarte o si
+          te van a sacar del monotributo. Acá tenés la respuesta, con los topes oficiales de ARCA y
+          la cuenta a la vista, sin el susto que venden los estudios contables.
         </p>
       </header>
 
@@ -113,14 +111,13 @@ export default function Post() {
         <p>
           Si te pasás del tope de facturación, hay <strong>dos caminos posibles</strong>. Si
           superaste el límite de <strong>tu</strong> categoría pero seguís por debajo del tope
-          máximo del régimen ({formatARS(TOPE_MAXIMO, 0)} en los últimos 12 meses),
-          simplemente te tenés que <strong>recategorizar</strong> a la categoría que corresponda
-          en la próxima ventana (febrero o agosto). Si superaste el{" "}
-          <strong>tope máximo</strong> —o un parámetro físico como superficie, energía o
-          alquileres—, quedás <strong>excluido de pleno derecho</strong> y pasás al Régimen
-          General (IVA + Ganancias). Lo clave: el monotributo mira los{" "}
-          <strong>últimos 12 meses</strong>, no un mes suelto, y ARCA controla la facturación
-          electrónica en tiempo real.
+          máximo del régimen ({formatARS(TOPE_MAXIMO, 0)} en los últimos 12 meses), solo te tenés
+          que <strong>recategorizar</strong> a la categoría que corresponda en la próxima ventana
+          (febrero o agosto). Si superaste el <strong>tope máximo</strong> (o un límite físico como
+          superficie, energía o alquileres), quedás <strong>excluido automáticamente</strong> y pasás
+          al Régimen General (IVA + Ganancias). Lo clave: el monotributo mira los{" "}
+          <strong>últimos 12 meses</strong>, no un mes suelto, y ARCA ve la factura electrónica al
+          instante.
         </p>
       </RespuestaPrimero>
 
@@ -196,7 +193,11 @@ export default function Post() {
           <Link href="/monotributo/categorias" className="text-emerald-700 underline">
             calculadora de categorías de monotributo
           </Link>{" "}
-          y te dice la categoría y la cuota exacta.
+          y te dice la categoría y la cuota exacta. Para llevar la cuenta mes a mes, te sirve la{" "}
+          <Link href="/planillas/monotributo" className="text-emerald-700 underline">
+            planilla de monotributo
+          </Link>
+          .
         </p>
       </section>
 
@@ -297,9 +298,9 @@ export default function Post() {
           </li>
         </ul>
         <p className="text-sm text-zinc-500">
-          Pasar al Régimen General no es el fin del mundo —muchos profesionales y comercios
-          facturan ahí toda su vida— pero es un cambio que conviene planificar con un contador, no
-          que te agarre de sorpresa por una exclusión de oficio.
+          Pasar al Régimen General no es el fin del mundo (muchos profesionales y comercios
+          facturan ahí toda su vida), pero es un cambio que conviene planificar con un contador, y
+          no que te agarre de sorpresa por una exclusión de oficio.
         </p>
       </section>
 
@@ -316,7 +317,7 @@ export default function Post() {
           {[
             {
               t: "Sumá siempre los últimos 12 meses, no el año calendario",
-              d: "El parámetro es un año móvil. Cada mes que cierra, sale el mes de hace 13 meses y entra el actual. Mirá ese acumulado, no enero-diciembre.",
+              d: "Se mira un año que se va corriendo. Cada mes que cierra, sale el de hace 13 meses y entra el actual. Mirá ese total, no el de enero a diciembre.",
             },
             {
               t: "Dejá un margen antes del tope",
@@ -403,7 +404,7 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              ARCA — Categorías y topes del monotributo
+              ARCA: categorías y topes del monotributo
             </a>
           </li>
           <li>
@@ -414,13 +415,13 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              ARCA — Recategorización del monotributo
+              ARCA: recategorización del monotributo
             </a>
           </li>
         </ul>
         <p className="text-xs text-zinc-400">
           Escalas vigentes desde {VIGENCIA.desde}. Última verificación: {VIGENCIA.consultadoEl}.
-          Esta guía es informativa; para tu caso puntual consultá con tu contador o con ARCA.
+          Esta guía es informativa. Para tu caso puntual, consultá con tu contador o con ARCA.
           Categoría más baja (A): hasta {formatARS(catA.ingresosBrutosMax, 0)} anuales.
         </p>
         <p className="text-sm text-zinc-600">
@@ -430,8 +431,8 @@ export default function Post() {
             className="text-emerald-700 underline"
           >
             qué incluye la cuota del monotributo
-          </Link>{" "}
-          — impuesto, jubilación y obra social, con el desglose por categoría.
+          </Link>
+          : impuesto, jubilación y obra social, con el desglose por categoría.
         </p>
       </section>
     </article>

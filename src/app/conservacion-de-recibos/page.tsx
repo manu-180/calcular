@@ -15,8 +15,8 @@ import {
 } from "@/data/conservacion-recibos";
 
 export const metadata: Metadata = {
-  title: `Cuánto tiempo hay que guardar los recibos de sueldo: ${ANIOS_LABORAL} y ${ANIOS_PREVISIONAL} años (art. 143 LCT)`,
-  description: `Hasta el ${VIGENCIA_REFORMA} la ley no traía ningún número: remitía «a la prescripción liberatoria del beneficio de que se trate». El art. 143 vigente escribe los dos plazos: ${ANIOS_LABORAL} años laborales y ${ANIOS_PREVISIONAL} previsionales. Calculá la fecha exacta de tu recibo.`,
+  title: "Cuánto tiempo guardar los recibos de sueldo (art. 143)",
+  description: `El art. 143 de la LCT fija dos plazos desde el 6/3/2026: ${ANIOS_LABORAL} años para lo laboral y ${ANIOS_PREVISIONAL} para lo previsional. Calculá hasta cuándo guardar cada recibo.`,
   alternates: { canonical: "/conservacion-de-recibos" },
   openGraph: {
     title: "Recibos de sueldo: la ley por fin puso los números",
@@ -35,35 +35,35 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "¿Cuánto tiempo tengo que guardar los recibos de sueldo?",
-    a: `El artículo 143 de la Ley de Contrato de Trabajo, en su texto vigente desde el ${VIGENCIA_REFORMA}, dice que el empleador debe conservar los recibos y otras constancias de pago "a fin de acreditar sus obligaciones considerando el plazo de prescripción de obligaciones laborales -dos (2) años-, y previsionales -diez (10) años-". En la práctica manda el más largo: el mismo papel prueba las dos cosas.`,
+    a: `El artículo 143 de la Ley de Contrato de Trabajo, con el texto vigente desde el ${VIGENCIA_REFORMA}, dice que el empleador tiene que guardar los recibos y otras constancias de pago "a fin de acreditar sus obligaciones considerando el plazo de prescripción de obligaciones laborales -dos (2) años-, y previsionales -diez (10) años-". En la práctica manda el más largo, porque el mismo papel prueba las dos cosas.`,
   },
   {
     q: "¿No eran cinco años, o diez?",
-    a: `Antes de la reforma la ley no decía ningún número. El texto anterior era una remisión: "durante todo el plazo correspondiente a la prescripción liberatoria del beneficio de que se trate". Por eso circulan tantas cifras distintas, y por eso casi todo lo publicado sobre el tema sigue sin dar una. Desde el ${VIGENCIA_REFORMA} los dos plazos están escritos en el propio artículo.`,
+    a: `Antes de la reforma, la ley no decía ningún número. El texto anterior mandaba a otra norma: "durante todo el plazo correspondiente a la prescripción liberatoria del beneficio de que se trate". Por eso circulan tantas cifras distintas, y por eso casi todo lo publicado sigue sin dar una. Desde el ${VIGENCIA_REFORMA}, los dos plazos están escritos en el mismo artículo.`,
   },
   {
     q: `¿Puedo destruir los recibos a los ${ANIOS_LABORAL} años?`,
-    a: `No es lo que dice el artículo. El texto enuncia los dos plazos que hay que "considerar", y un mismo recibo acredita tanto la obligación laboral como la previsional. Si lo destruís cuando vence el plazo laboral, quedás sin respaldo por los ${ANIOS_PREVISIONAL - ANIOS_LABORAL} años que le siguen corriendo al previsional. La calculadora de esta página te da las dos fechas y te marca cuál manda.`,
+    a: `No es lo que dice el artículo. El texto nombra los dos plazos que hay que "considerar", y un mismo recibo prueba tanto la obligación laboral como la previsional. Si lo destruís cuando vence el plazo laboral, te quedás sin respaldo por los ${ANIOS_PREVISIONAL - ANIOS_LABORAL} años que le quedan al previsional. La calculadora de esta página te da las dos fechas y te marca cuál manda.`,
   },
   {
     q: "¿Tengo que guardar el papel o alcanza con el archivo digital?",
-    a: 'Alcanza con el digital, y lo dice la misma norma: "A efectos de la conservación de los recibos y otras constancias de pago, los mismos podrán ser digitalizados, los cuales tendrán la misma validez que en formato papel". Esa oración ya estaba antes de la reforma —la había incorporado el Decreto 70/2023— y la Ley 27.802 no la tocó.',
+    a: 'Alcanza con el digital, y lo dice la misma norma: "A efectos de la conservación de los recibos y otras constancias de pago, los mismos podrán ser digitalizados, los cuales tendrán la misma validez que en formato papel". Esa oración ya estaba antes de la reforma (la había sumado el Decreto 70/2023) y la Ley 27.802 no la tocó.',
   },
   {
     q: `¿De dónde salen los ${ANIOS_LABORAL} años?`,
-    a: `Del artículo 256 de la misma ley: "Prescriben a los dos (2) años las acciones relativas a créditos provenientes de las relaciones individuales de trabajo". Ese artículo agrega algo importante: el plazo "tiene carácter de orden público y no puede ser modificado por convenciones individuales o colectivas". El artículo 143 no inventó un plazo nuevo: escribió el que ya estaba.`,
+    a: `Del artículo 256 de la misma ley: "Prescriben a los dos (2) años las acciones relativas a créditos provenientes de las relaciones individuales de trabajo". Ese artículo agrega algo importante: el plazo "tiene carácter de orden público y no puede ser modificado por convenciones individuales o colectivas". El artículo 143 no inventó un plazo nuevo: escribió el que ya existía.`,
   },
   {
     q: `¿Los ${ANIOS_LABORAL} años corren siempre de corrido?`,
-    a: `No necesariamente. El artículo 257 dice que la reclamación ante la autoridad administrativa del trabajo interrumpe el curso de la prescripción durante el trámite, "pero en ningún caso por un lapso mayor de ${MESES_INTERRUPCION_ART257} meses". Si hubo un reclamo administrativo, la fecha límite real se corre. La calculadora usa el plazo sin interrupciones: es el piso, no el techo.`,
+    a: `No siempre. El artículo 257 dice que un reclamo ante la autoridad administrativa del trabajo frena el plazo mientras dura el trámite, "pero en ningún caso por un lapso mayor de ${MESES_INTERRUPCION_ART257} meses". Si hubo un reclamo administrativo, la fecha límite real se corre. La calculadora usa el plazo sin interrupciones: es el mínimo, no el máximo.`,
   },
   {
     q: "Si pagué el último mes, ¿se presume que pagué los anteriores?",
-    a: 'No, y el propio artículo 143 lo dice en su última oración: "El pago hecho por un último o ulteriores períodos no hace presumir el pago de los anteriores". Cada período se prueba con su propia constancia. Es otra razón para no archivar antes de tiempo.',
+    a: 'No, y el mismo artículo 143 lo dice en su última oración: "El pago hecho por un último o ulteriores períodos no hace presumir el pago de los anteriores". Cada período se prueba con su propia constancia. Es otra razón para no tirar nada antes de tiempo.',
   },
   {
     q: "¿Qué pasa si no tengo la constancia?",
-    a: "Que perdés la prueba justo donde más pesa. Desde la reforma, el artículo 55 de la LCT hace nacer la presunción a favor del trabajador de la omisión de registración, y las constancias de pago son parte de lo que la desactiva. Guardar no es un trámite: es la defensa.",
+    a: "Perdés la prueba justo donde más pesa. Desde la reforma, el artículo 55 de la LCT crea una presunción a favor del trabajador cuando faltan registros, y las constancias de pago son parte de lo que la desarma. Guardar no es un trámite: es tu defensa.",
   },
 ];
 
@@ -85,7 +85,7 @@ export default function ConservacionRecibosPage() {
       articleSchema({
         titulo: "Conservación de recibos de sueldo: el art. 143 de la LCT después de la Ley 27.802",
         descripcion:
-          "El art. 40 de la Ley 27.802 sustituyó el art. 143 de la LCT el 6/3/2026 y le puso números a una regla que no los tenía: dos años por las obligaciones laborales y diez por las previsionales, en lugar de la remisión genérica a «la prescripción liberatoria del beneficio de que se trate».",
+          "El art. 40 de la Ley 27.802 reemplazó el art. 143 de la LCT el 6/3/2026 y le puso números a una regla que no los tenía: dos años por las obligaciones laborales y diez por las previsionales, en vez de mandar a «la prescripción liberatoria del beneficio de que se trate».",
         url: "/conservacion-de-recibos",
         modificado: CONSERVACION_FUENTES.consultadoEl,
       }),
@@ -109,7 +109,7 @@ export default function ConservacionRecibosPage() {
           Cuánto tiempo hay que guardar los recibos de sueldo
         </h1>
         <p className="text-zinc-600">
-          Es la pregunta que circula con cinco respuestas distintas, y por una buena razón:{" "}
+          Es una pregunta que anda con cinco respuestas distintas, y hay un motivo:{" "}
           <strong>hasta marzo de 2026 la ley no daba ninguna</strong>. Decía «durante todo el plazo
           correspondiente a la prescripción liberatoria del beneficio de que se trate». Ahora el
           artículo trae los dos números escritos.
@@ -122,13 +122,13 @@ export default function ConservacionRecibosPage() {
             {ANIOS_LABORAL} años por las obligaciones laborales y {ANIOS_PREVISIONAL} por las
             previsionales
           </strong>
-          , y en la práctica manda el más largo. Lo dice el art. 143 de la LCT en el texto que le
+          , y en la práctica manda el más largo. Lo dice el art. 143 de la LCT con el texto que le
           dio el art. {ARTICULO_SUSTITUYENTE} de la Ley 27.802 el {VIGENCIA_REFORMA}: hay que
-          conservar los recibos «{CONSERVACION_TEXTOS.reglaVigente}». El texto anterior no traía
-          ningún número — era una remisión, y por eso todavía se publican cifras contradictorias. Los{" "}
-          {ANIOS_LABORAL} años no son un invento del artículo: son los del art. 256, que además los
-          declara de orden público. Y no hace falta papel: la misma norma admite el archivo
-          digitalizado «con la misma validez que en formato papel».
+          guardar los recibos «{CONSERVACION_TEXTOS.reglaVigente}». El texto anterior no tenía
+          ningún número (mandaba a otra norma), y por eso todavía se publican cifras que se
+          contradicen. Los {ANIOS_LABORAL} años no los inventó el artículo: son los del art. 256,
+          que además los declara de orden público. Y no hace falta papel: la misma norma acepta el
+          archivo digital «con la misma validez que en formato papel».
         </p>
       </RespuestaPrimero>
 
@@ -142,7 +142,7 @@ export default function ConservacionRecibosPage() {
         <div className="space-y-3">
           <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              LCT, art. 143 — texto vigente desde el {VIGENCIA_REFORMA}
+              LCT, art. 143: texto vigente desde el {VIGENCIA_REFORMA}
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">
               «{CONSERVACION_TEXTOS.art143Vigente}»
@@ -151,27 +151,26 @@ export default function ConservacionRecibosPage() {
           </blockquote>
           <blockquote className="rounded-xl border-l-4 border-rose-400 bg-rose-50/50 p-4">
             <p className="text-sm font-semibold text-zinc-800">
-              LCT, art. 143 — texto anterior (hasta el {VIGENCIA_REFORMA})
+              LCT, art. 143: texto anterior (hasta el {VIGENCIA_REFORMA})
             </p>
             <p className="mt-1 text-sm italic text-zinc-700">
               «{CONSERVACION_TEXTOS.art143Anterior}»
             </p>
             <p className="mt-2 text-xs text-zinc-500">
               Recuperado de la captura oficial del 15 de diciembre de 2025 de esa misma página de
-              InfoLEG. La única diferencia entre los dos textos es la primera oración: las otras dos
-              —la del archivo digital y la de los pagos anteriores— son idénticas.
+              InfoLEG. Los dos textos solo cambian en la primera oración. Las otras dos (la del
+              archivo digital y la de los pagos anteriores) son idénticas.
             </p>
           </blockquote>
           <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
             <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
               El control cruzado
             </p>
-            <p className="mt-2 text-sm font-semibold text-zinc-800">LCT, art. 256 — Plazo común</p>
+            <p className="mt-2 text-sm font-semibold text-zinc-800">LCT, art. 256: plazo común</p>
             <p className="mt-1 text-sm italic text-zinc-700">«{CONSERVACION_TEXTOS.art256}»</p>
             <p className="mt-2 text-xs text-zinc-600">
-              Un número no se publica sin anclarlo contra otra norma. Los {ANIOS_LABORAL} años del
-              art. 143 son exactamente los de este artículo, que ya existía y no fue tocado por la
-              reforma.
+              No publicamos un número sin chequearlo contra otra norma. Los {ANIOS_LABORAL} años del
+              art. 143 son justo los de este artículo, que ya existía y la reforma no tocó.
             </p>
           </div>
         </div>
@@ -182,15 +181,15 @@ export default function ConservacionRecibosPage() {
         <div className="space-y-3">
           {[
             {
-              art: "Art. 144 — Firmar una planilla no reemplaza el recibo",
+              art: "Art. 144: firmar una planilla no reemplaza el recibo",
               texto: CONSERVACION_TEXTOS.art144,
             },
             {
-              art: "Art. 145 — El recibo no puede contener renuncias",
+              art: "Art. 145: el recibo no puede contener renuncias",
               texto: CONSERVACION_TEXTOS.art145,
             },
             {
-              art: `Art. 257 — El plazo se puede interrumpir, hasta ${MESES_INTERRUPCION_ART257} meses`,
+              art: `Art. 257: el plazo se puede interrumpir, hasta ${MESES_INTERRUPCION_ART257} meses`,
               texto: CONSERVACION_TEXTOS.art257,
             },
           ].map((a) => (
@@ -213,7 +212,7 @@ export default function ConservacionRecibosPage() {
           ))}
         </div>
         <p className="text-sm text-zinc-500">
-          El otro lado de la documentación laboral:{" "}
+          Los otros papeles del trabajo:{" "}
           <Link href="/libro-de-sueldos" className="font-medium text-emerald-700 hover:underline">
             el libro de sueldos y la presunción del art. 55
           </Link>{" "}
@@ -237,16 +236,16 @@ export default function ConservacionRecibosPage() {
                 className="text-emerald-700 hover:underline"
               >
                 {f.nombre}
-              </a>{" "}
-              — {f.detalle}
+              </a>
+              : {f.detalle}
             </li>
           ))}
         </ul>
         <p className="pt-2">
           Esta página cita el texto oficial de la Ley de Contrato de Trabajo publicado en InfoLEG y
-          el texto anterior del art. 143 recuperado de una captura de esa misma página previa a la
-          reforma — no un resumen de prensa. Es informativa y orientativa: no reemplaza el
-          asesoramiento de un profesional. Consultada el {CONSERVACION_FUENTES.consultadoEl}.
+          el texto anterior del art. 143, recuperado de una captura de esa misma página anterior a
+          la reforma. No es un resumen de prensa. Es informativa: no reemplaza el consejo de un
+          profesional. Consultada el {CONSERVACION_FUENTES.consultadoEl}.
         </p>
       </section>
     </article>

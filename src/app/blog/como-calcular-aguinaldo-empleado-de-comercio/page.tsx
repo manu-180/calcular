@@ -8,15 +8,15 @@ import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { COMERCIO_FUENTES } from "@/data/convenios/comercio";
 
 export const metadata: Metadata = {
-  title: "Cómo calcular el aguinaldo de un empleado de comercio 2026 (paso a paso)",
+  title: "Aguinaldo de empleado de Comercio 2026: cómo calcularlo",
   description:
-    "El aguinaldo de Comercio (SAC) es el 50% del mejor sueldo del semestre — y en 2026 ese sueldo INCLUYE los $120.000 no remunerativos. Fórmula, ejemplo real de junio 2026, el neto correcto (aportes 17%/3%) y los 2 errores que te hacen cobrar de menos.",
+    "El SAC de Comercio es el 50% del mejor sueldo del semestre e incluye los no remunerativos. Fórmula, ejemplo real y los 2 errores que te hacen cobrar menos.",
   alternates: { canonical: "/blog/como-calcular-aguinaldo-empleado-de-comercio" },
   openGraph: {
     type: "article",
     images: [
       {
-        url: `/og?t=${encodeURIComponent("Aguinaldo de Comercio 2026: cómo calcularlo")}&s=${encodeURIComponent("50% del mejor sueldo, con los $120.000 incluidos — ejemplo real")}`,
+        url: `/og?t=${encodeURIComponent("Aguinaldo de Comercio 2026: cómo calcularlo")}&s=${encodeURIComponent("50% del mejor sueldo, con los $120.000 incluidos. Ejemplo real")}`,
         width: 1200,
         height: 630,
       },
@@ -31,44 +31,44 @@ const pasos = [
     n: 1,
     titulo: "Tomá el mejor sueldo bruto del semestre",
     cuerpo:
-      "El aguinaldo es el 50% de la mayor remuneración mensual que cobraste en el semestre (Ley 23.041, art. 121 LCT). Para el aguinaldo de junio, el semestre es enero–junio; como la escala de Comercio subió mes a mes en 2026, el mejor sueldo es casi siempre el de junio. Tomá el bruto de ese mes: básico + sumas no remunerativas + antigüedad + presentismo.",
+      "El aguinaldo es el 50% del mejor sueldo mensual que cobraste en el semestre (Ley 23.041, art. 121 LCT). Para el aguinaldo de junio, el semestre va de enero a junio. Como la escala de Comercio subió mes a mes en 2026, el mejor sueldo casi siempre es el de junio. Tomá el bruto de ese mes: básico + sumas no remunerativas + antigüedad + presentismo.",
   },
   {
     n: 2,
-    titulo: "Incluí los $120.000 no remunerativos (esto es clave en Comercio)",
+    titulo: "Sumá los $120.000 no remunerativos (esto es clave en Comercio)",
     cuerpo:
-      "El acuerdo paritario 2026 de Comercio dice expresamente que las sumas no remunerativas se computan para el aguinaldo. O sea: tu mejor sueldo, a los efectos del SAC, incluye los $120.000. Dejarlos afuera es el error más caro — son $60.000 de aguinaldo bruto menos (la mitad de $120.000).",
+      "El acuerdo paritario 2026 de Comercio dice expresamente que las sumas no remunerativas cuentan para el aguinaldo. O sea: para el aguinaldo, tu mejor sueldo incluye los $120.000. Dejarlos afuera es el error más caro: son $60.000 menos de aguinaldo bruto (la mitad de $120.000).",
   },
   {
     n: 3,
     titulo: "Dividí ese sueldo por dos",
     cuerpo:
-      "El aguinaldo bruto es exactamente la mitad de ese mejor sueldo. Si trabajaste el semestre completo, esa es tu primera cuota. Si entraste o saliste en el medio, es proporcional a los días trabajados (días del semestre que estuviste / días totales del semestre).",
+      "El aguinaldo bruto es justo la mitad de ese mejor sueldo. Si trabajaste el semestre completo, esa es tu cuota. Si entraste o te fuiste en el medio, es proporcional a los días trabajados (días que estuviste / días totales del semestre).",
   },
   {
     n: 4,
     titulo: "Restá los aportes para llegar al neto",
     cuerpo:
-      "Acá va el segundo dato fino: sobre la parte remunerativa del aguinaldo se descuenta el 17% (11% jubilación + 3% PAMI + 3% obra social), pero sobre la parte que viene de los $120.000 no remunerativos solo se descuenta el 3% de obra social. Aplicar el 17% sobre todo el aguinaldo descuenta de más y te paga menos en mano.",
+      "Acá va el segundo detalle: a la parte remunerativa del aguinaldo se le descuenta el 17% (11% jubilación + 3% PAMI + 3% obra social), pero a la parte que viene de los $120.000 no remunerativos solo el 3% de obra social. Si aplicás el 17% a todo el aguinaldo, descontás de más y te queda menos en mano.",
   },
 ];
 
 const errores = [
   {
     q: "Calcular el aguinaldo solo sobre el básico (sin los $120.000)",
-    a: "Es el error más frecuente y el más caro. En Comercio, el acuerdo 2026 incluye las sumas no remunerativas en la base del aguinaldo. Olvidarlas resta $60.000 de SAC bruto (la mitad de los $120.000). Esos $120.000 se cobran cada mes hasta junio 2026.",
+    a: "Es el error más común y el más caro. En Comercio, el acuerdo 2026 mete las sumas no remunerativas en la base del aguinaldo. Si te las olvidás, perdés $60.000 de aguinaldo bruto (la mitad de los $120.000). Esos $120.000 se cobran cada mes hasta junio 2026.",
   },
   {
     q: "Descontar el 17% sobre todo el aguinaldo",
-    a: "La parte del aguinaldo que viene de las sumas no remunerativas solo aporta el 3% de obra social, no el 17%. Aplicar el 17% plano sobre todo el SAC descuenta de más: en el ejemplo de un Vendedor B son unos $9.100 de menos en mano.",
+    a: "La parte del aguinaldo que viene de las sumas no remunerativas solo paga el 3% de obra social, no el 17%. Si aplicás el 17% parejo a todo el aguinaldo, descontás de más: en el ejemplo de un Vendedor B son unos $9.100 menos en mano.",
   },
   {
     q: "Promediar los sueldos del semestre en vez de tomar el mejor",
-    a: "El aguinaldo NO es el promedio: es el 50% de la mejor remuneración mensual del semestre. Como la escala de Comercio sube en cada paritaria, promediar (usando sueldos viejos más bajos) siempre da un número menor al que corresponde.",
+    a: "El aguinaldo NO es el promedio: es el 50% del mejor sueldo mensual del semestre. Como la escala de Comercio sube en cada paritaria, promediar (con sueldos viejos más bajos) siempre da menos de lo que corresponde.",
   },
   {
     q: "Olvidar la antigüedad y el presentismo",
-    a: "El mejor sueldo del que sale el aguinaldo es el bruto completo: incluye la antigüedad (1% por año, sobre básico y no remunerativo) y el presentismo (8,33%) si los cobrás. Tomar solo el básico de convenio deja plata afuera.",
+    a: "El mejor sueldo del que sale el aguinaldo es el bruto completo: incluye la antigüedad (1% por año, sobre básico y no remunerativo) y el presentismo (8,33%) si los cobrás. Si tomás solo el básico de convenio, dejás plata afuera.",
   },
 ];
 
@@ -83,27 +83,27 @@ const sacPorCategoria = [
 const faqs = [
   {
     q: "¿Cuánto es el aguinaldo de un empleado de comercio en junio de 2026?",
-    a: "Para un Vendedor B (la categoría más común en locales), jornada completa, sin antigüedad y cobrando presentismo: el mejor sueldo de junio es $1.379.892 bruto, así que el aguinaldo bruto es $689.946 y quedan ≈ $581.755 en mano (tras aportes). Según la categoría, el SAC bruto va de unos $668.192 (Maestranza A) a $703.866 (Vendedor D). Si tenés antigüedad, sumá un 1% por año al sueldo antes de dividirlo por dos.",
+    a: "Para un Vendedor B (la categoría más común en locales), jornada completa, sin antigüedad y con presentismo: el mejor sueldo de junio es $1.379.892 bruto, así que el aguinaldo bruto es $689.946 y quedan ≈ $581.755 en mano (después de aportes). Según la categoría, el aguinaldo bruto va de unos $668.192 (Maestranza A) a $703.866 (Vendedor D). Si tenés antigüedad, sumá un 1% por año al sueldo antes de dividirlo por dos.",
   },
   {
     q: "¿Las sumas no remunerativas cuentan para el aguinaldo de comercio?",
-    a: "Sí. El acuerdo paritario 2026 de Comercio establece expresamente que los importes no remunerativos se computan para el aguinaldo (SAC), las vacaciones, la antigüedad, el presentismo, las horas extra y las indemnizaciones. Por eso tu mejor sueldo, a efectos del aguinaldo, incluye los $120.000.",
+    a: "Sí. El acuerdo paritario 2026 de Comercio dice expresamente que los montos no remunerativos cuentan para el aguinaldo (SAC), las vacaciones, la antigüedad, el presentismo, las horas extra y las indemnizaciones. Por eso, para el aguinaldo, tu mejor sueldo incluye los $120.000.",
   },
   {
     q: "¿Cuándo se cobra el aguinaldo 2026?",
-    a: "La primera cuota se paga hasta el 30 de junio y la segunda hasta el 18 de diciembre, con una tolerancia legal de cuatro días hábiles. Cada cuota es el 50% de la mejor remuneración del semestre correspondiente (enero–junio para la primera, julio–diciembre para la segunda).",
+    a: "La primera cuota se paga hasta el 30 de junio y la segunda hasta el 18 de diciembre, con una tolerancia legal de cuatro días hábiles. Cada cuota es el 50% del mejor sueldo del semestre que corresponde (enero a junio para la primera, julio a diciembre para la segunda).",
   },
   {
     q: "¿El aguinaldo de diciembre se calcula igual?",
-    a: "El método es el mismo (50% del mejor sueldo del semestre). Ojo con un cambio: el acuerdo del 22/7/2026 corrió la incorporación de los $120.000 al básico, que ahora empieza en diciembre de 2026 y termina en mayo de 2027. Para el aguinaldo de diciembre los $120.000 siguen siendo en su mayoría no remunerativos, así que los aportes siguen siendo 17% sobre la parte remunerativa y 3% sobre la no remunerativa. El bono de $50.000 (julio y agosto) NO integra la base del SAC.",
+    a: "El método es el mismo (50% del mejor sueldo del semestre). Ojo con un cambio: el acuerdo del 22/7/2026 postergó el pase de los $120.000 al básico, que ahora empieza en diciembre de 2026 y termina en mayo de 2027. Para el aguinaldo de diciembre, los $120.000 siguen siendo casi todos no remunerativos. Entonces los aportes siguen siendo 17% sobre la parte remunerativa y 3% sobre la no remunerativa. El bono de $50.000 (julio y agosto) NO suma para el aguinaldo.",
   },
   {
     q: "¿Y si no trabajé todo el semestre?",
-    a: "El aguinaldo es proporcional a los días trabajados: tomás el 50% del mejor sueldo y lo multiplicás por (días trabajados en el semestre ÷ días del semestre). Lo mismo aplica si te despiden o renunciás en el medio: te corresponde el SAC proporcional hasta el día del egreso.",
+    a: "El aguinaldo es proporcional a los días trabajados: tomás el 50% del mejor sueldo y lo multiplicás por (días trabajados en el semestre ÷ días del semestre). Lo mismo si te despiden o renunciás en el medio: te corresponde el aguinaldo proporcional hasta el día que te vas.",
   },
   {
     q: "¿El aguinaldo paga Ganancias?",
-    a: "Solo si tu sueldo es alto, y no se retiene todo junto: el SAC se prorratea a lo largo del año para el cálculo de Ganancias. Lo explicamos en detalle en la guía «¿El aguinaldo paga Ganancias en 2026?».",
+    a: "Solo si tu sueldo es alto, y no se retiene todo junto: para Ganancias, el aguinaldo se reparte a lo largo del año. Lo explicamos en la guía «¿El aguinaldo paga Ganancias en 2026?».",
   },
 ];
 
@@ -113,7 +113,7 @@ export default function Post() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "Cómo calcular el aguinaldo de un empleado de comercio 2026 (paso a paso)",
+        titulo: "Aguinaldo de empleado de Comercio 2026: cómo calcularlo",
         descripcion:
           "Guía para calcular el aguinaldo (SAC) de un empleado de Comercio (CCT 130/75) en 2026: el 50% del mejor sueldo del semestre con los $120.000 no remunerativos incluidos, el neto correcto con aportes 17%/3%, y un ejemplo real de junio 2026.",
         url: "/blog/como-calcular-aguinaldo-empleado-de-comercio",
@@ -144,8 +144,8 @@ export default function Post() {
         </h1>
         <p className="text-zinc-600">
           El aguinaldo (SAC) es simple: la mitad del mejor sueldo del semestre. Pero en Comercio
-          hay dos detalles que cambian el número — los $120.000 no remunerativos y cómo se
-          descuentan los aportes. Acá está el método completo, con un ejemplo real de junio de
+          hay dos detalles que cambian el número: los $120.000 no remunerativos y cómo se
+          descuentan los aportes. Acá tenés el método completo, con un ejemplo real de junio de
           2026 y la fuente oficial.
         </p>
       </header>
@@ -159,7 +159,7 @@ export default function Post() {
           <strong>$1.379.892</strong>, por lo que su aguinaldo bruto es <strong>$689.946</strong> y
           quedan <strong>≈ $581.755 en mano</strong> (los aportes son 17% sobre la parte
           remunerativa y solo 3% sobre la no remunerativa). La primera cuota se paga hasta el{" "}
-          <strong>30 de junio</strong>.
+          <strong>30 de junio</strong> y la segunda, hasta el <strong>18 de diciembre</strong>.
         </p>
       </RespuestaPrimero>
 
@@ -237,9 +237,9 @@ export default function Post() {
         </div>
         <p className="text-xs text-zinc-400">
           Del mejor sueldo de $1.379.892, son $1.249.892 remunerativos y $130.000 no remunerativos
-          (los $120.000 + su parte de presentismo). El aguinaldo hereda esa proporción: por eso una
-          parte aporta 17% y la otra solo 3%. Si lo calculás con un 17% plano sobre los $689.946, te
-          da ≈ $9.100 menos de lo que corresponde.
+          (los $120.000 + su parte de presentismo). El aguinaldo mantiene esa proporción: por eso
+          una parte paga 17% y la otra solo 3%. Si le aplicás un 17% parejo a los $689.946, te da ≈
+          $9.100 menos de lo que corresponde.
         </p>
       </section>
 
@@ -299,12 +299,12 @@ export default function Post() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Si liquidás sueldos de comercio</h2>
         <p className="text-zinc-600">
-          Calcular un aguinaldo puntual es fácil. Lo que cansa, si liquidás varios empleados o lo
-          hacés todos los meses, es <strong>volver a buscar la escala nueva cada paritaria</strong> y
-          rehacer las cuentas (sueldo, aguinaldo, vacaciones) sin equivocarse con los $120.000 ni con
-          los aportes. Para eso armamos la planilla de Excel/Google Sheets con la escala oficial
-          embebida y actualización garantizada con cada acuerdo: ponés categoría, mes y jornada, y
-          tenés el sueldo y el aguinaldo desglosados — los mismos números que esta guía.
+          Calcular un aguinaldo suelto es fácil. Lo que cansa, si liquidás a varias personas o todos
+          los meses, es <strong>buscar la escala nueva en cada paritaria</strong> y rehacer las
+          cuentas (sueldo, aguinaldo, vacaciones) sin equivocarte con los $120.000 ni con los
+          aportes. Para eso armamos la planilla de Excel/Google Sheets con la escala oficial adentro
+          y actualizada con cada acuerdo: ponés categoría, mes y jornada, y tenés el sueldo y el
+          aguinaldo desglosados, con los mismos números que esta guía.
         </p>
       </section>
 
@@ -344,7 +344,7 @@ export default function Post() {
               </a>
             </li>
           ))}
-          <li>• Ley 23.041 y art. 121 LCT (Sueldo Anual Complementario) — texto en Infoleg.</li>
+          <li>• Ley 23.041 y art. 121 LCT (Sueldo Anual Complementario), texto en Infoleg.</li>
         </ul>
         <p className="text-xs text-zinc-400">
           Última verificación: {PUBLICADO}. Calculá tu aguinaldo en la{" "}

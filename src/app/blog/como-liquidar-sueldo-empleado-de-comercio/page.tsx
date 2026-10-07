@@ -8,9 +8,9 @@ import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { COMERCIO_FUENTES } from "@/data/convenios/comercio";
 
 export const metadata: Metadata = {
-  title: "Cómo liquidar el sueldo de un empleado de comercio 2026 (paso a paso)",
+  title: "Cómo liquidar un sueldo de Comercio 2026, paso a paso",
   description:
-    "Guía práctica para liquidar un sueldo del CCT 130/75: básico por categoría, los $120.000 no remunerativos, antigüedad, presentismo, jornada parcial y descuentos. Con un ejemplo real de junio 2026 y la escala oficial de FAECYS.",
+    "Básico por categoría, no remunerativos, antigüedad, presentismo, jornada parcial y descuentos del CCT 130/75, con un ejemplo real y la escala de FAECYS.",
   alternates: { canonical: "/blog/como-liquidar-sueldo-empleado-de-comercio" },
   openGraph: {
     type: "article",
@@ -31,75 +31,75 @@ const pasos = [
     n: 1,
     titulo: "Identificá la categoría y tomá el básico del mes",
     cuerpo:
-      "El CCT 130/75 agrupa al personal en Maestranza, Administrativos (A–F), Cajeros (A–C), Auxiliares, Auxiliares especializados y Vendedores (A–D). La categoría figura en el recibo. Con la categoría y el mes, buscás el básico de convenio en la escala oficial de FAECYS. La más común en locales es Vendedor B.",
+      "El CCT 130/75 divide al personal en Maestranza, Administrativos (A a F), Cajeros (A a C), Auxiliares, Auxiliares especializados y Vendedores (A a D). La categoría figura en el recibo. Con la categoría y el mes, buscás el básico de convenio en la escala oficial de FAECYS. La más común en locales es Vendedor B.",
   },
   {
     n: 2,
-    titulo: "Sumá las sumas no remunerativas del mes",
+    titulo: "Agregá las sumas no remunerativas del mes",
     cuerpo:
-      "Hasta junio de 2026 todas las categorías cobran $120.000 no remunerativos por mes ($100.000 prorrogados de 2025 + $20.000 del acuerdo de marzo). No es un bono de pago único: se cobra cada mes. En julio de 2026 esos $120.000 se incorporan al básico y dejan de figurar como suma aparte.",
+      "Hasta junio de 2026, todas las categorías cobran $120.000 no remunerativos por mes ($100.000 prorrogados de 2025 + $20.000 del acuerdo de marzo). No es un bono que se paga una vez: se cobra todos los meses. En julio de 2026 esos $120.000 se incorporan al básico y dejan de figurar como suma aparte.",
   },
   {
     n: 3,
     titulo: "Calculá la antigüedad (1% por año)",
     cuerpo:
-      "Es el 1% del sueldo por cada año cumplido en la empresa (art. 24 del CCT). Ojo, el dato que más se equivoca: por instrucción expresa de FAECYS, la antigüedad se aplica sobre el básico Y sobre las sumas no remunerativas. Con 10 años, sumás un 10% sobre el total (básico + $120.000).",
+      "Es el 1% del sueldo por cada año cumplido en la empresa (art. 24 del CCT). Ojo, porque es lo que más se calcula mal: por instrucción expresa de FAECYS, la antigüedad va sobre el básico Y sobre las sumas no remunerativas. Con 10 años, sumás un 10% sobre el total (básico + $120.000).",
   },
   {
     n: 4,
     titulo: "Agregá el presentismo (8,33%) si corresponde",
     cuerpo:
-      "Es la asignación por asistencia y puntualidad del art. 40: una doceava parte (8,33%) de la remuneración del mes, incluida la antigüedad y las sumas no remunerativas. Se pierde con más de una ausencia injustificada en el mes; enfermedad, vacaciones y licencias legales no cuentan.",
+      "Es el adicional por asistencia y puntualidad del art. 40: una doceava parte (8,33%) del sueldo del mes, con la antigüedad y las sumas no remunerativas incluidas. Se pierde con más de una falta injustificada en el mes; enfermedad, vacaciones y licencias legales no cuentan.",
   },
   {
     n: 5,
     titulo: "Ajustá por jornada si es a tiempo parcial",
     cuerpo:
-      "La jornada completa del sector es de 8 horas. Si el empleado trabaja 6 horas cobra el 75% (básico y no remunerativo proporcionales), y con 4 horas el 50%. La antigüedad y el presentismo se calculan sobre esas cifras ya proporcionadas.",
+      "La jornada completa del sector es de 8 horas. Con 6 horas se cobra el 75% (básico y no remunerativo en proporción), y con 4 horas, el 50%. La antigüedad y el presentismo se calculan sobre esos montos ya ajustados.",
   },
   {
     n: 6,
     titulo: "Restá los aportes para llegar al neto",
     cuerpo:
-      "Del sueldo remunerativo se descuenta el 17% de aportes de ley (11% jubilación + 3% PAMI + 3% obra social). Las sumas no remunerativas solo descuentan el 3% de obra social (OSECAC) — por eso «rinden» más en mano. Aparte pueden ir la cuota sindical (2% si está afiliado) y, en sueldos altos, Ganancias.",
+      "Al sueldo remunerativo se le descuenta el 17% de aportes de ley (11% jubilación + 3% PAMI + 3% obra social). Las sumas no remunerativas solo pagan el 3% de obra social (OSECAC), y por eso «rinden» más en mano. Aparte pueden ir la cuota sindical (2% si está afiliado) y, en sueldos altos, Ganancias.",
   },
 ];
 
 const errores = [
   {
     q: "Confundir el bono de $20.000 con los $120.000",
-    a: "Las dos cifras existen: el acuerdo de marzo creó $20.000 nuevos por mes (abr–jun) y prorrogó los $100.000 que venían de 2025. El total no remunerativo que se cobra cada mes es $120.000, no $20.000.",
+    a: "Las dos cifras existen: el acuerdo de marzo creó $20.000 nuevos por mes (de abril a junio) y prorrogó los $100.000 que venían de 2025. El total no remunerativo que se cobra cada mes es $120.000, no $20.000.",
   },
   {
     q: "Aplicar la antigüedad solo sobre el básico",
-    a: "La circular de FAECYS es explícita: la antigüedad se calcula sobre el básico más las sumas no remunerativas. Liquidarla solo sobre el básico paga de menos.",
+    a: "La circular de FAECYS es clara: la antigüedad se calcula sobre el básico más las sumas no remunerativas. Si la liquidás solo sobre el básico, pagás de menos.",
   },
   {
     q: "Descontar el 17% sobre todo el bruto",
-    a: "Las sumas no remunerativas solo descuentan el 3% de obra social, no el 17%. Aplicar el 17% sobre los $120.000 da un neto equivocado (más bajo del que corresponde).",
+    a: "Las sumas no remunerativas solo pagan el 3% de obra social, no el 17%. Si aplicás el 17% a los $120.000, el neto te da mal (más bajo de lo que corresponde).",
   },
   {
     q: "Olvidar que en julio cambia la estructura",
-    a: "Desde julio de 2026 los $120.000 se incorporan al básico: ya no hay suma no remunerativa separada y todo el sueldo vuelve a ser remunerativo (con aportes completos).",
+    a: "Desde julio de 2026 los $120.000 se incorporan al básico: ya no hay suma no remunerativa aparte y todo el sueldo vuelve a ser remunerativo (con aportes completos).",
   },
 ];
 
 const faqs = [
   {
     q: "¿Cuánto cobra un empleado de comercio en junio de 2026?",
-    a: "Para Vendedor B (la categoría más común en locales), jornada completa y sin antigüedad: $1.153.746 de básico + $120.000 no remunerativos = $1.273.746 brutos; con presentismo sube a $1.379.892, y en mano quedan aproximadamente $1.163.510 antes de cuota sindical y Ganancias. Las demás categorías van de $1.113.585 (Maestranza A) a $1.179.445 (Vendedor D / Administrativo F) de básico, siempre más los $120.000.",
+    a: "Un Vendedor B (la categoría más común en locales), con jornada completa y sin antigüedad, cobra $1.153.746 de básico + $120.000 no remunerativos = $1.273.746 brutos. Con presentismo sube a $1.379.892, y en mano le quedan cerca de $1.163.510 antes de cuota sindical y Ganancias. Las demás categorías van de $1.113.585 (Maestranza A) a $1.179.445 (Vendedor D / Administrativo F) de básico, siempre más los $120.000.",
   },
   {
     q: "¿Qué necesito para liquidar un sueldo de comercio?",
-    a: "La categoría del convenio, el mes a liquidar, los años de antigüedad, la jornada y si corresponde el presentismo. Con eso y la escala oficial de FAECYS armás el bruto; restando los aportes (17% sobre lo remunerativo y 3% sobre lo no remunerativo) llegás al neto.",
+    a: "La categoría del convenio, el mes que vas a liquidar, los años de antigüedad, la jornada y si cobra presentismo. Con eso y la escala oficial de FAECYS armás el bruto. Si le restás los aportes (17% sobre lo remunerativo y 3% sobre lo no remunerativo), llegás al neto.",
   },
   {
     q: "¿La planilla o calculadora reemplaza a un contador?",
-    a: "No. Son herramientas de cálculo y verificación. Para emitir recibos de sueldo oficiales de una empresa conviene un contador matriculado o un sistema de liquidación habilitado. Sirven para estimar, controlar que el recibo esté bien y liquidar más rápido mes a mes.",
+    a: "No. Son herramientas para calcular y controlar. Para emitir los recibos oficiales de una empresa conviene un contador matriculado o un sistema de liquidación habilitado. Sirven para estimar, revisar que el recibo esté bien y liquidar más rápido cada mes.",
   },
   {
     q: "¿Cada cuánto cambia la escala de comercio?",
-    a: "Suele cambiar cada 2–4 meses por las paritarias. El acuerdo vigente además fijó una revisión en junio de 2026 según la inflación. Por eso conviene trabajar siempre con la escala del mes que estás liquidando, no con una vieja.",
+    a: "Suele cambiar cada 2 a 4 meses por las paritarias. El acuerdo vigente además fijó una revisión en junio de 2026 según la inflación. Por eso conviene usar siempre la escala del mes que estás liquidando, no una vieja.",
   },
 ];
 
@@ -109,7 +109,7 @@ export default function Post() {
     "@graph": [
       ORGANIZACION,
       articleSchema({
-        titulo: "Cómo liquidar el sueldo de un empleado de comercio 2026 (paso a paso)",
+        titulo: "Cómo liquidar un sueldo de Comercio 2026, paso a paso",
         descripcion:
           "Guía práctica para liquidar un sueldo del CCT 130/75 con la escala oficial de FAECYS: básico, sumas no remunerativas, antigüedad, presentismo, jornada parcial y descuentos, con un ejemplo real de junio 2026.",
         url: "/blog/como-liquidar-sueldo-empleado-de-comercio",
@@ -140,8 +140,8 @@ export default function Post() {
         </h1>
         <p className="text-zinc-600">
           Liquidar un sueldo del CCT 130/75 (Empleados de Comercio) es sumar bien cinco cosas y
-          restar los aportes. Acá está el método completo, con un ejemplo real de junio de 2026 y
-          la escala oficial de FAECYS — sin depender de blogs desactualizados.
+          restar los aportes. Acá tenés el método completo, con un ejemplo real de junio de 2026 y
+          la escala oficial de FAECYS, sin depender de blogs desactualizados.
         </p>
       </header>
 
@@ -163,7 +163,11 @@ export default function Post() {
         <Link href="/convenios/comercio" className="text-emerald-700 underline">
           calculadora de sueldo de comercio
         </Link>{" "}
-        (gratis). Abajo está el método completo para entender de dónde sale cada peso.
+        (gratis). Para ver lo que queda en mano con tus datos, usá{" "}
+        <Link href="/sueldo-neto/comercio" className="text-emerald-700 underline">
+          sueldo neto de Comercio
+        </Link>
+        . Abajo está el método completo para entender de dónde sale cada peso.
       </p>
 
       <section className="space-y-4">
@@ -193,7 +197,7 @@ export default function Post() {
           Ejemplo completo: Vendedor B, junio 2026
         </h2>
         <p className="text-zinc-600">
-          Jornada completa, sin antigüedad, cobrando presentismo. Los básicos salen de la circular
+          Jornada completa, sin antigüedad y con presentismo. Los básicos salen de la circular
           oficial de FAECYS del 7/4/2026:
         </p>
         <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white shadow-sm">
@@ -254,11 +258,11 @@ export default function Post() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Si liquidás todos los meses</h2>
         <p className="text-zinc-600">
-          La calculadora resuelve un sueldo puntual. Pero si liquidás varios empleados o lo hacés
-          todos los meses, lo que cansa es <strong>volver a buscar la escala nueva cada paritaria</strong>{" "}
-          y rehacer la planilla. Para eso armamos la planilla de Excel/Google Sheets con la escala
-          oficial embebida y actualización garantizada con cada acuerdo: ponés categoría, mes y
-          jornada, y tenés el bruto y el neto desglosados — los mismos números que esta guía.
+          La calculadora resuelve un sueldo suelto. Pero si liquidás a varias personas o todos los
+          meses, lo que cansa es <strong>buscar la escala nueva en cada paritaria</strong> y rehacer
+          la planilla. Para eso armamos la planilla de Excel/Google Sheets con la escala oficial
+          adentro y actualizada con cada acuerdo: ponés categoría, mes y jornada, y tenés el bruto y
+          el neto desglosados, con los mismos números que esta guía.
         </p>
       </section>
 

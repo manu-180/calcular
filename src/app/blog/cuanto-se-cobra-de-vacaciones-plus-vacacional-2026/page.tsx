@@ -12,10 +12,9 @@ import { formatARS } from "@/lib/formato";
 const PUBLICADO = "25 de junio de 2026";
 const PUBLICADO_ISO = "2026-06-25";
 
-const titulo =
-  "Cuánto se cobra de vacaciones en 2026: el plus vacacional explicado";
+const titulo = "Cuánto se cobra de vacaciones 2026: el plus vacacional";
 const descripcion =
-  "Las vacaciones se pagan más que un mes normal: cada día se cobra el sueldo dividido 25, no dividido 30. Por qué pasa, cuánto es el plus vacacional por tramo de antigüedad y la calculadora que lo resuelve.";
+  "Cada día de vacaciones se paga como sueldo dividido 25 y no 30. Por qué pasa, cuánto es el plus según tu antigüedad y la calculadora que lo resuelve.";
 
 export const metadata: Metadata = {
   title: titulo,
@@ -54,23 +53,23 @@ const ej = TRAMOS[0].r;
 const faqs = [
   {
     q: "¿Por qué las vacaciones se pagan más que un día de trabajo normal?",
-    a: "Porque la ley manda dividir el sueldo mensual por 25 para sacar el valor del día de vacaciones (art. 155 inc. a LCT), mientras que un día normal se calcula sobre un mes de 30 días. Dividir por un número más chico da un valor por día más alto: alrededor de un 20% más. Esa diferencia es el «plus vacacional».",
+    a: "Porque la ley manda dividir el sueldo mensual por 25 para sacar el valor del día de vacaciones (art. 155 inc. a LCT), y un día normal se calcula sobre un mes de 30 días. Si dividís por un número más chico, el día vale más: cerca de un 20% más. Esa diferencia es el «plus vacacional».",
   },
   {
     q: "¿Qué es exactamente el plus vacacional?",
-    a: "Es la diferencia entre lo que cobrás por tus días de vacaciones (sueldo ÷ 25 por día) y lo que esos mismos días pagarían a valor de día normal (sueldo ÷ 30). No es un extra que se suma aparte: es la consecuencia de la fórmula legal de pago. En el recibo puede aparecer desglosado o ya incluido en el total de vacaciones.",
+    a: "Es la diferencia entre lo que cobrás por tus días de vacaciones (sueldo ÷ 25 por día) y lo que esos mismos días valdrían como días normales (sueldo ÷ 30). No es un extra que se suma aparte: sale de la fórmula de pago que pone la ley. En el recibo puede aparecer separado o ya incluido en el total de vacaciones.",
   },
   {
     q: "¿Cuántos días de vacaciones me corresponden?",
-    a: "Según la antigüedad al 31 de diciembre (art. 150 LCT): 14 días corridos hasta 5 años, 21 días de 5 a 10, 28 días de 10 a 20 y 35 días con más de 20 años. Si entraste durante el año y no llegaste a la mitad de los días hábiles, cobrás 1 día por cada 20 trabajados (art. 153).",
+    a: "Depende de tu antigüedad al 31 de diciembre (art. 150 LCT): 14 días corridos hasta 5 años, 21 días de 5 a 10, 28 días de 10 a 20 y 35 días con más de 20 años. Si entraste durante el año y no llegaste a trabajar la mitad de los días hábiles, te toca 1 día por cada 20 trabajados (art. 153).",
   },
   {
     q: "¿Las vacaciones tienen los mismos descuentos que el sueldo?",
-    a: "Sí: la retribución de vacaciones es remunerativa, así que sufre los aportes personales de ley (11% jubilación, 3% PAMI y 3% obra social). El plus vacacional ya está dentro de esa retribución; lo que mostramos en la tabla es el bruto antes de aportes.",
+    a: "Sí: el pago de vacaciones es remunerativo, así que tiene los aportes de ley (11% jubilación, 3% PAMI y 3% obra social). El plus vacacional ya está dentro de ese pago. La tabla muestra el bruto, antes de aportes.",
   },
   {
     q: "¿Me pueden pagar las vacaciones en plata sin que me las tome?",
-    a: "No, salvo que termine la relación laboral. Las vacaciones son de goce obligatorio: el descanso no se puede reemplazar por dinero mientras seguís trabajando (art. 162 LCT). La única excepción es la liquidación final, donde se pagan las vacaciones proporcionales no gozadas.",
+    a: "No, salvo que se termine el trabajo. Las vacaciones se tienen que tomar: mientras seguís trabajando, el descanso no se puede cambiar por plata (art. 162 LCT). La única excepción es la liquidación final, donde te pagan las vacaciones proporcionales que no tomaste.",
   },
 ];
 
@@ -103,8 +102,8 @@ export default function Post() {
         <p className="text-zinc-600">
           Mucha gente nota que el mes que se toma vacaciones cobra un poco más, y no entiende por
           qué. No es un error ni un premio: la ley paga cada día de vacaciones más caro que un día
-          normal. Acá está la razón, cuánto es el plus según tu antigüedad y la calculadora que lo
-          resuelve por vos.
+          normal. Acá tenés el porqué, cuánto es el plus según tu antigüedad y la calculadora que
+          hace la cuenta.
         </p>
       </header>
 
@@ -173,8 +172,13 @@ export default function Post() {
           </table>
         </div>
         <p className="text-xs text-zinc-400">
-          Calculado con el mismo motor que la calculadora del sitio: día de vacaciones = sueldo ÷ 25
-          (art. 155), día normal = sueldo ÷ 30. Reemplazá el sueldo por el tuyo en la calculadora.
+          Calculado con la misma cuenta que la calculadora del sitio: día de vacaciones = sueldo ÷ 25
+          (art. 155), día normal = sueldo ÷ 30. Poné tu sueldo en la calculadora. Si liquidás
+          vacaciones de varias personas, te sirve la{" "}
+          <Link href="/planillas/vacaciones" className="text-emerald-700 underline">
+            planilla de vacaciones
+          </Link>
+          .
         </p>
       </section>
 
@@ -203,9 +207,9 @@ export default function Post() {
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-zinc-900">Vacaciones no gozadas: el otro momento del plus</h2>
         <p className="text-zinc-600">
-          Cuando termina la relación laboral —por renuncia o despido— te pagan las vacaciones
-          proporcionales que no llegaste a tomarte, también a valor sueldo ÷ 25 (art. 156 LCT).
-          Entran en la liquidación final junto con el aguinaldo proporcional.
+          Cuando termina el trabajo (por renuncia o por despido), te pagan las vacaciones
+          proporcionales que no llegaste a tomarte, también a sueldo ÷ 25 (art. 156 LCT). Entran en
+          la liquidación final junto con el aguinaldo proporcional.
         </p>
         <p className="text-sm text-zinc-600">
           ¿Te despidieron? Mirá cómo se calcula la{" "}
@@ -258,9 +262,9 @@ export default function Post() {
           </li>
         </ul>
         <p className="text-xs text-zinc-400">
-          Esta guía es informativa y orientativa. La escala y la fórmula son las vigentes en 2026;
-          tu caso puntual puede tener particularidades de convenio. Ante una duda concreta, consultá
-          con tu empleador, tu sindicato o un profesional.
+          Esta guía es informativa. La escala y la fórmula son las vigentes en 2026, y tu convenio
+          puede tener reglas propias. Si tenés una duda concreta, consultá con tu empleador, tu
+          sindicato o un profesional.
         </p>
       </section>
     </article>

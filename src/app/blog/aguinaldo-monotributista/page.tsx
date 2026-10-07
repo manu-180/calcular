@@ -10,10 +10,9 @@ import { formatARS } from "@/lib/formato";
 const PUBLICADO = "24 de junio de 2026";
 const PUBLICADO_ISO = "2026-06-24";
 
-const titulo =
-  "¿El monotributista cobra aguinaldo? Qué dice la ley en 2026";
+const titulo = "¿El monotributista cobra aguinaldo? Qué dice la ley";
 const descripcion =
-  "No: el monotributista no cobra aguinaldo, porque el SAC es solo para trabajadores en relación de dependencia. La excepción del pluriempleo, por qué la ley lo deja afuera y cómo armarte tu propio aguinaldo apartando una parte de lo que facturás.";
+  "No: el aguinaldo es solo para trabajadores en relación de dependencia. La excepción del pluriempleo y cómo armarte tu propio aguinaldo si facturás.";
 
 export const metadata: Metadata = {
   title: titulo,
@@ -44,23 +43,23 @@ const escenariosAhorro = [600_000, 900_000, 1_500_000].map((facturaMensual) => (
 const faqs = [
   {
     q: "¿El monotributista cobra aguinaldo?",
-    a: "No. El aguinaldo (Sueldo Anual Complementario) es un derecho de los trabajadores en relación de dependencia, regulado por la Ley 23.041 y la Ley de Contrato de Trabajo. El monotributista es un trabajador independiente: su ingreso surge de lo que factura por sus servicios o productos, no de un sueldo, así que no le corresponde SAC.",
+    a: "No. El aguinaldo (en la ley se llama Sueldo Anual Complementario, SAC) es un derecho de quienes trabajan en relación de dependencia, según la Ley 23.041 y la Ley de Contrato de Trabajo. El monotributista trabaja por su cuenta: cobra lo que factura por sus servicios o productos, no un sueldo. Por eso no le corresponde aguinaldo.",
   },
   {
     q: "Soy monotributista pero además tengo un empleo en blanco. ¿Cobro aguinaldo?",
-    a: "Sí, pero solo por el empleo registrado. Si además de monotributista estás en relación de dependencia (pluriempleo), tu empleador te paga el SAC calculado sobre ese sueldo. La parte que facturás como monotributista no genera aguinaldo. Son dos relaciones distintas: una en blanco con aguinaldo, otra autónoma sin aguinaldo.",
+    a: "Sí, pero solo por el empleo registrado. Si además de facturar estás en relación de dependencia (pluriempleo), tu empleador te paga el aguinaldo sobre ese sueldo. Lo que facturás como monotributista no suma. Son dos trabajos distintos: uno en blanco con aguinaldo, otro por tu cuenta sin aguinaldo.",
   },
   {
     q: "¿Por qué la ley no le da aguinaldo al monotributista?",
-    a: "Porque el aguinaldo es propio del contrato de trabajo en relación de dependencia: lo paga el empleador como parte de la remuneración. El monotributista no tiene empleador ni sueldo, factura por su cuenta. Por eso tampoco tiene vacaciones pagas, indemnización ni licencias: esos derechos vienen del vínculo laboral en relación de dependencia que el monotributista no tiene.",
+    a: "Porque el aguinaldo es parte del contrato de trabajo en relación de dependencia: lo paga el empleador como parte del sueldo. El monotributista no tiene empleador ni sueldo, factura por su cuenta. Por eso tampoco tiene vacaciones pagas, indemnización ni licencias: esos derechos vienen de una relación de dependencia que el monotributista no tiene.",
   },
   {
     q: "¿Y el monotributista social o el trabajador de casas particulares?",
-    a: "El trabajador de casas particulares (servicio doméstico) SÍ cobra aguinaldo, porque está en relación de dependencia aunque su régimen sea especial. El monotributista social es un régimen tributario para actividades independientes, así que tampoco genera SAC. La clave siempre es la misma: ¿hay relación de dependencia? Si la hay, hay aguinaldo.",
+    a: "El personal de casas particulares SÍ cobra aguinaldo, porque está en relación de dependencia aunque tenga un régimen especial. El monotributo social es un régimen de impuestos para quien trabaja por su cuenta, así que tampoco da aguinaldo. La pregunta clave es siempre la misma: ¿hay relación de dependencia? Si la hay, hay aguinaldo.",
   },
   {
     q: "¿Cómo me armo mi propio aguinaldo siendo monotributista?",
-    a: "Apartando todos los meses una parte de lo que facturás. Si guardás alrededor de 1/12 (el 8,33%) de tu facturación mensual, a mitad y a fin de año vas a tener juntado el equivalente a medio mes de ingresos, que es justo lo que cobra como SAC quien está en relación de dependencia. Es una costumbre de ahorro, no una obligación legal.",
+    a: "Separando todos los meses una parte de lo que facturás. Si guardás cerca de 1/12 (el 8,33%) de lo que facturás por mes, a mitad y a fin de año vas a tener juntado medio mes de ingresos. Es justo lo que cobra de aguinaldo quien está en relación de dependencia. Es una costumbre de ahorro, no una obligación legal.",
   },
 ];
 
@@ -91,18 +90,18 @@ export default function Post() {
           ¿El monotributista cobra aguinaldo? Qué dice la ley
         </h1>
         <p className="text-zinc-600">
-          Cada junio y diciembre vuelve la misma duda: si trabajás por tu cuenta y pagás el
-          monotributo, ¿te toca aguinaldo? La respuesta corta es no — y acá está el porqué, la
-          única excepción que sí te lo da, y una forma simple de armarte tu propio aguinaldo.
+          Cada junio y cada diciembre vuelve la misma duda: si trabajás por tu cuenta y pagás el
+          monotributo, ¿te toca aguinaldo? La respuesta corta es no. Abajo está el porqué, la única
+          excepción y una forma simple de armarte tu propio aguinaldo.
         </p>
       </header>
 
       <RespuestaPrimero actualizado={PUBLICADO}>
         <p>
-          <strong>No, el monotributista no cobra aguinaldo.</strong> El Sueldo Anual Complementario
-          (SAC) es un derecho de los trabajadores <strong>en relación de dependencia</strong>: lo
-          paga el empleador. El monotributista es un trabajador independiente, su ingreso es lo que
-          factura, así que la ley no le reconoce aguinaldo (ni vacaciones pagas, ni indemnización).
+          <strong>No, el monotributista no cobra aguinaldo.</strong> El aguinaldo (en la ley, SAC)
+          es un derecho de quienes trabajan <strong>en relación de dependencia</strong>: lo paga el
+          empleador. El monotributista trabaja por su cuenta y cobra lo que factura, así que la ley
+          no le da aguinaldo (ni vacaciones pagas, ni indemnización).
         </p>
         <p className="mt-2">
           <strong>La única excepción:</strong> si además de monotributista tenés un{" "}
@@ -116,15 +115,19 @@ export default function Post() {
         <h2 className="text-xl font-bold text-zinc-900">Por qué la ley lo deja afuera</h2>
         <p className="text-zinc-600">
           El aguinaldo nace del <strong>contrato de trabajo en relación de dependencia</strong>: es
-          medio sueldo extra que el empleador paga dos veces al año (Ley 23.041; LCT art. 121). La
-          lógica es que forma parte de la remuneración del trabajador dependiente.
+          medio sueldo extra que el empleador paga dos veces al año (Ley 23.041; LCT art. 121). Es
+          parte del sueldo de quien trabaja en relación de dependencia.
         </p>
         <p className="text-zinc-600">
-          El monotributo, en cambio, es un <strong>régimen tributario para trabajadores
-          independientes</strong>: no hay empleador, no hay sueldo, hay facturación. Por eso el
-          monotributista no tiene SAC — y por la misma razón tampoco le corresponden vacaciones
-          pagas, preaviso ni indemnización por despido. Esos derechos vienen del vínculo laboral que
-          el monotributista, por definición, no tiene.
+          El monotributo, en cambio, es un <strong>régimen de impuestos para quien trabaja por su
+          cuenta</strong>: no hay empleador ni sueldo, hay facturación. Por eso el monotributista no
+          tiene aguinaldo. Y por la misma razón tampoco tiene vacaciones pagas, preaviso ni
+          indemnización por despido. Esos derechos vienen de una relación laboral que el
+          monotributista, por definición, no tiene. Si querés saber cuánto pagás por mes, usá la{" "}
+          <Link href="/monotributo" className="text-emerald-700 underline">
+            calculadora de monotributo
+          </Link>
+          .
         </p>
       </section>
 
@@ -133,11 +136,11 @@ export default function Post() {
           La excepción: monotributista <em>y</em> empleado en blanco
         </h2>
         <p className="text-sm text-amber-800">
-          Muchos monotributistas también tienen un empleo registrado (un trabajo en relación de
-          dependencia por la mañana, monotributo por la tarde, por ejemplo). En ese caso{" "}
-          <strong>sí cobrás aguinaldo, pero solo por el empleo en blanco</strong>: el empleador te
-          paga el SAC calculado sobre tu mejor sueldo del semestre. La facturación del monotributo no
-          entra en esa cuenta. Son dos mundos separados: el sueldo genera aguinaldo, la factura no.
+          Muchos monotributistas también tienen un empleo registrado (por ejemplo, un trabajo en
+          relación de dependencia a la mañana y monotributo a la tarde). En ese caso{" "}
+          <strong>sí cobrás aguinaldo, pero solo por el empleo en blanco</strong>: el empleador te lo
+          paga sobre tu mejor sueldo del semestre. Lo que facturás no entra en esa cuenta. El sueldo
+          da aguinaldo; la factura, no.
         </p>
         <p className="text-sm text-amber-800">
           Si ese es tu caso, podés calcular cuánto te toca de aguinaldo por tu sueldo registrado:
@@ -155,11 +158,11 @@ export default function Post() {
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-zinc-900">Armate tu propio aguinaldo</h2>
         <p className="text-zinc-600">
-          Que la ley no te dé aguinaldo no significa que no puedas tener uno. La forma más simple es{" "}
-          <strong>apartar todos los meses una parte de lo que facturás</strong>. Si guardás alrededor
-          de <strong>1/12 (el 8,33%)</strong> de tu facturación mensual, a fin de cada semestre vas a
-          tener juntado el equivalente a medio mes de ingresos — justo lo que cobra de SAC quien está
-          en relación de dependencia.
+          Que la ley no te dé aguinaldo no quiere decir que no puedas tener uno. Lo más simple es{" "}
+          <strong>separar todos los meses una parte de lo que facturás</strong>. Si guardás cerca de{" "}
+          <strong>1/12 (el 8,33%)</strong> de lo que facturás por mes, a fin de cada semestre vas a
+          tener juntado medio mes de ingresos. Es justo lo que cobra de aguinaldo quien está en
+          relación de dependencia.
         </p>
         <div className="overflow-x-auto rounded-xl border border-zinc-200">
           <table className="w-full text-sm">
@@ -190,9 +193,9 @@ export default function Post() {
           </table>
         </div>
         <p className="text-xs text-zinc-400">
-          Ejemplo ilustrativo: 1/12 de la facturación mensual, guardado seis meses, equivale a medio
-          mes de ingresos. Reemplazá los montos por los tuyos. No es una obligación legal, es una
-          costumbre de ahorro para no llegar a fin de año sin colchón.
+          Es un ejemplo: 1/12 de lo que facturás por mes, guardado seis meses, es medio mes de
+          ingresos. Cambiá los montos por los tuyos. No es una obligación legal, es una costumbre de
+          ahorro para no llegar a fin de año sin colchón.
         </p>
       </section>
 
@@ -201,10 +204,10 @@ export default function Post() {
           Lo que sí pagás todos los meses como monotributista
         </h2>
         <p className="text-zinc-600">
-          El monotributista no cobra aguinaldo, pero sí aporta cada mes: la cuota del monotributo
-          incluye impuesto integrado, aporte jubilatorio (SIPA) y obra social. Esa obra social y esos
-          aportes jubilatorios son, en parte, lo que el sistema te reconoce a cambio de no tener los
-          derechos del trabajo en relación de dependencia.
+          El monotributista no cobra aguinaldo, pero sí aporta todos los meses: la cuota del
+          monotributo incluye impuesto integrado, aporte jubilatorio (SIPA) y obra social. Esa obra
+          social y esos aportes son, en parte, lo que el sistema te da a cambio de no tener los
+          derechos de la relación de dependencia.
         </p>
         <p className="text-sm text-zinc-600">
           Mirá el desglose de{" "}
@@ -253,7 +256,7 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              Ley 23.041 — Sueldo Anual Complementario
+              Ley 23.041: Sueldo Anual Complementario
             </a>
           </li>
           <li>
@@ -275,13 +278,13 @@ export default function Post() {
               target="_blank"
               className="text-emerald-700 underline"
             >
-              ARCA — Monotributo (régimen para trabajadores independientes)
+              ARCA: Monotributo (régimen para trabajadores independientes)
             </a>
           </li>
         </ul>
         <p className="text-xs text-zinc-400">
-          Esta guía es informativa. Si tenés una situación mixta (monotributo + empleo en blanco) o
-          dudas sobre tu encuadre, consultá con un contador o con tu sindicato.
+          Esta guía es informativa. Si tenés monotributo y empleo en blanco a la vez, o dudas sobre
+          tu situación, consultá con un contador o con tu sindicato.
         </p>
         <p className="text-sm text-zinc-600">
           ¿Estás en relación de dependencia y querés saber cuánto cobrás de aguinaldo? Mirá{" "}
