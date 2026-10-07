@@ -1,0 +1,684 @@
+{
+  "mercado": "uy",
+  "datos": [
+    {
+      "id": "uy.smn",
+      "nombre": "Salario Mínimo Nacional (mensual)",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "nota": "El jornal mínimo es el monto dividido entre 25 y el salario por hora, entre 200 (mismo decreto).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 23604,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 369/024, artículo 1",
+            "url": "https://www.impo.com.uy/bases/decretos/369-2024",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": 24572,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 319/025, artículos 1 y 2",
+            "url": "https://www.impo.com.uy/bases/decretos/319-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 25383,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 319/025, artículos 1 y 2",
+            "url": "https://www.impo.com.uy/bases/decretos/319-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.smn-divisor-jornal",
+      "nombre": "Divisor del jornal mínimo",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 25,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 369/024, artículo 1",
+            "url": "https://www.impo.com.uy/bases/decretos/369-2024",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 319/025, artículos 1 y 2",
+            "url": "https://www.impo.com.uy/bases/decretos/319-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.smn-divisor-hora",
+      "nombre": "Divisor del salario mínimo por hora",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 200,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 369/024, artículo 1",
+            "url": "https://www.impo.com.uy/bases/decretos/369-2024",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 200,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 319/025, artículos 1 y 2",
+            "url": "https://www.impo.com.uy/bases/decretos/319-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.bpc",
+      "nombre": "Base de Prestaciones y Contribuciones (BPC)",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 6576,
+          "fuente": {
+            "organismo": "Dirección General Impositiva (DGI)",
+            "titulo": "IRPF categoría II: escalas y alícuotas (planilla oficial, tabla de BPC por año)",
+            "url": "https://www.gub.uy/direccion-general-impositiva/sites/direccion-general-impositiva/files/2026-02/IRPF%20categor%C3%ADa%202%20escalas%20y%20al%C3%ADcuotas.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6864,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 11/026, artículo 1",
+            "url": "https://www.impo.com.uy/bases/decretos/11-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-escala",
+      "nombre": "IRPF categoría II: escala mensual de retención (en BPC)",
+      "tipo": "escala",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 7,
+              "tasa": 0
+            },
+            {
+              "desde": 7,
+              "hasta": 10,
+              "tasa": 10
+            },
+            {
+              "desde": 10,
+              "hasta": 15,
+              "tasa": 15
+            },
+            {
+              "desde": 15,
+              "hasta": 30,
+              "tasa": 24
+            },
+            {
+              "desde": 30,
+              "hasta": 50,
+              "tasa": 25
+            },
+            {
+              "desde": 50,
+              "hasta": 75,
+              "tasa": 27
+            },
+            {
+              "desde": 75,
+              "hasta": 115,
+              "tasa": 31
+            },
+            {
+              "desde": 115,
+              "hasta": null,
+              "tasa": 36
+            }
+          ],
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 148/007, artículo 63 (retención mensual del IRPF)",
+            "url": "https://www.impo.com.uy/bases/decretos/148-2007/63",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Coincide con la planilla de la DGI y con el Comunicado R 5/2026 del BPS (escala mensual 2026 con BPC de $ 6.864)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-incremento",
+      "nombre": "IRPF: incremento de la renta gravada por aportes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 148/007, artículo 63 (retención mensual del IRPF)",
+            "url": "https://www.impo.com.uy/bases/decretos/148-2007/63",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Coincide con la planilla de la DGI y con el Comunicado R 5/2026 del BPS (escala mensual 2026 con BPC de $ 6.864)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-incremento-umbral",
+      "nombre": "IRPF: renta mensual desde la que se aplica el incremento",
+      "tipo": "numero",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 148/007, artículo 63 (retención mensual del IRPF)",
+            "url": "https://www.impo.com.uy/bases/decretos/148-2007/63",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Coincide con la planilla de la DGI y con el Comunicado R 5/2026 del BPS (escala mensual 2026 con BPC de $ 6.864)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-deducciones-umbral",
+      "nombre": "IRPF: ingresos mensuales hasta los que las deducciones van al 14 %",
+      "tipo": "numero",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 148/007, artículo 63 (retención mensual del IRPF)",
+            "url": "https://www.impo.com.uy/bases/decretos/148-2007/63",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Coincide con la planilla de la DGI y con el Comunicado R 5/2026 del BPS (escala mensual 2026 con BPC de $ 6.864)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-deducciones-tasa-baja",
+      "nombre": "IRPF: tasa sobre deducciones con ingresos hasta 15 BPC",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 148/007, artículo 63 (retención mensual del IRPF)",
+            "url": "https://www.impo.com.uy/bases/decretos/148-2007/63",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Coincide con la planilla de la DGI y con el Comunicado R 5/2026 del BPS (escala mensual 2026 con BPC de $ 6.864)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-deducciones-tasa-alta",
+      "nombre": "IRPF: tasa sobre deducciones con ingresos de más de 15 BPC",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 148/007, artículo 63 (retención mensual del IRPF)",
+            "url": "https://www.impo.com.uy/bases/decretos/148-2007/63",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Coincide con la planilla de la DGI y con el Comunicado R 5/2026 del BPS (escala mensual 2026 con BPC de $ 6.864)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-deduccion-hijo",
+      "nombre": "IRPF: deducción anual por hijo menor a cargo",
+      "tipo": "numero",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 7, artículo 49 (deducciones)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/49_T7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-deduccion-hijo-discapacidad",
+      "nombre": "IRPF: deducción anual por hijo con discapacidad",
+      "tipo": "numero",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 7, artículo 49 (deducciones)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/49_T7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.aporte-jubilatorio",
+      "nombre": "Aporte jubilatorio personal (montepío)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Tasas de aporte jubilatorio (Industria y Comercio)",
+            "url": "https://www.bps.gub.uy/835/tasas.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.fonasa-hasta",
+      "nombre": "Aporte personal al Fonasa con remuneración de hasta 2,5 BPC",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "sin": "Sin cónyuge ni hijos",
+        "hijos": "Con hijos",
+        "conyuge": "Con cónyuge",
+        "ambos": "Con cónyuge e hijos"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sin": 3,
+            "hijos": 3,
+            "conyuge": 5,
+            "ambos": 5
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Tasas Fonasa",
+            "url": "https://www.bps.gub.uy/10314/tasas-fonasa.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.fonasa-mas",
+      "nombre": "Aporte personal al Fonasa con remuneración de más de 2,5 BPC",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "sin": "Sin cónyuge ni hijos",
+        "hijos": "Con hijos",
+        "conyuge": "Con cónyuge",
+        "ambos": "Con cónyuge e hijos"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sin": 4.5,
+            "hijos": 6,
+            "conyuge": 6.5,
+            "ambos": 8
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Tasas Fonasa",
+            "url": "https://www.bps.gub.uy/10314/tasas-fonasa.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.fonasa-umbral",
+      "nombre": "Fonasa: remuneración que separa las dos tablas de aporte",
+      "tipo": "numero",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Tasas Fonasa",
+            "url": "https://www.bps.gub.uy/10314/tasas-fonasa.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.frl",
+      "nombre": "Fondo de Reconversión Laboral, aporte personal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.1,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Fondo de Reconversión Laboral (FRL)",
+            "url": "https://www.bps.gub.uy/10322/fondo-reconversion-laboral-frl.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.tope-aportes",
+      "nombre": "Tope de aportación jubilatoria (tope C, Ley 16.713)",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "nota": "El BPS lo publica mes a mes en Valores actuales. Leímos el valor de setiembre y octubre de 2026; los meses anteriores no estaban a la vista.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 288836,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Valores actuales: topes de los artículos 7 y 8 de la Ley 16.713 (setiembre y octubre de 2026)",
+            "url": "https://www.bps.gub.uy/5478/valores-actuales.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.iva-basica",
+      "nombre": "IVA, tasa básica",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 10, artículo 34 (tasas del IVA)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/34_T10",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.iva-minima",
+      "nombre": "IVA, tasa mínima",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 10, artículo 34 (tasas del IVA)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/34_T10",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.licencia-dias",
+      "nombre": "Licencia anual mínima",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 12.590, artículos 1 y 2",
+            "url": "https://www.impo.com.uy/bases/leyes/12590-1958",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.salario-vacacional",
+      "nombre": "Salario vacacional (porcentaje del jornal líquido de licencia)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 16.101, artículos 4 y 5",
+            "url": "https://www.impo.com.uy/bases/leyes/16101-1989/4",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.despido-tope-meses",
+      "nombre": "Indemnización por despido de mensuales: tope",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 10.489, artículo 4",
+            "url": "https://www.impo.com.uy/bases/leyes/10489-1944/4",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.despido-jornales-anio",
+      "nombre": "Indemnización por despido de jornaleros: jornales por año",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 10.570, artículo 1",
+            "url": "https://www.impo.com.uy/bases/leyes/10570-1944/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.despido-tope-jornales",
+      "nombre": "Indemnización por despido de jornaleros: tope",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Seguridad Social (MTSS)",
+            "titulo": "Despido (régimen común): destajistas y jornaleros",
+            "url": "https://www.gub.uy/ministerio-trabajo-seguridad-social/politicas-y-gestion/derecho-reglamentacion-laboral/derecho-laboral-uruguayo/despido-regimen-comun",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.recargo-he-habil",
+      "nombre": "Recargo de horas extra en día hábil",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 15.996, artículo 1",
+            "url": "https://www.impo.com.uy/bases/leyes/15996-1988/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.recargo-he-descanso",
+      "nombre": "Recargo de horas extra en feriado o día de descanso",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 15.996, artículo 1",
+            "url": "https://www.impo.com.uy/bases/leyes/15996-1988/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    }
+  ]
+}

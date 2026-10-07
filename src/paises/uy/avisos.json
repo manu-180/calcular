@@ -1,0 +1,78 @@
+{
+  "mercado": "uy",
+  "avisos": [
+    {
+      "id": "uy.smn-enero-2027",
+      "nivel": "info",
+      "desde": "2026-11-01",
+      "hasta": "2027-01-31",
+      "aplicaA": ["uy.salario-minimo"],
+      "titulo": "El salario mínimo cambia en enero",
+      "texto": "El tramo actual del salario mínimo rige desde julio de 2026. El monto para 2027 lo fija un decreto de fin de año. Cuando se publique, lo cargamos.",
+      "fuente": {
+        "organismo": "IMPO (Diario Oficial)",
+        "titulo": "Decreto 319/025",
+        "url": "https://www.impo.com.uy/bases/decretos/319-2025",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "uy.irpf-anual",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["uy.irpf", "uy.sueldo-liquido"],
+      "texto": "La retención mensual del IRPF es un adelanto. El impuesto del año se cierra con la liquidación anual, que suma todos tus ingresos y deducciones, así que el resultado final puede ser otro.",
+      "fuente": {
+        "organismo": "IMPO (Diario Oficial)",
+        "titulo": "Texto Ordenado 2023 (DGI), Título 7, artículo 50",
+        "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/50_T7",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "uy.despido-salario-vacacional",
+      "nivel": "cautela",
+      "desde": "2026-01-01",
+      "aplicaA": ["uy.despido", "uy.liquidacion-por-egreso"],
+      "titulo": "Salario vacacional en la base del despido",
+      "texto": "Un decreto de 2000 dice que el salario vacacional no se suma a la base del despido, pero la mayoría de la doctrina y de los jueces entiende que sí. Lo dejamos afuera. Si reclamás, puede corresponder un monto algo mayor.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo y Seguridad Social (MTSS)",
+        "titulo": "Despido (régimen común): método de cálculo",
+        "url": "https://www.gub.uy/ministerio-trabajo-seguridad-social/politicas-y-gestion/derecho-reglamentacion-laboral/derecho-laboral-uruguayo/despido-regimen-comun/metodo-calculo",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "uy.despido-con-jubilacion",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["uy.despido", "uy.liquidacion-por-egreso"],
+      "texto": "El texto de la Ley 10.489 limita la indemnización a tres sueldos si la persona ya tiene derecho a jubilarse. El MTSS informa el tope general de seis, que es el que usamos. Si ya tenés causal jubilatoria, consultalo antes de firmar.",
+      "fuente": {
+        "organismo": "IMPO (Diario Oficial)",
+        "titulo": "Ley 10.489, artículo 4, y Ley 12.597, artículo 5",
+        "url": "https://www.impo.com.uy/bases/leyes/10489-1944/4",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "uy.laudos",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["uy.horas-extra", "uy.salario-vacacional", "uy.salario-minimo"],
+      "texto": "Los Consejos de Salarios fijan laudos y beneficios por sector que pueden ser mejores que el mínimo legal. Si tu convenio te da más, vale lo que dice el convenio.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo y Seguridad Social (MTSS)",
+        "titulo": "Salario vacacional",
+        "url": "https://www.gub.uy/ministerio-trabajo-seguridad-social/institucional/derecho-laboral-uruguayo/salario-vacacional",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}
