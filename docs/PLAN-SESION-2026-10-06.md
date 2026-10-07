@@ -90,3 +90,11 @@ PR aparte y urgente: #8, el sitio no se actualizaba solo desde el 28/9 (planilla
 - /sueldo-neto/comercio y /sueldo-neto: datasetSchema con «agosto 2026» y «1er sem 2026» a mano.
 - /sueldo-neto/construccion: pie cita acuerdoTramo2 y datasetSchema acuerdoTramo3.
 - /puam: dos FAQs duplicadas (fallecimiento del titular).
+- dateModified futuro en meses de convenio y cuota [mes]: el código arma `${anio}-${mes}-01` (lógica).
+- /convenios/camioneros: sigla «FETIAMP» para la federación (la conocida es FEDCAM).
+- /convenios/uocra/[mes]: fuentes muestran tramos 1 y 2, los meses sep a nov citan el tramo 3.
+- /fondo-de-asistencia-laboral: alícuota pyme se ve «2.5%» con punto en description, OG y FAQ.
+- /empleada-domestica: recuadro usa NOVIEMBRE.incrementoDeclarado, la FAQ el último mes de la serie.
+- /deduccion-empleada-domestica: «jornada completa» para un ejemplo de 16 h semanales.
+- /despido-plazo-fijo: enlaza propinas como art. 113 (la auditoría dice art. 104).
+- /edad-avanzada: «voltea la mitad de las solicitudes» sin fuente.
