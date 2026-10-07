@@ -32,6 +32,24 @@ calcular.ar no cambia: foto de 244 URLs idéntica (`scripts/check_rutas_ar.ts --
 | Guatemala | `claude/intl-pais-gt` |
 | Paraguay | `claude/intl-pais-py` (sin trabajo propio todavía: arranca de cero) |
 
+Dónde quedó cada uno (reportes de pausa):
+
+- **F3** `30aa18c` (WIP): todo construido; `check-all` 129/129 y `check_routing_hosts` 31/31 sobre un
+  build anterior. Hallazgo: Next 16 no parte el JS por `import()` desde un Server Component; lo arregló
+  con `CalculadoraDiferida` + regla `turbopack.rules` que vacía los `*.cliente.tsx` en el servidor.
+  Falta: rebuild y `check_rutas_ar --start` (`CALCULAR_HOY=2026-10-07`), build con la variable intl y
+  `check_routing_hosts --start`, Lighthouse con la máquina libre (script `lh.mjs` en su scratchpad),
+  quitar el WIP. Mobbin y 21st no estaban conectados: el diseño es criterio propio. Activar en
+  producción: `NEXT_PUBLIC_SITIO_INTL_URL=https://calcularya.com`; hreflang con AR detrás de
+  `NEXT_PUBLIC_HREFLANG_AR=1`.
+- **Ecuador** `bb552cc` (verde, 11 calculadoras, `interno`): falta probar los 4 detectores contra la red
+  (`scripts/paises/ec/probar_detectores.ts`, copiando el de Chile). Después integrar.
+- **Dominicana** `3e3bd8f` (WIP, sin compilar): datos, series, 11 calculadoras, casos y detectores
+  escritos. Faltan avisos, novedades, los 11 textos, `index.ts`, checks y detectores.
+- **Guatemala** `38429ac` (WIP): solo `scripts/paises/gt/NOTAS-RETOMA.md` con todo lo verificado y el
+  plan (11 calculadoras, usted, regiones ce1/ce2, Decreto 13-2026). Falta el código entero.
+- **Paraguay**: sin trabajo propio; arranca de cero.
+
 Al retomar: `git fetch origin` y mirar el último commit de cada rama. Si dice `WIP:`, relanzar un
 agente sobre esa rama con el reporte de pausa como contexto. Si está verde y completo, integrar.
 
