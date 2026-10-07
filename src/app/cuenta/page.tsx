@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { clienteDelPedido, perfilPropio, usuarioActual } from "@/lib/auth/sesion";
+import { clienteDelPedido, perfilPropio, sujetoSinValidar, usuarioActual } from "@/lib/auth/sesion";
 import { esAdminEmail } from "@/lib/auth/admin";
 import { Etiqueta, Placa } from "@/components/cuenta/MarcoAuth";
 import { Aviso } from "@/components/cuenta/Campos";
 import { BannerVerificar } from "@/components/cuenta/BannerVerificar";
 import { FormPerfil } from "@/components/cuenta/FormPerfil";
 import { MisPlanillas, type CompraFila } from "@/components/cuenta/MisPlanillas";
-import { MisCalculos } from "@/components/cuenta/MisCalculos";
+import { MisCalculos, calculosPropios } from "@/components/cuenta/MisCalculos";
+import { Seccion } from "@/components/cuenta/Seccion";
+import { IrAlAncla } from "@/components/cuenta/IrAlAncla";
 
 export const metadata: Metadata = {
   title: "Mi cuenta",
@@ -39,10 +40,17 @@ async function leerCompras(): Promise<{ compras: CompraFila[]; error: boolean }>
 }
 
 export default async function CuentaPage({ searchParams }: { searchParams: Promise<SP> }) {
-  const usuario = await usuarioActual();
+  // Todo sale junto con getUser: un viaje a Supabase de espera en vez de cinco en fila. Lo leído
+  // con el JWT se descarta si getUser no confirma la sesión (ver sujetoSinValidar).
+  const sub = await sujetoSinValidar();
+  const [usuario, sp, { compras, error }] = await Promise.all([
+    usuarioActual(),
+    searchParams,
+    leerCompras(),
+    sub ? calculosPropios(sub) : null,
+  ]);
   if (!usuario) redirect("/login?next=%2Fcuenta");
-
-  const [sp, perfil, { compras, error }] = await Promise.all([searchParams, perfilPropio(usuario.id), leerCompras()]);
+  const perfil = await perfilPropio(usuario.id);
   const aviso = typeof sp.aviso === "string" ? AVISOS[sp.aviso] : undefined;
   const saludo = perfil?.nombre ? `Hola, ${perfil.nombre}` : "Tu cuenta";
   const admin = usuario.verificado && esAdminEmail(usuario.email);
@@ -104,40 +112,7 @@ export default async function CuentaPage({ searchParams }: { searchParams: Promi
           </div>
         </Seccion>
       </div>
+      <IrAlAncla />
     </div>
-  );
-}
-
-function Seccion({
-  id,
-  titulo,
-  bajada,
-  children,
-  className = "",
-  orden,
-}: {
-  id: string;
-  titulo: string;
-  bajada?: string;
-  children: ReactNode;
-  className?: string;
-  orden: number;
-}) {
-  return (
-    <section
-      aria-labelledby={`${id}-titulo`}
-      className={`animate-[ca-col_0.55s_var(--ease-fluid)_backwards] ${className}`}
-      style={{ animationDelay: `${orden * 60}ms` }}
-    >
-      <Placa>
-        <div className="p-5 sm:p-7">
-          <h2 id={`${id}-titulo`} className="text-lg font-semibold tracking-tight text-zinc-900">
-            {titulo}
-          </h2>
-          {bajada ? <p className="mt-1 text-sm text-zinc-500">{bajada}</p> : null}
-          <div className="mt-5">{children}</div>
-        </div>
-      </Placa>
-    </section>
   );
 }

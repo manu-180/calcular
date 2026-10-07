@@ -171,12 +171,15 @@ export function BotonEnviar({
   children,
   pendiente,
   variante = "primario",
+  optimista = false,
 }: {
   children: ReactNode;
   pendiente: string;
   variante?: "primario" | "secundario";
+  optimista?: boolean;
 }) {
-  const { pending } = useFormStatus();
+  const { pending: enCurso } = useFormStatus();
+  const pending = enCurso && !optimista;
   if (variante === "secundario") {
     return (
       <button

@@ -1,6 +1,6 @@
 import "server-only";
-import { usuarioActual } from "@/lib/auth/sesion";
-import { clienteServidor } from "@/lib/supabase/servidor";
+import { cache } from "react";
+import { clienteDelPedido, usuarioActual } from "@/lib/auth/sesion";
 import { esRutaCalculo, hashDe, validarCampos } from "@/lib/formulario";
 import { tituloDeRuta } from "@/data/navegacion";
 import { ListaCalculos, type CalculoItem } from "@/components/herramientas/ListaCalculos";
@@ -22,9 +22,11 @@ const FECHA = new Intl.DateTimeFormat("es-AR", {
   timeZone: "America/Argentina/Buenos_Aires",
 });
 
-async function cargar(userId: string): Promise<CalculoItem[] | null> {
+// cache: /cuenta la dispara junto con getUser y este componente reusa esa misma promesa.
+export const calculosPropios = cache(async (userId: string): Promise<CalculoItem[] | null> => {
   try {
-    const sb = await clienteServidor();
+    const sb = await clienteDelPedido();
+    if (!sb) return null;
     const { data, error } = await sb
       .from("ca_calculos")
       .select("id,path,titulo,campos,resumen,created_at,updated_at")
@@ -52,12 +54,12 @@ async function cargar(userId: string): Promise<CalculoItem[] | null> {
   } catch {
     return null;
   }
-}
+});
 
 export async function MisCalculos() {
   const usuario = await usuarioActual().catch(() => null);
   if (!usuario) return null;
-  const items = await cargar(usuario.id);
+  const items = await calculosPropios(usuario.id);
 
   return (
     <section id="calculos" aria-labelledby="mis-calculos-titulo" className="scroll-mt-24">
