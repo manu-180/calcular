@@ -905,6 +905,7 @@ const DEFS: Record<GrupoId, Def[]> = {
   ].map((g): Def => ({ ...g, tipo: "guia" })),
   sitio: [
     { href: "/", titulo: "Inicio", menu: false, claves: ["home"] },
+    { href: "/novedades", titulo: "Novedades", descripcion: "Cada dato oficial nuevo, el día que cambió", claves: ["actualizaciones", "cambios", "ultimos datos", "que cambio"] },
     { href: "/sobre", titulo: "Sobre CalculAR", descripcion: "Quién está detrás y cómo trabajamos", claves: ["quienes somos", "metodologia", "manuel navarro"] },
     { href: "/contacto", titulo: "Contacto", descripcion: "Un error, una idea o una consulta", claves: ["mail", "escribir", "error", "sugerencia"] },
     { href: "/privacidad", titulo: "Privacidad", descripcion: "Qué datos guardamos y cómo borrarlos", claves: ["datos personales", "cookies"] },
