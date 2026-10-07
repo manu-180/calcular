@@ -8,6 +8,7 @@ import uy from "./uy";
 import ec from "./ec";
 import cr from "./cr";
 import gt from "./gt";
+import py from "./py";
 
 // "global" no es un país: es la home de calcularya.com con el selector. No tiene datos ni calculadoras.
 const global = definirPais({
@@ -25,6 +26,6 @@ const global = definirPais({
   },
 });
 
-export const PAISES = [global, zz, cl, co, mx, pe, uy, ec, cr, gt] as const;
+export const PAISES = [global, zz, cl, co, mx, pe, uy, ec, cr, gt, py] as const;
 
 export const registro = crearRegistro(PAISES);
