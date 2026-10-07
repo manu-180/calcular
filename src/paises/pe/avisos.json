@@ -1,0 +1,64 @@
+{
+  "mercado": "pe",
+  "avisos": [
+    {
+      "id": "pe.cts-libre-disposicion",
+      "nivel": "info",
+      "desde": "2025-05-10",
+      "hasta": "2026-12-31",
+      "aplicaA": ["pe.cts", "pe.liquidacion"],
+      "titulo": "Puedes retirar el 100 % de tu CTS hasta fin de año",
+      "texto": "Hasta el 31 de diciembre de 2026 puedes sacar todo lo que tienes en tu cuenta CTS, una sola vez y sin pedirle carta a tu empleador. Desde el 1 de enero de 2027 vuelve la regla normal: retiros de hasta el 50 % de lo acumulado.",
+      "fuente": {
+        "organismo": "El Peruano",
+        "titulo": "Ley 32322, disposición complementaria transitoria única y artículo 42 del DL 650",
+        "url": "https://busquedas.elperuano.pe/dispositivo/NL/2397811-1",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "pe.microempresa-sin-grati-ni-cts",
+      "nivel": "info",
+      "desde": "2008-10-01",
+      "aplicaA": ["pe.gratificacion", "pe.cts", "pe.liquidacion"],
+      "texto": "Si tu empleador está inscrito como microempresa en el régimen laboral especial (REMYPE), no te corresponden gratificaciones ni CTS. En la pequeña empresa recibes la mitad.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+        "titulo": "DL 1086, artículos 41 a 47 (Compendio de normas laborales del régimen privado)",
+        "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "pe.rmv-segundo-tramo",
+      "nivel": "info",
+      "desde": "2026-10-01",
+      "aplicaA": ["pe.sueldo-minimo"],
+      "texto": "El Gobierno anunció un segundo aumento de S/ 70 para el primer semestre de 2027, con lo que la remuneración mínima llegaría a S/ 1,300. Todavía falta el decreto que fije la fecha: cuando salga, esta calculadora lo va a usar.",
+      "fuente": {
+        "organismo": "El Peruano",
+        "titulo": "Decreto Supremo 015-2026-TR, artículo 1.2",
+        "url": "https://busquedas.elperuano.pe/dispositivo/EX/2559163-1",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "pe.igv-cambio-2027",
+      "nivel": "info",
+      "desde": "2026-10-01",
+      "hasta": "2026-12-31",
+      "aplicaA": ["pe.igv"],
+      "texto": "Desde el 1 de enero de 2027 el IGV baja a 15 % y el impuesto de promoción municipal sube a 3 %. Lo que pagas en total no cambia: sigue en 18 %.",
+      "fuente": {
+        "organismo": "SUNAT",
+        "titulo": "Orientación SUNAT: concepto, tasa y operaciones gravadas del IGV (Ley 32387)",
+        "url": "https://orientacion.sunat.gob.pe/3053-concepto-tasa-y-operaciones-gravadas-igv-empresas",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}
