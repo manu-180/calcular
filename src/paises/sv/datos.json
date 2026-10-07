@@ -1,0 +1,971 @@
+{
+  "mercado": "sv",
+  "datos": [
+    {
+      "id": "sv.salario-minimo",
+      "nombre": "Salario mínimo mensual por sector",
+      "tipo": "numero",
+      "unidad": "USD",
+      "regiones": [
+        "comercio-servicios",
+        "industria",
+        "maquila",
+        "beneficios-cafe",
+        "cana-azucar",
+        "agropecuario",
+        "recoleccion-cafe"
+      ],
+      "nota": "Lo fija el Ministerio de Trabajo por decreto ejecutivo. El último aumento (12 %) rige desde el 1/6/2025.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "comercio-servicios",
+          "desde": "2025-06-01",
+          "valor": 408.8,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "industria",
+          "desde": "2025-06-01",
+          "valor": 408.8,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "maquila",
+          "desde": "2025-06-01",
+          "valor": 402.32,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "beneficios-cafe",
+          "desde": "2025-06-01",
+          "valor": 305.23,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "cana-azucar",
+          "desde": "2025-06-01",
+          "valor": 305.23,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "agropecuario",
+          "desde": "2025-06-01",
+          "valor": 272.53,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "recoleccion-cafe",
+          "desde": "2025-06-01",
+          "valor": 272.53,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.salario-minimo-diario",
+      "nombre": "Salario mínimo diario por sector",
+      "tipo": "numero",
+      "unidad": "USD",
+      "regiones": [
+        "comercio-servicios",
+        "industria",
+        "maquila",
+        "beneficios-cafe",
+        "cana-azucar",
+        "agropecuario",
+        "recoleccion-cafe"
+      ],
+      "nota": "El decreto publica el diario aparte (mensual por 12 y dividido por 365). Es el que usa el Código de Trabajo para los topes de indemnización y de renuncia.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "comercio-servicios",
+          "desde": "2025-06-01",
+          "valor": 13.44,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "industria",
+          "desde": "2025-06-01",
+          "valor": 13.44,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "maquila",
+          "desde": "2025-06-01",
+          "valor": 13.227,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "beneficios-cafe",
+          "desde": "2025-06-01",
+          "valor": 10.035,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "cana-azucar",
+          "desde": "2025-06-01",
+          "valor": 10.035,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "agropecuario",
+          "desde": "2025-06-01",
+          "valor": 8.96,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "recoleccion-cafe",
+          "desde": "2025-06-01",
+          "valor": 8.96,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Decreto Ejecutivo No. 11 del 22/5/2025, Tarifas de salarios mínimos (art. 2, reformado por el D.E. 12, D.O. 96 del 26/5/2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/05/10A4DA.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde el 1/6/2025 (art. 15). Coincide con el comunicado del MTPS del 27/5/2025: https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.renta-mensual",
+      "nombre": "Tabla de retención de renta para salarios mensuales",
+      "tipo": "escala",
+      "unidad": "USD",
+      "nota": "Cada tramo cobra la cuota fija más el porcentaje sobre lo que exceda el límite del tramo anterior.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 550.0,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 550.01,
+              "hasta": 895.24,
+              "tasa": 10,
+              "cuotaFija": 17.67
+            },
+            {
+              "desde": 895.25,
+              "hasta": 2038.1,
+              "tasa": 20,
+              "cuotaFija": 60.0
+            },
+            {
+              "desde": 2038.11,
+              "hasta": null,
+              "tasa": 30,
+              "cuotaFija": 288.57
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo No. 10 del 30/4/2025, Tablas de retención del impuesto sobre la renta (art. 1)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/04/10A052.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El Ministerio de Hacienda informa que las tablas rigen desde mayo de 2025: https://www.mh.gob.sv/wp-content/uploads/2025/05/Modificacion-a-las-tablas-de-retenci%C3%B3n-del-Impuesto-Sobre-la-Renta-Decreto-Ejecutivo-NO.10.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.renta-quincenal",
+      "nombre": "Tabla de retención de renta para salarios quincenales",
+      "tipo": "escala",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 275.0,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 275.01,
+              "hasta": 447.62,
+              "tasa": 10,
+              "cuotaFija": 8.83
+            },
+            {
+              "desde": 447.63,
+              "hasta": 1019.05,
+              "tasa": 20,
+              "cuotaFija": 30.0
+            },
+            {
+              "desde": 1019.06,
+              "hasta": null,
+              "tasa": 30,
+              "cuotaFija": 144.28
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo No. 10 del 30/4/2025, Tablas de retención del impuesto sobre la renta (art. 1)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/04/10A052.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El Ministerio de Hacienda informa que las tablas rigen desde mayo de 2025: https://www.mh.gob.sv/wp-content/uploads/2025/05/Modificacion-a-las-tablas-de-retenci%C3%B3n-del-Impuesto-Sobre-la-Renta-Decreto-Ejecutivo-NO.10.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.renta-exento-mensual",
+      "nombre": "Salario mensual sujeto a renta sin retención (tramo I)",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "valor": 550,
+          "fuente": {
+            "organismo": "Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo No. 10 del 30/4/2025, Tablas de retención del impuesto sobre la renta (art. 1)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/04/10A052.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El Ministerio de Hacienda informa que las tablas rigen desde mayo de 2025: https://www.mh.gob.sv/wp-content/uploads/2025/05/Modificacion-a-las-tablas-de-retenci%C3%B3n-del-Impuesto-Sobre-la-Renta-Decreto-Ejecutivo-NO.10.pdf"
+          }
+        }
+      ],
+      "nota": "Es el límite del tramo I de la tabla mensual; se carga aparte para poder citarlo en los textos."
+    },
+    {
+      "id": "sv.renta-exento-quincenal",
+      "nombre": "Salario quincenal sujeto a renta sin retención (tramo I)",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "valor": 275,
+          "fuente": {
+            "organismo": "Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo No. 10 del 30/4/2025, Tablas de retención del impuesto sobre la renta (art. 1)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/04/10A052.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El Ministerio de Hacienda informa que las tablas rigen desde mayo de 2025: https://www.mh.gob.sv/wp-content/uploads/2025/05/Modificacion-a-las-tablas-de-retenci%C3%B3n-del-Impuesto-Sobre-la-Renta-Decreto-Ejecutivo-NO.10.pdf"
+          }
+        }
+      ],
+      "nota": "Es el límite del tramo I de la tabla quincenal; se carga aparte para poder citarlo en los textos."
+    },
+    {
+      "id": "sv.deduccion-fija-renta",
+      "nombre": "Deducción fija anual para asalariados (art. 29, numeral 7, de la Ley de Impuesto sobre la Renta)",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "valor": 1600,
+          "fuente": {
+            "organismo": "Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo No. 10 del 30/4/2025, Tablas de retención del impuesto sobre la renta (art. 1, literal e)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/04/10A052.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El Ministerio de Hacienda informa que las tablas rigen desde mayo de 2025: https://www.mh.gob.sv/wp-content/uploads/2025/05/Modificacion-a-las-tablas-de-retenci%C3%B3n-del-Impuesto-Sobre-la-Renta-Decreto-Ejecutivo-NO.10.pdf"
+          }
+        }
+      ],
+      "nota": "El decreto aclara que el tramo II de las tablas no la incluye."
+    },
+    {
+      "id": "sv.limite-deduccion-fija-renta",
+      "nombre": "Ingreso anual máximo para la deducción fija",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "valor": 9100,
+          "fuente": {
+            "organismo": "Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo No. 10 del 30/4/2025, Tablas de retención del impuesto sobre la renta (art. 1, literal e)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/04/10A052.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El Ministerio de Hacienda informa que las tablas rigen desde mayo de 2025: https://www.mh.gob.sv/wp-content/uploads/2025/05/Modificacion-a-las-tablas-de-retenci%C3%B3n-del-Impuesto-Sobre-la-Renta-Decreto-Ejecutivo-NO.10.pdf"
+          }
+        }
+      ],
+      "nota": "Aplica a asalariados con ingreso anual igual o inferior a este monto."
+    },
+    {
+      "id": "sv.afp-trabajador",
+      "nombre": "Cotización a la AFP a cargo del trabajador",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-29",
+          "valor": 7.25,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Integral del Sistema de Pensiones (D.L. 614, D.O. 241 del 21/12/2022), art. 16",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/F94AF319-257C-4A85-97B7-4D03A6C65A48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La ley rige ocho días después de su publicación (art. 164). El art. 14 no fija un ingreso base máximo de cotización."
+          }
+        }
+      ],
+      "nota": "Sobre el salario mensual, sin aguinaldo ni bonificaciones ocasionales (art. 14)."
+    },
+    {
+      "id": "sv.isss-trabajador",
+      "nombre": "Cotización al ISSS a cargo del trabajador",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "motivo": "El 3 % circula en portales contables y aparece en un ejemplo de Hacienda de 2015. El texto del Reglamento para la Aplicación del Régimen del Seguro Social que publica la Corte Suprema dice 2,50 % (art. 46) y no recoge la tasa actual. isss.gob.sv no publica la tasa vigente.",
+          "fuente": {
+            "organismo": "Ministerio de Hacienda",
+            "titulo": "Aclaración sobre las tablas de retención (ejemplo con ISSS del 3 %)",
+            "url": "https://www.mh.gob.sv/wp-content/uploads/2020/11/700-DGII-CM-0000-41.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.isss-salario-maximo",
+      "nombre": "Salario máximo sobre el que se cotiza al ISSS",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 1000,
+          "motivo": "Solo lo vimos en portales contables. El texto del reglamento del ISSS publicado por la Corte Suprema conserva un límite en colones de 1986 y no la reforma que fijó US$1,000."
+        }
+      ]
+    },
+    {
+      "id": "sv.iva",
+      "nombre": "IVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto a la Transferencia de Bienes Muebles y a la Prestación de Servicios, art. 54",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/C710DA02-4727-485E-B8F4-B9CBF64152A6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Tasa fijada por el D.L. 370 (D.O. 114 del 21/6/1995)."
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.aguinaldo-dias",
+      "nombre": "Días de salario de aguinaldo según la antigüedad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "uno-a-tres": "De 1 a menos de 3 años",
+        "tres-a-diez": "De 3 a menos de 10 años",
+        "diez-o-mas": "10 años o más"
+      },
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "uno-a-tres": 15,
+            "tres-a-diez": 19,
+            "diez-o-mas": 21
+          },
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 198 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Coincide con el comunicado del MTPS del 23/12/2025: https://www.mtps.gob.sv/2025/12/23/mtps-orienta-a-ciudadanos-sobre-el-pago-del-aguinaldo/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.indemnizacion-dias-por-anio",
+      "nombre": "Días de salario de indemnización por año de servicio",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 58 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.indemnizacion-dias-minimo",
+      "nombre": "Indemnización mínima en días de salario",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 58 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.indemnizacion-tope",
+      "nombre": "Tope del salario diario para la indemnización (veces el salario mínimo diario)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 58 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.renuncia-dias-por-anio",
+      "nombre": "Días de salario de la prestación por renuncia, por año de servicio",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Reguladora de la Prestación Económica por Renuncia Voluntaria (D.L. 592, D.O. 12 del 21/1/2014), art. 8",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/64753625-5A99-425D-B845-BF2719C6A710.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "La ley rige desde el 1/1/2015 (art. 17)."
+    },
+    {
+      "id": "sv.renuncia-tope",
+      "nombre": "Tope del salario diario para la prestación por renuncia (veces el salario mínimo diario del sector)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Reguladora de la Prestación Económica por Renuncia Voluntaria (D.L. 592, D.O. 12 del 21/1/2014), art. 8",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/64753625-5A99-425D-B845-BF2719C6A710.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "La ley rige desde el 1/1/2015 (art. 17)."
+    },
+    {
+      "id": "sv.renuncia-anios-minimos",
+      "nombre": "Años de servicio continuo para tener la prestación por renuncia",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Reguladora de la Prestación Económica por Renuncia Voluntaria (D.L. 592, D.O. 12 del 21/1/2014), art. 5",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/64753625-5A99-425D-B845-BF2719C6A710.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "La ley rige desde el 1/1/2015 (art. 17)."
+    },
+    {
+      "id": "sv.renuncia-preaviso",
+      "nombre": "Preaviso por escrito para cobrar la prestación por renuncia",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Reguladora de la Prestación Económica por Renuncia Voluntaria (D.L. 592, D.O. 12 del 21/1/2014), art. 2",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/64753625-5A99-425D-B845-BF2719C6A710.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "La ley rige desde el 1/1/2015 (art. 17)."
+    },
+    {
+      "id": "sv.renuncia-preaviso-jefaturas",
+      "nombre": "Preaviso para directores, gerentes, administradores, jefaturas y personal especializado",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Reguladora de la Prestación Económica por Renuncia Voluntaria (D.L. 592, D.O. 12 del 21/1/2014), art. 2",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/64753625-5A99-425D-B845-BF2719C6A710.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "La ley rige desde el 1/1/2015 (art. 17)."
+    },
+    {
+      "id": "sv.vacaciones-dias",
+      "nombre": "Días de vacaciones pagadas por año",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 177 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.vacaciones-recargo",
+      "nombre": "Recargo sobre el salario de vacaciones",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 177 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.recargo-hora-extra",
+      "nombre": "Recargo por hora extra",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 169 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El MTPS lo explica con ejemplo: https://www.mtps.gob.sv/2025/11/24/direccion-general-de-inspeccion-de-trabajo/"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.recargo-nocturno",
+      "nombre": "Recargo por trabajo nocturno (de 19:00 a 6:00)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 168 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Para la hora extra nocturna el MTPS aplica el 25 % sobre la hora extra ya duplicada: https://www.mtps.gob.sv/2025/11/24/direccion-general-de-inspeccion-de-trabajo/"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.jornada-diurna",
+      "nombre": "Jornada ordinaria diurna",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 161 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.jornada-nocturna",
+      "nombre": "Jornada ordinaria nocturna",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 161 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.semana-diurna",
+      "nombre": "Semana laboral diurna máxima",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 44,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 161 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.semana-nocturna",
+      "nombre": "Semana laboral nocturna máxima",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 39,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 161 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.recargo-asueto",
+      "nombre": "Recargo por trabajar en día de asueto",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 192 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.vacaciones-aviso",
+      "nombre": "Anticipación mínima con que el patrono avisa el inicio de las vacaciones",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 182 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.vacaciones-dias-trabajados-minimos",
+      "nombre": "Días trabajados en el año para tener vacaciones",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 200,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 180 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.quincena25-porcentaje",
+      "nombre": "Quincena 25: porcentaje del salario mensual",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-14",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Especial Quincena Veinticinco (D.L. 499, D.O. 8 del 14/1/2026), art. 2",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/D72EB960-89D5-443E-AE2D-196F677CB0F2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "La ley rige desde su publicación en el Diario Oficial (art. 9)."
+    },
+    {
+      "id": "sv.quincena25-salario-maximo",
+      "nombre": "Quincena 25: salario mensual máximo para tenerla",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-14",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Especial Quincena Veinticinco (D.L. 499, D.O. 8 del 14/1/2026), art. 2",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/D72EB960-89D5-443E-AE2D-196F677CB0F2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "nota": "La ley rige desde su publicación en el Diario Oficial (art. 9)."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "mercado": "sv",
+  "avisos": [
+    {
+      "id": "sv.aguinaldo-reforma-2026",
+      "nivel": "cautela",
+      "desde": "2026-10-07",
+      "hasta": "2026-12-31",
+      "aplicaA": ["sv.aguinaldo", "sv.quincena-25"],
+      "titulo": "Reforma de septiembre de 2026",
+      "texto": "La Asamblea reformó el aguinaldo en septiembre de 2026: ahora se puede pagar del 1 de octubre al 20 de diciembre. La reforma también cambió la fecha de corte para saber si usted ya cumplió el año o cobra la parte proporcional. Todavía no leímos ese decreto en el Diario Oficial. Si su primer año se cumple entre octubre y diciembre, confirme la fecha de corte con su patrono o con el Ministerio de Trabajo.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo y Previsión Social",
+        "titulo": "Mayor protección laboral y propuestas de nuevas jornadas de trabajo (30/9/2026)",
+        "url": "https://www.mtps.gob.sv/2026/09/30/mayor-proteccion-laboral-y-propuestas-de-nuevas-jornadas-de-trabajo/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07",
+        "nota": "El texto vigente del Código que leímos (D.L. 433 de 2025) fija el corte el 20 de octubre (arts. 197 y 202). La prensa informa que la reforma del 23/9/2026 lo lleva al 12 de diciembre; no lo pudimos confirmar en el Diario Oficial."
+      }
+    },
+    {
+      "id": "sv.aguinaldo-renta",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "hasta": "2026-12-31",
+      "aplicaA": ["sv.aguinaldo", "sv.retencion-de-renta"],
+      "titulo": "Renta sobre el aguinaldo",
+      "texto": "La ley deja el aguinaldo libre de renta hasta dos salarios mínimos mensuales de comercio y servicios. En 2025 una norma transitoria subió ese límite a $1,500. Para 2026 la Asamblea aprobó en septiembre un límite igual, que todavía no leímos en el Diario Oficial. Esta calculadora muestra el aguinaldo antes de cualquier descuento.",
+      "fuente": {
+        "organismo": "Asamblea Legislativa",
+        "titulo": "D.L. 432 de 2025: aguinaldo como renta no gravable hasta $1,500 en el ejercicio 2025 (cita el art. 4, numeral 16, de la Ley de Impuesto sobre la Renta)",
+        "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/C386EF17-94EA-44DD-9EA3-98360385F54D.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "sv.quincena25-privado-2027",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "hasta": "2027-01-25",
+      "aplicaA": ["sv.quincena-25"],
+      "titulo": "Obligatoria en el sector privado desde 2027",
+      "texto": "En enero de 2027 la Quincena 25 pasa a ser obligatoria para todas las empresas privadas. En 2026 fue obligatoria solo en el sector público y voluntaria en el privado.",
+      "fuente": {
+        "organismo": "Asamblea Legislativa",
+        "titulo": "Ley Especial Quincena Veinticinco (D.L. 499, D.O. 8 del 14/1/2026), arts. 1 y 6",
+        "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/D72EB960-89D5-443E-AE2D-196F677CB0F2.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "sv.renta-recalculo",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "aplicaA": ["sv.retencion-de-renta"],
+      "texto": "La tabla calcula la retención de un mes o una quincena. En junio y diciembre el patrono recalcula con todo lo ganado en el año, y la retención de esos meses puede ser distinta.",
+      "fuente": {
+        "organismo": "Ministerio de Hacienda",
+        "titulo": "Decreto Ejecutivo No. 10 del 30/4/2025, art. 1, literal f (recálculo de junio y diciembre)",
+        "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2025/04/10A052.PDF",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}
