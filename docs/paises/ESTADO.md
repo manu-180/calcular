@@ -1,83 +1,62 @@
 # Estado de calcularya.com (multi-país)
 
-Última actualización: 2026-10-07 17:45 (pausa pedida por Manuel; se retoma ~19:45).
+Última actualización: 2026-10-07 21:00 (segunda pausa pedida por Manuel; se retoma ~01:00 del 8/10).
 
 ## Rama de integración
 
 `claude/calcularya-intl` (pusheada). Todo lo integrado vive acá; `main` todavía no tiene nada de intl.
 calcular.ar no cambia: foto de 244 URLs idéntica (`scripts/check_rutas_ar.ts --start`).
+`check-all` 130/130 en la última corrida completa.
 
-## Hecho e integrado
+## Integrado y registrado en `src/paises/index.ts`
 
-| Pieza | Rama de origen | Estado |
+| País | Calculadoras | Nota |
 |---|---|---|
-| Enmienda del ADR (todos los países, series en repo, sin cobro intl) | — | `docs/adr/0001-enmienda-2026-10-07.md` |
-| F1: foto de rutas AR + AR movido a `src/app/(ar)` (`global-not-found` experimental) | `claude/intl-f1-mover-ar` | integrado |
-| F2: motor `src/motor/**`, contrato, `zz`, checks, `docs/paises/RECETA.md` | `claude/intl-f2-motor` | integrado |
-| F4: runner `scripts/datos-paises/**`, semáforo, `.github/workflows/datos-paises.yml`, `PAISES_TOLERANTE=1` en datos-vivos | `claude/intl-f4-datos` | integrado |
-| Chile `cl`: 11 calculadoras, 34 tramos verificados | `claude/intl-pais-cl` | integrado y registrado |
-| Colombia `co`: 14 calculadoras, 29 verificados, 1 no verificado (FSP 2027) | `claude/intl-pais-co` | integrado y registrado |
-| México `mx`: 14 calculadoras, 49 verificados | `claude/intl-pais-mx` | integrado, registrado, `publicado` |
-| Perú `pe`: 12 publicables, `sueldo-neto` en borrador (SBS con CAPTCHA) | `claude/intl-pais-pe` | integrado y registrado |
-| Uruguay `uy`: 11 calculadoras, 32 verificados, voseo | `claude/intl-pais-uy` | integrado y registrado |
+| Chile `cl` | 11 | todo verificado |
+| Colombia `co` | 14 | FSP 2027 no verificado (sale de publicable el 1/4/2027) |
+| México `mx` | 14 | leyes de SEGOB/IMSS tomadas como primarias (diputados.gob.mx no responde) |
+| Perú `pe` | 13 | `sueldo-neto` publicado con datos de la SBS; RMA y UIT vencen 31/12/2026 |
+| Uruguay `uy` | 11 | voseo |
+| Ecuador `ec` | 11 | SBU, tabla de renta y canasta vencen 31/12/2026 |
+| Costa Rica `cr` | 11 | usted |
+| Guatemala `gt` | 8 (+3 borrador) | IVA, IGSS EMA y bonificación Q250 sin fuente primaria legible |
+| Paraguay `py` | 12 | voseo |
+| República Dominicana `do` (se importa como `rd`) | 11 | escala ISR 2027 no verificada |
+| El Salvador `sv` | 9 (+1 borrador) | ISSS sin fuente primaria; reforma del aguinaldo 2026 pendiente de leer en el D.O. |
+| Panamá `pa` | 11 | todo verificado |
+| Honduras `hn` | 8 (+1 borrador) | décimo tercer mes sin fuente legible |
 
-## En curso al pausar (cada agente commitea WIP en su rama)
+Plataforma web (F3), motor, pipeline de datos (F4) y decimales por moneda: integrados.
 
-| Frente | Rama |
-|---|---|
-| F3 plataforma: `src/app/(intl)`, ruteo por host, SEO, UI premium, `/api/geo` | `claude/intl-f3-plataforma` |
-| Ecuador | `claude/intl-pais-ec` |
-| República Dominicana | `claude/intl-pais-do` |
-| Costa Rica | `claude/intl-pais-cr` |
-| Guatemala | `claude/intl-pais-gt` |
-| Paraguay | `claude/intl-pais-py` (sin trabajo propio todavía: arranca de cero) |
+## En curso al pausar (cada agente commitea en su rama; mirar el último commit)
 
-Dónde quedó cada uno (reportes de pausa):
+| Frente | Rama | Qué es |
+|---|---|---|
+| Nicaragua | `claude/intl-pais-ni` | paquete del país |
+| Bolivia | `claude/intl-pais-bo` | paquete del país |
+| Venezuela | `claude/intl-pais-ve` | paquete del país |
+| Fix A | `claude/intl-fix-pipeline` | hallazgos de seguridad/código del pipeline: permisos del workflow, parches solo a `series.json`, TLS con intermedios versionados, redirecciones, inyección en issues, issue que se cierra antes de publicar, `iguales()` en bandas, `PAISES_TOLERANTE` ampliado, `ci.yml` de PR |
+| Fix B | `claude/intl-fix-motor` | país con errores hace fallar el build, `hoyEn` por zona + `revalidate`, parseo ambiguo «5.000», gates de preview por allowlist, APIs de AR y `llms.txt` bloqueados en calcularya, 404 sin import interno de Next, mapa explícito de loaders, tope en `cl/finiquito` |
 
-- **F3** `30aa18c` (WIP): todo construido; `check-all` 129/129 y `check_routing_hosts` 31/31 sobre un
-  build anterior. Hallazgo: Next 16 no parte el JS por `import()` desde un Server Component; lo arregló
-  con `CalculadoraDiferida` + regla `turbopack.rules` que vacía los `*.cliente.tsx` en el servidor.
-  Falta: rebuild y `check_rutas_ar --start` (`CALCULAR_HOY=2026-10-07`), build con la variable intl y
-  `check_routing_hosts --start`, Lighthouse con la máquina libre (script `lh.mjs` en su scratchpad),
-  quitar el WIP. Mobbin y 21st no estaban conectados: el diseño es criterio propio. Activar en
-  producción: `NEXT_PUBLIC_SITIO_INTL_URL=https://calcularya.com`; hreflang con AR detrás de
-  `NEXT_PUBLIC_HREFLANG_AR=1`.
-- **Ecuador** `bb552cc` (verde, 11 calculadoras, `interno`): falta probar los 4 detectores contra la red
-  (`scripts/paises/ec/probar_detectores.ts`, copiando el de Chile). Después integrar.
-- **Dominicana** `3e3bd8f` (WIP, sin compilar): datos, series, 11 calculadoras, casos y detectores
-  escritos. Faltan avisos, novedades, los 11 textos, `index.ts`, checks y detectores.
-- **Guatemala** `38429ac` (WIP): solo `scripts/paises/gt/NOTAS-RETOMA.md` con todo lo verificado y el
-  plan (11 calculadoras, usted, regiones ce1/ce2, Decreto 13-2026). Falta el código entero.
-- **Costa Rica** `96fa381` (WIP): `datos.json` (17 datos, 19 tramos verificados en SINALEVI y La
-  Gaceta) y `series.json` (BCCR, JSON público 317/318). Falta: `mercado.ts` (usted, es-CR, CRC),
-  `lib/fechas.ts`, las 11 calculadoras con casos, cliente y contenido, `fuentes.ts`, avisos,
-  novedades, `index.ts` y checks. El plan de cada fórmula está en su reporte (cesantía art. 29 con
-  tope de 8 años, preaviso art. 28).
-- **Paraguay**: sin trabajo propio; arranca de cero.
+Los reportes de pausa de cada uno se agregan abajo cuando llegan.
 
-Al retomar: `git fetch origin` y mirar el último commit de cada rama. Si dice `WIP:`, relanzar un
-agente sobre esa rama con el reporte de pausa como contexto. Si está verde y completo, integrar.
+## Al retomar, en orden
 
-## Falta lanzar
+1. `git fetch origin`; por cada rama de arriba: si el último commit es `WIP:`, retomar el agente con
+   su reporte; si está verde y completo, integrar en `claude/calcularya-intl` (y registrar el país).
+2. Con Fix A y Fix B integrados: `check-all`, build, `check_rutas_ar --start`, `check_routing_hosts --start`.
+3. Actualizar ADR D2 (`global-not-found`) y este archivo.
+4. PR de `claude/calcularya-intl` a `main` con CI verde y preview revisado. Confirmar con Manuel antes
+   del merge a producción (cambia la estructura de carpetas de calcular.ar).
+5. Activación: `NEXT_PUBLIC_SITIO_INTL_URL=https://calcularya.com` en Vercel (quita la redirección
+   temporal), Search Console y AdSense para calcularya.com.
+6. Con aprobación de Manuel: hreflang desde calcular.ar (`NEXT_PUBLIC_HREFLANG_AR=1`).
 
-El Salvador, Panamá, Honduras, Nicaragua, Bolivia, Venezuela (con `docs/paises/BRIEF-AGENTE-PAIS.md`).
+## Decisiones tomadas
 
-## Pendientes de coordinador (después de F3, que toca el motor)
-
-1. Motor: decimales por moneda y por serie (COP y CLP sin decimales, UF con 2, UI con 4). Hoy los
-   marcadores salen con «,00» o sin centavos; varios países sacaron marcadores de los textos.
-2. Perú: verificar aportes y comisiones AFP y RMA en otra fuente oficial (SBS pide CAPTCHA) para
-   publicar `sueldo-neto`.
-3. ADR D2: actualizar la decisión sobre `global-not-found` (se usó; el spike no vio el `<html>`
-   anidado).
-4. Revisión final: `code-reviewer` + `security-auditor`, build, Lighthouse, check-all.
-5. Merge a `main` y activación: `NEXT_PUBLIC_SITIO_INTL_URL=https://calcularya.com` en Vercel (eso
-   quita la redirección temporal a calcular.ar), Search Console y AdSense para calcularya.com.
-6. Con aprobación de Manuel: hreflang desde las páginas de calcular.ar hacia sus equivalentes.
-
-## Decisiones tomadas en la sesión
-
-- Colombia en tú (la investigación decía usted): es lo habitual en la web colombiana para público general.
-- México: el texto de leyes de SEGOB (ordenjuridico.gob.mx) y del IMSS cuenta como fuente primaria,
-  porque diputados.gob.mx no responde.
+- Colombia en tú (la investigación decía usted).
+- México: SEGOB (ordenjuridico.gob.mx) e IMSS como fuente primaria de leyes.
 - Un país con todo verificado entra como `publicado`; lo no verificado no se publica.
+- Nunca se salta un CAPTCHA, Cloudflare o Incapsula: el dato queda `no-verificado`.
+
+## Reportes de pausa
