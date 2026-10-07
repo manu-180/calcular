@@ -44,3 +44,31 @@ No existía un plan multi-país escrito en el repo, la memoria ni el historial: 
 ## Investigación en curso
 
 docs/research/paises/{uy,py,bo,ve,mx,pe,co,cl,ec,cr,pa,ni,do,gt,sv,hn}.md y cobros.md.
+
+## Estado al 7/10/2026, 01:15 (fin del primer bloque de trabajo)
+
+Integrado en esta rama y verificado (tsc limpio, build 232 páginas, check-all verde salvo
+check_planilla_plazo_fijo, que sólo pasa con las planillas regeneradas: lo hace el prebuild y, con
+el PR #8, también el motor de datos-vivos):
+
+- Menú móvil sereno (420 ms abre, 280 ms cierra, filas escalonadas) y desplegable de cuenta dentro
+  de la pantalla de 320 a 1280 px.
+- Zona privada instantánea: /cuenta de 296 a 23-40 ms al primer byte (simulado), esqueletos con la
+  forma real, un solo viaje a Supabase, perfil optimista. Revisado: cada página sigue validando con getUser.
+- Novedades (/novedades + RSS + bloque en la home + footer + sello) con 17 cambios reales y registro
+  que se alimenta solo desde datos-vivos. Sumado al sitemap y a la navegación.
+- SEO: JSON-LD válido en todo el sitio, grafo global, sitemap con fechas reales, gate check_seo.
+  Auditoría por ruta en docs/seo/auditoria-2026-10-06.md (titles y descriptions propuestos).
+- .gitattributes con eol=lf: los checks ya no dan rojo falso en Windows.
+- Research de 16 países en docs/research/paises/ y ADR multi-país en docs/adr/.
+
+PR aparte y urgente: #8, el sitio no se actualizaba solo desde el 28/9 (planillas sin regenerar).
+
+## Próxima ronda (al volver del descanso)
+
+1. Redacción humana de Argentina por tandas (6 agentes, archivos disjuntos), aplicando la guía y
+   los titles/descriptions de la auditoría SEO. Gate: contar_guiones en cero por tanda.
+2. Feedback de usuarios con cuenta (/cuenta/opiniones + tabla Supabase con RLS).
+3. Multi-país Fase 0 según docs/adr/0001-plan-implementacion.md (spike de Next 16 primero).
+   Pendiente de Manuel: compra de calcularya.com, cobro fuera de AR, nombre visible del sitio nuevo.
+4. Validar demanda por país con Keyword Planner (cuenta 4869983637).
