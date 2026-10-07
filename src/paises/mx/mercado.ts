@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["MXN"],
   zonaHoraria: "America/Mexico_City",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "general", nombre: "Resto del país" },
     { id: "frontera-norte", nombre: "Zona Libre de la Frontera Norte" },
