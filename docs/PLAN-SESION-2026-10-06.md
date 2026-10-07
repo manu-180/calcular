@@ -67,7 +67,7 @@ PR aparte y urgente: #8, el sitio no se actualizaba solo desde el 28/9 (planilla
 ## Próxima ronda (al volver del descanso)
 
 1. Redacción humana de Argentina por tandas (6 agentes, archivos disjuntos), aplicando la guía y
-   los titles/descriptions de la auditoría SEO. Gate: contar_guiones en cero por tanda.
+   los titles/descriptions de la auditoría SEO. Gate: check_guiones (ex contar_guiones) en cero.
 2. Feedback de usuarios con cuenta (/cuenta/opiniones + tabla Supabase con RLS).
 3. Multi-país Fase 0 según docs/adr/0001-plan-implementacion.md (spike de Next 16 primero).
    Pendiente de Manuel: compra de calcularya.com, cobro fuera de AR, nombre visible del sitio nuevo.

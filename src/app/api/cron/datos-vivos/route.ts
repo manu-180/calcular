@@ -54,7 +54,7 @@ function cuerpoMensaje(hallazgos: Hallazgo[]): string {
     "diferencias.\n\nLas páginas son estáticas: el dato nuevo NO llega al sitio hasta que se " +
     "redeploye.\n\n" +
     lineas.join("\n\n") +
-    "\n\n— /api/cron/datos-vivos"
+    "\n\nEnviado por /api/cron/datos-vivos"
   );
 }
 
