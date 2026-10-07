@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ResultadoIndemnizacion } from "@/lib/indemnizacion";
 import { InformeIndemnizacionMiniatura } from "@/components/informe-indemnizacion/Miniatura";
-import { RUTA_LANDING_INFORME, SLUG_INFORME } from "@/app/informes/indemnizacion/_modelo";
+import { RUTA_LANDING_INFORME, SLUG_INFORME } from "@/app/(ar)/informes/indemnizacion/_modelo";
 
 // Va a la landing y no abre el diálogo de compra: ahí la persona ve el informe entero con SUS
 // números antes de pagar. `desde` termina en la referencia de MercadoPago: así se sabe qué

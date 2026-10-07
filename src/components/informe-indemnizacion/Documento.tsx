@@ -6,7 +6,7 @@ import { CERTIFICADO_FUENTES, FORMULARIO, SERVICIO_TRABAJADOR } from "@/data/cer
 import { DESEMPLEO_FUENTES } from "@/data/desempleo";
 import type { Datos } from "@/lib/prefill/indemnizacion";
 import { fuenteInforme } from "@/components/InformeCuotaFuente";
-import { textoAntiguedad, type Comparacion, type Informe, type Rubro } from "@/app/informes/indemnizacion/_modelo";
+import { textoAntiguedad, type Comparacion, type Informe, type Rubro } from "@/app/(ar)/informes/indemnizacion/_modelo";
 
 export type PersonalesInforme = { trabajador: string; empresa: string };
 export const PERSONALES_VACIOS: PersonalesInforme = { trabajador: "", empresa: "" };

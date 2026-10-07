@@ -20,7 +20,7 @@ import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 const RAIZ = resolve(import.meta.dirname, "..");
-const APP = join(RAIZ, "src", "app");
+const APP = join(RAIZ, "src", "app", "(ar)");
 const LLMS = join(RAIZ, "public", "llms.txt");
 
 let fallas = 0;
@@ -61,7 +61,7 @@ const EXCLUIDAS = new Set<string>([
 /** Prefijos excluidos por rama entera (los posts del blog no se enumeran uno por uno). */
 const PREFIJOS_EXCLUIDOS = ["/blog/", "/auth/", "/cuenta/", "/dashboard/"];
 
-/** Rutas de disco: toda carpeta bajo src/app con page.tsx, salteando los segmentos dinámicos. */
+/** Rutas de disco: toda carpeta bajo src/app/(ar) con page.tsx, salteando los segmentos dinámicos. */
 function rutasEnDisco(dir: string, base = ""): string[] {
   const salida: string[] = [];
   if (existsSync(join(dir, "page.tsx"))) salida.push(base === "" ? "/" : base);

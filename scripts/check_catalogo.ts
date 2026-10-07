@@ -84,7 +84,7 @@ check(
 for (const p of Object.values(PRODUCTOS)) {
   // La URL de entrega lleva el payment_id: sin los headers privados se filtra por Referer.
   if (p.entrega === "informe") check(`${p.slug}: la entrega tiene headers privados`, nextConfig.includes(`"${p.rutaDescarga}"`));
-  check(`${p.slug}: existe la landing ${p.rutaLanding}`, existsSync(path.join("src/app", p.rutaLanding, "page.tsx")));
+  check(`${p.slug}: existe la landing ${p.rutaLanding}`, existsSync(path.join("src/app/(ar)", p.rutaLanding, "page.tsx")));
   check(`${p.slug}: la landing está en el sitemap`, sitemap.includes("`${BASE}" + p.rutaLanding + "`"));
   check(`${p.slug}: la landing está en llms.txt`, llms.includes(`https://calcular.ar${p.rutaLanding})`));
   check(`${p.slug}: precio entero en pesos`, Number.isInteger(p.precio) && p.precio > 0);
@@ -100,7 +100,7 @@ for (const p of Object.values(PRODUCTOS)) {
   } else {
     check(`${p.slug}: un informe no tiene archivo`, p.archivo === null);
     check(`${p.slug}: se entrega en una página, no en /api`, !p.rutaDescarga.startsWith("/api/"), p.rutaDescarga);
-    check(`${p.slug}: existe la página de entrega ${p.rutaDescarga}`, existsSync(path.join("src/app", p.rutaDescarga, "page.tsx")));
+    check(`${p.slug}: existe la página de entrega ${p.rutaDescarga}`, existsSync(path.join("src/app/(ar)", p.rutaDescarga, "page.tsx")));
   }
 }
 

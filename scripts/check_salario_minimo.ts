@@ -167,7 +167,7 @@ check("la jornada legal completa son 200 horas mensuales", HORAS_MES === 200, HO
 
   check("hay siete derivados listados", DERIVADOS_SMVM.length === 7, DERIVADOS_SMVM.length);
   const rotos = DERIVADOS_SMVM.filter(
-    (d) => d.href !== null && !existsSync(join(process.cwd(), "src", "app", d.href.slice(1), "page.tsx")),
+    (d) => d.href !== null && !existsSync(join(process.cwd(), "src", "app", "(ar)", d.href.slice(1), "page.tsx")),
   );
   check("todos los derivados linkean a una página que existe", rotos.length === 0, rotos.map((d) => d.href));
   check(

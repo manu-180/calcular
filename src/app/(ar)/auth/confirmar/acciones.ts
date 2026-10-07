@@ -14,7 +14,7 @@ import { destinoSeguro } from "@/lib/auth/destino";
 import type { EstadoForm } from "@/lib/auth/estado";
 import { huellaAlta, limitePorIp } from "@/lib/auth/pedido";
 import { asegurarPerfil, verificadoPrevio, vincularCompras } from "@/lib/auth/perfil";
-import { TIPOS_ENLACE, TOKEN_RE } from "@/app/auth/confirmar/tipos";
+import { TIPOS_ENLACE, TOKEN_RE } from "@/app/(ar)/auth/confirmar/tipos";
 
 export async function confirmarEnlace(_prev: EstadoForm, fd: FormData): Promise<EstadoForm> {
   const tokenHash = String(fd.get("token_hash") ?? "");

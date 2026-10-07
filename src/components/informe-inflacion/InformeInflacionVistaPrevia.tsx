@@ -4,7 +4,7 @@ import { useEffect, useId, useState } from "react";
 import { leerDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
 import { CASOS, prefill, type Caso, type Datos } from "@/lib/prefill/inflacion";
 import { formatARS } from "@/lib/formato";
-import { CASO_EJEMPLO, NOMBRE_CASO_CORTO, SLUG_INFORME, armarInforme, mesTxt } from "@/app/informes/inflacion/_modelo";
+import { CASO_EJEMPLO, NOMBRE_CASO_CORTO, SLUG_INFORME, armarInforme, mesTxt } from "@/app/(ar)/informes/inflacion/_modelo";
 import { InformeInflacionDocumento } from "./InformeInflacionDocumento";
 import { tratoPorDefecto, PERSONALES_VACIOS } from "./carta";
 

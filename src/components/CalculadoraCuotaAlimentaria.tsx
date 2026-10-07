@@ -7,7 +7,7 @@ import { formatARS, formatPctFijo, parseMonto } from "@/lib/formato";
 import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
 import { datosDeLaCalculadora, ingresoOtroInformado, prefill } from "@/lib/prefill/cuota";
 import { CuotaInformeCTA } from "@/components/CuotaInformeCTA";
-import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/informes/cuota-alimentaria/_modelo";
+import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/(ar)/informes/cuota-alimentaria/_modelo";
 
 const OPCIONES: { valor: HijoInput["tramo"]; texto: string }[] = [
   ...TRAMOS_CRIANZA.map((t) => ({ valor: t.id as HijoInput["tramo"], texto: t.nombre })),

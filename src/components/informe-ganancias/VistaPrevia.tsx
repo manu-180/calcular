@@ -10,7 +10,7 @@ import {
   GASTOS_VACIOS,
   SLUG_INFORME,
   armarInforme,
-} from "@/app/informes/ganancias/_modelo";
+} from "@/app/(ar)/informes/ganancias/_modelo";
 import { InformeGananciasDocumento } from "@/components/informe-ganancias/Documento";
 
 // Vista previa REAL: el mismo componente que se entrega. El HTML del servidor trae el ejemplo (no

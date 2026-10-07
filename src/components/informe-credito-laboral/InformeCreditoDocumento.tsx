@@ -6,7 +6,7 @@ import { fechaLarga } from "@/lib/hoy";
 import { nombrePeriodo, sumarMeses, ULTIMO_PERIODO } from "@/lib/inflacion";
 import { nombreConcepto } from "@/lib/prefill/credito-laboral";
 import { fuenteInforme } from "@/components/InformeCuotaFuente";
-import { PISO_ART_55, type FilaCoeficiente, type Informe } from "@/app/informes/credito-laboral/_modelo";
+import { PISO_ART_55, type FilaCoeficiente, type Informe } from "@/app/(ar)/informes/credito-laboral/_modelo";
 
 export type DatosCausa = {
   autos: string;

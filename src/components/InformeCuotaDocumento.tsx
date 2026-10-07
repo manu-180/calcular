@@ -9,7 +9,7 @@ import {
   escolaridadTramo,
   nombreTramo,
   type Informe,
-} from "@/app/informes/cuota-alimentaria/_modelo";
+} from "@/app/(ar)/informes/cuota-alimentaria/_modelo";
 
 export type NombresInforme = { hijos: string[]; paga: string; otro: string };
 

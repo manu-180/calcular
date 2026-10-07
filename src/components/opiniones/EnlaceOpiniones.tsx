@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { contarNuevas } from "@/app/dashboard/opiniones/datos";
+import { contarNuevas } from "@/app/(ar)/dashboard/opiniones/datos";
 
 async function Contador({ demo }: { demo: string | null }) {
   let n: number;

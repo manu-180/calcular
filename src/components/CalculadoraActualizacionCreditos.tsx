@@ -19,7 +19,7 @@ import { formatARS, formatPct, parseDecimal, parseMonto } from "@/lib/formato";
 import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
 import { datosDeLaCalculadora, prefill } from "@/lib/prefill/credito-laboral";
 import { CreditoInformeCTA } from "@/components/informe-credito-laboral/CreditoInformeCTA";
-import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/informes/credito-laboral/_modelo";
+import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/(ar)/informes/credito-laboral/_modelo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",

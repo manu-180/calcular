@@ -1,7 +1,7 @@
 import type { ResultadoCuota } from "@/lib/cuota-alimentaria";
 import { formatARS } from "@/lib/formato";
 import { fuenteInforme } from "@/components/InformeCuotaFuente";
-import { nombreTramo } from "@/app/informes/cuota-alimentaria/_modelo";
+import { nombreTramo } from "@/app/(ar)/informes/cuota-alimentaria/_modelo";
 
 const SERIF = "[font-family:var(--font-informe),Georgia,serif]";
 

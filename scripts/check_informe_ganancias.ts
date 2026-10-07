@@ -29,7 +29,7 @@ import {
   TOPE_EDUCACION,
   armarInforme,
   type Gastos,
-} from "../src/app/informes/ganancias/_modelo";
+} from "../src/app/(ar)/informes/ganancias/_modelo";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -55,7 +55,7 @@ const cerca = (a: number, b: number, tol = 0.01) => Math.abs(a - b) <= tol;
   ]) {
     check(`la calculadora web contiene «${linea}»`, fuente.includes(linea));
   }
-  const pagina = readFileSync(join(__dirname, "..", "src", "app", "ganancias", "page.tsx"), "utf8");
+  const pagina = readFileSync(join(__dirname, "..", "src", "app", "(ar)", "ganancias", "page.tsx"), "utf8");
   check("la página de /ganancias le pasa el precio del catálogo a la calculadora", pagina.includes('productoPorSlug("informe-ganancias")?.precio'));
 }
 

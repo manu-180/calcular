@@ -7,7 +7,7 @@ import { MESES_PERIODO_PRUEBA } from "@/data/indemnizacion";
 import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
 import { datosDeLaCalculadora, prefill } from "@/lib/prefill/indemnizacion";
 import { OfertaInformeIndemnizacion } from "@/components/informe-indemnizacion/OfertaInforme";
-import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/informes/indemnizacion/_modelo";
+import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/(ar)/informes/indemnizacion/_modelo";
 
 function textoAntiguedad(antiguedad: { anios: number; meses: number; dias: number }): string {
   const partes: string[] = [];

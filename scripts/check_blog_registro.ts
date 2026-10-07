@@ -1,6 +1,6 @@
-// Guardián de registro del blog: cada post en src/app/blog/<slug>/page.tsx tiene que
+// Guardián de registro del blog: cada post en src/app/(ar)/blog/<slug>/page.tsx tiene que
 // estar registrado en DOS lugares o queda huérfano (construido pero nunca indexado):
-//   1. src/app/blog/page.tsx   → array POSTS (aparece en el índice del blog)
+//   1. src/app/(ar)/blog/page.tsx   → array POSTS (aparece en el índice del blog)
 //   2. src/app/sitemap.ts      → array BLOG_POSTS (entra al sitemap → Google lo descubre)
 // Olvidarse de uno es un error silencioso: la página existe y rankea peor o nunca se
 // indexa. Este check lo hace imposible (regla KAIZEN 2-2, nacido en s60).
@@ -10,8 +10,8 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const aquí = dirname(fileURLToPath(import.meta.url));
-const blogDir = join(aquí, "..", "src", "app", "blog");
-const indicePath = join(aquí, "..", "src", "app", "blog", "page.tsx");
+const blogDir = join(aquí, "..", "src", "app", "(ar)", "blog");
+const indicePath = join(aquí, "..", "src", "app", "(ar)", "blog", "page.tsx");
 const sitemapPath = join(aquí, "..", "src", "app", "sitemap.ts");
 
 let fallas = 0;
@@ -24,7 +24,7 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
   }
 }
 
-// Slugs = subcarpetas de src/app/blog (cada una con su page.tsx). Excluye archivos sueltos.
+// Slugs = subcarpetas de src/app/(ar)/blog (cada una con su page.tsx). Excluye archivos sueltos.
 const slugs = readdirSync(blogDir, { withFileTypes: true })
   .filter((e) => e.isDirectory())
   .map((e) => e.name);

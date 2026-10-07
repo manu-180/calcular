@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MarcoAuth } from "@/components/cuenta/MarcoAuth";
 import { ConfirmarEnlace, EnlaceRoto } from "@/components/cuenta/ConfirmarEnlace";
 import { destinoSeguro } from "@/lib/auth/destino";
-import { TIPOS_ENLACE, TOKEN_RE, type TipoEnlaceConfirmar } from "@/app/auth/confirmar/tipos";
+import { TIPOS_ENLACE, TOKEN_RE, type TipoEnlaceConfirmar } from "@/app/(ar)/auth/confirmar/tipos";
 
 export const metadata: Metadata = {
   title: "Confirmá tu acceso",

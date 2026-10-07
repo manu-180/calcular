@@ -5,7 +5,7 @@ import { formatARS, formatPctFijo } from "@/lib/formato";
 import { fechaLarga } from "@/lib/hoy";
 import type { Datos } from "@/lib/prefill/inflacion";
 import { fuenteInforme } from "@/components/InformeCuotaFuente";
-import { esDeuda, mesCorto, mesTxt, NOMBRE_CASO_CORTO, type Informe } from "@/app/informes/inflacion/_modelo";
+import { esDeuda, mesCorto, mesTxt, NOMBRE_CASO_CORTO, type Informe } from "@/app/(ar)/informes/inflacion/_modelo";
 import { armarCarta, lugarYFecha, PERSONALES_VACIOS, type Personales } from "./carta";
 
 const LEY_23928 = "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/328/texact.htm";

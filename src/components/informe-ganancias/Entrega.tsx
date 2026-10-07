@@ -3,7 +3,7 @@
 import { useEffect, useId, useMemo, useState, type ReactNode } from "react";
 import { parseMonto } from "@/lib/formato";
 import { datosDeLaCalculadora, type Datos } from "@/lib/prefill/ganancias";
-import { GASTOS_VACIOS, armarInforme, type Gastos } from "@/app/informes/ganancias/_modelo";
+import { GASTOS_VACIOS, armarInforme, type Gastos } from "@/app/(ar)/informes/ganancias/_modelo";
 import { InformeGananciasDocumento } from "@/components/informe-ganancias/Documento";
 
 // La hoja impresa tiene que ser sólo el informe. Mismos selectores que el informe de cuota: dependen

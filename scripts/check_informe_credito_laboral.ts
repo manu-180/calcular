@@ -14,7 +14,7 @@ import { TASA_PURA_ANUAL } from "../src/data/actualizacion-creditos";
 import { actualizarCreditoLaboral } from "../src/lib/actualizacion-creditos";
 import { PRIMER_PERIODO, ULTIMO_PERIODO, indiceDe, sumarMeses, variacionMensual } from "../src/lib/inflacion";
 import { MAX_RUBROS, MESES_PAGO_FUTURO, datosDeLaCalculadora, prefill, type Datos } from "../src/lib/prefill/credito-laboral";
-import { PISO_ART_55, PRECIO_INFORME_REFERENCIA, armarInforme, casoEjemplo } from "../src/app/informes/credito-laboral/_modelo";
+import { PISO_ART_55, PRECIO_INFORME_REFERENCIA, armarInforme, casoEjemplo } from "../src/app/(ar)/informes/credito-laboral/_modelo";
 import { PRODUCTOS } from "../src/lib/mp";
 import { parseDecimal, parseMonto } from "../src/lib/formato";
 

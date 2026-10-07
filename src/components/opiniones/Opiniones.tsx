@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useId, useOptimistic, useRef, useState, type FormEvent } from "react";
-import { enviarOpinion } from "@/app/cuenta/opiniones/acciones";
+import { enviarOpinion } from "@/app/(ar)/cuenta/opiniones/acciones";
 import { Aviso, BotonEnviar } from "@/components/cuenta/Campos";
 import { Seccion } from "@/components/cuenta/Seccion";
 import { fechaYHora } from "@/lib/panel/formato";

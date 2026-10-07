@@ -1,7 +1,7 @@
 import { formatARS, formatPctFijo } from "@/lib/formato";
 import { fechaLarga } from "@/lib/hoy";
 import type { Caso } from "@/lib/prefill/inflacion";
-import { mesTxt, type Informe } from "@/app/informes/inflacion/_modelo";
+import { mesTxt, type Informe } from "@/app/(ar)/informes/inflacion/_modelo";
 
 export type Trato = "vos" | "usted";
 

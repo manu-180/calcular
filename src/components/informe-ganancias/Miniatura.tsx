@@ -1,6 +1,6 @@
 import { formatARS, formatPctFijo } from "@/lib/formato";
 import { fuenteInforme } from "@/components/InformeCuotaFuente";
-import { FICHAS, principales, type Informe } from "@/app/informes/ganancias/_modelo";
+import { FICHAS, principales, type Informe } from "@/app/(ar)/informes/ganancias/_modelo";
 
 const SERIF = "[font-family:var(--font-informe),Georgia,serif]";
 

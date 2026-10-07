@@ -5,7 +5,7 @@ import { SelectorPeriodo } from "@/components/SelectorPeriodo";
 import { parseDecimal, parseMonto } from "@/lib/formato";
 import { PRIMER_PERIODO, ULTIMO_PERIODO, mesesEntre, nombrePeriodo, sumarMeses, type Periodo } from "@/lib/inflacion";
 import { CONCEPTOS, MAX_RUBROS, type ConceptoId, type Datos } from "@/lib/prefill/credito-laboral";
-import { armarInforme } from "@/app/informes/credito-laboral/_modelo";
+import { armarInforme } from "@/app/(ar)/informes/credito-laboral/_modelo";
 import { InformeCreditoDocumento, type DatosCausa } from "@/components/informe-credito-laboral/InformeCreditoDocumento";
 
 // La hoja impresa tiene que ser sólo el informe: sin header, footer, anuncios ni widgets del sitio.

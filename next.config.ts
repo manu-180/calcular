@@ -21,6 +21,9 @@ const nextConfig: NextConfig = {
   // failed", que se lee como un bug del código y no lo es. BUILD_CPUS=2 lo hace sobrevivir.
   experimental: {
     inlineCss: false,
+    // Sin esto, con AR en src/app/(ar) y sin layout en la raíz, el 404 de calcular.ar pierde el
+    // lang, el header y el footer: ver src/app/global-not-found.tsx.
+    globalNotFound: true,
     ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
   },
   // exceljs se carga con require nativo y no dentro del bundle del servidor: abre y reescribe el
