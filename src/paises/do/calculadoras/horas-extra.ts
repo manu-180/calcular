@@ -9,6 +9,8 @@ export default definirCalculadora({
   requiere: {
     "do.divisor-salario-diario": "numero",
     "do.jornada-diaria": "numero",
+    "do.jornada-semanal": "numero",
+    "do.limite-horas-recargo-35": "numero",
     "do.recargo-hora-extra": "numero",
     "do.recargo-hora-extra-68": "numero",
     "do.recargo-nocturno": "numero",

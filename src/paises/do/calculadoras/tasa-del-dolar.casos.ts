@@ -5,14 +5,14 @@ export default definirCasos(tasaDelDolar, [
   {
     nombre: "100 dólares a pesos con la tasa del 6 de octubre",
     origen: { tipo: "oficial", url: "https://www.bancentral.gov.do/", detalle: "Portada del BCRD, tipo de cambio del 6/10/2026: compra 60.8522, venta 61.4111. 100 × 60.8522 = 6,085.22." },
-    fecha: "2026-10-07",
+    fecha: "2026-10-06",
     entrada: { direccion: "usd-a-dop", monto: 100 },
     esperado: { compra: 60.8522, venta: 61.4111, fecha: "2026-10-06", pesos: 6085.22 },
   },
   {
     nombre: "10,000 pesos a dólares",
     origen: { tipo: "recalculado", detalle: "10,000 ÷ 61.4111 (venta del 6/10/2026) = 162.84." },
-    fecha: "2026-10-07",
+    fecha: "2026-10-06",
     entrada: { direccion: "dop-a-usd", monto: 10000 },
     esperado: { dolares: 162.84 },
   },
