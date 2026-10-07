@@ -11,7 +11,7 @@ const SOLO_SIN_SESION = ["/login", "/registro"];
 
 const bajo = (path: string, bases: string[]) => bases.some((b) => path === b || path.startsWith(`${b}/`));
 
-async function leerSesion(request: NextRequest, respuesta: { actual: NextResponse }): Promise<boolean> {
+async function leerSesion(request: NextRequest, respuesta: { actual: NextResponse }, estricta: boolean): Promise<boolean> {
   const url = process.env.SUPABASE_URL;
   const anon = process.env.SUPABASE_ANON_KEY;
   // Sin cookie de sesión no hay nada que refrescar: se evita el viaje a Supabase del visitante anónimo.
@@ -29,9 +29,22 @@ async function leerSesion(request: NextRequest, respuesta: { actual: NextRespons
       },
     },
   });
-  // getUser y no getClaims: con claves asimétricas getClaims valida el JWT sin preguntarle a
-  // Supabase, y un usuario borrado con token vigente armaría un loop /login ⇄ /cuenta (el proxy lo
-  // da por logueado y la página, que usa getUser, no). Con la clave legacy HS256 cuestan lo mismo.
+  // Dos chequeos según qué se decide con el resultado:
+  // - Estricto (getUser) donde el proxy SACA de la página a quien tiene sesión (/login, /registro).
+  //   Ahí no alcanza con un token bien formado: un usuario borrado o una sesión revocada con token
+  //   vigente armaría un loop /login ⇄ /cuenta (el proxy lo da por logueado y la página, que usa
+  //   getUser, no). Por eso tampoco getClaims, que con claves asimétricas no le pregunta a Supabase.
+  // - Optimista (getSession) en el resto. Lee la cookie sin salir a la red y sólo va a Supabase si el
+  //   token está por vencer, para refrescarlo y guardarlo (un Server Component no puede escribir
+  //   cookies). La validación de verdad la hace cada página y handler con getUser en la región de la
+  //   base: el proxy corre en el borde más cercano al visitante (gru1 desde Argentina, medido el
+  //   7/10/2026) y su getUser costaba ~150 ms en CADA pedido a /cuenta, /dashboard y /api/cuenta.
+  // Sin loop: si la página no confirma la sesión, manda a /login, y ahí el chequeo es estricto.
+  if (!estricta) {
+    const { data, error } = await supabase.auth.getSession();
+    if (error) console.error("[proxy] no pude leer la sesión:", error.code ?? error.message);
+    return !!data.session;
+  }
   const { data, error } = await supabase.auth.getUser();
   if (error && error.name !== "AuthSessionMissingError") console.error("[proxy] no pude validar la sesión:", error.code ?? error.message);
   return !!data?.user;
@@ -60,9 +73,9 @@ export async function proxy(request: NextRequest) {
   ) {
     return NextResponse.next();
   }
-  const respuesta = { actual: NextResponse.next({ request }) };
-  const conSesion = await leerSesion(request, respuesta);
   const { pathname, search } = request.nextUrl;
+  const respuesta = { actual: NextResponse.next({ request }) };
+  const conSesion = await leerSesion(request, respuesta, bajo(pathname, SOLO_SIN_SESION));
 
   // Sólo lecturas: redirigir un POST de Server Action lo reenvía a otra ruta con el mismo
   // Next-Action. Cada acción valida la sesión por su cuenta.

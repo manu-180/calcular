@@ -46,16 +46,40 @@ export const perfilPropio = cache(async (userId: string): Promise<PerfilPropio |
   };
 });
 
+function sujetoDelToken(token: string | undefined): string | null {
+  const cuerpo = token?.split(".")[1];
+  if (!cuerpo) return null;
+  try {
+    const sub: unknown = JSON.parse(Buffer.from(cuerpo, "base64url").toString("utf8")).sub;
+    return typeof sub === "string" && sub ? sub : null;
+  } catch {
+    return null;
+  }
+}
+
+// El id del token SIN validar: sólo sirve para disparar las lecturas propias en paralelo con
+// getUser en vez de después. No autoriza nada: las lecturas viajan con el mismo JWT (PostgREST
+// verifica la firma) y lo leído con este id se usa sólo si coincide con el que confirma getUser.
+// getSession no sale a la red salvo que el token esté por vencer, y eso ya lo resolvió proxy.ts.
+export const sujetoSinValidar = cache(async (): Promise<string | null> => {
+  const supabase = await clienteDelPedido();
+  if (!supabase) return null;
+  const { data } = await supabase.auth.getSession();
+  return sujetoDelToken(data.session?.access_token);
+});
+
 // getUser() y no getSession(): la cookie la puede fabricar cualquiera; getUser la valida contra
 // Supabase. «Verificado» es nuestro (ca_perfiles.verificado_at), no email_confirmed_at: ver
 // decisión 6 del SPEC.
 export const usuarioActual = cache(async (): Promise<Usuario | null> => {
   const supabase = await clienteDelPedido();
   if (!supabase) return null;
+  const sub = await sujetoSinValidar();
+  const anticipado = sub ? perfilPropio(sub) : null;
   const { data, error } = await supabase.auth.getUser();
   if (error || !data.user?.email) return null;
   const email = data.user.email.toLowerCase();
-  const perfil = await perfilPropio(data.user.id);
+  const perfil = data.user.id === sub && anticipado ? await anticipado : await perfilPropio(data.user.id);
   return {
     id: data.user.id,
     email,
