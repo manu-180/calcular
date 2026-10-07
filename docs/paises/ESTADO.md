@@ -60,3 +60,11 @@ Los reportes de pausa de cada uno se agregan abajo cuando llegan.
 - Nunca se salta un CAPTCHA, Cloudflare o Incapsula: el dato queda `no-verificado`.
 
 ## Reportes de pausa
+
+| Frente | Commit | Hecho | Sigue |
+|---|---|---|---|
+| Nicaragua | `eca8fce` WIP | datos (18 verificados, La Gaceta 43/2026 y Digesto), series BCN hasta 31/12/2026, 10 calculadoras con casos y textos en voseo, detector de La Gaceta | `index.ts`, avisos, novedades, tsc + checks, `probar_detectores`, suavizar dos frases no verificadas (mantenimiento de valor; INSS sobre horas extra) |
+| Bolivia | `5cd13cf` WIP | mercado (usted, BOB + USD `$us`), series BCB (TCO y UFV), datos verificados (DS 5516, Ley 843, SIP), libs y 7 calculadoras | contenido de quinquenio, bono de antigüedad, vacaciones, sueldo líquido, RC-IVA, IVA+IT, horas extra (borrador), avisos, novedades, 4 detectores, index, checks |
+| Venezuela | `7f8c11d` WIP | `datos.json` (18 verificados: LOTTT, Decreto 4.653, Ley IVA; UT, cestaticket e ingreso integral no verificados) y series BCV USD/EUR | mercado (tú, `simbolos` VES "Bs." y USD "$"), `reglas.ts`, 9 calculadoras (cestaticket en borrador), detector BCV con `tlsTolerante`, avisos, novedades, index, checks |
+| Fix B motor | `4915b2e` WIP | #1 build falla con país roto (sin probar), #2 `hoyEn` por zona + `revalidate` (sin probar), #3 parseo «5.000» (verificado, 236 pruebas), #4 a medias | #4 `api/geo` y `api/dev/sitio` (POST), #5 bloquear `/api` y `/og` en intl + `llms.txt` intl, #6 404 propio, #7 mapa de loaders, #8 tope finiquito, verificación completa con dos builds |
+| Fix A pipeline | `e917575` WIP | #3 TLS con 5 intermedios en `scripts/datos-paises/certs/` (probado contra la red; van con `git add -f` por `*.pem` en `.gitignore`), #4 redirecciones, #7 `iguales()` en bandas | pruebas de #7, #5 issues (diseño listo), #6 job de issues después de `publicar` (diseño listo), #1 permisos, #2 validar parche (script `.mjs`), #8 tolerancia, #9 `ci.yml` |
