@@ -1,5 +1,6 @@
 import { crearRegistro, definirPais } from "@/motor/registro";
 import zz from "./zz";
+import cl from "./cl";
 
 // "global" no es un país: es la home de calcularya.com con el selector. No tiene datos ni calculadoras.
 const global = definirPais({
@@ -17,6 +18,6 @@ const global = definirPais({
   },
 });
 
-export const PAISES = [global, zz] as const;
+export const PAISES = [global, zz, cl] as const;
 
 export const registro = crearRegistro(PAISES);

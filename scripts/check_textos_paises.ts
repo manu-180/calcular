@@ -48,6 +48,10 @@ const IMPERATIVO_VOS = new Set([
   "pagá", "cobrá", "sacá", "dejá", "llamá", "esperá", "agregá", "cambiá", "buscá", "abrí", "recibí", "viví", "compartí", "imprimí",
 ]);
 const PRONOMBRES_VOS = new Set(["vos", "sos"]);
+// «estás» y el futuro («recibirás», «podrás») son iguales en tú y en vos. Se aceptan aunque así se
+// escape algún presente voseante con raíz en -ar/-er/-ir («comparás»): el imperativo, que es lo que
+// más aparece en una calculadora, lo sigue atrapando IMPERATIVO_VOS.
+const FUTURO_O_TU = /^(?:estás|harás|dirás|sabrás|habrás|cabrás)$|(?:arás|erás|irás|drás)$/;
 const FORMAS_TU = new Set(["tú", "tu", "tus", "te", "ti", "contigo", "tienes", "puedes", "debes", "quieres", "sabes", "necesitas", "eres", "estás", "cobras", "ganas", "trabajas", "recibes", "pagas"]);
 const FORMAS_TU_EN_VOS = new Set(["tienes", "puedes", "debes", "quieres", "sabes", "eres"]);
 
@@ -56,7 +60,7 @@ function problemasDeTrato(texto: string, trato: Trato): string[] {
   for (const m of texto.matchAll(PALABRA)) {
     const w = m[0].toLowerCase();
     if (trato !== "vos") {
-      const voseo = PRONOMBRES_VOS.has(w) || IMPERATIVO_VOS.has(w) || (/(?:ás|és|ís)$/.test(w) && w.length > 3 && !NO_VOSEO.has(w));
+      const voseo = PRONOMBRES_VOS.has(w) || IMPERATIVO_VOS.has(w) || (/(?:ás|és|ís)$/.test(w) && w.length > 3 && !NO_VOSEO.has(w) && !FUTURO_O_TU.test(w));
       if (voseo) p.push(`voseo «${m[0]}» en un mercado de ${trato}`);
     }
     if (trato === "usted" && FORMAS_TU.has(w)) p.push(`«${m[0]}» es de tú y el mercado es de usted`);
