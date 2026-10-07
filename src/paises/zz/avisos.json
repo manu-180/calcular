@@ -1,0 +1,19 @@
+{
+  "mercado": "zz",
+  "avisos": [
+    {
+      "id": "zz.mercado-de-prueba",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": "*",
+      "texto": "Zetalandia es un país de prueba. Los valores sirven para probar el motor y no son reales.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo de Zetalandia",
+        "titulo": "Aviso de mercado de prueba",
+        "url": "https://example.org/zz/aviso",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}
