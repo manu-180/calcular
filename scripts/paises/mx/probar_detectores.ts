@@ -50,7 +50,7 @@ async function main() {
         const ultimo = pts[pts.length - 1];
         console.log(`${ok ? "✅" : "❌"} ${d.id}: ${pts.length} puntos, último ${ultimo?.fecha} = ${ultimo?.valor}, salto máximo ${(saltoMax * 100).toFixed(3)} % (${ms} ms)`);
       } else {
-        const hs = r as { titulo: string; fecha: string }[];
+        const hs = r as unknown as { titulo: string; fecha: string }[];
         console.log(`✅ ${d.id}: ${hs.length} hallazgos en los últimos 3 días${hs.length ? `: ${hs.map((h) => `${h.fecha} ${h.titulo.slice(0, 80)}`).join(" | ")}` : ""} (${ms} ms)`);
       }
     } catch (err) {
