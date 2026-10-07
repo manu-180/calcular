@@ -72,3 +72,13 @@ PR aparte y urgente: #8, el sitio no se actualizaba solo desde el 28/9 (planilla
 3. Multi-país Fase 0 según docs/adr/0001-plan-implementacion.md (spike de Next 16 primero).
    Pendiente de Manuel: compra de calcularya.com, cobro fuera de AR, nombre visible del sitio nuevo.
 4. Validar demanda por país con Keyword Planner (cuenta 4869983637).
+
+## Datos viejos detectados por la redacción (corregir después de integrar todas las tandas)
+
+- /monotributo y /monotributo/categorias: «La próxima ventana cierra el 5 de agosto de 2026» fijo (ya pasó).
+  Usar RECATEGORIZACION.proximaVentana.
+- /monotributo/categorias: datasetSchema dice «vigentes desde febrero 2026» y VIGENCIA.desde es 1/8/2026.
+- /plazo-fijo «Cómo se calcula»: ejemplo fijo (0,1941; $15.953; $1.015.953) al lado de TNA_FALLBACK.valor,
+  que cambia. Usar ejTnaDecStr, ejInteresStr, ejTotalStr.
+- /plazo-fijo FAQ «¿Es seguro?»: $50.000.000 y «abril de 2026» fijos en vez de GARANTIA_DEPOSITOS.
+- src/data: 20 rayas que son puntuación de citas textuales de la ley (quedan; el gate necesita excepción).
