@@ -9,7 +9,7 @@ const URL_IESS_AFILIACION = "https://www.iess.gob.ec/aplicaciones/AfiliacionIESS
 const URL_INEC_ENERO = (anio: number) => `https://www.ecuadorencifras.gob.ec/documentos/web-inec/Inflacion/${anio}/enero/BOLETIN_TECNICO_IPC_${anio}_01.pdf`;
 
 const TEMAS_RO =
-  /salario b[aá]sico|ministerio del trabajo|c[oó]digo del trabajo|impuesto a la renta|impuesto al valor agregado|\bIVA\b|seguridad social|\bIESS\b|d[eé]cim[oa]|decimotercera|decimocuarta|utilidades|fondos? de reserva|jornada|horas (suplementarias|extraordinarias)|gastos personales|canasta/i;
+  /salario b[aá]sico|ministerio del trabajo|c[oó]digo del trabajo|impuesto a la renta|impuesto al valor agregado|\bIVA\b|d[eé]cim[oa]|decimotercera|decimocuarta|utilidades|fondos? de reserva|jornada|horas (suplementarias|extraordinarias)|gastos personales|canasta/i;
 
 const ORGANISMOS_RO = /ministerio del trabajo|seguridad social/i;
 

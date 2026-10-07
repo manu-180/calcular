@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["USD"],
   zonaHoraria: "America/Guayaquil",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "costa", nombre: "Costa y Galápagos" },
     { id: "sierra", nombre: "Sierra y Amazonía" },
