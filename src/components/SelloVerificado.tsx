@@ -1,7 +1,27 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { FirmaAutor } from "@/components/FirmaAutor";
+import { fechaLargaNovedad } from "@/lib/novedades";
 
 export type Fuente = { nombre: string; url: string };
+
+// Las páginas pasan la fecha como la tiene su archivo de datos: unas en ISO ("2026-08-01"), otras
+// ya escritas. Un "Verificado el 2026-08-01" se lee como un log, no como una fecha.
+function fechaLegible(fecha: string): string {
+  return /^\d{4}-\d{2}-\d{2}$/.test(fecha) ? fechaLargaNovedad(fecha) : fecha;
+}
+
+function LinkNovedades({ className = "" }: { className?: string }) {
+  return (
+    <Link
+      href="/novedades"
+      prefetch={false}
+      className={`font-medium underline underline-offset-2 transition-colors duration-150 ${className}`}
+    >
+      novedades
+    </Link>
+  );
+}
 
 function MarcaVerificado({ className }: { className?: string }) {
   return (
@@ -62,7 +82,7 @@ export function SelloVerificado({
           </span>
           <div className="min-w-0">
             <p className="text-[13px] font-semibold leading-tight text-emerald-900">
-              Verificado el {verificadoEl}
+              Verificado el {fechaLegible(verificadoEl)}
             </p>
             <p className="mt-0.5 text-[12px] leading-tight text-emerald-800/70">
               contra el documento oficial{norma ? ` · ${norma}` : ""}
@@ -85,6 +105,15 @@ export function SelloVerificado({
           </a>
         </div>
       </div>
+      <p className="mt-3 flex items-start gap-2 border-t border-emerald-200/60 pt-2.5 text-[12px] leading-snug text-emerald-900/70">
+        <span aria-hidden className="mt-[3px] grid size-3 shrink-0 place-items-center rounded-full bg-emerald-500/15">
+          <span className="size-1 rounded-full bg-emerald-500" />
+        </span>
+        <span>
+          Si el dato oficial cambia, lo actualizamos y queda anotado en{" "}
+          <LinkNovedades className="text-emerald-800 decoration-emerald-300 hover:text-emerald-950 hover:decoration-emerald-500" />.
+        </span>
+      </p>
     </div>
   );
 }
@@ -131,8 +160,9 @@ export function FuentesOficiales({
       </ul>
       {verificadoEl && (
         <p className="mt-4 border-t border-zinc-100 pt-3 text-xs text-zinc-500">
-          Última verificación: <strong className="font-medium text-zinc-700">{verificadoEl}</strong>
-          . Si un número no está en el documento oficial, no se publica. <FirmaAutor />.
+          Última verificación: <strong className="font-medium text-zinc-700">{fechaLegible(verificadoEl)}</strong>
+          . Si un número no está en el documento oficial, no se publica, y cada cambio queda anotado en{" "}
+          <LinkNovedades className="text-zinc-700 decoration-zinc-300 hover:text-emerald-700" />. <FirmaAutor />.
         </p>
       )}
       {children && <div className="mt-3 text-xs text-zinc-500">{children}</div>}

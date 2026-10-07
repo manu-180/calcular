@@ -6,10 +6,11 @@ import { FirmaAutor } from "@/components/FirmaAutor";
 import { GRUPOS_DE_CALCULADORAS, MAS_USADAS, grupo, paginaDeRuta, paginasDelGrupo } from "@/data/navegacion";
 import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "@/data/prestaciones";
 import { etiquetaMes, smvmVigente } from "@/lib/desempleo";
+import { NovedadesRecientes } from "@/components/novedades/NovedadesRecientes";
 import { formatARS, formatPct } from "@/lib/formato";
-import { hoyAR } from "@/lib/hoy";
 import { nombrePeriodo, ULTIMO_PERIODO, variacionMensual } from "@/lib/inflacion";
 import { etiquetaPeriodo } from "@/lib/jubilacion";
+import { ultimoCambio } from "@/lib/novedades";
 
 export const metadata: Metadata = {
   title: "CalculAR — Calculadoras gratuitas para la Argentina",
@@ -422,6 +423,8 @@ const ORDEN = [
 ];
 
 const SMVM = smvmVigente().mes;
+// "Actualizado el <día del build>" afirmaba una revisión en cada deploy, hubiera o no dato nuevo.
+const ULTIMO_CAMBIO = ultimoCambio();
 const IPC_MES = variacionMensual(ULTIMO_PERIODO);
 
 const CIFRAS = [
@@ -590,6 +593,8 @@ export default function Home() {
         </div>
       </section>
 
+      <NovedadesRecientes />
+
       <section aria-labelledby="todas" className="space-y-5">
         <div className="space-y-2">
           <h2 id="todas" className="text-titular font-bold text-zinc-900">
@@ -730,7 +735,11 @@ export default function Home() {
             Los datos del INDEC, el BCRA y ANSES se revisan solos tres veces por día: si algo cambia, el
             sitio se actualiza. <FirmaAutor prefijo="Cada cuenta la escribe y la verifica" />.
           </p>
-          <p className="shrink-0 text-xs text-zinc-500">Actualizado el {fechaLarga(hoyAR())}</p>
+          {ULTIMO_CAMBIO && (
+            <Link href="/novedades" className="shrink-0 text-xs text-zinc-500 underline decoration-zinc-300 underline-offset-2 hover:text-emerald-700">
+              Último dato cargado el {fechaLarga(ULTIMO_CAMBIO)}
+            </Link>
+          )}
         </div>
       </section>
     </div>
