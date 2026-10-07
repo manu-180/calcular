@@ -1,0 +1,614 @@
+{
+  "mercado": "co",
+  "datos": [
+    {
+      "id": "co.smmlv",
+      "nombre": "Salario mínimo legal mensual vigente (SMMLV)",
+      "tipo": "numero",
+      "unidad": "COP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1750905,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 1469 de 2025, artículo 1 (Diario Oficial 53.350)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1469_2025.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto oficial del decreto en la compilación jurídica de Colpensiones."
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.auxilio-transporte",
+      "nombre": "Auxilio de transporte mensual",
+      "tipo": "numero",
+      "unidad": "COP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 249095,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 1470 de 2025, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1470_2025.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.auxilio-tope",
+      "nombre": "Salario máximo para recibir auxilio de transporte",
+      "tipo": "numero",
+      "unidad": "SMMLV",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 1470 de 2025, artículo 1 (hasta dos veces el SMMLV)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1470_2025.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.uvt",
+      "nombre": "Unidad de Valor Tributario (UVT)",
+      "tipo": "numero",
+      "unidad": "COP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 52374,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Resolución 000238 del 15 de diciembre de 2025",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/resolucion_dian_0238_2025.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.salud-trabajador",
+      "nombre": "Aporte a salud a cargo del trabajador",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 100 de 1993, artículo 204",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0100_1993.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.pension-cotizacion",
+      "nombre": "Cotización total a pensión",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Presidencia de la República",
+            "titulo": "Decreto 4982 de 2007, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_4982_2007.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.pension-parte-trabajador",
+      "nombre": "Parte de la cotización a pensión que paga el trabajador",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-01-29",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 100 de 1993, artículo 20 (modificado por la Ley 797 de 2003, artículo 7)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0797_2003.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.fsp",
+      "nombre": "Aporte al Fondo de Solidaridad Pensional según el salario",
+      "tipo": "escala",
+      "unidad": "SMMLV",
+      "nota": "La tasa de cada fila se aplica sobre todo el ingreso base de cotización.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-01-29",
+          "hasta": "2027-03-31",
+          "valor": [
+            { "desde": 0, "hasta": 4, "tasa": 0 },
+            { "desde": 4, "hasta": 16, "tasa": 1 },
+            { "desde": 16, "hasta": 17, "tasa": 1.2 },
+            { "desde": 17, "hasta": 18, "tasa": 1.4 },
+            { "desde": 18, "hasta": 19, "tasa": 1.6 },
+            { "desde": 19, "hasta": 20, "tasa": 1.8 },
+            { "desde": 20, "hasta": null, "tasa": 2 }
+          ],
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 100 de 1993, artículo 20 (modificado por la Ley 797 de 2003, artículo 7)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0797_2003.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "1 % desde 4 SMMLV, más 0,2 % a 1 % adicional entre 16 y más de 20 SMMLV."
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-04-01",
+          "motivo": "La reforma pensional (Ley 2381 de 2024) cambia los porcentajes desde el 1 de abril de 2027 según la Sentencia C-264 de 2026. Solo lo leímos en prensa y en el INCP; falta leer la ley y la sentencia en fuente oficial.",
+          "fuente": {
+            "organismo": "INCP",
+            "titulo": "Corte Constitucional declaró exequible la mayor parte de la reforma pensional",
+            "url": "https://incp.org.co/publicaciones/infoincp-publicaciones/informacion-para-empresas/2026/09/corte-constitucional-declaro-exequible-la-mayor-parte-de-la-reforma-pensional/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.tope-ibc",
+      "nombre": "Tope del ingreso base de cotización",
+      "tipo": "numero",
+      "unidad": "SMMLV",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-01-29",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 100 de 1993, artículo 18",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0100_1993.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.intereses-cesantias",
+      "nombre": "Intereses sobre las cesantías",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 50 de 1990, artículo 99, numeral 2",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0050_1990.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.recargos",
+      "nombre": "Recargos por trabajo nocturno y horas extra",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "nocturno": "Recargo nocturno",
+        "extra-diurna": "Hora extra diurna",
+        "extra-nocturna": "Hora extra nocturna"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": { "nocturno": 35, "extra-diurna": 25, "extra-nocturna": 75 },
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 168",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.recargo-dominical",
+      "nombre": "Recargo por trabajar en domingo o festivo",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 2466 de 2025, artículo 14 (parágrafo transitorio)",
+            "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=260676",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 2466 de 2025, artículo 14 (parágrafo transitorio)",
+            "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=260676",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-07-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 2466 de 2025, artículo 14",
+            "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=260676",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.jornada-semanal",
+      "nombre": "Jornada máxima semanal",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-15",
+          "hasta": "2025-07-14",
+          "valor": 46,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 2101 de 2021, artículo 3 (publicada el 15 de julio de 2021)",
+            "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=166506",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-07-15",
+          "hasta": "2026-07-14",
+          "valor": 44,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 2101 de 2021, artículo 3 (publicada el 15 de julio de 2021)",
+            "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=166506",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-15",
+          "valor": 42,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 2101 de 2021, artículo 3, y Ley 2466 de 2025, artículo 11",
+            "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=260676",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.vacaciones-dias",
+      "nombre": "Días hábiles de vacaciones por año trabajado",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1951-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 186",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.indemnizacion-dias",
+      "nombre": "Días de salario de la indemnización por despido sin justa causa",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "primer-anio-menor": "Primer año, salario menor a 10 SMMLV",
+        "anio-adicional-menor": "Cada año siguiente, salario menor a 10 SMMLV",
+        "primer-anio-mayor": "Primer año, salario de 10 SMMLV o más",
+        "anio-adicional-mayor": "Cada año siguiente, salario de 10 SMMLV o más"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-12-27",
+          "valor": { "primer-anio-menor": 30, "anio-adicional-menor": 20, "primer-anio-mayor": 20, "anio-adicional-mayor": 15 },
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 64 (modificado por la Ley 789 de 2002, artículo 28)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.indemnizacion-umbral",
+      "nombre": "Salario desde el que cambia la tabla de indemnización",
+      "tipo": "numero",
+      "unidad": "SMMLV",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-12-27",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 64 (modificado por la Ley 789 de 2002, artículo 28)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.retencion-tabla",
+      "nombre": "Tabla de retención en la fuente por pagos laborales",
+      "tipo": "escala",
+      "unidad": "UVT",
+      "nota": "Impuesto en UVT = (ingreso en UVT menos el límite inferior) por la tarifa marginal, más la cuota fija.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 95, "tasa": 0, "cuotaFija": 0 },
+            { "desde": 95, "hasta": 150, "tasa": 19, "cuotaFija": 0 },
+            { "desde": 150, "hasta": 360, "tasa": 28, "cuotaFija": 10 },
+            { "desde": 360, "hasta": 640, "tasa": 33, "cuotaFija": 69 },
+            { "desde": 640, "hasta": 945, "tasa": 35, "cuotaFija": 162 },
+            { "desde": 945, "hasta": 2300, "tasa": 37, "cuotaFija": 268 },
+            { "desde": 2300, "hasta": null, "tasa": 39, "cuotaFija": 770 }
+          ],
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 383",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.renta-exenta-trabajo",
+      "nombre": "Renta exenta de los pagos laborales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 206, numeral 10",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.renta-exenta-trabajo-tope",
+      "nombre": "Tope anual de la renta exenta del 25 %",
+      "tipo": "numero",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 790,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 206, numeral 10",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.limite-beneficios",
+      "nombre": "Límite de rentas exentas y deducciones sobre el ingreso depurado",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 336, numeral 3",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.limite-beneficios-tope",
+      "nombre": "Tope anual de rentas exentas y deducciones",
+      "tipo": "numero",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 1340,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 336, numeral 3",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.deduccion-dependientes",
+      "nombre": "Deducción mensual por dependientes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 387",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.deduccion-dependientes-tope",
+      "nombre": "Tope mensual de la deducción por dependientes",
+      "tipo": "numero",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 32,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 387",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.deduccion-salud-tope",
+      "nombre": "Tope mensual de la deducción por medicina prepagada o seguro de salud",
+      "tipo": "numero",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 387",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.iva",
+      "nombre": "Tarifas de IVA",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Tarifa general",
+        "reducida": "Tarifa reducida (algunos alimentos y bienes)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": { "general": 19, "reducida": 5 },
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículos 468 y 468-1",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    }
+  ]
+}
