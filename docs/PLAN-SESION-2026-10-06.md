@@ -82,3 +82,11 @@ PR aparte y urgente: #8, el sitio no se actualizaba solo desde el 28/9 (planilla
   que cambia. Usar ejTnaDecStr, ejInteresStr, ejTotalStr.
 - /plazo-fijo FAQ «¿Es seguro?»: $50.000.000 y «abril de 2026» fijos en vez de GARANTIA_DEPOSITOS.
 - src/data: 20 rayas que son puntuación de citas textuales de la ley (quedan; el gate necesita excepción).
+- Home: tarjeta de recategorización «Próxima ventana: hasta el 5 de agosto» (vencida); piso de
+  /indemnizacion-art «$114.354.110» escrito a mano (se mueve por RIPTE).
+- /servicios-esenciales-huelga: description dice 4 actividades, header y H2 dicen tres.
+- /practicas-desleales-sindicales: «las tres conductas del art. 20 ter» pero la FAQ enumera cuatro.
+- /sueldo-neto/camioneros: falta el número de artículo del CCT 40/89 en una FAQ.
+- /sueldo-neto/comercio y /sueldo-neto: datasetSchema con «agosto 2026» y «1er sem 2026» a mano.
+- /sueldo-neto/construccion: pie cita acuerdoTramo2 y datasetSchema acuerdoTramo3.
+- /puam: dos FAQs duplicadas (fallecimiento del titular).
