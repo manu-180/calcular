@@ -11,7 +11,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["USD"],
   zonaHoraria: "America/Panama",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "region-1", nombre: "Región 1 (Panamá, Colón, San Miguelito, David, Santiago, Chitré y otros distritos)" },
     { id: "region-2", nombre: "Región 2 (resto de los distritos del país)" },
