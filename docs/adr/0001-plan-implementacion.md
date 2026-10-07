@@ -195,7 +195,8 @@ dentro del presupuesto, sitemap del mercado enviado en Search Console, clúster 
 
 | Medición | Valor | Fecha |
 |---|---|---|
-| Tiempo de `npm run build` antes de Fase 0 | pendiente (0.1) | |
-| Rutas prerenderizadas antes de Fase 0 | pendiente (0.1) | |
+| Tiempo de `npm run build` antes de Fase 0 | 75 s con `BUILD_CPUS=2` en frío (prebuild de planillas incluido; compilación 24,1 s, TypeScript 24,0 s, prerender 5,2 s); 42 s con la caché de Turbopack caliente | 2026-10-07 |
+| Rutas prerenderizadas antes de Fase 0 | 233 páginas generadas (225 rutas en `prerender-manifest.json`); la foto `check_rutas_ar` cubre 244 URLs | 2026-10-07 |
+| Tiempo de build después de 0.2 (AR en `(ar)`) | 30 a 47 s con `BUILD_CPUS=2` y caché caliente; 233 páginas, tabla de rutas del build idéntica | 2026-10-07 |
 | Resultado del spike de ruteo (5 supuestos) | pendiente (0.3) | |
 | Tiempo de build al cerrar Fase 1 | pendiente (1.9) | |
