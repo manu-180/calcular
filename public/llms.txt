@@ -135,4 +135,5 @@ que rotan (IPC, tasa de plazo fijo, escalas) se actualizan en cada publicación 
 ## Sobre el sitio
 
 - [Metodología y quiénes somos](https://calcular.ar/sobre): solo fuentes oficiales, fecha de verificación visible, sin asesoramiento personalizado.
+- [Novedades](https://calcular.ar/novedades): registro con fecha de cada dato oficial nuevo que entra a las calculadoras (resoluciones de ANSES, IPC y canastas del INDEC, aportes de ARCA, UMA de la Corte, escalas de gremios), con la fecha de publicación, desde cuándo rige y el link a la fuente. También se puede seguir por RSS.
 - [Contacto](https://calcular.ar/contacto)

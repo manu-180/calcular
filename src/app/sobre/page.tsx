@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { UltimoCambio } from "@/components/novedades/UltimoCambio";
 import { AUTOR, ORGANIZACION } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -76,6 +77,29 @@ export default function SobrePage() {
               puede ver la fórmula no merece tu confianza.
             </li>
           </ul>
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-bold text-zinc-900">Cómo se mantiene al día</h2>
+        <div className="space-y-3 text-zinc-600">
+          <p>
+            Los datos que cambian seguido (jubilaciones, asignaciones, inflación, canastas del INDEC,
+            aportes de casas particulares y la UMA de honorarios) <strong>se revisan solos tres veces
+            por día</strong> contra la fuente oficial. Cuando aparece uno nuevo, antes de publicarse
+            pasa controles: por ejemplo, que el aumento de las jubilaciones coincida con la inflación
+            que fija la ley. Si algo no cierra, no se publica y me llega un aviso.
+          </p>
+          <p>
+            Las escalas de los gremios y los cambios en las leyes los cargo yo, con la circular o el
+            texto oficial en la mano. Y cada cambio, venga de donde venga, queda anotado con su fecha y
+            su fuente en{" "}
+            <Link href="/novedades" className="text-emerald-700 underline">
+              Novedades
+            </Link>
+            .
+          </p>
+          <UltimoCambio />
         </div>
       </section>
 
