@@ -11,6 +11,7 @@ import jornalMinimo from "./calculadoras/jornal-minimo";
 import liquidacion from "./calculadoras/liquidacion";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioNeto from "./calculadoras/salario-neto";
+import trabajoDomestico from "./calculadoras/trabajo-domestico";
 import vacaciones from "./calculadoras/vacaciones";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoBonificacionFamiliar from "./contenido/bonificacion-familiar";
@@ -23,6 +24,7 @@ import contenidoJornalMinimo from "./contenido/jornal-minimo";
 import contenidoLiquidacion from "./contenido/liquidacion";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioNeto from "./contenido/salario-neto";
+import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
 import contenidoVacaciones from "./contenido/vacaciones";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
@@ -48,6 +50,7 @@ export default definirPais({
     { definicion: jornalMinimo, contenido: contenidoJornalMinimo, cliente: () => import("./calculadoras/jornal-minimo.cliente") },
     { definicion: bonificacionFamiliar, contenido: contenidoBonificacionFamiliar, cliente: () => import("./calculadoras/bonificacion-familiar.cliente") },
     { definicion: cotizacionDolar, contenido: contenidoCotizacionDolar, cliente: () => import("./calculadoras/cotizacion-dolar.cliente") },
+    { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
   ],
   novedades,
   detectores,

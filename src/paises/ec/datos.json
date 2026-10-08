@@ -608,6 +608,27 @@
           }
         }
       ]
+    },
+    {
+      "id": "ec.aporte-patronal-iess",
+      "nombre": "Aporte patronal al IESS (sector privado, relación de dependencia)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 11.15,
+          "fuente": {
+            "organismo": "Instituto Ecuatoriano de Seguridad Social (IESS)",
+            "titulo": "Tasas de aportación: trabajadores del sector privado bajo relación de dependencia (total patronal 11,15)",
+            "url": "https://www.iess.gob.ec/documents/13718/54965/Tasasdeaportacion.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Desglose patronal: IVM 3,10; salud 5,71; riesgos del trabajo 0,55; cesantía 1,00; Seguro Social Campesino 0,35; gastos de administración 0,44."
+          }
+        }
+      ]
     }
   ]
 }

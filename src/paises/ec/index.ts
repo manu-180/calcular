@@ -10,6 +10,7 @@ import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
 import salarioBasico from "./calculadoras/salario-basico";
 import sueldoNeto from "./calculadoras/sueldo-neto";
+import trabajoDomestico from "./calculadoras/trabajo-domestico";
 import utilidades from "./calculadoras/utilidades";
 import vacaciones from "./calculadoras/vacaciones";
 import contenidoDecimoCuartoSueldo from "./contenido/decimo-cuarto-sueldo";
@@ -22,6 +23,7 @@ import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
 import contenidoSalarioBasico from "./contenido/salario-basico";
 import contenidoSueldoNeto from "./contenido/sueldo-neto";
+import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
 import contenidoUtilidades from "./contenido/utilidades";
 import contenidoVacaciones from "./contenido/vacaciones";
 import datos from "./datos.json";
@@ -48,6 +50,7 @@ export default definirPais({
     { definicion: horasExtras, contenido: contenidoHorasExtras, cliente: () => import("./calculadoras/horas-extras.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
   ],
   novedades,
   detectores,
