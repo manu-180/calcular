@@ -164,6 +164,15 @@ devuelve vacío y solo se agrega la regla que da 404 a `/intl/*` en el host AR, 
 | `/robots.txt`, `/sitemap.xml` | los de AR | rewrite a `/intl/robots.txt`, `/intl/sitemap.xml` |
 | `/_next/*`, `/api/*`, `/og`, archivos de `public` | normal | sin rewrite |
 
+**Nota (404, octubre 2026).** Con AR en `(ar)` no queda root layout en la raíz, y el 404 de
+calcular.ar salía sin el header ni el footer de AR (con un `app/not-found.tsx`, envuelto en el
+`<html>` pelado que pone Next). Por eso se usa `src/app/global-not-found.tsx` con
+`experimental.globalNotFound`: envuelve el layout de AR y copia el HTML del 404 que trae Next 16.3.7,
+sin importar su ruta interna. El 404 intl no pasa por ahí: lo que no es de ningún mercado lo manda
+una regla `fallback` (y las APIs y `/og` de AR, una `beforeFiles`) a `/intl/global/404/...`, un
+catch-all `[...resto]` que llama a `notFound()` y pinta el 404 intl. `src/proxy.ts` corre antes de
+esos rewrites, así que en el host intl deja pasar `/api/*` sin tocarlo.
+
 **Variables de entorno** (la arquitectura no depende de que el dominio exista):
 
 | Variable | Producción hoy | Producción con dominio | Local |
