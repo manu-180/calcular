@@ -43,7 +43,7 @@ export const SEGMENTO_404 = "404";
 // otro nombre y el /<m>/sitemap.xml público llega por rewrite.
 export const RUTA_SITEMAP = "mapa-xml";
 export const RUTA_LLMS = "llms.txt";
-export const API_INTL_PERMITIDAS = ["geo", "dev/sitio"] as const;
+export const API_INTL_PERMITIDAS = ["geo", "dev/sitio", "e"] as const;
 const API_INTL_NEGADAS = `(?!(?:${API_INTL_PERMITIDAS.map((a) => a.replace("/", "\\/")).join("|")})(?:\\/|$)).*`;
 
 const escapar = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -105,7 +105,8 @@ export function reglasPorHost(o: OpcionesHosts): ReglasHosts {
       // public/llms.txt describe calcular.ar: en calcularya va su propia versión.
       { source: "/llms.txt", has: [c], destination: `/intl/global/${RUTA_LLMS}` },
       // Las APIs y la imagen OG de calcular.ar no existen en calcularya. /api/geo la usa el aviso de
-      // país y /api/dev/sitio es la única forma de borrar la cookie en un preview.
+      // país, /api/dev/sitio es la única forma de borrar la cookie en un preview y /api/e es la
+      // medición (decide el sitio por el Origin, no por el host).
       { source: `/api/:path(${API_INTL_NEGADAS})`, has: [c], destination: `/intl/global/${SEGMENTO_404}/api/:path` },
       { source: "/og/:path*", has: [c], destination: "/intl/global/og/:path*" },
     );

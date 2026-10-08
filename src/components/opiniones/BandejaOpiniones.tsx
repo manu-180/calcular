@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useOptimistic, useState, useTransition } from "react";
+import { MERCADO_AR, MERCADOS_INTL, mercadoMedido } from "@/lib/medicion/mercados";
 import { marcarOpinion } from "@/app/(ar)/dashboard/opiniones/acciones";
 import type { BandejaDatos, Filtro } from "@/app/(ar)/dashboard/opiniones/datos";
 import { Aviso } from "@/components/cuenta/Campos";
@@ -80,13 +82,24 @@ export function BandejaOpiniones({
     });
   }
 
+  const router = useRouter();
+  const enlace = (f: Filtro, m: string | null = inicial.mercado) => {
+    const q = new URLSearchParams();
+    if (f !== "nuevas") q.set("ver", f);
+    if (m) q.set("mercado", m);
+    if (demo) q.set("demo", demo);
+    return `/dashboard/opiniones${q.size ? `?${q}` : ""}`;
+  };
   const conDemo = (href: string) => (demo ? `${href}${href.includes("?") ? "&" : "?"}demo=${demo}` : href);
+  const paises = inicial.porMercado
+    ? [MERCADO_AR, ...[...MERCADOS_INTL].sort((a, b) => a.nombre.localeCompare(b.nombre, "es"))]
+    : [MERCADO_AR];
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-6 pb-8 sm:pt-4">
       <header className="animate-[ca-col_0.5s_var(--ease-fluid)_backwards] space-y-5">
         <Link
-          href={conDemo("/dashboard")}
+          href={conDemo(inicial.mercado ? `/dashboard?mercado=${inicial.mercado}` : "/dashboard")}
           className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors duration-200 hover:text-zinc-900"
         >
           <svg className="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -109,7 +122,8 @@ export function BandejaOpiniones({
           <p className="mt-1.5 text-[15px] text-zinc-600">Lo que nos escriben las personas con cuenta.</p>
         </div>
 
-        <nav aria-label="Filtrar opiniones" className="-mx-1 overflow-x-auto px-1 pb-1">
+        <div className="flex flex-wrap items-center gap-3">
+        <nav aria-label="Filtrar opiniones" className="-mx-1 max-w-full overflow-x-auto px-1 pb-1">
           <ul className="inline-flex gap-1 rounded-full bg-zinc-900/[0.045] p-1 ring-1 ring-inset ring-zinc-900/[0.05]">
             {PESTANAS.map((p) => {
               const activa = p.filtro === filtro;
@@ -117,7 +131,7 @@ export function BandejaOpiniones({
               return (
                 <li key={p.filtro}>
                   <Link
-                    href={conDemo(p.filtro === "nuevas" ? "/dashboard/opiniones" : `/dashboard/opiniones?ver=${p.filtro}`)}
+                    href={enlace(p.filtro)}
                     aria-current={activa ? "page" : undefined}
                     className={`inline-flex h-9 items-center gap-2 whitespace-nowrap rounded-full px-3.5 text-sm font-medium transition-[background-color,color,box-shadow] duration-200 ease-[var(--ease-snappy)] ${
                       activa ? "bg-white text-zinc-900 shadow-[0_1px_2px_rgba(0,0,0,0.08),0_4px_10px_-6px_rgba(0,0,0,0.18)]" : "text-zinc-600 hover:text-zinc-900"
@@ -131,6 +145,25 @@ export function BandejaOpiniones({
             })}
           </ul>
         </nav>
+        <label className="relative inline-flex h-10 items-center pb-1">
+          <span className="sr-only">País</span>
+          <select
+            value={inicial.mercado ?? ""}
+            onChange={(e) => router.push(enlace(filtro, e.target.value || null))}
+            className="h-9 cursor-pointer appearance-none rounded-full border border-zinc-200 bg-white pl-3.5 pr-9 text-sm font-medium text-zinc-800 shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-[border-color] duration-200 hover:border-zinc-300"
+          >
+            <option value="">Todos los países</option>
+            {paises.map((m) => (
+              <option key={m.codigo} value={m.codigo}>
+                {m.nombre}
+              </option>
+            ))}
+          </select>
+          <svg className="pointer-events-none absolute right-3 top-[calc(50%-0.25rem)] size-4 -translate-y-1/2 text-zinc-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="m5.5 8 4.5 4.5L14.5 8" />
+          </svg>
+        </label>
+        </div>
       </header>
 
       {fallo ? <Aviso tono="error">No se guardó el cambio. Probá de nuevo.</Aviso> : null}
@@ -156,6 +189,11 @@ export function BandejaOpiniones({
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
                     <ChipTipo tipo={o.tipo} />
                     <EstadoMarca estado={estado} admin />
+                    {o.mercado && o.mercado !== "ar" && !inicial.mercado ? (
+                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-800 ring-1 ring-inset ring-emerald-700/15">
+                        {mercadoMedido(o.mercado)?.nombre ?? o.mercado}
+                      </span>
+                    ) : null}
                     <span className="ml-auto text-xs tabular-nums text-zinc-500">{fechaYHora(o.created_at, ahora)}</span>
                   </div>
                   <p className="mt-3 whitespace-pre-line break-words text-[15px] leading-relaxed text-zinc-900">{o.mensaje}</p>

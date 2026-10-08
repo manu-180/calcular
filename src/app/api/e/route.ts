@@ -7,8 +7,8 @@ import {
   dispositivo,
   esBot,
   leerCuerpo,
-  origenPermitido,
   pais,
+  sitioDeOrigen,
   validarLote,
   type Lote,
 } from "./protocolo";
@@ -27,7 +27,21 @@ function descartar(motivo: string) {
   return listo();
 }
 
-async function escribir(lote: Lote) {
+// Antes de la migración 20261008120000 las columnas sitio/mercado no existen: una fila intl
+// cargada sin ellas quedaría contada como Argentina, así que se descarta en vez de reintentarse.
+const SIN_COLUMNA = new Set(["PGRST204", "42703"]);
+let avisoSinColumna = false;
+
+function sinMigracion(error: { code?: string } | null, intl: boolean): boolean {
+  if (!error || !intl || !SIN_COLUMNA.has(error.code ?? "")) return false;
+  if (!avisoSinColumna) {
+    avisoSinColumna = true;
+    console.warn("[api/e] falta la migración de sitio/mercado: se descartan las vistas de calcularya hasta correrla");
+  }
+  return true;
+}
+
+async function escribir(lote: Lote, intl: boolean) {
   const db = servicio();
   const tope = () => AbortSignal.timeout(4000);
 
@@ -38,7 +52,7 @@ async function escribir(lote: Lote) {
       .from("ca_vistas")
       .upsert(lote.vistas, { onConflict: "id", ignoreDuplicates: true })
       .abortSignal(tope());
-    if (error) console.error("[api/e] ca_vistas:", error.code, error.message);
+    if (error && !sinMigracion(error, intl)) console.error("[api/e] ca_vistas:", error.code, error.message);
   }
 
   await Promise.all([
@@ -49,7 +63,7 @@ async function escribir(lote: Lote) {
     (async () => {
       if (!lote.eventos.length) return;
       const { error } = await db.from("ca_eventos").insert(lote.eventos).abortSignal(tope());
-      if (error) console.error("[api/e] ca_eventos:", error.code, error.message);
+      if (error && !sinMigracion(error, intl)) console.error("[api/e] ca_eventos:", error.code, error.message);
     })(),
   ]);
 }
@@ -57,7 +71,8 @@ async function escribir(lote: Lote) {
 export async function POST(req: NextRequest) {
   if (!CUENTAS_ACTIVAS) return listo();
   const h = req.headers;
-  if (!origenPermitido(h.get("origin"), h.get("referer"), DEV)) return descartar("origen");
+  const origen = sitioDeOrigen(h.get("origin"), h.get("referer"), DEV);
+  if (!origen) return descartar("origen");
   const ua = h.get("user-agent");
   if (esBot(ua)) return descartar("bot");
   const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() || h.get("x-real-ip");
@@ -72,15 +87,18 @@ export async function POST(req: NextRequest) {
     return descartar("json");
   }
 
+  const sitio =
+    origen === "dev" ? ((cuerpo as { s?: unknown } | null)?.s === "intl" ? "intl" : "ar") : origen;
   const lote = validarLote(cuerpo, {
     dispositivo: dispositivo(ua, h.get("sec-ch-ua-mobile")),
     pais: pais(h.get("x-vercel-ip-country")),
+    sitio,
   });
   if ("error" in lote) return descartar(lote.error);
   if (lote.descartados.length) console.warn(`[api/e] items descartados: ${lote.descartados.join(",")}`);
 
   try {
-    await escribir(lote);
+    await escribir(lote, sitio === "intl");
   } catch (e) {
     console.error("[api/e] escritura:", e instanceof Error ? e.message : e);
   }

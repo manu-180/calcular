@@ -6,18 +6,33 @@ import { CONTRA, NOMBRE_RANGO, PERIODO, haceCuanto, numero } from "@/lib/panel/f
 import { useAhora } from "./hooks";
 import { IcoRefrescar } from "./iconos";
 import { tituloDePagina } from "./meta";
+import { SelectorPais, nombreMercado } from "./paises";
+
+function titulo(datos: PanelDatos, mercado: string | null): string {
+  if (mercado === "ar") return "Cómo viene calcular.ar";
+  if (mercado === "global") return "Cómo viene el inicio de CalcularYa";
+  if (mercado) return `Cómo viene CalcularYa en ${nombreMercado(mercado)}`;
+  const hayIntl = (datos.mercados ?? []).some((m) => m.mercado !== "ar" && m.visitantes > 0);
+  return hayIntl ? "Cómo vienen calcular.ar y CalcularYa" : "Cómo viene calcular.ar";
+}
 
 export function Encabezado({
   datos,
   rango,
+  mercado,
   pendientes,
   cargando,
   demo,
   onRango,
+  onMercado,
+  onPrecargar,
   onActualizar,
 }: {
+  onPrecargar: (m: string | null) => void;
   datos: PanelDatos;
   rango: Rango;
+  mercado: string | null;
+  onMercado: (m: string | null) => void;
   pendientes: Partial<Record<Rango, boolean>>;
   cargando: boolean;
   demo: string | null;
@@ -40,7 +55,7 @@ export function Encabezado({
             ) : null}
           </div>
           <h1 className="mt-3 text-[1.75rem] font-semibold leading-tight tracking-[-0.025em] text-zinc-900 sm:text-4xl">
-            Cómo viene calcular.ar
+            {titulo(datos, mercado)}
           </h1>
           <p className="mt-1.5 text-[15px] text-zinc-600">
             Lo que pasó {PERIODO[rango]}
@@ -51,7 +66,10 @@ export function Encabezado({
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <SelectorRango rango={rango} pendientes={pendientes} onRango={onRango} />
+        <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
+          <SelectorPais datos={datos} mercado={mercado} pendiente={cargando} onMercado={onMercado} onPrecargar={onPrecargar} />
+          <SelectorRango rango={rango} pendientes={pendientes} onRango={onRango} />
+        </div>
         <div className="flex items-center gap-2 text-sm text-zinc-600">
           <span className="tabular-nums">
             Actualizado {haceCuanto(datos.generado, ahora)}
