@@ -68,21 +68,3 @@ export function IconoAlerta({ className }: { className?: string }) {
     </svg>
   );
 }
-
-export function Marca({ nombre }: { nombre: string }) {
-  const corte = nombre.endsWith("Ya") ? nombre.length - 2 : nombre.length;
-  return (
-    <span className="cy-marca">
-      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false" className="cy-marca-signo">
-        <rect width="32" height="32" rx="9" fill="var(--cy-tinta)" />
-        <path d="M9 12.5h14" stroke="var(--cy-papel)" strokeWidth="2.4" strokeLinecap="round" />
-        <path d="M9 19.5h8.5" stroke="var(--cy-maiz)" strokeWidth="2.4" strokeLinecap="round" />
-        <circle cx="22.5" cy="19.5" r="1.6" fill="var(--cy-maiz)" />
-      </svg>
-      <span className="cy-marca-texto">
-        {nombre.slice(0, corte)}
-        <span className="cy-marca-ya">{nombre.slice(corte)}</span>
-      </span>
-    </span>
-  );
-}

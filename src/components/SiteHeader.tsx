@@ -1,10 +1,18 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties, PointerEvent as ReactPointerEvent, ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { Pagina, SeccionMenu, TabEncabezado } from "@/data/navegacion";
+import type { TabEncabezado } from "@/data/navegacion";
+import type {
+  FuenteBuscador,
+  MarcaSitio,
+  NavegacionPrecargada,
+  PaginaMenu,
+  SeccionMenuShell,
+  TextosEncabezado,
+} from "@/components/shell/tipos";
 import { SesionLink } from "@/components/SesionLink";
 import { MenuCuenta } from "@/components/MenuCuenta";
 import { Buscador } from "@/components/buscador/Buscador";
@@ -22,14 +30,28 @@ function cx(...parts: Array<string | false | null | undefined>): string {
   return parts.filter(Boolean).join(" ");
 }
 
-type Nav = Awaited<ReturnType<typeof cargarNavegacion>>;
+type Pagina = PaginaMenu;
+type SeccionMenu = SeccionMenuShell;
+type Nav = { columnasDelTab(key: string): SeccionMenu[][]; seccionesDelMenu(): SeccionMenu[] };
 
 // El contenido de los menús (~110 links) no viaja en el JS de cada página: se pide recién
 // cuando hay intención (hover sobre la barra, toque en el menú) y queda en caché del navegador.
-function useNavegacion(activa: boolean): Nav | null {
-  const [nav, setNav] = useState<Nav | null>(null);
+// Un sitio con un menú chico (cada país de calcularya) lo manda ya armado y no carga nada, pero
+// igual lo pinta recién con intención: así el cajón no suma su lista entera al HTML de cada página.
+function useNavegacion(activa: boolean, precargada?: NavegacionPrecargada): Nav | null {
+  const [cargada, setNav] = useState<Nav | null>(null);
+  const [pedida, setPedida] = useState(false);
+  const propia = useMemo<Nav | null>(
+    () =>
+      precargada
+        ? { columnasDelTab: (key) => precargada.columnas[key] ?? [], seccionesDelMenu: () => precargada.secciones }
+        : null,
+    [precargada],
+  );
+  if (propia && activa && !pedida) setPedida(true);
+  const nav = propia ? (pedida || activa ? propia : null) : cargada;
   useEffect(() => {
-    if (!activa || nav) return;
+    if (!activa || nav || propia) return;
     let vivo = true;
     cargarNavegacion().then(
       (m) => vivo && setNav(m),
@@ -38,8 +60,14 @@ function useNavegacion(activa: boolean): Nav | null {
     return () => {
       vivo = false;
     };
-  }, [activa, nav]);
+  }, [activa, nav, propia]);
   return nav;
+}
+
+// Lo que manda el servidor como prop puede llegar como referencia perezosa del payload RSC; suelto
+// entre hermanos estáticos React lo toma por un hijo de lista sin key y avisa en cada carga.
+function Hueco({ children }: { children: ReactNode }) {
+  return children;
 }
 
 function isActiveMatch(match: string[], pathname: string): boolean {
@@ -48,6 +76,13 @@ function isActiveMatch(match: string[], pathname: string): boolean {
 
 function enRuta(href: string, pathname: string): boolean {
   return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
+}
+
+// En calcularya el HTML se arma sobre la ruta interna (/intl/mx/aguinaldo) y el navegador ve la
+// pública (/mx/aguinaldo): sin esto el tab activo no coincide al hidratar.
+function rutaPublica(pathname: string): string {
+  if (pathname === "/intl/global" || pathname.startsWith("/intl/global/")) return pathname.slice(12) || "/";
+  return pathname.startsWith("/intl/") ? pathname.slice(5) : pathname;
 }
 
 function ChevronDown({ className }: { className?: string }) {
@@ -79,13 +114,15 @@ function CloseIcon({ className }: { className?: string }) {
   );
 }
 
+const MARCA_AR: MarcaSitio = { prefijo: "Calcul", acento: "AR", etiqueta: "CalculAR, ir al inicio", href: "/" };
+
 // Marca: el mismo signo "=" del favicon/OG (el resultado de un cálculo).
-function Logo({ onClick }: { onClick?: () => void }) {
+function Logo({ onClick, marca = MARCA_AR }: { onClick?: () => void; marca?: MarcaSitio }) {
   return (
     <Link
-      href="/"
+      href={marca.href}
       onClick={onClick}
-      aria-label="CalculAR, ir al inicio"
+      aria-label={marca.etiqueta}
       className="group flex shrink-0 items-center gap-2.5 rounded-lg outline-none"
     >
       <span
@@ -98,7 +135,8 @@ function Logo({ onClick }: { onClick?: () => void }) {
         </span>
       </span>
       <span className="text-[1.35rem] font-bold leading-none tracking-tight text-zinc-900">
-        Calcul<span className="text-emerald-600">AR</span>
+        {marca.prefijo}
+        <span className="text-emerald-600">{marca.acento}</span>
       </span>
     </Link>
   );
@@ -228,8 +266,43 @@ const MAS_LINKS = [
   { href: "/contacto", label: "Contacto" },
 ];
 
-export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
-  const pathname = usePathname();
+const TEXTOS_AR: TextosEncabezado = {
+  principal: "Principal",
+  buscar: "Buscar",
+  buscarCalculadora: "Buscar una calculadora",
+  abrirMenu: "Abrir el menú",
+  cerrarMenu: "Cerrar el menú",
+  menu: "Menú",
+  todas: "Todas las calculadoras",
+  pieCajon: "Datos de fuentes oficiales · Hecho en Argentina",
+};
+
+export type PropsEncabezado = {
+  tabs: TabEncabezado[];
+  marca?: MarcaSitio;
+  navegacion?: NavegacionPrecargada;
+  masLinks?: { href: string; label: string }[];
+  textos?: TextosEncabezado;
+  buscador?: FuenteBuscador | null;
+  extra?: ReactNode;
+  extraCajon?: ReactNode;
+  rutasInternas?: boolean;
+};
+
+export default function SiteHeader({
+  tabs,
+  marca,
+  navegacion,
+  masLinks = MAS_LINKS,
+  textos = TEXTOS_AR,
+  buscador,
+  extra,
+  extraCajon,
+  rutasInternas = false,
+}: PropsEncabezado) {
+  const rutaCruda = usePathname() ?? "/";
+  const pathname = rutasInternas ? rutaPublica(rutaCruda) : rutaCruda;
+  const conBuscador = buscador !== null;
   const atajo = useAtajo();
 
   const [scrolled, setScrolled] = useState(false);
@@ -238,7 +311,7 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [quiereNav, setQuiereNav] = useState(false);
 
-  const nav = useNavegacion(quiereNav || !!openKey || mobileOpen);
+  const nav = useNavegacion(quiereNav || !!openKey || mobileOpen, navegacion);
 
   const headerRef = useRef<HTMLElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
@@ -257,8 +330,8 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
 
   const pedirNav = useCallback(() => {
     setQuiereNav(true);
-    precargarNavegacion();
-  }, []);
+    if (!navegacion) precargarNavegacion();
+  }, [navegacion]);
 
   const finCierre = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -560,9 +633,9 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
         }}
       >
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-4 sm:px-6">
-          <Logo />
+          <Logo marca={marca} />
 
-          <nav className="ml-4 hidden lg:block xl:ml-8" aria-label="Principal" onPointerEnter={pedirNav} onFocusCapture={pedirNav}>
+          <nav className="ml-4 hidden lg:block xl:ml-8" aria-label={textos.principal} onPointerEnter={pedirNav} onFocusCapture={pedirNav}>
             <div ref={rowRef} className="relative flex items-center gap-0.5">
               {tabs.map((tab) => {
                 const active = activeKey === tab.key;
@@ -642,6 +715,8 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
           </nav>
 
           <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+            {extra && <Hueco>{extra}</Hueco>}
+            {conBuscador && (
             <button
               type="button"
               onClick={() => abrirBuscador()}
@@ -649,34 +724,37 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
               onFocus={precargarMotor}
               aria-haspopup="dialog"
               aria-keyshortcuts="Control+K Meta+K /"
-              aria-label="Buscar una calculadora"
+              aria-label={textos.buscarCalculadora}
               className="group hidden h-10 items-center gap-2 rounded-full border border-zinc-200/90 bg-white/80 pl-3.5 pr-2 text-sm text-zinc-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] outline-none transition-[border-color,background-color,color,transform] duration-200 ease-fluid hover:border-zinc-300 hover:bg-white hover:text-zinc-800 active:scale-[0.97] lg:inline-flex"
             >
               <IconoLupa className="size-4 transition-transform duration-300 ease-fluid group-hover:-rotate-6" />
-              <span className="pr-1">Buscar</span>
+              <span className="pr-1">{textos.buscar}</span>
               <kbd className="ca-tecla hidden xl:inline-flex">{atajo}</kbd>
             </button>
+            )}
 
             <MenuCuenta claseIngresar="hidden h-10 items-center rounded-full px-3.5 text-sm font-medium text-zinc-600 outline-none transition-[background-color,color,transform] duration-200 hover:bg-zinc-900/[0.04] hover:text-zinc-900 active:scale-[0.97] lg:inline-flex" />
 
+            {conBuscador && (
             <button
               type="button"
               onClick={() => abrirBuscador()}
               onTouchStart={precargarMotor}
               onPointerDown={precargarMotor}
               aria-haspopup="dialog"
-              aria-label="Buscar una calculadora"
+              aria-label={textos.buscarCalculadora}
               className="grid size-11 place-items-center rounded-full text-zinc-700 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-900/[0.05] active:scale-95 lg:hidden"
             >
               <IconoLupa className="size-[22px]" />
             </button>
+            )}
 
             <button
               type="button"
               onClick={abrirCajon}
               onTouchStart={pedirNav}
               onPointerDown={pedirNav}
-              aria-label="Abrir el menú"
+              aria-label={textos.abrirMenu}
               aria-expanded={mobileOpen}
               aria-haspopup="dialog"
               className="-mr-1.5 grid size-11 place-items-center rounded-full text-zinc-700 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-900/[0.05] active:scale-95 lg:hidden"
@@ -764,7 +842,7 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
       <dialog
         ref={cajonRef}
         className="ca-cajon ca-bloquea lg:hidden"
-        aria-label="Menú"
+        aria-label={textos.menu}
         onClose={() => setMobileOpen(false)}
         onCancel={(e) => {
           e.preventDefault();
@@ -788,18 +866,19 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
           }}
         >
           <div className="ca-cajon-item flex shrink-0 items-center justify-between gap-3 px-4 pb-2 pt-3" style={{ "--i": 0 } as CSSProperties}>
-            <Logo onClick={cerrarCajon} />
+            <Logo onClick={cerrarCajon} marca={marca} />
             <button
               ref={cerrarCajonRef}
               type="button"
               onClick={cerrarCajon}
-              aria-label="Cerrar el menú"
+              aria-label={textos.cerrarMenu}
               className="-mr-1.5 grid size-11 place-items-center rounded-full text-zinc-500 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-100 active:scale-95"
             >
               <CloseIcon className="size-5" />
             </button>
           </div>
 
+          {conBuscador && (
           <div className="ca-cajon-item shrink-0 px-4 pb-3" style={{ "--i": 1 } as CSSProperties}>
             <button
               type="button"
@@ -811,18 +890,20 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
               className="flex h-12 w-full items-center gap-3 rounded-2xl border border-zinc-200 bg-zinc-50/80 px-4 text-left text-[15px] text-zinc-500 outline-none transition-[background-color,transform] duration-150 active:scale-[0.98] active:bg-zinc-100"
             >
               <IconoLupa className="size-5 text-zinc-400" />
-              Buscar una calculadora
+              {textos.buscarCalculadora}
             </button>
           </div>
+          )}
 
-          <nav aria-label="Todas las calculadoras" className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 pb-3 [scrollbar-width:thin]">
+          <nav aria-label={textos.todas} className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 pb-3 [scrollbar-width:thin]">
             {secciones ? (
               <div>
+                {extraCajon && <Hueco>{extraCajon}</Hueco>}
                 {secciones.map((s, i) => (
                   <SeccionCajon key={s.id} seccion={s} pathname={pathname} onNavigate={cerrarCajon} orden={Math.min(i + 2, 7)} />
                 ))}
                 <div className="ca-cajon-item mt-2 border-t border-zinc-100 pt-2" style={{ "--i": 7 } as CSSProperties}>
-                  {MAS_LINKS.map((l) => (
+                  {masLinks.map((l) => (
                     <Link
                       key={l.href}
                       href={l.href}
@@ -855,12 +936,12 @@ export default function SiteHeader({ tabs }: { tabs: TabEncabezado[] }) {
             style={{ "--i": 7 } as CSSProperties}
           >
             <SesionLink className="flex h-12 w-full items-center justify-center rounded-2xl bg-zinc-900 text-[15px] font-semibold text-white outline-none transition-[background-color,transform] duration-150 active:scale-[0.98] active:bg-zinc-800" />
-            <p className="mt-3 text-center text-xs text-zinc-500">Datos de fuentes oficiales · Hecho en Argentina</p>
+            <p className="mt-3 text-center text-xs text-zinc-500">{textos.pieCajon}</p>
           </div>
         </div>
       </dialog>
 
-      <Buscador />
+      {conBuscador && <Buscador fuente={buscador} />}
     </header>
   );
 }
