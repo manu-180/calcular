@@ -3,12 +3,12 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.liquidacion",
   h1: "Calculadora de liquidación laboral en Costa Rica",
-  title: "Liquidación laboral 2026: calcule sus prestaciones",
+  title: "Calculadora de liquidación laboral en Costa Rica 2026",
   description:
-    "Calcule su liquidación en Costa Rica: preaviso, cesantía con la tabla del artículo 29, vacaciones y aguinaldo proporcional. Según el Código de Trabajo.",
+    "Calcule su liquidación laboral: preaviso, cesantía, vacaciones y aguinaldo proporcional, por despido o por renuncia. Según el Código de Trabajo, gratis.",
   intro: [
-    "Cuando termina un contrato de trabajo, el patrono le debe pagar la liquidación. Lo que incluye depende de cómo terminó la relación.",
-    "Si lo despidieron sin justa causa, le corresponden preaviso, cesantía, vacaciones y aguinaldo. Si renunció o hubo justa causa, solo vacaciones y aguinaldo.",
+    "La liquidación laboral en Costa Rica incluye las vacaciones pendientes y el aguinaldo proporcional. Si lo despidieron sin justa causa, se suman el preaviso y la cesantía.",
+    "Escriba su salario promedio, sus fechas y cómo terminó la relación. Le mostramos cada rubro de sus prestaciones y el total a cobrar.",
   ],
   comoSeCalcula: [
     "Salario diario: su salario promedio de los últimos seis meses dividido entre {{cr.dias-mes-planilla}}.",
@@ -21,6 +21,10 @@ export default definirContenido({
     "Con un salario promedio de ₡600.000, ingreso el 1 de marzo de 2021 y despido sin preaviso el 30 de septiembre de 2026: preaviso ₡600.000, cesantía de 129 días ₡2.580.000, 10 días de vacaciones ₡200.000 y aguinaldo ₡500.000. Total ₡3.880.000.",
   ],
   faq: [
+    {
+      pregunta: "¿Qué incluye la liquidación si me despiden?",
+      respuesta: "Si el despido es sin justa causa: preaviso (si no se lo dieron), cesantía, vacaciones pendientes y aguinaldo proporcional. Si hubo justa causa, solo vacaciones y aguinaldo.",
+    },
     {
       pregunta: "¿Si renuncio me pagan cesantía?",
       respuesta: "No. La cesantía se paga cuando el despido es sin justa causa o por otra causa ajena a su voluntad. Al renunciar recibe las vacaciones pendientes y el aguinaldo proporcional.",
@@ -39,6 +43,7 @@ export default definirContenido({
     },
   ],
   glosario: [
+    { termino: "Prestaciones laborales", definicion: "Lo que se paga al terminar el contrato: preaviso, cesantía, vacaciones y aguinaldo, según el caso." },
     { termino: "Preaviso", definicion: "Aviso anticipado del fin del contrato. Si no se da, se paga en dinero." },
     { termino: "Cesantía", definicion: "Indemnización por los años trabajados cuando el despido es sin justa causa." },
     { termino: "Responsabilidad patronal", definicion: "Cuando el patrono termina el contrato sin una causa justa y debe pagar preaviso y cesantía." },

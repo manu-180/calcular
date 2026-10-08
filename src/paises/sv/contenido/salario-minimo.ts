@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "sv.salario-minimo",
-  h1: "Salario mínimo en El Salvador por sector",
-  title: "Salario mínimo 2026 en El Salvador por sector",
+  h1: "Salario mínimo 2026 en El Salvador por sector",
+  title: "Salario mínimo El Salvador 2026: por sector, día y hora",
   description:
-    "Salario mínimo vigente en El Salvador: {{sv.salario-minimo@comercio-servicios}} en comercio y servicios. Vea el de su sector por mes, quincena, día y hora.",
+    "Salario mínimo vigente en El Salvador: {{sv.salario-minimo@comercio-servicios}} en comercio y servicios. Vea el de su sector por mes, quincena, día y hora, con el decreto vigente.",
   intro: [
-    "En El Salvador el salario mínimo cambia según la actividad de la empresa. Elija su sector y vea el mínimo por mes, por quincena, por día y por hora.",
-    "Los valores salen del decreto de salarios mínimos vigente desde el {{sv.salario-minimo@comercio-servicios#desde}}.",
+    "El salario mínimo en El Salvador es de {{sv.salario-minimo@comercio-servicios}} al mes en comercio, servicios e industria. En la maquila textil es {{sv.salario-minimo@maquila}} y en el sector agropecuario, {{sv.salario-minimo@agropecuario}}.",
+    "Elija su sector y vea el mínimo por mes, por quincena, por día y por hora. Los valores salen del decreto vigente desde el {{sv.salario-minimo@comercio-servicios#desde}}.",
   ],
   comoSeCalcula: [
     "El mensual y el diario son los que publica el decreto. El mensual se paga igual sin importar cuántos días tenga el mes.",
@@ -23,6 +23,10 @@ export default definirContenido({
     {
       pregunta: "¿Desde cuándo rige?",
       respuesta: "Desde el {{sv.salario-minimo@comercio-servicios#desde}}, con un aumento del 12 % sobre el anterior.",
+    },
+    {
+      pregunta: "¿Cuánto es el salario mínimo diario?",
+      respuesta: "En comercio y servicios, {{sv.salario-minimo-diario@comercio-servicios}}. En el sector agropecuario, {{sv.salario-minimo-diario@agropecuario}}. Elija su sector para ver el suyo.",
     },
     {
       pregunta: "¿Por qué el diario no es el mensual dividido por 30?",

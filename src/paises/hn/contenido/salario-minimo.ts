@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "hn.salario-minimo",
-  h1: "Salario mínimo en Honduras por rama y tamaño de empresa",
-  title: "Salario mínimo 2026 en Honduras: por rama y tamaño",
+  h1: "Salario mínimo 2026 en Honduras por rama y tamaño de empresa",
+  title: "Salario mínimo Honduras 2026: tabla por rama y empleados",
   description:
-    "Consulte el salario mínimo mensual, por jornada y por hora según la rama de actividad y la cantidad de trabajadores de la empresa. Acuerdo SETRASS-233-2026.",
+    "Consulte el salario mínimo 2026 mensual, por jornada y por hora según la rama de actividad y el número de trabajadores de la empresa. Acuerdo SETRASS-233-2026.",
   intro: [
-    "En Honduras no hay un solo salario mínimo. Cambia según la rama de actividad de la empresa y cuántos trabajadores tiene.",
+    "El salario mínimo 2026 en Honduras va de {{hn.salario-minimo-mensual[agricultura-1-10]}} al mes (agricultura, empresas de 1 a 10 trabajadores) en adelante. Cambia según la rama de actividad de la empresa y cuántos trabajadores tiene.",
     "La tabla de 2026 rige desde el 1 de enero de 2026 y la de 2027 desde el 1 de enero de 2027. Las dos salen del mismo acuerdo.",
   ],
   comoSeCalcula: [
@@ -20,8 +20,8 @@ export default definirContenido({
   ],
   faq: [
     {
-      pregunta: "¿Cuánto es el salario mínimo más bajo?",
-      respuesta: "El de agricultura en empresas de 1 a 10 trabajadores: {{hn.salario-minimo-mensual[agricultura-1-10]}} al mes.",
+      pregunta: "¿Cuánto es el salario mínimo en Honduras en 2026?",
+      respuesta: "Depende de la rama y del tamaño de la empresa. Por ejemplo, en comercio con 1 a 10 trabajadores es {{hn.salario-minimo-mensual[comercio-1-10]}} al mes. El más bajo es el de agricultura en empresas de 1 a 10 trabajadores: {{hn.salario-minimo-mensual[agricultura-1-10]}}.",
     },
     {
       pregunta: "¿Cuánto subió el salario mínimo en 2026?",

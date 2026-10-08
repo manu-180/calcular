@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "gt.bono-14",
-  h1: "Calculadora del Bono 14",
-  title: "Calcular Bono 14 en Guatemala: cuánto le toca en julio",
+  h1: "Calculadora del Bono 14 en Guatemala",
+  title: "Calcular Bono 14 en Guatemala 2026: cuánto le toca",
   description:
-    "Calcule su Bono 14 con las fechas exactas del período (1 de julio al 30 de junio) o la parte que le toca si dejó de trabajar. Según el Decreto 42-92.",
+    "Calcule su Bono 14 completo o proporcional con las fechas exactas del período (1 de julio al 30 de junio). También si renunció o lo despidieron. Decreto 42-92.",
   intro: [
-    "El Bono 14 es un salario extra que se paga cada año en la primera quincena de julio. Es aparte del aguinaldo.",
-    "Si trabajó el año completo, del 1 de julio al 30 de junio, recibe un salario ordinario entero. Si trabajó menos, recibe la parte que corresponde a los días trabajados.",
+    "El Bono 14 en Guatemala es el {{gt.bono-14}} de su salario ordinario mensual por un año completo de trabajo, del 1 de julio al 30 de junio. Se paga en la primera quincena de julio.",
+    "Si trabajó menos tiempo, recibe la parte proporcional a los días trabajados. Escriba su salario y su fecha de ingreso para ver cuánto le toca.",
   ],
   comoSeCalcula: [
     "Se toma el promedio de su salario ordinario mensual del período.",
@@ -22,6 +22,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuándo se paga el Bono 14?",
       respuesta: "En la primera quincena de julio de cada año. Cubre el período del 1 de julio del año anterior al 30 de junio.",
+    },
+    {
+      pregunta: "¿Cómo se calcula el Bono 14 proporcional?",
+      respuesta: "Multiplique su salario promedio por los días trabajados en el período y divida entre 365. La calculadora cuenta los días por usted.",
     },
     {
       pregunta: "¿Me toca Bono 14 si renuncio o me despiden?",

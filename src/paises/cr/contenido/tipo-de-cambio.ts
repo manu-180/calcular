@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cr.tipo-de-cambio",
-  h1: "Tipo de cambio del dólar en Costa Rica hoy",
-  title: "Tipo de cambio del dólar hoy en Costa Rica (BCCR)",
+  h1: "Tipo de cambio del dólar hoy en Costa Rica",
+  title: "Tipo de cambio hoy en Costa Rica: dólar a colones (BCCR)",
   description:
-    "Convierta dólares a colones con el tipo de cambio de referencia del BCCR: compra {{cr.tipo-cambio-compra}} y venta {{cr.tipo-cambio-venta}}.",
+    "Tipo de cambio de referencia del BCCR hoy: compra {{cr.tipo-cambio-compra}} y venta {{cr.tipo-cambio-venta}}. Convierta dólares a colones o colones a dólares al instante.",
   intro: [
-    "El Banco Central de Costa Rica publica cada día un tipo de cambio de referencia de compra y otro de venta.",
-    "Elija si quiere pasar de dólares a colones o al revés y escriba el monto.",
+    "El tipo de cambio de referencia del Banco Central de Costa Rica hoy es {{cr.tipo-cambio-compra}} para la compra y {{cr.tipo-cambio-venta}} para la venta de cada dólar.",
+    "Elija si quiere pasar de dólares a colones o de colones a dólares y escriba el monto.",
   ],
   comoSeCalcula: [
     "Dólares a colones: el monto por el tipo de cambio de compra, que es lo que pagan por cada dólar que usted vende.",
@@ -17,6 +17,10 @@ export default definirContenido({
   ],
   ejemplo: ["Con una referencia de compra de ₡453,46, cien dólares son ₡45.346."],
   faq: [
+    {
+      pregunta: "¿A cuánto está el dólar hoy en Costa Rica?",
+      respuesta: "Según la referencia del BCCR, a {{cr.tipo-cambio-compra}} para la compra y {{cr.tipo-cambio-venta}} para la venta.",
+    },
     {
       pregunta: "¿Por qué hay un tipo de cambio de compra y otro de venta?",
       respuesta: "Porque las entidades compran dólares un poco más baratos de lo que los venden. La diferencia es su margen.",

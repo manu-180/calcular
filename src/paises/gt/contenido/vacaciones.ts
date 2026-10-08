@@ -2,17 +2,17 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "gt.vacaciones",
-  h1: "Calculadora de vacaciones en Guatemala",
-  title: "Vacaciones en Guatemala: días y pago proporcional",
+  h1: "Cálculo de vacaciones en Guatemala",
+  title: "Cálculo de vacaciones en Guatemala: días y pago proporcional",
   description:
-    "Calcule cuánto valen sus {{gt.vacaciones-dias-habiles}} hábiles de vacaciones o la parte proporcional que le pagan al terminar la relación laboral.",
+    "Calcule cuánto valen sus {{gt.vacaciones-dias-habiles}} hábiles de vacaciones o la parte proporcional que le pagan al terminar la relación laboral. Gratis y al instante.",
   intro: [
-    "Después de cada año de trabajo con el mismo patrono, tiene derecho a {{gt.vacaciones-dias-habiles}} hábiles de vacaciones pagadas, como mínimo.",
-    "Las vacaciones se gozan, no se cambian por dinero. Solo se pagan en dinero cuando termina la relación laboral.",
+    "En Guatemala le corresponden al menos {{gt.vacaciones-dias-habiles}} hábiles de vacaciones pagadas por cada año de trabajo con el mismo patrono.",
+    "Las vacaciones se gozan, no se cambian por dinero. Solo se pagan en dinero cuando termina la relación laboral, y ahí se suma la parte proporcional del último año.",
   ],
   comoSeCalcula: [
     "Año completo: {{gt.vacaciones-dias-habiles}} hábiles.",
-    "Proporcional: {{gt.vacaciones-dias-habiles}} × días trabajados desde su último aniversario / 365.",
+    "Vacaciones proporcionales: {{gt.vacaciones-dias-habiles}} × días trabajados desde su último aniversario / 365.",
     "Cada día vale el salario promedio del último año dividido entre 30. En empresas agrícolas o ganaderas se usa el promedio de los últimos tres meses.",
   ],
   ejemplo: ["Gana Q4,500 y deja de trabajar 200 días después de su aniversario: 15 × 200 / 365 = 8.22 días. Cada día vale Q150, así que le pagan Q1,233."],
@@ -20,6 +20,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuántos días de vacaciones me tocan en Guatemala?",
       respuesta: "Al menos {{gt.vacaciones-dias-habiles}} hábiles por cada año de trabajo continuo. Su contrato o un pacto colectivo pueden darle más.",
+    },
+    {
+      pregunta: "¿Cómo se calculan las vacaciones proporcionales?",
+      respuesta: "Multiplique {{gt.vacaciones-dias-habiles}} por los días trabajados desde su último aniversario y divida entre 365. Esos días se pagan a su salario diario promedio.",
     },
     {
       pregunta: "¿Cuándo me tienen que dar las vacaciones?",

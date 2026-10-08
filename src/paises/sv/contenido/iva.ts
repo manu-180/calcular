@@ -3,10 +3,10 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.iva",
   h1: "Calculadora de IVA en El Salvador",
-  title: "Calculadora de IVA del {{sv.iva}} en El Salvador",
-  description: "Sume o quite el IVA del {{sv.iva}} a un precio en segundos. Con la tasa de la ley del IVA de El Salvador.",
+  title: "Calculadora de IVA en El Salvador: sume o quite el {{sv.iva}}",
+  description: "Sume o quite el IVA del {{sv.iva}} a cualquier precio en segundos. Vea el precio sin IVA, el impuesto y el total, con la tasa de la ley del IVA de El Salvador.",
   intro: [
-    "El IVA es el impuesto que se paga sobre la venta de bienes y la prestación de servicios. En El Salvador la tasa es del {{sv.iva}}.",
+    "El IVA en El Salvador es del {{sv.iva}} sobre la venta de bienes y la prestación de servicios.",
     "Ponga un monto y elija si quiere sumarle el IVA o quitárselo a un precio que ya lo incluye.",
   ],
   comoSeCalcula: [
@@ -22,6 +22,10 @@ export default definirContenido({
     {
       pregunta: "¿Cómo saco el precio sin IVA?",
       respuesta: "Divida el precio con IVA por 1.13. Por ejemplo, $56.50 dividido por 1.13 da $50.",
+    },
+    {
+      pregunta: "¿Cómo le sumo el IVA a un precio?",
+      respuesta: "Multiplique el precio sin IVA por 1.13. Por ejemplo, $50 por 1.13 da $56.50.",
     },
     {
       pregunta: "¿Por qué no basta con restar el porcentaje al precio final?",

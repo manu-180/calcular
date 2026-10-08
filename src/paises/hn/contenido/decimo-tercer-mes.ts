@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "hn.decimo-tercer-mes",
-  h1: "Calculadora del décimo tercer mes (aguinaldo)",
+  h1: "Calculadora del décimo tercer mes (aguinaldo) en Honduras",
   title: "Décimo tercer mes en Honduras: calcule su aguinaldo",
-  description: "Calcule su aguinaldo de diciembre o la parte proporcional si dejó de trabajar.",
+  description: "Calcule su décimo tercer mes (aguinaldo de diciembre) completo o la parte proporcional si no trabajó todo el año o dejó de trabajar.",
   intro: [
-    "El décimo tercer mes, o aguinaldo, es un salario extra que se paga en diciembre.",
+    "El décimo tercer mes en Honduras, o aguinaldo, es un salario extra que se paga en diciembre.",
     "Si trabajó todo el año recibe un salario entero. Si trabajó menos, recibe la parte proporcional.",
   ],
   comoSeCalcula: [

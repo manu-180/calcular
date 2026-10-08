@@ -3,17 +3,22 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hn.tipo-de-cambio",
   h1: "Tipo de cambio del dólar hoy en Honduras",
-  title: "Tipo de cambio hoy: dólar a lempiras (BCH)",
-  description: "Consulte el tipo de cambio de referencia del Banco Central de Honduras y convierta dólares a lempiras o lempiras a dólares.",
+  title: "Tipo de cambio hoy en Honduras: dólar a lempiras (BCH)",
+  description:
+    "Tipo de cambio de referencia del Banco Central de Honduras hoy: {{hn.tipo-cambio}} por dólar. Convierta dólares a lempiras o lempiras a dólares al instante.",
   intro: [
-    "El tipo de cambio de referencia lo publica el Banco Central de Honduras (BCH) todos los días hábiles.",
-    "En bancos y casas de cambio el precio de compra y el de venta son otros.",
+    "El tipo de cambio de referencia del Banco Central de Honduras (BCH) hoy es {{hn.tipo-cambio}} por cada dólar. El BCH lo publica todos los días hábiles.",
+    "En bancos y casas de cambio el precio de compra y el de venta son otros. Escriba el monto y elija hacia qué moneda quiere convertir.",
   ],
   comoSeCalcula: [
     "De dólares a lempiras: multiplique los dólares por el tipo de cambio.",
     "De lempiras a dólares: divida los lempiras entre el tipo de cambio.",
   ],
   faq: [
+    {
+      pregunta: "¿A cuánto está el dólar hoy en Honduras?",
+      respuesta: "Según la referencia del BCH, a {{hn.tipo-cambio}} por dólar.",
+    },
     {
       pregunta: "¿Qué es el tipo de cambio de referencia?",
       respuesta: "Es el valor del dólar en lempiras que publica el Banco Central de Honduras. Es la referencia oficial.",

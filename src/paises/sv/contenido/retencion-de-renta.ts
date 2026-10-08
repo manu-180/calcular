@@ -3,11 +3,11 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.retencion-de-renta",
   h1: "Calculadora de retención de renta en El Salvador",
-  title: "Tabla de renta 2026 El Salvador: calcule su retención",
+  title: "Tabla de retención de renta 2026 El Salvador: calculadora",
   description:
-    "Calcule la retención de renta de su salario con la tabla vigente del Ministerio de Hacienda. Descuenta la AFP del {{sv.afp-trabajador}} y el ISSS.",
+    "Calcule la retención de renta de su salario con la tabla vigente del Ministerio de Hacienda, mensual o quincenal. Resta la AFP del {{sv.afp-trabajador}} y el ISSS.",
   intro: [
-    "Cada mes (o cada quincena) su patrono le retiene una parte del salario como anticipo del impuesto sobre la renta. Cuánto le retiene sale de una tabla del Ministerio de Hacienda.",
+    "Con la tabla de retención de renta vigente en El Salvador no se retiene nada si su salario sujeto a renta no pasa de {{sv.renta-exento-mensual}} al mes ({{sv.renta-exento-quincenal}} por quincena). Ese monto es el salario menos la AFP y el ISSS.",
     "Ponga su salario y el descuento del ISSS que ve en su boleta de pago. La calculadora resta la AFP, ubica su tramo y le dice cuánto le retienen.",
   ],
   comoSeCalcula: [
@@ -23,6 +23,10 @@ export default definirContenido({
     {
       pregunta: "¿Desde cuánto se paga renta en El Salvador?",
       respuesta: "Con la tabla vigente no hay retención si su salario sujeto a renta no pasa de {{sv.renta-exento-mensual}} al mes ({{sv.renta-exento-quincenal}} por quincena). Ese salario es el que queda después de restar la AFP y el ISSS.",
+    },
+    {
+      pregunta: "¿Cómo se calcula la renta de mi salario?",
+      respuesta: "Reste la AFP y el ISSS a su salario, busque el resultado en la tabla y aplique la cuota fija y el porcentaje de su tramo sobre el exceso. La calculadora lo hace en un paso.",
     },
     {
       pregunta: "¿Por qué tengo que poner el descuento del ISSS?",

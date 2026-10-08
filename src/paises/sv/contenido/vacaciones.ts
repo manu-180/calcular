@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "sv.vacaciones",
-  h1: "Calculadora de vacaciones en El Salvador",
-  title: "Vacaciones en El Salvador: calcule su pago con el 30 %",
+  h1: "Cálculo de vacaciones en El Salvador",
+  title: "Cálculo de vacaciones en El Salvador: {{sv.vacaciones-dias}} más el {{sv.vacaciones-recargo}}",
   description:
-    "Calcule el pago de sus vacaciones: {{sv.vacaciones-dias}} de salario más un recargo del {{sv.vacaciones-recargo}}. También las proporcionales al terminar el contrato.",
+    "Calcule el pago de sus vacaciones: {{sv.vacaciones-dias}} de salario más un recargo del {{sv.vacaciones-recargo}}. También las proporcionales al terminar el contrato. Gratis y al instante.",
   intro: [
-    "Después de un año de trabajo continuo con el mismo patrono tiene derecho a vacaciones pagadas. Le pagan el salario de esos días y un recargo encima.",
+    "Las vacaciones en El Salvador se pagan con {{sv.vacaciones-dias}} de salario más un recargo del {{sv.vacaciones-recargo}}, después de un año de trabajo continuo con el mismo patrono.",
     "Ponga su salario mensual. Si su contrato terminó antes del año, elija las proporcionales e indique los días trabajados.",
   ],
   comoSeCalcula: [
@@ -17,6 +17,10 @@ export default definirContenido({
   ],
   ejemplo: ["Con un salario de $600, su salario diario es $20. Los 15 días valen $300 y el recargo $90: recibe $390."],
   faq: [
+    {
+      pregunta: "¿Cuánto me pagan de vacaciones en El Salvador?",
+      respuesta: "El salario de {{sv.vacaciones-dias}} más un recargo del {{sv.vacaciones-recargo}} sobre ese monto.",
+    },
     {
       pregunta: "¿Cuándo me pagan las vacaciones?",
       respuesta: "Justo antes de que empiecen. El patrono le tiene que avisar la fecha con al menos {{sv.vacaciones-aviso}} de anticipación.",
