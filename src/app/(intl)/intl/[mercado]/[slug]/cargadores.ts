@@ -19,7 +19,7 @@ export const CARGADORES: Readonly<Record<string, Readonly<Record<string, Cargado
     "vacaciones": () => import("@/paises/bo/calculadoras/vacaciones"),
   },
   "cl": {
-    "boleta-honorarios": () => import("@/paises/cl/calculadoras/boleta-honorarios"),
+    "boleta-de-honorarios": () => import("@/paises/cl/calculadoras/boleta-de-honorarios"),
     "finiquito": () => import("@/paises/cl/calculadoras/finiquito"),
     "gratificacion": () => import("@/paises/cl/calculadoras/gratificacion"),
     "horas-extra": () => import("@/paises/cl/calculadoras/horas-extra"),

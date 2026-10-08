@@ -8,7 +8,7 @@ import finiquito from "./calculadoras/finiquito";
 import vacacionesProporcionales from "./calculadoras/vacaciones-proporcionales";
 import horasExtra from "./calculadoras/horas-extra";
 import gratificacion from "./calculadoras/gratificacion";
-import boletaHonorarios from "./calculadoras/boleta-honorarios";
+import boletaHonorarios from "./calculadoras/boleta-de-honorarios";
 import iva from "./calculadoras/iva";
 import sueldoMinimo from "./calculadoras/sueldo-minimo";
 import contenidoValorUf from "./contenido/valor-uf";
@@ -42,7 +42,7 @@ export default definirPais({
     { definicion: vacacionesProporcionales, contenido: contenidoVacacionesProporcionales, cliente: () => import("./calculadoras/vacaciones-proporcionales.cliente") },
     { definicion: horasExtra, contenido: contenidoHorasExtra, cliente: () => import("./calculadoras/horas-extra.cliente") },
     { definicion: gratificacion, contenido: contenidoGratificacion, cliente: () => import("./calculadoras/gratificacion.cliente") },
-    { definicion: boletaHonorarios, contenido: contenidoBoletaHonorarios, cliente: () => import("./calculadoras/boleta-honorarios.cliente") },
+    { definicion: boletaHonorarios, contenido: contenidoBoletaHonorarios, cliente: () => import("./calculadoras/boleta-de-honorarios.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: sueldoMinimo, contenido: contenidoSueldoMinimo, cliente: () => import("./calculadoras/sueldo-minimo.cliente") },
   ],

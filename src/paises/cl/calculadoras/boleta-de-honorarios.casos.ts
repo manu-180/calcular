@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import boletaHonorarios from "./boleta-honorarios";
+import boletaHonorarios from "./boleta-de-honorarios";
 
 export default definirCasos(boletaHonorarios, [
   {
