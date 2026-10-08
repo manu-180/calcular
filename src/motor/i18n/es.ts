@@ -40,6 +40,7 @@ export const es: TextosSitio = {
     glosario: "Palabras clave",
     relacionadas: "Otras calculadoras",
     otrosPaises: "La misma cuenta en otros países",
+    actualizado: "Actualizado el",
   },
   global: {
     eyebrow: "Latinoamérica",
@@ -62,7 +63,7 @@ export const es: TextosSitio = {
     novedades: "Últimas novedades",
     verNovedades: "Ver todas las novedades",
     sinCalculadoras: "Todavía no hay calculadoras publicadas para este país.",
-    descripcion: (pais) => `Calculadoras de ${pais} con datos oficiales: el valor vigente, la fuente y la fecha de revisión de cada uno.`,
+    descripcion: (pais) => `Calculadoras laborales y de impuestos de ${pais}: sueldo, liquidación y más, con el valor oficial vigente, su fuente y la fecha de revisión.`,
   },
   fuentes: {
     titulo: (pais) => `Fuentes y datos de ${pais}`,
@@ -107,6 +108,20 @@ export const es: TextosSitio = {
     otras: "Otras calculadoras",
   },
   migas: { inicio: "Inicio", etiqueta: "Dónde estás" },
+  seo: {
+    tituloGlobal: "CalcularYa: calculadoras laborales de Latinoamérica",
+    descripcionGlobal: "Calculadoras gratis de aguinaldo, liquidación, sueldo neto e impuestos para cada país de Latinoamérica, con el dato oficial vigente y su fuente.",
+    tituloPais: (pais, anio) => [`Calculadoras laborales y de impuestos de ${pais} ${anio}`, `Calculadoras laborales de ${pais} ${anio}`, `Calculadoras de ${pais}`],
+    tituloFuentes: (pais) => [`Datos oficiales vigentes de ${pais}: fuentes y fechas`, `Fuentes y datos de ${pais}`],
+    tituloNovedades: (pais, anio) => [`Novedades laborales y de impuestos de ${pais} ${anio}`, `Novedades laborales de ${pais} ${anio}`, `Novedades de ${pais}`],
+    calculadorasDe: (pais) => `Calculadoras de ${pais}`,
+  },
+  og: {
+    datosOficiales: "Datos oficiales, con fuente",
+    actualizado: (fecha) => `Actualizado el ${fecha}`,
+    gratis: "Gratis y sin registro",
+    paises: (n) => (n === 1 ? "1 país" : `${n} países`),
+  },
 };
 
 const porTrato: Record<Exclude<Trato, "tu">, (base: TextosSitio) => TextosSitio> = {

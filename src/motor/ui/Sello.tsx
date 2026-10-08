@@ -1,23 +1,22 @@
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { formatearFecha } from "../formato";
 import type { TextosSitio } from "../i18n";
 import type { DatoUsado, Sello as DatosSello } from "../registro";
-import type { Fuente } from "../tipos";
+import type { FechaISO, Fuente } from "../tipos";
 import { IconoExterno, IconoFlecha, IconoSello } from "./Iconos";
 
 const MARCA = "\u0000";
+const MARCA_FECHA = "\u0001";
 
-// Mete nodos (los links a cada organismo) en el lugar del marcador de un texto del diccionario,
-// así la oración se arma en el idioma del mercado y los links quedan donde van.
-function conNodo(texto: string, nodo: ReactNode): ReactNode {
-  const [antes, despues = ""] = texto.split(MARCA);
-  return (
-    <>
-      {antes}
-      {nodo}
-      {despues}
-    </>
-  );
+// Mete nodos (los links a cada organismo y la fecha en un <time>) en el lugar de los marcadores de
+// un texto del diccionario, así la oración se arma en el idioma del mercado y cada nodo queda donde
+// va. El <time datetime> es la fecha de actualización que leen los buscadores.
+function conNodos(texto: string, nodos: Record<string, ReactNode>): ReactNode {
+  return texto.split(/([\u0000\u0001])/).map((parte, i) => <Fragment key={i}>{parte === MARCA || parte === MARCA_FECHA ? nodos[parte] : parte}</Fragment>);
+}
+
+function Fecha({ fecha, locale }: { fecha: FechaISO; locale: string }) {
+  return <time dateTime={fecha}>{formatearFecha(fecha, locale)}</time>;
 }
 
 function enlaceFuente(f: Fuente, contenido: ReactNode) {
@@ -48,13 +47,21 @@ export function Sello({ sello, usados, locale, textos, hrefFuentes }: { sello: D
         {t.titulo}
       </p>
       {sello.verificadoMasViejo ? (
-        <p className="cy-sello-linea">{conNodo(t.verificado(MARCA, formatearFecha(sello.verificadoMasViejo, locale)), listaDeOrganismos(fuentesDatos, locale))}</p>
+        <p className="cy-sello-linea">
+          {conNodos(t.verificado(MARCA, MARCA_FECHA), {
+            [MARCA]: listaDeOrganismos(fuentesDatos, locale),
+            [MARCA_FECHA]: <Fecha fecha={sello.verificadoMasViejo} locale={locale} />,
+          })}
+        </p>
       ) : null}
       {sello.series.map((s) => {
         const fuente = sello.fuentes.find((f) => f.organismo === s.organismo);
         return (
           <p key={s.id} className="cy-sello-linea">
-            {conNodo(t.serie(s.nombre, MARCA, formatearFecha(s.fecha, locale)), fuente ? enlaceFuente(fuente, s.organismo) : s.organismo)}
+            {conNodos(t.serie(s.nombre, MARCA, MARCA_FECHA), {
+              [MARCA]: fuente ? enlaceFuente(fuente, s.organismo) : s.organismo,
+              [MARCA_FECHA]: <Fecha fecha={s.fecha} locale={locale} />,
+            })}
           </p>
         );
       })}

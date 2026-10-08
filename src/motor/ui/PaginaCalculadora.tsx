@@ -1,18 +1,19 @@
 import type { ComponentType } from "react";
+import { formatearFecha } from "../formato";
 import { categoriaDe } from "../i18n";
 import type { PaginaResuelta } from "../registro";
-import { ldFaq, ldMigas, ldWebApplication, rutaIntl, urlIntl } from "../seo";
+import { rutaIntl } from "../seo";
 import type { PropsCalculadora } from "../tipos";
 import { Bandera } from "./Bandera";
 import { calculadorasDe, tarjetaDe, type ContextoSitio } from "./contexto";
 import { IconoFlecha } from "./Iconos";
+import { actualizacionDe, ldCalculadora } from "./metadatos";
 import { Sello } from "./Sello";
 import { AvisoDePais, JsonLd, Migas } from "./Sitio";
 
 export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio; pagina: PaginaResuelta; Cliente: ComponentType<PropsCalculadora> }) {
   const { mercado, contenido, calculadora } = pagina;
   const t = ctx.textos;
-  const url = urlIntl(mercado.codigo, calculadora.slug);
   const otras = calculadorasDe(ctx, mercado).filter((e) => e.definicion.slug !== calculadora.slug);
   const categoria = categoriaDe(calculadora.concepto);
   const relacionadas = [...otras.filter((e) => categoriaDe(e.definicion.concepto) === categoria), ...otras.filter((e) => categoriaDe(e.definicion.concepto) !== categoria)].slice(0, 6);
@@ -20,19 +21,11 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
     .filter((e) => e.mercado !== mercado.codigo)
     .map((e) => ({ ...e, m: ctx.paises.find((p) => p.codigo === e.mercado) }))
     .filter((e) => e.m);
-  const faq = ldFaq(contenido.faq);
-  const ld = [
-    ldWebApplication({ nombre: contenido.h1, descripcion: contenido.description, url, mercado }),
-    ldMigas([
-      { nombre: mercado.nombre, url: urlIntl(mercado.codigo) },
-      { nombre: contenido.h1, url },
-    ]),
-    ...(faq ? [faq] : []),
-  ];
+  const actualizado = actualizacionDe(ctx, { tipo: "calculadora", pagina });
 
   return (
     <article className="cy-pagina cy-pagina-calculadora">
-      <JsonLd datos={ld} />
+      <JsonLd datos={ldCalculadora(ctx, pagina)} />
       <Migas etiqueta={t.migas.etiqueta} items={[{ nombre: mercado.nombre, href: rutaIntl(mercado.codigo) }, { nombre: contenido.h1 }]} />
       <div className="cy-calc-grilla">
         <div className="cy-calc-lateral">
@@ -40,6 +33,11 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
             <p className="cy-ceja">
               <Bandera pais={mercado.pais} ancho={18} />
               {mercado.nombre}
+              {actualizado ? (
+                <span className="cy-ceja-fecha">
+                  {t.calculadora.actualizado} <time dateTime={actualizado}>{formatearFecha(actualizado, mercado.locale)}</time>
+                </span>
+              ) : null}
             </p>
             <h1 className="cy-titular">{contenido.h1}</h1>
             <div className="cy-intro">

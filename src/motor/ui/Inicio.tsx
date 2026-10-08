@@ -1,17 +1,18 @@
 import type { CSSProperties } from "react";
 import { formatearFecha } from "../formato";
-import { ldWebApplication, rutaIntl, urlIntl } from "../seo";
+import { rutaIntl } from "../seo";
 import { hoyEn } from "../vigencia";
 import { Bandera } from "./Bandera";
 import { calculadorasDe, porCategoria, tarjetaDe, type ContextoSitio } from "./contexto";
 import { IconoFlecha, IconoSello } from "./Iconos";
+import { ldInicioGlobal, ldInicioPais } from "./metadatos";
 import { AvisoDePais, JsonLd } from "./Sitio";
 
 export function InicioGlobal({ ctx }: { ctx: ContextoSitio }) {
   const t = ctx.textos;
   return (
     <div className="cy-pagina cy-inicio">
-      <JsonLd datos={ldWebApplication({ nombre: t.marca.nombre, descripcion: t.global.bajada, url: urlIntl("global"), mercado: ctx.mercado })} />
+      <JsonLd datos={ldInicioGlobal(ctx)} />
       <header className="cy-heroe">
         <p className="cy-pildora">{t.global.eyebrow}</p>
         <h1 className="cy-display">{t.global.titulo}</h1>
@@ -80,6 +81,7 @@ export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
 
   return (
     <div className="cy-pagina cy-inicio-pais">
+      <JsonLd datos={ldInicioPais(ctx)} />
       <header className="cy-heroe cy-heroe-pais">
         <p className="cy-ceja">
           <Bandera pais={m.pais} ancho={22} />
@@ -91,7 +93,9 @@ export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
           <a className="cy-pildora cy-pildora-sello" href={rutaIntl(m.codigo, "fuentes")}>
             <IconoSello />
             {t.pais.eyebrow}
-            <span className="cy-pildora-fecha">{formatearFecha(ultimaRevision, m.locale)}</span>
+            <time className="cy-pildora-fecha" dateTime={ultimaRevision}>
+              {formatearFecha(ultimaRevision, m.locale)}
+            </time>
           </a>
         ) : null}
       </header>

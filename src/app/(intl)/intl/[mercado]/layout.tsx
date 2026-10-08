@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
-import { ldOrganizacion, origenPublicoIntl } from "@/motor/seo";
+import { grafo, ldSitio, origenPublicoIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import type { CodigoMercado } from "@/motor/tipos";
 import { contextoSitio } from "@/motor/ui/contexto";
@@ -37,10 +37,15 @@ export async function generateMetadata({ params }: { params: Promise<{ mercado: 
   const indexable = m?.estado === "publicado" && modoPublicacion() === "produccion";
   return {
     metadataBase: new URL(origenPublicoIntl()),
+    title: NOMBRE_SITIO_INTL,
     applicationName: NOMBRE_SITIO_INTL,
-    authors: [{ name: "Manuel Navarro" }],
+    authors: [{ name: "Manuel Navarro", url: `${origenPublicoIntl()}/sobre` }],
+    creator: "Manuel Navarro",
+    publisher: NOMBRE_SITIO_INTL,
     formatDetection: { telephone: false, email: false, address: false },
-    robots: indexable ? { index: true, follow: true } : { index: false, follow: false },
+    robots: indexable
+      ? { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } }
+      : { index: false, follow: false },
     icons: { icon: [{ url: ICONO, type: "image/svg+xml" }] },
   };
 }
@@ -49,7 +54,7 @@ export const viewport: Viewport = {
   themeColor: "#f4f1ea",
 };
 
-const ORGANIZACION = ldOrganizacion();
+const SITIO = grafo(ldSitio());
 
 export default async function LayoutIntl({ children, params }: { children: React.ReactNode; params: Promise<{ mercado: string }> }) {
   const { mercado } = await params;
@@ -59,7 +64,7 @@ export default async function LayoutIntl({ children, params }: { children: React
   return (
     <html lang={ctx.mercado.locale} className={geist.variable}>
       <body className="cy-cuerpo">
-        <JsonLd datos={ORGANIZACION} />
+        <JsonLd datos={SITIO} />
         <a href="#contenido" className="cy-saltar">
           {ctx.textos.saltar}
         </a>
