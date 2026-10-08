@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.igv",
-  h1: "Calculadora de IGV",
-  title: "Calculadora de IGV 2026: agrega o quita el 18 %",
+  h1: "Calculadora de IGV 2026: agrega o quita el 18 %",
+  title: "Calculadora de IGV 2026 en Perú: agrega o quita el 18 %",
   description:
-    "Agrega o quita el IGV de un precio: {{pe.tasa-igv}} de IGV más {{pe.tasa-ipm}} de promoción municipal. También la tasa especial para restaurantes y hoteles MYPE.",
+    "Agrega o quita el IGV de un precio en un clic: {{pe.tasa-igv}} de IGV más {{pe.tasa-ipm}} de promoción municipal. Incluye la tasa especial de restaurantes y hoteles MYPE.",
   intro: [
-    "El IGV es el impuesto que se suma al precio de casi todo lo que se vende en el Perú. Lo que pagas en total es el 18 %, que se reparte entre el IGV y el impuesto de promoción municipal (IPM).",
-    "Desde 2026 la Ley 32387 cambia el reparto cada año: hoy son {{pe.tasa-igv}} de IGV y {{pe.tasa-ipm}} de IPM. El total no cambia.",
+    "El IGV que pagas en Perú es del 18 % en total. Para agregarlo, multiplica el valor de venta por 1.18; para quitarlo, divide el precio final entre 1.18.",
+    "Desde 2026 la Ley 32387 cambia cada año cómo se reparte ese 18 %: hoy son {{pe.tasa-igv}} de IGV y {{pe.tasa-ipm}} de impuesto de promoción municipal (IPM). El total no cambia.",
     "Los restaurantes, hoteles y alojamientos turísticos que son micro o pequeña empresa pagan una tasa especial: {{pe.tasa-igv-restaurantes}} de IGV más el IPM.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,10 @@ export default definirContenido({
     "En 2026 vendes un producto a S/ 250 sin impuesto. El IGV es S/ 38.75, el IPM S/ 6.25 y el precio final, S/ 295.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo le quito el IGV a un precio?",
+      respuesta: "Divide el precio final entre 1.18. Por ejemplo, de S/ 590 queda un valor de venta de S/ 500 y S/ 90 de impuesto.",
+    },
     {
       pregunta: "¿El IGV sigue siendo 18 %?",
       respuesta: "Sí, para quien compra la tasa total sigue en 18 %. Lo que cambió es cómo se reparte: {{pe.tasa-igv}} de IGV y {{pe.tasa-ipm}} de IPM en 2026.",

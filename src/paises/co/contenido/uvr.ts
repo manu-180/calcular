@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.uvr",
-  h1: "Valor de la UVR hoy y conversor",
-  title: "UVR hoy: valor diario y conversor a pesos",
+  h1: "Valor de la UVR hoy y conversor a pesos",
+  title: "UVR hoy: {{co.uvr}}. Valor diario y conversor a pesos",
   description:
-    "Consulta el valor de la UVR de hoy según el Banco de la República y convierte UVR a pesos. Sirve para créditos de vivienda en UVR.",
+    "La UVR vale hoy {{co.uvr}}, según el Banco de la República. Convierte UVR a pesos y pesos a UVR para saber cuánto debes de tu crédito de vivienda.",
   intro: [
-    "La Unidad de Valor Real (UVR) es una unidad que sube cada día con la inflación. Hoy vale {{co.uvr}}.",
+    "La UVR vale hoy {{co.uvr}}. Es la Unidad de Valor Real: una unidad que sube cada día con la inflación y que publica el Banco de la República.",
     "Se usa sobre todo en créditos de vivienda: la deuda se pacta en UVR y su valor en pesos cambia cada día.",
   ],
   comoSeCalcula: [
@@ -15,8 +15,12 @@ export default definirContenido({
     "Pesos a UVR: pesos divididos por el valor de la UVR del día.",
     "El Banco de la República publica la UVR por adelantado, así que ya se conocen los valores de los próximos días.",
   ],
-  ejemplo: ["Si tu crédito es de 100.000 UVR, multiplica por el valor de hoy para saber cuánto debes en pesos."],
+  ejemplo: ["Si tu crédito es de 100.000 UVR, multiplica por el valor de hoy ({{co.uvr}}) para saber cuánto debes en pesos."],
   faq: [
+    {
+      pregunta: "¿Cuánto vale la UVR hoy?",
+      respuesta: "{{co.uvr}}, según el valor diario del Banco de la República.",
+    },
     {
       pregunta: "¿Por qué sube la UVR?",
       respuesta: "Porque se ajusta con la inflación (IPC) que mide el DANE. Si la inflación sube, la UVR sube más rápido.",

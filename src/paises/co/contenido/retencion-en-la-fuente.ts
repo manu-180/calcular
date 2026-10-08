@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.retencion-en-la-fuente",
-  h1: "Calculadora de retención en la fuente por salarios",
-  title: "Retención en la fuente 2026: calcula la de tu salario",
+  h1: "Calculadora de retención en la fuente por salarios 2026",
+  title: "Retención en la fuente por salarios 2026: calculadora",
   description:
-    "Calcula la retención en la fuente de tu salario con el procedimiento 1, la UVT de {{co.uvt}} y la tabla del artículo 383 del Estatuto Tributario.",
+    "Calcula cuánto te retienen de tu salario cada mes con el procedimiento 1, la UVT de {{co.uvt}} y la tabla del artículo 383. Incluye dependientes y prepagada.",
   intro: [
-    "La retención en la fuente es un descuento que la empresa le paga a la DIAN como anticipo de tu impuesto de renta.",
-    "Esta calculadora usa el procedimiento 1, que es el que aplican la mayoría de empresas cada mes.",
+    "La retención en la fuente por salarios es un anticipo del impuesto de renta que la empresa te descuenta cada mes. Se calcula con la tabla del artículo 383 del Estatuto Tributario, en UVT (hoy una UVT vale {{co.uvt}}).",
+    "Esta calculadora usa el procedimiento 1, el que aplican la mayoría de empresas, y resta tus aportes, deducciones y la renta exenta de trabajo.",
   ],
   comoSeCalcula: [
     "Se parte de tus pagos laborales del mes.",
@@ -19,9 +19,13 @@ export default definirContenido({
     "La base que queda se pasa a UVT ({{co.uvt}}) y se aplica la tabla del artículo 383. El resultado en UVT se vuelve a pasar a pesos.",
   ],
   ejemplo: [
-    "Con pagos de $8.000.000 al mes y sin dependientes, se restan $720.000 de aportes y $1.820.000 de renta exenta. La base queda en unas 104 UVT y la retención del mes es de $92.049.",
+    "Con pagos de $8.000.000 al mes en 2026 y sin dependientes, se restan $720.000 de aportes y $1.820.000 de renta exenta. La base queda en unas 104 UVT y la retención del mes es de $92.049.",
   ],
   faq: [
+    {
+      pregunta: "¿Desde qué salario me hacen retención en la fuente?",
+      respuesta: "Depende de tus deducciones. Hay retención cuando la base que queda, después de restar aportes, deducciones y la renta exenta, pasa del primer tramo de la tabla del artículo 383, que no paga nada.",
+    },
     {
       pregunta: "¿Qué es el procedimiento 1?",
       respuesta: "Es el cálculo mes a mes con los pagos de ese mes. El procedimiento 2 usa un porcentaje fijo que se calcula dos veces al año.",
@@ -41,7 +45,7 @@ export default definirContenido({
     },
   ],
   glosario: [
-    { termino: "UVT", definicion: "Unidad de Valor Tributario. En 2026 vale {{co.uvt}}." },
+    { termino: "UVT", definicion: "Unidad de Valor Tributario. Hoy vale {{co.uvt}}." },
     { termino: "Renta exenta", definicion: "Parte de tu ingreso que la ley libera del impuesto." },
     { termino: "Deducción", definicion: "Un gasto que la ley te deja restar de la base, como los dependientes o la medicina prepagada." },
   ],

@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.salario-minimo",
-  h1: "Salario mínimo 2026 en Colombia",
+  h1: "Salario mínimo 2026 en Colombia: valor mensual, diario y por hora",
   title: "Salario mínimo 2026 en Colombia: {{co.smmlv}}",
   description:
-    "El salario mínimo 2026 es {{co.smmlv}} al mes y el auxilio de transporte {{co.auxilio-transporte}}. Calcula el valor por día, por hora y por días trabajados.",
+    "El salario mínimo 2026 en Colombia es {{co.smmlv}} y el auxilio de transporte {{co.auxilio-transporte}}. Mira cuánto es por día, por hora y por los días que trabajaste.",
   intro: [
-    "El salario mínimo legal mensual vigente (SMMLV) para 2026 es {{co.smmlv}}. Rige desde el {{co.smmlv#desde}} por el Decreto 1469 de 2025.",
-    "Si ganas el mínimo, también te toca el auxilio de transporte de {{co.auxilio-transporte}} al mes.",
+    "El salario mínimo en Colombia es {{co.smmlv}} al mes desde el {{co.smmlv#desde}} (Decreto 1469 de 2025). Si ganas el mínimo, también te toca el auxilio de transporte de {{co.auxilio-transporte}}.",
+    "En 2026, salario y auxilio suman $2.000.000 antes de descuentos. Por día son $58.364 y la hora ordinaria vale $8.338 con la jornada de 42 horas.",
   ],
   comoSeCalcula: [
     "Salario diario: el mínimo mensual dividido por 30.",
@@ -21,7 +21,11 @@ export default definirContenido({
   faq: [
     {
       pregunta: "¿Cuánto es el salario mínimo con auxilio de transporte?",
-      respuesta: "El salario mínimo es {{co.smmlv}} y el auxilio {{co.auxilio-transporte}}. A eso se le descuentan salud y pensión.",
+      respuesta: "El salario mínimo es {{co.smmlv}} y el auxilio {{co.auxilio-transporte}}: en 2026 suman $2.000.000. A eso se le descuentan salud y pensión.",
+    },
+    {
+      pregunta: "¿Cuánto me queda del mínimo después de descuentos?",
+      respuesta: "En 2026 te descuentan $70.036 de salud y $70.036 de pensión. Con el auxilio de transporte, recibes $1.859.928.",
     },
     {
       pregunta: "¿Es cierto que el decreto del salario mínimo estuvo suspendido?",

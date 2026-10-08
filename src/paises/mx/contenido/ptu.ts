@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.ptu",
-  h1: "Calculadora de PTU (reparto de utilidades)",
-  title: "Calculadora de PTU: cuánto te toca de utilidades",
+  h1: "Calculadora de PTU 2026 (reparto de utilidades)",
+  title: "Calculadora de PTU 2026: reparto de utilidades",
   description:
-    "Calcula tu PTU por días trabajados y por salario, con el tope de {{mx.tope-ptu-meses}} de salario y la parte exenta de {{mx.exencion-ptu}}. Ley Federal del Trabajo vigente.",
+    "Calcula cuánto te toca de reparto de utilidades: la parte por días y por salario, el tope de {{mx.tope-ptu-meses}} de salario y lo que no paga ISR. Según la ley vigente.",
   intro: [
-    "La PTU es la parte de las ganancias de la empresa que se reparte entre su personal cada año.",
+    "La PTU (reparto de utilidades) es el 10% de la utilidad fiscal de la empresa (su renta gravable) que se reparte entre su personal: la mitad según los días que trabajaste y la mitad según tu salario.",
     "Para calcular la tuya necesitas datos de la empresa: el monto total a repartir, la suma de días y la suma de salarios de todo el personal. Vienen en el proyecto de reparto que la empresa tiene que mostrar.",
   ],
   comoSeCalcula: [
@@ -18,10 +18,18 @@ export default definirContenido({
     "Si eres eventual, te toca PTU solo si trabajaste al menos {{mx.dias-minimos-ptu-eventual}} en el año.",
     "Hasta {{mx.exencion-ptu}} de PTU no pagan ISR. Hoy una UMA vale {{mx.uma-diaria}}.",
   ],
+  ejemplo: [
+    "La empresa reparte 500,000 pesos. Todo el personal suma 36,500 días y 15,000,000 de pesos en salarios. Tú trabajaste 365 días y ganaste 146,000 pesos en el año.",
+    "Por días te tocan 2,500 pesos y por salario 2,433.33. Tu PTU es de 4,933.33 pesos, lejos del tope de {{mx.tope-ptu-meses}} de salario.",
+  ],
   faq: [
     {
       pregunta: "¿Cuándo se paga la PTU?",
       respuesta: "Dentro de los 60 días siguientes a la fecha en que la empresa tiene que pagar su impuesto anual. En la práctica, a fines de mayo si es empresa y a fines de junio si tu patrón es persona física.",
+    },
+    {
+      pregunta: "¿Cómo sé cuánto me toca de utilidades?",
+      respuesta: "Pide el proyecto de reparto a tu empresa: ahí está el monto total, la suma de días y la de salarios. Con esos datos y los tuyos, la calculadora te da tu parte.",
     },
     {
       pregunta: "¿A quién no le toca PTU?",

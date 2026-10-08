@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.prima-de-servicios",
-  h1: "Calculadora de prima de servicios",
-  title: "Prima de servicios 2026: calcula cuánto te pagan",
+  h1: "Calculadora de prima de servicios 2026",
+  title: "Calculadora de prima de servicios 2026 en Colombia",
   description:
-    "Calcula tu prima de junio o de diciembre con tu salario y los días trabajados. Incluye el auxilio de transporte de {{co.auxilio-transporte}} si te corresponde.",
+    "Calcula tu prima de junio o de diciembre en segundos: tu salario por los días trabajados, con el auxilio de transporte de {{co.auxilio-transporte}} si te corresponde.",
   intro: [
-    "La prima de servicios es un mes de salario por año trabajado. Se paga en dos partes: la mitad hasta el 30 de junio y la otra mitad en los primeros 20 días de diciembre.",
-    "Si trabajaste el semestre completo, te toca medio salario. Si trabajaste menos, la parte proporcional.",
+    "La prima de servicios es medio salario por cada semestre trabajado: se paga hasta el 30 de junio y en los primeros 20 días de diciembre. Si trabajaste menos del semestre, te toca la parte proporcional.",
+    "Si ganas hasta {{co.auxilio-tope}}, el auxilio de transporte de {{co.auxilio-transporte}} se suma al salario para calcularla.",
   ],
   comoSeCalcula: [
     "Se toma tu salario mensual. Si ganas hasta {{co.auxilio-tope}}, se le suma el auxilio de transporte de {{co.auxilio-transporte}}.",
@@ -17,11 +17,16 @@ export default definirContenido({
   ],
   ejemplo: [
     "Con un salario de $4.000.000 y el semestre completo, la prima es $4.000.000 × 180 / 360 = $2.000.000. A ese salario no le toca auxilio de transporte.",
+    "Con el salario mínimo de 2026 más el auxilio, la base es $2.000.000 y la prima del semestre completo es de $1.000.000.",
   ],
   faq: [
     {
       pregunta: "¿Cuándo se paga la prima de servicios?",
       respuesta: "La primera mitad a más tardar el 30 de junio. La segunda, dentro de los primeros 20 días de diciembre.",
+    },
+    {
+      pregunta: "¿Cuánto es la prima si gano el mínimo?",
+      respuesta: "Si trabajaste el semestre completo en 2026, $1.000.000: la mitad del salario mínimo de {{co.smmlv}} más el auxilio de transporte de {{co.auxilio-transporte}}.",
     },
     {
       pregunta: "¿Me toca prima si llevo poco tiempo en la empresa?",

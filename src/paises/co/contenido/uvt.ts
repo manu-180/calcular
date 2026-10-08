@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.uvt",
-  h1: "Conversor de UVT a pesos",
+  h1: "UVT 2026: valor y conversor de UVT a pesos",
   title: "UVT 2026: {{co.uvt}}. Convierte UVT a pesos",
   description:
-    "La UVT 2026 vale {{co.uvt}} según la Resolución DIAN 000238 de 2025. Convierte UVT a pesos y pesos a UVT con la aproximación que pide la DIAN.",
+    "La UVT 2026 vale {{co.uvt}} (Resolución DIAN 000238 de 2025). Convierte UVT a pesos y pesos a UVT, con el redondeo que pide la DIAN. Gratis y al instante.",
   intro: [
-    "La Unidad de Valor Tributario (UVT) es la medida que usa la DIAN para fijar topes, sanciones y tarifas.",
-    "Para 2026 vale {{co.uvt}}. Rige desde el {{co.uvt#desde}}.",
+    "La UVT vale {{co.uvt}} desde el {{co.uvt#desde}}. Es la Unidad de Valor Tributario: la medida que usa la DIAN para fijar topes, sanciones y tarifas.",
+    "Escribe una cantidad de UVT y te damos el valor en pesos, exacto y redondeado como lo pide el Estatuto Tributario.",
   ],
   comoSeCalcula: [
     "UVT a pesos: cantidad de UVT por {{co.uvt}}.",
@@ -17,6 +17,10 @@ export default definirContenido({
   ],
   ejemplo: ["Escribe 100 para ver cuánto son 100 UVT en pesos: el valor exacto y el aproximado como lo pide la DIAN."],
   faq: [
+    {
+      pregunta: "¿Cuánto vale la UVT hoy?",
+      respuesta: "{{co.uvt}}, vigente desde el {{co.uvt#desde}}.",
+    },
     {
       pregunta: "¿Cada cuánto cambia la UVT?",
       respuesta: "Cada año. La DIAN publica el valor nuevo antes del 1 de enero, ajustado por la inflación de ingresos medios que certifica el DANE.",

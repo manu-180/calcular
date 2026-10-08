@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.liquidacion",
-  h1: "Calculadora de liquidación laboral",
-  title: "Liquidación laboral 2026: calcula la tuya en Colombia",
+  h1: "Calculadora de liquidación laboral 2026 en Colombia",
+  title: "Calculadora de liquidación laboral 2026 en Colombia",
   description:
-    "Calcula tu liquidación con cesantías, intereses, prima, vacaciones e indemnización. Con el salario mínimo de {{co.smmlv}} y fuentes oficiales.",
+    "Calcula tu liquidación de contrato con tus fechas y tu salario: cesantías, intereses, prima, vacaciones e indemnización si te despidieron. Gratis y al instante.",
   intro: [
-    "Cuando se termina un contrato de trabajo, la empresa te tiene que pagar la liquidación. Son las prestaciones que tienes acumuladas hasta tu último día.",
+    "La liquidación laboral es lo que la empresa te paga al terminar el contrato: cesantías, intereses sobre las cesantías, prima de servicios y vacaciones pendientes. Si te despidieron sin justa causa, se suma la indemnización.",
     "Escribe tu salario y tus fechas. Te mostramos cuánto te toca por cada concepto y el total.",
   ],
   comoSeCalcula: [
@@ -22,6 +22,10 @@ export default definirContenido({
     "Con un salario de $4.000.000, ingreso el 1 de febrero de 2025 y retiro el 30 de junio de 2026 por renuncia, te tocan 180 días de cesantías ($2.000.000), $120.000 de intereses, $2.000.000 de prima y $2.833.333 de vacaciones por 510 días trabajados sin tomarlas. En total, $6.953.333.",
   ],
   faq: [
+    {
+      pregunta: "¿Qué me deben pagar en la liquidación si renuncio?",
+      respuesta: "Las cesantías y sus intereses, la prima y las vacaciones que no tomaste, todo en proporción al tiempo trabajado. La indemnización no, porque solo aplica en un despido sin justa causa.",
+    },
     {
       pregunta: "¿Cuánto tiempo tiene la empresa para pagarme la liquidación?",
       respuesta:
@@ -38,8 +42,8 @@ export default definirContenido({
         "Porque las de los años anteriores la empresa ya las tuvo que consignar en tu fondo de cesantías antes del 15 de febrero. Esas las retiras directamente en el fondo.",
     },
     {
-      pregunta: "Renuncié. ¿Me toca indemnización?",
-      respuesta: "No. La indemnización solo se paga si la empresa termina el contrato sin justa causa. Si renunciaste, te pagan todo lo demás.",
+      pregunta: "¿Cómo se calcula la liquidación de un contrato a término fijo?",
+      respuesta: "Las prestaciones se calculan igual que en un contrato indefinido. Si te despiden sin justa causa antes de la fecha pactada, la indemnización son los salarios que faltaban hasta esa fecha. Esta calculadora usa la tabla del contrato indefinido: para el fijo, usa la calculadora de indemnización por despido.",
     },
   ],
   glosario: [

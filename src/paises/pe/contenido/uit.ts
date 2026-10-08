@@ -2,12 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.conversor-uit",
-  h1: "Conversor de UIT a soles",
-  title: "UIT 2026: convierte UIT a soles y al revés",
-  description: "La UIT 2026 vale {{pe.uit}}. Convierte cualquier cantidad de UIT a soles, o soles a UIT, con el valor oficial del decreto supremo.",
+  h1: "Valor de la UIT 2026 y conversor a soles",
+  title: "UIT 2026: {{pe.uit}}. Convierte UIT a soles y al revés",
+  description:
+    "La UIT 2026 vale {{pe.uit}}. Convierte cualquier cantidad de UIT a soles, o soles a UIT, para multas, deducciones y trámites. Valor oficial del MEF.",
   intro: [
-    "La UIT (unidad impositiva tributaria) es un valor de referencia que el Estado fija cada año. Se usa para impuestos, multas, topes de deducciones y requisitos de muchos trámites.",
-    "Para 2026 vale {{pe.uit}}, desde el {{pe.uit#desde}}.",
+    "La UIT vale {{pe.uit}} desde el {{pe.uit#desde}}. Es la unidad impositiva tributaria: un valor de referencia que el Estado fija cada año.",
+    "Se usa para impuestos, multas, topes de deducciones y requisitos de muchos trámites. Escribe una cantidad y te la pasamos a soles.",
   ],
   comoSeCalcula: [
     "UIT a soles: multiplica la cantidad de UIT por el valor de la UIT del año.",
@@ -17,7 +18,7 @@ export default definirContenido({
   faq: [
     {
       pregunta: "¿Cuánto vale la UIT en 2026?",
-      respuesta: "{{pe.uit}}, según el Decreto Supremo 301-2025-EF.",
+      respuesta: "S/ 5,500, según el Decreto Supremo 301-2025-EF. Siete UIT son S/ 38,500.",
     },
     {
       pregunta: "¿Cuándo cambia la UIT?",

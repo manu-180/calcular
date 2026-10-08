@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.sueldo-liquido",
-  h1: "Calculadora de sueldo líquido",
-  title: "Sueldo líquido 2026: calcula tu sueldo en mano",
+  h1: "Calculadora de sueldo líquido 2026",
+  title: "Calculadora de sueldo líquido 2026: de bruto a líquido",
   description:
-    "Pasa de sueldo bruto a líquido con la comisión de tu AFP, salud, seguro de cesantía e impuesto único del mes. Datos oficiales con fecha y fuente.",
+    "Pasa tu sueldo bruto a líquido en segundos: descuento de AFP, salud ({{cl.salud}}), seguro de cesantía e impuesto único del mes, con la UF y UTM del día.",
   intro: [
-    "El sueldo líquido es lo que te depositan después de los descuentos legales. Parte del sueldo bruto imponible y le resta AFP, salud, seguro de cesantía e impuesto.",
+    "Tu sueldo líquido es el bruto imponible menos AFP ({{cl.cotizacion-afp}} más la comisión), salud ({{cl.salud}} en Fonasa), seguro de cesantía ({{cl.cesantia-trabajador}}) e impuesto único si corresponde. Es lo que te depositan.",
     "Elige tu AFP y tu sistema de salud. Usamos la UF y la UTM del día, así que el resultado se acerca mucho a tu liquidación de sueldo.",
   ],
   comoSeCalcula: [
@@ -20,8 +20,13 @@ export default definirContenido({
   ],
   ejemplo: [
     "Con $1.500.000 imponible, AFP Uno, Fonasa y contrato indefinido, en octubre de 2026 te descuentan $156.900 de AFP, $105.000 de salud, $9.000 de seguro de cesantía y $10.202 de impuesto. Tu líquido es $1.218.898.",
+    "Con $1.000.000 imponible y los mismos datos, los descuentos suman $180.600 y no pagas impuesto: tu líquido es $819.400.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo calculo mi sueldo líquido?",
+      respuesta: "Al sueldo imponible le restas AFP, salud y seguro de cesantía, y después el impuesto único si tu base pasa el tramo exento. Luego sumas colación y movilización.",
+    },
     {
       pregunta: "¿Qué diferencia hay entre sueldo bruto, imponible y líquido?",
       respuesta: "El bruto es todo lo que gana la persona. El imponible es la parte que paga cotizaciones. El líquido es lo que llega a tu cuenta.",

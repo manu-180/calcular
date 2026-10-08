@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.vacaciones-proporcionales",
-  h1: "Calculadora de vacaciones proporcionales",
-  title: "Vacaciones proporcionales: calcula tu feriado",
+  h1: "Calculadora de vacaciones proporcionales en Chile",
+  title: "Calculadora de vacaciones proporcionales 2026 en Chile",
   description:
-    "Calcula los días y el monto de tus vacaciones proporcionales al terminar el contrato, con el método de la Dirección del Trabajo: {{cl.feriado-anual}} hábiles por año.",
+    "Calcula los días y el monto de tus vacaciones proporcionales al terminar el contrato: {{cl.feriado-anual}} hábiles por año, con el método de la Dirección del Trabajo.",
   intro: [
-    "Si dejas un trabajo, te pagan las vacaciones que acumulaste y no tomaste. En la ley se llama feriado proporcional.",
-    "Cada mes trabajado suma una parte de tus {{cl.feriado-anual}} hábiles al año. Esos días se pasan a días corridos y se pagan con tu sueldo diario.",
+    "Las vacaciones proporcionales son 1,25 días hábiles por cada mes trabajado desde tu ingreso o tu último aniversario. Te las pagan al terminar el contrato, sin importar el motivo.",
+    "Salen de los {{cl.feriado-anual}} hábiles al año ({{cl.feriado-anual-austral}} en Magallanes, Aysén y Palena). En la ley se llaman feriado proporcional, y esos días se pasan a días corridos y se pagan con tu sueldo diario.",
   ],
   comoSeCalcula: [
     "Se dividen los días de vacaciones del año ({{cl.feriado-anual}}, o {{cl.feriado-anual-austral}} en Magallanes, Aysén y Palena) por 12. Eso da los días hábiles por mes trabajado.",
@@ -20,6 +20,10 @@ export default definirContenido({
     "Es el ejemplo de la Dirección del Trabajo: si entraste el 15 de marzo de 2021 y saliste el 17 de noviembre de 2021, son 8 meses y 2 días. Eso da 10,08 días hábiles. Contando desde el 18 de noviembre se suman 4 días de fin de semana, en total 14,08 días corridos.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo se calculan las vacaciones proporcionales?",
+      respuesta: "En la mayor parte del país, multiplica 1,25 días hábiles por los meses trabajados desde tu último aniversario. Esos días se pasan a días corridos sumando los fines de semana, y cada día se paga a un treintavo de tu sueldo.",
+    },
     {
       pregunta: "¿Me pagan vacaciones si renuncio?",
       respuesta: "Sí. Las vacaciones proporcionales y las pendientes se pagan siempre, sin importar el motivo del término.",

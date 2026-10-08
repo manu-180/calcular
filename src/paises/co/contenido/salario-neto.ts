@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.salario-neto",
-  h1: "Calculadora de salario neto",
-  title: "Salario neto 2026 en Colombia: cuánto te queda",
+  h1: "Calculadora de salario neto 2026 en Colombia",
+  title: "Calculadora de salario neto 2026 en Colombia",
   description:
-    "Calcula cuánto te consignan cada mes: salud {{co.salud-trabajador}}, pensión, Fondo de Solidaridad y retención en la fuente con la UVT de {{co.uvt}}.",
+    "Escribe tu salario y mira cuánto te consignan: descuentos de salud ({{co.salud-trabajador}}), pensión, Fondo de Solidaridad y retención en la fuente, más el auxilio de transporte.",
   intro: [
-    "Tu salario neto es lo que te llega a la cuenta después de los descuentos de ley.",
-    "Te descuentan salud y pensión. Si ganas más, también el Fondo de Solidaridad Pensional y la retención en la fuente. Si te corresponde, te suman el auxilio de transporte.",
+    "Tu salario neto es tu salario menos los descuentos de ley: el {{co.salud-trabajador}} para salud y tu parte de la pensión. Con salarios más altos se suman el Fondo de Solidaridad Pensional y la retención en la fuente.",
+    "Si ganas hasta {{co.auxilio-tope}}, al neto se le suma el auxilio de transporte de {{co.auxilio-transporte}}. Escribe tu salario y te mostramos cada descuento.",
   ],
   comoSeCalcula: [
     "Salud: el {{co.salud-trabajador}} de tu salario.",
@@ -19,13 +19,18 @@ export default definirContenido({
     "Auxilio de transporte: si ganas hasta {{co.auxilio-tope}}, se suman {{co.auxilio-transporte}}.",
   ],
   ejemplo: [
-    "Con un salario de $3.000.000 y los porcentajes de hoy, te descuentan $120.000 de salud y $120.000 de pensión. No tienes retención en la fuente y te suman el auxilio de transporte.",
+    "Con un salario de $3.000.000 en 2026, te descuentan $120.000 de salud y $120.000 de pensión. No tienes retención en la fuente y te suman el auxilio de transporte: te consignan $3.009.095.",
+    "Si ganas el salario mínimo, los descuentos son de $70.036 para salud y $70.036 para pensión. Con el auxilio, recibes $1.859.928.",
   ],
   faq: [
     {
       pregunta: "¿Cuánto me descuentan de salud y pensión?",
       respuesta:
         "Para salud, el {{co.salud-trabajador}} de tu salario. Para pensión, el {{co.pension-parte-trabajador}} de una cotización del {{co.pension-cotizacion}}. El resto lo paga la empresa.",
+    },
+    {
+      pregunta: "¿Cuánto recibo si gano el salario mínimo?",
+      respuesta: "En 2026, $1.859.928 al mes: el mínimo de {{co.smmlv}} menos salud y pensión, más el auxilio de transporte de {{co.auxilio-transporte}}.",
     },
     {
       pregunta: "¿Desde qué salario me hacen retención en la fuente?",
@@ -42,6 +47,7 @@ export default definirContenido({
     },
   ],
   glosario: [
+    { termino: "Salario neto", definicion: "Lo que te consignan después de los descuentos de ley, con el auxilio de transporte si te corresponde." },
     { termino: "IBC", definicion: "Ingreso base de cotización: el valor sobre el que se calculan los aportes a salud y pensión." },
     { termino: "UVT", definicion: "Unidad de Valor Tributario. Hoy vale {{co.uvt}} y la DIAN la actualiza cada año." },
     { termino: "Retención en la fuente", definicion: "Un anticipo del impuesto de renta que la empresa descuenta de tu salario y le paga a la DIAN." },

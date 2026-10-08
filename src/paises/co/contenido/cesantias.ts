@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.cesantias",
-  h1: "Calculadora de cesantías e intereses",
-  title: "Cesantías 2026: calcula las tuyas y sus intereses",
+  h1: "Calculadora de cesantías e intereses de cesantías 2026",
+  title: "Calculadora de cesantías 2026 e intereses de cesantías",
   description:
-    "Calcula tus cesantías y los intereses del {{co.intereses-cesantias}} anual con tu salario y los días trabajados. Con auxilio de transporte si te corresponde.",
+    "Calcula tus cesantías y los intereses del {{co.intereses-cesantias}} anual con tu salario y los días trabajados. Incluye el auxilio de transporte si te corresponde. Gratis.",
   intro: [
-    "Las cesantías son un mes de salario por cada año trabajado. La empresa las consigna cada año en el fondo de cesantías que elijas.",
-    "Además, te paga a ti los intereses sobre las cesantías: el {{co.intereses-cesantias}} anual.",
+    "Las cesantías son un mes de salario por cada año trabajado, y sus intereses son el {{co.intereses-cesantias}} anual de ese valor. La empresa consigna las cesantías en tu fondo y los intereses te los paga a ti.",
+    "Si ganas hasta {{co.auxilio-tope}}, el auxilio de transporte de {{co.auxilio-transporte}} se suma al salario para calcularlas.",
   ],
   comoSeCalcula: [
     "Salario base: tu salario mensual más el auxilio de transporte de {{co.auxilio-transporte}}, si ganas hasta {{co.auxilio-tope}}.",
@@ -17,11 +17,16 @@ export default definirContenido({
   ],
   ejemplo: [
     "Con un salario de $4.000.000 y el año completo (360 días), las cesantías son $4.000.000 y los intereses $480.000.",
+    "Con el salario mínimo de 2026 y el auxilio, la base es $2.000.000: cesantías de $2.000.000 e intereses de $240.000 por el año completo.",
   ],
   faq: [
     {
       pregunta: "¿Cuándo consignan las cesantías?",
       respuesta: "La empresa liquida las cesantías al 31 de diciembre y las tiene que consignar en tu fondo antes del 15 de febrero del año siguiente.",
+    },
+    {
+      pregunta: "¿Cómo se calculan los intereses de las cesantías?",
+      respuesta: "Multiplica tus cesantías por el {{co.intereses-cesantias}} y por los días trabajados, y divide por 360. Por un año completo son el {{co.intereses-cesantias}} de las cesantías.",
     },
     {
       pregunta: "¿Quién me paga los intereses?",

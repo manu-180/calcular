@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.renta-quinta",
-  h1: "Calculadora de renta de quinta categoría",
-  title: "Renta de quinta categoría 2026: calcula tu retención",
+  h1: "Calculadora de renta de quinta categoría 2026",
+  title: "Renta de quinta categoría 2026: calculadora de retención",
   description:
-    "Calcula el impuesto a la renta de quinta categoría con la UIT de {{pe.uit}}, la deducción de {{pe.deduccion-renta-trabajo}} y la escala vigente. Te mostramos la retención de cada mes.",
+    "Calcula tu impuesto a la renta de quinta categoría y la retención de cada mes con la UIT de {{pe.uit}} y la deducción de {{pe.deduccion-renta-trabajo}}. Pon tu sueldo y listo.",
   intro: [
-    "Si trabajas en planilla, tu empresa te retiene cada mes una parte del sueldo como adelanto del impuesto a la renta. Es la renta de quinta categoría.",
-    "Solo pagas si en el año ganas más de {{pe.deduccion-renta-trabajo}} (las primeras siete UIT no pagan impuesto). En 2026 la UIT vale {{pe.uit}}.",
+    "La renta de quinta categoría es el impuesto a la renta de quien trabaja en planilla. Solo pagas si en el año ganas más de {{pe.deduccion-renta-trabajo}}, y tu empresa te lo retiene en partes cada mes.",
+    "Hoy la UIT vale {{pe.uit}}. La calculadora proyecta tu ingreso del año con gratificaciones y te da la retención mensual.",
   ],
   comoSeCalcula: [
     "Se proyecta lo que vas a ganar en el año: doce sueldos, las dos gratificaciones, su bonificación extraordinaria y otros pagos de planilla.",
@@ -17,13 +17,17 @@ export default definirContenido({
     "Si tu sueldo no cambia en el año, la retención de cada mes es más o menos el impuesto anual dividido entre 12.",
   ],
   ejemplo: [
-    "Ganas S/ 5,000 al mes con gratificaciones completas. En el año suman S/ 70,900. Restas S/ 38,500 y quedan S/ 32,400.",
+    "Ganas S/ 5,000 al mes con gratificaciones completas. En 2026 suman S/ 70,900. Restas S/ 38,500 (7 UIT) y quedan S/ 32,400.",
     "Los primeros S/ 27,500 pagan 8 % (S/ 2,200) y los S/ 4,900 restantes, 14 % (S/ 686). Tu impuesto del año es S/ 2,886: unos S/ 240.50 de retención al mes.",
   ],
   faq: [
     {
       pregunta: "¿A partir de cuánto sueldo me retienen quinta categoría?",
       respuesta: "Cuando lo que ganas en el año, contando gratificaciones y bonos, pasa de {{pe.deduccion-renta-trabajo}}. Pon tu sueldo en la calculadora y lo ves al instante.",
+    },
+    {
+      pregunta: "¿Cuánto me retienen si gano S/ 3,000?",
+      respuesta: "Con gratificaciones completas y EsSalud, en 2026 tu impuesto del año es S/ 323.20: unos S/ 26.93 de retención al mes.",
     },
     {
       pregunta: "¿Las gratificaciones pagan impuesto a la renta?",

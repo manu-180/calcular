@@ -2,14 +2,14 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.gratificacion",
-  h1: "Calculadora de gratificación",
-  title: "Gratificación de diciembre 2026: calcula cuánto te toca",
+  h1: "Calculadora de gratificación de diciembre 2026",
+  title: "Calculadora de gratificación diciembre 2026 en Perú",
   description:
-    "Calcula tu gratificación de julio o diciembre con la bonificación extraordinaria del {{pe.bonificacion-extraordinaria[essalud]}} y la RMV de {{pe.rmv}}. Con fuente oficial.",
+    "Calcula tu gratificación de diciembre o de julio con la bonificación extraordinaria del {{pe.bonificacion-extraordinaria[essalud]}}. Completa o proporcional, con la RMV de {{pe.rmv}}. Gratis.",
   intro: [
-    "La gratificación (la «grati») es un sueldo extra que recibes dos veces al año: en julio por Fiestas Patrias y en diciembre por Navidad.",
-    "Si trabajaste el semestre completo, cobras una remuneración entera. Encima te pagan una bonificación extraordinaria del {{pe.bonificacion-extraordinaria[essalud]}}, que es lo que la empresa ya no aporta a EsSalud por la gratificación.",
-    "La de diciembre se paga hasta el 15 de diciembre. Si tienes hijos, la asignación familiar entra en el cálculo y desde el {{pe.rmv#desde}} vale más, porque subió la remuneración mínima.",
+    "La gratificación de diciembre es un sueldo completo si trabajaste de julio a diciembre, más una bonificación extraordinaria del {{pe.bonificacion-extraordinaria[essalud]}}. Se paga hasta el 15 de diciembre.",
+    "La gratificación (la «grati») se cobra dos veces al año: en julio por Fiestas Patrias y en diciembre por Navidad. Si trabajaste menos del semestre, te toca un sexto por cada mes completo.",
+    "Si tienes hijos, la asignación familiar entra en el cálculo y desde el {{pe.rmv#desde}} vale más, porque subió la remuneración mínima.",
   ],
   comoSeCalcula: [
     "Se suma tu sueldo, la asignación familiar ({{pe.asignacion-familiar}} de la RMV, si la cobras) y el promedio de pagos variables que recibiste al menos tres meses del semestre.",
@@ -25,6 +25,10 @@ export default definirContenido({
     {
       pregunta: "¿Hasta cuándo me tienen que pagar la gratificación de diciembre?",
       respuesta: "Hasta el 15 de diciembre. La de julio, hasta el 15 de julio. Si no te pagan, puedes denunciarlo ante Sunafil.",
+    },
+    {
+      pregunta: "¿Cuánto es la gratificación si gano el sueldo mínimo?",
+      respuesta: "Con la RMV que rige desde octubre de 2026 (S/ 1,230) y el semestre completo, S/ 1,230 más S/ 110.70 de bonificación: S/ 1,340.70. Con asignación familiar, S/ 1,474.77.",
     },
     {
       pregunta: "¿A la gratificación le descuentan AFP u ONP?",

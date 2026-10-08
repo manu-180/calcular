@@ -2,20 +2,27 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.resico",
-  h1: "Calculadora de ISR en el RESICO para personas físicas",
-  title: "RESICO 2026: calcula tu ISR mensual",
+  h1: "Calculadora RESICO 2026: ISR mensual de personas físicas",
+  title: "Calculadora RESICO 2026: ISR mensual de personas físicas",
   description:
-    "Calcula el ISR mensual del Régimen Simplificado de Confianza con las tasas del artículo 113-E de la LISR, y resta lo que te retuvieron empresas.",
+    "Calcula tu pago mensual de ISR en el RESICO con la tabla de tasas del artículo 113-E y resta lo que te retuvieron empresas. Escribe lo que cobraste y listo.",
   intro: [
-    "En el RESICO pagas ISR sobre lo que cobraste en el mes, sin deducir gastos. La tasa depende de cuánto cobraste.",
-    "Puedes estar en el RESICO si tus ingresos del año no pasan de {{mx.tope-resico}}.",
+    "En el RESICO pagas ISR con una tasa baja sobre todo lo que cobraste en el mes, sin deducir gastos. Mientras más cobras, más alta es la tasa, y se aplica a todo el monto.",
+    "Puedes estar en el RESICO si tus ingresos del año no pasan de {{mx.tope-resico}}. Escribe lo que cobraste en el mes sin IVA y te decimos cuánto pagas.",
   ],
   comoSeCalcula: [
     "Suma lo que cobraste en el mes por tus facturas, sin el IVA.",
-    "Busca la tasa que corresponde a ese monto en la tabla del artículo 113-E. La tasa se aplica a todo el monto, no por partes.",
+    "Busca la tasa que corresponde a ese monto en la tabla del artículo 113-E de la Ley del ISR. La tasa se aplica a todo el monto, no por partes.",
     "Si facturaste a empresas (personas morales), te retuvieron ISR. Ese ISR retenido se resta del que te toca pagar.",
   ],
+  ejemplo: [
+    "Si en un mes de 2026 cobraste 30,000 pesos sin IVA, te toca la tasa de 1.10%. Tu ISR del mes es de 330 pesos.",
+  ],
   faq: [
+    {
+      pregunta: "¿Cuánto se paga de ISR en el RESICO?",
+      respuesta: "Un porcentaje de lo que cobraste en el mes, según la tabla del artículo 113-E. La calculadora te muestra la tasa que te toca y el ISR a pagar.",
+    },
     {
       pregunta: "¿Puedo deducir gastos en el RESICO?",
       respuesta: "No para el pago mensual. El ISR se calcula sobre lo cobrado, sin deducciones.",

@@ -2,14 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.liquidacion",
-  h1: "Calculadora de liquidación de beneficios sociales",
-  title: "Liquidación de beneficios sociales 2026: calcúlala",
+  h1: "Calculadora de liquidación de beneficios sociales 2026",
+  title: "Liquidación de beneficios sociales 2026: calculadora",
   description:
-    "Calcula tu liquidación al dejar el trabajo: CTS trunca, gratificación trunca con bonificación y vacaciones truncas. Con la RMV de {{pe.rmv}} y fuente oficial.",
+    "Calcula tu liquidación al dejar el trabajo: CTS trunca, gratificación trunca con bonificación y vacaciones truncas. Pon tus fechas y ve el total.",
   intro: [
-    "Cuando dejas un trabajo (por renuncia, despido o fin de contrato), tu empleador te debe pagar los beneficios que acumulaste y todavía no cobraste. Eso es la liquidación de beneficios sociales.",
-    "Tiene que pagártela dentro de las 48 horas siguientes a tu cese.",
-    "La liquidación incluye la CTS trunca, la gratificación trunca con su bonificación y las vacaciones truncas. Si tenías vacaciones ganadas sin tomar, también entran.",
+    "La liquidación de beneficios sociales es lo que te deben al dejar un trabajo: CTS trunca, gratificación trunca con su bonificación y vacaciones truncas. Te la tienen que pagar dentro de las 48 horas siguientes a tu cese.",
+    "Se paga por renuncia, despido o fin de contrato. Si tenías vacaciones ganadas sin tomar, también entran.",
   ],
   comoSeCalcula: [
     "CTS trunca: desde el último 1 de mayo o 1 de noviembre hasta tu último día. Se paga un dozavo de la remuneración computable por mes y un treintavo de ese dozavo por día.",
@@ -23,6 +22,10 @@ export default definirContenido({
     "CTS trunca: 5 meses y 15 días, S/ 1,069.44. Gratificación trunca: julio, agosto y setiembre, S/ 1,000 más S/ 90 de bonificación. Vacaciones truncas: 7 meses y 15 días, S/ 1,250. En total, S/ 3,409.44.",
   ],
   faq: [
+    {
+      pregunta: "¿Qué incluye la liquidación de beneficios sociales?",
+      respuesta: "La CTS trunca, la gratificación trunca con su bonificación extraordinaria, las vacaciones truncas y las vacaciones ganadas que no tomaste. Si te deben días de sueldo, también.",
+    },
     {
       pregunta: "¿En cuánto tiempo me tienen que pagar la liquidación?",
       respuesta: "En 48 horas desde que dejaste de trabajar. Si no te pagan, puedes denunciarlo ante Sunafil.",
