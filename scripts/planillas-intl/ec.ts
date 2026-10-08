@@ -68,7 +68,7 @@ function decimos(l: Libro): void {
   if (con14) {
     const b = h.bloque("decimo-cuarto-sueldo");
     h.seccion("DÉCIMO CUARTO");
-    const region = h.region("Región donde trabajas", "sierra");
+    const region = h.region("Región donde trabajas", T.porRegion("ec.decimo-cuarto-mes-inicio"), "sierra");
     const inicio = h.fecha("Fecha en que empezaste a trabajar", "2025-01-15");
     const salida = h.fecha("Fecha de salida (opcional)", null, "Déjala vacía si sigues trabajando: se calcula el próximo pago.");
     const hoy = h.fechaHoy("Fecha de hoy", "Se llena sola. Cámbiala si quieres calcular a otra fecha.");
@@ -115,7 +115,7 @@ function liquidacion(l: Libro): void {
     ],
     "despido",
   );
-  const region = h.region("Región donde trabajabas", "sierra");
+  const region = h.region("Región donde trabajabas", T.porRegion("ec.decimo-cuarto-mes-inicio"), "sierra");
   const dec = h.siNo("Cobrabas los décimos cada mes", true);
   const pend = h.numero("Días de vacaciones de años anteriores sin tomar", 0, { formato: "numero", min: 0 });
   b.campo("inicio", inicio).campo("salida", salida).campo("remuneracion", rem).campo("motivo", motivo).campo("region", region).campo("decimos", dec).campo("pendientes", pend);

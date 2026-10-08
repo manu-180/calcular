@@ -26,6 +26,7 @@ export interface Escala {
   tasa(i: number): string;
   cuota(i: number): string;
   rangoDesde: string;
+  rangoHasta: string;
   rangoTasa: string;
   rangoCuota: string;
 }
@@ -34,6 +35,7 @@ export interface Mapa {
   (clave: string): string;
   opciones: OpcionHoja[];
   valores: string;
+  etiquetas: string;
   de(ref: string): string;
 }
 
@@ -136,6 +138,7 @@ export class Tablas {
       {
         opciones,
         valores: `${PREFIJO_TABLAS}$C$${primera}:$C$${ultima}`,
+        etiquetas: `${PREFIJO_TABLAS}$B$${primera}:$B$${ultima}`,
         de: (ref: string) => `INDEX(${PREFIJO_TABLAS}$C$${primera}:$C$${ultima},MATCH(${ref},${PREFIJO_TABLAS}$B$${primera}:$B$${ultima},0))`,
       },
     );
@@ -184,6 +187,7 @@ export class Tablas {
       tasa: c("D"),
       cuota: c("E"),
       rangoDesde: `${PREFIJO_TABLAS}$B$${primera}:$B$${ultima}`,
+      rangoHasta: `${PREFIJO_TABLAS}$C$${primera}:$C$${ultima}`,
       rangoTasa: `${PREFIJO_TABLAS}$D$${primera}:$D$${ultima}`,
       rangoCuota: `${PREFIJO_TABLAS}$E$${primera}:$E$${ultima}`,
     };
@@ -404,17 +408,21 @@ export class Hoja {
     return { ref: `B${r}`, convertir: (v) => (v === null || v === undefined ? null : Number(v)) };
   }
 
-  opcion(etiqueta: string, opciones: readonly OpcionHoja[], defecto: string, ayuda?: string): Entrada {
+  // Con `rango`, el desplegable lista las celdas de la hoja de tablas: así una etiqueta oficial con
+  // comas (un sector, un tamaño de empresa) no se parte en dos opciones.
+  opcion(etiqueta: string, opciones: readonly OpcionHoja[], defecto: string, ayuda?: string, rango?: string): Entrada {
     const r = this.filaEntrada(etiqueta, ayuda);
     const c = this.ws.getCell(`B${r}`);
     const def = opciones.find((o) => o.valor === defecto);
     if (!def) throw new Error(`${this.nombre}: el valor por defecto ${defecto} no está entre las opciones`);
     c.value = def.etiqueta;
     c.alignment = { horizontal: "left", indent: 1 };
-    c.dataValidation = desplegable(
-      opciones.map((o) => o.etiqueta),
-      "Elige una opción de la lista.",
-    );
+    c.dataValidation = rango
+      ? { type: "list", allowBlank: false, showErrorMessage: true, error: "Elige una opción de la lista.", formulae: [rango] }
+      : desplegable(
+          opciones.map((o) => o.etiqueta),
+          "Elige una opción de la lista.",
+        );
     return {
       ref: `B${r}`,
       convertir: (v) => {
@@ -439,16 +447,17 @@ export class Hoja {
   }
 
   opcionDato(etiqueta: string, mapa: Mapa, defecto: string, ayuda?: string): Entrada {
-    return this.opcion(etiqueta, mapa.opciones, defecto, ayuda);
+    return this.opcion(etiqueta, mapa.opciones, defecto, ayuda, mapa.etiquetas);
   }
 
-  region(etiqueta: string, defecto: string, ayuda?: string): Entrada {
+  region(etiqueta: string, tabla: PorRegion, defecto: string, ayuda?: string): Entrada {
     const regiones = this.libro.mercado.regiones ?? [];
     return this.opcion(
       etiqueta,
       regiones.map((r) => ({ valor: r.id, etiqueta: r.nombre })),
       defecto,
       ayuda,
+      tabla.nombres,
     );
   }
 

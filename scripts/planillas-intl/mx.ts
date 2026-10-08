@@ -32,7 +32,7 @@ function sueldoNeto(l: Libro): void {
   h.seccion("TUS DATOS");
   const sueldo = h.numero("Sueldo bruto del periodo", 10000, { min: 0 });
   const periodo = h.opcion("Cada cuánto te pagan", PERIODO_NOMINA, "quincenal");
-  const region = h.region("Dónde trabajas", "general");
+  const region = h.region("Dónde trabajas", T.porRegion("mx.salario-minimo"), "general");
   const antig = h.numero("Años que llevas en la empresa", 1, { formato: "entero", min: 0, max: 60, ayuda: "Sirve para estimar tu salario base de cotización del IMSS." });
   const sbcIn = h.numero("Salario base de cotización diario (opcional)", null, {
     min: 0,
@@ -121,7 +121,7 @@ function aguinaldo(l: Libro): void {
   const periodo = h.opcion("Ese sueldo es", PERIODO_SUELDO, "mensual");
   const diasTrab = h.numero("Días que trabajaste este año", 365, { formato: "entero", min: 1, max: 366, ayuda: "Si entraste a mitad de año, cuenta desde tu primer día." });
   const diasIn = h.numero("Días de aguinaldo que da tu empresa (opcional)", null, { formato: "entero", min: 1, ayuda: "Déjalo vacío si no lo sabes: se usa el mínimo de ley." });
-  const region = h.region("Dónde trabajas", "general");
+  const region = h.region("Dónde trabajas", T.porRegion("mx.salario-minimo"), "general");
   b.campo("sueldo", sueldo).campo("periodo", periodo).campo("diasTrabajados", diasTrab).campo("diasAguinaldo", diasIn).campo("region", region);
 
   const legal = T.numero("mx.dias-aguinaldo");
@@ -181,7 +181,7 @@ function terminacion(l: Libro): void {
   const periodo = h.opcion("Ese sueldo es", PERIODO_SUELDO, "mensual");
   const ingreso = h.fecha("Fecha en que entraste a trabajar", "2023-03-01");
   const salida = h.fecha("Último día de trabajo", l.hoy);
-  const region = h.region("Dónde trabajas", "general");
+  const region = h.region("Dónde trabajas", T.porRegion("mx.salario-minimo"), "general");
   const pendientes = h.numero("Días trabajados que todavía no te pagan", 0, { formato: "entero", min: 0, max: 31 });
   const vacPend = h.numero("Días de vacaciones de años anteriores que no tomaste", 0, { formato: "numero", min: 0, max: 200 });
   const diasIn = h.numero("Días de aguinaldo que da tu empresa (opcional)", null, { formato: "entero", min: 1, ayuda: "Déjalo vacío si no lo sabes: se usa el mínimo de ley." });

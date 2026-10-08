@@ -7,13 +7,16 @@ import { Libro, nombreArchivo, type PlanillaPais } from "./marco";
 import { planillaCl } from "./cl";
 import { planillaCo } from "./co";
 import { planillaCr } from "./cr";
+import { planillaDo } from "./do";
 import { planillaEc } from "./ec";
 import { planillaGt } from "./gt";
 import { planillaMx } from "./mx";
 import { planillaPe } from "./pe";
+import { planillaPy } from "./py";
+import { planillaSv } from "./sv";
 import { planillaUy } from "./uy";
 
-export const PLANILLAS_INTL: readonly PlanillaPais[] = [planillaMx, planillaCo, planillaPe, planillaCl, planillaUy, planillaEc, planillaCr, planillaGt];
+export const PLANILLAS_INTL: readonly PlanillaPais[] = [planillaMx, planillaCo, planillaPe, planillaCl, planillaUy, planillaEc, planillaCr, planillaGt, planillaPy, planillaDo, planillaSv];
 
 export interface PlanillaConstruida {
   planilla: PlanillaPais;
