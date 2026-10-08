@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.horas-extra",
-  h1: "Calculadora de horas extra",
-  title: "Horas extra en Uruguay: calculá cuánto te pagan",
+  h1: "Calculadora de horas extras en Uruguay",
+  title: "Horas extras en Uruguay 2026: calculá cuánto te pagan",
   description:
-    "Calculá tus horas extra con el recargo legal: {{uy.recargo-he-habil}} en días hábiles y {{uy.recargo-he-descanso}} en feriados o días de descanso. Para mensuales y jornaleros.",
+    "Calculá tus horas extras con el recargo legal: {{uy.recargo-he-habil}} en días hábiles y {{uy.recargo-he-descanso}} en feriados o descanso. Para mensuales y jornaleros, gratis.",
   intro: [
-    "Las horas que pasan tu jornada se pagan con recargo. En un día hábil la hora extra vale el doble; en un feriado o en tu día de descanso, dos veces y media.",
+    "En Uruguay la hora extra se paga con {{uy.recargo-he-habil}} de recargo en días hábiles (vale el doble) y con {{uy.recargo-he-descanso}} en feriados o en tu día de descanso (dos veces y media).",
     "Poné tu sueldo o el valor de tu hora y las horas que hiciste. Te mostramos cuánto vale cada una y el total.",
   ],
   comoSeCalcula: [
@@ -18,6 +18,14 @@ export default definirContenido({
   ],
   ejemplo: ["Con $ 50.000 por mes y divisor 200, tu hora vale $ 250. Una hora extra en día hábil vale $ 500 y en feriado, $ 625."],
   faq: [
+    {
+      pregunta: "¿Cómo se calcula el valor de la hora extra?",
+      respuesta: "Dividís tu sueldo mensual entre las horas del mes (200 en el decreto del salario mínimo) y le sumás el recargo. Con $ 50.000, la hora vale $ 250 y la extra en día hábil, $ 500.",
+    },
+    {
+      pregunta: "¿Las horas extras pagan aportes e IRPF?",
+      respuesta: "Sí. Son salario, así que se suman al nominal del mes y pagan aportes e IRPF como el resto del sueldo.",
+    },
     {
       pregunta: "¿Cuántas horas extra me pueden pedir?",
       respuesta: "Hasta 8 por semana, y solo si estás de acuerdo. El Ministerio de Trabajo puede autorizar excepciones.",

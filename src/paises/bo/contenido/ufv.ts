@@ -3,10 +3,10 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.ufv",
   h1: "UFV hoy: conversor de UFV a bolivianos",
-  title: "UFV hoy en Bolivia: convierta UFV a bolivianos",
-  description: "Valor de la Unidad de Fomento de Vivienda (UFV) de hoy según el Banco Central de Bolivia. Pase montos de UFV a bolivianos y de bolivianos a UFV.",
+  title: "UFV hoy en Bolivia: valor del BCB y conversor a bolivianos",
+  description: "La UFV hoy vale {{bo.ufv}} según el Banco Central de Bolivia. Pase montos de UFV a bolivianos y de bolivianos a UFV con el valor del día.",
   intro: [
-    "La Unidad de Fomento de Vivienda (UFV) es una unidad de cuenta que sube un poco cada día con la inflación. Usamos el valor que publica el Banco Central de Bolivia para la fecha de hoy.",
+    "La UFV (Unidad de Fomento de Vivienda) vale hoy {{bo.ufv}}, según el valor que publica el Banco Central de Bolivia para la fecha de hoy. Es una unidad de cuenta que sube un poco cada día con la inflación.",
     "Elija hacia qué lado quiere convertir y escriba el monto.",
   ],
   comoSeCalcula: [
@@ -15,6 +15,10 @@ export default definirContenido({
     "El BCB publica un valor de la UFV para cada día, también sábados, domingos y feriados.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto vale la UFV hoy?",
+      respuesta: "{{bo.ufv}}. Es el valor que publica el Banco Central de Bolivia para la fecha de hoy.",
+    },
     {
       pregunta: "¿Para qué se usa la UFV?",
       respuesta: "Para mantener el valor de montos en el tiempo: deudas tributarias, saldos a favor del RC-IVA, contratos y multas que se expresan en UFV.",

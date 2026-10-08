@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "bo.indemnizacion",
-  h1: "Calculadora de indemnización y desahucio",
-  title: "Indemnización y desahucio en Bolivia: calcúlelos",
-  description: "Calcule la indemnización por tiempo de servicios (un sueldo por año) y el desahucio por despido sin causa, con el método del Ministerio de Trabajo.",
+  h1: "Calculadora de indemnización y desahucio en Bolivia",
+  title: "Indemnización y desahucio Bolivia 2026: calcule ambos",
+  description: "Calcule su indemnización (un sueldo por año) y el desahucio de {{bo.desahucio-sueldos}} sueldos por despido sin causa, con el método del Ministerio de Trabajo.",
   intro: [
-    "La indemnización por tiempo de servicios es un sueldo por cada año trabajado, y la parte proporcional de los meses y días. Corresponde al terminar el trabajo, también si usted renunció.",
+    "La indemnización en Bolivia es un sueldo promedio por cada año trabajado, más la parte proporcional de los meses y días. Corresponde al terminar el trabajo, también si usted renunció, siempre que haya trabajado más de {{bo.indemnizacion-dias-minimos}} seguidos.",
     "El desahucio se suma solo si lo despidieron sin causa justificada.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,14 @@ export default definirContenido({
     "Ejemplo de la guía del Ministerio de Trabajo: con un sueldo promedio de Bs 2.164 y 1 año, 1 mes y 3 días, la indemnización es 2.164 + 180,33 + 18,03 = Bs 2.362,36.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo se calcula la indemnización en Bolivia?",
+      respuesta: "Se toma el promedio del total ganado de los 3 meses anteriores al retiro. Se paga un sueldo por cada año, un doceavo por cada mes y 1/360 por cada día.",
+    },
+    {
+      pregunta: "¿Cuánto es el desahucio?",
+      respuesta: "{{bo.desahucio-sueldos}} sueldos, solo si lo despidieron sin causa justificada. Se paga además de la indemnización.",
+    },
     {
       pregunta: "¿Cuándo no corresponde la indemnización?",
       respuesta: "Si trabajó {{bo.indemnizacion-dias-minimos}} o menos, o si lo despidieron por una de las causas del artículo 16 de la Ley General del Trabajo (por ejemplo, robo, abuso de confianza o daño intencional a los instrumentos de trabajo).",

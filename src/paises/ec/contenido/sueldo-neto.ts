@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.sueldo-neto",
-  h1: "Calculadora de sueldo neto",
-  title: "Sueldo neto 2026 en Ecuador: calcula tu rol de pagos",
-  description: "Pasa de sueldo bruto a neto con el aporte al IESS de {{ec.aporte-personal-iess}}, la retención del impuesto a la renta y los décimos mensualizados.",
+  h1: "Calculadora de sueldo neto en Ecuador",
+  title: "Sueldo neto Ecuador 2026: calcula tu rol de pagos",
+  description: "Pasa de sueldo bruto a neto: aporte al IESS de {{ec.aporte-personal-iess}}, retención del impuesto a la renta y décimos mensualizados, como en tu rol de pagos. Gratis.",
   intro: [
-    "El sueldo neto es lo que te depositan después de los descuentos. Parte de tu sueldo, le resta el aporte al IESS y la retención del impuesto a la renta, y suma los décimos si los cobras cada mes.",
+    "Tu sueldo neto es el bruto menos el aporte personal al IESS ({{ec.aporte-personal-iess}}) y la retención del impuesto a la renta, más los décimos si los cobras cada mes. Es lo que te depositan.",
     "Es el mismo cálculo de tu rol de pagos, con la tabla 2026 del SRI.",
   ],
   comoSeCalcula: [
@@ -19,6 +19,10 @@ export default definirContenido({
     "Con un sueldo de $2.000 y los décimos mensualizados, te descuentan $189 de IESS y $74,21 de impuesto, y te suman $166,67 y $40,17 de décimos. Tu neto es $1.943,63.",
   ],
   faq: [
+    {
+      pregunta: "¿Qué diferencia hay entre sueldo bruto y neto?",
+      respuesta: "El bruto es tu sueldo antes de descuentos. El neto es lo que recibes después del aporte al IESS y la retención del impuesto a la renta.",
+    },
     {
       pregunta: "¿Cuánto me descuenta el IESS?",
       respuesta: "El {{ec.aporte-personal-iess}} de tu sueldo, si trabajas en el sector privado en relación de dependencia.",

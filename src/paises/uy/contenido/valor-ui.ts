@@ -3,11 +3,11 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.valor-ui",
   h1: "Valor de la UI hoy y conversor de UI y BPC a pesos",
-  title: "UI hoy: convertí Unidades Indexadas y BPC a pesos",
+  title: "UI hoy en Uruguay: valor de la Unidad Indexada a pesos",
   description:
-    "Valor de la UI de hoy según el BCU y conversor de UI y BPC a pesos uruguayos. Sirve para alquileres, préstamos, multas y topes.",
+    "La UI hoy vale {{uy.ui}} según el BCU. Convertí Unidades Indexadas y BPC a pesos uruguayos, o al revés, para alquileres, préstamos y multas.",
   intro: [
-    "La Unidad Indexada (UI) sube todos los días con la inflación. Se usa en préstamos hipotecarios, alquileres, multas y montos de leyes.",
+    "La Unidad Indexada (UI) vale hoy {{uy.ui}}, según el Banco Central del Uruguay. Sube todos los días con la inflación y se usa en préstamos hipotecarios, alquileres, multas y montos de leyes.",
     "La BPC es otra unidad que usan las leyes para topes y franjas. Elegí la unidad, escribí el monto y te lo pasamos a pesos, o al revés.",
   ],
   comoSeCalcula: [
@@ -18,6 +18,14 @@ export default definirContenido({
   ],
   ejemplo: ["Si un contrato dice 1.000 UI y la UI vale $ 6,656, hoy son 1.000 × 6,656 = $ 6.656."],
   faq: [
+    {
+      pregunta: "¿Cuánto vale la UI hoy?",
+      respuesta: "{{uy.ui}}. Es el valor que publica el Banco Central del Uruguay para el día de hoy.",
+    },
+    {
+      pregunta: "¿Cuánto vale la BPC en 2026?",
+      respuesta: "{{uy.bpc}}, desde el {{uy.bpc#desde}}. Se ajusta una vez por año.",
+    },
     {
       pregunta: "¿Por qué la UI cambia todos los días?",
       respuesta: "Porque sigue la inflación (el IPC). La variación del mes se reparte día a día, así que sube de a poco.",

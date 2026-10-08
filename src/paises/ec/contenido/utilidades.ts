@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.utilidades",
-  h1: "Calculadora de utilidades",
-  title: "Utilidades 2026 en Ecuador: calcula cuánto te toca",
-  description: "Calcula tu parte del {{ec.utilidades}} de utilidades: el {{ec.utilidades-partes-iguales}} en partes iguales y el {{ec.utilidades-cargas}} según tus cargas familiares.",
+  h1: "Calculadora de utilidades 2026",
+  title: "Utilidades 2026 Ecuador: calcula tu parte del {{ec.utilidades}}",
+  description: "Calcula cuánto te toca de utilidades: el {{ec.utilidades-partes-iguales}} en partes iguales y el {{ec.utilidades-cargas}} según tus cargas familiares, en proporción al tiempo trabajado.",
   intro: [
-    "Si la empresa donde trabajas tuvo ganancias, el {{ec.utilidades}} de la utilidad líquida se reparte entre el personal. Te corresponde aunque no hayas trabajado el año completo.",
+    "Las utilidades son el {{ec.utilidades}} de la utilidad líquida (la ganancia) de la empresa, que se reparte entre el personal: el {{ec.utilidades-partes-iguales}} en partes iguales y el {{ec.utilidades-cargas}} según las cargas familiares. Te corresponden aunque no hayas trabajado el año completo.",
     "Necesitas la utilidad de la empresa, cuántas personas trabajaron y cuántas cargas familiares tienen en total. Esos datos te los da tu empleador.",
   ],
   comoSeCalcula: [
@@ -19,6 +19,10 @@ export default definirContenido({
     "La empresa ganó $100.000 y son 10 personas con 8 cargas en total. Tú tienes 2 cargas y trabajaste todo el año: cobras $1.000 de la parte igual y $1.250 por cargas, $2.250 en total.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo se calculan las utilidades de un trabajador?",
+      respuesta: "Del {{ec.utilidades}} de la utilidad líquida, el {{ec.utilidades-partes-iguales}} se divide en partes iguales según el tiempo trabajado y el {{ec.utilidades-cargas}} según las cargas familiares de cada persona.",
+    },
     {
       pregunta: "¿Cuándo se pagan las utilidades?",
       respuesta: "La empresa tiene que liquidarlas hasta el 31 de marzo y pagarlas dentro de los quince días siguientes. En la práctica, hasta mediados de abril.",

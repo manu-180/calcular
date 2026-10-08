@@ -3,10 +3,10 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.dolar-oficial",
   h1: "Dólar oficial hoy en Bolivia",
-  title: "Dólar oficial hoy en Bolivia: tipo de cambio del BCB",
-  description: "El Tipo de Cambio Oficial del BCB hoy es {{bo.dolar}} por dólar. Convierta dólares a bolivianos y bolivianos a dólares con el dato del día.",
+  title: "Dólar oficial Bolivia hoy: tipo de cambio BCB y conversor",
+  description: "El dólar oficial en Bolivia hoy es {{bo.dolar}} según el BCB. Convierta dólares a bolivianos y bolivianos a dólares con el tipo de cambio del día.",
   intro: [
-    "Usamos el Tipo de Cambio Oficial (TCO) que publica el Banco Central de Bolivia. Hoy es {{bo.dolar}} por dólar.",
+    "El dólar oficial en Bolivia hoy está a {{bo.dolar}}, según el Tipo de Cambio Oficial (TCO) que publica el Banco Central de Bolivia. Cambia cada día hábil.",
     "Elija hacia qué moneda quiere convertir y escriba el monto.",
   ],
   comoSeCalcula: [
@@ -16,6 +16,10 @@ export default definirContenido({
     "El que se publica el viernes rige el sábado, el domingo y el lunes. En los feriados rige el del último día hábil.",
   ],
   faq: [
+    {
+      pregunta: "¿A cuánto está el dólar oficial hoy en Bolivia?",
+      respuesta: "A {{bo.dolar}} por dólar, según el TCO del BCB. Bancos y casas de cambio usan su propio precio de compra y venta.",
+    },
     {
       pregunta: "¿Por qué el dólar oficial cambia todos los días?",
       respuesta: "Desde el 29 de junio de 2026 Bolivia tiene un tipo de cambio flexible. Ya no hay un valor fijo: el BCB lo calcula cada día hábil con las operaciones de los bancos.",

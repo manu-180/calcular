@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.despido",
-  h1: "Calculadora de indemnización por despido",
-  title: "Indemnización por despido en Uruguay: calculala",
+  h1: "Calculadora de indemnización por despido en Uruguay",
+  title: "Indemnización por despido Uruguay 2026: calculá tu despido",
   description:
-    "Calculá tu indemnización por despido común: un sueldo por año o fracción hasta {{uy.despido-tope-meses}}, o {{uy.despido-jornales-anio}} jornales por año si sos jornalero.",
+    "Calculá tu despido en segundos: un sueldo por año o fracción, hasta {{uy.despido-tope-meses}}, o {{uy.despido-jornales-anio}} jornales por año si sos jornalero. Con la base del MTSS.",
   intro: [
-    "Si te despiden sin notoria mala conducta, te corresponde una indemnización. Para un mensual es un sueldo por cada año o fracción trabajada, con un tope.",
+    "La indemnización por despido en Uruguay es un sueldo por cada año o fracción trabajada, con un tope de {{uy.despido-tope-meses}}. Te corresponde si te despiden sin notoria mala conducta.",
     "Para jornaleros y destajistas se cuenta en jornales, según los días trabajados en cada año.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,10 @@ export default definirContenido({
     "Un mensual de $ 50.000 que entró el 1/3/2023 y fue despedido el 7/10/2026 suma 4 años (3 y una fracción). Su base es $ 56.944,45 y la indemnización, $ 227.777,80.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto me corresponde de despido por 1 año de trabajo?",
+      respuesta: "Si sos mensual, un sueldo, con la parte de aguinaldo y de licencia sumada. Con menos de un año también cobrás uno, porque la fracción cuenta como año entero.",
+    },
     {
       pregunta: "¿La indemnización por despido paga IRPF?",
       respuesta: "No, mientras sea la indemnización legal. Lo que cobres por encima del mínimo legal sí paga IRPF por la diferencia.",

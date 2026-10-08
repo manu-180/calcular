@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.irp",
-  h1: "Calculadora de IRP",
-  title: "IRP en Paraguay: calculá tu impuesto a la renta personal",
-  description: "Calculá el IRP por servicios personales con la escala de la DNIT. Se paga si tus ingresos del año pasan {{py.irp-monto-no-alcanzado}}.",
+  h1: "Calculadora de IRP (impuesto a la renta personal)",
+  title: "IRP Paraguay 2026: calculá tu impuesto a la renta personal",
+  description: "Calculá tu IRP por servicios personales con la escala de la DNIT y tus gastos deducibles. Se paga si tus ingresos del año pasan {{py.irp-monto-no-alcanzado}}.",
   intro: [
-    "El IRP es el impuesto a la renta personal. Lo pagan quienes trabajan en relación de dependencia o por su cuenta si sus ingresos del año pasan {{py.irp-monto-no-alcanzado}}.",
+    "El IRP (impuesto a la renta personal) se paga cuando tus ingresos del año pasan {{py.irp-monto-no-alcanzado}}. Lo pagan quienes trabajan en relación de dependencia o por su cuenta, sobre la renta neta: ingresos menos gastos deducibles.",
     "Poné lo que ganaste en el año y tus gastos deducibles. Te mostramos el impuesto y cuánto representa de tus ingresos.",
   ],
   comoSeCalcula: [
@@ -22,6 +22,10 @@ export default definirContenido({
     {
       pregunta: "¿A partir de cuánto se paga IRP?",
       respuesta: "Cuando tus ingresos brutos por servicios personales del año pasan {{py.irp-monto-no-alcanzado}}. Ese es el monto no alcanzado.",
+    },
+    {
+      pregunta: "¿Cómo se calcula el IRP?",
+      respuesta: "A tus ingresos del año les restás los gastos deducibles. Sobre esa renta neta pagás por tramos, del 8 % al 10 %, y cada tramo paga solo su porción.",
     },
     {
       pregunta: "¿Qué gastos puedo deducir?",

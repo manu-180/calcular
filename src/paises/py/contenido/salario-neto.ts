@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.salario-neto",
-  h1: "Calculadora de salario neto",
-  title: "Salario neto en Paraguay: calculá tu descuento de IPS",
-  description: "Poné tu salario bruto y mirá cuánto cobrás en mano después del aporte al IPS del {{py.ips-trabajador}}. También ves cuánto aporta tu empleador.",
+  h1: "Calculadora de salario neto y descuento de IPS",
+  title: "Salario neto Paraguay 2026: calculá el descuento de IPS",
+  description: "Calculá cuánto te descuenta el IPS ({{py.ips-trabajador}}) y cuánto cobrás en mano. También ves el aporte de tu empleador ({{py.ips-empleador}}). Gratis y al instante.",
   intro: [
-    "Tu salario neto es lo que cobrás después del descuento del IPS. Al trabajador le descuentan el {{py.ips-trabajador}} del salario bruto.",
+    "Tu salario neto es el bruto menos el {{py.ips-trabajador}} de aporte al IPS. Es lo que cobrás en mano cada mes.",
     "Poné lo que cobraste en el mes, con horas extra y comisiones. El aguinaldo no paga aporte, así que no lo sumes.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuánto me descuenta el IPS?",
       respuesta: "El {{py.ips-trabajador}} de tu salario bruto. Con ese aporte tenés cobertura de salud y sumás para tu jubilación.",
+    },
+    {
+      pregunta: "¿Cuánto es el descuento de IPS sobre el salario mínimo?",
+      respuesta: "El {{py.ips-trabajador}} de {{py.salario-minimo}}. Poné ese monto en la calculadora y te da el descuento exacto y lo que cobrás en mano.",
     },
     {
       pregunta: "¿Al aguinaldo le descuentan IPS?",

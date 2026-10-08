@@ -3,10 +3,10 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.dolar-bcu",
   h1: "Dólar BCU hoy y conversor de dólares a pesos",
-  title: "Dólar BCU hoy: convertí dólares a pesos uruguayos",
-  description: "Cotización del dólar billete que publica el Banco Central del Uruguay y conversor de dólares a pesos y de pesos a dólares.",
+  title: "Dólar BCU hoy: cotización oficial y conversor a pesos",
+  description: "El dólar BCU está a {{uy.dolar}}. Convertí dólares a pesos uruguayos y pesos a dólares con la cotización oficial del Banco Central del Uruguay.",
   intro: [
-    "El Banco Central del Uruguay publica cada día hábil la cotización del dólar billete. Es la cotización oficial de referencia.",
+    "El dólar BCU está a {{uy.dolar}}, según la última cotización del dólar billete que publicó el Banco Central del Uruguay. Es la referencia oficial y se actualiza cada día hábil.",
     "Escribí un monto y te lo pasamos de dólares a pesos, o al revés, con la última cotización publicada.",
   ],
   comoSeCalcula: [
@@ -15,6 +15,10 @@ export default definirContenido({
     "Los fines de semana y feriados vale la cotización del último día hábil.",
   ],
   faq: [
+    {
+      pregunta: "¿A cuánto está el dólar hoy en Uruguay?",
+      respuesta: "Según el BCU, a {{uy.dolar}} por dólar billete. En bancos y casas de cambio los precios de compra y venta son otros.",
+    },
     {
       pregunta: "¿Por qué el banco me cobra otro precio?",
       respuesta: "Porque bancos y casas de cambio compran y venden con su propio margen. El dólar BCU es la cotización oficial de referencia.",

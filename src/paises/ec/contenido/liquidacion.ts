@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.liquidacion",
-  h1: "Calculadora de liquidación laboral",
-  title: "Liquidación laboral en Ecuador 2026: calcula tu finiquito",
-  description: "Calcula tu liquidación: desahucio del {{ec.desahucio}} por año, indemnización por despido intempestivo, décimos proporcionales y vacaciones.",
+  h1: "Calculadora de liquidación laboral en Ecuador",
+  title: "Liquidación Ecuador 2026: calcula por renuncia o despido",
+  description: "Calcula tu liquidación por renuncia o despido intempestivo: desahucio del {{ec.desahucio}} por año, indemnización, décimos y vacaciones. Gratis y paso a paso.",
   intro: [
-    "Cuando termina tu trabajo, el empleador tiene que pagarte una liquidación. Lo que incluye depende de cómo terminó la relación laboral.",
+    "La liquidación laboral en Ecuador suma lo que te deben al terminar el trabajo: desahucio, indemnización por despido intempestivo si te despidieron, décimos proporcionales y vacaciones. Lo que entra depende de cómo terminó la relación laboral.",
     "Pon tus fechas, tu última remuneración y el motivo de salida. La calculadora suma desahucio, despido, décimos y vacaciones.",
   ],
   comoSeCalcula: [
@@ -19,6 +19,10 @@ export default definirContenido({
     "Te despiden después de 5 años y 6 meses con un sueldo de $1.000. Te corresponden $1.250 de desahucio, $6.000 de despido (6 meses) y $290,37 de vacaciones. En total, $7.540,37.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto me corresponde de liquidación si renuncio?",
+      respuesta: "Si renuncias con desahucio (aviso escrito), te pagan el {{ec.desahucio}} de tu última remuneración por cada año completo, más los décimos proporcionales y las vacaciones pendientes. No hay indemnización por despido.",
+    },
     {
       pregunta: "¿Qué es el desahucio?",
       respuesta: "Es el aviso por escrito con el que le dices a tu empleador que dejas el trabajo, con al menos quince días de anticipación. Te da derecho a la bonificación del {{ec.desahucio}} por año.",

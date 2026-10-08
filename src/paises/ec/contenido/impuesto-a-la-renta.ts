@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.impuesto-a-la-renta",
-  h1: "Calculadora del impuesto a la renta",
-  title: "Impuesto a la renta 2026: calcula cuánto pagas",
-  description: "Calcula tu impuesto a la renta con la tabla 2026 del SRI y la rebaja por gastos personales según tus cargas familiares. También la retención mensual.",
+  h1: "Calculadora del impuesto a la renta 2026",
+  title: "Impuesto a la renta 2026 Ecuador: calcula con la tabla SRI",
+  description: "Calcula tu impuesto a la renta 2026 como persona natural, con la tabla del SRI y la rebaja por gastos personales según tus cargas. Con la retención mensual.",
   intro: [
-    "Si tus ingresos del año pasan la fracción exenta de la tabla del SRI, pagas impuesto a la renta. En relación de dependencia te lo retiene el empleador cada mes.",
+    "El impuesto a la renta 2026 se calcula con la tabla del SRI. Si tu base imponible del año pasa la fracción exenta, pagas un impuesto fijo más un porcentaje sobre lo que la supera. A eso se le resta la rebaja por gastos personales. En relación de dependencia te lo retiene el empleador cada mes.",
     "La calculadora usa la tabla 2026 y descuenta la rebaja por gastos personales, que depende de tus gastos y de tus cargas familiares.",
   ],
   comoSeCalcula: [
@@ -23,6 +23,10 @@ export default definirContenido({
     {
       pregunta: "¿Desde cuánto se paga impuesto a la renta en 2026?",
       respuesta: "Desde que tu base imponible del año pasa la fracción exenta de la tabla 2026 del SRI. Con relación de dependencia, la base es lo que ganas menos el aporte al IESS.",
+    },
+    {
+      pregunta: "¿Cómo se calcula la retención mensual del impuesto a la renta?",
+      respuesta: "El empleador proyecta tu impuesto del año, le resta la rebaja por gastos personales y lo divide para 11. Te lo retiene de febrero a diciembre.",
     },
     {
       pregunta: "¿Qué gastos personales puedo deducir?",

@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.indemnizacion-por-despido",
-  h1: "Calculadora de indemnización por despido",
-  title: "Indemnización y preaviso en Paraguay: calculalos",
-  description: "Si te despidieron sin causa, calculá tu indemnización ({{py.indemnizacion-dias-por-anio}} de salario por año) y el preaviso que te deben, según el Código del Trabajo.",
+  h1: "Calculadora de indemnización por despido y preaviso",
+  title: "Indemnización por despido Paraguay: calculá con preaviso",
+  description: "Si te despidieron sin causa, calculá tu indemnización ({{py.indemnizacion-dias-por-anio}} de salario por año) y el preaviso según tu antigüedad. Gratis, según el Código del Trabajo.",
   intro: [
-    "Si te despiden sin causa justificada, te corresponde una indemnización por los años que trabajaste. Y si no te avisaron con anticipación, también te pagan el preaviso.",
+    "La indemnización por despido en Paraguay es de {{py.indemnizacion-dias-por-anio}} de salario por cada año trabajado o fracción de más de seis meses. Te corresponde si te despiden sin causa justificada. Si además no te avisaron con anticipación, también te pagan el preaviso.",
     "Poné tu salario promedio de los últimos seis meses y las fechas de ingreso y salida.",
   ],
   comoSeCalcula: [
@@ -22,6 +22,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuánto me corresponde de indemnización por 1 año de trabajo?",
       respuesta: "{{py.indemnizacion-dias-por-anio}} de salario. Si además no te avisaron con anticipación, se suman {{py.preaviso-dias[hasta-1]}} de preaviso.",
+    },
+    {
+      pregunta: "¿Cuántos días de preaviso me corresponden?",
+      respuesta: "{{py.preaviso-dias[hasta-1]}} hasta un año de antigüedad, {{py.preaviso-dias[hasta-5]}} hasta cinco, {{py.preaviso-dias[hasta-10]}} hasta diez y {{py.preaviso-dias[mas-10]}} con más de diez.",
     },
     {
       pregunta: "¿Si trabajé menos de un año me corresponde indemnización?",

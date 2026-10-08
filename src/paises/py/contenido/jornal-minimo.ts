@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.jornal-minimo",
-  h1: "Calculadora de jornal mínimo",
-  title: "Jornal mínimo en Paraguay: cuánto cobrar por día",
-  description: "El jornal mínimo es {{py.minimos[jornal]}} por día de jornada diurna. Calculá cuánto te corresponde como mínimo por los días que trabajaste.",
+  h1: "Calculadora de jornal mínimo en Paraguay",
+  title: "Jornal mínimo Paraguay 2026: {{py.minimos[jornal]}} diurno y nocturno",
+  description: "El jornal mínimo vigente es {{py.minimos[jornal]}} por día de jornada diurna desde el {{py.minimos#desde}}. Calculá cuánto te corresponde por los días que trabajaste.",
   intro: [
-    "Si cobrás por día trabajado (jornalero), tu pago no puede ser menor al jornal mínimo: {{py.minimos[jornal]}} por día en jornada diurna.",
+    "El jornal mínimo vigente en Paraguay es {{py.minimos[jornal]}} por día en jornada diurna y {{py.minimos[jornal-nocturno]}} en jornada nocturna. Si cobrás por día trabajado (jornalero), tu pago no puede ser menor.",
     "Elegí tu jornada y poné cuántos días trabajaste.",
   ],
   comoSeCalcula: [
@@ -19,6 +19,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuánto es el jornal mínimo en Paraguay?",
       respuesta: "{{py.minimos[jornal]}} por día de jornada diurna y {{py.minimos[jornal-nocturno]}} por día de jornada nocturna, desde el {{py.minimos#desde}}.",
+    },
+    {
+      pregunta: "¿Cómo se calcula el jornal mínimo?",
+      respuesta: "Es el salario mínimo mensual dividido 26 días. Para saber tu mínimo del mes, se multiplica por los días que trabajaste.",
     },
     {
       pregunta: "¿Cuál es la diferencia entre jornalero y mensualero?",

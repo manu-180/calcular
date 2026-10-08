@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.horas-extras",
-  h1: "Calculadora de horas extras",
+  h1: "Calculadora de horas extras en Ecuador",
   title: "Horas extras en Ecuador 2026: calcula cuánto te pagan",
-  description: "Calcula tus horas suplementarias ({{ec.recargo-suplementarias}} de recargo) y extraordinarias ({{ec.recargo-extraordinarias}}) con el valor de tu hora según el Código del Trabajo.",
+  description: "Calcula tus horas extras: suplementarias con {{ec.recargo-suplementarias}} de recargo y extraordinarias con {{ec.recargo-extraordinarias}}, sobre el valor de tu hora según el Código del Trabajo.",
   intro: [
-    "Las horas extras se pagan con recargo sobre el valor de tu hora normal. Cuánto depende de cuándo las trabajaste.",
+    "En Ecuador las horas extras se pagan con recargo sobre tu hora normal: {{ec.recargo-suplementarias}} las suplementarias, {{ec.recargo-madrugada}} las de madrugada y {{ec.recargo-extraordinarias}} las de sábado o domingo (extraordinarias).",
     "Pon tu sueldo y las horas del mes. La calculadora separa cada tipo y te da el total.",
   ],
   comoSeCalcula: [
@@ -19,6 +19,10 @@ export default definirContenido({
     "Ganas $720: tu hora vale $3. Diez horas suplementarias suman $45, dos de madrugada $12 y ocho de sábado $48. En total cobras $105 de horas extras.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto se paga la hora extra en Ecuador?",
+      respuesta: "La suplementaria, tu hora normal más un {{ec.recargo-suplementarias}}. La de madrugada (de 24:00 a 06:00), más un {{ec.recargo-madrugada}}, y la de sábado o domingo, más un {{ec.recargo-extraordinarias}}.",
+    },
     {
       pregunta: "¿Cuál es la diferencia entre horas suplementarias y extraordinarias?",
       respuesta: "Las suplementarias son las que haces después de tu jornada, entre semana. Las extraordinarias son las que trabajas en sábado o domingo.",

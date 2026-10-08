@@ -3,10 +3,10 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.finiquito",
   h1: "Calculadora de finiquito y beneficios sociales",
-  title: "Finiquito en Bolivia: calcule sus beneficios sociales",
-  description: "Calcule su finiquito: indemnización, desahucio, aguinaldo y vacaciones, con el método del Ministerio de Trabajo. Para despido, renuncia o fin de contrato.",
+  title: "Finiquito Bolivia 2026: calcule sus beneficios sociales",
+  description: "Calcule su finiquito 2026: indemnización, desahucio, aguinaldo y vacaciones, con el método del Ministerio de Trabajo. Por despido o por renuncia.",
   intro: [
-    "El finiquito reúne los beneficios sociales que se pagan al terminar el trabajo: indemnización por tiempo de servicios, desahucio si corresponde, aguinaldo por duodécimas y vacaciones.",
+    "El finiquito en Bolivia reúne los beneficios sociales que se pagan al terminar el trabajo: indemnización por tiempo de servicios, desahucio si lo despidieron sin causa, aguinaldo por duodécimas y vacaciones.",
     "Elija cómo terminó la relación laboral, escriba su sueldo promedio y sus fechas.",
   ],
   comoSeCalcula: [
@@ -21,6 +21,10 @@ export default definirContenido({
     "Ejemplo del Ministerio de Trabajo: 2 años, 1 mes y 25 días con un sueldo promedio de Bs 3.000 y despido sin causa. Desahucio Bs 9.000, indemnización Bs 6.458,33, aguinaldo Bs 2.125, vacaciones Bs 3.229,17. Total: Bs 20.812,50.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo se calcula el finiquito?",
+      respuesta: "Se toma el promedio del total ganado de los últimos 3 meses. Con esa base se suman la indemnización (un sueldo por año), el desahucio si lo despidieron sin causa, el aguinaldo y las vacaciones.",
+    },
     {
       pregunta: "¿Si renuncio me pagan indemnización?",
       respuesta: "Sí. Desde el Decreto Supremo N° 110 de 2009, la indemnización corresponde también en el retiro voluntario, si trabajó más de {{bo.indemnizacion-dias-minimos}}. Lo que no corresponde es el desahucio.",
