@@ -1,9 +1,10 @@
 # Estado de calcularya.com (multi-país)
 
-Última actualización: 2026-10-08 01:30. Pausa segura terminada (no quedó nada a medias, ningún agente
-corriendo). Se retoma con todo y sin frenar a las ~05:36 del 8/10.
+Última actualización: 2026-10-08 06:30. **Mergeado a `main` (PR #12, `258b61e`).** calcular.ar idéntico
+(foto de 244 rutas contra main). calcularya.com sigue redirigiendo a calcular.ar hasta que se cargue
+`NEXT_PUBLIC_SITIO_INTL_URL` en Vercel.
 
-## Rama de integración
+## Rama de integración (histórica)
 
 `claude/calcularya-intl` (pusheada). Todo lo integrado vive acá; `main` todavía no tiene nada de intl.
 
@@ -54,25 +55,23 @@ corriendo). Se retoma con todo y sin frenar a las ~05:36 del 8/10.
   - tope en el finiquito de Chile.
 - **Checks rápidos verdes después del último merge:** `tsc`, `check_paises`, `check_paises_casos`, `check_textos_paises`, `check_fronteras`, `check_motor`, `check_hreflang`, `check_routing_hosts`, `check_eol` y `check_datos_paises`.
 
-## Al retomar (05:36), en orden y sin frenar
+## Activación (pendiente de Manuel) y siguientes pasos
 
-1. **Foto de calcular.ar bien hecha.**
-   - Situación: la foto de `scripts/snapshots/rutas-ar.json` es vieja (de `9efc1f7`) y da 9 diferencias, que vienen de datos de AR actualizados después, no de intl.
-   - Paso 1: hacer checkout de `origin/main` en un worktree aparte, `BUILD_CPUS=2 CALCULAR_HOY=2026-10-08 npm run build` y `check_rutas_ar --start --grabar`.
-   - Paso 2: buildear `claude/calcularya-intl` con el mismo `CALCULAR_HOY` y comparar. Tiene que dar **idéntico**.
-   - Paso 3: commitear la foto nueva.
-2. `src/proxy.ts`: en el host intl, `/api/cuenta` hoy da el 404 con la marca de AR (el proxy corre antes de los rewrites). Hacer que en el host intl dé el 404 intl o un 404 sin marca, sin cambiar nada de AR.
-3. En preview aparece el aviso «Parece que estás en Zetalandia»: el mercado `zz` no debe entrar nunca en el aviso de país.
-4. `check-all` completo (unos 19 min), build sin la variable, build con la variable (`VERCEL_ENV=preview`) y `check_routing_hosts --start`.
-5. ADR D2: documentar que se usa `global-not-found` (`experimental.globalNotFound`) con un 404 propio, y el plan B del 404 intl.
-6. Abrir el PR de `claude/calcularya-intl` a `main`. Esperar el CI verde (`ci.yml`) y revisar el preview de Vercel con `/api/dev/sitio` (POST) para ver calcularya.
-7. **Antes del merge a producción, confirmar con Manuel:** cambia la estructura de carpetas de calcular.ar, aunque la foto dé idéntico.
-8. Activación después del merge:
-   - `NEXT_PUBLIC_SITIO_INTL_URL=https://calcularya.com` en Vercel (production), que quita la redirección temporal;
-   - redeploy;
-   - smoke de calcularya.com/pe/gratificacion y del resto de los países;
-   - Search Console (dominio y prefijos por país) y AdSense para calcularya.com.
-9. Con aprobación de Manuel: hreflang desde calcular.ar con `NEXT_PUBLIC_HREFLANG_AR=1`.
+1. Vercel → proyecto calcular-ar → Settings → Environment Variables: `NEXT_PUBLIC_SITIO_INTL_URL` =
+   `https://calcularya.com`, solo Production. Después Redeploy del último deployment de producción
+   (las `NEXT_PUBLIC_*` se hornean en el build). El conector de Vercel y la CLI de esta máquina no
+   tienen permiso para env de producción en este proyecto.
+2. Smoke: `calcularya.com/` (selector), `calcularya.com/mx/aguinaldo`, `calcularya.com/sitemap.xml`,
+   `calcular.ar/mx/aguinaldo` (308 a calcularya), `calcular.ar/aguinaldo` igual que siempre.
+3. `npx tsx scripts/indexnow_intl.ts` (avisa las URLs a Bing/Yandex).
+4. Google Search Console: propiedad de dominio calcularya.com (registro TXT en Namecheap) y enviar
+   `https://calcularya.com/sitemap.xml`. AdSense: agregar calcularya.com.
+5. Decisión de Manuel: hreflang desde calcular.ar (`NEXT_PUBLIC_HREFLANG_AR=1`).
+6. Mantenimiento: datos que vencen el 31/12/2026 (UIT y RMA Perú, SBU/renta/canasta Ecuador, ISR 2027
+   RD, deducción ISR 2027 Guatemala, zona franca Nicaragua) los marca el semáforo de `datos-paises.yml`.
+7. Mejoras no bloqueantes: 79 calculadoras pasan 130 KB de HTML (mediana 129 KB; Lighthouse móvil
+   93-97); `registro.pagina()` crece cuadrático con los equivalentes (memo en `tarjetaDe`, arreglo de
+   fondo en `registro.ts`); zz aparece en el selector solo en preview.
 
 ## Pedidos al motor (no bloquean)
 
