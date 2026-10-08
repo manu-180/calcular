@@ -10,13 +10,16 @@ import { planillaCr } from "./cr";
 import { planillaDo } from "./do";
 import { planillaEc } from "./ec";
 import { planillaGt } from "./gt";
+import { planillaHn } from "./hn";
 import { planillaMx } from "./mx";
+import { planillaNi } from "./ni";
+import { planillaPa } from "./pa";
 import { planillaPe } from "./pe";
 import { planillaPy } from "./py";
 import { planillaSv } from "./sv";
 import { planillaUy } from "./uy";
 
-export const PLANILLAS_INTL: readonly PlanillaPais[] = [planillaMx, planillaCo, planillaPe, planillaCl, planillaUy, planillaEc, planillaCr, planillaGt, planillaPy, planillaDo, planillaSv];
+export const PLANILLAS_INTL: readonly PlanillaPais[] = [planillaMx, planillaCo, planillaPe, planillaCl, planillaUy, planillaEc, planillaCr, planillaGt, planillaPy, planillaDo, planillaSv, planillaPa, planillaHn, planillaNi];
 
 export interface PlanillaConstruida {
   planilla: PlanillaPais;
