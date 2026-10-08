@@ -1,56 +1,86 @@
 # Estado de calcularya.com (multi-país)
 
-Última actualización: 2026-10-07 21:00 (segunda pausa). Plan de Manuel para el 8/10: 00:57 se retoma a pleno; 01:57 se empieza a frenar de forma segura (terminar lo que está en curso, nada a medias); 05:57 se retoma con todo y sin frenar.
+Última actualización: 2026-10-08 01:30. Pausa segura terminada (no quedó nada a medias, ningún agente
+corriendo). Se retoma con todo y sin frenar a las ~05:36 del 8/10.
 
 ## Rama de integración
 
 `claude/calcularya-intl` (pusheada). Todo lo integrado vive acá; `main` todavía no tiene nada de intl.
-calcular.ar no cambia: foto de 244 URLs idéntica (`scripts/check_rutas_ar.ts --start`).
-`check-all` 130/130 en la última corrida completa.
 
-## Integrado y registrado en `src/paises/index.ts`
+## Hecho e integrado
+
+**Los 16 países publicados y registrados en `src/paises/index.ts`:**
 
 | País | Calculadoras | Nota |
 |---|---|---|
 | Chile `cl` | 11 | todo verificado |
-| Colombia `co` | 14 | FSP 2027 no verificado (sale de publicable el 1/4/2027) |
-| México `mx` | 14 | leyes de SEGOB/IMSS tomadas como primarias (diputados.gob.mx no responde) |
-| Perú `pe` | 13 | `sueldo-neto` publicado con datos de la SBS; RMA y UIT vencen 31/12/2026 |
+| Colombia `co` | 14 | FSP 2027 no verificado; detector UVR arreglado (Accept-Language sin región) |
+| México `mx` | 14 | leyes de SEGOB/IMSS como primarias |
+| Perú `pe` | 13 | RMA y UIT vencen 31/12/2026; sin detector SBS (CAPTCHA) |
 | Uruguay `uy` | 11 | voseo |
-| Ecuador `ec` | 11 | SBU, tabla de renta y canasta vencen 31/12/2026 |
+| Ecuador `ec` | 11 | SBU, renta y canasta vencen 31/12/2026 |
 | Costa Rica `cr` | 11 | usted |
-| Guatemala `gt` | 8 (+3 borrador) | IVA, IGSS EMA y bonificación Q250 sin fuente primaria legible |
+| Guatemala `gt` | 8 (+3 borrador) | IVA, IGSS EMA y bonificación Q250 sin fuente legible |
 | Paraguay `py` | 12 | voseo |
-| República Dominicana `do` (se importa como `rd`) | 11 | escala ISR 2027 no verificada |
+| República Dominicana `do` (importado como `rd`) | 11 | ISR 2027 no verificado |
 | El Salvador `sv` | 9 (+1 borrador) | ISSS sin fuente primaria; reforma del aguinaldo 2026 pendiente de leer en el D.O. |
 | Panamá `pa` | 11 | todo verificado |
 | Honduras `hn` | 8 (+1 borrador) | décimo tercer mes sin fuente legible |
+| Nicaragua `ni` | 10 | tipo de cambio sin detector (BCN: POST + TLS viejo + captcha); serie cargada hasta 31/12/2026 |
+| Venezuela `ve` | 8 (+1 borrador) | solo tasa oficial BCV; salario mínimo Bs 130 con aviso; cestaticket en borrador |
+| Bolivia `bo` | 12 (+1 borrador) | usted; TCO flotante (salto máx 12 %) |
 
-Plataforma web (F3), motor, pipeline de datos (F4) y decimales por moneda: integrados.
+**Plataforma y arreglos:**
+- **Plataforma web (F3):** ruteo por host, SEO, hreflang, UI, aviso de país y partición del JS por calculadora.
+- **Motor (F2):** decimales por moneda (enteros sin «,00»; hasta 6 decimales para datos como la UFV).
+- **Pipeline de datos (F4):** runner, semáforo y workflow con un solo commit por corrida.
+- **Fix A (pipeline):**
+  - permisos mínimos;
+  - parches validados (solo `series.json`);
+  - TLS con intermedios versionados, sin `rejectUnauthorized: false`;
+  - redirecciones seguras;
+  - issues sin inyección y cerrados recién después de publicar;
+  - `iguales()` en bandas;
+  - `PAISES_TOLERANTE` ampliado;
+  - `ci.yml` en cada PR.
+- **Fix B (motor):**
+  - el build falla si un país publicado tiene errores;
+  - `hoyEn` usa la zona del mercado, con `revalidate` de 1 h;
+  - «5.000» ambiguo se rechaza con un mensaje;
+  - los gates de preview van por allowlist;
+  - `/api` y `/og` de AR bloqueados en calcularya, con `llms.txt` propio;
+  - 404 sin imports internos de Next;
+  - `cargadores.ts` explícito (181 calculadoras; se regenera con `npx tsx scripts/check_motor.ts --generar-cargadores`);
+  - tope en el finiquito de Chile.
+- **Checks rápidos verdes después del último merge:** `tsc`, `check_paises`, `check_paises_casos`, `check_textos_paises`, `check_fronteras`, `check_motor`, `check_hreflang`, `check_routing_hosts`, `check_eol` y `check_datos_paises`.
 
-## En curso al pausar (cada agente commitea en su rama; mirar el último commit)
+## Al retomar (05:36), en orden y sin frenar
 
-| Frente | Rama | Qué es |
-|---|---|---|
-| Nicaragua | `claude/intl-pais-ni` | paquete del país |
-| Bolivia | `claude/intl-pais-bo` | paquete del país |
-| Venezuela | `claude/intl-pais-ve` | paquete del país |
-| Fix A | `claude/intl-fix-pipeline` | hallazgos de seguridad/código del pipeline: permisos del workflow, parches solo a `series.json`, TLS con intermedios versionados, redirecciones, inyección en issues, issue que se cierra antes de publicar, `iguales()` en bandas, `PAISES_TOLERANTE` ampliado, `ci.yml` de PR |
-| Fix B | `claude/intl-fix-motor` | país con errores hace fallar el build, `hoyEn` por zona + `revalidate`, parseo ambiguo «5.000», gates de preview por allowlist, APIs de AR y `llms.txt` bloqueados en calcularya, 404 sin import interno de Next, mapa explícito de loaders, tope en `cl/finiquito` |
+1. **Foto de calcular.ar bien hecha.**
+   - Situación: la foto de `scripts/snapshots/rutas-ar.json` es vieja (de `9efc1f7`) y da 9 diferencias, que vienen de datos de AR actualizados después, no de intl.
+   - Paso 1: hacer checkout de `origin/main` en un worktree aparte, `BUILD_CPUS=2 CALCULAR_HOY=2026-10-08 npm run build` y `check_rutas_ar --start --grabar`.
+   - Paso 2: buildear `claude/calcularya-intl` con el mismo `CALCULAR_HOY` y comparar. Tiene que dar **idéntico**.
+   - Paso 3: commitear la foto nueva.
+2. `src/proxy.ts`: en el host intl, `/api/cuenta` hoy da el 404 con la marca de AR (el proxy corre antes de los rewrites). Hacer que en el host intl dé el 404 intl o un 404 sin marca, sin cambiar nada de AR.
+3. En preview aparece el aviso «Parece que estás en Zetalandia»: el mercado `zz` no debe entrar nunca en el aviso de país.
+4. `check-all` completo (unos 19 min), build sin la variable, build con la variable (`VERCEL_ENV=preview`) y `check_routing_hosts --start`.
+5. ADR D2: documentar que se usa `global-not-found` (`experimental.globalNotFound`) con un 404 propio, y el plan B del 404 intl.
+6. Abrir el PR de `claude/calcularya-intl` a `main`. Esperar el CI verde (`ci.yml`) y revisar el preview de Vercel con `/api/dev/sitio` (POST) para ver calcularya.
+7. **Antes del merge a producción, confirmar con Manuel:** cambia la estructura de carpetas de calcular.ar, aunque la foto dé idéntico.
+8. Activación después del merge:
+   - `NEXT_PUBLIC_SITIO_INTL_URL=https://calcularya.com` en Vercel (production), que quita la redirección temporal;
+   - redeploy;
+   - smoke de calcularya.com/pe/gratificacion y del resto de los países;
+   - Search Console (dominio y prefijos por país) y AdSense para calcularya.com.
+9. Con aprobación de Manuel: hreflang desde calcular.ar con `NEXT_PUBLIC_HREFLANG_AR=1`.
 
-Los reportes de pausa de cada uno se agregan abajo cuando llegan.
+## Pedidos al motor (no bloquean)
 
-## Al retomar, en orden
-
-1. `git fetch origin`; por cada rama de arriba: si el último commit es `WIP:`, retomar el agente con
-   su reporte; si está verde y completo, integrar en `claude/calcularya-intl` (y registrar el país).
-2. Con Fix A y Fix B integrados: `check-all`, build, `check_rutas_ar --start`, `check_routing_hosts --start`.
-3. Actualizar ADR D2 (`global-not-found`) y este archivo.
-4. PR de `claude/calcularya-intl` a `main` con CI verde y preview revisado. Confirmar con Manuel antes
-   del merge a producción (cambia la estructura de carpetas de calcular.ar).
-5. Activación: `NEXT_PUBLIC_SITIO_INTL_URL=https://calcularya.com` en Vercel (quita la redirección
-   temporal), Search Console y AdSense para calcularya.com.
-6. Con aprobación de Manuel: hreflang desde calcular.ar (`NEXT_PUBLIC_HREFLANG_AR=1`).
+- Requisitos opcionales en una calculadora (zona franca de Nicaragua).
+- `Http` con POST y TLS legado (BCN Nicaragua, Banguat SOAP).
+- `opcion-dato` con `mapa-por-region` (Panamá).
+- `aplicarEscala` "sobre el exceso de" el límite anterior (El Salvador lo resolvió con una función propia).
+- `http.binario` para XLSX oficiales (BCRD, BCV).
 
 ## Decisiones tomadas
 
@@ -58,13 +88,4 @@ Los reportes de pausa de cada uno se agregan abajo cuando llegan.
 - México: SEGOB (ordenjuridico.gob.mx) e IMSS como fuente primaria de leyes.
 - Un país con todo verificado entra como `publicado`; lo no verificado no se publica.
 - Nunca se salta un CAPTCHA, Cloudflare o Incapsula: el dato queda `no-verificado`.
-
-## Reportes de pausa
-
-| Frente | Commit | Hecho | Sigue |
-|---|---|---|---|
-| Nicaragua | `eca8fce` WIP | datos (18 verificados, La Gaceta 43/2026 y Digesto), series BCN hasta 31/12/2026, 10 calculadoras con casos y textos en voseo, detector de La Gaceta | `index.ts`, avisos, novedades, tsc + checks, `probar_detectores`, suavizar dos frases no verificadas (mantenimiento de valor; INSS sobre horas extra) |
-| Bolivia | `5cd13cf` WIP | mercado (usted, BOB + USD `$us`), series BCB (TCO y UFV), datos verificados (DS 5516, Ley 843, SIP), libs y 7 calculadoras | contenido de quinquenio, bono de antigüedad, vacaciones, sueldo líquido, RC-IVA, IVA+IT, horas extra (borrador), avisos, novedades, 4 detectores, index, checks |
-| Venezuela | `7f8c11d` WIP | `datos.json` (18 verificados: LOTTT, Decreto 4.653, Ley IVA; UT, cestaticket e ingreso integral no verificados) y series BCV USD/EUR | mercado (tú, `simbolos` VES "Bs." y USD "$"), `reglas.ts`, 9 calculadoras (cestaticket en borrador), detector BCV con `tlsTolerante`, avisos, novedades, index, checks |
-| Fix B motor | `4915b2e` WIP | #1 build falla con país roto (sin probar), #2 `hoyEn` por zona + `revalidate` (sin probar), #3 parseo «5.000» (verificado, 236 pruebas), #4 a medias | #4 `api/geo` y `api/dev/sitio` (POST), #5 bloquear `/api` y `/og` en intl + `llms.txt` intl, #6 404 propio, #7 mapa de loaders, #8 tope finiquito, verificación completa con dos builds |
-| Fix A pipeline | `e917575` WIP | #3 TLS con 5 intermedios en `scripts/datos-paises/certs/` (probado contra la red; van con `git add -f` por `*.pem` en `.gitignore`), #4 redirecciones, #7 `iguales()` en bandas | pruebas de #7, #5 issues (diseño listo), #6 job de issues después de `publicar` (diseño listo), #1 permisos, #2 validar parche (script `.mjs`), #8 tolerancia, #9 `ci.yml` |
+- Mobbin y 21st no estaban conectados: el diseño de calcularya es criterio propio (`diseno-maestro`, `high-end-visual-design`).
