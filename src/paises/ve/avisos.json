@@ -1,0 +1,81 @@
+{
+  "mercado": "ve",
+  "avisos": [
+    {
+      "id": "ve.bonos-no-salariales",
+      "nivel": "cautela",
+      "desde": "2023-05-01",
+      "aplicaA": ["ve.prestaciones-sociales", "ve.liquidacion", "ve.utilidades", "ve.vacaciones", "ve.horas-extra", "ve.salario-minimo"],
+      "titulo": "Los bonos no son salario",
+      "texto": "Casi todo el ingreso mínimo que anuncia el Gobierno se paga con bonos: el cestaticket y el bono de guerra económica. No son salario, así que no cuentan para prestaciones, utilidades, vacaciones ni horas extra. Sus montos se anuncian sin decreto publicado en Gaceta Oficial, por eso no los usamos.",
+      "fuente": {
+        "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+        "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario, arts. 104 y 105 (beneficios sociales no remunerativos)",
+        "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "ve.salario-minimo-ultimo-decreto",
+      "nivel": "cautela",
+      "desde": "2022-03-15",
+      "aplicaA": ["ve.salario-minimo"],
+      "titulo": "Último decreto publicado",
+      "texto": "Este es el salario mínimo del último decreto publicado en Gaceta Oficial que encontramos, de marzo de 2022. Los aumentos posteriores se hicieron con bonos, no con el salario. Si sale un decreto nuevo, lo actualizamos.",
+      "fuente": {
+        "organismo": "Presidencia de la República",
+        "titulo": "Decreto N° 4.653, Gaceta Oficial N° 6.691 Extraordinario del 15/03/2022",
+        "url": "https://www.presidencia.gob.ve/Site/Web/Principal/paginas/classMostrarEvento3.php?id_evento=20553",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "ve.bono-vacacional-lectura",
+      "nivel": "cautela",
+      "desde": "2012-05-07",
+      "aplicaA": ["ve.vacaciones", "ve.liquidacion", "ve.prestaciones-sociales"],
+      "titulo": "Cómo contamos el bono vacacional",
+      "texto": "Contamos 15 días de bono vacacional el primer año y uno más por cada año siguiente, hasta 30. La ley se puede leer también como 16 días desde el primer año. Revisa tu contrato colectivo: si da más, vale lo que da más.",
+      "fuente": {
+        "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+        "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario, art. 192",
+        "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "ve.solo-tasa-oficial",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["ve.dolar-bcv", "ve.salario-minimo"],
+      "titulo": "Solo la tasa oficial",
+      "texto": "Usamos únicamente la tasa oficial del Banco Central de Venezuela. No mostramos el dólar paralelo ni tasas de casas de cambio o plataformas, porque no son oficiales y cambian según quién las publica.",
+      "fuente": {
+        "organismo": "Banco Central de Venezuela",
+        "titulo": "Tipo de cambio oficial, portada del BCV",
+        "url": "https://www.bcv.org.ve/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-08"
+      }
+    },
+    {
+      "id": "ve.iva-igtf",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["ve.iva"],
+      "titulo": "Pagos en divisas",
+      "texto": "Si el pago es en divisas o criptoactivos, además del IVA se puede cobrar el impuesto a las grandes transacciones financieras (IGTF). Esta calculadora no lo incluye.",
+      "fuente": {
+        "organismo": "Acceso a la Justicia",
+        "titulo": "Nota sobre el IGTF en pagos en bolívares y en divisas",
+        "url": "https://accesoalajusticia.org/fue-eliminado-impuesto-grandes-transacciones-financieras/",
+        "tipo": "secundaria",
+        "verificadoEl": "2026-10-06",
+        "nota": "El portal del SENIAT no respondió desde esta red; la alícuota del IGTF no está verificada y por eso no se muestra."
+      }
+    }
+  ]
+}
