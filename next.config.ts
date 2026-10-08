@@ -110,6 +110,7 @@ const nextConfig: NextConfig = {
     "/api/planilla-vacaciones/download": ["./private/**"],
     "/api/planilla-plazo-fijo/download": ["./private/**"],
     "/api/cuenta/descargar/[id]": ["./private/**"],
+    "/api/pagos/descarga": ["./private/intl/**"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
   // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.

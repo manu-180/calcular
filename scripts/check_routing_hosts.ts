@@ -191,6 +191,7 @@ async function main() {
     // con Origin de calcularya responde el 204 de siempre. Un prefijo parecido sigue en el 404.
     { nombre: "intl: medición (GET)", host: HOST_INTL, ruta: "/api/e", status: 405, noContiene: [MARCA_AR] },
     { nombre: "intl: medición (POST)", host: HOST_INTL, ruta: "/api/e", post: { origin: intl, cuerpo: MEDICION }, status: 204 },
+    { nombre: "intl: webhook de PayPal (GET de diagnóstico)", host: HOST_INTL, ruta: "/api/pagos/paypal/webhook", status: 200, noContiene: [MARCA_AR] },
     { nombre: "intl: api parecida a la medición", host: HOST_INTL, ruta: "/api/eventos", status: 404, noContiene: [MARCA_AR] },
     { nombre: "AR: medición (POST)", host: HOST_AR, ruta: "/api/e", post: { origin: "https://calcular.ar", cuerpo: MEDICION }, status: 204 },
     { nombre: "preview: api de cuenta con cookie", host: "calcular-ar-git-x.vercel.app", ruta: "/api/cuenta", cookie: "sitio=intl", status: 404, noContiene: [MARCA_AR] },

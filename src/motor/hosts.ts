@@ -43,7 +43,7 @@ export const SEGMENTO_404 = "404";
 // otro nombre y el /<m>/sitemap.xml público llega por rewrite.
 export const RUTA_SITEMAP = "mapa-xml";
 export const RUTA_LLMS = "llms.txt";
-export const API_INTL_PERMITIDAS = ["geo", "dev/sitio", "e"] as const;
+export const API_INTL_PERMITIDAS = ["geo", "dev/sitio", "e", "pagos"] as const;
 const API_INTL_NEGADAS = `(?!(?:${API_INTL_PERMITIDAS.map((a) => a.replace("/", "\\/")).join("|")})(?:\\/|$)).*`;
 
 const escapar = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
