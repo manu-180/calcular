@@ -2,6 +2,21 @@ import type { Novedad } from "@/motor/tipos";
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "do.rst-tope-2026",
+    fecha: "2026-01-15",
+    titulo: "Nuevo tope de ingresos del RST para 2026",
+    texto: "La DGII ajustó por inflación el ingreso máximo para estar en el RST basado en ingresos: RD$12,068,181.09 en 2026. El del RST basado en compras queda en RD$55,485,890.09.",
+    vigenteDesde: "2026-01-01",
+    calculadoras: ["do.rst"],
+    fuente: {
+      organismo: "Dirección General de Impuestos Internos (DGII)",
+      titulo: "Resolución DDG-AR1-2026-00001, ordinal sexto",
+      url: "https://dgii.gov.do/legislacion/resoluciones/Documents/DDG-%20AR1-2026-00001.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-08",
+    },
+  },
+  {
     id: "do.ley-30-26-isr-2027",
     fecha: "2026-06-18",
     titulo: "Ley 30-26: nueva escala del ISR desde 2027",
