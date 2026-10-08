@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["BOB", "USD"],
   zonaHoraria: "America/La_Paz",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   // En Bolivia el dólar se escribe "$us" (así lo publica el BCB: "Bs 11,52/$us"); Intl pone "USD".
   simbolos: { USD: "$us" },
