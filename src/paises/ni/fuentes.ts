@@ -17,8 +17,9 @@ const MESES: Record<string, number> = {
   noviembre: 11,
   diciembre: 12,
 };
-// La portada de ediciones muestra nueve por página (unas dos semanas). El cron corre todos los días.
-const EDICIONES_A_REVISAR = 9;
+// Cada edición pesa más de 1 MB y el cron le da 90 s al detector: nueve tardaron 82 s el 8/10/2026.
+// Cinco cubren una semana y el cron corre todos los días.
+const EDICIONES_A_REVISAR = 5;
 
 export interface Edicion {
   url: string;

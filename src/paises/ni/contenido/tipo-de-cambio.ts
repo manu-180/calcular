@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Tipo de cambio oficial en Nicaragua: dólar a córdoba",
   description: "Convertí dólares a córdobas y córdobas a dólares con el tipo de cambio oficial que publica el Banco Central de Nicaragua para cada día.",
   intro: [
-    "Usamos el tipo de cambio oficial del Banco Central de Nicaragua (BCN). Es el que se usa para impuestos, aduanas y contratos en córdobas con mantenimiento de valor.",
+    "Usamos el tipo de cambio oficial del Banco Central de Nicaragua (BCN). Lo publica para cada día del año.",
     "Elegí hacia qué moneda querés convertir y poné el monto.",
   ],
   comoSeCalcula: [

@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "vos",
   monedas: ["NIO", "USD"],
   zonaHoraria: "America/Managua",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   simbolos: { USD: "US$" },
 };

@@ -25,10 +25,10 @@ export default definirCasos(tipoDeCambio, [
     origen: {
       tipo: "oficial",
       url: "https://www.bcn.gob.ni/sites/default/files/noticias/notas_prensa/2025/np_tcdeslizamineto201025.pdf",
-      detalle: "Deslizamiento 0 % en 2026: 36.6243 todo el año. 250 × 36.6243 = 9156.08.",
+      detalle: "Deslizamiento 0 % en 2026: 36.6243 todo el año. 300 × 36.6243 = 10987.29.",
     },
     fecha: "2026-12-31",
-    entrada: { sentido: "a-cordobas", monto: 250 },
-    esperado: { tipoCambio: 36.6243, fecha: "2026-12-31", cordobas: 9156.08 },
+    entrada: { sentido: "a-cordobas", monto: 300 },
+    esperado: { tipoCambio: 36.6243, fecha: "2026-12-31", cordobas: 10987.29 },
   },
 ]);

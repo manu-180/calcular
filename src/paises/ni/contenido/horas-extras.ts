@@ -30,8 +30,8 @@ export default definirContenido({
       respuesta: "No si el empleador te redujo la jornada por su cuenta. La ley prohíbe compensar así las horas extras.",
     },
     {
-      pregunta: "¿Las horas extras pagan INSS e IR?",
-      respuesta: "Sí. Son parte de tu salario del mes y entran en las cotizaciones y en el cálculo del IR.",
+      pregunta: "¿Me pueden obligar a hacer horas extras?",
+      respuesta: "La ley dice que el trabajo extraordinario se acuerda entre vos y el empleador, en un contrato especial.",
     },
   ],
   glosario: [

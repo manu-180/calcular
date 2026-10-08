@@ -1,0 +1,51 @@
+{
+  "mercado": "ni",
+  "avisos": [
+    {
+      "id": "ni.aguinaldo-periodo",
+      "nivel": "info",
+      "desde": "1996-12-29",
+      "aplicaA": ["ni.aguinaldo", "ni.liquidacion"],
+      "titulo": "El período del aguinaldo no está en la ley",
+      "texto": "El Código del Trabajo habla de un año de trabajo, pero no dice cuándo empieza. Usamos el período de costumbre, del 1 de diciembre al 30 de noviembre. Si tu empresa usa otro, el resultado cambia.",
+      "fuente": {
+        "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+        "titulo": "Ley No. 185, Código del Trabajo, artículos 93 y 95",
+        "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "ni.indemnizacion-renuncia",
+      "nivel": "cautela",
+      "desde": "1996-12-29",
+      "aplicaA": ["ni.indemnizacion-por-antiguedad", "ni.liquidacion"],
+      "titulo": "Antigüedad cuando renunciás",
+      "texto": "La ley dice que la renuncia o el mutuo acuerdo no te quitan lo ganado por antigüedad, pero no aclara si vale el mínimo de un mes. Lo calculamos solo por el tiempo trabajado. Si tenés dudas sobre tu caso, consultá en el Ministerio del Trabajo.",
+      "fuente": {
+        "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+        "titulo": "Ley No. 185, Código del Trabajo, artículos 43 y 45",
+        "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "ni.salario-minimo-2027",
+      "nivel": "info",
+      "desde": "2027-02-01",
+      "hasta": "2027-03-31",
+      "aplicaA": ["ni.salario-minimo"],
+      "titulo": "Se espera el salario mínimo de 2027",
+      "texto": "El Ministerio del Trabajo convoca a la comisión del salario mínimo en la primera semana de febrero de 2027. Hasta que se publique el acuerdo nuevo, mostramos el que rige hasta el 28 de febrero de 2027.",
+      "fuente": {
+        "organismo": "La Gaceta, Diario Oficial (Ministerio del Trabajo)",
+        "titulo": "Acuerdo Ministerial No. 02-2026, artículo 5, La Gaceta No. 43 del 6/3/2026",
+        "url": "https://www.lagaceta.gob.ni/la-gaceta-no-43-viernes-06-de-marzo-de-2026/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}
