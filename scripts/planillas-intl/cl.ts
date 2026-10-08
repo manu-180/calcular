@@ -1,4 +1,5 @@
-import type { Hoja, Libro, PlanillaPais } from "./marco";
+import type { Libro, PlanillaPais } from "./marco";
+import { tiempoPorMeses } from "./formulas";
 
 function sueldoLiquido(l: Libro): void {
   const T = l.tablas;
@@ -88,16 +89,6 @@ function gratificacion(l: Libro): void {
   h.nota("Es la modalidad del artículo 50 del Código del Trabajo, la que usan casi todas las empresas. Si la tuya reparte el 30 % de las utilidades (artículo 47), el monto puede ser otro.");
 }
 
-function antiguedadChile(h: Hoja, inicio: string, termino: string): { anios: string; meses: string; dias: string } {
-  const k0 = `(YEAR(${termino})-YEAR(${inicio}))`;
-  const anios = h.paso("Años completos", `IF(EDATE(${inicio},12*${k0})>${termino},${k0}-1,${k0})`, "entero");
-  const anualidad = h.paso("Última anualidad", `EDATE(${inicio},12*${anios})`, "fecha");
-  const m0 = `((YEAR(${termino})-YEAR(${anualidad}))*12+MONTH(${termino})-MONTH(${anualidad}))`;
-  const meses = h.paso("Meses desde la última anualidad", `MIN(12,IF(EDATE(${anualidad},${m0})>${termino},${m0}-1,${m0}))`, "entero");
-  const dias = h.paso("Días sueltos", `${termino}-EDATE(${anualidad},${meses})`, "entero");
-  return { anios, meses, dias };
-}
-
 function finiquito(l: Libro): void {
   const T = l.tablas;
   const h = l.hoja(
@@ -130,7 +121,7 @@ function finiquito(l: Libro): void {
   const t = termino.ref;
 
   h.pasoTitulo("Antigüedad");
-  const a = antiguedadChile(h, inicio.ref, t);
+  const a = tiempoPorMeses(h, "Antigüedad", inicio.ref, t);
   h.pasoTitulo("Indemnizaciones");
   const despido = `${causal.ref}="${despidoTxt}"`;
   const tope = h.paso("Tope de la remuneración (90 UF)", l.r(`${T.numero("cl.tope-indemnizacion")}*${T.serie("cl.uf")}`));

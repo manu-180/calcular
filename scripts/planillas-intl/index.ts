@@ -6,11 +6,14 @@ import type { FechaISO } from "../../src/motor/tipos";
 import { Libro, nombreArchivo, type PlanillaPais } from "./marco";
 import { planillaCl } from "./cl";
 import { planillaCo } from "./co";
+import { planillaCr } from "./cr";
+import { planillaEc } from "./ec";
+import { planillaGt } from "./gt";
 import { planillaMx } from "./mx";
 import { planillaPe } from "./pe";
 import { planillaUy } from "./uy";
 
-export const PLANILLAS_INTL: readonly PlanillaPais[] = [planillaMx, planillaCo, planillaPe, planillaCl, planillaUy];
+export const PLANILLAS_INTL: readonly PlanillaPais[] = [planillaMx, planillaCo, planillaPe, planillaCl, planillaUy, planillaEc, planillaCr, planillaGt];
 
 export interface PlanillaConstruida {
   planilla: PlanillaPais;

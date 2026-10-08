@@ -16,6 +16,7 @@ export interface Bloque {
   hoja: string;
   entradas: Record<string, Entrada>;
   resultados: Record<string, string>;
+  hoy?: Entrada;
 }
 
 export interface Escala {
@@ -32,6 +33,7 @@ export interface Escala {
 export interface Mapa {
   (clave: string): string;
   opciones: OpcionHoja[];
+  valores: string;
   de(ref: string): string;
 }
 
@@ -133,6 +135,7 @@ export class Tablas {
       },
       {
         opciones,
+        valores: `${PREFIJO_TABLAS}$C$${primera}:$C$${ultima}`,
         de: (ref: string) => `INDEX(${PREFIJO_TABLAS}$C$${primera}:$C$${ultima},MATCH(${ref},${PREFIJO_TABLAS}$B$${primera}:$B$${ultima},0))`,
       },
     );
@@ -305,6 +308,13 @@ export class BloqueHoja {
     this.b.entradas[id] = e;
     return this;
   }
+  // La celda que hace de «hoy» para las calculadoras que miran la fecha del cálculo: el check le
+  // pone la misma fecha con que corre el motor.
+  hoy(e: Entrada): this {
+    this.b.hoy = e;
+    return this;
+  }
+
   resultado(clave: string, ref: string): this {
     this.b.resultados[clave] = ref;
     return this;
@@ -456,6 +466,15 @@ export class Hoja {
       error: "Escribe una fecha como dd/mm/aaaa.",
       formulae: [new Date(Date.UTC(1950, 0, 1))],
     };
+    return { ref: `B${r}`, convertir: (v) => (v === null || v === undefined ? null : serialExcel(v as FechaISO)) };
+  }
+
+  fechaHoy(etiqueta: string, ayuda?: string): Entrada {
+    const r = this.filaEntrada(etiqueta, ayuda);
+    const c = this.ws.getCell(`B${r}`);
+    c.value = { formula: "TODAY()" };
+    c.numFmt = "dd/mm/yyyy";
+    c.alignment = { horizontal: "right" };
     return { ref: `B${r}`, convertir: (v) => (v === null || v === undefined ? null : serialExcel(v as FechaISO)) };
   }
 

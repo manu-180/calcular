@@ -74,6 +74,19 @@ export function aniosMesesDias(h: Hoja, etiqueta: string, desde: string, hasta: 
   return { anios, meses, dias };
 }
 
+// Años, meses y días contando por meses calendario desde el inicio (sumarMeses recorta al último día
+// del mes, igual que EDATE): antiguedad de src/paises/cl/lib/fechas.ts y tiempoTrabajado de
+// src/paises/ec/lib/fechas.ts, que pasa como fin el día siguiente al último trabajado.
+export function tiempoPorMeses(h: Hoja, etiqueta: string, inicio: string, fin: string): { anios: string; meses: string; dias: string } {
+  const k0 = `(YEAR(${fin})-YEAR(${inicio}))`;
+  const anios = h.paso(`${etiqueta}: años completos`, `IF(EDATE(${inicio},12*${k0})>${fin},${k0}-1,${k0})`, "entero");
+  const anualidad = h.paso(`${etiqueta}: último aniversario`, `EDATE(${inicio},12*${anios})`, "fecha");
+  const m0 = `((YEAR(${fin})-YEAR(${anualidad}))*12+MONTH(${fin})-MONTH(${anualidad}))`;
+  const meses = h.paso(`${etiqueta}: meses`, `MIN(12,IF(EDATE(${anualidad},${m0})>${fin},${m0}-1,${m0}))`, "entero");
+  const dias = h.paso(`${etiqueta}: días`, `${fin}-EDATE(${anualidad},${meses})`, "entero");
+  return { anios, meses, dias };
+}
+
 // dias360 de src/paises/co/reglas.ts: año comercial, cuenta el primer y el último día, el 31 vale 30 y
 // el último día de febrero vale 30 cuando cierra el período.
 export function dias360(desde: string, hasta: string): string {

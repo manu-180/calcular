@@ -176,6 +176,7 @@ async function verificarBloque(p: PlanillaConstruida, pais: PaisDefinido, libro:
       }
       const cargas: Record<string, string | number | boolean | null> = {};
       for (const [id, celda] of Object.entries(b.entradas)) cargas[celda.ref] = celda.convertir(e[id]);
+      if (b.hoy) cargas[b.hoy.ref] = b.hoy.convertir(p.hoy);
       libro.cargar(b.hoja, cargas);
       probados++;
       for (const [clave, ref] of Object.entries(b.resultados)) {
