@@ -1,5 +1,6 @@
 import { esFechaISO, fechaEnZona, sumarDias } from "@/motor/vigencia";
 import type { Detector, FechaISO, HallazgoNorma, Http, PuntoSerie } from "@/motor/tipos";
+import series from "./series.json";
 
 const ZONA = "America/La_Paz";
 const URL_TABLA_BCB = "https://www.bcb.gob.bo/librerias/indicadores/otras/ultimo.php";
@@ -78,7 +79,56 @@ export function filtrarWp(json: unknown, tema: RegExp, prefijo: string): Hallazg
 const TEMAS_LABORALES = /salario m[ií]nimo|incremento salarial|aguinaldo|bono de antig[uü]edad|quinquenio|beneficios sociales|vacaci/i;
 const TEMAS_TRIBUTARIOS = /\bIVA\b|RC-IVA|\bIT\b|transacciones|al[ií]cuota|formulario 110|dependientes/i;
 
+const URL_INFLACION_BCB = "https://www.bcb.gob.bo/?q=indicadores_inflacion";
+const MESES_BCB = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+// La tabla del BCB trae los últimos 12 meses del IPC del INE con dos decimales ("Septiembre 2026
+// 152,85 0,85% 3,880% 5,70%"). La planilla del INE tiene más decimales, pero el Http del cron solo lee
+// texto: los meses ya cargados se usan de control (tienen que coincidir al centésimo) y solo se
+// devuelven los posteriores al último punto, porque una serie publicada no se reescribe.
+export function parsearIpcBcb(html: string): PuntoSerie[] {
+  const texto = html.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ");
+  const puntos: PuntoSerie[] = [];
+  const re = new RegExp(`\\b(${MESES_BCB.join("|")}) (\\d{4}) (\\d{2,3},\\d{2}) -?\\d+,\\d+ ?%`, "g");
+  for (const m of texto.matchAll(re)) {
+    const fecha = `${m[2]}-${String(MESES_BCB.indexOf(m[1]) + 1).padStart(2, "0")}-01`;
+    if (esFechaISO(fecha)) puntos.push({ fecha, valor: Number(m[3].replace(",", ".")) });
+  }
+  return puntos.sort((a, b) => (a.fecha < b.fecha ? -1 : 1));
+}
+
+async function traerIpc(http: Http): Promise<PuntoSerie[] | null> {
+  let html: string;
+  try {
+    html = await http.texto(URL_INFLACION_BCB);
+  } catch {
+    return null;
+  }
+  const leidos = parsearIpcBcb(html);
+  const cargados = new Map(series.series.find((s) => s.id === "bo.ipc")?.puntos.map(([f, v]) => [String(f), Number(v)] as const) ?? []);
+  const ultimo = [...cargados.keys()].sort().pop();
+  if (leidos.length === 0 || !ultimo) return null;
+  let controles = 0;
+  for (const p of leidos) {
+    const v = cargados.get(p.fecha);
+    if (v === undefined) continue;
+    if (Math.abs(v - p.valor) > 0.006) return null;
+    controles++;
+  }
+  return controles > 0 ? leidos.filter((p) => p.fecha > ultimo) : null;
+}
+
 export const detectores: readonly Detector[] = [
+  {
+    id: "bo.ipc-bcb",
+    carril: "serie",
+    serie: "bo.ipc",
+    metodo: "html",
+    url: URL_INFLACION_BCB,
+    // En 2025 hubo meses con más de 5 % de inflación mensual.
+    banda: { min: 100, max: 400, saltoRelativoMax: 0.1 },
+    traer: traerIpc,
+  },
   {
     id: "bo.tco-bcb",
     carril: "serie",

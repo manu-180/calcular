@@ -6,6 +6,7 @@ import dolarOficial from "./calculadoras/dolar-oficial";
 import finiquito from "./calculadoras/finiquito";
 import horasExtras from "./calculadoras/horas-extras";
 import indemnizacion from "./calculadoras/indemnizacion";
+import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import quinquenio from "./calculadoras/quinquenio";
 import rcIva from "./calculadoras/rc-iva";
@@ -19,6 +20,7 @@ import contenidoDolarOficial from "./contenido/dolar-oficial";
 import contenidoFiniquito from "./contenido/finiquito";
 import contenidoHorasExtras from "./contenido/horas-extras";
 import contenidoIndemnizacion from "./contenido/indemnizacion";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoQuinquenio from "./contenido/quinquenio";
 import contenidoRcIva from "./contenido/rc-iva";
@@ -51,6 +53,7 @@ export default definirPais({
     { definicion: ufv, contenido: contenidoUfv, cliente: () => import("./calculadoras/ufv.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: horasExtras, contenido: contenidoHorasExtras, cliente: () => import("./calculadoras/horas-extras.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
   ],
   novedades,
   detectores,

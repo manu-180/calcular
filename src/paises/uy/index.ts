@@ -5,22 +5,26 @@ import despido from "./calculadoras/despido";
 import dolarBcu from "./calculadoras/dolar-bcu";
 import horasExtra from "./calculadoras/horas-extra";
 import irpf from "./calculadoras/irpf";
+import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import liquidacionPorEgreso from "./calculadoras/liquidacion-por-egreso";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioVacacional from "./calculadoras/salario-vacacional";
 import sueldoLiquido from "./calculadoras/sueldo-liquido";
+import trabajoDomestico from "./calculadoras/trabajo-domestico";
 import valorUi from "./calculadoras/valor-ui";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoDespido from "./contenido/despido";
 import contenidoDolarBcu from "./contenido/dolar-bcu";
 import contenidoHorasExtra from "./contenido/horas-extra";
 import contenidoIrpf from "./contenido/irpf";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacionPorEgreso from "./contenido/liquidacion-por-egreso";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioVacacional from "./contenido/salario-vacacional";
 import contenidoSueldoLiquido from "./contenido/sueldo-liquido";
+import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
 import contenidoValorUi from "./contenido/valor-ui";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
@@ -45,6 +49,8 @@ export default definirPais({
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: salarioMinimo, contenido: contenidoSalarioMinimo, cliente: () => import("./calculadoras/salario-minimo.cliente") },
     { definicion: dolarBcu, contenido: contenidoDolarBcu, cliente: () => import("./calculadoras/dolar-bcu.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
   ],
   novedades,
   detectores,

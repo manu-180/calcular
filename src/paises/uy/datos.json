@@ -679,6 +679,122 @@
           }
         }
       ]
+    },
+    {
+      "id": "uy.domestico-minimo-mensual",
+      "nombre": "Trabajo doméstico: salario mínimo mensual por 44 horas semanales, por categoría",
+      "tipo": "mapa",
+      "unidad": "UYU",
+      "etiquetas": {
+        "general": "General",
+        "cocina": "Cocina",
+        "cuidados": "Cuidados"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "general": 32051,
+            "cocina": 33796,
+            "cuidados": 34885
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Comunicado R 14/2026: trabajo doméstico, aumento salarial julio 2026 (actas del Consejo de Salarios, grupo 21, del 5/12/2025 y el 6/7/2026)",
+            "url": "https://www.bps.gub.uy/bps/file/24374/2/2026---comunicado-r-14---trabajo-domestico-aumento-salarial-julio-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.domestico-minimo-hora",
+      "nombre": "Trabajo doméstico: salario mínimo por hora para jornaleros, por categoría",
+      "tipo": "mapa",
+      "unidad": "UYU",
+      "etiquetas": {
+        "general": "General",
+        "cocina": "Cocina",
+        "cuidados": "Cuidados"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "general": 169,
+            "cocina": 178,
+            "cuidados": 184
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Comunicado R 14/2026: trabajo doméstico, aumento salarial julio 2026 (actas del Consejo de Salarios, grupo 21, del 5/12/2025 y el 6/7/2026)",
+            "url": "https://www.bps.gub.uy/bps/file/24374/2/2026---comunicado-r-14---trabajo-domestico-aumento-salarial-julio-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.aportes-patronales",
+      "nombre": "Aportes patronales al BPS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "jubilatorio": "Jubilatorio",
+        "fonasa": "Fonasa",
+        "frl": "Fondo de Reconversión Laboral",
+        "fgcl": "Fondo de garantía de créditos laborales"
+      },
+      "nota": "Mismas tasas para trabajo doméstico y para industria y comercio. El Fonasa patronal no incluye el complemento de cuota mutual.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "jubilatorio": 7.5,
+            "fonasa": 5,
+            "frl": 0.1,
+            "fgcl": 0.025
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Cálculo de aportes de trabajo doméstico (tabla de aportes personales y patronales)",
+            "url": "https://www.bps.gub.uy/6575/calculo-de-aportes-de-trabajo-domestico.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Jubilatorio 7,5 %, Fonasa 5 % más complemento de cuota mutual, FRL 0,10 % (0,125 % hasta 2018) y fondo de garantía 0,025 % desde el 1/1/2019."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.domestico-bse",
+      "nombre": "Trabajo doméstico: aporte patronal al BSE (seguro de accidentes de trabajo)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 1.87,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Cálculo de aportes de trabajo doméstico (tabla de aportes personales y patronales)",
+            "url": "https://www.bps.gub.uy/6575/calculo-de-aportes-de-trabajo-domestico.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "La tabla da 2,01 % de 6/2024 a 6/2025; el 1,87 % rige desde julio de 2025."
+          }
+        }
+      ]
     }
   ]
 }

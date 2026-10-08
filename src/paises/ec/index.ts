@@ -5,6 +5,7 @@ import decimoTercerSueldo from "./calculadoras/decimo-tercer-sueldo";
 import fondosDeReserva from "./calculadoras/fondos-de-reserva";
 import horasExtras from "./calculadoras/horas-extras";
 import impuestoALaRenta from "./calculadoras/impuesto-a-la-renta";
+import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
 import salarioBasico from "./calculadoras/salario-basico";
@@ -16,6 +17,7 @@ import contenidoDecimoTercerSueldo from "./contenido/decimo-tercer-sueldo";
 import contenidoFondosDeReserva from "./contenido/fondos-de-reserva";
 import contenidoHorasExtras from "./contenido/horas-extras";
 import contenidoImpuestoALaRenta from "./contenido/impuesto-a-la-renta";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
 import contenidoSalarioBasico from "./contenido/salario-basico";
@@ -45,6 +47,7 @@ export default definirPais({
     { definicion: vacaciones, contenido: contenidoVacaciones, cliente: () => import("./calculadoras/vacaciones.cliente") },
     { definicion: horasExtras, contenido: contenidoHorasExtras, cliente: () => import("./calculadoras/horas-extras.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
   ],
   novedades,
   detectores,
