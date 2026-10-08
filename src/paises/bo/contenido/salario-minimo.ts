@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "bo.salario-minimo",
-  h1: "Salario mínimo en Bolivia",
-  title: "Salario mínimo 2026 en Bolivia: por mes, día y hora",
-  description: "El Salario Mínimo Nacional es {{bo.salario-minimo}} por mes desde el {{bo.salario-minimo#desde}}. Vea cuánto es por día, por hora y en dólares.",
+  h1: "Salario mínimo en Bolivia 2026",
+  title: "Salario mínimo Bolivia 2026: {{bo.salario-minimo}}, por día y en dólares",
+  description: "El Salario Mínimo Nacional 2026 en Bolivia es {{bo.salario-minimo}} por mes desde el {{bo.salario-minimo#desde}}. Vea cuánto es por día, por hora y en dólares al cambio de hoy.",
   intro: [
-    "El Salario Mínimo Nacional es {{bo.salario-minimo}} por mes. Rige desde el {{bo.salario-minimo#desde}} para el sector público y el privado.",
+    "El salario mínimo en Bolivia es {{bo.salario-minimo}} por mes. Es el Salario Mínimo Nacional y rige desde el {{bo.salario-minimo#desde}} para el sector público y el privado.",
     "Si escribe su haber básico, le decimos si alcanza el mínimo.",
   ],
   comoSeCalcula: [
@@ -18,6 +18,14 @@ export default definirContenido({
     {
       pregunta: "¿Cuánto es el salario mínimo en Bolivia en 2026?",
       respuesta: "{{bo.salario-minimo}} por mes, desde el {{bo.salario-minimo#desde}}.",
+    },
+    {
+      pregunta: "¿Cuánto es el salario mínimo por día y por hora?",
+      respuesta: "Por día, el mensual dividido 30. Por hora, el valor del día dividido 8, porque la jornada es de 8 horas. La calculadora le muestra los dos montos.",
+    },
+    {
+      pregunta: "¿Cuánto es el salario mínimo en dólares?",
+      respuesta: "Depende del tipo de cambio oficial del día ({{bo.dolar}} hoy). La calculadora le muestra el equivalente, pero es solo una referencia: el sueldo se paga en bolivianos.",
     },
     {
       pregunta: "¿El aumento del salario mínimo es retroactivo?",

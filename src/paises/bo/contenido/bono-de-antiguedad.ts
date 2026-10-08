@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "bo.bono-de-antiguedad",
-  h1: "Calculadora del bono de antigüedad",
-  title: "Bono de antigüedad 2026 en Bolivia: calcule su monto",
-  description: "Calcule su bono de antigüedad con la escala del D.S. 21060 y el salario mínimo de {{bo.salario-minimo}}. Del 5 % con 2 años al 50 % con 25 años o más.",
+  h1: "Calculadora del bono de antigüedad 2026",
+  title: "Bono de antigüedad Bolivia 2026: tabla y calculadora",
+  description: "Calcule su bono de antigüedad 2026 con la escala del D.S. 21060 y el salario mínimo de {{bo.salario-minimo}}. Del 5 % con 2 años al 50 % con 25 años o más.",
   intro: [
-    "El bono de antigüedad es un pago mensual que crece con los años de trabajo en el mismo lugar. No se calcula sobre su sueldo, sino sobre el salario mínimo.",
+    "El bono de antigüedad en Bolivia va del 5 % (con 2 años) al 50 % (con 25 años o más) y se calcula sobre el salario mínimo de {{bo.salario-minimo}}, no sobre su sueldo. Es un pago mensual que crece con los años de trabajo en el mismo lugar.",
     "Escriba su fecha de ingreso y elija el tipo de empleador.",
   ],
   comoSeCalcula: [
@@ -15,6 +15,14 @@ export default definirContenido({
     "El bono es la base por el porcentaje. Con el salario mínimo de {{bo.salario-minimo}}, cada vez que el mínimo sube, el bono sube.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuál es la tabla del bono de antigüedad?",
+      respuesta: "De 2 a 4 años, 5 %; de 5 a 7, 11 %; de 8 a 10, 18 %; de 11 a 14, 26 %; de 15 a 19, 34 %; de 20 a 24, 42 %; de 25 en adelante, 50 %.",
+    },
+    {
+      pregunta: "¿Cómo se calcula el bono de antigüedad?",
+      respuesta: "Se multiplica la base por el porcentaje de la tabla que le toca según sus años. La base es {{bo.bono-antiguedad-base-productiva}} salarios mínimos en empresas productivas y {{bo.bono-antiguedad-base-general}} salario mínimo en los demás casos.",
+    },
     {
       pregunta: "¿Desde cuándo se cobra el bono de antigüedad?",
       respuesta: "Desde que cumple 2 años de trabajo continuo con el mismo empleador.",

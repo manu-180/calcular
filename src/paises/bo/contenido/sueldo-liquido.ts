@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "bo.sueldo-liquido",
-  h1: "Calculadora de sueldo líquido",
-  title: "Sueldo líquido en Bolivia: aportes a la Gestora y RC-IVA",
-  description: "Calcule su líquido pagable: total ganado menos los aportes a la Gestora, el Aporte Nacional Solidario y el RC-IVA, con el salario mínimo de {{bo.salario-minimo}}.",
+  h1: "Calculadora de sueldo líquido (líquido pagable)",
+  title: "Sueldo líquido Bolivia 2026: calcule su líquido pagable",
+  description: "Calcule su sueldo líquido: total ganado menos los aportes a la Gestora, el Aporte Nacional Solidario y el RC-IVA, con el salario mínimo de {{bo.salario-minimo}}.",
   intro: [
-    "El líquido pagable es lo que recibe en mano. Sale del total ganado menos los aportes laborales y la retención de RC-IVA.",
+    "El sueldo líquido (líquido pagable) es su total ganado menos los aportes a la Gestora, el Aporte Nacional Solidario si corresponde y la retención de RC-IVA. Es lo que recibe en mano.",
     "Escriba su total ganado del mes. Si presenta facturas en el Formulario 110, agréguelas.",
   ],
   comoSeCalcula: [
@@ -15,6 +15,14 @@ export default definirContenido({
     "RC-IVA: al sueldo después de aportes se le restan {{bo.rc-iva-minimo-no-imponible}} salarios mínimos y sobre el resto se aplica el {{bo.rc-iva-alicuota}}. A ese impuesto se le descuenta el {{bo.rc-iva-alicuota}} de {{bo.rc-iva-computo-smn}} salario mínimo y el {{bo.rc-iva-alicuota}} de sus facturas.",
   ],
   faq: [
+    {
+      pregunta: "¿Qué diferencia hay entre total ganado y líquido pagable?",
+      respuesta: "El total ganado es todo lo que cobra en el mes, con bonos y horas extras. El líquido pagable es lo que queda después de los aportes y el RC-IVA.",
+    },
+    {
+      pregunta: "¿Cuánto me descuentan de aportes a la Gestora?",
+      respuesta: "{{bo.aportes-laborales[cotizacion]}} de cotización, {{bo.aportes-laborales[riesgo-comun]}} de riesgo común, {{bo.aportes-laborales[comision]}} de comisión y {{bo.aportes-laborales[solidario]}} de aporte solidario, sobre su total ganado.",
+    },
     {
       pregunta: "¿Desde qué sueldo se paga RC-IVA?",
       respuesta: "Con las reglas de hoy, cuando su sueldo después de aportes pasa de tres salarios mínimos ({{bo.salario-minimo}} cada uno). Por debajo, el cómputo del salario mínimo cubre todo el impuesto.",

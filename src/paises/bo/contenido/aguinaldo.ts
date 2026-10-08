@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "bo.aguinaldo",
-  h1: "Calculadora de aguinaldo de Navidad",
-  title: "Aguinaldo 2026 en Bolivia: calcule cuánto le toca",
-  description: "Calcule su aguinaldo de Navidad con el promedio de los últimos 3 meses y las duodécimas del tiempo trabajado en la gestión, como indica el Ministerio.",
+  h1: "Calculadora de aguinaldo de Navidad 2026",
+  title: "Aguinaldo Bolivia 2026: calcule el suyo por duodécimas",
+  description: "Calcule su aguinaldo de Navidad 2026 con el promedio de los últimos 3 meses y las duodécimas del tiempo trabajado en la gestión, como indica el Ministerio.",
   intro: [
-    "El aguinaldo de Navidad es un sueldo más por año. Si no trabajó la gestión completa, se paga por duodécimas, en proporción al tiempo trabajado.",
+    "El aguinaldo de Navidad en Bolivia es un sueldo más por año: el promedio del total ganado de los últimos 3 meses. Si no trabajó la gestión completa, se paga por duodécimas, en proporción al tiempo trabajado.",
     "Escriba su sueldo promedio y sus fechas. Si sigue trabajando, deje vacía la fecha de retiro.",
   ],
   comoSeCalcula: [
@@ -19,6 +19,10 @@ export default definirContenido({
     "Con un sueldo promedio de Bs 3.000 y retiro el 15 de septiembre: 3.000 / 12 × 8 meses = Bs 2.000, más 3.000 / 360 × 15 días = Bs 125. Total: Bs 2.125.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo se calcula el aguinaldo en Bolivia?",
+      respuesta: "Se toma el promedio del total ganado de los últimos 3 meses (para obreros, el salario del último mes). Por cada mes trabajado en la gestión se paga un doceavo de ese promedio, y por cada día suelto, 1/360.",
+    },
     {
       pregunta: "¿Hasta cuándo se paga el aguinaldo?",
       respuesta: "Lo fija cada año el Ministerio de Trabajo. En 2025 el plazo para el sector privado fue el 20 de diciembre. Si el empleador no paga a tiempo, debe pagarlo doble.",
