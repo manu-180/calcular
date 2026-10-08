@@ -2,21 +2,25 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.trm",
-  h1: "TRM de hoy y conversor de dólares a pesos",
-  title: "TRM hoy: {{co.trm}}. Convierte dólares y pesos",
+  h1: "TRM hoy en Colombia: precio oficial del dólar y conversor",
+  title: "TRM hoy: dólar a {{co.trm}}. Convierte dólares y pesos",
   description:
-    "La TRM vigente es {{co.trm}}, publicada por la Superintendencia Financiera. Convierte dólares a pesos colombianos y pesos a dólares.",
+    "La TRM de hoy es {{co.trm}}, certificada por la Superintendencia Financiera. Convierte dólares a pesos colombianos y pesos a dólares al instante.",
   intro: [
-    "La Tasa Representativa del Mercado (TRM) es el precio oficial del dólar en Colombia.",
-    "La certifica la Superintendencia Financiera cada día hábil. La que se muestra aquí es la vigente desde el {{co.trm#desde}}.",
+    "La TRM de hoy es {{co.trm}} por dólar, vigente desde el {{co.trm#desde}}. Es el precio oficial del dólar en Colombia y la certifica la Superintendencia Financiera cada día hábil.",
+    "Escribe un monto y te lo pasamos de dólares a pesos o de pesos a dólares.",
   ],
   comoSeCalcula: [
     "Dólares a pesos: dólares por la TRM.",
     "Pesos a dólares: pesos divididos por la TRM.",
     "Algunas TRM rigen varios días seguidos, por ejemplo durante un fin de semana.",
   ],
-  ejemplo: ["Si la TRM es $4.000, 100 dólares son $400.000."],
+  ejemplo: ["Si la TRM es $4.000, 100 dólares son $400.000 y $1.000.000 son 250 dólares."],
   faq: [
+    {
+      pregunta: "¿A cuánto está el dólar hoy en Colombia?",
+      respuesta: "La TRM vigente es {{co.trm}}. En bancos y casas de cambio el precio de compra y de venta es distinto.",
+    },
     {
       pregunta: "¿La TRM es el precio al que compro dólares en una casa de cambio?",
       respuesta: "No. La TRM es un promedio oficial. Las casas de cambio y los bancos venden más caro y compran más barato.",

@@ -2,23 +2,31 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.iva",
-  h1: "Calculadora de IVA",
-  title: "Calculadora de IVA en México: suma o quita el {{mx.iva-general}}",
+  h1: "Calculadora de IVA en México: agregar o quitar el IVA",
+  title: "Calculadora de IVA México: suma o quita el {{mx.iva-general}}",
   description:
-    "Agrega o quita el IVA del {{mx.iva-general}} a cualquier precio, o el {{mx.iva-frontera}} de la región fronteriza norte. Al centavo y con la fuente oficial.",
+    "Saca el IVA de un precio, agrégalo o quítalo en un clic: tasa general del {{mx.iva-general}} o {{mx.iva-frontera}} de la frontera norte. Al centavo, sin fórmulas.",
   intro: [
-    "El IVA general en México es del {{mx.iva-general}}. En la región fronteriza norte hay un estímulo fiscal que lo deja en {{mx.iva-frontera}}.",
-    "Con esta calculadora sacas el IVA de un precio, lo agregas a un precio sin IVA o lo quitas de un precio que ya lo incluye.",
+    "El IVA en México es del {{mx.iva-general}}. Para agregarlo, multiplica el precio sin IVA por 1.16; para quitarlo, divide el precio con IVA entre 1.16.",
+    "En la región fronteriza norte hay un estímulo fiscal que deja el IVA en {{mx.iva-frontera}}. La calculadora hace las dos cuentas por ti.",
   ],
   comoSeCalcula: [
     "Agregar el IVA: el IVA es el precio sin IVA por la tasa. Súmalo al precio y tienes el total.",
     "Quitar el IVA: divide el precio con IVA entre 1 más la tasa (escrita en decimales).",
     "El IVA es la diferencia entre el precio con IVA y el precio sin IVA.",
   ],
+  ejemplo: [
+    "Un servicio de 1,000 pesos más IVA del {{mx.iva-general}} queda en 1,160 pesos: 160 son de IVA.",
+    "Al revés, si un precio de 2,320 pesos ya incluye el IVA, divide entre 1.16: el precio sin IVA es de 2,000 pesos y el IVA de 320.",
+  ],
   faq: [
     {
       pregunta: "¿Cómo le quito el IVA a un precio?",
       respuesta: "Divide el precio entre 1 más la tasa. Con la tasa general, un precio de 1,160 pesos queda en 1,000 pesos sin IVA y 160 de IVA.",
+    },
+    {
+      pregunta: "¿Cómo saco el IVA de una cantidad?",
+      respuesta: "Si la cantidad no tiene IVA, multiplícala por 0.16. Si ya lo incluye, divídela entre 1.16 y réstale el resultado al total.",
     },
     {
       pregunta: "¿Dónde se cobra el IVA del {{mx.iva-frontera}}?",

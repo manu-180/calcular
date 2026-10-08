@@ -3,12 +3,12 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mx.aguinaldo",
   h1: "Calculadora de aguinaldo 2026",
-  title: "Aguinaldo 2026: calcula cuánto te toca y el ISR",
+  title: "Calculadora de aguinaldo 2026: cuánto te toca y el ISR",
   description:
-    "Calcula tu aguinaldo con el mínimo de {{mx.dias-aguinaldo}}, la parte exenta de {{mx.exencion-aguinaldo}} y el ISR estimado. Datos oficiales del DOF.",
+    "Calcula tu aguinaldo 2026 completo o proporcional: mínimo {{mx.dias-aguinaldo}} de salario, la parte exenta y el ISR estimado. Pon tu sueldo y listo.",
   intro: [
-    "El aguinaldo es un pago extra que tu empresa te tiene que dar cada año, antes del 20 de diciembre.",
-    "La ley pide al menos {{mx.dias-aguinaldo}} de salario. Si no trabajaste el año completo, te toca la parte proporcional.",
+    "El aguinaldo es de al menos {{mx.dias-aguinaldo}} de salario y te lo tienen que pagar antes del 20 de diciembre. Si no trabajaste el año completo, te toca la parte proporcional.",
+    "Escribe tu sueldo y los días que trabajaste este año. Te mostramos el aguinaldo bruto, la parte que no paga ISR y lo que recibes.",
   ],
   comoSeCalcula: [
     "Se saca tu salario diario. Si te pagan al mes, se divide entre 30; si te pagan a la quincena, entre 15; si te pagan a la semana, entre 7.",
@@ -19,11 +19,16 @@ export default definirContenido({
   ],
   ejemplo: [
     "Con un sueldo de 12,000 pesos al mes, tu salario diario es de 400 pesos. Por el año completo, con el mínimo de {{mx.dias-aguinaldo}}, son 6,000 pesos de aguinaldo bruto.",
+    "Si entraste a mitad de año y llevas 180 días trabajados, te tocan 400 × 15 × 180 ÷ 365 = 2,958.90 pesos.",
   ],
   faq: [
     {
       pregunta: "¿Cuándo me tienen que pagar el aguinaldo?",
       respuesta: "Antes del 20 de diciembre. Si lo pagan después, la empresa no cumple con la Ley Federal del Trabajo y puedes pedir ayuda gratis en la Procuraduría Federal de la Defensa del Trabajo (PROFEDET).",
+    },
+    {
+      pregunta: "¿Cómo se calcula el aguinaldo proporcional?",
+      respuesta: "Salario diario por los días de aguinaldo, por los días que trabajaste en el año, entre 365. Así se calcula si entraste o saliste a mitad de año.",
     },
     {
       pregunta: "¿Me toca aguinaldo si renuncié o me despidieron?",
