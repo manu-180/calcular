@@ -2,6 +2,10 @@
 // bordes de tramo y por zona horaria, que vigente() nunca devuelva un tramo no verificado, que un
 // tramo vencido saque la calculadora de lo publicable, validación de archivos, registro, formulario
 // y bandas de series. Usa el mercado ficticio zz y datos sintéticos. Sin red y sin reloj.
+// También compara el mapa de cargadores del cliente intl con el registro:
+//   npx tsx scripts/check_motor.ts --generar-cargadores     lo reescribe
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
@@ -16,6 +20,7 @@ import zz from "../src/paises/zz";
 import bono from "../src/paises/zz/calculadoras/bono";
 import datosZz from "../src/paises/zz/datos.json";
 import { detectores } from "../src/paises/zz/fuentes";
+import { registro as registroReal } from "../src/paises";
 
 delete process.env.CALCULAR_HOY;
 delete process.env.CALCULAR_HOY_BUILD;
@@ -324,6 +329,36 @@ const errMal = validarPais(conMal, { hoy: "2026-10-15" }).errores;
 verdad("requiere por región pedido como número", errMal.some((e) => e.includes("tiene regiones")));
 verdad("requiere de serie inexistente", errMal.some((e) => e.includes("zz.inexistente")));
 verdad("dos calculadoras con el mismo concepto", !errMal.some((e) => e.includes("concepto")));
+
+// Mapa de cargadores de calculadora-intl.tsx: solo mercados publicados, un import() literal por
+// calculadora para que el navegador baje solo el chunk de la página (sin zz, internos ni casos).
+const RAIZ = path.resolve(import.meta.dirname, "..");
+const NL = "\n";
+const ARCHIVO_CARGADORES = path.join(RAIZ, "src", "app", "(intl)", "intl", "[mercado]", "[slug]", "cargadores.ts");
+const publicados = registroReal.paises.filter((p) => p.mercado.estado === "publicado" && p.mercado.codigo !== "global" && p.mercado.codigo !== "zz");
+const bloques = publicados
+  .map((p) => p.mercado.codigo)
+  .sort()
+  .map((codigo) => {
+    const slugs = registroReal.pais(codigo)!.calculadoras.map((c) => c.definicion.slug).sort();
+    for (const slug of slugs) {
+      const archivo = path.join(RAIZ, "src", "paises", codigo, "calculadoras", `${slug}.ts`);
+      verdad(`cargador ${codigo}/${slug}: existe el archivo`, existsSync(archivo), archivo);
+    }
+    const lineas = slugs.map((slug) => `    ${JSON.stringify(slug)}: () => import("@/paises/${codigo}/calculadoras/${slug}"),`);
+    return [`  ${JSON.stringify(codigo)}: {`, ...lineas, "  },"].join(NL);
+  });
+const esperadoCargadores = `// Generado por \`npx tsx scripts/check_motor.ts --generar-cargadores\`. No editar a mano: check_motor
+// falla si no coincide con los mercados publicados del registro.
+export type Cargador = () => Promise<{ default: unknown }>;
+
+export const CARGADORES: Readonly<Record<string, Readonly<Record<string, Cargador>>>> = {
+${bloques.join(NL)}
+};
+`;
+if (process.argv.includes("--generar-cargadores")) writeFileSync(ARCHIVO_CARGADORES, esperadoCargadores);
+const actualCargadores = existsSync(ARCHIVO_CARGADORES) ? readFileSync(ARCHIVO_CARGADORES, "utf8").replace(/\r\n/g, NL) : "";
+verdad("cargadores.ts coincide con el registro (npx tsx scripts/check_motor.ts --generar-cargadores)", actualCargadores === esperadoCargadores);
 
 // Bandas de series con el detector de prueba de zz y un Http falso.
 const det = detectores.find((d) => d.carril === "serie");

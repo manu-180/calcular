@@ -51,7 +51,12 @@ export interface FeriadoEnCalendario {
 
 // Los días hábiles de feriado se cuentan desde el día siguiente al término y se suman los sábados y
 // domingos que caen en medio (art. 69: el sábado es siempre inhábil). Los festivos no se conocen acá.
+// El tope evita que un valor absurdo (o Infinity, que pasa el min del campo) cuelgue el navegador
+// con el while: 365 pendientes más el proporcional quedan muy por debajo.
+const MAX_HABILES = 1000;
+
 export function feriadoEnCalendario(termino: FechaISO, habiles: number): FeriadoEnCalendario {
+  if (!Number.isFinite(habiles) || habiles < 0 || habiles > MAX_HABILES) throw new RangeError(`feriadoEnCalendario: ${habiles} días hábiles fuera de rango`);
   let restantes = habiles;
   let inhabiles = 0;
   let dia = termino;
