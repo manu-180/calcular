@@ -166,8 +166,12 @@ async function main() {
     { nombre: "intl: sitemap de global", host: HOST_INTL, ruta: "/sitemap-global.xml", status: 200, contiene: [`<loc>${intl}/privacidad</loc>`] },
     { nombre: "intl: archivo de public", host: HOST_INTL, ruta: "/ads.txt", status: 200 },
     { nombre: "intl: api compartida", host: HOST_INTL, ruta: "/api/geo", status: 200, contiene: ['"pais"'], cache: "private, no-store" },
-    { nombre: "intl: api de AR", host: HOST_INTL, ruta: "/api/cuenta/calculos", status: 404, noContiene: [MARCA_AR] },
-    { nombre: "intl: api de AR sin ruta", host: HOST_INTL, ruta: "/api/cuenta", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "intl: api de AR", host: HOST_INTL, ruta: "/api/subscribe", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "intl: api de AR anidada", host: HOST_INTL, ruta: "/api/planilla-comercio/download", status: 404, noContiene: [MARCA_AR] },
+    // Sin noContiene: src/proxy.ts corre antes que los rewrites y, con las cuentas apagadas, manda
+    // /api/cuenta al 404 de AR. Con las cuentas prendidas pasa y cae en el 404 intl.
+    { nombre: "intl: api de cuenta", host: HOST_INTL, ruta: "/api/cuenta/calculos", status: 404 },
+    { nombre: "intl: api de cuenta sin ruta", host: HOST_INTL, ruta: "/api/cuenta", status: 404 },
     { nombre: "intl: og de AR", host: HOST_INTL, ruta: "/og", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: og de AR con path", host: HOST_INTL, ruta: "/og/x", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: llms.txt propio", host: HOST_INTL, ruta: "/llms.txt", status: 200, contiene: ["# CalcularYa", `${intl}/${m}`], noContiene: ["calcular.ar", "\u2014"] },

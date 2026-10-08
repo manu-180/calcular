@@ -3,6 +3,21 @@
 export type Cargador = () => Promise<{ default: unknown }>;
 
 export const CARGADORES: Readonly<Record<string, Readonly<Record<string, Cargador>>>> = {
+  "bo": {
+    "aguinaldo": () => import("@/paises/bo/calculadoras/aguinaldo"),
+    "bono-de-antiguedad": () => import("@/paises/bo/calculadoras/bono-de-antiguedad"),
+    "dolar-oficial": () => import("@/paises/bo/calculadoras/dolar-oficial"),
+    "finiquito": () => import("@/paises/bo/calculadoras/finiquito"),
+    "horas-extras": () => import("@/paises/bo/calculadoras/horas-extras"),
+    "indemnizacion": () => import("@/paises/bo/calculadoras/indemnizacion"),
+    "iva": () => import("@/paises/bo/calculadoras/iva"),
+    "quinquenio": () => import("@/paises/bo/calculadoras/quinquenio"),
+    "rc-iva": () => import("@/paises/bo/calculadoras/rc-iva"),
+    "salario-minimo": () => import("@/paises/bo/calculadoras/salario-minimo"),
+    "sueldo-liquido": () => import("@/paises/bo/calculadoras/sueldo-liquido"),
+    "ufv": () => import("@/paises/bo/calculadoras/ufv"),
+    "vacaciones": () => import("@/paises/bo/calculadoras/vacaciones"),
+  },
   "cl": {
     "boleta-honorarios": () => import("@/paises/cl/calculadoras/boleta-honorarios"),
     "finiquito": () => import("@/paises/cl/calculadoras/finiquito"),
@@ -111,6 +126,18 @@ export const CARGADORES: Readonly<Record<string, Readonly<Record<string, Cargado
     "uma": () => import("@/paises/mx/calculadoras/uma"),
     "vacaciones": () => import("@/paises/mx/calculadoras/vacaciones"),
   },
+  "ni": {
+    "aguinaldo": () => import("@/paises/ni/calculadoras/aguinaldo"),
+    "horas-extras": () => import("@/paises/ni/calculadoras/horas-extras"),
+    "indemnizacion-por-antiguedad": () => import("@/paises/ni/calculadoras/indemnizacion-por-antiguedad"),
+    "ir-salarial": () => import("@/paises/ni/calculadoras/ir-salarial"),
+    "iva": () => import("@/paises/ni/calculadoras/iva"),
+    "liquidacion": () => import("@/paises/ni/calculadoras/liquidacion"),
+    "salario-minimo": () => import("@/paises/ni/calculadoras/salario-minimo"),
+    "salario-neto": () => import("@/paises/ni/calculadoras/salario-neto"),
+    "tipo-de-cambio": () => import("@/paises/ni/calculadoras/tipo-de-cambio"),
+    "vacaciones": () => import("@/paises/ni/calculadoras/vacaciones"),
+  },
   "pa": {
     "costo-empleador": () => import("@/paises/pa/calculadoras/costo-empleador"),
     "decimo-tercer-mes": () => import("@/paises/pa/calculadoras/decimo-tercer-mes"),
@@ -177,5 +204,16 @@ export const CARGADORES: Readonly<Record<string, Readonly<Record<string, Cargado
     "salario-vacacional": () => import("@/paises/uy/calculadoras/salario-vacacional"),
     "sueldo-liquido": () => import("@/paises/uy/calculadoras/sueldo-liquido"),
     "valor-ui": () => import("@/paises/uy/calculadoras/valor-ui"),
+  },
+  "ve": {
+    "cestaticket": () => import("@/paises/ve/calculadoras/cestaticket"),
+    "dolar-bcv": () => import("@/paises/ve/calculadoras/dolar-bcv"),
+    "horas-extra": () => import("@/paises/ve/calculadoras/horas-extra"),
+    "iva": () => import("@/paises/ve/calculadoras/iva"),
+    "liquidacion": () => import("@/paises/ve/calculadoras/liquidacion"),
+    "prestaciones-sociales": () => import("@/paises/ve/calculadoras/prestaciones-sociales"),
+    "salario-minimo": () => import("@/paises/ve/calculadoras/salario-minimo"),
+    "utilidades": () => import("@/paises/ve/calculadoras/utilidades"),
+    "vacaciones": () => import("@/paises/ve/calculadoras/vacaciones"),
   },
 };
