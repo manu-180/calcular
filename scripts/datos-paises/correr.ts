@@ -9,7 +9,9 @@
 // país con el link y lo que hay que verificar, sin repetir lo ya avisado (memoria: --issues).
 // Con cambios corre check_paises, check_paises_casos, check_textos_paises, check_fronteras y
 // check-all completo; rojo revierte. Deja en la salida issue.md (vacío = cerrar), comentario.md,
-// commit.txt, archivos.txt (lo que hay que commitear), resumen.md y resumen.json.
+// commit.txt, archivos.txt (lo que hay que commitear), resumen.md y resumen.json; si hay algo para
+// publicar, también issue-sin-publicar.md y comentario-sin-publicar.md (los usa el job issues cuando
+// el parche no llegó a main).
 //
 // Sale 0 aunque una fuente esté caída: eso va al issue, no al exit code (igual que datos-vivos de AR).
 import { execFileSync, spawnSync } from "node:child_process";
@@ -22,7 +24,7 @@ import { hoyEn, hoyMasAdelantado } from "../../src/motor/vigencia";
 import { cargarPaises, RAIZ } from "../paises_comun";
 import { correrDetectores, type Corrida } from "./lib/detectores";
 import { crearHttpReal } from "./lib/http";
-import { armarIssue, leerIssues, type IssuePrevio, type Puerta } from "./lib/issue";
+import { armarIssue, bloqueDeCodigo, leerIssues, type IssuePrevio, type Puerta } from "./lib/issue";
 import { semaforoPais } from "./lib/semaforo";
 import { agregarPuntos } from "./lib/series-json";
 import { mercadosConDetectores } from "./matriz";
@@ -168,10 +170,18 @@ function escribirSalidas(dir: string, pais: PaisDefinido, informe: Informe, prev
   const semaforo = semaforoPais(paisDespues, hoy);
   const runId = process.env.GITHUB_RUN_ID;
   const corridaTxt = runId ? `corrida [${runId}](${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${runId})` : undefined;
-  const issue = armarIssue({ mercado: m, nombrePais: pais.mercado.nombre, hoy, corrida: corridaTxt, resultados: corrida.resultados, hallazgosNuevos: corrida.hallazgosNuevos, semaforo, puerta, previos });
+  const entrada = { mercado: m, nombrePais: pais.mercado.nombre, hoy, corrida: corridaTxt, resultados: corrida.resultados, hallazgosNuevos: corrida.hallazgosNuevos, previos };
+  const issue = armarIssue({ ...entrada, semaforo, puerta });
 
   writeFileSync(path.join(dir, "issue.md"), issue.cuerpo);
   writeFileSync(path.join(dir, "comentario.md"), issue.comentario);
+  // issue.md da por hecho que el job publicar lleva el parche a main. Si no lo lleva, el job de
+  // issues usa esta variante: nunca vacía, así un push fallido no cierra el issue con "Todo al día".
+  if (publicado) {
+    const sinPublicar = armarIssue({ ...entrada, semaforo: semaforoPais(pais, hoy), puerta: { estado: "sin-publicar", detalle: "" } });
+    writeFileSync(path.join(dir, "issue-sin-publicar.md"), sinPublicar.cuerpo);
+    writeFileSync(path.join(dir, "comentario-sin-publicar.md"), sinPublicar.comentario);
+  }
   writeFileSync(path.join(dir, "titulo.txt"), issue.titulo);
   writeFileSync(path.join(dir, "etiqueta.txt"), issue.etiqueta);
   writeFileSync(path.join(dir, "archivos.txt"), informe.archivos.join("\n"));
@@ -191,7 +201,7 @@ function escribirSalidas(dir: string, pais: PaisDefinido, informe: Informe, prev
     "| detector | carril | estado | detalle |",
     "|---|---|---|---|",
     tabla || "| (sin detectores) | | | |",
-    ...(puerta.estado === "roja" ? ["", "```", puerta.detalle.slice(0, 3000), "```"] : []),
+    ...(puerta.estado === "roja" ? ["", bloqueDeCodigo(puerta.detalle.slice(0, 3000))] : []),
     "",
   ].join("\n");
   writeFileSync(path.join(dir, "resumen.md"), md);

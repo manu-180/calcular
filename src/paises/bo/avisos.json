@@ -1,0 +1,79 @@
+{
+  "mercado": "bo",
+  "avisos": [
+    {
+      "id": "bo.solo-dolar-oficial",
+      "nivel": "info",
+      "desde": "2026-06-29",
+      "aplicaA": ["bo.dolar-oficial", "bo.salario-minimo"],
+      "titulo": "Usamos solo el dólar oficial",
+      "texto": "Mostramos el Tipo de Cambio Oficial (TCO) del Banco Central de Bolivia. Es una referencia: en bancos, casas de cambio y en la calle el dólar puede costar otra cosa.",
+      "fuente": {
+        "organismo": "Banco Central de Bolivia (BCB)",
+        "titulo": "Resolución de Directorio N° 142/2026, Reglamento de Operaciones Cambiarias, artículo 5",
+        "url": "https://www.bcb.gob.bo/webdocs/01_resoluciones/RD%20N%C2%B0%20142-2026%20%2824-09-2026%29.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "bo.segundo-aguinaldo",
+      "nivel": "info",
+      "desde": "2026-10-01",
+      "hasta": "2026-12-31",
+      "aplicaA": ["bo.aguinaldo", "bo.finiquito"],
+      "titulo": "Segundo aguinaldo",
+      "texto": "El segundo aguinaldo «Esfuerzo por Bolivia» solo se paga si el PIB crece más de 4,5 % en los doce meses anteriores a septiembre y un decreto del año lo dispone. No lo sumamos: no encontramos un decreto que lo disponga para 2026.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+        "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XXI (D.S. N° 1802 de 20 de noviembre de 2013)",
+        "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "bo.base-bono-antiguedad",
+      "nivel": "cautela",
+      "desde": "2025-01-01",
+      "aplicaA": ["bo.bono-de-antiguedad"],
+      "titulo": "¿Uno o tres salarios mínimos?",
+      "texto": "El D.S. 23474 fija la base de tres salarios mínimos para las empresas productivas. Para otros empleadores, como las empresas de servicios, se usa un salario mínimo salvo que un convenio diga otra cosa. Si tiene dudas, consulte en la Jefatura de Trabajo.",
+      "fuente": {
+        "organismo": "Unidad de Análisis de Políticas Sociales y Económicas (UDAPE)",
+        "titulo": "Empleo y legislación laboral en Bolivia (noviembre 2024), punto 3.1.1",
+        "url": "https://www.udape.gob.bo/wp-content/uploads/2026/03/Empleo-y-Legislacion-laboral-en-Bolivia.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "bo.sin-preaviso",
+      "nivel": "info",
+      "desde": "2025-01-01",
+      "aplicaA": ["bo.finiquito", "bo.indemnizacion"],
+      "texto": "El preaviso ya no reemplaza al desahucio: la Sentencia Constitucional 0009/2017 lo eliminó. Si lo despiden sin causa justificada, le corresponde el desahucio aunque le hayan avisado antes.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+        "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XV, desahucio",
+        "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "bo.plazo-finiquito",
+      "nivel": "info",
+      "desde": "2025-01-01",
+      "aplicaA": ["bo.finiquito"],
+      "texto": "El empleador tiene 15 días calendario desde el último día trabajado para pagar el finiquito. Si se atrasa, paga una multa del 30 % del total a su favor. El Formulario Único de Finiquito tiene que refrendarlo el Ministerio de Trabajo.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+        "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XIV (D.S. N° 28699, art. 9; R.M. N° 1104/22)",
+        "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}

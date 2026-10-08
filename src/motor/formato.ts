@@ -89,7 +89,7 @@ function decimalesPropios(n: number): number {
 export function formatearValorUnidad(n: number, unidad: Unidad, locale: string, simbolos?: Readonly<Partial<Record<Moneda, string>>>): string {
   if ((MONEDAS as readonly string[]).includes(unidad)) {
     const moneda = unidad as Moneda;
-    const d = Number.isInteger(n) ? 0 : Math.min(4, Math.max(decimalesDeMoneda(moneda, locale), decimalesPropios(n)));
+    const d = Number.isInteger(n) ? 0 : Math.min(6, Math.max(decimalesDeMoneda(moneda, locale), decimalesPropios(n)));
     return formatearMoneda(n, locale, moneda, d, simbolos?.[moneda]);
   }
   if (unidad === "%") return formatearPorcentaje(n, locale, 4);

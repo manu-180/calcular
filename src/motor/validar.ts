@@ -187,8 +187,10 @@ export function validarPais(pais: PaisDefinido, opciones: OpcionesValidacion): I
       (estricto ? e : a).push(msj);
     }
   }
+  // Depende del día (un tramo que venció), no de la estructura: con estricto=false (PAISES_TOLERANTE)
+  // baja a aviso para que un país vencido no frene los datos de Argentina ni los de otro país.
   if (m.codigo !== "global" && m.estado === "publicado" && mercadoVisible({ ...pais, errores: [] }, "produccion") && publicablesHoy === 0) {
-    e.push(`mercado ${cod} está publicado pero no tiene ninguna calculadora publicable hoy`);
+    (estricto ? e : a).push(`mercado ${cod} está publicado pero no tiene ninguna calculadora publicable hoy`);
   }
 
   for (const av of pais.avisos) {

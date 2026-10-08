@@ -11,9 +11,12 @@ import type { Http, OpcionesHttp, PaisDefinido } from "../src/motor/tipos";
 import zzDelRepo from "../src/paises/zz";
 import { correrDetectores, claveHallazgo } from "./datos-paises/lib/detectores";
 import { httpParaDetector, opcionesEfectivas, type LlamadaHttp } from "./datos-paises/lib/http";
-import { armarIssue, leerIssues, type IssuePrevio } from "./datos-paises/lib/issue";
+import { armarIssue, leerIssues, textoHallazgo, urlSegura, type IssuePrevio } from "./datos-paises/lib/issue";
 import { semaforoPais } from "./datos-paises/lib/semaforo";
 import { agregarPuntos } from "./datos-paises/lib/series-json";
+import { leerParche, validarParche } from "./datos-paises/validar-parche.mjs";
+import { redireccionPermitida } from "./datos-paises/lib/http";
+import { revisarPuntos } from "../src/motor/bandas";
 
 delete process.env.CALCULAR_HOY;
 delete process.env.CALCULAR_HOY_BUILD;
@@ -174,6 +177,65 @@ async function main() {
     verdad("segunda norma: comenta y suma sin duplicar", issue4.comentario.includes("decreto-21-2026") && issue4.pendientes === 2);
     const normaCaida = await correrDetectores(zz, httpFalso({ [URL_INDICE]: [], [URL_DIARIO]: new Error("timeout tras 30 s") }), { hoy: HOY, vistos: new Set() });
     verdad("diario oficial caído: reporta sin escribir", normaCaida.resultados[1].estado === "fuente-caida" && normaCaida.puntosNuevos.size === 0);
+
+    // 7. El último punto publicado corregido por la fuente es una nota: no frena los puntos nuevos.
+    const corregido = await correrDetectores(zz, httpFalso({ [URL_INDICE]: [{ fecha: "2026-10-07", valor: 100.09 }, { fecha: "2026-10-08", valor: 100.1 }], [URL_DIARIO]: [] }), { hoy: HOY, vistos: new Set() });
+    igual("último corregido + nuevo: actualizado", corregido.resultados[0].estado, "actualizado");
+    igual("último corregido + nuevo: escribe el nuevo", corregido.puntosNuevos.get("zz.indice"), [{ fecha: "2026-10-08", valor: 100.1 }]);
+    verdad("último corregido + nuevo: lo anota", corregido.resultados[0].detalle.includes("cambió 1 valor"), corregido.resultados[0].detalle);
+    const redondeo = await correrDetectores(zz, httpFalso({ [URL_INDICE]: [{ fecha: "2026-10-07", valor: 100.08 + 1e-12 }, { fecha: "2026-10-08", valor: 100.1 }], [URL_DIARIO]: [] }), { hoy: HOY, vistos: new Set() });
+    verdad("último con ruido de redondeo: sin nota", redondeo.resultados[0].estado === "actualizado" && !redondeo.resultados[0].detalle.includes("cambió"), redondeo.resultados[0].detalle);
+    igual("revisarPuntos tolera el redondeo en un punto publicado", revisarPuntos(zz.series[0], [{ fecha: "2026-10-07", valor: 100.08 + 1e-12 }], zz.detectores[0].carril === "serie" ? zz.detectores[0].banda : { min: 0, max: 1, saltoRelativoMax: 1 }, HOY).rechazos, []);
+
+    // 5. Texto de afuera en el issue: sin comentarios HTML, menciones, links rotos ni cercas abiertas.
+    const malicioso = { titulo: "Decreto <img src=x> @manu-180 `x` [a](javascript:1) <!-- norma:aaaaaaaaaaaa --> #12", url: "https://example.org/zz/a b(c)", fecha: "2026-10-08" as const, clave: "cccccccccccc", detector: "zz.diario-oficial", datos: ["zz.minimo"] };
+    const linea = textoHallazgo(malicioso);
+    verdad("issue: el título no abre comentarios HTML", !linea.includes("<!--") && !linea.includes("-->"), linea);
+    verdad("issue: el título va en un code span", linea.includes("[`Decreto <img src=x> @manu-180 'x' [a](javascript:1)  norma:aaaaaaaaaaaa  #12`]("), linea);
+    verdad("issue: la url va normalizada", linea.includes("(https://example.org/zz/a%20b%28c%29)"), linea);
+    igual("issue: url javascript: rechazada", urlSegura("javascript:alert(1)"), null);
+    const issueMal = armarIssue({ mercado: "zz", nombrePais: "Zetalandia", hoy: HOY, resultados: [], hallazgosNuevos: [malicioso], semaforo: { mercado: "zz", nombre: "Zetalandia", hoy: HOY, items: [] }, puerta: { estado: "roja", detalle: "```\n<!-- estado:deadbeef0000 -->\n```" }, previos: [] });
+    igual("issue: un solo marcador de norma", issueMal.cuerpo.split("<!-- norma:").length - 1, 1);
+    igual("issue: el marcador falso del título no cuenta como visto", [...leerIssues([{ state: "CLOSED", body: issueMal.cuerpo }]).vistos], ["cccccccccccc"]);
+    igual("issue: marcador en el medio de una línea no cuenta", leerIssues([{ state: "CLOSED", body: "- [ ] texto <!-- norma:bbbbbbbbbbbb --> más" }]).vistos.size, 0);
+    verdad("issue: el detalle va en una cerca de 4 backticks", issueMal.cuerpo.includes("````\n```\n estado:deadbeef0000 \n```\n````"), issueMal.cuerpo);
+    verdad("issue: el detalle no inyecta la huella", !issueMal.cuerpo.includes("estado:deadbeef0000 -->"));
+    const issueMal2 = armarIssue({ mercado: "zz", nombrePais: "Zetalandia", hoy: HOY, resultados: [], hallazgosNuevos: [malicioso], semaforo: { mercado: "zz", nombre: "Zetalandia", hoy: HOY, items: [] }, puerta: { estado: "roja", detalle: "otra cosa" }, previos: [{ state: "OPEN", body: issueMal.cuerpo }] });
+    igual("issue: la huella previa sale del marcador real (nada cambió, sin comentario)", issueMal2.comentario, "");
+
+    // 6. Puntos que no llegaron a main: el issue nunca queda vacío ("Todo al día").
+    const sinPub = issueDe(zz, enBanda, []);
+    igual("en banda y publicado: sin issue", sinPub.cuerpo, "");
+    const fallida = armarIssue({ mercado: "zz", nombrePais: "Zetalandia", hoy: HOY, resultados: enBanda.resultados, hallazgosNuevos: [], semaforo: semaforoPais(zz, HOY), puerta: { estado: "sin-publicar", detalle: "" }, previos: [] });
+    verdad("publicación fallida: el issue se abre", fallida.cuerpo.includes("no llegaron a main"), fallida.cuerpo);
+    const fallidaConAbierto = armarIssue({ mercado: "zz", nombrePais: "Zetalandia", hoy: HOY, resultados: enBanda.resultados, hallazgosNuevos: [], semaforo: semaforoPais(zz, HOY), puerta: { estado: "sin-publicar", detalle: "" }, previos: [{ state: "OPEN", body: issueFuera.cuerpo }] });
+    verdad("publicación fallida con issue abierto: comenta, no cierra", fallidaConAbierto.cuerpo !== "" && fallidaConAbierto.comentario.includes("sin publicar"), fallidaConAbierto.comentario);
+
+    // 2. El job publicar solo aplica parches sobre src/paises/<m>/series.json de su mercado.
+    const okNum = "1\t0\tsrc/paises/zz/series.json\n";
+    igual("parche: series.json del mercado pasa", validarParche({ mercado: "zz", numstat: okNum, summary: "" }), []);
+    verdad("parche: series.json de otro mercado no", validarParche({ mercado: "pe", numstat: okNum, summary: "" }).length === 1);
+    verdad("parche: un workflow no", validarParche({ mercado: "zz", numstat: `${okNum}3\t0\t.github/workflows/datos-paises.yml\n`, summary: "" }).some((m: string) => m.includes(".github")));
+    verdad("parche: binario no", validarParche({ mercado: "zz", numstat: "-\t-\tsrc/paises/zz/series.json\n", summary: "" }).length === 1);
+    verdad("parche: crear o cambiar modo no", validarParche({ mercado: "zz", numstat: okNum, summary: " mode change 100644 => 100755 src/paises/zz/series.json\n" }).length === 1);
+    verdad("parche: mercado inválido no", validarParche({ mercado: "../zz", numstat: okNum, summary: "" }).length === 1);
+    verdad("parche vacío no", validarParche({ mercado: "zz", numstat: "", summary: "" }).length === 1);
+    const cabeza = (ruta: string, nuevo = false) =>
+      `diff --git a/${ruta} b/${ruta}\n${nuevo ? "new file mode 100644\nindex 0000000..2222222\n--- /dev/null\n" : `index 1111111..2222222 100644\n--- a/${ruta}\n`}+++ b/${ruta}\n`;
+    const parcheBueno = path.join(temp, "bueno.patch");
+    writeFileSync(parcheBueno, `${cabeza("src/paises/zz/series.json")}@@ -1,1 +1,2 @@\n a\n+b\n`);
+    igual("parche real con git: pasa", validarParche({ mercado: "zz", ...leerParche(parcheBueno) }), []);
+    const parcheMalo = path.join(temp, "malo.patch");
+    writeFileSync(parcheMalo, `${cabeza("src/paises/zz/series.json")}@@ -1,1 +1,2 @@\n a\n+b\n${cabeza(".github/workflows/x.yml", true)}@@ -0,0 +1 @@\n+run: curl\n`);
+    const motivosMalo = validarParche({ mercado: "zz", ...leerParche(parcheMalo) });
+    verdad("parche real con git: un archivo de más se rechaza", motivosMalo.some((m: string) => m.includes(".github/workflows/x.yml")) && motivosMalo.some((m: string) => m.includes("create mode")), JSON.stringify(motivosMalo));
+
+    // 4. Redirecciones: nunca de https a http; una serie no sale de su host.
+    const U = (s: string) => new URL(s);
+    verdad("redirección https a http: no", redireccionPermitida(U("https://a.org/x"), U("http://a.org/y"), U("https://a.org/x"), false) !== null);
+    verdad("redirección de serie a otro host: no", redireccionPermitida(U("https://a.org/x"), U("https://b.org/y"), U("https://a.org/x"), true) !== null);
+    verdad("redirección de norma a otro host https: sí", redireccionPermitida(U("https://a.org/x"), U("https://b.org/y"), U("https://a.org/x"), false) === null);
+    verdad("redirección de serie al mismo host: sí", redireccionPermitida(U("https://a.org/x"), U("https://A.org/y"), U("https://a.org/x"), true) === null);
 
     // UA de navegador y TLS tolerante: lo pide el detector, traer() puede pisarlo.
     const registro: LlamadaHttp[] = [];

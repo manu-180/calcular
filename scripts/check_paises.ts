@@ -3,7 +3,8 @@
 // verificadoEl no futuro, fuentes primarias en lo verificado, requiere existente y del tipo correcto,
 // slugs únicos, conceptos canónicos, y que lo publicado se pueda publicar hoy.
 // Uso: npx tsx scripts/check_paises.ts [mercado]. PAISES_TOLERANTE=1 baja a aviso lo que depende
-// del día (un tramo que venció), para no frenar un deploy de AR por un vencimiento.
+// del día (un tramo que venció, un mercado publicado que hoy se quedó sin calculadoras publicables),
+// para no frenar un deploy de AR por un vencimiento. La estructura (URL http, solapes) sigue roja.
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { CONCEPTOS } from "../src/motor/conceptos";

@@ -4,6 +4,10 @@ import type { BandaSerie, FechaISO, PuntoSerie, PuntoSerieTupla, Serie } from ".
 // La UF se publica hasta el día 9 del mes siguiente: unos 40 días por adelantado como mucho.
 const MAX_DIAS_ADELANTO = 62;
 
+// Tolerancia de redondeo de punto flotante: 100.08 leído de un XML y 100.08 de un JSON pueden no ser
+// el mismo double. Más que esto ya es otro valor.
+export const iguales = (a: number, b: number) => Math.abs(a - b) <= 1e-9 * Math.max(1, Math.abs(a), Math.abs(b));
+
 export interface RevisionPuntos {
   aceptados: PuntoSerie[];
   rechazos: string[];
@@ -24,7 +28,7 @@ export function revisarPuntos(serie: Pick<Serie, "id" | "puntos">, nuevos: reado
     else if (p.valor < banda.min || p.valor > banda.max) rechazos.push(`${donde}: ${p.valor} fuera de la banda [${banda.min}, ${banda.max}]`);
     else if (anterior !== undefined && anterior !== 0 && Math.abs(p.valor / anterior - 1) > banda.saltoRelativoMax) {
       rechazos.push(`${donde}: salto de ${(Math.abs(p.valor / anterior - 1) * 100).toFixed(2)} % contra ${anterior} (máximo ${(banda.saltoRelativoMax * 100).toFixed(2)} %)`);
-    } else if (existentes.has(p.fecha) && existentes.get(p.fecha) !== p.valor) {
+    } else if (existentes.has(p.fecha) && !iguales(existentes.get(p.fecha)!, p.valor)) {
       rechazos.push(`${donde}: ya existe con otro valor (${existentes.get(p.fecha)}); una serie publicada no se reescribe sola`);
     } else if (p.fecha > sumarDias(hoy, MAX_DIAS_ADELANTO)) {
       rechazos.push(`${donde}: más de ${MAX_DIAS_ADELANTO} días en el futuro`);
