@@ -1,8 +1,13 @@
 // Corre los detectores de El Salvador contra la red real e imprime los hallazgos de cada uno.
 // Uso: npx tsx scripts/paises/sv/probar_detectores.ts
 import https from "node:https";
-import type { Http, OpcionesHttp } from "../../../src/motor/tipos";
+import { revisarPuntos } from "../../../src/motor/bandas";
+import type { Http, OpcionesHttp, PuntoSerie, Serie } from "../../../src/motor/tipos";
+import { fechaEnZona } from "../../../src/motor/vigencia";
 import { detectores, parsearFeedMh } from "../../../src/paises/sv/fuentes";
+import series from "../../../src/paises/sv/series.json";
+
+const hoy = fechaEnZona(new Date(), "America/El_Salvador");
 
 const NAVEGADOR = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36";
 
@@ -46,6 +51,15 @@ async function main() {
       if (r === null) {
         fallas++;
         console.log(`❌ ${d.id}: devolvió null (${ms} ms)`);
+        continue;
+      }
+      if (d.carril === "serie") {
+        const serie = series.series.find((s) => s.id === d.serie)!;
+        const puntos = r as PuntoSerie[];
+        const rev = revisarPuntos(serie as unknown as Serie, puntos.filter((p) => p.fecha > serie.puntos[serie.puntos.length - 1][0]), d.banda, hoy);
+        const iguales = puntos.filter((p) => serie.puntos.some(([f, v]) => f === p.fecha && v === p.valor)).length;
+        console.log(`✅ ${d.id}: ${puntos.length} puntos (${puntos[0]?.fecha} a ${puntos[puntos.length - 1]?.fecha}, último ${puntos[puntos.length - 1]?.valor}); ${iguales} iguales a series.json; ${rev.aceptados.length} nuevos, ${rev.rechazos.length} rechazos (${ms} ms)`);
+        for (const x of rev.rechazos) console.log(`   rechazo: ${x}`);
         continue;
       }
       const h = r as { titulo: string; url: string; fecha: string }[];

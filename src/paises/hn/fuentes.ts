@@ -26,6 +26,42 @@ export function leerTipoCambio(json: unknown): PuntoSerie[] | null {
   return puntos.filter((p, i) => i === 0 || p.fecha !== puntos[i - 1].fecha);
 }
 
+const URL_INFLACION =
+  "https://www.bch.hn/_api/web/lists(guid'de39aaba-3f0c-4a14-a5e5-ce7827f2ad4d')/items?$select=Fecha,Valor1,Valor2,Valor3&$top=500";
+const MES_CORTO: Readonly<Record<string, number>> = { ene: 1, feb: 2, mar: 3, abr: 4, may: 5, jun: 6, jul: 7, ago: 8, sep: 9, oct: 10, nov: 11, dic: 12 };
+
+// El nivel del IPC del BCH solo sale por su API con clave. Esta lista (la del indicador de la
+// portada) trae la inflación acumulada de cada mes desde enero 2021: el índice se arma encadenando
+// cada diciembre, con diciembre 2020 = 100. Acumulada y no mensual porque la mensual viene mezclada
+// con "pp" en 2022-2024 y porque así el redondeo no se arrastra mes a mes. Si falta un mes o la lista
+// ya no empieza en enero 2021, el índice cambiaría de base: mejor null que una serie corrida.
+export function reconstruirIpc(json: unknown): PuntoSerie[] | null {
+  if (typeof json !== "object" || json === null || !Array.isArray((json as { value?: unknown }).value)) return null;
+  const filas: { anio: number; mes: number; acumulada: number }[] = [];
+  for (const fila of (json as { value: unknown[] }).value) {
+    const { Fecha, Valor2 } = (fila ?? {}) as { Fecha?: unknown; Valor2?: unknown };
+    const m = typeof Fecha === "string" ? /^([A-Za-z]{3})\.?\s*(\d{4})$/.exec(Fecha.trim()) : null;
+    const mes = m ? MES_CORTO[m[1].toLowerCase()] : undefined;
+    const acumulada = typeof Valor2 === "string" ? Number(Valor2.replace(/%/g, "").trim()) : NaN;
+    if (!m || !mes || !Number.isFinite(acumulada)) return null;
+    filas.push({ anio: Number(m[2]), mes, acumulada });
+  }
+  filas.sort((a, b) => a.anio - b.anio || a.mes - b.mes);
+  if (filas.length === 0 || filas[0].anio !== 2021 || filas[0].mes !== 1) return null;
+  const puntos: PuntoSerie[] = [{ fecha: "2020-12-01", valor: 100 }];
+  let diciembre = 100;
+  for (let i = 0; i < filas.length; i++) {
+    const { anio, mes, acumulada } = filas[i];
+    if (anio * 12 + mes !== 2021 * 12 + 1 + i) return null;
+    const indice = diciembre * (1 + acumulada / 100);
+    const fecha = `${anio}-${String(mes).padStart(2, "0")}-01`;
+    if (!esFechaISO(fecha)) return null;
+    puntos.push({ fecha, valor: Number(indice.toFixed(4)) });
+    if (mes === 12) diciembre = indice;
+  }
+  return puntos;
+}
+
 function sinEntidades(s: string): string {
   return s
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
@@ -86,6 +122,18 @@ export const detectores: readonly Detector[] = [
     banda: { min: 24, max: 30, saltoRelativoMax: 0.03 },
     async traer(http) {
       return leerTipoCambio(await http.json(this.url, { encabezados: { Accept: "application/json;odata=nometadata" } }));
+    },
+  },
+  {
+    id: "hn.ipc-bch",
+    carril: "serie",
+    serie: "hn.ipc",
+    metodo: "api-json",
+    url: URL_INFLACION,
+    // Bandas: la mayor inflación mensual desde 2021 fue 1,7 % (abril 2026) y la interanual llegó a 10,9 % (julio 2022).
+    banda: { min: 120, max: 180, saltoRelativoMax: 0.04 },
+    async traer(http) {
+      return reconstruirIpc(await http.json(this.url, { encabezados: { Accept: "application/json;odata=nometadata" } }));
     },
   },
   {
