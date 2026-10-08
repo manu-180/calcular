@@ -24,6 +24,10 @@ import contenidoIva from "./contenido/iva";
 import contenidoSueldoMinimo from "./contenido/sueldo-minimo";
 import inflacion from "./calculadoras/inflacion";
 import contenidoInflacion from "./contenido/inflacion";
+import trabajadoraCasaParticular from "./calculadoras/trabajadora-de-casa-particular";
+import contenidoTrabajadoraCasaParticular from "./contenido/trabajadora-de-casa-particular";
+import costoEmpresa from "./calculadoras/costo-empresa";
+import contenidoCostoEmpresa from "./contenido/costo-empresa";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +52,8 @@ export default definirPais({
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: sueldoMinimo, contenido: contenidoSueldoMinimo, cliente: () => import("./calculadoras/sueldo-minimo.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: trabajadoraCasaParticular, contenido: contenidoTrabajadoraCasaParticular, cliente: () => import("./calculadoras/trabajadora-de-casa-particular.cliente") },
+    { definicion: costoEmpresa, contenido: contenidoCostoEmpresa, cliente: () => import("./calculadoras/costo-empresa.cliente") },
   ],
   novedades,
   detectores,
