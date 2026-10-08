@@ -8,6 +8,7 @@ import impuestoALaRenta from "./calculadoras/impuesto-a-la-renta";
 import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
+import rimpe from "./calculadoras/rimpe";
 import salarioBasico from "./calculadoras/salario-basico";
 import sueldoNeto from "./calculadoras/sueldo-neto";
 import trabajoDomestico from "./calculadoras/trabajo-domestico";
@@ -21,6 +22,7 @@ import contenidoImpuestoALaRenta from "./contenido/impuesto-a-la-renta";
 import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
+import contenidoRimpe from "./contenido/rimpe";
 import contenidoSalarioBasico from "./contenido/salario-basico";
 import contenidoSueldoNeto from "./contenido/sueldo-neto";
 import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
@@ -51,6 +53,7 @@ export default definirPais({
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
+    { definicion: rimpe, contenido: contenidoRimpe, cliente: () => import("./calculadoras/rimpe.cliente") },
   ],
   novedades,
   detectores,

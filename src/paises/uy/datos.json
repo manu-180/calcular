@@ -795,6 +795,86 @@
           }
         }
       ]
+    },
+    {
+      "id": "uy.monotributo-ficto",
+      "nombre": "Monotributo: monto gravado mínimo por titular (5 BFC)",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 9240,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Monotributo Ley 18.083: valores mínimos, empresas sin dependientes, vigencia enero 2026",
+            "url": "https://www.bps.gub.uy/bps/file/6668/23/monotributo-ley-18.083---2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.monotributo-jubilatorio",
+      "nombre": "Monotributo unipersonal sin dependientes: aportes jubilatorios y FRL por mes",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2088,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Monotributo Ley 18.083: valores mínimos, empresas sin dependientes, vigencia enero 2026",
+            "url": "https://www.bps.gub.uy/bps/file/6668/23/monotributo-ley-18.083---2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.monotributo-salud",
+      "nombre": "Monotributo unipersonal sin dependientes: aporte de salud por mes según cobertura y familia",
+      "tipo": "mapa",
+      "unidad": "UYU",
+      "etiquetas": {
+        "sin-snis": "Sin opción al SNIS (seguro de enfermedad)",
+        "snis": "Con SNIS, sin cónyuge ni hijos a cargo",
+        "snis-hijos": "Con SNIS, con hijos a cargo",
+        "snis-conyuge": "Con SNIS, con cónyuge a cargo",
+        "snis-conyuge-hijos": "Con SNIS, con cónyuge e hijos a cargo"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "sin-snis": 549,
+            "snis": 4239,
+            "snis-hijos": 4908,
+            "snis-conyuge": 5131,
+            "snis-conyuge-hijos": 5800
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Monotributo Ley 18.083: valores mínimos, empresas sin dependientes, vigencia enero 2026",
+            "url": "https://www.bps.gub.uy/bps/file/6668/23/monotributo-ley-18.083---2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Sin opción al SNIS se aporta el 8 % de una BPC por seguro de enfermedad, tenga o no hijos."
+          }
+        }
+      ]
     }
   ]
 }

@@ -8,6 +8,7 @@ import irpf from "./calculadoras/irpf";
 import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import liquidacionPorEgreso from "./calculadoras/liquidacion-por-egreso";
+import monotributo from "./calculadoras/monotributo";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioVacacional from "./calculadoras/salario-vacacional";
 import sueldoLiquido from "./calculadoras/sueldo-liquido";
@@ -21,6 +22,7 @@ import contenidoIrpf from "./contenido/irpf";
 import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacionPorEgreso from "./contenido/liquidacion-por-egreso";
+import contenidoMonotributo from "./contenido/monotributo";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioVacacional from "./contenido/salario-vacacional";
 import contenidoSueldoLiquido from "./contenido/sueldo-liquido";
@@ -51,6 +53,7 @@ export default definirPais({
     { definicion: dolarBcu, contenido: contenidoDolarBcu, cliente: () => import("./calculadoras/dolar-bcu.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
+    { definicion: monotributo, contenido: contenidoMonotributo, cliente: () => import("./calculadoras/monotributo.cliente") },
   ],
   novedades,
   detectores,
