@@ -3,12 +3,12 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cl.valor-uf",
   h1: "Valor de la UF hoy y conversor de UF a pesos",
-  title: "Valor UF hoy: convierte UF a pesos y pesos a UF",
+  title: "Valor UF hoy: {{cl.uf}}. Convierte UF a pesos",
   description:
-    "Convierte UF a pesos chilenos con el valor oficial del día que publica el SII. Sirve para arriendos, créditos hipotecarios, finiquitos y planes de Isapre.",
+    "La UF vale hoy {{cl.uf}}, según el SII. Convierte UF a pesos chilenos o pesos a UF para tu arriendo, crédito hipotecario, finiquito o plan de Isapre.",
   intro: [
-    "La UF (Unidad de Fomento) es una unidad de cuenta que sube con la inflación. Se usa para arriendos, créditos, seguros, planes de salud y topes legales.",
-    "Escribe un monto en UF y te mostramos cuántos pesos son hoy. También funciona al revés.",
+    "El valor de la UF hoy es {{cl.uf}}, según la tabla oficial del SII. La UF (Unidad de Fomento) sube con la inflación y cambia todos los días.",
+    "Se usa para arriendos, créditos, seguros, planes de salud y topes legales. Escribe un monto en UF y te mostramos cuántos pesos son hoy, o al revés.",
   ],
   comoSeCalcula: [
     "Tomamos el valor de la UF del día que publica el Servicio de Impuestos Internos (SII).",
@@ -17,6 +17,10 @@ export default definirContenido({
   ],
   ejemplo: ["Si un arriendo cuesta 15 UF y la UF vale $41.000, el arriendo de ese día es 15 × 41.000 = $615.000."],
   faq: [
+    {
+      pregunta: "¿Cuánto vale la UF hoy?",
+      respuesta: "{{cl.uf}}, según el valor diario que publica el SII.",
+    },
     {
       pregunta: "¿Por qué la UF cambia todos los días?",
       respuesta: "Porque se ajusta según la inflación (el IPC). El cambio se reparte día a día, así que sube o baja de a poco.",

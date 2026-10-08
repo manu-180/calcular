@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.finiquito",
-  h1: "Calculadora de finiquito",
-  title: "Calculadora de finiquito 2026: indemnización y vacaciones",
+  h1: "Calculadora de finiquito 2026 en Chile",
+  title: "Calculadora de finiquito 2026: años de servicio y vacaciones",
   description:
-    "Calcula tu finiquito: indemnización por años de servicio (tope de {{cl.tope-indemnizacion}}), aviso previo y vacaciones proporcionales, según el Código del Trabajo.",
+    "Calcula tu finiquito en Chile: indemnización por años de servicio (tope de {{cl.tope-indemnizacion}}), mes de aviso y vacaciones proporcionales. Pon tus fechas y tu sueldo.",
   intro: [
-    "El finiquito es el documento que cierra la relación laboral y detalla lo que te deben pagar.",
-    "Si te despiden por necesidades de la empresa, te corresponde la indemnización por años de servicio y, si no te avisaron con 30 días, un mes más por el aviso previo. Siempre se pagan las vacaciones que no tomaste.",
+    "Si te despiden por necesidades de la empresa, tu finiquito incluye {{cl.indemnizacion-dias-por-anio}} de remuneración por cada año trabajado y las vacaciones que no tomaste. Si no te avisaron con 30 días, se suma un mes más.",
+    "Si renuncias, solo se pagan las vacaciones y lo que se te deba del mes. El finiquito es el documento que cierra la relación laboral y detalla todo lo que te pagan.",
   ],
   comoSeCalcula: [
     "Indemnización por años de servicio: {{cl.indemnizacion-dias-por-anio}} de remuneración por cada año trabajado. Si después del último año trabajaste más de seis meses, cuenta como un año más.",
@@ -22,6 +22,10 @@ export default definirContenido({
     "Entraste el 1 de marzo de 2020 y te despiden el 15 de octubre de 2026 sin aviso, con $1.200.000 de remuneración. Son 6 años y 7 meses: se indemnizan 7 años, o sea $8.400.000, más $1.200.000 por el aviso previo y las vacaciones proporcionales.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto me corresponde de finiquito si me despiden?",
+      respuesta: "Por necesidades de la empresa, {{cl.indemnizacion-dias-por-anio}} de remuneración por año (hasta 11 años), un mes de aviso si no te avisaron con 30 días y tus vacaciones pendientes y proporcionales.",
+    },
     {
       pregunta: "¿Me corresponde indemnización si renuncio?",
       respuesta: "No. Con renuncia solo se pagan las vacaciones pendientes y proporcionales, y lo que se te deba del mes.",

@@ -4,7 +4,7 @@ export default definirCalculadora({
   id: "cl.boleta-honorarios",
   mercado: "cl",
   concepto: "retencion-honorarios",
-  slug: "boleta-honorarios",
+  slug: "boleta-de-honorarios",
   estado: "publicado",
   requiere: {
     "cl.retencion-honorarios": "numero",
