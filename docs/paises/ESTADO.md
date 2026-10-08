@@ -1,6 +1,6 @@
 # Estado de calcularya.com (multi-país)
 
-Última actualización: 2026-10-07 21:00 (segunda pausa pedida por Manuel; se retoma ~01:00 del 8/10).
+Última actualización: 2026-10-07 21:00 (segunda pausa). Plan de Manuel para el 8/10: 00:57 se retoma a pleno; 01:57 se empieza a frenar de forma segura (terminar lo que está en curso, nada a medias); 05:57 se retoma con todo y sin frenar.
 
 ## Rama de integración
 
