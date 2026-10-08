@@ -22,6 +22,8 @@ import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioNeto from "./contenido/salario-neto";
 import contenidoTasaDelDolar from "./contenido/tasa-del-dolar";
 import contenidoVacaciones from "./contenido/vacaciones";
+import inflacion from "./calculadoras/inflacion";
+import contenidoInflacion from "./contenido/inflacion";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -45,6 +47,7 @@ export default definirPais({
     { definicion: itbis, contenido: contenidoItbis, cliente: () => import("./calculadoras/itbis.cliente") },
     { definicion: tasaDelDolar, contenido: contenidoTasaDelDolar, cliente: () => import("./calculadoras/tasa-del-dolar.cliente") },
     { definicion: aportesTss, contenido: contenidoAportesTss, cliente: () => import("./calculadoras/aportes-tss.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
   ],
   novedades,
   detectores,

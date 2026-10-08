@@ -30,6 +30,43 @@ function detectorBccr(id: string, serie: string, indicador: number): DetectorSer
   };
 }
 
+const MESES: Readonly<Record<string, number>> = {
+  enero: 1,
+  febrero: 2,
+  marzo: 3,
+  abril: 4,
+  mayo: 5,
+  junio: 6,
+  julio: 7,
+  agosto: 8,
+  septiembre: 9,
+  setiembre: 9,
+  octubre: 10,
+  noviembre: 11,
+  diciembre: 12,
+};
+
+// Se redondea a 6 decimales para que la semilla de series.json y lo que trae el cron sean el mismo
+// número: el cron rechaza un punto ya publicado que vuelve con otro valor.
+const seisDecimales = (n: number) => Math.round(n * 1e6) / 1e6;
+
+// El cuadro 2732 del BCCR (nivel del IPC del INEC, base diciembre 2020 = 100) se exporta como una
+// tabla HTML con extensión xls. Cada fila empieza con «Mes/Año» y sigue con el nivel, en formato 93,36925676.
+export function parsearIpcBccr(html: string): PuntoSerie[] | null {
+  if (!html.includes("Nivel")) return null;
+  const texto = html.replace(/<[^>]*>/g, "|").replace(/&nbsp;/g, " ");
+  const puntos = new Map<string, number>();
+  for (const m of texto.matchAll(/([A-Za-z]+)\/(\d{4})[\s|]*(-?\d+,\d+)/g)) {
+    const mes = MESES[m[1].toLowerCase()];
+    const valor = Number(m[3].replace(",", "."));
+    if (!mes || !Number.isFinite(valor)) continue;
+    const f = `${m[2]}-${String(mes).padStart(2, "0")}-01`;
+    if (esFechaISO(f)) puntos.set(f, seisDecimales(valor));
+  }
+  if (puntos.size === 0) return null;
+  return [...puntos.entries()].sort(([a], [b]) => (a < b ? -1 : 1)).map(([fecha, valor]) => ({ fecha: fecha as PuntoSerie["fecha"], valor }));
+}
+
 const BUSQUEDA_SINALEVI =
   "https://sinalevi.go.cr/BusquedaSimple/Resultados?pagina=1&radioBtnGroup=1&opcionSelected=1&textAnnio=&selectedBuscarEn=F&TipoNorma_input=&TipoNorma=&TipoPronunciamiento=&ClaseAsunto_input=&ClaseAsunto=&cantidadResultados=-1&textBuscar=";
 
@@ -76,6 +113,18 @@ function detectorSinalevi(
 export const detectores: readonly Detector[] = [
   detectorBccr("cr.bccr-compra", "cr.tipo-cambio-compra", 317),
   detectorBccr("cr.bccr-venta", "cr.tipo-cambio-venta", 318),
+  {
+    id: "cr.bccr-ipc",
+    carril: "serie",
+    serie: "cr.ipc",
+    metodo: "html",
+    url: "https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=2732&Idioma=1&FecInicial=2025/01/01&FecFinal=2035/12/31&Filtro=0&Exportar=True",
+    banda: { min: 90, max: 140, saltoRelativoMax: 0.03 },
+    async traer(http) {
+      const puntos = parsearIpcBccr(await http.texto(this.url));
+      return puntos ? puntos.slice(-12) : null;
+    },
+  },
   detectorSinalevi(
     "cr.sinalevi-salarios-minimos",
     ["cr.salario-minimo-mes", "cr.salario-minimo-jornada"],
