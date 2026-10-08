@@ -65,6 +65,7 @@ export type Compra = {
   fecha: string;
   producto: string;
   monto: number;
+  moneda: string;
   emailEnmascarado: string;
   conCuenta: boolean;
   desde: string | null;
@@ -81,6 +82,16 @@ export type Cuentas = {
 
 export type EnVivo = { ahora: number; paginas: Reparto[] };
 
+export type Importe = { moneda: string; monto: number };
+
+export type FilaMercado = {
+  mercado: string;
+  visitantes: number;
+  usos: number;
+  ventas: number;
+  ingresos: Importe[];
+};
+
 export type Lectura = {
   id: string;
   tono: "oportunidad" | "alerta" | "logro" | "dato";
@@ -91,6 +102,8 @@ export type Lectura = {
 
 export type PanelDatos = {
   rango: Rango;
+  // null = todos los sitios. Lo que de verdad filtró la base, no lo que se pidió.
+  mercado: string | null;
   desde: string;
   hasta: string;
   generado: string;
@@ -105,6 +118,8 @@ export type PanelDatos = {
   compras: Compra[];
   cuentas: Cuentas;
   vivo: EnVivo;
+  // null = la base todavía no tiene la migración de mercado: sólo hay calcular.ar.
+  mercados: FilaMercado[] | null;
   lecturas: Lectura[];
   sinDatos: boolean;
 };

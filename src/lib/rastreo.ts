@@ -1,4 +1,6 @@
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
+import type { Sitio } from "@/lib/medicion/mercados";
+import { origenIntl } from "@/motor/sitio";
 
 export const TIPOS_EVENTO = [
   "vista_oferta",
@@ -35,6 +37,11 @@ const DESTINO = "/api/e";
 const PRIVADA = /^\/(dashboard|cuenta|login|registro|recuperar|auth)(\/|$)/;
 const INACTIVO = 30_000;
 const SESION = 1_800_000;
+const ORIGEN_INTL = origenIntl();
+const HOST_INTL = ORIGEN_INTL ? new URL(ORIGEN_INTL).hostname : null;
+
+export type ContextoVista = { sitio: Sitio; mercado: string };
+const CONTEXTO_AR: ContextoVista = { sitio: "ar", mercado: "ar" };
 
 let estado = 0;
 let vid = "";
@@ -59,6 +66,7 @@ let errores = 0;
 let campo: EventTarget | null = null;
 let midiendo = false;
 let ultimoCierre = "";
+let contexto: ContextoVista = CONTEXTO_AR;
 
 const local = () => localStorage;
 const sesionAlmacen = () => sessionStorage;
@@ -104,7 +112,9 @@ function enviar() {
   timer = undefined;
   if (estado !== 1) return;
   while (cola.length) {
-    const cuerpo = JSON.stringify({ vid, sid, i: cola.splice(0, 10) });
+    const lote: Item = { vid, sid, i: cola.splice(0, 10) };
+    if (contexto.sitio === "intl") lote.s = "intl";
+    const cuerpo = JSON.stringify(lote);
     if (!navigator.sendBeacon?.(DESTINO, new Blob([cuerpo], { type: "text/plain" }))) {
       fetch(DESTINO, { method: "POST", body: cuerpo, keepalive: true, headers: { "Content-Type": "text/plain" } }).catch(() => {});
     }
@@ -115,6 +125,7 @@ export function rastrear(tipo: TipoEvento, datos: DatosEvento = {}): void {
   if (!CUENTAS_ACTIVAS || estado === 2 || typeof window === "undefined" || cola.length > 50) return;
   const it: Item = { t: "e", k: tipo, p: normalizarRuta(location.pathname) };
   if (vista) it.v = vista;
+  if (contexto.sitio === "intl") it.m = contexto.mercado;
   if (datos.producto) it.pr = datos.producto;
   if (datos.valor != null) it.va = datos.valor;
   if (datos.props && Object.keys(datos.props).length) it.pp = datos.props;
@@ -236,7 +247,7 @@ export function iniciar(): void {
     !CUENTAS_ACTIVAS ||
     navigator.webdriver ||
     !globalThis.crypto?.randomUUID ||
-    (location.hostname !== "calcular.ar" && !forzado) ||
+    (location.hostname !== "calcular.ar" && location.hostname !== HOST_INTL && !forzado) ||
     leer(local, "ca_no_medir") === "1"
   ) {
     estado = 2;
@@ -275,7 +286,7 @@ export function iniciar(): void {
   addEventListener("pagehide", cerrar);
 }
 
-export function abrirVista(pathname: string): void {
+export function abrirVista(pathname: string, ctx: ContextoVista = CONTEXTO_AR): void {
   const p = normalizarRuta(pathname);
   if (estado !== 1 || p === ruta) return;
   if (PRIVADA.test(p)) {
@@ -314,6 +325,7 @@ export function abrirVista(pathname: string): void {
   escribir(sesionAlmacen, "ca_src", JSON.stringify(fuente));
 
   ruta = p;
+  contexto = ctx;
   vista = crypto.randomUUID();
   const ya = performance.now();
   activo = n = scroll = errores = 0;
@@ -323,7 +335,7 @@ export function abrirVista(pathname: string): void {
   visible = !document.hidden;
   ofertas = new Set();
   for (const it of cola) if (it.t === "e" && !it.v) it.v = vista;
-  cola.push({ t: "v", id: vista, p, ...fuente });
+  cola.push(ctx.sitio === "intl" ? { t: "v", id: vista, p, ...fuente, m: ctx.mercado } : { t: "v", id: vista, p, ...fuente });
   clearTimeout(timer);
   timer = setTimeout(enviar, 50);
 

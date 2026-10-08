@@ -1,5 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
+import { esMercadoIntl, mercadoDeRuta, type Sitio } from "@/lib/medicion/mercados";
 import { esTipoEvento, limpiarRuta, type TipoEvento } from "@/lib/rastreo";
+import { origenIntl } from "@/motor/sitio";
 
 export const MAX_CUERPO = 8192;
 export const MAX_ITEMS = 20;
@@ -22,6 +24,8 @@ export type FilaVista = {
   utm_campaign: string | null;
   dispositivo: Dispositivo;
   pais: string | null;
+  sitio?: "intl";
+  mercado?: string;
 };
 
 export type ArgsCierre = {
@@ -44,9 +48,13 @@ export type FilaEvento = {
   valor: number | null;
   props: Props | null;
   user_id: string | null;
+  sitio?: "intl";
+  mercado?: string;
 };
 
-export type Contexto = { dispositivo: Dispositivo; pais: string | null };
+// Las filas de calcular.ar no llevan sitio ni mercado: la base pone 'ar' por defecto, y así el
+// insert anda igual antes y después de la migración 20261008120000.
+export type Contexto = { dispositivo: Dispositivo; pais: string | null; sitio?: Sitio };
 
 export type Lote = {
   vistas: FilaVista[];
@@ -60,7 +68,7 @@ const HOST = /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,6
 const PRODUCTO = /^[a-z0-9-]{1,40}$/;
 const CLAVE_PROP = /^[a-z_][a-z0-9_]{0,23}$/;
 const EMAIL = /[^\s@<>()[\]]+@[^\s@<>()[\]]+\.[a-z]{2,}/gi;
-const HOSTS_PROPIOS = /(^|\.)calcular\.ar$|^localhost$|\.vercel\.app$/;
+const HOSTS_PROPIOS = /(^|\.)calcular\.ar$|(^|\.)calcularya\.com$|^localhost$|\.vercel\.app$/;
 
 export function esUuid(x: unknown): x is string {
   return typeof x === "string" && UUID.test(x);
@@ -126,7 +134,11 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
   if (!esUuid(vid) || !esUuid(sid)) return { error: "ids" };
   if (!Array.isArray(i) || i.length === 0 || i.length > MAX_ITEMS) return { error: "items" };
 
+  const intl = ctx.sitio === "intl";
   const lote: Lote = { vistas: [], cierres: [], eventos: [], descartados: [] };
+  const mercadoOk = (m: unknown) => !intl || m === undefined || esMercadoIntl(m);
+  const delMercado = (m: unknown, path: string | null) =>
+    intl ? { sitio: "intl" as const, mercado: esMercadoIntl(m) ? m : mercadoDeRuta(path ?? "/") } : {};
   const cierres = new Map<string, ArgsCierre>();
 
   for (const it of i) {
@@ -136,7 +148,7 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
     }
     if (it.t === "v") {
       const path = limpiarPath(it.p);
-      if (!esUuid(it.id) || !path || lote.vistas.length >= MAX_VISTAS) {
+      if (!esUuid(it.id) || !path || lote.vistas.length >= MAX_VISTAS || !mercadoOk(it.m)) {
         lote.descartados.push("vista");
         continue;
       }
@@ -151,6 +163,7 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
         utm_campaign: limpiarUtm(it.uc),
         dispositivo: ctx.dispositivo,
         pais: ctx.pais,
+        ...delMercado(it.m, path),
       });
     } else if (it.t === "x") {
       const a = entero(it.a, TOPE_ACTIVO_MS);
@@ -175,7 +188,7 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
       const valorOk = it.va === undefined || (typeof it.va === "number" && Number.isFinite(it.va) && Math.abs(it.va) <= 1e10);
       const productoOk = it.pr === undefined || (typeof it.pr === "string" && PRODUCTO.test(it.pr));
       const vistaOk = it.v === undefined || esUuid(it.v);
-      if (!esTipoEvento(it.k) || (it.p !== undefined && !path) || props === undefined || !valorOk || !productoOk || !vistaOk) {
+      if (!esTipoEvento(it.k) || (it.p !== undefined && !path) || props === undefined || !valorOk || !productoOk || !vistaOk || !mercadoOk(it.m)) {
         lote.descartados.push("evento");
         continue;
       }
@@ -189,6 +202,7 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
         valor: typeof it.va === "number" ? it.va : null,
         props,
         user_id: null,
+        ...delMercado(it.m, path),
       });
     } else {
       lote.descartados.push("tipo");
@@ -222,11 +236,32 @@ export function pais(x: string | null): string | null {
 const ORIGENES_PROD = ["https://calcular.ar", "https://www.calcular.ar"];
 const ORIGENES_DEV = ["http://localhost:3107", "http://localhost:3000", "http://127.0.0.1:3107"];
 
+function variantes(origen: string | null): string[] {
+  if (!origen) return [];
+  const u = new URL(origen);
+  if (u.hostname.startsWith("www.")) return [origen];
+  return [origen, `${u.protocol}//www.${u.host}`];
+}
+
+const coincide = (lista: readonly string[], origin: string | null, referer: string | null) =>
+  origin ? lista.includes(origin) : !!referer && lista.some((o) => referer === o || referer.startsWith(`${o}/`));
+
+// El sitio sale del Origin (o del Referer), nunca del cuerpo: en producción calcularya no puede
+// escribir filas de calcular.ar ni al revés. "dev" deja que el cuerpo lo diga, sólo en next dev.
+export function sitioDeOrigen(
+  origin: string | null,
+  referer: string | null,
+  dev: boolean,
+  origenesIntl: readonly string[] = variantes(origenIntl()),
+): Sitio | "dev" | null {
+  if (coincide(ORIGENES_PROD, origin, referer)) return "ar";
+  if (origenesIntl.length && coincide(origenesIntl, origin, referer)) return "intl";
+  if (dev && coincide(ORIGENES_DEV, origin, referer)) return "dev";
+  return null;
+}
+
 export function origenPermitido(origin: string | null, referer: string | null, dev: boolean): boolean {
-  const permitidos = dev ? [...ORIGENES_PROD, ...ORIGENES_DEV] : ORIGENES_PROD;
-  if (origin) return permitidos.includes(origin);
-  if (!referer) return false;
-  return permitidos.some((o) => referer === o || referer.startsWith(`${o}/`));
+  return sitioDeOrigen(origin, referer, dev) !== null;
 }
 
 // El límite vive en memoria de la instancia y con la IP hasheada con una sal que nunca sale

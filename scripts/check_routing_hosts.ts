@@ -55,11 +55,12 @@ interface Respuesta {
   cuerpo: string;
 }
 
-function pedir(base: string, host: string, ruta: string, cookie?: string): Promise<Respuesta> {
+function pedir(base: string, host: string, ruta: string, cookie?: string, post?: { origin: string; cuerpo: string }): Promise<Respuesta> {
   const u = new URL(ruta, base);
   return new Promise((resolver, rechazar) => {
+    const extra = post ? { origin: post.origin, "content-type": "text/plain", "content-length": String(Buffer.byteLength(post.cuerpo)) } : {};
     const req = http.request(
-      { hostname: u.hostname, port: u.port, path: u.pathname + u.search, method: "GET", headers: { host, "user-agent": "check_routing_hosts", ...(cookie ? { cookie } : {}) } },
+      { hostname: u.hostname, port: u.port, path: u.pathname + u.search, method: post ? "POST" : "GET", headers: { host, "user-agent": "check_routing_hosts", ...(cookie ? { cookie } : {}), ...extra } },
       (res) => {
         const partes: Buffer[] = [];
         res.on("data", (c: Buffer) => partes.push(c));
@@ -75,7 +76,7 @@ function pedir(base: string, host: string, ruta: string, cookie?: string): Promi
       },
     );
     req.on("error", rechazar);
-    req.end();
+    req.end(post?.cuerpo);
   });
 }
 
@@ -84,6 +85,7 @@ interface Fila {
   host: string;
   ruta: string;
   cookie?: string;
+  post?: { origin: string; cuerpo: string };
   status: number;
   location?: string;
   contiene?: readonly string[];
@@ -141,6 +143,12 @@ async function main() {
   const cuentasActivas = process.env.NEXT_PUBLIC_CUENTAS_ACTIVAS === "1";
   const intl = ORIGEN_INTL!.replace(/\/$/, "");
   const MARCA_AR = 'lang="es-AR"';
+  // Lote válido con ids que no existen: con las cuentas apagadas o sin base, /api/e igual responde 204.
+  const MEDICION = JSON.stringify({
+    vid: "00000000-0000-4000-8000-00000000c4ec",
+    sid: "00000000-0000-4000-8000-00000000c4ed",
+    i: [{ t: "x", id: "00000000-0000-4000-8000-00000000c4ee", a: 0, n: 0, s: 0, u: false }],
+  });
 
   const filas: Fila[] = [
     { nombre: "AR: página AR", host: HOST_AR, ruta: "/aguinaldo", status: 200, contiene: [MARCA_AR] },
@@ -179,6 +187,12 @@ async function main() {
     { nombre: "intl: api de cuenta", host: HOST_INTL, ruta: "/api/cuenta/calculos", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: api de cuenta sin ruta", host: HOST_INTL, ruta: "/api/cuenta", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: api de checkout", host: HOST_INTL, ruta: "/api/mp/checkout", status: 404, noContiene: [MARCA_AR] },
+    // La medición sí existe en calcularya: el GET llega a la ruta (405, sólo acepta POST) y el POST
+    // con Origin de calcularya responde el 204 de siempre. Un prefijo parecido sigue en el 404.
+    { nombre: "intl: medición (GET)", host: HOST_INTL, ruta: "/api/e", status: 405, noContiene: [MARCA_AR] },
+    { nombre: "intl: medición (POST)", host: HOST_INTL, ruta: "/api/e", post: { origin: intl, cuerpo: MEDICION }, status: 204 },
+    { nombre: "intl: api parecida a la medición", host: HOST_INTL, ruta: "/api/eventos", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "AR: medición (POST)", host: HOST_AR, ruta: "/api/e", post: { origin: "https://calcular.ar", cuerpo: MEDICION }, status: 204 },
     { nombre: "preview: api de cuenta con cookie", host: "calcular-ar-git-x.vercel.app", ruta: "/api/cuenta", cookie: "sitio=intl", status: 404, noContiene: [MARCA_AR] },
     ...(cuentasActivas
       ? []
@@ -208,7 +222,7 @@ async function main() {
     else fallas.push("intl: la calculadora no trae ningún <script src=/_next/static/...>");
 
     for (const f of filas) {
-      const r = await pedir(base, f.host, f.ruta, f.cookie);
+      const r = await pedir(base, f.host, f.ruta, f.cookie, f.post);
       const problemas: string[] = [];
       if (r.status !== f.status) problemas.push(`status ${r.status}, se esperaba ${f.status}`);
       if (f.location !== undefined && r.location !== f.location) problemas.push(`location ${r.location}, se esperaba ${f.location}`);

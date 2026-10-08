@@ -25,6 +25,22 @@ export function pesos(n: number): string {
   return moneda.format(Math.round(n));
 }
 
+const monedas = new Map<string, Intl.NumberFormat>();
+
+export function importe(n: number, moneda: string): string {
+  if (moneda === "ARS") return pesos(n);
+  let f = monedas.get(moneda);
+  if (!f) {
+    try {
+      f = new Intl.NumberFormat("es-AR", { style: "currency", currency: moneda, currencyDisplay: "code", maximumFractionDigits: 2 });
+    } catch {
+      f = entero;
+    }
+    monedas.set(moneda, f);
+  }
+  return f.format(n);
+}
+
 export function pesosCompacto(n: number): string {
   if (Math.abs(n) < 1000) return pesos(n);
   return `$${NBSP}${compacto(n)}`;

@@ -18,6 +18,7 @@ import {
   limpiarUtm,
   origenPermitido,
   pais,
+  sitioDeOrigen,
   validarLote,
   type Lote,
 } from "../src/app/api/e/protocolo";
@@ -332,6 +333,43 @@ async function main() {
     assert.ok(!origenPermitido(null, null, false));
     assert.ok(!origenPermitido("http://localhost:3107", null, false), "localhost en producción");
     assert.ok(origenPermitido("http://localhost:3107", null, true));
+  });
+  await prueba("sitio por origen: calcularya es intl, calcular.ar es ar, el cuerpo no decide en producción", () => {
+    const intl = ["https://calcularya.com", "https://www.calcularya.com"];
+    assert.equal(sitioDeOrigen("https://calcular.ar", null, false, intl), "ar");
+    assert.equal(sitioDeOrigen("https://calcularya.com", null, false, intl), "intl");
+    assert.equal(sitioDeOrigen("https://www.calcularya.com", null, false, intl), "intl");
+    assert.equal(sitioDeOrigen(null, "https://calcularya.com/mx/aguinaldo", false, intl), "intl");
+    assert.equal(sitioDeOrigen(null, "https://calcularya.com.evil.example/", false, intl), null);
+    assert.equal(sitioDeOrigen("https://calcularya.com", null, false, []), null, "sin sitio intl prendido no se acepta");
+    assert.equal(sitioDeOrigen("http://localhost:3107", null, true, intl), "dev");
+    assert.equal(sitioDeOrigen("http://localhost:3107", null, false, intl), null);
+  });
+  await prueba("intl: vistas y eventos llevan sitio y mercado validados; AR no lleva columnas", () => {
+    const intl = { ...ctx, sitio: "intl" as const };
+    const r = ok(
+      validarLote(
+        lote([
+          { t: "v", id: VISTA, p: "/mx/aguinaldo", m: "mx" },
+          { t: "e", k: "compartir", p: "/mx/aguinaldo", m: "mx" },
+          { t: "e", k: "busqueda", p: "/do/salario" },
+          { t: "e", k: "imprimir" },
+          { t: "v", id: VISTA.replace("3333-4", "4444-4"), p: "/", m: "global" },
+        ]),
+        intl,
+      ),
+    );
+    assert.deepEqual(r.vistas.map((v) => [v.path, v.sitio, v.mercado]), [["/mx/aguinaldo", "intl", "mx"], ["/", "intl", "global"]]);
+    assert.deepEqual(r.eventos.map((e) => [e.sitio, e.mercado]), [["intl", "mx"], ["intl", "do"], ["intl", "global"]], "sin m, sale del path");
+    const malos = ok(validarLote(lote([{ t: "v", id: VISTA, p: "/x", m: "zz" }, { t: "e", k: "imprimir", m: "ar" }, { t: "e", k: "imprimir", m: "MX" }]), intl));
+    assert.deepEqual([malos.vistas.length, malos.eventos.length, malos.descartados], [0, 0, ["vista", "evento", "evento"]], "zz, ar o mayúsculas no pasan");
+    const ar = ok(validarLote(lote([{ t: "v", id: VISTA, p: "/mx/aguinaldo", m: "mx" }, { t: "e", k: "imprimir", m: "mx" }]), ctx));
+    assert.ok(!("sitio" in ar.vistas[0]) && !("mercado" in ar.vistas[0]), "en AR el m del cliente se ignora");
+    assert.ok(!("sitio" in ar.eventos[0]) && !("mercado" in ar.eventos[0]));
+  });
+  await prueba("calcularya como referer no es una fuente", () => {
+    assert.equal(limpiarHost("calcularya.com"), null);
+    assert.equal(limpiarHost("www.calcularya.com"), null);
   });
   await prueba("límite por minuto por cliente, y se reinicia en la ventana siguiente", () => {
     const k = claveCliente("203.0.113.9");

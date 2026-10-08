@@ -17,6 +17,7 @@ import { Kpis } from "./Kpis";
 import { Lecturas } from "./Lecturas";
 import { META_KPI, TARJETAS } from "./meta";
 import { Origen } from "./Origen";
+import { PorPais } from "./paises";
 import { SinDatos } from "./SinDatos";
 import { usePanelDatos } from "./usePanelDatos";
 
@@ -115,10 +116,13 @@ export default function Panel({ inicial, demo }: { inicial: PanelDatos; demo: st
         <Encabezado
           datos={datos}
           rango={rango}
+          mercado={p.mercado}
           pendientes={p.pendientes}
           cargando={p.cargando}
           demo={demo}
           onRango={p.cambiarRango}
+          onMercado={p.cambiarMercado}
+          onPrecargar={p.precargarMercado}
           onActualizar={() => void p.actualizar()}
         />
 
@@ -140,6 +144,9 @@ export default function Panel({ inicial, demo }: { inicial: PanelDatos; demo: st
           className={`space-y-10 transition-opacity duration-300 sm:space-y-12 ${p.esDeOtroRango ? "opacity-50" : ""}`}
           aria-busy={p.esDeOtroRango}
         >
+          {datos.mercados && datos.mercados.length > 0 ? (
+            <PorPais datos={datos} mercado={p.mercado} onMercado={p.cambiarMercado} onPrecargar={p.precargarMercado} />
+          ) : null}
           {datos.sinDatos ? (
             <SinDatos rango={rango} />
           ) : (
