@@ -10,6 +10,7 @@ import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import quinquenio from "./calculadoras/quinquenio";
 import rcIva from "./calculadoras/rc-iva";
+import regimenSimplificado from "./calculadoras/regimen-simplificado";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import sueldoLiquido from "./calculadoras/sueldo-liquido";
 import ufv from "./calculadoras/ufv";
@@ -24,6 +25,7 @@ import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoQuinquenio from "./contenido/quinquenio";
 import contenidoRcIva from "./contenido/rc-iva";
+import contenidoRegimenSimplificado from "./contenido/regimen-simplificado";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSueldoLiquido from "./contenido/sueldo-liquido";
 import contenidoUfv from "./contenido/ufv";
@@ -54,6 +56,7 @@ export default definirPais({
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: horasExtras, contenido: contenidoHorasExtras, cliente: () => import("./calculadoras/horas-extras.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: regimenSimplificado, contenido: contenidoRegimenSimplificado, cliente: () => import("./calculadoras/regimen-simplificado.cliente") },
   ],
   novedades,
   detectores,
