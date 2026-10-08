@@ -4,7 +4,7 @@ import path from "node:path";
 import type { NextConfig } from "next";
 import { reglasPorHost } from "./src/motor/hosts";
 import { PAGINAS_GLOBALES } from "./src/motor/paginas";
-import { modoPublicacion, origenAR, origenIntl } from "./src/motor/sitio";
+import { entornoDePrueba, modoPublicacion, origenAR, origenIntl } from "./src/motor/sitio";
 
 const HOY_BUILD =
   process.env.CALCULAR_HOY ||
@@ -25,9 +25,26 @@ const RUTAS_AR = readdirSync(path.join(__dirname, "src", "app", "(ar)"), { withF
 // No se importa directo: el loader de next.config.ts compila los imports de alias (`@/motor/...`,
 // que usan los países) como relativos a la raíz y no al archivo, y revienta. tsx sí los resuelve.
 // Corre solo con el sitio intl prendido: sin la variable, calcular.ar no paga este medio segundo.
+// En producción, un país "publicado" con errores de datos corta el build: el registro lo oculta
+// (mercadoVisible) y sin este corte desaparecía de calcularya.com con el build en verde.
 function mercadosDelRegistro(modo: string): string[] {
-  const codigo = `const m = await import("./src/paises/index.ts"); const r = m.registro ?? m.default.registro; process.stdout.write(JSON.stringify(r.mercados(${JSON.stringify(modo)}).map((x) => x.codigo)));`;
-  const salida = execFileSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", codigo], { cwd: __dirname, encoding: "utf8" });
+  const codigo = `const m = await import("./src/paises/index.ts");
+const r = m.registro ?? m.default.registro;
+const modo = ${JSON.stringify(modo)};
+const rotos = modo === "produccion" ? r.paises.filter((p) => p.mercado.estado === "publicado" && p.errores.length) : [];
+if (rotos.length) {
+  for (const p of rotos) console.error(p.mercado.codigo + " (" + p.mercado.nombre + ") tiene " + p.errores.length + " errores de datos:", p.errores);
+  process.exit(1);
+}
+process.stdout.write(JSON.stringify(r.mercados(modo).map((x) => x.codigo)));`;
+  let salida: string;
+  try {
+    salida = execFileSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", codigo], { cwd: __dirname, encoding: "utf8", stdio: ["ignore", "pipe", "inherit"] });
+  } catch {
+    throw new Error(
+      "calcularya: hay países publicados con errores de datos (detalle arriba). Corregí los datos o pasá el país a estado \"interno\"; el build no sigue para que no desaparezca en silencio de producción.",
+    );
+  }
   return (JSON.parse(salida) as string[]).filter((c) => c !== "global");
 }
 
@@ -39,8 +56,8 @@ const REGLAS_HOSTS = reglasPorHost({
   paginasGlobales: PAGINAS_GLOBALES,
   rutasAR: RUTAS_AR,
   // La cookie sitio=intl (la pone /api/dev/sitio) deja ver calcularya en los previews de *.vercel.app.
-  // El build de producción nunca lleva estas reglas.
-  cookiePreview: process.env.VERCEL_ENV !== "production",
+  // Solo previews y next dev: cualquier otro build (producción incluida) nunca lleva estas reglas.
+  cookiePreview: entornoDePrueba(),
 });
 
 const nextConfig: NextConfig = {

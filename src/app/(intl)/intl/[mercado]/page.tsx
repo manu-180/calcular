@@ -6,6 +6,9 @@ import { contextoSitio } from "@/motor/ui/contexto";
 import { InicioGlobal, InicioPais } from "@/motor/ui/Inicio";
 import { registro } from "@/paises";
 
+// Home del país: lista calculadoras según la fecha del mercado (ver revalidate en layout.tsx).
+export const revalidate = 3600;
+
 type Props = { params: Promise<{ mercado: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

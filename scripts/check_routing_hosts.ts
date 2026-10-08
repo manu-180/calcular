@@ -7,10 +7,12 @@
 //   npx -y tsx scripts/check_routing_hosts.ts --base <url>     server ya levantado
 //
 // El build tiene que haber salido con NEXT_PUBLIC_SITIO_INTL_URL definida (las reglas se hornean en
-// el build) y la misma variable tiene que estar en el entorno de este script. Sin --start ni
-// --base sale 0 con "omitido": check-all corre sin server.
+// el build) y la misma variable tiene que estar en el entorno de este script. También con
+// VERCEL_ENV=preview: la fila de la cookie y el mercado elegido (zz) son de modo interno, y fuera
+// de un preview o de next dev el build es de producción (entornoDePrueba en src/motor/sitio.ts).
+// Sin --start ni --base corre solo el chequeo de carpetas de (ar) y sale: check-all corre sin server.
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import type { Registro } from "../src/motor/registro";
@@ -22,8 +24,17 @@ const iBase = args.indexOf("--base");
 const baseArg = iBase >= 0 ? args[iBase + 1] : undefined;
 const iniciar = args.includes("--start");
 
+// next.config.ts arma la lista de rutas AR que redirigen desde calcularya con las carpetas de
+// primer nivel de src/app/(ar) que empiezan con letra o número. Un grupo "(x)" o un dinámico "[x]"
+// ahí quedaría fuera de esa lista y sus páginas se servirían con la marca AR en el dominio intl.
+const raras = readdirSync(path.join(RAIZ, "src", "app", "(ar)"), { withFileTypes: true }).filter((d) => d.isDirectory() && /^[([]/.test(d.name));
+if (raras.length) {
+  console.error(`❌ src/app/(ar) tiene carpetas de primer nivel que el ruteo por host no ve: ${raras.map((d) => d.name).join(", ")}`);
+  process.exit(1);
+}
+
 if (!baseArg && !iniciar) {
-  console.log("check_routing_hosts: omitido (necesita --start sobre un build o --base <url>)");
+  console.log("check_routing_hosts: carpetas de (ar) OK; ruteo omitido (necesita --start sobre un build o --base <url>)");
   process.exit(0);
 }
 
@@ -155,6 +166,18 @@ async function main() {
     { nombre: "intl: sitemap de global", host: HOST_INTL, ruta: "/sitemap-global.xml", status: 200, contiene: [`<loc>${intl}/privacidad</loc>`] },
     { nombre: "intl: archivo de public", host: HOST_INTL, ruta: "/ads.txt", status: 200 },
     { nombre: "intl: api compartida", host: HOST_INTL, ruta: "/api/geo", status: 200, contiene: ['"pais"'], cache: "private, no-store" },
+    { nombre: "intl: api de AR", host: HOST_INTL, ruta: "/api/subscribe", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "intl: api de AR anidada", host: HOST_INTL, ruta: "/api/planilla-comercio/download", status: 404, noContiene: [MARCA_AR] },
+    // Sin noContiene: src/proxy.ts corre antes que los rewrites y, con las cuentas apagadas, manda
+    // /api/cuenta al 404 de AR. Con las cuentas prendidas pasa y cae en el 404 intl.
+    { nombre: "intl: api de cuenta", host: HOST_INTL, ruta: "/api/cuenta/calculos", status: 404 },
+    { nombre: "intl: api de cuenta sin ruta", host: HOST_INTL, ruta: "/api/cuenta", status: 404 },
+    { nombre: "intl: og de AR", host: HOST_INTL, ruta: "/og", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "intl: og de AR con path", host: HOST_INTL, ruta: "/og/x", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "intl: llms.txt propio", host: HOST_INTL, ruta: "/llms.txt", status: 200, contiene: ["# CalcularYa", `${intl}/${m}`], noContiene: ["calcular.ar", "\u2014"] },
+    { nombre: "intl: dev/sitio en preview", host: HOST_INTL, ruta: "/api/dev/sitio", status: 200, contiene: ['method="post"'] },
+    { nombre: "AR: llms.txt", host: HOST_AR, ruta: "/llms.txt", status: 200, contiene: ["# CalculAR"] },
+    { nombre: "AR: api sigue", host: HOST_AR, ruta: "/api/geo", status: 200, contiene: ['"pais"'] },
     { nombre: "preview: cookie sitio=intl", host: "calcular-ar-git-x.vercel.app", ruta: `/${m}/${slug}`, cookie: "sitio=intl", status: 200, contiene: ["cy-calc"] },
   ];
 

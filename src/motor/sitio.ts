@@ -26,9 +26,16 @@ export function intlActivo(): boolean {
   return origenIntl() !== null;
 }
 
-// zz y los mercados en estado "interno" solo existen fuera de producción (previews y local).
+// Allowlist y no `VERCEL_ENV !== "production"`: un build sin la variable (otro proveedor, un
+// `npm run build` suelto, una variable mal escrita) tiene que caer del lado de producción, nunca
+// abrir zz, la cookie sitio=intl o el país simulado.
+export function entornoDePrueba(): boolean {
+  return process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
+}
+
+// zz y los mercados en estado "interno" solo existen en previews y en `next dev`.
 export function modoPublicacion(): ModoPublicacion {
-  return process.env.VERCEL_ENV === "production" ? "produccion" : "interno";
+  return entornoDePrueba() ? "interno" : "produccion";
 }
 
 // hreflang hacia y desde calcular.ar cambia el HTML de AR: queda apagado hasta que Manuel lo apruebe

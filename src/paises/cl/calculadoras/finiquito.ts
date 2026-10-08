@@ -46,6 +46,7 @@ export default definirCalculadora({
       tipo: "numero",
       etiqueta: "Días hábiles de vacaciones de años anteriores sin tomar",
       min: 0,
+      max: 365,
       porDefecto: 0,
     },
     { id: "zonaAustral", tipo: "si-no", etiqueta: "Trabajas en Magallanes, Aysén o Palena", porDefecto: false },

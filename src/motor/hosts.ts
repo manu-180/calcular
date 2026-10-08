@@ -42,6 +42,9 @@ export const SEGMENTO_404 = "404";
 // build prerenderiza un /intl/-/sitemap.xml aunque el sitio intl esté apagado. El handler vive con
 // otro nombre y el /<m>/sitemap.xml público llega por rewrite.
 export const RUTA_SITEMAP = "mapa-xml";
+export const RUTA_LLMS = "llms.txt";
+export const API_INTL_PERMITIDAS = ["geo", "dev/sitio"] as const;
+const API_INTL_NEGADAS = `(?!(?:${API_INTL_PERMITIDAS.map((a) => a.replace("/", "\\/")).join("|")})(?:\\/|$)).*`;
 
 const escapar = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const RE_SEGMENTO = /^[a-z0-9][a-z0-9-]*$/;
@@ -99,6 +102,12 @@ export function reglasPorHost(o: OpcionesHosts): ReglasHosts {
       { source: "/robots.txt", has: [c], destination: "/intl/global/robots.txt" },
       { source: "/sitemap.xml", has: [c], destination: "/intl/global/sitemaps.xml" },
       { source: "/sitemap-global.xml", has: [c], destination: `/intl/global/${RUTA_SITEMAP}` },
+      // public/llms.txt describe calcular.ar: en calcularya va su propia versión.
+      { source: "/llms.txt", has: [c], destination: `/intl/global/${RUTA_LLMS}` },
+      // Las APIs y la imagen OG de calcular.ar no existen en calcularya. /api/geo la usa el aviso de
+      // país y /api/dev/sitio es la única forma de borrar la cookie en un preview.
+      { source: `/api/:path(${API_INTL_NEGADAS})`, has: [c], destination: `/intl/global/${SEGMENTO_404}/api/:path` },
+      { source: "/og/:path*", has: [c], destination: `/intl/global/${SEGMENTO_404}/og/:path*` },
     );
     if (globales) beforeFiles.push({ source: `/:pagina(${globales})`, has: [c], destination: "/intl/global/:pagina" });
   }

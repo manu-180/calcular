@@ -2,10 +2,14 @@
 // bordes de tramo y por zona horaria, que vigente() nunca devuelva un tramo no verificado, que un
 // tramo vencido saque la calculadora de lo publicable, validación de archivos, registro, formulario
 // y bandas de series. Usa el mercado ficticio zz y datos sintéticos. Sin red y sin reloj.
+// También compara el mapa de cargadores del cliente intl con el registro:
+//   npx tsx scripts/check_motor.ts --generar-cargadores     lo reescribe
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
-import { formatearFecha, formatearMoneda, formatearPorcentaje, parsearNumero, redondear } from "../src/motor/formato";
+import { formatearFecha, formatearMoneda, formatearPorcentaje, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
 import { ejecutar, mensajeDeError, parsearEntrada } from "../src/motor/formulario";
 import { crearRegistro, definirPais, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { textosMotor } from "../src/motor/textos";
@@ -16,6 +20,7 @@ import zz from "../src/paises/zz";
 import bono from "../src/paises/zz/calculadoras/bono";
 import datosZz from "../src/paises/zz/datos.json";
 import { detectores } from "../src/paises/zz/fuentes";
+import { registro as registroReal } from "../src/paises";
 
 delete process.env.CALCULAR_HOY;
 delete process.env.CALCULAR_HOY_BUILD;
@@ -79,6 +84,24 @@ const parseos: [string, string, number | null][] = [
   ["es-PE", "1,2345", null],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
+// Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
+const ambiguos: [string, string, number | null][] = [
+  ["es-MX", "5.000", null],
+  ["es-PE", "1.230", null],
+  ["es-GT", "-12.500", null],
+  ["es-MX", "5.00", 5],
+  ["es-MX", "5.5", 5.5],
+  ["es-MX", "0.500", 0.5],
+  ["es-MX", "5,000", 5000],
+  ["es-MX", "5,000.000", 5000],
+  ["es-CL", "5,000", null],
+  ["es-CO", "5.000", 5000],
+];
+for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
+igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
+igual("sugerencia es-MX", sugerenciaMiles("$5.000", "es-MX"), { sugerido: "5000", separador: "." });
+igual("sugerencia es-CL", sugerenciaMiles("5,000", "es-CL"), { sugerido: "5000", separador: "," });
+igual("sin sugerencia para 5.5", sugerenciaMiles("5.5", "es-MX"), null);
 
 // Redondeo
 igual("redondeo 1.005 a 2", redondear(1.005, { decimales: 2, modo: "mitad-arriba" }), 1.01);
@@ -258,6 +281,15 @@ if (pagina) {
     igual("error de máximo", mensajeDeError(conError.errores.meses, textos), "El máximo es 6.");
     igual("error de región", mensajeDeError(conError.errores.region, textos), "Elige una región.");
   }
+  const ambiguo = (trato: "tu" | "usted" | "vos") => {
+    const p = parsearEntrada(def.campos, { sueldo: "5.000", meses: "6", region: "norte", regimen: "general" }, { ...props.contexto, trato }, props.opcionesDinamicas);
+    return p.ok ? "ok" : mensajeDeError(p.errores.sueldo, textosMotor("es", trato));
+  };
+  igual("miles ambiguos en tú", ambiguo("tu"), "¿Quisiste decir 5000? Escríbelo sin puntos.");
+  igual("miles ambiguos en usted", ambiguo("usted"), "¿Quiso decir 5000? Escríbalo sin puntos.");
+  igual("miles ambiguos en vos", ambiguo("vos"), "¿Quisiste decir 5000? Escribilo sin puntos.");
+  const conPunto = parsearEntrada(def.campos, { sueldo: "5.50", meses: "6", region: "norte", regimen: "general" }, props.contexto, props.opcionesDinamicas);
+  igual("5.50 sigue siendo decimal", conPunto.ok ? conPunto.entrada.sueldo : null, 5.5);
   igual("error en vos", mensajeDeError({ codigo: "requerido" }, textosMotor("es", "vos")), "Completá este campo.");
   igual("error en usted", mensajeDeError({ codigo: "requerido" }, textosMotor("es", "usted")), "Complete este campo.");
   const bajoMinimo = ejecutar(def, { sueldo: "900", meses: "3", region: "norte", regimen: "general" }, props, textos);
@@ -297,6 +329,36 @@ const errMal = validarPais(conMal, { hoy: "2026-10-15" }).errores;
 verdad("requiere por región pedido como número", errMal.some((e) => e.includes("tiene regiones")));
 verdad("requiere de serie inexistente", errMal.some((e) => e.includes("zz.inexistente")));
 verdad("dos calculadoras con el mismo concepto", !errMal.some((e) => e.includes("concepto")));
+
+// Mapa de cargadores de calculadora-intl.tsx: solo mercados publicados, un import() literal por
+// calculadora para que el navegador baje solo el chunk de la página (sin zz, internos ni casos).
+const RAIZ = path.resolve(import.meta.dirname, "..");
+const NL = "\n";
+const ARCHIVO_CARGADORES = path.join(RAIZ, "src", "app", "(intl)", "intl", "[mercado]", "[slug]", "cargadores.ts");
+const publicados = registroReal.paises.filter((p) => p.mercado.estado === "publicado" && p.mercado.codigo !== "global" && p.mercado.codigo !== "zz");
+const bloques = publicados
+  .map((p) => p.mercado.codigo)
+  .sort()
+  .map((codigo) => {
+    const slugs = registroReal.pais(codigo)!.calculadoras.map((c) => c.definicion.slug).sort();
+    for (const slug of slugs) {
+      const archivo = path.join(RAIZ, "src", "paises", codigo, "calculadoras", `${slug}.ts`);
+      verdad(`cargador ${codigo}/${slug}: existe el archivo`, existsSync(archivo), archivo);
+    }
+    const lineas = slugs.map((slug) => `    ${JSON.stringify(slug)}: () => import("@/paises/${codigo}/calculadoras/${slug}"),`);
+    return [`  ${JSON.stringify(codigo)}: {`, ...lineas, "  },"].join(NL);
+  });
+const esperadoCargadores = `// Generado por \`npx tsx scripts/check_motor.ts --generar-cargadores\`. No editar a mano: check_motor
+// falla si no coincide con los mercados publicados del registro.
+export type Cargador = () => Promise<{ default: unknown }>;
+
+export const CARGADORES: Readonly<Record<string, Readonly<Record<string, Cargador>>>> = {
+${bloques.join(NL)}
+};
+`;
+if (process.argv.includes("--generar-cargadores")) writeFileSync(ARCHIVO_CARGADORES, esperadoCargadores);
+const actualCargadores = existsSync(ARCHIVO_CARGADORES) ? readFileSync(ARCHIVO_CARGADORES, "utf8").replace(/\r\n/g, NL) : "";
+verdad("cargadores.ts coincide con el registro (npx tsx scripts/check_motor.ts --generar-cargadores)", actualCargadores === esperadoCargadores);
 
 // Bandas de series con el detector de prueba de zz y un Http falso.
 const det = detectores.find((d) => d.carril === "serie");

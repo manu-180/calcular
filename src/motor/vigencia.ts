@@ -40,14 +40,16 @@ export function fechaEnZona(instante: Date, zonaHoraria: string): FechaISO {
   }).format(instante) as FechaISO;
 }
 
-// Mismas variables que src/lib/hoy.ts de AR (no se importa: frontera motor/AR). CALCULAR_HOY fija
-// el día a mano para probar rotaciones; CALCULAR_HOY_BUILD la inyecta el build. El navegador no
-// llama a esto nunca: la fecha viaja como prop, si no el HTML y el JS podrían elegir tramos distintos.
+// CALCULAR_HOY fija el día a mano (pruebas, fotos de rutas). CALCULAR_HOY_BUILD NO se lee a
+// propósito: es el día del build en hora argentina (src/lib/hoy.ts) y congelaría a todos los
+// mercados en esa fecha; las páginas intl se regeneran solas (revalidate) y toman el día de la
+// zona del mercado. El navegador no llama a esto nunca: la fecha viaja como prop, si no el HTML y
+// el JS podrían elegir tramos distintos.
 export function hoyEn(mercado: Pick<Mercado, "zonaHoraria">, ahora: Date = new Date()): FechaISO {
   if (typeof window !== "undefined") {
     throw new Error("hoyEn() corre solo en el servidor: la fecha de referencia llega al cliente como prop");
   }
-  const fijada = process.env.CALCULAR_HOY || process.env.CALCULAR_HOY_BUILD;
+  const fijada = process.env.CALCULAR_HOY;
   if (fijada && esFechaISO(fijada)) return fijada;
   return fechaEnZona(ahora, mercado.zonaHoraria);
 }
