@@ -37,8 +37,9 @@ export const detectores: readonly Detector[] = [
     url: "https://totoro.banrep.gov.co/nsi-jax-ws/rest/data/ESTAT,DF_UVR_DAILY_HIST,1.0/all/ALL?detail=dataonly&dimensionAtObservation=TIME_PERIOD&lastNObservations=20",
     banda: { min: 350, max: 550, saltoRelativoMax: 0.005 },
     async traer(http) {
-      // Sin encabezado Accept el servidor SDMX del Banco de la República responde 500.
-      const xml = await http.texto(this.url, { encabezados: { Accept: "application/xml" } });
+      // El servidor SDMX del Banco de la República responde 500 sin Accept y 400 si Accept-Language
+      // trae una región numérica como "es-419" (la que manda el http del cron por defecto).
+      const xml = await http.texto(this.url, { encabezados: { Accept: "application/xml", "Accept-Language": "es" } });
       // El flujo trae dos series: la variación anual (UNIT_MEASURE APC) y el valor en pesos (CRVU).
       // Solo la segunda es la UVR; tomar la primera daría valores de 5 o 6 y la banda los frenaría.
       const series = xml.split("<generic:Series>").slice(1);
