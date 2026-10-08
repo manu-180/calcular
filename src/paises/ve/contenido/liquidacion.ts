@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ve.liquidacion",
-  h1: "Calculadora de liquidación laboral",
+  h1: "Calculadora de liquidación laboral en Venezuela",
   title: "Liquidación laboral en Venezuela: calcula cuánto te toca",
   description:
     "Calcula tu liquidación con la LOTTT: prestaciones sociales, indemnización por despido, vacaciones, bono vacacional y utilidades. En bolívares o en dólares.",
   intro: [
-    "La liquidación es todo lo que te deben pagar cuando termina tu trabajo: prestaciones sociales, vacaciones pendientes, bono vacacional y utilidades del año.",
-    "Si te despidieron sin causa justificada y no pides el reenganche, se suma una indemnización igual a tus prestaciones.",
+    "La liquidación laboral en Venezuela suma tus prestaciones sociales, las vacaciones y el bono vacacional pendientes y las utilidades del año. Si te despidieron sin causa justificada y no pides el reenganche, se agrega una indemnización igual a tus prestaciones.",
+    "Puedes calcularla en bolívares o en dólares. Se hace solo con tu salario: el cestaticket y el bono de guerra económica no cuentan.",
   ],
   comoSeCalcula: [
     "Prestaciones sociales: el mayor entre la garantía depositada y el cálculo retroactivo de {{ve.prestaciones-retroactivo-dias}} por año con tu último salario integral.",
@@ -22,16 +22,20 @@ export default definirContenido({
   ],
   faq: [
     {
+      pregunta: "¿Cómo se calcula la liquidación en Venezuela?",
+      respuesta: "Se suman las prestaciones sociales, las vacaciones y el bono vacacional fraccionados y las utilidades fraccionadas. Si el despido fue injustificado, se agrega una indemnización igual a las prestaciones.",
+    },
+    {
       pregunta: "¿Si renuncio también cobro prestaciones?",
       respuesta: "Sí. Las prestaciones, las vacaciones pendientes y las utilidades se pagan siempre, sin importar por qué terminó el trabajo. Lo único que depende del motivo es la indemnización por despido.",
     },
     {
-      pregunta: "¿Qué es el reenganche?",
-      respuesta: "Si te despiden sin causa justificada, puedes pedir ante la Inspectoría del Trabajo que te devuelvan el puesto. Si decides no pedirlo, la empresa te paga la indemnización.",
-    },
-    {
       pregunta: "¿Los bonos entran en la liquidación?",
       respuesta: "No. El cestaticket y el bono de guerra económica no son salario. La liquidación se calcula solo con tu salario.",
+    },
+    {
+      pregunta: "¿Qué es el reenganche?",
+      respuesta: "Si te despiden sin causa justificada, puedes pedir ante la Inspectoría del Trabajo que te devuelvan el puesto. Si decides no pedirlo, la empresa te paga la indemnización.",
     },
     {
       pregunta: "¿En cuánto tiempo me tienen que pagar?",

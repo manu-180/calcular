@@ -3,12 +3,12 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.liquidacion",
   h1: "Calculadora de liquidación laboral en Panamá",
-  title: "Liquidación laboral en Panamá: calcula tus prestaciones",
+  title: "Liquidación laboral en Panamá 2026: calcula tus prestaciones",
   description:
-    "Calcula tu liquidación en Panamá: prima de antigüedad, indemnización si el despido fue injustificado, vacaciones proporcionales y décimo tercer mes.",
+    "Calcula tu liquidación en Panamá: prima de antigüedad, indemnización por despido injustificado, vacaciones y décimo proporcionales. Cada parte por separado.",
   intro: [
-    "Cuando termina tu relación de trabajo, el empleador te paga las prestaciones laborales. Lo que incluye depende de cómo terminó y del tipo de contrato.",
-    "Escribe tu salario, las fechas y el motivo de salida. Te mostramos cada parte y el total.",
+    "La liquidación laboral en Panamá suma la prima de antigüedad, las vacaciones proporcionales y el décimo tercer mes proporcional. Si te despidieron sin causa justificada, se agrega la indemnización.",
+    "Lo que incluye depende de cómo terminó la relación y del tipo de contrato. Escribe tu salario, las fechas y el motivo de salida, y te mostramos cada parte y el total.",
   ],
   comoSeCalcula: [
     "Prima de antigüedad: {{pa.prima-antiguedad-semanas}} semana de salario por año trabajado, en todo contrato por tiempo indefinido.",
@@ -21,12 +21,20 @@ export default definirContenido({
   ],
   faq: [
     {
+      pregunta: "¿Cómo se calcula la liquidación laboral en Panamá?",
+      respuesta: "Se suman la prima de antigüedad ({{pa.prima-antiguedad-semanas}} semana por año), las vacaciones y el décimo proporcionales. Si el despido fue injustificado, se agrega la indemnización del artículo 225.",
+    },
+    {
       pregunta: "¿Qué me pagan si renuncio?",
       respuesta: "La prima de antigüedad (si tu contrato era por tiempo indefinido), las vacaciones pendientes y el décimo proporcional.",
     },
     {
       pregunta: "¿Qué me pagan si me despiden sin causa?",
       respuesta: "Lo mismo que al renunciar más la indemnización del artículo 225.",
+    },
+    {
+      pregunta: "¿Me toca prima de antigüedad si mi contrato era por tiempo definido?",
+      respuesta: "No. El artículo 224 la da solo en los contratos por tiempo indefinido. Las vacaciones y el décimo proporcionales sí te los pagan.",
     },
     {
       pregunta: "¿La liquidación lleva descuentos?",

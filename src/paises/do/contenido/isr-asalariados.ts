@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.isr-asalariados",
-  h1: "Calculadora de ISR para asalariados",
-  title: "ISR asalariados 2026: calcula tu retención mensual",
-  description: "Calcula cuánto ISR te retienen cada mes con la escala 2026 de la DGII. Puedes partir del salario bruto o del salario ya sin AFP ni SFS.",
+  h1: "Calculadora de ISR para asalariados 2026",
+  title: "ISR asalariados 2026 en RD: calcula tu retención mensual",
+  description: "Calcula cuánto ISR te retienen cada mes con la tabla de retención 2026 de la DGII. Puedes partir del salario bruto o del salario ya sin AFP ni SFS.",
   intro: [
-    "Si trabajas en relación de dependencia, tu empleador te retiene el impuesto sobre la renta (ISR) cada mes y lo paga a la DGII.",
-    "Aquí ves cuánto es, en qué tramo estás y cuánto sería en todo el año.",
+    "El ISR de un asalariado en República Dominicana se calcula sobre el salario sin SFS ni AFP, llevado a un año. La primera parte está exenta y el resto paga 15 %, 20 % o 25 % según el tramo.",
+    "Tu empleador te lo retiene cada mes y lo paga a la DGII. Aquí ves cuánto es, en qué tramo estás y cuánto suma en todo el año.",
   ],
   comoSeCalcula: [
     "Primero se restan los aportes a la TSS: SFS de {{do.sfs-trabajador}} y AFP de {{do.afp-trabajador}}.",
@@ -19,6 +19,10 @@ export default definirContenido({
     "Si tu salario sin AFP ni SFS es RD$60,000, tu renta anual es RD$720,000. Te retienen RD$4,195.85 por mes, igual que en la tabla de la DGII.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo se calcula la retención del ISR?",
+      respuesta: "A tu salario le restas el SFS y la AFP, lo multiplicas por 12 y le aplicas la escala de la DGII. El impuesto del año dividido entre 12 es lo que te retienen cada mes.",
+    },
     {
       pregunta: "¿Cuánto es el monto exento del ISR en 2026?",
       respuesta: "RD$416,220 al año, unos RD$34,685 por mes, después de restar SFS y AFP. La calculadora lo muestra con el valor vigente.",

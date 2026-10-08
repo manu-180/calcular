@@ -5,10 +5,10 @@ export default definirContenido({
   h1: "Calculadora de prima de antigüedad en Panamá",
   title: "Prima de antigüedad en Panamá: calcula cuánto te toca",
   description:
-    "Calcula tu prima de antigüedad: una semana de salario por cada año trabajado, como manda el artículo 224 del Código de Trabajo, con la parte proporcional.",
+    "Calcula tu prima de antigüedad en Panamá: {{pa.prima-antiguedad-semanas}} semana de salario por año trabajado (artículo 224), con la parte proporcional. Te toca si renuncias o te despiden.",
   intro: [
-    "Cuando termina un contrato por tiempo indefinido, el empleador te paga la prima de antigüedad. No importa si renunciaste o te despidieron.",
-    "Te toca {{pa.prima-antiguedad-semanas}} semana de salario por cada año trabajado, y la parte proporcional del año incompleto.",
+    "La prima de antigüedad en Panamá es {{pa.prima-antiguedad-semanas}} semana de salario por cada año trabajado, más la parte proporcional del año incompleto. Te la pagan al terminar un contrato por tiempo indefinido, sin importar si renunciaste o te despidieron.",
+    "Escribe tu salario promedio y tus fechas de ingreso y salida. Te mostramos el tiempo trabajado, las semanas que te tocan y el monto.",
   ],
   comoSeCalcula: [
     "Se toma tu salario promedio de los últimos cinco años (artículo 226).",
@@ -19,6 +19,10 @@ export default definirContenido({
     "Con un promedio de B/. 1,300 al mes y 8 años justos de trabajo, el salario semanal es B/. 300. La prima es B/. 2,400.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo se calcula la prima de antigüedad en Panamá?",
+      respuesta: "Pasas tu salario promedio mensual a semanal (por 12 y entre 52) y lo multiplicas por tus años trabajados, con la fracción del último año.",
+    },
     {
       pregunta: "¿Me pagan prima de antigüedad si renuncio?",
       respuesta: "Sí. La prima se paga al terminar todo contrato por tiempo indefinido, cualquiera sea la causa.",

@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.horas-extra",
-  h1: "Calculadora de horas extra",
-  title: "Horas extra en RD: calcula cuánto te deben pagar",
+  h1: "Calculadora de horas extras en República Dominicana",
+  title: "Horas extras en RD: calcula cuánto te deben pagar",
   description:
-    "Calcula el pago de tus horas extra con el recargo de {{do.recargo-hora-extra}} o {{do.recargo-hora-extra-68}} del Código de Trabajo, y el recargo de las horas nocturnas.",
+    "Calcula tus horas extras en RD: recargo de {{do.recargo-hora-extra}} o de {{do.recargo-hora-extra-68}} según las horas de tu semana, y {{do.recargo-nocturno}} por horas nocturnas. Según el Código de Trabajo.",
   intro: [
-    "Las horas que trabajas después de tu jornada normal se pagan con recargo. El recargo depende de cuántas horas suma tu semana.",
-    "Escribe tu salario y tus horas, y ves el valor de cada hora y el total a cobrar.",
+    "En República Dominicana cada hora extra se paga con un {{do.recargo-hora-extra}} más que la hora normal, y con un {{do.recargo-hora-extra-68}} más si tu semana pasa de {{do.limite-horas-recargo-35}}.",
+    "Las horas que trabajas después de tu jornada normal son horas extra. Escribe tu salario y tus horas, y ves el valor de cada hora y el total a cobrar.",
   ],
   comoSeCalcula: [
     "El valor de tu hora normal es el salario mensual dividido entre {{do.divisor-salario-diario}} y después entre las horas de tu jornada diaria.",
@@ -21,12 +21,12 @@ export default definirContenido({
   ],
   faq: [
     {
-      pregunta: "¿Cuál es la jornada máxima en República Dominicana?",
-      respuesta: "{{do.jornada-diaria}} por día y {{do.jornada-semanal}} por semana. Lo que pase de tu jornada normal es hora extra.",
+      pregunta: "¿Cómo se calcula una hora extra en RD?",
+      respuesta: "Divides tu salario mensual entre {{do.divisor-salario-diario}} y después entre las horas de tu jornada. A esa hora le sumas el {{do.recargo-hora-extra}}. Con RD$30,000 y 8 horas, la hora vale RD$157.36 y la extra RD$212.44.",
     },
     {
-      pregunta: "¿Las horas extra cuentan para la regalía pascual?",
-      respuesta: "No. La regalía se calcula solo con el salario ordinario.",
+      pregunta: "¿Cuál es la jornada máxima en República Dominicana?",
+      respuesta: "{{do.jornada-diaria}} por día y {{do.jornada-semanal}} por semana. Lo que pase de tu jornada normal es hora extra.",
     },
     {
       pregunta: "¿Qué pasa si trabajo en mi día de descanso?",
@@ -35,6 +35,10 @@ export default definirContenido({
     {
       pregunta: "¿Las horas extra pagan ISR?",
       respuesta: "Sí. Se suman a tu salario del mes para calcular la retención.",
+    },
+    {
+      pregunta: "¿Las horas extra cuentan para la regalía pascual?",
+      respuesta: "No. La regalía se calcula solo con el salario ordinario.",
     },
   ],
   glosario: [

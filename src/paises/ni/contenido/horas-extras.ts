@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ni.horas-extras",
-  h1: "Calculadora de horas extras",
-  title: "Horas extras en Nicaragua: calculá cuánto te pagan",
-  description: "Calculá el pago de tus horas extras. Cada una se paga con un {{ni.recargo-horas-extra}} más que la hora normal, según el artículo 62 del Código del Trabajo.",
+  h1: "Calculadora de horas extras en Nicaragua",
+  title: "Horas extras en Nicaragua: calculá el pago doble",
+  description: "Calculá tus horas extras en Nicaragua: cada una se paga con un {{ni.recargo-horas-extra}} más que la hora normal, o sea el doble (artículo 62 del Código del Trabajo).",
   intro: [
-    "Toda hora que trabajás fuera de tu jornada ordinaria es hora extra. Se paga al doble de la hora normal.",
+    "En Nicaragua cada hora extra se paga al doble de la hora normal: un {{ni.recargo-horas-extra}} de recargo. Es hora extra toda la que trabajás fuera de tu jornada ordinaria.",
     "Poné tu salario mensual, tu jornada y las horas extras. Te mostramos el valor de cada hora y el total.",
   ],
   comoSeCalcula: [
@@ -17,6 +17,14 @@ export default definirContenido({
   ],
   ejemplo: ["Con un salario de C$12,000 en jornada diurna: 12,000 / 30 / 8 = C$50 la hora. La hora extra vale C$100. Por 10 horas extras te pagan C$1,000."],
   faq: [
+    {
+      pregunta: "¿Cómo se calculan las horas extras en Nicaragua?",
+      respuesta: "Dividí tu salario mensual entre 30 y después entre las horas de tu jornada. Esa es tu hora ordinaria: la hora extra vale el doble.",
+    },
+    {
+      pregunta: "¿Cuánto vale una hora extra si gano C$12,000?",
+      respuesta: "En jornada diurna, C$100. Tu hora ordinaria es C$50 (12,000 entre 30 y entre 8) y la extra vale el doble.",
+    },
     {
       pregunta: "¿Cuántas horas extras puedo trabajar?",
       respuesta: "Hasta {{ni.horas-extra-maximo-diario}} por día y {{ni.horas-extra-maximo-semanal}} por semana, salvo las excepciones del Código.",

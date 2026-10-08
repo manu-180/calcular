@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ni.iva",
-  h1: "Calculadora de IVA",
-  title: "IVA en Nicaragua: sumá o sacá el {{ni.iva}}",
+  h1: "Calculadora de IVA en Nicaragua",
+  title: "Calcular IVA en Nicaragua: sumá o sacá el {{ni.iva}}",
   description: "Sumá el IVA a un precio o sacalo de un precio que ya lo incluye. En Nicaragua la alícuota general es del {{ni.iva}}, según la Ley de Concertación Tributaria.",
   intro: [
-    "El IVA es el impuesto que se cobra sobre la venta de bienes y servicios. La alícuota general es del {{ni.iva}}.",
+    "El IVA en Nicaragua es del {{ni.iva}} en la alícuota general. Se cobra sobre la venta de bienes y servicios, y las exportaciones van con alícuota cero.",
     "Elegí si querés sumar el IVA o sacarlo, y poné el monto.",
   ],
   comoSeCalcula: [
@@ -19,6 +19,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuánto es el IVA en Nicaragua?",
       respuesta: "La alícuota general es del {{ni.iva}}. Las exportaciones van con alícuota cero.",
+    },
+    {
+      pregunta: "¿Cómo le sumo el IVA a un precio?",
+      respuesta: "Multiplicá el precio sin IVA por {{ni.iva}} y sumalo. Un producto de C$1,000 queda en C$1,150 con IVA.",
     },
     {
       pregunta: "¿Cómo saco el IVA de un precio?",

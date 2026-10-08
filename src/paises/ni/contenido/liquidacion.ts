@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ni.liquidacion",
-  h1: "Calculadora de liquidación",
-  title: "Liquidación en Nicaragua: calculá cuánto te toca",
-  description: "Calculá tu liquidación: indemnización por antigüedad, aguinaldo proporcional y vacaciones que no gozaste. Con las reglas del Código del Trabajo.",
+  h1: "Calculadora de liquidación en Nicaragua",
+  title: "Liquidación laboral en Nicaragua: calculá cuánto te toca",
+  description: "Calculá tu liquidación en Nicaragua: indemnización por antigüedad (artículo 45), aguinaldo proporcional y vacaciones no gozadas. Por renuncia o por despido.",
   intro: [
-    "Cuando termina el contrato, te tienen que pagar todo lo que acumulaste. Esta calculadora suma las tres partes principales.",
+    "La liquidación en Nicaragua suma tres partes: la indemnización por antigüedad, el aguinaldo proporcional y las vacaciones que no gozaste. Te la pagan al terminar el contrato, sea por renuncia o por despido.",
     "Poné tus fechas, cómo terminó el contrato y tu salario. Si sabés cuántos días de vacaciones te quedan, ponelos.",
   ],
   comoSeCalcula: [
@@ -20,8 +20,16 @@ export default definirContenido({
   ],
   faq: [
     {
+      pregunta: "¿Cómo se calcula la liquidación en Nicaragua?",
+      respuesta: "Se suman la indemnización por antigüedad del artículo 45, el aguinaldo proporcional desde el 1 de diciembre y las vacaciones pendientes, pagadas con tu salario diario.",
+    },
+    {
       pregunta: "¿Qué me tienen que pagar si renuncio?",
       respuesta: "El aguinaldo y las vacaciones proporcionales, y lo ganado por antigüedad. La renuncia no te quita ese derecho (artículo 43).",
+    },
+    {
+      pregunta: "¿Qué cambia si me despiden sin causa justificada?",
+      respuesta: "La indemnización por antigüedad no puede ser menor de {{ni.indemnizacion-minimo-meses}} de salario. Si renunciás, se paga solo por el tiempo trabajado.",
     },
     {
       pregunta: "¿Tengo que avisar antes de renunciar?",

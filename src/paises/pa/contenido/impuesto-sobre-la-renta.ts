@@ -3,12 +3,12 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.impuesto-sobre-la-renta",
   h1: "Calculadora del impuesto sobre la renta en Panamá",
-  title: "Impuesto sobre la renta en Panamá: personas naturales",
+  title: "Impuesto sobre la renta en Panamá 2026: calcula tu ISR",
   description:
-    "Calcula tu impuesto sobre la renta anual con la tarifa del artículo 700 del Código Fiscal: exento hasta B/. 11,000, 15% y 25% sobre el excedente.",
+    "Calcula el impuesto sobre la renta de personas naturales en Panamá: exento hasta B/. 11,000 al año, 15% y 25% sobre el excedente (art. 700 del Código Fiscal).",
   intro: [
-    "Las personas naturales pagan impuesto sobre la renta según una tarifa anual por tramos.",
-    "Escribe tu renta neta gravable del año y te mostramos el impuesto y cuánto representa sobre tu renta.",
+    "En Panamá, una persona natural no paga impuesto sobre la renta hasta B/. 11,000 al año. Paga el 15% sobre lo que pasa de ese monto, y desde B/. 50,000 el 25% sobre el excedente.",
+    "Escribe tu renta neta gravable del año. Te mostramos el impuesto, tu tasa efectiva y cuánto representa por mes.",
   ],
   comoSeCalcula: [
     "Hasta B/. 11,000 al año no se paga impuesto.",
@@ -19,6 +19,14 @@ export default definirContenido({
     "Con una renta gravable de B/. 30,000, el excedente sobre B/. 11,000 es B/. 19,000. Al 15%, el impuesto es B/. 2,850 al año.",
   ],
   faq: [
+    {
+      pregunta: "¿Desde cuánto se paga impuesto sobre la renta en Panamá?",
+      respuesta: "Desde una renta neta gravable de más de B/. 11,000 al año. Hasta ese monto estás exento.",
+    },
+    {
+      pregunta: "¿Cuánto impuesto pago con una renta de B/. 30,000?",
+      respuesta: "B/. 2,850 al año. Es el 15% de los B/. 19,000 que pasan de B/. 11,000.",
+    },
     {
       pregunta: "¿Qué es la renta neta gravable?",
       respuesta: "Tus ingresos gravables del año menos las deducciones que permite la ley. Sobre ese monto se aplica la tarifa.",

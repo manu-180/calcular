@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ni.salario-neto",
-  h1: "Calculadora de salario neto",
-  title: "Salario neto en Nicaragua: descontá INSS e IR",
-  description: "Calculá cuánto te queda de tu salario después del INSS laboral ({{ni.inss-laboral[integral]}} en el régimen integral) y de la retención del IR. Con la tarifa de la Ley 822.",
+  h1: "Calculadora de salario neto en Nicaragua",
+  title: "Salario neto en Nicaragua 2026: descontá INSS e IR",
+  description: "Calculá tu salario neto en Nicaragua: INSS laboral de {{ni.inss-laboral[integral]}} en el régimen integral y retención del IR con la tarifa de la Ley 822. Ves cada descuento.",
   intro: [
-    "De tu salario bruto te descuentan dos cosas cada mes: la cotización al INSS y la retención del IR.",
+    "Tu salario neto en Nicaragua es el bruto menos el INSS laboral ({{ni.inss-laboral[integral]}} en el régimen integral) y la retención del IR. Son los dos descuentos de cada mes.",
     "Poné tu salario bruto mensual y tu régimen del INSS. Te mostramos cada descuento y lo que te queda.",
   ],
   comoSeCalcula: [
@@ -18,16 +18,24 @@ export default definirContenido({
   ejemplo: ["Con un salario de C$20,000: INSS C$1,400. Renta neta del año: 18,600 × 12 = C$223,200. IR del año C$19,640, o sea C$1,636.67 por mes. Te quedan C$16,963.33."],
   faq: [
     {
+      pregunta: "¿Cuánto me descuentan de INSS?",
+      respuesta: "{{ni.inss-laboral[integral]}} de tu salario en el régimen integral y {{ni.inss-laboral[ivm]}} en el IVM. No tiene techo: se aplica sobre todo el salario.",
+    },
+    {
       pregunta: "¿Desde cuánto se paga IR?",
       respuesta: "Cuando tu salario menos el INSS, por 12, pasa de {{ni.ir-renta-exenta}} al año. Lo que queda debajo de ese monto no paga.",
     },
     {
-      pregunta: "¿El aguinaldo paga INSS o IR?",
-      respuesta: "No. El décimo tercer mes está libre de impuestos y cotizaciones.",
+      pregunta: "¿Cuánto me queda si gano C$20,000?",
+      respuesta: "C$16,963.33 en el régimen integral: te descuentan C$1,400 de INSS y C$1,636.67 de IR.",
     },
     {
       pregunta: "¿Qué régimen del INSS tengo?",
       respuesta: "La mayoría de los asalariados está en el integral, que incluye enfermedad y maternidad. Lo podés ver en tu colilla de pago o preguntarle a tu empleador.",
+    },
+    {
+      pregunta: "¿El aguinaldo paga INSS o IR?",
+      respuesta: "No. El décimo tercer mes está libre de impuestos y cotizaciones.",
     },
     {
       pregunta: "¿Por qué mi retención cambia de un mes a otro?",

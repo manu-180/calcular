@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ni.ir-salarial",
-  h1: "Calculadora del IR salarial",
-  title: "IR salarial en Nicaragua: calculá tu retención",
-  description: "Calculá la retención mensual del IR sobre tu salario con la tarifa progresiva de la Ley de Concertación Tributaria. Los primeros {{ni.ir-renta-exenta}} del año no pagan.",
+  h1: "Calculadora del IR salarial en Nicaragua",
+  title: "IR salarial en Nicaragua 2026: tabla y retención mensual",
+  description: "Calculá cuánto IR te retienen cada mes en Nicaragua con la tabla progresiva de la Ley 822. Los primeros {{ni.ir-renta-exenta}} del año no pagan. Te mostramos tu tramo.",
   intro: [
-    "El IR sobre el salario lo retiene tu empleador cada mes. Se calcula con una tarifa anual que sube por tramos.",
-    "Poné tu salario bruto mensual. Te mostramos la renta neta del año, el IR anual, la retención de cada mes y en qué tramo estás.",
+    "En Nicaragua el IR salarial se calcula sobre tu salario menos el INSS, llevado a un año. Hasta {{ni.ir-renta-exenta}} al año no pagás, y arriba de eso cada tramo paga una base fija más un porcentaje.",
+    "Tu empleador te lo retiene cada mes. Poné tu salario bruto mensual y te mostramos la renta neta del año, el IR anual, la retención de cada mes y en qué tramo estás.",
   ],
   comoSeCalcula: [
     "Primero se resta la cotización al INSS ({{ni.inss-laboral[integral]}} en el régimen integral). Eso es tu salario neto.",
@@ -20,16 +20,20 @@ export default definirContenido({
   ],
   faq: [
     {
-      pregunta: "¿Cuántos tramos tiene la tarifa?",
-      respuesta: "Cinco. El primero, hasta {{ni.ir-renta-exenta}} al año, no paga. Los otros cuatro pagan un porcentaje cada vez mayor. En el resultado te mostramos en qué tramo quedás.",
+      pregunta: "¿Cómo se calcula el IR salarial en Nicaragua?",
+      respuesta: "A tu salario le restás el INSS y lo multiplicás por 12. A esa renta anual le aplicás la tabla del artículo 23, y el resultado dividido entre 12 es la retención de cada mes.",
     },
     {
-      pregunta: "¿Qué se puede deducir?",
-      respuesta: "Tu cotización al INSS. La ley también permite deducir parte de gastos de educación, salud y servicios profesionales con factura, pero esta calculadora no la incluye.",
+      pregunta: "¿Cuál es la tabla del IR en Nicaragua?",
+      respuesta: "Tiene cinco tramos anuales. Hasta {{ni.ir-renta-exenta}} no se paga. Los otros cuatro pagan 15 %, 20 %, 25 % y 30 % sobre lo que pasa del límite de cada tramo, más una base fija.",
     },
     {
       pregunta: "¿El tramo es lo que pago sobre todo mi salario?",
       respuesta: "No. El porcentaje del tramo se aplica solo a lo que pasa del límite. Por eso lo que pagás en total es menos que ese porcentaje.",
+    },
+    {
+      pregunta: "¿Qué se puede deducir?",
+      respuesta: "Tu cotización al INSS. La ley también permite deducir parte de gastos de educación, salud y servicios profesionales con factura, pero esta calculadora no la incluye.",
     },
     {
       pregunta: "¿Qué pasa si trabajé solo una parte del año?",

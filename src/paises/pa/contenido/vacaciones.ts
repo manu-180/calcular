@@ -3,12 +3,12 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.vacaciones",
   h1: "Calculadora de vacaciones en Panamá",
-  title: "Vacaciones en Panamá: calcula tus días y tu pago",
+  title: "Vacaciones en Panamá 2026: calcula tus días y tu pago",
   description:
-    "Calcula tus vacaciones: {{pa.vacaciones-dias}} por cada {{pa.vacaciones-meses}} de trabajo, con los descuentos de Seguro Social y seguro educativo.",
+    "Calcula tus vacaciones en Panamá: {{pa.vacaciones-dias}} por cada {{pa.vacaciones-meses}} de trabajo, o la parte proporcional. Con los descuentos de Seguro Social y seguro educativo.",
   intro: [
-    "En Panamá tienes {{pa.vacaciones-dias}} de vacaciones pagadas por cada {{pa.vacaciones-meses}} continuos de trabajo.",
-    "Si te vas antes de completar el período, te pagan la parte proporcional.",
+    "En Panamá tienes {{pa.vacaciones-dias}} de vacaciones pagadas por cada {{pa.vacaciones-meses}} continuos de trabajo. Si cobras por mes, el pago de un período completo es un mes de salario.",
+    "Si te vas antes de completar el período, te pagan la parte proporcional. Escribe tu salario y los meses trabajados, y te mostramos el bruto, los descuentos y lo que recibes.",
   ],
   comoSeCalcula: [
     "Si cobras por mes, las vacaciones de un período completo son un mes de salario.",
@@ -23,6 +23,14 @@ export default definirContenido({
     {
       pregunta: "¿Cuántos días de vacaciones me tocan al año?",
       respuesta: "{{pa.vacaciones-dias}} por cada {{pa.vacaciones-meses}} de trabajo. Es un día de vacaciones por cada once días trabajados.",
+    },
+    {
+      pregunta: "¿Cómo se calculan las vacaciones proporcionales?",
+      respuesta: "Multiplicas tu salario por los meses que trabajaste desde tus últimas vacaciones y lo divides entre {{pa.vacaciones-meses}}.",
+    },
+    {
+      pregunta: "¿Qué descuentos llevan las vacaciones?",
+      respuesta: "El {{pa.css-trabajador}} de Seguro Social y el {{pa.seguro-educativo-trabajador}} de seguro educativo, igual que el salario.",
     },
     {
       pregunta: "¿Me pueden dividir las vacaciones?",

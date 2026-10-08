@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.aportes-tss",
-  h1: "Calculadora de aportes a la TSS",
-  title: "Aportes a la TSS 2026: trabajador y empleador",
+  h1: "Calculadora de aportes a la TSS 2026",
+  title: "Aportes a la TSS 2026: cuánto paga trabajador y empleador",
   description: "Calcula los aportes a la TSS de un salario: SFS, AFP y riesgos laborales, lo que paga el trabajador, lo que paga el empleador y los topes vigentes.",
   intro: [
-    "Cada mes, trabajador y empleador pagan a la Tesorería de la Seguridad Social (TSS) por la salud, la pensión y los riesgos laborales.",
+    "A la TSS el trabajador aporta {{do.sfs-trabajador}} de SFS y {{do.afp-trabajador}} de AFP. El empleador aporta {{do.sfs-empleador}} de SFS, {{do.afp-empleador}} de AFP y los riesgos laborales, y cada seguro tiene su tope.",
     "Esta calculadora separa lo que se descuenta del salario y lo que paga la empresa. Sirve para saber el costo real de un empleado.",
   ],
   comoSeCalcula: [
@@ -18,6 +18,14 @@ export default definirContenido({
     "Por un salario de RD$50,000 se descuentan RD$2,955 al trabajador. El empleador aporta RD$7,645 (con riesgo de 0.10 %). A la TSS van RD$10,600 en total.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto paga el empleador a la TSS?",
+      respuesta: "{{do.sfs-empleador}} de SFS, {{do.afp-empleador}} de AFP y los riesgos laborales: {{do.srl-fijo}} fijo más un porcentaje de 0.10 % a 0.30 % según la actividad.",
+    },
+    {
+      pregunta: "¿Cuánto se le descuenta al trabajador?",
+      respuesta: "{{do.sfs-trabajador}} de SFS y {{do.afp-trabajador}} de AFP, cada uno hasta su tope. Con un salario de RD$50,000, son RD$2,955.",
+    },
     {
       pregunta: "¿Quién paga los riesgos laborales?",
       respuesta: "Solo el empleador. Al trabajador no se le descuenta nada por ese seguro.",

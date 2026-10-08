@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ve.prestaciones-sociales",
-  h1: "Calculadora de prestaciones sociales",
-  title: "Prestaciones sociales en Venezuela: calcula las tuyas",
+  h1: "Calculadora de prestaciones sociales en Venezuela",
+  title: "Prestaciones sociales en Venezuela 2026: calcula las tuyas",
   description:
     "Calcula tus prestaciones sociales con la LOTTT: garantía de {{ve.prestaciones-garantia-dias}} por trimestre o {{ve.prestaciones-retroactivo-dias}} por año, lo que sea mayor. En bolívares o en dólares.",
   intro: [
-    "Las prestaciones sociales son el ahorro que la empresa acumula a tu nombre mientras trabajas. Te las pagan cuando terminas la relación de trabajo, por cualquier motivo.",
-    "La ley manda hacer dos cuentas y pagarte la mayor: la garantía depositada durante el trabajo y un cálculo final con tu último salario.",
+    "En Venezuela cobras como prestaciones sociales el mayor de dos montos: la garantía ({{ve.prestaciones-garantia-dias}} de salario por trimestre) o el retroactivo ({{ve.prestaciones-retroactivo-dias}} por año con tu último salario integral).",
+    "Son el ahorro que la empresa acumula a tu nombre mientras trabajas, y te las pagan al terminar la relación de trabajo, por cualquier motivo. Se calculan solo con tu salario: los bonos que no son salario no cuentan.",
   ],
   comoSeCalcula: [
     "Salario integral diario: tu salario mensual entre {{ve.dias-mes-salario}}, más la parte diaria de las utilidades y del bono vacacional (sus días entre 360).",
@@ -20,6 +20,11 @@ export default definirContenido({
     "Con $300 al mes y tres años justos, el salario integral diario da $11,33. La garantía suma 186 días ($2.107,38) y el retroactivo 90 días ($1.019,70). Si tu salario nunca cambió, cobras la garantía.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo se calculan las prestaciones sociales en Venezuela?",
+      respuesta:
+        "Se hacen dos cuentas y cobras la mayor. La garantía suma {{ve.prestaciones-garantia-dias}} de salario por trimestre, más los días adicionales desde el segundo año. El retroactivo da {{ve.prestaciones-retroactivo-dias}} por año con tu último salario integral.",
+    },
     {
       pregunta: "¿Qué salario uso si cobro una parte en bonos?",
       respuesta:

@@ -3,11 +3,11 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.costo-empleador",
   h1: "Calculadora del costo de un empleado en Panamá",
-  title: "Costo de un empleado en Panamá: cuotas y décimo",
+  title: "Cuánto cuesta un empleado en Panamá: cuota patronal 2026",
   description:
-    "Calcula cuánto cuesta un trabajador: cuota patronal de {{pa.css-empleador}} a la CSS, {{pa.seguro-educativo-empleador}} de seguro educativo, riesgos profesionales y décimo.",
+    "Calcula cuánto cuesta un empleado en Panamá: cuota patronal del {{pa.css-empleador}} a la CSS, {{pa.seguro-educativo-empleador}} de seguro educativo, riesgos profesionales y décimo.",
   intro: [
-    "Además del salario, el empleador paga cuotas a la Caja de Seguro Social, el seguro educativo, los riesgos profesionales y el décimo tercer mes.",
+    "Un empleado en Panamá cuesta su salario más las cargas del empleador. Son la cuota patronal del {{pa.css-empleador}} a la Caja de Seguro Social, el {{pa.seguro-educativo-empleador}} de seguro educativo, los riesgos profesionales y el décimo tercer mes.",
     "Escribe el salario y, si la sabes, la tasa de riesgos profesionales de tu empresa. Te mostramos el costo de cada mes y del año.",
   ],
   comoSeCalcula: [
@@ -21,16 +21,20 @@ export default definirContenido({
   ],
   faq: [
     {
+      pregunta: "¿Cuánto cuesta un empleado que gana B/. 1,200?",
+      respuesta: "Sin contar riesgos profesionales, B/. 1,487.75 al mes: el salario, B/. 159 de CSS, B/. 18 de seguro educativo, B/. 100 de décimo y B/. 10.75 de contribución sobre el décimo.",
+    },
+    {
       pregunta: "¿Cuánto paga el empleador a la CSS en 2026?",
       respuesta: "El {{pa.css-empleador}} de los sueldos. Pasa al 14.25% desde el 1 de marzo de 2027 y al 15.25% desde el 1 de marzo de 2029.",
     },
     {
-      pregunta: "¿Qué otros costos tiene un trabajador?",
-      respuesta: "Las vacaciones y el aporte trimestral al fondo de cesantía, que cubre la prima de antigüedad y parte de la indemnización.",
-    },
-    {
       pregunta: "¿El empleador paga seguro educativo sobre el décimo?",
       respuesta: "No. El décimo solo lleva la contribución especial de Seguro Social del {{pa.css-decimo-empleador}}.",
+    },
+    {
+      pregunta: "¿Qué otros costos tiene un trabajador?",
+      respuesta: "Las vacaciones y el aporte trimestral al fondo de cesantía, que cubre la prima de antigüedad y parte de la indemnización.",
     },
   ],
   glosario: [

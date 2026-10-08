@@ -5,10 +5,10 @@ export default definirContenido({
   h1: "Dólar BCV hoy: conversor de bolívares",
   title: "Dólar BCV hoy: {{ve.tasa-bcv-usd}}. Convierte bolívares",
   description:
-    "Tasa oficial del BCV: el dólar a {{ve.tasa-bcv-usd}} y el euro a {{ve.tasa-bcv-eur}}. Convierte bolívares, dólares y euros con la tasa del día.",
+    "Dólar BCV hoy: {{ve.tasa-bcv-usd}}. Euro: {{ve.tasa-bcv-eur}}. Convierte bolívares, dólares y euros con la tasa oficial del Banco Central de Venezuela.",
   intro: [
-    "El dólar BCV es el tipo de cambio oficial que publica el Banco Central de Venezuela. Es el que se usa para pagar en bolívares precios, salarios y bonos fijados en dólares.",
-    "La tasa que ves rige desde el {{ve.tasa-bcv-usd#desde}}. Se actualiza sola cada día hábil.",
+    "El dólar BCV hoy está en {{ve.tasa-bcv-usd}} y el euro en {{ve.tasa-bcv-eur}}. Es la tasa oficial que publica el Banco Central de Venezuela y rige desde el {{ve.tasa-bcv-usd#desde}}.",
+    "Es la que se usa para pagar en bolívares precios, salarios y bonos fijados en dólares. Se actualiza sola cada día hábil.",
   ],
   comoSeCalcula: [
     "Dólares a bolívares: dólares por la tasa.",
@@ -18,6 +18,14 @@ export default definirContenido({
   ],
   ejemplo: ["Si el dólar está a Bs. 874,73, 100 dólares son Bs. 87.473,21."],
   faq: [
+    {
+      pregunta: "¿A cuánto está el dólar BCV hoy?",
+      respuesta: "A {{ve.tasa-bcv-usd}} por dólar, según la tasa oficial del Banco Central de Venezuela. El euro está a {{ve.tasa-bcv-eur}}.",
+    },
+    {
+      pregunta: "¿Cómo paso bolívares a dólares?",
+      respuesta: "Divide los bolívares entre la tasa del día. Para pasar dólares a bolívares, multiplica los dólares por la tasa.",
+    },
     {
       pregunta: "¿Por qué la tasa del BCV es distinta a la del dólar paralelo?",
       respuesta: "Porque el paralelo no es oficial: lo publican terceros y cada uno da un número distinto. Aquí solo mostramos la tasa oficial del BCV.",

@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ni.salario-minimo",
-  h1: "Salario mínimo en Nicaragua por sector",
-  title: "Salario mínimo en Nicaragua 2026 por sector",
-  description: "Consultá el salario mínimo vigente de tu sector, por mes, por día y por hora. Va de {{ni.salario-minimo[agropecuario]}} a {{ni.salario-minimo[construccion-financiero]}} al mes.",
+  h1: "Salario mínimo en Nicaragua 2026 por sector",
+  title: "Salario mínimo en Nicaragua 2026: tabla por sector",
+  description: "Salario mínimo en Nicaragua 2026 por sector: de {{ni.salario-minimo[agropecuario]}} a {{ni.salario-minimo[construccion-financiero]}} al mes. Consultá el tuyo por mes, por día y por hora.",
   intro: [
-    "En Nicaragua el salario mínimo cambia según el sector donde trabajás. Lo aprueba cada año la Comisión Nacional de Salario Mínimo y lo publica el Ministerio del Trabajo (MITRAB).",
-    "Elegí tu sector y te mostramos el mínimo mensual, por día y por hora. Los montos rigen desde el {{ni.salario-minimo#desde}}.",
+    "El salario mínimo en Nicaragua va de {{ni.salario-minimo[agropecuario]}} al mes en el sector agropecuario a {{ni.salario-minimo[construccion-financiero]}} en construcción, finanzas y seguros. Los montos rigen desde el {{ni.salario-minimo#desde}}.",
+    "Cambia según el sector donde trabajás. Lo aprueba cada año la Comisión Nacional de Salario Mínimo y lo publica el Ministerio del Trabajo (MITRAB). Elegí tu sector y te mostramos el mínimo mensual, por día y por hora.",
   ],
   comoSeCalcula: [
     "El monto mensual sale del acuerdo ministerial vigente, publicado en La Gaceta.",
@@ -17,12 +17,20 @@ export default definirContenido({
   ejemplo: ["En la industria manufacturera el mínimo es {{ni.salario-minimo[industria-manufacturera]}} al mes."],
   faq: [
     {
-      pregunta: "¿Cuál es el salario mínimo más bajo y el más alto?",
-      respuesta: "El más bajo es el agropecuario, {{ni.salario-minimo[agropecuario]}}, que incluye la alimentación. El más alto es el de construcción, finanzas y seguros, {{ni.salario-minimo[construccion-financiero]}}.",
+      pregunta: "¿Cuánto es el salario mínimo en Nicaragua en 2026?",
+      respuesta: "Depende del sector: va de {{ni.salario-minimo[agropecuario]}} en el agropecuario a {{ni.salario-minimo[construccion-financiero]}} en construcción, finanzas y seguros. En la industria manufacturera es {{ni.salario-minimo[industria-manufacturera]}}.",
+    },
+    {
+      pregunta: "¿Cómo saco el salario mínimo por día y por hora?",
+      respuesta: "Por día, dividí el mensual entre 30. Por hora, dividí el diario entre las {{ni.jornada-diaria[diurna]}} de la jornada diurna.",
     },
     {
       pregunta: "¿Hasta cuándo rige este salario mínimo?",
       respuesta: "Hasta el 28 de febrero de 2027. El MITRAB convoca a la comisión en febrero para fijar el siguiente.",
+    },
+    {
+      pregunta: "¿Por qué el agropecuario es el más bajo?",
+      respuesta: "Porque su monto incluye la alimentación. El más alto es el de construcción, finanzas y seguros.",
     },
     {
       pregunta: "¿Y las zonas francas?",

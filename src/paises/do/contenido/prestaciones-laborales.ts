@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.prestaciones-laborales",
-  h1: "Calculadora de prestaciones laborales",
-  title: "Prestaciones laborales: calcula preaviso y cesantía",
+  h1: "Calculadora de prestaciones laborales en República Dominicana",
+  title: "Prestaciones laborales en RD 2026: cesantía y preaviso",
   description:
-    "Calcula tus prestaciones laborales: preaviso, auxilio de cesantía, vacaciones y salario de Navidad, según el Código de Trabajo de República Dominicana.",
+    "Calcula tus prestaciones laborales en RD: preaviso, cesantía, vacaciones y regalía proporcional. Por desahucio, despido o renuncia, según el Código de Trabajo.",
   intro: [
-    "Las prestaciones laborales son lo que te pagan cuando termina tu contrato. Dependen del tiempo que trabajaste y de cómo terminó la relación.",
+    "Las prestaciones laborales en República Dominicana son el preaviso, el auxilio de cesantía, las vacaciones no tomadas y la regalía proporcional. Cuáles te tocan depende de cómo terminó tu contrato.",
     "Si te desahuciaron o te despidieron sin causa justa, te tocan preaviso y cesantía. Si renunciaste, cobras vacaciones y regalía proporcional.",
   ],
   comoSeCalcula: [
@@ -23,16 +23,16 @@ export default definirContenido({
   ],
   faq: [
     {
+      pregunta: "¿Cómo se calculan las prestaciones laborales?",
+      respuesta: "Divides tu salario promedio del último año entre {{do.divisor-salario-diario}} y lo multiplicas por los días de preaviso y cesantía que te tocan según tu antigüedad. A eso se suman las vacaciones pendientes y la regalía proporcional.",
+    },
+    {
       pregunta: "¿Me toca cesantía si renuncio?",
       respuesta: "No. La cesantía se paga cuando el empleador termina el contrato sin causa justa. Al renunciar cobras vacaciones y salario de Navidad proporcional.",
     },
     {
       pregunta: "¿En cuánto tiempo me tienen que pagar las prestaciones?",
       respuesta: "En 10 días desde que termina el contrato. Si se atrasan, el empleador debe sumar un día de salario por cada día de retraso.",
-    },
-    {
-      pregunta: "¿Qué es el desahucio?",
-      respuesta: "Es cuando una de las partes termina el contrato sin alegar una causa. Si lo hace el empleador, debe pagar preaviso y cesantía.",
     },
     {
       pregunta: "¿Las prestaciones pagan ISR?",
@@ -50,7 +50,7 @@ export default definirContenido({
   glosario: [
     { termino: "Preaviso", definicion: "Aviso anticipado del fin del contrato. Si no se da, se paga en dinero." },
     { termino: "Auxilio de cesantía", definicion: "Pago por los años trabajados cuando el empleador termina el contrato sin causa justa." },
-    { termino: "Desahucio", definicion: "Terminar el contrato sin alegar una causa." },
+    { termino: "Desahucio", definicion: "Terminar el contrato sin alegar una causa. Si lo hace el empleador, debe pagar preaviso y cesantía." },
     { termino: "Dimisión", definicion: "Terminar el contrato tú, por una falta del empleador." },
   ],
 });

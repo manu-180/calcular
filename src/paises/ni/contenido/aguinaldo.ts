@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ni.aguinaldo",
-  h1: "Calculadora de aguinaldo",
-  title: "Aguinaldo en Nicaragua: calculá tu décimo tercer mes",
-  description: "Calculá tu aguinaldo o décimo tercer mes: {{ni.aguinaldo-meses}} de salario por año, o la parte proporcional si no completaste el año. Según el Código del Trabajo.",
+  h1: "Calculadora de aguinaldo en Nicaragua",
+  title: "Aguinaldo en Nicaragua 2026: calculá tu décimo tercer mes",
+  description: "Calculá tu aguinaldo en Nicaragua: {{ni.aguinaldo-meses}} de salario por año o la parte proporcional, sin INSS ni IR. Se paga en los primeros diez días de diciembre.",
   intro: [
-    "El aguinaldo (en la ley se llama décimo tercer mes) es un salario extra por año. Te lo pagan en los primeros diez días de diciembre.",
-    "Poné tu salario y la fecha en que entraste. Si no completaste el año, te sale la parte proporcional.",
+    "En Nicaragua el aguinaldo es {{ni.aguinaldo-meses}} de salario por año trabajado, o la parte proporcional si no completaste el año. Te lo pagan en los primeros diez días de diciembre.",
+    "En la ley se llama décimo tercer mes. Poné tu salario y la fecha en que entraste. Si no completaste el año, te sale la parte proporcional.",
   ],
   comoSeCalcula: [
     "Por cada año completo te toca {{ni.aguinaldo-meses}} de salario.",
@@ -19,16 +19,24 @@ export default definirContenido({
   ejemplo: ["Si ganás C$9,000 y entraste el 15 de junio, del 15 de junio al 30 de noviembre hay 169 días. Tu aguinaldo es 9,000 × 169 / 365 = C$4,167.12."],
   faq: [
     {
+      pregunta: "¿Cómo se calcula el aguinaldo en Nicaragua?",
+      respuesta: "Con el año completo te toca {{ni.aguinaldo-meses}} de salario. Si trabajaste menos, multiplicás tu salario por los días trabajados desde el 1 de diciembre y dividís entre 365.",
+    },
+    {
       pregunta: "¿Cuándo me tienen que pagar el aguinaldo?",
       respuesta: "Dentro de los primeros diez días de diciembre. Si te lo pagan tarde, el empleador te debe un día de salario por cada día de atraso.",
+    },
+    {
+      pregunta: "¿Al aguinaldo le descuentan INSS o IR?",
+      respuesta: "No. Está libre de impuestos, cotizaciones y descuentos, y no se puede embargar salvo por pensión de alimentos.",
     },
     {
       pregunta: "¿Me pagan aguinaldo si renuncio?",
       respuesta: "Sí. Al terminar el contrato, por la causa que sea, te pagan la parte proporcional del tiempo trabajado.",
     },
     {
-      pregunta: "¿Al aguinaldo le descuentan INSS o IR?",
-      respuesta: "No. Está libre de impuestos, cotizaciones y descuentos, y no se puede embargar salvo por pensión de alimentos.",
+      pregunta: "¿Con qué salario se calcula el aguinaldo?",
+      respuesta: "Con tu último salario. Si ganás por comisión o a destajo, con el más alto de los últimos seis meses.",
     },
     {
       pregunta: "¿Las vacaciones y los permisos cuentan como tiempo trabajado?",

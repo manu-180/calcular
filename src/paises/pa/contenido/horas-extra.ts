@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pa.horas-extra",
-  h1: "Calculadora de horas extra en Panamá",
-  title: "Horas extra en Panamá: calcula tus recargos",
+  h1: "Calculadora de horas extras en Panamá",
+  title: "Horas extras en Panamá: calcula el pago con recargo",
   description:
-    "Calcula tus horas extra con los recargos del artículo 33: {{pa.recargo-horas-extra[diurna]}} de día, {{pa.recargo-horas-extra[nocturna]}} de noche y {{pa.recargo-horas-extra[prolongacion-nocturna]}} al alargar la nocturna.",
+    "Calcula tus horas extras en Panamá con los recargos del artículo 33: {{pa.recargo-horas-extra[diurna]}} de día, {{pa.recargo-horas-extra[nocturna]}} de noche y {{pa.recargo-horas-extra[prolongacion-nocturna]}} al alargar la nocturna.",
   intro: [
-    "Las horas que trabajas por encima de tu jornada se pagan con recargo. El recargo depende de cuándo las trabajas.",
+    "En Panamá las horas extras se pagan con un recargo del {{pa.recargo-horas-extra[diurna]}} si son de día, {{pa.recargo-horas-extra[nocturna]}} si son de noche y {{pa.recargo-horas-extra[prolongacion-nocturna]}} si alargan una jornada nocturna. El recargo se suma al valor normal de tu hora.",
     "Escribe tu salario, tu jornada y las horas extra de la semana. Te mostramos cuánto te deben pagar.",
   ],
   comoSeCalcula: [
@@ -21,12 +21,16 @@ export default definirContenido({
   ],
   faq: [
     {
-      pregunta: "¿Estoy obligado a trabajar horas extra?",
-      respuesta: "No, salvo en una emergencia que ponga en peligro vidas o la empresa, o si lo pactaste en una convención colectiva y en tu contrato.",
+      pregunta: "¿Cómo se calculan las horas extras en Panamá?",
+      respuesta: "Divides tu salario mensual entre las horas que trabajas en un mes y le sumas el recargo. Con B/. 1,040 al mes en jornada diurna, la hora vale B/. 5 y cada hora extra de día, B/. 6.25.",
     },
     {
       pregunta: "¿Cuántas horas extra puedo trabajar?",
       respuesta: "Hasta {{pa.horas-extra-maximo-dia}} por día y {{pa.horas-extra-maximo-semana}} por semana. Si te hacen trabajar más, esas horas llevan un recargo adicional y el empleador puede ser multado.",
+    },
+    {
+      pregunta: "¿Estoy obligado a trabajar horas extra?",
+      respuesta: "No, salvo en una emergencia que ponga en peligro vidas o la empresa, o si lo pactaste en una convención colectiva y en tu contrato.",
     },
     {
       pregunta: "¿Cuándo me deben pagar las horas extra?",

@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.vacaciones",
-  h1: "Calculadora de vacaciones",
+  h1: "Calculadora de vacaciones en República Dominicana",
   title: "Vacaciones en RD: cuántos días te tocan y cuánto cobras",
   description:
-    "Calcula tus días de vacaciones ({{do.vacaciones-dias[uno-a-cinco-anios]}} o {{do.vacaciones-dias[cinco-anios-o-mas]}} según tu antigüedad) y cuánto te pagan, también si aún no cumples un año.",
+    "Calcula tus días de vacaciones en RD ({{do.vacaciones-dias[uno-a-cinco-anios]}} o {{do.vacaciones-dias[cinco-anios-o-mas]}} según tu antigüedad) y cuánto te pagan, también si aún no cumples un año.",
   intro: [
-    "Cada año trabajado te da derecho a vacaciones pagadas. Los días dependen de cuánto tiempo llevas en la empresa.",
+    "En República Dominicana te tocan {{do.vacaciones-dias[uno-a-cinco-anios]}} laborables de vacaciones por año de 1 a 5 años de trabajo, y {{do.vacaciones-dias[cinco-anios-o-mas]}} desde los 5 años. Cada día se paga con tu salario mensual dividido entre {{do.divisor-salario-diario}}.",
     "Si todavía no cumples un año, igual te tocan vacaciones proporcionales desde los 5 meses.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,14 @@ export default definirContenido({
     "Con 3 años en la empresa y RD$35,000 al mes te tocan 14 días. Cada día vale RD$1,468.74, así que cobras RD$20,562.36.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuántos días de vacaciones me tocan en RD?",
+      respuesta: "{{do.vacaciones-dias[uno-a-cinco-anios]}} laborables por año hasta los 5 años de trabajo y {{do.vacaciones-dias[cinco-anios-o-mas]}} desde los 5. Con menos de un año, desde {{do.vacaciones-proporcionales[5]}} si pasaste los 5 meses.",
+    },
+    {
+      pregunta: "¿Cómo se calcula el pago de las vacaciones?",
+      respuesta: "Divides tu salario mensual entre {{do.divisor-salario-diario}} y lo multiplicas por tus días de vacaciones. Con RD$35,000 y 14 días, cobras RD$20,562.36.",
+    },
     {
       pregunta: "¿Cuándo me tienen que pagar las vacaciones?",
       respuesta: "El día antes de que empiecen, junto con el salario que hayas ganado hasta esa fecha.",

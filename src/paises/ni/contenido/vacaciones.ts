@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ni.vacaciones",
-  h1: "Calculadora de vacaciones",
-  title: "Vacaciones en Nicaragua: calculá días y pago",
-  description: "Calculá cuántos días de vacaciones acumulaste y cuánto te tienen que pagar. Son {{ni.vacaciones-dias-por-semestre}} por cada seis meses de trabajo, según el Código del Trabajo.",
+  h1: "Calculadora de vacaciones en Nicaragua",
+  title: "Vacaciones en Nicaragua: calculá tus días y cuánto te pagan",
+  description: "Calculá tus vacaciones en Nicaragua: {{ni.vacaciones-dias-por-semestre}} por cada seis meses de trabajo. Te mostramos los días pendientes y cuánto valen con tu salario diario.",
   intro: [
-    "Por cada seis meses de trabajo con el mismo empleador te tocan {{ni.vacaciones-dias-por-semestre}} de descanso pagado.",
+    "En Nicaragua te tocan {{ni.vacaciones-dias-por-semestre}} de vacaciones pagadas por cada seis meses de trabajo con el mismo empleador. Cada día se paga con tu salario diario (el mensual entre 30).",
     "Poné tu salario, desde cuándo acumulás vacaciones y los días que ya gozaste. Te mostramos los días pendientes y cuánto valen.",
   ],
   comoSeCalcula: [
@@ -17,6 +17,10 @@ export default definirContenido({
   ],
   ejemplo: ["Del 1 de enero al 30 de junio de 2026 hay 181 días: ganaste 14.88 días. Con un salario de C$9,000 (C$300 diarios), valen C$4,464."],
   faq: [
+    {
+      pregunta: "¿Cómo se calculan las vacaciones en Nicaragua?",
+      respuesta: "Contás los días trabajados en el período y sacás la parte de {{ni.vacaciones-dias-por-semestre}} por cada seis meses. Restás los días que ya gozaste y multiplicás lo que queda por tu salario diario.",
+    },
     {
       pregunta: "¿Cuántos días de vacaciones me tocan por año?",
       respuesta: "El doble de lo que te toca por semestre: {{ni.vacaciones-dias-por-semestre}} cada seis meses de trabajo continuo.",

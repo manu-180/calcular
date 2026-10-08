@@ -3,11 +3,11 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ve.salario-minimo",
   h1: "Salario mínimo en Venezuela",
-  title: "Salario mínimo en Venezuela: {{ve.salario-minimo}} al mes",
+  title: "Salario mínimo en Venezuela: {{ve.salario-minimo}} al mes y en dólares",
   description:
-    "El salario mínimo es {{ve.salario-minimo}} al mes desde el {{ve.salario-minimo#desde}}. Míralo por día y en dólares a la tasa oficial del BCV.",
+    "El salario mínimo en Venezuela es {{ve.salario-minimo}} al mes desde el {{ve.salario-minimo#desde}}. Míralo por día y en dólares con la tasa oficial del BCV de hoy.",
   intro: [
-    "El salario mínimo mensual es {{ve.salario-minimo}}, fijado por el Decreto 4.653 de marzo de 2022. Para adolescentes aprendices es {{ve.salario-minimo-aprendiz}}.",
+    "El salario mínimo mensual en Venezuela es {{ve.salario-minimo}}, fijado por el Decreto 4.653 de marzo de 2022. Para adolescentes aprendices es {{ve.salario-minimo-aprendiz}}.",
     "Desde entonces los aumentos se hicieron con bonos (cestaticket y bono de guerra económica), no con el salario. Por eso el ingreso mínimo que anuncia el Gobierno es mucho mayor que el salario mínimo.",
   ],
   comoSeCalcula: [
@@ -15,6 +15,10 @@ export default definirContenido({
     "Equivalente en dólares: el salario dividido entre la tasa oficial del BCV vigente, hoy {{ve.tasa-bcv-usd}}.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto es el salario mínimo en dólares?",
+      respuesta: "Es {{ve.salario-minimo}} dividido entre la tasa oficial del BCV, hoy {{ve.tasa-bcv-usd}}. La calculadora te muestra el resultado con la tasa del día.",
+    },
     {
       pregunta: "¿Por qué el salario mínimo es tan bajo?",
       respuesta:
@@ -26,12 +30,12 @@ export default definirContenido({
         "Es la suma del salario mínimo, el cestaticket y el bono de guerra económica. Su monto se anuncia, pero no encontramos el decreto publicado en Gaceta Oficial, así que no lo mostramos.",
     },
     {
-      pregunta: "¿Se paga en efectivo?",
-      respuesta: "Sí. El decreto dice que el salario mínimo se paga en dinero y no puede incluir pagos en especie.",
-    },
-    {
       pregunta: "¿Qué tasa usan para pasarlo a dólares?",
       respuesta: "Solo la tasa oficial del Banco Central de Venezuela, que se actualiza sola cada día hábil.",
+    },
+    {
+      pregunta: "¿Se paga en efectivo?",
+      respuesta: "Sí. El decreto dice que el salario mínimo se paga en dinero y no puede incluir pagos en especie.",
     },
   ],
   glosario: [

@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.salario-neto",
-  h1: "Calculadora de salario neto",
-  title: "Salario neto 2026: calcula tu sueldo después de TSS e ISR",
-  description: "Pasa de salario bruto a neto con los descuentos de la TSS (SFS y AFP) y la retención del ISR, con los topes de cotización vigentes y la escala de la DGII.",
+  h1: "Calculadora de salario neto en República Dominicana",
+  title: "Salario neto en RD 2026: tu sueldo después de TSS e ISR",
+  description: "Calcula tu sueldo neto en RD: descuentos de SFS ({{do.sfs-trabajador}}), AFP ({{do.afp-trabajador}}) y retención del ISR, con los topes de la TSS y la escala de la DGII.",
   intro: [
-    "El salario neto es lo que te llega a la cuenta. Sale del bruto menos lo que te descuentan para la TSS y el ISR.",
+    "Tu salario neto en República Dominicana es el bruto menos el SFS ({{do.sfs-trabajador}}), la AFP ({{do.afp-trabajador}}) y la retención del ISR. Es lo que te llega a la cuenta.",
     "Escribe tu salario bruto mensual y ves cada descuento por separado.",
   ],
   comoSeCalcula: [
@@ -20,16 +20,24 @@ export default definirContenido({
   ],
   faq: [
     {
+      pregunta: "¿Cómo calculo mi sueldo neto?",
+      respuesta: "A tu salario bruto le restas el {{do.sfs-trabajador}} de SFS y el {{do.afp-trabajador}} de AFP. Sobre lo que queda se calcula el ISR, y lo que sobra después de restarlo es tu neto.",
+    },
+    {
+      pregunta: "¿Cuánto me descuentan de un sueldo de RD$60,000?",
+      respuesta: "RD$1,824 de SFS, RD$1,722 de AFP y RD$3,486.65 de ISR. Te quedan RD$52,967.35.",
+    },
+    {
       pregunta: "¿Desde qué salario se paga ISR?",
       respuesta: "Cuando tu salario, ya sin SFS ni AFP, pasa de la doceava parte del monto exento anual. La calculadora de ISR te muestra ese límite por mes.",
     },
     {
-      pregunta: "¿El empleador también paga a la TSS?",
-      respuesta: "Sí, y paga más que tú. Ese aporte no sale de tu salario. Lo ves en la calculadora de aportes a la TSS.",
-    },
-    {
       pregunta: "¿Qué es el tope de cotización?",
       respuesta: "Es el salario máximo sobre el que se calcula cada seguro. Si ganas más, el descuento se queda fijo en el tope.",
+    },
+    {
+      pregunta: "¿El empleador también paga a la TSS?",
+      respuesta: "Sí, y paga más que tú. Ese aporte no sale de tu salario. Lo ves en la calculadora de aportes a la TSS.",
     },
     {
       pregunta: "¿Cambia mi salario neto en 2027?",
