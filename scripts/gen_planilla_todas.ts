@@ -1,5 +1,6 @@
 // Regenera TODOS los .xlsx entregables desde src/data/ (convenios, casas particulares, monotributo,
-// alquileres, mi sueldo y plazos fijos con el IPC, camioneros, vacaciones).
+// alquileres, mi sueldo y plazos fijos con el IPC, camioneros, vacaciones), y las de calcularya.com
+// desde src/paises/ (scripts/paises/gen_planillas_intl.ts).
 //
 // Está pensado para correr en el build (package.json → "prebuild"), no a mano: el archivo que
 // se le manda al comprador tiene que nacer del deploy, no de que alguien se acuerde de
@@ -17,6 +18,7 @@ import { generarPlanillaCamioneros } from "./gen_planilla_camioneros";
 import { generarPlanillaMiSueldo } from "./gen_planilla_mi_sueldo";
 import { generarPlanillaVacaciones } from "./gen_planilla_vacaciones";
 import { generarPlanillaPlazoFijo } from "./gen_planilla_plazo_fijo";
+import { generarPlanillasIntl } from "./paises/gen_planillas_intl";
 
 async function main() {
   const salidas = [
@@ -35,6 +37,10 @@ async function main() {
     console.log(`OK  ${nombre.padEnd(24)} → ${ruta}`);
   }
   console.log(`\n${salidas.length} planillas regeneradas desde src/data/.`);
+
+  const intl = await generarPlanillasIntl();
+  for (const x of intl) console.log(`${x.ruta ? "OK " : "-- "} calcularya ${x.mercado.padEnd(13)} → ${x.ruta ?? "sin hojas publicables hoy"}`);
+  console.log(`${intl.filter((x) => x.ruta).length} planillas de calcularya.com regeneradas desde src/paises/.`);
 }
 
 main().catch((e) => {
