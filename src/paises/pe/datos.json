@@ -290,11 +290,31 @@
           "estado": "verificado",
           "desde": "2015-01-01",
           "valor": [
-            { "desde": 0, "hasta": 5, "tasa": 8 },
-            { "desde": 5, "hasta": 20, "tasa": 14 },
-            { "desde": 20, "hasta": 35, "tasa": 17 },
-            { "desde": 35, "hasta": 45, "tasa": 20 },
-            { "desde": 45, "hasta": null, "tasa": 30 }
+            {
+              "desde": 0,
+              "hasta": 5,
+              "tasa": 8
+            },
+            {
+              "desde": 5,
+              "hasta": 20,
+              "tasa": 14
+            },
+            {
+              "desde": 20,
+              "hasta": 35,
+              "tasa": 17
+            },
+            {
+              "desde": 35,
+              "hasta": 45,
+              "tasa": 20
+            },
+            {
+              "desde": 45,
+              "hasta": null,
+              "tasa": 30
+            }
           ],
           "fuente": {
             "organismo": "SUNAT",
@@ -642,15 +662,14 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-10-01",
           "valor": 10,
-          "motivo": "La página de comisiones y primas de la SBS pidió un CAPTCHA el 7/10/2026 y no se pudo leer. El valor sale del research (leído allí el mismo día).",
           "fuente": {
             "organismo": "SBS",
-            "titulo": "Comisiones y primas de seguro del SPP",
+            "titulo": "Comisiones y primas de seguro del SPP, mes de devengue 2026-10",
             "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
-            "tipo": "secundaria",
+            "tipo": "primaria",
             "verificadoEl": "2026-10-07"
           }
         }
@@ -663,19 +682,19 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-10-01",
           "valor": 1.37,
-          "motivo": "La página de la SBS pidió un CAPTCHA el 7/10/2026. Valor tomado del research.",
           "fuente": {
             "organismo": "SBS",
-            "titulo": "Comisiones y primas de seguro del SPP",
+            "titulo": "Comisiones y primas de seguro del SPP, mes de devengue 2026-10",
             "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
-            "tipo": "secundaria",
+            "tipo": "primaria",
             "verificadoEl": "2026-10-07"
           }
         }
-      ]
+      ],
+      "proximaRevision": "2027-01-01"
     },
     {
       "id": "pe.comision-afp",
@@ -690,7 +709,7 @@
       },
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-10-01",
           "valor": {
             "habitat": 1.47,
@@ -698,12 +717,34 @@
             "prima": 1.6,
             "profuturo": 1.69
           },
-          "motivo": "La página de la SBS pidió un CAPTCHA el 7/10/2026. Valores tomados del research.",
           "fuente": {
             "organismo": "SBS",
-            "titulo": "Comisiones y primas de seguro del SPP",
+            "titulo": "Comisiones y primas de seguro del SPP, mes de devengue 2026-10",
             "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
-            "tipo": "secundaria",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01",
+      "nota": "Solo la cobran quienes se quedaron en comisión por flujo en 2013. En la comisión mixta (sobre el saldo) el componente sobre el sueldo es 0 % desde febrero de 2023."
+    },
+    {
+      "id": "pe.comision-mixta-flujo",
+      "nombre": "Componente sobre el sueldo de la comisión mixta (AFP)",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "La comisión mixta solo se cobra sobre el saldo del fondo; sobre el sueldo es 0 %.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-02-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "SBS",
+            "titulo": "Comisiones y primas de seguro del SPP (nota sobre la comisión mixta desde febrero de 2023)",
+            "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
+            "tipo": "primaria",
             "verificadoEl": "2026-10-07"
           }
         }
@@ -716,20 +757,21 @@
       "unidad": "PEN",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-10-01",
           "hasta": "2026-12-31",
           "valor": 12732.7,
-          "motivo": "La página de la SBS pidió un CAPTCHA el 7/10/2026. Valor del research para el devengue de octubre de 2026; se actualiza cada trimestre.",
           "fuente": {
             "organismo": "SBS",
-            "titulo": "Comisiones y primas de seguro del SPP",
+            "titulo": "Comisiones y primas de seguro del SPP, mes de devengue 2026-10",
             "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
-            "tipo": "secundaria",
+            "tipo": "primaria",
             "verificadoEl": "2026-10-07"
           }
         }
-      ]
+      ],
+      "proximaRevision": "2026-12-31",
+      "nota": "Se actualiza cada trimestre. El trimestre julio a setiembre de 2026 era S/ 12,672.65."
     }
   ]
 }

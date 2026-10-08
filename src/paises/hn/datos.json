@@ -1,0 +1,857 @@
+{
+  "mercado": "hn",
+  "datos": [
+    {
+      "id": "hn.salario-minimo-mensual",
+      "nombre": "Salario mínimo mensual por rama de actividad y tamaño de empresa",
+      "tipo": "mapa",
+      "unidad": "HNL",
+      "etiquetas": {
+        "agricultura-1-10": "Agricultura, silvicultura, caza y pesca, 1 a 10 trabajadores",
+        "agricultura-11-50": "Agricultura, silvicultura, caza y pesca, 11 a 50 trabajadores",
+        "agricultura-51-150": "Agricultura, silvicultura, caza y pesca, 51 a 150 trabajadores",
+        "agricultura-151-mas": "Agricultura, silvicultura, caza y pesca, 151 o más trabajadores",
+        "minas-1-10": "Explotación de minas y canteras, 1 a 10 trabajadores",
+        "minas-11-50": "Explotación de minas y canteras, 11 a 50 trabajadores",
+        "minas-51-150": "Explotación de minas y canteras, 51 a 150 trabajadores",
+        "minas-151-mas": "Explotación de minas y canteras, 151 o más trabajadores",
+        "manufactura-1-10": "Industria manufacturera, 1 a 10 trabajadores",
+        "manufactura-11-50": "Industria manufacturera, 11 a 50 trabajadores",
+        "manufactura-51-150": "Industria manufacturera, 51 a 150 trabajadores",
+        "manufactura-151-mas": "Industria manufacturera, 151 o más trabajadores",
+        "electricidad-1-10": "Electricidad, gas y agua, 1 a 10 trabajadores",
+        "electricidad-11-50": "Electricidad, gas y agua, 11 a 50 trabajadores",
+        "electricidad-51-150": "Electricidad, gas y agua, 51 a 150 trabajadores",
+        "electricidad-151-mas": "Electricidad, gas y agua, 151 o más trabajadores",
+        "construccion-1-10": "Construcción, 1 a 10 trabajadores",
+        "construccion-11-50": "Construcción, 11 a 50 trabajadores",
+        "construccion-51-150": "Construcción, 51 a 150 trabajadores",
+        "construccion-151-mas": "Construcción, 151 o más trabajadores",
+        "comercio-1-10": "Comercio al por mayor y menor, 1 a 10 trabajadores",
+        "comercio-11-50": "Comercio al por mayor y menor, 11 a 50 trabajadores",
+        "comercio-51-150": "Comercio al por mayor y menor, 51 a 150 trabajadores",
+        "comercio-151-mas": "Comercio al por mayor y menor, 151 o más trabajadores",
+        "restaurantes-hoteles-1-10": "Restaurantes y hoteles, 1 a 10 trabajadores",
+        "restaurantes-hoteles-11-50": "Restaurantes y hoteles, 11 a 50 trabajadores",
+        "restaurantes-hoteles-51-150": "Restaurantes y hoteles, 51 a 150 trabajadores",
+        "restaurantes-hoteles-151-mas": "Restaurantes y hoteles, 151 o más trabajadores",
+        "transporte-1-10": "Transporte, almacenamiento y comunicaciones, 1 a 10 trabajadores",
+        "transporte-11-50": "Transporte, almacenamiento y comunicaciones, 11 a 50 trabajadores",
+        "transporte-51-150": "Transporte, almacenamiento y comunicaciones, 51 a 150 trabajadores",
+        "transporte-151-mas": "Transporte, almacenamiento y comunicaciones, 151 o más trabajadores",
+        "financieros-1-10": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 1 a 10 trabajadores",
+        "financieros-11-50": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 11 a 50 trabajadores",
+        "financieros-51-150": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 51 a 150 trabajadores",
+        "financieros-151-mas": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 151 o más trabajadores",
+        "servicios-comunales-1-10": "Servicios comunales, sociales y personales, seguridad y limpieza, 1 a 10 trabajadores",
+        "servicios-comunales-11-50": "Servicios comunales, sociales y personales, seguridad y limpieza, 11 a 50 trabajadores",
+        "servicios-comunales-51-150": "Servicios comunales, sociales y personales, seguridad y limpieza, 51 a 150 trabajadores",
+        "servicios-comunales-151-mas": "Servicios comunales, sociales y personales, seguridad y limpieza, 151 o más trabajadores",
+        "hospitales-1-10": "Actividades de hospitales, 1 a 10 trabajadores",
+        "hospitales-11-50": "Actividades de hospitales, 11 a 50 trabajadores",
+        "hospitales-51-150": "Actividades de hospitales, 51 a 150 trabajadores",
+        "hospitales-151-mas": "Actividades de hospitales, 151 o más trabajadores"
+      },
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "agricultura-1-10": 9596.64,
+            "agricultura-11-50": 10137.04,
+            "agricultura-51-150": 11313.45,
+            "agricultura-151-mas": 12349.49,
+            "minas-1-10": 13110.8,
+            "minas-11-50": 13527.23,
+            "minas-51-150": 16248.28,
+            "minas-151-mas": 18530.19,
+            "manufactura-1-10": 12869.14,
+            "manufactura-11-50": 13714.21,
+            "manufactura-51-150": 16472.88,
+            "manufactura-151-mas": 18786.37,
+            "electricidad-1-10": 13533.74,
+            "electricidad-11-50": 13963.55,
+            "electricidad-51-150": 16772.4,
+            "electricidad-151-mas": 19127.95,
+            "construccion-1-10": 13292.06,
+            "construccion-11-50": 13714.21,
+            "construccion-51-150": 16472.88,
+            "construccion-151-mas": 18786.37,
+            "comercio-1-10": 13292.06,
+            "comercio-11-50": 13714.21,
+            "comercio-51-150": 16472.88,
+            "comercio-151-mas": 18786.37,
+            "restaurantes-hoteles-1-10": 13292.06,
+            "restaurantes-hoteles-11-50": 13714.21,
+            "restaurantes-hoteles-51-150": 16317.57,
+            "restaurantes-hoteles-151-mas": 18092.32,
+            "transporte-1-10": 13412.92,
+            "transporte-11-50": 13838.87,
+            "transporte-51-150": 16622.64,
+            "transporte-151-mas": 18957.14,
+            "financieros-1-10": 13654.55,
+            "financieros-11-50": 14088.24,
+            "financieros-51-150": 16922.16,
+            "financieros-151-mas": 19298.72,
+            "servicios-comunales-1-10": 13050.39,
+            "servicios-comunales-11-50": 13464.88,
+            "servicios-comunales-51-150": 16173.38,
+            "servicios-comunales-151-mas": 18444.8,
+            "hospitales-1-10": 13050.39,
+            "hospitales-11-50": 13464.88,
+            "hospitales-51-150": 15979.13,
+            "hospitales-151-mas": 17881.65
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social (La Gaceta No. 37,129 del 29/4/2026)",
+            "titulo": "Acuerdo Ejecutivo SETRASS-233-2026, artículo 2, tabla 2026 (salario mensual)",
+            "url": "https://tsc.gob.hn/web/leyes/Acuerdo-SETRASS-233-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Excluye la maquila textil y las empresas de zona libre (artículo 7), que siguen con el Acuerdo SETRASS-109-2024."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "agricultura-1-10": 10172.44,
+            "agricultura-11-50": 10745.26,
+            "agricultura-51-150": 12105.39,
+            "agricultura-151-mas": 13275.71,
+            "minas-1-10": 13897.45,
+            "minas-11-50": 14338.86,
+            "minas-51-150": 17385.66,
+            "minas-151-mas": 19919.96,
+            "manufactura-1-10": 13641.28,
+            "manufactura-11-50": 14537.06,
+            "manufactura-51-150": 17625.99,
+            "manufactura-151-mas": 20195.35,
+            "electricidad-1-10": 14345.76,
+            "electricidad-11-50": 14801.36,
+            "electricidad-51-150": 17946.47,
+            "electricidad-151-mas": 20562.55,
+            "construccion-1-10": 14089.59,
+            "construccion-11-50": 14537.06,
+            "construccion-51-150": 17625.99,
+            "construccion-151-mas": 20195.35,
+            "comercio-1-10": 14089.59,
+            "comercio-11-50": 14537.06,
+            "comercio-51-150": 17625.99,
+            "comercio-151-mas": 20195.35,
+            "restaurantes-hoteles-1-10": 14089.58,
+            "restaurantes-hoteles-11-50": 14537.06,
+            "restaurantes-hoteles-51-150": 17459.8,
+            "restaurantes-hoteles-151-mas": 19449.24,
+            "transporte-1-10": 14217.7,
+            "transporte-11-50": 14669.21,
+            "transporte-51-150": 17786.23,
+            "transporte-151-mas": 20378.92,
+            "financieros-1-10": 14473.83,
+            "financieros-11-50": 14933.53,
+            "financieros-51-150": 18106.71,
+            "financieros-151-mas": 20746.12,
+            "servicios-comunales-1-10": 13833.41,
+            "servicios-comunales-11-50": 14272.77,
+            "servicios-comunales-51-150": 17305.51,
+            "servicios-comunales-151-mas": 19828.16,
+            "hospitales-1-10": 13833.41,
+            "hospitales-11-50": 14272.77,
+            "hospitales-51-150": 17097.67,
+            "hospitales-151-mas": 19222.78
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social (La Gaceta No. 37,129 del 29/4/2026)",
+            "titulo": "Acuerdo Ejecutivo SETRASS-233-2026, artículo 2, tabla vigente desde el 1/1/2027 (salario mensual)",
+            "url": "https://tsc.gob.hn/web/leyes/Acuerdo-SETRASS-233-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El artículo 5 obliga a subir más estos valores si la inflación interanual de diciembre de 2026 (BCH) supera el ajuste de 2027."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.salario-minimo-diario",
+      "nombre": "Salario mínimo por jornada ordinaria de 8 horas",
+      "tipo": "mapa",
+      "unidad": "HNL",
+      "etiquetas": {
+        "agricultura-1-10": "Agricultura, silvicultura, caza y pesca, 1 a 10 trabajadores",
+        "agricultura-11-50": "Agricultura, silvicultura, caza y pesca, 11 a 50 trabajadores",
+        "agricultura-51-150": "Agricultura, silvicultura, caza y pesca, 51 a 150 trabajadores",
+        "agricultura-151-mas": "Agricultura, silvicultura, caza y pesca, 151 o más trabajadores",
+        "minas-1-10": "Explotación de minas y canteras, 1 a 10 trabajadores",
+        "minas-11-50": "Explotación de minas y canteras, 11 a 50 trabajadores",
+        "minas-51-150": "Explotación de minas y canteras, 51 a 150 trabajadores",
+        "minas-151-mas": "Explotación de minas y canteras, 151 o más trabajadores",
+        "manufactura-1-10": "Industria manufacturera, 1 a 10 trabajadores",
+        "manufactura-11-50": "Industria manufacturera, 11 a 50 trabajadores",
+        "manufactura-51-150": "Industria manufacturera, 51 a 150 trabajadores",
+        "manufactura-151-mas": "Industria manufacturera, 151 o más trabajadores",
+        "electricidad-1-10": "Electricidad, gas y agua, 1 a 10 trabajadores",
+        "electricidad-11-50": "Electricidad, gas y agua, 11 a 50 trabajadores",
+        "electricidad-51-150": "Electricidad, gas y agua, 51 a 150 trabajadores",
+        "electricidad-151-mas": "Electricidad, gas y agua, 151 o más trabajadores",
+        "construccion-1-10": "Construcción, 1 a 10 trabajadores",
+        "construccion-11-50": "Construcción, 11 a 50 trabajadores",
+        "construccion-51-150": "Construcción, 51 a 150 trabajadores",
+        "construccion-151-mas": "Construcción, 151 o más trabajadores",
+        "comercio-1-10": "Comercio al por mayor y menor, 1 a 10 trabajadores",
+        "comercio-11-50": "Comercio al por mayor y menor, 11 a 50 trabajadores",
+        "comercio-51-150": "Comercio al por mayor y menor, 51 a 150 trabajadores",
+        "comercio-151-mas": "Comercio al por mayor y menor, 151 o más trabajadores",
+        "restaurantes-hoteles-1-10": "Restaurantes y hoteles, 1 a 10 trabajadores",
+        "restaurantes-hoteles-11-50": "Restaurantes y hoteles, 11 a 50 trabajadores",
+        "restaurantes-hoteles-51-150": "Restaurantes y hoteles, 51 a 150 trabajadores",
+        "restaurantes-hoteles-151-mas": "Restaurantes y hoteles, 151 o más trabajadores",
+        "transporte-1-10": "Transporte, almacenamiento y comunicaciones, 1 a 10 trabajadores",
+        "transporte-11-50": "Transporte, almacenamiento y comunicaciones, 11 a 50 trabajadores",
+        "transporte-51-150": "Transporte, almacenamiento y comunicaciones, 51 a 150 trabajadores",
+        "transporte-151-mas": "Transporte, almacenamiento y comunicaciones, 151 o más trabajadores",
+        "financieros-1-10": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 1 a 10 trabajadores",
+        "financieros-11-50": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 11 a 50 trabajadores",
+        "financieros-51-150": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 51 a 150 trabajadores",
+        "financieros-151-mas": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 151 o más trabajadores",
+        "servicios-comunales-1-10": "Servicios comunales, sociales y personales, seguridad y limpieza, 1 a 10 trabajadores",
+        "servicios-comunales-11-50": "Servicios comunales, sociales y personales, seguridad y limpieza, 11 a 50 trabajadores",
+        "servicios-comunales-51-150": "Servicios comunales, sociales y personales, seguridad y limpieza, 51 a 150 trabajadores",
+        "servicios-comunales-151-mas": "Servicios comunales, sociales y personales, seguridad y limpieza, 151 o más trabajadores",
+        "hospitales-1-10": "Actividades de hospitales, 1 a 10 trabajadores",
+        "hospitales-11-50": "Actividades de hospitales, 11 a 50 trabajadores",
+        "hospitales-51-150": "Actividades de hospitales, 51 a 150 trabajadores",
+        "hospitales-151-mas": "Actividades de hospitales, 151 o más trabajadores"
+      },
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "agricultura-1-10": 319.89,
+            "agricultura-11-50": 337.9,
+            "agricultura-51-150": 377.11,
+            "agricultura-151-mas": 411.65,
+            "minas-1-10": 437.03,
+            "minas-11-50": 450.91,
+            "minas-51-150": 541.61,
+            "minas-151-mas": 617.67,
+            "manufactura-1-10": 428.97,
+            "manufactura-11-50": 457.14,
+            "manufactura-51-150": 549.1,
+            "manufactura-151-mas": 626.21,
+            "electricidad-1-10": 451.12,
+            "electricidad-11-50": 465.45,
+            "electricidad-51-150": 559.08,
+            "electricidad-151-mas": 637.6,
+            "construccion-1-10": 443.07,
+            "construccion-11-50": 457.14,
+            "construccion-51-150": 549.1,
+            "construccion-151-mas": 626.21,
+            "comercio-1-10": 443.07,
+            "comercio-11-50": 457.14,
+            "comercio-51-150": 549.1,
+            "comercio-151-mas": 626.21,
+            "restaurantes-hoteles-1-10": 443.07,
+            "restaurantes-hoteles-11-50": 457.14,
+            "restaurantes-hoteles-51-150": 543.92,
+            "restaurantes-hoteles-151-mas": 603.08,
+            "transporte-1-10": 447.1,
+            "transporte-11-50": 461.3,
+            "transporte-51-150": 554.09,
+            "transporte-151-mas": 631.9,
+            "financieros-1-10": 455.15,
+            "financieros-11-50": 469.61,
+            "financieros-51-150": 564.07,
+            "financieros-151-mas": 643.29,
+            "servicios-comunales-1-10": 435.01,
+            "servicios-comunales-11-50": 448.83,
+            "servicios-comunales-51-150": 539.11,
+            "servicios-comunales-151-mas": 614.83,
+            "hospitales-1-10": 435.01,
+            "hospitales-11-50": 448.83,
+            "hospitales-51-150": 532.64,
+            "hospitales-151-mas": 596.06
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social (La Gaceta No. 37,129 del 29/4/2026)",
+            "titulo": "Acuerdo Ejecutivo SETRASS-233-2026, artículo 2, tabla 2026 (jornada ordinaria de 8 horas)",
+            "url": "https://tsc.gob.hn/web/leyes/Acuerdo-SETRASS-233-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Excluye la maquila textil y las empresas de zona libre (artículo 7), que siguen con el Acuerdo SETRASS-109-2024."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "agricultura-1-10": 339.08,
+            "agricultura-11-50": 358.18,
+            "agricultura-51-150": 403.51,
+            "agricultura-151-mas": 442.52,
+            "minas-1-10": 463.25,
+            "minas-11-50": 477.96,
+            "minas-51-150": 579.52,
+            "minas-151-mas": 664.0,
+            "manufactura-1-10": 454.71,
+            "manufactura-11-50": 484.57,
+            "manufactura-51-150": 587.53,
+            "manufactura-151-mas": 673.18,
+            "electricidad-1-10": 478.19,
+            "electricidad-11-50": 493.38,
+            "electricidad-51-150": 598.22,
+            "electricidad-151-mas": 685.42,
+            "construccion-1-10": 469.65,
+            "construccion-11-50": 484.57,
+            "construccion-51-150": 587.53,
+            "construccion-151-mas": 673.18,
+            "comercio-1-10": 469.65,
+            "comercio-11-50": 484.57,
+            "comercio-51-150": 587.53,
+            "comercio-151-mas": 673.18,
+            "restaurantes-hoteles-1-10": 469.65,
+            "restaurantes-hoteles-11-50": 484.57,
+            "restaurantes-hoteles-51-150": 581.99,
+            "restaurantes-hoteles-151-mas": 648.31,
+            "transporte-1-10": 473.92,
+            "transporte-11-50": 488.97,
+            "transporte-51-150": 592.87,
+            "transporte-151-mas": 679.3,
+            "financieros-1-10": 482.46,
+            "financieros-11-50": 497.78,
+            "financieros-51-150": 603.56,
+            "financieros-151-mas": 691.54,
+            "servicios-comunales-1-10": 461.11,
+            "servicios-comunales-11-50": 475.76,
+            "servicios-comunales-51-150": 576.85,
+            "servicios-comunales-151-mas": 660.94,
+            "hospitales-1-10": 461.11,
+            "hospitales-11-50": 475.76,
+            "hospitales-51-150": 569.92,
+            "hospitales-151-mas": 640.76
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social (La Gaceta No. 37,129 del 29/4/2026)",
+            "titulo": "Acuerdo Ejecutivo SETRASS-233-2026, artículo 2, tabla vigente desde el 1/1/2027 (jornada ordinaria de 8 horas)",
+            "url": "https://tsc.gob.hn/web/leyes/Acuerdo-SETRASS-233-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El artículo 5 obliga a subir más estos valores si la inflación interanual de diciembre de 2026 (BCH) supera el ajuste de 2027."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.salario-minimo-hora",
+      "nombre": "Salario mínimo por hora",
+      "tipo": "mapa",
+      "unidad": "HNL",
+      "etiquetas": {
+        "agricultura-1-10": "Agricultura, silvicultura, caza y pesca, 1 a 10 trabajadores",
+        "agricultura-11-50": "Agricultura, silvicultura, caza y pesca, 11 a 50 trabajadores",
+        "agricultura-51-150": "Agricultura, silvicultura, caza y pesca, 51 a 150 trabajadores",
+        "agricultura-151-mas": "Agricultura, silvicultura, caza y pesca, 151 o más trabajadores",
+        "minas-1-10": "Explotación de minas y canteras, 1 a 10 trabajadores",
+        "minas-11-50": "Explotación de minas y canteras, 11 a 50 trabajadores",
+        "minas-51-150": "Explotación de minas y canteras, 51 a 150 trabajadores",
+        "minas-151-mas": "Explotación de minas y canteras, 151 o más trabajadores",
+        "manufactura-1-10": "Industria manufacturera, 1 a 10 trabajadores",
+        "manufactura-11-50": "Industria manufacturera, 11 a 50 trabajadores",
+        "manufactura-51-150": "Industria manufacturera, 51 a 150 trabajadores",
+        "manufactura-151-mas": "Industria manufacturera, 151 o más trabajadores",
+        "electricidad-1-10": "Electricidad, gas y agua, 1 a 10 trabajadores",
+        "electricidad-11-50": "Electricidad, gas y agua, 11 a 50 trabajadores",
+        "electricidad-51-150": "Electricidad, gas y agua, 51 a 150 trabajadores",
+        "electricidad-151-mas": "Electricidad, gas y agua, 151 o más trabajadores",
+        "construccion-1-10": "Construcción, 1 a 10 trabajadores",
+        "construccion-11-50": "Construcción, 11 a 50 trabajadores",
+        "construccion-51-150": "Construcción, 51 a 150 trabajadores",
+        "construccion-151-mas": "Construcción, 151 o más trabajadores",
+        "comercio-1-10": "Comercio al por mayor y menor, 1 a 10 trabajadores",
+        "comercio-11-50": "Comercio al por mayor y menor, 11 a 50 trabajadores",
+        "comercio-51-150": "Comercio al por mayor y menor, 51 a 150 trabajadores",
+        "comercio-151-mas": "Comercio al por mayor y menor, 151 o más trabajadores",
+        "restaurantes-hoteles-1-10": "Restaurantes y hoteles, 1 a 10 trabajadores",
+        "restaurantes-hoteles-11-50": "Restaurantes y hoteles, 11 a 50 trabajadores",
+        "restaurantes-hoteles-51-150": "Restaurantes y hoteles, 51 a 150 trabajadores",
+        "restaurantes-hoteles-151-mas": "Restaurantes y hoteles, 151 o más trabajadores",
+        "transporte-1-10": "Transporte, almacenamiento y comunicaciones, 1 a 10 trabajadores",
+        "transporte-11-50": "Transporte, almacenamiento y comunicaciones, 11 a 50 trabajadores",
+        "transporte-51-150": "Transporte, almacenamiento y comunicaciones, 51 a 150 trabajadores",
+        "transporte-151-mas": "Transporte, almacenamiento y comunicaciones, 151 o más trabajadores",
+        "financieros-1-10": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 1 a 10 trabajadores",
+        "financieros-11-50": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 11 a 50 trabajadores",
+        "financieros-51-150": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 51 a 150 trabajadores",
+        "financieros-151-mas": "Establecimientos financieros, bienes inmuebles y servicios a empresas, 151 o más trabajadores",
+        "servicios-comunales-1-10": "Servicios comunales, sociales y personales, seguridad y limpieza, 1 a 10 trabajadores",
+        "servicios-comunales-11-50": "Servicios comunales, sociales y personales, seguridad y limpieza, 11 a 50 trabajadores",
+        "servicios-comunales-51-150": "Servicios comunales, sociales y personales, seguridad y limpieza, 51 a 150 trabajadores",
+        "servicios-comunales-151-mas": "Servicios comunales, sociales y personales, seguridad y limpieza, 151 o más trabajadores",
+        "hospitales-1-10": "Actividades de hospitales, 1 a 10 trabajadores",
+        "hospitales-11-50": "Actividades de hospitales, 11 a 50 trabajadores",
+        "hospitales-51-150": "Actividades de hospitales, 51 a 150 trabajadores",
+        "hospitales-151-mas": "Actividades de hospitales, 151 o más trabajadores"
+      },
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "agricultura-1-10": 39.99,
+            "agricultura-11-50": 42.24,
+            "agricultura-51-150": 47.14,
+            "agricultura-151-mas": 51.46,
+            "minas-1-10": 54.63,
+            "minas-11-50": 56.36,
+            "minas-51-150": 67.7,
+            "minas-151-mas": 77.21,
+            "manufactura-1-10": 53.62,
+            "manufactura-11-50": 57.14,
+            "manufactura-51-150": 68.64,
+            "manufactura-151-mas": 78.28,
+            "electricidad-1-10": 56.39,
+            "electricidad-11-50": 58.18,
+            "electricidad-51-150": 69.88,
+            "electricidad-151-mas": 79.7,
+            "construccion-1-10": 55.38,
+            "construccion-11-50": 57.14,
+            "construccion-51-150": 68.64,
+            "construccion-151-mas": 78.28,
+            "comercio-1-10": 55.38,
+            "comercio-11-50": 57.14,
+            "comercio-51-150": 68.64,
+            "comercio-151-mas": 78.28,
+            "restaurantes-hoteles-1-10": 55.38,
+            "restaurantes-hoteles-11-50": 57.14,
+            "restaurantes-hoteles-51-150": 67.99,
+            "restaurantes-hoteles-151-mas": 75.38,
+            "transporte-1-10": 55.89,
+            "transporte-11-50": 57.66,
+            "transporte-51-150": 69.26,
+            "transporte-151-mas": 78.99,
+            "financieros-1-10": 56.89,
+            "financieros-11-50": 58.7,
+            "financieros-51-150": 70.51,
+            "financieros-151-mas": 80.41,
+            "servicios-comunales-1-10": 54.38,
+            "servicios-comunales-11-50": 56.1,
+            "servicios-comunales-51-150": 67.39,
+            "servicios-comunales-151-mas": 76.85,
+            "hospitales-1-10": 54.38,
+            "hospitales-11-50": 56.1,
+            "hospitales-51-150": 66.58,
+            "hospitales-151-mas": 74.51
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social (La Gaceta No. 37,129 del 29/4/2026)",
+            "titulo": "Acuerdo Ejecutivo SETRASS-233-2026, artículo 2, tabla 2026 (por hora)",
+            "url": "https://tsc.gob.hn/web/leyes/Acuerdo-SETRASS-233-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Excluye la maquila textil y las empresas de zona libre (artículo 7), que siguen con el Acuerdo SETRASS-109-2024."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "agricultura-1-10": 42.39,
+            "agricultura-11-50": 44.77,
+            "agricultura-51-150": 50.44,
+            "agricultura-151-mas": 55.32,
+            "minas-1-10": 57.91,
+            "minas-11-50": 59.75,
+            "minas-51-150": 72.44,
+            "minas-151-mas": 83.0,
+            "manufactura-1-10": 56.84,
+            "manufactura-11-50": 60.57,
+            "manufactura-51-150": 73.44,
+            "manufactura-151-mas": 84.15,
+            "electricidad-1-10": 59.77,
+            "electricidad-11-50": 61.67,
+            "electricidad-51-150": 74.78,
+            "electricidad-151-mas": 85.68,
+            "construccion-1-10": 58.71,
+            "construccion-11-50": 60.57,
+            "construccion-51-150": 73.44,
+            "construccion-151-mas": 84.15,
+            "comercio-1-10": 58.71,
+            "comercio-11-50": 60.57,
+            "comercio-51-150": 73.44,
+            "comercio-151-mas": 84.15,
+            "restaurantes-hoteles-1-10": 58.71,
+            "restaurantes-hoteles-11-50": 60.57,
+            "restaurantes-hoteles-51-150": 72.75,
+            "restaurantes-hoteles-151-mas": 81.04,
+            "transporte-1-10": 59.24,
+            "transporte-11-50": 61.12,
+            "transporte-51-150": 74.11,
+            "transporte-151-mas": 84.91,
+            "financieros-1-10": 60.31,
+            "financieros-11-50": 62.22,
+            "financieros-51-150": 75.44,
+            "financieros-151-mas": 86.44,
+            "servicios-comunales-1-10": 57.64,
+            "servicios-comunales-11-50": 59.47,
+            "servicios-comunales-51-150": 72.11,
+            "servicios-comunales-151-mas": 82.62,
+            "hospitales-1-10": 57.64,
+            "hospitales-11-50": 59.47,
+            "hospitales-51-150": 71.24,
+            "hospitales-151-mas": 80.09
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social (La Gaceta No. 37,129 del 29/4/2026)",
+            "titulo": "Acuerdo Ejecutivo SETRASS-233-2026, artículo 2, tabla vigente desde el 1/1/2027 (por hora)",
+            "url": "https://tsc.gob.hn/web/leyes/Acuerdo-SETRASS-233-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El artículo 5 obliga a subir más estos valores si la inflación interanual de diciembre de 2026 (BCH) supera el ajuste de 2027."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.decimo-cuarto",
+      "nombre": "Décimo cuarto mes por año completo trabajado al 30 de junio",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Reglamento del Décimo Cuarto Mes de Salario (Acuerdo 02-95), artículos 2, 6 y 9, en la compilación del Código del Trabajo",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.decimo-tercero",
+      "nombre": "Décimo tercer mes (aguinaldo) por año completo trabajado",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "motivo": "No pudimos leer la ley (Decreto 112-82): el PDF de la STSS da 404 y la copia del Portal Único de Transparencia está detrás de un desafío anti-bot. Falta confirmar en el texto oficial el período (enero a diciembre), la base y la regla del proporcional."
+        }
+      ]
+    },
+    {
+      "id": "hn.preaviso-dias",
+      "nombre": "Días de salario del preaviso según el tiempo trabajado",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "menos-de-3-meses": "Menos de 3 meses",
+        "3-a-6-meses": "De 3 a 6 meses",
+        "6-a-12-meses": "De 6 meses a 1 año",
+        "1-a-2-anios": "De 1 a 2 años",
+        "mas-de-2-anios": "Más de 2 años"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "menos-de-3-meses": 1,
+            "3-a-6-meses": 7,
+            "6-a-12-meses": 14,
+            "1-a-2-anios": 30,
+            "mas-de-2-anios": 60
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículos 116 y 118",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El artículo dice 24 horas, una semana, dos semanas, un mes y dos meses. Se cuentan como 1, 7, 14, 30 y 60 días de salario."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.cesantia-dias-menos-de-un-anio",
+      "nombre": "Días de auxilio de cesantía con menos de un año trabajado",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3-a-6-meses": 10,
+            "6-a-12-meses": 20
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 120, literales a y b (reformado por el Decreto 247-89)",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.cesantia-tope-meses",
+      "nombre": "Tope del auxilio de cesantía en meses de salario",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "general": "Empresa de más de 10 empleados",
+        "microempresa": "Microempresa (hasta 10 empleados)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 25,
+            "microempresa": 15
+          },
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 31,753 del 5/11/2008)",
+            "titulo": "Decreto 150-2008, artículo 1: artículo 120 literal d y artículo 120-A del Código del Trabajo",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2016/07/Gaceta-31753-Decreto-No.-150-2008.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Microempresa: hasta 10 empleados remunerados. La compilación del Código que publica la STSS todavía trae el tope anterior de 15 meses para todos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.cesantia-renuncia-porcentaje",
+      "nombre": "Parte de la cesantía que cobra quien renuncia con 15 años o más",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 31,753 del 5/11/2008)",
+            "titulo": "Decreto 150-2008, artículo 1: artículo 120 literal g del Código del Trabajo",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2016/07/Gaceta-31753-Decreto-No.-150-2008.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "No aplica a las microempresas (artículo 120-A)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.cesantia-renuncia-anios",
+      "nombre": "Años de trabajo continuo para cobrar cesantía al renunciar",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 31,753 del 5/11/2008)",
+            "titulo": "Decreto 150-2008, artículo 1: artículo 120 literal g del Código del Trabajo",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2016/07/Gaceta-31753-Decreto-No.-150-2008.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.vacaciones-dias",
+      "nombre": "Días laborables de vacaciones según los años de servicio",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 10,
+            "2": 12,
+            "3": 15,
+            "4": 20
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 346",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La fila 4 vale para cuatro años o más."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.recargo-horas-extra",
+      "nombre": "Recargo de las horas extra",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "diurna": "Extras de día",
+        "nocturna": "Extras de noche después de una jornada de día",
+        "prolongacion-nocturna": "Extras que alargan una jornada nocturna"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "diurna": 25,
+            "nocturna": 50,
+            "prolongacion-nocturna": 75
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 330",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Diurna y nocturna se calculan sobre el salario de la jornada diurna; la prolongación de una jornada nocturna, sobre el salario de la jornada nocturna."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.jornada-horas",
+      "nombre": "Horas de la jornada ordinaria diaria",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "diurna": "Diurna",
+        "nocturna": "Nocturna"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "diurna": 8,
+            "nocturna": 6
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 322",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La semana diurna de 44 horas se paga como 48, igual que la nocturna de 36 (Decreto de interpretación del artículo 322)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.isr-tabla",
+      "nombre": "Tabla progresiva del ISR para personas naturales 2026 (renta neta gravable anual)",
+      "tipo": "escala",
+      "unidad": "HNL",
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 228324.32,
+              "tasa": 0
+            },
+            {
+              "desde": 228324.33,
+              "hasta": 348154.1,
+              "tasa": 15
+            },
+            {
+              "desde": 348154.11,
+              "hasta": 809660.75,
+              "tasa": 20
+            },
+            {
+              "desde": 809660.76,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Comunicado SAR 02-2026, Actualización de la tabla progresiva 2026 (imagen 1 del comunicado)",
+            "url": "https://www.sar.gob.hn/2026/01/actualizacion-de-la-tabla-progresiva-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Ley del ISR, artículo 22, reformado por el Decreto 20-2016: se ajusta cada enero con la inflación interanual del BCH (4.98 % para 2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.isr-deduccion-gastos-medicos",
+      "nombre": "Deducción anual por gastos médicos sin comprobantes",
+      "tipo": "numero",
+      "unidad": "HNL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40000,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Comunicado SAR 02-2026, nota de la tabla progresiva 2026 (imagen 2 del comunicado)",
+            "url": "https://www.sar.gob.hn/2026/01/actualizacion-de-la-tabla-progresiva-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.isv",
+      "nombre": "Tasa del Impuesto Sobre Ventas",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Tasa general",
+        "especial": "Cerveza, licores, cigarrillos y boletos aéreos en clase ejecutiva"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 15,
+            "especial": 18
+          },
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Ley del Impuesto Sobre Ventas (Decreto-Ley 24), artículo 6, texto consolidado hasta el Decreto 59-2022",
+            "url": "https://www.sar.gob.hn/download/texto-consolidado-ley-del-impuesto-sobre-ventas-decreto-ley-numero-24-actualizado-hasta-el-decreto-legislativo-no-59-2022/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "El 18 % grava cerveza, aguardiente, licores y otras bebidas alcohólicas, cigarrillos y boletos aéreos en clase ejecutiva o primera clase."
+          }
+        }
+      ]
+    }
+  ]
+}

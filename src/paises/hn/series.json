@@ -1,0 +1,47 @@
+{
+  "mercado": "hn",
+  "series": [
+    {
+      "id": "hn.tipo-cambio",
+      "nombre": "Tipo de cambio de referencia del lempira con el dólar (compra)",
+      "unidad": "HNL",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Banco Central de Honduras (BCH)",
+        "titulo": "Tipo de cambio de referencia, lista que alimenta el indicador de la portada de bch.hn",
+        "url": "https://www.bch.hn/_api/web/lists(guid'08a9876c-c6f1-4e73-8d13-0039b0442fab')/items?$select=Fecha,Valor,Observacion&$top=25&$orderby=Fecha%20desc",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07",
+        "nota": "El BCH carga un valor por fecha; el de un sábado o el de un feriado cubre varios días (su campo Observacion lo dice, por ejemplo «Del sábado 3 al lunes 5 de octubre de 2026»)."
+      },
+      "puntos": [
+        ["2026-09-02", 26.8624],
+        ["2026-09-03", 26.865],
+        ["2026-09-04", 26.865],
+        ["2026-09-05", 26.8727],
+        ["2026-09-08", 26.8743],
+        ["2026-09-09", 26.8693],
+        ["2026-09-10", 26.8831],
+        ["2026-09-11", 26.8829],
+        ["2026-09-12", 26.8833],
+        ["2026-09-15", 26.883],
+        ["2026-09-17", 26.8805],
+        ["2026-09-18", 26.8817],
+        ["2026-09-19", 26.8904],
+        ["2026-09-22", 26.8862],
+        ["2026-09-23", 26.8808],
+        ["2026-09-24", 26.8842],
+        ["2026-09-25", 26.8931],
+        ["2026-09-26", 26.8935],
+        ["2026-09-29", 26.8962],
+        ["2026-09-30", 26.8937],
+        ["2026-10-01", 26.8989],
+        ["2026-10-02", 26.8925],
+        ["2026-10-03", 26.8901],
+        ["2026-10-06", 26.892],
+        ["2026-10-07", 26.8883]
+      ]
+    }
+  ]
+}

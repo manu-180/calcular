@@ -1,0 +1,943 @@
+{
+  "mercado": "pa",
+  "datos": [
+    {
+      "id": "pa.salario-minimo-hora-region-1",
+      "nombre": "Salario mínimo por hora en la Región 1, por actividad y tamaño de empresa",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "proximaRevision": "2028-01-01",
+      "etiquetas": {
+        "agro-pequena": "Agricultura, ganadería, caza, silvicultura y acuicultura (pequeña empresa)",
+        "agro-gran": "Agricultura, ganadería, caza, silvicultura y acuicultura (11 empleados o más)",
+        "bananeras": "Actividades bananeras",
+        "pesca-artesanal": "Pesca artesanal",
+        "pesca-industrial": "Pesca industrial",
+        "agroindustria-agricola-pequena": "Agroindustria, parte agrícola (pequeña empresa)",
+        "agroindustria-agricola-gran": "Agroindustria, parte agrícola (gran empresa)",
+        "agroindustria-procesamiento-pequena": "Agroindustria, parte de procesamiento (pequeña empresa)",
+        "agroindustria-procesamiento-gran": "Agroindustria, parte de procesamiento (gran empresa)",
+        "areneras": "Actividades areneras",
+        "minas-metalicas": "Minas metálicas",
+        "minas-no-metalicas": "Minas no metálicas",
+        "manufactura-pequena": "Industria manufacturera (pequeña empresa)",
+        "manufactura-gran": "Industria manufacturera (16 empleados o más)",
+        "bebidas-alcoholicas-pinturas": "Bebidas alcohólicas, pinturas, barnices y revestimientos",
+        "cemento-concreto": "Fabricación de cemento o concreto",
+        "reparacion-maquinaria": "Reparación y mantenimiento de maquinaria y equipo de refrigeración",
+        "cana-de-azucar": "Procesamiento de la caña de azúcar",
+        "electricidad-gas": "Suministro de electricidad, gas, vapor y aire acondicionado",
+        "produccion-hielo": "Producción de hielo",
+        "agua-saneamiento": "Suministro de agua, gestión de desechos y saneamiento",
+        "alcantarillado": "Alcantarillado",
+        "recoleccion-desechos": "Recolección, tratamiento y eliminación de desechos",
+        "reciclaje": "Procesamiento y recuperación de materiales de desecho",
+        "construccion": "Construcción",
+        "drenaje-tierras": "Drenaje de tierras agrícolas y bosques",
+        "comercio-mayor": "Comercio al por mayor y en comisiones",
+        "venta-cana-azucar": "Venta de productos derivados de la caña de azúcar",
+        "tanques-combustible": "Tanques de combustible",
+        "comercio-menor-pequena": "Comercio al por menor (pequeña empresa)",
+        "comercio-menor-gran": "Comercio al por menor (11 empleados o más)",
+        "supermercados": "Supermercados (5 sucursales o más)",
+        "estaciones-combustible": "Estaciones de combustible",
+        "zonas-francas": "Zonas francas y zonas económicas especiales",
+        "zona-libre-colon": "Zona Libre de Colón (solo Región 1)",
+        "hoteles-pequena": "Hoteles (pequeña empresa)",
+        "hoteles-gran": "Hoteles (11 empleados o más)",
+        "hoteles-franquicia": "Hoteles con franquicia o más de 200 habitaciones, moteles, pensiones y residenciales",
+        "restaurantes-pequena": "Restaurantes (pequeña empresa)",
+        "restaurantes-gran": "Restaurantes (11 empleados o más)",
+        "discotecas-bares": "Discotecas, bares y cantinas",
+        "transporte": "Transporte",
+        "transporte-carga-zf-pequena": "Transporte de carga en zonas francas (hasta 10 trabajadores)",
+        "transporte-carga-zf-gran": "Transporte de carga en zonas francas (11 empleados o más)",
+        "transporte-acuatico-aereo-pequena": "Transporte acuático o aéreo y actividades complementarias (hasta 10 trabajadores)",
+        "transporte-acuatico-aereo-gran": "Transporte acuático o aéreo y actividades complementarias (11 empleados o más)",
+        "portuarios": "Trabajadores portuarios",
+        "aeropuertos": "Aeropuertos internacionales",
+        "conductores-buses": "Conductores de buses",
+        "buses-colegiales": "Conductores de buses colegiales",
+        "tripulantes-cabina": "Tripulantes de cabina de vuelos internacionales",
+        "almacenamiento-correos": "Almacenamiento, depósitos y correos",
+        "informacion-comunicacion": "Información y comunicación",
+        "edicion": "Actividades de edición",
+        "radio-tv-cine": "Producción de radio, televisión, cine y agencias de noticias",
+        "telecomunicaciones": "Telecomunicaciones y difusión de televisión",
+        "radio-licencia-nacional": "Difusión de radio con licencia nacional",
+        "radio-licencia-local": "Difusión de radio con licencia local",
+        "camarografos": "Camarógrafos",
+        "financieras-seguros": "Actividades financieras y de seguros",
+        "casas-empeno": "Casas de empeño",
+        "inmobiliarias": "Actividades inmobiliarias",
+        "centros-comerciales": "Centros comerciales (más de 50 locales)",
+        "alquiler-arrendamiento": "Actividades administrativas, de alquiler y arrendamiento",
+        "alquiler-vehiculos": "Renta y alquiler de vehículos",
+        "internet-cafes": "Internet cafés",
+        "agencias-empleo": "Agencias de empleo",
+        "agencias-viajes": "Agencias de viajes, operadores turísticos y reservas",
+        "servicios-edificios": "Servicios a edificios y paisajes",
+        "jardineria": "Mantenimiento y cuidado de jardines y áreas verdes",
+        "oficinas-soporte": "Oficinas administrativas, soporte de negocios y fotocopiado",
+        "seguridad-vigilancia": "Agencias de seguridad y vigilancia",
+        "profesionales-tecnicas": "Actividades profesionales, científicas y técnicas",
+        "veterinarias": "Actividades veterinarias",
+        "firmas-15-o-mas": "Firmas de abogados, contabilidad y auditoría (15 empleados o más)",
+        "firmas-14-o-menos": "Firmas de abogados, contabilidad y auditoría (14 empleados o menos)",
+        "abogados": "Abogados",
+        "periodistas": "Periodistas de radio, periódicos y televisión",
+        "mecanicos-aereo": "Mecánicos de transporte aéreo",
+        "mecanicos-terrestre": "Mecánicos de transporte terrestre",
+        "mecanicos-maritimo": "Mecánicos de transporte marítimo",
+        "ensenanza-administrativo": "Enseñanza (personal administrativo)",
+        "salud-servicios-sociales": "Servicios sociales y de salud humana",
+        "clinicas-hospitales": "Clínicas de salud y hospitales",
+        "tecnicos-salud": "Técnicos de salud",
+        "artes-entretenimiento": "Artes, entretenimiento y creatividad",
+        "juegos-azar": "Juegos de azar y apuestas",
+        "casinos-talladores": "Casinos: talladores, gerentes, jefes de sala y operadores de CCTV",
+        "casinos-otros": "Casinos: seguridad, aseo, saloneros, oficinistas y cajeros",
+        "gimnasios": "Gimnasios",
+        "otros-servicios": "Otras actividades de servicios",
+        "sin-fines-de-lucro": "Organizaciones sin fines de lucro",
+        "reparacion-computadoras": "Reparación y mantenimiento de computadoras",
+        "reparacion-enseres-pequena": "Reparación de enseres personales y domésticos (pequeña empresa)",
+        "reparacion-enseres-gran": "Reparación de enseres personales y domésticos (11 empleados o más)",
+        "propiedades-horizontales": "Propiedades horizontales de más de 10 plantas y asociaciones de inquilinos",
+        "spas-clinicas-esteticas": "Spas y clínicas estéticas",
+        "extraterritoriales": "Organizaciones y órganos extraterritoriales"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-16",
+          "valor": {
+            "agro-pequena": 1.64,
+            "agro-gran": 2.1,
+            "bananeras": 2.58,
+            "pesca-artesanal": 2.3,
+            "pesca-industrial": 2.65,
+            "agroindustria-agricola-pequena": 1.67,
+            "agroindustria-agricola-gran": 2.12,
+            "agroindustria-procesamiento-pequena": 2.37,
+            "agroindustria-procesamiento-gran": 3.04,
+            "areneras": 3.2,
+            "minas-metalicas": 3.39,
+            "minas-no-metalicas": 3.2,
+            "manufactura-pequena": 2.32,
+            "manufactura-gran": 3.13,
+            "bebidas-alcoholicas-pinturas": 3.08,
+            "cemento-concreto": 3.39,
+            "reparacion-maquinaria": 3.15,
+            "cana-de-azucar": 3.12,
+            "electricidad-gas": 3.5,
+            "produccion-hielo": 3.07,
+            "agua-saneamiento": 3.5,
+            "alcantarillado": 3.18,
+            "recoleccion-desechos": 3.21,
+            "reciclaje": 3.04,
+            "construccion": 3.51,
+            "drenaje-tierras": 2.12,
+            "comercio-mayor": 3.02,
+            "venta-cana-azucar": 3.02,
+            "tanques-combustible": 3.04,
+            "comercio-menor-pequena": 2.37,
+            "comercio-menor-gran": 3.02,
+            "supermercados": 3.09,
+            "estaciones-combustible": 3.02,
+            "zonas-francas": 3.77,
+            "zona-libre-colon": 3.44,
+            "hoteles-pequena": 2.38,
+            "hoteles-gran": 2.96,
+            "hoteles-franquicia": 3.1,
+            "restaurantes-pequena": 2.32,
+            "restaurantes-gran": 3.09,
+            "discotecas-bares": 3.4,
+            "transporte": 3.16,
+            "transporte-carga-zf-pequena": 3.47,
+            "transporte-carga-zf-gran": 3.49,
+            "transporte-acuatico-aereo-pequena": 3.16,
+            "transporte-acuatico-aereo-gran": 3.18,
+            "portuarios": 3.64,
+            "aeropuertos": 3.84,
+            "conductores-buses": 3.47,
+            "buses-colegiales": 3.02,
+            "tripulantes-cabina": 5.01,
+            "almacenamiento-correos": 3.02,
+            "informacion-comunicacion": 3.16,
+            "edicion": 3.16,
+            "radio-tv-cine": 3.16,
+            "telecomunicaciones": 3.47,
+            "radio-licencia-nacional": 3.47,
+            "radio-licencia-local": 3.4,
+            "camarografos": 3.47,
+            "financieras-seguros": 3.58,
+            "casas-empeno": 3.14,
+            "inmobiliarias": 3.47,
+            "centros-comerciales": 3.47,
+            "alquiler-arrendamiento": 3.12,
+            "alquiler-vehiculos": 3.43,
+            "internet-cafes": 2.82,
+            "agencias-empleo": 3.16,
+            "agencias-viajes": 3.09,
+            "servicios-edificios": 2.98,
+            "jardineria": 2.12,
+            "oficinas-soporte": 2.98,
+            "seguridad-vigilancia": 3.04,
+            "profesionales-tecnicas": 3.02,
+            "veterinarias": 3.02,
+            "firmas-15-o-mas": 3.18,
+            "firmas-14-o-menos": 2.89,
+            "abogados": 3.7,
+            "periodistas": 3.45,
+            "mecanicos-aereo": 4.92,
+            "mecanicos-terrestre": 3.45,
+            "mecanicos-maritimo": 3.83,
+            "ensenanza-administrativo": 3.09,
+            "salud-servicios-sociales": 3.22,
+            "clinicas-hospitales": 3.54,
+            "tecnicos-salud": 3.54,
+            "artes-entretenimiento": 3.11,
+            "juegos-azar": 3.63,
+            "casinos-talladores": 3.72,
+            "casinos-otros": 3.61,
+            "gimnasios": 3.43,
+            "otros-servicios": 3.12,
+            "sin-fines-de-lucro": 2.98,
+            "reparacion-computadoras": 2.96,
+            "reparacion-enseres-pequena": 2.32,
+            "reparacion-enseres-gran": 2.98,
+            "propiedades-horizontales": 3.43,
+            "spas-clinicas-esteticas": 3.43,
+            "extraterritoriales": 3.16
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Desarrollo Laboral",
+            "titulo": "Decreto Ejecutivo 13 de 31 de diciembre de 2025, artículos 2, 3 y 5 (Gaceta Oficial Digital 30438, 6/1/2026)",
+            "url": "https://www.mitradel.gob.pa/wp-content/uploads/2025/12/Decreto-Ejecutivo-No.13-del-31-de-diciembre-de-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Copia de la Gaceta Oficial Digital publicada por el MITRADEL (escaneada; leída página por página). La misma Gaceta está en https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2026/30438_2026.pdf. Rige desde el 16/1/2026 (art. 5)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.salario-minimo-hora-region-2",
+      "nombre": "Salario mínimo por hora en la Región 2, por actividad y tamaño de empresa",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "proximaRevision": "2028-01-01",
+      "etiquetas": {
+        "agro-pequena": "Agricultura, ganadería, caza, silvicultura y acuicultura (pequeña empresa)",
+        "agro-gran": "Agricultura, ganadería, caza, silvicultura y acuicultura (11 empleados o más)",
+        "bananeras": "Actividades bananeras",
+        "pesca-artesanal": "Pesca artesanal",
+        "pesca-industrial": "Pesca industrial",
+        "agroindustria-agricola-pequena": "Agroindustria, parte agrícola (pequeña empresa)",
+        "agroindustria-agricola-gran": "Agroindustria, parte agrícola (gran empresa)",
+        "agroindustria-procesamiento-pequena": "Agroindustria, parte de procesamiento (pequeña empresa)",
+        "agroindustria-procesamiento-gran": "Agroindustria, parte de procesamiento (gran empresa)",
+        "areneras": "Actividades areneras",
+        "minas-metalicas": "Minas metálicas",
+        "minas-no-metalicas": "Minas no metálicas",
+        "manufactura-pequena": "Industria manufacturera (pequeña empresa)",
+        "manufactura-gran": "Industria manufacturera (16 empleados o más)",
+        "bebidas-alcoholicas-pinturas": "Bebidas alcohólicas, pinturas, barnices y revestimientos",
+        "cemento-concreto": "Fabricación de cemento o concreto",
+        "reparacion-maquinaria": "Reparación y mantenimiento de maquinaria y equipo de refrigeración",
+        "cana-de-azucar": "Procesamiento de la caña de azúcar",
+        "electricidad-gas": "Suministro de electricidad, gas, vapor y aire acondicionado",
+        "produccion-hielo": "Producción de hielo",
+        "agua-saneamiento": "Suministro de agua, gestión de desechos y saneamiento",
+        "alcantarillado": "Alcantarillado",
+        "recoleccion-desechos": "Recolección, tratamiento y eliminación de desechos",
+        "reciclaje": "Procesamiento y recuperación de materiales de desecho",
+        "construccion": "Construcción",
+        "drenaje-tierras": "Drenaje de tierras agrícolas y bosques",
+        "comercio-mayor": "Comercio al por mayor y en comisiones",
+        "venta-cana-azucar": "Venta de productos derivados de la caña de azúcar",
+        "tanques-combustible": "Tanques de combustible",
+        "comercio-menor-pequena": "Comercio al por menor (pequeña empresa)",
+        "comercio-menor-gran": "Comercio al por menor (11 empleados o más)",
+        "supermercados": "Supermercados (5 sucursales o más)",
+        "estaciones-combustible": "Estaciones de combustible",
+        "zonas-francas": "Zonas francas y zonas económicas especiales",
+        "hoteles-pequena": "Hoteles (pequeña empresa)",
+        "hoteles-gran": "Hoteles (11 empleados o más)",
+        "hoteles-franquicia": "Hoteles con franquicia o más de 200 habitaciones, moteles, pensiones y residenciales",
+        "restaurantes-pequena": "Restaurantes (pequeña empresa)",
+        "restaurantes-gran": "Restaurantes (11 empleados o más)",
+        "discotecas-bares": "Discotecas, bares y cantinas",
+        "transporte": "Transporte",
+        "transporte-carga-zf-pequena": "Transporte de carga en zonas francas (hasta 10 trabajadores)",
+        "transporte-carga-zf-gran": "Transporte de carga en zonas francas (11 empleados o más)",
+        "transporte-acuatico-aereo-pequena": "Transporte acuático o aéreo y actividades complementarias (hasta 10 trabajadores)",
+        "transporte-acuatico-aereo-gran": "Transporte acuático o aéreo y actividades complementarias (11 empleados o más)",
+        "portuarios": "Trabajadores portuarios",
+        "aeropuertos": "Aeropuertos internacionales",
+        "conductores-buses": "Conductores de buses",
+        "buses-colegiales": "Conductores de buses colegiales",
+        "tripulantes-cabina": "Tripulantes de cabina de vuelos internacionales",
+        "almacenamiento-correos": "Almacenamiento, depósitos y correos",
+        "informacion-comunicacion": "Información y comunicación",
+        "edicion": "Actividades de edición",
+        "radio-tv-cine": "Producción de radio, televisión, cine y agencias de noticias",
+        "telecomunicaciones": "Telecomunicaciones y difusión de televisión",
+        "radio-licencia-nacional": "Difusión de radio con licencia nacional",
+        "radio-licencia-local": "Difusión de radio con licencia local",
+        "camarografos": "Camarógrafos",
+        "financieras-seguros": "Actividades financieras y de seguros",
+        "casas-empeno": "Casas de empeño",
+        "inmobiliarias": "Actividades inmobiliarias",
+        "centros-comerciales": "Centros comerciales (más de 50 locales)",
+        "alquiler-arrendamiento": "Actividades administrativas, de alquiler y arrendamiento",
+        "alquiler-vehiculos": "Renta y alquiler de vehículos",
+        "internet-cafes": "Internet cafés",
+        "agencias-empleo": "Agencias de empleo",
+        "agencias-viajes": "Agencias de viajes, operadores turísticos y reservas",
+        "servicios-edificios": "Servicios a edificios y paisajes",
+        "jardineria": "Mantenimiento y cuidado de jardines y áreas verdes",
+        "oficinas-soporte": "Oficinas administrativas, soporte de negocios y fotocopiado",
+        "seguridad-vigilancia": "Agencias de seguridad y vigilancia",
+        "profesionales-tecnicas": "Actividades profesionales, científicas y técnicas",
+        "veterinarias": "Actividades veterinarias",
+        "firmas-15-o-mas": "Firmas de abogados, contabilidad y auditoría (15 empleados o más)",
+        "firmas-14-o-menos": "Firmas de abogados, contabilidad y auditoría (14 empleados o menos)",
+        "abogados": "Abogados",
+        "periodistas": "Periodistas de radio, periódicos y televisión",
+        "mecanicos-aereo": "Mecánicos de transporte aéreo",
+        "mecanicos-terrestre": "Mecánicos de transporte terrestre",
+        "mecanicos-maritimo": "Mecánicos de transporte marítimo",
+        "ensenanza-administrativo": "Enseñanza (personal administrativo)",
+        "salud-servicios-sociales": "Servicios sociales y de salud humana",
+        "clinicas-hospitales": "Clínicas de salud y hospitales",
+        "tecnicos-salud": "Técnicos de salud",
+        "artes-entretenimiento": "Artes, entretenimiento y creatividad",
+        "juegos-azar": "Juegos de azar y apuestas",
+        "casinos-talladores": "Casinos: talladores, gerentes, jefes de sala y operadores de CCTV",
+        "casinos-otros": "Casinos: seguridad, aseo, saloneros, oficinistas y cajeros",
+        "gimnasios": "Gimnasios",
+        "otros-servicios": "Otras actividades de servicios",
+        "sin-fines-de-lucro": "Organizaciones sin fines de lucro",
+        "reparacion-computadoras": "Reparación y mantenimiento de computadoras",
+        "reparacion-enseres-pequena": "Reparación de enseres personales y domésticos (pequeña empresa)",
+        "reparacion-enseres-gran": "Reparación de enseres personales y domésticos (11 empleados o más)",
+        "propiedades-horizontales": "Propiedades horizontales de más de 10 plantas y asociaciones de inquilinos",
+        "spas-clinicas-esteticas": "Spas y clínicas estéticas",
+        "extraterritoriales": "Organizaciones y órganos extraterritoriales"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-16",
+          "valor": {
+            "agro-pequena": 1.64,
+            "agro-gran": 2.1,
+            "bananeras": 2.58,
+            "pesca-artesanal": 2.3,
+            "pesca-industrial": 2.65,
+            "agroindustria-agricola-pequena": 1.67,
+            "agroindustria-agricola-gran": 2.12,
+            "agroindustria-procesamiento-pequena": 2.0,
+            "agroindustria-procesamiento-gran": 2.49,
+            "areneras": 3.2,
+            "minas-metalicas": 3.39,
+            "minas-no-metalicas": 3.2,
+            "manufactura-pequena": 1.95,
+            "manufactura-gran": 2.58,
+            "bebidas-alcoholicas-pinturas": 2.61,
+            "cemento-concreto": 3.24,
+            "reparacion-maquinaria": 2.57,
+            "cana-de-azucar": 3.12,
+            "electricidad-gas": 3.5,
+            "produccion-hielo": 2.53,
+            "agua-saneamiento": 3.5,
+            "alcantarillado": 2.63,
+            "recoleccion-desechos": 2.67,
+            "reciclaje": 2.51,
+            "construccion": 3.3,
+            "drenaje-tierras": 2.12,
+            "comercio-mayor": 2.48,
+            "venta-cana-azucar": 3.02,
+            "tanques-combustible": 2.5,
+            "comercio-menor-pequena": 1.99,
+            "comercio-menor-gran": 2.48,
+            "supermercados": 2.54,
+            "estaciones-combustible": 2.48,
+            "zonas-francas": 2.52,
+            "hoteles-pequena": 1.98,
+            "hoteles-gran": 2.43,
+            "hoteles-franquicia": 2.55,
+            "restaurantes-pequena": 1.95,
+            "restaurantes-gran": 2.54,
+            "discotecas-bares": 3.4,
+            "transporte": 2.61,
+            "transporte-carga-zf-pequena": 2.58,
+            "transporte-carga-zf-gran": 2.6,
+            "transporte-acuatico-aereo-pequena": 2.58,
+            "transporte-acuatico-aereo-gran": 2.6,
+            "portuarios": 3.64,
+            "aeropuertos": 3.84,
+            "conductores-buses": 3.47,
+            "buses-colegiales": 2.49,
+            "tripulantes-cabina": 5.01,
+            "almacenamiento-correos": 2.48,
+            "informacion-comunicacion": 3.16,
+            "edicion": 2.62,
+            "radio-tv-cine": 2.61,
+            "telecomunicaciones": 3.47,
+            "radio-licencia-nacional": 3.47,
+            "radio-licencia-local": 3.4,
+            "camarografos": 3.47,
+            "financieras-seguros": 3.58,
+            "casas-empeno": 3.14,
+            "inmobiliarias": 3.1,
+            "centros-comerciales": 3.47,
+            "alquiler-arrendamiento": 3.12,
+            "alquiler-vehiculos": 3.43,
+            "internet-cafes": 2.62,
+            "agencias-empleo": 3.16,
+            "agencias-viajes": 2.44,
+            "servicios-edificios": 2.98,
+            "jardineria": 2.12,
+            "oficinas-soporte": 2.98,
+            "seguridad-vigilancia": 3.04,
+            "profesionales-tecnicas": 3.02,
+            "veterinarias": 2.48,
+            "firmas-15-o-mas": 3.18,
+            "firmas-14-o-menos": 2.89,
+            "abogados": 3.7,
+            "periodistas": 3.45,
+            "mecanicos-aereo": 4.92,
+            "mecanicos-terrestre": 3.45,
+            "mecanicos-maritimo": 3.83,
+            "ensenanza-administrativo": 2.52,
+            "salud-servicios-sociales": 2.64,
+            "clinicas-hospitales": 2.66,
+            "tecnicos-salud": 3.54,
+            "artes-entretenimiento": 3.11,
+            "juegos-azar": 3.63,
+            "casinos-talladores": 3.72,
+            "casinos-otros": 3.61,
+            "gimnasios": 3.43,
+            "otros-servicios": 2.55,
+            "sin-fines-de-lucro": 2.45,
+            "reparacion-computadoras": 2.96,
+            "reparacion-enseres-pequena": 1.94,
+            "reparacion-enseres-gran": 2.52,
+            "propiedades-horizontales": 3.43,
+            "spas-clinicas-esteticas": 2.57,
+            "extraterritoriales": 3.16
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Desarrollo Laboral",
+            "titulo": "Decreto Ejecutivo 13 de 31 de diciembre de 2025, artículos 2, 3 y 5 (Gaceta Oficial Digital 30438, 6/1/2026)",
+            "url": "https://www.mitradel.gob.pa/wp-content/uploads/2025/12/Decreto-Ejecutivo-No.13-del-31-de-diciembre-de-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Copia de la Gaceta Oficial Digital publicada por el MITRADEL (escaneada; leída página por página). La misma Gaceta está en https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2026/30438_2026.pdf. Rige desde el 16/1/2026 (art. 5)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.salario-minimo-domestico",
+      "nombre": "Salario mínimo mensual del trabajo doméstico",
+      "tipo": "numero",
+      "unidad": "USD",
+      "regiones": [
+        "region-1",
+        "region-2"
+      ],
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "region-1",
+          "desde": "2026-01-16",
+          "valor": 350,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Desarrollo Laboral",
+            "titulo": "Decreto Ejecutivo 13 de 31 de diciembre de 2025, artículos 2, 3 y 5 (Gaceta Oficial Digital 30438, 6/1/2026)",
+            "url": "https://www.mitradel.gob.pa/wp-content/uploads/2025/12/Decreto-Ejecutivo-No.13-del-31-de-diciembre-de-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Copia de la Gaceta Oficial Digital publicada por el MITRADEL (escaneada; leída página por página). La misma Gaceta está en https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2026/30438_2026.pdf. Rige desde el 16/1/2026 (art. 5)."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "region-2",
+          "desde": "2026-01-16",
+          "valor": 320,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Desarrollo Laboral",
+            "titulo": "Decreto Ejecutivo 13 de 31 de diciembre de 2025, artículos 2, 3 y 5 (Gaceta Oficial Digital 30438, 6/1/2026)",
+            "url": "https://www.mitradel.gob.pa/wp-content/uploads/2025/12/Decreto-Ejecutivo-No.13-del-31-de-diciembre-de-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Copia de la Gaceta Oficial Digital publicada por el MITRADEL (escaneada; leída página por página). La misma Gaceta está en https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2026/30438_2026.pdf. Rige desde el 16/1/2026 (art. 5)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jornada-semanal",
+      "nombre": "Horas máximas de la semana laborable por tipo de jornada",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "diurna": "Jornada diurna",
+        "nocturna": "Jornada nocturna",
+        "mixta": "Jornada mixta"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": {
+            "diurna": 48,
+            "nocturna": 42,
+            "mixta": 45
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 31",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT). Coincide con el boletín de prestaciones del MITRADEL."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.recargo-horas-extra",
+      "nombre": "Recargo de la jornada extraordinaria",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "diurna": "En período diurno",
+        "nocturna": "En período nocturno o prolongación de la jornada mixta iniciada de día",
+        "prolongacion-nocturna": "Prolongación de la jornada nocturna o de la mixta iniciada de noche"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": {
+            "diurna": 25,
+            "nocturna": 50,
+            "prolongacion-nocturna": 75
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 33",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT). Coincide con el boletín de prestaciones del MITRADEL."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.horas-extra-maximo-semana",
+      "nombre": "Horas extraordinarias permitidas por semana",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 36, ordinal 4",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT). Coincide con el boletín de prestaciones del MITRADEL."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.horas-extra-maximo-dia",
+      "nombre": "Horas extraordinarias permitidas por día",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 36, ordinal 4",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT). Coincide con el boletín de prestaciones del MITRADEL."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.recargo-exceso-horas-extra",
+      "nombre": "Recargo adicional por horas extraordinarias por encima del límite",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 36, último párrafo",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT). Coincide con el boletín de prestaciones del MITRADEL."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.vacaciones-dias",
+      "nombre": "Días de vacaciones por período",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 54, ordinal 1",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT). Coincide con el boletín de prestaciones del MITRADEL."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.vacaciones-meses",
+      "nombre": "Meses continuos de trabajo que dan derecho a las vacaciones",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 11,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 54, ordinal 1",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT). Coincide con el boletín de prestaciones del MITRADEL."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.prima-antiguedad-semanas",
+      "nombre": "Semanas de salario de prima de antigüedad por año laborado",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 44 de 12 de agosto de 1995, artículos 35 y 36 (subrogan los artículos 224 y 225 del Código de Trabajo; Gaceta Oficial 22847, 14/8/1995)",
+            "url": "https://www.defensoria.gob.pa/wp-content/uploads/Ley-No.-44-de1995-12-agosto.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde su promulgación (art. 71)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.indemnizacion-semanas",
+      "nombre": "Semanas de salario de indemnización por año (relaciones iniciadas desde la Ley 44 de 1995)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "primeros-10-anios": "Por cada uno de los diez primeros años",
+        "desde-anio-11": "Por cada año posterior a los diez"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": {
+            "primeros-10-anios": 3.4,
+            "desde-anio-11": 1
+          },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 44 de 12 de agosto de 1995, artículos 35 y 36 (subrogan los artículos 224 y 225 del Código de Trabajo; Gaceta Oficial 22847, 14/8/1995)",
+            "url": "https://www.defensoria.gob.pa/wp-content/uploads/Ley-No.-44-de1995-12-agosto.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige desde su promulgación (art. 71)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.decimo-divisor",
+      "nombre": "Divisor del décimo tercer mes (total ganado en el período entre este número)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1973-09-20",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Desarrollo Laboral",
+            "titulo": "Boletín «Prestaciones laborales» de la Dirección de Planificación y la Dirección de Trabajo (2019), sección Décimo tercer mes",
+            "url": "https://mitradel.gob.pa/wp-content/uploads/2019/12/Bolet%C3%ADn.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Explica las tres partidas (15/4, 15/8 y 15/12) y el cálculo: total de salarios del período dividido entre 12. Cita el Decreto 19 de 1973."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.css-trabajador",
+      "nombre": "Cuota del empleado a la Caja de Seguro Social",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": 9.75,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 1 (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.css-empleador",
+      "nombre": "Cuota del empleador a la Caja de Seguro Social",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "hasta": "2027-02-28",
+          "valor": 13.25,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 2, literal a (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50. La ley rige desde su promulgación (art. 244)."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-03-01",
+          "hasta": "2029-02-28",
+          "valor": 14.25,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 2, literal b (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50. La ley rige desde su promulgación (art. 244)."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-03-01",
+          "valor": 15.25,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 2, literal c (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.css-decimo-trabajador",
+      "nombre": "Contribución especial del empleado sobre cada partida del décimo tercer mes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": 7.25,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 5 (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.css-decimo-empleador",
+      "nombre": "Contribución especial del empleador sobre cada partida del décimo tercer mes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": 10.75,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 4 (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.seguro-educativo-trabajador",
+      "nombre": "Seguro educativo a cargo del empleado",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1987-08-05",
+          "valor": 1.25,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 13 de 28 de julio de 1987, artículo 1 (artículo primero del Decreto de Gabinete 168 de 1971, Seguro Educativo; Gaceta Oficial 20858, 5/8/1987)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/1980/1987/20858_1987.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.seguro-educativo-empleador",
+      "nombre": "Seguro educativo a cargo del empleador",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1987-08-05",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 13 de 28 de julio de 1987, artículo 1 (artículo primero del Decreto de Gabinete 168 de 1971, Seguro Educativo; Gaceta Oficial 20858, 5/8/1987)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/1980/1987/20858_1987.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.isr-personas-naturales",
+      "nombre": "Tarifa anual del impuesto sobre la renta de personas naturales",
+      "tipo": "escala",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-03-15",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 11000,
+              "tasa": 0
+            },
+            {
+              "desde": 11000,
+              "hasta": 50000,
+              "tasa": 15,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 50000,
+              "hasta": null,
+              "tasa": 25,
+              "cuotaFija": 5850
+            }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 8 de 15 de marzo de 2010, artículo 10 (artículo 700 del Código Fiscal) (Gaceta Oficial Digital 26489-A)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/blogs.dir/cendoj/novedades_normativas/ley_8_2010.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.itbms",
+      "nombre": "Tarifas del ITBMS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Tarifa general",
+        "bebidas-alcoholicas": "Bebidas alcohólicas",
+        "hospedaje": "Hospedaje y alojamiento",
+        "tabaco": "Productos de tabaco"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-07-01",
+          "valor": {
+            "general": 7,
+            "bebidas-alcoholicas": 10,
+            "hospedaje": 10,
+            "tabaco": 15
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 8 de 15 de marzo de 2010, artículo 76 (parágrafo 6 del artículo 1057-V del Código Fiscal) (Gaceta Oficial Digital 26489-A)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/blogs.dir/cendoj/novedades_normativas/ley_8_2010.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    }
+  ]
+}
