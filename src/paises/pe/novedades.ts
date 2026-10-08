@@ -8,7 +8,7 @@ export const novedades: readonly Novedad[] = [
     texto:
       "Desde el 1 de octubre de 2026 la RMV pasa de S/ 1,130 a S/ 1,230, y la asignación familiar de S/ 113 a S/ 123. Ya lo usan las calculadoras de gratificación, CTS, liquidación, vacaciones, horas extras e indemnización. El Gobierno anunció un segundo tramo de S/ 70 para el primer semestre de 2027.",
     vigenteDesde: "2026-10-01",
-    calculadoras: ["pe.sueldo-minimo", "pe.gratificacion", "pe.cts", "pe.liquidacion", "pe.vacaciones", "pe.horas-extras", "pe.despido-arbitrario"],
+    calculadoras: ["pe.sueldo-minimo", "pe.gratificacion", "pe.cts", "pe.liquidacion", "pe.vacaciones", "pe.horas-extras", "pe.despido-arbitrario", "pe.trabajadora-del-hogar", "pe.costo-laboral"],
     fuente: {
       organismo: "El Peruano",
       titulo: "Decreto Supremo 015-2026-TR",

@@ -772,6 +772,129 @@
       ],
       "proximaRevision": "2026-12-31",
       "nota": "Se actualiza cada trimestre. El trimestre julio a setiembre de 2026 era S/ 12,672.65."
+    },
+    {
+      "id": "pe.aporte-essalud",
+      "nombre": "Aporte del empleador a EsSalud",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "Derechos de las personas trabajadoras del hogar: guía práctica para personas empleadoras (pago de EsSalud)",
+            "url": "https://cdn.www.gob.pe/uploads/document/file/6164481/5438449-derechos-de-las-personas-trabajadoras-del-hogar-guia-practica-para-personas-empleadoras.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Ley 31047, art. 19: el aporte de salud es de cargo de la parte empleadora. La SUNAT indica que si la remuneración es igual o menor que la RMV, el 9 % se aplica sobre la RMV: https://orientacion.sunat.gob.pe/6577-04-aportaciones-a-essalud-y-onp-trabajadores-del-hogar"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.vacaciones-hogar",
+      "nombre": "Días de vacaciones de las trabajadoras del hogar",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "completo": "24 horas o más por semana",
+        "parcial": "Menos de 24 horas por semana"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": {
+            "completo": 30,
+            "parcial": 6
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "Derechos de las personas trabajadoras del hogar: guía práctica para personas empleadoras (vacaciones)",
+            "url": "https://cdn.www.gob.pe/uploads/document/file/6164481/5438449-derechos-de-las-personas-trabajadoras-del-hogar-guia-practica-para-personas-empleadoras.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Ley 31047, art. 11: 30 días calendario luego de un año continuo de servicios. Con menos de 24 horas por semana, la guía del MTPE indica 6 días al año como mínimo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.nrus-cuota",
+      "nombre": "Cuota mensual del Nuevo RUS por categoría",
+      "tipo": "mapa",
+      "unidad": "PEN",
+      "etiquetas": {
+        "categoria-1": "Categoría 1",
+        "categoria-2": "Categoría 2"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": {
+            "categoria-1": 20,
+            "categoria-2": 50
+          },
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Cómo determinar qué categoría te corresponde en el NRUS",
+            "url": "https://orientacion.sunat.gob.pe/3100-04-determinacion-y-pago-categorias-del-nrus",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.nrus-limite-mensual",
+      "nombre": "Límite mensual de ingresos o compras por categoría del Nuevo RUS",
+      "tipo": "mapa",
+      "unidad": "PEN",
+      "etiquetas": {
+        "categoria-1": "Categoría 1",
+        "categoria-2": "Categoría 2"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": {
+            "categoria-1": 5000,
+            "categoria-2": 8000
+          },
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Cómo determinar qué categoría te corresponde en el NRUS",
+            "url": "https://orientacion.sunat.gob.pe/3100-04-determinacion-y-pago-categorias-del-nrus",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.nrus-limite-anual",
+      "nombre": "Límite anual de ingresos o compras del Nuevo RUS",
+      "tipo": "numero",
+      "unidad": "PEN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 96000,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Emprender: Nuevo Régimen Único Simplificado (características)",
+            "url": "https://emprender.sunat.gob.pe/ruc/regimenes-tributarios-mype/nuevo-regimen-unico-simplificado-nuevo-rus",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
     }
   ]
 }
