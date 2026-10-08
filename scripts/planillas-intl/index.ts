@@ -4,11 +4,13 @@ import { registro } from "../../src/paises";
 import { hoyEn } from "../../src/motor/vigencia";
 import type { FechaISO } from "../../src/motor/tipos";
 import { Libro, nombreArchivo, type PlanillaPais } from "./marco";
+import { planillaCl } from "./cl";
 import { planillaCo } from "./co";
 import { planillaMx } from "./mx";
 import { planillaPe } from "./pe";
+import { planillaUy } from "./uy";
 
-export const PLANILLAS_INTL: readonly PlanillaPais[] = [planillaMx, planillaCo, planillaPe];
+export const PLANILLAS_INTL: readonly PlanillaPais[] = [planillaMx, planillaCo, planillaPe, planillaCl, planillaUy];
 
 export interface PlanillaConstruida {
   planilla: PlanillaPais;

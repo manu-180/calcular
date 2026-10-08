@@ -16,12 +16,12 @@ import { DetailedCellError } from "hyperformula";
 import { crearContexto, ErrorEntrada, type CasosCalculadora } from "../src/motor/calculo";
 import { resolverValores } from "../src/motor/registro";
 import type { Campo, DefinicionCalculadora, FechaISO, PaisDefinido, ValoresDe } from "../src/motor/tipos";
-import { sumarDias } from "../src/motor/vigencia";
+import { diasEntre, sumarDias } from "../src/motor/vigencia";
 import { PRODUCTOS_INTL } from "../src/lib/pagos/catalogo-intl";
 import { abrirLibro, type LibroEvaluable } from "./evaluar_xlsx";
 import { archivosBajo, DIR_PAISES, importar } from "./paises_comun";
 import { PLANILLAS_INTL, construirPlanilla, type PlanillaConstruida } from "./planillas-intl";
-import { HOJA_INSTRUCCIONES, type Bloque } from "./planillas-intl/marco";
+import { HOJA_INSTRUCCIONES, HOJA_TABLAS, type Bloque } from "./planillas-intl/marco";
 
 const SLUG_PRODUCTO = "sueldo-y-liquidacion";
 const FACTORES = [1, 0.35, 2.7, 9];
@@ -51,6 +51,7 @@ async function comparaConGenerado(p: PlanillaConstruida): Promise<boolean> {
     return false;
   }
   let distintas = 0;
+  const celdasSerie = new Map([...p.libro.tablas.series].map(([id, s]) => [s.celda, id]));
   for (const ws of fresco.worksheets) {
     const otra = enDisco.getWorksheet(ws.name)!;
     const filas = Math.max(ws.rowCount, otra.rowCount);
@@ -59,6 +60,16 @@ async function comparaConGenerado(p: PlanillaConstruida): Promise<boolean> {
       for (let c = 1; c <= cols; c++) {
         const a = crudoCelda(ws.getCell(r, c).value);
         const b = crudoCelda(otra.getCell(r, c).value);
+        const serie = ws.name === HOJA_TABLAS ? celdasSerie.get(ws.getCell(r, c).address) : undefined;
+        if (serie !== undefined) {
+          const s = p.libro.pais.series.find((x) => x.id === serie)!;
+          const vigentes = s.puntos.filter(([f]) => f <= p.hoy && diasEntre(f, p.hoy) <= s.maxAntiguedadDias).map(([, v]) => v);
+          if (typeof b !== "number" || !vigentes.includes(b)) {
+            fallo(`${p.planilla.mercado}: ${serie} en el archivo vale ${JSON.stringify(b)}, que no es un valor vigente de la serie al ${p.hoy}. Corré scripts/gen_planilla_todas.ts.`);
+            distintas++;
+          }
+          continue;
+        }
         if (a !== b) {
           if (distintas < 3) fallo(`${p.planilla.mercado}: ${ws.name}!${ws.getCell(r, c).address} en el archivo es ${JSON.stringify(b)} y hoy se genera ${JSON.stringify(a)}`);
           distintas++;
@@ -144,6 +155,11 @@ async function verificarBloque(p: PlanillaConstruida, pais: PaisDefinido, libro:
     fallo(`${m}/${b.calculadora}: no encontré sus .casos.ts`);
     return false;
   }
+  const valores: Record<string, unknown> = { ...res.valores };
+  for (const [id, req] of Object.entries(def.requiere)) {
+    const s = p.libro.tablas.series.get(id);
+    if (req === "serie" && s) valores[id] = { fecha: p.hoy, valor: libro.numero(HOJA_TABLAS, s.celda) };
+  }
   const ctx = crearContexto(pais.mercado, p.hoy, def);
   const unidad = 10 ** -(def.redondeo ?? pais.mercado.redondeo).decimales;
   let comparados = 0;
@@ -153,7 +169,7 @@ async function verificarBloque(p: PlanillaConstruida, pais: PaisDefinido, libro:
     for (const e of variantes(def.campos, caso.entrada as Record<string, unknown>)) {
       let esperado: Record<string, unknown>;
       try {
-        esperado = def.calcular(e as never, res.valores as ValoresDe<typeof def.requiere>, ctx) as Record<string, unknown>;
+        esperado = def.calcular(e as never, valores as ValoresDe<typeof def.requiere>, ctx) as Record<string, unknown>;
       } catch (err) {
         if (err instanceof ErrorEntrada) continue;
         throw err;

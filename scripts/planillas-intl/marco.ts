@@ -188,6 +188,25 @@ export class Tablas {
     return e;
   }
 
+  // Las series (UF, UTM, tipo de cambio) cambian solas: el check acepta un valor reciente de la serie
+  // en vez de exigir el del día, y recalcula el motor con el valor que quedó en el archivo.
+  readonly series = new Map<string, { celda: string; ref: string }>();
+
+  serie(id: string): string {
+    const clave = `s:${id}`;
+    if (this.cache.has(clave)) return this.cache.get(clave) as string;
+    const r = resolverRequisito(this.libro.pais, id, "serie", this.libro.hoy);
+    if (!r.ok) throw new NoDisponible(r.motivo);
+    const u = r.usados[0];
+    const punto = r.valor as { fecha: FechaISO; valor: number };
+    const fila = this.fila++;
+    this.filas.push({ tipo: "valor", fila, dato: u.nombre, detalle: `Valor al ${fechaLarga(punto.fecha)}`, valor: punto.valor, unidad: this.unidadVisible(u.unidad), desde: punto.fecha, fuente: u.fuente, formato: "#,##0.00##" });
+    const ref = `${PREFIJO_TABLAS}$C$${fila}`;
+    this.series.set(id, { celda: `C${fila}`, ref });
+    this.cache.set(clave, ref);
+    return ref;
+  }
+
   vacia(): boolean {
     return this.filas.length === 0;
   }
