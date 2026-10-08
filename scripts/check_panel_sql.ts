@@ -73,7 +73,7 @@ function chequeosEstaticos() {
     ok(todo.includes(`alter table public.${t} force row level security;`), `${t}: force row level security`);
   }
   const bloques = [...todo.matchAll(/create or replace function public\.(\w+)\(([\s\S]*?)\n\$\$;/g)];
-  igual(bloques.length, 24, "se encontraron las 24 definiciones de funciones");
+  igual(bloques.length, 25, "se encontraron las 25 definiciones de funciones");
   const revocadas = [...todo.matchAll(/revoke execute on function([\s\S]*?)from public, anon, authenticated;/g)].map((m) => m[1]).join("\n");
   for (const [, nombre, cuerpo] of bloques) {
     ok(/\nset search_path = ''\n/.test(cuerpo), `${nombre}: set search_path = ''`);
@@ -1076,6 +1076,46 @@ async function probarMercados(PGlite: new (dataDir?: string) => Db) {
   }
 }
 
+async function probarPagos(PGlite: new (dataDir?: string) => Db) {
+  seccion("proveedor de pago (20261009120000)");
+  const db = await nuevaBase(PGlite, "legado", undefined, "20261008999999");
+  try {
+    await como(db, "service_role", null, () =>
+      db.exec("insert into public.ca_compras (mp_payment_id, producto, monto) values ('900', 'planilla-comercio', 14900)"),
+    );
+    await aplicarMigraciones(db);
+    await aplicarMigraciones(db);
+    const vieja = (await filas(db, "select proveedor, pago_id from public.ca_compras where mp_payment_id = '900'"))[0];
+    igual([vieja.proveedor, vieja.pago_id], ["mercadopago", "900"], "la compra de MP previa queda con proveedor y pago_id");
+    await como(db, "service_role", null, () =>
+      db.exec("insert into public.ca_compras (mp_payment_id, producto, monto) values ('901', 'planilla-uocra', 14900)"),
+    );
+    igual((await filas(db, "select pago_id from public.ca_compras where mp_payment_id = '901'"))[0].pago_id, "901", "el webhook de MP sin pago_id: lo completa el trigger");
+    await como(db, "service_role", null, () =>
+      db.exec(
+        "insert into public.ca_compras (mp_payment_id, producto, monto, moneda, sitio, mercado, proveedor, pago_id) values ('paypal:5O190127TN364715T', 'mx/planilla-sueldo', 9, 'USD', 'intl', 'mx', 'paypal', '5O190127TN364715T')",
+      ),
+    );
+    ok(true, "una compra de PayPal entra con mp_payment_id prefijado");
+    await como(db, "service_role", null, () =>
+      falla(
+        db.query("insert into public.ca_compras (mp_payment_id, producto, monto, proveedor, pago_id, sitio, mercado) values ('paypal:otro', 'mx/x', 9, 'paypal', '5O190127TN364715T', 'intl', 'mx')"),
+        "23505",
+        "pago_id repetido del mismo proveedor: rechazado",
+      ),
+    );
+    await como(db, "service_role", null, () =>
+      falla(db.query("insert into public.ca_compras (mp_payment_id, producto, monto, proveedor) values ('x1', 'mx/x', 9, 'bitcoin')"), "23514", "proveedor fuera de la lista: rechazado"),
+    );
+    await como(db, "service_role", null, () =>
+      db.exec("insert into public.ca_checkouts (id, producto, sitio, mercado, proveedor) values (gen_random_uuid(), 'mx/planilla-sueldo', 'intl', 'mx', 'paypal')"),
+    );
+    ok(true, "ca_checkouts acepta un checkout intl de PayPal");
+  } finally {
+    await db.close();
+  }
+}
+
 async function main() {
   chequeosEstaticos();
   const PGlite = cargarPGlite();
@@ -1099,6 +1139,7 @@ async function main() {
     }
     await probarDefaultsNuevos(PGlite);
     await probarMercados(PGlite);
+    await probarPagos(PGlite);
     const carga = Number(process.env.CA_PANEL_CARGA ?? 0);
     if (carga > 0) await probarCarga(PGlite, carga);
   }
