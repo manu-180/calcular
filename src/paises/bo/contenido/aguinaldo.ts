@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "bo.aguinaldo",
   h1: "Calculadora de aguinaldo de Navidad",
   title: "Aguinaldo 2026 en Bolivia: calcule cuánto le toca",
-  description: "Calcule su aguinaldo de Navidad con el promedio de los últimos 3 meses y las duodécimas del tiempo trabajado en la gestión, como indica el Ministerio de Trabajo.",
+  description: "Calcule su aguinaldo de Navidad con el promedio de los últimos 3 meses y las duodécimas del tiempo trabajado en la gestión, como indica el Ministerio.",
   intro: [
     "El aguinaldo de Navidad es un sueldo más por año. Si no trabajó la gestión completa, se paga por duodécimas, en proporción al tiempo trabajado.",
     "Escriba su sueldo promedio y sus fechas. Si sigue trabajando, deje vacía la fecha de retiro.",
