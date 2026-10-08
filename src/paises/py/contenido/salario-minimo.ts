@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.salario-minimo",
-  h1: "Salario mínimo en Paraguay",
-  title: "Salario mínimo en Paraguay: mensual, jornal y hora",
-  description: "El salario mínimo es {{py.minimos[mensual]}} por mes desde el {{py.minimos#desde}}. Mirá el jornal, la hora, el nocturno y el de tiempo parcial.",
+  h1: "Salario mínimo en Paraguay 2026",
+  title: "Salario mínimo Paraguay 2026: {{py.minimos[mensual]}}, por día y hora",
+  description: "El salario mínimo vigente en Paraguay es {{py.minimos[mensual]}} por mes desde el {{py.minimos#desde}}. Mirá cuánto es por día, por hora, de noche y a tiempo parcial.",
   intro: [
-    "El salario mínimo para actividades diversas no especificadas es {{py.minimos[mensual]}} por mes. Rige desde el {{py.minimos#desde}}.",
+    "El salario mínimo vigente en Paraguay es {{py.minimos[mensual]}} por mes, desde el {{py.minimos#desde}}. Es el mínimo para actividades diversas no especificadas en jornada diurna.",
     "Elegí tu jornada y, si trabajás a tiempo parcial, poné tus horas del mes.",
   ],
   comoSeCalcula: [
@@ -18,8 +18,12 @@ export default definirContenido({
   ],
   faq: [
     {
-      pregunta: "¿Cuál es el salario mínimo en Paraguay?",
+      pregunta: "¿Cuál es el salario mínimo en Paraguay en 2026?",
       respuesta: "{{py.minimos[mensual]}} por mes para jornada diurna, desde el {{py.minimos#desde}}. Para jornada nocturna es {{py.minimos[mensual-nocturno]}}.",
+    },
+    {
+      pregunta: "¿Cuánto es el salario mínimo por hora?",
+      respuesta: "{{py.minimos[hora]}} por hora para quien cobra por mes en jornada diurna. A tiempo parcial, la hora mínima es {{py.minimos[hora-parcial]}}.",
     },
     {
       pregunta: "¿Cuánto es el jornal mínimo?",

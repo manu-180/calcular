@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.bonificacion-familiar",
-  h1: "Calculadora de bonificación familiar",
-  title: "Bonificación familiar en Paraguay: cuánto cobrás por hijo",
-  description: "La bonificación familiar es el {{py.bonificacion-familiar}} del salario mínimo por cada hijo. Calculá cuánto te toca y si tu salario está debajo del tope.",
+  h1: "Calculadora de bonificación familiar en Paraguay",
+  title: "Bonificación familiar Paraguay 2026: cuánto cobrás por hijo",
+  description: "La bonificación familiar es el {{py.bonificacion-familiar}} del salario mínimo por cada hijo. Calculá cuánto te toca y si tu salario está debajo del tope. Gratis.",
   intro: [
-    "La bonificación familiar es un pago extra por cada hijo. Equivale al {{py.bonificacion-familiar}} del salario mínimo ({{py.salario-minimo}}).",
-    "La cobra quien gana hasta el {{py.bonificacion-familiar-tope}} del salario mínimo. Poné tu salario y cuántos hijos tenés con derecho.",
+    "La bonificación familiar en Paraguay es el {{py.bonificacion-familiar}} del salario mínimo ({{py.salario-minimo}}) por cada hijo. La cobra quien gana hasta el {{py.bonificacion-familiar-tope}} del salario mínimo.",
+    "Poné tu salario y cuántos hijos tenés con derecho, y te mostramos cuánto te corresponde por mes.",
   ],
   comoSeCalcula: [
     "Por cada hijo se paga el {{py.bonificacion-familiar}} del salario mínimo vigente.",
@@ -22,6 +22,14 @@ export default definirContenido({
     {
       pregunta: "¿Hasta qué salario se cobra?",
       respuesta: "Hasta el {{py.bonificacion-familiar-tope}} del salario mínimo. Si ganás más, no te corresponde.",
+    },
+    {
+      pregunta: "¿Hasta qué edad se paga la bonificación familiar?",
+      respuesta: "Mientras el hijo sea menor de 17 años, esté a tu cargo y viva en Paraguay. Si tiene una discapacidad total, no hay límite de edad.",
+    },
+    {
+      pregunta: "¿La bonificación familiar es obligatoria?",
+      respuesta: "Sí. Si cumplís los requisitos y avisaste a tu empleador, te la tiene que pagar.",
     },
     {
       pregunta: "¿Qué tengo que presentar para cobrarla?",

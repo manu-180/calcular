@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.vacaciones",
-  h1: "Calculadora de vacaciones",
-  title: "Vacaciones en Paraguay: cuántos días y cuánto cobrás",
-  description: "Calculá cuántos días de vacaciones te tocan según tu antigüedad ({{py.vacaciones-dias[hasta-5]}}, {{py.vacaciones-dias[hasta-10]}} o {{py.vacaciones-dias[mas-10]}}) y cuánto te tienen que pagar.",
+  h1: "Calculadora de vacaciones en Paraguay",
+  title: "Vacaciones Paraguay 2026: calculá días y cuánto cobrás",
+  description: "Calculá cuántos días de vacaciones te tocan según tu antigüedad ({{py.vacaciones-dias[hasta-5]}}, {{py.vacaciones-dias[hasta-10]}} o {{py.vacaciones-dias[mas-10]}}) y cuánto te tienen que pagar. Gratis.",
   intro: [
-    "Después de cada año de trabajo con el mismo empleador tenés vacaciones pagas. Cuantos más años llevás, más días te tocan.",
+    "En Paraguay te tocan {{py.vacaciones-dias[hasta-5]}} de vacaciones pagas por año hasta los cinco años de antigüedad, {{py.vacaciones-dias[hasta-10]}} hasta los diez y {{py.vacaciones-dias[mas-10]}} desde ahí. Las ganás después de cada año de trabajo con el mismo empleador.",
     "Poné tu salario, tu fecha de ingreso y cuándo salís de vacaciones.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuántos días de vacaciones me corresponden en Paraguay?",
       respuesta: "{{py.vacaciones-dias[hasta-5]}} hasta los cinco años de antigüedad, {{py.vacaciones-dias[hasta-10]}} hasta los diez y {{py.vacaciones-dias[mas-10]}} desde ahí.",
+    },
+    {
+      pregunta: "¿Cómo se calcula el pago de las vacaciones?",
+      respuesta: "Cada día vale tu salario mensual dividido {{py.divisor-salario-diario}}, y se multiplica por los días que te tocan. Se paga por adelantado, antes de que empiecen las vacaciones.",
     },
     {
       pregunta: "¿Cuándo tienen que empezar las vacaciones?",

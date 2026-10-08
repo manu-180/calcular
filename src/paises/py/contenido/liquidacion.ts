@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.liquidacion",
-  h1: "Calculadora de liquidación final",
-  title: "Liquidación en Paraguay: calculá lo que te corresponde",
-  description: "Calculá tu liquidación final por despido o renuncia: preaviso, indemnización, vacaciones y aguinaldo proporcional, según el Código del Trabajo.",
+  h1: "Calculadora de liquidación final en Paraguay",
+  title: "Liquidación laboral Paraguay 2026: calculá tu finiquito",
+  description: "Calculá tu liquidación por despido o renuncia: preaviso, indemnización, vacaciones y aguinaldo proporcional, concepto por concepto. Gratis.",
   intro: [
-    "Cuando termina tu trabajo, tu empleador te tiene que pagar una liquidación final. Lo que entra depende de cómo terminó: despido sin causa, renuncia o despido con causa.",
+    "La liquidación final en Paraguay suma lo que te deben al terminar el trabajo: el aguinaldo proporcional y las vacaciones siempre, y el preaviso y la indemnización si te despidieron sin causa.",
     "Poné tu salario promedio, las fechas y las vacaciones que te quedaron. Te mostramos cada concepto por separado.",
   ],
   comoSeCalcula: [
@@ -33,6 +33,10 @@ export default definirContenido({
     {
       pregunta: "¿Qué salario se usa para la indemnización?",
       respuesta: "El promedio de lo que cobraste en los últimos seis meses, con horas extra y comisiones. Si trabajaste menos, el promedio de ese tiempo.",
+    },
+    {
+      pregunta: "¿Qué es el finiquito?",
+      respuesta: "Es el documento con el que se cierra la relación laboral y se detalla la liquidación final. Antes de firmarlo, revisá que estén todos los conceptos que te corresponden.",
     },
     {
       pregunta: "¿Dónde reclamo si no me pagan la liquidación?",

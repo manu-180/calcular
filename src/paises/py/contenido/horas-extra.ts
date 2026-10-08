@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.horas-extra",
-  h1: "Calculadora de horas extra",
-  title: "Horas extra en Paraguay: calculá cuánto te pagan",
-  description: "Calculá tus horas extra de día (recargo del {{py.recargo-hora-extra}}), de noche y en feriados (recargo del {{py.recargo-feriado}}), según el Código del Trabajo.",
+  h1: "Calculadora de horas extras en Paraguay",
+  title: "Horas extras Paraguay 2026: calculá cuánto te pagan",
+  description: "Calculá tus horas extras de día (recargo del {{py.recargo-hora-extra}}), de noche (del {{py.recargo-extra-nocturna}}) y en feriados (del {{py.recargo-feriado}}), según el Código del Trabajo. Gratis.",
   intro: [
-    "Las horas que trabajás por encima de tu jornada se pagan con recargo. Cuánto depende de si son de día, de noche o en un feriado.",
+    "En Paraguay la hora extra de día se paga con un recargo del {{py.recargo-hora-extra}}. La de noche lleva un {{py.recargo-extra-nocturna}} sobre la hora nocturna, y cada hora en un feriado, un {{py.recargo-feriado}}.",
     "Poné tu salario mensual, tu jornada habitual y cuántas horas hiciste de cada tipo.",
   ],
   comoSeCalcula: [
@@ -22,6 +22,14 @@ export default definirContenido({
     {
       pregunta: "¿Cuánto se paga la hora extra en Paraguay?",
       respuesta: "De día, tu hora más el {{py.recargo-hora-extra}}. De noche, la hora nocturna más el {{py.recargo-extra-nocturna}}. En feriado, tu hora más el {{py.recargo-feriado}}.",
+    },
+    {
+      pregunta: "¿Cómo se calcula el valor de la hora?",
+      respuesta: "Dividí tu salario mensual entre {{py.divisor-salario-diario}} y el resultado entre {{py.horas-jornada-diurna}} (o {{py.horas-jornada-nocturna}} si tu jornada es nocturna). Con Gs. 4.800.000 y jornada diurna, la hora vale Gs. 20.000.",
+    },
+    {
+      pregunta: "¿Las horas extras pagan IPS?",
+      respuesta: "Sí. Para el IPS, las horas extras son parte del salario y pagan aporte como el resto.",
     },
     {
       pregunta: "¿Qué horario es nocturno?",
