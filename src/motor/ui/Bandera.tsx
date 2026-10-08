@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Children, Fragment, isValidElement, type ReactNode } from "react";
 
 // Banderas simplificadas a 30x20: franjas y una marca mínima, sin escudos. A 20 px de ancho un
 // escudo es una mancha y pesa kilobytes; esto pesa bytes y se lee igual. Solo países: un idioma o
@@ -153,6 +153,22 @@ export function Bandera({ pais, ancho = 24, className }: { pais: string; ancho?:
   return (
     <svg className={className ? `cy-bandera ${className}` : "cy-bandera"} viewBox="0 0 30 20" width={ancho} height={(ancho * 2) / 3} aria-hidden="true" focusable="false">
       {dibujo()}
+    </svg>
+  );
+}
+
+function aplanar(nodo: ReactNode): ReactNode[] {
+  return Children.toArray(nodo).flatMap((n) => (isValidElement(n) && n.type === Fragment ? aplanar((n.props as { children?: ReactNode }).children) : [n]));
+}
+
+// Para la imagen OG: Satori (next/og) solo acepta elementos de SVG adentro de un <svg>, sin
+// fragmentos, y no sabe qué hacer con className.
+export function BanderaPlana({ pais, ancho }: { pais: string; ancho: number }) {
+  const dibujo = DIBUJOS[pais];
+  if (!dibujo) return null;
+  return (
+    <svg viewBox="0 0 30 20" width={ancho} height={(ancho * 2) / 3}>
+      {aplanar(dibujo())}
     </svg>
   );
 }

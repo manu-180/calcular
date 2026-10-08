@@ -59,8 +59,19 @@ export function destinosAviso(ctx: ContextoSitio, concepto?: string): DestinoPai
 
 // Título y resumen de una calculadora para tarjetas y listas, con los marcadores {{...}} ya
 // resueltos al valor vigente (el contenido crudo del registro todavía los tiene).
+// Memo por contexto (uno por render): registro.pagina() arma los equivalentes de todos los países
+// y la home, las relacionadas y el JSON-LD piden la misma tarjeta varias veces.
+const tarjetas = new WeakMap<ContextoSitio, Map<string, { titulo: string; resumen: string }>>();
+
 export function tarjetaDe(ctx: ContextoSitio, m: Mercado, entrada: EntradaCalculadora): { titulo: string; resumen: string } {
+  let memo = tarjetas.get(ctx);
+  if (!memo) tarjetas.set(ctx, (memo = new Map()));
+  const clave = `${m.codigo}/${entrada.definicion.slug}`;
+  const guardada = memo.get(clave);
+  if (guardada) return guardada;
   const p = ctx.registro.pagina(m.codigo, entrada.definicion.slug, hoyEn(m), ctx.modo);
   const c = p?.contenido ?? entrada.contenido;
-  return { titulo: c.h1, resumen: c.intro[0] ?? "" };
+  const tarjeta = { titulo: c.h1, resumen: c.intro[0] ?? "" };
+  memo.set(clave, tarjeta);
+  return tarjeta;
 }

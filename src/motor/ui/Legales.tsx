@@ -1,10 +1,11 @@
-import type { PaginaGlobal } from "../paginas";
-import { ldMigas, rutaIntl, urlIntl } from "../seo";
+import { formatearFecha } from "../formato";
+import { ACTUALIZACION_PAGINAS_GLOBALES, type PaginaGlobal } from "../paginas";
+import { grafo, ldMigas, ldPagina, rutaIntl, urlIntl } from "../seo";
 import type { ContextoSitio } from "./contexto";
 import { JsonLd, Migas } from "./Sitio";
 
 export const MAIL_CONTACTO = "manunv97@gmail.com";
-const ACTUALIZADO = "7 de octubre de 2026";
+const ACTUALIZADO = formatearFecha(ACTUALIZACION_PAGINAS_GLOBALES, "es");
 
 interface Bloque {
   titulo?: string;
@@ -142,16 +143,24 @@ function conMail(texto: string) {
   );
 }
 
+function ldLegal(ctx: ContextoSitio, slug: PaginaGlobal) {
+  const p = PAGINAS_LEGALES[slug];
+  const url = urlIntl("global", slug);
+  const tipo = slug === "sobre" ? "AboutPage" : slug === "contacto" ? "ContactPage" : "WebPage";
+  return grafo([
+    ldPagina({ tipo, url, nombre: p.title, descripcion: p.description, locale: ctx.mercado.locale, actualizado: ACTUALIZACION_PAGINAS_GLOBALES }),
+    ldMigas([
+      { nombre: ctx.textos.migas.inicio, url: urlIntl("global") },
+      { nombre: p.h1, url },
+    ]),
+  ]);
+}
+
 export function PaginaLegalVista({ ctx, slug }: { ctx: ContextoSitio; slug: PaginaGlobal }) {
   const p = PAGINAS_LEGALES[slug];
   return (
     <div className="cy-pagina cy-legal">
-      <JsonLd
-        datos={ldMigas([
-          { nombre: ctx.textos.migas.inicio, url: urlIntl("global") },
-          { nombre: p.h1, url: urlIntl("global", slug) },
-        ])}
-      />
+      <JsonLd datos={ldLegal(ctx, slug)} />
       <Migas etiqueta={ctx.textos.migas.etiqueta} items={[{ nombre: ctx.textos.migas.inicio, href: rutaIntl("global") }, { nombre: p.h1 }]} />
       <header className="cy-heroe cy-heroe-chico">
         <h1 className="cy-titular">{p.h1}</h1>

@@ -77,4 +77,13 @@ export interface TextosSitio {
   noEncontrada: { titulo: string; texto: string; volver: string; paises: string };
   categorias: Record<Categoria, string>;
   migas: { inicio: string; etiqueta: string };
+  // Candidatos en orden de preferencia: va el primero que entra en 60 caracteres (elegirTitulo).
+  seo: {
+    tituloGlobal: string;
+    descripcionGlobal: string;
+    tituloPais: (pais: string, anio: number) => readonly string[];
+    tituloFuentes: (pais: string) => readonly string[];
+    tituloNovedades: (pais: string, anio: number) => readonly string[];
+  };
+  og: { datosOficiales: string; actualizado: (fecha: string) => string; gratis: string; paises: (n: number) => string };
 }

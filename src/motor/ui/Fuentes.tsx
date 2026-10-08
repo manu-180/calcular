@@ -1,9 +1,10 @@
 import { formatearFecha, formatearNumero, formatearPorcentaje, formatearValorUnidad } from "../formato";
-import { ldMigas, rutaIntl, urlIntl } from "../seo";
+import { rutaIntl } from "../seo";
 import type { Dato, FilaEscala, Fuente, Mercado } from "../tipos";
 import { Bandera } from "./Bandera";
 import { calculadorasDe, tarjetaDe, type ContextoSitio } from "./contexto";
 import { IconoExterno } from "./Iconos";
+import { ldPaginaDeMercado } from "./metadatos";
 import { AvisoDePais, JsonLd, Migas } from "./Sitio";
 
 function Valor({ dato, valor, m, tramos }: { dato: Dato; valor: unknown; m: Mercado; tramos: (n: number) => string }) {
@@ -63,12 +64,7 @@ export function PaginaFuentes({ ctx }: { ctx: ContextoSitio }) {
   const titulo = t.fuentes.titulo(m.nombre);
   return (
     <div className="cy-pagina cy-fuentes">
-      <JsonLd
-        datos={ldMigas([
-          { nombre: m.nombre, url: urlIntl(m.codigo) },
-          { nombre: titulo, url: urlIntl(m.codigo, "fuentes") },
-        ])}
-      />
+      <JsonLd datos={ldPaginaDeMercado(ctx, { tipo: "fuentes" })} />
       <Migas etiqueta={t.migas.etiqueta} items={[{ nombre: m.nombre, href: rutaIntl(m.codigo) }, { nombre: titulo }]} />
       <header className="cy-heroe cy-heroe-chico">
         <p className="cy-ceja">
@@ -188,12 +184,7 @@ export function PaginaNovedades({ ctx }: { ctx: ContextoSitio }) {
   const nombreCalc = (id: string) => publicadas.find((c) => c.definicion.id === id);
   return (
     <div className="cy-pagina cy-novedades">
-      <JsonLd
-        datos={ldMigas([
-          { nombre: m.nombre, url: urlIntl(m.codigo) },
-          { nombre: titulo, url: urlIntl(m.codigo, "novedades") },
-        ])}
-      />
+      <JsonLd datos={ldPaginaDeMercado(ctx, { tipo: "novedades" })} />
       <Migas etiqueta={t.migas.etiqueta} items={[{ nombre: m.nombre, href: rutaIntl(m.codigo) }, { nombre: titulo }]} />
       <header className="cy-heroe cy-heroe-chico">
         <p className="cy-ceja">

@@ -106,4 +106,17 @@ export const pt: TextosSitio = {
     otras: "Outras calculadoras",
   },
   migas: { inicio: "Início", etiqueta: "Onde você está" },
+  seo: {
+    tituloGlobal: "CalcularYa: calculadoras trabalhistas da América Latina",
+    descripcionGlobal: "Calculadoras grátis de décimo terceiro, rescisão, salário líquido e impostos para cada país da América Latina, com o dado oficial e a fonte.",
+    tituloPais: (pais, anio) => [`Calculadoras trabalhistas e de impostos do ${pais} ${anio}`, `Calculadoras trabalhistas do ${pais} ${anio}`, `Calculadoras do ${pais}`],
+    tituloFuentes: (pais) => [`Dados oficiais vigentes do ${pais}: fontes e datas`, `Fontes e dados do ${pais}`],
+    tituloNovedades: (pais, anio) => [`Novidades trabalhistas e de impostos do ${pais} ${anio}`, `Novidades do ${pais}`],
+  },
+  og: {
+    datosOficiales: "Dados oficiais, com fonte",
+    actualizado: (fecha) => `Atualizado em ${fecha}`,
+    gratis: "Grátis e sem cadastro",
+    paises: (n) => (n === 1 ? "1 país" : `${n} países`),
+  },
 };

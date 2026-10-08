@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { esPaginaGlobal, PAGINAS_GLOBALES, PAGINAS_MERCADO } from "@/motor/paginas";
-import { hreflangDe, metadataDe } from "@/motor/seo";
+import { PAGINAS_GLOBALES, PAGINAS_MERCADO } from "@/motor/paginas";
 import { intlActivo, modoPublicacion } from "@/motor/sitio";
 import type { CodigoMercado, PropsCalculadora } from "@/motor/tipos";
-import { contextoSitio, type ContextoSitio } from "@/motor/ui/contexto";
+import { contextoSitio } from "@/motor/ui/contexto";
 import { PaginaFuentes, PaginaNovedades } from "@/motor/ui/Fuentes";
-import { PAGINAS_LEGALES, PaginaLegalVista } from "@/motor/ui/Legales";
+import { PaginaLegalVista } from "@/motor/ui/Legales";
+import { metadatosDe, resolverPagina } from "@/motor/ui/metadatos";
 import { PaginaCalculadora } from "@/motor/ui/PaginaCalculadora";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
@@ -30,40 +30,17 @@ export function generateStaticParams({ params }: { params: { mercado: string } }
   return [...calculadoras, ...PAGINAS_MERCADO.map((slug) => ({ slug }))];
 }
 
-function resolver(ctx: ContextoSitio, slug: string) {
-  const m = ctx.mercado;
-  if (m.codigo === "global") return esPaginaGlobal(slug) ? ({ tipo: "legal", slug } as const) : null;
-  if (slug === "fuentes" || slug === "novedades") return { tipo: slug } as const;
-  const pagina = registro.pagina(m.codigo, slug, ctx.fecha, ctx.modo);
-  return pagina ? ({ tipo: "calculadora", pagina } as const) : null;
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { mercado, slug } = await params;
   const ctx = contextoSitio(registro, mercado as CodigoMercado);
-  const r = ctx ? resolver(ctx, slug) : null;
-  if (!ctx || !r) return {};
-  const m = ctx.mercado;
-  switch (r.tipo) {
-    case "legal": {
-      const p = PAGINAS_LEGALES[r.slug];
-      return metadataDe({ mercado: m, slug, title: p.title, description: p.description });
-    }
-    case "fuentes":
-      return metadataDe({ mercado: m, slug, title: ctx.textos.fuentes.titulo(m.nombre), description: ctx.textos.fuentes.description(m.nombre) });
-    case "novedades":
-      return metadataDe({ mercado: m, slug, title: ctx.textos.novedades.titulo(m.nombre), description: ctx.textos.novedades.description(m.nombre) });
-    case "calculadora": {
-      const { contenido, calculadora, equivalentes } = r.pagina;
-      return metadataDe({ mercado: m, slug, title: contenido.title, description: contenido.description, idiomas: hreflangDe(calculadora.concepto, equivalentes) });
-    }
-  }
+  const r = ctx ? resolverPagina(ctx, slug) : null;
+  return ctx && r ? metadatosDe(ctx, r) : {};
 }
 
 export default async function PaginaDeMercado({ params }: Props) {
   const { mercado, slug } = await params;
   const ctx = contextoSitio(registro, mercado as CodigoMercado);
-  const r = ctx ? resolver(ctx, slug) : null;
+  const r = ctx ? resolverPagina(ctx, slug) : null;
   if (!ctx || !r) notFound();
   switch (r.tipo) {
     case "legal":
