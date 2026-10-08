@@ -51,7 +51,7 @@ const PRONOMBRES_VOS = new Set(["vos", "sos"]);
 // «estás» y el futuro («recibirás», «podrás») son iguales en tú y en vos. Se aceptan aunque así se
 // escape algún presente voseante con raíz en -ar/-er/-ir («comparás»): el imperativo, que es lo que
 // más aparece en una calculadora, lo sigue atrapando IMPERATIVO_VOS.
-const FUTURO_O_TU = /^(?:estás|harás|dirás|sabrás|habrás|cabrás)$|(?:arás|erás|irás|drás)$/;
+const FUTURO_O_TU = /^(?:estás|estés|harás|dirás|sabrás|habrás|cabrás)$|(?:arás|erás|irás|drás)$/;
 const FORMAS_TU = new Set(["tú", "tu", "tus", "te", "ti", "contigo", "tienes", "puedes", "debes", "quieres", "sabes", "necesitas", "eres", "estás", "cobras", "ganas", "trabajas", "recibes", "pagas"]);
 const FORMAS_TU_EN_VOS = new Set(["tienes", "puedes", "debes", "quieres", "sabes", "eres"]);
 
