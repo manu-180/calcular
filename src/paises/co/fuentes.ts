@@ -60,7 +60,7 @@ export const detectores: readonly Detector[] = [
     datos: ["co.smmlv", "co.auxilio-transporte", "co.auxilio-tope"],
     metodo: "html",
     url: "https://www.funcionpublica.gov.co/dafpIndexerBGN/norma/index?find=FindNext&query=salario+minimo&ordenarPor=FECHA_EXPEDICION",
-    // El certificado de funcionpublica.gov.co llega sin la cadena intermedia y Node lo rechaza.
+    // funcionpublica.gov.co no manda el intermedio: tlsTolerante lo completa con scripts/datos-paises/certs.
     tlsTolerante: true,
     async traer(http) {
       const html = await http.texto(this.url, { tlsTolerante: true, userAgentNavegador: true });

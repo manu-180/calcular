@@ -4,7 +4,12 @@ name: datos-paises
 # Un job por mercado corre scripts/datos-paises/correr.ts: detectores, bandas, checks del país y
 # check-all. Lo que pasa todo viaja como parche a un único job "publicar", que hace un solo commit a
 # main (= deploy en Vercel): una corrida es un deploy, no uno por país. Las normas nunca se publican
-# solas: abren o actualizan el issue del país (etiqueta datos-<m>).
+# solas: abren o actualizan el issue del país (etiqueta datos-<m>), y eso lo hace el job "issues",
+# después de publicar, para que un push fallido nunca cierre un issue con "Todo al día".
+#
+# Permisos mínimos por job: actualizar corre npm ci y código de terceros, así que no puede escribir
+# nada; publicar escribe main pero no corre npm ci y valida cada parche antes de aplicarlo; issues
+# solo toca issues y no hace checkout.
 #
 # Horarios en UTC: 11:20 (mañana en todo LatAm, diarios oficiales del día), 17:20 (mediodía, tipos de
 # cambio de la mañana) y 23:50 (cierre de BCRP, Banxico, BanRep y BCU).
@@ -29,18 +34,20 @@ concurrency:
   group: datos-paises
   cancel-in-progress: false
 
-permissions:
-  contents: write
-  issues: write
+permissions: {}
 
 jobs:
   matriz:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
     outputs:
       mercados: ${{ steps.lista.outputs.mercados }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
@@ -66,7 +73,10 @@ jobs:
     needs: matriz
     if: needs.matriz.outputs.mercados != '[]' && needs.matriz.outputs.mercados != ''
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 90
+    permissions:
+      contents: read
+      issues: read
     strategy:
       fail-fast: false
       max-parallel: 6
@@ -75,9 +85,10 @@ jobs:
     env:
       M: ${{ matrix.mercado }}
       SALIDA: .datos-vivos/paises/${{ matrix.mercado }}
-      EN_MAIN: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
@@ -91,6 +102,7 @@ jobs:
       - name: Memoria de avisos
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           mkdir -p "$SALIDA"
           gh issue list --label "datos-$M" --state all --limit 50 --json number,state,body > "$SALIDA/issues.json" 2>/dev/null || echo "[]" > "$SALIDA/issues.json"
@@ -98,14 +110,18 @@ jobs:
       - name: Correr el runner
         run: npx tsx scripts/datos-paises/correr.ts --mercado "$M" --issues "$SALIDA/issues.json"
 
-      - name: Preparar el parche
+      - name: Preparar el parche y el issue
+        if: always()
         run: |
-          mkdir -p "publicar/$M"
+          mkdir -p "publicar/$M" "issue/$M"
           if [ -s "$SALIDA/archivos.txt" ]; then
             mapfile -t ARCHIVOS < "$SALIDA/archivos.txt"
             git diff --binary -- "${ARCHIVOS[@]}" > "publicar/$M/cambios.patch"
             cp "$SALIDA/commit.txt" "publicar/$M/commit.txt"
           fi
+          for F in issue.md comentario.md titulo.txt etiqueta.txt issue-sin-publicar.md comentario-sin-publicar.md; do
+            if [ -f "$SALIDA/$F" ]; then cp "$SALIDA/$F" "issue/$M/$F"; fi
+          done
 
       - uses: actions/upload-artifact@v4
         if: hashFiles(format('publicar/{0}/cambios.patch', matrix.mercado)) != ''
@@ -114,37 +130,22 @@ jobs:
           path: publicar/
           retention-days: 3
 
-      - name: Issue del país
-        if: always() && env.EN_MAIN == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          if [ ! -f "$SALIDA/issue.md" ]; then
-            echo "::warning::El runner no dejó salida para $M: no toco el issue."
-            exit 0
-          fi
-          TITULO=$(cat "$SALIDA/titulo.txt")
-          ETIQUETA=$(cat "$SALIDA/etiqueta.txt")
-          ABIERTO=$(gh issue list --state open --label "$ETIQUETA" --json number --jq '.[0].number // empty' 2>/dev/null || true)
-          if [ -s "$SALIDA/issue.md" ]; then
-            gh label create "$ETIQUETA" --color 1D76DB --description "Avisos del workflow datos-paises" 2>/dev/null || true
-            if [ -z "$ABIERTO" ]; then
-              gh issue create --title "$TITULO" --label "$ETIQUETA" --body-file "$SALIDA/issue.md"
-            else
-              gh issue edit "$ABIERTO" --title "$TITULO" --body-file "$SALIDA/issue.md"
-              if [ -s "$SALIDA/comentario.md" ]; then
-                gh issue comment "$ABIERTO" --body-file "$SALIDA/comentario.md"
-              fi
-            fi
-          elif [ -n "$ABIERTO" ]; then
-            gh issue close "$ABIERTO" --comment "Todo al día: la corrida $GITHUB_RUN_ID no encontró nada pendiente."
-          fi
+      - uses: actions/upload-artifact@v4
+        if: always() && hashFiles(format('issue/{0}/issue.md', matrix.mercado)) != ''
+        with:
+          name: issue-${{ matrix.mercado }}
+          path: issue/
+          retention-days: 3
 
   publicar:
     needs: [matriz, actualizar]
     if: always() && needs.matriz.result == 'success' && needs.matriz.outputs.mercados != '[]' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
+    outputs:
+      publicados: ${{ steps.push.outputs.publicados }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -156,15 +157,26 @@ jobs:
           merge-multiple: true
           path: publicar
 
-      # Cada parche se aplica sobre el main de ahora y solo si aplica limpio: si alguien tocó el mismo
-      # series.json entre la corrida y este paso, ese mercado no se publica y lo reintenta la próxima.
-      - name: Aplicar los parches
+      # Cada parche viene de un job que corrió código de terceros: antes de aplicarlo se valida que
+      # solo modifique src/paises/<m>/series.json de su mercado (scripts/datos-paises/validar-parche.mjs,
+      # solo node y git, sin npm ci). Después se aplica sobre el main de ahora y solo si aplica limpio:
+      # si alguien tocó el mismo series.json entre la corrida y este paso, ese mercado no se publica y
+      # lo reintenta la próxima.
+      - name: Validar y aplicar los parches
         run: |
           : > mensaje.txt
           PUBLICADOS=()
           shopt -s nullglob
           for P in publicar/*/cambios.patch; do
             M=$(basename "$(dirname "$P")")
+            if ! [[ "$M" =~ ^[a-z]{2,6}$ ]]; then
+              echo "::error::Artifact con un mercado inválido: no se aplica."
+              continue
+            fi
+            if ! node scripts/datos-paises/validar-parche.mjs "$M" "$P"; then
+              echo "::error::El parche de $M toca algo que no es src/paises/$M/series.json: rechazado."
+              continue
+            fi
             if git apply --check "$P" && git apply --index "$P"; then
               PUBLICADOS+=("$M")
               cat "$(dirname "$P")/commit.txt" >> mensaje.txt
@@ -178,12 +190,14 @@ jobs:
             exit 0
           fi
           { echo "datos-paises: ${PUBLICADOS[*]} ($(date -u +%F))"; echo ""; cat mensaje.txt; } > commit.txt
-          echo "PUBLICAR=1" >> "$GITHUB_ENV"
+          echo "PUBLICAR=${PUBLICADOS[*]}" >> "$GITHUB_ENV"
 
       # El autor tiene que ser manu-180 con su noreply: Vercel bloquea (BLOCKED, sin avisar) los deploys
-      # cuyo autor no es miembro del equipo del proyecto.
+      # cuyo autor no es miembro del equipo del proyecto. "publicados" se exporta solo si el push entró:
+      # el job issues lo usa para no cerrar el issue de un mercado que no llegó a main.
       - name: Publicar (commit a main = deploy)
-        if: env.PUBLICAR == '1'
+        id: push
+        if: env.PUBLICAR != ''
         run: |
           git config user.name "manu-180"
           git config user.email "157671390+manu-180@users.noreply.github.com"
@@ -191,6 +205,7 @@ jobs:
           for intento in 1 2 3 4 5; do
             if git pull --rebase -q origin main && git push -q origin HEAD:main; then
               echo "Publicado: $(git log --oneline -1)"
+              echo "publicados=$PUBLICAR" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             git rebase --abort 2>/dev/null || true
@@ -198,3 +213,59 @@ jobs:
           done
           echo "::error::No pude pushear a main después de 5 intentos"
           exit 1
+
+  issues:
+    needs: [matriz, actualizar, publicar]
+    if: always() && needs.matriz.result == 'success' && needs.matriz.outputs.mercados != '[]' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      PUBLICADOS: ${{ needs.publicar.outputs.publicados }}
+      RUN_ID: ${{ github.run_id }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: issue-*
+          merge-multiple: true
+          path: issue
+
+      # issue-sin-publicar.md existe solo si el mercado tenía puntos para publicar. Si el mercado no
+      # está en PUBLICADOS (parche rechazado, no aplicó o el push falló), se usa esa variante, que
+      # nunca viene vacía: el issue queda abierto y dice que los puntos no llegaron a main.
+      - name: Abrir, actualizar o cerrar el issue de cada país
+        run: |
+          shopt -s nullglob
+          for D in issue/*/; do
+            M=$(basename "$D")
+            if ! [[ "$M" =~ ^[a-z]{2,6}$ ]]; then
+              echo "::error::Artifact con un mercado inválido: no toco issues."
+              continue
+            fi
+            CUERPO="$D/issue.md"
+            COMENTARIO="$D/comentario.md"
+            if [ -f "$D/issue-sin-publicar.md" ] && ! [[ " $PUBLICADOS " == *" $M "* ]]; then
+              echo "::warning::$M tenía puntos nuevos que no llegaron a main."
+              CUERPO="$D/issue-sin-publicar.md"
+              COMENTARIO="$D/comentario-sin-publicar.md"
+            fi
+            ETIQUETA="datos-$M"
+            TITULO=$(head -c 200 "$D/titulo.txt" | tr -d '\r\n')
+            ABIERTO=$(gh issue list --state open --label "$ETIQUETA" --json number --jq '.[0].number // empty' 2>/dev/null || true)
+            if [ -s "$CUERPO" ]; then
+              gh label create "$ETIQUETA" --color 1D76DB --description "Avisos del workflow datos-paises" 2>/dev/null || true
+              if [ -z "$ABIERTO" ]; then
+                gh issue create --title "$TITULO" --label "$ETIQUETA" --body-file "$CUERPO"
+              else
+                gh issue edit "$ABIERTO" --title "$TITULO" --body-file "$CUERPO"
+                if [ -s "$COMENTARIO" ]; then
+                  gh issue comment "$ABIERTO" --body-file "$COMENTARIO"
+                fi
+              fi
+            elif [ -n "$ABIERTO" ]; then
+              gh issue close "$ABIERTO" --comment "Todo al día: la corrida $RUN_ID no encontró nada pendiente."
+            fi
+          done

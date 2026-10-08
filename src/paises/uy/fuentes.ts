@@ -18,8 +18,8 @@ function fechaBcu(f: FechaISO): string {
 // El servicio oficial del BCU es SOAP (solo POST) y el Http del cron solo hace GET. Esta es la
 // descarga de la página de cotizaciones del BCU: mismo dato, y cruzado contra el SOAP el 7/10/2026.
 // Grupo 2 es el que trae la UI y el dólar billete; con Grupo 1 devuelve un registro vacío.
-// www.bcu.gub.uy no manda el certificado intermedio: Node lo rechaza sin tlsTolerante (curl y los
-// navegadores completan la cadena solos).
+// www.bcu.gub.uy no manda el certificado intermedio: tlsTolerante completa la cadena con los
+// intermedios de scripts/datos-paises/certs (la verificación sigue entera).
 export function urlCotizacionesBcu(moneda: { codigo: string; nombre: string }, desde: FechaISO, hasta: FechaISO): string {
   const pedido = {
     KeyValuePairs: {

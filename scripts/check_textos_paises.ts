@@ -2,11 +2,12 @@
 // trato según el mercado (nada de voseo argentino en un mercado de tú o usted, nada de tú en uno de
 // usted) y largo de title (60) y description (160) ya con los marcadores {{ }} resueltos.
 // Revisa strings de .ts/.tsx (con el AST, así no mira comentarios ni imports) y valores de los JSON.
-// Uso: npx tsx scripts/check_textos_paises.ts [mercado]
+// Uso: npx tsx scripts/check_textos_paises.ts [mercado]. PAISES_TOLERANTE=1 baja a aviso el largo de
+// un title o description que depende del valor del día; raya, voseo y demás siguen rojos.
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import ts from "typescript";
-import { rellenarContenido, resolverValores } from "../src/motor/registro";
+import { marcadoresDe, rellenarContenido, resolverValores } from "../src/motor/registro";
 import type { Trato, Unidad } from "../src/motor/tipos";
 import { hoyEn } from "../src/motor/vigencia";
 import { archivosBajo, cargarPaises, DIR_PAISES, rel } from "./paises_comun";
@@ -112,7 +113,9 @@ function textosJson(valor: unknown, ruta: string, salida: { texto: string; linea
 
 async function main() {
   const filtro = process.argv[2];
+  const tolerante = process.env.PAISES_TOLERANTE === "1";
   const fallas: string[] = [];
+  const avisos: string[] = [];
   let revisados = 0;
   for (const { carpeta, pais } of await cargarPaises()) {
     if (filtro && carpeta !== filtro) continue;
@@ -140,12 +143,16 @@ async function main() {
     for (const { definicion, contenido } of pais.calculadoras) {
       const r = resolverValores(pais, definicion, hoy);
       const c = r.ok ? rellenarContenido(contenido, { valores: r.valores, usados: r.usados, unidades, locale: pais.mercado.locale }) : contenido;
-      if (c.title.length > MAX_TITLE) fallas.push(`${definicion.id}: title de ${c.title.length} caracteres (máximo ${MAX_TITLE}): «${c.title}»`);
-      if (c.description.length > MAX_DESCRIPTION) fallas.push(`${definicion.id}: description de ${c.description.length} caracteres (máximo ${MAX_DESCRIPTION})`);
+      // Un title con {{ }} cambia de largo con el valor del día: con PAISES_TOLERANTE=1 eso es aviso.
+      // Sin marcadores el largo es estructura y sigue rojo.
+      const delDia = (t: string) => tolerante && marcadoresDe(t).length > 0;
+      if (c.title.length > MAX_TITLE) (delDia(contenido.title) ? avisos : fallas).push(`${definicion.id}: title de ${c.title.length} caracteres (máximo ${MAX_TITLE}): «${c.title}»`);
+      if (c.description.length > MAX_DESCRIPTION) (delDia(contenido.description) ? avisos : fallas).push(`${definicion.id}: description de ${c.description.length} caracteres (máximo ${MAX_DESCRIPTION})`);
     }
   }
+  for (const a of avisos) console.log(`⚠️  ${a}`);
   for (const f of fallas) console.error(`❌ ${f}`);
-  console.log(fallas.length ? `${fallas.length} FALLAS` : `TODO OK: ${revisados} textos revisados`);
+  console.log(fallas.length ? `${fallas.length} FALLAS` : `TODO OK: ${revisados} textos revisados, ${avisos.length} avisos`);
   process.exit(fallas.length ? 1 : 0);
 }
 
