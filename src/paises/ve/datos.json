@@ -1,0 +1,410 @@
+{
+  "mercado": "ve",
+  "datos": [
+    {
+      "id": "ve.salario-minimo",
+      "nombre": "Salario mínimo mensual",
+      "tipo": "numero",
+      "unidad": "VES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-03-15",
+          "valor": 130,
+          "fuente": {
+            "organismo": "Presidencia de la República",
+            "titulo": "Decreto N° 4.653, Gaceta Oficial N° 6.691 Extraordinario del 15/03/2022 (art. 1 citado textualmente)",
+            "url": "https://www.presidencia.gob.ve/Site/Web/Principal/paginas/classMostrarEvento3.php?id_evento=20553",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "También leído en la Gaceta 6.691 de gacetaoficial.gob.ve, que solo responde por http. Sin decreto posterior que lo cambie: el aumento de 2026 fue por bonos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.salario-minimo-aprendiz",
+      "nombre": "Salario mínimo mensual de adolescentes aprendices",
+      "tipo": "numero",
+      "unidad": "VES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-03-15",
+          "valor": 97.5,
+          "fuente": {
+            "organismo": "Presidencia de la República",
+            "titulo": "Decreto N° 4.653, Gaceta Oficial N° 6.691 Extraordinario del 15/03/2022 (art. 2)",
+            "url": "https://www.presidencia.gob.ve/Site/Web/Principal/paginas/classMostrarEvento3.php?id_evento=20553",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.dias-mes-salario",
+      "nombre": "Días por los que se divide el salario mensual",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-03-15",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Presidencia de la República",
+            "titulo": "Decreto N° 4.653, art. 1: salario diurno = salario mensual dividido entre treinta (30) días",
+            "url": "https://www.presidencia.gob.ve/Site/Web/Principal/paginas/classMostrarEvento3.php?id_evento=20553",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.prestaciones-garantia-dias",
+      "nombre": "Días de garantía de prestaciones por trimestre",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 142 literal a",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.prestaciones-dias-adicionales",
+      "nombre": "Días adicionales de garantía por año, después del primero",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 142 literal b",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.prestaciones-dias-adicionales-tope",
+      "nombre": "Tope de días adicionales de garantía por año",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 142 literal b",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.prestaciones-retroactivo-dias",
+      "nombre": "Días de prestaciones por año en el cálculo final (retroactivo)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 142 literal c",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.prestaciones-dias-por-mes-menos-3-meses",
+      "nombre": "Días de prestaciones por mes si la relación dura menos de tres meses",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 142 literal e",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.utilidades-dias-minimo",
+      "nombre": "Utilidades: mínimo de días de salario por año",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 131",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.utilidades-dias-maximo",
+      "nombre": "Utilidades: máximo de días de salario por año",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 120,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 131",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La ley dice «el salario de cuatro meses»: 4 × 30 días."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.vacaciones-dias-base",
+      "nombre": "Días hábiles de vacaciones al cumplir el primer año",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 190",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.vacaciones-dias-adicionales-tope",
+      "nombre": "Tope de días adicionales de vacaciones (uno por año)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 190",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.bono-vacacional-dias-base",
+      "nombre": "Bono vacacional: días mínimos de salario normal",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 192",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.bono-vacacional-dias-tope",
+      "nombre": "Bono vacacional: tope de días de salario normal",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 192",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.recargo-horas-extra",
+      "nombre": "Recargo mínimo de las horas extraordinarias",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 118",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.recargo-nocturno",
+      "nombre": "Recargo mínimo de la jornada nocturna (bono nocturno)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 117",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.iva-general",
+      "nombre": "Alícuota general del IVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-29",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Reforma de la Ley del IVA, Gaceta Oficial N° 6.507 Extraordinario del 29/01/2020, art. 63",
+            "url": "https://www.asambleanacional.gob.ve/storage/documentos/leyes/decreto-constituyente-de-reforma-parcial-del-decreto-con-rango-valor-y-fuerza-de-ley-que-establece-el-impuesto-al-valor-agregado-20220204234747.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "16 % hasta que el Ejecutivo fije otra alícuota (art. 27). Rige 60 días después de la publicación. SENIAT no respondió desde esta red."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.iva-reducida",
+      "nombre": "Alícuota reducida del IVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-29",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Reforma de la Ley del IVA, Gaceta Oficial N° 6.507 Extraordinario del 29/01/2020, art. 64",
+            "url": "https://www.asambleanacional.gob.ve/storage/documentos/leyes/decreto-constituyente-de-reforma-parcial-del-decreto-con-rango-valor-y-fuerza-de-ley-que-establece-el-impuesto-al-valor-agregado-20220204234747.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.unidad-tributaria",
+      "nombre": "Unidad Tributaria",
+      "tipo": "numero",
+      "unidad": "VES",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2025-06-02",
+          "valor": 43,
+          "motivo": "SENIAT no responde desde esta red. La Gaceta 43.140 está en gacetaoficial.gob.ve solo por http y escaneada (sin texto); falta leer la providencia SNAT/2025/000048 en una fuente https."
+        }
+      ]
+    },
+    {
+      "id": "ve.cestaticket",
+      "nombre": "Cestaticket socialista mensual",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2023-05-01",
+          "valor": 40,
+          "motivo": "La Gaceta 6.746 (Decreto 4.805) lo fija en bolívares con ajuste mensual; el monto en dólares sale de anuncios y de una sentencia del TSJ, no de una norma publicada."
+        }
+      ]
+    },
+    {
+      "id": "ve.ingreso-minimo-integral",
+      "nombre": "Ingreso mínimo integral indexado",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-05-01",
+          "valor": 240,
+          "motivo": "Anunciado el 30/04/2026 sin decreto ni Gaceta publicados (la Gaceta del 1/05/2026 no existe en gacetaoficial.gob.ve). Solo prensa."
+        }
+      ]
+    }
+  ]
+}
