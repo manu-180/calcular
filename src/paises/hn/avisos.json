@@ -1,0 +1,66 @@
+{
+  "mercado": "hn",
+  "avisos": [
+    {
+      "id": "hn.salario-minimo-salvaguarda",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "hasta": "2027-02-28",
+      "aplicaA": ["hn.salario-minimo"],
+      "titulo": "El salario mínimo de 2027 todavía puede subir",
+      "texto": "La tabla de 2027 ya está publicada. Pero si la inflación interanual de diciembre de 2026 que informa el Banco Central supera el ajuste fijado para 2027, la Secretaría de Trabajo tiene que emitir otro acuerdo con la inflación como ajuste.",
+      "fuente": {
+        "organismo": "Secretaría de Trabajo y Seguridad Social (La Gaceta No. 37,129 del 29/4/2026)",
+        "titulo": "Acuerdo Ejecutivo SETRASS-233-2026, artículo 5 (cláusula de salvaguarda)",
+        "url": "https://tsc.gob.hn/web/leyes/Acuerdo-SETRASS-233-2026.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "hn.cesantia-tope-25-meses",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "aplicaA": ["hn.prestaciones-laborales"],
+      "titulo": "El tope de la cesantía es de 25 meses",
+      "texto": "Desde el Decreto 150-2008 la cesantía llega hasta 25 meses de salario, o 15 en una microempresa. Algunas copias del Código del Trabajo todavía muestran el tope anterior de 15 meses para todos.",
+      "fuente": {
+        "organismo": "Congreso Nacional (La Gaceta No. 31,753 del 5/11/2008)",
+        "titulo": "Decreto 150-2008, artículo 1 (artículos 120 y 120-A del Código del Trabajo)",
+        "url": "https://www.trabajo.gob.hn/wp-content/uploads/2016/07/Gaceta-31753-Decreto-No.-150-2008.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "hn.cesantia-fallecimiento",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "aplicaA": ["hn.prestaciones-laborales"],
+      "titulo": "Si el trabajador fallece",
+      "texto": "Cuando el trabajador muere por causa natural después de seis meses de trabajo, sus beneficiarios cobran el 75 % de la cesantía. Esta calculadora no hace ese caso; consulte en la Secretaría de Trabajo.",
+      "fuente": {
+        "organismo": "Congreso Nacional (La Gaceta No. 31,753 del 5/11/2008)",
+        "titulo": "Decreto 150-2008, artículo 1 (artículo 120, literal g, del Código del Trabajo)",
+        "url": "https://www.trabajo.gob.hn/wp-content/uploads/2016/07/Gaceta-31753-Decreto-No.-150-2008.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "hn.decimo-cuarto-proporcional",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "aplicaA": ["hn.decimo-cuarto-mes"],
+      "titulo": "Cómo se cuenta la parte proporcional",
+      "texto": "El reglamento dice que el proporcional se paga de acuerdo con el tiempo trabajado, sin fijar la cuenta. Aquí se usan los días calendario sobre 365. Algunas planillas usan meses de 30 días y el resultado cambia por unos centavos.",
+      "fuente": {
+        "organismo": "Secretaría de Trabajo y Seguridad Social",
+        "titulo": "Reglamento del Décimo Cuarto Mes de Salario (Acuerdo 02-95), artículos 2 y 9",
+        "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}

@@ -1,4 +1,10 @@
+import { execFileSync } from "node:child_process";
+import { readdirSync } from "node:fs";
+import path from "node:path";
 import type { NextConfig } from "next";
+import { reglasPorHost } from "./src/motor/hosts";
+import { PAGINAS_GLOBALES } from "./src/motor/paginas";
+import { entornoDePrueba, modoPublicacion, origenAR, origenIntl } from "./src/motor/sitio";
 
 const HOY_BUILD =
   process.env.CALCULAR_HOY ||
@@ -9,7 +15,53 @@ const HOY_BUILD =
     day: "2-digit",
   }).format(new Date());
 
+// Las primeras carpetas de src/app/(ar) son las rutas de calcular.ar: en calcularya.com cada una
+// redirige a su par argentino. Se leen del disco para que una página AR nueva no haya que anotarla.
+const RUTAS_AR = readdirSync(path.join(__dirname, "src", "app", "(ar)"), { withFileTypes: true })
+  .filter((d) => d.isDirectory() && /^[a-z0-9]/.test(d.name))
+  .map((d) => d.name);
+
+// La allowlist de mercados sale del registro real (src/paises/index.ts) y no de una lista a mano.
+// No se importa directo: el loader de next.config.ts compila los imports de alias (`@/motor/...`,
+// que usan los países) como relativos a la raíz y no al archivo, y revienta. tsx sí los resuelve.
+// Corre solo con el sitio intl prendido: sin la variable, calcular.ar no paga este medio segundo.
+// En producción, un país "publicado" con errores de datos corta el build: el registro lo oculta
+// (mercadoVisible) y sin este corte desaparecía de calcularya.com con el build en verde.
+function mercadosDelRegistro(modo: string): string[] {
+  const codigo = `const m = await import("./src/paises/index.ts");
+const r = m.registro ?? m.default.registro;
+const modo = ${JSON.stringify(modo)};
+const rotos = modo === "produccion" ? r.paises.filter((p) => p.mercado.estado === "publicado" && p.errores.length) : [];
+if (rotos.length) {
+  for (const p of rotos) console.error(p.mercado.codigo + " (" + p.mercado.nombre + ") tiene " + p.errores.length + " errores de datos:", p.errores);
+  process.exit(1);
+}
+process.stdout.write(JSON.stringify(r.mercados(modo).map((x) => x.codigo)));`;
+  let salida: string;
+  try {
+    salida = execFileSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", codigo], { cwd: __dirname, encoding: "utf8", stdio: ["ignore", "pipe", "inherit"] });
+  } catch {
+    throw new Error(
+      "calcularya: hay países publicados con errores de datos (detalle arriba). Corregí los datos o pasá el país a estado \"interno\"; el build no sigue para que no desaparezca en silencio de producción.",
+    );
+  }
+  return (JSON.parse(salida) as string[]).filter((c) => c !== "global");
+}
+
+const ORIGEN_INTL = origenIntl();
+const REGLAS_HOSTS = reglasPorHost({
+  origenIntl: ORIGEN_INTL,
+  origenAR: origenAR(),
+  mercados: ORIGEN_INTL ? mercadosDelRegistro(modoPublicacion()) : [],
+  paginasGlobales: PAGINAS_GLOBALES,
+  rutasAR: RUTAS_AR,
+  // La cookie sitio=intl (la pone /api/dev/sitio) deja ver calcularya en los previews de *.vercel.app.
+  // Solo previews y next dev: cualquier otro build (producción incluida) nunca lleva estas reglas.
+  cookiePreview: entornoDePrueba(),
+});
+
 const nextConfig: NextConfig = {
+  ...(process.env.NODE_ENV === "development" && ORIGEN_INTL ? { allowedDevOrigins: [new URL(ORIGEN_INTL).hostname] } : {}),
   // Congela el "hoy" del build en server y cliente por igual: ver src/lib/hoy.ts.
   env: { CALCULAR_HOY_BUILD: HOY_BUILD },
   // inlineCss apagado a propósito (30/9/2026): Next mete el CSS inline TRES veces por página (el
@@ -21,7 +73,25 @@ const nextConfig: NextConfig = {
   // failed", que se lee como un bug del código y no lo es. BUILD_CPUS=2 lo hace sobrevivir.
   experimental: {
     inlineCss: false,
+    // Sin esto, con AR en src/app/(ar) y sin layout en la raíz, el 404 de calcular.ar pierde el
+    // lang, el header y el footer: ver src/app/global-not-found.tsx.
+    globalNotFound: true,
     ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
+  },
+  // Los <slug>.cliente.tsx de los países (docs/paises/RECETA.md) los importa el registro con
+  // import(), y el registro lo importan todas las páginas intl. Next 16 no parte el bundle cuando un
+  // Server Component importa un Client Component con import(): sin esta regla, el JS de TODAS las
+  // calculadoras viajaba en cada página intl (medido en el build del 7/10/2026). Del lado del
+  // servidor se cambian por un componente vacío y nadie los usa: la página de calculadora baja
+  // calcular() desde el navegador (src/app/(intl)/intl/[mercado]/[slug]/calculadora-intl.tsx).
+  turbopack: {
+    rules: {
+      "*.cliente.tsx": {
+        condition: { all: [{ not: "browser" }, { path: /^src\/paises\// }] },
+        loaders: [path.join(__dirname, "src", "motor", "cliente-servidor.cjs")],
+        as: "*.tsx",
+      },
+    },
   },
   // exceljs se carga con require nativo y no dentro del bundle del servidor: abre y reescribe el
   // .xlsx de la entrega personalizada (src/lib/prefill/servidor.ts).
@@ -105,17 +175,11 @@ const nextConfig: NextConfig = {
         destination: "https://calcular.ar/:path*",
         permanent: true,
       },
-      // calcularya.com es el dominio de los otros países (docs/adr/0001-multi-pais.md). Mientras no
-      // haya ningún país publicado, servirlo mostraría el sitio argentino duplicado en otro dominio.
-      // Temporal (307) a propósito: cuando salga el primer país, esta regla se reemplaza por los
-      // rewrites por mercado y Google no tiene que olvidar un 308.
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "(?:www\\.)?calcularya\\.com" }],
-        destination: "https://calcular.ar/:path*",
-        permanent: false,
-      },
+      ...REGLAS_HOSTS.redirects,
     ];
+  },
+  async rewrites() {
+    return { beforeFiles: REGLAS_HOSTS.beforeFiles, afterFiles: [], fallback: REGLAS_HOSTS.fallback };
   },
 };
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ResultadoCredito } from "@/lib/actualizacion-creditos";
 import { InformeCreditoMiniatura } from "@/components/informe-credito-laboral/InformeCreditoMiniatura";
-import { RUTA_LANDING_INFORME, SLUG_INFORME } from "@/app/informes/credito-laboral/_modelo";
+import { RUTA_LANDING_INFORME, SLUG_INFORME } from "@/app/(ar)/informes/credito-laboral/_modelo";
 
 // Va a la landing y no abre el diálogo de compra: ahí la persona ve la liquidación entera con SU
 // crédito antes de pagar, que es lo que vende un documento que todavía no vio.

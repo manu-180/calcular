@@ -3,7 +3,7 @@
 import { useEffect, useId, useState } from "react";
 import { leerDatosCompra } from "@/lib/prefill/cliente";
 import { prefill, type Datos } from "@/lib/prefill/cuota";
-import { CASO_EJEMPLO, SLUG_INFORME, armarInforme } from "@/app/informes/cuota-alimentaria/_modelo";
+import { CASO_EJEMPLO, SLUG_INFORME, armarInforme } from "@/app/(ar)/informes/cuota-alimentaria/_modelo";
 import { InformeCuotaDocumento } from "@/components/InformeCuotaDocumento";
 
 // Vista previa REAL: el mismo componente que se entrega, con el caso de ejemplo o, si la persona

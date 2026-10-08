@@ -4,6 +4,11 @@ import { OPCIONES_COOKIE_SESION, borrarPista, ponerPista, tieneCookiesDeSesion }
 import { destinoSeguro } from "@/lib/auth/destino";
 import { COOKIE_PISTA } from "@/lib/sesion-cliente";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
+import { COOKIE_SITIO } from "@/motor/hosts";
+import { entornoDePrueba, origenIntl } from "@/motor/sitio";
+
+const ORIGEN_INTL = origenIntl();
+const HOST_INTL = ORIGEN_INTL ? new URL(ORIGEN_INTL).hostname : null;
 
 const PROTEGIDAS = ["/cuenta", "/dashboard"];
 const PRIVADAS = ["/cuenta", "/dashboard", "/login", "/registro", "/recuperar", "/auth", "/api/cuenta"];
@@ -63,7 +68,21 @@ function noEncontrada(request: NextRequest): NextResponse {
   return NextResponse.rewrite(new URL("/_not-found", request.url), { status: 404 });
 }
 
+// Mismo criterio que las reglas `has` de src/motor/hosts.ts: el Host sin puerto, o en un preview la
+// cookie sitio=intl. Sin NEXT_PUBLIC_SITIO_INTL_URL nunca es intl.
+function esSitioIntl(request: NextRequest): boolean {
+  if (!HOST_INTL) return false;
+  const host = (request.headers.get("host") ?? "").split(":", 1)[0].toLowerCase();
+  if (host === HOST_INTL) return true;
+  return entornoDePrueba() && request.cookies.get(COOKIE_SITIO.nombre)?.value === COOKIE_SITIO.valor;
+}
+
 export async function proxy(request: NextRequest) {
+  // El proxy corre antes que los rewrites: en calcularya, /api/cuenta y /api/mp/checkout tienen que
+  // seguir de largo para que beforeFiles los mande al 404 intl. Si no, con las cuentas apagadas
+  // salían con el 404 de calcular.ar, y prendidas tocaban la sesión de Supabase en otro dominio.
+  if (request.nextUrl.pathname.startsWith("/api/") && esSitioIntl(request)) return NextResponse.next();
+
   if (!CUENTAS_ACTIVAS) return bajo(request.nextUrl.pathname, PRIVADAS) ? noEncontrada(request) : NextResponse.next();
 
   if (

@@ -1,0 +1,58 @@
+{
+  "mercado": "pe",
+  "series": [
+    {
+      "id": "pe.tc-sunat-compra",
+      "nombre": "Tipo de cambio SUNAT (compra)",
+      "unidad": "PEN",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 7,
+      "fuente": {
+        "organismo": "SUNAT",
+        "titulo": "Tipo de cambio publicado por SUNAT",
+        "url": "https://www.sunat.gob.pe/a/txt/tipoCambio.txt",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [["2026-10-07", 3.431]]
+    },
+    {
+      "id": "pe.tc-sunat-venta",
+      "nombre": "Tipo de cambio SUNAT (venta)",
+      "unidad": "PEN",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 7,
+      "fuente": {
+        "organismo": "SUNAT",
+        "titulo": "Tipo de cambio publicado por SUNAT",
+        "url": "https://www.sunat.gob.pe/a/txt/tipoCambio.txt",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [["2026-10-07", 3.437]]
+    },
+    {
+      "id": "pe.tc-sbs-venta",
+      "nombre": "Tipo de cambio bancario SBS (venta), serie del BCRP",
+      "unidad": "PEN",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 7,
+      "fuente": {
+        "organismo": "BCRP",
+        "titulo": "API de series estadísticas, serie PD04640PD",
+        "url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD04640PD/json",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [
+        ["2026-09-28", 3.44],
+        ["2026-09-29", 3.45],
+        ["2026-09-30", 3.437],
+        ["2026-10-01", 3.454],
+        ["2026-10-02", 3.442],
+        ["2026-10-05", 3.435],
+        ["2026-10-06", 3.437]
+      ]
+    }
+  ]
+}

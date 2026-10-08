@@ -14,7 +14,7 @@ import { join } from "node:path";
 import { CANASTA_CRIANZA, CANASTA_CRIANZA_ULTIMO } from "../src/data/canasta-crianza";
 import { calcularCuotaAlimentaria, type HijoInput, type ResultadoCuota } from "../src/lib/cuota-alimentaria";
 import { MAX_HIJOS_INFORME, datosDeLaCalculadora, ingresoOtroInformado, prefill, type TramoHijo } from "../src/lib/prefill/cuota";
-import { MESES_EVOLUCION, armarInforme, CASO_EJEMPLO } from "../src/app/informes/cuota-alimentaria/_modelo";
+import { MESES_EVOLUCION, armarInforme, CASO_EJEMPLO } from "../src/app/(ar)/informes/cuota-alimentaria/_modelo";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {

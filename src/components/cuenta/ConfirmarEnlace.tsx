@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useActionState, useEffect } from "react";
-import { confirmarEnlace } from "@/app/auth/confirmar/acciones";
-import type { TipoEnlaceConfirmar } from "@/app/auth/confirmar/tipos";
+import { confirmarEnlace } from "@/app/(ar)/auth/confirmar/acciones";
+import type { TipoEnlaceConfirmar } from "@/app/(ar)/auth/confirmar/tipos";
 import { ESTADO_INICIAL } from "@/lib/auth/estado";
 import { Aviso, BotonEnviar } from "@/components/cuenta/Campos";
 

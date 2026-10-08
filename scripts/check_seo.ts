@@ -19,7 +19,7 @@ import { MESES_COMERCIO } from "../src/data/convenios/comercio";
 import { hoyAR } from "../src/lib/hoy";
 
 const RAIZ = resolve(import.meta.dirname, "..");
-const APP = join(RAIZ, "src", "app");
+const APP = join(RAIZ, "src", "app", "(ar)");
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {

@@ -1,0 +1,66 @@
+{
+  "mercado": "cl",
+  "avisos": [
+    {
+      "id": "cl.reforma-pensiones",
+      "nivel": "info",
+      "desde": "2026-08-01",
+      "aplicaA": ["cl.sueldo-liquido"],
+      "titulo": "Reforma de pensiones",
+      "texto": "Desde las remuneraciones de agosto de 2026 el empleador paga una cotización extra de 3,5 % por la reforma de pensiones (Ley 21.735). Sube cada año hasta llegar a 7 %. La paga el empleador, así que no cambia tu sueldo líquido.",
+      "fuente": {
+        "organismo": "Superintendencia de Pensiones",
+        "titulo": "Sistema de AFP: cotización de cargo del empleador",
+        "url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9897.html",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "cl.ley-40-horas",
+      "nivel": "info",
+      "desde": "2026-04-26",
+      "hasta": "2028-04-25",
+      "aplicaA": ["cl.horas-extra", "cl.sueldo-minimo"],
+      "titulo": "Ley de 40 horas",
+      "texto": "La jornada máxima baja por etapas (Ley 21.561). Desde el 26 de abril de 2026 es de 42 horas semanales y el 26 de abril de 2028 baja a 40. Ese día cambia el valor de la hora y lo actualizamos solo.",
+      "fuente": {
+        "organismo": "Biblioteca del Congreso Nacional (BCN)",
+        "titulo": "Ley 21.561, artículo primero transitorio",
+        "url": "https://www.bcn.cl/leychile/navegar?idNorma=1191554",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "cl.reajuste-imm-2027",
+      "nivel": "info",
+      "desde": "2026-10-01",
+      "hasta": "2026-12-31",
+      "aplicaA": ["cl.sueldo-minimo", "cl.gratificacion", "cl.horas-extra"],
+      "titulo": "El ingreso mínimo cambia en enero",
+      "texto": "El 1 de enero de 2027 el ingreso mínimo se reajusta según el IPC de mayo a diciembre de 2026. El monto lo fija un decreto que sale a más tardar el 15 de enero. Cuando se publique, lo cargamos.",
+      "fuente": {
+        "organismo": "Diario Oficial de la República de Chile",
+        "titulo": "Ley 21.830, artículos 1 y 6",
+        "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/06/22/44481-B/01/2829298.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "cl.comisiones-afp",
+      "nivel": "info",
+      "desde": "2026-10-01",
+      "aplicaA": ["cl.sueldo-liquido"],
+      "texto": "Usamos las comisiones de las AFP que publica la Superintendencia de Pensiones para octubre de 2026. Una AFP puede cambiar su comisión, así que compárala con tu liquidación de sueldo si ves una diferencia.",
+      "fuente": {
+        "organismo": "Superintendencia de Pensiones",
+        "titulo": "Infórmate y decide: comisiones de octubre de 2026",
+        "url": "https://www.spensiones.cl/infoydec",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}

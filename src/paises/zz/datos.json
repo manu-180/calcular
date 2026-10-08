@@ -1,0 +1,137 @@
+{
+  "mercado": "zz",
+  "datos": [
+    {
+      "id": "zz.minimo",
+      "nombre": "Salario mínimo mensual",
+      "tipo": "numero",
+      "unidad": "XTS",
+      "regiones": [
+        "norte",
+        "sur"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "norte",
+          "desde": "2026-01-01",
+          "hasta": "2026-09-30",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Diario Oficial de Zetalandia",
+            "titulo": "Decreto 1 de 2026",
+            "url": "https://example.org/zz/decreto-1-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "norte",
+          "desde": "2026-10-01",
+          "valor": 1100,
+          "fuente": {
+            "organismo": "Diario Oficial de Zetalandia",
+            "titulo": "Decreto 15 de 2026",
+            "url": "https://example.org/zz/decreto-15-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sur",
+          "desde": "2026-01-01",
+          "valor": 1200,
+          "fuente": {
+            "organismo": "Diario Oficial de Zetalandia",
+            "titulo": "Decreto 1 de 2026",
+            "url": "https://example.org/zz/decreto-1-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zz.bonificacion",
+      "nombre": "Bonificación sobre el bono",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo de Zetalandia",
+            "titulo": "Ley 30 de 2020, artículo 3",
+            "url": "https://example.org/zz/ley-30-2020",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zz.tope-bono",
+      "nombre": "Tope del bono",
+      "tipo": "numero",
+      "unidad": "XTS",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 50000,
+          "motivo": "Solo aparece en un blog contable; falta leerlo en la ley.",
+          "fuente": {
+            "organismo": "Blog contable",
+            "titulo": "Nota sobre el tope del bono",
+            "url": "https://example.org/zz/blog-tope",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zz.escala-impuesto",
+      "nombre": "Escala del impuesto mensual",
+      "tipo": "escala",
+      "unidad": "XTS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 1000,
+              "hasta": 5000,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 5000,
+              "hasta": null,
+              "tasa": 20,
+              "cuotaFija": 400
+            }
+          ],
+          "fuente": {
+            "organismo": "Ente recaudador de Zetalandia",
+            "titulo": "Resolución 7 de 2026, anexo 1",
+            "url": "https://example.org/zz/resolucion-7-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    }
+  ]
+}

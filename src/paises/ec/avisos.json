@@ -1,0 +1,65 @@
+{
+  "mercado": "ec",
+  "avisos": [
+    {
+      "id": "ec.sbu-2027",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "hasta": "2026-12-31",
+      "aplicaA": ["ec.salario-basico", "ec.decimo-cuarto-sueldo", "ec.liquidacion", "ec.sueldo-neto"],
+      "titulo": "El salario básico cambia en enero",
+      "texto": "El salario básico se fija cada año para el siguiente. El de 2027 todavía no se publicó: estos cálculos usan el de 2026. Cuando salga en el Registro Oficial, lo cargamos.",
+      "fuente": {
+        "organismo": "Código del Trabajo",
+        "titulo": "Artículos 117 y 118: fijación anual del salario básico unificado",
+        "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "ec.tope-utilidades",
+      "nivel": "cautela",
+      "desde": "2026-10-07",
+      "aplicaA": ["ec.utilidades"],
+      "titulo": "Tope de 24 salarios básicos",
+      "texto": "El artículo 97.1 del Código del Trabajo pone un tope de 24 salarios básicos a las utilidades de cada persona. La Corte Constitucional moduló sus efectos en 2018 y la codificación oficial lo marca como no vigente, así que no lo aplicamos. Si tu empresa lo aplica, consulta en el Ministerio del Trabajo.",
+      "fuente": {
+        "organismo": "Código del Trabajo",
+        "titulo": "Artículo 97.1 y nota de la Resolución de la Corte Constitucional publicada en el Registro Oficial Suplemento 40 del 6/4/2018",
+        "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "ec.canasta-nueva",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "aplicaA": ["ec.impuesto-a-la-renta", "ec.sueldo-neto"],
+      "titulo": "Cambió la canasta básica del INEC",
+      "texto": "Desde julio de 2026 el INEC publica la Canasta Familiar Básica de Consumo en lugar de la canasta anterior. La rebaja por gastos personales de 2026 usa la canasta de enero de 2026. Para 2027, usaremos el valor que confirme el SRI.",
+      "fuente": {
+        "organismo": "Instituto Nacional de Estadística y Censos (INEC)",
+        "titulo": "Boletín técnico del IPC, agosto de 2026: la CFBC 2026 sustituye a la Canasta Familiar Básica",
+        "url": "https://www.ecuadorencifras.gob.ec/documentos/web-inec/Inflacion/2026/agosto/BOLETIN_TECNICO_IPC_2026_08.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "ec.iva-turismo",
+      "nivel": "info",
+      "desde": "2026-10-07",
+      "aplicaA": ["ec.iva"],
+      "texto": "En feriados, el Presidente puede bajar por decreto el IVA de los servicios turísticos al 8 %, solo en las fechas que indique el decreto. Esta calculadora usa la tarifa general.",
+      "fuente": {
+        "organismo": "Servicio de Rentas Internas (SRI)",
+        "titulo": "Ley de Régimen Tributario Interno, artículo innumerado después del 65 (agregado por la Ley publicada en el Registro Oficial Suplemento 525 del 25/3/2024)",
+        "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      }
+    }
+  ]
+}

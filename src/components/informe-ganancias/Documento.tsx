@@ -10,7 +10,7 @@ import {
   FICHAS,
   type Informe,
   type Oportunidad,
-} from "@/app/informes/ganancias/_modelo";
+} from "@/app/(ar)/informes/ganancias/_modelo";
 
 const ars = (n: number) => formatARS(n, 0);
 const pct = (fraccion: number, dec = 0) => formatPctFijo(fraccion * 100, dec);

@@ -17,7 +17,7 @@ import { sumarDiasHabiles } from "../src/lib/certificado-trabajo";
 import { parseMonto } from "../src/lib/formato";
 import { DIVISOR_DIA } from "../src/data/indemnizacion";
 import { datosDeLaCalculadora, prefill, topeInformado } from "../src/lib/prefill/indemnizacion";
-import { CASO_EJEMPLO, armarInforme, comparar } from "../src/app/informes/indemnizacion/_modelo";
+import { CASO_EJEMPLO, armarInforme, comparar } from "../src/app/(ar)/informes/indemnizacion/_modelo";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {

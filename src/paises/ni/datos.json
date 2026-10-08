@@ -1,0 +1,391 @@
+{
+  "mercado": "ni",
+  "datos": [
+    {
+      "id": "ni.salario-minimo",
+      "nombre": "Salario mínimo mensual por sector",
+      "tipo": "mapa",
+      "unidad": "NIO",
+      "etiquetas": {
+        "agropecuario": "Agropecuario (salario más alimentación)",
+        "pesca": "Pesca",
+        "minas-canteras": "Minas y canteras",
+        "industria-manufacturera": "Industria manufacturera",
+        "micro-pequena-industria": "Micro y pequeña industria artesanal y turística nacional",
+        "comercio-servicios-basicos": "Electricidad, gas y agua; comercio, restaurantes y hoteles; transporte, almacenamiento y comunicaciones",
+        "construccion-financiero": "Construcción, establecimientos financieros y seguros",
+        "servicios-comunales": "Servicios comunales, sociales y personales",
+        "gobierno": "Gobierno central y municipal"
+      },
+      "proximaRevision": "2027-03-01",
+      "nota": "Lo aprueba cada año la Comisión Nacional de Salario Mínimo (Ley 625) y lo publica el Ministerio del Trabajo por acuerdo ministerial. Las industrias en régimen de zona franca tienen su propio monto y su propia vigencia (ver ni.salario-minimo-zona-franca).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": {
+            "agropecuario": 6188.02,
+            "pesca": 9409.09,
+            "minas-canteras": 11113.46,
+            "industria-manufacturera": 8320.48,
+            "micro-pequena-industria": 6519.58,
+            "comercio-servicios-basicos": 11350.08,
+            "construccion-financiero": 13848.23,
+            "servicios-comunales": 8674.94,
+            "gobierno": 7716.7
+          },
+          "fuente": {
+            "organismo": "La Gaceta, Diario Oficial (Ministerio del Trabajo)",
+            "titulo": "Acuerdo Ministerial No. 02-2026 sobre la aplicación de los salarios mínimos, La Gaceta No. 43 del 6/3/2026, página 2436",
+            "url": "https://www.lagaceta.gob.ni/la-gaceta-no-43-viernes-06-de-marzo-de-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Rige del 1/3/2026 al 28/2/2027 (considerando II y artículo 4). La misma edición está en el Digesto de la Asamblea Nacional: https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=NHeS0ZvcHeg%3D"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.salario-minimo-zona-franca",
+      "nombre": "Salario mínimo mensual de las industrias sujetas a régimen especial (zona franca)",
+      "tipo": "numero",
+      "unidad": "NIO",
+      "proximaRevision": "2027-01-01",
+      "nota": "Va por un acuerdo tripartito aparte, por año calendario. El acuerdo de marzo lo ratifica.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 9986.46,
+          "fuente": {
+            "organismo": "La Gaceta, Diario Oficial (Ministerio del Trabajo)",
+            "titulo": "Acuerdo Ministerial No. 02-2026, tabla de salarios (nota 2) y artículo 1, La Gaceta No. 43 del 6/3/2026",
+            "url": "https://www.lagaceta.gob.ni/la-gaceta-no-43-viernes-06-de-marzo-de-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.aguinaldo-meses",
+      "nombre": "Décimo tercer mes: salarios por año trabajado",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículos 93 a 97",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.indemnizacion-meses-por-anio",
+      "nombre": "Indemnización por antigüedad: meses de salario por cada uno de los tres primeros años",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 45, numeral 1",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.indemnizacion-dias-desde-cuarto-anio",
+      "nombre": "Indemnización por antigüedad: días de salario por año desde el cuarto",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 45, numeral 2",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.indemnizacion-minimo-meses",
+      "nombre": "Indemnización por antigüedad: mínimo en meses de salario",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 45, último párrafo",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.indemnizacion-tope-meses",
+      "nombre": "Indemnización por antigüedad: máximo en meses de salario",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 45, último párrafo",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.vacaciones-dias-por-semestre",
+      "nombre": "Días de vacaciones por cada seis meses de trabajo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículos 76 a 78",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.preaviso-renuncia",
+      "nombre": "Aviso por escrito para renunciar a un contrato por tiempo indeterminado",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 44",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.recargo-horas-extra",
+      "nombre": "Recargo de las horas extra y del día de descanso trabajado",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículos 57 y 62",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.jornada-diaria",
+      "nombre": "Jornada ordinaria máxima por día",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "diurna": "Diurna (entre las 6 de la mañana y las 8 de la noche)",
+        "mixta": "Mixta",
+        "nocturna": "Nocturna (entre las 8 de la noche y las 6 de la mañana)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": { "diurna": 8, "mixta": 7.5, "nocturna": 7 },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 51",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.horas-extra-maximo-diario",
+      "nombre": "Máximo de horas extra por día",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 58",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.horas-extra-maximo-semanal",
+      "nombre": "Máximo de horas extra por semana",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 58 (tres horas por día y nueve por semana)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.inss-laboral",
+      "nombre": "Cotización del trabajador al INSS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "integral": "Régimen integral (con enfermedad y maternidad)",
+        "ivm": "Régimen de invalidez, vejez, muerte y riesgos profesionales"
+      },
+      "nota": "Integral: 4.75 % de IVM más 2.25 % de enfermedad y maternidad. IVM: 4.75 % más 0.25 % de víctimas de guerra. Sin techo desde el 1/2/2019 (artículo 16 reformado).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": { "integral": 7, "ivm": 5 },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reformas al Reglamento General de la Ley de Seguridad Social, artículos 11 y 16 (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MjQxNDk=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-rentas-trabajo",
+      "nombre": "Tarifa progresiva anual del IR de rentas del trabajo",
+      "tipo": "escala",
+      "unidad": "NIO",
+      "nota": "Se aplica a la renta neta anual (salario menos la cotización al INSS). La retención mensual es la tarifa aplicada al salario neto por doce, dividida entre doce (Reglamento, Decreto 01-2013, artículo 19).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 100000, "tasa": 0, "cuotaFija": 0 },
+            { "desde": 100000, "hasta": 200000, "tasa": 15, "cuotaFija": 0 },
+            { "desde": 200000, "hasta": 350000, "tasa": 20, "cuotaFija": 15000 },
+            { "desde": 350000, "hasta": 500000, "tasa": 25, "cuotaFija": 45000 },
+            { "desde": 500000, "hasta": null, "tasa": 30, "cuotaFija": 82500 }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículos 19, 21 y 23 (texto con sus reformas)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=Mzc5",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La Ley 1279 (La Gaceta No. 61 del 9/4/2026) reformó solo artículos del ISC y del IVA que no tocan la tarifa ni la alícuota general."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-renta-exenta",
+      "nombre": "Renta neta anual del trabajo exenta del IR",
+      "tipo": "numero",
+      "unidad": "NIO",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículo 19, numeral 1",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=Mzc5",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.iva",
+      "nombre": "Alícuota general del IVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículo 109",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=Mzc5",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    }
+  ]
+}

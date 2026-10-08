@@ -5,7 +5,7 @@ import { parseMonto } from "@/lib/formato";
 import { nombrePeriodo, PRIMER_PERIODO, sumarMeses, ULTIMO_PERIODO, type Periodo } from "@/lib/inflacion";
 import { CASOS, prefill, type Caso, type Datos } from "@/lib/prefill/inflacion";
 import { SelectorPeriodo } from "@/components/SelectorPeriodo";
-import { armarInforme, NOMBRE_CASO } from "@/app/informes/inflacion/_modelo";
+import { armarInforme, NOMBRE_CASO } from "@/app/(ar)/informes/inflacion/_modelo";
 import { InformeInflacionDocumento } from "./InformeInflacionDocumento";
 import { armarCarta, cartaEnTexto, lugarYFecha, tratoPorDefecto, vigenciaPorDefecto, type Personales, type Trato } from "./carta";
 

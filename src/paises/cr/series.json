@@ -1,0 +1,35 @@
+{
+  "mercado": "cr",
+  "series": [
+    {
+      "id": "cr.tipo-cambio-compra",
+      "nombre": "Tipo de cambio de referencia de compra del BCCR",
+      "unidad": "CRC",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 7,
+      "fuente": {
+        "organismo": "Banco Central de Costa Rica",
+        "titulo": "Indicador 317, tipo de cambio de referencia de compra (portada del BCCR)",
+        "url": "https://www.bccr.fi.cr/content/bccr/cr/es/home/jcr:content/root/container/container/economicindicators/cardindicador.indicator.317.json",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [["2026-10-07", 453.46]]
+    },
+    {
+      "id": "cr.tipo-cambio-venta",
+      "nombre": "Tipo de cambio de referencia de venta del BCCR",
+      "unidad": "CRC",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 7,
+      "fuente": {
+        "organismo": "Banco Central de Costa Rica",
+        "titulo": "Indicador 318, tipo de cambio de referencia de venta (portada del BCCR)",
+        "url": "https://www.bccr.fi.cr/content/bccr/cr/es/home/jcr:content/root/container/container/economicindicators/cardindicador.indicator.318.json",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [["2026-10-07", 457.8]]
+    }
+  ]
+}

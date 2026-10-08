@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useOptimistic, useState, useTransition } from "react";
-import { marcarOpinion } from "@/app/dashboard/opiniones/acciones";
-import type { BandejaDatos, Filtro } from "@/app/dashboard/opiniones/datos";
+import { marcarOpinion } from "@/app/(ar)/dashboard/opiniones/acciones";
+import type { BandejaDatos, Filtro } from "@/app/(ar)/dashboard/opiniones/datos";
 import { Aviso } from "@/components/cuenta/Campos";
 import { fechaYHora, hrefInterno } from "@/lib/panel/formato";
 import type { EstadoOpinion, OpinionAdmin } from "@/lib/opiniones";

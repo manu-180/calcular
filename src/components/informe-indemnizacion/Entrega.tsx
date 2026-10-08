@@ -3,7 +3,7 @@
 import { useId, useMemo, useState, type ReactNode } from "react";
 import { parseMonto } from "@/lib/formato";
 import { datosDeLaCalculadora, prefill, type Datos } from "@/lib/prefill/indemnizacion";
-import { armarInforme, comparar, type ClaveRubro } from "@/app/informes/indemnizacion/_modelo";
+import { armarInforme, comparar, type ClaveRubro } from "@/app/(ar)/informes/indemnizacion/_modelo";
 import { InformeIndemnizacionDocumento } from "@/components/informe-indemnizacion/Documento";
 
 const MAX_NOMBRE = 60;

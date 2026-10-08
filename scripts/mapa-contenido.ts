@@ -18,9 +18,9 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 
-const APP_DIR = join(process.cwd(), "src", "app");
+const APP_DIR = join(process.cwd(), "src", "app", "(ar)");
 
-// Recolecta todos los page.tsx bajo src/app.
+// Recolecta todos los page.tsx bajo src/app/(ar).
 function paginas(dir: string): string[] {
   const out: string[] = [];
   for (const entry of readdirSync(dir)) {
@@ -34,7 +34,7 @@ function paginas(dir: string): string[] {
   return out;
 }
 
-// Ruta pública a partir del path del archivo (src/app/x/y/page.tsx → /x/y).
+// Ruta pública a partir del path del archivo (src/app/(ar)/x/y/page.tsx → /x/y).
 function ruta(file: string): string {
   const rel = relative(APP_DIR, file).replace(/[/\\]page\.tsx$/, "");
   if (rel === "" || rel === "page.tsx") return "/";

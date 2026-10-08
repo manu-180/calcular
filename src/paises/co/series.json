@@ -1,0 +1,61 @@
+{
+  "mercado": "co",
+  "series": [
+    {
+      "id": "co.trm",
+      "nombre": "Tasa Representativa del Mercado (TRM)",
+      "unidad": "COP",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 7,
+      "fuente": {
+        "organismo": "Superintendencia Financiera de Colombia (datos.gov.co)",
+        "titulo": "Tasa de Cambio Representativa del Mercado, conjunto 32sa-8pi3",
+        "url": "https://www.datos.gov.co/resource/32sa-8pi3.json",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [
+        ["2026-09-26", 3306.86],
+        ["2026-09-29", 3349.63],
+        ["2026-09-30", 3341.23],
+        ["2026-10-01", 3312.84],
+        ["2026-10-02", 3307.73],
+        ["2026-10-03", 3273.49],
+        ["2026-10-06", 3209.78],
+        ["2026-10-07", 3216.01]
+      ]
+    },
+    {
+      "id": "co.uvr",
+      "nombre": "Unidad de Valor Real (UVR)",
+      "unidad": "COP",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Banco de la República",
+        "titulo": "Serie histórica de la UVR (SDMX, DF_UVR_DAILY_HIST)",
+        "url": "https://totoro.banrep.gov.co/nsi-jax-ws/rest/data/ESTAT,DF_UVR_DAILY_HIST,1.0/all/ALL?detail=dataonly&dimensionAtObservation=TIME_PERIOD&lastNObservations=20",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-07"
+      },
+      "puntos": [
+        ["2026-09-30", 418.8527],
+        ["2026-10-01", 418.907],
+        ["2026-10-02", 418.9614],
+        ["2026-10-03", 419.0157],
+        ["2026-10-04", 419.0701],
+        ["2026-10-05", 419.1245],
+        ["2026-10-06", 419.1789],
+        ["2026-10-07", 419.2333],
+        ["2026-10-08", 419.2877],
+        ["2026-10-09", 419.3421],
+        ["2026-10-10", 419.3965],
+        ["2026-10-11", 419.4509],
+        ["2026-10-12", 419.5053],
+        ["2026-10-13", 419.5598],
+        ["2026-10-14", 419.6142],
+        ["2026-10-15", 419.6686]
+      ]
+    }
+  ]
+}

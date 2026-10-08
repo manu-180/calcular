@@ -6,7 +6,7 @@ import { GANANCIAS_VIGENCIA } from "@/data/ganancias";
 import { formatARS } from "@/lib/formato";
 import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
 import { datosDeLaCalculadora, entradaDelMotor, prefill } from "@/lib/prefill/ganancias";
-import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME, armarInforme } from "@/app/informes/ganancias/_modelo";
+import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME, armarInforme } from "@/app/(ar)/informes/ganancias/_modelo";
 import { GananciasInformeCTA } from "@/components/informe-ganancias/OfertaCTA";
 
 export function CalculadoraGanancias({

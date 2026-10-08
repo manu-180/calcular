@@ -1,0 +1,51 @@
+import { definirContenido } from "@/motor/calculo";
+
+export default definirContenido({
+  calculadora: "ni.liquidacion",
+  h1: "Calculadora de liquidación en Nicaragua",
+  title: "Liquidación laboral en Nicaragua: calculá cuánto te toca",
+  description: "Calculá tu liquidación en Nicaragua: indemnización por antigüedad (artículo 45), aguinaldo proporcional y vacaciones no gozadas. Por renuncia o por despido.",
+  intro: [
+    "La liquidación en Nicaragua suma tres partes: la indemnización por antigüedad, el aguinaldo proporcional y las vacaciones que no gozaste. Te la pagan al terminar el contrato, sea por renuncia o por despido.",
+    "Poné tus fechas, cómo terminó el contrato y tu salario. Si sabés cuántos días de vacaciones te quedan, ponelos.",
+  ],
+  comoSeCalcula: [
+    "Indemnización por antigüedad: {{ni.indemnizacion-meses-por-anio}} de salario por cada uno de los tres primeros años y {{ni.indemnizacion-dias-desde-cuarto-anio}} por año desde el cuarto, con un máximo de {{ni.indemnizacion-tope-meses}}.",
+    "Si te despiden sin causa justificada, la indemnización es de al menos {{ni.indemnizacion-minimo-meses}} de salario. Si renunciás, se paga por el tiempo trabajado.",
+    "Aguinaldo proporcional: {{ni.aguinaldo-meses}} de salario por año, contado desde el 1 de diciembre hasta tu último día.",
+    "Vacaciones: {{ni.vacaciones-dias-por-semestre}} por cada seis meses. Se pagan con el salario diario (mensual entre 30).",
+  ],
+  ejemplo: [
+    "Entraste el 1 de marzo de 2022, te despidieron el 30 de septiembre de 2026 y ganás C$12,000. Te tocan C$48,690.41 de antigüedad, C$9,994.52 de aguinaldo y C$7,036 de vacaciones. En total, C$65,720.93.",
+  ],
+  faq: [
+    {
+      pregunta: "¿Cómo se calcula la liquidación en Nicaragua?",
+      respuesta: "Se suman la indemnización por antigüedad del artículo 45, el aguinaldo proporcional desde el 1 de diciembre y las vacaciones pendientes, pagadas con tu salario diario.",
+    },
+    {
+      pregunta: "¿Qué me tienen que pagar si renuncio?",
+      respuesta: "El aguinaldo y las vacaciones proporcionales, y lo ganado por antigüedad. La renuncia no te quita ese derecho (artículo 43).",
+    },
+    {
+      pregunta: "¿Qué cambia si me despiden sin causa justificada?",
+      respuesta: "La indemnización por antigüedad no puede ser menor de {{ni.indemnizacion-minimo-meses}} de salario. Si renunciás, se paga solo por el tiempo trabajado.",
+    },
+    {
+      pregunta: "¿Tengo que avisar antes de renunciar?",
+      respuesta: "Sí. En un contrato por tiempo indeterminado tenés que avisar por escrito con {{ni.preaviso-renuncia}} de anticipación.",
+    },
+    {
+      pregunta: "¿En cuánto tiempo me tienen que pagar?",
+      respuesta: "El aguinaldo proporcional, dentro de los diez días siguientes al final del contrato. Lo demás se paga junto con la liquidación.",
+    },
+    {
+      pregunta: "¿La liquidación paga INSS o IR?",
+      respuesta: "El aguinaldo y la indemnización del Código del Trabajo están exentos. Las vacaciones que te pagan sí entran en el cálculo del IR.",
+    },
+  ],
+  glosario: [
+    { termino: "Liquidación", definicion: "Todo lo que te pagan al terminar el contrato: antigüedad, aguinaldo y vacaciones proporcionales." },
+    { termino: "Mutuo acuerdo", definicion: "Cuando vos y el empleador deciden juntos terminar el contrato." },
+  ],
+});

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ResultadoCuota } from "@/lib/cuota-alimentaria";
 import { InformeCuotaMiniatura } from "@/components/InformeCuotaMiniatura";
-import { RUTA_LANDING_INFORME, SLUG_INFORME } from "@/app/informes/cuota-alimentaria/_modelo";
+import { RUTA_LANDING_INFORME, SLUG_INFORME } from "@/app/(ar)/informes/cuota-alimentaria/_modelo";
 
 // Va a la landing y no abre el diálogo de compra: ahí la persona ve el informe entero con SUS
 // números antes de pagar, que es lo que vende un documento que todavía no vio.

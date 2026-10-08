@@ -15,7 +15,7 @@ import { SelectorPeriodo } from "@/components/SelectorPeriodo";
 import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
 import { datosDeLaCalculadora, prefill, type Caso } from "@/lib/prefill/inflacion";
 import { InflacionInformeOferta } from "@/components/informe-inflacion/InflacionInformeOferta";
-import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/informes/inflacion/_modelo";
+import { PRECIO_INFORME_REFERENCIA, SLUG_INFORME } from "@/app/(ar)/informes/inflacion/_modelo";
 
 type Modo = "monto" | "sueldo";
 

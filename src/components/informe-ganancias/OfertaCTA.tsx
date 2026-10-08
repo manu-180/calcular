@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { formatARS, formatPctFijo } from "@/lib/formato";
 import { InformeGananciasMiniatura } from "@/components/informe-ganancias/Miniatura";
-import { FICHAS, RUTA_LANDING_INFORME, SLUG_INFORME, principales, type Informe } from "@/app/informes/ganancias/_modelo";
+import { FICHAS, RUTA_LANDING_INFORME, SLUG_INFORME, principales, type Informe } from "@/app/(ar)/informes/ganancias/_modelo";
 
 // Va a la landing y no abre el diálogo de compra: ahí la persona ve el informe con SUS números antes
 // de pagar. `desde` termina en la referencia de MercadoPago: es como se sabe qué calculadora vendió.

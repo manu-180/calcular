@@ -4,7 +4,7 @@ import { useId, useMemo, useState } from "react";
 import { CANASTA_CRIANZA_ULTIMO, TRAMOS_CRIANZA } from "@/data/canasta-crianza";
 import { parseMonto } from "@/lib/formato";
 import { MAX_HIJOS_INFORME, datosDeLaCalculadora, type Datos, type TramoHijo } from "@/lib/prefill/cuota";
-import { armarInforme } from "@/app/informes/cuota-alimentaria/_modelo";
+import { armarInforme } from "@/app/(ar)/informes/cuota-alimentaria/_modelo";
 import { InformeCuotaDocumento } from "@/components/InformeCuotaDocumento";
 
 const OPCIONES: { valor: TramoHijo; texto: string }[] = [

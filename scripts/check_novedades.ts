@@ -17,7 +17,7 @@ import { NOVEDADES_REGISTRADAS } from "../src/data/novedades";
 import { novedadesDeLosDatos } from "../src/lib/novedades-detectores";
 import { hoyAR } from "../src/lib/hoy";
 
-const APP = resolve(import.meta.dirname, "..", "src", "app");
+const APP = resolve(import.meta.dirname, "..", "src", "app", "(ar)");
 let fallas = 0;
 function check(nombre: string, ok: boolean, detalle?: string) {
   if (ok) console.log(`OK   ${nombre}`);

@@ -23,7 +23,7 @@ import {
   ULTIMO_PERIODO,
 } from "../src/lib/inflacion";
 import { CASOS, datosDeLaCalculadora, prefill, type EstadoCalculadora } from "../src/lib/prefill/inflacion";
-import { armarInforme, CASO_EJEMPLO, MAX_MESES_DETALLE } from "../src/app/informes/inflacion/_modelo";
+import { armarInforme, CASO_EJEMPLO, MAX_MESES_DETALLE } from "../src/app/(ar)/informes/inflacion/_modelo";
 import { armarCarta, cartaEnTexto, PERSONALES_VACIOS } from "../src/components/informe-inflacion/carta";
 
 let fallas = 0;

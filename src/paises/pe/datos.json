@@ -1,0 +1,777 @@
+{
+  "mercado": "pe",
+  "datos": [
+    {
+      "id": "pe.rmv",
+      "nombre": "Remuneración mínima vital",
+      "tipo": "numero",
+      "unidad": "PEN",
+      "proximaRevision": "2027-01-01",
+      "nota": "El DS 015-2026-TR anuncia un segundo tramo de S/ 70 (a S/ 1,300) por un decreto supremo a emitirse en el primer semestre de 2027. Se carga cuando salga ese decreto.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2026-09-30",
+          "valor": 1130,
+          "fuente": {
+            "organismo": "El Peruano",
+            "titulo": "Decreto Supremo 006-2024-TR, artículo 1",
+            "url": "https://busquedas.elperuano.pe/dispositivo/NL/2357884-10",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 1230,
+          "fuente": {
+            "organismo": "El Peruano",
+            "titulo": "Decreto Supremo 015-2026-TR, artículo 1.2",
+            "url": "https://busquedas.elperuano.pe/dispositivo/EX/2559163-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.uit",
+      "nombre": "Unidad impositiva tributaria",
+      "tipo": "numero",
+      "unidad": "PEN",
+      "proximaRevision": "2026-12-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 5500,
+          "fuente": {
+            "organismo": "El Peruano",
+            "titulo": "Decreto Supremo 301-2025-EF, artículo 1",
+            "url": "https://busquedas.elperuano.pe/dispositivo/NL/2469116-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.asignacion-familiar",
+      "nombre": "Asignación familiar",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Porcentaje de la remuneración mínima vital vigente.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1989-12-07",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "Ley 25129, artículo 1 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.bonificacion-extraordinaria",
+      "nombre": "Bonificación extraordinaria sobre la gratificación",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "essalud": "EsSalud",
+        "eps": "EPS (entidad prestadora de salud)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-06-25",
+          "valor": {
+            "essalud": 9,
+            "eps": 6.75
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "Guía de gratificaciones por Fiestas Patrias y Navidad (Ley 30334, artículo 3)",
+            "url": "https://cdn.www.gob.pe/uploads/document/file/3321103/guia_gratificaciones.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Sunafil repite los mismos porcentajes en su nota del 11/12/2024: https://www.gob.pe/institucion/sunafil/noticias/1069971-aprende-a-calcular-cuanto-te-corresponde-por-gratificacion-de-navidad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.gratificacion-por-regimen",
+      "nombre": "Gratificación por régimen laboral (remuneraciones por semestre)",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "general": "Régimen general",
+        "pequena": "Pequeña empresa"
+      },
+      "nota": "Régimen general: una remuneración (Ley 27735, art. 2). Pequeña empresa: media remuneración (DL 1086, art. 41). La microempresa no paga gratificación.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-10-01",
+          "valor": {
+            "general": 1,
+            "pequena": 0.5
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "Ley 27735, artículo 2, y DL 1086, artículo 41 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.cts-por-regimen",
+      "nombre": "CTS por régimen laboral (remuneraciones por año)",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "general": "Régimen general",
+        "pequena": "Pequeña empresa"
+      },
+      "nota": "Régimen general: un dozavo de la remuneración computable por mes (DS 001-97-TR, art. 21). Pequeña empresa: 15 remuneraciones diarias por año, o sea la mitad (DL 1086, art. 41). La microempresa no deposita CTS.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-10-01",
+          "valor": {
+            "general": 1,
+            "pequena": 0.5
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DS 001-97-TR, artículo 21, y DL 1086, artículo 41 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "La fórmula (remuneración computable / 12 × meses + remuneración computable / 360 × días) está en la guía de CTS del MTPE: https://cdn.www.gob.pe/uploads/document/file/8050277/6757898-guia_compensacion_tiempo_servicios.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.vacaciones-por-regimen",
+      "nombre": "Días de vacaciones por año completo",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "general": "Régimen general",
+        "pequena": "Pequeña empresa",
+        "micro": "Microempresa"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-10-01",
+          "valor": {
+            "general": 30,
+            "pequena": 15,
+            "micro": 15
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DL 713, artículo 10, y DL 1086, artículo 46 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.despido-por-anio",
+      "nombre": "Indemnización por despido arbitrario por año completo",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "general": "Régimen general",
+        "pequena": "Pequeña empresa",
+        "micro": "Microempresa"
+      },
+      "nota": "En remuneraciones diarias. Régimen general: una remuneración y media mensual por año (1,5 × 30 = 45 diarias, DS 003-97-TR, art. 38). Pequeña empresa: 20 diarias. Microempresa: 10 diarias (DL 1086, art. 47).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-10-01",
+          "valor": {
+            "general": 45,
+            "pequena": 20,
+            "micro": 10
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DS 003-97-TR, artículo 38, y DL 1086, artículo 47 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.despido-tope",
+      "nombre": "Tope de la indemnización por despido arbitrario",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "general": "Régimen general",
+        "pequena": "Pequeña empresa",
+        "micro": "Microempresa"
+      },
+      "nota": "En remuneraciones diarias. Régimen general: 12 remuneraciones mensuales (360 diarias). Pequeña empresa: 120 diarias. Microempresa: 90 diarias.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-10-01",
+          "valor": {
+            "general": 360,
+            "pequena": 120,
+            "micro": 90
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DS 003-97-TR, artículos 38 y 76, y DL 1086, artículo 47 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.sobretasa-horas-extras",
+      "nombre": "Sobretasa mínima de las horas extras",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "primeras-dos": "Primeras dos horas",
+        "siguientes": "Desde la tercera hora"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-07-05",
+          "valor": {
+            "primeras-dos": 25,
+            "siguientes": 35
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "Guía ¿Cómo calcular las horas extras? (DS 007-2002-TR, artículo 10)",
+            "url": "https://cdn.www.gob.pe/uploads/document/file/7248257/6199835-como-calcular-horas-extras.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.escala-renta-trabajo",
+      "nombre": "Escala del impuesto a la renta de trabajo",
+      "tipo": "escala",
+      "unidad": "UIT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5,
+              "tasa": 8
+            },
+            {
+              "desde": 5,
+              "hasta": 20,
+              "tasa": 14
+            },
+            {
+              "desde": 20,
+              "hasta": 35,
+              "tasa": 17
+            },
+            {
+              "desde": 35,
+              "hasta": 45,
+              "tasa": 20
+            },
+            {
+              "desde": 45,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 53 (texto de la Ley 30296)",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capvii.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.deduccion-renta-trabajo",
+      "nombre": "Deducción fija de las rentas de cuarta y quinta categoría",
+      "tipo": "numero",
+      "unidad": "UIT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 46",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capvi.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tope-gastos-deducibles",
+      "nombre": "Tope de la deducción adicional por gastos (alquiler, honorarios y otros)",
+      "tipo": "numero",
+      "unidad": "UIT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 46",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capvi.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.deduccion-cuarta",
+      "nombre": "Deducción por gastos de la renta de cuarta categoría",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 45",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capvi.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tope-deduccion-cuarta",
+      "nombre": "Tope de la deducción del 20 % de cuarta categoría",
+      "tipo": "numero",
+      "unidad": "UIT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 45",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capvi.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.retencion-cuarta",
+      "nombre": "Retención de cuarta categoría",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 74 (texto de la Ley 30296)",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capx.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.minimo-retencion-cuarta",
+      "nombre": "Monto del recibo por honorarios desde el que se retiene",
+      "tipo": "numero",
+      "unidad": "PEN",
+      "nota": "No se retiene si el recibo no supera este monto.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: cálculo del impuesto por rentas de cuarta categoría",
+            "url": "https://orientacion.sunat.gob.pe/3064-02-calculo-del-impuesto-por-rentas-de-cuarta-categoria",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.suspension-cuarta",
+      "nombre": "Montos para suspender retenciones y pagos a cuenta de cuarta categoría",
+      "tipo": "mapa",
+      "unidad": "PEN",
+      "etiquetas": {
+        "anual": "Ingresos anuales proyectados (general)",
+        "mensual": "Ingresos del mes (general)",
+        "anual-directores": "Ingresos anuales proyectados (directores, síndicos, mandatarios y similares)",
+        "mensual-directores": "Ingresos del mes (directores, síndicos, mandatarios y similares)"
+      },
+      "proximaRevision": "2026-12-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "anual": 48125,
+            "mensual": 4010,
+            "anual-directores": 38500,
+            "mensual-directores": 3208
+          },
+          "fuente": {
+            "organismo": "El Peruano",
+            "titulo": "Resolución de Superintendencia 000390-2025/SUNAT, artículo 3",
+            "url": "https://busquedas.elperuano.pe/dispositivo/NL/2472998-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tasa-igv",
+      "nombre": "Tasa del impuesto general a las ventas",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "La Ley 32387 baja el IGV medio punto por año y sube el IPM en la misma medida: la tasa total sigue en 18 %.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 15.5,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: concepto, tasa y operaciones gravadas del IGV (Ley 32387)",
+            "url": "https://orientacion.sunat.gob.pe/3053-concepto-tasa-y-operaciones-gravadas-igv-empresas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 15,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: concepto, tasa y operaciones gravadas del IGV (Ley 32387)",
+            "url": "https://orientacion.sunat.gob.pe/3053-concepto-tasa-y-operaciones-gravadas-igv-empresas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "hasta": "2028-12-31",
+          "valor": 14.5,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: concepto, tasa y operaciones gravadas del IGV (Ley 32387)",
+            "url": "https://orientacion.sunat.gob.pe/3053-concepto-tasa-y-operaciones-gravadas-igv-empresas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: concepto, tasa y operaciones gravadas del IGV (Ley 32387)",
+            "url": "https://orientacion.sunat.gob.pe/3053-concepto-tasa-y-operaciones-gravadas-igv-empresas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tasa-ipm",
+      "nombre": "Tasa del impuesto de promoción municipal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: concepto, tasa y operaciones gravadas del IGV (Ley 32387)",
+            "url": "https://orientacion.sunat.gob.pe/3053-concepto-tasa-y-operaciones-gravadas-igv-empresas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 3,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: concepto, tasa y operaciones gravadas del IGV (Ley 32387)",
+            "url": "https://orientacion.sunat.gob.pe/3053-concepto-tasa-y-operaciones-gravadas-igv-empresas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "hasta": "2028-12-31",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: concepto, tasa y operaciones gravadas del IGV (Ley 32387)",
+            "url": "https://orientacion.sunat.gob.pe/3053-concepto-tasa-y-operaciones-gravadas-igv-empresas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: concepto, tasa y operaciones gravadas del IGV (Ley 32387)",
+            "url": "https://orientacion.sunat.gob.pe/3053-concepto-tasa-y-operaciones-gravadas-igv-empresas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tasa-igv-restaurantes",
+      "nombre": "Tasa especial del IGV para restaurantes, hoteles y alojamientos turísticos MYPE",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Solo para micro y pequeñas empresas que cumplen los límites de la ley. Se suma el IPM.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 8,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: reducción del IGV para restaurantes, hoteles y alojamientos turísticos",
+            "url": "https://orientacion.sunat.gob.pe/reduccion-del-igv-para-restaurantes-hoteles-y-alojamiento-turisticos-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 12,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Orientación SUNAT: reducción del IGV para restaurantes, hoteles y alojamientos turísticos",
+            "url": "https://orientacion.sunat.gob.pe/reduccion-del-igv-para-restaurantes-hoteles-y-alojamiento-turisticos-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.aporte-onp",
+      "nombre": "Aporte al Sistema Nacional de Pensiones (ONP)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Aportes a la ONP recaudados por SUNAT",
+            "url": "https://www.gob.pe/7944-aportes-a-la-onp-recaudados-por-sunat",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07",
+            "nota": "Se cargó desde el 1/1/2026 porque solo se leyó la tasa vigente hoy; la tasa es anterior."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.aporte-afp",
+      "nombre": "Aporte obligatorio al fondo de la AFP",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "SBS",
+            "titulo": "Comisiones y primas de seguro del SPP, mes de devengue 2026-10",
+            "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.prima-seguro-afp",
+      "nombre": "Prima de seguro de invalidez, sobrevivencia y gastos de sepelio (AFP)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 1.37,
+          "fuente": {
+            "organismo": "SBS",
+            "titulo": "Comisiones y primas de seguro del SPP, mes de devengue 2026-10",
+            "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "pe.comision-afp",
+      "nombre": "Comisión sobre la remuneración (flujo) de cada AFP",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "habitat": "AFP Habitat",
+        "integra": "AFP Integra",
+        "prima": "Prima AFP",
+        "profuturo": "Profuturo AFP"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "habitat": 1.47,
+            "integra": 1.55,
+            "prima": 1.6,
+            "profuturo": 1.69
+          },
+          "fuente": {
+            "organismo": "SBS",
+            "titulo": "Comisiones y primas de seguro del SPP, mes de devengue 2026-10",
+            "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01",
+      "nota": "Solo la cobran quienes se quedaron en comisión por flujo en 2013. En la comisión mixta (sobre el saldo) el componente sobre el sueldo es 0 % desde febrero de 2023."
+    },
+    {
+      "id": "pe.comision-mixta-flujo",
+      "nombre": "Componente sobre el sueldo de la comisión mixta (AFP)",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "La comisión mixta solo se cobra sobre el saldo del fondo; sobre el sueldo es 0 %.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-02-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "SBS",
+            "titulo": "Comisiones y primas de seguro del SPP (nota sobre la comisión mixta desde febrero de 2023)",
+            "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.rma-afp",
+      "nombre": "Remuneración máxima asegurable (tope de la prima de seguro AFP)",
+      "tipo": "numero",
+      "unidad": "PEN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "hasta": "2026-12-31",
+          "valor": 12732.7,
+          "fuente": {
+            "organismo": "SBS",
+            "titulo": "Comisiones y primas de seguro del SPP, mes de devengue 2026-10",
+            "url": "https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-07"
+          }
+        }
+      ],
+      "proximaRevision": "2026-12-31",
+      "nota": "Se actualiza cada trimestre. El trimestre julio a setiembre de 2026 era S/ 12,672.65."
+    }
+  ]
+}

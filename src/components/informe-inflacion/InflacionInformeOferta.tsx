@@ -4,7 +4,7 @@ import Link from "next/link";
 import { formatARS, formatPctFijo } from "@/lib/formato";
 import { CASOS, type Caso, type Datos } from "@/lib/prefill/inflacion";
 import { fuenteInforme } from "@/components/InformeCuotaFuente";
-import { NOMBRE_CASO, RUTA_LANDING_INFORME, SLUG_INFORME, armarInforme, mesCorto } from "@/app/informes/inflacion/_modelo";
+import { NOMBRE_CASO, RUTA_LANDING_INFORME, SLUG_INFORME, armarInforme, mesCorto } from "@/app/(ar)/informes/inflacion/_modelo";
 import { armarCarta, PERSONALES_VACIOS, tratoPorDefecto } from "./carta";
 
 const SERIF = "[font-family:var(--font-informe),Georgia,serif]";

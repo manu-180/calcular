@@ -30,12 +30,12 @@ const art = articleSchema({ titulo: "t", descripcion: "d", url: "/x", modificado
 check("schema: articleSchema firma con la persona, no con la organización", art.author["@id"] === AUTOR["@id"]);
 check("schema: el publisher sigue siendo la organización", art.publisher["@id"] === ORGANIZACION["@id"]);
 
-const sobre = readFileSync("src/app/sobre/page.tsx", "utf8");
+const sobre = readFileSync("src/app/(ar)/sobre/page.tsx", "utf8");
 check("/sobre nombra a la persona", sobre.includes(NOMBRE));
 check("/sobre ya no se esconde detrás de 'un equipo chico'", !sobre.includes("equipo chico"));
 check("/sobre publica el Person en el JSON-LD", sobre.includes("author: AUTOR"));
 
-const BLOG = "src/app/blog";
+const BLOG = "src/app/(ar)/blog";
 const posts = readdirSync(BLOG, { withFileTypes: true })
   .filter((d) => d.isDirectory())
   .map((d) => join(BLOG, d.name, "page.tsx"));
@@ -48,7 +48,7 @@ check("páginas de datos: el pie de fuentes lleva la firma", sello.includes("Fir
 // El footer es el único lugar que cubre las 151 URLs: las páginas de datos arman su propia
 // sección de fuentes inline y no pasan por FuentesOficiales (verificado en producción el
 // 19/9/2026 — /convenios/uocra no mostraba la firma y por eso existe esta línea).
-const layout = readFileSync("src/app/layout.tsx", "utf8");
+const layout = readFileSync("src/app/(ar)/layout.tsx", "utf8");
 const footer = readFileSync("src/components/SiteFooter.tsx", "utf8");
 check(
   "el footer firma TODAS las páginas",
