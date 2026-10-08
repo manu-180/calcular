@@ -239,7 +239,7 @@ if (pagina) {
   igual("valores serializados", pagina.props.valores, { "zz.minimo": { norte: 1100, sur: 1200 }, "zz.bonificacion": 9 });
   igual("sello: verificación más vieja", pagina.sello.verificadoMasViejo, "2026-10-07");
   verdad("contenido sin marcadores", !JSON.stringify(pagina.contenido).includes("{{"));
-  verdad("marcador del mínimo norte", pagina.contenido.faq[0].respuesta.includes("1,100.00") && pagina.contenido.faq[0].respuesta.includes("1 de octubre de 2026"), pagina.contenido.faq[0].respuesta);
+  verdad("marcador del mínimo norte", pagina.contenido.faq[0].respuesta.includes("1,100, vigente") && pagina.contenido.faq[0].respuesta.includes("1 de octubre de 2026"), pagina.contenido.faq[0].respuesta);
   verdad("las props cruzan a cliente como JSON", JSON.stringify(JSON.parse(JSON.stringify(pagina.props))) === JSON.stringify(pagina.props));
   igual("aviso vigente de zz", pagina.props.avisos.map((a) => a.id), ["zz.mercado-de-prueba"]);
   igual("regiones en el contexto", pagina.props.contexto.regiones.map((r) => r.id), ["norte", "sur"]);
@@ -277,7 +277,7 @@ if (r.ok) {
     { valores: r.valores, usados: r.usados, unidades: { "zz.bonificacion": "%", "zz.minimo": "XTS" }, locale: "es-419" },
   );
   igual("marcador porcentaje", sinNbsp(c.h1), "Bonificación 9%");
-  igual("marcador por región", sinNbsp(c.intro[0]), "Sur: XTS 1,200.00");
+  igual("marcador por región", sinNbsp(c.intro[0]), "Sur: XTS 1,200");
 }
 
 // Tipos: una definición con requisito mal tipado se detecta en validarPais.

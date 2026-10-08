@@ -79,8 +79,19 @@ const NOMBRES_UNIDAD: Record<string, [string, string]> = {
   anios: ["año", "años"],
 };
 
+function decimalesPropios(n: number): number {
+  const [, dec = ""] = String(n).split(".");
+  return dec.length;
+}
+
+// Un dato se muestra con los decimales que trae la norma: el salario mínimo en COP o UYU es entero y
+// con ",00" se lee como un error; la UF (CLP) y la UI (UYU) tienen más decimales que su moneda.
 export function formatearValorUnidad(n: number, unidad: Unidad, locale: string, simbolos?: Readonly<Partial<Record<Moneda, string>>>): string {
-  if ((MONEDAS as readonly string[]).includes(unidad)) return formatearMoneda(n, locale, unidad as Moneda, undefined, simbolos?.[unidad as Moneda]);
+  if ((MONEDAS as readonly string[]).includes(unidad)) {
+    const moneda = unidad as Moneda;
+    const d = Number.isInteger(n) ? 0 : Math.min(4, Math.max(decimalesDeMoneda(moneda, locale), decimalesPropios(n)));
+    return formatearMoneda(n, locale, moneda, d, simbolos?.[moneda]);
+  }
   if (unidad === "%") return formatearPorcentaje(n, locale, 4);
   const nombres = NOMBRES_UNIDAD[unidad];
   if (nombres) return `${formatearNumero(n, locale)} ${n === 1 ? nombres[0] : nombres[1]}`;
