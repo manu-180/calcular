@@ -2,17 +2,23 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useTextos } from "@/components/cuenta/SitioCuenta";
 
 // <a> y no un fetch: /auth/google responde con el redirect a Google y el navegador lo sigue solo.
-export function BotonGoogle({ next, conTerminos }: { next?: string; conTerminos?: boolean }) {
+export function BotonGoogle({ next, desde, conTerminos }: { next?: string; desde?: string; conTerminos?: boolean }) {
   const [yendo, setYendo] = useState(false);
+  const t = useTextos().google;
   // Volver con «atrás» desde Google restaura la página del bfcache con el botón todavía en «Abriendo…».
   useEffect(() => {
     const volver = () => setYendo(false);
     window.addEventListener("pageshow", volver);
     return () => window.removeEventListener("pageshow", volver);
   }, []);
-  const href = next ? `/auth/google?next=${encodeURIComponent(next)}` : "/auth/google";
+  const q = new URLSearchParams();
+  if (next) q.set("next", next);
+  if (desde) q.set("desde", desde);
+  const query = q.toString();
+  const href = query ? `/auth/google?${query}` : "/auth/google";
   return (
     <div>
       <a
@@ -27,23 +33,24 @@ export function BotonGoogle({ next, conTerminos }: { next?: string; conTerminos?
           <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z" />
           <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z" />
         </svg>
-        {yendo ? "Abriendo Google…" : "Continuar con Google"}
+        {yendo ? t.abriendo : t.continuar}
       </a>
       {conTerminos ? (
         <p className="mt-2.5 text-center text-[12px] leading-relaxed text-zinc-500">
-          Al continuar con Google aceptás los{" "}
+          {t.aceptas}{" "}
           <Link href="/terminos" className="underline underline-offset-2 hover:text-zinc-800">
-            términos
+            {t.terminos}
           </Link>{" "}
-          y la{" "}
+          {t.yLa}{" "}
           <Link href="/privacidad" className="underline underline-offset-2 hover:text-zinc-800">
-            política de privacidad
+            {t.privacidad}
           </Link>
           .
         </p>
       ) : null}
       <div className="my-6 flex items-center gap-3 text-[12px] font-medium uppercase tracking-[0.14em] text-zinc-400" aria-hidden>
-        <span className="h-px flex-1 bg-zinc-200" />o con tu mail
+        <span className="h-px flex-1 bg-zinc-200" />
+        {t.oConMail}
         <span className="h-px flex-1 bg-zinc-200" />
       </div>
     </div>

@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useId, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
+import { useTextos } from "@/components/cuenta/SitioCuenta";
+import type { TextosCuenta } from "@/lib/cuenta/textos";
 
 export type CalculoItem = {
   id: string;
@@ -16,7 +18,7 @@ type Deshacer = { item: CalculoItem; indice: number; timer: number };
 
 const ESPERA_BORRADO = 5000;
 
-async function pedir(url: string, init: RequestInit): Promise<{ ok: boolean; error?: string }> {
+async function pedir(url: string, init: RequestInit, sinConexion: string): Promise<{ ok: boolean; error?: string }> {
   try {
     const res = await fetch(url, {
       ...init,
@@ -27,16 +29,9 @@ async function pedir(url: string, init: RequestInit): Promise<{ ok: boolean; err
     const j = (await res.json().catch(() => null)) as { error?: string } | null;
     return { ok: false, error: j?.error };
   } catch {
-    return { ok: false, error: "Parece que no hay conexión. Revisá internet y probá de nuevo." };
+    return { ok: false, error: sinConexion };
   }
 }
-
-const SUGERIDAS = [
-  { href: "/sueldo-neto", texto: "Sueldo neto" },
-  { href: "/aguinaldo", texto: "Aguinaldo" },
-  { href: "/indemnizacion", texto: "Indemnización por despido" },
-  { href: "/monotributo", texto: "Monotributo" },
-];
 
 export function ListaCalculos({ inicial }: { inicial: CalculoItem[] | null }) {
   const [items, setItems] = useState<CalculoItem[]>(inicial ?? []);
@@ -45,11 +40,12 @@ export function ListaCalculos({ inicial }: { inicial: CalculoItem[] | null }) {
   const [deshacer, setDeshacer] = useState<Deshacer | null>(null);
   const [anuncio, setAnuncio] = useState("");
   const pendientes = useRef(new Map<string, Deshacer>());
+  const t = useTextos().calculos;
 
   const borrarDeVerdad = useCallback(async (d: Deshacer, keepalive = false) => {
     pendientes.current.delete(d.item.id);
     setDeshacer((actual) => (actual?.item.id === d.item.id ? null : actual));
-    const r = await pedir(`/api/cuenta/calculos/${d.item.id}`, { method: "DELETE", keepalive });
+    const r = await pedir(`/api/cuenta/calculos/${d.item.id}`, { method: "DELETE", keepalive }, t.sinConexion);
     if (!r.ok && !keepalive) {
       setItems((lista) => {
         if (lista.some((x) => x.id === d.item.id)) return lista;
@@ -57,9 +53,9 @@ export function ListaCalculos({ inicial }: { inicial: CalculoItem[] | null }) {
         copia.splice(Math.min(d.indice, copia.length), 0, d.item);
         return copia;
       });
-      setErrores((e) => ({ ...e, [d.item.id]: r.error ?? "No pudimos borrarlo. Probá de nuevo." }));
+      setErrores((e) => ({ ...e, [d.item.id]: r.error ?? t.noBorrado }));
     }
-  }, []);
+  }, [t]);
 
   // Si la persona se va antes de que venza el «deshacer», el borrado igual se manda.
   useEffect(() => {
@@ -83,7 +79,7 @@ export function ListaCalculos({ inicial }: { inicial: CalculoItem[] | null }) {
     d.timer = window.setTimeout(() => void borrarDeVerdad(d), ESPERA_BORRADO);
     pendientes.current.set(item.id, d);
     setDeshacer(d);
-    setAnuncio(`Borramos «${item.titulo}». Tenés unos segundos para deshacerlo.`);
+    setAnuncio(t.borrado(item.titulo));
   };
 
   const restaurar = () => {
@@ -97,7 +93,7 @@ export function ListaCalculos({ inicial }: { inicial: CalculoItem[] | null }) {
       return copia;
     });
     setDeshacer(null);
-    setAnuncio(`Volvimos a poner «${d.item.titulo}».`);
+    setAnuncio(t.restaurado(d.item.titulo));
   };
 
   const renombrar = async (item: CalculoItem, titulo: string) => {
@@ -108,18 +104,18 @@ export function ListaCalculos({ inicial }: { inicial: CalculoItem[] | null }) {
     const r = await pedir(`/api/cuenta/calculos/${item.id}`, {
       method: "PATCH",
       body: JSON.stringify({ titulo }),
-    });
+    }, t.sinConexion);
     if (!r.ok) {
       setItems((lista) => lista.map((x) => (x.id === item.id ? { ...x, titulo: item.titulo } : x)));
-      setErrores((e) => ({ ...e, [item.id]: r.error ?? "No pudimos cambiarle el nombre. Probá de nuevo." }));
+      setErrores((e) => ({ ...e, [item.id]: r.error ?? t.noRenombrado }));
     }
   };
 
   if (inicial === null) {
     return (
       <div className="rounded-2xl bg-white p-5 text-sm text-zinc-600 ring-1 ring-zinc-200/80">
-        <p className="font-semibold text-zinc-900">No pudimos traer tus cálculos.</p>
-        <p className="mt-1">Probá recargar la página en un rato. Lo que guardaste no se perdió.</p>
+        <p className="font-semibold text-zinc-900">{t.errorTitulo}</p>
+        <p className="mt-1">{t.errorTexto}</p>
       </div>
     );
   }
@@ -127,13 +123,14 @@ export function ListaCalculos({ inicial }: { inicial: CalculoItem[] | null }) {
   return (
     <div data-sin-herramientas="">
       {items.length === 0 && !deshacer ? (
-        <Vacio />
+        <Vacio t={t} />
       ) : (
         <ul className="space-y-2.5">
           {items.map((item) => (
             <li key={item.id}>
               <Fila
                 item={item}
+                t={t}
                 editando={editando === item.id}
                 error={errores[item.id]}
                 onEditar={() => setEditando(item.id)}
@@ -153,14 +150,14 @@ export function ListaCalculos({ inicial }: { inicial: CalculoItem[] | null }) {
             className="pointer-events-auto flex max-w-md items-center gap-4 rounded-full bg-zinc-900 py-2 pl-5 pr-2 text-sm text-zinc-100 shadow-[0_14px_34px_-14px_rgba(0,0,0,0.5)] motion-safe:animate-[ca-col_0.26s_var(--ease-fluid)_backwards]"
           >
             <span className="min-w-0 truncate">
-              Borramos <span className="font-semibold text-white">«{deshacer.item.titulo}»</span>
+              {t.borramos} <span className="font-semibold text-white">«{deshacer.item.titulo}»</span>
             </span>
             <button
               type="button"
               onClick={restaurar}
               className="min-h-10 shrink-0 rounded-full bg-white/10 px-4 font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-white/20 active:scale-[0.96]"
             >
-              Deshacer
+              {t.deshacer}
             </button>
           </div>
         )}
@@ -174,6 +171,7 @@ export function ListaCalculos({ inicial }: { inicial: CalculoItem[] | null }) {
 
 function Fila({
   item,
+  t,
   editando,
   error,
   onEditar,
@@ -182,6 +180,7 @@ function Fila({
   onBorrar,
 }: {
   item: CalculoItem;
+  t: TextosCuenta["calculos"];
   editando: boolean;
   error?: string;
   onEditar: () => void;
@@ -227,7 +226,7 @@ function Fila({
           {editando ? (
             <form onSubmit={enviar} className="mt-1.5">
               <label htmlFor={`${id}-t`} className="sr-only">
-                Nuevo nombre
+                {t.nuevoNombre}
               </label>
               <input
                 ref={campo}
@@ -251,7 +250,7 @@ function Fila({
               />
               {invalido && (
                 <p id={`${id}-err`} className="mt-1.5 text-xs text-red-700">
-                  Ponele un nombre así lo encontrás después.
+                  {t.ponele}
                 </p>
               )}
               <div className="mt-2.5 flex gap-2">
@@ -259,14 +258,14 @@ function Fila({
                   type="submit"
                   className="min-h-10 rounded-full bg-zinc-900 px-4 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-black active:scale-[0.97]"
                 >
-                  Guardar nombre
+                  {t.guardarNombre}
                 </button>
                 <button
                   type="button"
                   onClick={onCancelar}
                   className="min-h-10 rounded-full px-4 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100"
                 >
-                  Cancelar
+                  {t.cancelar}
                 </button>
               </div>
             </form>
@@ -278,7 +277,7 @@ function Fila({
           {item.resumen && !editando && (
             <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-zinc-500">{item.resumen}</p>
           )}
-          <p className="mt-2 text-xs text-zinc-400">Guardado el {item.fecha}</p>
+          <p className="mt-2 text-xs text-zinc-400">{t.guardadoEl} {item.fecha}</p>
           {error && (
             <p className="mt-2 text-sm text-red-700" role="alert">
               {error}
@@ -294,7 +293,7 @@ function Fila({
               href={item.href}
               className="group/abrir inline-flex min-h-10 items-center gap-2 rounded-full bg-zinc-900 py-1 pl-4 pr-1.5 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-black active:scale-[0.97]"
             >
-              Abrir
+              {t.abrir}
               <span className="grid size-7 place-items-center rounded-full bg-white/10 transition-transform duration-200 ease-[var(--ease-fluid)] group-hover/abrir:translate-x-0.5">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="size-3.5" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" />
@@ -308,14 +307,14 @@ function Fila({
               onClick={onEditar}
               className="min-h-10 rounded-full px-3.5 text-sm font-medium text-zinc-600 transition-[background-color,color,transform] duration-150 hover:bg-zinc-100 hover:text-zinc-900 active:scale-[0.97]"
             >
-              Renombrar<span className="sr-only"> «{item.titulo}»</span>
+              {t.renombrar}<span className="sr-only"> «{item.titulo}»</span>
             </button>
             <button
               type="button"
               onClick={onBorrar}
               className="min-h-10 rounded-full px-3.5 text-sm font-medium text-zinc-600 transition-[background-color,color,transform] duration-150 hover:bg-red-50 hover:text-red-700 active:scale-[0.97]"
             >
-              Borrar<span className="sr-only"> «{item.titulo}»</span>
+              {t.borrar}<span className="sr-only"> «{item.titulo}»</span>
             </button>
           </div>
         )}
@@ -324,33 +323,39 @@ function Fila({
   );
 }
 
-function Vacio() {
+function Vacio({ t }: { t: TextosCuenta["calculos"] }) {
   return (
     <div className="rounded-2xl bg-white p-5 ring-1 ring-zinc-200/80 sm:p-6">
       <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7">
-        <div
-          aria-hidden="true"
-          className="flex w-max shrink-0 items-center gap-0.5 rounded-full bg-zinc-900 p-1 text-[13px] font-medium text-zinc-300 shadow-[0_10px_24px_-14px_rgba(0,0,0,0.5)]"
-        >
-          <span className="inline-flex h-9 items-center gap-1.5 rounded-full bg-white/10 px-3 text-white">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="size-4 text-emerald-300">
-              <path d="M6.5 3.75h11a.75.75 0 0 1 .75.75v15.2a.4.4 0 0 1-.64.32L12 15.9l-5.61 4.12a.4.4 0 0 1-.64-.32V4.5a.75.75 0 0 1 .75-.75Z" />
-            </svg>
-            Guardar
-          </span>
-          <span className="px-3">Compartir</span>
-          <span className="px-3">Imprimir</span>
-        </div>
+        {t.vacioConBarra ? (
+          <div
+            aria-hidden="true"
+            className="flex w-max shrink-0 items-center gap-0.5 rounded-full bg-zinc-900 p-1 text-[13px] font-medium text-zinc-300 shadow-[0_10px_24px_-14px_rgba(0,0,0,0.5)]"
+          >
+            <span className="inline-flex h-9 items-center gap-1.5 rounded-full bg-white/10 px-3 text-white">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="size-4 text-emerald-300">
+                <path d="M6.5 3.75h11a.75.75 0 0 1 .75.75v15.2a.4.4 0 0 1-.64.32L12 15.9l-5.61 4.12a.4.4 0 0 1-.64-.32V4.5a.75.75 0 0 1 .75-.75Z" />
+              </svg>
+              Guardar
+            </span>
+            <span className="px-3">Compartir</span>
+            <span className="px-3">Imprimir</span>
+          </div>
+        ) : null}
         <div className="min-w-0">
-          <p className="font-semibold text-zinc-900">Todavía no guardaste ningún cálculo</p>
-          <p className="mt-1 text-sm leading-relaxed text-zinc-600">
-            Hacé una cuenta en cualquier calculadora y tocá <strong className="text-zinc-800">Guardar</strong> en
-            la barra que aparece abajo. Queda acá con los mismos valores, para abrirlo cuando quieras.
-          </p>
+          <p className="font-semibold text-zinc-900">{t.vacioTitulo}</p>
+          {t.vacioConBarra ? (
+            <p className="mt-1 text-sm leading-relaxed text-zinc-600">
+              Hacé una cuenta en cualquier calculadora y tocá <strong className="text-zinc-800">Guardar</strong> en
+              la barra que aparece abajo. {t.vacioTexto}
+            </p>
+          ) : (
+            <p className="mt-1 text-sm leading-relaxed text-zinc-600">{t.vacioTexto}</p>
+          )}
         </div>
       </div>
       <div className="mt-5 flex flex-wrap gap-2 border-t border-zinc-100 pt-4">
-        {SUGERIDAS.map((s) => (
+        {t.sugeridas.map((s) => (
           <Link
             key={s.href}
             href={s.href}

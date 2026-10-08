@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { useTextos } from "@/components/cuenta/SitioCuenta";
 
 export function Enviado({
   titulo,
@@ -14,6 +15,7 @@ export function Enviado({
   onOtro?: () => void;
 }) {
   const ref = useRef<HTMLHeadingElement>(null);
+  const t = useTextos().enviado;
   useEffect(() => ref.current?.focus(), []);
   return (
     <div className="animate-[ca-col_0.4s_var(--ease-fluid)_backwards] text-center" role="status">
@@ -28,12 +30,12 @@ export function Enviado({
       </h2>
       {email ? (
         <p className="mt-2 text-[15px] leading-relaxed text-zinc-600">
-          Lo mandamos a <strong className="break-all font-semibold text-zinc-900">{email}</strong>.
+          {t.loMandamos} <strong className="break-all font-semibold text-zinc-900">{email}</strong>.
         </p>
       ) : null}
       {children ? <div className="mt-3 text-[15px] leading-relaxed text-zinc-600">{children}</div> : null}
       <p className="mt-5 rounded-2xl bg-zinc-50 px-4 py-3 text-[13px] leading-relaxed text-zinc-500">
-        ¿No llega? Mirá en spam o en promociones. Puede tardar un par de minutos.
+        {t.noLlega}
       </p>
       {onOtro ? (
         <button
@@ -41,7 +43,7 @@ export function Enviado({
           onClick={onOtro}
           className="mt-4 cursor-pointer text-sm font-semibold text-emerald-700 underline decoration-emerald-700/30 underline-offset-4 transition-colors hover:decoration-emerald-700"
         >
-          Usar otro mail
+          {t.otroMail}
         </button>
       ) : null}
     </div>

@@ -2,6 +2,7 @@
 
 import { useId, useState, type InputHTMLAttributes, type ReactNode } from "react";
 import { useFormStatus } from "react-dom";
+import { useTextos } from "@/components/cuenta/SitioCuenta";
 
 const INPUT =
   "block w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-3 text-base text-zinc-900 placeholder:text-zinc-400 transition-[border-color] duration-200 ease-[var(--ease-snappy)] hover:border-zinc-400 focus:border-emerald-500 focus:outline-none aria-[invalid=true]:border-red-400";
@@ -57,6 +58,7 @@ export function CampoClave({
 }: BaseCampo & Omit<InputHTMLAttributes<HTMLInputElement>, "type"> & { name: string }) {
   const id = useId();
   const [visible, setVisible] = useState(false);
+  const t = useTextos().clave;
   const idAyuda = `${id}-ayuda`;
   const idError = `${id}-error`;
   return (
@@ -84,7 +86,7 @@ export function CampoClave({
           onClick={() => setVisible((v) => !v)}
           aria-pressed={visible}
           aria-controls={id}
-          aria-label={visible ? "Ocultar la clave" : "Mostrar la clave"}
+          aria-label={visible ? t.ocultar : t.mostrar}
           className="absolute inset-y-0 right-0 grid w-12 cursor-pointer place-items-center rounded-r-xl text-zinc-500 transition-colors duration-200 hover:text-zinc-800"
         >
           <OjoIcono tachado={visible} />

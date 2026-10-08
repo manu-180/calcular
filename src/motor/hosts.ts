@@ -28,6 +28,9 @@ export interface OpcionesHosts {
   paginasGlobales: readonly string[];
   rutasAR: readonly string[];
   cookiePreview: boolean;
+  // NEXT_PUBLIC_CUENTAS_ACTIVAS: con las cuentas apagadas calcularya sigue mandando /login y compañía
+  // a calcular.ar, como antes.
+  cuentas?: boolean;
 }
 
 export interface ReglasHosts {
@@ -44,7 +47,10 @@ export const SEGMENTO_404 = "404";
 export const RUTA_SITEMAP = "mapa-xml";
 export const RUTA_LLMS = "llms.txt";
 export const API_INTL_PERMITIDAS = ["geo", "dev/sitio", "e", "pagos"] as const;
-const API_INTL_NEGADAS = `(?!(?:${API_INTL_PERMITIDAS.map((a) => a.replace("/", "\\/")).join("|")})(?:\\/|$)).*`;
+// Las pantallas de cuenta de calcularya: mismo path público que en calcular.ar, servidas por
+// src/app/(intl)/intl/[mercado]/(cuenta) con la marca CalcularYa. /dashboard sigue sólo en AR.
+export const RUTAS_CUENTA = ["login", "registro", "recuperar", "cuenta", "auth"] as const;
+const negadas = (permitidas: readonly string[]) => `(?!(?:${permitidas.map((a) => a.replace("/", "\\/")).join("|")})(?:\\/|$)).*`;
 
 const escapar = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const RE_SEGMENTO = /^[a-z0-9][a-z0-9-]*$/;
@@ -78,7 +84,9 @@ export function reglasPorHost(o: OpcionesHosts): ReglasHosts {
   const porCookie: Condicion = { type: "cookie", key: COOKIE_SITIO.nombre, value: COOKIE_SITIO.valor };
   const intl: Condicion[] = o.cookiePreview ? [porHost, porCookie] : [porHost];
 
-  const reservados = new Set([...o.mercados, ...o.paginasGlobales, "intl", "api", "og", "_next"]);
+  const cuentas = o.cuentas === true;
+  const reservados = new Set([...o.mercados, ...o.paginasGlobales, "intl", "api", "og", "_next", ...(cuentas ? RUTAS_CUENTA : [])]);
+  const apiNegadas = negadas(cuentas ? [...API_INTL_PERMITIDAS, "cuenta"] : API_INTL_PERMITIDAS);
   const mercados = alternativas(o.mercados);
   const globales = alternativas(o.paginasGlobales);
   const rutasAR = alternativas(o.rutasAR.filter((r) => !reservados.has(r)));
@@ -107,10 +115,12 @@ export function reglasPorHost(o: OpcionesHosts): ReglasHosts {
       // Las APIs y la imagen OG de calcular.ar no existen en calcularya. /api/geo la usa el aviso de
       // país, /api/dev/sitio es la única forma de borrar la cookie en un preview y /api/e es la
       // medición (decide el sitio por el Origin, no por el host).
-      { source: `/api/:path(${API_INTL_NEGADAS})`, has: [c], destination: `/intl/global/${SEGMENTO_404}/api/:path` },
+      // Con las cuentas prendidas también /api/cuenta: el handler es el de AR y decide el sitio por el Host.
+      { source: `/api/:path(${apiNegadas})`, has: [c], destination: `/intl/global/${SEGMENTO_404}/api/:path` },
       { source: "/og/:path*", has: [c], destination: "/intl/global/og/:path*" },
     );
     if (globales) beforeFiles.push({ source: `/:pagina(${globales})`, has: [c], destination: "/intl/global/:pagina" });
+    if (cuentas) beforeFiles.push({ source: `/:ruta(${alternativas(RUTAS_CUENTA)})/:resto*`, has: [c], destination: "/intl/global/:ruta/:resto*" });
   }
   if (mercados) {
     for (const c of intl) {

@@ -19,16 +19,10 @@ import {
   type TipoOpinion,
 } from "@/lib/opiniones";
 import { ChipTipo, EstadoMarca, IconoTipo } from "./piezas";
+import { useTextos } from "@/components/cuenta/SitioCuenta";
 
 type Estado = EstadoEnvio & { vuelta: number };
 type Item = Opinion & { enviando?: boolean };
-
-const PISTA: Record<TipoOpinion | "ninguno", string> = {
-  ninguno: "Escribí acá lo que quieras contarnos.",
-  idea: "¿Qué calculadora o qué dato te gustaría encontrar?",
-  error: "¿Qué pasó y en qué página? Si podés, contanos qué números pusiste.",
-  otra: "Lo que quieras contarnos.",
-};
 
 const AYUDA_TIPO: Record<TipoOpinion, string> = {
   idea: "Algo nuevo o mejor",
@@ -62,12 +56,13 @@ export function Opiniones({
   const [erroresLocales, setErroresLocales] = useState<EstadoEnvio["errores"]>({});
   const [conDesde, setConDesde] = useState(!!desde);
   const form = useRef<HTMLFormElement>(null);
+  const t = useTextos().opiniones;
 
   const errores = { ...(aviso.estado === "error" ? aviso.errores : {}), ...erroresLocales };
 
   function validarAntes(e: FormEvent<HTMLFormElement>) {
     const fd = new FormData(e.currentTarget);
-    const v = validarOpinion({ tipo: fd.get("tipo"), mensaje: fd.get("mensaje") });
+    const v = validarOpinion({ tipo: fd.get("tipo"), mensaje: fd.get("mensaje") }, t);
     if (v.ok) {
       setErroresLocales({});
       return;
@@ -93,14 +88,14 @@ export function Opiniones({
         enviando: true,
       });
     }
-    adelantarAviso({ estado: "ok", mensaje: "Gracias, la leemos todas.", vuelta: real.vuelta });
+    adelantarAviso({ estado: "ok", mensaje: t.gracias, vuelta: real.vuelta });
     form.current?.reset();
     accion(fd);
   }
 
   return (
     <>
-      <Seccion id="escribir" titulo="Contanos" orden={1}>
+      <Seccion id="escribir" titulo={t.escribir} orden={1}>
         <form ref={form} action={enviar} onSubmit={validarAntes} noValidate className="space-y-6">
           <CamposOpinion
             key={real.vuelta}
@@ -113,13 +108,13 @@ export function Opiniones({
           {desde && conDesde ? (
             <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-600">
               <input type="hidden" name="desde" value={desde} />
-              <span>Nos escribís desde</span>
+              <span>{t.escribisDesde}</span>
               <span className="inline-flex max-w-full items-center gap-1 rounded-full bg-zinc-100 py-1 pl-3 pr-1 text-[13px] font-medium text-zinc-800 ring-1 ring-inset ring-zinc-900/[0.06]">
                 <span className="truncate">{tituloDesde ?? desde}</span>
                 <button
                   type="button"
                   onClick={() => setConDesde(false)}
-                  aria-label="No incluir la página de la que venís"
+                  aria-label={t.sinDesde}
                   className="grid size-6 shrink-0 cursor-pointer place-items-center rounded-full text-zinc-500 transition-colors duration-200 hover:bg-zinc-200 hover:text-zinc-900"
                 >
                   <svg className="size-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden>
@@ -132,8 +127,8 @@ export function Opiniones({
 
           <div className="space-y-3">
             <div className="sm:max-w-xs">
-              <BotonEnviar pendiente="Enviando…" optimista>
-                Mandar mi opinión
+              <BotonEnviar pendiente={t.enviando} optimista>
+                {t.mandar}
               </BotonEnviar>
             </div>
             {aviso.estado === "ok" ? (
@@ -149,12 +144,12 @@ export function Opiniones({
         </form>
       </Seccion>
 
-      <Seccion id="historial" titulo="Lo que nos mandaste" bajada="Acá ves si ya la leímos." orden={2}>
+      <Seccion id="historial" titulo={t.historial} bajada={t.historialBajada} orden={2}>
         {errorHistorial ? (
-          <Aviso tono="info">No pudimos cargar lo que nos mandaste antes. Probá recargar la página en un rato.</Aviso>
+          <Aviso tono="info">{t.historialError}</Aviso>
         ) : lista.length === 0 ? (
           <p className="text-sm leading-relaxed text-zinc-500">
-            Todavía no nos escribiste. Cuando lo hagas, acá vas a ver cada mensaje y si ya lo leímos.
+            {t.historialVacio}
           </p>
         ) : (
           <ol className="divide-y divide-zinc-100">
@@ -194,6 +189,7 @@ function CamposOpinion({
   const [tipo, setTipo] = useState<TipoOpinion | null>(tipoInicial);
   const [largo, setLargo] = useState(largoMensaje(mensajeInicial));
   const texto = useRef<HTMLTextAreaElement>(null);
+  const t = useTextos().opiniones;
 
   // El evento reset sale ANTES de que el navegador vacíe los campos: se lee el DOM un tick
   // después, así el contador y la pista coinciden con lo que quedó escrito (vacío al enviar,
@@ -267,7 +263,7 @@ function CamposOpinion({
           name="mensaje"
           rows={5}
           defaultValue={mensajeInicial}
-          placeholder={PISTA[tipo ?? "ninguno"]}
+          placeholder={t.pista[tipo ?? "ninguno"]}
           onInput={(e) => {
             setLargo(largoMensaje(e.currentTarget.value.trim()));
             if (errores?.mensaje) alCorregir("mensaje");
@@ -282,7 +278,7 @@ function CamposOpinion({
           </p>
         ) : (
           <p id={idAyuda} className="mt-1.5 text-[13px] leading-relaxed text-zinc-500">
-            No hace falta que pongas datos personales. Si es sobre un cálculo, con los números alcanza.
+            {t.ayudaMensaje}
           </p>
         )}
       </div>

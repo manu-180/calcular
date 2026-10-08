@@ -19,7 +19,16 @@ function esc(v: string): string {
   return v.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-export async function avisarOpinionNueva(opinion: Opinion, email: string, verificado: boolean, origen: string): Promise<void> {
+// origen: el sitio donde la escribieron (para el enlace a la página). origenPanel: siempre calcular.ar,
+// que es donde vive el panel. mercado: sólo para las de calcularya, va en el asunto.
+export async function avisarOpinionNueva(
+  opinion: Opinion,
+  email: string,
+  verificado: boolean,
+  origen: string,
+  origenPanel: string = origen,
+  mercado?: string,
+): Promise<void> {
   if (!process.env.RESEND_API_KEY) return;
   const para = destinatarios();
   if (!para.length) return;
@@ -28,7 +37,7 @@ export async function avisarOpinionNueva(opinion: Opinion, email: string, verifi
     return;
   }
   const tipo = NOMBRE_TIPO[opinion.tipo];
-  const panel = `${origen}/dashboard/opiniones`;
+  const panel = `${origenPanel}/dashboard/opiniones${mercado ? `?mercado=${encodeURIComponent(mercado)}` : ""}`;
   const deQuien = `${email}${verificado ? "" : " (mail sin confirmar)"}`;
   const pagina = opinion.desde ? `${origen}${opinion.desde}` : null;
   const resumen = opinion.mensaje.replace(/\s+/g, " ").slice(0, 60);
@@ -49,7 +58,7 @@ export async function avisarOpinionNueva(opinion: Opinion, email: string, verifi
     .filter((l, i) => l || i > 2)
     .join("\n");
   try {
-    const ok = await sendSingle({ from: FROM, to: para, subject: `Opinión nueva: ${resumen}`, html, text: texto });
+    const ok = await sendSingle({ from: FROM, to: para, subject: `${mercado ? `[CalcularYa ${mercado.toUpperCase()}] ` : ""}Opinión nueva: ${resumen}`, html, text: texto });
     if (!ok) console.error("[opiniones] Resend rechazó el aviso");
   } catch (e) {
     console.error("[opiniones] no pude mandar el aviso", e);

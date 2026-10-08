@@ -1,6 +1,7 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { servicio } from "@/lib/supabase/servicio";
+import type { OrigenAlta } from "@/lib/auth/sitio";
 
 export const PERFILES = ["empleado", "empleador", "contador", "monotributista", "estudio", "otro"] as const;
 export type TipoPerfil = (typeof PERFILES)[number];
@@ -9,6 +10,21 @@ type Falla = { code?: string; message?: string } | null;
 
 function avisar(donde: string, error: Falla) {
   if (error) console.error(`[auth] ${donde}:`, error.code ?? "", error.message ?? "");
+}
+
+// Antes de la migración 20261008120000 las tablas no tienen sitio ni mercado: se guarda sin ellos
+// (queda como calcular.ar) en vez de perder la fila.
+export const faltaColumna = (e: Falla) => !!e && (e.code === "PGRST204" || e.code === "42703");
+
+// Marca como de calcularya una fila que la persona ya escribió con su sesión (la RLS no le deja
+// tocar sitio ni mercado). Sin la migración no hay nada que marcar.
+export async function marcarOrigen(tabla: "ca_calculos" | "ca_opiniones", id: string, userId: string, origen: OrigenAlta): Promise<void> {
+  try {
+    const { error } = await servicio().from(tabla).update(origen).eq("id", id).eq("user_id", userId);
+    if (error && !faltaColumna(error)) avisar(`marcarOrigen/${tabla}`, error);
+  } catch (e) {
+    console.error("[auth] marcarOrigen", e);
+  }
 }
 
 export async function perfilPorEmail(email: string): Promise<{ existe: boolean; error: boolean }> {
@@ -29,7 +45,8 @@ export async function perfilPorEmail(email: string): Promise<{ existe: boolean; 
 
 // Alta y verificado_at sólo con service role: la RLS no deja que el usuario los toque, y es lo
 // que impide que alguien se marque verificado a sí mismo.
-export async function asegurarPerfil(userId: string, email: string, verificar: boolean): Promise<boolean> {
+// origen sólo cuenta en el alta: el sitio de una cuenta es donde nació, aunque después entre por el otro.
+export async function asegurarPerfil(userId: string, email: string, verificar: boolean, origen?: OrigenAlta): Promise<boolean> {
   try {
     const s = servicio();
     const { data, error } = await s
@@ -43,9 +60,9 @@ export async function asegurarPerfil(userId: string, email: string, verificar: b
     }
     const ahora = new Date().toISOString();
     if (!data) {
-      const alta = await s
-        .from("ca_perfiles")
-        .insert({ user_id: userId, email, verificado_at: verificar ? ahora : null });
+      const fila = { user_id: userId, email, verificado_at: verificar ? ahora : null };
+      let alta = await s.from("ca_perfiles").insert(origen ? { ...fila, ...origen } : fila);
+      if (origen && faltaColumna(alta.error)) alta = await s.from("ca_perfiles").insert(fila);
       if (alta.error && alta.error.code !== "23505") {
         avisar("asegurarPerfil/alta", alta.error);
         return false;

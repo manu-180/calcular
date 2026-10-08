@@ -10,9 +10,9 @@ import { servicio } from "@/lib/supabase/servicio";
 import { registrarEvento } from "@/lib/rastreo-servidor";
 import { esAdminEmail } from "@/lib/auth/admin";
 import { COOKIE_ALTA, OPCIONES_ALTA, ponerPista } from "@/lib/auth/cookies";
-import { destinoSeguro } from "@/lib/auth/destino";
+import { destinoSeguro, inicioTrasEntrar } from "@/lib/auth/destino";
 import type { EstadoForm } from "@/lib/auth/estado";
-import { huellaAlta, limitePorIp } from "@/lib/auth/pedido";
+import { huellaAlta, limitePorIp, origenAlta, sitioDelPedido } from "@/lib/auth/pedido";
 import { asegurarPerfil, verificadoPrevio, vincularCompras } from "@/lib/auth/perfil";
 import { TIPOS_ENLACE, TOKEN_RE } from "@/app/(ar)/auth/confirmar/tipos";
 
@@ -63,7 +63,9 @@ export async function confirmarEnlace(_prev: EstadoForm, fd: FormData): Promise<
   }
 
   // El orden importa: ca_vincular_compras exige el perfil ya verificado.
-  const verificado = await asegurarPerfil(userId, email, true);
+  const sitio = await sitioDelPedido();
+  const origen = origenAlta(sitio, nextCrudo);
+  const verificado = await asegurarPerfil(userId, email, true, origen);
   if (verificado) await vincularCompras(supabase);
   ponerPista(store);
   after(() =>
@@ -72,11 +74,11 @@ export async function confirmarEnlace(_prev: EstadoForm, fd: FormData): Promise<
       path: "/auth/confirmar",
       userId,
       props: { via: tipo },
+      origen,
     }),
   );
 
   if (tipo === "recovery") redirect("/cuenta/clave?desde=recuperar");
   if (claveDescartada) redirect("/cuenta/clave?desde=confirmar");
-  const porDefecto = verificado && esAdminEmail(email) ? "/dashboard" : "/cuenta";
-  redirect(destinoSeguro(nextCrudo, porDefecto));
+  redirect(destinoSeguro(nextCrudo, inicioTrasEntrar(sitio, verificado && esAdminEmail(email)), sitio));
 }

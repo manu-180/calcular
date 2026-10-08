@@ -33,8 +33,24 @@ Rama: `claude/calcularya-paridad`. Invariante de siempre: `scripts/check_rutas_a
 5. Planillas por país (primero sueldo y liquidación) y calculadoras faltantes respecto del top de AR
    (trabajo doméstico, régimen simplificado, inflación) donde haya fuente primaria.
 
+## Fase 3 (cuentas), cómo quedó
+
+- calcularya.com sirve `/login`, `/registro`, `/recuperar`, `/auth/*` y `/cuenta/*` con su shell, desde
+  `src/app/(intl)/intl/[mercado]/(cuenta)` (sólo `global`; `/mx/login` es 404). Llegan por un rewrite de
+  `src/motor/hosts.ts` que existe sólo con `NEXT_PUBLIC_CUENTAS_ACTIVAS=1`; apagadas, siguen yendo a calcular.ar.
+  `/dashboard` sigue sólo en calcular.ar.
+- Páginas y formularios son los mismos componentes de AR (`src/components/cuenta/paginas/*`), con los textos de
+  `src/lib/cuenta/textos.ts` (AR idéntico a antes; CalcularYa en tú, «correo», «contraseña»).
+- El sitio sale del Host (`src/lib/auth/sitio.ts`): origen de mails y de Google de una lista cerrada, destino
+  después de entrar siempre un path propio. Gate: `scripts/check_cuentas_sitio.ts`.
+- `sitio`/`mercado` se anotan desde el servidor en perfil (al nacer), cálculos, opiniones y eventos; antes de la
+  migración de la fase 2 se guardan sin esas columnas.
+
 ## Pendientes de Manuel
 
 - Correr el SQL de la fase 2 en Supabase.
-- Redirect URI de Google para calcularya.com.
+- Redirect URI de Google para calcularya.com: en Google Cloud, el mismo cliente OAuth de calcular.ar, sumar
+  `https://calcularya.com/auth/google/vuelta` en «URI de redireccionamiento autorizados» (y
+  `https://calcularya.com` en orígenes). Después, `NEXT_PUBLIC_GOOGLE_INTL_ACTIVO=1` en Vercel: hasta entonces
+  calcularya no muestra el botón de Google y el ingreso con correo anda igual.
 - PayPal: cuenta Business y app REST (Client ID y Secret por envkit).

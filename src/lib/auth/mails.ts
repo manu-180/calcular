@@ -1,7 +1,7 @@
 import "server-only";
-import { FROM, mailCuenta, sendSingle, type MailCuenta } from "@/lib/email";
+import { mailCuenta, remitente, sendSingle, type MailCuenta } from "@/lib/email";
 import { servicio } from "@/lib/supabase/servicio";
-import { origenDelSitio } from "@/lib/auth/pedido";
+import { origenDelSitio, sitioDelPedido } from "@/lib/auth/pedido";
 import { permitido } from "@/lib/limite";
 
 const DIA_SEG = 24 * 60 * 60;
@@ -31,9 +31,10 @@ export async function mandarMail(tipo: MailCuenta, email: string, url: string): 
     console.warn(`[auth] mail «${tipo}» omitido: tope diario del buzón`);
     return true;
   }
-  const m = mailCuenta(tipo, url);
+  const sitio = await sitioDelPedido();
+  const m = mailCuenta(tipo, url, sitio);
   try {
-    const ok = await sendSingle({ from: FROM, to: [email], subject: m.asunto, html: m.html, text: m.texto });
+    const ok = await sendSingle({ from: remitente(sitio), to: [email], subject: m.asunto, html: m.html, text: m.texto });
     if (!ok) console.error(`[auth] Resend rechazó el mail «${tipo}»`);
     return ok;
   } catch (e) {
