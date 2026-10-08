@@ -1,0 +1,40 @@
+name: ci
+
+# Todo PR contra main corre los mismos checks que la puerta de datos-vivos y datos-paises, sin
+# PAISES_TOLERANTE: un error de datos o de textos de un país se ve en el PR, no en main.
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Tipos
+        run: npx tsc --noEmit
+
+      - name: Planillas
+        run: npx tsx scripts/gen_planilla_todas.ts
+
+      - name: check-all
+        run: npx tsx scripts/check-all.ts

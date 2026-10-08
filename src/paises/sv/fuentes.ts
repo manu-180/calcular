@@ -124,7 +124,7 @@ export const detectores: readonly Detector[] = [
     datos: [...DATOS_LABORALES, ...DATOS_TRIBUTARIOS, ...DATOS_SEGURIDAD_SOCIAL],
     metodo: "html",
     url: URL_ASAMBLEA,
-    // asamblea.gob.sv no manda el certificado intermedio y Node corta con UNABLE_TO_VERIFY_LEAF_SIGNATURE.
+    // asamblea.gob.sv no manda el intermedio: tlsTolerante lo completa con scripts/datos-paises/certs.
     tlsTolerante: true,
     async traer(http) {
       const anio = fechaEnZona(new Date(), ZONA).slice(0, 4);
