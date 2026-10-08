@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.sueldo-liquido",
-  h1: "Calculadora de sueldo líquido",
-  title: "Sueldo líquido 2026: pasá de nominal a líquido",
+  h1: "Calculadora de sueldo líquido en Uruguay",
+  title: "Sueldo líquido Uruguay 2026: pasá de nominal a líquido",
   description:
-    "Calculá tu sueldo líquido con montepío, Fonasa, FRL e IRPF del mes. Usa la BPC de {{uy.bpc}} y las tasas oficiales del BPS y la DGI.",
+    "Calculá tu sueldo líquido 2026: montepío, Fonasa, FRL e IRPF descontados del nominal, con la BPC de {{uy.bpc}}. Probalo gratis y mirá cuánto te depositan.",
   intro: [
-    "El sueldo líquido es lo que te depositan. Sale de restarle al nominal el aporte jubilatorio, el Fonasa, el Fondo de Reconversión Laboral y la retención del IRPF.",
-    "Poné tu nominal y tu situación familiar. Con eso calculamos cada descuento como lo hace el recibo de sueldo.",
+    "Tu sueldo líquido es el nominal menos el {{uy.aporte-jubilatorio}} de montepío, el Fonasa, el {{uy.frl}} del Fondo de Reconversión Laboral y la retención del IRPF. Es lo que te depositan cada mes.",
+    "Poné tu nominal y tu situación familiar. Con eso calculamos cada descuento como lo hace el recibo de sueldo, con las tasas del BPS y la DGI.",
   ],
   comoSeCalcula: [
     "Montepío: {{uy.aporte-jubilatorio}} del nominal, hasta el tope de aportación de {{uy.tope-aportes}}.",
@@ -21,6 +21,10 @@ export default definirContenido({
     "Con $ 100.000 nominales, sin hijos ni cónyuge, en octubre de 2026 te descuentan $ 15.000 de montepío, $ 4.500 de Fonasa, $ 100 de FRL y $ 5.192,80 de IRPF. Tu líquido es $ 75.207,20.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto me descuentan del sueldo en Uruguay?",
+      respuesta: "{{uy.aporte-jubilatorio}} de montepío, entre {{uy.fonasa-hasta[sin]}} y {{uy.fonasa-mas[ambos]}} de Fonasa según tu sueldo y tus cargas, {{uy.frl}} de FRL y el IRPF si te corresponde.",
+    },
     {
       pregunta: "¿Qué diferencia hay entre sueldo nominal y líquido?",
       respuesta: "El nominal es lo que figura antes de descuentos. El líquido es lo que cobrás en mano, después de aportes e IRPF.",

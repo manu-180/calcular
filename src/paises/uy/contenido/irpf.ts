@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.irpf",
-  h1: "Calculadora de IRPF sobre el sueldo",
-  title: "IRPF 2026: calculá la retención de tu sueldo",
+  h1: "Calculadora de IRPF 2026 sobre el sueldo",
+  title: "IRPF Uruguay 2026: calculá tu retención por franjas",
   description:
-    "Calculá el IRPF que te retienen cada mes con la escala por franjas, la BPC de {{uy.bpc}} y tus deducciones por aportes e hijos. Cuentas paso a paso.",
+    "Calculá cuánto IRPF te retienen por mes con las franjas 2026, la BPC de {{uy.bpc}} y tus deducciones por aportes e hijos. Cada paso a la vista, gratis.",
   intro: [
-    "El IRPF de los sueldos se retiene todos los meses. Tu empleador lo calcula con una escala por franjas en BPC y le resta una parte de tus deducciones.",
+    "El IRPF de tu sueldo se calcula con una escala por franjas medidas en BPC, de 0 % a 36 %, menos una parte de tus deducciones. En 2026 la BPC es {{uy.bpc}} y tu empleador te lo retiene todos los meses.",
     "Acá ves cada paso: la renta del mes, el impuesto por franjas, cuánto bajan tus deducciones y lo que te retienen al final.",
   ],
   comoSeCalcula: [
@@ -21,6 +21,10 @@ export default definirContenido({
     "Con $ 100.000 nominales y sin hijos, en 2026 la renta del mes es $ 106.000. Por franjas da $ 7.936,80. Tus aportes suman $ 19.600 y el 14 % es $ 2.744. Te retienen $ 5.192,80.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuáles son las franjas del IRPF en 2026?",
+      respuesta: "Son ocho, medidas en BPC por mes. La primera, hasta 7 BPC, no paga, y la más alta paga 36 %. La calculadora te muestra cuánto de tu renta cae en cada una.",
+    },
     {
       pregunta: "¿Cuál es el mínimo no imponible del IRPF en 2026?",
       respuesta: "7 BPC por mes. Con la BPC de {{uy.bpc}}, la primera parte de la renta hasta ese monto no paga impuesto.",

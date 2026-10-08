@@ -2,23 +2,27 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.salario-minimo",
-  h1: "Salario Mínimo Nacional en Uruguay",
-  title: "Salario mínimo 2026 en Uruguay: mensual, jornal y hora",
+  h1: "Salario mínimo en Uruguay 2026",
+  title: "Salario mínimo Uruguay 2026: {{uy.smn}}, por día y por hora",
   description:
-    "El Salario Mínimo Nacional es {{uy.smn}} por mes desde {{uy.smn#desde}}. Mirá el jornal y la hora mínima, y calculá el mínimo para tus horas.",
+    "El salario mínimo en Uruguay es {{uy.smn}} por mes desde el {{uy.smn#desde}}. Mirá el jornal y la hora mínima, y calculá el mínimo para tus horas.",
   intro: [
-    "El Salario Mínimo Nacional es el piso de sueldo para todo el país. Lo fija el Poder Ejecutivo por decreto. En 2026 subió en enero y en julio.",
+    "El salario mínimo en Uruguay es de {{uy.smn}} nominales por mes desde el {{uy.smn#desde}}. Es el piso de sueldo para todo el país y lo fija el Poder Ejecutivo por decreto. En 2026 subió en enero y en julio.",
     "Te mostramos el mínimo mensual vigente, el jornal y la hora. Si trabajás menos horas, calculamos el mínimo para esas horas.",
   ],
   comoSeCalcula: [
-    "Desde {{uy.smn#desde}} el mínimo es de {{uy.smn}} por mes.",
+    "Desde el {{uy.smn#desde}} el mínimo es de {{uy.smn}} por mes.",
     "El jornal mínimo sale de dividir ese monto entre {{uy.smn-divisor-jornal}}, y la hora mínima, entre {{uy.smn-divisor-hora}}. Así lo dice el decreto.",
     "Para tus horas, multiplicamos la hora mínima por las horas que trabajás en el mes.",
   ],
   faq: [
     {
-      pregunta: "¿Cuánto es el salario mínimo hoy?",
-      respuesta: "{{uy.smn}} por mes, desde {{uy.smn#desde}}.",
+      pregunta: "¿Cuánto es el salario mínimo en Uruguay en 2026?",
+      respuesta: "{{uy.smn}} nominales por mes, desde el {{uy.smn#desde}}.",
+    },
+    {
+      pregunta: "¿Cuánto es el salario mínimo por hora?",
+      respuesta: "Sale de dividir el mínimo mensual entre {{uy.smn-divisor-hora}}, como dice el decreto. La calculadora te muestra el monto exacto y el de tus horas.",
     },
     {
       pregunta: "¿Cuándo vuelve a subir?",

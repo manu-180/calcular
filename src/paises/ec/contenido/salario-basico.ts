@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.salario-basico",
-  h1: "Salario básico unificado 2026",
-  title: "Salario básico 2026 en Ecuador: {{ec.sbu}} y cuánto recibes",
-  description: "El salario básico unificado de 2026 es {{ec.sbu}}. Mira cuánto es por día y por hora, el aporte al IESS y lo que recibes en mano con los décimos.",
+  h1: "Salario básico unificado 2026 en Ecuador",
+  title: "Salario básico 2026 Ecuador: {{ec.sbu}} y cuánto recibes en mano",
+  description: "El salario básico 2026 en Ecuador es {{ec.sbu}}. Mira cuánto es por día y por hora, cuánto te descuenta el IESS y lo que recibes en mano con los décimos.",
   intro: [
-    "El salario básico unificado (SBU) es el sueldo mínimo para una jornada completa en Ecuador. En 2026 es {{ec.sbu}} al mes y rige desde el {{ec.sbu#desde}}.",
+    "El salario básico unificado (SBU) de 2026 en Ecuador es {{ec.sbu}} al mes y rige desde el {{ec.sbu#desde}}. Es el sueldo mínimo para una jornada completa.",
     "Con esta calculadora ves cuánto vale tu día y tu hora, cuánto te descuenta el IESS y cuánto recibes si cobras los décimos cada mes.",
   ],
   comoSeCalcula: [
@@ -26,6 +26,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuánto es el salario básico por hora?",
       respuesta: "Se divide el básico para 30 días y luego para {{ec.jornada-diaria}}. Con el básico de 2026 da unos $2,01 la hora.",
+    },
+    {
+      pregunta: "¿Cuánto recibo en mano con el salario básico?",
+      respuesta: "Del básico te descuentan el {{ec.aporte-personal-iess}} de aporte al IESS. Si cobras los décimos cada mes, se suman a tu sueldo y recibes más que el básico. La calculadora te da el monto exacto.",
     },
     {
       pregunta: "¿A quién se aplica?",

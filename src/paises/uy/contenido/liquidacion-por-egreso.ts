@@ -3,12 +3,12 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.liquidacion-por-egreso",
   h1: "Calculadora de liquidación por egreso",
-  title: "Liquidación por egreso: cuánto cobrás al irte",
+  title: "Liquidación por egreso Uruguay 2026: calculá cuánto cobrás",
   description:
-    "Calculá tu liquidación por egreso con aguinaldo, licencia no gozada, salario vacacional y despido si corresponde. Con las tasas del BPS y la BPC de {{uy.bpc}}.",
+    "Calculá tu liquidación por renuncia o despido: aguinaldo, licencia no gozada, salario vacacional e indemnización, partida por partida. Gratis y al instante.",
   intro: [
-    "Cuando termina un trabajo, por renuncia o por despido, se cobra una liquidación final. Siempre incluye el aguinaldo proporcional, la licencia no gozada y su salario vacacional.",
-    "Si fue despido, además se suma la indemnización. Poné tus fechas y tu sueldo, y te mostramos cada partida.",
+    "La liquidación por egreso es lo que cobrás al dejar un trabajo: aguinaldo proporcional, licencia no gozada y salario vacacional, por renuncia o por despido.",
+    "Si fue despido, además se suma la indemnización. Poné tus fechas y tu sueldo, y te mostramos cada partida con las tasas del BPS y la BPC de {{uy.bpc}}.",
   ],
   comoSeCalcula: [
     "Aguinaldo: medio sueldo por semestre, en proporción a los días trabajados desde el 1 de diciembre o el 1 de junio.",
@@ -21,8 +21,12 @@ export default definirContenido({
   ],
   faq: [
     {
-      pregunta: "¿Si renuncio cobro algo?",
-      respuesta: "Sí. La renuncia no te hace perder el aguinaldo proporcional, la licencia no gozada ni el salario vacacional. Lo único que no cobrás es la indemnización por despido.",
+      pregunta: "¿Cuánto me corresponde de liquidación si renuncio?",
+      respuesta: "El aguinaldo proporcional, la licencia no gozada y su salario vacacional. La renuncia no te hace perder nada de eso. Lo único que no cobrás es la indemnización por despido.",
+    },
+    {
+      pregunta: "¿Qué diferencia hay entre la liquidación por egreso y el despido?",
+      respuesta: "La liquidación por egreso es todo lo que cobrás al irte. La indemnización por despido es una parte de esa liquidación, y solo se suma si te despiden.",
     },
     {
       pregunta: "¿Qué pasa si me despiden por notoria mala conducta?",

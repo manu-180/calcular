@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.fondos-de-reserva",
-  h1: "Calculadora de fondos de reserva",
-  title: "Fondos de reserva 2026: calcula cuánto te toca",
-  description: "Calcula tu fondo de reserva: el {{ec.fondo-reserva}} de tu remuneración desde que cumples un año con el mismo empleador. Mensual o acumulado en el IESS.",
+  h1: "Calculadora de fondos de reserva del IESS",
+  title: "Fondos de reserva IESS 2026: calcula tu {{ec.fondo-reserva}} mensual",
+  description: "Calcula tus fondos de reserva: el {{ec.fondo-reserva}} de tu remuneración desde que cumples un año con el mismo empleador, mensualizado o acumulado en el IESS.",
   intro: [
-    "El fondo de reserva es un pago extra equivalente a un sueldo por año. Te corresponde desde que cumples un año con el mismo empleador.",
+    "El fondo de reserva es el {{ec.fondo-reserva}} de tu remuneración de cada mes, o sea, un sueldo por año. Te corresponde desde que cumples un año con el mismo empleador.",
     "Puedes cobrarlo cada mes junto con tu sueldo o pedir que se deposite en el IESS para ahorrarlo.",
   ],
   comoSeCalcula: [
@@ -23,6 +23,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuánto es el fondo de reserva?",
       respuesta: "El {{ec.fondo-reserva}} de tu remuneración de aportación cada mes. En un año equivale a un sueldo.",
+    },
+    {
+      pregunta: "¿Cómo se calculan los fondos de reserva mensualizados?",
+      respuesta: "Multiplica tu remuneración del mes (sueldo, horas extra y comisiones) por {{ec.fondo-reserva}}. Con $1.000 al mes, son $83,30 que te pagan junto con el sueldo.",
     },
     {
       pregunta: "¿Cómo pido que lo acumule el IESS?",

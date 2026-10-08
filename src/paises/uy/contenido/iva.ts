@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.iva",
-  h1: "Calculadora de IVA",
-  title: "IVA en Uruguay: sumá o sacá el IVA de un precio",
+  h1: "Calculadora de IVA en Uruguay",
+  title: "Calculadora de IVA Uruguay: sumá o sacá el {{uy.iva-basica}} y el {{uy.iva-minima}}",
   description:
-    "Sumá o sacá el IVA de un precio con la tasa básica de {{uy.iva-basica}} o la mínima de {{uy.iva-minima}}. Resultado al instante, con el IVA separado.",
+    "Sacá el IVA de un precio o sumáselo con la tasa básica de {{uy.iva-basica}} o la mínima de {{uy.iva-minima}}. Ves el precio sin IVA, el impuesto y el total al instante.",
   intro: [
-    "En Uruguay el IVA tiene dos tasas: la básica, que es la general, y la mínima, para los bienes y servicios que fija la ley.",
+    "En Uruguay el IVA básico es de {{uy.iva-basica}} y el mínimo, de {{uy.iva-minima}}. La tasa básica es la general y la mínima va para los bienes y servicios que fija la ley.",
     "Elegí si querés sumarle el IVA a un precio o sacárselo, y te mostramos el precio sin IVA, el impuesto y el total.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,14 @@ export default definirContenido({
     {
       pregunta: "¿Cuál es la tasa de IVA en Uruguay?",
       respuesta: "La básica es de {{uy.iva-basica}} y la mínima, de {{uy.iva-minima}}.",
+    },
+    {
+      pregunta: "¿Cómo saco el IVA de un precio?",
+      respuesta: "Dividí el precio final entre 1,22 (o entre 1,10 si va con tasa mínima). El resultado es el precio sin IVA y la diferencia es el impuesto.",
+    },
+    {
+      pregunta: "¿Cómo le sumo el IVA a un precio?",
+      respuesta: "Multiplicá el precio sin IVA por 1,22 con la tasa básica o por 1,10 con la mínima.",
     },
     {
       pregunta: "¿Por qué el IVA no es el {{uy.iva-basica}} del precio final?",

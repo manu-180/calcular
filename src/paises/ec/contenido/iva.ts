@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.iva",
-  h1: "Calculadora de IVA",
-  title: "Calculadora de IVA {{ec.iva}} en Ecuador",
-  description: "Suma o quita el IVA de {{ec.iva}} a cualquier precio. Con la tarifa general vigente que confirma el SRI.",
+  h1: "Calculadora de IVA {{ec.iva}} en Ecuador",
+  title: "Calculadora IVA {{ec.iva}} Ecuador: suma o quita el IVA",
+  description: "Suma o quita el IVA de {{ec.iva}} a cualquier precio en segundos. Con la tarifa general vigente desde el {{ec.iva#desde}}, confirmada por el SRI.",
   intro: [
     "El IVA en Ecuador es de {{ec.iva}} desde el {{ec.iva#desde}}. Con esta calculadora lo sumas a un precio o lo separas de un precio que ya lo incluye.",
   ],
@@ -17,6 +17,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuánto es el IVA en Ecuador en 2026?",
       respuesta: "{{ec.iva}}. Rige desde el {{ec.iva#desde}} y el SRI confirmó que sigue vigente mientras el Presidente no lo cambie por decreto.",
+    },
+    {
+      pregunta: "¿Cómo se calcula el IVA de {{ec.iva}}?",
+      respuesta: "Para sumarlo, multiplica el precio sin IVA por 1,15. Para quitarlo, divide el precio con IVA para 1,15: el resultado es el precio sin IVA y la diferencia es el impuesto.",
     },
     {
       pregunta: "¿Puede cambiar el IVA?",

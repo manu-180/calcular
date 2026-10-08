@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.decimo-tercer-sueldo",
-  h1: "Calculadora del décimo tercer sueldo",
-  title: "Décimo tercer sueldo 2026: calcula tu bono navideño",
-  description: "Calcula tu décimo tercero: la doceava parte de lo que ganaste del 1 de diciembre al 30 de noviembre. Para cobro acumulado o mensual.",
+  h1: "Calculadora del décimo tercer sueldo 2026",
+  title: "Décimo tercer sueldo 2026 Ecuador: calcula tu bono navideño",
+  description: "Calcula tu décimo tercero: la doceava parte de lo ganado del 1 de diciembre al 30 de noviembre, acumulado o mensual. Se paga hasta el 24 de diciembre.",
   intro: [
-    "El décimo tercero (o bono navideño) es la doceava parte de todo lo que ganaste en el año. Si lo cobras acumulado, te lo pagan hasta el 24 de diciembre.",
+    "El décimo tercer sueldo (o bono navideño) es la doceava parte de todo lo que ganaste del 1 de diciembre al 30 de noviembre. Si lo cobras acumulado, te lo pagan hasta el 24 de diciembre.",
     "Pon tu sueldo, los meses que trabajaste y lo que sumaste por horas extra o comisiones. La calculadora hace el resto.",
   ],
   comoSeCalcula: [
@@ -19,6 +19,14 @@ export default definirContenido({
     "Ganas $800 al mes y trabajaste todo el período, sin horas extra. Tu décimo tercero es $800, o $66,67 cada mes si lo cobras mensualizado.",
   ],
   faq: [
+    {
+      pregunta: "¿Cómo se calcula el décimo tercero?",
+      respuesta: "Suma todo lo que ganaste en el período (sueldo, horas extra y comisiones) y divídelo para 12. Con sueldo fijo y el año completo, es un sueldo entero.",
+    },
+    {
+      pregunta: "¿Qué diferencia hay entre el décimo tercero y el décimo cuarto?",
+      respuesta: "El décimo tercero depende de lo que ganas: es la doceava parte de tus ingresos del año. El décimo cuarto es igual para todos: un salario básico de {{ec.sbu}}.",
+    },
     {
       pregunta: "¿Hasta cuándo se paga el décimo tercero?",
       respuesta: "Hasta el 24 de diciembre, si lo cobras acumulado. Si lo cobras cada mes, ya te llega en el rol de pagos.",

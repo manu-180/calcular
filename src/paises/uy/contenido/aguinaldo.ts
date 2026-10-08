@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.aguinaldo",
-  h1: "Calculadora de aguinaldo",
-  title: "Aguinaldo en Uruguay: calculá tu cuota de junio o diciembre",
-  description: "Calculá tu aguinaldo de junio o diciembre, o el proporcional si dejás el trabajo. Es la doceava parte de lo que cobraste en el semestre, como dice la ley.",
+  h1: "Calculadora de aguinaldo en Uruguay",
+  title: "Aguinaldo Uruguay 2026: calculá junio, diciembre o egreso",
+  description: "Calculá tu aguinaldo de junio o diciembre, o el proporcional si te vas: la doceava parte de lo cobrado en el semestre, con horas extra y comisiones. Gratis.",
   intro: [
-    "El aguinaldo (sueldo anual complementario) es la doceava parte de todo lo que cobraste en dinero en el año. Se paga en dos cuotas: en junio y en diciembre.",
+    "El aguinaldo en Uruguay es la doceava parte de todo lo que cobraste en dinero. Se paga en dos cuotas: en junio (lo generado de diciembre a mayo) y en diciembre (lo de junio a noviembre).",
     "Elegí la cuota, poné tu sueldo y los meses trabajados. Si tuviste horas extra o comisiones, sumalas aparte.",
   ],
   comoSeCalcula: [
@@ -17,6 +17,10 @@ export default definirContenido({
   ],
   ejemplo: ["Si cobrás $ 50.000 por mes y trabajaste de junio a noviembre, tu aguinaldo de diciembre es 50.000 × 6 / 12 = $ 25.000 nominales."],
   faq: [
+    {
+      pregunta: "¿Cómo se calcula el aguinaldo en Uruguay?",
+      respuesta: "Se suma todo lo que cobraste en dinero en el semestre y se divide entre 12. Con sueldo fijo y el semestre completo, es medio sueldo nominal.",
+    },
     {
       pregunta: "¿Cuándo se paga el aguinaldo?",
       respuesta: "La cuota de junio se paga en ese mes y la de diciembre, antes del 24 de diciembre. Cada año un decreto fija las fechas.",

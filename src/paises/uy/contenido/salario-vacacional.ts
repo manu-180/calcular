@@ -3,11 +3,11 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.salario-vacacional",
   h1: "Calculadora de licencia y salario vacacional",
-  title: "Licencia y salario vacacional: calculá días y monto",
+  title: "Salario vacacional y licencia 2026: calculá días y monto",
   description:
-    "Calculá cuántos días de licencia te tocan ({{uy.licencia-dias}} más los de antigüedad) y tu salario vacacional sobre el jornal líquido. Con los descuentos de 2026.",
+    "Calculá tus días de licencia ({{uy.licencia-dias}} más los de antigüedad) y tu salario vacacional sobre el jornal líquido, con los descuentos de 2026. Gratis.",
   intro: [
-    "Todo trabajador privado tiene derecho a una licencia anual paga y, además, a un salario vacacional para disfrutarla.",
+    "El salario vacacional es el {{uy.salario-vacacional}} de tu jornal líquido por cada día de licencia. La licencia mínima es de {{uy.licencia-dias}} por año trabajado y crece con la antigüedad.",
     "Te mostramos los días que generaste, lo que cobrás por esos días y el salario vacacional, que se calcula sobre tu sueldo líquido.",
   ],
   comoSeCalcula: [
@@ -23,6 +23,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuándo se cobra el salario vacacional?",
       respuesta: "Antes de salir de licencia, en proporción a los días que te tomás.",
+    },
+    {
+      pregunta: "¿El salario vacacional paga IRPF?",
+      respuesta: "Paga IRPF, pero no aportes al BPS. Lo que cobrás de licencia, en cambio, paga las dos cosas.",
     },
     {
       pregunta: "¿Los sábados cuentan como días de licencia?",

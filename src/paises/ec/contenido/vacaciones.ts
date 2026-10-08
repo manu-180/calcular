@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.vacaciones",
-  h1: "Calculadora de vacaciones",
-  title: "Vacaciones en Ecuador 2026: días y cuánto te pagan",
-  description: "Calcula tus días de vacaciones ({{ec.vacaciones-dias}} al año, más días por antigüedad) y cuánto te pagan por las proporcionales y las no tomadas.",
+  h1: "Calculadora de vacaciones en Ecuador",
+  title: "Vacaciones Ecuador 2026: calcula días y proporcionales",
+  description: "Calcula tus días de vacaciones ({{ec.vacaciones-dias}} al año, más los de antigüedad) y cuánto te pagan por las proporcionales y las no tomadas, según el Código del Trabajo.",
   intro: [
     "En Ecuador te corresponden {{ec.vacaciones-dias}} de vacaciones por cada año de trabajo, contando fines de semana y feriados. Después de {{ec.vacaciones-anios-sin-adicional}} con el mismo empleador, se suma un día por año.",
     "Si te vas sin haberlas tomado, te pagan las vacaciones proporcionales y las pendientes. Esta calculadora te dice cuánto.",
@@ -22,6 +22,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuántos días de vacaciones me corresponden en Ecuador?",
       respuesta: "{{ec.vacaciones-dias}} por año, incluidos los días no laborables. Desde el sexto año con el mismo empleador se suma un día por año, hasta {{ec.vacaciones-adicionales-max}} adicionales.",
+    },
+    {
+      pregunta: "¿Cómo se calculan las vacaciones proporcionales?",
+      respuesta: "Cada día vale tu sueldo dividido para 30. Te pagan los días acumulados desde tu último aniversario: con {{ec.vacaciones-dias}} al año, son 1,25 días por cada mes trabajado.",
     },
     {
       pregunta: "¿Me pueden pagar los días adicionales en vez de dármelos?",
