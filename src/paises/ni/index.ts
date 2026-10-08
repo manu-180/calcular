@@ -1,6 +1,7 @@
 import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
 import aguinaldo from "./calculadoras/aguinaldo";
+import costoEmpleador from "./calculadoras/costo-empleador";
 import horasExtras from "./calculadoras/horas-extras";
 import indemnizacionPorAntiguedad from "./calculadoras/indemnizacion-por-antiguedad";
 import inflacion from "./calculadoras/inflacion";
@@ -12,6 +13,7 @@ import salarioNeto from "./calculadoras/salario-neto";
 import tipoDeCambio from "./calculadoras/tipo-de-cambio";
 import vacaciones from "./calculadoras/vacaciones";
 import contenidoAguinaldo from "./contenido/aguinaldo";
+import contenidoCostoEmpleador from "./contenido/costo-empleador";
 import contenidoHorasExtras from "./contenido/horas-extras";
 import contenidoIndemnizacionPorAntiguedad from "./contenido/indemnizacion-por-antiguedad";
 import contenidoInflacion from "./contenido/inflacion";
@@ -45,6 +47,7 @@ export default definirPais({
     { definicion: tipoDeCambio, contenido: contenidoTipoDeCambio, cliente: () => import("./calculadoras/tipo-de-cambio.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
   ],
   novedades,
   detectores,

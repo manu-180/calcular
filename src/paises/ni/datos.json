@@ -320,6 +320,59 @@
       ]
     },
     {
+      "id": "ni.inss-patronal",
+      "nombre": "Cotización del empleador al INSS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "integral-menos-50": "Régimen integral, menos de 50 trabajadores",
+        "integral-50-o-mas": "Régimen integral, 50 trabajadores o más",
+        "ivm-menos-50": "Régimen IVM, menos de 50 trabajadores",
+        "ivm-50-o-mas": "Régimen IVM, 50 trabajadores o más"
+      },
+      "nota": "Suma de las ramas a cargo del empleador del artículo 11 reformado: IVM 12.50 % (menos de 50 trabajadores) o 13.50 % (50 o más), riesgos profesionales 1.50 %, víctimas de guerra 1.50 % y, en el régimen integral, enfermedad y maternidad 6.00 %. Sin techo de remuneración (artículo 16).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": {
+            "integral-menos-50": 21.5,
+            "integral-50-o-mas": 22.5,
+            "ivm-menos-50": 15.5,
+            "ivm-50-o-mas": 16.5
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reformas al Reglamento General de la Ley de Seguridad Social, artículo 11 (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/xml.php?iunp=MjQxNDk=&lastversion=last",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.inatec",
+      "nombre": "Aporte mensual del empleador al INATEC",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Aporte obligatorio sobre la planilla de salarios brutos (Decreto 40-94, Ley Orgánica del INATEC, artículo 24). El sitio del INATEC lo menciona como el aporte del 2 % de las empresas aportantes.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1994-10-14",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Instituto Nacional Tecnológico (INATEC)",
+            "titulo": "Portal del Tecnológico Nacional: servicios en línea y atención a las empresas aportantes del 2 %",
+            "url": "https://www.tecnacional.edu.ni/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
       "id": "ni.ir-rentas-trabajo",
       "nombre": "Tarifa progresiva anual del IR de rentas del trabajo",
       "tipo": "escala",
