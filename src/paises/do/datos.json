@@ -732,6 +732,70 @@
           }
         }
       ]
+    },
+    {
+      "id": "do.rst-tope-ingresos",
+      "nombre": "Ingreso máximo anual para el RST basado en ingresos",
+      "tipo": "numero",
+      "unidad": "DOP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 12068181.09,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Resolución DDG-AR1-2026-00001, ordinal sexto (art. 4, párrafo I, del Decreto 265-19)",
+            "url": "https://dgii.gov.do/legislacion/resoluciones/Documents/DDG-%20AR1-2026-00001.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.rst-reduccion-ingresos",
+      "nombre": "Reducción de los ingresos gravados de personas físicas en el RST por ingresos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-08-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Presidencia de la República (publicado por la DGII)",
+            "titulo": "Decreto 265-19, Reglamento del Régimen Simplificado de Tributación, artículo 17",
+            "url": "https://dgii.gov.do/legislacion/reglamentos/Documents/2019/Decreto-265-19.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Copia escaneada del decreto firmado; el artículo 17 está en la página 9."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.rst-tasa-juridicas",
+      "nombre": "Tasa del RST por ingresos para personas jurídicas (ISR e ITBIS)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-08-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Presidencia de la República (publicado por la DGII)",
+            "titulo": "Decreto 265-19, Reglamento del Régimen Simplificado de Tributación, artículo 15",
+            "url": "https://dgii.gov.do/legislacion/reglamentos/Documents/2019/Decreto-265-19.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Copia escaneada del decreto firmado; el artículo 15 está en la página 9."
+          }
+        }
+      ]
     }
   ]
 }

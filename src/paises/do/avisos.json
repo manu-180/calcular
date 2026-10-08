@@ -2,6 +2,21 @@
   "mercado": "do",
   "avisos": [
     {
+      "id": "do.rst-ley-30-26",
+      "nivel": "info",
+      "desde": "2026-06-26",
+      "aplicaA": ["do.rst"],
+      "titulo": "Nuevo RST pendiente de reglamento",
+      "texto": "La Ley 30-26 crea un nuevo Régimen Simplificado de Tributación. Empieza a aplicarse cuando la DGII emita su reglamento. Mientras tanto, este cálculo usa las reglas del Decreto 265-19.",
+      "fuente": {
+        "organismo": "Dirección General de Impuestos Internos (DGII)",
+        "titulo": "Aviso del 26/6/2026 sobre el calendario de implementación de la Ley 30-26 (punto 25, RST)",
+        "url": "https://dgii.gov.do/publicacionesOficiales/avisosInformativos/Documents/2026/10-26.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-08"
+      }
+    },
+    {
       "id": "do.isr-2027",
       "nivel": "info",
       "desde": "2026-06-18",

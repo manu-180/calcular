@@ -24,6 +24,8 @@ import contenidoTasaDelDolar from "./contenido/tasa-del-dolar";
 import contenidoVacaciones from "./contenido/vacaciones";
 import inflacion from "./calculadoras/inflacion";
 import contenidoInflacion from "./contenido/inflacion";
+import rst from "./calculadoras/rst";
+import contenidoRst from "./contenido/rst";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +50,7 @@ export default definirPais({
     { definicion: tasaDelDolar, contenido: contenidoTasaDelDolar, cliente: () => import("./calculadoras/tasa-del-dolar.cliente") },
     { definicion: aportesTss, contenido: contenidoAportesTss, cliente: () => import("./calculadoras/aportes-tss.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: rst, contenido: contenidoRst, cliente: () => import("./calculadoras/rst.cliente") },
   ],
   novedades,
   detectores,
