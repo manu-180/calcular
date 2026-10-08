@@ -86,4 +86,49 @@ export interface TextosSitio {
     tituloNovedades: (pais: string, anio: number) => readonly string[];
   };
   og: { datosOficiales: string; actualizado: (fecha: string) => string; gratis: string; paises: (n: number) => string };
+  shell: TextosShell;
+}
+
+// Header, cajón, buscador y footer (los mismos de calcular.ar). Las claves de encabezado y buscador
+// tienen la forma que esperan SiteHeader y Buscador en src/components.
+export interface TextosShell {
+  irAlInicio: string;
+  menu: { trabajo: string; impuestos: string; dinero: string; novedades: string };
+  encabezado: {
+    principal: string;
+    buscar: string;
+    buscarCalculadora: string;
+    abrirMenu: string;
+    cerrarMenu: string;
+    menu: string;
+    todas: string;
+    pieCajon: string;
+  };
+  buscador: {
+    dialogo: string;
+    pregunta: string;
+    recientes: string;
+    masUsado: string;
+    sinResultados: string;
+    sugerencia: string;
+    verTodas: string;
+    borrar: string;
+    cerrar: string;
+    cerrarBuscador: string;
+    moverte: string;
+    abrir: string;
+    desdeCualquier: string;
+    resultados: string;
+    resultado: string;
+    resultadosPlural: string;
+  };
+  paises: { titulo: string; cambiar: string };
+  pie: {
+    bajada: (lugar: string) => string;
+    todas: string;
+    cuenta: string;
+    cuentaNota: string;
+    hecho: string;
+    escrito: string;
+  };
 }

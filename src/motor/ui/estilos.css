@@ -1,112 +1,107 @@
-/* CalcularYa. CSS propio del árbol intl: no arrastra el globals.css de calcular.ar ni Tailwind.
-   Clases cy-* escritas a mano, así el Tailwind de AR (que escanea todo el repo) no genera nada
-   nuevo por culpa de estos componentes y el CSS de cada página intl queda chico.
+/* CalcularYa. CSS propio del árbol intl, con el look de calcular.ar (fondo, zinc, acento esmeralda,
+   Geist). Header, cajón, buscador y footer son los de calcular.ar y viven en
+   src/components/shell/shell.css. Clases cy-* escritas a mano: el Tailwind de ese archivo solo mira el shell.
    Vetos de Manuel: sin caret visible, sin fondo plano, sombras siempre negras (nunca del color de
    marca), el hover lo da el movimiento. */
 
 :root {
   color-scheme: light;
-  --cy-papel: #f4f1ea;
-  --cy-papel-claro: #fffdf8;
-  --cy-papel-hondo: #f7f3ea;
-  --cy-tinta: #1e2a44;
-  --cy-texto: #23262d;
-  --cy-texto-suave: #5b606b;
-  --cy-linea: rgb(30 42 68 / 0.12);
-  --cy-linea-fuerte: rgb(30 42 68 / 0.2);
-  --cy-maiz: #e8a33d;
-  --cy-maiz-tinta: #8f5207;
-  --cy-rojo: #a1342b;
+  --cy-papel: #fafaf9;
+  --cy-papel-claro: #ffffff;
+  --cy-papel-hondo: #f4f4f5;
+  --cy-tinta: #18181b;
+  --cy-texto: #27272a;
+  --cy-texto-suave: #52525b;
+  --cy-linea: rgb(24 24 27 / 0.1);
+  --cy-linea-fuerte: rgb(24 24 27 / 0.18);
+  --cy-acento: #10b981;
+  --cy-acento-tinta: #047857;
+  --cy-acento-suave: #ecfdf5;
+  --cy-rojo: #b91c1c;
   --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-snappy: cubic-bezier(0.32, 0.72, 0, 1);
   --cy-sombra-apoyo: 0 1px 2px rgb(0 0 0 / 0.05), 0 1px 1px rgb(0 0 0 / 0.03);
   --cy-sombra-alzada: 0 16px 34px -22px rgb(0 0 0 / 0.28), 0 3px 8px -4px rgb(0 0 0 / 0.08);
   --cy-sombra-flotante: 0 32px 80px -28px rgb(0 0 0 / 0.36), 0 0 0 1px rgb(0 0 0 / 0.05);
+  --cy-anillo: 0 0 0 2px #fff, 0 0 0 4px rgb(16 185 129 / 0.55);
   --cy-ancho: 72rem;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* En una capa: así las utilidades del shell (otra capa, más alta) les ganan a estos selectores de elemento. */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 6rem;
-}
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
 
-body,
-h1,
-h2,
-h3,
-p,
-ol,
-ul,
-dl,
-dd,
-figure {
-  margin: 0;
-}
+  body,
+  h1,
+  h2,
+  h3,
+  p,
+  ol,
+  ul,
+  dl,
+  dd,
+  figure {
+    margin: 0;
+  }
 
-ol,
-ul {
-  padding: 0;
-  list-style: none;
-}
+  ol,
+  ul {
+    padding: 0;
+    list-style: none;
+  }
 
-/* Base papel con dos lavados de luz (maíz a la izquierda, añil a la derecha) y grano fijo. */
-.cy-cuerpo {
-  min-height: 100dvh;
-  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--cy-texto);
-  background:
-    radial-gradient(56rem 30rem at 6% -8rem, rgb(232 163 61 / 0.16), transparent 65%),
-    radial-gradient(48rem 28rem at 98% -6rem, rgb(62 99 170 / 0.11), transparent 62%),
-    var(--cy-papel);
-  background-repeat: no-repeat;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  caret-color: transparent;
-}
+  /* El fondo de calcular.ar: papel con dos lavados de luz anclados arriba, sin repetirse al scrollear. */
+  .cy-cuerpo {
+    min-height: 100dvh;
+    font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--cy-texto);
+    background:
+      radial-gradient(60rem 32rem at 12% -6rem, rgb(16 185 129 / 0.09), transparent 65%),
+      radial-gradient(52rem 30rem at 92% -10rem, rgb(56 189 248 / 0.08), transparent 62%),
+      var(--cy-papel);
+    background-repeat: no-repeat;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    caret-color: transparent;
+  }
 
-.cy-cuerpo::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+  input,
+  textarea,
+  select,
+  [contenteditable] {
+    caret-color: auto;
+  }
 
-input,
-textarea,
-select,
-[contenteditable] {
-  caret-color: auto;
-}
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    color: var(--cy-tinta);
+  }
 
-h1,
-h2,
-h3 {
-  text-wrap: balance;
-  color: var(--cy-tinta);
-}
+  a {
+    color: inherit;
+  }
 
-a {
-  color: inherit;
-}
-
-::selection {
-  background: rgb(232 163 61 / 0.32);
+  ::selection {
+    background: rgb(52 211 153 / 0.3);
+  }
 }
 
 :focus-visible {
-  outline: 2px solid var(--cy-tinta);
-  outline-offset: 2px;
-  border-radius: 0.375rem;
+  outline: none;
+  box-shadow: var(--cy-anillo);
 }
 
 .cy-saltar {
@@ -145,66 +140,13 @@ a {
   padding-block: 1.5rem 0;
 }
 
-/* ---------- Encabezado: isla flotante, despegada del borde ---------- */
-
-.cy-encabezado {
-  position: sticky;
-  top: 0.75rem;
-  z-index: 30;
-  width: min(var(--cy-ancho), 100% - 1.5rem);
-  margin: 0.75rem auto 0;
-}
-
-.cy-isla {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.375rem 0.375rem 0.375rem 0.75rem;
-  border: 1px solid var(--cy-linea);
-  border-radius: 999px;
-  background: rgb(255 253 248 / 0.78);
-  backdrop-filter: blur(14px) saturate(1.4);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
-  box-shadow: var(--cy-sombra-apoyo);
-}
-
-.cy-isla-marca {
-  display: inline-flex;
-  min-height: 2.75rem;
-  align-items: center;
-  border-radius: 999px;
-  text-decoration: none;
-}
-
-.cy-marca {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.cy-marca-signo {
-  flex: none;
-}
-
-.cy-marca-texto {
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--cy-tinta);
-}
-
-.cy-marca-ya {
-  color: var(--cy-maiz-tinta);
-}
-
 .cy-bandera {
   flex: none;
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08);
 }
 
-/* ---------- Selector de país ---------- */
+/* ---------- Selector de país: la píldora del buscador de calcular.ar ---------- */
 
 .cy-selector {
   position: relative;
@@ -212,57 +154,71 @@ a {
 
 .cy-selector-boton {
   display: inline-flex;
-  min-height: 2.75rem;
+  height: 2.5rem;
   align-items: center;
   gap: 0.5rem;
-  padding: 0 0.875rem 0 0.75rem;
-  border: 1px solid var(--cy-linea);
+  padding: 0 0.625rem 0 0.75rem;
+  border: 1px solid rgb(228 228 231 / 0.9);
   border-radius: 999px;
-  background: var(--cy-papel-claro);
-  color: var(--cy-tinta);
+  background: rgb(255 255 255 / 0.8);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+  color: #52525b;
   font: inherit;
-  font-size: 0.9375rem;
-  font-weight: 550;
+  font-size: 0.875rem;
+  font-weight: 500;
   cursor: pointer;
   transition:
-    transform 0.25s var(--ease-fluid),
-    box-shadow 0.25s var(--ease-fluid);
+    border-color 0.2s var(--ease-fluid),
+    background-color 0.2s var(--ease-fluid),
+    color 0.2s var(--ease-fluid),
+    transform 0.2s var(--ease-fluid);
 }
 
-.cy-selector-boton:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--cy-sombra-alzada);
+.cy-selector-boton:hover,
+.cy-selector[data-abierto] .cy-selector-boton {
+  border-color: #d4d4d8;
+  background: #fff;
+  color: #27272a;
 }
 
 .cy-selector-boton:active {
   transform: scale(0.97);
 }
 
+.cy-selector-globo {
+  color: #a1a1aa;
+}
+
 .cy-selector-chevron {
-  transition: transform 0.3s var(--ease-snappy);
+  color: #a1a1aa;
+  transition: transform 0.2s var(--ease-fluid);
 }
 
 .cy-selector[data-abierto] .cy-selector-chevron {
   transform: rotate(180deg);
+  color: #10b981;
 }
 
 .cy-selector-panel {
   position: absolute;
   right: 0;
-  top: calc(100% + 0.625rem);
-  width: min(22rem, calc(100vw - 1.5rem));
-  padding: 0.5rem;
-  border: 1px solid var(--cy-linea);
-  border-radius: 1.5rem;
-  background: var(--cy-papel-claro);
-  box-shadow: var(--cy-sombra-flotante);
+  top: calc(100% + 0.5rem);
+  z-index: 60;
+  width: min(22rem, calc(100vw - 2rem));
+  padding: 0.75rem;
+  border: 1px solid rgb(228 228 231 / 0.8);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 28px 70px -24px rgb(24 24 27 / 0.32);
   transform-origin: top right;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-6px) scale(0.96);
+  transform: translateY(-6px) scale(0.985);
   transition:
     opacity 0.14s ease-out,
-    transform 0.18s var(--ease-snappy),
+    transform 0.18s var(--ease-fluid),
     visibility 0s linear 0.18s;
 }
 
@@ -271,18 +227,18 @@ a {
   visibility: visible;
   transform: none;
   transition:
-    opacity 0.2s ease-out,
-    transform 0.32s var(--ease-fluid),
+    opacity 0.18s ease-out,
+    transform 0.18s var(--ease-fluid),
     visibility 0s;
 }
 
 .cy-selector-titulo {
-  padding: 0.5rem 0.75rem 0.375rem;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  padding: 0 0.625rem 0.375rem;
+  font-size: 0.65625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cy-texto-suave);
+  color: #a1a1aa;
 }
 
 .cy-selector-lista {
@@ -292,6 +248,7 @@ a {
   max-height: min(60vh, 26rem);
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-width: thin;
 }
 
 .cy-selector-lista li {
@@ -299,48 +256,48 @@ a {
   transform: translateY(4px);
   transition:
     opacity 0.2s ease-out,
-    transform 0.3s var(--ease-fluid);
+    transform 0.26s var(--ease-fluid);
 }
 
 .cy-selector[data-abierto] .cy-selector-lista li {
   opacity: 1;
   transform: none;
-  transition-delay: calc(var(--i) * 18ms);
+  transition-delay: calc(var(--i) * 12ms);
 }
 
 .cy-selector-opcion,
 .cy-selector-todos {
   display: flex;
-  min-height: 2.75rem;
+  min-height: 2.25rem;
   align-items: center;
   gap: 0.625rem;
-  padding: 0 0.75rem;
-  border-radius: 0.875rem;
-  font-size: 0.9375rem;
+  padding: 0 0.625rem;
+  border-radius: 0.5rem;
+  font-size: 0.84375rem;
+  font-weight: 500;
+  color: #3f3f46;
   text-decoration: none;
-  transition:
-    background-color 0.15s ease-out,
-    transform 0.2s var(--ease-fluid);
+  transition: background-color 0.15s ease-out;
 }
 
 .cy-selector-opcion:hover,
 .cy-selector-todos:hover {
-  background: rgb(30 42 68 / 0.06);
-  transform: translateX(2px);
+  background: rgb(244 244 245 / 0.8);
+  color: #09090b;
 }
 
 .cy-selector-opcion[aria-current] {
-  background: rgb(232 163 61 / 0.16);
-  font-weight: 600;
-  color: var(--cy-tinta);
+  background: #ecfdf5;
+  color: #047857;
 }
 
 .cy-selector-todos {
-  margin-top: 0.25rem;
-  border-top: 1px solid var(--cy-linea);
-  border-radius: 0 0 1rem 1rem;
-  color: var(--cy-texto-suave);
-  font-size: 0.875rem;
+  margin-top: 0.375rem;
+  padding-top: 0.375rem;
+  border-top: 1px solid #f4f4f5;
+  border-radius: 0 0 0.5rem 0.5rem;
+  color: #71717a;
+  font-size: 0.8125rem;
 }
 
 /* ---------- Tipografía de página ---------- */
@@ -364,7 +321,7 @@ a {
   padding: 0.3125rem 0.75rem;
   border: 1px solid var(--cy-linea);
   border-radius: 999px;
-  background: rgb(255 253 248 / 0.7);
+  background: rgb(255 255 255 / 0.7);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -383,7 +340,7 @@ a {
 }
 
 .cy-pildora-sello svg {
-  color: var(--cy-maiz-tinta);
+  color: var(--cy-acento-tinta);
 }
 
 .cy-pildora-sello:hover {
@@ -596,7 +553,7 @@ a {
   display: inline-flex;
   padding: 0.3125rem;
   border-radius: 0.625rem;
-  background: rgb(30 42 68 / 0.05);
+  background: rgb(24 24 27 / 0.05);
 }
 
 .cy-pais-nombre {
@@ -616,7 +573,7 @@ a {
 .cy-pais .cy-boton-icono,
 .cy-tarjeta .cy-boton-icono {
   grid-area: flecha;
-  background: rgb(30 42 68 / 0.06);
+  background: rgb(24 24 27 / 0.06);
   color: var(--cy-tinta);
 }
 
@@ -644,7 +601,7 @@ a {
   font-size: 0.8125rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: var(--cy-maiz-tinta);
+  color: var(--cy-acento-tinta);
 }
 
 .cy-promesa-titulo {
@@ -746,7 +703,7 @@ a {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: var(--cy-maiz);
+  background: var(--cy-acento);
   box-shadow: 0 0 0 3px var(--cy-papel);
 }
 
@@ -754,7 +711,7 @@ a {
   font-size: 0.8125rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: var(--cy-maiz-tinta);
+  color: var(--cy-acento-tinta);
 }
 
 .cy-novedad-titulo {
@@ -865,8 +822,8 @@ a {
 .cy-bisel {
   padding: 0.375rem;
   border-radius: 1.75rem;
-  background: rgb(30 42 68 / 0.05);
-  box-shadow: inset 0 0 0 1px rgb(30 42 68 / 0.06);
+  background: rgb(24 24 27 / 0.05);
+  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.06);
 }
 
 .cy-bisel-nucleo {
@@ -926,7 +883,7 @@ a {
 }
 
 .cy-entrada:hover {
-  border-color: rgb(30 42 68 / 0.32);
+  border-color: rgb(24 24 27 / 0.32);
 }
 
 .cy-entrada:focus-within {
@@ -1002,7 +959,7 @@ a {
   gap: 0.25rem;
   padding: 0.25rem;
   border-radius: 0.875rem;
-  background: rgb(30 42 68 / 0.06);
+  background: rgb(24 24 27 / 0.06);
 }
 
 .cy-segmentado[data-apilado] {
@@ -1090,7 +1047,7 @@ a {
   height: 1.75rem;
   flex: none;
   border-radius: 999px;
-  background: rgb(30 42 68 / 0.2);
+  background: rgb(24 24 27 / 0.2);
   transition: background-color 0.2s ease-out;
 }
 
@@ -1169,22 +1126,22 @@ a {
 .cy-resultado-fila[data-destacada] {
   margin-top: 0.625rem;
   padding: 1rem 1.125rem;
-  border: 0;
+  border: 1px solid #a7f3d0;
   border-radius: 1.125rem;
-  background: var(--cy-tinta);
+  background: var(--cy-acento-suave);
   animation-name: cy-destaca;
 }
 
 .cy-resultado-fila[data-destacada] dt {
-  color: rgb(255 253 248 / 0.72);
+  color: #065f46;
+  font-weight: 600;
 }
 
 .cy-resultado-fila[data-destacada] dd {
   font-size: clamp(1.625rem, 1.3rem + 1.4vw, 2.125rem);
   font-weight: 650;
   letter-spacing: -0.025em;
-  color: var(--cy-papel-claro);
-  background: linear-gradient(transparent 82%, rgb(232 163 61 / 0.55) 82%, rgb(232 163 61 / 0.55) 92%, transparent 92%);
+  color: var(--cy-acento-tinta);
 }
 
 .cy-resultado-ayuda {
@@ -1213,7 +1170,7 @@ a {
   width: 6px;
   height: 6px;
   border-radius: 999px;
-  background: var(--cy-maiz);
+  background: var(--cy-acento);
 }
 
 @keyframes cy-fila {
@@ -1245,20 +1202,20 @@ a {
   gap: 0.75rem;
   margin-bottom: 0.875rem;
   padding: 0.875rem 1rem;
-  border: 1px solid rgb(30 42 68 / 0.14);
+  border: 1px solid rgb(24 24 27 / 0.14);
   border-radius: 1.125rem;
-  background: rgb(30 42 68 / 0.05);
+  background: rgb(24 24 27 / 0.05);
   font-size: 0.9375rem;
 }
 
 .cy-aviso[data-nivel="cautela"] {
-  border-color: rgb(232 163 61 / 0.45);
-  background: rgb(232 163 61 / 0.12);
+  border-color: rgb(16 185 129 / 0.45);
+  background: rgb(16 185 129 / 0.12);
 }
 
 .cy-aviso[data-nivel="bloquea"] {
-  border-color: rgb(161 52 43 / 0.3);
-  background: rgb(161 52 43 / 0.07);
+  border-color: rgb(185 28 28 / 0.3);
+  background: rgb(185 28 28 / 0.07);
 }
 
 .cy-aviso-icono {
@@ -1267,7 +1224,7 @@ a {
 }
 
 .cy-aviso[data-nivel="cautela"] .cy-aviso-icono {
-  color: var(--cy-maiz-tinta);
+  color: var(--cy-acento-tinta);
 }
 
 .cy-aviso[data-nivel="bloquea"] .cy-aviso-icono {
@@ -1313,7 +1270,7 @@ a {
 }
 
 .cy-sello-titulo svg {
-  color: var(--cy-maiz-tinta);
+  color: var(--cy-acento-tinta);
 }
 
 .cy-sello-linea {
@@ -1324,7 +1281,7 @@ a {
 .cy-sello-linea a {
   font-weight: 600;
   color: var(--cy-tinta);
-  text-decoration-color: rgb(232 163 61 / 0.7);
+  text-decoration-color: rgb(16 185 129 / 0.7);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
@@ -1438,17 +1395,17 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: rgb(232 163 61 / 0.18);
+  background: rgb(16 185 129 / 0.18);
   font-size: 0.8125rem;
   font-weight: 650;
-  color: var(--cy-maiz-tinta);
+  color: var(--cy-acento-tinta);
 }
 
 .cy-ejemplo {
   padding: 1.125rem 1.25rem;
-  border-left: 3px solid var(--cy-maiz);
+  border-left: 3px solid var(--cy-acento);
   border-radius: 0 1rem 1rem 0;
-  background: rgb(255 253 248 / 0.8);
+  background: rgb(255 255 255 / 0.8);
 }
 
 .cy-faq details {
@@ -1663,110 +1620,11 @@ a {
   line-height: 0.9;
   letter-spacing: -0.06em;
   color: transparent;
-  -webkit-text-stroke: 1.5px rgb(30 42 68 / 0.35);
+  -webkit-text-stroke: 1.5px rgb(24 24 27 / 0.35);
 }
 
 .cy-no-encontrada .cy-boton {
   margin-block: 2rem 2.5rem;
-}
-
-/* ---------- Pie ---------- */
-
-.cy-pie {
-  margin-top: 5rem;
-  padding: 3rem 1rem 2rem;
-  border-radius: 2rem 2rem 0 0;
-  background:
-    radial-gradient(40rem 18rem at 85% 0%, rgb(232 163 61 / 0.12), transparent 70%),
-    radial-gradient(36rem 20rem at 0% 100%, rgb(62 99 170 / 0.25), transparent 70%),
-    var(--cy-tinta);
-  color: rgb(255 253 248 / 0.8);
-}
-
-.cy-pie-interior,
-.cy-pie-base {
-  width: min(var(--cy-ancho), 100%);
-  margin-inline: auto;
-}
-
-.cy-pie-interior {
-  display: grid;
-  gap: 2.25rem;
-}
-
-.cy-pie .cy-marca-texto {
-  color: var(--cy-papel-claro);
-}
-
-.cy-pie .cy-marca-ya {
-  color: var(--cy-maiz);
-}
-
-.cy-pie .cy-marca-signo rect {
-  fill: var(--cy-papel-claro);
-}
-
-.cy-pie .cy-marca-signo path:first-of-type {
-  stroke: var(--cy-tinta);
-}
-
-.cy-pie-marca p {
-  margin-top: 0.75rem;
-  max-width: 28ch;
-}
-
-.cy-pie-titulo {
-  margin-bottom: 0.75rem;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgb(255 253 248 / 0.55);
-}
-
-.cy-pie-columna ul {
-  display: grid;
-  gap: 0.125rem;
-}
-
-.cy-pie-paises {
-  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-}
-
-.cy-pie a {
-  display: inline-flex;
-  min-height: 2.25rem;
-  align-items: center;
-  gap: 0.5rem;
-  color: rgb(255 253 248 / 0.86);
-  text-decoration: none;
-  transition: color 0.15s ease-out;
-}
-
-.cy-pie a:hover,
-.cy-pie a[aria-current] {
-  color: var(--cy-papel-claro);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.cy-pie :focus-visible {
-  outline-color: var(--cy-maiz);
-}
-
-.cy-pie-base {
-  display: grid;
-  gap: 0.5rem;
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgb(255 253 248 / 0.14);
-  font-size: 0.8125rem;
-  color: rgb(255 253 248 / 0.62);
-}
-
-.cy-pie-base .cy-pie-ar {
-  font-size: 0.875rem;
-  font-weight: 550;
 }
 
 /* ---------- Aviso de país: barra inferior fija ---------- */
@@ -1838,7 +1696,7 @@ a {
 }
 
 .cy-aviso-pais-ir .cy-boton-icono {
-  background: rgb(30 42 68 / 0.08);
+  background: rgb(24 24 27 / 0.08);
 }
 
 .cy-aviso-pais-ir:hover {
@@ -1879,7 +1737,7 @@ a {
 }
 
 .cy-aviso-pais :focus-visible {
-  outline-color: var(--cy-maiz);
+  outline-color: var(--cy-acento);
 }
 
 /* Lo que queda abajo del pliegue no se maqueta ni se pinta hasta que se acerca: baja el trabajo de
@@ -1889,7 +1747,7 @@ a {
 .cy-relacionadas,
 .cy-otros-paises,
 .cy-promesas,
-.cy-pie {
+.ca-pie {
   content-visibility: auto;
   contain-intrinsic-size: auto 32rem;
 }
@@ -1917,17 +1775,9 @@ a {
     padding: 0.375rem 0.375rem 0.375rem 1rem;
     border-radius: 999px;
   }
-
-  .cy-pie {
-    padding-inline: 2rem;
-  }
 }
 
 @media (min-width: 768px) {
-  .cy-pie-interior {
-    grid-template-columns: 1.1fr 1.6fr 1fr;
-  }
-
   .cy-heroe {
     padding-block: 5rem 3.5rem;
   }
@@ -1968,7 +1818,12 @@ a {
     display: grid;
     grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
     column-gap: 4rem;
-    align-items: end;
+    align-items: start;
+  }
+
+  .cy-inicio > .cy-heroe {
+    position: sticky;
+    top: 4rem;
   }
 
   .cy-inicio .cy-paises {
@@ -1990,11 +1845,11 @@ a {
 
   .cy-novedades-lateral {
     position: sticky;
-    top: 6.5rem;
+    top: 5.5rem;
     padding: 1.5rem;
     border: 1px solid var(--cy-linea);
     border-radius: 1.5rem;
-    background: rgb(255 253 248 / 0.6);
+    background: rgb(255 255 255 / 0.6);
   }
 }
 
@@ -2005,16 +1860,41 @@ a {
   }
 }
 
-@media (max-width: 420px) {
+.cy-selector-nombre {
+  white-space: nowrap;
+}
+
+/* Entre 1024 y 1279 px la barra lleva los tabs del menú: el país queda en la bandera para que entre todo. */
+@media (min-width: 1024px) and (max-width: 1279px) {
   .cy-selector-nombre {
-    max-width: 7.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: none;
+  }
+}
+
+/* En el teléfono el header de calcular.ar ya tiene buscador y menú: el selector queda en la bandera. */
+@media (max-width: 639px) {
+  .cy-selector-boton {
+    width: 2.75rem;
+    height: 2.75rem;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
   }
 
-  .cy-selector-lista {
-    grid-template-columns: 1fr;
+  .cy-selector-nombre,
+  .cy-selector-boton .cy-selector-chevron {
+    display: none;
+  }
+
+  .cy-selector {
+    position: static;
+  }
+
+  .cy-selector-panel {
+    right: 1rem;
   }
 }
 

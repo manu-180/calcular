@@ -8,8 +8,22 @@ import { IconoFlecha, IconoSello } from "./Iconos";
 import { ldInicioGlobal, ldInicioPais } from "./metadatos";
 import { AvisoDePais, JsonLd } from "./Sitio";
 
-export function InicioGlobal({ ctx }: { ctx: ContextoSitio }) {
+// Un país de otro sitio en la grilla (Argentina vive en calcular.ar): mismo formato, link absoluto.
+export interface PaisExterno {
+  codigo: string;
+  nombre: string;
+  pais: string;
+  locale: string;
+  href: string;
+  calculadoras: number;
+}
+
+export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; externos?: readonly PaisExterno[] }) {
   const t = ctx.textos;
+  const tarjetas = [
+    ...ctx.paises.map((m) => ({ codigo: m.codigo, nombre: m.nombre, pais: m.pais, locale: m.locale, href: rutaIntl(m.codigo), calculadoras: calculadorasDe(ctx, m).length })),
+    ...externos,
+  ].sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
   return (
     <div className="cy-pagina cy-inicio">
       <JsonLd datos={ldInicioGlobal(ctx)} />
@@ -25,16 +39,15 @@ export function InicioGlobal({ ctx }: { ctx: ContextoSitio }) {
         </h2>
         {ctx.paises.length ? (
           <ul className="cy-paises-grilla">
-            {ctx.paises.map((m, i) => {
-              const n = calculadorasDe(ctx, m).length;
+            {tarjetas.map((m, i) => {
               return (
                 <li key={m.codigo} style={{ "--i": i } as CSSProperties}>
-                  <a className="cy-pais" href={rutaIntl(m.codigo)} hrefLang={m.locale}>
+                  <a className="cy-pais" href={m.href} hrefLang={m.locale}>
                     <span className="cy-pais-bandera">
                       <Bandera pais={m.pais} ancho={36} />
                     </span>
                     <span className="cy-pais-nombre">{m.nombre}</span>
-                    <span className="cy-pais-cuenta">{t.global.calculadoras(n)}</span>
+                    <span className="cy-pais-cuenta">{t.global.calculadoras(m.calculadoras)}</span>
                     <span className="cy-boton-icono">
                       <IconoFlecha />
                     </span>
