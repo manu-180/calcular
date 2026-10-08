@@ -107,7 +107,7 @@ export function reglasPorHost(o: OpcionesHosts): ReglasHosts {
       // Las APIs y la imagen OG de calcular.ar no existen en calcularya. /api/geo la usa el aviso de
       // país y /api/dev/sitio es la única forma de borrar la cookie en un preview.
       { source: `/api/:path(${API_INTL_NEGADAS})`, has: [c], destination: `/intl/global/${SEGMENTO_404}/api/:path` },
-      { source: "/og/:path*", has: [c], destination: `/intl/global/${SEGMENTO_404}/og/:path*` },
+      { source: "/og/:path*", has: [c], destination: "/intl/global/og/:path*" },
     );
     if (globales) beforeFiles.push({ source: `/:pagina(${globales})`, has: [c], destination: "/intl/global/:pagina" });
   }

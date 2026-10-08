@@ -189,7 +189,7 @@ async function main() {
     // El aviso de país solo ofrece mercados publicados: zz (estado interno) nunca sale de /api/geo.
     { nombre: "intl: geo de mercado publicado", host: HOST_INTL, ruta: "/api/geo", cookie: `geo_prueba=${publicado.pais}`, status: 200, contiene: [`"pais":"${publicado.pais}"`] },
     { nombre: "intl: geo de zz", host: HOST_INTL, ruta: "/api/geo", cookie: "geo_prueba=ZZ", status: 200, contiene: ['"pais":null'] },
-    { nombre: "intl: og de AR", host: HOST_INTL, ruta: "/og", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "intl: og de global", host: HOST_INTL, ruta: "/og", status: 200 },
     { nombre: "intl: og de AR con path", host: HOST_INTL, ruta: "/og/x", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: llms.txt propio", host: HOST_INTL, ruta: "/llms.txt", status: 200, contiene: ["# CalcularYa", `${intl}/${m}`], noContiene: ["calcular.ar", "\u2014"] },
     { nombre: "intl: dev/sitio en preview", host: HOST_INTL, ruta: "/api/dev/sitio", status: 200, contiene: ['method="post"'] },
