@@ -11,7 +11,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["VES", "USD"],
   zonaHoraria: "America/Caracas",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   simbolos: { VES: "Bs.", USD: "$" },
 };
