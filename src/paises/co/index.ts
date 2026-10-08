@@ -4,6 +4,7 @@ import auxilioDeTransporte from "./calculadoras/auxilio-de-transporte";
 import cesantias from "./calculadoras/cesantias";
 import horasExtras from "./calculadoras/horas-extras";
 import indemnizacionPorDespido from "./calculadoras/indemnizacion-por-despido";
+import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
 import primaDeServicios from "./calculadoras/prima-de-servicios";
@@ -18,6 +19,7 @@ import contenidoAuxilio from "./contenido/auxilio-de-transporte";
 import contenidoCesantias from "./contenido/cesantias";
 import contenidoHorasExtras from "./contenido/horas-extras";
 import contenidoIndemnizacion from "./contenido/indemnizacion-por-despido";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
 import contenidoPrima from "./contenido/prima-de-servicios";
@@ -54,6 +56,7 @@ export default definirPais({
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: trm, contenido: contenidoTrm, cliente: () => import("./calculadoras/trm.cliente") },
     { definicion: uvr, contenido: contenidoUvr, cliente: () => import("./calculadoras/uvr.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
   ],
   novedades,
   detectores,

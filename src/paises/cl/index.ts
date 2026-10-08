@@ -22,6 +22,8 @@ import contenidoGratificacion from "./contenido/gratificacion";
 import contenidoBoletaHonorarios from "./contenido/boleta-honorarios";
 import contenidoIva from "./contenido/iva";
 import contenidoSueldoMinimo from "./contenido/sueldo-minimo";
+import inflacion from "./calculadoras/inflacion";
+import contenidoInflacion from "./contenido/inflacion";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -45,6 +47,7 @@ export default definirPais({
     { definicion: boletaHonorarios, contenido: contenidoBoletaHonorarios, cliente: () => import("./calculadoras/boleta-de-honorarios.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: sueldoMinimo, contenido: contenidoSueldoMinimo, cliente: () => import("./calculadoras/sueldo-minimo.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
   ],
   novedades,
   detectores,

@@ -3,6 +3,7 @@ import avisos from "./avisos.json";
 import aguinaldo from "./calculadoras/aguinaldo";
 import finiquito from "./calculadoras/finiquito";
 import horasExtra from "./calculadoras/horas-extra";
+import inflacion from "./calculadoras/inflacion";
 import isr from "./calculadoras/isr";
 import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
@@ -17,6 +18,7 @@ import vacaciones from "./calculadoras/vacaciones";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoFiniquito from "./contenido/finiquito";
 import contenidoHorasExtra from "./contenido/horas-extra";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIsr from "./contenido/isr";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
@@ -54,6 +56,7 @@ export default definirPais({
     { definicion: resico, contenido: contenidoResico, cliente: () => import("./calculadoras/resico.cliente") },
     { definicion: tipoDeCambio, contenido: contenidoTipoDeCambio, cliente: () => import("./calculadoras/tipo-de-cambio.cliente") },
     { definicion: udis, contenido: contenidoUdis, cliente: () => import("./calculadoras/udis.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
   ],
   novedades,
   detectores,
