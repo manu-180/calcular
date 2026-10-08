@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.sueldo-neto",
-  h1: "Calculadora de sueldo neto",
-  title: "Sueldo neto 2026 en Perú: calcula cuánto recibes",
+  h1: "Calculadora de sueldo neto 2026 en Perú",
+  title: "Calculadora de sueldo neto 2026 en Perú: AFP u ONP",
   description:
-    "Calcula tu sueldo neto con el descuento de AFP ({{pe.aporte-afp}} más prima y comisión) u ONP ({{pe.aporte-onp}}) y la retención de quinta categoría. Tasas de la SBS.",
+    "Calcula tu sueldo neto en Perú: descuento de AFP ({{pe.aporte-afp}} más prima y comisión) u ONP ({{pe.aporte-onp}}) y la retención de quinta categoría. Escribe tu sueldo bruto y listo.",
   intro: [
-    "Tu sueldo neto es lo que te depositan después de los descuentos de ley: el aporte a tu sistema de pensiones y, si ganas lo suficiente, la retención de renta de quinta categoría.",
+    "Tu sueldo neto es tu sueldo bruto menos el aporte de pensión (ONP {{pe.aporte-onp}}, o AFP con {{pe.aporte-afp}} más la prima de seguro) y, si ganas lo suficiente, la retención de renta de quinta categoría.",
     "La gratificación no paga estos aportes, así que este cálculo es para un mes normal.",
   ],
   comoSeCalcula: [
@@ -18,11 +18,16 @@ export default definirContenido({
   ],
   ejemplo: [
     "Ganas S/ 5,000 y estás en una AFP con comisión sobre el saldo. Te descuentan S/ 500 para tu fondo, S/ 68.50 de prima de seguro y unos S/ 240.50 de quinta. Recibes S/ 4,191.",
+    "Con S/ 3,000 en la ONP, en 2026 te descuentan S/ 390 de pensión y unos S/ 26.93 de quinta: recibes S/ 2,583.07.",
   ],
   faq: [
     {
       pregunta: "¿Cuánto me descuentan por AFP?",
       respuesta: "El {{pe.aporte-afp}} para tu fondo más la prima de seguro del {{pe.prima-seguro-afp}}. Si tienes comisión por flujo, se suma la comisión de tu AFP.",
+    },
+    {
+      pregunta: "¿Cuánto recibo si gano el sueldo mínimo?",
+      respuesta: "Con la RMV que rige desde octubre de 2026 (S/ 1,230) y la ONP, te descuentan S/ 159.90 y recibes S/ 1,070.10. Con ese sueldo no hay retención de quinta categoría.",
     },
     {
       pregunta: "¿Qué me conviene, AFP u ONP?",

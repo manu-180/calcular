@@ -2,24 +2,30 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.sueldo-minimo",
-  h1: "Sueldo mínimo en el Perú",
+  h1: "Sueldo mínimo en el Perú 2026: RMV de {{pe.rmv}}",
   title: "Sueldo mínimo 2026 en Perú: RMV de {{pe.rmv}}",
   description:
-    "La remuneración mínima vital es {{pe.rmv}} desde el {{pe.rmv#desde}}. Mira cuánto es por día, por hora y con asignación familiar.",
+    "El sueldo mínimo en Perú es {{pe.rmv}} desde el {{pe.rmv#desde}}. Mira cuánto es por día, por hora y con asignación familiar, y compáralo con tu sueldo.",
   intro: [
-    "La remuneración mínima vital (RMV) es el sueldo más bajo que se puede pagar en el sector privado por una jornada completa de 8 horas.",
-    "Desde el {{pe.rmv#desde}} es {{pe.rmv}}. El Gobierno anunció un segundo aumento para el primer semestre de 2027, que todavía necesita su decreto.",
-    "Si tienes hijos menores de 18 años (o hasta los 24 si estudian), además cobras la asignación familiar: el {{pe.asignacion-familiar}} de la RMV.",
+    "El sueldo mínimo en Perú (remuneración mínima vital o RMV) es {{pe.rmv}} al mes desde el {{pe.rmv#desde}}. Es lo menos que se puede pagar en el sector privado por una jornada completa de 8 horas.",
+    "Si tienes hijos menores de 18 años (o hasta los 24 si estudian), además cobras la asignación familiar: el {{pe.asignacion-familiar}} de la RMV. El Gobierno anunció un segundo aumento para el primer semestre de 2027, que todavía necesita su decreto.",
   ],
   comoSeCalcula: [
     "Por día: la RMV entre 30.",
     "Por hora: la RMV entre 30 y entre 8 horas.",
     "Con asignación familiar: la RMV más el {{pe.asignacion-familiar}} de la RMV.",
   ],
+  ejemplo: [
+    "Con la RMV de S/ 1,230 (desde octubre de 2026), son S/ 41 por día y S/ 5.13 por hora. Con asignación familiar, el mínimo llega a S/ 1,353.",
+  ],
   faq: [
     {
       pregunta: "¿Cuánto es el sueldo mínimo hoy?",
       respuesta: "{{pe.rmv}} al mes, vigente desde el {{pe.rmv#desde}} (Decreto Supremo 015-2026-TR).",
+    },
+    {
+      pregunta: "¿Cuánto es el sueldo mínimo con asignación familiar?",
+      respuesta: "La RMV más el {{pe.asignacion-familiar}} de la RMV. Desde octubre de 2026 son S/ 1,230 más S/ 123: S/ 1,353 al mes.",
     },
     {
       pregunta: "¿A quién le corresponde la asignación familiar?",
