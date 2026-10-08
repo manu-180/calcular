@@ -133,6 +133,12 @@ async function main() {
     console.error(`check_routing_hosts: ${m} no tiene calculadoras publicables`);
     process.exit(2);
   }
+  const publicado = registro.mercados("produccion").find((x) => x.codigo !== "global");
+  if (!publicado) {
+    console.error("check_routing_hosts: no hay ningún mercado publicado");
+    process.exit(2);
+  }
+  const cuentasActivas = process.env.NEXT_PUBLIC_CUENTAS_ACTIVAS === "1";
   const intl = ORIGEN_INTL!.replace(/\/$/, "");
   const MARCA_AR = 'lang="es-AR"';
 
@@ -168,10 +174,21 @@ async function main() {
     { nombre: "intl: api compartida", host: HOST_INTL, ruta: "/api/geo", status: 200, contiene: ['"pais"'], cache: "private, no-store" },
     { nombre: "intl: api de AR", host: HOST_INTL, ruta: "/api/subscribe", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: api de AR anidada", host: HOST_INTL, ruta: "/api/planilla-comercio/download", status: 404, noContiene: [MARCA_AR] },
-    // Sin noContiene: src/proxy.ts corre antes que los rewrites y, con las cuentas apagadas, manda
-    // /api/cuenta al 404 de AR. Con las cuentas prendidas pasa y cae en el 404 intl.
-    { nombre: "intl: api de cuenta", host: HOST_INTL, ruta: "/api/cuenta/calculos", status: 404 },
-    { nombre: "intl: api de cuenta sin ruta", host: HOST_INTL, ruta: "/api/cuenta", status: 404 },
+    // src/proxy.ts corre antes que los rewrites: en el host intl deja pasar /api/* para que caiga en
+    // el 404 intl y no en el de AR (que es lo que sigue dando en calcular.ar con las cuentas apagadas).
+    { nombre: "intl: api de cuenta", host: HOST_INTL, ruta: "/api/cuenta/calculos", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "intl: api de cuenta sin ruta", host: HOST_INTL, ruta: "/api/cuenta", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "intl: api de checkout", host: HOST_INTL, ruta: "/api/mp/checkout", status: 404, noContiene: [MARCA_AR] },
+    { nombre: "preview: api de cuenta con cookie", host: "calcular-ar-git-x.vercel.app", ruta: "/api/cuenta", cookie: "sitio=intl", status: 404, noContiene: [MARCA_AR] },
+    ...(cuentasActivas
+      ? []
+      : [
+          { nombre: "AR: api de cuenta", host: HOST_AR, ruta: "/api/cuenta", status: 404, contiene: [MARCA_AR] },
+          { nombre: "AR: api de cuenta anidada", host: HOST_AR, ruta: "/api/cuenta/calculos", status: 404, contiene: [MARCA_AR] },
+        ]),
+    // El aviso de país solo ofrece mercados publicados: zz (estado interno) nunca sale de /api/geo.
+    { nombre: "intl: geo de mercado publicado", host: HOST_INTL, ruta: "/api/geo", cookie: `geo_prueba=${publicado.pais}`, status: 200, contiene: [`"pais":"${publicado.pais}"`] },
+    { nombre: "intl: geo de zz", host: HOST_INTL, ruta: "/api/geo", cookie: "geo_prueba=ZZ", status: 200, contiene: ['"pais":null'] },
     { nombre: "intl: og de AR", host: HOST_INTL, ruta: "/og", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: og de AR con path", host: HOST_INTL, ruta: "/og/x", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: llms.txt propio", host: HOST_INTL, ruta: "/llms.txt", status: 200, contiene: ["# CalcularYa", `${intl}/${m}`], noContiene: ["calcular.ar", "\u2014"] },

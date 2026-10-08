@@ -12,7 +12,8 @@ export interface DestinoPais {
 }
 
 const CLAVE_DESCARTE = "cy-aviso-pais";
-const CLAVE_GEO = "cy-geo";
+// v2: /api/geo dejó de devolver países sin mercado publicado; la clave nueva descarta lo guardado antes.
+const CLAVE_GEO = "cy-geo-v2";
 
 function leer(clave: string): string | null {
   try {
