@@ -40,7 +40,203 @@ export function definirProductoIntl(d: DefinicionProductoIntl): ProductoIntl {
   return { ...d, id, moneda: "USD" };
 }
 
-export const PRODUCTOS_INTL: readonly ProductoIntl[] = [];
+// Planilla de sueldo y liquidación de cada país. La genera scripts/paises/gen_planillas_intl.ts en el
+// build y scripts/check_planillas_intl.ts falla si se vende la de un país cuyas fórmulas no dan lo
+// mismo que sus calculadoras.
+const CARGA = {
+  tu: "cargas tus datos en las celdas amarillas",
+  usted: "carga sus datos en las celdas amarillas",
+  vos: "cargás tus datos en las celdas amarillas",
+} as const;
+
+function planillaSueldo(d: {
+  mercado: string;
+  trato: keyof typeof CARGA;
+  titulo: string;
+  tituloCorto: string;
+  paraQuien: string;
+  incluye: string;
+  normas: string;
+  disparador: string;
+}): ProductoIntl {
+  return definirProductoIntl({
+    mercado: d.mercado,
+    slug: "sueldo-y-liquidacion",
+    titulo: d.titulo,
+    tituloCorto: d.tituloCorto,
+    paraQuien: d.paraQuien,
+    descripcion: [
+      `Una planilla de Excel lista para usar: ${CARGA[d.trato]} y las cuentas salen solas, con fórmulas que siguen ${d.normas}.`,
+      `Incluye ${d.incluye}. Cada hoja muestra el paso a paso, y la hoja de tablas oficiales trae cada valor con su fuente y la fecha en que lo verificamos.`,
+    ],
+    disparadorActualizacion: d.disparador,
+    precioCentavos: 700,
+    archivo: "sueldo-y-liquidacion-2026.xlsx",
+  });
+}
+
+export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
+  planillaSueldo({
+    mercado: "mx",
+    trato: "tu",
+    titulo: "Planilla de sueldo y finiquito México 2026",
+    tituloCorto: "planilla de sueldo y finiquito",
+    paraQuien: "Para calcular tu sueldo neto, tu aguinaldo y tu finiquito o liquidación con la ley vigente",
+    normas: "la Ley Federal del Trabajo, la Ley del ISR y la Ley del Seguro Social",
+    incluye: "el sueldo neto con ISR, subsidio para el empleo y cuotas del IMSS; el aguinaldo con su parte exenta; y el finiquito y la liquidación por despido",
+    disparador: "Cada vez que cambia un valor oficial, como el salario mínimo, la UMA o la tarifa del ISR",
+  }),
+  planillaSueldo({
+    mercado: "co",
+    trato: "tu",
+    titulo: "Planilla de salario y liquidación Colombia 2026",
+    tituloCorto: "planilla de salario y liquidación",
+    paraQuien: "Para calcular tu salario neto, tu prima, tus cesantías y tu liquidación con la ley vigente",
+    normas: "el Código Sustantivo del Trabajo y el Estatuto Tributario",
+    incluye: "el salario neto con salud, pensión y retención en la fuente; la prima de servicios y las cesantías con sus intereses; y la liquidación del contrato con indemnización",
+    disparador: "Cada vez que cambia un valor oficial, como el salario mínimo, el auxilio de transporte o la UVT",
+  }),
+  planillaSueldo({
+    mercado: "pe",
+    trato: "tu",
+    titulo: "Planilla de sueldo y liquidación Perú 2026",
+    tituloCorto: "planilla de sueldo y liquidación",
+    paraQuien: "Para calcular tu sueldo neto, tu gratificación, tu CTS y tu liquidación con la ley vigente",
+    normas: "la ley laboral peruana y la Ley del Impuesto a la Renta",
+    incluye: "el sueldo neto con AFP u ONP y renta de quinta; la gratificación y la CTS; y la liquidación de beneficios sociales con la indemnización por despido arbitrario",
+    disparador: "Cada vez que cambia un valor oficial, como la remuneración mínima, la UIT o las comisiones de las AFP",
+  }),
+  planillaSueldo({
+    mercado: "cl",
+    trato: "tu",
+    titulo: "Planilla de sueldo y finiquito Chile 2026",
+    tituloCorto: "planilla de sueldo y finiquito",
+    paraQuien: "Para calcular tu sueldo líquido, tu gratificación y tu finiquito con la ley vigente",
+    normas: "el Código del Trabajo y la Ley sobre Impuesto a la Renta",
+    incluye: "el sueldo líquido con AFP, salud, seguro de cesantía e impuesto único; la gratificación legal; y el finiquito con indemnizaciones y vacaciones",
+    disparador: "Cada vez que cambia un valor oficial, como el ingreso mínimo, los topes imponibles o la tabla del impuesto único",
+  }),
+  planillaSueldo({
+    mercado: "uy",
+    trato: "vos",
+    titulo: "Planilla de sueldo y liquidación Uruguay 2026",
+    tituloCorto: "planilla de sueldo y liquidación",
+    paraQuien: "Para calcular tu sueldo líquido, tu aguinaldo, tu salario vacacional y tu liquidación con la ley vigente",
+    normas: "las leyes laborales uruguayas y el decreto de retención del IRPF",
+    incluye: "el sueldo líquido con montepío, Fonasa, FRL e IRPF; el aguinaldo y el salario vacacional; y la liquidación por egreso con la indemnización por despido",
+    disparador: "Cada vez que cambia un valor oficial, como la BPC, las tasas del Fonasa o la escala del IRPF",
+  }),
+  planillaSueldo({
+    mercado: "ec",
+    trato: "tu",
+    titulo: "Planilla de sueldo y liquidación Ecuador 2026",
+    tituloCorto: "planilla de sueldo y liquidación",
+    paraQuien: "Para calcular tu sueldo neto, tus décimos y tu liquidación con la ley vigente",
+    normas: "el Código del Trabajo y la Ley de Régimen Tributario Interno",
+    incluye: "el sueldo neto con aporte al IESS e impuesto a la renta; el décimo tercero y el décimo cuarto; y la liquidación con desahucio, despido y vacaciones",
+    disparador: "Cada vez que cambia un valor oficial, como el salario básico unificado o la tabla del impuesto a la renta",
+  }),
+  planillaSueldo({
+    mercado: "cr",
+    trato: "usted",
+    titulo: "Planilla de salario y liquidación Costa Rica 2026",
+    tituloCorto: "planilla de salario y liquidación",
+    paraQuien: "Para calcular su salario neto, su aguinaldo y su liquidación con la ley vigente",
+    normas: "el Código de Trabajo y la Ley del Impuesto sobre la Renta",
+    incluye: "el salario neto con cargas sociales e impuesto al salario; el aguinaldo; y la liquidación con preaviso, cesantía, vacaciones y aguinaldo proporcional",
+    disparador: "Cada vez que cambia un valor oficial, como los tramos del impuesto al salario o las cuotas de la Caja",
+  }),
+  planillaSueldo({
+    mercado: "gt",
+    trato: "usted",
+    titulo: "Planilla de salario y prestaciones Guatemala 2026",
+    tituloCorto: "planilla de salario y prestaciones",
+    paraQuien: "Para calcular su ISR, su aguinaldo, su Bono 14 y su indemnización con la ley vigente",
+    normas: "el Código de Trabajo y la Ley de Actualización Tributaria",
+    incluye: "el ISR de su salario; el aguinaldo y el Bono 14; y la indemnización con las prestaciones proporcionales",
+    disparador: "Cada vez que cambia un valor oficial, como las deducciones del ISR o la escala del impuesto",
+  }),
+  planillaSueldo({
+    mercado: "py",
+    trato: "vos",
+    titulo: "Planilla de salario y liquidación Paraguay 2026",
+    tituloCorto: "planilla de salario y liquidación",
+    paraQuien: "Para calcular tu salario neto, tu aguinaldo y tu liquidación con la ley vigente",
+    normas: "el Código del Trabajo y las normas del IPS",
+    incluye: "el salario neto con el aporte al IPS; el aguinaldo; y la liquidación con preaviso, indemnización, vacaciones y aguinaldo proporcional",
+    disparador: "Cada vez que cambia un valor oficial, como el salario mínimo o los aportes al IPS",
+  }),
+  planillaSueldo({
+    mercado: "do",
+    trato: "tu",
+    titulo: "Planilla de salario y prestaciones República Dominicana 2026",
+    tituloCorto: "planilla de salario y prestaciones",
+    paraQuien: "Para calcular tu salario neto, tu regalía pascual y tus prestaciones laborales con la ley vigente",
+    normas: "el Código de Trabajo, la ley de la Seguridad Social y el Código Tributario",
+    incluye: "el salario neto con SFS, AFP e ISR; la regalía pascual; y las prestaciones laborales con preaviso, cesantía, vacaciones y regalía",
+    disparador: "Cada vez que cambia un valor oficial, como el salario mínimo, los topes de la TSS o la escala del ISR",
+  }),
+  planillaSueldo({
+    mercado: "sv",
+    trato: "usted",
+    titulo: "Planilla de salario y prestaciones El Salvador 2026",
+    tituloCorto: "planilla de salario y prestaciones",
+    paraQuien: "Para calcular su renta, su aguinaldo, su Quincena 25 y su indemnización con la ley vigente",
+    normas: "el Código de Trabajo y la Ley de Impuesto sobre la Renta",
+    incluye: "la retención de renta con AFP e ISSS; el aguinaldo y la Quincena 25; y la indemnización por despido y la prestación por renuncia voluntaria",
+    disparador: "Cada vez que cambia un valor oficial, como el salario mínimo o las tablas de retención de renta",
+  }),
+  planillaSueldo({
+    mercado: "pa",
+    trato: "tu",
+    titulo: "Planilla de salario y liquidación Panamá 2026",
+    tituloCorto: "planilla de salario y liquidación",
+    paraQuien: "Para calcular tu salario neto, tu décimo tercer mes y tu liquidación con la ley vigente",
+    normas: "el Código de Trabajo y el Código Fiscal",
+    incluye: "el salario neto con Seguro Social, seguro educativo e ISR; el décimo tercer mes; y la liquidación con prima de antigüedad, indemnización, vacaciones y décimo",
+    disparador: "Cada vez que cambia un valor oficial, como las cuotas del Seguro Social o la tarifa del ISR",
+  }),
+  planillaSueldo({
+    mercado: "hn",
+    trato: "usted",
+    titulo: "Planilla de salario y prestaciones Honduras 2026",
+    tituloCorto: "planilla de salario y prestaciones",
+    paraQuien: "Para calcular su ISR, su décimo cuarto mes y sus prestaciones laborales con la ley vigente",
+    normas: "el Código del Trabajo y la Ley del Impuesto sobre la Renta",
+    incluye: "el ISR de su salario; el décimo cuarto mes; y las prestaciones laborales con preaviso y auxilio de cesantía",
+    disparador: "Cada vez que cambia un valor oficial, como la tabla del ISR o las reglas de cesantía",
+  }),
+  planillaSueldo({
+    mercado: "ni",
+    trato: "vos",
+    titulo: "Planilla de salario y liquidación Nicaragua 2026",
+    tituloCorto: "planilla de salario y liquidación",
+    paraQuien: "Para calcular tu salario neto, tu aguinaldo y tu liquidación con la ley vigente",
+    normas: "el Código del Trabajo y la Ley de Concertación Tributaria",
+    incluye: "el salario neto con INSS e IR; el aguinaldo; y la liquidación con indemnización por antigüedad, aguinaldo y vacaciones",
+    disparador: "Cada vez que cambia un valor oficial, como las cuotas del INSS o la tarifa del IR",
+  }),
+  planillaSueldo({
+    mercado: "ve",
+    trato: "tu",
+    titulo: "Planilla de prestaciones y liquidación Venezuela 2026",
+    tituloCorto: "planilla de prestaciones y liquidación",
+    paraQuien: "Para calcular tus utilidades, tus vacaciones, tus prestaciones sociales y tu liquidación con la ley vigente",
+    normas: "la LOTTT",
+    incluye: "las utilidades y las vacaciones con su bono vacacional; y las prestaciones sociales con la liquidación completa, en bolívares o en dólares",
+    disparador: "Cada vez que cambia un valor oficial de la LOTTT que usa la planilla",
+  }),
+  planillaSueldo({
+    mercado: "bo",
+    trato: "usted",
+    titulo: "Planilla de sueldo y finiquito Bolivia 2026",
+    tituloCorto: "planilla de sueldo y finiquito",
+    paraQuien: "Para calcular su líquido pagable, su aguinaldo y su finiquito con la ley vigente",
+    normas: "la Ley General del Trabajo, la Ley de Pensiones y el régimen del RC-IVA",
+    incluye: "el líquido pagable con aportes a la Gestora, Aporte Nacional Solidario y RC-IVA; el aguinaldo; y el finiquito con indemnización, desahucio, aguinaldo y vacaciones",
+    disparador: "Cada vez que cambia un valor oficial, como el salario mínimo o los aportes a la Gestora",
+  }),
+];
 
 let catalogo: readonly ProductoIntl[] = PRODUCTOS_INTL;
 
