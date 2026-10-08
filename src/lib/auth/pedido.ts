@@ -1,9 +1,11 @@
 import "server-only";
 import { createHash } from "node:crypto";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { permitido } from "@/lib/limite";
+import { COOKIE_SITIO } from "@/motor/hosts";
+import { destinoSeguro } from "@/lib/auth/destino";
+import { mercadoDeDesde, origenDeSitio, sitioDeHost, type OrigenAlta, type SitioCuenta } from "@/lib/auth/sitio";
 
-const SITIO = "https://calcular.ar";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export function normalizarEmail(crudo: FormDataEntryValue | null | undefined): string | null {
@@ -17,15 +19,24 @@ export async function ipDelPedido(): Promise<string> {
   return (xff || h.get("x-real-ip") || "sin-ip").slice(0, 64);
 }
 
-// El origen de los enlaces sale de una lista cerrada y nunca del Host a secas: un Host
-// inyectado mandaría el token_hash de otra persona a un dominio ajeno.
+const hostDelPedido = (h: Headers) => (h.get("x-forwarded-host") ?? h.get("host") ?? "").toLowerCase();
+
+export async function sitioDelPedido(): Promise<SitioCuenta> {
+  const [h, c] = await Promise.all([headers(), cookies()]);
+  return sitioDeHost(hostDelPedido(h), c.get(COOKIE_SITIO.nombre)?.value);
+}
+
+// El país sale de la página de la que vino la persona (validada como cualquier destino), nunca de un
+// campo que diga «mercado»: lo peor que puede hacer un valor fabricado es anotar otro país de la lista.
+export function origenAlta(sitio: SitioCuenta, desde: unknown): OrigenAlta | undefined {
+  if (sitio !== "intl") return undefined;
+  return { sitio: "intl", mercado: mercadoDeDesde(destinoSeguro(desde, "", "intl")) };
+}
+
+// Ver origenDeSitio: nunca el Host a secas, siempre uno de la lista cerrada.
 export async function origenDelSitio(): Promise<string> {
-  if (process.env.VERCEL_ENV === "production") return SITIO;
   const h = await headers();
-  const host = (h.get("x-forwarded-host") ?? h.get("host") ?? "").toLowerCase();
-  if (/^(localhost|127\.0\.0\.1)(:\d{2,5})?$/.test(host)) return `http://${host}`;
-  if (/^[a-z0-9-]+\.vercel\.app$/.test(host)) return `https://${host}`;
-  return SITIO;
+  return origenDeSitio(await sitioDelPedido(), hostDelPedido(h));
 }
 
 const huella = (v: string) => createHash("sha256").update(v).digest("hex").slice(0, 24);

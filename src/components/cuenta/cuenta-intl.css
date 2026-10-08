@@ -1,0 +1,95 @@
+/* Pantallas de cuenta de calcularya: los mismos componentes de calcular.ar (Tailwind) dentro de un
+   sitio que no carga el globals.css de AR. Tailwind acá sólo mira los archivos de la cuenta
+   (source(none) + @source), así el CSS queda chico y el resto de las páginas intl no se entera.
+   Las utilidades van sin capa y con !important a propósito: estilos.css de calcularya tiene reglas
+   sueltas por elemento (p, h1 { margin: 0 }, h1 { color }) que le ganan a cualquier utilidad en
+   capa, y a las de :where() (space-y-*, divide-*) incluso sin capa. Sin esto los formularios
+   quedaban pegados. El reset va con :where(), especificidad cero. */
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" source(none) important;
+
+@source "./";
+@source "../opiniones/";
+@source "../herramientas/ListaCalculos.tsx";
+
+@theme {
+  --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snappy: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.ca-cuenta {
+  --ca-ring: 0 0 0 2px #fff, 0 0 0 4px rgba(16, 185, 129, 0.55);
+  color: var(--color-zinc-800);
+  line-height: 1.5;
+}
+
+:where(.ca-cuenta) *,
+:where(.ca-cuenta) ::after,
+:where(.ca-cuenta) ::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+:where(.ca-cuenta) :where(h1, h2, h3, h4, h5, h6) {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+:where(.ca-cuenta) a {
+  color: inherit;
+  text-decoration: inherit;
+}
+:where(.ca-cuenta) :where(ol, ul, menu) {
+  list-style: none;
+}
+:where(.ca-cuenta) :where(img, svg) {
+  display: block;
+  vertical-align: middle;
+}
+:where(.ca-cuenta) :where(button, input, select, textarea) {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  border-radius: 0;
+  background-color: transparent;
+  opacity: 1;
+}
+:where(.ca-cuenta) button {
+  appearance: button;
+}
+:where(.ca-cuenta) ::placeholder {
+  opacity: 1;
+  color: color-mix(in oklab, currentcolor 50%, transparent);
+}
+:where(.ca-cuenta) textarea {
+  resize: vertical;
+}
+
+/* El anillo de foco de calcular.ar, no el contorno añil de calcularya. */
+.ca-cuenta :focus-visible {
+  outline: none;
+  box-shadow: var(--ca-ring) !important;
+}
+
+@keyframes ca-col {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ca-cuenta *,
+  .ca-cuenta ::before,
+  .ca-cuenta ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

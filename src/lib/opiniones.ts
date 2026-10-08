@@ -77,7 +77,15 @@ export function rutaDeOrigen(crudo: unknown): string | null {
   return ruta;
 }
 
-export function validarOpinion(fd: { tipo: unknown; mensaje: unknown }): {
+export type TextosValidacion = { errorTipo: string; errorCorto: string; errorLargo: (max: number) => string };
+
+const VALIDACION_AR: TextosValidacion = {
+  errorTipo: "Elegí de qué se trata.",
+  errorCorto: "Contanos un poco más, así lo entendemos bien.",
+  errorLargo: (max) => `Usá hasta ${max.toLocaleString("es-AR")} caracteres. Si te queda largo, mandalo en dos partes.`,
+};
+
+export function validarOpinion(fd: { tipo: unknown; mensaje: unknown }, t: TextosValidacion = VALIDACION_AR): {
   ok: boolean;
   tipo: TipoOpinion | null;
   mensaje: string;
@@ -86,9 +94,9 @@ export function validarOpinion(fd: { tipo: unknown; mensaje: unknown }): {
   const tipo = esTipo(fd.tipo) ? fd.tipo : null;
   const mensaje = limpiarMensaje(fd.mensaje);
   const errores: NonNullable<EstadoEnvio["errores"]> = {};
-  if (!tipo) errores.tipo = "Elegí de qué se trata.";
+  if (!tipo) errores.tipo = t.errorTipo;
   const largo = largoMensaje(mensaje);
-  if (largo < MIN_MENSAJE) errores.mensaje = "Contanos un poco más, así lo entendemos bien.";
-  else if (largo > MAX_MENSAJE) errores.mensaje = `Usá hasta ${MAX_MENSAJE.toLocaleString("es-AR")} caracteres. Si te queda largo, mandalo en dos partes.`;
+  if (largo < MIN_MENSAJE) errores.mensaje = t.errorCorto;
+  else if (largo > MAX_MENSAJE) errores.mensaje = t.errorLargo(MAX_MENSAJE);
   return { ok: Object.keys(errores).length === 0, tipo, mensaje, errores };
 }

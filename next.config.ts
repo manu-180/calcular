@@ -58,6 +58,9 @@ const REGLAS_HOSTS = reglasPorHost({
   // La cookie sitio=intl (la pone /api/dev/sitio) deja ver calcularya en los previews de *.vercel.app.
   // Solo previews y next dev: cualquier otro build (producción incluida) nunca lleva estas reglas.
   cookiePreview: entornoDePrueba(),
+  // Mismo interruptor que src/lib/funciones.ts (CUENTAS_ACTIVAS): no se importa por el loader de
+  // next.config (ver mercadosDelRegistro).
+  cuentas: process.env.NEXT_PUBLIC_CUENTAS_ACTIVAS === "1",
 });
 
 const nextConfig: NextConfig = {

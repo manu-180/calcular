@@ -88,6 +88,8 @@ interface Fila {
   post?: { origin: string; cuerpo: string };
   status: number;
   location?: string;
+  // El proxy arma la URL absoluta con el host del pedido: alcanza con que termine así y no salga del host.
+  locationFin?: string;
   contiene?: readonly string[];
   noContiene?: readonly string[];
   cache?: string;
@@ -141,6 +143,8 @@ async function main() {
     process.exit(2);
   }
   const cuentasActivas = process.env.NEXT_PUBLIC_CUENTAS_ACTIVAS === "1";
+  const NEXT_VACIO = '<input type="hidden" name="next" value=""/>';
+  const SIN_EVIL = ['value="//evil', 'value="https://evil', 'href="//evil', "next=%2F%2Fevil.com&quot;", 'href="/registro?next=', 'href="/login?next='];
   const intl = ORIGEN_INTL!.replace(/\/$/, "");
   const MARCA_AR = 'lang="es-AR"';
   // Lote válido con ids que no existen: con las cuentas apagadas o sin base, /api/e igual responde 204.
@@ -184,7 +188,9 @@ async function main() {
     { nombre: "intl: api de AR anidada", host: HOST_INTL, ruta: "/api/planilla-comercio/download", status: 404, noContiene: [MARCA_AR] },
     // src/proxy.ts corre antes que los rewrites: en el host intl deja pasar /api/* para que caiga en
     // el 404 intl y no en el de AR (que es lo que sigue dando en calcular.ar con las cuentas apagadas).
-    { nombre: "intl: api de cuenta", host: HOST_INTL, ruta: "/api/cuenta/calculos", status: 404, noContiene: [MARCA_AR] },
+    cuentasActivas
+      ? { nombre: "intl: api de cuenta sin sesión", host: HOST_INTL, ruta: "/api/cuenta/calculos", status: 401, contiene: ['"codigo":"sesion"', "Ingresa a tu cuenta"] }
+      : { nombre: "intl: api de cuenta", host: HOST_INTL, ruta: "/api/cuenta/calculos", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: api de cuenta sin ruta", host: HOST_INTL, ruta: "/api/cuenta", status: 404, noContiene: [MARCA_AR] },
     { nombre: "intl: api de checkout", host: HOST_INTL, ruta: "/api/mp/checkout", status: 404, noContiene: [MARCA_AR] },
     // La medición sí existe en calcularya: el GET llega a la ruta (405, sólo acepta POST) y el POST
@@ -195,7 +201,29 @@ async function main() {
     { nombre: "AR: medición (POST)", host: HOST_AR, ruta: "/api/e", post: { origin: "https://calcular.ar", cuerpo: MEDICION }, status: 204 },
     { nombre: "preview: api de cuenta con cookie", host: "calcular-ar-git-x.vercel.app", ruta: "/api/cuenta", cookie: "sitio=intl", status: 404, noContiene: [MARCA_AR] },
     ...(cuentasActivas
-      ? []
+      ? [
+          // Cuentas en calcularya: mismas rutas públicas, pantallas propias, sin pasar por calcular.ar.
+          { nombre: "intl: login", host: HOST_INTL, ruta: "/login", status: 200, contiene: ["Ingresa a tu cuenta", "CalcularYa", 'name="robots" content="noindex'], noContiene: [MARCA_AR, "Entrá"] },
+          { nombre: "intl: registro", host: HOST_INTL, ruta: "/registro", status: 200, contiene: ["Crea tu cuenta"], noContiene: [MARCA_AR] },
+          { nombre: "intl: recuperar", host: HOST_INTL, ruta: "/recuperar", status: 200, contiene: ["¿Olvidaste tu contraseña?"], noContiene: [MARCA_AR] },
+          { nombre: "intl: confirmar sin token", host: HOST_INTL, ruta: "/auth/confirmar", status: 200, contiene: ["Este enlace no está completo"], noContiene: [MARCA_AR] },
+          { nombre: "intl: cuenta sin sesión", host: HOST_INTL, ruta: "/cuenta", status: 307, locationFin: "/login?next=%2Fcuenta" },
+          { nombre: "intl: clave sin sesión", host: HOST_INTL, ruta: "/cuenta/clave", status: 307, locationFin: "/login?next=%2Fcuenta%2Fclave" },
+          { nombre: "intl: opiniones sin sesión", host: HOST_INTL, ruta: "/cuenta/opiniones", status: 307, locationFin: "/login?next=%2Fcuenta%2Fopiniones" },
+          { nombre: "intl: cuenta con cookie inventada", host: HOST_INTL, ruta: "/cuenta", cookie: "sb-x-auth-token=basura", status: 307, locationFin: "/login?next=%2Fcuenta" },
+          { nombre: "intl: panel sigue en AR", host: HOST_INTL, ruta: "/dashboard", status: 308, location: `${ORIGEN_AR}/dashboard` },
+          // El payload RSC de Next repite la URL pedida como dato: lo que importa es que el next saneado
+          // quede vacío en el formulario y en los enlaces, que son los que terminan en un redirect.
+          { nombre: "intl: login no repite next ajeno", host: HOST_INTL, ruta: "/login?next=//evil.com", status: 200, contiene: [NEXT_VACIO, 'href="/registro"'], noContiene: SIN_EVIL },
+          { nombre: "intl: login no repite next con esquema", host: HOST_INTL, ruta: "/login?next=https%3A%2F%2Fevil.com", status: 200, contiene: [NEXT_VACIO], noContiene: SIN_EVIL },
+          { nombre: "intl: registro no repite next ajeno", host: HOST_INTL, ruta: "/registro?next=/%2e%2e//evil.com", status: 200, contiene: [NEXT_VACIO, 'href="/login"'], noContiene: SIN_EVIL },
+          { nombre: "intl: salir desde otro origen", host: HOST_INTL, ruta: "/auth/salir", post: { origin: "https://evil.com", cuerpo: "" }, status: 403 },
+          { nombre: "intl: login de un país no existe", host: HOST_INTL, ruta: `/${m}/login`, status: 404, noContiene: [MARCA_AR] },
+          { nombre: "intl: path interno de la cuenta", host: HOST_INTL, ruta: "/intl/global/login", status: 404, noContiene: [MARCA_AR] },
+          { nombre: "preview: login con cookie", host: "calcular-ar-git-x.vercel.app", ruta: "/login", cookie: "sitio=intl", status: 200, contiene: ["Ingresa a tu cuenta"], noContiene: [MARCA_AR] },
+          { nombre: "AR: login sigue igual", host: HOST_AR, ruta: "/login", status: 200, contiene: [MARCA_AR, "Entrá a tu cuenta"] },
+          { nombre: "AR: cuenta sin sesión", host: HOST_AR, ruta: "/cuenta", status: 307, locationFin: "/login?next=%2Fcuenta" },
+        ]
       : [
           { nombre: "AR: api de cuenta", host: HOST_AR, ruta: "/api/cuenta", status: 404, contiene: [MARCA_AR] },
           { nombre: "AR: api de cuenta anidada", host: HOST_AR, ruta: "/api/cuenta/calculos", status: 404, contiene: [MARCA_AR] },
@@ -226,6 +254,12 @@ async function main() {
       const problemas: string[] = [];
       if (r.status !== f.status) problemas.push(`status ${r.status}, se esperaba ${f.status}`);
       if (f.location !== undefined && r.location !== f.location) problemas.push(`location ${r.location}, se esperaba ${f.location}`);
+      if (f.locationFin !== undefined) {
+        const destino = r.location ? new URL(r.location, `http://${f.host}`) : null;
+        if (!destino || `${destino.pathname}${destino.search}` !== f.locationFin || (destino.host !== f.host && !destino.host.startsWith("127.0.0.1"))) {
+          problemas.push(`location ${r.location}, se esperaba …${f.locationFin} en ${f.host}`);
+        }
+      }
       for (const c of f.contiene ?? []) if (!r.cuerpo.includes(c)) problemas.push(`no contiene ${JSON.stringify(c)}`);
       for (const c of f.noContiene ?? []) if (r.cuerpo.includes(c)) problemas.push(`contiene ${JSON.stringify(c)}`);
       if (f.cache && r.cache !== f.cache) problemas.push(`cache-control ${r.cache}, se esperaba ${f.cache}`);

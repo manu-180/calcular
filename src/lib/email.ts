@@ -2,10 +2,35 @@
 // FROM debe coincidir con un dominio verificado en la cuenta Resend.
 
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
+import { origenIntl } from "@/motor/sitio";
 
 const RESEND_API = "https://api.resend.com";
 export const FROM = "CalculAR <soporte@theapexweb.com>";
+// Mismo dominio verificado en Resend; cambia sólo el nombre que ve quien lo recibe.
+export const FROM_INTL = "CalcularYa <soporte@theapexweb.com>";
 const BASE = "https://calcular.ar";
+
+export const remitente = (sitio: "ar" | "intl") => (sitio === "intl" ? FROM_INTL : FROM);
+
+type Marca = { nombre: string; dominio: string; base: string; problema: string };
+
+const MARCA_AR: Marca = {
+  nombre: "CalculAR",
+  dominio: "calcular.ar",
+  base: BASE,
+  problema: `¿Algún problema? Respondé este mail o escribinos desde <a href="${BASE}/contacto" style="color:#059669;">calcular.ar/contacto</a>.`,
+};
+
+function marcaIntl(): Marca {
+  const base = origenIntl() ?? "https://calcularya.com";
+  const dominio = new URL(base).host;
+  return {
+    nombre: "CalcularYa",
+    dominio,
+    base,
+    problema: `¿Algún problema? Responde este correo o escríbenos desde <a href="${base}/contacto" style="color:#059669;">${dominio}/contacto</a>.`,
+  };
+}
 
 // ─── Plantillas HTML ─────────────────────────────────────────────────────────
 
@@ -144,7 +169,7 @@ export function newsletterEmailHtml(opts: {
 // MercadoPago y sirve SIEMPRE la última versión del .xlsx, así que "todas las actualizaciones
 // del año incluidas" se cumple sola, sin mandar un archivo nuevo cada paritaria.
 
-function shellTransaccional(content: string, pie?: string): string {
+function shellTransaccional(content: string, pie?: string, marca: Marca = MARCA_AR): string {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -156,15 +181,15 @@ function shellTransaccional(content: string, pie?: string): string {
 <tr><td align="center">
 <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;max-width:600px;width:100%;">
   <tr><td style="background:#059669;padding:20px 32px;">
-    <a href="${BASE}" style="color:#fff;font-size:20px;font-weight:700;text-decoration:none;">CalculAR</a>
-    <span style="color:#a7f3d0;font-size:12px;margin-left:8px;">calcular.ar</span>
+    <a href="${marca.base}" style="color:#fff;font-size:20px;font-weight:700;text-decoration:none;">${marca.nombre}</a>
+    <span style="color:#a7f3d0;font-size:12px;margin-left:8px;">${marca.dominio}</span>
   </td></tr>
   <tr><td style="padding:32px;">${content}</td></tr>
   <tr><td style="background:#f9fafb;padding:16px 32px;border-top:1px solid #e5e7eb;">
     <p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;">
       ${pie ?? `Este es el comprobante de tu compra en <a href="${BASE}" style="color:#059669;">calcular.ar</a>.
       Guardalo: el enlace de descarga es permanente.`}<br>
-      ¿Algún problema? Respondé este mail o escribinos desde <a href="${BASE}/contacto" style="color:#059669;">calcular.ar/contacto</a>.
+      ${marca.problema}
     </p>
   </td></tr>
 </table>
@@ -422,7 +447,62 @@ function esc(v: string): string {
   return v.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-export function mailCuenta(tipo: MailCuenta, url: string): { asunto: string; html: string; texto: string } {
+type CopyCuenta = (typeof COPY_CUENTA)[MailCuenta];
+
+// CalcularYa: neutro para LATAM, en tú y «correo» (docs/GUIA-REDACCION.md).
+const COPY_CUENTA_INTL: Record<MailCuenta, CopyCuenta> = {
+  alta: {
+    asunto: "Confirma tu cuenta de CalcularYa",
+    titulo: "Confirma tu correo y listo",
+    parrafos: ["Gracias por crear tu cuenta en CalcularYa. Toca el botón para confirmar que este correo es tuyo e ingresar."],
+    boton: "Confirmar mi cuenta",
+    nota: "Si no creaste una cuenta, ignora este correo: sin confirmar no se activa nada.",
+  },
+  confirmar: {
+    asunto: "Confirma tu correo en CalcularYa",
+    titulo: "Confirma que este correo es tuyo",
+    parrafos: ["Te falta un paso para terminar de activar tu cuenta de CalcularYa. Toca el botón y queda confirmada."],
+    boton: "Confirmar mi correo",
+    nota: "Si no lo pediste tú, ignora este correo: tu cuenta sigue igual.",
+  },
+  entrar: {
+    asunto: "Tu enlace para ingresar a CalcularYa",
+    titulo: "Ingresa a tu cuenta",
+    parrafos: ["Pediste ingresar a CalcularYa sin contraseña. Toca el botón y ya estás dentro."],
+    boton: "Ingresar a mi cuenta",
+    nota: "Si no lo pediste tú, ignora este correo: tu cuenta sigue igual.",
+  },
+  "ya-tenias": {
+    asunto: "Ya tienes una cuenta en CalcularYa",
+    titulo: "Ya tenías cuenta con este correo",
+    parrafos: [
+      "Alguien quiso crear una cuenta en CalcularYa con este correo, pero ya existe una. Puedes ingresar directo con el botón, sin contraseña.",
+      "Si no recuerdas la contraseña, una vez dentro la cambias desde Mi cuenta, en Seguridad.",
+    ],
+    boton: "Ingresar a mi cuenta",
+    nota: "Si no fuiste tú, ignora este correo: tu cuenta sigue igual.",
+  },
+  recuperar: {
+    asunto: "Elige una nueva contraseña para CalcularYa",
+    titulo: "Elige una nueva contraseña",
+    parrafos: ["Pediste cambiar la contraseña de tu cuenta de CalcularYa. Toca el botón y elige una nueva."],
+    boton: "Elegir nueva contraseña",
+    nota: "Si no lo pediste tú, ignora este correo: tu contraseña actual sigue funcionando.",
+  },
+  "sin-cuenta": {
+    asunto: "No encontramos una cuenta con este correo",
+    titulo: "Todavía no tienes cuenta",
+    parrafos: [
+      "Alguien pidió ingresar a CalcularYa con este correo, pero no hay ninguna cuenta creada con él.",
+      "Si fuiste tú, crear una es gratis y toma un minuto: ahí quedan guardadas tus planillas y tus cálculos.",
+    ],
+    boton: "Crear mi cuenta",
+    nota: "Si no fuiste tú, ignora este correo. No te volveremos a escribir por esto.",
+  },
+};
+
+export function mailCuenta(tipo: MailCuenta, url: string, sitio: "ar" | "intl" = "ar"): { asunto: string; html: string; texto: string } {
+  if (sitio === "intl") return mailCuentaIntl(tipo, url);
   const c = COPY_CUENTA[tipo];
   const conVencimiento = tipo !== "sin-cuenta";
   const html = shellTransaccional(
@@ -454,6 +534,44 @@ ${c.parrafos.map((p) => `<p style="margin:0 0 16px;font-size:15px;color:#374151;
     conVencimiento ? `${AVISO_VENCE} ${c.nota}` : c.nota,
     "",
     "CalculAR · calcular.ar",
+  ].join("\n");
+  return { asunto: c.asunto, html, texto };
+}
+
+function mailCuentaIntl(tipo: MailCuenta, url: string): { asunto: string; html: string; texto: string } {
+  const c = COPY_CUENTA_INTL[tipo];
+  const marca = marcaIntl();
+  const conVencimiento = tipo !== "sin-cuenta";
+  const html = shellTransaccional(
+    `
+<h2 style="margin:0 0 16px;font-size:22px;color:#111827;">${c.titulo}</h2>
+${c.parrafos.map((p) => `<p style="margin:0 0 16px;font-size:15px;color:#374151;line-height:1.6;">${p}</p>`).join("\n")}
+<table cellpadding="0" cellspacing="0" style="margin:8px 0 24px;">
+  <tr>
+    <td style="background:#059669;border-radius:10px;">
+      <a href="${esc(url)}" style="display:inline-block;padding:16px 32px;color:#fff;font-size:16px;font-weight:600;text-decoration:none;">${c.boton} →</a>
+    </td>
+  </tr>
+</table>
+<p style="margin:0 0 12px;font-size:13px;color:#6b7280;line-height:1.6;">
+  ${conVencimiento ? `${AVISO_VENCE} ` : ""}${c.nota}
+</p>
+<p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;word-break:break-all;">
+  ¿El botón no funciona? Copia este enlace en el navegador:<br>${esc(url)}
+</p>
+  `,
+    `Te escribimos porque alguien pidió este acceso en ${marca.dominio} con tu correo.`,
+    marca,
+  );
+  const texto = [
+    c.titulo,
+    "",
+    ...c.parrafos.flatMap((p) => [p, ""]),
+    `${c.boton}: ${url}`,
+    "",
+    conVencimiento ? `${AVISO_VENCE} ${c.nota}` : c.nota,
+    "",
+    `${marca.nombre} · ${marca.dominio}`,
   ].join("\n");
   return { asunto: c.asunto, html, texto };
 }

@@ -81,7 +81,11 @@ export async function proxy(request: NextRequest) {
   // El proxy corre antes que los rewrites: en calcularya, /api/cuenta y /api/mp/checkout tienen que
   // seguir de largo para que beforeFiles los mande al 404 intl. Si no, con las cuentas apagadas
   // salían con el 404 de calcular.ar, y prendidas tocaban la sesión de Supabase en otro dominio.
-  if (request.nextUrl.pathname.startsWith("/api/") && esSitioIntl(request)) return NextResponse.next();
+  // Con las cuentas prendidas, /api/cuenta sí existe en calcularya (hosts.ts la deja pasar) y tiene
+  // que refrescar la sesión igual que en calcular.ar.
+  const intl = esSitioIntl(request);
+  const apiCuenta = CUENTAS_ACTIVAS && bajo(request.nextUrl.pathname, ["/api/cuenta"]);
+  if (request.nextUrl.pathname.startsWith("/api/") && intl && !apiCuenta) return NextResponse.next();
 
   if (!CUENTAS_ACTIVAS) return bajo(request.nextUrl.pathname, PRIVADAS) ? noEncontrada(request) : NextResponse.next();
 
@@ -109,7 +113,7 @@ export async function proxy(request: NextRequest) {
   }
 
   if (esLectura && conSesion && bajo(pathname, SOLO_SIN_SESION)) {
-    const destino = destinoSeguro(request.nextUrl.searchParams.get("next"), "/cuenta");
+    const destino = destinoSeguro(request.nextUrl.searchParams.get("next"), "/cuenta", intl ? "intl" : "ar");
     const r = redirigir(new URL(destino, request.url), respuesta.actual);
     if (!request.cookies.has(COOKIE_PISTA)) ponerPista(r.cookies);
     return r;

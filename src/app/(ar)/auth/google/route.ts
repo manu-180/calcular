@@ -1,9 +1,9 @@
 import { createHash, randomBytes } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
-import { GOOGLE_ACTIVO } from "@/lib/funciones";
+import { GOOGLE_ACTIVO, GOOGLE_INTL_ACTIVO } from "@/lib/funciones";
 import { destinoSeguro } from "@/lib/auth/destino";
 import { COOKIE_GOOGLE, OPCIONES_GOOGLE } from "@/lib/auth/cookies";
-import { limitePorIp, origenDelSitio } from "@/lib/auth/pedido";
+import { limitePorIp, origenDelSitio, sitioDelPedido } from "@/lib/auth/pedido";
 
 export const dynamic = "force-dynamic";
 
@@ -15,16 +15,19 @@ const aLogin = (req: NextRequest, error: string) => {
 
 // El ida y vuelta con Google lo hacemos nosotros y no Supabase: si la vuelta fuera a
 // <ref>.supabase.co, la pantalla de Google diría «Ir a wsmsspeeeujynqornyrj.supabase.co».
-// Con la vuelta en calcular.ar, Google muestra nuestro dominio; la sesión sale después de
-// signInWithIdToken en /auth/google/vuelta.
+// Con la vuelta en el dominio del sitio (calcular.ar o calcularya.com), Google muestra el nuestro;
+// la sesión sale después de signInWithIdToken en /auth/google/vuelta.
 export async function GET(req: NextRequest) {
   const clientId = process.env.GOOGLE_OAUTH_CLIENT_ID;
   if (!GOOGLE_ACTIVO || !clientId) return new NextResponse(null, { status: 404 });
+  const sitio = await sitioDelPedido();
+  if (sitio === "intl" && !GOOGLE_INTL_ACTIVO) return aLogin(req, "google-pendiente");
   if (!(await limitePorIp("google"))) return aLogin(req, "limite");
 
   const state = randomBytes(24).toString("base64url");
   const nonce = randomBytes(24).toString("base64url");
-  const next = destinoSeguro(req.nextUrl.searchParams.get("next"), "");
+  const next = destinoSeguro(req.nextUrl.searchParams.get("next"), "", sitio);
+  const desde = destinoSeguro(req.nextUrl.searchParams.get("desde"), "", sitio);
 
   const url = new URL("https://accounts.google.com/o/oauth2/v2/auth");
   url.searchParams.set("client_id", clientId);
@@ -38,6 +41,6 @@ export async function GET(req: NextRequest) {
 
   const r = NextResponse.redirect(url, 303);
   r.headers.set("Cache-Control", "private, no-store");
-  r.cookies.set(COOKIE_GOOGLE, JSON.stringify({ state, nonce, next }), OPCIONES_GOOGLE);
+  r.cookies.set(COOKIE_GOOGLE, JSON.stringify(desde ? { state, nonce, next, desde } : { state, nonce, next }), OPCIONES_GOOGLE);
   return r;
 }
