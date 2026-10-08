@@ -148,7 +148,7 @@ function ldLegal(ctx: ContextoSitio, slug: PaginaGlobal) {
   const url = urlIntl("global", slug);
   const tipo = slug === "sobre" ? "AboutPage" : slug === "contacto" ? "ContactPage" : "WebPage";
   return grafo([
-    ldPagina({ tipo, url, nombre: p.title, descripcion: p.description, locale: ctx.mercado.locale, actualizado: ACTUALIZACION_PAGINAS_GLOBALES, migas: true }),
+    ldPagina({ tipo, url, nombre: p.title, descripcion: p.description, locale: ctx.mercado.locale, actualizado: ACTUALIZACION_PAGINAS_GLOBALES }),
     ldMigas([
       { nombre: ctx.textos.migas.inicio, url: urlIntl("global") },
       { nombre: p.h1, url },

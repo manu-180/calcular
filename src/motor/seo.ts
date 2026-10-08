@@ -84,10 +84,6 @@ export function hreflangParaAR(concepto: string, equivalentes: readonly Equivale
 
 export interface ImagenSeo {
   url: string;
-  width: number;
-  height: number;
-  alt: string;
-  type: string;
 }
 
 export interface MetadataSeo {
@@ -109,10 +105,12 @@ export interface MetadataSeo {
 // Todo junto y por página: Next mezcla la metadata por clave y en forma plana, así que un
 // openGraph de la página que no repita site_name, locale y url los pierde (pasó en calcular.ar,
 // ver openGraphDe en src/lib/seo.ts). `absolute` para que ningún template de un layout lo toque.
-// Sin og:locale:alternate: en un clúster de 15 países eran 15 metas por página que solo lee Facebook.
-export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; description: string; idiomas?: Idiomas; imagen: { url: string; alt: string } }): MetadataSeo {
+// Cada meta del <head> viaja dos veces (en el HTML y en el payload RSC) y las calculadoras ya pasan
+// los 130 KB: sin og:locale:alternate (15 metas por clúster que solo lee Facebook) ni og:image:alt,
+// :type, :width y :height (las redes leen el PNG igual; el alt repetía el título).
+export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; description: string; idiomas?: Idiomas; imagen: string }): MetadataSeo {
   const url = urlIntl(p.mercado.codigo, p.slug);
-  const imagen: ImagenSeo = { url: p.imagen.url, width: 1200, height: 630, alt: p.imagen.alt, type: "image/png" };
+  const imagen: ImagenSeo = { url: p.imagen };
   return {
     title: { absolute: p.title },
     description: p.description,
@@ -143,6 +141,8 @@ export function grafo(nodos: readonly (Ld | null | undefined)[]): Ld {
 }
 
 // Sin SearchAction: el sitio no tiene buscador y Google la ignora (o la marca) si no lleva a uno.
+// Va solo en la home global: Google lee el nombre del sitio y la organización de la home, y en el
+// resto de las páginas eran 600 bytes por dos (HTML y payload RSC) sin uso.
 export function ldSitio(): Ld[] {
   const origen = origenPublicoIntl();
   return [
@@ -172,25 +172,26 @@ function areaServida(mercado: Mercado): Ld | undefined {
   return { "@type": "Country", name: mercado.nombre, identifier: mercado.pais };
 }
 
-export function ldWebApplication(p: { nombre: string; descripcion: string; url: string; mercado: Mercado; actualizado?: FechaISO; imagen?: string }): Ld {
+// Google no resuelve un @id contra otra URL del sitio (ver src/lib/seo.ts): la organización va
+// con nombre y url, no como referencia a la de la home.
+const editor = () => ({ "@type": "Organization", name: NOMBRE_SITIO_INTL, url: `${origenPublicoIntl()}/` });
+
+// Sin description ni publisher: la description es la del <meta> (Google la toma de ahí) y en una
+// calculadora cada byte de JSON-LD va dos veces (HTML y payload RSC).
+export function ldWebApplication(p: { nombre: string; url: string; mercado: Mercado; actualizado?: FechaISO; imagen?: string }): Ld {
   const area = areaServida(p.mercado);
   return {
     "@type": "WebApplication",
-    "@id": `${p.url}#calculadora`,
     name: p.nombre,
-    description: p.descripcion,
     url: p.url,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
-    browserRequirements: "Requires JavaScript",
     inLanguage: p.mercado.locale,
     ...(area ? { areaServed: area } : {}),
     isAccessibleForFree: true,
     offers: { "@type": "Offer", price: "0", priceCurrency: p.mercado.monedas[0] },
     ...(p.actualizado ? { dateModified: p.actualizado } : {}),
     ...(p.imagen ? { image: p.imagen } : {}),
-    isPartOf: { "@id": idSitio() },
-    publisher: { "@id": idOrganizacion() },
   };
 }
 
@@ -202,46 +203,40 @@ export function ldPagina(p: {
   locale: string;
   actualizado?: FechaISO;
   imagen?: string;
-  migas?: boolean;
   principal?: Ld;
 }): Ld {
   return {
     "@type": p.tipo ?? "WebPage",
-    "@id": p.url,
     url: p.url,
     name: p.nombre,
     description: p.descripcion,
     inLanguage: p.locale,
-    isPartOf: { "@id": idSitio() },
     ...(p.actualizado ? { dateModified: p.actualizado } : {}),
-    ...(p.imagen ? { primaryImageOfPage: { "@type": "ImageObject", url: p.imagen, width: 1200, height: 630 } } : {}),
-    ...(p.migas ? { breadcrumb: { "@id": `${p.url}#migas` } } : {}),
+    ...(p.imagen ? { image: p.imagen } : {}),
+    publisher: editor(),
     ...(p.principal ? { mainEntity: p.principal } : {}),
   };
 }
 
-export function ldLista(items: readonly { nombre: string; url: string }[]): Ld {
+export function ldLista(items: readonly { nombre?: string; url: string }[]): Ld {
   return {
     "@type": "ItemList",
     numberOfItems: items.length,
-    itemListElement: items.map((it, i) => ({ "@type": "ListItem", position: i + 1, name: it.nombre, url: it.url })),
+    itemListElement: items.map((it, i) => ({ "@type": "ListItem", position: i + 1, ...(it.nombre ? { name: it.nombre } : {}), url: it.url })),
   };
 }
 
-export function ldFaq(faq: readonly PreguntaFrecuente[], url: string): Ld | null {
+export function ldFaq(faq: readonly PreguntaFrecuente[]): Ld | null {
   if (!faq.length) return null;
   return {
     "@type": "FAQPage",
-    "@id": `${url}#preguntas`,
     mainEntity: faq.map((f) => ({ "@type": "Question", name: f.pregunta, acceptedAnswer: { "@type": "Answer", text: f.respuesta } })),
   };
 }
 
-// El @id cuelga de la última miga, que es la página donde está.
 export function ldMigas(items: readonly { nombre: string; url: string }[]): Ld {
   return {
     "@type": "BreadcrumbList",
-    "@id": `${items.at(-1)?.url ?? origenPublicoIntl()}#migas`,
     itemListElement: items.map((it, i) => ({ "@type": "ListItem", position: i + 1, name: it.nombre, item: it.url })),
   };
 }

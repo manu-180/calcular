@@ -40,7 +40,6 @@ export const es: TextosSitio = {
     glosario: "Palabras clave",
     relacionadas: "Otras calculadoras",
     otrosPaises: "La misma cuenta en otros países",
-    actualizado: "Actualizado el",
   },
   global: {
     eyebrow: "Latinoamérica",
@@ -114,7 +113,6 @@ export const es: TextosSitio = {
     tituloPais: (pais, anio) => [`Calculadoras laborales y de impuestos de ${pais} ${anio}`, `Calculadoras laborales de ${pais} ${anio}`, `Calculadoras de ${pais}`],
     tituloFuentes: (pais) => [`Datos oficiales vigentes de ${pais}: fuentes y fechas`, `Fuentes y datos de ${pais}`],
     tituloNovedades: (pais, anio) => [`Novedades laborales y de impuestos de ${pais} ${anio}`, `Novedades laborales de ${pais} ${anio}`, `Novedades de ${pais}`],
-    calculadorasDe: (pais) => `Calculadoras de ${pais}`,
   },
   og: {
     datosOficiales: "Datos oficiales, con fuente",

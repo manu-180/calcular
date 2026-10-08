@@ -406,13 +406,6 @@ a {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--cy-texto-suave);
-  flex-wrap: wrap;
-}
-
-.cy-ceja-fecha {
-  padding-left: 0.5rem;
-  border-left: 1px solid var(--cy-linea);
-  font-weight: 500;
 }
 
 .cy-display {

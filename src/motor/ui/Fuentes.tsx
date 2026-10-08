@@ -112,9 +112,7 @@ export function PaginaFuentes({ ctx }: { ctx: ContextoSitio }) {
                   </div>
                   <div>
                     <dt>{t.fuentes.verificado}</dt>
-                    <dd>
-                      <time dateTime={v.fuente.verificadoEl}>{formatearFecha(v.fuente.verificadoEl, m.locale)}</time>
-                    </dd>
+                    <dd>{formatearFecha(v.fuente.verificadoEl, m.locale)}</dd>
                   </div>
                 </dl>
               ))
@@ -145,9 +143,7 @@ export function PaginaFuentes({ ctx }: { ctx: ContextoSitio }) {
                         </div>
                         <div>
                           <dt>{t.fuentes.ultimoDato}</dt>
-                          <dd>
-                            <time dateTime={punto.fecha}>{formatearFecha(punto.fecha, m.locale)}</time>
-                          </dd>
+                          <dd>{formatearFecha(punto.fecha, m.locale)}</dd>
                         </div>
                         {adelantado ? (
                           <p className="cy-ficha-nota">

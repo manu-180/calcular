@@ -30,7 +30,6 @@ export interface TextosSitio {
     glosario: string;
     relacionadas: string;
     otrosPaises: string;
-    actualizado: string;
   };
   global: {
     eyebrow: string;
@@ -85,7 +84,6 @@ export interface TextosSitio {
     tituloPais: (pais: string, anio: number) => readonly string[];
     tituloFuentes: (pais: string) => readonly string[];
     tituloNovedades: (pais: string, anio: number) => readonly string[];
-    calculadorasDe: (pais: string) => string;
   };
   og: { datosOficiales: string; actualizado: (fecha: string) => string; gratis: string; paises: (n: number) => string };
 }

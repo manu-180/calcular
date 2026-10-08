@@ -202,7 +202,6 @@ async function sinServer() {
   for (const modo of ["produccion", "interno"] as const) {
     process.env.VERCEL_ENV = modo === "produccion" ? "production" : "preview";
     const origen = seo.origenPublicoIntl();
-    const sitioLd = JSON.stringify(seo.grafo(seo.ldSitio()));
     for (const m of registro.mercados(modo)) {
       const ctx = ctxMod.contextoSitio(registro, m.codigo);
       if (!ctx) {
@@ -248,7 +247,7 @@ async function sinServer() {
         }
         if (!html) continue;
         fallas.push(...revisarTitulos(id, html));
-        const ld = revisarLd(id, [sitioLd, ...bloquesLd(html)]);
+        const ld = revisarLd(id, bloquesLd(html));
         fallas.push(...ld.errores);
         const app = ld.nodos.find((n) => n["@type"] === "WebApplication");
         if (r?.tipo === "calculadora" && !app) falla(`${id}: calculadora sin WebApplication`);
@@ -257,6 +256,12 @@ async function sinServer() {
         if (r?.tipo === "calculadora" && r.pagina.usados.length && !app?.dateModified) falla(`${id}: usa datos y su WebApplication no lleva dateModified`);
         if (r?.tipo === "calculadora" && r.pagina.contenido.faq.length && !ld.nodos.some((n) => n["@type"] === "FAQPage")) falla(`${id}: tiene preguntas y no FAQPage`);
         if (!r && m.codigo !== "global" && !ld.nodos.some((n) => n["@type"] === "CollectionPage")) falla(`${id}: home de país sin CollectionPage`);
+        // WebSite y Organization van en la home global, que es de donde Google toma el nombre del sitio.
+        const enHome = !r && m.codigo === "global";
+        for (const t of ["WebSite", "Organization"]) {
+          const tiene = ld.nodos.some((n) => n["@type"] === t);
+          if (enHome && !tiene) falla(`${id}: la home global no tiene ${t}`);
+        }
         if (html.includes('href="/intl')) falla(`${id}: enlace interno a /intl`);
       }
       fallas.push(...repetidos(`[${modo}] ${m.codigo}`, pares));

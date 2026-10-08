@@ -8,6 +8,7 @@ import {
   hreflangDe,
   ldFaq,
   ldLista,
+  ldSitio,
   ldMigas,
   ldPagina,
   ldWebApplication,
@@ -17,7 +18,7 @@ import {
   urlIntl,
   type MetadataSeo,
 } from "../seo";
-import { calculadorasDe, tarjetaDe, type ContextoSitio } from "./contexto";
+import { calculadorasDe, type ContextoSitio } from "./contexto";
 import { PAGINAS_LEGALES } from "./Legales";
 
 // Lo que va en el <head> y en el JSON-LD de cada página de calcularya, en un solo lugar: lo usan
@@ -95,14 +96,15 @@ export function metadatosDe(ctx: ContextoSitio, r: PaginaIntl | null): MetadataS
     title,
     description,
     ...(idiomas ? { idiomas } : {}),
-    imagen: { url: imagenDe(ctx, r), alt: title },
+    imagen: imagenDe(ctx, r),
   });
 }
 
 export function ldInicioGlobal(ctx: ContextoSitio) {
   const url = urlIntl("global");
-  const paises = ctx.paises.map((m) => ({ nombre: ctx.textos.seo.calculadorasDe(m.nombre), url: urlIntl(m.codigo) }));
+  const paises = ctx.paises.map((m) => ({ url: urlIntl(m.codigo) }));
   return grafo([
+    ...ldSitio(),
     ldPagina({
       tipo: "CollectionPage",
       url,
@@ -119,7 +121,8 @@ export function ldInicioPais(ctx: ContextoSitio) {
   const m = ctx.mercado;
   const url = urlIntl(m.codigo);
   const { title, description } = textosDe(ctx, null);
-  const items = calculadorasDe(ctx, m).map((e) => ({ nombre: tarjetaDe(ctx, m, e).titulo, url: urlIntl(m.codigo, e.definicion.slug) }));
+  // Lista de resumen (solo URL): el nombre ya está en el HTML de cada tarjeta y acá pesaba 1,5 KB doble.
+  const items = calculadorasDe(ctx, m).map((e) => ({ url: urlIntl(m.codigo, e.definicion.slug) }));
   return grafo([
     ldPagina({
       tipo: "CollectionPage",
@@ -138,17 +141,13 @@ export function ldCalculadora(ctx: ContextoSitio, pagina: PaginaResuelta) {
   const m = ctx.mercado;
   const r: PaginaIntl = { tipo: "calculadora", pagina };
   const url = urlIntl(m.codigo, pagina.calculadora.slug);
-  const { title, description } = textosDe(ctx, r);
-  const actualizado = actualizacionDe(ctx, r);
-  const imagen = imagenDe(ctx, r);
   return grafo([
-    ldPagina({ url, nombre: title, descripcion: description, locale: m.locale, actualizado, imagen, migas: true, principal: { "@id": `${url}#calculadora` } }),
-    ldWebApplication({ nombre: pagina.contenido.h1, descripcion: description, url, mercado: m, actualizado, imagen }),
+    ldWebApplication({ nombre: pagina.contenido.h1, url, mercado: m, actualizado: actualizacionDe(ctx, r) }),
     ldMigas([
       { nombre: m.nombre, url: urlIntl(m.codigo) },
       { nombre: pagina.contenido.h1, url },
     ]),
-    ldFaq(pagina.contenido.faq, url),
+    ldFaq(pagina.contenido.faq),
   ]);
 }
 
@@ -158,7 +157,7 @@ export function ldPaginaDeMercado(ctx: ContextoSitio, r: { tipo: "fuentes" } | {
   const { title, description } = textosDe(ctx, r);
   const h1 = r.tipo === "fuentes" ? ctx.textos.fuentes.titulo(m.nombre) : ctx.textos.novedades.titulo(m.nombre);
   return grafo([
-    ldPagina({ url, nombre: title, descripcion: description, locale: m.locale, actualizado: actualizacionDe(ctx, r), imagen: imagenDe(ctx, r), migas: true }),
+    ldPagina({ url, nombre: title, descripcion: description, locale: m.locale, actualizado: actualizacionDe(ctx, r) }),
     ldMigas([
       { nombre: m.nombre, url: urlIntl(m.codigo) },
       { nombre: h1, url },

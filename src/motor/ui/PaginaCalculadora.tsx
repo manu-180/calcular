@@ -1,5 +1,4 @@
 import type { ComponentType } from "react";
-import { formatearFecha } from "../formato";
 import { categoriaDe } from "../i18n";
 import type { PaginaResuelta } from "../registro";
 import { rutaIntl } from "../seo";
@@ -7,7 +6,7 @@ import type { PropsCalculadora } from "../tipos";
 import { Bandera } from "./Bandera";
 import { calculadorasDe, tarjetaDe, type ContextoSitio } from "./contexto";
 import { IconoFlecha } from "./Iconos";
-import { actualizacionDe, ldCalculadora } from "./metadatos";
+import { ldCalculadora } from "./metadatos";
 import { Sello } from "./Sello";
 import { AvisoDePais, JsonLd, Migas } from "./Sitio";
 
@@ -21,7 +20,6 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
     .filter((e) => e.mercado !== mercado.codigo)
     .map((e) => ({ ...e, m: ctx.paises.find((p) => p.codigo === e.mercado) }))
     .filter((e) => e.m);
-  const actualizado = actualizacionDe(ctx, { tipo: "calculadora", pagina });
 
   return (
     <article className="cy-pagina cy-pagina-calculadora">
@@ -33,11 +31,6 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
             <p className="cy-ceja">
               <Bandera pais={mercado.pais} ancho={18} />
               {mercado.nombre}
-              {actualizado ? (
-                <span className="cy-ceja-fecha">
-                  {t.calculadora.actualizado} <time dateTime={actualizado}>{formatearFecha(actualizado, mercado.locale)}</time>
-                </span>
-              ) : null}
             </p>
             <h1 className="cy-titular">{contenido.h1}</h1>
             <div className="cy-intro">
