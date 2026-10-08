@@ -2,25 +2,30 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "gt.salario-minimo",
-  h1: "Salario mínimo en Guatemala",
-  title: "Salario mínimo 2026 en Guatemala por actividad",
+  h1: "Salario mínimo 2026 en Guatemala",
+  title: "Salario mínimo Guatemala 2026: diario, mensual y por hora",
   description:
-    "Salario mínimo no agrícola de {{gt.salario-minimo-mensual[no-agricola]@ce1}} al mes en el departamento de Guatemala. Vea el agrícola y el de maquila en cada región.",
+    "Salario mínimo no agrícola de {{gt.salario-minimo-mensual[no-agricola]@ce1}} al mes en el departamento de Guatemala. Vea el agrícola y el de maquila en cada región, por día y por hora.",
   intro: [
-    "Guatemala tiene seis salarios mínimos: tres actividades (agrícola, no agrícola y exportadora y de maquila) en dos circunscripciones económicas.",
-    "La circunscripción 1 es el departamento de Guatemala. La 2 es el resto del país. Manda el lugar donde está su centro de trabajo.",
+    "El salario mínimo 2026 en Guatemala para actividades no agrícolas es {{gt.salario-minimo-diario[no-agricola]@ce1}} diarios ({{gt.salario-minimo-mensual[no-agricola]@ce1}} al mes) en el departamento de Guatemala, sin contar la bonificación incentivo.",
+    "Hay seis salarios mínimos: tres actividades (agrícola, no agrícola y exportadora y de maquila) en dos circunscripciones económicas. La 1 es el departamento de Guatemala y la 2, el resto del país.",
   ],
   comoSeCalcula: [
     "No agrícola: {{gt.salario-minimo-mensual[no-agricola]@ce1}} al mes en la circunscripción 1 y {{gt.salario-minimo-mensual[no-agricola]@ce2}} en la 2.",
     "Agrícola: {{gt.salario-minimo-mensual[agricola]@ce1}} y {{gt.salario-minimo-mensual[agricola]@ce2}}.",
     "Exportadora y de maquila: {{gt.salario-minimo-mensual[exportadora-maquila]@ce1}} y {{gt.salario-minimo-mensual[exportadora-maquila]@ce2}}.",
     "Por hora se paga la parte que corresponde según su jornada. En jornada diurna, el salario diario dividido entre {{gt.jornada-horas[diurna]}}.",
+    "Manda el lugar donde está su centro de trabajo, no donde vive.",
   ],
   faq: [
     {
       pregunta: "¿Cuál es el salario mínimo 2026 en Guatemala?",
       respuesta:
         "Para actividades no agrícolas, {{gt.salario-minimo-diario[no-agricola]@ce1}} diarios ({{gt.salario-minimo-mensual[no-agricola]@ce1}} al mes) en el departamento de Guatemala y {{gt.salario-minimo-diario[no-agricola]@ce2}} diarios en el resto del país. Rige desde el {{gt.salario-minimo-mensual#desde}}.",
+    },
+    {
+      pregunta: "¿Cuál es el salario mínimo agrícola?",
+      respuesta: "{{gt.salario-minimo-diario[agricola]@ce1}} diarios ({{gt.salario-minimo-mensual[agricola]@ce1}} al mes) en el departamento de Guatemala y {{gt.salario-minimo-diario[agricola]@ce2}} diarios en el resto del país.",
     },
     {
       pregunta: "¿El salario mínimo incluye la bonificación incentivo?",

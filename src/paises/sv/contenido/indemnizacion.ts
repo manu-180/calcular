@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "sv.indemnizacion",
-  h1: "Calculadora de indemnización por despido en El Salvador",
-  title: "Indemnización por despido en El Salvador: calcúlela",
+  h1: "Cálculo de indemnización por despido en El Salvador",
+  title: "Cálculo de indemnización por despido en El Salvador 2026",
   description:
-    "Calcule su indemnización por despido injustificado: {{sv.indemnizacion-dias-por-anio}} de salario por año, con el tope de {{sv.indemnizacion-tope}} salarios mínimos diarios.",
+    "Calcule su indemnización por despido injustificado: {{sv.indemnizacion-dias-por-anio}} de salario por año, con el tope de {{sv.indemnizacion-tope}} salarios mínimos diarios del sector. Vea el monto exacto.",
   intro: [
-    "Si lo despiden sin causa justificada y su contrato es por tiempo indefinido, el patrono le debe una indemnización. Se calcula con su salario y con el tiempo que trabajó.",
-    "Ponga su salario, las fechas de inicio y de salida, y el sector de la empresa. El sector importa porque de él sale el tope de la ley.",
+    "La indemnización por despido en El Salvador es de {{sv.indemnizacion-dias-por-anio}} de salario por cada año trabajado, y la parte proporcional del último año. Nunca puede ser menos de {{sv.indemnizacion-dias-minimo}} de salario.",
+    "Le toca si lo despiden sin causa justificada y su contrato es por tiempo indefinido. Ponga su salario, las fechas de inicio y de salida, y el sector de la empresa, que define el tope de la ley.",
   ],
   comoSeCalcula: [
     "Se saca su salario diario: el salario mensual dividido por 30.",
@@ -20,6 +20,10 @@ export default definirContenido({
     "Trabajó 6 años y 273 días con un salario de $900. Su salario diario es $30. Le corresponden 180 días por los años completos y 22.44 por la fracción: $6,073.15.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto me toca de indemnización si me despiden?",
+      respuesta: "{{sv.indemnizacion-dias-por-anio}} de salario por cada año, más la parte proporcional del último año. El salario diario que se usa tiene un tope según el sector.",
+    },
     {
       pregunta: "¿Cuál es el tope de la indemnización?",
       respuesta: "Para el cálculo, ningún salario diario puede pasar de {{sv.indemnizacion-tope}} veces el salario mínimo diario. En comercio y servicios el mínimo diario es {{sv.salario-minimo-diario@comercio-servicios}}, así que el tope es {{sv.indemnizacion-tope}} veces ese monto.",

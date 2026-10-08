@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "hn.decimo-cuarto-mes",
-  h1: "Calculadora del décimo cuarto mes",
-  title: "Décimo cuarto mes en Honduras: calcule cuánto le toca",
+  h1: "Calculadora del décimo cuarto mes en Honduras",
+  title: "Décimo cuarto mes Honduras 2026: calcule su catorceavo",
   description:
-    "Calcule su décimo cuarto mes (catorceavo) de junio o la parte proporcional si dejó de trabajar. Período del 1 de julio al 30 de junio.",
+    "Calcule su décimo cuarto mes (catorceavo) completo o proporcional, con el período del 1 de julio al 30 de junio. También si renunció o lo despidieron.",
   intro: [
-    "El décimo cuarto mes, o catorceavo, es un salario extra que se paga cada año en junio. Es aparte del aguinaldo de diciembre.",
-    "Si trabajó el año completo, del 1 de julio al 30 de junio, recibe un salario entero. Si trabajó menos, recibe la parte que corresponde a los días trabajados.",
+    "El décimo cuarto mes en Honduras (el catorceavo) es el {{hn.decimo-cuarto}} de su salario ordinario promedio por un año completo de trabajo, del 1 de julio al 30 de junio. Se paga en junio.",
+    "Si trabajó menos tiempo, recibe la parte proporcional a los días trabajados. Escriba su salario y su fecha de ingreso para ver cuánto le toca.",
   ],
   comoSeCalcula: [
     "Se toma el promedio de su salario ordinario mensual del período.",
@@ -24,6 +24,10 @@ export default definirContenido({
       respuesta: "En junio de cada año. Usted y su patrono pueden acordar otra fecha, pero el monto no cambia.",
     },
     {
+      pregunta: "¿Cómo se calcula el catorceavo proporcional?",
+      respuesta: "Multiplique su salario promedio por los días trabajados desde el 1 de julio y divida entre 365. La calculadora cuenta los días por usted.",
+    },
+    {
       pregunta: "¿Me toca si renuncio o me despiden?",
       respuesta: "Sí. Si sale antes de cumplir el año, con causa o sin ella, el patrono le paga la parte proporcional al tiempo trabajado.",
     },
@@ -33,7 +37,7 @@ export default definirContenido({
     },
     {
       pregunta: "¿Es lo mismo que el aguinaldo?",
-      respuesta: "No. El aguinaldo es el décimo tercer mes y se paga en diciembre. El décimo cuarto se paga en junio. Le corresponden los dos.",
+      respuesta: "No. El aguinaldo es el décimo tercer mes y se paga en diciembre. El decimocuarto se paga en junio. Le corresponden los dos.",
     },
     {
       pregunta: "¿Me pueden descontar adelantos?",
@@ -41,7 +45,7 @@ export default definirContenido({
     },
   ],
   glosario: [
-    { termino: "Décimo cuarto mes", definicion: "Compensación social del Decreto 135-94: un salario más por año trabajado al 30 de junio." },
+    { termino: "Décimo cuarto mes", definicion: "Compensación social del Decreto 135-94: un salario más por año trabajado al 30 de junio. También se le dice catorceavo o decimocuarto." },
     { termino: "Salario ordinario", definicion: "Lo que gana por su jornada normal, sin horas extra." },
   ],
 });

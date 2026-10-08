@@ -3,10 +3,10 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.salario-liquido",
   h1: "Calculadora de salario líquido en El Salvador",
-  title: "Salario líquido en El Salvador: calcule sus descuentos",
-  description: "Calcule su salario líquido: le restamos la AFP del {{sv.afp-trabajador}}, el ISSS y la retención de renta con la tabla vigente.",
+  title: "Salario líquido en El Salvador: calcule AFP, ISSS y renta",
+  description: "Calcule su salario líquido: le restamos la AFP del {{sv.afp-trabajador}}, el ISSS y la retención de renta con la tabla vigente. Vea cuánto recibe en mano.",
   intro: [
-    "El salario líquido es lo que recibe en la mano después de los descuentos de ley: AFP, ISSS y renta.",
+    "El salario líquido en El Salvador es lo que recibe en mano después de los descuentos de ley: la AFP del {{sv.afp-trabajador}}, el ISSS y la renta.",
     "Ponga su salario mensual y la calculadora le muestra cada descuento.",
   ],
   comoSeCalcula: [

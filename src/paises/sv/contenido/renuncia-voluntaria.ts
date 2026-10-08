@@ -2,12 +2,12 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "sv.renuncia-voluntaria",
-  h1: "Calculadora de renuncia voluntaria en El Salvador",
-  title: "Renuncia voluntaria en El Salvador: calcule su prestación",
+  h1: "Cálculo de renuncia voluntaria en El Salvador",
+  title: "Cálculo de renuncia voluntaria en El Salvador: prestación",
   description:
-    "Calcule la prestación por renuncia voluntaria: {{sv.renuncia-dias-por-anio}} de salario por año, con al menos {{sv.renuncia-anios-minimos}} de servicio y tope por sector.",
+    "Calcule su prestación por renuncia voluntaria: {{sv.renuncia-dias-por-anio}} de salario por año, desde {{sv.renuncia-anios-minimos}} de servicio y con el tope del sector. Vea cuánto le toca.",
   intro: [
-    "Si renuncia a su trabajo después de al menos {{sv.renuncia-anios-minimos}} con el mismo patrono, la ley le da una prestación económica. Es distinta de la indemnización por despido.",
+    "La renuncia voluntaria en El Salvador da derecho a {{sv.renuncia-dias-por-anio}} de salario por cada año de servicio, si trabajó al menos {{sv.renuncia-anios-minimos}} con el mismo patrono. Es distinta de la indemnización por despido.",
     "Ponga su salario, las fechas de inicio y de renuncia, y el sector de la empresa. La calculadora aplica el tope de la ley.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,10 @@ export default definirContenido({
     "Trabajó 5 años con un salario de $600 en comercio. Su salario diario es $20 y no pasa el tope. Le corresponden 75 días: $1,500.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuánto me toca si renuncio?",
+      respuesta: "{{sv.renuncia-dias-por-anio}} de salario por cada año completo de servicio, con un salario diario de hasta {{sv.renuncia-tope}} veces el mínimo diario de su sector. Además le pagan el aguinaldo y las vacaciones que le correspondan.",
+    },
     {
       pregunta: "¿Desde cuándo tengo derecho a la prestación por renuncia?",
       respuesta: "Desde los {{sv.renuncia-anios-minimos}} de servicio continuo con el mismo patrono. Antes de ese tiempo no hay prestación, aunque sí le pagan el aguinaldo y las vacaciones.",

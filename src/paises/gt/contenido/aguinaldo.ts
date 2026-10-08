@@ -3,11 +3,11 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gt.aguinaldo",
   h1: "Calculadora de aguinaldo en Guatemala",
-  title: "Calcular aguinaldo en Guatemala: diciembre y enero",
+  title: "Calcular aguinaldo en Guatemala 2026: diciembre y enero",
   description:
-    "Calcule su aguinaldo completo o proporcional y vea cuánto se paga en diciembre y cuánto en enero. Según el Decreto 76-78.",
+    "Calcule su aguinaldo completo o proporcional y vea cuánto le pagan en diciembre y cuánto en enero. Período del 1 de diciembre al 30 de noviembre. Decreto 76-78.",
   intro: [
-    "El aguinaldo es un salario extra por cada año de trabajo. Se paga la mitad en la primera quincena de diciembre y la otra mitad en la segunda quincena de enero.",
+    "El aguinaldo en Guatemala es el {{gt.aguinaldo}} de su salario ordinario mensual por un año de trabajo. Se paga la mitad en la primera quincena de diciembre y la otra mitad en la segunda quincena de enero.",
     "Si no completó el año, le toca la parte proporcional a los días trabajados. Si deja de trabajar, se la tienen que pagar en ese momento.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,10 @@ export default definirContenido({
     {
       pregunta: "¿Cuándo se paga el aguinaldo en Guatemala?",
       respuesta: "La mitad en la primera quincena de diciembre y la otra mitad en la segunda quincena de enero. Si la empresa lo paga todo en diciembre, en enero no debe nada más.",
+    },
+    {
+      pregunta: "¿Cómo se calcula el aguinaldo proporcional?",
+      respuesta: "Multiplique su salario ordinario mensual por los días trabajados desde el 1 de diciembre y divida entre 365.",
     },
     {
       pregunta: "¿El aguinaldo paga ISR o IGSS?",

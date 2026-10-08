@@ -3,18 +3,22 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gt.tipo-de-cambio",
   h1: "Tipo de cambio del dólar hoy en Guatemala",
-  title: "Tipo de cambio hoy: dólar a quetzales (Banguat)",
+  title: "Tipo de cambio hoy en Guatemala: dólar a quetzales (Banguat)",
   description:
-    "Consulte el tipo de cambio de referencia del Banco de Guatemala y convierta dólares a quetzales o quetzales a dólares.",
+    "Tipo de cambio de referencia del Banguat hoy: {{gt.tipo-cambio}} por dólar. Convierta dólares a quetzales o quetzales a dólares al instante.",
   intro: [
-    "El tipo de cambio de referencia lo publica el Banco de Guatemala (Banguat) para cada día, incluidos los fines de semana.",
-    "En bancos y casas de cambio el precio de compra y el de venta son otros.",
+    "El tipo de cambio de referencia del Banco de Guatemala (Banguat) hoy es {{gt.tipo-cambio}} por cada dólar. El Banguat publica un valor para cada día, incluidos los fines de semana.",
+    "En bancos y casas de cambio el precio de compra y el de venta son otros. Escriba el monto y elija hacia qué moneda quiere convertir.",
   ],
   comoSeCalcula: [
     "De dólares a quetzales: multiplique los dólares por el tipo de cambio.",
     "De quetzales a dólares: divida los quetzales entre el tipo de cambio.",
   ],
   faq: [
+    {
+      pregunta: "¿A cuánto está el dólar hoy en Guatemala?",
+      respuesta: "Según la referencia del Banguat, a {{gt.tipo-cambio}} por dólar.",
+    },
     {
       pregunta: "¿Qué es el tipo de cambio de referencia?",
       respuesta: "Es el valor del dólar en quetzales que calcula el Banco de Guatemala con las operaciones del mercado. Es la referencia oficial.",

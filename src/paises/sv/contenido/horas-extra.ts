@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "sv.horas-extra",
-  h1: "Calculadora de horas extra en El Salvador",
-  title: "Horas extra en El Salvador: calcule cuánto le pagan",
+  h1: "Cálculo de horas extras en El Salvador",
+  title: "Cálculo de horas extras en El Salvador: cuánto le pagan",
   description:
-    "Calcule el pago de sus horas extra: recargo del {{sv.recargo-hora-extra}} sobre la hora, y {{sv.recargo-nocturno}} más si son de noche. Según el Código de Trabajo.",
+    "Calcule el pago de sus horas extras: recargo del {{sv.recargo-hora-extra}} sobre la hora (pago doble) y {{sv.recargo-nocturno}} más si son de noche. Según el Código de Trabajo.",
   intro: [
-    "Toda hora que trabaja después de su jornada ordinaria es hora extra y se paga con recargo. Si es de noche, el recargo es mayor.",
-    "Ponga su salario mensual, su tipo de jornada y cuántas horas extra hizo de día y de noche.",
+    "En El Salvador las horas extras se pagan con un recargo del {{sv.recargo-hora-extra}}, es decir, al doble de la hora normal. Si son de noche, se suma un {{sv.recargo-nocturno}} de nocturnidad.",
+    "Ponga su salario mensual, su tipo de jornada y cuántas horas extras hizo de día y de noche.",
   ],
   comoSeCalcula: [
     "Se saca el valor de su hora: el salario mensual dividido por 30 y por las horas de su jornada ({{sv.jornada-diurna}} de día, {{sv.jornada-nocturna}} de noche).",
@@ -20,6 +20,10 @@ export default definirContenido({
   ],
   faq: [
     {
+      pregunta: "¿Cómo se pagan las horas extras en El Salvador?",
+      respuesta: "Con un recargo del {{sv.recargo-hora-extra}} sobre el valor de la hora ordinaria, o sea al doble. Las nocturnas llevan además el {{sv.recargo-nocturno}} de nocturnidad.",
+    },
+    {
       pregunta: "¿Cuántas horas tiene la jornada en El Salvador?",
       respuesta: "La diurna no puede pasar de {{sv.jornada-diurna}} diarias ni de {{sv.semana-diurna}} a la semana. La nocturna, de {{sv.jornada-nocturna}} diarias y {{sv.semana-nocturna}} a la semana.",
     },
@@ -28,12 +32,12 @@ export default definirContenido({
       respuesta: "Las que van de las 19:00 a las 6:00 del día siguiente.",
     },
     {
-      pregunta: "¿Me pueden obligar a hacer horas extra siempre?",
-      respuesta: "No. Las horas extra solo se pueden pactar de forma ocasional, cuando hay circunstancias imprevistas o necesarias.",
+      pregunta: "¿Me pueden obligar a hacer horas extras siempre?",
+      respuesta: "No. Las horas extras solo se pueden pactar de forma ocasional, cuando hay circunstancias imprevistas o necesarias.",
     },
     {
       pregunta: "¿Y si trabajo en un día de asueto?",
-      respuesta: "El día de asueto trabajado se paga con un recargo del {{sv.recargo-asueto}}. Si además hace horas extra ese día, el recargo se calcula sobre ese salario doble.",
+      respuesta: "El día de asueto trabajado se paga con un recargo del {{sv.recargo-asueto}}. Si además hace horas extras ese día, el recargo se calcula sobre ese salario doble.",
     },
   ],
   glosario: [

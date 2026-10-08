@@ -3,11 +3,11 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.salario-minimo",
   h1: "Salario mínimo 2026 en Costa Rica por categoría",
-  title: "Salario mínimo 2026 en Costa Rica: busque su categoría",
+  title: "Salarios mínimos 2026 en Costa Rica: busque su categoría",
   description:
-    "Consulte el salario mínimo 2026 por categoría del Decreto 45303-MTSS: no calificado {{cr.salario-minimo-mes[no-calificado]}}, licenciado y doméstico.",
+    "Salario mínimo 2026 por categoría del Decreto 45303-MTSS: no calificado {{cr.salario-minimo-mes[no-calificado]}}, más licenciado y doméstico. Mensual, quincenal y por hora.",
   intro: [
-    "En Costa Rica no hay un solo salario mínimo: cada perfil de puesto tiene el suyo. Los fija el Consejo Nacional de Salarios y rigen desde el 1 de enero.",
+    "El salario mínimo 2026 en Costa Rica para una ocupación no calificada es {{cr.salario-minimo-mes[no-calificado]}} al mes. Cada perfil de puesto tiene su propio mínimo, fijado por el Consejo Nacional de Salarios desde el 1 de enero.",
     "Elija la categoría de su puesto y le mostramos el mínimo mensual, quincenal, diario y por hora.",
   ],
   comoSeCalcula: [
@@ -20,6 +20,10 @@ export default definirContenido({
     "Un trabajador en ocupación no calificada gana al menos {{cr.salario-minimo-mes[no-calificado]}} al mes. Por quincena, la mitad.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuál es el salario mínimo en Costa Rica en 2026?",
+      respuesta: "Depende del puesto. Para una ocupación no calificada es {{cr.salario-minimo-mes[no-calificado]}} al mes; semicalificada, {{cr.salario-minimo-mes[semicalificado]}}; calificada, {{cr.salario-minimo-mes[calificado]}}; especializada, {{cr.salario-minimo-mes[especializado]}}.",
+    },
     {
       pregunta: "¿Cuál es el salario mínimo de una trabajadora doméstica en 2026?",
       respuesta: "{{cr.salario-minimo-mes[trabajo-domestico]}} al mes. Esta categoría sube un poco más que las demás cada año por un acuerdo del Consejo Nacional de Salarios.",

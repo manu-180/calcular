@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "gt.indemnizacion",
-  h1: "Cálculo de indemnización y prestaciones laborales",
-  title: "Cálculo de indemnización en Guatemala con prestaciones",
+  h1: "Cálculo de prestaciones laborales e indemnización en Guatemala",
+  title: "Cálculo de prestaciones e indemnización Guatemala 2026",
   description:
-    "Calcule su indemnización por despido con la sexta parte del aguinaldo y del Bono 14, más aguinaldo, Bono 14 y vacaciones proporcionales.",
+    "Calcule sus prestaciones laborales: indemnización con sextos, aguinaldo, Bono 14 y vacaciones proporcionales, por despido o renuncia. Gratis y al instante.",
   intro: [
-    "Si lo despiden sin causa justa después del período de prueba, el patrono le debe una indemnización de un mes de salario por cada año trabajado, y la parte proporcional si no completó el año.",
-    "Además, sin importar cómo terminó la relación laboral, le tienen que pagar el aguinaldo, el Bono 14 y las vacaciones que le falten.",
+    "La indemnización en Guatemala es de {{gt.indemnizacion-meses-por-anio}} de salario por cada año trabajado, y la parte proporcional del último año, si lo despiden sin causa justa después del período de prueba.",
+    "Además, sin importar cómo terminó la relación laboral, le tienen que pagar el aguinaldo, el Bono 14 y las vacaciones que le falten. Escriba su salario y sus fechas para ver el total de sus prestaciones.",
   ],
   comoSeCalcula: [
     "Se saca el promedio de su salario de los últimos seis meses.",
@@ -26,8 +26,12 @@ export default definirContenido({
       respuesta: "Un mes de salario por cada año trabajado, y la parte proporcional del último año. El salario que se usa es el promedio de los últimos seis meses, más la sexta parte del aguinaldo y del Bono 14.",
     },
     {
-      pregunta: "¿Si renuncio me pagan indemnización?",
-      respuesta: "No, salvo que renuncie por una falta grave del patrono (despido indirecto). Pero sí le corresponden el aguinaldo, el Bono 14 y las vacaciones proporcionales.",
+      pregunta: "¿Qué prestaciones laborales me pagan si renuncio?",
+      respuesta: "El aguinaldo, el Bono 14 y las vacaciones proporcionales. La indemnización no, salvo que renuncie por una falta grave del patrono (despido indirecto).",
+    },
+    {
+      pregunta: "¿Qué son los sextos de aguinaldo y Bono 14?",
+      respuesta: "Es la sexta parte de lo que le pagaron de aguinaldo y de Bono 14 en seis meses. Se suma al salario promedio para calcular la indemnización.",
     },
     {
       pregunta: "¿La indemnización paga ISR?",

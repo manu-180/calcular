@@ -2,13 +2,13 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "hn.vacaciones",
-  h1: "Calculadora de vacaciones",
-  title: "Vacaciones en Honduras: cuántos días y cuánto le pagan",
+  h1: "Cálculo de vacaciones en Honduras",
+  title: "Cálculo de vacaciones en Honduras: días por año y pago",
   description:
-    "Calcule cuántos días de vacaciones le tocan según sus años de trabajo ({{hn.vacaciones-dias[1]}} a {{hn.vacaciones-dias[4]}}) y cuánto le deben pagar.",
+    "Calcule cuántos días de vacaciones le tocan según sus años de trabajo ({{hn.vacaciones-dias[1]}} a {{hn.vacaciones-dias[4]}}) y cuánto le deben pagar, con su salario promedio. Gratis.",
   intro: [
-    "Cada año de trabajo continuo con el mismo patrono le da derecho a vacaciones pagadas. Los días aumentan con la antigüedad.",
-    "Son días laborables y consecutivos: no cuentan los domingos ni los feriados.",
+    "Las vacaciones en Honduras son de {{hn.vacaciones-dias[1]}} después del primer año, {{hn.vacaciones-dias[2]}} después del segundo, {{hn.vacaciones-dias[3]}} después del tercero y {{hn.vacaciones-dias[4]}} desde el cuarto.",
+    "Son días laborables y consecutivos: no cuentan los domingos ni los feriados. Escriba su salario y su fecha de ingreso para ver los días y el pago.",
   ],
   comoSeCalcula: [
     "Después del primer año: {{hn.vacaciones-dias[1]}}. Después del segundo: {{hn.vacaciones-dias[2]}}. Después del tercero: {{hn.vacaciones-dias[3]}}. Desde el cuarto: {{hn.vacaciones-dias[4]}}.",
@@ -19,6 +19,10 @@ export default definirContenido({
     "Trabaja desde marzo de 2022 y gana L15,000. Ya cumplió 4 años: le tocan {{hn.vacaciones-dias[4]}}, que se pagan L500 × 20 = L10,000.",
   ],
   faq: [
+    {
+      pregunta: "¿Cuántos días de vacaciones me tocan en Honduras?",
+      respuesta: "{{hn.vacaciones-dias[1]}} con un año de trabajo, {{hn.vacaciones-dias[2]}} con dos, {{hn.vacaciones-dias[3]}} con tres y {{hn.vacaciones-dias[4]}} desde el cuarto año.",
+    },
     {
       pregunta: "¿Cuándo me tienen que dar las vacaciones?",
       respuesta: "El patrono fija la fecha dentro de los tres meses siguientes a cumplir el año. Le avisa con 10 días de anticipación.",

@@ -3,12 +3,12 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.aguinaldo",
   h1: "Calculadora de aguinaldo en El Salvador",
-  title: "Aguinaldo 2026 en El Salvador: calcule cuánto le toca",
+  title: "Calcular aguinaldo en El Salvador 2026: cuánto le toca",
   description:
-    "Calcule su aguinaldo según el Código de Trabajo: {{sv.aguinaldo-dias[uno-a-tres]}}, {{sv.aguinaldo-dias[tres-a-diez]}} o {{sv.aguinaldo-dias[diez-o-mas]}} de salario según su antigüedad.",
+    "Calcule su aguinaldo según el Código de Trabajo: {{sv.aguinaldo-dias[uno-a-tres]}}, {{sv.aguinaldo-dias[tres-a-diez]}} o {{sv.aguinaldo-dias[diez-o-mas]}} de salario según su antigüedad, o el proporcional si tiene menos de un año.",
   intro: [
-    "El aguinaldo es una prima que todo patrono le paga una vez al año a sus trabajadores. Cuánto recibe depende de su salario y del tiempo que lleva con el mismo patrono.",
-    "Ponga su salario mensual y su antigüedad. Si tiene menos de un año, indique los días que lleva trabajando y le calculamos la parte proporcional.",
+    "El aguinaldo en El Salvador es de {{sv.aguinaldo-dias[uno-a-tres]}} de salario con 1 a 3 años de trabajo, {{sv.aguinaldo-dias[tres-a-diez]}} con 3 a 10 años y {{sv.aguinaldo-dias[diez-o-mas]}} con 10 años o más. Con menos de un año se paga la parte proporcional.",
+    "Ponga su salario mensual y su antigüedad. Si tiene menos de un año, indique los días que lleva trabajando y le calculamos cuánto le toca.",
   ],
   comoSeCalcula: [
     "Se saca su salario diario: el salario mensual dividido por 30.",
@@ -25,8 +25,8 @@ export default definirContenido({
       respuesta: "La reforma de septiembre de 2026 permite pagarlo desde el 1 de octubre. El último día para pagarlo es el 20 de diciembre. Cada patrono elige la fecha dentro de ese plazo.",
     },
     {
-      pregunta: "¿Me pueden quitar el aguinaldo por faltas o sanciones?",
-      respuesta: "No. El Código de Trabajo dice que nadie pierde el aguinaldo por razones disciplinarias, faltas injustificadas ni ninguna otra causa.",
+      pregunta: "¿Cuántos días de aguinaldo me tocan?",
+      respuesta: "{{sv.aguinaldo-dias[uno-a-tres]}} de salario si tiene de 1 a 3 años con el mismo patrono, {{sv.aguinaldo-dias[tres-a-diez]}} de 3 a 10 años y {{sv.aguinaldo-dias[diez-o-mas]}} desde los 10 años.",
     },
     {
       pregunta: "¿Qué salario se usa para calcularlo?",
@@ -35,6 +35,10 @@ export default definirContenido({
     {
       pregunta: "¿Me descuentan renta del aguinaldo?",
       respuesta: "El aguinaldo no paga renta hasta dos salarios mínimos mensuales de comercio y servicios. En 2025 una norma transitoria subió ese límite a $1,500. Si su aguinaldo pasa el límite, solo paga renta por la diferencia.",
+    },
+    {
+      pregunta: "¿Me pueden quitar el aguinaldo por faltas o sanciones?",
+      respuesta: "No. El Código de Trabajo dice que nadie pierde el aguinaldo por razones disciplinarias, faltas injustificadas ni ninguna otra causa.",
     },
     {
       pregunta: "¿Y si me despiden antes de recibirlo?",
