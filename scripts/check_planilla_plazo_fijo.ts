@@ -200,7 +200,9 @@ async function main() {
 
   // 2. Los ejemplos del archivo: uno con IPC oficial y otro estimado, y los dos == motor/réplica.
   EJEMPLOS_REGISTRO.forEach((ej, i) => {
-    const mal = compararFila(libro, F0 + i, { ...ej }, infl);
+    // La fecha del ejemplo 2 es «hoy» al generar el archivo: el .xlsx versionado puede tener días y la réplica se arma con la fecha que el archivo trae.
+    const fechaDelArchivo = isoDeSerial(libro.numero(H.registro, `${C.fecha}${F0 + i}`));
+    const mal = compararFila(libro, F0 + i, { ...ej, fecha: fechaDelArchivo }, infl);
     check(`ejemplo ${i + 1} de «${H.registro}» == calculadora/réplica`, mal.length === 0, mal);
   });
   check("el ejemplo 1 usa el IPC del INDEC y el 2 la estimada", libro.valor(H.registro, `${C.fuente}${F0}`) === PLANILLA_PF.fuenteOficial && libro.valor(H.registro, `${C.fuente}${F0 + 1}`) === PLANILLA_PF.fuenteEstimada);
