@@ -609,6 +609,131 @@
           }
         }
       ]
+    },
+    {
+      "id": "co.salud-empleador",
+      "nombre": "Cotización a salud a cargo del empleador",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": 8.5,
+          "fuente": {
+            "organismo": "Colpensiones (compilación normativa)",
+            "titulo": "Ley 100 de 1993, artículo 204 (modificado por la Ley 1122 de 2007)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0100_1993.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.arl",
+      "nombre": "Cotización a riesgos laborales por clase de riesgo (valor inicial)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "i": "Clase I (riesgo mínimo)",
+        "ii": "Clase II (riesgo bajo)",
+        "iii": "Clase III (riesgo medio)",
+        "iv": "Clase IV (riesgo alto)",
+        "v": "Clase V (riesgo máximo)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-05-26",
+          "valor": {
+            "i": 0.522,
+            "ii": 1.044,
+            "iii": 2.436,
+            "iv": 4.35,
+            "v": 6.96
+          },
+          "fuente": {
+            "organismo": "Colpensiones (compilación normativa)",
+            "titulo": "Decreto 1072 de 2015, artículo 2.2.4.3.5 (Decreto 1772 de 1994, art. 13)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1072_2015.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Valor inicial de cada clase, el que paga toda empresa que entra por primera vez al sistema."
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.parafiscales",
+      "nombre": "Aportes parafiscales sobre la nómina",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "caja": "Caja de compensación familiar",
+        "sena": "SENA",
+        "icbf": "ICBF"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1989-01-01",
+          "valor": {
+            "caja": 4,
+            "sena": 2,
+            "icbf": 3
+          },
+          "fuente": {
+            "organismo": "Colpensiones (compilación normativa)",
+            "titulo": "Ley 21 de 1982, artículo 12 (caja 4 % y SENA 2 %)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0021_1982.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "ICBF 3 %: Ley 89 de 1988, artículo 1, https://www.icbf.gov.co/sites/default/files/ley_89_de_1988.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.exoneracion-tope",
+      "nombre": "Salario desde el que no aplica la exoneración de salud, SENA e ICBF",
+      "tipo": "numero",
+      "unidad": "SMMLV",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 114-1",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Exonera a sociedades declarantes de renta y a personas naturales con dos o más trabajadores, por quienes ganen menos de 10 SMMLV."
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.prima-dias",
+      "nombre": "Días de salario de prima de servicios por año",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-07-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Colpensiones (compilación normativa)",
+            "titulo": "Código Sustantivo del Trabajo, artículo 306 (Ley 1788 de 2016, incluye al servicio doméstico)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
     }
   ]
 }

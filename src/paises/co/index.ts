@@ -30,6 +30,10 @@ import contenidoTrm from "./contenido/trm";
 import contenidoUvr from "./contenido/uvr";
 import contenidoUvt from "./contenido/uvt";
 import contenidoVacaciones from "./contenido/vacaciones";
+import empleadaDomestica from "./calculadoras/empleada-domestica";
+import contenidoEmpleadaDomestica from "./contenido/empleada-domestica";
+import costoDeUnEmpleado from "./calculadoras/costo-de-un-empleado";
+import contenidoCostoDeUnEmpleado from "./contenido/costo-de-un-empleado";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +61,8 @@ export default definirPais({
     { definicion: trm, contenido: contenidoTrm, cliente: () => import("./calculadoras/trm.cliente") },
     { definicion: uvr, contenido: contenidoUvr, cliente: () => import("./calculadoras/uvr.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: empleadaDomestica, contenido: contenidoEmpleadaDomestica, cliente: () => import("./calculadoras/empleada-domestica.cliente") },
+    { definicion: costoDeUnEmpleado, contenido: contenidoCostoDeUnEmpleado, cliente: () => import("./calculadoras/costo-de-un-empleado.cliente") },
   ],
   novedades,
   detectores,
