@@ -2,6 +2,7 @@ import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
 import aguinaldo from "./calculadoras/aguinaldo";
 import bonificacionFamiliar from "./calculadoras/bonificacion-familiar";
+import costoEmpleador from "./calculadoras/costo-empleador";
 import cotizacionDolar from "./calculadoras/cotizacion-dolar";
 import horasExtra from "./calculadoras/horas-extra";
 import indemnizacionPorDespido from "./calculadoras/indemnizacion-por-despido";
@@ -15,6 +16,7 @@ import trabajoDomestico from "./calculadoras/trabajo-domestico";
 import vacaciones from "./calculadoras/vacaciones";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoBonificacionFamiliar from "./contenido/bonificacion-familiar";
+import contenidoCostoEmpleador from "./contenido/costo-empleador";
 import contenidoCotizacionDolar from "./contenido/cotizacion-dolar";
 import contenidoHorasExtra from "./contenido/horas-extra";
 import contenidoIndemnizacionPorDespido from "./contenido/indemnizacion-por-despido";
@@ -51,6 +53,7 @@ export default definirPais({
     { definicion: bonificacionFamiliar, contenido: contenidoBonificacionFamiliar, cliente: () => import("./calculadoras/bonificacion-familiar.cliente") },
     { definicion: cotizacionDolar, contenido: contenidoCotizacionDolar, cliente: () => import("./calculadoras/cotizacion-dolar.cliente") },
     { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
+    { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
   ],
   novedades,
   detectores,

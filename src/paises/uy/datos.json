@@ -743,8 +743,8 @@
       ]
     },
     {
-      "id": "uy.aportes-patronales",
-      "nombre": "Aportes patronales al BPS",
+      "id": "uy.domestico-aportes-patronales",
+      "nombre": "Trabajo doméstico: aportes patronales al BPS",
       "tipo": "mapa",
       "unidad": "%",
       "etiquetas": {
@@ -753,7 +753,7 @@
         "frl": "Fondo de Reconversión Laboral",
         "fgcl": "Fondo de garantía de créditos laborales"
       },
-      "nota": "Mismas tasas para trabajo doméstico y para industria y comercio. El Fonasa patronal no incluye el complemento de cuota mutual.",
+      "nota": "El Fonasa patronal no incluye el complemento de cuota mutual.",
       "tramos": [
         {
           "estado": "verificado",

@@ -13,7 +13,7 @@ export default definirCalculadora({
     ...REQUIERE_SUELDO,
     "uy.domestico-minimo-mensual": "mapa",
     "uy.domestico-minimo-hora": "mapa",
-    "uy.aportes-patronales": "mapa",
+    "uy.domestico-aportes-patronales": "mapa",
     "uy.domestico-bse": "numero",
   },
   campos: [
@@ -56,7 +56,7 @@ export default definirCalculadora({
       : redondear(enMapa(valores["uy.domestico-minimo-hora"], entrada.categoria) * entrada.horas);
     const nominal = entrada.nominal ?? minimo;
     const r = calcularSueldo(valores, { nominal, hijos: entrada.hijos ? 1 : 0, hijosDiscapacidad: 0, conyuge: entrada.conyuge }, redondear);
-    const tasas = valores["uy.aportes-patronales"];
+    const tasas = valores["uy.domestico-aportes-patronales"];
     const jubilatorioPatronal = redondear(porcentaje(Math.min(nominal, r.topeAportes), enMapa(tasas, "jubilatorio")));
     const fonasaPatronal = redondear(porcentaje(nominal, enMapa(tasas, "fonasa")));
     const frlPatronal = redondear(porcentaje(nominal, enMapa(tasas, "frl")));

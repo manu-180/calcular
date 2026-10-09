@@ -13,8 +13,8 @@ export default definirContenido({
   comoSeCalcula: [
     "El mínimo mensual es por 44 horas por semana. Si trabaja menos horas, se calcula en proporción: horas por semana × mínimo ÷ 44.",
     "Para jornaleras, el mínimo es el valor hora de la categoría por las horas trabajadas en el mes.",
-    "A la trabajadora se le descuenta el aporte jubilatorio (15 %), el Fonasa (entre 3 % y 8 % según su familia y su sueldo) y el FRL (0,1 %).",
-    "El hogar paga encima del sueldo: jubilatorio {{uy.aportes-patronales[jubilatorio]}}, Fonasa {{uy.aportes-patronales[fonasa]}}, FRL {{uy.aportes-patronales[frl]}}, fondo de garantía {{uy.aportes-patronales[fgcl]}} y seguro de accidentes del BSE {{uy.domestico-bse}}.",
+    "A la trabajadora se le descuenta el aporte jubilatorio ({{uy.aporte-jubilatorio}}), el Fonasa (según su familia y su sueldo) y el FRL ({{uy.frl}}).",
+    "El hogar paga encima del sueldo: jubilatorio {{uy.domestico-aportes-patronales[jubilatorio]}}, Fonasa {{uy.domestico-aportes-patronales[fonasa]}}, FRL {{uy.domestico-aportes-patronales[frl]}}, fondo de garantía {{uy.domestico-aportes-patronales[fgcl]}} y seguro de accidentes del BSE {{uy.domestico-bse}}.",
     "El BPS junta los aportes de los dos en una sola factura mensual que paga el empleador.",
   ],
   ejemplo: [

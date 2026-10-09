@@ -1,5 +1,6 @@
 import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
+import costoEmpleador from "./calculadoras/costo-empleador";
 import decimoCuartoSueldo from "./calculadoras/decimo-cuarto-sueldo";
 import decimoTercerSueldo from "./calculadoras/decimo-tercer-sueldo";
 import fondosDeReserva from "./calculadoras/fondos-de-reserva";
@@ -14,6 +15,7 @@ import sueldoNeto from "./calculadoras/sueldo-neto";
 import trabajoDomestico from "./calculadoras/trabajo-domestico";
 import utilidades from "./calculadoras/utilidades";
 import vacaciones from "./calculadoras/vacaciones";
+import contenidoCostoEmpleador from "./contenido/costo-empleador";
 import contenidoDecimoCuartoSueldo from "./contenido/decimo-cuarto-sueldo";
 import contenidoDecimoTercerSueldo from "./contenido/decimo-tercer-sueldo";
 import contenidoFondosDeReserva from "./contenido/fondos-de-reserva";
@@ -54,6 +56,7 @@ export default definirPais({
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
     { definicion: rimpe, contenido: contenidoRimpe, cliente: () => import("./calculadoras/rimpe.cliente") },
+    { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
   ],
   novedades,
   detectores,
