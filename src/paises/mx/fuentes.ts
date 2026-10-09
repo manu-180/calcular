@@ -154,7 +154,7 @@ export const detectores: readonly Detector[] = [
       return puntos.length ? puntos : null;
     },
   },
-  detectorDof("mx.dof-salario-minimo", ["mx.salario-minimo"], /salarios? m[ií]nimos?/i),
+  detectorDof("mx.dof-salario-minimo", ["mx.salario-minimo", "mx.salario-minimo-hogar"], /salarios? m[ií]nimos?/i),
   detectorDof("mx.dof-uma", ["mx.uma-diaria", "mx.uma-mensual"], /unidad de medida y actualizaci[oó]n/i),
   detectorDof("mx.dof-subsidio-empleo", ["mx.subsidio-empleo", "mx.subsidio-empleo-limite"], /subsidio para el empleo/i),
   detectorDof("mx.dof-tarifas-isr", ["mx.tarifa-isr-semanal", "mx.tarifa-isr-decenal", "mx.tarifa-isr-quincenal", "mx.tarifa-isr-mensual"], /Miscel[aá]nea Fiscal/i),

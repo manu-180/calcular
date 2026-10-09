@@ -30,6 +30,8 @@ import contenidoTipoDeCambio from "./contenido/tipo-de-cambio";
 import contenidoUdis from "./contenido/udis";
 import contenidoUma from "./contenido/uma";
 import contenidoVacaciones from "./contenido/vacaciones";
+import trabajadoraDelHogar from "./calculadoras/trabajadora-del-hogar";
+import contenidoTrabajadoraDelHogar from "./contenido/trabajadora-del-hogar";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +59,7 @@ export default definirPais({
     { definicion: tipoDeCambio, contenido: contenidoTipoDeCambio, cliente: () => import("./calculadoras/tipo-de-cambio.cliente") },
     { definicion: udis, contenido: contenidoUdis, cliente: () => import("./calculadoras/udis.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: trabajadoraDelHogar, contenido: contenidoTrabajadoraDelHogar, cliente: () => import("./calculadoras/trabajadora-del-hogar.cliente") },
   ],
   novedades,
   detectores,

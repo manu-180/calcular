@@ -1260,6 +1260,45 @@
           }
         }
       ]
+    },
+    {
+      "id": "mx.salario-minimo-hogar",
+      "nombre": "Salario mínimo profesional de las personas trabajadoras del hogar (diario)",
+      "tipo": "numero",
+      "unidad": "MXN",
+      "regiones": ["general", "frontera-norte"],
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "general",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 342.47,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Resolución de la CONASAMI que fija los salarios mínimos generales y profesionales para 2026 (oficio 56, trabajador(a) del hogar)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5775534&fecha=09/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "frontera-norte",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 440.87,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Resolución de la CONASAMI que fija los salarios mínimos generales y profesionales para 2026 (oficio 56, trabajador(a) del hogar)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5775534&fecha=09/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "En la frontera norte el profesional sería menor que el general, así que rige el general (resolutivo sexto)."
+          }
+        }
+      ]
     }
   ]
 }
