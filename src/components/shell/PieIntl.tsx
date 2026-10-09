@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { SesionLink } from "@/components/SesionLink";
+import { productosDeMercado } from "@/lib/pagos/catalogo-intl";
 import { rutaIntl } from "@/motor/seo";
 import { Bandera } from "@/motor/ui/Bandera";
 import type { ContextoSitio } from "@/motor/ui/contexto";
@@ -19,6 +20,7 @@ export function PieIntl({ ctx }: { ctx: ContextoSitio }) {
   const sitio = [
     ...(enPais
       ? [
+          ...(productosDeMercado(m.codigo).length > 0 ? [{ href: rutaIntl(m.codigo, "planillas"), label: t.shell.menu.planillas }] : []),
           { href: rutaIntl(m.codigo, "fuentes"), label: t.footer.fuentes },
           { href: rutaIntl(m.codigo, "novedades"), label: t.footer.novedades },
         ]

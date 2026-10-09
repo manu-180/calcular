@@ -1,4 +1,5 @@
 import SiteHeader from "@/components/SiteHeader";
+import { productosDeMercado } from "@/lib/pagos/catalogo-intl";
 import { rutaIntl } from "@/motor/seo";
 import { opcionesSelector, type ContextoSitio } from "@/motor/ui/contexto";
 import { menuDelPais } from "@/motor/ui/menu";
@@ -16,6 +17,12 @@ export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
   const m = ctx.mercado;
   const enPais = m.codigo !== "global";
   const menu = enPais ? menuDelPais(ctx) : null;
+  const planillas = enPais && productosDeMercado(m.codigo).length > 0 ? rutaIntl(m.codigo, "planillas") : null;
+  const tabs = menu?.tabs ?? [];
+  // Mismo orden que en calcular.ar: Planillas antes de Novedades, el último link de la barra.
+  const conPlanillas = planillas
+    ? [...tabs.filter((x) => x.key !== "novedades"), { key: "planillas", label: t.shell.menu.planillas, type: "link" as const, href: planillas, match: [planillas] }, ...tabs.filter((x) => x.key === "novedades")]
+    : tabs;
   const opciones = opcionesConArgentina(ctx);
   const nombre = t.marca.nombre;
   const corte = nombre.endsWith("Ya") ? nombre.length - 2 : nombre.length;
@@ -23,6 +30,7 @@ export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
   const masLinks = [
     ...(enPais
       ? [
+          ...(planillas ? [{ href: planillas, label: t.shell.menu.planillas }] : []),
           { href: rutaIntl(m.codigo, "novedades"), label: t.footer.novedades },
           { href: rutaIntl(m.codigo, "fuentes"), label: t.footer.fuentes },
         ]
@@ -34,7 +42,7 @@ export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
   return (
     <div className="ca-shell">
       <SiteHeader
-        tabs={menu?.tabs ?? []}
+        tabs={conPlanillas}
         marca={{ prefijo: nombre.slice(0, corte), acento: nombre.slice(corte), etiqueta: `${nombre}, ${t.shell.irAlInicio}`, href: rutaIntl(enPais ? m.codigo : "global") }}
         navegacion={menu?.navegacion ?? { columnas: {}, secciones: [] }}
         masLinks={masLinks}

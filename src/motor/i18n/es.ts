@@ -122,7 +122,7 @@ export const es: TextosSitio = {
   },
   shell: {
     irAlInicio: "ir al inicio",
-    menu: { trabajo: "Sueldo y trabajo", impuestos: "Impuestos", dinero: "Dinero e índices", novedades: "Novedades" },
+    menu: { trabajo: "Sueldo y trabajo", impuestos: "Impuestos", dinero: "Dinero e índices", novedades: "Novedades", planillas: "Planillas" },
     encabezado: {
       principal: "Principal",
       buscar: "Buscar",

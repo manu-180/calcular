@@ -121,7 +121,7 @@ export const pt: TextosSitio = {
   },
   shell: {
     irAlInicio: "ir para o início",
-    menu: { trabajo: "Salário e trabalho", impuestos: "Impostos", dinero: "Dinheiro e índices", novedades: "Novidades" },
+    menu: { trabajo: "Salário e trabalho", impuestos: "Impostos", dinero: "Dinheiro e índices", novedades: "Novidades", planillas: "Planilhas" },
     encabezado: {
       principal: "Principal",
       buscar: "Buscar",
