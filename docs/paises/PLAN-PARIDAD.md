@@ -71,3 +71,23 @@ Falta para cerrar:
    con build `NEXT_PUBLIC_SITIO_INTL_URL=https://calcularya.com VERCEL_ENV=preview NEXT_PUBLIC_CUENTAS_ACTIVAS=1`.
 4. Revisión final (code-reviewer + security-auditor), PR a main, merge y deploy (Manuel lo pidió).
 5. Pasarle a Manuel: SQL fase 2 y SQL pagos, URI de Google + `NEXT_PUBLIC_GOOGLE_INTL_ACTIVO=1`, PayPal.
+
+## Cierre (9/10/2026)
+
+Pasos 1 a 4 hechos: calculadoras de MX CO CL PE integradas, Planillas en el menú y el pie, revisión de
+seguridad y de código con 13 arreglos aplicados, gate verde (check-all 135/135, `check_rutas_ar` idéntico
+contra una foto grabada desde main, `check_routing_hosts` 69 filas, `check_seo_intl` 524 páginas).
+
+Pendiente de Manuel (no bloquea el deploy; todo degrada sin romper):
+1. SQL en Supabase, en horario tranquilo y en este orden: `docs/paises/SQL-PARIDAD-MEDICION.md` y después
+   `docs/paises/SQL-PARIDAD-PAGOS.md`. Hasta entonces el panel muestra solo Todos/Argentina y lo de
+   calcularya no se guarda en las tablas de medición.
+2. Google: URI `https://calcularya.com/auth/google/vuelta` (y origen `https://calcularya.com`) en el mismo
+   cliente OAuth; después `NEXT_PUBLIC_GOOGLE_INTL_ACTIVO=1` en Vercel Production y redeploy.
+3. PayPal: cuenta Business, app Live, webhook `https://calcularya.com/api/pagos/paypal/webhook` con los 6
+   eventos de pago, y en Vercel Production `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`, `PAYPAL_WEBHOOK_ID`,
+   `PAYPAL_ENV=live` (redeploy). Sin eso las planillas intl muestran «Pronto».
+
+Mantenimiento a vigilar: `ni.ipc` y `do.ipc` sin detector automático (cargar el mes a mano con
+`scripts/paises/do/actualizar_ipc.ts --escribir`; NI a mano desde el XLS del INIDE). Pedidos al motor
+abiertos: requisito de serie con historial, `Http` con POST y binario, detectores de norma sobre series.
