@@ -54,3 +54,20 @@ Rama: `claude/calcularya-paridad`. Invariante de siempre: `scripts/check_rutas_a
   `https://calcularya.com` en orígenes). Después, `NEXT_PUBLIC_GOOGLE_INTL_ACTIVO=1` en Vercel: hasta entonces
   calcularya no muestra el botón de Google y el ingreso con correo anda igual.
 - PayPal: cuenta Business y app REST (Client ID y Secret por envkit).
+
+## Estado al 8/10 21:25 (pausa pedida por Manuel, se retoma 9/10 00:25)
+
+Integrado en `claude/calcularya-paridad`: fase 1 (shell), fase 2 (medición y panel), fase 3 (cuentas),
+fase 4 (pagos PayPal), planillas de las 16 países (USD 7) y calculadoras nuevas de UY PY BO EC CR PA DO
+SV HN NI VE. `tsc` y `check_motor` verdes después del último merge.
+
+Falta para cerrar:
+1. Integrar `claude/paridad-calc-g1` (MX CO CL PE; el agente quedó pausado con WIP commiteado) y
+   regenerar cargadores (`npx tsx scripts/check_motor.ts --generar-cargadores`).
+2. Link a `/<m>/planillas` en header y footer intl cuando el país tiene producto (`src/motor/ui/menu.ts`,
+   `src/components/shell/*`, `productosDeMercado`).
+3. Gate completo: check-all, build, `check_rutas_ar` contra una foto regrabada desde `origin/main` actual
+   (las 5 diferencias de plazo fijo son datos de datos-vivos, no código), `check_routing_hosts --start`
+   con build `NEXT_PUBLIC_SITIO_INTL_URL=https://calcularya.com VERCEL_ENV=preview NEXT_PUBLIC_CUENTAS_ACTIVAS=1`.
+4. Revisión final (code-reviewer + security-auditor), PR a main, merge y deploy (Manuel lo pidió).
+5. Pasarle a Manuel: SQL fase 2 y SQL pagos, URI de Google + `NEXT_PUBLIC_GOOGLE_INTL_ACTIVO=1`, PayPal.
