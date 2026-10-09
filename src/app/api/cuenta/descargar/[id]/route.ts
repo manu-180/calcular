@@ -4,6 +4,8 @@ import { servirArchivoProducto } from "@/lib/entrega";
 import { personalizable } from "@/lib/prefill/servidor";
 import { clienteServidor } from "@/lib/supabase/servidor";
 import { registrarEvento } from "@/lib/rastreo-servidor";
+import { productoIntl } from "@/lib/pagos/catalogo-intl";
+import { servirArchivoIntl } from "@/lib/pagos/entrega-intl";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -44,6 +46,11 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
 
   const producto = productoPorSlug(compra.producto);
   if (!producto) {
+    const intl = productoIntl(compra.producto);
+    if (intl) {
+      after(() => registrarEvento({ tipo: "descarga", path: "/cuenta", producto: intl.id, userId: auth.user.id, props: { via: "cuenta" } }));
+      return servirArchivoIntl(intl);
+    }
     console.error("[cuenta/descargar] producto desconocido en la compra", id, compra.producto);
     return new NextResponse("Producto no disponible", { status: 500 });
   }

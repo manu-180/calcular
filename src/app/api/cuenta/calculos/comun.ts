@@ -4,6 +4,9 @@ import { esRutaCalculo, validarCampos, type Campos } from "@/lib/formulario";
 import { usuarioActual, type Usuario } from "@/lib/auth/sesion";
 import { clienteServidor } from "@/lib/supabase/servidor";
 import { permitido } from "@/lib/limite";
+import { sitioDeHost, type SitioCuenta } from "@/lib/auth/sitio";
+import { textosDe, type TextosCuenta } from "@/lib/cuenta/textos";
+import { COOKIE_SITIO } from "@/motor/hosts";
 
 export const COLUMNAS = "id,path,titulo,campos,resumen,created_at,updated_at";
 
@@ -11,6 +14,15 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const MAX_CUERPO = 16 * 1024;
 
 export type Codigo = "sesion" | "invalido" | "limite" | "maximo" | "no_disponible" | "no_existe" | "error" | "origen";
+
+export type TextosApi = TextosCuenta["api"];
+
+// El sitio (y con él el idioma de los mensajes y el sitio/mercado de la fila) sale del Host, nunca del cuerpo.
+export function sitioDe(req: NextRequest): SitioCuenta {
+  return sitioDeHost(req.headers.get("x-forwarded-host") ?? req.headers.get("host"), req.cookies.get(COOKIE_SITIO.nombre)?.value);
+}
+
+export const textosApi = (req: NextRequest): TextosApi => textosDe(sitioDe(req)).api;
 
 export function responder(cuerpo: unknown, status = 200, extra?: Record<string, string>) {
   return NextResponse.json(cuerpo, {
@@ -76,7 +88,8 @@ type Contexto = { usuario: Usuario; sb: Awaited<ReturnType<typeof clienteServido
 
 export async function conSesion(
   clave: string,
-  max: number
+  max: number,
+  t: TextosApi,
 ): Promise<{ ok: true; ctx: Contexto } | { ok: false; res: NextResponse }> {
   let usuario: Usuario | null = null;
   try {
@@ -85,46 +98,31 @@ export async function conSesion(
     usuario = null;
   }
   if (!usuario) {
-    return { ok: false, res: fallar("sesion", "Ingresá a tu cuenta para seguir.", 401) };
+    return { ok: false, res: fallar("sesion", t.sesion, 401) };
   }
   if (!(await permitido(`${clave}:${usuario.id}`, max, 60))) {
-    return {
-      ok: false,
-      res: fallar("limite", "Fueron muchos pedidos seguidos. Esperá un minuto y probá de nuevo.", 429, {
-        "Retry-After": "60",
-      }),
-    };
+    return { ok: false, res: fallar("limite", t.limite, 429, { "Retry-After": "60" }) };
   }
   try {
     return { ok: true, ctx: { usuario, sb: await clienteServidor() } };
   } catch {
-    return { ok: false, res: noDisponible() };
+    return { ok: false, res: noDisponible(t) };
   }
 }
 
-export function noDisponible() {
-  return fallar(
-    "no_disponible",
-    "Todavía estamos terminando de preparar esta parte. Probá de nuevo en un rato.",
-    503
-  );
+export function noDisponible(t: TextosApi) {
+  return fallar("no_disponible", t.noDisponible, 503);
 }
 
 type ErrorDb = { code?: string; message?: string } | null | undefined;
 
-export function errorDb(e: ErrorDb, accion: string) {
+export function errorDb(e: ErrorDb, accion: string, t: TextosApi) {
   const code = e?.code || "";
   const msg = e?.message || "";
   if (["42P01", "PGRST205", "PGRST202", "PGRST204"].includes(code) || /does not exist|schema cache/i.test(msg))
-    return noDisponible();
-  if (code === "P0001" || /m[aá]xim|l[ií]mite|limit/i.test(msg))
-    return fallar(
-      "maximo",
-      "Ya tenés 200 cálculos guardados, que es el máximo. Borrá alguno desde Mi cuenta y volvé a intentar.",
-      409
-    );
-  if (code === "23514" || code === "22001" || code === "22P02")
-    return fallar("invalido", "Ese cálculo no se puede guardar así. Revisá el nombre y probá otra vez.", 400);
-  if (code === "42501") return fallar("sesion", "No tenés permiso para hacer eso. Ingresá de nuevo.", 403);
-  return fallar("error", `No pudimos ${accion}. Probá de nuevo en un rato.`, 500);
+    return noDisponible(t);
+  if (code === "P0001" || /m[aá]xim|l[ií]mite|limit/i.test(msg)) return fallar("maximo", t.maximo, 409);
+  if (code === "23514" || code === "22001" || code === "22P02") return fallar("invalido", t.invalido, 400);
+  if (code === "42501") return fallar("sesion", t.permiso, 403);
+  return fallar("error", t.error(accion), 500);
 }

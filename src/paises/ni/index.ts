@@ -1,8 +1,10 @@
 import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
 import aguinaldo from "./calculadoras/aguinaldo";
+import costoEmpleador from "./calculadoras/costo-empleador";
 import horasExtras from "./calculadoras/horas-extras";
 import indemnizacionPorAntiguedad from "./calculadoras/indemnizacion-por-antiguedad";
+import inflacion from "./calculadoras/inflacion";
 import irSalarial from "./calculadoras/ir-salarial";
 import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
@@ -11,8 +13,10 @@ import salarioNeto from "./calculadoras/salario-neto";
 import tipoDeCambio from "./calculadoras/tipo-de-cambio";
 import vacaciones from "./calculadoras/vacaciones";
 import contenidoAguinaldo from "./contenido/aguinaldo";
+import contenidoCostoEmpleador from "./contenido/costo-empleador";
 import contenidoHorasExtras from "./contenido/horas-extras";
 import contenidoIndemnizacionPorAntiguedad from "./contenido/indemnizacion-por-antiguedad";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIrSalarial from "./contenido/ir-salarial";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
@@ -42,6 +46,8 @@ export default definirPais({
     { definicion: horasExtras, contenido: contenidoHorasExtras, cliente: () => import("./calculadoras/horas-extras.cliente") },
     { definicion: tipoDeCambio, contenido: contenidoTipoDeCambio, cliente: () => import("./calculadoras/tipo-de-cambio.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
   ],
   novedades,
   detectores,

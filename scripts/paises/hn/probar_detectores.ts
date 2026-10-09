@@ -76,7 +76,12 @@ async function main() {
         const puntos = r as readonly PuntoSerie[];
         const serie = (series.series as unknown as Serie[]).find((s) => s.id === d.serie);
         if (!serie) throw new Error(`falta la serie ${d.serie}`);
-        const { aceptados, rechazos } = revisarPuntos(serie, puntos, d.banda, hoyEn({ zonaHoraria: "America/Tegucigalpa" }));
+        // Como el cron: solo se revisan contra la banda los puntos posteriores al último publicado;
+        // los anteriores se comparan con series.json.
+        const ultima = serie.puntos[serie.puntos.length - 1][0];
+        const distintos = puntos.filter((p) => p.fecha <= ultima && serie.puntos.some(([f, v]) => f === p.fecha && Math.abs(v - p.valor) > 1e-9));
+        if (distintos.length) console.log(`   ojo: ${distintos.length} punto(s) ya publicados difieren: ${distintos.slice(0, 3).map((p) => `${p.fecha} = ${p.valor}`).join(", ")}`);
+        const { aceptados, rechazos } = revisarPuntos(serie, puntos.filter((p) => p.fecha > ultima), d.banda, hoyEn({ zonaHoraria: "America/Tegucigalpa" }));
         if (rechazos.length) fallas++;
         console.log(
           `${rechazos.length ? "❌" : "✅"} ${d.id}: ${puntos.slice(-5).map((p) => `${p.fecha} = ${p.valor}`).join(", ")}; ${aceptados.length} nuevos${rechazos.length ? `; ${rechazos.join("; ")}` : ""} (${ms} ms)`,

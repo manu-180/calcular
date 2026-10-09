@@ -26,6 +26,14 @@ import contenidoSueldoNeto from "./contenido/sueldo-neto";
 import contenidoTipoDeCambio from "./contenido/tipo-de-cambio";
 import contenidoUit from "./contenido/uit";
 import contenidoVacaciones from "./contenido/vacaciones";
+import inflacion from "./calculadoras/inflacion";
+import contenidoInflacion from "./contenido/inflacion";
+import trabajadoraDelHogar from "./calculadoras/trabajadora-del-hogar";
+import contenidoTrabajadoraDelHogar from "./contenido/trabajadora-del-hogar";
+import costoLaboral from "./calculadoras/costo-laboral";
+import contenidoCostoLaboral from "./contenido/costo-laboral";
+import nuevoRus from "./calculadoras/nuevo-rus";
+import contenidoNuevoRus from "./contenido/nuevo-rus";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -51,6 +59,10 @@ export default definirPais({
     { definicion: sueldoMinimo, contenido: contenidoSueldoMinimo, cliente: () => import("./calculadoras/sueldo-minimo.cliente") },
     { definicion: tipoDeCambio, contenido: contenidoTipoDeCambio, cliente: () => import("./calculadoras/tipo-de-cambio.cliente") },
     { definicion: sueldoNeto, contenido: contenidoSueldoNeto, cliente: () => import("./calculadoras/sueldo-neto.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: trabajadoraDelHogar, contenido: contenidoTrabajadoraDelHogar, cliente: () => import("./calculadoras/trabajadora-del-hogar.cliente") },
+    { definicion: costoLaboral, contenido: contenidoCostoLaboral, cliente: () => import("./calculadoras/costo-laboral.cliente") },
+    { definicion: nuevoRus, contenido: contenidoNuevoRus, cliente: () => import("./calculadoras/nuevo-rus.cliente") },
   ],
   novedades,
   detectores,

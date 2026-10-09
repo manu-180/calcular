@@ -3,8 +3,11 @@ import { Geist } from "next/font/google";
 import { origenPublicoIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import type { CodigoMercado } from "@/motor/tipos";
+import { Rastreador } from "@/components/Rastreador";
+import { EncabezadoIntl } from "@/components/shell/EncabezadoIntl";
+import { PieIntl } from "@/components/shell/PieIntl";
 import { contextoSitio } from "@/motor/ui/contexto";
-import { Encabezado, Pie } from "@/motor/ui/Sitio";
+import "@/components/shell/shell.css";
 import "@/motor/ui/estilos.css";
 import { registro } from "@/paises";
 
@@ -28,7 +31,7 @@ export function generateStaticParams() {
 const ICONO =
   "data:image/svg+xml," +
   encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#1E2A44"/><path d="M9 12.5h14" stroke="#F6F1E6" stroke-width="2.4" stroke-linecap="round"/><path d="M9 19.5h8.5" stroke="#E8A33D" stroke-width="2.4" stroke-linecap="round"/><circle cx="22.5" cy="19.5" r="1.6" fill="#E8A33D"/></svg>',
+    '<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#059669"/></linearGradient><linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d1fae5"/></linearGradient></defs><rect x="16" y="16" width="480" height="480" rx="116" fill="url(#t)"/><rect x="56" y="40" width="400" height="220" rx="96" fill="#ffffff" opacity="0.12"/><rect x="136" y="186" width="240" height="58" rx="29" fill="url(#b)"/><rect x="136" y="268" width="240" height="58" rx="29" fill="url(#b)"/></svg>',
   );
 
 export async function generateMetadata({ params }: { params: Promise<{ mercado: string }> }): Promise<Metadata> {
@@ -49,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ mercado: 
 }
 
 export const viewport: Viewport = {
-  themeColor: "#f4f1ea",
+  themeColor: "#fafaf9",
 };
 
 export default async function LayoutIntl({ children, params }: { children: React.ReactNode; params: Promise<{ mercado: string }> }) {
@@ -64,12 +67,13 @@ export default async function LayoutIntl({ children, params }: { children: React
           {ctx.textos.saltar}
         </a>
         <div className="cy-marco">
-          <Encabezado ctx={ctx} />
+          <EncabezadoIntl ctx={ctx} />
           <main id="contenido" className="cy-principal">
             {children}
           </main>
-          <Pie ctx={ctx} />
+          <PieIntl ctx={ctx} />
         </div>
+        <Rastreador sitio="intl" mercado={ctx.mercado.codigo} />
       </body>
     </html>
   );

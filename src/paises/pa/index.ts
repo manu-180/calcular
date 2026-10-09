@@ -4,6 +4,7 @@ import costoEmpleador from "./calculadoras/costo-empleador";
 import decimoTercerMes from "./calculadoras/decimo-tercer-mes";
 import horasExtra from "./calculadoras/horas-extra";
 import impuestoSobreLaRenta from "./calculadoras/impuesto-sobre-la-renta";
+import inflacion from "./calculadoras/inflacion";
 import indemnizacion from "./calculadoras/indemnizacion-por-despido";
 import itbms from "./calculadoras/itbms";
 import liquidacion from "./calculadoras/liquidacion";
@@ -15,6 +16,7 @@ import contenidoCostoEmpleador from "./contenido/costo-empleador";
 import contenidoDecimo from "./contenido/decimo-tercer-mes";
 import contenidoHorasExtra from "./contenido/horas-extra";
 import contenidoIsr from "./contenido/impuesto-sobre-la-renta";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIndemnizacion from "./contenido/indemnizacion-por-despido";
 import contenidoItbms from "./contenido/itbms";
 import contenidoLiquidacion from "./contenido/liquidacion";
@@ -44,6 +46,7 @@ export default definirPais({
     { definicion: impuestoSobreLaRenta, contenido: contenidoIsr, cliente: () => import("./calculadoras/impuesto-sobre-la-renta.cliente") },
     { definicion: horasExtra, contenido: contenidoHorasExtra, cliente: () => import("./calculadoras/horas-extra.cliente") },
     { definicion: itbms, contenido: contenidoItbms, cliente: () => import("./calculadoras/itbms.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
   ],
   novedades,

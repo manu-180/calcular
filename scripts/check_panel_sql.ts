@@ -73,7 +73,7 @@ function chequeosEstaticos() {
     ok(todo.includes(`alter table public.${t} force row level security;`), `${t}: force row level security`);
   }
   const bloques = [...todo.matchAll(/create or replace function public\.(\w+)\(([\s\S]*?)\n\$\$;/g)];
-  igual(bloques.length, 19, "se encontraron las 19 funciones");
+  igual(bloques.length, 25, "se encontraron las 25 definiciones de funciones");
   const revocadas = [...todo.matchAll(/revoke execute on function([\s\S]*?)from public, anon, authenticated;/g)].map((m) => m[1]).join("\n");
   for (const [, nombre, cuerpo] of bloques) {
     ok(/\nset search_path = ''\n/.test(cuerpo), `${nombre}: set search_path = ''`);
@@ -130,9 +130,10 @@ function sqlSupabase(defaults: "legado" | "nuevo"): string {
   `;
 }
 
-async function aplicarMigraciones(db: Db) {
+async function aplicarMigraciones(db: Db, hasta?: string) {
   for (const m of migraciones) {
     if (m.f.includes("_cron")) continue;
+    if (hasta && m.f > hasta) continue;
     await db.exec("set role dueno");
     try {
       await db.exec(m.sql);
@@ -142,10 +143,10 @@ async function aplicarMigraciones(db: Db) {
   }
 }
 
-async function nuevaBase(PGlite: new (dataDir?: string) => Db, defaults: "legado" | "nuevo", dataDir?: string): Promise<Db> {
+async function nuevaBase(PGlite: new (dataDir?: string) => Db, defaults: "legado" | "nuevo", dataDir?: string, hasta?: string): Promise<Db> {
   const db = new PGlite(dataDir);
   await db.exec(sqlSupabase(defaults));
-  await aplicarMigraciones(db);
+  await aplicarMigraciones(db, hasta);
   return db;
 }
 
@@ -345,8 +346,9 @@ async function probarCuentasYRls(db: Db) {
     ["select public.ca_fuente('google.com', null, null)", ["anon", "authenticated"]],
     [`select public.ca_vincular_compras_de('${U.a}')`, ["anon", "authenticated"]],
     ["select public.ca_resumir(current_date - 2, current_date - 1)", ["anon", "authenticated"]],
-    ["select * from public.ca_resumen_calcular(now() - interval '1 day', now(), 'day', 'completo')", ["anon", "authenticated"]],
-    ["select * from public.ca_resumen_rango(now() - interval '1 day', now(), 'completo')", ["anon", "authenticated"]],
+    ["select * from public.ca_resumen_calcular(now() - interval '1 day', now(), 'day', 'completo', '*')", ["anon", "authenticated"]],
+    ["select * from public.ca_resumen_rango(now() - interval '1 day', now(), 'completo', '*')", ["anon", "authenticated"]],
+    ["select public.ca_panel(now() - interval '1 day', now(), 'mx')", ["anon", "authenticated"]],
     ["select public.ca_hll_estimar('{1,2}')", ["anon", "authenticated"]],
     ["select public.ca_hist_mediana('{1,2}')", ["anon", "authenticated"]],
     ["select public.ca_pagina_de_checkout(gen_random_uuid(), now(), '/x')", ["anon", "authenticated"]],
@@ -522,7 +524,7 @@ async function probarFunciones(db: Db) {
          (gen_random_uuid(), '2026-05-01T11:00:00-03:00', $5, $6, '/a', null, 'link', 'share')`,
       [V(40), S(40), V(41), S(41), V(42), S(42)],
     );
-    const f = await filas(db, "select clave, visitantes, sesiones from public.ca_resumen_calcular('2026-05-01T00:00:00-03:00', '2026-05-02T00:00:00-03:00', 'day', 'completo') where dim = 'fuente' order by clave");
+    const f = await filas(db, "select clave, visitantes, sesiones from public.ca_resumen_calcular('2026-05-01T00:00:00-03:00', '2026-05-02T00:00:00-03:00', 'day', 'completo', '*') where dim = 'fuente' order by clave");
     igual(f.map((x) => [x.clave, x.visitantes]), [["Compartido", 1], ["Google", 1], ["WhatsApp", 1]], "primera vista manda (no el orden alfabético) y volver de Mercado Pago no es fuente");
     await db.query("delete from public.ca_vistas where ts >= '2026-05-01T00:00:00-03:00' and ts < '2026-05-02T00:00:00-03:00'");
   });
@@ -536,6 +538,7 @@ const FORMA_PANEL: Forma = {
   hasta: "string",
   anteriorDesde: "string",
   anteriorHasta: "string",
+  mercado: "string|null",
   cubos: ["string"],
   hayVistas: "boolean",
   kpis: [{ clave: "string", valor: "number", anterior: "number", serie: [{ t: "string", v: "number" }] }],
@@ -565,6 +568,7 @@ const FORMA_PANEL: Forma = {
       fecha: "string",
       producto: "string",
       monto: "number",
+      moneda: "string",
       emailEnmascarado: "string",
       conCuenta: "boolean",
       desde: "string|null",
@@ -573,6 +577,7 @@ const FORMA_PANEL: Forma = {
   ],
   cuentas: { total: "number", nuevas: "number", verificadas: "number", conCompras: "number", perfiles: REPARTO },
   vivo: { ahora: "number", paginas: REPARTO },
+  mercados: [{ mercado: "string", visitantes: "number", usos: "number", ventas: "number", ingresos: [{ moneda: "string", monto: "number" }] }],
 };
 
 function validarForma(valor: unknown, forma: Forma, donde: string, errores: string[]) {
@@ -670,9 +675,9 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
   }, "embudos: abrió la compra cuenta sólo el diálogo (el cta de /aguinaldo no)");
 
   igual(p.compras, [
-    { id: "666", fecha: "2026-09-06T16:05:00-03:00", producto: "planilla-monotributo", monto: 9900, emailEnmascarado: "sin mail", conCuenta: false, desde: null, estado: "aprobado" },
-    { id: "222", fecha: "2026-09-06T15:05:00-03:00", producto: "planilla-uocra", monto: 14900, emailEnmascarado: "ot***@hotmail.com", conCuenta: true, desde: null, estado: "reembolsado" },
-    { id: "111", fecha: "2026-09-03T09:15:00-03:00", producto: "planilla-comercio", monto: 14900, emailEnmascarado: "co***@gmail.com", conCuenta: true, desde: "/convenios/comercio", estado: "aprobado" },
+    { id: "666", fecha: "2026-09-06T16:05:00-03:00", producto: "planilla-monotributo", monto: 9900, moneda: "ARS", emailEnmascarado: "sin mail", conCuenta: false, desde: null, estado: "aprobado" },
+    { id: "222", fecha: "2026-09-06T15:05:00-03:00", producto: "planilla-uocra", monto: 14900, moneda: "ARS", emailEnmascarado: "ot***@hotmail.com", conCuenta: true, desde: null, estado: "reembolsado" },
+    { id: "111", fecha: "2026-09-03T09:15:00-03:00", producto: "planilla-comercio", monto: 14900, moneda: "ARS", emailEnmascarado: "co***@gmail.com", conCuenta: true, desde: "/convenios/comercio", estado: "aprobado" },
   ], "compras del período, enmascaradas");
   const json = JSON.stringify(p);
   ok(!/comprador@gmail\.com|otro@hotmail\.com|x@y\.com|20123456789/.test(json), "ningún mail completo ni número largo sale de la base");
@@ -746,6 +751,18 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
     tiro = e instanceof Error && e.message.includes("ca_panel");
   }
   ok(tiro, "un JSON roto tira con mensaje claro");
+  igual([armado.mercado, armado.mercados?.map((m) => m.mercado)], [null, ["ar"]], "armarPanel lee el filtro y la comparativa");
+  const crudoViejo: Record<string, unknown> = { ...p };
+  delete crudoViejo.mercado;
+  delete crudoViejo.mercados;
+  crudoViejo.compras = (p.compras as Record<string, unknown>[]).map((c) => {
+    const x = { ...c };
+    delete x.moneda;
+    return x;
+  });
+  const armadoViejo = mods.datos.armarPanel("7d", desde, hasta, crudoViejo);
+  igual([armadoViejo.mercado, armadoViejo.mercados, armadoViejo.compras.map((c) => c.moneda)], [null, null, ["ARS", "ARS", "ARS"]], "con el ca_panel de antes de la migración: sin comparativa y todo en pesos");
+  igual(mods.datos.armarPanel("7d", desde, hasta, { ...p, mercado: "zz" }).mercado, null, "un mercado que no se mide no se toma como filtro");
 
   seccion("datos.ts · límites del rango en hora argentina");
   const l1 = mods.datos.limitesDelRango("hoy", new Date("2026-09-30T04:22:33Z"));
@@ -811,7 +828,7 @@ async function probarResumen(db: Db) {
     await db.query("select public.ca_resumir('2026-08-20', '2026-09-10')");
     await db.query("select public.ca_resumir('2026-08-20', '2026-09-10')");
   });
-  igual((await filas(db, "select count(*)::int as n from public.ca_resumen where dim = 'total' and dia between '2026-08-20' and '2026-09-10'"))[0].n, 22, "una fila total por día, también los días sin visitas");
+  igual((await filas(db, "select count(*)::int as n from public.ca_resumen where mercado = '*' and dim = 'total' and dia between '2026-08-20' and '2026-09-10'"))[0].n, 22, "una fila total por día, también los días sin visitas");
   ok(sinVivo(await panel(db, SEMANA.desde, SEMANA.hasta)) === sinVivo(crudo), "todo resumido (y re-resumido) da lo mismo que el crudo");
   await db.exec("delete from public.ca_vistas where ts >= '2026-08-20' and ts < '2026-09-10'");
   ok(sinVivo(await panel(db, SEMANA.desde, SEMANA.hasta)) === sinVivo(crudo), "sin el crudo, el panel sale entero del resumen");
@@ -938,6 +955,167 @@ async function probarCarga(PGlite: new (dataDir?: string) => Db, n: number) {
   }
 }
 
+
+const MIGRACION_MERCADO = migraciones.find((m) => m.f.includes("_ca_medicion_mercado"))?.f ?? "";
+
+function sinMercado(p: Record<string, unknown>): string {
+  const resto: Record<string, unknown> = { ...p };
+  delete resto.mercado;
+  delete resto.mercados;
+  delete resto.vivo;
+  resto.compras = (p.compras as Record<string, unknown>[]).map((c) => {
+    const x = { ...c };
+    delete x.moneda;
+    return x;
+  });
+  return JSON.stringify(canon(resto));
+}
+
+const sinVivo = (p: Record<string, unknown>) => JSON.stringify(canon({ ...p, vivo: null }));
+
+async function panelDe(db: Db, desde: string, hasta: string, mercado: string | null): Promise<Record<string, unknown>> {
+  return (await como(db, "service_role", null, () => filas(db, "select public.ca_panel($1, $2, $3) as p", [desde, hasta, mercado])))[0].p as Record<string, unknown>;
+}
+
+async function probarMercados(PGlite: new (dataDir?: string) => Db) {
+  seccion("mercados · migración sobre datos existentes");
+  ok(MIGRACION_MERCADO !== "", "existe la migración de mercado");
+  const anterior = migraciones.filter((m) => m.f < MIGRACION_MERCADO).map((m) => m.f).pop()!;
+  const db = await nuevaBase(PGlite, "legado", undefined, anterior);
+  try {
+    await sembrar(db);
+    await como(db, "service_role", null, () => db.query("select public.ca_resumir('2026-08-31', '2026-09-02')"));
+    const viejo = await panel(db, SEMANA.desde, SEMANA.hasta);
+    const viejoHora = await panel(db, "2026-09-03T00:00:00-03:00", "2026-09-03T12:00:00-03:00");
+    const filasViejas = (await filas(db, "select count(*)::int as n from public.ca_resumen where dim <> 'total' or hll is not null"))[0].n;
+    await aplicarMigraciones(db);
+    ok(true, "la migración corre sobre una base con datos y días resumidos");
+
+    const todos = await panelDe(db, SEMANA.desde, SEMANA.hasta, null);
+    ok(sinMercado(todos) === sinMercado(viejo), "Todos da lo mismo que antes de la migración");
+    ok(sinMercado(await panel(db, "2026-09-03T00:00:00-03:00", "2026-09-03T12:00:00-03:00")) === sinMercado(viejoHora), "por hora también");
+    const ar = await panelDe(db, SEMANA.desde, SEMANA.hasta, "ar");
+    ok(sinMercado(ar) === sinMercado(viejo), "Argentina = Todos mientras no haya datos intl");
+    igual([todos.mercado, ar.mercado], [null, "ar"], "el JSON dice qué mercado filtró");
+    igual(
+      (await filas(db, "select count(*)::int as n from public.ca_resumen where mercado = 'ar'"))[0].n,
+      filasViejas,
+      "lo histórico resumido se copió una vez a 'ar' (sin las filas marca)",
+    );
+    const vistas = (await filas(db, "select count(*)::int as n, count(*) filter (where sitio = 'ar' and mercado = 'ar')::int as ar from public.ca_vistas"))[0];
+    igual(vistas.n, vistas.ar, "todas las vistas existentes quedan en ar/ar");
+    igual(todos.mercados, [{ mercado: "ar", visitantes: 4, usos: 4, ventas: 2, ingresos: [{ moneda: "ARS", monto: 24800 }] }], "comparativa con un solo mercado");
+
+    seccion("mercados · reglas de las columnas");
+    await como(db, "service_role", null, async () => {
+      await falla(db.query("insert into public.ca_vistas (id, vid, sid, path, sitio, mercado) values (gen_random_uuid(), gen_random_uuid(), gen_random_uuid(), '/x', 'ar', 'mx')"), "23514", "sitio ar no puede tener otro mercado");
+      await falla(db.query("insert into public.ca_vistas (id, vid, sid, path, sitio, mercado) values (gen_random_uuid(), gen_random_uuid(), gen_random_uuid(), '/x', 'intl', 'ar')"), "23514", "sitio intl no puede ser ar");
+      await falla(db.query("insert into public.ca_eventos (tipo, sitio, mercado) values ('error', 'intl', 'MX')"), "23514", "mercado en minúsculas");
+      await falla(db.query("insert into public.ca_compras (mp_payment_id, producto, monto, sitio) values ('z', 'y', 1, 'otro')"), "23514", "sitio fuera de la lista");
+      await falla(db.query("select public.ca_panel(now() - interval '1 day', now(), '*')"), "22023", "ca_panel rechaza un mercado inválido");
+    });
+    await como(db, "authenticated", U.b, async () => {
+      await falla(db.query("insert into public.ca_opiniones (tipo, mensaje, mercado) values ('idea', 'hola mundo', 'mx')"), "42501", "authenticated no elige el mercado de su opinión");
+      await falla(db.query("insert into public.ca_calculos (path, titulo, campos, mercado) values ('/x', 't', '{}', 'mx')"), "42501", "authenticated no elige el mercado de su cálculo");
+      await falla(db.query("update public.ca_perfiles set mercado = 'mx' where user_id = $1", [U.b]), "42501", "authenticated no cambia el mercado de su perfil");
+    });
+
+    seccion("mercados · datos intl");
+    await como(db, "service_role", null, () =>
+      db.exec(`
+        insert into public.ca_vistas (id, ts, vid, sid, path, ref_host, dispositivo, pais, activo_ms, uso_calc, sitio, mercado) values
+          (gen_random_uuid(), '2026-09-05T10:00:00-03:00', '${V(60)}', '${S(60)}', '/mx/aguinaldo', 'www.google.com', 'movil', 'MX', 50000, true, 'intl', 'mx'),
+          (gen_random_uuid(), '2026-09-05T10:05:00-03:00', '${V(60)}', '${S(60)}', '/mx/finiquito', 'www.google.com', 'movil', 'MX', 10000, false, 'intl', 'mx'),
+          (gen_random_uuid(), '2026-09-04T11:00:00-03:00', '${V(61)}', '${S(61)}', '/mx/aguinaldo', null, 'escritorio', 'MX', 30000, true, 'intl', 'mx'),
+          (gen_random_uuid(), '2026-09-04T12:00:00-03:00', '${V(62)}', '${S(62)}', '/co/prima', null, 'movil', 'CO', 20000, true, 'intl', 'co'),
+          (gen_random_uuid(), '2026-09-04T12:30:00-03:00', '${V(63)}', '${S(63)}', '/', 'calcularya.com', 'movil', 'PE', 1000, false, 'intl', 'global');
+        insert into public.ca_eventos (ts, vid, tipo, path, props, sitio, mercado) values
+          ('2026-09-05T10:01:00-03:00', '${V(60)}', 'busqueda', '/mx', '{"q":"aguinaldo mexico","resultados":2}', 'intl', 'mx'),
+          ('2026-09-04T12:01:00-03:00', '${V(62)}', 'compartir', '/co/prima', '{"canal":"whatsapp"}', 'intl', 'co');
+        insert into public.ca_compras (mp_payment_id, producto, monto, moneda, pagado_at, sitio, mercado) values
+          ('pp-1', 'planilla-sueldo-mx', 9, 'USD', '2026-09-04T13:00:00-03:00', 'intl', 'mx');
+      `),
+    );
+    const t2 = await panelDe(db, SEMANA.desde, SEMANA.hasta, null);
+    igual([kpi(t2, "visitantes").valor, kpi(t2, "usos").valor, kpi(t2, "ventas").valor, kpi(t2, "ingresos").valor], [8, 7, 3, 24800], "Todos suma los mercados; los ingresos del KPI son sólo pesos");
+    const ar2 = await panelDe(db, SEMANA.desde, SEMANA.hasta, "ar");
+    ok(sinMercado(ar2) === sinMercado(viejo), "Argentina no se mueve con los datos intl");
+    const mx = await panelDe(db, SEMANA.desde, SEMANA.hasta, "mx");
+    igual([kpi(mx, "visitantes").valor, kpi(mx, "usos").valor, kpi(mx, "ventas").valor, kpi(mx, "ingresos").valor], [2, 2, 1, 0], "México solo");
+    igual((mx.paginas as { path: string; vistas: number }[]).map((x) => [x.path, x.vistas]), [["/mx/aguinaldo", 2], ["/mx/finiquito", 1]], "páginas de México");
+    igual(mx.busquedas, [{ q: "aguinaldo mexico", n: 1, sinResultados: false }], "búsquedas de México");
+    igual(mx.fuentes, [{ fuente: "Directo", visitantes: 1, usos: 1, ventas: 0 }, { fuente: "Google", visitantes: 1, usos: 1, ventas: 0 }], "fuentes de México");
+    igual((mx.compras as { id: string; moneda: string }[]).map((c) => [c.id, c.moneda]), [["pp-1", "USD"]], "compras de México con su moneda");
+    igual(mx.cuentas, { total: 0, nuevas: 0, verificadas: 0, conCompras: 0, perfiles: [] }, "cuentas de México (todavía no hay altas intl)");
+    const vacio = await panelDe(db, SEMANA.desde, SEMANA.hasta, "bo");
+    igual([vacio.hayVistas, (vacio.paginas as unknown[]).length], [false, 0], "un mercado sin datos da el panel vacío");
+    const errores: string[] = [];
+    validarForma(mx, FORMA_PANEL, "ca_panel(mx)", errores);
+    ok(errores.length === 0, "el JSON filtrado respeta el contrato", errores.slice(0, 5));
+    igual(t2.mercados, [
+      { mercado: "ar", visitantes: 4, usos: 4, ventas: 2, ingresos: [{ moneda: "ARS", monto: 24800 }] },
+      { mercado: "mx", visitantes: 2, usos: 2, ventas: 1, ingresos: [{ moneda: "USD", monto: 9 }] },
+      { mercado: "co", visitantes: 1, usos: 1, ventas: 0, ingresos: [] },
+      { mercado: "global", visitantes: 1, usos: 0, ventas: 0, ingresos: [] },
+    ], "comparativa por mercado, ordenada por visitantes");
+    ok(JSON.stringify(mx.mercados) === JSON.stringify(t2.mercados), "la comparativa no depende del filtro");
+
+    seccion("mercados · resumen = crudo");
+    const lista = [null, "ar", "mx", "co"];
+    const crudos: Record<string, unknown>[] = [];
+    for (const m of lista) crudos.push(await panelDe(db, SEMANA.desde, SEMANA.hasta, m));
+    await como(db, "service_role", null, () => db.query("select public.ca_resumir('2026-08-25', '2026-09-07')"));
+    for (const [i, m] of lista.entries()) {
+      ok(sinVivo(await panelDe(db, SEMANA.desde, SEMANA.hasta, m)) === sinVivo(crudos[i]), `resumido = crudo (${m ?? "todos"})`);
+    }
+    igual((await filas(db, "select count(*)::int as n from public.ca_resumen where mercado = 'mx' and dim = 'total'"))[0].n, 2, "México tiene fila total sólo los días con actividad");
+    await aplicarMigraciones(db);
+    ok(sinVivo(await panelDe(db, SEMANA.desde, SEMANA.hasta, "ar")) === sinVivo(crudos[1]), "re-aplicar la migración no vuelve a copiar a 'ar'");
+  } finally {
+    await db.close();
+  }
+}
+
+async function probarPagos(PGlite: new (dataDir?: string) => Db) {
+  seccion("proveedor de pago (20261009120000)");
+  const db = await nuevaBase(PGlite, "legado", undefined, "20261008999999");
+  try {
+    await como(db, "service_role", null, () =>
+      db.exec("insert into public.ca_compras (mp_payment_id, producto, monto) values ('900', 'planilla-comercio', 14900)"),
+    );
+    await aplicarMigraciones(db);
+    await aplicarMigraciones(db);
+    const vieja = (await filas(db, "select proveedor, pago_id from public.ca_compras where mp_payment_id = '900'"))[0];
+    igual([vieja.proveedor, vieja.pago_id], ["mercadopago", "900"], "la compra de MP previa queda con proveedor y pago_id");
+    await como(db, "service_role", null, () =>
+      db.exec("insert into public.ca_compras (mp_payment_id, producto, monto) values ('901', 'planilla-uocra', 14900)"),
+    );
+    igual((await filas(db, "select pago_id from public.ca_compras where mp_payment_id = '901'"))[0].pago_id, "901", "el webhook de MP sin pago_id: lo completa el trigger");
+    await como(db, "service_role", null, () =>
+      db.exec(
+        "insert into public.ca_compras (mp_payment_id, producto, monto, moneda, sitio, mercado, proveedor, pago_id) values ('paypal:5O190127TN364715T', 'mx/planilla-sueldo', 9, 'USD', 'intl', 'mx', 'paypal', '5O190127TN364715T')",
+      ),
+    );
+    ok(true, "una compra de PayPal entra con mp_payment_id prefijado");
+    await como(db, "service_role", null, () =>
+      falla(
+        db.query("insert into public.ca_compras (mp_payment_id, producto, monto, proveedor, pago_id, sitio, mercado) values ('paypal:otro', 'mx/x', 9, 'paypal', '5O190127TN364715T', 'intl', 'mx')"),
+        "23505",
+        "pago_id repetido del mismo proveedor: rechazado",
+      ),
+    );
+    await como(db, "service_role", null, () =>
+      falla(db.query("insert into public.ca_compras (mp_payment_id, producto, monto, proveedor) values ('x1', 'mx/x', 9, 'bitcoin')"), "23514", "proveedor fuera de la lista: rechazado"),
+    );
+    await como(db, "service_role", null, () =>
+      db.exec("insert into public.ca_checkouts (id, producto, sitio, mercado, proveedor) values (gen_random_uuid(), 'mx/planilla-sueldo', 'intl', 'mx', 'paypal')"),
+    );
+    ok(true, "ca_checkouts acepta un checkout intl de PayPal");
+  } finally {
+    await db.close();
+  }
+}
+
 async function main() {
   chequeosEstaticos();
   const PGlite = cargarPGlite();
@@ -960,6 +1138,8 @@ async function main() {
       await db.close();
     }
     await probarDefaultsNuevos(PGlite);
+    await probarMercados(PGlite);
+    await probarPagos(PGlite);
     const carga = Number(process.env.CA_PANEL_CARGA ?? 0);
     if (carga > 0) await probarCarga(PGlite, carga);
   }

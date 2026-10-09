@@ -4,15 +4,36 @@ import { useCallback, useDeferredValue, useEffect, useId, useMemo, useRef, useSt
 import type { MouseEvent, ReactNode } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import type { Pagina } from "@/data/navegacion";
+import type { FuenteBuscador, PaginaMenu, TextosBuscador } from "@/components/shell/tipos";
 import { rastrear } from "@/lib/rastreo";
 import { useAtajo } from "./atajo";
 import { EVENTO_BUSCAR, cargarMotor, type DetalleBuscar } from "./control";
 import { IconoCruz, IconoLupa, IconoTipo } from "./iconos";
+import { crearMotor, type MotorBusqueda } from "./indice";
 import { leerRecientes } from "./recientes";
 
-type Motor = Awaited<ReturnType<typeof cargarMotor>>;
+type Motor = MotorBusqueda;
+type Pagina = PaginaMenu;
 type Opcion = { id: string; pagina: Pagina };
+
+const TEXTOS_AR: TextosBuscador = {
+  dialogo: "Buscar en CalculAR",
+  pregunta: "¿Qué querés calcular?",
+  recientes: "Seguí donde estabas",
+  masUsado: "Lo más usado",
+  sinResultados: "No encontramos «{q}»",
+  sugerencia: "Probá con otra palabra, como «despido», «aguinaldo» o «alquiler».",
+  verTodas: "Ver todas las calculadoras",
+  borrar: "Borrar la búsqueda",
+  cerrar: "Cerrar",
+  cerrarBuscador: "Cerrar el buscador",
+  moverte: "para moverte",
+  abrir: "para abrir",
+  desdeCualquier: "desde cualquier página",
+  resultados: "Resultados",
+  resultado: "resultado",
+  resultadosPlural: "resultados",
+};
 type Seccion = { id: string; titulo?: string; opciones: Opcion[] };
 
 function cx(...p: Array<string | false | null | undefined>) {
@@ -61,7 +82,8 @@ function resaltar(titulo: string, q: string): ReactNode {
   return out;
 }
 
-export function Buscador() {
+export function Buscador({ fuente }: { fuente?: FuenteBuscador } = {}) {
+  const t = fuente?.textos ?? TEXTOS_AR;
   const dialogRef = useRef<HTMLDialogElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
@@ -69,7 +91,9 @@ export function Buscador() {
   const baseId = useId();
 
   const [q, setQ] = useState("");
-  const [motor, setMotor] = useState<Motor | null>(null);
+  const [motorCargado, setMotor] = useState<Motor | null>(null);
+  const motorPropio = useMemo(() => (fuente ? crearMotor(fuente.paginas, fuente.masUsadas, fuente.opcionales) : null), [fuente]);
+  const motor = motorCargado;
   const [fallo, setFallo] = useState(false);
   const [activo, setActivo] = useState(0);
   const [recientes, setRecientes] = useState<string[]>([]);
@@ -82,9 +106,15 @@ export function Buscador() {
   const qDiferida = useDeferredValue(q);
 
   const cargar = useCallback(() => {
+    // Con índice propio también se espera a abrir: el HTML sale con el esqueleto, igual que en AR,
+    // y no con resultados que dependen de la ruta (que en calcularya difiere entre servidor y cliente).
+    if (motorPropio) {
+      setMotor(motorPropio);
+      return;
+    }
     setFallo(false);
     cargarMotor().then(setMotor, () => setFallo(true));
-  }, []);
+  }, [motorPropio]);
 
   const abrir = useCallback(
     ({ q: inicial = "", instantaneo = false }: DetalleBuscar = {}) => {
@@ -111,7 +141,7 @@ export function Buscador() {
 
   const alCerrar = () => {
     const medible = consultaMedible(qRef.current);
-    if (medible) {
+    if (medible && !fuente) {
       rastrear("busqueda", {
         props: { q: medible, resultados: resultadosRef.current, elegido: elegidoRef.current },
       });
@@ -161,10 +191,10 @@ export function Buscador() {
       .filter((p) => !yaEstan.has(p.href) && p.href !== pathname)
       .slice(0, vistas.length ? 5 : 8);
     return [
-      { id: "recientes", titulo: "Seguí donde estabas", opciones: vistas.map((p, i) => ({ id: `${baseId}v${i}`, pagina: p })) },
-      { id: "usadas", titulo: "Lo más usado", opciones: usadas.map((p, i) => ({ id: `${baseId}u${i}`, pagina: p })) },
+      { id: "recientes", titulo: t.recientes, opciones: vistas.map((p, i) => ({ id: `${baseId}v${i}`, pagina: p })) },
+      { id: "usadas", titulo: t.masUsado, opciones: usadas.map((p, i) => ({ id: `${baseId}u${i}`, pagina: p })) },
     ].filter((s) => s.opciones.length > 0);
-  }, [motor, qDiferida, recientes, pathname, baseId]);
+  }, [motor, qDiferida, recientes, pathname, baseId, t]);
 
   const opciones = useMemo(() => secciones.flatMap((s) => s.opciones), [secciones]);
   const idx = opciones.length ? Math.min(activo, opciones.length - 1) : -1;
@@ -239,19 +269,17 @@ export function Buscador() {
   } else if (buscando && opciones.length === 0) {
     cuerpo = (
       <div className="px-6 py-12 text-center">
-        <p className="font-medium text-zinc-900">No encontramos «{qDiferida.trim()}»</p>
-        <p className="mx-auto mt-1 max-w-xs text-sm text-pretty text-zinc-500">
-          Probá con otra palabra, como «despido», «aguinaldo» o «alquiler».
-        </p>
-        <Link href="/#todas" onClick={cerrar} className="ca-boton-suave mt-4">
-          Ver todas las calculadoras
+        <p className="font-medium text-zinc-900">{t.sinResultados.replace("{q}", qDiferida.trim())}</p>
+        <p className="mx-auto mt-1 max-w-xs text-sm text-pretty text-zinc-500">{t.sugerencia}</p>
+        <Link href={fuente?.todas ?? "/#todas"} onClick={cerrar} className="ca-boton-suave mt-4">
+          {t.verTodas}
         </Link>
       </div>
     );
   } else {
     let n = -1;
     cuerpo = (
-      <div id={listaId} role="listbox" aria-label="Resultados" className="p-2">
+      <div id={listaId} role="listbox" aria-label={t.resultados} className="p-2">
         {secciones.map((s) => (
           <div key={s.id} role="group" aria-labelledby={s.titulo ? `${listaId}-${s.id}` : undefined} className="pb-1">
             {s.titulo && (
@@ -305,7 +333,7 @@ export function Buscador() {
     <dialog
       ref={dialogRef}
       className="ca-paleta ca-bloquea"
-      aria-label="Buscar en CalculAR"
+      aria-label={t.dialogo}
       onClose={alCerrar}
       onClick={(e) => {
         if (e.target === e.currentTarget) cerrar();
@@ -328,8 +356,8 @@ export function Buscador() {
             aria-controls={listaId}
             aria-activedescendant={actual?.id}
             aria-autocomplete="list"
-            aria-label="¿Qué querés calcular?"
-            placeholder="¿Qué querés calcular?"
+            aria-label={t.pregunta}
+            placeholder={t.pregunta}
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="none"
@@ -342,7 +370,7 @@ export function Buscador() {
           {q && (
             <button
               type="button"
-              aria-label="Borrar la búsqueda"
+              aria-label={t.borrar}
               onClick={() => {
                 qRef.current = "";
                 setQ("");
@@ -358,12 +386,12 @@ export function Buscador() {
             onClick={cerrar}
             className="h-10 shrink-0 rounded-lg px-3 text-sm font-medium text-emerald-700 transition-[background-color,transform] duration-150 active:scale-[0.97] sm:hidden"
           >
-            Cerrar
+            {t.cerrar}
           </button>
           <button
             type="button"
             onClick={cerrar}
-            aria-label="Cerrar el buscador"
+            aria-label={t.cerrarBuscador}
             className="hidden shrink-0 rounded-md border border-zinc-200 px-1.5 py-0.5 text-[11px] font-medium text-zinc-500 transition-colors hover:bg-zinc-50 sm:block"
           >
             Esc
@@ -373,22 +401,22 @@ export function Buscador() {
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain [scrollbar-width:thin]">{cuerpo}</div>
 
         <p className="sr-only" aria-live="polite">
-          {buscando && motor ? `${opciones.length} ${opciones.length === 1 ? "resultado" : "resultados"}` : ""}
+          {buscando && motor ? `${opciones.length} ${opciones.length === 1 ? t.resultado : t.resultadosPlural}` : ""}
         </p>
 
         <div className="hidden shrink-0 items-center gap-4 border-t border-zinc-100 px-4 py-2.5 text-xs text-zinc-500 sm:flex">
           <span className="flex items-center gap-1.5">
             <kbd className="ca-tecla">↑</kbd>
             <kbd className="ca-tecla">↓</kbd>
-            para moverte
+            {t.moverte}
           </span>
           <span className="flex items-center gap-1.5">
             <kbd className="ca-tecla">Enter</kbd>
-            para abrir
+            {t.abrir}
           </span>
           <span className="ml-auto flex items-center gap-1.5">
             <kbd className="ca-tecla">{atajo}</kbd>
-            desde cualquier página
+            {t.desdeCualquier}
           </span>
         </div>
       </div>

@@ -1,0 +1,499 @@
+/* Header, cajón, buscador y footer de calcular.ar para un sitio que no carga el globals.css de AR
+   (calcularya). Tailwind acá solo mira los archivos del shell (source(none) + @source): el CSS
+   queda chico y las páginas intl no reciben el preflight, que les cambiaría la tipografía.
+   El reset de Tailwind se aplica solo dentro de .ca-shell, con especificidad cero.
+   Los bloques .ca-* copian a src/app/(ar)/globals.css: si cambia el cajón o el buscador allá,
+   se cambia acá también. */
+
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+
+@source "../SiteHeader.tsx";
+@source "../MenuCuenta.tsx";
+@source "../buscador/Buscador.tsx";
+@source "../buscador/iconos.tsx";
+@source "./EncabezadoIntl.tsx";
+@source "./PieIntl.tsx";
+@source "./PaisesCajon.tsx";
+
+@theme {
+  --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snappy: cubic-bezier(0.32, 0.72, 0, 1);
+  --shadow-apoyo: 0 1px 2px rgb(0 0 0 / 0.05), 0 1px 1px rgb(0 0 0 / 0.03);
+  --shadow-alzada: 0 16px 34px -22px rgb(0 0 0 / 0.28), 0 3px 8px -4px rgb(0 0 0 / 0.08);
+  --shadow-flotante: 0 32px 80px -28px rgb(0 0 0 / 0.36), 0 0 0 1px rgb(0 0 0 / 0.05);
+}
+
+.ca-shell {
+  display: contents;
+  line-height: 1.5;
+  color: var(--color-zinc-800);
+}
+
+@layer base {
+  :where(.ca-shell) *,
+  :where(.ca-shell) ::after,
+  :where(.ca-shell) ::before,
+  :where(.ca-shell) ::backdrop {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  :where(.ca-shell) :where(h1, h2, h3, h4, h5, h6) {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  :where(.ca-shell) a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  :where(.ca-shell) :where(ol, ul, menu) {
+    list-style: none;
+  }
+  :where(.ca-shell) :where(img, svg) {
+    display: block;
+    vertical-align: middle;
+  }
+  :where(.ca-shell) kbd {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 1em;
+  }
+  :where(.ca-shell) summary {
+    display: list-item;
+  }
+  :where(.ca-shell) :where(button, input, select, textarea) {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(.ca-shell) button {
+    appearance: button;
+  }
+  :where(.ca-shell) ::placeholder {
+    opacity: 1;
+    color: color-mix(in oklab, currentcolor 50%, transparent);
+  }
+  :where(.ca-shell) ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  :where(.ca-shell) :where([hidden]:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+
+.ca-shell .ca-paleta input:focus-visible {
+  box-shadow: none;
+}
+
+@keyframes ca-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ca-dropdown {
+  transform-origin: top center;
+  animation: ca-pop 0.18s var(--ease-fluid);
+}
+
+.ca-underline {
+  transition:
+    left 0.3s var(--ease-fluid),
+    width 0.3s var(--ease-fluid),
+    opacity 0.2s ease-out;
+}
+
+@keyframes ca-col {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ca-col {
+  animation: ca-col 0.26s var(--ease-fluid) backwards;
+}
+
+html:has(dialog.ca-bloquea[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+@layer components {
+  .ca-cajon,
+  .ca-paleta {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    inset: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background: transparent;
+    overflow: hidden;
+  }
+
+  :root {
+    --ease-sereno: cubic-bezier(0.3, 0.7, 0.3, 1);
+    --ease-salida: cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .ca-cajon::backdrop {
+    background: rgb(9 9 11 / 0);
+    transition: background-color 0.26s ease-out;
+  }
+  .ca-cajon[data-visible="true"]::backdrop {
+    background: rgb(9 9 11 / 0.4);
+    transition-duration: 0.42s;
+  }
+
+  .ca-cajon-panel {
+    position: absolute;
+    inset-block: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    width: min(88vw, 380px);
+    padding-top: env(safe-area-inset-top);
+    background: #fff;
+    box-shadow: -24px 0 60px -30px rgb(0 0 0 / 0.35);
+    touch-action: pan-y;
+    translate: 100% 0;
+    transition: translate 0.28s var(--ease-salida);
+  }
+  .ca-cajon[data-visible="true"] .ca-cajon-panel {
+    translate: 0 0;
+    transition-duration: 0.42s;
+    transition-timing-function: var(--ease-sereno);
+  }
+
+  .ca-cajon-item {
+    opacity: 0;
+    translate: 0 6px;
+    transition:
+      opacity 0.18s ease-out,
+      translate 0.18s ease-out;
+  }
+  .ca-cajon[data-visible="true"] .ca-cajon-item {
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity 0.32s ease-out calc(0.08s + var(--i, 0) * 0.03s),
+      translate 0.46s var(--ease-sereno) calc(0.08s + var(--i, 0) * 0.03s);
+  }
+  @starting-style {
+    .ca-cajon[data-visible="true"] .ca-cajon-item {
+      opacity: 0;
+      translate: 0 6px;
+    }
+  }
+
+  @keyframes ca-menu-entra {
+    from {
+      opacity: 0;
+      transform: translateY(-6px) scale(0.96);
+    }
+  }
+  @keyframes ca-menu-sale {
+    to {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.98);
+    }
+  }
+  @keyframes ca-menu-fila {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+  .ca-menu-cuenta {
+    transform-origin: top right;
+    animation: ca-menu-entra 0.3s var(--ease-sereno) both;
+  }
+  .ca-menu-cuenta[data-estado="cerrando"] {
+    animation: ca-menu-sale 0.14s ease-out forwards;
+  }
+  .ca-menu-cuenta-lista > * {
+    animation: ca-menu-fila 0.32s var(--ease-sereno) calc(0.05s + var(--i, 0) * 0.03s) backwards;
+  }
+  .ca-menu-cuenta[data-estado="cerrando"] .ca-menu-cuenta-lista > * {
+    animation: none;
+  }
+
+  .ca-paleta::backdrop {
+    background: rgb(9 9 11 / 0.4);
+    backdrop-filter: blur(2px);
+  }
+  .ca-paleta-caja {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+    padding-top: env(safe-area-inset-top);
+  }
+  @media (min-width: 640px) {
+    .ca-paleta-caja {
+      height: auto;
+      max-height: min(36rem, calc(100dvh - 7rem));
+      width: min(40rem, calc(100% - 2rem));
+      margin: 11vh auto 0;
+      padding-top: 0;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-flotante);
+    }
+  }
+  .ca-paleta[open] .ca-paleta-caja {
+    transition:
+      opacity 0.16s ease-out,
+      transform 0.2s var(--ease-fluid);
+  }
+  @starting-style {
+    .ca-paleta[open] .ca-paleta-caja {
+      opacity: 0;
+      transform: translateY(10px) scale(0.985);
+    }
+  }
+  .ca-paleta[open]::backdrop {
+    transition: opacity 0.16s ease-out;
+  }
+  @starting-style {
+    .ca-paleta[open]::backdrop {
+      opacity: 0;
+    }
+  }
+  .ca-paleta[data-instantaneo] .ca-paleta-caja,
+  .ca-paleta[data-instantaneo]::backdrop {
+    transition: none;
+  }
+
+  .ca-opcion {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    min-height: 3.25rem;
+    outline: none;
+  }
+  .ca-opcion.is-activa {
+    background: color-mix(in srgb, var(--color-emerald-500) 9%, transparent);
+  }
+  .ca-opcion mark {
+    background: none;
+    color: var(--color-emerald-700);
+    font-weight: 600;
+  }
+  .ca-opcion-icono {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: var(--color-zinc-100);
+    color: var(--color-zinc-500);
+  }
+  .ca-opcion.is-activa .ca-opcion-icono {
+    background: #fff;
+    color: var(--color-emerald-600);
+    box-shadow: var(--shadow-apoyo);
+  }
+  .ca-opcion-icono[data-tipo="calculadora"] {
+    color: var(--color-emerald-600);
+  }
+
+  .ca-tecla {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    height: 1.375rem;
+    padding-inline: 0.375rem;
+    border-radius: 0.375rem;
+    border: 1px solid var(--color-zinc-200);
+    border-bottom-width: 2px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--color-zinc-500);
+    white-space: nowrap;
+  }
+
+  .ca-boton-suave {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding-inline: 1.125rem;
+    border-radius: 9999px;
+    background: var(--color-zinc-900);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition:
+      transform 0.16s var(--ease-fluid),
+      background-color 0.2s ease;
+  }
+  .ca-boton-suave:hover {
+    background: var(--color-zinc-800);
+  }
+  .ca-boton-suave:active {
+    transform: scale(0.97);
+  }
+
+  .ca-pie {
+    border-top: 1px solid rgb(24 24 27 / 0.07);
+    background:
+      linear-gradient(to bottom, rgb(255 255 255 / 0.7), rgb(255 255 255 / 0.95)),
+      #fafaf9;
+  }
+  .ca-pie-marca {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.5rem;
+    background-image: linear-gradient(135deg, #34d399 0%, #059669 100%);
+    align-items: center;
+  }
+  .ca-pie-marca > span {
+    display: block;
+    width: 0.75rem;
+    height: 2.5px;
+    border-radius: 9999px;
+    background: #fff;
+  }
+  .ca-pie-titulo {
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-zinc-900);
+  }
+  .ca-pie-lista {
+    display: grid;
+    gap: 0.125rem;
+  }
+  .ca-pie-lista a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    font-size: 0.875rem;
+    color: var(--color-zinc-600);
+    transition: color 0.15s ease;
+  }
+  .ca-pie-lista a:hover {
+    color: var(--color-emerald-700);
+  }
+
+  .ca-mapa {
+    display: grid;
+    gap: 0 2rem;
+  }
+  .ca-mapa-tema {
+    border-bottom: 1px solid rgb(24 24 27 / 0.06);
+  }
+  .ca-mapa-tema > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3rem;
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-zinc-800);
+  }
+  .ca-mapa-tema > summary::-webkit-details-marker {
+    display: none;
+  }
+  .ca-mapa-n {
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-zinc-400);
+  }
+  .ca-mapa-tema ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 1rem;
+    padding-bottom: 0.75rem;
+  }
+  .ca-mapa-tema a {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    color: var(--color-zinc-600);
+    transition: color 0.15s ease;
+  }
+  .ca-mapa-tema a:hover {
+    color: var(--color-emerald-700);
+  }
+
+  @media (min-width: 1024px) {
+    .ca-mapa {
+      grid-template-columns: repeat(var(--ca-mapa-cols, 5), minmax(0, 1fr));
+      gap: 2rem;
+    }
+    .ca-mapa-tema {
+      border: 0;
+    }
+    .ca-mapa-tema ul {
+      grid-template-columns: 1fr;
+    }
+    .ca-mapa-tema a {
+      min-height: 1.75rem;
+      font-size: 0.8125rem;
+    }
+    @supports selector(::details-content) {
+      .ca-mapa-tema::details-content {
+        content-visibility: visible;
+        display: block;
+      }
+      .ca-mapa-tema > summary {
+        min-height: 0;
+        margin-bottom: 0.5rem;
+        pointer-events: none;
+        font-size: 0.75rem;
+        color: var(--color-zinc-900);
+      }
+      .ca-mapa-n {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ca-dropdown,
+  .ca-col,
+  .ca-menu-cuenta,
+  .ca-menu-cuenta-lista > * {
+    animation: none;
+  }
+  .ca-underline {
+    transition: none;
+  }
+}

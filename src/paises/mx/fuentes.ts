@@ -131,7 +131,30 @@ export const detectores: readonly Detector[] = [
     banda: { min: 14, max: 26, saltoRelativoMax: 0.05 },
     traer: (http) => indicador(http, 158),
   },
-  detectorDof("mx.dof-salario-minimo", ["mx.salario-minimo"], /salarios? m[ií]nimos?/i),
+  {
+    id: "mx.inpc-banxico",
+    carril: "serie",
+    serie: "mx.inpc",
+    metodo: "api-json",
+    url: "https://www.banxico.org.mx/SieInternet/consultaSerieGrafica.do?s=SP1,CP154,1&versionSerie=LA-MAS-RECIENTE&l=es",
+    userAgentNavegador: true,
+    banda: { min: 120, max: 200, saltoRelativoMax: 0.03 },
+    async traer(http) {
+      // Es el JSON que usa la gráfica pública del SIE y no pide token (la API SieAPIRest sí).
+      // Trae toda la historia desde 1969: se devuelven solo los últimos meses, porque la banda
+      // compara cada punto con el último guardado y un mes viejo parecería un salto.
+      const json = await http.json(this.url, { userAgentNavegador: true });
+      const valores = (json as { serie?: unknown; valores?: unknown } | null)?.valores;
+      if ((json as { serie?: unknown } | null)?.serie !== "SP1" || !Array.isArray(valores)) return null;
+      const puntos: PuntoSerie[] = [];
+      for (const fila of valores.slice(-3)) {
+        if (!Array.isArray(fila) || !esFechaISO(fila[0]) || typeof fila[1] !== "number" || !Number.isFinite(fila[1])) return null;
+        puntos.push({ fecha: fila[0], valor: fila[1] });
+      }
+      return puntos.length ? puntos : null;
+    },
+  },
+  detectorDof("mx.dof-salario-minimo", ["mx.salario-minimo", "mx.salario-minimo-hogar"], /salarios? m[ií]nimos?/i),
   detectorDof("mx.dof-uma", ["mx.uma-diaria", "mx.uma-mensual"], /unidad de medida y actualizaci[oó]n/i),
   detectorDof("mx.dof-subsidio-empleo", ["mx.subsidio-empleo", "mx.subsidio-empleo-limite"], /subsidio para el empleo/i),
   detectorDof("mx.dof-tarifas-isr", ["mx.tarifa-isr-semanal", "mx.tarifa-isr-decenal", "mx.tarifa-isr-quincenal", "mx.tarifa-isr-mensual"], /Miscel[aá]nea Fiscal/i),

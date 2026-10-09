@@ -42,9 +42,11 @@ const TODAS: OpinionAdmin[] = [
   },
 ];
 
-export function bandejaDeEjemplo(filtro: Filtro, vacia: boolean): BandejaDatos {
-  const base = vacia ? [] : TODAS;
+export function bandejaDeEjemplo(filtro: Filtro, vacia: boolean, mercado: string | null = null): BandejaDatos {
+  const base = vacia || (mercado && mercado !== "ar") ? [] : TODAS.map((o) => ({ ...o, mercado: "ar" }));
   return {
+    porMercado: true,
+    mercado,
     opiniones: filtro === "todas" ? base : base.filter((o) => o.estado === ESTADO_DE_FILTRO[filtro]),
     cuentas: {
       nueva: base.filter((o) => o.estado === "nueva").length,

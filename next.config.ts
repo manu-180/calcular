@@ -58,6 +58,9 @@ const REGLAS_HOSTS = reglasPorHost({
   // La cookie sitio=intl (la pone /api/dev/sitio) deja ver calcularya en los previews de *.vercel.app.
   // Solo previews y next dev: cualquier otro build (producción incluida) nunca lleva estas reglas.
   cookiePreview: entornoDePrueba(),
+  // Mismo interruptor que src/lib/funciones.ts (CUENTAS_ACTIVAS): no se importa por el loader de
+  // next.config (ver mercadosDelRegistro).
+  cuentas: process.env.NEXT_PUBLIC_CUENTAS_ACTIVAS === "1",
 });
 
 const nextConfig: NextConfig = {
@@ -110,6 +113,7 @@ const nextConfig: NextConfig = {
     "/api/planilla-vacaciones/download": ["./private/**"],
     "/api/planilla-plazo-fijo/download": ["./private/**"],
     "/api/cuenta/descargar/[id]": ["./private/**"],
+    "/api/pagos/descarga": ["./private/intl/**"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
   // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.

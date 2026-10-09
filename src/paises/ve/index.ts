@@ -3,6 +3,7 @@ import avisos from "./avisos.json";
 import cestaticket from "./calculadoras/cestaticket";
 import dolarBcv from "./calculadoras/dolar-bcv";
 import horasExtra from "./calculadoras/horas-extra";
+import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
 import prestacionesSociales from "./calculadoras/prestaciones-sociales";
@@ -12,6 +13,7 @@ import vacaciones from "./calculadoras/vacaciones";
 import contenidoCestaticket from "./contenido/cestaticket";
 import contenidoDolarBcv from "./contenido/dolar-bcv";
 import contenidoHorasExtra from "./contenido/horas-extra";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
 import contenidoPrestacionesSociales from "./contenido/prestaciones-sociales";
@@ -38,6 +40,7 @@ export default definirPais({
     { definicion: salarioMinimo, contenido: contenidoSalarioMinimo, cliente: () => import("./calculadoras/salario-minimo.cliente") },
     { definicion: horasExtra, contenido: contenidoHorasExtra, cliente: () => import("./calculadoras/horas-extra.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: cestaticket, contenido: contenidoCestaticket, cliente: () => import("./calculadoras/cestaticket.cliente") },
   ],
   novedades,

@@ -4,6 +4,7 @@ import aguinaldo from "./calculadoras/aguinaldo";
 import cesantia from "./calculadoras/cesantia";
 import horasExtra from "./calculadoras/horas-extra";
 import impuestoAlSalario from "./calculadoras/impuesto-al-salario";
+import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
 import preaviso from "./calculadoras/preaviso";
@@ -15,6 +16,7 @@ import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoCesantia from "./contenido/cesantia";
 import contenidoHorasExtra from "./contenido/horas-extra";
 import contenidoImpuesto from "./contenido/impuesto-al-salario";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
 import contenidoPreaviso from "./contenido/preaviso";
@@ -45,6 +47,7 @@ export default definirPais({
     { definicion: horasExtra, contenido: contenidoHorasExtra, cliente: () => import("./calculadoras/horas-extra.cliente") },
     { definicion: tipoDeCambio, contenido: contenidoTipoDeCambio, cliente: () => import("./calculadoras/tipo-de-cambio.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
   ],
   novedades,
   detectores,

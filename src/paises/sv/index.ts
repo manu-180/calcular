@@ -3,6 +3,7 @@ import avisos from "./avisos.json";
 import aguinaldo from "./calculadoras/aguinaldo";
 import horasExtra from "./calculadoras/horas-extra";
 import indemnizacion from "./calculadoras/indemnizacion";
+import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import quincena25 from "./calculadoras/quincena-25";
 import renunciaVoluntaria from "./calculadoras/renuncia-voluntaria";
@@ -13,6 +14,7 @@ import vacaciones from "./calculadoras/vacaciones";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoHorasExtra from "./contenido/horas-extra";
 import contenidoIndemnizacion from "./contenido/indemnizacion";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoQuincena25 from "./contenido/quincena-25";
 import contenidoRenunciaVoluntaria from "./contenido/renuncia-voluntaria";
@@ -42,6 +44,7 @@ export default definirPais({
     { definicion: horasExtra, contenido: contenidoHorasExtra, cliente: () => import("./calculadoras/horas-extra.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: salarioLiquido, contenido: contenidoSalarioLiquido, cliente: () => import("./calculadoras/salario-liquido.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
   ],
   novedades,
   detectores,

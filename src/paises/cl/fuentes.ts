@@ -51,6 +51,35 @@ export function parsearUtmSii(html: string, anio: number): PuntoSerie[] {
   return puntos;
 }
 
+// En la tabla UTM - UTA - IPC del SII la tercera celda de cada mes es el IPC en puntos (base 2023 = 100
+// desde 2024; las páginas de años anteriores traen la base 2018 y no sirven para esta serie).
+export function parsearIpcSii(html: string, anio: number): PuntoSerie[] {
+  const puntos: PuntoSerie[] = [];
+  MESES.forEach((nombre, i) => {
+    const etiqueta = nombre[0].toUpperCase() + nombre.slice(1);
+    const m = new RegExp(`<th>${etiqueta}</th>\\s*<td>[^<]*</td>\\s*<td>[^<]*</td>\\s*<td[^>]*>([^<]*)</td>`).exec(html);
+    const valor = m ? numeroChileno(m[1]) : null;
+    const f = fecha(anio, i + 1, 1);
+    if (valor !== null && f) puntos.push({ fecha: f, valor });
+  });
+  return puntos;
+}
+
+// El IPC de diciembre sale en enero y queda en la página del año anterior.
+async function traerIpcSii(http: Http): Promise<PuntoSerie[] | null> {
+  const hoy = fechaEnZona(new Date(), ZONA);
+  const anio = Number(hoy.slice(0, 4));
+  const puntos: PuntoSerie[] = [];
+  if (hoy.slice(5, 7) === "01") {
+    const anterior = await textoOpcional(http, URL_UTM(anio - 1));
+    if (anterior) puntos.push(...parsearIpcSii(anterior, anio - 1));
+  }
+  const html = await textoOpcional(http, URL_UTM(anio));
+  if (html) puntos.push(...parsearIpcSii(html, anio));
+  if (puntos.length === 0 || (html && !html.includes("Indice de Precios al Consumidor"))) return null;
+  return puntos.slice(-3);
+}
+
 export function parsearMindicador(json: unknown): PuntoSerie[] | null {
   if (typeof json !== "object" || json === null || !Array.isArray((json as { serie?: unknown }).serie)) return null;
   const puntos: PuntoSerie[] = [];
@@ -144,6 +173,15 @@ export const detectores: readonly Detector[] = [
     url: "https://www.sii.cl/valores_y_fechas/utm/utm2026.htm",
     banda: { min: 65000, max: 85000, saltoRelativoMax: 0.03 },
     traer: (http) => traerSerieCruzada(http, URL_UTM, parsearUtmSii, CRUCE_UTM, 70),
+  },
+  {
+    id: "cl.ipc-sii",
+    carril: "serie",
+    serie: "cl.ipc",
+    metodo: "html",
+    url: "https://www.sii.cl/valores_y_fechas/utm/utm2026.htm",
+    banda: { min: 100, max: 140, saltoRelativoMax: 0.03 },
+    traer: traerIpcSii,
   },
   {
     id: "cl.bcn-normas",

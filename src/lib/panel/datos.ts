@@ -2,6 +2,7 @@ import "server-only";
 import { servicio } from "@/lib/supabase/servicio";
 import { PAGINAS, tituloDeRuta } from "@/data/navegacion";
 import { CATALOGO, productoPorSlug } from "@/lib/mp";
+import { esMercadoMedido } from "@/lib/medicion/mercados";
 import { generarLecturas } from "@/lib/panel/lecturas";
 import type {
   Busqueda,
@@ -10,6 +11,7 @@ import type {
   EmbudoProducto,
   EnVivo,
   FilaFuente,
+  FilaMercado,
   FilaPagina,
   Kpi,
   KpiClave,
@@ -169,6 +171,7 @@ function armarCompras(crudo: unknown): Compra[] {
       fecha: fecha(c.fecha),
       producto: slugCanonico(texto(c.producto)) ?? texto(c.producto),
       monto: num(c.monto),
+      moneda: typeof c.moneda === "string" && /^[A-Z]{3}$/.test(c.moneda) ? c.moneda : "ARS",
       emailEnmascarado: texto(c.emailEnmascarado),
       conCuenta: c.conCuenta === true,
       desde: typeof c.desde === "string" && c.desde ? c.desde : null,
@@ -193,12 +196,26 @@ function armarVivo(crudo: unknown): EnVivo {
   return { ahora: num(v.ahora), paginas: reparto(v.paginas ?? [], "vivo.paginas") };
 }
 
+function armarMercados(crudo: unknown): FilaMercado[] | null {
+  if (crudo === undefined) return null;
+  return lista(crudo, "mercados")
+    .map((m) => ({
+      mercado: texto(m.mercado),
+      visitantes: num(m.visitantes),
+      usos: num(m.usos),
+      ventas: num(m.ventas),
+      ingresos: lista(m.ingresos ?? [], "mercados.ingresos").map((i) => ({ moneda: texto(i.moneda), monto: num(i.monto) })),
+    }))
+    .filter((m) => esMercadoMedido(m.mercado));
+}
+
 export function armarPanel(rango: Rango, desde: Date, hasta: Date, crudo: unknown, generado: Date = new Date()): PanelDatos {
   const r = objeto(crudo, "ca_panel");
   const granularidad = r.granularidad === "hora" ? "hora" : r.granularidad === "dia" ? "dia" : null;
   if (!granularidad) throw new Error("ca_panel devolvió un formato inesperado: falta la granularidad");
   const sinLecturas: Omit<PanelDatos, "lecturas"> = {
     rango,
+    mercado: typeof r.mercado === "string" && esMercadoMedido(r.mercado) ? r.mercado : null,
     desde: desde.toISOString(),
     hasta: hasta.toISOString(),
     generado: generado.toISOString(),
@@ -213,20 +230,37 @@ export function armarPanel(rango: Rango, desde: Date, hasta: Date, crudo: unknow
     compras: armarCompras(r.compras),
     cuentas: armarCuentas(r.cuentas),
     vivo: armarVivo(r.vivo),
+    mercados: armarMercados(r.mercados),
     sinDatos: r.hayVistas !== true,
   };
   return { ...sinLecturas, lecturas: generarLecturas(sinLecturas) };
 }
 
-export async function cargarPanel(rango: Rango): Promise<PanelDatos> {
+export function leerMercado(valor: unknown): string | null {
+  return typeof valor === "string" && esMercadoMedido(valor) ? valor : null;
+}
+
+async function llamarPanel(desde: Date, hasta: Date, mercado: string | null) {
+  const args: Record<string, string> = { p_desde: desde.toISOString(), p_hasta: hasta.toISOString() };
+  if (mercado) args.p_mercado = mercado;
+  return servicio().rpc("ca_panel", args).abortSignal(AbortSignal.timeout(20_000));
+}
+
+// Sin la migración de mercado ca_panel no acepta p_mercado (PGRST202). Hasta entonces todo lo
+// medido es de calcular.ar: Argentina es el panel entero y un país de calcularya no tiene datos.
+export async function cargarPanel(rango: Rango, mercado: string | null = null): Promise<PanelDatos> {
   const ahora = new Date();
   const { desde, hasta } = limitesDelRango(rango, ahora);
-  const { data, error } = await servicio()
-    .rpc("ca_panel", { p_desde: desde.toISOString(), p_hasta: hasta.toISOString() })
-    .abortSignal(AbortSignal.timeout(20_000));
+  let { data, error } = await llamarPanel(desde, hasta, mercado);
+  let sinMigracion = false;
+  if (error?.code === "PGRST202" && mercado) {
+    sinMigracion = true;
+    ({ data, error } = await llamarPanel(desde, hasta, null));
+  }
   if (error) {
     const codigo = error.code ? ` [${error.code}]` : "";
     throw new Error(`No se pudieron leer los datos del panel (ca_panel): ${error.message}${codigo}`);
   }
-  return armarPanel(rango, desde, hasta, data, ahora);
+  const datos = armarPanel(rango, desde, hasta, data, ahora);
+  return sinMigracion && mercado === "ar" ? { ...datos, mercado: "ar" } : datos;
 }

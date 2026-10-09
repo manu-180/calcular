@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { requireAdmin } from "@/lib/auth/admin";
 import { BandejaOpiniones } from "@/components/opiniones/BandejaOpiniones";
 import { Aviso } from "@/components/cuenta/Campos";
-import { cargarOpiniones, leerFiltro, type BandejaDatos } from "./datos";
+import { cargarOpiniones, leerFiltro, leerMercadoOpiniones, type BandejaDatos } from "./datos";
 
 export const dynamic = "force-dynamic";
 
@@ -16,19 +16,23 @@ type Props = { searchParams: Promise<Record<string, string | string[] | undefine
 export default async function OpinionesAdminPage({ searchParams }: Props) {
   const sp = await searchParams;
   const filtro = leerFiltro(sp.ver);
+  const mercado = leerMercadoOpiniones(sp.mercado);
 
   // Igual que /dashboard: con NODE_ENV como literal, esta rama y el import del ejemplo no
   // existen en el build de producción.
   if (process.env.NODE_ENV === "development" && (sp.demo === "1" || sp.demo === "vacio")) {
     const { bandejaDeEjemplo } = await import("./ejemplo");
-    return <BandejaOpiniones inicial={bandejaDeEjemplo(filtro, sp.demo === "vacio")} filtro={filtro} demo={sp.demo} ahora={Date.now()} />;
+    return <BandejaOpiniones inicial={bandejaDeEjemplo(filtro, sp.demo === "vacio", mercado)} filtro={filtro} demo={sp.demo} ahora={Date.now()} />;
   }
 
-  await requireAdmin(filtro === "nuevas" ? "/dashboard/opiniones" : `/dashboard/opiniones?ver=${filtro}`);
+  const vuelta = new URLSearchParams();
+  if (filtro !== "nuevas") vuelta.set("ver", filtro);
+  if (mercado) vuelta.set("mercado", mercado);
+  await requireAdmin(`/dashboard/opiniones${vuelta.size ? `?${vuelta}` : ""}`);
 
   let datos: BandejaDatos;
   try {
-    datos = await cargarOpiniones(filtro);
+    datos = await cargarOpiniones(filtro, mercado);
   } catch (e) {
     console.error("[dashboard/opiniones] no pude cargar", e);
     return (

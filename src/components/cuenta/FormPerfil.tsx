@@ -4,15 +4,7 @@ import { useActionState, useOptimistic } from "react";
 import { guardarPerfil } from "@/lib/auth/acciones";
 import { ESTADO_INICIAL, type EstadoForm } from "@/lib/auth/estado";
 import { Aviso, BotonEnviar, Campo, Casilla } from "@/components/cuenta/Campos";
-
-const OPCIONES: { valor: string; texto: string }[] = [
-  { valor: "empleado", texto: "Trabajo en relación de dependencia" },
-  { valor: "empleador", texto: "Tengo empleados a cargo" },
-  { valor: "monotributista", texto: "Soy monotributista" },
-  { valor: "contador", texto: "Soy contador o contadora" },
-  { valor: "estudio", texto: "Trabajo en un estudio" },
-  { valor: "otro", texto: "Otra cosa" },
-];
+import { useTextos } from "@/components/cuenta/SitioCuenta";
 
 export function FormPerfil({
   nombre,
@@ -23,6 +15,8 @@ export function FormPerfil({
   perfil: string | null;
   novedades: boolean;
 }) {
+  const textos = useTextos();
+  const t = textos.perfil;
   const [real, accion] = useActionState(guardarPerfil, ESTADO_INICIAL);
   // Se da por guardado al tocar el botón; si el servidor dice que no, el estado real (con el error
   // y los valores que mandó) reemplaza al adelantado cuando termina la acción.
@@ -30,7 +24,7 @@ export function FormPerfil({
     real,
     (_: EstadoForm, valores: NonNullable<EstadoForm["valores"]>): EstadoForm => ({
       estado: "ok",
-      mensaje: "Listo, guardamos tus datos.",
+      mensaje: textos.acciones.perfilOk,
       valores,
     }),
   );
@@ -52,20 +46,20 @@ export function FormPerfil({
   return (
     <form action={enviar} className="space-y-6">
       <Campo
-        etiqueta="¿Cómo te llamamos?"
+        etiqueta={t.nombre}
         name="nombre"
         type="text"
         autoComplete="given-name"
         maxLength={80}
-        placeholder="Tu nombre"
+        placeholder={t.nombrePista}
         defaultValue={nombreActual}
-        ayuda="Opcional. Lo usamos sólo para saludarte."
+        ayuda={t.nombreAyuda}
       />
       <fieldset>
-        <legend className="text-sm font-medium text-zinc-800">¿Para qué usás CalculAR?</legend>
-        <p className="mt-1 text-[13px] leading-relaxed text-zinc-500">Nos ayuda a priorizar las calculadoras que más te sirven.</p>
+        <legend className="text-sm font-medium text-zinc-800">{t.paraQue}</legend>
+        <p className="mt-1 text-[13px] leading-relaxed text-zinc-500">{t.paraQueAyuda}</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          {OPCIONES.map((o) => (
+          {t.opciones.map((o) => (
             <label key={o.valor} className="cursor-pointer">
               <input type="radio" name="perfil" value={o.valor} defaultChecked={perfilActual === o.valor} className="peer sr-only" />
               <span className="inline-flex min-h-11 items-center rounded-full border border-zinc-200 bg-white px-4 text-sm text-zinc-700 transition-[background-color,border-color,color,transform] duration-200 ease-[var(--ease-snappy)] hover:border-zinc-300 active:scale-[0.98] peer-checked:border-emerald-600/40 peer-checked:bg-emerald-50 peer-checked:font-medium peer-checked:text-emerald-900 peer-focus-visible:shadow-[var(--ca-ring)]">
@@ -76,11 +70,11 @@ export function FormPerfil({
         </div>
       </fieldset>
       <Casilla name="novedades" defaultChecked={novedadesActual}>
-        Quiero recibir por mail las novedades de CalculAR.
+        {t.novedades}
       </Casilla>
       <div className="flex flex-wrap items-center gap-3">
-        <BotonEnviar variante="secundario" pendiente="Guardando…" optimista>
-          Guardar cambios
+        <BotonEnviar variante="secundario" pendiente={t.guardando} optimista>
+          {t.guardar}
         </BotonEnviar>
         {estado.estado === "ok" ? (
           <p role="status" className="animate-[ca-col_0.3s_var(--ease-fluid)_backwards] text-sm font-medium text-emerald-700">

@@ -4,11 +4,11 @@ import { cookies } from "next/headers";
 import { clienteServidor } from "@/lib/supabase/servidor";
 import { servicio } from "@/lib/supabase/servicio";
 import { registrarEvento } from "@/lib/rastreo-servidor";
-import { GOOGLE_ACTIVO } from "@/lib/funciones";
+import { GOOGLE_ACTIVO, GOOGLE_INTL_ACTIVO } from "@/lib/funciones";
 import { esAdminEmail } from "@/lib/auth/admin";
 import { COOKIE_GOOGLE, OPCIONES_GOOGLE, ponerPista } from "@/lib/auth/cookies";
-import { destinoSeguro } from "@/lib/auth/destino";
-import { limitePorIp, origenDelSitio } from "@/lib/auth/pedido";
+import { destinoSeguro, inicioTrasEntrar } from "@/lib/auth/destino";
+import { limitePorIp, origenAlta, origenDelSitio, sitioDelPedido } from "@/lib/auth/pedido";
 import { asegurarPerfil, verificadoPrevio, vincularCompras } from "@/lib/auth/perfil";
 
 export const dynamic = "force-dynamic";
@@ -20,17 +20,19 @@ const ir = (req: NextRequest, ruta: string) => {
   return r;
 };
 
-function leerIda(crudo: string | undefined): { state: string; nonce: string; next: string } | null {
+function leerIda(crudo: string | undefined): { state: string; nonce: string; next: string; desde: string } | null {
   try {
     const v = JSON.parse(crudo ?? "");
     if (typeof v?.state === "string" && typeof v?.nonce === "string") {
-      return { state: v.state, nonce: v.nonce, next: typeof v.next === "string" ? v.next : "" };
+      const texto = (x: unknown) => (typeof x === "string" ? x : "");
+      return { state: v.state, nonce: v.nonce, next: texto(v.next), desde: texto(v.desde) };
     }
   } catch {}
   return null;
 }
 
 async function canjearCodigo(code: string): Promise<{ id_token: string; access_token: string } | null> {
+  const redirectUri = `${await origenDelSitio()}/auth/google/vuelta`;
   const r = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -38,7 +40,7 @@ async function canjearCodigo(code: string): Promise<{ id_token: string; access_t
       code,
       client_id: process.env.GOOGLE_OAUTH_CLIENT_ID ?? "",
       client_secret: process.env.GOOGLE_OAUTH_CLIENT_SECRET ?? "",
-      redirect_uri: `${await origenDelSitio()}/auth/google/vuelta`,
+      redirect_uri: redirectUri,
       grant_type: "authorization_code",
     }),
     cache: "no-store",
@@ -46,6 +48,7 @@ async function canjearCodigo(code: string): Promise<{ id_token: string; access_t
   const j = await r.json().catch(() => null);
   if (!r.ok || typeof j?.id_token !== "string") {
     console.error("[auth] google token:", r.status, j?.error, j?.error_description);
+    if (j?.error === "redirect_uri_mismatch") console.error(`[auth] falta registrar ${redirectUri} como redirect URI del cliente OAuth en Google Cloud`);
     return null;
   }
   return { id_token: j.id_token, access_token: String(j.access_token ?? "") };
@@ -53,6 +56,7 @@ async function canjearCodigo(code: string): Promise<{ id_token: string; access_t
 
 export async function GET(req: NextRequest) {
   if (!GOOGLE_ACTIVO || !process.env.GOOGLE_OAUTH_CLIENT_ID) return new NextResponse(null, { status: 404 });
+  if (!GOOGLE_INTL_ACTIVO && (await sitioDelPedido()) === "intl") return ir(req, "/login?error=google-pendiente");
   const sp = req.nextUrl.searchParams;
   const code = sp.get("code");
   // Cancelar en la pantalla de Google vuelve con ?error=access_denied: no es una falla, es volver.
@@ -110,14 +114,15 @@ export async function GET(req: NextRequest) {
   }
 
   // El orden importa: ca_vincular_compras exige el perfil ya verificado.
-  const verificado = await asegurarPerfil(userId, email, true);
+  const sitio = await sitioDelPedido();
+  const origen = origenAlta(sitio, ida.desde || ida.next);
+  const verificado = await asegurarPerfil(userId, email, true, origen);
   if (verificado) await vincularCompras(supabase);
   ponerPista(store);
   const nueva = Date.now() - Date.parse(usuario.created_at) < 2 * 60_000;
   after(() =>
-    registrarEvento({ tipo: nueva ? "registro" : "login", path: "/auth/google", userId, props: { via: "google" } }),
+    registrarEvento({ tipo: nueva ? "registro" : "login", path: "/auth/google", userId, props: { via: "google" }, origen }),
   );
 
-  const porDefecto = verificado && esAdminEmail(email) ? "/dashboard" : "/cuenta";
-  return ir(req, destinoSeguro(ida.next, porDefecto));
+  return ir(req, destinoSeguro(ida.next, inicioTrasEntrar(sitio, verificado && esAdminEmail(email)), sitio));
 }

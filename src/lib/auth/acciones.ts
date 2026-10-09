@@ -9,24 +9,29 @@ import { clienteServidor } from "@/lib/supabase/servidor";
 import { registrarEvento } from "@/lib/rastreo-servidor";
 import { esAdminEmail } from "@/lib/auth/admin";
 import { COOKIE_ALTA, OPCIONES_ALTA, ponerPista } from "@/lib/auth/cookies";
-import { destinoSeguro } from "@/lib/auth/destino";
+import { destinoSeguro, inicioTrasEntrar } from "@/lib/auth/destino";
 import { MAX_CLAVE, MIN_CLAVE, type EstadoForm } from "@/lib/auth/estado";
 import { mandarEnlaceEntrada, mandarMail, mandarSinCuenta, urlConfirmar } from "@/lib/auth/mails";
-import { huellaAlta, limitePorEmail, limitePorIp, normalizarEmail } from "@/lib/auth/pedido";
+import { huellaAlta, limitePorEmail, limitePorIp, normalizarEmail, origenAlta, sitioDelPedido } from "@/lib/auth/pedido";
 import { PERFILES, asegurarPerfil, perfilPorEmail, verificadoPrevio, vincularCompras } from "@/lib/auth/perfil";
+import { textosDe, type TextosCuenta } from "@/lib/cuenta/textos";
 
-const MUCHOS_INTENTOS = "Hubo muchos intentos seguidos desde acá. Esperá unos minutos y probá de nuevo.";
-const FALLA_NUESTRA = "Tuvimos un problema de nuestro lado. Probá de nuevo en unos minutos.";
-const EMAIL_MAL = "Revisá el mail: parece que le falta algo.";
+type Textos = TextosCuenta["acciones"];
+
+// El sitio sale del Host del pedido (calcular.ar o calcularya), nunca de un campo del formulario.
+async function delPedido() {
+  const sitio = await sitioDelPedido();
+  return { sitio, t: textosDe(sitio).acciones };
+}
 
 const texto = (fd: FormData, k: string) => {
   const v = fd.get(k);
   return typeof v === "string" ? v : "";
 };
 
-function errorClave(clave: string): string | undefined {
-  if (clave.length < MIN_CLAVE) return `Usá al menos ${MIN_CLAVE} caracteres.`;
-  if (new TextEncoder().encode(clave).length > MAX_CLAVE) return `Usá ${MAX_CLAVE} caracteres como máximo.`;
+function errorClave(clave: string, t: Textos): string | undefined {
+  if (clave.length < MIN_CLAVE) return t.claveCorta(MIN_CLAVE);
+  if (new TextEncoder().encode(clave).length > MAX_CLAVE) return t.claveLarga(MAX_CLAVE);
   return undefined;
 }
 
@@ -37,17 +42,19 @@ export async function registrar(_prev: EstadoForm, fd: FormData): Promise<Estado
   const enviado: EstadoForm = { estado: "enviado", email: crudo };
   if (texto(fd, "sitio")) return enviado;
 
+  const { sitio, t } = await delPedido();
   const email = normalizarEmail(crudo);
   const clave = texto(fd, "clave");
-  const next = destinoSeguro(texto(fd, "next"), "/cuenta");
+  const next = destinoSeguro(texto(fd, "next"), "/cuenta", sitio);
+  const origen = origenAlta(sitio, texto(fd, "desde") || texto(fd, "next"));
   const errores: EstadoForm["errores"] = {};
-  if (!email) errores.email = EMAIL_MAL;
-  const eClave = errorClave(clave);
+  if (!email) errores.email = t.emailMal;
+  const eClave = errorClave(clave, t);
   if (eClave) errores.clave = eClave;
-  if (fd.get("terminos") !== "si") errores.terminos = "Para crear la cuenta, aceptá los términos y la política de privacidad.";
+  if (fd.get("terminos") !== "si") errores.terminos = t.terminos;
   if (!email || Object.keys(errores).length) return { estado: "error", errores, email: crudo };
 
-  if (!(await limitePorIp("registro"))) return { estado: "error", mensaje: MUCHOS_INTENTOS, email: crudo };
+  if (!(await limitePorIp("registro"))) return { estado: "error", mensaje: t.muchosIntentos, email: crudo };
   if (!(await limitePorEmail("registro", email))) return enviado;
 
   // Si el mail ya tiene cuenta, la pantalla dice lo mismo (anti-enumeración) y al buzón le llega
@@ -67,23 +74,19 @@ export async function registrar(_prev: EstadoForm, fd: FormData): Promise<Estado
 
   if (error) {
     if (error.code === "weak_password") {
-      return {
-        estado: "error",
-        errores: { clave: "Esa clave es fácil de adivinar. Probá con una más larga, por ejemplo tres palabras juntas." },
-        email: crudo,
-      };
+      return { estado: "error", errores: { clave: t.claveDebil }, email: crudo };
     }
     if (error.code === "email_exists" || error.code === "user_already_exists") {
       const r = await mandarEnlaceEntrada(email, "ya-tenias", next);
-      if (r.userId) await asegurarPerfil(r.userId, email, false);
+      if (r.userId) await asegurarPerfil(r.userId, email, false, origen);
       return enviado;
     }
     console.error("[auth] generateLink signup:", error.code ?? error.status, error.message);
-    return { estado: "error", mensaje: FALLA_NUESTRA, email: crudo };
+    return { estado: "error", mensaje: t.fallaNuestra, email: crudo };
   }
 
   const usuario = data.user;
-  if (usuario) await asegurarPerfil(usuario.id, email, false);
+  if (usuario) await asegurarPerfil(usuario.id, email, false, origen);
 
   // generateLink('signup') con un usuario ya creado y sin confirmar no le cambia la clave: si el
   // alta es vieja, la clave que acaba de escribir no es la que quedó, y se lo decimos por mail.
@@ -95,7 +98,7 @@ export async function registrar(_prev: EstadoForm, fd: FormData): Promise<Estado
 
   const url = await urlConfirmar(data.properties.hashed_token, "signup", next);
   if (!(await mandarMail("alta", email, url))) {
-    return { estado: "error", mensaje: "No pudimos mandarte el mail de confirmación. Probá de nuevo en unos minutos.", email: crudo };
+    return { estado: "error", mensaje: t.altaSinMail, email: crudo };
   }
   // Sólo este navegador puede confirmar el alta conservando la clave que se escribió acá.
   (await cookies()).set(COOKIE_ALTA, huellaAlta(data.properties.hashed_token), OPCIONES_ALTA);
@@ -109,13 +112,14 @@ export async function ingresarConClave(_prev: EstadoForm, fd: FormData): Promise
   const email = normalizarEmail(crudo);
   const clave = texto(fd, "clave");
   const nextCrudo = texto(fd, "next");
+  const { sitio, t } = await delPedido();
   const errores: EstadoForm["errores"] = {};
-  if (!email) errores.email = EMAIL_MAL;
-  if (!clave) errores.clave = "Escribí tu clave.";
+  if (!email) errores.email = t.emailMal;
+  if (!clave) errores.clave = t.escribiClave;
   if (!email || Object.keys(errores).length) return { estado: "error", errores, email: crudo };
 
   if (!(await limitePorIp("clave")) || !(await limitePorEmail("clave", email))) {
-    return { estado: "error", mensaje: MUCHOS_INTENTOS, email: crudo };
+    return { estado: "error", mensaje: t.muchosIntentos, email: crudo };
   }
 
   let supabase;
@@ -123,7 +127,7 @@ export async function ingresarConClave(_prev: EstadoForm, fd: FormData): Promise
     supabase = await clienteServidor();
   } catch (e) {
     console.error("[auth] ingresarConClave", e);
-    return { estado: "error", mensaje: FALLA_NUESTRA, email: crudo };
+    return { estado: "error", mensaje: t.fallaNuestra, email: crudo };
   }
   const { data, error } = await supabase.auth.signInWithPassword({ email, password: clave });
 
@@ -131,41 +135,32 @@ export async function ingresarConClave(_prev: EstadoForm, fd: FormData): Promise
     // Supabase recién dice «sin confirmar» después de validar la clave: no revela que el mail
     // existe a quien no la sabe.
     if (error?.code === "email_not_confirmed") {
-      return {
-        estado: "error",
-        sinConfirmar: true,
-        mensaje: "Tu cuenta todavía no está confirmada. Te mandamos el enlace de nuevo si querés.",
-        email: crudo,
-      };
+      return { estado: "error", sinConfirmar: true, mensaje: t.sinConfirmar, email: crudo };
     }
-    if (error?.code === "over_request_rate_limit") return { estado: "error", mensaje: MUCHOS_INTENTOS, email: crudo };
+    if (error?.code === "over_request_rate_limit") return { estado: "error", mensaje: t.muchosIntentos, email: crudo };
     if (error && error.code !== "invalid_credentials") console.error("[auth] signInWithPassword:", error.code ?? error.status, error.message);
-    return {
-      estado: "error",
-      mensaje: "El mail o la clave no coinciden. Revisalos, o entrá con un enlace al mail.",
-      email: crudo,
-    };
+    return { estado: "error", mensaje: t.noCoinciden, email: crudo };
   }
 
   const userId = data.user.id;
-  await asegurarPerfil(userId, email, false);
+  const origen = origenAlta(sitio, texto(fd, "desde") || nextCrudo);
+  await asegurarPerfil(userId, email, false, origen);
   const verificado = await verificadoPrevio(userId, email);
   if (verificado) await vincularCompras(supabase);
   ponerPista(await cookies());
-  after(() => registrarEvento({ tipo: "login", path: "/login", userId, props: { via: "clave" } }));
+  after(() => registrarEvento({ tipo: "login", path: "/login", userId, props: { via: "clave" }, origen }));
 
-  const porDefecto = verificado && esAdminEmail(email) ? "/dashboard" : "/cuenta";
-  redirect(destinoSeguro(nextCrudo, porDefecto));
+  redirect(destinoSeguro(nextCrudo, inicioTrasEntrar(sitio, verificado && esAdminEmail(email)), sitio));
 }
 
 // ─── Enlace al mail (entrar sin clave, o confirmar una cuenta pendiente) ─────
 
-async function enlaceAlMail(email: string, next: string, tipoMail: "entrar" | "confirmar"): Promise<EstadoForm | null> {
+async function enlaceAlMail(email: string, next: string, tipoMail: "entrar" | "confirmar", t: Textos): Promise<EstadoForm | null> {
   const perfil = await perfilPorEmail(email);
-  if (perfil.error) return { estado: "error", mensaje: FALLA_NUESTRA, email };
+  if (perfil.error) return { estado: "error", mensaje: t.fallaNuestra, email };
   if (perfil.existe) {
     const r = await mandarEnlaceEntrada(email, tipoMail, next);
-    if (!r.ok) return { estado: "error", mensaje: FALLA_NUESTRA, email };
+    if (!r.ok) return { estado: "error", mensaje: t.fallaNuestra, email };
   } else {
     await mandarSinCuenta(email);
   }
@@ -175,15 +170,16 @@ async function enlaceAlMail(email: string, next: string, tipoMail: "entrar" | "c
 export async function pedirEnlace(_prev: EstadoForm, fd: FormData): Promise<EstadoForm> {
   const crudo = texto(fd, "email").trim();
   const email = normalizarEmail(crudo);
-  if (!email) return { estado: "error", errores: { email: EMAIL_MAL }, email: crudo };
-  const next = destinoSeguro(texto(fd, "next"), "/cuenta");
+  const { sitio, t } = await delPedido();
+  if (!email) return { estado: "error", errores: { email: t.emailMal }, email: crudo };
+  const next = destinoSeguro(texto(fd, "next"), "/cuenta", sitio);
   const tipoMail = texto(fd, "motivo") === "confirmar" ? "confirmar" : "entrar";
 
-  if (!(await limitePorIp("enlace"))) return { estado: "error", mensaje: MUCHOS_INTENTOS, email: crudo };
+  if (!(await limitePorIp("enlace"))) return { estado: "error", mensaje: t.muchosIntentos, email: crudo };
   const enviado: EstadoForm = { estado: "enviado", email: crudo };
   if (!(await limitePorEmail("enlace", email))) return enviado;
 
-  return (await enlaceAlMail(email, next, tipoMail)) ?? enviado;
+  return (await enlaceAlMail(email, next, tipoMail, t)) ?? enviado;
 }
 
 export async function reenviarConfirmacion(_prev: EstadoForm, _fd: FormData): Promise<EstadoForm> {
@@ -194,7 +190,7 @@ export async function reenviarConfirmacion(_prev: EstadoForm, _fd: FormData): Pr
   if (!email) redirect("/login?next=%2Fcuenta");
   if (!(await limitePorEmail("enlace", email))) return { estado: "enviado", email };
   const r = await mandarEnlaceEntrada(email, "confirmar", "/cuenta");
-  return r.ok ? { estado: "enviado", email } : { estado: "error", mensaje: FALLA_NUESTRA };
+  return r.ok ? { estado: "enviado", email } : { estado: "error", mensaje: (await delPedido()).t.fallaNuestra };
 }
 
 // ─── Recuperar la clave ──────────────────────────────────────────────────────
@@ -202,9 +198,10 @@ export async function reenviarConfirmacion(_prev: EstadoForm, _fd: FormData): Pr
 export async function recuperar(_prev: EstadoForm, fd: FormData): Promise<EstadoForm> {
   const crudo = texto(fd, "email").trim();
   const email = normalizarEmail(crudo);
-  if (!email) return { estado: "error", errores: { email: EMAIL_MAL }, email: crudo };
+  const { t } = await delPedido();
+  if (!email) return { estado: "error", errores: { email: t.emailMal }, email: crudo };
 
-  if (!(await limitePorIp("recuperar"))) return { estado: "error", mensaje: MUCHOS_INTENTOS, email: crudo };
+  if (!(await limitePorIp("recuperar"))) return { estado: "error", mensaje: t.muchosIntentos, email: crudo };
   const enviado: EstadoForm = { estado: "enviado", email: crudo };
   if (!(await limitePorEmail("recuperar", email))) return enviado;
 
@@ -215,10 +212,10 @@ export async function recuperar(_prev: EstadoForm, fd: FormData): Promise<Estado
       return enviado;
     }
     console.error("[auth] generateLink recovery:", error.code ?? error.status, error.message);
-    return { estado: "error", mensaje: FALLA_NUESTRA, email: crudo };
+    return { estado: "error", mensaje: t.fallaNuestra, email: crudo };
   }
   const url = await urlConfirmar(data.properties.hashed_token, "recovery", "/cuenta");
-  if (!(await mandarMail("recuperar", email, url))) return { estado: "error", mensaje: FALLA_NUESTRA, email: crudo };
+  if (!(await mandarMail("recuperar", email, url))) return { estado: "error", mensaje: t.fallaNuestra, email: crudo };
   return enviado;
 }
 
@@ -227,10 +224,11 @@ export async function recuperar(_prev: EstadoForm, fd: FormData): Promise<Estado
 export async function cambiarClave(_prev: EstadoForm, fd: FormData): Promise<EstadoForm> {
   const clave = texto(fd, "clave");
   const clave2 = texto(fd, "clave2");
+  const { t } = await delPedido();
   const errores: EstadoForm["errores"] = {};
-  const eClave = errorClave(clave);
+  const eClave = errorClave(clave, t);
   if (eClave) errores.clave = eClave;
-  else if (clave !== clave2) errores.clave2 = "Las dos claves no coinciden.";
+  else if (clave !== clave2) errores.clave2 = t.noCoincidenClaves;
   if (Object.keys(errores).length) return { estado: "error", errores };
 
   const supabase = await clienteServidor();
@@ -239,15 +237,11 @@ export async function cambiarClave(_prev: EstadoForm, fd: FormData): Promise<Est
 
   const { error } = await supabase.auth.updateUser({ password: clave });
   if (error) {
-    if (error.code === "same_password") return { estado: "error", errores: { clave: "Es la misma clave que ya tenías. Elegí otra." } };
-    if (error.code === "weak_password") {
-      return { estado: "error", errores: { clave: "Esa clave es fácil de adivinar. Probá con una más larga, por ejemplo tres palabras juntas." } };
-    }
-    if (error.code === "reauthentication_needed") {
-      return { estado: "error", mensaje: "Por seguridad, para cambiarla pedí un enlace desde «Olvidé mi clave»." };
-    }
+    if (error.code === "same_password") return { estado: "error", errores: { clave: t.mismaClave } };
+    if (error.code === "weak_password") return { estado: "error", errores: { clave: t.claveDebil } };
+    if (error.code === "reauthentication_needed") return { estado: "error", mensaje: t.reautenticar };
     console.error("[auth] updateUser password:", error.code ?? error.status, error.message);
-    return { estado: "error", mensaje: FALLA_NUESTRA };
+    return { estado: "error", mensaje: t.fallaNuestra };
   }
   redirect("/cuenta?aviso=clave-nueva");
 }
@@ -258,6 +252,7 @@ export async function guardarPerfil(_prev: EstadoForm, fd: FormData): Promise<Es
   const usuario = auth.user;
   if (!usuario?.email) redirect("/login?next=%2Fcuenta");
   const email = usuario.email.toLowerCase();
+  const { t } = await delPedido();
 
   const nombre = texto(fd, "nombre").replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, 80);
   const perfilCrudo = texto(fd, "perfil");
@@ -278,8 +273,8 @@ export async function guardarPerfil(_prev: EstadoForm, fd: FormData): Promise<Es
   }
   if (r.error || !r.data?.length) {
     if (r.error) console.error("[auth] guardarPerfil:", r.error.code, r.error.message);
-    return { estado: "error", mensaje: "No pudimos guardar los cambios. Probá de nuevo en unos minutos.", valores };
+    return { estado: "error", mensaje: t.perfilError, valores };
   }
   revalidatePath("/cuenta");
-  return { estado: "ok", mensaje: "Listo, guardamos tus datos.", valores };
+  return { estado: "ok", mensaje: t.perfilOk, valores };
 }

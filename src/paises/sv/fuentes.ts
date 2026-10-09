@@ -1,5 +1,5 @@
 import { esFechaISO, fechaEnZona } from "@/motor/vigencia";
-import type { Detector, FechaISO, HallazgoNorma, Http, OpcionesHttp } from "@/motor/tipos";
+import type { Detector, FechaISO, HallazgoNorma, Http, OpcionesHttp, PuntoSerie } from "@/motor/tipos";
 
 const ZONA = "America/El_Salvador";
 const URL_MTPS = "https://www.mtps.gob.sv/wp-json/wp/v2/posts?per_page=50&_fields=date,link,title,content";
@@ -95,6 +95,35 @@ export function parsearFeedMh(xml: string): HallazgoNorma[] | null {
   return hallazgos;
 }
 
+const URL_IPC = "https://estadisticas.bcr.gob.sv/serie/indice-de-precios-al-consumidor-ipc";
+const MESES_CORTOS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
+function celdas(fila: string): { texto: string; colspan: number }[] {
+  return [...fila.matchAll(/<t[hd]([^>]*)>([\s\S]*?)<\/t[hd]>/g)].map(([, atributos, contenido]) => ({
+    texto: decodificar(contenido),
+    colspan: Number(/colspan="(\d+)"/.exec(atributos)?.[1] ?? 1),
+  }));
+}
+
+// El cuadro del BCR (Livewire) trae por defecto los últimos 22 meses: una fila de años con colspan,
+// una de meses y, debajo, el índice general como primera fila de valores.
+export function parsearIpcBcr(html: string): PuntoSerie[] | null {
+  const filas = [...html.matchAll(/<tr[\s\S]*?<\/tr>/g)].map((m) => celdas(m[0]));
+  const iAnios = filas.findIndex((f) => f.length > 0 && f.every((c) => /^\d{4}$/.test(c.texto)));
+  if (iAnios < 0 || iAnios + 2 >= filas.length) return null;
+  const anios = filas[iAnios].flatMap((c) => Array<number>(c.colspan).fill(Number(c.texto)));
+  const meses = filas[iAnios + 1].map((c) => MESES_CORTOS.indexOf(c.texto) + 1);
+  const valores = filas[iAnios + 2].map((c) => Number(c.texto.replace(/,/g, "")));
+  if (anios.length !== meses.length || meses.length !== valores.length || meses.some((m) => m === 0)) return null;
+  const puntos: PuntoSerie[] = [];
+  for (let i = 0; i < meses.length; i++) {
+    const fecha = `${anios[i]}-${String(meses[i]).padStart(2, "0")}-01`;
+    if (!esFechaISO(fecha) || !Number.isFinite(valores[i]) || valores[i] <= 0) return null;
+    puntos.push({ fecha, valor: valores[i] });
+  }
+  return puntos;
+}
+
 async function textoOpcional(http: Http, url: string, opciones?: OpcionesHttp): Promise<string | null> {
   try {
     return await http.texto(url, opciones);
@@ -104,6 +133,19 @@ async function textoOpcional(http: Http, url: string, opciones?: OpcionesHttp): 
 }
 
 export const detectores: readonly Detector[] = [
+  {
+    id: "sv.bcr-ipc",
+    carril: "serie",
+    serie: "sv.ipc",
+    metodo: "html",
+    url: URL_IPC,
+    // Bandas: el IPC (dic 2009 = 100) subió como máximo 7,8 % interanual (junio 2022) y 3 % en un mes (abril 2011).
+    banda: { min: 120, max: 175, saltoRelativoMax: 0.04 },
+    async traer(http) {
+      const html = await textoOpcional(http, URL_IPC);
+      return html ? parsearIpcBcr(html) : null;
+    },
+  },
   {
     id: "sv.mtps-noticias",
     carril: "norma",

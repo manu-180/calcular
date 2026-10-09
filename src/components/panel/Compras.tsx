@@ -1,7 +1,7 @@
 "use client";
 
 import type { Compra, PanelDatos, Rango } from "@/lib/panel/tipos";
-import { PERIODO, fechaYHora, pesos } from "@/lib/panel/formato";
+import { PERIODO, fechaYHora, importe } from "@/lib/panel/formato";
 import { useAhora } from "./hooks";
 import { tituloDePagina, tituloDeProducto } from "./meta";
 import { Bandeja, Chip, Seccion, TARJETA, Vacio } from "./ui";
@@ -35,7 +35,7 @@ export function ListaCompras({ datos, compras }: { datos: PanelDatos; compras: C
               <p
                 className={`text-sm font-semibold tabular-nums ${c.estado === "aprobado" ? "text-zinc-900" : "text-zinc-500 line-through"}`}
               >
-                {pesos(c.monto)}
+                {importe(c.monto, c.moneda)}
               </p>
               <p className="mt-0.5 text-xs tabular-nums text-zinc-600">{fechaYHora(c.fecha, ahora)}</p>
             </div>
@@ -48,7 +48,9 @@ export function ListaCompras({ datos, compras }: { datos: PanelDatos; compras: C
 
 export function Compras({ datos, rango }: { datos: PanelDatos; rango: Rango }) {
   const aprobadas = datos.compras.filter((c) => c.estado === "aprobado");
-  const total = aprobadas.reduce((a, c) => a + c.monto, 0);
+  const porMoneda = new Map<string, number>();
+  for (const c of aprobadas) porMoneda.set(c.moneda, (porMoneda.get(c.moneda) ?? 0) + c.monto);
+  const total = [...porMoneda].map(([moneda, monto]) => importe(monto, moneda)).join(" y ");
   return (
     <Seccion
       id="compras"
@@ -56,7 +58,7 @@ export function Compras({ datos, rango }: { datos: PanelDatos; rango: Rango }) {
       titulo="Últimas compras"
       bajada={
         aprobadas.length
-          ? `${aprobadas.length === 1 ? "1 compra" : `${aprobadas.length} compras`} por ${pesos(total)} ${PERIODO[rango]}.`
+          ? `${aprobadas.length === 1 ? "1 compra" : `${aprobadas.length} compras`} por ${total} ${PERIODO[rango]}.`
           : undefined
       }
     >

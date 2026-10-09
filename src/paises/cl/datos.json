@@ -666,6 +666,121 @@
           }
         }
       ]
+    },
+    {
+      "id": "cl.cotizacion-empleador-pensiones",
+      "nombre": "Cotización de cargo del empleador de la reforma de pensiones (incluye el SIS)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-08-01",
+      "nota": "Desde agosto de 2026 el SIS se financia dentro de esta cotización (2,5 % va al Seguro Social Previsional, que paga el SIS y la compensación por expectativa de vida).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "hasta": "2027-07-31",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Superintendencia de Pensiones",
+            "titulo": "Cotización de cargo del empleador: gradualidad y distribución del 3,5 %",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-10906.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.cesantia-empleador",
+      "nombre": "Seguro de cesantía de cargo del empleador",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "indefinido": "Contrato indefinido",
+        "plazo-fijo": "Contrato a plazo fijo, por obra o faena",
+        "casa-particular": "Trabajador o trabajadora de casa particular"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "indefinido": 2.4,
+            "plazo-fijo": 3,
+            "casa-particular": 3
+          },
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 19.728, artículo 5",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=184979",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.indemnizacion-casa-particular",
+      "nombre": "Aporte del empleador para la indemnización a todo evento de casa particular",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Se paga durante 11 años por cada trabajador o trabajadora (Código del Trabajo, art. 163 letra b).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.11,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 163 (texto de la Ley 21.269)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "La Dirección del Trabajo lo explica en https://dt.gob.cl/portal/1628/w3-article-119845.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.accidentes-basica",
+      "nombre": "Cotización básica del seguro de accidentes del trabajo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.9,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 16.744, artículo 15 letra a",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "El ISL indica 0,93 % para empleadores de casa particular: la básica más el 0,03 % de la Ley SANNA."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.sanna",
+      "nombre": "Cotización Ley SANNA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.03,
+          "fuente": {
+            "organismo": "Superintendencia de Seguridad Social (SUSESO)",
+            "titulo": "Ley 21.010, artículo 3",
+            "url": "https://www.suseso.gob.cl/612/w3-propertyvalue-133496.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
     }
   ]
 }

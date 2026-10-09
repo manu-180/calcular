@@ -51,6 +51,37 @@ async function serieDiariaBcrp(http: Http, base: string, diasAtras: number): Pro
   return puntos.length ? puntos : null;
 }
 
+// Serie mensual del BCRP: los periodos vienen como "Ago.2026" o "Set.2026". Se piden los últimos
+// meses con rango (sin rango la API pega un aviso de PHP al final) y se devuelven los tres últimos,
+// porque la banda compara cada punto con el último guardado.
+async function serieMensualBcrp(http: Http, base: string): Promise<PuntoSerie[] | null> {
+  const hasta = new Date();
+  const desde = new Date(Date.UTC(hasta.getUTCFullYear(), hasta.getUTCMonth() - 6, 1));
+  const url = `${base}/${desde.getUTCFullYear()}-${desde.getUTCMonth() + 1}/${hasta.getUTCFullYear()}-${hasta.getUTCMonth() + 1}`;
+  let json: unknown;
+  try {
+    const texto = await http.texto(url);
+    const corte = texto.indexOf("<");
+    json = JSON.parse(corte === -1 ? texto : texto.slice(0, corte));
+  } catch {
+    return null;
+  }
+  const periodos = (json as { periods?: unknown }).periods;
+  if (!Array.isArray(periodos) || periodos.length === 0) return null;
+  const puntos: PuntoSerie[] = [];
+  for (const p of periodos as { name?: unknown; values?: unknown }[]) {
+    if (typeof p.name !== "string" || !Array.isArray(p.values)) return null;
+    const m = /^([A-Za-z]{3})\.(\d{4})$/.exec(p.name);
+    const mes = m ? MESES_BCRP[m[1]] : undefined;
+    if (!m || !mes) return null;
+    const fecha = `${m[2]}-${mes}-01`;
+    const valor = Math.round(Number(p.values[0]) * 1e6) / 1e6;
+    if (!esFechaISO(fecha)) return null;
+    if (Number.isFinite(valor)) puntos.push({ fecha, valor });
+  }
+  return puntos.length ? puntos.slice(-3) : null;
+}
+
 function aCompacta(d: Date): string {
   return d.toISOString().slice(0, 10).replaceAll("-", "");
 }
@@ -123,7 +154,18 @@ export const detectores: readonly Detector[] = [
       return serieDiariaBcrp(http, this.url, 20);
     },
   },
-  vigiaElPeruano("pe.el-peruano-rmv", ["pe.rmv"], "Remuneración Mínima Vital", /remuneraci[oó]n m[ií]nima vital/i),
+  {
+    id: "pe.ipc-bcrp",
+    carril: "serie",
+    serie: "pe.ipc",
+    metodo: "api-json",
+    url: "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN38705PM/json",
+    banda: { min: 110, max: 150, saltoRelativoMax: 0.03 },
+    traer(http) {
+      return serieMensualBcrp(http, this.url);
+    },
+  },
+  vigiaElPeruano("pe.el-peruano-rmv",["pe.rmv"], "Remuneración Mínima Vital", /remuneraci[oó]n m[ií]nima vital/i),
   vigiaElPeruano("pe.el-peruano-uit", ["pe.uit"], "Unidad Impositiva Tributaria", /valor de la unidad impositiva tributaria/i),
   vigiaElPeruano("pe.el-peruano-cuarta", ["pe.suspension-cuarta", "pe.retencion-cuarta"], "cuarta categoría", /cuarta categor[ií]a/i),
   vigiaElPeruano("pe.el-peruano-cts", ["pe.cts-por-regimen"], "Compensación por Tiempo de Servicios", /compensaci[oó]n por tiempo de servicios/i),

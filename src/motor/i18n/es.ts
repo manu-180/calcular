@@ -120,6 +120,47 @@ export const es: TextosSitio = {
     gratis: "Gratis y sin registro",
     paises: (n) => (n === 1 ? "1 país" : `${n} países`),
   },
+  shell: {
+    irAlInicio: "ir al inicio",
+    menu: { trabajo: "Sueldo y trabajo", impuestos: "Impuestos", dinero: "Dinero e índices", novedades: "Novedades", planillas: "Planillas" },
+    encabezado: {
+      principal: "Principal",
+      buscar: "Buscar",
+      buscarCalculadora: "Buscar una calculadora",
+      abrirMenu: "Abrir el menú",
+      cerrarMenu: "Cerrar el menú",
+      menu: "Menú",
+      todas: "Todas las calculadoras",
+      pieCajon: "Datos de fuentes oficiales · Hecho en Argentina",
+    },
+    buscador: {
+      dialogo: "Buscar en CalcularYa",
+      pregunta: "¿Qué quieres calcular?",
+      recientes: "Sigue donde estabas",
+      masUsado: "Lo más usado",
+      sinResultados: "No encontramos «{q}»",
+      sugerencia: "Prueba con otra palabra, como «sueldo», «vacaciones» o «IVA».",
+      verTodas: "Ver todas las calculadoras",
+      borrar: "Borrar la búsqueda",
+      cerrar: "Cerrar",
+      cerrarBuscador: "Cerrar el buscador",
+      moverte: "para moverte",
+      abrir: "para abrir",
+      desdeCualquier: "desde cualquier página",
+      resultados: "Resultados",
+      resultado: "resultado",
+      resultadosPlural: "resultados",
+    },
+    paises: { titulo: "País", cambiar: "Cambiar de país" },
+    pie: {
+      bajada: (lugar) => `Calculadoras claras para ${lugar}. Cada número sale del documento oficial que lo fija, con la fecha en que lo revisamos.`,
+      todas: "Todas las calculadoras",
+      cuenta: "Tu cuenta",
+      cuentaNota: "Es opcional. Sirve para guardar tus cálculos y tenerlos a mano.",
+      hecho: "Hecho en Argentina",
+      escrito: "Escrito y verificado por",
+    },
+  },
 };
 
 const porTrato: Record<Exclude<Trato, "tu">, (base: TextosSitio) => TextosSitio> = {
@@ -128,6 +169,15 @@ const porTrato: Record<Exclude<Trato, "tu">, (base: TextosSitio) => TextosSitio>
     footer: { ...b.footer, descargo: "Los resultados son orientativos. Para una decisión importante, confirmalos con el organismo oficial o con un profesional." },
     global: { ...b.global, elegir: "Elegí tu país" },
     noEncontrada: { ...b.noEncontrada, paises: "O elegí un país" },
+    shell: {
+      ...b.shell,
+      buscador: {
+        ...b.shell.buscador,
+        pregunta: "¿Qué querés calcular?",
+        recientes: "Seguí donde estabas",
+        sugerencia: "Probá con otra palabra, como «sueldo», «vacaciones» o «IVA».",
+      },
+    },
   }),
   usted: (b) => ({
     ...b,
@@ -139,6 +189,17 @@ const porTrato: Record<Exclude<Trato, "tu">, (base: TextosSitio) => TextosSitio>
     global: { ...b.global, elegir: "Elija su país" },
     avisoPais: { ...b.avisoPais, texto: (pais) => `Parece que está en ${pais}.` },
     noEncontrada: { ...b.noEncontrada, paises: "O elija un país" },
+    shell: {
+      ...b.shell,
+      buscador: {
+        ...b.shell.buscador,
+        pregunta: "¿Qué desea calcular?",
+        recientes: "Siga donde estaba",
+        sugerencia: "Pruebe con otra palabra, como «sueldo», «vacaciones» o «IVA».",
+        moverte: "para moverse",
+      },
+      pie: { ...b.shell.pie, cuenta: "Su cuenta", cuentaNota: "Es opcional. Sirve para guardar sus cálculos y tenerlos a mano." },
+    },
   }),
 };
 

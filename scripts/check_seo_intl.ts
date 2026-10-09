@@ -17,6 +17,8 @@
 import http from "node:http";
 import { createElement, type ComponentType, type ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { AppRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { PathnameContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
 import type { ContextoSitio } from "../src/motor/ui/contexto";
 import type { PaginaIntl } from "../src/motor/ui/metadatos";
 import type { Registro } from "../src/motor/registro";
@@ -142,6 +144,9 @@ function pruebasNegativas() {
   if (revisarTitulos("neg", "<h1>a</h1><h1>b</h1><h3>c</h3>").length < 2) falla("prueba negativa: no detectó dos h1 y un salto de nivel");
 }
 
+const nada = () => {};
+const ROUTER_QUIETO = { back: nada, forward: nada, refresh: nada, hmrRefresh: nada, push: nada, replace: nada, prefetch: nada } as unknown as NonNullable<React.ContextType<typeof AppRouterContext>>;
+
 interface Paquete {
   registro: Registro;
   sitio: typeof import("../src/motor/sitio");
@@ -154,6 +159,10 @@ interface Paquete {
     Calc: typeof import("../src/motor/ui/PaginaCalculadora");
     Fuentes: typeof import("../src/motor/ui/Fuentes");
     Legales: typeof import("../src/motor/ui/Legales");
+  };
+  shell: {
+    Encabezado: typeof import("../src/components/shell/EncabezadoIntl");
+    Pie: typeof import("../src/components/shell/PieIntl");
   };
 }
 
@@ -171,6 +180,10 @@ async function cargar(): Promise<Paquete> {
       Calc: await import("../src/motor/ui/PaginaCalculadora"),
       Fuentes: await import("../src/motor/ui/Fuentes"),
       Legales: await import("../src/motor/ui/Legales"),
+    },
+    shell: {
+      Encabezado: await import("../src/components/shell/EncabezadoIntl"),
+      Pie: await import("../src/components/shell/PieIntl"),
     },
   };
 }
@@ -237,8 +250,11 @@ async function sinServer() {
         let html = "";
         console.error = () => {};
         try {
+          // El header es el de calcular.ar (client, con useRouter y usePathname): fuera de Next
+          // necesita los contextos del App Router, con la ruta pública que ve el navegador.
+          const pagina = createElement("div", null, createElement(p.shell.Encabezado.EncabezadoIntl, { ctx }), createElement("main", null, cuerpo(p, ctx, r)), createElement(p.shell.Pie.PieIntl, { ctx }));
           html = renderToStaticMarkup(
-            createElement("div", null, createElement(p.ui.Sitio.Encabezado, { ctx }), createElement("main", null, cuerpo(p, ctx, r)), createElement(p.ui.Sitio.Pie, { ctx })),
+            createElement(AppRouterContext.Provider, { value: ROUTER_QUIETO }, createElement(PathnameContext.Provider, { value: seo.rutaIntl(m.codigo, slug ?? undefined) }, pagina)),
           );
         } catch (err) {
           falla(`${id}: no renderiza (${(err as Error).message})`);

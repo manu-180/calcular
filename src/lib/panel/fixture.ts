@@ -7,6 +7,7 @@ import type {
   Kpi,
   KpiClave,
   Lectura,
+  FilaMercado,
   PanelDatos,
   Punto,
   Rango,
@@ -14,7 +15,27 @@ import type {
 } from "@/lib/panel/tipos";
 import { deCada100, numero } from "@/lib/panel/formato";
 
-type Opciones = { ahora?: Date };
+type Opciones = { ahora?: Date; mercado?: string | null };
+
+const REPARTO_MERCADOS: [string, number, number][] = [
+  ["ar", 0.86, 1],
+  ["mx", 0.05, 0],
+  ["co", 0.03, 0],
+  ["cl", 0.02, 0],
+  ["pe", 0.015, 0],
+  ["global", 0.012, 0],
+  ["uy", 0.008, 0],
+];
+
+function mercadosDeEjemplo(visitantes: number, usos: number, ventas: number, ingresos: number): FilaMercado[] {
+  return REPARTO_MERCADOS.map(([mercado, parte, deVentas]) => ({
+    mercado,
+    visitantes: Math.round(visitantes * parte),
+    usos: mercado === "global" ? 0 : Math.round(usos * parte),
+    ventas: Math.round(ventas * deVentas),
+    ingresos: deVentas && ingresos ? [{ moneda: "ARS", monto: ingresos }] : [],
+  }));
+}
 
 const HORA = 3600 * 1000;
 const DIA = 24 * HORA;
@@ -215,6 +236,7 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
         fecha: iso(fecha),
         producto: prod.producto,
         monto: prod.precio,
+        moneda: "ARS",
         emailEnmascarado: EMAILS[compras.length % EMAILS.length],
         conCuenta: rnd() < 0.4,
         desde: desdePagina?.path ?? null,
@@ -369,6 +391,7 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
 
   return {
     rango,
+    mercado: opciones.mercado ?? null,
     desde: iso(desde),
     hasta: iso(ahora),
     generado: iso(ahora),
@@ -383,6 +406,7 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
     compras,
     cuentas,
     vivo,
+    mercados: mercadosDeEjemplo(visitantes, usos, compras.filter((c) => c.estado === "aprobado").length, compras.reduce((a, c) => a + (c.estado === "aprobado" ? c.monto : 0), 0)),
     lecturas: lecturasDeEjemplo(rango, embudos, busquedas, paginas, fuentes, dispositivos, visitantes),
     sinDatos: false,
   };
@@ -456,6 +480,7 @@ export function panelSinDatos(rango: Rango, opciones: Opciones = {}): PanelDatos
   const claves: KpiClave[] = ["visitantes", "usos", "tiempo", "interes", "checkouts", "ventas", "ingresos"];
   return {
     rango,
+    mercado: opciones.mercado ?? null,
     desde: iso(desde),
     hasta: iso(ahora),
     generado: iso(ahora),
@@ -481,6 +506,7 @@ export function panelSinDatos(rango: Rango, opciones: Opciones = {}): PanelDatos
     compras: [],
     cuentas: { total: 0, nuevas: 0, verificadas: 0, conCompras: 0, perfiles: [] },
     vivo: { ahora: 0, paginas: [] },
+    mercados: [],
     lecturas: [],
     sinDatos: true,
   };

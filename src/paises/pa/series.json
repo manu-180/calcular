@@ -1,4 +1,52 @@
 {
   "mercado": "pa",
-  "series": []
+  "series": [
+    {
+      "id": "pa.ipc",
+      "nombre": "Índice de precios al consumidor nacional urbano (IPC, base 2024 = 100)",
+      "unidad": "numero",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 100,
+      "fuente": {
+        "organismo": "INEC (Contraloría General de la República)",
+        "titulo": "Anexo 4 y cuadro 3 del IPC nacional urbano, base 2024 = 100 (avances de cifras, índice de precios)",
+        "url": "https://www.inec.gob.pa/avance/Default2.aspx?ID_CATEGORIA=2&ID_CIFRAS=10&ID_IDIOMA=1",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-08",
+        "nota": "Serie de enero 2024 a agosto 2026 leída del anexo 4 (publicado el 14/9/2026). El INEC publica cada mes hacia el día 14 del mes siguiente; la base 2024 no se enlaza con la base 2013 anterior."
+      },
+      "puntos": [["2024-01-01", 99.923805],
+["2024-02-01", 100.263588],
+["2024-03-01", 100.611079],
+["2024-04-01", 100.763877],
+["2024-05-01", 100.591401],
+["2024-06-01", 100.28109],
+["2024-07-01", 100.149783],
+["2024-08-01", 99.930697],
+["2024-09-01", 99.452715],
+["2024-10-01", 99.249045],
+["2024-11-01", 99.301368],
+["2024-12-01", 99.481552],
+["2025-01-01", 99.74],
+["2025-02-01", 100.12],
+["2025-03-01", 100.2],
+["2025-04-01", 100.04],
+["2025-05-01", 99.92],
+["2025-06-01", 99.86],
+["2025-07-01", 99.79],
+["2025-08-01", 99.790647],
+["2025-09-01", 99.749196],
+["2025-10-01", 99.730583],
+["2025-11-01", 99.749991],
+["2025-12-01", 99.849817],
+["2026-01-01", 100.069609],
+["2026-02-01", 100.137164],
+["2026-03-01", 100.990514],
+["2026-04-01", 102.095011],
+["2026-05-01", 102.417995],
+["2026-06-01", 102.120086],
+["2026-07-01", 101.80214],
+["2026-08-01", 101.988331]]
+    }
+  ]
 }

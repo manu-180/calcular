@@ -5,6 +5,7 @@ import { recuperar } from "@/lib/auth/acciones";
 import { ESTADO_INICIAL } from "@/lib/auth/estado";
 import { Aviso, BotonEnviar, Campo } from "@/components/cuenta/Campos";
 import { Enviado, useFocoEnError } from "@/components/cuenta/Enviado";
+import { useTextos } from "@/components/cuenta/SitioCuenta";
 
 export function FormRecuperar() {
   const [vuelta, setVuelta] = useState(0);
@@ -14,10 +15,11 @@ export function FormRecuperar() {
 function Formulario({ onOtro }: { onOtro: () => void }) {
   const [estado, accion] = useActionState(recuperar, ESTADO_INICIAL);
   const ref = useFocoEnError(estado);
+  const { login, recuperar: t } = useTextos();
   if (estado.estado === "enviado") {
     return (
-      <Enviado titulo="Revisá tu mail" email={estado.email} onOtro={onOtro}>
-        Tocá el enlace del mail y elegí tu clave nueva.
+      <Enviado titulo={login.revisaMail} email={estado.email} onOtro={onOtro}>
+        {t.enviado}
       </Enviado>
     );
   }
@@ -26,7 +28,7 @@ function Formulario({ onOtro }: { onOtro: () => void }) {
     <form ref={ref} action={accion} className="space-y-5" noValidate>
       {estado.mensaje ? <Aviso tono="error">{estado.mensaje}</Aviso> : null}
       <Campo
-        etiqueta="Tu mail"
+        etiqueta={login.tuMail}
         name="email"
         type="email"
         inputMode="email"
@@ -38,9 +40,9 @@ function Formulario({ onOtro }: { onOtro: () => void }) {
         placeholder="nombre@ejemplo.com"
         defaultValue={estado.email ?? ""}
         error={e.email}
-        ayuda="El mismo con el que creaste la cuenta."
+        ayuda={t.ayudaMail}
       />
-      <BotonEnviar pendiente="Mandando el enlace…">Mandame el enlace</BotonEnviar>
+      <BotonEnviar pendiente={login.mandandoEnlace}>{login.mandarEnlace}</BotonEnviar>
     </form>
   );
 }

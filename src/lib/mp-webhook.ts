@@ -186,7 +186,7 @@ function cabeceras(deps: DepsVenta) {
   };
 }
 
-async function idsConLaMarca(deps: DepsVenta, marca: string): Promise<number[]> {
+export async function idsConLaMarca(deps: DepsVenta, marca: string): Promise<number[]> {
   const filtro = `note=ilike.*${encodeURIComponent(marca)}*`;
   const res = await deps.fetch(
     `${deps.supabaseUrl}/rest/v1/revenue_events?select=id&${filtro}&order=id.asc`,
@@ -198,7 +198,7 @@ async function idsConLaMarca(deps: DepsVenta, marca: string): Promise<number[]> 
 
 /** Los pasos 1–4 de arriba, para cualquier fila de `revenue_events` que tenga que existir una sola
  *  vez por marca (la venta y, si la hay, su devolución). */
-async function asentarUnaVez(
+export async function asentarUnaVez(
   deps: DepsVenta,
   marca: string,
   fila: Record<string, unknown>,
