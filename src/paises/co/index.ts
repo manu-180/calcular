@@ -4,6 +4,7 @@ import auxilioDeTransporte from "./calculadoras/auxilio-de-transporte";
 import cesantias from "./calculadoras/cesantias";
 import horasExtras from "./calculadoras/horas-extras";
 import indemnizacionPorDespido from "./calculadoras/indemnizacion-por-despido";
+import inflacion from "./calculadoras/inflacion";
 import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
 import primaDeServicios from "./calculadoras/prima-de-servicios";
@@ -18,6 +19,7 @@ import contenidoAuxilio from "./contenido/auxilio-de-transporte";
 import contenidoCesantias from "./contenido/cesantias";
 import contenidoHorasExtras from "./contenido/horas-extras";
 import contenidoIndemnizacion from "./contenido/indemnizacion-por-despido";
+import contenidoInflacion from "./contenido/inflacion";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
 import contenidoPrima from "./contenido/prima-de-servicios";
@@ -28,6 +30,12 @@ import contenidoTrm from "./contenido/trm";
 import contenidoUvr from "./contenido/uvr";
 import contenidoUvt from "./contenido/uvt";
 import contenidoVacaciones from "./contenido/vacaciones";
+import empleadaDomestica from "./calculadoras/empleada-domestica";
+import contenidoEmpleadaDomestica from "./contenido/empleada-domestica";
+import costoDeUnEmpleado from "./calculadoras/costo-de-un-empleado";
+import contenidoCostoDeUnEmpleado from "./contenido/costo-de-un-empleado";
+import regimenSimple from "./calculadoras/regimen-simple";
+import contenidoRegimenSimple from "./contenido/regimen-simple";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -54,6 +62,10 @@ export default definirPais({
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: trm, contenido: contenidoTrm, cliente: () => import("./calculadoras/trm.cliente") },
     { definicion: uvr, contenido: contenidoUvr, cliente: () => import("./calculadoras/uvr.cliente") },
+    { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: empleadaDomestica, contenido: contenidoEmpleadaDomestica, cliente: () => import("./calculadoras/empleada-domestica.cliente") },
+    { definicion: costoDeUnEmpleado, contenido: contenidoCostoDeUnEmpleado, cliente: () => import("./calculadoras/costo-de-un-empleado.cliente") },
+    { definicion: regimenSimple, contenido: contenidoRegimenSimple, cliente: () => import("./calculadoras/regimen-simple.cliente") },
   ],
   novedades,
   detectores,

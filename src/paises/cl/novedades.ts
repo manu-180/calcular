@@ -4,6 +4,22 @@ const DIARIO_OFICIAL = "Diario Oficial de la República de Chile";
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "cl.cotizacion-empleador-agosto-2026",
+    fecha: "2026-08-01",
+    titulo: "La cotización del empleador sube a 3,5 %",
+    texto:
+      "Desde las remuneraciones de agosto de 2026 el empleador paga 3,5 % del sueldo imponible por la reforma de pensiones (Ley 21.735). Ese 3,5 % ya incluye el seguro de invalidez y sobrevivencia. Rige también para quien contrata a una trabajadora de casa particular.",
+    vigenteDesde: "2026-08-01",
+    calculadoras: ["cl.costo-empresa", "cl.trabajadora-de-casa-particular"],
+    fuente: {
+      organismo: "Superintendencia de Pensiones",
+      titulo: "Cotización de cargo del empleador: gradualidad y distribución del 3,5 %",
+      url: "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-10906.html",
+      tipo: "primaria",
+      verificadoEl: "2026-10-08",
+    },
+  },
+  {
     id: "cl.imm-mayo-2026",
     fecha: "2026-06-22",
     titulo: "El ingreso mínimo sube a $553.553",

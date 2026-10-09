@@ -56,6 +56,33 @@ export const detectores: readonly Detector[] = [
     },
   },
   {
+    id: "co.ipc-banrep",
+    carril: "serie",
+    serie: "co.ipc",
+    metodo: "api-json",
+    url: "https://suameca.banrep.gov.co/estadisticas-economicas-back/rest/estadisticaEconomicaRestService/consultaInformacionSerieXTipoDato?idSerie=15000&tipoDato=0&cantDatos=3",
+    // suameca.banrep.gov.co no manda el intermedio GeoTrust EV RSA CA G2: tlsTolerante lo completa
+    // con scripts/datos-paises/certs (AIA: http://cacerts.digicert.com/GeoTrustEVRSACAG2.crt).
+    tlsTolerante: true,
+    banda: { min: 130, max: 230, saltoRelativoMax: 0.03 },
+    async traer(http) {
+      // Es la API que usa la página pública del IPC en SUAMECA (Banco de la República, con datos
+      // del DANE). tipoDato=0 trae los niveles del índice; los otros tipos vienen vacíos o son
+      // variaciones. La fecha llega como epoch del último día del mes a medianoche de Bogotá.
+      const json = await http.json(this.url, { tlsTolerante: true, encabezados: { "Content-type": "application/json; charset=utf-8" } });
+      const serie = Array.isArray(json) ? (json[0] as { id?: unknown; data?: unknown } | undefined) : undefined;
+      if (!serie || serie.id !== 15000 || !Array.isArray(serie.data) || serie.data.length === 0) return null;
+      const puntos: PuntoSerie[] = [];
+      for (const fila of serie.data) {
+        if (!Array.isArray(fila) || typeof fila[0] !== "number" || typeof fila[1] !== "number" || !Number.isFinite(fila[1])) return null;
+        const fecha = `${new Date(fila[0]).toISOString().slice(0, 7)}-01`;
+        if (!esFechaISO(fecha)) return null;
+        puntos.push({ fecha, valor: fila[1] });
+      }
+      return puntos.sort((a, b) => (a.fecha < b.fecha ? -1 : 1));
+    },
+  },
+  {
     id: "co.funcion-publica-salario-minimo",
     carril: "norma",
     datos: ["co.smmlv", "co.auxilio-transporte", "co.auxilio-tope"],
