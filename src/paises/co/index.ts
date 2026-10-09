@@ -34,6 +34,8 @@ import empleadaDomestica from "./calculadoras/empleada-domestica";
 import contenidoEmpleadaDomestica from "./contenido/empleada-domestica";
 import costoDeUnEmpleado from "./calculadoras/costo-de-un-empleado";
 import contenidoCostoDeUnEmpleado from "./contenido/costo-de-un-empleado";
+import regimenSimple from "./calculadoras/regimen-simple";
+import contenidoRegimenSimple from "./contenido/regimen-simple";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -63,6 +65,7 @@ export default definirPais({
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: empleadaDomestica, contenido: contenidoEmpleadaDomestica, cliente: () => import("./calculadoras/empleada-domestica.cliente") },
     { definicion: costoDeUnEmpleado, contenido: contenidoCostoDeUnEmpleado, cliente: () => import("./calculadoras/costo-de-un-empleado.cliente") },
+    { definicion: regimenSimple, contenido: contenidoRegimenSimple, cliente: () => import("./calculadoras/regimen-simple.cliente") },
   ],
   novedades,
   detectores,

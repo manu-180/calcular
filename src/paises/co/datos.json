@@ -734,6 +734,170 @@
           }
         }
       ]
+    },
+    {
+      "id": "co.simple-tiendas",
+      "nombre": "Tarifa SIMPLE: tiendas pequeñas, minimercados, micromercados y peluquería",
+      "tipo": "escala",
+      "unidad": "UVT",
+      "nota": "Ingresos brutos anuales en UVT. La tarifa del tramo se aplica a todos los ingresos del año.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 6000, "tasa": 1.2 },
+            { "desde": 6000, "hasta": 15000, "tasa": 2.8 },
+            { "desde": 15000, "hasta": 30000, "tasa": 4.4 },
+            { "desde": 30000, "hasta": 100000, "tasa": 5.6 }
+          ],
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 908, numeral 1",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.simple-comercio",
+      "nombre": "Tarifa SIMPLE: comercio, servicios técnicos, industria y demás actividades",
+      "tipo": "escala",
+      "unidad": "UVT",
+      "nota": "Ingresos brutos anuales en UVT. La tarifa del tramo se aplica a todos los ingresos del año.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 6000, "tasa": 1.6 },
+            { "desde": 6000, "hasta": 15000, "tasa": 2 },
+            { "desde": 15000, "hasta": 30000, "tasa": 3.5 },
+            { "desde": 30000, "hasta": 100000, "tasa": 4.5 }
+          ],
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 908, numeral 2",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.simple-comidas-transporte",
+      "nombre": "Tarifa SIMPLE: expendio de comidas y bebidas y transporte",
+      "tipo": "escala",
+      "unidad": "UVT",
+      "nota": "Ingresos brutos anuales en UVT. La tarifa del tramo se aplica a todos los ingresos del año.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 6000, "tasa": 3.1 },
+            { "desde": 6000, "hasta": 15000, "tasa": 3.4 },
+            { "desde": 15000, "hasta": 30000, "tasa": 4 },
+            { "desde": 30000, "hasta": 100000, "tasa": 4.5 }
+          ],
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 908, numeral 3",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.simple-profesiones",
+      "nombre": "Tarifa SIMPLE: servicios profesionales, de consultoría y científicos",
+      "tipo": "escala",
+      "unidad": "UVT",
+      "nota": "Ingresos brutos anuales en UVT. La tarifa del tramo se aplica a todos los ingresos del año.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-12-12",
+          "valor": [
+            { "desde": 0, "hasta": 6000, "tasa": 5.9 },
+            { "desde": 6000, "hasta": 15000, "tasa": 7.3 },
+            { "desde": 15000, "hasta": 30000, "tasa": 12 },
+            { "desde": 30000, "hasta": 100000, "tasa": 14.5 }
+          ],
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 908, numeral de profesiones liberales revivido por la Sentencia C-540 de 2023",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.simple-reciclaje",
+      "nombre": "Tarifa SIMPLE para las actividades CIIU 4665, 3830 y 3811",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 1.62,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 908, numeral 6",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.simple-impoconsumo",
+      "nombre": "Impuesto al consumo que se suma a la tarifa SIMPLE en expendio de comidas y bebidas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 908, parágrafo 1",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.simple-limite",
+      "nombre": "Ingresos brutos máximos para estar en el SIMPLE",
+      "tipo": "numero",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 905, numeral 2",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
     }
   ]
 }
