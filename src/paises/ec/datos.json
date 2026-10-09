@@ -608,6 +608,131 @@
           }
         }
       ]
+    },
+    {
+      "id": "ec.aporte-patronal-iess",
+      "nombre": "Aporte patronal al IESS (sector privado, relación de dependencia)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 11.15,
+          "fuente": {
+            "organismo": "Instituto Ecuatoriano de Seguridad Social (IESS)",
+            "titulo": "Tasas de aportación: trabajadores del sector privado bajo relación de dependencia (total patronal 11,15)",
+            "url": "https://www.iess.gob.ec/documents/13718/54965/Tasasdeaportacion.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "Desglose patronal: IVM 3,10; salud 5,71; riesgos del trabajo 0,55; cesantía 1,00; Seguro Social Campesino 0,35; gastos de administración 0,44."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.rimpe-negocios-populares",
+      "nombre": "RIMPE negocios populares: cuota anual de impuesto a la renta por ingresos brutos",
+      "tipo": "escala",
+      "unidad": "USD",
+      "nota": "La cuota incluye el IVA: los negocios populares no declaran IVA.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2500,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 2500.01,
+              "hasta": 5000,
+              "tasa": 0,
+              "cuotaFija": 5
+            },
+            {
+              "desde": 5000.01,
+              "hasta": 10000,
+              "tasa": 0,
+              "cuotaFija": 15
+            },
+            {
+              "desde": 10000.01,
+              "hasta": 15000,
+              "tasa": 0,
+              "cuotaFija": 35
+            },
+            {
+              "desde": 15000.01,
+              "hasta": 20000,
+              "tasa": 0,
+              "cuotaFija": 60
+            }
+          ],
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Régimen Simplificado para Emprendedores y Negocios Populares (RIMPE): tabla progresiva de negocios populares, periodo fiscal 2024 en adelante",
+            "url": "https://www.sri.gob.ec/rimpe",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.rimpe-emprendedores",
+      "nombre": "RIMPE emprendedores: tabla de impuesto a la renta por ingresos brutos",
+      "tipo": "escala",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 20000,
+              "hasta": 50000,
+              "tasa": 1,
+              "cuotaFija": 60
+            },
+            {
+              "desde": 50000,
+              "hasta": 75000,
+              "tasa": 1.25,
+              "cuotaFija": 360
+            },
+            {
+              "desde": 75000,
+              "hasta": 100000,
+              "tasa": 1.5,
+              "cuotaFija": 672.5
+            },
+            {
+              "desde": 100000,
+              "hasta": 200000,
+              "tasa": 1.75,
+              "cuotaFija": 1047.5
+            },
+            {
+              "desde": 200000,
+              "hasta": 300000,
+              "tasa": 2,
+              "cuotaFija": 2797.52
+            }
+          ],
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Régimen Simplificado para Emprendedores y Negocios Populares (RIMPE): tabla de emprendedores",
+            "url": "https://www.sri.gob.ec/rimpe",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "La cuota fija del último tramo es 2.797,52 tal como la publica el SRI (la suma de los tramos anteriores da 2.797,50)."
+          }
+        }
+      ]
     }
   ]
 }

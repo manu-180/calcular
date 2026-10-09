@@ -1,6 +1,7 @@
 import { cubre, esFechaISO, fechaEnZona, sumarDias } from "@/motor/vigencia";
 import type { Detector, FechaISO, HallazgoNorma, Http, OpcionesHttp, PuntoSerie } from "@/motor/tipos";
 import datos from "./datos.json";
+import series from "./series.json";
 
 const ZONA = "America/Montevideo";
 const ARCHIVOS_BCU = "https://www.bcu.gub.uy/_layouts/15/BCU.Cotizaciones/handler/FileHandler.ashx";
@@ -155,6 +156,66 @@ const VIGILADOS_BPS = [
   { id: "uy.tope-aportes", nombre: "tope C de aportación (Ley 16.713)", etiqueta: /Topes Art\. 7. y 8. \(Ley 16713\) - C \(1\)/ },
 ];
 
+const MESES_GUB = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "setiembre", "octubre", "noviembre", "diciembre"];
+const URL_PUBLICACIONES_INE = "https://www.gub.uy/instituto-nacional-estadistica/comunicacion/publicaciones";
+
+function puntosIpc(): readonly (readonly [string, number])[] {
+  return (series.series.find((s) => s.id === "uy.ipc")?.puntos ?? []).map(([f, v]) => [String(f), Number(v)] as const);
+}
+
+function sumarMeses(mes: FechaISO, n: number): FechaISO {
+  const total = Number(mes.slice(0, 4)) * 12 + Number(mes.slice(5, 7)) - 1 + n;
+  return `${Math.floor(total / 12)}-${String((total % 12) + 1).padStart(2, "0")}-01` as FechaISO;
+}
+
+function numeroComa(texto: string): number {
+  return Number(texto.replace(/\./g, "").replace(",", "."));
+}
+
+// El cuadro 1 del informe trae el índice del mismo mes del año anterior y el del mes del informe,
+// con dos decimales. El primero se compara contra la serie cargada para confirmar que es el cuadro
+// y el mes correctos antes de aceptar el segundo.
+export function parsearInformeIpcIne(html: string): { anterior: number; actual: number } | null {
+  const texto = html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ");
+  const m = /Cuadro 1\.[^]{0,200}?Indice (\d{2,3},\d{2}) (\d{2,3},\d{2})/.exec(texto);
+  return m ? { anterior: numeroComa(m[1]), actual: numeroComa(m[2]) } : null;
+}
+
+// Los informes HTML del INE no tienen un nombre de archivo fijo (IPC Setiembre 2026.html,
+// IN-ECO-IPC-2026-M-08-v1.0.html, PC Mayo 2026.html): el enlace se toma de la ficha de la publicación
+// en gub.uy, cuya dirección sí sigue un patrón. www5.ine.gub.uy no manda el intermedio de Sectigo DV R36
+// (está en scripts/datos-paises/certs), de ahí tlsTolerante. La planilla XLSX tiene más decimales, pero el Http del
+// cron solo lee texto.
+async function ipcDelMes(http: Http, mes: FechaISO): Promise<number | null> {
+  const nombre = `${MESES_GUB[Number(mes.slice(5, 7)) - 1]}-${mes.slice(0, 4)}`;
+  const ficha = await textoOpcional(http, `${URL_PUBLICACIONES_INE}/indice-precios-del-consumo-ipc-${nombre}`);
+  const enlace = ficha ? /href="(https:\/\/www5\.ine\.gub\.uy\/documents\/[^"]+\/IPC\/[^"]+\.html)"/.exec(ficha)?.[1] : null;
+  if (!enlace) return null;
+  const html = await textoOpcional(http, encodeURI(decodeURI(enlace)), { tlsTolerante: true });
+  const cuadro = html ? parsearInformeIpcIne(html) : null;
+  if (!cuadro) return null;
+  const anioAntes = puntosIpc().find(([f]) => f === sumarMeses(mes, -12))?.[1];
+  if (anioAntes === undefined || Math.abs(anioAntes - cuadro.anterior) > 0.006) return null;
+  return cuadro.actual;
+}
+
+async function traerIpc(http: Http): Promise<PuntoSerie[] | null> {
+  const puntos = puntosIpc();
+  const ultimo = puntos[puntos.length - 1]?.[0] as FechaISO | undefined;
+  if (!ultimo) return null;
+  const tope = `${hoy().slice(0, 7)}-01` as FechaISO;
+  const nuevos: PuntoSerie[] = [];
+  for (let mes = sumarMeses(ultimo, 1); mes < tope; mes = sumarMeses(mes, 1)) {
+    const valor = await ipcDelMes(http, mes);
+    if (valor === null) break;
+    nuevos.push({ fecha: mes, valor });
+  }
+  if (nuevos.length > 0) return nuevos;
+  // Sin mes nuevo: se relee el último publicado para confirmar que la fuente sigue respondiendo igual.
+  const control = await ipcDelMes(http, ultimo);
+  return control === null ? null : [];
+}
+
 export const detectores: readonly Detector[] = [
   {
     id: "uy.ui-bcu",
@@ -183,6 +244,16 @@ export const detectores: readonly Detector[] = [
       const h = hoy();
       return traerCotizacion(http, DOLAR, sumarDias(h, -15), sumarDias(h, -1));
     },
+  },
+  {
+    id: "uy.ipc-ine",
+    carril: "serie",
+    serie: "uy.ipc",
+    metodo: "html",
+    url: URL_PUBLICACIONES_INE,
+    tlsTolerante: true,
+    banda: { min: 100, max: 200, saltoRelativoMax: 0.05 },
+    traer: traerIpc,
   },
   {
     id: "uy.impo-decretos",

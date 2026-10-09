@@ -4,6 +4,21 @@ const IMPO = "IMPO (Diario Oficial)";
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "uy.domestico-julio-2026",
+    fecha: "2026-07-06",
+    titulo: "Trabajo doméstico: tres categorías con mínimos propios",
+    texto: "Desde el 1 de julio de 2026 el trabajo doméstico tiene tres categorías: general ($ 32.051 por mes), cocina ($ 33.796) y cuidados ($ 34.885), por 44 horas semanales. Por hora: $ 169, $ 178 y $ 184.",
+    vigenteDesde: "2026-07-01",
+    calculadoras: ["uy.trabajo-domestico"],
+    fuente: {
+      organismo: "Banco de Previsión Social (BPS)",
+      titulo: "Comunicado R 14/2026: trabajo doméstico, aumento salarial julio 2026",
+      url: "https://www.bps.gub.uy/bps/file/24374/2/2026---comunicado-r-14---trabajo-domestico-aumento-salarial-julio-2026.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-08",
+    },
+  },
+  {
     id: "uy.smn-julio-2026",
     fecha: "2026-07-01",
     titulo: "El salario mínimo sube a $ 25.383",

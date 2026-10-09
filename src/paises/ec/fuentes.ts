@@ -1,6 +1,7 @@
 import { esFechaISO, fechaEnZona } from "@/motor/vigencia";
-import type { Detector, FechaISO, HallazgoNorma, Http } from "@/motor/tipos";
+import type { Detector, FechaISO, HallazgoNorma, Http, PuntoSerie } from "@/motor/tipos";
 import datos from "./datos.json";
+import series from "./series.json";
 
 const ZONA = "America/Guayaquil";
 const URL_RO = "https://www.registroficial.gob.ec/feed/";
@@ -116,7 +117,63 @@ const DATOS_LABORALES = [
 ];
 const DATOS_TRIBUTARIOS = ["ec.iva", "ec.impuesto-renta", "ec.rebaja-gastos-personales", "ec.canastas-por-cargas", "ec.canastas-catastroficas", "ec.canasta-basica-enero"];
 
+const URL_INEC_IPC = "https://www.ecuadorencifras.gob.ec/indice-de-precios-al-consumidor/";
+const MESES_INEC: Readonly<Record<string, number>> = { ene: 1, feb: 2, mar: 3, abr: 4, may: 5, jun: 6, jul: 7, ago: 8, sep: 9, sept: 9, oct: 10, nov: 11, dic: 12 };
+
+export interface ResumenIpcInec {
+  mes: FechaISO;
+  mensual: number;
+  anual: number;
+  acumulada: number;
+}
+
+export function parsearResumenInec(html: string): ResumenIpcInec | null {
+  const texto = html.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ");
+  const m = /Resumen (\p{L}{3,4})\.?-(\d{4})[^]{0,400}?Variaci.n mensual (-?\d+,\d+) Variaci.n anual (-?\d+,\d+) Variaci.n acumulada (-?\d+,\d+)/u.exec(texto);
+  const numMes = m ? MESES_INEC[m[1].toLowerCase()] : undefined;
+  if (!m || !numMes) return null;
+  const mes = `${m[2]}-${String(numMes).padStart(2, "0")}-01`;
+  if (!esFechaISO(mes)) return null;
+  const n = (x: string) => Number(x.replace(",", "."));
+  return { mes, mensual: n(m[3]), anual: n(m[4]), acumulada: n(m[5]) };
+}
+
+function mesRelativo(mes: FechaISO, n: number): string {
+  const total = Number(mes.slice(0, 4)) * 12 + Number(mes.slice(5, 7)) - 1 + n;
+  return `${Math.floor(total / 12)}-${String((total % 12) + 1).padStart(2, "0")}-01`;
+}
+
+// La página del INEC solo publica las variaciones del último mes (con dos decimales), no el índice;
+// el índice sale de las planillas, que vienen en ZIP y el Http del cron solo lee texto. Se reconstruye
+// con la variación anual sobre el índice de 12 meses antes (error de redondeo que no se acumula) y se
+// controla con la mensual y la acumulada. Si no cierran, no se devuelve nada.
+async function traerIpc(http: Http): Promise<PuntoSerie[] | null> {
+  const html = await textoOpcional(http, URL_INEC_IPC);
+  const r = html ? parsearResumenInec(html) : null;
+  if (!r) return null;
+  const cargados = new Map(series.series.find((x) => x.id === "ec.ipc")?.puntos.map(([f, v]) => [String(f), Number(v)] as const) ?? []);
+  const base = cargados.get(mesRelativo(r.mes, -12));
+  if (base === undefined) return null;
+  const valor = Math.round(base * (1 + r.anual / 100) * 1e8) / 1e8;
+  const cierra = (referencia: number | undefined, variacion: number) =>
+    referencia === undefined || Math.abs((valor / referencia - 1) * 100 - variacion) <= 0.006;
+  if (!cierra(cargados.get(mesRelativo(r.mes, -1)), r.mensual)) return null;
+  if (!cierra(cargados.get(`${Number(r.mes.slice(0, 4)) - 1}-12-01`), r.acumulada)) return null;
+  const guardado = cargados.get(r.mes);
+  if (guardado !== undefined) return Math.abs(guardado - valor) <= guardado * 0.0001 ? [] : null;
+  return [{ fecha: r.mes, valor }];
+}
+
 export const detectores: readonly Detector[] = [
+  {
+    id: "ec.ipc-inec",
+    carril: "serie",
+    serie: "ec.ipc",
+    metodo: "html",
+    url: URL_INEC_IPC,
+    banda: { min: 80, max: 150, saltoRelativoMax: 0.03 },
+    traer: traerIpc,
+  },
   {
     id: "ec.registro-oficial",
     carril: "norma",

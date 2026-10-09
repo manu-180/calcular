@@ -431,6 +431,65 @@
           "motivo": "El 100 % sale del artículo 55 de la Ley General del Trabajo, pero no pudimos leer ese texto en una fuente oficial: la Gaceta Oficial no responde desde nuestra red y la guía del Ministerio de Trabajo solo da el recargo de feriados. Lo vimos en un análisis de UDAPE que no cita el artículo textual."
         }
       ]
+    },
+    {
+      "id": "bo.rts-cuota",
+      "nombre": "Régimen Tributario Simplificado: cuota bimestral por capital declarado",
+      "tipo": "escala",
+      "unidad": "BOB",
+      "nota": "Cada fila es una categoría (1 a 6). La cuota consolida IVA, IUE e IT.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 12001,
+              "hasta": 15000,
+              "tasa": 0,
+              "cuotaFija": 47
+            },
+            {
+              "desde": 15000.01,
+              "hasta": 18700,
+              "tasa": 0,
+              "cuotaFija": 90
+            },
+            {
+              "desde": 18700.01,
+              "hasta": 23500,
+              "tasa": 0,
+              "cuotaFija": 147
+            },
+            {
+              "desde": 23500.01,
+              "hasta": 29500,
+              "tasa": 0,
+              "cuotaFija": 158
+            },
+            {
+              "desde": 29500.01,
+              "hasta": 37000,
+              "tasa": 0,
+              "cuotaFija": 200
+            },
+            {
+              "desde": 37000.01,
+              "hasta": 60000,
+              "tasa": 0,
+              "cuotaFija": 350
+            }
+          ],
+          "fuente": {
+            "organismo": "Servicio de Impuestos Nacionales (SIN)",
+            "titulo": "Régimen Tributario Simplificado (RTS): categorías vigentes y cuota bimestral del tributo (DS 24484, 27924 y 3698)",
+            "url": "https://siatinfo.impuestos.gob.bo/index.php/regimenes-tributarios/regimenes-especiales/regimen-tributario-simplificado",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-08",
+            "nota": "La página las llama categorías vigentes; se cargan desde el 1/1/2026 porque no indica desde cuándo rigen."
+          }
+        }
+      ]
     }
   ]
 }
