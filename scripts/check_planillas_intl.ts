@@ -17,7 +17,7 @@ import { crearContexto, ErrorEntrada, type CasosCalculadora } from "../src/motor
 import { resolverValores } from "../src/motor/registro";
 import type { Campo, DefinicionCalculadora, FechaISO, PaisDefinido, ValoresDe } from "../src/motor/tipos";
 import { diasEntre, sumarDias } from "../src/motor/vigencia";
-import { PRODUCTOS_INTL } from "../src/lib/pagos/catalogo-intl";
+import { PRODUCTOS_INTL, rutaArchivoIntl } from "../src/lib/pagos/catalogo-intl";
 import { abrirLibro, type LibroEvaluable } from "./evaluar_xlsx";
 import { archivosBajo, DIR_PAISES, importar } from "./paises_comun";
 import { PLANILLAS_INTL, construirPlanilla, type PlanillaConstruida } from "./planillas-intl";
@@ -219,6 +219,10 @@ async function main(): Promise<void> {
       console.log(`--   ${m}: sin hojas publicables hoy`);
       continue;
     }
+    if (p.faltan.length) {
+      fallo(`${m}: faltan hojas que el catálogo promete (${p.faltan.join(", ")}); el generador conserva el archivo anterior`);
+      continue;
+    }
     if (!existsSync(p.ruta)) {
       fallo(`${m}: falta ${path.relative(process.cwd(), p.ruta)}. Corré scripts/gen_planilla_todas.ts.`);
       continue;
@@ -246,7 +250,15 @@ async function main(): Promise<void> {
     const p = pasan.get(prod.mercado);
     if (!p) fallo(`catálogo: ${prod.id} está a la venta pero su planilla no pasa este check (o no existe)`);
     else if (prod.archivo !== p.archivo) fallo(`catálogo: ${prod.id} apunta a ${prod.archivo} y la planilla de hoy es ${p.archivo}`);
+    else if (!existsSync(rutaArchivoIntl(prod))) fallo(`catálogo: ${prod.id} apunta a ${prod.archivo}, que no existe`);
   }
+  const hoyFijado = process.env.CALCULAR_HOY;
+  process.env.CALCULAR_HOY = "2027-01-02";
+  for (const prod of PRODUCTOS_INTL.filter((x) => x.slug === SLUG_PRODUCTO)) {
+    if (!prod.archivo.endsWith("-2027.xlsx") || !prod.titulo.endsWith(" 2027")) fallo(`catálogo: ${prod.id} no cambia de año (${prod.archivo}, «${prod.titulo}»)`);
+  }
+  if (hoyFijado === undefined) delete process.env.CALCULAR_HOY;
+  else process.env.CALCULAR_HOY = hoyFijado;
   for (const m of pasan.keys()) {
     if (!PRODUCTOS_INTL.some((x) => x.mercado === m && x.slug === SLUG_PRODUCTO)) console.log(`AVISO ${m}: la planilla pasa pero no está en PRODUCTOS_INTL`);
   }

@@ -32,13 +32,15 @@ export function sitioDeHost(host: string | null | undefined, cookieSitio: string
 
 // El origen de los enlaces (mails, redirect_uri de Google) sale de una lista cerrada y nunca del
 // Host a secas: un Host inyectado mandaría el token_hash de otra persona a un dominio ajeno. En
-// producción hay dos valores posibles; en dev y previews, además, el host de la máquina o del deploy.
+// producción hay dos valores posibles; en dev y previews, además, localhost o el host de ese mismo deploy.
 export function origenDeSitio(sitio: SitioCuenta, hostCrudo: string | null | undefined): string {
   const fijo = sitio === "intl" ? (origenIntl() ?? origenAR()) : origenAR();
-  if (process.env.VERCEL_ENV === "production") return fijo;
+  if (!entornoDePrueba()) return fijo;
   const host = (hostCrudo ?? "").trim().toLowerCase();
-  if (/^(localhost|127\.0\.0\.1)(:\d{2,5})?$/.test(host)) return `http://${host}`;
-  if (/^[a-z0-9-]+\.vercel\.app$/.test(host)) return `https://${host}`;
+  if (process.env.NODE_ENV === "development" && /^(localhost|127\.0\.0\.1)(:\d{2,5})?$/.test(host)) return `http://${host}`;
+  // Sólo los hosts de ESTE deploy: cualquier *.vercel.app dejaría mandar un token a un proyecto ajeno.
+  const propios = [process.env.VERCEL_URL, process.env.VERCEL_BRANCH_URL].map((v) => sinPuerto(v)).filter(Boolean);
+  if (propios.includes(host)) return `https://${host}`;
   return fijo;
 }
 

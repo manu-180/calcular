@@ -6,7 +6,7 @@
       "nombre": "Índice de precios al consumidor nacional urbano (IPC, base 2024 = 100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 80,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "INEC (Contraloría General de la República)",
         "titulo": "Anexo 4 y cuadro 3 del IPC nacional urbano, base 2024 = 100 (avances de cifras, índice de precios)",

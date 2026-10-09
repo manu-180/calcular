@@ -72,7 +72,7 @@
       "nombre": "Índice Nacional de Precios al Consumidor (INPC), base diciembre 2007 = 100",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 75,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Banco Central de Venezuela (BCV)",
         "titulo": "Índice Nacional de Precios al Consumidor, serie mensual desde diciembre 2007 (archivo 4_5_7) e indicador INPC de la portada",

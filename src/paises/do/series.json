@@ -136,7 +136,7 @@
       "nombre": "Índice de precios al consumidor (IPC, base octubre 2019 a septiembre 2020 = 100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 80,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Banco Central de la República Dominicana (BCRD)",
         "titulo": "Índice de precios al consumidor, serie nacional (consulta del IPC y archivo ipc_base_2019-2020.xls)",

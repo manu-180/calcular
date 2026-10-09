@@ -68,6 +68,12 @@ export default definirCalculadora({
     if (entrada.salario < valores["co.smmlv"]) observaciones.push("Con jornada completa el salario no puede ser menor que el mínimo. Los aportes se calculan igual sobre un salario mínimo.");
     if (costo.exonerado) observaciones.push("Por ganar menos de 10 salarios mínimos, el empleador no paga salud, SENA ni ICBF por este trabajador (Estatuto Tributario, art. 114-1).");
     if (entrada.auxilio && costo.auxilio === 0) observaciones.push("Gana más de dos salarios mínimos, así que no corresponde auxilio de transporte.");
+    // Umbral del salario integral: 10 SMMLV más el 30 % de factor prestacional (CST art. 132).
+    if (entrada.salario >= 13 * valores["co.smmlv"]) {
+      observaciones.push(
+        "Con este salario se puede pactar salario integral (Código Sustantivo del Trabajo, art. 132). Si tu contrato es integral, los aportes se calculan sobre el 70 % del salario y no hay prima, cesantías ni intereses. El cálculo que ves aquí es el de salario ordinario.",
+      );
+    }
     return {
       ...costo,
       salario: entrada.salario,

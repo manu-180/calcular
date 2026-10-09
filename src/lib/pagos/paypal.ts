@@ -1,3 +1,4 @@
+import "server-only";
 import { modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import {
   centavos,
@@ -111,8 +112,11 @@ export function estadoCaptura(status: string | undefined): EstadoPago | null {
     case "FAILED":
       return "rechazado";
     case "REFUNDED":
-    case "PARTIALLY_REFUNDED":
       return "reembolsado";
+    // Sin el monto devuelto no se puede asentar: tratarlo como "reembolsado" descontaría el precio
+    // entero. Queda sin estado y procesarPagoIntl lo ignora con motivo explícito.
+    case "PARTIALLY_REFUNDED":
+      return null;
     case "REVERSED":
       return "contracargo";
     default:
@@ -253,6 +257,7 @@ export const paypal: ProveedorPago = {
       webhook_id: c.webhookId,
     };
     if (Object.values(campos).some((v) => !v)) return false;
+    if (!cabecerasDePaypal(campos)) return false;
     try {
       JSON.parse(n.cuerpo);
     } catch {
@@ -267,6 +272,17 @@ export const paypal: ProveedorPago = {
     return j.verification_status === "SUCCESS";
   },
 };
+
+const RE_CERT_PAYPAL = /^https:\/\/api(-m)?\.(sandbox\.)?paypal\.com\//;
+const TOLERANCIA_TRANSMISION_MS = 10 * 60 * 1000;
+
+// Filtro previo a la API de PayPal: descarta lo que no puede ser un evento suyo sin gastar una
+// llamada, y un evento viejo reenviado (replay) aunque su firma haya sido válida.
+export function cabecerasDePaypal(c: { auth_algo: string; cert_url: string; transmission_time: string }, ahora = Date.now()): boolean {
+  if (c.auth_algo !== "SHA256withRSA" || !RE_CERT_PAYPAL.test(c.cert_url)) return false;
+  const t = Date.parse(c.transmission_time);
+  return Number.isFinite(t) && Math.abs(ahora - t) <= TOLERANCIA_TRANSMISION_MS;
+}
 
 export function idCapturaDeRecurso(tipo: string, recurso: Record<string, unknown> | null | undefined): string | null {
   if (!recurso) return null;

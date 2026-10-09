@@ -59,7 +59,7 @@
       "nombre": "Índice de Precios al Consumidor de Lima Metropolitana",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 80,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "INEI, publicado por el BCRP",
         "titulo": "Índice de precios Lima Metropolitana, índice diciembre 2021 = 100 (serie PN38705PM)",

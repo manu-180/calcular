@@ -2,6 +2,7 @@ import ExcelJS from "exceljs";
 import { resolverRequisito, publicabilidad, type DatoUsado } from "../../src/motor/registro";
 import type { CodigoMercado, FechaISO, FilaEscala, Mercado, PaisDefinido, Trato, ValorResuelto } from "../../src/motor/tipos";
 import { decimalesDeMoneda } from "../../src/motor/formato";
+import { archivoPlanillaSueldo } from "../../src/lib/pagos/catalogo-intl";
 import { BORDE, S, bandaSeccion, desplegable, nota, relleno, titulo } from "../gen_planilla_estilos";
 
 export type Celda = string | number | boolean | null;
@@ -715,7 +716,7 @@ export interface PlanillaPais {
 }
 
 export function nombreArchivo(anio: number): string {
-  return `sueldo-y-liquidacion-${anio}.xlsx`;
+  return archivoPlanillaSueldo(anio);
 }
 
 export type { ValorResuelto };

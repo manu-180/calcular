@@ -187,7 +187,7 @@ export async function sincronizarPagoIntl(db: SupabaseClient, pago: PagoVerifica
         .from("ca_checkouts")
         .update({ estado, mp_payment_id: idUnico, updated_at: new Date().toISOString() })
         .eq("id", checkoutId)
-        .or(`estado.is.null,estado.in.(iniciado,pendiente,rechazado),mp_payment_id.eq.${idUnico}`)
+        .or(`estado.is.null,estado.in.(iniciado,pendiente,rechazado),mp_payment_id.eq."${idUnico}"`)
         .select("email, user_id")
         .abortSignal(tope());
       if (error) console.error("[pagos] ca_checkouts (pago):", error.code, error.message);

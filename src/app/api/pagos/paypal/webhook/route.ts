@@ -1,4 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { esAdminEmail } from "@/lib/auth/admin";
+import { usuarioActual } from "@/lib/auth/sesion";
+import { ipDelPedido } from "@/lib/acceso-entrega";
+import { permitido } from "@/lib/limite";
 import { claveServicio } from "@/lib/supabase/servicio";
 import { procesarPagoIntl } from "@/lib/pagos/flujo-intl";
 import { configPaypal, idCapturaDeRecurso, paypal } from "@/lib/pagos/paypal";
@@ -24,6 +28,11 @@ const EVENTOS_CAPTURA = new Set([
  * PayPal: el contenido del evento nunca decide una entrega.
  */
 export async function POST(req: NextRequest) {
+  // Cada POST con cabeceras armadas le cuesta una llamada a PayPal con nuestro token. 120 por
+  // minuto por IP sobra para los reintentos de PayPal.
+  if (!(await permitido(`paypal-webhook:${ipDelPedido(req.headers) ?? "sin-ip"}`, 120, 60))) {
+    return NextResponse.json({ error: "demasiados pedidos" }, { status: 429 });
+  }
   const cuerpo = await req.text();
   let evento: Evento;
   try {
@@ -74,8 +83,11 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Presencia de la configuración, nunca valores: prueba desde afuera que el deploy tiene sus llaves.
+// Presencia de la configuración, nunca valores, y sólo para un admin: a cualquier otro le
+// contestaría qué está configurado en el deploy.
 export async function GET() {
+  const usuario = await usuarioActual().catch(() => null);
+  if (!usuario?.verificado || !esAdminEmail(usuario.email)) return new NextResponse("Not Found", { status: 404 });
   return NextResponse.json({
     ok: true,
     servicio: "webhook de PayPal",
