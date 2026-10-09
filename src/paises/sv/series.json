@@ -6,7 +6,7 @@
       "nombre": "Índice de Precios al Consumidor (IPC), índice general",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 75,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Banco Central de Reserva de El Salvador (BCR), Oficina Nacional de Estadística y Censos (ONEC)",
         "titulo": "Base de datos económica del BCR: Índice de Precios al Consumidor (IPC), base diciembre 2009 = 100",

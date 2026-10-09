@@ -118,7 +118,7 @@
       "nombre": "Índice de Precios al Consumidor (IPC), base 2016 = 100",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 70,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Instituto Nacional de Estadística (INE)",
         "titulo": "IPC: índice mensual de Bolivia, variación mensual, acumulada y a 12 meses, serie 2018 a 2026 (publicado en octubre de 2026)",

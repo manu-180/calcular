@@ -48,7 +48,7 @@
       "nombre": "Índice de precios al consumidor armado con la inflación acumulada del BCH (diciembre 2020 = 100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 75,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Banco Central de Honduras (BCH)",
         "titulo": "Inflación mensual, acumulada e interanual, lista que alimenta el indicador de inflación de la portada de bch.hn",

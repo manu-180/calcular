@@ -237,7 +237,7 @@
       "nombre": "Índice de los Precios del Consumo (IPC), base octubre 2022 = 100",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 70,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Instituto Nacional de Estadística (INE)",
         "titulo": "IPC: índice general y variaciones, base octubre 2022 = 100 (serie empalmada desde julio de 1937)",

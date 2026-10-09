@@ -64,7 +64,7 @@
       "nombre": "Índice de Precios al Consumidor (IPC)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 80,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "DANE, publicado por el Banco de la República",
         "titulo": "IPC total nacional, base diciembre 2018 = 100 (serie 15000 de SUAMECA)",

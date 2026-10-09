@@ -41,6 +41,9 @@ delete process.env.PAGOS_INTL_PROVEEDOR;
 delete process.env.PAYPAL_SANDBOX_EN_PRODUCCION;
 
 
+const IP = { "x-forwarded-for": "203.0.113.7" };
+const limites: string[] = [];
+
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
   if (cond) console.log(`OK   ${nombre}`);
@@ -173,6 +176,10 @@ globalThis.fetch = (async (entrada: string | URL | Request, init?: RequestInit) 
       return json({ verification_status: v.transmission_sig === "firma-buena" && v.webhook_id === "WH-PRUEBA" ? "SUCCESS" : "FAILURE" });
     }
   }
+  if (url.origin === "https://base.prueba" && url.pathname === "/rest/v1/rpc/ca_limite") {
+    limites.push((JSON.parse(body) as { p_clave: string }).p_clave);
+    return json(true);
+  }
   if (url.origin === "https://base.prueba" && url.pathname === "/rest/v1/revenue_events") {
     if (metodo === "GET") {
       const marca = decodeURIComponent((url.searchParams.get("note") ?? "").replace(/^ilike\.\*|\*$/g, ""));
@@ -224,7 +231,7 @@ const wh = process.env.PAYPAL_WEBHOOK_ID;
 delete process.env.PAYPAL_WEBHOOK_ID;
 check("sin PAYPAL_WEBHOOK_ID: venta apagada", !ventaIntlActiva());
 const sinCred = await rutaCheckout.POST(
-  new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", body: new URLSearchParams({ p: PRODUCTO.id, email: "a@b.com" }) }),
+  new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: IP, body: new URLSearchParams({ p: PRODUCTO.id, email: "a@b.com" }) }),
 );
 check("checkout sin credenciales: vuelve a comprar con pago=pronto, sin llamar a PayPal", (sinCred.headers.get("location") ?? "").endsWith("/mx/planillas/comprar?p=planilla-prueba&pago=pronto") && !llamadas.some((l) => l.url.includes("paypal")));
 process.env.PAYPAL_WEBHOOK_ID = wh;
@@ -237,7 +244,7 @@ delete process.env.PAGOS_INTL_PROVEEDOR;
 const r1 = await rutaCheckout.POST(
   new NextRequest("https://calcularya.com/api/pagos/checkout", {
     method: "POST",
-    headers: { origin: "https://calcularya.com" },
+    headers: { ...IP, origin: "https://calcularya.com" },
     body: new URLSearchParams({ p: PRODUCTO.id, email: "Compradora@Example.com ", precio: "0.01", sitio: "" }),
   }),
 );
@@ -256,13 +263,20 @@ check(
 );
 check("orden: el mail normalizado prellena PayPal", cuerpoOrden?.payment_source?.paypal?.email_address === "compradora@example.com");
 const rTrampa = await rutaCheckout.POST(
-  new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: { origin: "https://otro.sitio" }, body: new URLSearchParams({ p: PRODUCTO.id, email: "a@b.com" }) }),
+  new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: { ...IP, origin: "https://otro.sitio" }, body: new URLSearchParams({ p: PRODUCTO.id, email: "a@b.com" }) }),
 );
 const ultimaOrden = JSON.parse(llamadas.filter((l) => l.url === "https://api-m.paypal.com/v2/checkout/orders").at(-1)!.body);
 check("checkout desde otro origen: se cobra igual, sin prellenar el mail", rTrampa.status === 303 && ultimaOrden.payment_source.paypal.email_address === undefined);
-const rMal = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", body: new URLSearchParams({ p: "mx/no-existe", email: "a@b.com" }) }));
+const ordenesAntesSinIp = llamadas.filter((l) => l.url === "https://api-m.paypal.com/v2/checkout/orders").length;
+const rSinIp = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", body: new URLSearchParams({ p: PRODUCTO.id, email: "a@b.com" }) }));
+check(
+  "checkout sin IP: no crea orden y vuelve con pago=error",
+  (rSinIp.headers.get("location") ?? "").endsWith("pago=error") && llamadas.filter((l) => l.url === "https://api-m.paypal.com/v2/checkout/orders").length === ordenesAntesSinIp,
+);
+check("checkout: el cupo pasa por el limitador persistente", limites.some((k) => k.startsWith("checkout-intl:")));
+const rMal = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: IP, body: new URLSearchParams({ p: "mx/no-existe", email: "a@b.com" }) }));
 check("checkout de un producto que no está en el catálogo: 404", rMal.status === 404);
-const rSinMail = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", body: new URLSearchParams({ p: PRODUCTO.id, email: "no-es-mail" }) }));
+const rSinMail = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: IP, body: new URLSearchParams({ p: PRODUCTO.id, email: "no-es-mail" }) }));
 check("checkout sin mail válido: vuelve con error=email", (rSinMail.headers.get("location") ?? "").includes("error=email"));
 
 // ─── 2. Captura ok al volver ─────────────────────────────────────────────────────────────────
@@ -292,7 +306,7 @@ check("descarga con id basura: 400 sin consultar a PayPal", d4.status === 400);
 
 // ─── 4. Captura con monto o moneda distinta ─────────────────────────────────────────────────
 async function compraConCaptura(cambio: Partial<Captura>) {
-  const r = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", body: new URLSearchParams({ p: PRODUCTO.id, email: "x@example.com" }) }));
+  const r = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: IP, body: new URLSearchParams({ p: PRODUCTO.id, email: "x@example.com" }) }));
   const orden = new URL(r.headers.get("location")!).searchParams.get("token")!;
   proximaCaptura = cambio;
   const v = await rutaVuelta.GET(new NextRequest(`https://calcularya.com/api/pagos/paypal/vuelta?m=mx&p=planilla-prueba&token=${orden}`));
@@ -322,13 +336,13 @@ function pedidoWebhook(cuerpo: string, firma = "firma-buena", sinCabeceras = fal
         "paypal-cert-url": "https://api.paypal.com/v1/notifications/certs/CERT",
         "paypal-transmission-id": "tx-1",
         "paypal-transmission-sig": firma,
-        "paypal-transmission-time": "2026-10-09T12:00:00Z",
+        "paypal-transmission-time": new Date().toISOString(),
       };
   return new NextRequest("https://calcularya.com/api/pagos/paypal/webhook", { method: "POST", headers: h, body: cuerpo });
 }
 
 // Una compra aprobada que la persona no volvió a capturar.
-const r5 = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", body: new URLSearchParams({ p: PRODUCTO.id, email: "y@example.com" }) }));
+const r5 = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: IP, body: new URLSearchParams({ p: PRODUCTO.id, email: "y@example.com" }) }));
 const orden5 = new URL(r5.headers.get("location")!).searchParams.get("token")!;
 const antesFalsa = { r: revenue.length, verif: llamadas.filter((l) => l.url.endsWith("verify-webhook-signature")).length };
 const falsa = await rutaWebhook.POST(pedidoWebhook(evento("CHECKOUT.ORDER.APPROVED", { id: orden5 }), "firma-falsa"));
@@ -337,6 +351,19 @@ const sinH = await rutaWebhook.POST(pedidoWebhook(evento("PAYMENT.CAPTURE.COMPLE
 check("webhook sin cabeceras de PayPal: 401 sin consultar la verificación", sinH.status === 401 && llamadas.filter((l) => l.url.endsWith("verify-webhook-signature")).length === antesFalsa.verif + 1);
 const verif = llamadas.filter((l) => l.url.endsWith("verify-webhook-signature")).at(-1)!;
 check("verificación: el evento viaja con los bytes originales", verif.body.endsWith(`"webhook_event":${evento("CHECKOUT.ORDER.APPROVED", { id: orden5 }, JSON.parse(verif.body).webhook_event.id)}}`));
+for (const [nombre, cambio] of [
+  ["cert_url fuera de paypal.com", { "paypal-cert-url": "https://evil.example/paypal.com/cert" }],
+  ["auth_algo distinto", { "paypal-auth-algo": "SHA1withRSA" }],
+  ["transmission_time de hace 11 minutos", { "paypal-transmission-time": new Date(Date.now() - 11 * 60_000).toISOString() }],
+] as const) {
+  const antesV = llamadas.filter((l) => l.url.endsWith("verify-webhook-signature")).length;
+  const req = pedidoWebhook(evento("PAYMENT.CAPTURE.COMPLETED", { id: cap1 }));
+  const h = new Headers(req.headers);
+  for (const [k, v] of Object.entries(cambio)) h.set(k, v);
+  const r = await rutaWebhook.POST(new NextRequest(req.url, { method: "POST", headers: h, body: await req.text() }));
+  check(`webhook con ${nombre}: 401 sin consultar a PayPal`, r.status === 401 && llamadas.filter((l) => l.url.endsWith("verify-webhook-signature")).length === antesV);
+}
+check("webhook: pasa por el limitador persistente", limites.some((k) => k.startsWith("paypal-webhook:")));
 const basura = await rutaWebhook.POST(new NextRequest("https://calcularya.com/api/pagos/paypal/webhook", { method: "POST", body: "no es json" }));
 check("webhook con cuerpo que no es JSON: 400", basura.status === 400);
 
@@ -354,7 +381,7 @@ check("PAYMENT.CAPTURE.COMPLETED repetido: 200, 200 y sin filas ni mails nuevos"
 check("el monto del cuerpo del evento (0.01) no se usa: la venta quedó en 9", revenue.find((r) => r.note.includes(`[paypal:${cap5}]`))?.amount === 9);
 
 // Venta que entra primero por el webhook (la persona cerró la pestaña después de pagar).
-const r6 = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", body: new URLSearchParams({ p: PRODUCTO.id, email: "z@example.com" }) }));
+const r6 = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: IP, body: new URLSearchParams({ p: PRODUCTO.id, email: "z@example.com" }) }));
 const orden6 = new URL(r6.headers.get("location")!).searchParams.get("token")!;
 await paypal.confirmarPago(orden6);
 const cap6 = ordenes.get(orden6)!.capturaId;
@@ -376,18 +403,34 @@ check("reembolso: una sola fila negativa, aunque llegue dos veces", devol.length
 const dRef = await rutaDescarga.GET(new NextRequest(`https://calcularya.com/api/pagos/descarga?proveedor=paypal&pago=${cap6}`));
 check("descarga de una captura reembolsada: 403", dRef.status === 403);
 
-const salud = (await (await rutaWebhook.GET()).json()) as { config: Record<string, unknown> };
-check("GET del webhook: presencia de config, sin valores", salud.config.paypal === true && salud.config.entorno === "live" && !JSON.stringify(salud).includes("secreto-de-prueba"));
+const salud = await rutaWebhook.GET();
+check("GET del webhook sin sesión de admin: 404 sin publicar la config", salud.status === 404 && !(await salud.text()).includes("paypal"));
+
+// Reembolso parcial: sin el monto devuelto no se asienta nada.
+const r7 = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: IP, body: new URLSearchParams({ p: PRODUCTO.id, email: "p@example.com" }) }));
+const orden7 = new URL(r7.headers.get("location")!).searchParams.get("token")!;
+await paypal.confirmarPago(orden7);
+const cap7 = ordenes.get(orden7)!.capturaId;
+await rutaWebhook.POST(pedidoWebhook(evento("PAYMENT.CAPTURE.COMPLETED", { id: cap7 })));
+capturas.get(cap7)!.status = "PARTIALLY_REFUNDED";
+const filas7 = revenue.length;
+const w7 = await rutaWebhook.POST(pedidoWebhook(evento("PAYMENT.CAPTURE.REFUNDED", { id: "REF777777777777", links: [{ rel: "up", href: `https://api.paypal.com/v2/payments/captures/${cap7}` }] })));
+const j7 = (await w7.json()) as { ignorado?: string };
+check("reembolso parcial: 200 ignorado, sin fila negativa", w7.status === 200 && (j7.ignorado ?? "").includes("reembolso parcial") && revenue.length === filas7 && !revenue.some((r) => r.note.includes(`[paypal-devuelto:${cap7}]`)), j7);
 
 // ─── 6. Sincronización con degradación (ca_checkouts / ca_compras) ──────────────────────────
 {
   const escrituras: { tabla: string; fila: Record<string, unknown> }[] = [];
+  const filtros: string[] = [];
   let faltanColumnas = true;
   const consulta = (tabla: string) => {
     const q = {
       update: () => q,
       eq: () => q,
-      or: () => q,
+      or: (f: string) => {
+        filtros.push(f);
+        return q;
+      },
       select: () => q,
       upsert: (fila: Record<string, unknown>) => {
         escrituras.push({ tabla, fila });
@@ -402,6 +445,7 @@ check("GET del webhook: presencia de config, sin valores", salud.config.paypal =
   const pago = await paypal.consultarPago(cap1);
   await sincronizarPagoIntl(db, pago!);
   const compras = escrituras.filter((e) => e.tabla === "ca_compras");
+  check("ca_checkouts: el id con «paypal:» va entrecomillado en el filtro .or()", filtros.some((f) => f.endsWith(`mp_payment_id.eq."paypal:${cap1}"`)), filtros);
   check("ca_compras: sin la migración nueva se reintenta sin proveedor/pago_id", compras.length === 2 && "proveedor" in compras[0].fila && !("proveedor" in compras[1].fila));
   const f = compras[0].fila;
   check(

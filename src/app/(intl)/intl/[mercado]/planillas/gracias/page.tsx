@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
+import { dentroDelCupoEntrega, ipDelPedido } from "@/lib/acceso-entrega";
 import { proveedor } from "@/lib/pagos";
 import { leerReferenciaIntl } from "@/lib/pagos/catalogo-intl";
 import { rutaDescargaIntl } from "@/lib/pagos/flujo-intl";
@@ -30,7 +32,7 @@ export default async function GraciasPlanillaIntl({ params, searchParams }: Prop
   const prov = proveedor(uno(sp.proveedor));
   const id = uno(sp.pago);
   let pago: PagoVerificado | null = null;
-  if (prov && prov.nombre !== "mercadopago" && ID_PAYPAL.test(id)) {
+  if (prov && prov.nombre !== "mercadopago" && ID_PAYPAL.test(id) && (await dentroDelCupoEntrega(ipDelPedido(await headers())))) {
     try {
       pago = await prov.consultarPago(id);
     } catch (e) {

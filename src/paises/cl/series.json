@@ -333,7 +333,7 @@
       "nombre": "Índice de Precios al Consumidor (IPC)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 80,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "INE, publicado por el SII",
         "titulo": "UTM, UTA e IPC 2026 (IPC en puntos, base anual 2023 = 100)",

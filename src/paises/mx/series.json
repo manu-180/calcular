@@ -62,7 +62,7 @@
       "nombre": "Índice Nacional de Precios al Consumidor",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 80,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "INEGI, publicado por el Banco de México",
         "titulo": "INPC general, base segunda quincena de julio 2018 = 100 (serie SP1 del SIE)",

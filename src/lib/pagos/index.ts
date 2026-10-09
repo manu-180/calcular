@@ -1,3 +1,4 @@
+import "server-only";
 import { intlActivo } from "@/motor/sitio";
 import { mercadopago } from "./mercadopago";
 import { paypal } from "./paypal";

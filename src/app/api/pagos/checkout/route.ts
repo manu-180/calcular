@@ -5,7 +5,7 @@ import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { permitido } from "@/lib/limite";
 import { emailValido } from "@/lib/mp";
 import { servicio } from "@/lib/supabase/servicio";
-import { claveCliente, dentroDelLimite } from "@/app/api/e/protocolo";
+import { ipDelPedido } from "@/lib/acceso-entrega";
 import { proveedorIntl, ventaIntlActiva } from "@/lib/pagos";
 import { productoIntl, referenciaIntl } from "@/lib/pagos/catalogo-intl";
 import { origenDelPedido, origenesPermitidos, rutaPlanillasIntl } from "@/lib/pagos/flujo-intl";
@@ -20,10 +20,11 @@ async function usuarioSinDemora() {
 }
 
 // Cada pedido crea una orden real en el proveedor: sin cupo, un script llena la cuenta de órdenes.
+// Sin IP no hay forma de contar el cupo, y en Vercel siempre llega: un pedido sin ella no es normal.
 async function dentroDelCupo(req: NextRequest): Promise<boolean> {
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip");
-  if (!ip) return true;
-  return CUENTAS_ACTIVAS ? permitido(`checkout-intl:${ip}`, 10, 600) : dentroDelLimite(`checkout-intl:${claveCliente(ip)}`, Date.now(), 5);
+  const ip = ipDelPedido(req.headers);
+  if (!ip) return false;
+  return permitido(`checkout-intl:${ip}`, 10, 600);
 }
 
 const ir = (url: string) => NextResponse.redirect(url, 303);

@@ -83,9 +83,16 @@ conEntorno({ NEXT_PUBLIC_SITIO_INTL_URL: INTL, NEXT_PUBLIC_SITIO_AR_URL: undefin
   igual("producción no usa localhost", origenDeSitio("ar", "localhost:3000"), "https://calcular.ar");
   igual("producción no usa vercel.app", origenDeSitio("intl", "x.vercel.app"), INTL);
 });
-conEntorno({ NEXT_PUBLIC_SITIO_INTL_URL: INTL, VERCEL_ENV: "preview", NODE_ENV: "production" }, () => {
+conEntorno({ NEXT_PUBLIC_SITIO_INTL_URL: INTL, VERCEL_ENV: undefined, NODE_ENV: "production" }, () => {
+  igual("sin VERCEL_ENV (next start): falla cerrado", origenDeSitio("intl", "calcular-ar-git-x.vercel.app"), INTL);
+  igual("sin VERCEL_ENV: no usa localhost", origenDeSitio("ar", "localhost:3000"), "https://calcular.ar");
+});
+conEntorno({ NEXT_PUBLIC_SITIO_INTL_URL: INTL, VERCEL_ENV: "preview", NODE_ENV: "production", VERCEL_URL: "calcular-ar-abc123.vercel.app", VERCEL_BRANCH_URL: "calcular-ar-git-x.vercel.app" }, () => {
   igual("preview: cookie sitio=intl", sitioDeHost("calcular-ar-git-x.vercel.app", "intl"), "intl");
-  igual("preview: origen del deploy", origenDeSitio("intl", "calcular-ar-git-x.vercel.app"), "https://calcular-ar-git-x.vercel.app");
+  igual("preview: origen del deploy (rama)", origenDeSitio("intl", "calcular-ar-git-x.vercel.app"), "https://calcular-ar-git-x.vercel.app");
+  igual("preview: origen del deploy (url)", origenDeSitio("ar", "calcular-ar-abc123.vercel.app"), "https://calcular-ar-abc123.vercel.app");
+  igual("preview: otro proyecto de vercel.app", origenDeSitio("intl", "proyecto-ajeno.vercel.app"), INTL);
+  igual("preview: localhost no vale fuera de dev", origenDeSitio("ar", "localhost:3000"), "https://calcular.ar");
   igual("preview: Host ajeno", origenDeSitio("intl", "evil.com"), INTL);
   igual("preview: subdominio raro de vercel", origenDeSitio("ar", "a.b.vercel.app"), "https://calcular.ar");
 });

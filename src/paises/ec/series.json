@@ -6,7 +6,7 @@
       "nombre": "Índice de Precios al Consumidor (IPC), base julio 2025 a junio 2026 = 100",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 70,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Instituto Nacional de Estadística y Censos (INEC)",
         "titulo": "Tabulados y series históricas del IPC, agosto 2026: serie histórica del IPC nacional general desde enero de 1969 (cuadro 1)",

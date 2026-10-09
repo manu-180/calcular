@@ -1,5 +1,8 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import type { CodigoMercado } from "@/motor/tipos";
+import { hoyEn } from "@/motor/vigencia";
+import { registro } from "@/paises";
 import type { ProductoVenta } from "./tipos";
 
 // Planillas que vende calcularya.com. Cada una es de un país: el id es `<mercado>/<slug>` y el
@@ -59,10 +62,11 @@ function planillaSueldo(d: {
   normas: string;
   disparador: string;
 }): ProductoIntl {
-  return definirProductoIntl({
+  const anio = () => anioPlanillaIntl(d.mercado);
+  const producto = definirProductoIntl({
     mercado: d.mercado,
     slug: "sueldo-y-liquidacion",
-    titulo: d.titulo,
+    titulo: `${d.titulo} ${anio()}`,
     tituloCorto: d.tituloCorto,
     paraQuien: d.paraQuien,
     descripcion: [
@@ -71,15 +75,31 @@ function planillaSueldo(d: {
     ],
     disparadorActualizacion: d.disparador,
     precioCentavos: 700,
-    archivo: "sueldo-y-liquidacion-2026.xlsx",
+    archivo: archivoPlanillaSueldo(anio()),
   });
+  // Getters y no valores: un proceso que sigue vivo al cambiar el año tiene que pasar a servir el
+  // archivo nuevo, igual que el generador del build, que nombra el archivo con el año del día.
+  return Object.defineProperties(producto, {
+    titulo: { get: () => `${d.titulo} ${anio()}`, enumerable: true, configurable: true },
+    archivo: { get: () => archivoPlanillaSueldo(anio()), enumerable: true, configurable: true },
+  });
+}
+
+export function anioPlanillaIntl(mercado: string): number {
+  const pais = registro.pais(mercado as CodigoMercado);
+  if (!pais) throw new Error(`planilla intl: el mercado ${mercado} no está en el registro`);
+  return Number(hoyEn(pais.mercado).slice(0, 4));
+}
+
+export function archivoPlanillaSueldo(anio: number): string {
+  return `sueldo-y-liquidacion-${anio}.xlsx`;
 }
 
 export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "mx",
     trato: "tu",
-    titulo: "Planilla de sueldo y finiquito México 2026",
+    titulo: "Planilla de sueldo y finiquito México",
     tituloCorto: "planilla de sueldo y finiquito",
     paraQuien: "Para calcular tu sueldo neto, tu aguinaldo y tu finiquito o liquidación con la ley vigente",
     normas: "la Ley Federal del Trabajo, la Ley del ISR y la Ley del Seguro Social",
@@ -89,7 +109,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "co",
     trato: "tu",
-    titulo: "Planilla de salario y liquidación Colombia 2026",
+    titulo: "Planilla de salario y liquidación Colombia",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular tu salario neto, tu prima, tus cesantías y tu liquidación con la ley vigente",
     normas: "el Código Sustantivo del Trabajo y el Estatuto Tributario",
@@ -99,7 +119,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "pe",
     trato: "tu",
-    titulo: "Planilla de sueldo y liquidación Perú 2026",
+    titulo: "Planilla de sueldo y liquidación Perú",
     tituloCorto: "planilla de sueldo y liquidación",
     paraQuien: "Para calcular tu sueldo neto, tu gratificación, tu CTS y tu liquidación con la ley vigente",
     normas: "la ley laboral peruana y la Ley del Impuesto a la Renta",
@@ -109,7 +129,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "cl",
     trato: "tu",
-    titulo: "Planilla de sueldo y finiquito Chile 2026",
+    titulo: "Planilla de sueldo y finiquito Chile",
     tituloCorto: "planilla de sueldo y finiquito",
     paraQuien: "Para calcular tu sueldo líquido, tu gratificación y tu finiquito con la ley vigente",
     normas: "el Código del Trabajo y la Ley sobre Impuesto a la Renta",
@@ -119,7 +139,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "uy",
     trato: "vos",
-    titulo: "Planilla de sueldo y liquidación Uruguay 2026",
+    titulo: "Planilla de sueldo y liquidación Uruguay",
     tituloCorto: "planilla de sueldo y liquidación",
     paraQuien: "Para calcular tu sueldo líquido, tu aguinaldo, tu salario vacacional y tu liquidación con la ley vigente",
     normas: "las leyes laborales uruguayas y el decreto de retención del IRPF",
@@ -129,7 +149,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "ec",
     trato: "tu",
-    titulo: "Planilla de sueldo y liquidación Ecuador 2026",
+    titulo: "Planilla de sueldo y liquidación Ecuador",
     tituloCorto: "planilla de sueldo y liquidación",
     paraQuien: "Para calcular tu sueldo neto, tus décimos y tu liquidación con la ley vigente",
     normas: "el Código del Trabajo y la Ley de Régimen Tributario Interno",
@@ -139,7 +159,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "cr",
     trato: "usted",
-    titulo: "Planilla de salario y liquidación Costa Rica 2026",
+    titulo: "Planilla de salario y liquidación Costa Rica",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular su salario neto, su aguinaldo y su liquidación con la ley vigente",
     normas: "el Código de Trabajo y la Ley del Impuesto sobre la Renta",
@@ -149,7 +169,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "gt",
     trato: "usted",
-    titulo: "Planilla de salario y prestaciones Guatemala 2026",
+    titulo: "Planilla de salario y prestaciones Guatemala",
     tituloCorto: "planilla de salario y prestaciones",
     paraQuien: "Para calcular su ISR, su aguinaldo, su Bono 14 y su indemnización con la ley vigente",
     normas: "el Código de Trabajo y la Ley de Actualización Tributaria",
@@ -159,7 +179,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "py",
     trato: "vos",
-    titulo: "Planilla de salario y liquidación Paraguay 2026",
+    titulo: "Planilla de salario y liquidación Paraguay",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular tu salario neto, tu aguinaldo y tu liquidación con la ley vigente",
     normas: "el Código del Trabajo y las normas del IPS",
@@ -169,7 +189,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "do",
     trato: "tu",
-    titulo: "Planilla de salario y prestaciones República Dominicana 2026",
+    titulo: "Planilla de salario y prestaciones República Dominicana",
     tituloCorto: "planilla de salario y prestaciones",
     paraQuien: "Para calcular tu salario neto, tu regalía pascual y tus prestaciones laborales con la ley vigente",
     normas: "el Código de Trabajo, la ley de la Seguridad Social y el Código Tributario",
@@ -179,7 +199,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "sv",
     trato: "usted",
-    titulo: "Planilla de salario y prestaciones El Salvador 2026",
+    titulo: "Planilla de salario y prestaciones El Salvador",
     tituloCorto: "planilla de salario y prestaciones",
     paraQuien: "Para calcular su renta, su aguinaldo, su Quincena 25 y su indemnización con la ley vigente",
     normas: "el Código de Trabajo y la Ley de Impuesto sobre la Renta",
@@ -189,7 +209,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "pa",
     trato: "tu",
-    titulo: "Planilla de salario y liquidación Panamá 2026",
+    titulo: "Planilla de salario y liquidación Panamá",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular tu salario neto, tu décimo tercer mes y tu liquidación con la ley vigente",
     normas: "el Código de Trabajo y el Código Fiscal",
@@ -199,7 +219,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "hn",
     trato: "usted",
-    titulo: "Planilla de salario y prestaciones Honduras 2026",
+    titulo: "Planilla de salario y prestaciones Honduras",
     tituloCorto: "planilla de salario y prestaciones",
     paraQuien: "Para calcular su ISR, su décimo cuarto mes y sus prestaciones laborales con la ley vigente",
     normas: "el Código del Trabajo y la Ley del Impuesto sobre la Renta",
@@ -209,7 +229,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "ni",
     trato: "vos",
-    titulo: "Planilla de salario y liquidación Nicaragua 2026",
+    titulo: "Planilla de salario y liquidación Nicaragua",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular tu salario neto, tu aguinaldo y tu liquidación con la ley vigente",
     normas: "el Código del Trabajo y la Ley de Concertación Tributaria",
@@ -219,7 +239,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "ve",
     trato: "tu",
-    titulo: "Planilla de prestaciones y liquidación Venezuela 2026",
+    titulo: "Planilla de prestaciones y liquidación Venezuela",
     tituloCorto: "planilla de prestaciones y liquidación",
     paraQuien: "Para calcular tus utilidades, tus vacaciones, tus prestaciones sociales y tu liquidación con la ley vigente",
     normas: "la LOTTT",
@@ -229,7 +249,7 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "bo",
     trato: "usted",
-    titulo: "Planilla de sueldo y finiquito Bolivia 2026",
+    titulo: "Planilla de sueldo y finiquito Bolivia",
     tituloCorto: "planilla de sueldo y finiquito",
     paraQuien: "Para calcular su líquido pagable, su aguinaldo y su finiquito con la ley vigente",
     normas: "la Ley General del Trabajo, la Ley de Pensiones y el régimen del RC-IVA",
@@ -270,8 +290,16 @@ export function rutaArchivoIntl(p: ProductoIntl): string {
   return path.join(process.cwd(), "private", "intl", p.mercado, p.archivo);
 }
 
+// Entre la medianoche del 1/1 y el primer deploy del año, el bundle todavía tiene sólo el archivo
+// del año anterior: se entrega ese antes que dejar al comprador sin planilla.
 export async function leerArchivoIntl(p: ProductoIntl): Promise<Buffer> {
-  return readFile(rutaArchivoIntl(p));
+  try {
+    return await readFile(rutaArchivoIntl(p));
+  } catch (e) {
+    const m = /^(.*-)(\d{4})\.xlsx$/.exec(p.archivo);
+    if ((e as NodeJS.ErrnoException).code !== "ENOENT" || !m) throw e;
+    return readFile(path.join(process.cwd(), "private", "intl", p.mercado, `${m[1]}${Number(m[2]) - 1}.xlsx`));
+  }
 }
 
 // Referencia propia del pedido: `<mercado>/<slug>:<uuid>`. Viaja como custom_id de PayPal (o el

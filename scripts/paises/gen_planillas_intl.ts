@@ -15,6 +15,11 @@ export async function generarPlanillasIntl(): Promise<{ mercado: string; ruta: s
       salida.push({ mercado: planilla.mercado, ruta: null, hojas: 0 });
       continue;
     }
+    if (p.faltan.length) {
+      console.error(`[ALERTA planilla-intl] ${planilla.mercado}: faltan las hojas ${p.faltan.join(", ")}; se conserva el archivo anterior`);
+      salida.push({ mercado: planilla.mercado, ruta: null, hojas: p.libro.hojas.length });
+      continue;
+    }
     salida.push({ mercado: planilla.mercado, ruta: await escribirPlanilla(p), hojas: p.libro.hojas.length });
   }
   return salida;

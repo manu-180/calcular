@@ -1,6 +1,8 @@
 import "server-only";
 import { after } from "next/server";
+import { emailsAdmin } from "@/lib/auth/admin";
 import { sendSingle } from "@/lib/email";
+import { permitido } from "@/lib/limite";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { claveServicio, servicio } from "@/lib/supabase/servicio";
 import { MAIL_CONTACTO } from "@/motor/ui/Legales";
@@ -82,6 +84,33 @@ async function entregarPorEmail(pago: PagoVerificado, producto: ProductoIntl, em
   }
 }
 
+const DIA_SEG = 24 * 60 * 60;
+
+// El comprador pagó y no le llegó nada: sin este aviso el fallo sólo vive en un log que nadie mira.
+async function avisarEntregaFallida(pago: PagoVerificado, producto: ProductoIntl, motivo: string): Promise<void> {
+  console.error(`[ALERTA entrega-intl] ${motivo}`, pago.proveedor, pago.id, producto.mercado);
+  if (!process.env.RESEND_API_KEY) return;
+  const para = emailsAdmin();
+  if (!para.length || !(await permitido("entrega-intl-aviso:global", 30, DIA_SEG))) return;
+  const texto = [
+    `La planilla ${producto.id} no se pudo entregar por mail (${motivo}).`,
+    `Pago: ${pago.proveedor} ${pago.id}`,
+    `Mercado: ${producto.mercado}`,
+    `Enlace de descarga: ${origenVentaIntl()}${rutaDescargaIntl(pago.proveedor, pago.id)}`,
+  ].join("\n");
+  try {
+    await sendSingle({
+      from: FROM_INTL,
+      to: para,
+      subject: `Entrega fallida: ${producto.id} (${pago.proveedor} ${pago.id})`,
+      html: `<pre style="font-family:system-ui,sans-serif;font-size:14px;white-space:pre-wrap;">${texto.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</pre>`,
+      text: texto,
+    });
+  } catch (e) {
+    console.error("[ALERTA entrega-intl] tampoco salió el aviso", pago.proveedor, pago.id, e instanceof Error ? e.message : e);
+  }
+}
+
 export type ResultadoPago =
   | { tipo: "ignorado"; motivo: string }
   | { tipo: "pendiente"; estado: string }
@@ -94,6 +123,10 @@ export async function procesarPagoIntl(pago: PagoVerificado): Promise<ResultadoP
   const ref = leerReferenciaIntl(pago.referencia);
   if (!ref) return { tipo: "ignorado", motivo: "referencia desconocida" };
   const { producto } = ref;
+  if (pago.estadoProveedor === "PARTIALLY_REFUNDED") {
+    console.warn("[ALERTA reembolso-parcial-intl] no se asienta: falta el monto devuelto", pago.proveedor, pago.id, producto.mercado);
+    return { tipo: "ignorado", motivo: "reembolso parcial: no se asienta hasta conocer el monto devuelto" };
+  }
 
   if (CUENTAS_ACTIVAS) despues(() => sincronizarPagoIntl(servicio(), pago));
 
@@ -120,7 +153,8 @@ export async function procesarPagoIntl(pago: PagoVerificado): Promise<ResultadoP
   let entregado: boolean | null = null;
   if (!r.duplicado) {
     if (pago.email) entregado = await entregarPorEmail(pago, producto, pago.email);
-    else console.warn("[pagos] pago sin email del comprador:", pago.proveedor, pago.id);
+    if (!pago.email) await avisarEntregaFallida(pago, producto, "pago sin email del comprador");
+    else if (!entregado) await avisarEntregaFallida(pago, producto, "el mail de entrega falló");
     if (r.filaId !== undefined) {
       await marcarEntrega(deps, r.filaId, pago.email ? (entregado ? "ok" : "fallo") : "sin-email", pago.email ?? undefined);
     }
