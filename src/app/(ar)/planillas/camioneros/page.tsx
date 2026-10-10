@@ -145,8 +145,8 @@ export default function PlanillaCamionerosPage() {
           a: "Si hiciste la cuenta en la calculadora del sitio en los últimos 7 días, desde este mismo navegador, la planilla te llega con esa categoría, mes y antigüedad ya cargados en el Liquidador y en la primera fila de la Nómina. Si no, viene con un ejemplo y la completás en un minuto: son desplegables.",
         },
         {
-          q: "¿Por qué no está septiembre de 2026?",
-          a: "Porque cargamos cada mes desde la planilla firmada que publica FADEEAC, no desde un porcentaje que circula en los medios. Así evitamos el error de julio, cuando la revisión del acuerdo subió el básico 4,22% y no el 1,5% que se anunciaba. Cuando sale la planilla del mes, la cargamos y te llega actualizada.",
+          q: "¿De dónde salen los básicos de cada mes?",
+          a: "De la planilla firmada que publica FADEEAC para cada mes, no de un porcentaje que circula en los medios. Así evitamos el error de julio, cuando la revisión del acuerdo subió el básico 4,22% y no el 1,5% que se anunciaba. Cuando sale una planilla nueva, la cargamos y te llega la planilla actualizada.",
         },
         {
           q: "¿Los números son los mismos que los de la calculadora gratis?",

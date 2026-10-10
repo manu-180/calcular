@@ -1,21 +1,22 @@
 // Viáticos y adicionales por viaje del CCT 40/89, leídos de la hoja 2 («Viáticos y otros adicionales que
-// conforman los salarios») de la planilla firmada de AGOSTO 2026. Es la única planilla de la que se
-// transcribieron: la planilla paga los trae como celdas editables y avisa que son de ese mes.
+// conforman los salarios») de la planilla firmada de OCTUBRE 2026 (página 4 del PDF de sep-26 a feb-27).
+// Se transcribe un solo mes: la planilla paga los trae como celdas editables y avisa que son de ese mes.
+// Los cuatro valores suben con el mismo factor que los básicos (oct/sep = 1,028187): así se verificó.
 //
 // El motor del sitio (calcularCamioneros) no los usa: la calculadora gratis no pregunta kilómetros. Por
 // eso viven acá y no en src/data — si la calculadora los suma algún día, se mudan a
 // src/data/convenios/camioneros.ts junto a ESCALAS_POR_MES.
 
 export const VIATICOS_CAMIONEROS = {
-  mesId: "agosto-2026",
-  etiquetaMes: "Agosto 2026",
-  planilla: "https://www.fadeeac.org.ar/wp-content/uploads/2026/08/Planillas-de-escalas-salariales-agosto-2026-OK.pdf",
-  consultadoEl: "2026-10-06",
+  mesId: "octubre-2026",
+  etiquetaMes: "Octubre 2026",
+  planilla: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/3-Planillas-salariales-acuerdo-SEPT-2026-a-FEB-2027.pdf",
+  consultadoEl: "2026-10-10",
   /** Ítem 4.2.3 (horas extraordinarias por km, remunerativo) e ítem 4.2.4 (viático por km, no remunerativo): mismo valor por km. */
-  porKm: 86.07469,
-  comida: 16_463.15,
-  viaticoEspecial: 8_261.18,
-  pernoctada: 19_175,
+  porKm: 90.09389,
+  comida: 17_231.89,
+  viaticoEspecial: 8_646.93,
+  pernoctada: 20_070.36,
   /** Ítem 4.2.4: «no podrá ser inferior a 350 km por día por persona en viaje». */
   kmMinimoPorDia: 350,
 } as const;

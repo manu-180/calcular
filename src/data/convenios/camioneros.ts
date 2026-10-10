@@ -1,5 +1,6 @@
 // Camioneros — CCT 40/89 (Transporte Automotor de Cargas, Logística y Servicios)
-// Paritaria 2026: acuerdo del 13/3/2026, homologado por la Disposición DNRyRT 455/2026.
+// Paritaria 2026: acuerdo del 13/3/2026 (Disp. DNRyRT 455/2026) y acuerdo del 18/9/2026, que fija
+// septiembre 2026 a febrero 2027 (Disp. DNRyRT 1277/2026).
 //
 // LOS BÁSICOS SON LA TABLA OFICIAL FIRMADA, NO UNA DERIVACIÓN. FADEEAC —la cámara
 // empresaria, el equivalente de CAMARCO para UOCRA— publica la planilla salarial mes a mes
@@ -21,9 +22,9 @@
 export const CAMIONEROS_FUENTES = {
   circular: {
     nombre:
-      "FADEEAC: planillas salariales firmadas del CCT 40/89 (marzo a agosto 2026)",
+      "FADEEAC: planillas salariales firmadas del CCT 40/89 (marzo 2026 a febrero 2027)",
     url: "https://www.fadeeac.org.ar/departamento-legislacion-legales-y-seguros/",
-    consultadoEl: "2026-09-20",
+    consultadoEl: "2026-10-10",
   },
   acuerdo: {
     nombre: "Acuerdo paritario del 13/3/2026: CCT 40/89 (marzo a agosto 2026), PDF firmado",
@@ -41,14 +42,31 @@ export const CAMIONEROS_FUENTES = {
     url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/08/REVISION-Acuerdo-Julio-Agosto-2026.pdf",
     consultadoEl: "2026-09-20",
   },
+  acuerdo2: {
+    nombre: "Acuerdo paritario del 18/9/2026: CCT 40/89 (septiembre 2026 a febrero 2027), PDF firmado",
+    url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/1-Acuerdo-paritario-Sep-2026-Feb2027.pdf",
+    consultadoEl: "2026-10-10",
+  },
+  homologacion2: {
+    nombre: "Disposición DNRyRT 1277/2026: homologación del acuerdo del 18/9/2026",
+    url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/Disp.-1277-26-Homolog.-paritaria-sep26-Feb27.pdf",
+    consultadoEl: "2026-10-10",
+  },
+  asignacion: {
+    nombre:
+      "Acuerdo del 18/9/2026: asignación extraordinaria no remunerativa de $1.200.000 (4 cuotas de $300.000 desde enero 2027)",
+    url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/2-Acuerdo-Asignacion-Ext.No-Remunerativa.pdf",
+    consultadoEl: "2026-10-10",
+  },
   verificacion: {
-    nombre: "FADEEAC: planilla salarial de agosto 2026 con revisión (PDF firmado)",
-    url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/08/Planillas-de-escalas-salariales-agosto-2026-OK.pdf",
-    consultadoEl: "2026-09-20",
+    nombre: "FADEEAC: planillas salariales firmadas de septiembre 2026 a febrero 2027 (PDF)",
+    url: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/3-Planillas-salariales-acuerdo-SEPT-2026-a-FEB-2027.pdf",
+    consultadoEl: "2026-10-10",
   },
 };
 
-export const CAMIONEROS_HOMOLOGACION = "Disposición DNRyRT 455/2026";
+/** La homologación del último acuerdo cargado. Cada mes trae la suya en `MESES_CAMIONEROS`. */
+export const CAMIONEROS_HOMOLOGACION = "Disposición DNRyRT 1277/2026";
 
 export const CAMIONEROS_APORTES_REMUNERATIVO = 0.17;
 export const CAMIONEROS_ANTIGUEDAD_POR_ANIO = 0.01;
@@ -164,6 +182,72 @@ export const ESCALAS_POR_MES: Record<string, Record<CategoriaCamionerosId, numbe
     "taller-oficial": 1_080_223.62,
     "taller-medio-oficial": 1_020_444.59,
   },
+  "septiembre-2026": {
+    "chofer-primera": 1_095_276.83,
+    "chofer-segunda": 1_075_758.58,
+    "chofer-tercera": 1_056_220.57,
+    "encargado": 1_029_405.64,
+    "peon": 1_000_329.49,
+    "ayudante-mayor": 981_158.36,
+    "taller-oficial-primera": 1_219_842.46,
+    "taller-oficial": 1_099_667.65,
+    "taller-medio-oficial": 1_038_812.59,
+  },
+  "octubre-2026": {
+    "chofer-primera": 1_126_149.40,
+    "chofer-segunda": 1_106_080.99,
+    "chofer-tercera": 1_085_992.26,
+    "encargado": 1_058_421.50,
+    "peon": 1_028_525.78,
+    "ayudante-mayor": 1_008_814.27,
+    "taller-oficial-primera": 1_254_226.16,
+    "taller-oficial": 1_130_663.98,
+    "taller-medio-oficial": 1_068_093.60,
+  },
+  "noviembre-2026": {
+    "chofer-primera": 1_145_293.94,
+    "chofer-segunda": 1_124_884.37,
+    "chofer-tercera": 1_104_454.13,
+    "encargado": 1_076_414.67,
+    "peon": 1_046_010.72,
+    "ayudante-mayor": 1_025_964.11,
+    "taller-oficial-primera": 1_275_548.00,
+    "taller-oficial": 1_149_885.27,
+    "taller-medio-oficial": 1_086_251.19,
+  },
+  "diciembre-2026": {
+    "chofer-primera": 1_163_618.64,
+    "chofer-segunda": 1_142_882.52,
+    "chofer-tercera": 1_122_125.40,
+    "encargado": 1_093_637.30,
+    "peon": 1_062_746.89,
+    "ayudante-mayor": 1_042_379.54,
+    "taller-oficial-primera": 1_295_956.77,
+    "taller-oficial": 1_168_283.43,
+    "taller-medio-oficial": 1_103_631.21,
+  },
+  "enero-2027": {
+    "chofer-primera": 1_182_236.54,
+    "chofer-segunda": 1_161_168.64,
+    "chofer-tercera": 1_140_079.41,
+    "encargado": 1_111_135.50,
+    "peon": 1_079_750.84,
+    "ayudante-mayor": 1_059_057.61,
+    "taller-oficial-primera": 1_316_692.08,
+    "taller-oficial": 1_186_975.96,
+    "taller-medio-oficial": 1_121_289.31,
+  },
+  "febrero-2027": {
+    "chofer-primera": 1_199_970.09,
+    "chofer-segunda": 1_178_586.17,
+    "chofer-tercera": 1_157_180.60,
+    "encargado": 1_127_802.53,
+    "peon": 1_095_947.10,
+    "ayudante-mayor": 1_074_943.47,
+    "taller-oficial-primera": 1_336_442.46,
+    "taller-oficial": 1_204_780.60,
+    "taller-medio-oficial": 1_138_108.65,
+  },
 };
 
 /** El básico oficial de una categoría en un mes. Es una lectura de tabla, no un cálculo. */
@@ -185,6 +269,8 @@ export type MesCamioneros = {
   anio: number;
   /** PDF firmado del que salió la tabla de ESE mes. */
   planillaOficial: string;
+  /** La disposición que homologó el acuerdo de ESE mes. */
+  homologacion: string;
   cambios: string;
 };
 
@@ -195,6 +281,7 @@ export const MESES_CAMIONEROS: MesCamioneros[] = [
     mes: 3,
     anio: 2026,
     planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/03/Planilla-MARZO-26.pdf",
+    homologacion: "Disposición DNRyRT 455/2026",
     cambios:
       "Primer tramo del acuerdo del 13/3/2026. Además, suma no remunerativa de $53.000 por única vez con los haberes de marzo (cláusula PRIMERA).",
   },
@@ -204,6 +291,7 @@ export const MESES_CAMIONEROS: MesCamioneros[] = [
     mes: 4,
     anio: 2026,
     planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/03/Planilla-ABRIL-26.pdf",
+    homologacion: "Disposición DNRyRT 455/2026",
     cambios:
       "Se incorporan al básico $49.471 de la suma no remunerativa de marzo (al Chofer de Primera, y en proporción al resto). Además, corre el tramo de abril.",
   },
@@ -213,6 +301,7 @@ export const MESES_CAMIONEROS: MesCamioneros[] = [
     mes: 5,
     anio: 2026,
     planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/03/Planilla-MAYO-26.pdf",
+    homologacion: "Disposición DNRyRT 455/2026",
     cambios:
       "Tramo de mayo: +1,7% sobre el básico de abril.",
   },
@@ -222,6 +311,7 @@ export const MESES_CAMIONEROS: MesCamioneros[] = [
     mes: 6,
     anio: 2026,
     planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/03/Planilla-JUNIO-26.pdf",
+    homologacion: "Disposición DNRyRT 455/2026",
     cambios:
       "Tramo de junio: +1,6% sobre el básico de mayo.",
   },
@@ -231,6 +321,7 @@ export const MESES_CAMIONEROS: MesCamioneros[] = [
     mes: 7,
     anio: 2026,
     planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/08/Planilla-de-escalas-salariales-julio-2026-OK.pdf",
+    homologacion: "Disposición DNRyRT 455/2026",
     cambios:
       "+4,22% sobre junio: acá entra la REVISIÓN de la cláusula TERCERA (no es el +1,5% del tramo original). La escala de julio se republicó firmada en agosto.",
   },
@@ -240,7 +331,68 @@ export const MESES_CAMIONEROS: MesCamioneros[] = [
     mes: 8,
     anio: 2026,
     planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/08/Planillas-de-escalas-salariales-agosto-2026-OK.pdf",
+    homologacion: "Disposición DNRyRT 455/2026",
     cambios:
-      "Último tramo del acuerdo: +1,5% sobre el básico de julio (ya revisado). La próxima ronda de negociación está pactada para septiembre de 2026.",
+      "Último tramo del acuerdo: +1,5% sobre el básico de julio (ya revisado). Desde septiembre rige el acuerdo del 18/9/2026.",
+  },
+  {
+    id: "septiembre-2026",
+    etiqueta: "Septiembre 2026",
+    mes: 9,
+    anio: 2026,
+    planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/3-Planillas-salariales-acuerdo-SEPT-2026-a-FEB-2027.pdf",
+    homologacion: "Disposición DNRyRT 1277/2026",
+    cambios:
+      "Primer tramo del acuerdo del 18/9/2026: +1,8% sobre el básico de agosto. Además, suma no remunerativa de $18.000 por única vez con los haberes de septiembre (cláusula PRIMERA).",
+  },
+  {
+    id: "octubre-2026",
+    etiqueta: "Octubre 2026",
+    mes: 10,
+    anio: 2026,
+    planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/3-Planillas-salariales-acuerdo-SEPT-2026-a-FEB-2027.pdf",
+    homologacion: "Disposición DNRyRT 1277/2026",
+    cambios:
+      "Tramo de octubre: +1,7% sobre septiembre, y se incorporan al básico $12.252,86 de la suma no remunerativa de septiembre (al Chofer de Primera, y en proporción al resto). En total, +2,82%.",
+  },
+  {
+    id: "noviembre-2026",
+    etiqueta: "Noviembre 2026",
+    mes: 11,
+    anio: 2026,
+    planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/3-Planillas-salariales-acuerdo-SEPT-2026-a-FEB-2027.pdf",
+    homologacion: "Disposición DNRyRT 1277/2026",
+    cambios:
+      "Tramo de noviembre: +1,7% sobre el básico de octubre.",
+  },
+  {
+    id: "diciembre-2026",
+    etiqueta: "Diciembre 2026",
+    mes: 12,
+    anio: 2026,
+    planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/3-Planillas-salariales-acuerdo-SEPT-2026-a-FEB-2027.pdf",
+    homologacion: "Disposición DNRyRT 1277/2026",
+    cambios:
+      "Tramo de diciembre: +1,6% sobre el básico de noviembre. El acuerdo prevé una revisión en la primera quincena de diciembre contra la inflación de septiembre a noviembre.",
+  },
+  {
+    id: "enero-2027",
+    etiqueta: "Enero 2027",
+    mes: 1,
+    anio: 2027,
+    planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/3-Planillas-salariales-acuerdo-SEPT-2026-a-FEB-2027.pdf",
+    homologacion: "Disposición DNRyRT 1277/2026",
+    cambios:
+      "Tramo de enero: +1,6% sobre el básico de diciembre. Además, empieza la asignación extraordinaria no remunerativa: 4 cuotas de $300.000 (enero a abril de 2027).",
+  },
+  {
+    id: "febrero-2027",
+    etiqueta: "Febrero 2027",
+    mes: 2,
+    anio: 2027,
+    planillaOficial: "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/3-Planillas-salariales-acuerdo-SEPT-2026-a-FEB-2027.pdf",
+    homologacion: "Disposición DNRyRT 1277/2026",
+    cambios:
+      "Último tramo del acuerdo del 18/9/2026: +1,5% sobre el básico de enero. Hay una revisión pactada para la primera quincena de marzo de 2027.",
   },
 ];

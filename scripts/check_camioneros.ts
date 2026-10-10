@@ -42,6 +42,14 @@ const PLANILLA_FADEEAC: Record<string, Partial<Record<CategoriaCamionerosId, num
   "junio-2026": { "chofer-primera": 1_017_089.13, peon: 928_919.73, "taller-oficial": 1_021_166.49 },
   "julio-2026": { "chofer-primera": 1_060_010.29, peon: 968_120.14, "taller-oficial": 1_064_259.72 },
   "agosto-2026": { "chofer-primera": 1_075_910.44, peon: 982_641.94, "taller-oficial": 1_080_223.62 },
+  // Acuerdo del 18/9/2026: un solo PDF con las seis planillas (páginas impares), escaneado.
+  // Además de esta transcripción, cada número se cruzó contra su columna «por día» (= mes / 24).
+  "septiembre-2026": { "chofer-primera": 1_095_276.83, peon: 1_000_329.49, "taller-oficial": 1_099_667.65 },
+  "octubre-2026": { "chofer-primera": 1_126_149.4, peon: 1_028_525.78, "taller-oficial": 1_130_663.98 },
+  "noviembre-2026": { "chofer-primera": 1_145_293.94, peon: 1_046_010.72, "taller-oficial": 1_149_885.27 },
+  "diciembre-2026": { "chofer-primera": 1_163_618.64, peon: 1_062_746.89, "taller-oficial": 1_168_283.43 },
+  "enero-2027": { "chofer-primera": 1_182_236.54, peon: 1_079_750.84, "taller-oficial": 1_186_975.96 },
+  "febrero-2027": { "chofer-primera": 1_199_970.09, peon: 1_095_947.1, "taller-oficial": 1_204_780.6 },
 };
 
 for (const [mesId, filas] of Object.entries(PLANILLA_FADEEAC)) {
@@ -90,6 +98,28 @@ check(
 check(
   Math.abs(saltoChofer1("julio-2026", "agosto-2026") - 0.015) < 1e-5,
   `julio→agosto: +${(saltoChofer1("julio-2026", "agosto-2026") * 100).toFixed(2)}% (acuerdo: +1,50%)`,
+);
+
+for (const [a, b, pct] of [
+  ["agosto-2026", "septiembre-2026", 0.018],
+  ["octubre-2026", "noviembre-2026", 0.017],
+  ["noviembre-2026", "diciembre-2026", 0.016],
+  ["diciembre-2026", "enero-2027", 0.016],
+  ["enero-2027", "febrero-2027", 0.015],
+] as const) {
+  check(
+    Math.abs(saltoChofer1(a, b) - pct) < 1e-5,
+    `${a}→${b}: +${(saltoChofer1(a, b) * 100).toFixed(2)}% (planilla del acuerdo del 18/9: +${(pct * 100).toFixed(2)}%)`,
+  );
+}
+
+// Septiembre→octubre: el tramo de octubre (+1,7%) corre sobre el básico de septiembre y DESPUÉS se
+// suman los $12.252,86 que la cláusula PRIMERA incorpora al Chofer de Primera. Al revés (incorporar y
+// después subir) da $208 de más: se probó contra la planilla y no cierra.
+const octubreDerivado = basicoCamioneros("septiembre-2026", "chofer-primera")! * 1.017 + 12_252.86;
+check(
+  Math.abs(octubreDerivado - basicoCamioneros("octubre-2026", "chofer-primera")!) < 0.01,
+  `septiembre→octubre: básico × 1,017 + $12.252,86 = $${octubreDerivado.toFixed(2)} = planilla de octubre`,
 );
 
 // Marzo→abril se deriva de la cláusula PRIMERA: al Chofer de Primera se le incorporan al

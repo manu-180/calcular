@@ -7,6 +7,25 @@ import type { Novedad } from "@/lib/novedades";
 
 export const NOVEDADES_REGISTRADAS: Novedad[] = [
   {
+    "id": "camioneros-2026-09-a-2027-02",
+    "serie": "camioneros",
+    "organismo": "Camioneros (FADEEAC)",
+    "tipo": "dato",
+    "cargadoEl": "2026-10-10",
+    "rigeDesde": "2026-09-01",
+    "titulo": "Camioneros: escala de septiembre a febrero",
+    "detalle": "FADEEAC publicó las planillas firmadas del acuerdo del 18 de septiembre. Un chofer de primera cobra $ 1.095.276,83 en septiembre y $ 1.126.149,40 en octubre, y llega a $ 1.199.970,09 en febrero de 2027. De enero a abril se suman cuatro cuotas no remunerativas de $ 300.000.",
+    "fuente": {
+      "nombre": "FADEEAC · Planillas salariales firmadas de septiembre 2026 a febrero 2027",
+      "url": "https://www.fadeeac.org.ar/wp-content/uploads/2026/10/3-Planillas-salariales-acuerdo-SEPT-2026-a-FEB-2027.pdf"
+    },
+    "rutas": [
+      "/convenios/camioneros",
+      "/sueldo-neto/camioneros",
+      "/planillas/camioneros"
+    ]
+  },
+  {
     "id": "aportes-casas-2026-09",
     "serie": "aportes-casas",
     "organismo": "ARCA",

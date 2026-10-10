@@ -10,7 +10,6 @@ import {
   CAMIONEROS_ANTIGUEDAD_POR_ANIO,
   CAMIONEROS_BASE_MAYO,
   CAMIONEROS_FUENTES,
-  CAMIONEROS_HOMOLOGACION,
   CATEGORIAS_CAMIONEROS,
   MESES_CAMIONEROS,
   basicoCamioneros,
@@ -97,7 +96,7 @@ export default async function CamionerosMesPage({
       {
         ...datasetSchema({
           nombre: `Escala salarial de camioneros, ${mes.etiqueta} (CCT 40/89)`,
-          descripcion: `Básicos por categoría del CCT 40/89 (camioneros) vigentes en ${mes.etiqueta}. Chofer de Primera: ${formatARS(chofer1, 0)}. Homologado por ${CAMIONEROS_HOMOLOGACION}.`,
+          descripcion: `Básicos por categoría del CCT 40/89 (camioneros) vigentes en ${mes.etiqueta}. Chofer de Primera: ${formatARS(chofer1, 0)}. Homologado por ${mes.homologacion}.`,
           url: `/convenios/camioneros/${mes.id}`,
           modificado: `${mes.anio}-${String(mes.mes).padStart(2, "0")}-01`,
           fuenteNombre: CAMIONEROS_FUENTES.circular.nombre,
@@ -135,7 +134,7 @@ export default async function CamionerosMesPage({
           {mes.cambios} Básico de Chofer de Primera:{" "}
           <strong className="text-zinc-900">{formatARS(chofer1, 0)}</strong>.
           Homologado por la{" "}
-          <strong>{CAMIONEROS_HOMOLOGACION}</strong>.
+          <strong>{mes.homologacion}</strong>.
         </p>
       </header>
 
@@ -146,7 +145,7 @@ export default async function CamionerosMesPage({
           {variacionMensual !== null ? (
             <> ({pctConSigno(variacionMensual)} contra {anterior!.etiqueta.toLowerCase()})</>
           ) : null}
-          , homologado por la {CAMIONEROS_HOMOLOGACION}. Abajo tenés la escala completa por
+          , homologado por la {mes.homologacion}. Abajo tenés la escala completa por
           categoría (choferes, peones, taller). A eso se suman la antigüedad y los adicionales del
           convenio. Tu sueldo exacto lo sacás en la{" "}
           <Link href="/convenios/camioneros">calculadora de sueldo de camioneros</Link>.
@@ -356,7 +355,7 @@ export default async function CamionerosMesPage({
               ) : (
                 <>
                   {mes.etiqueta} es el último mes que homologó la{" "}
-                  {CAMIONEROS_HOMOLOGACION}. Todavía no se publicó el aumento siguiente.
+                  {mes.homologacion}. Todavía no se publicó el aumento siguiente.
                 </>
               )}
             </p>

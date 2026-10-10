@@ -7,5 +7,5 @@ export const VIGENCIAS_PUBLICADAS = {
   asignaciones: "2026-10 · Resolución ANSES 283/2026",
   uocra: "octubre-2026",
   comercio: "octubre-2026",
-  camioneros: "agosto-2026",
+  camioneros: "octubre-2026",
 } as const;

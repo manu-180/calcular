@@ -59,7 +59,7 @@ const ACUMULADO = (
 const faqs = [
   {
     q: `¿Cuánto cobra un Chofer de Primera en ${MES_TXT}?`,
-    a: `El básico de un Chofer de Primera en ${MES_TXT} es ${formatARS(CHOFER1_MES, 0)}, según la escala del CCT 40/89 (acuerdo homologado por la Disposición DNRyRT 455/2026, con la revisión de julio). A eso se suma la antigüedad: 1% del básico por cada año. Después de descontar el 17% de aportes de ley, te quedan unos ${formatARS(CHOFER1_NETO, 0)} en mano.`,
+    a: `El básico de un Chofer de Primera en ${MES_TXT} es ${formatARS(CHOFER1_MES, 0)}, según la escala del CCT 40/89 (acuerdos homologados por las Disposiciones DNRyRT 455/2026 y 1277/2026). A eso se suma la antigüedad: 1% del básico por cada año. Después de descontar el 17% de aportes de ley, te quedan unos ${formatARS(CHOFER1_NETO, 0)} en mano.`,
   },
   {
     q: "¿Qué convenio cubre a los camioneros?",
@@ -67,7 +67,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto es el aumento de camioneros en 2026?",
-    a: `El acuerdo del 13/3/2026 (homologado por la Disposición DNRyRT 455/2026) fijó aumentos mensuales sobre el básico del mes anterior: marzo +2,0%, abril +1,8% (y la suma no remunerativa de marzo pasó al básico), mayo +1,7% y junio +1,6%. Julio no quedó en el +1,5% original: la revisión de la cláusula TERCERA lo llevó a +4,22% sobre junio. Agosto sumó +1,5% sobre ese julio revisado. En total, el básico del Chofer de Primera subió ${ACUMULADO.toLocaleString("es-AR", { maximumFractionDigits: 1 })}% entre febrero y agosto de 2026. El 18/9/2026 se firmó el acuerdo siguiente (septiembre de 2026 a febrero de 2027). Cargamos esos básicos cuando FADEEAC publique las planillas firmadas. Hasta entonces, la de ${ULTIMO.etiqueta.toLowerCase()} es la última escala con planilla oficial.`,
+    a: `El acuerdo del 13/3/2026 (homologado por la Disposición DNRyRT 455/2026) fijó aumentos mensuales sobre el básico del mes anterior: marzo +2,0%, abril +1,8% (y la suma no remunerativa de marzo pasó al básico), mayo +1,7% y junio +1,6%. Julio no quedó en el +1,5% original: la revisión de la cláusula TERCERA lo llevó a +4,22% sobre junio, y agosto sumó +1,5%. El acuerdo del 18/9/2026 (Disposición DNRyRT 1277/2026) sigue con septiembre +1,8% y una suma no remunerativa única de $18.000; octubre +1,7% más $12.252,86 que pasan al básico; noviembre +1,7%; diciembre y enero +1,6%, y febrero de 2027 +1,5%. Además, paga una asignación extraordinaria no remunerativa de $1.200.000 en cuatro cuotas de $300.000, de enero a abril de 2027. En total, el básico del Chofer de Primera sube ${ACUMULADO.toLocaleString("es-AR", { maximumFractionDigits: 1 })}% entre febrero de 2026 y ${ULTIMO.etiqueta.toLowerCase()}.`,
   },
   {
     q: "¿Hay zonas o regiones en la escala de camioneros?",
@@ -107,7 +107,7 @@ export default function CamionerosPage() {
       datasetSchema({
         nombre: "Escala salarial Camioneros 2026 (CCT 40/89)",
         descripcion:
-          "Básicos por categoría del CCT 40/89 (Transporte Automotor de Cargas), marzo a agosto de 2026, escala nacional única, transcriptos de las planillas salariales firmadas que publica FADEEAC.",
+          "Básicos por categoría del CCT 40/89 (Transporte Automotor de Cargas), marzo de 2026 a febrero de 2027, escala nacional única, transcriptos de las planillas salariales firmadas que publica FADEEAC.",
         url: "/convenios/camioneros",
         modificado: "2026-06-13",
         fuenteNombre: CAMIONEROS_HOMOLOGACION,
@@ -256,8 +256,9 @@ export default function CamionerosPage() {
         </h2>
         <div className="space-y-3 text-zinc-600">
           <p>
-            La Disposición DNRyRT 455/2026 homologó el acuerdo salarial de Camioneros de marzo
-            a agosto de 2026. Cada mes, el aumento se aplica sobre el básico del mes anterior:
+            Las Disposiciones DNRyRT 455/2026 y 1277/2026 homologaron los acuerdos salariales de
+            Camioneros de marzo de 2026 a febrero de 2027. Cada mes, el aumento se aplica sobre el
+            básico del mes anterior:
           </p>
           <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
             <table className="w-full text-sm">

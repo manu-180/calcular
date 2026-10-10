@@ -199,7 +199,7 @@ function buildInstrucciones(wb: ExcelJS.Workbook) {
   bandaSeccion(ws, `A${r}:B${r}`, "LO QUE TENÉS QUE SABER DEL CCT 40/89");
   r++;
   const claves = [
-    `Escala nacional única: el básico es el mismo en todo el país. Los básicos de esta planilla son los de las planillas firmadas que publica FADEEAC, de ${MESES_CAMIONEROS[0].etiqueta.toLowerCase()} a ${ULTIMO_MES.etiqueta.toLowerCase()} (${CAMIONEROS_HOMOLOGACION} y revisión de julio).`,
+    `Escala nacional única: el básico es el mismo en todo el país. Los básicos de esta planilla son los de las planillas firmadas que publica FADEEAC, de ${MESES_CAMIONEROS[0].etiqueta.toLowerCase()} a ${ULTIMO_MES.etiqueta.toLowerCase()} (Disposiciones DNRyRT 455/2026 y 1277/2026, y revisión de julio).`,
     `Antigüedad (ítem 6.1.5): ${TASA_ANTIG * 100}% por año sobre los conceptos remunerativos. Sin kilómetros ni adicionales, es el ${TASA_ANTIG * 100}% del básico por año.`,
     `Kilómetros: el ítem 4.2.3 (horas extraordinarias por kilometraje) es remunerativo y lleva aportes; el ítem 4.2.4 (viático por km) no. Los dos valen lo mismo por km. El viático 4.2.4 no puede ser menor a ${VIATICOS_CAMIONEROS.kmMinimoPorDia} km por día de viaje, y el 4.2.3 se paga al 100% más los sábados después de las 13, domingos y feriados: esos km cargalos dobles.`,
     "Comida (4.1.12), viático especial (4.1.13), pernoctada (4.1.14) y viático por km (4.2.4) no son remunerativos (ítem 4.2.11 del convenio y art. 106 de la LCT): no llevan aportes ni entran en el aguinaldo.",
@@ -715,11 +715,14 @@ export async function generarPlanillaCamioneros(): Promise<string> {
       CAMIONEROS_FUENTES.acuerdo,
       CAMIONEROS_FUENTES.homologacion,
       CAMIONEROS_FUENTES.revision,
+      CAMIONEROS_FUENTES.acuerdo2,
+      CAMIONEROS_FUENTES.homologacion2,
+      CAMIONEROS_FUENTES.asignacion,
       AGUINALDO_FUENTES.ley23041,
       AGUINALDO_FUENTES.lct,
     ],
     fechaDMA(CAMIONEROS_FUENTES.verificacion.consultadoEl),
-    [CAMIONEROS_HOMOLOGACION],
+    ["Disposición DNRyRT 455/2026", CAMIONEROS_HOMOLOGACION],
     "Planilla de calcular.ar. Las actualizaciones del año están incluidas en el precio: cuando FADEEAC publica la planilla firmada de un mes nuevo, la cargamos y el mismo enlace de descarga te baja la versión al día.",
   );
 
