@@ -167,6 +167,12 @@ const YA_CARGADAS = new Set(
     // desde marzo, que es donde arranca el acuerdo vigente: vistas, no pendientes.
     "enero-2026-c-ajuste-15-12-25.pdf",
     "febero-2026-c-ajuste-15-12-25.pdf",
+    // Acuerdo del 18/9/2026 (sept/26-feb/27), cargado el 10/10/2026. Todo escaneado: las seis
+    // planillas son las páginas impares del PDF 3 (las pares, viáticos) y están en ESCALAS_POR_MES.
+    "1-acuerdo-paritario-sep-2026-feb2027.pdf",
+    "2-acuerdo-asignacion-ext.no-remunerativa.pdf", // $1.200.000 en 4 cuotas, enero a abril 2027
+    "3-planillas-salariales-acuerdo-sept-2026-a-feb-2027.pdf",
+    "disp.-1277-26-homolog.-paritaria-sep26-feb27.pdf",
   ].map((n) => n.toLowerCase()),
 );
 
