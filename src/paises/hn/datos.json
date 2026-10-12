@@ -1660,6 +1660,27 @@
           }
         }
       ]
+    },
+    {
+      "id": "hn.pagos-a-cuenta-cuotas",
+      "nombre": "Cuotas trimestrales del ISR en el régimen de pagos a cuenta",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Ley del Impuesto Sobre la Renta, artículo 34, texto consolidado hasta el Acuerdo SAR-07-2025",
+            "url": "https://www.sar.gob.hn/download/texto-consolidado-decreto-ley-numero-25-ley-del-impuesto-sobre-la-renta/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Cada cuota es el impuesto del año anterior entre cuatro. Las tres primeras vencen el 30 de junio, el 30 de septiembre y el 31 de diciembre; la cuarta es el saldo y vence el 30 de abril del año siguiente."
+          }
+        }
+      ]
     }
   ]
 }

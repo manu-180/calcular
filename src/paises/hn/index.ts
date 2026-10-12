@@ -22,6 +22,7 @@ import isv from "./calculadoras/isv";
 import liquidacion from "./calculadoras/liquidacion";
 import maternidad from "./calculadoras/maternidad";
 import muerteDelTrabajador from "./calculadoras/muerte-del-trabajador";
+import pagosACuenta from "./calculadoras/pagos-a-cuenta";
 import periodoDePrueba from "./calculadoras/periodo-de-prueba";
 import preaviso from "./calculadoras/preaviso";
 import prestacionesLaborales from "./calculadoras/prestaciones-laborales";
@@ -59,6 +60,7 @@ import contenidoIsv from "./contenido/isv";
 import contenidoLiquidacion from "./contenido/liquidacion";
 import contenidoMaternidad from "./contenido/maternidad";
 import contenidoMuerteDelTrabajador from "./contenido/muerte-del-trabajador";
+import contenidoPagosACuenta from "./contenido/pagos-a-cuenta";
 import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
 import contenidoPreaviso from "./contenido/preaviso";
 import contenidoPrestacionesLaborales from "./contenido/prestaciones-laborales";
@@ -115,6 +117,7 @@ export default definirPais({
     { definicion: retencionHonorarios, contenido: contenidoRetencionHonorarios, cliente: () => import("./calculadoras/retencion-honorarios.cliente") },
     { definicion: retencionUnoPorCiento, contenido: contenidoRetencionUnoPorCiento, cliente: () => import("./calculadoras/retencion-uno-por-ciento.cliente") },
     { definicion: isrEmpresas, contenido: contenidoIsrEmpresas, cliente: () => import("./calculadoras/isr-empresas.cliente") },
+    { definicion: pagosACuenta, contenido: contenidoPagosACuenta, cliente: () => import("./calculadoras/pagos-a-cuenta.cliente") },
     { definicion: gananciaDeCapital, contenido: contenidoGananciaDeCapital, cliente: () => import("./calculadoras/ganancia-de-capital.cliente") },
     { definicion: impuestoSobreDividendos, contenido: contenidoImpuestoSobreDividendos, cliente: () => import("./calculadoras/impuesto-sobre-dividendos.cliente") },
     { definicion: impuestoSobreAlquileres, contenido: contenidoImpuestoSobreAlquileres, cliente: () => import("./calculadoras/impuesto-sobre-alquileres.cliente") },
