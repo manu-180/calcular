@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { productosDeMercado } from "@/lib/pagos/catalogo-intl";
+import { rutaLandingIntl } from "@/lib/pagos/flujo-intl";
 import { rutaIntl, urlIntl } from "@/motor/seo";
 import type { CodigoMercado } from "@/motor/tipos";
 import { contextoSitio } from "@/motor/ui/contexto";
@@ -42,21 +43,33 @@ export default async function CatalogoPlanillasIntl({ params }: Props) {
         <p className="cy-bajada">{t.catalogoBajada}</p>
       </header>
       {productos.length ? (
-        <ul className="cy-tarjetas">
-          {productos.map((p) => (
-            <li key={p.id}>
-              <a className="cy-tarjeta" href={rutaIntl(m.codigo, `planillas/${p.slug}`)}>
-                <span className="cy-tarjeta-titulo">{p.titulo}</span>
-                <span className="cy-tarjeta-texto">
-                  {p.paraQuien}. {precioIntl(p, m.locale)}
-                </span>
-                <span className="cy-boton-icono">
-                  <IconoFlecha />
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <>
+          {[
+            { titulo: t.seccionPlanillas, lista: productos.filter((p) => p.tipo === "planilla") },
+            { titulo: t.seccionInformes, lista: productos.filter((p) => p.tipo === "informe") },
+          ]
+            .filter((g) => g.lista.length)
+            .map((g) => (
+              <section key={g.titulo} className="cy-relacionadas" aria-label={g.titulo}>
+                <h2>{g.titulo}</h2>
+                <ul className="cy-tarjetas">
+                  {g.lista.map((p) => (
+                    <li key={p.id}>
+                      <a className="cy-tarjeta" href={rutaLandingIntl(p)}>
+                        <span className="cy-tarjeta-titulo">{p.titulo}</span>
+                        <span className="cy-tarjeta-texto">
+                          {p.paraQuien}. {precioIntl(p, m.locale)}
+                        </span>
+                        <span className="cy-boton-icono">
+                          <IconoFlecha />
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+        </>
       ) : (
         <>
           <p className="cy-vacio">{t.catalogoVacio}</p>

@@ -9,7 +9,10 @@ import { contextoSitio } from "@/motor/ui/contexto";
 import { IconoFlecha } from "@/motor/ui/Iconos";
 import { Migas } from "@/motor/ui/Sitio";
 import { registro } from "@/paises";
+import { AvisoPronto } from "@/motor/ui/Oferta";
+import { SeccionesProducto } from "../_secciones";
 import { precioIntl, textosPlanillas } from "../_textos";
+import "@/motor/ui/estilos-oferta.css";
 
 export const revalidate = 3600;
 
@@ -19,7 +22,7 @@ export function generateStaticParams({ params }: { params: { mercado: string } }
   if (!intlActivo()) return [];
   if (!registro.mercados(modoPublicacion()).some((m) => m.codigo === params.mercado)) return [];
   return catalogoIntl()
-    .filter((p) => p.mercado === params.mercado)
+    .filter((p) => p.mercado === params.mercado && p.tipo === "planilla")
     .map((p) => ({ producto: p.slug }));
 }
 
@@ -27,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { mercado, producto } = await params;
   const ctx = contextoSitio(registro, mercado as CodigoMercado);
   const p = ctx ? productoIntlDe(ctx.mercado.codigo, producto) : null;
-  if (!ctx || !p) return {};
+  if (!ctx || !p || p.tipo !== "planilla") return {};
   return {
     title: `${p.titulo} | CalcularYa`,
     description: `${p.paraQuien}. ${precioIntl(p, ctx.mercado.locale)}, con actualizaciones incluidas.`,
@@ -40,7 +43,7 @@ export default async function LandingPlanillaIntl({ params }: Props) {
   const { mercado, producto } = await params;
   const ctx = contextoSitio(registro, mercado as CodigoMercado);
   const p = ctx ? productoIntlDe(ctx.mercado.codigo, producto) : null;
-  if (!ctx || !p) notFound();
+  if (!ctx || !p || p.tipo !== "planilla") notFound();
   const m = ctx.mercado;
   const t = textosPlanillas(m);
   const precio = precioIntl(p, m.locale);
@@ -64,6 +67,7 @@ export default async function LandingPlanillaIntl({ params }: Props) {
             <li key={x}>{x}</li>
           ))}
         </ul>
+        <SeccionesProducto ctx={ctx} producto={p} textos={{ calculadoras: t.calculadoras, fuentes: t.fuentes }} />
       </div>
       {ventaIntlActiva() ? (
         <p>
@@ -75,7 +79,9 @@ export default async function LandingPlanillaIntl({ params }: Props) {
           </a>
         </p>
       ) : (
-        <p className="cy-pildora">{t.pronto}</p>
+        <div style={{ maxWidth: "30rem" }}>
+          <AvisoPronto producto={p.id} trato={m.trato} />
+        </div>
       )}
       <p className="cy-vacio">{t.pagoUnico}</p>
     </div>
