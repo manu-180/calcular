@@ -44,6 +44,14 @@ import garantiaPrestaciones from "./calculadoras/garantia-prestaciones";
 import contenidoGarantiaPrestaciones from "./contenido/garantia-prestaciones";
 import interesesPrestaciones from "./calculadoras/intereses-prestaciones";
 import contenidoInteresesPrestaciones from "./contenido/intereses-prestaciones";
+import reposoPreYPostnatal from "./calculadoras/reposo-pre-y-postnatal";
+import contenidoReposoPreYPostnatal from "./contenido/reposo-pre-y-postnatal";
+import permisoDePaternidad from "./calculadoras/permiso-de-paternidad";
+import contenidoPermisoDePaternidad from "./contenido/permiso-de-paternidad";
+import sueldoEnBolivares from "./calculadoras/sueldo-en-bolivares";
+import contenidoSueldoEnBolivares from "./contenido/sueldo-en-bolivares";
+import poderAdquisitivo from "./calculadoras/poder-adquisitivo";
+import contenidoPoderAdquisitivo from "./contenido/poder-adquisitivo";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -78,6 +86,10 @@ export default definirPais({
     { definicion: anticipoPrestaciones, contenido: contenidoAnticipoPrestaciones, cliente: () => import("./calculadoras/anticipo-prestaciones.cliente") },
     { definicion: garantiaPrestaciones, contenido: contenidoGarantiaPrestaciones, cliente: () => import("./calculadoras/garantia-prestaciones.cliente") },
     { definicion: interesesPrestaciones, contenido: contenidoInteresesPrestaciones, cliente: () => import("./calculadoras/intereses-prestaciones.cliente") },
+    { definicion: reposoPreYPostnatal, contenido: contenidoReposoPreYPostnatal, cliente: () => import("./calculadoras/reposo-pre-y-postnatal.cliente") },
+    { definicion: permisoDePaternidad, contenido: contenidoPermisoDePaternidad, cliente: () => import("./calculadoras/permiso-de-paternidad.cliente") },
+    { definicion: sueldoEnBolivares, contenido: contenidoSueldoEnBolivares, cliente: () => import("./calculadoras/sueldo-en-bolivares.cliente") },
+    { definicion: poderAdquisitivo, contenido: contenidoPoderAdquisitivo, cliente: () => import("./calculadoras/poder-adquisitivo.cliente") },
   ],
   novedades,
   detectores,
