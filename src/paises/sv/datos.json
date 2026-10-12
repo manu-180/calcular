@@ -1101,14 +1101,14 @@
           "valor": 20,
           "fuente": {
             "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
-            "titulo": "Código de Trabajo, art. 133 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "titulo": "Código de Trabajo, arts. 133 y 136 (texto vigente con reformas hasta el D.L. 433 de 2025)",
             "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
             "tipo": "primaria",
             "verificadoEl": "2026-10-12"
           }
         }
       ],
-      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+      "nota": "Art. 133: sobre lo que pasa del salario mínimo. Art. 136: sobre todo el salario cuando demanda un banco, aseguradora, institución de crédito o cooperativa por un préstamo. Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
     },
     {
       "id": "sv.recargo-descanso-semanal",
@@ -1894,6 +1894,27 @@
           }
         }
       ]
+    },
+    {
+      "id": "sv.renuncia-plazo-pago",
+      "nombre": "Días que tiene el patrono para pagar la prestación por renuncia",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Reguladora de la Prestación Económica por Renuncia Voluntaria (D.L. 592 de 2013), art. 8",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/64753625-5A99-425D-B845-BF2719C6A710.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se cuentan desde que la renuncia se hace efectiva."
     }
   ]
 }
