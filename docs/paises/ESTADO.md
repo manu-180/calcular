@@ -1,5 +1,76 @@
 # Estado de calcularya.com (multi-país)
 
+Última actualización: 2026-10-12 (sesión «calcularya igual a calcular.ar, con 16 países completos»).
+Rama de integración `claude/calcularya-tanda2`; estado por país en la tabla de abajo.
+
+## Tanda 2 (12/10/2026): paridad total con calcular.ar y 614 calculadoras
+
+Pedido de Manuel: misma experiencia que calcular.ar al detalle (foco verde incluido), muchas más
+calculadoras por país, algo para vender en cada una, arrancar en el país de la persona, novedades
+automáticas y datos citados a su fuente.
+
+| País | Antes | Ahora (publicadas) | Notas de la expansión |
+|---|---|---|---|
+| Paraguay `py` | 14 | 44 | 3 series nuevas del BCP (real, peso argentino, euro) |
+| Colombia `co` | 18 | 43 | reforma pensional 1/4/2027 y reforma tributaria 2026 con aviso |
+| Perú `pe` | 17 | 41 | 56 datos, 0 sin verificar; serie del FSD |
+| México `mx` | 16 | 40 | CETES (4 series), detectores de Banxico con reintento; `retiro-por-desempleo` en borrador |
+| Uruguay `uy` | 14 | 40 | serie UR; topes del BPS con detector |
+| Costa Rica `cr` | 12 | 40 | TBP del BCCR; `salario-base` en borrador |
+| República Dominicana `do` | 13 | 40 | Ley 30-26 (retenciones 15 % desde 1/7/2026); IPC sin detector |
+| Panamá `pa` | 12 | 40 | Ley 462 de 2025 (CSS) |
+| Nicaragua `ni` | 12 | 40 | 69 datos, 0 sin verificar |
+| Ecuador `ec` | 15 | 39 | `jubilacion-iess` en borrador (pensiones mínima/máxima solo en prensa) |
+| Chile `cl` | 14 | 38 | Ley 21.735 (cotización del empleador por tramos); caso de UF corregido |
+| Bolivia `bo` | 14 | 36 | `horas-extras` sigue en borrador (recargo sin fuente legible) |
+| Guatemala `gt` | 8 | 36 | IVA, bonificación incentivo y sueldo líquido pasaron a publicado |
+| Honduras `hn` | 9 | 36 | décimo tercer mes publicado (Decreto 112-82 leído); salario neto y costo empleador en borrador (techo IHSS 2026) |
+| El Salvador `sv` | 9 | 33 | ISSS y aguinaldo 2026 verificados |
+| Venezuela `ve` | 9 | 28 | solo lo que tiene fuente https: IVSS, FAOV, UT e IGTF quedan en borrador |
+
+Cada país tiene `docs/research/paises/<m>-expansion.md` con la lista rankeada por demanda, lo
+construido, lo descartado y por qué, y los riesgos legales.
+
+**Plataforma (lo que cambió además de los países):**
+- **Paridad visual con calcular.ar:** las páginas intl usan la misma página de una columna, campos,
+  foco verde, resultado, FAQ (`AcordeonesFluidos`) y caja de fuentes que AR. Ya no hay botón
+  «Calcular»: recalcula en vivo como AR (`src/motor/ui/estilos.css`, `PielCalculadora.tsx`,
+  `PaginaCalculadora.tsx`, `cliente.tsx`).
+- **Arranque en tu país:** la raíz muestra «Estás en México» por `/api/geo` (nunca redirige por
+  IP); la elección se guarda en `localStorage` (`cy-pais`) y al volver a `/` lleva directo al país.
+  Selector del header con buscador y equivalentes por concepto (cambiar de país desde una
+  calculadora abre la misma calculadora en el destino). `src/motor/ui/{Inicio,ArranquePais,SelectorPais,AvisoPais}.tsx`.
+- **Datos vivos a la vista:** sello «Datos verificados en fuente oficial el …» (la fecha más vieja de
+  los datos que usa la página) y «actualizado hoy/ayer» por serie (`src/motor/frescura.ts`,
+  `Sello.tsx`). `/<m>/novedades` junta las notas editoriales con un registro automático de
+  cambios (tramos nuevos, próximos a regir, último punto de cada serie, revisiones) y publica un
+  feed Atom en `/<m>/novedades.xml` (`src/motor/novedades.ts`).
+- **Ofertas por concepto dentro del resultado:** 79 productos (78 informes PDF + la planilla),
+  definidos por concepto en `src/lib/pagos/ofertas-intl.ts`: una calculadora nueva de un concepto
+  con oferta la recibe sola. Los números de la persona viajan al producto (`src/lib/prefill/intl*.ts`,
+  `ca_checkouts.datos`). `src/motor/ui/Oferta.tsx`, `/<m>/informes/**`. Precios USD 5 a 9.
+- **PayPal en vivo:** credenciales de la app live de APEX cargadas en Vercel Production
+  (`PAYPAL_*`), webhook `https://calcularya.com/api/pagos/paypal/webhook` creado por REST. Las
+  planillas intl muestran «Comprar por USD 7» en vez de «Pronto».
+- **Seguridad (auditoría del 12/10):** la marca de venta en `revenue_events.note` es una huella
+  HMAC (no el id de captura, que abre el informe), sin mail del comprador; `revoke select` de
+  `anon`/`authenticated` sobre `revenue_events` aplicado en la base; el webhook captura solo
+  órdenes con referencia propia; sandbox nunca vende en producción; headers privados en
+  `/:mercado/informes/:informe/ver` y `/:mercado/planillas/gracias`.
+- **Checks:** `check_fronteras` admite puentes acotados del motor a la capa de cobro intl;
+  `check_frescura` tolera un día de desfase horario entre quien verifica (AR) y el mercado.
+
+**Pendiente de Manuel:** URI de Google (`https://calcularya.com/auth/google/vuelta`) y
+`NEXT_PUBLIC_GOOGLE_INTL_ACTIVO=1`. Nada más: PayPal y el SQL ya están.
+
+**Pedidos al motor que repitieron varios países (próxima obra):** marcador para filas de una
+escala (`{{id[fila]}}`), unidad «semanas», historia completa de una serie o de los tramos de un
+dato desde `calcular()`, calendario de feriados por país, `opcion-dato` con `mapa-por-region`.
+
+---
+
+## Estado previo (8/10/2026)
+
 Última actualización: 2026-10-08 06:30. **Mergeado a `main` (PR #12, `258b61e`).** calcular.ar idéntico
 (foto de 244 rutas contra main). calcularya.com sigue redirigiendo a calcular.ar hasta que se cargue
 `NEXT_PUBLIC_SITIO_INTL_URL` en Vercel.

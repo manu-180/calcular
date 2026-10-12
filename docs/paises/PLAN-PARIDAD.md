@@ -79,14 +79,11 @@ seguridad y de código con 13 arreglos aplicados, gate verde (check-all 135/135,
 contra una foto grabada desde main, `check_routing_hosts` 69 filas, `check_seo_intl` 524 páginas).
 
 Pendiente de Manuel (no bloquea el deploy; todo degrada sin romper):
-1. SQL en Supabase, en horario tranquilo y en este orden: `docs/paises/SQL-PARIDAD-MEDICION.md` y después
-   `docs/paises/SQL-PARIDAD-PAGOS.md`. Hasta entonces el panel muestra solo Todos/Argentina y lo de
+1. ~~SQL en Supabase~~ **Aplicado** (verificado 10/10; el de ofertas, `SQL-OFERTAS.md`, el 12/10). Hasta entonces el panel muestra solo Todos/Argentina y lo de
    calcularya no se guarda en las tablas de medición.
 2. Google: URI `https://calcularya.com/auth/google/vuelta` (y origen `https://calcularya.com`) en el mismo
    cliente OAuth; después `NEXT_PUBLIC_GOOGLE_INTL_ACTIVO=1` en Vercel Production y redeploy.
-3. PayPal: cuenta Business, app Live, webhook `https://calcularya.com/api/pagos/paypal/webhook` con los 6
-   eventos de pago, y en Vercel Production `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`, `PAYPAL_WEBHOOK_ID`,
-   `PAYPAL_ENV=live` (redeploy). Sin eso las planillas intl muestran «Pronto».
+3. ~~PayPal~~ **Hecho el 12/10/2026** con la app live de APEX (ver `ESTADO.md` § Tanda 2).
 
 Mantenimiento a vigilar: `ni.ipc` y `do.ipc` sin detector automático (cargar el mes a mano con
 `scripts/paises/do/actualizar_ipc.ts --escribir`; NI a mano desde el XLS del INIDE). Pedidos al motor
