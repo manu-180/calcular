@@ -23,6 +23,8 @@ import contenidoIass from "./contenido/iass";
 import contenidoInflacion from "./contenido/inflacion";
 import contenidoIrpf from "./contenido/irpf";
 import contenidoIrpfAlquileres from "./contenido/irpf-alquileres";
+import contenidoIrpfProfesional from "./contenido/irpf-profesional";
+import contenidoItp from "./contenido/itp";
 import contenidoIva from "./contenido/iva";
 import contenidoJubilacion from "./contenido/jubilacion";
 import contenidoLicenciaMaternal from "./contenido/licencia-maternal";
@@ -31,6 +33,7 @@ import contenidoLiquidacionPorEgreso from "./contenido/liquidacion-por-egreso";
 import contenidoLiteralE from "./contenido/literal-e";
 import contenidoMonotributo from "./contenido/monotributo";
 import contenidoMonotributoSocial from "./contenido/monotributo-social";
+import contenidoPlazoFijo from "./contenido/plazo-fijo";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioVacacional from "./contenido/salario-vacacional";
 import contenidoSeguroDeParo from "./contenido/seguro-de-paro";
@@ -40,6 +43,7 @@ import contenidoSueldoNominal from "./contenido/sueldo-nominal";
 import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
 import contenidoTrabajoNocturno from "./contenido/trabajo-nocturno";
 import contenidoValorUi from "./contenido/valor-ui";
+import contenidoValorUr from "./contenido/valor-ur";
 import costoEmpleador from "./calculadoras/costo-empleador";
 import despido from "./calculadoras/despido";
 import despidoEspecial from "./calculadoras/despido-especial";
@@ -53,6 +57,8 @@ import iass from "./calculadoras/iass";
 import inflacion from "./calculadoras/inflacion";
 import irpf from "./calculadoras/irpf";
 import irpfAlquileres from "./calculadoras/irpf-alquileres";
+import irpfProfesional from "./calculadoras/irpf-profesional";
+import itp from "./calculadoras/itp";
 import iva from "./calculadoras/iva";
 import jubilacion from "./calculadoras/jubilacion";
 import licenciaMaternal from "./calculadoras/licencia-maternal";
@@ -61,6 +67,7 @@ import liquidacionPorEgreso from "./calculadoras/liquidacion-por-egreso";
 import literalE from "./calculadoras/literal-e";
 import monotributo from "./calculadoras/monotributo";
 import monotributoSocial from "./calculadoras/monotributo-social";
+import plazoFijo from "./calculadoras/plazo-fijo";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioVacacional from "./calculadoras/salario-vacacional";
 import seguroDeParo from "./calculadoras/seguro-de-paro";
@@ -70,6 +77,7 @@ import sueldoNominal from "./calculadoras/sueldo-nominal";
 import trabajoDomestico from "./calculadoras/trabajo-domestico";
 import trabajoNocturno from "./calculadoras/trabajo-nocturno";
 import valorUi from "./calculadoras/valor-ui";
+import valorUr from "./calculadoras/valor-ur";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -111,12 +119,16 @@ export default definirPais({
     { definicion: feriadosPagos, contenido: contenidoFeriadosPagos, cliente: () => import("./calculadoras/feriados-pagos.cliente") },
     { definicion: iass, contenido: contenidoIass, cliente: () => import("./calculadoras/iass.cliente") },
     { definicion: irpfAlquileres, contenido: contenidoIrpfAlquileres, cliente: () => import("./calculadoras/irpf-alquileres.cliente") },
+    { definicion: irpfProfesional, contenido: contenidoIrpfProfesional, cliente: () => import("./calculadoras/irpf-profesional.cliente") },
+    { definicion: itp, contenido: contenidoItp, cliente: () => import("./calculadoras/itp.cliente") },
     { definicion: licenciaMaternal, contenido: contenidoLicenciaMaternal, cliente: () => import("./calculadoras/licencia-maternal.cliente") },
     { definicion: licenciasEspeciales, contenido: contenidoLicenciasEspeciales, cliente: () => import("./calculadoras/licencias-especiales.cliente") },
     { definicion: literalE, contenido: contenidoLiteralE, cliente: () => import("./calculadoras/literal-e.cliente") },
     { definicion: monotributoSocial, contenido: contenidoMonotributoSocial, cliente: () => import("./calculadoras/monotributo-social.cliente") },
+    { definicion: plazoFijo, contenido: contenidoPlazoFijo, cliente: () => import("./calculadoras/plazo-fijo.cliente") },
     { definicion: subsidioPorEnfermedad, contenido: contenidoSubsidioPorEnfermedad, cliente: () => import("./calculadoras/subsidio-por-enfermedad.cliente") },
     { definicion: trabajoNocturno, contenido: contenidoTrabajoNocturno, cliente: () => import("./calculadoras/trabajo-nocturno.cliente") },
+    { definicion: valorUr, contenido: contenidoValorUr, cliente: () => import("./calculadoras/valor-ur.cliente") },
   ],
   novedades,
   detectores,

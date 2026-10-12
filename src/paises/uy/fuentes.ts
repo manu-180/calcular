@@ -216,7 +216,40 @@ async function traerIpc(http: Http): Promise<PuntoSerie[] | null> {
   return control === null ? null : [];
 }
 
+// La tabla "Valores actuales" del BPS trae dos columnas con el nombre del mes (la anterior y la
+// vigente) y sin año: el año se deduce de hoy, y un mes posterior al actual es del año pasado.
+export function parsearUrBps(html: string, fechaHoy: FechaISO): PuntoSerie[] | null {
+  const texto = html.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ");
+  const cab = /Indicador ([A-Za-zé]+) ([A-Za-zé]+) /.exec(texto);
+  const fila = /Unidad Reajustable \(UR\) \(\d\) \$ ([\d.,]+) \$ ([\d.,]+)/.exec(texto);
+  if (!cab || !fila) return null;
+  const anio = Number(fechaHoy.slice(0, 4));
+  const mesHoy = Number(fechaHoy.slice(5, 7));
+  const puntos: PuntoSerie[] = [];
+  for (const [nombre, monto] of [[cab[1], fila[1]], [cab[2], fila[2]]]) {
+    const mes = MESES_GUB.indexOf(nombre.toLowerCase()) + 1;
+    const valor = numeroUruguayo(monto);
+    if (mes === 0 || valor === null) return null;
+    const a = mes > mesHoy ? anio - 1 : anio;
+    puntos.push({ fecha: `${a}-${String(mes).padStart(2, "0")}-01` as FechaISO, valor });
+  }
+  return puntos.sort((x, y) => (x.fecha < y.fecha ? -1 : 1));
+}
+
 export const detectores: readonly Detector[] = [
+  {
+    id: "uy.ur-bps",
+    carril: "serie",
+    serie: "uy.ur",
+    metodo: "html",
+    url: URL_VALORES_BPS,
+    // La UR sigue al Índice Medio de Salarios: en un mes no se mueve más que unos puntos.
+    banda: { min: 1500, max: 3000, saltoRelativoMax: 0.05 },
+    async traer(http) {
+      const html = await textoOpcional(http, URL_VALORES_BPS);
+      return html ? parsearUrBps(html, hoy()) : null;
+    },
+  },
   {
     id: "uy.ui-bcu",
     carril: "serie",
