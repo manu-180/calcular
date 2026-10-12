@@ -28,6 +28,16 @@ import trabajadoraCasaParticular from "./calculadoras/trabajadora-de-casa-partic
 import contenidoTrabajadoraCasaParticular from "./contenido/trabajadora-de-casa-particular";
 import costoEmpresa from "./calculadoras/costo-empresa";
 import contenidoCostoEmpresa from "./contenido/costo-empresa";
+import indemnizacionPorAnosDeServicio from "./calculadoras/indemnizacion-por-anos-de-servicio";
+import contenidoIndemnizacionPorAnosDeServicio from "./contenido/indemnizacion-por-anos-de-servicio";
+import avisoPrevio from "./calculadoras/aviso-previo";
+import contenidoAvisoPrevio from "./contenido/aviso-previo";
+import feriadoProgresivo from "./calculadoras/feriado-progresivo";
+import contenidoFeriadoProgresivo from "./contenido/feriado-progresivo";
+import topeImponible from "./calculadoras/tope-imponible";
+import contenidoTopeImponible from "./contenido/tope-imponible";
+import ufPorFecha from "./calculadoras/uf-por-fecha";
+import contenidoUfPorFecha from "./contenido/uf-por-fecha";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -54,6 +64,11 @@ export default definirPais({
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: trabajadoraCasaParticular, contenido: contenidoTrabajadoraCasaParticular, cliente: () => import("./calculadoras/trabajadora-de-casa-particular.cliente") },
     { definicion: costoEmpresa, contenido: contenidoCostoEmpresa, cliente: () => import("./calculadoras/costo-empresa.cliente") },
+    { definicion: indemnizacionPorAnosDeServicio, contenido: contenidoIndemnizacionPorAnosDeServicio, cliente: () => import("./calculadoras/indemnizacion-por-anos-de-servicio.cliente") },
+    { definicion: avisoPrevio, contenido: contenidoAvisoPrevio, cliente: () => import("./calculadoras/aviso-previo.cliente") },
+    { definicion: feriadoProgresivo, contenido: contenidoFeriadoProgresivo, cliente: () => import("./calculadoras/feriado-progresivo.cliente") },
+    { definicion: topeImponible, contenido: contenidoTopeImponible, cliente: () => import("./calculadoras/tope-imponible.cliente") },
+    { definicion: ufPorFecha, contenido: contenidoUfPorFecha, cliente: () => import("./calculadoras/uf-por-fecha.cliente") },
   ],
   novedades,
   detectores,
