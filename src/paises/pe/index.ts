@@ -40,6 +40,18 @@ import ctsTrunca from "./calculadoras/cts-trunca";
 import contenidoCtsTrunca from "./contenido/cts-trunca";
 import vacacionesTruncas from "./calculadoras/vacaciones-truncas";
 import contenidoVacacionesTruncas from "./contenido/vacaciones-truncas";
+import asignacionFamiliar from "./calculadoras/asignacion-familiar";
+import contenidoAsignacionFamiliar from "./contenido/asignacion-familiar";
+import afpOOnp from "./calculadoras/afp-o-onp";
+import contenidoAfpOOnp from "./contenido/afp-o-onp";
+import essalud from "./calculadoras/essalud";
+import contenidoEssalud from "./contenido/essalud";
+import trabajoNocturno from "./calculadoras/trabajo-nocturno";
+import contenidoTrabajoNocturno from "./contenido/trabajo-nocturno";
+import feriadoTrabajado from "./calculadoras/feriado-trabajado";
+import contenidoFeriadoTrabajado from "./contenido/feriado-trabajado";
+import sueldoPorHora from "./calculadoras/sueldo-por-hora";
+import contenidoSueldoPorHora from "./contenido/sueldo-por-hora";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -72,6 +84,12 @@ export default definirPais({
     { definicion: gratificacionTrunca, contenido: contenidoGratificacionTrunca, cliente: () => import("./calculadoras/gratificacion-trunca.cliente") },
     { definicion: ctsTrunca, contenido: contenidoCtsTrunca, cliente: () => import("./calculadoras/cts-trunca.cliente") },
     { definicion: vacacionesTruncas, contenido: contenidoVacacionesTruncas, cliente: () => import("./calculadoras/vacaciones-truncas.cliente") },
+    { definicion: asignacionFamiliar, contenido: contenidoAsignacionFamiliar, cliente: () => import("./calculadoras/asignacion-familiar.cliente") },
+    { definicion: afpOOnp, contenido: contenidoAfpOOnp, cliente: () => import("./calculadoras/afp-o-onp.cliente") },
+    { definicion: essalud, contenido: contenidoEssalud, cliente: () => import("./calculadoras/essalud.cliente") },
+    { definicion: trabajoNocturno, contenido: contenidoTrabajoNocturno, cliente: () => import("./calculadoras/trabajo-nocturno.cliente") },
+    { definicion: feriadoTrabajado, contenido: contenidoFeriadoTrabajado, cliente: () => import("./calculadoras/feriado-trabajado.cliente") },
+    { definicion: sueldoPorHora, contenido: contenidoSueldoPorHora, cliente: () => import("./calculadoras/sueldo-por-hora.cliente") },
   ],
   novedades,
   detectores,
