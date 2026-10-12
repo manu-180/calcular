@@ -6,7 +6,7 @@ function diasDelMes(anio: number, mes: number): number {
   return [31, anio % 4 === 0 && (anio % 100 !== 0 || anio % 400 === 0) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][mes - 1];
 }
 
-function sumarMeses(fecha: FechaISO, meses: number): FechaISO {
+export function sumarMeses(fecha: FechaISO, meses: number): FechaISO {
   const [a, m, d] = fecha.split("-").map(Number);
   const total = a * 12 + (m - 1) + meses;
   const anio = Math.floor(total / 12);
@@ -85,3 +85,9 @@ const plural = (n: number, uno: string, varios: string) => `${n} ${n === 1 ? uno
 export function textoTiempo(t: Tiempo): string {
   return `${plural(t.anios, "año", "años")}, ${plural(t.meses, "mes", "meses")} y ${plural(t.dias, "día", "días")}`;
 }
+
+// Semanas por mes: el MITRADEL pasa el salario mensual a semanal con 12 meses entre 52 semanas.
+export const SEMANAS_POR_MES = 52 / 12;
+
+// Valor de la hora ordinaria: el salario mensual entre las horas de un mes de jornada completa.
+export const horaDeMensual = (mensual: number, horasSemana: number) => mensual / (horasSemana * SEMANAS_POR_MES);

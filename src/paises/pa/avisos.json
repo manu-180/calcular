@@ -21,7 +21,7 @@
       "nivel": "info",
       "desde": "2026-12-01",
       "hasta": "2027-03-31",
-      "aplicaA": ["pa.costo-empleador"],
+      "aplicaA": ["pa.costo-empleador", "pa.cuota-seguro-social"],
       "titulo": "Sube la cuota patronal del Seguro Social",
       "texto": "Desde el 1 de marzo de 2027 la cuota del empleador a la Caja de Seguro Social pasa del 13.25% al 14.25% de los sueldos. La calculadora ya usa la cuota de cada fecha.",
       "fuente": {
