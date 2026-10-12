@@ -1,4 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
+import type { FechaISO } from "@/motor/tipos";
 import { fechaChilena } from "../lib/fechas";
 import datos from "../datos.json";
 
@@ -6,7 +7,7 @@ import datos from "../datos.json";
 // verificados del mismo datos.json.
 const ETAPAS = (datos.datos.find((d) => d.id === "cl.jornada-maxima")?.tramos ?? [])
   .filter((t) => t.estado === "verificado")
-  .map((t) => ({ desde: t.desde, horas: Number(t.valor) }));
+  .map((t) => ({ desde: t.desde as FechaISO, horas: Number(t.valor) }));
 
 export default definirCalculadora({
   id: "cl.ley-40-horas",

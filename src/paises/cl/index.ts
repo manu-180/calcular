@@ -60,6 +60,16 @@ import sueldoProporcional from "./calculadoras/sueldo-proporcional";
 import contenidoSueldoProporcional from "./contenido/sueldo-proporcional";
 import seguroDeCesantia from "./calculadoras/seguro-de-cesantia";
 import contenidoSeguroDeCesantia from "./contenido/seguro-de-cesantia";
+import reformaDePensiones from "./calculadoras/reforma-de-pensiones";
+import contenidoReformaDePensiones from "./contenido/reforma-de-pensiones";
+import impuestoGlobalComplementario from "./calculadoras/impuesto-global-complementario";
+import contenidoImpuestoGlobalComplementario from "./contenido/impuesto-global-complementario";
+import depositoAPlazo from "./calculadoras/deposito-a-plazo";
+import contenidoDepositoAPlazo from "./contenido/deposito-a-plazo";
+import creditoHipotecario from "./calculadoras/credito-hipotecario";
+import contenidoCreditoHipotecario from "./contenido/credito-hipotecario";
+import reajusteDeArriendo from "./calculadoras/reajuste-de-arriendo";
+import contenidoReajusteDeArriendo from "./contenido/reajuste-de-arriendo";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -102,6 +112,11 @@ export default definirPais({
     { definicion: ley40Horas, contenido: contenidoLey40Horas, cliente: () => import("./calculadoras/ley-40-horas.cliente") },
     { definicion: sueldoProporcional, contenido: contenidoSueldoProporcional, cliente: () => import("./calculadoras/sueldo-proporcional.cliente") },
     { definicion: seguroDeCesantia, contenido: contenidoSeguroDeCesantia, cliente: () => import("./calculadoras/seguro-de-cesantia.cliente") },
+    { definicion: reformaDePensiones, contenido: contenidoReformaDePensiones, cliente: () => import("./calculadoras/reforma-de-pensiones.cliente") },
+    { definicion: impuestoGlobalComplementario, contenido: contenidoImpuestoGlobalComplementario, cliente: () => import("./calculadoras/impuesto-global-complementario.cliente") },
+    { definicion: depositoAPlazo, contenido: contenidoDepositoAPlazo, cliente: () => import("./calculadoras/deposito-a-plazo.cliente") },
+    { definicion: creditoHipotecario, contenido: contenidoCreditoHipotecario, cliente: () => import("./calculadoras/credito-hipotecario.cliente") },
+    { definicion: reajusteDeArriendo, contenido: contenidoReajusteDeArriendo, cliente: () => import("./calculadoras/reajuste-de-arriendo.cliente") },
   ],
   novedades,
   detectores,
