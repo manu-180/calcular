@@ -61,6 +61,24 @@ function sumarAnios(f: FechaISO, anios: number): FechaISO {
   return fecha(destino, m, m === 2 && d === 29 && !bisiesto ? 28 : d);
 }
 
+// Suma meses de calendario. Si el día no existe en el mes de destino (31 de enero más un mes), se
+// toma el último día de ese mes.
+export function sumarMeses(f: FechaISO, meses: number): FechaISO {
+  const [a, m, d] = partes(f);
+  const total = a * 12 + (m - 1) + meses;
+  const anio = Math.floor(total / 12);
+  const mes = (total % 12) + 1;
+  const bisiesto = anio % 4 === 0 && (anio % 100 !== 0 || anio % 400 === 0);
+  const ultimo = [31, bisiesto ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][mes - 1];
+  return fecha(anio, mes, Math.min(d, ultimo));
+}
+
+export function aniosCumplidos(ingreso: FechaISO, hasta: FechaISO): number {
+  let anios = 0;
+  while (sumarAnios(ingreso, anios + 1) <= hasta) anios++;
+  return anios;
+}
+
 export function ultimoAniversario(ingreso: FechaISO, hasta: FechaISO): FechaISO {
   let anios = 0;
   while (sumarAnios(ingreso, anios + 1) <= hasta) anios++;
