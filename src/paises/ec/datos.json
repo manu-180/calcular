@@ -1705,6 +1705,247 @@
           }
         }
       ]
+    },
+    {
+      "id": "ec.impuesto-renta-sociedades",
+      "nombre": "Tarifa del impuesto a la renta de sociedades",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Ley de Régimen Tributario Interno, artículo 37: las sociedades aplicarán la tarifa del 25 % sobre su base imponible",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.impuesto-renta-sociedades-recargo",
+      "nombre": "Puntos adicionales de la tarifa de sociedades por no informar su composición societaria o por paraísos fiscales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Ley de Régimen Tributario Interno, artículo 37: la tarifa será la de sociedades más tres puntos porcentuales",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.jubilacion-coeficientes",
+      "nombre": "Coeficiente de la pensión de vejez del IESS según los años completos de aportes",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "5": "5 años de aportes",
+        "6": "6 años de aportes",
+        "7": "7 años de aportes",
+        "8": "8 años de aportes",
+        "9": "9 años de aportes",
+        "10": "10 años de aportes",
+        "11": "11 años de aportes",
+        "12": "12 años de aportes",
+        "13": "13 años de aportes",
+        "14": "14 años de aportes",
+        "15": "15 años de aportes",
+        "16": "16 años de aportes",
+        "17": "17 años de aportes",
+        "18": "18 años de aportes",
+        "19": "19 años de aportes",
+        "20": "20 años de aportes",
+        "21": "21 años de aportes",
+        "22": "22 años de aportes",
+        "23": "23 años de aportes",
+        "24": "24 años de aportes",
+        "25": "25 años de aportes",
+        "26": "26 años de aportes",
+        "27": "27 años de aportes",
+        "28": "28 años de aportes",
+        "29": "29 años de aportes",
+        "30": "30 años de aportes",
+        "31": "31 años de aportes",
+        "32": "32 años de aportes",
+        "33": "33 años de aportes",
+        "34": "34 años de aportes",
+        "35": "35 años de aportes",
+        "36": "36 años de aportes",
+        "37": "37 años de aportes",
+        "38": "38 años de aportes",
+        "39": "39 años de aportes",
+        "40": "40 años de aportes"
+      },
+      "nota": "Desde 40 años se suma 0,0125 por cada año adicional. El PDF de la resolución es un escaneo: la tabla se leyó en dos columnas (5 a 22 y 23 a 40 años) que siguen la progresión de 0,0125 hasta los 35 años.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-02-21",
+          "valor": {
+            "5": 0.4375,
+            "6": 0.45,
+            "7": 0.4625,
+            "8": 0.475,
+            "9": 0.4875,
+            "10": 0.5,
+            "11": 0.5125,
+            "12": 0.525,
+            "13": 0.5375,
+            "14": 0.55,
+            "15": 0.5625,
+            "16": 0.575,
+            "17": 0.5875,
+            "18": 0.6,
+            "19": 0.6125,
+            "20": 0.625,
+            "21": 0.6375,
+            "22": 0.65,
+            "23": 0.6625,
+            "24": 0.675,
+            "25": 0.6875,
+            "26": 0.7,
+            "27": 0.7125,
+            "28": 0.725,
+            "29": 0.7375,
+            "30": 0.75,
+            "31": 0.7625,
+            "32": 0.775,
+            "33": 0.7875,
+            "34": 0.8,
+            "35": 0.8125,
+            "36": 0.8325,
+            "37": 0.8605,
+            "38": 0.897,
+            "39": 0.943,
+            "40": 1
+          },
+          "fuente": {
+            "organismo": "Instituto Ecuatoriano de Seguridad Social (IESS)",
+            "titulo": "Resolución C.D. 100, artículo 13: coeficiente anual de años cumplidos de imposiciones",
+            "url": "https://www.iess.gob.ec/documents/10162/33703/C.D.+100",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.pension-vejez-minima",
+      "nombre": "Pensión mínima de vejez del IESS, en porcentaje del salario básico, según años de aportes (hasta ese número de años)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "10": "Hasta 10 años",
+        "20": "De 11 a 20 años",
+        "30": "De 21 a 30 años",
+        "35": "De 31 a 35 años",
+        "39": "De 36 a 39 años",
+        "40": "40 años o más"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "10": 50,
+            "20": 60,
+            "30": 70,
+            "35": 80,
+            "39": 90,
+            "40": 100
+          },
+          "motivo": "Solo lo leímos en prensa (Expreso, El Diario 2026), con escalas que no coinciden entre sí. Falta la resolución del IESS que fija los mínimos.",
+          "fuente": {
+            "organismo": "Expreso",
+            "titulo": "Aporte IESS 30 años: cuánto mínimo me deben dar de pensión de vejez",
+            "url": "https://www.expreso.ec/tramites-y-servicios/aporte-iess-30-anos-cuanto-minimo-me-deben-dar-pension-vejez-288417.html",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.pension-vejez-maxima",
+      "nombre": "Pensión máxima de vejez del IESS, en porcentaje del salario básico, según años de aportes (hasta ese número de años)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "14": "Hasta 14 años",
+        "19": "De 15 a 19 años",
+        "24": "De 20 a 24 años",
+        "29": "De 25 a 29 años",
+        "34": "De 30 a 34 años",
+        "39": "De 35 a 39 años",
+        "40": "40 años o más"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "14": 250,
+            "19": 300,
+            "24": 350,
+            "29": 400,
+            "34": 450,
+            "39": 500,
+            "40": 550
+          },
+          "motivo": "Solo lo leímos en prensa (Expreso 2026). Falta la resolución del IESS que fija los máximos.",
+          "fuente": {
+            "organismo": "Expreso",
+            "titulo": "Aporte IESS 20 años: cuánto es lo máximo que me pueden pagar de jubilación",
+            "url": "https://www.expreso.ec/tramites-y-servicios/aporte-iess-20-anos-cuanto-maximo-me-pagar-jubilacion-288698.html",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.jubilacion-requisitos",
+      "nombre": "Años de aportes que pide la jubilación por vejez del IESS según la edad",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "0": "Con cualquier edad",
+        "60": "Desde los 60 años",
+        "65": "Desde los 65 años",
+        "70": "Desde los 70 años"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-02-21",
+          "valor": {
+            "0": 40,
+            "60": 30,
+            "65": 15,
+            "70": 10
+          },
+          "fuente": {
+            "organismo": "Instituto Ecuatoriano de Seguridad Social (IESS)",
+            "titulo": "Resolución C.D. 100, artículo 11: 60 años y 360 imposiciones, 65 y 180, 70 y 120, o 480 con cualquier edad",
+            "url": "https://www.iess.gob.ec/documents/10162/33703/C.D.+100",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }

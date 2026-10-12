@@ -72,6 +72,12 @@ import multaSri from "./calculadoras/multa-sri";
 import contenidoMultaSri from "./contenido/multa-sri";
 import jubilacionPatronal from "./calculadoras/jubilacion-patronal";
 import contenidoJubilacionPatronal from "./contenido/jubilacion-patronal";
+import impuestoRentaSociedades from "./calculadoras/impuesto-renta-sociedades";
+import contenidoImpuestoRentaSociedades from "./contenido/impuesto-renta-sociedades";
+import validarCedula from "./calculadoras/validar-cedula";
+import contenidoValidarCedula from "./contenido/validar-cedula";
+import jubilacionIess from "./calculadoras/jubilacion-iess";
+import contenidoJubilacionIess from "./contenido/jubilacion-iess";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -120,6 +126,9 @@ export default definirPais({
     { definicion: simuladorDeCredito, contenido: contenidoSimuladorDeCredito, cliente: () => import("./calculadoras/simulador-de-credito.cliente") },
     { definicion: multaSri, contenido: contenidoMultaSri, cliente: () => import("./calculadoras/multa-sri.cliente") },
     { definicion: jubilacionPatronal, contenido: contenidoJubilacionPatronal, cliente: () => import("./calculadoras/jubilacion-patronal.cliente") },
+    { definicion: impuestoRentaSociedades, contenido: contenidoImpuestoRentaSociedades, cliente: () => import("./calculadoras/impuesto-renta-sociedades.cliente") },
+    { definicion: validarCedula, contenido: contenidoValidarCedula, cliente: () => import("./calculadoras/validar-cedula.cliente") },
+    { definicion: jubilacionIess, contenido: contenidoJubilacionIess, cliente: () => import("./calculadoras/jubilacion-iess.cliente") },
   ],
   novedades,
   detectores,
