@@ -1645,6 +1645,66 @@
           }
         }
       ]
+    },
+    {
+      "id": "ec.desahucio-aviso-dias",
+      "nombre": "Anticipación mínima del aviso de desahucio",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-04-20",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 184 (sustituido por la Ley publicada en el Registro Oficial Suplemento 483 del 20/4/2015): notificación con al menos quince días del cese definitivo de las labores",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.desahucio-plazo-pago-dias",
+      "nombre": "Plazo del empleador para liquidar después del aviso de desahucio",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-04-20",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 185: el empleador, en el plazo de quince días posteriores al aviso del desahucio, procederá a liquidar",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.despido-ineficaz-plazo-dias",
+      "nombre": "Plazo para demandar el despido ineficaz",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-06-26",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 195.2 (sustituido por la Ley publicada en el Registro Oficial Suplemento 517 del 26/6/2019): acción ante el juez del trabajo en el plazo máximo de treinta días",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }

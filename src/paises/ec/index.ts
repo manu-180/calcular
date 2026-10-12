@@ -30,6 +30,20 @@ import contenidoSueldoNeto from "./contenido/sueldo-neto";
 import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
 import contenidoUtilidades from "./contenido/utilidades";
 import contenidoVacaciones from "./contenido/vacaciones";
+import despidoIntempestivo from "./calculadoras/despido-intempestivo";
+import contenidoDespidoIntempestivo from "./contenido/despido-intempestivo";
+import desahucio from "./calculadoras/desahucio";
+import contenidoDesahucio from "./contenido/desahucio";
+import despidoIneficaz from "./calculadoras/despido-ineficaz";
+import contenidoDespidoIneficaz from "./contenido/despido-ineficaz";
+import jornadaNocturna from "./calculadoras/jornada-nocturna";
+import contenidoJornadaNocturna from "./contenido/jornada-nocturna";
+import periodoDePrueba from "./calculadoras/periodo-de-prueba";
+import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
+import licenciaMaternidad from "./calculadoras/licencia-maternidad";
+import contenidoLicenciaMaternidad from "./contenido/licencia-maternidad";
+import licenciaPaternidad from "./calculadoras/licencia-paternidad";
+import contenidoLicenciaPaternidad from "./contenido/licencia-paternidad";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +71,13 @@ export default definirPais({
     { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
     { definicion: rimpe, contenido: contenidoRimpe, cliente: () => import("./calculadoras/rimpe.cliente") },
     { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
+    { definicion: despidoIntempestivo, contenido: contenidoDespidoIntempestivo, cliente: () => import("./calculadoras/despido-intempestivo.cliente") },
+    { definicion: desahucio, contenido: contenidoDesahucio, cliente: () => import("./calculadoras/desahucio.cliente") },
+    { definicion: despidoIneficaz, contenido: contenidoDespidoIneficaz, cliente: () => import("./calculadoras/despido-ineficaz.cliente") },
+    { definicion: jornadaNocturna, contenido: contenidoJornadaNocturna, cliente: () => import("./calculadoras/jornada-nocturna.cliente") },
+    { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
+    { definicion: licenciaMaternidad, contenido: contenidoLicenciaMaternidad, cliente: () => import("./calculadoras/licencia-maternidad.cliente") },
+    { definicion: licenciaPaternidad, contenido: contenidoLicenciaPaternidad, cliente: () => import("./calculadoras/licencia-paternidad.cliente") },
   ],
   novedades,
   detectores,
