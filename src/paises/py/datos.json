@@ -506,6 +506,690 @@
           }
         }
       ]
+    },
+    {
+      "id": "py.divisor-jornal",
+      "nombre": "Días del mes para el jornal mínimo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "El jornal mínimo diario es el salario mínimo mensual dividido 26.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+            "titulo": "Resolución MTESS N° 670/2026 (reglamenta el Decreto N° 6.225/2026), artículo 1",
+            "url": "https://www.mtess.gov.py/wp-content/uploads/2026/07/Resolucion-MTESS-N%C2%B0-670-REGLAMENTACION-SALARIO-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.preaviso-omitido-trabajador",
+      "nombre": "Parte del preaviso que debe quien renuncia sin darlo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 90",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.periodo-prueba-dias",
+      "nombre": "Duración máxima del período de prueba",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "no-calificado": "Servicio doméstico y trabajos no calificados",
+        "calificado": "Trabajos calificados y aprendices"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "no-calificado": 30,
+            "calificado": 60
+          },
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 58",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.indemnizacion-fallecimiento",
+      "nombre": "Indemnización a los herederos por muerte del trabajador (sobre la de despido)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 91",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.estabilidad-anios",
+      "nombre": "Años de servicio para la estabilidad laboral",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 94",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.estabilidad-factor",
+      "nombre": "Multiplicador de la indemnización del trabajador estable",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículos 97, 98 y 99",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.embargo-salario",
+      "nombre": "Parte del salario que se puede embargar, por tipo de deuda",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "alimentos": "Pensión alimenticia",
+        "vivienda": "Alquiler de la vivienda o alimentos comprados para la familia",
+        "otros": "Otras deudas"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "alimentos": 50,
+            "vivienda": 40,
+            "otros": 25
+          },
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 245",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.embargo-tope",
+      "nombre": "Tope de varios embargos juntos sobre el salario básico",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 213/1993, Código del Trabajo, artículo 245",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.tiempo-parcial-horas",
+      "nombre": "Horas semanales del contrato a tiempo parcial",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "minimo": "Mínimo semanal",
+        "maximo": "Máximo semanal"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "minimo": 16,
+            "maximo": 32
+          },
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 6339/2019, que regula el empleo a tiempo parcial, artículo 3",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/8905/ley-n-6339-que-regula-el-empleo-a-tiempo-parcial",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.permiso-maternidad",
+      "nombre": "Permiso de maternidad",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "semanas": "Semanas de permiso",
+        "semanas-prematuro": "Semanas si el parto es prematuro o el bebé necesita cuidados especiales",
+        "semanas-antes-del-parto": "Semanas que se pueden tomar antes del parto",
+        "meses-por-bebe-adicional": "Meses extra por cada bebé desde el segundo"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "semanas": 18,
+            "semanas-prematuro": 24,
+            "semanas-antes-del-parto": 2,
+            "meses-por-bebe-adicional": 1
+          },
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 5508/2015, artículo 11, en la redacción de la Ley N° 7534/2025",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/12838/ley-n-7534-2025-que-modifica-y-amplia-los-articulos-2-y-11-de-la-ley-n-5508-2015",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.subsidio-maternidad",
+      "nombre": "Subsidio del IPS durante el permiso de maternidad (sobre la remuneración)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 5508/2015, artículo 12",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/4428/ley-n-5508-promocion-proteccion-de-la-maternidad-y-apoyo-a-la-lactancia-materna",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.permiso-paternidad-semanas",
+      "nombre": "Semanas de permiso por paternidad",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 5508/2015, artículo 13, inciso b",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/4428/ley-n-5508-promocion-proteccion-de-la-maternidad-y-apoyo-a-la-lactancia-materna",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.jubilacion-ips",
+      "nombre": "Requisitos y tasas de la jubilación ordinaria del IPS",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "edad-ordinaria": "Edad de la jubilación ordinaria",
+        "anios-ordinaria": "Años de aporte de la jubilación ordinaria",
+        "tasa-ordinaria": "Porcentaje de la jubilación ordinaria",
+        "edad-anticipada": "Edad mínima de la jubilación con 30 años de aporte",
+        "anios-anticipada": "Años de aporte para jubilarse desde los 55",
+        "tasa-anticipada": "Porcentaje a los 55 años",
+        "aumento-por-anio": "Puntos que suma cada año después de los 55",
+        "meses-promedio": "Meses de salario que se promedian"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "edad-ordinaria": 60,
+            "anios-ordinaria": 25,
+            "tasa-ordinaria": 100,
+            "edad-anticipada": 55,
+            "anios-anticipada": 30,
+            "tasa-anticipada": 80,
+            "aumento-por-anio": 4,
+            "meses-promedio": 36
+          },
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 98/1992, artículo 2 (artículo 60 del Decreto-Ley N° 1860/50)",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/4394/ley-n-98-establece-el-regimen-unificado-de-jubilaciones-y-pensiones",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.ips-independiente",
+      "nombre": "Aporte voluntario al IPS de trabajadores independientes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 4933/2013, artículo 3",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/4395/ley-n-4933-autoriza-la-incorporacion-voluntaria-de-trabajadores-independientes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.resimple-cuota",
+      "nombre": "Cuota mensual del IRE RESIMPLE según los ingresos del año anterior",
+      "tipo": "escala",
+      "unidad": "PYG",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20000000,
+              "tasa": 0,
+              "cuotaFija": 20000
+            },
+            {
+              "desde": 20000000.01,
+              "hasta": 40000000,
+              "tasa": 0,
+              "cuotaFija": 40000
+            },
+            {
+              "desde": 40000000.01,
+              "hasta": 60000000,
+              "tasa": 0,
+              "cuotaFija": 60000
+            },
+            {
+              "desde": 60000000.01,
+              "hasta": 80000000,
+              "tasa": 0,
+              "cuotaFija": 80000
+            }
+          ],
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 6380/2019, artículo 27",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/9332/ley-n-6380-de-modernizacion-y-simplificacion-del-sistema-tributario-nacional",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La DNIT confirma cuatro cuotas trimestrales fijas de Gs. 60.000 a Gs. 240.000: https://www.dnit.gov.py/web/portal-institucional/w/ire-resimple-ingresos-de-2025-deben-declararse-en-febrero"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.resimple-tope",
+      "nombre": "Ingresos anuales máximos para el IRE RESIMPLE",
+      "tipo": "numero",
+      "unidad": "PYG",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 80000000,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 6380/2019, artículo 27",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/9332/ley-n-6380-de-modernizacion-y-simplificacion-del-sistema-tributario-nacional",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.ire-tasa",
+      "nombre": "Tasa del IRE",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+            "titulo": "IRE: principales características (SIMPLE y general 10 %); Ley N° 6380/2019, artículo 21",
+            "url": "https://www.dnit.gov.py/web/portal-institucional/ire",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.ire-simple-presunta",
+      "nombre": "Renta presunta del IRE SIMPLE (sobre la facturación)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 6380/2019, artículo 26",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/9332/ley-n-6380-de-modernizacion-y-simplificacion-del-sistema-tributario-nacional",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.ire-simple-tope",
+      "nombre": "Ingresos anuales máximos para el IRE SIMPLE",
+      "tipo": "numero",
+      "unidad": "PYG",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 2000000000,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 6380/2019, artículo 26",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/9332/ley-n-6380-de-modernizacion-y-simplificacion-del-sistema-tributario-nacional",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.idu-tasa",
+      "nombre": "Tasa del IDU",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "residente": "Residente en Paraguay",
+        "no-residente": "No residente"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "residente": 8,
+            "no-residente": 15
+          },
+          "fuente": {
+            "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+            "titulo": "IDU: principales características (residentes 8 %, no residentes 15 %); Ley N° 6380/2019, artículo 43",
+            "url": "https://www.dnit.gov.py/web/portal-institucional/idu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.irp-capital-tasa",
+      "nombre": "Tasa del IRP sobre rentas y ganancias del capital",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Dirección Nacional de Ingresos Tributarios (DNIT)",
+            "titulo": "IRP: principales características (rentas y ganancias del capital 8 %); Ley N° 6380/2019, artículo 60",
+            "url": "https://www.dnit.gov.py/web/portal-institucional/irp",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.irp-venta-presunta",
+      "nombre": "Renta neta presunta en la venta de bienes (sobre el precio)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 6380/2019, artículo 59, numeral 1",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/9332/ley-n-6380-de-modernizacion-y-simplificacion-del-sistema-tributario-nacional",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.irp-alquiler-presunta",
+      "nombre": "Renta neta presunta del alquiler de inmuebles (sobre el alquiler)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 6380/2019, artículo 59, numeral 2",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/9332/ley-n-6380-de-modernizacion-y-simplificacion-del-sistema-tributario-nacional",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.salario-minimo-actividad",
+      "nombre": "Salario mínimo mensual por actividad (jornada diurna)",
+      "tipo": "mapa",
+      "unidad": "PYG",
+      "etiquetas": {
+        "no-especificadas": "Actividades diversas no especificadas",
+        "comercio-escritorios": "Comercio: escritorios comerciales, industriales y particulares",
+        "comercio-estibadores": "Comercio: estibadores",
+        "textiles": "Industria: vestidos y textiles",
+        "calzados": "Industria: fábricas de calzados",
+        "muebles-fabrica": "Industria: fábricas de muebles",
+        "carpinteria-oficial-1": "Mueblerías y carpinterías: oficial de primera",
+        "carpinteria-oficial-2": "Mueblerías y carpinterías: oficial de segunda",
+        "carpinteria-medio-oficial": "Mueblerías y carpinterías: medio oficial",
+        "carpinteria-ayudante": "Mueblerías y carpinterías: ayudante",
+        "panaderia-maestro": "Panaderías y confiterías: maestro",
+        "panaderia-segundo": "Panaderías y confiterías: segundo maestro",
+        "panaderia-ayudante": "Panaderías y confiterías: ayudante",
+        "mecanica-oficial-1": "Talleres mecánicos: oficial de primera",
+        "mecanica-oficial-2": "Talleres mecánicos: oficial de segunda",
+        "mecanica-ayudante": "Talleres mecánicos: ayudante",
+        "cocinero-primero": "Cocineros: primer cocinero",
+        "cocinero-segundo": "Cocineros: segundo cocinero",
+        "cocina-auxiliar": "Cocineros: auxiliar de cocina",
+        "seguridad-8": "Seguridad privada: jornada de 8 horas",
+        "seguridad-9": "Seguridad privada: jornada de 9 horas",
+        "seguridad-10": "Seguridad privada: jornada de 10 horas",
+        "seguridad-11": "Seguridad privada: jornada de 11 horas",
+        "seguridad-12": "Seguridad privada: jornada de 12 horas",
+        "prensa-redactor-1": "Prensa: redactor de primera",
+        "prensa-reportero": "Prensa: reportero",
+        "construccion-oficial-1": "Construcción: albañil o carpintero, oficial de primera",
+        "construccion-oficial-2": "Construcción: albañil o carpintero, oficial de segunda",
+        "construccion-pintor": "Construcción: pintor",
+        "construccion-peon": "Construcción: peón",
+        "agricola": "Establecimientos agrícolas",
+        "ganadero": "Establecimientos ganaderos",
+        "conductor-privado": "Transporte: conductor de ómnibus, camiones, autos de alquiler y particulares",
+        "chofer-cobrador": "Transporte público: chofer cobrador",
+        "chofer-omnibus": "Transporte público: chofer de ómnibus",
+        "cobrador": "Transporte público: cobrador o guarda",
+        "bancario-funcionario": "Bancos: funcionario, sueldo inicial",
+        "bancario-servicio": "Bancos: personal de servicio, sueldo inicial",
+        "aprendiz": "Contrato de aprendizaje"
+      },
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "no-especificadas": 3044000,
+            "comercio-escritorios": 3089789,
+            "comercio-estibadores": 3074451,
+            "textiles": 3081672,
+            "calzados": 3089789,
+            "muebles-fabrica": 3074451,
+            "carpinteria-oficial-1": 3357085,
+            "carpinteria-oficial-2": 3223927,
+            "carpinteria-medio-oficial": 3163066,
+            "carpinteria-ayudante": 3078496,
+            "panaderia-maestro": 3613073,
+            "panaderia-segundo": 3144796,
+            "panaderia-ayudante": 3044469,
+            "mecanica-oficial-1": 3962688,
+            "mecanica-oficial-2": 3643810,
+            "mecanica-ayudante": 3416403,
+            "cocinero-primero": 3173774,
+            "cocinero-segundo": 3090193,
+            "cocina-auxiliar": 3044000,
+            "seguridad-8": 3044000,
+            "seguridad-9": 3424500,
+            "seguridad-10": 3805000,
+            "seguridad-11": 4185500,
+            "seguridad-12": 4566001,
+            "prensa-redactor-1": 3849867,
+            "prensa-reportero": 3300776,
+            "construccion-oficial-1": 3560108,
+            "construccion-oficial-2": 3466552,
+            "construccion-pintor": 3074451,
+            "construccion-peon": 3074451,
+            "agricola": 3150541,
+            "ganadero": 2130800,
+            "conductor-privado": 3074451,
+            "chofer-cobrador": 3996788,
+            "chofer-omnibus": 3074451,
+            "cobrador": 3044000,
+            "bancario-funcionario": 4917731,
+            "bancario-servicio": 3955845,
+            "aprendiz": 1826400
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Seguridad Social (MTESS)",
+            "titulo": "Resolución MTESS N° 670/2026, artículo 3 y anexo de actividades especificadas y profesiones escalafonadas",
+            "url": "https://www.mtess.gov.py/wp-content/uploads/2026/07/Resolucion-MTESS-N%C2%B0-670-REGLAMENTACION-SALARIO-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Selección de actividades del anexo. Seguridad privada: tabla por horas diarias del anexo (artículo 205 del Código del Trabajo)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "py.pension-ips",
+      "nombre": "Pensión del IPS por fallecimiento del asegurado",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "porcentaje": "Porcentaje de la jubilación que se paga como pensión",
+        "semanas-minimas": "Semanas de aporte para dejar pensión sin estar jubilado",
+        "anualidades-conyuge-joven": "Anualidades de indemnización al cónyuge menor de 40 años",
+        "edad-conyuge-joven": "Edad del cónyuge para la indemnización",
+        "semanas-por-anio": "Semanas de aporte que valen un año"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "porcentaje": 60,
+            "semanas-minimas": 750,
+            "anualidades-conyuge-joven": 3,
+            "edad-conyuge-joven": 40,
+            "semanas-por-anio": 50
+          },
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 2263/2003, artículo 1 (artículo 62 de la Ley N° 98/92)",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/4932/ley-n-2263-modifica-parcialmente-la-ley-n-98-92",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Las 50 semanas por año y el subsidio de un salario mínimo por año de antigüedad están en la Ley N° 98/92 (artículo 4, que modifica el artículo 23 de la Ley 430/73, y artículo 65 del Decreto-Ley 1860/50): https://www.bacn.gov.py/leyes-paraguayas/4394/ley-n-98-establece-el-regimen-unificado-de-jubilaciones-y-pensiones"
+          }
+        }
+      ]
     }
   ]
 }

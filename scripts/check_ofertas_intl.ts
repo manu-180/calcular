@@ -1,0 +1,399 @@
+// Ofertas dentro del resultado de calcularya.com (src/lib/pagos/ofertas-intl.ts y ofertas-servidor.ts):
+// - catálogo: cada informe con id, precio (USD 5 a 9) y familia válidos; ningún id hostil resuelve;
+// - cobertura: toda calculadora publicada de un concepto con familia tiene su informe, y la tabla
+//   concepto → oferta → países sale impresa;
+// - informe: con las entradas de los .casos.ts (y los valores por defecto) el viaje
+//   entrada → validación del servidor → texto del formulario → entrada da lo mismo, y los números del
+//   informe (ejecutar) son exactamente los de calcular() con los mismos datos oficiales;
+// - prefill hostil: __proto__, tipos cambiados, otra calculadora, otro país, texto gigante: null;
+// - planilla con datos: el mapa convierte igual que el generador y la planilla cargada con los
+//   números de la persona, recalculada con HyperFormula, da lo mismo que calcular();
+// - textos: sin rayas, sin emojis y en el trato del país.
+//
+// Uso: npx tsx scripts/check_ofertas_intl.ts [mercado]
+
+import "./sin-server-only";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import ExcelJS from "exceljs";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import { crearContexto, ErrorEntrada, type CasosCalculadora } from "../src/motor/calculo";
+import { CONCEPTOS } from "../src/motor/conceptos";
+import { parsearEntrada, valoresIniciales } from "../src/motor/formulario";
+import { resolverValores } from "../src/motor/registro";
+import { textosMotor } from "../src/motor/textos";
+import type { CodigoMercado, DefinicionCalculadora, Mercado, Trato, ValorEntrada } from "../src/motor/tipos";
+import { hoyEn } from "../src/motor/vigencia";
+import { registro } from "../src/paises";
+import { PRODUCTOS_INTL, productoIntl, productoIntlDe, leerReferenciaIntl, type ProductoIntl } from "../src/lib/pagos/catalogo-intl";
+import {
+  COPY_PLANILLA,
+  FAMILIAS,
+  TEXTOS_OFERTA,
+  bajadaOferta,
+  familiaDeConcepto,
+  nombreDeCalculo,
+  type FamiliaInforme,
+} from "../src/lib/pagos/ofertas-intl";
+import { bloqueDe, calculadorasDeProducto, mapaDePlanillaIntl, ofertasDeMercado, planillaConDatos, validarDatosDeProducto } from "../src/lib/pagos/ofertas-servidor";
+import { calcularEscenarios, estadoDelInforme, filaClave } from "../src/lib/pagos/informe-intl";
+import { valorDeCelda } from "../src/lib/pagos/mapa-planilla-intl";
+import { entregaIntlHtml } from "../src/lib/pagos/email-intl";
+import { crudosDeEntrada } from "../src/lib/prefill/intl-cliente";
+import { DATOS_INTL_MAX, parsearDatosIntl } from "../src/lib/prefill/intl";
+import { textosPlanillas } from "../src/app/(intl)/intl/[mercado]/planillas/_textos";
+import { textosInforme, textosVer } from "../src/app/(intl)/intl/[mercado]/informes/_textos";
+import { abrirLibro } from "./evaluar_xlsx";
+import { archivosBajo, DIR_PAISES, importar } from "./paises_comun";
+import { PLANILLAS_INTL, construirPlanilla } from "./planillas-intl";
+
+let fallas = 0;
+const fallo = (msg: string) => {
+  fallas++;
+  console.error(`FAIL ${msg}`);
+};
+const check = (nombre: string, cond: boolean) => {
+  if (cond) console.log(`OK   ${nombre}`);
+  else fallo(nombre);
+};
+
+const filtro = process.argv[2];
+
+async function casosDe(mercado: string, def: DefinicionCalculadora): Promise<CasosCalculadora | null> {
+  for (const archivo of archivosBajo(path.join(DIR_PAISES, mercado, "calculadoras"), /\.casos\.ts$/)) {
+    const m = await importar<CasosCalculadora>(archivo);
+    if (m?.calculadora?.id === def.id) return m;
+  }
+  return null;
+}
+
+const igual = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
+
+// ─── 1. Catálogo ──────────────────────────────────────────────────────────────────────────────
+
+function checkCatalogo() {
+  const informes = PRODUCTOS_INTL.filter((p) => p.tipo === "informe");
+  check(`catálogo: ${informes.length} informes generados desde el registro`, informes.length > 0);
+  for (const p of informes) {
+    if (p.id.length > 60) fallo(`${p.id}: id de más de 60 caracteres`);
+    if (p.precioCentavos < 500 || p.precioCentavos > 900) fallo(`${p.id}: precio fuera de USD 5 a 9`);
+    if (p.archivo !== "" || !p.familia) fallo(`${p.id}: un informe no tiene archivo y sí familia`);
+    if (!calculadorasDeProducto(p).length) fallo(`${p.id}: no tiene calculadoras`);
+  }
+  const ids = PRODUCTOS_INTL.map((p) => p.id);
+  check("catálogo: ids únicos", new Set(ids).size === ids.length);
+  for (const f of FAMILIAS) for (const c of f.conceptos) if (!(c in CONCEPTOS)) fallo(`familia ${f.clave}: concepto desconocido ${c}`);
+  const hostiles = ["__proto__", "constructor", "mx/__proto__", "mx/constructor", "toString", "mx/informe-liquidacion/../x", "MX/INFORME-LIQUIDACION", " mx/informe-liquidacion"];
+  check("productoIntl no resuelve ids hostiles", hostiles.every((h) => productoIntl(h) === null));
+  check("productoIntlDe no resuelve slugs hostiles", ["__proto__", "constructor", "hasOwnProperty"].every((s) => productoIntlDe("mx", s) === null));
+  check("leerReferenciaIntl ignora referencias armadas", leerReferenciaIntl("__proto__/x:00000000-0000-4000-8000-000000000000") === null && leerReferenciaIntl("mx/informe-liquidacion:no-uuid") === null);
+}
+
+// ─── 2. Cobertura ─────────────────────────────────────────────────────────────────────────────
+
+function checkCobertura(): Map<string, { oferta: string; paises: Set<string> }[]> {
+  const tabla = new Map<string, Map<string, Set<string>>>();
+  for (const pais of registro.paises) {
+    const m = pais.mercado.codigo;
+    if (m === "global" || m === "zz" || (filtro && m !== filtro)) continue;
+    const ofertas = ofertasDeMercado(m);
+    for (const c of pais.calculadoras) {
+      const def = c.definicion;
+      if (def.estado === "borrador") continue;
+      const de = ofertas.porCalculadora[def.id];
+      const f = familiaDeConcepto(def.concepto);
+      if (f && !de?.ofertas.some((o) => o.tipo === "informe" && o.familia === f.clave)) fallo(`${def.id}: el concepto ${def.concepto} tiene la familia ${f.clave} y la calculadora no la ofrece`);
+      if (de && de.calc !== def.slug) fallo(`${def.id}: la oferta apunta a ${de.calc}`);
+      if (de && (!de.nombre || /calculadora/i.test(de.nombre))) fallo(`${def.id}: nombre del cálculo raro «${de.nombre}»`);
+      const porConcepto = tabla.get(def.concepto) ?? new Map<string, Set<string>>();
+      tabla.set(def.concepto, porConcepto);
+      for (const o of de?.ofertas ?? []) {
+        const k = `${o.tipo === "planilla" ? "planilla" : o.familia} (${o.tipo}, USD ${o.precioCentavos / 100})`;
+        (porConcepto.get(k) ?? porConcepto.set(k, new Set()).get(k)!).add(m);
+      }
+      if (!de) (porConcepto.get("sin oferta") ?? porConcepto.set("sin oferta", new Set()).get("sin oferta")!).add(m);
+    }
+  }
+  console.log("\nconcepto → oferta → países");
+  const salida = new Map<string, { oferta: string; paises: Set<string> }[]>();
+  for (const [concepto, ofertas] of [...tabla].sort()) {
+    salida.set(concepto, [...ofertas].map(([oferta, paises]) => ({ oferta, paises })));
+    for (const [oferta, paises] of ofertas) console.log(`  ${concepto.padEnd(26)} ${oferta.padEnd(42)} ${paises.size} ${[...paises].sort().join(" ")}`);
+  }
+  console.log("");
+  return salida;
+}
+
+// ─── 3. Informe: viaje de la entrada y números ────────────────────────────────────────────────
+
+async function checkInformes() {
+  for (const p of PRODUCTOS_INTL.filter((x) => x.tipo === "informe" && (!filtro || x.mercado === filtro))) {
+    const familia = FAMILIAS.find((f) => f.clave === p.familia)!;
+    const pais = registro.pais(p.mercado as CodigoMercado)!;
+    const hoy = hoyEn(pais.mercado);
+    for (const slug of calculadorasDeProducto(p)) {
+      const pagina = registro.pagina(pais.mercado.codigo, slug, hoy, "interno");
+      const def = registro.calculadora(pais.mercado.codigo, slug)!.definicion;
+      if (!pagina) {
+        console.log(`--   ${p.id} ${slug}: no publicable hoy, no se prueba`);
+        continue;
+      }
+      const props = pagina.props;
+      const motor = textosMotor(pais.mercado.idioma, pais.mercado.trato);
+      const base = valoresIniciales(def.campos, props.contexto, props.opcionesDinamicas);
+      const entradas: Record<string, unknown>[] = [];
+      const porDefecto = parsearEntrada(def.campos, base, props.contexto, props.opcionesDinamicas);
+      if (porDefecto.ok) entradas.push({ ...porDefecto.entrada });
+      for (const caso of (await casosDe(pais.mercado.codigo, def))?.casos ?? []) if (!caso.esperaError) entradas.push({ ...(caso.entrada as Record<string, unknown>) });
+      let probadas = 0;
+      for (const e of entradas) {
+        const datos = validarDatosDeProducto(p, { calc: slug, entrada: e }, hoy);
+        if (!datos) continue;
+        probadas++;
+        const crudos = crudosDeEntrada(def.campos, datos.entrada, pais.mercado.locale, base);
+        const vuelta = parsearEntrada(def.campos, crudos, props.contexto, props.opcionesDinamicas);
+        if (!vuelta.ok || !igual(vuelta.entrada, datos.entrada)) {
+          fallo(`${p.id} ${slug}: la entrada no sobrevive el viaje al formulario ${JSON.stringify(datos.entrada)} → ${JSON.stringify(vuelta.ok ? vuelta.entrada : vuelta.errores)}`);
+          continue;
+        }
+        const estado = estadoDelInforme(def, crudos, props, motor);
+        let directo: Record<string, unknown>;
+        try {
+          directo = def.calcular(datos.entrada as never, props.valores as never, crearContexto(pais.mercado, hoy, def)) as Record<string, unknown>;
+        } catch (err) {
+          if (err instanceof ErrorEntrada) continue;
+          throw err;
+        }
+        if (estado.tipo !== "ok") {
+          fallo(`${p.id} ${slug}: el informe no calcula (${estado.tipo}) con ${JSON.stringify(datos.entrada)}`);
+          continue;
+        }
+        for (const f of def.resultado) {
+          if (!igual(estado.resultado[f.clave], directo[f.clave])) fallo(`${p.id} ${slug}: ${f.clave} informe ${JSON.stringify(estado.resultado[f.clave])} calculadora ${JSON.stringify(directo[f.clave])}`);
+        }
+        if (familia.escenarios) {
+          const esc = calcularEscenarios(def, familia.escenarios.tipo, crudos, props, motor);
+          const clave = filaClave(estado.filas);
+          const actual = esc?.filas.find((x) => x.actual);
+          if (esc && actual && clave && esc.columnas.includes(clave.etiqueta) && actual.resultados[esc.columnas.indexOf(clave.etiqueta)] !== clave.texto) {
+            fallo(`${p.id} ${slug}: el escenario actual (${actual.resultados.join(" / ")}) no da el resultado (${clave.texto})`);
+          }
+        }
+      }
+      if (!probadas) fallo(`${p.id} ${slug}: ninguna entrada de prueba pasa la validación del prefill`);
+      else console.log(`OK   ${p.id} ${slug}: ${probadas} entradas, informe = calculadora`);
+    }
+  }
+}
+
+// ─── 4. Prefill hostil ────────────────────────────────────────────────────────────────────────
+
+function checkHostil() {
+  const p = productoIntlDe("mx", "informe-liquidacion");
+  if (!p) return fallo("falta mx/informe-liquidacion para las pruebas hostiles");
+  const def = registro.calculadora("mx", "finiquito")!.definicion;
+  const pais = registro.pais("mx")!;
+  const hoy = hoyEn(pais.mercado);
+  const pagina = registro.pagina("mx", "finiquito", hoy, "interno")!;
+  const crudos = valoresIniciales(def.campos, pagina.props.contexto, pagina.props.opcionesDinamicas);
+  const pd = parsearEntrada(def.campos, { ...crudos, sueldo: "15000", ingreso: "2021-03-01" }, pagina.props.contexto, pagina.props.opcionesDinamicas);
+  const validos = (e: unknown) => validarDatosDeProducto(p, e, hoy);
+  const base = pd.ok ? validos({ calc: "finiquito", entrada: pd.entrada }) : null;
+  check("prefill: una entrada válida de mx/finiquito pasa", base !== null);
+  const entrada = base?.entrada ?? {};
+  const casos: [string, unknown][] = [
+    ["null", null],
+    ["array", [1, 2]],
+    ["sin calc", { entrada }],
+    ["calc de otra familia", { calc: "isr", entrada }],
+    ["calc inexistente", { calc: "__proto__", entrada }],
+    ["entrada con __proto__", JSON.parse(`{"calc":"finiquito","entrada":{"__proto__":{"sueldo":1}}}`)],
+    ["número como texto", { calc: "finiquito", entrada: { ...entrada, sueldo: "15000" } }],
+    ["número infinito", { calc: "finiquito", entrada: { ...entrada, sueldo: 1e400 } }],
+    ["número gigante", { calc: "finiquito", entrada: { ...entrada, sueldo: 1e20 } }],
+    ["opción inventada", { calc: "finiquito", entrada: { ...entrada, motivo: "constructor" } }],
+    ["fecha imposible", { calc: "finiquito", entrada: { ...entrada, salida: "2026-02-31" } }],
+  ];
+  for (const [nombre, raw] of casos) check(`prefill hostil: ${nombre} → null`, validos(raw) === null);
+  check("prefill: texto de más de 2048 no se parsea", parsearDatosIntl("x".repeat(DATOS_INTL_MAX + 1)) === undefined);
+  check("prefill: JSON roto no se parsea", parsearDatosIntl("{") === undefined);
+  const otroPais = productoIntlDe("co", "informe-liquidacion");
+  if (otroPais && base) check("prefill: los datos de un país no valen en otro", validarDatosDeProducto(otroPais, { calc: "finiquito", entrada }, hoy) === null);
+  if (base) check("prefill: los campos de más se descartan", !("extra" in (validos({ calc: "finiquito", entrada: { ...entrada, extra: 1 } })?.entrada ?? { extra: 1 })));
+}
+
+// ─── 5. Planilla con los datos de la persona ─────────────────────────────────────────────────
+
+async function checkPlanillas() {
+  const tmp = mkdtempSync(path.join(tmpdir(), "ofertas-intl-"));
+  try {
+    for (const planilla of PLANILLAS_INTL) {
+      const m = planilla.mercado;
+      if (filtro && m !== filtro) continue;
+      const prod = PRODUCTOS_INTL.find((x) => x.mercado === m && x.tipo === "planilla") as ProductoIntl | undefined;
+      const construida = construirPlanilla(planilla);
+      if (!prod || !construida) continue;
+      const mapa = mapaDePlanillaIntl(prod);
+      if (!mapa) {
+        fallo(`${m}: falta el mapa de la planilla (correr scripts/paises/gen_planillas_intl.ts)`);
+        continue;
+      }
+      if (mapa.archivo !== prod.archivo) fallo(`${m}: el mapa es de ${mapa.archivo} y la planilla a la venta es ${prod.archivo}`);
+      const pais = construida.libro.pais;
+      for (const b of construida.libro.bloques) {
+        const bm = bloqueDe(prod, b.calculadora);
+        if (!bm) {
+          fallo(`${m}/${b.calculadora}: la hoja ${b.hoja} no está en el mapa`);
+          continue;
+        }
+        const def = pais.calculadoras.find((c) => c.definicion.slug === b.calculadora)!.definicion;
+        const sinCelda = def.campos.filter((c) => !bm.celdas[c.id]).map((c) => c.id);
+        if (sinCelda.length) console.log(`AVISO ${m}/${b.calculadora}: sin celda en el mapa para ${sinCelda.join(", ")} (queda el valor de ejemplo)`);
+        const casos = ((await casosDe(m, def))?.casos ?? []).filter((c) => !c.esperaError).slice(0, 3);
+        let probadas = 0;
+        for (const caso of casos) {
+          const datos = validarDatosDeProducto(prod, { calc: b.calculadora, entrada: caso.entrada }, construida.hoy);
+          if (!datos) continue;
+          for (const [campo, celda] of Object.entries(bm.celdas)) {
+            const v = datos.entrada[campo];
+            const esperado = b.entradas[campo].convertir(v as ValorEntrada);
+            if (!igual(valorDeCelda(celda, v), esperado)) fallo(`${m}/${b.calculadora}: el mapa convierte ${campo}=${JSON.stringify(v)} en ${JSON.stringify(valorDeCelda(celda, v))} y la hoja en ${JSON.stringify(esperado)}`);
+          }
+          const bytes = await planillaConDatos(prod, datos);
+          const ruta = path.join(tmp, `${m}-${b.calculadora}-${probadas}.xlsx`);
+          writeFileSync(ruta, bytes);
+          const libro = await abrirLibro(ruta);
+          // exceljs lee una celda con formato de fecha como Date y evaluar_xlsx la pasa a milisegundos
+          // (Excel lee el número de serie que quedó escrito): se recargan como número de serie.
+          const escrito = new ExcelJS.Workbook();
+          await escrito.xlsx.load(bytes as unknown as ArrayBuffer);
+          const ws = escrito.getWorksheet(b.hoja)!;
+          const recarga: Record<string, string | number | null> = {};
+          for (const otro of construida.libro.bloques.filter((x) => x.hoja === b.hoja)) {
+            for (const e of Object.values(otro.entradas)) {
+              const v = ws.getCell(e.ref).value;
+              recarga[e.ref] = v instanceof Date ? Math.round(v.getTime() / 86_400_000 + 25569) : typeof v === "number" || typeof v === "string" ? v : null;
+            }
+          }
+          libro.cargar(b.hoja, recarga);
+          // Lo que la hoja usa como «hoy» se fija al día del motor, igual que en check_planillas_intl.
+          if (b.hoy) libro.cargar(b.hoja, { [b.hoy.ref]: b.hoy.convertir(construida.hoy) });
+          const r = resolverValores(pais, def, construida.hoy);
+          if (!r.ok) continue;
+          let esperado: Record<string, unknown>;
+          try {
+            esperado = def.calcular(datos.entrada as never, r.valores as never, crearContexto(pais.mercado, construida.hoy, def)) as Record<string, unknown>;
+          } catch (err) {
+            if (err instanceof ErrorEntrada) continue;
+            throw err;
+          }
+          const unidad = 10 ** -(def.redondeo ?? pais.mercado.redondeo).decimales;
+          for (const [clave, ref] of Object.entries(b.resultados)) {
+            const esp = esperado[clave];
+            if (typeof esp !== "number") continue;
+            const obtenido = libro.numero(b.hoja, ref);
+            if (Math.abs(obtenido - esp) > unidad + 1e-9) fallo(`${m}/${b.calculadora} «${caso.nombre}»: ${clave} planilla con datos ${obtenido}, calculadora ${esp}`);
+          }
+          probadas++;
+        }
+        if (casos.length && !probadas) fallo(`${m}/${b.calculadora}: ningún caso entra en la planilla con datos`);
+        else console.log(`OK   ${m}/${b.calculadora} (${b.hoja}): ${probadas} planillas con datos = calculadora`);
+      }
+    }
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+}
+
+// ─── 6. Textos ────────────────────────────────────────────────────────────────────────────────
+
+const RAYA = /[–—]/;
+const EMOJI = /\p{Extended_Pictographic}/u;
+const VOSEO = /(?<![\p{L}])(tenés|podés|pagás|cambiás|querés|elegí|revisá|comparalo|pedí|guardá|llevate|tené|llegá|mirá|convertí|completala|firmala|entregala|aportás|imprimís|guardás|escribinos|respondé|probá|acá|abrilo|confirmá|buscá|usá|registrá|reservá|corregilo|volvé|esperá|compará|preguntá|descargala)(?![\p{L}])/iu;
+// Sólo formas que no pueden ser de usted (las de tercera persona, «usa», «abre», «guarda», son
+// iguales al imperativo de tú y aparecen en textos de usted).
+const TUTEO = /(?<![\p{L}])(tú|tu|tus|te|ti|puedes|tienes|pagas|quieres|llévate|ábrelo|escríbenos|corrígelo|cambias|aportas|imprimes|guardas|pagarías)(?![\p{L}])/iu;
+const VOSEO_EN_VOS_NO = /(?<![\p{L}])(puedes|tienes|pagas|quieres|ábrelo|escríbenos|corrígelo|imprimes|guardas|cambias|aportas)(?![\p{L}])/iu;
+
+function revisarTexto(origen: string, trato: Trato, s: string) {
+  if (RAYA.test(s)) fallo(`${origen}: raya en «${s}»`);
+  if (EMOJI.test(s)) fallo(`${origen}: emoji en «${s}»`);
+  if (trato !== "vos" && VOSEO.test(s)) fallo(`${origen} (${trato}): voseo «${VOSEO.exec(s)![0]}» en «${s}»`);
+  if (trato === "usted" && TUTEO.test(s)) fallo(`${origen} (usted): tuteo «${TUTEO.exec(s)![0]}» en «${s}»`);
+  if (trato === "vos" && VOSEO_EN_VOS_NO.test(s)) fallo(`${origen} (vos): forma de tú «${VOSEO_EN_VOS_NO.exec(s)![0]}» en «${s}»`);
+}
+
+function textosDe(valor: unknown, salida: string[] = []): string[] {
+  if (typeof valor === "string") salida.push(valor);
+  else if (Array.isArray(valor)) for (const v of valor) textosDe(v, salida);
+  else if (valor && typeof valor === "object") for (const v of Object.values(valor)) textosDe(v, salida);
+  return salida;
+}
+
+function checkTextos() {
+  const tratos: Trato[] = ["tu", "usted", "vos"];
+  let revisados = 0;
+  for (const t of tratos) {
+    const del = (o: unknown) => textosDe(o).length;
+    const deTrato = (f: FamiliaInforme) =>
+      textosDe([
+        f.paraQuien[t],
+        f.descripcion.map((d) => d[t]),
+        f.gancho[t],
+        f.incluye.map((p) => [p.titulo[t], p.texto[t]]),
+        f.pasos ? [f.pasos.titulo[t], f.pasos.items.map((x) => x[t])] : [],
+        f.nota ? [f.nota.titulo[t], f.nota.uso[t], f.nota.pedido, f.nota.cierre] : [],
+        f.escenarios ? [f.escenarios.titulo[t], f.escenarios.explica[t]] : [],
+        textosInforme(t, f),
+      ]);
+    for (const f of FAMILIAS) for (const s of deTrato(f)) (revisarTexto(`familia ${f.clave}`, t, s), revisados++);
+    const generales = textosDe([
+      COPY_PLANILLA.gancho[t],
+      COPY_PLANILLA.incluye.map((p) => [p.titulo[t], p.texto[t]]),
+      Object.values(TEXTOS_OFERTA).map((x) => (typeof x === "string" ? x : x[t])),
+      bajadaOferta({ tipo: "informe", trato: t, etiqueta: "Total", cifra: "$ 1.000", nombreCalculo: "finiquito" }),
+      bajadaOferta({ tipo: "planilla", trato: t, etiqueta: "Sueldo neto", cifra: "$ 1.000", hoja: "Sueldo neto", nombreCalculo: "sueldo neto" }),
+      textosVer(t),
+    ]);
+    for (const s of generales) (revisarTexto("ofertas", t, s), revisados++);
+    revisados += del([]);
+  }
+  for (const pais of registro.paises) {
+    const m = pais.mercado as Mercado;
+    if (m.codigo === "global" || m.codigo === "zz") continue;
+    const tx = textosPlanillas(m);
+    const prods = PRODUCTOS_INTL.filter((p) => p.mercado === m.codigo);
+    const textos = textosDe([
+      Object.entries(tx).map(([, v]) => (typeof v === "function" ? prods.map((p) => (v as (p: ProductoIntl) => unknown)(p)) : v)),
+      prods.map((p) => [p.titulo, p.paraQuien, p.descripcion]),
+    ]).filter((s) => !/^\s*$/.test(s));
+    for (const s of textos) (revisarTexto(`textos ${m.codigo}`, m.trato, s), revisados++);
+    for (const p of prods.filter((x) => x.tipo === "informe")) {
+      const html = entregaIntlHtml({ producto: p, trato: m.trato, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" }).replace(/<[^>]+>/g, " ");
+      revisarTexto(`mail ${p.id}`, m.trato, html);
+      revisados++;
+    }
+    for (const c of pais.calculadoras) {
+      const n = nombreDeCalculo(c.contenido.h1, m.nombre);
+      if (!n || /calculadora|\{\{/i.test(n)) fallo(`${c.definicion.id}: nombre del cálculo «${n}» a partir de «${c.contenido.h1}»`);
+    }
+  }
+  check(`textos: ${revisados} revisados`, revisados > 0);
+}
+
+async function main() {
+  checkCatalogo();
+  checkCobertura();
+  await checkInformes();
+  checkHostil();
+  await checkPlanillas();
+  checkTextos();
+  console.log(fallas ? `\n${fallas} FALLAS` : "\nTODO OK check_ofertas_intl");
+  process.exit(fallas ? 1 : 0);
+}
+
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
+

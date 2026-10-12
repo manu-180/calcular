@@ -5,7 +5,7 @@
       "id": "ve.bonos-no-salariales",
       "nivel": "cautela",
       "desde": "2023-05-01",
-      "aplicaA": ["ve.prestaciones-sociales", "ve.liquidacion", "ve.utilidades", "ve.vacaciones", "ve.horas-extra", "ve.salario-minimo"],
+      "aplicaA": ["ve.prestaciones-sociales", "ve.liquidacion", "ve.utilidades", "ve.vacaciones", "ve.horas-extra", "ve.salario-minimo", "ve.bono-vacacional", "ve.vacaciones-fraccionadas", "ve.indemnizacion-por-despido", "ve.salario-integral", "ve.garantia-prestaciones", "ve.utilidades-fraccionadas", "ve.bono-nocturno", "ve.salario-diario", "ve.dia-feriado-trabajado"],
       "titulo": "Los bonos no son salario",
       "texto": "Casi todo el ingreso mínimo que anuncia el Gobierno se paga con bonos: el cestaticket y el bono de guerra económica. No son salario, así que no cuentan para prestaciones, utilidades, vacaciones ni horas extra. Sus montos se anuncian sin decreto publicado en Gaceta Oficial, por eso no los usamos.",
       "fuente": {
@@ -35,7 +35,7 @@
       "id": "ve.bono-vacacional-lectura",
       "nivel": "cautela",
       "desde": "2012-05-07",
-      "aplicaA": ["ve.vacaciones", "ve.liquidacion", "ve.prestaciones-sociales"],
+      "aplicaA": ["ve.vacaciones", "ve.liquidacion", "ve.prestaciones-sociales", "ve.bono-vacacional", "ve.vacaciones-fraccionadas", "ve.antiguedad-laboral", "ve.salario-integral", "ve.garantia-prestaciones", "ve.indemnizacion-por-despido"],
       "titulo": "Cómo contamos el bono vacacional",
       "texto": "Contamos 15 días de bono vacacional el primer año y uno más por cada año siguiente, hasta 30. La ley se puede leer también como 16 días desde el primer año. Revisa tu contrato colectivo: si da más, vale lo que da más.",
       "fuente": {
@@ -50,7 +50,7 @@
       "id": "ve.solo-tasa-oficial",
       "nivel": "info",
       "desde": "2026-01-01",
-      "aplicaA": ["ve.dolar-bcv", "ve.salario-minimo"],
+      "aplicaA": ["ve.dolar-bcv", "ve.salario-minimo", "ve.euro-bcv", "ve.sueldo-en-bolivares"],
       "titulo": "Solo la tasa oficial",
       "texto": "Usamos únicamente la tasa oficial del Banco Central de Venezuela. No mostramos el dólar paralelo ni tasas de casas de cambio o plataformas, porque no son oficiales y cambian según quién las publica.",
       "fuente": {

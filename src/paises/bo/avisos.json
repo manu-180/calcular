@@ -74,6 +74,39 @@
         "tipo": "primaria",
         "verificadoEl": "2026-10-07"
       }
+    },
+    {
+      "id": "bo.tgb-departamental",
+      "nivel": "cautela",
+      "desde": "2025-01-01",
+      "aplicaA": [
+        "bo.impuesto-a-la-herencia"
+      ],
+      "titulo": "Puede haber un impuesto departamental",
+      "texto": "La Ley N° 843 aplica este impuesto hasta que cada gobierno departamental cree el suyo. Si su departamento ya tiene su propio impuesto a las herencias y donaciones, consulte sus alícuotas antes de pagar.",
+      "fuente": {
+        "organismo": "Servicio de Impuestos Nacionales (SIN)",
+        "titulo": "Ley N° 843, texto ordenado al 31/08/2026, Título XI, nota sobre la Ley N° 154 (dominio tributario departamental del TGB)",
+        "url": "https://www.impuestos.gob.bo/wp-content/uploads/2026/09/1.-LEY-N%C2%B0-843-08-26.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      }
+    },
+    {
+      "id": "bo.subsidios-en-productos",
+      "nivel": "info",
+      "desde": "2025-01-01",
+      "aplicaA": [
+        "bo.subsidio-prenatal-y-lactancia"
+      ],
+      "texto": "El subsidio prenatal y el de lactancia se entregan en productos alimenticios de origen nacional, no en dinero. Los montos son los que da la guía del Ministerio de Trabajo; confirme con su caja de salud si hubo un cambio.",
+      "fuente": {
+        "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+        "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XIX (D.S. N° 21637, art. 25, modificado por D.S. N° 3546)",
+        "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      }
     }
   ]
 }

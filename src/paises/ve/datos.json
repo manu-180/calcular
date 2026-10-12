@@ -405,6 +405,458 @@
           "motivo": "Anunciado el 30/04/2026 sin decreto ni Gaceta publicados (la Gaceta del 1/05/2026 no existe en gacetaoficial.gob.ve). Solo prensa."
         }
       ]
+    },
+    {
+      "id": "ve.jornada-diurna-horas",
+      "nombre": "Horas diarias máximas de la jornada diurna",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 173 numeral 1",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.jornada-mixta-horas",
+      "nombre": "Horas diarias máximas de la jornada mixta",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 173 numeral 3",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.jornada-nocturna-horas",
+      "nombre": "Horas diarias máximas de la jornada nocturna",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 173 numeral 2",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.recargo-feriado",
+      "nombre": "Recargo mínimo por trabajar en día feriado",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 120",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.descanso-compensatorio-umbral-horas",
+      "nombre": "Horas trabajadas en día de descanso que dan un día completo de descanso compensatorio",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 188",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.preaviso-dias-1-mes",
+      "nombre": "Preaviso de renuncia después de un mes de trabajo (una semana)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 81 literal a",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley dice «una semana de anticipación»."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.preaviso-dias-6-meses",
+      "nombre": "Preaviso de renuncia después de seis meses de trabajo (una quincena)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 81 literal b",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley dice «una quincena de anticipación»."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.preaviso-dias-1-anio",
+      "nombre": "Preaviso de renuncia después de un año de trabajo (un mes)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 81 literal c",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley dice «un mes de anticipación»; se cuenta como 30 días."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.anticipo-prestaciones-tope",
+      "nombre": "Anticipo máximo sobre la garantía de prestaciones",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 144",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.prenatal-semanas",
+      "nombre": "Semanas de descanso prenatal",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 336",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.postnatal-semanas",
+      "nombre": "Semanas de descanso postnatal",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 336",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.adopcion-semanas",
+      "nombre": "Semanas de descanso por adopción de un niño o niña menor de tres años",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 340",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.paternidad-dias",
+      "nombre": "Días continuos de licencia por paternidad",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 339",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.inamovilidad-anios",
+      "nombre": "Años de inamovilidad después del parto o de la colocación familiar",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, arts. 335 y 339",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.plazo-pago-prestaciones-dias",
+      "nombre": "Días que tiene la empresa para pagar las prestaciones al terminar la relación",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 142 literal f",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ve.ivss-trabajador",
+      "nombre": "Cotización del trabajador al Seguro Social (IVSS)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "motivo": "La Ley del Seguro Social y su reglamento no tienen copia https legible en un sitio oficial: el IVSS responde solo por http y la Gaceta Oficial también. Valor tomado de calculadoras y guías de nómina."
+        }
+      ]
+    },
+    {
+      "id": "ve.ivss-patrono",
+      "nombre": "Cotización del patrono al Seguro Social según riesgo",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "minimo": "Riesgo mínimo",
+        "medio": "Riesgo medio",
+        "maximo": "Riesgo máximo"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "minimo": 9,
+            "medio": 10,
+            "maximo": 11
+          },
+          "motivo": "La Ley del Seguro Social y su reglamento no tienen copia https legible en un sitio oficial: el IVSS responde solo por http y la Gaceta Oficial también. Valor tomado de calculadoras y guías de nómina."
+        }
+      ]
+    },
+    {
+      "id": "ve.ivss-tope-salarios-minimos",
+      "nombre": "Tope del salario de cotización al IVSS, en salarios mínimos",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "motivo": "La Ley del Seguro Social y su reglamento no tienen copia https legible en un sitio oficial: el IVSS responde solo por http y la Gaceta Oficial también. Valor tomado de calculadoras y guías de nómina."
+        }
+      ]
+    },
+    {
+      "id": "ve.rpe-trabajador",
+      "nombre": "Cotización del trabajador al Régimen Prestacional de Empleo (paro forzoso)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "motivo": "La Ley del Régimen Prestacional de Empleo no tiene copia https legible en un sitio oficial (Gaceta e IVSS solo por http). Valor de guías de nómina."
+        }
+      ]
+    },
+    {
+      "id": "ve.rpe-patrono",
+      "nombre": "Cotización del patrono al Régimen Prestacional de Empleo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "motivo": "La Ley del Régimen Prestacional de Empleo no tiene copia https legible en un sitio oficial (Gaceta e IVSS solo por http). Valor de guías de nómina."
+        }
+      ]
+    },
+    {
+      "id": "ve.rpe-tope-salarios-minimos",
+      "nombre": "Tope del salario de cotización al Régimen Prestacional de Empleo, en salarios mínimos",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "motivo": "La Ley del Régimen Prestacional de Empleo no tiene copia https legible en un sitio oficial (Gaceta e IVSS solo por http). Valor de guías de nómina."
+        }
+      ]
+    },
+    {
+      "id": "ve.faov-trabajador",
+      "nombre": "Aporte del trabajador al Fondo de Ahorro Obligatorio para la Vivienda (FAOV)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "motivo": "La Ley del Régimen Prestacional de Vivienda y Hábitat se reformó en la Gaceta 6.805 Extraordinario del 01/05/2024 y solo encontramos esa Gaceta en el sitio de un estudio jurídico y en gacetaoficial.gob.ve por http. Falta leer el artículo de aportes en fuente https oficial."
+        }
+      ]
+    },
+    {
+      "id": "ve.faov-patrono",
+      "nombre": "Aporte del patrono al FAOV",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "motivo": "La Ley del Régimen Prestacional de Vivienda y Hábitat se reformó en la Gaceta 6.805 Extraordinario del 01/05/2024 y solo encontramos esa Gaceta en el sitio de un estudio jurídico y en gacetaoficial.gob.ve por http. Falta leer el artículo de aportes en fuente https oficial."
+        }
+      ]
+    },
+    {
+      "id": "ve.inces-patrono",
+      "nombre": "Aporte del patrono al INCES sobre la nómina",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "motivo": "Ley del INCES (Gaceta 6.155 Extraordinario de 2014) no leída en fuente https oficial."
+        }
+      ]
+    },
+    {
+      "id": "ve.igtf-divisas",
+      "nombre": "Alícuota del IGTF en pagos con divisas o criptoactivos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "motivo": "SENIAT no responde desde esta red y el decreto que fija la alícuota no tiene copia https oficial legible. Solo fuentes secundarias."
+        }
+      ]
     }
   ]
 }

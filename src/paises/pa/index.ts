@@ -24,6 +24,62 @@ import contenidoPrima from "./contenido/prima-de-antiguedad";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioNeto from "./contenido/salario-neto";
 import contenidoVacaciones from "./contenido/vacaciones";
+import salarioPorHora from "./calculadoras/salario-por-hora";
+import jornadaNocturna from "./calculadoras/jornada-nocturna";
+import domingoTrabajado from "./calculadoras/domingo-trabajado";
+import feriadoTrabajado from "./calculadoras/feriado-trabajado";
+import preaviso from "./calculadoras/preaviso";
+import liquidacionPorRenuncia from "./calculadoras/liquidacion-por-renuncia";
+import renunciaJustificada from "./calculadoras/renuncia-justificada";
+import fondoDeCesantia from "./calculadoras/fondo-de-cesantia";
+import licenciaDeMaternidad from "./calculadoras/licencia-de-maternidad";
+import licenciaPorEnfermedad from "./calculadoras/licencia-por-enfermedad";
+import periodoDePrueba from "./calculadoras/periodo-de-prueba";
+import contratoPorTiempoDefinido from "./calculadoras/contrato-por-tiempo-definido";
+import trabajoDomestico from "./calculadoras/trabajo-domestico";
+import muerteDelTrabajador from "./calculadoras/muerte-del-trabajador";
+import cuotaSeguroSocial from "./calculadoras/cuota-seguro-social";
+import gastosDeRepresentacion from "./calculadoras/gastos-de-representacion";
+import prestamoPersonal from "./calculadoras/prestamo-personal";
+import impuestoDeInmueble from "./calculadoras/impuesto-de-inmueble";
+import contenidoSalarioPorHora from "./contenido/salario-por-hora";
+import contenidoJornadaNocturna from "./contenido/jornada-nocturna";
+import contenidoDomingoTrabajado from "./contenido/domingo-trabajado";
+import contenidoFeriadoTrabajado from "./contenido/feriado-trabajado";
+import contenidoPreaviso from "./contenido/preaviso";
+import contenidoLiquidacionPorRenuncia from "./contenido/liquidacion-por-renuncia";
+import contenidoRenunciaJustificada from "./contenido/renuncia-justificada";
+import contenidoFondoDeCesantia from "./contenido/fondo-de-cesantia";
+import contenidoLicenciaDeMaternidad from "./contenido/licencia-de-maternidad";
+import contenidoLicenciaPorEnfermedad from "./contenido/licencia-por-enfermedad";
+import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
+import contenidoContratoPorTiempoDefinido from "./contenido/contrato-por-tiempo-definido";
+import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
+import contenidoMuerteDelTrabajador from "./contenido/muerte-del-trabajador";
+import contenidoCuotaSeguroSocial from "./contenido/cuota-seguro-social";
+import contenidoGastosDeRepresentacion from "./contenido/gastos-de-representacion";
+import contenidoPrestamoPersonal from "./contenido/prestamo-personal";
+import contenidoImpuestoDeInmueble from "./contenido/impuesto-de-inmueble";
+import licenciaDePaternidad from "./calculadoras/licencia-de-paternidad";
+import interesesPorMoraLaboral from "./calculadoras/intereses-por-mora-laboral";
+import indemnizacionAntesDe1995 from "./calculadoras/indemnizacion-antes-de-1995";
+import contenidoLicenciaDePaternidad from "./contenido/licencia-de-paternidad";
+import contenidoInteresesPorMoraLaboral from "./contenido/intereses-por-mora-laboral";
+import contenidoIndemnizacionAntesDe1995 from "./contenido/indemnizacion-antes-de-1995";
+import jubilacion from "./calculadoras/jubilacion";
+import contenidoJubilacion from "./contenido/jubilacion";
+import seguroSocialIndependientes from "./calculadoras/seguro-social-independientes";
+import descuentoDePensionados from "./calculadoras/descuento-de-pensionados";
+import salariosCaidos from "./calculadoras/salarios-caidos";
+import decimoTercerMesProporcional from "./calculadoras/decimo-tercer-mes-proporcional";
+import vacacionesProporcionales from "./calculadoras/vacaciones-proporcionales";
+import contenidoSeguroSocialIndependientes from "./contenido/seguro-social-independientes";
+import contenidoDescuentoDePensionados from "./contenido/descuento-de-pensionados";
+import contenidoSalariosCaidos from "./contenido/salarios-caidos";
+import contenidoDecimoTercerMesProporcional from "./contenido/decimo-tercer-mes-proporcional";
+import contenidoVacacionesProporcionales from "./contenido/vacaciones-proporcionales";
+import horasExtraEnFeriado from "./calculadoras/horas-extra-en-feriado";
+import contenidoHorasExtraEnFeriado from "./contenido/horas-extra-en-feriado";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +104,34 @@ export default definirPais({
     { definicion: itbms, contenido: contenidoItbms, cliente: () => import("./calculadoras/itbms.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
+    { definicion: salarioPorHora, contenido: contenidoSalarioPorHora, cliente: () => import("./calculadoras/salario-por-hora.cliente") },
+    { definicion: jornadaNocturna, contenido: contenidoJornadaNocturna, cliente: () => import("./calculadoras/jornada-nocturna.cliente") },
+    { definicion: domingoTrabajado, contenido: contenidoDomingoTrabajado, cliente: () => import("./calculadoras/domingo-trabajado.cliente") },
+    { definicion: feriadoTrabajado, contenido: contenidoFeriadoTrabajado, cliente: () => import("./calculadoras/feriado-trabajado.cliente") },
+    { definicion: preaviso, contenido: contenidoPreaviso, cliente: () => import("./calculadoras/preaviso.cliente") },
+    { definicion: liquidacionPorRenuncia, contenido: contenidoLiquidacionPorRenuncia, cliente: () => import("./calculadoras/liquidacion-por-renuncia.cliente") },
+    { definicion: renunciaJustificada, contenido: contenidoRenunciaJustificada, cliente: () => import("./calculadoras/renuncia-justificada.cliente") },
+    { definicion: fondoDeCesantia, contenido: contenidoFondoDeCesantia, cliente: () => import("./calculadoras/fondo-de-cesantia.cliente") },
+    { definicion: licenciaDeMaternidad, contenido: contenidoLicenciaDeMaternidad, cliente: () => import("./calculadoras/licencia-de-maternidad.cliente") },
+    { definicion: licenciaPorEnfermedad, contenido: contenidoLicenciaPorEnfermedad, cliente: () => import("./calculadoras/licencia-por-enfermedad.cliente") },
+    { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
+    { definicion: contratoPorTiempoDefinido, contenido: contenidoContratoPorTiempoDefinido, cliente: () => import("./calculadoras/contrato-por-tiempo-definido.cliente") },
+    { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
+    { definicion: muerteDelTrabajador, contenido: contenidoMuerteDelTrabajador, cliente: () => import("./calculadoras/muerte-del-trabajador.cliente") },
+    { definicion: cuotaSeguroSocial, contenido: contenidoCuotaSeguroSocial, cliente: () => import("./calculadoras/cuota-seguro-social.cliente") },
+    { definicion: gastosDeRepresentacion, contenido: contenidoGastosDeRepresentacion, cliente: () => import("./calculadoras/gastos-de-representacion.cliente") },
+    { definicion: prestamoPersonal, contenido: contenidoPrestamoPersonal, cliente: () => import("./calculadoras/prestamo-personal.cliente") },
+    { definicion: impuestoDeInmueble, contenido: contenidoImpuestoDeInmueble, cliente: () => import("./calculadoras/impuesto-de-inmueble.cliente") },
+    { definicion: licenciaDePaternidad, contenido: contenidoLicenciaDePaternidad, cliente: () => import("./calculadoras/licencia-de-paternidad.cliente") },
+    { definicion: interesesPorMoraLaboral, contenido: contenidoInteresesPorMoraLaboral, cliente: () => import("./calculadoras/intereses-por-mora-laboral.cliente") },
+    { definicion: indemnizacionAntesDe1995, contenido: contenidoIndemnizacionAntesDe1995, cliente: () => import("./calculadoras/indemnizacion-antes-de-1995.cliente") },
+    { definicion: jubilacion, contenido: contenidoJubilacion, cliente: () => import("./calculadoras/jubilacion.cliente") },
+    { definicion: seguroSocialIndependientes, contenido: contenidoSeguroSocialIndependientes, cliente: () => import("./calculadoras/seguro-social-independientes.cliente") },
+    { definicion: descuentoDePensionados, contenido: contenidoDescuentoDePensionados, cliente: () => import("./calculadoras/descuento-de-pensionados.cliente") },
+    { definicion: salariosCaidos, contenido: contenidoSalariosCaidos, cliente: () => import("./calculadoras/salarios-caidos.cliente") },
+    { definicion: decimoTercerMesProporcional, contenido: contenidoDecimoTercerMesProporcional, cliente: () => import("./calculadoras/decimo-tercer-mes-proporcional.cliente") },
+    { definicion: vacacionesProporcionales, contenido: contenidoVacacionesProporcionales, cliente: () => import("./calculadoras/vacaciones-proporcionales.cliente") },
+    { definicion: horasExtraEnFeriado, contenido: contenidoHorasExtraEnFeriado, cliente: () => import("./calculadoras/horas-extra-en-feriado.cliente") },
   ],
   novedades,
   detectores,

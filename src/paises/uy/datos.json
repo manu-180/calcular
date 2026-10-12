@@ -875,6 +875,1345 @@
           }
         }
       ]
+    },
+    {
+      "id": "uy.paro-porcentajes",
+      "nombre": "Seguro de paro por despido, mensuales: porcentaje del promedio por mes de subsidio",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 66,
+            "2": 57,
+            "3": 50,
+            "4": 45,
+            "5": 42,
+            "6": 40
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto-Ley 15.180, artículo 7 (redacción de la Ley 18.399)",
+            "url": "https://www.impo.com.uy/bases/decretos-ley/15180-1981/7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.paro-jornales",
+      "nombre": "Seguro de paro por despido, jornaleros: jornales por mes de subsidio",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 16,
+            "2": 14,
+            "3": 12,
+            "4": 11,
+            "5": 10,
+            "6": 9
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto-Ley 15.180, artículo 7 (redacción de la Ley 18.399)",
+            "url": "https://www.impo.com.uy/bases/decretos-ley/15180-1981/7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.paro-topes",
+      "nombre": "Seguro de paro por despido: tope por mes de subsidio",
+      "tipo": "mapa",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 93155,
+            "2": 80445,
+            "3": 67754,
+            "4": 59287,
+            "5": 55044,
+            "6": 50802
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Subsidio por desempleo por despido: porcentajes y topes 2026",
+            "url": "https://www.bps.gub.uy/4802/subsidio-por-desempleo-por-despido.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.paro-suspension",
+      "nombre": "Seguro de paro por suspensión: porcentaje del promedio (mensuales)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto-Ley 15.180, artículo 7 (redacción de la Ley 18.399)",
+            "url": "https://www.impo.com.uy/bases/decretos-ley/15180-1981/7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.paro-suspension-jornales",
+      "nombre": "Seguro de paro por suspensión: jornales por mes (jornaleros)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto-Ley 15.180, artículo 7 (redacción de la Ley 18.399)",
+            "url": "https://www.impo.com.uy/bases/decretos-ley/15180-1981/7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.paro-tope-suspension",
+      "nombre": "Seguro de paro por suspensión: tope mensual",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 67754,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Subsidio por desempleo por suspensión: topes y complementos (enero 2026)",
+            "url": "https://www.bps.gub.uy/18239/subsidio-por-desempleo-por-suspension.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El mínimo del artículo 7.7 del Decreto-Ley 15.180 es el mismo para despido y suspensión."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.paro-minimo",
+      "nombre": "Seguro de paro: mínimo mensual para jornada completa",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8467,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Subsidio por desempleo por suspensión: topes y complementos (enero 2026)",
+            "url": "https://www.bps.gub.uy/18239/subsidio-por-desempleo-por-suspension.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El mínimo del artículo 7.7 del Decreto-Ley 15.180 es el mismo para despido y suspensión."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.paro-suplemento",
+      "nombre": "Seguro de paro: suplemento por cónyuge o familiares a cargo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto-Ley 15.180, artículo 7 (redacción de la Ley 18.399)",
+            "url": "https://www.impo.com.uy/bases/decretos-ley/15180-1981/7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.paro-divisor-jornal",
+      "nombre": "Seguro de paro: divisor de lo cobrado en seis meses para el jornal",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto-Ley 15.180, artículo 7 (redacción de la Ley 18.399)",
+            "url": "https://www.impo.com.uy/bases/decretos-ley/15180-1981/7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.enfermedad-porcentaje",
+      "nombre": "Subsidio por enfermedad: porcentaje del promedio",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Subsidio por enfermedad: derecho a percibir (tope 01/2026)",
+            "url": "https://www.bps.gub.uy/4774/subsidio-por-enfermedad.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.enfermedad-tope",
+      "nombre": "Subsidio por enfermedad: tope mensual",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 67754,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Subsidio por enfermedad: derecho a percibir (tope 01/2026)",
+            "url": "https://www.bps.gub.uy/4774/subsidio-por-enfermedad.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.enfermedad-dias-sin-pago",
+      "nombre": "Subsidio por enfermedad: días de certificación que no se pagan (se cobra desde el cuarto)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Subsidio por enfermedad: derecho a percibir (tope 01/2026)",
+            "url": "https://www.bps.gub.uy/4774/subsidio-por-enfermedad.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.maternidad-semanas",
+      "nombre": "Subsidio por maternidad: semanas mínimas de descanso",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 19.161 (subsidios por maternidad, paternidad y cuidados)",
+            "url": "https://www.impo.com.uy/bases/leyes/19161-2013",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.maternidad-minimo",
+      "nombre": "Subsidio por maternidad: mínimo mensual",
+      "tipo": "numero",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 19.161 (subsidios por maternidad, paternidad y cuidados)",
+            "url": "https://www.impo.com.uy/bases/leyes/19161-2013",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.paternidad-dias",
+      "nombre": "Subsidio por paternidad: días continuos a cargo del BPS",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "dependiente": "Con licencia de 3 días del empleador",
+        "no-dependiente": "Sin licencia del empleador"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "dependiente": 17,
+            "no-dependiente": 20
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 19.161 (subsidios por maternidad, paternidad y cuidados)",
+            "url": "https://www.impo.com.uy/bases/leyes/19161-2013",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.licencias-especiales",
+      "nombre": "Licencias especiales con goce de sueldo (días)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "estudio-36": 6,
+            "estudio-47": 9,
+            "estudio-48": 12,
+            "paternidad": 3,
+            "matrimonio": 3,
+            "duelo": 3,
+            "hijo-discapacidad": 10
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 18.345 (licencias especiales)",
+            "url": "https://www.impo.com.uy/bases/leyes/18345-2008",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.licencia-familiar-discapacidad",
+      "nombre": "Licencia por familiar con discapacidad o enfermedad terminal: horas por año (y las que paga el empleador)",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "total": 96,
+            "empleador": 64
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 18.345 (licencias especiales)",
+            "url": "https://www.impo.com.uy/bases/leyes/18345-2008",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.afam-15084",
+      "nombre": "Asignación familiar (Ley 15.084): topes de ingreso del hogar y montos por mes",
+      "tipo": "mapa",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "nota": "Topes para hogares de hasta dos beneficiarios; el tope sube 1,2338 BPC por cada beneficiario adicional.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "tope1": 50502,
+            "monto1": 1347,
+            "tope2": 84688,
+            "monto2": 674,
+            "adicional": 8468.8
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Asignación familiar (Ley 15.084): monto a percibir, vigencia 1/2026",
+            "url": "https://www.bps.gub.uy/5470/asignacion-familiar.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.iass-escala",
+      "nombre": "IASS: escala anual sobre jubilaciones y pensiones (en BPC)",
+      "tipo": "escala",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 108,
+              "tasa": 0
+            },
+            {
+              "desde": 108,
+              "hasta": 180,
+              "tasa": 6
+            },
+            {
+              "desde": 180,
+              "hasta": 600,
+              "tasa": 24
+            },
+            {
+              "desde": 600,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "El Impuesto de Asistencia a la Seguridad Social (IASS): franjas",
+            "url": "https://www.bps.gub.uy/18002/el-impuesto-de-asistencia-a-la-seguridad-social-iass.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Coincide con la Ley 18.314, artículo 8: 6 % en el segundo tramo desde el 1/1/2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-escala-anual",
+      "nombre": "IRPF categoría II: escala anual para personas físicas (en BPC)",
+      "tipo": "escala",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 84,
+              "tasa": 0
+            },
+            {
+              "desde": 84,
+              "hasta": 120,
+              "tasa": 10
+            },
+            {
+              "desde": 120,
+              "hasta": 180,
+              "tasa": 15
+            },
+            {
+              "desde": 180,
+              "hasta": 360,
+              "tasa": 24
+            },
+            {
+              "desde": 360,
+              "hasta": 600,
+              "tasa": 25
+            },
+            {
+              "desde": 600,
+              "hasta": 900,
+              "tasa": 27
+            },
+            {
+              "desde": 900,
+              "hasta": 1380,
+              "tasa": 31
+            },
+            {
+              "desde": 1380,
+              "hasta": null,
+              "tasa": 36
+            }
+          ],
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 7, artículo 48 (escala anual de rentas del trabajo)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/48_T7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-deducciones-umbral-anual",
+      "nombre": "IRPF anual: ingresos hasta los que las deducciones van al 14 %",
+      "tipo": "numero",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 7, artículo 49 (deducciones)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/49_T7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-arrendamientos",
+      "nombre": "IRPF categoría I: tasa sobre arrendamientos (restantes rentas)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 7, artículo 37 (tasas de la categoría I)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/37_T7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-arrendamientos-exento",
+      "nombre": "IRPF: arrendamientos anuales exentos",
+      "tipo": "numero",
+      "unidad": "BPC",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 7, artículo 38, literal J (arrendamientos exentos)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/38_T7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-intereses",
+      "nombre": "IRPF categoría I: tasa sobre intereses de depósitos según moneda y plazo",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "uyu-1": "Pesos, hasta un año",
+        "uyu-3": "Pesos, de uno a tres años",
+        "uyu-mas": "Pesos, más de tres años",
+        "ui-1": "UI, hasta un año",
+        "ui-3": "UI, de uno a tres años",
+        "ui-mas": "UI, más de tres años",
+        "usd-1": "Dólares, hasta un año",
+        "usd-mas": "Dólares, más de un año"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "uyu-1": 5.5,
+            "uyu-3": 2.5,
+            "uyu-mas": 0.5,
+            "ui-1": 10,
+            "ui-3": 7,
+            "ui-mas": 5,
+            "usd-1": 12,
+            "usd-mas": 7
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 7, artículo 37 (tasas de la categoría I)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/37_T7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "En moneda extranjera la tabla de la norma da 12 % a un año o menos y 7 % para más de un año."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.irpf-ficto-independientes",
+      "nombre": "IRPF: deducción ficta de gastos para servicios personales fuera de la relación de dependencia",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 7, artículo 45 (rentas fuera de la relación de dependencia)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/45_T7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.literal-e-pago",
+      "nombre": "Literal E: pago mensual fijo de IVA",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 5910,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 310/025, artículo 1 (pago mensual del literal E para 2026)",
+            "url": "https://www.impo.com.uy/bases/decretos/310-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.literal-e-tope",
+      "nombre": "Literal E: ingresos anuales máximos",
+      "tipo": "numero",
+      "unidad": "UI",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 305000,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 150/007, artículo 122 (límite del literal E)",
+            "url": "https://www.impo.com.uy/bases/decretos/150-2007/122",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.literal-e-gradualidad",
+      "nombre": "Literal E: porcentaje del pago fijo para quienes empezaron desde 2021",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1": "Primeros 12 meses",
+        "2": "Segundos 12 meses",
+        "3": "Desde el mes 25"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 25,
+            "2": 50,
+            "3": 100
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 220/998, artículo 106 (gradualidad y tope del 3,3 %)",
+            "url": "https://www.impo.com.uy/bases/decretos/220-1998/106",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.literal-e-tope-ingresos",
+      "nombre": "Literal E: el pago no supera este porcentaje de los ingresos del mes (con comprobantes electrónicos)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3.3,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto 220/998, artículo 106 (gradualidad y tope del 3,3 %)",
+            "url": "https://www.impo.com.uy/bases/decretos/220-1998/106",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.monotributo-social-gradualidad",
+      "nombre": "Monotributo social Mides: porcentaje del aporte según los meses de actividad",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1": "Meses 1 a 12",
+        "2": "Meses 13 a 24",
+        "3": "Meses 25 a 36",
+        "4": "Desde el mes 37"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 25,
+            "2": 50,
+            "3": 75,
+            "4": 100
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Aportación de monotributo social Mides (gradualidad del aporte)",
+            "url": "https://www.bps.gub.uy/10452/aportacion.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Coincide con la Ley 18.874, artículo 9."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.patronal-jubilatorio",
+      "nombre": "Aporte jubilatorio patronal (Industria y Comercio)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Tasas de aporte jubilatorio (Industria y Comercio)",
+            "url": "https://www.bps.gub.uy/835/tasas.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.patronal-fonasa",
+      "nombre": "Aporte patronal al Fonasa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Tasas Fonasa: aporte patronal",
+            "url": "https://www.bps.gub.uy/10314/tasas-fonasa.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.patronal-frl",
+      "nombre": "Fondo de Reconversión Laboral, aporte patronal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.1,
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Fondo de Reconversión Laboral (FRL)",
+            "url": "https://www.bps.gub.uy/10322/fondo-reconversion-laboral-frl.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.fgcl",
+      "nombre": "Fondo de Garantía de Créditos Laborales, aporte patronal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.025,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 19.690, artículo 10 (Fondo de Garantía de Créditos Laborales)",
+            "url": "https://www.impo.com.uy/bases/leyes/19690-2018/10",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.despido-embarazo-meses",
+      "nombre": "Despido de trabajadora embarazada: sueldos extra",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 11.577, artículo 17",
+            "url": "https://www.impo.com.uy/bases/leyes/11577-1950/17",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.despido-enfermedad-factor",
+      "nombre": "Despido durante la enfermedad o en los 30 días del alta: veces la indemnización común",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Decreto-Ley 14.407, artículo 23",
+            "url": "https://www.impo.com.uy/bases/decretos-ley/14407-1975/23",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.despido-accidente-factor",
+      "nombre": "Despido de trabajador accidentado no readmitido: veces la indemnización común",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 16.074, artículo 69",
+            "url": "https://www.impo.com.uy/bases/leyes/16074-1989/69",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.despido-acoso-meses",
+      "nombre": "Despido indirecto por acoso sexual: mensualidades extra",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 18.561, artículo 11",
+            "url": "https://www.impo.com.uy/bases/leyes/18561-2009/11",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.despido-paternidad-meses",
+      "nombre": "Despido dentro de los 30 días del reintegro de la licencia por paternidad: sueldos extra",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 19.161 (subsidios por maternidad, paternidad y cuidados)",
+            "url": "https://www.impo.com.uy/bases/leyes/19161-2013",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.nocturno-sobretasa",
+      "nombre": "Trabajo nocturno: sobretasa mínima",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 19.313, artículos 3 y 4 (trabajo nocturno)",
+            "url": "https://www.impo.com.uy/bases/leyes/19313-2015",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.nocturno-horas-minimas",
+      "nombre": "Trabajo nocturno: horas seguidas entre las 22 y las 6 que hay que superar",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 19.313, artículos 3 y 4 (trabajo nocturno)",
+            "url": "https://www.impo.com.uy/bases/leyes/19313-2015",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.feriado-pago-factor",
+      "nombre": "Feriado pago trabajado: veces la paga del día",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 12.590, artículo 18 (feriados pagos)",
+            "url": "https://www.impo.com.uy/bases/leyes/12590-1958/18",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.feriado-divisor-mensual",
+      "nombre": "Feriado pago trabajado por un mensual: divisor del sueldo para el día extra",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Seguridad Social (MTSS)",
+            "titulo": "Feriados: cómo se pagan a mensuales y jornaleros",
+            "url": "https://www.gub.uy/ministerio-trabajo-seguridad-social/institucional/derecho-laboral-uruguayo/feriados",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.accidente-fraccion",
+      "nombre": "Accidente de trabajo: parte del jornal que paga el BSE (dos tercios)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "numerador": 2,
+            "denominador": 3
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 16.074, artículo 19 (indemnización temporaria)",
+            "url": "https://www.impo.com.uy/bases/leyes/16074-1989/19",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley dice 2/3 partes del jornal o sueldo. El BPS lo muestra como 66,67 % en la página del subsidio por enfermedad."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.accidente-dia-desde",
+      "nombre": "Accidente de trabajo: día de ausencia desde el que se cobra",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 16.074, artículo 19 (indemnización temporaria)",
+            "url": "https://www.impo.com.uy/bases/leyes/16074-1989/19",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.jubilacion-edad-normal",
+      "nombre": "Edad jubilatoria normal según año de nacimiento (Ley 20.130)",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "nota": "Quienes nacieron en 1977 o después: 65 años.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1973": 61,
+            "1974": 62,
+            "1975": 63,
+            "1976": 64,
+            "1977": 65
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 20.130, artículos 35 y 46 (causal normal y tasas de adquisición)",
+            "url": "https://www.impo.com.uy/bases/leyes/20130-2023",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.jubilacion-anios-minimos",
+      "nombre": "Años de servicio mínimos según la edad (Ley 20.130, artículo 35, literal C)",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "65": 30,
+            "66": 27,
+            "67": 24,
+            "68": 21,
+            "69": 18,
+            "70": 15
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 20.130, artículos 35 y 46 (causal normal y tasas de adquisición)",
+            "url": "https://www.impo.com.uy/bases/leyes/20130-2023",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.jubilacion-anios-minimos-bps",
+      "nombre": "Años de servicio mínimos para afiliados al BPS (Ley 20.130, artículo 35, literal D)",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "65": 25,
+            "66": 23,
+            "67": 21,
+            "68": 19,
+            "69": 17
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 20.130, artículos 35 y 46 (causal normal y tasas de adquisición)",
+            "url": "https://www.impo.com.uy/bases/leyes/20130-2023",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.jubilacion-tasas",
+      "nombre": "Tasa de adquisición de derechos por año de servicio según la edad al cese (Ley 20.130, artículo 46)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "60": 1.2,
+            "61": 1.26,
+            "62": 1.31,
+            "63": 1.37,
+            "64": 1.43,
+            "65": 1.5,
+            "66": 1.57,
+            "67": 1.66,
+            "68": 1.75,
+            "69": 1.85,
+            "70": 1.96
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 20.130, artículos 35 y 46 (causal normal y tasas de adquisición)",
+            "url": "https://www.impo.com.uy/bases/leyes/20130-2023",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.jubilacion-tasa-normal",
+      "nombre": "Tasa de adquisición de derechos a la edad normal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 20.130, artículos 35 y 46 (causal normal y tasas de adquisición)",
+            "url": "https://www.impo.com.uy/bases/leyes/20130-2023",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.jubilacion-anterior",
+      "nombre": "Régimen anterior (Ley 16.713): edad y años de servicio para la jubilación común",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "edad": 60,
+            "servicios": 30
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Ley 16.713, artículo 18 (jubilación común del régimen anterior)",
+            "url": "https://www.impo.com.uy/bases/leyes/16713-1995/18",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.itp",
+      "nombre": "Impuesto a las Transmisiones Patrimoniales (ITP): tasas",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "enajenante": "Vendedor",
+        "adquirente": "Comprador",
+        "otros": "Herencia o legado (otros herederos)",
+        "herederos": "Herencia de padres, hijos, abuelos o nietos"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "enajenante": 2,
+            "adquirente": 2,
+            "otros": 4,
+            "herederos": 3
+          },
+          "fuente": {
+            "organismo": "IMPO (Diario Oficial)",
+            "titulo": "Texto Ordenado 2023 (DGI), Título 19, artículo 7 (tasas del ITP)",
+            "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/7_T19",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.ui-inicio-anio",
+      "nombre": "Unidad Indexada al 1 de enero (inicio del ejercicio)",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 6.4237,
+          "fuente": {
+            "organismo": "Banco Central del Uruguay (BCU)",
+            "titulo": "Cotizaciones: Unidad Indexada (código 9800) del 1/1/2026",
+            "url": "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Paginas/Cotizaciones.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "305.000 UI por este valor da $ 1.959.229, el mismo tope que publica el BPS para el monotributo social de sociedades de hecho."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.monotributo-social-jubilatorio",
+      "nombre": "Monotributo social Mides: aportes jubilatorios y FRL por mes según la etapa",
+      "tipo": "mapa",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "1": "Meses 1 a 12",
+        "2": "Meses 13 a 24",
+        "3": "Meses 25 a 36",
+        "4": "Desde el mes 37"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "1": 522,
+            "2": 1045,
+            "3": 1567,
+            "4": 2088
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Monotributo social Mides ley 18.874: valores mínimos para empresas sin dependientes, vigencia enero 2026",
+            "url": "https://www.bps.gub.uy/6667/monotributo-social-mides-ley-18874.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.monotributo-social-sin-snis",
+      "nombre": "Monotributo social Mides sin cobertura del Fonasa: aporte total por mes según la etapa",
+      "tipo": "mapa",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "1": "Meses 1 a 12",
+        "2": "Meses 13 a 24",
+        "3": "Meses 25 a 36",
+        "4": "Desde el mes 37"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "1": 659,
+            "2": 1320,
+            "3": 1979,
+            "4": 2637
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Monotributo social Mides ley 18.874: valores mínimos para empresas sin dependientes, vigencia enero 2026",
+            "url": "https://www.bps.gub.uy/6667/monotributo-social-mides-ley-18874.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Incluye el 8 % de una BPC por seguro de enfermedad, sin cobertura médica."
+          }
+        }
+      ]
     }
   ]
 }

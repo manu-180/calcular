@@ -31,6 +31,78 @@
         ["2026-10-08", 5706.18],
         ["2026-10-09", 5694.47]
       ]
+    },
+    {
+      "id": "py.real",
+      "nombre": "Real brasileño referencial del BCP",
+      "unidad": "PYG",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Banco Central del Paraguay (BCP)",
+        "titulo": "Cotización referencial de monedas, diaria (guaraníes por real)",
+        "url": "https://www.bcp.gov.py/webapps/web/cotizacion/monedas",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12",
+        "nota": "Valores leídos día por día en la planilla del BCP (consulta por fecha) el 12/10/2026."
+      },
+      "puntos": [
+        ["2026-10-01", 1121.53],
+        ["2026-10-02", 1122.9],
+        ["2026-10-05", 1177.27],
+        ["2026-10-06", 1176.22],
+        ["2026-10-07", 1151.43],
+        ["2026-10-08", 1139.32],
+        ["2026-10-09", 1142.3]
+      ]
+    },
+    {
+      "id": "py.peso-argentino",
+      "nombre": "Peso argentino referencial del BCP",
+      "unidad": "PYG",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Banco Central del Paraguay (BCP)",
+        "titulo": "Cotización referencial de monedas, diaria (guaraníes por peso argentino)",
+        "url": "https://www.bcp.gov.py/webapps/web/cotizacion/monedas",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12",
+        "nota": "Valores leídos día por día en la planilla del BCP (consulta por fecha) el 12/10/2026."
+      },
+      "puntos": [
+        ["2026-10-01", 3.84],
+        ["2026-10-02", 3.86],
+        ["2026-10-05", 3.86],
+        ["2026-10-06", 3.85],
+        ["2026-10-07", 3.78],
+        ["2026-10-08", 3.76],
+        ["2026-10-09", 3.76]
+      ]
+    },
+    {
+      "id": "py.euro",
+      "nombre": "Euro referencial del BCP",
+      "unidad": "PYG",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Banco Central del Paraguay (BCP)",
+        "titulo": "Cotización referencial de monedas, diaria (guaraníes por euro)",
+        "url": "https://www.bcp.gov.py/webapps/web/cotizacion/monedas",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12",
+        "nota": "Valores leídos día por día en la planilla del BCP (consulta por fecha) el 12/10/2026."
+      },
+      "puntos": [
+        ["2026-10-01", 6589.05],
+        ["2026-10-02", 6623.17],
+        ["2026-10-05", 6573.97],
+        ["2026-10-06", 6588.91],
+        ["2026-10-07", 6439.35],
+        ["2026-10-08", 6396.06],
+        ["2026-10-09", 6374.96]
+      ]
     }
   ]
 }

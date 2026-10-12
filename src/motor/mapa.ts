@@ -1,3 +1,4 @@
+import { feedDe } from "./novedades";
 import { ACTUALIZACION_PAGINAS_GLOBALES, PAGINAS_GLOBALES, PAGINAS_MERCADO } from "./paginas";
 import { resolverValores, type DatoUsado, type PaginaResuelta, type Registro } from "./registro";
 import { origenPublicoIntl, urlIntl } from "./seo";
@@ -42,8 +43,10 @@ export function actualizacionDeFuentes(registro: Registro, codigo: CodigoMercado
   );
 }
 
+// /<m>/novedades también lista lo que se movió solo (tramos nuevos, último punto de cada serie,
+// revisiones): su fecha es la de la entrada más nueva de ese registro, no solo la de las notas.
 export function actualizacionDeNovedades(registro: Registro, codigo: CodigoMercado, fecha: FechaISO): FechaISO | undefined {
-  return masNueva((registro.pais(codigo)?.novedades ?? []).map((n) => n.fecha), fecha);
+  return masNueva([...(registro.pais(codigo)?.novedades ?? []).map((n) => n.fecha), ...feedDe(registro, codigo, fecha).map((e) => e.fecha)], fecha);
 }
 
 export interface EntradaSitemap {

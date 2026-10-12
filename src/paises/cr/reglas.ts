@@ -101,3 +101,39 @@ export function textoTiempo(t: Tiempo): string {
 }
 
 export const cumpleUnMes = (t: Tiempo) => totalMeses(t) >= 1;
+
+// Muerte del trabajador (art. 85 a) y pensión (art. 85 e) terminan el contrato sin responsabilidad
+// para la persona trabajadora: se pagan cesantía, vacaciones y aguinaldo, pero no preaviso.
+export function prestacionesSinPreaviso(
+  entrada: { salario: number; fechaIngreso: FechaISO; fechaSalida: FechaISO; vacaciones: number; salariosAguinaldo: number | null },
+  valores: {
+    "cr.dias-mes-planilla": number;
+    "cr.cesantia-dias-menos-de-un-anio": Readonly<Record<string, number>>;
+    "cr.cesantia-dias-por-anio": Readonly<Record<string, number>>;
+    "cr.cesantia-tope-anios": number;
+  },
+  redondear: (n: number) => number,
+) {
+  validarFechas(entrada.fechaIngreso, entrada.fechaSalida);
+  const t = tiempoTrabajado(entrada.fechaIngreso, entrada.fechaSalida);
+  const diario = entrada.salario / valores["cr.dias-mes-planilla"];
+  const ces = cesantia(t, valores["cr.cesantia-dias-menos-de-un-anio"], valores["cr.cesantia-dias-por-anio"], valores["cr.cesantia-tope-anios"]);
+  const montoCesantia = redondear(diario * ces.dias);
+  const vacaciones = redondear(diario * entrada.vacaciones);
+  const baseAguinaldo = entrada.salariosAguinaldo ?? entrada.salario * mesesEnPeriodo(entrada.fechaIngreso, entrada.fechaSalida);
+  const aguinaldo = cumpleUnMes(t) ? redondear(baseAguinaldo / 12) : 0;
+  const observaciones: string[] = [];
+  if (ces.dias === 0) observaciones.push("Con menos de tres meses de trabajo no corresponde cesantía.");
+  if (ces.aniosComputables > ces.aniosPagados) observaciones.push(`La cesantía se paga por ${ces.aniosPagados} años como máximo.`);
+  if (entrada.salariosAguinaldo === null) observaciones.push("El aguinaldo es una estimación con el salario promedio. Con la suma real de salarios desde el 1 de diciembre da exacto.");
+  return {
+    tiempo: textoTiempo(t),
+    salarioDiario: redondear(diario),
+    diasCesantia: ces.dias,
+    cesantia: montoCesantia,
+    vacaciones,
+    aguinaldo,
+    total: redondear(montoCesantia + vacaciones + aguinaldo),
+    observaciones,
+  };
+}

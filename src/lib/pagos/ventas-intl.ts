@@ -1,7 +1,9 @@
+import { createHmac } from "node:crypto";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { emailValido } from "@/lib/mp";
 import { asentarUnaVez, idsConLaMarca, marcarEntrega, type DepsVenta } from "@/lib/mp-webhook";
 import { leerReferenciaIntl, type ProductoIntl } from "./catalogo-intl";
+import type { DatosIntl } from "@/lib/prefill/intl";
 import { decimal, pagoCubre, type NombreProveedor, type PagoVerificado } from "./tipos";
 
 // Asiento de las ventas de calcularya.com. revenue_events es lo que cuenta (idempotente por la
@@ -10,12 +12,19 @@ import { decimal, pagoCubre, type NombreProveedor, type PagoVerificado } from ".
 
 export const PROYECTO_INTL = "planillas-intl";
 
+// revenue_events.note se lee con la anon key: la marca de deduplicación no puede ser el id de la
+// captura, que es la llave que abre el informe y la planilla. Va una huella con clave secreta.
+function huella(id: string): string {
+  const clave = process.env.PAYPAL_WEBHOOK_ID || process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+  return createHmac("sha256", clave).update(id).digest("hex").slice(0, 24).toUpperCase();
+}
+
 export function marcaVentaIntl(proveedor: NombreProveedor, id: string): string {
-  return `[${proveedor}:${id}]`;
+  return `[${proveedor}:${huella(id)}]`;
 }
 
 export function marcaDevolucionIntl(proveedor: NombreProveedor, id: string): string {
-  return `[${proveedor}-devuelto:${id}]`;
+  return `[${proveedor}-devuelto:${huella(id)}]`;
 }
 
 // ca_compras.mp_payment_id es NOT NULL UNIQUE desde antes de esta capa: el id de otro proveedor
@@ -33,7 +42,6 @@ export async function registrarVentaIntl(deps: DepsVenta, pago: PagoVerificado, 
     currency: pago.moneda ?? producto.moneda,
     note:
       `Venta automática de ${producto.titulo} ${marca} · producto ${producto.id} · mercado ${producto.mercado}` +
-      (pago.email ? ` · comprador ${pago.email}` : "") +
       `. Registrada por el webhook de ${pago.proveedor}. Monto bruto, sin descontar comisión.`,
   });
 }
@@ -48,7 +56,7 @@ export async function registrarDevolucionIntl(deps: DepsVenta, pago: PagoVerific
     currency: producto.moneda,
     note:
       `${pago.estado === "contracargo" ? "Contracargo" : "Reembolso"} de ${producto.titulo} ${marca}` +
-      ` · producto ${producto.id} · descuenta la venta ${pago.id}. Registrado por el webhook de ${pago.proveedor}.`,
+      ` · producto ${producto.id} · descuenta la venta ${marcaVentaIntl(pago.proveedor, pago.id)}. Registrado por el webhook de ${pago.proveedor}.`,
   });
 }
 
@@ -61,13 +69,21 @@ const tope = () => AbortSignal.timeout(4000);
 type Resultado = { error: { code?: string; message?: string } | null };
 
 // Sin la migración 20261009120000 no existen proveedor/pago_id: se reintenta sin ellas. Sin la de
-// fase 2 (sitio/mercado) la fila intl quedaría contada como Argentina: se descarta y se avisa.
+// fase 2 (sitio/mercado) la fila intl quedaría contada como Argentina: se descarta y se avisa. Sin la
+// de ofertas (docs/paises/SQL-OFERTAS.md) no existe ca_checkouts.datos: la fila se guarda sin los
+// datos y la persona los vuelve a ver en su navegador (localStorage) o los carga en el informe.
 async function conDegradacion(
   tabla: string,
   fila: Record<string, unknown>,
   escribir: (f: Record<string, unknown>) => PromiseLike<Resultado>,
 ): Promise<boolean> {
   let r = await escribir(fila);
+  if (r.error && SIN_COLUMNA.has(r.error.code ?? "") && "datos" in fila) {
+    console.warn(`[pagos] ${tabla}: falta la columna datos (docs/paises/SQL-OFERTAS.md), se guarda sin los datos de la calculadora`);
+    const { datos: _d, ...sinDatos } = fila;
+    fila = sinDatos;
+    r = await escribir(fila);
+  }
   if (r.error && SIN_COLUMNA.has(r.error.code ?? "")) {
     const { proveedor: _p, pago_id: _i, ...sinPagos } = fila;
     r = await escribir(sinPagos);
@@ -95,6 +111,7 @@ export type FilaCheckoutIntl = {
   sitio: "intl";
   mercado: string;
   proveedor: NombreProveedor;
+  datos?: DatosIntl;
 };
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -107,6 +124,7 @@ export function filaCheckoutIntl(p: {
   vid?: string | null;
   userId?: string | null;
   ruta?: string | null;
+  datos?: DatosIntl | null;
 }): FilaCheckoutIntl {
   const ruta = p.ruta && /^\/[a-z0-9/_-]{0,119}$/i.test(p.ruta) && !/^\/[/\\]/.test(p.ruta) ? p.ruta : null;
   return {
@@ -121,6 +139,7 @@ export function filaCheckoutIntl(p: {
     sitio: "intl",
     mercado: p.producto.mercado,
     proveedor: p.proveedor,
+    ...(p.datos ? { datos: p.datos } : {}),
   };
 }
 
@@ -209,5 +228,30 @@ export async function sincronizarPagoIntl(db: SupabaseClient, pago: PagoVerifica
     );
   } catch (e) {
     console.error("[pagos] sincronizarPagoIntl:", e instanceof Error ? e.message : e);
+  }
+}
+
+// Los datos de la calculadora que viajaron con ESTE checkout de ESTE producto, sin validar (quien
+// llama los valida con validarDatosDeProducto). null si no hay, si la base no tiene la columna o si
+// no contesta: los datos sólo cambian qué se entrega, nunca si se entrega.
+export async function leerDatosCheckoutIntl(db: SupabaseClient, checkoutId: string, producto: ProductoIntl): Promise<unknown | null> {
+  if (!UUID_RE.test(checkoutId)) return null;
+  try {
+    const { data, error } = await db
+      .from("ca_checkouts")
+      .select("datos")
+      .eq("id", checkoutId)
+      .eq("producto", producto.id)
+      .abortSignal(tope())
+      .maybeSingle();
+    if (error) {
+      if (SIN_COLUMNA.has(error.code ?? "")) console.warn("[pagos] ca_checkouts sin la columna datos: sale sin los datos de la calculadora");
+      else console.error("[pagos] ca_checkouts (datos):", error.code, error.message);
+      return null;
+    }
+    return (data as { datos?: unknown } | null)?.datos ?? null;
+  } catch (e) {
+    console.error("[pagos] ca_checkouts (datos):", e instanceof Error ? e.message : e);
+    return null;
   }
 }

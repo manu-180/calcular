@@ -6,7 +6,7 @@
       "nivel": "info",
       "desde": "2027-05-15",
       "hasta": "2027-07-31",
-      "aplicaA": ["py.salario-minimo", "py.jornal-minimo", "py.vacaciones", "py.bonificacion-familiar"],
+      "aplicaA": ["py.salario-minimo", "py.jornal-minimo", "py.vacaciones", "py.bonificacion-familiar", "py.salario-minimo-por-actividad", "py.tiempo-parcial", "py.ips-independiente"],
       "titulo": "El salario mínimo cambia en julio",
       "texto": "El salario mínimo se reajusta cada año desde el 1 de julio. Cuando salgan el decreto de 2027 y la resolución del MTESS, cargamos los montos nuevos.",
       "fuente": {
@@ -35,7 +35,7 @@
       "id": "py.vacaciones-proporcionales",
       "nivel": "cautela",
       "desde": "2025-01-01",
-      "aplicaA": ["py.liquidacion"],
+      "aplicaA": ["py.liquidacion", "py.vacaciones-proporcionales"],
       "titulo": "Vacaciones proporcionales",
       "texto": "La ley paga vacaciones proporcionales cuando el contrato termina antes del año por causa del empleador. En un despido sin causa también sumamos las del año en curso a quien ya tiene más de un año, que es el criterio más usado, aunque la ley no lo dice de forma expresa.",
       "fuente": {
@@ -50,7 +50,7 @@
       "id": "py.estabilidad",
       "nivel": "info",
       "desde": "2025-01-01",
-      "aplicaA": ["py.indemnizacion-por-despido", "py.liquidacion"],
+      "aplicaA": ["py.indemnizacion-por-despido", "py.liquidacion", "py.estabilidad-laboral"],
       "titulo": "Diez años o más en la empresa",
       "texto": "Con diez años seguidos en la misma empresa tenés estabilidad: solo te pueden despedir por una causa probada ante el juez. Si el juez ordena reintegrarte y vos preferís no volver, o si cierra el lugar donde trabajás, la indemnización es el doble.",
       "fuente": {

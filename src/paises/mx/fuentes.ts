@@ -110,7 +110,92 @@ const LFT = [
   "mx.recargo-hora-triple",
   "mx.horas-triples-semana",
   "mx.maximo-horas-dia",
+  "mx.prima-dominical",
+  "mx.pago-descanso-trabajado",
+  "mx.aportacion-vivienda",
 ];
+
+const LSS = [
+  "mx.cuotas-imss-obrero",
+  "mx.cuotas-imss-patron",
+  "mx.tope-sbc-imss",
+  "mx.umbral-excedente-imss",
+  "mx.cesantia-vejez-patron",
+  "mx.cesantia-vejez-patron-minimo",
+  "mx.prima-riesgo-trabajo",
+  "mx.prima-riesgo-minima",
+  "mx.prima-riesgo-maxima",
+  "mx.subsidio-incapacidad",
+  "mx.dias-espera-enfermedad",
+  "mx.dias-maternidad",
+  "mx.retiro-desempleo",
+  "mx.tope-retiro-desempleo",
+  "mx.despensa-no-integra",
+];
+
+const LISR = [
+  "mx.exencion-aguinaldo",
+  "mx.exencion-prima-vacacional",
+  "mx.exencion-ptu",
+  "mx.exencion-indemnizacion",
+  "mx.exencion-prima-dominical",
+  "mx.tasas-resico",
+  "mx.tope-resico",
+  "mx.retencion-isr-honorarios",
+  "mx.retencion-isr-arrendamiento",
+  "mx.retencion-isr-resico",
+  "mx.deduccion-ciega-arrendamiento",
+  "mx.tope-deducciones-uma",
+  "mx.tope-deducciones-porcentaje",
+  "mx.exencion-horas-extra-porcentaje",
+  "mx.exencion-horas-extra-uma",
+  "mx.tope-fondo-ahorro-porcentaje",
+  "mx.tope-fondo-ahorro-uma",
+  "mx.factor-mensual-174",
+];
+
+// La gráfica pública del SIE devuelve JSON sin token (la API SieAPIRest sí lo pide). Trae toda la
+// historia: se devuelven solo los últimos puntos, porque la banda compara cada punto con el último
+// guardado y uno viejo parecería un salto. Probado el 12/10/2026: cerca de la mitad de las respuestas
+// llegan con estado 200 y cuerpo vacío, por eso se reintenta antes de dar la fuente por caída.
+async function sieGrafica(http: Http, url: string, serie: string, ultimos: number): Promise<PuntoSerie[] | null> {
+  let json: unknown = null;
+  for (let intento = 0; intento < 6 && json === null; intento++) {
+    if (intento > 0) await new Promise((r) => setTimeout(r, 1500 * intento));
+    const cuerpo = (await http.texto(url, { userAgentNavegador: true })).trim();
+    if (!cuerpo) continue;
+    try {
+      json = JSON.parse(cuerpo);
+    } catch {
+      return null;
+    }
+  }
+  const valores = (json as { serie?: unknown; valores?: unknown } | null)?.valores;
+  if ((json as { serie?: unknown } | null)?.serie !== serie || !Array.isArray(valores)) return null;
+  const puntos: PuntoSerie[] = [];
+  // -989898 es como el SIE marca un periodo sin dato (semana sin subasta).
+  for (const fila of valores.filter((f) => Array.isArray(f) && f[1] !== -989898).slice(-ultimos)) {
+    if (!Array.isArray(fila) || !esFechaISO(fila[0]) || typeof fila[1] !== "number" || !Number.isFinite(fila[1]) || fila[1] <= 0) return null;
+    puntos.push({ fecha: fila[0], valor: fila[1] });
+  }
+  return puntos.length ? puntos : null;
+}
+
+function detectorCetes(dias: string, serie: string): Detector {
+  return {
+    id: `mx.cetes-${dias}-banxico`,
+    carril: "serie",
+    serie: `mx.cetes-${dias}`,
+    metodo: "api-json",
+    url: `https://www.banxico.org.mx/SieInternet/consultaSerieGrafica.do?s=${serie},CF107,1&versionSerie=LA-MAS-RECIENTE&l=es`,
+    userAgentNavegador: true,
+    // Un recorte de la tasa objetivo de medio punto mueve el CETES alrededor de 8 % de su valor.
+    banda: { min: 1, max: 20, saltoRelativoMax: 0.2 },
+    traer(http) {
+      return sieGrafica(http, this.url, serie, 4);
+    },
+  };
+}
 
 export const detectores: readonly Detector[] = [
   {
@@ -139,31 +224,21 @@ export const detectores: readonly Detector[] = [
     url: "https://www.banxico.org.mx/SieInternet/consultaSerieGrafica.do?s=SP1,CP154,1&versionSerie=LA-MAS-RECIENTE&l=es",
     userAgentNavegador: true,
     banda: { min: 120, max: 200, saltoRelativoMax: 0.03 },
-    async traer(http) {
-      // Es el JSON que usa la gráfica pública del SIE y no pide token (la API SieAPIRest sí).
-      // Trae toda la historia desde 1969: se devuelven solo los últimos meses, porque la banda
-      // compara cada punto con el último guardado y un mes viejo parecería un salto.
-      const json = await http.json(this.url, { userAgentNavegador: true });
-      const valores = (json as { serie?: unknown; valores?: unknown } | null)?.valores;
-      if ((json as { serie?: unknown } | null)?.serie !== "SP1" || !Array.isArray(valores)) return null;
-      const puntos: PuntoSerie[] = [];
-      for (const fila of valores.slice(-3)) {
-        if (!Array.isArray(fila) || !esFechaISO(fila[0]) || typeof fila[1] !== "number" || !Number.isFinite(fila[1])) return null;
-        puntos.push({ fecha: fila[0], valor: fila[1] });
-      }
-      return puntos.length ? puntos : null;
+    traer(http) {
+      return sieGrafica(http, this.url, "SP1", 3);
     },
   },
-  detectorDof("mx.dof-salario-minimo", ["mx.salario-minimo", "mx.salario-minimo-hogar"], /salarios? m[ií]nimos?/i),
+  detectorCetes("28", "SF43936"),
+  detectorCetes("91", "SF43939"),
+  detectorCetes("182", "SF43942"),
+  detectorCetes("364", "SF43945"),
+  detectorDof("mx.dof-salario-minimo", ["mx.salario-minimo", "mx.salario-minimo-hogar", "mx.salarios-minimos-profesionales", "mx.salarios-minimos-profesionales-frontera"], /salarios? m[ií]nimos?/i),
   detectorDof("mx.dof-uma", ["mx.uma-diaria", "mx.uma-mensual"], /unidad de medida y actualizaci[oó]n/i),
   detectorDof("mx.dof-subsidio-empleo", ["mx.subsidio-empleo", "mx.subsidio-empleo-limite"], /subsidio para el empleo/i),
-  detectorDof("mx.dof-tarifas-isr", ["mx.tarifa-isr-semanal", "mx.tarifa-isr-decenal", "mx.tarifa-isr-quincenal", "mx.tarifa-isr-mensual"], /Miscel[aá]nea Fiscal/i),
+  detectorDof("mx.dof-tarifas-isr", ["mx.tarifa-isr-semanal", "mx.tarifa-isr-decenal", "mx.tarifa-isr-quincenal", "mx.tarifa-isr-mensual", "mx.tarifa-isr-anual"], /Miscel[aá]nea Fiscal/i),
   detectorDof("mx.dof-lft", LFT, /Ley Federal del Trabajo/i),
-  detectorDof("mx.dof-lss", ["mx.cuotas-imss-obrero", "mx.tope-sbc-imss", "mx.umbral-excedente-imss"], /Ley del Seguro Social/i),
-  detectorDof(
-    "mx.dof-lisr",
-    ["mx.exencion-aguinaldo", "mx.exencion-prima-vacacional", "mx.exencion-ptu", "mx.exencion-indemnizacion", "mx.tasas-resico", "mx.tope-resico"],
-    /Ley del Impuesto sobre la Renta/i,
-  ),
-  detectorDof("mx.dof-iva", ["mx.iva-general", "mx.iva-frontera"], /Impuesto al Valor Agregado|regi[oó]n fronteriza norte/i),
+  detectorDof("mx.dof-lss", LSS, /Ley del Seguro Social/i),
+  detectorDof("mx.dof-lisr", LISR, /Ley del Impuesto sobre la Renta/i),
+  detectorDof("mx.dof-ley-ingresos", ["mx.retencion-isr-intereses"], /Ley de Ingresos de la Federaci[oó]n/i),
+  detectorDof("mx.dof-iva", ["mx.iva-general", "mx.iva-frontera", "mx.retencion-iva-fraccion"], /Impuesto al Valor Agregado|regi[oó]n fronteriza norte/i),
 ];

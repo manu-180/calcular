@@ -33,7 +33,7 @@ export function configPaypal(): Config | null {
   if (!clientId || !secret || !webhookId) return null;
   if (entorno !== "sandbox" && entorno !== "live") return null;
   // Un build de producción con credenciales sandbox "vendería" sin cobrar: se apaga la venta.
-  if (entorno === "sandbox" && modoPublicacion() === "produccion" && process.env.PAYPAL_SANDBOX_EN_PRODUCCION !== "1") return null;
+  if (entorno === "sandbox" && modoPublicacion() === "produccion") return null;
   return { base: BASES[entorno], entorno, clientId, secret, webhookId };
 }
 
@@ -267,6 +267,9 @@ export const paypal: ProveedorPago = {
     // (orden de claves, escapes) puede hacer fallar una firma válida.
     const cuerpo = `${JSON.stringify(campos).slice(0, -1)},"webhook_event":${n.cuerpo}}`;
     const res = await llamar(c, "/v1/notifications/verify-webhook-signature", { method: "POST", body: cuerpo });
+    // Cabeceras armadas que pasan el filtro previo hacen que PayPal conteste 4xx: es firma inválida,
+    // no un error nuestro (401 y 429 sí son nuestros: credenciales o cupo).
+    if (res.status >= 400 && res.status < 500 && res.status !== 401 && res.status !== 429) return false;
     if (!res.ok) throw new Error(`PayPal verificar firma ${res.status}: ${await detalle(res)}`);
     const j = (await res.json()) as { verification_status?: string };
     return j.verification_status === "SUCCESS";

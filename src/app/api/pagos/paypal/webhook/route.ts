@@ -4,6 +4,7 @@ import { usuarioActual } from "@/lib/auth/sesion";
 import { ipDelPedido } from "@/lib/acceso-entrega";
 import { permitido } from "@/lib/limite";
 import { claveServicio } from "@/lib/supabase/servicio";
+import { leerReferenciaIntl } from "@/lib/pagos/catalogo-intl";
 import { procesarPagoIntl } from "@/lib/pagos/flujo-intl";
 import { configPaypal, idCapturaDeRecurso, paypal } from "@/lib/pagos/paypal";
 import type { PagoVerificado } from "@/lib/pagos/tipos";
@@ -59,7 +60,9 @@ export async function POST(req: NextRequest) {
     if (tipo === "CHECKOUT.ORDER.APPROVED") {
       // La persona aprobó y cerró la pestaña antes de volver: la captura la hacemos nosotros.
       const orden = typeof evento.resource?.id === "string" ? evento.resource.id : "";
-      pago = orden ? await paypal.confirmarPago(orden) : null;
+      // La app de PayPal es compartida: sin una referencia nuestra en la orden no se captura nada.
+      const cid = (evento.resource as { purchase_units?: { custom_id?: string }[] } | undefined)?.purchase_units?.[0]?.custom_id;
+      pago = orden && leerReferenciaIntl(cid) ? await paypal.confirmarPago(orden) : null;
     } else if (EVENTOS_CAPTURA.has(tipo)) {
       const captura = idCapturaDeRecurso(tipo, evento.resource);
       pago = captura ? await paypal.consultarPago(captura) : null;

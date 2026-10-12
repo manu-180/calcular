@@ -135,3 +135,29 @@ export function ultimoAniversario(ingreso: FechaISO, hasta: FechaISO): { anios: 
   while (sumarAnios(ingreso, anios + 1) <= hasta) anios++;
   return { anios, fecha: sumarAnios(ingreso, anios) };
 }
+
+export function salarioDiario(mensual: number): number {
+  return mensual / DIAS_MES;
+}
+
+// Décimo tercero (enero a diciembre) y décimo cuarto (julio a junio): ante renuncia o despido se pagan
+// en proporción a los días del período en curso (Decreto 112-82 art. 13; reglamento del décimo cuarto art. 9).
+export function decimoProporcional(salario: number, porcentajeLey: number, ingreso: FechaISO, salida: FechaISO, mesInicio: number): Periodo & { monto: number } {
+  const p = periodoTrabajado(ingreso, salida, mesInicio);
+  return { ...p, monto: (((salario * porcentajeLey) / 100) * p.dias) / DIAS_ANIO };
+}
+
+const FILA_MAXIMA_VACACIONES = 4;
+
+// Días proporcionales del año de servicio en curso, con la fila del año que se estaba por cumplir
+// (art. 346), en días calendario sobre 365 como la calculadora de vacaciones.
+export function vacacionesProporcionales(tabla: Readonly<Record<string, number>>, ingreso: FechaISO, salida: FechaISO): { anios: number; dias: number } {
+  const aniversario = ultimoAniversario(ingreso, salida);
+  const fila = String(Math.min(aniversario.anios + 1, FILA_MAXIMA_VACACIONES));
+  const transcurridos = Math.min(DIAS_ANIO, diasEntre(aniversario.fecha, salida) + 1);
+  return { anios: aniversario.anios, dias: ((tabla[fila] ?? 0) * transcurridos) / DIAS_ANIO };
+}
+
+export function diasVacacionesPorAnio(tabla: Readonly<Record<string, number>>, anios: number): number {
+  return anios < 1 ? 0 : (tabla[String(Math.min(anios, FILA_MAXIMA_VACACIONES))] ?? 0);
+}

@@ -1,0 +1,44 @@
+import { definirCalculadora } from "@/motor/calculo";
+
+export default definirCalculadora({
+  id: "py.cotizacion-euro",
+  mercado: "py",
+  concepto: "propio",
+  slug: "cotizacion-euro",
+  estado: "publicado",
+  requiere: {
+    "py.euro": "serie",
+  },
+  // La cotización del BCP tiene dos decimales y el monto en moneda extranjera también; los guaraníes se muestran sin decimales.
+  redondeo: { decimales: 2, modo: "mitad-arriba" },
+  campos: [
+    {
+      id: "sentido",
+      tipo: "opcion",
+      etiqueta: "Qué querés convertir",
+      opciones: [
+        { valor: "a-guaranies", etiqueta: "De euros a guaraníes" },
+        { valor: "a-moneda", etiqueta: "De guaraníes a euros" },
+      ],
+      porDefecto: "a-guaranies",
+    },
+    { id: "monto", tipo: "numero", etiqueta: "Monto", min: 0, porDefecto: 100 },
+  ],
+  calcular(entrada, valores, { redondear }) {
+    const cotizacion = valores["py.euro"];
+    const aGuaranies = entrada.sentido === "a-guaranies";
+    return {
+      cotizacion: cotizacion.valor,
+      fecha: cotizacion.fecha,
+      guaranies: aGuaranies ? redondear(entrada.monto * cotizacion.valor) : null,
+      moneda: aGuaranies ? null : redondear(entrada.monto / cotizacion.valor),
+      observaciones: ["Es la cotización referencial del BCP en guaraníes. Bancos y casas de cambio compran y venden con su propio margen."],
+    };
+  },
+  resultado: [
+    { clave: "guaranies", etiqueta: "Equivale a", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "moneda", etiqueta: "Equivale a (euros)", formato: "numero", decimales: 2, destacada: true },
+    { clave: "cotizacion", etiqueta: "Cotización referencial del BCP", formato: "moneda", decimales: 2 },
+    { clave: "fecha", etiqueta: "Fecha de la cotización", formato: "fecha" },
+  ],
+});

@@ -9,6 +9,45 @@ const LEY_2466 = {
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "co.independientes-decreto-379",
+    fecha: "2026-04-09",
+    titulo: "Cambia la forma de liquidar aportes de independientes por cuenta propia",
+    texto: "El Decreto 379 de 2026 permite a los independientes por cuenta propia restar sus costos con soporte, o usar la presunción de costos de la UGPP, antes de calcular la base de aportes. Los contratos de prestación de servicios siguen cotizando sobre el 40 % del valor mensual.",
+    vigenteDesde: "2026-04-09",
+    calculadoras: ["co.seguridad-social-independientes"],
+    fuente: {
+      organismo: "Ministerio de Salud y Protección Social",
+      titulo: "Decreto 379 de 2026 (Diario Oficial 53.453)",
+      url: "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_0379_2026.htm",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
+    id: "co.semanas-mujeres-2026",
+    fecha: "2026-01-01",
+    titulo: "Las mujeres necesitan 1.250 semanas para pensionarse en Colpensiones",
+    texto: "Desde el 1 de enero de 2026 las semanas que se exigen a las mujeres para la pensión de vejez bajan de 1.300 a 1.250, por orden de la Corte Constitucional. Ya lo usa la calculadora de pensión de vejez.",
+    vigenteDesde: "2026-01-01",
+    calculadoras: ["co.pension-de-vejez"],
+    fuente: {
+      organismo: "Corte Constitucional",
+      titulo: "Sentencia C-197 de 2023",
+      url: "https://www.corteconstitucional.gov.co/relatoria/2023/C-197-23.htm",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
+    id: "co.aprendiz-contrato-laboral",
+    fecha: "2025-06-25",
+    titulo: "El contrato de aprendizaje pasa a ser un contrato laboral",
+    texto: "Con la reforma laboral, el contrato de aprendizaje es un contrato laboral especial a término fijo. El aprendiz recibe al menos el 75 % del salario mínimo en la etapa lectiva y el 100 % en la práctica.",
+    vigenteDesde: "2025-06-25",
+    calculadoras: ["co.contrato-de-aprendizaje"],
+    fuente: { ...LEY_2466, titulo: "Ley 2466 de 2025, artículo que sustituye el artículo 81 del CST", verificadoEl: "2026-10-12" },
+  },
+  {
     id: "co.jornada-42-horas",
     fecha: "2026-07-15",
     titulo: "La jornada máxima baja a 42 horas por semana",

@@ -64,4 +64,20 @@ export const novedades: readonly Novedad[] = [
       verificadoEl: "2026-10-07",
     },
   },
+  {
+    id: "bo.ds-5563-gastos-independientes",
+    fecha: "2026-03-02",
+    titulo: "Más compras valen como crédito fiscal para profesionales independientes",
+    texto:
+      "El Decreto Supremo N° 5563 aclaró que, para quien ejerce una profesión u oficio por su cuenta, las compras de alimentos, vestimenta, capacitación, transporte, salud, seguros, combustible y servicios básicos cuentan como gastos de su actividad para el crédito fiscal del IVA, si las facturas están a su nombre.",
+    vigenteDesde: "2026-03-02",
+    calculadoras: ["bo.rc-iva-independientes"],
+    fuente: {
+      organismo: "Servicio de Impuestos Nacionales (SIN)",
+      titulo: "Ley N° 843 y decretos reglamentarios, texto ordenado al 31/08/2026, D.S. N° 21530 art. 8 (párrafo incorporado por la Disposición Adicional Segunda del D.S. N° 5563 de 02/03/2026)",
+      url: "https://www.impuestos.gob.bo/wp-content/uploads/2026/09/1.-LEY-N%C2%B0-843-08-26.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
 ];

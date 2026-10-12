@@ -24,6 +24,64 @@ import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioNeto from "./contenido/salario-neto";
 import contenidoTipoDeCambio from "./contenido/tipo-de-cambio";
 import contenidoVacaciones from "./contenido/vacaciones";
+import cargasSociales from "./calculadoras/cargas-sociales";
+import contenidoCargasSociales from "./contenido/cargas-sociales";
+import costoDeUnEmpleado from "./calculadoras/costo-de-un-empleado";
+import contenidoCostoDeUnEmpleado from "./contenido/costo-de-un-empleado";
+import renuncia from "./calculadoras/renuncia";
+import contenidoRenuncia from "./contenido/renuncia";
+import feriados from "./calculadoras/feriados";
+import contenidoFeriados from "./contenido/feriados";
+import incapacidad from "./calculadoras/incapacidad";
+import contenidoIncapacidad from "./contenido/incapacidad";
+import riesgosDelTrabajo from "./calculadoras/riesgos-del-trabajo";
+import contenidoRiesgosDelTrabajo from "./contenido/riesgos-del-trabajo";
+import embargoDeSalario from "./calculadoras/embargo-de-salario";
+import contenidoEmbargoDeSalario from "./contenido/embargo-de-salario";
+import rentaTrabajadorIndependiente from "./calculadoras/renta-trabajador-independiente";
+import contenidoRentaTrabajadorIndependiente from "./contenido/renta-trabajador-independiente";
+import rentaPersonasJuridicas from "./calculadoras/renta-personas-juridicas";
+import contenidoRentaPersonasJuridicas from "./contenido/renta-personas-juridicas";
+import certificadoDeDeposito from "./calculadoras/certificado-de-deposito";
+import contenidoCertificadoDeDeposito from "./contenido/certificado-de-deposito";
+import maternidad from "./calculadoras/maternidad";
+import contenidoMaternidad from "./contenido/maternidad";
+import licenciaDePaternidad from "./calculadoras/licencia-de-paternidad";
+import contenidoLicenciaDePaternidad from "./contenido/licencia-de-paternidad";
+import trabajoDomestico from "./calculadoras/trabajo-domestico";
+import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
+import salarioPorHora from "./calculadoras/salario-por-hora";
+import contenidoSalarioPorHora from "./contenido/salario-por-hora";
+import fcl from "./calculadoras/fcl";
+import contenidoFcl from "./contenido/fcl";
+import rop from "./calculadoras/rop";
+import contenidoRop from "./contenido/rop";
+import salarioEscolar from "./calculadoras/salario-escolar";
+import contenidoSalarioEscolar from "./contenido/salario-escolar";
+import periodoDePrueba from "./calculadoras/periodo-de-prueba";
+import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
+import muerteDelTrabajador from "./calculadoras/muerte-del-trabajador";
+import contenidoMuerteDelTrabajador from "./contenido/muerte-del-trabajador";
+import cesantiaPorPension from "./calculadoras/cesantia-por-pension";
+import contenidoCesantiaPorPension from "./contenido/cesantia-por-pension";
+import contratoAPlazoFijo from "./calculadoras/contrato-a-plazo-fijo";
+import contenidoContratoAPlazoFijo from "./contenido/contrato-a-plazo-fijo";
+import impuestoBienesInmuebles from "./calculadoras/impuesto-bienes-inmuebles";
+import contenidoImpuestoBienesInmuebles from "./contenido/impuesto-bienes-inmuebles";
+import gananciaDeCapital from "./calculadoras/ganancia-de-capital";
+import contenidoGananciaDeCapital from "./contenido/ganancia-de-capital";
+import prestamo from "./calculadoras/prestamo";
+import contenidoPrestamo from "./contenido/prestamo";
+import salarioBase from "./calculadoras/salario-base";
+import contenidoSalarioBase from "./contenido/salario-base";
+import impuestoSobreAlquileres from "./calculadoras/impuesto-sobre-alquileres";
+import contenidoImpuestoSobreAlquileres from "./contenido/impuesto-sobre-alquileres";
+import impuestoDeTraspaso from "./calculadoras/impuesto-de-traspaso";
+import contenidoImpuestoDeTraspaso from "./contenido/impuesto-de-traspaso";
+import impuestoSobreDividendos from "./calculadoras/impuesto-sobre-dividendos";
+import contenidoImpuestoSobreDividendos from "./contenido/impuesto-sobre-dividendos";
+import asociacionSolidarista from "./calculadoras/asociacion-solidarista";
+import contenidoAsociacionSolidarista from "./contenido/asociacion-solidarista";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +106,35 @@ export default definirPais({
     { definicion: tipoDeCambio, contenido: contenidoTipoDeCambio, cliente: () => import("./calculadoras/tipo-de-cambio.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: cargasSociales, contenido: contenidoCargasSociales, cliente: () => import("./calculadoras/cargas-sociales.cliente") },
+    { definicion: costoDeUnEmpleado, contenido: contenidoCostoDeUnEmpleado, cliente: () => import("./calculadoras/costo-de-un-empleado.cliente") },
+    { definicion: renuncia, contenido: contenidoRenuncia, cliente: () => import("./calculadoras/renuncia.cliente") },
+    { definicion: feriados, contenido: contenidoFeriados, cliente: () => import("./calculadoras/feriados.cliente") },
+    { definicion: incapacidad, contenido: contenidoIncapacidad, cliente: () => import("./calculadoras/incapacidad.cliente") },
+    { definicion: riesgosDelTrabajo, contenido: contenidoRiesgosDelTrabajo, cliente: () => import("./calculadoras/riesgos-del-trabajo.cliente") },
+    { definicion: embargoDeSalario, contenido: contenidoEmbargoDeSalario, cliente: () => import("./calculadoras/embargo-de-salario.cliente") },
+    { definicion: rentaTrabajadorIndependiente, contenido: contenidoRentaTrabajadorIndependiente, cliente: () => import("./calculadoras/renta-trabajador-independiente.cliente") },
+    { definicion: rentaPersonasJuridicas, contenido: contenidoRentaPersonasJuridicas, cliente: () => import("./calculadoras/renta-personas-juridicas.cliente") },
+    { definicion: certificadoDeDeposito, contenido: contenidoCertificadoDeDeposito, cliente: () => import("./calculadoras/certificado-de-deposito.cliente") },
+    { definicion: maternidad, contenido: contenidoMaternidad, cliente: () => import("./calculadoras/maternidad.cliente") },
+    { definicion: licenciaDePaternidad, contenido: contenidoLicenciaDePaternidad, cliente: () => import("./calculadoras/licencia-de-paternidad.cliente") },
+    { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
+    { definicion: salarioPorHora, contenido: contenidoSalarioPorHora, cliente: () => import("./calculadoras/salario-por-hora.cliente") },
+    { definicion: fcl, contenido: contenidoFcl, cliente: () => import("./calculadoras/fcl.cliente") },
+    { definicion: rop, contenido: contenidoRop, cliente: () => import("./calculadoras/rop.cliente") },
+    { definicion: salarioEscolar, contenido: contenidoSalarioEscolar, cliente: () => import("./calculadoras/salario-escolar.cliente") },
+    { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
+    { definicion: muerteDelTrabajador, contenido: contenidoMuerteDelTrabajador, cliente: () => import("./calculadoras/muerte-del-trabajador.cliente") },
+    { definicion: cesantiaPorPension, contenido: contenidoCesantiaPorPension, cliente: () => import("./calculadoras/cesantia-por-pension.cliente") },
+    { definicion: contratoAPlazoFijo, contenido: contenidoContratoAPlazoFijo, cliente: () => import("./calculadoras/contrato-a-plazo-fijo.cliente") },
+    { definicion: impuestoBienesInmuebles, contenido: contenidoImpuestoBienesInmuebles, cliente: () => import("./calculadoras/impuesto-bienes-inmuebles.cliente") },
+    { definicion: gananciaDeCapital, contenido: contenidoGananciaDeCapital, cliente: () => import("./calculadoras/ganancia-de-capital.cliente") },
+    { definicion: prestamo, contenido: contenidoPrestamo, cliente: () => import("./calculadoras/prestamo.cliente") },
+    { definicion: salarioBase, contenido: contenidoSalarioBase, cliente: () => import("./calculadoras/salario-base.cliente") },
+    { definicion: impuestoSobreAlquileres, contenido: contenidoImpuestoSobreAlquileres, cliente: () => import("./calculadoras/impuesto-sobre-alquileres.cliente") },
+    { definicion: impuestoDeTraspaso, contenido: contenidoImpuestoDeTraspaso, cliente: () => import("./calculadoras/impuesto-de-traspaso.cliente") },
+    { definicion: impuestoSobreDividendos, contenido: contenidoImpuestoSobreDividendos, cliente: () => import("./calculadoras/impuesto-sobre-dividendos.cliente") },
+    { definicion: asociacionSolidarista, contenido: contenidoAsociacionSolidarista, cliente: () => import("./calculadoras/asociacion-solidarista.cliente") },
   ],
   novedades,
   detectores,

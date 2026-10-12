@@ -114,6 +114,10 @@ const nextConfig: NextConfig = {
     "/api/planilla-plazo-fijo/download": ["./private/**"],
     "/api/cuenta/descargar/[id]": ["./private/**"],
     "/api/pagos/descarga": ["./private/intl/**"],
+    // El mapa de cada planilla intl (qué calculadora tiene hoja y en qué celda va cada dato) lo leen
+    // en runtime las ofertas, el checkout, la compra y las landings (src/lib/pagos/ofertas-servidor.ts).
+    "/api/pagos/**": ["./private/intl/**/*.mapa.json"],
+    "/intl/**": ["./private/intl/**/*.mapa.json"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
   // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.
@@ -150,6 +154,9 @@ const nextConfig: NextConfig = {
       "/informes/ganancias/ver",
       "/informes/inflacion/ver",
       "/informes/credito-laboral/ver",
+      // calcularya: ?pago=<captura> es la llave del informe y de la planilla.
+      "/:mercado/informes/:informe/ver",
+      "/:mercado/planillas/gracias",
     ];
     return [
       { source: "/:path*", headers: base },

@@ -38,6 +38,62 @@
         ["2026-10-10", 7.64157],
         ["2026-10-11", 7.64157]
       ]
+    },
+    {
+      "id": "gt.inflacion-interanual",
+      "nombre": "Inflación total interanual (ritmo inflacionario)",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 75,
+      "fuente": {
+        "organismo": "Banco de Guatemala",
+        "titulo": "Inflación total, ritmo inflacionario 1997-2026 (datos del Instituto Nacional de Estadística)",
+        "url": "https://www.banguat.gob.gt/sites/default/files/banguat/imm/imm01.htm",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      },
+      "puntos": [
+        ["2025-10-01", 1.26],
+        ["2025-11-01", 1.73],
+        ["2025-12-01", 1.65],
+        ["2026-01-01", 0.96],
+        ["2026-02-01", 1.56],
+        ["2026-03-01", 2.5],
+        ["2026-04-01", 3.24],
+        ["2026-05-01", 2.86],
+        ["2026-06-01", 2.27],
+        ["2026-07-01", 2.7],
+        ["2026-08-01", 3.37],
+        ["2026-09-01", 4.69]
+      ]
+    },
+    {
+      "id": "gt.tasa-pasiva",
+      "nombre": "Tasa de interés pasiva promedio ponderado en quetzales",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 75,
+      "fuente": {
+        "organismo": "Banco de Guatemala",
+        "titulo": "Tasa de interés pasiva en moneda nacional, promedio ponderado del sistema bancario",
+        "url": "https://www.banguat.gob.gt/sites/default/files/banguat/imm/imm05.htm",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      },
+      "puntos": [
+        ["2025-10-01", 5.04],
+        ["2025-11-01", 5.02],
+        ["2025-12-01", 4.94],
+        ["2026-01-01", 4.91],
+        ["2026-02-01", 4.87],
+        ["2026-03-01", 4.82],
+        ["2026-04-01", 4.78],
+        ["2026-05-01", 4.74],
+        ["2026-06-01", 4.7],
+        ["2026-07-01", 4.65],
+        ["2026-08-01", 4.63],
+        ["2026-09-01", 4.62]
+      ]
     }
   ]
 }

@@ -10,13 +10,15 @@ const RE_PAIS = /^[A-Z]{2}$/;
 
 // Solo países con un mercado publicado, también en previews: ahí el registro trae zz y los mercados
 // en estado "interno", y el aviso de país no puede ofrecerlos nunca (salía «Parece que estás en
-// Zetalandia»). El aviso solo aparece si este país coincide con uno de sus destinos.
-const PUBLICADOS = new Set(
-  registro
+// Zetalandia»). El aviso solo aparece si este país coincide con uno de sus destinos. AR no es un
+// mercado del registro pero entra: la home de calcularya le ofrece calcular.ar a quien está ahí.
+const PUBLICADOS = new Set([
+  ...registro
     .mercados("produccion")
     .map((m) => m.pais)
     .filter(Boolean),
-);
+  "AR",
+]);
 
 export function GET(req: NextRequest) {
   let pais = req.headers.get("x-vercel-ip-country")?.toUpperCase() ?? null;

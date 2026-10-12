@@ -5,9 +5,12 @@
       "id": "cl.reforma-pensiones",
       "nivel": "info",
       "desde": "2026-08-01",
-      "aplicaA": ["cl.sueldo-liquido"],
+      "aplicaA": [
+        "cl.sueldo-liquido",
+        "cl.sueldo-bruto"
+      ],
       "titulo": "Reforma de pensiones",
-      "texto": "Desde las remuneraciones de agosto de 2026 el empleador paga una cotización extra de 3,5 % por la reforma de pensiones (Ley 21.735). Sube cada año hasta llegar a 7 %. La paga el empleador, así que no cambia tu sueldo líquido.",
+      "texto": "Desde las remuneraciones de agosto de 2026 el empleador paga una cotización extra de 3,5 % por la reforma de pensiones (Ley 21.735). Sube cada agosto hasta llegar a 8,5 %. La paga el empleador, así que no cambia tu sueldo líquido.",
       "fuente": {
         "organismo": "Superintendencia de Pensiones",
         "titulo": "Sistema de AFP: cotización de cargo del empleador",
@@ -21,7 +24,11 @@
       "nivel": "info",
       "desde": "2026-04-26",
       "hasta": "2028-04-25",
-      "aplicaA": ["cl.horas-extra", "cl.sueldo-minimo"],
+      "aplicaA": [
+        "cl.horas-extra",
+        "cl.sueldo-minimo",
+        "cl.ley-40-horas"
+      ],
       "titulo": "Ley de 40 horas",
       "texto": "La jornada máxima baja por etapas (Ley 21.561). Desde el 26 de abril de 2026 es de 42 horas semanales y el 26 de abril de 2028 baja a 40. Ese día cambia el valor de la hora y lo actualizamos solo.",
       "fuente": {
@@ -37,7 +44,14 @@
       "nivel": "info",
       "desde": "2026-10-01",
       "hasta": "2026-12-31",
-      "aplicaA": ["cl.sueldo-minimo", "cl.gratificacion", "cl.horas-extra"],
+      "aplicaA": [
+        "cl.sueldo-minimo",
+        "cl.gratificacion",
+        "cl.horas-extra",
+        "cl.pension-de-alimentos",
+        "cl.asignacion-familiar",
+        "cl.licencia-medica"
+      ],
       "titulo": "El ingreso mínimo cambia en enero",
       "texto": "El 1 de enero de 2027 el ingreso mínimo se reajusta según el IPC de mayo a diciembre de 2026. El monto lo fija un decreto que sale a más tardar el 15 de enero. Cuando se publique, lo cargamos.",
       "fuente": {
@@ -52,7 +66,9 @@
       "id": "cl.comisiones-afp",
       "nivel": "info",
       "desde": "2026-10-01",
-      "aplicaA": ["cl.sueldo-liquido"],
+      "aplicaA": [
+        "cl.sueldo-liquido"
+      ],
       "texto": "Usamos las comisiones de las AFP que publica la Superintendencia de Pensiones para octubre de 2026. Una AFP puede cambiar su comisión, así que compárala con tu liquidación de sueldo si ves una diferencia.",
       "fuente": {
         "organismo": "Superintendencia de Pensiones",
@@ -60,6 +76,76 @@
         "url": "https://www.spensiones.cl/infoydec",
         "tipo": "primaria",
         "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "cl.alimentos-monto-judicial",
+      "nivel": "cautela",
+      "desde": "2026-01-01",
+      "aplicaA": [
+        "cl.pension-de-alimentos"
+      ],
+      "titulo": "Lo fija el tribunal",
+      "texto": "Este es el mínimo y el máximo que dice la ley. El monto de cada caso lo fija el tribunal de familia según los ingresos de quien paga y las necesidades de los hijos.",
+      "fuente": {
+        "organismo": "Biblioteca del Congreso Nacional (BCN)",
+        "titulo": "DFL 1 de 2000 (Justicia), Ley 14.908, artículos 3 y 7",
+        "url": "https://www.bcn.cl/leychile/navegar?idNorma=172986",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      }
+    },
+    {
+      "id": "cl.global-complementario-estimacion",
+      "nivel": "cautela",
+      "desde": "2026-01-01",
+      "aplicaA": [
+        "cl.impuesto-global-complementario"
+      ],
+      "titulo": "Es una estimación",
+      "texto": "La Operación Renta reajusta tus rentas y retenciones por IPC y usa la UTA de diciembre. Para tu declaración, usa la propuesta del SII.",
+      "fuente": {
+        "organismo": "Biblioteca del Congreso Nacional (BCN)",
+        "titulo": "Ley sobre Impuesto a la Renta, artículo 52",
+        "url": "https://www.bcn.cl/leychile/navegar?idNorma=6368",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      }
+    },
+    {
+      "id": "cl.fcs-vigencia",
+      "nivel": "info",
+      "desde": "2026-03-06",
+      "hasta": "2027-02-28",
+      "aplicaA": [
+        "cl.seguro-de-cesantia"
+      ],
+      "titulo": "Montos hasta febrero de 2027",
+      "texto": "Los montos mínimos y máximos del Fondo de Cesantía Solidario rigen hasta el 28 de febrero de 2027. El 1 de marzo se reajustan y los cargamos cuando se publique la resolución.",
+      "fuente": {
+        "organismo": "Diario Oficial de la República de Chile",
+        "titulo": "Superintendencia de Pensiones, Resolución exenta 383 de 2026",
+        "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/17/44402/01/2781409.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      }
+    },
+    {
+      "id": "cl.pgu-septiembre-2027",
+      "nivel": "info",
+      "desde": "2026-09-01",
+      "hasta": "2027-08-31",
+      "aplicaA": [
+        "cl.pgu"
+      ],
+      "titulo": "La PGU mayor se extiende en 2027",
+      "texto": "Desde septiembre de 2027 el monto mayor de la PGU alcanza a todas las personas de 65 años o más. Además, cada febrero la PGU se reajusta por IPC.",
+      "fuente": {
+        "organismo": "ChileAtiende",
+        "titulo": "PGU: cuándo te corresponde el aumento",
+        "url": "https://www.chileatiende.gob.cl/fichas/130457",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
       }
     }
   ]

@@ -10,6 +10,17 @@ import ts from "typescript";
 import { archivosBajo, RAIZ, rel } from "./paises_comun";
 
 const SRC = path.join(RAIZ, "src");
+// Puentes hacia la capa de cobro intl (src/lib/pagos/*-intl, src/lib/prefill/intl*, src/lib/rastreo): viven
+// bajo src/lib por compartir Supabase y PayPal con AR, pero no son código argentino. Solo estos archivos
+// pueden cruzar, y solo a esos módulos; cualquier otro cruce sigue siendo falla.
+const PUENTES_INTL: Record<string, RegExp> = {
+  "src/motor/ui/Oferta.tsx": /^src\/lib\/(pagos\/[a-z-]*intl[a-z-]*|prefill\/intl(-cliente)?|rastreo)(\.tsx?)?$/,
+  "scripts/paises/gen_planillas_intl.ts": /^src\/lib\/pagos\/[a-z-]*intl[a-z-]*(\.tsx?)?$/,
+};
+function puente(archivo: string, destino: string): boolean {
+  const re = PUENTES_INTL[rel(archivo).split(path.sep).join("/")];
+  return !!re && re.test(rel(destino).split(path.sep).join("/"));
+}
 const EXT = /\.(tsx?|mts|cts|jsx?)$/;
 const PAQUETES_PAIS = new Set(["react"]);
 
@@ -73,7 +84,7 @@ for (const archivo of paisesYScripts) {
       continue;
     }
     if (propio === null) {
-      if (esAR(r.ruta)) fallas.push(`${donde}: el registro de países no importa código de Argentina`);
+      if (esAR(r.ruta) && !puente(archivo, r.ruta)) fallas.push(`${donde}: el registro de países no importa código de Argentina`);
       continue;
     }
     const otro = paisDe(r.ruta);
@@ -93,8 +104,8 @@ for (const archivo of archivosBajo(path.join(SRC, "motor"), EXT)) {
       continue;
     }
     if (dentro(r.ruta, path.join(SRC, "paises"))) fallas.push(`${donde}: el motor no importa de src/paises (recibe el registro como parámetro)`);
-    else if (esAR(r.ruta)) fallas.push(`${donde}: el motor no importa código de Argentina`);
-    else if (!dentro(r.ruta, path.join(SRC, "motor"))) fallas.push(`${donde}: el motor solo importa de src/motor`);
+    else if (esAR(r.ruta) && !puente(archivo, r.ruta)) fallas.push(`${donde}: el motor no importa código de Argentina`);
+    else if (!dentro(r.ruta, path.join(SRC, "motor")) && !puente(archivo, r.ruta)) fallas.push(`${donde}: el motor solo importa de src/motor`);
   }
 }
 

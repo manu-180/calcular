@@ -3,12 +3,15 @@ import { Geist } from "next/font/google";
 import { origenPublicoIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import type { CodigoMercado } from "@/motor/tipos";
+import { AcordeonesFluidos } from "@/components/AcordeonesFluidos";
 import { Rastreador } from "@/components/Rastreador";
 import { EncabezadoIntl } from "@/components/shell/EncabezadoIntl";
 import { PieIntl } from "@/components/shell/PieIntl";
 import { contextoSitio } from "@/motor/ui/contexto";
 import "@/components/shell/shell.css";
 import "@/motor/ui/estilos.css";
+// Arranque por país, selector, datos vivos y novedades (frente aparte, para no pisar estilos.css).
+import "@/motor/ui/estilos-inicio.css";
 import { registro } from "@/paises";
 
 // optional y no swap: si Geist no llegó para el primer pintado se queda la fallback ajustada por
@@ -74,6 +77,7 @@ export default async function LayoutIntl({ children, params }: { children: React
           <PieIntl ctx={ctx} />
         </div>
         <Rastreador sitio="intl" mercado={ctx.mercado.codigo} />
+        <AcordeonesFluidos />
       </body>
     </html>
   );

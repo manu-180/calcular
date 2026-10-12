@@ -5,14 +5,14 @@ const INDICADOR_BCCR = "https://www.bccr.fi.cr/content/bccr/cr/es/home/jcr:conte
 
 // La portada del BCCR lee estos JSON sin token; el servicio web de indicadores pide suscripción.
 // Cada llamada trae solo el último valor publicado.
-function detectorBccr(id: string, serie: string, indicador: number): DetectorSerie {
+function detectorBccr(id: string, serie: string, indicador: number, banda: DetectorSerie["banda"]): DetectorSerie {
   return {
     id,
     carril: "serie",
     serie,
     metodo: "api-json",
     url: `${INDICADOR_BCCR}.${indicador}.json` as `https://${string}`,
-    banda: { min: 350, max: 650, saltoRelativoMax: 0.05 },
+    banda,
     async traer(http) {
       const json = await http.json(this.url);
       if (typeof json !== "object" || json === null) return null;
@@ -110,9 +110,13 @@ function detectorSinalevi(
   };
 }
 
+const CAMBIO = { min: 350, max: 650, saltoRelativoMax: 0.05 };
+
 export const detectores: readonly Detector[] = [
-  detectorBccr("cr.bccr-compra", "cr.tipo-cambio-compra", 317),
-  detectorBccr("cr.bccr-venta", "cr.tipo-cambio-venta", 318),
+  detectorBccr("cr.bccr-compra", "cr.tipo-cambio-compra", 317, CAMBIO),
+  detectorBccr("cr.bccr-venta", "cr.tipo-cambio-venta", 318, CAMBIO),
+  // La TBP se mueve de a décimas por semana: un salto de 15 % ya es algo raro que conviene revisar.
+  detectorBccr("cr.bccr-tbp", "cr.tbp", 423, { min: 0.5, max: 15, saltoRelativoMax: 0.15 }),
   {
     id: "cr.bccr-ipc",
     carril: "serie",

@@ -3,6 +3,7 @@ import path from "node:path";
 import type { CodigoMercado } from "@/motor/tipos";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
+import { FAMILIAS, type ClaveFamilia, type FamiliaInforme, type TipoProducto } from "./ofertas-intl";
 import type { ProductoVenta } from "./tipos";
 
 // Planillas que vende calcularya.com. Cada una es de un país: el id es `<mercado>/<slug>` y el
@@ -11,19 +12,24 @@ import type { ProductoVenta } from "./tipos";
 //   2. agregar un definirProductoIntl({...}) a PRODUCTOS_INTL,
 //   3. confirmar que next.config.ts incluye ./private/intl/** en /api/pagos/descarga.
 // Nada más: catálogo, landing, cobro, webhook, mail y descarga leen de acá.
+// Los informes (tipo "informe") no tienen archivo: se arman desde ofertas-intl.ts, uno por familia y
+// por país con al menos una calculadora de la familia, y se entregan como página imprimible.
 
 export type ProductoIntl = ProductoVenta & {
   mercado: string;
   slug: string;
+  tipo: TipoProducto;
+  familia?: ClaveFamilia;
   tituloCorto: string;
   paraQuien: string;
   descripcion: readonly string[];
   disparadorActualizacion: string;
   moneda: "USD";
+  // "" en los informes.
   archivo: string;
 };
 
-export type DefinicionProductoIntl = Omit<ProductoIntl, "id" | "moneda"> & { moneda?: "USD" };
+export type DefinicionProductoIntl = Omit<ProductoIntl, "id" | "moneda" | "tipo"> & { moneda?: "USD"; tipo?: TipoProducto };
 
 const RE_MERCADO = /^[a-z]{2,6}$/;
 const RE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -33,14 +39,16 @@ export function definirProductoIntl(d: DefinicionProductoIntl): ProductoIntl {
   if (!RE_MERCADO.test(d.mercado) || d.mercado === "ar") throw new Error(`producto intl con mercado inválido: ${d.mercado}`);
   if (d.slug === "comprar" || d.slug === "gracias") throw new Error(`producto intl: «${d.slug}» es una ruta de planillas`);
   if (!RE_SLUG.test(d.slug)) throw new Error(`producto intl con slug inválido: ${d.slug}`);
-  if (!RE_ARCHIVO.test(d.archivo)) throw new Error(`producto intl ${d.slug}: el archivo es un nombre .xlsx, sin carpetas`);
+  const tipo = d.tipo ?? "planilla";
+  if (tipo === "planilla" && !RE_ARCHIVO.test(d.archivo)) throw new Error(`producto intl ${d.slug}: el archivo es un nombre .xlsx, sin carpetas`);
+  if (tipo === "informe" && (d.archivo !== "" || !d.familia)) throw new Error(`producto intl ${d.slug}: un informe no tiene archivo y sí familia`);
   if (!Number.isInteger(d.precioCentavos) || d.precioCentavos < 100 || d.precioCentavos > 100000) {
     throw new Error(`producto intl ${d.slug}: precioCentavos entero entre 100 y 100000`);
   }
   const id = `${d.mercado}/${d.slug}`;
   // ca_compras.producto y ca_checkouts.producto aceptan hasta 60 caracteres.
   if (id.length > 60) throw new Error(`producto intl ${id}: id de más de 60 caracteres`);
-  return { ...d, id, moneda: "USD" };
+  return { ...d, id, tipo, moneda: "USD" };
 }
 
 // Planilla de sueldo y liquidación de cada país. La genera scripts/paises/gen_planillas_intl.ts en el
@@ -95,7 +103,44 @@ export function archivoPlanillaSueldo(anio: number): string {
   return `sueldo-y-liquidacion-${anio}.xlsx`;
 }
 
-export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
+const DISPARADOR_INFORME = "Cada vez que cambia un valor oficial que usa el cálculo";
+
+function informe(f: FamiliaInforme, mercado: string): ProductoIntl {
+  const pais = registro.pais(mercado as CodigoMercado)!;
+  const t = pais.mercado.trato;
+  return definirProductoIntl({
+    mercado,
+    slug: f.slug,
+    tipo: "informe",
+    familia: f.clave,
+    titulo: `${f.nombre} ${pais.mercado.nombre}`,
+    tituloCorto: f.tituloCorto,
+    paraQuien: f.paraQuien[t],
+    descripcion: f.descripcion.map((d) => d[t]),
+    disparadorActualizacion: DISPARADOR_INFORME,
+    precioCentavos: f.precioCentavos,
+    archivo: "",
+  });
+}
+
+// Una calculadora en borrador no vende: no tiene página. zz es el mercado de pruebas.
+export function calculadorasDeFamilia(f: FamiliaInforme, mercado: string) {
+  const pais = registro.pais(mercado as CodigoMercado);
+  if (!pais) return [];
+  return pais.calculadoras.filter((c) => c.definicion.estado !== "borrador" && (f.conceptos as readonly string[]).includes(c.definicion.concepto));
+}
+
+function informesDelRegistro(): ProductoIntl[] {
+  const salida: ProductoIntl[] = [];
+  for (const pais of registro.paises) {
+    const m = pais.mercado.codigo;
+    if (m === "global" || m === "zz") continue;
+    for (const f of FAMILIAS) if (calculadorasDeFamilia(f, m).length) salida.push(informe(f, m));
+  }
+  return salida;
+}
+
+export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "mx",
     trato: "tu",
@@ -258,6 +303,8 @@ export const PRODUCTOS_INTL: readonly ProductoIntl[] = [
   }),
 ];
 
+export const PRODUCTOS_INTL: readonly ProductoIntl[] = [...PLANILLAS_SUELDO_INTL, ...informesDelRegistro()];
+
 let catalogo: readonly ProductoIntl[] = PRODUCTOS_INTL;
 
 // Sólo para los checks: cambia el catálogo que ven las rutas y devuelve cómo restaurarlo.
@@ -287,6 +334,7 @@ export function productoIntlDe(mercado: string, slug: string): ProductoIntl | nu
 }
 
 export function rutaArchivoIntl(p: ProductoIntl): string {
+  if (p.tipo !== "planilla") throw new Error(`${p.id} no tiene archivo`);
   return path.join(process.cwd(), "private", "intl", p.mercado, p.archivo);
 }
 

@@ -4,12 +4,14 @@ import { usuarioActual } from "@/lib/auth/sesion";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { permitido } from "@/lib/limite";
 import { emailValido } from "@/lib/mp";
-import { servicio } from "@/lib/supabase/servicio";
+import { claveServicio, servicio } from "@/lib/supabase/servicio";
 import { ipDelPedido } from "@/lib/acceso-entrega";
 import { proveedorIntl, ventaIntlActiva } from "@/lib/pagos";
 import { productoIntl, referenciaIntl } from "@/lib/pagos/catalogo-intl";
-import { origenDelPedido, origenesPermitidos, rutaPlanillasIntl } from "@/lib/pagos/flujo-intl";
+import { origenDelPedido, origenesPermitidos, rutaComprarIntl } from "@/lib/pagos/flujo-intl";
 import { filaCheckoutIntl, registrarCheckoutIntl } from "@/lib/pagos/ventas-intl";
+import { validarDatosDeProducto } from "@/lib/pagos/ofertas-servidor";
+import { parsearDatosIntl, serializarDatosIntl, type DatosIntl } from "@/lib/prefill/intl";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -33,31 +35,40 @@ const ir = (url: string) => NextResponse.redirect(url, 303);
 // con el precio del catálogo y manda a la persona a aprobarla en el proveedor.
 export async function POST(req: NextRequest) {
   const base = origenDelPedido(req.nextUrl.origin);
-  let datos: FormData;
+  let form: FormData;
   try {
-    datos = await req.formData();
+    form = await req.formData();
   } catch {
     return new NextResponse("Pedido inválido", { status: 400 });
   }
-  const producto = productoIntl(String(datos.get("p") ?? ""));
+  const producto = productoIntl(String(form.get("p") ?? ""));
   if (!producto) return new NextResponse("Producto desconocido", { status: 404 });
-  const volver = (estado: string) => `${base}${rutaPlanillasIntl(producto.mercado, "comprar")}?p=${producto.slug}&pago=${estado}`;
+  const comprar = rutaComprarIntl(producto);
+  const volver = (estado: string) => `${base}${comprar}?p=${producto.slug}&pago=${estado}`;
 
   if (!ventaIntlActiva()) return ir(volver("pronto"));
 
-  const email = emailValido(String(datos.get("email") ?? ""));
-  if (!email) return ir(`${base}${rutaPlanillasIntl(producto.mercado, "comprar")}?p=${producto.slug}&error=email`);
+  const email = emailValido(String(form.get("email") ?? ""));
+  if (!email) return ir(`${base}${comprar}?p=${producto.slug}&error=email`);
 
   const origen = req.headers.get("origin");
   const ajeno = origen !== null && !origenesPermitidos(req.nextUrl.origin).has(origen);
   // Campo trampa: un humano no lo ve. Desde otro sitio o con la trampa llena se cobra igual, pero
   // sin guardar ni prellenar el mail.
-  const sospechoso = ajeno || String(datos.get("sitio") ?? "") !== "";
+  const sospechoso = ajeno || String(form.get("sitio") ?? "") !== "";
   if (sospechoso) console.warn("[pagos/checkout] pedido sospechoso, se sigue sin el mail", producto.id, origen);
 
   if (!(await dentroDelCupo(req))) {
     console.warn("[pagos/checkout] fuera de cupo", producto.id);
     return ir(volver("error"));
+  }
+
+  // Los números de la calculadora sólo viajan si la persona dejó tildado usarlos. Se guardan
+  // re-validados contra la definición: lo que no pasa se descarta y la compra sigue sin datos.
+  let datos: DatosIntl | null = null;
+  if (!sospechoso && String(form.get("usar_datos") ?? "") === "1") {
+    datos = validarDatosDeProducto(producto, parsearDatosIntl(form.get("datos")));
+    if (datos && !serializarDatosIntl(datos)) datos = null;
   }
 
   const proveedor = proveedorIntl();
@@ -77,9 +88,13 @@ export async function POST(req: NextRequest) {
       email: sospechoso ? null : email,
       idempotencia: checkoutId,
     });
-    if (usuario) {
+    if (usuario || datos) {
       const tarea = async () => {
-        const u = await usuario;
+        const u = usuario ? await usuario : null;
+        if (!process.env.SUPABASE_URL || !claveServicio()) {
+          console.warn("[pagos/checkout] sin SUPABASE_URL: el checkout y sus datos no se guardan", producto.id);
+          return;
+        }
         await registrarCheckoutIntl(
           servicio(),
           filaCheckoutIntl({
@@ -87,9 +102,10 @@ export async function POST(req: NextRequest) {
             producto,
             proveedor: proveedor.nombre,
             email: sospechoso ? null : email,
-            vid: String(datos.get("vid") ?? ""),
+            vid: String(form.get("vid") ?? ""),
             userId: u?.id,
-            ruta: String(datos.get("ruta") ?? ""),
+            ruta: String(form.get("ruta") ?? ""),
+            datos,
           }),
         );
       };

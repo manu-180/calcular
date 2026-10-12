@@ -64,7 +64,9 @@ export async function GET(req: NextRequest) {
 
   // Suscriptores activos
   const subsRes = await sbFetch(
-    "/subscribers?active=eq.true&select=email,unsubscribe_token"
+    // Los correos de «Avísame» de calcularya (source calcularya:<producto>) esperan un solo aviso, no el
+    // newsletter semanal argentino.
+    "/subscribers?active=eq.true&or=(source.is.null,source.not.like.calcularya:*)&select=email,unsubscribe_token"
   );
   if (!subsRes.ok) {
     return NextResponse.json({ error: "DB error: subscribers" }, { status: 500 });
