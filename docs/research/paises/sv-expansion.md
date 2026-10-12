@@ -26,41 +26,41 @@ Estado: **P** = publicada, **B** = borrador (falta dato), **N** = nueva.
 | # | Calculadora (slug) | Demanda | Norma | Fuente primaria | Estado |
 |---|---|---|---|---|---|
 | 1 | aguinaldo | Muy alta (oct a dic) | CT 196 a 202, D.L. 669/2026, D.L. 673/2026 | Código de Trabajo (CSJ), Diario Oficial | P, actualizada |
-| 2 | salario-liquido | Alta | LSS art. 29, LISP art. 16, D.E. 10/2025 | Asamblea, MH | N (era B) |
+| 2 | salario-liquido | Alta | LSS art. 29, LISP art. 16, D.E. 10/2025 | Asamblea, MH | P |
 | 3 | retencion-de-renta | Alta | D.E. 10/2025 | jurisprudencia.gob.sv | P |
 | 4 | indemnizacion | Alta | CT 58 | Código de Trabajo | P |
-| 5 | liquidacion | Alta | CT 58, 187, 202 | Código de Trabajo | N |
+| 5 | liquidacion | Alta | CT 58, 187, 202 | Código de Trabajo | P |
 | 6 | quincena-25 | Alta en enero | D.L. 499/2026 | Asamblea | P |
 | 7 | salario-minimo | Media | D.E. 11/2025 | jurisprudencia.gob.sv | P |
 | 8 | renuncia-voluntaria | Media | D.L. 592/2013 | Asamblea | P |
 | 9 | vacaciones | Media | CT 177 | Código de Trabajo | P |
 | 10 | horas-extra | Media | CT 161, 168, 169 | Código de Trabajo | P |
-| 11 | descuentos-isss-afp | Media | LSS 29, LISP 16 | Asamblea, MH | N |
-| 12 | costo-empleador | Media (pymes) | LSS 29, LISP 16, CT | Asamblea, MH | N |
-| 13 | declaracion-de-renta (anual) | Media (marzo y abril) | LISR 37 y 29 num. 7 | Asamblea | N |
-| 14 | retencion-servicios-profesionales (10 %) | Media | CT trib. 156 | Asamblea | N |
-| 15 | incapacidad (subsidio ISSS y art. 307) | Media | CT 307, ISSS | Código, isss.gob.sv | N |
-| 16 | licencia-por-maternidad | Media | CT 309, ISSS | Código, isss.gob.sv | N |
-| 17 | dia-de-asueto | Media (feriados) | CT 190 a 192 | Código de Trabajo | N |
-| 18 | salario-por-hora | Media | CT 142, 161 | Código de Trabajo | N |
-| 19 | pension-por-vejez | Media | LISP 96 a 98, 114, 124 a 126 | Asamblea | N |
-| 20 | impuesto-bienes-raices | Media | Ley ITBR art. 4 | Asamblea, formulario MH | N |
-| 21 | plazo-fijo (depósito a plazo) | Media | LISR 4 num. 5, CT trib. 159 | Asamblea | N |
-| 22 | colones-a-dolares | Media | Ley de Integración Monetaria art. 1 | Asamblea | N |
+| 11 | descuentos-isss-afp | Media | LSS 29, LISP 16 | Asamblea, MH | P |
+| 12 | costo-empleador | Media (pymes) | LSS 29, LISP 16, CT | Asamblea, MH | P |
+| 13 | declaracion-de-renta (anual) | Media (marzo y abril) | LISR 37 y 29 num. 7 | Asamblea | P |
+| 14 | retencion-servicios-profesionales (10 %) | Media | CT trib. 156 | Asamblea | P |
+| 15 | incapacidad (subsidio ISSS y art. 307) | Media | CT 307, ISSS | Código, isss.gob.sv | P |
+| 16 | licencia-por-maternidad | Media | CT 309, ISSS | Código, isss.gob.sv | P |
+| 17 | dia-de-asueto | Media (feriados) | CT 190 a 192 | Código de Trabajo | P |
+| 18 | salario-por-hora | Media | CT 142, 161 | Código de Trabajo | P |
+| 19 | pension-por-vejez | Media | LISP 96 a 98, 114, 124 a 126 | Asamblea | N, pendiente |
+| 20 | impuesto-bienes-raices | Media | Ley ITBR art. 4 | Asamblea, formulario MH | P |
+| 21 | plazo-fijo (depósito a plazo) | Media | LISR 4 num. 5, CT trib. 159 | Asamblea | P |
+| 22 | colones-a-dolares | Media | Ley de Integración Monetaria art. 1 | Asamblea | P |
 | 23 | inflacion | Baja-media | IPC BCR | BCR | P |
 | 24 | iva | Media | Ley IVA art. 54 | Asamblea | P |
-| 25 | embargo-de-salario | Baja-media | CT 133 | Código de Trabajo | N |
-| 26 | descanso-semanal | Baja-media | CT 175 | Código de Trabajo | N |
-| 27 | nocturnidad | Baja-media | CT 161, 168 | Código de Trabajo | N |
-| 28 | periodo-de-prueba | Baja-media | CT 28 | Código de Trabajo | N |
-| 29 | preaviso-de-renuncia | Baja-media | D.L. 592 arts. 2 y 3 | Asamblea | N |
-| 30 | despido-contrato-a-plazo | Baja | CT 59 | Código de Trabajo | N |
-| 31 | salario-de-aprendiz | Baja | CT 69 | Código de Trabajo | N |
-| 32 | prestacion-por-muerte | Baja | CT 313 | Código de Trabajo | N |
-| 33 | ganancia-de-capital | Baja | LISR 42 | Asamblea | N |
-| 34 | renta-empresas (persona jurídica) | Baja | LISR 41 | Asamblea | N |
-| 35 | pago-a-cuenta | Baja-media (contadores) | CT trib. 151 | Asamblea | N |
-| 36 | retencion-iva | Baja (contadores) | CT trib. 162 y 163 | Asamblea | N |
+| 25 | embargo-de-salario | Baja-media | CT 133 | Código de Trabajo | P |
+| 26 | descanso-semanal | Baja-media | CT 175 | Código de Trabajo | P |
+| 27 | nocturnidad | Baja-media | CT 161, 168 | Código de Trabajo | P |
+| 28 | periodo-de-prueba | Baja-media | CT 28 | Código de Trabajo | P |
+| 29 | preaviso-de-renuncia | Baja-media | D.L. 592 arts. 2 y 3 | Asamblea | P |
+| 30 | despido-contrato-a-plazo | Baja | CT 59 | Código de Trabajo | P |
+| 31 | salario-de-aprendiz | Baja | CT 69 | Código de Trabajo | P |
+| 32 | prestacion-por-muerte | Baja | CT 313 | Código de Trabajo | P |
+| 33 | ganancia-de-capital | Baja | LISR 42 | Asamblea | N, pendiente |
+| 34 | renta-empresas (persona jurídica) | Baja | LISR 41 | Asamblea | N, pendiente |
+| 35 | pago-a-cuenta | Baja-media (contadores) | CT trib. 151 | Asamblea | P |
+| 36 | retencion-iva | Baja (contadores) | CT trib. 162 y 163 | Asamblea | P |
 
 ## Descartadas o en espera
 
@@ -78,3 +78,13 @@ Estado: **P** = publicada, **B** = borrador (falta dato), **N** = nueva.
 
 - Un tipo de campo «lista de meses» para promediar salarios variables (incapacidad, vacaciones por comisión).
 - Un formato de resultado «fecha» que acepte cálculo de días hábiles con feriados por país (preaviso, prueba).
+
+## Cierre (12/10/2026)
+
+33 calculadoras publicadas. Quedan para la próxima tanda, con los datos ya verificados en `datos.json`:
+pension-por-vejez (#19: pide saldo acumulado, años cotizados y las reglas de devolución y BET; es una calculadora de varias ramas, no entró en este cierre), ganancia-de-capital (#33: dentro de los 12 meses la ganancia se suma a la renta ordinaria y eso pide la escala anual completa) y renta-empresas (#34).
+
+Releído en fuente primaria al cerrar: Código Tributario arts. 151, 159, 162 y 163; LISR art. 4 num. 5
+(«inferior a» $25,000: el saldo igual al límite ya retiene); Ley de Integración Monetaria art. 1; Ley
+de Transferencia de Bienes Raíces arts. 2, 4 y 7 (la declaración se presenta aunque esté exento) y el
+formulario de Hacienda («3 % sobre el exceso de $28,571.43»).

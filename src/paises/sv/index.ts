@@ -56,6 +56,16 @@ import contenidoSalarioLiquido from "./contenido/salario-liquido";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioPorHora from "./contenido/salario-por-hora";
 import contenidoVacaciones from "./contenido/vacaciones";
+import impuestoBienesRaices from "./calculadoras/impuesto-bienes-raices";
+import contenidoImpuestoBienesRaices from "./contenido/impuesto-bienes-raices";
+import plazoFijo from "./calculadoras/plazo-fijo";
+import contenidoPlazoFijo from "./contenido/plazo-fijo";
+import colonesADolares from "./calculadoras/colones-a-dolares";
+import contenidoColonesADolares from "./contenido/colones-a-dolares";
+import pagoACuenta from "./calculadoras/pago-a-cuenta";
+import contenidoPagoACuenta from "./contenido/pago-a-cuenta";
+import retencionIva from "./calculadoras/retencion-iva";
+import contenidoRetencionIva from "./contenido/retencion-iva";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -96,6 +106,11 @@ export default definirPais({
     { definicion: despidoContratoAPlazo, contenido: contenidoDespidoContratoAPlazo, cliente: () => import("./calculadoras/despido-contrato-a-plazo.cliente") },
     { definicion: salarioDeAprendiz, contenido: contenidoSalarioDeAprendiz, cliente: () => import("./calculadoras/salario-de-aprendiz.cliente") },
     { definicion: prestacionPorMuerte, contenido: contenidoPrestacionPorMuerte, cliente: () => import("./calculadoras/prestacion-por-muerte.cliente") },
+    { definicion: impuestoBienesRaices, contenido: contenidoImpuestoBienesRaices, cliente: () => import("./calculadoras/impuesto-bienes-raices.cliente") },
+    { definicion: plazoFijo, contenido: contenidoPlazoFijo, cliente: () => import("./calculadoras/plazo-fijo.cliente") },
+    { definicion: colonesADolares, contenido: contenidoColonesADolares, cliente: () => import("./calculadoras/colones-a-dolares.cliente") },
+    { definicion: pagoACuenta, contenido: contenidoPagoACuenta, cliente: () => import("./calculadoras/pago-a-cuenta.cliente") },
+    { definicion: retencionIva, contenido: contenidoRetencionIva, cliente: () => import("./calculadoras/retencion-iva.cliente") },
   ],
   novedades,
   detectores,
