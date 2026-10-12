@@ -56,6 +56,22 @@ import gastosPersonales from "./calculadoras/gastos-personales";
 import contenidoGastosPersonales from "./contenido/gastos-personales";
 import cesantiaIess from "./calculadoras/cesantia-iess";
 import contenidoCesantiaIess from "./contenido/cesantia-iess";
+import impuestoHerencias from "./calculadoras/impuesto-herencias";
+import contenidoImpuestoHerencias from "./contenido/impuesto-herencias";
+import impuestoVehicular from "./calculadoras/impuesto-vehicular";
+import contenidoImpuestoVehicular from "./contenido/impuesto-vehicular";
+import impuestoSalidaDivisas from "./calculadoras/impuesto-salida-divisas";
+import contenidoImpuestoSalidaDivisas from "./contenido/impuesto-salida-divisas";
+import retencionEnLaFuente from "./calculadoras/retencion-en-la-fuente";
+import contenidoRetencionEnLaFuente from "./contenido/retencion-en-la-fuente";
+import plazoFijo from "./calculadoras/plazo-fijo";
+import contenidoPlazoFijo from "./contenido/plazo-fijo";
+import simuladorDeCredito from "./calculadoras/simulador-de-credito";
+import contenidoSimuladorDeCredito from "./contenido/simulador-de-credito";
+import multaSri from "./calculadoras/multa-sri";
+import contenidoMultaSri from "./contenido/multa-sri";
+import jubilacionPatronal from "./calculadoras/jubilacion-patronal";
+import contenidoJubilacionPatronal from "./contenido/jubilacion-patronal";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -96,6 +112,14 @@ export default definirPais({
     { definicion: aportesIess, contenido: contenidoAportesIess, cliente: () => import("./calculadoras/aportes-iess.cliente") },
     { definicion: gastosPersonales, contenido: contenidoGastosPersonales, cliente: () => import("./calculadoras/gastos-personales.cliente") },
     { definicion: cesantiaIess, contenido: contenidoCesantiaIess, cliente: () => import("./calculadoras/cesantia-iess.cliente") },
+    { definicion: impuestoHerencias, contenido: contenidoImpuestoHerencias, cliente: () => import("./calculadoras/impuesto-herencias.cliente") },
+    { definicion: impuestoVehicular, contenido: contenidoImpuestoVehicular, cliente: () => import("./calculadoras/impuesto-vehicular.cliente") },
+    { definicion: impuestoSalidaDivisas, contenido: contenidoImpuestoSalidaDivisas, cliente: () => import("./calculadoras/impuesto-salida-divisas.cliente") },
+    { definicion: retencionEnLaFuente, contenido: contenidoRetencionEnLaFuente, cliente: () => import("./calculadoras/retencion-en-la-fuente.cliente") },
+    { definicion: plazoFijo, contenido: contenidoPlazoFijo, cliente: () => import("./calculadoras/plazo-fijo.cliente") },
+    { definicion: simuladorDeCredito, contenido: contenidoSimuladorDeCredito, cliente: () => import("./calculadoras/simulador-de-credito.cliente") },
+    { definicion: multaSri, contenido: contenidoMultaSri, cliente: () => import("./calculadoras/multa-sri.cliente") },
+    { definicion: jubilacionPatronal, contenido: contenidoJubilacionPatronal, cliente: () => import("./calculadoras/jubilacion-patronal.cliente") },
   ],
   novedades,
   detectores,
