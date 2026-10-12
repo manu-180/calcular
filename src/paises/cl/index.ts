@@ -28,6 +28,54 @@ import trabajadoraCasaParticular from "./calculadoras/trabajadora-de-casa-partic
 import contenidoTrabajadoraCasaParticular from "./contenido/trabajadora-de-casa-particular";
 import costoEmpresa from "./calculadoras/costo-empresa";
 import contenidoCostoEmpresa from "./contenido/costo-empresa";
+import indemnizacionPorAnosDeServicio from "./calculadoras/indemnizacion-por-anos-de-servicio";
+import contenidoIndemnizacionPorAnosDeServicio from "./contenido/indemnizacion-por-anos-de-servicio";
+import avisoPrevio from "./calculadoras/aviso-previo";
+import contenidoAvisoPrevio from "./contenido/aviso-previo";
+import feriadoProgresivo from "./calculadoras/feriado-progresivo";
+import contenidoFeriadoProgresivo from "./contenido/feriado-progresivo";
+import topeImponible from "./calculadoras/tope-imponible";
+import contenidoTopeImponible from "./contenido/tope-imponible";
+import ufPorFecha from "./calculadoras/uf-por-fecha";
+import contenidoUfPorFecha from "./contenido/uf-por-fecha";
+import sueldoBruto from "./calculadoras/sueldo-bruto";
+import contenidoSueldoBruto from "./contenido/sueldo-bruto";
+import cotizacionesPrevisionales from "./calculadoras/cotizaciones-previsionales";
+import contenidoCotizacionesPrevisionales from "./contenido/cotizaciones-previsionales";
+import asignacionFamiliar from "./calculadoras/asignacion-familiar";
+import contenidoAsignacionFamiliar from "./contenido/asignacion-familiar";
+import pensionDeAlimentos from "./calculadoras/pension-de-alimentos";
+import contenidoPensionDeAlimentos from "./contenido/pension-de-alimentos";
+import pgu from "./calculadoras/pgu";
+import contenidoPgu from "./contenido/pgu";
+import aguinaldoPensionados from "./calculadoras/aguinaldo-pensionados";
+import contenidoAguinaldoPensionados from "./contenido/aguinaldo-pensionados";
+import semanaCorrida from "./calculadoras/semana-corrida";
+import contenidoSemanaCorrida from "./contenido/semana-corrida";
+import prenatalYPostnatal from "./calculadoras/prenatal-y-postnatal";
+import contenidoPrenatalYPostnatal from "./contenido/prenatal-y-postnatal";
+import ley40Horas from "./calculadoras/ley-40-horas";
+import contenidoLey40Horas from "./contenido/ley-40-horas";
+import sueldoProporcional from "./calculadoras/sueldo-proporcional";
+import contenidoSueldoProporcional from "./contenido/sueldo-proporcional";
+import seguroDeCesantia from "./calculadoras/seguro-de-cesantia";
+import contenidoSeguroDeCesantia from "./contenido/seguro-de-cesantia";
+import reformaDePensiones from "./calculadoras/reforma-de-pensiones";
+import contenidoReformaDePensiones from "./contenido/reforma-de-pensiones";
+import impuestoGlobalComplementario from "./calculadoras/impuesto-global-complementario";
+import contenidoImpuestoGlobalComplementario from "./contenido/impuesto-global-complementario";
+import depositoAPlazo from "./calculadoras/deposito-a-plazo";
+import contenidoDepositoAPlazo from "./contenido/deposito-a-plazo";
+import creditoHipotecario from "./calculadoras/credito-hipotecario";
+import contenidoCreditoHipotecario from "./contenido/credito-hipotecario";
+import reajusteDeArriendo from "./calculadoras/reajuste-de-arriendo";
+import contenidoReajusteDeArriendo from "./contenido/reajuste-de-arriendo";
+import licenciaMedica from "./calculadoras/licencia-medica";
+import contenidoLicenciaMedica from "./contenido/licencia-medica";
+import planIsapre from "./calculadoras/plan-isapre";
+import contenidoPlanIsapre from "./contenido/plan-isapre";
+import diasDeVacaciones from "./calculadoras/dias-de-vacaciones";
+import contenidoDiasDeVacaciones from "./contenido/dias-de-vacaciones";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -54,6 +102,30 @@ export default definirPais({
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: trabajadoraCasaParticular, contenido: contenidoTrabajadoraCasaParticular, cliente: () => import("./calculadoras/trabajadora-de-casa-particular.cliente") },
     { definicion: costoEmpresa, contenido: contenidoCostoEmpresa, cliente: () => import("./calculadoras/costo-empresa.cliente") },
+    { definicion: indemnizacionPorAnosDeServicio, contenido: contenidoIndemnizacionPorAnosDeServicio, cliente: () => import("./calculadoras/indemnizacion-por-anos-de-servicio.cliente") },
+    { definicion: avisoPrevio, contenido: contenidoAvisoPrevio, cliente: () => import("./calculadoras/aviso-previo.cliente") },
+    { definicion: feriadoProgresivo, contenido: contenidoFeriadoProgresivo, cliente: () => import("./calculadoras/feriado-progresivo.cliente") },
+    { definicion: topeImponible, contenido: contenidoTopeImponible, cliente: () => import("./calculadoras/tope-imponible.cliente") },
+    { definicion: ufPorFecha, contenido: contenidoUfPorFecha, cliente: () => import("./calculadoras/uf-por-fecha.cliente") },
+    { definicion: sueldoBruto, contenido: contenidoSueldoBruto, cliente: () => import("./calculadoras/sueldo-bruto.cliente") },
+    { definicion: cotizacionesPrevisionales, contenido: contenidoCotizacionesPrevisionales, cliente: () => import("./calculadoras/cotizaciones-previsionales.cliente") },
+    { definicion: asignacionFamiliar, contenido: contenidoAsignacionFamiliar, cliente: () => import("./calculadoras/asignacion-familiar.cliente") },
+    { definicion: pensionDeAlimentos, contenido: contenidoPensionDeAlimentos, cliente: () => import("./calculadoras/pension-de-alimentos.cliente") },
+    { definicion: pgu, contenido: contenidoPgu, cliente: () => import("./calculadoras/pgu.cliente") },
+    { definicion: aguinaldoPensionados, contenido: contenidoAguinaldoPensionados, cliente: () => import("./calculadoras/aguinaldo-pensionados.cliente") },
+    { definicion: semanaCorrida, contenido: contenidoSemanaCorrida, cliente: () => import("./calculadoras/semana-corrida.cliente") },
+    { definicion: prenatalYPostnatal, contenido: contenidoPrenatalYPostnatal, cliente: () => import("./calculadoras/prenatal-y-postnatal.cliente") },
+    { definicion: ley40Horas, contenido: contenidoLey40Horas, cliente: () => import("./calculadoras/ley-40-horas.cliente") },
+    { definicion: sueldoProporcional, contenido: contenidoSueldoProporcional, cliente: () => import("./calculadoras/sueldo-proporcional.cliente") },
+    { definicion: seguroDeCesantia, contenido: contenidoSeguroDeCesantia, cliente: () => import("./calculadoras/seguro-de-cesantia.cliente") },
+    { definicion: reformaDePensiones, contenido: contenidoReformaDePensiones, cliente: () => import("./calculadoras/reforma-de-pensiones.cliente") },
+    { definicion: impuestoGlobalComplementario, contenido: contenidoImpuestoGlobalComplementario, cliente: () => import("./calculadoras/impuesto-global-complementario.cliente") },
+    { definicion: depositoAPlazo, contenido: contenidoDepositoAPlazo, cliente: () => import("./calculadoras/deposito-a-plazo.cliente") },
+    { definicion: creditoHipotecario, contenido: contenidoCreditoHipotecario, cliente: () => import("./calculadoras/credito-hipotecario.cliente") },
+    { definicion: reajusteDeArriendo, contenido: contenidoReajusteDeArriendo, cliente: () => import("./calculadoras/reajuste-de-arriendo.cliente") },
+    { definicion: licenciaMedica, contenido: contenidoLicenciaMedica, cliente: () => import("./calculadoras/licencia-medica.cliente") },
+    { definicion: planIsapre, contenido: contenidoPlanIsapre, cliente: () => import("./calculadoras/plan-isapre.cliente") },
+    { definicion: diasDeVacaciones, contenido: contenidoDiasDeVacaciones, cliente: () => import("./calculadoras/dias-de-vacaciones.cliente") },
   ],
   novedades,
   detectores,

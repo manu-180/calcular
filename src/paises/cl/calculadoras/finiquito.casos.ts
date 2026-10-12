@@ -19,9 +19,9 @@ export default definirCasos(finiquito, [
     origen: {
       tipo: "recalculado",
       detalle:
-        "UF 9/10/2026 41.130,94 (último valor al 15/10) × 90 = 3.701.785. 16 años y 9 meses → 17 años, tope 330 días = 11 × 3.701.785 = 40.719.635. Con aviso dado no hay sustitutiva. Feriado 1,25 × 9 + 1,25 / 30 × 5 = 11,4583 hábiles + 6 inhábiles = 17,4583 × 5.000.000 / 30 = 2.909.722.",
+        "El caso se evalúa al 9/10/2026 (fecha con UF ya publicada, así no cambia cuando el cron agrega días): UF 41.130,94 × 90 = 3.701.785. 16 años y 9 meses → 17 años, tope 330 días = 11 × 3.701.785 = 40.719.635. Con aviso dado no hay sustitutiva. Feriado 1,25 × 9 + 1,25 / 30 × 5 = 11,4583 hábiles + 6 inhábiles = 17,4583 × 5.000.000 / 30 = 2.909.722.",
     },
-    fecha: "2026-10-15",
+    fecha: "2026-10-09",
     entrada: { inicio: "2010-01-10", termino: "2026-10-15", remuneracion: 5000000, causal: "necesidades-empresa", avisoPrevio: true, diasPendientes: 0, zonaAustral: false },
     esperado: { base: 3701785, indemnizacionAnios: 40719635, indemnizacionAviso: 0, feriado: 2909722, total: 43629357 },
   },

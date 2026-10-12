@@ -4,13 +4,73 @@ const DIARIO_OFICIAL = "Diario Oficial de la República de Chile";
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "cl.pgu-75-septiembre-2026",
+    fecha: "2026-09-01",
+    titulo: "PGU de $250.275 desde los 75 años",
+    texto: "Desde septiembre de 2026, las personas de 75 años o más reciben la PGU mayor, de $250.275 al mes. De 65 a 74 años el monto es $231.732. Ya lo usa la calculadora de PGU.",
+    vigenteDesde: "2026-09-01",
+    calculadoras: ["cl.pgu"],
+    fuente: {
+      organismo: "ChileAtiende",
+      titulo: "PGU: cuándo te corresponde el aumento",
+      url: "https://www.chileatiende.gob.cl/fichas/130457",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
+    id: "cl.asignacion-familiar-mayo-2026",
+    fecha: "2026-06-22",
+    titulo: "Suben la asignación familiar y sus tramos",
+    texto: "La Ley 21.830 sube la asignación familiar desde el 1 de mayo de 2026: $22.601 por carga en el primer tramo (ingresos de hasta $649.039), $13.870 en el segundo y $4.382 en el tercero. El subsidio familiar queda en $22.601.",
+    vigenteDesde: "2026-05-01",
+    calculadoras: ["cl.asignacion-familiar"],
+    fuente: {
+      organismo: DIARIO_OFICIAL,
+      titulo: "Ley 21.830, publicada el 22/06/2026, artículos 4 y 5",
+      url: "https://www.diariooficial.interior.gob.cl/publicaciones/2026/06/22/44481-B/01/2829298.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
+    id: "cl.fcs-marzo-2026",
+    fecha: "2026-03-17",
+    titulo: "Nuevos montos del seguro de cesantía",
+    texto: "Desde marzo de 2026 el primer pago del Fondo de Cesantía Solidario con contrato indefinido va de $301.201 a $1.004.003. Los montos rigen hasta el 28 de febrero de 2027.",
+    vigenteDesde: "2026-03-06",
+    calculadoras: ["cl.seguro-de-cesantia"],
+    fuente: {
+      organismo: DIARIO_OFICIAL,
+      titulo: "Superintendencia de Pensiones, Resolución exenta 383 de 2026",
+      url: "https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/17/44402/01/2781409.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
+    id: "cl.aguinaldos-pensionados-2026",
+    fecha: "2026-02-05",
+    titulo: "Aguinaldos 2026 para pensionados",
+    texto: "La Ley 21.806 fija los aguinaldos de 2026 para pensionados: $25.280 en Fiestas Patrias y $29.055 en Navidad, más un monto por cada carga familiar.",
+    vigenteDesde: "2026-02-05",
+    calculadoras: ["cl.aguinaldo-pensionados"],
+    fuente: {
+      organismo: DIARIO_OFICIAL,
+      titulo: "Ley 21.806, publicada el 5/2/2026, artículo 5",
+      url: "https://www.diariooficial.interior.gob.cl/publicaciones/2026/02/05/44368-B/01/2766382.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
     id: "cl.cotizacion-empleador-agosto-2026",
     fecha: "2026-08-01",
     titulo: "La cotización del empleador sube a 3,5 %",
     texto:
       "Desde las remuneraciones de agosto de 2026 el empleador paga 3,5 % del sueldo imponible por la reforma de pensiones (Ley 21.735). Ese 3,5 % ya incluye el seguro de invalidez y sobrevivencia. Rige también para quien contrata a una trabajadora de casa particular.",
     vigenteDesde: "2026-08-01",
-    calculadoras: ["cl.costo-empresa", "cl.trabajadora-de-casa-particular"],
+    calculadoras: ["cl.costo-empresa", "cl.trabajadora-de-casa-particular", "cl.reforma-de-pensiones", "cl.cotizaciones-previsionales"],
     fuente: {
       organismo: "Superintendencia de Pensiones",
       titulo: "Cotización de cargo del empleador: gradualidad y distribución del 3,5 %",
@@ -40,7 +100,7 @@ export const novedades: readonly Novedad[] = [
     titulo: "La jornada máxima baja a 42 horas",
     texto: "Desde el 26 de abril de 2026 la jornada ordinaria máxima es de 42 horas semanales. Con eso sube el valor de cada hora, y también el de la hora extra.",
     vigenteDesde: "2026-04-26",
-    calculadoras: ["cl.horas-extra", "cl.sueldo-minimo"],
+    calculadoras: ["cl.horas-extra", "cl.sueldo-minimo", "cl.ley-40-horas"],
     fuente: {
       organismo: "Biblioteca del Congreso Nacional (BCN)",
       titulo: "Ley 21.561, artículo primero transitorio",
@@ -55,7 +115,7 @@ export const novedades: readonly Novedad[] = [
     titulo: "Nuevo tope imponible: 90 UF",
     texto: "Desde las remuneraciones de febrero de 2026 el tope imponible para AFP y salud es de 90 UF (antes 87,8 UF). Para el seguro de cesantía es de 135,2 UF.",
     vigenteDesde: "2026-02-01",
-    calculadoras: ["cl.sueldo-liquido"],
+    calculadoras: ["cl.sueldo-liquido", "cl.tope-imponible", "cl.cotizaciones-previsionales", "cl.sueldo-bruto"],
     fuente: {
       organismo: "Superintendencia de Pensiones",
       titulo: "Topes imponibles definitivos para 2026",
