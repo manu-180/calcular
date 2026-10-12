@@ -10,6 +10,84 @@
       "tramos": [
         {
           "estado": "verificado",
+          "desde": "2020-01-01",
+          "hasta": "2020-12-31",
+          "valor": 877803,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 2360 de 2019, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_2360_2019.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "hasta": "2021-12-31",
+          "valor": 908526,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 1785 de 2020, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1785_2020.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "hasta": "2022-12-31",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 1724 de 2021, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1724_2021.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2023-12-31",
+          "valor": 1160000,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 2613 de 2022, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_2613_2022.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2024-12-31",
+          "valor": 1300000,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 2292 de 2023, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_2292_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 1423500,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 1572 de 2024, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1572_2024.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
           "desde": "2026-01-01",
           "hasta": "2026-12-31",
           "valor": 1750905,
@@ -31,6 +109,84 @@
       "unidad": "COP",
       "proximaRevision": "2027-01-01",
       "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "hasta": "2020-12-31",
+          "valor": 102854,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 2361 de 2019, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_2361_2019.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "hasta": "2021-12-31",
+          "valor": 106454,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 1786 de 2020, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1786_2020.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "hasta": "2022-12-31",
+          "valor": 117172,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 1725 de 2021, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1725_2021.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2023-12-31",
+          "valor": 140606,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 2614 de 2022, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_2614_2022.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2024-12-31",
+          "valor": 162000,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 2293 de 2023, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_2293_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 200000,
+          "fuente": {
+            "organismo": "Presidencia de la República y Ministerio del Trabajo",
+            "titulo": "Decreto 1573 de 2024, artículo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_1573_2024.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
         {
           "estado": "verificado",
           "desde": "2026-01-01",
@@ -75,6 +231,19 @@
       "unidad": "COP",
       "proximaRevision": "2027-01-01",
       "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 49799,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Resolución 000193 de 2024, artículo 1",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/resolucion_dian_0193_2024.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
         {
           "estado": "verificado",
           "desde": "2026-01-01",
@@ -646,13 +815,7 @@
         {
           "estado": "verificado",
           "desde": "2015-05-26",
-          "valor": {
-            "i": 0.522,
-            "ii": 1.044,
-            "iii": 2.436,
-            "iv": 4.35,
-            "v": 6.96
-          },
+          "valor": { "i": 0.522, "ii": 1.044, "iii": 2.436, "iv": 4.35, "v": 6.96 },
           "fuente": {
             "organismo": "Colpensiones (compilación normativa)",
             "titulo": "Decreto 1072 de 2015, artículo 2.2.4.3.5 (Decreto 1772 de 1994, art. 13)",
@@ -678,11 +841,7 @@
         {
           "estado": "verificado",
           "desde": "1989-01-01",
-          "valor": {
-            "caja": 4,
-            "sena": 2,
-            "icbf": 3
-          },
+          "valor": { "caja": 4, "sena": 2, "icbf": 3 },
           "fuente": {
             "organismo": "Colpensiones (compilación normativa)",
             "titulo": "Ley 21 de 1982, artículo 12 (caja 4 % y SENA 2 %)",
@@ -895,6 +1054,789 @@
             "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
             "tipo": "primaria",
             "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.salud-cotizacion",
+      "nombre": "Cotización total a salud",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": 12.5,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 100 de 1993, artículo 204 (modificado por la Ley 1122 de 2007)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0100_1993.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.ibc-independientes",
+      "nombre": "Base mínima de cotización de independientes (parte del ingreso)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-13",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 2277 de 2022, artículo 89",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_2277_2022.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.salario-integral-minimo",
+      "nombre": "Salario integral: mínimo en salarios mínimos",
+      "tipo": "numero",
+      "unidad": "SMMLV",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 132 (modificado por la Ley 50 de 1990)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.salario-integral-factor",
+      "nombre": "Salario integral: factor prestacional mínimo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 132 (modificado por la Ley 50 de 1990)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.salario-integral-base",
+      "nombre": "Salario integral: parte sobre la que se cotiza",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-01-29",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 100 de 1993, artículo 18 (modificado por la Ley 797 de 2003)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0100_1993.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.licencia-maternidad-semanas",
+      "nombre": "Licencia de maternidad (semanas)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-29",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 236 (modificado por la Ley 2114 de 2021)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.licencia-paternidad-semanas",
+      "nombre": "Licencia de paternidad (semanas)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-29",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 236, parágrafo 2 (modificado por la Ley 2114 de 2021)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.incapacidad-porcentaje",
+      "nombre": "Pago de la incapacidad por enfermedad general",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "hasta-90": "Días 1 a 90",
+        "desde-91": "Días 91 a 180"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1951-01-01",
+          "valor": { "hasta-90": 66.67, "desde-91": 50 },
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 227",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La norma dice dos terceras partes; se usa 66,67 %, como liquidan las EPS. Las notas del artículo citan la Sentencia C-543 de 2007: el auxilio no puede ser menor al salario mínimo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.incapacidad-dias-empleador",
+      "nombre": "Días de incapacidad que paga el empleador",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-05-06",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministerio de Salud y Protección Social",
+            "titulo": "Decreto 780 de 2016, artículo 3.2.1.10, parágrafo 1",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/decreto_0780_2016.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.periodo-prueba-maximo",
+      "nombre": "Duración máxima del periodo de prueba",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 78 (modificado por la Ley 50 de 1990)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.periodo-prueba-fraccion",
+      "nombre": "Periodo de prueba en contratos fijos de menos de un año (parte del término)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 78 (modificado por la Ley 50 de 1990)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La norma dice la quinta parte del término pactado."
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.preaviso-termino-fijo",
+      "nombre": "Preaviso para no renovar un contrato a término fijo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-25",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 46 (modificado por la Ley 2466 de 2025)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.aprendiz-sostenimiento",
+      "nombre": "Apoyo de sostenimiento del aprendiz",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "lectiva": "Etapa lectiva o primer año de formación dual",
+        "practica": "Etapa práctica o segundo año de formación dual",
+        "universitario": "Estudiante universitario"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-25",
+          "valor": { "lectiva": 75, "practica": 100, "universitario": 100 },
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 2466 de 2025, artículo que sustituye el artículo 81 del CST",
+            "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=260676",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.moratoria-meses",
+      "nombre": "Meses de indemnización moratoria (un día de salario por día de retraso)",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-12-27",
+          "valor": 24,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 65 (modificado por la Ley 789 de 2002)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.moratoria-umbral",
+      "nombre": "Salario desde el que aplica el tope de 24 meses",
+      "tipo": "numero",
+      "unidad": "SMMLV",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-12-27",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículo 65, parágrafo 2 (modificado por la Ley 789 de 2002)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.embargo",
+      "nombre": "Partes embargables del salario",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "excedente": "Deudas comunes",
+        "alimentos-cooperativas": "Cuota de alimentos o cooperativa"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1984-01-01",
+          "valor": { "excedente": 20, "alimentos-cooperativas": 50 },
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Código Sustantivo del Trabajo, artículos 154, 155 y 156",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/codigo_sustantivo_trabajo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El artículo 155 dice una quinta parte del excedente del salario mínimo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.gmf-tarifa",
+      "nombre": "Gravamen a los movimientos financieros (4 por mil)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 0.4,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 872 (modificado por la Ley 1819 de 2016)",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.gmf-exencion",
+      "nombre": "Retiros exentos del 4 por mil al mes en la cuenta marcada",
+      "tipo": "numero",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 350,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 879, numeral 1 (modificado por la Ley 1739 de 2014)",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.renta-tabla",
+      "nombre": "Tabla del impuesto de renta de personas naturales",
+      "tipo": "escala",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 1090, "tasa": 0, "cuotaFija": 0 },
+            { "desde": 1090, "hasta": 1700, "tasa": 19, "cuotaFija": 0 },
+            { "desde": 1700, "hasta": 4100, "tasa": 28, "cuotaFija": 116 },
+            { "desde": 4100, "hasta": 8670, "tasa": 33, "cuotaFija": 788 },
+            { "desde": 8670, "hasta": 18970, "tasa": 35, "cuotaFija": 2296 },
+            { "desde": 18970, "hasta": 31000, "tasa": 37, "cuotaFija": 5901 },
+            { "desde": 31000, "hasta": null, "tasa": 39, "cuotaFija": 10352 }
+          ],
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 241 (modificado por la Ley 2010 de 2019)",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La tabla está como imagen en la página: graficas/estatuto_tributario_obj_20.gif."
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.declarar-topes",
+      "nombre": "Topes para estar obligado a declarar renta",
+      "tipo": "mapa",
+      "unidad": "UVT",
+      "etiquetas": {
+        "ingresos": "Ingresos brutos",
+        "patrimonio": "Patrimonio bruto al 31 de diciembre",
+        "tarjeta": "Consumos con tarjeta de crédito",
+        "compras": "Compras y consumos",
+        "consignaciones": "Consignaciones, depósitos e inversiones"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": { "ingresos": 1400, "patrimonio": 4500, "tarjeta": 1400, "compras": 1400, "consignaciones": 1400 },
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículos 592, 593 y 594-3",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.cdt-retencion",
+      "nombre": "Retención en la fuente sobre rendimientos de CDT",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-11-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Decreto 1625 de 2016, artículo 1.2.4.2.83",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/decreto_1625_2016.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.retencion-honorarios",
+      "nombre": "Retención en la fuente por honorarios (tarifa fija)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "natural": "Persona natural",
+        "natural-mayor": "Persona natural con contratos de más de 3.300 UVT al año",
+        "juridica": "Empresa o persona jurídica"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-10-11",
+          "valor": { "natural": 10, "natural-mayor": 11, "juridica": 11 },
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Decreto 1625 de 2016, artículo 1.2.4.3.1",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/decreto_1625_2016.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.honorarios-umbral",
+      "nombre": "Ingresos anuales desde los que la retención por honorarios es del 11 %",
+      "tipo": "numero",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-10-11",
+          "valor": 3300,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Decreto 1625 de 2016, artículo 1.2.4.3.1",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/decreto_1625_2016.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.sancion-extemporaneidad",
+      "nombre": "Sanción por declarar tarde",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "impuesto-mes": "Por mes, sobre el impuesto",
+        "tope-impuesto": "Tope sobre el impuesto",
+        "ingresos-mes": "Por mes, sobre los ingresos (sin impuesto a cargo)",
+        "tope-ingresos": "Tope sobre los ingresos"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": { "impuesto-mes": 5, "tope-impuesto": 100, "ingresos-mes": 0.5, "tope-ingresos": 5 },
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 641",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.sancion-tope-uvt",
+      "nombre": "Tope de la sanción sin impuesto a cargo ni saldo a favor",
+      "tipo": "numero",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": 2500,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 641",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.sancion-minima",
+      "nombre": "Sanción mínima",
+      "tipo": "numero",
+      "unidad": "UVT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 639",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.ganancia-ocasional",
+      "nombre": "Tarifa del impuesto de ganancias ocasionales",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Herencias, donaciones y venta de activos",
+        "loterias": "Loterías, rifas, apuestas y premios"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": { "general": 15, "loterias": 20 },
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículos 314 (modificado por la Ley 2277 de 2022) y 317",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.ganancia-ocasional-exenciones",
+      "nombre": "Exenciones de ganancias ocasionales",
+      "tipo": "mapa",
+      "unidad": "UVT",
+      "etiquetas": {
+        "heredero": "Por cada heredero o cónyuge",
+        "donacion-tope": "Tope de la exención de donaciones",
+        "vivienda": "Vivienda del causante"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": { "heredero": 3250, "donacion-tope": 1625, "vivienda": 13000 },
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 307 (modificado por la Ley 2277 de 2022)",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.ganancia-ocasional-donacion",
+      "nombre": "Parte exenta de donaciones y herencias a quien no es heredero",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 307, numeral 4 (modificado por la Ley 2277 de 2022)",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.impoconsumo-restaurantes",
+      "nombre": "Impuesto al consumo en restaurantes y bares",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 512-9",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.arriendo-reajuste",
+      "nombre": "Reajuste máximo del arriendo de vivienda (parte del IPC del año anterior)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-07-10",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 820 de 2003, artículo 20",
+            "url": "https://www.minvivienda.gov.co/sites/default/files/normativa/0820%20-%202003.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.arriendo-tope-canon",
+      "nombre": "Canon máximo de arriendo de vivienda (parte del valor comercial)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-07-10",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 820 de 2003, artículo 18",
+            "url": "https://www.minvivienda.gov.co/sites/default/files/normativa/0820%20-%202003.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.pension-edad",
+      "nombre": "Edad para la pensión de vejez",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "mujeres": "Mujeres",
+        "hombres": "Hombres"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": { "mujeres": 57, "hombres": 62 },
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 100 de 1993, artículo 33 (modificado por la Ley 797 de 2003)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0100_1993.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "co.pension-semanas",
+      "nombre": "Semanas mínimas para la pensión de vejez en Colpensiones",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "mujeres": "Mujeres",
+        "hombres": "Hombres"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "hasta": "2025-12-31",
+          "valor": { "mujeres": 1300, "hombres": 1300 },
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 100 de 1993, artículo 33 (modificado por la Ley 797 de 2003)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0100_1993.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": { "mujeres": 1250, "hombres": 1300 },
+          "fuente": {
+            "organismo": "Corte Constitucional",
+            "titulo": "Sentencia C-197 de 2023, resolutivo primero",
+            "url": "https://www.corteconstitucional.gov.co/relatoria/2023/C-197-23.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Las 1.300 semanas de los hombres salen de la Ley 100 de 1993, artículo 33."
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": { "mujeres": 1225, "hombres": 1300 },
+          "motivo": "La sentencia baja 25 semanas por año desde 2027, pero la reforma pensional (Ley 2381 de 2024) entra en vigor el 1 de abril de 2027 con su propia regla. Falta leer la norma que rija en 2027."
+        }
+      ]
+    },
+    {
+      "id": "co.pension-monto",
+      "nombre": "Reglas del monto de la pensión de vejez",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "r = 65,50 menos 0,50 por cada salario mínimo del ingreso base, entre 65 % y 55 %; 1,5 % más por cada 50 semanas sobre el mínimo; tope 80 %.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-01",
+          "valor": { "r-base": 65.5, "r-por-smmlv": 0.5, "r-minimo": 55, "r-maximo": 65, "por-50-semanas": 1.5, "maximo": 80 },
+          "fuente": {
+            "organismo": "Congreso de la República",
+            "titulo": "Ley 100 de 1993, artículo 34 (modificado por la Ley 797 de 2003)",
+            "url": "https://normativa.colpensiones.gov.co/compilacion/docs/ley_0100_1993.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
           }
         }
       ]
