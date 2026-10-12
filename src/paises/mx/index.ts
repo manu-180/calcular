@@ -74,6 +74,8 @@ import salarioPorHora from "./calculadoras/salario-por-hora";
 import contenidoSalarioPorHora from "./contenido/salario-por-hora";
 import jornadaLaboral from "./calculadoras/jornada-laboral";
 import contenidoJornadaLaboral from "./contenido/jornada-laboral";
+import fondoDeAhorro from "./calculadoras/fondo-de-ahorro";
+import contenidoFondoDeAhorro from "./contenido/fondo-de-ahorro";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -123,6 +125,7 @@ export default definirPais({
     { definicion: aportacionInfonavit, contenido: contenidoAportacionInfonavit, cliente: () => import("./calculadoras/aportacion-infonavit.cliente") },
     { definicion: salarioPorHora, contenido: contenidoSalarioPorHora, cliente: () => import("./calculadoras/salario-por-hora.cliente") },
     { definicion: jornadaLaboral, contenido: contenidoJornadaLaboral, cliente: () => import("./calculadoras/jornada-laboral.cliente") },
+    { definicion: fondoDeAhorro, contenido: contenidoFondoDeAhorro, cliente: () => import("./calculadoras/fondo-de-ahorro.cliente") },
   ],
   novedades,
   detectores,
