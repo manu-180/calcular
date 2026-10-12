@@ -9,10 +9,13 @@ import feriados from "./calculadoras/feriados";
 import horasExtras from "./calculadoras/horas-extras";
 import indemnizacionPorAntiguedad from "./calculadoras/indemnizacion-por-antiguedad";
 import inflacion from "./calculadoras/inflacion";
+import inss from "./calculadoras/inss";
 import irSalarial from "./calculadoras/ir-salarial";
 import iva from "./calculadoras/iva";
+import jubilacion from "./calculadoras/jubilacion";
 import licenciaPorMaternidad from "./calculadoras/licencia-por-maternidad";
 import liquidacion from "./calculadoras/liquidacion";
+import pensionAlimenticia from "./calculadoras/pension-alimenticia";
 import periodoDePrueba from "./calculadoras/periodo-de-prueba";
 import permisosLaborales from "./calculadoras/permisos-laborales";
 import prescripcionLaboral from "./calculadoras/prescripcion-laboral";
@@ -20,6 +23,7 @@ import renuncia from "./calculadoras/renuncia";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioNeto from "./calculadoras/salario-neto";
 import salarioPorHora from "./calculadoras/salario-por-hora";
+import seguroFacultativo from "./calculadoras/seguro-facultativo";
 import septimoDia from "./calculadoras/septimo-dia";
 import subsidioPorEnfermedad from "./calculadoras/subsidio-por-enfermedad";
 import tipoDeCambio from "./calculadoras/tipo-de-cambio";
@@ -34,10 +38,13 @@ import contenidoFeriados from "./contenido/feriados";
 import contenidoHorasExtras from "./contenido/horas-extras";
 import contenidoIndemnizacionPorAntiguedad from "./contenido/indemnizacion-por-antiguedad";
 import contenidoInflacion from "./contenido/inflacion";
+import contenidoInss from "./contenido/inss";
 import contenidoIrSalarial from "./contenido/ir-salarial";
 import contenidoIva from "./contenido/iva";
+import contenidoJubilacion from "./contenido/jubilacion";
 import contenidoLicenciaPorMaternidad from "./contenido/licencia-por-maternidad";
 import contenidoLiquidacion from "./contenido/liquidacion";
+import contenidoPensionAlimenticia from "./contenido/pension-alimenticia";
 import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
 import contenidoPermisosLaborales from "./contenido/permisos-laborales";
 import contenidoPrescripcionLaboral from "./contenido/prescripcion-laboral";
@@ -45,6 +52,7 @@ import contenidoRenuncia from "./contenido/renuncia";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioNeto from "./contenido/salario-neto";
 import contenidoSalarioPorHora from "./contenido/salario-por-hora";
+import contenidoSeguroFacultativo from "./contenido/seguro-facultativo";
 import contenidoSeptimoDia from "./contenido/septimo-dia";
 import contenidoSubsidioPorEnfermedad from "./contenido/subsidio-por-enfermedad";
 import contenidoTipoDeCambio from "./contenido/tipo-de-cambio";
@@ -87,6 +95,10 @@ export default definirPais({
     { definicion: despidoTrabajadorDeConfianza, contenido: contenidoDespidoTrabajadorDeConfianza, cliente: () => import("./calculadoras/despido-trabajador-de-confianza.cliente") },
     { definicion: prescripcionLaboral, contenido: contenidoPrescripcionLaboral, cliente: () => import("./calculadoras/prescripcion-laboral.cliente") },
     { definicion: permisosLaborales, contenido: contenidoPermisosLaborales, cliente: () => import("./calculadoras/permisos-laborales.cliente") },
+    { definicion: inss, contenido: contenidoInss, cliente: () => import("./calculadoras/inss.cliente") },
+    { definicion: seguroFacultativo, contenido: contenidoSeguroFacultativo, cliente: () => import("./calculadoras/seguro-facultativo.cliente") },
+    { definicion: jubilacion, contenido: contenidoJubilacion, cliente: () => import("./calculadoras/jubilacion.cliente") },
+    { definicion: pensionAlimenticia, contenido: contenidoPensionAlimenticia, cliente: () => import("./calculadoras/pension-alimenticia.cliente") },
   ],
   novedades,
   detectores,
