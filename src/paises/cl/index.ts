@@ -50,6 +50,16 @@ import pgu from "./calculadoras/pgu";
 import contenidoPgu from "./contenido/pgu";
 import aguinaldoPensionados from "./calculadoras/aguinaldo-pensionados";
 import contenidoAguinaldoPensionados from "./contenido/aguinaldo-pensionados";
+import semanaCorrida from "./calculadoras/semana-corrida";
+import contenidoSemanaCorrida from "./contenido/semana-corrida";
+import prenatalYPostnatal from "./calculadoras/prenatal-y-postnatal";
+import contenidoPrenatalYPostnatal from "./contenido/prenatal-y-postnatal";
+import ley40Horas from "./calculadoras/ley-40-horas";
+import contenidoLey40Horas from "./contenido/ley-40-horas";
+import sueldoProporcional from "./calculadoras/sueldo-proporcional";
+import contenidoSueldoProporcional from "./contenido/sueldo-proporcional";
+import seguroDeCesantia from "./calculadoras/seguro-de-cesantia";
+import contenidoSeguroDeCesantia from "./contenido/seguro-de-cesantia";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -87,6 +97,11 @@ export default definirPais({
     { definicion: pensionDeAlimentos, contenido: contenidoPensionDeAlimentos, cliente: () => import("./calculadoras/pension-de-alimentos.cliente") },
     { definicion: pgu, contenido: contenidoPgu, cliente: () => import("./calculadoras/pgu.cliente") },
     { definicion: aguinaldoPensionados, contenido: contenidoAguinaldoPensionados, cliente: () => import("./calculadoras/aguinaldo-pensionados.cliente") },
+    { definicion: semanaCorrida, contenido: contenidoSemanaCorrida, cliente: () => import("./calculadoras/semana-corrida.cliente") },
+    { definicion: prenatalYPostnatal, contenido: contenidoPrenatalYPostnatal, cliente: () => import("./calculadoras/prenatal-y-postnatal.cliente") },
+    { definicion: ley40Horas, contenido: contenidoLey40Horas, cliente: () => import("./calculadoras/ley-40-horas.cliente") },
+    { definicion: sueldoProporcional, contenido: contenidoSueldoProporcional, cliente: () => import("./calculadoras/sueldo-proporcional.cliente") },
+    { definicion: seguroDeCesantia, contenido: contenidoSeguroDeCesantia, cliente: () => import("./calculadoras/seguro-de-cesantia.cliente") },
   ],
   novedades,
   detectores,
