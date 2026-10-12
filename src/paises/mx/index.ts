@@ -50,6 +50,22 @@ import diaFestivoTrabajado from "./calculadoras/dia-festivo-trabajado";
 import contenidoDiaFestivoTrabajado from "./contenido/dia-festivo-trabajado";
 import subsidioAlEmpleo from "./calculadoras/subsidio-al-empleo";
 import contenidoSubsidioAlEmpleo from "./contenido/subsidio-al-empleo";
+import incapacidadImss from "./calculadoras/incapacidad-imss";
+import contenidoIncapacidadImss from "./contenido/incapacidad-imss";
+import cetes from "./calculadoras/cetes";
+import contenidoCetes from "./contenido/cetes";
+import declaracionAnual from "./calculadoras/declaracion-anual";
+import contenidoDeclaracionAnual from "./contenido/declaracion-anual";
+import deduccionesPersonales from "./calculadoras/deducciones-personales";
+import contenidoDeduccionesPersonales from "./contenido/deducciones-personales";
+import reciboDeHonorarios from "./calculadoras/recibo-de-honorarios";
+import contenidoReciboDeHonorarios from "./contenido/recibo-de-honorarios";
+import isrArrendamiento from "./calculadoras/isr-arrendamiento";
+import contenidoIsrArrendamiento from "./contenido/isr-arrendamiento";
+import salarioMinimoProfesional from "./calculadoras/salario-minimo-profesional";
+import contenidoSalarioMinimoProfesional from "./contenido/salario-minimo-profesional";
+import retiroPorDesempleo from "./calculadoras/retiro-por-desempleo";
+import contenidoRetiroPorDesempleo from "./contenido/retiro-por-desempleo";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -87,6 +103,14 @@ export default definirPais({
     { definicion: primaDominical, contenido: contenidoPrimaDominical, cliente: () => import("./calculadoras/prima-dominical.cliente") },
     { definicion: diaFestivoTrabajado, contenido: contenidoDiaFestivoTrabajado, cliente: () => import("./calculadoras/dia-festivo-trabajado.cliente") },
     { definicion: subsidioAlEmpleo, contenido: contenidoSubsidioAlEmpleo, cliente: () => import("./calculadoras/subsidio-al-empleo.cliente") },
+    { definicion: incapacidadImss, contenido: contenidoIncapacidadImss, cliente: () => import("./calculadoras/incapacidad-imss.cliente") },
+    { definicion: cetes, contenido: contenidoCetes, cliente: () => import("./calculadoras/cetes.cliente") },
+    { definicion: declaracionAnual, contenido: contenidoDeclaracionAnual, cliente: () => import("./calculadoras/declaracion-anual.cliente") },
+    { definicion: deduccionesPersonales, contenido: contenidoDeduccionesPersonales, cliente: () => import("./calculadoras/deducciones-personales.cliente") },
+    { definicion: reciboDeHonorarios, contenido: contenidoReciboDeHonorarios, cliente: () => import("./calculadoras/recibo-de-honorarios.cliente") },
+    { definicion: isrArrendamiento, contenido: contenidoIsrArrendamiento, cliente: () => import("./calculadoras/isr-arrendamiento.cliente") },
+    { definicion: salarioMinimoProfesional, contenido: contenidoSalarioMinimoProfesional, cliente: () => import("./calculadoras/salario-minimo-profesional.cliente") },
+    { definicion: retiroPorDesempleo, contenido: contenidoRetiroPorDesempleo, cliente: () => import("./calculadoras/retiro-por-desempleo.cliente") },
   ],
   novedades,
   detectores,
