@@ -34,6 +34,12 @@ import trabajadoraDelHogar from "./calculadoras/trabajadora-del-hogar";
 import contenidoTrabajadoraDelHogar from "./contenido/trabajadora-del-hogar";
 import cuotasImss from "./calculadoras/cuotas-imss";
 import contenidoCuotasImss from "./contenido/cuotas-imss";
+import costoDeUnTrabajador from "./calculadoras/costo-de-un-trabajador";
+import contenidoCostoDeUnTrabajador from "./contenido/costo-de-un-trabajador";
+import salarioDiarioIntegrado from "./calculadoras/salario-diario-integrado";
+import contenidoSalarioDiarioIntegrado from "./contenido/salario-diario-integrado";
+import primaDeAntiguedad from "./calculadoras/prima-de-antiguedad";
+import contenidoPrimaDeAntiguedad from "./contenido/prima-de-antiguedad";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -63,6 +69,9 @@ export default definirPais({
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: trabajadoraDelHogar, contenido: contenidoTrabajadoraDelHogar, cliente: () => import("./calculadoras/trabajadora-del-hogar.cliente") },
     { definicion: cuotasImss, contenido: contenidoCuotasImss, cliente: () => import("./calculadoras/cuotas-imss.cliente") },
+    { definicion: costoDeUnTrabajador, contenido: contenidoCostoDeUnTrabajador, cliente: () => import("./calculadoras/costo-de-un-trabajador.cliente") },
+    { definicion: salarioDiarioIntegrado, contenido: contenidoSalarioDiarioIntegrado, cliente: () => import("./calculadoras/salario-diario-integrado.cliente") },
+    { definicion: primaDeAntiguedad, contenido: contenidoPrimaDeAntiguedad, cliente: () => import("./calculadoras/prima-de-antiguedad.cliente") },
   ],
   novedades,
   detectores,
