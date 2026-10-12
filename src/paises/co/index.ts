@@ -56,6 +56,16 @@ import calc4x1000 from "./calculadoras/4x1000";
 import contenidoCalc4x1000 from "./contenido/4x1000";
 import cdt from "./calculadoras/cdt";
 import contenidoCdt from "./contenido/cdt";
+import impuestoDeRenta from "./calculadoras/impuesto-de-renta";
+import contenidoImpuestoDeRenta from "./contenido/impuesto-de-renta";
+import deboDeclararRenta from "./calculadoras/debo-declarar-renta";
+import contenidoDeboDeclararRenta from "./contenido/debo-declarar-renta";
+import sancionExtemporaneidad from "./calculadoras/sancion-extemporaneidad";
+import contenidoSancionExtemporaneidad from "./contenido/sancion-extemporaneidad";
+import gananciaOcasional from "./calculadoras/ganancia-ocasional";
+import contenidoGananciaOcasional from "./contenido/ganancia-ocasional";
+import impuestoAlConsumo from "./calculadoras/impuesto-al-consumo";
+import contenidoImpuestoAlConsumo from "./contenido/impuesto-al-consumo";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -96,6 +106,11 @@ export default definirPais({
     { definicion: retencionHonorarios, contenido: contenidoRetencionHonorarios, cliente: () => import("./calculadoras/retencion-honorarios.cliente") },
     { definicion: calc4x1000, contenido: contenidoCalc4x1000, cliente: () => import("./calculadoras/4x1000.cliente") },
     { definicion: cdt, contenido: contenidoCdt, cliente: () => import("./calculadoras/cdt.cliente") },
+    { definicion: impuestoDeRenta, contenido: contenidoImpuestoDeRenta, cliente: () => import("./calculadoras/impuesto-de-renta.cliente") },
+    { definicion: deboDeclararRenta, contenido: contenidoDeboDeclararRenta, cliente: () => import("./calculadoras/debo-declarar-renta.cliente") },
+    { definicion: sancionExtemporaneidad, contenido: contenidoSancionExtemporaneidad, cliente: () => import("./calculadoras/sancion-extemporaneidad.cliente") },
+    { definicion: gananciaOcasional, contenido: contenidoGananciaOcasional, cliente: () => import("./calculadoras/ganancia-ocasional.cliente") },
+    { definicion: impuestoAlConsumo, contenido: contenidoImpuestoAlConsumo, cliente: () => import("./calculadoras/impuesto-al-consumo.cliente") },
   ],
   novedades,
   detectores,

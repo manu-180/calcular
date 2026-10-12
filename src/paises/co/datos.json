@@ -1840,6 +1840,31 @@
           }
         }
       ]
+    },
+    {
+      "id": "co.sancion-reduccion",
+      "nombre": "Sanción reducida por no haber incumplido antes",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "dos-anios": "Sin la misma falta en los dos años anteriores",
+        "un-anio": "Sin la misma falta en el año anterior"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": { "dos-anios": 50, "un-anio": 75 },
+          "fuente": {
+            "organismo": "DIAN",
+            "titulo": "Estatuto Tributario, artículo 640 (modificado por la Ley 1819 de 2016)",
+            "url": "https://normograma.dian.gov.co/dian/compilacion/docs/estatuto_tributario.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La sanción se reduce al 50 % o al 75 % del monto de la ley, si la DIAN no ha proferido pliego de cargos, requerimiento o emplazamiento."
+          }
+        }
+      ]
     }
   ]
 }
