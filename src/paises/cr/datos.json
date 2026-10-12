@@ -1227,6 +1227,28 @@
           }
         }
       ]
+    },
+    {
+      "id": "cr.ganancia-capital",
+      "nombre": "Impuesto sobre las ganancias de capital",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "general": "Tarifa sobre la ganancia", "primera-venta": "Opción sobre el precio de venta (bienes comprados antes del 1/7/2019, primera venta)" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "general": 15, "primera-venta": 2.25 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 7092, Ley del Impuesto sobre la Renta, artículo 31 ter (y artículo 28 bis, inciso 7, vivienda habitual exenta)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=10969&param2=148972&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El capítulo de rentas de capital rige desde el 1/7/2019 (Ley 9635, «Rige», título II: seis meses contados desde el primer día del mes siguiente a la publicación de diciembre de 2018)."
+          }
+        }
+      ]
     }
   ]
 }

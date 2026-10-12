@@ -68,6 +68,12 @@ import contratoAPlazoFijo from "./calculadoras/contrato-a-plazo-fijo";
 import contenidoContratoAPlazoFijo from "./contenido/contrato-a-plazo-fijo";
 import impuestoBienesInmuebles from "./calculadoras/impuesto-bienes-inmuebles";
 import contenidoImpuestoBienesInmuebles from "./contenido/impuesto-bienes-inmuebles";
+import gananciaDeCapital from "./calculadoras/ganancia-de-capital";
+import contenidoGananciaDeCapital from "./contenido/ganancia-de-capital";
+import prestamo from "./calculadoras/prestamo";
+import contenidoPrestamo from "./contenido/prestamo";
+import salarioBase from "./calculadoras/salario-base";
+import contenidoSalarioBase from "./contenido/salario-base";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -114,6 +120,9 @@ export default definirPais({
     { definicion: cesantiaPorPension, contenido: contenidoCesantiaPorPension, cliente: () => import("./calculadoras/cesantia-por-pension.cliente") },
     { definicion: contratoAPlazoFijo, contenido: contenidoContratoAPlazoFijo, cliente: () => import("./calculadoras/contrato-a-plazo-fijo.cliente") },
     { definicion: impuestoBienesInmuebles, contenido: contenidoImpuestoBienesInmuebles, cliente: () => import("./calculadoras/impuesto-bienes-inmuebles.cliente") },
+    { definicion: gananciaDeCapital, contenido: contenidoGananciaDeCapital, cliente: () => import("./calculadoras/ganancia-de-capital.cliente") },
+    { definicion: prestamo, contenido: contenidoPrestamo, cliente: () => import("./calculadoras/prestamo.cliente") },
+    { definicion: salarioBase, contenido: contenidoSalarioBase, cliente: () => import("./calculadoras/salario-base.cliente") },
   ],
   novedades,
   detectores,
