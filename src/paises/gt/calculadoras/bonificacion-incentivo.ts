@@ -6,7 +6,7 @@ export default definirCalculadora({
   mercado: "gt",
   concepto: "propio",
   slug: "bonificacion-incentivo",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "gt.bonificacion-incentivo": "numero",
   },
@@ -17,8 +17,8 @@ export default definirCalculadora({
     return {
       mensual,
       diaria,
-      corresponde: redondear(Math.min(mensual, diaria * entrada.dias)),
-      observaciones: ["La bonificación incentivo se paga junto con el salario y no se puede dividir en partes."],
+      corresponde: entrada.dias >= DIAS_MES ? mensual : redondear((mensual * entrada.dias) / DIAS_MES),
+      observaciones: ["Se paga junto con el salario. No paga IGSS, IRTRA ni INTECAP y no cuenta para el aguinaldo ni la indemnización."],
     };
   },
   resultado: [

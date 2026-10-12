@@ -6,7 +6,7 @@ export default definirCalculadora({
   mercado: "gt",
   concepto: "sueldo-neto",
   slug: "sueldo-liquido",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "gt.igss-laboral-ivs": "numero",
     "gt.igss-laboral-ema": "numero",

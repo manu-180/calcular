@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "gt",
   concepto: "iva",
   slug: "iva",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "gt.iva": "numero",
   },
