@@ -569,6 +569,24 @@
         ["2026-08-01", 118.4878636],
         ["2026-09-01", 119.13131514]
       ]
+    },
+    {
+      "id": "uy.ur",
+      "nombre": "Unidad Reajustable (UR)",
+      "unidad": "UYU",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 45,
+      "fuente": {
+        "organismo": "Banco de Previsión Social (BPS)",
+        "titulo": "Valores actuales: Unidad Reajustable (UR), setiembre y octubre de 2026",
+        "url": "https://www.bps.gub.uy/5478/valores-actuales.html",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      },
+      "puntos": [
+        ["2026-09-01", 1940.77],
+        ["2026-10-01", 1946.95]
+      ]
     }
   ]
 }
