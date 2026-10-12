@@ -44,6 +44,14 @@ import rentaPersonasJuridicas from "./calculadoras/renta-personas-juridicas";
 import contenidoRentaPersonasJuridicas from "./contenido/renta-personas-juridicas";
 import certificadoDeDeposito from "./calculadoras/certificado-de-deposito";
 import contenidoCertificadoDeDeposito from "./contenido/certificado-de-deposito";
+import maternidad from "./calculadoras/maternidad";
+import contenidoMaternidad from "./contenido/maternidad";
+import licenciaDePaternidad from "./calculadoras/licencia-de-paternidad";
+import contenidoLicenciaDePaternidad from "./contenido/licencia-de-paternidad";
+import trabajoDomestico from "./calculadoras/trabajo-domestico";
+import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
+import salarioPorHora from "./calculadoras/salario-por-hora";
+import contenidoSalarioPorHora from "./contenido/salario-por-hora";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -78,6 +86,10 @@ export default definirPais({
     { definicion: rentaTrabajadorIndependiente, contenido: contenidoRentaTrabajadorIndependiente, cliente: () => import("./calculadoras/renta-trabajador-independiente.cliente") },
     { definicion: rentaPersonasJuridicas, contenido: contenidoRentaPersonasJuridicas, cliente: () => import("./calculadoras/renta-personas-juridicas.cliente") },
     { definicion: certificadoDeDeposito, contenido: contenidoCertificadoDeDeposito, cliente: () => import("./calculadoras/certificado-de-deposito.cliente") },
+    { definicion: maternidad, contenido: contenidoMaternidad, cliente: () => import("./calculadoras/maternidad.cliente") },
+    { definicion: licenciaDePaternidad, contenido: contenidoLicenciaDePaternidad, cliente: () => import("./calculadoras/licencia-de-paternidad.cliente") },
+    { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
+    { definicion: salarioPorHora, contenido: contenidoSalarioPorHora, cliente: () => import("./calculadoras/salario-por-hora.cliente") },
   ],
   novedades,
   detectores,
