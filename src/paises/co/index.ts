@@ -66,6 +66,26 @@ import gananciaOcasional from "./calculadoras/ganancia-ocasional";
 import contenidoGananciaOcasional from "./contenido/ganancia-ocasional";
 import impuestoAlConsumo from "./calculadoras/impuesto-al-consumo";
 import contenidoImpuestoAlConsumo from "./contenido/impuesto-al-consumo";
+import pensionDeVejez from "./calculadoras/pension-de-vejez";
+import contenidoPensionDeVejez from "./contenido/pension-de-vejez";
+import incrementoArriendo from "./calculadoras/incremento-arriendo";
+import contenidoIncrementoArriendo from "./contenido/incremento-arriendo";
+import contratoDeAprendizaje from "./calculadoras/contrato-de-aprendizaje";
+import contenidoContratoDeAprendizaje from "./contenido/contrato-de-aprendizaje";
+import embargoDeSalario from "./calculadoras/embargo-de-salario";
+import contenidoEmbargoDeSalario from "./contenido/embargo-de-salario";
+import periodoDePrueba from "./calculadoras/periodo-de-prueba";
+import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
+import preaviso from "./calculadoras/preaviso";
+import contenidoPreaviso from "./contenido/preaviso";
+import indemnizacionMoratoria from "./calculadoras/indemnizacion-moratoria";
+import contenidoIndemnizacionMoratoria from "./contenido/indemnizacion-moratoria";
+import valorHora from "./calculadoras/valor-hora";
+import contenidoValorHora from "./contenido/valor-hora";
+import salarioMinimoHistorico from "./calculadoras/salario-minimo-historico";
+import contenidoSalarioMinimoHistorico from "./contenido/salario-minimo-historico";
+import tasaEfectivaAnual from "./calculadoras/tasa-efectiva-anual";
+import contenidoTasaEfectivaAnual from "./contenido/tasa-efectiva-anual";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -111,6 +131,16 @@ export default definirPais({
     { definicion: sancionExtemporaneidad, contenido: contenidoSancionExtemporaneidad, cliente: () => import("./calculadoras/sancion-extemporaneidad.cliente") },
     { definicion: gananciaOcasional, contenido: contenidoGananciaOcasional, cliente: () => import("./calculadoras/ganancia-ocasional.cliente") },
     { definicion: impuestoAlConsumo, contenido: contenidoImpuestoAlConsumo, cliente: () => import("./calculadoras/impuesto-al-consumo.cliente") },
+    { definicion: pensionDeVejez, contenido: contenidoPensionDeVejez, cliente: () => import("./calculadoras/pension-de-vejez.cliente") },
+    { definicion: incrementoArriendo, contenido: contenidoIncrementoArriendo, cliente: () => import("./calculadoras/incremento-arriendo.cliente") },
+    { definicion: contratoDeAprendizaje, contenido: contenidoContratoDeAprendizaje, cliente: () => import("./calculadoras/contrato-de-aprendizaje.cliente") },
+    { definicion: embargoDeSalario, contenido: contenidoEmbargoDeSalario, cliente: () => import("./calculadoras/embargo-de-salario.cliente") },
+    { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
+    { definicion: preaviso, contenido: contenidoPreaviso, cliente: () => import("./calculadoras/preaviso.cliente") },
+    { definicion: indemnizacionMoratoria, contenido: contenidoIndemnizacionMoratoria, cliente: () => import("./calculadoras/indemnizacion-moratoria.cliente") },
+    { definicion: valorHora, contenido: contenidoValorHora, cliente: () => import("./calculadoras/valor-hora.cliente") },
+    { definicion: salarioMinimoHistorico, contenido: contenidoSalarioMinimoHistorico, cliente: () => import("./calculadoras/salario-minimo-historico.cliente") },
+    { definicion: tasaEfectivaAnual, contenido: contenidoTasaEfectivaAnual, cliente: () => import("./calculadoras/tasa-efectiva-anual.cliente") },
   ],
   novedades,
   detectores,
