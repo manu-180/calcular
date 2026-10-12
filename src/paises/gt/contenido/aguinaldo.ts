@@ -35,7 +35,7 @@ export default definirContenido({
     },
     {
       pregunta: "¿Qué pasa si trabajo en el campo o por temporadas?",
-      respuesta: "Tiene derecho si trabajó por lo menos {{gt.aguinaldo-jornadas-campo}} jornadas en el año, sin importar el tipo de contrato.",
+      respuesta: "Tiene derecho si trabajó por lo menos {{gt.aguinaldo-jornadas-campo}} de trabajo en el año, sin importar el tipo de contrato.",
     },
     {
       pregunta: "¿Un anticipo cuenta como pago del aguinaldo?",
