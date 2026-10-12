@@ -1,4 +1,4 @@
-# Costa Rica: expansión de calculadoras (12 → 30+)
+# Costa Rica: expansión de calculadoras (12 → 40 publicadas)
 
 Fecha: 12/10/2026. Base: `docs/research/paises/cr.md` (7/10/2026) y las 12 calculadoras ya publicadas.
 
@@ -52,7 +52,13 @@ de cargas sociales están en sus leyes y reglamentos.
 | 20 | cesantia-por-pension | C | CT arts. 29 y 85 e | SINALEVI | publicada |
 | 21 | contrato-a-plazo-fijo | C | CT art. 31 | SINALEVI | publicada |
 | 22 | impuesto-bienes-inmuebles | B | Ley 7509 arts. 4 e y 23 | SINALEVI | publicada sin la exención del bien único |
-| 23 | salario-base | A | Ley 7337; acuerdo del Consejo Superior del Poder Judicial | no ubicada | borrador |
+| 23 | ganancia-de-capital | B | Ley 7092 arts. 28 bis inc. 7 y 31 ter; Ley 9635 «Rige» | SINALEVI | publicada |
+| 24 | prestamo | A | Sistema francés; TBP del BCCR como referencia | BCCR | publicada |
+| 25 | impuesto-sobre-alquileres | A | Ley 7092 arts. 29 y 31 ter | SINALEVI | publicada |
+| 26 | impuesto-de-traspaso | A | Ley 6999 arts. 6, 7 y 8 | SINALEVI | publicada (sin timbres ni honorarios) |
+| 27 | impuesto-sobre-dividendos | C | Ley 7092 arts. 28 bis inc. 3 y 31 ter | SINALEVI | publicada |
+| 28 | asociacion-solidarista | B | Ley 6970 art. 18; Ley 7983 art. 8 | SINALEVI | publicada |
+| 29 | salario-base | A | Ley 7337; acuerdo del Consejo Superior del Poder Judicial | no ubicada | borrador |
 
 ## Descartadas o en espera
 
