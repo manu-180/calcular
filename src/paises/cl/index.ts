@@ -38,6 +38,18 @@ import topeImponible from "./calculadoras/tope-imponible";
 import contenidoTopeImponible from "./contenido/tope-imponible";
 import ufPorFecha from "./calculadoras/uf-por-fecha";
 import contenidoUfPorFecha from "./contenido/uf-por-fecha";
+import sueldoBruto from "./calculadoras/sueldo-bruto";
+import contenidoSueldoBruto from "./contenido/sueldo-bruto";
+import cotizacionesPrevisionales from "./calculadoras/cotizaciones-previsionales";
+import contenidoCotizacionesPrevisionales from "./contenido/cotizaciones-previsionales";
+import asignacionFamiliar from "./calculadoras/asignacion-familiar";
+import contenidoAsignacionFamiliar from "./contenido/asignacion-familiar";
+import pensionDeAlimentos from "./calculadoras/pension-de-alimentos";
+import contenidoPensionDeAlimentos from "./contenido/pension-de-alimentos";
+import pgu from "./calculadoras/pgu";
+import contenidoPgu from "./contenido/pgu";
+import aguinaldoPensionados from "./calculadoras/aguinaldo-pensionados";
+import contenidoAguinaldoPensionados from "./contenido/aguinaldo-pensionados";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -69,6 +81,12 @@ export default definirPais({
     { definicion: feriadoProgresivo, contenido: contenidoFeriadoProgresivo, cliente: () => import("./calculadoras/feriado-progresivo.cliente") },
     { definicion: topeImponible, contenido: contenidoTopeImponible, cliente: () => import("./calculadoras/tope-imponible.cliente") },
     { definicion: ufPorFecha, contenido: contenidoUfPorFecha, cliente: () => import("./calculadoras/uf-por-fecha.cliente") },
+    { definicion: sueldoBruto, contenido: contenidoSueldoBruto, cliente: () => import("./calculadoras/sueldo-bruto.cliente") },
+    { definicion: cotizacionesPrevisionales, contenido: contenidoCotizacionesPrevisionales, cliente: () => import("./calculadoras/cotizaciones-previsionales.cliente") },
+    { definicion: asignacionFamiliar, contenido: contenidoAsignacionFamiliar, cliente: () => import("./calculadoras/asignacion-familiar.cliente") },
+    { definicion: pensionDeAlimentos, contenido: contenidoPensionDeAlimentos, cliente: () => import("./calculadoras/pension-de-alimentos.cliente") },
+    { definicion: pgu, contenido: contenidoPgu, cliente: () => import("./calculadoras/pgu.cliente") },
+    { definicion: aguinaldoPensionados, contenido: contenidoAguinaldoPensionados, cliente: () => import("./calculadoras/aguinaldo-pensionados.cliente") },
   ],
   novedades,
   detectores,
