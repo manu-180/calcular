@@ -9,6 +9,8 @@ import { PieIntl } from "@/components/shell/PieIntl";
 import { contextoSitio } from "@/motor/ui/contexto";
 import "@/components/shell/shell.css";
 import "@/motor/ui/estilos.css";
+// Arranque por país, selector, datos vivos y novedades (frente aparte, para no pisar estilos.css).
+import "@/motor/ui/estilos-inicio.css";
 import { registro } from "@/paises";
 
 // optional y no swap: si Geist no llegó para el primer pintado se queda la fallback ajustada por

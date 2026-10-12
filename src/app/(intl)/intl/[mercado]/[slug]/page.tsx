@@ -27,7 +27,8 @@ export function generateStaticParams({ params }: { params: { mercado: string } }
   if (!m) return [];
   if (m.codigo === "global") return PAGINAS_GLOBALES.map((slug) => ({ slug }));
   const calculadoras = registro.calculadorasPublicables(m.codigo, hoyEn(m), modo).map((c) => ({ slug: c.definicion.slug }));
-  return [...calculadoras, ...PAGINAS_MERCADO.map((slug) => ({ slug }))];
+  // novedades tiene ruta propia (../novedades/page.tsx), que le gana a [slug]: no se genera dos veces.
+  return [...calculadoras, ...PAGINAS_MERCADO.filter((slug) => slug !== "novedades").map((slug) => ({ slug }))];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
