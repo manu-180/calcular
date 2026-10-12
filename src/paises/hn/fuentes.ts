@@ -93,6 +93,28 @@ export function leerFeedSalario(xml: string): HallazgoNorma[] | null {
   return hallazgos;
 }
 
+// Reformas al Código del Trabajo, a los décimos o a las cotizaciones del IHSS y el RAP: los datos de
+// las calculadoras laborales se leyeron el 12/10/2026, así que solo interesa lo publicado después.
+const ULTIMA_LECTURA_LABORAL = "2026-10-12";
+const TEMAS_LABORALES = /c[oó]digo\s+del\s+trabajo|reforma|maternidad|preaviso|cesant[ií]a|d[eé]cimo|aguinaldo|s[eé]ptimo\s+d[ií]a|vacaciones|techo|cotizaci[oó]n|IHSS|\bRAP\b|reserva\s+laboral/i;
+
+export function leerFeedLaboral(xml: string): HallazgoNorma[] | null {
+  if (!/<rss[\s>]/.test(xml)) return null;
+  const hallazgos: HallazgoNorma[] = [];
+  for (const [, item] of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
+    const titulo = sinEntidades(/<title>([\s\S]*?)<\/title>/.exec(item)?.[1] ?? "");
+    const url = sinEntidades(/<link>([\s\S]*?)<\/link>/.exec(item)?.[1] ?? "");
+    const pub = /<pubDate>([\s\S]*?)<\/pubDate>/.exec(item)?.[1];
+    if (!titulo || !url.startsWith("https://") || !pub) continue;
+    const instante = new Date(pub);
+    if (Number.isNaN(instante.getTime())) continue;
+    const fecha = fechaEnZona(instante, ZONA);
+    if (fecha <= ULTIMA_LECTURA_LABORAL || !TEMAS_LABORALES.test(titulo)) continue;
+    hallazgos.push({ titulo, url, fecha });
+  }
+  return hallazgos;
+}
+
 // El SAR publica la tabla progresiva cada enero en una entrada con la fecha en la ruta
 // (/2026/01/actualizacion-de-la-tabla-progresiva-2026/). La de 2026 ya está cargada.
 const ULTIMO_ANIO_TABLA = 2026;
@@ -144,6 +166,27 @@ export const detectores: readonly Detector[] = [
     url: "https://www.trabajo.gob.hn/feed/?s=salario+minimo",
     async traer(http) {
       return leerFeedSalario(await http.texto(this.url));
+    },
+  },
+  {
+    id: "hn.stss-reformas-laborales",
+    carril: "norma",
+    datos: [
+      "hn.preaviso-dias",
+      "hn.cesantia-tope-meses",
+      "hn.decimo-tercero",
+      "hn.decimo-cuarto",
+      "hn.maternidad-semanas",
+      "hn.vacaciones-dias",
+      "hn.ihss-techo",
+      "hn.ihss-ivm",
+      "hn.rap-aporte",
+      "hn.reserva-laboral-tasa",
+    ],
+    metodo: "api-xml",
+    url: "https://www.trabajo.gob.hn/feed/?s=reforma",
+    async traer(http) {
+      return leerFeedLaboral(await http.texto(this.url));
     },
   },
   {
