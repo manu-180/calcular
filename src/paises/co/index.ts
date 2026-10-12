@@ -46,6 +46,16 @@ import licenciaDePaternidad from "./calculadoras/licencia-de-paternidad";
 import contenidoLicenciaDePaternidad from "./contenido/licencia-de-paternidad";
 import incapacidad from "./calculadoras/incapacidad";
 import contenidoIncapacidad from "./contenido/incapacidad";
+import aportesSeguridadSocial from "./calculadoras/aportes-seguridad-social";
+import contenidoAportesSeguridadSocial from "./contenido/aportes-seguridad-social";
+import seguridadSocialIndependientes from "./calculadoras/seguridad-social-independientes";
+import contenidoSeguridadSocialIndependientes from "./contenido/seguridad-social-independientes";
+import retencionHonorarios from "./calculadoras/retencion-honorarios";
+import contenidoRetencionHonorarios from "./contenido/retencion-honorarios";
+import calc4x1000 from "./calculadoras/4x1000";
+import contenidoCalc4x1000 from "./contenido/4x1000";
+import cdt from "./calculadoras/cdt";
+import contenidoCdt from "./contenido/cdt";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -81,6 +91,11 @@ export default definirPais({
     { definicion: licenciaDeMaternidad, contenido: contenidoLicenciaDeMaternidad, cliente: () => import("./calculadoras/licencia-de-maternidad.cliente") },
     { definicion: licenciaDePaternidad, contenido: contenidoLicenciaDePaternidad, cliente: () => import("./calculadoras/licencia-de-paternidad.cliente") },
     { definicion: incapacidad, contenido: contenidoIncapacidad, cliente: () => import("./calculadoras/incapacidad.cliente") },
+    { definicion: aportesSeguridadSocial, contenido: contenidoAportesSeguridadSocial, cliente: () => import("./calculadoras/aportes-seguridad-social.cliente") },
+    { definicion: seguridadSocialIndependientes, contenido: contenidoSeguridadSocialIndependientes, cliente: () => import("./calculadoras/seguridad-social-independientes.cliente") },
+    { definicion: retencionHonorarios, contenido: contenidoRetencionHonorarios, cliente: () => import("./calculadoras/retencion-honorarios.cliente") },
+    { definicion: calc4x1000, contenido: contenidoCalc4x1000, cliente: () => import("./calculadoras/4x1000.cliente") },
+    { definicion: cdt, contenido: contenidoCdt, cliente: () => import("./calculadoras/cdt.cliente") },
   ],
   novedades,
   detectores,
