@@ -26,6 +26,15 @@ import licenciaDeMaternidad from "./calculadoras/licencia-de-maternidad";
 import subsidioPrenatalYLactancia from "./calculadoras/subsidio-prenatal-y-lactancia";
 import antiguedadLaboral from "./calculadoras/antiguedad-laboral";
 import finiquitoAtrasado from "./calculadoras/finiquito-atrasado";
+import aportesALaGestora from "./calculadoras/aportes-a-la-gestora";
+import costoEmpleador from "./calculadoras/costo-empleador";
+import retenciones from "./calculadoras/retenciones";
+import rcIvaIndependientes from "./calculadoras/rc-iva-independientes";
+import iue from "./calculadoras/iue";
+import impuestoALaHerencia from "./calculadoras/impuesto-a-la-herencia";
+import impuestoALaTransferencia from "./calculadoras/impuesto-a-la-transferencia";
+import deudaTributaria from "./calculadoras/deuda-tributaria";
+import jubilacion from "./calculadoras/jubilacion";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoBonoDeAntiguedad from "./contenido/bono-de-antiguedad";
 import contenidoDolarOficial from "./contenido/dolar-oficial";
@@ -52,6 +61,15 @@ import contenidoLicenciaDeMaternidad from "./contenido/licencia-de-maternidad";
 import contenidoSubsidioPrenatalYLactancia from "./contenido/subsidio-prenatal-y-lactancia";
 import contenidoAntiguedadLaboral from "./contenido/antiguedad-laboral";
 import contenidoFiniquitoAtrasado from "./contenido/finiquito-atrasado";
+import contenidoAportesALaGestora from "./contenido/aportes-a-la-gestora";
+import contenidoCostoEmpleador from "./contenido/costo-empleador";
+import contenidoRetenciones from "./contenido/retenciones";
+import contenidoRcIvaIndependientes from "./contenido/rc-iva-independientes";
+import contenidoIue from "./contenido/iue";
+import contenidoImpuestoALaHerencia from "./contenido/impuesto-a-la-herencia";
+import contenidoImpuestoALaTransferencia from "./contenido/impuesto-a-la-transferencia";
+import contenidoDeudaTributaria from "./contenido/deuda-tributaria";
+import contenidoJubilacion from "./contenido/jubilacion";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -90,6 +108,15 @@ export default definirPais({
     { definicion: subsidioPrenatalYLactancia, contenido: contenidoSubsidioPrenatalYLactancia, cliente: () => import("./calculadoras/subsidio-prenatal-y-lactancia.cliente") },
     { definicion: antiguedadLaboral, contenido: contenidoAntiguedadLaboral, cliente: () => import("./calculadoras/antiguedad-laboral.cliente") },
     { definicion: finiquitoAtrasado, contenido: contenidoFiniquitoAtrasado, cliente: () => import("./calculadoras/finiquito-atrasado.cliente") },
+    { definicion: aportesALaGestora, contenido: contenidoAportesALaGestora, cliente: () => import("./calculadoras/aportes-a-la-gestora.cliente") },
+    { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
+    { definicion: retenciones, contenido: contenidoRetenciones, cliente: () => import("./calculadoras/retenciones.cliente") },
+    { definicion: rcIvaIndependientes, contenido: contenidoRcIvaIndependientes, cliente: () => import("./calculadoras/rc-iva-independientes.cliente") },
+    { definicion: iue, contenido: contenidoIue, cliente: () => import("./calculadoras/iue.cliente") },
+    { definicion: impuestoALaHerencia, contenido: contenidoImpuestoALaHerencia, cliente: () => import("./calculadoras/impuesto-a-la-herencia.cliente") },
+    { definicion: impuestoALaTransferencia, contenido: contenidoImpuestoALaTransferencia, cliente: () => import("./calculadoras/impuesto-a-la-transferencia.cliente") },
+    { definicion: deudaTributaria, contenido: contenidoDeudaTributaria, cliente: () => import("./calculadoras/deuda-tributaria.cliente") },
+    { definicion: jubilacion, contenido: contenidoJubilacion, cliente: () => import("./calculadoras/jubilacion.cliente") },
   ],
   novedades,
   detectores,
