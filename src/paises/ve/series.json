@@ -157,6 +157,80 @@
         ["2026-08-01", 637409769724325.1],
         ["2026-09-01", 690967674312665]
       ]
+    },
+    {
+      "id": "ve.tasa-prestaciones",
+      "nombre": "Tasa de interés de prestaciones sociales (promedio entre activa y pasiva, anual)",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 100,
+      "fuente": {
+        "organismo": "Banco Central de Venezuela",
+        "url": "https://www.bcv.org.ve/estadisticas/tasas-de-interes",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12",
+        "titulo": "Tasa de interés aplicable a las prestaciones sociales (archivo 1_3_18) y bloque «Prestaciones Sociales» de la portada",
+        "nota": "Cada mes sale en Gaceta Oficial con unos 50 días de rezago (agosto 2026: Gaceta 43.464 del 22/09/2026, 47,46 %). Por ese rezago la serie admite 100 días de antigüedad."
+      },
+      "puntos": [
+        ["2025-01-01", 47.69],
+        ["2025-02-01", 47.69],
+        ["2025-03-01", 47.68],
+        ["2025-04-01", 47.65],
+        ["2025-05-01", 47.61],
+        ["2025-06-01", 47.64],
+        ["2025-07-01", 47.61],
+        ["2025-08-01", 47.53],
+        ["2025-09-01", 47.47],
+        ["2025-10-01", 47.33],
+        ["2025-11-01", 47.17],
+        ["2025-12-01", 47.3],
+        ["2026-01-01", 47.34],
+        ["2026-02-01", 47.1],
+        ["2026-03-01", 47.3],
+        ["2026-04-01", 47.46],
+        ["2026-05-01", 47.52],
+        ["2026-06-01", 47.56],
+        ["2026-07-01", 47.52],
+        ["2026-08-01", 47.46]
+      ]
+    },
+    {
+      "id": "ve.tasa-activa",
+      "nombre": "Tasa activa del BCV para prestaciones (anual)",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 100,
+      "fuente": {
+        "organismo": "Banco Central de Venezuela",
+        "url": "https://www.bcv.org.ve/estadisticas/tasas-de-interes",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12",
+        "titulo": "Tasa activa aplicable a las prestaciones sociales (archivo 1_3_18) y bloque «Tasas activas y pasivas» de la portada",
+        "nota": "Es la que se aplica cuando el patrono no deposita la garantía (art. 143) y para intereses de mora. Agosto 2026: 58,93 %."
+      },
+      "puntos": [
+        ["2025-01-01", 59.38],
+        ["2025-02-01", 59.39],
+        ["2025-03-01", 59.36],
+        ["2025-04-01", 59.29],
+        ["2025-05-01", 59.22],
+        ["2025-06-01", 59.27],
+        ["2025-07-01", 59.23],
+        ["2025-08-01", 59.06],
+        ["2025-09-01", 58.95],
+        ["2025-10-01", 58.66],
+        ["2025-11-01", 58.34],
+        ["2025-12-01", 58.59],
+        ["2026-01-01", 58.68],
+        ["2026-02-01", 58.2],
+        ["2026-03-01", 58.6],
+        ["2026-04-01", 58.91],
+        ["2026-05-01", 59.04],
+        ["2026-06-01", 59.12],
+        ["2026-07-01", 59.04],
+        ["2026-08-01", 58.93]
+      ]
     }
   ]
 }

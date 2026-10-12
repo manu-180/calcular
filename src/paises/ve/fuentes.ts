@@ -34,6 +34,22 @@ export function inpcDePortada(html: string): PuntoSerie[] | null {
   return [{ fecha, valor }];
 }
 
+// Bloques de tasas de la portada: el mes en el atributo content y la tasa anual con coma decimal.
+// «Prestaciones Sociales» trae el promedio entre activa y pasiva; «Tasas activas y pasivas», la activa.
+export function tasaMensualDePortada(html: string, bloque: string, etiqueta: string): PuntoSerie[] | null {
+  const inicio = html.indexOf(bloque);
+  if (inicio < 0) return null;
+  const trozo = html.slice(inicio, inicio + 2500);
+  const f = /content="(\d{4}-\d{2})-\d{2}T/.exec(trozo);
+  const desde = trozo.indexOf(etiqueta);
+  const m = desde < 0 ? null : /<span[^>]*>\s*([\d.]+,\d+)\s*</.exec(trozo.slice(desde));
+  if (!f || !m) return null;
+  const fecha = `${f[1]}-01`;
+  const valor = Number(m[1].replace(/\./g, "").replace(",", "."));
+  if (!esFechaISO(fecha) || !Number.isFinite(valor) || valor <= 0) return null;
+  return [{ fecha, valor }];
+}
+
 // Bandas: el bolívar se devaluó 193 % en 2026 y el mayor salto diario del año fue 2,93 %. min y max
 // cubren dos o tres años a ese ritmo; un 10 % de salto deja pasar un fin de semana largo de
 // devaluación fuerte y frena una reconversión monetaria (que corre la coma) o un número mal leído.
@@ -73,6 +89,36 @@ export const detectores: readonly Detector[] = [
     banda: { min: 1e14, max: 1e18, saltoRelativoMax: 0.6 },
     async traer(http) {
       return inpcDePortada(await http.texto(PORTADA_BCV, { tlsTolerante: true, userAgentNavegador: true }));
+    },
+  },
+  {
+    id: "ve.bcv-tasa-prestaciones",
+    carril: "serie",
+    serie: "ve.tasa-prestaciones",
+    metodo: "html",
+    url: PORTADA_BCV,
+    tlsTolerante: true,
+    userAgentNavegador: true,
+    // Entre 2024 y 2026 la tasa se movió entre 47 % y 48 %; la banda deja pasar un cambio de política
+    // monetaria fuerte y frena una coma corrida o el número de Gaceta leído como tasa.
+    banda: { min: 5, max: 150, saltoRelativoMax: 0.3 },
+    async traer(http) {
+      const html = await http.texto(PORTADA_BCV, { tlsTolerante: true, userAgentNavegador: true });
+      return tasaMensualDePortada(html, "view-ind-home-prestaciones-sociales", "Tasa:");
+    },
+  },
+  {
+    id: "ve.bcv-tasa-activa",
+    carril: "serie",
+    serie: "ve.tasa-activa",
+    metodo: "html",
+    url: PORTADA_BCV,
+    tlsTolerante: true,
+    userAgentNavegador: true,
+    banda: { min: 5, max: 200, saltoRelativoMax: 0.3 },
+    async traer(http) {
+      const html = await http.texto(PORTADA_BCV, { tlsTolerante: true, userAgentNavegador: true });
+      return tasaMensualDePortada(html, "view-ind-home-tasas-activas-y-pasivas", "Activa:");
     },
   },
 ];
