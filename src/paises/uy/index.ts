@@ -1,9 +1,11 @@
 import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
 import aguinaldo from "./calculadoras/aguinaldo";
+import ajusteAlquiler from "./calculadoras/ajuste-alquiler";
 import aportesBps from "./calculadoras/aportes-bps";
 import asignacionFamiliar from "./calculadoras/asignacion-familiar";
 import contenidoAguinaldo from "./contenido/aguinaldo";
+import contenidoAjusteAlquiler from "./contenido/ajuste-alquiler";
 import contenidoAportesBps from "./contenido/aportes-bps";
 import contenidoAsignacionFamiliar from "./contenido/asignacion-familiar";
 import contenidoCostoEmpleador from "./contenido/costo-empleador";
@@ -11,11 +13,14 @@ import contenidoDespido from "./contenido/despido";
 import contenidoDevolucionIrpf from "./contenido/devolucion-irpf";
 import contenidoDiasDeLicencia from "./contenido/dias-de-licencia";
 import contenidoDolarBcu from "./contenido/dolar-bcu";
+import contenidoEdadDeJubilacion from "./contenido/edad-de-jubilacion";
 import contenidoHorasExtra from "./contenido/horas-extra";
 import contenidoIass from "./contenido/iass";
 import contenidoInflacion from "./contenido/inflacion";
 import contenidoIrpf from "./contenido/irpf";
+import contenidoIrpfAlquileres from "./contenido/irpf-alquileres";
 import contenidoIva from "./contenido/iva";
+import contenidoJubilacion from "./contenido/jubilacion";
 import contenidoLicenciaMaternal from "./contenido/licencia-maternal";
 import contenidoLiquidacionPorEgreso from "./contenido/liquidacion-por-egreso";
 import contenidoMonotributo from "./contenido/monotributo";
@@ -32,11 +37,14 @@ import despido from "./calculadoras/despido";
 import devolucionIrpf from "./calculadoras/devolucion-irpf";
 import diasDeLicencia from "./calculadoras/dias-de-licencia";
 import dolarBcu from "./calculadoras/dolar-bcu";
+import edadDeJubilacion from "./calculadoras/edad-de-jubilacion";
 import horasExtra from "./calculadoras/horas-extra";
 import iass from "./calculadoras/iass";
 import inflacion from "./calculadoras/inflacion";
 import irpf from "./calculadoras/irpf";
+import irpfAlquileres from "./calculadoras/irpf-alquileres";
 import iva from "./calculadoras/iva";
+import jubilacion from "./calculadoras/jubilacion";
 import licenciaMaternal from "./calculadoras/licencia-maternal";
 import liquidacionPorEgreso from "./calculadoras/liquidacion-por-egreso";
 import monotributo from "./calculadoras/monotributo";
@@ -67,6 +75,7 @@ export default definirPais({
     { definicion: irpf, contenido: contenidoIrpf, cliente: () => import("./calculadoras/irpf.cliente") },
     { definicion: salarioVacacional, contenido: contenidoSalarioVacacional, cliente: () => import("./calculadoras/salario-vacacional.cliente") },
     { definicion: seguroDeParo, contenido: contenidoSeguroDeParo, cliente: () => import("./calculadoras/seguro-de-paro.cliente") },
+    { definicion: jubilacion, contenido: contenidoJubilacion, cliente: () => import("./calculadoras/jubilacion.cliente") },
     { definicion: diasDeLicencia, contenido: contenidoDiasDeLicencia, cliente: () => import("./calculadoras/dias-de-licencia.cliente") },
     { definicion: sueldoNominal, contenido: contenidoSueldoNominal, cliente: () => import("./calculadoras/sueldo-nominal.cliente") },
     { definicion: aportesBps, contenido: contenidoAportesBps, cliente: () => import("./calculadoras/aportes-bps.cliente") },
@@ -76,12 +85,15 @@ export default definirPais({
     { definicion: salarioMinimo, contenido: contenidoSalarioMinimo, cliente: () => import("./calculadoras/salario-minimo.cliente") },
     { definicion: dolarBcu, contenido: contenidoDolarBcu, cliente: () => import("./calculadoras/dolar-bcu.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: ajusteAlquiler, contenido: contenidoAjusteAlquiler, cliente: () => import("./calculadoras/ajuste-alquiler.cliente") },
     { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
     { definicion: monotributo, contenido: contenidoMonotributo, cliente: () => import("./calculadoras/monotributo.cliente") },
     { definicion: asignacionFamiliar, contenido: contenidoAsignacionFamiliar, cliente: () => import("./calculadoras/asignacion-familiar.cliente") },
     { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
     { definicion: devolucionIrpf, contenido: contenidoDevolucionIrpf, cliente: () => import("./calculadoras/devolucion-irpf.cliente") },
+    { definicion: edadDeJubilacion, contenido: contenidoEdadDeJubilacion, cliente: () => import("./calculadoras/edad-de-jubilacion.cliente") },
     { definicion: iass, contenido: contenidoIass, cliente: () => import("./calculadoras/iass.cliente") },
+    { definicion: irpfAlquileres, contenido: contenidoIrpfAlquileres, cliente: () => import("./calculadoras/irpf-alquileres.cliente") },
     { definicion: licenciaMaternal, contenido: contenidoLicenciaMaternal, cliente: () => import("./calculadoras/licencia-maternal.cliente") },
     { definicion: subsidioPorEnfermedad, contenido: contenidoSubsidioPorEnfermedad, cliente: () => import("./calculadoras/subsidio-por-enfermedad.cliente") },
   ],
