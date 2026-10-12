@@ -25,6 +25,36 @@
   --cy-sombra-flotante: 0 32px 80px -28px rgb(0 0 0 / 0.36), 0 0 0 1px rgb(0 0 0 / 0.05);
   --cy-anillo: 0 0 0 2px #fff, 0 0 0 4px rgb(16 185 129 / 0.55);
   --cy-ancho: 72rem;
+  /* La paleta y la curva de Tailwind 4 que usa calcular.ar, para copiar sus clases tal cual. */
+  --cy-zinc-50: oklch(98.5% 0 0);
+  --cy-zinc-100: oklch(96.7% 0.001 286.375);
+  --cy-zinc-200: oklch(92% 0.004 286.32);
+  --cy-zinc-300: oklch(87.1% 0.006 286.286);
+  --cy-zinc-400: oklch(70.5% 0.015 286.067);
+  --cy-zinc-500: oklch(55.2% 0.016 285.938);
+  --cy-zinc-600: oklch(44.2% 0.017 285.786);
+  --cy-zinc-700: oklch(37% 0.013 285.805);
+  --cy-zinc-800: oklch(27.4% 0.006 286.033);
+  --cy-zinc-900: oklch(21% 0.006 285.885);
+  --cy-emerald-50: oklch(97.9% 0.021 166.113);
+  --cy-emerald-200: oklch(90.5% 0.093 164.15);
+  --cy-emerald-400: oklch(76.5% 0.177 163.223);
+  --cy-emerald-500: oklch(69.6% 0.17 162.48);
+  --cy-emerald-600: oklch(59.6% 0.145 163.225);
+  --cy-emerald-700: oklch(50.8% 0.118 165.612);
+  --cy-emerald-800: oklch(43.2% 0.095 166.913);
+  --cy-emerald-900: oklch(37.8% 0.077 168.94);
+  --cy-amber-50: oklch(98.7% 0.022 95.277);
+  --cy-amber-200: oklch(92.4% 0.12 95.746);
+  --cy-amber-900: oklch(41.4% 0.112 45.904);
+  --cy-rose-50: oklch(96.9% 0.015 12.422);
+  --cy-rose-200: oklch(89.2% 0.058 10.001);
+  --cy-rose-300: oklch(81% 0.117 11.638);
+  --cy-rose-500: oklch(64.5% 0.246 16.439);
+  --cy-rose-700: oklch(51.4% 0.222 16.935);
+  --cy-rose-900: oklch(41% 0.159 10.272);
+  --cy-sombra-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --ease-tw: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* En una capa: así las utilidades del shell (otra capa, más alta) les ganan a estos selectores de elemento. */
@@ -64,7 +94,7 @@
     min-height: 100dvh;
     font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
     font-size: 1rem;
-    line-height: 1.55;
+    line-height: 1.5;
     color: var(--cy-texto);
     background:
       radial-gradient(60rem 32rem at 12% -6rem, rgb(16 185 129 / 0.09), transparent 65%),
@@ -765,94 +795,60 @@
   text-decoration: none;
 }
 
-/* ---------- Página de calculadora ---------- */
+/* ---------- Página de calculadora: la de calcular.ar ----------
+   Cada valor sale de las clases de Tailwind de src/app/(ar)/aguinaldo/page.tsx y de
+   src/components/CalculadoraHorasExtras.tsx (la piel más repetida de las 86 calculadoras de AR).
+   Columna de max-w-4xl con px-4 sm:px-6 py-8 sm:py-10, como el <main> de calcular.ar. */
 
-.cy-pagina-calculadora .cy-migas {
-  padding-top: 0.75rem;
+.cy-pagina-calculadora {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 54rem;
+  margin-inline: auto;
+  padding-block: 0.5rem 2rem;
 }
 
-/* En el teléfono: título, calculadora, sello y texto, en ese orden (la herramienta arriba).
-   En pantalla ancha: título y sello quedan fijos a la izquierda mientras se lee a la derecha. */
-/* minmax(0, 1fr) y no 1fr: con 1fr la columna crece hasta el min-content de lo más ancho (un
-   párrafo de un país la llevó a 512 px en un teléfono de 375) y toda la página se corre de lado. */
-.cy-calc-grilla {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.75rem;
-  padding-top: 1.25rem;
-}
-
-.cy-calc-lateral {
-  display: contents;
-}
-
-.cy-heroe-texto {
-  order: 1;
-}
-
-.cy-heroe-herramienta {
-  order: 2;
+.cy-pagina-calculadora > * {
   min-width: 0;
 }
 
-.cy-calc-grilla .cy-sello {
-  order: 3;
-  margin-top: 0;
-}
-
-.cy-calc-grilla .cy-texto {
-  order: 4;
-  margin-top: 0;
-}
-
-.cy-calc-grilla .cy-texto > section:first-child h2 {
-  margin-top: 1rem;
-}
-
-.cy-intro {
+.cy-calc-encabezado {
   display: grid;
   gap: 0.75rem;
-  margin-top: 1rem;
-  max-width: 52ch;
-  font-size: 1.0625rem;
-  color: var(--cy-texto-suave);
 }
 
-/* Doble bisel: una bandeja tenue y adentro la placa con su propio borde de luz. */
-.cy-bisel {
-  padding: 0.375rem;
-  border-radius: 1.75rem;
-  background: rgb(24 24 27 / 0.05);
-  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.06);
+.cy-calc-encabezado h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--cy-zinc-900);
 }
 
-.cy-bisel-nucleo {
-  overflow: hidden;
-  border-radius: calc(1.75rem - 0.375rem);
-  background: var(--cy-papel-claro);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.9),
-    var(--cy-sombra-apoyo);
+.cy-calc-encabezado p {
+  color: var(--cy-zinc-600);
 }
 
-.cy-calc-form {
-  display: grid;
-  gap: 1.25rem;
+.cy-calc-encabezado p + p {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* La tarjeta: rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6. */
+.cy-calc {
   padding: 1.25rem;
-}
-
-.cy-calc-rotulo {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--cy-texto-suave);
+  border: 1px solid var(--cy-emerald-200);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: var(--cy-sombra-sm);
 }
 
 .cy-calc-campos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-  gap: 1rem 1.25rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
 }
 
 .cy-campo {
@@ -864,112 +860,134 @@
 
 .cy-campo-etiqueta {
   display: block;
-  margin-bottom: 0.4375rem;
   padding: 0;
   font-size: 0.875rem;
-  font-weight: 550;
-  color: var(--cy-texto);
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: var(--cy-zinc-800);
 }
 
+.cy-campo-ayuda {
+  margin-top: 0.125rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--cy-zinc-500);
+}
+
+.cy-entrada + .cy-campo-ayuda {
+  margin-top: 0.5rem;
+}
+
+/* El input de AR: mt-2 rounded-lg border border-zinc-300 px-3 py-2.5, con foco
+   focus:border-emerald-500 y el anillo global de calcular.ar (blanco 2px + esmeralda al 55%). */
 .cy-entrada {
   display: flex;
-  height: 3rem;
   align-items: center;
-  padding-inline: 0.875rem;
-  border: 1px solid var(--cy-linea-fuerte);
-  border-radius: 0.875rem;
+  margin-top: 0.5rem;
+  padding-inline: 0.75rem;
+  border: 1px solid var(--cy-zinc-300);
+  border-radius: 0.5rem;
   background: #fff;
-  transition: border-color 0.15s ease-out;
-}
-
-.cy-entrada:hover {
-  border-color: rgb(24 24 27 / 0.32);
 }
 
 .cy-entrada:focus-within {
-  border-color: var(--cy-tinta);
-  outline: 2px solid var(--cy-tinta);
-  outline-offset: 1px;
+  border-color: var(--cy-emerald-500);
+  box-shadow: var(--cy-anillo);
 }
 
-.cy-entrada input,
-.cy-entrada select {
+.cy-entrada input {
   min-width: 0;
-  height: 100%;
   flex: 1;
+  margin: 0;
+  padding: 0.625rem 0;
   border: 0;
   background: transparent;
-  color: var(--cy-tinta);
+  color: var(--cy-zinc-900);
   font: inherit;
-  font-size: 1.0625rem;
-  font-variant-numeric: tabular-nums;
+  font-size: 1rem;
+  line-height: 1.5rem;
   outline: none;
 }
 
-.cy-entrada input:focus-visible,
-.cy-entrada select:focus-visible {
-  outline: none;
+.cy-entrada input:focus-visible {
+  box-shadow: none;
 }
 
-.cy-entrada-select {
-  position: relative;
-  padding-inline: 0;
-}
-
-.cy-entrada-select select {
-  padding-inline: 0.875rem 2.5rem;
-  appearance: none;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235b606b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.875rem center;
+/* Plata con el signo adelante: pl-7 text-lg font-medium y el signo en zinc-400. */
+.cy-entrada[data-moneda] input {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 500;
 }
 
 .cy-entrada-afijo {
   flex: none;
-  margin-right: 0.5rem;
-  font-weight: 500;
-  color: var(--cy-texto-suave);
+  margin-right: 0.25rem;
+  color: var(--cy-zinc-400);
 }
 
 .cy-entrada input + .cy-entrada-afijo {
-  margin: 0 0 0 0.5rem;
+  margin: 0 0 0 0.25rem;
 }
 
-.cy-campo[data-error] .cy-entrada {
-  border-color: var(--cy-rojo);
+.cy-entrada input::placeholder {
+  color: var(--cy-zinc-400);
 }
 
-.cy-campo-ayuda {
-  margin-top: 0.375rem;
-  font-size: 0.8125rem;
-  color: var(--cy-texto-suave);
+/* El select de AR es el mismo input con la flecha nativa del navegador. */
+.cy-select {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--cy-zinc-300);
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: var(--cy-zinc-900);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.cy-select:focus {
+  border-color: var(--cy-emerald-500);
+  box-shadow: 0 0 0 2px var(--cy-emerald-200);
+}
+
+.cy-select:focus-visible {
+  box-shadow: var(--cy-anillo);
+}
+
+.cy-campo[data-error] .cy-entrada,
+.cy-campo[data-error] .cy-select {
+  border-color: var(--cy-rose-300);
+}
+
+.cy-campo[data-error] .cy-entrada:focus-within,
+.cy-campo[data-error] .cy-select:focus {
+  border-color: var(--cy-rose-500);
 }
 
 .cy-campo-error {
   margin-top: 0.375rem;
-  font-size: 0.8125rem;
-  font-weight: 550;
-  color: var(--cy-rojo);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: var(--cy-rose-700);
 }
 
+/* Opciones lado a lado: los botones de semestre de /aguinaldo. */
 .cy-segmentado {
   display: grid;
   grid-template-columns: repeat(var(--n), minmax(0, 1fr));
-  gap: 0.25rem;
-  padding: 0.25rem;
-  border-radius: 0.875rem;
-  background: rgb(24 24 27 / 0.06);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .cy-segmentado[data-apilado] {
-  grid-template-columns: 1fr;
-}
-
-.cy-segmentado[data-apilado] .cy-segmento span {
-  justify-content: flex-start;
-  padding-inline: 0.875rem;
-  text-align: left;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .cy-segmento {
@@ -978,8 +996,7 @@
   cursor: pointer;
 }
 
-.cy-segmento input,
-.cy-interruptor input {
+.cy-segmento input {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -991,210 +1008,540 @@
 
 .cy-segmento span {
   display: flex;
-  min-height: 2.5rem;
+  height: 100%;
+  min-height: 2.75rem;
   align-items: center;
   justify-content: center;
-  padding: 0.375rem 0.5rem;
-  border-radius: 0.6875rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--cy-zinc-300);
+  border-radius: 0.5rem;
+  background: #fff;
   font-size: 0.875rem;
-  line-height: 1.2;
+  line-height: 1.25rem;
+  font-weight: 500;
   text-align: center;
-  color: var(--cy-texto-suave);
+  color: var(--cy-zinc-600);
   transition:
-    background-color 0.2s ease-out,
-    color 0.2s ease-out,
-    box-shadow 0.2s ease-out,
-    transform 0.25s var(--ease-fluid);
+    color 0.15s var(--ease-tw),
+    background-color 0.15s var(--ease-tw),
+    border-color 0.15s var(--ease-tw);
+}
+
+.cy-segmentado[data-apilado] .cy-segmento span {
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .cy-segmento:hover span {
-  color: var(--cy-tinta);
+  border-color: var(--cy-zinc-400);
 }
 
 .cy-segmento input:checked + span {
-  background: var(--cy-papel-claro);
-  color: var(--cy-tinta);
-  font-weight: 600;
-  box-shadow: var(--cy-sombra-apoyo);
-}
-
-.cy-segmento:active span {
-  transform: scale(0.97);
+  border-color: var(--cy-emerald-600);
+  background: var(--cy-emerald-50);
+  color: var(--cy-emerald-800);
 }
 
 .cy-segmento input:focus-visible + span {
-  outline: 2px solid var(--cy-tinta);
-  outline-offset: 1px;
+  box-shadow: var(--cy-anillo);
 }
 
-.cy-interruptor {
-  position: relative;
+/* Sí o no: la casilla de "No trabajé el semestre completo". */
+.cy-casilla {
   display: flex;
-  min-height: 3rem;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--cy-zinc-700);
   cursor: pointer;
 }
 
-.cy-interruptor .cy-campo-etiqueta {
-  margin: 0;
-}
-
-.cy-interruptor-pista {
-  position: relative;
-  width: 2.875rem;
-  height: 1.75rem;
+.cy-casilla input {
   flex: none;
-  border-radius: 999px;
-  background: rgb(24 24 27 / 0.2);
-  transition: background-color 0.2s ease-out;
+  width: 1rem;
+  height: 1rem;
+  margin: 0.125rem 0 0;
+  accent-color: var(--cy-emerald-600);
+  cursor: pointer;
 }
 
-.cy-interruptor-pista::after {
-  content: "";
-  position: absolute;
-  top: 0.1875rem;
-  left: 0.1875rem;
-  width: 1.375rem;
-  height: 1.375rem;
-  border-radius: 999px;
+.cy-casilla-ayuda {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--cy-zinc-500);
+}
+
+/* El resultado: mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5, la cifra en text-3xl
+   bold y el detalle en filas con borde, como la tabla de /horas-extras. */
+.cy-resultado {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--cy-zinc-200);
+  border-radius: 0.75rem;
+  background: var(--cy-zinc-50);
+}
+
+.cy-resultado-rotulo {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--cy-zinc-600);
+}
+
+.cy-resultado-cifra {
+  margin-top: 0.25rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  color: var(--cy-zinc-900);
+  overflow-wrap: anywhere;
+}
+
+.cy-resultado-bajada {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--cy-zinc-600);
+}
+
+.cy-resultado-filas {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.cy-resultado-cifra ~ .cy-resultado-filas,
+.cy-resultado-bajada ~ .cy-resultado-filas {
+  margin-top: 1.25rem;
+}
+
+.cy-resultado-fila {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block: 0.5rem;
+  border-bottom: 1px solid var(--cy-zinc-200);
+}
+
+.cy-resultado-fila:last-child {
+  border-bottom: 0;
+}
+
+.cy-resultado-fila dt {
+  min-width: 0;
+  font-weight: 500;
+  color: var(--cy-zinc-800);
+}
+
+.cy-resultado-ayuda {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: var(--cy-zinc-500);
+}
+
+.cy-resultado-fila dd {
+  flex: none;
+  max-width: 55%;
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--cy-zinc-900);
+}
+
+.cy-resultado-fila[data-destacada] dd {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
+.cy-resultado-notas {
+  display: grid;
+  gap: 0.375rem;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--cy-zinc-500);
+}
+
+/* Avisos de la calculadora: los TONOS de /horas-extras (emerald, amber, rose al 50/70). */
+.cy-calc-notas {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.cy-calc-resultado:has(.cy-resultado) + .cy-calc-notas {
+  margin-top: 1rem;
+}
+
+.cy-nota {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--cy-emerald-200);
+  border-radius: 0.75rem;
+  background: color-mix(in oklab, var(--cy-emerald-50) 70%, transparent);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--cy-emerald-900);
+}
+
+.cy-nota[data-nivel="cautela"] {
+  border-color: var(--cy-amber-200);
+  background: color-mix(in oklab, var(--cy-amber-50) 70%, transparent);
+  color: var(--cy-amber-900);
+}
+
+.cy-nota[data-nivel="bloquea"] {
+  border-color: var(--cy-rose-200);
+  background: color-mix(in oklab, var(--cy-rose-50) 70%, transparent);
+  color: var(--cy-rose-900);
+}
+
+.cy-resultado .cy-nota {
+  margin-top: 0.75rem;
+}
+
+.cy-calc-resultado > .cy-nota {
+  margin-top: 1.5rem;
+}
+
+.cy-nota-titulo {
+  font-weight: 600;
+}
+
+.cy-nota-titulo + p {
+  margin-top: 0.25rem;
+}
+
+.cy-nota-fuente {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.375rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Accesos a otras calculadoras: la grilla de tarjetas que sigue a la calculadora en /aguinaldo. */
+.cy-accesos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.cy-acceso {
+  display: block;
+  padding: 1rem;
+  border: 1px solid var(--cy-zinc-200);
+  border-radius: 1rem;
   background: #fff;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
-  transition: transform 0.35s var(--ease-fluid);
+  box-shadow: var(--cy-sombra-sm);
+  text-decoration: none;
+  transition: border-color 0.15s var(--ease-tw);
 }
 
-.cy-interruptor input:checked + .cy-interruptor-pista {
-  background: var(--cy-tinta);
+.cy-acceso:hover {
+  border-color: var(--cy-emerald-400);
 }
 
-.cy-interruptor input:checked + .cy-interruptor-pista::after {
-  transform: translateX(1.125rem);
+.cy-acceso-titulo {
+  display: block;
+  font-weight: 600;
+  color: var(--cy-zinc-900);
 }
 
-.cy-interruptor input:focus-visible + .cy-interruptor-pista {
-  outline: 2px solid var(--cy-tinta);
-  outline-offset: 2px;
+.cy-acceso-texto {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--cy-zinc-600);
+}
+
+/* Secciones de texto: space-y-3, h2 text-xl font-bold, párrafos zinc-600. */
+.cy-seccion {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+.cy-seccion h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  color: var(--cy-zinc-900);
+}
+
+.cy-seccion-texto {
+  display: grid;
+  gap: 0.75rem;
+  color: var(--cy-zinc-600);
+}
+
+.cy-pasos {
+  display: grid;
+  gap: 0.5rem;
+  margin-left: 1.25rem;
+  list-style: decimal;
+  color: var(--cy-zinc-600);
+}
+
+.cy-pasos li::marker {
+  color: var(--cy-zinc-600);
+}
+
+.cy-glosario {
+  display: grid;
+  gap: 1rem;
+}
+
+.cy-glosario dt {
+  font-weight: 600;
+  color: var(--cy-zinc-900);
+}
+
+.cy-glosario dd {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--cy-zinc-600);
+}
+
+/* Preguntas frecuentes: el acordeón de calcular.ar (copia de .ca-acordeon de globals.css; el
+   movimiento lo da AcordeonesFluidos, que el layout intl también monta). */
+.cy-preguntas {
+  gap: 1rem;
+}
+
+.cy-preguntas-lista {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ca-acordeon {
+  padding: 1rem;
+  border: 1px solid var(--cy-zinc-200);
+  border-radius: 0.75rem;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.3s var(--ease-fluid);
+}
+
+.ca-acordeon:hover {
+  border-color: var(--cy-zinc-300);
+}
+
+.ca-acordeon[open] {
+  box-shadow: var(--cy-sombra-sm);
+}
+
+.ca-acordeon > summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: var(--cy-zinc-800);
+  list-style: none;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.ca-acordeon[open] > summary {
+  color: var(--cy-emerald-700);
+}
+
+.ca-acordeon > summary::-webkit-details-marker {
+  display: none;
+}
+
+.ca-acordeon > summary::after {
+  content: "";
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.125rem;
+  background-color: var(--cy-zinc-400);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='2'%3E%3Cpath d='m5 8 5 5 5-5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  transition:
+    rotate 0.35s var(--ease-fluid),
+    background-color 0.2s ease;
+}
+
+.ca-acordeon:hover > summary::after {
+  background-color: var(--cy-zinc-600);
+}
+
+.ca-acordeon[open]:not([data-cerrando]) > summary::after {
+  rotate: 180deg;
+  background-color: var(--cy-emerald-500);
+}
+
+.ca-acordeon > summary:focus-visible {
+  border-radius: 0.375rem;
+  box-shadow: none;
+  outline: 2px solid var(--cy-emerald-500);
+  outline-offset: 4px;
+}
+
+.ca-acordeon > p {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--cy-zinc-600);
+}
+
+/* Fuentes: la caja "Fuentes oficiales" del final de cada página de AR (rounded-xl bg-white p-5
+   shadow-sm, h2 text-base, lista con viñeta y links esmeralda, la verificación en text-xs). El
+   sello lo arma Sello.tsx; acá solo se ordena y se viste. */
+.cy-pagina-calculadora .cy-sello {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 1.25rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: var(--cy-sombra-sm);
+}
+
+.cy-pagina-calculadora .cy-sello-titulo {
+  display: block;
+  order: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: var(--cy-zinc-900);
+}
+
+.cy-pagina-calculadora .cy-sello-titulo svg {
+  display: none;
+}
+
+.cy-pagina-calculadora .cy-sello-fuentes {
+  display: grid;
+  order: 1;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--cy-zinc-600);
+}
+
+.cy-pagina-calculadora .cy-sello-fuentes li::before {
+  content: "• ";
+}
+
+.cy-pagina-calculadora .cy-sello-fuentes a {
+  display: inline;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+  font-weight: 400;
+  color: var(--cy-emerald-700);
+  text-decoration: underline;
+}
+
+.cy-pagina-calculadora .cy-sello-fuentes a .cy-sello-documento {
+  color: inherit;
+}
+
+.cy-pagina-calculadora .cy-sello-fuentes a .cy-sello-documento::before {
+  content: ": ";
+}
+
+.cy-pagina-calculadora .cy-sello-fuentes svg {
+  display: none;
+}
+
+.cy-pagina-calculadora .cy-sello-linea {
+  order: 2;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--cy-zinc-400);
+}
+
+.cy-pagina-calculadora .cy-sello-linea + .cy-sello-linea {
+  margin-top: -0.5rem;
+}
+
+.cy-pagina-calculadora .cy-sello-linea a {
+  font-weight: 400;
+  color: var(--cy-emerald-700);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+}
+
+.cy-pagina-calculadora .cy-sello .cy-enlace-flecha {
+  order: 3;
+  min-height: 0;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: var(--cy-emerald-700);
+  text-decoration: underline;
+}
+
+.cy-pagina-calculadora .cy-sello .cy-enlace-flecha svg {
+  display: none;
+}
+
+/* La misma cuenta en otros países: píldoras con bandera, el borde se vuelve verde al pasar. */
+.cy-otros-paises ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .cy-pagina-calculadora {
+    padding: 1rem 0.5rem 2.5rem;
+  }
+
+  .cy-calc {
+    padding: 1.5rem;
+  }
+
+  .cy-calc-campos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cy-campo[data-ancho] {
+    grid-column: 1 / -1;
+  }
+
+  .cy-accesos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* El formulario de compra de planillas (planillas/comprar) usa el armado viejo de la calculadora. */
+.cy-calc-form {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.25rem;
 }
 
 .cy-calc-form .cy-boton {
   width: 100%;
 }
 
-.cy-calc-resultado {
-  display: grid;
-  gap: 0.875rem;
-  min-height: 9rem;
-  padding: 1.25rem;
-  border-top: 1px dashed var(--cy-linea-fuerte);
-  background: var(--cy-papel-hondo);
-}
-
-.cy-resultado-vacio {
-  max-width: 40ch;
-  font-size: 0.9375rem;
-  color: var(--cy-texto-suave);
-}
-
-.cy-resultado-filas {
-  display: grid;
-}
-
-.cy-resultado-fila {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.25rem 1rem;
-  padding-block: 0.6875rem;
-  border-bottom: 1px dashed var(--cy-linea);
-  animation: cy-fila 0.45s var(--ease-fluid) both;
-  animation-delay: calc(var(--i) * 45ms);
-}
-
-.cy-resultado-fila dt {
-  font-size: 0.9375rem;
-  color: var(--cy-texto-suave);
-}
-
-.cy-resultado-fila dd {
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  color: var(--cy-tinta);
-}
-
-.cy-resultado-fila[data-destacada] {
-  margin-top: 0.625rem;
-  padding: 1rem 1.125rem;
-  border: 1px solid #a7f3d0;
-  border-radius: 1.125rem;
-  background: var(--cy-acento-suave);
-  animation-name: cy-destaca;
-}
-
-.cy-resultado-fila[data-destacada] dt {
-  color: #065f46;
-  font-weight: 600;
-}
-
-.cy-resultado-fila[data-destacada] dd {
-  font-size: clamp(1.625rem, 1.3rem + 1.4vw, 2.125rem);
-  font-weight: 650;
-  letter-spacing: -0.025em;
-  color: var(--cy-acento-tinta);
-}
-
-.cy-resultado-ayuda {
-  flex-basis: 100%;
-  font-size: 0.8125rem;
-  color: var(--cy-texto-suave);
-}
-
-.cy-resultado-notas {
-  display: grid;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--cy-texto);
-}
-
-.cy-resultado-notas li {
-  position: relative;
-  padding-left: 1rem;
-}
-
-.cy-resultado-notas li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--cy-acento);
-}
-
-@keyframes cy-fila {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-}
-
-@keyframes cy-destaca {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.98);
-  }
-}
-
-@keyframes cy-subir {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-}
-
-/* ---------- Avisos de la calculadora ---------- */
+/* ---------- Avisos (planillas/comprar) ---------- */
 
 .cy-aviso {
   display: grid;
@@ -1371,115 +1718,6 @@
   text-underline-offset: 3px;
 }
 
-.cy-pasos {
-  display: grid;
-  gap: 0.875rem;
-  counter-reset: paso;
-}
-
-.cy-pasos li {
-  position: relative;
-  padding-left: 2.5rem;
-  line-height: 1.65;
-  counter-increment: paso;
-}
-
-.cy-pasos li::before {
-  content: counter(paso);
-  position: absolute;
-  left: 0;
-  top: 0.0625rem;
-  display: flex;
-  width: 1.75rem;
-  height: 1.75rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: rgb(16 185 129 / 0.18);
-  font-size: 0.8125rem;
-  font-weight: 650;
-  color: var(--cy-acento-tinta);
-}
-
-.cy-ejemplo {
-  padding: 1.125rem 1.25rem;
-  border-left: 3px solid var(--cy-acento);
-  border-radius: 0 1rem 1rem 0;
-  background: rgb(255 255 255 / 0.8);
-}
-
-.cy-faq details {
-  border-top: 1px solid var(--cy-linea);
-}
-
-.cy-faq details:last-child {
-  border-bottom: 1px solid var(--cy-linea);
-}
-
-.cy-faq summary {
-  position: relative;
-  display: block;
-  padding: 1.0625rem 2.5rem 1.0625rem 0;
-  font-weight: 600;
-  color: var(--cy-tinta);
-  cursor: pointer;
-  list-style: none;
-}
-
-.cy-faq summary::-webkit-details-marker {
-  display: none;
-}
-
-.cy-faq summary::after {
-  content: "";
-  position: absolute;
-  right: 0.5rem;
-  top: 50%;
-  width: 0.75rem;
-  height: 0.75rem;
-  margin-top: -0.375rem;
-  background:
-    linear-gradient(var(--cy-tinta), var(--cy-tinta)) center / 100% 1.5px no-repeat,
-    linear-gradient(var(--cy-tinta), var(--cy-tinta)) center / 1.5px 100% no-repeat;
-  transition: transform 0.35s var(--ease-fluid);
-}
-
-.cy-faq details[open] summary::after {
-  transform: rotate(135deg);
-}
-
-.cy-faq details p {
-  padding-bottom: 1.125rem;
-  color: var(--cy-texto);
-}
-
-.cy-glosario {
-  display: grid;
-  gap: 1rem;
-}
-
-.cy-glosario dt {
-  font-weight: 600;
-  color: var(--cy-tinta);
-}
-
-.cy-glosario dd {
-  color: var(--cy-texto-suave);
-}
-
-.cy-relacionadas,
-.cy-otros-paises {
-  margin-top: 4rem;
-}
-
-.cy-relacionadas h2,
-.cy-otros-paises h2 {
-  margin-bottom: 1rem;
-  font-size: 1.375rem;
-  font-weight: 650;
-  letter-spacing: -0.02em;
-}
-
 .cy-otros-paises ul,
 .cy-no-encontrada-paises {
   display: flex;
@@ -1494,17 +1732,20 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0 1rem 0 0.75rem;
-  border: 1px solid var(--cy-linea);
+  border: 1px solid var(--cy-zinc-200);
   border-radius: 999px;
-  background: var(--cy-papel-claro);
-  font-weight: 550;
+  background: #fff;
+  box-shadow: var(--cy-sombra-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cy-zinc-800);
   text-decoration: none;
-  transition: transform 0.25s var(--ease-fluid);
+  transition: border-color 0.15s var(--ease-tw);
 }
 
 .cy-otros-paises a:hover,
 .cy-no-encontrada-paises a:hover {
-  transform: translateY(-1px);
+  border-color: var(--cy-emerald-400);
 }
 
 /* ---------- Fuentes ---------- */
@@ -1744,8 +1985,7 @@
    estilo y layout de la carga (medido con Lighthouse móvil). El tamaño intrínseco "auto" recuerda
    el alto real después del primer pintado, así el scroll no salta. */
 .cy-texto > section,
-.cy-relacionadas,
-.cy-otros-paises,
+.cy-pagina-calculadora > .cy-seccion,
 .cy-promesas,
 .ca-pie {
   content-visibility: auto;
@@ -1759,8 +1999,7 @@
     grid-column: span 2;
   }
 
-  .cy-calc-form,
-  .cy-calc-resultado {
+  .cy-calc-form {
     padding: 1.75rem;
   }
 
@@ -1788,32 +2027,6 @@
 }
 
 @media (min-width: 1024px) {
-  .cy-calc-grilla {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    column-gap: 3.5rem;
-    row-gap: 0;
-    align-items: start;
-    padding-top: 2.25rem;
-  }
-
-  .cy-calc-lateral {
-    display: grid;
-    gap: 2rem;
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    align-self: start;
-  }
-
-  .cy-heroe-herramienta {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .cy-calc-grilla .cy-texto {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
   .cy-inicio {
     display: grid;
     grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
@@ -1850,13 +2063,6 @@
     border: 1px solid var(--cy-linea);
     border-radius: 1.5rem;
     background: rgb(255 255 255 / 0.6);
-  }
-}
-
-@media (min-width: 1024px) and (min-height: 760px) {
-  .cy-calc-lateral {
-    position: sticky;
-    top: 6.5rem;
   }
 }
 

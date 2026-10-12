@@ -5,11 +5,13 @@ import { rutaIntl } from "../seo";
 import type { PropsCalculadora } from "../tipos";
 import { Bandera } from "./Bandera";
 import { calculadorasDe, tarjetaDe, type ContextoSitio } from "./contexto";
-import { IconoFlecha } from "./Iconos";
 import { ldCalculadora } from "./metadatos";
 import { Sello } from "./Sello";
-import { AvisoDePais, JsonLd, Migas } from "./Sitio";
+import { AvisoDePais, JsonLd } from "./Sitio";
 
+// Misma columna y mismo orden que una página de calculadora de calcular.ar (src/app/(ar)/aguinaldo):
+// título e intro, la calculadora, accesos a otras cuentas, el texto, las preguntas y las fuentes al
+// final. La miga de pan visible no está porque calcular.ar no la tiene; sigue en el JSON-LD.
 export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio; pagina: PaginaResuelta; Cliente: ComponentType<PropsCalculadora> }) {
   const { mercado, contenido, calculadora } = pagina;
   const t = ctx.textos;
@@ -24,95 +26,81 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
   return (
     <article className="cy-pagina cy-pagina-calculadora">
       <JsonLd datos={ldCalculadora(ctx, pagina)} />
-      <Migas etiqueta={t.migas.etiqueta} items={[{ nombre: mercado.nombre, href: rutaIntl(mercado.codigo) }, { nombre: contenido.h1 }]} />
-      <div className="cy-calc-grilla">
-        <div className="cy-calc-lateral">
-          <header className="cy-heroe-texto">
-            <p className="cy-ceja">
-              <Bandera pais={mercado.pais} ancho={18} />
-              {mercado.nombre}
-            </p>
-            <h1 className="cy-titular">{contenido.h1}</h1>
-            <div className="cy-intro">
-              {contenido.intro.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-            </div>
-          </header>
-          <Sello sello={pagina.sello} usados={pagina.usados} locale={mercado.locale} textos={t} hrefFuentes={rutaIntl(mercado.codigo, "fuentes")} />
-        </div>
-        <div className="cy-heroe-herramienta">
-          <Cliente {...pagina.props} />
-        </div>
-        <div className="cy-texto">
-          <section aria-labelledby="cy-como">
-            <h2 id="cy-como">{t.calculadora.comoSeCalcula}</h2>
-            <ol className="cy-pasos">
-              {contenido.comoSeCalcula.map((p) => (
-                <li key={p}>{p}</li>
-              ))}
-            </ol>
-          </section>
-          {contenido.ejemplo?.length ? (
-            <section aria-labelledby="cy-ejemplo">
-              <h2 id="cy-ejemplo">{t.calculadora.ejemplo}</h2>
-              <div className="cy-ejemplo">
-                {contenido.ejemplo.map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
-              </div>
-            </section>
-          ) : null}
-          {contenido.faq.length ? (
-            <section aria-labelledby="cy-faq">
-              <h2 id="cy-faq">{t.calculadora.faq}</h2>
-              <div className="cy-faq">
-                {contenido.faq.map((f) => (
-                  <details key={f.pregunta}>
-                    <summary>{f.pregunta}</summary>
-                    <p>{f.respuesta}</p>
-                  </details>
-                ))}
-              </div>
-            </section>
-          ) : null}
-          {contenido.glosario.length ? (
-            <section aria-labelledby="cy-glosario">
-              <h2 id="cy-glosario">{t.calculadora.glosario}</h2>
-              <dl className="cy-glosario">
-                {contenido.glosario.map((g) => (
-                  <div key={g.termino}>
-                    <dt>{g.termino}</dt>
-                    <dd>{g.definicion}</dd>
-                  </div>
-                ))}
-              </dl>
-            </section>
-          ) : null}
-        </div>
-      </div>
+      <header className="cy-calc-encabezado">
+        <h1>{contenido.h1}</h1>
+        {contenido.intro.map((p) => (
+          <p key={p}>{p}</p>
+        ))}
+      </header>
+
+      <Cliente {...pagina.props} />
 
       {relacionadas.length ? (
-        <section className="cy-relacionadas" aria-labelledby="cy-relacionadas">
-          <h2 id="cy-relacionadas">{t.calculadora.relacionadas}</h2>
-          <ul className="cy-tarjetas">
-            {relacionadas.map((e) => (
-              <li key={e.definicion.id}>
-                <a className="cy-tarjeta" href={rutaIntl(mercado.codigo, e.definicion.slug)}>
-                  <span className="cy-tarjeta-titulo">{tarjetaDe(ctx, mercado, e).titulo}</span>
-                  <span className="cy-tarjeta-texto">{tarjetaDe(ctx, mercado, e).resumen}</span>
-                  <span className="cy-boton-icono">
-                    <IconoFlecha />
-                  </span>
-                </a>
-              </li>
+        <nav className="cy-accesos" aria-label={t.calculadora.relacionadas}>
+          {relacionadas.map((e) => {
+            const tarjeta = tarjetaDe(ctx, mercado, e);
+            return (
+              <a key={e.definicion.id} className="cy-acceso" href={rutaIntl(mercado.codigo, e.definicion.slug)}>
+                <span className="cy-acceso-titulo">
+                  {tarjeta.titulo} <span aria-hidden="true">→</span>
+                </span>
+                <span className="cy-acceso-texto">{tarjeta.resumen}</span>
+              </a>
+            );
+          })}
+        </nav>
+      ) : null}
+
+      <section className="cy-seccion" aria-labelledby="cy-como">
+        <h2 id="cy-como">{t.calculadora.comoSeCalcula}</h2>
+        <ol className="cy-pasos">
+          {contenido.comoSeCalcula.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ol>
+      </section>
+
+      {contenido.ejemplo?.length ? (
+        <section className="cy-seccion" aria-labelledby="cy-ejemplo">
+          <h2 id="cy-ejemplo">{t.calculadora.ejemplo}</h2>
+          <div className="cy-seccion-texto">
+            {contenido.ejemplo.map((p) => (
+              <p key={p}>{p}</p>
             ))}
-          </ul>
+          </div>
+        </section>
+      ) : null}
+
+      {contenido.faq.length ? (
+        <section className="cy-seccion cy-preguntas" aria-labelledby="cy-faq">
+          <h2 id="cy-faq">{t.calculadora.faq}</h2>
+          <div className="cy-preguntas-lista">
+            {contenido.faq.map((f) => (
+              <details key={f.pregunta} className="ca-acordeon">
+                <summary>{f.pregunta}</summary>
+                <p>{f.respuesta}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {contenido.glosario.length ? (
+        <section className="cy-seccion" aria-labelledby="cy-glosario">
+          <h2 id="cy-glosario">{t.calculadora.glosario}</h2>
+          <dl className="cy-glosario">
+            {contenido.glosario.map((g) => (
+              <div key={g.termino}>
+                <dt>{g.termino}</dt>
+                <dd>{g.definicion}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
       ) : null}
 
       {enOtrosPaises.length ? (
-        <section className="cy-otros-paises" aria-labelledby="cy-otros-paises">
+        <section className="cy-seccion cy-otros-paises" aria-labelledby="cy-otros-paises">
           <h2 id="cy-otros-paises">{t.calculadora.otrosPaises}</h2>
           <ul>
             {enOtrosPaises.map((e) => (
@@ -126,6 +114,8 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
           </ul>
         </section>
       ) : null}
+
+      <Sello sello={pagina.sello} usados={pagina.usados} locale={mercado.locale} textos={t} hrefFuentes={rutaIntl(mercado.codigo, "fuentes")} />
       <AvisoDePais ctx={ctx} concepto={calculadora.concepto} />
     </article>
   );

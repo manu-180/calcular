@@ -21,40 +21,53 @@ export interface CalculadoraControlada {
 // como props. La función calcular() no cruza esa frontera y llega aparte.
 export type DefinicionVisible = Pick<DefinicionCalculadora, "id" | "campos" | "resultado">;
 
-type Fuente = () => DefinicionCalculadora | Promise<DefinicionCalculadora>;
-
-function useControl(visible: DefinicionVisible, props: PropsCalculadora, fuente: Fuente): CalculadoraControlada & { precargar: () => void } {
+// Como en calcular.ar, el resultado se recalcula con cada cambio y no hay botón. Hasta el primer
+// cambio no se calcula nada aunque los valores por defecto alcancen: el código de calcular() llega
+// cuando el navegador está ocioso y un resultado que aparece solo, segundos después de cargar, mueve
+// la página (CLS). Un campo vacío y obligatorio no muestra error: falta un dato, no hay nada mal.
+function useControl(visible: DefinicionVisible, props: PropsCalculadora, inicial: DefinicionCalculadora | null, cargar?: () => Promise<DefinicionCalculadora>): CalculadoraControlada & { precargar: () => void } {
   const textos = useMemo(() => textosMotor(props.contexto.idioma, props.contexto.trato), [props.contexto.idioma, props.contexto.trato]);
   const [crudos, setCrudos] = useState<Crudos>(() => valoresIniciales(visible.campos, props.contexto, props.opcionesDinamicas));
-  const [estado, setEstado] = useState<EstadoCalculo>(() =>
-    props.avisos.some((a) => a.nivel === "bloquea") ? { tipo: "bloqueado", avisos: props.avisos.filter((a) => a.nivel === "bloquea") } : { tipo: "inicial" },
-  );
-  const pendiente = useRef<Promise<DefinicionCalculadora> | null>(null);
-  const resolver = useCallback((): DefinicionCalculadora | Promise<DefinicionCalculadora> => {
-    if (pendiente.current) return pendiente.current;
-    const r = fuente();
-    if (r instanceof Promise) {
-      pendiente.current = r;
-      r.catch(() => (pendiente.current = null));
-    }
-    return r;
-  }, [fuente]);
+  const [definicion, setDefinicion] = useState<DefinicionCalculadora | null>(inicial);
+  const [tocado, setTocado] = useState(false);
+  const [fallo, setFallo] = useState(false);
+  const pendiente = useRef<Promise<unknown> | null>(null);
 
-  const cambiar = useCallback((idCampo: string, valor: string | boolean) => setCrudos((prev) => ({ ...prev, [idCampo]: valor })), []);
-  const calcular = useCallback(() => {
-    const def = resolver();
-    if (!(def instanceof Promise)) return setEstado(ejecutar(def, crudos, props, textos));
-    def.then(
-      (d) => setEstado(ejecutar(d, crudos, props, textos)),
-      (err) => {
-        console.error(`[${visible.id}] no se pudo cargar la calculadora`, err);
-        setEstado({ tipo: "fallo", mensaje: textos.errores["calculo-fallido"] });
-      },
-    );
-  }, [resolver, crudos, props, textos, visible.id]);
-  const precargar = useCallback(() => void Promise.resolve(resolver()).catch(() => {}), [resolver]);
+  const precargar = useCallback(() => {
+    if (definicion || pendiente.current || !cargar) return;
+    pendiente.current = cargar().then(setDefinicion, (err) => {
+      console.error(`[${visible.id}] no se pudo cargar la calculadora`, err);
+      pendiente.current = null;
+      setFallo(true);
+    });
+  }, [definicion, cargar, visible.id]);
+
+  const cambiar = useCallback((idCampo: string, valor: string | boolean) => {
+    setCrudos((prev) => ({ ...prev, [idCampo]: valor }));
+    setTocado(true);
+  }, []);
+  const calcular = useCallback(() => setTocado(true), []);
+
+  useEffect(() => {
+    if (tocado) precargar();
+  }, [tocado, precargar]);
+
+  const estado = useMemo<EstadoCalculo>(() => {
+    const bloqueos = props.avisos.filter((a) => a.nivel === "bloquea");
+    if (bloqueos.length) return { tipo: "bloqueado", avisos: bloqueos };
+    if (!tocado) return { tipo: "inicial" };
+    if (fallo) return { tipo: "fallo", mensaje: textos.errores["calculo-fallido"] };
+    if (!definicion) return { tipo: "inicial" };
+    return ejecutar(definicion, crudos, props, textos);
+  }, [props, tocado, fallo, definicion, crudos, textos]);
+
   const error = useCallback(
-    (idCampo: string) => (estado.tipo === "errores" && estado.errores[idCampo] ? mensajeDeError(estado.errores[idCampo], textos) : null),
+    (idCampo: string) => {
+      if (estado.tipo !== "errores") return null;
+      const e = estado.errores[idCampo];
+      if (!e || ("codigo" in e && e.codigo === "requerido")) return null;
+      return mensajeDeError(e, textos);
+    },
     [estado, textos],
   );
   const opciones = useCallback((campo: Campo) => opcionesDe(campo, props.contexto, props.opcionesDinamicas), [props.contexto, props.opcionesDinamicas]);
@@ -63,8 +76,7 @@ function useControl(visible: DefinicionVisible, props: PropsCalculadora, fuente:
 }
 
 export function useCalculadora(definicion: DefinicionCalculadora, props: PropsCalculadora): CalculadoraControlada {
-  const fuente = useCallback(() => definicion, [definicion]);
-  return useControl(definicion, props, fuente);
+  return useControl(definicion, props, definicion);
 }
 
 export function CalculadoraBasica({ definicion, ...props }: PropsCalculadora & { definicion: DefinicionCalculadora }) {
@@ -77,7 +89,7 @@ export function CalculadoraBasica({ definicion, ...props }: PropsCalculadora & {
 // Calcular si todavía no llegó). Un Server Component que importa un Client Component con import()
 // no parte el bundle en Next 16: por eso la carga diferida vive del lado del cliente.
 export function CalculadoraDiferida({ definicion, cargar, ...props }: PropsCalculadora & { definicion: DefinicionVisible; cargar: () => Promise<DefinicionCalculadora> }) {
-  const control = useControl(definicion, props, cargar);
+  const control = useControl(definicion, props, null, cargar);
   const { precargar } = control;
   useEffect(() => {
     if (typeof window.requestIdleCallback === "function") {

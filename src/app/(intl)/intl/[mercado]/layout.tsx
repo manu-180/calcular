@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import { origenPublicoIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import type { CodigoMercado } from "@/motor/tipos";
+import { AcordeonesFluidos } from "@/components/AcordeonesFluidos";
 import { Rastreador } from "@/components/Rastreador";
 import { EncabezadoIntl } from "@/components/shell/EncabezadoIntl";
 import { PieIntl } from "@/components/shell/PieIntl";
@@ -74,6 +75,7 @@ export default async function LayoutIntl({ children, params }: { children: React
           <PieIntl ctx={ctx} />
         </div>
         <Rastreador sitio="intl" mercado={ctx.mercado.codigo} />
+        <AcordeonesFluidos />
       </body>
     </html>
   );
