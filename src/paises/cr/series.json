@@ -374,6 +374,21 @@
 ["2026-07-01", 108.603943],
 ["2026-08-01", 108.487849],
 ["2026-09-01", 108.607545]]
+    },
+    {
+      "id": "cr.tbp",
+      "nombre": "Tasa básica pasiva del BCCR",
+      "unidad": "%",
+      "frecuencia": "semanal",
+      "maxAntiguedadDias": 21,
+      "fuente": {
+        "organismo": "Banco Central de Costa Rica",
+        "titulo": "Indicador 423, tasa básica pasiva calculada por el BCCR (portada del BCCR)",
+        "url": "https://www.bccr.fi.cr/content/bccr/cr/es/home/jcr:content/root/container/container/economicindicators/cardindicador.indicator.423.json",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      },
+      "puntos": [["2026-10-11", 3.57]]
     }
   ]
 }
