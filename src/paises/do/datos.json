@@ -796,6 +796,655 @@
           }
         }
       ]
+    },
+    {
+      "id": "do.divisor-salario-quincenal",
+      "nombre": "Divisor para pasar el salario quincenal a diario",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-12-30",
+          "valor": 11.91,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 32, literal c, del Reglamento (Decreto 565-99)",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.divisor-salario-semanal",
+      "nombre": "Divisor para pasar el salario semanal a diario",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-12-30",
+          "valor": 5.5,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 32, literal b, del Reglamento (Decreto 565-99)",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.asistencia-economica-dias",
+      "nombre": "Días de asistencia económica según la antigüedad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "tres-a-seis-meses": "De 3 a 6 meses",
+        "seis-a-doce-meses": "De 6 meses a 1 año",
+        "por-anio": "Por cada año, después del primero"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": {
+            "tres-a-seis-meses": 5,
+            "seis-a-doce-meses": 10,
+            "por-anio": 15
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 82",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.salarios-caidos-meses",
+      "nombre": "Máximo de salarios caídos por despido injustificado",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 95, ordinal 3",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.propina-legal",
+      "nombre": "Propina legal en hoteles, restaurantes y bares",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 228",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.licencias-dias",
+      "nombre": "Días de licencia con salario por matrimonio, fallecimiento o nacimiento",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "matrimonio": "Matrimonio",
+        "fallecimiento": "Fallecimiento de abuelos, padres, hijos o pareja",
+        "nacimiento": "Nacimiento de un hijo (paternidad)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-05-29",
+          "valor": {
+            "matrimonio": 5,
+            "fallecimiento": 3,
+            "nacimiento": 2
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo",
+            "titulo": "Código de Trabajo (Ley 16-92) y su Reglamento 258-93, art. 54",
+            "url": "https://transparencia.mt.gob.do/images/docs/publicaciones/codigo-de-trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.maternidad-semanas",
+      "nombre": "Semanas de descanso y subsidio por maternidad",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-15",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Dirección General de Información y Defensa de los Afiliados (DIDA)",
+            "titulo": "ABC 35: Subsidio por Maternidad y Lactancia, nueva normativa (Resolución CNSS 560 del 15/12/2022)",
+            "url": "https://dida.panel-dev-pys.ogtic.gob.do/wp-content/uploads/2024/05/ABC-No.-35-Sobre-Subsidio-por-Maternidad-y-Lactancia-nueva-normativa.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.maternidad-semanas-antes",
+      "nombre": "Semanas antes de la fecha probable de parto en que puede empezar el descanso",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-15",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Dirección General de Información y Defensa de los Afiliados (DIDA)",
+            "titulo": "ABC 35: Subsidio por Maternidad y Lactancia, nueva normativa (Resolución CNSS 560 del 15/12/2022)",
+            "url": "https://dida.panel-dev-pys.ogtic.gob.do/wp-content/uploads/2024/05/ABC-No.-35-Sobre-Subsidio-por-Maternidad-y-Lactancia-nueva-normativa.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.lactancia-porcentaje",
+      "nombre": "Subsidio por lactancia según el salario cotizable",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "hasta-1": "Hasta 1 salario mínimo nacional",
+        "hasta-2": "Hasta 2 salarios mínimos nacionales",
+        "hasta-3": "Hasta 3 salarios mínimos nacionales"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-15",
+          "valor": {
+            "hasta-1": 33,
+            "hasta-2": 12,
+            "hasta-3": 6
+          },
+          "fuente": {
+            "organismo": "Dirección General de Información y Defensa de los Afiliados (DIDA)",
+            "titulo": "ABC 28: Subsidio por Lactancia (normativa aprobada por la Resolución CNSS 560)",
+            "url": "https://dida.panel-dev-pys.ogtic.gob.do/wp-content/uploads/2024/05/ABC-No.-28-sobre-Subsidio-por-Lactancia.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.lactancia-meses",
+      "nombre": "Meses de pago del subsidio por lactancia",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-15",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Dirección General de Información y Defensa de los Afiliados (DIDA)",
+            "titulo": "ABC 28: Subsidio por Lactancia (normativa aprobada por la Resolución CNSS 560)",
+            "url": "https://dida.panel-dev-pys.ogtic.gob.do/wp-content/uploads/2024/05/ABC-No.-28-sobre-Subsidio-por-Lactancia.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.enfermedad-ambulatoria",
+      "nombre": "Subsidio por enfermedad común con atención ambulatoria",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Dirección General de Información y Defensa de los Afiliados (DIDA)",
+            "titulo": "ABC 4: Subsidio por Enfermedad Común",
+            "url": "https://dida.panel-dev-pys.ogtic.gob.do/wp-content/uploads/2024/05/ABC-No.-4-Subsidio-por-Enfermedad-Comun.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.enfermedad-hospitalaria",
+      "nombre": "Subsidio por enfermedad común con hospitalización",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Dirección General de Información y Defensa de los Afiliados (DIDA)",
+            "titulo": "ABC 4: Subsidio por Enfermedad Común",
+            "url": "https://dida.panel-dev-pys.ogtic.gob.do/wp-content/uploads/2024/05/ABC-No.-4-Subsidio-por-Enfermedad-Comun.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.enfermedad-semanas",
+      "nombre": "Semanas máximas del subsidio por enfermedad común",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Dirección General de Información y Defensa de los Afiliados (DIDA)",
+            "titulo": "ABC 4: Subsidio por Enfermedad Común",
+            "url": "https://dida.panel-dev-pys.ogtic.gob.do/wp-content/uploads/2024/05/ABC-No.-4-Subsidio-por-Enfermedad-Comun.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.retencion-honorarios",
+      "nombre": "Retención de ISR a honorarios y servicios de personas físicas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "hasta": "2026-06-30",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Retenciones de ISR e ITBIS (guía de la DGII, tabla de porcentajes antes de la Ley 30-26)",
+            "url": "https://dgii.gov.do/publicacionesOficiales/bibliotecaVirtual/contribuyentes/retencionesRetribucionesComplementarias/Documents/Retenciones-ISR-ITBIS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26 del 18/6/2026, artículo 17 (párrafo del art. 309 del Código Tributario, literal b)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Pago a cuenta. Rige desde el 1/7/2026 según el calendario de implementación de la DGII (Aviso del 26/6/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.retencion-alquileres",
+      "nombre": "Retención de ISR a alquileres pagados a personas físicas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "hasta": "2026-06-30",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Retenciones de ISR e ITBIS (guía de la DGII, tabla de porcentajes antes de la Ley 30-26)",
+            "url": "https://dgii.gov.do/publicacionesOficiales/bibliotecaVirtual/contribuyentes/retencionesRetribucionesComplementarias/Documents/Retenciones-ISR-ITBIS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26 del 18/6/2026, artículo 17 (párrafo del art. 309 del Código Tributario, literal a)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Pago único y definitivo. Rige desde el 1/7/2026 según el calendario de implementación de la DGII (Aviso del 26/6/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.retencion-premios-loteria",
+      "nombre": "Retención de ISR a premios de loterías, rifas y promociones",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "hasta": "2026-06-30",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Retenciones de ISR e ITBIS (guía de la DGII, tabla de porcentajes antes de la Ley 30-26)",
+            "url": "https://dgii.gov.do/publicacionesOficiales/bibliotecaVirtual/contribuyentes/retencionesRetribucionesComplementarias/Documents/Retenciones-ISR-ITBIS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26 del 18/6/2026, artículo 17 (párrafo del art. 309 del Código Tributario, literal c)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.retencion-premios-bancas",
+      "nombre": "Retención de ISR a premios de bancas de lotería y deportivas",
+      "tipo": "escala",
+      "unidad": "DOP",
+      "nota": "La tasa se aplica sobre todo el premio, no solo sobre el excedente del tramo.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "hasta": "2026-06-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 100001,
+              "tasa": 0
+            },
+            {
+              "desde": 100001.01,
+              "hasta": 500000,
+              "tasa": 10
+            },
+            {
+              "desde": 500000.01,
+              "hasta": 1000000,
+              "tasa": 15
+            },
+            {
+              "desde": 1000000.01,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Retenciones de ISR e ITBIS (guía de la DGII, tabla de porcentajes antes de la Ley 30-26)",
+            "url": "https://dgii.gov.do/publicacionesOficiales/bibliotecaVirtual/contribuyentes/retencionesRetribucionesComplementarias/Documents/Retenciones-ISR-ITBIS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 200001,
+              "tasa": 0
+            },
+            {
+              "desde": 200001.01,
+              "hasta": 600000,
+              "tasa": 15
+            },
+            {
+              "desde": 600000.01,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26 del 18/6/2026, artículo 17 (párrafo del art. 309 del Código Tributario, literal c)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde el 1/7/2026 según el Aviso de la DGII del 26/6/2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.retencion-intereses",
+      "nombre": "Retención de ISR a intereses pagados a personas físicas residentes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 253-12, artículo 7 (nuevo art. 306 bis del Código Tributario)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/253-12.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.devolucion-intereses-limites",
+      "nombre": "Renta neta máxima para pedir la devolución de la retención por intereses",
+      "tipo": "mapa",
+      "unidad": "DOP",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "general": "Renta neta gravable, intereses incluidos",
+        "intereses-hasta-25": "Renta neta gravable, si los intereses no pasan del 25 %"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "general": 384610,
+            "intereses-hasta-25": 641017
+          },
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Resolución DDG-AR1-2026-00001, ordinal cuarto (art. 306 bis, párrafo I, Ley 253-12)",
+            "url": "https://dgii.gov.do/legislacion/resoluciones/Documents/DDG-%20AR1-2026-00001.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.impuesto-transferencias",
+      "nombre": "Impuesto a cheques y transferencias electrónicas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-03",
+          "valor": 0.2,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26 del 18/6/2026, artículo 40 (art. 382 del Código Tributario)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde el 3/7/2026 según el calendario de implementación de la DGII (Aviso del 26/6/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.ipi-exento",
+      "nombre": "Monto exento del IPI para personas físicas",
+      "tipo": "numero",
+      "unidad": "DOP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 10695494,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Resolución DDG-AR1-2026-00001, ordinal décimo primero (art. 14, párrafo I, Ley 253-12)",
+            "url": "https://dgii.gov.do/legislacion/resoluciones/Documents/DDG-%20AR1-2026-00001.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.ipi-tasa",
+      "nombre": "Tasa del Impuesto al Patrimonio Inmobiliario (IPI)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Impuesto al Patrimonio Inmobiliario (IPI): tasas a pagar",
+            "url": "https://dgii.gov.do/cicloContribuyente/obligacionesTributarias/principalesImpuestos/Paginas/impuestoPatrimonioInmobiliario.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.gastos-educativos-tope-ingreso",
+      "nombre": "Tope de la deducción por gastos educativos sobre el ingreso gravado",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26 del 18/6/2026, artículo 26 (art. 3, párrafo I, de la Ley 179-09)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Aplica desde el ejercicio fiscal 2026 según el Aviso de la DGII del 26/6/2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.gastos-educativos-tope-exento",
+      "nombre": "Tope de la deducción por gastos educativos sobre el mínimo exento",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26 del 18/6/2026, artículo 26 (art. 3, párrafo I, de la Ley 179-09)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Aplica desde el ejercicio fiscal 2026 según el Aviso de la DGII del 26/6/2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.gastos-educativos-tope-discapacidad",
+      "nombre": "Tope de la deducción por gastos educativos de personas con discapacidad, sobre el mínimo exento",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26 del 18/6/2026, artículo 26 (art. 3, párrafo II, de la Ley 179-09)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Aplica desde el ejercicio fiscal 2026 según el Aviso de la DGII del 26/6/2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.infotep-empleador",
+      "nombre": "Aporte del empleador al INFOTEP sobre la nómina",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "1980-01-20",
+          "valor": 1,
+          "motivo": "El 1 % de la Ley 116-80 (art. 24) solo lo leímos en prensa y en una copia de la ley fuera de un sitio oficial. infotep.gob.do responde 403 y los instructivos de la TSS ya no están publicados."
+        }
+      ]
     }
   ]
 }
