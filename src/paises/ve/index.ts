@@ -52,6 +52,12 @@ import sueldoEnBolivares from "./calculadoras/sueldo-en-bolivares";
 import contenidoSueldoEnBolivares from "./contenido/sueldo-en-bolivares";
 import poderAdquisitivo from "./calculadoras/poder-adquisitivo";
 import contenidoPoderAdquisitivo from "./contenido/poder-adquisitivo";
+import interesesDeMora from "./calculadoras/intereses-de-mora";
+import contenidoInteresesDeMora from "./contenido/intereses-de-mora";
+import utilidadesFraccionadas from "./calculadoras/utilidades-fraccionadas";
+import contenidoUtilidadesFraccionadas from "./contenido/utilidades-fraccionadas";
+import euroBcv from "./calculadoras/euro-bcv";
+import contenidoEuroBcv from "./contenido/euro-bcv";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -90,6 +96,9 @@ export default definirPais({
     { definicion: permisoDePaternidad, contenido: contenidoPermisoDePaternidad, cliente: () => import("./calculadoras/permiso-de-paternidad.cliente") },
     { definicion: sueldoEnBolivares, contenido: contenidoSueldoEnBolivares, cliente: () => import("./calculadoras/sueldo-en-bolivares.cliente") },
     { definicion: poderAdquisitivo, contenido: contenidoPoderAdquisitivo, cliente: () => import("./calculadoras/poder-adquisitivo.cliente") },
+    { definicion: interesesDeMora, contenido: contenidoInteresesDeMora, cliente: () => import("./calculadoras/intereses-de-mora.cliente") },
+    { definicion: utilidadesFraccionadas, contenido: contenidoUtilidadesFraccionadas, cliente: () => import("./calculadoras/utilidades-fraccionadas.cliente") },
+    { definicion: euroBcv, contenido: contenidoEuroBcv, cliente: () => import("./calculadoras/euro-bcv.cliente") },
   ],
   novedades,
   detectores,

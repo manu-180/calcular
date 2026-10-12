@@ -688,6 +688,26 @@
           }
         }
       ]
+    },
+    {
+      "id": "ve.plazo-pago-prestaciones-dias",
+      "nombre": "Días que tiene la empresa para pagar las prestaciones al terminar la relación",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-07",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministerio del Poder Popular para el Proceso Social de Trabajo",
+            "titulo": "LOTTT, Gaceta Oficial N° 6.076 Extraordinario del 07/05/2012, art. 142 literal f",
+            "url": "https://www.mpppst.gob.ve/mpppstweb/wp-content/uploads/2014/03/LEY_ORGANICA_DEL_TRABAJO_LOS_TRABAJADORES_Y_LAS_TRABAJADORAS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }
