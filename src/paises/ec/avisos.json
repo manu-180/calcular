@@ -6,7 +6,12 @@
       "nivel": "info",
       "desde": "2026-10-07",
       "hasta": "2026-12-31",
-      "aplicaA": ["ec.salario-basico", "ec.decimo-cuarto-sueldo", "ec.liquidacion", "ec.sueldo-neto"],
+      "aplicaA": [
+        "ec.salario-basico",
+        "ec.decimo-cuarto-sueldo",
+        "ec.liquidacion",
+        "ec.sueldo-neto"
+      ],
       "titulo": "El salario básico cambia en enero",
       "texto": "El salario básico se fija cada año para el siguiente. El de 2027 todavía no se publicó: estos cálculos usan el de 2026. Cuando salga en el Registro Oficial, lo cargamos.",
       "fuente": {
@@ -21,7 +26,9 @@
       "id": "ec.tope-utilidades",
       "nivel": "cautela",
       "desde": "2026-10-07",
-      "aplicaA": ["ec.utilidades"],
+      "aplicaA": [
+        "ec.utilidades"
+      ],
       "titulo": "Tope de 24 salarios básicos",
       "texto": "El artículo 97.1 del Código del Trabajo pone un tope de 24 salarios básicos a las utilidades de cada persona. La Corte Constitucional moduló sus efectos en 2018 y la codificación oficial lo marca como no vigente, así que no lo aplicamos. Si tu empresa lo aplica, consulta en el Ministerio del Trabajo.",
       "fuente": {
@@ -36,7 +43,10 @@
       "id": "ec.canasta-nueva",
       "nivel": "info",
       "desde": "2026-10-07",
-      "aplicaA": ["ec.impuesto-a-la-renta", "ec.sueldo-neto"],
+      "aplicaA": [
+        "ec.impuesto-a-la-renta",
+        "ec.sueldo-neto"
+      ],
       "titulo": "Cambió la canasta básica del INEC",
       "texto": "Desde julio de 2026 el INEC publica la Canasta Familiar Básica de Consumo en lugar de la canasta anterior. La rebaja por gastos personales de 2026 usa la canasta de enero de 2026. Para 2027, usaremos el valor que confirme el SRI.",
       "fuente": {
@@ -51,7 +61,9 @@
       "id": "ec.iva-turismo",
       "nivel": "info",
       "desde": "2026-10-07",
-      "aplicaA": ["ec.iva"],
+      "aplicaA": [
+        "ec.iva"
+      ],
       "texto": "En feriados, el Presidente puede bajar por decreto el IVA de los servicios turísticos al 8 %, solo en las fechas que indique el decreto. Esta calculadora usa la tarifa general.",
       "fuente": {
         "organismo": "Servicio de Rentas Internas (SRI)",
@@ -59,6 +71,40 @@
         "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
         "tipo": "primaria",
         "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "ec.jubilacion-patronal-actuarial",
+      "nivel": "cautela",
+      "desde": "2026-10-12",
+      "aplicaA": [
+        "ec.jubilacion-patronal"
+      ],
+      "titulo": "La pensión exacta sale de un cálculo actuarial",
+      "texto": "El Código del Trabajo fija el haber individual, el mínimo del fondo global y los topes de la pensión. La pensión mensual exacta depende de un coeficiente por edad que fija el Ministerio del Trabajo. Pide a tu empleador el estudio actuarial.",
+      "fuente": {
+        "organismo": "Código del Trabajo",
+        "titulo": "Artículo 216: jubilación a cargo de empleadores",
+        "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      }
+    },
+    {
+      "id": "ec.despido-discapacidad",
+      "nivel": "info",
+      "desde": "2026-10-12",
+      "aplicaA": [
+        "ec.despido-ineficaz",
+        "ec.despido-intempestivo"
+      ],
+      "texto": "Si tienes discapacidad o mantienes a una persona con discapacidad, el despido sin causa tiene una indemnización especial de la ley de discapacidades, que se reformó en 2025. Esta calculadora no la incluye.",
+      "fuente": {
+        "organismo": "Código del Trabajo",
+        "titulo": "Artículo 195.3: el despido de una persona con discapacidad se indemniza según la Ley Orgánica de Discapacidades",
+        "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
       }
     }
   ]

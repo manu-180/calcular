@@ -1,4 +1,4 @@
-# Ecuador: expansión de calculadoras (de 15 a 35+)
+# Ecuador: expansión de calculadoras (de 15 a 38 publicadas)
 
 Fecha: 12/10/2026. Complementa `docs/research/paises/ec.md` (7/10/2026). Todo valor que entra como
 `verificado` en `src/paises/ec/datos.json` se leyó ese día en la fuente primaria que figura en la tabla.
@@ -44,13 +44,15 @@ Demanda: A (alta y todo el año), B (media o estacional fuerte), C (nicho o de c
 | 19 | jubilacion-patronal | C | CT art. 216 | Código del Trabajo | publicada (haber individual, fondo global mínimo y topes; la pensión exacta la fija un cálculo actuarial) |
 | 20 | multa-sri | C | LRTI art. 100 | LRTI del SRI | publicada |
 | 21 | cesantia-iess | C | aportes de cesantía 2 % + 1 % | Tasasdeaportacion.pdf del IESS | publicada |
-| 22 | jubilacion-iess | A | Ley de Seguridad Social y Res. C.D. 100 | coeficientes en C.D. 100 (PDF escaneado); mínimos y máximos 2026 no leídos en fuente primaria | borrador |
-| 23 | pension-alimenticia | A | Acuerdo MDH-DM-2026-0005-A | desarrollohumano.gob.ec no responde desde fuera de Ecuador; no está en la búsqueda del Registro Oficial | no construida |
-| 24 | afiliacion-voluntaria | B | Res. C.D. 467 y reformas | la C.D. 467 (2014) dice 20,50 %; el 17,60 % actual solo aparece en prensa | no construida |
-| 25 | prestamo-quirografario BIESS | B | tasas y plazos del BIESS | biess.fin.ec redirige a un login | no construida |
-| 26 | tablas sectoriales MDT | B | acuerdos del Ministerio del Trabajo | trabajo.gob.ec no responde desde fuera de Ecuador | no construida |
-| 27 | subsidio por enfermedad IESS | C | reglamento de subsidios | sin página del IESS legible | no construida |
-| 28 | despido por discapacidad | C | Ley Orgánica de Discapacidades (reformada en 2025) | texto vigente y numeración no confirmados | no construida |
+| 22 | impuesto-renta-sociedades | B (contadores, pico en abril) | LRTI art. 37 y CT art. 97 | LRTI del SRI | publicada |
+| 23 | validar-cedula | A (formularios y facturación) | algoritmo módulo 10 de la cédula | no requiere dato normativo | publicada |
+| 24 | jubilacion-iess | A | Ley de Seguridad Social y Res. C.D. 100 | coeficientes y requisitos verificados en C.D. 100 (PDF escaneado, tabla leída en dos columnas); mínimos y máximos 2026 solo en prensa | borrador (se publica al verificar mínimos y máximos) |
+| 25 | pension-alimenticia | A | Acuerdo MDH-DM-2026-0005-A | desarrollohumano.gob.ec no responde desde fuera de Ecuador; no está en la búsqueda del Registro Oficial | no construida |
+| 26 | afiliacion-voluntaria | B | Res. C.D. 467 y reformas | la C.D. 467 (2014) dice 20,50 %; el 17,60 % actual solo aparece en prensa | no construida |
+| 27 | prestamo-quirografario BIESS | B | tasas y plazos del BIESS | biess.fin.ec redirige a un login | no construida |
+| 28 | tablas sectoriales MDT | B | acuerdos del Ministerio del Trabajo | trabajo.gob.ec no responde desde fuera de Ecuador | no construida |
+| 29 | subsidio por enfermedad IESS | C | reglamento de subsidios | sin página del IESS legible | no construida |
+| 30 | despido por discapacidad | C | Ley Orgánica de Discapacidades (reformada en 2025) | texto vigente y numeración no confirmados | no construida |
 
 ## Trampas que salieron al leer las normas
 
@@ -76,3 +78,12 @@ Demanda: A (alta y todo el año), B (media o estacional fuerte), C (nicho o de c
 - Pensiones mínimas y máximas de vejez del IESS 2026 (para publicar `jubilacion-iess`).
 - Tasa vigente de la afiliación voluntaria (resolución del IESS posterior a la C.D. 467).
 - Tasas y plazos de los préstamos quirografarios e hipotecarios del BIESS.
+
+## Detectores nuevos (probados contra la red el 12/10/2026)
+
+| Detector | Qué vigila | Resultado real |
+|---|---|---|
+| ec.sri-isd | tarifa general del año y monto exento con tarjeta en la página del ISD | 0 hallazgos: 5 % y USD 5.188,26 coinciden con lo cargado |
+| ec.sri-tabla-herencias | enlace al PDF de la tabla de herencias (cambia de identificador con cada tabla nueva) | 1 hallazgo con el PDF vigente |
+| ec.sri-retenciones | enlace al XLS de porcentajes de retención | 1 hallazgo con el XLS vigente |
+| ec.sri-vehiculos | primer y último tramo de la tabla del impuesto vehicular | 0 hallazgos: coincide con lo cargado |
