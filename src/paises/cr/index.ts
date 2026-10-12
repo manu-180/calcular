@@ -52,6 +52,14 @@ import trabajoDomestico from "./calculadoras/trabajo-domestico";
 import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
 import salarioPorHora from "./calculadoras/salario-por-hora";
 import contenidoSalarioPorHora from "./contenido/salario-por-hora";
+import fcl from "./calculadoras/fcl";
+import contenidoFcl from "./contenido/fcl";
+import rop from "./calculadoras/rop";
+import contenidoRop from "./contenido/rop";
+import salarioEscolar from "./calculadoras/salario-escolar";
+import contenidoSalarioEscolar from "./contenido/salario-escolar";
+import periodoDePrueba from "./calculadoras/periodo-de-prueba";
+import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -90,6 +98,10 @@ export default definirPais({
     { definicion: licenciaDePaternidad, contenido: contenidoLicenciaDePaternidad, cliente: () => import("./calculadoras/licencia-de-paternidad.cliente") },
     { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
     { definicion: salarioPorHora, contenido: contenidoSalarioPorHora, cliente: () => import("./calculadoras/salario-por-hora.cliente") },
+    { definicion: fcl, contenido: contenidoFcl, cliente: () => import("./calculadoras/fcl.cliente") },
+    { definicion: rop, contenido: contenidoRop, cliente: () => import("./calculadoras/rop.cliente") },
+    { definicion: salarioEscolar, contenido: contenidoSalarioEscolar, cliente: () => import("./calculadoras/salario-escolar.cliente") },
+    { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
   ],
   novedades,
   detectores,
