@@ -8,6 +8,7 @@ import inflacion from "./calculadoras/inflacion";
 import irSalarial from "./calculadoras/ir-salarial";
 import iva from "./calculadoras/iva";
 import liquidacion from "./calculadoras/liquidacion";
+import periodoDePrueba from "./calculadoras/periodo-de-prueba";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioNeto from "./calculadoras/salario-neto";
 import tipoDeCambio from "./calculadoras/tipo-de-cambio";
@@ -20,6 +21,7 @@ import contenidoInflacion from "./contenido/inflacion";
 import contenidoIrSalarial from "./contenido/ir-salarial";
 import contenidoIva from "./contenido/iva";
 import contenidoLiquidacion from "./contenido/liquidacion";
+import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioNeto from "./contenido/salario-neto";
 import contenidoTipoDeCambio from "./contenido/tipo-de-cambio";
@@ -48,6 +50,7 @@ export default definirPais({
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
+    { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
   ],
   novedades,
   detectores,

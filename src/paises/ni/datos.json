@@ -439,6 +439,1213 @@
           }
         }
       ]
+    },
+    {
+      "id": "ni.periodo-prueba-dias",
+      "nombre": "Período de prueba máximo en un contrato por tiempo indeterminado",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 28",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.periodo-prueba-domestico-dias",
+      "nombre": "Período de prueba del trabajo doméstico",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 148",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.domestico-especie",
+      "nombre": "Valor de los alimentos y la habitación del trabajo doméstico para calcular prestaciones",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Porcentaje del salario en dinero que se suma cuando el empleador da alimentos y habitación.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 146",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.aguinaldo-plazo-dias",
+      "nombre": "Plazo para pagar el décimo tercer mes",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "Dentro de los primeros diez días de diciembre, o dentro de los diez días después de terminado el contrato.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 95",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.aguinaldo-multa-dias",
+      "nombre": "Indemnización por pagar tarde el décimo tercer mes: días de salario por cada día de retraso",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 95",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.confianza-minimo-meses",
+      "nombre": "Indemnización mínima del trabajador de confianza despedido",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 47",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.confianza-maximo-meses",
+      "nombre": "Indemnización máxima del trabajador de confianza despedido",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 47",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.confianza-antiguedad-minima",
+      "nombre": "Antigüedad continua mínima para la indemnización del trabajador de confianza",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 47",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.riesgo-indemnizacion-dias",
+      "nombre": "Indemnización por muerte o incapacidad total permanente por riesgo profesional",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "La paga el empleador cuando el trabajador no está cubierto por el INSS o no lo afilió (artículo 114).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 620,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículos 114, 120 y 121",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.maternidad-semanas",
+      "nombre": "Semanas de descanso por maternidad",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "prenatal": "Antes del parto",
+        "postnatal": "Después del parto",
+        "postnatal-multiple": "Después de un parto múltiple"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": {
+            "prenatal": 4,
+            "postnatal": 8,
+            "postnatal-multiple": 10
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 141",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.prescripcion-meses",
+      "nombre": "Plazos de prescripción laboral",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "general": "Reclamos de salarios, prestaciones e indemnizaciones (regla general)",
+        "riesgo-profesional": "Indemnización por accidente de trabajo o enfermedad profesional",
+        "nulidad": "Nulidad de un contrato firmado por error, engaño o intimidación",
+        "reintegro": "Pedir el reintegro o reclamar una medida disciplinaria"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": {
+            "general": 12,
+            "riesgo-profesional": 24,
+            "nulidad": 6,
+            "reintegro": 1
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículos 257 a 260",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.permisos-dias",
+      "nombre": "Días de permiso con goce de salario",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "fallecimiento": "Fallecimiento de padre, madre, hijos, cónyuge o pareja en unión de hecho estable",
+        "matrimonio": "Matrimonio",
+        "enfermedad-familiar": "Enfermedad grave de un familiar que vive con vos"
+      },
+      "nota": "Fallecimiento y matrimonio: días hábiles consecutivos con salario completo. Enfermedad grave de un familiar: hasta seis días laborables.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": {
+            "fallecimiento": 3,
+            "matrimonio": 5,
+            "enfermedad-familiar": 6
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículos 73 y 74",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.permiso-enfermedad-familiar-minimo",
+      "nombre": "Salario mínimo durante el permiso por enfermedad grave de un familiar",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 74, literal c",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.subsidio-enfermedad",
+      "nombre": "Subsidio del INSS por enfermedad común",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Del promedio de las últimas 8 cotizaciones semanales dentro de las 22 semanas anteriores. Se paga desde el cuarto día; con hospitalización o accidente, desde el primero. Hasta 52 semanas.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1982-03-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto No. 974, Ley de Seguridad Social, artículo 93",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=OTkwMQ==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.subsidio-enfermedad-dias-espera",
+      "nombre": "Días de incapacidad que no cubre el subsidio por enfermedad común",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1982-03-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto No. 974, Ley de Seguridad Social, artículo 93 (se paga a partir del cuarto día)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=OTkwMQ==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.subsidio-maternidad",
+      "nombre": "Subsidio del INSS por maternidad",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Exige 16 cotizaciones semanales dentro de las 39 semanas anteriores a la fecha probable del parto.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1982-03-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto No. 974, Ley de Seguridad Social, artículos 94 y 95",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=OTkwMQ==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.inss-facultativo",
+      "nombre": "Cotización al seguro facultativo del INSS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "integral": "Facultativo integral (salud y pensiones)",
+        "ivm": "Facultativo IVM (solo pensiones)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": {
+            "integral": 22.25,
+            "ivm": 14
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reforma al artículo 26 del Reglamento General de la Ley de Seguridad Social (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MjQxNDk=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-vejez-edad",
+      "nombre": "Edad para la pensión de vejez",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1982-03-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto No. 975, Reglamento General de la Ley de Seguridad Social, artículo 55",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=OTkwMw==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-vejez-semanas",
+      "nombre": "Cotizaciones semanales para la pensión de vejez completa",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1982-03-01",
+          "valor": 750,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto No. 975, Reglamento General de la Ley de Seguridad Social, artículo 55",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=OTkwMw==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-vejez-reducida-semanas",
+      "nombre": "Cotizaciones semanales mínimas para la pensión reducida de vejez",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-05-27",
+          "valor": 250,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto No. 975, Reglamento General de la Ley de Seguridad Social, artículo 56 (reformado por el Decreto 12-2015)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=OTkwMw==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-factor-basico",
+      "nombre": "Pensión de vejez: factor básico de la tasa de reemplazo",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": 0.2,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reforma al artículo 85 del Reglamento General de la Ley de Seguridad Social (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MjQxNDk=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-factor-anual",
+      "nombre": "Pensión de vejez: factor por cada 52 semanas cotizadas después de las primeras 150",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": 0.01,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reforma al artículo 85 del Reglamento General de la Ley de Seguridad Social (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MjQxNDk=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-semanas-sin-factor",
+      "nombre": "Pensión de vejez: semanas que no suman factor anual",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reforma al artículo 85 del Reglamento General de la Ley de Seguridad Social (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MjQxNDk=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-tasa-maxima",
+      "nombre": "Pensión de vejez: tasa de reemplazo máxima",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": 0.7,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reforma al artículo 85 del Reglamento General de la Ley de Seguridad Social (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MjQxNDk=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-tope-usd",
+      "nombre": "Pensión máxima con asignaciones familiares",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reforma al artículo 85 del Reglamento General de la Ley de Seguridad Social (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MjQxNDk=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-asignaciones",
+      "nombre": "Asignaciones familiares sobre la pensión",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "conyuge": "Por la esposa o el esposo inválido",
+        "dependiente": "Por cada hijo menor de 15 años o ascendiente mayor de 60 a tu cargo"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": {
+            "conyuge": 13.5,
+            "dependiente": 9
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reforma al artículo 85 del Reglamento General de la Ley de Seguridad Social (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MjQxNDk=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-base-semanas",
+      "nombre": "Semanas que se promedian para la remuneración base de la pensión de vejez",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-01",
+          "valor": 375,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto Presidencial 06-2019, reforma al artículo 58 del Reglamento General de la Ley de Seguridad Social (La Gaceta No. 21 del 1/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MjQxNDk=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-alimenticia",
+      "nombre": "Porcentaje de los ingresos netos para la pensión alimenticia",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "un-hijo": "Un hijo o hija",
+        "dos-hijos": "Dos hijos",
+        "tres-o-mas": "Tres o más hijos",
+        "otros": "Adicional por otras personas que reclaman",
+        "maximo": "Máximo total"
+      },
+      "nota": "Cuando el alimentante tiene trabajo estable. Sin trabajo estable, el mínimo por beneficiario es 25 % del salario mínimo de su sector.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-04-06",
+          "valor": {
+            "un-hijo": 25,
+            "dos-hijos": 35,
+            "tres-o-mas": 50,
+            "otros": 10,
+            "maximo": 60
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 870, Código de Familia, artículo 324",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=NzcwMQ==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-alimenticia-minimo",
+      "nombre": "Pensión alimenticia mínima por beneficiario si no hay trabajo estable",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Porcentaje del salario mínimo del sector económico de la profesión u oficio del alimentante.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-04-06",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 870, Código de Familia, artículo 324",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=NzcwMQ==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pension-alimenticia-mora",
+      "nombre": "Recargo por atraso en la pensión alimenticia, por mes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-04-06",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 870, Código de Familia, artículo 325",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=NzcwMQ==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.retenciones-ir",
+      "nombre": "Retenciones en la fuente a cuenta del IR",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "tarjetas": "Ventas pagadas con tarjeta de crédito o débito",
+        "bienes-servicios": "Compra de bienes y servicios en general (incluye construcción y alquileres de negocio)",
+        "agropecuarios": "Compra de bienes agropecuarios fuera de bolsa",
+        "profesionales": "Servicios profesionales o técnicos de personas naturales"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-03-15",
+          "valor": {
+            "tarjetas": 1.5,
+            "bienes-servicios": 2,
+            "agropecuarios": 3,
+            "profesionales": 10
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto 08-2019, reforma al artículo 44 del Reglamento de la Ley de Concertación Tributaria (La Gaceta No. 53 del 15/3/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=hRM5V3%2F1zTQ%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.retencion-minimo-factura",
+      "nombre": "Monto mínimo por factura para aplicar las retenciones del 1.5 % y del 2 %",
+      "tipo": "numero",
+      "unidad": "NIO",
+      "nota": "Las retenciones del 3 % y del 10 % se aplican aunque la factura sea menor.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-03-15",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto 08-2019, reforma al artículo 44 del Reglamento de la Ley de Concertación Tributaria (La Gaceta No. 53 del 15/3/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=hRM5V3%2F1zTQ%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-rentas-capital",
+      "nombre": "Alícuota del IR de rentas de capital (residentes)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-28",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 987, reformas a la Ley de Concertación Tributaria, artículos 61, 80 y 87 (La Gaceta No. 41 del 28/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=FwcscvRKCL0%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-alquiler-deduccion",
+      "nombre": "Deducción única sobre el alquiler de inmuebles para el IR de rentas de capital",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-28",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 987, reformas a la Ley de Concertación Tributaria, artículos 61, 80 y 87 (La Gaceta No. 41 del 28/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=FwcscvRKCL0%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-transmision-bienes",
+      "nombre": "Retención definitiva del IR en la venta de bienes sujetos a registro (inmuebles y vehículos)",
+      "tipo": "escala",
+      "unidad": "USD",
+      "nota": "El porcentaje del tramo se aplica sobre todo el valor, convertido a dólares con el tipo de cambio oficial.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-28",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000,
+              "tasa": 1
+            },
+            {
+              "desde": 50000.01,
+              "hasta": 100000,
+              "tasa": 2
+            },
+            {
+              "desde": 100000.01,
+              "hasta": 200000,
+              "tasa": 3
+            },
+            {
+              "desde": 200000.01,
+              "hasta": 300000,
+              "tasa": 4
+            },
+            {
+              "desde": 300000.01,
+              "hasta": 400000,
+              "tasa": 5
+            },
+            {
+              "desde": 400000.01,
+              "hasta": 500000,
+              "tasa": 6
+            },
+            {
+              "desde": 500000.01,
+              "hasta": null,
+              "tasa": 7
+            }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 987, reformas a la Ley de Concertación Tributaria, artículos 61, 80 y 87 (La Gaceta No. 41 del 28/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=FwcscvRKCL0%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.pago-minimo",
+      "nombre": "Alícuota del pago mínimo definitivo del IR (anticipo mensual)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "grandes": "Grandes contribuyentes",
+        "principales": "Principales contribuyentes",
+        "demas": "Demás contribuyentes"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-28",
+          "valor": {
+            "grandes": 3,
+            "principales": 2,
+            "demas": 1
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 987, reformas a la Ley de Concertación Tributaria, artículos 61, 80 y 87 (La Gaceta No. 41 del 28/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=FwcscvRKCL0%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-actividades-personas",
+      "nombre": "Tarifa del IR de actividades económicas para ingresos brutos de hasta C$12 millones",
+      "tipo": "escala",
+      "unidad": "NIO",
+      "nota": "El porcentaje del estrato se aplica sobre toda la renta neta anual.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 100000,
+              "tasa": 10
+            },
+            {
+              "desde": 100000.01,
+              "hasta": 200000,
+              "tasa": 15
+            },
+            {
+              "desde": 200000.01,
+              "hasta": 350000,
+              "tasa": 20
+            },
+            {
+              "desde": 350000.01,
+              "hasta": 500000,
+              "tasa": 25
+            },
+            {
+              "desde": 500000.01,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículo 52 (La Gaceta No. 241 del 17/12/2012)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=hDitPaCZev8%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La Ley 891 (La Gaceta No. 240 del 18/12/2014) derogó el párrafo que preveía bajar la alícuota; las reformas de 2019 y 2026 no tocan este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-actividades-alicuota",
+      "nombre": "Alícuota general del IR de actividades económicas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículo 52 (La Gaceta No. 241 del 17/12/2012)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=hDitPaCZev8%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La Ley 891 (La Gaceta No. 240 del 18/12/2014) derogó el párrafo que preveía bajar la alícuota; las reformas de 2019 y 2026 no tocan este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-actividades-umbral",
+      "nombre": "Ingresos brutos anuales hasta los que se usa la tarifa progresiva",
+      "tipo": "numero",
+      "unidad": "NIO",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 12000000,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículo 52 (La Gaceta No. 241 del 17/12/2012)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=hDitPaCZev8%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La Ley 891 (La Gaceta No. 240 del 18/12/2014) derogó el párrafo que preveía bajar la alícuota; las reformas de 2019 y 2026 no tocan este artículo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.cuota-fija-minima",
+      "nombre": "Cuota fija mensual: mínimo de cada estrato",
+      "tipo": "escala",
+      "unidad": "NIO",
+      "nota": "El último estrato llega hasta C$100,000 al mes (ni.cuota-fija-tope); con más ingresos no se puede estar en cuota fija.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 10000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 10000.01,
+              "hasta": 20000,
+              "tasa": 0,
+              "cuotaFija": 200
+            },
+            {
+              "desde": 20000.01,
+              "hasta": 40000,
+              "tasa": 0,
+              "cuotaFija": 700
+            },
+            {
+              "desde": 40000.01,
+              "hasta": 60000,
+              "tasa": 0,
+              "cuotaFija": 1200
+            },
+            {
+              "desde": 60000.01,
+              "hasta": 80000,
+              "tasa": 0,
+              "cuotaFija": 2400
+            },
+            {
+              "desde": 80000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 4000
+            }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículos 246, 251 y 253 (La Gaceta No. 241 del 17/12/2012)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=hDitPaCZev8%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.cuota-fija-maxima",
+      "nombre": "Cuota fija mensual: máximo de cada estrato",
+      "tipo": "escala",
+      "unidad": "NIO",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 10000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 10000.01,
+              "hasta": 20000,
+              "tasa": 0,
+              "cuotaFija": 500
+            },
+            {
+              "desde": 20000.01,
+              "hasta": 40000,
+              "tasa": 0,
+              "cuotaFija": 1000
+            },
+            {
+              "desde": 40000.01,
+              "hasta": 60000,
+              "tasa": 0,
+              "cuotaFija": 2100
+            },
+            {
+              "desde": 60000.01,
+              "hasta": 80000,
+              "tasa": 0,
+              "cuotaFija": 3600
+            },
+            {
+              "desde": 80000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 5500
+            }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículos 246, 251 y 253 (La Gaceta No. 241 del 17/12/2012)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=hDitPaCZev8%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.cuota-fija-tope",
+      "nombre": "Ingresos mensuales máximos para la cuota fija",
+      "tipo": "numero",
+      "unidad": "NIO",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículos 246, 251 y 253 (La Gaceta No. 241 del 17/12/2012)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=hDitPaCZev8%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.cuota-fija-inventario",
+      "nombre": "Inventario máximo para la cuota fija",
+      "tipo": "numero",
+      "unidad": "NIO",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 822, Ley de Concertación Tributaria, artículos 246, 251 y 253 (La Gaceta No. 241 del 17/12/2012)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=hDitPaCZev8%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.canasta-basica",
+      "nombre": "Costo mensual de la canasta básica (53 productos)",
+      "tipo": "numero",
+      "unidad": "NIO",
+      "proximaRevision": "2026-10-31",
+      "nota": "Alimentos, usos del hogar y vestuario. El INIDE la publica cada mes con unas seis a ocho semanas de rezago. Cada tramo rige hasta que sale el mes siguiente.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-01-31",
+          "valor": 21249.74,
+          "fuente": {
+            "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
+            "titulo": "Canasta básica de enero de 2026 (53 productos), fila TOTAL CANASTA BÁSICA",
+            "url": "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBene2026.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "hasta": "2026-02-28",
+          "valor": 21164.33,
+          "fuente": {
+            "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
+            "titulo": "Canasta básica de febrero de 2026 (53 productos), fila TOTAL CANASTA BÁSICA",
+            "url": "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBFeb2026.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2026-03-31",
+          "valor": 21120.18,
+          "fuente": {
+            "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
+            "titulo": "Canasta básica de marzo de 2026 (53 productos), fila TOTAL CANASTA BÁSICA",
+            "url": "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBMar26.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2026-04-30",
+          "valor": 21245.69,
+          "fuente": {
+            "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
+            "titulo": "Canasta básica de abril de 2026 (53 productos), fila TOTAL CANASTA BÁSICA",
+            "url": "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBAbr2026.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "hasta": "2026-05-31",
+          "valor": 21372.9,
+          "fuente": {
+            "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
+            "titulo": "Canasta básica de mayo de 2026 (53 productos), fila TOTAL CANASTA BÁSICA",
+            "url": "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBMay2026.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "hasta": "2026-06-30",
+          "valor": 21414.2,
+          "fuente": {
+            "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
+            "titulo": "Canasta básica de junio de 2026 (53 productos), fila TOTAL CANASTA BÁSICA",
+            "url": "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBjun2026.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 21474.94,
+          "fuente": {
+            "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
+            "titulo": "Canasta básica de julio de 2026 (53 productos), fila TOTAL CANASTA BÁSICA",
+            "url": "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBJul2026.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.subsidio-enfermedad-semanas-maximas",
+      "nombre": "Semanas máximas del subsidio por enfermedad común",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1982-03-01",
+          "valor": 52,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Decreto No. 974, Ley de Seguridad Social, artículo 93",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=OTkwMQ==",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }
