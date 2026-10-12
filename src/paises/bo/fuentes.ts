@@ -76,8 +76,31 @@ export function filtrarWp(json: unknown, tema: RegExp, prefijo: string): Hallazg
   return hallazgos;
 }
 
-const TEMAS_LABORALES = /salario m[ií]nimo|incremento salarial|aguinaldo|bono de antig[uü]edad|quinquenio|beneficios sociales|vacaci/i;
-const TEMAS_TRIBUTARIOS = /\bIVA\b|RC-IVA|\bIT\b|transacciones|al[ií]cuota|formulario 110|dependientes/i;
+const TEMAS_LABORALES =
+  /salario m[ií]nimo|incremento salarial|aguinaldo|bono de antig[uü]edad|quinquenio|beneficios sociales|vacaci|finiquito|desahucio|prima anual|maternidad|lactancia|prenatal|subsidio|nocturno|feriado|jornada|licencia/i;
+const TEMAS_TRIBUTARIOS =
+  /\bIVA\b|RC-IVA|\bIT\b|\bIUE\b|transacciones|al[ií]cuota|formulario 110|dependientes|independientes|retenci|herencia|transmisi[oó]n gratuita|transferencia|deuda tributaria/i;
+
+const URL_RSS_MEFP = "https://www.economiayfinanzas.gob.bo/rss.xml";
+const TEMAS_PENSIONES = /pensi[oó]n|pensiones|gestora|aporte|cotizaci|jubilaci|renta dignidad|seguridad social|ley n.? ?065|ley n.? ?1582/i;
+const MESES_RSS: Readonly<Record<string, string>> = { Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06", Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12" };
+
+// El Ministerio de Economía (que regula la Gestora) publica normas y comunicados en un RSS de Drupal
+// con fechas RFC 822 ("Tue, 15 Sep 2026 14:50:33 +0000"); no tiene API JSON.
+export function filtrarRss(xml: string, tema: RegExp, prefijo: string): HallazgoNorma[] | null {
+  if (!xml.includes("<rss")) return null;
+  const hallazgos: HallazgoNorma[] = [];
+  for (const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
+    const titulo = /<title>([\s\S]*?)<\/title>/.exec(m[1])?.[1];
+    const url = /<link>([\s\S]*?)<\/link>/.exec(m[1])?.[1]?.trim();
+    const f = /<pubDate>\w{3}, (\d{2}) (\w{3}) (\d{4})/.exec(m[1]);
+    const fecha = f ? `${f[3]}-${MESES_RSS[f[2]] ?? "00"}-${f[1]}` : null;
+    if (!titulo || !url || !url.startsWith("https://") || !esFechaISO(fecha)) continue;
+    const limpio = decodificar(titulo);
+    if (tema.test(limpio)) hallazgos.push({ titulo: `${prefijo}: ${limpio}`, url, fecha });
+  }
+  return hallazgos;
+}
 
 const URL_INFLACION_BCB = "https://www.bcb.gob.bo/?q=indicadores_inflacion";
 const MESES_BCB = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -159,7 +182,29 @@ export const detectores: readonly Detector[] = [
   {
     id: "bo.mteps-normas",
     carril: "norma",
-    datos: ["bo.salario-minimo", "bo.aguinaldo-meses-minimos", "bo.vacaciones-dias", "bo.bono-antiguedad", "bo.desahucio-sueldos", "bo.indemnizacion-dias-minimos"],
+    datos: [
+      "bo.salario-minimo",
+      "bo.aguinaldo-meses-minimos",
+      "bo.vacaciones-dias",
+      "bo.bono-antiguedad",
+      "bo.desahucio-sueldos",
+      "bo.indemnizacion-dias-minimos",
+      "bo.recargo-feriado",
+      "bo.domingo-trabajado-factor",
+      "bo.recargo-nocturno",
+      "bo.jornada-horas-dia",
+      "bo.subsidio-frontera",
+      "bo.prima-utilidades",
+      "bo.prima-meses-minimos",
+      "bo.maternidad-dias",
+      "bo.maternidad-goce",
+      "bo.maternidad-cotizaciones-minimas",
+      "bo.asignaciones-familiares",
+      "bo.finiquito-plazo-dias",
+      "bo.finiquito-multa",
+      "bo.aporte-salud-patronal",
+      "bo.licencias-dias",
+    ],
     metodo: "api-json",
     url: URL_NOTAS_MTEPS,
     // El Ministerio de Trabajo publica antes que la Gaceta (que no responde desde la red del cron) sus
@@ -178,12 +223,50 @@ export const detectores: readonly Detector[] = [
   {
     id: "bo.sin-normas",
     carril: "norma",
-    datos: ["bo.iva", "bo.it", "bo.rc-iva-alicuota", "bo.rc-iva-minimo-no-imponible", "bo.rc-iva-computo-smn"],
+    datos: [
+      "bo.iva",
+      "bo.it",
+      "bo.rc-iva-alicuota",
+      "bo.rc-iva-minimo-no-imponible",
+      "bo.rc-iva-computo-smn",
+      "bo.rc-iva-independiente-computo-smn",
+      "bo.iue",
+      "bo.iue-utilidad-presunta",
+      "bo.tgb-alicuotas",
+      "bo.imt",
+      "bo.deuda-tributaria-tasas",
+      "bo.multa-omision-pago",
+    ],
     metodo: "api-json",
     url: URL_NOTAS_SIN,
     async traer(http) {
       try {
         return filtrarWp(await http.json(URL_NOTAS_SIN), TEMAS_TRIBUTARIOS, "SIN");
+      } catch {
+        return null;
+      }
+    },
+  },
+  {
+    id: "bo.mefp-pensiones",
+    carril: "norma",
+    datos: [
+      "bo.aportes-laborales",
+      "bo.aportes-patronales",
+      "bo.aportes-independiente",
+      "bo.ingreso-cotizable-independiente",
+      "bo.ans-tasas",
+      "bo.ans-umbrales",
+      "bo.jubilacion-edad",
+      "bo.jubilacion-hijos-maximo",
+      "bo.jubilacion-aportes-minimos",
+      "bo.renta-dignidad-edad",
+    ],
+    metodo: "api-xml",
+    url: URL_RSS_MEFP,
+    async traer(http) {
+      try {
+        return filtrarRss(await http.texto(URL_RSS_MEFP), TEMAS_PENSIONES, "Ministerio de Economía");
       } catch {
         return null;
       }
