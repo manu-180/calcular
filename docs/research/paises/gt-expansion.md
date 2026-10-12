@@ -88,3 +88,19 @@ Demanda: A muy alta, B alta, C media, D nicho con búsqueda real.
 - La edad de la pensión de vejez del IGSS es 60 años, no 62 (Acuerdo 1124, art. 15, reformado por el Acuerdo 1492 de 2021).
 - Las cuotas del IGSS quedaron verificadas en la publicación oficial «IGSS en cifras 2024».
 - El tope del pequeño contribuyente ya no es Q150,000 (Decreto 31-2024, según prensa; sin texto oficial leído).
+
+## Estado al cierre (2026-10-12)
+
+- 36 calculadoras publicadas, todas con contenido (3 o más preguntas frecuentes), al menos 2 casos y
+  registro en `src/paises/gt/index.ts`. IVA, bonificación incentivo y sueldo líquido salieron de
+  borrador con sus datos ya verificados.
+- Textos legales releídos hoy en el Código de Trabajo (edición MINTRAB): arts. 61 ñ, 83, 84, 85, 90,
+  96, 97, 117, 127 a 129 y 161 a 165; coberturas del PRECAPI en el Acuerdo 1235 del IGSS.
+- Interpretaciones a revisar si un lector o un abogado las discute:
+  - Embargo por otras deudas: se toma literal el art. 96 (salario mínimo inembargable; arriba del
+    mínimo, 35 % embargable sobre todo el salario), aunque eso deje menos que el mínimo en la mano.
+  - Ventajas económicas (art. 90): el 30 % se toma sobre el salario total, así que total = dinero / 0,7.
+  - Indemnización y reserva del costo patronal: sextos de aguinaldo y Bono 14 como un doceavo del
+    salario cada uno (aviso `gt.indemnizacion-sextos`).
+- `scripts/paises/gt/ver_contenido.ts` muestra los textos con los marcadores resueltos para revisar
+  cómo se leen los valores formateados.
