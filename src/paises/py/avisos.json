@@ -6,7 +6,7 @@
       "nivel": "info",
       "desde": "2027-05-15",
       "hasta": "2027-07-31",
-      "aplicaA": ["py.salario-minimo", "py.jornal-minimo", "py.vacaciones", "py.bonificacion-familiar"],
+      "aplicaA": ["py.salario-minimo", "py.jornal-minimo", "py.vacaciones", "py.bonificacion-familiar", "py.salario-minimo-por-actividad", "py.tiempo-parcial", "py.ips-independiente"],
       "titulo": "El salario mínimo cambia en julio",
       "texto": "El salario mínimo se reajusta cada año desde el 1 de julio. Cuando salgan el decreto de 2027 y la resolución del MTESS, cargamos los montos nuevos.",
       "fuente": {
