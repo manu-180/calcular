@@ -1,14 +1,12 @@
 // Imprime los textos de las calculadoras de Paraguay con los marcadores {{ }} ya resueltos, para leerlos
 // como los ve la persona (por ejemplo, «dividido 30 días» o «el 100 del promedio» se notan acá).
 // Uso: npx tsx scripts/paises/py/ver_contenido.ts [id-de-calculadora...]
-import path from "node:path";
 import { rellenarContenido, resolverValores } from "../../../src/motor/registro";
 import type { PaisDefinido, Unidad } from "../../../src/motor/tipos";
 import { hoyEn } from "../../../src/motor/vigencia";
-import { importar } from "../../paises_comun";
 
 async function main() {
-  const pais = await importar<PaisDefinido>(path.resolve(__dirname, "../../../src/paises/py/index.ts"));
+  const pais = (await import("../../../src/paises/py")).default as unknown as PaisDefinido;
   const filtro = new Set(process.argv.slice(2));
   const unidades: Record<string, Unidad> = {};
   for (const d of pais.datos) unidades[d.id] = d.unidad;

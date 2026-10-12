@@ -4,13 +4,13 @@ export default definirContenido({
   calculadora: "py.pension-ips",
   h1: "Calculadora de pensión del IPS por fallecimiento",
   title: "Pensión IPS por fallecimiento: cuánto cobra la familia",
-  description: "Calculá la pensión del IPS para la viuda, el viudo y los hijos: el {{py.pension-ips[porcentaje]}} % de la jubilación. Con menos de {{py.pension-ips[semanas-minimas]}} semanas, el subsidio único.",
+  description: "Calculá la pensión del IPS para la viuda, el viudo y los hijos: el {{py.pension-ips[porcentaje]}}% de la jubilación. Con menos de {{py.pension-ips[semanas-minimas]}} semanas, el subsidio único.",
   intro: [
-    "Cuando fallece una persona jubilada o con al menos {{py.pension-ips[semanas-minimas]}} semanas de aporte al IPS, su familia cobra una pensión. Es el {{py.pension-ips[porcentaje]}} % de la jubilación que cobraba o que le hubiera correspondido.",
+    "Cuando fallece una persona jubilada o con al menos {{py.pension-ips[semanas-minimas]}} semanas de aporte al IPS, su familia cobra una pensión. Es el {{py.pension-ips[porcentaje]}}% de la jubilación que cobraba o que le hubiera correspondido.",
     "Si tenía menos semanas, los herederos cobran una sola vez un subsidio de un salario mínimo ({{py.salario-minimo}}) por cada año de aporte.",
   ],
   comoSeCalcula: [
-    "La pensión total es el {{py.pension-ips[porcentaje]}} % de la jubilación.",
+    "La pensión total es el {{py.pension-ips[porcentaje]}}% de la jubilación.",
     "Si hay cónyuge e hijos, la mitad es para el cónyuge y la otra mitad se reparte entre los hijos.",
     "Si hay solo cónyuge, o solo hijos, se llevan toda la pensión.",
     "Con menos de {{py.pension-ips[semanas-minimas]}} semanas, se paga un salario mínimo por cada {{py.pension-ips[semanas-por-anio]}} semanas de aporte, una sola vez.",
@@ -19,7 +19,7 @@ export default definirContenido({
   faq: [
     {
       pregunta: "¿Cuánto es la pensión por viudez del IPS?",
-      respuesta: "El {{py.pension-ips[porcentaje]}} % de la jubilación. Si hay hijos menores, la viuda o el viudo cobra la mitad de esa pensión.",
+      respuesta: "El {{py.pension-ips[porcentaje]}}% de la jubilación. Si hay hijos menores, la viuda o el viudo cobra la mitad de esa pensión.",
     },
     {
       pregunta: "¿Quiénes cobran la pensión?",

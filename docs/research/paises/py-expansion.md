@@ -1,4 +1,4 @@
-# Paraguay: expansión de calculadoras (de 14 a 40+)
+# Paraguay: expansión de calculadoras (de 14 a 44)
 
 Fecha: 12/10/2026. Complementa `py.md` (research base del 6 y 7/10/2026).
 
@@ -44,7 +44,7 @@ Estado: **pub** = publicada con datos verificados; **ya** = existía; **pend** =
 | 25 | bonificacion-familiar | propio | CT arts. 261 a 263 | BACN | ya |
 | 26 | costo-empleador | costo-empleador | IPS 16,5 % | IPS | ya |
 | 27 | salario-bruto | propio | IPS 9 % | IPS | pub |
-| 28 | ips-independiente | aportes-seguridad-social | Ley 4933/2013 art. 3 | BACN | pub |
+| 28 | ips-independiente | propio | Ley 4933/2013 art. 3 | BACN | pub |
 | 29 | jubilacion-ips | jubilacion | Ley 98/1992 (art. 60 del DL 1860/50) | BACN | pub |
 | 30 | permiso-de-maternidad | propio | Ley 5508/2015 arts. 11 a 13 (Ley 7534/2025) | BACN | pub |
 | 31 | tiempo-parcial | propio | Ley 6339/2019 arts. 3, 6; Res. 670 art. 2 | BACN + MTESS | pub |
@@ -55,6 +55,11 @@ Estado: **pub** = publicada con datos verificados; **ya** = existía; **pend** =
 | 36 | embargo-de-salario | propio | CT art. 245 | BACN | pub |
 | 37 | antiguedad-laboral | propio | CT arts. 87, 94, 218 | BACN | pub |
 | 38 | cotizacion-dolar | tipo-de-cambio | BCP | BCP | ya |
+| 38b | cotizacion-real | propio | planilla diaria del BCP (BRL) | BCP | pub |
+| 38c | cotizacion-peso-argentino | propio | planilla diaria del BCP (ARS) | BCP | pub |
+| 38d | cotizacion-euro | propio | planilla diaria del BCP (EUR) | BCP | pub |
+| 29b | pension-ips | propio | Ley 98/92 arts. 62 y 65 (Ley 2263/2003) | BACN | pub |
+| 29c | jubilacion-invalidez-ips | propio | Ley 98/92 art. 61 | BACN | pend: «1,5 % de dicho monto» no deja claro si es sobre el salario promedio o sobre el monto base |
 | 39 | plazo-fijo | plazo-fijo | Ley 6380 art. 56.12 (exención) | BACN | pub |
 | 40 | prestamo | propio | fórmula financiera | no hace falta dato | pub |
 | 41 | reposo-ips | propio | DL 1860/50, reglamento IPS | no | pend: el 50 % del promedio de 4 meses solo aparece en prensa; Ley 98 no fija el porcentaje |
@@ -64,7 +69,7 @@ Estado: **pub** = publicada con datos verificados; **ya** = existía; **pend** =
 
 ## Fuentes primarias usadas (todas leídas el 12/10/2026)
 
-- BACN, buscador JSON `https://www.bacn.gov.py/buscar.php?j=si&s=<texto>` devuelve el id de cada ley; la página `https://www.bacn.gov.py/leyes-paraguayas/<id>/<slug>` acepta cualquier slug. Ids: Ley 213 = 2608, Ley 6380 = 9332, Ley 98 = 4394, Ley 5508 = 4428, Ley 7534 = 12838, Ley 6339 = 8905, Ley 4933 = 4395, Ley 5407 = 4392.
+- BACN, buscador JSON `https://www.bacn.gov.py/buscar.php?j=si&s=<texto>` devuelve el id de cada ley; la página `https://www.bacn.gov.py/leyes-paraguayas/<id>/<slug>` acepta cualquier slug. Ids: Ley 213 = 2608, Ley 6380 = 9332, Ley 98 = 4394, Ley 2263 = 4932, Ley 4290 = 3670, Ley 5508 = 4428, Ley 7534 = 12838, Ley 6339 = 8905, Ley 4933 = 4395, Ley 5407 = 4392.
 - MTESS, Resolución 670/2026 (PDF, 29 páginas; el anexo de actividades sale bien con `pdftotext` sin `-layout`).
 - DNIT, páginas de IRP, IRE, IDU y RESIMPLE (principales características).
 
@@ -73,4 +78,5 @@ Estado: **pub** = publicada con datos verificados; **ya** = existía; **pend** =
 - La tabla de seguridad privada del anexo de la Res. 670 sale corrida una fila en `pdftotext -layout`: 8 h = Gs. 3.044.000, 9 h = 3.424.500, 10 h = 3.805.000, 11 h = 4.185.500, 12 h = 4.566.001 (comprobado con el diario /30 de cada fila).
 - Establecimientos ganaderos tienen un mínimo menor al general (Gs. 2.130.800, el 70 %). No es error.
 - Jubilación proporcional (65 años y 750 semanas, Ley 4290/2011): la ley no da fórmula para el régimen general, solo «proporcional al tiempo de aportes». No se calcula.
+- La planilla diaria del BCP (`/webapps/web/cotizacion/monedas`) acepta POST con `fecha=DD/MM/AAAA` y devuelve ese día: así se cargaron los puntos del real, el peso argentino y el euro. Las páginas `/web/institucional/...` del BCP piden desafío de Cloudflare desde el 12/10/2026; `/webapps/` no.
 - Intereses de depósitos en bancos, financieras y cooperativas están exonerados de IRP (Ley 6380 art. 56 num. 12).
