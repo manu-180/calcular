@@ -13,7 +13,7 @@ import {
   type OfertasCalculadora,
   type OfertasMercado,
 } from "@/lib/pagos/ofertas-intl";
-import { recordarDatosIntl } from "@/lib/prefill/intl-cliente";
+import { olvidarDatosIntl, recordarDatosIntl } from "@/lib/prefill/intl-cliente";
 import type { DatosIntl } from "@/lib/prefill/intl";
 import type { CalculadoraControlada } from "../cliente";
 import { parsearEntrada, type FilaFormateada } from "../formulario";
@@ -78,27 +78,22 @@ export function OfertaResultado({ calculadora, control, contexto }: { calculador
     };
   }, [mercado]);
 
-  // Los crudos del momento del cálculo: si la persona edita un campo después, la oferta sigue
-  // hablando del número que tiene en pantalla, no de uno que todavía no calculó.
-  const crudos = useRef(control.crudos);
-  useEffect(() => {
-    crudos.current = control.crudos;
-  });
-  const estado = control.estado;
-  const { campos, opciones } = control;
+  // El cálculo es en vivo: estado y crudos cambian en el mismo render, así que se leen juntos (una
+  // ref actualizada en un efecto los dejaba un cambio atrás y ese número viajaba al producto).
+  const { estado, crudos, campos, opciones } = control;
   const caso = useMemo(() => {
     if (estado.tipo !== "ok") return null;
     const dinamicas: Record<string, readonly OpcionDinamica[]> = {};
     for (const c of campos) if (c.tipo === "opcion-dato") dinamicas[c.id] = opciones(c);
-    const p = parsearEntrada(campos, crudos.current, contexto, dinamicas);
+    const p = parsearEntrada(campos, crudos, contexto, dinamicas);
     const datos = p.ok ? p.entrada : null;
     const textos = campos.map((c) => {
-      const v = crudos.current[c.id];
+      const v = crudos[c.id];
       const etiqueta = typeof v === "boolean" ? (v ? "Sí" : "No") : (opciones(c).find((o) => o.valor === v)?.etiqueta ?? String(v ?? ""));
       return { etiqueta: c.etiqueta, valor: etiqueta };
     });
     return { filas: estado.filas, entrada: datos, textos };
-  }, [estado, campos, opciones, contexto]);
+  }, [estado, crudos, campos, opciones, contexto]);
 
   const deEsta = ofertas?.porCalculadora[calculadora];
   if (!caso || !deEsta || !deEsta.ofertas.length) return null;
@@ -155,6 +150,7 @@ function Tarjeta({
 
   const guardar = (o: OfertaPublica) => {
     if (caso.entrada) recordarDatosIntl(o.producto, { calc: de.calc, entrada: caso.entrada });
+    else olvidarDatosIntl(o.producto);
   };
 
   return (

@@ -17,7 +17,9 @@ import { objeto, type Crudo } from "./_campos";
 export type EntradaIntl = Readonly<Record<string, ValorEntrada>>;
 export type DatosIntl = { calc: string; entrada: EntradaIntl };
 
-export const DATOS_INTL_MAX = 2048;
+// Por debajo del CHECK de ca_checkouts.datos (2048 bytes de jsonb::text, que agrega espacios): si el
+// código aceptara lo mismo que la base, un payload al límite perdería la fila entera del checkout.
+export const DATOS_INTL_MAX = 1500;
 // Ningún monto real de la región llega a esto (ni en bolívares ni en guaraníes).
 const TOPE_NUMERO = 1e13;
 const RE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;

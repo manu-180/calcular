@@ -45,12 +45,13 @@ function useControl(visible: DefinicionVisible, props: PropsCalculadora, inicial
   const cambiar = useCallback((idCampo: string, valor: string | boolean) => {
     setCrudos((prev) => ({ ...prev, [idCampo]: valor }));
     setTocado(true);
+    setFallo(false);
   }, []);
   const calcular = useCallback(() => setTocado(true), []);
 
   useEffect(() => {
-    if (tocado) precargar();
-  }, [tocado, precargar]);
+    if (tocado && !fallo) precargar();
+  }, [tocado, fallo, precargar]);
 
   const estado = useMemo<EstadoCalculo>(() => {
     const bloqueos = props.avisos.filter((a) => a.nivel === "bloquea");

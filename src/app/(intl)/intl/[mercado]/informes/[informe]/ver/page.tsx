@@ -172,6 +172,7 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
         <InformeVivo
           mercado={m.codigo}
           slug={slug}
+          permitidas={permitidas}
           producto={producto.id}
           definicion={{ id: def.id, campos: def.campos, resultado: def.resultado }}
           props={props}

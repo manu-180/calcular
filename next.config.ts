@@ -154,6 +154,9 @@ const nextConfig: NextConfig = {
       "/informes/ganancias/ver",
       "/informes/inflacion/ver",
       "/informes/credito-laboral/ver",
+      // calcularya: ?pago=<captura> es la llave del informe y de la planilla.
+      "/:mercado/informes/:informe/ver",
+      "/:mercado/planillas/gracias",
     ];
     return [
       { source: "/:path*", headers: base },

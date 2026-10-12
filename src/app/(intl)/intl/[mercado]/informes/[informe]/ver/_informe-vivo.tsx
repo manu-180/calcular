@@ -47,6 +47,7 @@ function textoCrudo(c: Campo, v: string | boolean | undefined, props: PropsCalcu
 export function InformeVivo({
   mercado,
   slug,
+  permitidas,
   producto,
   definicion,
   props,
@@ -60,6 +61,7 @@ export function InformeVivo({
 }: {
   mercado: string;
   slug: string;
+  permitidas: readonly string[];
   producto: string;
   definicion: DefinicionVisible;
   props: PropsCalculadora;
@@ -104,11 +106,20 @@ export function InformeVivo({
   useEffect(() => {
     if (conDatos) return;
     const d = leerDatosIntl(producto);
-    if (!d || d.calc !== slug) return;
+    if (!d) return;
+    if (d.calc !== slug) {
+      // Lo guardado es de otra calculadora de la misma familia: la página se elige por URL.
+      if (permitidas.includes(d.calc)) {
+        const u = new URL(location.href);
+        u.searchParams.set("calc", d.calc);
+        location.replace(u.toString());
+      }
+      return;
+    }
     const nuevos = crudosDeEntrada(definicion.campos, d.entrada, props.contexto.locale, crudosIniciales);
     setCrudos(nuevos);
     recalcular(nuevos);
-  }, [conDatos, producto, slug, definicion.campos, props.contexto.locale, crudosIniciales, recalcular]);
+  }, [conDatos, producto, slug, permitidas, definicion.campos, props.contexto.locale, crudosIniciales, recalcular]);
 
   const clave = estado.tipo === "ok" ? filaClave(estado.filas) : null;
   const errorDe = (id: string) => (estado.tipo === "errores" && estado.errores[id] ? mensajeDeError(estado.errores[id], motor) : null);

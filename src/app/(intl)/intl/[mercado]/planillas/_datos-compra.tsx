@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { leerDatosIntl } from "@/lib/prefill/intl-cliente";
+import { leerDatosIntl, olvidarDatosIntl, recordarDatosIntl } from "@/lib/prefill/intl-cliente";
 import type { DatosIntl } from "@/lib/prefill/intl";
 
 export type CampoResumen = { id: string; etiqueta: string; tipo: string; opciones?: Readonly<Record<string, string>> };
@@ -37,8 +37,9 @@ export function DatosCompra({
       let texto: string;
       if (typeof v === "boolean") texto = v ? "Sí" : "No";
       else if (typeof v === "number") texto = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(v);
-      else if (c.tipo === "fecha" && typeof v === "string") texto = new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeZone: "UTC" }).format(new Date(`${v}T00:00:00Z`));
-      else texto = c.opciones?.[String(v)] ?? String(v);
+      else if (c.tipo === "fecha" && typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(`${v}T00:00:00Z`)))
+        texto = new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeZone: "UTC" }).format(new Date(`${v}T00:00:00Z`));
+      else texto = (c.opciones && Object.prototype.hasOwnProperty.call(c.opciones, String(v)) ? c.opciones[String(v)] : null) ?? String(v);
       return { id: c.id, etiqueta: c.etiqueta, texto };
     });
   return (
@@ -55,7 +56,17 @@ export function DatosCompra({
         ))}
       </dl>
       <label className="cy-casilla">
-        <input type="checkbox" name="usar_datos" value="1" checked={marcado} onChange={(e) => setMarcado(e.target.checked)} />
+        <input
+          type="checkbox"
+          name="usar_datos"
+          value="1"
+          checked={marcado}
+          onChange={(e) => {
+            setMarcado(e.target.checked);
+            if (e.target.checked) recordarDatosIntl(producto, datos);
+            else olvidarDatosIntl(producto);
+          }}
+        />
         <span>{usar}</span>
       </label>
       {marcado ? <input type="hidden" name="datos" value={JSON.stringify({ calc: datos.calc, entrada: datos.entrada })} /> : null}

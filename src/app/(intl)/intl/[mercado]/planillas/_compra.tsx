@@ -31,7 +31,7 @@ export async function PaginaCompra({ params, searchParams, tipo }: ParamsCompra 
   const m = ctx.mercado;
   const t = textosPlanillas(m);
   const clave = uno(sp.error) || uno(sp.pago);
-  const aviso = clave in t.errores ? t.errores[clave as keyof typeof t.errores] : null;
+  const aviso = Object.prototype.hasOwnProperty.call(t.errores, clave) ? t.errores[clave as keyof typeof t.errores] : null;
   const activa = ventaIntlActiva();
   return (
     <div className="cy-pagina">

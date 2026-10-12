@@ -1,3 +1,4 @@
+import { createHmac } from "node:crypto";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { emailValido } from "@/lib/mp";
 import { asentarUnaVez, idsConLaMarca, marcarEntrega, type DepsVenta } from "@/lib/mp-webhook";
@@ -11,12 +12,19 @@ import { decimal, pagoCubre, type NombreProveedor, type PagoVerificado } from ".
 
 export const PROYECTO_INTL = "planillas-intl";
 
+// revenue_events.note se lee con la anon key: la marca de deduplicación no puede ser el id de la
+// captura, que es la llave que abre el informe y la planilla. Va una huella con clave secreta.
+function huella(id: string): string {
+  const clave = process.env.PAYPAL_WEBHOOK_ID || process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+  return createHmac("sha256", clave).update(id).digest("hex").slice(0, 24).toUpperCase();
+}
+
 export function marcaVentaIntl(proveedor: NombreProveedor, id: string): string {
-  return `[${proveedor}:${id}]`;
+  return `[${proveedor}:${huella(id)}]`;
 }
 
 export function marcaDevolucionIntl(proveedor: NombreProveedor, id: string): string {
-  return `[${proveedor}-devuelto:${id}]`;
+  return `[${proveedor}-devuelto:${huella(id)}]`;
 }
 
 // ca_compras.mp_payment_id es NOT NULL UNIQUE desde antes de esta capa: el id de otro proveedor
@@ -34,7 +42,6 @@ export async function registrarVentaIntl(deps: DepsVenta, pago: PagoVerificado, 
     currency: pago.moneda ?? producto.moneda,
     note:
       `Venta automática de ${producto.titulo} ${marca} · producto ${producto.id} · mercado ${producto.mercado}` +
-      (pago.email ? ` · comprador ${pago.email}` : "") +
       `. Registrada por el webhook de ${pago.proveedor}. Monto bruto, sin descontar comisión.`,
   });
 }
@@ -49,7 +56,7 @@ export async function registrarDevolucionIntl(deps: DepsVenta, pago: PagoVerific
     currency: producto.moneda,
     note:
       `${pago.estado === "contracargo" ? "Contracargo" : "Reembolso"} de ${producto.titulo} ${marca}` +
-      ` · producto ${producto.id} · descuenta la venta ${pago.id}. Registrado por el webhook de ${pago.proveedor}.`,
+      ` · producto ${producto.id} · descuenta la venta ${marcaVentaIntl(pago.proveedor, pago.id)}. Registrado por el webhook de ${pago.proveedor}.`,
   });
 }
 

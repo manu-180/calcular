@@ -10,6 +10,9 @@ import { pagoCubre } from "@/lib/pagos/tipos";
 import { leerDatosCheckoutIntl } from "@/lib/pagos/ventas-intl";
 import { parsearDatosIntl, type DatosIntl } from "@/lib/prefill/intl";
 import { claveServicio, servicio } from "@/lib/supabase/servicio";
+import type { CodigoMercado } from "@/motor/tipos";
+import { fechaEnZona } from "@/motor/vigencia";
+import { registro } from "@/paises";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -46,11 +49,16 @@ async function entregar(req: NextRequest, datosDelForm: unknown) {
   }
   if (ref.producto.tipo === "informe") return NextResponse.redirect(new URL(rutaVerInformeIntl(ref.producto, p.nombre, pago.id), req.url), 303);
 
+  // El enlace del mail no vence: se valida con los valores del día de la compra y, si ese día ya no
+  // resuelve, con los de hoy.
+  const zona = registro.pais(ref.producto.mercado as CodigoMercado)?.mercado.zonaHoraria;
+  const fechaCompra = pago.fecha && zona ? fechaEnZona(new Date(pago.fecha), zona) : undefined;
+  const validar = (crudo: unknown) => (fechaCompra && validarDatosDeProducto(ref.producto, crudo, fechaCompra)) || validarDatosDeProducto(ref.producto, crudo);
   let datos: DatosIntl | null = null;
-  if (datosDelForm !== undefined) datos = validarDatosDeProducto(ref.producto, datosDelForm);
+  if (datosDelForm !== undefined) datos = validar(datosDelForm);
   else if (process.env.SUPABASE_URL && claveServicio()) {
     const crudo = await leerDatosCheckoutIntl(servicio(), ref.checkoutId, ref.producto);
-    if (crudo !== null) datos = validarDatosDeProducto(ref.producto, crudo);
+    if (crudo !== null) datos = validar(crudo);
   }
   return servirArchivoIntl(ref.producto, datos);
 }
@@ -66,5 +74,5 @@ export async function POST(req: NextRequest) {
   } catch {
     raw = undefined;
   }
-  return entregar(req, raw ?? null);
+  return entregar(req, raw);
 }

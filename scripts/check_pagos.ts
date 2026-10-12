@@ -16,7 +16,7 @@ import { stripe } from "../src/lib/pagos/stripe";
 import { mercadopago } from "../src/lib/pagos/mercadopago";
 import { proveedorIntl, ventaIntlActiva } from "../src/lib/pagos";
 import { centavos, pagoCubre, ProveedorNoConfigurado } from "../src/lib/pagos/tipos";
-import { sincronizarPagoIntl } from "../src/lib/pagos/ventas-intl";
+import { marcaDevolucionIntl, marcaVentaIntl, sincronizarPagoIntl } from "../src/lib/pagos/ventas-intl";
 import * as mp from "../src/lib/mp";
 import * as mpWebhook from "../src/lib/mp-webhook";
 import * as rutaCheckout from "../src/app/api/pagos/checkout/route";
@@ -285,7 +285,7 @@ const v1 = await rutaVuelta.GET(new NextRequest(`https://calcularya.com/api/pago
 const cap1 = ordenes.get(orden1)!.capturaId;
 check("vuelta: captura y lleva a gracias con el id de la captura", (v1.headers.get("location") ?? "") === `https://calcularya.com/mx/planillas/gracias?proveedor=paypal&pago=${cap1}`, v1.headers.get("location"));
 check("vuelta: la captura lleva PayPal-Request-Id estable", llamadas.some((l) => l.url.endsWith(`/orders/${orden1}/capture`) && l.headers["paypal-request-id"] === `captura-${orden1}`));
-check("vuelta: UNA venta en revenue_events, en USD y con la marca", revenue.length === 1 && revenue[0].currency === "USD" && revenue[0].amount === 9 && revenue[0].note.includes(`[paypal:${cap1}]`) && revenue[0].project_slug === "planillas-intl", revenue);
+check("vuelta: UNA venta en revenue_events, en USD y con la marca", revenue.length === 1 && revenue[0].currency === "USD" && revenue[0].amount === 9 && revenue[0].note.includes(marcaVentaIntl("paypal", cap1)) && revenue[0].project_slug === "planillas-intl", revenue);
 check("vuelta: un mail de entrega, marca CalcularYa, con el enlace de descarga", mails.length === 1 && mails[0].from.startsWith("CalcularYa") && mails[0].html.includes(`https://calcularya.com/api/pagos/descarga?proveedor=paypal&amp;pago=${cap1}`) === false && mails[0].html.includes(`/api/pagos/descarga?proveedor=paypal&pago=${cap1}`));
 check("vuelta: el rastro de entrega queda en la nota", revenue[0].note.includes("Entregado por email"));
 check("mail en tú para México, sin rayas", mails[0].html.includes("Descárgala") && !/[–—]/.test(mails[0].html));
@@ -367,9 +367,12 @@ check("webhook: pasa por el limitador persistente", limites.some((k) => k.starts
 const basura = await rutaWebhook.POST(new NextRequest("https://calcularya.com/api/pagos/paypal/webhook", { method: "POST", body: "no es json" }));
 check("webhook con cuerpo que no es JSON: 400", basura.status === 400);
 
-const aprobada = await rutaWebhook.POST(pedidoWebhook(evento("CHECKOUT.ORDER.APPROVED", { id: orden5 })));
+// PayPal manda la orden con sus purchase_units: sin una referencia nuestra el webhook no captura.
+const aprobada = await rutaWebhook.POST(pedidoWebhook(evento("CHECKOUT.ORDER.APPROVED", { id: orden5, purchase_units: [{ custom_id: ordenes.get(orden5)!.unidad.custom_id }] })));
+const ajena = await rutaWebhook.POST(pedidoWebhook(evento("CHECKOUT.ORDER.APPROVED", { id: orden5, purchase_units: [{ custom_id: "otro-producto-de-la-misma-app" }] })));
+check("CHECKOUT.ORDER.APPROVED sin referencia nuestra: 200 e ignorado, no se captura", ajena.status === 200 && (((await ajena.json()) as { ignorado?: string }).ignorado ?? "").length > 0);
 const cap5 = ordenes.get(orden5)!.capturaId;
-check("CHECKOUT.ORDER.APPROVED: el webhook captura y asienta la venta", aprobada.status === 200 && capturas.has(cap5) && revenue.some((r) => r.note.includes(`[paypal:${cap5}]`)));
+check("CHECKOUT.ORDER.APPROVED: el webhook captura y asienta la venta", aprobada.status === 200 && capturas.has(cap5) && revenue.some((r) => r.note.includes(marcaVentaIntl("paypal", cap5))));
 const mailsAntes = mails.length;
 const filasAntes = revenue.length;
 const ev = evento("PAYMENT.CAPTURE.COMPLETED", { id: cap5, amount: { value: "0.01", currency_code: "USD" } });
@@ -378,7 +381,7 @@ const w2 = await rutaWebhook.POST(pedidoWebhook(ev));
 const j1 = (await w1.json()) as { registrado?: boolean };
 const j2 = (await w2.json()) as { registrado?: boolean };
 check("PAYMENT.CAPTURE.COMPLETED repetido: 200, 200 y sin filas ni mails nuevos", w1.status === 200 && w2.status === 200 && j1.registrado === false && j2.registrado === false && revenue.length === filasAntes && mails.length === mailsAntes);
-check("el monto del cuerpo del evento (0.01) no se usa: la venta quedó en 9", revenue.find((r) => r.note.includes(`[paypal:${cap5}]`))?.amount === 9);
+check("el monto del cuerpo del evento (0.01) no se usa: la venta quedó en 9", revenue.find((r) => r.note.includes(marcaVentaIntl("paypal", cap5)))?.amount === 9);
 
 // Venta que entra primero por el webhook (la persona cerró la pestaña después de pagar).
 const r6 = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: IP, body: new URLSearchParams({ p: PRODUCTO.id, email: "z@example.com" }) }));
@@ -398,7 +401,7 @@ capturas.get(cap6)!.status = "REFUNDED";
 const refund = evento("PAYMENT.CAPTURE.REFUNDED", { id: "REF123456789012", links: [{ rel: "up", href: `https://api.paypal.com/v2/payments/captures/${cap6}` }] });
 await rutaWebhook.POST(pedidoWebhook(refund));
 await rutaWebhook.POST(pedidoWebhook(refund));
-const devol = revenue.filter((r) => r.note.includes(`[paypal-devuelto:${cap6}]`));
+const devol = revenue.filter((r) => r.note.includes(marcaDevolucionIntl("paypal", cap6)));
 check("reembolso: una sola fila negativa, aunque llegue dos veces", devol.length === 1 && devol[0].amount === -9);
 const dRef = await rutaDescarga.GET(new NextRequest(`https://calcularya.com/api/pagos/descarga?proveedor=paypal&pago=${cap6}`));
 check("descarga de una captura reembolsada: 403", dRef.status === 403);
@@ -416,7 +419,7 @@ capturas.get(cap7)!.status = "PARTIALLY_REFUNDED";
 const filas7 = revenue.length;
 const w7 = await rutaWebhook.POST(pedidoWebhook(evento("PAYMENT.CAPTURE.REFUNDED", { id: "REF777777777777", links: [{ rel: "up", href: `https://api.paypal.com/v2/payments/captures/${cap7}` }] })));
 const j7 = (await w7.json()) as { ignorado?: string };
-check("reembolso parcial: 200 ignorado, sin fila negativa", w7.status === 200 && (j7.ignorado ?? "").includes("reembolso parcial") && revenue.length === filas7 && !revenue.some((r) => r.note.includes(`[paypal-devuelto:${cap7}]`)), j7);
+check("reembolso parcial: 200 ignorado, sin fila negativa", w7.status === 200 && (j7.ignorado ?? "").includes("reembolso parcial") && revenue.length === filas7 && !revenue.some((r) => r.note.includes(marcaDevolucionIntl("paypal", cap7))), j7);
 
 // ─── 6. Sincronización con degradación (ca_checkouts / ca_compras) ──────────────────────────
 {

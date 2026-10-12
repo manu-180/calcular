@@ -27,6 +27,10 @@ export interface FrescuraPais extends Frescura {
 
 const masNueva = (fechas: readonly (FechaISO | undefined | null)[]): FechaISO | null =>
   (fechas.filter(Boolean) as FechaISO[]).sort().at(-1) ?? null;
+// «Datos verificados el…» promete que TODOS los datos de la página se leyeron en la fuente ese día:
+// es la fecha más vieja la que no miente. La más nueva queda para «último cambio».
+const masVieja = (fechas: readonly (FechaISO | undefined | null)[]): FechaISO | null =>
+  (fechas.filter(Boolean) as FechaISO[]).sort().at(0) ?? null;
 
 function seriesAutomaticas(pais: Pick<PaisDefinido, "detectores"> | undefined): ReadonlySet<string> | undefined {
   if (!pais) return undefined;
@@ -47,7 +51,7 @@ export function frescuraDeUsados(usados: readonly DatoUsado[], automaticas?: Rea
     .filter((u) => u.clase === "serie")
     .map((u) => ({ id: u.id, nombre: u.nombre, organismo: u.fuente.organismo, fecha: u.desde, automatica: automaticas ? automaticas.has(u.id) : null }));
   return {
-    verificadoEl: masNueva(datos.map((u) => u.fuente.verificadoEl)),
+    verificadoEl: masVieja(datos.map((u) => u.fuente.verificadoEl)),
     actualizadoEl: masNueva(series.map((s) => s.fecha)),
     fuentes: fuentesUnicas(usados.map((u) => u.fuente)),
     series,
