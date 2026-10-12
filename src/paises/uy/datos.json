@@ -2121,6 +2121,96 @@
           }
         }
       ]
+    },
+    {
+      "id": "uy.ui-inicio-anio",
+      "nombre": "Unidad Indexada al 1 de enero (inicio del ejercicio)",
+      "tipo": "numero",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 6.4237,
+          "fuente": {
+            "organismo": "Banco Central del Uruguay (BCU)",
+            "titulo": "Cotizaciones: Unidad Indexada (código 9800) del 1/1/2026",
+            "url": "https://www.bcu.gub.uy/Estadisticas-e-Indicadores/Paginas/Cotizaciones.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "305.000 UI por este valor da $ 1.959.229, el mismo tope que publica el BPS para el monotributo social de sociedades de hecho."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.monotributo-social-jubilatorio",
+      "nombre": "Monotributo social Mides: aportes jubilatorios y FRL por mes según la etapa",
+      "tipo": "mapa",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "1": "Meses 1 a 12",
+        "2": "Meses 13 a 24",
+        "3": "Meses 25 a 36",
+        "4": "Desde el mes 37"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "1": 522,
+            "2": 1045,
+            "3": 1567,
+            "4": 2088
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Monotributo social Mides ley 18.874: valores mínimos para empresas sin dependientes, vigencia enero 2026",
+            "url": "https://www.bps.gub.uy/6667/monotributo-social-mides-ley-18874.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uy.monotributo-social-sin-snis",
+      "nombre": "Monotributo social Mides sin cobertura del Fonasa: aporte total por mes según la etapa",
+      "tipo": "mapa",
+      "unidad": "UYU",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "1": "Meses 1 a 12",
+        "2": "Meses 13 a 24",
+        "3": "Meses 25 a 36",
+        "4": "Desde el mes 37"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "1": 659,
+            "2": 1320,
+            "3": 1979,
+            "4": 2637
+          },
+          "fuente": {
+            "organismo": "Banco de Previsión Social (BPS)",
+            "titulo": "Monotributo social Mides ley 18.874: valores mínimos para empresas sin dependientes, vigencia enero 2026",
+            "url": "https://www.bps.gub.uy/6667/monotributo-social-mides-ley-18874.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Incluye el 8 % de una BPC por seguro de enfermedad, sin cobertura médica."
+          }
+        }
+      ]
     }
   ]
 }

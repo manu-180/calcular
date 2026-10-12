@@ -10,10 +10,12 @@ import contenidoAportesBps from "./contenido/aportes-bps";
 import contenidoAsignacionFamiliar from "./contenido/asignacion-familiar";
 import contenidoCostoEmpleador from "./contenido/costo-empleador";
 import contenidoDespido from "./contenido/despido";
+import contenidoDespidoEspecial from "./contenido/despido-especial";
 import contenidoDevolucionIrpf from "./contenido/devolucion-irpf";
 import contenidoDiasDeLicencia from "./contenido/dias-de-licencia";
 import contenidoDolarBcu from "./contenido/dolar-bcu";
 import contenidoEdadDeJubilacion from "./contenido/edad-de-jubilacion";
+import contenidoFeriadosPagos from "./contenido/feriados-pagos";
 import contenidoHorasExtra from "./contenido/horas-extra";
 import contenidoIass from "./contenido/iass";
 import contenidoInflacion from "./contenido/inflacion";
@@ -23,7 +25,9 @@ import contenidoIva from "./contenido/iva";
 import contenidoJubilacion from "./contenido/jubilacion";
 import contenidoLicenciaMaternal from "./contenido/licencia-maternal";
 import contenidoLiquidacionPorEgreso from "./contenido/liquidacion-por-egreso";
+import contenidoLiteralE from "./contenido/literal-e";
 import contenidoMonotributo from "./contenido/monotributo";
+import contenidoMonotributoSocial from "./contenido/monotributo-social";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioVacacional from "./contenido/salario-vacacional";
 import contenidoSeguroDeParo from "./contenido/seguro-de-paro";
@@ -34,10 +38,12 @@ import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
 import contenidoValorUi from "./contenido/valor-ui";
 import costoEmpleador from "./calculadoras/costo-empleador";
 import despido from "./calculadoras/despido";
+import despidoEspecial from "./calculadoras/despido-especial";
 import devolucionIrpf from "./calculadoras/devolucion-irpf";
 import diasDeLicencia from "./calculadoras/dias-de-licencia";
 import dolarBcu from "./calculadoras/dolar-bcu";
 import edadDeJubilacion from "./calculadoras/edad-de-jubilacion";
+import feriadosPagos from "./calculadoras/feriados-pagos";
 import horasExtra from "./calculadoras/horas-extra";
 import iass from "./calculadoras/iass";
 import inflacion from "./calculadoras/inflacion";
@@ -47,7 +53,9 @@ import iva from "./calculadoras/iva";
 import jubilacion from "./calculadoras/jubilacion";
 import licenciaMaternal from "./calculadoras/licencia-maternal";
 import liquidacionPorEgreso from "./calculadoras/liquidacion-por-egreso";
+import literalE from "./calculadoras/literal-e";
 import monotributo from "./calculadoras/monotributo";
+import monotributoSocial from "./calculadoras/monotributo-social";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioVacacional from "./calculadoras/salario-vacacional";
 import seguroDeParo from "./calculadoras/seguro-de-paro";
@@ -90,11 +98,15 @@ export default definirPais({
     { definicion: monotributo, contenido: contenidoMonotributo, cliente: () => import("./calculadoras/monotributo.cliente") },
     { definicion: asignacionFamiliar, contenido: contenidoAsignacionFamiliar, cliente: () => import("./calculadoras/asignacion-familiar.cliente") },
     { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
+    { definicion: despidoEspecial, contenido: contenidoDespidoEspecial, cliente: () => import("./calculadoras/despido-especial.cliente") },
     { definicion: devolucionIrpf, contenido: contenidoDevolucionIrpf, cliente: () => import("./calculadoras/devolucion-irpf.cliente") },
     { definicion: edadDeJubilacion, contenido: contenidoEdadDeJubilacion, cliente: () => import("./calculadoras/edad-de-jubilacion.cliente") },
+    { definicion: feriadosPagos, contenido: contenidoFeriadosPagos, cliente: () => import("./calculadoras/feriados-pagos.cliente") },
     { definicion: iass, contenido: contenidoIass, cliente: () => import("./calculadoras/iass.cliente") },
     { definicion: irpfAlquileres, contenido: contenidoIrpfAlquileres, cliente: () => import("./calculadoras/irpf-alquileres.cliente") },
     { definicion: licenciaMaternal, contenido: contenidoLicenciaMaternal, cliente: () => import("./calculadoras/licencia-maternal.cliente") },
+    { definicion: literalE, contenido: contenidoLiteralE, cliente: () => import("./calculadoras/literal-e.cliente") },
+    { definicion: monotributoSocial, contenido: contenidoMonotributoSocial, cliente: () => import("./calculadoras/monotributo-social.cliente") },
     { definicion: subsidioPorEnfermedad, contenido: contenidoSubsidioPorEnfermedad, cliente: () => import("./calculadoras/subsidio-por-enfermedad.cliente") },
   ],
   novedades,

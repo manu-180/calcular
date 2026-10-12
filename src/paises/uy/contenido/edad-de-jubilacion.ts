@@ -12,7 +12,7 @@ export default definirContenido({
   ],
   comoSeCalcula: [
     "Si naciste antes de 1973, seguís con el régimen anterior: {{uy.jubilacion-anterior[edad]}} de edad y {{uy.jubilacion-anterior[servicios]}} de servicio.",
-    "Si naciste de 1973 a 1976, la edad con 30 años de servicio sube un año por cada año de nacimiento:{{uy.jubilacion-edad-normal[1973]}} si naciste en 1973 y {{uy.jubilacion-edad-normal[1976]}} si naciste en 1976.",
+    "Si naciste de 1973 a 1976, la edad con 30 años de servicio sube un año por cada año de nacimiento: {{uy.jubilacion-edad-normal[1973]}} si naciste en 1973 y {{uy.jubilacion-edad-normal[1976]}} si naciste en 1976.",
     "Desde 1977, la edad es {{uy.jubilacion-edad-normal[1977]}} con 30 años de servicio.",
     "Con menos años de servicio te jubilás más tarde: por ejemplo, a los 70 con {{uy.jubilacion-anios-minimos[70]}}. Si aportás al BPS, a los 65 alcanza con {{uy.jubilacion-anios-minimos-bps[65]}}.",
   ],
