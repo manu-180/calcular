@@ -1258,7 +1258,7 @@
       "id": "sv.isss-subsidio-dia-comun",
       "nombre": "Día desde el que el ISSS paga el subsidio por enfermedad o accidente común",
       "tipo": "numero",
-      "unidad": "dias",
+      "unidad": "numero",
       "tramos": [
         {
           "estado": "verificado",
@@ -1279,7 +1279,7 @@
       "id": "sv.isss-subsidio-dia-profesional",
       "nombre": "Día desde el que el ISSS paga el subsidio por accidente de trabajo o enfermedad profesional",
       "tipo": "numero",
-      "unidad": "dias",
+      "unidad": "numero",
       "tramos": [
         {
           "estado": "verificado",
