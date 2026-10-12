@@ -72,6 +72,12 @@ import ipi from "./calculadoras/ipi";
 import contenidoIpi from "./contenido/ipi";
 import propinaLegal from "./calculadoras/propina-legal";
 import contenidoPropinaLegal from "./contenido/propina-legal";
+import gananciaCapitalInmueble from "./calculadoras/ganancia-capital-inmueble";
+import contenidoGananciaCapitalInmueble from "./contenido/ganancia-capital-inmueble";
+import dividendos from "./calculadoras/dividendos";
+import contenidoDividendos from "./contenido/dividendos";
+import prestamo from "./calculadoras/prestamo";
+import contenidoPrestamo from "./contenido/prestamo";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -120,6 +126,9 @@ export default definirPais({
     { definicion: certificadoFinanciero, contenido: contenidoCertificadoFinanciero, cliente: () => import("./calculadoras/certificado-financiero.cliente") },
     { definicion: ipi, contenido: contenidoIpi, cliente: () => import("./calculadoras/ipi.cliente") },
     { definicion: propinaLegal, contenido: contenidoPropinaLegal, cliente: () => import("./calculadoras/propina-legal.cliente") },
+    { definicion: gananciaCapitalInmueble, contenido: contenidoGananciaCapitalInmueble, cliente: () => import("./calculadoras/ganancia-capital-inmueble.cliente") },
+    { definicion: dividendos, contenido: contenidoDividendos, cliente: () => import("./calculadoras/dividendos.cliente") },
+    { definicion: prestamo, contenido: contenidoPrestamo, cliente: () => import("./calculadoras/prestamo.cliente") },
   ],
   novedades,
   detectores,

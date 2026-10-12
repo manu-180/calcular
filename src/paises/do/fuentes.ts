@@ -87,6 +87,45 @@ export function parsearTablasDgii(html: string): HallazgoNorma[] | null {
   return hallazgos;
 }
 
+
+// Datos revisados a mano el 12/10/2026: los detectores nuevos avisan solo de lo publicado después.
+const REVISADO_HASTA: FechaISO = "2026-10-12";
+const ULTIMO_AJUSTE_DGII = 2026;
+
+function fechaDdMmAaaa(texto: string): FechaISO | null {
+  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(texto.trim());
+  return m ? fecha(Number(m[3]), Number(m[2]), Number(m[1])) : null;
+}
+
+// Cada enero la DGII publica la resolución DDG-AR1-<año>-00001 con los montos ajustados por inflación
+// (exento del IPI, tope del RST, límites para devolver la retención por intereses). Una del año
+// siguiente al último cargado es la señal para actualizar esos datos.
+export function parsearResolucionesAjuste(html: string): HallazgoNorma[] | null {
+  if (!html.includes("AR1-")) return null;
+  const hallazgos: HallazgoNorma[] = [];
+  for (const m of html.matchAll(/href="([^"]*DDG-\s*AR1-(\d{4})-00001\.pdf)"/g)) {
+    const anio = Number(m[2]);
+    if (anio <= ULTIMO_AJUSTE_DGII) continue;
+    const url = new URL(m[1].replace(/ /g, "%20"), "https://dgii.gov.do").toString();
+    if (hallazgos.some((h) => h.url === url)) continue;
+    hallazgos.push({ titulo: `Resolución DDG-AR1-${anio}-00001: montos ajustados por inflación`, url, fecha: `${anio}-01-01` as FechaISO });
+  }
+  return hallazgos;
+}
+
+export function parsearAvisosDgii(html: string, tema: RegExp, desde: FechaISO): HallazgoNorma[] | null {
+  if (!html.includes("avisosInformativos/Documents")) return null;
+  const hallazgos: HallazgoNorma[] = [];
+  const tarjeta = /<li data-title="([^"]+)" data-type="pdf" data-modified="([^"]+)"[\s\S]*?href="([^"]+)"[\s\S]*?file-card__date">([^<]*)</g;
+  for (const m of html.matchAll(tarjeta)) {
+    const f = fechaDdMmAaaa(m[2]);
+    const descripcion = m[4].replace(/\s+/g, " ").trim();
+    if (!f || f <= desde || !tema.test(descripcion)) continue;
+    hallazgos.push({ titulo: `${m[1]}: ${descripcion}`, url: new URL(m[3].replace(/ /g, "%20"), "https://dgii.gov.do").toString(), fecha: f });
+  }
+  return hallazgos;
+}
+
 export const detectores: readonly Detector[] = [
   {
     id: "do.dolar-compra-bcrd",
@@ -150,6 +189,53 @@ export const detectores: readonly Detector[] = [
     url: "https://dgii.gov.do/publicacionesOficiales/tablaRetenciones/Paginas/default.aspx",
     async traer(http) {
       return parsearTablasDgii(await http.texto(this.url));
+    },
+  },
+  {
+    id: "do.dgii-ajuste-inflacion",
+    carril: "norma",
+    datos: ["do.ipi-exento", "do.devolucion-intereses-limites", "do.rst-tope-ingresos"],
+    metodo: "html",
+    url: "https://dgii.gov.do/legislacion/resoluciones/Paginas/default.aspx",
+    async traer(http) {
+      return parsearResolucionesAjuste(await http.texto(this.url));
+    },
+  },
+  {
+    id: "do.dgii-avisos-tributarios",
+    carril: "norma",
+    datos: [
+      "do.retencion-honorarios",
+      "do.retencion-alquileres",
+      "do.retencion-premios-loteria",
+      "do.retencion-premios-bancas",
+      "do.retencion-intereses",
+      "do.retencion-dividendos",
+      "do.impuesto-transferencias",
+      "do.gastos-educativos-tope-ingreso",
+      "do.gastos-educativos-tope-exento",
+      "do.gastos-educativos-tope-discapacidad",
+      "do.ipi-tasa",
+      "do.ganancia-capital-inmuebles",
+    ],
+    metodo: "html",
+    url: "https://dgii.gov.do/publicacionesOficiales/avisosInformativos/Paginas/default.aspx",
+    async traer(http) {
+      return parsearAvisosDgii(
+        await http.texto(this.url),
+        /retenci|transferencia|cheque|educativ|patrimonio|IPI|ganancia de capital|dividend|premio|30-26|Ley n[uú]m/i,
+        REVISADO_HASTA,
+      );
+    },
+  },
+  {
+    id: "do.dida-subsidios",
+    carril: "norma",
+    datos: ["do.maternidad-semanas", "do.maternidad-semanas-antes", "do.lactancia-porcentaje", "do.lactancia-meses", "do.enfermedad-ambulatoria", "do.enfermedad-hospitalaria", "do.enfermedad-semanas"],
+    metodo: "api-json",
+    url: "https://www.dida.gob.do/wp-json/wp/v2/posts?search=subsidio&per_page=30&_fields=date,link,title",
+    async traer(http) {
+      return parsearPostsWordpress(await http.json(this.url), /maternidad|lactancia|enfermedad|subsidio/i, REVISADO_HASTA);
     },
   },
 ];

@@ -1445,6 +1445,47 @@
           "motivo": "El 1 % de la Ley 116-80 (art. 24) solo lo leímos en prensa y en una copia de la ley fuera de un sitio oficial. infotep.gob.do responde 403 y los instructivos de la TSS ya no están publicados."
         }
       ]
+    },
+    {
+      "id": "do.ganancia-capital-inmuebles",
+      "nombre": "Impuesto a la ganancia de capital en la venta de inmuebles de personas físicas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-26",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 30-26 del 18/6/2026, artículo 14 (nuevo art. 296-1 del Código Tributario)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/30-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El Aviso de la DGII del 26/6/2026 lo da como de aplicación inmediata; se carga desde la fecha del aviso."
+          }
+        }
+      ]
+    },
+    {
+      "id": "do.retencion-dividendos",
+      "nombre": "Retención de ISR a dividendos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Dirección General de Impuestos Internos (DGII)",
+            "titulo": "Ley 253-12, artículo 8 (art. 308 del Código Tributario)",
+            "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Codigo%20Tributario%20y%20Leyes%20que%20lo%20modifican%20y%20complementan/253-12.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }
