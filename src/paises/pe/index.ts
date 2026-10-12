@@ -52,6 +52,14 @@ import feriadoTrabajado from "./calculadoras/feriado-trabajado";
 import contenidoFeriadoTrabajado from "./contenido/feriado-trabajado";
 import sueldoPorHora from "./calculadoras/sueldo-por-hora";
 import contenidoSueldoPorHora from "./contenido/sueldo-por-hora";
+import utilidades from "./calculadoras/utilidades";
+import contenidoUtilidades from "./contenido/utilidades";
+import periodoDePrueba from "./calculadoras/periodo-de-prueba";
+import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
+import preavisoDeRenuncia from "./calculadoras/preaviso-de-renuncia";
+import contenidoPreavisoDeRenuncia from "./contenido/preaviso-de-renuncia";
+import retiroDeCts from "./calculadoras/retiro-de-cts";
+import contenidoRetiroDeCts from "./contenido/retiro-de-cts";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -90,6 +98,10 @@ export default definirPais({
     { definicion: trabajoNocturno, contenido: contenidoTrabajoNocturno, cliente: () => import("./calculadoras/trabajo-nocturno.cliente") },
     { definicion: feriadoTrabajado, contenido: contenidoFeriadoTrabajado, cliente: () => import("./calculadoras/feriado-trabajado.cliente") },
     { definicion: sueldoPorHora, contenido: contenidoSueldoPorHora, cliente: () => import("./calculadoras/sueldo-por-hora.cliente") },
+    { definicion: utilidades, contenido: contenidoUtilidades, cliente: () => import("./calculadoras/utilidades.cliente") },
+    { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
+    { definicion: preavisoDeRenuncia, contenido: contenidoPreavisoDeRenuncia, cliente: () => import("./calculadoras/preaviso-de-renuncia.cliente") },
+    { definicion: retiroDeCts, contenido: contenidoRetiroDeCts, cliente: () => import("./calculadoras/retiro-de-cts.cliente") },
   ],
   novedades,
   detectores,
