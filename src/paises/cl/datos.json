@@ -677,6 +677,19 @@
       "tramos": [
         {
           "estado": "verificado",
+          "desde": "2025-08-01",
+          "hasta": "2026-07-31",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.735, artículo cuarto transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1212060",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
           "desde": "2026-08-01",
           "hasta": "2027-07-31",
           "valor": 3.5,
@@ -686,6 +699,101 @@
             "url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-10906.html",
             "tipo": "primaria",
             "verificadoEl": "2026-10-08"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-08-01",
+          "hasta": "2028-07-31",
+          "valor": 4.25,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.735, artículo cuarto transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1212060",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-08-01",
+          "hasta": "2029-07-31",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.735, artículo cuarto transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1212060",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2029-08-01",
+          "valor": 5.7,
+          "motivo": "La ley fija esta tasa, pero baja si la evaluación externa de la Ley 21.713 muestra menos recaudación (artículo cuarto transitorio). Se confirma cuando se conozca esa evaluación.",
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.735, artículo cuarto transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1212060",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          },
+          "hasta": "2030-07-31"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2030-08-01",
+          "valor": 6.4,
+          "motivo": "La ley fija esta tasa, pero baja si la evaluación externa de la Ley 21.713 muestra menos recaudación (artículo cuarto transitorio). Se confirma cuando se conozca esa evaluación.",
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.735, artículo cuarto transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1212060",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          },
+          "hasta": "2031-07-31"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2031-08-01",
+          "valor": 7.1,
+          "motivo": "La ley fija esta tasa, pero baja si la evaluación externa de la Ley 21.713 muestra menos recaudación (artículo cuarto transitorio). Se confirma cuando se conozca esa evaluación.",
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.735, artículo cuarto transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1212060",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          },
+          "hasta": "2032-07-31"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2032-08-01",
+          "valor": 7.8,
+          "motivo": "La ley fija esta tasa, pero baja si la evaluación externa de la Ley 21.713 muestra menos recaudación (artículo cuarto transitorio). Se confirma cuando se conozca esa evaluación.",
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.735, artículo cuarto transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1212060",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          },
+          "hasta": "2033-07-31"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2033-08-01",
+          "valor": 8.5,
+          "motivo": "La ley fija esta tasa, pero baja si la evaluación externa de la Ley 21.713 muestra menos recaudación (artículo cuarto transitorio). Se confirma cuando se conozca esa evaluación.",
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley 21.735, artículo cuarto transitorio",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1212060",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
           }
         }
       ]
@@ -778,6 +886,729 @@
             "url": "https://www.suseso.gob.cl/612/w3-propertyvalue-133496.html",
             "tipo": "primaria",
             "verificadoEl": "2026-10-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.aviso-previo-dias",
+      "nombre": "Anticipación del aviso de despido por necesidades de la empresa",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 162, inciso cuarto (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.feriado-progresivo-anios-base",
+      "nombre": "Años de trabajo para tener feriado progresivo",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 68 (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.feriado-progresivo-cada",
+      "nombre": "Años nuevos trabajados por cada día de feriado progresivo",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 68 (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.feriado-progresivo-tope-anteriores",
+      "nombre": "Máximo de años con empleadores anteriores que cuentan para el feriado progresivo",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 68, inciso segundo (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.prenatal-dias",
+      "nombre": "Descanso prenatal",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 42,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 195 (seis semanas antes del parto) (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.postnatal-dias",
+      "nombre": "Descanso postnatal",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 84,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 195 (doce semanas después del parto) (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.postnatal-prematuro-dias",
+      "nombre": "Descanso postnatal si el parto es antes de la semana 33 o el bebé pesa menos de 1.500 gramos",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 126,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 196 (dieciocho semanas) (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.postnatal-dias-por-hijo-adicional",
+      "nombre": "Días de postnatal por cada hijo adicional en un parto múltiple",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 196 (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.postnatal-parental-dias",
+      "nombre": "Permiso postnatal parental a jornada completa",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 84,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 197 bis (doce semanas) (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.postnatal-parental-parcial-dias",
+      "nombre": "Permiso postnatal parental a media jornada",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 126,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 197 bis, inciso segundo (dieciocho semanas) (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.jornada-diaria-maxima",
+      "nombre": "Jornada ordinaria máxima por día",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 28, inciso segundo (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.jornada-dias-minimo",
+      "nombre": "Mínimo de días en que se distribuye la jornada semanal",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 28, inciso primero (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.jornada-dias-maximo",
+      "nombre": "Máximo de días en que se distribuye la jornada semanal",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Código del Trabajo, artículo 28, inciso primero (versión del 23/07/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.asignacion-familiar",
+      "nombre": "Asignación familiar y maternal: monto por carga según ingreso mensual",
+      "tipo": "escala",
+      "unidad": "CLP",
+      "proximaRevision": "2027-01-01",
+      "nota": "Escala con tasa 0: cuotaFija es el monto por carga del tramo. Desde el 1/1/2027 los límites de ingreso suben en la misma proporción que el ingreso mínimo (Ley 21.830, artículo 6).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 649039,
+              "tasa": 0,
+              "cuotaFija": 22601
+            },
+            {
+              "desde": 649039.01,
+              "hasta": 947990,
+              "tasa": 0,
+              "cuotaFija": 13870
+            },
+            {
+              "desde": 947990.01,
+              "hasta": 1478539,
+              "tasa": 0,
+              "cuotaFija": 4382
+            },
+            {
+              "desde": 1478539.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.830, publicada el 22/06/2026, artículos 4 y 5",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/06/22/44481-B/01/2829298.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.subsidio-familiar",
+      "nombre": "Subsidio familiar (SUF) por carga",
+      "tipo": "numero",
+      "unidad": "CLP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 22601,
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.830, publicada el 22/06/2026, artículos 4 y 5",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/06/22/44481-B/01/2829298.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.alimentos-minimo-un-hijo",
+      "nombre": "Pensión de alimentos mínima para un hijo o hija (porcentaje del ingreso mínimo)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "DFL 1 de 2000 (Justicia), texto refundido de la Ley 14.908, artículos 3 y 7",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=172986",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.alimentos-minimo-varios",
+      "nombre": "Pensión de alimentos mínima por cada hijo o hija si son dos o más (porcentaje del ingreso mínimo)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "DFL 1 de 2000 (Justicia), texto refundido de la Ley 14.908, artículos 3 y 7",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=172986",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.alimentos-maximo",
+      "nombre": "Máximo de la pensión de alimentos (porcentaje de las rentas de quien paga)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "DFL 1 de 2000 (Justicia), texto refundido de la Ley 14.908, artículos 3 y 7",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=172986",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.fcs-porcentaje",
+      "nombre": "Fondo de Cesantía Solidario: porcentaje del promedio de remuneraciones por giro",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "indefinido-1": "Contrato indefinido, giro 1",
+        "indefinido-2": "Contrato indefinido, giro 2",
+        "indefinido-3": "Contrato indefinido, giro 3",
+        "indefinido-4": "Contrato indefinido, giro 4",
+        "indefinido-5": "Contrato indefinido, giro 5",
+        "plazo-fijo-1": "Plazo fijo u obra, giro 1",
+        "plazo-fijo-2": "Plazo fijo u obra, giro 2",
+        "plazo-fijo-3": "Plazo fijo u obra, giro 3",
+        "plazo-fijo-4": "Plazo fijo u obra, giro 4",
+        "plazo-fijo-5": "Plazo fijo u obra, giro 5"
+      },
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-06",
+          "hasta": "2027-02-28",
+          "valor": {
+            "indefinido-1": 70,
+            "indefinido-2": 60,
+            "indefinido-3": 45,
+            "indefinido-4": 40,
+            "indefinido-5": 35,
+            "plazo-fijo-1": 60,
+            "plazo-fijo-2": 40,
+            "plazo-fijo-3": 35,
+            "plazo-fijo-4": 30,
+            "plazo-fijo-5": 30
+          },
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Superintendencia de Pensiones, Resolución exenta 383 del 6/3/2026 (publicada el 17/3/2026), valores del artículo 25 de la Ley 19.728",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/17/44402/01/2781409.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.fcs-valor-superior",
+      "nombre": "Fondo de Cesantía Solidario: monto máximo de cada giro",
+      "tipo": "mapa",
+      "unidad": "CLP",
+      "etiquetas": {
+        "indefinido-1": "Contrato indefinido, giro 1",
+        "indefinido-2": "Contrato indefinido, giro 2",
+        "indefinido-3": "Contrato indefinido, giro 3",
+        "indefinido-4": "Contrato indefinido, giro 4",
+        "indefinido-5": "Contrato indefinido, giro 5",
+        "plazo-fijo-1": "Plazo fijo u obra, giro 1",
+        "plazo-fijo-2": "Plazo fijo u obra, giro 2",
+        "plazo-fijo-3": "Plazo fijo u obra, giro 3",
+        "plazo-fijo-4": "Plazo fijo u obra, giro 4",
+        "plazo-fijo-5": "Plazo fijo u obra, giro 5"
+      },
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-06",
+          "hasta": "2027-02-28",
+          "valor": {
+            "indefinido-1": 1004003,
+            "indefinido-2": 860574,
+            "indefinido-3": 645429,
+            "indefinido-4": 573718,
+            "indefinido-5": 502002,
+            "plazo-fijo-1": 860574,
+            "plazo-fijo-2": 573718,
+            "plazo-fijo-3": 502002,
+            "plazo-fijo-4": 430288,
+            "plazo-fijo-5": 430288
+          },
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Superintendencia de Pensiones, Resolución exenta 383 del 6/3/2026 (publicada el 17/3/2026), valores del artículo 25 de la Ley 19.728",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/17/44402/01/2781409.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.fcs-valor-inferior",
+      "nombre": "Fondo de Cesantía Solidario: monto mínimo de cada giro",
+      "tipo": "mapa",
+      "unidad": "CLP",
+      "etiquetas": {
+        "indefinido-1": "Contrato indefinido, giro 1",
+        "indefinido-2": "Contrato indefinido, giro 2",
+        "indefinido-3": "Contrato indefinido, giro 3",
+        "indefinido-4": "Contrato indefinido, giro 4",
+        "indefinido-5": "Contrato indefinido, giro 5",
+        "plazo-fijo-1": "Plazo fijo u obra, giro 1",
+        "plazo-fijo-2": "Plazo fijo u obra, giro 2",
+        "plazo-fijo-3": "Plazo fijo u obra, giro 3",
+        "plazo-fijo-4": "Plazo fijo u obra, giro 4",
+        "plazo-fijo-5": "Plazo fijo u obra, giro 5"
+      },
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-06",
+          "hasta": "2027-02-28",
+          "valor": {
+            "indefinido-1": 301201,
+            "indefinido-2": 258171,
+            "indefinido-3": 193629,
+            "indefinido-4": 172115,
+            "indefinido-5": 150602,
+            "plazo-fijo-1": 258161,
+            "plazo-fijo-2": 172115,
+            "plazo-fijo-3": 150602,
+            "plazo-fijo-4": 129085,
+            "plazo-fijo-5": 129085
+          },
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Superintendencia de Pensiones, Resolución exenta 383 del 6/3/2026 (publicada el 17/3/2026), valores del artículo 25 de la Ley 19.728",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/17/44402/01/2781409.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.pgu-maxima",
+      "nombre": "Monto máximo de la PGU según edad",
+      "tipo": "mapa",
+      "unidad": "CLP",
+      "proximaRevision": "2027-02-01",
+      "etiquetas": {
+        "menor-75": "De 65 a 74 años",
+        "75-o-mas": "75 años o más"
+      },
+      "nota": "Se reajusta cada febrero por IPC. Desde septiembre de 2027 el monto mayor alcanza a todas las personas de 65 años o más (ChileAtiende, ficha 130457).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": {
+            "menor-75": 231732,
+            "75-o-mas": 250275
+          },
+          "fuente": {
+            "organismo": "ChileAtiende",
+            "titulo": "Pensión Garantizada Universal (PGU): montos y requisitos",
+            "url": "https://www.chileatiende.gob.cl/fichas/102077-pension-garantizada-universal-pgu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El monto de 75 años o más rige desde septiembre de 2026: https://www.chileatiende.gob.cl/fichas/130457"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.pgu-pension-inferior",
+      "nombre": "PGU: pensión base inferior (hasta aquí se recibe el monto máximo)",
+      "tipo": "numero",
+      "unidad": "CLP",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 789139,
+          "fuente": {
+            "organismo": "ChileAtiende",
+            "titulo": "Pensión Garantizada Universal (PGU): montos y requisitos",
+            "url": "https://www.chileatiende.gob.cl/fichas/102077-pension-garantizada-universal-pgu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El monto de 75 años o más rige desde septiembre de 2026: https://www.chileatiende.gob.cl/fichas/130457"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.pgu-pension-superior",
+      "nombre": "PGU: pensión base superior (en este monto la PGU llega a cero)",
+      "tipo": "numero",
+      "unidad": "CLP",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 1252602,
+          "fuente": {
+            "organismo": "ChileAtiende",
+            "titulo": "Pensión Garantizada Universal (PGU): montos y requisitos",
+            "url": "https://www.chileatiende.gob.cl/fichas/102077-pension-garantizada-universal-pgu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El monto de 75 años o más rige desde septiembre de 2026: https://www.chileatiende.gob.cl/fichas/130457"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.aguinaldo-fiestas-patrias-pensionados",
+      "nombre": "Aguinaldo de Fiestas Patrias 2026 para pensionados",
+      "tipo": "mapa",
+      "unidad": "CLP",
+      "etiquetas": {
+        "base": "Monto base",
+        "por-carga": "Aumento por cada carga familiar"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-05",
+          "hasta": "2026-12-31",
+          "valor": {
+            "base": 25280,
+            "por-carga": 12969
+          },
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.806, publicada el 5/2/2026, artículo 5",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/02/05/44368-B/01/2766382.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.aguinaldo-navidad-pensionados",
+      "nombre": "Aguinaldo de Navidad 2026 para pensionados",
+      "tipo": "mapa",
+      "unidad": "CLP",
+      "etiquetas": {
+        "base": "Monto base",
+        "por-carga": "Aumento por cada carga familiar"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-05",
+          "hasta": "2026-12-31",
+          "valor": {
+            "base": 29055,
+            "por-carga": 16415
+          },
+          "fuente": {
+            "organismo": "Diario Oficial de la República de Chile",
+            "titulo": "Ley 21.806, publicada el 5/2/2026, artículo 5",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/02/05/44368-B/01/2766382.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.global-complementario",
+      "nombre": "Impuesto Global Complementario, escala anual",
+      "tipo": "escala",
+      "unidad": "UTA",
+      "nota": "Límites en UTA. cuotaFija es el impuesto acumulado al inicio de cada tramo, en UTA.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 13.5,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 13.5,
+              "hasta": 30,
+              "tasa": 4,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 30,
+              "hasta": 50,
+              "tasa": 8,
+              "cuotaFija": 0.66
+            },
+            {
+              "desde": 50,
+              "hasta": 70,
+              "tasa": 13.5,
+              "cuotaFija": 2.26
+            },
+            {
+              "desde": 70,
+              "hasta": 90,
+              "tasa": 23,
+              "cuotaFija": 4.96
+            },
+            {
+              "desde": 90,
+              "hasta": 120,
+              "tasa": 30.4,
+              "cuotaFija": 9.56
+            },
+            {
+              "desde": 120,
+              "hasta": 310,
+              "tasa": 35,
+              "cuotaFija": 18.68
+            },
+            {
+              "desde": 310,
+              "hasta": null,
+              "tasa": 40,
+              "cuotaFija": 85.18
+            }
+          ],
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "titulo": "Ley sobre Impuesto a la Renta, artículo 52 (versión del 27/03/2026)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=6368",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
           }
         }
       ]
