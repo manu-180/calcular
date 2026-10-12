@@ -398,6 +398,94 @@
         ["2026-08-01", 145.462],
         ["2026-09-01", 146.075]
       ]
+    },
+    {
+      "id": "mx.cetes-28",
+      "nombre": "Tasa de rendimiento de CETES a 28 días",
+      "unidad": "%",
+      "frecuencia": "semanal",
+      "maxAntiguedadDias": 14,
+      "fuente": {
+        "organismo": "Banco de México",
+        "titulo": "Subasta de valores gubernamentales, CETES a 28 días, tasa de rendimiento (serie SF43936 del SIE)",
+        "url": "https://www.banxico.org.mx/SieInternet/consultaSerieGrafica.do?s=SF43936,CF107,1&versionSerie=LA-MAS-RECIENTE&l=es",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      },
+      "puntos": [
+        ["2026-09-03", 6.49],
+        ["2026-09-10", 6.25],
+        ["2026-09-17", 6.25],
+        ["2026-09-24", 6.15],
+        ["2026-10-01", 6.01],
+        ["2026-10-08", 6.09]
+      ]
+    },
+    {
+      "id": "mx.cetes-91",
+      "nombre": "Tasa de rendimiento de CETES a 91 días",
+      "unidad": "%",
+      "frecuencia": "semanal",
+      "maxAntiguedadDias": 14,
+      "fuente": {
+        "organismo": "Banco de México",
+        "titulo": "Subasta de valores gubernamentales, CETES a 91 días, tasa de rendimiento (serie SF43939 del SIE)",
+        "url": "https://www.banxico.org.mx/SieInternet/consultaSerieGrafica.do?s=SF43939,CF107,1&versionSerie=LA-MAS-RECIENTE&l=es",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      },
+      "puntos": [
+        ["2026-09-03", 6.54],
+        ["2026-09-10", 6.56],
+        ["2026-09-17", 6.66],
+        ["2026-09-24", 6.59],
+        ["2026-10-01", 6.73],
+        ["2026-10-08", 6.78]
+      ]
+    },
+    {
+      "id": "mx.cetes-182",
+      "nombre": "Tasa de rendimiento de CETES a 182 días",
+      "unidad": "%",
+      "frecuencia": "semanal",
+      "maxAntiguedadDias": 14,
+      "fuente": {
+        "organismo": "Banco de México",
+        "titulo": "Subasta de valores gubernamentales, CETES a 182 días, tasa de rendimiento (serie SF43942 del SIE)",
+        "url": "https://www.banxico.org.mx/SieInternet/consultaSerieGrafica.do?s=SF43942,CF107,1&versionSerie=LA-MAS-RECIENTE&l=es",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      },
+      "puntos": [
+        ["2026-09-03", 6.69],
+        ["2026-09-10", 6.78],
+        ["2026-09-17", 6.9],
+        ["2026-09-24", 6.91],
+        ["2026-10-01", 7.01],
+        ["2026-10-08", 6.91]
+      ]
+    },
+    {
+      "id": "mx.cetes-364",
+      "nombre": "Tasa de rendimiento de CETES a 364 días",
+      "unidad": "%",
+      "frecuencia": "semanal",
+      "maxAntiguedadDias": 21,
+      "fuente": {
+        "organismo": "Banco de México",
+        "titulo": "Subasta de valores gubernamentales, CETES a 364 días, tasa de rendimiento (serie SF43945 del SIE)",
+        "url": "https://www.banxico.org.mx/SieInternet/consultaSerieGrafica.do?s=SF43945,CF107,1&versionSerie=LA-MAS-RECIENTE&l=es",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      },
+      "puntos": [
+        ["2026-07-23", 6.93],
+        ["2026-08-06", 7.01],
+        ["2026-08-20", 7.06],
+        ["2026-09-03", 7],
+        ["2026-09-17", 7.24],
+        ["2026-10-01", 7.44]
+      ]
     }
   ]
 }

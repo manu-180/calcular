@@ -32,6 +32,56 @@ import contenidoUma from "./contenido/uma";
 import contenidoVacaciones from "./contenido/vacaciones";
 import trabajadoraDelHogar from "./calculadoras/trabajadora-del-hogar";
 import contenidoTrabajadoraDelHogar from "./contenido/trabajadora-del-hogar";
+import cuotasImss from "./calculadoras/cuotas-imss";
+import contenidoCuotasImss from "./contenido/cuotas-imss";
+import costoDeUnTrabajador from "./calculadoras/costo-de-un-trabajador";
+import contenidoCostoDeUnTrabajador from "./contenido/costo-de-un-trabajador";
+import salarioDiarioIntegrado from "./calculadoras/salario-diario-integrado";
+import contenidoSalarioDiarioIntegrado from "./contenido/salario-diario-integrado";
+import primaDeAntiguedad from "./calculadoras/prima-de-antiguedad";
+import contenidoPrimaDeAntiguedad from "./contenido/prima-de-antiguedad";
+import sueldoBruto from "./calculadoras/sueldo-bruto";
+import contenidoSueldoBruto from "./contenido/sueldo-bruto";
+import asimiladosASalarios from "./calculadoras/asimilados-a-salarios";
+import contenidoAsimiladosASalarios from "./contenido/asimilados-a-salarios";
+import primaDominical from "./calculadoras/prima-dominical";
+import contenidoPrimaDominical from "./contenido/prima-dominical";
+import diaFestivoTrabajado from "./calculadoras/dia-festivo-trabajado";
+import contenidoDiaFestivoTrabajado from "./contenido/dia-festivo-trabajado";
+import subsidioAlEmpleo from "./calculadoras/subsidio-al-empleo";
+import contenidoSubsidioAlEmpleo from "./contenido/subsidio-al-empleo";
+import incapacidadImss from "./calculadoras/incapacidad-imss";
+import contenidoIncapacidadImss from "./contenido/incapacidad-imss";
+import cetes from "./calculadoras/cetes";
+import contenidoCetes from "./contenido/cetes";
+import declaracionAnual from "./calculadoras/declaracion-anual";
+import contenidoDeclaracionAnual from "./contenido/declaracion-anual";
+import deduccionesPersonales from "./calculadoras/deducciones-personales";
+import contenidoDeduccionesPersonales from "./contenido/deducciones-personales";
+import reciboDeHonorarios from "./calculadoras/recibo-de-honorarios";
+import contenidoReciboDeHonorarios from "./contenido/recibo-de-honorarios";
+import isrArrendamiento from "./calculadoras/isr-arrendamiento";
+import contenidoIsrArrendamiento from "./contenido/isr-arrendamiento";
+import salarioMinimoProfesional from "./calculadoras/salario-minimo-profesional";
+import contenidoSalarioMinimoProfesional from "./contenido/salario-minimo-profesional";
+import retiroPorDesempleo from "./calculadoras/retiro-por-desempleo";
+import contenidoRetiroPorDesempleo from "./contenido/retiro-por-desempleo";
+import isrAguinaldoArticulo174 from "./calculadoras/isr-aguinaldo-articulo-174";
+import contenidoIsrAguinaldoArticulo174 from "./contenido/isr-aguinaldo-articulo-174";
+import aportacionInfonavit from "./calculadoras/aportacion-infonavit";
+import contenidoAportacionInfonavit from "./contenido/aportacion-infonavit";
+import salarioPorHora from "./calculadoras/salario-por-hora";
+import contenidoSalarioPorHora from "./contenido/salario-por-hora";
+import jornadaLaboral from "./calculadoras/jornada-laboral";
+import contenidoJornadaLaboral from "./contenido/jornada-laboral";
+import fondoDeAhorro from "./calculadoras/fondo-de-ahorro";
+import contenidoFondoDeAhorro from "./contenido/fondo-de-ahorro";
+import isrHorasExtra from "./calculadoras/isr-horas-extra";
+import contenidoIsrHorasExtra from "./contenido/isr-horas-extra";
+import antiguedadLaboral from "./calculadoras/antiguedad-laboral";
+import contenidoAntiguedadLaboral from "./contenido/antiguedad-laboral";
+import valesDeDespensa from "./calculadoras/vales-de-despensa";
+import contenidoValesDeDespensa from "./contenido/vales-de-despensa";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +110,31 @@ export default definirPais({
     { definicion: udis, contenido: contenidoUdis, cliente: () => import("./calculadoras/udis.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: trabajadoraDelHogar, contenido: contenidoTrabajadoraDelHogar, cliente: () => import("./calculadoras/trabajadora-del-hogar.cliente") },
+    { definicion: cuotasImss, contenido: contenidoCuotasImss, cliente: () => import("./calculadoras/cuotas-imss.cliente") },
+    { definicion: costoDeUnTrabajador, contenido: contenidoCostoDeUnTrabajador, cliente: () => import("./calculadoras/costo-de-un-trabajador.cliente") },
+    { definicion: salarioDiarioIntegrado, contenido: contenidoSalarioDiarioIntegrado, cliente: () => import("./calculadoras/salario-diario-integrado.cliente") },
+    { definicion: primaDeAntiguedad, contenido: contenidoPrimaDeAntiguedad, cliente: () => import("./calculadoras/prima-de-antiguedad.cliente") },
+    { definicion: sueldoBruto, contenido: contenidoSueldoBruto, cliente: () => import("./calculadoras/sueldo-bruto.cliente") },
+    { definicion: asimiladosASalarios, contenido: contenidoAsimiladosASalarios, cliente: () => import("./calculadoras/asimilados-a-salarios.cliente") },
+    { definicion: primaDominical, contenido: contenidoPrimaDominical, cliente: () => import("./calculadoras/prima-dominical.cliente") },
+    { definicion: diaFestivoTrabajado, contenido: contenidoDiaFestivoTrabajado, cliente: () => import("./calculadoras/dia-festivo-trabajado.cliente") },
+    { definicion: subsidioAlEmpleo, contenido: contenidoSubsidioAlEmpleo, cliente: () => import("./calculadoras/subsidio-al-empleo.cliente") },
+    { definicion: incapacidadImss, contenido: contenidoIncapacidadImss, cliente: () => import("./calculadoras/incapacidad-imss.cliente") },
+    { definicion: cetes, contenido: contenidoCetes, cliente: () => import("./calculadoras/cetes.cliente") },
+    { definicion: declaracionAnual, contenido: contenidoDeclaracionAnual, cliente: () => import("./calculadoras/declaracion-anual.cliente") },
+    { definicion: deduccionesPersonales, contenido: contenidoDeduccionesPersonales, cliente: () => import("./calculadoras/deducciones-personales.cliente") },
+    { definicion: reciboDeHonorarios, contenido: contenidoReciboDeHonorarios, cliente: () => import("./calculadoras/recibo-de-honorarios.cliente") },
+    { definicion: isrArrendamiento, contenido: contenidoIsrArrendamiento, cliente: () => import("./calculadoras/isr-arrendamiento.cliente") },
+    { definicion: salarioMinimoProfesional, contenido: contenidoSalarioMinimoProfesional, cliente: () => import("./calculadoras/salario-minimo-profesional.cliente") },
+    { definicion: retiroPorDesempleo, contenido: contenidoRetiroPorDesempleo, cliente: () => import("./calculadoras/retiro-por-desempleo.cliente") },
+    { definicion: isrAguinaldoArticulo174, contenido: contenidoIsrAguinaldoArticulo174, cliente: () => import("./calculadoras/isr-aguinaldo-articulo-174.cliente") },
+    { definicion: aportacionInfonavit, contenido: contenidoAportacionInfonavit, cliente: () => import("./calculadoras/aportacion-infonavit.cliente") },
+    { definicion: salarioPorHora, contenido: contenidoSalarioPorHora, cliente: () => import("./calculadoras/salario-por-hora.cliente") },
+    { definicion: jornadaLaboral, contenido: contenidoJornadaLaboral, cliente: () => import("./calculadoras/jornada-laboral.cliente") },
+    { definicion: fondoDeAhorro, contenido: contenidoFondoDeAhorro, cliente: () => import("./calculadoras/fondo-de-ahorro.cliente") },
+    { definicion: isrHorasExtra, contenido: contenidoIsrHorasExtra, cliente: () => import("./calculadoras/isr-horas-extra.cliente") },
+    { definicion: antiguedadLaboral, contenido: contenidoAntiguedadLaboral, cliente: () => import("./calculadoras/antiguedad-laboral.cliente") },
+    { definicion: valesDeDespensa, contenido: contenidoValesDeDespensa, cliente: () => import("./calculadoras/vales-de-despensa.cliente") },
   ],
   novedades,
   detectores,

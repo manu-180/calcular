@@ -6,7 +6,9 @@
       "nivel": "info",
       "desde": "2026-05-01",
       "hasta": "2030-12-31",
-      "aplicaA": ["mx.horas-extra"],
+      "aplicaA": [
+        "mx.horas-extra"
+      ],
       "titulo": "La jornada baja poco a poco hasta 2030",
       "texto": "La reforma de la jornada de 40 horas ya está en la ley, pero se aplica por escalones: cada 1 de enero baja la jornada máxima y sube el límite de horas extra dobles. La calculadora usa el escalón del año de la fecha de cálculo.",
       "fuente": {
@@ -22,7 +24,9 @@
       "nivel": "info",
       "desde": "2026-10-07",
       "hasta": "2027-03-31",
-      "aplicaA": ["mx.horas-extra"],
+      "aplicaA": [
+        "mx.horas-extra"
+      ],
       "titulo": "Registro electrónico de la jornada",
       "texto": "Desde el 1 de enero de 2027 rigen las reglas de la Secretaría del Trabajo para que cada empresa registre de forma electrónica la hora de entrada y salida de su personal. No cumplir tiene multa en UMA.",
       "fuente": {
@@ -37,7 +41,9 @@
       "id": "mx.dias-por-anio-no-siempre",
       "nivel": "cautela",
       "desde": "2024-12-25",
-      "aplicaA": ["mx.liquidacion"],
+      "aplicaA": [
+        "mx.liquidacion"
+      ],
       "titulo": "Los días por año de servicio no siempre proceden",
       "texto": "La indemnización constitucional y la prima de antigüedad se pagan en todo despido injustificado. Los días por año de servicio del artículo 50 proceden cuando la empresa no está obligada a reinstalarte o se niega a hacerlo. Por eso los dejamos como opción.",
       "fuente": {
@@ -53,7 +59,9 @@
       "nivel": "info",
       "desde": "2026-01-01",
       "hasta": "2026-12-31",
-      "aplicaA": ["mx.iva"],
+      "aplicaA": [
+        "mx.iva"
+      ],
       "titulo": "El IVA reducido de la frontera vence en diciembre",
       "texto": "El estímulo que deja el IVA en la mitad para la región fronteriza norte está vigente hasta el 31 de diciembre de 2026. Si no se renueva, desde 2027 se vuelve a la tasa general.",
       "fuente": {
@@ -62,6 +70,43 @@
         "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777697&fecha=31/12/2025",
         "tipo": "primaria",
         "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "mx.cesantia-escalonada",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "hasta": "2030-12-31",
+      "aplicaA": [
+        "mx.cuotas-imss",
+        "mx.costo-de-un-trabajador"
+      ],
+      "titulo": "La cuota patronal de cesantía sube cada año hasta 2030",
+      "texto": "Cada 1 de enero cambia la tabla de cesantía y vejez que paga la empresa. La calculadora usa la tabla del año de la fecha de cálculo.",
+      "fuente": {
+        "organismo": "DOF",
+        "titulo": "Decreto de reforma a la Ley del Seguro Social del 16/12/2020, transitorio segundo",
+        "url": "https://dof.gob.mx/nota_detalle.php?codigo=5607729&fecha=16/12/2020",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      }
+    },
+    {
+      "id": "mx.tarifa-anual-del-anio",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": [
+        "mx.declaracion-anual",
+        "mx.deducciones-personales"
+      ],
+      "titulo": "Se usa la tarifa anual del año en curso",
+      "texto": "Si presentas la declaración de un ejercicio anterior, la tarifa de ese año puede ser un poco distinta y el resultado cambiar unos pesos.",
+      "fuente": {
+        "organismo": "SAT en el DOF",
+        "titulo": "Anexo 8 de la Resolución Miscelánea Fiscal para 2026",
+        "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777219&fecha=28/12/2025",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
       }
     }
   ]
