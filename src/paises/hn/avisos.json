@@ -6,7 +6,9 @@
       "nivel": "info",
       "desde": "2026-10-07",
       "hasta": "2027-02-28",
-      "aplicaA": ["hn.salario-minimo"],
+      "aplicaA": [
+        "hn.salario-minimo"
+      ],
       "titulo": "El salario mínimo de 2027 todavía puede subir",
       "texto": "La tabla de 2027 ya está publicada. Pero si la inflación interanual de diciembre de 2026 que informa el Banco Central supera el ajuste fijado para 2027, la Secretaría de Trabajo tiene que emitir otro acuerdo con la inflación como ajuste.",
       "fuente": {
@@ -21,7 +23,9 @@
       "id": "hn.cesantia-tope-25-meses",
       "nivel": "info",
       "desde": "2026-10-07",
-      "aplicaA": ["hn.prestaciones-laborales"],
+      "aplicaA": [
+        "hn.prestaciones-laborales"
+      ],
       "titulo": "El tope de la cesantía es de 25 meses",
       "texto": "Desde el Decreto 150-2008 la cesantía llega hasta 25 meses de salario, o 15 en una microempresa. Algunas copias del Código del Trabajo todavía muestran el tope anterior de 15 meses para todos.",
       "fuente": {
@@ -36,7 +40,9 @@
       "id": "hn.cesantia-fallecimiento",
       "nivel": "info",
       "desde": "2026-10-07",
-      "aplicaA": ["hn.prestaciones-laborales"],
+      "aplicaA": [
+        "hn.prestaciones-laborales"
+      ],
       "titulo": "Si el trabajador fallece",
       "texto": "Cuando el trabajador muere por causa natural después de seis meses de trabajo, sus beneficiarios cobran el 75 % de la cesantía. Esta calculadora no hace ese caso; consulte en la Secretaría de Trabajo.",
       "fuente": {
@@ -51,7 +57,9 @@
       "id": "hn.decimo-cuarto-proporcional",
       "nivel": "info",
       "desde": "2026-10-07",
-      "aplicaA": ["hn.decimo-cuarto-mes"],
+      "aplicaA": [
+        "hn.decimo-cuarto-mes"
+      ],
       "titulo": "Cómo se cuenta la parte proporcional",
       "texto": "El reglamento dice que el proporcional se paga de acuerdo con el tiempo trabajado, sin fijar la cuenta. Aquí se usan los días calendario sobre 365. Algunas planillas usan meses de 30 días y el resultado cambia por unos centavos.",
       "fuente": {
@@ -60,6 +68,24 @@
         "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
         "tipo": "primaria",
         "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "hn.reserva-laboral-cesantia",
+      "nivel": "info",
+      "desde": "2026-10-12",
+      "aplicaA": [
+        "hn.prestaciones-laborales",
+        "hn.liquidacion"
+      ],
+      "titulo": "Si su patrono le depositó la Reserva Laboral",
+      "texto": "Lo que su patrono depositó a su nombre en la Reserva Laboral del RAP se descuenta de la cesantía, y ese saldo lo cobra en el RAP. Si el saldo es mayor que la cesantía, la diferencia también es suya.",
+      "fuente": {
+        "organismo": "Congreso Nacional (La Gaceta No. 36,545 del 28/5/2024)",
+        "titulo": "Decreto 47-2024, Ley del Fondo de Reserva Laboral de Capitalización Individual, artículo 6",
+        "url": "https://www.sar.gob.hn/download/decreto-no-47-2024-no-36545-de-fecha-28-de-mayo-2025-contentivo-ley-del-fondo-de-reserva-laboral-de-capitalizacion-individual-administrado-por-el-regimen-de-aportaciones-privadas-rap/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
       }
     }
   ]

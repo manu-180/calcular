@@ -1578,6 +1578,88 @@
           }
         }
       ]
+    },
+    {
+      "id": "hn.reserva-laboral-tasa",
+      "nombre": "Aporte patronal mensual a la Reserva Laboral de Capitalización Individual (RAP)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 36,545 del 28/5/2024)",
+            "titulo": "Decreto 47-2024, Ley del Fondo de Reserva Laboral de Capitalización Individual, artículo 4",
+            "url": "https://www.sar.gob.hn/download/decreto-no-47-2024-no-36545-de-fecha-28-de-mayo-2025-contentivo-ley-del-fondo-de-reserva-laboral-de-capitalizacion-individual-administrado-por-el-regimen-de-aportaciones-privadas-rap/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Sobre el salario ordinario. Lo acumulado se descuenta de la cesantía al terminar la relación."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.reserva-laboral-techo-salarios",
+      "nombre": "Techo del aporte a la Reserva Laboral, en salarios mínimos de nivel más alto",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 36,545 del 28/5/2024)",
+            "titulo": "Decreto 47-2024, artículo 4",
+            "url": "https://www.sar.gob.hn/download/decreto-no-47-2024-no-36545-de-fecha-28-de-mayo-2025-contentivo-ley-del-fondo-de-reserva-laboral-de-capitalizacion-individual-administrado-por-el-regimen-de-aportaciones-privadas-rap/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.retencion-proveedores",
+      "nombre": "Retención del ISR a proveedores de grandes empresas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Preguntas frecuentes: ¿Quiénes están obligados a ser Agente de Retención del 1 % a los proveedores? (Acuerdo DEI-217-2010)",
+            "url": "https://www.sar.gob.hn/helpie_faq/quienes-estan-obligados-a-ser-agente-de-retencion-del-1-a-los-proveedores/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Retienen las personas jurídicas y comerciantes individuales con ventas de más de L15,000,000 al año, a proveedores que no están en pagos a cuenta."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.retencion-proveedores-ventas-minimas",
+      "nombre": "Ventas anuales desde las que una empresa es agente de retención del 1 %",
+      "tipo": "numero",
+      "unidad": "HNL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15000000,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Preguntas frecuentes: ¿Quiénes están obligados a ser Agente de Retención del 1 % a los proveedores? (Acuerdo DEI-217-2010)",
+            "url": "https://www.sar.gob.hn/helpie_faq/quienes-estan-obligados-a-ser-agente-de-retencion-del-1-a-los-proveedores/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }
