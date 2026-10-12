@@ -4,7 +4,9 @@ import aguinaldo from "./calculadoras/aguinaldo";
 import aportesBps from "./calculadoras/aportes-bps";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoAportesBps from "./contenido/aportes-bps";
+import contenidoCostoEmpleador from "./contenido/costo-empleador";
 import contenidoDespido from "./contenido/despido";
+import contenidoDiasDeLicencia from "./contenido/dias-de-licencia";
 import contenidoDolarBcu from "./contenido/dolar-bcu";
 import contenidoHorasExtra from "./contenido/horas-extra";
 import contenidoInflacion from "./contenido/inflacion";
@@ -14,11 +16,15 @@ import contenidoLiquidacionPorEgreso from "./contenido/liquidacion-por-egreso";
 import contenidoMonotributo from "./contenido/monotributo";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioVacacional from "./contenido/salario-vacacional";
+import contenidoSeguroDeParo from "./contenido/seguro-de-paro";
+import contenidoSubsidioPorEnfermedad from "./contenido/subsidio-por-enfermedad";
 import contenidoSueldoLiquido from "./contenido/sueldo-liquido";
 import contenidoSueldoNominal from "./contenido/sueldo-nominal";
 import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
 import contenidoValorUi from "./contenido/valor-ui";
+import costoEmpleador from "./calculadoras/costo-empleador";
 import despido from "./calculadoras/despido";
+import diasDeLicencia from "./calculadoras/dias-de-licencia";
 import dolarBcu from "./calculadoras/dolar-bcu";
 import horasExtra from "./calculadoras/horas-extra";
 import inflacion from "./calculadoras/inflacion";
@@ -28,6 +34,8 @@ import liquidacionPorEgreso from "./calculadoras/liquidacion-por-egreso";
 import monotributo from "./calculadoras/monotributo";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioVacacional from "./calculadoras/salario-vacacional";
+import seguroDeParo from "./calculadoras/seguro-de-paro";
+import subsidioPorEnfermedad from "./calculadoras/subsidio-por-enfermedad";
 import sueldoLiquido from "./calculadoras/sueldo-liquido";
 import sueldoNominal from "./calculadoras/sueldo-nominal";
 import trabajoDomestico from "./calculadoras/trabajo-domestico";
@@ -50,6 +58,8 @@ export default definirPais({
     { definicion: despido, contenido: contenidoDespido, cliente: () => import("./calculadoras/despido.cliente") },
     { definicion: irpf, contenido: contenidoIrpf, cliente: () => import("./calculadoras/irpf.cliente") },
     { definicion: salarioVacacional, contenido: contenidoSalarioVacacional, cliente: () => import("./calculadoras/salario-vacacional.cliente") },
+    { definicion: seguroDeParo, contenido: contenidoSeguroDeParo, cliente: () => import("./calculadoras/seguro-de-paro.cliente") },
+    { definicion: diasDeLicencia, contenido: contenidoDiasDeLicencia, cliente: () => import("./calculadoras/dias-de-licencia.cliente") },
     { definicion: sueldoNominal, contenido: contenidoSueldoNominal, cliente: () => import("./calculadoras/sueldo-nominal.cliente") },
     { definicion: aportesBps, contenido: contenidoAportesBps, cliente: () => import("./calculadoras/aportes-bps.cliente") },
     { definicion: horasExtra, contenido: contenidoHorasExtra, cliente: () => import("./calculadoras/horas-extra.cliente") },
@@ -60,6 +70,8 @@ export default definirPais({
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: trabajoDomestico, contenido: contenidoTrabajoDomestico, cliente: () => import("./calculadoras/trabajo-domestico.cliente") },
     { definicion: monotributo, contenido: contenidoMonotributo, cliente: () => import("./calculadoras/monotributo.cliente") },
+    { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
+    { definicion: subsidioPorEnfermedad, contenido: contenidoSubsidioPorEnfermedad, cliente: () => import("./calculadoras/subsidio-por-enfermedad.cliente") },
   ],
   novedades,
   detectores,
