@@ -36,6 +36,16 @@ import costoDeUnEmpleado from "./calculadoras/costo-de-un-empleado";
 import contenidoCostoDeUnEmpleado from "./contenido/costo-de-un-empleado";
 import regimenSimple from "./calculadoras/regimen-simple";
 import contenidoRegimenSimple from "./contenido/regimen-simple";
+import interesesCesantias from "./calculadoras/intereses-cesantias";
+import contenidoInteresesCesantias from "./contenido/intereses-cesantias";
+import salarioIntegral from "./calculadoras/salario-integral";
+import contenidoSalarioIntegral from "./contenido/salario-integral";
+import licenciaDeMaternidad from "./calculadoras/licencia-de-maternidad";
+import contenidoLicenciaDeMaternidad from "./contenido/licencia-de-maternidad";
+import licenciaDePaternidad from "./calculadoras/licencia-de-paternidad";
+import contenidoLicenciaDePaternidad from "./contenido/licencia-de-paternidad";
+import incapacidad from "./calculadoras/incapacidad";
+import contenidoIncapacidad from "./contenido/incapacidad";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -66,6 +76,11 @@ export default definirPais({
     { definicion: empleadaDomestica, contenido: contenidoEmpleadaDomestica, cliente: () => import("./calculadoras/empleada-domestica.cliente") },
     { definicion: costoDeUnEmpleado, contenido: contenidoCostoDeUnEmpleado, cliente: () => import("./calculadoras/costo-de-un-empleado.cliente") },
     { definicion: regimenSimple, contenido: contenidoRegimenSimple, cliente: () => import("./calculadoras/regimen-simple.cliente") },
+    { definicion: interesesCesantias, contenido: contenidoInteresesCesantias, cliente: () => import("./calculadoras/intereses-cesantias.cliente") },
+    { definicion: salarioIntegral, contenido: contenidoSalarioIntegral, cliente: () => import("./calculadoras/salario-integral.cliente") },
+    { definicion: licenciaDeMaternidad, contenido: contenidoLicenciaDeMaternidad, cliente: () => import("./calculadoras/licencia-de-maternidad.cliente") },
+    { definicion: licenciaDePaternidad, contenido: contenidoLicenciaDePaternidad, cliente: () => import("./calculadoras/licencia-de-paternidad.cliente") },
+    { definicion: incapacidad, contenido: contenidoIncapacidad, cliente: () => import("./calculadoras/incapacidad.cliente") },
   ],
   novedades,
   detectores,
