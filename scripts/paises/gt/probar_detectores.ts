@@ -37,13 +37,13 @@ async function main() {
         const pts = r as { fecha: string; valor: number }[];
         const ultimoCargado = series.series.find((s) => s.id === d.serie)?.puntos.at(-1);
         const fuera = pts.filter((p) => p.valor < d.banda.min || p.valor > d.banda.max);
-        const salto = ultimoCargado && pts.length ? Math.abs(pts[0].valor / Number(ultimoCargado[1]) - 1) : 0;
-        const soap = await tipoCambioSoap();
-        const coincide = soap !== null && pts.length > 0 && Math.abs(soap - pts[pts.length - 1].valor) < 1e-9;
+        const salto = ultimoCargado && pts.length ? Math.abs(pts[pts.length - 1].valor / Number(ultimoCargado[1]) - 1) : 0;
+        const soap = d.serie === "gt.tipo-cambio" ? await tipoCambioSoap() : null;
+        const coincide = d.serie !== "gt.tipo-cambio" || (soap !== null && pts.length > 0 && Math.abs(soap - pts[pts.length - 1].valor) < 1e-9);
         const ok = pts.length > 0 && fuera.length === 0 && salto <= d.banda.saltoRelativoMax && coincide;
         if (!ok) fallas++;
         console.log(
-          `${ok ? "✅" : "❌"} ${d.id}: ${pts.map((p) => `${p.fecha} = ${p.valor}`).join(", ")}; salto contra el último cargado ${(salto * 100).toFixed(3)} %; SOAP ${soap} ${coincide ? "coincide" : "NO coincide"} (${ms} ms)`,
+          `${ok ? "✅" : "❌"} ${d.id}: ${pts.map((p) => `${p.fecha} = ${p.valor}`).join(", ")}; salto contra el último cargado ${(salto * 100).toFixed(3)} %; ${d.serie === "gt.tipo-cambio" ? `SOAP ${soap} ${coincide ? "coincide" : "NO coincide"}` : "sin cruce SOAP"} (${ms} ms)`,
         );
       } else {
         const hs = r as unknown as { titulo: string; fecha: string; url: string }[];

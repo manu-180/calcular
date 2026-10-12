@@ -112,10 +112,16 @@
       "unidad": "GTQ",
       "tramos": [
         {
-          "estado": "no-verificado",
-          "desde": "2001-08-01",
+          "estado": "verificado",
+          "desde": "2001-08-06",
           "valor": 250,
-          "motivo": "El monto sale del Decreto 37-2001. No encontré su texto en un sitio oficial accesible: congreso.gob.gt no publica la ruta del PDF y la copia del Organismo Judicial rechaza la conexión. El Acuerdo 256-2025 y el Decreto 13-2026 la nombran sin monto."
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 6/8/2001)",
+            "titulo": "Decreto 37-2001, artículo 1 (rige el día de su publicación, artículo 7)",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2001/gtdcx37-2001.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
         }
       ]
     },
@@ -516,16 +522,16 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "no-verificado",
-          "desde": "2003-02-27",
+          "estado": "verificado",
+          "desde": "2024-01-01",
           "valor": 3,
-          "motivo": "Los reglamentos 410 (artículo 62) y 1002 (artículo 46) del IGSS fijan 2 % por programa y remiten a acuerdos de extensión de cobertura (1095, 1121 y otros) para la tasa combinada. No encontré publicado el acuerdo que fija el 3 % combinado, y el sitio del IGSS no lo informa en una página legible.",
           "fuente": {
             "organismo": "IGSS",
-            "titulo": "Acuerdo 410 de Junta Directiva, artículo 62 (texto revisado 2018)",
-            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-410-Junta-Directiva-IGSS-1967-rev-2018.pdf",
+            "titulo": "IGSS en cifras 2024, infografía K1 del sistema de financiación (con base en los Acuerdos 410, 1002, 1024 y 1235 de Junta Directiva)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/09/IGSS-en-cifras-2024.pdf",
             "tipo": "primaria",
-            "verificadoEl": "2026-10-07"
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la del año de la publicación que se leyó."
           }
         }
       ]
@@ -537,10 +543,1013 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "no-verificado",
-          "desde": "2001-08-01",
+          "estado": "verificado",
+          "desde": "2002-11-19",
           "valor": 12,
-          "motivo": "Es el artículo 10 de la Ley del IVA (Decreto 27-92, reformado). El portal de la SAT está detrás de una verificación anti bots, la copia del TSE responde 403 y el PDF del Decreto 66-2002 en congreso.gob.gt devuelve una página de desafío."
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 11/11/2002)",
+            "titulo": "Decreto 66-2002, artículo 1, que reforma el artículo 10 de la Ley del IVA (Decreto 27-92); rige ocho días después de su publicación",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2002/gtdcx66-2002.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-patronal-ema",
+      "nombre": "Cuota patronal del IGSS, programas de Enfermedad, Maternidad y Accidentes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "IGSS en cifras 2024, infografía K1 del sistema de financiación (con base en los Acuerdos 410, 1002, 1024 y 1235 de Junta Directiva)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/09/IGSS-en-cifras-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la del año de la publicación que se leyó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-patronal-ivs",
+      "nombre": "Cuota patronal del IGSS, programa de Invalidez, Vejez y Sobrevivencia",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 3.67,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "IGSS en cifras 2024, infografía K1 del sistema de financiación (con base en los Acuerdos 410, 1002, 1024 y 1235 de Junta Directiva)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/09/IGSS-en-cifras-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la del año de la publicación que se leyó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.irtra",
+      "nombre": "Cuota patronal del IRTRA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "IGSS en cifras 2024, infografía K1 del sistema de financiación (con base en los Acuerdos 410, 1002, 1024 y 1235 de Junta Directiva)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/09/IGSS-en-cifras-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la del año de la publicación que se leyó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.intecap",
+      "nombre": "Cuota patronal del INTECAP",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "IGSS en cifras 2024, infografía K1 del sistema de financiación (con base en los Acuerdos 410, 1002, 1024 y 1235 de Junta Directiva)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/09/IGSS-en-cifras-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la del año de la publicación que se leyó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-utilidades",
+      "nombre": "ISR, régimen sobre las utilidades de actividades lucrativas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 5/3/2012)",
+            "titulo": "Decreto 10-2012, Ley de Actualización Tributaria, artículo 36",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2012/010-2012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-simplificado-escala",
+      "nombre": "ISR, régimen opcional simplificado sobre ingresos: escala mensual",
+      "tipo": "escala",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30000,
+              "tasa": 5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 30000,
+              "hasta": null,
+              "tasa": 7,
+              "cuotaFija": 1500
+            }
+          ],
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 5/3/2012)",
+            "titulo": "Decreto 10-2012, Ley de Actualización Tributaria, artículo 44",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2012/010-2012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-simplificado-minimo-retencion",
+      "nombre": "Monto de factura desde el que el agente retiene ISR en el régimen simplificado",
+      "tipo": "numero",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-12-21",
+          "valor": 2500,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 20/12/2013)",
+            "titulo": "Decreto 19-2013, artículo 15, que reforma el artículo 48 del Decreto 10-2012 (rige el día siguiente a su publicación)",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2013/19-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-rentas-capital",
+      "nombre": "ISR sobre rentas y ganancias de capital",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 5/3/2012)",
+            "titulo": "Decreto 10-2012, Ley de Actualización Tributaria, artículo 92",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2012/010-2012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-dividendos",
+      "nombre": "ISR sobre dividendos, ganancias y utilidades distribuidas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 5/3/2012)",
+            "titulo": "Decreto 10-2012, Ley de Actualización Tributaria, artículo 93",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2012/010-2012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.isr-gastos-arrendamiento",
+      "nombre": "Gastos que se restan de los alquileres sin comprobarlos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 5/3/2012)",
+            "titulo": "Decreto 10-2012, Ley de Actualización Tributaria, artículo 88 numeral 2",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2012/010-2012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.pequeno-contribuyente",
+      "nombre": "Tarifa del régimen de pequeño contribuyente",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 17/2/2012)",
+            "titulo": "Decreto 4-2012, artículo 15, que reforma el artículo 47 de la Ley del IVA",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2012/004-2012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde 2012. La fecha de inicio es conservadora."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.iso-tasa",
+      "nombre": "Tipo del Impuesto de Solidaridad",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 22/12/2008)",
+            "titulo": "Decreto 73-2008, Ley del Impuesto de Solidaridad, artículo 8 (rige desde el 1/1/2009, artículo 15)",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2008/gtdcx73-2008.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.iso-fraccion-base",
+      "nombre": "Parte del activo neto o de los ingresos brutos que forma la base del ISO",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 22/12/2008)",
+            "titulo": "Decreto 73-2008, Ley del Impuesto de Solidaridad, artículo 7 (la cuarta parte)",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2008/gtdcx73-2008.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.iso-limite-activo",
+      "nombre": "Veces los ingresos brutos a partir de las que el ISO se calcula solo sobre ingresos",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 22/12/2008)",
+            "titulo": "Decreto 73-2008, Ley del Impuesto de Solidaridad, artículo 7, último párrafo",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/2008/gtdcx73-2008.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.timbres",
+      "nombre": "Tarifa del Impuesto de Timbres Fiscales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-06-25",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 25/6/1992)",
+            "titulo": "Decreto 37-92, Ley del Impuesto de Timbres Fiscales, artículo 4",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/1992/gtdcx37-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La fecha de inicio es la de publicación del decreto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.iusi-escala",
+      "nombre": "IUSI: tasa anual por millar según el valor del inmueble",
+      "tipo": "escala",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-03-19",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000,
+              "tasa": 0
+            },
+            {
+              "desde": 2000.01,
+              "hasta": 20000,
+              "tasa": 0.2
+            },
+            {
+              "desde": 20000.01,
+              "hasta": 70000,
+              "tasa": 0.6
+            },
+            {
+              "desde": 70000.01,
+              "hasta": null,
+              "tasa": 0.9
+            }
+          ],
+          "fuente": {
+            "organismo": "Congreso de la República (Diario de Centro América del 18/3/1998)",
+            "titulo": "Decreto 15-98, Ley del Impuesto Único sobre Inmuebles, artículo 11 (2, 6 y 9 por millar; rige el día siguiente a su publicación, artículo 49)",
+            "url": "https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/1998/gtdcx15-1998.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.periodo-prueba-meses",
+      "nombre": "Período de prueba de un contrato por tiempo indefinido",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 81",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.preaviso-dias",
+      "nombre": "Aviso previo de renuncia, en días, según el tiempo trabajado",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "menos-6-meses": "Menos de seis meses",
+        "6-meses-a-1-anio": "De seis meses a menos de un año",
+        "1-a-5-anios": "De uno a menos de cinco años"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": {
+            "menos-6-meses": 7,
+            "6-meses-a-1-anio": 10,
+            "1-a-5-anios": 14
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 83, literales a, b y c (una semana, diez días y dos semanas)",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.preaviso-meses-5-anios",
+      "nombre": "Aviso previo de renuncia después de cinco años",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 83, literal d",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.post-mortem-meses-por-anio",
+      "nombre": "Prestación por muerte del trabajador: meses de salario por año de servicios",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 85, literal a",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.post-mortem-tope-meses",
+      "nombre": "Prestación por muerte del trabajador: máximo de meses según el tamaño de la empresa",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "20-o-mas": "Empresa con 20 trabajadores o más",
+        "menos-de-20": "Empresa con menos de 20 trabajadores"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": {
+            "20-o-mas": 15,
+            "menos-de-20": 10
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 85, literal a",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.plazo-fijo-dias-por-mes",
+      "nombre": "Contrato a plazo fijo terminado antes por el patrono: días de salario por mes trabajado",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 84",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.ventajas-economicas",
+      "nombre": "Parte del salario que representan las ventajas económicas si no se pactó otra cosa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 90, último párrafo",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.embargo-alimentos",
+      "nombre": "Parte del salario embargable por pensión alimenticia",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 97",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.embargo-inembargable",
+      "nombre": "Parte inembargable de los salarios de Q300 o más al mes (deudas que no son de alimentos)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 65,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 96, literal e",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.permisos-dias",
+      "nombre": "Licencias con goce de salario",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "fallecimiento": "Fallecimiento del cónyuge o conviviente, padre, madre o hijo",
+        "matrimonio": "Matrimonio",
+        "nacimiento": "Nacimiento de un hijo"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": {
+            "fallecimiento": 3,
+            "matrimonio": 5,
+            "nacimiento": 2
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 61, literal ñ",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.maternidad-dias",
+      "nombre": "Descanso por maternidad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "prenatal": "Antes del parto",
+        "postnatal": "Después del parto"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": {
+            "prenatal": 30,
+            "postnatal": 54
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 152",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.lactancia-meses",
+      "nombre": "Período de lactancia desde el regreso al trabajo",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 153",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.lactancia-horas",
+      "nombre": "Tiempo diario de lactancia remunerado",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Previsión Social",
+            "titulo": "Código de Trabajo (Decreto 1441), artículo 153 (dos medias horas, que se pueden juntar)",
+            "url": "https://mintrabajo.gob.gt/wp-content/uploads/2026/06/Codigo-de-Trabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la de la edición oficial que se leyó (octubre de 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-subsidio-enfermedad",
+      "nombre": "Subsidio diario del IGSS por enfermedad o accidente (dos tercios del salario diario)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-10-10",
+          "valor": 66.6667,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 468 de Junta Directiva, Reglamento de Prestaciones en Dinero, artículo 25 literal a (texto revisado 2018)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-468-Junta-Directiva-IGSS-1968-rev-2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El reglamento dice dos tercios del salario diario base."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-subsidio-maternidad",
+      "nombre": "Subsidio diario del IGSS por maternidad",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-10-10",
+          "valor": 100,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 468 de Junta Directiva, Reglamento de Prestaciones en Dinero, artículo 25 literal b (texto revisado 2018)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-468-Junta-Directiva-IGSS-1968-rev-2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-subsidio-dia-inicio",
+      "nombre": "Día de la suspensión desde el que paga el IGSS",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "enfermedad": "Enfermedad",
+        "accidente": "Accidente"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": {
+            "enfermedad": 4,
+            "accidente": 2
+          },
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 468, artículo 30 (enfermedad, desde el cuarto día) y Acuerdo 1002, artículo 23 (accidente, desde el segundo día)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-468-Junta-Directiva-IGSS-1968-rev-2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El artículo 23 del Acuerdo 1002 se leyó en https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1002-Junta-Directiva-IGSS-1994-rev-2018.pdf. La fecha de inicio es la del texto revisado."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-subsidio-maximo",
+      "nombre": "Subsidio diario máximo del IGSS por enfermedad o accidente",
+      "tipo": "numero",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 468, artículo 54, reformado por el Acuerdo 1470 de Junta Directiva (rige desde el 1/2/2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-468-Junta-Directiva-IGSS-1968-rev-2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-subsidio-minimo",
+      "nombre": "Subsidio diario mínimo del IGSS",
+      "tipo": "numero",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 468, artículo 54, reformado por el Acuerdo 1470 de Junta Directiva (rige desde el 1/2/2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-468-Junta-Directiva-IGSS-1968-rev-2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-vejez-edad",
+      "nombre": "Edad mínima para la pensión de vejez del IGSS",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-09-13",
+          "valor": 60,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 15 literal a, reformado por el Acuerdo 1492 (rige desde el 13/9/2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-vejez-contribuciones",
+      "nombre": "Contribuciones mínimas para la pensión de vejez (edad cumplida desde junio de 2014)",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-06-01",
+          "valor": 240,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 15 literal b.6",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-vejez-base",
+      "nombre": "Pensión de vejez: porcentaje base de la remuneración",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-31",
+          "valor": 50,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 16 literal a (texto revisado 2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde antes. La fecha de inicio es la del último cambio de la remuneración base máxima."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-vejez-incremento",
+      "nombre": "Pensión de vejez: porcentaje que suma cada semestre de contribución después de los primeros 120 meses",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-31",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 16 literal b (texto revisado 2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-vejez-meses-base",
+      "nombre": "Pensión de vejez: meses de contribución que cubre el porcentaje base",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-31",
+          "valor": 120,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 16 literal b (texto revisado 2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-vejez-asignacion",
+      "nombre": "Pensión de vejez: asignación familiar por cada beneficiario",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-31",
+          "valor": 10,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 16 literal c (texto revisado 2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-vejez-tope",
+      "nombre": "Pensión de vejez: máximo, con asignaciones familiares, sobre la remuneración base",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-31",
+          "valor": 80,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 16, último párrafo (texto revisado 2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-remuneracion-base-maxima",
+      "nombre": "Remuneración base máxima para calcular la pensión",
+      "tipo": "numero",
+      "unidad": "GTQ",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-31",
+          "valor": 9000,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 29, según el Acuerdo 1432 (publicado y vigente el 31/12/2018)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.igss-vejez-meses-promedio",
+      "nombre": "Meses que se promedian para la remuneración base de la pensión de vejez",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-31",
+          "valor": 60,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1124 de Junta Directiva, artículo 29 (texto revisado 2021)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/10/Acuerdo-1124-Junta-Directiva-IGSS-Rev-2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.precapi-empleador",
+      "nombre": "Cuota del empleador al PRECAPI (trabajadoras de casa particular) sobre el salario mínimo no agrícola",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-09-07",
+          "valor": 2.529,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1235 de Junta Directiva, Reglamento del PRECAPI, artículo 71 literal a (aprobado por el Acuerdo Gubernativo 236-2009)",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/08/acuerdo_1235_precapi.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La fecha de inicio es la del acuerdo gubernativo que lo aprobó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gt.precapi-trabajadora",
+      "nombre": "Cuota de la trabajadora de casa particular al PRECAPI sobre el salario mínimo no agrícola",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-09-07",
+          "valor": 1.2645,
+          "fuente": {
+            "organismo": "IGSS",
+            "titulo": "Acuerdo 1235 de Junta Directiva, Reglamento del PRECAPI, artículo 71 literal b",
+            "url": "https://www.igssgt.org/wp-content/uploads/2026/08/acuerdo_1235_precapi.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La fecha de inicio es la del acuerdo gubernativo que lo aprobó."
+          }
         }
       ]
     }
