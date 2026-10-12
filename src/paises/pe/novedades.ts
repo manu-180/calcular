@@ -65,4 +65,20 @@ export const novedades: readonly Novedad[] = [
       verificadoEl: "2026-10-07",
     },
   },
+  {
+    id: "pe.alquiler-renta-percibida-2026",
+    fecha: "2025-12-31",
+    titulo: "El impuesto mensual del alquiler se paga sobre lo que cobras",
+    texto:
+      "Desde 2026 el pago a cuenta de la renta de primera categoría se calcula sobre el alquiler efectivamente cobrado en el mes, con el recibo por arrendamiento que se emite al recibir el pago. La tasa no cambia: 6.25 % sobre el alquiler menos 20 %.",
+    vigenteDesde: "2026-01-01",
+    calculadoras: ["pe.renta-primera"],
+    fuente: {
+      organismo: "SUNAT",
+      titulo: "Ley del Impuesto a la Renta, artículo 84 (modificado por la Ley 32541)",
+      url: "https://www.sunat.gob.pe/legislacion/renta/ley/capxi.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
 ];
