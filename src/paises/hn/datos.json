@@ -296,7 +296,7 @@
             "minas-1-10": 463.25,
             "minas-11-50": 477.96,
             "minas-51-150": 579.52,
-            "minas-151-mas": 664.0,
+            "minas-151-mas": 664,
             "manufactura-1-10": 454.71,
             "manufactura-11-50": 484.57,
             "manufactura-51-150": 587.53,
@@ -468,7 +468,7 @@
             "minas-1-10": 57.91,
             "minas-11-50": 59.75,
             "minas-51-150": 72.44,
-            "minas-151-mas": 83.0,
+            "minas-151-mas": 83,
             "manufactura-1-10": 56.84,
             "manufactura-11-50": 60.57,
             "manufactura-51-150": 73.44,
@@ -544,10 +544,17 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-01-01",
           "valor": 100,
-          "motivo": "No pudimos leer la ley (Decreto 112-82): el PDF de la STSS da 404 y la copia del Portal Único de Transparencia está detrás de un desafío anti-bot. Falta confirmar en el texto oficial el período (enero a diciembre), la base y la regla del proporcional."
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Ley del Séptimo Día y Décimo Tercer Mes en Concepto de Aguinaldo (Decreto 112-82), artículos 9 a 13, con la interpretación del Decreto 178-86",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2016/07/Decreto-112-Ley-del-S%C3%83%C2%A9ptimo-d%C3%83%C2%ADa-y-D%C3%83%C2%A9cimo-Tercer-Mes-en-concepto-de-Aguinaldo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Decreto 178-86: 100 % con el año de trabajo continuo, o la proporción si al 31 de diciembre no cumple 12 meses; base de 30 días de salario ordinario."
+          }
         }
       ]
     },
@@ -581,6 +588,34 @@
             "tipo": "primaria",
             "verificadoEl": "2026-10-07",
             "nota": "El artículo dice 24 horas, una semana, dos semanas, un mes y dos meses. Se cuentan como 1, 7, 14, 30 y 60 días de salario."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.preaviso-omitido",
+      "nombre": "Parte del salario del preaviso que paga quien no lo dio",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "patrono": "Si el patrono no dio el preaviso",
+        "trabajador": "Si el trabajador no dio el preaviso"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "patrono": 100,
+            "trabajador": 50
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículos 116, 118 y 119",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El preaviso empieza a correr el día siguiente a la notificación."
           }
         }
       ]
@@ -740,7 +775,8 @@
       "unidad": "horas",
       "etiquetas": {
         "diurna": "Diurna",
-        "nocturna": "Nocturna"
+        "nocturna": "Nocturna",
+        "mixta": "Mixta"
       },
       "tramos": [
         {
@@ -748,14 +784,15 @@
           "desde": "2026-01-01",
           "valor": {
             "diurna": 8,
-            "nocturna": 6
+            "nocturna": 6,
+            "mixta": 7
           },
           "fuente": {
             "organismo": "Secretaría de Trabajo y Seguridad Social",
-            "titulo": "Código del Trabajo, artículo 322",
+            "titulo": "Código del Trabajo, artículos 321 y 322",
             "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
             "tipo": "primaria",
-            "verificadoEl": "2026-10-07",
+            "verificadoEl": "2026-10-12",
             "nota": "La semana diurna de 44 horas se paga como 48, igual que la nocturna de 36 (Decreto de interpretación del artículo 322)."
           }
         }
@@ -849,6 +886,695 @@
             "tipo": "primaria",
             "verificadoEl": "2026-10-07",
             "nota": "El 18 % grava cerveza, aguardiente, licores y otras bebidas alcohólicas, cigarrillos y boletos aéreos en clase ejecutiva o primera clase."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.septimo-dia-cada",
+      "nombre": "Días de trabajo que dan derecho a un séptimo día pagado",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Ley del Séptimo Día y Décimo Tercer Mes (Decreto 112-82), artículos 2, 4 y 5",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2016/07/Decreto-112-Ley-del-S%C3%83%C2%A9ptimo-d%C3%83%C2%ADa-y-D%C3%83%C2%A9cimo-Tercer-Mes-en-concepto-de-Aguinaldo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El séptimo día vale una jornada ordinaria, sin horas extra; con menos días trabajados por causa justificada se paga la proporción."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.feriado-trabajado-factor",
+      "nombre": "Pago del día de descanso o feriado trabajado (veces el salario de la jornada ordinaria)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículos 339 y 340",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Feriados pagados: 1 de enero, 14 de abril, 1 de mayo, 15 de septiembre, 3, 12 y 21 de octubre, 25 de diciembre y jueves, viernes y sábado santos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.periodo-prueba-dias",
+      "nombre": "Duración máxima del período de prueba",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "general": "Contrato de trabajo general o de aprendizaje",
+        "domestico": "Trabajo doméstico"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 60,
+            "domestico": 15
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículos 49, 50, 51, 158 y 182",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.preaviso-domestico-dias",
+      "nombre": "Aviso para terminar el trabajo doméstico",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "prueba": "En los primeros 15 días (prueba)",
+        "menos-de-1-anio": "Después de la prueba y menos de un año",
+        "1-anio-o-mas": "Un año o más de trabajo continuo"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "prueba": 1,
+            "menos-de-1-anio": 7,
+            "1-anio-o-mas": 30
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 158",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El artículo dice 24 horas, siete días y un mes. Se cuentan como 1, 7 y 30 días de salario."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.indemnizacion-domestico-dias",
+      "nombre": "Días de salario que cobra la persona en trabajo doméstico que termina el contrato por culpa del patrono",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "maltrato": "Maltrato o inducción a un hecho criminal o inmoral",
+        "falta-pago-menos-de-1-anio": "Falta de pago, menos de un año",
+        "falta-pago-1-anio-o-mas": "Falta de pago, un año o más"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "maltrato": 30,
+            "falta-pago-menos-de-1-anio": 7,
+            "falta-pago-1-anio-o-mas": 30
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 160",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El artículo dice un mes y siete días de salario; el mes se cuenta como 30 días."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.maternidad-semanas",
+      "nombre": "Semanas de descanso pagado por maternidad",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "antes": "Antes del parto",
+        "despues": "Después del parto"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "antes": 4,
+            "despues": 6
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículos 135 y 136",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El IHSS paga un subsidio y el patrono cubre la diferencia hasta el salario completo (artículo 136)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.maternidad-promedio-dias",
+      "nombre": "Días de salario que se promedian para pagar el descanso por maternidad",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 141",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.despido-embarazada-dias",
+      "nombre": "Indemnización por despido de una trabajadora embarazada o en lactancia sin autorización",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículos 144 y 145",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Además de las prestaciones, y de las 10 semanas de descanso si no las tomó. El despido se presume por embarazo durante el embarazo y los 3 meses después del parto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.riesgo-muerte-dias",
+      "nombre": "Días de salario para los dependientes si el trabajador muere por un riesgo profesional",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 620,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículos 417 y 420",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Se suma un mes completo de salario para los gastos de funeral."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.riesgo-funeral-meses",
+      "nombre": "Meses de salario para gastos de funeral por un riesgo profesional",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 420",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.riesgo-incapacidad-temporal",
+      "nombre": "Parte del salario que se paga durante una incapacidad temporal por riesgo profesional",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 428",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Desde el primer día y por un año como máximo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.riesgo-incapacidad-max-dias",
+      "nombre": "Duración máxima del pago por incapacidad temporal por riesgo profesional",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 365,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 428",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El artículo dice un año."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.cesantia-fallecimiento-porcentaje",
+      "nombre": "Parte de la cesantía que cobran los beneficiarios si el trabajador muere por causa natural",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 31,753 del 5/11/2008)",
+            "titulo": "Decreto 150-2008, artículo 1: artículo 120 literal g del Código del Trabajo",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2016/07/Gaceta-31753-Decreto-No.-150-2008.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Después de seis meses de trabajo. No aplica a las microempresas (artículo 120-A)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.cesantia-fallecimiento-meses",
+      "nombre": "Meses de trabajo para que los beneficiarios cobren cesantía por muerte natural",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 31,753 del 5/11/2008)",
+            "titulo": "Decreto 150-2008, artículo 1: artículo 120 literal g del Código del Trabajo",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2016/07/Gaceta-31753-Decreto-No.-150-2008.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.embargo-salario",
+      "nombre": "Parte del salario que se puede embargar según la deuda",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pension-alimenticia": "Pensión alimenticia",
+        "vivienda-alimentos": "Alquiler de la vivienda o alimentos comprados para la familia",
+        "general": "Cualquier otra deuda"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "pension-alimenticia": 50,
+            "vivienda-alimentos": 40,
+            "general": 25
+          },
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículos 123 y 371",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Para otras deudas no se embarga el salario mínimo ni los primeros L100 del mes, y del excedente solo una cuarta parte. Las prestaciones solo se embargan en la mitad, por pensión alimenticia."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.embargo-minimo-libre",
+      "nombre": "Parte del salario mensual que nunca se embarga por deudas comunes",
+      "tipo": "numero",
+      "unidad": "HNL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Secretaría de Trabajo y Seguridad Social",
+            "titulo": "Código del Trabajo, artículo 371",
+            "url": "https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.isr-personas-juridicas",
+      "nombre": "Tarifa del ISR de las personas jurídicas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Ley del Impuesto Sobre la Renta, artículo 22 literal a), texto consolidado hasta el Acuerdo SAR-07-2025",
+            "url": "https://www.sar.gob.hn/download/texto-consolidado-decreto-ley-numero-25-ley-del-impuesto-sobre-la-renta/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.aportacion-solidaria-tasa",
+      "nombre": "Tasa de la aportación solidaria de las personas jurídicas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Ayuda de la Declaración Jurada de ISR, Activo Neto y Aportación Solidaria, Persona Jurídica (Código 103), sección C",
+            "url": "https://www.sar.gob.hn/download/ayuda-declaracion-jurada-impuesto-sobre-la-renta-activo-neto-y-aportacion-solidaria-perona-juridica-codigo-103/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Se aplica sobre la renta neta gravable que excede de L1,000,000."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.aportacion-solidaria-exento",
+      "nombre": "Renta neta gravable que no paga aportación solidaria",
+      "tipo": "numero",
+      "unidad": "HNL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Ayuda de la Declaración Jurada de ISR, Activo Neto y Aportación Solidaria, Persona Jurídica (Código 103), sección C",
+            "url": "https://www.sar.gob.hn/download/ayuda-declaracion-jurada-impuesto-sobre-la-renta-activo-neto-y-aportacion-solidaria-perona-juridica-codigo-103/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.retencion-honorarios",
+      "nombre": "Retención del ISR sobre honorarios profesionales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12.5,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Ley del Impuesto Sobre la Renta, artículo 50, texto consolidado hasta el Acuerdo SAR-07-2025",
+            "url": "https://www.sar.gob.hn/download/texto-consolidado-decreto-ley-numero-25-ley-del-impuesto-sobre-la-renta/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "También dietas, comisiones, gratificaciones, bonificaciones y servicios técnicos. No aplica a quien está en el régimen de pagos a cuenta."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.ganancia-capital",
+      "nombre": "Impuesto único sobre ganancias de capital",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Ley del Impuesto Sobre la Renta, artículo 10, texto consolidado hasta el Acuerdo SAR-07-2025",
+            "url": "https://www.sar.gob.hn/download/texto-consolidado-decreto-ley-numero-25-ley-del-impuesto-sobre-la-renta/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.dividendos",
+      "nombre": "Impuesto sobre dividendos de residentes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Ley del Impuesto Sobre la Renta, artículo 25, texto consolidado hasta el Acuerdo SAR-07-2025",
+            "url": "https://www.sar.gob.hn/download/texto-consolidado-decreto-ley-numero-25-ley-del-impuesto-sobre-la-renta/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Lo retiene y entera la sociedad que paga."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.alquiler-tasa",
+      "nombre": "Impuesto cedular sobre el alquiler de vivienda",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Impuesto Cedular Sobre la Renta para Alquiler Habitacional (Código 106), Decreto 17-2010 artículo 5",
+            "url": "https://www.sar.gob.hn/download/impuesto-cedular-sobre-la-renta-para-alquiler-habitacional-codigo-106/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.alquiler-minimo-mensual",
+      "nombre": "Alquiler mensual de vivienda desde el que se paga el impuesto cedular",
+      "tipo": "numero",
+      "unidad": "HNL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Impuesto Cedular Sobre la Renta para Alquiler Habitacional (Código 106), Decreto 17-2010 artículo 5",
+            "url": "https://www.sar.gob.hn/download/impuesto-cedular-sobre-la-renta-para-alquiler-habitacional-codigo-106/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Se suma lo que pagan todas las unidades o cuartos de un mismo inmueble."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.isr-no-residentes",
+      "nombre": "Impuesto sobre ingresos de fuente hondureña de no residentes",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "alquileres": "Alquiler de bienes muebles o inmuebles",
+        "regalias-minas": "Regalías de minas, canteras y otros recursos naturales",
+        "salarios": "Sueldos, salarios, comisiones y otros servicios",
+        "sucursales": "Utilidades de sucursales, filiales y agencias de empresas extranjeras",
+        "dividendos": "Dividendos y otras participaciones de utilidades",
+        "regalias-patentes": "Regalías por patentes, marcas y derechos de autor",
+        "intereses": "Intereses de operaciones comerciales, bonos y títulos",
+        "transporte": "Operación de aviones, barcos y vehículos terrestres",
+        "telecomunicaciones": "Comunicaciones, software y telecomunicaciones",
+        "seguros": "Primas de seguros y fianzas",
+        "espectaculos": "Espectáculos públicos",
+        "peliculas": "Películas y derechos de televisión",
+        "otros": "Cualquier otro ingreso"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "alquileres": 25,
+            "regalias-minas": 25,
+            "salarios": 25,
+            "sucursales": 10,
+            "dividendos": 10,
+            "regalias-patentes": 25,
+            "intereses": 10,
+            "transporte": 10,
+            "telecomunicaciones": 10,
+            "seguros": 10,
+            "espectaculos": 25,
+            "peliculas": 25,
+            "otros": 10
+          },
+          "fuente": {
+            "organismo": "Servicio de Administración de Rentas (SAR)",
+            "titulo": "Ley del Impuesto Sobre la Renta, artículo 5, texto consolidado hasta el Acuerdo SAR-07-2025",
+            "url": "https://www.sar.gob.hn/download/texto-consolidado-decreto-ley-numero-25-ley-del-impuesto-sobre-la-renta/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.ihss-ivm",
+      "nombre": "Cotización al régimen de Invalidez, Vejez y Muerte del IHSS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "trabajador": "Trabajador",
+        "patrono": "Patrono"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "trabajador": 2.5,
+            "patrono": 3.5
+          },
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 36,545 del 28/5/2024)",
+            "titulo": "Decreto 48-2024, artículo 1",
+            "url": "https://www.tsc.gob.hn/web/leyes/Decreto-48-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El Estado aporta además 0.5 %. Se aplica hasta el techo de cotización."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hn.ihss-em",
+      "nombre": "Cotización al régimen de Enfermedad y Maternidad del IHSS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "trabajador": "Trabajador",
+        "patrono": "Patrono"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "trabajador": 2.5,
+            "patrono": 5
+          },
+          "motivo": "Solo lo vimos en prensa y en una nota de PwC. El sitio del IHSS responde 403 y el Decreto 48-2024 no fija estas tasas."
+        }
+      ]
+    },
+    {
+      "id": "hn.ihss-techo",
+      "nombre": "Techo mensual de cotización del IHSS (IVM y EM)",
+      "tipo": "numero",
+      "unidad": "HNL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 11903.13,
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 36,545 del 28/5/2024)",
+            "titulo": "Decreto 48-2024, artículo 2 (techos 2024 y 2025)",
+            "url": "https://www.tsc.gob.hn/web/leyes/Decreto-48-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Desde 2026 los fija la Junta Directiva del IHSS con un estudio actuarial."
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "El Decreto 48-2024 deja el techo de 2026 en manos de la Junta Directiva del IHSS. No encontramos la resolución: ihss.hn responde 403 y La Gaceta en tsc.gob.hn no la trae."
+        }
+      ]
+    },
+    {
+      "id": "hn.rap-aporte",
+      "nombre": "Aporte al RAP sobre el salario que excede el techo del IVM",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "trabajador": "Trabajador",
+        "patrono": "Patrono"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "trabajador": 1.5,
+            "patrono": 1.5
+          },
+          "fuente": {
+            "organismo": "Congreso Nacional (La Gaceta No. 36,545 del 28/5/2024)",
+            "titulo": "Decreto 47-2024, artículo 16 (artículo 43 de la Ley del RAP)",
+            "url": "https://www.sar.gob.hn/download/decreto-no-47-2024-no-36545-de-fecha-28-de-mayo-2025-contentivo-ley-del-fondo-de-reserva-laboral-de-capitalizacion-individual-administrado-por-el-regimen-de-aportaciones-privadas-rap/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La retención se hace sobre el monto que excede el techo de cotización del IVM del IHSS."
           }
         }
       ]

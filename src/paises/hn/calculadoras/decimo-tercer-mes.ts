@@ -1,15 +1,12 @@
 import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 import { corteDecimoTercero, DIAS_ANIO, MES_INICIO_DECIMO_TERCERO, periodoTrabajado } from "../reglas";
 
-// Borrador hasta leer el Decreto 112-82 en fuente oficial: el período enero a diciembre y la base
-// (promedio de salarios ordinarios) son los de la práctica y los del reglamento del décimo cuarto,
-// que remite a las condiciones del décimo tercero.
 export default definirCalculadora({
   id: "hn.decimo-tercer-mes",
   mercado: "hn",
   concepto: "bono-semestral",
   slug: "decimo-tercer-mes",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "hn.decimo-tercero": "numero",
   },
@@ -19,6 +16,7 @@ export default definirCalculadora({
       tipo: "moneda",
       etiqueta: "Salario ordinario mensual promedio del año",
       min: 0,
+      ayuda: "El promedio de lo que ganó cada mes desde enero (o desde que entró), sin horas extra.",
     },
     { id: "fechaIngreso", tipo: "fecha", etiqueta: "Fecha en que empezó a trabajar" },
     {
@@ -42,7 +40,12 @@ export default definirCalculadora({
     if (entrada.fechaIngreso > corte) throw new ErrorEntrada("La fecha de ingreso no puede ser posterior al cierre del período.", "fechaIngreso");
     const periodo = periodoTrabajado(entrada.fechaIngreso, corte, MES_INICIO_DECIMO_TERCERO);
     const monto = redondear((porcentaje(entrada.salario, valores["hn.decimo-tercero"]) * periodo.dias) / DIAS_ANIO);
-    return { desde: periodo.desde, hasta: corte, dias: periodo.dias, monto };
+    const observaciones: string[] = [];
+    if (periodo.dias < DIAS_ANIO) observaciones.push("No completó el año entre el 1 de enero y el 31 de diciembre, así que le corresponde la parte proporcional a los días trabajados.");
+    if (entrada.motivo === "salida") observaciones.push("Si renuncia o lo despiden, con causa o sin ella, el patrono tiene que pagarle esta parte proporcional.");
+    else observaciones.push("Se paga en diciembre, salvo que usted y su patrono hayan acordado otra fecha.");
+    observaciones.push("Si ya le adelantaron una parte, se descuenta del pago final.");
+    return { desde: periodo.desde, hasta: corte, dias: periodo.dias, monto, observaciones };
   },
   resultado: [
     { clave: "desde", etiqueta: "Se cuenta desde", formato: "fecha" },
