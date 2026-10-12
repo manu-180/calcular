@@ -36,6 +36,14 @@ import salarioDiario from "./calculadoras/salario-diario";
 import contenidoSalarioDiario from "./contenido/salario-diario";
 import preaviso from "./calculadoras/preaviso";
 import contenidoPreaviso from "./contenido/preaviso";
+import antiguedadLaboral from "./calculadoras/antiguedad-laboral";
+import contenidoAntiguedadLaboral from "./contenido/antiguedad-laboral";
+import anticipoPrestaciones from "./calculadoras/anticipo-prestaciones";
+import contenidoAnticipoPrestaciones from "./contenido/anticipo-prestaciones";
+import garantiaPrestaciones from "./calculadoras/garantia-prestaciones";
+import contenidoGarantiaPrestaciones from "./contenido/garantia-prestaciones";
+import interesesPrestaciones from "./calculadoras/intereses-prestaciones";
+import contenidoInteresesPrestaciones from "./contenido/intereses-prestaciones";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -66,6 +74,10 @@ export default definirPais({
     { definicion: diaFeriadoTrabajado, contenido: contenidoDiaFeriadoTrabajado, cliente: () => import("./calculadoras/dia-feriado-trabajado.cliente") },
     { definicion: salarioDiario, contenido: contenidoSalarioDiario, cliente: () => import("./calculadoras/salario-diario.cliente") },
     { definicion: preaviso, contenido: contenidoPreaviso, cliente: () => import("./calculadoras/preaviso.cliente") },
+    { definicion: antiguedadLaboral, contenido: contenidoAntiguedadLaboral, cliente: () => import("./calculadoras/antiguedad-laboral.cliente") },
+    { definicion: anticipoPrestaciones, contenido: contenidoAnticipoPrestaciones, cliente: () => import("./calculadoras/anticipo-prestaciones.cliente") },
+    { definicion: garantiaPrestaciones, contenido: contenidoGarantiaPrestaciones, cliente: () => import("./calculadoras/garantia-prestaciones.cliente") },
+    { definicion: interesesPrestaciones, contenido: contenidoInteresesPrestaciones, cliente: () => import("./calculadoras/intereses-prestaciones.cliente") },
   ],
   novedades,
   detectores,
