@@ -2,6 +2,10 @@ import { enMapa } from "@/motor/calculo";
 import type { FechaISO } from "@/motor/tipos";
 import { anioDe, fecha, mayor, mesesYDiasInclusive, type Tiempo } from "./fechas";
 
+// El Ministerio de Trabajo divide el sueldo por 30 para el día (vacación, duodécimas) aunque el mes
+// tenga 28 o 31 días.
+export const DIAS_DEL_MES = 30;
+
 // D.S. 17288: "de 1 a 5 años, 15 días; de 5 a 10 años, 20 días; de 10 años adelante, 30 días".
 // Se mira el año de servicio que se está cumpliendo: el 5.º todavía da 15 y el 6.º ya da 20.
 export function claveVacaciones(anioDeServicio: number): string {

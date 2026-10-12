@@ -490,6 +490,639 @@
           }
         }
       ]
+    },
+    {
+      "id": "bo.domingo-trabajado-factor",
+      "nombre": "Pago del domingo trabajado (veces el salario del día)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo IV, pago por domingo trabajado: «corresponde el pago triple» (L.G.T. art. 55)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.recargo-nocturno",
+      "nombre": "Recargo por trabajo nocturno",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "comercio": "Comercio, oficinas y vigilancia",
+        "industria": "Establecimientos industriales y fabriles",
+        "mujeres-menores": "Mujeres y menores de 18 años",
+        "nocivo": "Labores nocivas o peligrosas entre las 24 y las 6"
+      },
+      "nota": "El trabajo nocturno va de las 20 a las 6 horas y la jornada nocturna no pasa de 7 horas.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "comercio": 25,
+            "industria": 30,
+            "mujeres-menores": 40,
+            "nocivo": 50
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo V, trabajo nocturno (L.G.T. arts. 46 y 55; D.S. N° 90 de 24 de abril de 1944)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.jornada-horas-dia",
+      "nombre": "Jornada máxima diaria",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo III, jornada de trabajo (L.G.T. art. 46)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.subsidio-frontera",
+      "nombre": "Subsidio de frontera",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Para quien trabaja de forma permanente dentro de los 50 km lineales de una frontera internacional.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo VIII, subsidio de frontera (D.S. N° 21137, art. 12): «Haber Básico X 20% = Subsidio de Frontera»",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.prima-utilidades",
+      "nombre": "Parte de las utilidades que se destina a la prima anual",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo IX, prima anual (L.G.T. art. 57; D.R. de la L.G.T. art. 49; Ley de 22 de noviembre de 1945)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.prima-meses-minimos",
+      "nombre": "Meses seguidos de trabajo para cobrar la prima anual",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "empleado": "Empleadas y empleados",
+        "obrero": "Obreras y obreros"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "empleado": 3,
+            "obrero": 1
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo IX, prima anual (D.R. de la L.G.T. art. 48; D.S. N° 229, art. 3)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.maternidad-dias",
+      "nombre": "Descanso de maternidad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "prenatal": "Antes del parto",
+        "postnatal": "Después del parto"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "prenatal": 45,
+            "postnatal": 45
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulos XVII y XIX, licencia por maternidad (Ley N° 1516 de 10 de julio de 2023, arts. 1 y 2)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.maternidad-goce",
+      "nombre": "Remuneración durante el descanso de maternidad",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XVII, licencia por maternidad: «con el 100% de goce de haberes» (Ley N° 1516)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.maternidad-cotizaciones-minimas",
+      "nombre": "Cotizaciones mensuales en los últimos 12 meses para el subsidio de maternidad",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XIX, subsidio de maternidad (Ley N° 1516, que modifica el art. 31 del D.L. N° 13214)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.asignaciones-familiares",
+      "nombre": "Subsidios de prenatalidad, natalidad, lactancia y sepelio",
+      "tipo": "mapa",
+      "unidad": "BOB",
+      "etiquetas": {
+        "prenatal": "Subsidio prenatal (por mes)",
+        "natalidad": "Subsidio de natalidad (pago único)",
+        "lactancia": "Subsidio de lactancia (por mes)",
+        "sepelio": "Subsidio de sepelio (pago único)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "prenatal": 2000,
+            "natalidad": 2000,
+            "lactancia": 2000,
+            "sepelio": 2000
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XIX, subsidios de prenatalidad, natalidad, lactancia y sepelio (D.S. N° 21637, art. 25, modificado por D.S. N° 3546 de 1 de mayo de 2018)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La guía da Bs 2.000 para cada subsidio «acorde a normativa vigente». El prenatal y el de lactancia son mensuales y se entregan en productos; el de natalidad y el de sepelio son un pago único."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.aportes-patronales",
+      "nombre": "Aportes del empleador a la Gestora por cada dependiente",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "solidario": "Aporte patronal solidario",
+        "riesgo-profesional": "Prima por riesgo profesional"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": {
+            "solidario": 3.5,
+            "riesgo-profesional": 1.71
+          },
+          "fuente": {
+            "organismo": "Ministerio de Economía y Finanzas Públicas, Viceministerio de Pensiones y Servicios Financieros",
+            "titulo": "Boletín del Sistema Integral de Pensiones, diciembre 2024, cuadro N° 3 (contribuciones al SIP por tipo de asegurado y empleador)",
+            "url": "https://media.economiayfinanzas.gob.bo/sites/default/files/2025-10/Bolet%C3%ADn%20SIP_diciembre%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El aporte patronal solidario sube de 3 % a 3,5 % desde el 1 de octubre de 2024 (Ley N° 1582)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.aportes-independiente",
+      "nombre": "Aportes del asegurado independiente o consultor a la Gestora",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "cotizacion": "Cotización mensual (vejez)",
+        "riesgo-comun": "Prima por riesgo común",
+        "riesgo-laboral": "Prima por riesgo laboral",
+        "solidario": "Aporte solidario del asegurado",
+        "comision": "Comisión de la Gestora"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "cotizacion": 10,
+            "riesgo-comun": 1.71,
+            "riesgo-laboral": 1.71,
+            "solidario": 0.5,
+            "comision": 0.5
+          },
+          "fuente": {
+            "organismo": "Ministerio de Economía y Finanzas Públicas, Viceministerio de Pensiones y Servicios Financieros",
+            "titulo": "Boletín del Sistema Integral de Pensiones, diciembre 2024, cuadro N° 3 (aporte del asegurado independiente o consultor, 14,42 %)",
+            "url": "https://media.economiayfinanzas.gob.bo/sites/default/files/2025-10/Bolet%C3%ADn%20SIP_diciembre%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.ingreso-cotizable-independiente",
+      "nombre": "Ingreso cotizable del asegurado independiente (en salarios mínimos)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "minimo": "Mínimo",
+        "maximo": "Máximo"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "minimo": 1,
+            "maximo": 60
+          },
+          "fuente": {
+            "organismo": "Ministerio de Economía y Finanzas Públicas, Viceministerio de Pensiones y Servicios Financieros",
+            "titulo": "Boletín del Sistema Integral de Pensiones, diciembre 2024, página 19: la base de cálculo «se encuentra entre uno (1) y sesenta (60) Salarios Mínimos Nacionales vigentes»",
+            "url": "https://media.economiayfinanzas.gob.bo/sites/default/files/2025-10/Bolet%C3%ADn%20SIP_diciembre%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.aporte-salud-patronal",
+      "nombre": "Aporte patronal a la caja de salud",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Unidad de Análisis de Políticas Sociales y Económicas (UDAPE)",
+            "titulo": "Empleo y legislación laboral en Bolivia (noviembre 2024), punto 2.2 (normativa en salud), cita textual del artículo 3 de la Ley N° 924 de 15 de abril de 1987",
+            "url": "https://www.udape.gob.bo/wp-content/uploads/2026/03/Empleo-y-Legislacion-laboral-en-Bolivia.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "UDAPE transcribe la ley: «El régimen de enfermedad, maternidad y riesgo profesionales a corto plazo será financiado en su totalidad con el aporte patronal del diez por ciento (10%) del total ganado de sus asegurados». La Gaceta Oficial no respondió desde nuestra red."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.iue",
+      "nombre": "Alícuota del Impuesto sobre las Utilidades de las Empresas (IUE)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Servicio de Impuestos Nacionales (SIN)",
+            "titulo": "Ley N° 843 y decretos reglamentarios, texto ordenado actualizado al 31/08/2026, artículo 50",
+            "url": "https://www.impuestos.gob.bo/wp-content/uploads/2026/09/1.-LEY-N%C2%B0-843-08-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.iue-utilidad-presunta",
+      "nombre": "Utilidad que se presume para retener IUE",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "bienes": "Compra de bienes sin factura",
+        "exterior": "Pagos a beneficiarios del exterior"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "bienes": 20,
+            "exterior": 50
+          },
+          "fuente": {
+            "organismo": "Servicio de Impuestos Nacionales (SIN)",
+            "titulo": "Ley N° 843 y decretos reglamentarios, texto ordenado actualizado al 31/08/2026, D.S. N° 24051, art. 3 (modificado por D.S. N° 4850, art. 2 parágrafo V) para la compra de bienes sin factura, y Ley N° 843, art. 51 para pagos al exterior",
+            "url": "https://www.impuestos.gob.bo/wp-content/uploads/2026/09/1.-LEY-N%C2%B0-843-08-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.rc-iva-independiente-computo-smn",
+      "nombre": "Cómputo mensual de salarios mínimos contra el RC-IVA del independiente",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Servicio de Impuestos Nacionales (SIN)",
+            "titulo": "Ley N° 843 y decretos reglamentarios, texto ordenado actualizado al 31/08/2026, D.S. N° 21531, art. 9 inciso c) numeral 2 (13 % sobre dos salarios mínimos por cada mes)",
+            "url": "https://www.impuestos.gob.bo/wp-content/uploads/2026/09/1.-LEY-N%C2%B0-843-08-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.tgb-alicuotas",
+      "nombre": "Impuesto a la Transmisión Gratuita de Bienes (herencias y donaciones)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "directos": "Padres, hijos, abuelos, nietos y cónyuge",
+        "hermanos": "Hermanos y sus descendientes",
+        "otros": "Otros parientes, legatarios y donatarios"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "directos": 1,
+            "hermanos": 10,
+            "otros": 20
+          },
+          "fuente": {
+            "organismo": "Servicio de Impuestos Nacionales (SIN)",
+            "titulo": "Ley N° 843 y decretos reglamentarios, texto ordenado actualizado al 31/08/2026, artículo 102",
+            "url": "https://www.impuestos.gob.bo/wp-content/uploads/2026/09/1.-LEY-N%C2%B0-843-08-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.imt",
+      "nombre": "Alícuota del Impuesto Municipal a las Transferencias de inmuebles y vehículos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Servicio de Impuestos Nacionales (SIN)",
+            "titulo": "Ley N° 843 y decretos reglamentarios, texto ordenado actualizado al 31/08/2026, artículo 107 y D.S. N° 24054, artículos 6 (base imponible) y 7 (alícuota del 3 %)",
+            "url": "https://www.impuestos.gob.bo/wp-content/uploads/2026/09/1.-LEY-N%C2%B0-843-08-26.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.deuda-tributaria-tasas",
+      "nombre": "Tasa anual de interés de la deuda tributaria según los años de mora",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "hasta-4": "Primeros cuatro años",
+        "hasta-7": "Quinto a séptimo año",
+        "desde-8": "Desde el octavo año"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "hasta-4": 4,
+            "hasta-7": 6,
+            "desde-8": 10
+          },
+          "fuente": {
+            "organismo": "Servicio de Impuestos Nacionales (SIN)",
+            "titulo": "Ley N° 2492, Código Tributario Boliviano, texto ordenado actualizado al 30/06/2026, artículo 47 y Anexo 1 del D.S. N° 27310 (modificado por D.S. N° 2993)",
+            "url": "https://www.impuestos.gob.bo/wp-content/uploads/2026/07/2.-LEY-N%C2%B0-2492-06-26-3.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.multa-omision-pago",
+      "nombre": "Multa por omisión de pago",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Servicio de Impuestos Nacionales (SIN)",
+            "titulo": "Ley N° 2492, Código Tributario Boliviano, texto ordenado actualizado al 30/06/2026, artículo 165 (modificado por la Ley N° 1448)",
+            "url": "https://www.impuestos.gob.bo/wp-content/uploads/2026/07/2.-LEY-N%C2%B0-2492-06-26-3.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.finiquito-plazo-dias",
+      "nombre": "Plazo para pagar el finiquito",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XIV, plazo para cancelar los beneficios sociales (D.S. N° 28699, art. 9)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.finiquito-multa",
+      "nombre": "Multa por pagar el finiquito fuera de plazo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XIV y ejercicio de cálculo de beneficios sociales (D.S. N° 28699, art. 9; R.M. N° 447/09)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.jubilacion-edad",
+      "nombre": "Edad de jubilación",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 58,
+          "fuente": {
+            "organismo": "Ministerio de Economía y Finanzas Públicas, Viceministerio de Pensiones y Servicios Financieros",
+            "titulo": "Boletín del Sistema Integral de Pensiones, diciembre 2024, cuadro N° 2 (Ley N° 065 de Pensiones)",
+            "url": "https://media.economiayfinanzas.gob.bo/sites/default/files/2025-10/Bolet%C3%ADn%20SIP_diciembre%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.jubilacion-hijos-maximo",
+      "nombre": "Hijos que reducen la edad de jubilación de la mujer (un año cada uno)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministerio de Economía y Finanzas Públicas, Viceministerio de Pensiones y Servicios Financieros",
+            "titulo": "Boletín del Sistema Integral de Pensiones, diciembre 2024, cuadro N° 2 y nota 1 de la página 21 (política de protección de género)",
+            "url": "https://media.economiayfinanzas.gob.bo/sites/default/files/2025-10/Bolet%C3%ADn%20SIP_diciembre%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.jubilacion-aportes-minimos",
+      "nombre": "Aportes mensuales mínimos para la Pensión Solidaria de Vejez",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 120,
+          "fuente": {
+            "organismo": "Ministerio de Economía y Finanzas Públicas, Viceministerio de Pensiones y Servicios Financieros",
+            "titulo": "Boletín del Sistema Integral de Pensiones, diciembre 2024, punto 2.2, régimen semicontributivo (al menos 120 periodos, equivalente a 10 años)",
+            "url": "https://media.economiayfinanzas.gob.bo/sites/default/files/2025-10/Bolet%C3%ADn%20SIP_diciembre%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bo.renta-dignidad-edad",
+      "nombre": "Edad para cobrar la Renta Dignidad",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Ministerio de Economía y Finanzas Públicas, Viceministerio de Pensiones y Servicios Financieros",
+            "titulo": "Boletín del Sistema Integral de Pensiones, diciembre 2024, punto 2.2, régimen no contributivo",
+            "url": "https://media.economiayfinanzas.gob.bo/sites/default/files/2025-10/Bolet%C3%ADn%20SIP_diciembre%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }

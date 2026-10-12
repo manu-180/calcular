@@ -15,6 +15,12 @@ import salarioMinimo from "./calculadoras/salario-minimo";
 import sueldoLiquido from "./calculadoras/sueldo-liquido";
 import ufv from "./calculadoras/ufv";
 import vacaciones from "./calculadoras/vacaciones";
+import desahucio from "./calculadoras/desahucio";
+import feriadoTrabajado from "./calculadoras/feriado-trabajado";
+import domingoTrabajado from "./calculadoras/domingo-trabajado";
+import recargoNocturno from "./calculadoras/recargo-nocturno";
+import subsidioDeFrontera from "./calculadoras/subsidio-de-frontera";
+import sueldoPorHora from "./calculadoras/sueldo-por-hora";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoBonoDeAntiguedad from "./contenido/bono-de-antiguedad";
 import contenidoDolarOficial from "./contenido/dolar-oficial";
@@ -30,6 +36,12 @@ import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSueldoLiquido from "./contenido/sueldo-liquido";
 import contenidoUfv from "./contenido/ufv";
 import contenidoVacaciones from "./contenido/vacaciones";
+import contenidoDesahucio from "./contenido/desahucio";
+import contenidoFeriadoTrabajado from "./contenido/feriado-trabajado";
+import contenidoDomingoTrabajado from "./contenido/domingo-trabajado";
+import contenidoRecargoNocturno from "./contenido/recargo-nocturno";
+import contenidoSubsidioDeFrontera from "./contenido/subsidio-de-frontera";
+import contenidoSueldoPorHora from "./contenido/sueldo-por-hora";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +69,12 @@ export default definirPais({
     { definicion: horasExtras, contenido: contenidoHorasExtras, cliente: () => import("./calculadoras/horas-extras.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: regimenSimplificado, contenido: contenidoRegimenSimplificado, cliente: () => import("./calculadoras/regimen-simplificado.cliente") },
+    { definicion: desahucio, contenido: contenidoDesahucio, cliente: () => import("./calculadoras/desahucio.cliente") },
+    { definicion: feriadoTrabajado, contenido: contenidoFeriadoTrabajado, cliente: () => import("./calculadoras/feriado-trabajado.cliente") },
+    { definicion: domingoTrabajado, contenido: contenidoDomingoTrabajado, cliente: () => import("./calculadoras/domingo-trabajado.cliente") },
+    { definicion: recargoNocturno, contenido: contenidoRecargoNocturno, cliente: () => import("./calculadoras/recargo-nocturno.cliente") },
+    { definicion: subsidioDeFrontera, contenido: contenidoSubsidioDeFrontera, cliente: () => import("./calculadoras/subsidio-de-frontera.cliente") },
+    { definicion: sueldoPorHora, contenido: contenidoSueldoPorHora, cliente: () => import("./calculadoras/sueldo-por-hora.cliente") },
   ],
   novedades,
   detectores,
