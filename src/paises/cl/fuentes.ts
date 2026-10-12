@@ -1,5 +1,6 @@
 import { esFechaISO, fechaEnZona, sumarDias } from "@/motor/vigencia";
 import type { Detector, FechaISO, HallazgoNorma, Http, PuntoSerie } from "@/motor/tipos";
+import datos from "./datos.json";
 
 const ZONA = "America/Santiago";
 const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
@@ -142,7 +143,7 @@ async function traerSerieCruzada(
 }
 
 const RE_NORMA = /<NORMA idNorma='(\d+)'[^>]*>[\s\S]*?<FECHA_PUBLICACION>([\d-]+)<\/FECHA_PUBLICACION>[\s\S]*?<TITULO>([\s\S]*?)<\/TITULO>/g;
-const TEMAS = /ingreso m[ií]nimo|asignaci[oó]n familiar|jornada|horas extraordinarias|feriado|indemnizaci[oó]n|gratificaci[oó]n|c[oó]digo del trabajo|impuesto|honorarios|tope imponible|cotizaci[oó]n|seguro de cesant[ií]a|sistema de pensiones|unidad de fomento/i;
+const TEMAS = /ingreso m[ií]nimo|asignaci[oó]n familiar|subsidio familiar|jornada|horas extraordinarias|feriado|indemnizaci[oó]n|gratificaci[oó]n|c[oó]digo del trabajo|impuesto|honorarios|tope imponible|cotizaci[oó]n|seguro de cesant[ií]a|sistema de pensiones|pensi[oó]n garantizada|unidad de fomento|aguinaldo|reajuste general|alimentos|incapacidad laboral|maternidad|postnatal/i;
 
 export function parsearNormasBcn(xml: string): HallazgoNorma[] | null {
   if (!xml.includes("<NORMAS")) return null;
@@ -153,6 +154,49 @@ export function parsearNormasBcn(xml: string): HallazgoNorma[] | null {
     hallazgos.push({ titulo, url: `https://www.bcn.cl/leychile/navegar?idNorma=${m[1]}`, fecha: m[2] });
   }
   return hallazgos;
+}
+
+const MES_NUMERO: Record<string, number> = Object.fromEntries(MESES.map((m, i) => [m, i + 1]));
+const RE_RESOLUCION_FCS = /Resoluci[oó]n Exenta N[°º] ?([\d.]+), del (\d{1,2}) de ([a-z]+) de (\d{4}), que actualiza tablas de valores superiores e inferiores/gi;
+
+// La Superintendencia de Pensiones lista sus resoluciones del seguro de cesantía. Cada marzo sale una
+// que fija los montos mínimos y máximos del Fondo de Cesantía Solidario.
+export function parsearResolucionesFcs(html: string, url: string): HallazgoNorma[] | null {
+  if (!html.includes("Seguro de Desempleo") && !html.includes("Seguro de Cesant")) return null;
+  const hallazgos: HallazgoNorma[] = [];
+  for (const m of html.matchAll(RE_RESOLUCION_FCS)) {
+    const f = fecha(Number(m[4]), MES_NUMERO[m[3].toLowerCase()] ?? 0, Number(m[2]));
+    if (!f) continue;
+    const titulo = `Resolución exenta ${m[1]} de la Superintendencia de Pensiones: valores superiores e inferiores del seguro de cesantía`;
+    if (!hallazgos.some((h) => h.titulo === titulo)) hallazgos.push({ titulo, url, fecha: f });
+  }
+  return hallazgos;
+}
+
+function montosEnPesos(html: string): Set<number> {
+  const montos = new Set<number>();
+  for (const m of html.matchAll(/\$\s?(\d{1,3}(?:\.\d{3})+)/g)) montos.add(Number(m[1].split(".").join("")));
+  return montos;
+}
+
+function valoresVigentesPgu(): number[] {
+  const ultimo = (id: string) => {
+    const tramos = datos.datos.find((d) => d.id === id)?.tramos.filter((t) => t.estado === "verificado") ?? [];
+    return tramos[tramos.length - 1]?.valor;
+  };
+  const maxima = ultimo("cl.pgu-maxima") as Record<string, number> | undefined;
+  const inferior = ultimo("cl.pgu-pension-inferior");
+  return [...Object.values(maxima ?? {}), ...(typeof inferior === "number" ? [inferior] : [])];
+}
+
+// ChileAtiende no publica normas sino la ficha de la PGU. Si alguno de los montos cargados ya no
+// aparece en la ficha, es señal de reajuste: se avisa para revisarlo a mano, nunca se escribe solo.
+export function revisarFichaPgu(html: string, esperados: readonly number[], url: string, hoy: FechaISO): HallazgoNorma[] | null {
+  if (!html.includes("Pensión Garantizada Universal") && !html.includes("PGU")) return null;
+  const montos = montosEnPesos(html);
+  if (montos.size === 0 || esperados.length === 0) return null;
+  const faltan = esperados.filter((v) => !montos.has(v));
+  return faltan.length ? [{ titulo: `ChileAtiende cambió los montos de la PGU (ya no muestra ${faltan.join(", ")})`, url, fecha: hoy }] : [];
 }
 
 export const detectores: readonly Detector[] = [
@@ -196,12 +240,51 @@ export const detectores: readonly Detector[] = [
       "cl.tope-imponible-cesantia",
       "cl.impuesto-unico",
       "cl.iva",
+      "cl.asignacion-familiar",
+      "cl.subsidio-familiar",
+      "cl.cotizacion-empleador-pensiones",
+      "cl.global-complementario",
+      "cl.alimentos-minimo-un-hijo",
+      "cl.alimentos-minimo-varios",
+      "cl.alimentos-maximo",
+      "cl.feriado-progresivo-anios-base",
+      "cl.prenatal-dias",
+      "cl.postnatal-dias",
+      "cl.postnatal-parental-dias",
+      "cl.aguinaldo-navidad-pensionados",
+      "cl.aguinaldo-fiestas-patrias-pensionados",
+      "cl.licencia-dias-carencia",
+      "cl.subsidio-minimo",
     ],
     metodo: "api-xml",
     url: "https://www.leychile.cl/Consulta/obtxml?opt=3&cantidad=100",
     async traer(http) {
       const xml = await textoOpcional(http, this.url);
       return xml ? parsearNormasBcn(xml) : null;
+    },
+  },
+  {
+    id: "cl.sp-resoluciones-cesantia",
+    carril: "norma",
+    datos: ["cl.fcs-porcentaje", "cl.fcs-valor-superior", "cl.fcs-valor-inferior"],
+    metodo: "html",
+    url: "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-5941.html",
+    userAgentNavegador: true,
+    async traer(http) {
+      const html = await textoOpcional(http, this.url);
+      return html ? parsearResolucionesFcs(html, this.url) : null;
+    },
+  },
+  {
+    id: "cl.pgu-chileatiende",
+    carril: "norma",
+    datos: ["cl.pgu-maxima", "cl.pgu-pension-inferior", "cl.pgu-pension-superior"],
+    metodo: "html",
+    url: "https://www.chileatiende.gob.cl/fichas/102077-pension-garantizada-universal-pgu",
+    userAgentNavegador: true,
+    async traer(http) {
+      const html = await textoOpcional(http, this.url);
+      return html ? revisarFichaPgu(html, valoresVigentesPgu(), this.url, fechaEnZona(new Date(), ZONA)) : null;
     },
   },
 ];

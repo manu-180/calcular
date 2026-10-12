@@ -74,6 +74,8 @@ import licenciaMedica from "./calculadoras/licencia-medica";
 import contenidoLicenciaMedica from "./contenido/licencia-medica";
 import planIsapre from "./calculadoras/plan-isapre";
 import contenidoPlanIsapre from "./contenido/plan-isapre";
+import diasDeVacaciones from "./calculadoras/dias-de-vacaciones";
+import contenidoDiasDeVacaciones from "./contenido/dias-de-vacaciones";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -123,6 +125,7 @@ export default definirPais({
     { definicion: reajusteDeArriendo, contenido: contenidoReajusteDeArriendo, cliente: () => import("./calculadoras/reajuste-de-arriendo.cliente") },
     { definicion: licenciaMedica, contenido: contenidoLicenciaMedica, cliente: () => import("./calculadoras/licencia-medica.cliente") },
     { definicion: planIsapre, contenido: contenidoPlanIsapre, cliente: () => import("./calculadoras/plan-isapre.cliente") },
+    { definicion: diasDeVacaciones, contenido: contenidoDiasDeVacaciones, cliente: () => import("./calculadoras/dias-de-vacaciones.cliente") },
   ],
   novedades,
   detectores,
