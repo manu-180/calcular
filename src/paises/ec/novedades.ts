@@ -4,6 +4,51 @@ const SRI = "Servicio de Rentas Internas (SRI)";
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "ec.retenciones-marzo-2026",
+    fecha: "2026-03-01",
+    titulo: "Nueva tabla de retenciones en la fuente desde marzo",
+    texto: "El SRI actualizó los porcentajes de retención del impuesto a la renta. Honorarios profesionales y arriendos siguen en 10 %, la compra de bienes en 2 % y los RIMPE emprendedores en 1 %.",
+    vigenteDesde: "2026-03-01",
+    calculadoras: ["ec.retencion-en-la-fuente", "ec.plazo-fijo"],
+    fuente: {
+      organismo: SRI,
+      titulo: "Porcentajes de retención en la fuente del impuesto a la renta desde marzo de 2026 (Resolución NAC-DGERCGC26-00000009)",
+      url: "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/e7df4e4f-ed02-4530-82f9-98a5b99b3392/Porcentajes%20de%20retencion%20Impuesto%20a%20la%20Renta.xls",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
+    id: "ec.herencias-2026",
+    fecha: "2025-12-30",
+    titulo: "Herencias: la parte exenta sube a $78.527",
+    texto: "En 2026 el impuesto a las herencias, legados y donaciones empieza a cobrarse desde $78.527 (en 2025 eran $77.708). Padres e hijos siguen pagando con las tarifas a la mitad.",
+    vigenteDesde: "2026-01-01",
+    calculadoras: ["ec.impuesto-herencias"],
+    fuente: {
+      organismo: SRI,
+      titulo: "Tablas del impuesto a la renta sobre herencias, legados y donaciones 2026 (Resolución NAC-DGERCGC25-00000043)",
+      url: "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/ac3a6ab4-a60b-4892-8ecf-0f5b939169ae/Tablas%20de%20C%c3%a1lculo%20de%20Impuesto%20a%20la%20Renta%20Herencias%20y%20Legados.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
+    id: "ec.isd-2026",
+    fecha: "2026-01-01",
+    titulo: "El ISD sigue en 5 % para las personas",
+    texto: "En 2026 la tarifa general del impuesto a la salida de divisas sigue en 5 %. Las tarifas de 2,5 % y 0 % son solo para importaciones de ciertos sectores. Con tarjeta en el exterior tienes $5.188,26 exentos al año.",
+    vigenteDesde: "2026-01-01",
+    calculadoras: ["ec.impuesto-salida-divisas"],
+    fuente: {
+      organismo: SRI,
+      titulo: "Impuesto a la Salida de Divisas: tarifas 2026 y exenciones",
+      url: "https://www.sri.gob.ec/impuesto-a-la-salida-de-divisas-isd",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
     id: "ec.gastos-personales-2026",
     fecha: "2026-02-06",
     titulo: "Gastos personales 2026: el tope usa la canasta de $821,80",

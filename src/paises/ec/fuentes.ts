@@ -114,8 +114,86 @@ const DATOS_LABORALES = [
   "ec.recargo-madrugada",
   "ec.recargo-extraordinarias",
   "ec.utilidades",
+  "ec.recargo-nocturno",
+  "ec.jornada-semanal",
+  "ec.periodo-prueba-dias",
+  "ec.maternidad-semanas",
+  "ec.lactancia-meses",
+  "ec.paternidad-dias",
+  "ec.recargo-eventual",
+  "ec.despido-ineficaz-meses",
+  "ec.desahucio-aviso-dias",
+  "ec.jubilacion-patronal-anios",
+  "ec.cesantia-personal",
+  "ec.jubilacion-coeficientes",
 ];
-const DATOS_TRIBUTARIOS = ["ec.iva", "ec.impuesto-renta", "ec.rebaja-gastos-personales", "ec.canastas-por-cargas", "ec.canastas-catastroficas", "ec.canasta-basica-enero"];
+const DATOS_TRIBUTARIOS = [
+  "ec.iva",
+  "ec.impuesto-renta",
+  "ec.rebaja-gastos-personales",
+  "ec.canastas-por-cargas",
+  "ec.canastas-catastroficas",
+  "ec.canasta-basica-enero",
+  "ec.impuesto-herencias",
+  "ec.impuesto-vehicular",
+  "ec.isd",
+  "ec.isd-exento-tarjetas",
+  "ec.retencion-renta",
+  "ec.impuesto-renta-sociedades",
+  "ec.multa-declaracion",
+  "ec.plazo-fijo-exento-dias",
+];
+
+const URL_SRI_ISD = "https://www.sri.gob.ec/impuesto-a-la-salida-de-divisas-isd";
+const URL_SRI_RETENCIONES = "https://www.sri.gob.ec/retenciones-en-la-fuente";
+const URL_SRI_VEHICULOS = "https://www.sri.gob.ec/impuestos-vehiculares";
+
+function textoPlano(html: string): string {
+  return limpiar(html).replace(/\s+/g, " ");
+}
+
+function numeroEc(crudo: string): number {
+  return Number(crudo.replace(/\./g, "").replace(",", "."));
+}
+
+function valorCargado(id: string, fecha: FechaISO): unknown {
+  const dato = datos.datos.find((d) => d.id === id);
+  const tramo = dato?.tramos.find((t) => t.estado === "verificado" && t.desde <= fecha && (!("hasta" in t) || !t.hasta || t.hasta >= fecha));
+  return tramo?.valor;
+}
+
+export function enlacePorNombre(html: string, nombre: RegExp): string | null {
+  for (const m of html.matchAll(/href="(https:\/\/www\.sri\.gob\.ec\/o\/sri-portlet-biblioteca-alfresco-internet\/descargar\/[0-9a-f-]{36}\/[^"]+)"/g)) {
+    if (nombre.test(m[1])) return m[1];
+  }
+  return null;
+}
+
+export interface IsdLeido {
+  tarifa: number;
+  exentoTarjetas: number;
+}
+
+// La página del ISD lista la tarifa general de cada año y el monto exento con tarjeta para un trienio.
+export function parsearIsd(html: string, anio: number): IsdLeido | null {
+  const texto = textoPlano(html);
+  const bloque = new RegExp(`A[ñn]o ${anio}: Tarifa general: (\\d+(?:[.,]\\d+)?) ?%`).exec(texto);
+  const exento = /el valor exento es de USD ([\d.]+,\d{2})/.exec(texto);
+  if (!bloque || !exento) return null;
+  const tarifa = Number(bloque[1].replace(",", "."));
+  const exentoTarjetas = numeroEc(exento[1]);
+  if (!Number.isFinite(tarifa) || !Number.isFinite(exentoTarjetas)) return null;
+  return { tarifa, exentoTarjetas };
+}
+
+// Primeras y últimas filas de la tabla del impuesto vehicular: hasta 4.000 al 0,5 % y desde 24.001 con 620 fijos al 6 %.
+export function parsearTablaVehicular(html: string): { primeraTasa: number; ultimaCuota: number; ultimaTasa: number } | null {
+  const texto = textoPlano(html);
+  const primera = / 0 4\.000 0 (\d+(?:[.,]\d+)?) /.exec(texto);
+  const ultima = /24\.001 En a?delante (\d+) (\d+(?:[.,]\d+)?)/.exec(texto);
+  if (!primera || !ultima) return null;
+  return { primeraTasa: Number(primera[1].replace(",", ".")), ultimaCuota: Number(ultima[1]), ultimaTasa: Number(ultima[2].replace(",", ".")) };
+}
 
 const URL_INEC_IPC = "https://www.ecuadorencifras.gob.ec/indice-de-precios-al-consumidor/";
 const MESES_INEC: Readonly<Record<string, number>> = { ene: 1, feb: 2, mar: 3, abr: 4, may: 5, jun: 6, jul: 7, ago: 8, sep: 9, sept: 9, oct: 10, nov: 11, dic: 12 };
@@ -165,6 +243,66 @@ async function traerIpc(http: Http): Promise<PuntoSerie[] | null> {
 }
 
 export const detectores: readonly Detector[] = [
+  {
+    id: "ec.sri-isd",
+    carril: "norma",
+    datos: ["ec.isd", "ec.isd-exento-tarjetas"],
+    metodo: "html",
+    url: URL_SRI_ISD,
+    async traer(http) {
+      const html = await textoOpcional(http, URL_SRI_ISD);
+      const fecha = hoy();
+      const leido = html ? parsearIsd(html, Number(fecha.slice(0, 4))) : null;
+      if (!leido) return null;
+      if (leido.tarifa === valorCargado("ec.isd", fecha) && leido.exentoTarjetas === valorCargado("ec.isd-exento-tarjetas", fecha)) return [];
+      return [{ titulo: `SRI: ISD con tarifa general de ${leido.tarifa} % y USD ${leido.exentoTarjetas} exentos con tarjeta`, url: `${URL_SRI_ISD}#isd-${leido.tarifa}-${leido.exentoTarjetas}`, fecha }];
+    },
+  },
+  {
+    id: "ec.sri-tabla-herencias",
+    carril: "norma",
+    datos: ["ec.impuesto-herencias"],
+    metodo: "html",
+    url: URL_SRI_RENTA,
+    async traer(http) {
+      const html = await textoOpcional(http, URL_SRI_RENTA);
+      if (!html) return null;
+      const url = enlacePorNombre(html, /Herencias%20y%20Legados\.pdf$/i);
+      if (!url) return null;
+      // Igual que la tabla de renta: el SRI cambia el identificador del PDF cuando publica la tabla nueva.
+      return [{ titulo: "SRI: tablas del impuesto a la renta sobre herencias, legados y donaciones (PDF publicado)", url, fecha: hoy() }];
+    },
+  },
+  {
+    id: "ec.sri-retenciones",
+    carril: "norma",
+    datos: ["ec.retencion-renta"],
+    metodo: "html",
+    url: URL_SRI_RETENCIONES,
+    async traer(http) {
+      const html = await textoOpcional(http, URL_SRI_RETENCIONES);
+      if (!html) return null;
+      const url = enlacePorNombre(html, /Porcentajes%20de%20retencion%20Impuesto%20a%20la%20Renta\.xls$/i);
+      if (!url) return null;
+      return [{ titulo: "SRI: porcentajes de retención en la fuente del impuesto a la renta (XLS publicado)", url, fecha: hoy() }];
+    },
+  },
+  {
+    id: "ec.sri-vehiculos",
+    carril: "norma",
+    datos: ["ec.impuesto-vehicular"],
+    metodo: "html",
+    url: URL_SRI_VEHICULOS,
+    async traer(http) {
+      const html = await textoOpcional(http, URL_SRI_VEHICULOS);
+      const t = html ? parsearTablaVehicular(html) : null;
+      if (!t) return null;
+      const escala = valorCargado("ec.impuesto-vehicular", hoy()) as { tasa: number; cuotaFija?: number }[] | undefined;
+      const ultima = escala?.[escala.length - 1];
+      if (escala && escala[0].tasa === t.primeraTasa && ultima?.tasa === t.ultimaTasa && ultima?.cuotaFija === t.ultimaCuota) return [];
+      return [{ titulo: `SRI: tabla del impuesto vehicular distinta a la cargada (primer tramo ${t.primeraTasa} %, último ${t.ultimaCuota} + ${t.ultimaTasa} %)`, url: `${URL_SRI_VEHICULOS}#tabla-${t.primeraTasa}-${t.ultimaCuota}-${t.ultimaTasa}`, fecha: hoy() }];
+    },
+  },
   {
     id: "ec.ipc-inec",
     carril: "serie",
