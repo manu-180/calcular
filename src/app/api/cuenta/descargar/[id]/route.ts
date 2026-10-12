@@ -6,6 +6,7 @@ import { clienteServidor } from "@/lib/supabase/servidor";
 import { registrarEvento } from "@/lib/rastreo-servidor";
 import { productoIntl } from "@/lib/pagos/catalogo-intl";
 import { servirArchivoIntl } from "@/lib/pagos/entrega-intl";
+import { rutaVerInformeIntl } from "@/lib/pagos/flujo-intl";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -49,6 +50,11 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
     const intl = productoIntl(compra.producto);
     if (intl) {
       after(() => registrarEvento({ tipo: "descarga", path: "/cuenta", producto: intl.id, userId: auth.user.id, props: { via: "cuenta" } }));
+      // El informe se arma en su página, que vuelve a verificar el pago con PayPal; la planilla desde la
+      // cuenta sale sin los datos de la persona (viajan solo en la entrega original).
+      if (intl.tipo === "informe" && typeof compra.mp_payment_id === "string" && compra.mp_payment_id.startsWith("paypal:")) {
+        return NextResponse.redirect(new URL(rutaVerInformeIntl(intl, "paypal", compra.mp_payment_id.slice("paypal:".length)), req.url), 303);
+      }
       return servirArchivoIntl(intl);
     }
     console.error("[cuenta/descargar] producto desconocido en la compra", id, compra.producto);

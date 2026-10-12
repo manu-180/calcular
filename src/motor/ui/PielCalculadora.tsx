@@ -3,6 +3,7 @@ import type { CalculadoraControlada } from "../cliente";
 import { textosCalculadora } from "../i18n/calculadora";
 import type { AvisoResuelto, Campo, ContextoSerializado, Moneda } from "../tipos";
 import { IconoExterno } from "./Iconos";
+import { OfertaResultado } from "./Oferta";
 
 // La piel copia la de las calculadoras de calcular.ar (src/components/Calculadora*.tsx): tarjeta con
 // borde esmeralda, campos de a dos, foco verde y el resultado en una caja gris que se recalcula con
@@ -258,6 +259,7 @@ export function PielCalculadora({
           ))}
         </div>
       ) : null}
+      <OfertaResultado calculadora={id} control={control} contexto={contexto} />
     </div>
   );
 }
