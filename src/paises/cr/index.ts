@@ -74,6 +74,14 @@ import prestamo from "./calculadoras/prestamo";
 import contenidoPrestamo from "./contenido/prestamo";
 import salarioBase from "./calculadoras/salario-base";
 import contenidoSalarioBase from "./contenido/salario-base";
+import impuestoSobreAlquileres from "./calculadoras/impuesto-sobre-alquileres";
+import contenidoImpuestoSobreAlquileres from "./contenido/impuesto-sobre-alquileres";
+import impuestoDeTraspaso from "./calculadoras/impuesto-de-traspaso";
+import contenidoImpuestoDeTraspaso from "./contenido/impuesto-de-traspaso";
+import impuestoSobreDividendos from "./calculadoras/impuesto-sobre-dividendos";
+import contenidoImpuestoSobreDividendos from "./contenido/impuesto-sobre-dividendos";
+import asociacionSolidarista from "./calculadoras/asociacion-solidarista";
+import contenidoAsociacionSolidarista from "./contenido/asociacion-solidarista";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -123,6 +131,10 @@ export default definirPais({
     { definicion: gananciaDeCapital, contenido: contenidoGananciaDeCapital, cliente: () => import("./calculadoras/ganancia-de-capital.cliente") },
     { definicion: prestamo, contenido: contenidoPrestamo, cliente: () => import("./calculadoras/prestamo.cliente") },
     { definicion: salarioBase, contenido: contenidoSalarioBase, cliente: () => import("./calculadoras/salario-base.cliente") },
+    { definicion: impuestoSobreAlquileres, contenido: contenidoImpuestoSobreAlquileres, cliente: () => import("./calculadoras/impuesto-sobre-alquileres.cliente") },
+    { definicion: impuestoDeTraspaso, contenido: contenidoImpuestoDeTraspaso, cliente: () => import("./calculadoras/impuesto-de-traspaso.cliente") },
+    { definicion: impuestoSobreDividendos, contenido: contenidoImpuestoSobreDividendos, cliente: () => import("./calculadoras/impuesto-sobre-dividendos.cliente") },
+    { definicion: asociacionSolidarista, contenido: contenidoAsociacionSolidarista, cliente: () => import("./calculadoras/asociacion-solidarista.cliente") },
   ],
   novedades,
   detectores,
