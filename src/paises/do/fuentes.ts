@@ -217,13 +217,16 @@ export const detectores: readonly Detector[] = [
       "do.gastos-educativos-tope-discapacidad",
       "do.ipi-tasa",
       "do.ganancia-capital-inmuebles",
+      "do.recargo-mora",
+      "do.recargo-mora-tope",
+      "do.interes-indemnizatorio",
     ],
     metodo: "html",
     url: "https://dgii.gov.do/publicacionesOficiales/avisosInformativos/Paginas/default.aspx",
     async traer(http) {
       return parsearAvisosDgii(
         await http.texto(this.url),
-        /retenci|transferencia|cheque|educativ|patrimonio|IPI|ganancia de capital|dividend|premio|30-26|Ley n[uú]m/i,
+        /retenci|transferencia|cheque|educativ|patrimonio|IPI|ganancia de capital|dividend|premio|recargo|inter[eé]s indemnizatorio|30-26|Ley n[uú]m/i,
         REVISADO_HASTA,
       );
     },

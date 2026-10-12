@@ -78,6 +78,8 @@ import dividendos from "./calculadoras/dividendos";
 import contenidoDividendos from "./contenido/dividendos";
 import prestamo from "./calculadoras/prestamo";
 import contenidoPrestamo from "./contenido/prestamo";
+import recargosDgii from "./calculadoras/recargos-dgii";
+import contenidoRecargosDgii from "./contenido/recargos-dgii";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -129,6 +131,7 @@ export default definirPais({
     { definicion: gananciaCapitalInmueble, contenido: contenidoGananciaCapitalInmueble, cliente: () => import("./calculadoras/ganancia-capital-inmueble.cliente") },
     { definicion: dividendos, contenido: contenidoDividendos, cliente: () => import("./calculadoras/dividendos.cliente") },
     { definicion: prestamo, contenido: contenidoPrestamo, cliente: () => import("./calculadoras/prestamo.cliente") },
+    { definicion: recargosDgii, contenido: contenidoRecargosDgii, cliente: () => import("./calculadoras/recargos-dgii.cliente") },
   ],
   novedades,
   detectores,
