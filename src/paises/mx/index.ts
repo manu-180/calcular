@@ -66,6 +66,14 @@ import salarioMinimoProfesional from "./calculadoras/salario-minimo-profesional"
 import contenidoSalarioMinimoProfesional from "./contenido/salario-minimo-profesional";
 import retiroPorDesempleo from "./calculadoras/retiro-por-desempleo";
 import contenidoRetiroPorDesempleo from "./contenido/retiro-por-desempleo";
+import isrAguinaldoArticulo174 from "./calculadoras/isr-aguinaldo-articulo-174";
+import contenidoIsrAguinaldoArticulo174 from "./contenido/isr-aguinaldo-articulo-174";
+import aportacionInfonavit from "./calculadoras/aportacion-infonavit";
+import contenidoAportacionInfonavit from "./contenido/aportacion-infonavit";
+import salarioPorHora from "./calculadoras/salario-por-hora";
+import contenidoSalarioPorHora from "./contenido/salario-por-hora";
+import jornadaLaboral from "./calculadoras/jornada-laboral";
+import contenidoJornadaLaboral from "./contenido/jornada-laboral";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -111,6 +119,10 @@ export default definirPais({
     { definicion: isrArrendamiento, contenido: contenidoIsrArrendamiento, cliente: () => import("./calculadoras/isr-arrendamiento.cliente") },
     { definicion: salarioMinimoProfesional, contenido: contenidoSalarioMinimoProfesional, cliente: () => import("./calculadoras/salario-minimo-profesional.cliente") },
     { definicion: retiroPorDesempleo, contenido: contenidoRetiroPorDesempleo, cliente: () => import("./calculadoras/retiro-por-desempleo.cliente") },
+    { definicion: isrAguinaldoArticulo174, contenido: contenidoIsrAguinaldoArticulo174, cliente: () => import("./calculadoras/isr-aguinaldo-articulo-174.cliente") },
+    { definicion: aportacionInfonavit, contenido: contenidoAportacionInfonavit, cliente: () => import("./calculadoras/aportacion-infonavit.cliente") },
+    { definicion: salarioPorHora, contenido: contenidoSalarioPorHora, cliente: () => import("./calculadoras/salario-por-hora.cliente") },
+    { definicion: jornadaLaboral, contenido: contenidoJornadaLaboral, cliente: () => import("./calculadoras/jornada-laboral.cliente") },
   ],
   novedades,
   detectores,

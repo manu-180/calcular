@@ -2577,6 +2577,27 @@
           "motivo": "El artículo 191 de la LSS lo fija en diez salarios mínimos mensuales del Distrito Federal. Tras la desindexación de 2016 no encontramos fuente oficial que diga si se toma el salario mínimo o la UMA, ni con cuántos días se arma el mes (portales privados usan 30 o 30.4), y la diferencia cambia el resultado."
         }
       ]
+    },
+    {
+      "id": "mx.factor-mensual-174",
+      "nombre": "Días del mes para la retención opcional de gratificaciones (RLISR art. 174)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "La gratificación se divide entre 365 y se multiplica por este número.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-10-09",
+          "valor": 30.4,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Reglamento de la Ley del Impuesto sobre la Renta, artículo 174",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo106775.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }
