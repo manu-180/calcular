@@ -3,13 +3,19 @@ import avisos from "./avisos.json";
 import accidenteDeTrabajo from "./calculadoras/accidente-de-trabajo";
 import aguinaldo from "./calculadoras/aguinaldo";
 import aguinaldoAtrasado from "./calculadoras/aguinaldo-atrasado";
+import anticipoIr from "./calculadoras/anticipo-ir";
+import canastaBasica from "./calculadoras/canasta-basica";
 import costoEmpleador from "./calculadoras/costo-empleador";
+import cuotaFija from "./calculadoras/cuota-fija";
+import depositoAPlazo from "./calculadoras/deposito-a-plazo";
 import despidoTrabajadorDeConfianza from "./calculadoras/despido-trabajador-de-confianza";
 import feriados from "./calculadoras/feriados";
 import horasExtras from "./calculadoras/horas-extras";
 import indemnizacionPorAntiguedad from "./calculadoras/indemnizacion-por-antiguedad";
 import inflacion from "./calculadoras/inflacion";
 import inss from "./calculadoras/inss";
+import irAlquiler from "./calculadoras/ir-alquiler";
+import irAnual from "./calculadoras/ir-anual";
 import irSalarial from "./calculadoras/ir-salarial";
 import iva from "./calculadoras/iva";
 import jubilacion from "./calculadoras/jubilacion";
@@ -20,6 +26,8 @@ import periodoDePrueba from "./calculadoras/periodo-de-prueba";
 import permisosLaborales from "./calculadoras/permisos-laborales";
 import prescripcionLaboral from "./calculadoras/prescripcion-laboral";
 import renuncia from "./calculadoras/renuncia";
+import retencionServiciosProfesionales from "./calculadoras/retencion-servicios-profesionales";
+import retencionesIr from "./calculadoras/retenciones-ir";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioNeto from "./calculadoras/salario-neto";
 import salarioPorHora from "./calculadoras/salario-por-hora";
@@ -29,16 +37,23 @@ import subsidioPorEnfermedad from "./calculadoras/subsidio-por-enfermedad";
 import tipoDeCambio from "./calculadoras/tipo-de-cambio";
 import trabajoDomestico from "./calculadoras/trabajo-domestico";
 import vacaciones from "./calculadoras/vacaciones";
+import ventaDeInmuebles from "./calculadoras/venta-de-inmuebles";
 import contenidoAccidenteDeTrabajo from "./contenido/accidente-de-trabajo";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoAguinaldoAtrasado from "./contenido/aguinaldo-atrasado";
+import contenidoAnticipoIr from "./contenido/anticipo-ir";
+import contenidoCanastaBasica from "./contenido/canasta-basica";
 import contenidoCostoEmpleador from "./contenido/costo-empleador";
+import contenidoCuotaFija from "./contenido/cuota-fija";
+import contenidoDepositoAPlazo from "./contenido/deposito-a-plazo";
 import contenidoDespidoTrabajadorDeConfianza from "./contenido/despido-trabajador-de-confianza";
 import contenidoFeriados from "./contenido/feriados";
 import contenidoHorasExtras from "./contenido/horas-extras";
 import contenidoIndemnizacionPorAntiguedad from "./contenido/indemnizacion-por-antiguedad";
 import contenidoInflacion from "./contenido/inflacion";
 import contenidoInss from "./contenido/inss";
+import contenidoIrAlquiler from "./contenido/ir-alquiler";
+import contenidoIrAnual from "./contenido/ir-anual";
 import contenidoIrSalarial from "./contenido/ir-salarial";
 import contenidoIva from "./contenido/iva";
 import contenidoJubilacion from "./contenido/jubilacion";
@@ -49,6 +64,8 @@ import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
 import contenidoPermisosLaborales from "./contenido/permisos-laborales";
 import contenidoPrescripcionLaboral from "./contenido/prescripcion-laboral";
 import contenidoRenuncia from "./contenido/renuncia";
+import contenidoRetencionServiciosProfesionales from "./contenido/retencion-servicios-profesionales";
+import contenidoRetencionesIr from "./contenido/retenciones-ir";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioNeto from "./contenido/salario-neto";
 import contenidoSalarioPorHora from "./contenido/salario-por-hora";
@@ -58,6 +75,7 @@ import contenidoSubsidioPorEnfermedad from "./contenido/subsidio-por-enfermedad"
 import contenidoTipoDeCambio from "./contenido/tipo-de-cambio";
 import contenidoTrabajoDomestico from "./contenido/trabajo-domestico";
 import contenidoVacaciones from "./contenido/vacaciones";
+import contenidoVentaDeInmuebles from "./contenido/venta-de-inmuebles";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -99,6 +117,15 @@ export default definirPais({
     { definicion: seguroFacultativo, contenido: contenidoSeguroFacultativo, cliente: () => import("./calculadoras/seguro-facultativo.cliente") },
     { definicion: jubilacion, contenido: contenidoJubilacion, cliente: () => import("./calculadoras/jubilacion.cliente") },
     { definicion: pensionAlimenticia, contenido: contenidoPensionAlimenticia, cliente: () => import("./calculadoras/pension-alimenticia.cliente") },
+    { definicion: retencionServiciosProfesionales, contenido: contenidoRetencionServiciosProfesionales, cliente: () => import("./calculadoras/retencion-servicios-profesionales.cliente") },
+    { definicion: retencionesIr, contenido: contenidoRetencionesIr, cliente: () => import("./calculadoras/retenciones-ir.cliente") },
+    { definicion: cuotaFija, contenido: contenidoCuotaFija, cliente: () => import("./calculadoras/cuota-fija.cliente") },
+    { definicion: irAnual, contenido: contenidoIrAnual, cliente: () => import("./calculadoras/ir-anual.cliente") },
+    { definicion: anticipoIr, contenido: contenidoAnticipoIr, cliente: () => import("./calculadoras/anticipo-ir.cliente") },
+    { definicion: irAlquiler, contenido: contenidoIrAlquiler, cliente: () => import("./calculadoras/ir-alquiler.cliente") },
+    { definicion: ventaDeInmuebles, contenido: contenidoVentaDeInmuebles, cliente: () => import("./calculadoras/venta-de-inmuebles.cliente") },
+    { definicion: depositoAPlazo, contenido: contenidoDepositoAPlazo, cliente: () => import("./calculadoras/deposito-a-plazo.cliente") },
+    { definicion: canastaBasica, contenido: contenidoCanastaBasica, cliente: () => import("./calculadoras/canasta-basica.cliente") },
   ],
   novedades,
   detectores,
