@@ -38,6 +38,12 @@ import riesgosDelTrabajo from "./calculadoras/riesgos-del-trabajo";
 import contenidoRiesgosDelTrabajo from "./contenido/riesgos-del-trabajo";
 import embargoDeSalario from "./calculadoras/embargo-de-salario";
 import contenidoEmbargoDeSalario from "./contenido/embargo-de-salario";
+import rentaTrabajadorIndependiente from "./calculadoras/renta-trabajador-independiente";
+import contenidoRentaTrabajadorIndependiente from "./contenido/renta-trabajador-independiente";
+import rentaPersonasJuridicas from "./calculadoras/renta-personas-juridicas";
+import contenidoRentaPersonasJuridicas from "./contenido/renta-personas-juridicas";
+import certificadoDeDeposito from "./calculadoras/certificado-de-deposito";
+import contenidoCertificadoDeDeposito from "./contenido/certificado-de-deposito";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -69,6 +75,9 @@ export default definirPais({
     { definicion: incapacidad, contenido: contenidoIncapacidad, cliente: () => import("./calculadoras/incapacidad.cliente") },
     { definicion: riesgosDelTrabajo, contenido: contenidoRiesgosDelTrabajo, cliente: () => import("./calculadoras/riesgos-del-trabajo.cliente") },
     { definicion: embargoDeSalario, contenido: contenidoEmbargoDeSalario, cliente: () => import("./calculadoras/embargo-de-salario.cliente") },
+    { definicion: rentaTrabajadorIndependiente, contenido: contenidoRentaTrabajadorIndependiente, cliente: () => import("./calculadoras/renta-trabajador-independiente.cliente") },
+    { definicion: rentaPersonasJuridicas, contenido: contenidoRentaPersonasJuridicas, cliente: () => import("./calculadoras/renta-personas-juridicas.cliente") },
+    { definicion: certificadoDeDeposito, contenido: contenidoCertificadoDeDeposito, cliente: () => import("./calculadoras/certificado-de-deposito.cliente") },
   ],
   novedades,
   detectores,
