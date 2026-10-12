@@ -78,6 +78,8 @@ import validarCedula from "./calculadoras/validar-cedula";
 import contenidoValidarCedula from "./contenido/validar-cedula";
 import jubilacionIess from "./calculadoras/jubilacion-iess";
 import contenidoJubilacionIess from "./contenido/jubilacion-iess";
+import sueldoPorHora from "./calculadoras/sueldo-por-hora";
+import contenidoSueldoPorHora from "./contenido/sueldo-por-hora";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -129,6 +131,7 @@ export default definirPais({
     { definicion: impuestoRentaSociedades, contenido: contenidoImpuestoRentaSociedades, cliente: () => import("./calculadoras/impuesto-renta-sociedades.cliente") },
     { definicion: validarCedula, contenido: contenidoValidarCedula, cliente: () => import("./calculadoras/validar-cedula.cliente") },
     { definicion: jubilacionIess, contenido: contenidoJubilacionIess, cliente: () => import("./calculadoras/jubilacion-iess.cliente") },
+    { definicion: sueldoPorHora, contenido: contenidoSueldoPorHora, cliente: () => import("./calculadoras/sueldo-por-hora.cliente") },
   ],
   novedades,
   detectores,

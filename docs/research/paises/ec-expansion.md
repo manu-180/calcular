@@ -1,4 +1,4 @@
-# Ecuador: expansión de calculadoras (de 15 a 38 publicadas)
+# Ecuador: expansión de calculadoras (de 15 a 39 publicadas)
 
 Fecha: 12/10/2026. Complementa `docs/research/paises/ec.md` (7/10/2026). Todo valor que entra como
 `verificado` en `src/paises/ec/datos.json` se leyó ese día en la fuente primaria que figura en la tabla.
@@ -45,6 +45,7 @@ Demanda: A (alta y todo el año), B (media o estacional fuerte), C (nicho o de c
 | 20 | multa-sri | C | LRTI art. 100 | LRTI del SRI | publicada |
 | 21 | cesantia-iess | C | aportes de cesantía 2 % + 1 % | Tasasdeaportacion.pdf del IESS | publicada |
 | 22 | impuesto-renta-sociedades | B (contadores, pico en abril) | LRTI art. 37 y CT art. 97 | LRTI del SRI | publicada |
+| 23b | sueldo-por-hora | B | CT art. 47 y 53 | Código del Trabajo (datos ya cargados) | publicada |
 | 23 | validar-cedula | A (formularios y facturación) | algoritmo módulo 10 de la cédula | no requiere dato normativo | publicada |
 | 24 | jubilacion-iess | A | Ley de Seguridad Social y Res. C.D. 100 | coeficientes y requisitos verificados en C.D. 100 (PDF escaneado, tabla leída en dos columnas); mínimos y máximos 2026 solo en prensa | borrador (se publica al verificar mínimos y máximos) |
 | 25 | pension-alimenticia | A | Acuerdo MDH-DM-2026-0005-A | desarrollohumano.gob.ec no responde desde fuera de Ecuador; no está en la búsqueda del Registro Oficial | no construida |
