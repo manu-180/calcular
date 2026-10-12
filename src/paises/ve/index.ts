@@ -28,6 +28,14 @@ import indemnizacionPorDespido from "./calculadoras/indemnizacion-por-despido";
 import contenidoIndemnizacionPorDespido from "./contenido/indemnizacion-por-despido";
 import salarioIntegral from "./calculadoras/salario-integral";
 import contenidoSalarioIntegral from "./contenido/salario-integral";
+import bonoNocturno from "./calculadoras/bono-nocturno";
+import contenidoBonoNocturno from "./contenido/bono-nocturno";
+import diaFeriadoTrabajado from "./calculadoras/dia-feriado-trabajado";
+import contenidoDiaFeriadoTrabajado from "./contenido/dia-feriado-trabajado";
+import salarioDiario from "./calculadoras/salario-diario";
+import contenidoSalarioDiario from "./contenido/salario-diario";
+import preaviso from "./calculadoras/preaviso";
+import contenidoPreaviso from "./contenido/preaviso";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -54,6 +62,10 @@ export default definirPais({
     { definicion: vacacionesFraccionadas, contenido: contenidoVacacionesFraccionadas, cliente: () => import("./calculadoras/vacaciones-fraccionadas.cliente") },
     { definicion: indemnizacionPorDespido, contenido: contenidoIndemnizacionPorDespido, cliente: () => import("./calculadoras/indemnizacion-por-despido.cliente") },
     { definicion: salarioIntegral, contenido: contenidoSalarioIntegral, cliente: () => import("./calculadoras/salario-integral.cliente") },
+    { definicion: bonoNocturno, contenido: contenidoBonoNocturno, cliente: () => import("./calculadoras/bono-nocturno.cliente") },
+    { definicion: diaFeriadoTrabajado, contenido: contenidoDiaFeriadoTrabajado, cliente: () => import("./calculadoras/dia-feriado-trabajado.cliente") },
+    { definicion: salarioDiario, contenido: contenidoSalarioDiario, cliente: () => import("./calculadoras/salario-diario.cliente") },
+    { definicion: preaviso, contenido: contenidoPreaviso, cliente: () => import("./calculadoras/preaviso.cliente") },
   ],
   novedades,
   detectores,
