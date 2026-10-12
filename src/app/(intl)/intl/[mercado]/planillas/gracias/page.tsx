@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { dentroDelCupoEntrega, ipDelPedido } from "@/lib/acceso-entrega";
 import { proveedor } from "@/lib/pagos";
 import { leerReferenciaIntl } from "@/lib/pagos/catalogo-intl";
-import { rutaDescargaIntl } from "@/lib/pagos/flujo-intl";
+import { rutaDescargaIntl, rutaVerInformeIntl } from "@/lib/pagos/flujo-intl";
 import { ID_PAYPAL } from "@/lib/pagos/paypal";
 import { pagoCubre, type PagoVerificado } from "@/lib/pagos/tipos";
 import { rutaIntl } from "@/motor/seo";
@@ -12,6 +12,7 @@ import type { CodigoMercado } from "@/motor/tipos";
 import { contextoSitio } from "@/motor/ui/contexto";
 import { IconoFlecha } from "@/motor/ui/Iconos";
 import { registro } from "@/paises";
+import { BotonDescarga } from "../_descarga";
 import { textosPlanillas } from "../_textos";
 
 export const dynamic = "force-dynamic";
@@ -48,15 +49,19 @@ export default async function GraciasPlanillaIntl({ params, searchParams }: Prop
         <h1 className="cy-titular">{t.graciasTitulo}</h1>
         <p className="cy-bajada">{listo && ref ? t.graciasListo(ref.producto) : t.graciasPendiente}</p>
       </header>
-      {listo && pago ? (
-        <p>
-          <a className="cy-boton cy-boton-principal" href={rutaDescargaIntl(pago.proveedor, pago.id)} rel="nofollow">
-            <span>{t.descargar}</span>
-            <span className="cy-boton-icono">
-              <IconoFlecha />
-            </span>
-          </a>
-        </p>
+      {listo && pago && ref ? (
+        ref.producto.tipo === "informe" ? (
+          <p>
+            <a className="cy-boton cy-boton-principal" href={rutaVerInformeIntl(ref.producto, pago.proveedor, pago.id)} rel="nofollow">
+              <span>{t.abrirInforme}</span>
+              <span className="cy-boton-icono">
+                <IconoFlecha />
+              </span>
+            </a>
+          </p>
+        ) : (
+          <BotonDescarga accion={rutaDescargaIntl(pago.proveedor, pago.id)} producto={ref.producto.id} texto={t.descargar} />
+        )
       ) : null}
       <p>
         <a href={rutaIntl(ctx.mercado.codigo)}>{t.verCalculadoras}</a>

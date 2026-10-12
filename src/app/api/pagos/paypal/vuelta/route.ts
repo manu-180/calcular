@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { dentroDelCupoEntrega, ipDelPedido } from "@/lib/acceso-entrega";
 import { leerReferenciaIntl, productoIntlDe } from "@/lib/pagos/catalogo-intl";
-import { origenDelPedido, procesarPagoIntl, rutaGraciasIntl, rutaPlanillasIntl } from "@/lib/pagos/flujo-intl";
+import { origenDelPedido, procesarPagoIntl, rutaComprarIntl, rutaGraciasIntl } from "@/lib/pagos/flujo-intl";
 import { ID_PAYPAL, paypal } from "@/lib/pagos/paypal";
 import { pagoCubre } from "@/lib/pagos/tipos";
 
@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
   const base = origenDelPedido(req.nextUrl.origin);
   const elegido = productoIntlDe(sp.get("m") ?? "", sp.get("p") ?? "");
   const volver = (estado: string) =>
-    ir(elegido ? `${base}${rutaPlanillasIntl(elegido.mercado, "comprar")}?p=${elegido.slug}&pago=${estado}` : `${base}/`);
+    ir(elegido ? `${base}${rutaComprarIntl(elegido)}?p=${elegido.slug}&pago=${estado}` : `${base}/`);
 
   const orden = sp.get("token") ?? "";
   if (!ID_PAYPAL.test(orden)) return volver("error");

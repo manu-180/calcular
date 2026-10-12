@@ -44,6 +44,28 @@ export function rutaPlanillasIntl(mercado: string, resto?: string): string {
   return rutaIntl(mercado as CodigoMercado, resto ? `planillas/${resto}` : "planillas");
 }
 
+export function rutaInformesIntl(mercado: string, resto?: string): string {
+  return rutaIntl(mercado as CodigoMercado, resto ? `informes/${resto}` : "informes");
+}
+
+export function rutaLandingIntl(p: ProductoIntl): string {
+  return p.tipo === "informe" ? rutaInformesIntl(p.mercado, p.slug) : rutaPlanillasIntl(p.mercado, p.slug);
+}
+
+export function rutaComprarIntl(p: ProductoIntl): string {
+  return p.tipo === "informe" ? rutaInformesIntl(p.mercado, "comprar") : rutaPlanillasIntl(p.mercado, "comprar");
+}
+
+// El enlace permanente del informe: cada apertura vuelve a verificar el pago con el proveedor.
+export function rutaVerInformeIntl(p: ProductoIntl, proveedor: NombreProveedor, id: string): string {
+  return `${rutaInformesIntl(p.mercado, `${p.slug}/ver`)}?proveedor=${proveedor}&pago=${encodeURIComponent(id)}`;
+}
+
+// Lo que se abre después de pagar: la descarga del .xlsx o la página del informe.
+export function rutaEntregaIntl(p: ProductoIntl, proveedor: NombreProveedor, id: string): string {
+  return p.tipo === "informe" ? rutaVerInformeIntl(p, proveedor, id) : rutaDescargaIntl(proveedor, id);
+}
+
 export function rutaDescargaIntl(proveedor: NombreProveedor, id: string): string {
   return `/api/pagos/descarga?proveedor=${proveedor}&pago=${encodeURIComponent(id)}`;
 }
@@ -70,8 +92,8 @@ async function entregarPorEmail(pago: PagoVerificado, producto: ProductoIntl, em
       html: entregaIntlHtml({
         producto,
         trato: tratoDe(producto.mercado),
-        urlDescarga: `${origen}${rutaDescargaIntl(pago.proveedor, pago.id)}`,
-        urlLanding: `${origen}${rutaPlanillasIntl(producto.mercado, producto.slug)}`,
+        urlDescarga: `${origen}${rutaEntregaIntl(producto, pago.proveedor, pago.id)}`,
+        urlLanding: `${origen}${rutaLandingIntl(producto)}`,
         origen,
         contacto: MAIL_CONTACTO,
       }),
@@ -93,10 +115,10 @@ async function avisarEntregaFallida(pago: PagoVerificado, producto: ProductoIntl
   const para = emailsAdmin();
   if (!para.length || !(await permitido("entrega-intl-aviso:global", 30, DIA_SEG))) return;
   const texto = [
-    `La planilla ${producto.id} no se pudo entregar por mail (${motivo}).`,
+    `El producto ${producto.id} no se pudo entregar por mail (${motivo}).`,
     `Pago: ${pago.proveedor} ${pago.id}`,
     `Mercado: ${producto.mercado}`,
-    `Enlace de descarga: ${origenVentaIntl()}${rutaDescargaIntl(pago.proveedor, pago.id)}`,
+    `Enlace de entrega: ${origenVentaIntl()}${rutaEntregaIntl(producto, pago.proveedor, pago.id)}`,
   ].join("\n");
   try {
     await sendSingle({
