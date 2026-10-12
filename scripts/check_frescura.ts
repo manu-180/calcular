@@ -9,7 +9,7 @@ import { feedDe, ultimaEntrada, type EntradaFeed } from "../src/motor/novedades"
 import { crearRegistro, resolverValores } from "../src/motor/registro";
 import type { Dato, DefinicionCalculadora, EntradaCalculadora, FechaISO, Fuente, PaisDefinido, Serie } from "../src/motor/tipos";
 import { destinoEquivalente, type MapaEquivalentes } from "../src/motor/ui/geo-cliente";
-import { diasEntre, hoyEn, valorSerie } from "../src/motor/vigencia";
+import { diasEntre, hoyEn, sumarDias, valorSerie } from "../src/motor/vigencia";
 import { mercado as mercadoZz } from "../src/paises/zz/mercado";
 import { registro as registroReal } from "../src/paises";
 
@@ -200,6 +200,7 @@ let calculadoras = 0;
 for (const m of registroReal.mercados("interno")) {
   if (m.codigo === "global") continue;
   const hoy = hoyEn(m);
+  const manana = sumarDias(hoy, 1);
   const p = registroReal.pais(m.codigo)!;
   for (const c of registroReal.calculadorasPublicables(m.codigo, hoy, "interno")) {
     calculadoras++;
@@ -208,8 +209,11 @@ for (const m of registroReal.mercados("interno")) {
       fallas.push(`${m.codigo}/${c.definicion.slug}: sin frescura aunque es publicable`);
       continue;
     }
-    if (fr.verificadoEl && fr.verificadoEl > hoy) fallas.push(`${m.codigo}/${c.definicion.slug}: verificado en el futuro (${fr.verificadoEl})`);
-    if (fr.actualizadoEl && fr.actualizadoEl > hoy) fallas.push(`${m.codigo}/${c.definicion.slug}: serie con fecha futura (${fr.actualizadoEl})`);
+    // Un día de tolerancia: quien verifica escribe la fecha de su zona (Argentina, UTC-3), y «hoy» acá es
+    // el del mercado; de madrugada un dato cargado recién queda un día «en el futuro» para México o
+    // Centroamérica sin que sea un error.
+    if (fr.verificadoEl && fr.verificadoEl > manana) fallas.push(`${m.codigo}/${c.definicion.slug}: verificado en el futuro (${fr.verificadoEl})`);
+    if (fr.actualizadoEl && fr.actualizadoEl > manana) fallas.push(`${m.codigo}/${c.definicion.slug}: serie con fecha futura (${fr.actualizadoEl})`);
     for (const se of fr.series) {
       const serie = p.series.find((x) => x.id === se.id)!;
       if (diasEntre(se.fecha, hoy) > serie.maxAntiguedadDias) fallas.push(`${m.codigo}/${c.definicion.slug}: ${se.id} se muestra al día con un punto de hace ${diasEntre(se.fecha, hoy)} días`);

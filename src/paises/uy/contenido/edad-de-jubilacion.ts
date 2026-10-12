@@ -2,7 +2,7 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.edad-de-jubilacion",
-  h1: "¿A qué edad me jubilo? Calculadora de edad jubilatoria",
+  h1: "Calculadora de edad jubilatoria: ¿a qué edad me jubilo?",
   title: "Edad jubilatoria en Uruguay según tu año de nacimiento",
   description:
     "Calculá a qué edad te podés jubilar con la reforma de la Ley 20.130: de 60 a 65 años según el año en que naciste, y con menos de 30 años de aportes.",
