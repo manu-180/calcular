@@ -40,6 +40,16 @@ import salarioDiarioIntegrado from "./calculadoras/salario-diario-integrado";
 import contenidoSalarioDiarioIntegrado from "./contenido/salario-diario-integrado";
 import primaDeAntiguedad from "./calculadoras/prima-de-antiguedad";
 import contenidoPrimaDeAntiguedad from "./contenido/prima-de-antiguedad";
+import sueldoBruto from "./calculadoras/sueldo-bruto";
+import contenidoSueldoBruto from "./contenido/sueldo-bruto";
+import asimiladosASalarios from "./calculadoras/asimilados-a-salarios";
+import contenidoAsimiladosASalarios from "./contenido/asimilados-a-salarios";
+import primaDominical from "./calculadoras/prima-dominical";
+import contenidoPrimaDominical from "./contenido/prima-dominical";
+import diaFestivoTrabajado from "./calculadoras/dia-festivo-trabajado";
+import contenidoDiaFestivoTrabajado from "./contenido/dia-festivo-trabajado";
+import subsidioAlEmpleo from "./calculadoras/subsidio-al-empleo";
+import contenidoSubsidioAlEmpleo from "./contenido/subsidio-al-empleo";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -72,6 +82,11 @@ export default definirPais({
     { definicion: costoDeUnTrabajador, contenido: contenidoCostoDeUnTrabajador, cliente: () => import("./calculadoras/costo-de-un-trabajador.cliente") },
     { definicion: salarioDiarioIntegrado, contenido: contenidoSalarioDiarioIntegrado, cliente: () => import("./calculadoras/salario-diario-integrado.cliente") },
     { definicion: primaDeAntiguedad, contenido: contenidoPrimaDeAntiguedad, cliente: () => import("./calculadoras/prima-de-antiguedad.cliente") },
+    { definicion: sueldoBruto, contenido: contenidoSueldoBruto, cliente: () => import("./calculadoras/sueldo-bruto.cliente") },
+    { definicion: asimiladosASalarios, contenido: contenidoAsimiladosASalarios, cliente: () => import("./calculadoras/asimilados-a-salarios.cliente") },
+    { definicion: primaDominical, contenido: contenidoPrimaDominical, cliente: () => import("./calculadoras/prima-dominical.cliente") },
+    { definicion: diaFestivoTrabajado, contenido: contenidoDiaFestivoTrabajado, cliente: () => import("./calculadoras/dia-festivo-trabajado.cliente") },
+    { definicion: subsidioAlEmpleo, contenido: contenidoSubsidioAlEmpleo, cliente: () => import("./calculadoras/subsidio-al-empleo.cliente") },
   ],
   novedades,
   detectores,
