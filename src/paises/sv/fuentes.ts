@@ -14,7 +14,7 @@ const TEMAS_LEYES = /C[OÓ]DIGO DE TRABAJO|IMPUESTO SOBRE LA RENTA|SEGURO SOCIAL
 // La Asamblea exonera de impuestos (IVA incluido) a decenas de asociaciones por año: esos decretos
 // nombran la ley del IVA pero no cambian la tasa.
 const EXONERACION = /^\s*EXON[EÉ]RASE/i;
-const TEMAS_MH = /renta|retenci[oó]n|\bIVA\b|aguinaldo|quincena/i;
+const TEMAS_MH = /renta|retenci[oó]n|percepci[oó]n|pago a cuenta|bienes ra[ií]ces|\bIVA\b|aguinaldo|quincena/i;
 
 const DATOS_LABORALES = [
   "sv.salario-minimo",
@@ -31,8 +31,25 @@ const DATOS_LABORALES = [
   "sv.quincena25-porcentaje",
   "sv.quincena25-salario-maximo",
 ];
-const DATOS_TRIBUTARIOS = ["sv.renta-mensual", "sv.renta-quincenal", "sv.deduccion-fija-renta", "sv.limite-deduccion-fija-renta", "sv.iva"];
-const DATOS_SEGURIDAD_SOCIAL = ["sv.afp-trabajador", "sv.isss-trabajador", "sv.isss-salario-maximo"];
+const DATOS_TRIBUTARIOS = [
+  "sv.renta-mensual",
+  "sv.renta-quincenal",
+  "sv.deduccion-fija-renta",
+  "sv.limite-deduccion-fija-renta",
+  "sv.iva",
+  "sv.renta-anual",
+  "sv.renta-declaracion-obligatoria",
+  "sv.retencion-servicios",
+  "sv.aguinaldo-exento-renta",
+  "sv.pago-a-cuenta",
+  "sv.retencion-iva",
+  "sv.retencion-iva-minimo",
+  "sv.bienes-raices-tasa",
+  "sv.bienes-raices-exento",
+  "sv.retencion-intereses",
+  "sv.intereses-exento-saldo",
+];
+const DATOS_SEGURIDAD_SOCIAL = ["sv.afp-trabajador", "sv.isss-trabajador", "sv.isss-salario-maximo", "sv.isss-patrono", "sv.afp-patrono"];
 
 function decodificar(texto: string): string {
   return texto

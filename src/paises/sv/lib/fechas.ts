@@ -25,6 +25,25 @@ export function servicio(inicio: FechaISO, ultimoDia: FechaISO): Servicio {
   return { anios, diasRestantes: diasEntre(sumarAnios(inicio, anios), fin) };
 }
 
+// Desde el D.L. 669 de 2026 el año del aguinaldo se cuenta al 12 de diciembre (arts. 197 y 202): el
+// proporcional cubre lo trabajado desde el 13 de diciembre anterior, o desde el ingreso si es posterior.
+export function diasPeriodoAguinaldo(inicio: FechaISO, ultimoDia: FechaISO): number {
+  const anio = Number(ultimoDia.slice(0, 4));
+  const corte = `${anio}-12-12` as FechaISO;
+  const desdeCorte = ultimoDia > corte ? sumarDias(corte, 1) : (`${anio - 1}-12-13` as FechaISO);
+  const desde = inicio > desdeCorte ? inicio : desdeCorte;
+  return diasEntre(desde, sumarDias(ultimoDia, 1));
+}
+
+export type TramoAguinaldo = "uno-a-tres" | "tres-a-diez" | "diez-o-mas";
+
+// Con menos de un año el art. 197 paga la parte proporcional de lo que tocaría al cumplirlo: 15 días.
+export function tramoAguinaldo(anios: number): TramoAguinaldo {
+  if (anios >= 10) return "diez-o-mas";
+  if (anios >= 3) return "tres-a-diez";
+  return "uno-a-tres";
+}
+
 export function textoServicio(s: Servicio): string {
   const anios = `${s.anios} ${s.anios === 1 ? "año" : "años"}`;
   const dias = `${s.diasRestantes} ${s.diasRestantes === 1 ? "día" : "días"}`;
