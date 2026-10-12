@@ -895,6 +895,604 @@
           }
         }
       ]
+    },
+    {
+      "id": "pe.sobretasa-nocturna",
+      "nombre": "Sobretasa mínima del trabajo nocturno",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Sobre la remuneración mínima vital: quien trabaja de 10:00 p.m. a 6:00 a.m. no puede cobrar menos que la RMV más esta sobretasa.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-07-05",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DS 007-2002-TR, artículo 8 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.sobretasa-descanso-trabajado",
+      "nombre": "Sobretasa por trabajar en feriado o día de descanso",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Se paga la jornada trabajada más esta sobretasa, si no se da otro día de descanso en su lugar.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-11-08",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DL 713, artículos 3 y 9 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.utilidades-por-actividad",
+      "nombre": "Porcentaje de la renta para utilidades según la actividad de la empresa",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pesquera": "Empresa pesquera",
+        "telecomunicaciones": "Empresa de telecomunicaciones",
+        "industrial": "Empresa industrial",
+        "minera": "Empresa minera",
+        "comercio": "Comercio (mayorista o minorista) y restaurantes",
+        "otras": "Otras actividades"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-11-12",
+          "valor": {
+            "pesquera": 10,
+            "telecomunicaciones": 10,
+            "industrial": 10,
+            "minera": 8,
+            "comercio": 8,
+            "otras": 5
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DL 892, artículo 2 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tope-utilidades",
+      "nombre": "Tope de utilidades por trabajador",
+      "tipo": "numero",
+      "unidad": "numero",
+      "nota": "En remuneraciones mensuales vigentes al cierre del ejercicio.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-11-12",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DL 892, artículo 2 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.minimo-trabajadores-utilidades",
+      "nombre": "Trabajadores que la empresa tiene que superar para repartir utilidades",
+      "tipo": "numero",
+      "unidad": "numero",
+      "nota": "Las empresas que no exceden de este número de trabajadores (promedio del año) no reparten utilidades.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-08-07",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DL 677, artículo 9, y DS 009-98-TR, artículo 2 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.periodo-prueba",
+      "nombre": "Duración máxima del período de prueba",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "general": "Trabajador en general",
+        "calificado": "Trabajador calificado o de confianza",
+        "direccion": "Personal de dirección"
+      },
+      "nota": "Tres meses por ley. La ampliación tiene que pactarse por escrito y llega como máximo a 6 meses (calificados o de confianza) o a un año (dirección).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-03-28",
+          "valor": {
+            "general": 3,
+            "calificado": 6,
+            "direccion": 12
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DS 003-97-TR, artículo 10 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.preaviso-renuncia",
+      "nombre": "Anticipación del aviso de renuncia",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-03-28",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Promoción del Empleo",
+            "titulo": "DS 003-97-TR, artículo 18 (Compendio de normas laborales del régimen privado)",
+            "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/e39398877e100a4a05257e37005c2e26/$file/compendio_normas_laborales_mintra_2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.cts-libre-disposicion",
+      "nombre": "Parte de la CTS que se puede retirar libremente",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Hasta el 31/12/2026 se puede retirar el 100 %, una sola vez (Ley 32322). Desde 2027 rige el artículo 42 del DL 650: retiros de hasta el 50 % del depósito y sus intereses.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-10",
+          "hasta": "2026-12-31",
+          "valor": 100,
+          "fuente": {
+            "organismo": "El Peruano",
+            "titulo": "Ley 32322, disposición complementaria transitoria única",
+            "url": "https://busquedas.elperuano.pe/dispositivo/NL/2397811-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "El Peruano",
+            "titulo": "Ley 32322, artículo único (artículo 42 del DL 650)",
+            "url": "https://busquedas.elperuano.pe/dispositivo/NL/2397811-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tasa-renta-capital",
+      "nombre": "Tasa del impuesto a las rentas del capital (primera y segunda categoría)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 6.25,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 52-A",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capvii.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.deduccion-renta-capital",
+      "nombre": "Deducción de la renta bruta de primera y segunda categoría",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 36",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capvi.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tasa-dividendos",
+      "nombre": "Tasa del impuesto a los dividendos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 52-A, último párrafo",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capvii.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tasa-itf",
+      "nombre": "Alícuota del impuesto a las transacciones financieras",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-04-01",
+          "valor": 0.005,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "TUO de la Ley 28194 (DS 150-2007-EF), artículo 10",
+            "url": "https://www.sunat.gob.pe/legislacion/itf/ds150_07.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tim",
+      "nombre": "Tasa de interés moratorio (TIM) mensual de SUNAT",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "soles": "Deuda en soles",
+        "dolares": "Deuda en dólares"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-04-01",
+          "hasta": "2021-03-31",
+          "valor": {
+            "soles": 1,
+            "dolares": 0.5
+          },
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Tasa de interés moratorio (R. de S. 066-2020/SUNAT)",
+            "url": "https://www.sunat.gob.pe/indicestasas/tim.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-04-01",
+          "valor": {
+            "soles": 0.9,
+            "dolares": 0.5
+          },
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Tasa de interés moratorio (R. de S. 044-2021/SUNAT y Ley 31962)",
+            "url": "https://www.sunat.gob.pe/indicestasas/tim.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tasa-rer",
+      "nombre": "Cuota mensual del Régimen Especial de Renta (RER)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-10-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 120",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capxv.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.limite-rer",
+      "nombre": "Ingresos netos anuales máximos para estar en el RER",
+      "tipo": "numero",
+      "unidad": "PEN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 525000,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 118, inciso a)",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capxv.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.escala-rmt",
+      "nombre": "Escala del impuesto a la renta del Régimen MYPE Tributario",
+      "tipo": "escala",
+      "unidad": "UIT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 15,
+              "tasa": 10
+            },
+            {
+              "desde": 15,
+              "hasta": null,
+              "tasa": 29.5
+            }
+          ],
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Decreto Legislativo 1269, artículo 5",
+            "url": "https://www.sunat.gob.pe/legislacion/mypeIR/dl1269.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.pago-cuenta-rmt",
+      "nombre": "Pago a cuenta mensual del RMT (ingresos hasta 300 UIT)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Decreto Legislativo 1269, artículo 6.1",
+            "url": "https://www.sunat.gob.pe/legislacion/mypeIR/dl1269.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.limite-pago-cuenta-rmt",
+      "nombre": "Ingresos anuales hasta los que el RMT paga el 1 %",
+      "tipo": "numero",
+      "unidad": "UIT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 300,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Decreto Legislativo 1269, artículo 6.1",
+            "url": "https://www.sunat.gob.pe/legislacion/mypeIR/dl1269.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.limite-rmt",
+      "nombre": "Ingresos netos anuales máximos para estar en el RMT",
+      "tipo": "numero",
+      "unidad": "UIT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 1700,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Decreto Legislativo 1269, artículo 1",
+            "url": "https://www.sunat.gob.pe/legislacion/mypeIR/dl1269.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.tasa-renta-tercera",
+      "nombre": "Tasa del impuesto a la renta de empresas (régimen general)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 29.5,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 55",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capvii.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.pago-cuenta-tercera",
+      "nombre": "Pago a cuenta mínimo del régimen general",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Ley del Impuesto a la Renta, artículo 85, inciso b)",
+            "url": "https://www.sunat.gob.pe/legislacion/renta/ley/capxi.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.gasto-deducible",
+      "nombre": "Porcentaje deducible de cada gasto (deducción adicional de 3 UIT)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "restaurantes": "Restaurantes, bares y hoteles",
+        "medicos": "Médicos y odontólogos",
+        "servicios": "Profesionales y oficios (recibos por honorarios)",
+        "alquiler": "Alquiler de vivienda",
+        "essalud-hogar": "EsSalud de trabajadoras del hogar"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "restaurantes": 15,
+            "medicos": 30,
+            "servicios": 30,
+            "alquiler": 30,
+            "essalud-hogar": 100
+          },
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Gastos deducibles para el año 2026",
+            "url": "https://personas.sunat.gob.pe/devoluciones/gastos-deducibles-para-ano-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.detraccion-servicios",
+      "nombre": "Porcentaje de detracción de servicios (anexo 3 de la R. S. 183-2004/SUNAT)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "demas-servicios": "Demás servicios gravados con el IGV",
+        "otros-empresariales": "Otros servicios empresariales",
+        "intermediacion-laboral": "Intermediación laboral y tercerización",
+        "mantenimiento": "Mantenimiento y reparación de bienes muebles",
+        "arrendamiento": "Arrendamiento de bienes",
+        "movimiento-carga": "Movimiento de carga",
+        "comision-mercantil": "Comisión mercantil",
+        "fabricacion-encargo": "Fabricación de bienes por encargo",
+        "transporte-personas": "Transporte de personas",
+        "construccion": "Contratos de construcción"
+      },
+      "nota": "El transporte de bienes por carretera tiene su propio régimen de detracción y no está en esta tabla.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-04-01",
+          "valor": {
+            "demas-servicios": 12,
+            "otros-empresariales": 12,
+            "intermediacion-laboral": 12,
+            "mantenimiento": 12,
+            "arrendamiento": 10,
+            "movimiento-carga": 10,
+            "comision-mercantil": 10,
+            "fabricacion-encargo": 10,
+            "transporte-personas": 10,
+            "construccion": 4
+          },
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Cartilla del sistema de detracciones del IGV (anexo 3)",
+            "url": "https://orientacion.sunat.gob.pe/sites/default/files/inline-files/Cartilla_detracciones.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pe.monto-minimo-detraccion",
+      "nombre": "Monto desde el que se aplica la detracción de servicios",
+      "tipo": "numero",
+      "unidad": "PEN",
+      "nota": "La detracción no se aplica si el importe de la operación es igual o menor a este monto.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-04-01",
+          "valor": 700,
+          "fuente": {
+            "organismo": "SUNAT",
+            "titulo": "Cartilla del sistema de detracciones del IGV (operaciones exceptuadas del anexo 3)",
+            "url": "https://orientacion.sunat.gob.pe/sites/default/files/inline-files/Cartilla_detracciones.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }

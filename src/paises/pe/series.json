@@ -390,6 +390,21 @@
         ["2026-08-01", 120.716351],
         ["2026-09-01", 120.85795]
       ]
+    },
+    {
+      "id": "pe.fsd-cobertura",
+      "nombre": "Monto máximo de cobertura del Fondo de Seguro de Depósitos",
+      "unidad": "PEN",
+      "frecuencia": "trimestral",
+      "maxAntiguedadDias": 100,
+      "fuente": {
+        "organismo": "Fondo de Seguro de Depósitos",
+        "titulo": "Cobertura del seguro de depósitos (setiembre a noviembre de 2026)",
+        "url": "https://fsd.org.pe/cobertura/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      },
+      "puntos": [["2026-09-01", 123000]]
     }
   ]
 }

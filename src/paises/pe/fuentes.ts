@@ -82,6 +82,29 @@ async function serieMensualBcrp(http: Http, base: string): Promise<PuntoSerie[] 
   return puntos.length ? puntos.slice(-3) : null;
 }
 
+const MESES_ES: Record<string, number> = {
+  enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6, julio: 7, agosto: 8,
+  setiembre: 9, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12,
+};
+
+// El FSD publica en su página "El monto máximo de cobertura (MMC) es S/ 123,000 para el periodo
+// Setiembre – Noviembre 2026" (leído el 12/10/2026). El punto se fecha el día 1 del primer mes del
+// trimestre; si el periodo cruza el año (diciembre a febrero), el primer mes es del año anterior.
+async function coberturaFsd(http: Http): Promise<PuntoSerie[] | null> {
+  const html = await http.texto("https://fsd.org.pe/cobertura/", { userAgentNavegador: true });
+  const texto = html.replace(/<[^>]+>/g, " ").replace(/&nbsp;|\s+/g, " ");
+  const m = /monto m[aá]ximo de cobertura.{0,80}?S\/\s*([\d,]+(?:\.\d+)?).{0,120}?periodo\s+([A-Za-zÁÉÍÓÚáéíóú]+)\s*[–-]\s*([A-Za-zÁÉÍÓÚáéíóú]+)\s+(\d{4})/i.exec(texto);
+  if (!m) return null;
+  const valor = Number(m[1].replace(/,/g, ""));
+  const desde = MESES_ES[m[2].toLowerCase()];
+  const hasta = MESES_ES[m[3].toLowerCase()];
+  if (!Number.isFinite(valor) || !desde || !hasta) return null;
+  const anio = Number(m[4]) - (desde > hasta ? 1 : 0);
+  const fecha = `${anio}-${String(desde).padStart(2, "0")}-01`;
+  if (!esFechaISO(fecha)) return null;
+  return [{ fecha, valor }];
+}
+
 function aCompacta(d: Date): string {
   return d.toISOString().slice(0, 10).replaceAll("-", "");
 }
@@ -168,7 +191,7 @@ export const detectores: readonly Detector[] = [
   vigiaElPeruano("pe.el-peruano-rmv",["pe.rmv"], "Remuneración Mínima Vital", /remuneraci[oó]n m[ií]nima vital/i),
   vigiaElPeruano("pe.el-peruano-uit", ["pe.uit"], "Unidad Impositiva Tributaria", /valor de la unidad impositiva tributaria/i),
   vigiaElPeruano("pe.el-peruano-cuarta", ["pe.suspension-cuarta", "pe.retencion-cuarta"], "cuarta categoría", /cuarta categor[ií]a/i),
-  vigiaElPeruano("pe.el-peruano-cts", ["pe.cts-por-regimen"], "Compensación por Tiempo de Servicios", /compensaci[oó]n por tiempo de servicios/i),
+  vigiaElPeruano("pe.el-peruano-cts", ["pe.cts-por-regimen", "pe.cts-libre-disposicion"], "Compensación por Tiempo de Servicios", /compensaci[oó]n por tiempo de servicios/i),
   vigiaElPeruano(
     "pe.el-peruano-gratificacion",
     ["pe.bonificacion-extraordinaria", "pe.gratificacion-por-regimen"],
@@ -182,5 +205,38 @@ export const detectores: readonly Detector[] = [
     ["pe.tasa-igv", "pe.tasa-ipm", "pe.tasa-igv-restaurantes"],
     "Impuesto General a las Ventas",
     /(tasa|al[ií]cuota|incremento|reducci[oó]n|reduce|incrementa)[^.]{0,80}(impuesto general a las ventas|promoci[oó]n municipal)|impuesto de promoci[oó]n municipal/i,
+  ),
+  {
+    id: "pe.fsd-cobertura",
+    carril: "serie",
+    serie: "pe.fsd-cobertura",
+    metodo: "html",
+    url: "https://fsd.org.pe/cobertura/",
+    userAgentNavegador: true,
+    banda: { min: 80000, max: 250000, saltoRelativoMax: 0.1 },
+    traer: (http) => coberturaFsd(http),
+  },
+  // Las municipalidades también fijan su TIM (falso positivo probado con marzo de 2021): solo la de SUNAT.
+  vigiaElPeruano("pe.el-peruano-tim", ["pe.tim"], "Tasa de Interés Moratorio", /tasa de inter[eé]s moratorio.{0,120}sunat/i),
+  vigiaElPeruano(
+    "pe.el-peruano-detracciones",
+    ["pe.detraccion-servicios", "pe.monto-minimo-detraccion"],
+    "Sistema de Pago de Obligaciones Tributarias",
+    /sistema de pago de obligaciones tributarias|detracci[oó]n/i,
+  ),
+  vigiaElPeruano("pe.el-peruano-itf", ["pe.tasa-itf"], "Impuesto a las Transacciones Financieras", /impuesto a las transacciones financieras/i),
+  // Solo normas que modifican la ley o los regímenes MYPE: el buscador devuelve muchas resoluciones de
+  // trámite que mencionan "impuesto a la renta" sin tocar tasas.
+  vigiaElPeruano(
+    "pe.el-peruano-renta",
+    ["pe.tasa-renta-capital", "pe.deduccion-renta-capital", "pe.tasa-dividendos", "pe.tasa-renta-tercera", "pe.pago-cuenta-tercera", "pe.escala-rmt", "pe.pago-cuenta-rmt", "pe.limite-pago-cuenta-rmt", "pe.limite-rmt", "pe.tasa-rer", "pe.limite-rer", "pe.gasto-deducible"],
+    "Ley del Impuesto a la Renta",
+    /(modifica|sustituye|incorpora)[^.]{0,80}ley del impuesto a la renta|r[eé]gimen mype tributario|r[eé]gimen especial del impuesto a la renta|gastos? deducibles?/i,
+  ),
+  vigiaElPeruano(
+    "pe.el-peruano-utilidades",
+    ["pe.utilidades-por-actividad", "pe.tope-utilidades", "pe.minimo-trabajadores-utilidades"],
+    "participación en las utilidades",
+    /participaci[oó]n (de los trabajadores )?en las utilidades/i,
   ),
 ];
