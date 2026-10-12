@@ -16,6 +16,7 @@ import inflacion from "./calculadoras/inflacion";
 import inss from "./calculadoras/inss";
 import irAlquiler from "./calculadoras/ir-alquiler";
 import irAnual from "./calculadoras/ir-anual";
+import irIndemnizacion from "./calculadoras/ir-indemnizacion";
 import irSalarial from "./calculadoras/ir-salarial";
 import iva from "./calculadoras/iva";
 import jubilacion from "./calculadoras/jubilacion";
@@ -29,6 +30,7 @@ import renuncia from "./calculadoras/renuncia";
 import retencionServiciosProfesionales from "./calculadoras/retencion-servicios-profesionales";
 import retencionesIr from "./calculadoras/retenciones-ir";
 import salarioMinimo from "./calculadoras/salario-minimo";
+import salarioAtrasado from "./calculadoras/salario-atrasado";
 import salarioNeto from "./calculadoras/salario-neto";
 import salarioPorHora from "./calculadoras/salario-por-hora";
 import seguroFacultativo from "./calculadoras/seguro-facultativo";
@@ -54,6 +56,7 @@ import contenidoInflacion from "./contenido/inflacion";
 import contenidoInss from "./contenido/inss";
 import contenidoIrAlquiler from "./contenido/ir-alquiler";
 import contenidoIrAnual from "./contenido/ir-anual";
+import contenidoIrIndemnizacion from "./contenido/ir-indemnizacion";
 import contenidoIrSalarial from "./contenido/ir-salarial";
 import contenidoIva from "./contenido/iva";
 import contenidoJubilacion from "./contenido/jubilacion";
@@ -67,6 +70,7 @@ import contenidoRenuncia from "./contenido/renuncia";
 import contenidoRetencionServiciosProfesionales from "./contenido/retencion-servicios-profesionales";
 import contenidoRetencionesIr from "./contenido/retenciones-ir";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
+import contenidoSalarioAtrasado from "./contenido/salario-atrasado";
 import contenidoSalarioNeto from "./contenido/salario-neto";
 import contenidoSalarioPorHora from "./contenido/salario-por-hora";
 import contenidoSeguroFacultativo from "./contenido/seguro-facultativo";
@@ -126,6 +130,8 @@ export default definirPais({
     { definicion: ventaDeInmuebles, contenido: contenidoVentaDeInmuebles, cliente: () => import("./calculadoras/venta-de-inmuebles.cliente") },
     { definicion: depositoAPlazo, contenido: contenidoDepositoAPlazo, cliente: () => import("./calculadoras/deposito-a-plazo.cliente") },
     { definicion: canastaBasica, contenido: contenidoCanastaBasica, cliente: () => import("./calculadoras/canasta-basica.cliente") },
+    { definicion: irIndemnizacion, contenido: contenidoIrIndemnizacion, cliente: () => import("./calculadoras/ir-indemnizacion.cliente") },
+    { definicion: salarioAtrasado, contenido: contenidoSalarioAtrasado, cliente: () => import("./calculadoras/salario-atrasado.cliente") },
   ],
   novedades,
   detectores,

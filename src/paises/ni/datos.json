@@ -1646,6 +1646,106 @@
           }
         }
       ]
+    },
+    {
+      "id": "ni.ir-indemnizacion-meses-exentos",
+      "nombre": "Indemnizaciones laborales exentas del IR: meses de salario",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-12-18",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 891, reformas a la Ley de Concertación Tributaria, artículo 19 numeral 3 (La Gaceta No. 240 del 18/12/2014)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=FlLWhAj7cOc%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-indemnizacion-exencion-adicional",
+      "nombre": "Indemnizaciones laborales exentas del IR: monto adicional a los cinco meses",
+      "tipo": "numero",
+      "unidad": "NIO",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-12-18",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 891, reformas a la Ley de Concertación Tributaria, artículo 19 numeral 3 (La Gaceta No. 240 del 18/12/2014)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=FlLWhAj7cOc%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.ir-retencion-indemnizacion",
+      "nombre": "Retención definitiva del IR sobre la parte gravada de las indemnizaciones laborales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-02-28",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 987, reformas a la Ley de Concertación Tributaria, artículo 24 numeral 1 (La Gaceta No. 41 del 28/2/2019)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/util/pdf.php?type=rdd&rdd=FwcscvRKCL0%3D",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.atraso-salario-recargo",
+      "nombre": "Recargo por atraso en el pago del salario, por semana",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 86 (un décimo más de lo debido por cada semana de retraso)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ni.atraso-salario-semanas",
+      "nombre": "Semanas de retraso que generan recargo, después de la primera",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-12-29",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Asamblea Nacional (Digesto Jurídico Nicaragüense)",
+            "titulo": "Ley No. 185, Código del Trabajo, artículo 86 (por cada una de las dos semanas subsiguientes a la primera)",
+            "url": "https://digesto.asamblea.gob.ni/consultas/normas/shownorms.php?idnorm=MTMzMDY=",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }
