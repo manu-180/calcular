@@ -733,6 +733,918 @@
           }
         }
       ]
+    },
+    {
+      "id": "ec.recargo-nocturno",
+      "nombre": "Recargo de la jornada nocturna (de 19:00 a 06:00)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-12-16",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 49: la jornada nocturna da derecho a igual remuneración que la diurna, aumentada en un veinticinco por ciento",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.jornada-semanal",
+      "nombre": "Jornada máxima semanal",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-12-16",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 47: ocho horas diarias, de manera que no exceda de cuarenta horas semanales",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.periodo-prueba-dias",
+      "nombre": "Duración máxima del período de prueba",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-04-20",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 15 (sustituido por la Ley publicada en el Registro Oficial Suplemento 483 del 20/4/2015): duración máxima de noventa días",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.periodo-prueba-domestico-dias",
+      "nombre": "Duración máxima del período de prueba en el trabajo del hogar",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-04-20",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 15: para el servicio doméstico o trabajo remunerado del hogar, hasta quince días",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.maternidad-semanas",
+      "nombre": "Semanas de licencia por maternidad",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-02-13",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 152 (sustituido por la Ley publicada en el Registro Oficial Suplemento 528 del 13/2/2009): licencia con remuneración de doce semanas",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.maternidad-multiple-dias",
+      "nombre": "Días adicionales de licencia por maternidad en nacimientos múltiples",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-02-13",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 152: en caso de nacimientos múltiples el plazo se extiende por diez días adicionales",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.lactancia-meses",
+      "nombre": "Meses de jornada reducida por lactancia, desde que termina la licencia por maternidad",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-05-12",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 155 (reformado por la Ley publicada en el Registro Oficial Suplemento 309 del 12/5/2023): durante los quince meses a partir de que concluya la licencia por maternidad",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.lactancia-jornada-horas",
+      "nombre": "Jornada diaria de la madre en período de lactancia",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-09-26",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 155: la jornada de la madre lactante durará seis horas",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.paternidad-dias",
+      "nombre": "Días de licencia por paternidad (parto normal)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-05-12",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 152, inciso segundo (reformado por la Ley publicada en el Registro Oficial Suplemento 309 del 12/5/2023): quince días por parto normal",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.paternidad-cesarea-dias",
+      "nombre": "Días adicionales de paternidad por cesárea o nacimiento múltiple",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-02-13",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 152: en los casos de nacimientos múltiples o por cesárea se prolongará por cinco días más",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.paternidad-prematuro-dias",
+      "nombre": "Días adicionales de paternidad por nacimiento prematuro o con cuidado especial",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-02-13",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 152: hija o hijo prematuro o en condiciones de cuidado especial, ocho días más",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.paternidad-grave-dias",
+      "nombre": "Días de licencia por paternidad si la hija o hijo nace con enfermedad degenerativa, terminal o irreversible o con discapacidad severa",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-02-13",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 152: licencia con remuneración por veinte y cinco días",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.recargo-eventual",
+      "nombre": "Incremento del valor hora en contratos eventuales y ocasionales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-12-29",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 17 (reformado por la Ley publicada en el Registro Oficial Suplemento 351 del 29/12/2010): incremento del 35 % del valor hora del salario básico del sector",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.despido-ineficaz-meses",
+      "nombre": "Indemnización adicional por despido ineficaz o discriminatorio",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-04-20",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 195.3: indemnización equivalente al valor de un año de la remuneración que venía percibiendo, además de la general por despido intempestivo",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.recargo-ineficaz",
+      "nombre": "Recargo sobre las remuneraciones pendientes al declararse ineficaz el despido",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-04-20",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 195.3: pago de las remuneraciones pendientes con el diez por ciento de recargo",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.jubilacion-patronal-anios",
+      "nombre": "Años de servicio con el mismo empleador para la jubilación patronal",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-12-16",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 216: veinticinco años o más de servicios, continuados o interrumpidos",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.jubilacion-patronal-haber",
+      "nombre": "Porcentaje del promedio anual de los últimos cinco años, por año de servicio, para el haber individual de jubilación",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-12-16",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 216, regla 1, literal b: cinco por ciento del promedio de la remuneración anual de los cinco últimos años, multiplicado por los años de servicio",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.jubilacion-patronal-minima",
+      "nombre": "Pensión mínima de jubilación patronal",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-08-23",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 216, regla 2: no inferior a treinta dólares mensuales si solo tiene jubilación del empleador",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.jubilacion-patronal-minima-doble",
+      "nombre": "Pensión mínima de jubilación patronal con doble jubilación",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-08-23",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 216, regla 2: veinte dólares mensuales si es beneficiario de doble jubilación",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.jubilacion-patronal-global",
+      "nombre": "Mínimo del fondo global de jubilación patronal, por año de servicio",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-12-16",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Código del Trabajo",
+            "titulo": "Artículo 216, regla 3: no inferior al cincuenta por ciento del sueldo, salario básico o remuneración básica unificada sectorial del puesto, multiplicado por los años de servicio",
+            "url": "https://portal.compraspublicas.gob.ec/sercop/wp-content/uploads/2026/08/CODIGO-DEL-TRABAJO.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.impuesto-herencias",
+      "nombre": "Tabla del impuesto a la renta sobre herencias, legados y donaciones",
+      "tipo": "escala",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "nota": "El SRI la actualiza cada diciembre con la inflación a noviembre (LRTI, artículo 36, literal d).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 77708,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 77708,
+              "hasta": 155416,
+              "tasa": 5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 155416,
+              "hasta": 310833,
+              "tasa": 10,
+              "cuotaFija": 3885
+            },
+            {
+              "desde": 310833,
+              "hasta": 466281,
+              "tasa": 15,
+              "cuotaFija": 19427
+            },
+            {
+              "desde": 466281,
+              "hasta": 621718,
+              "tasa": 20,
+              "cuotaFija": 42744
+            },
+            {
+              "desde": 621718,
+              "hasta": 777134,
+              "tasa": 25,
+              "cuotaFija": 73832
+            },
+            {
+              "desde": 777134,
+              "hasta": 932529,
+              "tasa": 30,
+              "cuotaFija": 112686
+            },
+            {
+              "desde": 932529,
+              "hasta": null,
+              "tasa": 35,
+              "cuotaFija": 159304
+            }
+          ],
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Tablas de cálculo del impuesto a la renta sobre herencias, legados y donaciones, año 2025 (Resolución NAC-DGERCGC24-00000041, Registro Oficial Segundo Suplemento 708 del 20/12/2024)",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/ac3a6ab4-a60b-4892-8ecf-0f5b939169ae/Tablas%20de%20C%c3%a1lculo%20de%20Impuesto%20a%20la%20Renta%20Herencias%20y%20Legados.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 78527,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 78527,
+              "hasta": 157053,
+              "tasa": 5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 157053,
+              "hasta": 314108,
+              "tasa": 10,
+              "cuotaFija": 3926
+            },
+            {
+              "desde": 314108,
+              "hasta": 471193,
+              "tasa": 15,
+              "cuotaFija": 19632
+            },
+            {
+              "desde": 471193,
+              "hasta": 628268,
+              "tasa": 20,
+              "cuotaFija": 43195
+            },
+            {
+              "desde": 628268,
+              "hasta": 785321,
+              "tasa": 25,
+              "cuotaFija": 74609
+            },
+            {
+              "desde": 785321,
+              "hasta": 942353,
+              "tasa": 30,
+              "cuotaFija": 113873
+            },
+            {
+              "desde": 942353,
+              "hasta": null,
+              "tasa": 35,
+              "cuotaFija": 160982
+            }
+          ],
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Tablas de cálculo del impuesto a la renta sobre herencias, legados y donaciones, año 2026 (Resolución NAC-DGERCGC25-00000043, Registro Oficial Segundo Suplemento 194 del 30/12/2025)",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/ac3a6ab4-a60b-4892-8ecf-0f5b939169ae/Tablas%20de%20C%c3%a1lculo%20de%20Impuesto%20a%20la%20Renta%20Herencias%20y%20Legados.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.herencias-reduccion-primer-grado",
+      "nombre": "Reducción de las tarifas del impuesto a las herencias para hijos y padres (primer grado de consanguinidad)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-11",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Ley de Régimen Tributario Interno, artículo 36, literal d: dentro del primer grado de consanguinidad con el causante, las tarifas de la tabla serán reducidas a la mitad",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.impuesto-vehicular",
+      "nombre": "Tabla del impuesto a la propiedad de vehículos motorizados",
+      "tipo": "escala",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 4000,
+              "tasa": 0.5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 4000,
+              "hasta": 8000,
+              "tasa": 1,
+              "cuotaFija": 20
+            },
+            {
+              "desde": 8000,
+              "hasta": 12000,
+              "tasa": 2,
+              "cuotaFija": 60
+            },
+            {
+              "desde": 12000,
+              "hasta": 16000,
+              "tasa": 3,
+              "cuotaFija": 140
+            },
+            {
+              "desde": 16000,
+              "hasta": 20000,
+              "tasa": 4,
+              "cuotaFija": 260
+            },
+            {
+              "desde": 20000,
+              "hasta": 24000,
+              "tasa": 5,
+              "cuotaFija": 420
+            },
+            {
+              "desde": 24000,
+              "hasta": null,
+              "tasa": 6,
+              "cuotaFija": 620
+            }
+          ],
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Impuestos vehiculares: tabla del impuesto a la propiedad de vehículos motorizados sobre el avalúo registrado en el SRI (Ley de Reforma Tributaria, Registro Oficial Suplemento 325 del 14/5/2001, última reforma 14/7/2025)",
+            "url": "https://www.sri.gob.ec/impuestos-vehiculares",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.impuesto-vehiculo-usado",
+      "nombre": "Impuesto a la compra de vehículos usados",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Impuestos vehiculares: 1 % sobre el valor del contrato de compraventa, que no podrá ser inferior al avalúo registrado en el SRI",
+            "url": "https://www.sri.gob.ec/impuestos-vehiculares",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.isd",
+      "nombre": "Tarifa general del impuesto a la salida de divisas (ISD)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Impuesto a la Salida de Divisas: tarifa general de 5 % desde el 1 de abril de 2024 y en 2026",
+            "url": "https://www.sri.gob.ec/impuesto-a-la-salida-de-divisas-isd",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.isd-exento-sbu",
+      "nombre": "Monto exento de ISD al salir del país con efectivo o en transferencias (en salarios básicos)",
+      "tipo": "numero",
+      "unidad": "SBU",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Impuesto a la Salida de Divisas, exenciones 1 y 2: hasta tres salarios básicos unificados (año 2026 = USD 1.446,00)",
+            "url": "https://www.sri.gob.ec/impuesto-a-la-salida-de-divisas-isd",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.isd-exento-tarjetas",
+      "nombre": "Monto anual exento de ISD por consumos y retiros con tarjeta en el exterior",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2027-12-31",
+          "valor": 5188.26,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Impuesto a la Salida de Divisas, exención 2: para los años 2025, 2026 y 2027 el valor exento es de USD 5.188,26",
+            "url": "https://www.sri.gob.ec/impuesto-a-la-salida-de-divisas-isd",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.retencion-renta",
+      "nombre": "Porcentajes de retención en la fuente del impuesto a la renta",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "honorarios": "Honorarios profesionales (relacionados con tu título)",
+        "intelecto": "Servicios donde predomina el intelecto, sin relación con un título",
+        "docencia": "Servicios de docencia",
+        "arriendo": "Arriendo de inmuebles",
+        "mano-de-obra": "Servicios donde predomina la mano de obra",
+        "publicidad": "Publicidad y medios de comunicación",
+        "bienes": "Compra de bienes muebles",
+        "construccion": "Construcción de obra material inmueble",
+        "transporte": "Transporte de pasajeros o de carga",
+        "seguros": "Seguros y reaseguros",
+        "rendimientos": "Intereses y rendimientos financieros gravados",
+        "rimpe-emprendedor": "Compras a un RIMPE emprendedor",
+        "rimpe-popular": "Compras a un RIMPE negocio popular",
+        "loterias": "Premios de loterías, rifas y apuestas",
+        "otros": "Otros servicios (otras retenciones del 3 %)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": {
+            "honorarios": 10,
+            "intelecto": 10,
+            "docencia": 10,
+            "arriendo": 10,
+            "mano-de-obra": 3,
+            "publicidad": 3,
+            "bienes": 2,
+            "construccion": 2,
+            "transporte": 1,
+            "seguros": 2,
+            "rendimientos": 3,
+            "rimpe-emprendedor": 1,
+            "rimpe-popular": 0,
+            "loterias": 15,
+            "otros": 3
+          },
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Porcentajes de retención en la fuente del impuesto a la renta vigentes desde marzo de 2026 (Resolución NAC-DGERCGC26-00000009)",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/e7df4e4f-ed02-4530-82f9-98a5b99b3392/Porcentajes%20de%20retencion%20Impuesto%20a%20la%20Renta.xls",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.plazo-fijo-exento-dias",
+      "nombre": "Plazo mínimo de un depósito a plazo fijo para que sus intereses estén exentos de impuesto a la renta",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Ley de Régimen Tributario Interno, artículo 9, numeral 15.1: depósitos a plazo fijo emitidos a 180 días calendario o más y mantenidos al menos 180 días",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.multa-declaracion",
+      "nombre": "Multa por declaración tardía, por mes o fracción de retraso",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-12-29",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Ley de Régimen Tributario Interno, artículo 100: 3 % por cada mes o fracción de mes de retraso sobre el impuesto causado",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.multa-declaracion-tope",
+      "nombre": "Tope de la multa por declaración tardía sobre el impuesto causado",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-12-29",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Ley de Régimen Tributario Interno, artículo 100: la multa no excederá del 100 % del impuesto",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.multa-sin-impuesto",
+      "nombre": "Multa por declaración tardía sin impuesto a pagar, por mes o fracción, sobre ventas o ingresos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-12-29",
+          "valor": 0.1,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Ley de Régimen Tributario Interno, artículo 100: 0,1 % de las ventas o ingresos brutos del período",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.multa-sin-impuesto-tope",
+      "nombre": "Tope de la multa sin impuesto a pagar, sobre ventas o ingresos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-12-29",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Ley de Régimen Tributario Interno, artículo 100: sin exceder el 5 % de dichas ventas o ingresos",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.multa-recargo-cobro",
+      "nombre": "Recargo si el SRI cobra la multa que no pagaste por tu cuenta",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-12-29",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Servicio de Rentas Internas (SRI)",
+            "titulo": "Ley de Régimen Tributario Interno, artículo 100: el SRI cobrará las multas aumentadas en un 20 %",
+            "url": "https://www.sri.gob.ec/o/sri-portlet-biblioteca-alfresco-internet/descargar/67a341b5-cb7d-4de3-bd9b-b1f0a25b603d/Ley%20de%20R%c3%a9gimen%20Tributario%20Interno.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.cesantia-personal",
+      "nombre": "Aporte personal al seguro de cesantía",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Instituto Ecuatoriano de Seguridad Social (IESS)",
+            "titulo": "Tasas de aportación, sector privado en relación de dependencia: seguro de cesantía, personal 2,00",
+            "url": "https://www.iess.gob.ec/documents/13718/54965/Tasasdeaportacion.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ec.cesantia-patronal",
+      "nombre": "Aporte patronal al seguro de cesantía",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Instituto Ecuatoriano de Seguridad Social (IESS)",
+            "titulo": "Tasas de aportación, sector privado en relación de dependencia: seguro de cesantía, patronal 1,00",
+            "url": "https://www.iess.gob.ec/documents/13718/54965/Tasasdeaportacion.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }
