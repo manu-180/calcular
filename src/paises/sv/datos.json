@@ -443,19 +443,19 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-01-01",
           "valor": 3,
-          "motivo": "El 3 % circula en portales contables y aparece en un ejemplo de Hacienda de 2015. El texto del Reglamento para la Aplicación del Régimen del Seguro Social que publica la Corte Suprema dice 2,50 % (art. 46) y no recoge la tasa actual. isss.gob.sv no publica la tasa vigente.",
           "fuente": {
-            "organismo": "Ministerio de Hacienda",
-            "titulo": "Aclaración sobre las tablas de retención (ejemplo con ISSS del 3 %)",
-            "url": "https://www.mh.gob.sv/wp-content/uploads/2020/11/700-DGII-CM-0000-41.pdf",
-            "tipo": "secundaria",
-            "verificadoEl": "2026-10-07"
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley del Seguro Social, art. 29 (texto vigente)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/942D37A6-2092-4347-A68C-2542389B481D.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
           }
         }
-      ]
+      ],
+      "nota": "Régimen general de salud y riesgos profesionales. Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
     },
     {
       "id": "sv.isss-salario-maximo",
@@ -464,12 +464,20 @@
       "unidad": "USD",
       "tramos": [
         {
-          "estado": "no-verificado",
-          "desde": "2026-01-01",
+          "estado": "verificado",
+          "desde": "2015-08-01",
           "valor": 1000,
-          "motivo": "Solo lo vimos en portales contables. El texto del reglamento del ISSS publicado por la Corte Suprema conserva un límite en colones de 1986 y no la reforma que fijó US$1,000."
+          "fuente": {
+            "organismo": "Ministerio de Hacienda",
+            "titulo": "Boletín de Educación Fiscal No. 1, enero de 2016: el salario máximo cotizable al ISSS pasó de $685.71 a $1,000.00 desde agosto de 2015",
+            "url": "https://www.mh.gob.sv/wp-content/uploads/2020/11/700-EDUFIS-IF-2016-00026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El reglamento del ISSS no tiene texto vigente publicado. No encontramos cambios posteriores del techo en el Diario Oficial ni en el ISSS."
+          }
         }
-      ]
+      ],
+      "nota": "Tope del salario sobre el que se calculan las cotizaciones al ISSS del trabajador y del patrono."
     },
     {
       "id": "sv.iva",
@@ -966,6 +974,926 @@
         }
       ],
       "nota": "La ley rige desde su publicación en el Diario Oficial (art. 9)."
+    },
+    {
+      "id": "sv.isss-patrono",
+      "nombre": "Cotización al ISSS a cargo del patrono",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley del Seguro Social, art. 29 (texto vigente)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/942D37A6-2092-4347-A68C-2542389B481D.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Régimen general de salud y riesgos profesionales. Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.afp-patrono",
+      "nombre": "Cotización a la AFP a cargo del patrono",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-29",
+          "valor": 8.75,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Integral del Sistema de Pensiones (D.L. 614, D.O. 241 del 21/12/2022), art. 16",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/F94AF319-257C-4A85-97B7-4D03A6C65A48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley rige ocho días después de su publicación (art. 164)."
+          }
+        }
+      ],
+      "nota": "Sobre el salario mensual, sin aguinaldo ni bonificaciones ocasionales (art. 14)."
+    },
+    {
+      "id": "sv.aguinaldo-exento-renta",
+      "nombre": "Aguinaldo libre de renta",
+      "tipo": "numero",
+      "unidad": "USD",
+      "nota": "La regla permanente (art. 4, num. 16, de la Ley de Impuesto sobre la Renta) es dos salarios mínimos mensuales de comercio y servicios: 2 × $408.80. Cada año un decreto transitorio puede subir el límite. Si cambia el salario mínimo, hay que actualizar este dato.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-09-23",
+          "valor": 817.6,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto sobre la Renta, art. 4, num. 16 (texto vigente con reformas hasta el D.L. 544 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/8AD94119-2BB2-4DB1-A708-44A51E4B6295.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Dos salarios mínimos de comercio y servicios del D.E. 11/2025 ($408.80)."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-09-24",
+          "hasta": "2026-12-20",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "Diario Oficial (Imprenta Nacional)",
+            "titulo": "D.L. 673, disposiciones transitorias del aguinaldo no gravable para 2026 (D.O. 177, tomo 452, 24/9/2026), art. 1",
+            "url": "https://www.diariooficial.gob.sv/seleccion/31854",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Vale si el aguinaldo se paga entre el 1/10 y el 20/12/2026. Rige desde su publicación (art. 2). Páginas 17 a 19, leídas en la imagen del Diario Oficial."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-12-21",
+          "valor": 817.6,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto sobre la Renta, art. 4, num. 16 (texto vigente con reformas hasta el D.L. 544 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/8AD94119-2BB2-4DB1-A708-44A51E4B6295.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Dos salarios mínimos de comercio y servicios del D.E. 11/2025 ($408.80)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.periodo-prueba-dias",
+      "nombre": "Período de prueba",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 28 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.embargo-porcentaje",
+      "nombre": "Parte embargable del salario que pasa del mínimo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 133 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.recargo-descanso-semanal",
+      "nombre": "Recargo por trabajar en el día de descanso semanal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 175 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.aprendiz-porcentaje",
+      "nombre": "Salario mínimo del aprendiz según el año de aprendizaje",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "primer-anio": "Primer año",
+        "segundo-anio": "Segundo año",
+        "tercer-anio": "Tercer año en adelante"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "primer-anio": 50,
+            "segundo-anio": 75,
+            "tercer-anio": 100
+          },
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 69 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.muerte-dias",
+      "nombre": "Ayuda por muerte del trabajador: días de salario",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 313 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.incapacidad-patrono-dias",
+      "nombre": "Días por año con 75 % del salario a cargo del patrono, sin ISSS",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "un-anio": "Un año o más",
+        "cinco-meses": "De cinco meses a menos de un año",
+        "un-mes": "De un mes a menos de cinco meses"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "un-anio": 60,
+            "cinco-meses": 40,
+            "un-mes": 20
+          },
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 307 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.incapacidad-patrono-porcentaje",
+      "nombre": "Porcentaje del salario básico que paga el patrono por enfermedad",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 307 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.isss-subsidio-porcentaje",
+      "nombre": "Subsidio diario del ISSS por enfermedad o accidente",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Instituto Salvadoreño del Seguro Social",
+            "titulo": "Preguntas frecuentes: prestaciones económicas y trámite de subsidios por incapacidad",
+            "url": "https://www.isss.gob.sv/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Sobre el salario medio de base diaria de los tres primeros de los últimos cuatro meses cotizados."
+    },
+    {
+      "id": "sv.isss-subsidio-dia-comun",
+      "nombre": "Día desde el que el ISSS paga el subsidio por enfermedad o accidente común",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Instituto Salvadoreño del Seguro Social",
+            "titulo": "Preguntas frecuentes: prestaciones económicas y trámite de subsidios por incapacidad",
+            "url": "https://www.isss.gob.sv/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Los tres primeros días no los cubre el ISSS."
+    },
+    {
+      "id": "sv.isss-subsidio-dia-profesional",
+      "nombre": "Día desde el que el ISSS paga el subsidio por accidente de trabajo o enfermedad profesional",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Instituto Salvadoreño del Seguro Social",
+            "titulo": "Preguntas frecuentes: prestaciones económicas y trámite de subsidios por incapacidad",
+            "url": "https://www.isss.gob.sv/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Desde el día siguiente al accidente."
+    },
+    {
+      "id": "sv.maternidad-dias",
+      "nombre": "Licencia por maternidad",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 112,
+          "fuente": {
+            "organismo": "Instituto Salvadoreño del Seguro Social",
+            "titulo": "Preguntas frecuentes: prestaciones económicas y trámite de subsidios por incapacidad",
+            "url": "https://www.isss.gob.sv/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "16 semanas (Código de Trabajo, art. 309)."
+    },
+    {
+      "id": "sv.maternidad-subsidio-isss",
+      "nombre": "Subsidio diario del ISSS por maternidad",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Instituto Salvadoreño del Seguro Social",
+            "titulo": "Preguntas frecuentes: prestaciones económicas y trámite de subsidios por incapacidad",
+            "url": "https://www.isss.gob.sv/preguntas-frecuentes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.maternidad-patrono-porcentaje",
+      "nombre": "Prestación por maternidad que paga el patrono sin ISSS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 309 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.maternidad-semanas-posparto",
+      "nombre": "Semanas de la licencia que se toman después del parto",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Corte Suprema de Justicia (Centro de Documentación Judicial)",
+            "titulo": "Código de Trabajo, art. 309 (texto vigente con reformas hasta el D.L. 433 de 2025)",
+            "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/1970-1979/1972/07/886E0.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.renta-anual",
+      "nombre": "Tabla anual del impuesto sobre la renta de personas naturales",
+      "tipo": "escala",
+      "unidad": "USD",
+      "nota": "El porcentaje se cobra sobre el exceso del límite del tramo anterior.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-08",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 6600.0,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 6600.01,
+              "hasta": 9142.86,
+              "tasa": 10,
+              "cuotaFija": 212.12
+            },
+            {
+              "desde": 9142.87,
+              "hasta": 22857.14,
+              "tasa": 20,
+              "cuotaFija": 720.0
+            },
+            {
+              "desde": 22857.15,
+              "hasta": null,
+              "tasa": 30,
+              "cuotaFija": 3462.86
+            }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "D.L. 293 del 30/4/2025, reforma al art. 37 de la Ley de Impuesto sobre la Renta (D.O. 79, tomo 447, 30/4/2025)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/E198E77D-2027-47AA-A8F6-1D70E2F46431.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige ocho días después de su publicación (art. 3)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.renta-declaracion-obligatoria",
+      "nombre": "Salario anual desde el que el asalariado tiene que declarar",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto sobre la Renta, art. 38 (texto vigente con reformas hasta el D.L. 544 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/8AD94119-2BB2-4DB1-A708-44A51E4B6295.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.retencion-servicios",
+      "nombre": "Retención de renta a servicios de personas sin relación laboral",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código Tributario, art. 156 (texto vigente con reformas hasta el D.L. 656 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/D1841CC7-A62E-4221-824E-BE348589A1A1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.ganancia-capital-tasa",
+      "nombre": "Impuesto sobre la ganancia de capital",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto sobre la Renta, art. 42 (texto vigente con reformas hasta el D.L. 544 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/8AD94119-2BB2-4DB1-A708-44A51E4B6295.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.ganancia-capital-meses",
+      "nombre": "Meses desde la compra para pagar la tasa de ganancia de capital",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto sobre la Renta, art. 42 (texto vigente con reformas hasta el D.L. 544 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/8AD94119-2BB2-4DB1-A708-44A51E4B6295.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.renta-juridica",
+      "nombre": "Impuesto sobre la renta de personas jurídicas",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Rentas gravadas mayores al límite",
+        "menor": "Rentas gravadas hasta el límite"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 30,
+            "menor": 25
+          },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto sobre la Renta, art. 41 (texto vigente con reformas hasta el D.L. 544 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/8AD94119-2BB2-4DB1-A708-44A51E4B6295.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.renta-juridica-limite",
+      "nombre": "Rentas gravadas hasta las que una empresa paga la tasa menor",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto sobre la Renta, art. 41 (texto vigente con reformas hasta el D.L. 544 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/8AD94119-2BB2-4DB1-A708-44A51E4B6295.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.pago-a-cuenta",
+      "nombre": "Pago o anticipo a cuenta mensual",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "General",
+        "distribuidores": "Distribuidores con precio sugerido o margen asignado (bebidas, comestibles, higiene)",
+        "transporte": "Transporte público de pasajeros",
+        "gasolineras": "Personas jurídicas que venden gasolina y diésel"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 1.75,
+            "distribuidores": 0.3,
+            "transporte": 0.3,
+            "gasolineras": 0.75
+          },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código Tributario, art. 151 (texto vigente con reformas hasta el D.L. 656 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/D1841CC7-A62E-4221-824E-BE348589A1A1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.retencion-iva",
+      "nombre": "Retención o percepción de IVA de grandes contribuyentes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código Tributario, art. 162 y 163 (texto vigente con reformas hasta el D.L. 656 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/D1841CC7-A62E-4221-824E-BE348589A1A1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.retencion-iva-minimo",
+      "nombre": "Operación mínima para la retención o percepción de IVA",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código Tributario, art. 162 y 163 (texto vigente con reformas hasta el D.L. 656 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/D1841CC7-A62E-4221-824E-BE348589A1A1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.bienes-raices-tasa",
+      "nombre": "Impuesto sobre transferencia de bienes raíces",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto sobre Transferencia de Bienes Raíces, art. 4 (texto vigente)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/B2429056-6C2B-42CE-9B29-36691CA54DFC.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.bienes-raices-exento",
+      "nombre": "Valor del inmueble libre del impuesto de transferencia",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 28571.43,
+          "fuente": {
+            "organismo": "Ministerio de Hacienda",
+            "titulo": "Formulario de declaración del impuesto sobre transferencia de bienes raíces: «3 % sobre el exceso de $28,571.43»",
+            "url": "https://www.mh.gob.sv/wp-content/uploads/2020/11/PMHDC8216.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley fija 250,000 colones (art. 4); al cambio fijo de 8.75 colones por dólar son $28,571.43."
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.retencion-intereses",
+      "nombre": "Retención de renta sobre intereses de depósitos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código Tributario, art. 159 (texto vigente con reformas hasta el D.L. 656 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/D1841CC7-A62E-4221-824E-BE348589A1A1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.intereses-exento-saldo",
+      "nombre": "Saldo promedio mensual bajo el que los intereses de una persona no pagan renta",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25000,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Impuesto sobre la Renta, art. 4, num. 5 (texto vigente con reformas hasta el D.L. 544 de 2026)",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/8AD94119-2BB2-4DB1-A708-44A51E4B6295.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Se carga desde 2026 porque no leímos la fecha exacta en que empezó a regir; el artículo es anterior."
+    },
+    {
+      "id": "sv.colones-por-dolar",
+      "nombre": "Colones por dólar (cambio fijo)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2001-01-01",
+          "valor": 8.75,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley de Integración Monetaria (D.L. 201, D.O. 241 del 22/12/2000), art. 1",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/104A5755-354C-416D-A944-7314F6359CFF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ],
+      "nota": "Fijo e inalterable desde la vigencia de la ley (1/1/2001)."
+    },
+    {
+      "id": "sv.pension-edad",
+      "nombre": "Edad legal de retiro",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "hombre": "Hombres",
+        "mujer": "Mujeres"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-29",
+          "valor": {
+            "hombre": 60,
+            "mujer": 55
+          },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Integral del Sistema de Pensiones (D.L. 614, D.O. 241 del 21/12/2022), art. 96",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/F94AF319-257C-4A85-97B7-4D03A6C65A48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley rige ocho días después de su publicación (art. 164)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.pension-anios-cotizados",
+      "nombre": "Años cotizados para la pensión por vejez",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-29",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Integral del Sistema de Pensiones (D.L. 614, D.O. 241 del 21/12/2022), art. 97",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/F94AF319-257C-4A85-97B7-4D03A6C65A48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley rige ocho días después de su publicación (art. 164)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.pension-meses",
+      "nombre": "Mensualidades que financia el saldo",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-29",
+          "valor": 240,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Integral del Sistema de Pensiones (D.L. 614, D.O. 241 del 21/12/2022), art. 97",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/F94AF319-257C-4A85-97B7-4D03A6C65A48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley rige ocho días después de su publicación (art. 164)."
+          }
+        }
+      ],
+      "nota": "Más 20 pensiones de navidad de media pensión cada una."
+    },
+    {
+      "id": "sv.pension-incremento",
+      "nombre": "Incremento sobre la pensión calculada",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-29",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Integral del Sistema de Pensiones (D.L. 614, D.O. 241 del 21/12/2022), art. 98",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/F94AF319-257C-4A85-97B7-4D03A6C65A48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley rige ocho días después de su publicación (art. 164)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.pension-maxima",
+      "nombre": "Pensión máxima por vejez",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-29",
+          "valor": 3000,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Integral del Sistema de Pensiones (D.L. 614, D.O. 241 del 21/12/2022), art. 98",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/F94AF319-257C-4A85-97B7-4D03A6C65A48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley rige ocho días después de su publicación (art. 164)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.pension-devolucion-anios",
+      "nombre": "Años cotizados mínimos para algo más que la devolución del saldo",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-29",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Integral del Sistema de Pensiones (D.L. 614, D.O. 241 del 21/12/2022), art. 124",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/F94AF319-257C-4A85-97B7-4D03A6C65A48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley rige ocho días después de su publicación (art. 164)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sv.pension-bet-anios",
+      "nombre": "Años cotizados máximos para el Beneficio Económico Temporal",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-29",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley Integral del Sistema de Pensiones (D.L. 614, D.O. 241 del 21/12/2022), art. 125",
+            "url": "https://www.asamblea.gob.sv/sites/default/files/documents/decretos/F94AF319-257C-4A85-97B7-4D03A6C65A48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La ley rige ocho días después de su publicación (art. 164)."
+          }
+        }
+      ]
     }
   ]
 }
