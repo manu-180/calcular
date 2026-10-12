@@ -13,7 +13,7 @@ export default definirContenido({
   comoSeCalcula: [
     "Porcentaje: {{cr.subsidio-veces-aporte}} veces el aporte total al Seguro de Salud ({{cr.ccss-sem-trabajador}} del trabajador, {{cr.ccss-sem-patrono}} del patrono y {{cr.ccss-sem-estado}} del Estado).",
     "Salario diario: el promedio de los últimos 12 salarios reportados, entre {{cr.dias-mes-planilla}}.",
-    "La Caja paga desde el día {{cr.subsidio-dia-inicio}} de la incapacidad. Si es una prórroga dentro de 30 días, desde el primero.",
+    "La Caja no paga los primeros tres días: empieza el cuarto día de incapacidad. Si es una prórroga dentro de 30 días, desde el primero.",
     "Subsidio total: el subsidio diario por los días que paga la Caja.",
   ],
   ejemplo: ["Con un salario promedio de ₡600.000 y 10 días de incapacidad, la Caja paga 7 días a ₡12.000: ₡84.000."],
