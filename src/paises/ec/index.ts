@@ -44,6 +44,18 @@ import licenciaMaternidad from "./calculadoras/licencia-maternidad";
 import contenidoLicenciaMaternidad from "./contenido/licencia-maternidad";
 import licenciaPaternidad from "./calculadoras/licencia-paternidad";
 import contenidoLicenciaPaternidad from "./contenido/licencia-paternidad";
+import contratoEventual from "./calculadoras/contrato-eventual";
+import contenidoContratoEventual from "./contenido/contrato-eventual";
+import jornadaParcial from "./calculadoras/jornada-parcial";
+import contenidoJornadaParcial from "./contenido/jornada-parcial";
+import sueldoPorDias from "./calculadoras/sueldo-por-dias";
+import contenidoSueldoPorDias from "./contenido/sueldo-por-dias";
+import aportesIess from "./calculadoras/aportes-iess";
+import contenidoAportesIess from "./contenido/aportes-iess";
+import gastosPersonales from "./calculadoras/gastos-personales";
+import contenidoGastosPersonales from "./contenido/gastos-personales";
+import cesantiaIess from "./calculadoras/cesantia-iess";
+import contenidoCesantiaIess from "./contenido/cesantia-iess";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -78,6 +90,12 @@ export default definirPais({
     { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
     { definicion: licenciaMaternidad, contenido: contenidoLicenciaMaternidad, cliente: () => import("./calculadoras/licencia-maternidad.cliente") },
     { definicion: licenciaPaternidad, contenido: contenidoLicenciaPaternidad, cliente: () => import("./calculadoras/licencia-paternidad.cliente") },
+    { definicion: contratoEventual, contenido: contenidoContratoEventual, cliente: () => import("./calculadoras/contrato-eventual.cliente") },
+    { definicion: jornadaParcial, contenido: contenidoJornadaParcial, cliente: () => import("./calculadoras/jornada-parcial.cliente") },
+    { definicion: sueldoPorDias, contenido: contenidoSueldoPorDias, cliente: () => import("./calculadoras/sueldo-por-dias.cliente") },
+    { definicion: aportesIess, contenido: contenidoAportesIess, cliente: () => import("./calculadoras/aportes-iess.cliente") },
+    { definicion: gastosPersonales, contenido: contenidoGastosPersonales, cliente: () => import("./calculadoras/gastos-personales.cliente") },
+    { definicion: cesantiaIess, contenido: contenidoCesantiaIess, cliente: () => import("./calculadoras/cesantia-iess.cliente") },
   ],
   novedades,
   detectores,
