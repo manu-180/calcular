@@ -6,7 +6,9 @@
       "nivel": "info",
       "desde": "2026-11-01",
       "hasta": "2027-01-31",
-      "aplicaA": ["uy.salario-minimo"],
+      "aplicaA": [
+        "uy.salario-minimo"
+      ],
       "titulo": "El salario mínimo cambia en enero",
       "texto": "El tramo actual del salario mínimo rige desde julio de 2026. El monto para 2027 lo fija un decreto de fin de año. Cuando se publique, lo cargamos.",
       "fuente": {
@@ -21,7 +23,10 @@
       "id": "uy.irpf-anual",
       "nivel": "info",
       "desde": "2026-01-01",
-      "aplicaA": ["uy.irpf", "uy.sueldo-liquido"],
+      "aplicaA": [
+        "uy.irpf",
+        "uy.sueldo-liquido"
+      ],
       "texto": "La retención mensual del IRPF es un adelanto. El impuesto del año se cierra con la liquidación anual, que suma todos tus ingresos y deducciones, así que el resultado final puede ser otro.",
       "fuente": {
         "organismo": "IMPO (Diario Oficial)",
@@ -35,7 +40,10 @@
       "id": "uy.despido-salario-vacacional",
       "nivel": "cautela",
       "desde": "2026-01-01",
-      "aplicaA": ["uy.despido", "uy.liquidacion-por-egreso"],
+      "aplicaA": [
+        "uy.despido",
+        "uy.liquidacion-por-egreso"
+      ],
       "titulo": "Salario vacacional en la base del despido",
       "texto": "Un decreto de 2000 dice que el salario vacacional no se suma a la base del despido, pero la mayoría de la doctrina y de los jueces entiende que sí. Lo dejamos afuera. Si reclamás, puede corresponder un monto algo mayor.",
       "fuente": {
@@ -50,7 +58,10 @@
       "id": "uy.despido-con-jubilacion",
       "nivel": "info",
       "desde": "2026-01-01",
-      "aplicaA": ["uy.despido", "uy.liquidacion-por-egreso"],
+      "aplicaA": [
+        "uy.despido",
+        "uy.liquidacion-por-egreso"
+      ],
       "texto": "El texto de la Ley 10.489 limita la indemnización a tres sueldos si la persona ya tiene derecho a jubilarse. El MTSS informa el tope general de seis, que es el que usamos. Si ya tenés causal jubilatoria, consultalo antes de firmar.",
       "fuente": {
         "organismo": "IMPO (Diario Oficial)",
@@ -64,7 +75,11 @@
       "id": "uy.laudos",
       "nivel": "info",
       "desde": "2026-01-01",
-      "aplicaA": ["uy.horas-extra", "uy.salario-vacacional", "uy.salario-minimo"],
+      "aplicaA": [
+        "uy.horas-extra",
+        "uy.salario-vacacional",
+        "uy.salario-minimo"
+      ],
       "texto": "Los Consejos de Salarios fijan laudos y beneficios por sector que pueden ser mejores que el mínimo legal. Si tu convenio te da más, vale lo que dice el convenio.",
       "fuente": {
         "organismo": "Ministerio de Trabajo y Seguridad Social (MTSS)",
@@ -72,6 +87,63 @@
         "url": "https://www.gub.uy/ministerio-trabajo-seguridad-social/institucional/derecho-laboral-uruguayo/salario-vacacional",
         "tipo": "primaria",
         "verificadoEl": "2026-10-07"
+      }
+    },
+    {
+      "id": "uy.topes-bps-enero-2027",
+      "nivel": "info",
+      "desde": "2026-11-01",
+      "hasta": "2027-01-31",
+      "aplicaA": [
+        "uy.seguro-de-paro",
+        "uy.subsidio-por-enfermedad",
+        "uy.asignacion-familiar",
+        "uy.monotributo-social",
+        "uy.literal-e"
+      ],
+      "titulo": "Los montos cambian en enero",
+      "texto": "Los topes, mínimos y montos que usamos rigen desde enero de 2026. El BPS y la DGI los actualizan cada enero. Cuando se publiquen los de 2027, los cargamos.",
+      "fuente": {
+        "organismo": "Banco de Previsión Social (BPS)",
+        "titulo": "Subsidio por desempleo por despido: topes 2026",
+        "url": "https://www.bps.gub.uy/4802/subsidio-por-desempleo-por-despido.html",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      }
+    },
+    {
+      "id": "uy.jubilacion-convergencia",
+      "nivel": "cautela",
+      "desde": "2026-01-01",
+      "aplicaA": [
+        "uy.jubilacion"
+      ],
+      "titulo": "Es una estimación",
+      "texto": "Calculamos solo la jubilación del BPS con las reglas nuevas de la Ley 20.130. Si te jubilás entre 2033 y 2042, una parte se calcula con el régimen anterior. Tu monto real lo da el BPS con tu historia laboral.",
+      "fuente": {
+        "organismo": "IMPO (Diario Oficial)",
+        "titulo": "Ley 20.130, artículos 6, 14 y 46",
+        "url": "https://www.impo.com.uy/bases/leyes/20130-2023",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
+      }
+    },
+    {
+      "id": "uy.irpf-anual-un-empleador",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": [
+        "uy.devolucion-irpf",
+        "uy.irpf-profesional",
+        "uy.irpf-alquileres"
+      ],
+      "texto": "La DGI liquida el IRPF del año con todos tus ingresos juntos. Si tenés más de un trabajo, alquileres o intereses, o tributás como núcleo familiar, el resultado final puede ser otro.",
+      "fuente": {
+        "organismo": "Banco de Previsión Social (BPS)",
+        "titulo": "Comunicado 13/2025: ajuste anual IRPF 2025, trabajadores dependientes",
+        "url": "https://www.bps.gub.uy/bps/file/23657/1/2025---comunicado-13---ajuste-anual-irpf-2025-trabajadores-dependientes.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-12"
       }
     }
   ]

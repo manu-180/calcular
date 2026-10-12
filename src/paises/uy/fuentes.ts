@@ -64,7 +64,7 @@ async function traerCotizacion(http: Http, moneda: { codigo: string; nombre: str
 
 const URL_IMPO = (anio: number, numero: number) => `https://www.impo.com.uy/bases/decretos/${numero}-${anio}`;
 const TEMAS_IMPO =
-  /SALARIO MINIMO NACIONAL|BASE DE PRESTACIONES Y CONTRIBUCIONES|RENTAS DE LAS PERSONAS FISICAS|IRPF|FONASA|FONDO NACIONAL DE SALUD|VALOR AGREGADO|AGUINALDO|SUELDO ANUAL COMPLEMENTARIO|LICENCIA ANUAL|SALARIO VACACIONAL|HORAS EXTRA|DESPIDO|RECONVERSION LABORAL|APORTES? JUBILATORI|TOPES? DE APORTACION/;
+  /SALARIO MINIMO NACIONAL|BASE DE PRESTACIONES Y CONTRIBUCIONES|RENTAS DE LAS PERSONAS FISICAS|IRPF|FONASA|FONDO NACIONAL DE SALUD|VALOR AGREGADO|AGUINALDO|SUELDO ANUAL COMPLEMENTARIO|LICENCIA ANUAL|SALARIO VACACIONAL|HORAS EXTRA|DESPIDO|RECONVERSION LABORAL|APORTES? JUBILATORI|TOPES? DE APORTACION|DESEMPLEO|SUBSIDIO POR ENFERMEDAD|MATERNIDAD|PATERNIDAD|ASIGNACION(?:ES)? FAMILIAR|ASISTENCIA A LA SEGURIDAD SOCIAL|ARTS?. 116 DEL TITULO 4|LICENCIAS ESPECIALES|NOCTURN|TRANSMISIONES PATRIMONIALES|MONOTRIBUTO/;
 
 export interface NormaImpo {
   nombre: string;
@@ -148,6 +148,52 @@ function valorEnDatos(id: string, fecha: FechaISO): number | null {
   const dato = datos.datos.find((d) => d.id === id);
   const tramo = dato?.tramos.find((t) => cubre(t as { desde: FechaISO; hasta?: FechaISO }, fecha));
   return typeof tramo?.valor === "number" ? tramo.valor : null;
+}
+
+function valorEnMapa(id: string, clave: string, fecha: FechaISO): number | null {
+  const dato = datos.datos.find((d) => d.id === id);
+  const tramo = dato?.tramos.find((t) => cubre(t as { desde: FechaISO; hasta?: FechaISO }, fecha));
+  const v = tramo?.valor as Record<string, unknown> | undefined;
+  return v && typeof v[clave] === "number" ? (v[clave] as number) : null;
+}
+
+// Topes y montos que el BPS actualiza en enero en páginas de texto (sin decreto propio que IMPO
+// nombre de forma reconocible). Los acentos pueden venir como entidades HTML: los patrones usan ".".
+const TOPES_BPS: readonly { url: `https://${string}`; id: string; clave?: string; nombre: string; patron: RegExp }[] = [
+  { url: "https://www.bps.gub.uy/4774/subsidio-por-enfermedad.html", id: "uy.enfermedad-tope", nombre: "tope del subsidio por enfermedad", patron: /con un tope de \$ ([\d.]+) \(\d{2}\/\d{4}\)/ },
+  { url: "https://www.bps.gub.uy/18239/subsidio-por-desempleo-por-suspension.html", id: "uy.paro-tope-suspension", nombre: "tope del seguro de paro por suspensión", patron: /Tope m.ximo por suspensi.n: \$ ([\d.]+)/ },
+  { url: "https://www.bps.gub.uy/18239/subsidio-por-desempleo-por-suspension.html", id: "uy.paro-minimo", nombre: "mínimo del seguro de paro", patron: /Tope m.nimo por suspensi.n: \$ ([\d.]+)/ },
+  { url: "https://www.bps.gub.uy/4802/subsidio-por-desempleo-por-despido.html", id: "uy.paro-topes", clave: "1", nombre: "tope del primer mes de seguro de paro", patron: /Mes 1 66 % \$ ([\d.]+)/ },
+  { url: "https://www.bps.gub.uy/5470/asignacion-familiar.html", id: "uy.afam-15084", clave: "monto1", nombre: "asignación familiar (primera franja)", patron: /Hasta \$ [\d.]+ \$ ([\d.]+) Hasta/ },
+  { url: "https://www.bps.gub.uy/6667/monotributo-social-mides-ley-18874.html", id: "uy.monotributo-social-sin-snis", clave: "4", nombre: "monotributo social sin Fonasa desde el mes 37", patron: /Desde mes 37 [\d.]+ [\d.]+ ([\d.]+)/ },
+];
+
+export function textoPlano(html: string): string {
+  return html
+    .replace(/<(script|style)[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&[a-z]+;/gi, ".")
+    .replace(/\s+/g, " ");
+}
+
+async function revisarTopesBps(http: Http): Promise<HallazgoNorma[] | null> {
+  const fecha = hoy();
+  const paginas = new Map<string, string | null>();
+  const hallazgos: HallazgoNorma[] = [];
+  for (const t of TOPES_BPS) {
+    if (!paginas.has(t.url)) {
+      const html = await textoOpcional(http, t.url);
+      paginas.set(t.url, html ? textoPlano(html) : null);
+    }
+    const texto = paginas.get(t.url);
+    const m = texto ? t.patron.exec(texto) : null;
+    const publicado = m ? numeroUruguayo(m[1]) : null;
+    if (publicado === null) return null;
+    const cargado = t.clave === undefined ? valorEnDatos(t.id, fecha) : valorEnMapa(t.id, t.clave, fecha);
+    if (cargado !== publicado) hallazgos.push({ titulo: `El BPS publica ${t.nombre} de $ ${publicado} y en datos.json hay ${cargado ?? "nada vigente"}`, url: t.url, fecha });
+  }
+  return hallazgos;
 }
 
 const VIGILADOS_BPS = [
@@ -291,10 +337,18 @@ export const detectores: readonly Detector[] = [
   {
     id: "uy.impo-decretos",
     carril: "norma",
-    datos: ["uy.smn", "uy.bpc", "uy.irpf-escala", "uy.fonasa-hasta", "uy.fonasa-mas", "uy.frl", "uy.aporte-jubilatorio", "uy.iva-basica", "uy.iva-minima"],
+    datos: ["uy.smn", "uy.bpc", "uy.irpf-escala", "uy.fonasa-hasta", "uy.fonasa-mas", "uy.frl", "uy.aporte-jubilatorio", "uy.iva-basica", "uy.iva-minima", "uy.literal-e-pago", "uy.iass-escala", "uy.irpf-escala-anual", "uy.paternidad-dias", "uy.itp"],
     metodo: "api-json",
     url: "https://www.impo.com.uy/bases/decretos",
     traer: (http) => buscarDecretos(http, 30),
+  },
+  {
+    id: "uy.bps-topes",
+    carril: "norma",
+    datos: ["uy.enfermedad-tope", "uy.paro-tope-suspension", "uy.paro-minimo", "uy.paro-topes", "uy.afam-15084", "uy.monotributo-social-sin-snis"],
+    metodo: "html",
+    url: "https://www.bps.gub.uy/4774/subsidio-por-enfermedad.html",
+    traer: revisarTopesBps,
   },
   {
     id: "uy.bps-valores",
