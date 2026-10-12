@@ -70,6 +70,18 @@ import impuestoALosDividendos from "./calculadoras/impuesto-a-los-dividendos";
 import contenidoImpuestoALosDividendos from "./contenido/impuesto-a-los-dividendos";
 import interesesMoratoriosSunat from "./calculadoras/intereses-moratorios-sunat";
 import contenidoInteresesMoratoriosSunat from "./contenido/intereses-moratorios-sunat";
+import rer from "./calculadoras/rer";
+import contenidoRer from "./contenido/rer";
+import regimenMypeTributario from "./calculadoras/regimen-mype-tributario";
+import contenidoRegimenMypeTributario from "./contenido/regimen-mype-tributario";
+import impuestoALaRentaEmpresas from "./calculadoras/impuesto-a-la-renta-empresas";
+import contenidoImpuestoALaRentaEmpresas from "./contenido/impuesto-a-la-renta-empresas";
+import gastosDeducibles from "./calculadoras/gastos-deducibles";
+import contenidoGastosDeducibles from "./contenido/gastos-deducibles";
+import detracciones from "./calculadoras/detracciones";
+import contenidoDetracciones from "./contenido/detracciones";
+import plazoFijo from "./calculadoras/plazo-fijo";
+import contenidoPlazoFijo from "./contenido/plazo-fijo";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -117,6 +129,12 @@ export default definirPais({
     { definicion: impuestoVentaDeInmueble, contenido: contenidoImpuestoVentaDeInmueble, cliente: () => import("./calculadoras/impuesto-venta-de-inmueble.cliente") },
     { definicion: impuestoALosDividendos, contenido: contenidoImpuestoALosDividendos, cliente: () => import("./calculadoras/impuesto-a-los-dividendos.cliente") },
     { definicion: interesesMoratoriosSunat, contenido: contenidoInteresesMoratoriosSunat, cliente: () => import("./calculadoras/intereses-moratorios-sunat.cliente") },
+    { definicion: rer, contenido: contenidoRer, cliente: () => import("./calculadoras/rer.cliente") },
+    { definicion: regimenMypeTributario, contenido: contenidoRegimenMypeTributario, cliente: () => import("./calculadoras/regimen-mype-tributario.cliente") },
+    { definicion: impuestoALaRentaEmpresas, contenido: contenidoImpuestoALaRentaEmpresas, cliente: () => import("./calculadoras/impuesto-a-la-renta-empresas.cliente") },
+    { definicion: gastosDeducibles, contenido: contenidoGastosDeducibles, cliente: () => import("./calculadoras/gastos-deducibles.cliente") },
+    { definicion: detracciones, contenido: contenidoDetracciones, cliente: () => import("./calculadoras/detracciones.cliente") },
+    { definicion: plazoFijo, contenido: contenidoPlazoFijo, cliente: () => import("./calculadoras/plazo-fijo.cliente") },
   ],
   novedades,
   detectores,
