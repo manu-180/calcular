@@ -58,6 +58,14 @@ import utilidadesFraccionadas from "./calculadoras/utilidades-fraccionadas";
 import contenidoUtilidadesFraccionadas from "./contenido/utilidades-fraccionadas";
 import euroBcv from "./calculadoras/euro-bcv";
 import contenidoEuroBcv from "./contenido/euro-bcv";
+import salarioNeto from "./calculadoras/salario-neto";
+import contenidoSalarioNeto from "./contenido/salario-neto";
+import costoEmpleador from "./calculadoras/costo-empleador";
+import contenidoCostoEmpleador from "./contenido/costo-empleador";
+import unidadTributaria from "./calculadoras/unidad-tributaria";
+import contenidoUnidadTributaria from "./contenido/unidad-tributaria";
+import igtf from "./calculadoras/igtf";
+import contenidoIgtf from "./contenido/igtf";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -99,6 +107,10 @@ export default definirPais({
     { definicion: interesesDeMora, contenido: contenidoInteresesDeMora, cliente: () => import("./calculadoras/intereses-de-mora.cliente") },
     { definicion: utilidadesFraccionadas, contenido: contenidoUtilidadesFraccionadas, cliente: () => import("./calculadoras/utilidades-fraccionadas.cliente") },
     { definicion: euroBcv, contenido: contenidoEuroBcv, cliente: () => import("./calculadoras/euro-bcv.cliente") },
+    { definicion: salarioNeto, contenido: contenidoSalarioNeto, cliente: () => import("./calculadoras/salario-neto.cliente") },
+    { definicion: costoEmpleador, contenido: contenidoCostoEmpleador, cliente: () => import("./calculadoras/costo-empleador.cliente") },
+    { definicion: unidadTributaria, contenido: contenidoUnidadTributaria, cliente: () => import("./calculadoras/unidad-tributaria.cliente") },
+    { definicion: igtf, contenido: contenidoIgtf, cliente: () => import("./calculadoras/igtf.cliente") },
   ],
   novedades,
   detectores,
