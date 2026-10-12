@@ -2,6 +2,32 @@ import type { Novedad } from "@/motor/tipos";
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "pa.calculadoras-laborales-octubre-2026",
+    fecha: "2026-10-12",
+    titulo: "Nuevas calculadoras: renuncia, feriado, domingo, maternidad y más",
+    texto: "Sumamos 28 calculadoras con el Código de Trabajo, la reforma de la Caja de Seguro Social y las leyes fiscales vigentes: liquidación por renuncia, feriado y domingo trabajado, aviso de renuncia, licencias de maternidad y paternidad, jubilación, trabajo doméstico, fondo de cesantía, préstamo con FECI e impuesto de inmueble, entre otras.",
+    calculadoras: [
+      "pa.liquidacion-por-renuncia",
+      "pa.feriado-trabajado",
+      "pa.domingo-trabajado",
+      "pa.preaviso",
+      "pa.licencia-de-maternidad",
+      "pa.trabajo-domestico",
+      "pa.fondo-de-cesantia",
+      "pa.prestamo-personal",
+      "pa.impuesto-de-inmueble",
+      "pa.jubilacion",
+      "pa.licencia-de-paternidad",
+    ],
+    fuente: {
+      organismo: "Órgano Judicial",
+      titulo: "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995)",
+      url: "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-12",
+    },
+  },
+  {
     id: "pa.salario-minimo-2026",
     fecha: "2026-01-06",
     titulo: "Nuevos salarios mínimos para 2026 y 2027",

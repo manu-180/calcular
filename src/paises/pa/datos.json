@@ -339,7 +339,7 @@
             "pesca-industrial": 2.65,
             "agroindustria-agricola-pequena": 1.67,
             "agroindustria-agricola-gran": 2.12,
-            "agroindustria-procesamiento-pequena": 2.0,
+            "agroindustria-procesamiento-pequena": 2,
             "agroindustria-procesamiento-gran": 2.49,
             "areneras": 3.2,
             "minas-metalicas": 3.39,
@@ -935,6 +935,954 @@
             "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/blogs.dir/cendoj/novedades_normativas/ley_8_2010.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jornada-diaria",
+      "nombre": "Horas máximas de la jornada diaria por tipo de jornada",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "diurna": "Jornada diurna",
+        "nocturna": "Jornada nocturna",
+        "mixta": "Jornada mixta"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": {
+            "diurna": 8,
+            "nocturna": 7,
+            "mixta": 7.5
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 31",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.recargo-descanso",
+      "nombre": "Recargo por trabajar en el día de descanso",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "domingo": "Domingo o día de descanso semanal",
+        "compensatorio": "Día de descanso dado como compensación",
+        "libre-diurna": "Día libre por semana de menos de seis días (jornada diurna)",
+        "libre-nocturna": "Día libre por semana de menos de seis días (jornada mixta o nocturna)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": {
+            "domingo": 50,
+            "compensatorio": 50,
+            "libre-diurna": 50,
+            "libre-nocturna": 75
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículos 48 y 49",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.recargo-feriado",
+      "nombre": "Recargo por trabajar en día de fiesta o duelo nacional",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 150,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 49, primer párrafo",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.recargo-feriado-domestico",
+      "nombre": "Recargo del trabajo doméstico en día de fiesta o duelo nacional",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 231, numeral 2",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.preaviso-renuncia-dias",
+      "nombre": "Días de aviso previo al renunciar",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 222",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.preaviso-renuncia-tecnico-meses",
+      "nombre": "Meses de aviso previo al renunciar (trabajador técnico)",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 222",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.penalidad-sin-preaviso-semanas",
+      "nombre": "Semanas de salario que debe quien renuncia sin aviso",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 222, segundo párrafo",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.preaviso-domestico-dias",
+      "nombre": "Días de aviso previo en el trabajo doméstico",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 231, numeral 3",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.periodo-prueba-meses",
+      "nombre": "Duración máxima del período de prueba",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 78 (subrogado por el artículo 13 de la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.periodo-prueba-domestico-semanas",
+      "nombre": "Semanas de prueba en el trabajo doméstico",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 231, numeral 3",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.maternidad-semanas",
+      "nombre": "Semanas de descanso por maternidad",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "antes": "Antes del parto",
+        "despues": "Después del parto"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": {
+            "antes": 6,
+            "despues": 8
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 107 (subrogado por el artículo 14 de la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.licencia-enfermedad-horas",
+      "nombre": "Fondo de licencia por enfermedad",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "por-26-jornadas": "Horas por cada 26 jornadas servidas",
+        "por-anio": "Horas por año"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": {
+            "por-26-jornadas": 12,
+            "por-anio": 144
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 200",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.licencia-enfermedad-anios-acumulables",
+      "nombre": "Años de licencia por enfermedad que se pueden acumular",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 200",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.fondo-cesantia-indemnizacion",
+      "nombre": "Parte de la cuota mensual de indemnización que se cotiza al fondo de cesantía",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 229-B (adicionado por la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.indemnizacion-domestico-semanas",
+      "nombre": "Indemnización del trabajo doméstico en semanas de salario (menos de un año)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "hasta-3-meses": "De dos semanas a tres meses",
+        "hasta-1-anio": "De tres meses a un año"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": {
+            "hasta-3-meses": 1,
+            "hasta-1-anio": 2
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 231, numeral 4, literales a y b",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.indemnizacion-domestico-meses",
+      "nombre": "Indemnización del trabajo doméstico en meses de salario (desde un año)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "1-a-2": "De uno a dos años",
+        "2-a-4": "De dos a cuatro años",
+        "4-a-6": "De cuatro a seis años",
+        "6-a-10": "De seis a diez años",
+        "10-a-15": "De diez a quince años",
+        "15-a-20": "De quince a veinte años",
+        "20-o-mas": "Veinte años o más"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": {
+            "1-a-2": 1,
+            "2-a-4": 2,
+            "4-a-6": 3,
+            "6-a-10": 4,
+            "10-a-15": 5,
+            "15-a-20": 6,
+            "20-o-mas": 7
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 231, numeral 4, literales c a i",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.muerte-monto-sin-edicto",
+      "nombre": "Monto hasta el que el juez entrega lo adeudado al trabajador fallecido sin edicto",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 155 (subrogado por el artículo 21 de la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.gastos-representacion",
+      "nombre": "Tarifa de retención sobre gastos de representación",
+      "tipo": "escala",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-03-15",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 25000,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 25000,
+              "hasta": null,
+              "tasa": 15,
+              "cuotaFija": 2500
+            }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 8 de 15 de marzo de 2010, artículo 15 (literal l del artículo 701 del Código Fiscal) (Gaceta Oficial Digital 26489-A)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/blogs.dir/cendoj/novedades_normativas/ley_8_2010.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.feci",
+      "nombre": "Retención anual del FECI sobre préstamos",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-10-14",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Superintendencia de Bancos de Panamá",
+            "titulo": "Decreto Ejecutivo 3 de 2022 del MEF (Gaceta Oficial Digital 29668, 22/11/2022), que transcribe el artículo 2 de la Ley 4 de 1994 reformado por el artículo 3 de la Ley 98 de 2019",
+            "url": "https://www.superbancos.gob.pa/documentos/feci/leyes-y-decretos/Ley_39_2022.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El texto de la Ley 98 de 9/10/2019 (Gaceta 28881-B, vigente desde el 14/10/2019) se leyó también en la copia de FAOLEX: https://faolex.fao.org/docs/pdf/pan192646.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.feci-monto-minimo",
+      "nombre": "Monto desde el que un préstamo paga FECI (se cobra si lo supera)",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-10-14",
+          "valor": 5000,
+          "fuente": {
+            "organismo": "Superintendencia de Bancos de Panamá",
+            "titulo": "Decreto Ejecutivo 3 de 2022 del MEF (Gaceta Oficial Digital 29668, 22/11/2022), que transcribe el artículo 2 de la Ley 4 de 1994 reformado por el artículo 3 de la Ley 98 de 2019",
+            "url": "https://www.superbancos.gob.pa/documentos/feci/leyes-y-decretos/Ley_39_2022.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El texto de la Ley 98 de 9/10/2019 (Gaceta 28881-B, vigente desde el 14/10/2019) se leyó también en la copia de FAOLEX: https://faolex.fao.org/docs/pdf/pan192646.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.inmueble-vivienda-principal",
+      "nombre": "Tarifa del impuesto de inmuebles para vivienda principal o patrimonio familiar tributario",
+      "tipo": "escala",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 120000,
+              "tasa": 0
+            },
+            {
+              "desde": 120000,
+              "hasta": 700000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 700000,
+              "hasta": null,
+              "tasa": 0.7
+            }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 66 de 17 de octubre de 2017, artículo 4 (artículo 766 del Código Fiscal) (Gaceta Oficial 28388-C)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/2010/2017/LEY/Administrador%20Legispan_28388-C_2017_10_17_ASAMBLEA%20NACIONAL_66.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde el 1/1/2019 (art. 21)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.inmueble-general",
+      "nombre": "Tarifa del impuesto de inmuebles para comercios, industrias, otras residencias y terrenos",
+      "tipo": "escala",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30000,
+              "tasa": 0
+            },
+            {
+              "desde": 30000,
+              "hasta": 250000,
+              "tasa": 0.6
+            },
+            {
+              "desde": 250000,
+              "hasta": 500000,
+              "tasa": 0.8
+            },
+            {
+              "desde": 500000,
+              "hasta": null,
+              "tasa": 1
+            }
+          ],
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 66 de 17 de octubre de 2017, artículo 5 (artículo 766-A del Código Fiscal) (Gaceta Oficial 28388-C)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/2010/2017/LEY/Administrador%20Legispan_28388-C_2017_10_17_ASAMBLEA%20NACIONAL_66.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde el 1/1/2019 (art. 21)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.inmueble-descuento-pronto-pago",
+      "nombre": "Descuento por pagar el impuesto de inmuebles completo hasta fin de febrero",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 66 de 17 de octubre de 2017, artículo 7 (artículo 786 del Código Fiscal, parágrafo) (Gaceta Oficial 28388-C)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/2010/2017/LEY/Administrador%20Legispan_28388-C_2017_10_17_ASAMBLEA%20NACIONAL_66.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Rige desde el 1/1/2019 (art. 21)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.paternidad-dias-habiles",
+      "nombre": "Días hábiles de licencia de paternidad",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-05-25",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 27 de 23 de mayo de 2017, que crea la licencia de paternidad, artículos 3 y 4 (Gaceta Oficial Digital 28285-B, 24/5/2017)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/2010/2017/LEY/Administrador%20Legispan_28285-B_2017_5_24_ASAMBLEA%20NACIONAL_27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional, leída página por página. Rige desde el día siguiente a su promulgación (art. 7)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.paternidad-aviso-semanas",
+      "nombre": "Semanas de anticipación para avisar la fecha probable del parto",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-05-25",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 27 de 23 de mayo de 2017, que crea la licencia de paternidad, artículo 2 (Gaceta Oficial Digital 28285-B, 24/5/2017)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/2010/2017/LEY/Administrador%20Legispan_28285-B_2017_5_24_ASAMBLEA%20NACIONAL_27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional, leída página por página. Rige desde el día siguiente a su promulgación (art. 7)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.interes-mora-laboral",
+      "nombre": "Interés anual por mora en el pago de salarios, vacaciones, prestaciones e indemnizaciones",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 169",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.recargo-condena-salarios",
+      "nombre": "Recargo sobre los salarios reconocidos en una sentencia de condena",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 170",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.indemnizacion-escala-b",
+      "nombre": "Escala de indemnización para el tiempo de servicio posterior al 2 de abril de 1972 (relaciones iniciadas antes de la Ley 44 de 1995)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "meses-por-semana-primer-anio": "Meses de servicio por cada semana de indemnización, en el primer año",
+        "meses-por-semana-segundo-anio": "Meses de servicio por cada semana de indemnización, en el segundo año",
+        "semanas-anios-2-a-10": "Semanas por cada año, de dos a diez años",
+        "semanas-desde-anio-11": "Semanas por cada año después de diez",
+        "minimo-semanas": "Indemnización mínima en semanas"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": {
+            "meses-por-semana-primer-anio": 3,
+            "meses-por-semana-segundo-anio": 2,
+            "semanas-anios-2-a-10": 3,
+            "semanas-desde-anio-11": 1,
+            "minimo-semanas": 1
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 225, acápite B (subrogado por el artículo 36 de la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jubilacion-edad-referencia",
+      "nombre": "Edad de referencia de la pensión de retiro por vejez",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "mujeres": "Mujeres",
+        "hombres": "Hombres"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "mujeres": 57,
+            "hombres": 62
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 159 (artículo 168-E de la Ley 51 de 2005) (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; los artículos están en las páginas 86 a 90, leídas como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jubilacion-cuotas",
+      "nombre": "Cuotas de la pensión de retiro por vejez del beneficio definido",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "referencia": "Cuotas de referencia",
+        "minimo": "Cuotas mínimas"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "referencia": 240,
+            "minimo": 180
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículos 154 y 161 (artículos 168 y 169-A de la Ley 51 de 2005) (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; los artículos están en las páginas 86 a 90, leídas como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jubilacion-tasa-reemplazo",
+      "nombre": "Tasa de reemplazo de la pensión de retiro por vejez del beneficio definido",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "basica": "Tasa básica a la edad y cuotas de referencia",
+        "por-12-cuotas-antes": "Por cada 12 cuotas de más aportadas antes de la edad de referencia",
+        "por-12-cuotas-despues": "Por cada 12 cuotas de más aportadas después de la edad de referencia"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "basica": 60,
+            "por-12-cuotas-antes": 1.25,
+            "por-12-cuotas-despues": 2
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 161 (artículo 169-A de la Ley 51 de 2005) (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; los artículos están en las páginas 86 a 90, leídas como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jubilacion-factor-anticipada",
+      "nombre": "Factor de reducción de la pensión de vejez anticipada",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "1": "Un año antes de la edad de referencia",
+        "2": "Dos años antes de la edad de referencia"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "1": 0.9128,
+            "2": 0.8342
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 161 (artículo 169-A de la Ley 51 de 2005), valores iniciales (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; los artículos están en las páginas 86 a 90, leídas como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.css-independiente",
+      "nombre": "Cuota del trabajador independiente a la Caja de Seguro Social",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ivm": "Invalidez, vejez y muerte (obligatoria)",
+        "enfermedad-maternidad": "Enfermedad y maternidad (voluntaria)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "ivm": 9.36,
+            "enfermedad-maternidad": 8.5
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 3 (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50, leída como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.css-pensionados",
+      "nombre": "Cuota de los pensionados a la Caja de Seguro Social",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": 6.75,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 6 (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50, leída como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.salarios-caidos-meses",
+      "nombre": "Tope de salarios caídos en la sentencia por despido injustificado",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "desde-ley-44": "Trabajadores que entraron desde la Ley 44 de 1995",
+        "antes-ley-44": "Trabajadores que ya trabajaban al entrar en vigencia la Ley 44 de 1995"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": {
+            "desde-ley-44": 3,
+            "antes-ley-44": 5
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 218 (subrogado por el artículo 33 de la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.recargo-no-reintegro",
+      "nombre": "Recargo sobre la indemnización cuando el empleador no reintegra al trabajador",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "desde-ley-44-sin-fondo": "Trabajadores que entraron desde la Ley 44 de 1995, si el empleador no está al día en el fondo de cesantía",
+        "antes-ley-44": "Trabajadores que ya trabajaban al entrar en vigencia la Ley 44 de 1995"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": {
+            "desde-ley-44-sin-fondo": 25,
+            "antes-ley-44": 50
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 219 (subrogado por el artículo 34 de la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.vacaciones-dias-por-dia",
+      "nombre": "Días de trabajo por cada día de vacaciones",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 11,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 54, ordinales 1 y 6",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
           }
         }
       ]

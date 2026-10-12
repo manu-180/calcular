@@ -1,4 +1,4 @@
-import { ErrorEntrada } from "@/motor/calculo";
+import { enMapa, ErrorEntrada } from "@/motor/calculo";
 import { diasEntre, sumarDias } from "@/motor/vigencia";
 import type { FechaISO } from "@/motor/tipos";
 
@@ -6,7 +6,7 @@ function diasDelMes(anio: number, mes: number): number {
   return [31, anio % 4 === 0 && (anio % 100 !== 0 || anio % 400 === 0) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][mes - 1];
 }
 
-function sumarMeses(fecha: FechaISO, meses: number): FechaISO {
+export function sumarMeses(fecha: FechaISO, meses: number): FechaISO {
   const [a, m, d] = fecha.split("-").map(Number);
   const total = a * 12 + (m - 1) + meses;
   const anio = Math.floor(total / 12);
@@ -84,4 +84,23 @@ const plural = (n: number, uno: string, varios: string) => `${n} ${n === 1 ? uno
 
 export function textoTiempo(t: Tiempo): string {
   return `${plural(t.anios, "año", "años")}, ${plural(t.meses, "mes", "meses")} y ${plural(t.dias, "día", "días")}`;
+}
+
+// Semanas por mes: el MITRADEL pasa el salario mensual a semanal con 12 meses entre 52 semanas.
+export const SEMANAS_POR_MES = 52 / 12;
+
+// Valor de la hora ordinaria: el salario mensual entre las horas de un mes de jornada completa.
+export const horaDeMensual = (mensual: number, horasSemana: number) => mensual / (horasSemana * SEMANAS_POR_MES);
+
+// Art. 225, acápite A: para el tiempo anterior al 2/4/1972 rige otra escala, que no se combina.
+export const INICIO_ESCALA_B: FechaISO = "1972-04-02";
+
+// Art. 225, acápite B: la escala se aplica en forma combinada, repartiendo el tiempo de servicio
+// entre sus tramos (primer año, segundo año, de dos a diez años y desde los diez).
+export function semanasEscalaB(meses: number, e: Readonly<Record<string, number>>): number {
+  const primerAnio = Math.min(meses, 12) / enMapa(e, "meses-por-semana-primer-anio");
+  const segundoAnio = Math.max(Math.min(meses, 24) - 12, 0) / enMapa(e, "meses-por-semana-segundo-anio");
+  const deDosADiez = (Math.max(Math.min(meses, 120) - 24, 0) / 12) * enMapa(e, "semanas-anios-2-a-10");
+  const desdeDiez = (Math.max(meses - 120, 0) / 12) * enMapa(e, "semanas-desde-anio-11");
+  return Math.max(primerAnio + segundoAnio + deDosADiez + desdeDiez, enMapa(e, "minimo-semanas"));
 }

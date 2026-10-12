@@ -5,9 +5,9 @@
       "id": "pa.indemnizacion-antes-de-1995",
       "nivel": "info",
       "desde": "2026-01-01",
-      "aplicaA": ["pa.indemnizacion-por-despido", "pa.liquidacion"],
+      "aplicaA": ["pa.indemnizacion-por-despido", "pa.liquidacion", "pa.renuncia-justificada"],
       "titulo": "Si empezaste a trabajar antes de agosto de 1995",
-      "texto": "La escala de 3.4 semanas por año vale para relaciones que empezaron desde el 14 de agosto de 1995. Si tu relación es anterior, la indemnización combina otras escalas del artículo 225 y conviene que la revise el MITRADEL.",
+      "texto": "La escala de 3.4 semanas por año vale para relaciones que empezaron desde el 14 de agosto de 1995. Si tu relación es anterior, la indemnización usa otra escala del artículo 225. Usa la calculadora de indemnización para quienes empezaron antes de 1995.",
       "fuente": {
         "organismo": "Asamblea Legislativa",
         "titulo": "Ley 44 de 12 de agosto de 1995, artículo 36 (artículo 225 del Código de Trabajo)",
@@ -21,7 +21,7 @@
       "nivel": "info",
       "desde": "2026-12-01",
       "hasta": "2027-03-31",
-      "aplicaA": ["pa.costo-empleador"],
+      "aplicaA": ["pa.costo-empleador", "pa.cuota-seguro-social"],
       "titulo": "Sube la cuota patronal del Seguro Social",
       "texto": "Desde el 1 de marzo de 2027 la cuota del empleador a la Caja de Seguro Social pasa del 13.25% al 14.25% de los sueldos. La calculadora ya usa la cuota de cada fecha.",
       "fuente": {
