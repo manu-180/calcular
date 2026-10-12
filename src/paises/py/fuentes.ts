@@ -40,6 +40,24 @@ export function parsearCotizacionBcp(html: string): PuntoSerie[] | null {
   return valor === null ? null : [{ fecha, valor }];
 }
 
+function fechaPlanillaBcp(html: string): FechaISO | null {
+  const titulo = /PLANILLA DE COTIZACIONES AL\s+[A-ZÁÉÍÓÚ]+\s+(\d{1,2})\s+DE\s+([A-Z]+)\s+DEL\s+(\d{4})/.exec(html);
+  if (!titulo) return null;
+  const mes = MESES[titulo[2]];
+  const fecha = mes ? `${titulo[3]}-${mes}-${titulo[1].padStart(2, "0")}` : null;
+  return esFechaISO(fecha) ? fecha : null;
+}
+
+// Cada fila de la planilla es: nombre, código ISO, unidades por dólar y guaraníes por unidad. Se toma
+// la última columna, que ya está en guaraníes.
+export function parsearMonedaBcp(html: string, codigo: string): PuntoSerie[] | null {
+  const fecha = fechaPlanillaBcp(html);
+  if (!fecha || !/^[A-Z]{3}$/.test(codigo)) return null;
+  const fila = new RegExp(`<td[^>]*>\\s*${codigo}\\s*</td>\\s*<td[^>]*>\\s*[\\d.,]+\\s*</td>\\s*<td[^>]*>\\s*([\\d.,]+)\\s*</td>`).exec(html);
+  const valor = fila ? numeroParaguayo(fila[1]) : null;
+  return valor === null ? null : [{ fecha, valor }];
+}
+
 const MESES_RSS: Readonly<Record<string, string>> = {
   Jan: "01",
   Feb: "02",
@@ -103,6 +121,29 @@ export const detectores: readonly Detector[] = [
       return html ? parsearCotizacionBcp(html) : null;
     },
   },
+  ...(
+    [
+      // Bandas: el real y el euro se mueven como el dólar (5 % por día); el peso argentino tuvo saltos
+      // diarios más grandes en las devaluaciones, por eso se le da 10 %.
+      { id: "py.real-bcp", serie: "py.real", codigo: "BRL", banda: { min: 700, max: 2000, saltoRelativoMax: 0.05 } },
+      { id: "py.peso-argentino-bcp", serie: "py.peso-argentino", codigo: "ARS", banda: { min: 0.5, max: 15, saltoRelativoMax: 0.1 } },
+      { id: "py.euro-bcp", serie: "py.euro", codigo: "EUR", banda: { min: 4500, max: 10000, saltoRelativoMax: 0.05 } },
+    ] as const
+  ).map(
+    (d): Detector => ({
+      id: d.id,
+      carril: "serie",
+      serie: d.serie,
+      metodo: "html",
+      url: URL_COTIZACION_BCP,
+      userAgentNavegador: true,
+      banda: d.banda,
+      async traer(http) {
+        const html = await textoOpcional(http, URL_COTIZACION_BCP);
+        return html ? parsearMonedaBcp(html, d.codigo) : null;
+      },
+    }),
+  ),
   {
     id: "py.mtess-salario-minimo",
     carril: "norma",
