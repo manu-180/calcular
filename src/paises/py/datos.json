@@ -1156,6 +1156,40 @@
           }
         }
       ]
+    },
+    {
+      "id": "py.pension-ips",
+      "nombre": "Pensión del IPS por fallecimiento del asegurado",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "porcentaje": "Porcentaje de la jubilación que se paga como pensión",
+        "semanas-minimas": "Semanas de aporte para dejar pensión sin estar jubilado",
+        "anualidades-conyuge-joven": "Anualidades de indemnización al cónyuge menor de 40 años",
+        "edad-conyuge-joven": "Edad del cónyuge para la indemnización",
+        "semanas-por-anio": "Semanas de aporte que valen un año"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "porcentaje": 60,
+            "semanas-minimas": 750,
+            "anualidades-conyuge-joven": 3,
+            "edad-conyuge-joven": 40,
+            "semanas-por-anio": 50
+          },
+          "fuente": {
+            "organismo": "Biblioteca y Archivo Central del Congreso Nacional (BACN)",
+            "titulo": "Ley N° 2263/2003, artículo 1 (artículo 62 de la Ley N° 98/92)",
+            "url": "https://www.bacn.gov.py/leyes-paraguayas/4932/ley-n-2263-modifica-parcialmente-la-ley-n-98-92",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Las 50 semanas por año y el subsidio de un salario mínimo por año de antigüedad están en la Ley N° 98/92 (artículo 4, que modifica el artículo 23 de la Ley 430/73, y artículo 65 del Decreto-Ley 1860/50): https://www.bacn.gov.py/leyes-paraguayas/4394/ley-n-98-establece-el-regimen-unificado-de-jubilaciones-y-pensiones"
+          }
+        }
+      ]
     }
   ]
 }

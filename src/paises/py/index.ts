@@ -27,6 +27,7 @@ import ivaAPagar from "./calculadoras/iva-a-pagar";
 import jornalMinimo from "./calculadoras/jornal-minimo";
 import jubilacionIps from "./calculadoras/jubilacion-ips";
 import liquidacion from "./calculadoras/liquidacion";
+import pensionIps from "./calculadoras/pension-ips";
 import periodoDePrueba from "./calculadoras/periodo-de-prueba";
 import permisoDeMaternidad from "./calculadoras/permiso-de-maternidad";
 import preaviso from "./calculadoras/preaviso";
@@ -70,6 +71,7 @@ import contenidoIvaAPagar from "./contenido/iva-a-pagar";
 import contenidoJornalMinimo from "./contenido/jornal-minimo";
 import contenidoJubilacionIps from "./contenido/jubilacion-ips";
 import contenidoLiquidacion from "./contenido/liquidacion";
+import contenidoPensionIps from "./contenido/pension-ips";
 import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
 import contenidoPermisoDeMaternidad from "./contenido/permiso-de-maternidad";
 import contenidoPreaviso from "./contenido/preaviso";
@@ -129,6 +131,7 @@ export default definirPais({
     { definicion: irpVentaInmueble, contenido: contenidoIrpVentaInmueble, cliente: () => import("./calculadoras/irp-venta-inmueble.cliente") },
     { definicion: ivaAPagar, contenido: contenidoIvaAPagar, cliente: () => import("./calculadoras/iva-a-pagar.cliente") },
     { definicion: jubilacionIps, contenido: contenidoJubilacionIps, cliente: () => import("./calculadoras/jubilacion-ips.cliente") },
+    { definicion: pensionIps, contenido: contenidoPensionIps, cliente: () => import("./calculadoras/pension-ips.cliente") },
     { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
     { definicion: permisoDeMaternidad, contenido: contenidoPermisoDeMaternidad, cliente: () => import("./calculadoras/permiso-de-maternidad.cliente") },
     { definicion: preaviso, contenido: contenidoPreaviso, cliente: () => import("./calculadoras/preaviso.cliente") },
