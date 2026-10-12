@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import interesesDeMora from "./intereses-de-mora";
+import interesesDeMora from "./intereses-de-mora-laboral";
 
 export default definirCasos(interesesDeMora, [
   {

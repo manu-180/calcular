@@ -38,12 +38,12 @@ import preaviso from "./calculadoras/preaviso";
 import contenidoPreaviso from "./contenido/preaviso";
 import antiguedadLaboral from "./calculadoras/antiguedad-laboral";
 import contenidoAntiguedadLaboral from "./contenido/antiguedad-laboral";
-import anticipoPrestaciones from "./calculadoras/anticipo-prestaciones";
-import contenidoAnticipoPrestaciones from "./contenido/anticipo-prestaciones";
-import garantiaPrestaciones from "./calculadoras/garantia-prestaciones";
-import contenidoGarantiaPrestaciones from "./contenido/garantia-prestaciones";
-import interesesPrestaciones from "./calculadoras/intereses-prestaciones";
-import contenidoInteresesPrestaciones from "./contenido/intereses-prestaciones";
+import anticipoPrestaciones from "./calculadoras/anticipo-de-prestaciones";
+import contenidoAnticipoPrestaciones from "./contenido/anticipo-de-prestaciones";
+import garantiaPrestaciones from "./calculadoras/garantia-de-prestaciones";
+import contenidoGarantiaPrestaciones from "./contenido/garantia-de-prestaciones";
+import interesesPrestaciones from "./calculadoras/intereses-de-prestaciones";
+import contenidoInteresesPrestaciones from "./contenido/intereses-de-prestaciones";
 import reposoPreYPostnatal from "./calculadoras/reposo-pre-y-postnatal";
 import contenidoReposoPreYPostnatal from "./contenido/reposo-pre-y-postnatal";
 import permisoDePaternidad from "./calculadoras/permiso-de-paternidad";
@@ -52,8 +52,8 @@ import sueldoEnBolivares from "./calculadoras/sueldo-en-bolivares";
 import contenidoSueldoEnBolivares from "./contenido/sueldo-en-bolivares";
 import poderAdquisitivo from "./calculadoras/poder-adquisitivo";
 import contenidoPoderAdquisitivo from "./contenido/poder-adquisitivo";
-import interesesDeMora from "./calculadoras/intereses-de-mora";
-import contenidoInteresesDeMora from "./contenido/intereses-de-mora";
+import interesesDeMora from "./calculadoras/intereses-de-mora-laboral";
+import contenidoInteresesDeMora from "./contenido/intereses-de-mora-laboral";
 import utilidadesFraccionadas from "./calculadoras/utilidades-fraccionadas";
 import contenidoUtilidadesFraccionadas from "./contenido/utilidades-fraccionadas";
 import euroBcv from "./calculadoras/euro-bcv";
@@ -97,14 +97,14 @@ export default definirPais({
     { definicion: salarioDiario, contenido: contenidoSalarioDiario, cliente: () => import("./calculadoras/salario-diario.cliente") },
     { definicion: preaviso, contenido: contenidoPreaviso, cliente: () => import("./calculadoras/preaviso.cliente") },
     { definicion: antiguedadLaboral, contenido: contenidoAntiguedadLaboral, cliente: () => import("./calculadoras/antiguedad-laboral.cliente") },
-    { definicion: anticipoPrestaciones, contenido: contenidoAnticipoPrestaciones, cliente: () => import("./calculadoras/anticipo-prestaciones.cliente") },
-    { definicion: garantiaPrestaciones, contenido: contenidoGarantiaPrestaciones, cliente: () => import("./calculadoras/garantia-prestaciones.cliente") },
-    { definicion: interesesPrestaciones, contenido: contenidoInteresesPrestaciones, cliente: () => import("./calculadoras/intereses-prestaciones.cliente") },
+    { definicion: anticipoPrestaciones, contenido: contenidoAnticipoPrestaciones, cliente: () => import("./calculadoras/anticipo-de-prestaciones.cliente") },
+    { definicion: garantiaPrestaciones, contenido: contenidoGarantiaPrestaciones, cliente: () => import("./calculadoras/garantia-de-prestaciones.cliente") },
+    { definicion: interesesPrestaciones, contenido: contenidoInteresesPrestaciones, cliente: () => import("./calculadoras/intereses-de-prestaciones.cliente") },
     { definicion: reposoPreYPostnatal, contenido: contenidoReposoPreYPostnatal, cliente: () => import("./calculadoras/reposo-pre-y-postnatal.cliente") },
     { definicion: permisoDePaternidad, contenido: contenidoPermisoDePaternidad, cliente: () => import("./calculadoras/permiso-de-paternidad.cliente") },
     { definicion: sueldoEnBolivares, contenido: contenidoSueldoEnBolivares, cliente: () => import("./calculadoras/sueldo-en-bolivares.cliente") },
     { definicion: poderAdquisitivo, contenido: contenidoPoderAdquisitivo, cliente: () => import("./calculadoras/poder-adquisitivo.cliente") },
-    { definicion: interesesDeMora, contenido: contenidoInteresesDeMora, cliente: () => import("./calculadoras/intereses-de-mora.cliente") },
+    { definicion: interesesDeMora, contenido: contenidoInteresesDeMora, cliente: () => import("./calculadoras/intereses-de-mora-laboral.cliente") },
     { definicion: utilidadesFraccionadas, contenido: contenidoUtilidadesFraccionadas, cliente: () => import("./calculadoras/utilidades-fraccionadas.cliente") },
     { definicion: euroBcv, contenido: contenidoEuroBcv, cliente: () => import("./calculadoras/euro-bcv.cliente") },
     { definicion: salarioNeto, contenido: contenidoSalarioNeto, cliente: () => import("./calculadoras/salario-neto.cliente") },

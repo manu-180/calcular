@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import anticipo from "./anticipo-prestaciones";
+import anticipo from "./anticipo-de-prestaciones";
 
 export default definirCasos(anticipo, [
   {

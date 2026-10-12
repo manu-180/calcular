@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import intereses from "./intereses-prestaciones";
+import intereses from "./intereses-de-prestaciones";
 
 export default definirCasos(intereses, [
   {

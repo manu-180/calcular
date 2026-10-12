@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import garantia from "./garantia-prestaciones";
+import garantia from "./garantia-de-prestaciones";
 
 export default definirCasos(garantia, [
   {
