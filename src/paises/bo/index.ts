@@ -21,6 +21,11 @@ import domingoTrabajado from "./calculadoras/domingo-trabajado";
 import recargoNocturno from "./calculadoras/recargo-nocturno";
 import subsidioDeFrontera from "./calculadoras/subsidio-de-frontera";
 import sueldoPorHora from "./calculadoras/sueldo-por-hora";
+import primaAnual from "./calculadoras/prima-anual";
+import licenciaDeMaternidad from "./calculadoras/licencia-de-maternidad";
+import subsidioPrenatalYLactancia from "./calculadoras/subsidio-prenatal-y-lactancia";
+import antiguedadLaboral from "./calculadoras/antiguedad-laboral";
+import finiquitoAtrasado from "./calculadoras/finiquito-atrasado";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoBonoDeAntiguedad from "./contenido/bono-de-antiguedad";
 import contenidoDolarOficial from "./contenido/dolar-oficial";
@@ -42,6 +47,11 @@ import contenidoDomingoTrabajado from "./contenido/domingo-trabajado";
 import contenidoRecargoNocturno from "./contenido/recargo-nocturno";
 import contenidoSubsidioDeFrontera from "./contenido/subsidio-de-frontera";
 import contenidoSueldoPorHora from "./contenido/sueldo-por-hora";
+import contenidoPrimaAnual from "./contenido/prima-anual";
+import contenidoLicenciaDeMaternidad from "./contenido/licencia-de-maternidad";
+import contenidoSubsidioPrenatalYLactancia from "./contenido/subsidio-prenatal-y-lactancia";
+import contenidoAntiguedadLaboral from "./contenido/antiguedad-laboral";
+import contenidoFiniquitoAtrasado from "./contenido/finiquito-atrasado";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -75,6 +85,11 @@ export default definirPais({
     { definicion: recargoNocturno, contenido: contenidoRecargoNocturno, cliente: () => import("./calculadoras/recargo-nocturno.cliente") },
     { definicion: subsidioDeFrontera, contenido: contenidoSubsidioDeFrontera, cliente: () => import("./calculadoras/subsidio-de-frontera.cliente") },
     { definicion: sueldoPorHora, contenido: contenidoSueldoPorHora, cliente: () => import("./calculadoras/sueldo-por-hora.cliente") },
+    { definicion: primaAnual, contenido: contenidoPrimaAnual, cliente: () => import("./calculadoras/prima-anual.cliente") },
+    { definicion: licenciaDeMaternidad, contenido: contenidoLicenciaDeMaternidad, cliente: () => import("./calculadoras/licencia-de-maternidad.cliente") },
+    { definicion: subsidioPrenatalYLactancia, contenido: contenidoSubsidioPrenatalYLactancia, cliente: () => import("./calculadoras/subsidio-prenatal-y-lactancia.cliente") },
+    { definicion: antiguedadLaboral, contenido: contenidoAntiguedadLaboral, cliente: () => import("./calculadoras/antiguedad-laboral.cliente") },
+    { definicion: finiquitoAtrasado, contenido: contenidoFiniquitoAtrasado, cliente: () => import("./calculadoras/finiquito-atrasado.cliente") },
   ],
   novedades,
   detectores,
