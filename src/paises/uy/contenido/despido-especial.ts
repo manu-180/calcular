@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Calculadora de despido especial",
   title: "Despido especial: embarazo, enfermedad o accidente",
   description:
-    "Calculá la indemnización especial por despido de una embarazada, durante una enfermedad, tras un accidente de trabajo, por acoso o después de la licencia paternal.",
+    "Calculá la indemnización especial si te despiden embarazada, durante una enfermedad, tras un accidente de trabajo, por acoso o después de la licencia paternal.",
   intro: [
     "Algunas personas tienen una protección extra contra el despido. Si las despiden igual, además de la indemnización común cobran una indemnización especial.",
     "Elegí tu situación y completá tus datos. Te mostramos la indemnización común, la especial y el total.",

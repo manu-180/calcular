@@ -1896,22 +1896,25 @@
       ]
     },
     {
-      "id": "uy.accidente-porcentaje",
-      "nombre": "Accidente de trabajo: parte del jornal que paga el BSE (2/3)",
-      "tipo": "numero",
-      "unidad": "%",
+      "id": "uy.accidente-fraccion",
+      "nombre": "Accidente de trabajo: parte del jornal que paga el BSE (dos tercios)",
+      "tipo": "mapa",
+      "unidad": "numero",
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2026-01-01",
-          "valor": 66.67,
+          "valor": {
+            "numerador": 2,
+            "denominador": 3
+          },
           "fuente": {
             "organismo": "IMPO (Diario Oficial)",
             "titulo": "Ley 16.074, artículo 19 (indemnización temporaria)",
             "url": "https://www.impo.com.uy/bases/leyes/16074-1989/19",
             "tipo": "primaria",
             "verificadoEl": "2026-10-12",
-            "nota": "La ley dice 2/3; el BPS lo publica como 66,67 % en la página del subsidio por enfermedad."
+            "nota": "La ley dice 2/3 partes del jornal o sueldo. El BPS lo muestra como 66,67 % en la página del subsidio por enfermedad."
           }
         }
       ]
