@@ -1123,6 +1123,44 @@
           }
         }
       ]
+    },
+    {
+      "id": "bo.licencias-dias",
+      "nombre": "Licencias especiales con goce de haber",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "matrimonio": "Matrimonio",
+        "luto": "Fallecimiento de padres, cónyuge, hermanos o hijos",
+        "paternidad": "Paternidad (nacimiento de un hijo)",
+        "cumpleanios": "Cumpleaños (media jornada)",
+        "papanicolaou": "Examen de Papanicolaou o mamografía",
+        "prostata": "Examen de próstata",
+        "colon": "Examen de colon"
+      },
+      "nota": "Todas con el 100 % del salario y sin descontarse de las vacaciones.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "matrimonio": 3,
+            "luto": 3,
+            "paternidad": 3,
+            "cumpleanios": 0.5,
+            "papanicolaou": 1,
+            "prostata": 1,
+            "colon": 1
+          },
+          "fuente": {
+            "organismo": "Ministerio de Trabajo, Empleo y Previsión Social (MTEPS)",
+            "titulo": "Guía de derechos laborales MTEPS 2024 (Libro N° 73), capítulo XVII, licencias especiales (D.S. N° 4708, art. 2; D.S. N° 1212; Ley N° 252 modificada por Ley N° 798)",
+            "url": "https://www.mintrabajo.gob.bo/wp-content/uploads/2025/10/Libro-No-73-Guia-de-derechos-laborales-MTEPS-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
     }
   ]
 }

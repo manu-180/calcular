@@ -35,6 +35,8 @@ import impuestoALaHerencia from "./calculadoras/impuesto-a-la-herencia";
 import impuestoALaTransferencia from "./calculadoras/impuesto-a-la-transferencia";
 import deudaTributaria from "./calculadoras/deuda-tributaria";
 import jubilacion from "./calculadoras/jubilacion";
+import licenciasLaborales from "./calculadoras/licencias-laborales";
+import actualizacionUfv from "./calculadoras/actualizacion-ufv";
 import contenidoAguinaldo from "./contenido/aguinaldo";
 import contenidoBonoDeAntiguedad from "./contenido/bono-de-antiguedad";
 import contenidoDolarOficial from "./contenido/dolar-oficial";
@@ -70,6 +72,8 @@ import contenidoImpuestoALaHerencia from "./contenido/impuesto-a-la-herencia";
 import contenidoImpuestoALaTransferencia from "./contenido/impuesto-a-la-transferencia";
 import contenidoDeudaTributaria from "./contenido/deuda-tributaria";
 import contenidoJubilacion from "./contenido/jubilacion";
+import contenidoLicenciasLaborales from "./contenido/licencias-laborales";
+import contenidoActualizacionUfv from "./contenido/actualizacion-ufv";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -117,6 +121,8 @@ export default definirPais({
     { definicion: impuestoALaTransferencia, contenido: contenidoImpuestoALaTransferencia, cliente: () => import("./calculadoras/impuesto-a-la-transferencia.cliente") },
     { definicion: deudaTributaria, contenido: contenidoDeudaTributaria, cliente: () => import("./calculadoras/deuda-tributaria.cliente") },
     { definicion: jubilacion, contenido: contenidoJubilacion, cliente: () => import("./calculadoras/jubilacion.cliente") },
+    { definicion: licenciasLaborales, contenido: contenidoLicenciasLaborales, cliente: () => import("./calculadoras/licencias-laborales.cliente") },
+    { definicion: actualizacionUfv, contenido: contenidoActualizacionUfv, cliente: () => import("./calculadoras/actualizacion-ufv.cliente") },
   ],
   novedades,
   detectores,

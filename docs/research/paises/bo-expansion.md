@@ -1,4 +1,4 @@
-# Bolivia: expansión de calculadoras (de 15 a 35)
+# Bolivia: expansión de calculadoras (de 15 a 37)
 
 Fecha de corte: 12 de octubre de 2026. Complementa `bo.md` (research inicial). Pedido de Manuel:
 acercar Bolivia al nivel de las 83 de calcular.ar con lo que se pueda sostener en fuente primaria.
@@ -49,6 +49,8 @@ devuelve 403.
 | 18 | iue | Media, anual | Ley 843 arts. 50-51 | L843 | Publicada |
 | 19 | impuesto-a-la-herencia | Baja-media | Ley 843 art. 102 | L843 | Publicada |
 | 20 | subsidio-de-frontera | Baja (zonas de frontera) | D.S. 21137 art. 12 | GUIA cap. VIII | Publicada |
+| 21 | licencias-laborales | Media (matrimonio, luto, cumpleaños) | D.S. 4708, D.S. 1212, Ley 252 | GUIA cap. XVII | Publicada |
+| 22 | actualizacion-ufv | Media (contratos, deudas) | Serie UFV del BCB | BCB (serie ya automatizada) | Publicada |
 
 ## Descartadas o en borrador (por qué)
 
@@ -81,3 +83,10 @@ devuelve 403.
   se paga antes del día 20 de notificada la Vista de Cargo (art. 157).
 - **Jubilación:** solo requisitos (edad y aportes). El monto depende del saldo en la cuenta de la
   Gestora y de la escala solidaria, que no son públicos en una tabla legible.
+
+## Resultado
+
+Antes: 15 calculadoras (14 publicadas, horas-extras en borrador). Después: 37 (36 publicadas). Datos:
+de 20 a 48, todos verificados salvo el recargo de horas extras. Detectores: se sumó
+`bo.mefp-pensiones` (RSS del Ministerio de Economía) y se ampliaron los datos y temas que vigilan
+`bo.mteps-normas` y `bo.sin-normas`.

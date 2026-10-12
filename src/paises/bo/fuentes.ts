@@ -77,7 +77,7 @@ export function filtrarWp(json: unknown, tema: RegExp, prefijo: string): Hallazg
 }
 
 const TEMAS_LABORALES =
-  /salario m[ií]nimo|incremento salarial|aguinaldo|bono de antig[uü]edad|quinquenio|beneficios sociales|vacaci|finiquito|desahucio|prima anual|maternidad|lactancia|prenatal|subsidio|nocturno|feriado|jornada/i;
+  /salario m[ií]nimo|incremento salarial|aguinaldo|bono de antig[uü]edad|quinquenio|beneficios sociales|vacaci|finiquito|desahucio|prima anual|maternidad|lactancia|prenatal|subsidio|nocturno|feriado|jornada|licencia/i;
 const TEMAS_TRIBUTARIOS =
   /\bIVA\b|RC-IVA|\bIT\b|\bIUE\b|transacciones|al[ií]cuota|formulario 110|dependientes|independientes|retenci|herencia|transmisi[oó]n gratuita|transferencia|deuda tributaria/i;
 
@@ -203,6 +203,7 @@ export const detectores: readonly Detector[] = [
       "bo.finiquito-plazo-dias",
       "bo.finiquito-multa",
       "bo.aporte-salud-patronal",
+      "bo.licencias-dias",
     ],
     metodo: "api-json",
     url: URL_NOTAS_MTEPS,
