@@ -1612,6 +1612,66 @@
           }
         }
       ]
+    },
+    {
+      "id": "cl.licencia-dias-sin-carencia",
+      "nombre": "Licencias médicas de más de estos días se pagan desde el primer día",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=4252",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "titulo": "DFL 44 de 1978 (Trabajo), artículo 14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.licencia-dias-carencia",
+      "nombre": "Días sin subsidio en licencias de 10 días o menos",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=4252",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "titulo": "DFL 44 de 1978 (Trabajo), artículo 14 (se paga desde el cuarto día)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl.subsidio-minimo",
+      "nombre": "Subsidio por incapacidad laboral mínimo (porcentaje del ingreso mínimo)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Biblioteca del Congreso Nacional (BCN)",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=4252",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "titulo": "DFL 44 de 1978 (Trabajo), artículo 17"
+          }
+        }
+      ]
     }
   ]
 }

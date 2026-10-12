@@ -70,6 +70,10 @@ import creditoHipotecario from "./calculadoras/credito-hipotecario";
 import contenidoCreditoHipotecario from "./contenido/credito-hipotecario";
 import reajusteDeArriendo from "./calculadoras/reajuste-de-arriendo";
 import contenidoReajusteDeArriendo from "./contenido/reajuste-de-arriendo";
+import licenciaMedica from "./calculadoras/licencia-medica";
+import contenidoLicenciaMedica from "./contenido/licencia-medica";
+import planIsapre from "./calculadoras/plan-isapre";
+import contenidoPlanIsapre from "./contenido/plan-isapre";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -117,6 +121,8 @@ export default definirPais({
     { definicion: depositoAPlazo, contenido: contenidoDepositoAPlazo, cliente: () => import("./calculadoras/deposito-a-plazo.cliente") },
     { definicion: creditoHipotecario, contenido: contenidoCreditoHipotecario, cliente: () => import("./calculadoras/credito-hipotecario.cliente") },
     { definicion: reajusteDeArriendo, contenido: contenidoReajusteDeArriendo, cliente: () => import("./calculadoras/reajuste-de-arriendo.cliente") },
+    { definicion: licenciaMedica, contenido: contenidoLicenciaMedica, cliente: () => import("./calculadoras/licencia-medica.cliente") },
+    { definicion: planIsapre, contenido: contenidoPlanIsapre, cliente: () => import("./calculadoras/plan-isapre.cliente") },
   ],
   novedades,
   detectores,
