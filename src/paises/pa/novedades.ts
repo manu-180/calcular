@@ -5,7 +5,7 @@ export const novedades: readonly Novedad[] = [
     id: "pa.calculadoras-laborales-octubre-2026",
     fecha: "2026-10-12",
     titulo: "Nuevas calculadoras: renuncia, feriado, domingo, maternidad y más",
-    texto: "Sumamos 18 calculadoras con el Código de Trabajo y las leyes fiscales vigentes: liquidación por renuncia, feriado y domingo trabajado, aviso de renuncia, licencia de maternidad, trabajo doméstico, fondo de cesantía, préstamo con FECI e impuesto de inmueble, entre otras.",
+    texto: "Sumamos 28 calculadoras con el Código de Trabajo, la reforma de la Caja de Seguro Social y las leyes fiscales vigentes: liquidación por renuncia, feriado y domingo trabajado, aviso de renuncia, licencias de maternidad y paternidad, jubilación, trabajo doméstico, fondo de cesantía, préstamo con FECI e impuesto de inmueble, entre otras.",
     calculadoras: [
       "pa.liquidacion-por-renuncia",
       "pa.feriado-trabajado",
@@ -16,6 +16,8 @@ export const novedades: readonly Novedad[] = [
       "pa.fondo-de-cesantia",
       "pa.prestamo-personal",
       "pa.impuesto-de-inmueble",
+      "pa.jubilacion",
+      "pa.licencia-de-paternidad",
     ],
     fuente: {
       organismo: "Órgano Judicial",

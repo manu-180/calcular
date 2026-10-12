@@ -78,6 +78,8 @@ import contenidoDescuentoDePensionados from "./contenido/descuento-de-pensionado
 import contenidoSalariosCaidos from "./contenido/salarios-caidos";
 import contenidoDecimoTercerMesProporcional from "./contenido/decimo-tercer-mes-proporcional";
 import contenidoVacacionesProporcionales from "./contenido/vacaciones-proporcionales";
+import horasExtraEnFeriado from "./calculadoras/horas-extra-en-feriado";
+import contenidoHorasExtraEnFeriado from "./contenido/horas-extra-en-feriado";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -129,6 +131,7 @@ export default definirPais({
     { definicion: salariosCaidos, contenido: contenidoSalariosCaidos, cliente: () => import("./calculadoras/salarios-caidos.cliente") },
     { definicion: decimoTercerMesProporcional, contenido: contenidoDecimoTercerMesProporcional, cliente: () => import("./calculadoras/decimo-tercer-mes-proporcional.cliente") },
     { definicion: vacacionesProporcionales, contenido: contenidoVacacionesProporcionales, cliente: () => import("./calculadoras/vacaciones-proporcionales.cliente") },
+    { definicion: horasExtraEnFeriado, contenido: contenidoHorasExtraEnFeriado, cliente: () => import("./calculadoras/horas-extra-en-feriado.cliente") },
   ],
   novedades,
   detectores,

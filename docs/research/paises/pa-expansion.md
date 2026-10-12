@@ -1,4 +1,4 @@
-# Panamá: expansión de calculadoras (12 → 30+)
+# Panamá: expansión de calculadoras (12 → 40)
 
 Fecha: 12/10/2026. Base: `pa.md` (7/10/2026) y las 12 calculadoras publicadas. Pedido de Manuel:
 acercar Panamá al volumen de calcular.ar, con lo lógico y razonable para el país.
@@ -43,10 +43,17 @@ acercar Panamá al volumen de calcular.ar, con lo lógico y razonable para el pa
 | 19b | licencia-de-paternidad | Media | Ley 27 de 2017 | Gaceta 28285-B (Legispan) | publicada |
 | 19c | intereses-por-mora-laboral | Baja | CT arts. 169 y 170 | Código de Trabajo | publicada |
 | 19d | indemnizacion-antes-de-1995 | Baja, pero sin otra calculadora que la cubra | CT art. 225, acápite B | Código de Trabajo | publicada |
+| 19e | salarios-caidos | Media | CT arts. 218 y 219 | Código de Trabajo | publicada |
+| 19f | decimo-tercer-mes-proporcional | Alta | Decreto 19 de 1973 (divisor 12); Ley 462 (7.25 %) | MITRADEL y Gaceta 30238 | publicada |
+| 19g | vacaciones-proporcionales | Alta | CT art. 54, ordinal 6 | Código de Trabajo | publicada |
+| 19h | seguro-social-independientes | Media | Ley 51 de 2005 art. 101, num. 3 (Ley 462) | Gaceta 30238, pág. 50 | publicada |
+| 19i | descuento-de-pensionados | Media | Ley 51 de 2005 art. 101, num. 6 (Ley 462) | Gaceta 30238, pág. 50 | publicada |
+| 19j | horas-extra-en-feriado | Media | CT arts. 33, 48, 49 y 50 | Código de Trabajo | publicada |
 | 20 | impuesto-de-transferencia (ITBI 2 %) | Media | Ley 106 de 1974 art. 4; Leyes 468 y 472 de 2025 | | descartada por ahora: norma en cambio (derogación suspendida hasta el 31/12/2025 y proyecto del MEF en la Asamblea) |
 | 21 | plazo-fijo | Media | Código Fiscal arts. 701 y 708 | | descartada por ahora: no se verificó el tratamiento del ISR sobre intereses |
 | 22 | pension-alimenticia | Media | Código de la Familia | | descartada: no hay tabla ni porcentaje legal; sería inventar |
 | 23 | impuesto-de-dividendos | Baja | Código Fiscal art. 733 (Ley 8 de 2010) | Gaceta 26489-A | candidata: falta confirmar que no hubo reformas posteriores |
+| 25 | ganancia de capital por venta de inmueble | Media | Código Fiscal art. 701, lit. a (Ley 208 de 2021) | | descartada por ahora: reforma de 2021 sin leer en Gaceta |
 
 ## Reglas que salen de la lectura (trampas)
 
