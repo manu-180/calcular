@@ -130,6 +130,7 @@ const LSS = [
   "mx.dias-maternidad",
   "mx.retiro-desempleo",
   "mx.tope-retiro-desempleo",
+  "mx.despensa-no-integra",
 ];
 
 const LISR = [
@@ -146,17 +147,33 @@ const LISR = [
   "mx.deduccion-ciega-arrendamiento",
   "mx.tope-deducciones-uma",
   "mx.tope-deducciones-porcentaje",
+  "mx.exencion-horas-extra-porcentaje",
+  "mx.exencion-horas-extra-uma",
+  "mx.tope-fondo-ahorro-porcentaje",
+  "mx.tope-fondo-ahorro-uma",
+  "mx.factor-mensual-174",
 ];
 
 // La gráfica pública del SIE devuelve JSON sin token (la API SieAPIRest sí lo pide). Trae toda la
 // historia: se devuelven solo los últimos puntos, porque la banda compara cada punto con el último
-// guardado y uno viejo parecería un salto.
+// guardado y uno viejo parecería un salto. Probado el 12/10/2026: cerca de la mitad de las respuestas
+// llegan con estado 200 y cuerpo vacío, por eso se reintenta antes de dar la fuente por caída.
 async function sieGrafica(http: Http, url: string, serie: string, ultimos: number): Promise<PuntoSerie[] | null> {
-  const json = await http.json(url, { userAgentNavegador: true });
+  let json: unknown = null;
+  for (let intento = 0; intento < 6 && json === null; intento++) {
+    if (intento > 0) await new Promise((r) => setTimeout(r, 1500 * intento));
+    const cuerpo = (await http.texto(url, { userAgentNavegador: true })).trim();
+    if (!cuerpo) continue;
+    try {
+      json = JSON.parse(cuerpo);
+    } catch {
+      return null;
+    }
+  }
   const valores = (json as { serie?: unknown; valores?: unknown } | null)?.valores;
   if ((json as { serie?: unknown } | null)?.serie !== serie || !Array.isArray(valores)) return null;
   const puntos: PuntoSerie[] = [];
-  // -989898 es como el SIE marca una semana sin subasta.
+  // -989898 es como el SIE marca un periodo sin dato (semana sin subasta).
   for (const fila of valores.filter((f) => Array.isArray(f) && f[1] !== -989898).slice(-ultimos)) {
     if (!Array.isArray(fila) || !esFechaISO(fila[0]) || typeof fila[1] !== "number" || !Number.isFinite(fila[1]) || fila[1] <= 0) return null;
     puntos.push({ fecha: fila[0], valor: fila[1] });
@@ -207,19 +224,8 @@ export const detectores: readonly Detector[] = [
     url: "https://www.banxico.org.mx/SieInternet/consultaSerieGrafica.do?s=SP1,CP154,1&versionSerie=LA-MAS-RECIENTE&l=es",
     userAgentNavegador: true,
     banda: { min: 120, max: 200, saltoRelativoMax: 0.03 },
-    async traer(http) {
-      // Es el JSON que usa la gráfica pública del SIE y no pide token (la API SieAPIRest sí).
-      // Trae toda la historia desde 1969: se devuelven solo los últimos meses, porque la banda
-      // compara cada punto con el último guardado y un mes viejo parecería un salto.
-      const json = await http.json(this.url, { userAgentNavegador: true });
-      const valores = (json as { serie?: unknown; valores?: unknown } | null)?.valores;
-      if ((json as { serie?: unknown } | null)?.serie !== "SP1" || !Array.isArray(valores)) return null;
-      const puntos: PuntoSerie[] = [];
-      for (const fila of valores.slice(-3)) {
-        if (!Array.isArray(fila) || !esFechaISO(fila[0]) || typeof fila[1] !== "number" || !Number.isFinite(fila[1])) return null;
-        puntos.push({ fecha: fila[0], valor: fila[1] });
-      }
-      return puntos.length ? puntos : null;
+    traer(http) {
+      return sieGrafica(http, this.url, "SP1", 3);
     },
   },
   detectorCetes("28", "SF43936"),

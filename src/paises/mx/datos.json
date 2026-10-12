@@ -2640,6 +2640,69 @@
           }
         }
       ]
+    },
+    {
+      "id": "mx.exencion-horas-extra-porcentaje",
+      "nombre": "Parte exenta de las horas extra y descansos trabajados (no salario mínimo)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 93, fracción I",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente compilado por el Orden Jurídico Nacional, última reforma del 1/04/2024. Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.exencion-horas-extra-uma",
+      "nombre": "Tope semanal exento de horas extra y descansos trabajados",
+      "tipo": "numero",
+      "unidad": "UMA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 93, fracción I",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente compilado por el Orden Jurídico Nacional, última reforma del 1/04/2024. Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.despensa-no-integra",
+      "nombre": "Despensas que no integran el salario base de cotización (porcentaje de la UMA diaria)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 40,
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículo 27, fracción VI",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente publicado por el IMSS (última reforma DOF 15/01/2026). El 40 % es del salario mínimo general del Distrito Federal; las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
     }
   ]
 }

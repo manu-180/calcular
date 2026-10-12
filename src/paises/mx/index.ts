@@ -76,6 +76,12 @@ import jornadaLaboral from "./calculadoras/jornada-laboral";
 import contenidoJornadaLaboral from "./contenido/jornada-laboral";
 import fondoDeAhorro from "./calculadoras/fondo-de-ahorro";
 import contenidoFondoDeAhorro from "./contenido/fondo-de-ahorro";
+import isrHorasExtra from "./calculadoras/isr-horas-extra";
+import contenidoIsrHorasExtra from "./contenido/isr-horas-extra";
+import antiguedadLaboral from "./calculadoras/antiguedad-laboral";
+import contenidoAntiguedadLaboral from "./contenido/antiguedad-laboral";
+import valesDeDespensa from "./calculadoras/vales-de-despensa";
+import contenidoValesDeDespensa from "./contenido/vales-de-despensa";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -126,6 +132,9 @@ export default definirPais({
     { definicion: salarioPorHora, contenido: contenidoSalarioPorHora, cliente: () => import("./calculadoras/salario-por-hora.cliente") },
     { definicion: jornadaLaboral, contenido: contenidoJornadaLaboral, cliente: () => import("./calculadoras/jornada-laboral.cliente") },
     { definicion: fondoDeAhorro, contenido: contenidoFondoDeAhorro, cliente: () => import("./calculadoras/fondo-de-ahorro.cliente") },
+    { definicion: isrHorasExtra, contenido: contenidoIsrHorasExtra, cliente: () => import("./calculadoras/isr-horas-extra.cliente") },
+    { definicion: antiguedadLaboral, contenido: contenidoAntiguedadLaboral, cliente: () => import("./calculadoras/antiguedad-laboral.cliente") },
+    { definicion: valesDeDespensa, contenido: contenidoValesDeDespensa, cliente: () => import("./calculadoras/vales-de-despensa.cliente") },
   ],
   novedades,
   detectores,
