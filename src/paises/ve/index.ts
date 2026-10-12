@@ -20,6 +20,14 @@ import contenidoPrestacionesSociales from "./contenido/prestaciones-sociales";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoUtilidades from "./contenido/utilidades";
 import contenidoVacaciones from "./contenido/vacaciones";
+import bonoVacacional from "./calculadoras/bono-vacacional";
+import contenidoBonoVacacional from "./contenido/bono-vacacional";
+import vacacionesFraccionadas from "./calculadoras/vacaciones-fraccionadas";
+import contenidoVacacionesFraccionadas from "./contenido/vacaciones-fraccionadas";
+import indemnizacionPorDespido from "./calculadoras/indemnizacion-por-despido";
+import contenidoIndemnizacionPorDespido from "./contenido/indemnizacion-por-despido";
+import salarioIntegral from "./calculadoras/salario-integral";
+import contenidoSalarioIntegral from "./contenido/salario-integral";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -42,6 +50,10 @@ export default definirPais({
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: cestaticket, contenido: contenidoCestaticket, cliente: () => import("./calculadoras/cestaticket.cliente") },
+    { definicion: bonoVacacional, contenido: contenidoBonoVacacional, cliente: () => import("./calculadoras/bono-vacacional.cliente") },
+    { definicion: vacacionesFraccionadas, contenido: contenidoVacacionesFraccionadas, cliente: () => import("./calculadoras/vacaciones-fraccionadas.cliente") },
+    { definicion: indemnizacionPorDespido, contenido: contenidoIndemnizacionPorDespido, cliente: () => import("./calculadoras/indemnizacion-por-despido.cliente") },
+    { definicion: salarioIntegral, contenido: contenidoSalarioIntegral, cliente: () => import("./calculadoras/salario-integral.cliente") },
   ],
   novedades,
   detectores,
