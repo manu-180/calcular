@@ -34,6 +34,7 @@ import contenidoLiteralE from "./contenido/literal-e";
 import contenidoMonotributo from "./contenido/monotributo";
 import contenidoMonotributoSocial from "./contenido/monotributo-social";
 import contenidoPlazoFijo from "./contenido/plazo-fijo";
+import contenidoRenuncia from "./contenido/renuncia";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioVacacional from "./contenido/salario-vacacional";
 import contenidoSeguroDeParo from "./contenido/seguro-de-paro";
@@ -68,6 +69,7 @@ import literalE from "./calculadoras/literal-e";
 import monotributo from "./calculadoras/monotributo";
 import monotributoSocial from "./calculadoras/monotributo-social";
 import plazoFijo from "./calculadoras/plazo-fijo";
+import renuncia from "./calculadoras/renuncia";
 import salarioMinimo from "./calculadoras/salario-minimo";
 import salarioVacacional from "./calculadoras/salario-vacacional";
 import seguroDeParo from "./calculadoras/seguro-de-paro";
@@ -126,6 +128,7 @@ export default definirPais({
     { definicion: literalE, contenido: contenidoLiteralE, cliente: () => import("./calculadoras/literal-e.cliente") },
     { definicion: monotributoSocial, contenido: contenidoMonotributoSocial, cliente: () => import("./calculadoras/monotributo-social.cliente") },
     { definicion: plazoFijo, contenido: contenidoPlazoFijo, cliente: () => import("./calculadoras/plazo-fijo.cliente") },
+    { definicion: renuncia, contenido: contenidoRenuncia, cliente: () => import("./calculadoras/renuncia.cliente") },
     { definicion: subsidioPorEnfermedad, contenido: contenidoSubsidioPorEnfermedad, cliente: () => import("./calculadoras/subsidio-por-enfermedad.cliente") },
     { definicion: trabajoNocturno, contenido: contenidoTrabajoNocturno, cliente: () => import("./calculadoras/trabajo-nocturno.cliente") },
     { definicion: valorUr, contenido: contenidoValorUr, cliente: () => import("./calculadoras/valor-ur.cliente") },
