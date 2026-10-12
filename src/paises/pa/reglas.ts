@@ -1,4 +1,4 @@
-import { ErrorEntrada } from "@/motor/calculo";
+import { enMapa, ErrorEntrada } from "@/motor/calculo";
 import { diasEntre, sumarDias } from "@/motor/vigencia";
 import type { FechaISO } from "@/motor/tipos";
 
@@ -91,3 +91,16 @@ export const SEMANAS_POR_MES = 52 / 12;
 
 // Valor de la hora ordinaria: el salario mensual entre las horas de un mes de jornada completa.
 export const horaDeMensual = (mensual: number, horasSemana: number) => mensual / (horasSemana * SEMANAS_POR_MES);
+
+// Art. 225, acápite A: para el tiempo anterior al 2/4/1972 rige otra escala, que no se combina.
+export const INICIO_ESCALA_B: FechaISO = "1972-04-02";
+
+// Art. 225, acápite B: la escala se aplica en forma combinada, repartiendo el tiempo de servicio
+// entre sus tramos (primer año, segundo año, de dos a diez años y desde los diez).
+export function semanasEscalaB(meses: number, e: Readonly<Record<string, number>>): number {
+  const primerAnio = Math.min(meses, 12) / enMapa(e, "meses-por-semana-primer-anio");
+  const segundoAnio = Math.max(Math.min(meses, 24) - 12, 0) / enMapa(e, "meses-por-semana-segundo-anio");
+  const deDosADiez = (Math.max(Math.min(meses, 120) - 24, 0) / 12) * enMapa(e, "semanas-anios-2-a-10");
+  const desdeDiez = (Math.max(meses - 120, 0) / 12) * enMapa(e, "semanas-desde-anio-11");
+  return Math.max(primerAnio + segundoAnio + deDosADiez + desdeDiez, enMapa(e, "minimo-semanas"));
+}

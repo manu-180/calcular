@@ -68,6 +68,16 @@ import contenidoInteresesPorMoraLaboral from "./contenido/intereses-por-mora-lab
 import contenidoIndemnizacionAntesDe1995 from "./contenido/indemnizacion-antes-de-1995";
 import jubilacion from "./calculadoras/jubilacion";
 import contenidoJubilacion from "./contenido/jubilacion";
+import seguroSocialIndependientes from "./calculadoras/seguro-social-independientes";
+import descuentoDePensionados from "./calculadoras/descuento-de-pensionados";
+import salariosCaidos from "./calculadoras/salarios-caidos";
+import decimoTercerMesProporcional from "./calculadoras/decimo-tercer-mes-proporcional";
+import vacacionesProporcionales from "./calculadoras/vacaciones-proporcionales";
+import contenidoSeguroSocialIndependientes from "./contenido/seguro-social-independientes";
+import contenidoDescuentoDePensionados from "./contenido/descuento-de-pensionados";
+import contenidoSalariosCaidos from "./contenido/salarios-caidos";
+import contenidoDecimoTercerMesProporcional from "./contenido/decimo-tercer-mes-proporcional";
+import contenidoVacacionesProporcionales from "./contenido/vacaciones-proporcionales";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -114,6 +124,11 @@ export default definirPais({
     { definicion: interesesPorMoraLaboral, contenido: contenidoInteresesPorMoraLaboral, cliente: () => import("./calculadoras/intereses-por-mora-laboral.cliente") },
     { definicion: indemnizacionAntesDe1995, contenido: contenidoIndemnizacionAntesDe1995, cliente: () => import("./calculadoras/indemnizacion-antes-de-1995.cliente") },
     { definicion: jubilacion, contenido: contenidoJubilacion, cliente: () => import("./calculadoras/jubilacion.cliente") },
+    { definicion: seguroSocialIndependientes, contenido: contenidoSeguroSocialIndependientes, cliente: () => import("./calculadoras/seguro-social-independientes.cliente") },
+    { definicion: descuentoDePensionados, contenido: contenidoDescuentoDePensionados, cliente: () => import("./calculadoras/descuento-de-pensionados.cliente") },
+    { definicion: salariosCaidos, contenido: contenidoSalariosCaidos, cliente: () => import("./calculadoras/salarios-caidos.cliente") },
+    { definicion: decimoTercerMesProporcional, contenido: contenidoDecimoTercerMesProporcional, cliente: () => import("./calculadoras/decimo-tercer-mes-proporcional.cliente") },
+    { definicion: vacacionesProporcionales, contenido: contenidoVacacionesProporcionales, cliente: () => import("./calculadoras/vacaciones-proporcionales.cliente") },
   ],
   novedades,
   detectores,

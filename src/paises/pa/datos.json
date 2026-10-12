@@ -1760,6 +1760,132 @@
           }
         }
       ]
+    },
+    {
+      "id": "pa.css-independiente",
+      "nombre": "Cuota del trabajador independiente a la Caja de Seguro Social",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ivm": "Invalidez, vejez y muerte (obligatoria)",
+        "enfermedad-maternidad": "Enfermedad y maternidad (voluntaria)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "ivm": 9.36,
+            "enfermedad-maternidad": 8.5
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 3 (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50, leída como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.css-pensionados",
+      "nombre": "Cuota de los pensionados a la Caja de Seguro Social",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": 6.75,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 84 (artículo 101 de la Ley 51 de 2005), numeral 6 (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; el artículo está en la página 50, leída como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.salarios-caidos-meses",
+      "nombre": "Tope de salarios caídos en la sentencia por despido injustificado",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "desde-ley-44": "Trabajadores que entraron desde la Ley 44 de 1995",
+        "antes-ley-44": "Trabajadores que ya trabajaban al entrar en vigencia la Ley 44 de 1995"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": {
+            "desde-ley-44": 3,
+            "antes-ley-44": 5
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 218 (subrogado por el artículo 33 de la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.recargo-no-reintegro",
+      "nombre": "Recargo sobre la indemnización cuando el empleador no reintegra al trabajador",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "desde-ley-44-sin-fondo": "Trabajadores que entraron desde la Ley 44 de 1995, si el empleador no está al día en el fondo de cesantía",
+        "antes-ley-44": "Trabajadores que ya trabajaban al entrar en vigencia la Ley 44 de 1995"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": {
+            "desde-ley-44-sin-fondo": 25,
+            "antes-ley-44": 50
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 219 (subrogado por el artículo 34 de la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.vacaciones-dias-por-dia",
+      "nombre": "Días de trabajo por cada día de vacaciones",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 11,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 54, ordinales 1 y 6",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
     }
   ]
 }
