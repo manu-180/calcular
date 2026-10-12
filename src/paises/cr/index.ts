@@ -24,6 +24,8 @@ import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import contenidoSalarioNeto from "./contenido/salario-neto";
 import contenidoTipoDeCambio from "./contenido/tipo-de-cambio";
 import contenidoVacaciones from "./contenido/vacaciones";
+import cargasSociales from "./calculadoras/cargas-sociales";
+import contenidoCargasSociales from "./contenido/cargas-sociales";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +50,7 @@ export default definirPais({
     { definicion: tipoDeCambio, contenido: contenidoTipoDeCambio, cliente: () => import("./calculadoras/tipo-de-cambio.cliente") },
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
+    { definicion: cargasSociales, contenido: contenidoCargasSociales, cliente: () => import("./calculadoras/cargas-sociales.cliente") },
   ],
   novedades,
   detectores,

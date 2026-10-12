@@ -63,13 +63,7 @@
         {
           "estado": "verificado",
           "desde": "2026-01-01",
-          "valor": {
-            "no-calificado": 12436.41,
-            "semicalificado": 13523.69,
-            "calificado": 13991.86,
-            "especializado": 16244.5,
-            "especializacion-superior": 25209.8
-          },
+          "valor": { "no-calificado": 12436.41, "semicalificado": 13523.69, "calificado": 13991.86, "especializado": 16244.5, "especializacion-superior": 25209.8 },
           "fuente": {
             "organismo": "Poder Ejecutivo y Ministerio de Trabajo y Seguridad Social",
             "titulo": "Decreto Ejecutivo 45303-MTSS, artículo 1, incisos a) y c)",
@@ -290,11 +284,7 @@
       "nombre": "Días de preaviso según el tiempo trabajado",
       "tipo": "mapa",
       "unidad": "dias",
-      "etiquetas": {
-        "3-a-6-meses": "De 3 a 6 meses",
-        "6-a-12-meses": "Más de 6 meses y hasta un año",
-        "mas-de-un-anio": "Más de un año"
-      },
+      "etiquetas": { "3-a-6-meses": "De 3 a 6 meses", "6-a-12-meses": "Más de 6 meses y hasta un año", "mas-de-un-anio": "Más de un año" },
       "tramos": [
         {
           "estado": "verificado",
@@ -429,6 +419,811 @@
             "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
             "tipo": "primaria",
             "verificadoEl": "2026-10-07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.ccss-sem-patrono",
+      "nombre": "Cuota patronal al Seguro de Salud (SEM)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 9.25,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de Salud, artículo 62, inciso 1",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=43463&param2=146812&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.ccss-sem-estado",
+      "nombre": "Cuota del Estado al Seguro de Salud (SEM)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de Salud, artículo 62, inciso 1",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=43463&param2=146812&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.ccss-ivm-patrono",
+      "nombre": "Cuota patronal al Seguro de Invalidez, Vejez y Muerte (IVM)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2029-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2025-12-31",
+          "valor": 5.42,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de IVM, Transitorio XI (sesión 9038 de Junta Directiva), La Gaceta 161, Alcance 191 del 28/8/2019",
+            "url": "https://www.imprentanacional.go.cr/pub/2019/08/28/ALCA191_28_08_2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Tabla en la página 60 del Alcance (imagen)."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2028-12-31",
+          "valor": 5.58,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de IVM, Transitorio XI (sesión 9038 de Junta Directiva), La Gaceta 161, Alcance 191 del 28/8/2019",
+            "url": "https://www.imprentanacional.go.cr/pub/2019/08/28/ALCA191_28_08_2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Escalón del 1/1/2026 al 31/12/2028: patronos 5,58 %, trabajadores 4,33 %, Estado 1,75 %. Páginas 60 y 61 del Alcance."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "valor": 5.75,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de IVM, Transitorio XI (sesión 9038 de Junta Directiva), La Gaceta 161, Alcance 191 del 28/8/2019",
+            "url": "https://www.imprentanacional.go.cr/pub/2019/08/28/ALCA191_28_08_2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Desde el 1/1/2029: patronos 5,75 %, trabajadores 4,50 %, Estado 1,91 %. Página 61 del Alcance."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.banco-popular-patrono",
+      "nombre": "Aporte patronal al Banco Popular",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 4351, Ley Orgánica del Banco Popular y de Desarrollo Comunal, artículo 5, inciso a) (medio por ciento mensual)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=35582&param2=130484&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.asignaciones-familiares",
+      "nombre": "Aporte patronal al Fondo de Desarrollo Social y Asignaciones Familiares (Fodesaf)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 5662, Ley de Desarrollo Social y Asignaciones Familiares, artículo 15, inciso b)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=2687&param2=150444&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Exceptúa, entre otros, a patronos con planilla mensual de hasta un salario base."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.imas",
+      "nombre": "Aporte patronal al Instituto Mixto de Ayuda Social (IMAS)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 4760, Ley de Creación del IMAS, artículo 14, inciso a)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=7060&param2=143291&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.ina",
+      "nombre": "Aporte patronal al Instituto Nacional de Aprendizaje (INA)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 6868, Ley Orgánica del INA, artículo 15, inciso a)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=11208&param2=142854&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Lo pagan los patronos con al menos cinco trabajadores permanentes. Sector agropecuario: 0,50 % con más de diez."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.fcl",
+      "nombre": "Aporte patronal al Fondo de Capitalización Laboral (FCL)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 7983, Ley de Protección al Trabajador, artículo 3 (reformado por la Ley 9906)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=43957&param2=145867&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.fcl-anios-retiro",
+      "nombre": "Años de relación laboral para retirar el FCL sin terminar el contrato",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 7983, Ley de Protección al Trabajador, artículo 6, inciso c)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=43957&param2=145867&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.rop-patrono",
+      "nombre": "Aporte patronal al Régimen Obligatorio de Pensiones Complementarias (ROP)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 7983, Ley de Protección al Trabajador, artículo 13, inciso c)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=43957&param2=145867&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.rop-parte-bp-patrono",
+      "nombre": "Parte del aporte patronal al Banco Popular que va al ROP",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 7983, Ley de Protección al Trabajador, artículo 13, inciso b)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=43957&param2=145867&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El 1 % del trabajador al Banco Popular también va al ROP (artículo 13, inciso a), después de 18 meses en el banco."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.renta-independiente",
+      "nombre": "Impuesto sobre la renta de personas físicas con actividad lucrativa, tramos anuales",
+      "tipo": "escala",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 6244000, "tasa": 0 },
+            { "desde": 6244000, "hasta": 8329000, "tasa": 10 },
+            { "desde": 8329000, "hasta": 10414000, "tasa": 15 },
+            { "desde": 10414000, "hasta": 20872000, "tasa": 20 },
+            { "desde": 20872000, "hasta": null, "tasa": 25 }
+          ],
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo 45333-H, artículo 4 (Ley 7092, artículo 15, inciso c, reformado por la Ley 10667)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105834&param2=148657&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Escala marginal anual: cada tramo paga su tasa sobre el exceso."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.credito-hijo-anual",
+      "nombre": "Crédito fiscal anual por hijo (actividad lucrativa)",
+      "tipo": "numero",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20520,
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo 45333-H, artículo 5, inciso a)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105834&param2=148657&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.credito-conyuge-anual",
+      "nombre": "Crédito fiscal anual por cónyuge (actividad lucrativa)",
+      "tipo": "numero",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 31080,
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo 45333-H, artículo 5, inciso b)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105834&param2=148657&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.renta-pyme",
+      "nombre": "Impuesto sobre las utilidades de personas jurídicas pequeñas, tramos anuales",
+      "tipo": "escala",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 5621000, "tasa": 5 },
+            { "desde": 5621000, "hasta": 8433000, "tasa": 10 },
+            { "desde": 8433000, "hasta": 11243000, "tasa": 15 },
+            { "desde": 11243000, "hasta": null, "tasa": 20 }
+          ],
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo 45333-H, artículo 3 (Ley 7092, artículo 15, inciso b)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105834&param2=148657&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Aplica a personas jurídicas con renta bruta anual de hasta ₡119.174.000."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.renta-pyme-tope-bruto",
+      "nombre": "Renta bruta anual máxima para usar la tarifa de pymes",
+      "tipo": "numero",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 119174000,
+          "fuente": {
+            "organismo": "Poder Ejecutivo y Ministerio de Hacienda",
+            "titulo": "Decreto Ejecutivo 45333-H, artículo 3",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=105834&param2=148657&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.renta-personas-juridicas",
+      "nombre": "Tarifa general del impuesto sobre las utilidades de personas jurídicas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 7092, Ley del Impuesto sobre la Renta, artículo 15, inciso a)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=10969&param2=148972&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.renta-capital",
+      "nombre": "Impuesto sobre los rendimientos de títulos valores (rentas de capital)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "general": "Tarifa general (bancos, Banco Popular, cooperativas)", "vivienda": "Títulos del Sistema Financiero Nacional para la Vivienda" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "general": 15, "vivienda": 7 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 7092, Ley del Impuesto sobre la Renta, artículo 31 ter",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=10969&param2=148972&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.bienes-inmuebles",
+      "nombre": "Tarifa del impuesto sobre bienes inmuebles",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 7509, Ley de Impuesto sobre Bienes Inmuebles, artículo 23",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=26598&param2=148757&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.embargo-proporciones",
+      "nombre": "Proporción embargable del salario",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "hasta-tres-minimos": "Porción hasta tres veces el mínimo", "resto": "Porción que excede tres veces el mínimo", "pension-alimentaria": "Pensión alimentaria" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "hasta-tres-minimos": 12.5, "resto": 25, "pension-alimentaria": 50 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 172",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Una octava parte de la porción que llega hasta tres veces el mínimo inembargable, una cuarta del resto y hasta la mitad por pensión alimentaria."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.embargo-multiplo",
+      "nombre": "Veces el mínimo inembargable hasta donde se embarga una octava parte",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 172",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.embargo-jornadas-mes",
+      "nombre": "Jornadas por las que se multiplica un mínimo diario para el embargo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 172",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.feriado-factor-trabajado",
+      "nombre": "Pago de un feriado trabajado (veces el salario diario)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Seguridad Social",
+            "titulo": "Carta MTSS-DAJ-AER-1076-2025, aplicación de feriados del año 2026 (Código de Trabajo, artículos 148, 149 y 152)",
+            "url": "https://www.mtss.go.cr/temas-laborales/feriados/feriados_calendario_2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Con pago mensual, quincenal o semanal en comercio el feriado ya está en el salario: se suma un día sencillo para completar el pago doble."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.feriado-factor-horas-extra",
+      "nombre": "Pago de cada hora extra en un feriado (veces la hora ordinaria)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministerio de Trabajo y Seguridad Social",
+            "titulo": "Carta MTSS-DAJ-AER-1076-2025, aplicación de feriados del año 2026",
+            "url": "https://www.mtss.go.cr/temas-laborales/feriados/feriados_calendario_2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Tiempo y medio doble, o sea triple. En feriados de pago no obligatorio con pago semanal no comercial, tiempo y medio."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.maternidad-meses",
+      "nombre": "Licencia por maternidad",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": { "antes": "Antes del parto", "despues": "Después del parto" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "antes": 1, "despues": 3 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 95",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.maternidad-parte-ccss",
+      "nombre": "Parte de la licencia por maternidad que paga la CCSS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 95",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La otra mitad la paga el patrono. El monto total equivale al salario."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.paternidad-dias-semana",
+      "nombre": "Días de licencia de paternidad por semana",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 95, inciso b)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.paternidad-semanas",
+      "nombre": "Semanas con licencia de paternidad desde el nacimiento",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 95, inciso b)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.subsidio-veces-aporte",
+      "nombre": "Veces el aporte total al Seguro de Salud que paga el subsidio por enfermedad",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de Salud, artículos 35 y 36",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=43463&param2=146812&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El subsidio es de hasta cuatro veces el aporte total al Seguro de Salud (trabajador, patrono y Estado) y se paga desde el cuarto día."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.subsidio-dia-inicio",
+      "nombre": "Día de incapacidad desde el que paga la CCSS",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Caja Costarricense de Seguro Social",
+            "titulo": "Reglamento del Seguro de Salud, artículos 35 y 36",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=43463&param2=146812&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "El subsidio es de hasta cuatro veces el aporte total al Seguro de Salud (trabajador, patrono y Estado) y se paga desde el cuarto día."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.riesgos-subsidio-inicial",
+      "nombre": "Subsidio por riesgo del trabajo en los primeros días",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 236",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.riesgos-dias-iniciales",
+      "nombre": "Días de incapacidad con el subsidio inicial por riesgo del trabajo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 236",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.vacaciones-domestico",
+      "nombre": "Días de vacaciones al año en trabajo doméstico",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 105, inciso d)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.periodo-prueba-meses",
+      "nombre": "Meses iniciales sin preaviso ni cesantía",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículos 28 y 29 (trabajo doméstico: artículo 102)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.salario-escolar",
+      "nombre": "Porcentaje del salario escolar en el sector privado",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "minimo": "Mínimo", "maximo": "Máximo" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "minimo": 4.16, "maximo": 8.33 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Ley 8682, Promoción del Salario Escolar en el Sector Privado, artículo 2",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=64513&param2=74887&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.contrato-plazo-fijo",
+      "nombre": "Indemnización por terminar antes un contrato a plazo fijo",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": { "dias-trabajados-por-dia": "Días trabajados por cada día de salario", "minimo": "Mínimo", "minimo-seis-meses": "Mínimo en contratos de seis meses o más" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "dias-trabajados-por-dia": 7, "minimo": 3, "minimo-seis-meses": 22 },
+          "fuente": {
+            "organismo": "Asamblea Legislativa",
+            "titulo": "Código de Trabajo (Ley 2), artículo 31 (reformado por la Ley 7983)",
+            "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=8045&param2=151754&param3=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Un día de salario por cada siete días trabajados, con un mínimo de tres; si el contrato es de seis meses o más, mínimo veintidós."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cr.salario-base",
+      "nombre": "Salario base (Ley 7337) para multas y otros montos",
+      "tipo": "numero",
+      "unidad": "CRC",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 462200,
+          "motivo": "Solo lo vimos en prensa (Observador) y en una alerta de EY. Falta leer el acuerdo del Consejo Superior del Poder Judicial o su publicación en el Boletín Judicial.",
+          "fuente": {
+            "organismo": "EY Centroamérica",
+            "titulo": "Costa Rica: salario base 2026 se mantiene",
+            "url": "https://www.ey.com/es_ce/technical/tax/tax-alerts/costa-rica-salario-base-2026-se-mantiene-el-monto-de-referencia-para-multas-por-infracciones-tributarias",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-12"
           }
         }
       ]
