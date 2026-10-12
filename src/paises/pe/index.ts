@@ -60,6 +60,16 @@ import preavisoDeRenuncia from "./calculadoras/preaviso-de-renuncia";
 import contenidoPreavisoDeRenuncia from "./contenido/preaviso-de-renuncia";
 import retiroDeCts from "./calculadoras/retiro-de-cts";
 import contenidoRetiroDeCts from "./contenido/retiro-de-cts";
+import itf from "./calculadoras/itf";
+import contenidoItf from "./contenido/itf";
+import rentaDePrimeraCategoria from "./calculadoras/renta-de-primera-categoria";
+import contenidoRentaDePrimeraCategoria from "./contenido/renta-de-primera-categoria";
+import impuestoVentaDeInmueble from "./calculadoras/impuesto-venta-de-inmueble";
+import contenidoImpuestoVentaDeInmueble from "./contenido/impuesto-venta-de-inmueble";
+import impuestoALosDividendos from "./calculadoras/impuesto-a-los-dividendos";
+import contenidoImpuestoALosDividendos from "./contenido/impuesto-a-los-dividendos";
+import interesesMoratoriosSunat from "./calculadoras/intereses-moratorios-sunat";
+import contenidoInteresesMoratoriosSunat from "./contenido/intereses-moratorios-sunat";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -102,6 +112,11 @@ export default definirPais({
     { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
     { definicion: preavisoDeRenuncia, contenido: contenidoPreavisoDeRenuncia, cliente: () => import("./calculadoras/preaviso-de-renuncia.cliente") },
     { definicion: retiroDeCts, contenido: contenidoRetiroDeCts, cliente: () => import("./calculadoras/retiro-de-cts.cliente") },
+    { definicion: itf, contenido: contenidoItf, cliente: () => import("./calculadoras/itf.cliente") },
+    { definicion: rentaDePrimeraCategoria, contenido: contenidoRentaDePrimeraCategoria, cliente: () => import("./calculadoras/renta-de-primera-categoria.cliente") },
+    { definicion: impuestoVentaDeInmueble, contenido: contenidoImpuestoVentaDeInmueble, cliente: () => import("./calculadoras/impuesto-venta-de-inmueble.cliente") },
+    { definicion: impuestoALosDividendos, contenido: contenidoImpuestoALosDividendos, cliente: () => import("./calculadoras/impuesto-a-los-dividendos.cliente") },
+    { definicion: interesesMoratoriosSunat, contenido: contenidoInteresesMoratoriosSunat, cliente: () => import("./calculadoras/intereses-moratorios-sunat.cliente") },
   ],
   novedades,
   detectores,
