@@ -14,7 +14,18 @@
         "co.salario-neto",
         "co.auxilio-de-transporte",
         "co.indemnizacion-por-despido",
-        "co.retencion-en-la-fuente"
+        "co.retencion-en-la-fuente",
+        "co.salario-integral",
+        "co.aportes-seguridad-social",
+        "co.seguridad-social-independientes",
+        "co.licencia-de-maternidad",
+        "co.licencia-de-paternidad",
+        "co.incapacidad",
+        "co.contrato-de-aprendizaje",
+        "co.embargo-de-salario",
+        "co.indemnizacion-moratoria",
+        "co.pension-de-vejez",
+        "co.salario-minimo-historico"
       ],
       "titulo": "El decreto del salario mínimo sigue en juicio",
       "texto": "El Consejo de Estado suspendió el Decreto 1469 de 2025 en febrero y levantó la suspensión en julio de 2026. El valor nunca cambió, pero el juicio de fondo sigue. Si el fallo cambia el salario mínimo, actualizamos estos cálculos.",
@@ -32,7 +43,15 @@
       "nivel": "cautela",
       "desde": "2026-08-25",
       "hasta": "2027-03-31",
-      "aplicaA": ["co.salario-neto", "co.retencion-en-la-fuente"],
+      "aplicaA": [
+        "co.salario-neto",
+        "co.retencion-en-la-fuente",
+        "co.pension-de-vejez",
+        "co.aportes-seguridad-social",
+        "co.seguridad-social-independientes",
+        "co.salario-integral",
+        "co.retencion-honorarios"
+      ],
       "titulo": "La reforma pensional empieza en abril de 2027",
       "texto": "La Corte Constitucional fijó el 1 de abril de 2027 como fecha de entrada en vigor de la reforma pensional (Ley 2381 de 2024). Ese día cambian los aportes al Fondo de Solidaridad Pensional. Hasta entonces se calcula con la regla actual, que es la que usa esta calculadora.",
       "fuente": {
@@ -49,7 +68,9 @@
       "nivel": "info",
       "desde": "2026-07-01",
       "hasta": "2027-06-30",
-      "aplicaA": ["co.horas-extras"],
+      "aplicaA": [
+        "co.horas-extras"
+      ],
       "titulo": "El recargo dominical sube por etapas",
       "texto": "Desde el 1 de julio de 2026 el recargo por trabajar en domingo o festivo es del 90 %. Desde el 1 de julio de 2027 es del 100 %. La empresa puede pagar el 100 % desde antes si quiere.",
       "fuente": {
@@ -65,7 +86,19 @@
       "nivel": "info",
       "desde": "2026-10-07",
       "hasta": "2026-12-31",
-      "aplicaA": ["co.retencion-en-la-fuente", "co.iva", "co.uvt"],
+      "aplicaA": [
+        "co.retencion-en-la-fuente",
+        "co.iva",
+        "co.uvt",
+        "co.impuesto-de-renta",
+        "co.debo-declarar-renta",
+        "co.retencion-honorarios",
+        "co.4x1000",
+        "co.ganancia-ocasional",
+        "co.impuesto-al-consumo",
+        "co.cdt",
+        "co.sancion-extemporaneidad"
+      ],
       "titulo": "Hay un proyecto de reforma tributaria",
       "texto": "En julio de 2026 se radicó en el Congreso un proyecto de reforma tributaria. Mientras no sea ley, rigen las tarifas actuales del Estatuto Tributario. Si se aprueba, actualizamos la calculadora.",
       "fuente": {

@@ -89,3 +89,16 @@ responde, pero la receta exige https), Ley 820 en Colpensiones y normograma DIAN
   un proyecto para 12 semanas. Hoy rigen 2.
 - Incapacidad: la Corte condicionó el art. 227 a que el auxilio no sea menor al salario mínimo
   (Sentencia C-543 de 2007, en las notas de vigencia del CST). La calculadora aplica ese piso.
+
+## Detectores
+
+No hay series nuevas: la única serie que suman las calculadoras nuevas es el IPC (incremento del
+arriendo), que ya tiene detector (`co.ipc-banrep`). Para la UVT anual se buscó una fuente legible
+por máquina: el normograma DIAN carga sus listados con JavaScript y el buscador de Función Pública
+no indexa bien las resoluciones DIAN. Queda como evento anual con revisión manual (diciembre).
+
+## Pedido al motor
+
+- Un requisito «historia» (todos los tramos verificados de un dato) evitaría que las calculadoras
+  por año (`salario-minimo-historico`, UVT por año gravable en renta) importen `datos.json`
+  directamente para leer tramos pasados.
