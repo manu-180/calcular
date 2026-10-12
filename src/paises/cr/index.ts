@@ -32,6 +32,12 @@ import renuncia from "./calculadoras/renuncia";
 import contenidoRenuncia from "./contenido/renuncia";
 import feriados from "./calculadoras/feriados";
 import contenidoFeriados from "./contenido/feriados";
+import incapacidad from "./calculadoras/incapacidad";
+import contenidoIncapacidad from "./contenido/incapacidad";
+import riesgosDelTrabajo from "./calculadoras/riesgos-del-trabajo";
+import contenidoRiesgosDelTrabajo from "./contenido/riesgos-del-trabajo";
+import embargoDeSalario from "./calculadoras/embargo-de-salario";
+import contenidoEmbargoDeSalario from "./contenido/embargo-de-salario";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +66,9 @@ export default definirPais({
     { definicion: costoDeUnEmpleado, contenido: contenidoCostoDeUnEmpleado, cliente: () => import("./calculadoras/costo-de-un-empleado.cliente") },
     { definicion: renuncia, contenido: contenidoRenuncia, cliente: () => import("./calculadoras/renuncia.cliente") },
     { definicion: feriados, contenido: contenidoFeriados, cliente: () => import("./calculadoras/feriados.cliente") },
+    { definicion: incapacidad, contenido: contenidoIncapacidad, cliente: () => import("./calculadoras/incapacidad.cliente") },
+    { definicion: riesgosDelTrabajo, contenido: contenidoRiesgosDelTrabajo, cliente: () => import("./calculadoras/riesgos-del-trabajo.cliente") },
+    { definicion: embargoDeSalario, contenido: contenidoEmbargoDeSalario, cliente: () => import("./calculadoras/embargo-de-salario.cliente") },
   ],
   novedades,
   detectores,
