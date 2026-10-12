@@ -26,6 +26,12 @@ import contenidoTipoDeCambio from "./contenido/tipo-de-cambio";
 import contenidoVacaciones from "./contenido/vacaciones";
 import cargasSociales from "./calculadoras/cargas-sociales";
 import contenidoCargasSociales from "./contenido/cargas-sociales";
+import costoDeUnEmpleado from "./calculadoras/costo-de-un-empleado";
+import contenidoCostoDeUnEmpleado from "./contenido/costo-de-un-empleado";
+import renuncia from "./calculadoras/renuncia";
+import contenidoRenuncia from "./contenido/renuncia";
+import feriados from "./calculadoras/feriados";
+import contenidoFeriados from "./contenido/feriados";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -51,6 +57,9 @@ export default definirPais({
     { definicion: iva, contenido: contenidoIva, cliente: () => import("./calculadoras/iva.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: cargasSociales, contenido: contenidoCargasSociales, cliente: () => import("./calculadoras/cargas-sociales.cliente") },
+    { definicion: costoDeUnEmpleado, contenido: contenidoCostoDeUnEmpleado, cliente: () => import("./calculadoras/costo-de-un-empleado.cliente") },
+    { definicion: renuncia, contenido: contenidoRenuncia, cliente: () => import("./calculadoras/renuncia.cliente") },
+    { definicion: feriados, contenido: contenidoFeriados, cliente: () => import("./calculadoras/feriados.cliente") },
   ],
   novedades,
   detectores,
