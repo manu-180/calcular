@@ -60,6 +60,14 @@ import salarioEscolar from "./calculadoras/salario-escolar";
 import contenidoSalarioEscolar from "./contenido/salario-escolar";
 import periodoDePrueba from "./calculadoras/periodo-de-prueba";
 import contenidoPeriodoDePrueba from "./contenido/periodo-de-prueba";
+import muerteDelTrabajador from "./calculadoras/muerte-del-trabajador";
+import contenidoMuerteDelTrabajador from "./contenido/muerte-del-trabajador";
+import cesantiaPorPension from "./calculadoras/cesantia-por-pension";
+import contenidoCesantiaPorPension from "./contenido/cesantia-por-pension";
+import contratoAPlazoFijo from "./calculadoras/contrato-a-plazo-fijo";
+import contenidoContratoAPlazoFijo from "./contenido/contrato-a-plazo-fijo";
+import impuestoBienesInmuebles from "./calculadoras/impuesto-bienes-inmuebles";
+import contenidoImpuestoBienesInmuebles from "./contenido/impuesto-bienes-inmuebles";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -102,6 +110,10 @@ export default definirPais({
     { definicion: rop, contenido: contenidoRop, cliente: () => import("./calculadoras/rop.cliente") },
     { definicion: salarioEscolar, contenido: contenidoSalarioEscolar, cliente: () => import("./calculadoras/salario-escolar.cliente") },
     { definicion: periodoDePrueba, contenido: contenidoPeriodoDePrueba, cliente: () => import("./calculadoras/periodo-de-prueba.cliente") },
+    { definicion: muerteDelTrabajador, contenido: contenidoMuerteDelTrabajador, cliente: () => import("./calculadoras/muerte-del-trabajador.cliente") },
+    { definicion: cesantiaPorPension, contenido: contenidoCesantiaPorPension, cliente: () => import("./calculadoras/cesantia-por-pension.cliente") },
+    { definicion: contratoAPlazoFijo, contenido: contenidoContratoAPlazoFijo, cliente: () => import("./calculadoras/contrato-a-plazo-fijo.cliente") },
+    { definicion: impuestoBienesInmuebles, contenido: contenidoImpuestoBienesInmuebles, cliente: () => import("./calculadoras/impuesto-bienes-inmuebles.cliente") },
   ],
   novedades,
   detectores,
