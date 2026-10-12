@@ -32,6 +32,8 @@ import contenidoUma from "./contenido/uma";
 import contenidoVacaciones from "./contenido/vacaciones";
 import trabajadoraDelHogar from "./calculadoras/trabajadora-del-hogar";
 import contenidoTrabajadoraDelHogar from "./contenido/trabajadora-del-hogar";
+import cuotasImss from "./calculadoras/cuotas-imss";
+import contenidoCuotasImss from "./contenido/cuotas-imss";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +62,7 @@ export default definirPais({
     { definicion: udis, contenido: contenidoUdis, cliente: () => import("./calculadoras/udis.cliente") },
     { definicion: inflacion, contenido: contenidoInflacion, cliente: () => import("./calculadoras/inflacion.cliente") },
     { definicion: trabajadoraDelHogar, contenido: contenidoTrabajadoraDelHogar, cliente: () => import("./calculadoras/trabajadora-del-hogar.cliente") },
+    { definicion: cuotasImss, contenido: contenidoCuotasImss, cliente: () => import("./calculadoras/cuotas-imss.cliente") },
   ],
   novedades,
   detectores,

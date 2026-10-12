@@ -186,7 +186,7 @@
               "desde": 0.01,
               "hasta": 194.46,
               "tasa": 1.92,
-              "cuotaFija": 0.0
+              "cuotaFija": 0
             },
             {
               "desde": 194.47,
@@ -203,7 +203,7 @@
             {
               "desde": 2900.88,
               "hasta": 3372.11,
-              "tasa": 16.0,
+              "tasa": 16,
               "cuotaFija": 232.96
             },
             {
@@ -227,25 +227,25 @@
             {
               "desde": 12834.09,
               "hasta": 24502.45,
-              "tasa": 30.0,
+              "tasa": 30,
               "cuotaFija": 2407.86
             },
             {
               "desde": 24502.46,
               "hasta": 32669.91,
-              "tasa": 32.0,
+              "tasa": 32,
               "cuotaFija": 5908.35
             },
             {
               "desde": 32669.92,
               "hasta": 98009.66,
-              "tasa": 34.0,
+              "tasa": 34,
               "cuotaFija": 8521.94
             },
             {
               "desde": 98009.67,
               "hasta": null,
-              "tasa": 35.0,
+              "tasa": 35,
               "cuotaFija": 30737.49
             }
           ],
@@ -275,7 +275,7 @@
               "desde": 0.01,
               "hasta": 277.8,
               "tasa": 1.92,
-              "cuotaFija": 0.0
+              "cuotaFija": 0
             },
             {
               "desde": 277.81,
@@ -292,7 +292,7 @@
             {
               "desde": 4144.11,
               "hasta": 4817.3,
-              "tasa": 16.0,
+              "tasa": 16,
               "cuotaFija": 332.8
             },
             {
@@ -316,25 +316,25 @@
             {
               "desde": 18334.41,
               "hasta": 35003.5,
-              "tasa": 30.0,
+              "tasa": 30,
               "cuotaFija": 3439.8
             },
             {
               "desde": 35003.51,
               "hasta": 46671.3,
-              "tasa": 32.0,
+              "tasa": 32,
               "cuotaFija": 8440.5
             },
             {
               "desde": 46671.31,
               "hasta": 140013.8,
-              "tasa": 34.0,
+              "tasa": 34,
               "cuotaFija": 12174.2
             },
             {
               "desde": 140013.81,
               "hasta": null,
-              "tasa": 35.0,
+              "tasa": 35,
               "cuotaFija": 43910.7
             }
           ],
@@ -364,7 +364,7 @@
               "desde": 0.01,
               "hasta": 416.7,
               "tasa": 1.92,
-              "cuotaFija": 0.0
+              "cuotaFija": 0
             },
             {
               "desde": 416.71,
@@ -381,7 +381,7 @@
             {
               "desde": 6216.16,
               "hasta": 7225.95,
-              "tasa": 16.0,
+              "tasa": 16,
               "cuotaFija": 499.2
             },
             {
@@ -405,25 +405,25 @@
             {
               "desde": 27501.61,
               "hasta": 52505.25,
-              "tasa": 30.0,
+              "tasa": 30,
               "cuotaFija": 5159.7
             },
             {
               "desde": 52505.26,
               "hasta": 70006.95,
-              "tasa": 32.0,
+              "tasa": 32,
               "cuotaFija": 12660.75
             },
             {
               "desde": 70006.96,
               "hasta": 210020.7,
-              "tasa": 34.0,
+              "tasa": 34,
               "cuotaFija": 18261.3
             },
             {
               "desde": 210020.71,
               "hasta": null,
-              "tasa": 35.0,
+              "tasa": 35,
               "cuotaFija": 65866.05
             }
           ],
@@ -453,7 +453,7 @@
               "desde": 0.01,
               "hasta": 844.59,
               "tasa": 1.92,
-              "cuotaFija": 0.0
+              "cuotaFija": 0
             },
             {
               "desde": 844.6,
@@ -470,7 +470,7 @@
             {
               "desde": 12598.03,
               "hasta": 14644.64,
-              "tasa": 16.0,
+              "tasa": 16,
               "cuotaFija": 1011.68
             },
             {
@@ -494,25 +494,25 @@
             {
               "desde": 55736.69,
               "hasta": 106410.5,
-              "tasa": 30.0,
+              "tasa": 30,
               "cuotaFija": 10457.09
             },
             {
               "desde": 106410.51,
               "hasta": 141880.66,
-              "tasa": 32.0,
+              "tasa": 32,
               "cuotaFija": 25659.23
             },
             {
               "desde": 141880.67,
               "hasta": 425641.99,
-              "tasa": 34.0,
+              "tasa": 34,
               "cuotaFija": 37009.69
             },
             {
-              "desde": 425642.0,
+              "desde": 425642,
               "hasta": null,
-              "tasa": 35.0,
+              "tasa": 35,
               "cuotaFija": 133488.54
             }
           ],
@@ -1206,7 +1206,7 @@
             {
               "desde": 0,
               "hasta": 25000,
-              "tasa": 1.0
+              "tasa": 1
             },
             {
               "desde": 25000.01,
@@ -1221,7 +1221,7 @@
             {
               "desde": 83333.34,
               "hasta": 208333.33,
-              "tasa": 2.0
+              "tasa": 2
             },
             {
               "desde": 208333.34,
@@ -1266,7 +1266,10 @@
       "nombre": "Salario mínimo profesional de las personas trabajadoras del hogar (diario)",
       "tipo": "numero",
       "unidad": "MXN",
-      "regiones": ["general", "frontera-norte"],
+      "regiones": [
+        "general",
+        "frontera-norte"
+      ],
       "proximaRevision": "2027-01-01",
       "tramos": [
         {
@@ -1297,6 +1300,1281 @@
             "verificadoEl": "2026-10-08",
             "nota": "En la frontera norte el profesional sería menor que el general, así que rige el general (resolutivo sexto)."
           }
+        }
+      ]
+    },
+    {
+      "id": "mx.prima-dominical",
+      "nombre": "Prima dominical mínima",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1970-05-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 71",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.exencion-prima-dominical",
+      "nombre": "Prima dominical exenta de ISR por cada domingo",
+      "tipo": "numero",
+      "unidad": "UMA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 93, fracción XIV",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente compilado por el Orden Jurídico Nacional, última reforma del 1/04/2024 (el paquete fiscal 2026 no reformó la LISR). Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.pago-descanso-trabajado",
+      "nombre": "Pago adicional por trabajar el día de descanso o un día festivo",
+      "tipo": "numero",
+      "unidad": "factor",
+      "nota": "Salario doble además del salario del día de descanso.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1970-05-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículos 73 y 75",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.aportacion-vivienda",
+      "nombre": "Aportación patronal al Infonavit",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1982-01-07",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley Federal del Trabajo, artículo 136",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo125151.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.cuotas-imss-patron",
+      "nombre": "Cuotas patronales del IMSS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "cuota-fija": "Enfermedades y maternidad, cuota fija (sobre la UMA)",
+        "excedente-eym": "Enfermedades y maternidad, excedente de 3 UMA",
+        "prestaciones-dinero": "Enfermedades y maternidad, prestaciones en dinero",
+        "gastos-medicos-pensionados": "Gastos médicos de pensionados",
+        "invalidez-vida": "Invalidez y vida",
+        "guarderias": "Guarderías y prestaciones sociales",
+        "retiro": "Retiro"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-07-01",
+          "valor": {
+            "cuota-fija": 20.4,
+            "excedente-eym": 1.1,
+            "prestaciones-dinero": 0.7,
+            "gastos-medicos-pensionados": 1.05,
+            "invalidez-vida": 1.75,
+            "guarderias": 1,
+            "retiro": 2
+          },
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículos 25, 106, 107, 147, 168 fracción I y 211",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026). La cuota fija es el 13.9 % del artículo 106, fracción I, más 0.65 puntos por año de 1998 a 2007 (20.4 %); el excedente patronal es el 6 % de la fracción II menos 0.49 puntos por año en el mismo plazo (1.1 %), según el transitorio décimo noveno de la ley de 1995. El 0.70 % es el 70 % de la cuota del 1 % del artículo 107. Las referencias al salario mínimo como unidad de medida se leen como UMA desde la reforma constitucional del DOF 27/01/2016 (transitorio tercero)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.prima-riesgo-trabajo",
+      "nombre": "Prima media del seguro de riesgos de trabajo por clase",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "clase-i": "Clase I (oficinas, comercio y servicios de bajo riesgo)",
+        "clase-ii": "Clase II (riesgo bajo)",
+        "clase-iii": "Clase III (riesgo medio)",
+        "clase-iv": "Clase IV (riesgo alto)",
+        "clase-v": "Clase V (riesgo máximo)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": {
+            "clase-i": 0.54355,
+            "clase-ii": 1.13065,
+            "clase-iii": 2.5984,
+            "clase-iv": 4.65325,
+            "clase-v": 7.58875
+          },
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículo 73",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.prima-riesgo-minima",
+      "nombre": "Prima mínima de riesgos de trabajo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículo 74",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.prima-riesgo-maxima",
+      "nombre": "Prima máxima de riesgos de trabajo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículo 74",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.subsidio-incapacidad",
+      "nombre": "Subsidio por incapacidad del IMSS (porcentaje del salario base de cotización)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "enfermedad-general": "Enfermedad general",
+        "riesgo-trabajo": "Accidente o enfermedad de trabajo",
+        "maternidad": "Maternidad"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-07-01",
+          "valor": {
+            "enfermedad-general": 60,
+            "riesgo-trabajo": 100,
+            "maternidad": 100
+          },
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículos 58, 98 y 101",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.dias-espera-enfermedad",
+      "nombre": "Días de incapacidad por enfermedad general que no paga el IMSS",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "El subsidio se paga desde el cuarto día.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-07-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículo 96",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.dias-maternidad",
+      "nombre": "Días de incapacidad por maternidad",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "42 antes y 42 después del parto.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-07-01",
+          "valor": 84,
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículo 101",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.retencion-isr-honorarios",
+      "nombre": "Retención de ISR por honorarios pagados por personas morales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 106, último párrafo",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente compilado por el Orden Jurídico Nacional, última reforma del 1/04/2024 (el paquete fiscal 2026 no reformó la LISR)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.retencion-isr-arrendamiento",
+      "nombre": "Retención de ISR por rentas pagadas por personas morales",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 116",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente compilado por el Orden Jurídico Nacional, última reforma del 1/04/2024 (el paquete fiscal 2026 no reformó la LISR)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.retencion-isr-resico",
+      "nombre": "Retención de ISR a personas físicas del RESICO",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 1.25,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 113-J",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente compilado por el Orden Jurídico Nacional, última reforma del 1/04/2024 (el paquete fiscal 2026 no reformó la LISR)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.deduccion-ciega-arrendamiento",
+      "nombre": "Deducción opcional (ciega) por arrendamiento",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 115",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente compilado por el Orden Jurídico Nacional, última reforma del 1/04/2024 (el paquete fiscal 2026 no reformó la LISR)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tope-deducciones-uma",
+      "nombre": "Tope de deducciones personales en UMA anuales",
+      "tipo": "numero",
+      "unidad": "UMA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-28",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 151, último párrafo",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente compilado por el Orden Jurídico Nacional, última reforma del 1/04/2024 (el paquete fiscal 2026 no reformó la LISR)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tope-deducciones-porcentaje",
+      "nombre": "Tope de deducciones personales como porcentaje del ingreso",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Ley del Impuesto sobre la Renta, artículo 151, último párrafo",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo25.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente compilado por el Orden Jurídico Nacional, última reforma del 1/04/2024 (el paquete fiscal 2026 no reformó la LISR)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.retencion-iva-fraccion",
+      "nombre": "Parte del IVA que retiene una persona moral a personas físicas (honorarios y rentas)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "nota": "Dos terceras partes del IVA trasladado.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-12-05",
+          "valor": 0.6666666667,
+          "fuente": {
+            "organismo": "Secretaría de Gobernación (Orden Jurídico Nacional)",
+            "titulo": "Reglamento de la Ley del Impuesto al Valor Agregado, artículo 3, fracción I",
+            "url": "https://www.ordenjuridico.gob.mx/Documentos/Federal/html/wo88442.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Dos terceras partes del impuesto trasladado."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.retencion-isr-intereses",
+      "nombre": "Tasa anual de retención de ISR sobre el capital que genera intereses",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "hasta": "2026-12-31",
+          "desde": "2026-01-01",
+          "valor": 0.9,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Ley de Ingresos de la Federación para 2026, artículo 24",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5772357&fecha=07/11/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tarifa-isr-anual",
+      "nombre": "Tarifa anual del ISR de personas físicas",
+      "tipo": "escala",
+      "unidad": "MXN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "hasta": "2025-12-31",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 8952.49,
+              "tasa": 1.92,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 8952.5,
+              "hasta": 75984.55,
+              "tasa": 6.4,
+              "cuotaFija": 171.88
+            },
+            {
+              "desde": 75984.56,
+              "hasta": 133536.07,
+              "tasa": 10.88,
+              "cuotaFija": 4461.94
+            },
+            {
+              "desde": 133536.08,
+              "hasta": 155229.8,
+              "tasa": 16,
+              "cuotaFija": 10723.55
+            },
+            {
+              "desde": 155229.81,
+              "hasta": 185852.57,
+              "tasa": 17.92,
+              "cuotaFija": 14194.54
+            },
+            {
+              "desde": 185852.58,
+              "hasta": 374837.88,
+              "tasa": 21.36,
+              "cuotaFija": 19682.13
+            },
+            {
+              "desde": 374837.89,
+              "hasta": 590795.99,
+              "tasa": 23.52,
+              "cuotaFija": 60049.4
+            },
+            {
+              "desde": 590796,
+              "hasta": 1127926.84,
+              "tasa": 30,
+              "cuotaFija": 110842.74
+            },
+            {
+              "desde": 1127926.85,
+              "hasta": 1503902.46,
+              "tasa": 32,
+              "cuotaFija": 271981.99
+            },
+            {
+              "desde": 1503902.47,
+              "hasta": 4511707.37,
+              "tasa": 34,
+              "cuotaFija": 392294.17
+            },
+            {
+              "desde": 4511707.38,
+              "hasta": null,
+              "tasa": 35,
+              "cuotaFija": 1414947.85
+            }
+          ],
+          "fuente": {
+            "organismo": "SAT en el DOF",
+            "titulo": "Anexo 8 de la Resolución Miscelánea Fiscal para 2026, tarifas de los artículos 97 y 152 de la LISR",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777219&fecha=28/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "hasta": "2026-12-31",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0.01,
+              "hasta": 10135.11,
+              "tasa": 1.92,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 10135.12,
+              "hasta": 86022.11,
+              "tasa": 6.4,
+              "cuotaFija": 194.59
+            },
+            {
+              "desde": 86022.12,
+              "hasta": 151176.19,
+              "tasa": 10.88,
+              "cuotaFija": 5051.37
+            },
+            {
+              "desde": 151176.2,
+              "hasta": 175735.66,
+              "tasa": 16,
+              "cuotaFija": 12140.13
+            },
+            {
+              "desde": 175735.67,
+              "hasta": 210403.69,
+              "tasa": 17.92,
+              "cuotaFija": 16069.64
+            },
+            {
+              "desde": 210403.7,
+              "hasta": 424353.97,
+              "tasa": 21.36,
+              "cuotaFija": 22282.14
+            },
+            {
+              "desde": 424353.98,
+              "hasta": 668840.14,
+              "tasa": 23.52,
+              "cuotaFija": 67981.92
+            },
+            {
+              "desde": 668840.15,
+              "hasta": 1276925.98,
+              "tasa": 30,
+              "cuotaFija": 125485.07
+            },
+            {
+              "desde": 1276925.99,
+              "hasta": 1702567.97,
+              "tasa": 32,
+              "cuotaFija": 307910.81
+            },
+            {
+              "desde": 1702567.98,
+              "hasta": 5107703.92,
+              "tasa": 34,
+              "cuotaFija": 444116.23
+            },
+            {
+              "desde": 5107703.93,
+              "hasta": null,
+              "tasa": 35,
+              "cuotaFija": 1601862.46
+            }
+          ],
+          "fuente": {
+            "organismo": "SAT en el DOF",
+            "titulo": "Anexo 8 de la Resolución Miscelánea Fiscal para 2026, tarifas de los artículos 97 y 152 de la LISR",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5777219&fecha=28/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.cesantia-vejez-patron",
+      "nombre": "Cuota patronal de cesantía en edad avanzada y vejez según el salario base de cotización (en UMA)",
+      "tipo": "escala",
+      "unidad": "UMA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "hasta": "2025-12-31",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1.5,
+              "tasa": 3.544
+            },
+            {
+              "desde": 1.51,
+              "hasta": 2,
+              "tasa": 4.426
+            },
+            {
+              "desde": 2.01,
+              "hasta": 2.5,
+              "tasa": 4.954
+            },
+            {
+              "desde": 2.51,
+              "hasta": 3,
+              "tasa": 5.307
+            },
+            {
+              "desde": 3.01,
+              "hasta": 3.5,
+              "tasa": 5.559
+            },
+            {
+              "desde": 3.51,
+              "hasta": 4,
+              "tasa": 5.747
+            },
+            {
+              "desde": 4.01,
+              "hasta": null,
+              "tasa": 6.422
+            }
+          ],
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto de reforma a la Ley del Seguro Social del 16/12/2020, transitorio segundo (tabla gradual 2023 a 2030)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5607729&fecha=16/12/2020",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La tabla está como imagen en la nota del DOF (shcp11_Cimg_858340.png). La fila de un salario mínimo (3.150 %) va en el dato mx.cesantia-vejez-patron-minimo."
+          }
+        },
+        {
+          "estado": "verificado",
+          "hasta": "2026-12-31",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1.5,
+              "tasa": 3.676
+            },
+            {
+              "desde": 1.51,
+              "hasta": 2,
+              "tasa": 4.851
+            },
+            {
+              "desde": 2.01,
+              "hasta": 2.5,
+              "tasa": 5.556
+            },
+            {
+              "desde": 2.51,
+              "hasta": 3,
+              "tasa": 6.026
+            },
+            {
+              "desde": 3.01,
+              "hasta": 3.5,
+              "tasa": 6.361
+            },
+            {
+              "desde": 3.51,
+              "hasta": 4,
+              "tasa": 6.613
+            },
+            {
+              "desde": 4.01,
+              "hasta": null,
+              "tasa": 7.513
+            }
+          ],
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto de reforma a la Ley del Seguro Social del 16/12/2020, transitorio segundo (tabla gradual 2023 a 2030)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5607729&fecha=16/12/2020",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La tabla está como imagen en la nota del DOF (shcp11_Cimg_858340.png). La fila de un salario mínimo (3.150 %) va en el dato mx.cesantia-vejez-patron-minimo."
+          }
+        },
+        {
+          "estado": "verificado",
+          "hasta": "2027-12-31",
+          "desde": "2027-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1.5,
+              "tasa": 3.807
+            },
+            {
+              "desde": 1.51,
+              "hasta": 2,
+              "tasa": 5.276
+            },
+            {
+              "desde": 2.01,
+              "hasta": 2.5,
+              "tasa": 6.157
+            },
+            {
+              "desde": 2.51,
+              "hasta": 3,
+              "tasa": 6.745
+            },
+            {
+              "desde": 3.01,
+              "hasta": 3.5,
+              "tasa": 7.164
+            },
+            {
+              "desde": 3.51,
+              "hasta": 4,
+              "tasa": 7.479
+            },
+            {
+              "desde": 4.01,
+              "hasta": null,
+              "tasa": 8.603
+            }
+          ],
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto de reforma a la Ley del Seguro Social del 16/12/2020, transitorio segundo (tabla gradual 2023 a 2030)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5607729&fecha=16/12/2020",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La tabla está como imagen en la nota del DOF (shcp11_Cimg_858340.png). La fila de un salario mínimo (3.150 %) va en el dato mx.cesantia-vejez-patron-minimo."
+          }
+        },
+        {
+          "estado": "verificado",
+          "hasta": "2028-12-31",
+          "desde": "2028-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1.5,
+              "tasa": 3.939
+            },
+            {
+              "desde": 1.51,
+              "hasta": 2,
+              "tasa": 5.701
+            },
+            {
+              "desde": 2.01,
+              "hasta": 2.5,
+              "tasa": 6.759
+            },
+            {
+              "desde": 2.51,
+              "hasta": 3,
+              "tasa": 7.464
+            },
+            {
+              "desde": 3.01,
+              "hasta": 3.5,
+              "tasa": 7.967
+            },
+            {
+              "desde": 3.51,
+              "hasta": 4,
+              "tasa": 8.345
+            },
+            {
+              "desde": 4.01,
+              "hasta": null,
+              "tasa": 9.694
+            }
+          ],
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto de reforma a la Ley del Seguro Social del 16/12/2020, transitorio segundo (tabla gradual 2023 a 2030)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5607729&fecha=16/12/2020",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La tabla está como imagen en la nota del DOF (shcp11_Cimg_858340.png). La fila de un salario mínimo (3.150 %) va en el dato mx.cesantia-vejez-patron-minimo."
+          }
+        },
+        {
+          "estado": "verificado",
+          "hasta": "2029-12-31",
+          "desde": "2029-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1.5,
+              "tasa": 4.07
+            },
+            {
+              "desde": 1.51,
+              "hasta": 2,
+              "tasa": 6.126
+            },
+            {
+              "desde": 2.01,
+              "hasta": 2.5,
+              "tasa": 7.36
+            },
+            {
+              "desde": 2.51,
+              "hasta": 3,
+              "tasa": 8.183
+            },
+            {
+              "desde": 3.01,
+              "hasta": 3.5,
+              "tasa": 8.77
+            },
+            {
+              "desde": 3.51,
+              "hasta": 4,
+              "tasa": 9.211
+            },
+            {
+              "desde": 4.01,
+              "hasta": null,
+              "tasa": 10.784
+            }
+          ],
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto de reforma a la Ley del Seguro Social del 16/12/2020, transitorio segundo (tabla gradual 2023 a 2030)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5607729&fecha=16/12/2020",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La tabla está como imagen en la nota del DOF (shcp11_Cimg_858340.png). La fila de un salario mínimo (3.150 %) va en el dato mx.cesantia-vejez-patron-minimo."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2030-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1.5,
+              "tasa": 4.202
+            },
+            {
+              "desde": 1.51,
+              "hasta": 2,
+              "tasa": 6.552
+            },
+            {
+              "desde": 2.01,
+              "hasta": 2.5,
+              "tasa": 7.962
+            },
+            {
+              "desde": 2.51,
+              "hasta": 3,
+              "tasa": 8.902
+            },
+            {
+              "desde": 3.01,
+              "hasta": 3.5,
+              "tasa": 9.573
+            },
+            {
+              "desde": 3.51,
+              "hasta": 4,
+              "tasa": 10.077
+            },
+            {
+              "desde": 4.01,
+              "hasta": null,
+              "tasa": 11.875
+            }
+          ],
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto de reforma a la Ley del Seguro Social del 16/12/2020, transitorio segundo (tabla gradual 2023 a 2030)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5607729&fecha=16/12/2020",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La tabla está como imagen en la nota del DOF (shcp11_Cimg_858340.png). La fila de un salario mínimo (3.150 %) va en el dato mx.cesantia-vejez-patron-minimo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.cesantia-vejez-patron-minimo",
+      "nombre": "Cuota patronal de cesantía y vejez para quien gana el salario mínimo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 3.15,
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Decreto de reforma a la Ley del Seguro Social del 16/12/2020, transitorio segundo (tabla gradual 2023 a 2030)",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5607729&fecha=16/12/2020",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "La tabla está como imagen en la nota del DOF (shcp11_Cimg_858340.png). La fila de un salario mínimo (3.150 %) va en el dato mx.cesantia-vejez-patron-minimo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.salarios-minimos-profesionales",
+      "nombre": "Salarios mínimos profesionales, zona del salario mínimo general (61 oficios)",
+      "tipo": "mapa",
+      "unidad": "MXN",
+      "etiquetas": {
+        "albanileria-oficial-de": "Albañilería, oficial de",
+        "boticas-farmacias-y-drogueria-dependiente-de": "Boticas, farmacias y droguería, dependiente(a) de mostrador en",
+        "buldozer-y-o-traxcavo-operador-de": "Buldozer y/o traxcavo, operador(a) de",
+        "cajero-de-maquina-registradora": "Cajero(a) de máquina registradora",
+        "cantinero-preparador-de-bebidas": "Cantinero(a) preparador de bebidas",
+        "carpintero-de-obra-negra": "Carpintero(a) de obra negra",
+        "carpintero-en-la-fabricacion-y-reparacion": "Carpintero(a) en la fabricación y reparación de muebles, oficial",
+        "cocinero-mayor-en-restaurantes-fondas-y": "Cocinero(a), mayor(a) en restaurantes, fondas y demás establecimientos de preparación y venta de alimentos",
+        "colchones-oficial-en-fabricacion-y-reparacion": "Colchones, oficial en fabricación y reparación de",
+        "colocador-de-mosaicos-y-azulejos-oficial": "Colocador(a) de mosaicos y azulejos, oficial",
+        "construccion-de-edificios-y-casas-habitacion": "Construcción de edificios y casas habitación, yesero(a) en",
+        "cortador-en-talleres-y-fabricas-de": "Cortador(a) en talleres y fábricas de manufactura de calzado, oficial",
+        "costurero-en-confeccion-de-ropa-en": "Costurero(a) en confección de ropa en talleres o fábricas",
+        "costurero-en-confeccion-de-ropa-en-2": "Costurero(a) en confección de ropa en trabajo a domicilio",
+        "chofer-acomodador-de-automoviles-en-estacionamientos": "Chofer acomodador(a) de automóviles en estacionamientos",
+        "chofer-de-camion-de-carga-en": "Chofer de camión de carga en general",
+        "chofer-de-camioneta-de-carga-en": "Chofer de camioneta de carga en general",
+        "chofer-operador-de-vehiculos-con-grua": "Chofer operador(a) de vehículos con grúa",
+        "draga-operador-de": "Draga, operador(a) de",
+        "ebanista-en-fabricacion-y-reparacion-de": "Ebanista en fabricación y reparación de muebles, oficial",
+        "electricista-instalador-y-reparador-de-instalaciones": "Electricista instalador(a) y reparador(a) de instalaciones eléctricas, oficial",
+        "electricista-en-la-reparacion-de-automoviles": "Electricista en la reparación de automóviles y camiones, oficial",
+        "electricista-reparador-de-motores-y-o": "Electricista reparador(a) de motores y/o generadores en talleres de servicio, oficial",
+        "empleado-de-gondola-anaquel-o-seccion": "Empleado(a) de góndola, anaquel o sección en tienda de autoservicio",
+        "encargado-de-bodega-y-o-almacen": "Encargado(a) de bodega y/o almacén",
+        "ferreterias-y-tlapalerias-dependiente-en": "Ferreterías y tlapalerías, dependiente(a) en",
+        "fogonero-de-calderas-de-vapor": "Fogonero(a) de calderas de vapor",
+        "gasolinero-oficial": "Gasolinero(a), oficial",
+        "herreria-oficial-de": "Herrería, oficial de",
+        "hojalatero-en-la-reparacion-de-automoviles": "Hojalatero(a) en la reparación de automóviles y camiones, oficial",
+        "jornalero-agricola-y-o-trabajador-del": "Jornalero(a) agrícola y/o trabajador(a) del campo",
+        "lubricador-de-automoviles-camiones-y-otros": "Lubricador(a) de automóviles, camiones y otros vehículos de motor",
+        "manejador-en-granja-avicola": "Manejador(a) en granja avícola",
+        "maquinaria-agricola-operador-de": "Maquinaria agrícola, operador(a) de",
+        "maquinas-para-madera-en-general-oficial": "Máquinas para madera en general, oficial operador(a) de",
+        "mecanico-en-reparacion-de-automoviles-y": "Mecánico(a) en reparación de automóviles y camiones, oficial",
+        "montador-en-talleres-y-fabricas-de": "Montador(a) en talleres y fábricas de calzado, oficial",
+        "peluquero-y-cultor-de-belleza": "Peluquero(a) y cultor(a) de belleza",
+        "pintor-de-automoviles-y-camiones-oficial": "Pintor(a) de automóviles y camiones, oficial",
+        "pintor-de-casas-edificios-y-construcciones": "Pintor(a) de casas, edificios y construcciones en general, oficial",
+        "planchador-a-maquina-en-tintorerias-lavanderia": "Planchador(a) a máquina en tintorerías, lavandería y establecimientos similares",
+        "plomero-en-instalaciones-sanitarias-oficial": "Plomero(a) en instalaciones sanitarias, oficial",
+        "radiotecnico-reparador-de-aparatos-electricos-y": "Radiotécnico(a) reparador(a) de aparatos eléctricos y electrónicos, oficial",
+        "recamarero-en-hoteles-moteles-y-otros": "Recamarero(a) en hoteles, moteles y otros establecimientos de hospedaje",
+        "refaccionaria-de-automoviles-y-camiones-dependiente": "Refaccionaria de automóviles y camiones, dependiente(a) de mostrador en",
+        "reparador-de-aparatos-electricos-para-el": "Reparador(a) de aparatos eléctricos para el hogar, oficial",
+        "reportero-en-prensa-diaria-impresa": "Reportero(a) en prensa diaria impresa",
+        "reportero-grafico-en-prensa-diaria-impresa": "Reportero(a) gráfico(a) en prensa diaria impresa",
+        "repostero-o-pastelero": "Repostero(a) o pastelero(a)",
+        "sastreria-en-trabajo-a-domicilio-oficial": "Sastrería en trabajo a domicilio, oficial de",
+        "secretario-auxiliar": "Secretario(a) auxiliar",
+        "soldador-con-soplete-o-con-arco": "Soldador(a) con soplete o con arco eléctrico",
+        "tablajero-y-o-carnicero-en-mostrador": "Tablajero(a) y/o carnicero(a) en mostrador",
+        "tapicero-de-vestiduras-de-automoviles-oficial": "Tapicero(a) de vestiduras de automóviles, oficial",
+        "tapicero-en-reparacion-de-muebles-oficial": "Tapicero(a) en reparación de muebles, oficial",
+        "trabajador-del-hogar": "Trabajador(a) del hogar",
+        "trabajador-social-tecnico-en": "Trabajador(a) social, técnico(a) en",
+        "vaquero-ordenador-a-maquina": "Vaquero(a) ordeñador a máquina",
+        "velador": "Velador(a)",
+        "vendedor-de-piso-de-aparatos-de": "Vendedor(a) de piso de aparatos de uso doméstico",
+        "zapatero-en-talleres-de-reparacion-de": "Zapatero(a) en talleres de reparación de calzado, oficial"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "hasta": "2026-12-31",
+          "desde": "2026-01-01",
+          "valor": {
+            "albanileria-oficial-de": 363.44,
+            "boticas-farmacias-y-drogueria-dependiente-de": 321.26,
+            "buldozer-y-o-traxcavo-operador-de": 380.74,
+            "cajero-de-maquina-registradora": 326.84,
+            "cantinero-preparador-de-bebidas": 333.52,
+            "carpintero-de-obra-negra": 363.44,
+            "carpintero-en-la-fabricacion-y-reparacion": 357.45,
+            "cocinero-mayor-en-restaurantes-fondas-y": 368.05,
+            "colchones-oficial-en-fabricacion-y-reparacion": 336.83,
+            "colocador-de-mosaicos-y-azulejos-oficial": 356.19,
+            "construccion-de-edificios-y-casas-habitacion": 339.2,
+            "cortador-en-talleres-y-fabricas-de": 330.31,
+            "costurero-en-confeccion-de-ropa-en": 326.38,
+            "costurero-en-confeccion-de-ropa-en-2": 334.94,
+            "chofer-acomodador-de-automoviles-en-estacionamientos": 341.42,
+            "chofer-de-camion-de-carga-en": 370.9,
+            "chofer-de-camioneta-de-carga-en": 360.39,
+            "chofer-operador-de-vehiculos-con-grua": 346.67,
+            "draga-operador-de": 384.25,
+            "ebanista-en-fabricacion-y-reparacion-de": 362.61,
+            "electricista-instalador-y-reparador-de-instalaciones": 356.19,
+            "electricista-en-la-reparacion-de-automoviles": 359.63,
+            "electricista-reparador-de-motores-y-o": 346.67,
+            "empleado-de-gondola-anaquel-o-seccion": 320.32,
+            "encargado-de-bodega-y-o-almacen": 331.76,
+            "ferreterias-y-tlapalerias-dependiente-en": 338.38,
+            "fogonero-de-calderas-de-vapor": 349.22,
+            "gasolinero-oficial": 326.38,
+            "herreria-oficial-de": 351.59,
+            "hojalatero-en-la-reparacion-de-automoviles": 357.45,
+            "jornalero-agricola-y-o-trabajador-del": 356.16,
+            "lubricador-de-automoviles-camiones-y-otros": 328.83,
+            "manejador-en-granja-avicola": 316.85,
+            "maquinaria-agricola-operador-de": 365.24,
+            "maquinas-para-madera-en-general-oficial": 349.22,
+            "mecanico-en-reparacion-de-automoviles-y": 375.35,
+            "montador-en-talleres-y-fabricas-de": 330.31,
+            "peluquero-y-cultor-de-belleza": 341.42,
+            "pintor-de-automoviles-y-camiones-oficial": 351.59,
+            "pintor-de-casas-edificios-y-construcciones": 349.22,
+            "planchador-a-maquina-en-tintorerias-lavanderia": 326.84,
+            "plomero-en-instalaciones-sanitarias-oficial": 349.84,
+            "radiotecnico-reparador-de-aparatos-electricos-y": 362.61,
+            "recamarero-en-hoteles-moteles-y-otros": 320.32,
+            "refaccionaria-de-automoviles-y-camiones-dependiente": 331.76,
+            "reparador-de-aparatos-electricos-para-el": 345.36,
+            "reportero-en-prensa-diaria-impresa": 705.46,
+            "reportero-grafico-en-prensa-diaria-impresa": 705.46,
+            "repostero-o-pastelero": 363.44,
+            "sastreria-en-trabajo-a-domicilio-oficial": 365.24,
+            "secretario-auxiliar": 374.6,
+            "soldador-con-soplete-o-con-arco": 359.63,
+            "tablajero-y-o-carnicero-en-mostrador": 341.42,
+            "tapicero-de-vestiduras-de-automoviles-oficial": 346.67,
+            "tapicero-en-reparacion-de-muebles-oficial": 346.67,
+            "trabajador-del-hogar": 342.47,
+            "trabajador-social-tecnico-en": 405.82,
+            "vaquero-ordenador-a-maquina": 320.32,
+            "velador": 326.38,
+            "vendedor-de-piso-de-aparatos-de": 334.94,
+            "zapatero-en-talleres-de-reparacion-de": 330.31
+          },
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Resolución de la CONASAMI que fija los salarios mínimos generales y profesionales desde el 1 de enero de 2026",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5775534&fecha=09/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.salarios-minimos-profesionales-frontera",
+      "nombre": "Salarios mínimos profesionales, Zona Libre de la Frontera Norte (61 oficios)",
+      "tipo": "mapa",
+      "unidad": "MXN",
+      "etiquetas": {
+        "albanileria-oficial-de": "Albañilería, oficial de",
+        "boticas-farmacias-y-drogueria-dependiente-de": "Boticas, farmacias y droguería, dependiente(a) de mostrador en",
+        "buldozer-y-o-traxcavo-operador-de": "Buldozer y/o traxcavo, operador(a) de",
+        "cajero-de-maquina-registradora": "Cajero(a) de máquina registradora",
+        "cantinero-preparador-de-bebidas": "Cantinero(a) preparador de bebidas",
+        "carpintero-de-obra-negra": "Carpintero(a) de obra negra",
+        "carpintero-en-la-fabricacion-y-reparacion": "Carpintero(a) en la fabricación y reparación de muebles, oficial",
+        "cocinero-mayor-en-restaurantes-fondas-y": "Cocinero(a), mayor(a) en restaurantes, fondas y demás establecimientos de preparación y venta de alimentos",
+        "colchones-oficial-en-fabricacion-y-reparacion": "Colchones, oficial en fabricación y reparación de",
+        "colocador-de-mosaicos-y-azulejos-oficial": "Colocador(a) de mosaicos y azulejos, oficial",
+        "construccion-de-edificios-y-casas-habitacion": "Construcción de edificios y casas habitación, yesero(a) en",
+        "cortador-en-talleres-y-fabricas-de": "Cortador(a) en talleres y fábricas de manufactura de calzado, oficial",
+        "costurero-en-confeccion-de-ropa-en": "Costurero(a) en confección de ropa en talleres o fábricas",
+        "costurero-en-confeccion-de-ropa-en-2": "Costurero(a) en confección de ropa en trabajo a domicilio",
+        "chofer-acomodador-de-automoviles-en-estacionamientos": "Chofer acomodador(a) de automóviles en estacionamientos",
+        "chofer-de-camion-de-carga-en": "Chofer de camión de carga en general",
+        "chofer-de-camioneta-de-carga-en": "Chofer de camioneta de carga en general",
+        "chofer-operador-de-vehiculos-con-grua": "Chofer operador(a) de vehículos con grúa",
+        "draga-operador-de": "Draga, operador(a) de",
+        "ebanista-en-fabricacion-y-reparacion-de": "Ebanista en fabricación y reparación de muebles, oficial",
+        "electricista-instalador-y-reparador-de-instalaciones": "Electricista instalador(a) y reparador(a) de instalaciones eléctricas, oficial",
+        "electricista-en-la-reparacion-de-automoviles": "Electricista en la reparación de automóviles y camiones, oficial",
+        "electricista-reparador-de-motores-y-o": "Electricista reparador(a) de motores y/o generadores en talleres de servicio, oficial",
+        "empleado-de-gondola-anaquel-o-seccion": "Empleado(a) de góndola, anaquel o sección en tienda de autoservicio",
+        "encargado-de-bodega-y-o-almacen": "Encargado(a) de bodega y/o almacén",
+        "ferreterias-y-tlapalerias-dependiente-en": "Ferreterías y tlapalerías, dependiente(a) en",
+        "fogonero-de-calderas-de-vapor": "Fogonero(a) de calderas de vapor",
+        "gasolinero-oficial": "Gasolinero(a), oficial",
+        "herreria-oficial-de": "Herrería, oficial de",
+        "hojalatero-en-la-reparacion-de-automoviles": "Hojalatero(a) en la reparación de automóviles y camiones, oficial",
+        "jornalero-agricola-y-o-trabajador-del": "Jornalero(a) agrícola y/o trabajador(a) del campo",
+        "lubricador-de-automoviles-camiones-y-otros": "Lubricador(a) de automóviles, camiones y otros vehículos de motor",
+        "manejador-en-granja-avicola": "Manejador(a) en granja avícola",
+        "maquinaria-agricola-operador-de": "Maquinaria agrícola, operador(a) de",
+        "maquinas-para-madera-en-general-oficial": "Máquinas para madera en general, oficial operador(a) de",
+        "mecanico-en-reparacion-de-automoviles-y": "Mecánico(a) en reparación de automóviles y camiones, oficial",
+        "montador-en-talleres-y-fabricas-de": "Montador(a) en talleres y fábricas de calzado, oficial",
+        "peluquero-y-cultor-de-belleza": "Peluquero(a) y cultor(a) de belleza",
+        "pintor-de-automoviles-y-camiones-oficial": "Pintor(a) de automóviles y camiones, oficial",
+        "pintor-de-casas-edificios-y-construcciones": "Pintor(a) de casas, edificios y construcciones en general, oficial",
+        "planchador-a-maquina-en-tintorerias-lavanderia": "Planchador(a) a máquina en tintorerías, lavandería y establecimientos similares",
+        "plomero-en-instalaciones-sanitarias-oficial": "Plomero(a) en instalaciones sanitarias, oficial",
+        "radiotecnico-reparador-de-aparatos-electricos-y": "Radiotécnico(a) reparador(a) de aparatos eléctricos y electrónicos, oficial",
+        "recamarero-en-hoteles-moteles-y-otros": "Recamarero(a) en hoteles, moteles y otros establecimientos de hospedaje",
+        "refaccionaria-de-automoviles-y-camiones-dependiente": "Refaccionaria de automóviles y camiones, dependiente(a) de mostrador en",
+        "reparador-de-aparatos-electricos-para-el": "Reparador(a) de aparatos eléctricos para el hogar, oficial",
+        "reportero-en-prensa-diaria-impresa": "Reportero(a) en prensa diaria impresa",
+        "reportero-grafico-en-prensa-diaria-impresa": "Reportero(a) gráfico(a) en prensa diaria impresa",
+        "repostero-o-pastelero": "Repostero(a) o pastelero(a)",
+        "sastreria-en-trabajo-a-domicilio-oficial": "Sastrería en trabajo a domicilio, oficial de",
+        "secretario-auxiliar": "Secretario(a) auxiliar",
+        "soldador-con-soplete-o-con-arco": "Soldador(a) con soplete o con arco eléctrico",
+        "tablajero-y-o-carnicero-en-mostrador": "Tablajero(a) y/o carnicero(a) en mostrador",
+        "tapicero-de-vestiduras-de-automoviles-oficial": "Tapicero(a) de vestiduras de automóviles, oficial",
+        "tapicero-en-reparacion-de-muebles-oficial": "Tapicero(a) en reparación de muebles, oficial",
+        "trabajador-del-hogar": "Trabajador(a) del hogar",
+        "trabajador-social-tecnico-en": "Trabajador(a) social, técnico(a) en",
+        "vaquero-ordenador-a-maquina": "Vaquero(a) ordeñador a máquina",
+        "velador": "Velador(a)",
+        "vendedor-de-piso-de-aparatos-de": "Vendedor(a) de piso de aparatos de uso doméstico",
+        "zapatero-en-talleres-de-reparacion-de": "Zapatero(a) en talleres de reparación de calzado, oficial"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "hasta": "2026-12-31",
+          "desde": "2026-01-01",
+          "valor": {
+            "albanileria-oficial-de": 440.87,
+            "boticas-farmacias-y-drogueria-dependiente-de": 440.87,
+            "buldozer-y-o-traxcavo-operador-de": 440.87,
+            "cajero-de-maquina-registradora": 440.87,
+            "cantinero-preparador-de-bebidas": 440.87,
+            "carpintero-de-obra-negra": 440.87,
+            "carpintero-en-la-fabricacion-y-reparacion": 440.87,
+            "cocinero-mayor-en-restaurantes-fondas-y": 440.87,
+            "colchones-oficial-en-fabricacion-y-reparacion": 440.87,
+            "colocador-de-mosaicos-y-azulejos-oficial": 440.87,
+            "construccion-de-edificios-y-casas-habitacion": 440.87,
+            "cortador-en-talleres-y-fabricas-de": 440.87,
+            "costurero-en-confeccion-de-ropa-en": 440.87,
+            "costurero-en-confeccion-de-ropa-en-2": 440.87,
+            "chofer-acomodador-de-automoviles-en-estacionamientos": 440.87,
+            "chofer-de-camion-de-carga-en": 440.87,
+            "chofer-de-camioneta-de-carga-en": 440.87,
+            "chofer-operador-de-vehiculos-con-grua": 440.87,
+            "draga-operador-de": 440.87,
+            "ebanista-en-fabricacion-y-reparacion-de": 440.87,
+            "electricista-instalador-y-reparador-de-instalaciones": 440.87,
+            "electricista-en-la-reparacion-de-automoviles": 440.87,
+            "electricista-reparador-de-motores-y-o": 440.87,
+            "empleado-de-gondola-anaquel-o-seccion": 440.87,
+            "encargado-de-bodega-y-o-almacen": 440.87,
+            "ferreterias-y-tlapalerias-dependiente-en": 440.87,
+            "fogonero-de-calderas-de-vapor": 440.87,
+            "gasolinero-oficial": 440.87,
+            "herreria-oficial-de": 440.87,
+            "hojalatero-en-la-reparacion-de-automoviles": 440.87,
+            "jornalero-agricola-y-o-trabajador-del": 440.87,
+            "lubricador-de-automoviles-camiones-y-otros": 440.87,
+            "manejador-en-granja-avicola": 440.87,
+            "maquinaria-agricola-operador-de": 440.87,
+            "maquinas-para-madera-en-general-oficial": 440.87,
+            "mecanico-en-reparacion-de-automoviles-y": 440.87,
+            "montador-en-talleres-y-fabricas-de": 440.87,
+            "peluquero-y-cultor-de-belleza": 440.87,
+            "pintor-de-automoviles-y-camiones-oficial": 440.87,
+            "pintor-de-casas-edificios-y-construcciones": 440.87,
+            "planchador-a-maquina-en-tintorerias-lavanderia": 440.87,
+            "plomero-en-instalaciones-sanitarias-oficial": 440.87,
+            "radiotecnico-reparador-de-aparatos-electricos-y": 440.87,
+            "recamarero-en-hoteles-moteles-y-otros": 440.87,
+            "refaccionaria-de-automoviles-y-camiones-dependiente": 440.87,
+            "reparador-de-aparatos-electricos-para-el": 440.87,
+            "reportero-en-prensa-diaria-impresa": 705.46,
+            "reportero-grafico-en-prensa-diaria-impresa": 705.46,
+            "repostero-o-pastelero": 440.87,
+            "sastreria-en-trabajo-a-domicilio-oficial": 440.87,
+            "secretario-auxiliar": 440.87,
+            "soldador-con-soplete-o-con-arco": 440.87,
+            "tablajero-y-o-carnicero-en-mostrador": 440.87,
+            "tapicero-de-vestiduras-de-automoviles-oficial": 440.87,
+            "tapicero-en-reparacion-de-muebles-oficial": 440.87,
+            "trabajador-del-hogar": 440.87,
+            "trabajador-social-tecnico-en": 440.87,
+            "vaquero-ordenador-a-maquina": 440.87,
+            "velador": 440.87,
+            "vendedor-de-piso-de-aparatos-de": 440.87,
+            "zapatero-en-talleres-de-reparacion-de": 440.87
+          },
+          "fuente": {
+            "organismo": "DOF",
+            "titulo": "Resolución de la CONASAMI que fija los salarios mínimos generales y profesionales desde el 1 de enero de 2026",
+            "url": "https://dof.gob.mx/nota_detalle.php?codigo=5775534&fecha=09/12/2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.retiro-desempleo",
+      "nombre": "Retiro parcial por desempleo de la Afore",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "dias-a": "Días de salario, cuenta de 3 años o más",
+        "dias-b": "Días de salario, cuenta de 5 años o más",
+        "porcentaje-b": "Porcentaje del saldo de RCV, cuenta de 5 años o más"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-06-30",
+          "valor": {
+            "dias-a": 30,
+            "dias-b": 90,
+            "porcentaje-b": 11.5
+          },
+          "fuente": {
+            "organismo": "IMSS",
+            "titulo": "Ley del Seguro Social, artículo 191, fracción II",
+            "url": "https://www.imss.gob.mx/sites/all/statics/pdf/leyes/LSS.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto vigente publicado por el IMSS (compilación de la Cámara de Diputados, última reforma DOF 15/01/2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mx.tope-retiro-desempleo",
+      "nombre": "Tope del retiro por desempleo con cuenta de 3 años",
+      "tipo": "numero",
+      "unidad": "MXN",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "El artículo 191 de la LSS lo fija en diez salarios mínimos mensuales del Distrito Federal. Tras la desindexación de 2016 no encontramos fuente oficial que diga si se toma el salario mínimo o la UMA, ni con cuántos días se arma el mes (portales privados usan 30 o 30.4), y la diferencia cambia el resultado."
         }
       ]
     }
