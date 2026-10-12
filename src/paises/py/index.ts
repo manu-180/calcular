@@ -7,6 +7,9 @@ import bonificacionFamiliar from "./calculadoras/bonificacion-familiar";
 import cda from "./calculadoras/cda";
 import costoEmpleador from "./calculadoras/costo-empleador";
 import cotizacionDolar from "./calculadoras/cotizacion-dolar";
+import cotizacionEuro from "./calculadoras/cotizacion-euro";
+import cotizacionPesoArgentino from "./calculadoras/cotizacion-peso-argentino";
+import cotizacionReal from "./calculadoras/cotizacion-real";
 import embargoDeSalario from "./calculadoras/embargo-de-salario";
 import estabilidadLaboral from "./calculadoras/estabilidad-laboral";
 import fallecimientoDelTrabajador from "./calculadoras/fallecimiento-del-trabajador";
@@ -47,6 +50,9 @@ import contenidoBonificacionFamiliar from "./contenido/bonificacion-familiar";
 import contenidoCda from "./contenido/cda";
 import contenidoCostoEmpleador from "./contenido/costo-empleador";
 import contenidoCotizacionDolar from "./contenido/cotizacion-dolar";
+import contenidoCotizacionEuro from "./contenido/cotizacion-euro";
+import contenidoCotizacionPesoArgentino from "./contenido/cotizacion-peso-argentino";
+import contenidoCotizacionReal from "./contenido/cotizacion-real";
 import contenidoEmbargoDeSalario from "./contenido/embargo-de-salario";
 import contenidoEstabilidadLaboral from "./contenido/estabilidad-laboral";
 import contenidoFallecimientoDelTrabajador from "./contenido/fallecimiento-del-trabajador";
@@ -109,6 +115,9 @@ export default definirPais({
     { definicion: aguinaldoProporcional, contenido: contenidoAguinaldoProporcional, cliente: () => import("./calculadoras/aguinaldo-proporcional.cliente") },
     { definicion: antiguedadLaboral, contenido: contenidoAntiguedadLaboral, cliente: () => import("./calculadoras/antiguedad-laboral.cliente") },
     { definicion: cda, contenido: contenidoCda, cliente: () => import("./calculadoras/cda.cliente") },
+    { definicion: cotizacionEuro, contenido: contenidoCotizacionEuro, cliente: () => import("./calculadoras/cotizacion-euro.cliente") },
+    { definicion: cotizacionPesoArgentino, contenido: contenidoCotizacionPesoArgentino, cliente: () => import("./calculadoras/cotizacion-peso-argentino.cliente") },
+    { definicion: cotizacionReal, contenido: contenidoCotizacionReal, cliente: () => import("./calculadoras/cotizacion-real.cliente") },
     { definicion: embargoDeSalario, contenido: contenidoEmbargoDeSalario, cliente: () => import("./calculadoras/embargo-de-salario.cliente") },
     { definicion: estabilidadLaboral, contenido: contenidoEstabilidadLaboral, cliente: () => import("./calculadoras/estabilidad-laboral.cliente") },
     { definicion: fallecimientoDelTrabajador, contenido: contenidoFallecimientoDelTrabajador, cliente: () => import("./calculadoras/fallecimiento-del-trabajador.cliente") },
