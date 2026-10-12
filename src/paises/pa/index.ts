@@ -60,6 +60,14 @@ import contenidoCuotaSeguroSocial from "./contenido/cuota-seguro-social";
 import contenidoGastosDeRepresentacion from "./contenido/gastos-de-representacion";
 import contenidoPrestamoPersonal from "./contenido/prestamo-personal";
 import contenidoImpuestoDeInmueble from "./contenido/impuesto-de-inmueble";
+import licenciaDePaternidad from "./calculadoras/licencia-de-paternidad";
+import interesesPorMoraLaboral from "./calculadoras/intereses-por-mora-laboral";
+import indemnizacionAntesDe1995 from "./calculadoras/indemnizacion-antes-de-1995";
+import contenidoLicenciaDePaternidad from "./contenido/licencia-de-paternidad";
+import contenidoInteresesPorMoraLaboral from "./contenido/intereses-por-mora-laboral";
+import contenidoIndemnizacionAntesDe1995 from "./contenido/indemnizacion-antes-de-1995";
+import jubilacion from "./calculadoras/jubilacion";
+import contenidoJubilacion from "./contenido/jubilacion";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -102,6 +110,10 @@ export default definirPais({
     { definicion: gastosDeRepresentacion, contenido: contenidoGastosDeRepresentacion, cliente: () => import("./calculadoras/gastos-de-representacion.cliente") },
     { definicion: prestamoPersonal, contenido: contenidoPrestamoPersonal, cliente: () => import("./calculadoras/prestamo-personal.cliente") },
     { definicion: impuestoDeInmueble, contenido: contenidoImpuestoDeInmueble, cliente: () => import("./calculadoras/impuesto-de-inmueble.cliente") },
+    { definicion: licenciaDePaternidad, contenido: contenidoLicenciaDePaternidad, cliente: () => import("./calculadoras/licencia-de-paternidad.cliente") },
+    { definicion: interesesPorMoraLaboral, contenido: contenidoInteresesPorMoraLaboral, cliente: () => import("./calculadoras/intereses-por-mora-laboral.cliente") },
+    { definicion: indemnizacionAntesDe1995, contenido: contenidoIndemnizacionAntesDe1995, cliente: () => import("./calculadoras/indemnizacion-antes-de-1995.cliente") },
+    { definicion: jubilacion, contenido: contenidoJubilacion, cliente: () => import("./calculadoras/jubilacion.cliente") },
   ],
   novedades,
   detectores,

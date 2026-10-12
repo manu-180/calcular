@@ -1528,6 +1528,238 @@
           }
         }
       ]
+    },
+    {
+      "id": "pa.paternidad-dias-habiles",
+      "nombre": "Días hábiles de licencia de paternidad",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-05-25",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 27 de 23 de mayo de 2017, que crea la licencia de paternidad, artículos 3 y 4 (Gaceta Oficial Digital 28285-B, 24/5/2017)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/2010/2017/LEY/Administrador%20Legispan_28285-B_2017_5_24_ASAMBLEA%20NACIONAL_27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional, leída página por página. Rige desde el día siguiente a su promulgación (art. 7)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.paternidad-aviso-semanas",
+      "nombre": "Semanas de anticipación para avisar la fecha probable del parto",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-05-25",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 27 de 23 de mayo de 2017, que crea la licencia de paternidad, artículo 2 (Gaceta Oficial Digital 28285-B, 24/5/2017)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/NORMAS/2010/2017/LEY/Administrador%20Legispan_28285-B_2017_5_24_ASAMBLEA%20NACIONAL_27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional, leída página por página. Rige desde el día siguiente a su promulgación (art. 7)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.interes-mora-laboral",
+      "nombre": "Interés anual por mora en el pago de salarios, vacaciones, prestaciones e indemnizaciones",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 169",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.recargo-condena-salarios",
+      "nombre": "Recargo sobre los salarios reconocidos en una sentencia de condena",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1972-04-02",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 170",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.indemnizacion-escala-b",
+      "nombre": "Escala de indemnización para el tiempo de servicio posterior al 2 de abril de 1972 (relaciones iniciadas antes de la Ley 44 de 1995)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "meses-por-semana-primer-anio": "Meses de servicio por cada semana de indemnización, en el primer año",
+        "meses-por-semana-segundo-anio": "Meses de servicio por cada semana de indemnización, en el segundo año",
+        "semanas-anios-2-a-10": "Semanas por cada año, de dos a diez años",
+        "semanas-desde-anio-11": "Semanas por cada año después de diez",
+        "minimo-semanas": "Indemnización mínima en semanas"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-08-14",
+          "valor": {
+            "meses-por-semana-primer-anio": 3,
+            "meses-por-semana-segundo-anio": 2,
+            "semanas-anios-2-a-10": 3,
+            "semanas-desde-anio-11": 1,
+            "minimo-semanas": 1
+          },
+          "fuente": {
+            "organismo": "Órgano Judicial",
+            "titulo": "Código de Trabajo (Decreto de Gabinete 252 de 1971, con las reformas de la Ley 44 de 1995), artículo 225, acápite B (subrogado por el artículo 36 de la Ley 44 de 1995)",
+            "url": "https://www.organojudicial.gob.pa/uploads/wp_repo/uploads/2016/11/c%C3%B3digo-detrabajo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Texto del Código publicado por el Órgano Judicial (recopilación MATAC/OIT), leído con extracción de texto del PDF."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jubilacion-edad-referencia",
+      "nombre": "Edad de referencia de la pensión de retiro por vejez",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "mujeres": "Mujeres",
+        "hombres": "Hombres"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "mujeres": 57,
+            "hombres": 62
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 159 (artículo 168-E de la Ley 51 de 2005) (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; los artículos están en las páginas 86 a 90, leídas como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jubilacion-cuotas",
+      "nombre": "Cuotas de la pensión de retiro por vejez del beneficio definido",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "referencia": "Cuotas de referencia",
+        "minimo": "Cuotas mínimas"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "referencia": 240,
+            "minimo": 180
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículos 154 y 161 (artículos 168 y 169-A de la Ley 51 de 2005) (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; los artículos están en las páginas 86 a 90, leídas como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jubilacion-tasa-reemplazo",
+      "nombre": "Tasa de reemplazo de la pensión de retiro por vejez del beneficio definido",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "basica": "Tasa básica a la edad y cuotas de referencia",
+        "por-12-cuotas-antes": "Por cada 12 cuotas de más aportadas antes de la edad de referencia",
+        "por-12-cuotas-despues": "Por cada 12 cuotas de más aportadas después de la edad de referencia"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "basica": 60,
+            "por-12-cuotas-antes": 1.25,
+            "por-12-cuotas-despues": 2
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 161 (artículo 169-A de la Ley 51 de 2005) (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; los artículos están en las páginas 86 a 90, leídas como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pa.jubilacion-factor-anticipada",
+      "nombre": "Factor de reducción de la pensión de vejez anticipada",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "1": "Un año antes de la edad de referencia",
+        "2": "Dos años antes de la edad de referencia"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-18",
+          "valor": {
+            "1": 0.9128,
+            "2": 0.8342
+          },
+          "fuente": {
+            "organismo": "Asamblea Nacional",
+            "titulo": "Ley 462 de 18 de marzo de 2025, artículo 161 (artículo 169-A de la Ley 51 de 2005), valores iniciales (Gaceta Oficial Digital 30238)",
+            "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2025/30238_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-12",
+            "nota": "Gaceta escaneada por la Asamblea Nacional; los artículos están en las páginas 86 a 90, leídas como imagen. La ley rige desde su promulgación (art. 244)."
+          }
+        }
+      ]
     }
   ]
 }

@@ -39,12 +39,14 @@ acercar Panamá al volumen de calcular.ar, con lo lógico y razonable para el pa
 | 16 | contrato-por-tiempo-definido | Media | CT art. 227 | Código de Trabajo | publicada |
 | 17 | muerte-del-trabajador | Baja, pero sin respuesta clara en la web | CT arts. 155 y 224 | Código de Trabajo | publicada |
 | 18 | gastos-de-representacion | Baja (gerencia y ejecutivos) | Código Fiscal art. 701 lit. l (Ley 8 de 2010) | Gaceta 26489-A | publicada |
-| 19 | jubilacion (edad y cuotas) | Alta | Ley 51 de 2005 reformada por la Ley 462 de 2025 | Gaceta 30238 (escaneada) | pendiente: no se leyó el artículo en la Gaceta |
+| 19 | jubilacion | Alta | Ley 51 de 2005 arts. 168, 168-E y 169-A (Ley 462 de 2025) | Gaceta 30238, págs. 86 a 90 (leídas como imagen) | publicada, solo Subsistema Exclusivamente de Beneficio Definido y sin los topes mínimo y máximo |
+| 19b | licencia-de-paternidad | Media | Ley 27 de 2017 | Gaceta 28285-B (Legispan) | publicada |
+| 19c | intereses-por-mora-laboral | Baja | CT arts. 169 y 170 | Código de Trabajo | publicada |
+| 19d | indemnizacion-antes-de-1995 | Baja, pero sin otra calculadora que la cubra | CT art. 225, acápite B | Código de Trabajo | publicada |
 | 20 | impuesto-de-transferencia (ITBI 2 %) | Media | Ley 106 de 1974 art. 4; Leyes 468 y 472 de 2025 | | descartada por ahora: norma en cambio (derogación suspendida hasta el 31/12/2025 y proyecto del MEF en la Asamblea) |
 | 21 | plazo-fijo | Media | Código Fiscal arts. 701 y 708 | | descartada por ahora: no se verificó el tratamiento del ISR sobre intereses |
 | 22 | pension-alimenticia | Media | Código de la Familia | | descartada: no hay tabla ni porcentaje legal; sería inventar |
 | 23 | impuesto-de-dividendos | Baja | Código Fiscal art. 733 (Ley 8 de 2010) | Gaceta 26489-A | candidata: falta confirmar que no hubo reformas posteriores |
-| 24 | licencia de paternidad | Baja | Ley 27 de 2017 | | dentro de la FAQ de maternidad, sin calculadora |
 
 ## Reglas que salen de la lectura (trampas)
 
