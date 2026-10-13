@@ -14,7 +14,7 @@
 //      opción. Nadie publica esa diferencia en pesos, que es la plata que deja de cobrarse por no
 //      hacer el trámite.
 
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { PUAM } from "@/data/puam";
 import { bonoDeHaber, totalMinimaConBono } from "@/lib/pnc";
 import { prestacionPorClave } from "@/lib/pnc";
@@ -32,7 +32,7 @@ export type MontoPuam = {
 
 /** El monto de la PUAM del mes vigente, derivado del haber mínimo. Nada escrito a mano. */
 export function montoPuam(): MontoPuam {
-  const haber = r2(PRESTACIONES_VIGENTES.haberMinimo * PUAM.proporcionHaberMinimo);
+  const haber = r2(prestacionesVigentes().haberMinimo * PUAM.proporcionHaberMinimo);
   const bono = bonoDeHaber(haber);
   return { haber, bono, total: r2(haber + bono) };
 }
@@ -56,11 +56,11 @@ export function compararConMinima(): ComparacionMinima {
   const m = montoPuam();
   const totalMinima = totalMinimaConBono();
   return {
-    haberMinima: PRESTACIONES_VIGENTES.haberMinimo,
+    haberMinima: prestacionesVigentes().haberMinimo,
     totalMinima,
-    brechaHaber: r2(PRESTACIONES_VIGENTES.haberMinimo - m.haber),
+    brechaHaber: r2(prestacionesVigentes().haberMinimo - m.haber),
     brechaTotal: r2(totalMinima - m.total),
-    proporcionHaber: m.haber / PRESTACIONES_VIGENTES.haberMinimo,
+    proporcionHaber: m.haber / prestacionesVigentes().haberMinimo,
     proporcionTotal: m.total / totalMinima,
   };
 }
@@ -83,7 +83,7 @@ export type ComparacionVejez = {
  */
 export function compararConVejez(): ComparacionVejez {
   const vejez = prestacionPorClave("vejez");
-  const haberVejez = r2(PRESTACIONES_VIGENTES.haberMinimo * vejez.proporcionHaberMinimo);
+  const haberVejez = r2(prestacionesVigentes().haberMinimo * vejez.proporcionHaberMinimo);
   const totalVejez = r2(haberVejez + bonoDeHaber(haberVejez));
   const puam = montoPuam();
   const diferenciaMensual = r2(puam.total - totalVejez);
@@ -222,4 +222,6 @@ export function topeEmbargoAlimentos(): number {
 }
 
 /** Reexportado para las páginas: el bono del mes, por si no hay decreto y hay que decirlo. */
-export const BONO_DEL_MES = BONO_VIGENTE;
+export function bonoDelMes() {
+  return bonoVigente();
+}

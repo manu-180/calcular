@@ -12,7 +12,7 @@ import {
   MULTIPLICADOR_ESPECIFICA,
   haberesMinimosDelAnio,
 } from "@/data/ganancias-jubilados";
-import { HABER_MINIMO_VIGENTE } from "@/data/descuento-pami";
+import { haberMinimoVigente } from "@/data/descuento-pami";
 import { aporteSobre } from "@/lib/descuento-pami";
 import { impuestoSegunEscala } from "@/lib/ganancias";
 
@@ -22,7 +22,7 @@ export type MesHaberMinimo = { periodo: string; haberMinimo: number; publicado: 
 
 export function haberesMinimosProyectados(anio = ANIO_JUBILADOS): MesHaberMinimo[] {
   const publicados = haberesMinimosDelAnio(anio);
-  const ultimo = publicados.at(-1)?.haberMinimo ?? HABER_MINIMO_VIGENTE;
+  const ultimo = publicados.at(-1)?.haberMinimo ?? haberMinimoVigente();
   return Array.from({ length: 12 }, (_, i) => {
     const periodo = `${anio}-${String(i + 1).padStart(2, "0")}`;
     const p = publicados.find((m) => m.periodo === periodo);
@@ -143,6 +143,6 @@ export function calcularGananciasJubilados(e: EntradaJubilados): ResultadoJubila
     retencionMensual: r2(impuestoAnual / 12),
     pagaGanancias: impuestoAnual > 0,
     umbralHaber,
-    umbralEnHaberesMinimos: umbralHaber / HABER_MINIMO_VIGENTE,
+    umbralEnHaberesMinimos: umbralHaber / haberMinimoVigente(),
   };
 }

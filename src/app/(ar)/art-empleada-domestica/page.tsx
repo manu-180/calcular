@@ -9,17 +9,17 @@ import {
   ART_CASAS_FUENTES,
   ART_CASAS_TEXTOS,
   ART_CASAS_VIGENCIA,
-  REGLAS_ART_CASAS,
+  reglasArtCasas,
 } from "@/data/art-casas-particulares";
-import { VIGENCIA } from "@/data/casas-particulares";
+import { vigenciaCasas } from "@/data/casas-particulares";
 import { VIGENCIA_APORTES } from "@/data/aportes-casas-particulares";
 import { PlanillaCTA } from "@/components/PlanillaCTA";
 import {
-  CORTE_MAS_TARDIO,
-  CORTE_MAS_TEMPRANO,
+  corteMasTardio,
+  corteMasTemprano,
   EDAD_MAXIMA_BARRIDO,
   EDAD_MINIMA_BARRIDO,
-  EDAD_PISO_SIEMPRE,
+  edadPisoSiempre,
   describirCorte,
 } from "@/lib/art-casas-particulares";
 
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
 };
 
-const faqs = [
+const crearFaqs = () => [
   {
     q: "¿La empleada doméstica tiene ART?",
     a: "Sí. El art. 74 de la Ley 26.844 sumó al personal de casas particulares al régimen de las leyes 24.557 y 26.773, y el Decreto 467/2014 lo reglamentó. Hoy la cuota de ART está en la tabla mensual de aportes y contribuciones de ARCA, en las nueve filas del régimen. Es obligatoria, no opcional.",
@@ -58,7 +58,7 @@ const faqs = [
   },
   {
     q: "Entonces, ¿cobra menos que otro trabajador?",
-    a: `Por la fórmula sí, pero ahí entra el piso. Como la base es baja, la fórmula (53 × ingreso base × porcentaje de incapacidad × 65/edad) da menos que el piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso es el mismo para todos, sin importar la categoría ni el sueldo, así que protege más a quien tiene menos base. Con la escala vigente, desde los ${EDAD_PISO_SIEMPRE} años manda el piso en todas las categorías y modalidades, sin excepción. Antes de esa edad la fórmula puede ganar, y gana hasta más tarde cuanto más alta es la base: el piso manda desde los ${CORTE_MAS_TEMPRANO.edad} años en ${describirCorte(CORTE_MAS_TEMPRANO)} y recién desde los ${CORTE_MAS_TARDIO.edad} en ${describirCorte(CORTE_MAS_TARDIO)}.`,
+    a: `Por la fórmula sí, pero ahí entra el piso. Como la base es baja, la fórmula (53 × ingreso base × porcentaje de incapacidad × 65/edad) da menos que el piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso es el mismo para todos, sin importar la categoría ni el sueldo, así que protege más a quien tiene menos base. Con la escala vigente, desde los ${edadPisoSiempre()} años manda el piso en todas las categorías y modalidades, sin excepción. Antes de esa edad la fórmula puede ganar, y gana hasta más tarde cuanto más alta es la base: el piso manda desde los ${corteMasTemprano().edad} años en ${describirCorte(corteMasTemprano())} y recién desde los ${corteMasTardio().edad} en ${describirCorte(corteMasTardio())}.`,
   },
   {
     q: "¿Puede una ART negarse a asegurar a un empleador de casa particular?",
@@ -87,6 +87,7 @@ const faqs = [
 ];
 
 export default function Page() {
+  const faqs = crearFaqs();
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -158,8 +159,8 @@ export default function Page() {
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Calculá la cuota y la indemnización</h2>
         <p className="text-sm text-zinc-600">
-          La base sale sola de la categoría y la modalidad: es la escala de la {VIGENCIA.resolucion},
-          vigente desde {VIGENCIA.desde}. La cuota sale de la tabla de ARCA de{" "}
+          La base sale sola de la categoría y la modalidad: es la escala de la {vigenciaCasas().resolucion},
+          vigente desde {vigenciaCasas().desde}. La cuota sale de la tabla de ARCA de{" "}
           {VIGENCIA_APORTES.mesVigente}. No tenés que cargar ninguno de los dos números.
         </p>
         <CalculadoraArtCasas />
@@ -204,11 +205,11 @@ export default function Page() {
           Con un mínimo de categoría no llega al piso ni en los casos más graves, y el piso no
           depende del sueldo. Si recorrés la escala entera (5 categorías, las dos modalidades, de
           los {EDAD_MINIMA_BARRIDO} a los {EDAD_MAXIMA_BARRIDO} años), el límite es claro:{" "}
-          <strong>desde los {EDAD_PISO_SIEMPRE} años manda el piso siempre</strong>. Antes de esa
+          <strong>desde los {edadPisoSiempre()} años manda el piso siempre</strong>. Antes de esa
           edad la fórmula puede ganar, porque ahí el coeficiente 65/edad es más alto, y gana hasta
           más tarde cuanto más alta es la base: el piso manda desde los{" "}
-          {CORTE_MAS_TEMPRANO.edad} años en {describirCorte(CORTE_MAS_TEMPRANO)} y recién desde
-          los {CORTE_MAS_TARDIO.edad} en {describirCorte(CORTE_MAS_TARDIO)}. Y cuál de los dos gana{" "}
+          {corteMasTemprano().edad} años en {describirCorte(corteMasTemprano())} y recién desde
+          los {corteMasTardio().edad} en {describirCorte(corteMasTardio())}. Y cuál de los dos gana{" "}
           <strong>no depende del porcentaje de incapacidad</strong>, porque los dos lados de la
           comparación se multiplican por él. La cuenta completa, paso por paso, está en{" "}
           <Link href="/indemnizacion-art" className="text-emerald-700 hover:underline">
@@ -264,7 +265,7 @@ export default function Page() {
         <h2 className="text-xl font-bold text-zinc-900">Las reglas que deciden un caso real</h2>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           <div className="divide-y divide-zinc-100">
-            {REGLAS_ART_CASAS.map((r) => (
+            {reglasArtCasas().map((r) => (
               <div key={r.id} className="px-4 py-3">
                 <h3 className="font-semibold text-zinc-900">{r.titulo}</h3>
                 <p className="mt-1 text-sm text-zinc-600">{r.texto}</p>

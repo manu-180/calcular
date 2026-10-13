@@ -16,29 +16,34 @@ import {
 import { calcularDesempleo, etiquetaMes, smvmVigente } from "@/lib/desempleo";
 import { formatARS } from "@/lib/formato";
 
-const { mes: SMVM } = smvmVigente();
-const MES = etiquetaMes(SMVM.periodo);
-const MES_CORTO = MES.replace(" de ", " ");
-const PISO = Math.round(SMVM.mensual * R.pisoSobreSmvm * 100) / 100;
-const TECHO = Math.round(SMVM.mensual * R.techoSobreSmvm * 100) / 100;
+function datosDelMes() {
+  const { mes: SMVM } = smvmVigente();
+  const MES = etiquetaMes(SMVM.periodo);
+  const MES_CORTO = MES.replace(" de ", " ");
+  const PISO = Math.round(SMVM.mensual * R.pisoSobreSmvm * 100) / 100;
+  const TECHO = Math.round(SMVM.mensual * R.techoSobreSmvm * 100) / 100;
 
-// Ejemplo testigo de la página: un sueldo neto que queda por encima del techo, que es el caso
-// más frecuente y el que hace visible el escalonamiento en las 12 cuotas.
-const EJEMPLO = calcularDesempleo({
-  mejorRemuneracionNeta: 800_000,
-  mesesCotizados: 40,
-  edad: 35,
-});
+  // Ejemplo testigo de la página: un sueldo neto que queda por encima del techo, que es el caso
+  // más frecuente y el que hace visible el escalonamiento en las 12 cuotas.
+  const EJEMPLO = calcularDesempleo({
+    mejorRemuneracionNeta: 800_000,
+    mesesCotizados: 40,
+    edad: 35,
+  });
 
-// La escala que se muestra: los dos meses previos al vigente (por si el cese fue antes) y TODOS
-// los meses que ya tienen norma hacia adelante. La Res. 4/2026 fijó ocho meses de una vez, así que
-// "los últimos 6" escondía justo el mes en curso: la tabla ancla en el mes vigente, no en el final.
-const I_VIGENTE = SMVM_SERIE.findIndex((m) => m.periodo === SMVM.periodo);
-const ESCALA_VISIBLE = SMVM_SERIE.slice(Math.max(0, I_VIGENTE - 2));
-const SMVM_FIN = SMVM_SERIE[SMVM_SERIE.length - 1];
-const MES_FIN = etiquetaMes(SMVM_FIN.periodo);
+  // La escala que se muestra: los dos meses previos al vigente (por si el cese fue antes) y TODOS
+  // los meses que ya tienen norma hacia adelante. La Res. 4/2026 fijó ocho meses de una vez, así que
+  // "los últimos 6" escondía justo el mes en curso: la tabla ancla en el mes vigente, no en el final.
+  const I_VIGENTE = SMVM_SERIE.findIndex((m) => m.periodo === SMVM.periodo);
+  const ESCALA_VISIBLE = SMVM_SERIE.slice(Math.max(0, I_VIGENTE - 2));
+  const SMVM_FIN = SMVM_SERIE[SMVM_SERIE.length - 1];
+  const MES_FIN = etiquetaMes(SMVM_FIN.periodo);
+  return { SMVM, MES, MES_CORTO, PISO, TECHO, EJEMPLO, I_VIGENTE, ESCALA_VISIBLE, SMVM_FIN, MES_FIN };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MES, MES_CORTO }: DatosDelMes): Metadata => ({
   title: `Seguro de desempleo ${MES_CORTO}: monto y duración`,
   description: "La prestación por desempleo es el 75% de tu mejor sueldo neto con piso y techo, y baja desde el quinto mes. Mirá las 12 cuotas una por una.",
   alternates: { canonical: "/desempleo" },
@@ -51,9 +56,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ MES, PISO, TECHO }: DatosDelMes) => [
   {
     q: `¿Cuánto se cobra de desempleo en ${MES}?`,
     a: `Depende de tu sueldo. La prestación es el 75% del neto de tu mejor sueldo mensual, normal y habitual, de los seis meses antes del despido. En ${MES} nunca puede ser menos de ${formatARS(PISO, 0)} ni más de ${formatARS(TECHO, 0)}, porque la Resolución 4/2026 del Consejo del Salario fija el piso en el 50% del salario mínimo vital y móvil y el techo en el 100%. Como el salario mínimo sube casi todos los meses, esos dos números se mueven con él.`,
@@ -97,6 +106,9 @@ const faqs = [
 ];
 
 export default function DesempleoPage() {
+  const datos = datosDelMes();
+  const { SMVM, MES, PISO, TECHO, EJEMPLO, ESCALA_VISIBLE, MES_FIN } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [

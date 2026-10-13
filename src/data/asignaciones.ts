@@ -430,24 +430,31 @@ const CADENA: TablaAsignaciones[] = RESOLUCIONES_ASIGNACIONES_SIGUIENTES.reduce(
   (acc, r) => [...acc, moverMes(acc[acc.length - 1], r)],
   [ASIGNACIONES_PUBLICADAS],
 );
-const I_VIGENTE = CADENA.indexOf(vigenteEn(CADENA, (t) => t.periodo));
+function indiceVigente(): number {
+  return CADENA.indexOf(vigenteEn(CADENA, (t) => t.periodo));
+}
 
 /** La última tabla de la cadena (la del último mes con resolución cargada): la usa el cargador automático. */
 export const ASIGNACIONES_ULTIMA_CARGADA: TablaAsignaciones = CADENA[CADENA.length - 1];
 
 /** La tabla del mes que se liquida hoy: la publicada o, si ya empezó un mes posterior, la derivada. */
-export const ASIGNACIONES_VIGENTES: TablaAsignaciones = CADENA[I_VIGENTE];
+export function asignacionesVigentes(): TablaAsignaciones {
+  return CADENA[indiceVigente()];
+}
 
 /** La resolución del mes siguiente, si ya salió. */
-export const ASIGNACIONES_PROXIMAS: ResolucionAsignaciones | null =
-  RESOLUCIONES_ASIGNACIONES_SIGUIENTES[I_VIGENTE] ?? null;
+export function asignacionesProximas(): ResolucionAsignaciones | null {
+  return RESOLUCIONES_ASIGNACIONES_SIGUIENTES[indiceVigente()] ?? null;
+}
 
 /**
  * Snapshot del mes anterior. NO se muestra en la web: existe sólo para que check_asignaciones.ts
  * pueda verificar que cada valor vigente es el del mes previo movido por la movilidad del mes.
  */
-export const ASIGNACIONES_MES_ANTERIOR: SnapshotAsignaciones =
-  I_VIGENTE === 0 ? MES_ANTERIOR_PUBLICADO : snapshot(CADENA[I_VIGENTE - 1]);
+export function asignacionesMesAnterior(): SnapshotAsignaciones {
+  const i = indiceVigente();
+  return i === 0 ? MES_ANTERIOR_PUBLICADO : snapshot(CADENA[i - 1]);
+}
 
 /**
  * Los tres pagos por única vez (nacimiento, adopción y matrimonio) y —lo que casi nadie publica—
@@ -525,16 +532,8 @@ export const PAGO_UNICO = {
   ] as { clave: string; titulo: string; detalle: string; fuente: string }[],
 } as const;
 
-export const ASIGNACIONES_FUENTES = {
+const FUENTES_FIJAS = {
   consultadoEl: "2026-09-28",
-  resolucion: {
-    nombre: `${ASIGNACIONES_VIGENTES.resolucion}: montos y rangos de asignaciones familiares`,
-    url: ASIGNACIONES_VIGENTES.resolucionUrl,
-  },
-  cartilla: {
-    nombre: `ANSES: Montos de asignaciones familiares, AUH y embarazo (${ASIGNACIONES_VIGENTES.vigencia})`,
-    url: ASIGNACIONES_VIGENTES.cartillaUrl,
-  },
   ley: {
     nombre: "Ley 24.714: Régimen de Asignaciones Familiares",
     url: "https://www.argentina.gob.ar/normativa/nacional/ley-24714-39880",
@@ -553,3 +552,18 @@ export const ASIGNACIONES_FUENTES = {
     url: "https://www.anses.gob.ar/sites/default/files/cartilla/2019-10/matrimonio.pdf",
   },
 } as const;
+
+export function asignacionesFuentes() {
+  const v = asignacionesVigentes();
+  return {
+    ...FUENTES_FIJAS,
+    resolucion: {
+      nombre: `${v.resolucion}: montos y rangos de asignaciones familiares`,
+      url: v.resolucionUrl,
+    },
+    cartilla: {
+      nombre: `ANSES: Montos de asignaciones familiares, AUH y embarazo (${v.vigencia})`,
+      url: v.cartillaUrl,
+    },
+  };
+}

@@ -23,7 +23,7 @@ import path from "node:path";
 import { existsSync, mkdirSync } from "node:fs";
 import { IPC_SERIE, IPC_DESCARGADO_EL } from "../src/data/ipc-serie";
 import { INFLACION_FUENTES, IPC_DIA_PUBLICACION } from "../src/data/inflacion";
-import { APORTES, SUELDO_FUENTES, TOPE_SIPA } from "../src/data/sueldo";
+import { APORTES, SUELDO_FUENTES, topeSipa } from "../src/data/sueldo";
 import { DEDUCCIONES, GANANCIAS_FUENTES, GANANCIAS_VIGENCIA } from "../src/data/ganancias";
 import { AGUINALDO_FUENTES } from "../src/data/aguinaldo";
 import { DECRETO_407 } from "../src/data/recibo-sueldo";
@@ -181,7 +181,7 @@ export const EJEMPLO = (() => {
   const { inicio, sindicalPct, brutos, mesConError } = EJEMPLO_MS;
   const r2 = (n: number) => Math.round(n * 100) / 100;
   const meses = brutos.map((bruto, i) => {
-    const base = Math.min(bruto, TOPE_SIPA.baseMaxima);
+    const base = Math.min(bruto, topeSipa().baseMaxima);
     const jub = r2(base * APORTES.jubilacion);
     const pami = r2(base * APORTES.pami);
     // Ese mes trae la obra social calculada sobre el sueldo anterior: el control lo marca.
@@ -318,7 +318,7 @@ function buildDatos(wb: ExcelJS.Workbook) {
     [LEY.jub, "Jubilación (SIPA)", APORTES.jubilacion, PCT_FMT, "Ley 24.241, art. 11."],
     [LEY.pami, "Ley 19.032 (PAMI)", APORTES.pami, PCT_FMT, "INSSJP."],
     [LEY.os, "Obra social", APORTES.obraSocial, PCT_FMT, "Ley 23.660."],
-    [LEY.tope, "Tope de la base para aportes (por mes)", TOPE_SIPA.baseMaxima, ARS_FMT_DEC, `${TOPE_SIPA.fuente}. Vigente en ${TOPE_SIPA.vigencia}: cambia todos los meses. Por encima, los aportes dejan de crecer.`],
+    [LEY.tope, "Tope de la base para aportes (por mes)", topeSipa().baseMaxima, ARS_FMT_DEC, `${topeSipa().fuente}. Vigente en ${topeSipa().vigencia}: cambia todos los meses. Por encima, los aportes dejan de crecer.`],
     [LEY.mni, "Ganancias: mínimo no imponible (anual)", DEDUCCIONES.mni, ARS_FMT_DEC, `ARCA, art. 30 LIG, ${GANANCIAS_VIGENCIA}.`],
     [LEY.especial, "Ganancias: deducción especial (anual)", DEDUCCIONES.deduccionEspecialDependencia, ARS_FMT_DEC, "Relación de dependencia."],
     [LEY.conyuge, "Ganancias: cónyuge (anual)", DEDUCCIONES.conyuge, ARS_FMT_DEC, ""],
@@ -855,7 +855,7 @@ function buildInicio(wb: ExcelJS.Workbook) {
   bandaSeccion(ws, `A${r}:B${r}`, "LO QUE CONVIENE SABER");
   r++;
   const claves = [
-    `Los descuentos de ley son tres y suman 17%: jubilación 11%, Ley 19.032 (PAMI) 3% y obra social 3%. Se calculan sobre lo remunerativo, hasta un tope que cambia todos los meses (${TOPE_SIPA.vigencia}: $${Math.round(TOPE_SIPA.baseMaxima).toLocaleString("es-AR")}).`,
+    `Los descuentos de ley son tres y suman 17%: jubilación 11%, Ley 19.032 (PAMI) 3% y obra social 3%. Se calculan sobre lo remunerativo, hasta un tope que cambia todos los meses (${topeSipa().vigencia}: $${Math.round(topeSipa().baseMaxima).toLocaleString("es-AR")}).`,
     "Lo no remunerativo no paga jubilación ni Ley 19.032. Algunos convenios sí le descuentan obra social o cuota sindical: lo indicás en «Mis datos».",
     "La cuota sindical se descuenta sólo si estás afiliado. Desde la Ley 27.802 (marzo de 2026), las contribuciones solidarias que fijan los convenios para afiliados y no afiliados tienen un tope de 2% de la remuneración; la cuota de afiliación queda afuera de ese tope.",
     "Desde junio de 2026 (Decreto 407/2026) el recibo también muestra lo que paga tu empleador por vos. Esta planilla controla tus descuentos, no las contribuciones del empleador.",
@@ -918,7 +918,7 @@ export async function generarPlanillaMiSueldo(): Promise<string> {
     ],
     SUELDO_FUENTES.consultadoEl,
     [],
-    `Planilla de calcular.ar. Serie del IPC descargada el ${IPC_DESCARGADO_EL}; tope de aportes de ${TOPE_SIPA.vigencia}; deducciones de Ganancias del ${GANANCIAS_VIGENCIA} (ARCA, consultadas el ${GANANCIAS_FUENTES.consultadoEl}). Cuando cambia uno de estos datos regeneramos el archivo: el mismo enlace de descarga te baja la versión al día, sin costo.`,
+    `Planilla de calcular.ar. Serie del IPC descargada el ${IPC_DESCARGADO_EL}; tope de aportes de ${topeSipa().vigencia}; deducciones de Ganancias del ${GANANCIAS_VIGENCIA} (ARCA, consultadas el ${GANANCIAS_FUENTES.consultadoEl}). Cuando cambia uno de estos datos regeneramos el archivo: el mismo enlace de descarga te baja la versión al día, sin costo.`,
   );
   for (const ws of hojas) await proteger(ws);
   // Abre en «Mis recibos», que es lo que se completa todos los meses.
@@ -935,7 +935,7 @@ if (process.argv[1] && /gen_planilla_mi_sueldo\.ts$/.test(process.argv[1])) {
   generarPlanillaMiSueldo()
     .then((ruta) => {
       console.log(`Planilla Mi Sueldo generada: ${ruta}`);
-      console.log(`   IPC hasta ${nombrePeriodo(ULTIMO_PERIODO)} · tope ${TOPE_SIPA.vigencia} · ${N_MESES} meses de recibos`);
+      console.log(`   IPC hasta ${nombrePeriodo(ULTIMO_PERIODO)} · tope ${topeSipa().vigencia} · ${N_MESES} meses de recibos`);
     })
     .catch((e) => {
       console.error(e);

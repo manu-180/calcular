@@ -15,38 +15,43 @@ import { alquilerMensualQueAgotaElTope, calcularDeduccionAlquiler } from "@/lib/
 import { formatARS } from "@/lib/formato";
 
 // El alquiler mensual con el que recién se agota el tope: derivado del tope vigente, no escrito.
-const ALQUILER_QUE_AGOTA = alquilerMensualQueAgotaElTope();
+function datosDelMes() {
+  const ALQUILER_QUE_AGOTA = alquilerMensualQueAgotaElTope();
 
-// Casos testigo, calculados con el mismo motor que usa la calculadora (si el motor cambia, el
-// texto cambia con él: acá no hay números a mano).
-const BASE_CASO = {
-  alquilerMensual: 450_000,
-  mesesPagados: 12,
-  conyuge: false,
-  hijos: 0,
-  titularDeInmueble: false,
-  computarDiezPorCiento: false,
-};
+  // Casos testigo, calculados con el mismo motor que usa la calculadora (si el motor cambia, el
+  // texto cambia con él: acá no hay números a mano).
+  const BASE_CASO = {
+    alquilerMensual: 450_000,
+    mesesPagados: 12,
+    conyuge: false,
+    hijos: 0,
+    titularDeInmueble: false,
+    computarDiezPorCiento: false,
+  };
 
-const CASO_ALTO = calcularDeduccionAlquiler({ ...BASE_CASO, brutoMensual: 3_000_000 });
-const CASO_BAJO = calcularDeduccionAlquiler({ ...BASE_CASO, brutoMensual: 1_800_000 });
-const CASO_2025 = calcularDeduccionAlquiler({
-  ...BASE_CASO,
-  brutoMensual: 3_000_000,
-  computarDiezPorCiento: true,
-});
+  const CASO_ALTO = calcularDeduccionAlquiler({ ...BASE_CASO, brutoMensual: 3_000_000 });
+  const CASO_BAJO = calcularDeduccionAlquiler({ ...BASE_CASO, brutoMensual: 1_800_000 });
+  const CASO_2025 = calcularDeduccionAlquiler({
+    ...BASE_CASO,
+    brutoMensual: 3_000_000,
+    computarDiezPorCiento: true,
+  });
 
-const PCT_ALTO = (CASO_ALTO.alicuotaEfectiva * 100).toLocaleString("es-AR", {
-  maximumFractionDigits: 1,
-});
-const MESES_ALTO = CASO_ALTO.mesesDeAlquilerQueVuelven.toLocaleString("es-AR", {
-  maximumFractionDigits: 1,
-});
-const DIFERENCIA_2026 = CASO_2025.ahorroAnual - CASO_ALTO.ahorroAnual;
+  const PCT_ALTO = (CASO_ALTO.alicuotaEfectiva * 100).toLocaleString("es-AR", {
+    maximumFractionDigits: 1,
+  });
+  const MESES_ALTO = CASO_ALTO.mesesDeAlquilerQueVuelven.toLocaleString("es-AR", {
+    maximumFractionDigits: 1,
+  });
+  const DIFERENCIA_2026 = CASO_2025.ahorroAnual - CASO_ALTO.ahorroAnual;
 
-const ANIO = new Date().getFullYear();
+  const ANIO = new Date().getFullYear();
+  return { ALQUILER_QUE_AGOTA, BASE_CASO, CASO_ALTO, CASO_BAJO, CASO_2025, PCT_ALTO, MESES_ALTO, DIFERENCIA_2026, ANIO };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ ANIO }: DatosDelMes): Metadata => ({
   title: `Deducción de alquiler en Ganancias ${ANIO}: cuánto vuelve`,
   description: `Se deduce el 40% del alquiler con un tope anual y lo que vuelve depende de tu alícuota. Calculá el ahorro real y el cambio del inciso k) en ${PRIMER_EJERCICIO_EXENCION}.`,
   alternates: { canonical: "/deduccion-alquiler" },
@@ -59,9 +64,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ ALQUILER_QUE_AGOTA, CASO_ALTO, CASO_BAJO, PCT_ALTO, MESES_ALTO, DIFERENCIA_2026 }: DatosDelMes) => [
   {
     q: "¿Cuánto se puede deducir del alquiler en Ganancias?",
     a: `El 40% de lo que pagás de alquiler por la casa donde vivís, con un tope anual de ${formatARS(TOPE_DEDUCCION_ALQUILER, 2)} para el período en curso (${ALQUILER_VIGENCIA}). El tope no es un número propio: el art. 85 inc. h) lo ata al inc. a) del art. 30, o sea a la ganancia no imponible, y se actualiza cuando ella se actualiza. Hay además una condición que deja afuera a mucha gente: solo la puede usar quien no sea dueño de ningún inmueble, «cualquiera sea la proporción».`,
@@ -109,6 +118,9 @@ const faqs = [
 ];
 
 export default function DeduccionAlquilerPage() {
+  const datos = datosDelMes();
+  const { ALQUILER_QUE_AGOTA, CASO_ALTO, CASO_2025, PCT_ALTO, MESES_ALTO, DIFERENCIA_2026 } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [

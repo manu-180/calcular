@@ -2,7 +2,7 @@
 // REGLA DE ORO: verificados SOLO contra fuente oficial, nunca blogs. La fecha de
 // verificación va visible en la página.
 
-import { PRESTACIONES_VIGENTES } from "./prestaciones";
+import { prestacionesVigentes } from "./prestaciones";
 
 // Aportes personales obligatorios sobre la remuneración bruta:
 //   jubilación (SIPA) 11% — Ley 24.241 art. 11
@@ -21,12 +21,15 @@ export const TOTAL_APORTES =
 // la base máxima, los aportes dejan de crecer (la base se trunca). Se actualiza
 // MENSUALMENTE por movilidad (Dec. 274/2024) y sale del art. 3 de la misma resolución de
 // ANSES que fija los haberes: se toma de prestaciones.ts para que nunca haya dos copias.
-export const TOPE_SIPA = {
-  baseMaxima: PRESTACIONES_VIGENTES.baseImponibleMaxima,
-  baseMinima: PRESTACIONES_VIGENTES.baseImponibleMinima,
-  vigencia: PRESTACIONES_VIGENTES.vigencia,
-  fuente: `${PRESTACIONES_VIGENTES.resolucion}, art. 3 (${PRESTACIONES_VIGENTES.resolucionBO})`,
-};
+export function topeSipa() {
+  const p = prestacionesVigentes();
+  return {
+    baseMaxima: p.baseImponibleMaxima,
+    baseMinima: p.baseImponibleMinima,
+    vigencia: p.vigencia,
+    fuente: `${p.resolucion}, art. 3 (${p.resolucionBO})`,
+  };
+}
 
 export const SUELDO_FUENTES = {
   jubilacion: {

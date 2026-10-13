@@ -13,7 +13,7 @@ import { calcularDespidoCasas, type Modalidad } from "@/lib/despido-casas-partic
 import { formatARS, parseMonto } from "@/lib/formato";
 import { OfertaPlanilla } from "@/components/OfertaPlanilla";
 import { hojaCasas } from "@/components/oferta/hojas";
-import { VIGENCIA as VIGENCIA_CASAS } from "@/data/casas-particulares";
+import { vigenciaCasas } from "@/data/casas-particulares";
 import type { DatosOferta } from "@/lib/oferta";
 
 const TONOS = {
@@ -50,7 +50,7 @@ export function CalculadoraDespidoCasas({ oferta }: { oferta?: DatosOferta }) {
     () =>
       oferta
         ? hojaCasas(oferta.archivo, {
-            mesId: VIGENCIA_CASAS.mesId,
+            mesId: vigenciaCasas().mesId,
             categoriaId: "tareas-generales",
             modalidad,
             horasSemanales: 20,

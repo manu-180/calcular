@@ -41,7 +41,7 @@
 // CÓMO SE ROTA: no se rota. Se mueve solo cuando se actualiza `prestaciones.ts` (haber mínimo y
 // bono) y `desempleo.ts` (escala del SMVM, de la que sale el tope de compatibilidad laboral).
 
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "./prestaciones";
+import { bonoVigente, prestacionesVigentes } from "./prestaciones";
 
 /** Clave estable de cada prestación no contributiva que muestra la página. */
 export type ClavePnc = "discapacidad" | "vejez" | "madre7hijos" | "puam";
@@ -181,59 +181,61 @@ export const INCAPACIDAD_MINIMA_INVALIDEZ_LABORAL = 0.66;
 
 export type FuentePnc = { nombre: string; url: string; detalle: string };
 
-export const PNC_FUENTES: {
+export function pncFuentes(): {
   consultadoEl: string;
   lista: FuentePnc[];
-} = {
-  consultadoEl: "2026-08-15",
-  lista: [
-    {
-      nombre: "Ley 27.793: Emergencia Nacional en Discapacidad",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/331706/20250922",
-      detalle:
-        "B.O. 22/9/2025: art. 5 (nueva denominación y CUD), art. 6 (requisitos y el 70% del haber mínimo), art. 7 (compatibilidad con el trabajo hasta 2 SMVM) y art. 9 (conversión de oficio de las pensiones anteriores).",
-    },
-    {
-      nombre: "Decreto 84/2026: reglamentación de la Ley 27.793",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/338137/20260204",
-      detalle:
-        "B.O. 4/2/2026. Anexo I art. 5: la PNC a la vejez y la de invalidez laboral siguen bajo el Decreto 432/97. Anexo II: liquidación a cargo de ANSES, suspensión, caducidad y rehabilitación.",
-    },
-    {
-      nombre: "Decreto 432/1997 (texto actualizado): pensiones a la vejez y por invalidez",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/40000-44999/43325/texact.htm",
-      detalle:
-        "Requisitos de la pensión a la vejez (Anexo I) y de la pensión por invalidez laboral, estos últimos sustituidos por el Decreto 843/2024 (B.O. 23/9/2024), que bajó el piso de incapacidad del 76% al 66%.",
-    },
-    {
-      nombre: "Ley 23.746: pensión vitalicia para madres de 7 hijos o más",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/147/norma.htm",
-      detalle:
-        "B.O. 24/10/1989. Art. 1: el monto es igual al de la pensión mínima; art. 2: requisitos de carencia de recursos y de cobertura previsional.",
-    },
-    {
-      nombre: "Decreto 2360/1990 (texto actualizado): reglamento de la Ley 23.746",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/4818/texact.htm",
-      detalle:
-        "B.O. 8/11/1990. Art. 2: los requisitos reales del trámite (residencia de 1 año para argentinas y 15 para extranjeras, incompatibilidad con cualquier PNC, parientes obligados a prestar alimentos). Art. 3 y 4: pensión derivada al viudo incapacitado y a los hijos. Art. 10: se paga desde el mes siguiente al acto de otorgamiento. Art. 11: causales de suspensión. Art. 12 inc. d: ausencia del país mayor a 60 días por año calendario extingue el derecho.",
-    },
-    {
-      nombre: "Ley 13.478, art. 9 (texto actualizado)",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/32032/texact.htm",
-      detalle:
-        "La norma madre de las pensiones no contributivas, con el artículo 9 sustituido por el art. 5 de la Ley 27.793.",
-    },
-    {
-      nombre: `${PRESTACIONES_VIGENTES.resolucion}: haber mínimo garantizado`,
-      url: PRESTACIONES_VIGENTES.resolucionUrl,
-      detalle:
-        `${PRESTACIONES_VIGENTES.resolucionBO}: el haber mínimo del que se derivan todos los montos de esta página.`,
-    },
-    {
-      nombre: `${BONO_VIGENTE.norma}: bono extraordinario previsional`,
-      url: BONO_VIGENTE.normaUrl,
-      detalle:
-        `${BONO_VIGENTE.normaBO}. Art. 2 inc. c: alcanza expresamente a las pensiones no contributivas por vejez, invalidez, madres de 7 hijos o más y a la PUAM. Arts. 3 y 4: monto y forma de liquidación.`,
-    },
-  ],
-};
+} {
+  return {
+    consultadoEl: "2026-08-15",
+    lista: [
+      {
+        nombre: "Ley 27.793: Emergencia Nacional en Discapacidad",
+        url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/331706/20250922",
+        detalle:
+          "B.O. 22/9/2025: art. 5 (nueva denominación y CUD), art. 6 (requisitos y el 70% del haber mínimo), art. 7 (compatibilidad con el trabajo hasta 2 SMVM) y art. 9 (conversión de oficio de las pensiones anteriores).",
+      },
+      {
+        nombre: "Decreto 84/2026: reglamentación de la Ley 27.793",
+        url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/338137/20260204",
+        detalle:
+          "B.O. 4/2/2026. Anexo I art. 5: la PNC a la vejez y la de invalidez laboral siguen bajo el Decreto 432/97. Anexo II: liquidación a cargo de ANSES, suspensión, caducidad y rehabilitación.",
+      },
+      {
+        nombre: "Decreto 432/1997 (texto actualizado): pensiones a la vejez y por invalidez",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/40000-44999/43325/texact.htm",
+        detalle:
+          "Requisitos de la pensión a la vejez (Anexo I) y de la pensión por invalidez laboral, estos últimos sustituidos por el Decreto 843/2024 (B.O. 23/9/2024), que bajó el piso de incapacidad del 76% al 66%.",
+      },
+      {
+        nombre: "Ley 23.746: pensión vitalicia para madres de 7 hijos o más",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/147/norma.htm",
+        detalle:
+          "B.O. 24/10/1989. Art. 1: el monto es igual al de la pensión mínima; art. 2: requisitos de carencia de recursos y de cobertura previsional.",
+      },
+      {
+        nombre: "Decreto 2360/1990 (texto actualizado): reglamento de la Ley 23.746",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/4818/texact.htm",
+        detalle:
+          "B.O. 8/11/1990. Art. 2: los requisitos reales del trámite (residencia de 1 año para argentinas y 15 para extranjeras, incompatibilidad con cualquier PNC, parientes obligados a prestar alimentos). Art. 3 y 4: pensión derivada al viudo incapacitado y a los hijos. Art. 10: se paga desde el mes siguiente al acto de otorgamiento. Art. 11: causales de suspensión. Art. 12 inc. d: ausencia del país mayor a 60 días por año calendario extingue el derecho.",
+      },
+      {
+        nombre: "Ley 13.478, art. 9 (texto actualizado)",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/32032/texact.htm",
+        detalle:
+          "La norma madre de las pensiones no contributivas, con el artículo 9 sustituido por el art. 5 de la Ley 27.793.",
+      },
+      {
+        nombre: `${prestacionesVigentes().resolucion}: haber mínimo garantizado`,
+        url: prestacionesVigentes().resolucionUrl,
+        detalle:
+          `${prestacionesVigentes().resolucionBO}: el haber mínimo del que se derivan todos los montos de esta página.`,
+      },
+      {
+        nombre: `${bonoVigente().norma}: bono extraordinario previsional`,
+        url: bonoVigente().normaUrl,
+        detalle:
+          `${bonoVigente().normaBO}. Art. 2 inc. c: alcanza expresamente a las pensiones no contributivas por vejez, invalidez, madres de 7 hijos o más y a la PUAM. Arts. 3 y 4: monto y forma de liquidación.`,
+      },
+    ],
+  };
+}

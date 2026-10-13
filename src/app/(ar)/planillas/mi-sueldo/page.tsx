@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PlanillaLanding } from "../_producto";
 import { INFLACION_FUENTES, IPC_DIA_PUBLICACION } from "@/data/inflacion";
 import { IPC_DESCARGADO_EL } from "@/data/ipc-serie";
-import { TOPE_SIPA } from "@/data/sueldo";
+import { topeSipa } from "@/data/sueldo";
 import { MESES_LARGOS, nombrePeriodo, ULTIMO_PERIODO } from "@/lib/inflacion";
 import { PLANILLA_MS } from "@/lib/prefill/mi-sueldo";
 import { datosEjemplo, hojaMiSueldo, pct } from "@/components/mi-sueldo/modelo";
@@ -30,13 +30,19 @@ const fechaLarga = (iso: string) => {
   return `${d} de ${MESES_LARGOS[m - 1]} de ${a}`;
 };
 
-// La previa es la hoja «Para pedir aumento» del archivo genérico, calculada en el server con los
-// motores del sitio; scripts/check_planilla_mi_sueldo.ts verifica que el archivo da esto.
-const EJEMPLO = datosEjemplo();
-const { hoja, resumen } = hojaMiSueldo(PRODUCTO.archivo ?? PLANILLA_MS.archivo, EJEMPLO);
-const INF = resumen.inflacion;
+function datosDelMes() {
+  // La previa es la hoja «Para pedir aumento» del archivo genérico, calculada en el server con los
+  // motores del sitio; scripts/check_planilla_mi_sueldo.ts verifica que el archivo da esto.
+  const EJEMPLO = datosEjemplo();
+  const { hoja, resumen } = hojaMiSueldo(PRODUCTO.archivo ?? PLANILLA_MS.archivo, EJEMPLO);
+  const INF = resumen.inflacion;
+  return { EJEMPLO, hoja, resumen, INF };
+}
+
+type DatosDelMes = ReturnType<typeof datosDelMes>;
 
 export default function PlanillaMiSueldoPage() {
+  const { EJEMPLO, hoja, resumen, INF } = datosDelMes();
   return (
     <PlanillaLanding
       producto={PRODUCTO}
@@ -54,7 +60,7 @@ export default function PlanillaMiSueldoPage() {
           La Planilla Mi Sueldo es un archivo de <strong>Excel y Google Sheets</strong> para empleados en relación
           de dependencia. Cargás hasta <strong>{PLANILLA_MS.meses} recibos</strong> y controla que la{" "}
           <strong>jubilación (11%), la Ley 19.032 (3%), la obra social (3%) y la cuota sindical</strong> estén bien
-          descontadas, con el tope de aportes de {TOPE_SIPA.vigencia}. Compara tu sueldo con el{" "}
+          descontadas, con el tope de aportes de {topeSipa().vigencia}. Compara tu sueldo con el{" "}
           <strong>IPC oficial del INDEC</strong> (hasta {nombrePeriodo(ULTIMO_PERIODO)}) y te dice cuánto poder de
           compra perdiste desde tu último aumento y <strong>qué aumento lo recupera</strong>, en una hoja lista para
           imprimir. También proyecta tu aguinaldo y te avisa si te acercás al piso de Ganancias. Pago único de{" "}

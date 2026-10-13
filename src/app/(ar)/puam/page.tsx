@@ -4,18 +4,24 @@ import { CalculadoraPuam } from "@/components/CalculadoraPuam";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
-import { PUAM, PUAM_CARACTERES, PUAM_FUENTES, PUAM_REQUISITOS } from "@/data/puam";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES as V } from "@/data/prestaciones";
+import { PUAM, PUAM_CARACTERES, puamFuentes, PUAM_REQUISITOS } from "@/data/puam";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { compararConMinima, compararConVejez, montoPuam, topeEmbargoAlimentos } from "@/lib/puam";
 import { formatARS, formatPct } from "@/lib/formato";
 
-const MES = V.vigencia;
-const M = montoPuam();
-const COMP = compararConMinima();
-const VEJEZ = compararConVejez();
-const EMBARGO = topeEmbargoAlimentos();
+function datosDelMes() {
+  const V = prestacionesVigentes();
+  const MES = V.vigencia;
+  const M = montoPuam();
+  const COMP = compararConMinima();
+  const VEJEZ = compararConVejez();
+  const EMBARGO = topeEmbargoAlimentos();
+  return { V, MES, M, COMP, VEJEZ, EMBARGO };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MES }: DatosDelMes): Metadata => ({
   title: `PUAM ${MES}: cuánto se cobra y quién puede pedirla`,
   description: `La PUAM es el 80% del haber mínimo. El monto de ${MES} con bono, quién califica y la letra chica: no se puede trabajar y no genera pensión.`,
   alternates: { canonical: "/puam" },
@@ -28,12 +34,16 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ V, MES, M, VEJEZ, EMBARGO }: DatosDelMes) => [
   {
     q: `¿Cuánto cobra la PUAM en ${MES}?`,
-    a: `El haber es ${formatARS(M.haber, 2)} y con el bono extraordinario de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma} se depositan ${formatARS(M.total, 2)}. Ese haber no sale de una resolución propia de la PUAM. El artículo 14 de la Ley 27.260 dice que es el 80% del haber mínimo garantizado, que en ${MES} es ${formatARS(V.haberMinimo, 2)} por la ${V.resolucion}. Por eso sube todos los meses junto con las jubilaciones, sin que nadie anuncie un aumento de la PUAM.`,
+    a: `El haber es ${formatARS(M.haber, 2)} y con el bono extraordinario de ${formatARS(bonoVigente().monto, 0)} del ${bonoVigente().norma} se depositan ${formatARS(M.total, 2)}. Ese haber no sale de una resolución propia de la PUAM. El artículo 14 de la Ley 27.260 dice que es el 80% del haber mínimo garantizado, que en ${MES} es ${formatARS(V.haberMinimo, 2)} por la ${V.resolucion}. Por eso sube todos los meses junto con las jubilaciones, sin que nadie anuncie un aumento de la PUAM.`,
   },
   {
     q: "¿Puedo viajar al exterior cobrando la PUAM?",
@@ -77,11 +87,14 @@ const faqs = [
   },
   {
     q: "¿El bono extraordinario le corresponde a la PUAM?",
-    a: `En ${MES}, sí: el ${BONO_VIGENTE.norma} la incluye y, como el haber está por debajo del mínimo, le toca el bono completo de ${formatARS(BONO_VIGENTE.monto, 0)}. Pero el bono no está garantizado: lo fija un decreto cada mes y puede no salir. El mes que no haya decreto, se cobra solo el haber, y la brecha con un jubilado de la mínima se abre de golpe.`,
+    a: `En ${MES}, sí: el ${bonoVigente().norma} la incluye y, como el haber está por debajo del mínimo, le toca el bono completo de ${formatARS(bonoVigente().monto, 0)}. Pero el bono no está garantizado: lo fija un decreto cada mes y puede no salir. El mes que no haya decreto, se cobra solo el haber, y la brecha con un jubilado de la mínima se abre de golpe.`,
   },
 ];
 
 export default function PuamPage() {
+  const datos = datosDelMes();
+  const { V, MES, M, COMP, VEJEZ } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -98,7 +111,7 @@ export default function PuamPage() {
       },
       datasetSchema({
         nombre: `PUAM: monto y requisitos vigentes en ${MES}`,
-        descripcion: `Haber de la Pensión Universal para el Adulto Mayor en ${MES}: ${formatARS(M.haber, 2)}, equivalente al 80% del haber mínimo garantizado (${formatARS(V.haberMinimo, 2)}, ${V.resolucion}), y ${formatARS(M.total, 2)} con el bono de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma}. Incluye los requisitos del art. 13 de la Ley 27.260, la incompatibilidad con el trabajo del art. 16 (sustituido por la Ley 27.467) y la comparación en pesos contra la jubilación mínima y la pensión no contributiva a la vejez.`,
+        descripcion: `Haber de la Pensión Universal para el Adulto Mayor en ${MES}: ${formatARS(M.haber, 2)}, equivalente al 80% del haber mínimo garantizado (${formatARS(V.haberMinimo, 2)}, ${V.resolucion}), y ${formatARS(M.total, 2)} con el bono de ${formatARS(bonoVigente().monto, 0)} del ${bonoVigente().norma}. Incluye los requisitos del art. 13 de la Ley 27.260, la incompatibilidad con el trabajo del art. 16 (sustituido por la Ley 27.467) y la comparación en pesos contra la jubilación mínima y la pensión no contributiva a la vejez.`,
         url: "/puam",
         modificado: `${V.periodo}-01`,
         fuenteNombre: V.resolucion,
@@ -109,7 +122,7 @@ export default function PuamPage() {
         descripcion:
           "Monto de la PUAM derivado del haber mínimo, requisitos del art. 13 de la Ley 27.260 y los tres puntos que la mayoría de las publicaciones tiene al revés porque cita el texto de 2016.",
         url: "/puam",
-        modificado: PUAM_FUENTES.consultadoEl,
+        modificado: puamFuentes().consultadoEl,
       }),
       {
         "@type": "FAQPage",
@@ -142,11 +155,11 @@ export default function PuamPage() {
         </p>
       </header>
 
-      <RespuestaPrimero actualizado={PUAM_FUENTES.consultadoEl}>
+      <RespuestaPrimero actualizado={puamFuentes().consultadoEl}>
         <p>
           En {MES} la PUAM paga un haber de <strong>{formatARS(M.haber, 2)}</strong> (el 80% del
           haber mínimo de {formatARS(V.haberMinimo, 2)} que fijó la {V.resolucion}), y con el bono de{" "}
-          {formatARS(BONO_VIGENTE.monto, 0)} se depositan <strong>{formatARS(M.total, 2)}</strong>.
+          {formatARS(bonoVigente().monto, 0)} se depositan <strong>{formatARS(M.total, 2)}</strong>.
           Se pide desde los {PUAM.edadMinima} años y <strong>no pide ningún año de aportes</strong>.
           A cambio: desde 2018 <strong>no se puede cobrar trabajando</strong> (art. 16, cambiado por
           la Ley 27.467), <strong>no deja pensión</strong> para el cónyuge (art. 15 inc. a) y ANSES
@@ -189,10 +202,10 @@ export default function PuamPage() {
                   </td>
                 </tr>
                 <tr className="border-t border-zinc-100">
-                  <td className="px-4 py-2.5 text-zinc-600">Bono ({BONO_VIGENTE.norma})</td>
+                  <td className="px-4 py-2.5 text-zinc-600">Bono ({bonoVigente().norma})</td>
                   <td className="px-4 py-2.5 text-right text-zinc-900">{formatARS(M.bono, 0)}</td>
                   <td className="px-4 py-2.5 text-right text-zinc-900">
-                    {formatARS(BONO_VIGENTE.monto, 0)}
+                    {formatARS(bonoVigente().monto, 0)}
                   </td>
                   <td className="px-4 py-2.5 text-right text-zinc-600">—</td>
                 </tr>
@@ -374,7 +387,7 @@ export default function PuamPage() {
       <section className="space-y-2 border-t border-zinc-200 pt-6 text-sm text-zinc-500">
         <h2 className="text-base font-semibold text-zinc-700">Fuentes</h2>
         <ul className="space-y-1">
-          {PUAM_FUENTES.lista.map((f) => (
+          {puamFuentes().lista.map((f) => (
             <li key={f.url}>
               <a
                 href={f.url}
@@ -392,7 +405,7 @@ export default function PuamPage() {
           Esta página es una guía informativa. Usa el texto actualizado de la Ley 27.260 publicado
           en InfoLEG y las normas del Boletín Oficial que fijan el haber mínimo y el bono del mes. No
           otorga ni liquida beneficios: el alta depende de la evaluación socioeconómica y
-          patrimonial de ANSES. Texto legal consultado el {PUAM_FUENTES.consultadoEl}.
+          patrimonial de ANSES. Texto legal consultado el {puamFuentes().consultadoEl}.
         </p>
       </section>
     </article>

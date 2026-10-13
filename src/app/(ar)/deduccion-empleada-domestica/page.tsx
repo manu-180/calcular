@@ -17,35 +17,40 @@ import { PlanillaCTA } from "@/components/PlanillaCTA";
 
 // Dos casos testigo, calculados con el mismo motor que usa la calculadora (si el motor cambia,
 // el texto cambia con él: acá no hay números escritos a mano).
-const CASO_ALTO = calcularDeduccionDomestica({
-  sueldoMensual: 450_000,
-  mesesTrabajados: 12,
-  incluirAguinaldo: true,
-  horasSemanales: 16,
-  condicion: "activo-mayor-18",
-  brutoMensualEmpleador: 3_500_000,
-  conyuge: false,
-  hijos: 0,
-});
+function datosDelMes() {
+  const CASO_ALTO = calcularDeduccionDomestica({
+    sueldoMensual: 450_000,
+    mesesTrabajados: 12,
+    incluirAguinaldo: true,
+    horasSemanales: 16,
+    condicion: "activo-mayor-18",
+    brutoMensualEmpleador: 3_500_000,
+    conyuge: false,
+    hijos: 0,
+  });
 
-const CASO_BAJO = calcularDeduccionDomestica({
-  sueldoMensual: 150_000,
-  mesesTrabajados: 12,
-  incluirAguinaldo: true,
-  horasSemanales: 8,
-  condicion: "activo-mayor-18",
-  brutoMensualEmpleador: 1_800_000,
-  conyuge: false,
-  hijos: 0,
-});
+  const CASO_BAJO = calcularDeduccionDomestica({
+    sueldoMensual: 150_000,
+    mesesTrabajados: 12,
+    incluirAguinaldo: true,
+    horasSemanales: 8,
+    condicion: "activo-mayor-18",
+    brutoMensualEmpleador: 1_800_000,
+    conyuge: false,
+    hijos: 0,
+  });
 
-const PCT_ALTO = (CASO_ALTO.alicuotaEfectiva * 100).toLocaleString("es-AR", {
-  maximumFractionDigits: 1,
-});
+  const PCT_ALTO = (CASO_ALTO.alicuotaEfectiva * 100).toLocaleString("es-AR", {
+    maximumFractionDigits: 1,
+  });
 
-const ANIO = new Date().getFullYear();
+  const ANIO = new Date().getFullYear();
+  return { CASO_ALTO, CASO_BAJO, PCT_ALTO, ANIO };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ ANIO }: DatosDelMes): Metadata => ({
   title: `Deducción de empleada doméstica en Ganancias ${ANIO}`,
   description: "El tope anual es la ganancia no imponible, pero deducir no es cobrar: te vuelve tu alícuota. Calculá el ahorro real según tu sueldo y qué pagos cuentan.",
   alternates: { canonical: "/deduccion-empleada-domestica" },
@@ -58,9 +63,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ CASO_ALTO, PCT_ALTO }: DatosDelMes) => [
   {
     q: "¿Cuánto se puede deducir por empleada doméstica en Ganancias?",
     a: `El tope anual es ${formatARS(TOPE_DEDUCCION_ANUAL, 2)} para el período fiscal en curso (${DEDUCCION_VIGENCIA}). ARCA no lo publica aparte: la Ley 26.063 lo ata a otro número («${DEDUCCION_TEXTOS.tope}»). Así que el tope es siempre igual a la ganancia no imponible del año y se actualiza cuando ella se actualiza. Hasta ese límite, se deduce lo que pagaste de verdad.`,
@@ -104,6 +113,9 @@ const faqs = [
 ];
 
 export default function DeduccionEmpleadaDomesticaPage() {
+  const datos = datosDelMes();
+  const { CASO_ALTO, CASO_BAJO, PCT_ALTO } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [

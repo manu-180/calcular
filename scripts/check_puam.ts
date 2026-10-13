@@ -2,7 +2,7 @@
 // Correr con: npx tsx scripts/check_puam.ts
 //
 // EL ANCLA QUE IMPORTA: acá no hay un solo monto escrito a mano. El haber se DERIVA del haber
-// mínimo garantizado (80%, art. 14 de la Ley 27.260) y se cruza contra `PRESTACIONES_VIGENTES.puam`,
+// mínimo garantizado (80%, art. 14 de la Ley 27.260) y se cruza contra `prestacionesVigentes().puam`,
 // que se transcribe del artículo 5 de la resolución mensual de ANSES. Son dos caminos
 // independientes hacia el mismo número: si alguien rota el haber mínimo y se equivoca en un
 // dígito, o toca el porcentaje sin norma, los dos caminos dejan de coincidir y esto sale rojo.
@@ -10,8 +10,8 @@
 // El segundo ancla es la diferencia contra la pensión no contributiva a la vejez: tiene que ser
 // exactamente diez puntos del haber mínimo (80% − 70%), porque el bono es plano y se cancela.
 
-import { PUAM, PUAM_CARACTERES, PUAM_FUENTES, PUAM_REQUISITOS } from "../src/data/puam";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES as V } from "../src/data/prestaciones";
+import { PUAM, PUAM_CARACTERES, puamFuentes, PUAM_REQUISITOS } from "../src/data/puam";
+import { bonoVigente, prestacionesVigentes } from "../src/data/prestaciones";
 import { PRESTACIONES_PNC } from "../src/data/pnc";
 import {
   compararConMinima,
@@ -21,6 +21,8 @@ import {
   topeEmbargoAlimentos,
   type SituacionPuam,
 } from "../src/lib/puam";
+
+const V = prestacionesVigentes();
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -63,8 +65,8 @@ check(
 );
 check(
   "como está por debajo del mínimo, le corresponde el bono completo",
-  casi(M.bono, BONO_VIGENTE.monto),
-  { bono: M.bono, decreto: BONO_VIGENTE.monto },
+  casi(M.bono, bonoVigente().monto),
+  { bono: M.bono, decreto: bonoVigente().monto },
 );
 check("el total es haber + bono", casi(M.total, M.haber + M.bono), M);
 
@@ -227,28 +229,28 @@ check(
 );
 check(
   "la cartilla oficial de ANSES figura entre las fuentes",
-  PUAM_FUENTES.lista.some((f) => f.url.includes("anses.gob.ar/sites/default/files/cartilla/")),
+  puamFuentes().lista.some((f) => f.url.includes("anses.gob.ar/sites/default/files/cartilla/")),
 );
 
-check("hay al menos 4 fuentes", PUAM_FUENTES.lista.length >= 4);
+check("hay al menos 4 fuentes", puamFuentes().lista.length >= 4);
 check(
   "todas las fuentes son oficiales (infoleg, boletinoficial o la cartilla de ANSES) y con detalle",
-  PUAM_FUENTES.lista.every(
+  puamFuentes().lista.every(
     (f) =>
       /^https:\/\/(servicios\.infoleg\.gob\.ar|www\.boletinoficial\.gob\.ar|www\.anses\.gob\.ar\/sites\/default\/files\/)/.test(
         f.url,
       ) &&
       f.detalle.length > 40,
   ),
-  PUAM_FUENTES.lista.map((f) => f.url),
+  puamFuentes().lista.map((f) => f.url),
 );
 check(
   "la fecha de consulta tiene formato AAAA-MM-DD",
-  /^\d{4}-\d{2}-\d{2}$/.test(PUAM_FUENTES.consultadoEl),
+  /^\d{4}-\d{2}-\d{2}$/.test(puamFuentes().consultadoEl),
 );
 check(
   "las fuentes incluyen el texto actualizado de la Ley 27.260",
-  PUAM_FUENTES.lista.some((f) => f.url.includes("263691") && f.url.endsWith("texact.htm")),
+  puamFuentes().lista.some((f) => f.url.includes("263691") && f.url.endsWith("texact.htm")),
 );
 
 console.log("");

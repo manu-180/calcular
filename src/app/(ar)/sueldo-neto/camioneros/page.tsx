@@ -15,14 +15,19 @@ import { formatARS } from "@/lib/formato";
 import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
 
 import { fechaLarga, periodoDeMes, vigenteEn } from "@/lib/hoy";
-const MES = vigenteEn(MESES_CAMIONEROS, periodoDeMes);
-const MES_ID = MES.id;
-const MES_TXT = MES.etiqueta.toLowerCase();
-const ACTUALIZADO_EL = fechaLarga(CAMIONEROS_FUENTES.verificacion.consultadoEl);
-const CP_REF = calcularCamioneros({ mesId: MES_ID, categoriaId: "chofer-primera", aniosAntiguedad: 0 })!;
-const redondeo = (n: number) => Math.round(n / 1_000) * 1_000;
+function datosDelMes() {
+  const MES = vigenteEn(MESES_CAMIONEROS, periodoDeMes);
+  const MES_ID = MES.id;
+  const MES_TXT = MES.etiqueta.toLowerCase();
+  const ACTUALIZADO_EL = fechaLarga(CAMIONEROS_FUENTES.verificacion.consultadoEl);
+  const CP_REF = calcularCamioneros({ mesId: MES_ID, categoriaId: "chofer-primera", aniosAntiguedad: 0 })!;
+  const redondeo = (n: number) => Math.round(n / 1_000) * 1_000;
+  return { MES, MES_ID, MES_TXT, ACTUALIZADO_EL, CP_REF, redondeo };
+}
 
-const faqs = [
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const crearFaqs = ({ MES_TXT, CP_REF, redondeo }: DatosDelMes) => [
   {
     q: "¿Cuánto cobra un camionero en mano en 2026?",
     a: `Depende de la categoría. Un Chofer de Primera (CCT 40/89), con la escala de ${MES_TXT} y sin antigüedad, tiene un básico de alrededor de ${formatARS(redondeo(CP_REF.totalRemunerativo), 0)} y le quedan en mano cerca de ${formatARS(redondeo(CP_REF.neto), 0)}: el 83% del bruto. A diferencia de Comercio, en el convenio de Camioneros casi todo el sueldo es remunerativo, así que el neto es directamente el 83% de siempre.`,
@@ -53,6 +58,9 @@ export const metadata: Metadata = {
 };
 
 export default function SueldoNetoCamionerosPage() {
+  const datos = datosDelMes();
+  const { MES, MES_ID, MES_TXT, ACTUALIZADO_EL } = datos;
+  const faqs = crearFaqs(datos);
   const mesEtiqueta = MES.etiqueta;
 
   const grupos = [...new Set(CATEGORIAS_CAMIONEROS.map((c) => c.grupo))];

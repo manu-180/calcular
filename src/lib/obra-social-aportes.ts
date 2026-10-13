@@ -6,7 +6,7 @@ import {
   REPARTO_VIGENTE,
   type TipoEntidad,
 } from "@/data/obra-social-aportes";
-import { TOPE_SIPA } from "@/data/sueldo";
+import { topeSipa } from "@/data/sueldo";
 
 export type EntradaObraSocial = {
   brutoMensual: number;
@@ -48,7 +48,7 @@ export function calcularObraSocial(e: EntradaObraSocial): ResultadoObraSocial {
   const familiares = Math.max(0, Math.floor(e.familiaresACargo));
   const cuota = Math.max(0, e.cuotaPlan);
 
-  const baseAporte = Math.min(bruto, TOPE_SIPA.baseMaxima);
+  const baseAporte = Math.min(bruto, topeSipa().baseMaxima);
   const aporteTrabajador = baseAporte * APORTE_TRABAJADOR;
   const aporteAdicional = baseAporte * APORTE_ADICIONAL_FAMILIAR * familiares;
   const contribucionEmpleador = bruto * CONTRIBUCION_EMPLEADOR;
@@ -73,7 +73,7 @@ export function calcularObraSocial(e: EntradaObraSocial): ResultadoObraSocial {
 
   return {
     baseAporte,
-    topeAplicado: bruto > TOPE_SIPA.baseMaxima,
+    topeAplicado: bruto > topeSipa().baseMaxima,
     aporteTrabajador,
     aporteAdicional,
     contribucionEmpleador,

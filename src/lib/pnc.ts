@@ -17,7 +17,7 @@
 //      publica como número: se deriva del salario mínimo, que cambia casi todos los meses.
 
 import { PRESTACIONES_PNC, type ClavePnc, type PrestacionPnc } from "@/data/pnc";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { smvmVigente } from "@/lib/desempleo";
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
@@ -36,7 +36,7 @@ export type MontoPnc = {
 
 /** El total que cobra este mes quien está en el haber mínimo, bono incluido. */
 export function totalMinimaConBono(): number {
-  return r2(PRESTACIONES_VIGENTES.haberMinimo + BONO_VIGENTE.monto);
+  return r2(prestacionesVigentes().haberMinimo + bonoVigente().monto);
 }
 
 /**
@@ -46,14 +46,14 @@ export function totalMinimaConBono(): number {
  */
 export function bonoDeHaber(haber: number): number {
   const tope = totalMinimaConBono();
-  if (haber <= PRESTACIONES_VIGENTES.haberMinimo) return BONO_VIGENTE.monto;
+  if (haber <= prestacionesVigentes().haberMinimo) return bonoVigente().monto;
   if (haber >= tope) return 0;
   return r2(tope - haber);
 }
 
 /** El monto liquidado de una prestación no contributiva en el mes vigente. */
 export function montoDe(prestacion: PrestacionPnc): MontoPnc {
-  const haber = r2(PRESTACIONES_VIGENTES.haberMinimo * prestacion.proporcionHaberMinimo);
+  const haber = r2(prestacionesVigentes().haberMinimo * prestacion.proporcionHaberMinimo);
   const bono = bonoDeHaber(haber);
   const total = r2(haber + bono);
   return {

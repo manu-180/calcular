@@ -32,7 +32,7 @@
 // CÓMO SE ROTA: no se rota. Se mueve solo cuando se actualiza `prestaciones.ts` (haber mínimo del
 // mes y decreto del bono). Si aparece una norma que toque los arts. 13 a 18, se relee el `texact`.
 
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "./prestaciones";
+import { bonoVigente, prestacionesVigentes } from "./prestaciones";
 
 /** Parámetros numéricos de la PUAM, cada uno con el artículo del que sale. */
 export const PUAM = {
@@ -147,44 +147,46 @@ export const PUAM_CARACTERES: { signo: "a favor" | "en contra"; texto: string; n
 
 export type FuentePuam = { nombre: string; url: string; detalle: string };
 
-export const PUAM_FUENTES: { consultadoEl: string; lista: FuentePuam[] } = {
-  consultadoEl: "2026-08-15",
-  lista: [
-    {
-      nombre: "Ley 27.260 (texto actualizado): Pensión Universal para el Adulto Mayor",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/260000-264999/263691/texact.htm",
-      detalle:
-        "Art. 13 (requisitos y evaluación socioeconómica), art. 14 (el 80% del haber mínimo del art. 125 de la Ley 24.241 y su movilidad), art. 15 (caracteres: personalísima, sin derecho a pensión, vitalicia e inembargable), art. 16 (incompatibilidad con el trabajo, sustituido en 2018), art. 17 (PAMI) y art. 18 (asignaciones familiares).",
-    },
-    {
-      nombre: "Ley 27.467 (texto actualizado): la que dio vuelta el art. 16",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/315000-319999/316974/texact.htm",
-      detalle:
-        "B.O. 4/12/2018. Su art. 38 sustituyó el art. 16 de la Ley 27.260: el goce de la PUAM pasó de compatible a INCOMPATIBLE con el trabajo en relación de dependencia o por cuenta propia. Su art. 37 incorporó la evaluación socioeconómica y patrimonial previa al otorgamiento.",
-    },
-    {
-      nombre: "Cartilla oficial de ANSES: Pensión Universal para el Adulto Mayor",
-      url: "https://www.anses.gob.ar/sites/default/files/cartilla/2025-10/Cartilla-PUAM.pdf",
-      detalle:
-        "Actualizada a octubre de 2025. Es la fuente de dos cosas que la Ley 27.260 no dice: que la residencia se pierde por ausentarse más de 90 días corridos del país (Res. ANSES 918/24) y que, aunque la PUAM no genere pensión, el fallecimiento del titular sí da derecho al Subsidio de Contención Familiar.",
-    },
-    {
-      nombre: `${PRESTACIONES_VIGENTES.resolucion}: haber mínimo garantizado`,
-      url: PRESTACIONES_VIGENTES.resolucionUrl,
-      detalle:
-        `${PRESTACIONES_VIGENTES.resolucionBO}: el haber mínimo del que se deriva el 80% de la PUAM, y el monto de la propia PUAM en su art. 5.`,
-    },
-    {
-      nombre: `${BONO_VIGENTE.norma}: bono extraordinario previsional`,
-      url: BONO_VIGENTE.normaUrl,
-      detalle:
-        `${BONO_VIGENTE.normaBO}: alcanza expresamente a la PUAM. Arts. 3 y 4: monto y forma de liquidación. Es discrecional: lo fija un decreto mes a mes y puede no existir.`,
-    },
-    {
-      nombre: "Decreto 274/2024: movilidad mensual por IPC",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/305905/20240322",
-      detalle:
-        "El haber mínimo (y con él la PUAM) se actualiza todos los meses por el IPC de dos meses antes, redondeado a dos decimales.",
-    },
-  ],
-};
+export function puamFuentes(): { consultadoEl: string; lista: FuentePuam[] } {
+  return {
+    consultadoEl: "2026-08-15",
+    lista: [
+      {
+        nombre: "Ley 27.260 (texto actualizado): Pensión Universal para el Adulto Mayor",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/260000-264999/263691/texact.htm",
+        detalle:
+          "Art. 13 (requisitos y evaluación socioeconómica), art. 14 (el 80% del haber mínimo del art. 125 de la Ley 24.241 y su movilidad), art. 15 (caracteres: personalísima, sin derecho a pensión, vitalicia e inembargable), art. 16 (incompatibilidad con el trabajo, sustituido en 2018), art. 17 (PAMI) y art. 18 (asignaciones familiares).",
+      },
+      {
+        nombre: "Ley 27.467 (texto actualizado): la que dio vuelta el art. 16",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/315000-319999/316974/texact.htm",
+        detalle:
+          "B.O. 4/12/2018. Su art. 38 sustituyó el art. 16 de la Ley 27.260: el goce de la PUAM pasó de compatible a INCOMPATIBLE con el trabajo en relación de dependencia o por cuenta propia. Su art. 37 incorporó la evaluación socioeconómica y patrimonial previa al otorgamiento.",
+      },
+      {
+        nombre: "Cartilla oficial de ANSES: Pensión Universal para el Adulto Mayor",
+        url: "https://www.anses.gob.ar/sites/default/files/cartilla/2025-10/Cartilla-PUAM.pdf",
+        detalle:
+          "Actualizada a octubre de 2025. Es la fuente de dos cosas que la Ley 27.260 no dice: que la residencia se pierde por ausentarse más de 90 días corridos del país (Res. ANSES 918/24) y que, aunque la PUAM no genere pensión, el fallecimiento del titular sí da derecho al Subsidio de Contención Familiar.",
+      },
+      {
+        nombre: `${prestacionesVigentes().resolucion}: haber mínimo garantizado`,
+        url: prestacionesVigentes().resolucionUrl,
+        detalle:
+          `${prestacionesVigentes().resolucionBO}: el haber mínimo del que se deriva el 80% de la PUAM, y el monto de la propia PUAM en su art. 5.`,
+      },
+      {
+        nombre: `${bonoVigente().norma}: bono extraordinario previsional`,
+        url: bonoVigente().normaUrl,
+        detalle:
+          `${bonoVigente().normaBO}: alcanza expresamente a la PUAM. Arts. 3 y 4: monto y forma de liquidación. Es discrecional: lo fija un decreto mes a mes y puede no existir.`,
+      },
+      {
+        nombre: "Decreto 274/2024: movilidad mensual por IPC",
+        url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/305905/20240322",
+        detalle:
+          "El haber mínimo (y con él la PUAM) se actualiza todos los meses por el IPC de dos meses antes, redondeado a dos decimales.",
+      },
+    ],
+  };
+}

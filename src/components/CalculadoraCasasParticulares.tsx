@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
-  ESCALA_VIGENTE,
+  escalaVigente,
   JORNADA,
-  VIGENCIA,
+  vigenciaCasas,
   ZONA_DESFAVORABLE,
 } from "@/data/casas-particulares";
 import { calcularCasasParticulares, categoriaPorId, type Modalidad } from "@/lib/casas-particulares";
@@ -59,7 +59,7 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
     () =>
       res
         ? prefill.validar({
-            mesId: VIGENCIA.mesId,
+            mesId: vigenciaCasas().mesId,
             categoriaId,
             modalidad: modalidadEfectiva,
             horasSemanales,
@@ -100,7 +100,7 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
               onChange={(e) => setCategoriaId(e.target.value)}
               className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-lg font-medium text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200"
             >
-              {ESCALA_VIGENTE.map((c) => (
+              {escalaVigente().map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.nombre}
                 </option>
@@ -217,7 +217,7 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
         ) : res && (
           <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
             <p className="text-sm text-zinc-600">
-              Mínimo legal del mes · {VIGENCIA.vigenteEn}
+              Mínimo legal del mes · {vigenciaCasas().vigenteEn}
             </p>
             <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
               {formatARS(res.total, 0)}
@@ -279,8 +279,8 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
             )}
 
             <p className="mt-4 text-xs text-zinc-500">
-              Escala oficial de la {VIGENCIA.resolucion} ({VIGENCIA.boletinOficial}), vigente desde{" "}
-              {VIGENCIA.desde}. Las horas mensuales salen de multiplicar las semanales por 52/12, el
+              Escala oficial de la {vigenciaCasas().resolucion} ({vigenciaCasas().boletinOficial}), vigente desde{" "}
+              {vigenciaCasas().desde}. Las horas mensuales salen de multiplicar las semanales por 52/12, el
               promedio real de semanas por mes.
             </p>
           </div>

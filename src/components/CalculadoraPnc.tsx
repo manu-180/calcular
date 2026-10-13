@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { PRESTACIONES_PNC, type ClavePnc } from "@/data/pnc";
-import { BONO_VIGENTE } from "@/data/prestaciones";
+import { bonoVigente } from "@/data/prestaciones";
 import { evaluarSituacion, totalMinimaConBono } from "@/lib/pnc";
 import { formatARS, formatPct, parseMonto } from "@/lib/formato";
 
@@ -113,7 +113,7 @@ export function CalculadoraPnc() {
             <dd className="font-medium text-zinc-900">{formatARS(monto.haber, 2)}</dd>
           </div>
           <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Bono ({BONO_VIGENTE.norma})</dt>
+            <dt className="text-zinc-600">Bono ({bonoVigente().norma})</dt>
             <dd className="font-medium text-zinc-900">{formatARS(monto.bono, 0)}</dd>
           </div>
           <div className="flex justify-between border-b border-zinc-200 pb-1.5">

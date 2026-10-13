@@ -6,12 +6,12 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
 import {
   ANIOS_SERVICIOS,
-  GARANTIA_82_FUENTES,
+  garantia82Fuentes,
   GARANTIA_82_TEXTOS,
   MORATORIAS_EXCLUIDAS,
   UNIVERSOS,
 } from "@/data/garantia-82";
-import { PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { prestacionesVigentes } from "@/data/prestaciones";
 import { etiquetaMes, smvmVigente } from "@/lib/desempleo";
 import {
   comparativaMensual,
@@ -22,27 +22,32 @@ import {
 } from "@/lib/garantia-82";
 import { formatARS } from "@/lib/formato";
 
-const SMVM = smvmVigente().mes;
-const MES = etiquetaMes(SMVM.periodo);
-const NIVEL = nivelGarantizado(SMVM.periodo);
-const MINIMO = PRESTACIONES_VIGENTES.haberMinimo;
-const BRECHA = Math.round(((MINIMO - NIVEL) / NIVEL) * 1000) / 10;
+function datosDelMes() {
+  const SMVM = smvmVigente().mes;
+  const MES = etiquetaMes(SMVM.periodo);
+  const NIVEL = nivelGarantizado(SMVM.periodo);
+  const MINIMO = prestacionesVigentes().haberMinimo;
+  const BRECHA = Math.round(((MINIMO - NIVEL) / NIVEL) * 1000) / 10;
 
-const H = horizonteSinSuplemento();
-const MES_FIN = etiquetaMes(H.ultimoPeriodo);
+  const H = horizonteSinSuplemento();
+  const MES_FIN = etiquetaMes(H.ultimoPeriodo);
 
-const NIVEL_VETERANO = nivelGarantizado(SMVM.periodo, "pension-veterano");
-const PISO_VETERANO = pisoPropio(SMVM.periodo, "pension-veterano") ?? 0;
-const PAGA_ALGUNO = UNIVERSOS.some((u) => pagaHoy(SMVM.periodo, u.id) === true);
+  const NIVEL_VETERANO = nivelGarantizado(SMVM.periodo, "pension-veterano");
+  const PISO_VETERANO = pisoPropio(SMVM.periodo, "pension-veterano") ?? 0;
+  const PAGA_ALGUNO = UNIVERSOS.some((u) => pagaHoy(SMVM.periodo, u.id) === true);
 
-// La tabla arranca en el mes vigente: lo que importa es hoy y lo que ya tiene norma hacia adelante.
-const TODAS = comparativaMensual();
-const I_VIGENTE = TODAS.findIndex((f) => f.periodo === SMVM.periodo);
-const COMPARATIVA = TODAS.slice(Math.max(0, I_VIGENTE - 3));
-const CON_NORMA = TODAS.filter((f) => f.haberMinimo !== null);
-const PRIMERA = CON_NORMA[0];
+  // La tabla arranca en el mes vigente: lo que importa es hoy y lo que ya tiene norma hacia adelante.
+  const TODAS = comparativaMensual();
+  const I_VIGENTE = TODAS.findIndex((f) => f.periodo === SMVM.periodo);
+  const COMPARATIVA = TODAS.slice(Math.max(0, I_VIGENTE - 3));
+  const CON_NORMA = TODAS.filter((f) => f.haberMinimo !== null);
+  const PRIMERA = CON_NORMA[0];
+  return { SMVM, MES, NIVEL, MINIMO, BRECHA, H, MES_FIN, NIVEL_VETERANO, PISO_VETERANO, PAGA_ALGUNO, COMPARATIVA, PRIMERA };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MES, NIVEL, MINIMO }: DatosDelMes): Metadata => ({
   title: `82% móvil en ${MES}: cuánto paga el suplemento`,
   description:
     "La garantía del 82% del salario mínimo sigue vigente, pero hoy el haber mínimo la supera. Calculá tu caso y mirá a quién alcanza de verdad.",
@@ -59,9 +64,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ MES, NIVEL, MINIMO, BRECHA, H, MES_FIN, NIVEL_VETERANO, PISO_VETERANO }: DatosDelMes) => [
   {
     q: `¿Cuánto se cobra por el 82% del salario mínimo en ${MES}?`,
     a: `Cero, en el caso general. El artículo 125 bis de la Ley 24.241 no fija un haber del 82%: fija un suplemento «hasta alcanzar» ese nivel. En ${MES} el 82% del salario mínimo es ${formatARS(NIVEL, 0)}. El haber mínimo garantizado, que todo jubilado ya cobra por el artículo 125, es ${formatARS(MINIMO, 0)}: un ${BRECHA}% más alto. Como no hay diferencia que cubrir, el suplemento da cero. Eso no quiere decir que la garantía esté derogada. Sigue vigente y se activaría sola si algún día el 82% del salario mínimo superara al haber mínimo.`,
@@ -105,6 +114,9 @@ const faqs = [
 ];
 
 export default function Garantia82Page() {
+  const datos = datosDelMes();
+  const { SMVM, MES, NIVEL, MINIMO, BRECHA, H, MES_FIN, PAGA_ALGUNO, COMPARATIVA, PRIMERA } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -123,16 +135,16 @@ export default function Garantia82Page() {
         nombre: "Garantía del 82% del SMVM contra el haber mínimo garantizado, mes a mes",
         descripcion: `Nivel garantizado por el artículo 125 bis de la Ley 24.241 (82% del salario mínimo vital y móvil) comparado mes a mes con el haber mínimo garantizado del artículo 125 que fija ANSES por resolución. Incluye el suplemento resultante, que es la diferencia entre ambos cuando el primero supera al segundo.`,
         url: "/82-por-ciento-movil",
-        modificado: GARANTIA_82_FUENTES.consultadoEl,
-        fuenteNombre: GARANTIA_82_FUENTES.lista[0].nombre,
-        fuenteUrl: GARANTIA_82_FUENTES.lista[0].url,
+        modificado: garantia82Fuentes().consultadoEl,
+        fuenteNombre: garantia82Fuentes().lista[0].nombre,
+        fuenteUrl: garantia82Fuentes().lista[0].url,
       }),
       articleSchema({
         titulo: "82% móvil: qué garantiza el art. 125 bis y por qué hoy el suplemento da cero",
         descripcion:
           "La garantía del 82% del salario mínimo está vigente, pero es un suplemento «hasta alcanzar» ese nivel, y el haber mínimo garantizado lo supera hace años. La brecha mes a mes, quiénes quedan afuera por moratoria y los casos que agregó la reglamentación (incluidos los de Malvinas, que tampoco cobran suplemento porque su piso propio también es triple).",
         url: "/82-por-ciento-movil",
-        modificado: GARANTIA_82_FUENTES.consultadoEl,
+        modificado: garantia82Fuentes().consultadoEl,
       }),
       {
         "@type": "FAQPage",
@@ -162,7 +174,7 @@ export default function Garantia82Page() {
         </p>
       </header>
 
-      <RespuestaPrimero actualizado={GARANTIA_82_FUENTES.consultadoEl}>
+      <RespuestaPrimero actualizado={garantia82Fuentes().consultadoEl}>
         <p>
           <strong>
             En {MES} el 82% del salario mínimo es {formatARS(NIVEL, 0)} y el haber mínimo garantizado
@@ -421,7 +433,7 @@ export default function Garantia82Page() {
       <section className="space-y-3 text-sm text-zinc-600">
         <h2 className="text-xl font-bold text-zinc-900">Fuentes</h2>
         <ul className="list-disc space-y-1.5 pl-5">
-          {GARANTIA_82_FUENTES.lista.map((f) => (
+          {garantia82Fuentes().lista.map((f) => (
             <li key={f.url}>
               <a
                 href={f.url}
@@ -453,7 +465,7 @@ export default function Garantia82Page() {
           <Link href="/edad-avanzada" className="text-emerald-700 hover:underline">
             prestación por edad avanzada
           </Link>
-          . Consultada el {GARANTIA_82_FUENTES.consultadoEl}.
+          . Consultada el {garantia82Fuentes().consultadoEl}.
         </p>
       </section>
     </article>

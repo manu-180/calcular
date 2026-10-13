@@ -4,83 +4,88 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
-import { ASIGNACIONES_FUENTES, ASIGNACIONES_VIGENTES } from "@/data/asignaciones";
+import { asignacionesFuentes, asignacionesVigentes } from "@/data/asignaciones";
 import { calcularAsignaciones, desglose8020, etiquetaTramo } from "@/lib/asignaciones";
 import { formatARS, formatPct } from "@/lib/formato";
 
 const PUBLICADO = "4 de agosto de 2026";
 const SLUG = "/blog/tope-de-ingresos-asignaciones-familiares";
 
-const V = ASIGNACIONES_VIGENTES;
-const MES = V.vigencia;
-const $ = (n: number) => formatARS(n, 0);
+function datosDelMes() {
+  const V = asignacionesVigentes();
+  const MES = V.vigencia;
+  const $ = (n: number) => formatARS(n, 0);
 
-// ── Todo lo numérico sale de la tabla oficial y del motor, nunca escrito a mano ──
-// (regla 2-2, s41: si un número de prosa depende de un dato vivo, se deriva del dato).
+  // ── Todo lo numérico sale de la tabla oficial y del motor, nunca escrito a mano ──
+  // (regla 2-2, s41: si un número de prosa depende de un dato vivo, se deriva del dato).
 
-/** Los tres escalones internos de la tabla de hijo, con lo que cuesta cruzar cada uno. */
-const ESCALONES = V.hijo.slice(0, -1).map((t, i) => ({
-  limite: t.hasta ?? 0,
-  antes: t.montos.general,
-  despues: V.hijo[i + 1].montos.general,
-  perdida: t.montos.general - V.hijo[i + 1].montos.general,
-}));
+  /** Los tres escalones internos de la tabla de hijo, con lo que cuesta cruzar cada uno. */
+  const ESCALONES = V.hijo.slice(0, -1).map((t, i) => ({
+    limite: t.hasta ?? 0,
+    antes: t.montos.general,
+    despues: V.hijo[i + 1].montos.general,
+    perdida: t.montos.general - V.hijo[i + 1].montos.general,
+  }));
 
-/** El cuarto escalón: cruzar el tope grupal no baja de tramo, saca del régimen. */
-const ULTIMO_ESCALON = {
-  limite: V.topeIgfGrupo,
-  antes: V.hijo[V.hijo.length - 1].montos.general,
-  perdida: V.hijo[V.hijo.length - 1].montos.general,
-};
+  /** El cuarto escalón: cruzar el tope grupal no baja de tramo, saca del régimen. */
+  const ULTIMO_ESCALON = {
+    limite: V.topeIgfGrupo,
+    antes: V.hijo[V.hijo.length - 1].montos.general,
+    perdida: V.hijo[V.hijo.length - 1].montos.general,
+  };
 
-/** Cuánto se pierde por año al cruzar el primer escalón con dos hijos. */
-const PERDIDA_ANUAL_2_HIJOS = ESCALONES[0].perdida * 2 * 12;
+  /** Cuánto se pierde por año al cruzar el primer escalón con dos hijos. */
+  const PERDIDA_ANUAL_2_HIJOS = ESCALONES[0].perdida * 2 * 12;
 
-/** Caso trabajado: una pareja justo abajo del primer límite, con dos hijos. */
-const CASO_ANTES = calcularAsignaciones({
-  ingresos: [700_000, 460_000],
-  zona: "general",
-  hijos: 2,
-  hijosDiscapacidad: 0,
-  prenatal: false,
-  conyuge: false,
-  ayudaEscolar: false,
-});
-const AUMENTO = 20_000;
-const CASO_DESPUES = calcularAsignaciones({
-  ingresos: [700_000 + AUMENTO, 460_000],
-  zona: "general",
-  hijos: 2,
-  hijosDiscapacidad: 0,
-  prenatal: false,
-  conyuge: false,
-  ayudaEscolar: false,
-});
-const NETO_DEL_AUMENTO =
-  AUMENTO + CASO_DESPUES.totalMensual - CASO_ANTES.totalMensual;
+  /** Caso trabajado: una pareja justo abajo del primer límite, con dos hijos. */
+  const CASO_ANTES = calcularAsignaciones({
+    ingresos: [700_000, 460_000],
+    zona: "general",
+    hijos: 2,
+    hijosDiscapacidad: 0,
+    prenatal: false,
+    conyuge: false,
+    ayudaEscolar: false,
+  });
+  const AUMENTO = 20_000;
+  const CASO_DESPUES = calcularAsignaciones({
+    ingresos: [700_000 + AUMENTO, 460_000],
+    zona: "general",
+    hijos: 2,
+    hijosDiscapacidad: 0,
+    prenatal: false,
+    conyuge: false,
+    ayudaEscolar: false,
+  });
+  const NETO_DEL_AUMENTO =
+    AUMENTO + CASO_DESPUES.totalMensual - CASO_ANTES.totalMensual;
 
-/** El caso del tope individual: dos sueldos que suman menos que el tope grupal. */
-const CASO_INDIVIDUAL = calcularAsignaciones({
-  ingresos: [3_200_000, 300_000],
-  zona: "general",
-  hijos: 1,
-  hijosDiscapacidad: 0,
-  prenatal: false,
-  conyuge: false,
-  ayudaEscolar: false,
-});
-/** El mismo dinero, repartido distinto entre dos personas. */
-const CASO_REPARTIDO = calcularAsignaciones({
-  ingresos: [1_750_000, 1_750_000],
-  zona: "general",
-  hijos: 1,
-  hijosDiscapacidad: 0,
-  prenatal: false,
-  conyuge: false,
-  ayudaEscolar: false,
-});
+  /** El caso del tope individual: dos sueldos que suman menos que el tope grupal. */
+  const CASO_INDIVIDUAL = calcularAsignaciones({
+    ingresos: [3_200_000, 300_000],
+    zona: "general",
+    hijos: 1,
+    hijosDiscapacidad: 0,
+    prenatal: false,
+    conyuge: false,
+    ayudaEscolar: false,
+  });
+  /** El mismo dinero, repartido distinto entre dos personas. */
+  const CASO_REPARTIDO = calcularAsignaciones({
+    ingresos: [1_750_000, 1_750_000],
+    zona: "general",
+    hijos: 1,
+    hijosDiscapacidad: 0,
+    prenatal: false,
+    conyuge: false,
+    ayudaEscolar: false,
+  });
 
-const AUH = desglose8020(V.universales.hijo.general);
+  const AUH = desglose8020(V.universales.hijo.general);
+  return { V, MES, $, ESCALONES, ULTIMO_ESCALON, PERDIDA_ANUAL_2_HIJOS, CASO_ANTES, AUMENTO, CASO_DESPUES, NETO_DEL_AUMENTO, CASO_INDIVIDUAL, CASO_REPARTIDO, AUH };
+}
+
+type DatosDelMes = ReturnType<typeof datosDelMes>;
 
 export const metadata: Metadata = {
   title: "El tope de las asignaciones familiares: los dos límites",
@@ -99,7 +104,7 @@ export const metadata: Metadata = {
   },
 };
 
-const faqs = [
+const crearFaqs = ({ V, MES, $, ESCALONES }: DatosDelMes) => [
   {
     q: `¿Cuál es el tope para cobrar asignaciones familiares en ${MES}?`,
     a: `Hay dos, y tenés que cumplir los dos. El Ingreso del Grupo Familiar no puede pasar de ${$(V.topeIgfGrupo)}, y ninguna persona del grupo, por separado, puede pasar de ${$(V.topeIgfIndividual)}. Si una sola persona supera el tope individual, queda afuera todo el grupo familiar, aunque la suma esté por debajo del tope grupal. Los valores son de ${MES}, según la ${V.resolucion}, y cambian todos los meses.`,
@@ -127,6 +132,9 @@ const faqs = [
 ];
 
 export default function Post() {
+  const datos = datosDelMes();
+  const { V, MES, $, ESCALONES, ULTIMO_ESCALON, PERDIDA_ANUAL_2_HIJOS, CASO_ANTES, AUMENTO, CASO_DESPUES, NETO_DEL_AUMENTO, CASO_INDIVIDUAL, CASO_REPARTIDO, AUH } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -136,7 +144,7 @@ export default function Post() {
         descripcion:
           "Los dos topes de ingreso de las asignaciones familiares, qué entra y qué no en el IGF, y los escalones que hacen que un aumento chico te haga cobrar menos.",
         url: SLUG,
-        modificado: ASIGNACIONES_FUENTES.consultadoEl,
+        modificado: asignacionesFuentes().consultadoEl,
       }),
       {
         "@type": "FAQPage",
@@ -168,7 +176,7 @@ export default function Post() {
         </p>
       </header>
 
-      <RespuestaPrimero actualizado={ASIGNACIONES_FUENTES.consultadoEl}>
+      <RespuestaPrimero actualizado={asignacionesFuentes().consultadoEl}>
         <p>
           Para cobrar asignaciones familiares en {MES} hay que cumplir <strong>dos</strong>
           condiciones a la vez: que el Ingreso del Grupo Familiar (IGF) no supere{" "}
@@ -517,31 +525,31 @@ export default function Post() {
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline"
             >
-              {ASIGNACIONES_FUENTES.cartilla.nombre}
+              {asignacionesFuentes().cartilla.nombre}
             </a>
             : topes, tramos y montos por zona.
           </li>
           <li>
             <a
-              href={ASIGNACIONES_FUENTES.discapacidadSinTope.url}
+              href={asignacionesFuentes().discapacidadSinTope.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline"
             >
-              {ASIGNACIONES_FUENTES.discapacidadSinTope.nombre}
+              {asignacionesFuentes().discapacidadSinTope.nombre}
             </a>
             .
           </li>
           <li>
             <a
-              href={ASIGNACIONES_FUENTES.ley.url}
+              href={asignacionesFuentes().ley.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline"
             >
-              {ASIGNACIONES_FUENTES.ley.nombre}
+              {asignacionesFuentes().ley.nombre}
             </a>
-            : consultada el {ASIGNACIONES_FUENTES.consultadoEl}.
+            : consultada el {asignacionesFuentes().consultadoEl}.
           </li>
         </ul>
         <p className="pt-2">

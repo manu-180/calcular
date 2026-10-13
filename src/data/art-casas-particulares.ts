@@ -64,7 +64,7 @@
 // Los importes de cuota salen de la tabla mensual de ARCA que ya vive en el repo, y los pisos de
 // la Res. SRT vigente que ya vive en `data/riesgos-trabajo.ts`. Este archivo no duplica ninguno.
 
-import { EDAD_PISO_SIEMPRE } from "@/lib/art-casas-particulares";
+import { edadPisoSiempre } from "@/lib/art-casas-particulares";
 
 export const ART_CASAS_VIGENCIA = {
   consultadoEl: "7 de septiembre de 2026",
@@ -89,63 +89,65 @@ export const ART_CASAS_TEXTOS = {
 
 export type ReglaArtCasas = { id: string; titulo: string; texto: string; norma: string };
 
-export const REGLAS_ART_CASAS: ReglaArtCasas[] = [
-  {
-    id: "base-minima",
-    titulo: "La prestación no se liquida sobre el sueldo real, sino sobre el mínimo de la categoría",
-    texto:
-      "Es la diferencia más grande con cualquier otro trabajador. El ingreso base del art. 12 de la Ley 24.557 (el número del que depende toda la indemnización) no es el promedio de lo que la persona cobró. El reglamento manda tomar «la remuneración mensual mínima» de la escala de la CNTCP para su categoría. Si cobra más que el mínimo, igual recibe la prestación como si cobrara el mínimo.",
-    norma: "Decreto 467/2014, reglamentación del art. 74, inc. d)",
-  },
-  {
-    id: "manda-el-piso",
-    titulo: "Por eso, salvo en las edades más jóvenes, lo que se cobra es el piso de la SRT",
-    texto: `Con una base tan baja, la fórmula del art. 14 ap. 2 (53 × ingreso base × % de incapacidad × 65/edad) queda por debajo del piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso no depende de la categoría ni del sueldo: es el mismo para todos, y por eso protege más a quien menos base tiene. Con la escala vigente, desde los ${EDAD_PISO_SIEMPRE} años el piso manda en todas las categorías y modalidades, sin excepción; por debajo de esa edad la fórmula puede ganar, y gana hasta más tarde cuanto más alta es la base de la categoría, porque el coeficiente 65/edad es máximo. Y cuál de los dos manda no depende del porcentaje de incapacidad, porque los dos lados se multiplican por él.`,
-    norma: "Decreto 1694/2009, arts. 2 a 4 · Res. SRT vigente (art. 17 bis de la Ley 26.773)",
-  },
-  {
-    id: "no-rechazo",
-    titulo: "Ninguna ART puede rechazar a un empleador de casa particular",
-    texto:
-      "La aseguradora la elige libremente el empleador entre las autorizadas a operar en la jurisdicción de su domicilio, y la ART «no podrá rechazar la afiliación». No hay selección de riesgo posible en este régimen.",
-    norma: "Decreto 467/2014, reglamentación del art. 74, inc. a)",
-  },
-  {
-    id: "asignacion-oficio",
-    titulo: "Pagar la cuota sin elegir ART no equivale a estar cubierto desde el pago",
-    texto:
-      "Al empleador que registra pagos pero no contrató una aseguradora se le asigna una de oficio, en forma sistemática. Pero la cobertura arranca «a partir de la fecha en que se notifique a la Aseguradora la asignación de oficio», no desde el primer pago. Y la asignación no procede si el empleador figura en el registro de contratos extinguidos por falta de pago.",
-    norma: "Decreto 467/2014, reglamentación del art. 74, inc. b)",
-  },
-  {
-    id: "pago-anticipado",
-    titulo: "La ART es el único concepto del régimen que se paga por adelantado",
-    texto:
-      "Los aportes y contribuciones de casas particulares van a mes vencido. La cuota de la ART no: tiene «carácter de pago anticipado» y se declara e ingresa durante el mes en que se prestan los servicios, con el mismo formulario y vencimiento que el resto.",
-    norma: "Decreto 467/2014, reglamentación del art. 74, inc. c) · art. 21 de la Ley 25.239",
-  },
-  {
-    id: "la-paga-el-empleador",
-    titulo: "La cuota la paga el empleador: no se le descuenta al trabajador",
-    texto:
-      "La cuota se adiciona a los aportes y contribuciones obligatorios que ingresa la parte empleadora. Es la parte más cara de la boleta mensual del régimen, y no es un descuento del sueldo.",
-    norma: "Decreto 467/2014, reglamentación del art. 74, inc. c)",
-  },
-  {
-    id: "ventanilla",
-    titulo: "Las notificaciones por la ventanilla electrónica son fehacientes",
-    texto:
-      "Todo lo que la SRT o la ART comuniquen al empleador por la ventanilla electrónica se considera válido y fehaciente. No hace falta una carta documento para que un plazo empiece a correr.",
-    norma: "Decreto 467/2014, reglamentación del art. 74, inc. e)",
-  },
-  {
-    id: "instancia-previa",
-    titulo: "El reclamo pasa por la misma comisión médica que el resto del sistema",
-    texto:
-      "La incorporación es al régimen de las leyes 24.557 y 26.773 sin un procedimiento propio: rige la instancia administrativa previa y obligatoria ante las comisiones médicas de la Ley 27.348, con sus 60 días hábiles perentorios y con el patrocinio letrado a cargo de la aseguradora.",
-    norma: "Ley 26.844, art. 74 · Ley 27.348, arts. 1 a 3",
-  },
-];
+export function reglasArtCasas(): ReglaArtCasas[] {
+  return [
+    {
+      id: "base-minima",
+      titulo: "La prestación no se liquida sobre el sueldo real, sino sobre el mínimo de la categoría",
+      texto:
+        "Es la diferencia más grande con cualquier otro trabajador. El ingreso base del art. 12 de la Ley 24.557 (el número del que depende toda la indemnización) no es el promedio de lo que la persona cobró. El reglamento manda tomar «la remuneración mensual mínima» de la escala de la CNTCP para su categoría. Si cobra más que el mínimo, igual recibe la prestación como si cobrara el mínimo.",
+      norma: "Decreto 467/2014, reglamentación del art. 74, inc. d)",
+    },
+    {
+      id: "manda-el-piso",
+      titulo: "Por eso, salvo en las edades más jóvenes, lo que se cobra es el piso de la SRT",
+      texto: `Con una base tan baja, la fórmula del art. 14 ap. 2 (53 × ingreso base × % de incapacidad × 65/edad) queda por debajo del piso que la SRT actualiza por RIPTE cada seis meses, y se cobra el mayor de los dos. El piso no depende de la categoría ni del sueldo: es el mismo para todos, y por eso protege más a quien menos base tiene. Con la escala vigente, desde los ${edadPisoSiempre()} años el piso manda en todas las categorías y modalidades, sin excepción; por debajo de esa edad la fórmula puede ganar, y gana hasta más tarde cuanto más alta es la base de la categoría, porque el coeficiente 65/edad es máximo. Y cuál de los dos manda no depende del porcentaje de incapacidad, porque los dos lados se multiplican por él.`,
+      norma: "Decreto 1694/2009, arts. 2 a 4 · Res. SRT vigente (art. 17 bis de la Ley 26.773)",
+    },
+    {
+      id: "no-rechazo",
+      titulo: "Ninguna ART puede rechazar a un empleador de casa particular",
+      texto:
+        "La aseguradora la elige libremente el empleador entre las autorizadas a operar en la jurisdicción de su domicilio, y la ART «no podrá rechazar la afiliación». No hay selección de riesgo posible en este régimen.",
+      norma: "Decreto 467/2014, reglamentación del art. 74, inc. a)",
+    },
+    {
+      id: "asignacion-oficio",
+      titulo: "Pagar la cuota sin elegir ART no equivale a estar cubierto desde el pago",
+      texto:
+        "Al empleador que registra pagos pero no contrató una aseguradora se le asigna una de oficio, en forma sistemática. Pero la cobertura arranca «a partir de la fecha en que se notifique a la Aseguradora la asignación de oficio», no desde el primer pago. Y la asignación no procede si el empleador figura en el registro de contratos extinguidos por falta de pago.",
+      norma: "Decreto 467/2014, reglamentación del art. 74, inc. b)",
+    },
+    {
+      id: "pago-anticipado",
+      titulo: "La ART es el único concepto del régimen que se paga por adelantado",
+      texto:
+        "Los aportes y contribuciones de casas particulares van a mes vencido. La cuota de la ART no: tiene «carácter de pago anticipado» y se declara e ingresa durante el mes en que se prestan los servicios, con el mismo formulario y vencimiento que el resto.",
+      norma: "Decreto 467/2014, reglamentación del art. 74, inc. c) · art. 21 de la Ley 25.239",
+    },
+    {
+      id: "la-paga-el-empleador",
+      titulo: "La cuota la paga el empleador: no se le descuenta al trabajador",
+      texto:
+        "La cuota se adiciona a los aportes y contribuciones obligatorios que ingresa la parte empleadora. Es la parte más cara de la boleta mensual del régimen, y no es un descuento del sueldo.",
+      norma: "Decreto 467/2014, reglamentación del art. 74, inc. c)",
+    },
+    {
+      id: "ventanilla",
+      titulo: "Las notificaciones por la ventanilla electrónica son fehacientes",
+      texto:
+        "Todo lo que la SRT o la ART comuniquen al empleador por la ventanilla electrónica se considera válido y fehaciente. No hace falta una carta documento para que un plazo empiece a correr.",
+      norma: "Decreto 467/2014, reglamentación del art. 74, inc. e)",
+    },
+    {
+      id: "instancia-previa",
+      titulo: "El reclamo pasa por la misma comisión médica que el resto del sistema",
+      texto:
+        "La incorporación es al régimen de las leyes 24.557 y 26.773 sin un procedimiento propio: rige la instancia administrativa previa y obligatoria ante las comisiones médicas de la Ley 27.348, con sus 60 días hábiles perentorios y con el patrocinio letrado a cargo de la aseguradora.",
+      norma: "Ley 26.844, art. 74 · Ley 27.348, arts. 1 a 3",
+    },
+  ];
+}
 
 export const ART_CASAS_FUENTES = {
   consultadoEl: ART_CASAS_VIGENCIA.consultadoEl,

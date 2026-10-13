@@ -6,29 +6,34 @@ import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
 import {
-  ASIGNACIONES_FUENTES,
-  ASIGNACIONES_PROXIMAS,
-  ASIGNACIONES_VIGENTES,
+  asignacionesFuentes,
+  asignacionesProximas,
+  asignacionesVigentes,
   PAGO_UNICO,
   ZONAS,
 } from "@/data/asignaciones";
 import { desglose8020, etiquetaTramo, moverAlMesSiguiente } from "@/lib/asignaciones";
 import { formatARS, formatPct } from "@/lib/formato";
 
-const V = ASIGNACIONES_VIGENTES;
-const MES = V.vigencia;
+function datosDelMes() {
+  const V = asignacionesVigentes();
+  const MES = V.vigencia;
 
-const AUH = desglose8020(V.universales.hijo.general);
-const P = ASIGNACIONES_PROXIMAS;
-const AUH_PROXIMA = P ? moverAlMesSiguiente(V.universales.hijo.general, P.movilidad) : null;
-const HIJO_PROXIMO = P ? moverAlMesSiguiente(V.hijo[0].montos.general, P.movilidad) : null;
+  const AUH = desglose8020(V.universales.hijo.general);
+  const P = asignacionesProximas();
+  const AUH_PROXIMA = P ? moverAlMesSiguiente(V.universales.hijo.general, P.movilidad) : null;
+  const HIJO_PROXIMO = P ? moverAlMesSiguiente(V.hijo[0].montos.general, P.movilidad) : null;
 
-const ESCALON_1_2 = V.hijo[0].montos.general - V.hijo[1].montos.general;
+  const ESCALON_1_2 = V.hijo[0].montos.general - V.hijo[1].montos.general;
 
-const MES_CORTO = MES.replace(" de ", " ");
-const TITULO = `Asignaciones familiares ${MES_CORTO}: cuánto por hijo`;
+  const MES_CORTO = MES.replace(" de ", " ");
+  const TITULO = `Asignaciones familiares ${MES_CORTO}: cuánto por hijo`;
+  return { V, MES, AUH, P, AUH_PROXIMA, HIJO_PROXIMO, ESCALON_1_2, MES_CORTO, TITULO };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MES, MES_CORTO, TITULO }: DatosDelMes): Metadata => ({
   title: TITULO,
   description: `Montos por hijo de ${MES_CORTO} según el ingreso del grupo familiar. Cargá los sueldos de tu casa y mirá tu tramo, tu zona y el tope.`,
   alternates: { canonical: "/asignaciones-familiares" },
@@ -41,9 +46,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ V, MES, AUH, ESCALON_1_2 }: DatosDelMes) => [
   {
     q: `¿Cuánto se cobra por hijo en ${MES}?`,
     a: `Depende del Ingreso del Grupo Familiar (IGF). En ${MES}, con el valor general: ${formatARS(V.hijo[0].montos.general, 0)} con un IGF de hasta ${formatARS(V.hijo[0].hasta ?? 0, 0)}; ${formatARS(V.hijo[1].montos.general, 0)} hasta ${formatARS(V.hijo[1].hasta ?? 0, 0)}; ${formatARS(V.hijo[2].montos.general, 0)} hasta ${formatARS(V.hijo[2].hasta ?? 0, 0)}; y ${formatARS(V.hijo[3].montos.general, 0)} hasta el tope de ${formatARS(V.topeIgfGrupo, 0)}. En las zonas 1 a 4 los montos son más altos. Los valores salen de la ${V.resolucion}, que dio un aumento de ${formatPct(V.movilidad)}.`,
@@ -87,6 +96,9 @@ const faqs = [
 ];
 
 export default function AsignacionesPage() {
+  const datos = datosDelMes();
+  const { V, MES, AUH, P, AUH_PROXIMA, HIJO_PROXIMO, TITULO } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -106,7 +118,7 @@ export default function AsignacionesPage() {
         descripcion: `Tabla completa de asignaciones familiares de ${MES}: cuatro tramos de Ingreso del Grupo Familiar por las cinco zonas, asignación por hijo con discapacidad sin tope, montos por categoría de monotributo, AUH y Asignación por Embarazo con el desglose 80/20, ayuda escolar anual y topes de ingreso individual y grupal. Fuente: ${V.resolucion}.`,
         url: "/asignaciones-familiares",
         modificado: `${V.periodo}-01`,
-        fuenteNombre: ASIGNACIONES_FUENTES.cartilla.nombre,
+        fuenteNombre: asignacionesFuentes().cartilla.nombre,
         fuenteUrl: V.cartillaUrl,
       }),
       articleSchema({
@@ -114,7 +126,7 @@ export default function AsignacionesPage() {
         descripcion:
           "Tramos de ingreso, zonas, topes individual y grupal, monotributo y AUH, calculados sobre la resolución oficial del mes.",
         url: "/asignaciones-familiares",
-        modificado: ASIGNACIONES_FUENTES.consultadoEl,
+        modificado: asignacionesFuentes().consultadoEl,
       }),
       {
         "@type": "FAQPage",
@@ -143,7 +155,7 @@ export default function AsignacionesPage() {
         </p>
       </header>
 
-      <RespuestaPrimero actualizado={ASIGNACIONES_FUENTES.consultadoEl}>
+      <RespuestaPrimero actualizado={asignacionesFuentes().consultadoEl}>
         <p>
           En {MES} la asignación por hijo va de{" "}
           <strong>{formatARS(V.hijo[0].montos.general, 0)}</strong> (con un Ingreso del Grupo
@@ -603,52 +615,52 @@ export default function AsignacionesPage() {
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline"
             >
-              {ASIGNACIONES_FUENTES.cartilla.nombre}
+              {asignacionesFuentes().cartilla.nombre}
             </a>
             : tabla completa por tramo, zona y categoría de monotributo.
           </li>
           <li>
             <a
-              href={ASIGNACIONES_FUENTES.discapacidadSinTope.url}
+              href={asignacionesFuentes().discapacidadSinTope.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline"
             >
-              {ASIGNACIONES_FUENTES.discapacidadSinTope.nombre}
+              {asignacionesFuentes().discapacidadSinTope.nombre}
             </a>
             .
           </li>
           <li>
             <a
-              href={ASIGNACIONES_FUENTES.cartillaNacimiento.url}
+              href={asignacionesFuentes().cartillaNacimiento.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline"
             >
-              {ASIGNACIONES_FUENTES.cartillaNacimiento.nombre}
+              {asignacionesFuentes().cartillaNacimiento.nombre}
             </a>{" "}
             y{" "}
             <a
-              href={ASIGNACIONES_FUENTES.cartillaMatrimonio.url}
+              href={asignacionesFuentes().cartillaMatrimonio.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline"
             >
-              {ASIGNACIONES_FUENTES.cartillaMatrimonio.nombre}
+              {asignacionesFuentes().cartillaMatrimonio.nombre}
             </a>
             : de ahí sale la ventana de {PAGO_UNICO.esperaMeses} meses a {PAGO_UNICO.caducidadAnios}{" "}
             años para pedir los pagos únicos, que la ley no menciona.
           </li>
           <li>
             <a
-              href={ASIGNACIONES_FUENTES.ley.url}
+              href={asignacionesFuentes().ley.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline"
             >
-              {ASIGNACIONES_FUENTES.ley.nombre}
+              {asignacionesFuentes().ley.nombre}
             </a>
-            : régimen y beneficiarios. Consultado el {ASIGNACIONES_FUENTES.consultadoEl}.
+            : régimen y beneficiarios. Consultado el {asignacionesFuentes().consultadoEl}.
           </li>
         </ul>
         <p className="pt-2">

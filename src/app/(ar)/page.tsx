@@ -4,7 +4,7 @@ import { CATALOGO } from "@/lib/mp";
 import { BuscadorHero } from "@/components/buscador/BuscadorHero";
 import { FirmaAutor } from "@/components/FirmaAutor";
 import { GRUPOS_DE_CALCULADORAS, MAS_USADAS, grupo, paginaDeRuta, paginasDelGrupo } from "@/data/navegacion";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { etiquetaMes, smvmVigente } from "@/lib/desempleo";
 import { NovedadesRecientes } from "@/components/novedades/NovedadesRecientes";
 import { formatARS, formatPct } from "@/lib/formato";
@@ -422,35 +422,40 @@ const ORDEN = [
   "/inflacion", "/inflacion/alquiler", "/plazo-fijo", "/canasta-basica", "/cuota-alimentaria",
 ];
 
-const SMVM = smvmVigente().mes;
-// "Actualizado el <día del build>" afirmaba una revisión en cada deploy, hubiera o no dato nuevo.
-const ULTIMO_CAMBIO = ultimoCambio();
-const IPC_MES = variacionMensual(ULTIMO_PERIODO);
+function datosDelMes() {
+  const SMVM = smvmVigente().mes;
+  // "Actualizado el <día del build>" afirmaba una revisión en cada deploy, hubiera o no dato nuevo.
+  const ULTIMO_CAMBIO = ultimoCambio();
+  const IPC_MES = variacionMensual(ULTIMO_PERIODO);
 
-const CIFRAS = [
-  {
-    href: "/salario-minimo",
-    etiqueta: "Salario mínimo",
-    valor: formatARS(SMVM.mensual, 0),
-    detalle: `Por mes, en ${etiquetaMes(SMVM.periodo)}`,
-  },
-  {
-    href: "/jubilacion",
-    etiqueta: "Jubilación mínima",
-    valor: formatARS(PRESTACIONES_VIGENTES.haberMinimo, 0),
-    detalle: `Más el bono de ${formatARS(BONO_VIGENTE.monto, 0)}, en ${etiquetaPeriodo(PRESTACIONES_VIGENTES.periodo)}`,
-  },
-  ...(IPC_MES === null
-    ? []
-    : [
-        {
-          href: "/inflacion",
-          etiqueta: "Inflación del mes",
-          valor: formatPct(IPC_MES, 1),
-          detalle: `IPC del INDEC de ${nombrePeriodo(ULTIMO_PERIODO)}`,
-        },
-      ]),
-];
+  const CIFRAS = [
+    {
+      href: "/salario-minimo",
+      etiqueta: "Salario mínimo",
+      valor: formatARS(SMVM.mensual, 0),
+      detalle: `Por mes, en ${etiquetaMes(SMVM.periodo)}`,
+    },
+    {
+      href: "/jubilacion",
+      etiqueta: "Jubilación mínima",
+      valor: formatARS(prestacionesVigentes().haberMinimo, 0),
+      detalle: `Más el bono de ${formatARS(bonoVigente().monto, 0)}, en ${etiquetaPeriodo(prestacionesVigentes().periodo)}`,
+    },
+    ...(IPC_MES === null
+      ? []
+      : [
+          {
+            href: "/inflacion",
+            etiqueta: "Inflación del mes",
+            valor: formatPct(IPC_MES, 1),
+            detalle: `IPC del INDEC de ${nombrePeriodo(ULTIMO_PERIODO)}`,
+          },
+        ]),
+  ];
+  return { SMVM, ULTIMO_CAMBIO, IPC_MES, CIFRAS };
+}
+
+type DatosDelMes = ReturnType<typeof datosDelMes>;
 
 function fechaLarga(iso: string): string {
   const [a, m, d] = iso.split("-").map(Number);
@@ -492,6 +497,7 @@ function Fila({ h }: { h: Item }) {
 }
 
 export default function Home() {
+  const { ULTIMO_CAMBIO, CIFRAS } = datosDelMes();
   const textos = new Map(herramientas.map((h) => [h.href, h]));
   const posicion = new Map(ORDEN.map((h, i) => [h, i]));
 

@@ -33,11 +33,11 @@ const etiquetaPeriodo = (periodo: string) => {
 // Los meses se listan del más nuevo al más viejo, pero el seleccionado arranca en el VIGENTE:
 // desde la Res. 4/2026 la escala tiene ocho meses que todavía no llegaron.
 const PERIODOS = [...SMVM_SERIE].reverse();
-const PERIODO_VIGENTE = smvmVigente().mes.periodo;
 
 const JORNADAS_FRECUENTES = [48, 44, 36, 30, 24, 20, 16];
 
 export function CalculadoraSalarioMinimo({ oferta }: { oferta?: DatosOferta }) {
+  const PERIODO_VIGENTE = smvmVigente().mes.periodo;
   const [periodo, setPeriodo] = useState(PERIODO_VIGENTE);
   const [horas, setHoras] = useState(String(JORNADA_LEGAL_SEMANAL));
   const [sueldo, setSueldo] = useState("");

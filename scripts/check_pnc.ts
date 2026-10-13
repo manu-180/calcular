@@ -13,10 +13,10 @@
 
 import {
   INCAPACIDAD_MINIMA_INVALIDEZ_LABORAL,
-  PNC_FUENTES,
+  pncFuentes,
   PRESTACIONES_PNC,
 } from "../src/data/pnc";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES as V } from "../src/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "../src/data/prestaciones";
 import { SMVM_SERIE } from "../src/data/desempleo";
 import { smvmVigente } from "../src/lib/desempleo";
 import {
@@ -28,6 +28,8 @@ import {
   topeIngresosCompatibles,
   totalMinimaConBono,
 } from "../src/lib/pnc";
+
+const V = prestacionesVigentes();
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -115,18 +117,18 @@ check(
 // ===========================================================================
 {
   const tope = totalMinimaConBono();
-  check("el tope del bono es haber mínimo + bono", casi(tope, V.haberMinimo + BONO_VIGENTE.monto));
-  check("bono completo por debajo de la mínima", bonoDeHaber(V.haberMinimo - 1) === BONO_VIGENTE.monto);
-  check("bono completo justo en la mínima", bonoDeHaber(V.haberMinimo) === BONO_VIGENTE.monto);
+  check("el tope del bono es haber mínimo + bono", casi(tope, V.haberMinimo + bonoVigente().monto));
+  check("bono completo por debajo de la mínima", bonoDeHaber(V.haberMinimo - 1) === bonoVigente().monto);
+  check("bono completo justo en la mínima", bonoDeHaber(V.haberMinimo) === bonoVigente().monto);
   check("bono parcial entre la mínima y el tope", casi(bonoDeHaber(tope - 1000), 1000));
   check("sin bono en el tope", bonoDeHaber(tope) === 0);
   check("sin bono por encima del tope", bonoDeHaber(tope + 50_000) === 0);
   check(
     "las cuatro prestaciones cobran el bono completo (todas están por debajo de la mínima)",
-    montosVigentes().every((m) => m.bono === BONO_VIGENTE.monto),
+    montosVigentes().every((m) => m.bono === bonoVigente().monto),
     montosVigentes().map((m) => [m.prestacion.clave, m.bono]),
   );
-  check("el bono es del mes vigente", BONO_VIGENTE.periodo === V.periodo);
+  check("el bono es del mes vigente", bonoVigente().periodo === V.periodo);
 }
 
 // El bono achata la brecha: el 70% del haber termina siendo más del 70% del total que cobra la
@@ -294,7 +296,7 @@ check(
 );
 check(
   "el Decreto 2360/90 está citado como fuente con su texto actualizado de InfoLEG",
-  PNC_FUENTES.lista.some(
+  pncFuentes().lista.some(
     (f) => /2360/.test(f.nombre) && f.url.includes("infoleg") && f.url.endsWith("texact.htm"),
   ),
 );
@@ -304,23 +306,23 @@ check(
 // ===========================================================================
 check(
   "todas las fuentes tienen URL oficial (boletinoficial / infoleg / argentina.gob / anses)",
-  PNC_FUENTES.lista.every((f) =>
+  pncFuentes().lista.every((f) =>
     /^https:\/\/(www\.)?(boletinoficial|servicios\.infoleg|infoleg|argentina|anses)\.gob\.ar\//.test(
       f.url,
     ),
   ),
-  PNC_FUENTES.lista.map((f) => f.url),
+  pncFuentes().lista.map((f) => f.url),
 );
-check("hay al menos 6 fuentes listadas", PNC_FUENTES.lista.length >= 6);
+check("hay al menos 6 fuentes listadas", pncFuentes().lista.length >= 6);
 check(
   "están citadas las cuatro normas que fijan los montos",
   ["27.793", "432/1997", "23.746", V.resolucion.replace("Resolución ANSES ", "")].every((n) =>
-    PNC_FUENTES.lista.some((f) => f.nombre.includes(n) || f.detalle.includes(n)),
+    pncFuentes().lista.some((f) => f.nombre.includes(n) || f.detalle.includes(n)),
   ),
 );
 check(
   "la fecha de consulta de las fuentes es una fecha ISO",
-  /^\d{4}-\d{2}-\d{2}$/.test(PNC_FUENTES.consultadoEl),
+  /^\d{4}-\d{2}-\d{2}$/.test(pncFuentes().consultadoEl),
 );
 
 console.log("");

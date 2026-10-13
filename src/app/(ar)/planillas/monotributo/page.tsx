@@ -21,30 +21,36 @@ export const metadata: Metadata = {
   }),
 };
 
-// Caso de la vista previa: servicios, hoy en C, con una facturación que ya la pasó. Es la
-// situación que la planilla existe para anticipar. Números del mismo motor que /monotributo.
-const ACTUAL = CATEGORIAS.find((c) => c.cat === "C")!;
-const INGRESOS = Math.round((ACTUAL.ingresosBrutosMax * 1.08) / 1000) * 1000;
-const DEMO = categoriaPorParametros({ ingresos: INGRESOS });
-const NUEVA = DEMO.tipo === "ok" ? DEMO.categoria : CATEGORIAS[CATEGORIAS.length - 1];
-const CUOTA_NUEVA = cuotaMensual(NUEVA, "servicios", false).total;
-const CUOTA_ACTUAL = cuotaMensual(ACTUAL, "servicios", false).total;
-const VENTANA = ventanaRecategorizacion();
+function datosDelMes() {
+  // Caso de la vista previa: servicios, hoy en C, con una facturación que ya la pasó. Es la
+  // situación que la planilla existe para anticipar. Números del mismo motor que /monotributo.
+  const ACTUAL = CATEGORIAS.find((c) => c.cat === "C")!;
+  const INGRESOS = Math.round((ACTUAL.ingresosBrutosMax * 1.08) / 1000) * 1000;
+  const DEMO = categoriaPorParametros({ ingresos: INGRESOS });
+  const NUEVA = DEMO.tipo === "ok" ? DEMO.categoria : CATEGORIAS[CATEGORIAS.length - 1];
+  const CUOTA_NUEVA = cuotaMensual(NUEVA, "servicios", false).total;
+  const CUOTA_ACTUAL = cuotaMensual(ACTUAL, "servicios", false).total;
+  const VENTANA = ventanaRecategorizacion();
 
-const preview: FilaPreview[] = [
-  { etiqueta: "Actividad", valor: "Servicios", tono: "input" },
-  { etiqueta: "Tu categoría actual", valor: ACTUAL.cat, tono: "input" },
-  { etiqueta: "Facturación de los últimos 12 meses", valor: INGRESOS, tono: "input" },
-  { etiqueta: "Categoría que te corresponde", valor: NUEVA.cat, tono: "total" },
-  { etiqueta: "Qué la define", valor: "La facturación" },
-  { etiqueta: `Tope de la categoría ${NUEVA.cat}`, valor: NUEVA.ingresosBrutosMax },
-  { etiqueta: "Margen para seguir facturando", valor: NUEVA.ingresosBrutosMax - INGRESOS },
-  { etiqueta: "Cuota mensual nueva", valor: formatARS(CUOTA_NUEVA, 2), tono: "total" },
-  { etiqueta: `Cuota actual (${ACTUAL.cat})`, valor: formatARS(CUOTA_ACTUAL, 2) },
-  { etiqueta: "En la recategorización", valor: "Subís de categoría" },
-];
+  const preview: FilaPreview[] = [
+    { etiqueta: "Actividad", valor: "Servicios", tono: "input" },
+    { etiqueta: "Tu categoría actual", valor: ACTUAL.cat, tono: "input" },
+    { etiqueta: "Facturación de los últimos 12 meses", valor: INGRESOS, tono: "input" },
+    { etiqueta: "Categoría que te corresponde", valor: NUEVA.cat, tono: "total" },
+    { etiqueta: "Qué la define", valor: "La facturación" },
+    { etiqueta: `Tope de la categoría ${NUEVA.cat}`, valor: NUEVA.ingresosBrutosMax },
+    { etiqueta: "Margen para seguir facturando", valor: NUEVA.ingresosBrutosMax - INGRESOS },
+    { etiqueta: "Cuota mensual nueva", valor: formatARS(CUOTA_NUEVA, 2), tono: "total" },
+    { etiqueta: `Cuota actual (${ACTUAL.cat})`, valor: formatARS(CUOTA_ACTUAL, 2) },
+    { etiqueta: "En la recategorización", valor: "Subís de categoría" },
+  ];
+  return { ACTUAL, INGRESOS, DEMO, NUEVA, CUOTA_NUEVA, CUOTA_ACTUAL, VENTANA, preview };
+}
+
+type DatosDelMes = ReturnType<typeof datosDelMes>;
 
 export default function PlanillaMonotributoPage() {
+  const { ACTUAL, VENTANA, preview } = datosDelMes();
   return (
     <PlanillaLanding
       producto={PRODUCTO}

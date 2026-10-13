@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import {
-  ASIGNACIONES_VIGENTES,
+  asignacionesVigentes,
   GRUPOS_MONOTRIBUTO,
   ZONAS,
   type GrupoMonotributo,
@@ -19,7 +19,6 @@ import { OfertaMiSueldo } from "@/components/mi-sueldo/OfertaMiSueldo";
 import { useDatosMiSueldo } from "@/components/mi-sueldo/useDatosMiSueldo";
 import type { DatosOferta } from "@/lib/oferta";
 
-const V = ASIGNACIONES_VIGENTES;
 
 type Regimen = "suaf" | "monotributo" | "auh";
 
@@ -106,6 +105,7 @@ function Tilde({
 }
 
 export function CalculadoraAsignaciones({ oferta }: { oferta?: DatosOferta }) {
+  const V = asignacionesVigentes();
   const [regimen, setRegimen] = useState<Regimen>("suaf");
   const [tocado, setTocado] = useState(false);
 
