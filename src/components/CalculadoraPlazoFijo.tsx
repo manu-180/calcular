@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { calcularPlazoFijo } from "@/lib/plazofijo";
-import { formatARS, formatPct, parseDecimal, parseMonto } from "@/lib/formato";
+import { formatARS, formatPct, parseDecimal, parseMonto, errorMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 import {
   BCRA_TNA_URL,
   INFLACION_DEFAULT,
@@ -117,6 +118,10 @@ export function CalculadoraPlazoFijo({ oferta }: { oferta?: DatosOferta }) {
     () => (oferta && datosCompra ? previaPlazoFijo(oferta.archivo, datosCompra) : null),
     [oferta, datosCompra]
   );
+
+  const error = primerError({
+    "Monto a invertir": errorMonto(montoInput),
+  });
 
   return (
     <div className="space-y-6">
@@ -243,7 +248,9 @@ export function CalculadoraPlazoFijo({ oferta }: { oferta?: DatosOferta }) {
           </div>
         )}
 
-        {resultado && (
+        {error ? (
+          <ErrorCalculo mensaje={error} />
+        ) : resultado && (
           <div className="mt-6 space-y-5 border-t border-zinc-100 pt-5" aria-live="polite">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>

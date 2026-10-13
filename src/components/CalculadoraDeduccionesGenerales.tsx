@@ -3,12 +3,12 @@
 import { useMemo, useState } from "react";
 import { ANIO_FISCAL_VIGENTE } from "@/data/deducciones-generales";
 import { calcularDeduccionesGenerales } from "@/lib/deducciones-generales";
-import { formatARS } from "@/lib/formato";
+import { formatARS, parseMonto, errorMonto, primerError, CANTIDAD_MAXIMA } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const claseInput =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
 
-const num = (s: string) => Number(s.replace(/\./g, "").replace(",", ".")) || 0;
 
 type CampoProps = {
   id: string;
@@ -48,19 +48,31 @@ export function CalculadoraDeduccionesGenerales() {
   const [donaciones, setDonaciones] = useState("0");
   const [hipotecario, setHipotecario] = useState("0");
 
+  const error = primerError({
+    "Sueldo bruto mensual": errorMonto(bruto),
+    "Hijos a cargo": errorMonto(hijos, CANTIDAD_MAXIMA),
+    "Prepaga mensual": errorMonto(prepagaMensual),
+    "Honorarios médicos": errorMonto(honorarios),
+    "Reintegros": errorMonto(reintegros),
+    "Seguro de vida": errorMonto(seguroVida),
+    "Seguro de retiro": errorMonto(seguroRetiro),
+    "Donaciones": errorMonto(donaciones),
+    "Intereses hipotecarios": errorMonto(hipotecario),
+  });
+
   const res = useMemo(
     () =>
       calcularDeduccionesGenerales({
-        brutoMensual: num(bruto),
+        brutoMensual: parseMonto(bruto),
         conyuge,
-        hijos: num(hijos),
-        prepagaAnual: num(prepagaMensual) * 12,
-        honorariosFacturadosAnual: num(honorarios),
-        honorariosReintegradosAnual: num(reintegros),
-        seguroVidaAnual: num(seguroVida),
-        seguroRetiroAnual: num(seguroRetiro),
-        donacionesAnual: num(donaciones),
-        interesesHipotecariosAnual: num(hipotecario),
+        hijos: parseMonto(hijos),
+        prepagaAnual: parseMonto(prepagaMensual) * 12,
+        honorariosFacturadosAnual: parseMonto(honorarios),
+        honorariosReintegradosAnual: parseMonto(reintegros),
+        seguroVidaAnual: parseMonto(seguroVida),
+        seguroRetiroAnual: parseMonto(seguroRetiro),
+        donacionesAnual: parseMonto(donaciones),
+        interesesHipotecariosAnual: parseMonto(hipotecario),
       }),
     [bruto, conyuge, hijos, prepagaMensual, honorarios, reintegros, seguroVida, seguroRetiro, donaciones, hipotecario],
   );
@@ -139,79 +151,85 @@ export function CalculadoraDeduccionesGenerales() {
         />
       </div>
 
-      <div className="mt-6 space-y-4 border-t border-zinc-100 pt-5">
-        <p className="text-sm text-zinc-600">
-          Base del 5% estimada: <strong>{formatARS(res.baseCincoPorCiento, 0)}</strong> al año → cada límite del 5% es{" "}
-          <strong>{formatARS(res.topeCincoPorCiento, 2)}</strong>, por separado para prepaga, honorarios y donaciones.
-        </p>
-
-        {conPago.length > 0 ? (
-          <div className="overflow-x-auto rounded-xl border border-zinc-200">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-zinc-50 text-left text-zinc-700">
-                  <th className="px-3 py-2 font-semibold">Concepto</th>
-                  <th className="px-3 py-2 font-semibold">Pagado</th>
-                  <th className="px-3 py-2 font-semibold">Límite</th>
-                  <th className="px-3 py-2 font-semibold">Deducís</th>
-                  <th className="px-3 py-2 font-semibold">Queda afuera</th>
-                </tr>
-              </thead>
-              <tbody>
-                {conPago.map((l) => (
-                  <tr key={l.id} className="border-t border-zinc-100 align-top">
-                    <td className="px-3 py-2 text-zinc-800">
-                      <span className="font-medium">{l.concepto}</span>
-                      <span className="block text-xs text-zinc-500">
-                        {l.inciso} · {l.limiteDescripcion}
-                      </span>
-                    </td>
-                    <td className="px-3 py-2 text-zinc-900">{formatARS(l.pagado, 0)}</td>
-                    <td className="px-3 py-2 text-zinc-900">{formatARS(l.limite, 0)}</td>
-                    <td className="px-3 py-2 font-semibold text-emerald-700">{formatARS(l.deducible, 0)}</td>
-                    <td className="px-3 py-2 text-zinc-700">
-                      {l.excedente > 0 ? formatARS(l.excedente, 0) : "—"}
-                      {l.excedente > 0 && l.excedenteDiferible && (
-                        <span className="block text-xs text-emerald-700">se deduce en años siguientes</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <p className="text-sm text-zinc-500">Cargá algún gasto para ver cuánto entra.</p>
-        )}
-
-        <div className="grid gap-3 sm:grid-cols-3">
-          <div className="rounded-xl bg-zinc-50 p-4">
-            <p className="text-xs text-zinc-500">Deducís en {ANIO_FISCAL_VIGENTE}</p>
-            <p className="text-xl font-bold text-zinc-900">{formatARS(res.totalDeducible, 0)}</p>
-          </div>
-          <div className="rounded-xl bg-emerald-50 p-4">
-            <p className="text-xs text-emerald-800">Te vuelve de Ganancias</p>
-            <p className="text-xl font-bold text-emerald-800">{formatARS(res.ahorroAnual, 0)}</p>
-          </div>
-          <div className="rounded-xl bg-zinc-50 p-4">
-            <p className="text-xs text-zinc-500">Por cada $100 deducidos</p>
-            <p className="text-xl font-bold text-zinc-900">
-              {formatARS(res.alicuotaEfectiva * 100, 0)}
-            </p>
-          </div>
-        </div>
-
-        {!res.impuestoSin.pagaGanancias && (
-          <p className="rounded-lg border border-rose-200 bg-rose-50/70 p-3 text-sm text-rose-900">
-            Con ese sueldo no pagás Ganancias, así que ninguna deducción te devuelve plata: no es un reintegro ni se
-            acumula para otro año.
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 space-y-4 border-t border-zinc-100 pt-5">
+          <p className="text-sm text-zinc-600">
+            Base del 5% estimada: <strong>{formatARS(res.baseCincoPorCiento, 0)}</strong> al año → cada límite del 5% es{" "}
+            <strong>{formatARS(res.topeCincoPorCiento, 2)}</strong>, por separado para prepaga, honorarios y donaciones.
           </p>
-        )}
-        <p className="text-xs text-zinc-500">
-          Estimación anual para relación de dependencia con el mismo motor de la calculadora de Ganancias. Si tenés
-          otros ingresos o quebrantos, la base del 5% cambia.
-        </p>
-      </div>
+
+          {conPago.length > 0 ? (
+            <div className="overflow-x-auto rounded-xl border border-zinc-200">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-zinc-50 text-left text-zinc-700">
+                    <th className="px-3 py-2 font-semibold">Concepto</th>
+                    <th className="px-3 py-2 font-semibold">Pagado</th>
+                    <th className="px-3 py-2 font-semibold">Límite</th>
+                    <th className="px-3 py-2 font-semibold">Deducís</th>
+                    <th className="px-3 py-2 font-semibold">Queda afuera</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {conPago.map((l) => (
+                    <tr key={l.id} className="border-t border-zinc-100 align-top">
+                      <td className="px-3 py-2 text-zinc-800">
+                        <span className="font-medium">{l.concepto}</span>
+                        <span className="block text-xs text-zinc-500">
+                          {l.inciso} · {l.limiteDescripcion}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2 text-zinc-900">{formatARS(l.pagado, 0)}</td>
+                      <td className="px-3 py-2 text-zinc-900">{formatARS(l.limite, 0)}</td>
+                      <td className="px-3 py-2 font-semibold text-emerald-700">{formatARS(l.deducible, 0)}</td>
+                      <td className="px-3 py-2 text-zinc-700">
+                        {l.excedente > 0 ? formatARS(l.excedente, 0) : "—"}
+                        {l.excedente > 0 && l.excedenteDiferible && (
+                          <span className="block text-xs text-emerald-700">se deduce en años siguientes</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="text-sm text-zinc-500">Cargá algún gasto para ver cuánto entra.</p>
+          )}
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-xl bg-zinc-50 p-4">
+              <p className="text-xs text-zinc-500">Deducís en {ANIO_FISCAL_VIGENTE}</p>
+              <p className="text-xl font-bold text-zinc-900">{formatARS(res.totalDeducible, 0)}</p>
+            </div>
+            <div className="rounded-xl bg-emerald-50 p-4">
+              <p className="text-xs text-emerald-800">Te vuelve de Ganancias</p>
+              <p className="text-xl font-bold text-emerald-800">{formatARS(res.ahorroAnual, 0)}</p>
+            </div>
+            <div className="rounded-xl bg-zinc-50 p-4">
+              <p className="text-xs text-zinc-500">Por cada $100 deducidos</p>
+              <p className="text-xl font-bold text-zinc-900">
+                {formatARS(res.alicuotaEfectiva * 100, 0)}
+              </p>
+            </div>
+          </div>
+
+          {!res.impuestoSin.pagaGanancias && (
+            <p className="rounded-lg border border-rose-200 bg-rose-50/70 p-3 text-sm text-rose-900">
+              Con ese sueldo no pagás Ganancias, así que ninguna deducción te devuelve plata: no es un reintegro ni se
+              acumula para otro año.
+            </p>
+          )}
+          <p className="text-xs text-zinc-500">
+            Estimación anual para relación de dependencia con el mismo motor de la calculadora de Ganancias. Si tenés
+            otros ingresos o quebrantos, la base del 5% cambia.
+          </p>
+        </div>
+        </>
+      )}
     </div>
   );
 }

@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { HABER_MINIMO_SERIE, HABER_MINIMO_ULTIMO } from "@/data/jubilaciones";
 import { calcularVeteranos } from "@/lib/veteranos-malvinas";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, CANTIDAD_MAXIMA, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   info: "border-zinc-200 bg-zinc-50 text-zinc-700",
@@ -35,13 +36,17 @@ export function CalculadoraVeteranos() {
   const [hayConyuge, setHayConyuge] = useState(true);
   const [hijos, setHijos] = useState("0");
 
+  const error = primerError({
+    "Hijos con derecho a pensión": errorMonto(hijos, CANTIDAD_MAXIMA),
+  });
+
   const res = useMemo(
     () =>
       calcularVeteranos({
         periodo,
         quien,
         hayConyuge,
-        hijos: Number(hijos.replace(/[^\d]/g, "")),
+        hijos: parseMonto(hijos),
       }),
     [periodo, quien, hayConyuge, hijos],
   );
@@ -129,77 +134,83 @@ export function CalculadoraVeteranos() {
         ) : null}
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">
-          <p className="text-sm font-semibold text-emerald-900">
-            {esTitular
-              ? `Pensión del titular en ${etiquetaPeriodo(res.periodo)}`
-              : "Beneficio del causante (el total que se reparte)"}
-          </p>
-          <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
-            {formatARS(res.montoTitular, 0)}
-          </p>
-          <p className="mt-1 text-sm text-emerald-900/80">
-            Son tres veces el haber mínimo de {formatARS(res.haberMinimoUsado, 0)} (art. 2º del
-            Decreto 1357/2004). Cobra además las asignaciones familiares que le correspondan.
-          </p>
-        </div>
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">
+            <p className="text-sm font-semibold text-emerald-900">
+              {esTitular
+                ? `Pensión del titular en ${etiquetaPeriodo(res.periodo)}`
+                : "Beneficio del causante (el total que se reparte)"}
+            </p>
+            <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
+              {formatARS(res.montoTitular, 0)}
+            </p>
+            <p className="mt-1 text-sm text-emerald-900/80">
+              Son tres veces el haber mínimo de {formatARS(res.haberMinimoUsado, 0)} (art. 2º del
+              Decreto 1357/2004). Cobra además las asignaciones familiares que le correspondan.
+            </p>
+          </div>
 
-        <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-          <p className="text-sm font-semibold text-zinc-700">
-            {esTitular ? "Con qué se puede cobrar a la vez" : "Cómo se reparte"}
-          </p>
-          {esTitular ? (
-            <p className="mt-2 text-sm text-zinc-600">
-              Con <strong>cualquier otro beneficio previsional permanente o de retiro</strong>{" "}
-              (nacional, provincial o municipal), con otro ingreso, con el subsidio de la Ley 22.674
-              y con las pensiones graciables de las Leyes 23.598 y 24.310. No hay que elegir: se
-              cobran las dos cosas completas.
+          <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+            <p className="text-sm font-semibold text-zinc-700">
+              {esTitular ? "Con qué se puede cobrar a la vez" : "Cómo se reparte"}
             </p>
-          ) : res.sinDerechohabientes ? (
-            <p className="mt-2 text-sm text-zinc-600">
-              Marcá quiénes tienen derecho para ver el reparto.
-            </p>
-          ) : (
-            <ul className="mt-2 space-y-2.5">
-              {res.partes.map((p) => (
-                <li key={p.quien} className="text-sm">
-                  <span className="font-medium text-zinc-800">{p.quien}</span>
-                  <span className="block tabular-nums text-zinc-900">
-                    {formatARS(p.monto, 0)}{" "}
-                    <span className="text-xs font-normal text-zinc-500">
-                      ({(p.fraccion * 100).toLocaleString("es-AR")}% del beneficio
-                      {p.personas > 1
-                        ? ` · ${formatARS(p.montoPorPersona, 0)} cada uno`
-                        : ""}
-                      )
+            {esTitular ? (
+              <p className="mt-2 text-sm text-zinc-600">
+                Con <strong>cualquier otro beneficio previsional permanente o de retiro</strong>{" "}
+                (nacional, provincial o municipal), con otro ingreso, con el subsidio de la Ley 22.674
+                y con las pensiones graciables de las Leyes 23.598 y 24.310. No hay que elegir: se
+                cobran las dos cosas completas.
+              </p>
+            ) : res.sinDerechohabientes ? (
+              <p className="mt-2 text-sm text-zinc-600">
+                Marcá quiénes tienen derecho para ver el reparto.
+              </p>
+            ) : (
+              <ul className="mt-2 space-y-2.5">
+                {res.partes.map((p) => (
+                  <li key={p.quien} className="text-sm">
+                    <span className="font-medium text-zinc-800">{p.quien}</span>
+                    <span className="block tabular-nums text-zinc-900">
+                      {formatARS(p.monto, 0)}{" "}
+                      <span className="text-xs font-normal text-zinc-500">
+                        ({(p.fraccion * 100).toLocaleString("es-AR")}% del beneficio
+                        {p.personas > 1
+                          ? ` · ${formatARS(p.montoPorPersona, 0)} cada uno`
+                          : ""}
+                        )
+                      </span>
                     </span>
-                  </span>
-                  <span className="block text-xs text-zinc-500">{p.norma}</span>
-                </li>
-              ))}
-            </ul>
-          )}
+                    <span className="block text-xs text-zinc-500">{p.norma}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-      </div>
 
-      <div className="mt-4 space-y-2">
-        {res.avisos.map((a) => (
-          <p key={a.texto} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
-            {a.texto}
-          </p>
-        ))}
-      </div>
+        <div className="mt-4 space-y-2">
+          {res.avisos.map((a) => (
+            <p key={a.texto} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
+              {a.texto}
+            </p>
+          ))}
+        </div>
 
-      <p className="mt-4 text-xs text-zinc-500">
-        El haber mínimo de cada mes sale de la resolución de ANSES publicada en el Boletín Oficial;
-        el multiplicador, del decreto. Acá no se estima ninguno de los dos. Para ver el haber mínimo
-        y el bono del mes, está la{" "}
-        <Link href="/jubilacion" className="text-emerald-700 hover:underline">
-          calculadora de jubilación
-        </Link>
-        .
-      </p>
+        <p className="mt-4 text-xs text-zinc-500">
+          El haber mínimo de cada mes sale de la resolución de ANSES publicada en el Boletín Oficial;
+          el multiplicador, del decreto. Acá no se estima ninguno de los dos. Para ver el haber mínimo
+          y el bono del mes, está la{" "}
+          <Link href="/jubilacion" className="text-emerald-700 hover:underline">
+            calculadora de jubilación
+          </Link>
+          .
+        </p>
+        </>
+      )}
     </div>
   );
 }

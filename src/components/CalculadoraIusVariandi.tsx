@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { CAMINOS, MOTIVOS_VEDA, type MotivoVeda } from "@/data/ius-variandi";
 import { evaluarIusVariandi, type EstadoIntimacion } from "@/lib/ius-variandi";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -29,6 +30,11 @@ export function CalculadoraIusVariandi() {
   const [egreso, setEgreso] = useState("2026-08-20");
   const [tope, setTope] = useState("");
 
+  const error = primerError({
+    "Mejor remuneración": errorMonto(remuneracion),
+    "Tope indemnizatorio": errorMonto(tope),
+  });
+
   const res = useMemo(
     () =>
       evaluarIusVariandi({
@@ -36,8 +42,8 @@ export function CalculadoraIusVariandi() {
         intimacion,
         ingresoISO: ingreso,
         egresoISO: egreso,
-        mejorRemuneracion: Number(remuneracion) || 0,
-        topeCCT: Number(tope) > 0 ? Number(tope) : undefined,
+        mejorRemuneracion: parseMonto(remuneracion),
+        topeCCT: parseMonto(tope) > 0 ? parseMonto(tope) : undefined,
       }),
     [motivos, intimacion, ingreso, egreso, remuneracion, tope],
   );
@@ -172,129 +178,135 @@ export function CalculadoraIusVariandi() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div
-            className={`rounded-xl border p-4 ${
-              res.vedadoHoy ? "border-emerald-200 bg-emerald-50/60" : "border-zinc-200 bg-white"
-            }`}
-          >
-            <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-              Con el texto vigente
-            </p>
-            <p className="mt-1 text-lg font-bold text-zinc-900">
-              {res.vedadoHoy ? "El cambio está vedado" : "El cambio no está vedado por el art. 66"}
-            </p>
-            <p className="mt-1 text-xs text-zinc-600">
-              {res.caminosHoy.length} camino disponible: considerarte despedido sin causa, previa
-              intimación desoída.
-            </p>
-          </div>
-          <div
-            className={`rounded-xl border p-4 ${
-              res.vedadoAntes ? "border-amber-200 bg-amber-50/60" : "border-zinc-200 bg-white"
-            }`}
-          >
-            <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-              Antes del 6 de marzo de 2026
-            </p>
-            <p className="mt-1 text-lg font-bold text-zinc-900">
-              {res.vedadoAntes ? "El cambio estaba vedado" : "Tampoco estaba vedado"}
-            </p>
-            <p className="mt-1 text-xs text-zinc-600">
-              {CAMINOS.length} caminos: considerarte despedido o accionar por el restablecimiento,
-              sin irte.
-            </p>
-          </div>
-        </div>
-
-        {res.liquidacion ? (
-          <div className="mt-5">
-            <p className="text-sm text-zinc-600">
-              Si te considerás despedido, lo que te corresponde (art. 246 → arts. 232, 233 y 245)
-            </p>
-            <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
-              {formatARS(res.liquidacion.totalGeneral, 2)}
-            </p>
-            <div className="mt-4 overflow-x-auto">
-              <table className="w-full min-w-[30rem] text-sm">
-                <tbody>
-                  <tr className="border-b border-zinc-200">
-                    <td className="py-2 pr-3 text-zinc-700">
-                      Indemnización por antigüedad (art. 245)
-                      <span className="block text-xs text-zinc-500">
-                        {res.liquidacion.aniosComputables} año(s) computable(s) sobre{" "}
-                        {res.liquidacion.antiguedad.anios} a {res.liquidacion.antiguedad.meses} m
-                      </span>
-                    </td>
-                    <td className="py-2 text-right font-semibold text-zinc-900">
-                      {formatARS(res.liquidacion.indemnizacionAntiguedad, 2)}
-                    </td>
-                  </tr>
-                  <tr className="border-b border-zinc-200">
-                    <td className="py-2 pr-3 text-zinc-700">
-                      Preaviso omitido, con SAC (arts. 231/232)
-                    </td>
-                    <td className="py-2 text-right font-semibold text-zinc-900">
-                      {res.liquidacion.preaviso
-                        ? formatARS(res.liquidacion.preaviso.monto + res.liquidacion.preaviso.sac, 2)
-                        : "—"}
-                    </td>
-                  </tr>
-                  <tr className="border-b border-zinc-200">
-                    <td className="py-2 pr-3 text-zinc-700">
-                      Integración del mes, con SAC (art. 233)
-                    </td>
-                    <td className="py-2 text-right text-zinc-700">
-                      {res.liquidacion.integracion
-                        ? formatARS(
-                            res.liquidacion.integracion.monto + res.liquidacion.integracion.sac,
-                            2,
-                          )
-                        : "—"}
-                    </td>
-                  </tr>
-                  <tr className="border-b border-zinc-200">
-                    <td className="py-2 pr-3 text-zinc-700">
-                      Liquidación final (SAC proporcional y vacaciones)
-                    </td>
-                    <td className="py-2 text-right text-zinc-700">
-                      {formatARS(res.liquidacion.totalLiquidacionFinal, 2)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 pr-3 font-semibold text-zinc-900">Total</td>
-                    <td className="py-2 text-right text-base font-bold text-zinc-900">
-                      {formatARS(res.liquidacion.totalGeneral, 2)}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div
+              className={`rounded-xl border p-4 ${
+                res.vedadoHoy ? "border-emerald-200 bg-emerald-50/60" : "border-zinc-200 bg-white"
+              }`}
+            >
+              <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                Con el texto vigente
+              </p>
+              <p className="mt-1 text-lg font-bold text-zinc-900">
+                {res.vedadoHoy ? "El cambio está vedado" : "El cambio no está vedado por el art. 66"}
+              </p>
+              <p className="mt-1 text-xs text-zinc-600">
+                {res.caminosHoy.length} camino disponible: considerarte despedido sin causa, previa
+                intimación desoída.
+              </p>
             </div>
-            <p className="mt-2 text-xs text-zinc-500">
-              Es el mismo cálculo que{" "}
-              <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
-                la calculadora de despido sin causa
-              </Link>
-              : el art. 246 remite a los mismos tres artículos. El despido indirecto no paga ni más
-              ni menos que el directo.
-            </p>
+            <div
+              className={`rounded-xl border p-4 ${
+                res.vedadoAntes ? "border-amber-200 bg-amber-50/60" : "border-zinc-200 bg-white"
+              }`}
+            >
+              <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                Antes del 6 de marzo de 2026
+              </p>
+              <p className="mt-1 text-lg font-bold text-zinc-900">
+                {res.vedadoAntes ? "El cambio estaba vedado" : "Tampoco estaba vedado"}
+              </p>
+              <p className="mt-1 text-xs text-zinc-600">
+                {CAMINOS.length} caminos: considerarte despedido o accionar por el restablecimiento,
+                sin irte.
+              </p>
+            </div>
           </div>
-        ) : (
-          <p className="mt-5 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-600">
-            La liquidación aparece cuando se dan las dos condiciones que hoy pide el artículo 66: un
-            cambio vedado por el texto vigente y una intimación desoída.
-          </p>
-        )}
 
-        <ul className="mt-4 space-y-2">
-          {res.avisos.map((a, i) => (
-            <li key={i} className={`rounded-xl border px-4 py-3 text-sm ${TONOS[a.tono]}`}>
-              {a.texto}
-            </li>
-          ))}
-        </ul>
-      </div>
+          {res.liquidacion ? (
+            <div className="mt-5">
+              <p className="text-sm text-zinc-600">
+                Si te considerás despedido, lo que te corresponde (art. 246 → arts. 232, 233 y 245)
+              </p>
+              <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
+                {formatARS(res.liquidacion.totalGeneral, 2)}
+              </p>
+              <div className="mt-4 overflow-x-auto">
+                <table className="w-full min-w-[30rem] text-sm">
+                  <tbody>
+                    <tr className="border-b border-zinc-200">
+                      <td className="py-2 pr-3 text-zinc-700">
+                        Indemnización por antigüedad (art. 245)
+                        <span className="block text-xs text-zinc-500">
+                          {res.liquidacion.aniosComputables} año(s) computable(s) sobre{" "}
+                          {res.liquidacion.antiguedad.anios} a {res.liquidacion.antiguedad.meses} m
+                        </span>
+                      </td>
+                      <td className="py-2 text-right font-semibold text-zinc-900">
+                        {formatARS(res.liquidacion.indemnizacionAntiguedad, 2)}
+                      </td>
+                    </tr>
+                    <tr className="border-b border-zinc-200">
+                      <td className="py-2 pr-3 text-zinc-700">
+                        Preaviso omitido, con SAC (arts. 231/232)
+                      </td>
+                      <td className="py-2 text-right font-semibold text-zinc-900">
+                        {res.liquidacion.preaviso
+                          ? formatARS(res.liquidacion.preaviso.monto + res.liquidacion.preaviso.sac, 2)
+                          : "—"}
+                      </td>
+                    </tr>
+                    <tr className="border-b border-zinc-200">
+                      <td className="py-2 pr-3 text-zinc-700">
+                        Integración del mes, con SAC (art. 233)
+                      </td>
+                      <td className="py-2 text-right text-zinc-700">
+                        {res.liquidacion.integracion
+                          ? formatARS(
+                              res.liquidacion.integracion.monto + res.liquidacion.integracion.sac,
+                              2,
+                            )
+                          : "—"}
+                      </td>
+                    </tr>
+                    <tr className="border-b border-zinc-200">
+                      <td className="py-2 pr-3 text-zinc-700">
+                        Liquidación final (SAC proporcional y vacaciones)
+                      </td>
+                      <td className="py-2 text-right text-zinc-700">
+                        {formatARS(res.liquidacion.totalLiquidacionFinal, 2)}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-3 font-semibold text-zinc-900">Total</td>
+                      <td className="py-2 text-right text-base font-bold text-zinc-900">
+                        {formatARS(res.liquidacion.totalGeneral, 2)}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-2 text-xs text-zinc-500">
+                Es el mismo cálculo que{" "}
+                <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
+                  la calculadora de despido sin causa
+                </Link>
+                : el art. 246 remite a los mismos tres artículos. El despido indirecto no paga ni más
+                ni menos que el directo.
+              </p>
+            </div>
+          ) : (
+            <p className="mt-5 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-600">
+              La liquidación aparece cuando se dan las dos condiciones que hoy pide el artículo 66: un
+              cambio vedado por el texto vigente y una intimación desoída.
+            </p>
+          )}
+
+          <ul className="mt-4 space-y-2">
+            {res.avisos.map((a, i) => (
+              <li key={i} className={`rounded-xl border px-4 py-3 text-sm ${TONOS[a.tono]}`}>
+                {a.texto}
+              </li>
+            ))}
+          </ul>
+        </div>
+        </>
+      )}
     </div>
   );
 }

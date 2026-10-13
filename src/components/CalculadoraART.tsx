@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { calcularART } from "@/lib/riesgos-trabajo";
 import { PISOS, TRAMOS, VIGENCIA_ART } from "@/data/riesgos-trabajo";
+import { errorCantidad, errorMonto, parseDecimal, parseMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const claseInput =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
@@ -22,13 +24,19 @@ export function CalculadoraART() {
   const [muerte, setMuerte] = useState(false);
   const [enElTrabajo, setEnElTrabajo] = useState(true);
 
+  const error = primerError({
+    "Ingreso base mensual": errorMonto(ingresoBase),
+    "Edad": errorCantidad(edad),
+    "Porcentaje de incapacidad": errorCantidad(incapacidad),
+  });
+
   const res = useMemo(
     () =>
       calcularART(
         {
-          ingresoBase: Number(ingresoBase),
-          edad: Number(edad),
-          incapacidad: Number(incapacidad),
+          ingresoBase: parseMonto(ingresoBase),
+          edad: parseDecimal(edad),
+          incapacidad: parseDecimal(incapacidad),
           enElTrabajo,
         },
         muerte,
@@ -51,9 +59,7 @@ export function CalculadoraART() {
           </p>
           <input
             id="art-ib"
-            type="number"
-            min={0}
-            step={1000}
+            inputMode="numeric"
             value={ingresoBase}
             onChange={(e) => setIngresoBase(e.target.value)}
             className={claseInput}
@@ -132,7 +138,9 @@ export function CalculadoraART() {
         </div>
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-900">
           Revisá los datos: el ingreso base tiene que ser mayor a cero y la edad, de 14 a 100. Si
           no es un accidente fatal, la incapacidad va de 0 a 100.

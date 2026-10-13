@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { MATERNIDAD } from "@/data/licencias";
 import { calcularMaternidad, fechaLarga } from "@/lib/licencias";
-import { formatARS, parseMonto } from "@/lib/formato";
+import { formatARS, parseMonto, errorMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -31,6 +32,10 @@ export function CalculadoraLicencias() {
         : null,
     [fechaParto, diasAntes, bruto, fechaIngreso],
   );
+
+  const error = primerError({
+    "Sueldo bruto mensual": errorMonto(brutoInput),
+  });
 
   return (
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
@@ -114,7 +119,9 @@ export function CalculadoraLicencias() {
         </div>
       </div>
 
-      {res && (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res && (
         <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
           <p className="text-sm text-zinc-600">Tu licencia por maternidad</p>
           <p className="mt-1 text-2xl font-bold tracking-tight text-zinc-900">
