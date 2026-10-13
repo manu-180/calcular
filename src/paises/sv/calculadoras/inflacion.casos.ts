@@ -22,6 +22,8 @@ export default definirCasos(inflacion, [
     nombre: "Un mes sin IPC publicado usa el último disponible",
     origen: { tipo: "recalculado", detalle: "Al 8/10/2026 el último IPC es el de septiembre (135.60). 100 × 135.60 / 134.99 = 100.45." },
     fecha: "2026-10-08",
+    // El último dato va fijo: con la serie real el caso se rompía al entrar el mes siguiente y frenaba la publicación del país.
+    valores: { "sv.ipc": { fecha: "2026-09-01", valor: 135.6 } },
     entrada: { monto: 100, desde: "2026-08-01", hasta: "2026-10-08" },
     esperado: { montoActualizado: 100.45, mesDestino: "septiembre de 2026" },
   },

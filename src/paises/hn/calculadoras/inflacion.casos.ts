@@ -22,6 +22,8 @@ export default definirCasos(inflacion, [
     nombre: "Un mes sin dato publicado usa el último disponible",
     origen: { tipo: "recalculado", detalle: "Al 8/10/2026 el último dato del BCH es agosto 2026. Julio a agosto: 138.9967 / 137.9089 = 1.00789. L1,000 → L1,007.89." },
     fecha: "2026-10-08",
+    // El último dato va fijo: con la serie real el caso se rompía al entrar el mes siguiente y frenaba la publicación del país.
+    valores: { "hn.ipc": { fecha: "2026-08-01", valor: 138.9967 } },
     entrada: { monto: 1000, desde: "2026-07-01", hasta: "2026-10-08" },
     esperado: { montoActualizado: 1007.89, mesDestino: "agosto de 2026" },
   },
