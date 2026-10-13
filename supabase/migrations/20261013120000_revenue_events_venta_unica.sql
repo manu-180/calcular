@@ -16,10 +16,25 @@
 
 set lock_timeout = '5s';
 
-create unique index if not exists revenue_events_venta_por_pago_key
-  on public.revenue_events ((substring(note from '\[(?:mp|mercadopago|paypal|stripe):[0-9A-Za-z]+\]')))
-  where amount > 0 and note ~ '\[(?:mp|mercadopago|paypal|stripe):[0-9A-Za-z]+\]';
+-- revenue_events la creó el panel compartido, no una migración de este repo: en una base armada sólo
+-- con estas migraciones (los checks sobre PGlite) no existe y el índice no tiene sobre qué crearse.
+do $$
+begin
+  if to_regclass('public.revenue_events') is null then
+    raise notice 'revenue_events no existe: no se crean los índices de venta única';
+    return;
+  end if;
 
-create unique index if not exists revenue_events_devolucion_por_pago_key
-  on public.revenue_events ((substring(note from '\[(?:mp|mercadopago|paypal|stripe)-devuelto:[0-9A-Za-z]+\]')))
-  where amount < 0 and note ~ '\[(?:mp|mercadopago|paypal|stripe)-devuelto:[0-9A-Za-z]+\]';
+  execute $sql$
+    create unique index if not exists revenue_events_venta_por_pago_key
+      on public.revenue_events ((substring(note from '\[(?:mp|mercadopago|paypal|stripe):[0-9A-Za-z]+\]')))
+      where amount > 0 and note ~ '\[(?:mp|mercadopago|paypal|stripe):[0-9A-Za-z]+\]'
+  $sql$;
+
+  execute $sql$
+    create unique index if not exists revenue_events_devolucion_por_pago_key
+      on public.revenue_events ((substring(note from '\[(?:mp|mercadopago|paypal|stripe)-devuelto:[0-9A-Za-z]+\]')))
+      where amount < 0 and note ~ '\[(?:mp|mercadopago|paypal|stripe)-devuelto:[0-9A-Za-z]+\]'
+  $sql$;
+end
+$$;

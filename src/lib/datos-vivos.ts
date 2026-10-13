@@ -462,7 +462,7 @@ export function compararMes(hoyBuild: string | null, hoy: string): Hallazgo {
   return {
     ...base,
     severidad: "accion",
-    detalle: `Este deploy se compiló en ${periodoANombre(hoyBuild.slice(0, 7))} y ya es ${periodoANombre(hoy.slice(0, 7))}. Lo que se elige al cargar el módulo (haberes, SMVM, escalas de convenio) puede seguir mostrando el mes anterior hasta el próximo deploy.`,
+    detalle: `Este deploy se compiló en ${periodoANombre(hoyBuild.slice(0, 7))} y ya es ${periodoANombre(hoy.slice(0, 7))}. Las páginas pasan al mes nuevo en su próxima regeneración (dentro de la hora); un redeploy deja todo el sitio en el mes nuevo de una vez.`,
     accion: "Redeployar producción (vercel --prod o relanzar el workflow datos-vivos). Con VERCEL_DEPLOY_HOOK_URL configurada, el cron lo dispara solo.",
   };
 }
