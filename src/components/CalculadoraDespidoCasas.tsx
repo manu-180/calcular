@@ -11,6 +11,10 @@ import {
 } from "@/data/despido-casas-particulares";
 import { calcularDespidoCasas, type Modalidad } from "@/lib/despido-casas-particulares";
 import { formatARS, parseMonto } from "@/lib/formato";
+import { OfertaPlanilla } from "@/components/OfertaPlanilla";
+import { hojaCasas } from "@/components/oferta/hojas";
+import { VIGENCIA as VIGENCIA_CASAS } from "@/data/casas-particulares";
+import type { DatosOferta } from "@/lib/oferta";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -23,7 +27,7 @@ const claseInput =
 
 const numero = (n: number) => n.toLocaleString("es-AR", { maximumFractionDigits: 0 });
 
-export function CalculadoraDespidoCasas() {
+export function CalculadoraDespidoCasas({ oferta }: { oferta?: DatosOferta }) {
   const [sueldo, setSueldo] = useState("450.000");
   const [ingreso, setIngreso] = useState("2026-03-10");
   const [egreso, setEgreso] = useState("2026-08-14");
@@ -40,7 +44,26 @@ export function CalculadoraDespidoCasas() {
     [sueldo, ingreso, egreso, modalidad],
   );
 
+  // El despido no pide categoría ni horas, que es lo que necesita la planilla: la previa es un
+  // ejemplo con la modalidad que eligió, y lo dice. Sin datos de compra: no serían los suyos.
+  const previa = useMemo(
+    () =>
+      oferta
+        ? hojaCasas(oferta.archivo, {
+            mesId: VIGENCIA_CASAS.mesId,
+            categoriaId: "tareas-generales",
+            modalidad,
+            horasSemanales: 20,
+            zonaDesfavorable: false,
+            extrasComunes: 0,
+            extrasFinDeSemana: 0,
+          })
+        : null,
+    [oferta, modalidad],
+  );
+
   return (
+    <div className="space-y-6">
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="sm:col-span-2">
@@ -267,6 +290,38 @@ export function CalculadoraDespidoCasas() {
         </Link>
         .
       </p>
+    </div>
+
+      {oferta && previa && (
+        <OfertaPlanilla
+          producto={oferta}
+          desde="despido-empleada-domestica"
+          hoja={previa.hoja}
+          titulo="Si vas a tomar a otra persona, empezá en orden"
+          bajada={
+            <>
+              La planilla de Casas Particulares calcula el sueldo de cada mes con la escala oficial, lo que le pagás a
+              ARCA, el aguinaldo y las vacaciones. Y te arma el recibo para firmar, así la próxima liquidación final no
+              te agarra sin papeles.
+            </>
+          }
+          incluye={[
+            {
+              titulo: "Recibo de sueldo listo para imprimir",
+              texto: "Se completa solo con el mes liquidado. Lo imprimís por duplicado y cada parte firma su copia.",
+            },
+            {
+              titulo: "Lo que le pagás a ARCA, cada mes",
+              texto: "Aportes, contribuciones y ART según las horas que trabaja, y el costo total del mes.",
+            },
+            {
+              titulo: "Aguinaldo y vacaciones del año",
+              texto: "Anotás lo que pagaste cada mes y te calcula el aguinaldo de junio y diciembre y los días de vacaciones.",
+            },
+          ]}
+          notaHoja={`Ejemplo: ${previa.resumen.etiqueta}. En la tuya elegís la categoría y las horas.`}
+        />
+      )}
     </div>
   );
 }

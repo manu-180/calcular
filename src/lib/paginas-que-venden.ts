@@ -50,6 +50,18 @@ export const RUTAS_QUE_VENDEN_EXACTAS = [
   "/plazo-fijo",
   "/actualizacion-creditos-laborales",
   "/vacaciones",
+  "/aguinaldo",
+  "/monotributo",
+  "/monotributo/recategorizacion",
+  "/monotributo/categorias",
+  "/obra-social-monotributo",
+  "/descuentos-del-sueldo",
+  "/salario-minimo",
+  "/asignaciones-familiares",
+  "/despido-empleada-domestica",
+  "/aportes-empleada-domestica",
+  "/art-empleada-domestica",
+  "/deduccion-empleada-domestica",
 ] as const;
 
 /** `true` si en esa ruta hay algo a la venta (incluye las subrutas de RUTAS_QUE_VENDEN). */

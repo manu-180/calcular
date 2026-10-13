@@ -357,7 +357,9 @@ export function CalculadoraIndemnizacion({
         </div>
       )}
     </div>
-    {resultado && datosCompra && <OfertaInformeIndemnizacion r={resultado} precio={precioInforme} />}
+    {/* Sin `datosCompra` también: con una fecha fuera de 1940-2100 hay resultado pero el prefill no
+        valida, y la oferta desaparecía sin aviso. La compra sale igual; el informe pide los datos. */}
+    {resultado && <OfertaInformeIndemnizacion r={resultado} precio={precioInforme} />}
     </>
   );
 }

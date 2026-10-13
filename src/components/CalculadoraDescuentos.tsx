@@ -11,6 +11,9 @@ import {
 } from "@/data/descuentos-sueldo";
 import { calcularDescuentos } from "@/lib/descuentos-sueldo";
 import { formatARS, parseMonto } from "@/lib/formato";
+import { OfertaMiSueldo } from "@/components/mi-sueldo/OfertaMiSueldo";
+import { useDatosMiSueldo } from "@/components/mi-sueldo/useDatosMiSueldo";
+import type { DatosOferta } from "@/lib/oferta";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -40,16 +43,19 @@ const PERIODOS = [...SMVM_SERIE].reverse();
 // el SMVM está fijado hasta abril de 2027 y "el último" es un mes que todavía no llegó.
 const PERIODO_VIGENTE = smvmVigente().mes.periodo;
 
-export function CalculadoraDescuentos() {
+export function CalculadoraDescuentos({ oferta }: { oferta?: DatosOferta }) {
   const [bruto, setBruto] = useState("1.200.000");
+  const [tocado, setTocado] = useState(false);
   const [periodo, setPeriodo] = useState(PERIODO_VIGENTE);
 
   const res = useMemo(
     () => calcularDescuentos({ bruto: parseMonto(bruto), periodo }),
     [bruto, periodo],
   );
+  const { datos: datosCompra, setUltimoAumento } = useDatosMiSueldo(parseMonto(bruto), tocado && !!oferta);
 
   return (
+    <div className="space-y-6">
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
@@ -64,7 +70,10 @@ export function CalculadoraDescuentos() {
             id="bruto"
             inputMode="numeric"
             value={bruto}
-            onChange={(e) => setBruto(e.target.value)}
+            onChange={(e) => {
+              setBruto(e.target.value);
+              setTocado(true);
+            }}
             className={claseInput}
           />
         </div>
@@ -251,6 +260,25 @@ export function CalculadoraDescuentos() {
         </Link>
         .
       </p>
+    </div>
+
+      {oferta && datosCompra && (
+        <OfertaMiSueldo
+          producto={oferta}
+          datos={datosCompra}
+          onUltimoAumento={setUltimoAumento}
+          desde="descuentos-del-sueldo"
+          insignia="Tus recibos, controlados"
+          titulo="Cada descuento de tu recibo, revisado"
+          bajada={
+            <>
+              Cargás lo que dice cada recibo y la planilla Mi Sueldo te marca, línea por línea, si la jubilación, la obra
+              social y la cuota sindical están bien descontadas. Viene con tu sueldo de{" "}
+              <strong className="font-semibold text-zinc-800">{formatARS(datosCompra.bruto, 0)}</strong> ya cargado.
+            </>
+          }
+        />
+      )}
     </div>
   );
 }

@@ -7,6 +7,9 @@ import { smvmVigente } from "@/lib/desempleo";
 import { JORNADA_LEGAL_SEMANAL } from "@/data/salario-minimo";
 import { calcularSalarioMinimo } from "@/lib/salario-minimo";
 import { formatARS, parseMonto } from "@/lib/formato";
+import { OfertaMiSueldo } from "@/components/mi-sueldo/OfertaMiSueldo";
+import { useDatosMiSueldo } from "@/components/mi-sueldo/useDatosMiSueldo";
+import type { DatosOferta } from "@/lib/oferta";
 
 const TONOS = {
   info: "border-zinc-200 bg-zinc-50 text-zinc-700",
@@ -34,10 +37,12 @@ const PERIODO_VIGENTE = smvmVigente().mes.periodo;
 
 const JORNADAS_FRECUENTES = [48, 44, 36, 30, 24, 20, 16];
 
-export function CalculadoraSalarioMinimo() {
+export function CalculadoraSalarioMinimo({ oferta }: { oferta?: DatosOferta }) {
   const [periodo, setPeriodo] = useState(PERIODO_VIGENTE);
   const [horas, setHoras] = useState(String(JORNADA_LEGAL_SEMANAL));
   const [sueldo, setSueldo] = useState("");
+  const [tocado, setTocado] = useState(false);
+  const { datos: datosCompra, setUltimoAumento } = useDatosMiSueldo(parseMonto(sueldo), tocado && !!oferta);
 
   const res = useMemo(
     () =>
@@ -52,6 +57,7 @@ export function CalculadoraSalarioMinimo() {
   const jornadaCompleta = res.proporcion === 1;
 
   return (
+    <div className="space-y-6">
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="grid gap-5 sm:grid-cols-3">
         <div>
@@ -121,7 +127,10 @@ export function CalculadoraSalarioMinimo() {
             inputMode="numeric"
             placeholder="Ej.: 420.000"
             value={sueldo}
-            onChange={(e) => setSueldo(e.target.value)}
+            onChange={(e) => {
+              setSueldo(e.target.value);
+              setTocado(true);
+            }}
             className={claseInput}
           />
         </div>
@@ -208,6 +217,25 @@ export function CalculadoraSalarioMinimo() {
         Los montos salen de la escala publicada en el Boletín Oficial, no de una estimación. El
         salario mínimo es un importe <strong>bruto</strong>: sobre él se aplican los aportes de ley.
       </p>
+    </div>
+
+      {oferta && datosCompra && (
+        <OfertaMiSueldo
+          producto={oferta}
+          datos={datosCompra}
+          onUltimoAumento={setUltimoAumento}
+          desde="salario-minimo"
+          titulo="Tu sueldo, mes a mes, frente a la inflación"
+          bajada={
+            <>
+              Ya sabés cómo está tu sueldo de{" "}
+              <strong className="font-semibold text-zinc-800">{formatARS(datosCompra.bruto, 0)}</strong> frente al
+              mínimo. La planilla Mi Sueldo lo sigue cada mes: revisa los descuentos de cada recibo y te dice si le
+              gana a la inflación desde tu último aumento.
+            </>
+          }
+        />
+      )}
     </div>
   );
 }

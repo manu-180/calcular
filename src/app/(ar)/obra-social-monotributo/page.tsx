@@ -15,7 +15,8 @@ import {
   REPARTO_MONOTRIBUTO,
   VIGENCIA_MONO_OS,
 } from "@/data/obra-social-monotributo";
-import { PlanillaCTA } from "@/components/PlanillaCTA";
+import { OfertaMonotributo } from "@/components/oferta/OfertaMonotributo";
+import { datosOferta } from "@/lib/oferta";
 
 export const metadata: Metadata = {
   title: "Obra social del monotributo: desde cuándo te cubre",
@@ -158,7 +159,7 @@ export default function Page() {
         <CalculadoraObraSocialMonotributo />
       </section>
 
-      <PlanillaCTA producto="planilla-monotributo" desde="obra-social-monotributo" />
+      <OfertaMonotributo oferta={datosOferta("planilla-monotributo")} desde="obra-social-monotributo" />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">Los tres escalones, prestación por prestación</h2>

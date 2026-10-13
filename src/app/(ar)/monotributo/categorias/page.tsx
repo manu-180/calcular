@@ -6,7 +6,8 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { CATEGORIAS, VIGENCIA } from "@/data/monotributo";
 import { formatARS } from "@/lib/monotributo";
 import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
-import { PlanillaCTA } from "@/components/PlanillaCTA";
+import { OfertaMonotributo } from "@/components/oferta/OfertaMonotributo";
+import { datosOferta } from "@/lib/oferta";
 
 export const metadata: Metadata = {
   title: "Categorías del monotributo 2026: tabla de ARCA",
@@ -206,7 +207,7 @@ export default function CategoriasPage() {
           </li>
         </ul>
       </section>
-      <PlanillaCTA producto="planilla-monotributo" desde="monotributo-categorias" />
+      <OfertaMonotributo oferta={datosOferta("planilla-monotributo")} desde="monotributo-categorias" />
 
       <EmailCapture
         source="monotributo-categorias"

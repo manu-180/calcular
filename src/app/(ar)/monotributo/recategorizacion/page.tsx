@@ -7,7 +7,7 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { RECATEGORIZACION, VIGENCIA, ventanaRecategorizacion } from "@/data/monotributo";
 import { ORGANIZACION, articleSchema } from "@/lib/schema";
 import { openGraphDe } from "@/lib/seo";
-import { PlanillaCTA } from "@/components/PlanillaCTA";
+import { datosOferta } from "@/lib/oferta";
 
 // La ventana se deriva de la fecha (ver data/monotributo.ts). Revalidar cada hora hace que la
 // página cambie sola el día 6 de febrero/agosto (y que la cuenta regresiva sea del día correcto),
@@ -155,9 +155,8 @@ export default function RecategorizacionPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraRecategorizacion />
+      <CalculadoraRecategorizacion oferta={datosOferta("planilla-monotributo")} />
 
-      <PlanillaCTA producto="planilla-monotributo" desde="monotributo-recategorizacion" />
 
       <section className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
         <h2 className="font-semibold text-emerald-900">

@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { CompraDialogo, abrirCompra } from "@/components/CompraDialogo";
 import { HojaCalculo, type HojaPrevia } from "@/components/HojaCalculo";
+import { PrecioArriba } from "@/components/oferta/PrecioArriba";
 import type { DatosOferta } from "@/lib/oferta";
 
 // La oferta de la planilla paga, debajo del resultado de la calculadora. Hasta el 6/10/2026 era un
@@ -21,6 +22,7 @@ export function OfertaPlanilla({
   titulo,
   bajada,
   incluye,
+  notaHoja = "Las celdas amarillas ya vienen con tus datos. Cambiás una y se recalcula todo.",
 }: {
   producto: DatosOferta;
   /** Marca `?desde=` del link a la landing: de ahí sale qué calculadora vende. */
@@ -29,6 +31,8 @@ export function OfertaPlanilla({
   titulo: string;
   bajada: ReactNode;
   incluye: PuntoOferta[];
+  /** Debajo de la vista previa: cambia cuando la previa es un ejemplo y no el caso de la persona. */
+  notaHoja?: ReactNode;
 }) {
   const precio = `$${producto.precio.toLocaleString("es-AR")}`;
   const idTitulo = `oferta-${producto.slug}`;
@@ -54,13 +58,14 @@ export function OfertaPlanilla({
             {titulo}
           </h3>
           <p className="mt-2 text-[15px] leading-relaxed text-zinc-600">{bajada}</p>
+          <PrecioArriba slug={producto.slug} precio={producto.precio} />
         </header>
 
         <div className="md:col-start-1 md:row-span-2 md:row-start-1">
           <HojaCalculo hoja={hoja} />
           <p className="mt-2.5 flex items-center gap-1.5 text-xs text-zinc-500">
             <span aria-hidden className="inline-block size-2.5 rounded-sm bg-[#FFFDE7] ring-1 ring-amber-300/70" />
-            Las celdas amarillas ya vienen con tus datos. Cambiás una y se recalcula todo.
+            {notaHoja}
           </p>
         </div>
 

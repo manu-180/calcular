@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import Link from "next/link";
 import {
   PRODUCTO,
+  PRODUCTOS,
   checkoutIdDeReferencia,
   habilitaDescarga,
   obtenerPago,
@@ -11,11 +12,12 @@ import {
   rutaEntrega,
   type MpPayment,
   type Producto,
+  type ProductoSlug,
 } from "@/lib/mp";
 import { datosDelPago } from "@/lib/prefill/servidor";
 import { ConversionGoogleAds } from "@/components/ConversionGoogleAds";
 import { CONVERSION_COMPRA_PLANILLA } from "@/lib/ads";
-import { OtrasPlanillas } from "@/components/CatalogoPlanillas";
+import { COMPLEMENTO } from "@/lib/afinidad";
 import { cookies } from "next/headers";
 import { COOKIE_PISTA } from "@/lib/sesion-cliente";
 import { usuarioActual } from "@/lib/auth/sesion";
@@ -168,7 +170,7 @@ export default async function GraciasPage({
           </Link>{" "}
           y te lo enviamos por email.
         </div>
-        <OtrasPlanillas actual={producto.slug} titulo="Otras cosas que te pueden servir" />
+        <Complemento de={producto.slug} />
       </Marco>
     );
   }
@@ -271,6 +273,58 @@ async function GuardarEnCuenta({
         </Link>
       </div>
     </div>
+  );
+}
+
+function Complemento({ de }: { de: ProductoSlug }) {
+  const c = COMPLEMENTO[de];
+  const p = PRODUCTOS[c.para];
+  return (
+    <section
+      aria-labelledby="complemento-titulo"
+      className="rounded-[1.25rem] bg-zinc-900/[0.035] p-1.5 ring-1 ring-zinc-900/[0.06]"
+    >
+      <div className="rounded-[calc(1.25rem-0.375rem)] bg-white p-4 shadow-[0_1px_2px_rgba(0,0,0,0.06)]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-500">Para completar</p>
+        <h2 id="complemento-titulo" className="mt-1.5 text-base font-semibold text-zinc-900">
+          {c.titulo}
+        </h2>
+        <p className="mt-1 text-sm leading-relaxed text-zinc-600">{c.texto}</p>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-zinc-600">
+            <span className="font-semibold tabular-nums text-zinc-900">${p.precio.toLocaleString("es-AR")}</span>, con
+            la misma devolución de 7 días.
+          </p>
+          <Link
+            href={`/planillas/comprar?p=${p.slug}`}
+            rel="nofollow"
+            data-evento="cta_compra"
+            data-producto={p.slug}
+            data-ubicacion="gracias-complemento"
+            className="group inline-flex min-h-11 items-center gap-2 rounded-xl bg-zinc-900 py-1 pr-1 pl-4 text-sm font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.16)] transition-[background-color,transform] duration-200 ease-[var(--ease-snappy)] hover:bg-zinc-800 active:scale-[0.98]"
+          >
+            Sumarlo
+            <span
+              aria-hidden
+              className="grid size-8 place-items-center rounded-lg bg-white/15 transition-transform duration-200 ease-[var(--ease-snappy)] group-hover:translate-x-0.5"
+            >
+              <svg viewBox="0 0 20 20" fill="none" className="size-4">
+                <path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </Link>
+        </div>
+        <Link
+          href={`${p.rutaLanding}?desde=gracias`}
+          data-evento="cta_compra"
+          data-producto={p.slug}
+          data-ubicacion="gracias-complemento-landing"
+          className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-4 transition-colors hover:text-emerald-900"
+        >
+          Ver qué trae
+        </Link>
+      </div>
+    </section>
   );
 }
 

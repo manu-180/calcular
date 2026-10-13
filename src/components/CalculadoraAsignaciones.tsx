@@ -15,6 +15,9 @@ import {
   montoMonotributoHijo,
 } from "@/lib/asignaciones";
 import { formatARS, parseMonto } from "@/lib/formato";
+import { OfertaMiSueldo } from "@/components/mi-sueldo/OfertaMiSueldo";
+import { useDatosMiSueldo } from "@/components/mi-sueldo/useDatosMiSueldo";
+import type { DatosOferta } from "@/lib/oferta";
 
 const V = ASIGNACIONES_VIGENTES;
 
@@ -102,8 +105,9 @@ function Tilde({
   );
 }
 
-export function CalculadoraAsignaciones() {
+export function CalculadoraAsignaciones({ oferta }: { oferta?: DatosOferta }) {
   const [regimen, setRegimen] = useState<Regimen>("suaf");
+  const [tocado, setTocado] = useState(false);
 
   // Régimen general
   const [ingresos, setIngresos] = useState<string[]>(["", ""]);
@@ -156,7 +160,14 @@ export function CalculadoraAsignaciones() {
 
   const montoMono = montoMonotributoHijo(grupo);
 
+  // El primer ingreso es el de quien usa la calculadora; los demás son del resto del grupo.
+  const { datos: datosCompra, setUltimoAumento } = useDatosMiSueldo(
+    parseMonto(ingresos[0] ?? ""),
+    tocado && regimen === "suaf" && !!oferta,
+  );
+
   return (
+    <div className="space-y-6">
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <fieldset>
         <legend className="text-sm font-semibold text-zinc-800">¿Cómo trabajás?</legend>
@@ -209,6 +220,7 @@ export function CalculadoraAsignaciones() {
                       const copia = [...ingresos];
                       copia[i] = e.target.value;
                       setIngresos(copia);
+                      if (i === 0) setTocado(true);
                     }}
                     className={`${inputCls} pl-7 text-lg font-medium`}
                   />
@@ -528,6 +540,24 @@ export function CalculadoraAsignaciones() {
             </p>
           </div>
         </div>
+      )}
+    </div>
+
+      {oferta && datosCompra && regimen === "suaf" && (
+        <OfertaMiSueldo
+          producto={oferta}
+          datos={datosCompra}
+          onUltimoAumento={setUltimoAumento}
+          desde="asignaciones-familiares"
+          titulo="Tu sueldo y tus recibos, en orden"
+          bajada={
+            <>
+              Lo que cobrás de asignaciones depende de tu bruto. La planilla Mi Sueldo lo sigue mes a mes: revisa los
+              descuentos de cada recibo y te dice si tu sueldo le gana a la inflación. Viene con tus{" "}
+              <strong className="font-semibold text-zinc-800">{formatARS(datosCompra.bruto, 0)}</strong> ya cargados.
+            </>
+          }
+        />
       )}
     </div>
   );

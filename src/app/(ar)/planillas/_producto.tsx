@@ -85,7 +85,12 @@ function Check() {
 
 // Las planillas cuya calculadora deja los datos para la compra (src/lib/prefill/cliente.ts): en su
 // landing, quien viene de la calculadora ve su propio caso en vez del ejemplo.
-const PERSONALIZABLES = new Set<string>(["planilla-comercio", "planilla-uocra", "planilla-casas-particulares"]);
+const PERSONALIZABLES = new Set<string>([
+  "planilla-comercio",
+  "planilla-uocra",
+  "planilla-casas-particulares",
+  "planilla-monotributo",
+]);
 
 function hojaDesdeFilas(c: ConfigLanding): HojaPrevia {
   const hoja = c.previewHoja ?? "Liquidador";
