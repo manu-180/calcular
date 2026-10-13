@@ -1,6 +1,7 @@
 import { resolverValores } from "../../../src/motor/registro";
 import { diasEntre, sumarDias, ultimoPunto, vigente } from "../../../src/motor/vigencia";
 import type { FechaISO, PaisDefinido } from "../../../src/motor/tipos";
+import { diasHabilesEntre, MAX_DIAS_HABILES_DIARIA } from "./frescura";
 
 export const DIAS_HORIZONTE = 30;
 
@@ -22,7 +23,9 @@ export interface SemaforoPais {
 }
 
 // Antes de que una serie se caiga de lo publicable: con la mitad de margen para una diaria (que el
-// cron refresca tres veces por día) ya es una fuente caída varios días seguidos.
+// cron refresca tres veces por día) ya es una fuente caída varios días seguidos. Con un máximo de
+// 10 días ese margen llegaba tarde (cl y uy en verde con el dato de hace una semana, 13/10/2026):
+// una diaria también pasa a amarillo con más de MAX_DIAS_HABILES_DIARIA días hábiles sin punto.
 function margenSerie(maxAntiguedadDias: number): number {
   return Math.max(2, Math.round(maxAntiguedadDias * 0.15));
 }
@@ -72,6 +75,8 @@ export function semaforoPais(pais: PaisDefinido, hoy: FechaISO, horizonte = DIAS
       items.push({ clave: `${s.id}:serie`, nivel: "rojo", tipo: "serie", texto: `${s.id}: el último punto es del ${ultimo.fecha} (${edad} días, máximo ${s.maxAntiguedadDias}): las calculadoras que la usan no se publican` });
     } else if (s.maxAntiguedadDias - edad <= margenSerie(s.maxAntiguedadDias)) {
       items.push({ clave: `${s.id}:serie`, nivel: "amarillo", tipo: "serie", texto: `${s.id}: el último punto es del ${ultimo.fecha}; si no llega uno nuevo, vence el ${sumarDias(ultimo.fecha, s.maxAntiguedadDias + 1)}` });
+    } else if (s.frecuencia === "diaria" && diasHabilesEntre(ultimo.fecha, hoy) > MAX_DIAS_HABILES_DIARIA) {
+      items.push({ clave: `${s.id}:serie`, nivel: "amarillo", tipo: "serie", texto: `${s.id}: serie diaria con ${diasHabilesEntre(ultimo.fecha, hoy)} días hábiles sin dato nuevo (último ${ultimo.fecha}); vence el ${sumarDias(ultimo.fecha, s.maxAntiguedadDias + 1)}` });
     }
   }
 
