@@ -1,12 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { calcular, type Actividad } from "@/lib/monotributo";
 import { formatARS, parseMonto } from "@/lib/formato";
 import { VIGENCIA } from "@/data/monotributo";
+import { OfertaMonotributo } from "@/components/oferta/OfertaMonotributo";
+import { prefill } from "@/lib/prefill/monotributo";
+import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
+import type { DatosOferta } from "@/lib/oferta";
 
-export function CalculadoraMonotributo() {
+export function CalculadoraMonotributo({ oferta }: { oferta?: DatosOferta }) {
   const [facturacionInput, setFacturacionInput] = useState("");
+  const [tocado, setTocado] = useState(false);
   const [actividad, setActividad] = useState<Actividad>("servicios");
   const [relacionDependencia, setRelacionDependencia] = useState(false);
 
@@ -16,7 +21,27 @@ export function CalculadoraMonotributo() {
     [facturacion, actividad, relacionDependencia]
   );
 
+  // Sin la categoría de hoy, la planilla arranca con la que le dio la cuenta: «te mantenés».
+  const datosCompra = useMemo(
+    () =>
+      resultado?.tipo === "ok"
+        ? prefill.validar({
+            actividad,
+            categoriaActual: resultado.categoria.cat,
+            dependencia: relacionDependencia,
+            facturacion,
+          })
+        : null,
+    [resultado, actividad, relacionDependencia, facturacion]
+  );
+  useEffect(() => {
+    if (!tocado || !oferta) return;
+    if (datosCompra) recordarDatosCompra("planilla-monotributo", datosCompra);
+    else olvidarDatosCompra("planilla-monotributo");
+  }, [tocado, oferta, datosCompra]);
+
   return (
+    <div className="space-y-6">
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="space-y-5">
         <div>
@@ -35,7 +60,10 @@ export function CalculadoraMonotributo() {
               inputMode="numeric"
               placeholder="Ej: 18.000.000"
               value={facturacionInput}
-              onChange={(e) => setFacturacionInput(e.target.value)}
+              onChange={(e) => {
+                setFacturacionInput(e.target.value);
+                setTocado(true);
+              }}
               className="w-full rounded-lg border border-zinc-300 py-2.5 pl-7 pr-3 text-lg font-medium text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200"
             />
           </div>
@@ -162,6 +190,9 @@ export function CalculadoraMonotributo() {
           )}
         </div>
       )}
+    </div>
+
+      {oferta && datosCompra && <OfertaMonotributo oferta={oferta} desde="monotributo" datos={datosCompra} />}
     </div>
   );
 }

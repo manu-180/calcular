@@ -1,7 +1,8 @@
 "use client";
 
-import { useId } from "react";
+import { useId, type ReactNode } from "react";
 import { CompraDialogo, abrirCompra } from "@/components/CompraDialogo";
+import { PrecioArriba } from "@/components/oferta/PrecioArriba";
 import { HojaCalculo } from "@/components/HojaCalculo";
 import { hojaMiSueldo, pct } from "@/components/mi-sueldo/modelo";
 import { PLANILLA_MS, type Datos } from "@/lib/prefill/mi-sueldo";
@@ -16,14 +17,25 @@ import type { DatosOferta } from "@/lib/oferta";
 // poder de compra perdió y qué aumento lo recupera: es la primera hoja de la planilla que compra,
 // con sus números, y el mes elegido viaja con la compra (prefill) para que el archivo diga lo mismo.
 
+// Otras calculadoras del empleado (aguinaldo, descuentos, salario mínimo, asignaciones) montan
+// esta misma oferta con su propio título y bajada: la herramienta de inflación y la previa no cambian.
 export function OfertaMiSueldo({
   producto,
   datos,
   onUltimoAumento,
+  desde = "sueldo-neto",
+  insignia = "Tu sueldo frente al IPC del INDEC",
+  titulo = "¿Tu sueldo le gana a la inflación?",
+  bajada,
 }: {
   producto: DatosOferta;
   datos: Datos;
   onUltimoAumento: (p: string | null) => void;
+  /** Marca `?desde=` del link a la landing: de ahí sale qué calculadora vende. */
+  desde?: string;
+  insignia?: string;
+  titulo?: string;
+  bajada?: ReactNode;
 }) {
   const idSelect = useId();
   const idTitulo = `oferta-${producto.slug}`;
@@ -47,16 +59,21 @@ export function OfertaMiSueldo({
             <svg aria-hidden viewBox="0 0 16 16" className="size-3">
               <path d="M2 12.5 6 8l3 3 5-6" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Tu sueldo frente al IPC del INDEC
+            {insignia}
           </p>
           <h3 id={idTitulo} className="mt-3 text-[1.375rem] font-bold leading-tight tracking-tight text-zinc-900 sm:text-2xl">
-            ¿Tu sueldo le gana a la inflación?
+            {titulo}
           </h3>
           <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-zinc-600">
-            Ya sabés cuánto cobrás en mano. Ahora fijate cuánto vale: elegí desde qué mes cobrás{" "}
-            <strong className="font-semibold text-zinc-800">{formatARS(datos.bruto, 0)}</strong> brutos y te
-            mostramos, con el IPC oficial, cuánto poder de compra perdiste y qué aumento lo recupera.
+            {bajada ?? (
+              <>
+                Ya sabés cuánto cobrás en mano. Ahora fijate cuánto vale: elegí desde qué mes cobrás{" "}
+                <strong className="font-semibold text-zinc-800">{formatARS(datos.bruto, 0)}</strong> brutos y te
+                mostramos, con el IPC oficial, cuánto poder de compra perdiste y qué aumento lo recupera.
+              </>
+            )}
           </p>
+          <PrecioArriba slug={producto.slug} precio={producto.precio} boton="Quiero mi planilla" />
         </header>
 
         <div className="md:col-start-1">
@@ -181,7 +198,7 @@ export function OfertaMiSueldo({
               para pedir la devolución.
             </p>
             <a
-              href={`${producto.rutaLanding}?desde=sueldo-neto`}
+              href={`${producto.rutaLanding}?desde=${desde}`}
               data-evento="cta_compra"
               data-producto={producto.slug}
               data-ubicacion="calculadora-landing"

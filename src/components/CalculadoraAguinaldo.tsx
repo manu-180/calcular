@@ -5,9 +5,13 @@ import { calcularAguinaldo } from "@/lib/aguinaldo";
 import { formatARS, parseMonto } from "@/lib/formato";
 import { SEMESTRES_2026, type Semestre } from "@/data/aguinaldo";
 import { CompartirWhatsApp } from "@/components/CompartirWhatsApp";
+import { OfertaMiSueldo } from "@/components/mi-sueldo/OfertaMiSueldo";
+import { useDatosMiSueldo } from "@/components/mi-sueldo/useDatosMiSueldo";
+import type { DatosOferta } from "@/lib/oferta";
 
-export function CalculadoraAguinaldo() {
+export function CalculadoraAguinaldo({ oferta }: { oferta?: DatosOferta }) {
   const [sueldoInput, setSueldoInput] = useState("");
+  const [tocado, setTocado] = useState(false);
   const [semestreId, setSemestreId] = useState<Semestre["id"]>("primero");
   const [semestreIncompleto, setSemestreIncompleto] = useState(false);
   const [ingresoISO, setIngresoISO] = useState("");
@@ -34,7 +38,11 @@ export function CalculadoraAguinaldo() {
     [sueldo, semestre, semestreIncompleto, ingresoISO, egresoISO]
   );
 
+  // El mejor sueldo del semestre es el bruto mensual que la planilla necesita para arrancar.
+  const { datos: datosCompra, setUltimoAumento } = useDatosMiSueldo(sueldo, tocado && !!oferta);
+
   return (
+    <div className="space-y-6">
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="space-y-5">
         <div>
@@ -54,7 +62,10 @@ export function CalculadoraAguinaldo() {
               inputMode="numeric"
               placeholder="Ej: 1.500.000"
               value={sueldoInput}
-              onChange={(e) => setSueldoInput(e.target.value)}
+              onChange={(e) => {
+                setSueldoInput(e.target.value);
+                setTocado(true);
+              }}
               className="w-full rounded-lg border border-zinc-300 py-2.5 pl-7 pr-3 text-lg font-medium text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200"
             />
           </div>
@@ -221,6 +232,26 @@ export function CalculadoraAguinaldo() {
             </div>
           )}
         </div>
+      )}
+    </div>
+
+      {oferta && datosCompra && resultado && resultado.diasTrabajados > 0 && (
+        <OfertaMiSueldo
+          producto={oferta}
+          datos={datosCompra}
+          onUltimoAumento={setUltimoAumento}
+          desde="aguinaldo"
+          insignia="Aguinaldo, recibos e inflación"
+          titulo="Tu aguinaldo de cada semestre, en tu Excel"
+          bajada={
+            <>
+              Cobrás <strong className="font-semibold text-zinc-800">{formatARS(resultado.netoEstimado, 0)}</strong> en
+              mano, a más tardar el {semestre.fechaPago}. La planilla Mi Sueldo recalcula tu aguinaldo con cada recibo
+              que cargás y te marca si los descuentos están bien. Abajo ves, con tu sueldo de{" "}
+              {formatARS(datosCompra.bruto, 0)}, si le gana a la inflación.
+            </>
+          }
+        />
       )}
     </div>
   );

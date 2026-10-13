@@ -4,7 +4,6 @@ import { EmailCapture } from "@/components/EmailCapture";
 import { datosOferta } from "@/lib/oferta";
 import { CalculadoraComercio } from "@/components/CalculadoraComercio";
 import { JsonLd } from "@/components/JsonLd";
-import { PlanillaComercioCTA } from "@/components/PlanillaComercioCTA";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { CATEGORIAS_COMERCIO, COMERCIO_FUENTES, MESES_COMERCIO } from "@/data/convenios/comercio";
 import { calcularComercio } from "@/lib/convenios";
@@ -244,8 +243,6 @@ export default function SueldoNetoComercioPage() {
           vuelve al 83% del bruto.
         </p>
       </section>
-
-      <PlanillaComercioCTA />
 
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-zinc-900">Preguntas frecuentes</h2>

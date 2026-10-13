@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraSalarioMinimo } from "@/components/CalculadoraSalarioMinimo";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
@@ -174,7 +175,7 @@ export default function SalarioMinimoPage() {
           Elegí el mes y cargá tus horas semanales. Si además ponés tu sueldo bruto, la calculadora
           te dice cuánto te falta (o te sobra) para llegar al piso legal de esa jornada.
         </p>
-        <CalculadoraSalarioMinimo />
+        <CalculadoraSalarioMinimo oferta={datosOferta("planilla-mi-sueldo")} />
       </section>
 
       <section className="space-y-3">

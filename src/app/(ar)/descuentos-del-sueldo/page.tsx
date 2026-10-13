@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraDescuentos } from "@/components/CalculadoraDescuentos";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
@@ -149,7 +150,7 @@ export default function DescuentosDelSueldoPage() {
           </Link>{" "}
           del mes que elijas.
         </p>
-        <CalculadoraDescuentos />
+        <CalculadoraDescuentos oferta={datosOferta("planilla-mi-sueldo")} />
       </section>
 
       <section className="space-y-3">

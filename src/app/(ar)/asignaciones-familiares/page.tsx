@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraAsignaciones } from "@/components/CalculadoraAsignaciones";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
@@ -160,7 +161,7 @@ export default function AsignacionesPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraAsignaciones />
+      <CalculadoraAsignaciones oferta={datosOferta("planilla-mi-sueldo")} />
 
       {P && AUH_PROXIMA !== null && HIJO_PROXIMO !== null && (
         <section className="space-y-3">

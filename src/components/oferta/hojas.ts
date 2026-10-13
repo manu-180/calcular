@@ -15,9 +15,13 @@ import { CATEGORIAS_COMERCIO, JORNADAS_COMERCIO, MESES_COMERCIO } from "@/data/c
 import { CATEGORIAS_UOCRA, MESES_UOCRA, ZONAS_UOCRA } from "@/data/convenios/uocra";
 import { ESCALAS_POR_MES, HORAS_EXTRAS, escalaDe } from "@/data/casas-particulares";
 import { formatARS } from "@/lib/formato";
+import * as monotributo from "@/lib/prefill/monotributo";
+import { categoriaPorParametros, cuotaMensual } from "@/lib/monotributo";
+import { CATEGORIAS as CATEGORIAS_MONO } from "@/data/monotributo";
 
 // Orden real de las pestañas de cada libro (check_prefill_planillas.ts lo compara con el archivo).
 export const PESTANAS = {
+  "planilla-monotributo": ["Instrucciones", "Mi monotributo", "Categorías 2026", "Fuentes"],
   "planilla-comercio": ["Liquidación", "Escala 2026", "SAC (Aguinaldo)", "Changelog"],
   "planilla-uocra": ["Instrucciones", "Escala 2026", "Liquidador", "Fuentes"],
   "planilla-casas-particulares": [
@@ -172,6 +176,60 @@ export function hojaCasas(archivo: string, d: casas.Datos): { hoja: HojaPrevia; 
       costo,
       faltaObraSocial: a.faltaParaObraSocial,
       etiqueta: `${categoria.nombre} · ${horas(d.horasSemanales)} h por semana · ${mes.etiqueta}`,
+    },
+  };
+}
+
+export type ResumenMonotributo = Resumen & {
+  categoria: string;
+  /** null: ya está en la K; lo que sigue es quedar fuera del régimen. */
+  siguiente: string | null;
+  margen: number;
+  cuota: number;
+};
+
+// Sin las filas de los 12 meses: sus rótulos salen de la ventana de recategorización del día en
+// que se generó el archivo y no tienen por qué coincidir con la del día en que se mira la oferta.
+export function hojaMonotributo(
+  archivo: string,
+  d: monotributo.Datos,
+): { hoja: HojaPrevia; resumen: ResumenMonotributo } | null {
+  const r = categoriaPorParametros({ ingresos: d.facturacion });
+  const actual = CATEGORIAS_MONO.find((c) => c.cat === d.categoriaActual);
+  if (r.tipo !== "ok" || !actual) return null;
+  const cat = r.categoria;
+  const i = CATEGORIAS_MONO.indexOf(cat);
+  const iActual = CATEGORIAS_MONO.indexOf(actual);
+  const r2 = (n: number) => Math.round(n * 100) / 100;
+  const margen = r2(cat.ingresosBrutosMax - d.facturacion);
+  const cuota = r2(cuotaMensual(cat, d.actividad, d.dependencia).total);
+  const cuotaActual = r2(cuotaMensual(actual, d.actividad, d.dependencia).total);
+  const movimiento = i > iActual ? "Subís de categoría" : i < iActual ? "Bajás de categoría" : "Te mantenés en la misma";
+  const filas: FilaHoja[] = [
+    { fila: 4, etiqueta: "TUS DATOS", tono: "seccion" },
+    { fila: 5, etiqueta: "Actividad principal", valor: monotributo.ACTIVIDAD_EN_PLANILLA[d.actividad], tono: "input" },
+    { fila: 6, etiqueta: "Tu categoría actual", valor: actual.cat, tono: "input" },
+    { fila: 7, etiqueta: "¿Trabajás en relación de dependencia?", valor: siNo(d.dependencia), tono: "input" },
+    { fila: 30, etiqueta: "RESULTADO", tono: "seccion" },
+    { fila: 31, etiqueta: "Facturación de los últimos 12 meses", valor: d.facturacion },
+    { fila: 37, etiqueta: "CATEGORÍA QUE TE CORRESPONDE", valor: cat.cat, tono: "total" },
+    { fila: 38, etiqueta: "Qué parámetro la define", valor: "La facturación" },
+    { fila: 39, etiqueta: "Tope de esa categoría", valor: cat.ingresosBrutosMax },
+    { fila: 40, etiqueta: "Margen para seguir facturando", valor: margen },
+    { fila: 41, etiqueta: "CUOTA MENSUAL", valor: cuota, tono: "total" },
+    { fila: 42, etiqueta: `Cuota de tu categoría actual (${actual.cat})`, valor: cuotaActual },
+    { fila: 43, etiqueta: "¿Qué pasa en la recategorización?", valor: movimiento },
+  ];
+  return {
+    hoja: { archivo, pestanas: [...PESTANAS["planilla-monotributo"]], hoja: monotributo.HOJA, filas },
+    resumen: {
+      bruto: d.facturacion,
+      neto: d.facturacion,
+      etiqueta: `${monotributo.ACTIVIDAD_EN_PLANILLA[d.actividad]} · hoy en ${actual.cat} · ${formatARS(d.facturacion, 0)} en 12 meses`,
+      categoria: cat.cat,
+      siguiente: CATEGORIAS_MONO[i + 1]?.cat ?? null,
+      margen,
+      cuota,
     },
   };
 }

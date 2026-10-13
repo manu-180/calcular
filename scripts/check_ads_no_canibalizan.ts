@@ -20,7 +20,7 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
   }
 }
 
-const CTAS = ["<PlanillaComercioCTA", "<PlanillaUocraCTA", "<PlanillaComprarBtn", "<CalculadoraAlquiler", "<CalculadoraCuotaAlimentaria", "oferta={datosOferta(", "precioInforme={"];
+const CTAS = ["<PlanillaComercioCTA", "<PlanillaUocraCTA", "<PlanillaCTA ", "<OfertaMonotributo", "<PlanillaComprarBtn", "<CalculadoraAlquiler", "<CalculadoraCuotaAlimentaria", "oferta={datosOferta(", "precioInforme={"];
 
 /** Recorre src/app y devuelve la ruta pública de cada page.tsx que renderiza un CTA de venta. */
 function rutasConCta(dir = "src/app", base = ""): string[] {
@@ -62,7 +62,7 @@ check(
 
 // Las páginas informativas SÍ tienen que poder monetizar: si el guard se generalizara por error,
 // el sitio se quedaría sin anuncios en todos lados y nadie lo notaría hasta fin de mes.
-for (const ruta of ["/", "/monotributo", "/canasta-basica/agosto-2026", "/inflacion/2026", "/jubilacion", "/cuota-alimentaria/agosto-2026"]) {
+for (const ruta of ["/", "/desempleo", "/canasta-basica/agosto-2026", "/inflacion/2026", "/jubilacion", "/cuota-alimentaria/agosto-2026"]) {
   check(`${ruta} puede servir anuncios`, !vendeAlgo(ruta));
 }
 

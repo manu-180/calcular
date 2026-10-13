@@ -29,7 +29,11 @@ import { calcularAportes } from "../src/lib/aportes-casas-particulares";
 import { JORNADAS_COMERCIO, MESES_COMERCIO } from "../src/data/convenios/comercio";
 import { MESES_UOCRA, UOCRA_HORAS_MES_PROMEDIO } from "../src/data/convenios/uocra";
 import { ESCALAS_POR_MES } from "../src/data/casas-particulares";
-import { hojaCasas, hojaComercio, hojaUocra } from "../src/components/oferta/hojas";
+import { hojaCasas, hojaComercio, hojaMonotributo, hojaUocra } from "../src/components/oferta/hojas";
+import * as monotributo from "../src/lib/prefill/monotributo";
+import { ACTIVIDADES as ACTIVIDADES_MONO, ARCHIVO_MONOTRIBUTO, CELDAS_MONO, HOJAS_MONO } from "./gen_planilla_monotributo";
+import { categoriaPorParametros, cuotaMensual } from "../src/lib/monotributo";
+import { CATEGORIAS as CATEGORIAS_MONO } from "../src/data/monotributo";
 import type { HojaPrevia } from "../src/components/HojaCalculo";
 
 let fallas = 0;
@@ -318,11 +322,67 @@ async function checkCasas() {
   check("casas: más de 48 horas semanales rechazado", casas.prefill.validar({ ...casos[0], horasSemanales: 49 }) === null);
 }
 
+// ─── Monotributo ─────────────────────────────────────────────────────────────
+
+async function checkMonotributo() {
+  const M = monotributo.CELDAS;
+  check(
+    "monotributo: celdas del prefill == las del generador",
+    monotributo.HOJA === HOJAS_MONO.control &&
+      (Object.keys(M) as (keyof typeof M)[]).every((k) => M[k] === CELDAS_MONO[k]),
+  );
+  check(
+    "monotributo: actividades del prefill == las del generador",
+    monotributo.ACTIVIDAD_EN_PLANILLA.servicios === ACTIVIDADES_MONO.servicios && monotributo.ACTIVIDAD_EN_PLANILLA.venta === ACTIVIDADES_MONO.venta,
+  );
+  check("monotributo: registrado en PREFILLS", PREFILLS["planilla-monotributo"] === (monotributo.prefill as unknown));
+
+  const cat = (c: string) => CATEGORIAS_MONO.find((x) => x.cat === c)!;
+  const casos: monotributo.Datos[] = [
+    { actividad: "servicios", categoriaActual: "C", dependencia: false, facturacion: 26_000_000 },
+    { actividad: "venta", categoriaActual: "A", dependencia: true, facturacion: 5_000_000 },
+    { actividad: "servicios", categoriaActual: "H", dependencia: false, facturacion: 30_000_000.55 },
+    { actividad: "venta", categoriaActual: "K", dependencia: false, facturacion: cat("K").ingresosBrutosMax },
+    { actividad: "servicios", categoriaActual: "B", dependencia: true, facturacion: cat("B").ingresosBrutosMax },
+    { actividad: "servicios", categoriaActual: "D", dependencia: false, facturacion: 7 },
+  ];
+  const refs = [M.actividad, M.categoriaActual, M.dependencia, ...Array.from({ length: 12 }, (_, i) => `B${M.primeraFilaMes + i}`)];
+  for (const d of casos) {
+    const { libro, malas } = await aplicarYEvaluar(ARCHIVO_MONOTRIBUTO, monotributo.prefill, d, monotributo.HOJA, refs);
+    const r = categoriaPorParametros({ ingresos: d.facturacion });
+    if (r.tipo !== "ok") throw new Error(`caso fuera del régimen: ${d.facturacion}`);
+    const cuota = cuotaMensual(r.categoria, d.actividad, d.dependencia).total;
+    const etiqueta = `${d.actividad} · hoy ${d.categoriaActual} · ${d.facturacion}${d.dependencia ? " · dependencia" : ""}`;
+    check(`monotributo ${etiqueta}: desplegables respetados`, malas.length === 0, malas);
+    const total = libro.numero(monotributo.HOJA, M.facturacion12);
+    const categoria = libro.valor(monotributo.HOJA, M.categoria);
+    const margen = libro.numero(monotributo.HOJA, M.margen);
+    const cuotaArchivo = libro.numero(monotributo.HOJA, M.cuota);
+    check(
+      `monotributo ${etiqueta}: suma ${total}, categoría ${String(categoria)}, margen y cuota == calculadora`,
+      igual(total, d.facturacion) &&
+        categoria === r.categoria.cat &&
+        igual(margen, r.categoria.ingresosBrutosMax - d.facturacion) &&
+        igual(cuotaArchivo, cuota),
+      { total, categoria, margen, cuotaArchivo, web: [r.categoria.cat, r.categoria.ingresosBrutosMax - d.facturacion, cuota] },
+    );
+    const previa = previaCoincide(libro, hojaMonotributo(ARCHIVO_MONOTRIBUTO, d)!.hoja);
+    check(`monotributo ${etiqueta}: la vista previa == el archivo`, previa.length === 0, previa);
+  }
+  hostiles("monotributo", monotributo.prefill, casos[0]);
+  check("monotributo: facturación por encima del tope de K rechazada", monotributo.prefill.validar({ ...casos[0], facturacion: cat("K").ingresosBrutosMax + 1 }) === null);
+  check(
+    "monotributo: el reparto en 12 meses suma exacto",
+    [7, 26_000_000, 30_000_000.55, cat("K").ingresosBrutosMax].every((t) => igual(monotributo.repartirEnMeses(t).reduce((a, b) => a + b, 0), t)),
+  );
+}
+
 async function main() {
   try {
     await checkComercio();
     await checkUocra();
     await checkCasas();
+    await checkMonotributo();
   } finally {
     rmSync(TMP, { recursive: true, force: true });
   }

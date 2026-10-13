@@ -2,6 +2,7 @@
 
 import { CompraDialogo, abrirCompra } from "@/components/CompraDialogo";
 import { HojaCalculo } from "@/components/HojaCalculo";
+import { PrecioArriba } from "@/components/oferta/PrecioArriba";
 import type { DatosOferta } from "@/lib/oferta";
 import { formatARS } from "@/lib/formato";
 import { NotaMiniatura } from "./NotaMiniatura";
@@ -65,6 +66,7 @@ export function OfertaVacaciones({ producto, previa }: { producto: DatosOferta; 
             {formatARS(resumen.pagar, 0)} para pagar al empezar. La planilla hace esta misma cuenta para cada persona y te
             arma la nota para firmar.
           </p>
+          <PrecioArriba slug={producto.slug} precio={producto.precio} boton="Comprar la planilla" />
         </header>
 
         <div className="md:col-start-1 md:row-span-2 md:row-start-1">
