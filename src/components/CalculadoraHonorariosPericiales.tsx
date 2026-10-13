@@ -7,6 +7,8 @@ import {
   calcularPiso,
   serieContinua,
 } from "@/lib/honorarios-periciales";
+import { errorMonto, primerError, errorCantidad, CANTIDAD_MAXIMA, parseMonto, parseDecimal } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -40,12 +42,15 @@ export function CalculadoraHonorariosPericiales() {
   const [umaReguladas, setUmaReguladas] = useState("6");
   const [fechaRegulacion, setFechaRegulacion] = useState("2025-06-01");
 
+  const errorPericias = primerError({ "Cantidad de pericias": errorMonto(pericias, CANTIDAD_MAXIMA) });
+  const errorUma = primerError({ "UMA de la regulación": errorCantidad(umaReguladas) });
+
   const piso = useMemo(
-    () => calcularPiso(clave, fecha, Number(pericias) || 1),
+    () => calcularPiso(clave, fecha, parseMonto(pericias) || 1),
     [clave, fecha, pericias],
   );
   const actualizacion = useMemo(
-    () => actualizarRegulacion(Number(umaReguladas) || 0, fechaRegulacion),
+    () => actualizarRegulacion(parseDecimal(umaReguladas), fechaRegulacion),
     [umaReguladas, fechaRegulacion],
   );
 
@@ -143,7 +148,9 @@ export function CalculadoraHonorariosPericiales() {
             </div>
           </div>
 
-          {piso === null ? (
+          {errorPericias ? (
+            <ErrorCalculo mensaje={errorPericias} />
+          ) : piso === null ? (
             <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
               Para esa fecha no tenemos el valor de la UMA verificado. La serie continua arranca el{" "}
               {fechaLarga(minFecha)}: antes de eso la Corte publicó varias resoluciones escaneadas y
@@ -252,7 +259,9 @@ export function CalculadoraHonorariosPericiales() {
             </div>
           </div>
 
-          {actualizacion === null ? (
+          {errorUma ? (
+            <ErrorCalculo mensaje={errorUma} />
+          ) : actualizacion === null ? (
             <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
               Cargá una cantidad de UMA mayor que cero y una fecha desde el {fechaLarga(minFecha)},
               que es donde arranca la serie que verificamos resolución por resolución.

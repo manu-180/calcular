@@ -3,12 +3,12 @@
 import { useMemo, useState } from "react";
 import { ALICUOTA_DIVIDENDOS, ULTIMO_ANIO_ESCALA, escalasDisponibles } from "@/data/ganancias-sociedades";
 import { calcularGananciasSociedades } from "@/lib/ganancias-sociedades";
-import { formatARS } from "@/lib/formato";
+import { formatARS, parseMonto, errorMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const claseInput =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
 
-const num = (s: string) => Number(s.replace(/\./g, "").replace(",", ".")) || 0;
 const pct = (n: number, d = 2) => `${(n * 100).toLocaleString("es-AR", { maximumFractionDigits: d })}%`;
 
 const ANIOS = escalasDisponibles()
@@ -26,10 +26,14 @@ export function CalculadoraGananciasSociedades() {
   const [anio, setAnio] = useState(String(ULTIMO_ANIO_ESCALA));
   const [distribuido, setDistribuido] = useState("0");
 
+  const error = primerError({
+    "Ganancia neta imponible": errorMonto(ganancia),
+  });
+
   const res = useMemo(
     () =>
       calcularGananciasSociedades({
-        gananciaNetaImponible: num(ganancia),
+        gananciaNetaImponible: parseMonto(ganancia),
         anioInicioEjercicio: Number(anio),
         porcentajeDistribuido: Number(distribuido),
       }),
@@ -87,7 +91,9 @@ export function CalculadoraGananciasSociedades() {
         </div>
       </div>
 
-      {res && (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res && (
         <div className="mt-6 space-y-4 border-t border-zinc-100 pt-5" aria-live="polite">
           <div className="grid gap-3 sm:grid-cols-3">
             <div className="rounded-xl bg-emerald-50 p-4">

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ALICUOTA_CEDULAR, ETIQUETAS_REGIMEN } from "@/data/venta-inmuebles";
 import { calcularVentaInmueble } from "@/lib/venta-inmuebles";
 import { nombrePeriodo } from "@/lib/inflacion";
+import { errorMonto, primerError, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -24,14 +26,20 @@ export function CalculadoraVentaInmueble() {
   const [costoAdquisicion, setCostoAdquisicion] = useState("4500000");
   const [gastos, setGastos] = useState("7500000");
 
+  const error = primerError({
+    "Precio de venta": errorMonto(precioVenta),
+    "Costo de compra": errorMonto(costoAdquisicion),
+    "Gastos de la operación": errorMonto(gastos),
+  });
+
   const res = useMemo(
     () =>
       calcularVentaInmueble({
         adquisicion,
         venta,
-        precioVenta: Number(precioVenta) || 0,
-        costoAdquisicion: Number(costoAdquisicion) || 0,
-        gastos: Number(gastos) || 0,
+        precioVenta: parseMonto(precioVenta),
+        costoAdquisicion: parseMonto(costoAdquisicion),
+        gastos: parseMonto(gastos),
       }),
     [adquisicion, venta, precioVenta, costoAdquisicion, gastos],
   );
@@ -119,7 +127,9 @@ export function CalculadoraVentaInmueble() {
         </div>
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Revisá los datos: el precio de venta tiene que ser mayor que cero y la venta no puede ser
           anterior a la compra.
@@ -154,7 +164,7 @@ export function CalculadoraVentaInmueble() {
                 <tr className="border-b border-zinc-200 align-top">
                   <td className="py-2 pr-3 font-medium text-zinc-800">Precio de venta</td>
                   <td className="py-2 pl-3 text-right text-zinc-900">
-                    {pesos(Number(precioVenta) || 0)}
+                    {pesos(parseMonto(precioVenta))}
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-200 align-top">
@@ -178,7 +188,7 @@ export function CalculadoraVentaInmueble() {
                     </span>
                   </td>
                   <td className="py-2 pl-3 text-right text-zinc-900">
-                    − {pesos(Number(gastos) || 0)}
+                    − {pesos(parseMonto(gastos))}
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-200 align-top">

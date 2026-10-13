@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { TIPOS_OPERACION, type TipoOperacion } from "@/data/transferencia-establecimiento";
 import { calcularTransferencia, type MotivoEgreso } from "@/lib/transferencia-establecimiento";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -24,6 +25,11 @@ export function CalculadoraTransferencia() {
   const [egreso, setEgreso] = useState("2026-08-20");
   const [tope, setTope] = useState("");
 
+  const error = primerError({
+    "Mejor remuneración": errorMonto(remuneracion),
+    "Tope del convenio": errorMonto(tope),
+  });
+
   const res = useMemo(
     () =>
       calcularTransferencia({
@@ -31,9 +37,9 @@ export function CalculadoraTransferencia() {
         ingresoISO: ingreso,
         transferenciaISO: transferencia,
         egresoISO: egreso,
-        mejorRemuneracion: Number(remuneracion) || 0,
+        mejorRemuneracion: parseMonto(remuneracion),
         motivo,
-        topeCCT: Number(tope) > 0 ? Number(tope) : undefined,
+        topeCCT: parseMonto(tope) > 0 ? parseMonto(tope) : undefined,
       }),
     [tipoId, ingreso, transferencia, egreso, remuneracion, motivo, tope],
   );
@@ -143,7 +149,9 @@ export function CalculadoraTransferencia() {
         </div>
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Revisá las fechas y el sueldo. Tienen que ir en este orden: ingreso, cambio de dueño y
           egreso.

@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { calcularVacaciones } from "@/lib/vacaciones";
-import { formatARS, parseMonto } from "@/lib/formato";
+import { formatARS, parseMonto, errorMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 import { ANIO_VACACIONES } from "@/data/vacaciones";
 import type { DatosOferta } from "@/lib/oferta";
 import { prefill } from "@/lib/prefill/vacaciones";
@@ -90,6 +91,10 @@ export function CalculadoraVacaciones({ oferta }: { oferta?: DatosOferta }) {
     () => (oferta && datosCompra ? hojaVacaciones(oferta.archivo, datosCompra, hoyAR()) : null),
     [oferta, datosCompra]
   );
+
+  const error = primerError({
+    "Sueldo bruto mensual": errorMonto(sueldoInput),
+  });
 
   return (
     <div className="space-y-6">
@@ -197,7 +202,9 @@ export function CalculadoraVacaciones({ oferta }: { oferta?: DatosOferta }) {
           </div>
         )}
 
-        {resultado && (
+        {error ? (
+          <ErrorCalculo mensaje={error} />
+        ) : resultado && (
           <div className="mt-6 border-t border-zinc-100 pt-5" aria-live="polite">
             {resultado.dias === 0 ? (
               <div className="rounded-lg bg-amber-50 p-4 text-sm text-amber-900">

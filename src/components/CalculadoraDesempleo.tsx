@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { calcularDesempleo, etiquetaMes, DIAS_POR_CUOTA } from "@/lib/desempleo";
 import { REGLAS_DESEMPLEO as R } from "@/data/desempleo";
-import { formatARS, formatPct, parseMonto } from "@/lib/formato";
+import { formatARS, formatPct, parseMonto, errorMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 /** Opciones de antigüedad: los cuatro tramos del art. 117 más el que deja afuera. */
 const TRAMOS_APORTES = [
@@ -42,6 +43,10 @@ export function CalculadoraDesempleo() {
 
   const mostrar = netoInput.trim() !== "";
   const primera = res.cuotas[0];
+
+  const error = primerError({
+    "Sueldo neto": errorMonto(netoInput),
+  });
 
   return (
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
@@ -127,7 +132,9 @@ export function CalculadoraDesempleo() {
         </div>
       </div>
 
-      {mostrar && (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : mostrar && (
         <div className="mt-6 space-y-5 border-t border-zinc-100 pt-5" aria-live="polite">
           {!res.elegible ? (
             <div className="rounded-xl bg-amber-50 p-4 text-amber-900">

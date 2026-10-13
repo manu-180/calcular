@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { formatARS, formatPct, parseMonto } from "@/lib/formato";
+import { formatARS, formatPct, parseMonto, errorMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 import {
   ajustesAlquiler,
   nombreMes,
@@ -54,6 +55,10 @@ export function CalculadoraAlquiler({ oferta }: { oferta?: OfertaAlquileres }) {
     if (datosCompra) recordarDatosCompra("planilla-alquileres", datosCompra);
     else if (tocado) olvidarDatosCompra("planilla-alquileres");
   }, [tocado, datosCompra]);
+
+  const error = primerError({
+    "Alquiler inicial": errorMonto(alquilerInput),
+  });
 
   return (
     <div className="space-y-6">
@@ -123,7 +128,9 @@ export function CalculadoraAlquiler({ oferta }: { oferta?: OfertaAlquileres }) {
           </div>
         </div>
 
-        {resultado && (
+        {error ? (
+          <ErrorCalculo mensaje={error} />
+        ) : resultado && (
           <div className="mt-6 space-y-5 border-t border-zinc-100 pt-5" aria-live="polite">
             <div>
               <p className="text-sm text-zinc-500">

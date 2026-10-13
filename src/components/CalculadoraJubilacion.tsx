@@ -10,7 +10,8 @@ import {
 } from "@/lib/jubilacion";
 import { HABER_MINIMO_SERIE, HABER_MINIMO_ULTIMO } from "@/data/jubilaciones";
 import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "@/data/prestaciones";
-import { formatARS, formatPct, parseMonto } from "@/lib/formato";
+import { formatARS, formatPct, parseMonto, errorMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const V = PRESTACIONES_VIGENTES;
 
@@ -34,6 +35,10 @@ export function CalculadoraJubilacion() {
     () => (desde === "" || bono === null ? null : actualizarHaber(haber, desde, V.periodo)),
     [desde, haber, bono],
   );
+
+  const error = primerError({
+    "Haber": errorMonto(haberInput),
+  });
 
   return (
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
@@ -85,7 +90,9 @@ export function CalculadoraJubilacion() {
         </div>
       </div>
 
-      {bono && (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : bono && (
         <div className="mt-6 space-y-4 border-t border-zinc-100 pt-5" aria-live="polite">
           <div>
             <p className="text-sm text-zinc-500">Cobrás en {V.vigencia}</p>

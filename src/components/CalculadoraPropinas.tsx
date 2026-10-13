@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { VIGENCIA_REFORMA } from "@/data/propinas";
 import { calcularPropinas } from "@/lib/propinas";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, CANTIDAD_MAXIMA, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -24,12 +25,18 @@ export function CalculadoraPropinas() {
   const [anios, setAnios] = useState("6");
   const [meses, setMeses] = useState("0");
 
+  const error = primerError({
+    "Sueldo bruto mensual": errorMonto(remuneracion),
+    "Propinas mensuales": errorMonto(propinas),
+    "Años de antigüedad": errorMonto(anios, CANTIDAD_MAXIMA),
+  });
+
   const res = useMemo(
     () =>
       calcularPropinas({
-        remuneracionMensual: Number(remuneracion) || 0,
-        propinasMensuales: Number(propinas) || 0,
-        anios: Number(anios) || 0,
+        remuneracionMensual: parseMonto(remuneracion),
+        propinasMensuales: parseMonto(propinas),
+        anios: parseMonto(anios),
         meses: Number(meses) || 0,
       }),
     [remuneracion, propinas, anios, meses],
@@ -135,79 +142,85 @@ export function CalculadoraPropinas() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-        <p className="text-sm text-zinc-600">
-          Lo que dejás de cobrar si te despiden, por sacar las propinas de la base
-        </p>
-        <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
-          {formatARS(res.difTotalDespido, 2)}
-        </p>
-        <p className="mt-1 text-sm text-zinc-600">
-          {formatARS(res.difIndemnizacion, 2)} de indemnización por antigüedad +{" "}
-          {formatARS(res.difSacAnual, 2)} de aguinaldo del año + {formatARS(res.difVacaciones, 2)}{" "}
-          de vacaciones. Además, {formatARS(res.difAportesMensuales, 2)} por mes que ya no van a tu
-          jubilación.
-        </p>
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+          <p className="text-sm text-zinc-600">
+            Lo que dejás de cobrar si te despiden, por sacar las propinas de la base
+          </p>
+          <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
+            {formatARS(res.difTotalDespido, 2)}
+          </p>
+          <p className="mt-1 text-sm text-zinc-600">
+            {formatARS(res.difIndemnizacion, 2)} de indemnización por antigüedad +{" "}
+            {formatARS(res.difSacAnual, 2)} de aguinaldo del año + {formatARS(res.difVacaciones, 2)}{" "}
+            de vacaciones. Además, {formatARS(res.difAportesMensuales, 2)} por mes que ya no van a tu
+            jubilación.
+          </p>
 
-        <div className="mt-5 overflow-x-auto">
-          <table className="w-full min-w-[34rem] text-sm">
-            <thead>
-              <tr className="border-b border-zinc-300 text-left text-xs uppercase tracking-wide text-zinc-500">
-                <th className="pb-2 font-semibold">Rubro</th>
-                <th className="pb-2 text-right font-semibold">
-                  Texto vigente
-                  <span className="block text-[10px] font-normal normal-case tracking-normal">
-                    desde el {VIGENCIA_REFORMA}
-                  </span>
-                </th>
-                <th className="pb-2 text-right font-semibold">
-                  Criterio anterior
-                  <span className="block text-[10px] font-normal normal-case tracking-normal">
-                    con el art. 113 derogado
-                  </span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {filas.map((f) => (
-                <tr key={f.rubro} className="border-b border-zinc-200 align-top">
-                  <td className="py-2 pr-3">
-                    <span className="font-medium text-zinc-800">{f.rubro}</span>
-                    <span className="block text-xs text-zinc-500">{f.nota}</span>
-                  </td>
-                  <td className="py-2 text-right font-semibold text-zinc-900">
-                    {formatARS(f.vigente, 2)}
-                  </td>
-                  <td className="py-2 text-right text-zinc-600">{formatARS(f.anterior, 2)}</td>
+          <div className="mt-5 overflow-x-auto">
+            <table className="w-full min-w-[34rem] text-sm">
+              <thead>
+                <tr className="border-b border-zinc-300 text-left text-xs uppercase tracking-wide text-zinc-500">
+                  <th className="pb-2 font-semibold">Rubro</th>
+                  <th className="pb-2 text-right font-semibold">
+                    Texto vigente
+                    <span className="block text-[10px] font-normal normal-case tracking-normal">
+                      desde el {VIGENCIA_REFORMA}
+                    </span>
+                  </th>
+                  <th className="pb-2 text-right font-semibold">
+                    Criterio anterior
+                    <span className="block text-[10px] font-normal normal-case tracking-normal">
+                      con el art. 113 derogado
+                    </span>
+                  </th>
                 </tr>
+              </thead>
+              <tbody>
+                {filas.map((f) => (
+                  <tr key={f.rubro} className="border-b border-zinc-200 align-top">
+                    <td className="py-2 pr-3">
+                      <span className="font-medium text-zinc-800">{f.rubro}</span>
+                      <span className="block text-xs text-zinc-500">{f.nota}</span>
+                    </td>
+                    <td className="py-2 text-right font-semibold text-zinc-900">
+                      {formatARS(f.vigente, 2)}
+                    </td>
+                    <td className="py-2 text-right text-zinc-600">{formatARS(f.anterior, 2)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {res.avisos.length > 0 && (
+            <ul className="mt-4 space-y-2">
+              {res.avisos.map((a, i) => (
+                <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
+                  {a.texto}
+                </li>
               ))}
-            </tbody>
-          </table>
+            </ul>
+          )}
+
+          <p className="mt-4 text-xs text-zinc-500">
+            Estimación orientativa, no una liquidación. Para el cálculo completo del despido (con
+            preaviso, integración del mes, topes y vacaciones proporcionales), usá{" "}
+            <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
+              la calculadora de indemnización
+            </Link>
+            ; para el aguinaldo exacto,{" "}
+            <Link href="/aguinaldo" className="font-medium text-emerald-700 hover:underline">
+              la de aguinaldo
+            </Link>
+            .
+          </p>
         </div>
-
-        {res.avisos.length > 0 && (
-          <ul className="mt-4 space-y-2">
-            {res.avisos.map((a, i) => (
-              <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
-                {a.texto}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <p className="mt-4 text-xs text-zinc-500">
-          Estimación orientativa, no una liquidación. Para el cálculo completo del despido (con
-          preaviso, integración del mes, topes y vacaciones proporcionales), usá{" "}
-          <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
-            la calculadora de indemnización
-          </Link>
-          ; para el aguinaldo exacto,{" "}
-          <Link href="/aguinaldo" className="font-medium text-emerald-700 hover:underline">
-            la de aguinaldo
-          </Link>
-          .
-        </p>
-      </div>
+        </>
+      )}
     </div>
   );
 }

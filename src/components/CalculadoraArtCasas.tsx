@@ -6,6 +6,8 @@ import { calcularArtCasas, type Modalidad } from "@/lib/art-casas-particulares";
 import { ESCALA_VIGENTE, VIGENCIA } from "@/data/casas-particulares";
 import { CONDICIONES, VIGENCIA_APORTES, type CondicionTrabajador } from "@/data/aportes-casas-particulares";
 import { VIGENCIA_ART } from "@/data/riesgos-trabajo";
+import { errorCantidad, errorMonto, parseDecimal, parseMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const claseInput =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
@@ -40,18 +42,25 @@ export function CalculadoraArtCasas() {
   const admiteConRetiro = categoria?.mesConRetiro !== null;
   const modalidadEfectiva: Modalidad = admiteConRetiro ? modalidad : "sin-retiro";
 
+  const error = primerError({
+    "Horas semanales": errorCantidad(horas),
+    "Edad": errorCantidad(edad),
+    "Porcentaje de incapacidad": errorCantidad(incapacidad),
+    "Sueldo mensual real": errorMonto(sueldo),
+  });
+
   const res = useMemo(
     () =>
       calcularArtCasas({
         categoriaId,
         modalidad: modalidadEfectiva,
-        horasSemanales: Number(horas) || 0,
+        horasSemanales: parseDecimal(horas),
         condicion,
-        edad: Number(edad) || 0,
-        incapacidad: Number(incapacidad) || 0,
+        edad: parseDecimal(edad),
+        incapacidad: parseDecimal(incapacidad),
         enElTrabajo,
         muerte,
-        sueldoDeclarado: Number(sueldo) || 0,
+        sueldoDeclarado: parseMonto(sueldo),
       }),
     [categoriaId, modalidadEfectiva, horas, condicion, edad, incapacidad, enElTrabajo, muerte, sueldo],
   );
@@ -142,8 +151,6 @@ export function CalculadoraArtCasas() {
           </p>
           <input
             id="ac-sueldo"
-            type="number"
-            min={0}
             inputMode="numeric"
             value={sueldo}
             onChange={(ev) => setSueldo(ev.target.value)}
@@ -219,7 +226,9 @@ export function CalculadoraArtCasas() {
         </div>
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-900">
           Revisá los datos: la categoría, la modalidad o las horas no forman una combinación válida.
         </p>

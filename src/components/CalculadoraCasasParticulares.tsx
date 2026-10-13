@@ -8,7 +8,8 @@ import {
   ZONA_DESFAVORABLE,
 } from "@/data/casas-particulares";
 import { calcularCasasParticulares, categoriaPorId, type Modalidad } from "@/lib/casas-particulares";
-import { formatARS } from "@/lib/formato";
+import { formatARS, primerError, errorCantidad, parseDecimal } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 import { OfertaPlanilla } from "@/components/OfertaPlanilla";
 import { hojaCasas } from "@/components/oferta/hojas";
 import { prefill } from "@/lib/prefill/casas";
@@ -34,6 +35,11 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
   const soloSinRetiro = categoria?.horaConRetiro === null;
   const modalidadEfectiva: Modalidad = soloSinRetiro ? "sin-retiro" : modalidad;
 
+  const error = primerError({
+    "Horas extras de día común": errorCantidad(extrasComunes),
+    "Horas extras de sábado, domingo o feriado": errorCantidad(extrasFinde),
+  });
+
   const res = useMemo(
     () =>
       calcularCasasParticulares({
@@ -41,8 +47,8 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
         modalidad: modalidadEfectiva,
         horasSemanales,
         zonaDesfavorable: zona,
-        horasExtrasComunes: Number(extrasComunes) || 0,
-        horasExtrasFinDeSemana: Number(extrasFinde) || 0,
+        horasExtrasComunes: parseDecimal(extrasComunes),
+        horasExtrasFinDeSemana: parseDecimal(extrasFinde),
       }),
     [categoriaId, modalidadEfectiva, horasSemanales, zona, extrasComunes, extrasFinde],
   );
@@ -58,8 +64,8 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
             modalidad: modalidadEfectiva,
             horasSemanales,
             zonaDesfavorable: zona,
-            extrasComunes: Number(extrasComunes) || 0,
-            extrasFinDeSemana: Number(extrasFinde) || 0,
+            extrasComunes: parseDecimal(extrasComunes),
+            extrasFinDeSemana: parseDecimal(extrasFinde),
           })
         : null,
     [res, categoriaId, modalidadEfectiva, horasSemanales, zona, extrasComunes, extrasFinde],
@@ -206,7 +212,9 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
           </div>
         </div>
 
-        {res && (
+        {error ? (
+          <ErrorCalculo mensaje={error} />
+        ) : res && (
           <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
             <p className="text-sm text-zinc-600">
               Mínimo legal del mes · {VIGENCIA.vigenteEn}

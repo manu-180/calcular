@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ETIQUETAS_BASE, RUBROS } from "@/data/impuestos-internos";
 import { calcularImpuestoInterno } from "@/lib/impuestos-internos";
+import { errorMonto, primerError, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -22,8 +24,12 @@ export function CalculadoraImpuestosInternos() {
   const [rubroId, setRubroId] = useState("celular");
   const [importe, setImporte] = useState("50000");
 
+  const error = primerError({
+    "Importe": errorMonto(importe),
+  });
+
   const res = useMemo(
-    () => calcularImpuestoInterno({ rubroId, importe: Number(importe) || 0 }),
+    () => calcularImpuestoInterno({ rubroId, importe: parseMonto(importe) }),
     [rubroId, importe],
   );
 
@@ -77,7 +83,9 @@ export function CalculadoraImpuestosInternos() {
         </p>
       )}
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Cargá un importe mayor que cero.
         </p>

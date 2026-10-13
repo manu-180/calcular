@@ -9,7 +9,8 @@ import {
   VIGENCIA_REFORMA,
 } from "@/data/horas-extras";
 import { calcularHorasExtras } from "@/lib/horas-extras";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, errorCantidad, parseMonto, parseDecimal } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -30,14 +31,22 @@ export function CalculadoraHorasExtras() {
   const [agravadas, setAgravadas] = useState("4");
   const [acumuladas, setAcumuladas] = useState("0");
 
+  const error = primerError({
+    "Remuneración mensual": errorMonto(sueldo),
+    "Jornada semanal": errorCantidad(jornada),
+    "Horas extras del año": errorCantidad(acumuladas),
+    "Horas extras al 50%": errorCantidad(comunes),
+    "Horas extras al 100%": errorCantidad(agravadas),
+  });
+
   const res = useMemo(
     () =>
       calcularHorasExtras({
-        sueldoMensual: Number(sueldo) || 0,
-        jornadaSemanal: Number(jornada) || 0,
-        horasComunes: Number(comunes) || 0,
-        horasAgravadas: Number(agravadas) || 0,
-        horasAcumuladasAnio: Number(acumuladas) || 0,
+        sueldoMensual: parseMonto(sueldo),
+        jornadaSemanal: parseDecimal(jornada),
+        horasComunes: parseDecimal(comunes),
+        horasAgravadas: parseDecimal(agravadas),
+        horasAcumuladasAnio: parseDecimal(acumuladas),
       }),
     [sueldo, jornada, comunes, agravadas, acumuladas],
   );
@@ -127,156 +136,162 @@ export function CalculadoraHorasExtras() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-        <p className="text-sm text-zinc-600">
-          Lo que te tienen que pagar por {numero(res.totalHoras)} horas extras (bruto)
-        </p>
-        <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
-          {formatARS(res.totalBruto, 2)}
-        </p>
-        <p className="mt-1 text-sm text-zinc-600">
-          Sin el recargo del artículo 201 serían {formatARS(res.totalSinRecargo, 2)}: el recargo
-          aporta {formatARS(res.aporteDelRecargo, 2)}. Neto estimado tras el 17% de aportes:{" "}
-          {formatARS(res.neto, 2)}.
-        </p>
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+          <p className="text-sm text-zinc-600">
+            Lo que te tienen que pagar por {numero(res.totalHoras)} horas extras (bruto)
+          </p>
+          <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
+            {formatARS(res.totalBruto, 2)}
+          </p>
+          <p className="mt-1 text-sm text-zinc-600">
+            Sin el recargo del artículo 201 serían {formatARS(res.totalSinRecargo, 2)}: el recargo
+            aporta {formatARS(res.aporteDelRecargo, 2)}. Neto estimado tras el 17% de aportes:{" "}
+            {formatARS(res.neto, 2)}.
+          </p>
 
-        <div className="mt-5 overflow-x-auto">
-          <table className="w-full min-w-[34rem] text-sm">
-            <tbody>
-              <tr className="border-b border-zinc-200 align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">Valor de tu hora normal</span>
-                  <span className="block text-xs text-zinc-500">
-                    remuneración ÷ {numero(res.horasMensuales)} horas al mes (jornada semanal ×
-                    52/12). El divisor no está en ninguna ley.
-                  </span>
-                </td>
-                <td className="py-2 text-right font-semibold text-zinc-900">
-                  {formatARS(res.valorHora, 2)}
-                </td>
-              </tr>
-              {res.valorHoraDivisor200 !== null && (
+          <div className="mt-5 overflow-x-auto">
+            <table className="w-full min-w-[34rem] text-sm">
+              <tbody>
                 <tr className="border-b border-zinc-200 align-top">
                   <td className="py-2 pr-3">
-                    <span className="font-medium text-zinc-800">
-                      La misma hora, con el divisor {DIVISOR_USUAL_48}
-                    </span>
+                    <span className="font-medium text-zinc-800">Valor de tu hora normal</span>
                     <span className="block text-xs text-zinc-500">
-                      el que usan muchísimas liquidaciones y convenios para la jornada de 48 horas
-                      (8 × 25 días). Da {formatARS(res.diferenciaPorDivisor, 2)} más por hora, o{" "}
-                      {formatARS((res.totalBrutoDivisor200 ?? 0) - res.totalBruto, 2)} más en el
-                      mes. Si tu recibo o tu CCT fijan un divisor, ese manda.
+                      remuneración ÷ {numero(res.horasMensuales)} horas al mes (jornada semanal ×
+                      52/12). El divisor no está en ninguna ley.
                     </span>
                   </td>
                   <td className="py-2 text-right font-semibold text-zinc-900">
-                    {formatARS(res.valorHoraDivisor200, 2)}
+                    {formatARS(res.valorHora, 2)}
                   </td>
                 </tr>
-              )}
-              <tr className="border-b border-zinc-200 align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">
-                    {numero(res.horasComunes)} horas al 50% (días comunes)
-                  </span>
-                  <span className="block text-xs text-zinc-500">
-                    hora normal × 1,5, art. 201 primera parte
-                  </span>
-                </td>
-                <td className="py-2 text-right font-semibold text-zinc-900">
-                  {formatARS(res.importeComunes, 2)}
-                </td>
-              </tr>
-              <tr className="border-b border-zinc-200 align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">
-                    {numero(res.horasAgravadas)} horas al 100% (sábado tarde, domingo, feriado)
-                  </span>
-                  <span className="block text-xs text-zinc-500">
-                    hora normal × 2, art. 201 segunda parte
-                  </span>
-                </td>
-                <td className="py-2 text-right font-semibold text-zinc-900">
-                  {formatARS(res.importeAgravadas, 2)}
-                </td>
-              </tr>
-              <tr className="border-b border-zinc-200 align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">Aportes (17%)</span>
-                  <span className="block text-xs text-zinc-500">
-                    11% jubilación + 3% obra social + 3% PAMI: las horas extras son remuneración
-                  </span>
-                </td>
-                <td className="py-2 text-right text-zinc-700">
-                  −{formatARS(res.aportes.total, 2)}
-                </td>
-              </tr>
-              <tr className="border-b border-zinc-200 align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">Neto de las extras</span>
-                  <span className="block text-xs text-zinc-500">
-                    lo que suman en el bolsillo, además de tu sueldo
-                  </span>
-                </td>
-                <td className="py-2 text-right text-lg font-bold text-zinc-900">
-                  {formatARS(res.neto, 2)}
-                </td>
-              </tr>
-              <tr className="align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">
-                    Arrastre al aguinaldo, si este es tu mejor mes del semestre
-                  </span>
-                  <span className="block text-xs text-zinc-500">
-                    el SAC es el 50% de la mayor remuneración mensual del semestre (art. 122 LCT):
-                    las extras entran en esa base
-                  </span>
-                </td>
-                <td className="py-2 text-right font-semibold text-emerald-800">
-                  +{formatARS(res.impactoAguinaldo, 2)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                {res.valorHoraDivisor200 !== null && (
+                  <tr className="border-b border-zinc-200 align-top">
+                    <td className="py-2 pr-3">
+                      <span className="font-medium text-zinc-800">
+                        La misma hora, con el divisor {DIVISOR_USUAL_48}
+                      </span>
+                      <span className="block text-xs text-zinc-500">
+                        el que usan muchísimas liquidaciones y convenios para la jornada de 48 horas
+                        (8 × 25 días). Da {formatARS(res.diferenciaPorDivisor, 2)} más por hora, o{" "}
+                        {formatARS((res.totalBrutoDivisor200 ?? 0) - res.totalBruto, 2)} más en el
+                        mes. Si tu recibo o tu CCT fijan un divisor, ese manda.
+                      </span>
+                    </td>
+                    <td className="py-2 text-right font-semibold text-zinc-900">
+                      {formatARS(res.valorHoraDivisor200, 2)}
+                    </td>
+                  </tr>
+                )}
+                <tr className="border-b border-zinc-200 align-top">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium text-zinc-800">
+                      {numero(res.horasComunes)} horas al 50% (días comunes)
+                    </span>
+                    <span className="block text-xs text-zinc-500">
+                      hora normal × 1,5, art. 201 primera parte
+                    </span>
+                  </td>
+                  <td className="py-2 text-right font-semibold text-zinc-900">
+                    {formatARS(res.importeComunes, 2)}
+                  </td>
+                </tr>
+                <tr className="border-b border-zinc-200 align-top">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium text-zinc-800">
+                      {numero(res.horasAgravadas)} horas al 100% (sábado tarde, domingo, feriado)
+                    </span>
+                    <span className="block text-xs text-zinc-500">
+                      hora normal × 2, art. 201 segunda parte
+                    </span>
+                  </td>
+                  <td className="py-2 text-right font-semibold text-zinc-900">
+                    {formatARS(res.importeAgravadas, 2)}
+                  </td>
+                </tr>
+                <tr className="border-b border-zinc-200 align-top">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium text-zinc-800">Aportes (17%)</span>
+                    <span className="block text-xs text-zinc-500">
+                      11% jubilación + 3% obra social + 3% PAMI: las horas extras son remuneración
+                    </span>
+                  </td>
+                  <td className="py-2 text-right text-zinc-700">
+                    −{formatARS(res.aportes.total, 2)}
+                  </td>
+                </tr>
+                <tr className="border-b border-zinc-200 align-top">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium text-zinc-800">Neto de las extras</span>
+                    <span className="block text-xs text-zinc-500">
+                      lo que suman en el bolsillo, además de tu sueldo
+                    </span>
+                  </td>
+                  <td className="py-2 text-right text-lg font-bold text-zinc-900">
+                    {formatARS(res.neto, 2)}
+                  </td>
+                </tr>
+                <tr className="align-top">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium text-zinc-800">
+                      Arrastre al aguinaldo, si este es tu mejor mes del semestre
+                    </span>
+                    <span className="block text-xs text-zinc-500">
+                      el SAC es el 50% de la mayor remuneración mensual del semestre (art. 122 LCT):
+                      las extras entran en esa base
+                    </span>
+                  </td>
+                  <td className="py-2 text-right font-semibold text-emerald-800">
+                    +{formatARS(res.impactoAguinaldo, 2)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-        <div className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50/40 p-4">
-          <p className="text-sm font-semibold text-zinc-800">
-            Si te las compensan con francos en vez de pagártelas
+          <div className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50/40 p-4">
+            <p className="text-sm font-semibold text-zinc-800">
+              Si te las compensan con francos en vez de pagártelas
+            </p>
+            <p className="mt-1 text-sm text-zinc-600">
+              Desde el {VIGENCIA_REFORMA} se puede pactar uno a uno con el empleador, por escrito.
+              Cuánto vale el franco no lo dice la ley, así que hay dos lecturas:{" "}
+              <strong>{numero(res.banco.horasSimple, 2)} horas</strong> si se compensa hora por hora, o{" "}
+              <strong>{numero(res.banco.horasConRecargo, 2)} horas</strong> si el franco arrastra el
+              recargo del art. 201. La diferencia son {numero(res.banco.diferencia, 2)} horas de
+              descanso, equivalentes a {formatARS(res.banco.diferenciaEnPesos, 2)}.
+            </p>
+          </div>
+
+          {res.avisos.length > 0 && (
+            <ul className="mt-4 space-y-2">
+              {res.avisos.map((a, i) => (
+                <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
+                  {a.texto}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <p className="mt-4 text-xs text-zinc-500">
+            Estimación orientativa sobre el texto vigente desde el {VIGENCIA_REFORMA}, no una
+            liquidación: no incluye adicionales del convenio, antigüedad, presentismo ni Ganancias.
+            Para el recibo completo está{" "}
+            <Link href="/sueldo-neto" className="font-medium text-emerald-700 hover:underline">
+              la calculadora de sueldo neto
+            </Link>
+            , y si trabajás media jornada,{" "}
+            <Link href="/tiempo-parcial" className="font-medium text-emerald-700 hover:underline">
+              la de tiempo parcial
+            </Link>
+            .
           </p>
-          <p className="mt-1 text-sm text-zinc-600">
-            Desde el {VIGENCIA_REFORMA} se puede pactar uno a uno con el empleador, por escrito.
-            Cuánto vale el franco no lo dice la ley, así que hay dos lecturas:{" "}
-            <strong>{numero(res.banco.horasSimple, 2)} horas</strong> si se compensa hora por hora, o{" "}
-            <strong>{numero(res.banco.horasConRecargo, 2)} horas</strong> si el franco arrastra el
-            recargo del art. 201. La diferencia son {numero(res.banco.diferencia, 2)} horas de
-            descanso, equivalentes a {formatARS(res.banco.diferenciaEnPesos, 2)}.
-          </p>
         </div>
-
-        {res.avisos.length > 0 && (
-          <ul className="mt-4 space-y-2">
-            {res.avisos.map((a, i) => (
-              <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
-                {a.texto}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <p className="mt-4 text-xs text-zinc-500">
-          Estimación orientativa sobre el texto vigente desde el {VIGENCIA_REFORMA}, no una
-          liquidación: no incluye adicionales del convenio, antigüedad, presentismo ni Ganancias.
-          Para el recibo completo está{" "}
-          <Link href="/sueldo-neto" className="font-medium text-emerald-700 hover:underline">
-            la calculadora de sueldo neto
-          </Link>
-          , y si trabajás media jornada,{" "}
-          <Link href="/tiempo-parcial" className="font-medium text-emerald-700 hover:underline">
-            la de tiempo parcial
-          </Link>
-          .
-        </p>
-      </div>
+        </>
+      )}
     </div>
   );
 }

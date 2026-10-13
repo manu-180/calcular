@@ -7,7 +7,8 @@ import {
   type CondicionTrabajador,
 } from "@/data/aportes-casas-particulares";
 import { calcularAportes } from "@/lib/aportes-casas-particulares";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, CANTIDAD_MAXIMA, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -20,7 +21,11 @@ export function CalculadoraAportesCasas() {
   const [condicion, setCondicion] = useState<CondicionTrabajador>("activo-mayor-18");
   const [cantidad, setCantidad] = useState("1");
 
-  const cantidadNum = Math.max(1, Math.floor(Number(cantidad) || 1));
+  const cantidadNum = Math.max(1, Math.floor(parseMonto(cantidad) || 1));
+
+  const error = primerError({
+    "Cantidad de personas": errorMonto(cantidad, CANTIDAD_MAXIMA),
+  });
 
   const res = useMemo(
     () => calcularAportes({ horasSemanales, condicion, cantidadTrabajadores: cantidadNum }),
@@ -93,77 +98,83 @@ export function CalculadoraAportesCasas() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-        <p className="text-sm text-zinc-600">
-          Lo que tenés que pagarle a ARCA · valores de {VIGENCIA_APORTES.mesVigente}
-        </p>
-        <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
-          {formatARS(res.totalMensual, 2)}
-        </p>
-        <p className="mt-1 text-sm text-zinc-600">
-          {res.rangoEtiqueta} · {res.condicionEtiqueta.toLowerCase()}
-          {cantidadNum > 1
-            ? ` · ${cantidadNum} personas (${formatARS(res.totalPorTrabajador, 2)} cada una)`
-            : ""}
-        </p>
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+          <p className="text-sm text-zinc-600">
+            Lo que tenés que pagarle a ARCA · valores de {VIGENCIA_APORTES.mesVigente}
+          </p>
+          <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
+            {formatARS(res.totalMensual, 2)}
+          </p>
+          <p className="mt-1 text-sm text-zinc-600">
+            {res.rangoEtiqueta} · {res.condicionEtiqueta.toLowerCase()}
+            {cantidadNum > 1
+              ? ` · ${cantidadNum} personas (${formatARS(res.totalPorTrabajador, 2)} cada una)`
+              : ""}
+          </p>
 
-        <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Obra social</dt>
-            <dd className="font-medium text-zinc-900">
-              {res.fila.obraSocial === null ? "no corresponde" : formatARS(res.fila.obraSocial, 2)}
-            </dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Jubilación (SIPA)</dt>
-            <dd className="font-medium text-zinc-900">
-              {res.fila.sipa === null ? "no corresponde" : formatARS(res.fila.sipa, 2)}
-            </dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Cuota ART</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.fila.art, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">La ART, sobre el total</dt>
-            <dd className="font-medium text-zinc-900">
-              {res.proporcionArt.toLocaleString("es-AR", { maximumFractionDigits: 1 })}%
-            </dd>
-          </div>
-          {res.faltaParaObraSocial > 0 && (
+          <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
             <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-              <dt className="text-zinc-600">Falta para tener obra social</dt>
-              <dd className="font-semibold text-amber-700">
-                {formatARS(res.faltaParaObraSocial, 2)}
+              <dt className="text-zinc-600">Obra social</dt>
+              <dd className="font-medium text-zinc-900">
+                {res.fila.obraSocial === null ? "no corresponde" : formatARS(res.fila.obraSocial, 2)}
               </dd>
             </div>
-          )}
-          {res.faltaParaJubilacion > 0 && (
             <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-              <dt className="text-zinc-600">Falta para que compute la jubilación</dt>
-              <dd className="font-semibold text-amber-700">
-                {formatARS(res.faltaParaJubilacion, 2)}
+              <dt className="text-zinc-600">Jubilación (SIPA)</dt>
+              <dd className="font-medium text-zinc-900">
+                {res.fila.sipa === null ? "no corresponde" : formatARS(res.fila.sipa, 2)}
               </dd>
             </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Cuota ART</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.fila.art, 2)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">La ART, sobre el total</dt>
+              <dd className="font-medium text-zinc-900">
+                {res.proporcionArt.toLocaleString("es-AR", { maximumFractionDigits: 1 })}%
+              </dd>
+            </div>
+            {res.faltaParaObraSocial > 0 && (
+              <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+                <dt className="text-zinc-600">Falta para tener obra social</dt>
+                <dd className="font-semibold text-amber-700">
+                  {formatARS(res.faltaParaObraSocial, 2)}
+                </dd>
+              </div>
+            )}
+            {res.faltaParaJubilacion > 0 && (
+              <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+                <dt className="text-zinc-600">Falta para que compute la jubilación</dt>
+                <dd className="font-semibold text-amber-700">
+                  {formatARS(res.faltaParaJubilacion, 2)}
+                </dd>
+              </div>
+            )}
+          </dl>
+
+          {res.avisos.length > 0 && (
+            <ul className="mt-4 space-y-2">
+              {res.avisos.map((a, i) => (
+                <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
+                  {a.texto}
+                </li>
+              ))}
+            </ul>
           )}
-        </dl>
 
-        {res.avisos.length > 0 && (
-          <ul className="mt-4 space-y-2">
-            {res.avisos.map((a, i) => (
-              <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
-                {a.texto}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <p className="mt-4 text-xs text-zinc-500">
-          Importes del PDF oficial de ARCA para {VIGENCIA_APORTES.mesVigente}, que se pagan en{" "}
-          {VIGENCIA_APORTES.mesDeVencimiento}: los aportes van siempre a mes vencido y la ART a mes
-          en curso. Esto es lo que se ingresa a ARCA y no incluye el sueldo del trabajador.
-        </p>
-      </div>
+          <p className="mt-4 text-xs text-zinc-500">
+            Importes del PDF oficial de ARCA para {VIGENCIA_APORTES.mesVigente}, que se pagan en{" "}
+            {VIGENCIA_APORTES.mesDeVencimiento}: los aportes van siempre a mes vencido y la ART a mes
+            en curso. Esto es lo que se ingresa a ARCA y no incluye el sueldo del trabajador.
+          </p>
+        </div>
+        </>
+      )}
     </div>
   );
 }
