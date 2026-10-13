@@ -87,13 +87,15 @@ export type VerificacionFirma = "valida" | "invalida" | "sin-firma";
  * "sin-firma" no es un rechazo: el IPN y los avisos sin `x-signature` llegan junto a la notificación
  * firmada del mismo pago. "invalida" es una firma presente que no cierra con el secret.
  */
-export function verificarFirma(url: URL, headers: Headers, secret: string | undefined): VerificacionFirma {
+export function verificarFirma(url: URL, headers: Headers, secret: string | undefined, paymentId?: string): VerificacionFirma {
   if (!secret) return "valida";
   const cabecera = headers.get("x-signature");
   if (!cabecera || esIpn(url)) return "sin-firma";
   const firma = parsearFirma(cabecera);
   const dataId = dataIdDeFirma(url);
   if (!firma || !dataId) return "invalida";
+  // La firma cubre el data.id de la query; si el cuerpo trae otro id, el que se procesaría no es el firmado.
+  if (paymentId !== undefined && dataId.toLowerCase() !== paymentId.toLowerCase()) return "invalida";
   return firmaValida(firmar(manifiesto(dataId, headers.get("x-request-id"), firma.ts), secret), firma.v1) ? "valida" : "invalida";
 }
 

@@ -607,6 +607,9 @@ export function destinosDeEntrega(p: MpPayment): string[] {
 // El gate de producto (un pago de uno no habilita otro) es `productoDePago`, en habilitaDescarga.
 export function pagoAprobado(p: MpPayment, producto: Producto = PRODUCTO): boolean {
   if (p.status !== "approved" || p.currency_id !== producto.moneda || typeof p.transaction_amount !== "number") return false;
+  // La cuenta legado tiene cobros ajenos que caen en Comercio por default: a esos sólo les vale el
+  // precio de hoy, nunca un metadata.precio que no escribimos nosotros.
+  if (!esPagoDePlanilla(p)) return p.transaction_amount === producto.precio;
   const cobrado = precioCobrado(p);
   const validos = cobrado !== null ? [cobrado] : [producto.precio, ...(producto.preciosAnteriores ?? [])];
   return validos.includes(p.transaction_amount);

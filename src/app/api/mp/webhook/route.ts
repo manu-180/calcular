@@ -169,7 +169,7 @@ export async function POST(req: NextRequest) {
   // que es la que asienta. Con 401 MP reintentaba el IPN durante días. Procesarlo re-consultando a MP
   // no sumaría nada y dejaría que un pedido sin autenticar dispare escrituras y mails. La cuenta vieja
   // nunca tuvo secret: sus avisos se aceptan como antes y el gate es la re-consulta del pago.
-  const firma = verificarFirma(url, req.headers, process.env.MP_WEBHOOK_SECRET);
+  const firma = verificarFirma(url, req.headers, process.env.MP_WEBHOOK_SECRET, paymentId);
   if (firma === "sin-firma" && !process.env.MP_ACCESS_TOKEN_LEGADO) {
     return NextResponse.json({ ok: true, ignorado: "aviso sin firma verificable" });
   }
