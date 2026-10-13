@@ -1,4 +1,4 @@
-import { definirCalculadora, enMapa, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 import { filaDe } from "../reglas";
 
 // Clases IV y V: la ARL la paga el contratante (Decreto 1072 de 2015, art. 2.2.4.2.2.13).
@@ -30,6 +30,7 @@ export default definirCalculadora({
     { id: "riesgo", tipo: "opcion-dato", etiqueta: "Clase de riesgo de la ARL", dato: "co.arl", porDefecto: "i" },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.ingreso <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "ingreso");
     const smmlv = valores["co.smmlv"];
     const base = porcentaje(entrada.ingreso, valores["co.ibc-independientes"]);
     const ibc = redondear(Math.min(Math.max(base, smmlv), valores["co.tope-ibc"] * smmlv));

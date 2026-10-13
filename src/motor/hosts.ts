@@ -95,11 +95,19 @@ export function reglasPorHost(o: OpcionesHosts): ReglasHosts {
   if (!host.startsWith("www.") && !host.endsWith(".localhost") && host !== "localhost") {
     redirects.push({ source: "/:path*", has: [{ type: "host", value: `www\\.${escapar(host)}` }], destination: `${o.origenIntl}/:path*`, permanent: true });
   }
+  // Dos reglas por destino y no `/:resto*`: en Vercel un `*` vacío deja la barra final en el destino
+  // (/mx -> https://calcularya.com/mx/), y esa barra la quita un segundo 308 en el sitio de destino.
   if (rutasAR) {
-    redirects.push({ source: `/:ruta(${rutasAR})/:resto*`, has: [porHost], destination: `${o.origenAR}/:ruta/:resto*`, permanent: true });
+    redirects.push(
+      { source: `/:ruta(${rutasAR})`, has: [porHost], destination: `${o.origenAR}/:ruta`, permanent: true },
+      { source: `/:ruta(${rutasAR})/:resto+`, has: [porHost], destination: `${o.origenAR}/:ruta/:resto*`, permanent: true },
+    );
   }
   if (mercados) {
-    redirects.push({ source: `/:mercado(${mercados})/:resto*`, missing: intl, destination: `${o.origenIntl}/:mercado/:resto*`, permanent: true });
+    redirects.push(
+      { source: `/:mercado(${mercados})`, missing: intl, destination: `${o.origenIntl}/:mercado`, permanent: true },
+      { source: `/:mercado(${mercados})/:resto+`, missing: intl, destination: `${o.origenIntl}/:mercado/:resto*`, permanent: true },
+    );
   }
 
   const beforeFiles: Regla[] = [{ source: "/intl/:path*", missing: intl, destination: "/__no_existe/:path*" }];

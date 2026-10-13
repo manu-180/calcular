@@ -84,7 +84,12 @@ export function hreflangParaAR(concepto: string, equivalentes: readonly Equivale
 
 export interface ImagenSeo {
   url: string;
+  width: number;
+  height: number;
 }
+
+// Las mismas medidas que devuelve la ruta og/[[...slug]] (ImageResponse 1200 x 630).
+const MEDIDAS_OG = { width: 1200, height: 630 } as const;
 
 export interface MetadataSeo {
   title: { absolute: string };
@@ -106,11 +111,12 @@ export interface MetadataSeo {
 // openGraph de la página que no repita site_name, locale y url los pierde (pasó en calcular.ar,
 // ver openGraphDe en src/lib/seo.ts). `absolute` para que ningún template de un layout lo toque.
 // Cada meta del <head> viaja dos veces (en el HTML y en el payload RSC) y las calculadoras ya pasan
-// los 130 KB: sin og:locale:alternate (15 metas por clúster que solo lee Facebook) ni og:image:alt,
-// :type, :width y :height (las redes leen el PNG igual; el alt repetía el título).
+// los 130 KB: sin og:locale:alternate (15 metas por clúster que solo lee Facebook) ni og:image:alt
+// ni :type (el alt repetía el título). :width y :height sí van: sin ellas las redes bajan la imagen
+// para medirla antes de mostrar la tarjeta.
 export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; description: string; idiomas?: Idiomas; imagen: string }): MetadataSeo {
   const url = urlIntl(p.mercado.codigo, p.slug);
-  const imagen: ImagenSeo = { url: p.imagen };
+  const imagen: ImagenSeo = { url: p.imagen, ...MEDIDAS_OG };
   return {
     title: { absolute: p.title },
     description: p.description,

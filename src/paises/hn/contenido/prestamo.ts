@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hn.prestamo",
   h1: "Calculadora de préstamos en Honduras",
-  title: "Calculadora de préstamos: cuota mensual e intereses",
+  title: "Préstamos en Honduras: cuota mensual e intereses",
   description: "Calcule la cuota mensual de un préstamo personal, de vehículo o de vivienda en lempiras, el total de intereses y lo que paga al final.",
   intro: [
     "Antes de firmar un préstamo en un banco o una cooperativa, conviene saber cuánto va a pagar por mes y cuánto le cuesta en intereses.",

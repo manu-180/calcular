@@ -105,6 +105,62 @@ export function textosPlanillas(m: Mercado) {
       usted: "Estamos esperando la confirmación de PayPal. Cuando llegue, le mandamos su compra por correo.",
       vos: "Estamos esperando la confirmación de PayPal. Cuando llegue, te mandamos tu compra por correo.",
     }),
+    muestraIntro: (hoja: string) =>
+      segun(t, {
+        tu: `Es la hoja «${hoja}» con los datos de ejemplo con los que se abre. Las cuentas son las de hoy, con los valores oficiales vigentes.`,
+        usted: `Es la hoja «${hoja}» con los datos de ejemplo con los que se abre. Las cuentas son las de hoy, con los valores oficiales vigentes.`,
+        vos: `Es la hoja «${hoja}» con los datos de ejemplo con los que se abre. Las cuentas son las de hoy, con los valores oficiales vigentes.`,
+      }),
+    muestraLeyenda: segun(t, {
+      tu: ["lo completas tú", "lo calcula la planilla"],
+      usted: ["lo completa usted", "lo calcula la planilla"],
+      vos: ["lo completás vos", "lo calcula la planilla"],
+    }),
+    comprobar: segun(t, {
+      tu: "Compruébalo antes de pagar: la calculadora gratis da los mismos números. Prueba este mismo caso y compara.",
+      usted: "Compruébelo antes de pagar: la calculadora gratis da los mismos números. Pruebe este mismo caso y compare.",
+      vos: "Comprobalo antes de pagar: la calculadora gratis da los mismos números. Probá este mismo caso y compará.",
+    }),
+    comprobarEnlace: "Ir a la calculadora gratis",
+    faqTitulo: "Preguntas frecuentes",
+    faq: (p: ProductoIntl, conReferencia: boolean) => {
+      const dolares = segun(t, {
+        tu: `Sí. El precio está en dólares (USD) y el pago es con PayPal, con tu cuenta o con tarjeta. ${conReferencia ? "Arriba te mostramos un equivalente en tu moneda al cambio de hoy, solo como referencia: el monto final depende del cambio que use tu banco o tu tarjeta." : "Si tu tarjeta es de otra moneda, tu banco hace la conversión."}`,
+        usted: `Sí. El precio está en dólares (USD) y el pago es con PayPal, con su cuenta o con tarjeta. ${conReferencia ? "Arriba le mostramos un equivalente en su moneda al cambio de hoy, solo como referencia: el monto final depende del cambio que use su banco o su tarjeta." : "Si su tarjeta es de otra moneda, su banco hace la conversión."}`,
+        vos: `Sí. El precio está en dólares (USD) y el pago es con PayPal, con tu cuenta o con tarjeta. ${conReferencia ? "Arriba te mostramos un equivalente en tu moneda al cambio de hoy, solo como referencia: el monto final depende del cambio que use tu banco o tu tarjeta." : "Si tu tarjeta es de otra moneda, tu banco hace la conversión."}`,
+      });
+      return [
+        {
+          pregunta: "¿Funciona en Google Sheets y en Excel?",
+          respuesta: segun(t, {
+            tu: "Sí. Es un archivo .xlsx: se abre en Excel y en Google Sheets (lo subes a tu Drive y lo abres ahí). Las cuentas son fórmulas comunes, sin macros.",
+            usted: "Sí. Es un archivo .xlsx: se abre en Excel y en Google Sheets (lo sube a su Drive y lo abre ahí). Las cuentas son fórmulas comunes, sin macros.",
+            vos: "Sí. Es un archivo .xlsx: se abre en Excel y en Google Sheets (lo subís a tu Drive y lo abrís ahí). Las cuentas son fórmulas comunes, sin macros.",
+          }),
+        },
+        {
+          pregunta: "¿Cómo la recibo?",
+          respuesta: segun(t, {
+            tu: "Apenas se confirma el pago te la mandamos por correo, con un enlace de descarga que no vence. También puedes bajarla desde la página que se abre al terminar de pagar.",
+            usted: "Apenas se confirma el pago se la mandamos por correo, con un enlace de descarga que no vence. También puede bajarla desde la página que se abre al terminar de pagar.",
+            vos: "Apenas se confirma el pago te la mandamos por correo, con un enlace de descarga que no vence. También podés bajarla desde la página que se abre al terminar de pagar.",
+          }),
+        },
+        { pregunta: "¿Se cobra en dólares?", respuesta: dolares },
+        {
+          pregunta: "¿Hay devolución?",
+          respuesta: segun(t, {
+            tu: "Sí. Si la planilla no te sirve, responde el correo de la entrega dentro de los 7 días y te devolvemos el dinero.",
+            usted: "Sí. Si la planilla no le sirve, responda el correo de la entrega dentro de los 7 días y le devolvemos el dinero.",
+            vos: "Sí. Si la planilla no te sirve, respondé el correo de la entrega dentro de los 7 días y te devolvemos el dinero.",
+          }),
+        },
+        {
+          pregunta: "¿Se actualiza cuando cambian los valores oficiales?",
+          respuesta: `Sí. ${p.disparadorActualizacion}, la actualizamos y el mismo enlace descarga la versión nueva.`,
+        },
+      ];
+    },
     descargar: "Descargar la planilla (.xlsx)",
     abrirInforme: "Abrir mi informe",
     fuentes: "Fuentes oficiales que usa",

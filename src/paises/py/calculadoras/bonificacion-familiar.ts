@@ -1,4 +1,4 @@
-import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
 export default definirCalculadora({
   id: "py.bonificacion-familiar",
@@ -24,6 +24,7 @@ export default definirCalculadora({
     },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const minimo = valores["py.salario-minimo"];
     const tope = redondear(porcentaje(minimo, valores["py.bonificacion-familiar-tope"]));
     const porHijo = redondear(porcentaje(minimo, valores["py.bonificacion-familiar"]));

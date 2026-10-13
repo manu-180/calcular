@@ -1,4 +1,4 @@
-import { definirCalculadora } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 import { costoEmpleador } from "../lib/costo-empleador";
 import { aportesTrabajador } from "../reglas";
 
@@ -37,6 +37,7 @@ export default definirCalculadora({
     },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const smmlv = valores["co.smmlv"];
     const costo = costoEmpleador(
       { salario: entrada.salario, auxilio: entrada.auxilio, claseRiesgo: "i", puedeExonerarse: entrada.dosOMas, pagaSenaIcbf: false },

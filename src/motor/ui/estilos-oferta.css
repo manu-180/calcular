@@ -163,6 +163,13 @@
   color: var(--cy-texto-suave);
 }
 
+.cy-oferta-cambio {
+  margin-top: -0.25rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--cy-texto-suave);
+}
+
 .cy-oferta-cta {
   width: 100%;
 }
@@ -861,5 +868,239 @@
 
   .cy-muestra-hoja {
     transition: none;
+  }
+}
+
+/* ---------- Vista previa de la planilla en su landing ---------- */
+
+.cy-solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.cy-vista {
+  display: grid;
+  gap: 0.875rem;
+  margin: 1.25rem 0 0.5rem;
+  padding: 1.25rem 1.25rem 1rem;
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(30rem 18rem at 0% 0%, rgb(16 185 129 / 0.1), transparent 70%),
+    #f6f7f6;
+  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.05);
+}
+
+.cy-vista-hoja {
+  overflow: hidden;
+  border-radius: 0.875rem;
+  background: #fff;
+  box-shadow:
+    0 20px 40px -26px rgb(0 0 0 / 0.32),
+    0 0 0 1px rgb(0 0 0 / 0.07);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-vista-archivo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgb(24 24 27 / 0.08);
+  background: #fafafa;
+  font-weight: 500;
+  color: var(--cy-texto-suave);
+}
+
+.cy-vista-archivo span:last-child {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cy-vista-puntos {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.cy-vista-puntos i {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: #d4d4d8;
+}
+
+.cy-vista-tabla {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.cy-vista-tabla thead th {
+  padding: 0.25rem 0.375rem;
+  border-right: 1px solid rgb(24 24 27 / 0.08);
+  border-bottom: 1px solid rgb(24 24 27 / 0.1);
+  background: #f4f4f5;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--cy-texto-suave);
+}
+
+.cy-vista-tabla thead th:first-child {
+  width: 2rem;
+}
+
+.cy-vista-tabla thead th:last-child {
+  width: 42%;
+  border-right: 0;
+}
+
+.cy-vista-tabla tbody th,
+.cy-vista-tabla tbody td {
+  padding: 0.5rem 0.625rem;
+  border-right: 1px solid rgb(24 24 27 / 0.07);
+  border-bottom: 1px solid rgb(24 24 27 / 0.07);
+  text-align: left;
+  font-weight: 400;
+  color: var(--cy-texto);
+  overflow-wrap: anywhere;
+}
+
+.cy-vista-tabla tbody td:last-child {
+  border-right: 0;
+  text-align: right;
+}
+
+.cy-vista-tabla tbody td.cy-vista-fila {
+  padding: 0.5rem 0.25rem;
+  background: #f4f4f5;
+  text-align: center;
+  font-size: 0.6875rem;
+  color: var(--cy-texto-suave);
+}
+
+.cy-vista-tabla tr[data-tono="entrada"] td:last-child {
+  background: #fffde7;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgb(234 179 8 / 0.35);
+}
+
+.cy-vista-tabla tr[data-tono="resultado"] th,
+.cy-vista-tabla tr[data-tono="resultado"] td:last-child {
+  background: #f1f8f1;
+}
+
+.cy-vista-tabla tr[data-tono="total"] th,
+.cy-vista-tabla tr[data-tono="total"] td:last-child {
+  background: #c8e6c9;
+  font-weight: 650;
+  color: #14532d;
+}
+
+.cy-vista-pestanas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.375rem 0.5rem 0.625rem;
+  background: #f4f4f5;
+  font-size: 0.75rem;
+}
+
+.cy-vista-pestanas span {
+  max-width: 12rem;
+  overflow: hidden;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--cy-texto-suave);
+}
+
+.cy-vista-pestanas span[data-activa] {
+  background: #fff;
+  font-weight: 600;
+  color: #1b5e20;
+  box-shadow: 0 1px 0 #1b5e20;
+}
+
+.cy-vista-leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--cy-texto-suave);
+}
+
+.cy-vista-leyenda span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.cy-vista-leyenda i {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.1875rem;
+}
+
+.cy-vista-leyenda i[data-color="entrada"] {
+  background: #fffde7;
+  box-shadow: inset 0 0 0 1px rgb(234 179 8 / 0.55);
+}
+
+.cy-vista-leyenda i[data-color="calculo"] {
+  background: #c8e6c9;
+  box-shadow: inset 0 0 0 1px rgb(22 101 52 / 0.3);
+}
+
+.cy-producto-cta {
+  margin-top: 1.25rem;
+}
+
+.cy-producto-faq {
+  margin: 2.5rem 0 2rem;
+}
+
+.cy-producto-cta p {
+  margin: 0;
+}
+
+.cy-producto-cta .cy-oferta-cambio {
+  margin-top: 0.5rem;
+}
+
+.cy-vista-comprobar {
+  display: grid;
+  gap: 0.375rem;
+  margin-top: 1rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--cy-linea);
+  border-radius: 1.125rem;
+  background: var(--cy-papel-hondo);
+}
+
+.cy-vista-comprobar p {
+  margin: 0;
+}
+
+.cy-vista-comprobar a {
+  font-weight: 600;
+  color: var(--cy-tinta);
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 39.99rem) {
+  .cy-vista {
+    padding: 0.75rem 0.75rem 0.875rem;
+    border-radius: 1.125rem;
+  }
+
+  .cy-vista-tabla tbody th,
+  .cy-vista-tabla tbody td {
+    padding: 0.4375rem 0.4375rem;
   }
 }

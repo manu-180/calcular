@@ -243,6 +243,8 @@ async function sinServer() {
         if (md.openGraph.locale !== seo.ogLocale(m.locale)) falla(`${id}: og:locale ${md.openGraph.locale}`);
         const img = md.openGraph.images[0]?.url ?? "";
         if (!img.startsWith(`${origen}/`) || img.includes("/intl")) falla(`${id}: og:image ausente o fuera del dominio público (${img})`);
+        const tam = md.openGraph.images[0];
+        if (tam?.width !== 1200 || tam?.height !== 630) falla(`${id}: og:image sin :width y :height 1200 x 630`);
         if (md.twitter.card !== "summary_large_image") falla(`${id}: twitter:card no es summary_large_image`);
         pares.push({ url, title: md.title.absolute, description: md.description });
 
@@ -354,6 +356,8 @@ async function conServer(base: string) {
       ["property", "og:site_name"],
       ["property", "og:locale"],
       ["property", "og:image"],
+      ["property", "og:image:width"],
+      ["property", "og:image:height"],
       ["property", "og:type"],
       ["name", "twitter:card"],
     ] as const) {

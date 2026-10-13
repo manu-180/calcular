@@ -10,7 +10,7 @@
 import { writeFileSync } from "node:fs";
 import { opcionesDinamicas, resolverValores } from "../../src/motor/registro";
 import type { Campo, PaisDefinido } from "../../src/motor/tipos";
-import { archivoMapa, claveValor, serialExcel, type BloqueMapa, type CeldaMapa, type MapaPlanilla } from "../../src/lib/pagos/mapa-planilla-intl";
+import { archivoMapa, claveValor, serialExcel, type BloqueMapa, type CeldaMapa, type MapaPlanilla, type ValorMuestra } from "../../src/lib/pagos/mapa-planilla-intl";
 import { PLANILLAS_INTL, construirPlanilla, escribirPlanilla, type PlanillaConstruida } from "../planillas-intl";
 import type { Entrada } from "../planillas-intl/marco";
 
@@ -46,6 +46,16 @@ function celdaDe(campo: Campo, e: Entrada, dominio: readonly unknown[]): CeldaMa
   return Object.keys(valores).length ? { ref: e.ref, tipo: "valor", valores } : null;
 }
 
+// El valor que trae la celda de ejemplo, de vuelta en el valor de la calculadora (la inversa de
+// valorDeCelda). Si no se puede invertir con certeza, el campo queda fuera de la muestra.
+function valorDeMuestra(c: CeldaMapa, celda: unknown): ValorMuestra | undefined {
+  if (celda === null || celda === undefined || celda === "") return undefined;
+  if (c.tipo === "numero") return typeof celda === "number" && c.factor !== 0 ? celda / c.factor : undefined;
+  if (c.tipo === "fecha-serial") return typeof celda === "number" ? new Date(Date.UTC(1899, 11, 30) + celda * 86_400_000).toISOString().slice(0, 10) : undefined;
+  const clave = Object.keys(c.valores).find((k) => c.valores[k] === celda);
+  return clave === undefined ? undefined : (JSON.parse(clave) as ValorMuestra);
+}
+
 export function mapaDePlanilla(p: PlanillaConstruida): MapaPlanilla {
   const pais: PaisDefinido = p.libro.pais;
   const bloques: BloqueMapa[] = [];
@@ -55,6 +65,8 @@ export function mapaDePlanilla(p: PlanillaConstruida): MapaPlanilla {
     const r = resolverValores(pais, def, p.hoy);
     const dinamicas = r.ok ? opcionesDinamicas(pais, def, r.valores) : {};
     const celdas: Record<string, CeldaMapa> = {};
+    const muestra: Record<string, ValorMuestra> = {};
+    const hoja = p.libro.wb.getWorksheet(b.hoja);
     for (const campo of def.campos) {
       const e = b.entradas[campo.id];
       if (!e) continue;
@@ -69,9 +81,13 @@ export function mapaDePlanilla(p: PlanillaConstruida): MapaPlanilla {
                 ? (dinamicas[campo.id] ?? []).map((o) => o.valor)
                 : [];
       const c = celdaDe(campo, e, campo.requerido === false && dominio.length ? [...dominio, null] : dominio);
-      if (c) celdas[campo.id] = c;
+      if (c) {
+        celdas[campo.id] = c;
+        const v = valorDeMuestra(c, hoja?.getCell(c.ref).value);
+        if (v !== undefined) muestra[campo.id] = v;
+      }
     }
-    bloques.push({ calculadora: b.calculadora, hoja: b.hoja, celdas });
+    bloques.push({ calculadora: b.calculadora, hoja: b.hoja, celdas, muestra });
   }
   return { version: 1, archivo: p.archivo, bloques };
 }

@@ -17,6 +17,7 @@ export default definirCalculadora({
     { id: "dias", tipo: "entero", etiqueta: "Días trabajados en el mes", min: 1, max: 30, porDefecto: 30 },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     if (entrada.dias < 1 || entrada.dias > 30) throw new ErrorEntrada("Escribe entre 1 y 30 días.", "dias");
     const smmlv = valores["co.smmlv"];
     const tope = redondear(valores["co.auxilio-tope"] * smmlv);

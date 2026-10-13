@@ -1,4 +1,4 @@
-import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 import { DIAS_MES } from "../prestaciones";
 
 export default definirCalculadora({
@@ -29,6 +29,7 @@ export default definirCalculadora({
     },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const s = entrada.salario;
     const cuotaIgss = redondear(porcentaje(s, valores["gt.igss-patronal-ivs"] + valores["gt.igss-patronal-ema"]));
     const irtra = redondear(porcentaje(s, valores["gt.irtra"]));
