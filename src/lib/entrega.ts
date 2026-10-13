@@ -5,7 +5,7 @@
 // payment_id que MP confirme aprobado y que corresponda a ESTE producto.
 
 import { NextRequest, NextResponse } from "next/server";
-import { habilitaDescarga, leerArchivoProducto, obtenerPago, type MpPayment, type Producto } from "@/lib/mp";
+import { habilitaDescarga, leerArchivoProducto, obtenerPagoSiExiste, type MpPayment, type Producto } from "@/lib/mp";
 import { datosDelPago, personalizable, xlsxConDatos } from "@/lib/prefill/servidor";
 import { ID_PAGO, dentroDelCupoEntrega, ipDelPedido } from "@/lib/acceso-entrega";
 
@@ -29,10 +29,15 @@ export async function servirPlanilla(req: NextRequest, producto: Producto): Prom
 
   let pago;
   try {
-    pago = await obtenerPago(paymentId);
+    pago = await obtenerPagoSiExiste(paymentId);
   } catch (e) {
     console.error(`[descarga/${producto.slug}] verificación MP falló`, paymentId, e);
     return new NextResponse("No pudimos verificar el pago", { status: 502 });
+  }
+  // Un id que ninguna de las dos cuentas conoce no es una falla de MP: 502 lo hacía parecer una caída.
+  if (!pago) {
+    console.warn(`[descarga/${producto.slug}] pago inexistente`, paymentId);
+    return new NextResponse("No encontramos ese pago", { status: 404 });
   }
 
   // Gate doble: pago aprobado por el monto exacto Y comprado ESTE producto. Sin la segunda

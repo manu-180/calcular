@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cronAutorizado } from "@/lib/cron";
 import { FROM, newsletterEmailHtml } from "@/lib/email";
 import { IPC_SERIE } from "@/data/ipc-serie";
 import { TNA_FALLBACK } from "@/data/plazofijo";
@@ -46,7 +47,7 @@ async function sbFetch(path: string, init: RequestInit = {}): Promise<Response> 
 // ─── handler ─────────────────────────────────────────────────────────────────
 
 export async function GET(req: NextRequest) {
-  if (req.headers.get("authorization") !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!cronAutorizado(req.headers)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

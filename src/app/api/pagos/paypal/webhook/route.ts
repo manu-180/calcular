@@ -8,6 +8,8 @@ import { leerReferenciaIntl } from "@/lib/pagos/catalogo-intl";
 import { procesarPagoIntl } from "@/lib/pagos/flujo-intl";
 import { configPaypal, idCapturaDeRecurso, paypal } from "@/lib/pagos/paypal";
 import type { PagoVerificado } from "@/lib/pagos/tipos";
+import { marcaVentaIntl } from "@/lib/pagos/ventas-intl";
+import { idsConLaMarca } from "@/lib/mp-webhook";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -21,6 +23,38 @@ const EVENTOS_CAPTURA = new Set([
   "PAYMENT.CAPTURE.REFUNDED",
   "PAYMENT.CAPTURE.REVERSED",
 ]);
+
+const dormir = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+// El mail del comprador está en la orden y no en la captura: si leer la orden falló, se reintenta
+// un par de veces antes de seguir.
+async function conEmailDeLaOrden(captura: string, pago: PagoVerificado): Promise<PagoVerificado> {
+  for (const espera of [300, 1000]) {
+    await dormir(espera);
+    const otra = await paypal.consultarPago(captura).catch(() => null);
+    if (otra?.email) return otra;
+  }
+  return pago;
+}
+
+// Pasadas unas horas se asienta igual sin mail: la venta no puede quedar sin registrar para siempre.
+const ESPERA_MAIL_MS = 6 * 60 * 60 * 1000;
+
+function esReciente(fecha: string | null): boolean {
+  const t = fecha ? Date.parse(fecha) : NaN;
+  return Number.isFinite(t) && Date.now() - t < ESPERA_MAIL_MS;
+}
+
+async function ventaYaAsentada(id: string): Promise<boolean> {
+  const url = process.env.SUPABASE_URL;
+  const clave = claveServicio();
+  if (!url || !clave) return false;
+  try {
+    return (await idsConLaMarca({ fetch, supabaseUrl: url, serviceRole: clave }, marcaVentaIntl("paypal", id))).length > 0;
+  } catch {
+    return false;
+  }
+}
 
 /**
  * POST /api/pagos/paypal/webhook. Contrato: 401 a una firma inválida, 500 a un error nuestro (que
@@ -66,6 +100,15 @@ export async function POST(req: NextRequest) {
     } else if (EVENTOS_CAPTURA.has(tipo)) {
       const captura = idCapturaDeRecurso(tipo, evento.resource);
       pago = captura ? await paypal.consultarPago(captura) : null;
+      if (captura && pago && pago.estado === "aprobado" && !pago.email && pago.ordenId) {
+        pago = await conEmailDeLaOrden(captura, pago);
+        if (!pago.email && esReciente(pago.fecha) && !(await ventaYaAsentada(pago.id))) {
+          // Sin el mail, procesarPagoIntl asentaría la venta como «sin email» y el reintento la vería
+          // duplicada: nadie volvería a mandar la entrega. El 500 hace que PayPal reintente más tarde.
+          console.error("[pagos/paypal/webhook] no pude leer el mail de la orden, queda para el reintento de PayPal", pago.id);
+          return NextResponse.json({ error: "falta el mail de la orden" }, { status: 500 });
+        }
+      }
     } else {
       return NextResponse.json({ ok: true, ignorado: tipo || "sin tipo" });
     }
