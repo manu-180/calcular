@@ -59,7 +59,9 @@ async function notasRecientes(http: Http): Promise<{ fecha: FechaISO; notas: Not
   for (let i = 0; i < 3; i++) {
     const fecha = haceDias(hoy, i);
     const url = `${API}/notas/${aDof(fecha)}`;
-    if (!notasPorDia.has(url)) notasPorDia.set(url, http.json(url));
+    // El endpoint de notas responde 406 a "Accept: application/json" a secas (el que pone
+    // http.json) aunque devuelve JSON; con */* contesta 200 (probado el 13/10/2026, issue #15).
+    if (!notasPorDia.has(url)) notasPorDia.set(url, http.json(url, { encabezados: { Accept: "application/json, text/plain, */*" } }));
     const json = await notasPorDia.get(url);
     if (typeof json !== "object" || json === null || !("NotasMatutinas" in json)) return null;
     const j = json as Record<string, unknown>;

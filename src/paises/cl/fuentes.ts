@@ -124,20 +124,28 @@ async function traerSerieCruzada(
   urlCruce: string,
   diasAtras: number,
 ): Promise<PuntoSerie[] | null> {
+  // Cada paso que falla tira un error con el motivo en vez de devolver null: en el runner de GitHub
+  // la UF y la UTM salían "traer devolvió null" y en local andaban (issue #19), y con null no había
+  // forma de saber si el que fallaba era el SII, mindicador o el cruce.
   const hoy = fechaEnZona(new Date(), ZONA);
   const anio = Number(hoy.slice(0, 4));
-  const html = await textoOpcional(http, urlDe(anio));
-  if (!html) return null;
+  const html = await http.texto(urlDe(anio));
   const oficiales = parsear(html, anio);
   if (hoy.slice(5, 7) === "12") {
     const siguiente = await textoOpcional(http, urlDe(anio + 1));
     if (siguiente) oficiales.push(...parsear(siguiente, anio + 1));
   }
-  if (oficiales.length === 0) return null;
-  const cruce = parsearMindicador(await http.json(urlCruce).catch(() => null));
-  if (!cruce) return null;
+  if (oficiales.length === 0) throw new Error(`el SII respondió sin valores reconocibles en ${urlDe(anio)} (${html.length} bytes)`);
+  const json = await http.json(urlCruce).catch((err: Error) => {
+    throw new Error(`mindicador (cruce) falló: ${err.message}`);
+  });
+  const cruce = parsearMindicador(json);
+  if (!cruce) throw new Error(`mindicador (cruce) respondió con otra forma: ${JSON.stringify(json).slice(0, 80)}`);
   const { coinciden, difieren } = cruzar(oficiales, cruce);
-  if (difieren.length > 0 || coinciden < Math.min(MIN_COINCIDENCIAS, cruce.length)) return null;
+  if (difieren.length > 0) throw new Error(`el SII y mindicador no coinciden: ${difieren.slice(0, 3).join("; ")}`);
+  if (coinciden < Math.min(MIN_COINCIDENCIAS, cruce.length)) {
+    throw new Error(`solo ${coinciden} fecha(s) en común entre el SII y mindicador (mínimo ${Math.min(MIN_COINCIDENCIAS, cruce.length)}; mindicador trajo ${cruce.length}, la primera ${cruce[0]?.fecha ?? "ninguna"})`);
+  }
   const desde = sumarDias(hoy, -diasAtras);
   return oficiales.filter((p) => p.fecha >= desde);
 }

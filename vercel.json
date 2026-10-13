@@ -11,7 +11,7 @@
     },
     {
       "path": "/api/cron/datos-vivos",
-      "schedule": "30 12 * * *"
+      "schedule": "30 12,19 * * *"
     },
     {
       "path": "/api/cron/recuperar-compras",

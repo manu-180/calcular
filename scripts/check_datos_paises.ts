@@ -13,6 +13,7 @@ import { correrDetectores, claveHallazgo } from "./datos-paises/lib/detectores";
 import { httpParaDetector, opcionesEfectivas, type LlamadaHttp } from "./datos-paises/lib/http";
 import { armarIssue, leerIssues, textoHallazgo, urlSegura, type IssuePrevio } from "./datos-paises/lib/issue";
 import { semaforoPais } from "./datos-paises/lib/semaforo";
+import { textoCertsEmbebidos } from "./datos-paises/lib/certs";
 import { agregarPuntos } from "./datos-paises/lib/series-json";
 import { leerParche, validarParche } from "./datos-paises/validar-parche.mjs";
 import { redireccionPermitida } from "./datos-paises/lib/http";
@@ -256,6 +257,17 @@ async function main() {
     const vieja = definirPais({ ...declaracionZz(), series: { mercado: "zz", series: [{ ...JSON.parse(TEXTO_SERIES).series[0], maxAntiguedadDias: 5 }] } });
     verdad("semáforo: serie vieja en rojo", semaforoPais(vieja, "2026-10-20").items.some((i) => i.tipo === "serie" && i.nivel === "rojo"));
     verdad("semáforo: serie por vencer en amarillo", semaforoPais(vieja, "2026-10-11").items.some((i) => i.tipo === "serie" && i.nivel === "amarillo"));
+    const diariaLarga = definirPais({ ...declaracionZz(), series: { mercado: "zz", series: [{ ...JSON.parse(TEXTO_SERIES).series[0], maxAntiguedadDias: 10 }] } });
+    verdad("semáforo: diaria con 3 días hábiles sin punto sigue limpia", !semaforoPais(diariaLarga, "2026-10-12").items.some((i) => i.tipo === "serie"));
+    verdad("semáforo: diaria con más de 3 días hábiles sin punto en amarillo aunque falte para el máximo", semaforoPais(diariaLarga, "2026-10-13").items.some((i) => i.tipo === "serie" && i.nivel === "amarillo"));
+    const mensual = definirPais({ ...declaracionZz(), series: { mercado: "zz", series: [{ ...JSON.parse(TEXTO_SERIES).series[0], frecuencia: "mensual", maxAntiguedadDias: 100 }] } });
+    verdad("semáforo: el umbral de días hábiles no aplica a una mensual", !semaforoPais(mensual, "2026-10-20").items.some((i) => i.tipo === "serie"));
+
+    // El cron de Vercel corre los detectores sin la carpeta certs/: la copia embebida tiene que ser idéntica.
+    verdad(
+      "certs-embebidos.ts coincide con certs/*.pem (si no: npx tsx scripts/datos-paises/gen_certs.ts)",
+      readFileSync(path.join(__dirname, "datos-paises", "lib", "certs-embebidos.ts"), "utf8") === textoCertsEmbebidos(),
+    );
     const datos = JSON.parse(readFileSync(path.join(__dirname, "..", "src", "paises", "zz", "datos.json"), "utf8"));
     datos.datos[1].tramos[0].hasta = "2026-10-20";
     datos.datos[1].proximaRevision = "2026-10-25";

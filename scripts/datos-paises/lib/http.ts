@@ -1,10 +1,9 @@
-import { readdirSync, readFileSync } from "node:fs";
 import http from "node:http";
 import https from "node:https";
-import path from "node:path";
 import tls from "node:tls";
 import zlib from "node:zlib";
 import type { Detector, Http, OpcionesHttp } from "../../../src/motor/tipos";
+import { INTERMEDIOS } from "./certs-embebidos";
 
 export const UA_NAVEGADOR = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36";
 export const UA_PROPIO = "CalcularYa/datos-paises (+https://calcularya.com)";
@@ -12,25 +11,17 @@ export const UA_PROPIO = "CalcularYa/datos-paises (+https://calcularya.com)";
 const MAX_BYTES = 25 * 1024 * 1024;
 const MAX_REDIRECCIONES = 5;
 
-export const DIR_CERTS = path.join(__dirname, "..", "certs");
-
 // bcu.gub.uy, funcionpublica.gov.co, asamblea.gob.sv y bcv.org.ve no mandan el intermedio de su
 // cadena (Node no lo baja solo por AIA, curl y los navegadores sí). tlsTolerante NO apaga la
 // verificación: suma a las raíces de Node los intermedios de certs/, bajados de la URL "CA Issuers"
 // de cada certificado y comprobados contra una raíz de Node. Verificación de cadena y de nombre
 // (checkServerIdentity) quedan intactas; un MITM sigue rebotando. Si un sitio cambia de CA, el
 // detector sale "fuente-caida" con UNABLE_TO_VERIFY_LEAF_SIGNATURE: bajar el intermedio nuevo con
-// la URL del campo AIA del certificado y versionarlo acá.
-export function intermediosVersionados(dir = DIR_CERTS): string[] {
-  return readdirSync(dir)
-    .filter((f) => f.endsWith(".pem"))
-    .sort()
-    .map((f) => readFileSync(path.join(dir, f), "utf8"));
-}
-
+// la URL del campo AIA del certificado, versionarlo en certs/ y correr gen_certs.ts (el agente lee la
+// copia embebida para que el cron de Vercel, que no lleva la carpeta, también la tenga).
 let agenteConIntermedios: https.Agent | undefined;
 function agenteTolerante(): https.Agent {
-  agenteConIntermedios ??= new https.Agent({ ca: [...tls.rootCertificates, ...intermediosVersionados()] });
+  agenteConIntermedios ??= new https.Agent({ ca: [...tls.rootCertificates, ...INTERMEDIOS] });
   return agenteConIntermedios;
 }
 

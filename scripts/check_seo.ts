@@ -41,6 +41,8 @@ const FUERA_DEL_SITEMAP = new Set<string>([
   "/registro",
   "/recuperar",
   "/dashboard",
+  // Redirección permanente a /jubilacion (src/app/(ar)/jubilaciones/page.tsx), no es una página.
+  "/jubilaciones",
 ]);
 const PREFIJOS_FUERA = ["/cuenta", "/dashboard/", "/auth/", "/informes/cuota-alimentaria/ver", "/informes/indemnizacion/ver", "/informes/ganancias/ver", "/informes/inflacion/ver", "/informes/credito-laboral/ver"];
 

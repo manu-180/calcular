@@ -9,6 +9,7 @@ import { HerramientasCalculo } from "@/components/herramientas/HerramientasCalcu
 import { tabsDelEncabezado } from "@/data/navegacion";
 import { JsonLd } from "@/components/JsonLd";
 import { grafoDelSitio } from "@/lib/seo";
+import { hoyAR, META_HOY } from "@/lib/hoy";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -55,6 +56,12 @@ export const viewport: Viewport = {
   themeColor: "#fafaf9",
 };
 
+// Las páginas AR eligen el mes vigente (haberes, SMVM, escalas de convenio) en el render. Sin esto
+// son estáticas para siempre y el día 1 siguen mostrando el mes anterior hasta que alguien
+// redeploye. El revalidate más bajo entre layout y página manda en toda la ruta (doc de Next 16,
+// caching-without-cache-components), así que vale para todas las páginas de (ar) sin tocarlas.
+export const revalidate = 3600;
+
 // Se calcula en el servidor y viaja como prop: el header sabe qué tab marcar sin cargar
 // el modelo de navegación entero en el JS de cada página.
 const TABS = tabsDelEncabezado();
@@ -68,6 +75,7 @@ export default function RootLayout({
   return (
     <html lang="es-AR" className={`${geistSans.variable} h-full antialiased`}>
       <body className="font-sans">
+        <meta name={META_HOY} content={hoyAR()} />
         <JsonLd data={GRAFO_DEL_SITIO} />
         <a href="#contenido" className="ca-saltar">
           Saltar al contenido

@@ -1,24 +1,42 @@
 // La fecha que decide qué dato está vigente (el mes de ANSES, el mes de escala de un convenio).
 //
-// Orden de prioridad, y por qué:
-//   1. CALCULAR_HOY — la fija a mano quien quiera ver el sitio como va a quedar otro día. Así se
-//      prueba HOY la rotación del día 1: `CALCULAR_HOY=2026-10-01 npx tsx scripts/check-all.ts`.
-//   2. CALCULAR_HOY_BUILD — la inyecta next.config.ts al compilar, en el bundle del server Y del
-//      cliente. Sin esto, un componente cliente calcularía el mes con el reloj del navegador y, en
-//      el cambio de mes, el HTML del build y el JS del visitante mostrarían meses distintos
-//      (hydration mismatch). El sitio cambia de mes cuando se redeploya, y el workflow
-//      datos-vivos redeploya el día 1 a primera hora.
-//   3. El reloj, en hora argentina (el mes cambia a las 00:00 de Buenos Aires, no de UTC).
+// Servidor: CALCULAR_HOY (a mano, para ver el sitio como va a quedar otro día:
+// `CALCULAR_HOY=2026-11-01 npx tsx scripts/check-all.ts`) y si no, el reloj en hora argentina. NO
+// lee CALCULAR_HOY_BUILD: next.config.ts lo inlinea en el bundle y congelaría el mes al del build,
+// y las páginas AR se regeneran cada hora (revalidate del layout de (ar)) justamente para que el
+// día 1 el mes cambie sin redeploy.
+//
+// Cliente: lee la fecha con la que el servidor renderizó ESA página (la meta que pone el layout de
+// (ar)). Con el reloj del navegador o con la fecha del build, en el cambio de mes el HTML y el JS
+// mostrarían meses distintos (hydration mismatch). Sin la meta (fuera de (ar)) cae a la del build.
+export const META_HOY = "calcular-hoy";
 
-export function hoyAR(): string {
-  const fijada = process.env.CALCULAR_HOY || process.env.CALCULAR_HOY_BUILD;
-  if (fijada && /^\d{4}-\d{2}-\d{2}$/.test(fijada)) return fijada;
+const FECHA = /^\d{4}-\d{2}-\d{2}$/;
+
+function relojAR(): string {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Argentina/Buenos_Aires",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
   }).format(new Date());
+}
+
+export function hoyAR(): string {
+  if (typeof window === "undefined") {
+    const fijada = process.env.CALCULAR_HOY;
+    return fijada && FECHA.test(fijada) ? fijada : relojAR();
+  }
+  const renderizada = document.querySelector(`meta[name="${META_HOY}"]`)?.getAttribute("content");
+  if (renderizada && FECHA.test(renderizada)) return renderizada;
+  const build = process.env.CALCULAR_HOY_BUILD;
+  return build && FECHA.test(build) ? build : relojAR();
+}
+
+/** El día con el que se compiló este bundle (next.config.ts lo inlinea), o null fuera de Next. */
+export function hoyDelBuild(): string | null {
+  const build = process.env.CALCULAR_HOY_BUILD;
+  return build && FECHA.test(build) ? build : null;
 }
 
 /** "2026-10" */

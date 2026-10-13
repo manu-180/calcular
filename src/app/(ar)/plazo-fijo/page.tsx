@@ -178,9 +178,9 @@ export default function PlazoFijoPage() {
             Interés = capital × TNA × días ÷ 365
           </p>
           <p>
-            Por ejemplo, $1.000.000 a 30 días con una TNA del {TNA_FALLBACK.valor}% (el promedio
-            de los bancos al momento de escribir esto): 1.000.000 × 0,1941 × 30 ÷ 365 ={" "}
-            <strong>$15.953 de interés</strong>. Al vencimiento retirás $1.015.953.
+            Por ejemplo, $1.000.000 a 30 días con una TNA del {ejTnaStr}% (el promedio de los
+            bancos al {TNA_FALLBACK.fechaISO.split("-").reverse().join("/")}): 1.000.000 × {ejTnaDecStr} × 30 ÷ 365 ={" "}
+            <strong>{ejInteresStr} de interés</strong>. Al vencimiento retirás {ejTotalStr}.
           </p>
           <p>
             Cada banco pone su TNA y la cambia seguido (a veces de un día para el otro, cuando se
