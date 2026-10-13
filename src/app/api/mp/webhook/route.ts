@@ -271,18 +271,19 @@ export async function POST(req: NextRequest) {
 
     // La entrega va atada al mismo gate de idempotencia que el registro: un solo mail por pago.
     let entregado: boolean | null = null;
+    let entregadoA: string | null = null;
     let rastro: boolean | null = null;
     const destinos = destinosDeEntrega(pago);
     if (!r.duplicado) {
       if (destinos.length) {
-        entregado =
-          (await entregarPorEmail(
-            producto,
-            paymentId,
-            destinos,
-            checkoutIdDeReferencia(pago.external_reference),
-            datosDelPago(pago, producto) !== null,
-          )) !== null;
+        entregadoA = await entregarPorEmail(
+          producto,
+          paymentId,
+          destinos,
+          checkoutIdDeReferencia(pago.external_reference),
+          datosDelPago(pago, producto) !== null,
+        );
+        entregado = entregadoA !== null;
         if (!entregado) {
           console.error(`[mp/webhook] ENTREGA POR EMAIL FALLÓ · payment_id ${paymentId} · ${producto.slug} · ${destinos.length} destino(s)`);
           await avisarEntregaFallida(producto, paymentId, "el mail de entrega falló después de reintentar");
@@ -300,7 +301,7 @@ export async function POST(req: NextRequest) {
         { fetch, supabaseUrl: SUPABASE_URL, serviceRole: SERVICE_ROLE },
         r.filaId,
         resultado,
-        destinos[0],
+        entregadoA ?? destinos[0],
       );
     }
 

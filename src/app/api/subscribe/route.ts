@@ -31,7 +31,8 @@ async function sendWelcome(email: string, token: string): Promise<void> {
 export async function POST(req: NextRequest) {
   // Cada alta nueva dispara el mail de bienvenida: sin cupo, un script usa el form para escribirle a
   // direcciones ajenas desde nuestro dominio.
-  if (!(await permitido(`subscribe:${ipDelPedido(req.headers) ?? "sin-ip"}`, 5, 3600))) {
+  // 30 y no 5: las móviles argentinas usan CGNAT y mucha gente legítima sale por la misma IP.
+  if (!(await permitido(`subscribe:${ipDelPedido(req.headers) ?? "sin-ip"}`, 30, 3600))) {
     return NextResponse.json({ error: "Demasiados intentos" }, { status: 429 });
   }
 
