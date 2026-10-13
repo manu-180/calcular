@@ -216,13 +216,26 @@ function alError(e: Event) {
   rastrear("error", { props: { m: m.replace(/(https?:\/\/[^\s?#]*)[?#]\S*/g, "$1").slice(0, 200) } });
 }
 
+// Una oferta más alta que la pantalla (en mobile llega a ~1.900 px contra 812) nunca muestra el 50 %
+// de sí misma: cuenta como vista cuando ocupa media pantalla o deja ver la mitad de su alto.
+function seVe(e: IntersectionObserverEntry): boolean {
+  if (!e.isIntersecting) return false;
+  const alto = e.rootBounds?.height ?? window.innerHeight;
+  return e.intersectionRatio >= 0.5 || e.intersectionRect.height >= alto * 0.5;
+}
+
 function alVerOfertas(entradas: IntersectionObserverEntry[]) {
   for (const e of entradas) {
     const el = e.target as HTMLElement & { _t?: ReturnType<typeof setTimeout> };
-    clearTimeout(el._t);
-    if (!e.isIntersecting || e.intersectionRatio < 0.5) continue;
+    if (!seVe(e)) {
+      clearTimeout(el._t);
+      el._t = undefined;
+      continue;
+    }
+    if (el._t) continue;
     const v = vista;
     el._t = setTimeout(() => {
+      el._t = undefined;
       const p = el.dataset.oferta;
       if (p && v === vista && visible && !ofertas.has(p)) {
         ofertas.add(p);
@@ -235,7 +248,7 @@ function alVerOfertas(entradas: IntersectionObserverEntry[]) {
 function observarOfertas() {
   if (!io) {
     if (typeof IntersectionObserver === "undefined") return;
-    io = new IntersectionObserver(alVerOfertas, { threshold: 0.5 });
+    io = new IntersectionObserver(alVerOfertas, { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5] });
   }
   document.querySelectorAll("[data-oferta]").forEach((el) => io!.observe(el));
 }
