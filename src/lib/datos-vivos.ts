@@ -451,9 +451,9 @@ function sumarDiasISO(fecha: string, dias: number): string {
   return d.toISOString().slice(0, 10);
 }
 
-// Las páginas AR se regeneran cada hora, pero varias eligen el mes a nivel de módulo (const MES =
-// vigenteEn(...) fuera del componente), y eso queda congelado mientras viva la instancia de la
-// función. Un redeploy el día 1 es lo único que lo garantiza.
+// Las páginas AR eligen el mes en cada render (lo vigila check_mes_en_render) y se regeneran cada
+// hora, así que el mes nuevo entra solo. El redeploy del día 1 es un refuerzo: deja el HTML del
+// build ya en el mes nuevo sin esperar la primera regeneración de cada página.
 export function compararMes(hoyBuild: string | null, hoy: string): Hallazgo {
   const base = { dato: "Cambio de mes (calcular.ar)", sirve: hoyBuild ? `build del ${hoyBuild}` : "sin fecha de build", fuente: `hoy ${hoy}` };
   if (!hoyBuild || hoyBuild.slice(0, 7) === hoy.slice(0, 7)) {
