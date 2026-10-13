@@ -6,6 +6,7 @@
 // Correr con: npx tsx scripts/check_pagos.ts  (o vía scripts/check-all.ts)
 
 import "./sin-server-only";
+import "./entorno-check-pagos";
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -25,21 +26,6 @@ import * as rutaWebhook from "../src/app/api/pagos/paypal/webhook/route";
 import * as rutaDescarga from "../src/app/api/pagos/descarga/route";
 
 async function main() {
-process.env.PAYPAL_CLIENT_ID = "cliente-de-prueba";
-process.env.PAYPAL_CLIENT_SECRET = "secreto-de-prueba";
-process.env.PAYPAL_WEBHOOK_ID = "WH-PRUEBA";
-process.env.PAYPAL_ENV = "live";
-process.env.NEXT_PUBLIC_SITIO_INTL_URL = "https://calcularya.com";
-process.env.SUPABASE_URL = "https://base.prueba";
-process.env.SUPABASE_SERVICE_ROLE_KEY = "rol-de-servicio-de-prueba";
-process.env.RESEND_API_KEY = "re_prueba";
-process.env.MP_ACCESS_TOKEN = "APP_USR-token-de-prueba";
-delete process.env.MP_ACCESS_TOKEN_LEGADO;
-delete process.env.NEXT_PUBLIC_CUENTAS_ACTIVAS;
-delete process.env.VERCEL_ENV;
-delete process.env.PAGOS_INTL_PROVEEDOR;
-delete process.env.PAYPAL_SANDBOX_EN_PRODUCCION;
-
 
 const IP = { "x-forwarded-for": "203.0.113.7" };
 const limites: string[] = [];
@@ -102,7 +88,7 @@ check("centavos: 9.00 → 900, 9.5 → 950, 14900 → 1490000", centavos("9.00")
 check("centavos: 9.001 y basura → null", centavos("9.001") === null && centavos("9,00") === null && centavos("-9") === null);
 
 // ─── PayPal simulado ─────────────────────────────────────────────────────────────────────────
-type Captura = { id: string; status: string; value: string; currency: string; custom_id: string; orden: string };
+type Captura = { id: string; status: string; value: string; currency: string; custom_id: string; orden: string; creada?: string };
 const capturas = new Map<string, Captura>();
 type Unidad = { custom_id: string; amount: { value: string; currency_code: string } };
 const ordenes = new Map<string, { capturaId: string; aprobada: boolean; unidad: Unidad }>();
@@ -111,6 +97,7 @@ const revenue: { id: number; note: string; amount: number; currency: string; pro
 const mails: { to: string[]; subject: string; html: string; from: string }[] = [];
 let proximaCaptura: Partial<Captura> = {};
 let secuencia = 0;
+let ordenRota = false;
 
 const json = (cuerpo: unknown, status = 200) => new Response(JSON.stringify(cuerpo), { status, headers: { "Content-Type": "application/json" } });
 const capturaJson = (c: Captura) => ({
@@ -118,7 +105,7 @@ const capturaJson = (c: Captura) => ({
   status: c.status,
   amount: { currency_code: c.currency, value: c.value },
   custom_id: c.custom_id,
-  create_time: "2026-10-09T12:00:00Z",
+  create_time: c.creada ?? "2026-10-09T12:00:00Z",
   supplementary_data: { related_ids: { order_id: c.orden } },
 });
 const ordenJson = (id: string) => {
@@ -165,7 +152,7 @@ globalThis.fetch = (async (entrada: string | URL | Request, init?: RequestInit) 
       return json(ordenJson(m[1]), 201);
     }
     m = /^\/v2\/checkout\/orders\/([A-Z0-9]+)$/.exec(url.pathname);
-    if (m) return ordenes.has(m[1]) ? json(ordenJson(m[1])) : json({}, 404);
+    if (m) return ordenRota ? json({ name: "INTERNAL_SERVER_ERROR" }, 500) : ordenes.has(m[1]) ? json(ordenJson(m[1])) : json({}, 404);
     m = /^\/v2\/payments\/captures\/([A-Z0-9]+)$/.exec(url.pathname);
     if (m) {
       const c = capturas.get(m[1]);
@@ -420,6 +407,49 @@ const filas7 = revenue.length;
 const w7 = await rutaWebhook.POST(pedidoWebhook(evento("PAYMENT.CAPTURE.REFUNDED", { id: "REF777777777777", links: [{ rel: "up", href: `https://api.paypal.com/v2/payments/captures/${cap7}` }] })));
 const j7 = (await w7.json()) as { ignorado?: string };
 check("reembolso parcial: 200 ignorado, sin fila negativa", w7.status === 200 && (j7.ignorado ?? "").includes("reembolso parcial") && revenue.length === filas7 && !revenue.some((r) => r.note.includes(marcaDevolucionIntl("paypal", cap7))), j7);
+
+// Leer la orden falla (el mail del comprador vive ahí): la venta no puede quedar «sin email» para siempre.
+{
+  const nueva = async () => {
+    const r = await rutaCheckout.POST(new NextRequest("https://calcularya.com/api/pagos/checkout", { method: "POST", headers: IP, body: new URLSearchParams({ p: PRODUCTO.id, email: "b7@example.com" }) }));
+    const orden = new URL(r.headers.get("location")!).searchParams.get("token")!;
+    await paypal.confirmarPago(orden);
+    return ordenes.get(orden)!.capturaId;
+  };
+  const cap8 = await nueva();
+  capturas.get(cap8)!.creada = new Date().toISOString();
+  const antes8 = { r: revenue.length, m: mails.length };
+  ordenRota = true;
+  const w8 = await rutaWebhook.POST(pedidoWebhook(evento("PAYMENT.CAPTURE.COMPLETED", { id: cap8 })));
+  check("orden ilegible y captura reciente: 500 para que PayPal reintente, sin venta ni mail", w8.status === 500 && revenue.length === antes8.r && mails.length === antes8.m, w8.status);
+  ordenRota = false;
+  const w8b = await rutaWebhook.POST(pedidoWebhook(evento("PAYMENT.CAPTURE.COMPLETED", { id: cap8 })));
+  check(
+    "el reintento con la orden legible asienta y entrega al mail del comprador",
+    w8b.status === 200 && revenue.length === antes8.r + 1 && mails.length === antes8.m + 1 && mails.at(-1)?.to[0] === "compradora@example.com",
+  );
+
+  const cap9 = await nueva();
+  const antes9 = { r: revenue.length, m: mails.length };
+  ordenRota = true;
+  const w9 = await rutaWebhook.POST(pedidoWebhook(evento("PAYMENT.CAPTURE.COMPLETED", { id: cap9 })));
+  ordenRota = false;
+  check(
+    "orden ilegible y captura de hace horas: se asienta igual y sólo sale el aviso de entrega fallida",
+    w9.status === 200 && revenue.length === antes9.r + 1 && mails.length === antes9.m + 1 && (mails.at(-1)?.subject ?? "").startsWith("Entrega fallida"),
+    mails.at(-1)?.subject,
+  );
+}
+
+// Subir un precio no deja sin entrega a quien pagó el anterior.
+{
+  const base = { proveedor: "paypal", id: "X", ordenId: null, estado: "aprobado", estadoProveedor: "COMPLETED", montoCentavos: 700, moneda: "USD", referencia: null, email: null, fecha: null } as const;
+  const prod = { id: "mx/x", titulo: "", precioCentavos: 900, moneda: "USD" };
+  check("pagoCubre: un precio que el producto no tuvo no cubre", !pagoCubre({ ...base }, prod));
+  check("pagoCubre: el precio anterior listado cubre", pagoCubre({ ...base }, { ...prod, preciosAnterioresCentavos: [700] }));
+  check("pagoCubre: manda el precio cobrado si el pago lo trae", pagoCubre({ ...base, precioCobradoCentavos: 700 }, prod) && !pagoCubre({ ...base, montoCentavos: 600, precioCobradoCentavos: 700 }, prod));
+  check("pagoCubre: moneda distinta no cubre", !pagoCubre({ ...base, moneda: "MXN", precioCobradoCentavos: 700 }, prod));
+}
 
 // ─── 6. Sincronización con degradación (ca_checkouts / ca_compras) ──────────────────────────
 {

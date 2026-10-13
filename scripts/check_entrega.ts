@@ -153,16 +153,17 @@ async function main() {
     check(`${nombre} no entrega el archivo`, !esXlsx(cuerpo), cuerpo.length);
   }
 
-  // ── 6. Si MP no contesta, 502 y sin filtrar el detalle del error ─────────────────────
-  const fallasDeMp: Array<[string, number]> = [
-    ["MP 500", 500],
-    ["MP 401 (token vencido)", 401],
-    ["pago inexistente (404)", 404],
+  // ── 6. Si MP no contesta, 502 y sin filtrar el detalle del error. Un pago que MP no conoce no es
+  //       una caída de MP: 404, como cualquier enlace que no existe. ─────────────────────────────
+  const fallasDeMp: Array<[string, number, number]> = [
+    ["MP 500", 500, 502],
+    ["MP 401 (token vencido)", 401, 502],
+    ["pago inexistente (404)", 404, 404],
   ];
-  for (const [nombre, estado] of fallasDeMp) {
+  for (const [nombre, estado, esperado] of fallasDeMp) {
     pagos = { "555555": estado };
     const { res, cuerpo } = await pedir(UOCRA, "?payment_id=555555");
-    check(`${nombre} → 502 (no 200, no 500 nuestro)`, res.status === 502, res.status);
+    check(`${nombre} → ${esperado} (no 200, no 500 nuestro)`, res.status === esperado, res.status);
     check(`${nombre} no entrega el archivo`, !esXlsx(cuerpo));
     const texto = cuerpo.toString("utf8");
     check(

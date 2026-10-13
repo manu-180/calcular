@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cronAutorizado } from "@/lib/cron";
 import { FROM, recordatorioCompraHtml, sendSingle } from "@/lib/email";
 import { conArticulo } from "@/lib/mp";
 import { VENTANA, elegirRecordatorios, pagosDesde, preferenciasDesde } from "@/lib/mp-recupero";
@@ -13,7 +14,7 @@ export const maxDuration = 60;
 const SITE = "https://calcular.ar";
 
 export async function GET(req: NextRequest) {
-  if (req.headers.get("authorization") !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!cronAutorizado(req.headers)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const token = process.env.MP_ACCESS_TOKEN;

@@ -1,5 +1,5 @@
-import { timingSafeEqual } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
+import { cronAutorizado } from "@/lib/cron";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { servicio } from "@/lib/supabase/servicio";
 
@@ -10,16 +10,8 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
-function autorizado(req: NextRequest): boolean {
-  const secreto = process.env.CRON_SECRET;
-  if (!secreto) return false;
-  const recibido = Buffer.from(req.headers.get("authorization") ?? "");
-  const esperado = Buffer.from(`Bearer ${secreto}`);
-  return recibido.length === esperado.length && timingSafeEqual(recibido, esperado);
-}
-
 export async function GET(req: NextRequest) {
-  if (!autorizado(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!cronAutorizado(req.headers)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!CUENTAS_ACTIVAS) return NextResponse.json({ omitido: "cuentas apagadas" });
 
   const inicio = Date.now();

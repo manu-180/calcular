@@ -3,6 +3,7 @@ import {
   CATALOGO,
   buscarPago,
   checkoutIdDeReferencia,
+  destinosDeEntrega,
   esPagoDePlanilla,
   pagoAprobado,
   productoDePago,
@@ -10,19 +11,21 @@ import {
   type Producto,
 } from "@/lib/mp";
 import {
+  enmascararEmail,
   esPagoAjeno,
   extraerPaymentId,
-  firmaValida,
-  firmar,
   marcarEntrega,
-  manifiesto,
-  parsearFirma,
   registrarDevolucion,
   registrarVenta,
   sincronizarPago,
+  verificarFirma,
   type CuerpoNotificacion,
 } from "@/lib/mp-webhook";
-import { FROM, informeEntregaHtml, planillaEntregaHtml, sendSingle } from "@/lib/email";
+import { FROM, informeEntregaHtml, planillaEntregaHtml, sendSingle, sendSingleConReintentos } from "@/lib/email";
+import { emailsAdmin, esAdminEmail } from "@/lib/auth/admin";
+import { usuarioActual } from "@/lib/auth/sesion";
+import { ipDelPedido } from "@/lib/acceso-entrega";
+import { permitido } from "@/lib/limite";
 import { datosDelPago } from "@/lib/prefill/servidor";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { servicio } from "@/lib/supabase/servicio";
@@ -41,11 +44,10 @@ const SERVICE_ROLE = process.env.SUPABASE_SERVICE_ROLE_KEY;
  *
  * Devuelve un booleano en vez de tirar: la venta YA quedó asentada y el comprador YA puede
  * bajar el archivo desde la página de gracias. Romper el webhook por un fallo de Resend haría
- * que MP reintente, y el reintento vería `duplicado: true` y tampoco mandaría el mail — o sea,
- * el 500 no arregla nada y encima ensucia el registro. El fallo se loguea con el payment_id
- * para poder reenviarlo a mano.
+ * que MP reintente, y el reintento vería `duplicado: true` y tampoco mandaría el mail. Por eso
+ * los reintentos van acá adentro, con esperas cortas.
  */
-async function entregarPorEmail(
+async function enviarEntrega(
   producto: Producto,
   paymentId: string,
   email: string,
@@ -59,7 +61,7 @@ async function entregarPorEmail(
     url: `${SITE}${p.rutaLanding}`,
   }));
   try {
-    const ok = await sendSingle({
+    return await sendSingleConReintentos({
       from: FROM,
       to: [email],
       subject:
@@ -86,11 +88,49 @@ async function entregarPorEmail(
               otras,
             }),
     });
-    if (!ok) console.error("[mp/webhook] Resend rechazó la entrega del pago", paymentId, email);
-    return ok;
   } catch (e) {
-    console.error("[mp/webhook] error mandando la entrega del pago", paymentId, e);
+    console.error("[mp/webhook] error armando la entrega del pago", paymentId, e instanceof Error ? e.message : e);
     return false;
+  }
+}
+
+/** Prueba cada destino en orden y devuelve al que llegó, o null si no llegó a ninguno. */
+async function entregarPorEmail(
+  producto: Producto,
+  paymentId: string,
+  destinos: string[],
+  checkoutId: string | null,
+  conDatos: boolean,
+): Promise<string | null> {
+  for (const email of destinos) {
+    if (await enviarEntrega(producto, paymentId, email, checkoutId, conDatos)) return email;
+    console.error(`[mp/webhook] la entrega a ${enmascararEmail(email)} falló después de reintentar · pago ${paymentId}`);
+  }
+  return null;
+}
+
+const DIA_SEG = 24 * 60 * 60;
+
+// El comprador pagó y no le llegó nada: sin este aviso el fallo sólo vive en un log que nadie mira.
+async function avisarEntregaFallida(producto: Producto, paymentId: string, motivo: string): Promise<void> {
+  if (!process.env.RESEND_API_KEY) return;
+  const para = emailsAdmin();
+  if (!para.length || !(await permitido("entrega-ar-aviso:global", 30, DIA_SEG))) return;
+  const texto = [
+    `${producto.titulo} no se pudo entregar por mail (${motivo}).`,
+    `Pago de MercadoPago: ${paymentId}`,
+    `Enlace de entrega: ${SITE}${rutaEntrega(producto, paymentId)}`,
+  ].join("\n");
+  try {
+    await sendSingle({
+      from: FROM,
+      to: para,
+      subject: `Entrega fallida: ${producto.slug} (pago ${paymentId})`,
+      html: `<pre style="font-family:system-ui,sans-serif;font-size:14px;white-space:pre-wrap;">${texto.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</pre>`,
+      text: texto,
+    });
+  } catch (e) {
+    console.error("[mp/webhook] tampoco salió el aviso de entrega fallida", paymentId, e instanceof Error ? e.message : e);
   }
 }
 
@@ -99,10 +139,15 @@ async function entregarPorEmail(
  *
  * Contrato con MP: hay que responder 2xx rápido o reintenta. Por eso todo lo que NO es un pago
  * aprobado nuestro (otro tipo de evento, un pago pendiente, un duplicado) también sale 200: son
- * casos esperados, no fallas. Solo devuelve 401 una firma inválida y 500 un error real de
- * escritura — ahí SÍ queremos el reintento de MP.
+ * casos esperados, no fallas. 401 sólo para una firma presente que no cierra, 429 por exceso de
+ * pedidos y 500 para un error real de escritura: ahí SÍ queremos el reintento de MP.
  */
 export async function POST(req: NextRequest) {
+  // Cada aviso con un id le cuesta una consulta a MP con nuestro token. 120 por minuto por IP sobra
+  // para los reintentos de MP, igual que en el webhook de PayPal.
+  if (!(await permitido(`mp-webhook:${ipDelPedido(req.headers) ?? "sin-ip"}`, 120, 60))) {
+    return NextResponse.json({ error: "demasiados pedidos" }, { status: 429 });
+  }
   const url = new URL(req.url);
   const crudo = await req.text();
   let cuerpo: CuerpoNotificacion | null = null;
@@ -118,24 +163,26 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, ignorado: "evento sin payment id" });
   }
 
-  // Firma: el secret es el de la app de la cuenta CalculAR. La cuenta vieja nunca tuvo secret,
-  // así que una notificación de un pago de esa cuenta llega sin firma válida y se acepta igual:
-  // el gate real es la re-consulta del pago a MP más abajo.
-  const secret = process.env.MP_WEBHOOK_SECRET;
-  let firmaOk = !secret;
-  if (secret) {
-    const firma = parsearFirma(req.headers.get("x-signature"));
-    firmaOk =
-      !!firma &&
-      firmaValida(firmar(manifiesto(paymentId, req.headers.get("x-request-id"), firma.ts), secret), firma.v1);
+  // El secret es el de la app de la cuenta CalculAR. Un aviso sin firma verificable (el IPN viejo
+  // ?topic=payment&id=, que según la doc de MP no se puede validar, o uno sin x-signature) no se
+  // procesa para esa cuenta y se contesta 200: MP manda además la notificación firmada del mismo pago,
+  // que es la que asienta. Con 401 MP reintentaba el IPN durante días. Procesarlo re-consultando a MP
+  // no sumaría nada y dejaría que un pedido sin autenticar dispare escrituras y mails. La cuenta vieja
+  // nunca tuvo secret: sus avisos se aceptan como antes y el gate es la re-consulta del pago.
+  const firma = verificarFirma(url, req.headers, process.env.MP_WEBHOOK_SECRET);
+  if (firma === "sin-firma" && !process.env.MP_ACCESS_TOKEN_LEGADO) {
+    return NextResponse.json({ ok: true, ignorado: "aviso sin firma verificable" });
   }
 
   try {
     // FUENTE DE VERDAD: el pago según MP, nunca el cuerpo de la notificación.
     const encontrado = await buscarPago(paymentId);
-    if (encontrado && !encontrado.legado && !firmaOk) {
-      console.error("[mp/webhook] firma ausente o inválida para el pago", paymentId);
+    if (encontrado && !encontrado.legado && firma === "invalida") {
+      console.error("[mp/webhook] firma inválida para el pago", paymentId);
       return NextResponse.json({ error: "firma inválida" }, { status: 401 });
+    }
+    if (encontrado && !encontrado.legado && firma === "sin-firma") {
+      return NextResponse.json({ ok: true, ignorado: "aviso sin firma verificable" });
     }
     const pago = encontrado?.pago ?? null;
     if (!pago) {
@@ -225,29 +272,35 @@ export async function POST(req: NextRequest) {
     // La entrega va atada al mismo gate de idempotencia que el registro: un solo mail por pago.
     let entregado: boolean | null = null;
     let rastro: boolean | null = null;
+    const destinos = destinosDeEntrega(pago);
     if (!r.duplicado) {
-      if (pago.payer?.email) {
-        entregado = await entregarPorEmail(
-          producto,
-          paymentId,
-          pago.payer.email,
-          checkoutIdDeReferencia(pago.external_reference),
-          datosDelPago(pago, producto) !== null,
-        );
+      if (destinos.length) {
+        entregado =
+          (await entregarPorEmail(
+            producto,
+            paymentId,
+            destinos,
+            checkoutIdDeReferencia(pago.external_reference),
+            datosDelPago(pago, producto) !== null,
+          )) !== null;
+        if (!entregado) {
+          console.error(`[mp/webhook] ENTREGA POR EMAIL FALLÓ · payment_id ${paymentId} · ${producto.slug} · ${destinos.length} destino(s)`);
+          await avisarEntregaFallida(producto, paymentId, "el mail de entrega falló después de reintentar");
+        }
       } else {
-        // MP puede no exponer el mail del pagador. No es fatal: la descarga sigue viva en
-        // /planillas/gracias, pero sin mail el comprador depende de esa pestaña.
+        // MP puede no exponer el mail del pagador y una compra por GET no lleva el del formulario.
+        // La descarga sigue viva en /planillas/gracias, pero sin mail el comprador depende de esa pestaña.
         console.warn("[mp/webhook] pago sin email de comprador, no hay a quién entregar:", paymentId);
       }
     }
 
     if (r.filaId !== undefined) {
-      const resultado = pago.payer?.email ? (entregado ? "ok" : "fallo") : "sin-email";
+      const resultado = destinos.length ? (entregado ? "ok" : "fallo") : "sin-email";
       rastro = await marcarEntrega(
         { fetch, supabaseUrl: SUPABASE_URL, serviceRole: SERVICE_ROLE },
         r.filaId,
         resultado,
-        pago.payer?.email,
+        destinos[0],
       );
     }
 
@@ -264,14 +317,14 @@ export async function POST(req: NextRequest) {
 }
 
 /**
- * GET — MP a veces valida la URL con un GET antes de guardarla en el panel, y además es la
- * única forma de PROBAR desde afuera que el webhook publicado tiene sus llaves.
- *
- * Sin esto sería un "automatismo fantasma" clásico: la ruta responde 200, parece viva, y la
- * primera venta real explota porque el proyecto de Vercel no tenía la env var (pasó tres veces
- * con proyectos recreados). Devuelve BOOLEANOS de presencia — nunca valores, ni prefijos.
+ * GET — la forma de PROBAR que el webhook publicado tiene sus llaves, sin esperar a la primera venta
+ * (pasó tres veces que un proyecto de Vercel recreado no tenía la env var). Devuelve BOOLEANOS de
+ * presencia, nunca valores, y sólo a un admin con sesión: a cualquier otro le contestaría qué está
+ * configurado en el deploy. Mismo gate que el webhook de PayPal.
  */
 export async function GET() {
+  const usuario = await usuarioActual().catch(() => null);
+  if (!usuario?.verificado || !esAdminEmail(usuario.email)) return new NextResponse("Not Found", { status: 404 });
   return NextResponse.json({
     ok: true,
     servicio: "webhook de MercadoPago",

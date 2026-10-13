@@ -14,6 +14,10 @@
 
 import "./sin-server-only";
 import {
+  dataIdDeFirma,
+  enmascararEmail,
+  esIpn,
+  verificarFirma,
   extraerPaymentId,
   firmar,
   firmaValida,
@@ -27,7 +31,9 @@ import {
 import {
   METADATA_MAX,
   crearPreferencia,
+  destinosDeEntrega,
   metadataPreferencia,
+  precioCobrado,
   PRODUCTOS,
   habilitaDescarga,
   pagoAprobado,
@@ -132,6 +138,21 @@ check(
 check("firma de largo distinto se rechaza sin explotar", !firmaValida(firmaOk, "corta"));
 check("hmac es hex de 64 chars", /^[0-9a-f]{64}$/.test(firmaOk), firmaOk);
 
+// ── 3b. Qué firma se exige y cuándo un aviso es «sin firma» (no 401) ──────────────────
+{
+  const conFirma = (qs: string, id: string, extra: Record<string, string> = {}) =>
+    verificarFirma(u(qs), new Headers({ "x-signature": `ts=${ts},v1=${firmar(manifiesto(id, reqId, ts), SECRET)}`, "x-request-id": reqId, ...extra }), SECRET);
+  check("dataIdDeFirma lee data.id de la query", dataIdDeFirma(u("?data.id=555&type=payment")) === "555" && dataIdDeFirma(u("?topic=payment&id=555")) === null);
+  check("firma válida con data.id de la query", conFirma("?data.id=555&type=payment", "555") === "valida");
+  check("firma armada con otro id que el de la query: invalida", conFirma("?data.id=555&type=payment", "999") === "invalida");
+  check("firma presente pero rota: invalida", verificarFirma(u("?data.id=555&type=payment"), new Headers({ "x-signature": "ts=1,v1=00" }), SECRET) === "invalida");
+  check("firma presente sin data.id en la query: invalida", conFirma("?type=payment", "555") === "invalida");
+  check("sin x-signature: sin-firma (no 401)", verificarFirma(u("?data.id=555&type=payment"), new Headers(), SECRET) === "sin-firma");
+  check("IPN viejo con x-signature (MP la manda y no se puede validar): sin-firma", esIpn(u("?topic=payment&id=555")) && conFirma("?topic=payment&id=555", "555") === "sin-firma");
+  check("sin secret configurado no se exige firma", verificarFirma(u("?data.id=555"), new Headers(), undefined) === "valida");
+  check("enmascararEmail no deja el mail entero", enmascararEmail("ana.perez@gmail.com") === "an***@gmail.com" && enmascararEmail(null) === "(sin email)" && enmascararEmail("x") === "***");
+}
+
 // ── 4. Marca de dedupe (la idempotencia se apoya en este formato) ─────────────────────
 check("marcaPago: formato estable", marcaPago("123456789") === "[mp:123456789]");
 // El corchete de cierre es lo que hace segura la búsqueda por substring: sin él, el pago
@@ -213,6 +234,29 @@ check(
 );
 check("pagoAprobado con campos vacios es false", !pagoAprobado({}, UOCRA));
 
+// -- 6b. Si sube un precio, los compradores anteriores siguen bajando su archivo ----------------
+{
+  const caro = { ...UOCRA, precio: 19900 };
+  const conPrecio = (precio: unknown, extra: Partial<MpPayment> = {}) =>
+    pago({ external_reference: "planilla-uocra:abc", metadata: { producto: "planilla-uocra", precio }, ...extra });
+  check("pago con metadata.precio viejo sigue habilitando tras subir el precio", habilitaDescarga(conPrecio("14900"), caro));
+  check("metadata.precio numérico también vale", habilitaDescarga(conPrecio(14900), caro));
+  check("pago de hoy al precio nuevo habilita", habilitaDescarga(conPrecio("19900", { transaction_amount: 19900 }), caro));
+  check("monto menor al de la preferencia: no", !pagoAprobado(conPrecio("14900", { transaction_amount: 14899 }), caro));
+  check("monto distinto al de la preferencia aunque sea el del catálogo: no", !pagoAprobado(conPrecio("9900", { transaction_amount: 19900 }), caro));
+  check("moneda distinta con metadata.precio: no", !pagoAprobado(conPrecio("14900", { currency_id: "USD" }), caro));
+  check("metadata.precio basura cae en los precios conocidos", !pagoAprobado(conPrecio("1e3", { transaction_amount: 1000 }), caro) && !pagoAprobado(conPrecio("-5", { transaction_amount: -5 }), caro));
+  check("pago viejo sin metadata.precio y precio nuevo: no, salvo que el viejo esté en preciosAnteriores", !pagoAprobado(pagoUocra, caro) && pagoAprobado(pagoUocra, { ...caro, preciosAnteriores: [14900] }));
+  check("precioCobrado lee la metadata", precioCobrado(conPrecio("14900")) === 14900 && precioCobrado(pagoUocra) === null);
+  check(
+    "destinos de entrega: el de MP y, si es otro, el del formulario, sin repetir",
+    JSON.stringify(destinosDeEntrega(pago({ payer: { email: "mp@example.com" }, metadata: { email: "form@example.com" } }))) === '["mp@example.com","form@example.com"]' &&
+      JSON.stringify(destinosDeEntrega(pago({ payer: { email: "A@example.com" }, metadata: { email: "a@example.com" } }))) === '["a@example.com"]' &&
+      JSON.stringify(destinosDeEntrega(pago({ metadata: { email: "form@example.com" } }))) === '["form@example.com"]' &&
+      destinosDeEntrega(pago()).length === 0,
+  );
+}
+
 // -- 7. Idempotencia REAL: la misma notificacion dos veces = una sola venta ----------
 // Se corre contra un Supabase falso en memoria. MP reintenta hasta recibir 2xx y ademas manda
 // payment.created y payment.updated del mismo pago: sin este gate el dashboard infla los
@@ -286,6 +330,21 @@ async function pruebaIdempotencia() {
     tiro = true;
   }
   check("si Supabase falla, registrarVenta TIRA (para que MP reintente)", tiro);
+
+  // Con el índice único de la migración 20261013, el INSERT perdedor de la carrera recibe 409.
+  const fetchUnico: Http = async (_url, init) =>
+    (init?.method ?? "GET") === "GET"
+      ? new Response("[]", { status: 200 })
+      : new Response(JSON.stringify({ code: "23505", message: "duplicate key value violates unique constraint" }), { status: 409 });
+  const choque = await registrarVenta({ ...deps, fetch: fetchUnico }, venta);
+  check("409 por el índice único (23505): duplicado, sin entrega", choque.duplicado === true && choque.filaId === undefined, choque);
+  let tiro409 = false;
+  try {
+    await registrarVenta({ ...deps, fetch: async (_u, i) => ((i?.method ?? "GET") === "GET" ? new Response("[]") : new Response('{"code":"23503"}', { status: 409 })) }, venta);
+  } catch {
+    tiro409 = true;
+  }
+  check("409 por otra causa (23503) tira: no se toma como duplicado", tiro409);
 }
 
 
@@ -516,7 +575,15 @@ async function pruebaMetadata() {
     // Metadata: `datos` como texto y claves de una palabra (MP pasa las del pago a snake_case).
     const meta = metadataPreferencia(UOCRA, bueno);
     check("metadata lleva producto y datos", meta.producto === "planilla-uocra" && meta.datos === bueno, meta);
-    check("metadata sin datos queda como siempre", JSON.stringify(metadataPreferencia(UOCRA, null)) === '{"producto":"planilla-uocra"}');
+    check(
+      "metadata sin datos lleva producto y el precio cobrado",
+      JSON.stringify(metadataPreferencia(UOCRA, null)) === '{"producto":"planilla-uocra","precio":"14900"}',
+      metadataPreferencia(UOCRA, null),
+    );
+    check(
+      "metadata guarda el mail del formulario normalizado, y uno inválido no",
+      metadataPreferencia(UOCRA, null, " Ana@Example.com ").email === "ana@example.com" && !("email" in metadataPreferencia(UOCRA, null, "no-es-mail")),
+    );
     check("las claves de la metadata no cambian con snake_case", Object.keys(meta).every((k) => /^[a-z]+$/.test(k)));
     const enorme = metadataPreferencia(UOCRA, JSON.stringify({ x: '"'.repeat(DATOS_MAX) }));
     check(

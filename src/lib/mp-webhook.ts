@@ -68,6 +68,43 @@ export function manifiesto(dataId: string, requestId: string | null, ts: string)
   return partes.join("");
 }
 
+/** El `data.id` que entra al manifiesto sale de la query string, como en los ejemplos de la doc de MP
+ *  (`req.query['data.id']`), no del cuerpo ni del `id` del IPN viejo. */
+export function dataIdDeFirma(url: URL): string | null {
+  const id = url.searchParams.get("data.id")?.trim();
+  return id ? id : null;
+}
+
+/** IPN viejo (`?topic=payment&id=N`): según la doc de MP trae `x-signature` pero no se puede validar
+ *  con la clave secreta. */
+export function esIpn(url: URL): boolean {
+  return url.searchParams.has("topic") && !url.searchParams.has("data.id");
+}
+
+export type VerificacionFirma = "valida" | "invalida" | "sin-firma";
+
+/**
+ * "sin-firma" no es un rechazo: el IPN y los avisos sin `x-signature` llegan junto a la notificación
+ * firmada del mismo pago. "invalida" es una firma presente que no cierra con el secret.
+ */
+export function verificarFirma(url: URL, headers: Headers, secret: string | undefined): VerificacionFirma {
+  if (!secret) return "valida";
+  const cabecera = headers.get("x-signature");
+  if (!cabecera || esIpn(url)) return "sin-firma";
+  const firma = parsearFirma(cabecera);
+  const dataId = dataIdDeFirma(url);
+  if (!firma || !dataId) return "invalida";
+  return firmaValida(firmar(manifiesto(dataId, headers.get("x-request-id"), firma.ts), secret), firma.v1) ? "valida" : "invalida";
+}
+
+/** `ana.perez@gmail.com` → `an***@gmail.com`: alcanza para reconocer el caso en un log sin publicar el mail. */
+export function enmascararEmail(email: string | null | undefined): string {
+  const e = (email ?? "").trim();
+  const arroba = e.lastIndexOf("@");
+  if (arroba < 1) return e ? "***" : "(sin email)";
+  return `${e.slice(0, Math.min(2, arroba))}***${e.slice(arroba)}`;
+}
+
 /** HMAC-SHA256 hex del manifiesto con el secret del panel de MP. */
 export function firmar(manifest: string, secret: string): string {
   return createHmac("sha256", secret).update(manifest).digest("hex");
@@ -149,8 +186,9 @@ export type Venta = {
  * "SELECT y después INSERT" NO es atómico. Los ingresos del dashboard quedaron inflados en
  * $14.900 y, con la entrega colgada del mismo booleano, la compradora habría recibido dos mails.
  *
- * ARREGLO ESTRUCTURAL PENDIENTE: una columna `payment_id` con índice único en `revenue_events`
- * (migración). Mientras no exista, este código compensa la carrera después del hecho:
+ * ARREGLO ESTRUCTURAL: supabase/migrations/20261013120000_revenue_events_venta_unica.sql pone un
+ * índice único sobre la marca. Con el índice aplicado, el INSERT perdedor de la carrera recibe 409 y
+ * se toma como duplicado; sin él, este código compensa la carrera después del hecho:
  *
  *   1. SELECT por la marca (atajo barato para el reintento normal de MP, que llega segundos
  *      después y sí ve la fila).
@@ -217,7 +255,10 @@ export async function asentarUnaVez(
     cache: "no-store",
   });
   if (!res.ok) {
-    throw new Error(`Supabase insert ${res.status}: ${await res.text().catch(() => "")}`);
+    const detalle = await res.text().catch(() => "");
+    // 23505 = unique_violation: otro corredor ya asentó esta marca (índice de la migración 20261013).
+    if (res.status === 409 && detalle.includes("23505")) return { duplicado: true };
+    throw new Error(`Supabase insert ${res.status}: ${detalle}`);
   }
   const insertadas = (await res.json().catch(() => [])) as { id?: number }[];
   const miId = Array.isArray(insertadas) ? insertadas[0]?.id : undefined;

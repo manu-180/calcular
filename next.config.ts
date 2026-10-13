@@ -64,6 +64,7 @@ const REGLAS_HOSTS = reglasPorHost({
 });
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   ...(process.env.NODE_ENV === "development" && ORIGEN_INTL ? { allowedDevOrigins: [new URL(ORIGEN_INTL).hostname] } : {}),
   // Congela el "hoy" del build en server y cliente por igual: ver src/lib/hoy.ts.
   env: { CALCULAR_HOY_BUILD: HOY_BUILD },
@@ -127,7 +128,11 @@ const nextConfig: NextConfig = {
   async headers() {
     // En dev sobre http://localhost, upgrade-insecure-requests pasa a https los redirects de fetch.
     const upgrade = process.env.NODE_ENV === "production" ? "; upgrade-insecure-requests" : "";
+    // Sin preload a propósito: entrar a la lista de precarga de los navegadores no tiene vuelta atrás
+    // rápida y obliga a que todo subdominio presente y futuro tenga HTTPS.
+    const hsts = process.env.NODE_ENV === "production" ? [{ key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" }] : [];
     const base = [
+      ...hsts,
       { key: "X-Content-Type-Options", value: "nosniff" },
       { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
       { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
