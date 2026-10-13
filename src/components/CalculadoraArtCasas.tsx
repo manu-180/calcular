@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { calcularArtCasas, type Modalidad } from "@/lib/art-casas-particulares";
-import { ESCALA_VIGENTE, VIGENCIA } from "@/data/casas-particulares";
+import { escalaVigente, vigenciaCasas } from "@/data/casas-particulares";
 import { CONDICIONES, VIGENCIA_APORTES, type CondicionTrabajador } from "@/data/aportes-casas-particulares";
 import { VIGENCIA_ART } from "@/data/riesgos-trabajo";
 import { errorCantidad, errorMonto, parseDecimal, parseMonto, primerError } from "@/lib/formato";
@@ -38,7 +38,7 @@ export function CalculadoraArtCasas() {
   const [enElTrabajo, setEnElTrabajo] = useState(true);
   const [sueldo, setSueldo] = useState("");
 
-  const categoria = ESCALA_VIGENTE.find((c) => c.id === categoriaId);
+  const categoria = escalaVigente().find((c) => c.id === categoriaId);
   const admiteConRetiro = categoria?.mesConRetiro !== null;
   const modalidadEfectiva: Modalidad = admiteConRetiro ? modalidad : "sin-retiro";
 
@@ -78,7 +78,7 @@ export function CalculadoraArtCasas() {
             onChange={(ev) => setCategoriaId(ev.target.value)}
             className={claseInput}
           >
-            {ESCALA_VIGENTE.map((c) => (
+            {escalaVigente().map((c) => (
               <option key={c.id} value={c.id}>
                 {c.nombre}
               </option>
@@ -240,7 +240,7 @@ export function CalculadoraArtCasas() {
               <strong>{pesos(res.baseLegal)}</strong> por mes. Es el mínimo de{" "}
               {res.categoria.nombre.toLowerCase()}{" "}
               {res.modalidad === "sin-retiro" ? "sin retiro" : "con retiro"} de la{" "}
-              {VIGENCIA.resolucion}, vigente desde {VIGENCIA.desde}.
+              {vigenciaCasas().resolucion}, vigente desde {vigenciaCasas().desde}.
             </p>
           </div>
 

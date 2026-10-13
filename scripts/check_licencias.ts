@@ -14,7 +14,7 @@ import {
   ESTABILIDAD,
   EXCEDENCIA,
   LACTANCIA,
-  LICENCIAS_FUENTES,
+  licenciasFuentes,
   MATERNIDAD,
   PATERNIDAD,
 } from "../src/data/licencias";
@@ -206,13 +206,13 @@ check(
 // ===========================================================================
 check(
   "todas las fuentes tienen URL oficial",
-  LICENCIAS_FUENTES.lista.every((f) =>
+  licenciasFuentes().lista.every((f) =>
     /^https:\/\/(www\.)?(boletinoficial|servicios\.infoleg|infoleg|argentina|anses)\.gob\.ar\//.test(f.url),
   ),
-  LICENCIAS_FUENTES.lista.map((f) => f.url),
+  licenciasFuentes().lista.map((f) => f.url),
 );
-check("están citadas la LCT y la Ley 24.714", ["20.744", "24.714"].every((n) => LICENCIAS_FUENTES.lista.some((f) => f.nombre.includes(n))));
-check("la fecha de consulta es una fecha ISO", /^\d{4}-\d{2}-\d{2}$/.test(LICENCIAS_FUENTES.consultadoEl));
+check("están citadas la LCT y la Ley 24.714", ["20.744", "24.714"].every((n) => licenciasFuentes().lista.some((f) => f.nombre.includes(n))));
+check("la fecha de consulta es una fecha ISO", /^\d{4}-\d{2}-\d{2}$/.test(licenciasFuentes().consultadoEl));
 
 console.log("");
 if (fallas > 0) {

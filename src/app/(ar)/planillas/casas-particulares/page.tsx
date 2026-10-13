@@ -4,8 +4,8 @@ import { hojaCasas } from "@/components/oferta/hojas";
 import { datosOferta } from "@/lib/oferta";
 import {
   CASAS_PARTICULARES_FUENTES,
-  ESCALA_VIGENTE,
-  VIGENCIA,
+  escalaVigente,
+  vigenciaCasas,
 } from "@/data/casas-particulares";
 import { PRODUCTOS } from "@/lib/mp";
 import { openGraphDe } from "@/lib/seo";
@@ -31,23 +31,29 @@ const fechaLarga = (iso: string) => {
   return `${d} de ${meses[m - 1]} de ${a}`;
 };
 
-// Caso de la vista previa: el más común en las consultas — tareas generales, con retiro, unas
-// horas por semana. Sale del mismo armado que la oferta de /empleada-domestica (motores de esa
-// calculadora y de /aportes-empleada-domestica): la previa no puede mostrar un número que la
-// planilla no dé. Quien viene de la calculadora ve su propio caso en lugar de éste.
-const CATEGORIA = ESCALA_VIGENTE.find((c) => c.id === "tareas-generales")!;
-const HORAS = 20;
-const EJEMPLO = hojaCasas(datosOferta("planilla-casas-particulares").archivo, {
-  mesId: VIGENCIA.mesId,
-  categoriaId: CATEGORIA.id,
-  modalidad: "con-retiro",
-  horasSemanales: HORAS,
-  zonaDesfavorable: false,
-  extrasComunes: 0,
-  extrasFinDeSemana: 0,
-})!;
+function datosDelMes() {
+  // Caso de la vista previa: el más común en las consultas — tareas generales, con retiro, unas
+  // horas por semana. Sale del mismo armado que la oferta de /empleada-domestica (motores de esa
+  // calculadora y de /aportes-empleada-domestica): la previa no puede mostrar un número que la
+  // planilla no dé. Quien viene de la calculadora ve su propio caso en lugar de éste.
+  const CATEGORIA = escalaVigente().find((c) => c.id === "tareas-generales")!;
+  const HORAS = 20;
+  const EJEMPLO = hojaCasas(datosOferta("planilla-casas-particulares").archivo, {
+    mesId: vigenciaCasas().mesId,
+    categoriaId: CATEGORIA.id,
+    modalidad: "con-retiro",
+    horasSemanales: HORAS,
+    zonaDesfavorable: false,
+    extrasComunes: 0,
+    extrasFinDeSemana: 0,
+  })!;
+  return { CATEGORIA, HORAS, EJEMPLO };
+}
+
+type DatosDelMes = ReturnType<typeof datosDelMes>;
 
 export default function PlanillaCasasPage() {
+  const { CATEGORIA, HORAS, EJEMPLO } = datosDelMes();
   return (
     <PlanillaLanding
       producto={PRODUCTO}
@@ -70,7 +76,7 @@ export default function PlanillaCasasPage() {
           año incluidas y 7 días para pedir la devolución si no te sirve.
         </p>
       }
-      previewTitulo={`${CATEGORIA.nombre} · con retiro · ${HORAS} h por semana · ${VIGENCIA.vigenteEn}`}
+      previewTitulo={`${CATEGORIA.nombre} · con retiro · ${HORAS} h por semana · ${vigenciaCasas().vigenteEn}`}
       previewSubtitulo="Cambiás la categoría, las horas, el mes o sumás horas extras y todo se recalcula solo."
       hoja={EJEMPLO.hoja}
       calculadoraGratis={{ href: "/empleada-domestica", texto: "Probar la calculadora gratis de sueldo de empleada doméstica" }}
@@ -92,7 +98,7 @@ export default function PlanillaCasasPage() {
         },
         {
           titulo: "Escala, aportes y fuentes",
-          descripcion: `Las ${ESCALA_VIGENTE.length} categorías con y sin retiro, por hora y por mes, de agosto a ${VIGENCIA.ultimoMesPublicado}; la tabla de ARCA de aportes, contribuciones y ART; y el link a cada documento oficial.`,
+          descripcion: `Las ${escalaVigente().length} categorías con y sin retiro, por hora y por mes, de agosto a ${vigenciaCasas().ultimoMesPublicado}; la tabla de ARCA de aportes, contribuciones y ART; y el link a cada documento oficial.`,
         },
       ]}
       fuente={{
@@ -101,7 +107,7 @@ export default function PlanillaCasasPage() {
         verificadoEl: fechaLarga(CASAS_PARTICULARES_FUENTES.consultadoEl),
       }}
       tituloActualizacion="Qué pasa cuando cambia la escala"
-      actualizacion={`La escala de casas particulares la fija la Comisión Nacional de Trabajo en Casas Particulares, y la vigente llega hasta ${VIGENCIA.ultimoMesPublicado}. Cuando sale la resolución siguiente (y cada mes, cuando ARCA publica la tabla de aportes), la cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
+      actualizacion={`La escala de casas particulares la fija la Comisión Nacional de Trabajo en Casas Particulares, y la vigente llega hasta ${vigenciaCasas().ultimoMesPublicado}. Cuando sale la resolución siguiente (y cada mes, cuando ARCA publica la tabla de aportes), la cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
       faqs={[
         {
           q: "¿Cómo la recibo?",

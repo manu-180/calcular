@@ -5,6 +5,7 @@ import Link from "next/link";
 import { calcularMonoOS } from "@/lib/obra-social-monotributo";
 import { CATEGORIAS } from "@/data/monotributo";
 import { MESES_PARA_CAMBIAR, REPARTO_MONOTRIBUTO } from "@/data/obra-social-monotributo";
+import { hoyAR } from "@/lib/hoy";
 
 const claseInput =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
@@ -28,11 +29,9 @@ function pesos(n: number): string {
   });
 }
 
-const HOY = new Date().toISOString().slice(0, 10);
-
 export function CalculadoraObraSocialMonotributo() {
-  const [adhesion, setAdhesion] = useState(HOY);
-  const [hoy, setHoy] = useState(HOY);
+  const [adhesion, setAdhesion] = useState(hoyAR);
+  const [hoy, setHoy] = useState(hoyAR);
   const [categoria, setCategoria] = useState("A");
   const [anterior, setAnterior] = useState(false);
 

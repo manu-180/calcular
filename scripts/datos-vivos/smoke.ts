@@ -6,8 +6,8 @@
 // Lo corre .github/workflows/post-deploy.yml cuando Vercel avisa que terminó un deploy de producción.
 // USO: npx -y tsx scripts/datos-vivos/smoke.ts [--base https://calcular.ar]
 
-import { PRESTACIONES_VIGENTES, BONO_VIGENTE } from "../../src/data/prestaciones";
-import { ASIGNACIONES_VIGENTES } from "../../src/data/asignaciones";
+import { prestacionesVigentes, bonoVigente } from "../../src/data/prestaciones";
+import { asignacionesVigentes } from "../../src/data/asignaciones";
 import { MESES_UOCRA } from "../../src/data/convenios/uocra";
 import { periodoDeMes, vigenteEn } from "../../src/lib/hoy";
 
@@ -27,8 +27,8 @@ const CASOS: Caso[] = [
   { ruta: "/aguinaldo" },
   { ruta: "/planillas" },
   { ruta: "/sitemap.xml", debeContener: ["<loc>"] },
-  { ruta: "/jubilacion", debeContener: [PRESTACIONES_VIGENTES.resolucion.replace("Resolución ANSES ", ""), BONO_VIGENTE.norma, miles(PRESTACIONES_VIGENTES.haberMinimo)] },
-  { ruta: "/asignaciones-familiares", debeContener: [ASIGNACIONES_VIGENTES.resolucion.replace("Resolución ANSES ", ""), miles(ASIGNACIONES_VIGENTES.universales.hijo.general)] },
+  { ruta: "/jubilacion", debeContener: [prestacionesVigentes().resolucion.replace("Resolución ANSES ", ""), bonoVigente().norma, miles(prestacionesVigentes().haberMinimo)] },
+  { ruta: "/asignaciones-familiares", debeContener: [asignacionesVigentes().resolucion.replace("Resolución ANSES ", ""), miles(asignacionesVigentes().universales.hijo.general)] },
   { ruta: "/convenios/uocra", debeContener: [UOCRA.etiqueta.toLowerCase(), miles(UOCRA.jornales.oficial.a)] },
 ];
 
@@ -57,7 +57,7 @@ async function main(): Promise<void> {
     console.error(`\n🔴 Smoke en vivo con ${fallas.length} falla(s):\n- ${fallas.join("\n- ")}`);
     process.exit(1);
   }
-  console.log(`\n✓ ${BASE} sirve el dato vigente (${PRESTACIONES_VIGENTES.vigencia}).`);
+  console.log(`\n✓ ${BASE} sirve el dato vigente (${prestacionesVigentes().vigencia}).`);
 }
 
 main();

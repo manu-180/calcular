@@ -28,9 +28,9 @@ const etiquetaPeriodo = (periodo: string) => {
 };
 
 const PERIODOS = [...SMVM_SERIE].reverse();
-const PERIODO_VIGENTE = smvmVigente().mes.periodo;
 
 export function CalculadoraGarantia82() {
+  const PERIODO_VIGENTE = smvmVigente().mes.periodo;
   const [periodo, setPeriodo] = useState(PERIODO_VIGENTE);
   const [universoId, setUniversoId] = useState(UNIVERSOS[0].id);
   const [haber, setHaber] = useState("");

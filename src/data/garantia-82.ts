@@ -33,7 +33,7 @@
 // LA ESCALA DEL SMVM NO VIVE ACÁ: vive en `SMVM_SERIE` de `desempleo.ts`, y el haber mínimo en
 // `prestaciones.ts` / `jubilaciones.ts`. Acá no se copia ni un monto: se copian REGLAS.
 
-import { PRESTACIONES_VIGENTES } from "./prestaciones";
+import { prestacionesVigentes } from "./prestaciones";
 
 /** Art. 125 bis: la garantía es el 82% del SMVM vigente en cada período. */
 export const FACTOR_GARANTIA = 0.82;
@@ -142,38 +142,40 @@ export const MORATORIAS_EXCLUIDAS = [
 
 export type FuenteGarantia = { nombre: string; url: string; detalle: string };
 
-export const GARANTIA_82_FUENTES: { consultadoEl: string; lista: FuenteGarantia[] } = {
-  consultadoEl: "2026-09-03",
-  lista: [
-    {
-      nombre: "Ley 24.241, arts. 125 y 125 bis, texto actualizado (InfoLEG)",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/639/texact.htm",
-      detalle:
-        "El art. 125 bis fue incorporado por el art. 5º de la Ley 27.426 (B.O. 28/12/2017) y no fue sustituido desde entonces. Es el texto del que salen el 82%, los treinta años de aportes efectivos y la exclusión de las moratorias.",
-    },
-    {
-      nombre: "Resolución 25-E/2017: Secretaría de Seguridad Social (texto actualizado, InfoLEG)",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/305000-309999/305749/texact.htm",
-      detalle:
-        "B.O. 11/1/2018. Reglamenta el art. 125 bis con vigencia desde el 1º de enero de 2018. Su art. 2º extiende la garantía a regímenes que exigen menos de treinta años. Los incisos h) e i) (incorporados por la Res. SSS 3/2018, B.O. 20/2/2018) fijan los niveles de los beneficios vinculados a la Guerra del Atlántico Sur.",
-    },
-    {
-      nombre: "Ley 23.848 y Decreto 1357/2004: pensión de guerra del Atlántico Sur (InfoLEG)",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/248/texact.htm",
-      detalle:
-        "El art. 1º (texto según Ley 24.652) fija la pensión en el 100% de la remuneración del grado de cabo del Ejército Argentino; la nota del texto actualizado recoge el Decreto 1357/2004, que puso el otorgamiento y pago a cargo de ANSES y su monto en TRES veces el haber mínimo del Régimen Previsional Público. El art. 3º la declara compatible con cualquier otro beneficio previsional permanente nacional, provincial o municipal.",
-    },
-    {
-      nombre: "Resolución 4/2026: Consejo Nacional del Empleo, la Productividad y el SMVM",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346775/20260902",
-      detalle:
-        "B.O. 2/9/2026: laudo que fija el salario mínimo mes a mes desde septiembre de 2026 hasta abril de 2027. Es el valor sobre el que se calcula el 82%.",
-    },
-    {
-      nombre: `${PRESTACIONES_VIGENTES.resolucion}: haber mínimo garantizado de ${PRESTACIONES_VIGENTES.vigencia}`,
-      url: PRESTACIONES_VIGENTES.resolucionUrl,
-      detalle:
-        `${PRESTACIONES_VIGENTES.resolucionBO}: el haber mínimo del art. 125, que es el piso que hoy efectivamente cubre a todo el mundo y está por encima del nivel del art. 125 bis.`,
-    },
-  ],
-};
+export function garantia82Fuentes(): { consultadoEl: string; lista: FuenteGarantia[] } {
+  return {
+    consultadoEl: "2026-09-03",
+    lista: [
+      {
+        nombre: "Ley 24.241, arts. 125 y 125 bis, texto actualizado (InfoLEG)",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/639/texact.htm",
+        detalle:
+          "El art. 125 bis fue incorporado por el art. 5º de la Ley 27.426 (B.O. 28/12/2017) y no fue sustituido desde entonces. Es el texto del que salen el 82%, los treinta años de aportes efectivos y la exclusión de las moratorias.",
+      },
+      {
+        nombre: "Resolución 25-E/2017: Secretaría de Seguridad Social (texto actualizado, InfoLEG)",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/305000-309999/305749/texact.htm",
+        detalle:
+          "B.O. 11/1/2018. Reglamenta el art. 125 bis con vigencia desde el 1º de enero de 2018. Su art. 2º extiende la garantía a regímenes que exigen menos de treinta años. Los incisos h) e i) (incorporados por la Res. SSS 3/2018, B.O. 20/2/2018) fijan los niveles de los beneficios vinculados a la Guerra del Atlántico Sur.",
+      },
+      {
+        nombre: "Ley 23.848 y Decreto 1357/2004: pensión de guerra del Atlántico Sur (InfoLEG)",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/248/texact.htm",
+        detalle:
+          "El art. 1º (texto según Ley 24.652) fija la pensión en el 100% de la remuneración del grado de cabo del Ejército Argentino; la nota del texto actualizado recoge el Decreto 1357/2004, que puso el otorgamiento y pago a cargo de ANSES y su monto en TRES veces el haber mínimo del Régimen Previsional Público. El art. 3º la declara compatible con cualquier otro beneficio previsional permanente nacional, provincial o municipal.",
+      },
+      {
+        nombre: "Resolución 4/2026: Consejo Nacional del Empleo, la Productividad y el SMVM",
+        url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/346775/20260902",
+        detalle:
+          "B.O. 2/9/2026: laudo que fija el salario mínimo mes a mes desde septiembre de 2026 hasta abril de 2027. Es el valor sobre el que se calcula el 82%.",
+      },
+      {
+        nombre: `${prestacionesVigentes().resolucion}: haber mínimo garantizado de ${prestacionesVigentes().vigencia}`,
+        url: prestacionesVigentes().resolucionUrl,
+        detalle:
+          `${prestacionesVigentes().resolucionBO}: el haber mínimo del art. 125, que es el piso que hoy efectivamente cubre a todo el mundo y está por encima del nivel del art. 125 bis.`,
+      },
+    ],
+  };
+}

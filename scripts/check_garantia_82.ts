@@ -18,11 +18,11 @@
 
 import { SMVM_SERIE } from "../src/data/desempleo";
 import { HABER_MINIMO_SERIE, HABER_MINIMO_ULTIMO } from "../src/data/jubilaciones";
-import { PRESTACIONES_VIGENTES } from "../src/data/prestaciones";
+import { prestacionesVigentes } from "../src/data/prestaciones";
 import {
   ANIOS_SERVICIOS,
   FACTOR_GARANTIA,
-  GARANTIA_82_FUENTES,
+  garantia82Fuentes,
   GARANTIA_82_TEXTOS,
   MORATORIAS_EXCLUIDAS,
   UNIVERSOS,
@@ -239,12 +239,12 @@ check(
 {
   const p = smvmVigente().mes.periodo;
   const nivel = nivelGarantizado(p);
-  const minimo = PRESTACIONES_VIGENTES.haberMinimo;
+  const minimo = prestacionesVigentes().haberMinimo;
 
   check(
     "prestaciones.ts y la serie de haberes coinciden en el mes vigente (fuente única)",
-    casi(haberMinimoDe(PRESTACIONES_VIGENTES.periodo) ?? -1, minimo),
-    { serie: haberMinimoDe(PRESTACIONES_VIGENTES.periodo), prestaciones: minimo },
+    casi(haberMinimoDe(prestacionesVigentes().periodo) ?? -1, minimo),
+    { serie: haberMinimoDe(prestacionesVigentes().periodo), prestaciones: minimo },
   );
 
   // NO es un fallo si se da vuelta: es un aviso para reescribir la página. Fallar acá sería
@@ -323,31 +323,31 @@ check(
 // ===========================================================================
 check(
   "todas las fuentes son oficiales (boletinoficial / infoleg)",
-  GARANTIA_82_FUENTES.lista.every((f) =>
+  garantia82Fuentes().lista.every((f) =>
     /^https:\/\/(www\.)?(boletinoficial|servicios\.infoleg)\.gob\.ar\//.test(f.url),
   ),
-  GARANTIA_82_FUENTES.lista.map((f) => f.url),
+  garantia82Fuentes().lista.map((f) => f.url),
 );
 check(
   "la primera fuente es el texto actualizado de la Ley 24.241",
-  GARANTIA_82_FUENTES.lista[0].url.includes("/0-4999/639/texact.htm"),
+  garantia82Fuentes().lista[0].url.includes("/0-4999/639/texact.htm"),
 );
 check(
   "está citada la reglamentación (Res. SSS 25-E/2017, InfoLEG 305749)",
-  GARANTIA_82_FUENTES.lista.some((f) => f.url.includes("305749")),
+  garantia82Fuentes().lista.some((f) => f.url.includes("305749")),
 );
 check(
   "está citada la Ley 23.848 / Dec. 1357/2004, de donde sale el piso triple",
-  GARANTIA_82_FUENTES.lista.some((f) => f.url.includes("/0-4999/248/texact.htm")),
+  garantia82Fuentes().lista.some((f) => f.url.includes("/0-4999/248/texact.htm")),
 );
 check(
   "está citada la resolución del SMVM vigente y la de haberes de ANSES",
-  GARANTIA_82_FUENTES.lista.some((f) => f.url.includes("346775")) &&
-    GARANTIA_82_FUENTES.lista.some((f) => f.url === PRESTACIONES_VIGENTES.resolucionUrl),
+  garantia82Fuentes().lista.some((f) => f.url.includes("346775")) &&
+    garantia82Fuentes().lista.some((f) => f.url === prestacionesVigentes().resolucionUrl),
 );
 check(
   "la fecha de consulta es una fecha ISO",
-  /^\d{4}-\d{2}-\d{2}$/.test(GARANTIA_82_FUENTES.consultadoEl),
+  /^\d{4}-\d{2}-\d{2}$/.test(garantia82Fuentes().consultadoEl),
 );
 
 console.log("");
@@ -357,6 +357,6 @@ if (fallas > 0) {
 } else {
   const p = smvmVigente().mes.periodo;
   console.log(
-    `Todos los checks de la garantía del 82% OK (Ley 24.241 art. 125 bis · Res. SSS 25-E/2017 · ${p}: nivel ${nivelGarantizado(p)} vs haber mínimo ${PRESTACIONES_VIGENTES.haberMinimo}).`,
+    `Todos los checks de la garantía del 82% OK (Ley 24.241 art. 125 bis · Res. SSS 25-E/2017 · ${p}: nivel ${nivelGarantizado(p)} vs haber mínimo ${prestacionesVigentes().haberMinimo}).`,
   );
 }

@@ -41,9 +41,9 @@ const PERIODOS = [...SMVM_SERIE].reverse();
 
 // El mes que arranca seleccionado es el VIGENTE, no el último de la escala: desde la Res. 4/2026
 // el SMVM está fijado hasta abril de 2027 y "el último" es un mes que todavía no llegó.
-const PERIODO_VIGENTE = smvmVigente().mes.periodo;
 
 export function CalculadoraDescuentos({ oferta }: { oferta?: DatosOferta }) {
+  const PERIODO_VIGENTE = smvmVigente().mes.periodo;
   const [bruto, setBruto] = useState("1.200.000");
   const [tocado, setTocado] = useState(false);
   const [periodo, setPeriodo] = useState(PERIODO_VIGENTE);

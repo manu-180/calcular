@@ -10,7 +10,7 @@ import {
   APORTE_TRABAJADOR,
   ART_19_BIS,
   CONTRIBUCION_EMPLEADOR,
-  OBRA_SOCIAL_FUENTES,
+  obraSocialFuentes,
   OBRA_SOCIAL_TEXTOS,
   REPARTO_ANTERIOR,
   REPARTO_VIGENTE,
@@ -94,7 +94,7 @@ export default function Page() {
         descripcion:
           "El reparto 85/15 del artículo 19 de la Ley 23.660 según el Decreto 600/2024, con la calculadora de cuánto llega a la entidad y cuánto queda de bolsillo, y la letra chica que saca las protecciones de admisión a las prepagas que actúan como agentes del seguro.",
         url: "/derivar-aportes-a-prepaga",
-        modificado: OBRA_SOCIAL_FUENTES.consultadoEl,
+        modificado: obraSocialFuentes().consultadoEl,
       }),
       {
         "@type": "FAQPage",
@@ -126,12 +126,12 @@ export default function Page() {
       </header>
 
       <SelloVerificado
-        verificadoEl={OBRA_SOCIAL_FUENTES.consultadoEl}
+        verificadoEl={obraSocialFuentes().consultadoEl}
         norma="Ley 23.660, art. 19 (texto del Decreto 600/2024)"
-        fuente={OBRA_SOCIAL_FUENTES.principal}
+        fuente={obraSocialFuentes().principal}
       />
 
-      <RespuestaPrimero actualizado={OBRA_SOCIAL_FUENTES.consultadoEl}>
+      <RespuestaPrimero actualizado={obraSocialFuentes().consultadoEl}>
         <p>
           <strong>
             El {pct(REPARTO_VIGENTE.entidad)} de tus aportes va a la entidad que elegiste y el{" "}
@@ -371,7 +371,7 @@ export default function Page() {
       <section className="space-y-3 text-sm text-zinc-600">
         <h2 className="text-xl font-bold text-zinc-900">Fuentes</h2>
         <ul className="list-disc space-y-1.5 pl-5">
-          {OBRA_SOCIAL_FUENTES.lista.map((f) => (
+          {obraSocialFuentes().lista.map((f) => (
             <li key={f.url}>
               <a
                 href={f.url}
@@ -400,7 +400,7 @@ export default function Page() {
           <Link href="/descuentos-del-sueldo" className="text-emerald-700 hover:underline">
             de descuentos del sueldo
           </Link>
-          . Consultada el {OBRA_SOCIAL_FUENTES.consultadoEl}.
+          . Consultada el {obraSocialFuentes().consultadoEl}.
         </p>
       </section>
     </article>

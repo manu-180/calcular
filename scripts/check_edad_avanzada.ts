@@ -14,10 +14,10 @@
 import {
   PEA,
   PEA_CARACTERES,
-  PEA_FUENTES,
+  peaFuentes,
   PEA_REQUISITOS,
 } from "../src/data/edad-avanzada";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES as V } from "../src/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "../src/data/prestaciones";
 import {
   evaluarPea,
   haberPea,
@@ -25,6 +25,8 @@ import {
   promedioParaSuperarElMinimo,
   type SituacionPea,
 } from "../src/lib/edad-avanzada";
+
+const V = prestacionesVigentes();
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -251,8 +253,8 @@ check(
 );
 check(
   "quien cobra el mínimo se lleva el bono completo del mes",
-  sinPromedio.bono === BONO_VIGENTE.monto,
-  { bono: sinPromedio.bono, esperado: BONO_VIGENTE.monto },
+  sinPromedio.bono === bonoVigente().monto,
+  { bono: sinPromedio.bono, esperado: bonoVigente().monto },
 );
 check(
   "el total es haber + bono",
@@ -284,19 +286,19 @@ check(
 );
 check(
   "se cita el texto actualizado de la Ley 24.241 en InfoLEG",
-  PEA_FUENTES.lista.some((f) => f.url.includes("infoleg.gob.ar") && f.url.includes("texact")),
+  peaFuentes().lista.some((f) => f.url.includes("infoleg.gob.ar") && f.url.includes("texact")),
 );
 check(
   "se cita la cartilla oficial de ANSES (el control cruzado del requisito extra)",
-  PEA_FUENTES.lista.some((f) => f.url.includes("anses.gob.ar") && f.url.includes("cartilla")),
+  peaFuentes().lista.some((f) => f.url.includes("anses.gob.ar") && f.url.includes("cartilla")),
 );
 check(
   "se cita la resolución del mes vigente",
-  PEA_FUENTES.lista.some((f) => f.url === V.resolucionUrl),
+  peaFuentes().lista.some((f) => f.url === V.resolucionUrl),
 );
 check(
   "la fecha de consulta tiene formato ISO",
-  /^\d{4}-\d{2}-\d{2}$/.test(PEA_FUENTES.consultadoEl),
+  /^\d{4}-\d{2}-\d{2}$/.test(peaFuentes().consultadoEl),
 );
 
 console.log(

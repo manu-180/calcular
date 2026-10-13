@@ -37,26 +37,31 @@ export const metadata: Metadata = {
 
 // El mes que se muestra es el que se liquida hoy, o el último con planilla firmada si la escala
 // siguiente todavía no salió (src/lib/hoy.ts). Nunca un mes fijo escrito a mano.
-const MES = vigenteEn(MESES_CAMIONEROS, periodoDeMes);
-const MES_TXT = MES.etiqueta.toLowerCase();
-const PRIMERO = MESES_CAMIONEROS[0];
-const ULTIMO = MESES_CAMIONEROS[MESES_CAMIONEROS.length - 1];
-const CHOFER1_MES = basicoCamioneros(MES.id, "chofer-primera")!;
-const CHOFER1_NETO = calcularCamioneros({ mesId: MES.id, categoriaId: "chofer-primera", aniosAntiguedad: 0 })!.neto;
-// Variación real del básico del Chofer de Primera mes a mes, leída de las planillas firmadas. En
-// marzo no hay planilla anterior cargada: se muestra el tramo del acuerdo (+2,0%).
-const VARIACION: Record<string, string> = Object.fromEntries(
-  MESES_CAMIONEROS.map((m, i) => {
-    if (i === 0) return [m.id, "+2,0%"];
-    const v = basicoCamioneros(m.id, "chofer-primera")! / basicoCamioneros(MESES_CAMIONEROS[i - 1].id, "chofer-primera")! - 1;
-    return [m.id, `+${(v * 100).toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 2 })}%`];
-  }),
-);
-const ACUMULADO = (
-  (basicoCamioneros(ULTIMO.id, "chofer-primera")! / basicoCamioneros(PRIMERO.id, "chofer-primera")!) * 1.02 - 1
-) * 100;
+function datosDelMes() {
+  const MES = vigenteEn(MESES_CAMIONEROS, periodoDeMes);
+  const MES_TXT = MES.etiqueta.toLowerCase();
+  const PRIMERO = MESES_CAMIONEROS[0];
+  const ULTIMO = MESES_CAMIONEROS[MESES_CAMIONEROS.length - 1];
+  const CHOFER1_MES = basicoCamioneros(MES.id, "chofer-primera")!;
+  const CHOFER1_NETO = calcularCamioneros({ mesId: MES.id, categoriaId: "chofer-primera", aniosAntiguedad: 0 })!.neto;
+  // Variación real del básico del Chofer de Primera mes a mes, leída de las planillas firmadas. En
+  // marzo no hay planilla anterior cargada: se muestra el tramo del acuerdo (+2,0%).
+  const VARIACION: Record<string, string> = Object.fromEntries(
+    MESES_CAMIONEROS.map((m, i) => {
+      if (i === 0) return [m.id, "+2,0%"];
+      const v = basicoCamioneros(m.id, "chofer-primera")! / basicoCamioneros(MESES_CAMIONEROS[i - 1].id, "chofer-primera")! - 1;
+      return [m.id, `+${(v * 100).toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 2 })}%`];
+    }),
+  );
+  const ACUMULADO = (
+    (basicoCamioneros(ULTIMO.id, "chofer-primera")! / basicoCamioneros(PRIMERO.id, "chofer-primera")!) * 1.02 - 1
+  ) * 100;
+  return { MES, MES_TXT, PRIMERO, ULTIMO, CHOFER1_MES, CHOFER1_NETO, VARIACION, ACUMULADO };
+}
 
-const faqs = [
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const crearFaqs = ({ MES_TXT, ULTIMO, CHOFER1_MES, CHOFER1_NETO, ACUMULADO }: DatosDelMes) => [
   {
     q: `¿Cuánto cobra un Chofer de Primera en ${MES_TXT}?`,
     a: `El básico de un Chofer de Primera en ${MES_TXT} es ${formatARS(CHOFER1_MES, 0)}, según la escala del CCT 40/89 (acuerdos homologados por las Disposiciones DNRyRT 455/2026 y 1277/2026). A eso se suma la antigüedad: 1% del básico por cada año. Después de descontar el 17% de aportes de ley, te quedan unos ${formatARS(CHOFER1_NETO, 0)} en mano.`,
@@ -93,6 +98,9 @@ const VERIFICADO_EL = new Intl.DateTimeFormat("es-AR", { dateStyle: "long" }).fo
 );
 
 export default function CamionerosPage() {
+  const datos = datosDelMes();
+  const { MES, MES_TXT, ULTIMO, CHOFER1_MES, CHOFER1_NETO, VARIACION, ACUMULADO } = datos;
+  const faqs = crearFaqs(datos);
   const junio = MES;
   const junioChofer1 = CHOFER1_MES;
   const junioAyudante = basicoCamioneros(MES.id, "ayudante-mayor")!;

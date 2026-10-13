@@ -13,6 +13,7 @@ import {
 import { textoProximaParitaria } from "@/lib/convenios";
 import { PRODUCTOS } from "@/lib/mp";
 import { openGraphDe } from "@/lib/seo";
+import { hoyAR } from "@/lib/hoy";
 
 export const metadata: Metadata = {
   title: "Planilla de sueldos UOCRA 2026 en Excel (CCT 76/75)",
@@ -103,7 +104,7 @@ export default function PlanillaUocraPage() {
         url: UOCRA_FUENTES.anexoTramo2.url,
         verificadoEl: UOCRA_FUENTES.consultadoEl,
       }}
-      actualizacion={`En la construcción las escalas se renegocian por tramos, así que la tabla cambia varias veces al año. ${textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, new Date().toISOString().slice(0, 10))} Cuando se firme y se publique el anexo con las tablas, las cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
+      actualizacion={`En la construcción las escalas se renegocian por tramos, así que la tabla cambia varias veces al año. ${textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, hoyAR())} Cuando se firme y se publique el anexo con las tablas, las cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
       faqs={[
         {
           q: "¿Cómo la recibo?",

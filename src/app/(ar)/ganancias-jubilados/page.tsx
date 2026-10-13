@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { DEDUCCIONES } from "@/data/ganancias";
-import { PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { prestacionesVigentes } from "@/data/prestaciones";
 import { ANIO_JUBILADOS, JUBILADOS_FUENTES, JUBILADOS_TEXTOS } from "@/data/ganancias-jubilados";
 import {
   DEDUCCIONES_A_Y_C,
@@ -15,26 +15,31 @@ import {
 } from "@/lib/ganancias-jubilados";
 import { formatARS } from "@/lib/formato";
 
-const BASE = calcularGananciasJubilados({ haberBruto: 3_500_000 });
-const CON_CONYUGE = calcularGananciasJubilados({ haberBruto: 3_500_000, conyuge: true });
-const SIN_ESPECIFICA = calcularGananciasJubilados({ haberBruto: 3_500_000, bienesPersonales: true });
-const MAXIMO = calcularGananciasJubilados({ haberBruto: PRESTACIONES_VIGENTES.haberMaximo });
-const MAXIMO_SIN = calcularGananciasJubilados({ haberBruto: PRESTACIONES_VIGENTES.haberMaximo, bienesPersonales: true });
-const MESES = haberesMinimosProyectados();
-const ESPECIFICA = deduccionEspecificaAnual();
-const MESES_NOMBRE = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-const ULTIMO_PUBLICADO = MESES.filter((m) => m.publicado).at(-1)!;
-const mesDe = (p: string) => MESES_NOMBRE[Number(p.slice(5, 7)) - 1];
-const veces = (n: number) => n.toLocaleString("es-AR", { maximumFractionDigits: 1 });
+function datosDelMes() {
+  const BASE = calcularGananciasJubilados({ haberBruto: 3_500_000 });
+  const CON_CONYUGE = calcularGananciasJubilados({ haberBruto: 3_500_000, conyuge: true });
+  const SIN_ESPECIFICA = calcularGananciasJubilados({ haberBruto: 3_500_000, bienesPersonales: true });
+  const MAXIMO = calcularGananciasJubilados({ haberBruto: prestacionesVigentes().haberMaximo });
+  const MAXIMO_SIN = calcularGananciasJubilados({ haberBruto: prestacionesVigentes().haberMaximo, bienesPersonales: true });
+  const MESES = haberesMinimosProyectados();
+  const ESPECIFICA = deduccionEspecificaAnual();
+  const MESES_NOMBRE = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  const ULTIMO_PUBLICADO = MESES.filter((m) => m.publicado).at(-1)!;
+  const mesDe = (p: string) => MESES_NOMBRE[Number(p.slice(5, 7)) - 1];
+  const veces = (n: number) => n.toLocaleString("es-AR", { maximumFractionDigits: 1 });
 
-const UMBRAL = formatARS(BASE.umbralHaber, 0);
-const HABER_MAXIMO = formatARS(PRESTACIONES_VIGENTES.haberMaximo, 2);
+  const UMBRAL = formatARS(BASE.umbralHaber, 0);
+  const HABER_MAXIMO = formatARS(prestacionesVigentes().haberMaximo, 2);
 
-const FRASE_MAXIMO = MAXIMO.pagaGanancias
-  ? `Con el haber máximo del régimen general (${HABER_MAXIMO}) ya se paga Ganancias.`
-  : `Con el haber máximo del régimen general (${HABER_MAXIMO}) no se paga Ganancias: el umbral está más arriba.`;
+  const FRASE_MAXIMO = MAXIMO.pagaGanancias
+    ? `Con el haber máximo del régimen general (${HABER_MAXIMO}) ya se paga Ganancias.`
+    : `Con el haber máximo del régimen general (${HABER_MAXIMO}) no se paga Ganancias: el umbral está más arriba.`;
+  return { BASE, CON_CONYUGE, SIN_ESPECIFICA, MAXIMO, MAXIMO_SIN, MESES, ESPECIFICA, MESES_NOMBRE, ULTIMO_PUBLICADO, mesDe, veces, UMBRAL, HABER_MAXIMO, FRASE_MAXIMO };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ UMBRAL }: DatosDelMes): Metadata => ({
   title: `Ganancias de jubilados ${ANIO_JUBILADOS}: desde cuánto pagan`,
   description: `Desde qué haber bruto paga Ganancias un jubilado en ${ANIO_JUBILADOS}, cómo pesan la deducción de 8 haberes mínimos y las cargas de familia. Calculá tu caso.`,
   alternates: { canonical: "/ganancias-jubilados" },
@@ -47,9 +52,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ BASE, CON_CONYUGE, SIN_ESPECIFICA, MAXIMO, MAXIMO_SIN, ULTIMO_PUBLICADO, mesDe, veces, UMBRAL, FRASE_MAXIMO }: DatosDelMes) => [
   {
     q: `¿Desde cuánto pagan Ganancias los jubilados en ${ANIO_JUBILADOS}?`,
     a: `Sin cónyuge ni hijos a cargo, desde un haber bruto de ${UMBRAL} por mes. Son ${veces(BASE.umbralEnHaberesMinimos)} haberes mínimos de ${mesDe(ULTIMO_PUBLICADO.periodo)}. Con cónyuge a cargo, desde ${formatARS(CON_CONYUGE.umbralHaber, 0)}. La cuenta es anual: 13 haberes (el aguinaldo también paga) menos el aporte a PAMI y menos la deducción específica, que suma ocho veces el haber mínimo de cada mes del año.`,
@@ -89,6 +98,9 @@ const faqs = [
 ];
 
 export default function GananciasJubiladosPage() {
+  const datos = datosDelMes();
+  const { BASE, CON_CONYUGE, SIN_ESPECIFICA, MAXIMO, MAXIMO_SIN, MESES, ESPECIFICA, ULTIMO_PUBLICADO, mesDe, veces, UMBRAL, FRASE_MAXIMO } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -184,7 +196,7 @@ export default function GananciasJubiladosPage() {
         </div>
         <p className="text-sm text-zinc-500">
           Los meses marcados como estimados repiten el haber mínimo de {mesDe(ULTIMO_PUBLICADO.periodo)} (
-          {formatARS(ULTIMO_PUBLICADO.haberMinimo, 2)}, {PRESTACIONES_VIGENTES.resolucion}). Cuando ANSES fije el
+          {formatARS(ULTIMO_PUBLICADO.haberMinimo, 2)}, {prestacionesVigentes().resolucion}). Cuando ANSES fije el
           siguiente, la tabla se actualiza sola y la deducción sube.
         </p>
       </section>

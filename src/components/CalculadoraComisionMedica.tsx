@@ -8,6 +8,7 @@ import {
   DIAS_PAGO_HOMOLOGACION,
   PLAZO_DICTAMEN_HABILES,
 } from "@/data/comision-medica";
+import { hoyAR } from "@/lib/hoy";
 
 const claseInput =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
@@ -22,8 +23,6 @@ function fechaLarga(iso: string): string {
   return `${Number(d)} de ${MESES[Number(m) - 1]} de ${a}`;
 }
 
-const HOY = new Date().toISOString().slice(0, 10);
-
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50 text-emerald-950",
   atencion: "border-amber-200 bg-amber-50 text-amber-950",
@@ -31,8 +30,8 @@ const TONOS = {
 } as const;
 
 export function CalculadoraComisionMedica() {
-  const [presentacion, setPresentacion] = useState(HOY);
-  const [hoy, setHoy] = useState(HOY);
+  const [presentacion, setPresentacion] = useState(hoyAR);
+  const [hoy, setHoy] = useState(hoyAR);
   const [noRegistrado, setNoRegistrado] = useState(false);
   const [manifestacion, setManifestacion] = useState("");
   const [huboRecaida, setHuboRecaida] = useState(false);

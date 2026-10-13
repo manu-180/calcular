@@ -8,41 +8,50 @@ import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import {
   CASAS_PARTICULARES_FUENTES,
   ESCALAS_POR_MES,
-  ESCALA_VIGENTE,
+  escalaVigente,
   SUMA_NO_REMUNERATIVA,
   HORAS_EXTRAS,
   JORNADA,
   SAC,
   VACACIONES,
-  VIGENCIA,
+  vigenciaCasas,
   ZONA_DESFAVORABLE,
 } from "@/data/casas-particulares";
 import { escalaDe } from "@/data/casas-particulares";
 import { formatARS } from "@/lib/formato";
 
-const NOVIEMBRE = ESCALAS_POR_MES.find((m) => m.id === "2026-11")!;
-const GENERALES = ESCALA_VIGENTE.find((c) => c.id === "tareas-generales")!;
-const MES_CORTO = VIGENCIA.vigenteEn.replace(" de ", " ");
+function datosDelMes() {
+  const NOVIEMBRE = ESCALAS_POR_MES.find((m) => m.id === "2026-11")!;
+  const GENERALES = escalaVigente().find((c) => c.id === "tareas-generales")!;
+  const MES_CORTO = vigenciaCasas().vigenteEn.replace(" de ", " ");
+  return { NOVIEMBRE, GENERALES, MES_CORTO };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MES_CORTO }: DatosDelMes): Metadata => ({
   title: `Sueldo de empleada doméstica ${MES_CORTO}: por hora y mes`,
   description: "Escala oficial de las 5 categorías de casas particulares, con y sin retiro, por hora y por mes. Calculá el sueldo por horas reales, con extras y zona.",
   alternates: { canonical: "/empleada-domestica" },
   openGraph: {
     images: [
       {
-        url: `/og?t=${encodeURIComponent("Empleada doméstica")}&s=${encodeURIComponent(`Escala oficial ${VIGENCIA.vigenteEn}: las 5 categorías`)}`,
+        url: `/og?t=${encodeURIComponent("Empleada doméstica")}&s=${encodeURIComponent(`Escala oficial ${vigenciaCasas().vigenteEn}: las 5 categorías`)}`,
         width: 1200,
         height: 630,
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ NOVIEMBRE, GENERALES }: DatosDelMes) => [
   {
-    q: `¿Cuánto cobra por hora una empleada doméstica en ${VIGENCIA.vigenteEn}?`,
-    a: `En la categoría más común (personal para tareas generales), el mínimo es de ${formatARS(GENERALES.horaConRetiro!, 2)} por hora con retiro y ${formatARS(GENERALES.horaSinRetiro, 2)} sin retiro, según el anexo de la ${VIGENCIA.resolucion} (${VIGENCIA.boletinOficial}), vigente desde ${VIGENCIA.desde}. Pero hay cinco categorías y cada una tiene su valor: supervisor/a, tareas específicas, caseros, asistencia y cuidado de personas, y tareas generales. La categoría la define la tarea principal que se hace todos los días, no el nombre que le pongan al puesto.`,
+    q: `¿Cuánto cobra por hora una empleada doméstica en ${vigenciaCasas().vigenteEn}?`,
+    a: `En la categoría más común (personal para tareas generales), el mínimo es de ${formatARS(GENERALES.horaConRetiro!, 2)} por hora con retiro y ${formatARS(GENERALES.horaSinRetiro, 2)} sin retiro, según el anexo de la ${vigenciaCasas().resolucion} (${vigenciaCasas().boletinOficial}), vigente desde ${vigenciaCasas().desde}. Pero hay cinco categorías y cada una tiene su valor: supervisor/a, tareas específicas, caseros, asistencia y cuidado de personas, y tareas generales. La categoría la define la tarea principal que se hace todos los días, no el nombre que le pongan al puesto.`,
   },
   {
     q: "¿Cuál es el sueldo mensual mínimo?",
@@ -50,7 +59,7 @@ const faqs = [
   },
   {
     q: "¿Hasta cuándo sirve esta escala?",
-    a: `La ${VIGENCIA.resolucion} (${VIGENCIA.boletinOficial}) publicó cinco anexos, uno por mes, de agosto a ${VIGENCIA.ultimoMesPublicado}. Esta página los tiene todos cargados y muestra el del mes en curso, así que no hay que esperar a que alguien la actualice para ver el valor del mes siguiente. Después de ${VIGENCIA.ultimoMesPublicado} hace falta una resolución nueva. Mientras no salga, sigue rigiendo la última escala publicada.`,
+    a: `La ${vigenciaCasas().resolucion} (${vigenciaCasas().boletinOficial}) publicó cinco anexos, uno por mes, de agosto a ${vigenciaCasas().ultimoMesPublicado}. Esta página los tiene todos cargados y muestra el del mes en curso, así que no hay que esperar a que alguien la actualice para ver el valor del mes siguiente. Después de ${vigenciaCasas().ultimoMesPublicado} hace falta una resolución nueva. Mientras no salga, sigue rigiendo la última escala publicada.`,
   },
   {
     q: "¿El aumento de septiembre es sólo el 1,8%?",
@@ -95,6 +104,9 @@ const faqs = [
 ];
 
 export default function EmpleadaDomesticaPage() {
+  const datos = datosDelMes();
+  const { NOVIEMBRE, GENERALES } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -110,7 +122,7 @@ export default function EmpleadaDomesticaPage() {
         inLanguage: "es-AR",
       },
       articleSchema({
-        titulo: `Empleada doméstica: cuánto cobra por hora y por mes en ${VIGENCIA.vigenteEn}`,
+        titulo: `Empleada doméstica: cuánto cobra por hora y por mes en ${vigenciaCasas().vigenteEn}`,
         descripcion:
           "Escala salarial completa del personal de casas particulares (Ley 26.844) con los cinco anexos de la Resolución CNTCP 6/2026: cinco categorías, con y sin retiro, por hora y por mes, mes a mes de agosto a diciembre de 2026, más la suma no remunerativa, zona desfavorable, horas extras, aguinaldo y vacaciones.",
         url: "/empleada-domestica",
@@ -133,7 +145,7 @@ export default function EmpleadaDomesticaPage() {
 
       <header className="space-y-3">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
-          Empleada doméstica: la escala oficial de {VIGENCIA.vigenteEn}, con las cinco categorías
+          Empleada doméstica: la escala oficial de {vigenciaCasas().vigenteEn}, con las cinco categorías
         </h1>
         <p className="text-zinc-600">
           Casi todas las notas publican una sola fila de la tabla (tareas generales) y se olvidan de
@@ -145,13 +157,13 @@ export default function EmpleadaDomesticaPage() {
 
       <RespuestaPrimero actualizado={CASAS_PARTICULARES_FUENTES.consultadoEl}>
         <p>
-          En {VIGENCIA.vigenteEn} el mínimo para <strong>personal para tareas generales</strong> es
+          En {vigenciaCasas().vigenteEn} el mínimo para <strong>personal para tareas generales</strong> es
           de <strong>{formatARS(GENERALES.horaConRetiro!, 2)} por hora</strong> y{" "}
           <strong>{formatARS(GENERALES.mesConRetiro!, 0)} por mes</strong> con retiro, y de{" "}
           {formatARS(GENERALES.horaSinRetiro, 2)} por hora y {formatARS(GENERALES.mesSinRetiro, 0)}{" "}
-          por mes sin retiro. Son los valores del {VIGENCIA.anexo} de la {VIGENCIA.resolucion} (
-          {VIGENCIA.boletinOficial}), que publicó <strong>una escala por mes hasta{" "}
-          {VIGENCIA.ultimoMesPublicado}</strong>, y las cinco están acá abajo. Ojo con la cuenta: el
+          por mes sin retiro. Son los valores del {vigenciaCasas().anexo} de la {vigenciaCasas().resolucion} (
+          {vigenciaCasas().boletinOficial}), que publicó <strong>una escala por mes hasta{" "}
+          {vigenciaCasas().ultimoMesPublicado}</strong>, y las cinco están acá abajo. Ojo con la cuenta: el
           aumento de septiembre <strong>no es solo el 1,8%</strong>, porque antes se suman al básico
           $5.000 de la suma no remunerativa. En las provincias patagónicas y en el partido de{" "}
           {ZONA_DESFAVORABLE.partidoBonaerense} se suma un{" "}
@@ -163,7 +175,7 @@ export default function EmpleadaDomesticaPage() {
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
-          La escala completa · {VIGENCIA.vigenteEn}
+          La escala completa · {vigenciaCasas().vigenteEn}
         </h2>
         <p className="text-zinc-600">
           Las cinco categorías del anexo oficial, sin recortes. La categoría la define la tarea
@@ -183,7 +195,7 @@ export default function EmpleadaDomesticaPage() {
                 </tr>
               </thead>
               <tbody>
-                {ESCALA_VIGENTE.map((c) => (
+                {escalaVigente().map((c) => (
                   <tr
                     key={c.id}
                     className={`border-t border-zinc-100 ${c.id === "tareas-generales" ? "bg-emerald-50/50" : ""}`}
@@ -211,10 +223,10 @@ export default function EmpleadaDomesticaPage() {
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
-          Mes a mes, hasta {VIGENCIA.ultimoMesPublicado}
+          Mes a mes, hasta {vigenciaCasas().ultimoMesPublicado}
         </h2>
         <p className="text-zinc-600">
-          La {VIGENCIA.resolucion} no fijó un aumento: fijó cinco, cada uno con su anexo. Esta tabla
+          La {vigenciaCasas().resolucion} no fijó un aumento: fijó cinco, cada uno con su anexo. Esta tabla
           muestra el mínimo mensual con retiro de la categoría más común (personal para tareas
           generales) en cada mes publicado, así ves la escalera completa sin abrir cinco PDF. El mes
           resaltado es el que se está liquidando.
@@ -238,7 +250,7 @@ export default function EmpleadaDomesticaPage() {
                     <tr
                       key={m.id}
                       className={`border-t border-zinc-100 ${
-                        m.id === VIGENCIA.mesId ? "bg-emerald-50/60 font-semibold" : ""
+                        m.id === vigenciaCasas().mesId ? "bg-emerald-50/60 font-semibold" : ""
                       }`}
                     >
                       <td className="px-4 py-2.5 text-zinc-800">

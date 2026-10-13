@@ -25,14 +25,14 @@ import {
   ART_CASAS_FUENTES,
   ART_CASAS_TEXTOS,
   ART_CASAS_VIGENCIA,
-  REGLAS_ART_CASAS,
+  reglasArtCasas,
 } from "../src/data/art-casas-particulares";
-import { ESCALA_VIGENTE } from "../src/data/casas-particulares";
+import { escalaVigente } from "../src/data/casas-particulares";
 import { CONDICIONES, RANGOS, TABLA_APORTES } from "../src/data/aportes-casas-particulares";
 import {
-  CORTES_ART_CASAS,
+  cortesDelPiso,
   EDAD_MINIMA_BARRIDO,
-  EDAD_PISO_SIEMPRE,
+  edadPisoSiempre,
   calcularArtCasas,
   type Modalidad,
 } from "../src/lib/art-casas-particulares";
@@ -56,7 +56,7 @@ const BASE = {
 };
 
 // --- 1. La base sale de la escala oficial, no de una constante ---------------------------------
-for (const cat of ESCALA_VIGENTE) {
+for (const cat of escalaVigente()) {
   const modalidades: Modalidad[] =
     cat.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
   for (const modalidad of modalidades) {
@@ -89,7 +89,7 @@ check(
 // --- 3. El piso manda en TODO el espacio de casos ----------------------------------------------
 let casos = 0;
 let sinPiso = 0;
-for (const cat of ESCALA_VIGENTE) {
+for (const cat of escalaVigente()) {
   const modalidades: Modalidad[] =
     cat.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
   for (const modalidad of modalidades) {
@@ -108,7 +108,7 @@ console.log(`     (muestra de 5 edades: ${sinPiso} de ${casos} casos con la fór
 const excepciones: string[] = [];
 let celdasBarrido = 0;
 let celdasSinPiso = 0;
-for (const cat of ESCALA_VIGENTE) {
+for (const cat of escalaVigente()) {
   const modalidades: Modalidad[] =
     cat.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
   for (const modalidad of modalidades) {
@@ -172,7 +172,7 @@ check(
 );
 check(
   "hay una EDAD DE CORTE por categoría: si el piso manda a una edad, manda en todas las mayores",
-  ESCALA_VIGENTE.every((cat) => {
+  escalaVigente().every((cat) => {
     const modalidades: Modalidad[] =
       cat.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
     return modalidades.every((modalidad) => {
@@ -188,7 +188,7 @@ check(
 check(
   "la edad de corte crece con el mínimo de la categoría (base más alta, piso más tarde)",
   (() => {
-    const porMinimo = [...ESCALA_VIGENTE]
+    const porMinimo = [...escalaVigente()]
       .filter((c) => c.mesConRetiro !== null)
       .sort((a, b) => a.mesSinRetiro - b.mesSinRetiro)
       .map((c) => ({ id: c.id, corte: corteDe(c.id, "sin-retiro") }));
@@ -202,9 +202,9 @@ check(
 check(
   "la base más baja de la escala es la que antes cruza al piso",
   (() => {
-    const base = (c: (typeof ESCALA_VIGENTE)[number], m: Modalidad) =>
+    const base = (c: ReturnType<typeof escalaVigente>[number], m: Modalidad) =>
       m === "sin-retiro" ? c.mesSinRetiro : (c.mesConRetiro as number);
-    const pares = ESCALA_VIGENTE.flatMap((c) =>
+    const pares = escalaVigente().flatMap((c) =>
       (c.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"]).map((m) => ({
         base: base(c, m as Modalidad),
         corte: corteDe(c.id, m as Modalidad),
@@ -216,20 +216,20 @@ check(
 );
 check(
   "las edades de corte publicadas son las del barrido",
-  CORTES_ART_CASAS.every((c) => c.edad === corteDe(c.categoria.id, c.modalidad)) &&
-    EDAD_PISO_SIEMPRE === (unicas.length ? edadMaximaSinPiso + 1 : EDAD_MINIMA_BARRIDO),
-  { EDAD_PISO_SIEMPRE, edadMaximaSinPiso },
+  cortesDelPiso().every((c) => c.edad === corteDe(c.categoria.id, c.modalidad)) &&
+    edadPisoSiempre() === (unicas.length ? edadMaximaSinPiso + 1 : EDAD_MINIMA_BARRIDO),
+  { edadPisoSiempre: edadPisoSiempre(), edadMaximaSinPiso },
 );
 check(
   "la regla publicada cita la edad del barrido, no una escrita a mano",
-  REGLAS_ART_CASAS.find((r) => r.id === "manda-el-piso")!.texto.includes(
-    `desde los ${EDAD_PISO_SIEMPRE} años`,
+  reglasArtCasas().find((r) => r.id === "manda-el-piso")!.texto.includes(
+    `desde los ${edadPisoSiempre()} años`,
   ),
 );
 check(
   "la categoría mejor paga es la que más tarde cruza",
   corteDe("supervisor", "sin-retiro") === Math.max(
-    ...ESCALA_VIGENTE.filter((c) => c.mesConRetiro !== null).map((c) => corteDe(c.id, "sin-retiro")),
+    ...escalaVigente().filter((c) => c.mesConRetiro !== null).map((c) => corteDe(c.id, "sin-retiro")),
   ),
 );
 
@@ -385,18 +385,18 @@ for (const [clave, frase] of CITAS) {
 }
 
 // --- 9. El contenido publicado ----------------------------------------------------------------
-check("hay al menos 7 reglas publicadas", REGLAS_ART_CASAS.length >= 7, REGLAS_ART_CASAS.length);
+check("hay al menos 7 reglas publicadas", reglasArtCasas().length >= 7, reglasArtCasas().length);
 check(
   "está publicado el hallazgo de la base mínima",
-  REGLAS_ART_CASAS.some((r) => r.id === "base-minima" && r.norma.includes("inc. d")),
+  reglasArtCasas().some((r) => r.id === "base-minima" && r.norma.includes("inc. d")),
 );
 check(
   "está publicada la asignación de oficio",
-  REGLAS_ART_CASAS.some((r) => r.id === "asignacion-oficio" && r.norma.includes("inc. b")),
+  reglasArtCasas().some((r) => r.id === "asignacion-oficio" && r.norma.includes("inc. b")),
 );
 check(
   "ninguna regla se publica sin norma",
-  REGLAS_ART_CASAS.every((r) => r.norma.trim().length > 0),
+  reglasArtCasas().every((r) => r.norma.trim().length > 0),
 );
 check(
   "la fecha de consulta de las fuentes coincide con la de vigencia",

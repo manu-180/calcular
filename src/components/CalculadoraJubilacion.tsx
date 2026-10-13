@@ -9,23 +9,23 @@ import {
   sumarMeses,
 } from "@/lib/jubilacion";
 import { HABER_MINIMO_SERIE, HABER_MINIMO_ULTIMO } from "@/data/jubilaciones";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { formatARS, formatPct, parseMonto, errorMonto, primerError } from "@/lib/formato";
 import { ErrorCalculo } from "@/components/ErrorCalculo";
 
-const V = PRESTACIONES_VIGENTES;
 
 /** Meses que se pueden elegir como "desde cuándo" (todos menos el vigente). */
 const MESES_DESDE = HABER_MINIMO_SERIE.slice(0, -1).map((m) => m.periodo).reverse();
 
 export function CalculadoraJubilacion() {
+  const V = prestacionesVigentes();
   const [haberInput, setHaberInput] = useState(String(V.haberMinimo).replace(".", ","));
   const [desde, setDesde] = useState("");
 
   const haber = useMemo(() => parseMonto(haberInput), [haberInput]);
 
   const bono = useMemo(
-    () => (haberInput.trim() === "" ? null : calcularBono(haber, V.haberMinimo, BONO_VIGENTE.monto)),
+    () => (haberInput.trim() === "" ? null : calcularBono(haber, V.haberMinimo, bonoVigente().monto)),
     [haber, haberInput],
   );
 
@@ -119,7 +119,7 @@ export function CalculadoraJubilacion() {
                 <p className="font-semibold">Te corresponde el bono completo</p>
                 <p className="mt-1 text-sm">
                   Tu haber no supera el mínimo garantizado ({formatARS(V.haberMinimo, 0)}), así que
-                  cobrás los {formatARS(BONO_VIGENTE.monto, 0)} enteros.
+                  cobrás los {formatARS(bonoVigente().monto, 0)} enteros.
                 </p>
               </>
             )}
@@ -128,7 +128,7 @@ export function CalculadoraJubilacion() {
                 <p className="font-semibold">Te corresponde un bono parcial</p>
                 <p className="mt-1 text-sm">
                   Esto es lo que casi nadie cuenta: cobrar por encima de la mínima{" "}
-                  <strong>no</strong> significa cobrar los {formatARS(BONO_VIGENTE.monto, 0)}{" "}
+                  <strong>no</strong> significa cobrar los {formatARS(bonoVigente().monto, 0)}{" "}
                   completos. El bono se recorta hasta llegar al tope de{" "}
                   <strong>{formatARS(bono.tope, 0)}</strong> (mínima + bono). Por eso todos los
                   haberes entre {formatARS(V.haberMinimo, 0)} y {formatARS(bono.tope, 0)} terminan
@@ -141,7 +141,7 @@ export function CalculadoraJubilacion() {
                 <p className="font-semibold">No te corresponde bono</p>
                 <p className="mt-1 text-sm">
                   Tu haber ya supera el tope de {formatARS(bono.tope, 0)} (la mínima de{" "}
-                  {formatARS(V.haberMinimo, 0)} más los {formatARS(BONO_VIGENTE.monto, 0)} del
+                  {formatARS(V.haberMinimo, 0)} más los {formatARS(bonoVigente().monto, 0)} del
                   bono), que es hasta donde llega el refuerzo.
                 </p>
               </>

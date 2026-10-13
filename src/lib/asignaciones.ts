@@ -14,13 +14,11 @@
 //      no rigen topes de ingreso, ni individuales ni del grupo.
 
 import {
-  ASIGNACIONES_VIGENTES,
+  asignacionesVigentes,
   type GrupoMonotributo,
   type TramoIgf,
   type Zona,
 } from "@/data/asignaciones";
-
-const V = ASIGNACIONES_VIGENTES;
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
 
@@ -105,6 +103,7 @@ export type EntradaAsignaciones = {
  * con discapacidad se sigue cobrando igual.
  */
 export function calcularAsignaciones(e: EntradaAsignaciones): ResultadoAsignaciones {
+  const V = asignacionesVigentes();
   const igf = calcularIgf(e.ingresos);
   const zona = e.zona;
 
@@ -236,6 +235,7 @@ export function calcularEscalon(
   hijosDiscapacidad: number,
   exclusion: MotivoExclusion | null,
 ): Escalon | null {
+  const V = asignacionesVigentes();
   if (exclusion !== null) return null;
   if (hijos + hijosDiscapacidad === 0) return null;
 
@@ -267,6 +267,7 @@ export function calcularEscalon(
 
 /** Monto mensual que le corresponde a un monotributista por hijo, según su categoría. */
 export function montoMonotributoHijo(grupo: GrupoMonotributo): number | null {
+  const V = asignacionesVigentes();
   return V.monotributo.hijo[grupo];
 }
 
@@ -277,6 +278,7 @@ export function moverAlMesSiguiente(valor: number, movilidad: number): number {
 }
 
 export function desglose8020(monto: number): { mensual: number; retenido: number } {
+  const V = asignacionesVigentes();
   const mensual = r2(monto * V.universales.porcentajeMensual);
   return { mensual, retenido: r2(monto - mensual) };
 }

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { brutoANeto, netoABruto } from "@/lib/sueldo";
 import { estimarGananciasAnual } from "@/lib/ganancias";
-import { TOPE_SIPA } from "@/data/sueldo";
+import { topeSipa } from "@/data/sueldo";
 import { formatARS, parseMonto, parseDecimal } from "@/lib/formato";
 import { CompartirWhatsApp } from "@/components/CompartirWhatsApp";
 import { OfertaMiSueldo } from "@/components/mi-sueldo/OfertaMiSueldo";
@@ -305,8 +305,8 @@ export function CalculadoraSueldoNeto({ oferta }: { oferta?: DatosOferta }) {
 
             {r.d.aportes.topeAplicado && (
               <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
-                Tu bruto supera la base imponible máxima de aportes ({formatARS(TOPE_SIPA.baseMaxima, 0)},
-                vigente {TOPE_SIPA.vigencia}): los aportes se calcularon sobre ese tope, no sobre el
+                Tu bruto supera la base imponible máxima de aportes ({formatARS(topeSipa().baseMaxima, 0)},
+                vigente {topeSipa().vigencia}): los aportes se calcularon sobre ese tope, no sobre el
                 bruto completo. Por encima del tope, el 17% deja de crecer.
               </p>
             )}

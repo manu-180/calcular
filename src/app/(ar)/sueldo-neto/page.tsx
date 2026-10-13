@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
 import { brutoANeto } from "@/lib/sueldo";
-import { SUELDO_FUENTES, TOPE_SIPA } from "@/data/sueldo";
+import { SUELDO_FUENTES, topeSipa } from "@/data/sueldo";
 import {
   DEDUCCIONES,
   ESCALA_GANANCIAS,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 // Tabla "cuánto es X en mano" — neto con los aportes de ley (sin Ganancias ni sindical).
 const SUELDOS_TABLA = [800_000, 1_000_000, 1_200_000, 1_500_000, 2_000_000, 2_500_000];
 
-const faqs = [
+const crearFaqs = () => [
   {
     q: "¿Cómo se calcula el sueldo neto en Argentina?",
     a: "Al sueldo bruto se le restan los aportes de ley: 11% de jubilación (SIPA), 3% de PAMI (Ley 19.032) y 3% de obra social. En total, 17%. A eso se pueden sumar la cuota sindical (si estás afiliado) y, en sueldos altos, la retención de Ganancias. El neto es lo que queda después de esos descuentos: en la mayoría de los casos, alrededor del 83% del bruto.",
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: "Gano mucho y me descuentan proporcionalmente menos de aportes, ¿por qué?",
-    a: `Porque los aportes tienen un tope. Se calculan sobre la base máxima del SIPA, que en ${TOPE_SIPA.vigencia} es de ${formatARS(TOPE_SIPA.baseMaxima, 0)}. Si tu sueldo bruto pasa ese monto, el 17% se aplica solo hasta el tope y no sobre lo que sobra. Por eso, en sueldos muy altos, el porcentaje real de aportes baja (aunque suele aparecer Ganancias).`,
+    a: `Porque los aportes tienen un tope. Se calculan sobre la base máxima del SIPA, que en ${topeSipa().vigencia} es de ${formatARS(topeSipa().baseMaxima, 0)}. Si tu sueldo bruto pasa ese monto, el 17% se aplica solo hasta el tope y no sobre lo que sobra. Por eso, en sueldos muy altos, el porcentaje real de aportes baja (aunque suele aparecer Ganancias).`,
   },
   {
     q: "¿El sueldo neto incluye el aguinaldo?",
@@ -69,6 +69,7 @@ const faqs = [
 ];
 
 export default function SueldoNetoPage() {
+  const faqs = crearFaqs();
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -133,7 +134,7 @@ export default function SueldoNetoPage() {
           sindicato también se descuenta la cuota sindical (1% a 3%), y desde unos{" "}
           <strong>$2.800.000 de bruto</strong> (soltero sin hijos) aparece la retención de Ganancias.
           Los aportes tienen tope: por la parte del sueldo que pasa{" "}
-          {formatARS(TOPE_SIPA.baseMaxima, 0)} ({TOPE_SIPA.vigencia}) el 17% deja de crecer. El
+          {formatARS(topeSipa().baseMaxima, 0)} ({topeSipa().vigencia}) el 17% deja de crecer. El
           detalle de cada descuento posible está en{" "}
           <Link href="/descuentos-del-sueldo" className="text-emerald-700 hover:underline">
             cuánto te pueden descontar del sueldo

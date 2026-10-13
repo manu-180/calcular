@@ -26,6 +26,7 @@ import {
   type CategoriaUocraId,
 } from "@/data/convenios/uocra";
 import { formatARS } from "@/lib/formato";
+import { hoyAR } from "@/lib/hoy";
 
 export const dynamicParams = false;
 
@@ -462,7 +463,7 @@ export default async function UocraMesPage({
           {esUltimoMes ? (
             <div>
               <h3 className="font-semibold text-zinc-900">¿Cuándo se define el próximo tramo?</h3>
-              <p className="mt-1 text-zinc-600">{textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, new Date().toISOString().slice(0, 10))}</p>
+              <p className="mt-1 text-zinc-600">{textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, hoyAR())}</p>
             </div>
           ) : null}
         </div>

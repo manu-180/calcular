@@ -6,7 +6,7 @@
 // la tabla oficial fue transcripta sin errores: cada "fijo" = fijo previo + tramo×alícuota),
 // y (4) el piso a partir del cual un empleado tributa Ganancias.
 
-import { APORTES, TOTAL_APORTES, TOPE_SIPA } from "../src/data/sueldo";
+import { APORTES, TOTAL_APORTES, topeSipa } from "../src/data/sueldo";
 import { ESCALA_GANANCIAS, DEDUCCIONES } from "../src/data/ganancias";
 import { calcularAportes, brutoANeto, netoABruto } from "../src/lib/sueldo";
 import { impuestoSegunEscala, estimarGananciasAnual } from "../src/lib/ganancias";
@@ -46,18 +46,18 @@ check("aportes suman 17%", aprox(TOTAL_APORTES, 0.17, 1e-9));
   const a = calcularAportes(8_000_000);
   check(
     "aportes 8M: base truncada al tope SIPA",
-    aprox(a.baseImponible, TOPE_SIPA.baseMaxima),
+    aprox(a.baseImponible, topeSipa().baseMaxima),
   );
   check(
     "aportes 8M: total = tope × 0,17",
-    aprox(a.total, TOPE_SIPA.baseMaxima * 0.17),
+    aprox(a.total, topeSipa().baseMaxima * 0.17),
   );
   check("aportes 8M: tope aplicado", a.topeAplicado === true);
 }
 
 {
   // Borde exacto: en el tope NO se considera "aplicado" (no es estrictamente mayor).
-  const a = calcularAportes(TOPE_SIPA.baseMaxima);
+  const a = calcularAportes(topeSipa().baseMaxima);
   check("aportes en el tope exacto: topeAplicado false", a.topeAplicado === false);
 }
 

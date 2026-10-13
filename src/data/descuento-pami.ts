@@ -18,7 +18,7 @@
 //   1. **El escalón se mueve todos los meses.** El punto de quiebre es el haber mínimo
 //      garantizado, que ANSES redetermina por resolución mensual (movilidad del Dec. 274/2024).
 //      O sea que la alícuota efectiva de una misma persona cambia mes a mes sin que cambie su
-//      haber. Por eso acá no se copia ningún monto: el mínimo sale de PRESTACIONES_VIGENTES.
+//      haber. Por eso acá no se copia ningún monto: el mínimo sale de prestacionesVigentes().
 //   2. **El aguinaldo también aporta.** Los dos incisos dicen «calculado sobre los haberes de las
 //      prestaciones, INCLUIDO EL HABER COMPLEMENTARIO». El haber complementario es el aguinaldo
 //      previsional: no está exento.
@@ -48,7 +48,7 @@
 //   · Ley 23.660 (id 62) — arts. 8 (sust. por art. 277 del Dec. 70/2023), 16 inc. c) y 20.
 //   · Decreto 292/95 (id 25621) — arts. 11, 12, 13, 17, 19 y 20.
 
-import { PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { prestacionesVigentes } from "@/data/prestaciones";
 
 export const VIGENCIA_PAMI = {
   consultadoEl: "14 de septiembre de 2026",
@@ -110,11 +110,10 @@ export const REGIMENES: RegimenPami[] = [
   },
 ];
 
-// El punto de quiebre del inciso a): el haber mínimo garantizado vigente. El `: number` es
-// necesario — PRESTACIONES_VIGENTES es `as const`, y sin anotar, TS infiere el tipo LITERAL del
-// monto del mes y rechaza cualquier otro haber mínimo pasado como parámetro (el build falla en
-// el motor, no acá).
-export const HABER_MINIMO_VIGENTE: number = PRESTACIONES_VIGENTES.haberMinimo;
+// El punto de quiebre del inciso a): el haber mínimo garantizado vigente.
+export function haberMinimoVigente(): number {
+  return prestacionesVigentes().haberMinimo;
+}
 
 export const PAMI_TEXTOS = {
   ley19032Art8IncA:
@@ -137,36 +136,38 @@ export const PAMI_TEXTOS = {
     "La cobertura médica de los beneficiarios a los que se refiere el artículo 17 excepto lo previsto en la Ley Nº 23.848 estará a cargo de la SECRETARIA DE DESARROLLO SOCIAL.",
 } as const;
 
-export const PAMI_FUENTES = {
-  consultadoEl: VIGENCIA_PAMI.consultadoEl,
-  principal: {
-    nombre: "Ley 19.032, art. 8, texto actualizado en InfoLEG",
-    url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/16081/texact.htm",
-  },
-  lista: [
-    {
-      nombre: "Ley 19.032 (INSSJP / PAMI), texto actualizado",
+export function pamiFuentes() {
+  return {
+    consultadoEl: VIGENCIA_PAMI.consultadoEl,
+    principal: {
+      nombre: "Ley 19.032, art. 8, texto actualizado en InfoLEG",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/16081/texact.htm",
-      detalle:
-        "Art. 8 inc. a) y b): las alícuotas del aporte sobre el haber, «incluido el haber complementario», con el escalón en el haber mínimo (texto según el art. 6 de la Ley 25.615). Y el art. 9, que manda deducirlo de los haberes y transferirlo al Instituto en forma directa y automática.",
     },
-    {
-      nombre: "Ley 23.660 (obras sociales), texto actualizado",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
-      detalle:
-        "Art. 8 incs. b) y c): jubilados, pensionados y titulares de PNC como beneficiarios obligatorios (texto según el art. 277 del Decreto 70/2023). Art. 16 inc. c), que remite el monto a otras normas, y art. 20, que ordena deducir el aporte del haber.",
-    },
-    {
-      nombre: "Decreto 292/95: libertad de elección y cobertura de las PNC",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25621/texact.htm",
-      detalle:
-        "Arts. 11 a 13: la opción de obra social, su periodicidad anual, la vigencia al tercer mes y la cápita que ANSeS transfiere de los recursos del INSSJP. Arts. 17, 19 y 20: el traspaso de las PNC y su cobertura médica a cargo del Estado, salvo la Ley 23.848.",
-    },
-    {
-      nombre: `${PRESTACIONES_VIGENTES.resolucion}: haber mínimo garantizado vigente`,
-      url: PRESTACIONES_VIGENTES.resolucionUrl,
-      detalle:
-        "Fija el haber mínimo del mes, que es el punto exacto donde el aporte del inciso a) pasa del 3% al 6%. Se redetermina todos los meses por la movilidad del Decreto 274/2024.",
-    },
-  ],
-} as const;
+    lista: [
+      {
+        nombre: "Ley 19.032 (INSSJP / PAMI), texto actualizado",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/16081/texact.htm",
+        detalle:
+          "Art. 8 inc. a) y b): las alícuotas del aporte sobre el haber, «incluido el haber complementario», con el escalón en el haber mínimo (texto según el art. 6 de la Ley 25.615). Y el art. 9, que manda deducirlo de los haberes y transferirlo al Instituto en forma directa y automática.",
+      },
+      {
+        nombre: "Ley 23.660 (obras sociales), texto actualizado",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
+        detalle:
+          "Art. 8 incs. b) y c): jubilados, pensionados y titulares de PNC como beneficiarios obligatorios (texto según el art. 277 del Decreto 70/2023). Art. 16 inc. c), que remite el monto a otras normas, y art. 20, que ordena deducir el aporte del haber.",
+      },
+      {
+        nombre: "Decreto 292/95: libertad de elección y cobertura de las PNC",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25621/texact.htm",
+        detalle:
+          "Arts. 11 a 13: la opción de obra social, su periodicidad anual, la vigencia al tercer mes y la cápita que ANSeS transfiere de los recursos del INSSJP. Arts. 17, 19 y 20: el traspaso de las PNC y su cobertura médica a cargo del Estado, salvo la Ley 23.848.",
+      },
+      {
+        nombre: `${prestacionesVigentes().resolucion}: haber mínimo garantizado vigente`,
+        url: prestacionesVigentes().resolucionUrl,
+        detalle:
+          "Fija el haber mínimo del mes, que es el punto exacto donde el aporte del inciso a) pasa del 3% al 6%. Se redetermina todos los meses por la movilidad del Decreto 274/2024.",
+      },
+    ],
+  } as const;
+}

@@ -13,16 +13,16 @@
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { periodoActualAR, periodoDeMes, vigenteEn } from "../../src/lib/hoy";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "../../src/data/prestaciones";
-import { ASIGNACIONES_VIGENTES } from "../../src/data/asignaciones";
+import { bonoVigente, prestacionesVigentes } from "../../src/data/prestaciones";
+import { asignacionesVigentes } from "../../src/data/asignaciones";
 import { MESES_UOCRA } from "../../src/data/convenios/uocra";
 import { MESES_COMERCIO } from "../../src/data/convenios/comercio";
 import { MESES_CAMIONEROS } from "../../src/data/convenios/camioneros";
 
 const vigencias = {
   mes: periodoActualAR(),
-  previsional: `${PRESTACIONES_VIGENTES.periodo} · ${PRESTACIONES_VIGENTES.resolucion} · ${BONO_VIGENTE.norma}`,
-  asignaciones: `${ASIGNACIONES_VIGENTES.periodo} · ${ASIGNACIONES_VIGENTES.resolucion}`,
+  previsional: `${prestacionesVigentes().periodo} · ${prestacionesVigentes().resolucion} · ${bonoVigente().norma}`,
+  asignaciones: `${asignacionesVigentes().periodo} · ${asignacionesVigentes().resolucion}`,
   uocra: vigenteEn(MESES_UOCRA, periodoDeMes).id,
   comercio: vigenteEn(MESES_COMERCIO, periodoDeMes).id,
   camioneros: vigenteEn(MESES_CAMIONEROS, periodoDeMes).id,

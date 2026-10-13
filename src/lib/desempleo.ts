@@ -16,6 +16,7 @@
 //   4. Presentarla tarde cuesta plata: pasados los 90 días del cese, los días de exceso se
 //      descuentan del total del período (art. 115).
 
+import { periodoActualAR } from "@/lib/hoy";
 import {
   REGLAS_DESEMPLEO as R,
   SMVM_SERIE,
@@ -32,8 +33,10 @@ export const DIAS_POR_CUOTA = 30;
  * El SMVM vigente a una fecha: el último mes de la escala cuyo período ya arrancó.
  * Si la fecha cae después del último mes con norma, devuelve ese último y marca `vencido`.
  */
-export function smvmVigente(fecha: Date = new Date()): { mes: MesSmvm; vencido: boolean } {
-  const periodo = `${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, "0")}`;
+export function smvmVigente(fecha?: Date): { mes: MesSmvm; vencido: boolean } {
+  const periodo = fecha
+    ? `${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, "0")}`
+    : periodoActualAR();
   const aplicables = SMVM_SERIE.filter((m) => m.periodo <= periodo);
   if (aplicables.length === 0) return { mes: SMVM_SERIE[0], vencido: false };
   const mes = aplicables[aplicables.length - 1];
@@ -123,7 +126,7 @@ function acotar(
 }
 
 export function calcularDesempleo(e: Entrada): Resultado {
-  const { mes: smvm, vencido: smvmVencido } = smvmVigente(e.fecha ?? new Date());
+  const { mes: smvm, vencido: smvmVencido } = smvmVigente(e.fecha);
   const piso = r2(smvm.mensual * R.pisoSobreSmvm);
   const techo = r2(smvm.mensual * R.techoSobreSmvm);
 

@@ -1,4 +1,4 @@
-import { APORTES, TOTAL_APORTES, TOPE_SIPA } from "@/data/sueldo";
+import { APORTES, TOTAL_APORTES, topeSipa } from "@/data/sueldo";
 
 export type DesgloseAportes = {
   baseImponible: number;
@@ -14,7 +14,7 @@ export type DesgloseAportes = {
 export function calcularAportes(brutoRemunerativo: number): DesgloseAportes {
   const baseImponible = Math.min(
     Math.max(0, brutoRemunerativo),
-    TOPE_SIPA.baseMaxima,
+    topeSipa().baseMaxima,
   );
   const jubilacion = baseImponible * APORTES.jubilacion;
   const pami = baseImponible * APORTES.pami;
@@ -25,7 +25,7 @@ export function calcularAportes(brutoRemunerativo: number): DesgloseAportes {
     pami,
     obraSocial,
     total: jubilacion + pami + obraSocial,
-    topeAplicado: brutoRemunerativo > TOPE_SIPA.baseMaxima,
+    topeAplicado: brutoRemunerativo > topeSipa().baseMaxima,
   };
 }
 
@@ -60,9 +60,9 @@ export function netoABruto(
   // Tramo 1 (bruto ≤ tope): neto = bruto·(1 − 0,17 − s)
   const factor = 1 - TOTAL_APORTES - s;
   const brutoSinTope = factor > 0 ? neto / factor : 0;
-  if (brutoSinTope <= TOPE_SIPA.baseMaxima) return brutoSinTope;
+  if (brutoSinTope <= topeSipa().baseMaxima) return brutoSinTope;
   // Tramo 2 (bruto > tope): aportes fijos = tope·0,17; sindical sigue sobre el bruto.
   // neto = bruto·(1 − s) − tope·0,17  →  bruto = (neto + tope·0,17) / (1 − s)
-  const aportesFijos = TOPE_SIPA.baseMaxima * TOTAL_APORTES;
+  const aportesFijos = topeSipa().baseMaxima * TOTAL_APORTES;
   return (1 - s) > 0 ? (neto + aportesFijos) / (1 - s) : brutoSinTope;
 }
