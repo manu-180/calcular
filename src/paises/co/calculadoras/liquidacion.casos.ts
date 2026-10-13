@@ -41,4 +41,11 @@ export default definirCasos(liquidacion, [
     entrada: { salario: 2000000, fechaIngreso: "2026-05-01", fechaRetiro: "2026-04-01", vacacionesDesde: null, motivo: "renuncia", auxilio: true },
     esperaError: true,
   },
+  {
+    nombre: "Con salario 0 pide el salario y no liquida el auxilio",
+    origen: { tipo: "recalculado", detalle: "Con salario 0 antes daba una liquidación de 284.043 por el auxilio de transporte. Ahora la función rechaza el 0." },
+    fecha: "2026-10-15",
+    entrada: { salario: 0, fechaIngreso: "2026-01-01", fechaRetiro: "2026-06-30", vacacionesDesde: null, motivo: "renuncia", auxilio: true },
+    esperaError: true,
+  },
 ]);

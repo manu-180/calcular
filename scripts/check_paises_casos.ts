@@ -13,6 +13,40 @@ import { archivosBajo, cargarPaises, DIR_PAISES, importar, rel } from "./paises_
 
 const TOLERANCIA = 0.005;
 
+// Calculadoras cuyo resultado sale de un sueldo y que con sueldo 0 tienen que pedirlo en vez de
+// calcular un piso legal o un auxilio sin base (en Colombia daba neto 109.023 y liquidación 284.043).
+const SUELDO_CERO: Readonly<Record<string, string>> = {
+  "co.liquidacion": "salario",
+  "co.salario-neto": "salario",
+  "co.prima-de-servicios": "salario",
+  "co.cesantias": "salario",
+  "co.empleada-domestica": "salario",
+  "co.costo-de-un-empleado": "salario",
+  "co.salario-integral": "salario",
+  "co.incapacidad": "salario",
+  "co.aportes-seguridad-social": "salario",
+  "co.auxilio-de-transporte": "salario",
+  "co.seguridad-social-independientes": "ingreso",
+  "co.pension-de-vejez": "ibl",
+  "co.retencion-en-la-fuente": "salario",
+  "co.retencion-honorarios": "honorarios",
+  "ec.sueldo-neto": "sueldo",
+  "ec.costo-empleador": "sueldo",
+  "ec.aportes-iess": "sueldo",
+  "ec.cesantia-iess": "sueldo",
+  "gt.costo-patronal": "salario",
+  "gt.trabajadoras-de-casa-particular": "salario",
+  "pe.trabajadora-del-hogar": "sueldo",
+  "pe.costo-laboral": "sueldo",
+  "pe.essalud": "remuneracion",
+  "pe.trabajo-nocturno": "sueldo",
+  "py.costo-empleador": "salario",
+  "py.bonificacion-familiar": "salario",
+  "cr.riesgos-del-trabajo": "salario",
+  "mx.subsidio-al-empleo": "sueldo",
+  "cl.seguro-de-cesantia": "promedio",
+};
+
 async function main() {
   const filtro = process.argv[2];
   const paises = new Map<string, PaisDefinido>();
@@ -21,6 +55,7 @@ async function main() {
   const fallas: string[] = [];
   const conCasos = new Set<string>();
   const conDatosReales = new Set<string>();
+  const conCero = new Set(Object.keys(SUELDO_CERO));
   let total = 0;
 
   const archivos = archivosBajo(DIR_PAISES, /\.casos\.ts$/).filter((f) => !filtro || rel(f).startsWith(`src/paises/${filtro}/`));
@@ -48,6 +83,22 @@ async function main() {
     if (!pais.calculadoras.some((c) => c.definicion === def)) fallas.push(`${donde}: ${def.id} no está en las calculadoras de src/paises/${carpeta}/index.ts`);
     if (modulo.casos.length === 0) fallas.push(`${donde}: sin casos`);
     conCasos.add(def.id);
+
+    const campoCero = SUELDO_CERO[def.id];
+    const base = modulo.casos.find((c) => !c.esperaError);
+    if (campoCero && base) {
+      total++;
+      const id = `${donde} con ${campoCero} = 0`;
+      const resueltos = resolverValores(pais, def, base.fecha);
+      const valores: Record<string, ValorResuelto> = resueltos.ok ? { ...resueltos.valores, ...((base.valores ?? {}) as Record<string, ValorResuelto>) } : {};
+      try {
+        def.calcular({ ...(base.entrada as object), [campoCero]: 0 } as never, valores as never, crearContexto(pais.mercado, base.fecha, def));
+        fallas.push(`${id}: calculó en vez de pedir el dato`);
+      } catch (err) {
+        if (!(err instanceof ErrorEntrada) || err.campo !== campoCero) fallas.push(`${id}: tenía que tirar ErrorEntrada sobre "${campoCero}" y tiró ${(err as Error).message}`);
+      }
+    }
+    conCero.delete(def.id);
 
     modulo.casos.forEach((caso, i) => {
       total++;
@@ -116,6 +167,7 @@ async function main() {
     }
   }
 
+  if (!filtro) for (const id of conCero) fallas.push(`${id}: está en SUELDO_CERO pero no tiene archivo de casos con un caso de cálculo`);
   for (const f of fallas) console.error(`❌ ${f}`);
   console.log(fallas.length ? `${fallas.length} FALLAS en ${total} casos` : `TODO OK: ${total} casos en ${archivos.length} archivos`);
   process.exit(fallas.length ? 1 : 0);

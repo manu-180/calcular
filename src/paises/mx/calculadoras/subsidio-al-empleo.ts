@@ -17,6 +17,7 @@ export default definirCalculadora({
     { id: "periodo", tipo: "opcion", etiqueta: "Cada cuánto te pagan", opciones: OPCIONES_PERIODO_NOMINA, porDefecto: "quincenal" },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.sueldo <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "sueldo");
     if (!(entrada.periodo in DIAS_PERIODO)) throw new ErrorEntrada({ codigo: "opcion-invalida" });
     const dias = DIAS_PERIODO[entrada.periodo];
     const mensualMaximo = (valores["mx.uma-mensual"] * valores["mx.subsidio-empleo"]) / 100;

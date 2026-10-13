@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.prestamo",
   h1: "Calculadora de préstamos en Costa Rica",
-  title: "Calculadora de préstamos: cuota mensual e intereses",
+  title: "Préstamos en Costa Rica: cuota mensual e intereses",
   description:
     "Calcule la cuota mensual de un préstamo personal, de carro o de vivienda, el total de intereses y lo que paga al final. Con la tasa básica pasiva del día.",
   intro: [

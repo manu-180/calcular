@@ -675,9 +675,18 @@ export interface OfertasCalculadora {
   ofertas: readonly OfertaPublica[];
 }
 
+// Cuántas unidades de la moneda local vale un dólar hoy, para mostrar junto al precio en USD. Solo
+// referencia: se cobra en dólares. Sin serie confiable del país, no hay referencia y va solo el USD.
+export interface ReferenciaLocal {
+  moneda: string;
+  locale: string;
+  tasa: number;
+}
+
 export interface OfertasMercado {
   activa: boolean;
   porCalculadora: Readonly<Record<string, OfertasCalculadora>>;
+  referencia?: ReferenciaLocal | null;
 }
 
 // «Calculadora de finiquito 2026 en Chile» → «finiquito». Para la frase «tu cálculo de …».
@@ -777,11 +786,28 @@ export const TEXTOS_OFERTA = {
     "No pudimos guardar el correo. Revisá que esté bien escrito y probá de nuevo.",
   ),
   etiquetaCorreo: T("Tu correo", "Su correo", "Tu correo"),
+  cobroDolares: "Se cobra en dólares.",
 } as const;
 
 export function precioUSD(centavos: number): string {
   const entero = centavos % 100 === 0;
   return `USD ${entero ? centavos / 100 : (centavos / 100).toFixed(2)}`;
+}
+
+// «unos MXN 130» a dos cifras significativas: con el cambio del día a un decimal sería una precisión
+// que no tiene (el banco o la tarjeta convierten con su propio tipo de cambio).
+export function precioLocalAproximado(centavos: number, r: ReferenciaLocal): string | null {
+  const n = (centavos / 100) * r.tasa;
+  if (!Number.isFinite(n) || n <= 0) return null;
+  const paso = 10 ** Math.max(0, Math.floor(Math.log10(n)) - 1);
+  const redondo = Math.max(paso, Math.round(n / paso) * paso);
+  return new Intl.NumberFormat(r.locale, { style: "currency", currency: r.moneda, currencyDisplay: "code", maximumFractionDigits: 0 }).format(redondo);
+}
+
+// «Equivale a unos MXN 130 al cambio de hoy. Se cobra en dólares.» o, sin referencia, solo lo segundo.
+export function leyendaDeCobro(centavos: number, r: ReferenciaLocal | null | undefined): string {
+  const local = r ? precioLocalAproximado(centavos, r) : null;
+  return local ? `Equivale a unos ${local} al cambio de hoy. ${TEXTOS_OFERTA.cobroDolares}` : TEXTOS_OFERTA.cobroDolares;
 }
 
 // ─── Escenarios: qué campo se varía ───────────────────────────────────────────────────────────

@@ -1,4 +1,4 @@
-import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 import { rentaAnual } from "../lib/renta";
 
 // Reglamento de la LRTI, art. 104: se proyecta el año (sin décimos), se resta el aporte personal, se
@@ -46,6 +46,7 @@ export default definirCalculadora({
     },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.sueldo <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "sueldo");
     const aporte = redondear(porcentaje(entrada.sueldo, valores["ec.aporte-personal-iess"]));
     const base = redondear((entrada.sueldo - aporte) * 12);
     const r = rentaAnual(

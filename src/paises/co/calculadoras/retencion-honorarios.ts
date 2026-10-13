@@ -1,4 +1,4 @@
-import { definirCalculadora, enMapa, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 import { filaDe, retencionMensual } from "../reglas";
 
 export default definirCalculadora({
@@ -49,6 +49,7 @@ export default definirCalculadora({
     { id: "dependiente", tipo: "si-no", etiqueta: "Tienes personas a cargo (dependientes)", porDefecto: false },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.honorarios <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "honorarios");
     const smmlv = valores["co.smmlv"];
     const ibc = Math.min(Math.max(porcentaje(entrada.honorarios, valores["co.ibc-independientes"]), smmlv), valores["co.tope-ibc"] * smmlv);
     const tasaFsp = filaDe(valores["co.fsp"], ibc / smmlv).tasa;

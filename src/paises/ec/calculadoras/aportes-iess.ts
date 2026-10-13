@@ -1,4 +1,4 @@
-import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
 export default definirCalculadora({
   id: "ec.aportes-iess",
@@ -23,6 +23,7 @@ export default definirCalculadora({
     },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.sueldo <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "sueldo");
     const sbu = valores["ec.sbu"];
     const base = Math.max(entrada.sueldo, sbu);
     const personal = redondear(porcentaje(base, valores["ec.aporte-personal-iess"]));

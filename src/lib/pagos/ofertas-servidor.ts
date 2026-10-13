@@ -9,7 +9,7 @@ import { registro } from "@/paises";
 import { validarDatosIntl, type DatosIntl } from "@/lib/prefill/intl";
 import { catalogoIntl, calculadorasDeFamilia, leerArchivoIntl, productosDeMercado, type ProductoIntl } from "./catalogo-intl";
 import { archivoMapa, leerMapa, valorDeCelda, type BloqueMapa, type MapaPlanilla } from "./mapa-planilla-intl";
-import { familiaDeConcepto, familiaPorClave, nombreDeCalculo, type OfertaPublica, type OfertasCalculadora, type OfertasMercado } from "./ofertas-intl";
+import { familiaDeConcepto, familiaPorClave, nombreDeCalculo, type OfertaPublica, type OfertasCalculadora, type OfertasMercado, type ReferenciaLocal } from "./ofertas-intl";
 import { ventaIntlActiva } from "./index";
 
 // ─── Mapa de la planilla ──────────────────────────────────────────────────────────────────────
@@ -85,7 +85,7 @@ function publica(p: ProductoIntl, hoja?: string): OfertaPublica {
 export function ofertasDeMercado(mercado: string): OfertasMercado {
   const pais = registro.pais(mercado as CodigoMercado);
   const porCalculadora: Record<string, OfertasCalculadora> = {};
-  if (!pais || mercado === "global" || mercado === "zz") return { activa: false, porCalculadora };
+  if (!pais || mercado === "global" || mercado === "zz") return { activa: false, porCalculadora, referencia: null };
   const productos = productosDeMercado(mercado);
   const planillas = productos.filter((p) => p.tipo === "planilla");
   for (const c of pais.calculadoras) {
@@ -100,7 +100,23 @@ export function ofertasDeMercado(mercado: string): OfertasMercado {
     else lista.push(...planilla, ...(informe ? [publica(informe)] : []));
     if (lista.length) porCalculadora[def.id] = { calc: def.slug, nombre: nombreDeCalculo(c.contenido.h1, pais.mercado.nombre), ofertas: lista };
   }
-  return { activa: ventaIntlActiva(), porCalculadora };
+  return { activa: ventaIntlActiva(), porCalculadora, referencia: referenciaLocalDe(mercado) };
+}
+
+// El tipo de cambio del dólar que ya cargan los datos del país (la serie vigente, con su tope de
+// antigüedad). Entre compra y venta, la venta: es a la que la persona compra dólares. Un país que
+// cobra en su moneda (ec, pa, sv) o sin serie confiable (cl, pe) no tiene referencia.
+const RE_SERIE_DOLAR = /dolar|cambio|trm|tasa-bcv/;
+
+export function referenciaLocalDe(mercado: string): ReferenciaLocal | null {
+  const pais = registro.pais(mercado as CodigoMercado);
+  if (!pais) return null;
+  const local = pais.mercado.monedas[0];
+  if (!local || local === "USD") return null;
+  const candidatas = registro.fichasSeries(pais.mercado.codigo, hoyEn(pais.mercado)).filter((f) => f.serie.unidad === local && RE_SERIE_DOLAR.test(f.serie.id) && f.vigente);
+  const ficha = candidatas.find((f) => /venta/.test(f.serie.id)) ?? candidatas[0];
+  const tasa = ficha?.vigente?.valor;
+  return typeof tasa === "number" && tasa > 0 ? { moneda: local, locale: pais.mercado.locale, tasa } : null;
 }
 
 export function informesDeMercado(mercado: string): ProductoIntl[] {

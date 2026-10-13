@@ -16,6 +16,7 @@ export default definirCalculadora({
     { id: "dias", tipo: "entero", etiqueta: "Días de incapacidad", ayuda: "Por enfermedad general (no laboral).", min: 1, max: 180, porDefecto: 5 },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     if (entrada.dias < 1 || entrada.dias > 180) throw new ErrorEntrada("Esta calculadora cubre incapacidades de 1 a 180 días.", "dias");
     const p = valores["co.incapacidad-porcentaje"];
     const diaSalario = entrada.salario / 30;

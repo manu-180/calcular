@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.prestamo",
   h1: "Calculadora de préstamos en República Dominicana",
-  title: "Calculadora de préstamos: cuota mensual e intereses",
+  title: "Préstamos en República Dominicana: cuota e intereses",
   description: "Calcula la cuota mensual de un préstamo personal, de vehículo o hipotecario con cuota fija, y cuánto pagas de intereses en total.",
   intro: [
     "Antes de pedir un préstamo conviene saber cuánto vas a pagar cada mes y cuánto te cuesta en intereses.",

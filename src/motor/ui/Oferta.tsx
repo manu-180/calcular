@@ -8,6 +8,7 @@ import {
   TEXTOS_OFERTA,
   bajadaOferta,
   familiaPorClave,
+  leyendaDeCobro,
   precioUSD,
   type OfertaPublica,
   type OfertasCalculadora,
@@ -97,17 +98,19 @@ export function OfertaResultado({ calculadora, control, contexto }: { calculador
 
   const deEsta = ofertas?.porCalculadora[calculadora];
   if (!caso || !deEsta || !deEsta.ofertas.length) return null;
-  return <Tarjeta key={deEsta.ofertas[0].producto} de={deEsta} activa={ofertas!.activa} caso={caso} contexto={contexto} />;
+  return <Tarjeta key={deEsta.ofertas[0].producto} de={deEsta} activa={ofertas!.activa} referencia={ofertas!.referencia} caso={caso} contexto={contexto} />;
 }
 
 function Tarjeta({
   de,
   activa,
+  referencia,
   caso,
   contexto,
 }: {
   de: OfertasCalculadora;
   activa: boolean;
+  referencia: OfertasMercado["referencia"];
   caso: { filas: readonly FilaFormateada[]; entrada: DatosIntl["entrada"] | null; textos: { etiqueta: string; valor: string }[] };
   contexto: ContextoSerializado;
 }) {
@@ -191,6 +194,7 @@ function Tarjeta({
               <strong>{precioUSD(principal.precioCentavos)}</strong>
               <span>{TEXTOS_OFERTA.pagoUnico}</span>
             </p>
+            <p className="cy-oferta-cambio">{leyendaDeCobro(principal.precioCentavos, referencia)}</p>
             {activa ? (
               <>
                 <a

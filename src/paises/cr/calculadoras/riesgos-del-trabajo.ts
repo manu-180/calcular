@@ -1,4 +1,4 @@
-import { definirCalculadora, enMapa, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
 export default definirCalculadora({
   id: "cr.riesgos-del-trabajo",
@@ -24,6 +24,7 @@ export default definirCalculadora({
     { id: "jornadaCompleta", tipo: "si-no", etiqueta: "Trabaja jornada ordinaria completa", porDefecto: true },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const diario = entrada.salario / valores["cr.dias-mes-planilla"];
     const segunSalario = porcentaje(diario, valores["cr.riesgos-subsidio-inicial"]);
     // Art. 236: con jornada completa el subsidio diario no baja del mínimo de las ocupaciones genéricas (art. 2 del decreto).

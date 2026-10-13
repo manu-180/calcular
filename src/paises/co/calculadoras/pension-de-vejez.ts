@@ -1,4 +1,4 @@
-import { definirCalculadora, enMapa, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
 export default definirCalculadora({
   id: "co.pension-de-vejez",
@@ -34,6 +34,7 @@ export default definirCalculadora({
     },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.ibl <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "ibl");
     const smmlv = valores["co.smmlv"];
     const m = valores["co.pension-monto"];
     const edadMinima = enMapa(valores["co.pension-edad"], entrada.sexo);

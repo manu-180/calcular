@@ -1,4 +1,4 @@
-import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
 export default definirCalculadora({
   id: "pe.essalud",
@@ -15,6 +15,7 @@ export default definirCalculadora({
     { id: "trabajadores", tipo: "entero", etiqueta: "Cantidad de trabajadores con ese sueldo", min: 1, max: 10000, porDefecto: 1 },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.remuneracion <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "remuneracion");
     // El aporte no se calcula sobre menos que la RMV aunque el sueldo sea menor (mismo criterio que el costo laboral).
     const base = Math.max(entrada.remuneracion, valores["pe.rmv"]);
     const porTrabajador = redondear(porcentaje(base, valores["pe.aporte-essalud"]));

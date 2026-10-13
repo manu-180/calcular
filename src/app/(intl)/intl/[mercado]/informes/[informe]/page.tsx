@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { ventaIntlActiva } from "@/lib/pagos";
 import { catalogoIntl, productoIntlDe } from "@/lib/pagos/catalogo-intl";
 import { rutaComprarIntl } from "@/lib/pagos/flujo-intl";
-import { CEJA_INFORME, TEXTOS_OFERTA, familiaPorClave, precioUSD } from "@/lib/pagos/ofertas-intl";
-import { calculadorasDeProducto } from "@/lib/pagos/ofertas-servidor";
+import { CEJA_INFORME, TEXTOS_OFERTA, familiaPorClave, leyendaDeCobro, precioUSD } from "@/lib/pagos/ofertas-intl";
+import { calculadorasDeProducto, referenciaLocalDe } from "@/lib/pagos/ofertas-servidor";
 import { ejecutar, valoresIniciales } from "@/motor/formulario";
 import { rutaIntl, urlIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion } from "@/motor/sitio";
@@ -134,6 +134,7 @@ export default async function LandingInformeIntl({ params }: Props) {
                   <strong>{precioUSD(p.precioCentavos)}</strong>
                   <span>{TEXTOS_OFERTA.pagoUnico}</span>
                 </p>
+                <p className="cy-oferta-cambio">{leyendaDeCobro(p.precioCentavos, referenciaLocalDe(m.codigo))}</p>
                 {ventaIntlActiva() ? (
                   <>
                     <a
