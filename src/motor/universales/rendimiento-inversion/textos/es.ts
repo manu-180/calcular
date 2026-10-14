@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiRendimientoInversion } from "../definicion";
 
-export const textosEs: TextosUi<UiRendimientoInversion> = {
+const base: TextosUi<UiRendimientoInversion> = {
   slug: "rendimiento-de-inversion",
   ui: (trato) => ({
     inicial: "Inversión inicial",
@@ -36,3 +37,16 @@ export const textosEs: TextosUi<UiRendimientoInversion> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiRendimientoInversion> => ({
+  cobrado: "Rendimientos cobrados por el camino (opcional)",
+  ganancia: "Beneficio",
+  roi: "Rentabilidad total (ROI)",
+  cagr: "Rentabilidad anual (CAGR)",
+  cagrAyuda: "La rentabilidad por año que da el mismo resultado si se compone año tras año.",
+  observacionCorto:
+    "Con menos de un año, la rentabilidad anual estira un resultado corto como si se repitiera todo el año. Tómala con cuidado.",
+  observacionInflacion: "Para saber si has ganado poder adquisitivo, compara la rentabilidad anual con la inflación del mismo periodo.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

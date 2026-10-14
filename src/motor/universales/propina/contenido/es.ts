@@ -19,7 +19,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
         "Escriba el total de la cuenta, el porcentaje de propina y cuántos pagan. Verá la propina, el total y lo que pone cada uno.",
         "Escribí el total de la cuenta, el porcentaje de propina y cuántos pagan. Ves la propina, el total y lo que pone cada uno.",
       ),
-      "Si prefieren montos redondos, la calculadora sube lo de cada persona al entero siguiente y lo que sobra va a la propina.",
+      "Si prefieren cifras redondas, la calculadora sube lo de cada persona al entero siguiente y lo que sobra va a la propina.",
     ],
     comoSeCalcula: [
       "Propina = cuenta × porcentaje ÷ 100.",
@@ -38,9 +38,9 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
       {
         pregunta: "¿La propina se calcula antes o después de impuestos?",
         respuesta: t(
-          "Lo más común es calcularla sobre el total que figura en la cuenta. Si quieres hacerlo sobre el precio sin impuestos, escribe ese monto.",
-          "Lo más común es calcularla sobre el total que figura en la cuenta. Si quiere hacerlo sobre el precio sin impuestos, escriba ese monto.",
-          "Lo más común es calcularla sobre el total que figura en la cuenta. Si querés hacerlo sobre el precio sin impuestos, escribí ese monto.",
+          "Lo más común es calcularla sobre el total que figura en la cuenta. Si quieres hacerlo sobre el precio sin impuestos, escribe esa cifra.",
+          "Lo más común es calcularla sobre el total que figura en la cuenta. Si quiere hacerlo sobre el precio sin impuestos, escriba esa cifra.",
+          "Lo más común es calcularla sobre el total que figura en la cuenta. Si querés hacerlo sobre el precio sin impuestos, escribí esa cifra.",
         ),
       },
       {
@@ -49,7 +49,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
       },
     ],
     glosario: [
-      { termino: "Propina", definicion: "Monto voluntario que se deja por el servicio, además del precio." },
+      { termino: "Propina", definicion: "Cantidad voluntaria que se deja por el servicio, además del precio." },
       { termino: "Servicio incluido", definicion: "Cuando el local ya sumó un cargo por servicio a la cuenta." },
     ],
   };

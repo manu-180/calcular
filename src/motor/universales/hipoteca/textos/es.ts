@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiHipoteca } from "../definicion";
 
-export const textosEs: TextosUi<UiHipoteca> = {
+const base: TextosUi<UiHipoteca> = {
   slug: "hipoteca",
   ui: (trato) => ({
     precio: "Precio de la vivienda",
@@ -50,3 +51,15 @@ export const textosEs: TextosUi<UiHipoteca> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiHipoteca> => ({
+  entradaPorcentaje: "Entrada (% del precio)",
+  tasa: "Tipo de interés anual (%)",
+  gastos: "Gastos mensuales de la vivienda (opcional)",
+  gastosAyuda: "Seguros, IBI o gastos de comunidad que pagas junto con la cuota, prorrateados al mes.",
+  prestado: "Importe de la hipoteca",
+  observacionCostos:
+    "No incluye los gastos de compra (notaría, registro, impuestos como el ITP o el IVA, tasación). Tenlos en cuenta además de la entrada.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

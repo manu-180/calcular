@@ -1,7 +1,8 @@
-import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 import { comparar } from "../definicion";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const m = (n: number) => formatearMonto(ctx, n);
   const precio = montoEjemplo(ctx, 200000);
@@ -73,3 +74,53 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const m = (n: number) => formatearMonto(ctx, n);
+  const precio = montoEjemplo(ctx, 200000);
+  const alquiler = montoEjemplo(ctx, 1000);
+  const supuestos = { precio, entrada: 20, gastosCompra: 10, tasa: 3, aniosHipoteca: 25, alquiler, aumentoAlquiler: 3, gastosPropietario: 1.5, revalorizacion: 3, rendimiento: 5 };
+  const a10 = comparar({ ...supuestos, horizonte: 10 }).anios[9];
+  const a3 = comparar({ ...supuestos, horizonte: 3 }).anios[2];
+  const quien = (a: { comprar: number; alquilar: number }) => (a.comprar >= a.alquilar ? "comprar" : "alquilar");
+  return {
+    intro: [
+      "Comparar la cuota con el alquiler no basta. Al comprar pagas intereses, mantenimiento, IBI y comunidad, pero la vivienda queda a tu nombre. Al alquilar, el dinero de la entrada puede seguir rindiendo.",
+      "Esta calculadora suma todo eso año a año y te dice con cuál de las dos opciones terminas con más patrimonio.",
+    ],
+    comoSeCalcula: [
+      "Comprando: cada mes se pagan la cuota de la hipoteca y los gastos del propietario. El patrimonio es el valor de la vivienda menos lo que se debe.",
+      "Alquilando: la entrada y los gastos de compra quedan invertidos al rendimiento alternativo, y el alquiler sube cada año.",
+      "Cada mes, quien gasta menos invierte la diferencia. Así las dos opciones salen del mismo bolsillo.",
+      "Compensa la opción con más patrimonio al final del periodo.",
+    ],
+    ejemplo: [
+      `Vivienda de ${m(precio)} con un 20 % de entrada, un 10 % de gastos de compra e hipoteca al 3 % a 25 años, frente a un alquiler de ${m(alquiler)} al mes.`,
+      `A 10 años compensa ${quien(a10)} por ${m(Math.abs(a10.comprar - a10.alquilar))}. A 3 años compensa ${quien(a3)} por ${m(Math.abs(a3.comprar - a3.alquilar))}.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿Es verdad que alquilar es tirar el dinero?",
+        respuesta:
+          "No del todo. Comprando también pagas cosas que no vuelven: intereses, impuestos y mantenimiento. Lo que importa es cuánto patrimonio tienes al final en cada caso.",
+      },
+      {
+        pregunta: "¿Por qué el resultado cambia según los años?",
+        respuesta:
+          "Porque comprar tiene costes altos al principio (gastos de compra e intereses) que se recuperan con el tiempo. Si piensas mudarte pronto, alquilar suele salir mejor.",
+      },
+      {
+        pregunta: "¿Qué dato pesa más en el resultado?",
+        respuesta:
+          "La relación entre el precio y el alquiler, el tipo de interés de la hipoteca y cuánto sube el valor de la vivienda. Prueba a cambiar la revalorización y el rendimiento para ver cuánto se mueve.",
+      },
+    ],
+    glosario: [
+      { termino: "Patrimonio", definicion: "Lo que se tiene menos lo que se debe." },
+      { termino: "Revalorización", definicion: "Cuánto sube al año el precio de la vivienda." },
+      { termino: "Coste de oportunidad", definicion: "Lo que deja de ganar el dinero de la entrada por no estar invertido." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

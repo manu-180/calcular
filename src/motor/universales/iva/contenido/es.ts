@@ -15,9 +15,9 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     intro: [
       `La tasa general del IVA en ${ctx.nombrePais} es del ${tasa}.`,
       t(
-        "Elige si quieres sumar el IVA a un precio neto o sacarlo de un precio que ya lo incluye, y escribe el monto.",
-        "Elija si quiere sumar el IVA a un precio neto o sacarlo de un precio que ya lo incluye, y escriba el monto.",
-        "Elegí si querés sumar el IVA a un precio neto o sacarlo de un precio que ya lo incluye, y escribí el monto.",
+        "Elige si quieres sumar el IVA a un precio neto o sacarlo de un precio que ya lo incluye, y escribe el precio.",
+        "Elija si quiere sumar el IVA a un precio neto o sacarlo de un precio que ya lo incluye, y escriba el precio.",
+        "Elegí si querés sumar el IVA a un precio neto o sacarlo de un precio que ya lo incluye, y escribí el precio.",
       ),
     ],
     comoSeCalcula: [

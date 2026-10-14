@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiMetaDeAhorro } from "../definicion";
 
-export const textosEs: TextosUi<UiMetaDeAhorro> = {
+const base: TextosUi<UiMetaDeAhorro> = {
   slug: "meta-de-ahorro",
   ui: (trato) => ({
     meta: segunTrato(trato, { tu: "¿Cuánto quieres juntar?", usted: "¿Cuánto quiere juntar?", vos: "¿Cuánto querés juntar?" }),
@@ -29,3 +30,14 @@ export const textosEs: TextosUi<UiMetaDeAhorro> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiMetaDeAhorro> => ({
+  meta: "¿Cuánto quieres reunir?",
+  aporteMensual: "Lo que tienes que ahorrar al mes",
+  aporteSemanal: "Equivale a la semana a",
+  totalAportado: "Total de aportaciones",
+  errorMeta: "Escribe cuánto quieres reunir.",
+  yaLlegas: "Con lo que ya tienes llegas a la meta en ese plazo, sin ahorrar más.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

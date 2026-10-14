@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiHormigon } from "../definicion";
 
-export const textosEs: TextosUi<UiHormigon> = {
+const base: TextosUi<UiHormigon> = {
   slug: "hormigon",
   ui: (trato) => ({
     largo: (u) => `Largo (${u})`,
@@ -27,3 +28,8 @@ export const textosEs: TextosUi<UiHormigon> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiHormigon> => ({
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

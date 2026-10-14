@@ -80,6 +80,10 @@ const VOCABULARIO: Readonly<Record<string, Vocabulario>> = {
       [/\bplata\b/i, "dinero"],
       [/\bacá\b/i, "aquí"],
       [/\bchequea/i, "comprueba"],
+      [/\bmontos?\b/i, "importe / cantidad"],
+      [/\baportes?\b/i, "aportación"],
+      [/\bmercadería/i, "mercancía"],
+      [/\bse prende|\bprender\b/i, "encender"],
     ],
   },
   "pt-PT": {

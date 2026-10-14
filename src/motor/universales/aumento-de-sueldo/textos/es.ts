@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiAumentoDeSueldo } from "../definicion";
 
-export const textosEs: TextosUi<UiAumentoDeSueldo> = {
+const base: TextosUi<UiAumentoDeSueldo> = {
   slug: "aumento-de-sueldo",
   ui: (trato) => ({
     sueldo: "Sueldo mensual actual",
@@ -56,3 +57,23 @@ export const textosEs: TextosUi<UiAumentoDeSueldo> = {
     observacionIgual: "El aumento empata con la inflación: el sueldo compra lo mismo que antes.",
   }),
 };
+
+const espana = (): Partial<UiAumentoDeSueldo> => ({
+  aumentoPorcentaje: "Subida (%)",
+  aumentoMonto: "Subida en dinero (opcional)",
+  aumentoMontoAyuda: "Si te la han dado como un importe fijo, escríbelo aquí. Se usa en lugar del porcentaje.",
+  inflacion: "Inflación del periodo (%, opcional)",
+  inflacionAyuda: "La inflación (IPC) desde la última subida, para saber si el sueldo compra más o menos que antes.",
+  sueldosAnio: "Pagas al año",
+  sueldosAnioAyuda: "12 si cobras en 12 pagas o tienes las pagas extra prorrateadas. 14 si cobras aparte las dos pagas extra.",
+  diferenciaMensual: "Diferencia al mes",
+  diferenciaAnual: "Diferencia al año",
+  porcentaje: "Subida en porcentaje",
+  real: "Subida real (descontada la inflación)",
+  errorSinAumento: "Escribe la subida en porcentaje o en dinero.",
+  observacionGana: (puntos) => `Ganas a la inflación: tu sueldo compra un ${puntos} % más que antes.`,
+  observacionPierde: (puntos) => `La subida no compensa la inflación: tu sueldo compra un ${puntos} % menos que antes.`,
+  observacionIgual: "La subida iguala a la inflación: el sueldo compra lo mismo que antes.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

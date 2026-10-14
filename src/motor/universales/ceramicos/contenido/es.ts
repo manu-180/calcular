@@ -1,6 +1,7 @@
-import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
   const pieza = 0.6 * 0.6;
@@ -50,3 +51,8 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => ({
+});
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });
