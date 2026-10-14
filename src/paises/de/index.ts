@@ -11,6 +11,10 @@ import minijobRechner from "./calculadoras/minijob-rechner";
 import midijobRechner from "./calculadoras/midijob-rechner";
 import sozialversicherungsRechner from "./calculadoras/sozialversicherungs-rechner";
 import arbeitgeberkostenRechner from "./calculadoras/arbeitgeberkosten-rechner";
+import abfindungsrechner from "./calculadoras/abfindungsrechner";
+import kuendigungsfristRechner from "./calculadoras/kuendigungsfrist-rechner";
+import urlaubsanspruchRechner from "./calculadoras/urlaubsanspruch-rechner";
+import ueberstundenRechner from "./calculadoras/ueberstunden-rechner";
 import rentenrechner from "./calculadoras/rentenrechner";
 import pendlerpauschaleRechner from "./calculadoras/pendlerpauschale-rechner";
 import contenidoBruttoNettoRechner from "./contenido/brutto-netto-rechner";
@@ -24,6 +28,10 @@ import contenidoMinijobRechner from "./contenido/minijob-rechner";
 import contenidoMidijobRechner from "./contenido/midijob-rechner";
 import contenidoSozialversicherungsRechner from "./contenido/sozialversicherungs-rechner";
 import contenidoArbeitgeberkostenRechner from "./contenido/arbeitgeberkosten-rechner";
+import contenidoAbfindungsrechner from "./contenido/abfindungsrechner";
+import contenidoKuendigungsfristRechner from "./contenido/kuendigungsfrist-rechner";
+import contenidoUrlaubsanspruchRechner from "./contenido/urlaubsanspruch-rechner";
+import contenidoUeberstundenRechner from "./contenido/ueberstunden-rechner";
 import contenidoRentenrechner from "./contenido/rentenrechner";
 import contenidoPendlerpauschaleRechner from "./contenido/pendlerpauschale-rechner";
 import datos from "./datos.json";
@@ -49,6 +57,10 @@ export default definirPais({
     { definicion: midijobRechner, contenido: contenidoMidijobRechner, cliente: () => import("./calculadoras/midijob-rechner.cliente") },
     { definicion: sozialversicherungsRechner, contenido: contenidoSozialversicherungsRechner, cliente: () => import("./calculadoras/sozialversicherungs-rechner.cliente") },
     { definicion: arbeitgeberkostenRechner, contenido: contenidoArbeitgeberkostenRechner, cliente: () => import("./calculadoras/arbeitgeberkosten-rechner.cliente") },
+    { definicion: abfindungsrechner, contenido: contenidoAbfindungsrechner, cliente: () => import("./calculadoras/abfindungsrechner.cliente") },
+    { definicion: kuendigungsfristRechner, contenido: contenidoKuendigungsfristRechner, cliente: () => import("./calculadoras/kuendigungsfrist-rechner.cliente") },
+    { definicion: urlaubsanspruchRechner, contenido: contenidoUrlaubsanspruchRechner, cliente: () => import("./calculadoras/urlaubsanspruch-rechner.cliente") },
+    { definicion: ueberstundenRechner, contenido: contenidoUeberstundenRechner, cliente: () => import("./calculadoras/ueberstunden-rechner.cliente") },
     { definicion: rentenrechner, contenido: contenidoRentenrechner, cliente: () => import("./calculadoras/rentenrechner.cliente") },
     { definicion: pendlerpauschaleRechner, contenido: contenidoPendlerpauschaleRechner, cliente: () => import("./calculadoras/pendlerpauschale-rechner.cliente") },
   ],
