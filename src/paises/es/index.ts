@@ -12,6 +12,10 @@ import finiquito from "./calculadoras/finiquito";
 import vacaciones from "./calculadoras/vacaciones";
 import pagasExtra from "./calculadoras/pagas-extra";
 import horasExtra from "./calculadoras/horas-extra";
+import paro from "./calculadoras/paro";
+import bajaLaboral from "./calculadoras/baja-laboral";
+import iprem from "./calculadoras/iprem";
+import facturaAutonomo from "./calculadoras/factura-autonomo";
 import contenidoSueldoNeto from "./contenido/sueldo-neto";
 import contenidoRetencionIrpf from "./contenido/retencion-irpf";
 import contenidoCotizacionSeguridadSocial from "./contenido/cotizacion-seguridad-social";
@@ -24,6 +28,10 @@ import contenidoFiniquito from "./contenido/finiquito";
 import contenidoVacaciones from "./contenido/vacaciones";
 import contenidoPagasExtra from "./contenido/pagas-extra";
 import contenidoHorasExtra from "./contenido/horas-extra";
+import contenidoParo from "./contenido/paro";
+import contenidoBajaLaboral from "./contenido/baja-laboral";
+import contenidoIprem from "./contenido/iprem";
+import contenidoFacturaAutonomo from "./contenido/factura-autonomo";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +56,10 @@ export default definirPais({
     { definicion: vacaciones, contenido: contenidoVacaciones, cliente: () => import("./calculadoras/vacaciones.cliente") },
     { definicion: pagasExtra, contenido: contenidoPagasExtra, cliente: () => import("./calculadoras/pagas-extra.cliente") },
     { definicion: horasExtra, contenido: contenidoHorasExtra, cliente: () => import("./calculadoras/horas-extra.cliente") },
+    { definicion: paro, contenido: contenidoParo, cliente: () => import("./calculadoras/paro.cliente") },
+    { definicion: bajaLaboral, contenido: contenidoBajaLaboral, cliente: () => import("./calculadoras/baja-laboral.cliente") },
+    { definicion: iprem, contenido: contenidoIprem, cliente: () => import("./calculadoras/iprem.cliente") },
+    { definicion: facturaAutonomo, contenido: contenidoFacturaAutonomo, cliente: () => import("./calculadoras/factura-autonomo.cliente") },
   ],
   universales: { todas: true },
   novedades,
