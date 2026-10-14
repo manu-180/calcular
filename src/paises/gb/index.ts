@@ -22,6 +22,14 @@ import maternityPay from "./calculadoras/maternity-pay";
 import contenidoMaternityPay from "./contenido/maternity-pay";
 import statutorySickPay from "./calculadoras/statutory-sick-pay";
 import contenidoStatutorySickPay from "./contenido/statutory-sick-pay";
+import selfEmployedTax from "./calculadoras/self-employed-tax";
+import contenidoSelfEmployedTax from "./contenido/self-employed-tax";
+import dividendTax from "./calculadoras/dividend-tax";
+import contenidoDividendTax from "./contenido/dividend-tax";
+import capitalGainsTax from "./calculadoras/capital-gains-tax";
+import contenidoCapitalGainsTax from "./contenido/capital-gains-tax";
+import pensionTaxRelief from "./calculadoras/pension-tax-relief";
+import contenidoPensionTaxRelief from "./contenido/pension-tax-relief";
 import employerNiCalculator from "./calculadoras/employer-ni-calculator";
 import contenidoEmployerNiCalculator from "./contenido/employer-ni-calculator";
 import noticePeriod from "./calculadoras/notice-period";
@@ -49,6 +57,10 @@ export default definirPais({
     { definicion: holidayEntitlement, contenido: contenidoHolidayEntitlement, cliente: () => import("./calculadoras/holiday-entitlement.cliente") },
     { definicion: maternityPay, contenido: contenidoMaternityPay, cliente: () => import("./calculadoras/maternity-pay.cliente") },
     { definicion: statutorySickPay, contenido: contenidoStatutorySickPay, cliente: () => import("./calculadoras/statutory-sick-pay.cliente") },
+    { definicion: selfEmployedTax, contenido: contenidoSelfEmployedTax, cliente: () => import("./calculadoras/self-employed-tax.cliente") },
+    { definicion: dividendTax, contenido: contenidoDividendTax, cliente: () => import("./calculadoras/dividend-tax.cliente") },
+    { definicion: capitalGainsTax, contenido: contenidoCapitalGainsTax, cliente: () => import("./calculadoras/capital-gains-tax.cliente") },
+    { definicion: pensionTaxRelief, contenido: contenidoPensionTaxRelief, cliente: () => import("./calculadoras/pension-tax-relief.cliente") },
     { definicion: employerNiCalculator, contenido: contenidoEmployerNiCalculator, cliente: () => import("./calculadoras/employer-ni-calculator.cliente") },
     { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
   ],
