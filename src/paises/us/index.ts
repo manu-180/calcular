@@ -20,6 +20,32 @@ import contenidoNoTaxOnTips from "./contenido/no-tax-on-tips";
 import contenidoOvertime from "./contenido/overtime";
 import contenidoSelfEmploymentTax from "./contenido/self-employment-tax";
 import contenidoTakeHomePay from "./contenido/take-home-pay";
+import capitalGainsTax from "./calculadoras/capital-gains-tax";
+import contenidoCapitalGainsTax from "./contenido/capital-gains-tax";
+import k401Contribution from "./calculadoras/401k-contribution";
+import contenidoK401Contribution from "./contenido/401k-contribution";
+import rothIraContribution from "./calculadoras/roth-ira-contribution";
+import contenidoRothIraContribution from "./contenido/roth-ira-contribution";
+import hsaContribution from "./calculadoras/hsa-contribution";
+import contenidoHsaContribution from "./contenido/hsa-contribution";
+import rmdCalculator from "./calculadoras/rmd-calculator";
+import contenidoRmdCalculator from "./contenido/rmd-calculator";
+import socialSecurityBenefits from "./calculadoras/social-security-benefits";
+import contenidoSocialSecurityBenefits from "./contenido/social-security-benefits";
+import childTaxCredit from "./calculadoras/child-tax-credit";
+import contenidoChildTaxCredit from "./contenido/child-tax-credit";
+import quarterlyEstimatedTaxes from "./calculadoras/quarterly-estimated-taxes";
+import contenidoQuarterlyEstimatedTaxes from "./contenido/quarterly-estimated-taxes";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
+import salesTax from "./calculadoras/sales-tax";
+import contenidoSalesTax from "./contenido/sales-tax";
+import mileageReimbursement from "./calculadoras/mileage-reimbursement";
+import contenidoMileageReimbursement from "./contenido/mileage-reimbursement";
+import seniorDeduction from "./calculadoras/senior-deduction";
+import contenidoSeniorDeduction from "./contenido/senior-deduction";
+import standardDeduction from "./calculadoras/standard-deduction";
+import contenidoStandardDeduction from "./contenido/standard-deduction";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -42,6 +68,19 @@ export default definirPais({
     { definicion: overtime, contenido: contenidoOvertime, cliente: () => import("./calculadoras/overtime.cliente") },
     { definicion: noTaxOnOvertime, contenido: contenidoNoTaxOnOvertime, cliente: () => import("./calculadoras/no-tax-on-overtime.cliente") },
     { definicion: noTaxOnTips, contenido: contenidoNoTaxOnTips, cliente: () => import("./calculadoras/no-tax-on-tips.cliente") },
+    { definicion: capitalGainsTax, contenido: contenidoCapitalGainsTax, cliente: () => import("./calculadoras/capital-gains-tax.cliente") },
+    { definicion: k401Contribution, contenido: contenidoK401Contribution, cliente: () => import("./calculadoras/401k-contribution.cliente") },
+    { definicion: rothIraContribution, contenido: contenidoRothIraContribution, cliente: () => import("./calculadoras/roth-ira-contribution.cliente") },
+    { definicion: hsaContribution, contenido: contenidoHsaContribution, cliente: () => import("./calculadoras/hsa-contribution.cliente") },
+    { definicion: rmdCalculator, contenido: contenidoRmdCalculator, cliente: () => import("./calculadoras/rmd-calculator.cliente") },
+    { definicion: socialSecurityBenefits, contenido: contenidoSocialSecurityBenefits, cliente: () => import("./calculadoras/social-security-benefits.cliente") },
+    { definicion: childTaxCredit, contenido: contenidoChildTaxCredit, cliente: () => import("./calculadoras/child-tax-credit.cliente") },
+    { definicion: quarterlyEstimatedTaxes, contenido: contenidoQuarterlyEstimatedTaxes, cliente: () => import("./calculadoras/quarterly-estimated-taxes.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
+    { definicion: salesTax, contenido: contenidoSalesTax, cliente: () => import("./calculadoras/sales-tax.cliente") },
+    { definicion: mileageReimbursement, contenido: contenidoMileageReimbursement, cliente: () => import("./calculadoras/mileage-reimbursement.cliente") },
+    { definicion: seniorDeduction, contenido: contenidoSeniorDeduction, cliente: () => import("./calculadoras/senior-deduction.cliente") },
+    { definicion: standardDeduction, contenido: contenidoStandardDeduction, cliente: () => import("./calculadoras/standard-deduction.cliente") },
   ],
   universales: "todas",
   novedades,
