@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Inflation calculator",
   title: "Inflation Calculator: value of a dollar with the CPI",
   description:
-    "See what an amount from any month since 1997 is worth today, with the official CPI-U from the Bureau of Labor Statistics. Cumulative and average yearly inflation.",
+    "See what an amount from any month since 1997 is worth today with the official CPI-U from the Bureau of Labor Statistics. Cumulative and yearly inflation.",
   intro: [
     "Prices rise over time, so a dollar buys less every year. Enter an amount and two months to see how much money you would need today to buy the same things.",
     "The calculator uses the Consumer Price Index for All Urban Consumers (CPI-U), the inflation measure the BLS publishes every month. The latest value is {{us.cpi-u}}.",

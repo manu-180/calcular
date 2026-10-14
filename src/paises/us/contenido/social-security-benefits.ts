@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Social Security benefits calculator",
   title: "Social Security Benefits Calculator: claim at 62, 67 or 70",
   description:
-    "Estimate your monthly Social Security retirement benefit from your average indexed monthly earnings, and see how claiming early or late changes it. Official SSA formula.",
+    "Estimate your monthly Social Security retirement benefit from your average indexed monthly earnings and see how claiming early or late changes it.",
   intro: [
     "Your Social Security check depends on your lifetime earnings and on the age you start. Starting early cuts it for life, and waiting until 70 raises it.",
     "Enter your average indexed monthly earnings (AIME) and the age you plan to claim to estimate your monthly benefit.",
