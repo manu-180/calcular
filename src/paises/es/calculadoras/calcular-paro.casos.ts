@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import paro from "./paro";
+import paro from "./calcular-paro";
 
 const LGSS = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724";
 

@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import coste from "./coste-trabajador";
+import coste from "./coste-trabajador-empresa";
 
 export default definirCasos(coste, [
   {

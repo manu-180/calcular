@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import jubilacion from "./jubilacion";
+import jubilacion from "./pension-jubilacion";
 
 const LGSS = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724";
 
