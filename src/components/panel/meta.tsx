@@ -1,6 +1,6 @@
 import type { ComponentType, SVGProps } from "react";
 import type { Kpi, KpiClave, PanelDatos, PasoEmbudo } from "@/lib/panel/tipos";
-import { duracion, numero, pesos, plural } from "@/lib/panel/formato";
+import { dolares, duracion, numero, pesos, plural } from "@/lib/panel/formato";
 import type { FormatoNumero } from "./NumeroAnimado";
 import { IcoBolsa, IcoCalculadora, IcoMano, IcoPersonas, IcoReloj, IcoTarjeta } from "./iconos";
 
@@ -55,6 +55,12 @@ export const META_KPI: Record<KpiClave, MetaKpi> = {
     valor: (n) => pesos(n),
   },
 };
+
+const INGRESOS_USD: MetaKpi = { ...META_KPI.ingresos, formato: "dolares", valor: (n) => dolares(n) };
+
+export function metaKpi(clave: KpiClave, datos: PanelDatos): MetaKpi {
+  return clave === "ingresos" && datos.ingresos.moneda === "USD" ? INGRESOS_USD : META_KPI[clave];
+}
 
 export const TARJETAS: KpiClave[] = ["visitantes", "usos", "tiempo", "interes", "checkouts", "ventas"];
 

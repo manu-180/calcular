@@ -1,0 +1,113 @@
+import type { DiccionarioLegal } from "./tipos";
+
+export const pt: DiccionarioLegal = ({ actualizado, mail }) => ({
+  base: {
+    sobre: {
+      title: "Quem somos | CalcularYa",
+      description: "O CalcularYa faz calculadoras de trabalho, dinheiro e dia a dia para cada país, com os dados tirados da fonte oficial.",
+      h1: "Quem somos",
+      bajada: "Calculadoras para cada país, com o dado oficial de cada um.",
+      bloques: [
+        {
+          parrafos: [
+            "O CalcularYa é um site de calculadoras para as contas do dia a dia: salário, empréstimos, impostos, datas e muito mais.",
+            "Quem faz é Manuel Navarro, que também mantém o calcular.ar, o site de calculadoras da Argentina.",
+          ],
+        },
+        {
+          titulo: "Como trabalhamos",
+          parrafos: [
+            "Quando uma conta depende de uma norma (um salário mínimo, uma alíquota de contribuição, um teto), conferimos o valor na fonte oficial do país: o diário oficial, o ministério, o banco central ou o órgão que arrecada os impostos.",
+            "Guardamos o link e a data da conferência e mostramos os dois junto de cada calculadora.",
+            "Se um valor não pôde ser confirmado na fonte oficial, a calculadora que o usa não é publicada.",
+            "Quando uma norma muda, a calculadora muda junto e a mudança fica registrada nas novidades de cada país.",
+          ],
+        },
+        { titulo: "Grátis", parrafos: ["As calculadoras são grátis e não pedem cadastro."] },
+      ],
+    },
+    contacto: {
+      title: "Contato | CalcularYa",
+      description: "Escreva para nós se um dado estiver desatualizado, se uma conta não der o esperado ou se faltar uma calculadora ou um país.",
+      h1: "Contato",
+      bajada: `Nosso e-mail é ${mail}.`,
+      bloques: [
+        {
+          parrafos: [
+            "Ajuda muito saber se um dado está desatualizado, se uma conta não deu o resultado esperado ou se falta uma calculadora ou um país.",
+            "Se for sobre um dado, informe o país e a página onde ele aparece.",
+            "Quem responde é uma pessoa. Pode levar alguns dias.",
+          ],
+        },
+      ],
+    },
+    privacidad: {
+      title: "Privacidade | CalcularYa",
+      description: "Quais dados o CalcularYa usa: o que é digitado numa calculadora é processado no navegador e não fica guardado.",
+      h1: "Privacidade",
+      bajada: `Última atualização: ${actualizado}.`,
+      bloques: [
+        {
+          titulo: "O que é digitado numa calculadora",
+          parrafos: ["A conta é feita no navegador. O que é digitado não é enviado a nenhum servidor e não fica guardado."],
+        },
+        {
+          titulo: "O país da visita",
+          parrafos: [
+            "Para sugerir as calculadoras do país certo, verificamos de que país vem a visita. Nosso provedor de hospedagem deduz isso a partir do endereço IP.",
+            "Não guardamos nem o IP nem o país. A resposta fica no navegador enquanto dura a visita.",
+          ],
+        },
+        {
+          titulo: "O que o navegador guarda",
+          parrafos: [
+            "Usamos o armazenamento de sessão do navegador para lembrar o país escolhido e se o aviso que o sugere foi fechado. Tudo é apagado ao fechar a aba.",
+            "Não usamos cookies de publicidade nem de rastreamento.",
+          ],
+        },
+        {
+          titulo: "Hospedagem",
+          parrafos: ["O site está hospedado na Vercel. Como qualquer servidor, ela registra dados técnicos de cada visita (o endereço IP e o navegador) para que o site funcione com segurança."],
+        },
+        {
+          titulo: "Mudanças e dúvidas",
+          parrafos: [
+            "Se algo disso mudar (por exemplo, se passarmos a ter publicidade), vamos avisar nesta página antes que a mudança comece a valer.",
+            `Para qualquer dúvida sobre dados pessoais, nosso e-mail é ${mail}.`,
+          ],
+        },
+      ],
+    },
+    terminos: {
+      title: "Termos de uso | CalcularYa",
+      description: "As calculadoras do CalcularYa dão uma estimativa com os dados oficiais em vigor. Servem de orientação e não substituem uma assessoria.",
+      h1: "Termos de uso",
+      bajada: `Última atualização: ${actualizado}.`,
+      bloques: [
+        {
+          titulo: "Para que servem as calculadoras",
+          parrafos: [
+            "Os resultados são uma estimativa feita com os dados oficiais em vigor. Servem de orientação.",
+            "Não substituem o cálculo de um empregador, de um contador ou de um advogado, nem o que diz o órgão oficial.",
+          ],
+        },
+        {
+          titulo: "De onde vêm os dados",
+          parrafos: [
+            "Cada calculadora mostra a fonte oficial dos seus valores e a data em que os conferimos.",
+            "Fazemos o possível para mantê-los em dia, mas uma norma pode mudar antes de a incluirmos.",
+          ],
+        },
+        {
+          titulo: "Uso do site",
+          parrafos: ["O site é grátis. É permitido usá-lo e compartilhar os links. Não é permitido copiar o conteúdo em massa nem se passar pelo CalcularYa."],
+        },
+        {
+          titulo: "Responsabilidade",
+          parrafos: ["Não respondemos por decisões tomadas só com base num resultado do site. Antes de assinar, pagar ou reclamar algo, vale confirmar a conta com quem for responsável."],
+        },
+        { titulo: "Contato", parrafos: [`Nosso e-mail é ${mail}.`] },
+      ],
+    },
+  },
+});

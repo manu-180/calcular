@@ -1,11 +1,10 @@
 import { categoriaDe, ORDEN_CATEGORIAS, textosSitio, type Categoria, type TextosSitio } from "../i18n";
-import type { ModoPublicacion, Registro } from "../registro";
+import { marcadoresDe, type ModoPublicacion, type Registro } from "../registro";
 import { rutaIntl } from "../seo";
 import { modoPublicacion } from "../sitio";
 import type { CodigoMercado, EntradaCalculadora, FechaISO, Mercado } from "../tipos";
 import { hoyEn } from "../vigencia";
-import type { DestinoPais } from "./AvisoPais";
-import type { OpcionPais } from "./SelectorPais";
+import { aCompacto, nombreDePais, ordenarPorNombre, type OpcionPais, type PaisCompacto } from "./paises";
 
 export interface ContextoSitio {
   registro: Registro;
@@ -21,18 +20,33 @@ export function contextoSitio(registro: Registro, codigo: CodigoMercado): Contex
   const visibles = registro.mercados(modo);
   const mercado = visibles.find((m) => m.codigo === codigo);
   if (!mercado) return null;
+  const paises = ordenarPorNombre(
+    visibles.filter((m) => m.codigo !== "global").map((m) => ({ m, nombre: nombreDePais(m, mercado.locale) })),
+    mercado.locale,
+  ).map((x) => x.m);
   return {
     registro,
     modo,
     mercado,
     fecha: hoyEn(mercado),
     textos: textosSitio(mercado.idioma, mercado.trato),
-    paises: visibles.filter((m) => m.codigo !== "global").sort((a, b) => a.nombre.localeCompare(b.nombre, "es")),
+    paises,
   };
 }
 
+export function nombreEnPagina(ctx: ContextoSitio, m: Mercado): string {
+  return nombreDePais(m, ctx.mercado.locale);
+}
+
 export function opcionesSelector(ctx: ContextoSitio): OpcionPais[] {
-  return ctx.paises.map((m) => ({ codigo: m.codigo, nombre: m.nombre, pais: m.pais, href: rutaIntl(m.codigo) }));
+  return ctx.paises.map((m) => ({ codigo: m.codigo, nombre: nombreEnPagina(ctx, m), pais: m.pais, href: rutaIntl(m.codigo) }));
+}
+
+// La lista que viaja al navegador (ProveedorPaises): los mercados más los países de otro sitio
+// (Argentina, en calcular.ar), ordenados por nombre en el idioma de la página.
+export function listaCompacta(ctx: ContextoSitio, externos: readonly OpcionPais[] = []): PaisCompacto[] {
+  const nombrados = externos.map((e) => ({ ...e, nombre: nombreDePais({ codigo: e.codigo, pais: e.pais, nombre: e.nombre, idioma: ctx.mercado.idioma }, ctx.mercado.locale) }));
+  return ordenarPorNombre([...opcionesSelector(ctx), ...nombrados], ctx.mercado.locale).map(aCompacto);
 }
 
 export function calculadorasDe(ctx: ContextoSitio, m: Mercado): EntradaCalculadora[] {
@@ -45,22 +59,18 @@ export function porCategoria(entradas: readonly EntradaCalculadora[]): { categor
   );
 }
 
-// Destinos del aviso de país: la página equivalente si existe (mismo concepto), si no la home del
-// mercado. El texto va en el idioma y el trato de la página que se está mirando.
-export function destinosAviso(ctx: ContextoSitio, concepto?: string): DestinoPais[] {
-  const equivalentes = concepto && concepto !== "propio" ? ctx.registro.equivalentes(concepto, (m) => hoyEn(m), ctx.modo) : [];
-  return ctx.paises
-    .filter((m) => m.codigo !== ctx.mercado.codigo && m.pais)
-    .map((m) => {
-      const eq = equivalentes.find((e) => e.mercado === m.codigo);
-      return { pais: m.pais, href: rutaIntl(m.codigo, eq?.slug), texto: ctx.textos.avisoPais.texto(m.nombre), ir: ctx.textos.avisoPais.ir(m.nombre) };
-    });
+export const MARCA_PAIS = "{{pais}}";
+
+// Textos del aviso de país armados con un hueco para el nombre: el navegador elige el destino
+// (país de la IP) y pone el nombre de la lista compacta. Antes viajaba un texto armado por país.
+export function plantillasAviso(ctx: ContextoSitio): { texto: string; ir: string } {
+  return { texto: ctx.textos.avisoPais.texto(MARCA_PAIS), ir: ctx.textos.avisoPais.ir(MARCA_PAIS) };
 }
 
 // Título y resumen de una calculadora para tarjetas y listas, con los marcadores {{...}} ya
-// resueltos al valor vigente (el contenido crudo del registro todavía los tiene).
-// Memo por contexto (uno por render): registro.pagina() arma los equivalentes de todos los países
-// y la home, las relacionadas y el JSON-LD piden la misma tarjeta varias veces.
+// resueltos al valor vigente (el contenido crudo del registro todavía los tiene). Sin marcadores
+// alcanza con el contenido tal cual; con marcadores pasa por registro.pagina(). Memo por contexto
+// (uno por render): la home, las relacionadas y el JSON-LD piden la misma tarjeta varias veces.
 const tarjetas = new WeakMap<ContextoSitio, Map<string, { titulo: string; resumen: string }>>();
 
 export function tarjetaDe(ctx: ContextoSitio, m: Mercado, entrada: EntradaCalculadora): { titulo: string; resumen: string } {
@@ -69,8 +79,9 @@ export function tarjetaDe(ctx: ContextoSitio, m: Mercado, entrada: EntradaCalcul
   const clave = `${m.codigo}/${entrada.definicion.slug}`;
   const guardada = memo.get(clave);
   if (guardada) return guardada;
-  const p = ctx.registro.pagina(m.codigo, entrada.definicion.slug, hoyEn(m), ctx.modo);
-  const c = p?.contenido ?? entrada.contenido;
+  const crudo = entrada.contenido;
+  const resumenCrudo = crudo.intro[0] ?? "";
+  const c = marcadoresDe(crudo.h1).length || marcadoresDe(resumenCrudo).length ? (ctx.registro.pagina(m.codigo, entrada.definicion.slug, hoyEn(m), ctx.modo)?.contenido ?? crudo) : crudo;
   const tarjeta = { titulo: c.h1, resumen: c.intro[0] ?? "" };
   memo.set(clave, tarjeta);
   return tarjeta;

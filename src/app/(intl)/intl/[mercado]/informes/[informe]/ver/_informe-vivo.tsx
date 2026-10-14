@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
-import { calcularEscenarios, estadoDelInforme, filaClave, type Escenarios } from "@/lib/pagos/informe-intl";
-import type { TipoEscenario } from "@/lib/pagos/ofertas-intl";
+import { calcularEscenarios, estadoDelInforme, filaClave, tablasDelInforme, type Escenarios } from "@/lib/pagos/informe-intl";
+import type { EscenarioFamilia } from "@/lib/pagos/ofertas-intl";
 import { crudosDeEntrada, leerDatosIntl } from "@/lib/prefill/intl-cliente";
 import type { DefinicionVisible } from "@/motor/cliente";
 import { formatearMoneda, formatearNumero, parsearNumero } from "@/motor/formato";
@@ -19,12 +19,25 @@ export type TextosInforme = {
   imprimir: string;
   imprimirAyuda: string;
   sinResultado: string;
+  si: string;
+  no: string;
   escenarios: { titulo: string; explica: string } | null;
-  nota: { titulo: string; uso: string; pedido: string; cierre: string; lugar: string; destinatario: string; firma: string; nombre: string; documento: string } | null;
+  nota: {
+    titulo: string;
+    uso: string;
+    pedido: string;
+    cierre: string;
+    lugar: string;
+    destinatario: string;
+    firma: string;
+    nombre: string;
+    documento: string;
+    etiquetaEnMinuscula: boolean;
+  } | null;
 };
 
-function textoCrudo(c: Campo, v: string | boolean | undefined, props: PropsCalculadora): string {
-  if (typeof v === "boolean") return v ? "Sí" : "No";
+function textoCrudo(c: Campo, v: string | boolean | undefined, props: PropsCalculadora, textos: Pick<TextosInforme, "si" | "no">): string {
+  if (typeof v === "boolean") return v ? textos.si : textos.no;
   if (c.tipo === "opcion" || c.tipo === "region" || c.tipo === "opcion-dato") return opcionesDe(c, props.contexto, props.opcionesDinamicas).find((o) => o.valor === v)?.etiqueta ?? String(v ?? "");
   if (c.tipo === "fecha" && typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v)) {
     return new Intl.DateTimeFormat(props.contexto.locale, { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${v}T00:00:00Z`));
@@ -43,7 +56,8 @@ function textoCrudo(c: Campo, v: string | boolean | undefined, props: PropsCalcu
 
 // La parte del informe que depende de los números: datos, resultado, escenarios y nota. Arranca con
 // lo que calculó el servidor (sin esperar nada) y, si la persona corrige un dato, recalcula en el
-// navegador con la misma definición que usa la calculadora.
+// navegador con la misma definición que usa la calculadora. Las tablas del resultado van enteras: la
+// página gratis muestra las primeras filas y el informe es donde está el resto.
 export function InformeVivo({
   mercado,
   slug,
@@ -55,7 +69,7 @@ export function InformeVivo({
   conDatos,
   estadoInicial,
   escenariosIniciales,
-  tipoEscenario,
+  escenario,
   textos,
   medio,
 }: {
@@ -63,13 +77,13 @@ export function InformeVivo({
   slug: string;
   permitidas: readonly string[];
   producto: string;
-  definicion: DefinicionVisible;
+  definicion: DefinicionVisible & Pick<DefinicionCalculadora, "tablas">;
   props: PropsCalculadora;
   crudosIniciales: Crudos;
   conDatos: boolean;
   estadoInicial: EstadoCalculo;
   escenariosIniciales: Escenarios | null;
-  tipoEscenario: TipoEscenario | null;
+  escenario: EscenarioFamilia | null;
   textos: TextosInforme;
   medio: ReactNode;
 }) {
@@ -91,14 +105,14 @@ export function InformeVivo({
           const def = m.default as DefinicionCalculadora;
           setUsados(nuevos);
           setEstado(estadoDelInforme(def, nuevos, props, motor));
-          setEscenarios(tipoEscenario ? calcularEscenarios(def, tipoEscenario, nuevos, props, motor) : null);
+          setEscenarios(escenario ? calcularEscenarios(def, escenario, nuevos, props, motor) : null);
         })
         .catch((e) => {
           console.error("[informe] no pude cargar la calculadora", e);
           setEstado({ tipo: "fallo", mensaje: motor.errores["calculo-fallido"] });
         });
     },
-    [mercado, slug, props, motor, tipoEscenario],
+    [mercado, slug, props, motor, escenario],
   );
 
   // Sin datos en el servidor (base sin la columna, o compra sin datos): los del navegador, si son de
@@ -122,6 +136,7 @@ export function InformeVivo({
   }, [conDatos, producto, slug, permitidas, definicion.campos, props.contexto.locale, crudosIniciales, recalcular]);
 
   const clave = estado.tipo === "ok" ? filaClave(estado.filas) : null;
+  const tablas = useMemo(() => (estado.tipo === "ok" ? tablasDelInforme(definicion.tablas, estado.resultado, props.contexto) : []), [estado, definicion.tablas, props.contexto]);
   const errorDe = (id: string) => (estado.tipo === "errores" && estado.errores[id] ? mensajeDeError(estado.errores[id], motor) : null);
 
   return (
@@ -163,7 +178,7 @@ export function InformeVivo({
               .map((c) => (
                 <tr key={c.id}>
                   <td>{c.etiqueta}</td>
-                  <td>{textoCrudo(c, usados[c.id], props)}</td>
+                  <td>{textoCrudo(c, usados[c.id], props, textos)}</td>
                 </tr>
               ))}
           </tbody>
@@ -199,6 +214,32 @@ export function InformeVivo({
           <p className="cy-informe-notas">{estado.tipo === "fallo" ? estado.mensaje : textos.sinResultado}</p>
         )}
       </section>
+
+      {tablas.map((t) => (
+        <section key={t.clave}>
+          <h2>{t.titulo}</h2>
+          <div className="cy-informe-desplazable">
+          <table className="cy-informe-tabla cy-informe-tabla-completa">
+            <thead>
+              <tr>
+                {t.columnas.map((c) => (
+                  <th key={c}>{c}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {t.filas.map((f, i) => (
+                <tr key={i}>
+                  {f.map((v, j) => (
+                    <td key={t.columnas[j]}>{v}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </div>
+        </section>
+      ))}
 
       {escenarios && textos.escenarios && estado.tipo === "ok" ? (
         <section>
@@ -243,7 +284,7 @@ export function InformeVivo({
               {textos.nota.destinatario}: <span className="cy-informe-raya" />
             </p>
             <p>
-              {textos.nota.pedido} <strong>{clave.texto}</strong> ({clave.etiqueta.toLowerCase()}).
+              {textos.nota.pedido} <strong>{clave.texto}</strong> ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLowerCase() : clave.etiqueta}).
             </p>
             <p>{textos.nota.cierre}</p>
             <div className="cy-informe-firmas">

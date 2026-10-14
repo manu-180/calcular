@@ -1,10 +1,10 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
-import { duracion, numero, pesos } from "@/lib/panel/formato";
+import { dolares, duracion, numero, pesos } from "@/lib/panel/formato";
 import { useMenosMovimiento } from "./hooks";
 
-const FORMATOS = { numero, duracion, pesos } as const;
+const FORMATOS = { numero, duracion, pesos, dolares } as const;
 
 export type FormatoNumero = keyof typeof FORMATOS;
 

@@ -62,7 +62,12 @@ async function escribir(lote: Lote, intl: boolean) {
     }),
     (async () => {
       if (!lote.eventos.length) return;
-      const { error } = await db.from("ca_eventos").insert(lote.eventos).abortSignal(tope());
+      let { error } = await db.from("ca_eventos").insert(lote.eventos).abortSignal(tope());
+      // Antes de 20261014120000 ca_eventos no tiene país: el evento vale más que el país, va sin él.
+      if (error && SIN_COLUMNA.has(error.code ?? "")) {
+        const sinPais = lote.eventos.map(({ pais: _p, ...resto }) => resto);
+        ({ error } = await db.from("ca_eventos").insert(sinPais).abortSignal(tope()));
+      }
       if (error && !sinMigracion(error, intl)) console.error("[api/e] ca_eventos:", error.code, error.message);
     })(),
   ]);
