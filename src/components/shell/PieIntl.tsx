@@ -3,9 +3,28 @@ import { SesionLink } from "@/components/SesionLink";
 import { productosDeMercado } from "@/lib/pagos/catalogo-intl";
 import { rutaIntl } from "@/motor/seo";
 import { Bandera } from "@/motor/ui/Bandera";
-import type { ContextoSitio } from "@/motor/ui/contexto";
+import { nombreEnPagina, type ContextoSitio } from "@/motor/ui/contexto";
 import { menuDelPais } from "@/motor/ui/menu";
-import { opcionesConArgentina } from "./EncabezadoIntl";
+import { ordenarPorNombre, type OpcionPais } from "@/motor/ui/paises";
+import { EXTERNOS } from "./EncabezadoIntl";
+
+const MAX_PAISES_PIE = 24;
+
+// El pie no lista los 190 países en cada página: los del mismo idioma (los que comparten clúster
+// hreflang y el público de la página) y el link a todos. Si el idioma no tiene otros países (el
+// inicio global en inglés), los primeros por nombre.
+function paisesDelPie(ctx: ContextoSitio): OpcionPais[] {
+  const locale = ctx.mercado.locale;
+  const todos = ordenarPorNombre(
+    [
+      ...ctx.paises.map((m) => ({ codigo: m.codigo, nombre: nombreEnPagina(ctx, m), pais: m.pais, href: rutaIntl(m.codigo), idioma: m.idioma })),
+      ...EXTERNOS.map((e) => ({ ...e, idioma: "es" as const })),
+    ],
+    locale,
+  );
+  const mismos = todos.filter((o) => o.idioma === ctx.mercado.idioma);
+  return (mismos.length ? mismos : todos).slice(0, MAX_PAISES_PIE);
+}
 
 // Mismo footer que calcular.ar (SiteFooter): mapa de calculadoras del país, países, cuenta y sitio.
 // Van <a> y no <Link> por lo mismo que allá: son muchos links que casi nadie toca.
@@ -14,7 +33,8 @@ export function PieIntl({ ctx }: { ctx: ContextoSitio }) {
   const m = ctx.mercado;
   const enPais = m.codigo !== "global";
   const secciones = enPais ? menuDelPais(ctx).navegacion.secciones : [];
-  const opciones = opcionesConArgentina(ctx);
+  const opciones = paisesDelPie(ctx);
+  const hayMas = ctx.paises.length + EXTERNOS.length > opciones.length;
   const nombre = t.marca.nombre;
   const corte = nombre.endsWith("Ya") ? nombre.length - 2 : nombre.length;
   const sitio = [
@@ -94,6 +114,13 @@ export function PieIntl({ ctx }: { ctx: ContextoSitio }) {
                     </a>
                   </li>
                 ))}
+                {hayMas ? (
+                  <li>
+                    <a href={`${rutaIntl("global")}#paises`} className="font-medium">
+                      {t.header.todos}
+                    </a>
+                  </li>
+                ) : null}
               </ul>
             </nav>
             <div>

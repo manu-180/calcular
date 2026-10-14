@@ -6,7 +6,7 @@ import type { FechaISO } from "../tipos";
 import { hoyEn } from "../vigencia";
 import { ArranquePais, type PaisArranque } from "./ArranquePais";
 import { Bandera } from "./Bandera";
-import { calculadorasDe, porCategoria, tarjetaDe, type ContextoSitio } from "./contexto";
+import { calculadorasDe, nombreEnPagina, porCategoria, tarjetaDe, type ContextoSitio } from "./contexto";
 import { FechaViva } from "./FechaViva";
 import { CLAVE_PAIS } from "./geo-cliente";
 import { IconoFlecha } from "./Iconos";
@@ -49,14 +49,14 @@ export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; exter
   const tarjetas = [
     ...ctx.paises.map((m) => ({
       codigo: m.codigo,
-      nombre: m.nombre,
+      nombre: nombreEnPagina(ctx, m),
       pais: m.pais,
       locale: m.locale,
       href: rutaIntl(m.codigo),
       calculadoras: calculadorasDe(ctx, m).length,
     })),
     ...externos,
-  ].sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+  ].sort((a, b) => a.nombre.localeCompare(b.nombre, ctx.mercado.locale));
 
   const fechaDe = (iso: FechaISO | undefined, locale: string) => (iso ? { iso, absoluta: formatearFecha(iso, locale) } : undefined);
   const arranque: PaisArranque[] = [

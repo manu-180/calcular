@@ -5,9 +5,10 @@ import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import type { CodigoMercado } from "@/motor/tipos";
 import { AcordeonesFluidos } from "@/components/AcordeonesFluidos";
 import { Rastreador } from "@/components/Rastreador";
-import { EncabezadoIntl } from "@/components/shell/EncabezadoIntl";
+import { EncabezadoIntl, EXTERNOS } from "@/components/shell/EncabezadoIntl";
 import { PieIntl } from "@/components/shell/PieIntl";
-import { contextoSitio } from "@/motor/ui/contexto";
+import { contextoSitio, listaCompacta } from "@/motor/ui/contexto";
+import { ProveedorPaises } from "@/motor/ui/ListaPaises";
 import "@/components/shell/shell.css";
 import "@/motor/ui/estilos.css";
 // Arranque por país, selector, datos vivos y novedades (frente aparte, para no pisar estilos.css).
@@ -69,13 +70,15 @@ export default async function LayoutIntl({ children, params }: { children: React
         <a href="#contenido" className="cy-saltar">
           {ctx.textos.saltar}
         </a>
-        <div className="cy-marco">
-          <EncabezadoIntl ctx={ctx} />
-          <main id="contenido" className="cy-principal">
-            {children}
-          </main>
-          <PieIntl ctx={ctx} />
-        </div>
+        <ProveedorPaises paises={listaCompacta(ctx, EXTERNOS)}>
+          <div className="cy-marco">
+            <EncabezadoIntl ctx={ctx} />
+            <main id="contenido" className="cy-principal">
+              {children}
+            </main>
+            <PieIntl ctx={ctx} />
+          </div>
+        </ProveedorPaises>
         <Rastreador sitio="intl" mercado={ctx.mercado.codigo} />
         <AcordeonesFluidos />
       </body>

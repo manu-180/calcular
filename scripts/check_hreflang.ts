@@ -5,7 +5,9 @@
 // - un hreflang apunta a algo que no se publica o que no está en el sitemap,
 // - falta x-default o no es la home de calcularya,
 // - dos mercados del mismo clúster comparten locale (el segundo pisaría al primero),
-// - aparece calcular.ar con el flag apagado.
+// - aparece calcular.ar con el flag apagado,
+// - un clúster de más de MAX_HREFLANG_HEAD no está entero en el sitemap del mercado (xhtml:link) o
+//   sigue en el <head>, o uno chico no está en el <head> o aparece repetido en el sitemap.
 // No necesita server: corre en check-all.
 import type { ModoPublicacion, Registro } from "../src/motor/registro";
 import type { Idiomas } from "../src/motor/seo";
@@ -79,12 +81,27 @@ async function main() {
   );
   if (!roto.some((e) => e.includes("no es recíproco"))) fallas.push("la prueba negativa no detectó un clúster no recíproco");
 
+  // Umbral del <head>: un clúster de MAX_HREFLANG_HEAD + 1 páginas pasa al sitemap, uno justo en el tope no.
+  const ficticios = (n: number) => Array.from({ length: n }, (_, i) => ({ mercado: "mx" as const, locale: `es-X${i}`, slug: `s${i}` }));
+  if (seo.hreflangDelHead("bono-semestral", ficticios(seo.MAX_HREFLANG_HEAD + 1)) !== undefined) fallas.push("un clúster de más del tope sigue en el <head>");
+  if (seo.hreflangDelHead("bono-semestral", ficticios(seo.MAX_HREFLANG_HEAD)) === undefined) fallas.push("un clúster en el tope salió del <head>");
+  const xml = mapa.xmlUrlset([{ url: a, alternos: { "es-AA": a, "x-default": "https://calcularya.com/" } }]);
+  if (!xml.includes('xmlns:xhtml="http://www.w3.org/1999/xhtml"') || !xml.includes('<xhtml:link rel="alternate" hreflang="es-AA" href="https://calcularya.com/aa/x"/>')) {
+    fallas.push("el sitemap no escribe xhtml:link");
+  }
+
   let revisadas = 0;
   for (const modo of ["produccion", "interno"] as ModoPublicacion[]) {
     process.env.VERCEL_ENV = modo === "produccion" ? "production" : "preview";
     const mercados = registro.mercados(modo).filter((m) => m.codigo !== "global");
     const publicadas = new Set<string>();
-    for (const m of registro.mercados(modo)) for (const u of mapa.urlsDelMercado(registro, m.codigo) ?? []) publicadas.add(u);
+    const enSitemap = new Map<string, Idiomas>();
+    for (const m of registro.mercados(modo)) {
+      for (const e of mapa.entradasDelMercado(registro, m.codigo, { conAlternos: true }) ?? []) {
+        publicadas.add(e.url);
+        if (e.alternos) enSitemap.set(e.url, e.alternos);
+      }
+    }
     const paginas: PaginaConIdiomas[] = [];
     for (const m of mercados) {
       const fecha = hoyEn(m);
@@ -96,7 +113,19 @@ async function main() {
         }
         const url = seo.urlIntl(m.codigo, c.definicion.slug);
         if (!publicadas.has(url)) fallas.push(`[${modo}] ${url}: se publica y no está en el sitemap del mercado`);
-        paginas.push({ url, locale: m.locale, concepto: p.calculadora.concepto, idiomas: seo.hreflangDe(p.calculadora.concepto, p.equivalentes) });
+        const idiomas = seo.hreflangDe(p.calculadora.concepto, p.equivalentes);
+        // El clúster va entero en un solo lugar: el <head> hasta MAX_HREFLANG_HEAD, el sitemap arriba de eso.
+        const head = seo.hreflangDelHead(p.calculadora.concepto, p.equivalentes);
+        const sitemap = enSitemap.get(url);
+        const igual = (a?: Idiomas, b?: Idiomas) => JSON.stringify(Object.entries(a ?? {}).sort()) === JSON.stringify(Object.entries(b ?? {}).sort());
+        if (seo.hreflangVaAlSitemap(idiomas)) {
+          if (head) fallas.push(`[${modo}] ${url}: clúster de más de ${seo.MAX_HREFLANG_HEAD} y sigue en el <head>`);
+          if (!igual(sitemap, idiomas)) fallas.push(`[${modo}] ${url}: clúster de más de ${seo.MAX_HREFLANG_HEAD} y el sitemap no lo lista entero`);
+        } else {
+          if (!igual(head, idiomas)) fallas.push(`[${modo}] ${url}: el <head> no lleva el clúster`);
+          if (sitemap) fallas.push(`[${modo}] ${url}: clúster chico repetido en el sitemap`);
+        }
+        paginas.push({ url, locale: m.locale, concepto: p.calculadora.concepto, idiomas });
       }
     }
     revisadas += paginas.length;

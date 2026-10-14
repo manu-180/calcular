@@ -17,14 +17,15 @@ import ni from "./ni";
 import ve from "./ve";
 import bo from "./bo";
 
-// "global" no es un país: es la home de calcularya.com con el selector. No tiene datos ni calculadoras.
+// "global" no es un país: es la home de calcularya.com con el selector, en inglés y x-default de cada
+// clúster hreflang (ADR 0002, D2). No tiene datos ni calculadoras.
 const global = definirPais({
   mercado: {
     codigo: "global",
     pais: "",
-    nombre: "Latinoamérica",
-    locale: "es-419",
-    idioma: "es",
+    nombre: "Worldwide",
+    locale: "en",
+    idioma: "en",
     trato: "tu",
     monedas: ["USD"],
     zonaHoraria: "America/Mexico_City",
