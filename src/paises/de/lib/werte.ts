@@ -35,7 +35,7 @@ type ValoresTarif = { readonly [K in keyof typeof REQ_TARIF]: (typeof REQ_TARIF)
 type ValoresSv = { readonly [K in keyof typeof REQ_SV]: (typeof REQ_SV)[K] extends "mapa" ? Mapa : number };
 type ValoresLohn = { readonly [K in keyof typeof REQ_LOHN]: (typeof REQ_LOHN)[K] extends "mapa" ? Mapa : number };
 
-export function soliAus(v: ValoresTarif): SoliWerte {
+export function soliAus(v: Pick<ValoresTarif, "de.soli-satz" | "de.soli-milderung" | "de.soli-freigrenze">): SoliWerte {
   return { satz: v["de.soli-satz"], milderung: v["de.soli-milderung"], freigrenze: v["de.soli-freigrenze"] };
 }
 

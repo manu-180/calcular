@@ -1045,7 +1045,8 @@
         "mindest": "Mindestbetrag",
         "hoechst": "Höchstbetrag",
         "schwelle-niedrig": "Schwelle für die Erhöhung",
-        "schwelle-hoch": "Schwelle für die Absenkung"
+        "schwelle-hoch": "Schwelle für die Absenkung",
+        "deckel": "Höchstes Einkommen vor der Geburt bei Teilzeit im Bezug"
       },
       "tramos": [
         {
@@ -1055,11 +1056,12 @@
             "mindest": 300,
             "hoechst": 1800,
             "schwelle-niedrig": 1000,
-            "schwelle-hoch": 1200
+            "schwelle-hoch": 1200,
+            "deckel": 2770
           },
           "fuente": {
             "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
-            "titulo": "§ 2 Absatz 1, 2 und 4 BEEG",
+            "titulo": "§ 2 Absatz 1 bis 4 BEEG",
             "url": "https://www.gesetze-im-internet.de/beeg/__2.html",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"

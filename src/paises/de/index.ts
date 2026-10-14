@@ -15,8 +15,13 @@ import abfindungsrechner from "./calculadoras/abfindungsrechner";
 import kuendigungsfristRechner from "./calculadoras/kuendigungsfrist-rechner";
 import urlaubsanspruchRechner from "./calculadoras/urlaubsanspruch-rechner";
 import ueberstundenRechner from "./calculadoras/ueberstunden-rechner";
+import elterngeldRechner from "./calculadoras/elterngeld-rechner";
+import kindergeldRechner from "./calculadoras/kindergeld-rechner";
 import rentenrechner from "./calculadoras/rentenrechner";
 import pendlerpauschaleRechner from "./calculadoras/pendlerpauschale-rechner";
+import solidaritaetszuschlagRechner from "./calculadoras/solidaritaetszuschlag-rechner";
+import kirchensteuerRechner from "./calculadoras/kirchensteuer-rechner";
+import abgeltungsteuerRechner from "./calculadoras/abgeltungsteuer-rechner";
 import contenidoBruttoNettoRechner from "./contenido/brutto-netto-rechner";
 import contenidoNettoBruttoRechner from "./contenido/netto-brutto-rechner";
 import contenidoLohnsteuerRechner from "./contenido/lohnsteuer-rechner";
@@ -32,8 +37,13 @@ import contenidoAbfindungsrechner from "./contenido/abfindungsrechner";
 import contenidoKuendigungsfristRechner from "./contenido/kuendigungsfrist-rechner";
 import contenidoUrlaubsanspruchRechner from "./contenido/urlaubsanspruch-rechner";
 import contenidoUeberstundenRechner from "./contenido/ueberstunden-rechner";
+import contenidoElterngeldRechner from "./contenido/elterngeld-rechner";
+import contenidoKindergeldRechner from "./contenido/kindergeld-rechner";
 import contenidoRentenrechner from "./contenido/rentenrechner";
 import contenidoPendlerpauschaleRechner from "./contenido/pendlerpauschale-rechner";
+import contenidoSolidaritaetszuschlagRechner from "./contenido/solidaritaetszuschlag-rechner";
+import contenidoKirchensteuerRechner from "./contenido/kirchensteuer-rechner";
+import contenidoAbgeltungsteuerRechner from "./contenido/abgeltungsteuer-rechner";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -61,8 +71,13 @@ export default definirPais({
     { definicion: kuendigungsfristRechner, contenido: contenidoKuendigungsfristRechner, cliente: () => import("./calculadoras/kuendigungsfrist-rechner.cliente") },
     { definicion: urlaubsanspruchRechner, contenido: contenidoUrlaubsanspruchRechner, cliente: () => import("./calculadoras/urlaubsanspruch-rechner.cliente") },
     { definicion: ueberstundenRechner, contenido: contenidoUeberstundenRechner, cliente: () => import("./calculadoras/ueberstunden-rechner.cliente") },
+    { definicion: elterngeldRechner, contenido: contenidoElterngeldRechner, cliente: () => import("./calculadoras/elterngeld-rechner.cliente") },
+    { definicion: kindergeldRechner, contenido: contenidoKindergeldRechner, cliente: () => import("./calculadoras/kindergeld-rechner.cliente") },
     { definicion: rentenrechner, contenido: contenidoRentenrechner, cliente: () => import("./calculadoras/rentenrechner.cliente") },
     { definicion: pendlerpauschaleRechner, contenido: contenidoPendlerpauschaleRechner, cliente: () => import("./calculadoras/pendlerpauschale-rechner.cliente") },
+    { definicion: solidaritaetszuschlagRechner, contenido: contenidoSolidaritaetszuschlagRechner, cliente: () => import("./calculadoras/solidaritaetszuschlag-rechner.cliente") },
+    { definicion: kirchensteuerRechner, contenido: contenidoKirchensteuerRechner, cliente: () => import("./calculadoras/kirchensteuer-rechner.cliente") },
+    { definicion: abgeltungsteuerRechner, contenido: contenidoAbgeltungsteuerRechner, cliente: () => import("./calculadoras/abgeltungsteuer-rechner.cliente") },
   ],
   universales: { todas: true },
   novedades,
