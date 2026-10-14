@@ -205,6 +205,7 @@ export const es: Diccionario<TextosSitio> = {
     },
     avisoPais: { texto: (pais) => `Parece que está ${g.en(pais)}.` },
     noEncontrada: { paises: "O elija un país" },
+    migas: { etiqueta: "Dónde está" },
     shell: {
       buscador: {
         pregunta: "¿Qué desea calcular?",

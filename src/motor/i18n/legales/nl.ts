@@ -102,7 +102,7 @@ export const nl: DiccionarioLegal = ({ actualizado, mail }) => ({
         },
         {
           titulo: "Gebruik van de site",
-          parrafos: ["De site is gratis. Gebruiken en links delen mag. De inhoud massaal kopiëren of je voordoen als CalcularYa mag niet."],
+          parrafos: ["De site is gratis. Gebruiken en links delen mag. De inhoud massaal kopiëren of zich als CalcularYa voordoen mag niet."],
         },
         {
           titulo: "Aansprakelijkheid",
