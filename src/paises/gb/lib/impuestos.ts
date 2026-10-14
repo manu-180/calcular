@@ -1,11 +1,6 @@
 import { aplicarEscalaMarginal } from "@/motor/calculo";
 import type { FilaEscala } from "@/motor/tipos";
 
-export const OPCIONES_REGION_TEXTO = {
-  "england-wales-ni": "England, Wales or Northern Ireland",
-  scotland: "Scotland",
-} as const;
-
 // HMRC quita £1 de Personal Allowance por cada £2 completos por encima del límite.
 export function personalAllowance(ingreso: number, allowance: number, limite: number): number {
   if (ingreso <= limite) return allowance;

@@ -32,8 +32,16 @@ import pensionTaxRelief from "./calculadoras/pension-tax-relief";
 import contenidoPensionTaxRelief from "./contenido/pension-tax-relief";
 import employerNiCalculator from "./calculadoras/employer-ni-calculator";
 import contenidoEmployerNiCalculator from "./contenido/employer-ni-calculator";
+import statePension from "./calculadoras/state-pension";
+import contenidoStatePension from "./contenido/state-pension";
+import childBenefit from "./calculadoras/child-benefit";
+import contenidoChildBenefit from "./contenido/child-benefit";
 import noticePeriod from "./calculadoras/notice-period";
 import contenidoNoticePeriod from "./contenido/notice-period";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
+import trackerMortgage from "./calculadoras/tracker-mortgage";
+import contenidoTrackerMortgage from "./contenido/tracker-mortgage";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -62,7 +70,11 @@ export default definirPais({
     { definicion: capitalGainsTax, contenido: contenidoCapitalGainsTax, cliente: () => import("./calculadoras/capital-gains-tax.cliente") },
     { definicion: pensionTaxRelief, contenido: contenidoPensionTaxRelief, cliente: () => import("./calculadoras/pension-tax-relief.cliente") },
     { definicion: employerNiCalculator, contenido: contenidoEmployerNiCalculator, cliente: () => import("./calculadoras/employer-ni-calculator.cliente") },
+    { definicion: statePension, contenido: contenidoStatePension, cliente: () => import("./calculadoras/state-pension.cliente") },
+    { definicion: childBenefit, contenido: contenidoChildBenefit, cliente: () => import("./calculadoras/child-benefit.cliente") },
     { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
+    { definicion: trackerMortgage, contenido: contenidoTrackerMortgage, cliente: () => import("./calculadoras/tracker-mortgage.cliente") },
   ],
   universales: "todas",
   novedades,
