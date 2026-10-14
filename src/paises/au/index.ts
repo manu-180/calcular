@@ -16,6 +16,14 @@ import hecsHelpRepaymentCalculator from "./calculadoras/hecs-help-repayment-calc
 import contenidoHecsHelpRepaymentCalculator from "./contenido/hecs-help-repayment-calculator";
 import minimumWage from "./calculadoras/minimum-wage";
 import contenidoMinimumWage from "./contenido/minimum-wage";
+import annualLeaveCalculator from "./calculadoras/annual-leave-calculator";
+import contenidoAnnualLeaveCalculator from "./contenido/annual-leave-calculator";
+import sickLeaveCalculator from "./calculadoras/sick-leave-calculator";
+import contenidoSickLeaveCalculator from "./contenido/sick-leave-calculator";
+import redundancyPayCalculator from "./calculadoras/redundancy-pay-calculator";
+import contenidoRedundancyPayCalculator from "./contenido/redundancy-pay-calculator";
+import noticePeriodCalculator from "./calculadoras/notice-period-calculator";
+import contenidoNoticePeriodCalculator from "./contenido/notice-period-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: salarySacrificeCalculator, contenido: contenidoSalarySacrificeCalculator, cliente: () => import("./calculadoras/salary-sacrifice-calculator.cliente") },
     { definicion: hecsHelpRepaymentCalculator, contenido: contenidoHecsHelpRepaymentCalculator, cliente: () => import("./calculadoras/hecs-help-repayment-calculator.cliente") },
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
+    { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
+    { definicion: sickLeaveCalculator, contenido: contenidoSickLeaveCalculator, cliente: () => import("./calculadoras/sick-leave-calculator.cliente") },
+    { definicion: redundancyPayCalculator, contenido: contenidoRedundancyPayCalculator, cliente: () => import("./calculadoras/redundancy-pay-calculator.cliente") },
+    { definicion: noticePeriodCalculator, contenido: contenidoNoticePeriodCalculator, cliente: () => import("./calculadoras/notice-period-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
