@@ -11,6 +11,7 @@ import { FechaViva } from "./FechaViva";
 import { CLAVE_PAIS } from "./geo-cliente";
 import { IconoFlecha } from "./Iconos";
 import { ldInicioGlobal, ldInicioPais } from "./metadatos";
+import { porGrupo } from "./menu";
 import { AvisoDePais, JsonLd } from "./Sitio";
 import { textosInicio } from "./textos-inicio";
 
@@ -25,6 +26,9 @@ export interface PaisExterno {
 }
 
 const ANCLA_PAISES = "paises";
+
+// Provisorio hasta que el diccionario del sitio tenga la etiqueta (pedido a i18n: pais.irASeccion).
+const IR_A_SECCION: Readonly<Record<string, string>> = { es: "Ir a una sección", pt: "Ir para uma seção", en: "Jump to a section" };
 
 const masNueva = (...fechas: (FechaISO | null | undefined)[]) => (fechas.filter(Boolean) as FechaISO[]).sort().at(-1);
 
@@ -226,7 +230,7 @@ export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
   const t = ctx.textos;
   const m = ctx.mercado;
   const entradas = calculadorasDe(ctx, m);
-  const grupos = porCategoria(entradas);
+  const grupos = porGrupo(ctx, porCategoria(entradas));
   const pais = ctx.registro.pais(m.codigo);
   const novedades = [...(pais?.novedades ?? [])].sort((a, b) => b.fecha.localeCompare(a.fecha)).slice(0, 3);
   const frescura = frescuraDePais(ctx.registro, m.codigo, hoyEn(m));
@@ -246,25 +250,43 @@ export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
 
       <div className="cy-inicio-pais-cuerpo">
         <div className="cy-categorias">
+          {grupos.length > 2 ? (
+            <nav className="cy-grupos" aria-label={IR_A_SECCION[m.idioma] ?? IR_A_SECCION.es}>
+              {grupos.map((g) => (
+                <a key={g.key} href={`#cy-grupo-${g.key}`} className="cy-grupo-enlace">
+                  {g.titulo}
+                  <span className="cy-grupo-n">{g.total}</span>
+                </a>
+              ))}
+            </nav>
+          ) : null}
           {grupos.length ? (
             grupos.map((g) => (
-              <section key={g.categoria} aria-labelledby={`cy-cat-${g.categoria}`}>
-                <h2 id={`cy-cat-${g.categoria}`} className="cy-seccion-titulo">
-                  {t.categorias[g.categoria]}
+              <section key={g.key} id={`cy-grupo-${g.key}`} className="cy-grupo" aria-labelledby={`cy-grupo-${g.key}-titulo`}>
+                <h2 id={`cy-grupo-${g.key}-titulo`} className="cy-grupo-titulo">
+                  {g.titulo}
                 </h2>
-                <ul className="cy-tarjetas">
-                  {g.entradas.map((e) => (
-                    <li key={e.definicion.id}>
-                      <a className="cy-tarjeta" href={rutaIntl(m.codigo, e.definicion.slug)}>
-                        <span className="cy-tarjeta-titulo">{tarjetaDe(ctx, m, e).titulo}</span>
-                        <span className="cy-tarjeta-texto">{tarjetaDe(ctx, m, e).resumen}</span>
-                        <span className="cy-boton-icono">
-                          <IconoFlecha />
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                {g.categorias.map((c) => (
+                  <div key={c.categoria} className="cy-grupo-categoria">
+                    {g.categorias.length > 1 ? <h3 className="cy-seccion-titulo">{t.categorias[c.categoria]}</h3> : null}
+                    <ul className="cy-tarjetas" data-compactas={g.key === "vida" || undefined}>
+                      {c.entradas.map((e) => {
+                        const tarjeta = tarjetaDe(ctx, m, e);
+                        return (
+                          <li key={e.definicion.id}>
+                            <a className="cy-tarjeta" href={rutaIntl(m.codigo, e.definicion.slug)}>
+                              <span className="cy-tarjeta-titulo">{tarjeta.titulo}</span>
+                              {g.key === "vida" ? null : <span className="cy-tarjeta-texto">{tarjeta.resumen}</span>}
+                              <span className="cy-boton-icono">
+                                <IconoFlecha />
+                              </span>
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ))}
               </section>
             ))
           ) : (

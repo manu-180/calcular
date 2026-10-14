@@ -1,9 +1,10 @@
 import { useId, useMemo, type CSSProperties, type FormEvent } from "react";
 import type { CalculadoraControlada } from "../cliente";
 import { textosCalculadora } from "../i18n/calculadora";
-import type { AvisoResuelto, Campo, ContextoSerializado, Moneda } from "../tipos";
+import type { AvisoResuelto, Campo, ContextoSerializado, DefinicionCalculadora, Moneda } from "../tipos";
 import { IconoExterno } from "./Iconos";
 import { OfertaResultado } from "./Oferta";
+import { TablasResultado } from "./TablaResultado";
 
 // La piel copia la de las calculadoras de calcular.ar (src/components/Calculadora*.tsx): tarjeta con
 // borde esmeralda, campos de a dos, foco verde y el resultado en una caja gris que se recalcula con
@@ -161,11 +162,13 @@ export function PielCalculadora({
   control,
   contexto,
   avisos,
+  tablas,
 }: {
   id: string;
   control: CalculadoraControlada;
   contexto: ContextoSerializado;
   avisos: readonly AvisoResuelto[];
+  tablas?: DefinicionCalculadora["tablas"];
 }) {
   const idBase = useId();
   const t = useMemo(() => textosCalculadora(contexto.idioma, contexto.trato), [contexto.idioma, contexto.trato]);
@@ -252,6 +255,8 @@ export function PielCalculadora({
           </p>
         ) : null}
       </div>
+      {/* Fuera de la región aria-live: con cada tecla se leería la tabla entera. */}
+      {estado.tipo === "ok" && tablas?.length ? <TablasResultado tablas={tablas} resultado={estado.resultado} contexto={contexto} /> : null}
       {notas.length ? (
         <div className="cy-calc-notas">
           {notas.map((a) => (
