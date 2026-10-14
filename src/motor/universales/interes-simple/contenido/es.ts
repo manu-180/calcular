@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -28,7 +28,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     faq: [
       {
         pregunta: "¿Cuál es la fórmula del interés simple?",
-        respuesta: "I = C × r × t. La C es el capital, la r la tasa anual en decimal (10 % es 0,10) y la t el tiempo en años.",
+        respuesta: `I = C × r × t. La C es el capital, la r la tasa anual en decimal (10 % es ${formatearNumero(ctx, 0.1, 2)}) y la t el tiempo en años.`,
       },
       {
         pregunta: "¿En qué se diferencia del interés compuesto?",

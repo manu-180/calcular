@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
@@ -23,7 +23,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
     faq: [
       {
         pregunta: "What is the simple interest formula?",
-        respuesta: "I = P × r × t. P is the principal, r the annual rate as a decimal (10% is 0.10) and t the time in years.",
+        respuesta: `I = P × r × t. P is the principal, r the annual rate as a decimal (10% is ${formatearNumero(ctx, 0.1, 2)}) and t the time in years.`,
       },
       {
         pregunta: "How is it different from compound interest?",

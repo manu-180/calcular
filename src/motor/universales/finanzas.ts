@@ -5,9 +5,13 @@ import fondoDeEmergencia from "./fondo-de-emergencia";
 import hipoteca from "./hipoteca";
 import interesCompuesto from "./interes-compuesto";
 import interesSimple from "./interes-simple";
+import margenDeGanancia from "./margen-de-ganancia";
 import metaDeAhorro from "./meta-de-ahorro";
 import prestamo from "./prestamo";
 import presupuesto from "./presupuesto";
+import puntoDeEquilibrio from "./punto-de-equilibrio";
+import rendimientoInversion from "./rendimiento-inversion";
+import tarifaFreelance from "./tarifa-freelance";
 import tarjetaDeCredito from "./tarjeta-de-credito";
 import tasaEfectiva from "./tasa-efectiva";
 import type { Universal } from "./tipos";
@@ -26,4 +30,8 @@ export const UNIVERSALES_FINANZAS: readonly Universal<never>[] = [
   presupuesto as Universal<never>,
   fondoDeEmergencia as Universal<never>,
   costoDeUnAuto as Universal<never>,
+  rendimientoInversion as Universal<never>,
+  margenDeGanancia as Universal<never>,
+  puntoDeEquilibrio as Universal<never>,
+  tarifaFreelance as Universal<never>,
 ];
