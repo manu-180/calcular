@@ -18,7 +18,7 @@ export default definirUniversal<UiAumentoDeSueldo>({
   id: "aumento-de-sueldo",
   concepto: "aumento-de-sueldo",
   definir,
-  textos: { en: textosEn, es: textosEs, fr: textosFr, it: textosIt, pt: textosPt },
-  contenido: { en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, pt: contenidoPt },
+  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, pt: textosPt },
+  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, pt: contenidoPt },
   casos,
 });

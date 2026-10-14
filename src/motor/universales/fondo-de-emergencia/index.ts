@@ -18,7 +18,7 @@ export default definirUniversal<UiFondoDeEmergencia>({
   id: "fondo-de-emergencia",
   concepto: "fondo-de-emergencia",
   definir,
-  textos: { en: textosEn, es: textosEs, fr: textosFr, it: textosIt, pt: textosPt },
-  contenido: { en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, pt: contenidoPt },
+  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, pt: textosPt },
+  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, pt: contenidoPt },
   casos,
 });
