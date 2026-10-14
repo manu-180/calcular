@@ -54,6 +54,13 @@ En curso:
 
 Siguiente tanda de países: es it nl ca au at ch be in za pt ie nz.
 
+**14/10 03:50 a 07:20:** las 41 universales quedaron en los 7 idiomas (1992 casos, integradas en
+efd6636). A las ~03:55 el límite de uso de la sesión cortó a los 11 agentes; a las 07:21 se guardó
+como WIP lo que había sin commitear (us, de, fr, br, es), se pushearon todas las ramas y se retomaron
+integración, us, gb, de, fr, br, es e it. nl (`claude/pais-nl`), au y ca quedan para la tanda siguiente:
+sus agentes no habían escrito nada. Correr menos agentes Opus en paralelo para no volver a tocar el
+límite de golpe.
+
 ## Pausa y cómo retomar (14/10/2026 00:45, pedida por Manuel)
 
 Todo commiteado y pusheado. Integrado en esta rama: contrato, 41 universales (es, en), PAISES.md,
