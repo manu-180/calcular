@@ -36,6 +36,14 @@ import periculosidade from "./calculadoras/periculosidade";
 import contenidoPericulosidade from "./contenido/periculosidade";
 import valeTransporte from "./calculadoras/vale-transporte";
 import contenidoValeTransporte from "./contenido/vale-transporte";
+import impostoDeRendaAnual from "./calculadoras/imposto-de-renda-anual";
+import contenidoImpostoDeRendaAnual from "./contenido/imposto-de-renda-anual";
+import correcaoIpca from "./calculadoras/correcao-ipca";
+import contenidoCorrecaoIpca from "./contenido/correcao-ipca";
+import dolarPtax from "./calculadoras/dolar-ptax";
+import contenidoDolarPtax from "./contenido/dolar-ptax";
+import rendimentoPoupanca from "./calculadoras/rendimento-poupanca";
+import contenidoRendimentoPoupanca from "./contenido/rendimento-poupanca";
 import calculoRescisao from "./calculadoras/calculo-rescisao";
 import contenidoCalculoRescisao from "./contenido/calculo-rescisao";
 import datos from "./datos.json";
@@ -68,6 +76,10 @@ export default definirPais({
     { definicion: insalubridade, contenido: contenidoInsalubridade, cliente: () => import("./calculadoras/insalubridade.cliente") },
     { definicion: periculosidade, contenido: contenidoPericulosidade, cliente: () => import("./calculadoras/periculosidade.cliente") },
     { definicion: valeTransporte, contenido: contenidoValeTransporte, cliente: () => import("./calculadoras/vale-transporte.cliente") },
+    { definicion: impostoDeRendaAnual, contenido: contenidoImpostoDeRendaAnual, cliente: () => import("./calculadoras/imposto-de-renda-anual.cliente") },
+    { definicion: correcaoIpca, contenido: contenidoCorrecaoIpca, cliente: () => import("./calculadoras/correcao-ipca.cliente") },
+    { definicion: dolarPtax, contenido: contenidoDolarPtax, cliente: () => import("./calculadoras/dolar-ptax.cliente") },
+    { definicion: rendimentoPoupanca, contenido: contenidoRendimentoPoupanca, cliente: () => import("./calculadoras/rendimento-poupanca.cliente") },
     { definicion: calculoRescisao, contenido: contenidoCalculoRescisao, cliente: () => import("./calculadoras/calculo-rescisao.cliente") },
   ],
   universales: "todas",

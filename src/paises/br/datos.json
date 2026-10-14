@@ -455,6 +455,46 @@
       ]
     },
     {
+      "id": "br.irpf-desconto-simplificado-percentual",
+      "nombre": "Desconto simplificado anual sobre os rendimentos tributáveis",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 9.250, de 26 de dezembro de 1995, art. 10 (desconto simplificado)",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l9250.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.previdencia-privada-limite",
+      "nombre": "Limite da dedução de previdência privada (PGBL) sobre os rendimentos tributáveis",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 9.532, de 10 de dezembro de 1997, art. 11 (previdência privada)",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l9532.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
       "id": "br.irpf-limite-instrucao",
       "nombre": "Limite anual de dedução com instrução",
       "tipo": "numero",
@@ -1198,6 +1238,69 @@
             "tipo": "primaria",
             "verificadoEl": "2026-10-14",
             "nota": "Art. 18-A, § 1º."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.poupanca-limite-selic",
+      "nombre": "Meta Selic acima da qual a poupança rende 0,5 % ao mês mais TR",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-04",
+          "valor": 8.5,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 8.177, de 1º de março de 1991, art. 12 (remuneração da poupança), texto compilado",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l8177.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 12, II, a."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.poupanca-juros",
+      "nombre": "Juros mensais da poupança com Selic acima do limite",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-04",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 8.177, de 1º de março de 1991, art. 12 (remuneração da poupança), texto compilado",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l8177.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 12, II, a."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.poupanca-fracao-selic",
+      "nombre": "Parte da meta Selic paga pela poupança com Selic até o limite",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-05-04",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 8.177, de 1º de março de 1991, art. 12 (remuneração da poupança), texto compilado",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l8177.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 12, II, b."
           }
         }
       ]
