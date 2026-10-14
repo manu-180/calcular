@@ -28,7 +28,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
       },
       {
         pregunta: "What is a quick way to work out a 15% tip?",
-        respuesta: "Move the decimal point one place left to get 10%, then add half of that. On 40, that is 4 plus 2, so 6.",
+        respuesta: "Divide the bill by 10 to get 10%, then add half of that. On 40, that is 4 plus 2, so 6.",
       },
     ],
     glosario: [

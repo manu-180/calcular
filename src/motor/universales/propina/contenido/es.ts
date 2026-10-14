@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -45,7 +45,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
       },
       {
         pregunta: "¿Cómo se calcula rápido el 10 % de propina?",
-        respuesta: "Se corre la coma un lugar a la izquierda. El 10 % de 450 es 45. Para el 15 %, se suma la mitad de eso.",
+        respuesta: `Se divide la cuenta por 10. El 10 % de 450 es 45. Para el 15 %, se le suma la mitad: 45 + ${formatearNumero(ctx, 22.5, 1)} da ${formatearNumero(ctx, 67.5, 1)}.`,
       },
     ],
     glosario: [
