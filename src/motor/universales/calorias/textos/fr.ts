@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosFr: TextosUi<UiCalorias> = {
+  slug: "calcul-besoins-caloriques",
+  ui: () => ({
+    sexo: "Sexe",
+    mujer: "Femme",
+    hombre: "Homme",
+    edad: "Âge (ans)",
+    peso: (u) => `Poids (${u})`,
+    altura: (u) => `Taille (${u})`,
+    pies: "Taille : pieds (ft)",
+    pulgadas: "Taille : pouces (in)",
+    actividad: "Niveau d’activité",
+    sedentaria: "Faible ou nulle",
+    ligera: "Légère (1 à 3 jours par semaine)",
+    moderada: "Modérée (3 à 5 jours par semaine)",
+    alta: "Élevée (6 ou 7 jours par semaine)",
+    muyAlta: "Très élevée (entraînement intense ou métier physique)",
+    objetivo: "Objectif",
+    mantener: "Garder mon poids",
+    bajar: "Perdre du poids en douceur",
+    subir: "Prendre du poids en douceur",
+    basal: "Métabolisme de base (kcal par jour)",
+    basalAyuda: "Ce que votre corps dépense au repos complet.",
+    mantenimiento: "Calories pour garder votre poids (kcal par jour)",
+    calObjetivo: "Calories pour votre objectif (kcal par jour)",
+    calObjetivoAyuda: "Un changement modéré : 500 kcal de moins par jour pour perdre du poids, 300 de plus pour en prendre.",
+    errorEdad: "La formule est prévue pour les personnes de 15 à 100 ans.",
+    errorPeso: "Le poids doit être supérieur à 0.",
+    errorAltura: "La taille doit être supérieure à 0.",
+    notaMinimo: (kcal) => `Pour perdre du poids, le calcul ne descend pas sous ${kcal} kcal par jour. Manger moins que cela se fait avec un accompagnement professionnel.`,
+    aviso: "C’est une estimation fondée sur l’équation de Mifflin-St Jeor. Chaque corps est différent : elle ne remplace pas l’avis d’un professionnel de santé ou d’un diététicien.",
+  }),
+};

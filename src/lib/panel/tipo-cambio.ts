@@ -1,5 +1,7 @@
 import https from "node:https";
+import tls from "node:tls";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { INTERMEDIO_BCRA } from "./certs-bcra";
 
 // Cotizaciones oficiales del BCRA (Comunicación A 3500 para el dólar y el resto de las monedas en
 // pesos). De ahí sale ca_tipo_cambio: cuántos dólares vale una unidad de cada moneda ese día. La carga
@@ -32,21 +34,19 @@ export function tasasDelBcra(json: unknown): Cotizaciones | null {
   return { fecha: r.fecha.slice(0, 10), tasas };
 }
 
-const CODIGOS_TLS = new Set([
-  "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
-  "SELF_SIGNED_CERT_IN_CHAIN",
-  "DEPTH_ZERO_SELF_SIGNED_CERT",
-  "CERT_HAS_EXPIRED",
-  "ERR_TLS_CERT_ALTNAME_INVALID",
-]);
+// El BCRA sirvió a veces la cadena de certificados incompleta. En vez de apagar la verificación TLS
+// (permitiría cargar cotizaciones falsas), se suma su intermedio a las raíces de Node.
+let agente: https.Agent | null = null;
+function agenteBcra(): https.Agent {
+  agente ??= new https.Agent({ ca: [...tls.rootCertificates, INTERMEDIO_BCRA] });
+  return agente;
+}
 
-// El BCRA sirve a veces la cadena de certificados incompleta (igual que en src/lib/datos-vivos.ts): se
-// reintenta sin verificar TLS y la banda de tasasDelBcra descarta una respuesta disparatada.
-function pedir(url: string, timeoutMs: number, inseguro = false): Promise<unknown> {
+function pedir(url: string, timeoutMs: number): Promise<unknown> {
   return new Promise((resolve, reject) => {
     const req = https.get(
       url,
-      { headers: { "User-Agent": "calcular.ar/panel", Accept: "application/json" }, rejectUnauthorized: !inseguro, timeout: timeoutMs },
+      { headers: { "User-Agent": "calcular.ar/panel", Accept: "application/json" }, agent: agenteBcra(), timeout: timeoutMs },
       (res) => {
         if (res.statusCode !== 200) {
           res.resume();
@@ -71,12 +71,7 @@ function pedir(url: string, timeoutMs: number, inseguro = false): Promise<unknow
 
 export async function traerCotizaciones(fecha: string | null, timeoutMs = 8000): Promise<Cotizaciones | null> {
   const url = fecha ? `${URL_COTIZACIONES}?fecha=${fecha}` : URL_COTIZACIONES;
-  try {
-    return tasasDelBcra(await pedir(url, timeoutMs));
-  } catch (e) {
-    if (!CODIGOS_TLS.has((e as NodeJS.ErrnoException).code ?? "")) throw e;
-    return tasasDelBcra(await pedir(url, timeoutMs, true));
-  }
+  return tasasDelBcra(await pedir(url, timeoutMs));
 }
 
 function diaAnterior(fecha: string, dias: number): string {
