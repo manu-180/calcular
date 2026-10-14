@@ -16,6 +16,6 @@ export const textosDe: TextosUi<UiCeramicos> = {
     conDesperdicio: (u) => `Fläche mit Verschnitt (${u})`,
     cubre: (u) => `Fläche, die die Pakete abdecken (${u})`,
     errorSuperficie: "Die Fläche muss über 0 liegen.",
-    errorPieza: "Die Maße der Fliese müssen über 0 liegen.",
+    errorPieza: "Länge und Breite der Fliese müssen über 0 liegen.",
   }),
 };

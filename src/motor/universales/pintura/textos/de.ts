@@ -6,7 +6,7 @@ const volumen = (u: string) => (u === "L" ? "Liter" : "Gallonen");
 export const textosDe: TextosUi<UiPintura> = {
   slug: "farbbedarf-rechner",
   ui: () => ({
-    modo: "Welche Maße haben Sie?",
+    modo: "Was haben Sie gemessen?",
     modoMedidas: "Wandlänge und Höhe",
     modoSuperficie: "Die gesamte Fläche",
     largo: (u) => `Gesamtlänge der Wände (${u})`,

@@ -19,7 +19,7 @@ export const textosDe: TextosUi<UiHormigon> = {
     arena: (u) => `Sand (${u})`,
     piedra: (u) => `Kies (${u})`,
     agua: (u) => (u === "L" ? "Wasser (Liter)" : "Wasser (Gallonen)"),
-    errorMedida: "Dieses Maß muss über 0 liegen.",
+    errorMedida: "Dieser Wert muss über 0 liegen.",
     aviso: "Die Materialmengen sind ein Richtwert für eine Standardmischung 1:2:3 (etwa 350 kg Zement pro m³). Sie hängen von Rezeptur, Bauteil und den Baustoffen vor Ort ab. Stimmen Sie sie mit der Bauleitung oder dem Fachbetrieb ab.",
   }),
 };

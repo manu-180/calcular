@@ -5,7 +5,7 @@ export const textosDe: TextosUi<UiMetrosCuadrados> = {
   slug: "quadratmeter-rechner",
   ui: () => ({
     forma: (n) => `Fläche ${n}: Form`,
-    formaAyuda: "Ist der Raum L-förmig oder unregelmäßig, teilen Sie ihn in Teilflächen auf. Der Rechner zählt sie zusammen.",
+    formaAyuda: "Ist der Raum L-förmig oder verwinkelt, teilen Sie ihn in Teilflächen auf. Der Rechner zählt sie zusammen.",
     ninguna: "Nicht verwendet",
     rectangulo: "Rechteck oder Quadrat",
     triangulo: "Dreieck",
@@ -16,6 +16,6 @@ export const textosDe: TextosUi<UiMetrosCuadrados> = {
     total: (u) => `Gesamtfläche (${u})`,
     equivale: (u) => `Entspricht in ${u}`,
     parcial: (n, u) => `Fläche ${n} (${u})`,
-    errorMedida: "Dieses Maß fehlt oder ist 0.",
+    errorMedida: "Dieser Wert fehlt oder ist 0.",
   }),
 };

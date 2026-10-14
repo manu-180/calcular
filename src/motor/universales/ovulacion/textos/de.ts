@@ -18,6 +18,6 @@ export const textosDe: TextosUi<UiOvulacion> = {
     colHasta: "Fruchtbar bis",
     colOvulacion: "Eisprung",
     errorCiclo: "Die Zykluslänge muss zwischen 21 und 45 Tagen liegen.",
-    aviso: "Das ist eine Schätzung für regelmäßige Zyklen. Sie ist keine Verhütungsmethode und ersetzt keine ärztliche Beratung.",
+    aviso: "Das ist eine Schätzung für Zyklen, die immer etwa gleich lang sind. Sie ist keine Verhütungsmethode und ersetzt keine ärztliche Beratung.",
   }),
 };
