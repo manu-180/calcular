@@ -7,8 +7,8 @@ import type { OrigenTraduccion } from "@/motor/tipos";
 import type { Cargador } from "./tipos";
 
 const RAIZ = "../../../../../../paises";
-const CALCULADORAS = import.meta.glob<{ default: unknown }>(["../../../../../../paises/*/calculadoras/*.ts", "!**/*.casos.ts"]);
-const TEXTOS = import.meta.glob<{ default: unknown }>("../../../../../../paises/*/textos/*.ts");
+const CALCULADORAS = import.meta.glob(["../../../../../../paises/*/calculadoras/*.ts", "!**/*.casos.ts"]) as Readonly<Record<string, Cargador | undefined>>;
+const TEXTOS = import.meta.glob("../../../../../../paises/*/textos/*.ts") as Readonly<Record<string, Cargador | undefined>>;
 
 export function cargadorDev(mercado: string, slug: string, traduccion?: OrigenTraduccion): Cargador | undefined {
   if (traduccion) {

@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { esMercadoDePrueba } from "@/motor/datos";
 import { RE_CODIGO_MERCADO, type CodigoMercado } from "@/motor/tipos";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
@@ -120,7 +121,7 @@ function informesDelRegistro(): ProductoIntl[] {
   const salida: ProductoIntl[] = [];
   for (const pais of registro.paises) {
     const m = pais.mercado.codigo;
-    if (m === "global" || m === "zz") continue;
+    if (m === "global" || esMercadoDePrueba(m)) continue;
     for (const f of FAMILIAS) if (calculadorasDeFamilia(f, m).length) salida.push(informe(f, m));
   }
   return salida;

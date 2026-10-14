@@ -2,6 +2,7 @@ import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import ExcelJS from "exceljs";
+import { esMercadoDePrueba } from "@/motor/datos";
 import type { CodigoMercado, FechaISO } from "@/motor/tipos";
 import { hoyEn } from "@/motor/vigencia";
 import { opcionesDinamicas, resolverValores } from "@/motor/registro";
@@ -86,7 +87,7 @@ function publica(p: ProductoIntl, hoja?: string): OfertaPublica {
 export function ofertasDeMercado(mercado: string): OfertasMercado {
   const pais = registro.pais(mercado as CodigoMercado);
   const porCalculadora: Record<string, OfertasCalculadora> = {};
-  if (!pais || mercado === "global" || mercado === "zz") return { activa: false, porCalculadora, referencia: null };
+  if (!pais || mercado === "global" || esMercadoDePrueba(mercado)) return { activa: false, porCalculadora, referencia: null };
   const { idioma, trato } = pais.mercado;
   const productos = productosDeMercado(mercado);
   const planillas = productos.filter((p) => p.tipo === "planilla");
