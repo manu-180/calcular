@@ -179,9 +179,9 @@ async function main() {
   check("descarga de un informe: 303 a su página", d1.status === 303 && (d1.headers.get("location") ?? "").includes(`/mx/informes/informe-liquidacion/ver?proveedor=paypal&pago=${v1.cap}`));
 
   const c2 = await comprar(informe.id, { calc: "isr", entrada: datosFiniquito.entrada });
-  check("checkout con datos de una calculadora de otra familia: se cobra, los datos no viajan", c2.r.status === 303 && !checkouts.get(c2.checkoutId));
+  check("checkout con datos de una calculadora de otra familia: se cobra, los datos no viajan", c2.r.status === 303 && !checkouts.get(c2.checkoutId)?.datos);
   const c3 = await comprar(informe.id, datosFiniquito, false);
-  check("checkout sin la casilla tildada: los datos no viajan", c3.r.status === 303 && !checkouts.get(c3.checkoutId));
+  check("checkout sin la casilla tildada: los datos no viajan", c3.r.status === 303 && !checkouts.get(c3.checkoutId)?.datos);
 
   // ─── Planilla con datos ────────────────────────────────────────────────────────────────────
   const planilla = productoIntlDe("mx", "sueldo-y-liquidacion")!;
