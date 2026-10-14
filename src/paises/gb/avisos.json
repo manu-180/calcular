@@ -1,0 +1,19 @@
+{
+  "mercado": "gb",
+  "avisos": [
+    {
+      "id": "gb.sdlt-england-ni",
+      "nivel": "info",
+      "desde": "2025-04-01",
+      "aplicaA": ["gb.stamp-duty-calculator"],
+      "texto": "Stamp Duty Land Tax applies in England and Northern Ireland. In Scotland you pay Land and Buildings Transaction Tax, and in Wales Land Transaction Tax, with different rates.",
+      "fuente": {
+        "organismo": "HMRC",
+        "titulo": "Stamp Duty Land Tax",
+        "url": "https://www.gov.uk/stamp-duty-land-tax",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    }
+  ]
+}
