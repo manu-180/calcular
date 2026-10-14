@@ -799,6 +799,26 @@
       ]
     },
     {
+      "id": "es.jornada-maxima-semanal",
+      "nombre": "Jornada ordinaria máxima semanal (promedio anual)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
       "id": "es.vacaciones-dias",
       "nombre": "Vacaciones mínimas al año (días naturales)",
       "tipo": "numero",
