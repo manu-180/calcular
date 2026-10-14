@@ -30,7 +30,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
     ejemplo: [
       "10 km en 50 minutos es un ritmo de 5:00 por km, a 12 km/h.",
-      `Una media maratón (${formatearNumero(ctx, media, 2)} ${u}) a ${ritmoTexto(ritmoMedia)} por ${u} termina en ${reloj(ritmoMedia * media)}.`,
+      `Una media maratón (${formatearNumero(ctx, media, 1)} ${u}) a ${ritmoTexto(ritmoMedia)} por ${u} termina en ${reloj(ritmoMedia * media)}.`,
     ],
     faq: [
       {

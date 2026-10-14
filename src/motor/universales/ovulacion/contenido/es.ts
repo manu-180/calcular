@@ -9,7 +9,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const v = ventana(aDia(fum), 28);
   return {
     h1: "Calculadora de días fértiles y ovulación",
-    title: `Días fértiles y ovulación: calculadora en ${ctx.nombrePais}`,
+    title: `Días fértiles y ovulación en ${ctx.nombrePais}`,
     description: t(
       "Calcula tu día de ovulación, tus días fértiles y la fecha de tu próxima menstruación, con los próximos tres ciclos.",
       "Calcule su día de ovulación, sus días fértiles y la fecha de su próxima menstruación, con los próximos tres ciclos.",

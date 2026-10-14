@@ -5,7 +5,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const n = (x: number, d = 1) => formatearNumero(ctx, x, d);
   return {
     h1: "Calculadora de promedio ponderado",
-    title: `Promedio ponderado y simple: calculadora en ${ctx.nombrePais}`,
+    title: `Promedio ponderado: calculadora en ${ctx.nombrePais}`,
     description: t(
       "Calcula tu promedio de notas, simple o ponderado, con hasta 10 notas y el peso de cada una: porcentajes, créditos o veces que cuenta.",
       "Calcule su promedio de notas, simple o ponderado, con hasta 10 notas y el peso de cada una: porcentajes, créditos o veces que cuenta.",

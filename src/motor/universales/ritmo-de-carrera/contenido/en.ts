@@ -27,7 +27,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
         ]
       : [
           "10 km in 50 minutes is a pace of 5:00 per km, at 12 km/h.",
-          `A half marathon (${formatearNumero(ctx, media, 2)} ${corto}) at ${ritmoTexto(ritmoMedia)} per km finishes in ${reloj(ritmoMedia * media)}.`,
+          `A half marathon (${formatearNumero(ctx, media, 1)} ${corto}) at ${ritmoTexto(ritmoMedia)} per km finishes in ${reloj(ritmoMedia * media)}.`,
         ],
     faq: [
       {
