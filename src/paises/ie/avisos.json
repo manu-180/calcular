@@ -1,0 +1,35 @@
+{
+  "mercado": "ie",
+  "avisos": [
+    {
+      "id": "ie.lpt-local-adjustment",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "hasta": "2026-12-31",
+      "aplicaA": ["ie.local-property-tax"],
+      "texto": "Each local authority can raise or lower the basic LPT rate by up to 15%. The calculator uses the 2026 Local Adjustment Factor published by Revenue.",
+      "fuente": {
+        "organismo": "Revenue",
+        "titulo": "LPT valuation bands and rates",
+        "url": "https://www.revenue.ie/en/property/local-property-tax/valuing-your-property/valuation-bands-rates.aspx",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    },
+    {
+      "id": "ie.prsi-october-2026",
+      "nivel": "info",
+      "desde": "2026-10-01",
+      "hasta": "2026-12-31",
+      "aplicaA": ["ie.take-home-pay", "ie.prsi-calculator", "ie.employer-prsi-calculator"],
+      "texto": "PRSI rates went up on 1 October 2026. Yearly figures here use today's rate for the whole year, so for 2026 they are slightly higher than what you actually pay.",
+      "fuente": {
+        "organismo": "Department of Social Protection",
+        "titulo": "PRSI Class A rates",
+        "url": "https://www.gov.ie/en/department-of-social-protection/publications/prsi-class-a-rates/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    }
+  ]
+}
