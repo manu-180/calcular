@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["EUR"],
   zonaHoraria: "Europe/Berlin",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "bw", nombre: "Baden-Württemberg" },
     { id: "by", nombre: "Bayern" },
