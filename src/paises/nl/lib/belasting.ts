@@ -70,6 +70,20 @@ export function tariefsaanpassing(inkomenVoorAftrek: number, aftrek: number, sch
   return (inTop * (top.tasa - maximumTarief)) / 100;
 }
 
+// Artikel 3.112 Wet IB 2001: een percentage van de hele WOZ-waarde, behalve in de hoogste rij,
+// waar een vast bedrag plus een percentage over het meerdere geldt (cuotaFija in datos.json).
+export function eigenwoningforfait(woz: number, tabel: readonly FilaEscala[]): number {
+  if (woz <= 0) return 0;
+  let i = 0;
+  tabel.forEach((r, j) => {
+    if (woz >= r.desde) i = j;
+  });
+  const rij = tabel[i];
+  if (rij.cuotaFija === undefined) return (woz * rij.tasa) / 100;
+  const ondergrens = i > 0 ? (tabel[i - 1].hasta ?? 0) : 0;
+  return rij.cuotaFija + ((woz - ondergrens) * rij.tasa) / 100;
+}
+
 export interface UitkomstBox1 {
   belasting: number;
   ahk: number;

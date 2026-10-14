@@ -26,6 +26,12 @@ import algemeneHeffingskortingBerekenen from "./calculadoras/algemene-heffingsko
 import contenidoAlgemeneHeffingskortingBerekenen from "./contenido/algemene-heffingskorting-berekenen";
 import box3Berekenen from "./calculadoras/box-3-berekenen";
 import contenidoBox3Berekenen from "./contenido/box-3-berekenen";
+import hypotheekrenteaftrekBerekenen from "./calculadoras/hypotheekrenteaftrek-berekenen";
+import contenidoHypotheekrenteaftrekBerekenen from "./contenido/hypotheekrenteaftrek-berekenen";
+import eigenwoningforfaitBerekenen from "./calculadoras/eigenwoningforfait-berekenen";
+import contenidoEigenwoningforfaitBerekenen from "./contenido/eigenwoningforfait-berekenen";
+import overdrachtsbelastingBerekenen from "./calculadoras/overdrachtsbelasting-berekenen";
+import contenidoOverdrachtsbelastingBerekenen from "./contenido/overdrachtsbelasting-berekenen";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -51,6 +57,9 @@ export default definirPais({
     { definicion: arbeidskortingBerekenen, contenido: contenidoArbeidskortingBerekenen, cliente: () => import("./calculadoras/arbeidskorting-berekenen.cliente") },
     { definicion: algemeneHeffingskortingBerekenen, contenido: contenidoAlgemeneHeffingskortingBerekenen, cliente: () => import("./calculadoras/algemene-heffingskorting-berekenen.cliente") },
     { definicion: box3Berekenen, contenido: contenidoBox3Berekenen, cliente: () => import("./calculadoras/box-3-berekenen.cliente") },
+    { definicion: hypotheekrenteaftrekBerekenen, contenido: contenidoHypotheekrenteaftrekBerekenen, cliente: () => import("./calculadoras/hypotheekrenteaftrek-berekenen.cliente") },
+    { definicion: eigenwoningforfaitBerekenen, contenido: contenidoEigenwoningforfaitBerekenen, cliente: () => import("./calculadoras/eigenwoningforfait-berekenen.cliente") },
+    { definicion: overdrachtsbelastingBerekenen, contenido: contenidoOverdrachtsbelastingBerekenen, cliente: () => import("./calculadoras/overdrachtsbelasting-berekenen.cliente") },
   ],
   universales: "todas",
   novedades,
