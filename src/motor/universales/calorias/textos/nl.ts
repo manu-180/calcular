@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosNl: TextosUi<UiCalorias> = {
+  slug: "calorieen-berekenen",
+  ui: () => ({
+    sexo: "Geslacht",
+    mujer: "Vrouw",
+    hombre: "Man",
+    edad: "Leeftijd (jaar)",
+    peso: (u) => `Gewicht (${u})`,
+    altura: (u) => `Lengte (${u})`,
+    pies: "Lengte: voet (ft)",
+    pulgadas: "Lengte: inch (in)",
+    actividad: "Hoe actief ben je?",
+    sedentaria: "Weinig of niet",
+    ligera: "Licht (1 tot 3 dagen per week)",
+    moderada: "Gemiddeld (3 tot 5 dagen per week)",
+    alta: "Veel (6 of 7 dagen per week)",
+    muyAlta: "Heel veel (zwaar trainen of lichamelijk werk)",
+    objetivo: "Doel",
+    mantener: "Op gewicht blijven",
+    bajar: "Rustig afvallen",
+    subir: "Rustig aankomen",
+    basal: "Ruststofwisseling (kcal per dag)",
+    basalAyuda: "Wat je lichaam verbruikt als je helemaal in rust bent.",
+    mantenimiento: "Calorieën om op gewicht te blijven (kcal per dag)",
+    calObjetivo: "Calorieën voor je doel (kcal per dag)",
+    calObjetivoAyuda: "Een rustige verandering: 500 kcal minder per dag om af te vallen, 300 meer om aan te komen.",
+    errorEdad: "De formule is bedoeld voor mensen van 15 tot 100 jaar.",
+    errorPeso: "Je gewicht moet hoger zijn dan 0.",
+    errorAltura: "Je lengte moet hoger zijn dan 0.",
+    notaMinimo: (kcal) => `Om af te vallen gaat het advies niet onder de ${kcal} kcal per dag. Wil je minder eten, doe dat dan met begeleiding.`,
+    aviso: "Dit is een schatting met de formule van Mifflin-St Jeor. Elk lichaam is anders. Het vervangt niet het advies van een arts of diëtist.",
+  }),
+};
