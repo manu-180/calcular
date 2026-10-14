@@ -1000,7 +1000,7 @@
       "id": "ch.mutterschaft-tage",
       "nombre": "Dauer der Mutterschaftsentschädigung in Tagen",
       "tipo": "numero",
-      "unidad": "dias",
+      "unidad": "numero",
       "tramos": [
         {
           "estado": "verificado",
@@ -1020,7 +1020,7 @@
       "id": "ch.vaterschaft-taggelder",
       "nombre": "Taggelder des andern Elternteils (Vaterschaftsurlaub)",
       "tipo": "numero",
-      "unidad": "dias",
+      "unidad": "numero",
       "tramos": [
         {
           "estado": "verificado",
