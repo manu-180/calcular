@@ -46,4 +46,11 @@ export default definirCasos(salarioLiquido, [
     entrada: { bruto: 1100, situacao: "casado-dois", dependentes: 0 },
     esperado: { irs: 76.3 },
   },
+  {
+    nombre: "Novembro de 2026: retenção a metade",
+    origen: { tipo: "oficial", url: "https://diariodarepublica.pt/dr/detalhe/despacho/12523-a-2026-1180337885", detalle: "Tabela I, 2000 €: 301,34; em novembro 50 % = 150,67. SS 220. Líquido 1629,33." },
+    fecha: "2026-11-15",
+    entrada: { bruto: 2000, situacao: "nao-casado", dependentes: 0 },
+    esperado: { irs: 150.67, liquido: 1629.33 },
+  },
 ]);

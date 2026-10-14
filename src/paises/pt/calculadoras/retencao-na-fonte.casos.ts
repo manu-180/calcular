@@ -1,6 +1,7 @@
 import { definirCasos } from "@/motor/calculo";
 import retencaoNaFonte from "./retencao-na-fonte";
 
+const AJUSTE = "https://diariodarepublica.pt/dr/detalhe/despacho/12523-a-2026-1180337885";
 const DESPACHO = "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf";
 
 export default definirCasos(retencaoNaFonte, [
@@ -38,5 +39,26 @@ export default definirCasos(retencaoNaFonte, [
     fecha: "2026-10-14",
     entrada: { remuneracao: 25000, situacao: "nao-casado", dependentes: 0 },
     esperado: { retencao: 10520.19, taxa: 47.17 },
+  },
+  {
+    nombre: "Novembro de 2026: metade da tabela",
+    origen: { tipo: "oficial", url: AJUSTE, detalle: "Despacho n.º 12523-A/2026, n.º 2: 50 % do valor da tabela. 2000 × 31,10 % − 320,66 = 301,34; metade = 150,67." },
+    fecha: "2026-11-15",
+    entrada: { remuneracao: 2000, situacao: "nao-casado", dependentes: 0 },
+    esperado: { retencao: 150.67, tabelaSemAjuste: 301.34 },
+  },
+  {
+    nombre: "Novembro de 2026 acima do penúltimo escalão: sem ajuste",
+    origen: { tipo: "oficial", url: AJUSTE, detalle: "N.º 3: acima de 20 221 € a retenção fica igual. 25000 × 47,17 % − 1272,31 = 10520,19." },
+    fecha: "2026-11-15",
+    entrada: { remuneracao: 25000, situacao: "nao-casado", dependentes: 0 },
+    esperado: { retencao: 10520.19, tabelaSemAjuste: null },
+  },
+  {
+    nombre: "Dezembro de 2026: tabela normal",
+    origen: { tipo: "oficial", url: AJUSTE, detalle: "N.º 7: a partir de 1 de dezembro aplicam-se as tabelas sem adaptação." },
+    fecha: "2026-12-01",
+    entrada: { remuneracao: 2000, situacao: "nao-casado", dependentes: 0 },
+    esperado: { retencao: 301.34 },
   },
 ]);

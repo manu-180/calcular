@@ -546,7 +546,7 @@
           ],
           "fuente": {
             "organismo": "Autoridade Tributária e Aduaneira",
-            "titulo": "Despacho da Secretária de Estado dos Assuntos Fiscais de 5 de janeiro de 2026: tabelas de retenção na fonte para o continente",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
             "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
@@ -641,7 +641,7 @@
           ],
           "fuente": {
             "organismo": "Autoridade Tributária e Aduaneira",
-            "titulo": "Despacho da Secretária de Estado dos Assuntos Fiscais de 5 de janeiro de 2026: tabelas de retenção na fonte para o continente",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
             "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
@@ -736,7 +736,7 @@
           ],
           "fuente": {
             "organismo": "Autoridade Tributária e Aduaneira",
-            "titulo": "Despacho da Secretária de Estado dos Assuntos Fiscais de 5 de janeiro de 2026: tabelas de retenção na fonte para o continente",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
             "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
@@ -776,7 +776,7 @@
           },
           "fuente": {
             "organismo": "Autoridade Tributária e Aduaneira",
-            "titulo": "Despacho da Secretária de Estado dos Assuntos Fiscais de 5 de janeiro de 2026: tabelas de retenção na fonte para o continente",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
             "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
@@ -806,8 +806,56 @@
           },
           "fuente": {
             "organismo": "Autoridade Tributária e Aduaneira",
-            "titulo": "Despacho da Secretária de Estado dos Assuntos Fiscais de 5 de janeiro de 2026: tabelas de retenção na fonte para o continente",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
             "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.retencao-percentagem",
+      "nombre": "Parte da retenção das tabelas que se aplica no mês",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-01",
+      "nota": "Em novembro de 2026 retém-se metade do valor das tabelas, salvo acima do limite do penúltimo escalão (Despacho n.º 12523-A/2026, n.os 2 e 3).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-10-31",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-11-01",
+          "hasta": "2026-11-30",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Despacho n.º 12523-A/2026, de 14 de outubro: ajustamentos às tabelas de retenção para novembro de 2026",
+            "url": "https://diariodarepublica.pt/dr/detalhe/despacho/12523-a-2026-1180337885",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-12-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Despacho n.º 12523-A/2026, de 14 de outubro: ajustamentos às tabelas de retenção para novembro de 2026",
+            "url": "https://diariodarepublica.pt/dr/detalhe/despacho/12523-a-2026-1180337885",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
           }
@@ -827,7 +875,7 @@
           "valor": 1,
           "fuente": {
             "organismo": "Autoridade Tributária e Aduaneira",
-            "titulo": "Despacho da Secretária de Estado dos Assuntos Fiscais de 5 de janeiro de 2026: tabelas de retenção na fonte para o continente",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
             "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"

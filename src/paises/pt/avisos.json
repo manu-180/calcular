@@ -1,4 +1,19 @@
 {
   "mercado": "pt",
-  "avisos": []
+  "avisos": [
+    {
+      "id": "pt.irs-reducao-taxas-2026",
+      "nivel": "cautela",
+      "desde": "2026-10-14",
+      "aplicaA": ["pt.simulador-irs"],
+      "texto": "A Assembleia da República autorizou o Governo a baixar as taxas dos seis primeiros escalões do IRS, com efeitos sobre os rendimentos de 2026. Enquanto as novas taxas não forem publicadas, o simulador usa as do Orçamento do Estado para 2026, e o IRS final pode ficar um pouco abaixo deste resultado.",
+      "fuente": {
+        "organismo": "Diário da República",
+        "titulo": "Despacho n.º 12523-A/2026, de 14 de outubro (preâmbulo)",
+        "url": "https://diariodarepublica.pt/dr/detalhe/despacho/12523-a-2026-1180337885",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    }
+  ]
 }

@@ -17,6 +17,7 @@ export const REQUISITOS_RETENCAO = {
   "pt.retencao-formulas": "mapa",
   "pt.retencao-parcela-dependente": "mapa",
   "pt.retencao-reducao-3-dependentes": "numero",
+  "pt.retencao-percentagem": "numero",
 } as const;
 
 export interface ValoresRetencao {
@@ -26,6 +27,7 @@ export interface ValoresRetencao {
   readonly "pt.retencao-formulas": Readonly<Record<string, number>>;
   readonly "pt.retencao-parcela-dependente": Readonly<Record<string, number>>;
   readonly "pt.retencao-reducao-3-dependentes": number;
+  readonly "pt.retencao-percentagem": number;
 }
 
 export function tabelaDe(situacao: Situacao, dependentes: number): Tabela {
@@ -47,12 +49,24 @@ export interface Retencao {
   parcela: number;
   parcelaDependentes: number;
   retencao: number;
+  tabelaSemAjuste: number;
+  ajustada: boolean;
 }
 
 // O despacho de 2026 define a parcela a abater da 2.ª e da 3.ª linha como taxa × fator × (limite − R),
 // com a taxa da própria linha. Com três ou mais dependentes baixa um ponto só a taxa marginal (n.º 5,
 // alínea h): a parcela dessas linhas continua a usar a taxa original.
-export function retencaoMensal(remuneracao: number, situacao: Situacao, dependentes: number, v: ValoresRetencao, redondear: (n: number) => number): Retencao {
+// O ajuste de um mês (pt.retencao-percentagem, em novembro de 2026 metade da tabela) não vale para
+// quem ganha acima do limite do penúltimo escalão (Despacho n.º 12523-A/2026, n.º 3). O subsídio de
+// desemprego pede a taxa da tabela sem ajuste, por isso pode desligá-lo.
+export function retencaoMensal(
+  remuneracao: number,
+  situacao: Situacao,
+  dependentes: number,
+  v: ValoresRetencao,
+  redondear: (n: number) => number,
+  comAjuste = true,
+): Retencao {
   const tabela = tabelaDe(situacao, dependentes);
   const escala = v[`pt.retencao-tabela-${tabela}`];
   let indice = escala.findIndex((f) => f.hasta === null || remuneracao <= f.hasta);
@@ -66,8 +80,11 @@ export function retencaoMensal(remuneracao: number, situacao: Situacao, dependen
   const reducao = dependentes >= 3 && fila.tasa > 0 ? v["pt.retencao-reducao-3-dependentes"] : 0;
   const taxa = Math.max(0, fila.tasa - reducao);
   const parcelaDependentes = fila.tasa > 0 ? v["pt.retencao-parcela-dependente"][tabela] * dependentes : 0;
-  const bruta = (remuneracao * taxa) / 100 - parcela - parcelaDependentes;
-  return { tabela, linha, taxa, parcela: redondear(parcela), parcelaDependentes: redondear(parcelaDependentes), retencao: redondear(Math.max(0, bruta)) };
+  const tabelaSemAjuste = redondear(Math.max(0, (remuneracao * taxa) / 100 - parcela - parcelaDependentes));
+  const limitePenultimo = escala[escala.length - 2].hasta ?? Infinity;
+  const ajustada = comAjuste && v["pt.retencao-percentagem"] !== 100 && remuneracao <= limitePenultimo;
+  const retencao = ajustada ? redondear((tabelaSemAjuste * v["pt.retencao-percentagem"]) / 100) : tabelaSemAjuste;
+  return { tabela, linha, taxa, parcela: redondear(parcela), parcelaDependentes: redondear(parcelaDependentes), retencao, tabelaSemAjuste, ajustada };
 }
 
 export const REQUISITOS_IRS = {

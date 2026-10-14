@@ -15,14 +15,17 @@ export default definirCalculadora({
   ],
   calcular(entrada, valores, { redondear }) {
     const r = retencaoMensal(entrada.remuneracao, entrada.situacao, entrada.dependentes, valores, redondear);
+    const observaciones = ["Tabelas de 2026 para residentes no continente, trabalho dependente, titular sem deficiência."];
+    if (r.ajustada) observaciones.push(`Em novembro de 2026 retém-se só ${valores["pt.retencao-percentagem"]} % do valor da tabela (Despacho n.º 12523-A/2026).`);
     return {
       retencao: r.retencao,
       taxa: r.taxa,
       parcela: r.parcela,
       parcelaDependentes: r.parcelaDependentes,
       efetiva: entrada.remuneracao > 0 ? (r.retencao / entrada.remuneracao) * 100 : 0,
+      tabelaSemAjuste: r.ajustada ? r.tabelaSemAjuste : null,
       tabela: NOME_TABELA[r.tabela],
-      observaciones: ["Tabelas de 2026 para residentes no continente, trabalho dependente, titular sem deficiência."],
+      observaciones,
     };
   },
   resultado: [
@@ -31,6 +34,7 @@ export default definirCalculadora({
     { clave: "taxa", etiqueta: "Taxa marginal máxima", formato: "porcentaje", decimales: 2 },
     { clave: "parcela", etiqueta: "Parcela a abater", formato: "moneda" },
     { clave: "parcelaDependentes", etiqueta: "Parcela adicional pelos dependentes", formato: "moneda", ocultarSiCero: true },
+    { clave: "tabelaSemAjuste", etiqueta: "Retenção pela tabela, sem o ajuste do mês", formato: "moneda" },
     { clave: "tabela", etiqueta: "Tabela aplicada", formato: "texto" },
   ],
 });

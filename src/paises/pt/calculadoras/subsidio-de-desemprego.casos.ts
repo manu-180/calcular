@@ -36,4 +36,11 @@ export default definirCasos(subsidioDeDesemprego, [
     entrada: { salario: 600, subsidios: false },
     esperado: { mensal: 534 },
   },
+  {
+    nombre: "Novembro de 2026: o ajuste da retenção não mexe no líquido de referência",
+    origen: { tipo: "recalculado", url: DL, detalle: "Artigo 29.º, n.º 4: taxa de retenção da tabela. Mesmo resultado do primeiro caso: 1020,98." },
+    fecha: "2026-11-15",
+    entrada: { salario: 1500, subsidios: true },
+    esperado: { mensal: 1020.98 },
+  },
 ]);

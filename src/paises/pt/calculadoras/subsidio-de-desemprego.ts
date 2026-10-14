@@ -26,7 +26,7 @@ export default definirCalculadora({
     const total = entrada.salario * (entrada.subsidios ? 14 : 12);
     const referencia = total / 12;
     const base = (referencia * p.montante) / 100;
-    const irs = retencaoMensal(entrada.salario, "nao-casado", 0, valores, (n) => n).retencao;
+    const irs = retencaoMensal(entrada.salario, "nao-casado", 0, valores, (n) => n, false).retencao;
     const taxaIrs = entrada.salario > 0 ? irs / entrada.salario : 0;
     const liquido = referencia * (1 - valores["pt.ss-trabalhador"] / 100 - taxaIrs);
     const observaciones: string[] = [];

@@ -2,6 +2,21 @@ import type { Novedad } from "@/motor/tipos";
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "pt.retencao-novembro-2026",
+    fecha: "2026-10-14",
+    titulo: "Em novembro de 2026 a retenção de IRS cai para metade",
+    texto: "Nos salários e pensões pagos entre 1 e 30 de novembro de 2026 retém-se só metade do valor das tabelas, também no subsídio de Natal. A regra não se aplica acima do limite do penúltimo escalão. Em dezembro voltam as tabelas normais.",
+    vigenteDesde: "2026-11-01",
+    calculadoras: ["pt.salario-liquido", "pt.retencao-na-fonte"],
+    fuente: {
+      organismo: "Diário da República",
+      titulo: "Despacho n.º 12523-A/2026, de 14 de outubro",
+      url: "https://diariodarepublica.pt/dr/detalhe/despacho/12523-a-2026-1180337885",
+      tipo: "primaria",
+      verificadoEl: "2026-10-14",
+    },
+  },
+  {
     id: "pt.rmmg-2026",
     fecha: "2026-10-14",
     titulo: "O salário mínimo nacional sobe para 920 € em 2026",
@@ -55,7 +70,7 @@ export const novedades: readonly Novedad[] = [
     calculadoras: ["pt.salario-liquido", "pt.retencao-na-fonte"],
     fuente: {
       organismo: "Autoridade Tributária e Aduaneira",
-      titulo: "Despacho da Secretária de Estado dos Assuntos Fiscais de 5 de janeiro de 2026",
+      titulo: "Despacho n.º 233-A/2026, de 6 de janeiro",
       url: "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
       tipo: "primaria",
       verificadoEl: "2026-10-14",

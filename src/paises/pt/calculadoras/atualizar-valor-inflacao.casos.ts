@@ -14,10 +14,10 @@ export default definirCasos(atualizarValorInflacao, [
   },
   {
     nombre: "Mês final ainda sem índice: usa o último publicado",
-    origen: { tipo: "recalculado", url: BPSTAT, detalle: "Em 14/10/2026 o último IPC é o de agosto de 2026." },
+    origen: { tipo: "recalculado", url: BPSTAT, detalle: "Em 14/10/2026 o último IPC publicado é o de setembro de 2026 (104,6). 104,6 / 83,3 × 1000 = 1255,70." },
     fecha: "2026-10-14",
     entrada: { valor: 1000, desde: "2020-01-01", hasta: "2026-10-14" },
-    esperado: { atualizado: 1240.1, mesFinal: "agosto de 2026" },
+    esperado: { atualizado: 1255.7, mesFinal: "setembro de 2026" },
     tolerancia: 0.01,
   },
   {

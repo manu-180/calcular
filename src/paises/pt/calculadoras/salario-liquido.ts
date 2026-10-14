@@ -24,6 +24,7 @@ export default definirCalculadora({
       "Cálculo com as tabelas de retenção do continente. Os Açores e a Madeira têm tabelas próprias.",
       "Os subsídios de férias e de Natal sofrem retenção à parte, com a mesma tabela. Por isso o líquido anual conta 14 meses.",
     ];
+    if (r.ajustada) observaciones.push(`Em novembro de 2026 retém-se só ${valores["pt.retencao-percentagem"]} % do valor da tabela (Despacho n.º 12523-A/2026).`);
     return {
       bruto: entrada.bruto,
       seguranca,
