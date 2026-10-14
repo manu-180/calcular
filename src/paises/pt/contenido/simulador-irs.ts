@@ -12,7 +12,7 @@ export default definirContenido({
   ],
   comoSeCalcula: [
     "Ao rendimento bruto tira-se a dedução específica: {{pt.irs-deducao-especifica-ias}} vezes o IAS de {{pt.ias}}, ou as contribuições para a Segurança Social, se forem maiores.",
-    "Nos rendimentos mais baixos aplica-se o mínimo de existência, que abate ao rendimento até deixar o imposto a zero. O valor de referência é {{pt.irs-minimo-existencia}}.",
+    "Nos rendimentos mais baixos aplica-se o mínimo de existência, um abatimento ao rendimento que se calcula com o valor de referência de {{pt.irs-minimo-existencia}} e vai diminuindo à medida que o rendimento sobe.",
     "Ao rendimento coletável aplicam-se os escalões do artigo 68.º: cada parte do rendimento paga a taxa do seu escalão. Na declaração conjunta divide-se o rendimento por dois, aplica-se a tabela e multiplica-se por dois.",
     "À coleta subtraem-se as deduções: {{pt.irs-deducao-dependentes[dependente]}} por dependente, {{pt.irs-despesas-gerais-percentagem}} das despesas gerais familiares até {{pt.irs-despesas-gerais-limite}} por sujeito passivo e as restantes deduções.",
   ],
@@ -26,15 +26,15 @@ export default definirContenido({
     },
     {
       pregunta: "O que é o mínimo de existência?",
-      respuesta: "É um abatimento ao rendimento de quem vive sobretudo de salários ou pensões. Garante que quem ganha até {{pt.irs-minimo-existencia}} por ano não paga IRS, e vai desaparecendo aos poucos acima desse valor.",
+      respuesta: "É um abatimento ao rendimento de quem vive sobretudo de salários ou pensões. Com rendimentos até {{pt.irs-minimo-existencia}} por ano, e a dedução de despesas gerais familiares completa, o IRS fica a zero. Acima desse valor o abatimento vai diminuindo.",
     },
     {
       pregunta: "Quanto se deduz por cada filho?",
       respuesta: "{{pt.irs-deducao-dependentes[dependente]}} por dependente. Soma {{pt.irs-deducao-dependentes[ate-3-anos]}} se tiver até 3 anos, ou {{pt.irs-deducao-dependentes[segundo-ate-6-anos]}} a partir do segundo dependente com até 6 anos. Os dois acréscimos não se acumulam.",
     },
     {
-      pregunta: "Compensa a declaração conjunta?",
-      respuesta: "Costuma compensar quando um dos cônjuges ganha muito mais do que o outro, porque o rendimento é dividido por dois antes de aplicar as taxas. Simule as duas hipóteses.",
+      pregunta: "Como funciona a declaração conjunta?",
+      respuesta: "O rendimento coletável do casal divide-se por dois, aplicam-se as taxas do artigo 68.º a essa metade e o resultado multiplica-se por dois (artigo 69.º do Código do IRS). Vale a pena simular a declaração conjunta e a separada.",
     },
   ],
   glosario: [
