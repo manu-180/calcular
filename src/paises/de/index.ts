@@ -9,6 +9,10 @@ import mehrwertsteuerRechner from "./calculadoras/mehrwertsteuer-rechner";
 import mindestlohnRechner from "./calculadoras/mindestlohn-rechner";
 import minijobRechner from "./calculadoras/minijob-rechner";
 import midijobRechner from "./calculadoras/midijob-rechner";
+import sozialversicherungsRechner from "./calculadoras/sozialversicherungs-rechner";
+import arbeitgeberkostenRechner from "./calculadoras/arbeitgeberkosten-rechner";
+import rentenrechner from "./calculadoras/rentenrechner";
+import pendlerpauschaleRechner from "./calculadoras/pendlerpauschale-rechner";
 import contenidoBruttoNettoRechner from "./contenido/brutto-netto-rechner";
 import contenidoNettoBruttoRechner from "./contenido/netto-brutto-rechner";
 import contenidoLohnsteuerRechner from "./contenido/lohnsteuer-rechner";
@@ -18,6 +22,10 @@ import contenidoMehrwertsteuerRechner from "./contenido/mehrwertsteuer-rechner";
 import contenidoMindestlohnRechner from "./contenido/mindestlohn-rechner";
 import contenidoMinijobRechner from "./contenido/minijob-rechner";
 import contenidoMidijobRechner from "./contenido/midijob-rechner";
+import contenidoSozialversicherungsRechner from "./contenido/sozialversicherungs-rechner";
+import contenidoArbeitgeberkostenRechner from "./contenido/arbeitgeberkosten-rechner";
+import contenidoRentenrechner from "./contenido/rentenrechner";
+import contenidoPendlerpauschaleRechner from "./contenido/pendlerpauschale-rechner";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -39,6 +47,10 @@ export default definirPais({
     { definicion: mindestlohnRechner, contenido: contenidoMindestlohnRechner, cliente: () => import("./calculadoras/mindestlohn-rechner.cliente") },
     { definicion: minijobRechner, contenido: contenidoMinijobRechner, cliente: () => import("./calculadoras/minijob-rechner.cliente") },
     { definicion: midijobRechner, contenido: contenidoMidijobRechner, cliente: () => import("./calculadoras/midijob-rechner.cliente") },
+    { definicion: sozialversicherungsRechner, contenido: contenidoSozialversicherungsRechner, cliente: () => import("./calculadoras/sozialversicherungs-rechner.cliente") },
+    { definicion: arbeitgeberkostenRechner, contenido: contenidoArbeitgeberkostenRechner, cliente: () => import("./calculadoras/arbeitgeberkosten-rechner.cliente") },
+    { definicion: rentenrechner, contenido: contenidoRentenrechner, cliente: () => import("./calculadoras/rentenrechner.cliente") },
+    { definicion: pendlerpauschaleRechner, contenido: contenidoPendlerpauschaleRechner, cliente: () => import("./calculadoras/pendlerpauschale-rechner.cliente") },
   ],
   universales: { todas: true },
   novedades,
