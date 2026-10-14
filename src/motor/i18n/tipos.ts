@@ -1,4 +1,16 @@
-export type Categoria = "sueldo" | "fin" | "impuestos" | "dinero" | "familia" | "otras";
+export type Categoria =
+  | "sueldo"
+  | "fin"
+  | "impuestos"
+  | "dinero"
+  | "finanzas"
+  | "negocio"
+  | "calculos"
+  | "fechas"
+  | "salud"
+  | "hogar"
+  | "familia"
+  | "otras";
 
 export interface TextosSitio {
   marca: { nombre: string; lema: string };

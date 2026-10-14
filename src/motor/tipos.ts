@@ -74,8 +74,13 @@ export type Unidad = Moneda | UnidadReferencia | UnidadSimple;
 export type FechaISO = `${number}-${number}-${number}`;
 
 export type EstadoPublicacion = "borrador" | "interno" | "publicado";
+// El trato es el registro de la persona a la que se le habla, en cualquier idioma: "tu" es el
+// informal (tú, você, tu, du, you), "usted" el formal (usted, o senhor, vous, Sie, Lei) y "vos" el
+// voseo, que solo existe en español. Los nombres quedaron en español por historia del repo.
 export type Trato = "vos" | "tu" | "usted";
-export type Idioma = "es" | "pt";
+export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl"] as const;
+export type Idioma = (typeof IDIOMAS)[number];
+export type SistemaUnidades = "metrico" | "imperial";
 
 export type ModoRedondeo = "mitad-arriba" | "mitad-par" | "truncar";
 export interface ReglaRedondeo {
@@ -101,6 +106,10 @@ export interface Mercado {
   regiones?: readonly Region[];
   redondeo: ReglaRedondeo;
   simbolos?: Readonly<Partial<Record<Moneda, string>>>;
+  // Cuántas unidades de la moneda principal equivalen a "un dólar" redondeado a un número bonito.
+  // Solo escala montos de ejemplo y valores por defecto de las calculadoras universales.
+  escala?: number;
+  unidades?: SistemaUnidades;
 }
 
 export interface Fuente {
@@ -310,7 +319,19 @@ export interface ContextoCalculo {
   redondear: (n: number) => number;
 }
 
-export type ValorResultado = number | string | boolean | null | undefined | readonly string[];
+export interface ColumnaTabla {
+  clave: string;
+  etiqueta: string;
+  formato: FormatoNumerico | "texto" | "fecha";
+}
+// Tabla detallada de un resultado (por ejemplo, la amortización de un préstamo). La página muestra
+// las primeras filas y el informe pago la tabla entera.
+export interface TablaResultado {
+  readonly tipo: "tabla";
+  readonly columnas: readonly ColumnaTabla[];
+  readonly filas: readonly (readonly (number | string | null)[])[];
+}
+export type ValorResultado = number | string | boolean | null | undefined | readonly string[] | TablaResultado;
 export type ResultadoBase = { readonly [clave: string]: ValorResultado };
 
 type ClavesCon<R, T> = string extends keyof R ? string : { [K in keyof R]-?: Exclude<R[K], undefined> extends T ? K : never }[keyof R] & string;
@@ -351,6 +372,7 @@ export interface DefinicionCalculadora<
   resultado: readonly FilaResultado<R>[];
   redondeo?: ReglaRedondeo;
   producto?: string;
+  tablas?: readonly { clave: string; titulo: string; filasVisibles?: number }[];
 }
 
 export interface PreguntaFrecuente {

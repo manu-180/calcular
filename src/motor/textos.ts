@@ -30,7 +30,7 @@ const ES_COMUN = {
   sinResultado: "Por ahora no mostramos este resultado.",
 };
 
-const TEXTOS: Record<Exclude<Variante, "es">, TextosMotor> = {
+const TEXTOS: Record<"pt" | `es-${Trato}`, TextosMotor> & Partial<Record<Exclude<Variante, "es">, TextosMotor>> = {
   "es-tu": {
     ...ES_COMUN,
     errores: {
@@ -94,7 +94,8 @@ const TEXTOS: Record<Exclude<Variante, "es">, TextosMotor> = {
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato): TextosMotor {
-  return idioma === "pt" ? TEXTOS.pt : TEXTOS[`es-${trato}`];
+  if (idioma === "es") return TEXTOS[`es-${trato}`];
+  return TEXTOS[idioma] ?? TEXTOS[`es-${trato}`];
 }
 
 export function interpolar(plantilla: string, params: Readonly<Record<string, string>> = {}): string {
