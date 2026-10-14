@@ -32,7 +32,7 @@ export default definirCalculadora({
       netAnnuel: redondear(d.net * entrada.mois),
       observaciones:
         entrada.heures > 35
-          ? ["Au-delà de 35 heures, les heures supplémentaires sont majorées. Ce calcul les compte au taux normal du Smic : utilisez le calcul des heures supplémentaires pour la majoration."]
+          ? ["Au-delà de 35 heures, les heures supplémentaires sont majorées. Ce calcul les compte au taux normal du Smic : utilisez le calcul des heures supplémentaires pour la majoration."]
           : [],
     };
   },

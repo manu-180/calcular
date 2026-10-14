@@ -15,8 +15,8 @@ export default definirCalculadora({
   campos: [
     { id: "moyenne12", tipo: "moneda", etiqueta: "Salaire brut mensuel moyen des 12 derniers mois", min: 0, porDefecto: 2500 },
     { id: "moyenne3", tipo: "moneda", etiqueta: "Salaire brut mensuel moyen des 3 derniers mois", min: 0, requerido: false },
-    { id: "annees", tipo: "entero", etiqueta: "Ancienneté : années complètes", min: 0, max: 60, porDefecto: 5 },
-    { id: "mois", tipo: "entero", etiqueta: "Ancienneté : mois en plus", min: 0, max: 11, porDefecto: 0 },
+    { id: "annees", tipo: "entero", etiqueta: "Ancienneté : années complètes", min: 0, max: 60, porDefecto: 5 },
+    { id: "mois", tipo: "entero", etiqueta: "Ancienneté : mois en plus", min: 0, max: 11, porDefecto: 0 },
     { id: "negocie", tipo: "moneda", etiqueta: "Indemnité négociée", min: 0, requerido: false, ayuda: "Facultatif. Si vous laissez vide, le calcul retient le minimum légal." },
     {
       id: "remunerationAnnuelle",
@@ -33,7 +33,7 @@ export default definirCalculadora({
     const minimum = redondear(indemniteLegale(reference, entrada.annees, entrada.mois, valores));
     const observaciones: string[] = [];
     if (entrada.negocie !== null && entrada.negocie < minimum) {
-      observaciones.push("L'indemnité négociée est inférieure au minimum légal : la convention ne peut pas être homologuée à ce montant.");
+      observaciones.push("L'indemnité négociée est inférieure au minimum légal : la convention ne peut pas être homologuée à ce montant.");
     }
     const indemnite = Math.max(minimum, entrada.negocie ?? 0);
     const remuneration = entrada.remunerationAnnuelle ?? 0;

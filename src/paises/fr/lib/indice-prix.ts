@@ -49,7 +49,7 @@ export function variationEntreMois(
     throw new ErrorEntrada(`L'indice de ${nomMois(moisInitial)} n'est pas encore publié. Le dernier connu est celui de ${nomMois(dernier.fecha)}.`, campos.desde);
   }
   if (moisFinal > dernier.fecha) {
-    observaciones.push(`Le dernier indice publié est celui de ${nomMois(dernier.fecha)} : le calcul s'arrête à ce mois.`);
+    observaciones.push(`Le dernier indice publié est celui de ${nomMois(dernier.fecha)} : le calcul s'arrête à ce mois.`);
     moisFinal = dernier.fecha;
   }
   if (moisInitial > moisFinal) throw new ErrorEntrada("La date de départ doit être antérieure à la date d'arrivée.", campos.desde);

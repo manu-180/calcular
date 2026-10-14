@@ -58,7 +58,7 @@ export default definirCalculadora({
       brut,
       netEstime: redondear(brut - csgCrds),
       observaciones: [
-        "Les cotisations salariales de retraite sur ces heures sont réduites, dans une limite fixée par la loi. Le net estimé suppose une réduction complète : il ne retire que la CSG et la CRDS.",
+        "Les cotisations salariales de retraite sur ces heures sont réduites, dans une limite fixée par la loi. Le net estimé suppose une réduction complète : il ne retire que la CSG et la CRDS.",
         "Les heures supplémentaires sont exonérées d'impôt sur le revenu jusqu'à un plafond annuel.",
       ],
     };

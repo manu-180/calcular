@@ -7,7 +7,7 @@ export default definirCasos(smic, [
     origen: {
       tipo: "oficial",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2300",
-      detalle: "Service-Public : 12,31 € brut de l'heure, 9,74 € net, 1 867,02 € brut et 1 477,93 € net par mois, 22 404,20 € brut par an.",
+      detalle: "Service-Public : 12,31 € brut de l'heure, 9,74 € net, 1 867,02 € brut et 1 477,93 € net par mois, 22 404,20 € brut par an.",
     },
     fecha: "2026-07-01",
     entrada: { heures: 35, mois: 12 },
@@ -17,7 +17,7 @@ export default definirCasos(smic, [
     nombre: "Mi-temps à 17,5 heures",
     origen: {
       tipo: "recalculado",
-      detalle: "12,31 × 17,5 × 52 ÷ 12 = 933,51 € brut. Cotisations : 64,41 + 3,73 + 29,41 + 8,03 + CSG 62,37 + 22,01 + 4,59 = 194,55 ; net 738,96.",
+      detalle: "12,31 × 17,5 × 52 ÷ 12 = 933,51 € brut. Cotisations : 64,41 + 3,73 + 29,41 + 8,03 + CSG 62,37 + 22,01 + 4,59 = 194,55 ; net 738,96.",
     },
     fecha: "2026-07-01",
     entrada: { heures: 17.5, mois: 1 },

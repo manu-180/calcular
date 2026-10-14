@@ -2,19 +2,19 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "fr.preavis",
-  h1: "Préavis de licenciement : durée et indemnité",
-  title: "Préavis de licenciement : durée légale et calcul de la fin",
+  h1: "Préavis de licenciement : durée et indemnité",
+  title: "Préavis de licenciement : durée légale et calcul de la fin",
   description:
-    "Quelle est la durée de votre préavis de licenciement ? Calculez-la selon votre ancienneté, la date de fin et l'indemnité compensatrice si vous ne l'effectuez pas.",
+    "Durée de votre préavis de licenciement selon l'ancienneté, date de fin et indemnité compensatrice si vous ne l'effectuez pas.",
   intro: [
     "Le préavis est la période entre la notification du licenciement et la fin effective du contrat. Le salarié continue de travailler et d'être payé pendant cette période.",
     "Sa durée légale dépend de l'ancienneté. Une convention collective, le contrat ou les usages peuvent prévoir une durée plus longue, plus favorable au salarié.",
   ],
   comoSeCalcula: [
-    "Moins de 6 mois d'ancienneté : la durée est fixée par la convention collective ou les usages.",
-    "De 6 mois à 2 ans : {{fr.preavis-moins-2-ans}}.",
-    "À partir de 2 ans : {{fr.preavis-2-ans}}.",
-    "Travailleur handicapé : la durée est doublée, dans la limite de {{fr.preavis-handicap-max}}.",
+    "Moins de 6 mois d'ancienneté : la durée est fixée par la convention collective ou les usages.",
+    "De 6 mois à 2 ans : {{fr.preavis-moins-2-ans}}.",
+    "À partir de 2 ans : {{fr.preavis-2-ans}}.",
+    "Travailleur handicapé : la durée est doublée, dans la limite de {{fr.preavis-handicap-max}}.",
     "Le préavis commence le jour de la première présentation de la lettre de licenciement.",
   ],
   ejemplo: [
@@ -23,17 +23,17 @@ export default definirContenido({
   ],
   faq: [
     {
-      pregunta: "L'employeur peut-il me dispenser de préavis ?",
+      pregunta: "L'employeur peut-il me dispenser de préavis ?",
       respuesta:
         "Oui, et vous ne pouvez pas refuser. Il doit alors vous verser une indemnité compensatrice égale au salaire que vous auriez perçu pendant le préavis.",
     },
     {
-      pregunta: "Puis-je demander à ne pas faire mon préavis ?",
+      pregunta: "Puis-je demander à ne pas faire mon préavis ?",
       respuesta:
         "Oui, mais l'employeur peut refuser. S'il accepte, il n'est pas obligé de vous verser l'indemnité compensatrice.",
     },
     {
-      pregunta: "Y a-t-il un préavis en cas de faute grave ?",
+      pregunta: "Y a-t-il un préavis en cas de faute grave ?",
       respuesta: "Non. Un licenciement pour faute grave ou lourde se fait sans préavis ni indemnité compensatrice.",
     },
   ],

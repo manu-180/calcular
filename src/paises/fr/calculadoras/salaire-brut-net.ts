@@ -72,7 +72,7 @@ export default definirCalculadora({
       netApresImpot: pas === null ? null : fois(d.net - pas),
       partNet: redondear((d.net / d.brut) * 100),
       observaciones: [
-        "La mutuelle et la prévoyance d'entreprise ne sont pas comptées : leur part salariale dépend de votre contrat et se retire en plus.",
+        "La mutuelle et la prévoyance d'entreprise ne sont pas comptées : leur part salariale dépend de votre contrat et se retire en plus.",
       ],
     };
   },

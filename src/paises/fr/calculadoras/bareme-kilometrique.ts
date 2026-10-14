@@ -19,7 +19,7 @@ export default definirCalculadora({
   campos: [
     { id: "puissance", tipo: "opcion-dato", etiqueta: "Puissance fiscale du véhicule", dato: "fr.bk-jusqua-5000", porDefecto: "cv5" },
     { id: "distance", tipo: "numero", etiqueta: "Kilomètres parcourus à titre professionnel dans l'année", min: 0, porDefecto: 8000 },
-    { id: "electrique", tipo: "si-no", etiqueta: "Véhicule 100 % électrique", porDefecto: false },
+    { id: "electrique", tipo: "si-no", etiqueta: "Véhicule 100 % électrique", porDefecto: false },
   ],
   calcular(entrada, valores, { redondear }) {
     const d = entrada.distance;
@@ -43,7 +43,7 @@ export default definirCalculadora({
     total = redondear(total);
     return {
       tranche,
-      bareme: e ? "Véhicules 100 % électriques" : "Autres véhicules (thermiques notamment)",
+      bareme: e ? "Véhicules 100 % électriques" : "Autres véhicules (thermiques notamment)",
       total,
       parKm: redondear(total / d),
     };

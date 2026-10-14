@@ -15,7 +15,7 @@ export default definirCalculadora({
     { id: "mois", tipo: "entero", etiqueta: "Mois de travail effectif sur la période de référence", min: 0, max: 12, porDefecto: 12, ayuda: "La période va en général du 1er juin au 31 mai." },
     { id: "brutPeriode", tipo: "moneda", etiqueta: "Rémunération brute totale sur la période de référence", min: 0, porDefecto: 24000 },
     { id: "salaireMensuel", tipo: "moneda", etiqueta: "Salaire mensuel brut actuel", min: 0, porDefecto: 2000 },
-    { id: "joursPris", tipo: "entero", etiqueta: "Jours de congé pris (jours ouvrés)", min: 1, max: 25, porDefecto: 10, ayuda: "Du lundi au vendredi : une semaine compte 5 jours ouvrés." },
+    { id: "joursPris", tipo: "entero", etiqueta: "Jours de congé pris (jours ouvrés)", min: 1, max: 25, porDefecto: 10, ayuda: "Du lundi au vendredi : une semaine compte 5 jours ouvrés." },
     { id: "joursMois", tipo: "entero", etiqueta: "Jours ouvrés du mois des congés", min: 18, max: 23, porDefecto: 21 },
   ],
   calcular(entrada, valores, { redondear }) {

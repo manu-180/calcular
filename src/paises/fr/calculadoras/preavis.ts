@@ -24,8 +24,8 @@ export default definirCalculadora({
     "fr.preavis-handicap-max": "numero",
   },
   campos: [
-    { id: "annees", tipo: "entero", etiqueta: "Ancienneté : années complètes", min: 0, max: 60, porDefecto: 3 },
-    { id: "mois", tipo: "entero", etiqueta: "Ancienneté : mois en plus", min: 0, max: 11, porDefecto: 0 },
+    { id: "annees", tipo: "entero", etiqueta: "Ancienneté : années complètes", min: 0, max: 60, porDefecto: 3 },
+    { id: "mois", tipo: "entero", etiqueta: "Ancienneté : mois en plus", min: 0, max: 11, porDefecto: 0 },
     { id: "notification", tipo: "fecha", etiqueta: "Date de présentation de la lettre de licenciement", porDefecto: "hoy" },
     { id: "salaire", tipo: "moneda", etiqueta: "Salaire mensuel brut", min: 0, requerido: false, ayuda: "Facultatif, pour estimer l'indemnité si le préavis n'est pas effectué." },
     { id: "handicap", tipo: "si-no", etiqueta: "Travailleur handicapé reconnu", porDefecto: false },
@@ -51,7 +51,7 @@ export default definirCalculadora({
       duree,
       fin: ajouterMois(entrada.notification, duree),
       indemnite: entrada.salaire === null ? null : redondear(entrada.salaire * duree),
-      observaciones: ["Votre convention collective, votre contrat ou les usages peuvent prévoir un préavis plus long : il s'applique alors."],
+      observaciones: ["Votre convention collective, votre contrat ou les usages peuvent prévoir un préavis plus long : il s'applique alors."],
     };
   },
   resultado: [

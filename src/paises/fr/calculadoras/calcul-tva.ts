@@ -16,7 +16,7 @@ export default definirCalculadora({
     {
       id: "operation",
       tipo: "opcion",
-      etiqueta: "Que voulez-vous faire ?",
+      etiqueta: "Que voulez-vous faire ?",
       opciones: [
         { valor: "ht-ttc", etiqueta: "Passer du HT au TTC (ajouter la TVA)" },
         { valor: "ttc-ht", etiqueta: "Passer du TTC au HT (retirer la TVA)" },

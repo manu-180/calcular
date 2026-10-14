@@ -21,8 +21,8 @@ export default definirCalculadora({
       requerido: false,
       ayuda: "Facultatif. Le montant le plus favorable des deux est retenu. Ajoutez 1/12 des primes annuelles à chaque mois.",
     },
-    { id: "annees", tipo: "entero", etiqueta: "Ancienneté : années complètes", min: 0, max: 60, porDefecto: 5 },
-    { id: "mois", tipo: "entero", etiqueta: "Ancienneté : mois en plus", min: 0, max: 11, porDefecto: 0 },
+    { id: "annees", tipo: "entero", etiqueta: "Ancienneté : années complètes", min: 0, max: 60, porDefecto: 5 },
+    { id: "mois", tipo: "entero", etiqueta: "Ancienneté : mois en plus", min: 0, max: 11, porDefecto: 0 },
     {
       id: "motif",
       tipo: "opcion",
@@ -47,7 +47,7 @@ export default definirCalculadora({
     } else {
       indemnite = redondear(indemniteLegale(reference, entrada.annees, entrada.mois, valores));
     }
-    observaciones.push("Votre convention collective ou votre contrat peut prévoir une indemnité plus élevée : c'est alors elle qui s'applique.");
+    observaciones.push("Votre convention collective ou votre contrat peut prévoir une indemnité plus élevée : c'est alors elle qui s'applique.");
     return {
       reference,
       anciennete: redondear(moisAnciennete / 12),

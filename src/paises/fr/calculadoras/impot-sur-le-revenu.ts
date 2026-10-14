@@ -47,7 +47,7 @@ export default definirCalculadora({
       tipo: "opcion",
       etiqueta: "Montants saisis",
       opciones: [
-        { valor: "salaires", etiqueta: "Salaires nets imposables (avant la déduction de 10 %)" },
+        { valor: "salaires", etiqueta: "Salaires nets imposables (avant la déduction de 10 %)" },
         { valor: "imposable", etiqueta: "Revenu net imposable (déductions déjà faites)" },
       ],
       porDefecto: "salaires",
@@ -95,8 +95,8 @@ export default definirCalculadora({
     const impotNet = apresDecote < valores["fr.seuil-recouvrement"] ? 0 : apresDecote;
 
     const observaciones: string[] = [];
-    if (plafonne) observaciones.push("L'avantage lié aux enfants est plafonné : votre impôt tient compte du plafonnement du quotient familial.");
-    if (apresDecote > 0 && impotNet === 0) observaciones.push("Votre impôt est inférieur au seuil de mise en recouvrement : vous n'avez rien à payer.");
+    if (plafonne) observaciones.push("L'avantage lié aux enfants est plafonné : votre impôt tient compte du plafonnement du quotient familial.");
+    if (apresDecote > 0 && impotNet === 0) observaciones.push("Votre impôt est inférieur au seuil de mise en recouvrement : vous n'avez rien à payer.");
     if (revenu > (couple ? 500000 : 250000)) observaciones.push("Avec ce niveau de revenu, la contribution exceptionnelle sur les hauts revenus s'ajoute à l'impôt. Elle n'est pas comprise ici.");
     observaciones.push("Les réductions et crédits d'impôt (dons, emploi à domicile, frais de garde) se retirent ensuite de cet impôt.");
 

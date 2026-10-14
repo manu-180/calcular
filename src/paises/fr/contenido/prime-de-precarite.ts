@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "fr.prime-de-precarite",
-  h1: "Prime de précarité : calcul de l'indemnité de fin de CDD",
-  title: "Prime de précarité : calcul de l'indemnité de fin de CDD",
+  h1: "Prime de précarité : calcul de l'indemnité de fin de CDD",
+  title: "Prime de précarité : calcul de l'indemnité de fin de CDD",
   description:
     "Calculez votre indemnité de fin de CDD ({{fr.cdd-indemnite-fin}} de la rémunération brute) et l'indemnité de congés payés versées à la fin du contrat.",
   intro: [
@@ -12,22 +12,22 @@ export default definirContenido({
   ],
   comoSeCalcula: [
     "Additionnez tous les salaires bruts perçus pendant le CDD (primes comprises).",
-    "Prime de précarité : ce total × {{fr.cdd-indemnite-fin}} (ou {{fr.cdd-indemnite-fin-reduite}} si votre convention le prévoit).",
-    "Congés payés non pris : une indemnité compensatrice d'au moins {{fr.cdd-conges}} de la rémunération brute totale s'ajoute.",
+    "Prime de précarité : ce total × {{fr.cdd-indemnite-fin}} (ou {{fr.cdd-indemnite-fin-reduite}} si votre convention le prévoit).",
+    "Congés payés non pris : une indemnité compensatrice d'au moins {{fr.cdd-conges}} de la rémunération brute totale s'ajoute.",
   ],
   ejemplo: ["Un CDD de 6 mois payé 2 000 € brut par mois donne 12 000 € de rémunération. La prime de précarité est de 1 200 € brut."],
   faq: [
     {
-      pregunta: "Quand la prime de précarité n'est-elle pas versée ?",
+      pregunta: "Quand la prime de précarité n'est-elle pas versée ?",
       respuesta:
         "Notamment pour un CDD saisonnier, un contrat d'usage, un contrat aidé, un contrat conclu avec un jeune pendant ses vacances, ou si le CDD se poursuit par un CDI. Elle n'est pas due non plus si vous refusez un CDI pour un poste équivalent.",
     },
     {
-      pregunta: "Quand est-elle versée ?",
+      pregunta: "Quand est-elle versée ?",
       respuesta: "À la fin du contrat, avec le dernier salaire. Son montant figure sur le bulletin de paie.",
     },
     {
-      pregunta: "La prime de précarité est-elle imposable ?",
+      pregunta: "La prime de précarité est-elle imposable ?",
       respuesta: "Oui. C'est un élément de salaire soumis aux cotisations sociales et à l'impôt sur le revenu.",
     },
   ],
