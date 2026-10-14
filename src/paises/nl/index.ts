@@ -36,6 +36,16 @@ import aowBerekenen from "./calculadoras/aow-berekenen";
 import contenidoAowBerekenen from "./contenido/aow-berekenen";
 import kinderbijslagBerekenen from "./calculadoras/kinderbijslag-berekenen";
 import contenidoKinderbijslagBerekenen from "./contenido/kinderbijslag-berekenen";
+import werkgeverslastenBerekenen from "./calculadoras/werkgeverslasten-berekenen";
+import contenidoWerkgeverslastenBerekenen from "./contenido/werkgeverslasten-berekenen";
+import bijtellingBerekenen from "./calculadoras/bijtelling-berekenen";
+import contenidoBijtellingBerekenen from "./contenido/bijtelling-berekenen";
+import kilometervergoedingBerekenen from "./calculadoras/kilometervergoeding-berekenen";
+import contenidoKilometervergoedingBerekenen from "./contenido/kilometervergoeding-berekenen";
+import thuiswerkvergoedingBerekenen from "./calculadoras/thuiswerkvergoeding-berekenen";
+import contenidoThuiswerkvergoedingBerekenen from "./contenido/thuiswerkvergoeding-berekenen";
+import inflatieBerekenen from "./calculadoras/inflatie-berekenen";
+import contenidoInflatieBerekenen from "./contenido/inflatie-berekenen";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -66,6 +76,11 @@ export default definirPais({
     { definicion: overdrachtsbelastingBerekenen, contenido: contenidoOverdrachtsbelastingBerekenen, cliente: () => import("./calculadoras/overdrachtsbelasting-berekenen.cliente") },
     { definicion: aowBerekenen, contenido: contenidoAowBerekenen, cliente: () => import("./calculadoras/aow-berekenen.cliente") },
     { definicion: kinderbijslagBerekenen, contenido: contenidoKinderbijslagBerekenen, cliente: () => import("./calculadoras/kinderbijslag-berekenen.cliente") },
+    { definicion: werkgeverslastenBerekenen, contenido: contenidoWerkgeverslastenBerekenen, cliente: () => import("./calculadoras/werkgeverslasten-berekenen.cliente") },
+    { definicion: bijtellingBerekenen, contenido: contenidoBijtellingBerekenen, cliente: () => import("./calculadoras/bijtelling-berekenen.cliente") },
+    { definicion: kilometervergoedingBerekenen, contenido: contenidoKilometervergoedingBerekenen, cliente: () => import("./calculadoras/kilometervergoeding-berekenen.cliente") },
+    { definicion: thuiswerkvergoedingBerekenen, contenido: contenidoThuiswerkvergoedingBerekenen, cliente: () => import("./calculadoras/thuiswerkvergoeding-berekenen.cliente") },
+    { definicion: inflatieBerekenen, contenido: contenidoInflatieBerekenen, cliente: () => import("./calculadoras/inflatie-berekenen.cliente") },
   ],
   universales: "todas",
   novedades,
