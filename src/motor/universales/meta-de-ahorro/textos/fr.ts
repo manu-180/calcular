@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiMetaDeAhorro } from "../definicion";
 
-export const textosFr: TextosUi<UiMetaDeAhorro> = {
+const base: TextosUi<UiMetaDeAhorro> = {
   slug: "objectif-epargne",
   ui: () => ({
     meta: "Combien voulez-vous mettre de côté ?",
@@ -17,3 +18,9 @@ export const textosFr: TextosUi<UiMetaDeAhorro> = {
     yaLlegas: "Ce que vous avez déjà suffit à atteindre l’objectif dans ce délai, sans rien ajouter.",
   }),
 };
+
+const canada = (): Partial<UiMetaDeAhorro> => ({
+  rendimientoAyuda: "Si l’argent est dans un compte d’épargne, un CELI ou un placement qui rapporte des intérêts. Laissez vide s’il ne rapporte rien.",
+});
+
+export const textosFr = conVariantes(base, { "fr-CA": canada });

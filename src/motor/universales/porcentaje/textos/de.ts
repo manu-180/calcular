@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPorcentaje } from "../definicion";
 
-export const textosDe: TextosUi<UiPorcentaje> = {
+const textos: TextosUi<UiPorcentaje> = {
   slug: "prozentrechner",
   ui: () => ({
     modo: "Was möchten Sie berechnen?",
@@ -22,3 +23,5 @@ export const textosDe: TextosUi<UiPorcentaje> = {
     fraseRebaja: (x, y, r, d) => `${y} minus ${x} % ergibt ${r}. Abgezogen werden ${d}.`,
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

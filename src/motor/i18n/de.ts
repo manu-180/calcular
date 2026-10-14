@@ -65,7 +65,7 @@ const base: TextosSitio = {
     novedades: "Neueste Änderungen",
     verNovedades: "Alle Neuigkeiten ansehen",
     sinCalculadoras: "Für dieses Land gibt es noch keine Rechner.",
-    descripcion: (pais) => `Rechner für Gehalt, Steuern und Finanzen ${g.en(pais)}, mit dem geltenden amtlichen Wert, seiner Quelle und dem Prüfdatum.`,
+    descripcion: (pais) => `Rechner für Gehalt, Steuern, Kredit, Sparen, Gesundheit, Datum und Haushalt ${g.en(pais)}, mit dem geltenden amtlichen Wert und seiner Quelle.`,
     irASeccion: "Zu einem Abschnitt springen",
   },
   fuentes: {

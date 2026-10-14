@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiFondoDeEmergencia } from "../definicion";
 
-export const textosPt: TextosUi<UiFondoDeEmergencia> = {
+const base: TextosUi<UiFondoDeEmergencia> = {
   slug: "reserva-de-emergencia",
   ui: () => ({
     gastos: "Gastos essenciais por mês",
@@ -20,3 +21,19 @@ export const textosPt: TextosUi<UiFondoDeEmergencia> = {
     observacionDonde: "Guarde numa conta separada, que você possa sacar no mesmo dia e que não perca valor, como uma aplicação de liquidez diária.",
   }),
 };
+
+const portugal = (): Partial<UiFondoDeEmergencia> => ({
+  gastosAyuda: "O que não pode deixar de pagar: habitação, alimentação, contas da casa, transportes, saúde e prestações de dívidas.",
+  mesesAyuda: "De 3 a 6 meses se o seu rendimento é estável. Mais se varia ou se a casa vive de um só rendimento.",
+  actual: "O que já tem de parte (opcional)",
+  aporte: "Quanto consegue poupar por mês (opcional)",
+  meta: "Fundo de emergência recomendado",
+  falta: "Ainda falta poupar",
+  cobertura: "Meses que o seu fundo cobre hoje",
+  errorGastos: "Indique os seus gastos essenciais de um mês.",
+  yaCubierto: "O seu fundo está completo. O que poupar daqui em diante pode ir para outros objetivos.",
+  sinAporte: "Indique quanto consegue poupar por mês e mostramos quanto tempo demora.",
+  observacionDonde: "Guarde-o numa conta à parte, de onde possa levantar o dinheiro no próprio dia e que não perca valor, como uma conta poupança ou um depósito mobilizável.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

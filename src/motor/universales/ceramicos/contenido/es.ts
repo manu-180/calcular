@@ -1,6 +1,7 @@
-import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
   const pieza = 0.6 * 0.6;
@@ -50,3 +51,44 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
+  const pieza = 0.6 * 0.6;
+  const piezas = Math.ceil((20 * 1.1) / pieza - 1e-9);
+  return {
+    h1: "¿Cuántas baldosas necesito?",
+    title: tituloQueEntre(`Calculadora de baldosas y azulejos en ${ctx.nombrePais}`, `Calcular baldosas en ${ctx.nombrePais}`, "Calculadora de baldosas y azulejos"),
+    description:
+      "Calcula cuántas baldosas, azulejos o piezas de gres porcelánico necesitas para un suelo o una pared, con el desperdicio y las cajas a comprar.",
+    intro: [
+      "Escribe la superficie, la medida de cada baldosa y cuántas trae la caja. Ves cuántas piezas y cuántas cajas comprar.",
+      "El desperdicio cubre los cortes en los bordes y alguna pieza que se rompa.",
+    ],
+    comoSeCalcula: [
+      "Superficie de una baldosa = largo × ancho, pasado a metros cuadrados.",
+      "Baldosas = superficie × (1 + desperdicio ÷ 100) ÷ superficie de una baldosa, redondeado hacia arriba.",
+      "Cajas = baldosas ÷ baldosas por caja, redondeado hacia arriba.",
+    ],
+    ejemplo: [
+      `Para 20 m² con baldosas de 60 × 60 cm (${n(pieza)} m² cada una) y un 10 % de desperdicio, hacen falta ${piezas} baldosas.`,
+      `Si la caja trae 4 piezas, son ${Math.ceil(piezas / 4)} cajas.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿Cuánto desperdicio hay que calcular?",
+        respuesta: "Un 10 % en colocación recta. Con colocación en diagonal, en espiga o en estancias con muchos recortes, entre un 15 % y un 20 %.",
+      },
+      {
+        pregunta: "¿Se tiene en cuenta la junta?",
+        respuesta: "No hace falta. La junta es de pocos milímetros y el desperdicio ya cubre esa diferencia.",
+      },
+      {
+        pregunta: "¿Compensa comprar de más?",
+        respuesta: "Sí, unas piezas extra del mismo lote. Si más adelante se rompe una, puede ser difícil encontrar el mismo tono.",
+      },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

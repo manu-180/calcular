@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAlquilarOComprar } from "../definicion";
 
-export const textosDe: TextosUi<UiAlquilarOComprar> = {
+const textos: TextosUi<UiAlquilarOComprar> = {
   slug: "mieten-oder-kaufen",
   ui: () => ({
     precio: "Kaufpreis der Immobilie",
@@ -40,3 +41,5 @@ export const textosDe: TextosUi<UiAlquilarOComprar> = {
       "Verglichen wird, was Ihnen in beiden Fällen gehört. Wer mietet, legt das Eigenkapital und jede monatliche Ersparnis an. Kosten für einen späteren Verkauf sind nicht abgezogen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

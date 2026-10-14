@@ -1,7 +1,7 @@
 import { definirCalculadora, ErrorEntrada } from "../../calculo";
 import type { DefinicionCalculadora, TablaResultado } from "../../tipos";
 import { cuotaFrancesa } from "../prestamo/definicion";
-import { formatearMonto, montoEjemplo, type ContextoUniversal } from "../tipos";
+import { formatearCifra, formatearMonto, montoEjemplo, type ContextoUniversal } from "../tipos";
 
 export interface UiAlquilarOComprar {
   precio: string;
@@ -125,12 +125,12 @@ export function definir(ctx: ContextoUniversal, ui: UiAlquilarOComprar): Definic
       const diferencia = redondear(ultimo.comprar - ultimo.alquilar);
       let desde: number | null = null;
       for (let k = anios.length - 1; k >= 0 && anios[k].comprar >= anios[k].alquilar; k--) desde = anios[k].anio;
-      const horizonte = String(entrada.horizonte);
+      const horizonte = formatearCifra(ctx, entrada.horizonte, 0);
       const dif = formatearMonto(ctx, Math.abs(diferencia));
       const veredicto =
         diferencia > 0 ? ui.convieneComprar(horizonte, dif) : diferencia < 0 ? ui.convieneAlquilar(horizonte, dif) : ui.empate(horizonte);
       const observaciones: string[] = [];
-      if (desde !== null && diferencia > 0) observaciones.push(ui.observacionDesde(String(desde)));
+      if (desde !== null && diferencia > 0) observaciones.push(ui.observacionDesde(formatearCifra(ctx, desde, 0)));
       observaciones.push(ui.observacionMetodo);
       const tabla: TablaResultado = {
         tipo: "tabla",

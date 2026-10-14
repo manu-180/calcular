@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiDescuento } from "../definicion";
 
-export const textosDe: TextosUi<UiDescuento> = {
+const textos: TextosUi<UiDescuento> = {
   slug: "rabattrechner",
   ui: () => ({
     precio: "Ursprünglicher Preis",
@@ -15,3 +16,5 @@ export const textosDe: TextosUi<UiDescuento> = {
     observacionDoble: (efectivo) => `Zwei Rabatte nacheinander werden nicht einfach addiert. Zusammen sparen Sie ${efectivo} %.`,
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

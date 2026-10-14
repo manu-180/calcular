@@ -1,7 +1,8 @@
-import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 import { aporteNecesario } from "../definicion";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const m = (n: number) => formatearMonto(ctx, n);
   const meta = montoEjemplo(ctx, 10000);
@@ -63,3 +64,49 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const m = (n: number) => formatearMonto(ctx, n);
+  const meta = montoEjemplo(ctx, 10000);
+  const actual = montoEjemplo(ctx, 1000);
+  return {
+    description:
+      "Calcula cuánto ahorrar al mes para reunir el dinero que necesitas en el plazo que elijas. Suma lo que ya tienes y lo que rinde tu ahorro.",
+    intro: [
+      "Un viaje, el coche, la entrada de un piso o un colchón para imprevistos. Una meta con cantidad y fecha es mucho más fácil de cumplir.",
+      "Escribe cuánto quieres reunir y en cuántos meses. Te decimos cuánto apartar cada mes y cada semana.",
+    ],
+    comoSeCalcula: [
+      "Primero se ve cuánto crece lo que ya está ahorrado hasta el final del plazo.",
+      "Lo que falta para la meta se reparte en aportaciones mensuales iguales.",
+      "Si el ahorro rinde, cada aportación también gana intereses, así que hace falta ahorrar un poco menos.",
+    ],
+    ejemplo: [
+      `Para reunir ${m(meta)} en 24 meses sin rendimiento hay que ahorrar ${m(meta / 24)} al mes.`,
+      `Con ${m(actual)} ya ahorrados y un rendimiento del 5 % anual, basta con ${m(aporteNecesario(meta, actual, 24, 5))} al mes.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿Cómo hago para cumplir la meta?",
+        respuesta:
+          "Aparta la aportación nada más cobrar, antes de gastar en otra cosa. Si puedes, programa una transferencia periódica a una cuenta aparte.",
+      },
+      {
+        pregunta: "¿Qué pasa si la aportación me sale muy alta?",
+        respuesta:
+          "Alarga el plazo o baja la meta. También puedes empezar con lo que puedas y subir la aportación cuando te suban el sueldo.",
+      },
+      {
+        pregunta: "¿Tengo en cuenta la inflación?",
+        respuesta:
+          "Si la meta es para dentro de varios años, súmale la inflación esperada a la cantidad. Lo que hoy cuesta 100 puede costar bastante más cuando llegues.",
+      },
+    ],
+    glosario: [
+      { termino: "Aportación", definicion: "El dinero que se aparta cada mes para la meta." },
+      { termino: "Rendimiento", definicion: "Lo que gana el ahorro por estar en una cuenta o inversión." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

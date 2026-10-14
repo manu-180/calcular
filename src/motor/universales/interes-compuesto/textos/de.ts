@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiInteresCompuesto } from "../definicion";
 
-export const textosDe: TextosUi<UiInteresCompuesto> = {
+const textos: TextosUi<UiInteresCompuesto> = {
   slug: "zinseszinsrechner",
   ui: () => ({
     capital: "Startkapital",
@@ -27,3 +28,5 @@ export const textosDe: TextosUi<UiInteresCompuesto> = {
     observacionIntereses: (porcentaje) => `${porcentaje} % des Endkapitals sind Zinsen.`,
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

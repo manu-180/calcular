@@ -1,9 +1,10 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPintura } from "../definicion";
 
 const volumen = (u: string) => (u === "L" ? "litros" : "galões");
 
-export const textosPt: TextosUi<UiPintura> = {
+const base: TextosUi<UiPintura> = {
   slug: "calculadora-de-tinta",
   ui: () => ({
     modo: "Que medidas você tem?",
@@ -28,3 +29,11 @@ export const textosPt: TextosUi<UiPintura> = {
     errorRendimiento: "O rendimento tem que ser maior que 0.",
   }),
 };
+
+const portugal = (): Partial<UiPintura> => ({
+  modo: "Que medidas tem?",
+  largoAyuda: "Todas as paredes que vai pintar, somadas. Numa divisão, o perímetro.",
+  errorRendimiento: "O rendimento tem de ser maior do que 0.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiCostoDeUnAuto } from "../definicion";
 
-export const textosDe: TextosUi<UiCostoDeUnAuto> = {
+const textos: TextosUi<UiCostoDeUnAuto> = {
   slug: "autokosten-rechner",
   ui: () => ({
     precio: "Wert des Autos",
@@ -34,3 +35,5 @@ export const textosDe: TextosUi<UiCostoDeUnAuto> = {
       "Die Kreditrate zählt nicht zu den echten Kosten, weil ein Teil davon das Auto selbst bezahlt, und das ist schon als Wertverlust erfasst. Die Kreditzinsen kommen als Kosten noch dazu.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiDescuento } from "../definicion";
 
-export const textosPt: TextosUi<UiDescuento> = {
+const base: TextosUi<UiDescuento> = {
   slug: "desconto",
   ui: () => ({
     precio: "Preço original",
@@ -15,3 +16,10 @@ export const textosPt: TextosUi<UiDescuento> = {
     observacionDoble: (efectivo) => `Dois descontos seguidos não se somam: no total são ${efectivo}% a menos.`,
   }),
 };
+
+const portugal = (): Partial<UiDescuento> => ({
+  segundoDescuentoAyuda: "Se houver outro desconto sobre o primeiro, indique-o aqui.",
+  ahorro: "Quanto poupa",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

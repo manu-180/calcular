@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAumentoDeSueldo } from "../definicion";
 
-export const textosDe: TextosUi<UiAumentoDeSueldo> = {
+const textos: TextosUi<UiAumentoDeSueldo> = {
   slug: "gehaltserhoehung-rechner",
   ui: () => ({
     sueldo: "Aktuelles Monatsgehalt",
@@ -26,3 +27,5 @@ export const textosDe: TextosUi<UiAumentoDeSueldo> = {
     observacionIgual: "Ihre Erhöhung gleicht genau die Inflation aus: Ihr Gehalt ist real so viel wert wie vorher.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

@@ -1,0 +1,1035 @@
+{
+  "mercado": "at",
+  "datos": [
+    {
+      "id": "at.est-tarif",
+      "nombre": "Einkommensteuertarif (§ 33 Abs. 1 EStG), Tarifstufen 2026",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 13539,
+              "tasa": 0
+            },
+            {
+              "desde": 13539,
+              "hasta": 21992,
+              "tasa": 20
+            },
+            {
+              "desde": 21992,
+              "hasta": 36458,
+              "tasa": 30
+            },
+            {
+              "desde": 36458,
+              "hasta": 70365,
+              "tasa": 40
+            },
+            {
+              "desde": 70365,
+              "hasta": 104859,
+              "tasa": 48
+            },
+            {
+              "desde": 104859,
+              "hasta": 1000000,
+              "tasa": 50
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 55
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Steuertarif und Steuerabsetzbeträge, Tarifstufen 2026",
+            "url": "https://www.bmf.gv.at/themen/steuern/arbeitnehmerveranlagung/steuertarif-steuerabsetzbetraege/steuertarif-steuerabsetzbetraege.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.werbungskostenpauschale",
+      "nombre": "Werbungskostenpauschale für Arbeitnehmer",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 132,
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Das Steuerbuch 2026 (Werbungskostenpauschale, sonstige Bezüge, Abfertigung)",
+            "url": "https://www.bmf.gv.at/dam/jcr:436f8c01-38e0-41bf-b904-c0e62a862bf1/251117_Steuerbuch2026_DE_BF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.verkehrsabsetzbetrag",
+      "nombre": "Verkehrsabsetzbetrag",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 496,
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Übersicht Steuerabsetzbeträge, Jahr 2026",
+            "url": "https://www.bmf.gv.at/themen/steuern/arbeitnehmerveranlagung/steuertarif-steuerabsetzbetraege/uebersicht-steuerabsetzbetraege.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.vab-zuschlag",
+      "nombre": "Zuschlag zum Verkehrsabsetzbetrag (nur in der Veranlagung)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "betrag": "Zuschlag im Jahr",
+        "voll-bis": "Voller Zuschlag bis zu einem Einkommen von",
+        "null-ab": "Kein Zuschlag mehr ab einem Einkommen von"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "betrag": 804,
+            "voll-bis": 19761,
+            "null-ab": 30259
+          },
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Übersicht Steuerabsetzbeträge, Jahr 2026",
+            "url": "https://www.bmf.gv.at/themen/steuern/arbeitnehmerveranlagung/steuertarif-steuerabsetzbetraege/uebersicht-steuerabsetzbetraege.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.avab",
+      "nombre": "Alleinverdiener- und Alleinerzieherabsetzbetrag",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "ein-kind": "Ein Kind",
+        "zwei-kinder": "Zwei Kinder",
+        "je-weiteres-kind": "Je weiteres Kind"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "ein-kind": 612,
+            "zwei-kinder": 828,
+            "je-weiteres-kind": 273
+          },
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Übersicht Steuerabsetzbeträge, Jahr 2026",
+            "url": "https://www.bmf.gv.at/themen/steuern/arbeitnehmerveranlagung/steuertarif-steuerabsetzbetraege/uebersicht-steuerabsetzbetraege.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.familienbonus",
+      "nombre": "Familienbonus Plus je Kind und Monat",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "unter-18": "Kind bis zum 18. Geburtstag",
+        "ab-18": "Kind ab 18 mit Familienbeihilfe"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "unter-18": 166.68,
+            "ab-18": 58.34
+          },
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Familienbonus Plus, alle Informationen",
+            "url": "https://www.bmf.gv.at/themen/steuern/arbeitnehmerveranlagung/steuertarif-steuerabsetzbetraege/familienbonus-plus.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.pendlerpauschale",
+      "nombre": "Pendlerpauschale im Jahr",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "klein-20": "Kleines Pendlerpauschale, 20 bis 40 km",
+        "klein-40": "Kleines Pendlerpauschale, mehr als 40 bis 60 km",
+        "klein-60": "Kleines Pendlerpauschale, mehr als 60 km",
+        "gross-2": "Großes Pendlerpauschale, 2 bis 20 km",
+        "gross-20": "Großes Pendlerpauschale, mehr als 20 bis 40 km",
+        "gross-40": "Großes Pendlerpauschale, mehr als 40 bis 60 km",
+        "gross-60": "Großes Pendlerpauschale, mehr als 60 km"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "klein-20": 696,
+            "klein-40": 1356,
+            "klein-60": 2016,
+            "gross-2": 372,
+            "gross-20": 1476,
+            "gross-40": 2568,
+            "gross-60": 3672
+          },
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Allgemeines zum Pendlerpauschale und Pendlereuro",
+            "url": "https://www.bmf.gv.at/themen/steuern/arbeitnehmerveranlagung/pendlerfoerderung-das-pendlerpauschale/allgemeines-zum-pendlerpauschale.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.pendlereuro",
+      "nombre": "Pendlereuro je Kilometer der einfachen Strecke und Jahr",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Allgemeines zum Pendlerpauschale und Pendlereuro",
+            "url": "https://www.bmf.gv.at/themen/steuern/arbeitnehmerveranlagung/pendlerfoerderung-das-pendlerpauschale/allgemeines-zum-pendlerpauschale.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.sv-dienstnehmer",
+      "nombre": "Sozialversicherung, Dienstnehmeranteile (Angestellte)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "kv": "Krankenversicherung",
+        "pv": "Pensionsversicherung",
+        "av": "Arbeitslosenversicherung",
+        "ak": "Arbeiterkammerumlage",
+        "wbf": "Wohnbauförderungsbeitrag",
+        "wbf-wien": "Wohnbauförderungsbeitrag in Wien"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "kv": 3.87,
+            "pv": 10.25,
+            "av": 2.95,
+            "ak": 0.5,
+            "wbf": 0.5,
+            "wbf-wien": 0.75
+          },
+          "fuente": {
+            "organismo": "Dachverband der österreichischen Sozialversicherung",
+            "titulo": "Beitragsrechtliche Werte in der Sozialversicherung 2026 (Fassung 19.5.2026)",
+            "url": "https://www.sozialversicherung.at/cdscontent/load?contentid=10008.806858",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.sv-dienstgeber",
+      "nombre": "Sozialversicherung, Dienstgeberanteile (Angestellte)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "kv": "Krankenversicherung",
+        "uv": "Unfallversicherung",
+        "pv": "Pensionsversicherung",
+        "av": "Arbeitslosenversicherung",
+        "iesg": "IESG-Zuschlag",
+        "wbf": "Wohnbauförderungsbeitrag",
+        "wbf-wien": "Wohnbauförderungsbeitrag in Wien",
+        "bv": "Betriebliche Vorsorge"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "kv": 3.78,
+            "uv": 1.1,
+            "pv": 12.55,
+            "av": 2.95,
+            "iesg": 0.1,
+            "wbf": 0.5,
+            "wbf-wien": 0.75,
+            "bv": 1.53
+          },
+          "fuente": {
+            "organismo": "Dachverband der österreichischen Sozialversicherung",
+            "titulo": "Beitragsrechtliche Werte in der Sozialversicherung 2026 (Fassung 19.5.2026)",
+            "url": "https://www.sozialversicherung.at/cdscontent/load?contentid=10008.806858",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.av-staffel",
+      "nombre": "Arbeitslosenversicherung, Dienstnehmeranteil nach Beitragsgrundlage",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2225,
+              "tasa": 0
+            },
+            {
+              "desde": 2225,
+              "hasta": 2427,
+              "tasa": 1
+            },
+            {
+              "desde": 2427,
+              "hasta": 2630,
+              "tasa": 2
+            },
+            {
+              "desde": 2630,
+              "hasta": null,
+              "tasa": 2.95
+            }
+          ],
+          "fuente": {
+            "organismo": "Dachverband der österreichischen Sozialversicherung",
+            "titulo": "Beitragsrechtliche Werte in der Sozialversicherung 2026 (Fassung 19.5.2026)",
+            "url": "https://www.sozialversicherung.at/cdscontent/load?contentid=10008.806858",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.beitragsgrundlage",
+      "nombre": "Höchstbeitragsgrundlage und Geringfügigkeitsgrenze",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "hoechst-monat": "Höchstbeitragsgrundlage im Monat",
+        "hoechst-sonderzahlungen": "Höchstbeitragsgrundlage für Sonderzahlungen im Jahr",
+        "geringfuegig": "Geringfügigkeitsgrenze im Monat"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "hoechst-monat": 6930,
+            "hoechst-sonderzahlungen": 13860,
+            "geringfuegig": 551.1
+          },
+          "fuente": {
+            "organismo": "Dachverband der österreichischen Sozialversicherung",
+            "titulo": "Beitragsrechtliche Werte in der Sozialversicherung 2026 (Fassung 19.5.2026)",
+            "url": "https://www.sozialversicherung.at/cdscontent/load?contentid=10008.806858",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.sonderzahlung-steuer",
+      "nombre": "Lohnsteuer auf sonstige Bezüge innerhalb des Jahressechstels",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 620,
+              "tasa": 0
+            },
+            {
+              "desde": 620,
+              "hasta": 25000,
+              "tasa": 6
+            },
+            {
+              "desde": 25000,
+              "hasta": 50000,
+              "tasa": 27
+            },
+            {
+              "desde": 50000,
+              "hasta": 83333,
+              "tasa": 35.75
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Das Steuerbuch 2026 (Werbungskostenpauschale, sonstige Bezüge, Abfertigung)",
+            "url": "https://www.bmf.gv.at/dam/jcr:436f8c01-38e0-41bf-b904-c0e62a862bf1/251117_Steuerbuch2026_DE_BF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.sonderzahlung-freigrenze",
+      "nombre": "Freigrenze für sonstige Bezüge (Jahressechstel)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2615,
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Das Steuerbuch 2026 (Werbungskostenpauschale, sonstige Bezüge, Abfertigung)",
+            "url": "https://www.bmf.gv.at/dam/jcr:436f8c01-38e0-41bf-b904-c0e62a862bf1/251117_Steuerbuch2026_DE_BF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.lohnnebenkosten",
+      "nombre": "Lohnnebenkosten des Dienstgebers",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "db": "Dienstgeberbeitrag zum FLAF",
+        "kommunalsteuer": "Kommunalsteuer",
+        "dz-hoechst": "Zuschlag zum Dienstgeberbeitrag, höchster Satz"
+      },
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "db": 3.7,
+            "kommunalsteuer": 3,
+            "dz-hoechst": 0.4
+          },
+          "fuente": {
+            "organismo": "Unternehmensserviceportal (BMF)",
+            "titulo": "Fristen und Fälligkeiten (Dienstgeberbeitrag, Zuschlag, Kommunalsteuer)",
+            "url": "https://www.usp.gv.at/themen/steuern-finanzen/steuerliche-rechte-und-pflichten/weitere-informationen-zu-steuerlichen-rechten-und-pflichten-als-unternehmen/fristen-und-faelligkeiten.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.ust",
+      "nombre": "Umsatzsteuersätze",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "normal": "20 % Normalsteuersatz",
+        "dreizehn": "13 % (zum Beispiel Pflanzen, Kunst, Kultur)",
+        "zehn": "10 % (zum Beispiel Lebensmittel, Bücher, Wohnungsmiete)",
+        "grundnahrung": "4,9 % (ausgewählte Grundnahrungsmittel)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "normal": 20,
+            "dreizehn": 13,
+            "zehn": 10
+          },
+          "fuente": {
+            "organismo": "Unternehmensserviceportal (BMF)",
+            "titulo": "Steuersätze und Steuerbefreiungen der Umsatzsteuer",
+            "url": "https://www.usp.gv.at/themen/steuern-finanzen/umsatzsteuer-ueberblick/steuersaetze-und-steuerbefreiungen-der-umsatzsteuer.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "normal": 20,
+            "dreizehn": 13,
+            "zehn": 10,
+            "grundnahrung": 4.9
+          },
+          "fuente": {
+            "organismo": "Unternehmensserviceportal (BMF)",
+            "titulo": "Neuer Umsatzsteuersatz von 4,9 Prozent seit 1. Juli 2026",
+            "url": "https://www.usp.gv.at/aktuelles/newsliste/neuer_ustsatz.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.familienbeihilfe",
+      "nombre": "Familienbeihilfe je Kind und Monat",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "ab-0": "Ab Geburt",
+        "ab-3": "Ab 3 Jahren",
+        "ab-10": "Ab 10 Jahren",
+        "ab-19": "Ab 19 Jahren"
+      },
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": {
+            "ab-0": 138.4,
+            "ab-3": 148,
+            "ab-10": 171.8,
+            "ab-19": 200.4
+          },
+          "fuente": {
+            "organismo": "Bundeskanzleramt",
+            "titulo": "Familienbeihilfenbeträge 2025 bis 2027",
+            "url": "https://www.bundeskanzleramt.gv.at/agenda/familie/familienbeihilfe/basisinformation-zur-familienbeihilfe/familienbeihilfenbetraege.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.geschwisterstaffel",
+      "nombre": "Geschwisterstaffelung je Kind und Monat",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "nota": "Schlüssel: Anzahl der Kinder mit Familienbeihilfe (7 heißt sieben oder mehr).",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": {
+            "2": 8.6,
+            "3": 21.1,
+            "4": 32.1,
+            "5": 38.9,
+            "6": 43.4,
+            "7": 63.1
+          },
+          "fuente": {
+            "organismo": "Bundeskanzleramt",
+            "titulo": "Familienbeihilfenbeträge 2025 bis 2027",
+            "url": "https://www.bundeskanzleramt.gv.at/agenda/familie/familienbeihilfe/basisinformation-zur-familienbeihilfe/familienbeihilfenbetraege.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.familienbeihilfe-zuschlaege",
+      "nombre": "Zuschläge zur Familienbeihilfe",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "behinderung": "Zuschlag für ein erheblich behindertes Kind im Monat",
+        "schulstartgeld": "Schulstartgeld im August (6 bis 15 Jahre)"
+      },
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": {
+            "behinderung": 189.2,
+            "schulstartgeld": 121.4
+          },
+          "fuente": {
+            "organismo": "Bundeskanzleramt",
+            "titulo": "Familienbeihilfenbeträge 2025 bis 2027",
+            "url": "https://www.bundeskanzleramt.gv.at/agenda/familie/familienbeihilfe/basisinformation-zur-familienbeihilfe/familienbeihilfenbetraege.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.kinderabsetzbetrag",
+      "nombre": "Kinderabsetzbetrag je Kind und Monat",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 70.9,
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Übersicht Steuerabsetzbeträge, Jahr 2026",
+            "url": "https://www.bmf.gv.at/themen/steuern/arbeitnehmerveranlagung/steuertarif-steuerabsetzbetraege/uebersicht-steuerabsetzbetraege.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.ueberstundenzuschlag",
+      "nombre": "Überstundenzuschlag",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Unternehmensserviceportal (BMF)",
+            "titulo": "Überstunden und Höchstarbeitszeit",
+            "url": "https://www.usp.gv.at/themen/mitarbeiter-und-gesundheit/urlaub-und-arbeitszeit/ueberstunden-und-hoechstarbeitszeit.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.ueberstunden-steuerfrei",
+      "nombre": "Steuerfreie Überstundenzuschläge im Monat",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "stunden": "Begünstigte Überstunden im Monat",
+        "hoechstbetrag": "Höchstbetrag steuerfreier Zuschläge im Monat in Euro"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "stunden": 15,
+            "hoechstbetrag": 170
+          },
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Bundesgesetz, mit dem das Einkommensteuergesetz 1988 geändert wird (BGBl. I Nr. 4/2026)",
+            "url": "https://www.bmf.gv.at/rechtsnews/steuern-rechtsnews/neue-gesetze/2026/bundesgesetz,-mit-dem-das-einkommensteuergesetz-1988-geaendert-wird.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.urlaub",
+      "nombre": "Urlaubsanspruch in Werktagen (Sechstagewoche)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "regel": "Regelanspruch",
+        "ab-25-dienstjahren": "Nach 25 Dienstjahren"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "regel": 30,
+            "ab-25-dienstjahren": 36
+          },
+          "fuente": {
+            "organismo": "Unternehmensserviceportal (BMF)",
+            "titulo": "Urlaub",
+            "url": "https://www.usp.gv.at/themen/mitarbeiter-und-gesundheit/urlaub-und-arbeitszeit/urlaub.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.kuendigungsfristen",
+      "nombre": "Kündigungsfristen des Arbeitgebers nach Dienstjahren",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Erstes und zweites Dienstjahr in Wochen, danach in Monaten; dazu die Frist für Arbeitnehmer in Monaten.",
+      "etiquetas": {
+        "wochen-bis-2": "Erstes und zweites Dienstjahr (Wochen)",
+        "monate-ab-2": "Nach dem zweiten Dienstjahr (Monate)",
+        "monate-ab-5": "Nach dem fünften Dienstjahr (Monate)",
+        "monate-ab-15": "Nach dem 15. Dienstjahr (Monate)",
+        "monate-ab-25": "Nach dem 25. Dienstjahr (Monate)",
+        "monate-arbeitnehmer": "Kündigung durch Arbeitnehmer (Monate)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "wochen-bis-2": 6,
+            "monate-ab-2": 2,
+            "monate-ab-5": 3,
+            "monate-ab-15": 4,
+            "monate-ab-25": 5,
+            "monate-arbeitnehmer": 1
+          },
+          "fuente": {
+            "organismo": "Unternehmensserviceportal (BMF)",
+            "titulo": "Kündigung: Kündigungsfristen und Kündigungstermine",
+            "url": "https://www.usp.gv.at/themen/mitarbeiter-und-gesundheit/beendigung-des-arbeitsverhaeltnisses/kuendigung.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.abfertigung-alt",
+      "nombre": "Abfertigung alt in Monatsentgelten nach Dienstjahren",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Schlüssel: vollendete Dienstjahre; Wert: Monatsentgelte.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 2,
+            "5": 3,
+            "10": 4,
+            "15": 6,
+            "20": 9,
+            "25": 12
+          },
+          "fuente": {
+            "organismo": "Unternehmensserviceportal (BMF)",
+            "titulo": "Abfertigung ALT und NEU",
+            "url": "https://www.usp.gv.at/themen/mitarbeiter-und-gesundheit/beendigung-des-arbeitsverhaeltnisses/abfertigung.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.abfertigung-steuer",
+      "nombre": "Fester Steuersatz auf Abfertigungen",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Das Steuerbuch 2026 (Werbungskostenpauschale, sonstige Bezüge, Abfertigung)",
+            "url": "https://www.bmf.gv.at/dam/jcr:436f8c01-38e0-41bf-b904-c0e62a862bf1/251117_Steuerbuch2026_DE_BF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.grunderwerbsteuer",
+      "nombre": "Grunderwerbsteuer beim Kauf",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Grunderwerbsteuer, Steuersatz und Stufentarif",
+            "url": "https://www.bmf.gv.at/themen/steuern/immobilien-grundstuecke/grunderwerbsteuer/steuersatz.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.grest-stufentarif",
+      "nombre": "Grunderwerbsteuer, Stufentarif vom Grundstückswert",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 250000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 250000,
+              "hasta": 400000,
+              "tasa": 2
+            },
+            {
+              "desde": 400000,
+              "hasta": null,
+              "tasa": 3.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Grunderwerbsteuer, Steuersatz und Stufentarif",
+            "url": "https://www.bmf.gv.at/themen/steuern/immobilien-grundstuecke/grunderwerbsteuer/steuersatz.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.grundbuch",
+      "nombre": "Grundbuchsgebühren",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "eigentum": "Eintragung des Eigentumsrechts in %",
+        "pfandrecht": "Eintragung des Pfandrechts in %",
+        "eingabe": "Eingabengebühr in Euro"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "eigentum": 1.1,
+            "pfandrecht": 1.2,
+            "eingabe": 85
+          },
+          "fuente": {
+            "organismo": "oesterreich.gv.at (Bundeskanzleramt)",
+            "titulo": "Einverleibung bzw. Löschung im Grundbuch, Kosten",
+            "url": "https://www.oesterreich.gv.at/de/themen/bauen_und_wohnen/grundstueckskauf_und_grundbuch/grundbuch/1/Seite.600201",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.kest",
+      "nombre": "Kapitalertragsteuer",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "sparbuch": "Zinsen aus Sparbüchern und Girokonten",
+        "sonstige": "Sonstige Kapitalerträge (Dividenden, Fonds, Kursgewinne)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sparbuch": 25,
+            "sonstige": 27.5
+          },
+          "fuente": {
+            "organismo": "Bundesministerium für Finanzen",
+            "titulo": "Allgemeine Informationen zu Einkünften aus Kapitalvermögen",
+            "url": "https://www.bmf.gv.at/themen/steuern/sparen-veranlagen/information-zu-einkuenften-aus-kapitalvermoegen.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.immoest",
+      "nombre": "Immobilienertragsteuer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Unternehmensserviceportal (BMF)",
+            "titulo": "Immobilienertragsteuer",
+            "url": "https://www.usp.gv.at/themen/steuern-finanzen/weitere-steuern-und-abgaben/immobilienertragsteuer.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.kleinunternehmer",
+      "nombre": "Kleinunternehmerregelung",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "grenze": "Kleinunternehmergrenze in Euro",
+        "toleranz": "Zulässige Überschreitung im laufenden Jahr in %"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "grenze": 55000,
+            "toleranz": 10
+          },
+          "fuente": {
+            "organismo": "Unternehmensserviceportal (BMF)",
+            "titulo": "Kleinunternehmen (Regelung seit 1. Jänner 2025)",
+            "url": "https://www.usp.gv.at/themen/steuern-finanzen/umsatzsteuer-ueberblick/weitere-informationen-zur-umsatzsteuer/weitere-steuertatbestaende-und-befreiungen/kleinunternehmen.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.arbeitslosengeld",
+      "nombre": "Arbeitslosengeld, Prozentsätze und Familienzuschlag",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "grundbetrag": "Grundbetrag in % des Nettoeinkommens",
+        "obergrenze-ohne": "Obergrenze mit Ergänzungsbetrag ohne Familienzuschläge in %",
+        "obergrenze-mit": "Obergrenze mit Familienzuschlägen in %"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "grundbetrag": 55,
+            "obergrenze-ohne": 60,
+            "obergrenze-mit": 80
+          },
+          "fuente": {
+            "organismo": "Arbeitsmarktservice Österreich",
+            "titulo": "Arbeitslosengeld: Grundbetrag, Ergänzungsbetrag, Bezugsdauer",
+            "url": "https://www.ams.at/arbeitsuchende/arbeitslos-was-tun/geld-vom-ams/arbeitslosengeld",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "at.alg-werte",
+      "nombre": "Arbeitslosengeld, Beträge 2026",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "familienzuschlag": "Familienzuschlag je Tag",
+        "hoechstbemessung": "Höchstbemessungsgrundlage im Monat",
+        "ausgleichszulage": "Ausgleichszulagen-Richtsatz im Monat"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "familienzuschlag": 0.97,
+            "hoechstbemessung": 6825,
+            "ausgleichszulage": 1308.39
+          },
+          "fuente": {
+            "organismo": "Arbeitsmarktservice Österreich",
+            "titulo": "Maßgebliche Werte 2026",
+            "url": "https://www.ams.at/arbeitsuchende/arbeitslos-was-tun/massgebliche-werte",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}

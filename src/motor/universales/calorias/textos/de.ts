@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiCalorias } from "../definicion";
 
-export const textosDe: TextosUi<UiCalorias> = {
+const textos: TextosUi<UiCalorias> = {
   slug: "kalorienbedarf",
   ui: () => ({
     sexo: "Geschlecht",
@@ -34,3 +35,5 @@ export const textosDe: TextosUi<UiCalorias> = {
     aviso: "Das ist eine Schätzung nach der Mifflin-St.-Jeor-Formel. Jeder Körper ist anders. Sie ersetzt keine Beratung durch Ärztin, Arzt oder Ernährungsfachkraft.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiHorasTrabajadas } from "../definicion";
 
-export const textosDe: TextosUi<UiHorasTrabajadas> = {
+const textos: TextosUi<UiHorasTrabajadas> = {
   slug: "arbeitszeitrechner",
   ui: () => ({
     dias: ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
@@ -37,3 +38,5 @@ export const textosDe: TextosUi<UiHorasTrabajadas> = {
       "Das ist eine allgemeine Berechnung. Höchstarbeitszeit, Regeln für Überstunden und Zuschläge für Nacht- oder Feiertagsarbeit hängen vom Gesetz, vom Tarifvertrag und von Ihrem Arbeitsvertrag ab.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

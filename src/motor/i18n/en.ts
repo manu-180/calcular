@@ -66,7 +66,7 @@ const base: TextosSitio = {
     novedades: "Latest updates",
     verNovedades: "See all updates",
     sinCalculadoras: "There are no calculators for this country yet.",
-    descripcion: (pais) => `Pay, tax and money calculators ${g.para(pais)}, with the official value in force, its source and the date it was checked.`,
+    descripcion: (pais) => `Pay, tax, loan, savings, health, date and home calculators ${g.para(pais)}, with the official figure in force and its source.`,
     irASeccion: "Jump to a section",
   },
   fuentes: {

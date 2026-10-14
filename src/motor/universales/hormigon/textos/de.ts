@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiHormigon } from "../definicion";
 
-export const textosDe: TextosUi<UiHormigon> = {
+const textos: TextosUi<UiHormigon> = {
   slug: "betonrechner",
   ui: () => ({
     largo: (u) => `Länge (${u})`,
@@ -23,3 +24,5 @@ export const textosDe: TextosUi<UiHormigon> = {
     aviso: "Die Materialmengen sind ein Richtwert für eine Standardmischung 1:2:3 (etwa 350 kg Zement pro m³). Sie hängen von Rezeptur, Bauteil und den Baustoffen vor Ort ab. Stimmen Sie sie mit der Bauleitung oder dem Fachbetrieb ab.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

@@ -1,0 +1,30 @@
+import type { Mercado } from "@/motor/tipos";
+
+export const mercado: Mercado = {
+  codigo: "ca",
+  pais: "CA",
+  nombre: "Canada",
+  locale: "en-CA",
+  idioma: "en",
+  trato: "tu",
+  monedas: ["CAD"],
+  zonaHoraria: "America/Toronto",
+  estado: "publicado",
+  regiones: [
+    { id: "ab", nombre: "Alberta" },
+    { id: "bc", nombre: "British Columbia" },
+    { id: "mb", nombre: "Manitoba" },
+    { id: "nb", nombre: "New Brunswick" },
+    { id: "nl", nombre: "Newfoundland and Labrador" },
+    { id: "ns", nombre: "Nova Scotia" },
+    { id: "nt", nombre: "Northwest Territories" },
+    { id: "nu", nombre: "Nunavut" },
+    { id: "on", nombre: "Ontario" },
+    { id: "pe", nombre: "Prince Edward Island" },
+    { id: "qc", nombre: "Quebec" },
+    { id: "sk", nombre: "Saskatchewan" },
+    { id: "yt", nombre: "Yukon" },
+  ],
+  redondeo: { decimales: 2, modo: "mitad-arriba" },
+  escala: 1.4,
+};

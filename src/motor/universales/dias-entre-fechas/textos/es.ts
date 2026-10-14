@@ -1,3 +1,4 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiDiasEntreFechas } from "../definicion";
 
@@ -15,7 +16,7 @@ export function duracionEs(anios: number, meses: number, dias: number): string {
   return enLista(partes);
 }
 
-export const textosEs: TextosUi<UiDiasEntreFechas> = {
+const base: TextosUi<UiDiasEntreFechas> = {
   slug: "dias-entre-fechas",
   ui: (trato) => ({
     desde: "Fecha de inicio",
@@ -40,3 +41,12 @@ export const textosEs: TextosUi<UiDiasEntreFechas> = {
     notaInvertidas: "La fecha final era anterior a la de inicio: se calcularon al revés.",
   }),
 };
+
+const espana = (): Partial<UiDiasEntreFechas> => ({
+  incluirAyuda: "Márcalo si el día final también cuenta, como en un viaje o un permiso.",
+  dias: "Días naturales",
+  habilesAyuda: "De lunes a viernes. No descuenta festivos.",
+  notaHabiles: "Los días hábiles cuentan de lunes a viernes y no restan festivos, que cambian según la comunidad autónoma y el municipio.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

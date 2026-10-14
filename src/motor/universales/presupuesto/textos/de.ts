@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPresupuesto } from "../definicion";
 
-export const textosDe: TextosUi<UiPresupuesto> = {
+const textos: TextosUi<UiPresupuesto> = {
   slug: "50-30-20-regel",
   ui: () => ({
     ingreso: "Monatliches Nettoeinkommen",
@@ -21,3 +22,5 @@ export const textosDe: TextosUi<UiPresupuesto> = {
     observacionAhorroBajo: "Wer weniger als 10 % spart, hat wenig Polster für Unvorhergesehenes. Wenn möglich, kürzen Sie etwas bei den Wünschen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

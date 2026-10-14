@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiTasaEfectiva } from "../definicion";
 
-export const textosDe: TextosUi<UiTasaEfectiva> = {
+const textos: TextosUi<UiTasaEfectiva> = {
   slug: "effektivzins-rechner",
   ui: () => ({
     direccion: "Welchen Zinssatz kennen Sie?",
@@ -22,3 +23,5 @@ export const textosDe: TextosUi<UiTasaEfectiva> = {
     observacionDiferencia: (puntos) => `Der Effektivzins liegt ${puntos} Prozentpunkte über dem Nominalzins, weil auch auf die Zinsen wieder Zinsen anfallen.`,
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

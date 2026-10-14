@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiPresupuesto } from "../definicion";
 
-export const textosEs: TextosUi<UiPresupuesto> = {
+const base: TextosUi<UiPresupuesto> = {
   slug: "presupuesto-50-30-20",
   ui: (trato) => ({
     ingreso: "Ingreso neto mensual",
@@ -38,3 +39,11 @@ export const textosEs: TextosUi<UiPresupuesto> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiPresupuesto> => ({
+  ingresoAyuda: "Lo que te llega a la cuenta cada mes, después de retenciones y cotizaciones.",
+  pctNecesidadesAyuda: "Vivienda, comida, suministros, transporte, salud y pagos mínimos de deudas.",
+  pctAhorroAyuda: "Fondo de emergencia, metas, jubilación y amortizaciones extra de deudas.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });
