@@ -20,6 +20,16 @@ import noticePeriod from "./calculadoras/notice-period";
 import contenidoNoticePeriod from "./contenido/notice-period";
 import severancePay from "./calculadoras/severance-pay";
 import contenidoSeverancePay from "./contenido/severance-pay";
+import retirementAnnuityTax from "./calculadoras/retirement-annuity-tax";
+import contenidoRetirementAnnuityTax from "./contenido/retirement-annuity-tax";
+import retirementLumpSumTax from "./calculadoras/retirement-lump-sum-tax";
+import contenidoRetirementLumpSumTax from "./contenido/retirement-lump-sum-tax";
+import capitalGainsTax from "./calculadoras/capital-gains-tax";
+import contenidoCapitalGainsTax from "./contenido/capital-gains-tax";
+import transferDutyCalculator from "./calculadoras/transfer-duty-calculator";
+import contenidoTransferDutyCalculator from "./contenido/transfer-duty-calculator";
+import bondCalculator from "./calculadoras/bond-calculator";
+import contenidoBondCalculator from "./contenido/bond-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -42,6 +52,11 @@ export default definirPais({
     { definicion: sickLeave, contenido: contenidoSickLeave, cliente: () => import("./calculadoras/sick-leave.cliente") },
     { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
     { definicion: severancePay, contenido: contenidoSeverancePay, cliente: () => import("./calculadoras/severance-pay.cliente") },
+    { definicion: retirementAnnuityTax, contenido: contenidoRetirementAnnuityTax, cliente: () => import("./calculadoras/retirement-annuity-tax.cliente") },
+    { definicion: retirementLumpSumTax, contenido: contenidoRetirementLumpSumTax, cliente: () => import("./calculadoras/retirement-lump-sum-tax.cliente") },
+    { definicion: capitalGainsTax, contenido: contenidoCapitalGainsTax, cliente: () => import("./calculadoras/capital-gains-tax.cliente") },
+    { definicion: transferDutyCalculator, contenido: contenidoTransferDutyCalculator, cliente: () => import("./calculadoras/transfer-duty-calculator.cliente") },
+    { definicion: bondCalculator, contenido: contenidoBondCalculator, cliente: () => import("./calculadoras/bond-calculator.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "za.vat" } }] },
   novedades,
