@@ -61,6 +61,7 @@ export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
         }
         extraCajon={<PaisesCajon actual={actual} abierto={!enPais} textos={{ elegir: t.header.elegirPais, cambiar: t.shell.paises.cambiar }} />}
         rutasInternas
+        navDesde="xl"
       />
     </div>
   );
