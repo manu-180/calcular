@@ -1,11 +1,11 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const precio = montoEjemplo(ctx, 50);
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Percentage calculator",
-    title: `Percentage calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Percentage calculator for ${ctx.nombrePais}`, "Percentage calculator"),
     description: "Work out a percentage of a number, what percent one number is of another, and the result of adding or taking off a percentage.",
     intro: [
       "Pick what you want to know, enter the two numbers and you get the answer right away.",

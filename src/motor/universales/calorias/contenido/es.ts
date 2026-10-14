@@ -1,4 +1,4 @@
-import { formatearNumero, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DEFICIT, FACTORES, mifflin, SUPERAVIT } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const mant = basal * FACTORES.moderada;
   return {
     h1: "Calculadora de calorías diarias",
-    title: `Calorías diarias: calculadora en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calorías diarias: calculadora en ${ctx.nombrePais}`, `Calorías diarias en ${ctx.nombrePais}`, "Calculadora de calorías diarias"),
     description: t(
       "Calcula cuántas calorías gastas por día según tu edad, peso, altura y actividad, y cuántas comer para mantener, bajar o subir de peso.",
       "Calcule cuántas calorías gasta por día según su edad, peso, altura y actividad, y cuántas comer para mantener, bajar o subir de peso.",

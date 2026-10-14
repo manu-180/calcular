@@ -1,4 +1,4 @@
-import { formatearNumero, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { KG_POR_LB, M_POR_PULGADA } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -17,7 +17,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
       ];
   return {
     h1: "Calculadora de IMC",
-    title: `Calculadora de IMC en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de IMC en ${ctx.nombrePais}`, `IMC en ${ctx.nombrePais}`, "Calculadora de IMC"),
     description: t(
       "Calcula tu índice de masa corporal con tu peso y tu altura, mira tu categoría según la OMS y el peso saludable para tu altura.",
       "Calcule su índice de masa corporal con su peso y su altura, vea su categoría según la OMS y el peso saludable para su altura.",

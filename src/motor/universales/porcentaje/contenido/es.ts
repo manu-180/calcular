@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -6,7 +6,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Calculadora de porcentajes",
-    title: `Calculadora de porcentajes en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de porcentajes en ${ctx.nombrePais}`, `Porcentajes en ${ctx.nombrePais}`, "Calculadora de porcentajes"),
     description: t(
       "Calcula el porcentaje de un número, qué porcentaje es una cifra de otra y cuánto da sumar o restar un porcentaje.",
       "Calcule el porcentaje de un número, qué porcentaje es una cifra de otra y cuánto da sumar o restar un porcentaje.",

@@ -1,4 +1,4 @@
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { MARGEN } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -23,7 +23,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
       })();
   return {
     h1: "Paint calculator",
-    title: `Paint calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Paint calculator for ${ctx.nombrePais}`, "Paint calculator"),
     description: "Work out how much paint you need for your walls from their size, doors and windows, number of coats and the coverage on the tin.",
     intro: [
       "Enter the length and height of the walls (or the area directly), what doors and windows take up, and how many coats you'll apply.",

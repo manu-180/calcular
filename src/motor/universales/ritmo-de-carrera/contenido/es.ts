@@ -1,4 +1,4 @@
-import { formatearNumero, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DISTANCIAS_KM, KM_POR_MILLA, reloj, ritmoTexto } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const ritmoMedia = imperial ? 9 * 60 : 5 * 60 + 30;
   return {
     h1: "Calculadora de ritmo de carrera",
-    title: `Calculadora de ritmo de carrera en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de ritmo de carrera en ${ctx.nombrePais}`, `Ritmo de carrera en ${ctx.nombrePais}`, "Calculadora de ritmo de carrera"),
     description: t(
       "Calcula tu ritmo por kilómetro, el tiempo final o la distancia para correr un 5K, un 10K, una media maratón o una maratón.",
       "Calcule su ritmo por kilómetro, el tiempo final o la distancia para correr un 5K, un 10K, una media maratón o una maratón.",

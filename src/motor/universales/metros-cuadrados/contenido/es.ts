@@ -1,4 +1,4 @@
-import { formatearNumero, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { area, FT2_POR_M2 } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -7,7 +7,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const enL = area("rectangulo", 5, 4) + area("rectangulo", 3, 2);
   return {
     h1: "Calculadora de metros cuadrados",
-    title: `Calcular metros cuadrados en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calcular metros cuadrados en ${ctx.nombrePais}`, `Metros cuadrados en ${ctx.nombrePais}`, "Calcular metros cuadrados"),
     description: t(
       "Calcula los metros cuadrados de un terreno, un piso o un ambiente: rectángulos, triángulos y círculos, y suma hasta cinco superficies.",
       "Calcule los metros cuadrados de un terreno, un piso o un ambiente: rectángulos, triángulos y círculos, y sume hasta cinco superficies.",

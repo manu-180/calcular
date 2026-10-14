@@ -1,4 +1,4 @@
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
@@ -21,7 +21,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
       })();
   return {
     h1: "Tile calculator",
-    title: `Tile calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Tile calculator for ${ctx.nombrePais}`, "Tile calculator"),
     description: "Work out how many tiles you need for a floor or wall, including a waste allowance, and how many boxes to buy.",
     intro: [
       "Enter the area, the size of each tile and how many come in a box. You see how many tiles and boxes to buy.",

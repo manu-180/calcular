@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
@@ -22,7 +22,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
       })();
   return {
     h1: "Fuel cost calculator",
-    title: `Fuel cost calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Fuel cost calculator for ${ctx.nombrePais}`, "Fuel cost calculator"),
     description: "Work out what a trip costs in fuel from the distance, your car's fuel economy and the fuel price, and what each person pays.",
     intro: [
       `Enter the distance, your vehicle's fuel economy and the price per ${imperial ? "gallon" : "litre"}. You see how much fuel you need and what the trip costs.`,

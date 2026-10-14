@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
@@ -6,7 +6,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const kwhMes = (1000 * 4 * 30) / 1000;
   return {
     h1: "Electricity cost calculator",
-    title: `Electricity cost calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Electricity cost calculator for ${ctx.nombrePais}`, `Electricity cost for ${ctx.nombrePais}`, "Electricity cost calculator"),
     description: "Work out how much electricity an appliance uses and what it costs per day, month and year, from its wattage, hours of use and kWh price.",
     intro: [
       "Enter the appliance's wattage, how many hours you use it and the price per kWh from your bill. You see the energy use and the cost.",

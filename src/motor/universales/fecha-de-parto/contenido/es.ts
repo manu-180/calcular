@@ -1,5 +1,5 @@
-import { aDia, aFecha, fechaLarga } from "../../dias-entre-fechas/fechas";
-import { segunTrato, type ContenidoUniversal } from "../../tipos";
+import { aDia, aFecha, fechaLarga } from "../../comun/fechas";
+import { segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DURACION } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -10,7 +10,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const fpp32 = aFecha(aDia(fum) + DURACION + 4);
   return {
     h1: "Calculadora de fecha probable de parto",
-    title: `Fecha probable de parto: calculadora en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Fecha probable de parto: calculadora en ${ctx.nombrePais}`, `Fecha de parto en ${ctx.nombrePais}`, "Calculadora de fecha probable de parto"),
     description: t(
       "Calcula tu fecha probable de parto con la última menstruación o la concepción, y cuántas semanas de embarazo tienes hoy.",
       "Calcule su fecha probable de parto con la última menstruación o la concepción, y cuántas semanas de embarazo tiene hoy.",

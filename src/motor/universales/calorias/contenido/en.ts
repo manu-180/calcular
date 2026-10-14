@@ -1,4 +1,4 @@
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DEFICIT, FACTORES, mifflin, SUPERAVIT } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -21,7 +21,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
       })();
   return {
     h1: "Daily calorie calculator",
-    title: `Calorie calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calorie calculator for ${ctx.nombrePais}`, "Calorie calculator"),
     description: "Work out how many calories you burn a day from your age, weight, height and activity, and how many to eat to keep, lose or gain weight.",
     intro: [
       "Fill in your details and activity level. You see your basal metabolic rate and the calories you burn on a normal day.",

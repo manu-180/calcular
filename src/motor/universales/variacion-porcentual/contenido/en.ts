@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const antes = montoEjemplo(ctx, 40);
@@ -6,7 +6,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Percentage change calculator",
-    title: `Percentage change calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Percentage change calculator for ${ctx.nombrePais}`, `Percentage change for ${ctx.nombrePais}`, "Percentage change calculator"),
     description: "Work out how much a value went up or down as a percentage: prices, pay, sales or any number that changed over time.",
     intro: [
       "Enter the old value and the new one. You see the percentage increase or decrease and the difference.",

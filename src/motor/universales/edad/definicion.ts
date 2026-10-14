@@ -1,7 +1,7 @@
 import { definirCalculadora, ErrorEntrada } from "../../calculo";
 import { formatearNumero } from "../../formato";
 import type { DefinicionCalculadora } from "../../tipos";
-import { aDia, aFecha, mesesYDias, sumarMeses } from "../dias-entre-fechas/fechas";
+import { aDia, aFecha, mesesYDias, sumarMeses } from "../comun/fechas";
 import type { ContextoUniversal } from "../tipos";
 
 export interface UiEdad {

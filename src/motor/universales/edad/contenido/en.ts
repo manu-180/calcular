@@ -1,6 +1,6 @@
-import { aDia, fechaLarga, mesesYDias } from "../../dias-entre-fechas/fechas";
+import { aDia, fechaLarga, mesesYDias } from "../../comun/fechas";
 import { duracionEn } from "../../dias-entre-fechas/textos/en";
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const nac = "1990-05-15";
@@ -9,7 +9,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const total = aDia(ref) - aDia(nac);
   return {
     h1: "Age calculator",
-    title: `Age calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Age calculator for ${ctx.nombrePais}`, "Age calculator"),
     description: "Work out your exact age in years, months and days, how many days you have lived and how long until your next birthday.",
     intro: [
       "Enter your date of birth and you see your exact age today, also in months, weeks and days.",

@@ -2,7 +2,7 @@ import { definirCalculadora } from "../../calculo";
 import { formatearNumero } from "../../formato";
 import type { DefinicionCalculadora } from "../../tipos";
 import type { ContextoUniversal } from "../tipos";
-import { aDia, aFecha, habilesEntre, mesesYDias } from "./fechas";
+import { aDia, aFecha, habilesEntre, mesesYDias } from "../comun/fechas";
 
 export interface UiDiasEntreFechas {
   desde: string;

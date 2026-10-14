@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -7,7 +7,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Calculadora de propina",
-    title: `Calculadora de propina en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de propina en ${ctx.nombrePais}`, `Propina en ${ctx.nombrePais}`, "Calculadora de propina"),
     description: t(
       "Calcula la propina, el total de la cuenta y cuánto paga cada uno cuando dividen entre varias personas. Con redondeo hacia arriba.",
       "Calcule la propina, el total de la cuenta y cuánto paga cada uno cuando dividen entre varias personas. Con redondeo hacia arriba.",

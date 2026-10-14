@@ -1,4 +1,4 @@
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { area, FT2_POR_M2 } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,9 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const enL = imperial ? area("rectangulo", 16, 12) + area("rectangulo", 10, 6) : area("rectangulo", 5, 4) + area("rectangulo", 3, 2);
   return {
     h1: imperial ? "Square footage calculator" : "Square metre calculator",
-    title: imperial ? `Square footage calculator for ${ctx.nombrePais}` : `Square metre calculator for ${ctx.nombrePais}`,
+    title: imperial
+      ? tituloQueEntre(`Square footage calculator for ${ctx.nombrePais}`, "Square footage calculator")
+      : tituloQueEntre(`Square metre calculator for ${ctx.nombrePais}`, "Square metre calculator"),
     description: "Work out the area of a room, a floor or a plot: rectangles, triangles and circles, adding up to five shapes together.",
     intro: [
       "Choose a shape and enter its measurements. If the space isn't a simple rectangle, split it into parts and the calculator adds them up.",

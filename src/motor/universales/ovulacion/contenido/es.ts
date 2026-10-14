@@ -1,5 +1,5 @@
-import { aDia, aFecha, fechaLarga } from "../../dias-entre-fechas/fechas";
-import { segunTrato, type ContenidoUniversal } from "../../tipos";
+import { aDia, aFecha, fechaLarga } from "../../comun/fechas";
+import { segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { FASE_LUTEA, ventana } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const v = ventana(aDia(fum), 28);
   return {
     h1: "Calculadora de días fértiles y ovulación",
-    title: `Días fértiles y ovulación en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Días fértiles y ovulación en ${ctx.nombrePais}`, `Ovulación en ${ctx.nombrePais}`, "Días fértiles y ovulación"),
     description: t(
       "Calcula tu día de ovulación, tus días fértiles y la fecha de tu próxima menstruación, con los próximos tres ciclos.",
       "Calcule su día de ovulación, sus días fértiles y la fecha de su próxima menstruación, con los próximos tres ciclos.",

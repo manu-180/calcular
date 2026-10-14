@@ -1,5 +1,5 @@
-import { aDia, aFecha, esHabil, fechaLarga } from "../../dias-entre-fechas/fechas";
-import { segunTrato, type ContenidoUniversal } from "../../tipos";
+import { aDia, aFecha, esHabil, fechaLarga } from "../../comun/fechas";
+import { segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -10,7 +10,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   for (let n = 0; n < 15; ) if (esHabil(++habil)) n++;
   return {
     h1: "Sumar o restar días a una fecha",
-    title: `Sumar días a una fecha en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Sumar días a una fecha en ${ctx.nombrePais}`, `Sumar días en ${ctx.nombrePais}`, "Sumar días a una fecha"),
     description: t(
       "Suma o resta días corridos o hábiles a una fecha y descubre qué día cae: útil para plazos, vencimientos y entregas.",
       "Sume o reste días corridos o hábiles a una fecha y vea qué día cae: útil para plazos, vencimientos y entregas.",

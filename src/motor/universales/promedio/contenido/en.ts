@@ -1,10 +1,10 @@
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const n = (x: number, d = 1) => formatearNumero(ctx, x, d);
   return {
     h1: "Weighted average calculator",
-    title: `Weighted average calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Weighted average calculator for ${ctx.nombrePais}`, `Weighted average for ${ctx.nombrePais}`, "Weighted average calculator"),
     description: "Work out your grade average, simple or weighted, with up to 10 values and the weight of each one: percentages, credits or counts.",
     intro: [
       "Enter each grade and how much it counts. You see the weighted average and the simple one next to it.",

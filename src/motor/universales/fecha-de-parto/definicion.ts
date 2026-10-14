@@ -1,6 +1,6 @@
 import { definirCalculadora, ErrorEntrada } from "../../calculo";
 import type { DefinicionCalculadora } from "../../tipos";
-import { aDia, aFecha } from "../dias-entre-fechas/fechas";
+import { aDia, aFecha } from "../comun/fechas";
 import type { ContextoUniversal } from "../tipos";
 
 export interface UiFechaDeParto {

@@ -1,4 +1,4 @@
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DISTANCIAS_KM, KM_POR_MILLA, reloj, ritmoTexto } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const ritmoMedia = imperial ? 9 * 60 : 5 * 60 + 30;
   return {
     h1: "Running pace calculator",
-    title: `Running pace calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Running pace calculator for ${ctx.nombrePais}`, "Running pace calculator"),
     description: `Work out your pace per ${u}, your finish time or your distance for a 5K, 10K, half marathon or marathon.`,
     intro: [
       "With two of the three figures (distance, time and pace) you get the third. Use it to plan a race or check a training run.",
