@@ -16,6 +16,14 @@ import ferie from "./calculadoras/ferie";
 import contenidoFerie from "./contenido/ferie";
 import straordinari from "./calculadoras/straordinari";
 import contenidoStraordinari from "./contenido/straordinari";
+import regimeForfettario from "./calculadoras/regime-forfettario";
+import contenidoRegimeForfettario from "./contenido/regime-forfettario";
+import contributiGestioneSeparata from "./calculadoras/contributi-gestione-separata";
+import contenidoContributiGestioneSeparata from "./contenido/contributi-gestione-separata";
+import contributiArtigianiCommercianti from "./calculadoras/contributi-artigiani-commercianti";
+import contenidoContributiArtigianiCommercianti from "./contenido/contributi-artigiani-commercianti";
+import ritenutaAcconto from "./calculadoras/ritenuta-acconto";
+import contenidoRitenutaAcconto from "./contenido/ritenuta-acconto";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: quattordicesima, contenido: contenidoQuattordicesima, cliente: () => import("./calculadoras/quattordicesima.cliente") },
     { definicion: ferie, contenido: contenidoFerie, cliente: () => import("./calculadoras/ferie.cliente") },
     { definicion: straordinari, contenido: contenidoStraordinari, cliente: () => import("./calculadoras/straordinari.cliente") },
+    { definicion: regimeForfettario, contenido: contenidoRegimeForfettario, cliente: () => import("./calculadoras/regime-forfettario.cliente") },
+    { definicion: contributiGestioneSeparata, contenido: contenidoContributiGestioneSeparata, cliente: () => import("./calculadoras/contributi-gestione-separata.cliente") },
+    { definicion: contributiArtigianiCommercianti, contenido: contenidoContributiArtigianiCommercianti, cliente: () => import("./calculadoras/contributi-artigiani-commercianti.cliente") },
+    { definicion: ritenutaAcconto, contenido: contenidoRitenutaAcconto, cliente: () => import("./calculadoras/ritenuta-acconto.cliente") },
   ],
   universales: { todas: true },
   novedades,
