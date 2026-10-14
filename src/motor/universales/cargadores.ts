@@ -40,6 +40,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./calorias/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./calorias/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./calorias/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "ceramicos": {
@@ -47,6 +48,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./ceramicos/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./ceramicos/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./ceramicos/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "combustible": {
@@ -54,6 +56,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./combustible/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./combustible/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./combustible/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "consumo-electrico": {
@@ -61,6 +64,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./consumo-electrico/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./consumo-electrico/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./consumo-electrico/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "conversor-sueldo": {
@@ -82,6 +86,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./descuento/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./descuento/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./descuento/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "dias-entre-fechas": {
@@ -89,6 +94,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./dias-entre-fechas/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./dias-entre-fechas/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./dias-entre-fechas/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "dividir-gastos": {
@@ -96,6 +102,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./dividir-gastos/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./dividir-gastos/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./dividir-gastos/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "edad": {
@@ -103,6 +110,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./edad/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./edad/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./edad/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "fecha-de-parto": {
@@ -110,6 +118,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./fecha-de-parto/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./fecha-de-parto/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./fecha-de-parto/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "fondo-de-emergencia": {
@@ -138,6 +147,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./hormigon/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./hormigon/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./hormigon/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "imc": {
@@ -145,6 +155,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./imc/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./imc/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./imc/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "interes-compuesto": {
@@ -166,6 +177,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./iva/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./iva/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./iva/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "margen-de-ganancia": {
@@ -187,6 +199,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./metros-cuadrados/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./metros-cuadrados/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./metros-cuadrados/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "ovulacion": {
@@ -194,6 +207,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./ovulacion/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./ovulacion/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./ovulacion/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "pintura": {
@@ -201,6 +215,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./pintura/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./pintura/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./pintura/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "porcentaje": {
@@ -208,6 +223,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./porcentaje/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./porcentaje/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./porcentaje/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "prestamo": {
@@ -215,6 +231,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./prestamo/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./prestamo/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./prestamo/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "presupuesto": {
@@ -229,6 +246,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./promedio/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./promedio/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./promedio/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "propina": {
@@ -236,6 +254,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./propina/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./propina/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./propina/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "punto-de-equilibrio": {
@@ -250,6 +269,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./regla-de-tres/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./regla-de-tres/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./regla-de-tres/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "rendimiento-inversion": {
@@ -264,6 +284,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./ritmo-de-carrera/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./ritmo-de-carrera/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./ritmo-de-carrera/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "sumar-dias": {
@@ -271,6 +292,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./sumar-dias/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./sumar-dias/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./sumar-dias/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "tarifa-freelance": {
@@ -292,6 +314,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./tasa-efectiva/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./tasa-efectiva/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./tasa-efectiva/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "variacion-porcentual": {
@@ -299,6 +322,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./variacion-porcentual/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./variacion-porcentual/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./variacion-porcentual/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
 };
