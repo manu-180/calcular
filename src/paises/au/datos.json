@@ -1,0 +1,1286 @@
+{
+  "mercado": "au",
+  "datos": [
+    {
+      "id": "au.gst",
+      "nombre": "GST rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "How GST works",
+            "url": "https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/how-gst-works",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.escala-renta-2026-27",
+      "nombre": "Resident income tax rates 2026-27",
+      "tipo": "escala",
+      "unidad": "AUD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 18200,
+              "tasa": 0
+            },
+            {
+              "desde": 18200,
+              "hasta": 45000,
+              "tasa": 15
+            },
+            {
+              "desde": 45000,
+              "hasta": 135000,
+              "tasa": 30
+            },
+            {
+              "desde": 135000,
+              "hasta": 190000,
+              "tasa": 37
+            },
+            {
+              "desde": 190000,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Tax rates: Australian resident (Resident tax rates 2026-27)",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Leído: 0 a 18,200 nil; 15c sobre 18,200; 4,020 + 30c sobre 45,000; 31,020 + 37c sobre 135,000; 51,370 + 45c sobre 190,000."
+          }
+        }
+      ],
+      "nota": "Escala del año fiscal 2026-27 (1/7/2026 a 30/6/2027). Se aplica como escala marginal."
+    },
+    {
+      "id": "au.escala-renta-2025-26",
+      "nombre": "Resident income tax rates 2025-26",
+      "tipo": "escala",
+      "unidad": "AUD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 18200,
+              "tasa": 0
+            },
+            {
+              "desde": 18200,
+              "hasta": 45000,
+              "tasa": 16
+            },
+            {
+              "desde": 45000,
+              "hasta": 135000,
+              "tasa": 30
+            },
+            {
+              "desde": 135000,
+              "hasta": 190000,
+              "tasa": 37
+            },
+            {
+              "desde": 190000,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Tax rates: Australian resident (Resident tax rates 2025-26)",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Leído: 16c sobre 18,200; 4,288 + 30c sobre 45,000; 31,288 + 37c; 51,638 + 45c."
+          }
+        }
+      ],
+      "nota": "Escala del año fiscal 2025-26, la que usan las declaraciones que se presentan desde julio de 2026."
+    },
+    {
+      "id": "au.medicare-levy",
+      "nombre": "Medicare levy rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Federal Register of Legislation",
+            "titulo": "Medicare Levy Act 1986, section 6 (compilation 1 July 2026)",
+            "url": "https://www.legislation.gov.au/C2004A03351/latest/text",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.medicare-umbrales",
+      "nombre": "Medicare levy low-income thresholds (singles, no SAPTO)",
+      "tipo": "mapa",
+      "unidad": "AUD",
+      "etiquetas": {
+        "umbral": "Threshold amount",
+        "limite": "Phase-in limit"
+      },
+      "proximaRevision": "2027-05-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "umbral": 28011,
+            "limite": 35013
+          },
+          "fuente": {
+            "organismo": "Federal Register of Legislation",
+            "titulo": "Medicare Levy Act 1986, section 3 (threshold amount and phase-in limit), compilation in force from 1 July 2026",
+            "url": "https://www.legislation.gov.au/C2004A03351/latest/text",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Coincide con la tabla 2025-26 del ATO (Medicare levy reduction for low-income earners)."
+          }
+        }
+      ],
+      "nota": "Los umbrales los sube una ley cada año, en general después del presupuesto de mayo. Hasta entonces rige este valor."
+    },
+    {
+      "id": "au.medicare-tasa-reduccion",
+      "nombre": "Medicare levy shade-in rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Federal Register of Legislation",
+            "titulo": "Medicare Levy Act 1986, section 7(2)",
+            "url": "https://www.legislation.gov.au/C2004A03351/latest/text",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.lito",
+      "nombre": "Low income tax offset",
+      "tipo": "mapa",
+      "unidad": "AUD",
+      "etiquetas": {
+        "maximo": "Maximum offset",
+        "umbral-1": "Full offset up to",
+        "umbral-2": "Second phase-out from",
+        "base-2": "Offset at the second phase-out",
+        "tope": "No offset above"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": {
+            "maximo": 700,
+            "umbral-1": 37500,
+            "umbral-2": 45000,
+            "base-2": 325,
+            "tope": 66667
+          },
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Low income tax offset",
+            "url": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.lito-tasas",
+      "nombre": "Low income tax offset phase-out rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "tasa-1": "First phase-out",
+        "tasa-2": "Second phase-out"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": {
+            "tasa-1": 5,
+            "tasa-2": 1.5
+          },
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Low income tax offset",
+            "url": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.help-2026-27",
+      "nombre": "Study and training loan repayment thresholds 2026-27",
+      "tipo": "mapa",
+      "unidad": "AUD",
+      "etiquetas": {
+        "umbral": "Minimum repayment income",
+        "tramo-2": "Second band from",
+        "cuota-2": "Repayment at the second band",
+        "tope": "Flat 10% above"
+      },
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "umbral": 69528,
+            "tramo-2": 129717,
+            "cuota-2": 9028,
+            "tope": 186050
+          },
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Study and training loan minimum repayment income and rates (Table 1: 2026-27)",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/study-and-training-loan-minimum-repayment-income-and-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.help-2025-26",
+      "nombre": "Study and training loan repayment thresholds 2025-26",
+      "tipo": "mapa",
+      "unidad": "AUD",
+      "etiquetas": {
+        "umbral": "Minimum repayment income",
+        "tramo-2": "Second band from",
+        "cuota-2": "Repayment at the second band",
+        "tope": "Flat 10% above"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "umbral": 67000,
+            "tramo-2": 125000,
+            "cuota-2": 8700,
+            "tope": 179285
+          },
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Study and training loan minimum repayment income and rates (Table 2: 2025-26)",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/study-and-training-loan-minimum-repayment-income-and-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.help-tasas",
+      "nombre": "Study and training loan repayment rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "tasa-1": "First band",
+        "tasa-2": "Second band",
+        "tasa-total": "Rate on total income above the top threshold"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "tasa-1": 15,
+            "tasa-2": 17,
+            "tasa-total": 10
+          },
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Study and training loan minimum repayment income and rates",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/study-and-training-loan-minimum-repayment-income-and-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.super-guarantee",
+      "nombre": "Super guarantee rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "hasta": "2025-06-30",
+          "valor": 11.5,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Super guarantee (Table 21)",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Super guarantee (Table 21)",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "12% para 2025-26, 2026-27 y de 2027 en adelante."
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.super-base-maxima",
+      "nombre": "Maximum super contribution base (annual)",
+      "tipo": "numero",
+      "unidad": "AUD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": 270830,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Super guarantee (Table 23: maximum contribution base from 1 July 2026)",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.tope-concesional",
+      "nombre": "Concessional contributions cap",
+      "tipo": "numero",
+      "unidad": "AUD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "hasta": "2026-06-30",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Contributions caps",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 32500,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Contributions caps",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.impuesto-aportes",
+      "nombre": "Tax on concessional contributions in the fund",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Salary sacrificing super",
+            "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/how-to-save-more-in-your-super/salary-sacrificing-super",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.div293-umbral",
+      "nombre": "Division 293 income threshold",
+      "tipo": "numero",
+      "unidad": "AUD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 250000,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Salary sacrificing super",
+            "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/how-to-save-more-in-your-super/salary-sacrificing-super",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.salario-minimo-semanal",
+      "nombre": "National Minimum Wage (weekly, 38 hours)",
+      "tipo": "numero",
+      "unidad": "AUD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": 948,
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Minimum wage increase starts today (1 July 2025)",
+            "url": "https://www.fairwork.gov.au/newsroom/media-releases/2025-media-releases/july-2025/20250701-awr-2025-media-release",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 1004.9,
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Minimum wage increase starts today (1 July 2026)",
+            "url": "https://www.fairwork.gov.au/newsroom/media-releases/2026-media-releases/july-2026/20260701-minimum-wage-increase-media-release",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.salario-minimo-hora",
+      "nombre": "National Minimum Wage (hourly)",
+      "tipo": "numero",
+      "unidad": "AUD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": 24.95,
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Minimum wage increase starts today (1 July 2025)",
+            "url": "https://www.fairwork.gov.au/newsroom/media-releases/2025-media-releases/july-2025/20250701-awr-2025-media-release",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 26.44,
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Minimum wage increase starts today (1 July 2026)",
+            "url": "https://www.fairwork.gov.au/newsroom/media-releases/2026-media-releases/july-2026/20260701-minimum-wage-increase-media-release",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.recargo-casual",
+      "nombre": "Casual loading on the National Minimum Wage",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Minimum wage increase starts today (1 July 2026)",
+            "url": "https://www.fairwork.gov.au/newsroom/media-releases/2026-media-releases/july-2026/20260701-minimum-wage-increase-media-release",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La nota de 2025 dice lo mismo (25 per cent casual loading)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.vacaciones-semanas",
+      "nombre": "Annual leave under the NES (weeks a year)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Annual leave",
+            "url": "https://www.fairwork.gov.au/leave/annual-leave",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.leave-loading",
+      "nombre": "Annual leave loading in many awards",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 17.5,
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Annual leave loading in awards and agreements [K600323]",
+            "url": "https://library.fairwork.gov.au/viewer/?krn=K600323",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "17,5 % es la tasa de la Retail Award y de otras awards; no la da la NES."
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.personal-leave-divisor",
+      "nombre": "Paid sick and carer's leave (1/26 of ordinary hours)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Paid sick and carer's leave",
+            "url": "https://www.fairwork.gov.au/leave/sick-and-carers-leave/paid-sick-and-carers-leave",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.redundancy-semanas",
+      "nombre": "NES redundancy pay (weeks by complete years of service)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "1": "1 year",
+        "2": "2 years",
+        "3": "3 years",
+        "4": "4 years",
+        "5": "5 years",
+        "6": "6 years",
+        "7": "7 years",
+        "8": "8 years",
+        "9": "9 years",
+        "10": "10 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": {
+            "1": 4,
+            "2": 6,
+            "3": 7,
+            "4": 8,
+            "5": 10,
+            "6": 11,
+            "7": 13,
+            "8": 14,
+            "9": 16,
+            "10": 12
+          },
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Redundancy pay",
+            "url": "https://www.fairwork.gov.au/ending-employment/redundancy/redundancy-pay-and-entitlements",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.redundancy-empleados-minimo",
+      "nombre": "Employees from which NES redundancy pay applies",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Redundancy pay",
+            "url": "https://www.fairwork.gov.au/ending-employment/redundancy/redundancy-pay-and-entitlements",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.preaviso-semanas",
+      "nombre": "NES minimum notice of termination (weeks)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "hasta-1": "1 year or less",
+        "hasta-3": "More than 1 year to 3 years",
+        "hasta-5": "More than 3 years to 5 years",
+        "mas-de-5": "More than 5 years",
+        "extra": "Extra week",
+        "edad-extra": "Age for the extra week (over)",
+        "anios-extra": "Years of service for the extra week"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": {
+            "hasta-1": 1,
+            "hasta-3": 2,
+            "hasta-5": 3,
+            "mas-de-5": 4,
+            "extra": 1,
+            "edad-extra": 45,
+            "anios-extra": 2
+          },
+          "fuente": {
+            "organismo": "Fair Work Ombudsman",
+            "titulo": "Notice of termination and redundancy pay fact sheet",
+            "url": "https://www.fairwork.gov.au/tools-and-resources/fact-sheets/minimum-workplace-entitlements/notice-of-termination-and-redundancy-pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.redundancy-libre-impuesto",
+      "nombre": "Tax-free part of a genuine redundancy payment",
+      "tipo": "mapa",
+      "unidad": "AUD",
+      "etiquetas": {
+        "base": "Base limit",
+        "por-anio": "For each complete year of service"
+      },
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "base": 13100,
+            "por-anio": 6552
+          },
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Employment termination payments (Table 20)",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/employment-termination-payments",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": {
+            "base": 13598,
+            "por-anio": 6801
+          },
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Employment termination payments (Table 20)",
+            "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/employment-termination-payments",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.cgt-descuento",
+      "nombre": "CGT discount for individuals (assets held 12 months or more)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "CGT discount",
+            "url": "https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax/calculating-your-cgt/cgt-discount",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "El presupuesto 2026-27 anuncia reemplazarlo desde el 1/7/2027; no es ley. Ver aviso au.cgt-budget-2026-27."
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.nsw-transfer-duty",
+      "nombre": "NSW transfer duty and premium duty rates 2026/2027",
+      "tipo": "escala",
+      "unidad": "AUD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 18000,
+              "tasa": 1.25
+            },
+            {
+              "desde": 18000,
+              "hasta": 38000,
+              "tasa": 1.5,
+              "cuotaFija": 225
+            },
+            {
+              "desde": 38000,
+              "hasta": 103000,
+              "tasa": 1.75,
+              "cuotaFija": 525
+            },
+            {
+              "desde": 103000,
+              "hasta": 387000,
+              "tasa": 3.5,
+              "cuotaFija": 1662
+            },
+            {
+              "desde": 387000,
+              "hasta": 1290000,
+              "tasa": 4.5,
+              "cuotaFija": 11602
+            },
+            {
+              "desde": 1290000,
+              "hasta": 3870000,
+              "tasa": 5.5,
+              "cuotaFija": 52237
+            },
+            {
+              "desde": 3870000,
+              "hasta": null,
+              "tasa": 7,
+              "cuotaFija": 194137
+            }
+          ],
+          "fuente": {
+            "organismo": "Revenue NSW",
+            "titulo": "How to calculate transfer duty (2026/2027 rates)",
+            "url": "https://www.revenue.nsw.gov.au/taxes-duties-levies-royalties/transfer-duty/understanding-transfer-duty/calculate-transfer-duty",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La última fila es la premium duty y solo vale para propiedad residencial."
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.nsw-duty-minimo",
+      "nombre": "NSW minimum transfer duty",
+      "tipo": "numero",
+      "unidad": "AUD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Revenue NSW",
+            "titulo": "How to calculate transfer duty",
+            "url": "https://www.revenue.nsw.gov.au/taxes-duties-levies-royalties/transfer-duty/understanding-transfer-duty/calculate-transfer-duty",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.nsw-fhb",
+      "nombre": "NSW First Home Buyers Assistance Scheme thresholds (homes)",
+      "tipo": "mapa",
+      "unidad": "AUD",
+      "etiquetas": {
+        "exencion": "No duty up to",
+        "tope": "Reduced duty below"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "exencion": 800000,
+            "tope": 1000000
+          },
+          "fuente": {
+            "organismo": "Revenue NSW",
+            "titulo": "How to calculate transfer duty (First home buyers)",
+            "url": "https://www.revenue.nsw.gov.au/taxes-duties-levies-royalties/transfer-duty/understanding-transfer-duty/calculate-transfer-duty",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.vic-transfer-duty",
+      "nombre": "Victoria land transfer duty general rates",
+      "tipo": "escala",
+      "unidad": "AUD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 25000,
+              "tasa": 1.4
+            },
+            {
+              "desde": 25000,
+              "hasta": 130000,
+              "tasa": 2.4,
+              "cuotaFija": 350
+            },
+            {
+              "desde": 130000,
+              "hasta": 960000,
+              "tasa": 6,
+              "cuotaFija": 2870
+            },
+            {
+              "desde": 960000,
+              "hasta": 2000000,
+              "tasa": 5.5,
+              "cuotaFija": 52800
+            },
+            {
+              "desde": 2000000,
+              "hasta": null,
+              "tasa": 6.5,
+              "cuotaFija": 110000
+            }
+          ],
+          "fuente": {
+            "organismo": "State Revenue Office Victoria",
+            "titulo": "Land transfer duty: non-principal place of residence (current rates)",
+            "url": "https://www.sro.vic.gov.au/about-us/rates-and-statistics/current-rates/land-transfer-duty-non-principal-place-residence-current-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La fila de 960.000 a 2.000.000 dice 5,5 % del valor total; se escribe como 52.800 + 5,5 % del excedente, que da lo mismo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.vic-ppr-duty",
+      "nombre": "Victoria principal place of residence concession rates (up to $550,000)",
+      "tipo": "escala",
+      "unidad": "AUD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 25000,
+              "tasa": 1.4
+            },
+            {
+              "desde": 25000,
+              "hasta": 130000,
+              "tasa": 2.4,
+              "cuotaFija": 350
+            },
+            {
+              "desde": 130000,
+              "hasta": 440000,
+              "tasa": 5,
+              "cuotaFija": 2870
+            },
+            {
+              "desde": 440000,
+              "hasta": null,
+              "tasa": 6,
+              "cuotaFija": 18370
+            }
+          ],
+          "fuente": {
+            "organismo": "State Revenue Office Victoria",
+            "titulo": "Principal place of residence duty concession",
+            "url": "https://www.sro.vic.gov.au/buying-property/land-transfer-stamp-duty/concessions-exemptions-and-waivers/principal-place-residence-duty-concession",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Hasta 130.000 son las tasas generales; arriba, las de la tabla de concesión."
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.vic-umbrales",
+      "nombre": "Victoria home buyer thresholds",
+      "tipo": "mapa",
+      "unidad": "AUD",
+      "etiquetas": {
+        "ppr-tope": "PPR concession up to",
+        "fhb-exencion": "First home buyers pay no duty up to"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-01",
+          "valor": {
+            "ppr-tope": 550000,
+            "fhb-exencion": 600000
+          },
+          "fuente": {
+            "organismo": "State Revenue Office Victoria",
+            "titulo": "Principal place of residence duty concession",
+            "url": "https://www.sro.vic.gov.au/buying-property/land-transfer-stamp-duty/concessions-exemptions-and-waivers/principal-place-residence-duty-concession",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.qld-transfer-duty",
+      "nombre": "Queensland transfer duty rates",
+      "tipo": "escala",
+      "unidad": "AUD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-09-21",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000,
+              "tasa": 0
+            },
+            {
+              "desde": 5000,
+              "hasta": 75000,
+              "tasa": 1.5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 75000,
+              "hasta": 540000,
+              "tasa": 3.5,
+              "cuotaFija": 1050
+            },
+            {
+              "desde": 540000,
+              "hasta": 1000000,
+              "tasa": 4.5,
+              "cuotaFija": 17325
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 5.75,
+              "cuotaFija": 38025
+            }
+          ],
+          "fuente": {
+            "organismo": "Queensland Revenue Office",
+            "titulo": "Transfer duty rates",
+            "url": "https://qro.qld.gov.au/duties/transfer-duty/calculate/rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.qld-home-duty",
+      "nombre": "Queensland home concession rates",
+      "tipo": "escala",
+      "unidad": "AUD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 350000,
+              "tasa": 1
+            },
+            {
+              "desde": 350000,
+              "hasta": 540000,
+              "tasa": 3.5,
+              "cuotaFija": 3500
+            },
+            {
+              "desde": 540000,
+              "hasta": 1000000,
+              "tasa": 4.5,
+              "cuotaFija": 10150
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 5.75,
+              "cuotaFija": 30850
+            }
+          ],
+          "fuente": {
+            "organismo": "Queensland Revenue Office",
+            "titulo": "Transfer duty home concession rates",
+            "url": "https://qro.qld.gov.au/duties/transfer-duty/calculate/concession-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.qld-fhb-concesion",
+      "nombre": "Queensland first home concession amounts (contracts from 9 June 2024)",
+      "tipo": "escala",
+      "unidad": "AUD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-09",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 709999.99,
+              "tasa": 0,
+              "cuotaFija": 17350
+            },
+            {
+              "desde": 710000,
+              "hasta": 719999.99,
+              "tasa": 0,
+              "cuotaFija": 15615
+            },
+            {
+              "desde": 720000,
+              "hasta": 729999.99,
+              "tasa": 0,
+              "cuotaFija": 13880
+            },
+            {
+              "desde": 730000,
+              "hasta": 739999.99,
+              "tasa": 0,
+              "cuotaFija": 12145
+            },
+            {
+              "desde": 740000,
+              "hasta": 749999.99,
+              "tasa": 0,
+              "cuotaFija": 10410
+            },
+            {
+              "desde": 750000,
+              "hasta": 759999.99,
+              "tasa": 0,
+              "cuotaFija": 8675
+            },
+            {
+              "desde": 760000,
+              "hasta": 769999.99,
+              "tasa": 0,
+              "cuotaFija": 6940
+            },
+            {
+              "desde": 770000,
+              "hasta": 779999.99,
+              "tasa": 0,
+              "cuotaFija": 5205
+            },
+            {
+              "desde": 780000,
+              "hasta": 789999.99,
+              "tasa": 0,
+              "cuotaFija": 3470
+            },
+            {
+              "desde": 790000,
+              "hasta": 799999.99,
+              "tasa": 0,
+              "cuotaFija": 1735
+            },
+            {
+              "desde": 800000,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "Queensland Revenue Office",
+            "titulo": "Transfer duty home concession rates (first home concession)",
+            "url": "https://qro.qld.gov.au/duties/transfer-duty/calculate/concession-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Cada fila es el monto que se descuenta del duty calculado con la tasa de home concession."
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.wfh-tasa",
+      "nombre": "Working from home fixed rate (per hour)",
+      "tipo": "mapa",
+      "unidad": "AUD",
+      "etiquetas": {
+        "2024-25": "2024-25",
+        "2025-26": "2025-26"
+      },
+      "proximaRevision": "2027-06-30",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "2024-25": 0.7,
+            "2025-26": 0.7
+          },
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Working from home expenses: fixed rate method",
+            "url": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/deductions-you-can-claim/work-related-deductions/working-from-home-expenses/fixed-rate-method",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.cents-por-km",
+      "nombre": "Car expenses cents per kilometre rate",
+      "tipo": "mapa",
+      "unidad": "AUD",
+      "etiquetas": {
+        "2025-26": "2025-26",
+        "2026-27": "2026-27"
+      },
+      "proximaRevision": "2027-06-30",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "2025-26": 0.88,
+            "2026-27": 0.91
+          },
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Cents per kilometre method",
+            "url": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/deductions-you-can-claim/work-related-deductions/cars-transport-and-travel/motor-vehicle-and-car-expenses/expenses-for-a-car-you-own-or-lease/cents-per-kilometre-method",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "au.km-maximo",
+      "nombre": "Maximum work kilometres per car (cents per km method)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 5000,
+          "fuente": {
+            "organismo": "Australian Taxation Office",
+            "titulo": "Cents per kilometre method",
+            "url": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/deductions-you-can-claim/work-related-deductions/cars-transport-and-travel/motor-vehicle-and-car-expenses/expenses-for-a-car-you-own-or-lease/cents-per-kilometre-method",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,8 @@
 import type { CargadoresMercado } from "./tipos";
 
 export const MERCADOS: Readonly<Record<string, CargadoresMercado>> = {
+  "at": () => import("./at"),
+  "au": () => import("./au"),
   "bo": () => import("./bo"),
   "br": () => import("./br"),
   "ca": () => import("./ca"),
@@ -24,6 +26,7 @@ export const MERCADOS: Readonly<Record<string, CargadoresMercado>> = {
   "nl": () => import("./nl"),
   "pa": () => import("./pa"),
   "pe": () => import("./pe"),
+  "pt": () => import("./pt"),
   "py": () => import("./py"),
   "sv": () => import("./sv"),
   "us": () => import("./us"),
