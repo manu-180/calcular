@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosPt: TextosUi<UiAlquilarOComprar> = {
+  slug: "alugar-ou-comprar",
+  ui: () => ({
+    precio: "Valor do imóvel",
+    entrada: "Entrada (% do valor)",
+    gastosCompra: "Custos de compra (% do valor)",
+    gastosCompraAyuda: "Escritura, registro, impostos de transmissão, corretagem e avaliação.",
+    tasa: "Taxa do financiamento (% ao ano)",
+    aniosHipoteca: "Prazo do financiamento em anos",
+    alquiler: "Aluguel mensal de um imóvel parecido",
+    aumentoAlquiler: "Reajuste anual do aluguel (%)",
+    gastosPropietario: "Gastos do proprietário por ano (% do valor)",
+    gastosPropietarioAyuda: "Manutenção, impostos do imóvel e seguro. O comum é de 1% a 2%.",
+    revalorizacion: "Valorização do imóvel por ano (%)",
+    rendimiento: "Rendimento de um investimento alternativo (% ao ano)",
+    rendimientoAyuda: "O que você ganharia investindo a entrada em vez de comprar.",
+    horizonte: "Anos para comparar",
+    veredicto: "Resultado",
+    patrimonioComprar: "Patrimônio no final se comprar",
+    patrimonioAlquilar: "Patrimônio no final se alugar",
+    diferencia: "Diferença",
+    anioDesde: "Ano em que comprar passa a compensar",
+    pagadoAlquilando: "Total pago de aluguel",
+    pagadoComprando: "Total de parcelas e gastos do proprietário",
+    tabla: "Comparação ano a ano",
+    colAnio: "Ano",
+    colComprar: "Comprando",
+    colAlquilar: "Alugando",
+    colDiferencia: "Diferença",
+    errorPrecio: "Coloque o valor do imóvel.",
+    errorAlquiler: "Coloque quanto custaria alugar um imóvel parecido.",
+    convieneComprar: (anios, diferencia) => `Comprar compensa mais: depois de ${anios} anos você teria ${diferencia} a mais.`,
+    convieneAlquilar: (anios, diferencia) => `Alugar compensa mais: depois de ${anios} anos você teria ${diferencia} a mais.`,
+    empate: (anios) => `Depois de ${anios} anos as duas opções dão o mesmo resultado.`,
+    observacionDesde: (anio) => `Comprar passa à frente de alugar no ano ${anio} e continua na frente.`,
+    observacionMetodo:
+      "A conta compara o patrimônio que você teria em cada caso. Se alugar, a entrada e o que sobrar a cada mês ficam investidos. Os custos de uma venda futura não são descontados.",
+  }),
+};
