@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const cuenta = montoEjemplo(ctx, 60);
@@ -21,7 +21,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
     faq: [
       {
         pregunta: "Quanto devo dar de gorjeta?",
-        respuesta: `Depende do costume local. Veja o que é comum em ${ctx.nombrePais} e confira se a conta já traz a taxa de serviço.`,
+        respuesta: "Depende do costume do lugar. Veja o que é comum onde você está e confira se a conta já traz a taxa de serviço.",
       },
       {
         pregunta: "A taxa de serviço é obrigatória?",
@@ -31,7 +31,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
       },
       {
         pregunta: "Como calcular 10% de gorjeta de cabeça?",
-        respuesta: "Ande com a vírgula uma casa para a esquerda. Numa conta de 85, a gorjeta é 8,50.",
+        respuesta: `Ande com a vírgula uma casa para a esquerda. Numa conta de 85, a gorjeta é ${formatearNumero(ctx, 8.5, 2)}.`,
       },
     ],
     glosario: [

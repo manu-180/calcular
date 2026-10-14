@@ -10,7 +10,10 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const a3 = comparar({ ...base, horizonte: 3 }).anios[2];
   const pt = ctx.locale === "pt-PT";
   const alugar = pt ? "arrendar" : "alugar";
-  const aluguel = pt ? "renda" : "aluguel";
+  const oAluguel = pt ? "a renda" : "o aluguel";
+  const umAluguel = pt ? "uma renda" : "um aluguel";
+  const parcela = pt ? "a prestação" : "a parcela";
+  const patrimonio = pt ? "património" : "patrimônio";
   const quien = (a: { comprar: number; alquilar: number }) => (a.comprar >= a.alquilar ? "comprar" : alugar);
   return {
     h1: pt ? "Arrendar ou comprar casa?" : "Alugar ou comprar imóvel?",
@@ -19,17 +22,17 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
       : tituloQueEntre(`Alugar ou comprar imóvel: calculadora (${ctx.nombrePais})`, "Alugar ou comprar imóvel: calculadora", "Alugar ou comprar imóvel"),
     description: `Compare ${alugar} e comprar um imóvel nos anos que você escolher. Veja qual opção deixa você em melhor situação, a partir de quando e por quanto.`,
     intro: [
-      `Comparar a parcela com o ${aluguel} não basta. Quem compra paga juros, manutenção e impostos, mas fica com o imóvel. Quem ${pt ? "arrenda" : "aluga"} pode deixar a entrada investida.`,
-      "Esta calculadora soma tudo isso ano a ano e mostra qual opção deixa você com mais patrimônio.",
+      `Comparar ${parcela} com ${oAluguel} não basta. Quem compra paga juros, manutenção e impostos, mas fica com o imóvel. Quem ${pt ? "arrenda" : "aluga"} pode deixar a entrada investida.`,
+      `Esta calculadora soma tudo isso ano a ano e mostra qual opção deixa você com mais ${patrimonio}.`,
     ],
     comoSeCalcula: [
-      "Comprando: todo mês você paga o financiamento e os gastos de proprietário. O seu patrimônio é o valor do imóvel menos o que ainda deve.",
-      `${pt ? "Arrendando" : "Alugando"}: a entrada e os custos de compra ficam investidos com o rendimento alternativo, e o ${aluguel} sobe todo ano.`,
+      `Comprando: todo mês você paga o financiamento e os gastos de proprietário. O seu ${patrimonio} é o valor do imóvel menos o que ainda deve.`,
+      `${pt ? "Arrendando" : "Alugando"}: a entrada e os custos de compra ficam investidos com o rendimento alternativo, e ${oAluguel} sobe todo ano.`,
       "A cada mês, quem gasta menos investe a diferença, assim as duas opções saem do mesmo orçamento.",
-      "A melhor opção é a que termina com mais patrimônio.",
+      `A melhor opção é a que termina com mais ${patrimonio}.`,
     ],
     ejemplo: [
-      `Um imóvel de ${m(precio)} com 20% de entrada e financiamento a 7% ao ano em 25 anos, contra um ${aluguel} de ${m(alquiler)} por mês.`,
+      `Um imóvel de ${m(precio)} com 20% de entrada e financiamento a 7% ao ano em 25 anos, contra ${umAluguel} de ${m(alquiler)} por mês.`,
       `Em 10 anos, ${quien(a10)} sai na frente por ${m(Math.abs(a10.comprar - a10.alquilar))}. Em 3 anos, ${quien(a3)} sai na frente por ${m(Math.abs(a3.comprar - a3.alquilar))}.`,
     ],
     faq: [
@@ -43,11 +46,11 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
       },
       {
         pregunta: "Qual dado pesa mais?",
-        respuesta: `A relação entre o valor do imóvel e o ${aluguel}, a taxa do financiamento e quanto os imóveis se valorizam. Mude a valorização e o rendimento do investimento para ver quanto a resposta muda.`,
+        respuesta: `A relação entre o valor do imóvel e ${oAluguel}, a taxa do financiamento e quanto os imóveis se valorizam. Mude a valorização e o rendimento do investimento para ver quanto a resposta muda.`,
       },
     ],
     glosario: [
-      { termino: "Patrimônio", definicion: "O que você tem menos o que deve." },
+      { termino: pt ? "Património" : "Patrimônio", definicion: "O que você tem menos o que deve." },
       { termino: "Valorização", definicion: "Quanto o valor do imóvel sobe a cada ano." },
       { termino: "Custo de oportunidade", definicion: "O que a entrada teria rendido se você a investisse." },
     ],

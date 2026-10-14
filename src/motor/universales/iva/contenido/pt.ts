@@ -5,10 +5,10 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const precio = formatearMonto(ctx, montoEjemplo(ctx, 100));
   return {
     h1: `Calculadora de IVA (${ctx.nombrePais})`,
-    title: tituloQueEntre(`Calculadora de IVA (${tasa}) em ${ctx.nombrePais}`, `IVA (${tasa}) em ${ctx.nombrePais}`, `Calculadora de IVA (${tasa})`),
+    title: tituloQueEntre(`Calculadora de IVA de ${tasa} (${ctx.nombrePais})`, `IVA de ${tasa} (${ctx.nombrePais})`, `Calculadora de IVA (${tasa})`),
     description: `Some ou tire o IVA de ${tasa} de qualquer preço num passo só: o preço sem imposto, o imposto e o total, até o centavo.`,
     intro: [
-      `A taxa normal que esta calculadora usa para ${ctx.nombrePais} é de ${tasa}.`,
+      `Esta calculadora usa a taxa normal do país (${ctx.nombrePais}): ${tasa}.`,
       "Escolha se quer somar o imposto a um preço sem imposto ou tirá-lo de um preço que já o inclui, e depois coloque o valor.",
     ],
     comoSeCalcula: [
