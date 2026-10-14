@@ -1,0 +1,2341 @@
+{
+  "mercado": "fr",
+  "datos": [
+    {
+      "id": "fr.smic-horaire",
+      "nombre": "Smic horaire brut",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-05-31",
+          "valor": 12.02,
+          "motivo": "Montant du 1er janvier 2026 lu dans des communiqués repris par la presse. Les pages officielles consultées ne donnent plus que le montant en vigueur."
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 12.31,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Smic (salaire minimum interprofessionnel de croissance), fiche F2300",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2300",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants en vigueur depuis le 1er juin 2026 (arrêté du 22 mai 2026, JO du 24 mai 2026)."
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.smic-mensuel",
+      "nombre": "Smic mensuel brut sur 35 heures",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 1867.02,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Smic (salaire minimum interprofessionnel de croissance), fiche F2300",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2300",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants en vigueur depuis le 1er juin 2026 (arrêté du 22 mai 2026, JO du 24 mai 2026)."
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.pmss",
+      "nombre": "Plafond mensuel de la Sécurité sociale",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4005,
+          "fuente": {
+            "organismo": "Urssaf",
+            "titulo": "Plafonds de la Sécurité sociale 2026",
+            "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/plafonds-securite-sociale.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.pass",
+      "nombre": "Plafond annuel de la Sécurité sociale",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 48060,
+          "fuente": {
+            "organismo": "Urssaf",
+            "titulo": "Plafonds de la Sécurité sociale 2026",
+            "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/plafonds-securite-sociale.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.vieillesse-plafonnee",
+      "nombre": "Assurance vieillesse plafonnée, part salariale",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6.9,
+          "fuente": {
+            "organismo": "Urssaf",
+            "titulo": "Taux de cotisations, secteur privé (mis à jour le 1er janvier 2026)",
+            "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.vieillesse-deplafonnee",
+      "nombre": "Assurance vieillesse déplafonnée, part salariale",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.4,
+          "fuente": {
+            "organismo": "Urssaf",
+            "titulo": "Taux de cotisations, secteur privé (mis à jour le 1er janvier 2026)",
+            "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.csg-deductible",
+      "nombre": "CSG déductible",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6.8,
+          "fuente": {
+            "organismo": "Urssaf",
+            "titulo": "Taux de cotisations, secteur privé (mis à jour le 1er janvier 2026)",
+            "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.csg-non-deductible",
+      "nombre": "CSG non déductible (imposable)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.4,
+          "fuente": {
+            "organismo": "Urssaf",
+            "titulo": "Taux de cotisations, secteur privé (mis à jour le 1er janvier 2026)",
+            "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.crds",
+      "nombre": "CRDS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Urssaf",
+            "titulo": "Taux de cotisations, secteur privé (mis à jour le 1er janvier 2026)",
+            "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.assiette-csg",
+      "nombre": "Assiette de la CSG et de la CRDS (part du brut, jusqu'à 4 plafonds)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 98.25,
+          "fuente": {
+            "organismo": "Urssaf",
+            "titulo": "Taux de cotisations, secteur privé (mis à jour le 1er janvier 2026)",
+            "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.maladie-alsace-moselle",
+      "nombre": "Cotisation maladie supplémentaire d'Alsace-Moselle",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.3,
+          "fuente": {
+            "organismo": "Urssaf",
+            "titulo": "Taux de cotisations, secteur privé (mis à jour le 1er janvier 2026)",
+            "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.agirc-arrco-t1",
+      "nombre": "Retraite complémentaire Agirc-Arrco tranche 1, part salariale",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3.15,
+          "fuente": {
+            "organismo": "Agirc-Arrco",
+            "titulo": "Cotisations au régime Agirc-Arrco en 2026",
+            "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.agirc-arrco-t2",
+      "nombre": "Retraite complémentaire Agirc-Arrco tranche 2, part salariale",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8.64,
+          "fuente": {
+            "organismo": "Agirc-Arrco",
+            "titulo": "Cotisations au régime Agirc-Arrco en 2026",
+            "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.ceg-t1",
+      "nombre": "Contribution d'équilibre général tranche 1, part salariale",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.86,
+          "fuente": {
+            "organismo": "Agirc-Arrco",
+            "titulo": "Cotisations au régime Agirc-Arrco en 2026",
+            "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.ceg-t2",
+      "nombre": "Contribution d'équilibre général tranche 2, part salariale",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.08,
+          "fuente": {
+            "organismo": "Agirc-Arrco",
+            "titulo": "Cotisations au régime Agirc-Arrco en 2026",
+            "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.cet",
+      "nombre": "Contribution d'équilibre technique, part salariale",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.14,
+          "fuente": {
+            "organismo": "Agirc-Arrco",
+            "titulo": "Cotisations au régime Agirc-Arrco en 2026",
+            "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.apec",
+      "nombre": "Cotisation Apec des cadres, part salariale",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.024,
+          "fuente": {
+            "organismo": "Agirc-Arrco",
+            "titulo": "Cotisations au régime Agirc-Arrco en 2026",
+            "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.bareme-ir",
+      "nombre": "Barème progressif de l'impôt sur le revenu (revenus 2025)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 11600,
+              "tasa": 0
+            },
+            {
+              "desde": 11600,
+              "hasta": 29579,
+              "tasa": 11
+            },
+            {
+              "desde": 29579,
+              "hasta": 84577,
+              "tasa": 30
+            },
+            {
+              "desde": 84577,
+              "hasta": 181917,
+              "tasa": 41
+            },
+            {
+              "desde": 181917,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Barème de l'impôt sur le revenu, fiche F1419 (revenus de 2025)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1419",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.plafond-demi-part",
+      "nombre": "Plafond de l'avantage par demi-part de quotient familial",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1807,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Barème de l'impôt sur le revenu, fiche F1419 (revenus de 2025)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1419",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.plafond-parent-isole",
+      "nombre": "Plafond de l'avantage pour le premier enfant d'un parent isolé",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4262,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Barème de l'impôt sur le revenu, fiche F1419 (revenus de 2025)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1419",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.decote-forfait-seul",
+      "nombre": "Décote : montant de référence pour une personne seule",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 897,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Impôt sur le revenu : calcul de l'impôt, fiche F34328 (décote)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34328",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.decote-forfait-couple",
+      "nombre": "Décote : montant de référence pour un couple",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1483,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Impôt sur le revenu : calcul de l'impôt, fiche F34328 (décote)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34328",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.decote-seuil-seul",
+      "nombre": "Décote : impôt brut maximal pour une personne seule",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1982,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Impôt sur le revenu : calcul de l'impôt, fiche F34328 (décote)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34328",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.decote-seuil-couple",
+      "nombre": "Décote : impôt brut maximal pour un couple",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3277,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Impôt sur le revenu : calcul de l'impôt, fiche F34328 (décote)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34328",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.decote-taux",
+      "nombre": "Décote : taux appliqué à l'impôt brut",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 45.25,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Impôt sur le revenu : calcul de l'impôt, fiche F34328 (décote)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34328",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.seuil-recouvrement",
+      "nombre": "Impôt minimal mis en recouvrement",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 61,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Impôt sur le revenu : calcul de l'impôt, fiche F34328 (décote)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34328",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-frais-taux",
+      "nombre": "Déduction forfaitaire pour frais professionnels",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Frais professionnels : forfait ou frais réels, fiche F1989",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1989",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-frais-min",
+      "nombre": "Déduction forfaitaire de 10 % : minimum par personne",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 509,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Frais professionnels : forfait ou frais réels, fiche F1989",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1989",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.abattement-frais-max",
+      "nombre": "Déduction forfaitaire de 10 % : maximum par personne",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14555,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Frais professionnels : forfait ou frais réels, fiche F1989",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1989",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.pas-grille-metropole",
+      "nombre": "Prélèvement à la source : grille des taux par défaut (métropole)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1634.99,
+              "tasa": 0
+            },
+            {
+              "desde": 1635,
+              "hasta": 1697.99,
+              "tasa": 0.5
+            },
+            {
+              "desde": 1698,
+              "hasta": 1806.99,
+              "tasa": 1.3
+            },
+            {
+              "desde": 1807,
+              "hasta": 1927.99,
+              "tasa": 2.1
+            },
+            {
+              "desde": 1928,
+              "hasta": 2059.99,
+              "tasa": 2.9
+            },
+            {
+              "desde": 2060,
+              "hasta": 2169.99,
+              "tasa": 3.5
+            },
+            {
+              "desde": 2170,
+              "hasta": 2314.99,
+              "tasa": 4.1
+            },
+            {
+              "desde": 2315,
+              "hasta": 2737.99,
+              "tasa": 5.3
+            },
+            {
+              "desde": 2738,
+              "hasta": 3134.99,
+              "tasa": 7.5
+            },
+            {
+              "desde": 3135,
+              "hasta": 3570.99,
+              "tasa": 9.9
+            },
+            {
+              "desde": 3571,
+              "hasta": 4018.99,
+              "tasa": 11.9
+            },
+            {
+              "desde": 4019,
+              "hasta": 4689.99,
+              "tasa": 13.8
+            },
+            {
+              "desde": 4690,
+              "hasta": 5623.99,
+              "tasa": 15.8
+            },
+            {
+              "desde": 5624,
+              "hasta": 7036.99,
+              "tasa": 17.9
+            },
+            {
+              "desde": 7037,
+              "hasta": 8788.99,
+              "tasa": 20
+            },
+            {
+              "desde": 8789,
+              "hasta": 12199.99,
+              "tasa": 24
+            },
+            {
+              "desde": 12200,
+              "hasta": 16522.99,
+              "tasa": 28
+            },
+            {
+              "desde": 16523,
+              "hasta": 25936.99,
+              "tasa": 33
+            },
+            {
+              "desde": 25937,
+              "hasta": 55557.99,
+              "tasa": 38
+            },
+            {
+              "desde": 55558,
+              "hasta": null,
+              "tasa": 43
+            }
+          ],
+          "fuente": {
+            "organismo": "DGFiP (BOFiP-Impôts)",
+            "titulo": "BOI-BAREME-000037 : grilles des taux par défaut du prélèvement à la source, à compter du 1er mai 2026",
+            "url": "https://bofip.impots.gouv.fr/bofip/11255-PGP.html/identifiant=BOI-BAREME-000037-20260706",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.hs-majoration-1",
+      "nombre": "Majoration des 8 premières heures supplémentaires",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Heures supplémentaires d'un salarié du secteur privé, fiche F2391",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2391",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.hs-majoration-2",
+      "nombre": "Majoration des heures supplémentaires suivantes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Heures supplémentaires d'un salarié du secteur privé, fiche F2391",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2391",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.hs-heures-tranche-1",
+      "nombre": "Heures supplémentaires majorées au premier taux, par semaine",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Heures supplémentaires d'un salarié du secteur privé, fiche F2391",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2391",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.hs-reduction-salariale",
+      "nombre": "Réduction maximale des cotisations salariales sur les heures supplémentaires",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 11.31,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Heures supplémentaires d'un salarié du secteur privé, fiche F2391",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2391",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.hs-exoneration-ir",
+      "nombre": "Plafond annuel d'exonération d'impôt des heures supplémentaires",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7500,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Heures supplémentaires d'un salarié du secteur privé, fiche F2391",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2391",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.cp-jours-par-mois",
+      "nombre": "Congés payés acquis par mois de travail effectif",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Congés payés du salarié dans le secteur privé, fiche F2258",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2258",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.cp-jours-max",
+      "nombre": "Congés payés par année complète (jours ouvrables)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Congés payés du salarié dans le secteur privé, fiche F2258",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2258",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.cp-dixieme",
+      "nombre": "Indemnité de congés payés, règle du dixième",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Comment est calculée l'indemnité de congés payés, fiche F33359",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33359",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.lic-anciennete-min",
+      "nombre": "Ancienneté minimale pour l'indemnité légale de licenciement",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Indemnité de licenciement du salarié en CDI, fiche F987",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F987",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.lic-diviseur-1",
+      "nombre": "Indemnité légale : fraction de mois par année jusqu'à 10 ans (diviseur)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Indemnité de licenciement du salarié en CDI, fiche F987",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F987",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.lic-diviseur-2",
+      "nombre": "Indemnité légale : fraction de mois par année après 10 ans (diviseur)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Indemnité de licenciement du salarié en CDI, fiche F987",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F987",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.lic-seuil-annees",
+      "nombre": "Indemnité légale : années au premier taux",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Indemnité de licenciement du salarié en CDI, fiche F987",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F987",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.exo-indemnite-ir-max",
+      "nombre": "Plafond d'exonération d'impôt des indemnités de rupture versées en 2026",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 288360,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Indemnité de licenciement du salarié en CDI, fiche F987",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F987",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.exo-indemnite-social-max",
+      "nombre": "Plafond d'exonération de cotisations des indemnités de rupture",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 96120,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Indemnité de licenciement du salarié en CDI, fiche F987",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F987",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.preavis-moins-2-ans",
+      "nombre": "Préavis de licenciement entre 6 mois et 2 ans d'ancienneté",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Préavis de licenciement d'un salarié, fiche F2855",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2855",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.preavis-2-ans",
+      "nombre": "Préavis de licenciement à partir de 2 ans d'ancienneté",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Préavis de licenciement d'un salarié, fiche F2855",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2855",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.preavis-handicap-max",
+      "nombre": "Préavis maximal d'un travailleur handicapé",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Préavis de licenciement d'un salarié, fiche F2855",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2855",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.cdd-indemnite-fin",
+      "nombre": "Indemnité de fin de CDD",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Fin d'un contrat à durée déterminée (CDD), fiche F40",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F40",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.cdd-indemnite-fin-reduite",
+      "nombre": "Indemnité de fin de CDD réduite par convention collective",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Fin d'un contrat à durée déterminée (CDD), fiche F40",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F40",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.cdd-conges",
+      "nombre": "Indemnité compensatrice de congés payés en fin de CDD (minimum)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Le salarié a-t-il droit à des congés payés pendant un CDD, fiche F2931",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2931",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.micro-cotisations",
+      "nombre": "Cotisations sociales du micro-entrepreneur",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vente": "Vente de marchandises, fourniture de logement",
+        "services": "Prestations de services commerciales ou artisanales (BIC)",
+        "liberal": "Activité libérale non réglementée (BNC)",
+        "cipav": "Activité libérale réglementée relevant de la Cipav"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vente": 12.3,
+            "services": 21.2,
+            "liberal": 25.6,
+            "cipav": 23.2
+          },
+          "fuente": {
+            "organismo": "Entreprendre.Service-Public.fr (DILA)",
+            "titulo": "Cotisations sociales d'un micro-entrepreneur, fiche F36232",
+            "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F36232",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Le taux du versement libératoire est la différence entre le taux global avec option et le taux des cotisations."
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.micro-versement-liberatoire",
+      "nombre": "Versement libératoire de l'impôt sur le revenu",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vente": "Vente de marchandises, fourniture de logement",
+        "services": "Prestations de services commerciales ou artisanales (BIC)",
+        "liberal": "Activité libérale non réglementée (BNC)",
+        "cipav": "Activité libérale réglementée relevant de la Cipav"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vente": 1.0,
+            "services": 1.7,
+            "liberal": 2.2,
+            "cipav": 2.2
+          },
+          "fuente": {
+            "organismo": "Entreprendre.Service-Public.fr (DILA)",
+            "titulo": "Cotisations sociales d'un micro-entrepreneur, fiche F36232",
+            "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F36232",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Le taux du versement libératoire est la différence entre le taux global avec option et le taux des cotisations."
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.af-montant-1",
+      "nombre": "Allocations familiales, ressources jusqu'au premier plafond",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "e2": "2 enfants",
+        "e3": "3 enfants",
+        "e4": "4 enfants"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": {
+            "e2": 152.25,
+            "e3": 347.32,
+            "e4": 542.39
+          },
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocations familiales (famille de 2 enfants ou plus), fiche F13213",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+          }
+        }
+      ],
+      "proximaRevision": "2027-04-01"
+    },
+    {
+      "id": "fr.af-montant-2",
+      "nombre": "Allocations familiales, ressources entre les deux plafonds",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "e2": "2 enfants",
+        "e3": "3 enfants",
+        "e4": "4 enfants"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": {
+            "e2": 76.13,
+            "e3": 173.67,
+            "e4": 271.2
+          },
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocations familiales (famille de 2 enfants ou plus), fiche F13213",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+          }
+        }
+      ],
+      "proximaRevision": "2027-04-01"
+    },
+    {
+      "id": "fr.af-montant-3",
+      "nombre": "Allocations familiales, ressources au-dessus du second plafond",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "e2": "2 enfants",
+        "e3": "3 enfants",
+        "e4": "4 enfants"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": {
+            "e2": 38.07,
+            "e3": 86.83,
+            "e4": 135.6
+          },
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocations familiales (famille de 2 enfants ou plus), fiche F13213",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+          }
+        }
+      ],
+      "proximaRevision": "2027-04-01"
+    },
+    {
+      "id": "fr.af-majoration",
+      "nombre": "Majoration pour âge par enfant",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "t1": "Jusqu'au premier plafond",
+        "t2": "Entre les deux plafonds",
+        "t3": "Au-dessus du second plafond"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": {
+            "t1": 76.13,
+            "t2": 38.07,
+            "t3": 19.03
+          },
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocations familiales (famille de 2 enfants ou plus), fiche F13213",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+          }
+        }
+      ],
+      "proximaRevision": "2027-04-01"
+    },
+    {
+      "id": "fr.af-plafond-1",
+      "nombre": "Allocations familiales : premier plafond de ressources",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "e2": "2 enfants",
+        "e3": "3 enfants",
+        "e4": "4 enfants"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": {
+            "e2": 79980,
+            "e3": 86644,
+            "e4": 93308
+          },
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocations familiales (famille de 2 enfants ou plus), fiche F13213",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.af-plafond-2",
+      "nombre": "Allocations familiales : second plafond de ressources",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "e2": "2 enfants",
+        "e3": "3 enfants",
+        "e4": "4 enfants"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": {
+            "e2": 106604,
+            "e3": 113268,
+            "e4": 119932
+          },
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocations familiales (famille de 2 enfants ou plus), fiche F13213",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.tva-normal",
+      "nombre": "TVA, taux normal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Fiscalité des entreprises : taux de TVA en France",
+            "url": "https://www.impots.gouv.fr/international-professionnel/fiscalite-des-entreprises",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.tva-intermediaire",
+      "nombre": "TVA, taux intermédiaire",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Fiscalité des entreprises : taux de TVA en France",
+            "url": "https://www.impots.gouv.fr/international-professionnel/fiscalite-des-entreprises",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.tva-reduit",
+      "nombre": "TVA, taux réduit",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5.5,
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Fiscalité des entreprises : taux de TVA en France",
+            "url": "https://www.impots.gouv.fr/international-professionnel/fiscalite-des-entreprises",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.tva-particulier",
+      "nombre": "TVA, taux particulier",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.1,
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Fiscalité des entreprises : taux de TVA en France",
+            "url": "https://www.impots.gouv.fr/international-professionnel/fiscalite-des-entreprises",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.bk-jusqua-5000",
+      "nombre": "Barème kilométrique : coefficient jusqu'à 5 000 km",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "cv3": "3 CV et moins",
+        "cv4": "4 CV",
+        "cv5": "5 CV",
+        "cv6": "6 CV",
+        "cv7": "7 CV et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "cv3": 0.529,
+            "cv4": 0.606,
+            "cv5": 0.636,
+            "cv6": 0.665,
+            "cv7": 0.697
+          },
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Notice 2041-NOT de la déclaration des revenus 2025 : barème 2025, autres véhicules thermiques",
+            "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.bk-5001-20000-coef",
+      "nombre": "Barème kilométrique : coefficient de 5 001 à 20 000 km",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "cv3": "3 CV et moins",
+        "cv4": "4 CV",
+        "cv5": "5 CV",
+        "cv6": "6 CV",
+        "cv7": "7 CV et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "cv3": 0.316,
+            "cv4": 0.34,
+            "cv5": 0.357,
+            "cv6": 0.374,
+            "cv7": 0.394
+          },
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Notice 2041-NOT de la déclaration des revenus 2025 : barème 2025, autres véhicules thermiques",
+            "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.bk-5001-20000-fixe",
+      "nombre": "Barème kilométrique : montant fixe de 5 001 à 20 000 km",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "cv3": "3 CV et moins",
+        "cv4": "4 CV",
+        "cv5": "5 CV",
+        "cv6": "6 CV",
+        "cv7": "7 CV et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "cv3": 1065,
+            "cv4": 1330,
+            "cv5": 1395,
+            "cv6": 1457,
+            "cv7": 1515
+          },
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Notice 2041-NOT de la déclaration des revenus 2025 : barème 2025, autres véhicules thermiques",
+            "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.bk-plus-20000",
+      "nombre": "Barème kilométrique : coefficient au-delà de 20 000 km",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "cv3": "3 CV et moins",
+        "cv4": "4 CV",
+        "cv5": "5 CV",
+        "cv6": "6 CV",
+        "cv7": "7 CV et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "cv3": 0.37,
+            "cv4": 0.407,
+            "cv5": 0.427,
+            "cv6": 0.447,
+            "cv7": 0.47
+          },
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Notice 2041-NOT de la déclaration des revenus 2025 : barème 2025, autres véhicules thermiques",
+            "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.bk-majoration-electrique",
+      "nombre": "Majoration du barème kilométrique pour un véhicule électrique",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "DGFiP (BOFiP-Impôts)",
+            "titulo": "BOI-BAREME-000001 : majoration de 20 % pour les véhicules électriques",
+            "url": "https://bofip.impots.gouv.fr/bofip/2185-PGP.html/identifiant=BOI-BAREME-000001-20230720",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.droits-ligne-directe",
+      "nombre": "Droits de succession et de donation en ligne directe",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 8072,
+              "tasa": 5
+            },
+            {
+              "desde": 8072,
+              "hasta": 12109,
+              "tasa": 10
+            },
+            {
+              "desde": 12109,
+              "hasta": 15932,
+              "tasa": 15
+            },
+            {
+              "desde": 15932,
+              "hasta": 552324,
+              "tasa": 20
+            },
+            {
+              "desde": 552324,
+              "hasta": 902838,
+              "tasa": 30
+            },
+            {
+              "desde": 902838,
+              "hasta": 1805677,
+              "tasa": 40
+            },
+            {
+              "desde": 1805677,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits de succession : évaluation et calcul des droits, fiche F14198",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14198",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.droits-freres-soeurs",
+      "nombre": "Droits de succession et de donation entre frères et sœurs",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 24430,
+              "tasa": 35
+            },
+            {
+              "desde": 24430,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits de succession : évaluation et calcul des droits, fiche F14198",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14198",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.droits-epoux-donation",
+      "nombre": "Droits de donation entre époux ou partenaires de Pacs",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 8072,
+              "tasa": 5
+            },
+            {
+              "desde": 8072,
+              "hasta": 15932,
+              "tasa": 10
+            },
+            {
+              "desde": 15932,
+              "hasta": 31865,
+              "tasa": 15
+            },
+            {
+              "desde": 31865,
+              "hasta": 552324,
+              "tasa": 20
+            },
+            {
+              "desde": 552324,
+              "hasta": 902838,
+              "tasa": 30
+            },
+            {
+              "desde": 902838,
+              "hasta": 1805677,
+              "tasa": 40
+            },
+            {
+              "desde": 1805677,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits à payer sur une donation selon le lien avec le donateur, fiche F14203",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14203",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.droits-4e-degre",
+      "nombre": "Droits entre parents jusqu'au 4e degré (neveux, nièces, cousins)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 55,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits de succession : évaluation et calcul des droits, fiche F14198",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14198",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.droits-non-parents",
+      "nombre": "Droits entre parents au-delà du 4e degré ou non-parents",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits de succession : évaluation et calcul des droits, fiche F14198",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14198",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-ligne-directe",
+      "nombre": "Abattement entre parent et enfant",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits de succession : évaluation et calcul des droits, fiche F14198",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14198",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-freres-soeurs",
+      "nombre": "Abattement entre frères et sœurs",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15932,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits de succession : évaluation et calcul des droits, fiche F14198",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14198",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-neveux",
+      "nombre": "Abattement des neveux et nièces",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7967,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits de succession : évaluation et calcul des droits, fiche F14198",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14198",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-succession-defaut",
+      "nombre": "Abattement de succession à défaut d'autre abattement",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1594,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits de succession : évaluation et calcul des droits, fiche F14198",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14198",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-handicap",
+      "nombre": "Abattement pour une personne en situation de handicap",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 159325,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits de succession : évaluation et calcul des droits, fiche F14198",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14198",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-don-petit-enfant",
+      "nombre": "Abattement sur une donation à un petit-enfant",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 31865,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits à payer sur une donation selon le lien avec le donateur, fiche F14203",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14203",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-don-arriere-petit-enfant",
+      "nombre": "Abattement sur une donation à un arrière-petit-enfant",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5310,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits à payer sur une donation selon le lien avec le donateur, fiche F14203",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14203",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.abattement-don-epoux",
+      "nombre": "Abattement sur une donation entre époux ou partenaires de Pacs",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80724,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Droits à payer sur une donation selon le lien avec le donateur, fiche F14203",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14203",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.ij-taux",
+      "nombre": "Indemnités journalières maladie : part du salaire journalier de base",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Arrêt maladie : indemnités journalières versées au salarié, fiche F3053",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3053",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.ij-diviseur",
+      "nombre": "Indemnités journalières : diviseur des 3 derniers salaires",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 91.25,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Arrêt maladie : indemnités journalières versées au salarié, fiche F3053",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3053",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.ij-plafond-smic",
+      "nombre": "Indemnités journalières : plafond du salaire en nombre de Smic",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.4,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Arrêt maladie : indemnités journalières versées au salarié, fiche F3053",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3053",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.ij-maximum",
+      "nombre": "Indemnité journalière maladie maximale",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 42.97,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Arrêt maladie : indemnités journalières versées au salarié, fiche F3053",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3053",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "fr.ij-carence",
+      "nombre": "Délai de carence des indemnités journalières",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Arrêt maladie : indemnités journalières versées au salarié, fiche F3053",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3053",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.are-partie-fixe",
+      "nombre": "ARE : partie fixe journalière",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 13.18,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocation chômage d'aide au retour à l'emploi (ARE), fiche F14860",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants de juillet 2025, maintenus au 1er juillet 2026 faute de revalorisation."
+          }
+        }
+      ],
+      "proximaRevision": "2027-07-01"
+    },
+    {
+      "id": "fr.are-taux-variable",
+      "nombre": "ARE : partie variable (part du SJR)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 40.4,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocation chômage d'aide au retour à l'emploi (ARE), fiche F14860",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants de juillet 2025, maintenus au 1er juillet 2026 faute de revalorisation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.are-taux-minimum",
+      "nombre": "ARE : plancher en part du SJR",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 57,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocation chômage d'aide au retour à l'emploi (ARE), fiche F14860",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants de juillet 2025, maintenus au 1er juillet 2026 faute de revalorisation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.are-taux-maximum",
+      "nombre": "ARE : plafond en part du SJR",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocation chômage d'aide au retour à l'emploi (ARE), fiche F14860",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants de juillet 2025, maintenus au 1er juillet 2026 faute de revalorisation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.are-minimum",
+      "nombre": "ARE : montant journalier minimal",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 32.13,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocation chômage d'aide au retour à l'emploi (ARE), fiche F14860",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants de juillet 2025, maintenus au 1er juillet 2026 faute de revalorisation."
+          }
+        }
+      ],
+      "proximaRevision": "2027-07-01"
+    },
+    {
+      "id": "fr.are-retraite",
+      "nombre": "ARE : prélèvement pour la retraite complémentaire (part du SJR)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocation chômage d'aide au retour à l'emploi (ARE), fiche F14860",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants de juillet 2025, maintenus au 1er juillet 2026 faute de revalorisation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.are-seuil-degressivite",
+      "nombre": "ARE : salaire journalier au-delà duquel s'applique la dégressivité",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 159.68,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocation chômage d'aide au retour à l'emploi (ARE), fiche F14860",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants de juillet 2025, maintenus au 1er juillet 2026 faute de revalorisation."
+          }
+        }
+      ],
+      "proximaRevision": "2027-07-01"
+    },
+    {
+      "id": "fr.are-plancher-degressivite",
+      "nombre": "ARE : plancher après dégressivité",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 92.57,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocation chômage d'aide au retour à l'emploi (ARE), fiche F14860",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants de juillet 2025, maintenus au 1er juillet 2026 faute de revalorisation."
+          }
+        }
+      ],
+      "proximaRevision": "2027-07-01"
+    },
+    {
+      "id": "fr.are-degressivite",
+      "nombre": "ARE : réduction à partir du 7e mois",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Allocation chômage d'aide au retour à l'emploi (ARE), fiche F14860",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14860",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Montants de juillet 2025, maintenus au 1er juillet 2026 faute de revalorisation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fr.livret-a-taux",
+      "nombre": "Taux du livret A",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "hasta": "2026-07-31",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Livret A et LEP : évolution des taux au 1er août 2026 (actualité A18000)",
+            "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": 1.7,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Livret A et LEP : évolution des taux au 1er août 2026 (actualité A18000)",
+            "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-02-01"
+    },
+    {
+      "id": "fr.livret-a-plafond",
+      "nombre": "Plafond de dépôt du livret A",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 22950,
+          "fuente": {
+            "organismo": "Service-Public.fr (DILA, Premier ministre)",
+            "titulo": "Livret A, fiche F2365",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2365",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}
