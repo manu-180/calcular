@@ -1,3 +1,4 @@
+import { plata } from "@/lib/panel/formato";
 import type { EmbudoProducto, FilaPagina, Kpi, KpiClave, Lectura, PanelDatos, Rango } from "@/lib/panel/tipos";
 
 type Datos = Omit<PanelDatos, "lecturas">;
@@ -21,7 +22,9 @@ const CONTRA: Record<Rango, string> = {
 };
 
 const entero = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 0 });
-const pesos = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 });
+// Sólo para ordenar lecturas por plata en juego: un producto en dólares se pesa en pesos con un cambio
+// aproximado. No se muestra en ningún lado.
+const ARS_POR_USD_APROX = 1500;
 
 function n(valor: number): string {
   return entero.format(Math.round(valor));
@@ -50,7 +53,7 @@ function reglasEmbudo(datos: Datos): Candidata[] {
     const abrio = paso(e, "abrio_compra");
     const fue = paso(e, "fue_a_pagar");
     const pago = paso(e, "pago");
-    const precio = e.precio || PRECIO_REFERENCIA;
+    const precio = (e.moneda === "USD" ? e.precio * ARS_POR_USD_APROX : e.precio) || PRECIO_REFERENCIA;
     if (abrio >= 10 && fue / abrio <= 0.5) {
       const perdidos = abrio - fue;
       salida.push({
@@ -219,10 +222,10 @@ function reglasVariacion(datos: Datos): Candidata[] {
       id: "primeras-ventas",
       familia: "variacion",
       tono: "logro",
-      titulo: `Entraron ${ventas.valor === 1 ? "1 venta" : `${n(ventas.valor)} ventas`} por ${pesos.format(ingresos.valor)}`,
+      titulo: `Entraron ${ventas.valor === 1 ? "1 venta" : `${n(ventas.valor)} ventas`} por ${plata(ingresos.valor, datos.ingresos.moneda)}`,
       detalle: `En ${contra} no hubo ninguna. El embudo muestra por qué producto entraron.`,
       accion: { texto: "Ver el embudo", href: "#embudo" },
-      peso: ingresos.valor * 0.5,
+      peso: (datos.ingresos.moneda === "USD" ? ingresos.valor * ARS_POR_USD_APROX : ingresos.valor) * 0.5,
     });
   }
   return salida;

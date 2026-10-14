@@ -2,7 +2,7 @@ import "server-only";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { esTipoEvento, type TipoEvento } from "@/lib/rastreo";
 import { servicio } from "@/lib/supabase/servicio";
-import { esUuid, limpiarPath, limpiarProps, type FilaEvento } from "@/app/api/e/protocolo";
+import { esProducto, esUuid, limpiarPath, limpiarProps, type FilaEvento } from "@/app/api/e/protocolo";
 import { esMercadoIntl } from "@/lib/medicion/mercados";
 
 export type EventoServidor = {
@@ -22,7 +22,7 @@ export function filaEventoServidor(e: EventoServidor): FilaEvento | null {
   const path = e.path === undefined ? null : limpiarPath(e.path);
   const props = limpiarProps(e.props);
   if ((e.path !== undefined && !path) || props === undefined) return null;
-  if (e.producto !== undefined && !/^[a-z0-9-]{1,40}$/.test(e.producto)) return null;
+  if (e.producto !== undefined && !esProducto(e.producto)) return null;
   if (e.valor !== undefined && !(Number.isFinite(e.valor) && Math.abs(e.valor) <= 1e10)) return null;
   return {
     vid: esUuid(e.vid) ? e.vid.toLowerCase() : null,

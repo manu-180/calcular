@@ -2,17 +2,20 @@ import "server-only";
 import { servicio } from "@/lib/supabase/servicio";
 import { PAGINAS, tituloDeRuta } from "@/data/navegacion";
 import { CATALOGO, productoPorSlug } from "@/lib/mp";
-import { esMercadoMedido } from "@/lib/medicion/mercados";
+import { FORMA_MERCADO, MERCADO_AR, esMercadoIntl, esMercadoMedido, mercadoMedido } from "@/lib/medicion/mercados";
+import { catalogoIntl, type ProductoIntl } from "@/lib/pagos/catalogo-intl";
 import { generarLecturas } from "@/lib/panel/lecturas";
 import type {
   Busqueda,
   Compra,
   Cuentas,
+  EmbudoMercado,
   EmbudoProducto,
   EnVivo,
   FilaFuente,
   FilaMercado,
   FilaPagina,
+  Ingresos,
   Kpi,
   KpiClave,
   PanelDatos,
@@ -97,14 +100,34 @@ function productoDePagina(path: string, delSql: unknown): string | null {
   return slugCanonico(declarado ?? (typeof delSql === "string" ? delSql : null));
 }
 
-function armarPaginas(crudo: unknown): FilaPagina[] {
+function humanizar(segmento: string): string {
+  let texto = segmento;
+  try {
+    texto = decodeURIComponent(segmento);
+  } catch {}
+  texto = texto.replace(/-/g, " ").trim();
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+// Las páginas de calcularya son /<mercado>/<slug>: el título sale del slug y, mirando todos los
+// países juntos, lleva el país para no confundir /mx/aguinaldo con /aguinaldo de calcular.ar.
+export function tituloDePagina(path: string, filtro: string | null): string {
+  const [, primero = "", ...resto] = path.split("/");
+  if (!esMercadoIntl(primero)) return tituloDeRuta(path);
+  const nombre = mercadoMedido(primero)?.nombre ?? primero.toUpperCase();
+  const ultimo = resto.filter(Boolean).pop();
+  const titulo = ultimo ? humanizar(ultimo) : "Inicio";
+  return filtro ? titulo : `${titulo} · ${nombre}`;
+}
+
+function armarPaginas(crudo: unknown, filtro: string | null): FilaPagina[] {
   return lista(crudo, "paginas").map((p) => {
     const path = texto(p.path);
     const vistas = num(p.vistas);
     const usos = num(p.usos);
     return {
       path,
-      titulo: tituloDeRuta(path),
+      titulo: tituloDePagina(path, filtro),
       vistas,
       visitantes: num(p.visitantes),
       usos,
@@ -114,40 +137,98 @@ function armarPaginas(crudo: unknown): FilaPagina[] {
       interesCompra: num(p.interesCompra),
       checkouts: num(p.checkouts),
       ventas: num(p.ventas),
+      ofertas: num(p.ofertas),
+      ingresosUsd: num(p.ingresosUsd),
       producto: productoDePagina(path, p.producto),
       serieUsos: Array.isArray(p.serieUsos) ? p.serieUsos.map(num) : [],
     };
   });
 }
 
-// Siempre los cuatro productos del catálogo, aunque no tengan movimiento: un embudo que no
-// aparece se lee como "no existe", y uno en cero se lee como "no vende", que es lo cierto.
-function armarEmbudos(crudo: unknown): EmbudoProducto[] {
-  const acumulado = new Map<string, { pasos: Map<string, number>; ingresos: number }>();
+let porIdIntl: Map<string, ProductoIntl> | null = null;
+
+function productoIntlPorId(id: string): ProductoIntl | undefined {
+  porIdIntl ??= new Map(catalogoIntl().map((p) => [p.id, p]));
+  return porIdIntl.get(id);
+}
+
+// Siempre los productos del catálogo del mercado que se mira, aunque no tengan movimiento: un embudo
+// que no aparece se lee como "no existe", y uno en cero se lee como "no vende", que es lo cierto. En
+// Todos, el catálogo de calcular.ar y lo de calcularya que tuvo movimiento.
+function armarEmbudos(crudo: unknown, mercado: string | null): EmbudoProducto[] {
+  type Acumulado = { pasos: Map<string, number>; ingresos: number; ingresosUsd: number; moneda: string | null };
+  const acumulado = new Map<string, Acumulado>();
   for (const e of lista(crudo, "embudos")) {
     const slug = slugCanonico(texto(e.producto)) ?? texto(e.producto);
-    const actual = acumulado.get(slug) ?? { pasos: new Map<string, number>(), ingresos: 0 };
+    const actual: Acumulado = acumulado.get(slug) ?? { pasos: new Map<string, number>(), ingresos: 0, ingresosUsd: 0, moneda: null };
     for (const paso of lista(e.pasos ?? [], `embudos.${slug}.pasos`)) {
       const nombre = texto(paso.paso);
       actual.pasos.set(nombre, (actual.pasos.get(nombre) ?? 0) + num(paso.n));
     }
     actual.ingresos += num(e.ingresos);
+    actual.ingresosUsd += num(e.ingresosUsd);
+    if (typeof e.moneda === "string" && /^[A-Z]{3}$/.test(e.moneda)) actual.moneda = e.moneda;
     acumulado.set(slug, actual);
   }
-  const armar = (producto: string, titulo: string, precio: number): EmbudoProducto => {
+  const armar = (producto: string, titulo: string, precio: number, moneda: string, deMercado: string | null): EmbudoProducto => {
     const datos = acumulado.get(producto);
     return {
       producto,
       titulo,
+      mercado: deMercado,
+      moneda: datos?.moneda ?? moneda,
       precio,
       pasos: PASOS.map((paso) => ({ paso, n: datos?.pasos.get(paso) ?? 0 })),
       ingresos: datos?.ingresos ?? 0,
+      ingresosUsd: datos?.ingresosUsd ?? 0,
     };
   };
-  const delCatalogo = CATALOGO.map((p) => armar(p.slug, p.tituloCorto, p.precio));
-  const conocidos = new Set<string>(CATALOGO.map((p) => p.slug));
-  const otros = [...acumulado.keys()].filter((slug) => !conocidos.has(slug)).map((slug) => armar(slug, slug, 0));
-  return [...delCatalogo, ...otros];
+  const deIntl = (p: ProductoIntl) => {
+    const nombre = mercadoMedido(p.mercado)?.nombre ?? p.mercado.toUpperCase();
+    return armar(p.id, mercado ? p.tituloCorto : `${p.tituloCorto} · ${nombre}`, p.precioCentavos / 100, p.moneda, p.mercado);
+  };
+  const fijos =
+    mercado === null || mercado === MERCADO_AR.codigo
+      ? CATALOGO.map((p) => armar(p.slug, p.tituloCorto, p.precio, "ARS", null))
+      : catalogoIntl()
+          .filter((p) => p.mercado === mercado)
+          .map(deIntl);
+  const conocidos = new Set<string>(fijos.map((e) => e.producto));
+  const otros = [...acumulado.keys()]
+    .filter((id) => !conocidos.has(id))
+    .map((id) => {
+      const intl = productoIntlPorId(id);
+      return intl ? deIntl(intl) : armar(id, id, 0, "ARS", null);
+    });
+  return [...fijos, ...otros];
+}
+
+function armarIngresos(crudo: unknown, compras: Compra[]): Ingresos {
+  if (crudo === undefined) {
+    // ca_panel de antes de 20261014120000: el KPI viene en pesos y no hay desglose; se arma con las
+    // compras del período que trae la respuesta (hasta 50).
+    const porMoneda = new Map<string, { monto: number; ventas: number }>();
+    for (const c of compras.filter((x) => x.estado === "aprobado")) {
+      const a = porMoneda.get(c.moneda) ?? { monto: 0, ventas: 0 };
+      porMoneda.set(c.moneda, { monto: a.monto + c.monto, ventas: a.ventas + 1 });
+    }
+    return {
+      moneda: "ARS",
+      porMoneda: [...porMoneda].map(([moneda, a]) => ({ moneda, monto: a.monto, montoUsd: moneda === "USD" ? a.monto : null, ventas: a.ventas })),
+      sinCotizacion: 0,
+    };
+  }
+  const i = objeto(crudo, "ingresos");
+  return {
+    moneda: typeof i.moneda === "string" && /^[A-Z]{3}$/.test(i.moneda) ? i.moneda : "USD",
+    porMoneda: lista(i.porMoneda ?? [], "ingresos.porMoneda").map((x) => ({
+      moneda: texto(x.moneda),
+      monto: num(x.monto),
+      montoUsd: x.montoUsd === null || x.montoUsd === undefined ? null : num(x.montoUsd),
+      ventas: num(x.ventas),
+    })),
+    sinCotizacion: num(i.sinCotizacion),
+  };
 }
 
 function armarFuentes(crudo: unknown): FilaFuente[] {
@@ -172,6 +253,9 @@ function armarCompras(crudo: unknown): Compra[] {
       producto: slugCanonico(texto(c.producto)) ?? texto(c.producto),
       monto: num(c.monto),
       moneda: typeof c.moneda === "string" && /^[A-Z]{3}$/.test(c.moneda) ? c.moneda : "ARS",
+      montoUsd: c.montoUsd === null || c.montoUsd === undefined ? null : num(c.montoUsd),
+      pais: typeof c.pais === "string" && /^[A-Z]{2}$/.test(c.pais) ? c.pais : null,
+      mercado: typeof c.mercado === "string" && FORMA_MERCADO.test(c.mercado) ? c.mercado : null,
       emailEnmascarado: texto(c.emailEnmascarado),
       conCuenta: c.conCuenta === true,
       desde: typeof c.desde === "string" && c.desde ? c.desde : null,
@@ -199,35 +283,49 @@ function armarVivo(crudo: unknown): EnVivo {
 function armarMercados(crudo: unknown): FilaMercado[] | null {
   if (crudo === undefined) return null;
   return lista(crudo, "mercados")
-    .map((m) => ({
-      mercado: texto(m.mercado),
-      visitantes: num(m.visitantes),
-      usos: num(m.usos),
-      ventas: num(m.ventas),
-      ingresos: lista(m.ingresos ?? [], "mercados.ingresos").map((i) => ({ moneda: texto(i.moneda), monto: num(i.monto) })),
-    }))
-    .filter((m) => esMercadoMedido(m.mercado));
+    .map((m) => {
+      const ingresos = lista(m.ingresos ?? [], "mercados.ingresos").map((i) => ({ moneda: texto(i.moneda), monto: num(i.monto) }));
+      const embudo: EmbudoMercado | null =
+        m.usaron === undefined
+          ? null
+          : { visitas: num(m.visitantes), usaron: num(m.usaron), ofertas: num(m.ofertas), clics: num(m.clics), checkouts: num(m.checkouts), ventas: num(m.ventas) };
+      return {
+        mercado: texto(m.mercado),
+        visitantes: num(m.visitantes),
+        usos: num(m.usos),
+        ventas: num(m.ventas),
+        ingresos,
+        ingresosUsd:
+          m.ingresosUsd === undefined ? ingresos.filter((i) => i.moneda === "USD").reduce((a, i) => a + i.monto, 0) : num(m.ingresosUsd),
+        embudo,
+      };
+    })
+    .filter((m) => FORMA_MERCADO.test(m.mercado));
 }
 
 export function armarPanel(rango: Rango, desde: Date, hasta: Date, crudo: unknown, generado: Date = new Date()): PanelDatos {
   const r = objeto(crudo, "ca_panel");
   const granularidad = r.granularidad === "hora" ? "hora" : r.granularidad === "dia" ? "dia" : null;
   if (!granularidad) throw new Error("ca_panel devolvió un formato inesperado: falta la granularidad");
+  const mercado = typeof r.mercado === "string" && esMercadoMedido(r.mercado) ? r.mercado : null;
+  const compras = armarCompras(r.compras);
   const sinLecturas: Omit<PanelDatos, "lecturas"> = {
     rango,
-    mercado: typeof r.mercado === "string" && esMercadoMedido(r.mercado) ? r.mercado : null,
+    mercado,
     desde: desde.toISOString(),
     hasta: hasta.toISOString(),
     generado: generado.toISOString(),
     granularidad,
     kpis: armarKpis(r.kpis),
-    paginas: armarPaginas(r.paginas),
-    embudos: armarEmbudos(r.embudos),
+    ingresos: armarIngresos(r.ingresos, compras),
+    paginas: armarPaginas(r.paginas, mercado),
+    embudos: armarEmbudos(r.embudos, mercado),
     fuentes: armarFuentes(r.fuentes),
     dispositivos: reparto(r.dispositivos, "dispositivos"),
     paises: reparto(r.paises, "paises"),
+    paisesCompra: r.paisesCompra === undefined ? null : reparto(r.paisesCompra, "paisesCompra"),
     busquedas: armarBusquedas(r.busquedas),
-    compras: armarCompras(r.compras),
+    compras,
     cuentas: armarCuentas(r.cuentas),
     vivo: armarVivo(r.vivo),
     mercados: armarMercados(r.mercados),

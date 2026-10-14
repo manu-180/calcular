@@ -88,7 +88,9 @@ export async function POST(req: NextRequest) {
       email: sospechoso ? null : email,
       idempotencia: checkoutId,
     });
-    if (usuario || datos) {
+    // Siempre, no sólo con cuenta o datos: sin la fila no hay embudo ni atribución de la venta a la visita.
+    {
+      const pais = req.headers.get("x-vercel-ip-country");
       const tarea = async () => {
         const u = usuario ? await usuario : null;
         if (!process.env.SUPABASE_URL || !claveServicio()) {
@@ -103,6 +105,7 @@ export async function POST(req: NextRequest) {
             proveedor: proveedor.nombre,
             email: sospechoso ? null : email,
             vid: String(form.get("vid") ?? ""),
+            pais,
             userId: u?.id,
             ruta: String(form.get("ruta") ?? ""),
             datos,
