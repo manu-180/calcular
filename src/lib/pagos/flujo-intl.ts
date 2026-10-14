@@ -8,7 +8,7 @@ import { claveServicio, servicio } from "@/lib/supabase/servicio";
 import { MAIL_CONTACTO } from "@/motor/ui/Legales";
 import { rutaIntl } from "@/motor/seo";
 import { entornoDePrueba, origenIntl } from "@/motor/sitio";
-import type { CodigoMercado, Trato } from "@/motor/tipos";
+import type { CodigoMercado, Idioma, Trato } from "@/motor/tipos";
 import { registro } from "@/paises";
 import { leerReferenciaIntl, type ProductoIntl } from "./catalogo-intl";
 import { asuntoEntregaIntl, entregaIntlHtml, FROM_INTL } from "./email-intl";
@@ -38,6 +38,10 @@ export function origenesPermitidos(origenPedido: string): Set<string> {
 
 export function tratoDe(mercado: string): Trato {
   return registro.pais(mercado as CodigoMercado)?.mercado.trato ?? "tu";
+}
+
+export function idiomaDe(mercado: string): Idioma {
+  return registro.pais(mercado as CodigoMercado)?.mercado.idioma ?? "es";
 }
 
 export function rutaPlanillasIntl(mercado: string, resto?: string): string {
@@ -88,9 +92,10 @@ async function entregarPorEmail(pago: PagoVerificado, producto: ProductoIntl, em
     const ok = await sendSingle({
       from: FROM_INTL,
       to: [email],
-      subject: asuntoEntregaIntl(producto),
+      subject: asuntoEntregaIntl(producto, idiomaDe(producto.mercado), tratoDe(producto.mercado)),
       html: entregaIntlHtml({
         producto,
+        idioma: idiomaDe(producto.mercado),
         trato: tratoDe(producto.mercado),
         urlDescarga: `${origen}${rutaEntregaIntl(producto, pago.proveedor, pago.id)}`,
         urlLanding: `${origen}${rutaLandingIntl(producto)}`,

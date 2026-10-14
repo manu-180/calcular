@@ -3,16 +3,16 @@
 import { useEffect, useId, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { rastrear } from "@/lib/rastreo";
 import {
-  CEJA_INFORME,
-  COPY_PLANILLA,
-  TEXTOS_OFERTA,
+  avisoRespaldo,
   bajadaOferta,
-  familiaPorClave,
   leyendaDeCobro,
   precioUSD,
+  type CopyTarjeta,
   type OfertaPublica,
   type OfertasCalculadora,
   type OfertasMercado,
+  type TextosAviso,
+  type TextosTarjeta,
 } from "@/lib/pagos/ofertas-intl";
 import { olvidarDatosIntl, recordarDatosIntl } from "@/lib/prefill/intl-cliente";
 import type { DatosIntl } from "@/lib/prefill/intl";
@@ -26,7 +26,8 @@ import "./estilos-oferta.css";
 // el servidor por concepto (src/lib/pagos/ofertas-servidor.ts) y llega en un JSON por país que se
 // pide apenas carga la página, en un momento ocioso: cuando la persona aprieta Calcular la oferta ya
 // está y aparece junto con su número, sin esperar nada. El texto se arma acá con ese número, que es
-// lo que hace sentir que el producto es suyo.
+// lo que hace sentir que el producto es suyo. Los textos llegan en ese mismo JSON, ya en el idioma y
+// el trato del país: el navegador nunca carga los diccionarios de venta.
 
 const cache = new Map<string, Promise<OfertasMercado | null>>();
 
@@ -88,17 +89,32 @@ export function OfertaResultado({ calculadora, control, contexto }: { calculador
     for (const c of campos) if (c.tipo === "opcion-dato") dinamicas[c.id] = opciones(c);
     const p = parsearEntrada(campos, crudos, contexto, dinamicas);
     const datos = p.ok ? p.entrada : null;
+    const si = ofertas?.textos?.si ?? "";
+    const no = ofertas?.textos?.no ?? "";
     const textos = campos.map((c) => {
       const v = crudos[c.id];
-      const etiqueta = typeof v === "boolean" ? (v ? "Sí" : "No") : (opciones(c).find((o) => o.valor === v)?.etiqueta ?? String(v ?? ""));
+      const etiqueta = typeof v === "boolean" ? (v ? si : no) : (opciones(c).find((o) => o.valor === v)?.etiqueta ?? String(v ?? ""));
       return { etiqueta: c.etiqueta, valor: etiqueta };
     });
     return { filas: estado.filas, entrada: datos, textos };
-  }, [estado, crudos, campos, opciones, contexto]);
+  }, [estado, crudos, campos, opciones, contexto, ofertas]);
 
   const deEsta = ofertas?.porCalculadora[calculadora];
-  if (!caso || !deEsta || !deEsta.ofertas.length) return null;
-  return <Tarjeta key={deEsta.ofertas[0].producto} de={deEsta} activa={ofertas!.activa} referencia={ofertas!.referencia} caso={caso} contexto={contexto} />;
+  const textos = ofertas?.textos;
+  const copy = ofertas?.copy?.[deEsta?.ofertas[0]?.familia ?? ""];
+  if (!caso || !deEsta || !deEsta.ofertas.length || !textos || !copy) return null;
+  return (
+    <Tarjeta
+      key={deEsta.ofertas[0].producto}
+      de={deEsta}
+      activa={ofertas!.activa}
+      referencia={ofertas!.referencia}
+      caso={caso}
+      contexto={contexto}
+      textos={textos}
+      copy={copy}
+    />
+  );
 }
 
 function Tarjeta({
@@ -107,18 +123,21 @@ function Tarjeta({
   referencia,
   caso,
   contexto,
+  textos,
+  copy,
 }: {
   de: OfertasCalculadora;
   activa: boolean;
   referencia: OfertasMercado["referencia"];
   caso: { filas: readonly FilaFormateada[]; entrada: DatosIntl["entrada"] | null; textos: { etiqueta: string; valor: string }[] };
   contexto: ContextoSerializado;
+  textos: TextosTarjeta;
+  copy: CopyTarjeta;
 }) {
-  const t = contexto.trato;
   const m = contexto.mercado;
+  const locale = contexto.locale;
   const [principal, ...otras] = de.ofertas;
   const secundaria = otras[0];
-  const familia = principal.tipo === "informe" ? familiaPorClave(principal.familia) : null;
   const clave = filaClave(caso.filas);
   const idTitulo = useId();
   const raiz = useRef<HTMLElement>(null);
@@ -145,11 +164,7 @@ function Tarjeta({
     };
   }, [principal.producto, de.calc]);
 
-  const gancho = familia ? familia.gancho[t] : COPY_PLANILLA.gancho[t];
-  const incluye = familia ? familia.incluye : COPY_PLANILLA.incluye;
-  const bajada = clave
-    ? bajadaOferta({ tipo: principal.tipo, trato: t, etiqueta: clave.etiqueta, cifra: clave.texto, hoja: principal.hoja, nombreCalculo: de.nombre })
-    : null;
+  const bajada = clave ? bajadaOferta({ tipo: principal.tipo, etiqueta: clave.etiqueta, cifra: clave.texto, hoja: principal.hoja, textos }) : null;
 
   const guardar = (o: OfertaPublica) => {
     if (caso.entrada) recordarDatosIntl(o.producto, { calc: de.calc, entrada: caso.entrada });
@@ -161,40 +176,40 @@ function Tarjeta({
       <div className="cy-oferta-placa">
         <div className="cy-oferta-muestra" aria-hidden="true">
           {principal.tipo === "informe" ? (
-            <MuestraInforme titulo={familia?.nombre ?? principal.tituloCorto} filas={caso.filas} />
+            <MuestraInforme titulo={copy.nombre} filas={caso.filas} />
           ) : (
-            <MuestraPlanilla hoja={principal.hoja ?? ""} textos={caso.textos} clave={clave} />
+            <MuestraPlanilla hoja={principal.hoja ?? ""} textos={caso.textos} clave={clave} tablas={textos.tablasOficiales} />
           )}
         </div>
         <div className="cy-oferta-cuerpo">
           <p className="cy-oferta-ceja">
             <span className="cy-oferta-ceja-punto" />
-            {principal.tipo === "informe" ? CEJA_INFORME : COPY_PLANILLA.ceja}
+            {principal.tipo === "informe" ? textos.cejaInforme : textos.cejaPlanilla}
           </p>
           <h3 id={idTitulo} className="cy-oferta-titulo">
-            {gancho}
+            {copy.gancho}
           </h3>
           {bajada ? <p className="cy-oferta-bajada">{bajada}</p> : null}
           <ul className="cy-oferta-incluye">
-            {incluye.map((p, i) => (
-              <li key={p.titulo[t]} style={{ "--i": i } as CSSProperties}>
+            {copy.incluye.map((p, i) => (
+              <li key={p.titulo} style={{ "--i": i } as CSSProperties}>
                 <span className="cy-oferta-tilde" aria-hidden="true">
                   <svg viewBox="0 0 20 20" width="12" height="12" fill="currentColor">
                     <path fillRule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.3 3.3 6.8-6.8a1 1 0 0 1 1.4 0Z" clipRule="evenodd" />
                   </svg>
                 </span>
                 <span>
-                  <strong>{p.titulo[t]}</strong> {p.texto[t]}
+                  <strong>{p.titulo}</strong> {p.texto}
                 </span>
               </li>
             ))}
           </ul>
           <div className="cy-oferta-pie">
             <p className="cy-oferta-precio">
-              <strong>{precioUSD(principal.precioCentavos)}</strong>
-              <span>{TEXTOS_OFERTA.pagoUnico}</span>
+              <strong>{precioUSD(principal.precioCentavos, locale)}</strong>
+              <span>{textos.pagoUnico}</span>
             </p>
-            <p className="cy-oferta-cambio">{leyendaDeCobro(principal.precioCentavos, referencia)}</p>
+            <p className="cy-oferta-cambio">{leyendaDeCobro(principal.precioCentavos, referencia, textos)}</p>
             {activa ? (
               <>
                 <a
@@ -206,15 +221,15 @@ function Tarjeta({
                   data-ubicacion="calculadora"
                   onClick={() => guardar(principal)}
                 >
-                  <span>{principal.tipo === "informe" ? TEXTOS_OFERTA.comprarInforme[t] : TEXTOS_OFERTA.comprarPlanilla[t]}</span>
+                  <span>{principal.tipo === "informe" ? textos.comprarInforme : textos.comprarPlanilla}</span>
                   <span className="cy-boton-icono">
                     <IconoFlecha />
                   </span>
                 </a>
-                <p className="cy-oferta-confianza">{TEXTOS_OFERTA.confianza[t]}</p>
+                <p className="cy-oferta-confianza">{textos.confianza}</p>
               </>
             ) : (
-              <AvisoPronto producto={principal.producto} trato={t} />
+              <AvisoPronto producto={principal.producto} textos={textos.aviso} />
             )}
             <a
               className="cy-oferta-detalle"
@@ -224,14 +239,14 @@ function Tarjeta({
               data-ubicacion="calculadora-landing"
               onClick={() => guardar(principal)}
             >
-              {TEXTOS_OFERTA.verDetalle[t]}
+              {textos.verDetalle}
             </a>
           </div>
         </div>
       </div>
       {secundaria ? (
         <p className="cy-oferta-tambien">
-          {TEXTOS_OFERTA.tambien[t]}{" "}
+          {textos.tambien}{" "}
           <a
             href={rutaLanding(m, secundaria)}
             data-evento="cta_compra"
@@ -239,7 +254,7 @@ function Tarjeta({
             data-ubicacion="calculadora-secundaria"
             onClick={() => guardar(secundaria)}
           >
-            {secundaria.tituloCorto.charAt(0).toUpperCase() + secundaria.tituloCorto.slice(1)}, {precioUSD(secundaria.precioCentavos)}
+            {secundaria.tituloCorto.charAt(0).toUpperCase() + secundaria.tituloCorto.slice(1)}, {precioUSD(secundaria.precioCentavos, locale)}
           </a>
         </p>
       ) : null}
@@ -279,7 +294,7 @@ export function MuestraInforme({ titulo, filas }: { titulo: string; filas: reado
   );
 }
 
-export function MuestraPlanilla({ hoja, textos, clave }: { hoja: string; textos: { etiqueta: string; valor: string }[]; clave: FilaFormateada | null }) {
+export function MuestraPlanilla({ hoja, textos, clave, tablas }: { hoja: string; textos: { etiqueta: string; valor: string }[]; clave: FilaFormateada | null; tablas: string }) {
   const filas = textos.filter((x) => x.valor !== "").slice(0, 4);
   return (
     <div className="cy-muestra-hoja cy-muestra-planilla">
@@ -304,13 +319,16 @@ export function MuestraPlanilla({ hoja, textos, clave }: { hoja: string; textos:
       ) : null}
       <div className="cy-muestra-pestanas">
         <span data-activa>{hoja}</span>
-        <span>Tablas oficiales</span>
+        <span>{tablas}</span>
       </div>
     </div>
   );
 }
 
-export function AvisoPronto({ producto, trato }: { producto: string; trato: ContextoSerializado["trato"] }) {
+// Con los textos del país, o solo con el trato (la página de compra): ahí sale el aviso en español,
+// el idioma de todos los países con venta hasta que esa página pase los textos.
+export function AvisoPronto({ producto, textos, trato }: { producto: string; textos?: TextosAviso; trato?: ContextoSerializado["trato"] }) {
+  const tx = textos ?? avisoRespaldo(trato ?? "tu");
   const id = useId();
   const [estado, setEstado] = useState<"quieto" | "enviando" | "listo" | "error">("quieto");
   const enviar = async (ev: FormEvent<HTMLFormElement>) => {
@@ -328,26 +346,26 @@ export function AvisoPronto({ producto, trato }: { producto: string; trato: Cont
   if (estado === "listo") {
     return (
       <p className="cy-oferta-aviso-listo" role="status">
-        {TEXTOS_OFERTA.avisoListo[trato]}
+        {tx.listo}
       </p>
     );
   }
   return (
     <form className="cy-oferta-aviso" onSubmit={enviar}>
-      <p className="cy-oferta-pronto">{TEXTOS_OFERTA.pronto}</p>
+      <p className="cy-oferta-pronto">{tx.pronto}</p>
       <label htmlFor={id} className="cy-oferta-aviso-etiqueta">
-        {TEXTOS_OFERTA.avisoTitulo[trato]}
+        {tx.titulo}
       </label>
       <div className="cy-oferta-aviso-fila">
         <div className="cy-entrada">
-          <input id={id} name="email" type="email" required autoComplete="email" inputMode="email" maxLength={254} placeholder={TEXTOS_OFERTA.etiquetaCorreo[trato]} />
+          <input id={id} name="email" type="email" required autoComplete="email" inputMode="email" maxLength={254} placeholder={tx.correo} />
         </div>
         <button type="submit" className="cy-boton cy-boton-principal" disabled={estado === "enviando"}>
-          <span>{TEXTOS_OFERTA.avisoBoton}</span>
+          <span>{tx.boton}</span>
         </button>
       </div>
       <p className="cy-oferta-confianza" role={estado === "error" ? "alert" : undefined}>
-        {estado === "error" ? TEXTOS_OFERTA.avisoError[trato] : TEXTOS_OFERTA.avisoAyuda[trato]}
+        {estado === "error" ? tx.error : tx.ayuda}
       </p>
     </form>
   );
