@@ -61,16 +61,32 @@ export interface MapaEquivalentes {
   origenAR: string;
 }
 
-let pedidoMapa: Promise<MapaEquivalentes | null> | null = null;
+const pedidosMapa = new Map<string, Promise<MapaEquivalentes | null>>();
 
-export function mapaEquivalentes(): Promise<MapaEquivalentes | null> {
-  pedidoMapa ??= fetch("/api/geo/equivalentes")
-    .then((r) => (r.ok ? (r.json() as Promise<MapaEquivalentes>) : null))
-    .catch(() => {
-      pedidoMapa = null;
-      return null;
-    });
-  return pedidoMapa;
+function pedirMapa(consulta: string): Promise<MapaEquivalentes | null> {
+  let pedido = pedidosMapa.get(consulta);
+  if (!pedido) {
+    pedido = fetch(`/api/geo/equivalentes?${consulta}`)
+      .then((r) => (r.ok ? (r.json() as Promise<MapaEquivalentes>) : null))
+      .catch(() => {
+        pedidosMapa.delete(consulta);
+        return null;
+      });
+    pedidosMapa.set(consulta, pedido);
+  }
+  return pedido;
+}
+
+// Solo el clúster de la página (el concepto de /<m>/<slug>): con 190 países el mapa completo pesaba
+// cientos de KB y el selector usa una sola fila. Cada consulta se cachea en el CDN por su URL.
+export function mapaEquivalentes(ruta: string): Promise<MapaEquivalentes | null> {
+  const [mercado, slug] = ruta.split("/").filter(Boolean);
+  if (!mercado || !slug || SECCIONES.has(slug)) return Promise.resolve(null);
+  return pedirMapa(new URLSearchParams({ m: mercado, s: slug }).toString());
+}
+
+export function mapaDeConcepto(concepto: string): Promise<MapaEquivalentes | null> {
+  return pedirMapa(new URLSearchParams({ c: concepto }).toString());
 }
 
 const SECCIONES = new Set(["fuentes", "novedades"]);

@@ -56,6 +56,7 @@ export async function PaginaCompra({ params, searchParams, tipo }: ParamsCompra 
         <form method="post" action="/api/pagos/checkout" className="cy-calc-form" style={{ maxWidth: "34rem", paddingInline: 0 }}>
           <input type="hidden" name="p" value={p.id} />
           <input type="hidden" name="ruta" value={rutaLandingIntl(p)} />
+          <input type="hidden" name="vid" defaultValue="" data-ca-vid="" />
           <div style={OCULTO} aria-hidden="true">
             <label htmlFor="cy-sitio">Sitio web</label>
             <input id="cy-sitio" name="sitio" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />

@@ -2,20 +2,21 @@
 
 import { useDeferredValue, useId, useMemo, useState } from "react";
 import type { FilaPagina, PanelDatos, Rango } from "@/lib/panel/tipos";
-import { deCada100, duracion, numero, plural } from "@/lib/panel/formato";
+import { deCada100, dolares, duracion, numero, plural } from "@/lib/panel/formato";
 import { Desplegable } from "./Desplegable";
 import { DetallePagina } from "./DetallePagina";
 import { IcoChevron, IcoLupa } from "./iconos";
 import { tituloDeProducto } from "./meta";
 import { Bandeja, Chip, Seccion, TARJETA, Vacio } from "./ui";
 
-type Orden = "usos" | "tiempo" | "tasa" | "interes";
+type Orden = "usos" | "tiempo" | "tasa" | "interes" | "ventas";
 
 const ORDENES: { clave: Orden; texto: string; ayuda: string }[] = [
   { clave: "usos", texto: "Más usadas", ayuda: "Las que más veces se usaron" },
   { clave: "tiempo", texto: "Más tiempo", ayuda: "Donde la gente se queda más tiempo usándolas" },
   { clave: "tasa", texto: "Enganchan más", ayuda: "De cada 100 que entran, cuántos la usan" },
   { clave: "interes", texto: "Más quieren comprar", ayuda: "Desde donde más gente quiso comprar una planilla" },
+  { clave: "ventas", texto: "Más venden", ayuda: "Las que más plata trajeron, en dólares" },
 ];
 
 const VISIBLES = 10;
@@ -34,6 +35,8 @@ function metrica(orden: Orden, f: FilaPagina): number {
       return f.visitantes >= 30 ? f.tasaUso : 0;
     case "interes":
       return f.interesCompra;
+    case "ventas":
+      return f.ingresosUsd * 1000 + f.ventas;
   }
 }
 
@@ -47,15 +50,29 @@ function textoMetrica(orden: Orden, f: FilaPagina): string {
       return deCada100(f.tasaUso);
     case "interes":
       return numero(f.interesCompra);
+    case "ventas":
+      return f.ingresosUsd > 0 ? dolares(f.ingresosUsd) : plural(f.ventas, "venta", "ventas");
   }
 }
 
 function secundario(orden: Orden, f: FilaPagina): string {
+  if (orden === "ventas") {
+    return [
+      plural(f.vistas, "vista", "vistas"),
+      plural(f.usos, "uso", "usos"),
+      f.ofertas > 0 ? `${numero(f.ofertas)} vieron la oferta` : null,
+      f.interesCompra > 0 ? `${numero(f.interesCompra)} tocaron comprar` : null,
+      f.ingresosUsd > 0 ? plural(f.ventas, "venta", "ventas") : null,
+    ]
+      .filter(Boolean)
+      .join(" · ");
+  }
   const partes = [
     orden !== "usos" ? plural(f.usos, "uso", "usos") : null,
     orden !== "tasa" ? `la usan ${deCada100(f.tasaUso)}` : `de ${numero(f.visitantes)} que entraron`,
     orden === "usos" && f.usos > 0 ? duracion(f.tiempoMedianoMs) : null,
     orden === "interes" ? null : f.interesCompra > 0 ? `${numero(f.interesCompra)} quisieron comprar` : null,
+    f.ventas > 0 ? plural(f.ventas, "venta", "ventas") : null,
   ].filter(Boolean);
   return partes.slice(0, 3).join(" · ");
 }
@@ -99,7 +116,7 @@ export function Calculadoras({
       id="calculadoras"
       indice={4}
       titulo="Calculadoras"
-      bajada="Cuáles usan, cuánto tiempo y desde cuáles quieren comprar. Tocá una para ver su detalle."
+      bajada="Cuáles usan, desde cuáles compran y cuánta plata traen. Tocá una para ver su detalle."
     >
       <Bandeja>
         <div className={`${TARJETA} p-3 sm:p-4`}>

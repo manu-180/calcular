@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { ofertasDeMercado } from "@/lib/pagos/ofertas-servidor";
-import { CODIGOS_MERCADO } from "@/motor/tipos";
+import { esCodigoMercado } from "@/motor/tipos";
 
 export const runtime = "nodejs";
 
@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 // el resultado ya está: nada espera al servidor después del clic. Igual para todos: va por CDN.
 export async function GET(_req: Request, { params }: { params: Promise<{ mercado: string }> }) {
   const { mercado } = await params;
-  if (!(CODIGOS_MERCADO as readonly string[]).includes(mercado)) return NextResponse.json({ error: "mercado desconocido" }, { status: 404 });
+  if (!esCodigoMercado(mercado)) return NextResponse.json({ error: "mercado desconocido" }, { status: 404 });
   let cuerpo;
   try {
     cuerpo = ofertasDeMercado(mercado);

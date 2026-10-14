@@ -84,6 +84,12 @@ async function conDegradacion(
     fila = sinDatos;
     r = await escribir(fila);
   }
+  // Sin 20261014120000 no hay columna pais: se guarda sin el país.
+  if (r.error && SIN_COLUMNA.has(r.error.code ?? "") && "pais" in fila) {
+    const { pais: _pa, ...sinPais } = fila;
+    fila = sinPais;
+    r = await escribir(fila);
+  }
   if (r.error && SIN_COLUMNA.has(r.error.code ?? "")) {
     const { proveedor: _p, pago_id: _i, ...sinPagos } = fila;
     r = await escribir(sinPagos);
@@ -111,6 +117,7 @@ export type FilaCheckoutIntl = {
   sitio: "intl";
   mercado: string;
   proveedor: NombreProveedor;
+  pais?: string;
   datos?: DatosIntl;
 };
 
@@ -124,6 +131,7 @@ export function filaCheckoutIntl(p: {
   vid?: string | null;
   userId?: string | null;
   ruta?: string | null;
+  pais?: string | null;
   datos?: DatosIntl | null;
 }): FilaCheckoutIntl {
   const ruta = p.ruta && /^\/[a-z0-9/_-]{0,119}$/i.test(p.ruta) && !/^\/[/\\]/.test(p.ruta) ? p.ruta : null;
@@ -139,6 +147,7 @@ export function filaCheckoutIntl(p: {
     sitio: "intl",
     mercado: p.producto.mercado,
     proveedor: p.proveedor,
+    ...(p.pais && /^[A-Z]{2}$/.test(p.pais) && p.pais !== "XX" ? { pais: p.pais } : {}),
     ...(p.datos ? { datos: p.datos } : {}),
   };
 }

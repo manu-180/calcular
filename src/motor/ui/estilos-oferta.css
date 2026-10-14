@@ -702,6 +702,38 @@
   color: var(--cy-tinta);
 }
 
+/* Tablas enteras (amortización, plan año por año): pueden tener muchas columnas, así que se
+   desplazan dentro de su caja y nunca empujan la página hacia los costados. */
+.cy-informe-desplazable {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cy-informe-tabla-completa {
+  font-size: 0.8125rem;
+}
+
+.cy-informe-tabla-completa th,
+.cy-informe-tabla-completa td {
+  padding: 0.375rem 0.5rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cy-informe-tabla-completa th:first-child,
+.cy-informe-tabla-completa td:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+
+.cy-informe-tabla-completa td:last-child {
+  font-weight: 400;
+}
+
+.cy-informe-tabla-completa tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--cy-acento-suave) 45%, transparent);
+}
+
 .cy-informe-ayuda {
   display: block;
   margin-top: 0.125rem;
@@ -857,6 +889,24 @@
 
   .cy-informe-pantalla {
     display: none !important;
+  }
+
+  /* En papel no hay desplazamiento: la tabla entera entra achicando la letra, y cada página
+     repite el encabezado. */
+  .cy-informe-desplazable {
+    overflow: visible;
+  }
+
+  .cy-informe-tabla-completa {
+    font-size: 7.5pt;
+  }
+
+  .cy-informe-tabla-completa thead {
+    display: table-header-group;
+  }
+
+  .cy-informe-tabla-completa tr {
+    break-inside: avoid;
   }
 }
 
