@@ -11,7 +11,7 @@ export default definirUniversal<UiIva>({
   concepto: "iva",
   datos: ["tasa"],
   definir,
-  textos: { es: textosEs, en: textosEn },
-  contenido: { es: contenidoEs, en: contenidoEn },
+  textos: { en: textosEn, es: textosEs },
+  contenido: { en: contenidoEn, es: contenidoEs },
   casos,
 });

@@ -10,7 +10,7 @@ export default definirUniversal<UiRitmo>({
   id: "ritmo-de-carrera",
   concepto: "ritmo-de-carrera",
   definir,
-  textos: { es: textosEs, en: textosEn },
-  contenido: { es: contenidoEs, en: contenidoEn },
+  textos: { en: textosEn, es: textosEs },
+  contenido: { en: contenidoEn, es: contenidoEs },
   casos,
 });

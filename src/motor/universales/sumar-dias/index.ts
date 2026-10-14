@@ -10,7 +10,7 @@ export default definirUniversal<UiSumarDias>({
   id: "sumar-dias",
   concepto: "sumar-dias",
   definir,
-  textos: { es: textosEs, en: textosEn },
-  contenido: { es: contenidoEs, en: contenidoEn },
+  textos: { en: textosEn, es: textosEs },
+  contenido: { en: contenidoEn, es: contenidoEs },
   casos,
 });
