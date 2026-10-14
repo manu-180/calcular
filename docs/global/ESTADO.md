@@ -35,6 +35,25 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui()` sin locale: los textos de `ui` evitan números con decimales.
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## Retomado (14/10/2026 02:27)
+
+Integrados: escala (`claude/mundo-escala`) y métricas (`claude/mundo-metricas`), con cargadores
+regenerados y el check del flujo de ofertas ajustado (el checkout intl se registra siempre; la fila no
+lleva datos sin la casilla). Verdes: tsc, check_motor (1020), check_paises, check_paises_casos (2166),
+check_i18n, check_universales, check_hreflang, check_seo_intl, check_panel_sql, check_metricas_mundo,
+check_rastreo, check_pagos, check_flujo_ofertas_intl, check_fronteras, check_eol. check_ofertas_intl
+solo falla por la UF de Chile en planillas viejas (artefacto que regenera el build).
+
+En curso:
+
+| Frente | Rama |
+|---|---|
+| Pedidos cruzados, global en inglés, universales en LATAM, `ui(trato, locale)` | `claude/mundo-integracion` |
+| Traducción de las 19 de finanzas | `claude/mundo-trad-{pt,fr,de,it,nl}` |
+| Países tanda 1 (encargo: `docs/global/BRIEF-PAIS.md`) | `claude/pais-{us,gb,de,fr,br}` |
+
+Siguiente tanda de países: es it nl ca au at ch be in za pt ie nz.
+
 ## Pausa y cómo retomar (14/10/2026 00:45, pedida por Manuel)
 
 Todo commiteado y pusheado. Integrado en esta rama: contrato, 41 universales (es, en), PAISES.md,

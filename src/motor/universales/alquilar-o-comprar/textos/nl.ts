@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosNl: TextosUi<UiAlquilarOComprar> = {
+  slug: "huren-of-kopen",
+  ui: () => ({
+    precio: "Koopsom van de woning",
+    entrada: "Eigen geld (% van de koopsom)",
+    gastosCompra: "Kosten koper (% van de koopsom)",
+    gastosCompraAyuda: "Bijkomende kosten bij de aankoop: notaris, overdrachtsbelasting of registratierechten, makelaar en taxatie.",
+    tasa: "Hypotheekrente (% per jaar)",
+    aniosHipoteca: "Looptijd hypotheek in jaren",
+    alquiler: "Huur per maand voor een vergelijkbare woning",
+    aumentoAlquiler: "Huurverhoging per jaar (%)",
+    gastosPropietario: "Kosten als eigenaar per jaar (% van de waarde)",
+    gastosPropietarioAyuda: "Onderhoud, gemeentelijke belastingen en opstalverzekering. Meestal 1% tot 2%.",
+    revalorizacion: "Waardestijging van de woning per jaar (%)",
+    rendimiento: "Rendement als je het geld belegt (% per jaar)",
+    rendimientoAyuda: "Wat je zou verdienen als je je eigen geld belegt in plaats van een woning te kopen.",
+    horizonte: "Aantal jaar om te vergelijken",
+    veredicto: "Uitkomst",
+    patrimonioComprar: "Vermogen aan het eind als je koopt",
+    patrimonioAlquilar: "Vermogen aan het eind als je huurt",
+    diferencia: "Verschil",
+    anioDesde: "Jaar vanaf wanneer kopen wint",
+    pagadoAlquilando: "Totaal betaalde huur",
+    pagadoComprando: "Totaal aan hypotheeklasten en kosten als eigenaar",
+    tabla: "Vergelijking per jaar",
+    colAnio: "Jaar",
+    colComprar: "Kopen",
+    colAlquilar: "Huren",
+    colDiferencia: "Verschil",
+    errorPrecio: "Vul de koopsom van de woning in.",
+    errorAlquiler: "Vul in wat je voor een vergelijkbare huurwoning zou betalen.",
+    convieneComprar: (anios, diferencia) => `Kopen wint: na ${anios} jaar heb je ${diferencia} meer.`,
+    convieneAlquilar: (anios, diferencia) => `Huren wint: na ${anios} jaar heb je ${diferencia} meer.`,
+    empate: (anios) => `Na ${anios} jaar komen beide keuzes op hetzelfde uit.`,
+    observacionDesde: (anio) => `Vanaf jaar ${anio} haalt kopen huren in en blijft het voor.`,
+    observacionMetodo:
+      "De rekenhulp vergelijkt wat je in elk geval bezit. Huur je, dan blijft je eigen geld belegd, net als wat je elke maand overhoudt. Verkoopkosten gaan er niet af.",
+  }),
+};
