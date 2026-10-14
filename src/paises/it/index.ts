@@ -24,6 +24,16 @@ import contributiArtigianiCommercianti from "./calculadoras/contributi-artigiani
 import contenidoContributiArtigianiCommercianti from "./contenido/contributi-artigiani-commercianti";
 import ritenutaAcconto from "./calculadoras/ritenuta-acconto";
 import contenidoRitenutaAcconto from "./contenido/ritenuta-acconto";
+import naspi from "./calculadoras/naspi";
+import contenidoNaspi from "./contenido/naspi";
+import cedolareSecca from "./calculadoras/cedolare-secca";
+import contenidoCedolareSecca from "./contenido/cedolare-secca";
+import imposteAcquistoCasa from "./calculadoras/imposte-acquisto-casa";
+import contenidoImposteAcquistoCasa from "./contenido/imposte-acquisto-casa";
+import interessiLegali from "./calculadoras/interessi-legali";
+import contenidoInteressiLegali from "./contenido/interessi-legali";
+import maternita from "./calculadoras/maternita";
+import contenidoMaternita from "./contenido/maternita";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +58,11 @@ export default definirPais({
     { definicion: contributiGestioneSeparata, contenido: contenidoContributiGestioneSeparata, cliente: () => import("./calculadoras/contributi-gestione-separata.cliente") },
     { definicion: contributiArtigianiCommercianti, contenido: contenidoContributiArtigianiCommercianti, cliente: () => import("./calculadoras/contributi-artigiani-commercianti.cliente") },
     { definicion: ritenutaAcconto, contenido: contenidoRitenutaAcconto, cliente: () => import("./calculadoras/ritenuta-acconto.cliente") },
+    { definicion: naspi, contenido: contenidoNaspi, cliente: () => import("./calculadoras/naspi.cliente") },
+    { definicion: cedolareSecca, contenido: contenidoCedolareSecca, cliente: () => import("./calculadoras/cedolare-secca.cliente") },
+    { definicion: imposteAcquistoCasa, contenido: contenidoImposteAcquistoCasa, cliente: () => import("./calculadoras/imposte-acquisto-casa.cliente") },
+    { definicion: interessiLegali, contenido: contenidoInteressiLegali, cliente: () => import("./calculadoras/interessi-legali.cliente") },
+    { definicion: maternita, contenido: contenidoMaternita, cliente: () => import("./calculadoras/maternita.cliente") },
   ],
   universales: { todas: true },
   novedades,
