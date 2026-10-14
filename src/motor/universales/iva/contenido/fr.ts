@@ -9,7 +9,7 @@ export const contenidoFr: ContenidoUniversal = (ctx) => {
     title: tituloQueEntre(`Calcul TVA ${tasa} : HT et TTC (${ctx.nombrePais})`, `Calcul TVA ${tasa} (${ctx.nombrePais})`, `Calcul TVA ${tasa}`),
     description: `Ajoutez ou retirez la TVA à ${tasa} sur n’importe quel prix en une étape : le prix HT, le montant de la TVA et le prix TTC, au centime près.`,
     intro: [
-      `Le taux normal retenu ici pour ${ctx.nombrePais} est de ${tasa}.`,
+      `Le calcul applique le taux normal de TVA du pays (${ctx.nombrePais}), soit ${tasa}.`,
       "Choisissez si vous partez d’un prix hors taxes (HT) ou d’un prix toutes taxes comprises (TTC), puis saisissez le montant.",
     ],
     comoSeCalcula: [

@@ -11,7 +11,7 @@ export const contenidoFr: ContenidoUniversal = (ctx) => {
     ? "Au Québec, on laisse en général entre 15 % et 20 %, calculés sur le montant avant taxes."
     : SERVICE_COMPRIS.has(ctx.pais)
       ? "Le service est déjà compris dans les prix affichés. Le pourboire reste un geste libre : quelques pièces, ou 5 % à 10 % quand le service vous a plu."
-      : `Cela dépend des usages. Renseignez-vous sur ce qui se fait en ${ctx.nombrePais} et vérifiez si le service figure déjà sur l’addition.`;
+      : `Cela dépend des usages. Renseignez-vous sur ce qui se fait dans le pays et vérifiez si le service figure déjà sur l’addition.`;
   return {
     h1: "Calcul du pourboire",
     title: tituloQueEntre(`Calcul du pourboire et partage de l’addition (${ctx.nombrePais})`, `Calcul du pourboire (${ctx.nombrePais})`, "Calcul du pourboire"),

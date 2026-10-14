@@ -11,7 +11,7 @@ export const contenidoFr: ContenidoUniversal = (ctx) => {
     title: tituloQueEntre(`Calcul du TJM et du taux horaire freelance (${ctx.nombrePais})`, `Calcul du TJM freelance (${ctx.nombrePais})`, "Calcul du TJM freelance"),
     description: "Calculez votre taux horaire et votre TJM d’indépendant selon ce que vous voulez gagner, vos frais, vos impôts, vos congés et vos heures facturables.",
     intro: [
-      "L’erreur la plus courante en freelance : prendre le salaire qu’on aurait en CDI et le diviser par 151 heures. On oublie alors les cotisations, les frais, les congés et toutes les heures qu’on ne peut pas facturer.",
+      `L’erreur la plus courante en freelance : prendre le salaire qu’on aurait ${ctx.pais === "FR" ? "en CDI et le diviser par 151 heures" : "comme salarié et le diviser par les heures d’un mois"}. On oublie alors les cotisations, les frais, les congés et toutes les heures qu’on ne peut pas facturer.`,
       "Ce calculateur part de ce que vous voulez gagner net et vous dit combien facturer pour y arriver.",
     ],
     comoSeCalcula: [

@@ -34,10 +34,10 @@ export const contenidoFr: ContenidoUniversal = (ctx) => {
         pregunta: "Quelle différence entre SA et SG ?",
         respuesta: "Les semaines d’aménorrhée (SA) se comptent depuis les dernières règles. Les semaines de grossesse (SG) se comptent depuis la conception, environ 2 semaines plus tard. 14 SA correspondent donc à 12 SG.",
       },
-      {
+      ...(ctx.pais === "FR" ? [{
         pregunta: "Pourquoi ma maternité annonce-t-elle une date plus tardive ?",
         respuesta: "En France, le terme est souvent fixé à 41 SA, soit une semaine après la règle de Naegele utilisée ici. Fiez-vous à la date donnée lors de votre suivi.",
-      },
+      }] : []),
       {
         pregunta: "Combien de bébés naissent le jour prévu ?",
         respuesta: "Peu. La plupart naissent entre la 37e et la 42e semaine : la date est un repère, pas un jour exact.",
