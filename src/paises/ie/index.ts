@@ -28,6 +28,20 @@ import illnessBenefit from "./calculadoras/illness-benefit";
 import contenidoIllnessBenefit from "./contenido/illness-benefit";
 import childBenefit from "./calculadoras/child-benefit";
 import contenidoChildBenefit from "./contenido/child-benefit";
+import stampDutyCalculator from "./calculadoras/stamp-duty-calculator";
+import contenidoStampDutyCalculator from "./contenido/stamp-duty-calculator";
+import helpToBuy from "./calculadoras/help-to-buy";
+import contenidoHelpToBuy from "./contenido/help-to-buy";
+import localPropertyTax from "./calculadoras/local-property-tax";
+import contenidoLocalPropertyTax from "./contenido/local-property-tax";
+import capitalGainsTax from "./calculadoras/capital-gains-tax";
+import contenidoCapitalGainsTax from "./contenido/capital-gains-tax";
+import capitalAcquisitionsTax from "./calculadoras/capital-acquisitions-tax";
+import contenidoCapitalAcquisitionsTax from "./contenido/capital-acquisitions-tax";
+import rentTaxCredit from "./calculadoras/rent-tax-credit";
+import contenidoRentTaxCredit from "./contenido/rent-tax-credit";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -54,6 +68,13 @@ export default definirPais({
     { definicion: jobseekersBenefit, contenido: contenidoJobseekersBenefit, cliente: () => import("./calculadoras/jobseekers-benefit.cliente") },
     { definicion: illnessBenefit, contenido: contenidoIllnessBenefit, cliente: () => import("./calculadoras/illness-benefit.cliente") },
     { definicion: childBenefit, contenido: contenidoChildBenefit, cliente: () => import("./calculadoras/child-benefit.cliente") },
+    { definicion: stampDutyCalculator, contenido: contenidoStampDutyCalculator, cliente: () => import("./calculadoras/stamp-duty-calculator.cliente") },
+    { definicion: helpToBuy, contenido: contenidoHelpToBuy, cliente: () => import("./calculadoras/help-to-buy.cliente") },
+    { definicion: localPropertyTax, contenido: contenidoLocalPropertyTax, cliente: () => import("./calculadoras/local-property-tax.cliente") },
+    { definicion: capitalGainsTax, contenido: contenidoCapitalGainsTax, cliente: () => import("./calculadoras/capital-gains-tax.cliente") },
+    { definicion: capitalAcquisitionsTax, contenido: contenidoCapitalAcquisitionsTax, cliente: () => import("./calculadoras/capital-acquisitions-tax.cliente") },
+    { definicion: rentTaxCredit, contenido: contenidoRentTaxCredit, cliente: () => import("./calculadoras/rent-tax-credit.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
