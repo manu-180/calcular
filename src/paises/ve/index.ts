@@ -77,6 +77,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: "todas",
   calculadoras: [
     { definicion: dolarBcv, contenido: contenidoDolarBcv, cliente: () => import("./calculadoras/dolar-bcv.cliente") },
     { definicion: prestacionesSociales, contenido: contenidoPrestacionesSociales, cliente: () => import("./calculadoras/prestaciones-sociales.cliente") },

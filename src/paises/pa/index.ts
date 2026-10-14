@@ -91,6 +91,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: { todas: true, excepto: ["prestamo", "conversor-sueldo"] },
   calculadoras: [
     { definicion: decimoTercerMes, contenido: contenidoDecimo, cliente: () => import("./calculadoras/decimo-tercer-mes.cliente") },
     { definicion: liquidacion, contenido: contenidoLiquidacion, cliente: () => import("./calculadoras/liquidacion.cliente") },

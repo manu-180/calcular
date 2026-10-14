@@ -87,6 +87,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: { todas: true, excepto: ["conversor-sueldo"] },
   calculadoras: [
     { definicion: decimoCuartoMes, contenido: contenidoDecimoCuartoMes, cliente: () => import("./calculadoras/decimo-cuarto-mes.cliente") },
     { definicion: prestacionesLaborales, contenido: contenidoPrestacionesLaborales, cliente: () => import("./calculadoras/prestaciones-laborales.cliente") },
