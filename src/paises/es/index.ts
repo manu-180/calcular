@@ -16,6 +16,9 @@ import paro from "./calculadoras/paro";
 import bajaLaboral from "./calculadoras/baja-laboral";
 import iprem from "./calculadoras/iprem";
 import facturaAutonomo from "./calculadoras/factura-autonomo";
+import ipc from "./calculadoras/ipc";
+import revisionHipotecaEuribor from "./calculadoras/revision-hipoteca-euribor";
+import jubilacion from "./calculadoras/jubilacion";
 import contenidoSueldoNeto from "./contenido/sueldo-neto";
 import contenidoRetencionIrpf from "./contenido/retencion-irpf";
 import contenidoCotizacionSeguridadSocial from "./contenido/cotizacion-seguridad-social";
@@ -32,6 +35,9 @@ import contenidoParo from "./contenido/paro";
 import contenidoBajaLaboral from "./contenido/baja-laboral";
 import contenidoIprem from "./contenido/iprem";
 import contenidoFacturaAutonomo from "./contenido/factura-autonomo";
+import contenidoIpc from "./contenido/ipc";
+import contenidoRevisionHipotecaEuribor from "./contenido/revision-hipoteca-euribor";
+import contenidoJubilacion from "./contenido/jubilacion";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +66,9 @@ export default definirPais({
     { definicion: bajaLaboral, contenido: contenidoBajaLaboral, cliente: () => import("./calculadoras/baja-laboral.cliente") },
     { definicion: iprem, contenido: contenidoIprem, cliente: () => import("./calculadoras/iprem.cliente") },
     { definicion: facturaAutonomo, contenido: contenidoFacturaAutonomo, cliente: () => import("./calculadoras/factura-autonomo.cliente") },
+    { definicion: ipc, contenido: contenidoIpc, cliente: () => import("./calculadoras/ipc.cliente") },
+    { definicion: revisionHipotecaEuribor, contenido: contenidoRevisionHipotecaEuribor, cliente: () => import("./calculadoras/revision-hipoteca-euribor.cliente") },
+    { definicion: jubilacion, contenido: contenidoJubilacion, cliente: () => import("./calculadoras/jubilacion.cliente") },
   ],
   universales: { todas: true },
   novedades,
