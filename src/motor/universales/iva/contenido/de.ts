@@ -21,8 +21,8 @@ export const contenidoDe: ContenidoUniversal = (ctx) => {
       "Gilt für einen Artikel ein reduzierter Satz, tragen Sie ihn unter „Anderer Steuersatz“ ein.",
     ],
     ejemplo: [
-      `Um auf ${precio} netto die Steuer aufzuschlagen, nehmen Sie den Betrag mal ${tasa} und zählen das Ergebnis dazu.`,
-      `Um die Steuer in ${precio} brutto zu finden, teilen Sie den Betrag durch 1 plus den Steuersatz und ziehen das Ergebnis ab.`,
+      `Bei ${precio} netto multiplizieren Sie den Betrag mit ${tasa} und addieren das Ergebnis. So erhalten Sie den Bruttobetrag.`,
+      `Bei ${precio} brutto teilen Sie den Betrag durch 1 plus den Steuersatz. Das ist der Nettobetrag, die Differenz ist die Steuer.`,
     ],
     faq: [
       {

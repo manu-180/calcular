@@ -19,7 +19,7 @@ export const contenidoDe: ContenidoUniversal = (ctx) => {
     description:
       "Berechnen Sie die Monatsrate Ihrer Baufinanzierung aus Kaufpreis, Eigenkapital, Zins und Laufzeit. Mit Zinsen insgesamt und Restschuld pro Jahr.",
     intro: [
-      "Eine Immobilie zu finanzieren ist für die meisten Haushalte die größte Verpflichtung ihres Lebens. Es lohnt sich, die Zahlen zu kennen, bevor Sie mit der Bank sprechen.",
+      "Für die meisten Menschen ist der Immobilienkredit die größte Schuld ihres Lebens. Rechnen Sie nach, bevor Sie mit der Bank sprechen.",
       "Geben Sie Kaufpreis, Eigenkapital, Zins und Laufzeit ein. Wenn Sie Hausgeld oder Grundsteuer monatlich zahlen, tragen Sie es ein und sehen Ihre echte Monatsbelastung.",
     ],
     comoSeCalcula: [
