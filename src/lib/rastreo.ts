@@ -208,6 +208,14 @@ function alClick(e: Event) {
   rastrear(d.evento, { producto: d.producto, props });
 }
 
+// Un form de compra que se manda sin JS propio (el de calcularya) lleva `<input name="vid" data-ca-vid>`:
+// se completa acá, antes de que el navegador arme los datos del envío, para atribuir la venta a la visita.
+function alEnviar(e: Event) {
+  const form = e.target as HTMLFormElement | null;
+  const oculto = form?.querySelector?.<HTMLInputElement>("input[data-ca-vid]");
+  if (oculto && vid) oculto.value = vid;
+}
+
 function alError(e: Event) {
   const r = (e as PromiseRejectionEvent).reason;
   const m = String((e as ErrorEvent).message || r?.message || r || "");
@@ -292,6 +300,7 @@ export function iniciar(): void {
   addEventListener("input", alEditar, pasivo);
   addEventListener("change", alEditar, pasivo);
   addEventListener("click", alClick, pasivo);
+  addEventListener("submit", alEnviar, { capture: true });
   addEventListener("error", alError);
   addEventListener("unhandledrejection", alError);
   document.addEventListener("visibilitychange", alCambiarVisibilidad);

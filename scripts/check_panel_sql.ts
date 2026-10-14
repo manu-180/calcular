@@ -67,13 +67,17 @@ function chequeosEstaticos() {
   seccion("SQL estático");
   const todo = migraciones.map((m) => m.sql).join("\n");
   const tablas = [...todo.matchAll(/create table if not exists public\.(ca_\w+)/g)].map((m) => m[1]);
-  igual(tablas.sort(), ["ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_opiniones", "ca_perfiles", "ca_resumen", "ca_vistas"], "están las 9 tablas");
+  igual(
+    tablas.sort(),
+    ["ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_opiniones", "ca_perfiles", "ca_resumen", "ca_resumen_mercado", "ca_tipo_cambio", "ca_vistas"],
+    "están las 11 tablas",
+  );
   for (const t of tablas) {
     ok(todo.includes(`alter table public.${t} enable row level security;`), `${t}: enable row level security`);
     ok(todo.includes(`alter table public.${t} force row level security;`), `${t}: force row level security`);
   }
   const bloques = [...todo.matchAll(/create or replace function public\.(\w+)\(([\s\S]*?)\n\$\$;/g)];
-  igual(bloques.length, 25, "se encontraron las 25 definiciones de funciones");
+  igual(bloques.length, 35, "se encontraron las 35 definiciones de funciones");
   const revocadas = [...todo.matchAll(/revoke execute on function([\s\S]*?)from public, anon, authenticated;/g)].map((m) => m[1]).join("\n");
   for (const [, nombre, cuerpo] of bloques) {
     ok(/\nset search_path = ''\n/.test(cuerpo), `${nombre}: set search_path = ''`);
@@ -82,7 +86,7 @@ function chequeosEstaticos() {
     ok(definer === (nombre === "ca_vincular_compras"), `${nombre}: security definer sólo en ca_vincular_compras`);
   }
   ok(!/\bto anon\b/.test(todo), "ningún grant a anon");
-  ok(!/grant (all|select|insert|update|delete)[^;]*\bon (table )?public\.ca_(vistas|eventos|checkouts|limites|resumen)\b[^;]*\bto authenticated/.test(todo), "tablas de medición sin grants a authenticated");
+  ok(!/grant (all|select|insert|update|delete)[^;]*\bon (table )?public\.ca_(vistas|eventos|checkouts|limites|resumen|resumen_mercado|tipo_cambio)\b[^;]*\bto authenticated/.test(todo), "tablas de medición sin grants a authenticated");
 }
 
 // ─── PGlite ─────────────────────────────────────────────────────────────────────────────────
@@ -249,6 +253,14 @@ async function sembrar(db: Db) {
 
 async function filas(db: Db, sql: string, params?: unknown[]) {
   return (await db.query(sql, params)).rows;
+}
+
+// 1 dólar = 1.000 pesos, para que las cuentas en USD se lean a ojo. Las ventas del 1/7, 28/8, 3/9, 6/9 y
+// 8/9 toman la cotización del día hábil anterior más cercano.
+async function cargarCambio(db: Db) {
+  await como(db, "service_role", null, () =>
+    db.exec(`select public.ca_tipo_cambio_cargar(d::date, '{"ARS": 0.001, "EUR": 1.1}') from unnest(array['2026-06-30', '2026-08-27', '2026-09-02', '2026-09-05']) d;`),
+  );
 }
 
 async function probarCuentasYRls(db: Db) {
@@ -530,7 +542,7 @@ async function probarFunciones(db: Db) {
   });
 }
 
-type Forma = "number" | "string" | "boolean" | "string|null" | Forma[] | { [k: string]: Forma };
+type Forma = "number" | "string" | "boolean" | "string|null" | "number|null" | Forma[] | { [k: string]: Forma };
 const REPARTO: Forma = [{ clave: "string", n: "number" }];
 const FORMA_PANEL: Forma = {
   granularidad: "string",
@@ -550,17 +562,21 @@ const FORMA_PANEL: Forma = {
       usos: "number",
       tiempoMedianoMs: "number",
       compartidos: "number",
+      ofertas: "number",
       interesCompra: "number",
       checkouts: "number",
       ventas: "number",
+      ingresosUsd: "number",
       producto: "string|null",
       serieUsos: ["number"],
     },
   ],
-  embudos: [{ producto: "string", pasos: [{ paso: "string", n: "number" }], ingresos: "number" }],
+  ingresos: { moneda: "string", porMoneda: [{ moneda: "string", monto: "number", montoUsd: "number|null", ventas: "number" }], sinCotizacion: "number" },
+  embudos: [{ producto: "string", pasos: [{ paso: "string", n: "number" }], ingresos: "number", moneda: "string|null", ingresosUsd: "number" }],
   fuentes: [{ fuente: "string", visitantes: "number", usos: "number", ventas: "number" }],
   dispositivos: REPARTO,
   paises: REPARTO,
+  paisesCompra: REPARTO,
   busquedas: [{ q: "string", n: "number", sinResultados: "boolean" }],
   compras: [
     {
@@ -569,6 +585,9 @@ const FORMA_PANEL: Forma = {
       producto: "string",
       monto: "number",
       moneda: "string",
+      montoUsd: "number|null",
+      pais: "string|null",
+      mercado: "string",
       emailEnmascarado: "string",
       conCuenta: "boolean",
       desde: "string|null",
@@ -577,7 +596,20 @@ const FORMA_PANEL: Forma = {
   ],
   cuentas: { total: "number", nuevas: "number", verificadas: "number", conCompras: "number", perfiles: REPARTO },
   vivo: { ahora: "number", paginas: REPARTO },
-  mercados: [{ mercado: "string", visitantes: "number", usos: "number", ventas: "number", ingresos: [{ moneda: "string", monto: "number" }] }],
+  mercados: [
+    {
+      mercado: "string",
+      visitantes: "number",
+      usos: "number",
+      ventas: "number",
+      ingresos: [{ moneda: "string", monto: "number" }],
+      ingresosUsd: "number",
+      usaron: "number",
+      ofertas: "number",
+      clics: "number",
+      checkouts: "number",
+    },
+  ],
 };
 
 function validarForma(valor: unknown, forma: Forma, donde: string, errores: string[]) {
@@ -643,8 +675,10 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
   igual(kpi(p, "interes").serie.map((s) => s.v), [1, 0, 1, 0, 0, 0, 0], "serie de interés");
   igual([kpi(p, "checkouts").valor, kpi(p, "checkouts").anterior], [5, 1], "checkouts");
   igual([kpi(p, "ventas").valor, kpi(p, "ventas").anterior], [2, 1], "ventas aprobadas por pagado_at (reembolso fuera)");
-  igual([kpi(p, "ingresos").valor, kpi(p, "ingresos").anterior], [24800, 14900], "ingresos");
-  igual(kpi(p, "ingresos").serie.map((s) => s.v), [0, 0, 14900, 0, 0, 9900, 0], "serie de ingresos");
+  igual([kpi(p, "ingresos").valor, kpi(p, "ingresos").anterior], [24.8, 14.9], "ingresos en dólares (1 USD = 1.000 ARS)");
+  igual(kpi(p, "ingresos").serie.map((s) => s.v), [0, 0, 14.9, 0, 0, 9.9, 0], "serie de ingresos en dólares");
+  igual(p.ingresos, { moneda: "USD", porMoneda: [{ moneda: "ARS", monto: 24800, montoUsd: 24.8, ventas: 2 }], sinCotizacion: 0 }, "desglose por moneda");
+  igual(p.paisesCompra, [{ clave: "UY", n: 1 }, { clave: "desconocido", n: 1 }], "país real de quien compró (sale de la vista del checkout)");
 
   const paginas = p.paginas as Record<string, unknown>[];
   igual(paginas.map((x) => x.path), ["/sueldo-neto", "/aguinaldo", "/convenios/comercio", "/planillas", "/planillas/gracias"], "páginas por vistas");
@@ -675,9 +709,9 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
   }, "embudos: abrió la compra cuenta sólo el diálogo (el cta de /aguinaldo no)");
 
   igual(p.compras, [
-    { id: "666", fecha: "2026-09-06T16:05:00-03:00", producto: "planilla-monotributo", monto: 9900, moneda: "ARS", emailEnmascarado: "sin mail", conCuenta: false, desde: null, estado: "aprobado" },
-    { id: "222", fecha: "2026-09-06T15:05:00-03:00", producto: "planilla-uocra", monto: 14900, moneda: "ARS", emailEnmascarado: "ot***@hotmail.com", conCuenta: true, desde: null, estado: "reembolsado" },
-    { id: "111", fecha: "2026-09-03T09:15:00-03:00", producto: "planilla-comercio", monto: 14900, moneda: "ARS", emailEnmascarado: "co***@gmail.com", conCuenta: true, desde: "/convenios/comercio", estado: "aprobado" },
+    { id: "666", fecha: "2026-09-06T16:05:00-03:00", producto: "planilla-monotributo", monto: 9900, moneda: "ARS", montoUsd: 9.9, pais: null, mercado: "ar", emailEnmascarado: "sin mail", conCuenta: false, desde: null, estado: "aprobado" },
+    { id: "222", fecha: "2026-09-06T15:05:00-03:00", producto: "planilla-uocra", monto: 14900, moneda: "ARS", montoUsd: 14.9, pais: null, mercado: "ar", emailEnmascarado: "ot***@hotmail.com", conCuenta: true, desde: null, estado: "reembolsado" },
+    { id: "111", fecha: "2026-09-03T09:15:00-03:00", producto: "planilla-comercio", monto: 14900, moneda: "ARS", montoUsd: 14.9, pais: "UY", mercado: "ar", emailEnmascarado: "co***@gmail.com", conCuenta: true, desde: "/convenios/comercio", estado: "aprobado" },
   ], "compras del período, enmascaradas");
   const json = JSON.stringify(p);
   ok(!/comprador@gmail\.com|otro@hotmail\.com|x@y\.com|20123456789/.test(json), "ningún mail completo ni número largo sale de la base");
@@ -752,6 +786,8 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
   }
   ok(tiro, "un JSON roto tira con mensaje claro");
   igual([armado.mercado, armado.mercados?.map((m) => m.mercado)], [null, ["ar"]], "armarPanel lee el filtro y la comparativa");
+  igual([armado.ingresos.moneda, armado.kpis.find((k) => k.clave === "ingresos")?.valor, armado.paisesCompra?.length], ["USD", 24.8, 2], "ingresos en dólares y país de compra");
+  igual(armado.mercados?.[0].embudo, { visitas: 5, usaron: 3, ofertas: 2, clics: 2, checkouts: 5, ventas: 2 }, "embudo del mercado (una persona por día)");
   const crudoViejo: Record<string, unknown> = { ...p };
   delete crudoViejo.mercado;
   delete crudoViejo.mercados;
@@ -762,6 +798,19 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
   });
   const armadoViejo = mods.datos.armarPanel("7d", desde, hasta, crudoViejo);
   igual([armadoViejo.mercado, armadoViejo.mercados, armadoViejo.compras.map((c) => c.moneda)], [null, null, ["ARS", "ARS", "ARS"]], "con el ca_panel de antes de la migración: sin comparativa y todo en pesos");
+  const crudo1008: Record<string, unknown> = { ...p, kpis: (p.kpis as Record<string, unknown>[]).map((k) => (k.clave === "ingresos" ? { ...k, valor: 24800, anterior: 14900 } : k)) };
+  delete crudo1008.ingresos;
+  delete crudo1008.paisesCompra;
+  crudo1008.mercados = (p.mercados as Record<string, unknown>[]).map(({ mercado, usos, ventas, ingresos }) => ({ mercado, visitantes: 4, usos, ventas, ingresos }));
+  crudo1008.paginas = (p.paginas as Record<string, unknown>[]).map(({ ofertas: _o, ingresosUsd: _i, ...resto }) => resto);
+  crudo1008.compras = (p.compras as Record<string, unknown>[]).map(({ montoUsd: _m, pais: _p, mercado: _x, ...resto }) => resto);
+  crudo1008.embudos = (p.embudos as Record<string, unknown>[]).map(({ moneda: _m, ingresosUsd: _i, ...resto }) => resto);
+  const armado1008 = mods.datos.armarPanel("7d", desde, hasta, crudo1008);
+  igual(
+    [armado1008.ingresos.moneda, armado1008.ingresos.porMoneda, armado1008.paisesCompra, armado1008.mercados?.[0].embudo, armado1008.mercados?.[0].ingresosUsd, armado1008.paginas[0].ofertas, armado1008.compras[0].montoUsd],
+    ["ARS", [{ moneda: "ARS", monto: 24800, montoUsd: null, ventas: 2 }], null, null, 0, 0, null],
+    "con el ca_panel de 20261008 (sin la migración del mundo): ingresos en pesos, sin embudo por país, nada se rompe",
+  );
   igual(mods.datos.armarPanel("7d", desde, hasta, { ...p, mercado: "zz" }).mercado, null, "un mercado que no se mide no se toma como filtro");
 
   seccion("datos.ts · límites del rango en hora argentina");
@@ -825,8 +874,8 @@ async function probarResumen(db: Db) {
   igual(n[0].n, 4, "resume los días pedidos");
   ok(sinVivo(await panel(db, SEMANA.desde, SEMANA.hasta)) === sinVivo(crudo), "con días resumidos y un hueco en el medio da lo mismo que el crudo");
   await como(db, "service_role", null, async () => {
-    await db.query("select public.ca_resumir('2026-08-20', '2026-09-10')");
-    await db.query("select public.ca_resumir('2026-08-20', '2026-09-10')");
+    await db.query("select public.ca_resumir('2026-08-20', '2026-09-10'), public.ca_resumir_mercado('2026-08-20', '2026-09-10')");
+    await db.query("select public.ca_resumir('2026-08-20', '2026-09-10'), public.ca_resumir_mercado('2026-08-20', '2026-09-10')");
   });
   igual((await filas(db, "select count(*)::int as n from public.ca_resumen where mercado = '*' and dim = 'total' and dia between '2026-08-20' and '2026-09-10'"))[0].n, 22, "una fila total por día, también los días sin visitas");
   ok(sinVivo(await panel(db, SEMANA.desde, SEMANA.hasta)) === sinVivo(crudo), "todo resumido (y re-resumido) da lo mismo que el crudo");
@@ -878,6 +927,7 @@ async function probarDefaultsNuevos(PGlite: new (dataDir?: string) => Db) {
   const db = await nuevaBase(PGlite, "nuevo");
   try {
     await sembrar(db);
+    await cargarCambio(db);
     ok(true, "service_role inserta en todas las tablas con los grants explícitos");
     igual((await como(db, "authenticated", U.b, () => filas(db, "select mp_payment_id from public.ca_compras"))).map((f) => f.mp_payment_id), ["222"], "authenticated lee sus compras");
     await como(db, "anon", null, () => falla(db.query("select * from public.ca_compras"), "42501", "anon sigue sin leer"));
@@ -958,14 +1008,24 @@ async function probarCarga(PGlite: new (dataDir?: string) => Db, n: number) {
 
 const MIGRACION_MERCADO = migraciones.find((m) => m.f.includes("_ca_medicion_mercado"))?.f ?? "";
 
+// Lo que agregaron 20261008 (mercado) y 20261014 (mundo: dólares, país real, embudo por mercado) no
+// existe en el ca_panel de antes: se compara lo demás.
 function sinMercado(p: Record<string, unknown>): string {
   const resto: Record<string, unknown> = { ...p };
   delete resto.mercado;
   delete resto.mercados;
   delete resto.vivo;
+  delete resto.ingresos;
+  delete resto.paisesCompra;
+  resto.kpis = (p.kpis as Record<string, unknown>[]).filter((k) => k.clave !== "ingresos");
+  resto.paginas = (p.paginas as Record<string, unknown>[]).map(({ ofertas: _o, ingresosUsd: _i, ...x }) => x);
+  resto.embudos = (p.embudos as Record<string, unknown>[]).map(({ moneda: _m, ingresosUsd: _i, ...x }) => x);
   resto.compras = (p.compras as Record<string, unknown>[]).map((c) => {
     const x = { ...c };
     delete x.moneda;
+    delete x.montoUsd;
+    delete x.pais;
+    delete x.mercado;
     return x;
   });
   return JSON.stringify(canon(resto));
@@ -990,6 +1050,7 @@ async function probarMercados(PGlite: new (dataDir?: string) => Db) {
     const filasViejas = (await filas(db, "select count(*)::int as n from public.ca_resumen where dim <> 'total' or hll is not null"))[0].n;
     await aplicarMigraciones(db);
     ok(true, "la migración corre sobre una base con datos y días resumidos");
+    await cargarCambio(db);
 
     const todos = await panelDe(db, SEMANA.desde, SEMANA.hasta, null);
     ok(sinMercado(todos) === sinMercado(viejo), "Todos da lo mismo que antes de la migración");
@@ -1004,7 +1065,11 @@ async function probarMercados(PGlite: new (dataDir?: string) => Db) {
     );
     const vistas = (await filas(db, "select count(*)::int as n, count(*) filter (where sitio = 'ar' and mercado = 'ar')::int as ar from public.ca_vistas"))[0];
     igual(vistas.n, vistas.ar, "todas las vistas existentes quedan en ar/ar");
-    igual(todos.mercados, [{ mercado: "ar", visitantes: 4, usos: 4, ventas: 2, ingresos: [{ moneda: "ARS", monto: 24800 }] }], "comparativa con un solo mercado");
+    igual(
+      todos.mercados,
+      [{ mercado: "ar", visitantes: 5, usos: 4, ventas: 2, ingresos: [{ moneda: "ARS", monto: 24800 }], ingresosUsd: 24.8, usaron: 3, ofertas: 2, clics: 2, checkouts: 5 }],
+      "comparativa con un solo mercado",
+    );
 
     seccion("mercados · reglas de las columnas");
     await como(db, "service_role", null, async () => {
@@ -1037,11 +1102,11 @@ async function probarMercados(PGlite: new (dataDir?: string) => Db) {
       `),
     );
     const t2 = await panelDe(db, SEMANA.desde, SEMANA.hasta, null);
-    igual([kpi(t2, "visitantes").valor, kpi(t2, "usos").valor, kpi(t2, "ventas").valor, kpi(t2, "ingresos").valor], [8, 7, 3, 24800], "Todos suma los mercados; los ingresos del KPI son sólo pesos");
+    igual([kpi(t2, "visitantes").valor, kpi(t2, "usos").valor, kpi(t2, "ventas").valor, kpi(t2, "ingresos").valor], [8, 7, 3, 33.8], "Todos suma los mercados; los ingresos del KPI son en dólares (pesos convertidos más USD)");
     const ar2 = await panelDe(db, SEMANA.desde, SEMANA.hasta, "ar");
     ok(sinMercado(ar2) === sinMercado(viejo), "Argentina no se mueve con los datos intl");
     const mx = await panelDe(db, SEMANA.desde, SEMANA.hasta, "mx");
-    igual([kpi(mx, "visitantes").valor, kpi(mx, "usos").valor, kpi(mx, "ventas").valor, kpi(mx, "ingresos").valor], [2, 2, 1, 0], "México solo");
+    igual([kpi(mx, "visitantes").valor, kpi(mx, "usos").valor, kpi(mx, "ventas").valor, kpi(mx, "ingresos").valor], [2, 2, 1, 9], "México solo");
     igual((mx.paginas as { path: string; vistas: number }[]).map((x) => [x.path, x.vistas]), [["/mx/aguinaldo", 2], ["/mx/finiquito", 1]], "páginas de México");
     igual(mx.busquedas, [{ q: "aguinaldo mexico", n: 1, sinResultados: false }], "búsquedas de México");
     igual(mx.fuentes, [{ fuente: "Directo", visitantes: 1, usos: 1, ventas: 0 }, { fuente: "Google", visitantes: 1, usos: 1, ventas: 0 }], "fuentes de México");
@@ -1053,10 +1118,10 @@ async function probarMercados(PGlite: new (dataDir?: string) => Db) {
     validarForma(mx, FORMA_PANEL, "ca_panel(mx)", errores);
     ok(errores.length === 0, "el JSON filtrado respeta el contrato", errores.slice(0, 5));
     igual(t2.mercados, [
-      { mercado: "ar", visitantes: 4, usos: 4, ventas: 2, ingresos: [{ moneda: "ARS", monto: 24800 }] },
-      { mercado: "mx", visitantes: 2, usos: 2, ventas: 1, ingresos: [{ moneda: "USD", monto: 9 }] },
-      { mercado: "co", visitantes: 1, usos: 1, ventas: 0, ingresos: [] },
-      { mercado: "global", visitantes: 1, usos: 0, ventas: 0, ingresos: [] },
+      { mercado: "ar", visitantes: 5, usos: 4, ventas: 2, ingresos: [{ moneda: "ARS", monto: 24800 }], ingresosUsd: 24.8, usaron: 3, ofertas: 2, clics: 2, checkouts: 5 },
+      { mercado: "mx", visitantes: 2, usos: 2, ventas: 1, ingresos: [{ moneda: "USD", monto: 9 }], ingresosUsd: 9, usaron: 2, ofertas: 0, clics: 0, checkouts: 0 },
+      { mercado: "co", visitantes: 1, usos: 1, ventas: 0, ingresos: [], ingresosUsd: 0, usaron: 1, ofertas: 0, clics: 0, checkouts: 0 },
+      { mercado: "global", visitantes: 1, usos: 0, ventas: 0, ingresos: [], ingresosUsd: 0, usaron: 0, ofertas: 0, clics: 0, checkouts: 0 },
     ], "comparativa por mercado, ordenada por visitantes");
     ok(JSON.stringify(mx.mercados) === JSON.stringify(t2.mercados), "la comparativa no depende del filtro");
 
@@ -1064,7 +1129,7 @@ async function probarMercados(PGlite: new (dataDir?: string) => Db) {
     const lista = [null, "ar", "mx", "co"];
     const crudos: Record<string, unknown>[] = [];
     for (const m of lista) crudos.push(await panelDe(db, SEMANA.desde, SEMANA.hasta, m));
-    await como(db, "service_role", null, () => db.query("select public.ca_resumir('2026-08-25', '2026-09-07')"));
+    await como(db, "service_role", null, () => db.query("select public.ca_resumir('2026-08-25', '2026-09-07'), public.ca_resumir_mercado('2026-08-25', '2026-09-07')"));
     for (const [i, m] of lista.entries()) {
       ok(sinVivo(await panelDe(db, SEMANA.desde, SEMANA.hasta, m)) === sinVivo(crudos[i]), `resumido = crudo (${m ?? "todos"})`);
     }
@@ -1116,6 +1181,209 @@ async function probarPagos(PGlite: new (dataDir?: string) => Db) {
   }
 }
 
+const SEMANA_MUNDO = { desde: "2026-09-14T00:00:00-03:00", hasta: "2026-09-21T00:00:00-03:00" };
+const PRODUCTO_MX = "mx/sueldo-y-liquidacion";
+
+async function probarMundo(PGlite: new (dataDir?: string) => Db, mods: { datos: ModDatos; lecturas: ModLecturas }) {
+  seccion("mundo · mercados con forma de país o edición (20261014120000)");
+  const db = await nuevaBase(PGlite, "legado");
+  try {
+    await como(db, "service_role", null, async () => {
+      await db.query(
+        "insert into public.ca_vistas (id, ts, vid, sid, path, pais, uso_calc, sitio, mercado) values (gen_random_uuid(), '2026-09-14T10:00:00-03:00', $1, $2, '/ca-fr/pret', 'CA', true, 'intl', 'ca-fr')",
+        [V(70), S(70)],
+      );
+      ok(true, "una edición (ca-fr) entra en ca_vistas");
+      await falla(db.query("insert into public.ca_vistas (id, vid, sid, path, sitio, mercado) values (gen_random_uuid(), gen_random_uuid(), gen_random_uuid(), '/x', 'intl', 'ca_fr')"), "23514", "ca_fr no tiene forma de mercado");
+      await falla(db.query("insert into public.ca_vistas (id, vid, sid, path, sitio, mercado) values (gen_random_uuid(), gen_random_uuid(), gen_random_uuid(), '/x', 'intl', 'mexico')"), "23514", "un nombre largo tampoco");
+      await falla(db.query("insert into public.ca_eventos (tipo, pais) values ('error', 'mx')"), "23514", "el país de un evento va en mayúsculas ISO");
+      await falla(db.query("select public.ca_panel(now() - interval '1 day', now(), 'CA-FR')"), "22023", "ca_panel rechaza un mercado con mayúsculas");
+    });
+    const caFr = await panelDe(db, "2026-09-14T00:00:00-03:00", "2026-09-15T00:00:00-03:00", "ca-fr");
+    igual([kpi(caFr, "visitantes").valor, kpi(caFr, "usos").valor], [1, 1], "ca_panel filtra por una edición");
+
+    seccion("mundo · embudo de calcularya de punta a punta");
+    await como(db, "service_role", null, () =>
+      db.exec(`
+        insert into public.ca_vistas (id, ts, vid, sid, path, ref_host, pais, uso_calc, activo_ms, sitio, mercado) values
+          (gen_random_uuid(), '2026-09-15T10:00:00-03:00', '${V(71)}', '${S(71)}', '/mx/aguinaldo', 'www.google.com', 'CO', true, 40000, 'intl', 'mx'),
+          (gen_random_uuid(), '2026-09-15T11:00:00-03:00', '${V(72)}', '${S(72)}', '/mx/aguinaldo', null, 'MX', false, 2000, 'intl', 'mx'),
+          (gen_random_uuid(), '2026-09-16T09:00:00-03:00', '${V(71)}', '${S(73)}', '/mx/finiquito', null, 'CO', true, 30000, 'intl', 'mx');
+        insert into public.ca_eventos (ts, vid, tipo, path, producto, pais, sitio, mercado) values
+          ('2026-09-15T10:01:00-03:00', '${V(71)}', 'vista_oferta', '/mx/aguinaldo', '${PRODUCTO_MX}', 'CO', 'intl', 'mx'),
+          ('2026-09-15T10:02:00-03:00', '${V(71)}', 'cta_compra', '/mx/aguinaldo', '${PRODUCTO_MX}', 'CO', 'intl', 'mx'),
+          ('2026-09-15T11:01:00-03:00', '${V(72)}', 'vista_oferta', '/mx/aguinaldo', '${PRODUCTO_MX}', 'MX', 'intl', 'mx');
+        insert into public.ca_checkouts (id, ts, producto, vid, desde, sitio, mercado, proveedor) values
+          ('${CK(70)}', '2026-09-15T10:03:00-03:00', '${PRODUCTO_MX}', '${V(71)}', '/mx/planillas/sueldo-y-liquidacion', 'intl', 'mx', 'paypal'),
+          ('${CK(71)}', '2026-09-15T11:05:00-03:00', '${PRODUCTO_MX}', '${V(72)}', '/mx/planillas/sueldo-y-liquidacion', 'intl', 'mx', 'paypal');
+        update public.ca_checkouts set pais = 'PE' where id = '${CK(71)}';
+        insert into public.ca_compras (mp_payment_id, producto, monto, moneda, checkout_id, pagado_at, sitio, mercado, proveedor, pago_id) values
+          ('paypal:X1', '${PRODUCTO_MX}', 9, 'USD', '${CK(70)}', '2026-09-15T10:10:00-03:00', 'intl', 'mx', 'paypal', 'X1');
+        insert into public.ca_compras (mp_payment_id, producto, monto, pagado_at) values ('777', 'planilla-comercio', 14900, '2026-09-19T15:00:00-03:00');
+      `),
+    );
+    const ck = (await filas(db, "select pais, fuente, pagina, vid from public.ca_checkouts where id = $1", [CK(70)]))[0];
+    igual([ck.pais, ck.fuente, ck.pagina, ck.vid], ["CO", "Google", "/mx/aguinaldo", V(71)], "el checkout intl con vid hereda país real, fuente y página de la visita");
+    const compra = (await filas(db, "select pais, monto_usd from public.ca_compras where mp_payment_id = 'paypal:X1'"))[0];
+    igual([compra.pais, Number(compra.monto_usd)], ["CO", 9], "la compra toma el país del checkout y en USD vale lo mismo");
+    igual((await filas(db, "select monto_usd from public.ca_compras where mp_payment_id = '777'"))[0].monto_usd, null, "una venta en pesos sin cotización queda sin monto en USD (no en cero)");
+    igual(
+      (await como(db, "service_role", null, () => filas(db, "select dia::text as dia, moneda from public.ca_usd_pendientes()"))).map((f) => [f.dia, f.moneda]),
+      [["2026-09-19", "ARS"]],
+      "ca_usd_pendientes avisa qué día falta cotizar",
+    );
+
+    const mx = await panelDe(db, SEMANA_MUNDO.desde, SEMANA_MUNDO.hasta, "mx");
+    const errores: string[] = [];
+    validarForma(mx, FORMA_PANEL, "ca_panel(mx)", errores);
+    ok(errores.length === 0, "el JSON del mundo respeta el contrato", errores.slice(0, 5));
+    const emb = (mx.embudos as { producto: string; pasos: { n: number }[]; ingresos: number; moneda: string; ingresosUsd: number }[]).find((e) => e.producto === PRODUCTO_MX);
+    igual(emb && [...emb.pasos.map((x) => x.n), emb.ingresos, emb.moneda, emb.ingresosUsd], [2, 1, 2, 1, 9, "USD", 9], "embudo del producto intl: abrir la compra es el clic en la oferta (cta_compra)");
+    const aguinaldo = (mx.paginas as Record<string, unknown>[]).find((x) => x.path === "/mx/aguinaldo");
+    igual(
+      aguinaldo && [aguinaldo.ofertas, aguinaldo.interesCompra, aguinaldo.checkouts, aguinaldo.ventas, aguinaldo.ingresosUsd],
+      [2, 1, 2, 1, 9],
+      "la calculadora se lleva la oferta, el clic, los checkouts y la venta",
+    );
+    igual(mx.paisesCompra, [{ clave: "CO", n: 1 }], "compran desde Colombia aunque el contenido sea de México");
+    const filaMx = (mx.mercados as Record<string, unknown>[]).find((m) => m.mercado === "mx");
+    igual(
+      filaMx && [filaMx.visitantes, filaMx.usaron, filaMx.ofertas, filaMx.clics, filaMx.checkouts, filaMx.ventas, filaMx.ingresosUsd],
+      [3, 2, 2, 1, 2, 1, 9],
+      "embudo de México con una persona por día",
+    );
+    const todos = await panelDe(db, SEMANA_MUNDO.desde, SEMANA_MUNDO.hasta, null);
+    igual(
+      todos.ingresos,
+      { moneda: "USD", porMoneda: [{ moneda: "USD", monto: 9, montoUsd: 9, ventas: 1 }, { moneda: "ARS", monto: 14900, montoUsd: null, ventas: 1 }], sinCotizacion: 1 },
+      "en Todos, la venta sin cotización se ve aparte y no suma al KPI",
+    );
+    igual(kpi(todos, "ingresos").valor, 9, "KPI de ingresos en dólares");
+
+    seccion("mundo · tipo de cambio");
+    await como(db, "service_role", null, async () => {
+      igual((await filas(db, `select public.ca_tipo_cambio_cargar('2026-09-18', '{"ARS": 0.001}') as n`))[0].n, 1, "carga la cotización del viernes");
+      igual(Number((await filas(db, "select monto_usd from public.ca_compras where mp_payment_id = '777'"))[0].monto_usd), 14.9, "la venta del sábado usa la del viernes");
+      igual((await filas(db, "select count(*)::int as n from public.ca_usd_pendientes()"))[0].n, 0, "ya no queda nada pendiente");
+      await db.query(`select public.ca_tipo_cambio_cargar('2026-09-19', '{"ARS": 0.002}')`);
+      igual(Number((await filas(db, "select monto_usd from public.ca_compras where mp_payment_id = '777'"))[0].monto_usd), 29.8, "si llega la del mismo día, se recalcula con esa");
+      igual(
+        (await filas(db, `select public.ca_tipo_cambio_cargar('2026-09-18', '{"USD": 1, "AR$": 2, "EUR": -1, "GBP": "x", "jpy": 0.0067}') as n`))[0].n,
+        1,
+        "descarta USD, códigos raros, negativos y textos; normaliza a mayúsculas",
+      );
+      await falla(db.query("select public.ca_tipo_cambio_cargar(null, '{}')"), "22023", "sin día no carga");
+      await falla(db.query("select public.ca_tipo_cambio_cargar(current_date + 5, '{}')"), "22023", "un día futuro no carga");
+      await falla(db.query("select public.ca_tipo_cambio_cargar(current_date, '[1]')"), "22023", "las tasas son un objeto");
+    });
+
+    seccion("mundo · resumen por mercado = crudo");
+    const antes = await panelDe(db, SEMANA_MUNDO.desde, SEMANA_MUNDO.hasta, null);
+    const antesMx = await panelDe(db, SEMANA_MUNDO.desde, SEMANA_MUNDO.hasta, "mx");
+    igual((await como(db, "service_role", null, () => filas(db, "select public.ca_resumir_mercado('2026-09-14', '2026-09-20') as n")))[0].n, 7, "resume 7 días");
+    ok(sinVivo(await panelDe(db, SEMANA_MUNDO.desde, SEMANA_MUNDO.hasta, null)) === sinVivo(antes), "Todos: resumido = crudo");
+    ok(sinVivo(await panelDe(db, SEMANA_MUNDO.desde, SEMANA_MUNDO.hasta, "mx")) === sinVivo(antesMx), "México: resumido = crudo");
+    igual((await filas(db, "select count(*)::int as n from public.ca_resumen_mercado where mercado = '*' and dia between '2026-09-14' and '2026-09-20'"))[0].n, 7, "una marca por día, también sin actividad");
+    const m = (await como(db, "service_role", null, () => filas(db, "select public.ca_mantenimiento() as m")))[0].m as Record<string, number>;
+    ok(typeof m.dias_mercado === "number" && m.dias_mercado >= 2, "ca_mantenimiento también resume por mercado", m);
+
+    seccion("mundo · permisos");
+    for (const t of ["ca_tipo_cambio", "ca_resumen_mercado"]) {
+      await como(db, "anon", null, () => falla(db.query(`select * from public.${t} limit 1`), "42501", `anon no lee ${t}`));
+      await como(db, "authenticated", U.a, () => falla(db.query(`select * from public.${t} limit 1`), "42501", `authenticated no lee ${t}`));
+    }
+    for (const sql of [
+      "select public.ca_tipo_cambio_cargar(current_date, '{}')",
+      "select * from public.ca_usd_pendientes()",
+      "select public.ca_resumir_mercado(current_date - 1, current_date - 1)",
+      "select * from public.ca_resumen_mercado_rango(now() - interval '1 day', now())",
+      "select * from public.ca_resumen_mercado_calcular(now() - interval '1 day', now())",
+      "select public.ca_usd_de('ARS', current_date)",
+    ]) {
+      const nombre = sql.match(/public\.(\w+)/)?.[1];
+      for (const rol of ["anon", "authenticated"] as Rol[]) {
+        await como(db, rol, rol === "authenticated" ? U.a : null, () => falla(db.query(sql), "42501", `${rol} no ejecuta ${nombre}`));
+      }
+    }
+
+    seccion("mundo · datos.ts con productos y páginas de calcularya");
+    const armado = mods.datos.armarPanel("7d", new Date(SEMANA_MUNDO.desde), new Date(SEMANA_MUNDO.hasta), mx);
+    const embMx = armado.embudos.find((e) => e.producto === PRODUCTO_MX);
+    ok(!!embMx && embMx.titulo !== PRODUCTO_MX && embMx.moneda === "USD" && embMx.mercado === "mx" && embMx.precio > 0, "el embudo intl lleva título, precio y moneda del catálogo", embMx);
+    ok(armado.embudos.every((e) => e.mercado === "mx"), "mirando México, sólo productos de México");
+    igual(armado.paginas.find((x) => x.path === "/mx/aguinaldo")?.titulo, "Aguinaldo", "título de la calculadora sin el país cuando se filtra");
+    ok(/México/.test(mods.datos.tituloDePagina("/mx/aguinaldo", null)), "en Todos, el título lleva el país");
+    igual(mods.datos.tituloDePagina("/aguinaldo", null), "Aguinaldo (SAC)", "una página de calcular.ar queda con su título");
+    igual(armado.mercados?.find((x) => x.mercado === "mx")?.embudo, { visitas: 3, usaron: 2, ofertas: 2, clics: 1, checkouts: 2, ventas: 1 }, "armarPanel lee el embudo por mercado");
+  } finally {
+    await db.close();
+  }
+}
+
+// Los 190 países con 90 días resumidos: lo que más pesa en ca_panel es la comparativa por mercado
+// (HyperLogLog de cada país) y el resumen por mercado. Correr con CA_PANEL_MUNDO=1.
+async function probarCargaMundo(PGlite: new (dataDir?: string) => Db) {
+  seccion("carga · 190 mercados × 90 días resumidos");
+  const dir = mkdtempSync(path.join(tmpdir(), "ca-panel-mundo-"));
+  const db = await nuevaBase(PGlite, "legado", dir);
+  try {
+    const t0 = Date.now();
+    await db.exec(`
+      create temporary table mercados_carga as
+        select 'ar' as m
+        union all
+        (select x.c from (select distinct chr(97 + (g / 26) % 26) || chr(97 + g % 26) as c from generate_series(0, 300) g) x where x.c <> 'ar' order by x.c limit 189);
+      create temporary table regs_carga as
+        select i, array(select (floor(random() * 7))::smallint from generate_series(1, 1024)) as hll
+        from generate_series(0, 49) i;
+      insert into public.ca_resumen (dia, mercado, dim, clave, vistas, visitantes, usos, sesiones, tiempo_ms, hll, hist)
+      select d::date, x.m, 'total', '', 1000, 400, 300, 0, 60000, r.hll, array_fill(3, array[64])
+      from generate_series(current_date - 90, current_date - 1, interval '1 day') d
+      cross join (select distinct m from mercados_carga) x
+      join regs_carga r on r.i = (abs(hashtext(x.m || d::text)) % 50)
+      on conflict do nothing;
+      insert into public.ca_resumen (dia, mercado, dim, clave, vistas, visitantes, usos, sesiones, tiempo_ms, hll, hist)
+      select d::date, '*', 'total', '', 190000, 76000, 57000, 0, 60000, (select hll from regs_carga where i = 0), array_fill(570, array[64])
+      from generate_series(current_date - 90, current_date - 1, interval '1 day') d
+      on conflict do nothing;
+      insert into public.ca_resumen (dia, mercado, dim, clave, vistas, visitantes, usos, sesiones, tiempo_ms)
+      select d::date, '*', 'pagina', '/' || x.m || '/calc-' || k, 50, 20, 15, 0, 60000
+      from generate_series(current_date - 90, current_date - 1, interval '1 day') d
+      cross join (select distinct m from mercados_carga) x
+      cross join generate_series(1, 5) k
+      on conflict do nothing;
+      insert into public.ca_resumen_mercado (dia, mercado, visitantes, usaron, ofertas, clics)
+      select d::date, x.m, 400, 250, 100, 8
+      from generate_series(current_date - 90, current_date - 1, interval '1 day') d
+      cross join (select distinct m from mercados_carga) x
+      on conflict do nothing;
+      insert into public.ca_resumen_mercado (dia, mercado)
+      select d::date, '*' from generate_series(current_date - 90, current_date - 1, interval '1 day') d
+      on conflict do nothing;
+      insert into public.ca_compras (mp_payment_id, producto, monto, moneda, pagado_at, sitio, mercado)
+      select 'c' || g, 'x/y', 9, 'USD', now() - (g % 80) * interval '1 day', 'intl', (select m from mercados_carga where m <> 'ar' order by m offset g % 189 limit 1)
+      from generate_series(1, 3000) g;
+      analyze;
+    `);
+    console.log(`  siembra: ${((Date.now() - t0) / 1000).toFixed(1)} s`);
+    for (const [nombre, mercado] of [["Todos", null], ["un país", "mx"]] as const) {
+      const tiempos: number[] = [];
+      let p: Record<string, unknown> = {};
+      for (let i = 0; i < 2; i++) {
+        const t = Date.now();
+        p = await panelDe(db, new Date(Date.now() - 89 * 86_400_000).toISOString(), new Date().toISOString(), mercado);
+        tiempos.push(Date.now() - t);
+      }
+      console.log(`  ca_panel 90 días, ${nombre}: ${tiempos.map((x) => `${x} ms`).join(" · ")} (${(p.mercados as unknown[]).length} mercados)`);
+      ok(Math.min(...tiempos) < 20_000, `ca_panel 90 días (${nombre}) entra en el timeout de 20 s`, tiempos);
+      ok((p.mercados as unknown[]).length === 190, "la comparativa trae los 190 mercados");
+    }
+  } finally {
+    await db.close();
+    rmSync(dir, { recursive: true, force: true });
+  }
+}
+
 async function main() {
   chequeosEstaticos();
   const PGlite = cargarPGlite();
@@ -1129,6 +1397,7 @@ async function main() {
       await aplicarMigraciones(db);
       ok(true, "las migraciones se aplican dos veces seguidas sobre una base vacía");
       await sembrar(db);
+      await cargarCambio(db);
       await probarCuentasYRls(db);
       await probarFunciones(db);
       await probarPanel(db, mods);
@@ -1140,6 +1409,8 @@ async function main() {
     await probarDefaultsNuevos(PGlite);
     await probarMercados(PGlite);
     await probarPagos(PGlite);
+    await probarMundo(PGlite, mods);
+    if (process.env.CA_PANEL_MUNDO) await probarCargaMundo(PGlite);
     const carga = Number(process.env.CA_PANEL_CARGA ?? 0);
     if (carga > 0) await probarCarga(PGlite, carga);
   }

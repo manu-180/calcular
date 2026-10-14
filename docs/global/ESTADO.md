@@ -15,6 +15,67 @@ Rama de integración: `claude/global-calculators-multipa-s-dfbec3` (incluye el P
 | Universales cotidianas, salud, hogar e IVA (21) | `claude/mundo-univ-cotidianas` | `src/motor/universales/<21 ids>/**`, `universales/cotidianas.ts` |
 | Investigación de los países del mundo | `claude/mundo-paises-research` | `docs/global/PAISES.md` |
 
+## Integrado en la rama (14/10/2026)
+
+- Contrato de universales, 40 conceptos, 6 categorías, `check_universales`, `gen_idiomas_universales`.
+- **41 universales** en es (tú, usted, vos) y en: 1.157 casos en verde, incluidos mercados con nombre
+  de país largo. Frentes cerrados: `claude/mundo-univ-finanzas`, `claude/mundo-univ-cotidianas`.
+- `docs/global/PAISES.md`: 199 países, tier 1 = US DE GB IN FR CA AU BR IT ES NL CH ZA BE AT.
+
+## Traducción de universales (en curso)
+
+Un agente por idioma, cada uno crea solo `textos/<idioma>.ts` y `contenido/<idioma>.ts`; el cableado
+lo hace `gen_idiomas_universales`: `claude/mundo-trad-{pt,fr,de,it,nl}`. Registro fijo por idioma:
+pt «você», fr «vous», de «Sie», it «tu», nl «je».
+
+## Pedidos al motor anotados
+
+- `NOMBRES_UNIDAD` por idioma (hoy «meses», «días» salen en español en páginas en inglés).
+- Tipo de campo `hora` (horas-trabajadas usa listas de 96 horarios) y campos condicionales por modo.
+- `ui()` sin locale: los textos de `ui` evitan números con decimales.
+- Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
+
+## Pausa y cómo retomar (14/10/2026 00:45, pedida por Manuel)
+
+Todo commiteado y pusheado. Integrado en esta rama: contrato, 41 universales (es, en), PAISES.md,
+**i18n del motor** (`claude/mundo-i18n`, 7 idiomas, `check_i18n` verde) y **ofertas por idioma**
+(`claude/mundo-ofertas`, 19 familias nuevas, textos en 7 idiomas). Checks verdes tras integrar:
+tsc, check_i18n, check_universales (41, 1157 casos), check_fronteras, check_eol.
+
+| Frente pausado | Rama · último commit | Qué falta |
+|---|---|---|
+| Escala | `claude/mundo-escala` · 566770c (verde, 8 de 9 puntos) | integrar; punto 9 (global en inglés) ya destrabado por i18n (datos.ts acepta IDIOMAS) |
+| Métricas | `claude/mundo-metricas` · f832241 (WIP, casi todo hecho) | revisar 2 fallas de `check_flujo_ofertas_intl` (probable: el checkout intl ahora se registra siempre, `api/pagos/checkout/route.ts`); commit final; Manuel corre `docs/global/SQL-METRICAS.md` pasos 1 y 2. Arregló un bug grave: `/api/e` descartaba todo evento con producto intl, así que hoy no se mide ningún clic de oferta de calcularya |
+| Traducción pt | `claude/mundo-trad-pt` · 7af11db | 19 de finanzas |
+| Traducción fr | `claude/mundo-trad-fr` · 4623cb6 | 19 de finanzas; su script de tipografía fr (`tipo_fr.py`) vivía en su scratchpad |
+| Traducción de | `claude/mundo-trad-de` · b8e382c | 19 de finanzas; «ß» en `ui()` para de-CH |
+| Traducción it | `claude/mundo-trad-it` · a941bb7 | 18 de finanzas (prestamo hecha); creó `universales/comun/italiano.ts` |
+| Traducción nl | `claude/mundo-trad-nl` · b191f0e | 17 de finanzas; prestamo y tasa-efectiva sin verificar |
+
+**Orden al retomar:**
+1. Integrar `claude/mundo-escala` (conflictos esperables en `src/motor/ui/**` e i18n: gana i18n en
+   diccionarios, escala en estructura). Correr tsc y todos los checks del motor.
+2. Pedidos cruzados pendientes:
+   - escala → i18n: claves `shell.menu.vida` (es «Vida diaria», en «Everyday») y `pais.irASeccion`;
+     sacar textos provisorios de `menu.ts` e `Inicio.tsx`.
+   - i18n → UI: `AvisoPais.tsx:40`, `SelectorPais.tsx:42`, `Sello.tsx:36` con idioma fijo;
+     `metadatos.ts:72` y `og/[[...slug]]/route.tsx:103` a `paginasLegales(idioma, trato, locale)`;
+     `validar.ts:57` aceptar ids del país de una edición (`paisDelMercado`).
+   - i18n → ofertas: regex `^[a-z]{2,6}$` de `catalogo-intl.ts:34` y `:363` a `RE_CODIGO_MERCADO`.
+   - ofertas → universales: prestamo, hipoteca, interes-compuesto, tarjeta-de-credito declaran `tablas`
+     (verificar que ya lo hacen); tarjeta: campo del pago llamado `pago|pagoMensual|cuota`.
+   - ofertas/escala → informe: `_informe-vivo.tsx` tiene que cargar universales con `cargarUniversal`.
+   - métricas → `_compra.tsx`: `textos={textosTarjeta(m.idioma, m.trato).aviso}` en `<AvisoPronto>`.
+   - `ui()` de universales sin locale (decimales, «ß» de-CH, variantes pt-PT): pasar `locale` a `ui`.
+3. Prender global en inglés (`src/paises/index.ts`: «Worldwide», en, en).
+4. Integrar métricas.
+5. Retomar los 5 traductores (SendMessage a cada uno o agentes nuevos con su rama) con las 19 de
+   finanzas; integrar con `git merge -X ours` y `npx tsx scripts/gen_idiomas_universales.ts`.
+6. Encargo de país global (docs/global/BRIEF-PAIS.md, nuevo) y tanda 1: US GB CA AU (en), DE AT CH
+   (de), FR BE (fr), IT, NL, ES, BR PT. Cada país: `universales: "todas"` + iva con su tasa verificada
+   + calculadoras locales verificadas.
+7. Sumar `universales: "todas"` a los 16 países LATAM.
+
 ## Próximo
 
 Ronda 2: integrar las ramas de la ronda 1, traducir universales a pt fr de it nl, País y edición

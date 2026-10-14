@@ -35,7 +35,7 @@ export function DatosCompra({
     .map((c) => {
       const v = datos.entrada[c.id];
       let texto: string;
-      if (typeof v === "boolean") texto = v ? "Sí" : "No";
+      if (typeof v === "boolean") texto = c.opciones?.[String(v)] ?? String(v);
       else if (typeof v === "number") texto = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(v);
       else if (c.tipo === "fecha" && typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(`${v}T00:00:00Z`)))
         texto = new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeZone: "UTC" }).format(new Date(`${v}T00:00:00Z`));
