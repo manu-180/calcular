@@ -30,4 +30,7 @@ export default definirContenido({
       respuesta: "Er erhöht den Jahreslohn. Damit steigt der koordinierte Lohn für die Pensionskasse und mit ihm der monatliche BVG-Abzug.",
     },
   ],
+  glosario: [
+    { termino: "Bruttolohn", definicion: "Lohn vor Abzug der Sozialversicherungsbeiträge und allfälliger Quellensteuer." },
+  ],
 });

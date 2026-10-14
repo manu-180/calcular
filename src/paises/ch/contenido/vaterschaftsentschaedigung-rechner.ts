@@ -30,4 +30,7 @@ export default definirContenido({
       respuesta: "Der rechtliche Vater bei der Geburt oder innerhalb der folgenden sechs Monate, und die Ehefrau der Mutter, wenn sie bei der Geburt rechtlicher Elternteil ist.",
     },
   ],
+  glosario: [
+    { termino: "Urlaub des andern Elternteils", definicion: "Zwei Wochen bezahlter Urlaub nach der Geburt, meist Vaterschaftsurlaub genannt." },
+  ],
 });

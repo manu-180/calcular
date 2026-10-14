@@ -8,7 +8,7 @@ export default definirContenido({
     "Direkte Bundessteuer 2026 für Alleinstehende, Verheiratete und Familien berechnen: Tarif nach Art. 36 DBG, Abzug {{ch.dbst-kinderermaessigung}} je Kind, Grenzsteuersatz.",
   intro: [
     "Die direkte Bundessteuer ist der Teil der Einkommenssteuer, der an den Bund geht. Kanton und Gemeinde erheben ihre eigenen Steuern dazu, die hier nicht enthalten sind.",
-    "Der Tarif ist im ganzen Land gleich. Für 2026 hat das Eidgenössische Finanzdepartement die Tarifstufen an die Teuerung angepasst.",
+    "Der Tarif ist im ganzen Land gleich. Das Eidgenössische Finanzdepartement passt die Tarifstufen wegen der kalten Progression an, zuletzt für 2026 und 2027. Der Rechner nimmt den Tarif des Jahres, in dem Sie rechnen.",
   ],
   comoSeCalcula: [
     "Grundlage ist das steuerbare Einkommen nach allen Abzügen. Gerechnet wird mit vollen 100 Franken.",
@@ -34,7 +34,7 @@ export default definirContenido({
     },
     {
       pregunta: "Wie hoch ist die Bundessteuer höchstens?",
-      respuesta: "11.5 % des steuerbaren Einkommens. Dieser Satz gilt ab 794 000 Franken für Alleinstehende und ab 941 400 Franken für Verheiratete auf dem ganzen Einkommen.",
+      respuesta: "11.5 % des steuerbaren Einkommens. Ab einer Einkommensgrenze, die im Tarif steht und für 2026 bei 794 000 Franken (Alleinstehende) und 941 400 Franken (Verheiratete) liegt, gilt dieser Satz auf dem ganzen Einkommen.",
     },
   ],
   glosario: [

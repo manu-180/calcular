@@ -30,4 +30,7 @@ export default definirContenido({
       respuesta: "Ja, wenn das schriftlich vereinbart oder in einem Normal- oder Gesamtarbeitsvertrag geregelt ist. Ohne solche Abrede gilt der Zuschlag von mindestens {{ch.ueberstunden-zuschlag}}.",
     },
   ],
+  glosario: [
+    { termino: "Überstunden", definicion: "Arbeit über der vereinbarten oder üblichen Arbeitszeit, wenn sie notwendig ist." },
+  ],
 });

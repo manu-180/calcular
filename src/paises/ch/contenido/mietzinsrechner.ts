@@ -32,4 +32,8 @@ export default definirContenido({
       respuesta: "Höchstens {{ch.mietzins-teuerungsanteil}} der Steigerung des Landesindexes der Konsumentenpreise.",
     },
   ],
+  glosario: [
+    { termino: "Referenzzinssatz", definicion: "Durchschnittlicher Zinssatz der inländischen Hypotheken, auf ein Viertelprozent gerundet. Er dient als Grundlage für Mietzinsanpassungen." },
+    { termino: "Nettomietzins", definicion: "Mietzins ohne Nebenkosten." },
+  ],
 });

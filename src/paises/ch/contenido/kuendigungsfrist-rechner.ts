@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Kündigungsfrist-Rechner Schweiz",
   title: "Kündigungsfrist Rechner Schweiz: letzter Arbeitstag nach OR",
   description:
-    "Kündigungsfrist nach Obligationenrecht: 7 Tage in der Probezeit, danach 1, 2 oder 3 Monate je nach Dienstjahr, jeweils auf ein Monatsende. Letzten Arbeitstag berechnen.",
+    "Kündigungsfrist nach OR: 7 Tage in der Probezeit, danach 1, 2 oder 3 Monate je nach Dienstjahr auf ein Monatsende. Letzten Arbeitstag berechnen.",
   intro: [
     "Ohne andere Abrede gelten in der Schweiz die Kündigungsfristen des Obligationenrechts. Sie hängen vom Dienstjahr ab und laufen auf das Ende eines Monats.",
     "Der Rechner zählt ab dem Tag, an dem die Kündigung beim Empfänger eintrifft. Das Datum des Versands spielt dafür keine Rolle.",
@@ -29,5 +29,9 @@ export default definirContenido({
       pregunta: "Was ist eine Sperrfrist?",
       respuesta: "Nach der Probezeit darf der Arbeitgeber zum Beispiel während Krankheit oder Unfall ohne eigenes Verschulden, während der Schwangerschaft und 16 Wochen nach der Geburt nicht kündigen. Bei Krankheit oder Unfall gilt das im ersten Dienstjahr 30 Tage, vom zweiten bis fünften 90 Tage, danach 180 Tage.",
     },
+  ],
+  glosario: [
+    { termino: "Probezeit", definicion: "Die ersten Wochen einer Anstellung mit kurzer Kündigungsfrist. Ohne Abrede ist es der erste Monat." },
+    { termino: "Sperrfrist", definicion: "Zeit, in der der Arbeitgeber nach der Probezeit nicht kündigen darf." },
   ],
 });

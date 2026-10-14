@@ -30,4 +30,8 @@ export default definirContenido({
       respuesta: "Nein. Beitragspflichtig für die ALV sind Arbeitnehmende und Arbeitgeber, nicht das Einkommen aus selbstständiger Tätigkeit.",
     },
   ],
+  glosario: [
+    { termino: "Sinkende Beitragsskala", definicion: "Tiefere AHV/IV/EO-Sätze für Selbstständigerwerbende mit kleinerem Einkommen." },
+    { termino: "Ausgleichskasse", definicion: "Stelle, die AHV-Beiträge erhebt und Renten auszahlt." },
+  ],
 });

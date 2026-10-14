@@ -30,4 +30,8 @@ export default definirContenido({
       respuesta: "Andere Rechner können eine andere Indexbasis oder mehr Dezimalen verwenden. Daraus entstehen kleine Rundungsunterschiede.",
     },
   ],
+  glosario: [
+    { termino: "LIK", definicion: "Landesindex der Konsumentenpreise des Bundesamts für Statistik." },
+    { termino: "Teuerung", definicion: "Anstieg der Konsumentenpreise über einen Zeitraum." },
+  ],
 });

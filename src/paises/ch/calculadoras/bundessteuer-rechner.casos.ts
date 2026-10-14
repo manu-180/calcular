@@ -47,4 +47,26 @@ export default definirCasos(bundessteuerRechner, [
     entrada: { einkommen: 1000000, zivilstand: "alleinstehend", kinder: 0 },
     esperado: { steuer: 115000, grenzsatz: 11.5 },
   },
+  {
+    nombre: "Tarif 2027, alleinstehend, 80 000 Franken",
+    origen: {
+      tipo: "recalculado",
+      url: "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1991/1184_1184_1184/20270101/de/html/fedlex-data-admin-ch-eli-cc-1991-1184_1184_1184-20270101-de-html-2.html",
+      detalle: "Art. 36 Abs. 1 DBG ab 2027: für 76 500 Franken 1155,85, je weitere 100 Franken 5,94. 35 × 5,94 = 207,90; Steuer 1363,75.",
+    },
+    fecha: "2027-02-01",
+    entrada: { einkommen: 80000, zivilstand: "alleinstehend", kinder: 0 },
+    esperado: { steuer: 1363.75 },
+  },
+  {
+    nombre: "Tarif 2027, verheiratet mit zwei Kindern, 120 000 Franken",
+    origen: {
+      tipo: "recalculado",
+      url: "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1991/1184_1184_1184/20270101/de/html/fedlex-data-admin-ch-eli-cc-1991-1184_1184_1184-20270101-de-html-2.html",
+      detalle: "Abs. 2 ab 2027: für 109 200 Franken 2259, je weitere 100 Franken 6: 108 × 6 = 648; 2907. Abs. 2bis: minus 2 × 264 = 528; Steuer 2379.",
+    },
+    fecha: "2027-02-01",
+    entrada: { einkommen: 120000, zivilstand: "verheiratet", kinder: 2 },
+    esperado: { tarifsteuer: 2907, ermaessigung: 528, steuer: 2379 },
+  },
 ]);

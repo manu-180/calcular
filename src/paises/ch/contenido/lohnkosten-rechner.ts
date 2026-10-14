@@ -33,4 +33,8 @@ export default definirContenido({
       respuesta: "Die Verwaltungskosten der AHV-Ausgleichskasse, Beiträge, die ein Gesamtarbeitsvertrag vorschreibt, und freiwillige Leistungen. Prüfen Sie diese in Ihren Verträgen.",
     },
   ],
+  glosario: [
+    { termino: "FAK", definicion: "Familienausgleichskasse. Sie zahlt die Familienzulagen aus und erhebt dafür Beiträge auf den Löhnen." },
+    { termino: "BU", definicion: "Berufsunfallversicherung. Ihre Prämie trägt der Arbeitgeber." },
+  ],
 });

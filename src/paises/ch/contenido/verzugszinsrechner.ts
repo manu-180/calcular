@@ -30,4 +30,8 @@ export default definirContenido({
       respuesta: "Nein. Von Verzugszinsen dürfen keine Verzugszinsen berechnet werden. Der Rechner verzinst nur den ursprünglichen Betrag.",
     },
   ],
+  glosario: [
+    { termino: "Verzug", definicion: "Der Schuldner zahlt eine fällige Schuld trotz Mahnung oder nach Ablauf des vereinbarten Verfalltags nicht." },
+    { termino: "Verfalltag", definicion: "Vereinbarter Tag, an dem eine Zahlung spätestens erfolgen muss." },
+  ],
 });

@@ -398,11 +398,12 @@
       "nombre": "Direkte Bundessteuer, Tarif für Alleinstehende (Franken je 100 Franken als Satz)",
       "tipo": "escala",
       "unidad": "CHF",
-      "proximaRevision": "2027-01-01",
+      "proximaRevision": "2028-01-01",
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2026-01-01",
+          "hasta": "2026-12-31",
           "valor": [
             {
               "desde": 0,
@@ -483,6 +484,90 @@
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
           }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 15300,
+              "tasa": 0
+            },
+            {
+              "desde": 15300,
+              "hasta": 33400,
+              "tasa": 0.77,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 33400,
+              "hasta": 43700,
+              "tasa": 0.88,
+              "cuotaFija": 139.35
+            },
+            {
+              "desde": 43700,
+              "hasta": 58300,
+              "tasa": 2.64,
+              "cuotaFija": 229.95
+            },
+            {
+              "desde": 58300,
+              "hasta": 76500,
+              "tasa": 2.97,
+              "cuotaFija": 615.35
+            },
+            {
+              "desde": 76500,
+              "hasta": 82400,
+              "tasa": 5.94,
+              "cuotaFija": 1155.85
+            },
+            {
+              "desde": 82400,
+              "hasta": 109400,
+              "tasa": 6.6,
+              "cuotaFija": 1506.3
+            },
+            {
+              "desde": 109400,
+              "hasta": 142200,
+              "tasa": 8.8,
+              "cuotaFija": 3288.3
+            },
+            {
+              "desde": 142200,
+              "hasta": 185900,
+              "tasa": 11.0,
+              "cuotaFija": 6174.7
+            },
+            {
+              "desde": 185900,
+              "hasta": 797400,
+              "tasa": 13.2,
+              "cuotaFija": 10981.7
+            },
+            {
+              "desde": 797400,
+              "hasta": 797500,
+              "tasa": 13.2,
+              "cuotaFija": 91699.7
+            },
+            {
+              "desde": 797500,
+              "hasta": null,
+              "tasa": 11.5,
+              "cuotaFija": 91712.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 36 DBG, Fassung ab 1. Januar 2027 (Verordnung des EFD vom 11. September 2026 über die kalte Progression, AS 2026 486)",
+            "url": "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1991/1184_1184_1184/20270101/de/html/fedlex-data-admin-ch-eli-cc-1991-1184_1184_1184-20270101-de-html-2.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
         }
       ]
     },
@@ -491,11 +576,12 @@
       "nombre": "Direkte Bundessteuer, Tarif für Verheiratete und Einelternfamilien",
       "tipo": "escala",
       "unidad": "CHF",
-      "proximaRevision": "2027-01-01",
+      "proximaRevision": "2028-01-01",
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2026-01-01",
+          "hasta": "2026-12-31",
           "valor": [
             {
               "desde": 0,
@@ -600,6 +686,114 @@
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
           }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 29900,
+              "tasa": 0
+            },
+            {
+              "desde": 29900,
+              "hasta": 53700,
+              "tasa": 1.0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 53700,
+              "hasta": 61600,
+              "tasa": 2.0,
+              "cuotaFija": 238.0
+            },
+            {
+              "desde": 61600,
+              "hasta": 79500,
+              "tasa": 3.0,
+              "cuotaFija": 396.0
+            },
+            {
+              "desde": 79500,
+              "hasta": 95400,
+              "tasa": 4.0,
+              "cuotaFija": 933.0
+            },
+            {
+              "desde": 95400,
+              "hasta": 109200,
+              "tasa": 5.0,
+              "cuotaFija": 1569.0
+            },
+            {
+              "desde": 109200,
+              "hasta": 121200,
+              "tasa": 6.0,
+              "cuotaFija": 2259.0
+            },
+            {
+              "desde": 121200,
+              "hasta": 131100,
+              "tasa": 7.0,
+              "cuotaFija": 2979.0
+            },
+            {
+              "desde": 131100,
+              "hasta": 139100,
+              "tasa": 8.0,
+              "cuotaFija": 3672.0
+            },
+            {
+              "desde": 139100,
+              "hasta": 145000,
+              "tasa": 9.0,
+              "cuotaFija": 4312.0
+            },
+            {
+              "desde": 145000,
+              "hasta": 149000,
+              "tasa": 10.0,
+              "cuotaFija": 4843.0
+            },
+            {
+              "desde": 149000,
+              "hasta": 151100,
+              "tasa": 11.0,
+              "cuotaFija": 5243.0
+            },
+            {
+              "desde": 151100,
+              "hasta": 153100,
+              "tasa": 12.0,
+              "cuotaFija": 5474.0
+            },
+            {
+              "desde": 153100,
+              "hasta": 945900,
+              "tasa": 13.0,
+              "cuotaFija": 5714.0
+            },
+            {
+              "desde": 945900,
+              "hasta": 946000,
+              "tasa": 13.0,
+              "cuotaFija": 108778.0
+            },
+            {
+              "desde": 946000,
+              "hasta": null,
+              "tasa": 11.5,
+              "cuotaFija": 108790.0
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 36 DBG, Fassung ab 1. Januar 2027 (Verordnung des EFD vom 11. September 2026 über die kalte Progression, AS 2026 486)",
+            "url": "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1991/1184_1184_1184/20270101/de/html/fedlex-data-admin-ch-eli-cc-1991-1184_1184_1184-20270101-de-html-2.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
         }
       ]
     },
@@ -608,16 +802,29 @@
       "nombre": "Direkte Bundessteuer, Ermässigung je Kind",
       "tipo": "numero",
       "unidad": "CHF",
-      "proximaRevision": "2027-01-01",
+      "proximaRevision": "2028-01-01",
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2025-01-01",
+          "hasta": "2026-12-31",
           "valor": 263,
           "fuente": {
             "organismo": "Bundeskanzlei (fedlex.admin.ch)",
             "titulo": "Art. 36 Abs. 2bis DBG",
             "url": "https://www.fedlex.admin.ch/eli/cc/1991/1184_1184_1184/de#art_36",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 264,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 36 DBG, Fassung ab 1. Januar 2027 (Verordnung des EFD vom 11. September 2026 über die kalte Progression, AS 2026 486)",
+            "url": "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1991/1184_1184_1184/20270101/de/html/fedlex-data-admin-ch-eli-cc-1991-1184_1184_1184-20270101-de-html-2.html",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
           }

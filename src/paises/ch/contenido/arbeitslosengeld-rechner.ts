@@ -37,4 +37,8 @@ export default definirContenido({
       respuesta: "Ein Monat entspricht {{ch.alv-tage-pro-monat}} Taggeldern. Für eine Woche werden fünf Taggelder ausbezahlt.",
     },
   ],
+  glosario: [
+    { termino: "Versicherter Verdienst", definicion: "Der durchschnittliche Lohn, auf dem das Taggeld berechnet wird, höchstens bis zum Höchstbetrag der Unfallversicherung." },
+    { termino: "Rahmenfrist", definicion: "Zeitraum von zwei Jahren für die Beitragszeit und für den Bezug der Taggelder." },
+  ],
 });

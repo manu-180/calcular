@@ -30,4 +30,7 @@ export default definirContenido({
       respuesta: "Der Arbeitgeber legt den Zeitpunkt fest und nimmt dabei Rücksicht auf Ihre Wünsche, soweit der Betrieb es zulässt. Mindestens zwei Ferienwochen müssen zusammenhängen.",
     },
   ],
+  glosario: [
+    { termino: "Dienstjahr", definicion: "Das Jahr ab Beginn des Arbeitsverhältnisses, nicht das Kalenderjahr." },
+  ],
 });

@@ -34,4 +34,7 @@ export default definirContenido({
       respuesta: "Ja. Auf der Entschädigung werden AHV/IV/EO-Beiträge erhoben, bei Arbeitnehmerinnen zusätzlich der Beitrag an die Arbeitslosenversicherung.",
     },
   ],
+  glosario: [
+    { termino: "EO", definicion: "Erwerbsersatzordnung. Sie zahlt Entschädigungen bei Mutterschaft, Vaterschaft und Dienst." },
+  ],
 });

@@ -57,4 +57,19 @@ export const novedades: readonly Novedad[] = [
       verificadoEl: "2026-10-14",
     },
   },
+  {
+    id: "ch.dbst-tarif-2027",
+    fecha: "2026-10-14",
+    titulo: "Bundessteuer 2027: neue Tarifstufen und 264 Franken je Kind",
+    texto: "Ab dem Steuerjahr 2027 gelten angepasste Tarife der direkten Bundessteuer. Die Ermässigung je Kind steigt von 263 auf 264 Franken. Die Rechner wechseln am 1. Januar 2027 automatisch auf den neuen Tarif.",
+    vigenteDesde: "2027-01-01",
+    calculadoras: ["ch.bundessteuer-rechner", "ch.kapitalbezug-steuer-rechner", "ch.saeule-3a-rechner"],
+    fuente: {
+      organismo: "Bundeskanzlei (fedlex.admin.ch)",
+      titulo: "Art. 36 DBG, Fassung gemäss Verordnung des EFD vom 11. September 2026 über die kalte Progression (AS 2026 486)",
+      url: "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1991/1184_1184_1184/20270101/de/html/fedlex-data-admin-ch-eli-cc-1991-1184_1184_1184-20270101-de-html-2.html",
+      tipo: "primaria",
+      verificadoEl: "2026-10-14",
+    },
+  },
 ];

@@ -30,4 +30,7 @@ export default definirContenido({
       respuesta: "Ja. Er gehört zum AHV-pflichtigen Lohn. Dafür gibt es den Brutto-Netto-Rechner.",
     },
   ],
+  glosario: [
+    { termino: "Gratifikation", definicion: "Sondervergütung zu einem bestimmten Anlass, etwa Weihnachten. Sie ist nur geschuldet, wenn sie verabredet ist." },
+  ],
 });

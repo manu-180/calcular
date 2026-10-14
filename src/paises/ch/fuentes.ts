@@ -27,13 +27,13 @@ async function snbReihe(http: Http, url: string, reihe: string, monatlich: boole
 // dem letzten geprüften Stand ist ein Hinweis, die Werte neu zu lesen.
 const ERLASSE: readonly { eli: string; name: string; geprueft: FechaISO }[] = [
   { eli: "cc/63/837_843_843", name: "AHVG", geprueft: "2027-01-01" },
-  { eli: "cc/1983/797_797_797", name: "BVG", geprueft: "2025-01-01" },
+  { eli: "cc/1983/797_797_797", name: "BVG", geprueft: "2027-09-26" },
   { eli: "cc/1984/543_543_543", name: "BVV 2", geprueft: "2026-08-01" },
-  { eli: "cc/1991/1184_1184_1184", name: "DBG", geprueft: "2026-09-02" },
+  { eli: "cc/1991/1184_1184_1184", name: "DBG", geprueft: "2027-01-01" },
   { eli: "cc/2009/615", name: "MWSTG", geprueft: "2025-03-31" },
   { eli: "cc/1982/2184_2184_2184", name: "AVIG", geprueft: "2026-01-01" },
-  { eli: "cc/1983/38_38_38", name: "UVV", geprueft: "2026-01-01" },
-  { eli: "cc/1952/1021_1046_1050", name: "EOG", geprueft: "2026-06-01" },
+  { eli: "cc/1983/38_38_38", name: "UVV", geprueft: "2027-01-01" },
+  { eli: "cc/1952/1021_1046_1050", name: "EOG", geprueft: "2027-07-01" },
   { eli: "cc/2008/51", name: "FamZG", geprueft: "2026-01-01" },
 ];
 
@@ -43,8 +43,15 @@ SELECT ?date WHERE { ?c jolux:isMemberOf <https://fedlex.data.admin.ch/eli/${eli
   return `${SPARQL}?query=${encodeURIComponent(q)}`;
 }
 
+// Fedlex führt auch Fassungen für Übergangsbestimmungen mit Daten Jahrzehnte voraus. Nur was innert
+// rund eines Jahres gilt, ist ein Hinweis zum Nachlesen; der Rest wäre Lärm im Entwurfs-PR.
+function horizont(): string {
+  return new Date(Date.now() + 400 * 86400000).toISOString().slice(0, 10);
+}
+
 async function neueFassungen(http: Http, namen: readonly string[]): Promise<HallazgoNorma[] | null> {
   const treffer: HallazgoNorma[] = [];
+  const bis = horizont();
   for (const e of ERLASSE.filter((x) => namen.includes(x.name))) {
     const json = (await http.json(abfrage(e.eli), { encabezados: { Accept: "application/sparql-results+json" } })) as {
       results?: { bindings?: { date?: { value?: string } }[] };
@@ -53,7 +60,7 @@ async function neueFassungen(http: Http, namen: readonly string[]): Promise<Hall
     if (!Array.isArray(filas)) return null;
     for (const f of filas) {
       const fecha = f.date?.value?.slice(0, 10) ?? "";
-      if (esFechaISO(fecha) && fecha > e.geprueft) treffer.push({ titulo: `${e.name}: neue Fassung ab ${fecha}`, url: `https://www.fedlex.admin.ch/eli/${e.eli}/de`, fecha });
+      if (esFechaISO(fecha) && fecha > e.geprueft && fecha <= bis) treffer.push({ titulo: `${e.name}: neue Fassung ab ${fecha}`, url: `https://www.fedlex.admin.ch/eli/${e.eli}/de`, fecha });
     }
   }
   return treffer;

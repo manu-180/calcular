@@ -30,4 +30,8 @@ export default definirContenido({
       respuesta: "Ja. Für ein erwerbsunfähiges Kind wird die Kinderzulage bis zum Ende des Monats ausgerichtet, in dem es 20 Jahre alt wird.",
     },
   ],
+  glosario: [
+    { termino: "Kinderzulage", definicion: "Familienzulage für Kinder bis zum Ende des Monats, in dem sie 16 Jahre alt werden." },
+    { termino: "Ausbildungszulage", definicion: "Familienzulage für Kinder in nachobligatorischer Ausbildung, längstens bis 25 Jahre." },
+  ],
 });

@@ -115,6 +115,50 @@ DBST_VERH = escala_dbst(
     11.50,
 )
 
+DBST_LEDIG_2027 = escala_dbst(
+    [
+        (15300, 0, 0.77),
+        (33400, 139.35, 0.88),
+        (43700, 229.95, 2.64),
+        (58300, 615.35, 2.97),
+        (76500, 1155.85, 5.94),
+        (82400, 1506.30, 6.60),
+        (109400, 3288.30, 8.80),
+        (142200, 6174.70, 11.00),
+        (185900, 10981.70, 13.20),
+        (797400, 91699.70, 13.20),
+    ],
+    797500,
+    91712.50,
+    11.50,
+)
+DBST_VERH_2027 = escala_dbst(
+    [
+        (29900, 0, 1.00),
+        (53700, 238.00, 2.00),
+        (61600, 396.00, 3.00),
+        (79500, 933.00, 4.00),
+        (95400, 1569.00, 5.00),
+        (109200, 2259.00, 6.00),
+        (121200, 2979.00, 7.00),
+        (131100, 3672.00, 8.00),
+        (139100, 4312.00, 9.00),
+        (145000, 4843.00, 10.00),
+        (149000, 5243.00, 11.00),
+        (151100, 5474.00, 12.00),
+        (153100, 5714.00, 13.00),
+        (945900, 108778.00, 13.00),
+    ],
+    946000,
+    108790.00,
+    11.50,
+)
+DBG_2027 = fuente(
+    BUND,
+    "Art. 36 DBG, Fassung ab 1. Januar 2027 (Verordnung des EFD vom 11. September 2026 über die kalte Progression, AS 2026 486)",
+    "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1991/1184_1184_1184/20270101/de/html/fedlex-data-admin-ch-eli-cc-1991-1184_1184_1184-20270101-de-html-2.html",
+)
+
 GRENZEN = [
     (10100, 17600, 5.371), (17600, 23000, 5.494), (23000, 25500, 5.617), (25500, 28000, 5.741),
     (28000, 30500, 5.864), (30500, 33000, 5.987), (33000, 35500, 6.235), (35500, 38000, 6.481),
@@ -162,11 +206,11 @@ DATOS = [
     dato("saeule-3a-ohne-pk-satz", "Säule 3a ohne Pensionskasse, Anteil am Erwerbseinkommen", "numero", "%",
          [tramo(20, fedlex("Art. 7 Abs. 1 Bst. b BVV 3", BVV3, 7), desde="2026-01-01")]),
     dato("dbst-tarif-alleinstehend", "Direkte Bundessteuer, Tarif für Alleinstehende (Franken je 100 Franken als Satz)", "escala", "CHF",
-         [tramo(DBST_LEDIG, fedlex("Art. 36 Abs. 1 DBG (Fassung ab 1. Januar 2026)", DBG, 36))], proximaRevision="2027-01-01"),
+         [tramo(DBST_LEDIG, fedlex("Art. 36 Abs. 1 DBG (Fassung ab 1. Januar 2026)", DBG, 36), hasta="2026-12-31"), tramo(DBST_LEDIG_2027, DBG_2027, desde="2027-01-01")], proximaRevision="2028-01-01"),
     dato("dbst-tarif-verheiratet", "Direkte Bundessteuer, Tarif für Verheiratete und Einelternfamilien", "escala", "CHF",
-         [tramo(DBST_VERH, fedlex("Art. 36 Abs. 2 DBG (Fassung ab 1. Januar 2026)", DBG, 36))], proximaRevision="2027-01-01"),
+         [tramo(DBST_VERH, fedlex("Art. 36 Abs. 2 DBG (Fassung ab 1. Januar 2026)", DBG, 36), hasta="2026-12-31"), tramo(DBST_VERH_2027, DBG_2027, desde="2027-01-01")], proximaRevision="2028-01-01"),
     dato("dbst-kinderermaessigung", "Direkte Bundessteuer, Ermässigung je Kind", "numero", "CHF",
-         [tramo(263, fedlex("Art. 36 Abs. 2bis DBG", DBG, 36), desde="2025-01-01")], proximaRevision="2027-01-01"),
+         [tramo(263, fedlex("Art. 36 Abs. 2bis DBG", DBG, 36), desde="2025-01-01", hasta="2026-12-31"), tramo(264, DBG_2027, desde="2027-01-01")], proximaRevision="2028-01-01"),
     dato("dbst-mindestbetrag", "Direkte Bundessteuer, kleinster erhobener Betrag", "numero", "CHF",
          [tramo(25, fedlex("Art. 36 Abs. 3 DBG", DBG, 36), desde="2026-01-01")]),
     dato("ahv-minimalrente", "Minimale AHV-Altersrente (Vollrente, pro Monat)", "numero", "CHF",
