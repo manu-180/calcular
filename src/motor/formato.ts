@@ -1,8 +1,10 @@
+import { idiomaDeLocale } from "./i18n/resolver";
+import { NOMBRES_UNIDAD } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
 import type { FechaISO, Moneda, ReglaRedondeo, Unidad } from "./tipos";
-import { MONEDAS, UNIDADES_REFERENCIA } from "./tipos";
+import { esMoneda, UNIDADES_REFERENCIA } from "./tipos";
 
-export function decimalesDeMoneda(moneda: Moneda, locale = "es"): number {
+export function decimalesDeMoneda(moneda: Moneda, locale: string): number {
   return new Intl.NumberFormat(locale, { style: "currency", currency: moneda }).resolvedOptions().maximumFractionDigits ?? 2;
 }
 
@@ -72,12 +74,12 @@ export function formatearFecha(fecha: FechaISO, locale: string, estilo: "larga" 
   });
 }
 
-const NOMBRES_UNIDAD: Record<string, [string, string]> = {
-  dias: ["día", "días"],
-  horas: ["hora", "horas"],
-  meses: ["mes", "meses"],
-  anios: ["año", "años"],
-};
+function nombreDeUnidad(n: number, unidad: string, locale: string): string | null {
+  const nombres = NOMBRES_UNIDAD[idiomaDeLocale(locale) ?? "es"];
+  if (!(unidad in nombres)) return null;
+  const formas = nombres[unidad as keyof typeof nombres];
+  return new Intl.PluralRules(locale).select(n) === "one" ? formas.uno : formas.otros;
+}
 
 function decimalesPropios(n: number): number {
   const [, dec = ""] = String(n).split(".");
@@ -87,14 +89,14 @@ function decimalesPropios(n: number): number {
 // Un dato se muestra con los decimales que trae la norma: el salario mínimo en COP o UYU es entero y
 // con ",00" se lee como un error; la UF (CLP) y la UI (UYU) tienen más decimales que su moneda.
 export function formatearValorUnidad(n: number, unidad: Unidad, locale: string, simbolos?: Readonly<Partial<Record<Moneda, string>>>): string {
-  if ((MONEDAS as readonly string[]).includes(unidad)) {
-    const moneda = unidad as Moneda;
+  if (esMoneda(unidad)) {
+    const moneda = unidad;
     const d = Number.isInteger(n) ? 0 : Math.min(6, Math.max(decimalesDeMoneda(moneda, locale), decimalesPropios(n)));
     return formatearMoneda(n, locale, moneda, d, simbolos?.[moneda]);
   }
   if (unidad === "%") return formatearPorcentaje(n, locale, 4);
-  const nombres = NOMBRES_UNIDAD[unidad];
-  if (nombres) return `${formatearNumero(n, locale)} ${n === 1 ? nombres[0] : nombres[1]}`;
+  const nombre = nombreDeUnidad(n, unidad, locale);
+  if (nombre) return `${formatearNumero(n, locale)} ${nombre}`;
   if ((UNIDADES_REFERENCIA as readonly string[]).includes(unidad)) return `${formatearNumero(n, locale, undefined)} ${unidad}`;
   return formatearNumero(n, locale, n % 1 === 0 ? 0 : undefined);
 }

@@ -1,51 +1,21 @@
 import type { ComponentType } from "react";
 import type { Concepto } from "./conceptos";
 
-export const CODIGOS_MERCADO = [
-  "global",
-  "zz",
-  "uy",
-  "py",
-  "bo",
-  "ve",
-  "mx",
-  "pe",
-  "co",
-  "cl",
-  "ec",
-  "cr",
-  "pa",
-  "ni",
-  "do",
-  "gt",
-  "sv",
-  "hn",
-  "br",
-] as const;
-export type CodigoMercado = (typeof CODIGOS_MERCADO)[number];
+// Los códigos de mercado y de moneda no se listan a mano: un mercado es "global", "zz" o un ISO
+// 3166-1 alfa-2 en minúscula con sufijo de idioma opcional (ca-fr), y una moneda es cualquier ISO
+// 4217 que conozca Intl (más XTS, el código reservado para pruebas que usa zz).
+export type CodigoMercado = string;
+export const RE_CODIGO_MERCADO = /^(?:global|zz|[a-z]{2}(?:-[a-z]{2,3})?)$/;
+export function esCodigoMercado(valor: string): valor is CodigoMercado {
+  return RE_CODIGO_MERCADO.test(valor);
+}
 
-// XTS es el código ISO 4217 reservado para pruebas: solo lo usa el mercado ficticio zz.
-export const MONEDAS = [
-  "UYU",
-  "PYG",
-  "BOB",
-  "PEN",
-  "CLP",
-  "COP",
-  "MXN",
-  "VES",
-  "USD",
-  "CRC",
-  "DOP",
-  "GTQ",
-  "HNL",
-  "NIO",
-  "PAB",
-  "BRL",
-  "ARS",
-  "XTS",
-] as const;
-export type Moneda = (typeof MONEDAS)[number];
+export type Moneda = string;
+let monedasIntl: ReadonlySet<string> | null = null;
+export function esMoneda(valor: string): valor is Moneda {
+  monedasIntl ??= new Set([...Intl.supportedValuesOf("currency"), "XTS"]);
+  return monedasIntl.has(valor);
+}
 
 export const UNIDADES_REFERENCIA = [
   "UIT",
