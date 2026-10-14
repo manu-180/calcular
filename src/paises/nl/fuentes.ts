@@ -9,7 +9,14 @@ const SRU = "https://repository.overheid.nl/sru";
 
 function sruUrl(publicatie: string, woorden: string): `https://${string}` {
   const query = `w.publicatienaam="${publicatie}" and dt.title any "${woorden}"`;
-  return `${SRU}?operation=searchRetrieve&version=2.0&maximumRecords=20&sortKeys=dt.date,,0&query=${encodeURIComponent(query)}`;
+  return `${SRU}?operation=searchRetrieve&version=2.0&maximumRecords=50&query=${encodeURIComponent(query)}`;
+}
+
+// De SRU-dienst negeert sortKeys en geeft de oudste stukken eerst. Daarom beperken we de vraag tot
+// het laatste jaar; de query staat als laatste parameter in de url, dus de datum kan erachter.
+function laatsteJaar(url: string): string {
+  const grens = new Date(Date.now() - 365 * 86_400_000).toISOString().slice(0, 10);
+  return `${url}${encodeURIComponent(` and dt.date>="${grens}"`)}`;
 }
 
 // De SRU-dienst van officielebekendmakingen.nl geeft records met titel, datum en een link naar de
@@ -57,7 +64,7 @@ export const detectores: readonly Detector[] = [
     metodo: "api-xml",
     url: sruUrl("Staatscourant", "minimumloon minimumjeugdloon maximumdagloon"),
     async traer(http) {
-      return bekendmakingen(http, this.url);
+      return bekendmakingen(http, laatsteJaar(this.url));
     },
   },
   {
@@ -83,7 +90,7 @@ export const detectores: readonly Detector[] = [
     metodo: "api-xml",
     url: sruUrl("Staatsblad", "Belastingplan inkomstenbelasting omzetbelasting overdrachtsbelasting box"),
     async traer(http) {
-      return bekendmakingen(http, this.url);
+      return bekendmakingen(http, laatsteJaar(this.url));
     },
   },
   {
@@ -93,7 +100,7 @@ export const detectores: readonly Detector[] = [
     metodo: "api-xml",
     url: sruUrl("Staatscourant", "kinderbijslag AOW-pensioen transitievergoeding premiepercentages Zorgverzekeringswet"),
     async traer(http) {
-      return bekendmakingen(http, this.url);
+      return bekendmakingen(http, laatsteJaar(this.url));
     },
   },
 ];
