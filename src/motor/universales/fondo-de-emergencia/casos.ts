@@ -10,10 +10,10 @@ export const casos: readonly CasoUniversal[] = [
   },
   {
     nombre: "División no exacta redondea hacia arriba",
-    detalle: "Meta 1000 × 3 = 3000. 3000 ÷ 700 = 4,29 → 5 meses.",
+    detalle: "Meta 1000 × 3 = 3000. 3000 ÷ 700 = 4,29 → 5 meses. Sin ahorro previo no se muestra la cobertura.",
     fecha: "2026-10-13",
     entrada: { gastos: 1000, meses: 3, actual: null, aporte: 700 },
-    esperado: { meta: 3000, falta: 3000, mesesParaLlegar: 5, cobertura: 0 },
+    esperado: { meta: 3000, falta: 3000, mesesParaLlegar: 5, cobertura: null },
   },
   {
     nombre: "Fondo ya completo",

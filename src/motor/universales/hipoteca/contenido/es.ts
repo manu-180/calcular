@@ -1,5 +1,5 @@
 import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
-import { cuotaFrancesa } from "../../prestamo/definicion";
+import { cuotaFrancesa, interesesTotales } from "../../prestamo/definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -31,7 +31,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
     ejemplo: [
       `Una vivienda de ${m(precio)} con un 20 % de entrada deja un préstamo de ${m(prestado)}. Al 7 % anual a 25 años, la cuota es de ${m(cuota25)}.`,
-      `En los 25 años se pagan ${m(cuota25 * 300 - prestado)} de intereses. A 15 años la cuota sube a ${m(cuota15)}, pero los intereses bajan a ${m(cuota15 * 180 - prestado)}.`,
+      `En los 25 años se pagan ${m(interesesTotales(prestado, 7, 300))} de intereses. A 15 años la cuota sube a ${m(cuota15)}, pero los intereses bajan a ${m(interesesTotales(prestado, 7, 180))}.`,
     ],
     faq: [
       {

@@ -47,7 +47,7 @@ export function definir(ctx: ContextoUniversal, ui: UiFondoDeEmergencia): Defini
         meta,
         falta,
         mesesParaLlegar: falta > 0 && aporte > 0 ? Math.ceil(falta / aporte - 1e-9) : null,
-        cobertura: Math.floor((actual / entrada.gastos) * 10) / 10,
+        cobertura: actual > 0 ? Math.floor((actual / entrada.gastos) * 10) / 10 : null,
         observaciones,
       };
     },

@@ -65,6 +65,12 @@ export function amortizar(
   return { pagos: redondear(pagos), intereses: redondear(intereses), meses: filas.length, filas };
 }
 
+// Para los ejemplos de las páginas: la misma tabla que la calculadora, redondeada al centavo.
+export function interesesTotales(monto: number, tasaAnual: number, meses: number): number {
+  const r2 = (n: number) => Math.round(n * 100) / 100;
+  return amortizar(monto, tasaAnual, meses, r2(cuotaFrancesa(monto, tasaAnual, meses)), 0, r2).intereses;
+}
+
 export function definir(ctx: ContextoUniversal, ui: UiPrestamo): DefinicionCalculadora {
   return definirCalculadora({
     id: ctx.id,

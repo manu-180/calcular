@@ -44,7 +44,7 @@ export function definir(ctx: ContextoUniversal, ui: UiMetaDeAhorro): DefinicionC
       const actual = entrada.actual ?? 0;
       const aporte = redondear(aporteNecesario(entrada.meta, actual, entrada.meses, entrada.rendimiento ?? 0));
       const totalAportado = redondear(aporte * entrada.meses);
-      const intereses = aporte > 0 ? redondear(entrada.meta - actual - totalAportado) : null;
+      const intereses = aporte > 0 && (entrada.rendimiento ?? 0) > 0 ? redondear(entrada.meta - actual - totalAportado) : null;
       return {
         aporteMensual: aporte,
         aporteSemanal: redondear((aporte * 12) / 52),

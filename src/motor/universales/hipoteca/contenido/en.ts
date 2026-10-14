@@ -1,5 +1,5 @@
 import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
-import { cuotaFrancesa } from "../../prestamo/definicion";
+import { cuotaFrancesa, interesesTotales } from "../../prestamo/definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
@@ -22,7 +22,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
     ],
     ejemplo: [
       `A home of ${m(precio)} with 20% down leaves a loan of ${m(prestado)}. At 7% over 30 years, the payment is ${m(cuota30)}.`,
-      `Over 30 years you pay ${m(cuota30 * 360 - prestado)} in interest. Over 15 years the payment rises to ${m(cuota15)}, but interest drops to ${m(cuota15 * 180 - prestado)}.`,
+      `Over 30 years you pay ${m(interesesTotales(prestado, 7, 360))} in interest. Over 15 years the payment rises to ${m(cuota15)}, but interest drops to ${m(interesesTotales(prestado, 7, 180))}.`,
     ],
     faq: [
       {

@@ -1,8 +1,11 @@
 import ahorroRetiro from "./ahorro-retiro";
 import alquilarOComprar from "./alquilar-o-comprar";
+import aumentoDeSueldo from "./aumento-de-sueldo";
+import conversorSueldo from "./conversor-sueldo";
 import costoDeUnAuto from "./costo-de-un-auto";
 import fondoDeEmergencia from "./fondo-de-emergencia";
 import hipoteca from "./hipoteca";
+import horasTrabajadas from "./horas-trabajadas";
 import interesCompuesto from "./interes-compuesto";
 import interesSimple from "./interes-simple";
 import margenDeGanancia from "./margen-de-ganancia";
@@ -34,4 +37,7 @@ export const UNIVERSALES_FINANZAS: readonly Universal<never>[] = [
   margenDeGanancia as Universal<never>,
   puntoDeEquilibrio as Universal<never>,
   tarifaFreelance as Universal<never>,
+  conversorSueldo as Universal<never>,
+  aumentoDeSueldo as Universal<never>,
+  horasTrabajadas as Universal<never>,
 ];

@@ -1,5 +1,5 @@
 import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
-import { cuotaFrancesa } from "../definicion";
+import { cuotaFrancesa, interesesTotales } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -34,8 +34,8 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
       "Cada mes, el interés se calcula sobre lo que queda de deuda. El resto de la cuota baja el capital.",
     ],
     ejemplo: [
-      `Un préstamo de ${m(monto)} al 12 % anual a 36 meses tiene una cuota de ${m(cuota36)}. En total se pagan ${m(cuota36 * 36 - monto)} de intereses.`,
-      `El mismo préstamo a 60 meses baja la cuota a ${m(cuota60)}, pero los intereses suben a ${m(cuota60 * 60 - monto)}.`,
+      `Un préstamo de ${m(monto)} al 12 % anual a 36 meses tiene una cuota de ${m(cuota36)}. En total se pagan ${m(interesesTotales(monto, 12, 36))} de intereses.`,
+      `El mismo préstamo a 60 meses baja la cuota a ${m(cuota60)}, pero los intereses suben a ${m(interesesTotales(monto, 12, 60))}.`,
     ],
     faq: [
       {

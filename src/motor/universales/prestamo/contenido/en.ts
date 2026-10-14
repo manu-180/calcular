@@ -1,5 +1,5 @@
 import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
-import { cuotaFrancesa } from "../definicion";
+import { cuotaFrancesa, interesesTotales } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
@@ -21,8 +21,8 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
       "Each month, interest is charged on what you still owe. The rest of the payment reduces the principal.",
     ],
     ejemplo: [
-      `A loan of ${m(monto)} at 12% a year over 36 months has a payment of ${m(cuota36)}. You pay ${m(cuota36 * 36 - monto)} in interest in total.`,
-      `Stretch it to 60 months and the payment drops to ${m(cuota60)}, but the interest rises to ${m(cuota60 * 60 - monto)}.`,
+      `A loan of ${m(monto)} at 12% a year over 36 months has a payment of ${m(cuota36)}. You pay ${m(interesesTotales(monto, 12, 36))} in interest in total.`,
+      `Stretch it to 60 months and the payment drops to ${m(cuota60)}, but the interest rises to ${m(interesesTotales(monto, 12, 60))}.`,
     ],
     faq: [
       {
