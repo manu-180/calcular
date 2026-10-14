@@ -123,6 +123,7 @@ export const detectores: readonly Detector[] = [
       "za.donations-exemption",
       "za.turnover-tax",
       "za.sbc-tax",
+      "za.company-tax-rate",
     ],
     "https://www.sars.gov.za/types-of-tax/value-added-tax/",
     "SARS VAT page updated (budget changes are usually reflected here)",

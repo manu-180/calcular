@@ -962,6 +962,28 @@
       ]
     },
     {
+      "id": "za.company-tax-rate",
+      "nombre": "Company income tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 27,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
       "id": "za.sbc-tax",
       "nombre": "Small business corporation tax rates",
       "tipo": "escala",

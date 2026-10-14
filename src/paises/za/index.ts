@@ -30,6 +30,16 @@ import transferDutyCalculator from "./calculadoras/transfer-duty-calculator";
 import contenidoTransferDutyCalculator from "./contenido/transfer-duty-calculator";
 import bondCalculator from "./calculadoras/bond-calculator";
 import contenidoBondCalculator from "./contenido/bond-calculator";
+import estateDuty from "./calculadoras/estate-duty";
+import contenidoEstateDuty from "./contenido/estate-duty";
+import donationsTax from "./calculadoras/donations-tax";
+import contenidoDonationsTax from "./contenido/donations-tax";
+import turnoverTax from "./calculadoras/turnover-tax";
+import contenidoTurnoverTax from "./contenido/turnover-tax";
+import smallBusinessCorporationTax from "./calculadoras/small-business-corporation-tax";
+import contenidoSmallBusinessCorporationTax from "./contenido/small-business-corporation-tax";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +67,11 @@ export default definirPais({
     { definicion: capitalGainsTax, contenido: contenidoCapitalGainsTax, cliente: () => import("./calculadoras/capital-gains-tax.cliente") },
     { definicion: transferDutyCalculator, contenido: contenidoTransferDutyCalculator, cliente: () => import("./calculadoras/transfer-duty-calculator.cliente") },
     { definicion: bondCalculator, contenido: contenidoBondCalculator, cliente: () => import("./calculadoras/bond-calculator.cliente") },
+    { definicion: estateDuty, contenido: contenidoEstateDuty, cliente: () => import("./calculadoras/estate-duty.cliente") },
+    { definicion: donationsTax, contenido: contenidoDonationsTax, cliente: () => import("./calculadoras/donations-tax.cliente") },
+    { definicion: turnoverTax, contenido: contenidoTurnoverTax, cliente: () => import("./calculadoras/turnover-tax.cliente") },
+    { definicion: smallBusinessCorporationTax, contenido: contenidoSmallBusinessCorporationTax, cliente: () => import("./calculadoras/small-business-corporation-tax.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "za.vat" } }] },
   novedades,
