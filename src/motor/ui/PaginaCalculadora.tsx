@@ -124,7 +124,7 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
         </section>
       ) : null}
 
-      <Sello sello={pagina.sello} usados={pagina.usados} locale={mercado.locale} textos={t} hrefFuentes={rutaIntl(mercado.codigo, "fuentes")} />
+      <Sello sello={pagina.sello} usados={pagina.usados} locale={mercado.locale} trato={mercado.trato} textos={t} hrefFuentes={rutaIntl(mercado.codigo, "fuentes")} />
       <AvisoDePais ctx={ctx} concepto={calculadora.concepto} />
     </article>
   );

@@ -49,6 +49,11 @@ y una línea en la lista de tu frente (`src/motor/universales/finanzas.ts` o `co
 - Fuera del español el registro es fijo por idioma y no hay variantes (`ui: () => ({...})`):
   en neutro, pt-BR «você», fr «vous», de «Sie», it «tu», nl «je». El `trato` de cada mercado de esos
   idiomas se fija en consecuencia.
+- `ui` recibe `(trato, locale)`. El locale es el del mercado (`de-CH`, `pt-PT`, `fr-CA`) y sirve para
+  lo que cambia dentro de un mismo idioma: «ss» en vez de «ß» en de-CH, el vocabulario de pt-PT
+  («ecrã», «facto») frente a pt-BR, o un separador decimal que el texto escribe a mano. Quien no lo
+  necesita lo ignora: `ui: () =>` y `ui: (trato) =>` siguen valiendo. Ejemplo:
+  `ui: (_trato, locale) => { const ss = (s: string) => (locale === "de-CH" ? s.replace(/ß/g, "ss") : s); ... }`.
 
 **`contenido/<idioma>.ts`**
 - `title` hasta 60 caracteres con el nombre del país (`ctx.nombrePais`), armado con

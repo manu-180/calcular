@@ -6,12 +6,15 @@ import { destinoEquivalente, mapaEquivalentes, paisDelVisitante, recordarPais, t
 import { IconoChevron, IconoGlobo } from "./Iconos";
 import { usePaises } from "./ListaPaises";
 import type { OpcionPais } from "./paises";
+import type { Idioma, Trato } from "../tipos";
 import { textosInicio } from "./textos-inicio";
 
 export type { OpcionPais };
 
 interface Props {
   actual: OpcionPais | null;
+  idioma: Idioma;
+  trato: Trato;
   textos: { elegir: string; latinoamerica: string; todos: string; hrefTodos: string };
 }
 
@@ -35,9 +38,9 @@ interface Item extends OpcionPais {
 // mapa, sin JS o sin equivalente, al inicio del país. Combobox: el foco se queda en el buscador y las
 // flechas mueven la opción activa (aria-activedescendant). La lista se pinta recién al abrir: con 190
 // países eran cientos de links ocultos en el HTML de cada página.
-export function SelectorPais({ actual, textos }: Props) {
+export function SelectorPais({ actual, idioma, trato, textos }: Props) {
   const opciones = usePaises();
-  const ti = textosInicio(actual?.codigo === "br" ? "pt" : "es", "tu").selector;
+  const ti = textosInicio(idioma, trato).selector;
   const [abierto, setAbierto] = useState(false);
   const [montado, setMontado] = useState(false);
   const [consulta, setConsulta] = useState("");

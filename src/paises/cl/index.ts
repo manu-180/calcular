@@ -87,6 +87,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: { todas: true, excepto: ["hipoteca"] },
   calculadoras: [
     { definicion: valorUf, contenido: contenidoValorUf, cliente: () => import("./calculadoras/valor-uf.cliente") },
     { definicion: valorUtm, contenido: contenidoValorUtm, cliente: () => import("./calculadoras/valor-utm.cliente") },

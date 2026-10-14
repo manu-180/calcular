@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import type { CodigoMercado } from "@/motor/tipos";
+import { RE_CODIGO_MERCADO, type CodigoMercado } from "@/motor/tipos";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
 import { FAMILIAS, PRECIO_PLANILLA_CENTAVOS, type ClaveFamilia, type FamiliaInforme, type TipoProducto } from "./ofertas-intl";
@@ -34,12 +34,11 @@ export type ProductoIntl = ProductoVenta & {
 
 export type DefinicionProductoIntl = Omit<ProductoIntl, "id" | "moneda" | "tipo"> & { moneda?: "USD"; tipo?: TipoProducto };
 
-const RE_MERCADO = /^[a-z]{2,6}$/;
 const RE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const RE_ARCHIVO = /^[a-z0-9]+(?:-[a-z0-9]+)*\.xlsx$/;
 
 export function definirProductoIntl(d: DefinicionProductoIntl): ProductoIntl {
-  if (!RE_MERCADO.test(d.mercado) || d.mercado === "ar") throw new Error(`producto intl con mercado inválido: ${d.mercado}`);
+  if (!RE_CODIGO_MERCADO.test(d.mercado) || d.mercado === "ar") throw new Error(`producto intl con mercado inválido: ${d.mercado}`);
   if (d.slug === "comprar" || d.slug === "gracias") throw new Error(`producto intl: «${d.slug}» es una ruta de planillas`);
   if (!RE_SLUG.test(d.slug)) throw new Error(`producto intl con slug inválido: ${d.slug}`);
   const tipo = d.tipo ?? "planilla";
@@ -331,7 +330,7 @@ export function referenciaIntl(p: ProductoIntl, uuid: string = crypto.randomUUID
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export function leerReferenciaIntl(ref: string | null | undefined): { producto: ProductoIntl; checkoutId: string } | null {
-  const m = /^([a-z]{2,6}\/[a-z0-9-]+):([0-9a-f-]{36})$/i.exec(ref ?? "");
+  const m = /^((?:global|zz|[a-z]{2}(?:-[a-z]{2,3})?)\/[a-z0-9-]+):([0-9a-f-]{36})$/i.exec(ref ?? "");
   if (!m || !UUID_RE.test(m[2])) return null;
   const producto = productoIntl(m[1]);
   return producto ? { producto, checkoutId: m[2].toLowerCase() } : null;

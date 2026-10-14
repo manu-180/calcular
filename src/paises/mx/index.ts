@@ -93,6 +93,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: { todas: true, excepto: ["conversor-sueldo"] },
   calculadoras: [
     { definicion: sueldoNeto, contenido: contenidoSueldoNeto, cliente: () => import("./calculadoras/sueldo-neto.cliente") },
     { definicion: aguinaldo, contenido: contenidoAguinaldo, cliente: () => import("./calculadoras/aguinaldo.cliente") },

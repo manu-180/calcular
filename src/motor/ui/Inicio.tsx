@@ -27,9 +27,6 @@ export interface PaisExterno {
 
 const ANCLA_PAISES = "paises";
 
-// Provisorio hasta que el diccionario del sitio tenga la etiqueta (pedido a i18n: pais.irASeccion).
-const IR_A_SECCION: Readonly<Record<string, string>> = { es: "Ir a una sección", pt: "Ir para uma seção", en: "Jump to a section" };
-
 const masNueva = (...fechas: (FechaISO | null | undefined)[]) => (fechas.filter(Boolean) as FechaISO[]).sort().at(-1);
 
 // Vuelta directa al país elegido antes. Corre como <script> en línea antes de pintar la grilla, sin
@@ -251,7 +248,7 @@ export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
       <div className="cy-inicio-pais-cuerpo">
         <div className="cy-categorias">
           {grupos.length > 2 ? (
-            <nav className="cy-grupos" aria-label={IR_A_SECCION[m.idioma] ?? IR_A_SECCION.es}>
+            <nav className="cy-grupos" aria-label={ctx.textos.pais.irASeccion}>
               {grupos.map((g) => (
                 <a key={g.key} href={`#cy-grupo-${g.key}`} className="cy-grupo-enlace">
                   {g.titulo}

@@ -66,6 +66,7 @@ const base: TextosSitio = {
     verNovedades: "Vedi tutte le novità",
     sinCalculadoras: "Per questo paese non ci sono ancora calcolatori.",
     descripcion: (pais) => `Calcolatori di stipendio, tasse e finanza ${g.para(pais)}, con il valore ufficiale in vigore, la fonte e la data del controllo.`,
+    irASeccion: "Indice delle sezioni",
   },
   fuentes: {
     titulo: (pais) => `Fonti e dati ${g.de(pais)}`,
@@ -131,7 +132,7 @@ const base: TextosSitio = {
   },
   shell: {
     irAlInicio: "vai alla home",
-    menu: { trabajo: "Stipendio e lavoro", impuestos: "Tasse", dinero: "Soldi e indici", novedades: "Novità", planillas: "Fogli di calcolo" },
+    menu: { trabajo: "Stipendio e lavoro", impuestos: "Tasse", dinero: "Soldi e indici", vida: "Vita quotidiana", novedades: "Novità", planillas: "Fogli di calcolo" },
     encabezado: {
       principal: "Navigazione principale",
       buscar: "Cerca",

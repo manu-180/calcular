@@ -66,6 +66,7 @@ const base: TextosSitio = {
     verNovedades: "Alle Neuigkeiten ansehen",
     sinCalculadoras: "Für dieses Land gibt es noch keine Rechner.",
     descripcion: (pais) => `Rechner für Gehalt, Steuern und Finanzen ${g.en(pais)}, mit dem geltenden amtlichen Wert, seiner Quelle und dem Prüfdatum.`,
+    irASeccion: "Zu einem Abschnitt springen",
   },
   fuentes: {
     titulo: (pais) => `Quellen und Daten ${g.para(pais)}`,
@@ -131,7 +132,7 @@ const base: TextosSitio = {
   },
   shell: {
     irAlInicio: "zur Startseite",
-    menu: { trabajo: "Gehalt und Arbeit", impuestos: "Steuern", dinero: "Geld und Indizes", novedades: "Neuigkeiten", planillas: "Tabellen" },
+    menu: { trabajo: "Gehalt und Arbeit", impuestos: "Steuern", dinero: "Geld und Indizes", vida: "Alltag", novedades: "Neuigkeiten", planillas: "Tabellen" },
     encabezado: {
       principal: "Hauptnavigation",
       buscar: "Suchen",

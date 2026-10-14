@@ -53,12 +53,15 @@ export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
           <div className="ca-selector-pais">
             <SelectorPais
               actual={actual}
+              idioma={m.idioma}
+              trato={m.trato}
               textos={{ elegir: t.header.elegirPais, latinoamerica: t.header.latinoamerica, todos: t.header.todos, hrefTodos: rutaIntl("global") }}
             />
           </div>
         }
         extraCajon={<PaisesCajon actual={actual} abierto={!enPais} textos={{ elegir: t.header.elegirPais, cambiar: t.shell.paises.cambiar }} />}
         rutasInternas
+        navDesde="xl"
       />
     </div>
   );

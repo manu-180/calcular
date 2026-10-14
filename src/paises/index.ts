@@ -22,16 +22,15 @@ import gb from "./gb";
 import fr from "./fr";
 
 // "global" no es un país: es la home de calcularya.com con el selector y el x-default de cada clúster
-// hreflang. No tiene datos ni calculadoras. Pasa a inglés (ADR 0002, D2: nombre "Worldwide", locale e
-// idioma "en") cuando validarMercado (src/motor/datos.ts) acepte "en": hoy solo deja "es" y "pt", y
-// un global con errores de datos corta el build (next.config.ts, mercadosDelRegistro).
+// hreflang, en inglés (ADR 0002, D2). No tiene datos ni calculadoras. Un global con errores de datos
+// corta el build (next.config.ts, mercadosDelRegistro).
 const global = definirPais({
   mercado: {
     codigo: "global",
     pais: "",
-    nombre: "Latinoamérica",
-    locale: "es-419",
-    idioma: "es",
+    nombre: "Worldwide",
+    locale: "en",
+    idioma: "en",
     trato: "tu",
     monedas: ["USD"],
     zonaHoraria: "America/Mexico_City",

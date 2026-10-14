@@ -5,6 +5,7 @@ import { Bandera } from "./Bandera";
 import { mapaDeConcepto, paisDelVisitante, recordarPais } from "./geo-cliente";
 import { IconoCerrar, IconoFlecha } from "./Iconos";
 import { usePaises } from "./ListaPaises";
+import type { Idioma, Trato } from "../tipos";
 import { textosInicio } from "./textos-inicio";
 
 interface Destino {
@@ -39,12 +40,16 @@ function descartar() {
 export function AvisoPais({
   mercado,
   paisActual,
+  idioma,
+  trato,
   concepto,
   plantillas,
   cerrar,
 }: {
   mercado: string;
   paisActual: string;
+  idioma: Idioma;
+  trato: Trato;
   concepto?: string;
   plantillas: { texto: string; ir: string };
   cerrar: string;
@@ -69,7 +74,7 @@ export function AvisoPais({
         const slug = Object.keys(mapa?.porMercado[opcion.codigo] ?? {})[0];
         if (slug) {
           href = `${opcion.href}/${slug}`;
-          ir = textosInicio(paisActual === "BR" ? "pt" : "es", "tu").aviso.mismaCalculadora(opcion.nombre);
+          ir = textosInicio(idioma, trato).aviso.mismaCalculadora(opcion.nombre);
         }
       }
       if (!vivo) return;
@@ -86,7 +91,7 @@ export function AvisoPais({
       vivo = false;
       window.removeEventListener("load", enOcio);
     };
-  }, [mercado, paisActual, concepto, plantillas, opciones]);
+  }, [mercado, paisActual, idioma, trato, concepto, plantillas, opciones]);
 
   if (!destino) return null;
 

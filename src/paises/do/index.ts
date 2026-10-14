@@ -91,6 +91,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: "todas",
   calculadoras: [
     { definicion: regaliaPascual, contenido: contenidoRegaliaPascual, cliente: () => import("./calculadoras/regalia-pascual.cliente") },
     { definicion: prestacionesLaborales, contenido: contenidoPrestacionesLaborales, cliente: () => import("./calculadoras/prestaciones-laborales.cliente") },

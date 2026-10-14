@@ -3,6 +3,7 @@ import { ventaIntlActiva } from "@/lib/pagos";
 import { productoIntlDe } from "@/lib/pagos/catalogo-intl";
 import { rutaLandingIntl } from "@/lib/pagos/flujo-intl";
 import { resumenCalculos } from "@/lib/pagos/ofertas-servidor";
+import { textosTarjeta } from "@/lib/pagos/textos";
 import { rutaIntl } from "@/motor/seo";
 import type { CodigoMercado } from "@/motor/tipos";
 import { contextoSitio } from "@/motor/ui/contexto";
@@ -83,7 +84,7 @@ export async function PaginaCompra({ params, searchParams, tipo }: ParamsCompra 
         </form>
       ) : (
         <div style={{ maxWidth: "30rem" }}>
-          <AvisoPronto producto={p.id} trato={m.trato} />
+          <AvisoPronto producto={p.id} textos={textosTarjeta(m.idioma, m.trato).aviso} />
         </div>
       )}
     </div>

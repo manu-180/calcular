@@ -3,7 +3,8 @@ import { formatearFecha } from "../formato";
 import { frescuraDeUsados } from "../frescura";
 import type { TextosSitio } from "../i18n";
 import type { DatoUsado, Sello as DatosSello } from "../registro";
-import type { Fuente } from "../tipos";
+import { idiomaDeLocale } from "../i18n/resolver";
+import type { Fuente, Trato } from "../tipos";
 import { FechaViva } from "./FechaViva";
 import { IconoExterno, IconoFlecha } from "./Iconos";
 import { textosInicio } from "./textos-inicio";
@@ -29,11 +30,11 @@ function enlaceFuente(f: Fuente, contenido: ReactNode) {
 }
 
 // El sello de cada calculadora: la revisión más reciente de los tramos que usa, el último dato de sus
-// series (con "hoy"/"ayer" resuelto en el navegador, ver FechaViva) y la lista de documentos. La firma
+// series (con "hoy"/"ayer" resuelto en el navegador, ver FechaViva) y la lista de documentos.
 // no cambia: la arma PaginaCalculadora, que no se toca desde este frente.
-export function Sello({ sello, usados, locale, textos, hrefFuentes }: { sello: DatosSello; usados: readonly DatoUsado[]; locale: string; textos: TextosSitio; hrefFuentes: string }) {
+export function Sello({ sello, usados, locale, trato, textos, hrefFuentes }: { sello: DatosSello; usados: readonly DatoUsado[]; locale: string; trato: Trato; textos: TextosSitio; hrefFuentes: string }) {
   const t = textos.sello;
-  const ti = textosInicio(locale.startsWith("pt") ? "pt" : "es", "tu");
+  const ti = textosInicio(idiomaDeLocale(locale) ?? "es", trato);
   const f = frescuraDeUsados(usados);
   const fuentes = f.fuentes.length ? f.fuentes : sello.fuentes;
   return (

@@ -67,6 +67,7 @@ const base: TextosSitio = {
     verNovedades: "Voir toutes les nouveautés",
     sinCalculadoras: "Aucun calculateur n'est encore publié pour ce pays.",
     descripcion: (pais) => `Calculateurs de salaire, d'impôts et de budget ${g.para(pais)}, avec la valeur officielle en vigueur, sa source et sa date de vérification.`,
+    irASeccion: "Aller à une section",
   },
   fuentes: {
     titulo: (pais) => `Sources et données ${g.para(pais)}`,
@@ -132,7 +133,7 @@ const base: TextosSitio = {
   },
   shell: {
     irAlInicio: "aller à l'accueil",
-    menu: { trabajo: "Salaire et travail", impuestos: "Impôts", dinero: "Argent et indices", novedades: "Nouveautés", planillas: "Tableurs" },
+    menu: { trabajo: "Salaire et travail", impuestos: "Impôts", dinero: "Argent et indices", vida: "Au quotidien", novedades: "Nouveautés", planillas: "Tableurs" },
     encabezado: {
       principal: "Navigation principale",
       buscar: "Rechercher",

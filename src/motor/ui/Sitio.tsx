@@ -12,6 +12,8 @@ export function AvisoDePais({ ctx, concepto }: { ctx: ContextoSitio; concepto?: 
     <AvisoPais
       mercado={ctx.mercado.codigo}
       paisActual={ctx.mercado.pais}
+      idioma={ctx.mercado.idioma}
+      trato={ctx.mercado.trato}
       {...(concepto ? { concepto } : {})}
       plantillas={plantillasAviso(ctx)}
       cerrar={ctx.textos.avisoPais.cerrar}

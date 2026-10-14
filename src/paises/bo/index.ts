@@ -85,6 +85,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: "todas",
   calculadoras: [
     { definicion: dolarOficial, contenido: contenidoDolarOficial, cliente: () => import("./calculadoras/dolar-oficial.cliente") },
     { definicion: aguinaldo, contenido: contenidoAguinaldo, cliente: () => import("./calculadoras/aguinaldo.cliente") },

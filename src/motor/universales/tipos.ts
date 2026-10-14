@@ -35,7 +35,7 @@ export interface ContextoUniversal {
 // mensajes de error. Cada universal define su forma U.
 export interface TextosUi<U> {
   slug: string;
-  ui(trato: Trato): U;
+  ui(trato: Trato, locale: string): U;
 }
 
 // Lo que solo usa el servidor para la página: h1, title, FAQ, ejemplo.
@@ -83,7 +83,7 @@ export function instanciar<U>(
     if (!ctx.datos[clave]) throw new Error(`${universal.id}: falta el dato "${clave}" en ${ctx.mercado}`);
   }
   const completo: ContextoUniversal = { ...ctx, slug: ctx.slug || textos.slug };
-  const definicion = universal.definir(completo, textos.ui(completo.trato));
+  const definicion = universal.definir(completo, textos.ui(completo.trato, completo.locale));
   return { definicion, contenido: { calculadora: completo.id, ...contenido(completo) } };
 }
 

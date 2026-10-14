@@ -12,10 +12,6 @@ export function paginasLegales(idioma: Idioma, trato: Trato, locale: string): Pa
   return resolverLegales(idioma, trato, { actualizado: formatearFecha(ACTUALIZACION_PAGINAS_GLOBALES, locale), mail: MAIL_CONTACTO });
 }
 
-// Las páginas legales son de global, cuya home es en inglés. metadatos.ts y la ruta og todavía leen
-// esta constante; cuando pasen a paginasLegales(mercado) se puede borrar.
-export const PAGINAS_LEGALES: PaginasLegales = paginasLegales("en", "tu", "en");
-
 function conMail(texto: string) {
   const i = texto.indexOf(MAIL_CONTACTO);
   if (i < 0) return texto;

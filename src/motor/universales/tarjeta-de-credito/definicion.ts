@@ -92,20 +92,20 @@ export function definir(ctx: ContextoUniversal, ui: UiTarjetaDeCredito): Definic
         ],
         porDefecto: "fijo",
       },
-      { id: "pagoFijo", tipo: "moneda", etiqueta: ui.pagoFijo, min: 0, porDefecto: montoEjemplo(ctx, 100), requerido: false },
+      { id: "pago", tipo: "moneda", etiqueta: ui.pagoFijo, min: 0, porDefecto: montoEjemplo(ctx, 100), requerido: false },
       { id: "minimoPorcentaje", tipo: "porcentaje", etiqueta: ui.minimoPorcentaje, ayuda: ui.minimoPorcentajeAyuda, min: 0, max: 100, porDefecto: 5, requerido: false },
       { id: "minimoPiso", tipo: "moneda", etiqueta: ui.minimoPiso, min: 0, porDefecto: montoEjemplo(ctx, 25), requerido: false },
     ],
     calcular(entrada, _valores, { redondear }) {
       if (entrada.saldo <= 0) throw new ErrorEntrada(ui.errorSaldo, "saldo");
-      if (entrada.modo === "fijo" && !entrada.pagoFijo) throw new ErrorEntrada(ui.errorFaltaPago, "pagoFijo");
+      if (entrada.modo === "fijo" && !entrada.pago) throw new ErrorEntrada(ui.errorFaltaPago, "pago");
       const pago: Pago = {
         modo: entrada.modo,
-        fijo: entrada.pagoFijo ?? 0,
+        fijo: entrada.pago ?? 0,
         porcentaje: entrada.minimoPorcentaje ?? 0,
         piso: entrada.minimoPiso ?? 0,
       };
-      const campoPago = entrada.modo === "fijo" ? "pagoFijo" : "minimoPorcentaje";
+      const campoPago = entrada.modo === "fijo" ? "pago" : "minimoPorcentaje";
       const r = saldar(entrada.saldo, entrada.tasa, pago, redondear);
       if (!r.cubre && r.meses < TOPE_MESES) {
         const interes = formatearMonto(ctx, redondear((entrada.saldo * entrada.tasa) / 100 / 12));
