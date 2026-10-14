@@ -9,7 +9,8 @@ import { registro } from "@/paises";
 import { validarDatosIntl, type DatosIntl } from "@/lib/prefill/intl";
 import { catalogoIntl, calculadorasDeFamilia, leerArchivoIntl, productosDeMercado, type ProductoIntl } from "./catalogo-intl";
 import { archivoMapa, leerMapa, valorDeCelda, type BloqueMapa, type MapaPlanilla } from "./mapa-planilla-intl";
-import { familiaDeConcepto, familiaPorClave, nombreDeCalculo, type OfertaPublica, type OfertasCalculadora, type OfertasMercado, type ReferenciaLocal } from "./ofertas-intl";
+import { familiaDeConcepto, familiaPorClave, nombreDeCalculo, type CopyTarjeta, type OfertaPublica, type OfertasCalculadora, type OfertasMercado, type ReferenciaLocal } from "./ofertas-intl";
+import { copyFamilia, copyPlanilla, diccionarioVenta, textosTarjeta } from "./textos";
 import { ventaIntlActiva } from "./index";
 
 // ─── Mapa de la planilla ──────────────────────────────────────────────────────────────────────
@@ -86,8 +87,10 @@ export function ofertasDeMercado(mercado: string): OfertasMercado {
   const pais = registro.pais(mercado as CodigoMercado);
   const porCalculadora: Record<string, OfertasCalculadora> = {};
   if (!pais || mercado === "global" || mercado === "zz") return { activa: false, porCalculadora, referencia: null };
+  const { idioma, trato } = pais.mercado;
   const productos = productosDeMercado(mercado);
   const planillas = productos.filter((p) => p.tipo === "planilla");
+  const copy: Record<string, CopyTarjeta> = {};
   for (const c of pais.calculadoras) {
     const def = c.definicion;
     if (def.estado === "borrador") continue;
@@ -98,9 +101,21 @@ export function ofertasDeMercado(mercado: string): OfertasMercado {
     const planilla = conHoja.map((x) => publica(x.p, x.b!.hoja));
     if (informe && f?.clave === "liquidacion") lista.push(publica(informe), ...planilla);
     else lista.push(...planilla, ...(informe ? [publica(informe)] : []));
-    if (lista.length) porCalculadora[def.id] = { calc: def.slug, nombre: nombreDeCalculo(c.contenido.h1, pais.mercado.nombre), ofertas: lista };
+    if (!lista.length) continue;
+    porCalculadora[def.id] = { calc: def.slug, nombre: nombreDeCalculo(c.contenido.h1), ofertas: lista };
+    for (const o of lista) {
+      if (copy[o.familia]) continue;
+      copy[o.familia] = o.familia === "planilla" ? copyPlanilla(idioma, trato) : copyFamilia(o.familia, idioma, trato);
+    }
   }
-  return { activa: ventaIntlActiva(), porCalculadora, referencia: referenciaLocalDe(mercado) };
+  return {
+    activa: ventaIntlActiva(),
+    porCalculadora,
+    referencia: referenciaLocalDe(mercado),
+    locale: pais.mercado.locale,
+    textos: textosTarjeta(idioma, trato),
+    copy,
+  };
 }
 
 // El tipo de cambio del dólar que ya cargan los datos del país (la serie vigente, con su tope de
@@ -161,6 +176,7 @@ export function resumenCalculos(p: ProductoIntl): Record<string, ResumenCalculo>
   const salida: Record<string, ResumenCalculo> = {};
   if (!pais) return salida;
   const hoy = hoyEn(pais.mercado);
+  const { si, no } = diccionarioVenta(pais.mercado.idioma).general;
   for (const slug of calculadorasDeProducto(p)) {
     const e = pais.calculadoras.find((c) => c.definicion.slug === slug);
     if (!e) continue;
@@ -168,7 +184,7 @@ export function resumenCalculos(p: ProductoIntl): Record<string, ResumenCalculo>
     const r = resolverValores(pais, def, hoy);
     const dinamicas = r.ok ? opcionesDinamicas(pais, def, r.valores) : {};
     salida[slug] = {
-      nombre: nombreDeCalculo(e.contenido.h1, pais.mercado.nombre),
+      nombre: nombreDeCalculo(e.contenido.h1),
       campos: def.campos.map((c) => {
         const ops =
           c.tipo === "opcion"
@@ -177,7 +193,12 @@ export function resumenCalculos(p: ProductoIntl): Record<string, ResumenCalculo>
               ? (pais.mercado.regiones ?? []).map((x) => ({ valor: x.id, etiqueta: x.nombre }))
               : c.tipo === "opcion-dato"
                 ? (dinamicas[c.id] ?? [])
-                : null;
+                : c.tipo === "si-no"
+                  ? [
+                      { valor: "true", etiqueta: si },
+                      { valor: "false", etiqueta: no },
+                    ]
+                  : null;
         return { id: c.id, etiqueta: c.etiqueta, tipo: c.tipo, ...(ops ? { opciones: Object.fromEntries(ops.map((o) => [o.valor, o.etiqueta])) } : {}) };
       }),
     };

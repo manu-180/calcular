@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ventaIntlActiva } from "@/lib/pagos";
 import { catalogoIntl, productoIntlDe } from "@/lib/pagos/catalogo-intl";
 import { leyendaDeCobro } from "@/lib/pagos/ofertas-intl";
+import { textosTarjeta } from "@/lib/pagos/textos";
 import { referenciaLocalDe } from "@/lib/pagos/ofertas-servidor";
 import { rutaIntl, urlIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion } from "@/motor/sitio";
@@ -52,7 +53,8 @@ export default async function LandingPlanillaIntl({ params }: Props) {
   const t = textosPlanillas(m);
   const precio = precioIntl(p, m.locale);
   const referencia = referenciaLocalDe(m.codigo);
-  const cobro = leyendaDeCobro(p.precioCentavos, referencia);
+  const tarjeta = textosTarjeta(m.idioma, m.trato);
+  const cobro = leyendaDeCobro(p.precioCentavos, referencia, tarjeta);
   const muestra = muestraDePlanilla(ctx, p);
   const faq = t.faq(p, referencia !== null);
   const ventaActiva = ventaIntlActiva();
@@ -125,7 +127,7 @@ export default async function LandingPlanillaIntl({ params }: Props) {
       </section>
       {botonCompra ?? (
         <div style={{ maxWidth: "30rem" }}>
-          <AvisoPronto producto={p.id} trato={m.trato} />
+          <AvisoPronto producto={p.id} textos={tarjeta.aviso} />
         </div>
       )}
       <p className="cy-vacio">{t.pagoUnico}</p>
