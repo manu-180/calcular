@@ -1,0 +1,1440 @@
+{
+  "mercado": "ie",
+  "datos": [
+    {
+      "id": "ie.income-tax-rates",
+      "nombre": "Income tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "Standard rate",
+        "higher": "Higher rate"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "standard": 20,
+            "higher": 40
+          },
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Tax rates, bands and reliefs",
+            "url": "https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/tax-relief-charts/index.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.rate-bands",
+      "nombre": "Standard rate bands",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "single": "Single, widowed or surviving civil partner",
+        "single-parent": "Single parent (Single Person Child Carer Credit)",
+        "married-one-income": "Married or civil partners, one income",
+        "married-two-incomes": "Married or civil partners, two incomes",
+        "married-increase-max": "Maximum increase for the second income"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "single": 44000,
+            "single-parent": 48000,
+            "married-one-income": 53000,
+            "married-two-incomes": 53000,
+            "married-increase-max": 35000
+          },
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Tax rates, bands and reliefs",
+            "url": "https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/tax-relief-charts/index.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.tax-credits",
+      "nombre": "Personal tax credits",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "single": "Single Person Tax Credit",
+        "married": "Married Person or Civil Partner Tax Credit",
+        "single-person-child-carer": "Single Person Child Carer Credit",
+        "employee": "Employee Tax Credit",
+        "earned-income": "Earned Income Tax Credit"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "single": 2000,
+            "married": 4000,
+            "single-person-child-carer": 1900,
+            "employee": 2000,
+            "earned-income": 2000
+          },
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Tax rates, bands and reliefs",
+            "url": "https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/tax-relief-charts/index.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.employee-credit-full-income",
+      "nombre": "PAYE income needed for the full Employee Tax Credit",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Employee Tax Credit",
+            "url": "https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/income-and-employment/employee-tax-credit/index.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.rent-tax-credit",
+      "nombre": "Rent Tax Credit, maximum",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "single": "Single person",
+        "couple": "Jointly assessed couple"
+      },
+      "proximaRevision": "2029-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2028-12-31",
+          "valor": {
+            "single": 1000,
+            "couple": 2000
+          },
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Rent Tax Credit: how much can you claim?",
+            "url": "https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/land-and-property/rent-credit/how-much-claim.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.rent-tax-credit-rate",
+      "nombre": "Rent Tax Credit rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2029-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2028-12-31",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Rent Tax Credit: how much can you claim?",
+            "url": "https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/land-and-property/rent-credit/how-much-claim.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.usc-bands",
+      "nombre": "USC standard rates and bands",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12012,
+              "tasa": 0.5
+            },
+            {
+              "desde": 12012,
+              "hasta": 28700,
+              "tasa": 2
+            },
+            {
+              "desde": 28700,
+              "hasta": 70044,
+              "tasa": 3
+            },
+            {
+              "desde": 70044,
+              "hasta": null,
+              "tasa": 8
+            }
+          ],
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Standard rates and thresholds of USC",
+            "url": "https://www.revenue.ie/en/jobs-and-pensions/usc/standard-rates-thresholds.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.usc-reduced-bands",
+      "nombre": "USC reduced rates (aged 70 or over, or full medical card)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12012,
+              "tasa": 0.5
+            },
+            {
+              "desde": 12012,
+              "hasta": null,
+              "tasa": 2
+            }
+          ],
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Reduced rates of USC",
+            "url": "https://www.revenue.ie/en/jobs-and-pensions/usc/reduced-rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.usc-reduced-income-limit",
+      "nombre": "Income limit for reduced USC rates",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Reduced rates of USC",
+            "url": "https://www.revenue.ie/en/jobs-and-pensions/usc/reduced-rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.usc-exemption",
+      "nombre": "Income at or below which no USC is due",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 13000,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Universal Social Charge (USC)",
+            "url": "https://www.revenue.ie/en/jobs-and-pensions/usc/index.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.prsi-employee-rate",
+      "nombre": "PRSI Class A employee rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-09-30",
+          "valor": 4.2,
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "PRSI Class A rates",
+            "url": "https://www.gov.ie/en/department-of-social-protection/publications/prsi-class-a-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 4.35,
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "PRSI Class A rates",
+            "url": "https://www.gov.ie/en/department-of-social-protection/publications/prsi-class-a-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.prsi-employer-rates",
+      "nombre": "PRSI Class A employer rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "lower": "Weekly pay up to the higher rate threshold",
+        "higher": "Weekly pay above the higher rate threshold"
+      },
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-09-30",
+          "valor": {
+            "lower": 9,
+            "higher": 11.25
+          },
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "PRSI Class A rates",
+            "url": "https://www.gov.ie/en/department-of-social-protection/publications/prsi-class-a-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "lower": 9.15,
+            "higher": 11.4
+          },
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "PRSI Class A rates",
+            "url": "https://www.gov.ie/en/department-of-social-protection/publications/prsi-class-a-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.prsi-weekly-thresholds",
+      "nombre": "PRSI Class A weekly thresholds",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "employee-starts": "No employee PRSI up to",
+        "credit-ends": "PRSI Credit ends at",
+        "employer-higher": "Employer higher rate above"
+      },
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "employee-starts": 352,
+            "credit-ends": 424,
+            "employer-higher": 552
+          },
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "PRSI Class A rates",
+            "url": "https://www.gov.ie/en/department-of-social-protection/publications/prsi-class-a-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.prsi-credit-max",
+      "nombre": "Maximum weekly PRSI Credit",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "PRSI 2026 Contribution Rates and User Guide (SW14)",
+            "url": "https://assets.gov.ie/static/documents/cb168977/PRSI_C20260116_Contribution_Rates_and_User_Guide_-_SW_14_-_English_Version_-_January_2026_.pdf-web.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.vat-rates",
+      "nombre": "VAT rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "Standard rate",
+        "reduced": "Reduced rate",
+        "second-reduced": "Second reduced rate",
+        "livestock": "Livestock rate",
+        "zero": "Zero rate"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "standard": 23,
+            "reduced": 13.5,
+            "second-reduced": 9,
+            "livestock": 4.8,
+            "zero": 0
+          },
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Current VAT rates",
+            "url": "https://www.revenue.ie/en/vat/vat-rates/search-vat-rates/current-vat-rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "El 0 % sale de https://www.revenue.ie/en/vat/vat-rates/what-are-vat-rates/index.aspx (zero rate)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.minimum-wage",
+      "nombre": "National minimum hourly rate of pay",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 14.15,
+          "fuente": {
+            "organismo": "Irish Statute Book",
+            "titulo": "S.I. No. 472/2025, National Minimum Wage Order 2025",
+            "url": "https://www.irishstatutebook.ie/eli/2025/si/472/made/en/print",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": 14.94,
+          "motivo": "Es la recomendación de la Low Pay Commission (julio 2026) para 2027; falta la National Minimum Wage Order que la fije."
+        }
+      ]
+    },
+    {
+      "id": "ie.minimum-wage-age-percent",
+      "nombre": "Minimum wage by age, as a share of the adult rate",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "under-18": "Under 18",
+        "age-18": "18 years old",
+        "age-19": "19 years old",
+        "age-20-plus": "20 or over"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "under-18": 70,
+            "age-18": 80,
+            "age-19": 90,
+            "age-20-plus": 100
+          },
+          "fuente": {
+            "organismo": "Workplace Relations Commission",
+            "titulo": "National Minimum Wage",
+            "url": "https://www.workplacerelations.ie/en/what_you_should_know/hours-and-wages/national%20minimum%20wage/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.redundancy-weekly-ceiling",
+      "nombre": "Weekly pay ceiling for statutory redundancy",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 600,
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "Rates of Payment 2026 (SW19, May 2026)",
+            "url": "https://assets.gov.ie/static/documents/9c18b85f/20260520_Rates_of_Payment_Booklet_-_SW19_-_2026_May.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.annual-leave-percent",
+      "nombre": "Annual leave: share of hours worked",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Workplace Relations Commission",
+            "titulo": "Annual Leave",
+            "url": "https://www.workplacerelations.ie/en/what_you_should_know/leave/annual-leave/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.annual-leave-full-year-hours",
+      "nombre": "Annual leave: hours for 4 working weeks",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1365,
+          "fuente": {
+            "organismo": "Workplace Relations Commission",
+            "titulo": "Annual Leave",
+            "url": "https://www.workplacerelations.ie/en/what_you_should_know/leave/annual-leave/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.annual-leave-monthly-hours",
+      "nombre": "Annual leave: hours in a month to earn a third of a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 117,
+          "fuente": {
+            "organismo": "Workplace Relations Commission",
+            "titulo": "Annual Leave",
+            "url": "https://www.workplacerelations.ie/en/what_you_should_know/leave/annual-leave/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.annual-leave-max-weeks",
+      "nombre": "Maximum statutory annual leave",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Workplace Relations Commission",
+            "titulo": "Annual Leave",
+            "url": "https://www.workplacerelations.ie/en/what_you_should_know/leave/annual-leave/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.public-holiday-part-time-hours",
+      "nombre": "Hours in the previous 5 weeks for a part-time worker to qualify",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Workplace Relations Commission",
+            "titulo": "Public Holidays",
+            "url": "https://www.workplacerelations.ie/en/what_you_should_know/public-holidays/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.public-holiday-weekly-share",
+      "nombre": "Public holiday pay when not rostered, share of weekly pay",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Workplace Relations Commission",
+            "titulo": "Public Holidays",
+            "url": "https://www.workplacerelations.ie/en/what_you_should_know/public-holidays/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La página dice «one-fifth of their normal weekly wage»: 20 %."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.maternity-benefit-weekly",
+      "nombre": "Maternity Benefit, weekly rate",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 299,
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "Maternity Benefit",
+            "url": "https://www.gov.ie/en/department-of-social-protection/services/maternity-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.maternity-benefit-weeks",
+      "nombre": "Maternity Benefit, weeks paid",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "Maternity Benefit",
+            "url": "https://www.gov.ie/en/department-of-social-protection/services/maternity-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.maternity-unpaid-weeks",
+      "nombre": "Unpaid maternity leave after the benefit ends",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "Maternity Benefit",
+            "url": "https://www.gov.ie/en/department-of-social-protection/services/maternity-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.jprb-rates",
+      "nombre": "Jobseeker's Pay-Related Benefit, share of gross average earnings",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "weeks-1-13": "Weeks 1 to 13",
+        "weeks-14-26": "Weeks 14 to 26",
+        "weeks-27-39": "Weeks 27 to 39",
+        "short": "26 weeks (104 to 259 contributions)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "weeks-1-13": 60,
+            "weeks-14-26": 55,
+            "weeks-27-39": 50,
+            "short": 50
+          },
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "Jobseeker's Pay-Related Benefit",
+            "url": "https://www.gov.ie/en/department-of-social-protection/services/jobseekers-pay-related-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.jprb-caps",
+      "nombre": "Jobseeker's Pay-Related Benefit, maximum weekly payment",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "weeks-1-13": "Weeks 1 to 13",
+        "weeks-14-26": "Weeks 14 to 26",
+        "weeks-27-39": "Weeks 27 to 39",
+        "short": "26 weeks (104 to 259 contributions)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "weeks-1-13": 450,
+            "weeks-14-26": 375,
+            "weeks-27-39": 300,
+            "short": 300
+          },
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "Jobseeker's Pay-Related Benefit",
+            "url": "https://www.gov.ie/en/department-of-social-protection/services/jobseekers-pay-related-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.jprb-minimum",
+      "nombre": "Jobseeker's Pay-Related Benefit, minimum weekly rate",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 125,
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "Jobseeker's Pay-Related Benefit",
+            "url": "https://www.gov.ie/en/department-of-social-protection/services/jobseekers-pay-related-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.illness-benefit-rates",
+      "nombre": "Illness Benefit, personal weekly rate by average weekly earnings",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 150,
+              "tasa": 0,
+              "cuotaFija": 114
+            },
+            {
+              "desde": 150,
+              "hasta": 220,
+              "tasa": 0,
+              "cuotaFija": 163.7
+            },
+            {
+              "desde": 220,
+              "hasta": 300,
+              "tasa": 0,
+              "cuotaFija": 198.9
+            },
+            {
+              "desde": 300,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 254
+            }
+          ],
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "Rates of Payment 2026 (SW19, May 2026)",
+            "url": "https://assets.gov.ie/static/documents/9c18b85f/20260520_Rates_of_Payment_Booklet_-_SW19_-_2026_May.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabla «Personal graduated weekly Illness Benefit rates». El folleto dice que los aumentos por hijo rigen desde el 5 de enero de 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.child-benefit-monthly",
+      "nombre": "Child Benefit, monthly rate per child",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "single": "Each child",
+        "twins": "Each twin",
+        "multiple": "Each child in triplets or more"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "single": 140,
+            "twins": 210,
+            "multiple": 280
+          },
+          "fuente": {
+            "organismo": "Department of Social Protection",
+            "titulo": "Rates of Payment 2026 (SW19, May 2026)",
+            "url": "https://assets.gov.ie/static/documents/9c18b85f/20260520_Rates_of_Payment_Booklet_-_SW19_-_2026_May.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.stamp-duty-residential",
+      "nombre": "Stamp Duty on residential property",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-02",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1000000,
+              "tasa": 1
+            },
+            {
+              "desde": 1000000,
+              "hasta": 1500000,
+              "tasa": 2
+            },
+            {
+              "desde": 1500000,
+              "hasta": null,
+              "tasa": 6
+            }
+          ],
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Stamp Duty and property: rates",
+            "url": "https://www.revenue.ie/en/property/stamp-duty/property/stamp-duty-property/rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.stamp-duty-non-residential",
+      "nombre": "Stamp Duty on non-residential property",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-02",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Stamp Duty and property: rates",
+            "url": "https://www.revenue.ie/en/property/stamp-duty/property/stamp-duty-property/rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.htb-max",
+      "nombre": "Help to Buy, maximum refund",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2030-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-07-23",
+          "hasta": "2026-10-06",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Help to Buy: how much can you claim?",
+            "url": "https://www.revenue.ie/en/property/help-to-buy-incentive/how-much-can-you-claim.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-07",
+          "hasta": "2029-12-31",
+          "valor": 35000,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Help to Buy: how much can you claim?",
+            "url": "https://www.revenue.ie/en/property/help-to-buy-incentive/how-much-can-you-claim.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.htb-percent",
+      "nombre": "Help to Buy, share of the purchase value",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2030-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-07-23",
+          "hasta": "2029-12-31",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Help to Buy: how much can you claim?",
+            "url": "https://www.revenue.ie/en/property/help-to-buy-incentive/how-much-can-you-claim.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.htb-max-value",
+      "nombre": "Help to Buy, maximum purchase value",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2030-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "hasta": "2029-12-31",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Help to Buy: who can claim HTB?",
+            "url": "https://www.revenue.ie/en/property/help-to-buy-incentive/who-can-claim-htb.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.htb-min-mortgage-percent",
+      "nombre": "Help to Buy, minimum mortgage as a share of the purchase value",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2030-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "hasta": "2029-12-31",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "Help to Buy: who can claim HTB?",
+            "url": "https://www.revenue.ie/en/property/help-to-buy-incentive/who-can-claim-htb.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.lpt-bands",
+      "nombre": "Local Property Tax, basic charge by valuation band",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2031-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2030-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 240000,
+              "tasa": 0,
+              "cuotaFija": 95
+            },
+            {
+              "desde": 240000.01,
+              "hasta": 315000,
+              "tasa": 0,
+              "cuotaFija": 235
+            },
+            {
+              "desde": 315000.01,
+              "hasta": 420000,
+              "tasa": 0,
+              "cuotaFija": 333
+            },
+            {
+              "desde": 420000.01,
+              "hasta": 525000,
+              "tasa": 0,
+              "cuotaFija": 428
+            },
+            {
+              "desde": 525000.01,
+              "hasta": 630000,
+              "tasa": 0,
+              "cuotaFija": 523
+            },
+            {
+              "desde": 630000.01,
+              "hasta": 735000,
+              "tasa": 0,
+              "cuotaFija": 618
+            },
+            {
+              "desde": 735000.01,
+              "hasta": 840000,
+              "tasa": 0,
+              "cuotaFija": 713
+            },
+            {
+              "desde": 840000.01,
+              "hasta": 945000,
+              "tasa": 0,
+              "cuotaFija": 808
+            },
+            {
+              "desde": 945000.01,
+              "hasta": 1050000,
+              "tasa": 0,
+              "cuotaFija": 903
+            },
+            {
+              "desde": 1050000.01,
+              "hasta": 1155000,
+              "tasa": 0,
+              "cuotaFija": 998
+            },
+            {
+              "desde": 1155000.01,
+              "hasta": 1260000,
+              "tasa": 0,
+              "cuotaFija": 1094
+            },
+            {
+              "desde": 1260000.01,
+              "hasta": 1365000,
+              "tasa": 0,
+              "cuotaFija": 1272
+            },
+            {
+              "desde": 1365000.01,
+              "hasta": 1470000,
+              "tasa": 0,
+              "cuotaFija": 1535
+            },
+            {
+              "desde": 1470000.01,
+              "hasta": 1575000,
+              "tasa": 0,
+              "cuotaFija": 1797
+            },
+            {
+              "desde": 1575000.01,
+              "hasta": 1680000,
+              "tasa": 0,
+              "cuotaFija": 2060
+            },
+            {
+              "desde": 1680000.01,
+              "hasta": 1785000,
+              "tasa": 0,
+              "cuotaFija": 2322
+            },
+            {
+              "desde": 1785000.01,
+              "hasta": 1890000,
+              "tasa": 0,
+              "cuotaFija": 2585
+            },
+            {
+              "desde": 1890000.01,
+              "hasta": 1995000,
+              "tasa": 0,
+              "cuotaFija": 2847
+            },
+            {
+              "desde": 1995000.01,
+              "hasta": 2100000,
+              "tasa": 0,
+              "cuotaFija": 3110
+            }
+          ],
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "LPT valuation bands and rates",
+            "url": "https://www.revenue.ie/en/property/local-property-tax/valuing-your-property/valuation-bands-rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.lpt-high-value-rates",
+      "nombre": "Local Property Tax rates for properties over €2.1 million",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2031-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2030-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1260000,
+              "tasa": 0.0906
+            },
+            {
+              "desde": 1260000,
+              "hasta": 2100000,
+              "tasa": 0.25
+            },
+            {
+              "desde": 2100000,
+              "hasta": null,
+              "tasa": 0.3
+            }
+          ],
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "LPT valuation bands and rates",
+            "url": "https://www.revenue.ie/en/property/local-property-tax/valuing-your-property/valuation-bands-rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.lpt-band-limit",
+      "nombre": "Highest value charged by band",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2031-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2030-12-31",
+          "valor": 2100000,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "LPT valuation bands and rates",
+            "url": "https://www.revenue.ie/en/property/local-property-tax/valuing-your-property/valuation-bands-rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.lpt-local-adjustment",
+      "nombre": "Local Adjustment Factor 2026",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "carlow": "Carlow County Council",
+        "cavan": "Cavan County Council",
+        "clare": "Clare County Council",
+        "cork-city": "Cork City Council",
+        "cork-county": "Cork County Council",
+        "donegal": "Donegal County Council",
+        "dublin-city": "Dublin City Council",
+        "dun-laoghaire-rathdown": "Dún Laoghaire Rathdown County Council",
+        "fingal": "Fingal County Council",
+        "galway-city": "Galway City Council",
+        "galway-county": "Galway County Council",
+        "kerry": "Kerry County Council",
+        "kildare": "Kildare County Council",
+        "kilkenny": "Kilkenny County Council",
+        "laois": "Laois County Council",
+        "leitrim": "Leitrim County Council",
+        "limerick": "Limerick City & County Council",
+        "longford": "Longford County Council",
+        "louth": "Louth County Council",
+        "mayo": "Mayo County Council",
+        "meath": "Meath County Council",
+        "monaghan": "Monaghan County Council",
+        "offaly": "Offaly County Council",
+        "roscommon": "Roscommon County Council",
+        "sligo": "Sligo County Council",
+        "south-dublin": "South Dublin County Council",
+        "tipperary": "Tipperary County Council",
+        "waterford": "Waterford City & County Council",
+        "westmeath": "Westmeath County Council",
+        "wexford": "Wexford County Council",
+        "wicklow": "Wicklow County Council"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "carlow": 15,
+            "cavan": 15,
+            "clare": 15,
+            "cork-city": 12,
+            "cork-county": 15,
+            "donegal": 15,
+            "dublin-city": 0,
+            "dun-laoghaire-rathdown": -15,
+            "fingal": -5,
+            "galway-city": 15,
+            "galway-county": 15,
+            "kerry": 10,
+            "kildare": 10,
+            "kilkenny": 15,
+            "laois": 15,
+            "leitrim": 15,
+            "limerick": 15,
+            "longford": 15,
+            "louth": 0,
+            "mayo": 10,
+            "meath": 0,
+            "monaghan": 15,
+            "offaly": 15,
+            "roscommon": 15,
+            "sligo": 15,
+            "south-dublin": -7.5,
+            "tipperary": 15,
+            "waterford": 15,
+            "westmeath": 15,
+            "wexford": 15,
+            "wicklow": 6
+          },
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "LPT valuation bands and rates",
+            "url": "https://www.revenue.ie/en/property/local-property-tax/valuing-your-property/valuation-bands-rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.cgt-rate",
+      "nombre": "Capital Gains Tax rate for most gains",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2026-10-06",
+          "valor": 33,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "How to calculate CGT",
+            "url": "https://www.revenue.ie/en/gains-gifts-and-inheritance/transfering-an-asset/how-to-calculate-cgt.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-07",
+          "valor": 31,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "How to calculate CGT",
+            "url": "https://www.revenue.ie/en/gains-gifts-and-inheritance/transfering-an-asset/how-to-calculate-cgt.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.cgt-annual-exemption",
+      "nombre": "CGT personal exemption",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 1270,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "How to calculate CGT",
+            "url": "https://www.revenue.ie/en/gains-gifts-and-inheritance/transfering-an-asset/how-to-calculate-cgt.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.cat-thresholds",
+      "nombre": "Capital Acquisitions Tax group thresholds",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "group-a": "Group A: a child of the person giving it",
+        "group-b": "Group B: brother, sister, niece, nephew, grandparent or grandchild",
+        "group-c": "Group C: anyone else"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-02",
+          "hasta": "2026-10-06",
+          "valor": {
+            "group-a": 400000,
+            "group-b": 40000,
+            "group-c": 20000
+          },
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "CAT group thresholds",
+            "url": "https://www.revenue.ie/en/gains-gifts-and-inheritance/cat-thresholds-rates-and-aggregation-rules/cat-thresholds.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-07",
+          "valor": {
+            "group-a": 420000,
+            "group-b": 44000,
+            "group-c": 22000
+          },
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "CAT group thresholds",
+            "url": "https://www.revenue.ie/en/gains-gifts-and-inheritance/cat-thresholds-rates-and-aggregation-rules/cat-thresholds.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ie.cat-rate",
+      "nombre": "Capital Acquisitions Tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-12-06",
+          "valor": 33,
+          "fuente": {
+            "organismo": "Revenue",
+            "titulo": "CAT rates",
+            "url": "https://www.revenue.ie/en/gains-gifts-and-inheritance/cat-thresholds-rates-and-aggregation-rules/cat-rates.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}

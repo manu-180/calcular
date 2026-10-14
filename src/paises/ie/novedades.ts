@@ -1,0 +1,80 @@
+import type { Novedad } from "@/motor/tipos";
+
+export const novedades: readonly Novedad[] = [
+  {
+    id: "ie.cgt-31-percent",
+    fecha: "2026-10-14",
+    titulo: "Capital Gains Tax falls to 31%",
+    texto: "For disposals from 7 October 2026 the rate of CGT for most gains is 31%, down from 33%. The capital gains tax calculator uses the new rate.",
+    vigenteDesde: "2026-10-07",
+    calculadoras: ["ie.capital-gains-tax"],
+    fuente: {
+      organismo: "Revenue",
+      titulo: "How to calculate CGT",
+      url: "https://www.revenue.ie/en/gains-gifts-and-inheritance/transfering-an-asset/how-to-calculate-cgt.aspx",
+      tipo: "primaria",
+      verificadoEl: "2026-10-14",
+    },
+  },
+  {
+    id: "ie.cat-thresholds-october-2026",
+    fecha: "2026-10-14",
+    titulo: "Higher tax-free thresholds for gifts and inheritances",
+    texto:
+      "For gifts and inheritances taken on or after 7 October 2026 the CAT thresholds are €420,000 for Group A, €44,000 for Group B and €22,000 for Group C. The capital acquisitions tax calculator already uses them.",
+    vigenteDesde: "2026-10-07",
+    calculadoras: ["ie.capital-acquisitions-tax"],
+    fuente: {
+      organismo: "Revenue",
+      titulo: "CAT group thresholds",
+      url: "https://www.revenue.ie/en/gains-gifts-and-inheritance/cat-thresholds-rates-and-aggregation-rules/cat-thresholds.aspx",
+      tipo: "primaria",
+      verificadoEl: "2026-10-14",
+    },
+  },
+  {
+    id: "ie.help-to-buy-35000",
+    fecha: "2026-10-14",
+    titulo: "Help to Buy goes up to €35,000",
+    texto: "If you sign the contract for a new home from 7 October 2026 to 31 December 2029, you can claim up to €35,000 under Help to Buy, up from €30,000.",
+    vigenteDesde: "2026-10-07",
+    calculadoras: ["ie.help-to-buy"],
+    fuente: {
+      organismo: "Revenue",
+      titulo: "Help to Buy: how much can you claim?",
+      url: "https://www.revenue.ie/en/property/help-to-buy-incentive/how-much-can-you-claim.aspx",
+      tipo: "primaria",
+      verificadoEl: "2026-10-14",
+    },
+  },
+  {
+    id: "ie.prsi-october-2026",
+    fecha: "2026-10-14",
+    titulo: "Employee PRSI rises to 4.35%",
+    texto: "From 1 October 2026 Class A employees pay 4.35% PRSI, up from 4.2%. Employer PRSI is now 11.4%, or 9.15% on weekly pay up to €552.",
+    vigenteDesde: "2026-10-01",
+    calculadoras: ["ie.take-home-pay", "ie.prsi-calculator", "ie.employer-prsi-calculator"],
+    fuente: {
+      organismo: "Department of Social Protection",
+      titulo: "PRSI Class A rates",
+      url: "https://www.gov.ie/en/department-of-social-protection/publications/prsi-class-a-rates/",
+      tipo: "primaria",
+      verificadoEl: "2026-10-14",
+    },
+  },
+  {
+    id: "ie.minimum-wage-2026",
+    fecha: "2026-10-14",
+    titulo: "National Minimum Wage is €14.15 an hour",
+    texto: "Since 1 January 2026 the minimum for workers aged 20 and over is €14.15 an hour. Younger workers get 70%, 80% or 90% of it depending on their age.",
+    vigenteDesde: "2026-01-01",
+    calculadoras: ["ie.minimum-wage"],
+    fuente: {
+      organismo: "Irish Statute Book",
+      titulo: "S.I. No. 472/2025, National Minimum Wage Order 2025",
+      url: "https://www.irishstatutebook.ie/eli/2025/si/472/made/en/print",
+      tipo: "primaria",
+      verificadoEl: "2026-10-14",
+    },
+  },
+];
