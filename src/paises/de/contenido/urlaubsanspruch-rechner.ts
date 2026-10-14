@@ -7,11 +7,11 @@ export default definirContenido({
   description:
     "Wie viele Urlaubstage stehen Ihnen zu? Gesetzlicher Mindesturlaub nach Arbeitstagen pro Woche und Teilurlaub bei Eintritt oder Austritt im Jahr.",
   intro: [
-    "Das Bundesurlaubsgesetz garantiert {{de.mindesturlaub}} Werktage Urlaub im Jahr. Werktage sind alle Tage außer Sonn- und Feiertagen, also eine Sechstagewoche.",
+    "Das Bundesurlaubsgesetz garantiert mindestens {{de.mindesturlaub}} Urlaub im Jahr, gezählt in Werktagen. Werktage sind alle Tage außer Sonn- und Feiertagen, also eine Sechstagewoche.",
     "Der Rechner rechnet das auf Ihre Arbeitswoche um und zeigt den anteiligen Urlaub, wenn Sie nicht das ganze Jahr beschäftigt sind.",
   ],
   comoSeCalcula: [
-    "Gesetzlicher Urlaub = {{de.mindesturlaub}} × Ihre Arbeitstage pro Woche / 6.",
+    "Gesetzlicher Urlaub = {{de.mindesturlaub}} (Werktage) × Ihre Arbeitstage pro Woche / 6.",
     "Gilt im Vertrag mehr Urlaub, zählt der Vertrag.",
     "Teilurlaub: ein Zwölftel des Jahresurlaubs für jeden vollen Monat. Bruchteile ab einem halben Tag werden aufgerundet.",
     "Den vollen Anspruch erwerben Sie erst nach sechs Monaten im Arbeitsverhältnis.",
