@@ -46,11 +46,14 @@ y una línea en la lista de tu frente (`src/motor/universales/finanzas.ts` o `co
 - En español, cada texto que se dirige a la persona tiene tres variantes con `segunTrato(trato, { tu,
   usted, vos })`: tú («calcula», «tienes»), usted («calcule», «tiene») y voseo («calculá», «tenés»).
   Lo impersonal («Precio final») va igual en los tres.
-- En inglés no hay variantes (`ui: () => ({...})`).
+- Fuera del español el registro es fijo por idioma y no hay variantes (`ui: () => ({...})`):
+  en neutro, pt-BR «você», fr «vous», de «Sie», it «tu», nl «je». El `trato` de cada mercado de esos
+  idiomas se fija en consecuencia.
 
 **`contenido/<idioma>.ts`**
-- `title` hasta 60 caracteres con el nombre del país (`ctx.nombrePais`); `description` entre 70 y
-  160. Al menos 3 preguntas en `faq`; `intro` y `comoSeCalcula` con al menos una entrada.
+- `title` hasta 60 caracteres con el nombre del país (`ctx.nombrePais`), armado con
+  `tituloQueEntre(...)` y candidatos de más a menos completos, porque hay países de nombre largo
+  («Saint Vincent and the Grenadines»). `description` entre 70 y 160. Al menos 3 preguntas en `faq`; `intro` y `comoSeCalcula` con al menos una entrada.
 - Los números de los ejemplos **se calculan**, no se tipean: usá `montoEjemplo` y la misma fórmula
   (o `definir(ctx, ui).calcular(...)`), y formateá con `formatearMonto(ctx, n)` y
   `formatearNumero(ctx, n, decimales)` para que salga con el separador del país.
@@ -73,5 +76,5 @@ npx tsx scripts/check_universales.ts <id>
 ```
 
 El check arma la calculadora en mercados de prueba de cada idioma y trato (MXN tú, COP usted, UYU
-vos, USD imperial, GBP métrico), corre los casos, formatea el resultado y revisa largos, rayas y
+vos, USD imperial, GBP métrico y nombres de país largos en cada idioma), corre los casos, formatea el resultado y revisa largos, rayas y
 emojis.
