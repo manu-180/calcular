@@ -92,6 +92,12 @@ export function segunTrato(trato: Trato, variantes: { tu: string; usted: string;
   return trato === "vos" ? (variantes.vos ?? variantes.tu) : variantes[trato];
 }
 
+// El title de una página no puede pasar de 60 caracteres y hay países de nombre largo («Saint Vincent
+// and the Grenadines»): se pasan candidatos de más a menos completo y va el primero que entra.
+export function tituloQueEntre(...candidatos: readonly string[]): string {
+  return candidatos.find((c) => c.length <= 60) ?? candidatos[candidatos.length - 1];
+}
+
 const BONITOS = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 7.5, 8, 10];
 
 // Monto de ejemplo en la moneda del mercado: el valor en "dólares" por la escala, llevado al número

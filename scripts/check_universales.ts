@@ -20,10 +20,12 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "mx", pais: "MX", nombrePais: "México", locale: "es-MX", trato: "tu", moneda: "MXN", escala: 20 },
     { mercado: "co", pais: "CO", nombrePais: "Colombia", locale: "es-CO", trato: "usted", moneda: "COP", escala: 4000 },
     { mercado: "uy", pais: "UY", nombrePais: "Uruguay", locale: "es-UY", trato: "vos", moneda: "UYU", escala: 40 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "San Vicente y las Granadinas", locale: "es", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
   en: [
     { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "United States", locale: "en-US", trato: "tu", moneda: "USD" as Moneda, escala: 1, unidades: "imperial" },
     { mercado: "gb" as CodigoMercado, pais: "GB", nombrePais: "United Kingdom", locale: "en-GB", trato: "tu", moneda: "GBP" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent and the Grenadines", locale: "en-VC", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
   pt: [{ mercado: "br", pais: "BR", nombrePais: "Brasil", locale: "pt-BR", trato: "tu", moneda: "BRL", escala: 5 }],
   fr: [{ mercado: "fr" as CodigoMercado, pais: "FR", nombrePais: "France", locale: "fr-FR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 }],
