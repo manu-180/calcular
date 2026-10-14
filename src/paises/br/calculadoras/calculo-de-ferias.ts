@@ -1,5 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { inssEmpregado, irrf, REQUISITOS_INSS, REQUISITOS_IRRF, valoresIrrf } from "../lib/folha";
+import { inssEmpregado, irrf, limpo, REQUISITOS_INSS, REQUISITOS_IRRF, valoresIrrf } from "../lib/folha";
 
 // CLT, art. 130: os dias de férias caem conforme as faltas injustificadas do período aquisitivo.
 function diasPorFaltas(faltas: number, diasCheios: number): number | null {
@@ -24,7 +24,8 @@ export default definirCalculadora({
     { id: "venderDias", tipo: "si-no", etiqueta: "Vender 1/3 das férias (abono pecuniário)", porDefecto: false },
     { id: "dependentes", tipo: "entero", etiqueta: "Dependentes para o imposto de renda", min: 0, max: 20, porDefecto: 0 },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     const dias = diasPorFaltas(entrada.faltas, valores["br.ferias-dias"]);
     if (dias === null) throw new ErrorEntrada("Com mais de 32 faltas sem justificativa no período aquisitivo, a lei não garante férias desse período.", "faltas");
     const diasAbono = entrada.venderDias ? Math.floor(dias / 3) : 0;

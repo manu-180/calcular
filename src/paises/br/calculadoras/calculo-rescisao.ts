@@ -1,6 +1,7 @@
 import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 import { sumarDias } from "@/motor/vigencia";
 import { anoDe, anosCompletos, avosDoAno, avosDoPeriodoAquisitivo, mesesCompletos } from "../lib/datas";
+import { limpo } from "../lib/folha";
 
 export default definirCalculadora({
   id: "br.calculo-rescisao",
@@ -48,7 +49,8 @@ export default definirCalculadora({
     { id: "feriasVencidas", tipo: "si-no", etiqueta: "Tenho um período de férias vencidas sem gozar", porDefecto: false },
     { id: "saldoFgts", tipo: "moneda", etiqueta: "Saldo do FGTS deste emprego", min: 0, requerido: false, ayuda: "Veja no app FGTS. Se deixar em branco, estimamos pelos depósitos de 8 % sem rendimento." },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     if (entrada.saida < entrada.admissao) throw new ErrorEntrada("O último dia tem que ser depois da admissão.", "saida");
     const { motivo, salario } = entrada;
     const diaria = salario / 30;

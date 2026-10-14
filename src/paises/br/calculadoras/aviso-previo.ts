@@ -1,6 +1,7 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 import { sumarDias } from "@/motor/vigencia";
 import { anosCompletos } from "../lib/datas";
+import { limpo } from "../lib/folha";
 
 export default definirCalculadora({
   id: "br.aviso-previo",
@@ -28,7 +29,8 @@ export default definirCalculadora({
       porDefecto: "empresa",
     },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     if (entrada.aviso < entrada.admissao) throw new ErrorEntrada("A data do aviso tem que ser depois da admissão.", "aviso");
     const anos = anosCompletos(entrada.admissao, entrada.aviso);
     const base = valores["br.aviso-previo-base"];
@@ -36,7 +38,7 @@ export default definirCalculadora({
     const dias = entrada.quemPede === "empresa" ? proporcional : base;
     const observaciones: string[] = [];
     if (entrada.quemPede === "empregado") {
-      observaciones.push("Quando você pede demissão, o aviso é de 30 dias: os dias a mais por ano de casa são um direito de quem é demitido.");
+      observaciones.push("Quando você pede demissão, o aviso não tem os dias a mais por ano de casa: eles são um direito de quem é demitido.");
       observaciones.push("Se você não cumprir o aviso, a empresa pode descontar esse valor da rescisão.");
     } else {
       observaciones.push("Se o aviso for indenizado, esses dias contam como tempo de serviço e aumentam o 13º e as férias proporcionais.");

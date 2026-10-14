@@ -1,4 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
+import { limpo } from "../lib/folha";
 
 export default definirCalculadora({
   id: "br.hora-extra",
@@ -18,7 +19,8 @@ export default definirCalculadora({
     { id: "horasDomingos", tipo: "numero", etiqueta: "Horas extras em domingos e feriados", min: 0, porDefecto: 0 },
     { id: "adicionalDomingos", tipo: "porcentaje", etiqueta: "Adicional em domingos e feriados", min: 0, porDefecto: 100 },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     const minimo = valores["br.hora-extra-adicional"];
     if (entrada.adicionalUteis < minimo) throw new ErrorEntrada(`A Constituição garante adicional de pelo menos ${minimo} %.`, "adicionalUteis");
     if (entrada.adicionalDomingos < minimo) throw new ErrorEntrada(`A Constituição garante adicional de pelo menos ${minimo} %.`, "adicionalDomingos");

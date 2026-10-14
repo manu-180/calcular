@@ -1,4 +1,5 @@
 import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { limpo } from "../lib/folha";
 
 export default definirCalculadora({
   id: "br.calculo-fgts",
@@ -16,7 +17,8 @@ export default definirCalculadora({
     { id: "meses", tipo: "entero", etiqueta: "Meses de trabalho", min: 1, max: 600, porDefecto: 12 },
     { id: "aprendiz", tipo: "si-no", etiqueta: "Contrato de aprendiz", porDefecto: false },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     const aliquota = entrada.aprendiz ? valores["br.fgts-aliquota-aprendiz"] : valores["br.fgts-aliquota"];
     const mensal = redondear(porcentaje(entrada.salario, aliquota));
     const salarios = redondear(mensal * entrada.meses);

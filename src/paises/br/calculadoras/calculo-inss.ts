@@ -1,5 +1,5 @@
 import { definirCalculadora } from "@/motor/calculo";
-import { aliquotaEfetiva, inssEmpregado } from "../lib/folha";
+import { aliquotaEfetiva, inssEmpregado, limpo } from "../lib/folha";
 
 export default definirCalculadora({
   id: "br.calculo-inss",
@@ -14,7 +14,8 @@ export default definirCalculadora({
   campos: [
     { id: "salario", tipo: "moneda", etiqueta: "Salário de contribuição do mês", min: 0, porDefecto: 3500, ayuda: "Salário bruto mais horas extras e adicionais. Se tiver mais de um emprego, some os salários." },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     const tabela = valores["br.inss-empregado"];
     const teto = valores["br.teto-inss"];
     const base = Math.min(entrada.salario, teto);

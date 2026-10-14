@@ -1,5 +1,5 @@
 import { definirCalculadora } from "@/motor/calculo";
-import { aliquotaEfetiva, inssEmpregado, irrf, REQUISITOS_INSS, REQUISITOS_IRRF, valoresIrrf } from "../lib/folha";
+import { aliquotaEfetiva, inssEmpregado, irrf, limpo, REQUISITOS_INSS, REQUISITOS_IRRF, valoresIrrf } from "../lib/folha";
 
 export default definirCalculadora({
   id: "br.calculo-irrf",
@@ -15,7 +15,8 @@ export default definirCalculadora({
     { id: "pensao", tipo: "moneda", etiqueta: "Pensão alimentícia judicial", min: 0, porDefecto: 0 },
     { id: "outrasDeducoes", tipo: "moneda", etiqueta: "Previdência privada e outras deduções legais", min: 0, porDefecto: 0, ayuda: "Por exemplo, contribuição a PGBL ou a fundo de previdência do empregador." },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     const inss = entrada.inss ?? inssEmpregado(entrada.rendimento, valores["br.inss-empregado"], valores["br.teto-inss"], redondear);
     const r = irrf(
       { rendimento: entrada.rendimento, inss, dependentes: entrada.dependentes, pensao: entrada.pensao, outrasDeducoes: entrada.outrasDeducoes },

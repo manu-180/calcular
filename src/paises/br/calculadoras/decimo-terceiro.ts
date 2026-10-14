@@ -1,5 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { inssEmpregado, irrf, REQUISITOS_INSS, REQUISITOS_IRRF, valoresIrrf } from "../lib/folha";
+import { inssEmpregado, irrf, limpo, REQUISITOS_INSS, REQUISITOS_IRRF, valoresIrrf } from "../lib/folha";
 
 export default definirCalculadora({
   id: "br.decimo-terceiro",
@@ -14,7 +14,8 @@ export default definirCalculadora({
     { id: "mediaVariaveis", tipo: "moneda", etiqueta: "Média mensal de horas extras, comissões e adicionais", min: 0, porDefecto: 0 },
     { id: "dependentes", tipo: "entero", etiqueta: "Dependentes para o imposto de renda", min: 0, max: 20, porDefecto: 0 },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     if (entrada.meses > 12) throw new ErrorEntrada("O ano tem 12 meses no máximo.", "meses");
     const bruto = redondear(((entrada.salario + entrada.mediaVariaveis) * entrada.meses) / 12);
     const primeira = redondear(bruto / 2);

@@ -1,5 +1,5 @@
 import { definirCalculadora } from "@/motor/calculo";
-import { aliquotaEfetiva, inssEmpregado, irrf, REQUISITOS_INSS, REQUISITOS_IRRF, valoresIrrf } from "../lib/folha";
+import { aliquotaEfetiva, inssEmpregado, irrf, limpo, REQUISITOS_INSS, REQUISITOS_IRRF, valoresIrrf } from "../lib/folha";
 
 export default definirCalculadora({
   id: "br.salario-liquido",
@@ -14,7 +14,8 @@ export default definirCalculadora({
     { id: "pensao", tipo: "moneda", etiqueta: "Pensão alimentícia descontada em folha", min: 0, porDefecto: 0, ayuda: "Só a fixada por decisão judicial ou escritura pública." },
     { id: "outrosDescontos", tipo: "moneda", etiqueta: "Outros descontos (vale-transporte, plano de saúde...)", min: 0, porDefecto: 0, ayuda: "Esses descontos não reduzem o imposto de renda." },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     const bruto = entrada.salarioBruto;
     const inss = inssEmpregado(bruto, valores["br.inss-empregado"], valores["br.teto-inss"], redondear);
     const ir = irrf({ rendimento: bruto, inss, dependentes: entrada.dependentes, pensao: entrada.pensao, outrasDeducoes: 0 }, valoresIrrf(valores), redondear);

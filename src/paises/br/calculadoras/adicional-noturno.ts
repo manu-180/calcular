@@ -1,4 +1,5 @@
 import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
+import { limpo } from "../lib/folha";
 
 // CLT, art. 73, § 1º: a hora noturna urbana tem 52 minutos e 30 segundos, então 7 horas de relógio
 // valem 8 horas noturnas.
@@ -20,7 +21,8 @@ export default definirCalculadora({
     { id: "horasRelogio", tipo: "numero", etiqueta: "Horas de relógio trabalhadas entre 22h e 5h no mês", min: 0, porDefecto: 70 },
     { id: "percentual", tipo: "porcentaje", etiqueta: "Adicional noturno", min: 0, porDefecto: 20, ayuda: "A CLT garante pelo menos 20 % para quem trabalha na cidade." },
   ],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     const minimo = valores["br.adicional-noturno"];
     if (entrada.percentual < minimo) throw new ErrorEntrada(`A CLT garante adicional noturno de pelo menos ${minimo} %.`, "percentual");
     if (entrada.jornada > valores["br.jornada-semanal"]) throw new ErrorEntrada(`A jornada normal vai até ${valores["br.jornada-semanal"]} horas por semana.`, "jornada");

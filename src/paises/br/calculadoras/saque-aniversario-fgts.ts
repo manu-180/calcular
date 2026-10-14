@@ -1,4 +1,5 @@
 import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { limpo } from "../lib/folha";
 
 export default definirCalculadora({
   id: "br.saque-aniversario-fgts",
@@ -10,7 +11,8 @@ export default definirCalculadora({
     "br.saque-aniversario": "escala",
   },
   campos: [{ id: "saldo", tipo: "moneda", etiqueta: "Saldo total do FGTS (todas as contas)", min: 0, porDefecto: 3000 }],
-  calcular(entrada, valores, { redondear }) {
+  calcular(entrada, valores, contexto) {
+    const redondear = (n: number) => contexto.redondear(limpo(n));
     const tabela = valores["br.saque-aniversario"];
     let faixa = tabela[0];
     for (const f of tabela) if (entrada.saldo >= f.desde) faixa = f;
