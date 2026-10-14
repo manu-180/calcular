@@ -35,6 +35,30 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## Hoy (14/10/2026 08:50) · PR borrador: https://github.com/manu-180/calcular/pull/31
+
+| País | Calculadoras | Rama |
+|---|---|---|
+| Estados Unidos `us` | 63 (23 locales + 40 universales) | `claude/pais-us` |
+| Reino Unido `gb` | 61 (21 + 40) | `claude/pais-gb` |
+| Brasil `br` | 63 (23 + 40) | `claude/pais-br` |
+| Francia `fr` | 60 (20 + 40) | `claude/pais-fr` |
+| Alemania `de` | 67 (27 + 40; Grunderwerbsteuer en borrador) | `claude/pais-de` |
+| España `es` | 59 (19 + 40) | `claude/pais-es` |
+| Italia `it` | 57 (17 + 40) | `claude/pais-it` |
+| 16 de Latinoamérica | ~80 cada uno (1.246 en total) | `claude/mundo-integracion` |
+
+Todos publicados e integrados. Verde con 24 mercados: check_motor 1382, check_paises_casos 2764,
+check_textos_paises 37545, check_seo_intl 3520 páginas, check_hreflang, check_universales, check_eol.
+
+En curso: pulido de universales y motor (`claude/mundo-pulido`: es-ES, pt-PT, fr-CA, de-CH, redondeo,
+fechas fr, bloque de fuentes traducido), y los países nl au ca pt at ie.
+
+Pendientes conocidos:
+- España: pisar slugs de universales con vocabulario peninsular cuando entre el pulido.
+- Ediciones con dos idiomas (ca-fr, ch-fr, be-fr): el registro todavía no tiene País/Edición.
+- Marcador para series y para filas de una escala; unidad «semanas».
+
 ## Retomado (14/10/2026 02:27)
 
 Integrados: escala (`claude/mundo-escala`) y métricas (`claude/mundo-metricas`), con cargadores
