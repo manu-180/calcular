@@ -1,0 +1,1227 @@
+{
+  "mercado": "br",
+  "datos": [
+    {
+      "id": "br.salario-minimo",
+      "nombre": "Salário mínimo mensal",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1621.0,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Decreto nº 12.797, de 23 de dezembro de 2025 (salário mínimo de 2026)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12797.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.salario-minimo-diario",
+      "nombre": "Salário mínimo diário",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 54.04,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Decreto nº 12.797, de 23 de dezembro de 2025 (salário mínimo de 2026)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12797.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.salario-minimo-hora",
+      "nombre": "Salário mínimo por hora",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7.37,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Decreto nº 12.797, de 23 de dezembro de 2025 (salário mínimo de 2026)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12797.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.inss-empregado",
+      "nombre": "Tabela progressiva do INSS (empregado, doméstico e avulso)",
+      "tipo": "escala",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-01",
+      "nota": "Cada faixa paga a sua alíquota só sobre a parte do salário que cai nela.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1621.0,
+              "tasa": 7.5
+            },
+            {
+              "desde": 1621.0,
+              "hasta": 2902.84,
+              "tasa": 9
+            },
+            {
+              "desde": 2902.84,
+              "hasta": 4354.27,
+              "tasa": 12
+            },
+            {
+              "desde": 4354.27,
+              "hasta": 8475.55,
+              "tasa": 14
+            }
+          ],
+          "fuente": {
+            "organismo": "INSS",
+            "titulo": "Tabela de contribuição mensal a partir da competência janeiro de 2026 (Portaria Interministerial MPS/MF nº 13, de 9/1/2026)",
+            "url": "https://www.gov.br/inss/pt-br/direitos-e-deveres/inscricao-e-contribuicao/tabela-de-contribuicao-mensal",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.teto-inss",
+      "nombre": "Teto do salário de contribuição do INSS",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8475.55,
+          "fuente": {
+            "organismo": "INSS",
+            "titulo": "Tabela de contribuição mensal a partir da competência janeiro de 2026 (Portaria Interministerial MPS/MF nº 13, de 9/1/2026)",
+            "url": "https://www.gov.br/inss/pt-br/direitos-e-deveres/inscricao-e-contribuicao/tabela-de-contribuicao-mensal",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.inss-individual",
+      "nombre": "Alíquota do contribuinte individual (plano normal)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "INSS",
+            "titulo": "Tabela de contribuição mensal a partir da competência janeiro de 2026 (Portaria Interministerial MPS/MF nº 13, de 9/1/2026)",
+            "url": "https://www.gov.br/inss/pt-br/direitos-e-deveres/inscricao-e-contribuicao/tabela-de-contribuicao-mensal",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.inss-simplificado",
+      "nombre": "Alíquota do plano simplificado de previdência",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 11,
+          "fuente": {
+            "organismo": "INSS",
+            "titulo": "Tabela de contribuição mensal a partir da competência janeiro de 2026 (Portaria Interministerial MPS/MF nº 13, de 9/1/2026)",
+            "url": "https://www.gov.br/inss/pt-br/direitos-e-deveres/inscricao-e-contribuicao/tabela-de-contribuicao-mensal",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.inss-mei",
+      "nombre": "Alíquota do INSS do MEI e do facultativo de baixa renda",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "INSS",
+            "titulo": "Tabela de contribuição mensal a partir da competência janeiro de 2026 (Portaria Interministerial MPS/MF nº 13, de 9/1/2026)",
+            "url": "https://www.gov.br/inss/pt-br/direitos-e-deveres/inscricao-e-contribuicao/tabela-de-contribuicao-mensal",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.irrf-mensal",
+      "nombre": "Tabela progressiva mensal do IRRF",
+      "tipo": "escala",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-01",
+      "nota": "Na coluna do valor fixo vai a parcela a deduzir: imposto = base × alíquota menos a parcela.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2428.8,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 2428.81,
+              "hasta": 2826.65,
+              "tasa": 7.5,
+              "cuotaFija": 182.16
+            },
+            {
+              "desde": 2826.66,
+              "hasta": 3751.05,
+              "tasa": 15,
+              "cuotaFija": 394.16
+            },
+            {
+              "desde": 3751.06,
+              "hasta": 4664.68,
+              "tasa": 22.5,
+              "cuotaFija": 675.49
+            },
+            {
+              "desde": 4664.69,
+              "hasta": null,
+              "tasa": 27.5,
+              "cuotaFija": 908.73
+            }
+          ],
+          "fuente": {
+            "organismo": "Receita Federal",
+            "titulo": "Tabelas de incidência e deduções do IRPF em 2026",
+            "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.irrf-dependente",
+      "nombre": "Dedução mensal por dependente",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 189.59,
+          "fuente": {
+            "organismo": "Receita Federal",
+            "titulo": "Tabelas de incidência e deduções do IRPF em 2026",
+            "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.irrf-desconto-simplificado",
+      "nombre": "Desconto simplificado mensal",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 607.2,
+          "fuente": {
+            "organismo": "Receita Federal",
+            "titulo": "Tabelas de incidência e deduções do IRPF em 2026",
+            "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.reducao-mensal-isencao",
+      "nombre": "Rendimento mensal até o qual a redução zera o imposto",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5000.0,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 15.270, de 26 de novembro de 2025 (art. 3º-A e art. 11-A da Lei nº 9.250/1995)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15270.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.reducao-mensal-limite",
+      "nombre": "Rendimento mensal a partir do qual não há redução",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7350.0,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 15.270, de 26 de novembro de 2025 (art. 3º-A e art. 11-A da Lei nº 9.250/1995)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15270.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.reducao-mensal-constante",
+      "nombre": "Parcela fixa da fórmula de redução mensal",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 978.62,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 15.270, de 26 de novembro de 2025 (art. 3º-A e art. 11-A da Lei nº 9.250/1995)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15270.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.reducao-mensal-fator",
+      "nombre": "Fator da fórmula de redução mensal",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.133145,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 15.270, de 26 de novembro de 2025 (art. 3º-A e art. 11-A da Lei nº 9.250/1995)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15270.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.irpf-anual",
+      "nombre": "Tabela progressiva anual do IRPF (ano-calendário 2026)",
+      "tipo": "escala",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-01",
+      "nota": "Na coluna do valor fixo vai a parcela a deduzir: imposto = base × alíquota menos a parcela.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 29145.6,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 29145.61,
+              "hasta": 33919.8,
+              "tasa": 7.5,
+              "cuotaFija": 2185.92
+            },
+            {
+              "desde": 33919.81,
+              "hasta": 45012.6,
+              "tasa": 15,
+              "cuotaFija": 4729.91
+            },
+            {
+              "desde": 45012.61,
+              "hasta": 55976.16,
+              "tasa": 22.5,
+              "cuotaFija": 8105.85
+            },
+            {
+              "desde": 55976.17,
+              "hasta": null,
+              "tasa": 27.5,
+              "cuotaFija": 10904.66
+            }
+          ],
+          "fuente": {
+            "organismo": "Receita Federal",
+            "titulo": "Tabelas de incidência e deduções do IRPF em 2026",
+            "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.irpf-dependente-anual",
+      "nombre": "Dedução anual por dependente",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2275.08,
+          "fuente": {
+            "organismo": "Receita Federal",
+            "titulo": "Tabelas de incidência e deduções do IRPF em 2026",
+            "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.irpf-desconto-simplificado-anual",
+      "nombre": "Limite anual do desconto simplificado",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 17640.0,
+          "fuente": {
+            "organismo": "Receita Federal",
+            "titulo": "Tabelas de incidência e deduções do IRPF em 2026",
+            "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.irpf-limite-instrucao",
+      "nombre": "Limite anual de dedução com instrução",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3561.5,
+          "fuente": {
+            "organismo": "Receita Federal",
+            "titulo": "Tabelas de incidência e deduções do IRPF em 2026",
+            "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.reducao-anual-isencao",
+      "nombre": "Rendimento anual até o qual a redução zera o imposto",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60000.0,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 15.270, de 26 de novembro de 2025 (art. 3º-A e art. 11-A da Lei nº 9.250/1995)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15270.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.reducao-anual-limite",
+      "nombre": "Rendimento anual a partir do qual não há redução",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 88200.0,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 15.270, de 26 de novembro de 2025 (art. 3º-A e art. 11-A da Lei nº 9.250/1995)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15270.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.reducao-anual-constante",
+      "nombre": "Parcela fixa da fórmula de redução anual",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8429.73,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 15.270, de 26 de novembro de 2025 (art. 3º-A e art. 11-A da Lei nº 9.250/1995)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15270.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.reducao-anual-fator",
+      "nombre": "Fator da fórmula de redução anual",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.095575,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 15.270, de 26 de novembro de 2025 (art. 3º-A e art. 11-A da Lei nº 9.250/1995)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15270.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.fgts-aliquota",
+      "nombre": "Depósito mensal do FGTS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1990-05-14",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 8.036, de 11 de maio de 1990 (FGTS), texto compilado",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 15."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.fgts-aliquota-aprendiz",
+      "nombre": "Depósito mensal do FGTS no contrato de aprendizagem",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-12-20",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 8.036, de 11 de maio de 1990 (FGTS), texto compilado",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 15, § 7º."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.fgts-multa",
+      "nombre": "Multa do FGTS na demissão sem justa causa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1990-05-14",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 8.036, de 11 de maio de 1990 (FGTS), texto compilado",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 18, § 1º."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.fgts-multa-acordo",
+      "nombre": "Multa do FGTS na demissão por acordo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-11-11",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Consolidação das Leis do Trabalho (Decreto-Lei nº 5.452/1943)",
+            "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 484-A: metade da multa de 40 %."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.fgts-saque-acordo",
+      "nombre": "Parte do saldo do FGTS que se saca na demissão por acordo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-11-11",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Consolidação das Leis do Trabalho (Decreto-Lei nº 5.452/1943)",
+            "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 484-A, § 1º."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.saque-aniversario",
+      "nombre": "Tabela do saque-aniversário do FGTS",
+      "tipo": "escala",
+      "unidad": "BRL",
+      "nota": "Na coluna do valor fixo vai a parcela adicional: saque = saldo × alíquota mais a parcela.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-12-11",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 500.0,
+              "tasa": 50,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 500.01,
+              "hasta": 1000.0,
+              "tasa": 40,
+              "cuotaFija": 50
+            },
+            {
+              "desde": 1000.01,
+              "hasta": 5000.0,
+              "tasa": 30,
+              "cuotaFija": 150
+            },
+            {
+              "desde": 5000.01,
+              "hasta": 10000.0,
+              "tasa": 20,
+              "cuotaFija": 650
+            },
+            {
+              "desde": 10000.01,
+              "hasta": 15000.0,
+              "tasa": 15,
+              "cuotaFija": 1150
+            },
+            {
+              "desde": 15000.01,
+              "hasta": 20000.0,
+              "tasa": 10,
+              "cuotaFija": 1900
+            },
+            {
+              "desde": 20000.01,
+              "hasta": null,
+              "tasa": 5,
+              "cuotaFija": 2900
+            }
+          ],
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 8.036, de 11 de maio de 1990 (FGTS), texto compilado",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Anexo da Lei nº 8.036/1990."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.fracao-mes",
+      "nombre": "Dias trabalhados que contam como mês inteiro (13º e férias)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1962-07-13",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 4.090, de 13 de julho de 1962 (gratificação de Natal)",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l4090.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 1º, § 2º."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.ferias-dias",
+      "nombre": "Dias de férias por período aquisitivo completo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1977-04-13",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Consolidação das Leis do Trabalho (Decreto-Lei nº 5.452/1943)",
+            "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 130, I."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.aviso-previo-base",
+      "nombre": "Aviso prévio de quem tem até um ano de casa",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-10-13",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 12.506, de 11 de outubro de 2011 (aviso prévio proporcional)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12506.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.aviso-previo-por-ano",
+      "nombre": "Dias de aviso prévio a mais por ano de casa",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-10-13",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 12.506, de 11 de outubro de 2011 (aviso prévio proporcional)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12506.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.aviso-previo-maximo",
+      "nombre": "Aviso prévio máximo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-10-13",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 12.506, de 11 de outubro de 2011 (aviso prévio proporcional)",
+            "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12506.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.hora-extra-adicional",
+      "nombre": "Adicional mínimo da hora extra",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1988-10-05",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Constituição Federal, art. 7º",
+            "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 7º, XVI."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.jornada-semanal",
+      "nombre": "Jornada semanal máxima",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1988-10-05",
+          "valor": 44,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Constituição Federal, art. 7º",
+            "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 7º, XIII."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.adicional-noturno",
+      "nombre": "Adicional noturno urbano",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1946-08-28",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Consolidação das Leis do Trabalho (Decreto-Lei nº 5.452/1943)",
+            "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 73."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.insalubridade",
+      "nombre": "Adicional de insalubridade sobre o salário mínimo",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "minimo": "Grau mínimo",
+        "medio": "Grau médio",
+        "maximo": "Grau máximo"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1977-12-23",
+          "valor": {
+            "minimo": 10,
+            "medio": 20,
+            "maximo": 40
+          },
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Consolidação das Leis do Trabalho (Decreto-Lei nº 5.452/1943)",
+            "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 192."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.periculosidade",
+      "nombre": "Adicional de periculosidade sobre o salário",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1977-12-23",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Consolidação das Leis do Trabalho (Decreto-Lei nº 5.452/1943)",
+            "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 193, § 1º."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.sd-limite-faixa-1",
+      "nombre": "Seguro-desemprego: limite da primeira faixa de salário médio",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-11",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-11",
+          "valor": 2222.17,
+          "fuente": {
+            "organismo": "Ministério do Trabalho e Emprego (Portal FAT)",
+            "titulo": "MTE reajusta valores do benefício Seguro-Desemprego (tabela a partir de 11/1/2026)",
+            "url": "https://portalfat.trabalho.gov.br/mte-reajusta-valores-do-beneficio-seguro-desemprego/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.sd-limite-faixa-2",
+      "nombre": "Seguro-desemprego: limite da segunda faixa de salário médio",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-11",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-11",
+          "valor": 3703.99,
+          "fuente": {
+            "organismo": "Ministério do Trabalho e Emprego (Portal FAT)",
+            "titulo": "MTE reajusta valores do benefício Seguro-Desemprego (tabela a partir de 11/1/2026)",
+            "url": "https://portalfat.trabalho.gov.br/mte-reajusta-valores-do-beneficio-seguro-desemprego/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.sd-fator-faixa-1",
+      "nombre": "Seguro-desemprego: fator da primeira faixa",
+      "tipo": "numero",
+      "unidad": "factor",
+      "proximaRevision": "2027-01-11",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-11",
+          "valor": 0.8,
+          "fuente": {
+            "organismo": "Ministério do Trabalho e Emprego (Portal FAT)",
+            "titulo": "MTE reajusta valores do benefício Seguro-Desemprego (tabela a partir de 11/1/2026)",
+            "url": "https://portalfat.trabalho.gov.br/mte-reajusta-valores-do-beneficio-seguro-desemprego/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.sd-fator-faixa-2",
+      "nombre": "Seguro-desemprego: fator sobre o que passa da primeira faixa",
+      "tipo": "numero",
+      "unidad": "factor",
+      "proximaRevision": "2027-01-11",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-11",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Ministério do Trabalho e Emprego (Portal FAT)",
+            "titulo": "MTE reajusta valores do benefício Seguro-Desemprego (tabela a partir de 11/1/2026)",
+            "url": "https://portalfat.trabalho.gov.br/mte-reajusta-valores-do-beneficio-seguro-desemprego/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.sd-base-faixa-2",
+      "nombre": "Seguro-desemprego: valor somado na segunda faixa",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-11",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-11",
+          "valor": 1777.74,
+          "fuente": {
+            "organismo": "Ministério do Trabalho e Emprego (Portal FAT)",
+            "titulo": "MTE reajusta valores do benefício Seguro-Desemprego (tabela a partir de 11/1/2026)",
+            "url": "https://portalfat.trabalho.gov.br/mte-reajusta-valores-do-beneficio-seguro-desemprego/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.sd-teto",
+      "nombre": "Teto da parcela do seguro-desemprego",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-11",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-11",
+          "valor": 2518.65,
+          "fuente": {
+            "organismo": "Ministério do Trabalho e Emprego (Portal FAT)",
+            "titulo": "MTE reajusta valores do benefício Seguro-Desemprego (tabela a partir de 11/1/2026)",
+            "url": "https://portalfat.trabalho.gov.br/mte-reajusta-valores-do-beneficio-seguro-desemprego/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.abono-limite",
+      "nombre": "Abono salarial: remuneração média máxima no ano-base",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2766.0,
+          "fuente": {
+            "organismo": "Ministério do Trabalho e Emprego",
+            "titulo": "Abono Salarial: calendário 2026, ano-base 2024",
+            "url": "https://www.gov.br/trabalho-e-emprego/pt-br/servicos/trabalhador/abono-salarial",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Calendário 2026, ano-base 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.abono-valor",
+      "nombre": "Abono salarial: valor por meses trabalhados no ano-base",
+      "tipo": "mapa",
+      "unidad": "BRL",
+      "etiquetas": {
+        "1": "1 mês",
+        "2": "2 meses",
+        "3": "3 meses",
+        "4": "4 meses",
+        "5": "5 meses",
+        "6": "6 meses",
+        "7": "7 meses",
+        "8": "8 meses",
+        "9": "9 meses",
+        "10": "10 meses",
+        "11": "11 meses",
+        "12": "12 meses"
+      },
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "1": 136,
+            "2": 271,
+            "3": 406,
+            "4": 541,
+            "5": 675,
+            "6": 811,
+            "7": 946,
+            "8": 1081,
+            "9": 1216,
+            "10": 1351,
+            "11": 1486,
+            "12": 1621
+          },
+          "fuente": {
+            "organismo": "Ministério do Trabalho e Emprego",
+            "titulo": "Abono Salarial: calendário 2026, ano-base 2024",
+            "url": "https://www.gov.br/trabalho-e-emprego/pt-br/servicos/trabalhador/abono-salarial",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabela oficial do calendário 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.mei-icms",
+      "nombre": "Parcela de ICMS no DAS do MEI",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 1.0,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei Complementar nº 123/2006, art. 18-A (MEI)",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 18-A, § 3º, V, b."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.mei-iss",
+      "nombre": "Parcela de ISS no DAS do MEI",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 5.0,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei Complementar nº 123/2006, art. 18-A (MEI)",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 18-A, § 3º, V, c."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.mei-limite",
+      "nombre": "Limite de faturamento anual do MEI",
+      "tipo": "numero",
+      "unidad": "BRL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 81000.0,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei Complementar nº 123/2006, art. 18-A (MEI)",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 18-A, § 1º."
+          }
+        }
+      ]
+    },
+    {
+      "id": "br.vale-transporte-desconto",
+      "nombre": "Desconto máximo do vale-transporte sobre o salário básico",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1985-12-17",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Presidência da República",
+            "titulo": "Lei nº 7.418, de 16 de dezembro de 1985 (vale-transporte), art. 4º",
+            "url": "https://www.planalto.gov.br/ccivil_03/leis/l7418.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Art. 4º, parágrafo único."
+          }
+        }
+      ]
+    }
+  ]
+}
