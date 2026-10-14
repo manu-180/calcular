@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosIt: TextosUi<UiAlquilarOComprar> = {
+  slug: "affitto-o-acquisto",
+  ui: () => ({
+    precio: "Prezzo della casa",
+    entrada: "Anticipo (% del prezzo)",
+    gastosCompra: "Spese di acquisto (% del prezzo)",
+    gastosCompraAyuda: "Notaio, imposte, agenzia immobiliare e perizia.",
+    tasa: "Tasso del mutuo (% annuo)",
+    aniosHipoteca: "Durata del mutuo in anni",
+    alquiler: "Affitto mensile di una casa simile",
+    aumentoAlquiler: "Aumento annuo dell'affitto (%)",
+    gastosPropietario: "Spese annue del proprietario (% del valore)",
+    gastosPropietarioAyuda: "Manutenzione, assicurazione ed eventuale IMU. Di solito fra l'1% e il 2%.",
+    revalorizacion: "Rivalutazione annua della casa (%)",
+    rendimiento: "Rendimento di un investimento alternativo (% annuo)",
+    rendimientoAyuda: "Quello che guadagneresti investendo l'anticipo invece di comprare.",
+    horizonte: "Anni da confrontare",
+    veredicto: "Risultato",
+    patrimonioComprar: "Patrimonio finale se compri",
+    patrimonioAlquilar: "Patrimonio finale se resti in affitto",
+    diferencia: "Differenza",
+    anioDesde: "Anno da cui conviene comprare",
+    pagadoAlquilando: "Totale pagato in affitto",
+    pagadoComprando: "Totale rate del mutuo e spese del proprietario",
+    tabla: "Confronto anno per anno",
+    colAnio: "Anno",
+    colComprar: "Acquisto",
+    colAlquilar: "Affitto",
+    colDiferencia: "Differenza",
+    errorPrecio: "Inserisci il prezzo della casa.",
+    errorAlquiler: "Inserisci quanto costerebbe l'affitto di una casa simile.",
+    convieneComprar: (anni, differenza) => `Conviene comprare: dopo ${anni} anni avresti ${differenza} in più.`,
+    convieneAlquilar: (anni, differenza) => `Conviene l'affitto: dopo ${anni} anni avresti ${differenza} in più.`,
+    empate: (anni) => `Dopo ${anni} anni le due scelte si equivalgono.`,
+    observacionDesde: (anno) => `L'acquisto supera l'affitto dall'anno ${anno} e resta davanti.`,
+    observacionMetodo:
+      "Confronta quello che avresti in ciascun caso. Se resti in affitto, l'anticipo e quello che risparmi ogni mese restano investiti. Le spese di vendita non vengono tolte.",
+  }),
+};
