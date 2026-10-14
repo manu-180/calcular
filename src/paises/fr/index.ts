@@ -11,6 +11,10 @@ import indemniteLicenciement from "./calculadoras/indemnite-licenciement";
 import ruptureConventionnelle from "./calculadoras/rupture-conventionnelle";
 import preavis from "./calculadoras/preavis";
 import primeDePrecarite from "./calculadoras/prime-de-precarite";
+import chargesMicroEntrepreneur from "./calculadoras/charges-micro-entrepreneur";
+import allocationsFamiliales from "./calculadoras/allocations-familiales";
+import calculInflation from "./calculadoras/calcul-inflation";
+import baremeKilometrique from "./calculadoras/bareme-kilometrique";
 import contenidoSalaireBrutNet from "./contenido/salaire-brut-net";
 import contenidoSmic from "./contenido/smic";
 import contenidoCalculTva from "./contenido/calcul-tva";
@@ -22,6 +26,10 @@ import contenidoIndemniteLicenciement from "./contenido/indemnite-licenciement";
 import contenidoRuptureConventionnelle from "./contenido/rupture-conventionnelle";
 import contenidoPreavis from "./contenido/preavis";
 import contenidoPrimeDePrecarite from "./contenido/prime-de-precarite";
+import contenidoChargesMicroEntrepreneur from "./contenido/charges-micro-entrepreneur";
+import contenidoAllocationsFamiliales from "./contenido/allocations-familiales";
+import contenidoCalculInflation from "./contenido/calcul-inflation";
+import contenidoBaremeKilometrique from "./contenido/bareme-kilometrique";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -47,6 +55,10 @@ export default definirPais({
     { definicion: ruptureConventionnelle, contenido: contenidoRuptureConventionnelle, cliente: () => import("./calculadoras/rupture-conventionnelle.cliente") },
     { definicion: preavis, contenido: contenidoPreavis, cliente: () => import("./calculadoras/preavis.cliente") },
     { definicion: primeDePrecarite, contenido: contenidoPrimeDePrecarite, cliente: () => import("./calculadoras/prime-de-precarite.cliente") },
+    { definicion: chargesMicroEntrepreneur, contenido: contenidoChargesMicroEntrepreneur, cliente: () => import("./calculadoras/charges-micro-entrepreneur.cliente") },
+    { definicion: allocationsFamiliales, contenido: contenidoAllocationsFamiliales, cliente: () => import("./calculadoras/allocations-familiales.cliente") },
+    { definicion: calculInflation, contenido: contenidoCalculInflation, cliente: () => import("./calculadoras/calcul-inflation.cliente") },
+    { definicion: baremeKilometrique, contenido: contenidoBaremeKilometrique, cliente: () => import("./calculadoras/bareme-kilometrique.cliente") },
   ],
   universales: "todas",
 });

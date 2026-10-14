@@ -9,7 +9,7 @@ export default definirCasos(bk, [
     origen: { tipo: "oficial", url: NOTICE, detalle: "Barème 2025, 5 CV de 5 001 à 20 000 km : (d × 0,357) + 1 395 = 2 856 + 1 395 = 4 251 €." },
     fecha: "2026-10-14",
     entrada: { puissance: "cv5", distance: 8000, electrique: false },
-    esperado: { bareme: 4251, total: 4251 },
+    esperado: { total: 4251 },
   },
   {
     nombre: "3 CV, 4 000 km",
@@ -26,15 +26,18 @@ export default definirCasos(bk, [
     esperado: { total: 11750 },
   },
   {
-    nombre: "Électrique 4 CV, 5 000 km : majoration de 20 %",
-    origen: {
-      tipo: "oficial",
-      url: "https://bofip.impots.gouv.fr/bofip/2185-PGP.html/identifiant=BOI-BAREME-000001-20230720",
-      detalle: "5 000 × 0,606 = 3 030 € ; majoration de 20 % pour un véhicule électrique : 606 € ; total 3 636 €.",
-    },
+    nombre: "Électrique 4 CV, 5 000 km",
+    origen: { tipo: "oficial", url: NOTICE, detalle: "Barème 2025, véhicules 100 % électriques, 4 CV jusqu'à 5 000 km : d × 0,727 = 3 635 €." },
     fecha: "2026-10-14",
     entrada: { puissance: "cv4", distance: 5000, electrique: true },
-    esperado: { bareme: 3030, majoration: 606, total: 3636 },
+    esperado: { total: 3635 },
+  },
+  {
+    nombre: "Électrique 6 CV, 12 000 km",
+    origen: { tipo: "oficial", url: NOTICE, detalle: "6 CV de 5 001 à 20 000 km : (d × 0,449) + 1 748 = 5 388 + 1 748 = 7 136 €." },
+    fecha: "2026-10-14",
+    entrada: { puissance: "cv6", distance: 12000, electrique: true },
+    esperado: { total: 7136 },
   },
   {
     nombre: "Distance nulle",

@@ -1237,7 +1237,7 @@
       "tramos": [
         {
           "estado": "verificado",
-          "desde": "2026-06-01",
+          "desde": "2026-04-01",
           "valor": {
             "e2": 152.25,
             "e3": 347.32,
@@ -1249,7 +1249,7 @@
             "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14",
-            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+            "nota": "Montants revalorisés au 1er avril 2026 et plafonds au 1er janvier 2026, selon les instructions citées par la fiche."
           }
         }
       ],
@@ -1268,7 +1268,7 @@
       "tramos": [
         {
           "estado": "verificado",
-          "desde": "2026-06-01",
+          "desde": "2026-04-01",
           "valor": {
             "e2": 76.13,
             "e3": 173.67,
@@ -1280,7 +1280,7 @@
             "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14",
-            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+            "nota": "Montants revalorisés au 1er avril 2026 et plafonds au 1er janvier 2026, selon les instructions citées par la fiche."
           }
         }
       ],
@@ -1299,7 +1299,7 @@
       "tramos": [
         {
           "estado": "verificado",
-          "desde": "2026-06-01",
+          "desde": "2026-04-01",
           "valor": {
             "e2": 38.07,
             "e3": 86.83,
@@ -1311,7 +1311,7 @@
             "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14",
-            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+            "nota": "Montants revalorisés au 1er avril 2026 et plafonds au 1er janvier 2026, selon les instructions citées par la fiche."
           }
         }
       ],
@@ -1330,7 +1330,7 @@
       "tramos": [
         {
           "estado": "verificado",
-          "desde": "2026-06-01",
+          "desde": "2026-04-01",
           "valor": {
             "t1": 76.13,
             "t2": 38.07,
@@ -1342,7 +1342,7 @@
             "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14",
-            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+            "nota": "Montants revalorisés au 1er avril 2026 et plafonds au 1er janvier 2026, selon les instructions citées par la fiche."
           }
         }
       ],
@@ -1361,7 +1361,7 @@
       "tramos": [
         {
           "estado": "verificado",
-          "desde": "2026-06-01",
+          "desde": "2026-01-01",
           "valor": {
             "e2": 79980,
             "e3": 86644,
@@ -1373,7 +1373,7 @@
             "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14",
-            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+            "nota": "Montants revalorisés au 1er avril 2026 et plafonds au 1er janvier 2026, selon les instructions citées par la fiche."
           }
         }
       ],
@@ -1392,7 +1392,7 @@
       "tramos": [
         {
           "estado": "verificado",
-          "desde": "2026-06-01",
+          "desde": "2026-01-01",
           "valor": {
             "e2": 106604,
             "e3": 113268,
@@ -1404,7 +1404,7 @@
             "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14",
-            "nota": "Montants et plafonds lus sur la fiche vérifiée le 1er juin 2026."
+            "nota": "Montants revalorisés au 1er avril 2026 et plafonds au 1er janvier 2026, selon les instructions citées par la fiche."
           }
         }
       ],
@@ -1515,7 +1515,7 @@
           },
           "fuente": {
             "organismo": "DGFiP (impots.gouv.fr)",
-            "titulo": "Notice 2041-NOT de la déclaration des revenus 2025 : barème 2025, autres véhicules thermiques",
+            "titulo": "Notice de la déclaration des revenus 2025 : barèmes kilométriques 2025 (véhicules thermiques et 100 % électriques)",
             "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
@@ -1549,7 +1549,7 @@
           },
           "fuente": {
             "organismo": "DGFiP (impots.gouv.fr)",
-            "titulo": "Notice 2041-NOT de la déclaration des revenus 2025 : barème 2025, autres véhicules thermiques",
+            "titulo": "Notice de la déclaration des revenus 2025 : barèmes kilométriques 2025 (véhicules thermiques et 100 % électriques)",
             "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
@@ -1583,7 +1583,7 @@
           },
           "fuente": {
             "organismo": "DGFiP (impots.gouv.fr)",
-            "titulo": "Notice 2041-NOT de la déclaration des revenus 2025 : barème 2025, autres véhicules thermiques",
+            "titulo": "Notice de la déclaration des revenus 2025 : barèmes kilométriques 2025 (véhicules thermiques et 100 % électriques)",
             "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
@@ -1617,7 +1617,7 @@
           },
           "fuente": {
             "organismo": "DGFiP (impots.gouv.fr)",
-            "titulo": "Notice 2041-NOT de la déclaration des revenus 2025 : barème 2025, autres véhicules thermiques",
+            "titulo": "Notice de la déclaration des revenus 2025 : barèmes kilométriques 2025 (véhicules thermiques et 100 % électriques)",
             "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
@@ -1627,24 +1627,140 @@
       "proximaRevision": "2027-03-01"
     },
     {
-      "id": "fr.bk-majoration-electrique",
-      "nombre": "Majoration du barème kilométrique pour un véhicule électrique",
-      "tipo": "numero",
-      "unidad": "%",
+      "id": "fr.bk-elec-jusqua-5000",
+      "nombre": "Barème kilométrique électrique : coefficient jusqu'à 5 000 km",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "cv3": "3 CV et moins",
+        "cv4": "4 CV",
+        "cv5": "5 CV",
+        "cv6": "6 CV",
+        "cv7": "7 CV et plus"
+      },
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2026-01-01",
-          "valor": 20,
+          "valor": {
+            "cv3": 0.635,
+            "cv4": 0.727,
+            "cv5": 0.763,
+            "cv6": 0.798,
+            "cv7": 0.836
+          },
           "fuente": {
-            "organismo": "DGFiP (BOFiP-Impôts)",
-            "titulo": "BOI-BAREME-000001 : majoration de 20 % pour les véhicules électriques",
-            "url": "https://bofip.impots.gouv.fr/bofip/2185-PGP.html/identifiant=BOI-BAREME-000001-20230720",
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Notice de la déclaration des revenus 2025 : barèmes kilométriques 2025 (véhicules thermiques et 100 % électriques)",
+            "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
           }
         }
-      ]
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.bk-elec-5001-20000-coef",
+      "nombre": "Barème kilométrique électrique : coefficient de 5 001 à 20 000 km",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "cv3": "3 CV et moins",
+        "cv4": "4 CV",
+        "cv5": "5 CV",
+        "cv6": "6 CV",
+        "cv7": "7 CV et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "cv3": 0.379,
+            "cv4": 0.408,
+            "cv5": 0.428,
+            "cv6": 0.449,
+            "cv7": 0.473
+          },
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Notice de la déclaration des revenus 2025 : barèmes kilométriques 2025 (véhicules thermiques et 100 % électriques)",
+            "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.bk-elec-5001-20000-fixe",
+      "nombre": "Barème kilométrique électrique : montant fixe de 5 001 à 20 000 km",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "cv3": "3 CV et moins",
+        "cv4": "4 CV",
+        "cv5": "5 CV",
+        "cv6": "6 CV",
+        "cv7": "7 CV et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "cv3": 1278,
+            "cv4": 1596,
+            "cv5": 1674,
+            "cv6": 1748,
+            "cv7": 1818
+          },
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Notice de la déclaration des revenus 2025 : barèmes kilométriques 2025 (véhicules thermiques et 100 % électriques)",
+            "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "fr.bk-elec-plus-20000",
+      "nombre": "Barème kilométrique électrique : coefficient au-delà de 20 000 km",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "cv3": "3 CV et moins",
+        "cv4": "4 CV",
+        "cv5": "5 CV",
+        "cv6": "6 CV",
+        "cv7": "7 CV et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "cv3": 0.444,
+            "cv4": 0.488,
+            "cv5": 0.512,
+            "cv6": 0.536,
+            "cv7": 0.564
+          },
+          "fuente": {
+            "organismo": "DGFiP (impots.gouv.fr)",
+            "titulo": "Notice de la déclaration des revenus 2025 : barèmes kilométriques 2025 (véhicules thermiques et 100 % électriques)",
+            "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2042/2026/2042_5477.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ],
+      "proximaRevision": "2027-03-01"
     },
     {
       "id": "fr.droits-ligne-directe",
