@@ -15,6 +15,7 @@ export const MERCADOS_REGISTRO: readonly (readonly [codigo: string, pais: string
   ["pe", "PE", "es"],
   ["py", "PY", "es"],
   ["sv", "SV", "es"],
+  ["us", "US", "en"],
   ["uy", "UY", "es"],
   ["ve", "VE", "es"],
 ];
