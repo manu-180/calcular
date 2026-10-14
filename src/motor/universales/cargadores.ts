@@ -19,6 +19,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./ahorro-retiro/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./ahorro-retiro/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./ahorro-retiro/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "alquilar-o-comprar": {
@@ -127,6 +128,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./fondo-de-emergencia/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./fondo-de-emergencia/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./fondo-de-emergencia/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "hipoteca": {
@@ -196,6 +198,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./meta-de-ahorro/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./meta-de-ahorro/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./meta-de-ahorro/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "metros-cuadrados": {
@@ -243,6 +246,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./presupuesto/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./presupuesto/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./presupuesto/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "promedio": {
@@ -311,6 +315,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./tarjeta-de-credito/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./tarjeta-de-credito/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./tarjeta-de-credito/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "tasa-efectiva": {
