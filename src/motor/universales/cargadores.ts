@@ -26,6 +26,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./alquilar-o-comprar/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./alquilar-o-comprar/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./alquilar-o-comprar/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "aumento-de-sueldo": {
@@ -133,6 +134,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./hipoteca/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./hipoteca/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./hipoteca/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "horas-trabajadas": {
@@ -163,6 +165,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./interes-compuesto/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./interes-compuesto/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./interes-compuesto/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "interes-simple": {
@@ -170,6 +173,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./interes-simple/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./interes-simple/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./interes-simple/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "iva": {
