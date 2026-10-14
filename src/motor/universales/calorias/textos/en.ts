@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosEn: TextosUi<UiCalorias> = {
+  slug: "calorie-calculator",
+  ui: () => ({
+    sexo: "Sex",
+    mujer: "Female",
+    hombre: "Male",
+    edad: "Age (years)",
+    peso: (u) => `Weight (${u})`,
+    altura: (u) => `Height (${u})`,
+    pies: "Height: feet (ft)",
+    pulgadas: "Height: inches (in)",
+    actividad: "Activity level",
+    sedentaria: "Little or none",
+    ligera: "Light (1 to 3 days a week)",
+    moderada: "Moderate (3 to 5 days a week)",
+    alta: "High (6 or 7 days a week)",
+    muyAlta: "Very high (hard training or a physical job)",
+    objetivo: "Goal",
+    mantener: "Keep my weight",
+    bajar: "Lose weight gradually",
+    subir: "Gain weight gradually",
+    basal: "Basal metabolic rate (kcal a day)",
+    basalAyuda: "What your body burns at complete rest.",
+    mantenimiento: "Calories to keep your weight (kcal a day)",
+    calObjetivo: "Calories for your goal (kcal a day)",
+    calObjetivoAyuda: "A moderate change: 500 kcal less a day to lose weight, 300 more to gain.",
+    errorEdad: "The formula is meant for people aged 15 to 100.",
+    errorPeso: "Weight has to be more than 0.",
+    errorAltura: "Height has to be more than 0.",
+    notaMinimo: (kcal) => `For weight loss, the figure doesn't go below ${kcal} kcal a day. Eating less than that is best done with professional support.`,
+    aviso: "This is an estimate using the Mifflin-St Jeor equation. Every body is different: it is not a substitute for advice from a health or nutrition professional.",
+  }),
+};
