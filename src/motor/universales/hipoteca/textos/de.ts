@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiHipoteca } from "../definicion";
 
-export const textosDe: TextosUi<UiHipoteca> = {
+const textos: TextosUi<UiHipoteca> = {
   slug: "hypothekenrechner",
   ui: () => ({
     precio: "Kaufpreis der Immobilie",
@@ -29,3 +30,5 @@ export const textosDe: TextosUi<UiHipoteca> = {
     observacionCostos: "Kaufnebenkosten wie Grunderwerbsteuer, Notar oder Makler sind nicht enthalten. Planen Sie sie zusätzlich zum Eigenkapital ein.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

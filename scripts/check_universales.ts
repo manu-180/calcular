@@ -1,6 +1,7 @@
 // Valida las calculadoras universales (src/motor/universales) en mercados de prueba de cada idioma y
 // trato: que la definición se arme, que los casos den, que el resultado se pueda mostrar y que los
-// textos cumplan lo básico (largo de title y description, FAQ, sin rayas ni emojis).
+// textos cumplan lo básico (largo de title y description, FAQ, sin rayas ni emojis). En las variantes
+// de un idioma (es-ES, pt-PT, fr-CA, de-CH) revisa además que no se cuele el vocabulario de otra.
 // Uso: npx tsx scripts/check_universales.ts [id]
 import { ErrorEntrada, crearContexto } from "../src/motor/calculo";
 import { CONCEPTOS } from "../src/motor/conceptos";
@@ -21,18 +22,127 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "co", pais: "CO", nombrePais: "Colombia", locale: "es-CO", trato: "usted", moneda: "COP", escala: 4000 },
     { mercado: "uy", pais: "UY", nombrePais: "Uruguay", locale: "es-UY", trato: "vos", moneda: "UYU", escala: 40 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "San Vicente y las Granadinas", locale: "es", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "es" as CodigoMercado, pais: "ES", nombrePais: "España", locale: "es-ES", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
   ],
   en: [
     { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "United States", locale: "en-US", trato: "tu", moneda: "USD" as Moneda, escala: 1, unidades: "imperial" },
     { mercado: "gb" as CodigoMercado, pais: "GB", nombrePais: "United Kingdom", locale: "en-GB", trato: "tu", moneda: "GBP" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent and the Grenadines", locale: "en-VC", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
-  pt: [{ mercado: "br", pais: "BR", nombrePais: "Brasil", locale: "pt-BR", trato: "tu", moneda: "BRL", escala: 5 }],
-  fr: [{ mercado: "fr" as CodigoMercado, pais: "FR", nombrePais: "France", locale: "fr-FR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 }],
-  de: [{ mercado: "de" as CodigoMercado, pais: "DE", nombrePais: "Deutschland", locale: "de-DE", trato: "usted", moneda: "EUR" as Moneda, escala: 1 }],
+  pt: [
+    { mercado: "br", pais: "BR", nombrePais: "Brasil", locale: "pt-BR", trato: "tu", moneda: "BRL", escala: 5 },
+    { mercado: "pt" as CodigoMercado, pais: "PT", nombrePais: "Portugal", locale: "pt-PT", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+  ],
+  fr: [
+    { mercado: "fr" as CodigoMercado, pais: "FR", nombrePais: "France", locale: "fr-FR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "ca-fr" as CodigoMercado, pais: "CA", nombrePais: "Canada", locale: "fr-CA", trato: "usted", moneda: "CAD" as Moneda, escala: 1.4 },
+  ],
+  de: [
+    { mercado: "de" as CodigoMercado, pais: "DE", nombrePais: "Deutschland", locale: "de-DE", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "ch" as CodigoMercado, pais: "CH", nombrePais: "Schweiz", locale: "de-CH", trato: "usted", moneda: "CHF" as Moneda, escala: 0.8 },
+  ],
   it: [{ mercado: "it" as CodigoMercado, pais: "IT", nombrePais: "Italia", locale: "it-IT", trato: "tu", moneda: "EUR" as Moneda, escala: 1 }],
   nl: [{ mercado: "nl" as CodigoMercado, pais: "NL", nombrePais: "Nederland", locale: "nl-NL", trato: "tu", moneda: "EUR" as Moneda, escala: 1 }],
 };
+
+// Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
+// si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy
+// ramifica por locale en pt, fr y de.
+interface Vocabulario {
+  todo: boolean;
+  prohibidas: readonly (readonly [RegExp, string])[];
+}
+
+const VOCABULARIO: Readonly<Record<string, Vocabulario>> = {
+  "es-ES": {
+    todo: true,
+    prohibidas: [
+      [/\bautos?\b/i, "coche"],
+      [/\bcostos?\b/i, "coste"],
+      [/\btasas? (de interés|anual(?! equivalente)|nominal|efectiva)/i, "tipo de interés / TAE"],
+      [/\btasa(s)? del IVA|\btasas? de IVA/i, "tipo de IVA"],
+      [/\bcomputadora/i, "ordenador"],
+      [/\bcontrapiso/i, "solera"],
+      [/\baguinaldo/i, "pagas extra"],
+      [/\bpor mes\b/i, "al mes"],
+      [/\b(te|le) ofrecieron\b/i, "te han ofrecido"],
+      [/\bsin goce\b/i, "no retribuida"],
+      [/\benganche\b|\bo pie\b|\bel pie\b/i, "entrada"],
+      [/revisión técnica/i, "ITV"],
+      [/\bheladera|\brefrigerador/i, "frigorífico"],
+      [/\bnafta\b/i, "gasolina"],
+      [/\bcelular/i, "móvil"],
+      [/\bestacionamiento/i, "aparcamiento"],
+      [/\bporcelanato/i, "gres porcelánico"],
+      [/\bcerámicos\b/i, "baldosas"],
+      [/\bmanej(ar|as|a|o)\b/i, "conducir"],
+      [/\bdepartamento\b/i, "piso"],
+      [/\bplata\b/i, "dinero"],
+      [/\bacá\b/i, "aquí"],
+      [/\bchequea/i, "comprueba"],
+    ],
+  },
+  "pt-PT": {
+    todo: false,
+    prohibidas: [
+      [/\baluguel/i, "renda"],
+      [/\bparcela/i, "prestação"],
+      [/\beconomiz/i, "poupar"],
+      [/\bconcreto\b/i, "betão"],
+      [/\bgeladeira/i, "frigorífico"],
+      [/\bcelular/i, "telemóvel"],
+      [/(?<!\p{L})ônibus|\btrem\b/iu, "autocarro / comboio"],
+      [/\bregistro/i, "registo"],
+      [/\bcontato/i, "contacto"],
+      [/ôm|ôn|(?<![tv])ên(?!c)|(?<![tv])êm/i, "acentuação de Portugal (económico, género, prémio)"],
+      [/\bvocê/i, "sem «você»"],
+      [/\bestá [a-z]+ndo\b/i, "está a + infinitivo"],
+      [/\bpiso\b/i, "pavimento"],
+      [/\bplano de saúde/i, "seguro de saúde"],
+      [/\bporcentage/i, "percentagem"],
+      [/\bcoloque\b/i, "indique"],
+      [/\bquit(ar|a|e|ou)\b/i, "liquidar"],
+      [/\bmoradia\b/i, "habitação"],
+      [/\baposentadoria/i, "reforma"],
+      [/\bcorretagem/i, "comissão de mediação"],
+      [/\bIPTU\b/, "IMI"],
+      [/\busuário/i, "utilizador"],
+      [/\bplanilha/i, "folha de cálculo"],
+    ],
+  },
+  "fr-CA": {
+    todo: false,
+    prohibidas: [
+      [/apport personnel/i, "mise de fonds"],
+      [/\bcrédit immobilier|\bprêt immobilier/i, "prêt hypothécaire"],
+      [/\bweek-end/i, "fin de semaine"],
+      [/\bparking\b/i, "stationnement"],
+      [/\bcarrelage/i, "céramique"],
+      [/\bTVA\b/, "taxes de vente"],
+      [/\bcharges de copropriété/i, "frais de condo"],
+      [/\bmutuelle/i, "assurance collective"],
+    ],
+  },
+  "de-CH": { todo: true, prohibidas: [[/ß/, "ss"]] },
+};
+
+// Todos los textos que devuelve ui, con las funciones llamadas con argumentos de prueba.
+function textosDeUi(valor: unknown, salida: string[] = []): string[] {
+  if (typeof valor === "string") salida.push(valor);
+  else if (typeof valor === "function") {
+    try {
+      textosDeUi((valor as (...a: unknown[]) => unknown)("1", "2", "3", "4"), salida);
+    } catch {
+      try {
+        textosDeUi((valor as (...a: unknown[]) => unknown)(1, 2, 3, 4), salida);
+      } catch {
+        // Una función de ui que no acepta argumentos de prueba no aporta texto para revisar.
+      }
+    }
+  } else if (Array.isArray(valor)) valor.forEach((v) => textosDeUi(v, salida));
+  else if (valor && typeof valor === "object") Object.values(valor).forEach((v) => textosDeUi(v, salida));
+  return salida;
+}
 
 function contexto(id: string, idioma: Idioma, base: Partial<ContextoUniversal>, datos: readonly string[] = []): ContextoUniversal {
   const mercado = base.mercado as CodigoMercado;
@@ -118,6 +228,22 @@ async function main() {
         for (const t of textosVisibles(inst)) {
           if (RE_RAYA.test(t)) fallas.push(`${donde}: raya en «${t.slice(0, 60)}»`);
           if (RE_EMOJI.test(t)) fallas.push(`${donde}: emoji en «${t.slice(0, 60)}»`);
+        }
+        const vocabulario = VOCABULARIO[ctx.locale];
+        if (vocabulario) {
+          const ui = textosDeUi(u.textos[idioma]!.ui(ctx.trato, ctx.locale));
+          const revisar = vocabulario.todo ? [...ui, ...textosVisibles(inst)] : ui;
+          const vistas = new Set<string>();
+          for (const t of revisar) {
+            for (const [re, va] of vocabulario.prohibidas) {
+              const m = re.exec(t);
+              if (!m) continue;
+              const clave = `${m[0]}|${t}`;
+              if (vistas.has(clave)) continue;
+              vistas.add(clave);
+              fallas.push(`${u.id} [${ctx.locale}]: «${m[0]}» (va ${va}) en «${t.slice(0, 90)}»`);
+            }
+          }
         }
 
         const mercadoPrueba = { codigo: ctx.mercado, monedas: [ctx.moneda] as const, redondeo: { decimales: 2, modo: "mitad-arriba" as const } };

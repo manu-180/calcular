@@ -1,7 +1,8 @@
-import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 import { aEfectiva, aNominal } from "../definicion";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const p = (n: number) => `${formatearNumero(ctx, n, 2)} %`;
   return {
@@ -52,3 +53,48 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const p = (n: number) => `${formatearNumero(ctx, n, 2)} %`;
+  return {
+    h1: "Calculadora de TAE",
+    title: tituloQueEntre(`Calculadora de TAE y TIN en ${ctx.nombrePais}`, `Calcular la TAE en ${ctx.nombrePais}`, "Calculadora de TAE y TIN"),
+    description: "Pasa el TIN de un préstamo o un depósito a TAE y al revés, con liquidación de intereses mensual, trimestral, semestral o diaria.",
+    intro: [
+      "Dos ofertas con el mismo tipo de interés pueden costar distinto. La diferencia está en cada cuánto se cobran o se pagan los intereses.",
+      "La TAE permite compararlas en igualdad de condiciones: es lo que de verdad pagas o ganas en un año. Elige qué tipo tienes y te mostramos el otro.",
+    ],
+    comoSeCalcula: [
+      "TAE = (1 + TIN ÷ m) elevado a m, menos 1. La m es el número de liquidaciones al año: 12 si es mensual, 4 si es trimestral.",
+      "TIN = m × ((1 + TAE) elevado a 1 ÷ m, menos 1).",
+      "El tipo de cada periodo es el TIN dividido entre m.",
+    ],
+    ejemplo: [
+      `Un TIN del 12 % con liquidación mensual equivale a una TAE del ${p(aEfectiva(12, 12))}.`,
+      `Una TAE del 10 % equivale a un TIN del ${p(aNominal(10, 12))} si los intereses se liquidan cada mes.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿Qué diferencia hay entre el TIN y la TAE?",
+        respuesta:
+          "El TIN es el tipo de interés nominal que se reparte entre los periodos del año. La TAE incluye el efecto de que los intereses también generan intereses. Por eso la TAE siempre es igual o más alta.",
+      },
+      {
+        pregunta: "¿Cuál tengo que mirar para comparar préstamos?",
+        respuesta:
+          "La TAE, porque pone todas las ofertas en la misma base. La TAE que publica el banco suma además comisiones y algunos gastos; esta calculadora solo convierte el tipo de interés.",
+      },
+      {
+        pregunta: "¿Por qué liquidar intereses más a menudo sube la TAE?",
+        respuesta: "Porque los intereses se suman antes al capital y empiezan a generar sus propios intereses. Con liquidación anual, TIN y TAE coinciden.",
+      },
+    ],
+    glosario: [
+      { termino: "TIN", definicion: "Tipo de interés nominal: el tipo anual de referencia, sin contar que los intereses se capitalizan." },
+      { termino: "TAE", definicion: "Tasa anual equivalente: lo que rinde o cuesta de verdad un año, con la capitalización incluida." },
+      { termino: "Capitalización", definicion: "El momento en que los intereses se suman al capital." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

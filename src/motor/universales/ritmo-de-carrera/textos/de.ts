@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiRitmo } from "../definicion";
 
-export const textosDe: TextosUi<UiRitmo> = {
+const textos: TextosUi<UiRitmo> = {
   slug: "pace-rechner",
   ui: () => ({
     calcular: "Was möchten Sie berechnen?",
@@ -30,3 +31,5 @@ export const textosDe: TextosUi<UiRitmo> = {
     errorRitmo: "Geben Sie die Pace ein: Minuten und Sekunden pro Streckeneinheit.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

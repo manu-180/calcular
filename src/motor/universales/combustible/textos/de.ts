@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiCombustible } from "../definicion";
 
-export const textosDe: TextosUi<UiCombustible> = {
+const textos: TextosUi<UiCombustible> = {
   slug: "spritkosten-rechner",
   ui: () => ({
     distancia: (u) => `Strecke (${u})`,
@@ -23,3 +24,5 @@ export const textosDe: TextosUi<UiCombustible> = {
     errorPersonas: "Es muss mindestens eine Person sein.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

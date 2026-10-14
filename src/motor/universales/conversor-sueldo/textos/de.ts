@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiConversorSueldo } from "../definicion";
 
-export const textosDe: TextosUi<UiConversorSueldo> = {
+const textos: TextosUi<UiConversorSueldo> = {
   slug: "stundenlohn-rechner",
   ui: () => ({
     monto: "Lohn oder Gehalt",
@@ -27,3 +28,5 @@ export const textosDe: TextosUi<UiConversorSueldo> = {
     observacionBruto: "Es ist derselbe Betrag, umgerechnet auf andere Zeiträume. Sonderzahlungen sind nicht dazugerechnet und Steuern nicht abgezogen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

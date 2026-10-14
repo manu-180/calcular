@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiImc } from "../definicion";
 
-export const textosDe: TextosUi<UiImc> = {
+const textos: TextosUi<UiImc> = {
   slug: "bmi-rechner",
   ui: () => ({
     peso: (u) => `Gewicht (${u})`,
@@ -25,3 +26,5 @@ export const textosDe: TextosUi<UiImc> = {
       "Der BMI ist ein grober Richtwert für Erwachsene. Er unterscheidet nicht zwischen Muskeln und Fett und gilt in der Schwangerschaft und für Kinder nicht in gleicher Weise. Er ersetzt keine ärztliche Beratung.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiIva } from "../definicion";
 
-export const textosDe: TextosUi<UiIva> = {
+const textos: TextosUi<UiIva> = {
   slug: "mehrwertsteuer-rechner",
   ui: () => ({
     operacion: "Was möchten Sie berechnen?",
@@ -18,3 +19,5 @@ export const textosDe: TextosUi<UiIva> = {
     errorTasa: "Dieser Steuersatz ist nicht gültig. Geben Sie einen Wert ab 0 ein.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

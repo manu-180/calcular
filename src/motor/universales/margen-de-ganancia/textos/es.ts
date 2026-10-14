@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiMargenDeGanancia } from "../definicion";
 
-export const textosEs: TextosUi<UiMargenDeGanancia> = {
+const base: TextosUi<UiMargenDeGanancia> = {
   slug: "margen-de-ganancia",
   ui: (trato) => ({
     modo: segunTrato(trato, { tu: "¿Qué quieres calcular?", usted: "¿Qué quiere calcular?", vos: "¿Qué querés calcular?" }),
@@ -51,3 +52,20 @@ export const textosEs: TextosUi<UiMargenDeGanancia> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiMargenDeGanancia> => ({
+  modoPrecio: "El margen, a partir del coste y el precio",
+  modoMarkup: "El precio para un recargo sobre el coste (markup)",
+  costo: "Coste unitario",
+  costoAyuda: "Lo que cuesta comprar o fabricar una unidad, sin los impuestos que se repercuten al cliente.",
+  margen: "Margen de beneficio",
+  margenAyuda: "El beneficio como porcentaje del precio de venta.",
+  markup: "Markup (recargo sobre el coste)",
+  markupAyuda: "El beneficio como porcentaje del coste.",
+  ganancia: "Beneficio por unidad",
+  errorCosto: "Escribe el coste de una unidad.",
+  errorMargen100: "Un margen tiene que ser menor que el 100 %: sería ganar todo el precio sin coste.",
+  observacionPerdida: "Con ese precio vendes por debajo del coste: pierdes dinero en cada venta.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

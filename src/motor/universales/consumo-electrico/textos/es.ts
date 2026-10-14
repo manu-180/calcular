@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiConsumoElectrico } from "../definicion";
 
-export const textosEs: TextosUi<UiConsumoElectrico> = {
+const base: TextosUi<UiConsumoElectrico> = {
   slug: "consumo-electrico",
   ui: (trato) => ({
     potencia: "Potencia del aparato (W)",
@@ -28,3 +29,16 @@ export const textosEs: TextosUi<UiConsumoElectrico> = {
     errorHoras: "Un día tiene 24 horas: el uso tiene que estar entre 0 y 24.",
   }),
 };
+
+const espana = (): Partial<UiConsumoElectrico> => ({
+  horas: "Horas de uso al día",
+  dias: "Días de uso al mes",
+  kwhDia: "Consumo al día (kWh)",
+  kwhMes: "Consumo al mes (kWh)",
+  kwhAnio: "Consumo al año (kWh)",
+  costoDia: "Coste al día",
+  costoMes: "Coste al mes",
+  costoAnio: "Coste al año",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

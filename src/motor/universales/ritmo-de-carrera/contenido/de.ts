@@ -1,7 +1,8 @@
+import { paraSuiza } from "../../comun/locales";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DISTANCIAS_KM, KM_POR_MILLA, reloj, ritmoTexto } from "../definicion";
 
-export const contenidoDe: ContenidoUniversal = (ctx) => {
+const contenido: ContenidoUniversal = (ctx) => {
   const imperial = ctx.unidades === "imperial";
   const u = imperial ? "Meile" : "Kilometer";
   const corto = imperial ? "mi" : "km";
@@ -61,3 +62,5 @@ export const contenidoDe: ContenidoUniversal = (ctx) => {
   };
   return ctx.locale === "de-CH" ? JSON.parse(JSON.stringify(c).replace(/ß/g, "ss")) : c;
 };
+
+export const contenidoDe: ContenidoUniversal = (ctx) => paraSuiza(ctx.locale, contenido(ctx));

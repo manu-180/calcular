@@ -1,8 +1,9 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import { duracionDe } from "../../dias-entre-fechas/textos/de";
 import type { UiEdad } from "../definicion";
 
-export const textosDe: TextosUi<UiEdad> = {
+const textos: TextosUi<UiEdad> = {
   slug: "altersrechner",
   ui: () => ({
     nacimiento: "Geburtsdatum",
@@ -22,3 +23,5 @@ export const textosDe: TextosUi<UiEdad> = {
     nota29: "Wer am 29. Februar geboren ist, hat in Jahren ohne Schalttag hier am 28. Februar Geburtstag.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

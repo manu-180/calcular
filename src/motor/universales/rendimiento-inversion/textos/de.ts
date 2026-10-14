@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiRendimientoInversion } from "../definicion";
 
-export const textosDe: TextosUi<UiRendimientoInversion> = {
+const textos: TextosUi<UiRendimientoInversion> = {
   slug: "renditerechner",
   ui: () => ({
     inicial: "Angelegter Betrag",
@@ -20,3 +21,5 @@ export const textosDe: TextosUi<UiRendimientoInversion> = {
     observacionInflacion: "Ob Sie Kaufkraft gewonnen haben, sehen Sie, wenn Sie die Jahresrendite mit der Inflation im selben Zeitraum vergleichen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

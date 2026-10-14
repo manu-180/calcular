@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPuntoDeEquilibrio } from "../definicion";
 
-export const textosDe: TextosUi<UiPuntoDeEquilibrio> = {
+const textos: TextosUi<UiPuntoDeEquilibrio> = {
   slug: "break-even-rechner",
   ui: () => ({
     fijos: "Fixkosten pro Monat",
@@ -23,3 +24,5 @@ export const textosDe: TextosUi<UiPuntoDeEquilibrio> = {
     observacionRedondeo: "Die Stückzahl ist aufgerundet, weil sich kein halbes Stück verkaufen lässt.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

@@ -1,8 +1,9 @@
+import { paraSuiza } from "../../comun/locales";
 import { aDia, fechaLarga, mesesYDias } from "../../comun/fechas";
 import { duracionDe } from "../../dias-entre-fechas/textos/de";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoDe: ContenidoUniversal = (ctx) => {
+const contenido: ContenidoUniversal = (ctx) => {
   const nac = "1990-05-15";
   const ref = "2026-10-13";
   const { meses, dias } = mesesYDias(nac, ref);
@@ -50,3 +51,5 @@ export const contenidoDe: ContenidoUniversal = (ctx) => {
   };
   return ctx.locale === "de-CH" ? JSON.parse(JSON.stringify(c).replace(/ß/g, "ss")) : c;
 };
+
+export const contenidoDe: ContenidoUniversal = (ctx) => paraSuiza(ctx.locale, contenido(ctx));

@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiPuntoDeEquilibrio } from "../definicion";
 
-export const textosEs: TextosUi<UiPuntoDeEquilibrio> = {
+const base: TextosUi<UiPuntoDeEquilibrio> = {
   slug: "punto-de-equilibrio",
   ui: (trato) => ({
     fijos: "Costos fijos por mes",
@@ -35,3 +36,20 @@ export const textosEs: TextosUi<UiPuntoDeEquilibrio> = {
     observacionRedondeo: "Las unidades se redondean hacia arriba, porque no se puede vender una fracción.",
   }),
 };
+
+const espana = (): Partial<UiPuntoDeEquilibrio> => ({
+  fijos: "Costes fijos al mes",
+  variable: "Coste variable por unidad",
+  variableAyuda: "Lo que cuesta cada unidad que se vende: materiales, mercancía, comisiones, envío.",
+  objetivo: "Beneficio que buscas al mes (opcional)",
+  objetivoAyuda: "Para saber cuánto vender, además de cubrir los costes.",
+  unidades: "Unidades para cubrir los costes",
+  facturacion: "Ventas para cubrir los costes",
+  contribucionAyuda: "Lo que deja cada venta para pagar los costes fijos: precio menos coste variable.",
+  unidadesObjetivo: "Unidades para el beneficio buscado",
+  facturacionObjetivo: "Ventas para el beneficio buscado",
+  errorMargen:
+    "El coste variable es igual o mayor que el precio: cada venta pierde dinero y nunca llegas al equilibrio. Revisa el precio o el coste.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

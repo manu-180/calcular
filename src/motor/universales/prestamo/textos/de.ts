@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPrestamo } from "../definicion";
 
-export const textosDe: TextosUi<UiPrestamo> = {
+const textos: TextosUi<UiPrestamo> = {
   slug: "kreditrechner",
   ui: () => ({
     monto: "Kreditbetrag",
@@ -26,3 +27,5 @@ export const textosDe: TextosUi<UiPrestamo> = {
     observacionExtra: (meses, ahorro) => `Mit der Sondertilgung sind Sie nach ${meses} Monaten schuldenfrei und sparen ${ahorro} Zinsen.`,
   }),
 };
+
+export const textosDe = textosConSuiza(textos);
