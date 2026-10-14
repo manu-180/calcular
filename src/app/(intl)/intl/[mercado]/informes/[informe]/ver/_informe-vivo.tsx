@@ -9,6 +9,7 @@ import { formatearMoneda, formatearNumero, parsearNumero } from "@/motor/formato
 import { mensajeDeError, opcionesDe, type Crudos, type EstadoCalculo } from "@/motor/formulario";
 import { textosMotor } from "@/motor/textos";
 import type { Campo, DefinicionCalculadora, PropsCalculadora } from "@/motor/tipos";
+import type { ContextoUniversal } from "@/motor/universales/tipos";
 import { CARGADORES } from "../../../[slug]/cargadores";
 
 export type TextosInforme = {
@@ -61,6 +62,7 @@ function textoCrudo(c: Campo, v: string | boolean | undefined, props: PropsCalcu
 export function InformeVivo({
   mercado,
   slug,
+  universal,
   permitidas,
   producto,
   definicion,
@@ -75,6 +77,7 @@ export function InformeVivo({
 }: {
   mercado: string;
   slug: string;
+  universal?: { id: string; contexto: ContextoUniversal };
   permitidas: readonly string[];
   producto: string;
   definicion: DefinicionVisible & Pick<DefinicionCalculadora, "tablas">;
@@ -96,13 +99,15 @@ export function InformeVivo({
   const recalcular = useCallback(
     (nuevos: Crudos) => {
       const cargador = CARGADORES[mercado]?.[slug];
-      if (!cargador) {
+      if (!universal && !cargador) {
         console.error(`[informe] sin cargador para ${mercado}/${slug}`);
         return;
       }
-      cargador()
-        .then((m) => {
-          const def = m.default as DefinicionCalculadora;
+      const cargar = universal
+        ? import("@/motor/universales/cargadores").then(({ cargarUniversal }) => cargarUniversal(universal.id, universal.contexto))
+        : cargador!().then((m) => m.default as DefinicionCalculadora);
+      cargar
+        .then((def) => {
           setUsados(nuevos);
           setEstado(estadoDelInforme(def, nuevos, props, motor));
           setEscenarios(escenario ? calcularEscenarios(def, escenario, nuevos, props, motor) : null);
@@ -112,7 +117,7 @@ export function InformeVivo({
           setEstado({ tipo: "fallo", mensaje: motor.errores["calculo-fallido"] });
         });
     },
-    [mercado, slug, props, motor, escenario],
+    [mercado, slug, universal, props, motor, escenario],
   );
 
   // Sin datos en el servidor (base sin la columna, o compra sin datos): los del navegador, si son de

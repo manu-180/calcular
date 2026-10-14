@@ -86,7 +86,7 @@ function contextoUniversal(mercado: Mercado, u: Universal<never>, uso: UsoUniver
 // El contenido se arma la primera vez que alguien lo lee: 190 países por 40 universales son miles de
 // textos con números formateados, y un build o un ISR solo necesita los de las páginas que pinta.
 function entradaUniversal(u: Universal<never>, ctx: ContextoUniversal): EntradaUniversal {
-  const definicion = u.definir({ ...ctx, slug: ctx.slug || u.textos[ctx.idioma]!.slug }, u.textos[ctx.idioma]!.ui(ctx.trato));
+  const definicion = u.definir({ ...ctx, slug: ctx.slug || u.textos[ctx.idioma]!.slug }, u.textos[ctx.idioma]!.ui(ctx.trato, ctx.locale));
   let contenido: ContenidoCalculadora | undefined;
   return {
     definicion,

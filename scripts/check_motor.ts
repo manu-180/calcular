@@ -458,7 +458,7 @@ export async function cargarUniversal(id: string, contexto: ContextoUniversal): 
   const textos = cargador?.textos[contexto.idioma];
   if (!cargador || !textos) throw new Error(\`sin cargador para la universal \${id} en \${contexto.idioma}\`);
   const [definir, t] = await Promise.all([cargador.definir(), textos()]);
-  return definir(contexto, t.ui(contexto.trato) as never);
+  return definir(contexto, t.ui(contexto.trato, contexto.locale) as never);
 }
 `;
 
