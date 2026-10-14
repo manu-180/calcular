@@ -1,0 +1,1249 @@
+{
+  "mercado": "es",
+  "datos": [
+    {
+      "id": "es.iva-tipos",
+      "nombre": "Tipos del IVA",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "General",
+        "reducido": "Reducido",
+        "superreducido": "Superreducido"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 21,
+            "reducido": 10,
+            "superreducido": 4
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Ley 37/1992 del IVA, texto consolidado (artículos 90, 91 y 161)",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-28740",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.recargo-equivalencia",
+      "nombre": "Recargo de equivalencia",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "General",
+        "reducido": "Reducido",
+        "superreducido": "Superreducido"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 5.2,
+            "reducido": 1.4,
+            "superreducido": 0.5
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Ley 37/1992 del IVA, texto consolidado (artículos 90, 91 y 161)",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-28740",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.smi-mensual",
+      "nombre": "Salario mínimo interprofesional mensual (14 pagas)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1221,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Real Decreto 126/2026, de 18 de febrero, salario mínimo interprofesional para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-3815",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.smi-diario",
+      "nombre": "Salario mínimo interprofesional diario",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 40.7,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Real Decreto 126/2026, de 18 de febrero, salario mínimo interprofesional para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-3815",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.smi-anual",
+      "nombre": "Salario mínimo interprofesional anual",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 17094,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Real Decreto 126/2026, de 18 de febrero, salario mínimo interprofesional para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-3815",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.smi-hora-hogar",
+      "nombre": "Salario mínimo por hora de las empleadas de hogar por horas",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 9.55,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Real Decreto 126/2026, de 18 de febrero, salario mínimo interprofesional para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-3815",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.smi-eventuales",
+      "nombre": "Salario mínimo por jornada de eventuales y temporeros (menos de 120 días)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 57.82,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Real Decreto 126/2026, de 18 de febrero, salario mínimo interprofesional para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-3815",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.cotizacion-trabajador",
+      "nombre": "Tipos de cotización a cargo de la persona trabajadora",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "contingencias-comunes": 4.7,
+            "desempleo-indefinido": 1.55,
+            "desempleo-temporal": 1.6,
+            "formacion": 0.1,
+            "mei": 0.15
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Orden PJC/297/2026, de 30 de marzo, normas de cotización a la Seguridad Social para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.cotizacion-empresa",
+      "nombre": "Tipos de cotización a cargo de la empresa",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "contingencias-comunes": 23.6,
+            "desempleo-indefinido": 5.5,
+            "desempleo-temporal": 6.7,
+            "fogasa": 0.2,
+            "formacion": 0.6,
+            "mei": 0.75
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Orden PJC/297/2026, de 30 de marzo, normas de cotización a la Seguridad Social para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.base-maxima-cotizacion",
+      "nombre": "Base máxima de cotización mensual",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 5101.2,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Orden PJC/297/2026, de 30 de marzo, normas de cotización a la Seguridad Social para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.solidaridad-trabajador",
+      "nombre": "Cotización de solidaridad a cargo de la persona trabajadora (por tramos de retribución mensual)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5101.2,
+              "tasa": 0
+            },
+            {
+              "desde": 5101.2,
+              "hasta": 5611.32,
+              "tasa": 0.19
+            },
+            {
+              "desde": 5611.32,
+              "hasta": 7651.8,
+              "tasa": 0.21
+            },
+            {
+              "desde": 7651.8,
+              "hasta": null,
+              "tasa": 0.24
+            }
+          ],
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Orden PJC/297/2026, de 30 de marzo, normas de cotización a la Seguridad Social para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.solidaridad-empresa",
+      "nombre": "Cotización de solidaridad a cargo de la empresa (por tramos de retribución mensual)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5101.2,
+              "tasa": 0
+            },
+            {
+              "desde": 5101.2,
+              "hasta": 5611.32,
+              "tasa": 0.96
+            },
+            {
+              "desde": 5611.32,
+              "hasta": 7651.8,
+              "tasa": 1.04
+            },
+            {
+              "desde": 7651.8,
+              "hasta": null,
+              "tasa": 1.22
+            }
+          ],
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Orden PJC/297/2026, de 30 de marzo, normas de cotización a la Seguridad Social para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.autonomos-limite-tramo",
+      "nombre": "Límite superior de rendimientos netos mensuales de cada tramo de autónomos",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "nota": "El tramo 3 de la tabla reducida termina antes de 1.166,70; el tramo 1 general empieza en 1.166,70.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "r1": 670,
+            "r2": 900,
+            "r3": 1166.7,
+            "g1": 1300,
+            "g2": 1500,
+            "g3": 1700,
+            "g4": 1850,
+            "g5": 2030,
+            "g6": 2330,
+            "g7": 2760,
+            "g8": 3190,
+            "g9": 3620,
+            "g10": 4050,
+            "g11": 6000
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Orden PJC/297/2026, de 30 de marzo, normas de cotización a la Seguridad Social para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.autonomos-base-minima",
+      "nombre": "Base mínima de cotización de autónomos por tramo",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "r1": 653.59,
+            "r2": 718.95,
+            "r3": 849.67,
+            "g1": 950.98,
+            "g2": 960.78,
+            "g3": 960.78,
+            "g4": 1143.79,
+            "g5": 1209.15,
+            "g6": 1274.51,
+            "g7": 1356.21,
+            "g8": 1437.91,
+            "g9": 1519.61,
+            "g10": 1601.31,
+            "g11": 1732.03,
+            "g12": 1928.1
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Orden PJC/297/2026, de 30 de marzo, normas de cotización a la Seguridad Social para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.autonomos-base-maxima",
+      "nombre": "Base máxima de cotización de autónomos por tramo",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "r1": 718.94,
+            "r2": 900,
+            "r3": 1166.7,
+            "g1": 1300,
+            "g2": 1500,
+            "g3": 1700,
+            "g4": 1850,
+            "g5": 2030,
+            "g6": 2330,
+            "g7": 2760,
+            "g8": 3190,
+            "g9": 3620,
+            "g10": 4050,
+            "g11": 5101.2,
+            "g12": 5101.2
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Orden PJC/297/2026, de 30 de marzo, normas de cotización a la Seguridad Social para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.autonomos-tipos",
+      "nombre": "Tipos de cotización de autónomos",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "contingencias-comunes": 28.3,
+            "contingencias-profesionales": 1.3,
+            "cese-actividad": 0.9,
+            "formacion": 0.1,
+            "mei": 0.9
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Orden PJC/297/2026, de 30 de marzo, normas de cotización a la Seguridad Social para 2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.autonomos-gastos-genericos",
+      "nombre": "Deducción por gastos genéricos para la cotización de autónomos",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Autónomo persona física",
+        "societario": "Autónomo societario o administrador"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 7,
+            "societario": 3
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Ley General de la Seguridad Social (Real Decreto Legislativo 8/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-escala-retencion",
+      "nombre": "Escala de retención del IRPF sobre rendimientos del trabajo",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12450,
+              "tasa": 19
+            },
+            {
+              "desde": 12450,
+              "hasta": 20200,
+              "tasa": 24
+            },
+            {
+              "desde": 20200,
+              "hasta": 35200,
+              "tasa": 30
+            },
+            {
+              "desde": 35200,
+              "hasta": 60000,
+              "tasa": 37
+            },
+            {
+              "desde": 60000,
+              "hasta": 300000,
+              "tasa": 45
+            },
+            {
+              "desde": 300000,
+              "hasta": null,
+              "tasa": 47
+            }
+          ],
+          "fuente": {
+            "organismo": "Agencia Tributaria",
+            "titulo": "Algoritmo de cálculo del tipo de retención del IRPF sobre rendimientos del trabajo, ejercicio 2026",
+            "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La versión del 1 de enero al 9 de septiembre tiene los mismos parámetros; el cambio del 10 de septiembre solo afecta a La Palma."
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-minimo-contribuyente",
+      "nombre": "Mínimo del contribuyente para la retención",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "general": 5550,
+            "mayor-65": 1150,
+            "mayor-75": 1400
+          },
+          "fuente": {
+            "organismo": "Agencia Tributaria",
+            "titulo": "Algoritmo de cálculo del tipo de retención del IRPF sobre rendimientos del trabajo, ejercicio 2026",
+            "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La versión del 1 de enero al 9 de septiembre tiene los mismos parámetros; el cambio del 10 de septiembre solo afecta a La Palma."
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-minimo-descendientes",
+      "nombre": "Mínimo por descendientes para la retención",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "primero": 2400,
+            "segundo": 2700,
+            "tercero": 4000,
+            "cuarto": 4500,
+            "menor-3": 2800
+          },
+          "fuente": {
+            "organismo": "Agencia Tributaria",
+            "titulo": "Algoritmo de cálculo del tipo de retención del IRPF sobre rendimientos del trabajo, ejercicio 2026",
+            "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La versión del 1 de enero al 9 de septiembre tiene los mismos parámetros; el cambio del 10 de septiembre solo afecta a La Palma."
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-reduccion-trabajo",
+      "nombre": "Reducción por obtención de rendimientos del trabajo",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "maxima": 7302,
+            "umbral-1": 14852,
+            "coeficiente-1": 1.75,
+            "umbral-2": 17673.52,
+            "importe-2": 2364.34,
+            "coeficiente-2": 1.14,
+            "umbral-3": 19747.5
+          },
+          "fuente": {
+            "organismo": "Agencia Tributaria",
+            "titulo": "Algoritmo de cálculo del tipo de retención del IRPF sobre rendimientos del trabajo, ejercicio 2026",
+            "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La versión del 1 de enero al 9 de septiembre tiene los mismos parámetros; el cambio del 10 de septiembre solo afecta a La Palma."
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-otros-gastos",
+      "nombre": "Otros gastos deducibles de los rendimientos del trabajo",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2000,
+          "fuente": {
+            "organismo": "Agencia Tributaria",
+            "titulo": "Algoritmo de cálculo del tipo de retención del IRPF sobre rendimientos del trabajo, ejercicio 2026",
+            "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La versión del 1 de enero al 9 de septiembre tiene los mismos parámetros; el cambio del 10 de septiembre solo afecta a La Palma."
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-reduccion-hijos",
+      "nombre": "Reducción de la base de retención por más de dos descendientes",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 600,
+          "fuente": {
+            "organismo": "Agencia Tributaria",
+            "titulo": "Algoritmo de cálculo del tipo de retención del IRPF sobre rendimientos del trabajo, ejercicio 2026",
+            "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La versión del 1 de enero al 9 de septiembre tiene los mismos parámetros; el cambio del 10 de septiembre solo afecta a La Palma."
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-limites-exclusion",
+      "nombre": "Límites de retribución por debajo de los cuales no se retiene",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "s1-1": 17644,
+            "s1-2": 18694,
+            "s2-0": 17197,
+            "s2-1": 18130,
+            "s2-2": 19262,
+            "s3-0": 15876,
+            "s3-1": 16342,
+            "s3-2": 16867
+          },
+          "fuente": {
+            "organismo": "Agencia Tributaria",
+            "titulo": "Algoritmo de cálculo del tipo de retención del IRPF sobre rendimientos del trabajo, ejercicio 2026",
+            "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La versión del 1 de enero al 9 de septiembre tiene los mismos parámetros; el cambio del 10 de septiembre solo afecta a La Palma."
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-limite-cuota",
+      "nombre": "Límite de la cuota de retención sobre lo que excede del mínimo sin retención",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "porcentaje": 43,
+            "hasta-retribucion": 35200
+          },
+          "fuente": {
+            "organismo": "Agencia Tributaria",
+            "titulo": "Algoritmo de cálculo del tipo de retención del IRPF sobre rendimientos del trabajo, ejercicio 2026",
+            "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La versión del 1 de enero al 9 de septiembre tiene los mismos parámetros; el cambio del 10 de septiembre solo afecta a La Palma."
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-tipo-minimo-temporal",
+      "nombre": "Tipo mínimo de retención en contratos de menos de un año",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Agencia Tributaria",
+            "titulo": "Algoritmo de cálculo del tipo de retención del IRPF sobre rendimientos del trabajo, ejercicio 2026",
+            "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La versión del 1 de enero al 9 de septiembre tiene los mismos parámetros; el cambio del 10 de septiembre solo afecta a La Palma."
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.irpf-retencion-profesionales",
+      "nombre": "Retención del IRPF en facturas de actividades profesionales",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "General",
+        "inicio": "Inicio de actividad"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 15,
+            "inicio": 7
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Ley 35/2006 del IRPF, texto consolidado (artículo 101.5)",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.vacaciones-dias",
+      "nombre": "Vacaciones mínimas al año (días naturales)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.pagas-extra-minimo",
+      "nombre": "Pagas extraordinarias mínimas al año",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.horas-extra-maximo",
+      "nombre": "Máximo de horas extraordinarias al año",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.fin-contrato-dias",
+      "nombre": "Indemnización por fin de contrato temporal (días por año)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.despido-objetivo-dias",
+      "nombre": "Indemnización por despido objetivo (días por año)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.despido-objetivo-tope",
+      "nombre": "Tope de la indemnización por despido objetivo",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.despido-improcedente-dias",
+      "nombre": "Indemnización por despido improcedente (días por año)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 33,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.despido-improcedente-tope",
+      "nombre": "Tope de la indemnización por despido improcedente",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.despido-anterior-2012-dias",
+      "nombre": "Indemnización por despido improcedente por el tiempo anterior al 12 de febrero de 2012 (días por año)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.despido-anterior-2012-tope-dias",
+      "nombre": "Tope general en días para contratos anteriores al 12 de febrero de 2012",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 720,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.despido-anterior-2012-tope-maximo",
+      "nombre": "Tope máximo para contratos anteriores al 12 de febrero de 2012",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 42,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Estatuto de los Trabajadores (Real Decreto Legislativo 2/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.paro-duracion",
+      "nombre": "Días de prestación por desempleo según los días cotizados en los últimos seis años",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "360": 120,
+            "540": 180,
+            "720": 240,
+            "900": 300,
+            "1080": 360,
+            "1260": 420,
+            "1440": 480,
+            "1620": 540,
+            "1800": 600,
+            "1980": 660,
+            "2160": 720
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Ley General de la Seguridad Social (Real Decreto Legislativo 8/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.paro-porcentajes",
+      "nombre": "Porcentaje de la base reguladora del paro",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "primeros-180": 70,
+            "desde-181": 60
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Ley General de la Seguridad Social (Real Decreto Legislativo 8/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.paro-cuantia-minima",
+      "nombre": "Cuantía mínima mensual de la prestación contributiva",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sin-hijos": 560,
+            "con-hijos": 749
+          },
+          "fuente": {
+            "organismo": "SEPE",
+            "titulo": "Cuantías anuales: IPREM, SMI y prestación contributiva",
+            "url": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/Cuantias-anuales.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.paro-cuantia-maxima",
+      "nombre": "Cuantía máxima mensual de la prestación contributiva",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sin-hijos": 1225,
+            "un-hijo": 1400,
+            "dos-o-mas": 1575
+          },
+          "fuente": {
+            "organismo": "SEPE",
+            "titulo": "Cuantías anuales: IPREM, SMI y prestación contributiva",
+            "url": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/Cuantias-anuales.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.iprem-mensual",
+      "nombre": "IPREM mensual",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "nota": "Fijado por la Ley 31/2022 de Presupuestos para 2023 y vigente por la prórroga presupuestaria.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 600,
+          "fuente": {
+            "organismo": "SEPE",
+            "titulo": "Cuantías anuales: IPREM, SMI y prestación contributiva",
+            "url": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/Cuantias-anuales.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.it-porcentajes",
+      "nombre": "Porcentaje de la base reguladora en la baja por incapacidad temporal",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "comun-dia-4-a-20": 60,
+            "comun-desde-dia-21": 75,
+            "profesional": 75
+          },
+          "fuente": {
+            "organismo": "Seguridad Social",
+            "titulo": "Incapacidad temporal: cuantía de la prestación",
+            "url": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10952/28362/28365/cuantia",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.jubilacion-porcentajes",
+      "nombre": "Porcentaje de la base reguladora de la pensión según lo cotizado (2023 a 2026)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "base": 50,
+            "anios-base": 15,
+            "coeficiente-1": 0.21,
+            "meses-1": 49,
+            "coeficiente-2": 0.19,
+            "meses-2": 209
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Ley General de la Seguridad Social (Real Decreto Legislativo 8/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.edad-jubilacion",
+      "nombre": "Edad ordinaria de jubilación en 2026 (en meses)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "cotizacion-requerida": 459,
+            "edad-con-cotizacion": 780,
+            "edad-sin-cotizacion": 802
+          },
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Ley General de la Seguridad Social (Real Decreto Legislativo 8/2015), texto consolidado",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "es.pension-maxima",
+      "nombre": "Pensión máxima mensual (14 pagas)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3359.6,
+          "fuente": {
+            "organismo": "BOE",
+            "titulo": "Real Decreto 241/2026, de 25 de marzo, límite de las pensiones públicas para 2026 (artículo 3.1)",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-6977",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}
