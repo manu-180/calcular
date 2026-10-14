@@ -81,6 +81,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./costo-de-un-auto/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./costo-de-un-auto/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./costo-de-un-auto/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "descuento": {
@@ -191,6 +192,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./margen-de-ganancia/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./margen-de-ganancia/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./margen-de-ganancia/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "meta-de-ahorro": {
@@ -270,6 +272,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./punto-de-equilibrio/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./punto-de-equilibrio/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./punto-de-equilibrio/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "regla-de-tres": {
@@ -285,6 +288,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./rendimiento-inversion/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./rendimiento-inversion/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./rendimiento-inversion/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "ritmo-de-carrera": {
