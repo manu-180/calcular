@@ -1,11 +1,14 @@
 // Generado por scripts/check_medicion_mercados.ts --escribir desde registro.mercados("produccion"). No editar a mano.
 export const MERCADOS_REGISTRO: readonly (readonly [codigo: string, pais: string | null, idioma: string])[] = [
   ["bo", "BO", "es"],
+  ["br", "BR", "pt"],
   ["cl", "CL", "es"],
   ["co", "CO", "es"],
   ["cr", "CR", "es"],
   ["do", "DO", "es"],
   ["ec", "EC", "es"],
+  ["fr", "FR", "fr"],
+  ["gb", "GB", "en"],
   ["global", null, "es"],
   ["gt", "GT", "es"],
   ["hn", "HN", "es"],

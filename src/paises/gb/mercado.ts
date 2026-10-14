@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["GBP"],
   zonaHoraria: "Europe/London",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "england-wales-ni", nombre: "England, Wales or Northern Ireland" },
     { id: "scotland", nombre: "Scotland" },
