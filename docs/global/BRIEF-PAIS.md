@@ -82,6 +82,18 @@ aplica las reglas de tu idioma (`scripts/reglas_idioma.ts`).
 `brutto-netto-rechner`, `salaire-brut-net`). No pueden chocar con los slugs de las universales en tu
 idioma (están en `src/motor/universales/*/textos/<idioma>.ts`).
 
+**Lecciones de la primera tanda (us, gb, de, fr, br):**
+- El archivo de cada calculadora se llama **igual que su slug** (`calculadoras/take-home-pay.ts`):
+  el generador de cargadores del cliente lo exige.
+- Un mercado en `interno` no genera cargadores, así que sus locales no calculan en `next dev`. Para
+  probar: poné `publicado` en tu `mercado.ts`, registralo en `src/paises/index.ts`, corré
+  `npx tsx scripts/check_motor.ts --generar-cargadores` y, antes de commitear, revertí los tres
+  (`git checkout -- src/paises/index.ts src/app && git checkout -- src/paises/<m>/mercado.ts` o
+  dejá `interno` a mano).
+- Valores que viven en escalas no se pueden mostrar con marcadores: si los escribís en el texto,
+  anotalos en el informe para revisarlos cuando cambie el año.
+- Nada de afirmaciones en FAQ sin fuente primaria: si no lo leíste en una fuente oficial, no va.
+
 ## Archivos
 
 SOLO `src/paises/<m>/**` y `scripts/paises/<m>/**`. Prohibido todo lo demás, incluido
