@@ -117,6 +117,7 @@ export interface LohnEingabe {
   faboHalb: boolean;
   pendler: string;
   pendlerKm: number;
+  pendlerAnteil?: number;
 }
 
 export interface LohnErgebnis {
@@ -159,26 +160,27 @@ export function sonderzahlungen(brutto: number, betraege: readonly number[], v: 
   });
 }
 
-export function pendlerpauschaleMonat(pendler: string, tabelle: Readonly<Record<string, number>>, r: Redondear): number {
+export function pendlerpauschaleMonat(pendler: string, tabelle: Readonly<Record<string, number>>, r: Redondear, anteil = 1): number {
   if (pendler === "keine") return 0;
   if (!(pendler in tabelle)) throw new ErrorEntrada({ codigo: "opcion-invalida" });
-  return r(tabelle[pendler] / 12);
+  return r((tabelle[pendler] / 12) * anteil);
 }
 
 export function nettoLohn(e: LohnEingabe, v: ValoresLohn, r: Redondear): LohnErgebnis {
   if (e.brutto > BRUTTO_MAX) throw new ErrorEntrada("Der Rechner ist für Bruttogehälter bis 40.000 Euro im Monat ausgelegt.", "brutto");
   const sv = svLaufend(e.brutto, v, e.wien, r);
-  const pendlerMonat = pendlerpauschaleMonat(e.pendler, v["at.pendlerpauschale"], r);
+  const pendlerAnteil = e.pendlerAnteil ?? 1;
+  const pendlerMonat = pendlerpauschaleMonat(e.pendler, v["at.pendlerpauschale"], r, pendlerAnteil);
   if (e.pendler !== "keine" && e.pendlerKm <= 0) throw new ErrorEntrada("Geben Sie die einfache Strecke in Kilometern an, damit der Pendlereuro berechnet werden kann.", "pendlerKm");
   const bmg = Math.max(0, r(e.brutto - sv.summe - pendlerMonat));
   const steuerVorAbsetz = tarifMonat(bmg, v["at.est-tarif"], v["at.werbungskostenpauschale"], r);
   const fb = v["at.familienbonus"];
-  const anteil = e.faboHalb ? 0.5 : 1;
-  const familienbonusMonat = r(e.kinderUnter18 * r(fb["unter-18"] * anteil) + e.kinderAb18 * r(fb["ab-18"] * anteil));
+  const faboAnteil = e.faboHalb ? 0.5 : 1;
+  const familienbonusMonat = r(e.kinderUnter18 * r(fb["unter-18"] * faboAnteil) + e.kinderAb18 * r(fb["ab-18"] * faboAnteil));
   const familienbonusWirksam = Math.min(familienbonusMonat, r(steuerVorAbsetz));
   const verkehrsabsetzbetragMonat = r(v["at.verkehrsabsetzbetrag"] / 12);
   const avabMonat = r(avabJahr(v["at.avab"], e.avabKinder) / 12);
-  const pendlereuroMonat = e.pendler === "keine" ? 0 : r((e.pendlerKm * v["at.pendlereuro"]) / 12);
+  const pendlereuroMonat = e.pendler === "keine" ? 0 : r(((e.pendlerKm * v["at.pendlereuro"]) / 12) * pendlerAnteil);
   const lohnsteuer = Math.max(0, r(steuerVorAbsetz - familienbonusWirksam - verkehrsabsetzbetragMonat - avabMonat - pendlereuroMonat));
   const netto = r(e.brutto - sv.summe - lohnsteuer);
   const sz = sonderzahlungen(e.brutto, [e.brutto, e.brutto], v, r);
