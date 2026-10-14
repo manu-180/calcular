@@ -67,6 +67,7 @@ const base: TextosSitio = {
     verNovedades: "See all updates",
     sinCalculadoras: "There are no calculators for this country yet.",
     descripcion: (pais) => `Pay, tax and money calculators ${g.para(pais)}, with the official value in force, its source and the date it was checked.`,
+    irASeccion: "Jump to a section",
   },
   fuentes: {
     titulo: (pais) => `Sources and data ${g.para(pais)}`,
@@ -132,7 +133,7 @@ const base: TextosSitio = {
   },
   shell: {
     irAlInicio: "go to the home page",
-    menu: { trabajo: "Pay and work", impuestos: "Taxes", dinero: "Money and indexes", novedades: "Updates", planillas: "Spreadsheets" },
+    menu: { trabajo: "Pay and work", impuestos: "Taxes", dinero: "Money and indexes", vida: "Everyday", novedades: "Updates", planillas: "Spreadsheets" },
     encabezado: {
       principal: "Main",
       buscar: "Search",

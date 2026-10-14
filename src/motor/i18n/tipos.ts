@@ -61,6 +61,7 @@ export interface TextosSitio {
     verNovedades: string;
     sinCalculadoras: string;
     descripcion: (pais: string) => string;
+    irASeccion: string;
   };
   fuentes: {
     titulo: (pais: string) => string;
@@ -105,7 +106,7 @@ export interface TextosSitio {
 // tienen la forma que esperan SiteHeader y Buscador en src/components.
 export interface TextosShell {
   irAlInicio: string;
-  menu: { trabajo: string; impuestos: string; dinero: string; novedades: string; planillas: string };
+  menu: { trabajo: string; impuestos: string; dinero: string; vida: string; novedades: string; planillas: string };
   encabezado: {
     principal: string;
     buscar: string;

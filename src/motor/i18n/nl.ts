@@ -66,6 +66,7 @@ const base: TextosSitio = {
     verNovedades: "Alle wijzigingen bekijken",
     sinCalculadoras: "Voor dit land zijn er nog geen rekenhulpen.",
     descripcion: (pais) => `Rekenhulpen voor salaris, belastingen en geldzaken ${g.en(pais)}, met de geldende officiële waarde, de bron en de controledatum.`,
+    irASeccion: "Naar een onderdeel gaan",
   },
   fuentes: {
     titulo: (pais) => `Bronnen en gegevens ${g.para(pais)}`,
@@ -131,7 +132,7 @@ const base: TextosSitio = {
   },
   shell: {
     irAlInicio: "naar de homepage",
-    menu: { trabajo: "Salaris en werk", impuestos: "Belastingen", dinero: "Geld en indexen", novedades: "Wijzigingen", planillas: "Spreadsheets" },
+    menu: { trabajo: "Salaris en werk", impuestos: "Belastingen", dinero: "Geld en indexen", vida: "Dagelijks leven", novedades: "Wijzigingen", planillas: "Spreadsheets" },
     encabezado: {
       principal: "Hoofdnavigatie",
       buscar: "Zoeken",

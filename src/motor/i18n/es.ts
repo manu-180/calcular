@@ -67,6 +67,7 @@ const base: TextosSitio = {
     verNovedades: "Ver todas las novedades",
     sinCalculadoras: "Todavía no hay calculadoras publicadas para este país.",
     descripcion: (pais) => `Calculadoras laborales y de impuestos ${g.de(pais)}: sueldo, liquidación y más, con el valor oficial vigente, su fuente y la fecha de revisión.`,
+    irASeccion: "Ir a una sección",
   },
   fuentes: {
     titulo: (pais) => `Fuentes y datos ${g.de(pais)}`,
@@ -132,7 +133,7 @@ const base: TextosSitio = {
   },
   shell: {
     irAlInicio: "ir al inicio",
-    menu: { trabajo: "Sueldo y trabajo", impuestos: "Impuestos", dinero: "Dinero e índices", novedades: "Novedades", planillas: "Planillas" },
+    menu: { trabajo: "Sueldo y trabajo", impuestos: "Impuestos", dinero: "Dinero e índices", vida: "Vida diaria", novedades: "Novedades", planillas: "Planillas" },
     encabezado: {
       principal: "Principal",
       buscar: "Buscar",

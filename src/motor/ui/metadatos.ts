@@ -19,7 +19,7 @@ import {
   type MetadataSeo,
 } from "../seo";
 import { calculadorasDe, type ContextoSitio } from "./contexto";
-import { PAGINAS_LEGALES } from "./Legales";
+import { paginasLegales } from "./Legales";
 
 // Lo que va en el <head> y en el JSON-LD de cada página de calcularya, en un solo lugar: lo usan
 // las páginas de src/app/(intl) y scripts/check_seo_intl.ts, así el check mide lo mismo que sale.
@@ -68,8 +68,10 @@ function textosDe(ctx: ContextoSitio, r: PaginaIntl | null): { title: string; de
       : { title: elegirTitulo(t.seo.tituloPais(m.nombre, anio(ctx))), description: t.pais.descripcion(m.nombre) };
   }
   switch (r.tipo) {
-    case "legal":
-      return { title: PAGINAS_LEGALES[r.slug].title, description: PAGINAS_LEGALES[r.slug].description };
+    case "legal": {
+      const legal = paginasLegales(m.idioma, m.trato, m.locale)[r.slug];
+      return { title: legal.title, description: legal.description };
+    }
     case "fuentes":
       return { title: elegirTitulo(t.seo.tituloFuentes(m.nombre)), description: t.fuentes.description(m.nombre) };
     case "novedades":

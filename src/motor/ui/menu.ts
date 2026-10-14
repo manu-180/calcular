@@ -48,21 +48,8 @@ export const GRUPOS: readonly { key: ClaveGrupo; cols: readonly (readonly Catego
   { key: "vida", cols: [["calculos", "fechas"], ["salud", "hogar"]] },
 ];
 
-// Provisorio hasta que shell.menu.vida esté en los diccionarios (src/motor/i18n): si la clave existe,
-// gana la del diccionario.
-const VIDA_PROVISORIO: Readonly<Record<string, string>> = {
-  es: "Vida diaria",
-  pt: "Dia a dia",
-  en: "Everyday",
-  fr: "Au quotidien",
-  de: "Alltag",
-  it: "Vita quotidiana",
-  nl: "Dagelijks",
-};
-
 export function etiquetaGrupo(ctx: ContextoSitio, key: ClaveGrupo): string {
-  const menu = ctx.textos.shell.menu as Readonly<Record<string, string | undefined>>;
-  return menu[key] ?? VIDA_PROVISORIO[ctx.mercado.idioma] ?? VIDA_PROVISORIO.es;
+  return ctx.textos.shell.menu[key];
 }
 
 export interface GrupoInicio {

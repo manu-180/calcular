@@ -1,5 +1,5 @@
 import { esConcepto } from "./conceptos";
-import { esIdDelMercado, RE_SLUG, validarFuente, validarUrl } from "./datos";
+import { esIdDelMercado, paisDelMercado, RE_SLUG, validarFuente, validarUrl } from "./datos";
 import { hayLlavesSueltas, marcadoresDe, mercadoVisible, resolverValores } from "./registro";
 import { diasEntre, esFechaISO, sumarDias, valorSerie, vigente } from "./vigencia";
 import type { ContenidoCalculadora, DefinicionCalculadora, FechaISO, PaisDefinido, Requisito } from "./tipos";
@@ -54,7 +54,7 @@ function validarDefinicion(pais: PaisDefinido, def: DefinicionCalculadora, e: st
       e.push(`${donde}: requiere["${id}"] = "${req}" no es un requisito válido`);
       continue;
     }
-    if (!id.startsWith(`${cod}.`)) e.push(`${donde}: requiere "${id}", que es de otro mercado`);
+    if (!id.startsWith(`${cod}.`) && !id.startsWith(`${paisDelMercado(cod)}.`)) e.push(`${donde}: requiere "${id}", que es de otro mercado`);
     if (req === "serie") {
       if (!pais.series.some((s) => s.id === id)) e.push(`${donde}: requiere la serie "${id}", que no está en series.json`);
       continue;

@@ -67,6 +67,7 @@ const base: TextosSitio = {
     verNovedades: "Ver todas as novidades",
     sinCalculadoras: "Ainda não há calculadoras publicadas para este país.",
     descripcion: (pais) => `Calculadoras trabalhistas, de impostos e de dinheiro ${g.de(pais)}, com o valor oficial em vigor, a fonte e a data de conferência.`,
+    irASeccion: "Ir para uma seção",
   },
   fuentes: {
     titulo: (pais) => `Fontes e dados ${g.de(pais)}`,
@@ -132,7 +133,7 @@ const base: TextosSitio = {
   },
   shell: {
     irAlInicio: "ir para o início",
-    menu: { trabajo: "Salário e trabalho", impuestos: "Impostos", dinero: "Dinheiro e índices", novedades: "Novidades", planillas: "Planilhas" },
+    menu: { trabajo: "Salário e trabalho", impuestos: "Impostos", dinero: "Dinheiro e índices", vida: "Dia a dia", novedades: "Novidades", planillas: "Planilhas" },
     encabezado: {
       principal: "Navegação principal",
       buscar: "Buscar",
