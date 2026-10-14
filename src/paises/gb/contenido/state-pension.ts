@@ -11,9 +11,9 @@ export default definirContenido({
     "Enter your qualifying years to see your weekly, four-weekly and yearly State Pension at the 2026/27 rate.",
   ],
   comoSeCalcula: [
-    "The full rate is {{gb.state-pension-full-weekly}} a week, and you need {{gb.state-pension-full-years}} qualifying years to get it.",
-    "With fewer years you get a share: the full rate divided by {{gb.state-pension-full-years}} and multiplied by your qualifying years.",
-    "You need at least {{gb.state-pension-min-years}} qualifying years to get anything.",
+    "The full rate is {{gb.state-pension-full-weekly}} a week, and you need {{gb.state-pension-full-years}} of qualifying years to get it.",
+    "With fewer years you get a share: each qualifying year is worth the full rate divided by the number of years needed for it.",
+    "You need at least {{gb.state-pension-min-years}} of qualifying years to get anything.",
   ],
   ejemplo: ["With 20 qualifying years you get £137.89 a week, about £7,170 a year."],
   faq: [

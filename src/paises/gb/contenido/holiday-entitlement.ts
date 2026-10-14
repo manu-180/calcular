@@ -5,13 +5,13 @@ export default definirContenido({
   h1: "Holiday entitlement calculator",
   title: "Holiday entitlement calculator UK: days and hours",
   description:
-    "Work out your statutory holiday: {{gb.holiday-weeks}} weeks a year, capped at {{gb.holiday-max-days}} days, for full time, part time and irregular hours ({{gb.irregular-hours-accrual}} of hours worked).",
+    "Work out your statutory holiday: {{gb.holiday-weeks}} weeks a year, capped at {{gb.holiday-max-days}}, for full time, part time and irregular hours ({{gb.irregular-hours-accrual}} of hours worked).",
   intro: [
-    "Almost all workers in the UK have a legal right to {{gb.holiday-weeks}} weeks of paid holiday a year. For a 5-day week that is {{gb.holiday-max-days}} days, and bank holidays can be included in it.",
+    "Almost all workers in the UK have a legal right to {{gb.holiday-weeks}} weeks of paid holiday a year. For a 5-day week that is {{gb.holiday-max-days}}, and bank holidays can be included in it.",
     "Choose how you work to see your minimum entitlement in days or hours. If you work irregular hours, enter the hours you worked in a pay period to see the holiday you built up.",
   ],
   comoSeCalcula: [
-    "Fixed days: multiply your days a week by {{gb.holiday-weeks}}. The result is capped at {{gb.holiday-max-days}} days.",
+    "Fixed days: multiply your days a week by {{gb.holiday-weeks}}. The result is capped at {{gb.holiday-max-days}}.",
     "Fixed hours: multiply your weekly hours by {{gb.holiday-weeks}}.",
     "Irregular hours or part-year work: you build up {{gb.irregular-hours-accrual}} of the hours you actually work in each pay period. This applies to leave years starting on or after {{gb.irregular-hours-accrual#desde}}.",
     "If you start or leave during the year, you get a share of the yearly entitlement for the months you work.",

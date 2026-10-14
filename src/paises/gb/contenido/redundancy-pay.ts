@@ -14,7 +14,7 @@ export default definirContenido({
     "Half a week's pay for each full year you were under 22.",
     "One week's pay for each full year you were 22 or older, but under 41.",
     "One and a half weeks' pay for each full year you were 41 or older.",
-    "Weekly pay is capped at {{gb.redundancy-weekly-pay-cap}} and only the last {{gb.redundancy-max-years}} years count, counting back from the date you are made redundant.",
+    "Weekly pay is capped at {{gb.redundancy-weekly-pay-cap}} and only the last {{gb.redundancy-max-years}} count, counting back from the date you are made redundant.",
   ],
   ejemplo: [
     "At 30, with 10 years of service and £500 a week, you get 9 weeks of pay: £4,500.",
