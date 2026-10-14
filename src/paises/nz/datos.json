@@ -502,6 +502,27 @@
       ]
     },
     {
+      "id": "nz.kiwisaver-government-full-contribution",
+      "nombre": "Own contributions needed for the full government contribution",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 1042.86,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Getting the KiwiSaver government contribution",
+            "url": "https://www.ird.govt.nz/en/kiwisaver/kiwisaver-individuals/growing-my-kiwisaver-account/getting-the-kiwisaver-government-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
       "id": "nz.kiwisaver-government-income-cap",
       "nombre": "Taxable income above which there is no government contribution",
       "tipo": "numero",
@@ -799,8 +820,8 @@
           "valor": 239.5,
           "fuente": {
             "organismo": "Inland Revenue",
-            "titulo": "Paid parental leave rates from 1 July 2026",
-            "url": "https://www.ird.govt.nz/updates/news-folder/2026/paid-parental-leave",
+            "titulo": "Self-employed people: how to work out your paid parental leave entitlement",
+            "url": "https://www.ird.govt.nz/paid-parental-leave/working-out-your-entitlement/self-employed",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
           }
