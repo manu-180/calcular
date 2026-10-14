@@ -253,6 +253,9 @@ verdad("un no-verificado no habilita", !publicabilidad(soloPendiente, soloPendie
 // Registro
 const reg = crearRegistro([zz]);
 igual("zz nunca aparece en producción", reg.mercados("produccion").length, 0);
+// Un global con errores de datos desaparece de todos los checks que recorren mercados() y corta el
+// build de producción: tiene que fallar acá, con el motivo.
+verdad("global sin errores y visible en producción", registroReal.mercados("produccion").some((m) => m.codigo === "global"), registroReal.pais("global")?.errores.join("; ") ?? "no existe");
 igual("zz aparece en modo interno", reg.mercados("interno").map((m) => m.codigo), ["zz"]);
 igual("calculadoras locales publicables de zz (interno)", reg.calculadorasPublicables("zz", "2026-10-15", "interno").filter((c) => !esUniversal(c)).map((c) => c.definicion.id), ["zz.bono"]);
 igual("calculadoras publicables de zz (producción)", reg.calculadorasPublicables("zz", "2026-10-15", "produccion").length, 0);
