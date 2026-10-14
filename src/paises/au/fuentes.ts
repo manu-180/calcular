@@ -43,7 +43,7 @@ async function cpiAbs(http: Http, url: string): Promise<readonly PuntoSerie[] | 
 // última edición. Si es posterior a la verificación de datos.json, alguien tiene que releer las tasas.
 async function paginaActualizada(http: Http, url: string, titulo: string, patron: RegExp): Promise<readonly HallazgoNorma[] | null> {
   const html = await http.texto(url);
-  const m = patron.exec(html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " "));
+  const m = patron.exec(html.replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#160;/g, " ").replace(/\s+/g, " "));
   if (!m) return null;
   const mes = MESES[m[2].toLowerCase()];
   if (!mes) return null;
