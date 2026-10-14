@@ -30,6 +30,12 @@ export function anosCompletos(inicio: FechaISO, fim: FechaISO): number {
   return anos;
 }
 
+export function mesesCompletos(inicio: FechaISO, fim: FechaISO): number {
+  let meses = 0;
+  while (somarMeses(inicio, meses + 1) <= fim) meses++;
+  return meses;
+}
+
 // 13º: conta cada mês do ano civil em que a pessoa trabalhou 15 dias ou mais (Lei nº 4.090/1962,
 // art. 1º, § 2º). Inicio e fim entram no período (o dia da saída é dia trabalhado).
 export function avosDoAno(admissao: FechaISO, saida: FechaISO, ano: number, fracao: number): number {
