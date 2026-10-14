@@ -82,7 +82,7 @@ const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>>
     h1: "Calculadora de ahorro para la jubilación",
     title: tituloQueEntre(`Ahorro para la jubilación en ${ctx.nombrePais}`, `Jubilación en ${ctx.nombrePais}`, "Calculadora de ahorro para la jubilación"),
     description:
-      "Calcula cuánto reunirías para tu jubilación con aportaciones mensuales y qué ingreso mensual te daría ese ahorro. En dinero de hoy, sin contar la pensión pública.",
+      "Calcula cuánto reunirías para tu jubilación ahorrando cada mes y qué ingreso mensual te daría. En dinero de hoy, sin contar la pensión pública.",
     intro: [
       "La pensión pública muchas veces no basta para mantener el nivel de vida. Un ahorro propio, aunque sea pequeño, cambia mucho si empiezas pronto.",
       "Escribe tu edad, cuándo te quieres jubilar, lo que ya tienes y lo que puedes aportar al mes. Te mostramos el ahorro al jubilarte y cuánto podrías cobrar de él cada mes.",

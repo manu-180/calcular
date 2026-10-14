@@ -6,9 +6,9 @@ export const textosEs: TextosUi<UiMetrosCuadrados> = {
   ui: (trato) => ({
     forma: (n) => `Superficie ${n}: forma`,
     formaAyuda: segunTrato(trato, {
-      tu: "Si el ambiente tiene forma de L o es irregular, divídelo en partes y súmalas.",
-      usted: "Si el ambiente tiene forma de L o es irregular, divídalo en partes y súmelas.",
-      vos: "Si el ambiente tiene forma de L o es irregular, dividilo en partes y sumalas.",
+      tu: "Si el espacio tiene forma de L o es irregular, divídelo en partes y súmalas.",
+      usted: "Si el espacio tiene forma de L o es irregular, divídalo en partes y súmelas.",
+      vos: "Si el espacio tiene forma de L o es irregular, dividilo en partes y sumalas.",
     }),
     ninguna: "No usar",
     rectangulo: "Rectángulo o cuadrado",

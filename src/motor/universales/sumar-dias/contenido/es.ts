@@ -1,7 +1,8 @@
+import { contenidoConVariantes } from "../../comun/locales";
 import { aDia, aFecha, esHabil, fechaLarga } from "../../comun/fechas";
-import { segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const f = (iso: string) => fechaLarga(ctx.locale, iso);
   const inicio = "2026-03-02";
@@ -50,3 +51,26 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const f = (iso: string) => fechaLarga(ctx.locale, iso);
+  const inicio = "2026-03-02";
+  const mas90 = aFecha(aDia(inicio) + 90);
+  let habil = aDia(inicio);
+  for (let n = 0; n < 15; ) if (esHabil(++habil)) n++;
+  return {
+    description: "Suma o resta días naturales o hábiles a una fecha y descubre qué día cae: útil para plazos, vencimientos y entregas.",
+    comoSeCalcula: [
+      "Con días naturales, se avanza o retrocede un día del calendario por cada día pedido.",
+      "Con días hábiles, solo cuentan los días de lunes a viernes. El día de partida no se cuenta.",
+      "Los festivos no se descuentan, porque cambian según la comunidad autónoma y el municipio.",
+    ],
+    ejemplo: [`El ${f(inicio)} más 90 días naturales es el ${f(mas90)}.`, `El ${f(inicio)} más 15 días hábiles es el ${f(aFecha(habil))}.`],
+    glosario: [
+      { termino: "Días naturales", definicion: "Todos los días del calendario, sin saltarse ninguno." },
+      { termino: "Días hábiles", definicion: "En esta calculadora, los días de lunes a viernes." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

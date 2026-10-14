@@ -26,6 +26,10 @@ const base: TextosUi<UiCeramicos> = {
 };
 
 const espana = (): Partial<UiCeramicos> => ({
+  largo: (u) => `Largo de cada baldosa (${u})`,
+  ancho: (u) => `Ancho de cada baldosa (${u})`,
+  piezas: "Baldosas necesarias",
+  errorPieza: "Las medidas de la baldosa tienen que ser mayores que 0.",
 });
 
 export const textosEs = conVariantes(base, { "es-ES": espana });

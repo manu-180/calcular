@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiSumarDias } from "../definicion";
 
-export const textosEs: TextosUi<UiSumarDias> = {
+const base: TextosUi<UiSumarDias> = {
   slug: "sumar-dias-a-una-fecha",
   ui: (trato) => ({
     fecha: "Fecha de partida",
@@ -24,3 +25,11 @@ export const textosEs: TextosUi<UiSumarDias> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiSumarDias> => ({
+  corridos: "Naturales (todos los días)",
+  diasCorridos: "Días naturales en total",
+  notaHabiles: "Los días hábiles saltan sábados y domingos, pero no los festivos. Si hay alguno por medio, súmalo aparte.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });
