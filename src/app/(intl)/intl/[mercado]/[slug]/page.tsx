@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { familiaDeConcepto } from "@/lib/pagos/ofertas-intl";
 import { PAGINAS_GLOBALES, PAGINAS_MERCADO } from "@/motor/paginas";
 import { intlActivo, modoPublicacion } from "@/motor/sitio";
 import type { CodigoMercado, PropsCalculadora } from "@/motor/tipos";
@@ -17,16 +18,21 @@ export const revalidate = 3600;
 
 type Props = { params: Promise<{ mercado: string; slug: string }> };
 
-// Lee el mismo registro filtrado que el layout: si uno se apaga y el otro no, las hojas se generan
-// igual (docs/adr/0001-spike-next16.md, punto 5). dynamicParams queda en true: un slug que no está
-// llega acá y notFound() pinta el 404 intl.
+// En el build solo va lo que más se visita: las calculadoras con algo para vender (una familia de
+// oferta) y las páginas del mercado. El resto (universales de 190 países, legales sin oferta) se pinta
+// al primer pedido y queda en caché con el mismo revalidate: dynamicParams queda en true (default),
+// y un slug que no existe o que no se publica hoy cae en notFound() de abajo, con el 404 intl.
+// Lee el mismo registro filtrado que el layout (docs/adr/0001-spike-next16.md, punto 5).
 export function generateStaticParams({ params }: { params: { mercado: string } }) {
   if (!intlActivo()) return [];
   const modo = modoPublicacion();
   const m = registro.mercados(modo).find((x) => x.codigo === params.mercado);
   if (!m) return [];
   if (m.codigo === "global") return PAGINAS_GLOBALES.map((slug) => ({ slug }));
-  const calculadoras = registro.calculadorasPublicables(m.codigo, hoyEn(m), modo).map((c) => ({ slug: c.definicion.slug }));
+  const calculadoras = registro
+    .calculadorasPublicables(m.codigo, hoyEn(m), modo)
+    .filter((c) => familiaDeConcepto(c.definicion.concepto) !== null)
+    .map((c) => ({ slug: c.definicion.slug }));
   // novedades tiene ruta propia (../novedades/page.tsx), que le gana a [slug]: no se genera dos veces.
   return [...calculadoras, ...PAGINAS_MERCADO.filter((slug) => slug !== "novedades").map((slug) => ({ slug }))];
 }
@@ -52,9 +58,12 @@ export default async function PaginaDeMercado({ params }: Props) {
       return <PaginaNovedades ctx={ctx} />;
     case "calculadora": {
       // La parte visible viaja como props; calcular() la baja el navegador aparte (calculadora-intl.tsx).
-      const { id, campos, resultado } = registro.calculadora(ctx.mercado.codigo, slug)!.definicion;
-      const definicion = { id, campos, resultado };
-      const Cliente = (props: PropsCalculadora) => <CalculadoraIntl mercado={ctx.mercado.codigo} slug={slug} definicion={definicion} {...props} />;
+      const { id, campos, resultado, tablas } = registro.calculadora(ctx.mercado.codigo, slug)!.definicion;
+      const definicion = { id, campos, resultado, ...(tablas ? { tablas } : {}) };
+      const universal = r.pagina.universal;
+      const Cliente = (props: PropsCalculadora) => (
+        <CalculadoraIntl mercado={ctx.mercado.codigo} slug={slug} definicion={definicion} {...(universal ? { universal } : {})} {...props} />
+      );
       return <PaginaCalculadora ctx={ctx} pagina={r.pagina} Cliente={Cliente} />;
     }
   }

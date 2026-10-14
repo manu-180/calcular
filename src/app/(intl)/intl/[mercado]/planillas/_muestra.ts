@@ -5,6 +5,7 @@ import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje }
 import { formatearFilas } from "@/motor/formulario";
 import type { Campo, ContextoSerializado, DefinicionCalculadora, FechaISO } from "@/motor/tipos";
 import type { ContextoSitio } from "@/motor/ui/contexto";
+import { diccionarioVenta } from "@/lib/pagos/textos";
 
 export interface FilaMuestra {
   fila: number | null;
@@ -39,7 +40,7 @@ function porDefecto(c: Campo, hoy: FechaISO, primeraOpcion: string | null): unkn
   }
 }
 
-function textoEntrada(c: Campo, valor: unknown, ctx: ContextoSerializado): string | null {
+function textoEntrada(c: Campo, valor: unknown, ctx: ContextoSerializado, sino: { si: string; no: string }): string | null {
   if (valor === null || valor === undefined) return null;
   switch (c.tipo) {
     case "moneda":
@@ -52,7 +53,7 @@ function textoEntrada(c: Campo, valor: unknown, ctx: ContextoSerializado): strin
     case "fecha":
       return typeof valor === "string" ? formatearFecha(valor as FechaISO, ctx.locale, "corta") : null;
     case "si-no":
-      return valor ? "Sí" : "No";
+      return valor ? sino.si : sino.no;
     case "opcion":
       return c.opciones.find((o) => o.valor === valor)?.etiqueta ?? null;
     case "region":
@@ -99,7 +100,7 @@ export function muestraDePlanilla(ctx: ContextoSitio, producto: ProductoIntl): M
   for (const c of def.campos) {
     if (filas.length >= MAX_ENTRADAS) break;
     if (!(c.id in b.muestra!)) continue;
-    const texto = textoEntrada(c, entrada[c.id], props.contexto);
+    const texto = textoEntrada(c, entrada[c.id], props.contexto, diccionarioVenta(m.idioma).general);
     const celda = b.celdas[c.id];
     if (texto === null || !celda) continue;
     filas.push({ fila: Number(celda.ref.replace(/^[A-Z]+/, "")), etiqueta: c.etiqueta, valor: texto, tono: "entrada" });

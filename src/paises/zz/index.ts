@@ -14,6 +14,7 @@ export default definirPais({
   series,
   avisos,
   calculadoras: [{ definicion: bono, contenido: contenidoBono, cliente: () => import("./calculadoras/bono.cliente") }],
+  universales: "todas",
   novedades,
   detectores,
 });

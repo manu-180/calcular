@@ -9,7 +9,7 @@ import { registro } from "@/paises";
 
 export async function GET(_req: Request, { params }: { params: Promise<{ mercado: string }> }) {
   const { mercado } = await params;
-  const urls = entradasDelMercado(registro, mercado as CodigoMercado);
+  const urls = entradasDelMercado(registro, mercado as CodigoMercado, { conAlternos: true });
   if (!urls) return new Response("No encontrado", { status: 404 });
   return new Response(xmlUrlset(urls), { headers: { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=0, s-maxage=3600" } });
 }

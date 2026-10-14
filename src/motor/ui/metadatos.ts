@@ -5,7 +5,7 @@ import type { FechaISO } from "../tipos";
 import {
   elegirTitulo,
   grafo,
-  hreflangDe,
+  hreflangDelHead,
   ldFaq,
   ldLista,
   ldSitio,
@@ -89,7 +89,7 @@ export function imagenDe(ctx: ContextoSitio, r: PaginaIntl | null): string {
 
 export function metadatosDe(ctx: ContextoSitio, r: PaginaIntl | null): MetadataSeo {
   const { title, description } = textosDe(ctx, r);
-  const idiomas = r?.tipo === "calculadora" ? hreflangDe(r.pagina.calculadora.concepto, r.pagina.equivalentes) : undefined;
+  const idiomas = r?.tipo === "calculadora" ? hreflangDelHead(r.pagina.calculadora.concepto, r.pagina.equivalentes) : undefined;
   return metadataDe({
     mercado: ctx.mercado,
     ...(r ? { slug: slugDe(r) } : {}),

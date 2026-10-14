@@ -1,9 +1,9 @@
 import { ejecutar, type Crudos, type EstadoCalculo, type FilaFormateada } from "@/motor/formulario";
-import { formatearMoneda, formatearNumero } from "@/motor/formato";
+import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad } from "@/motor/formato";
 import type { TextosMotor } from "@/motor/textos";
-import type { Campo, DefinicionCalculadora, PropsCalculadora } from "@/motor/tipos";
+import type { Campo, ColumnaTabla, ContextoSerializado, DefinicionCalculadora, FechaISO, PropsCalculadora, ResultadoBase, TablaResultado } from "@/motor/tipos";
 import { crudoDeNumero } from "@/lib/prefill/intl-cliente";
-import { campoEscenario, valoresEscenario, type TipoEscenario } from "./ofertas-intl";
+import { campoEscenario, valoresEscenario, type EscenarioFamilia } from "./ofertas-intl";
 import { parsearEntrada } from "@/motor/formulario";
 
 // Los números del informe salen de ejecutar(): la misma función, con la misma definición y los mismos
@@ -27,17 +27,18 @@ function textoValor(campo: Campo, v: number, props: PropsCalculadora): string {
     const moneda = campo.moneda ?? c.moneda;
     return formatearMoneda(v, c.locale, moneda, undefined, c.simbolos?.[moneda]);
   }
+  if (campo.tipo === "porcentaje") return formatearPorcentaje(v, c.locale);
   return formatearNumero(v, c.locale);
 }
 
 export function calcularEscenarios(
   def: DefinicionCalculadora,
-  tipo: TipoEscenario,
+  escenario: EscenarioFamilia,
   crudos: Crudos,
   props: PropsCalculadora,
   textos: TextosMotor,
 ): Escenarios | null {
-  const campo = campoEscenario(tipo, def.campos);
+  const campo = campoEscenario(escenario, def.campos);
   if (!campo) return null;
   const p = parsearEntrada(def.campos, crudos, props.contexto, props.opcionesDinamicas);
   if (!p.ok) return null;
@@ -45,7 +46,7 @@ export function calcularEscenarios(
   if (typeof actual !== "number" || actual <= 0) return null;
   let columnas: { clave: string; etiqueta: string }[] | null = null;
   const filas: Escenarios["filas"] = [];
-  for (const v of valoresEscenario(tipo, campo, actual)) {
+  for (const v of valoresEscenario(escenario.tipo, campo, actual)) {
     const e = ejecutar(def, { ...crudos, [campo.id]: crudoDeNumero(v, props.contexto.locale) }, props, textos);
     if (e.tipo !== "ok") continue;
     if (!columnas) {
@@ -64,4 +65,49 @@ export function calcularEscenarios(
 
 export function estadoDelInforme(def: DefinicionCalculadora, crudos: Crudos, props: PropsCalculadora, textos: TextosMotor): EstadoCalculo {
   return ejecutar(def, crudos, props, textos);
+}
+
+// ─── Tablas completas ─────────────────────────────────────────────────────────────────────────
+
+export interface TablaInforme {
+  clave: string;
+  titulo: string;
+  columnas: string[];
+  filas: string[][];
+}
+
+const esTabla = (v: unknown): v is TablaResultado => !!v && typeof v === "object" && (v as { tipo?: unknown }).tipo === "tabla" && Array.isArray((v as TablaResultado).filas);
+
+function celda(v: number | string | null, col: ColumnaTabla, c: ContextoSerializado): string {
+  if (v === null || v === undefined) return "";
+  if (typeof v === "string") return col.formato === "fecha" && /^\d{4}-\d{2}-\d{2}$/.test(v) ? formatearFecha(v as FechaISO, c.locale, "corta") : v;
+  if (!Number.isFinite(v)) return "";
+  switch (col.formato) {
+    case "moneda":
+      return formatearMoneda(v, c.locale, c.moneda, undefined, c.simbolos?.[c.moneda]);
+    case "porcentaje":
+      return formatearPorcentaje(v, c.locale);
+    case "numero":
+    case "texto":
+    case "fecha":
+      return formatearNumero(v, c.locale);
+    default:
+      return formatearValorUnidad(v, col.formato, c.locale);
+  }
+}
+
+// La página gratis muestra las primeras filas de cada tabla; el informe las muestra todas.
+export function tablasDelInforme(tablas: DefinicionCalculadora["tablas"], resultado: ResultadoBase, contexto: ContextoSerializado): TablaInforme[] {
+  const salida: TablaInforme[] = [];
+  for (const t of tablas ?? []) {
+    const valor = resultado[t.clave];
+    if (!esTabla(valor) || !valor.filas.length) continue;
+    salida.push({
+      clave: t.clave,
+      titulo: t.titulo,
+      columnas: valor.columnas.map((x) => x.etiqueta),
+      filas: valor.filas.map((f) => valor.columnas.map((col, i) => celda(f[i] ?? null, col, contexto))),
+    });
+  }
+  return salida;
 }

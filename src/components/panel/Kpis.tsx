@@ -5,7 +5,7 @@ import { CONTRA } from "@/lib/panel/formato";
 import { Delta } from "./Delta";
 import { DetalleKpi } from "./DetalleKpi";
 import { Desplegable } from "./Desplegable";
-import { META_KPI, TARJETAS, kpiDe, ultimoEsParcial } from "./meta";
+import { META_KPI, TARJETAS, kpiDe, metaKpi, ultimoEsParcial } from "./meta";
 import { NumeroAnimado } from "./NumeroAnimado";
 import { Sparkline } from "./Sparkline";
 import { Bandeja, Seccion, TARJETA } from "./ui";
@@ -71,7 +71,7 @@ export function Kpis({
                   />
                   {clave === "ventas" ? (
                     <span className="mt-1.5 block text-sm text-zinc-600">
-                      <NumeroAnimado valor={ingresos.valor} formato="pesos" className="font-medium tabular-nums text-zinc-800" />{" "}
+                      <NumeroAnimado valor={ingresos.valor} formato={metaKpi("ingresos", datos).formato} className="font-medium tabular-nums text-zinc-800" />{" "}
                       cobrados
                     </span>
                   ) : null}

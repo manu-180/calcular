@@ -48,6 +48,7 @@ export type FilaEvento = {
   valor: number | null;
   props: Props | null;
   user_id: string | null;
+  pais?: string | null;
   sitio?: "intl";
   mercado?: string;
 };
@@ -65,10 +66,16 @@ export type Lote = {
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const HOST = /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/;
-const PRODUCTO = /^[a-z0-9-]{1,40}$/;
+// calcular.ar: `planilla-comercio`. calcularya: `<mercado>/<slug>` (src/lib/pagos/catalogo-intl.ts), hasta
+// los 60 caracteres de ca_eventos.producto.
+const PRODUCTO = /^(?:[a-z0-9-]{1,40}|(?=.{4,60}$)(?:[a-z]{2}(?:-[a-z]{2,3})?|global)\/[a-z0-9-]+)$/;
 const CLAVE_PROP = /^[a-z_][a-z0-9_]{0,23}$/;
 const EMAIL = /[^\s@<>()[\]]+@[^\s@<>()[\]]+\.[a-z]{2,}/gi;
 const HOSTS_PROPIOS = /(^|\.)calcular\.ar$|(^|\.)calcularya\.com$|^localhost$|\.vercel\.app$/;
+
+export function esProducto(x: unknown): x is string {
+  return typeof x === "string" && PRODUCTO.test(x);
+}
 
 export function esUuid(x: unknown): x is string {
   return typeof x === "string" && UUID.test(x);
@@ -186,7 +193,7 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
       const path = it.p === undefined ? null : limpiarPath(it.p);
       const props = limpiarProps(it.pp);
       const valorOk = it.va === undefined || (typeof it.va === "number" && Number.isFinite(it.va) && Math.abs(it.va) <= 1e10);
-      const productoOk = it.pr === undefined || (typeof it.pr === "string" && PRODUCTO.test(it.pr));
+      const productoOk = it.pr === undefined || esProducto(it.pr);
       const vistaOk = it.v === undefined || esUuid(it.v);
       if (!esTipoEvento(it.k) || (it.p !== undefined && !path) || props === undefined || !valorOk || !productoOk || !vistaOk || !mercadoOk(it.m)) {
         lote.descartados.push("evento");
@@ -202,6 +209,7 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
         valor: typeof it.va === "number" ? it.va : null,
         props,
         user_id: null,
+        pais: ctx.pais,
         ...delMercado(it.m, path),
       });
     } else {

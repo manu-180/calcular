@@ -19,7 +19,7 @@ export interface CalculadoraControlada {
 
 // La parte visible de una calculadora (campos y filas): datos planos que el servidor puede mandar
 // como props. La función calcular() no cruza esa frontera y llega aparte.
-export type DefinicionVisible = Pick<DefinicionCalculadora, "id" | "campos" | "resultado">;
+export type DefinicionVisible = Pick<DefinicionCalculadora, "id" | "campos" | "resultado" | "tablas">;
 
 // Como en calcular.ar, el resultado se recalcula con cada cambio y no hay botón. Hasta el primer
 // cambio no se calcula nada aunque los valores por defecto alcancen: el código de calcular() llega
@@ -82,7 +82,7 @@ export function useCalculadora(definicion: DefinicionCalculadora, props: PropsCa
 
 export function CalculadoraBasica({ definicion, ...props }: PropsCalculadora & { definicion: DefinicionCalculadora }) {
   const control = useCalculadora(definicion, props);
-  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} />;
+  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} tablas={definicion.tablas} />;
 }
 
 // Para el sitio intl: el formulario se pinta en el servidor con la parte visible y el código de
@@ -100,7 +100,7 @@ export function CalculadoraDiferida({ definicion, cargar, ...props }: PropsCalcu
     const t = setTimeout(precargar, 800);
     return () => clearTimeout(t);
   }, [precargar]);
-  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} />;
+  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} tablas={definicion.tablas} />;
 }
 
 export function crearCalculadoraCliente<C extends readonly Campo[], Q extends Requisitos, R extends ResultadoBase>(

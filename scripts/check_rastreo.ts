@@ -111,9 +111,18 @@ async function main() {
       valor: null,
       props: { ubicacion: "calculadora" },
       user_id: null,
+      pais: "AR",
     });
     assert.deepEqual(r.cierres[0], { p_id: VISTA, p_activo_ms: 12_000, p_interacciones: 3, p_scroll: 80, p_uso: true });
     assert.equal(r.descartados.length, 0);
+  });
+
+  await prueba("los productos de calcularya (<mercado>/<slug>) entran; una ruta trucha no", () => {
+    const intl = { ...ctx, sitio: "intl" as const };
+    const ev = (pr: string) => ({ t: "e", k: "vista_oferta", p: "/mx/aguinaldo", pr, m: "mx" });
+    const r = ok(validarLote({ vid: VID, sid: SID, i: [ev("mx/sueldo-y-liquidacion"), ev("ca-fr/plan-prestamo"), ev("mx/../x"), ev("evil.com/x"), ev("MX/x")] }, intl));
+    assert.deepEqual(r.eventos.map((e) => e.producto), ["mx/sueldo-y-liquidacion", "ca-fr/plan-prestamo"]);
+    assert.equal(r.descartados.length, 3);
   });
 
   await prueba("los uuids se guardan en minúscula (el cliente puede mandarlos en mayúscula)", () => {

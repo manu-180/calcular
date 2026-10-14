@@ -75,6 +75,20 @@ export function hreflangDe(concepto: string, equivalentes: readonly Equivalente[
   return idiomas;
 }
 
+// Más de 20 alternativos no van en el <head>: con una universal en 190 países eran ~35 KB por página
+// (cada link viaja en el HTML y en el payload RSC). Ese clúster va en el sitemap de cada mercado
+// (xhtml:link), que Google acepta igual que el <head>; se usa uno de los dos, nunca los dos a medias.
+export const MAX_HREFLANG_HEAD = 20;
+
+export function hreflangVaAlSitemap(idiomas: Idiomas | undefined): boolean {
+  return idiomas !== undefined && Object.keys(idiomas).filter((k) => k !== "x-default").length > MAX_HREFLANG_HEAD;
+}
+
+export function hreflangDelHead(concepto: string, equivalentes: readonly Equivalente[]): Idiomas | undefined {
+  const idiomas = hreflangDe(concepto, equivalentes);
+  return hreflangVaAlSitemap(idiomas) ? undefined : idiomas;
+}
+
 // Lo que tendrían que llevar las páginas de calcular.ar del clúster cuando Manuel lo apruebe
 // (plan 1.8). Con el flag apagado devuelve undefined y AR no cambia ni un byte.
 export function hreflangParaAR(concepto: string, equivalentes: readonly Equivalente[]): Idiomas | undefined {

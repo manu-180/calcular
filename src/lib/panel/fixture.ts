@@ -17,24 +17,64 @@ import { deCada100, numero } from "@/lib/panel/formato";
 
 type Opciones = { ahora?: Date; mercado?: string | null };
 
-const REPARTO_MERCADOS: [string, number, number][] = [
-  ["ar", 0.86, 1],
-  ["mx", 0.05, 0],
-  ["co", 0.03, 0],
-  ["cl", 0.02, 0],
-  ["pe", 0.015, 0],
-  ["global", 0.012, 0],
-  ["uy", 0.008, 0],
-];
+const ARS_POR_USD = 1500;
 
-function mercadosDeEjemplo(visitantes: number, usos: number, ventas: number, ingresos: number): FilaMercado[] {
-  return REPARTO_MERCADOS.map(([mercado, parte, deVentas]) => ({
-    mercado,
-    visitantes: Math.round(visitantes * parte),
-    usos: mercado === "global" ? 0 : Math.round(usos * parte),
-    ventas: Math.round(ventas * deVentas),
-    ingresos: deVentas && ingresos ? [{ moneda: "ARS", monto: ingresos }] : [],
-  }));
+const usd = (ars: number) => Math.round((ars / ARS_POR_USD) * 100) / 100;
+
+// Unos 60 mercados para ver el ranking con búsqueda y «ver más»; los que no están en el registro se
+// nombran por su código de país.
+const MERCADOS_DEMO = (
+  "mx co cl pe global uy ec gt bo cr do py pa hn sv ni ve us gb ca ca-fr au in br es pt fr de it nl be be-fr ch ch-fr " +
+  "at ie nz za ng ke eg ma tr pl ro cz hu gr se no dk fi jp kr ph id my sg th vn ae sa il"
+).split(" ");
+
+function mercadosDeEjemplo(visitantes: number, usos: number, ventasAr: number, ingresosAr: number, rnd: () => number): FilaMercado[] {
+  const ar: FilaMercado = {
+    mercado: "ar",
+    visitantes: Math.round(visitantes * 0.62),
+    usos: Math.round(usos * 0.62),
+    ventas: ventasAr,
+    ingresos: ingresosAr ? [{ moneda: "ARS", monto: ingresosAr }] : [],
+    ingresosUsd: usd(ingresosAr),
+    embudo: null,
+  };
+  const resto = Math.round(visitantes * 0.38);
+  const pesos = MERCADOS_DEMO.map((_, i) => 1 / (i + 1.6) ** 1.15);
+  const partes = repartir(resto, pesos);
+  const filas = MERCADOS_DEMO.map((mercado, i): FilaMercado => {
+    const vis = partes[i];
+    const usosM = mercado === "global" ? 0 : Math.round(vis * entre(rnd, 0.3, 0.45));
+    const ofertas = Math.round(vis * entre(rnd, 0.18, 0.3));
+    const clics = Math.round(ofertas * entre(rnd, 0.04, 0.09));
+    const checkouts = Math.round(clics * entre(rnd, 0.35, 0.6));
+    const ventas = mercado === "global" ? 0 : Math.round(checkouts * entre(rnd, 0.2, 0.45));
+    const monto = ventas * [4, 5, 9][i % 3];
+    return {
+      mercado,
+      visitantes: vis,
+      usos: usosM,
+      ventas,
+      ingresos: monto ? [{ moneda: "USD", monto }] : [],
+      ingresosUsd: monto,
+      embudo: {
+        visitas: vis,
+        usaron: Math.round(usosM * 0.8),
+        ofertas,
+        clics,
+        checkouts,
+        ventas,
+      },
+    };
+  });
+  ar.embudo = {
+    visitas: ar.visitantes,
+    usaron: Math.round(ar.usos * 0.8),
+    ofertas: Math.round(ar.visitantes * 0.31),
+    clics: Math.round(ar.visitantes * 0.009),
+    checkouts: Math.round(ar.visitantes * 0.0036),
+    ventas: ventasAr,
+  };
+  return [ar, ...filas];
 }
 
 const HORA = 3600 * 1000;
@@ -237,6 +277,9 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
         producto: prod.producto,
         monto: prod.precio,
         moneda: "ARS",
+        montoUsd: usd(prod.precio),
+        pais: rnd() < 0.92 ? "AR" : "UY",
+        mercado: "ar",
         emailEnmascarado: EMAILS[compras.length % EMAILS.length],
         conCuenta: rnd() < 0.4,
         desde: desdePagina?.path ?? null,
@@ -276,7 +319,7 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
     kpi("interes", interes, interes / entre(rnd, 0.88, 1.02), interesSerie),
     kpi("checkouts", checkouts, checkouts / entre(rnd, 0.95, 1.12), checkoutsSerie),
     kpi("ventas", ventas, ventasAnteriores, ventasSerie),
-    kpi("ingresos", ingresos, ingresosAnteriores, ingresosSerie),
+    kpi("ingresos", usd(ingresos), usd(ingresosAnteriores), ingresosSerie.map(usd)),
   ];
 
   const vieronOferta = Math.round(visitantes * 0.31);
@@ -292,7 +335,10 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
     return {
       producto: p.producto,
       titulo: p.titulo,
+      mercado: null,
+      moneda: "ARS",
       precio: p.precio,
+      ingresosUsd: usd(pagaron.reduce((a, c) => a + c.monto, 0)),
       pasos: [
         { paso: "vio_oferta", n: Math.max(vio[i], abrioCompra) },
         { paso: "abrio_compra", n: abrioCompra },
@@ -327,6 +373,8 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
       interesCompra: interesPorPagina[i],
       checkouts: Math.max(checkoutsPorPagina[i], ventasPagina),
       ventas: ventasPagina,
+      ofertas: p.producto ? Math.round(interesPorPagina[i] * entre(rnd, 3, 5)) : 0,
+      ingresosUsd: usd(compras.filter((c) => c.desde === p.path && c.estado === "aprobado").reduce((a, c) => a + c.monto, 0)),
       producto: p.producto,
       serieUsos: usosSerie.map((u, k) => {
         const inclinacion = 1 + (p.tendencia - 1) * (k / Math.max(1, n - 1) - 0.5) * 2;
@@ -389,6 +437,12 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
     ],
   };
 
+  const aprobadas = compras.filter((c) => c.estado === "aprobado");
+  const mercados = mercadosDeEjemplo(visitantes, usos, aprobadas.length, aprobadas.reduce((a, c) => a + c.monto, 0), rnd);
+  const intl = mercados.filter((m) => m.mercado !== "ar");
+  const ventasIntl = intl.reduce((a, m) => a + m.ventas, 0);
+  const usdIntl = intl.reduce((a, m) => a + m.ingresosUsd, 0);
+
   return {
     rango,
     mercado: opciones.mercado ?? null,
@@ -397,16 +451,28 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
     generado: iso(ahora),
     granularidad,
     kpis,
+    ingresos: {
+      moneda: "USD",
+      porMoneda: [
+        { moneda: "ARS", monto: ingresos, montoUsd: usd(ingresos), ventas: aprobadas.length },
+        ...(ventasIntl ? [{ moneda: "USD", monto: usdIntl, montoUsd: usdIntl, ventas: ventasIntl }] : []),
+      ],
+      sinCotizacion: 0,
+    },
     paginas,
     embudos,
     fuentes,
     dispositivos,
     paises,
+    paisesCompra: [
+      { clave: "AR", n: aprobadas.filter((c) => c.pais === "AR").length },
+      { clave: "UY", n: aprobadas.filter((c) => c.pais === "UY").length },
+    ].filter((x) => x.n > 0),
     busquedas,
     compras,
     cuentas,
     vivo,
-    mercados: mercadosDeEjemplo(visitantes, usos, compras.filter((c) => c.estado === "aprobado").length, compras.reduce((a, c) => a + (c.estado === "aprobado" ? c.monto : 0), 0)),
+    mercados,
     lecturas: lecturasDeEjemplo(rango, embudos, busquedas, paginas, fuentes, dispositivos, visitantes),
     sinDatos: false,
   };
@@ -486,10 +552,14 @@ export function panelSinDatos(rango: Rango, opciones: Opciones = {}): PanelDatos
     generado: iso(ahora),
     granularidad,
     kpis: claves.map((clave) => ({ clave, valor: 0, anterior: 0, serie: vacia })),
+    ingresos: { moneda: "USD", porMoneda: [], sinCotizacion: 0 },
     paginas: [],
     embudos: PRODUCTOS.map((p) => ({
       producto: p.producto,
       titulo: p.titulo,
+      mercado: null,
+      moneda: "ARS",
+      ingresosUsd: 0,
       precio: p.precio,
       pasos: [
         { paso: "vio_oferta", n: 0 },
@@ -502,6 +572,7 @@ export function panelSinDatos(rango: Rango, opciones: Opciones = {}): PanelDatos
     fuentes: [],
     dispositivos: [],
     paises: [],
+    paisesCompra: [],
     busquedas: [],
     compras: [],
     cuentas: { total: 0, nuevas: 0, verificadas: 0, conCompras: 0, perfiles: [] },

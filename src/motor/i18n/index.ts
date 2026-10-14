@@ -1,13 +1,23 @@
 import type { Concepto } from "../conceptos";
 import type { Idioma, Trato } from "../tipos";
-import { textosEs } from "./es";
+import { de } from "./de";
+import { en } from "./en";
+import { es } from "./es";
+import { fr } from "./fr";
+import { it } from "./it";
+import { nl } from "./nl";
 import { pt } from "./pt";
+import { resolver, type Diccionarios } from "./resolver";
 import type { Categoria, TextosSitio } from "./tipos";
 
 export type { Categoria, TextosSitio } from "./tipos";
 
+// Un idioma nuevo entra con su archivo (base en el registro informal y, si cambia, parches de usted
+// y vos) y su línea acá; el Record obliga a que estén todos.
+export const DICCIONARIOS_SITIO: Diccionarios<TextosSitio> = { es, pt, en, fr, de, it, nl };
+
 export function textosSitio(idioma: Idioma, trato: Trato): TextosSitio {
-  return idioma === "pt" ? pt : textosEs(trato);
+  return resolver(DICCIONARIOS_SITIO, idioma, trato);
 }
 
 export const ORDEN_CATEGORIAS: readonly Categoria[] = [

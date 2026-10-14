@@ -12,7 +12,8 @@ import {
   nombreDispositivo,
   nombrePais,
   numero,
-  pesos,
+  importe,
+  plata,
   plural,
 } from "@/lib/panel/formato";
 import { Barras, type FilaBarra } from "./Barras";
@@ -20,7 +21,7 @@ import { ListaCompras } from "./Compras";
 import { DeltaTexto } from "./Delta";
 import { Grafico } from "./Grafico";
 import { IcoCerrar, IcoFlechaDerecha } from "./iconos";
-import { META_KPI, kpiDe, pasosEmbudo, ultimoEsParcial } from "./meta";
+import { META_KPI, kpiDe, metaKpi, pasosEmbudo, ultimoEsParcial } from "./meta";
 import { filasFuentes, filasReparto } from "./Origen";
 
 function resumen(clave: KpiClave, datos: PanelDatos, rango: Rango): string {
@@ -58,7 +59,7 @@ function resumen(clave: KpiClave, datos: PanelDatos, rango: Rango): string {
         return `No hubo ventas ${periodo}.${
           checkouts > 0 ? ` ${checkouts === 1 ? "1 persona fue" : `${numero(checkouts)} personas fueron`} a pagar y no terminó.` : ""
         }`;
-      return `${plural(ventas, "venta", "ventas")} ${periodo}, por ${pesos(ingresos)}.${
+      return `${plural(ventas, "venta", "ventas")} ${periodo}, por ${plata(ingresos, datos.ingresos.moneda)}.${
         checkouts > 0 ? ` Pagaron ${deCada100(ventas / checkouts)} de los que fueron a pagar.` : ""
       }`;
     }
@@ -201,8 +202,8 @@ function Desglose({
               filas={productos.map(({ e, p }) => ({
                 clave: e.producto,
                 etiqueta: e.titulo,
-                valor: e.ingresos,
-                texto: pesos(e.ingresos),
+                valor: datos.ingresos.moneda === "USD" ? e.ingresosUsd : e.ingresos,
+                texto: datos.ingresos.moneda === "USD" ? plata(e.ingresosUsd, "USD") : importe(e.ingresos, e.moneda),
                 nota: `${plural(p.pago, "venta", "ventas")}${p.fue ? ` de ${numero(p.fue)} que fueron a pagar` : ""}`,
               }))}
             />
@@ -236,7 +237,7 @@ export function DetalleKpi({
 }) {
   const [verPlata, setVerPlata] = useState(false);
   const serieClave: KpiClave = clave === "ventas" && verPlata ? "ingresos" : clave;
-  const meta = META_KPI[clave];
+  const meta = metaKpi(clave, datos);
   const k = kpiDe(datos, clave);
   const serie = kpiDe(datos, serieClave);
   const texto = resumen(clave, datos, rango);
@@ -297,8 +298,8 @@ export function DetalleKpi({
           key={`${serieClave}-${datos.rango}`}
           puntos={serie.serie}
           granularidad={datos.granularidad}
-          formatoEje={(n) => ejeKpi(serieClave, n)}
-          formatoValor={(n) => META_KPI[serieClave].valor(n)}
+          formatoEje={(n) => ejeKpi(serieClave, n, datos.ingresos.moneda)}
+          formatoValor={(n) => metaKpi(serieClave, datos).valor(n)}
           titulo={`${META_KPI[serieClave].etiqueta}, ${PERIODO[rango]}`}
           resumen={texto}
           parcial={ultimoEsParcial(datos)}
