@@ -5,6 +5,7 @@ import type { CargadoresMercado } from "./tipos";
 export const MERCADOS: Readonly<Record<string, CargadoresMercado>> = {
   "bo": () => import("./bo"),
   "br": () => import("./br"),
+  "ca": () => import("./ca"),
   "cl": () => import("./cl"),
   "co": () => import("./co"),
   "cr": () => import("./cr"),

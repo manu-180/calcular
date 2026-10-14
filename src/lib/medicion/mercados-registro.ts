@@ -2,6 +2,7 @@
 export const MERCADOS_REGISTRO: readonly (readonly [codigo: string, pais: string | null, idioma: string])[] = [
   ["bo", "BO", "es"],
   ["br", "BR", "pt"],
+  ["ca", "CA", "en"],
   ["cl", "CL", "es"],
   ["co", "CO", "es"],
   ["cr", "CR", "es"],
