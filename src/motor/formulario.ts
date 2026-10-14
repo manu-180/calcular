@@ -1,6 +1,6 @@
 import { contextoDesdeSerializado, ErrorEntrada } from "./calculo";
 import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearFecha, parsearNumero, sugerenciaMiles } from "./formato";
-import { interpolar, type CodigoError, type TextosMotor } from "./textos";
+import { interpolar, textosMotor, type CodigoError, type TextosMotor } from "./textos";
 import type {
   AvisoResuelto,
   Campo,
@@ -73,13 +73,9 @@ function ejemploDe(campo: Campo, locale: string): string {
   return formatearNumero(campo.tipo === "porcentaje" ? 12.5 : campo.tipo === "entero" ? 12 : 1234.5, locale, campo.tipo === "entero" ? 0 : undefined);
 }
 
-// Va acá y no en textos.ts porque lleva el número sugerido y el separador armados en la frase.
 function mensajeMilesAmbiguos(sugerido: string, separador: string, idioma: Idioma, trato: Trato): string {
-  if (idioma === "pt") return `Você quis dizer ${sugerido}? Escreva sem ${separador === "." ? "pontos" : "vírgulas"}.`;
-  const signos = separador === "." ? "puntos" : "comas";
-  if (trato === "usted") return `¿Quiso decir ${sugerido}? Escríbalo sin ${signos}.`;
-  if (trato === "vos") return `¿Quisiste decir ${sugerido}? Escribilo sin ${signos}.`;
-  return `¿Quisiste decir ${sugerido}? Escríbelo sin ${signos}.`;
+  const t = textosMotor(idioma, trato);
+  return interpolar(t.milesAmbiguos, { sugerido, signos: separador === "." ? t.separadores.punto : t.separadores.coma });
 }
 
 export function parsearEntrada(

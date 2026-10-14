@@ -25,10 +25,28 @@ export function pesos(n: number): string {
   return moneda.format(Math.round(n));
 }
 
+const dolarEntero = new Intl.NumberFormat("es-AR", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+const dolarCentavos = new Intl.NumberFormat("es-AR", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+export function dolares(n: number): string {
+  return Math.abs(n) >= 1000 ? dolarEntero.format(Math.round(n)) : dolarCentavos.format(n);
+}
+
+export function dolaresCompacto(n: number): string {
+  if (Math.abs(n) < 1000) return dolarEntero.format(Math.round(n));
+  return `US$${NBSP}${compacto(n)}`;
+}
+
+// La plata del KPI de ingresos: en dólares desde la migración de métricas del mundo, en pesos antes.
+export function plata(n: number, monedaKpi: string): string {
+  return monedaKpi === "USD" ? dolares(n) : pesos(n);
+}
+
 const monedas = new Map<string, Intl.NumberFormat>();
 
 export function importe(n: number, moneda: string): string {
   if (moneda === "ARS") return pesos(n);
+  if (moneda === "USD") return dolares(n);
   let f = monedas.get(moneda);
   if (!f) {
     try {
@@ -199,15 +217,15 @@ export function textoVariacion(v: Variacion): string {
   }
 }
 
-export function valorKpi(clave: KpiClave, n: number): string {
+export function valorKpi(clave: KpiClave, n: number, monedaKpi = "ARS"): string {
   if (clave === "tiempo") return duracion(n);
-  if (clave === "ingresos") return pesos(n);
+  if (clave === "ingresos") return plata(n, monedaKpi);
   return numero(n);
 }
 
-export function ejeKpi(clave: KpiClave, n: number): string {
+export function ejeKpi(clave: KpiClave, n: number, monedaKpi = "ARS"): string {
   if (clave === "tiempo") return duracionCorta(n);
-  if (clave === "ingresos") return pesosCompacto(n);
+  if (clave === "ingresos") return monedaKpi === "USD" ? dolaresCompacto(n) : pesosCompacto(n);
   return compacto(n);
 }
 

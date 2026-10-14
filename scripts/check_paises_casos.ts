@@ -6,7 +6,7 @@
 import path from "node:path";
 import { crearContexto, ErrorEntrada, type CasosCalculadora } from "../src/motor/calculo";
 import { formatearFilas } from "../src/motor/formulario";
-import { resolverValores } from "../src/motor/registro";
+import { esUniversal, resolverValores } from "../src/motor/registro";
 import type { ContextoSerializado, PaisDefinido, ResultadoBase, ValorResuelto } from "../src/motor/tipos";
 import { esFechaISO } from "../src/motor/vigencia";
 import { archivosBajo, cargarPaises, DIR_PAISES, importar, rel } from "./paises_comun";
@@ -160,7 +160,8 @@ async function main() {
 
   for (const [carpeta, pais] of paises) {
     if (filtro && carpeta !== filtro) continue;
-    for (const { definicion: d } of pais.calculadoras) {
+    // Las universales tienen sus casos en src/motor/universales/<id>/casos.ts (check_universales).
+    for (const { definicion: d } of pais.calculadoras.filter((c) => !esUniversal(c))) {
       if (d.estado === "borrador") continue;
       if (!conCasos.has(d.id)) fallas.push(`${d.id} (${d.estado}) no tiene src/paises/${carpeta}/calculadoras/${d.slug}.casos.ts`);
       else if (!conDatosReales.has(d.id)) fallas.push(`${d.id}: al menos un caso tiene que usar los datos del repo (sin "valores")`);

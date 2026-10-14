@@ -1,24 +1,18 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 import { Bandera } from "@/motor/ui/Bandera";
-import type { OpcionPais } from "@/motor/ui/SelectorPais";
+import { usePaises } from "@/motor/ui/ListaPaises";
+import type { OpcionPais } from "@/motor/ui/paises";
 
-// Cliente a propósito: como elemento de servidor viajaba entero (con cada bandera) en el payload RSC
-// de cada página. Así viajan solo los datos, que son los mismos del selector.
-export function PaisesCajon({
-  actual,
-  opciones,
-  abierto,
-  textos,
-}: {
-  actual: OpcionPais | null;
-  opciones: OpcionPais[];
-  abierto: boolean;
-  textos: { elegir: string; cambiar: string };
-}) {
+// La lista sale de ProveedorPaises (una sola copia por página) y se pinta recién al abrir el
+// <details>: cerrado, el cajón de cada página llevaba un link por país en el HTML. En el inicio
+// global arranca abierto y se pinta en el servidor, como antes.
+export function PaisesCajon({ actual, abierto, textos }: { actual: OpcionPais | null; abierto: boolean; textos: { elegir: string; cambiar: string } }) {
+  const opciones = usePaises();
+  const [visto, setVisto] = useState(abierto);
   return (
-    <details open={abierto} className="ca-cajon-item group/d" style={{ "--i": 2 } as CSSProperties}>
+    <details open={abierto} onToggle={(ev) => ev.currentTarget.open && setVisto(true)} className="ca-cajon-item group/d" style={{ "--i": 2 } as CSSProperties}>
       <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 text-[15px] font-semibold text-zinc-800 outline-none transition-colors hover:bg-zinc-50 active:bg-zinc-100 [&::-webkit-details-marker]:hidden">
         <span className="flex min-w-0 items-center gap-2.5">
           {actual ? <Bandera pais={actual.pais} ancho={20} /> : null}
@@ -32,7 +26,7 @@ export function PaisesCajon({
         </span>
       </summary>
       <ul className="mb-1 grid grid-cols-2 pb-2 pl-2">
-        {opciones.map((o) => {
+        {(visto ? opciones : []).map((o) => {
           const esActual = o.codigo === actual?.codigo;
           return (
             <li key={o.codigo}>
