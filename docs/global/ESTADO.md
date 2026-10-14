@@ -30,9 +30,9 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 
 ## Pedidos al motor anotados
 
-- `NOMBRES_UNIDAD` por idioma (hoy «meses», «días» salen en español en páginas en inglés).
+- `NOMBRES_UNIDAD` por idioma: hecho; filas, tablas e informe formatean con el locale del mercado.
 - Tipo de campo `hora` (horas-trabajadas usa listas de 96 horarios) y campos condicionales por modo.
-- `ui()` sin locale: los textos de `ui` evitan números con decimales.
+- `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
 ## Retomado (14/10/2026 02:27)
