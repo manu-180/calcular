@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosPt: TextosUi<UiCalorias> = {
+  slug: "calorias-diarias",
+  ui: () => ({
+    sexo: "Sexo",
+    mujer: "Feminino",
+    hombre: "Masculino",
+    edad: "Idade (anos)",
+    peso: (u) => `Peso (${u})`,
+    altura: (u) => `Altura (${u})`,
+    pies: "Altura: pés (ft)",
+    pulgadas: "Altura: polegadas (in)",
+    actividad: "Nível de atividade",
+    sedentaria: "Pouca ou nenhuma",
+    ligera: "Leve (1 a 3 dias por semana)",
+    moderada: "Moderada (3 a 5 dias por semana)",
+    alta: "Alta (6 ou 7 dias por semana)",
+    muyAlta: "Muito alta (treino intenso ou trabalho físico)",
+    objetivo: "Objetivo",
+    mantener: "Manter o peso",
+    bajar: "Perder peso aos poucos",
+    subir: "Ganhar peso aos poucos",
+    basal: "Taxa metabólica basal (kcal por dia)",
+    basalAyuda: "O que o seu corpo gasta em repouso total.",
+    mantenimiento: "Calorias para manter o peso (kcal por dia)",
+    calObjetivo: "Calorias para o seu objetivo (kcal por dia)",
+    calObjetivoAyuda: "Uma mudança moderada: 500 kcal a menos por dia para perder peso, 300 a mais para ganhar.",
+    errorEdad: "A fórmula foi feita para pessoas de 15 a 100 anos.",
+    errorPeso: "O peso tem que ser maior que 0.",
+    errorAltura: "A altura tem que ser maior que 0.",
+    notaMinimo: (kcal) => `Para perder peso, o valor não desce de ${kcal} kcal por dia. Comer menos que isso é melhor com acompanhamento profissional.`,
+    aviso: "É uma estimativa feita com a equação de Mifflin-St Jeor. Cada corpo é diferente: não substitui a consulta com um profissional de saúde ou nutrição.",
+  }),
+};

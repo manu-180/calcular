@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosDe: TextosUi<UiAlquilarOComprar> = {
+  slug: "mieten-oder-kaufen",
+  ui: () => ({
+    precio: "Kaufpreis der Immobilie",
+    entrada: "Eigenkapital (% vom Kaufpreis)",
+    gastosCompra: "Kaufnebenkosten (% vom Kaufpreis)",
+    gastosCompraAyuda: "Grunderwerbsteuer, Notar, Grundbuch und Makler.",
+    tasa: "Sollzins des Darlehens (% pro Jahr)",
+    aniosHipoteca: "Laufzeit des Darlehens in Jahren",
+    alquiler: "Monatliche Kaltmiete für eine vergleichbare Wohnung",
+    aumentoAlquiler: "Mietsteigerung pro Jahr (%)",
+    gastosPropietario: "Eigentümerkosten pro Jahr (% vom Wert)",
+    gastosPropietarioAyuda: "Instandhaltung, Grundsteuer und Gebäudeversicherung. Üblich sind 1 bis 2 %.",
+    revalorizacion: "Wertsteigerung der Immobilie pro Jahr (%)",
+    rendimiento: "Rendite einer anderen Geldanlage (% pro Jahr)",
+    rendimientoAyuda: "Was das Eigenkapital bringen würde, wenn Sie es anlegen statt zu kaufen.",
+    horizonte: "Vergleichszeitraum in Jahren",
+    veredicto: "Ergebnis",
+    patrimonioComprar: "Vermögen am Ende beim Kaufen",
+    patrimonioAlquilar: "Vermögen am Ende beim Mieten",
+    diferencia: "Differenz",
+    anioDesde: "Ab diesem Jahr lohnt sich der Kauf",
+    pagadoAlquilando: "Gezahlte Miete insgesamt",
+    pagadoComprando: "Raten und Eigentümerkosten insgesamt",
+    tabla: "Vergleich Jahr für Jahr",
+    colAnio: "Jahr",
+    colComprar: "Kaufen",
+    colAlquilar: "Mieten",
+    colDiferencia: "Differenz",
+    errorPrecio: "Geben Sie den Kaufpreis ein.",
+    errorAlquiler: "Geben Sie ein, was die Miete für eine vergleichbare Wohnung kosten würde.",
+    convieneComprar: (anios, diferencia) => `Kaufen lohnt sich mehr: Nach ${anios} Jahren hätten Sie ${diferencia} mehr.`,
+    convieneAlquilar: (anios, diferencia) => `Mieten lohnt sich mehr: Nach ${anios} Jahren hätten Sie ${diferencia} mehr.`,
+    empate: (anios) => `Nach ${anios} Jahren kommen beide Wege auf dasselbe hinaus.`,
+    observacionDesde: (anio) => `Ab Jahr ${anio} liegt Kaufen vor Mieten und bleibt vorn.`,
+    observacionMetodo:
+      "Verglichen wird, was Ihnen in beiden Fällen gehört. Wer mietet, legt das Eigenkapital und jede monatliche Ersparnis an. Kosten für einen späteren Verkauf sind nicht abgezogen.",
+  }),
+};
