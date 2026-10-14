@@ -705,7 +705,7 @@
       "id": "at.urlaub",
       "nombre": "Urlaubsanspruch in Werktagen (Sechstagewoche)",
       "tipo": "mapa",
-      "unidad": "dias",
+      "unidad": "numero",
       "etiquetas": {
         "regel": "Regelanspruch",
         "ab-25-dienstjahren": "Nach 25 Dienstjahren"
@@ -768,7 +768,7 @@
       "id": "at.abfertigung-alt",
       "nombre": "Abfertigung alt in Monatsentgelten nach Dienstjahren",
       "tipo": "mapa",
-      "unidad": "meses",
+      "unidad": "numero",
       "nota": "Schlüssel: vollendete Dienstjahre; Wert: Monatsentgelte.",
       "tramos": [
         {
