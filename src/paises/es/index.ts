@@ -70,7 +70,21 @@ export default definirPais({
     { definicion: revisionHipotecaEuribor, contenido: contenidoRevisionHipotecaEuribor, cliente: () => import("./calculadoras/revision-hipoteca-euribor.cliente") },
     { definicion: pensionJubilacion, contenido: contenidoPensionJubilacion, cliente: () => import("./calculadoras/pension-jubilacion.cliente") },
   ],
-  universales: { todas: true },
+  universales: {
+    todas: true,
+    ajustes: [
+      { id: "costo-de-un-auto", slug: "coste-de-tener-coche" },
+      { id: "combustible", slug: "gasto-de-gasolina" },
+      { id: "tasa-efectiva", slug: "calcular-tae" },
+      { id: "margen-de-ganancia", slug: "margen-de-beneficio" },
+      { id: "rendimiento-inversion", slug: "rentabilidad-de-una-inversion" },
+      { id: "ahorro-retiro", slug: "ahorro-para-la-jubilacion" },
+      { id: "aumento-de-sueldo", slug: "subida-de-sueldo" },
+      { id: "tarifa-freelance", slug: "cuanto-cobrar-por-hora-autonomo" },
+      { id: "ceramicos", slug: "calcular-baldosas" },
+      { id: "promedio", slug: "nota-media" },
+    ],
+  },
   novedades,
   detectores,
 });
