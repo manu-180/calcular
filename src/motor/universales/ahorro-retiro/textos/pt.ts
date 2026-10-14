@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAhorroRetiro } from "../definicion";
 
-export const textosPt: TextosUi<UiAhorroRetiro> = {
+const base: TextosUi<UiAhorroRetiro> = {
   slug: "calculadora-de-aposentadoria",
   ui: () => ({
     edadActual: "Sua idade hoje",
@@ -26,3 +27,22 @@ export const textosPt: TextosUi<UiAhorroRetiro> = {
     observacionPublica: "Aqui entra só a sua reserva própria. Não inclui a aposentadoria pública que você possa receber.",
   }),
 };
+
+const portugal = (): Partial<UiAhorroRetiro> => ({
+  edadActual: "A sua idade hoje",
+  edadRetiro: "Idade em que se quer reformar",
+  actual: "O que já tem poupado",
+  aporte: "Poupança mensal",
+  aniosRenta: "Anos de reforma a cobrir",
+  aniosRentaAyuda: "Durante quantos anos quer viver destas poupanças.",
+  capital: "Poupanças ao reformar-se",
+  renta: "Rendimento mensal dessas poupanças",
+  aportado: "Total poupado",
+  colAportado: "Poupado até aqui",
+  colSaldo: "Poupanças",
+  errorEdades: "A idade da reforma tem de ser maior do que a sua idade hoje.",
+  errorSinAhorro: "Indique o que já tem poupado ou uma poupança mensal.",
+  observacionPublica: "Aqui entram só as suas poupanças. Não inclui a pensão da Segurança Social que possa receber.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

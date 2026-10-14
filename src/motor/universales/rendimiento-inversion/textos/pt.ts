@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiRendimientoInversion } from "../definicion";
 
-export const textosPt: TextosUi<UiRendimientoInversion> = {
+const base: TextosUi<UiRendimientoInversion> = {
   slug: "calculadora-de-roi",
   ui: () => ({
     inicial: "Valor investido",
@@ -20,3 +21,12 @@ export const textosPt: TextosUi<UiRendimientoInversion> = {
     observacionInflacion: "Para saber se você ganhou poder de compra, compare a rentabilidade anual com a inflação do mesmo período.",
   }),
 };
+
+const portugal = (): Partial<UiRendimientoInversion> => ({
+  finalAyuda: "Quanto o investimento vale hoje, ou quanto recebeu ao vendê-lo.",
+  cobradoAyuda: "Dividendos, juros ou rendas que recebeu e não reinvestiu.",
+  errorInicial: "Indique quanto investiu no início.",
+  observacionInflacion: "Para saber se ganhou poder de compra, compare a rentabilidade anual com a inflação do mesmo período.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

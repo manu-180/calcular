@@ -104,6 +104,8 @@ const VOCABULARIO: Readonly<Record<string, Vocabulario>> = {
       [/\bpiso\b/i, "pavimento"],
       [/\bplano de saúde/i, "seguro de saúde"],
       [/\bporcentage/i, "percentagem"],
+      [/\btaxa de juros\b/i, "taxa de juro"],
+      [/\bfinanciamento\b/i, "crédito"],
       [/\bcoloque\b/i, "indique"],
       [/\bquit(ar|a|e|ou)\b/i, "liquidar"],
       [/\bmoradia\b/i, "habitação"],

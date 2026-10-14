@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiTarjetaDeCredito } from "../definicion";
 
-export const textosPt: TextosUi<UiTarjetaDeCredito> = {
+const base: TextosUi<UiTarjetaDeCredito> = {
   slug: "quitar-cartao-de-credito",
   ui: () => ({
     saldo: "Saldo devedor do cartão",
@@ -38,3 +39,22 @@ export const textosPt: TextosUi<UiTarjetaDeCredito> = {
     observacionNoGastar: "A conta supõe que você não faz compras novas no cartão enquanto paga a dívida.",
   }),
 };
+
+const portugal = (): Partial<UiTarjetaDeCredito> => ({
+  saldo: "Dívida do cartão",
+  tasa: "Taxa de juro anual (TAN, %)",
+  tasaAyuda: "Está no extrato. Se aparecer a taxa ao mês, multiplique por 12.",
+  modo: "Como vai pagar?",
+  minimoPorcentajeAyuda: "O que o banco pede todos os meses. Se não tiver a certeza, 5% é um valor habitual.",
+  meses: "Meses para liquidar",
+  intereses: "Juros que paga",
+  errorSaldo: "Indique quanto deve no cartão.",
+  errorFaltaPago: "Indique quanto vai pagar por mês.",
+  errorNoCubre: (interes) => `Com esse pagamento a dívida nunca diminui: só os juros do primeiro mês são ${interes}. Aumente o pagamento.`,
+  errorMuyLargo: "Com esse pagamento demoraria mais de 50 anos a liquidar. Aumente o pagamento.",
+  observacionFijo: (pago, meses, ahorro) =>
+    `Se pagar sempre ${pago}, o mesmo que o primeiro mínimo, termina em ${meses} meses e poupa ${ahorro} de juros.`,
+  observacionNoGastar: "A conta parte do princípio de que não faz compras novas com o cartão enquanto paga a dívida.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiMargenDeGanancia } from "../definicion";
 
-export const textosPt: TextosUi<UiMargenDeGanancia> = {
+const base: TextosUi<UiMargenDeGanancia> = {
   slug: "margem-de-lucro",
   ui: () => ({
     modo: "O que você quer calcular?",
@@ -27,3 +28,16 @@ export const textosPt: TextosUi<UiMargenDeGanancia> = {
     observacionPerdida: "Com esse preço você vende abaixo do custo: perde dinheiro em cada venda.",
   }),
 };
+
+const portugal = (): Partial<UiMargenDeGanancia> => ({
+  modo: "O que quer calcular?",
+  costoAyuda: "Quanto custa comprar ou produzir uma unidade, sem os impostos que repercute no cliente.",
+  margenAyuda: "O lucro em percentagem do preço de venda.",
+  markupAyuda: "O lucro em percentagem do custo.",
+  errorCosto: "Indique o custo de uma unidade.",
+  errorFaltaPrecio: "Indique o preço de venda para calcular a margem.",
+  errorFaltaObjetivo: "Indique a margem ou o markup que quer atingir.",
+  observacionPerdida: "Com esse preço vende abaixo do custo: perde dinheiro em cada venda.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

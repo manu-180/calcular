@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiCostoDeUnAuto } from "../definicion";
 
-export const textosPt: TextosUi<UiCostoDeUnAuto> = {
+const base: TextosUi<UiCostoDeUnAuto> = {
   slug: "custo-de-manter-um-carro",
   ui: () => ({
     precio: "Valor do carro",
@@ -34,3 +35,19 @@ export const textosPt: TextosUi<UiCostoDeUnAuto> = {
       "A parcela do financiamento não entra no custo real porque uma parte dela paga o próprio carro, que já está contado como valor perdido. Os juros do financiamento são um custo a mais.",
   }),
 };
+
+const portugal = (): Partial<UiCostoDeUnAuto> => ({
+  precioAyuda: "O que pagou, ou quanto vale hoje se já tem o carro há algum tempo.",
+  cuota: "Prestação mensal do crédito (opcional)",
+  cuotaAyuda: "Só para mostrar o que sai da sua conta por mês. Não entra no custo real.",
+  distanciaKm: "Quilómetros por mês",
+  mantenimientoAyuda: "Revisões, pneus, reparações e lavagens, em média por mês.",
+  otros: "Impostos, portagens e outros gastos por mês (opcional)",
+  otrosAyuda: "IUC, inspeção periódica, portagens e multas, em média por mês.",
+  porKm: "Custo por quilómetro",
+  errorConsumo: "Indique o consumo do carro para calcular o gasto em combustível.",
+  observacionCuota:
+    "A prestação do crédito não entra no custo real porque uma parte dela paga o próprio carro, que já está contado como valor perdido. Os juros do crédito são um custo a mais.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

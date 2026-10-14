@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiDividirGastos } from "../definicion";
 
-export const textosPt: TextosUi<UiDividirGastos> = {
+const base: TextosUi<UiDividirGastos> = {
   slug: "dividir-contas",
   ui: () => ({
     persona: (n) => `Pessoa ${n}`,
@@ -18,3 +19,10 @@ export const textosPt: TextosUi<UiDividirGastos> = {
     aMano: "Ninguém deve nada: todos pagaram o mesmo.",
   }),
 };
+
+const portugal = (): Partial<UiDividirGastos> => ({
+  personaAyuda: "Indique quanto pagou cada um. Se alguém não pagou nada mas entra na divisão, escreva 0. Deixe o resto em branco.",
+  tabla: "Quem paga a quem",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

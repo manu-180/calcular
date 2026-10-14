@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAumentoDeSueldo } from "../definicion";
 
-export const textosFr: TextosUi<UiAumentoDeSueldo> = {
+const base: TextosUi<UiAumentoDeSueldo> = {
   slug: "calcul-augmentation-salaire",
   ui: () => ({
     sueldo: "Salaire mensuel actuel",
@@ -26,3 +27,9 @@ export const textosFr: TextosUi<UiAumentoDeSueldo> = {
     observacionIgual: "Votre augmentation compense tout juste l’inflation : votre salaire achète autant qu’avant.",
   }),
 };
+
+const canada = (): Partial<UiAumentoDeSueldo> => ({
+  sueldosAnioAyuda: "12 pour un salaire mensuel. Ajoutez une paie si vous recevez un boni équivalent à un mois de salaire.",
+});
+
+export const textosFr = conVariantes(base, { "fr-CA": canada });

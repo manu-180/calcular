@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPromedio } from "../definicion";
 
-export const textosPt: TextosUi<UiPromedio> = {
+const base: TextosUi<UiPromedio> = {
   slug: "media-ponderada",
   ui: () => ({
     nota: (n) => `Nota ${n}`,
@@ -19,3 +20,12 @@ export const textosPt: TextosUi<UiPromedio> = {
     sinPesos: "Sem pesos, a média ponderada é igual à simples.",
   }),
 };
+
+const portugal = (): Partial<UiPromedio> => ({
+  notaAyuda: "Escreva cada nota ou valor com o seu peso. Deixe em branco as linhas que não usar.",
+  pesoAyuda: "Pode ser uma percentagem, créditos ou quantas vezes conta. Sem pesos, todos os valores contam o mesmo.",
+  errorSinNotas: "Indique pelo menos um valor.",
+  errorPesosCero: "Os pesos somam 0: pelo menos um tem de ser maior do que zero.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });
