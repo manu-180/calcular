@@ -6,7 +6,7 @@
       "nombre": "Consumers price index (CPI), all groups, June 2017 quarter = 1000",
       "unidad": "numero",
       "frecuencia": "trimestral",
-      "maxAntiguedadDias": 160,
+      "maxAntiguedadDias": 200,
       "fuente": {
         "organismo": "Stats NZ",
         "titulo": "Consumers price index: June 2026 quarter, index numbers (series CPIQ.SE9A)",

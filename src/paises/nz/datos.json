@@ -875,7 +875,7 @@
       "tipo": "mapa",
       "unidad": "NZD",
       "etiquetas": {
-        "single-alone": "Single, living alone",
+        "single-alone": "Single, living alone or with a dependent child",
         "single-sharing": "Single, sharing accommodation",
         "couple-each": "Couple, each partner"
       },
@@ -906,7 +906,7 @@
       "tipo": "mapa",
       "unidad": "NZD",
       "etiquetas": {
-        "single-alone": "Single, living alone",
+        "single-alone": "Single, living alone or with a dependent child",
         "single-sharing": "Single, sharing accommodation",
         "couple-each": "Couple, each partner"
       },
