@@ -8,7 +8,7 @@ export default definirContenido({
     "Bereken de overdrachtsbelasting bij het kopen van een huis in 2026. Met de startersvrijstelling tot {{nl.startersvrijstelling-grens}} en het tarief van 8% voor beleggingswoningen.",
   intro: [
     "Koop je een huis of ander vastgoed, dan betaal je overdrachtsbelasting over de koopsom. Voor een woning waarin je zelf gaat wonen is dat {{nl.overdrachtsbelasting[eigen-woning]}}. Voor een woning waarin je niet zelf woont {{nl.overdrachtsbelasting[overige-woning]}}, en voor andere onroerende zaken {{nl.overdrachtsbelasting[niet-woning]}}.",
-    "Ben je jonger dan {{nl.startersvrijstelling-leeftijd}} en koop je je eerste huis tot {{nl.startersvrijstelling-grens}}? Dan betaal je met de startersvrijstelling geen overdrachtsbelasting.",
+    "Ben je jonger dan {{nl.startersvrijstelling-leeftijd}} en koop je een huis tot {{nl.startersvrijstelling-grens}} om er zelf te wonen? Dan betaal je met de startersvrijstelling meestal geen overdrachtsbelasting, ook als je eerder een koopwoning had.",
   ],
   comoSeCalcula: [
     "Kies wat je koopt. Ga je er zelf wonen, dan kijken we of je recht hebt op de startersvrijstelling.",
