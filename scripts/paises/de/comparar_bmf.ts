@@ -23,6 +23,7 @@ const werte: LohnsteuerWerte = {
     kvAllgemein: n("de.kv-allgemein"),
     kvErmaessigt: n("de.kv-ermaessigt"),
     kvZusatz: n("de.kv-zusatzbeitrag"),
+    kvZusatzDurchschnitt: n("de.kv-zusatzbeitrag"),
     rv: n("de.rv-beitragssatz"),
     av: n("de.av-beitragssatz"),
     pv: n("de.pv-beitragssatz"),

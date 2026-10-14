@@ -138,6 +138,8 @@ datos = [
                 hasta="2026-12-31")], proximaRevision="2027-01-01"),
     dato("minijob-rv-pauschale", "Minijob, Beitragsanteil des Arbeitgebers zur Rentenversicherung", "numero", "%",
          [tramo(15, gii("§ 168 Absatz 1 Nummer 1b und § 172 Absatz 3 SGB VI", "sgb_6/__172.html"))]),
+    dato("minijob-mindestbemessung", "Minijob, Mindestbemessungsgrundlage in der Rentenversicherung", "numero", "EUR",
+         [tramo(175, gii("§ 163 Absatz 8 SGB VI", "sgb_6/__163.html"))]),
     dato("minijob-pauschsteuer", "Minijob, einheitliche Pauschsteuer", "numero", "%",
          [tramo(2, gii("§ 40a Absatz 2 EStG", "estg/__40a.html"))], proximaRevision="2027-01-01"),
     dato("uebergangsbereich-obergrenze", "Obergrenze des Übergangsbereichs (Midijob)", "numero", "EUR",

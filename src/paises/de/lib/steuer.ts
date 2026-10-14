@@ -58,6 +58,8 @@ export interface SvSaetze {
   kvAllgemein: number;
   kvErmaessigt: number;
   kvZusatz: number;
+  // F des Übergangsbereichs rechnet immer mit dem durchschnittlichen Zusatzbeitrag, nicht mit dem der Kasse.
+  kvZusatzDurchschnitt: number;
   rv: number;
   av: number;
   pv: number;
@@ -213,6 +215,22 @@ function beitraege(kv: number, rv: number, av: number, pv: number): SvBeitraege 
   return { ...r, summe: kaufmaennisch(r.kv + r.rv + r.av + r.pv) };
 }
 
+// Faktor F nach § 20 Absatz 2a SGB IV: 28 Prozent geteilt durch den Gesamtsozialversicherungsbeitragssatz,
+// auf vier Stellen gerundet wie in der Bekanntmachung des BMAS.
+export function faktorF(sv: SvSaetze): number {
+  const gesamtsatz = sv.kvAllgemein + sv.kvZusatzDurchschnitt + sv.rv + sv.av + sv.pv;
+  return Math.round((28 / gesamtsatz) * 10000) / 10000;
+}
+
+export function uebergangsbereich(brutto: number, sv: SvSaetze, g: number, obergrenze: number): { f: number; beGesamt: number; beAn: number } {
+  const f = faktorF(sv);
+  return {
+    f,
+    beGesamt: f * g + (obergrenze / (obergrenze - g) - (g / (obergrenze - g)) * f) * (brutto - g),
+    beAn: (obergrenze / (obergrenze - g)) * (brutto - g),
+  };
+}
+
 // Sozialversicherung eines Monatslohns oberhalb der Geringfügigkeitsgrenze. Im Übergangsbereich
 // (§ 20 Absatz 2a SGB IV) zahlt die beschäftigte Person den halben Satz auf BE nach Formel 2, der
 // Arbeitgeber den Rest des Gesamtbeitrags auf BE nach Formel 1 (§ 249 Absatz 3 SGB V, § 168 Absatz 1
@@ -241,11 +259,7 @@ export function sozialversicherungMonat(
       arbeitgeber: beitraege((kvBasis * kvHalb) / 100, (rvBasis * rvHalb) / 100, (rvBasis * avHalb) / 100, (kvBasis * pvAg) / 100),
     };
   }
-  const g = minijobGrenze;
-  const gesamtsatz = sv.kvAllgemein + sv.kvZusatz + sv.rv + sv.av + sv.pv;
-  const f = Math.round((28 / gesamtsatz) * 10000) / 10000;
-  const beGesamt = f * g + (obergrenze / (obergrenze - g) - (g / (obergrenze - g)) * f) * (brutto - g);
-  const beAn = (obergrenze / (obergrenze - g)) * (brutto - g);
+  const { beGesamt, beAn } = uebergangsbereich(brutto, sv, minijobGrenze, obergrenze);
   const zuschlag = p.kinderlos ? sv.pvKinderlos : 0;
   const an = beitraege((beAn * kvHalb) / 100, (beAn * rvHalb) / 100, (beAn * avHalb) / 100, (beAn * (pvAn - zuschlag)) / 100 + (beGesamt * zuschlag) / 100);
   const gesamt = {

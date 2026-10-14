@@ -44,6 +44,7 @@ export function svAus(v: ValoresSv, zusatzbeitrag?: number | null): SvSaetze {
     kvAllgemein: v["de.kv-allgemein"],
     kvErmaessigt: v["de.kv-ermaessigt"],
     kvZusatz: zusatzbeitrag ?? v["de.kv-zusatzbeitrag"],
+    kvZusatzDurchschnitt: v["de.kv-zusatzbeitrag"],
     rv: v["de.rv-beitragssatz"],
     av: v["de.av-beitragssatz"],
     pv: v["de.pv-beitragssatz"],

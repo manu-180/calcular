@@ -877,6 +877,26 @@
       ]
     },
     {
+      "id": "de.minijob-mindestbemessung",
+      "nombre": "Minijob, Mindestbemessungsgrundlage in der Rentenversicherung",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 175,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 163 Absatz 8 SGB VI",
+            "url": "https://www.gesetze-im-internet.de/sgb_6/__163.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
       "id": "de.minijob-pauschsteuer",
       "nombre": "Minijob, einheitliche Pauschsteuer",
       "tipo": "numero",
