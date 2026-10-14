@@ -22,6 +22,11 @@ import pendlerpauschaleRechner from "./calculadoras/pendlerpauschale-rechner";
 import solidaritaetszuschlagRechner from "./calculadoras/solidaritaetszuschlag-rechner";
 import kirchensteuerRechner from "./calculadoras/kirchensteuer-rechner";
 import abgeltungsteuerRechner from "./calculadoras/abgeltungsteuer-rechner";
+import kleinunternehmerRechner from "./calculadoras/kleinunternehmer-rechner";
+import gewerbesteuerRechner from "./calculadoras/gewerbesteuer-rechner";
+import erbschaftsteuerRechner from "./calculadoras/erbschaftsteuer-rechner";
+import inflationsrechner from "./calculadoras/inflationsrechner";
+import grunderwerbsteuerRechner from "./calculadoras/grunderwerbsteuer-rechner";
 import contenidoBruttoNettoRechner from "./contenido/brutto-netto-rechner";
 import contenidoNettoBruttoRechner from "./contenido/netto-brutto-rechner";
 import contenidoLohnsteuerRechner from "./contenido/lohnsteuer-rechner";
@@ -44,6 +49,11 @@ import contenidoPendlerpauschaleRechner from "./contenido/pendlerpauschale-rechn
 import contenidoSolidaritaetszuschlagRechner from "./contenido/solidaritaetszuschlag-rechner";
 import contenidoKirchensteuerRechner from "./contenido/kirchensteuer-rechner";
 import contenidoAbgeltungsteuerRechner from "./contenido/abgeltungsteuer-rechner";
+import contenidoKleinunternehmerRechner from "./contenido/kleinunternehmer-rechner";
+import contenidoGewerbesteuerRechner from "./contenido/gewerbesteuer-rechner";
+import contenidoErbschaftsteuerRechner from "./contenido/erbschaftsteuer-rechner";
+import contenidoInflationsrechner from "./contenido/inflationsrechner";
+import contenidoGrunderwerbsteuerRechner from "./contenido/grunderwerbsteuer-rechner";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -78,6 +88,11 @@ export default definirPais({
     { definicion: solidaritaetszuschlagRechner, contenido: contenidoSolidaritaetszuschlagRechner, cliente: () => import("./calculadoras/solidaritaetszuschlag-rechner.cliente") },
     { definicion: kirchensteuerRechner, contenido: contenidoKirchensteuerRechner, cliente: () => import("./calculadoras/kirchensteuer-rechner.cliente") },
     { definicion: abgeltungsteuerRechner, contenido: contenidoAbgeltungsteuerRechner, cliente: () => import("./calculadoras/abgeltungsteuer-rechner.cliente") },
+    { definicion: kleinunternehmerRechner, contenido: contenidoKleinunternehmerRechner, cliente: () => import("./calculadoras/kleinunternehmer-rechner.cliente") },
+    { definicion: gewerbesteuerRechner, contenido: contenidoGewerbesteuerRechner, cliente: () => import("./calculadoras/gewerbesteuer-rechner.cliente") },
+    { definicion: erbschaftsteuerRechner, contenido: contenidoErbschaftsteuerRechner, cliente: () => import("./calculadoras/erbschaftsteuer-rechner.cliente") },
+    { definicion: inflationsrechner, contenido: contenidoInflationsrechner, cliente: () => import("./calculadoras/inflationsrechner.cliente") },
+    { definicion: grunderwerbsteuerRechner, contenido: contenidoGrunderwerbsteuerRechner, cliente: () => import("./calculadoras/grunderwerbsteuer-rechner.cliente") },
   ],
   universales: { todas: true },
   novedades,
