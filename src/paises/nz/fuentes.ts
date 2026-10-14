@@ -60,10 +60,11 @@ async function periodosNuevos(
   fecha: (m: RegExpMatchArray) => string,
   ultimoCargado: FechaISO,
   titulo: (f: string) => string,
+  paginaValida: RegExp = patron,
 ): Promise<readonly HallazgoNorma[] | null> {
   const html = await http.texto(url, { userAgentNavegador: true });
+  if (!new RegExp(paginaValida.source).test(html)) return null;
   const todas = [...html.matchAll(patron)];
-  if (!todas.length) return null;
   const hallazgos: HallazgoNorma[] = [];
   for (const m of todas) {
     const f = fecha(m);
@@ -150,6 +151,7 @@ export const detectores: readonly Detector[] = [
         (m) => `${m[3]}-${MESES[m[2]] ?? "xx"}-${m[1].padStart(2, "0")}`,
         "2026-04-01",
         (f) => `Minimum wage change from ${f}`,
+        /href="\/news-and-updates\/[a-z0-9-]+"/,
       );
     },
   },
