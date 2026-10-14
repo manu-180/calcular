@@ -1,0 +1,1608 @@
+{
+  "mercado": "de",
+  "datos": [
+    {
+      "id": "de.mwst-regelsatz",
+      "nombre": "Umsatzsteuer, Regelsatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Allgemeiner Steuersatz der Umsatzsteuer.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 19,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 12 Absatz 1 UStG",
+            "url": "https://www.gesetze-im-internet.de/ustg_1980/__12.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.mwst-ermaessigt",
+      "nombre": "Umsatzsteuer, ermäßigter Satz",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 12 Absatz 2 UStG",
+            "url": "https://www.gesetze-im-internet.de/ustg_1980/__12.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.est-tarif",
+      "nombre": "Einkommensteuertarif nach § 32a EStG",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "grundfreibetrag": 12348,
+            "zone2-bis": 17799,
+            "zone2-faktor": 914.51,
+            "zone2-basis": 1400,
+            "zone3-bis": 69878,
+            "zone3-faktor": 173.1,
+            "zone3-basis": 2397,
+            "zone3-sockel": 1034.87,
+            "zone4-bis": 277825,
+            "zone4-satz": 42,
+            "zone4-abzug": 11135.63,
+            "zone5-satz": 45,
+            "zone5-abzug": 19470.38
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 32a Absatz 1 EStG, Tarif ab dem Veranlagungszeitraum 2026",
+            "url": "https://www.gesetze-im-internet.de/estg/__32a.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.soli-satz",
+      "nombre": "Solidaritätszuschlag, Satz",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5.5,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 4 SolzG 1995",
+            "url": "https://www.gesetze-im-internet.de/solzg_1995/__4.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.soli-milderung",
+      "nombre": "Solidaritätszuschlag, Milderungszone",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 11.9,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 4 Satz 2 SolzG 1995",
+            "url": "https://www.gesetze-im-internet.de/solzg_1995/__4.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.soli-freigrenze",
+      "nombre": "Solidaritätszuschlag, Freigrenze für Alleinstehende",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20350,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 3 Absatz 3 SolzG 1995",
+            "url": "https://www.gesetze-im-internet.de/solzg_1995/__3.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Bei Zusammenveranlagung gilt das Doppelte (40 700 Euro)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.kirchensteuer",
+      "nombre": "Kirchensteuersatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "regiones": [
+        "bw",
+        "by",
+        "be",
+        "bb",
+        "hb",
+        "hh",
+        "he",
+        "mv",
+        "ni",
+        "nw",
+        "rp",
+        "sl",
+        "sn",
+        "st",
+        "sh",
+        "th"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "bw",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "by",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "be",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bb",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "hb",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "hh",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "he",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mv",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ni",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nw",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "rp",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sl",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sn",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "st",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sh",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "th",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Bundesministerium der Finanzen",
+            "titulo": "Lohn- und Einkommensteuerrechner 2026, Kirchensteuerabzug je Bundesland",
+            "url": "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Rechner des BMF weist für jedes Land den Satz aus: 8 % in Baden-Württemberg und Bayern, 9 % in den übrigen Ländern."
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.arbeitnehmer-pauschbetrag",
+      "nombre": "Arbeitnehmer-Pauschbetrag",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1230,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 9a Satz 1 Nummer 1 Buchstabe a EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__9a.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.sonderausgaben-pauschbetrag",
+      "nombre": "Sonderausgaben-Pauschbetrag",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 36,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 10c EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__10c.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.entlastungsbetrag-alleinerziehende",
+      "nombre": "Entlastungsbetrag für Alleinerziehende",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4260,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 24b Absatz 2 EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__24b.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.lohnsteuer-grenzen",
+      "nombre": "Grenzbeträge des Lohnsteuerabzugs",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "vorsorge-hoechstbetrag": "Höchstbetrag Kranken-, Pflege- und Arbeitslosenversicherung",
+        "stkl5-grenze1": "Steuerklasse V und VI, erste Grenze",
+        "stkl5-grenze2": "Steuerklasse V und VI, zweite Grenze",
+        "stkl5-grenze3": "Steuerklasse V und VI, dritte Grenze"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vorsorge-hoechstbetrag": 1900,
+            "stkl5-grenze1": 14071,
+            "stkl5-grenze2": 34939,
+            "stkl5-grenze3": 222260
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 39b Absatz 2 Satz 5 Nummer 3 und Satz 7 EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__39b.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.kinderfreibetrag",
+      "nombre": "Freibeträge für Kinder je Elternteil",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "saechlich": "Kinderfreibetrag",
+        "bea": "Freibetrag für Betreuung, Erziehung oder Ausbildung"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "saechlich": 3414,
+            "bea": 1464
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 32 Absatz 6 EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__32.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.kindergeld",
+      "nombre": "Kindergeld je Kind und Monat",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 259,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 66 Absatz 1 EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__66.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.kv-allgemein",
+      "nombre": "Krankenversicherung, allgemeiner Beitragssatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14.6,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 241 SGB V",
+            "url": "https://www.gesetze-im-internet.de/sgb_5/__241.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.kv-ermaessigt",
+      "nombre": "Krankenversicherung, ermäßigter Beitragssatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14.0,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 243 SGB V",
+            "url": "https://www.gesetze-im-internet.de/sgb_5/__243.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.kv-zusatzbeitrag",
+      "nombre": "Durchschnittlicher Zusatzbeitragssatz der Krankenkassen",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2.9,
+          "fuente": {
+            "organismo": "Bundesministerium für Gesundheit",
+            "titulo": "Bekanntmachung des durchschnittlichen Zusatzbeitragssatzes für 2026 (BAnz AT 10.11.2025 B7)",
+            "url": "https://www.bundesanzeiger.de/pub/publication/oUJYVk8GYRXybnb9Y4h/content/oUJYVk8GYRXybnb9Y4h/BAnz%20AT%2010.11.2025%20B7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.rv-beitragssatz",
+      "nombre": "Rentenversicherung, Beitragssatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 18.6,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "Beitragssatzbekanntmachung 2026 der Rentenversicherung",
+            "url": "https://www.gesetze-im-internet.de/rvbeitrsbek_2026/BJNR1230A0025.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.av-beitragssatz",
+      "nombre": "Arbeitslosenversicherung, Beitragssatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.6,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 341 Absatz 2 SGB III",
+            "url": "https://www.gesetze-im-internet.de/sgb_3/__341.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.pv-beitragssatz",
+      "nombre": "Pflegeversicherung, Beitragssatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3.6,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 1 Pflege-Beitragssatz-Anpassungsverordnung 2025",
+            "url": "https://www.gesetze-im-internet.de/pbav_2025/__1.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.pv-zuschlaege",
+      "nombre": "Pflegeversicherung, Zuschlag und Abschlag",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "kinderlos": "Beitragszuschlag für Kinderlose",
+        "abschlag-je-kind": "Abschlag je Kind ab dem zweiten bis zum fünften"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "kinderlos": 0.6,
+            "abschlag-je-kind": 0.25
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 55 Absatz 3 SGB XI",
+            "url": "https://www.gesetze-im-internet.de/sgb_11/__55.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.pv-sachsen",
+      "nombre": "Pflegeversicherung in Sachsen, allein vom Beschäftigten getragener Anteil",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 58 Absatz 3 SGB XI",
+            "url": "https://www.gesetze-im-internet.de/sgb_11/__58.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.bbg-kv",
+      "nombre": "Beitragsbemessungsgrenze Kranken- und Pflegeversicherung (Monat)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 5812.5,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "Sozialversicherungsrechengrößen-Verordnung 2026",
+            "url": "https://www.gesetze-im-internet.de/svbezgrv_2026/BJNR1160A0025.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.bbg-rv",
+      "nombre": "Beitragsbemessungsgrenze Renten- und Arbeitslosenversicherung (Monat)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 8450,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "Sozialversicherungsrechengrößen-Verordnung 2026",
+            "url": "https://www.gesetze-im-internet.de/svbezgrv_2026/BJNR1160A0025.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.durchschnittsentgelt",
+      "nombre": "Vorläufiges Durchschnittsentgelt der Rentenversicherung",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 51944,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "Sozialversicherungsrechengrößen-Verordnung 2026",
+            "url": "https://www.gesetze-im-internet.de/svbezgrv_2026/BJNR1160A0025.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.rentenwert",
+      "nombre": "Aktueller Rentenwert",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": 40.79,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 1 Rentenwertbestimmungsverordnung 2025",
+            "url": "https://www.gesetze-im-internet.de/rwbestv_2025/__1.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 42.52,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 1 Rentenwertbestimmungsverordnung 2026",
+            "url": "https://www.gesetze-im-internet.de/rwbestv_2026/__1.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.mindestlohn",
+      "nombre": "Gesetzlicher Mindestlohn je Zeitstunde",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 13.9,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 1 Nummer 1 Fünfte Mindestlohnanpassungsverordnung",
+            "url": "https://www.gesetze-im-internet.de/milov5/__1.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 14.6,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 1 Nummer 2 Fünfte Mindestlohnanpassungsverordnung",
+            "url": "https://www.gesetze-im-internet.de/milov5/__1.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.minijob-kv-pauschale",
+      "nombre": "Minijob, Pauschalbeitrag des Arbeitgebers zur Krankenversicherung",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 13,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 249b SGB V",
+            "url": "https://www.gesetze-im-internet.de/sgb_5/__249b.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Das im Juli 2026 verkündete GKV-Beitragssatzstabilisierungsgesetz ändert den Satz ab 2027; der neue Wert fehlt noch."
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.minijob-rv-pauschale",
+      "nombre": "Minijob, Beitragsanteil des Arbeitgebers zur Rentenversicherung",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 168 Absatz 1 Nummer 1b und § 172 Absatz 3 SGB VI",
+            "url": "https://www.gesetze-im-internet.de/sgb_6/__172.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.minijob-mindestbemessung",
+      "nombre": "Minijob, Mindestbemessungsgrundlage in der Rentenversicherung",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 175,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 163 Absatz 8 SGB VI",
+            "url": "https://www.gesetze-im-internet.de/sgb_6/__163.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.minijob-pauschsteuer",
+      "nombre": "Minijob, einheitliche Pauschsteuer",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 40a Absatz 2 EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__40a.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.uebergangsbereich-obergrenze",
+      "nombre": "Obergrenze des Übergangsbereichs (Midijob)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2000,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 20 Absatz 2 SGB IV",
+            "url": "https://www.gesetze-im-internet.de/sgb_4/__20.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.mindesturlaub",
+      "nombre": "Gesetzlicher Mindesturlaub",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "24 Werktage bei einer Sechstagewoche.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 3 Absatz 1 BUrlG",
+            "url": "https://www.gesetze-im-internet.de/burlg/__3.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.kuendigungsfristen",
+      "nombre": "Kündigungsfristen des Arbeitgebers nach Betriebszugehörigkeit",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "nota": "Schlüssel: Jahre Betriebszugehörigkeit; Wert: Monate zum Ende eines Kalendermonats.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "2": 1,
+            "5": 2,
+            "8": 3,
+            "10": 4,
+            "12": 5,
+            "15": 6,
+            "20": 7
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 622 Absatz 2 BGB",
+            "url": "https://www.gesetze-im-internet.de/bgb/__622.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.abfindung-faktor",
+      "nombre": "Abfindung nach § 1a KSchG, Monatsverdienste je Beschäftigungsjahr",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 1a Absatz 2 KSchG",
+            "url": "https://www.gesetze-im-internet.de/kschg/__1a.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.elterngeld-saetze",
+      "nombre": "Elterngeld, Ersatzrate",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "regel": "Regelsatz",
+        "mindest": "Untergrenze bei hohem Einkommen",
+        "hoechst": "Obergrenze bei geringem Einkommen"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "regel": 67,
+            "mindest": 65,
+            "hoechst": 100
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 2 Absatz 1 und 2 BEEG",
+            "url": "https://www.gesetze-im-internet.de/beeg/__2.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.elterngeld-betraege",
+      "nombre": "Elterngeld, Beträge",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "mindest": "Mindestbetrag",
+        "hoechst": "Höchstbetrag",
+        "schwelle-niedrig": "Schwelle für die Erhöhung",
+        "schwelle-hoch": "Schwelle für die Absenkung",
+        "deckel": "Höchstes Einkommen vor der Geburt bei Teilzeit im Bezug"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "mindest": 300,
+            "hoechst": 1800,
+            "schwelle-niedrig": 1000,
+            "schwelle-hoch": 1200,
+            "deckel": 2770
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 2 Absatz 1 bis 4 BEEG",
+            "url": "https://www.gesetze-im-internet.de/beeg/__2.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.elterngeld-einkommensgrenze",
+      "nombre": "Elterngeld, Einkommensgrenze (zu versteuerndes Einkommen)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 175000,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 1 Absatz 8 BEEG",
+            "url": "https://www.gesetze-im-internet.de/beeg/__1.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.entfernungspauschale",
+      "nombre": "Entfernungspauschale je Kilometer",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.38,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 9 Absatz 1 Satz 3 Nummer 4 EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__9.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.entfernungspauschale-hoechstbetrag",
+      "nombre": "Entfernungspauschale, Höchstbetrag ohne eigenes Auto",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4500,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 9 Absatz 1 Satz 3 Nummer 4 EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__9.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.abgeltungsteuer",
+      "nombre": "Abgeltungsteuer auf Kapitalerträge",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 32d Absatz 1 EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__32d.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.sparer-pauschbetrag",
+      "nombre": "Sparer-Pauschbetrag",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "einzeln": "Alleinstehende",
+        "zusammen": "Zusammen veranlagte Ehegatten"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "einzeln": 1000,
+            "zusammen": 2000
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 20 Absatz 9 EStG",
+            "url": "https://www.gesetze-im-internet.de/estg/__20.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.kleinunternehmer-grenzen",
+      "nombre": "Kleinunternehmerregelung, Umsatzgrenzen",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "vorjahr": "Gesamtumsatz im Vorjahr",
+        "laufendes-jahr": "Gesamtumsatz im laufenden Jahr"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vorjahr": 25000,
+            "laufendes-jahr": 100000
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 19 Absatz 1 UStG",
+            "url": "https://www.gesetze-im-internet.de/ustg_1980/__19.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.gewst-freibetrag",
+      "nombre": "Gewerbesteuer, Freibetrag für Einzelunternehmen und Personengesellschaften",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24500,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 11 Absatz 1 GewStG",
+            "url": "https://www.gesetze-im-internet.de/gewstg/__11.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.gewst-messzahl",
+      "nombre": "Gewerbesteuer, Steuermesszahl",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 11 Absatz 2 GewStG",
+            "url": "https://www.gesetze-im-internet.de/gewstg/__11.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.gewst-mindesthebesatz",
+      "nombre": "Gewerbesteuer, Mindesthebesatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 280,
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 16 Absatz 4 GewStG",
+            "url": "https://www.gesetze-im-internet.de/gewstg/__16.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.erbst-freibetraege",
+      "nombre": "Erbschaft- und Schenkungsteuer, persönliche Freibeträge",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "ehegatte": "Ehegatte, Lebenspartner",
+        "kind": "Kind, Stiefkind",
+        "enkel": "Enkelkind",
+        "eltern": "Eltern bei Erbschaft",
+        "klasse2": "Steuerklasse II",
+        "klasse3": "Steuerklasse III"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ehegatte": 500000,
+            "kind": 400000,
+            "enkel": 200000,
+            "eltern": 100000,
+            "klasse2": 20000,
+            "klasse3": 20000
+          },
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 16 Absatz 1 ErbStG",
+            "url": "https://www.gesetze-im-internet.de/erbstg_1974/__16.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.erbst-satz-klasse-1",
+      "nombre": "Erbschaftsteuer, Steuersätze der Steuerklasse I",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 75000,
+              "tasa": 7
+            },
+            {
+              "desde": 75000.01,
+              "hasta": 300000,
+              "tasa": 11
+            },
+            {
+              "desde": 300000.01,
+              "hasta": 600000,
+              "tasa": 15
+            },
+            {
+              "desde": 600000.01,
+              "hasta": 6000000,
+              "tasa": 19
+            },
+            {
+              "desde": 6000000.01,
+              "hasta": 13000000,
+              "tasa": 23
+            },
+            {
+              "desde": 13000000.01,
+              "hasta": 26000000,
+              "tasa": 27
+            },
+            {
+              "desde": 26000000.01,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 19 Absatz 1 ErbStG",
+            "url": "https://www.gesetze-im-internet.de/erbstg_1974/__19.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.erbst-satz-klasse-2",
+      "nombre": "Erbschaftsteuer, Steuersätze der Steuerklasse II",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 75000,
+              "tasa": 15
+            },
+            {
+              "desde": 75000.01,
+              "hasta": 300000,
+              "tasa": 20
+            },
+            {
+              "desde": 300000.01,
+              "hasta": 600000,
+              "tasa": 25
+            },
+            {
+              "desde": 600000.01,
+              "hasta": 6000000,
+              "tasa": 30
+            },
+            {
+              "desde": 6000000.01,
+              "hasta": 13000000,
+              "tasa": 35
+            },
+            {
+              "desde": 13000000.01,
+              "hasta": 26000000,
+              "tasa": 40
+            },
+            {
+              "desde": 26000000.01,
+              "hasta": null,
+              "tasa": 43
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 19 Absatz 1 ErbStG",
+            "url": "https://www.gesetze-im-internet.de/erbstg_1974/__19.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.erbst-satz-klasse-3",
+      "nombre": "Erbschaftsteuer, Steuersätze der Steuerklasse III",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 75000,
+              "tasa": 30
+            },
+            {
+              "desde": 75000.01,
+              "hasta": 300000,
+              "tasa": 30
+            },
+            {
+              "desde": 300000.01,
+              "hasta": 600000,
+              "tasa": 30
+            },
+            {
+              "desde": 600000.01,
+              "hasta": 6000000,
+              "tasa": 30
+            },
+            {
+              "desde": 6000000.01,
+              "hasta": 13000000,
+              "tasa": 50
+            },
+            {
+              "desde": 13000000.01,
+              "hasta": 26000000,
+              "tasa": 50
+            },
+            {
+              "desde": 26000000.01,
+              "hasta": null,
+              "tasa": 50
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+            "titulo": "§ 19 Absatz 1 ErbStG",
+            "url": "https://www.gesetze-im-internet.de/erbstg_1974/__19.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "de.grunderwerbsteuer",
+      "nombre": "Grunderwerbsteuersatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "regiones": [
+        "bw",
+        "by",
+        "be",
+        "bb",
+        "hb",
+        "hh",
+        "he",
+        "mv",
+        "ni",
+        "nw",
+        "rp",
+        "sl",
+        "sn",
+        "st",
+        "sh",
+        "th"
+      ],
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "region": "bw",
+          "desde": "2026-01-01",
+          "valor": 5.0,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "by",
+          "desde": "2026-01-01",
+          "valor": 3.5,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "be",
+          "desde": "2026-01-01",
+          "valor": 6.0,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "bb",
+          "desde": "2026-01-01",
+          "valor": 6.5,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "hb",
+          "desde": "2026-01-01",
+          "valor": 5.5,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "hh",
+          "desde": "2026-01-01",
+          "valor": 5.5,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "he",
+          "desde": "2026-01-01",
+          "valor": 6.0,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "mv",
+          "desde": "2026-01-01",
+          "valor": 6.0,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "ni",
+          "desde": "2026-01-01",
+          "valor": 5.0,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "nw",
+          "desde": "2026-01-01",
+          "valor": 6.5,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "rp",
+          "desde": "2026-01-01",
+          "valor": 5.0,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "sl",
+          "desde": "2026-01-01",
+          "valor": 6.5,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "sn",
+          "desde": "2026-01-01",
+          "valor": 5.5,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "st",
+          "desde": "2026-01-01",
+          "valor": 5.0,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "sh",
+          "desde": "2026-01-01",
+          "valor": 6.5,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        },
+        {
+          "estado": "no-verificado",
+          "region": "th",
+          "desde": "2026-01-01",
+          "valor": 5.0,
+          "motivo": "Nur in Ratgeberportalen gelesen; der Satz steht im jeweiligen Landesgesetz, das noch nicht geprüft ist."
+        }
+      ]
+    }
+  ]
+}
