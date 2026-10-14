@@ -35,6 +35,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./aumento-de-sueldo/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./aumento-de-sueldo/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./aumento-de-sueldo/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "calorias": {
@@ -74,6 +75,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./conversor-sueldo/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./conversor-sueldo/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./conversor-sueldo/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "costo-de-un-auto": {
@@ -145,6 +147,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./horas-trabajadas/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./horas-trabajadas/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./horas-trabajadas/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "hormigon": {
@@ -312,6 +315,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     textos: {
       "en": () => import("./tarifa-freelance/textos/en").then((m) => m.textosEn as TextosUi<never>),
       "es": () => import("./tarifa-freelance/textos/es").then((m) => m.textosEs as TextosUi<never>),
+      "nl": () => import("./tarifa-freelance/textos/nl").then((m) => m.textosNl as TextosUi<never>),
     },
   },
   "tarjeta-de-credito": {
