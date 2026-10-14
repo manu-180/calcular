@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { cagr, roi } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const final = montoEjemplo(ctx, 15000);
   return {
     h1: "ROI calculator",
-    title: `ROI and CAGR calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`ROI and CAGR calculator for ${ctx.nombrePais}`, `ROI calculator for ${ctx.nombrePais}`, "ROI and CAGR calculator"),
     description: "Work out the total return (ROI) and the annual return (CAGR) of an investment from what you put in, what it is worth now and how many years passed.",
     intro: [
       "A 50% gain sounds great, but it is not the same over 2 years as over 10. To compare investments you need the return per year.",

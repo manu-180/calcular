@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { proyectar } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -10,7 +10,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const a20 = proyectar(capital, aporte, 7, 20, "mensual")[19].saldo;
   return {
     h1: "Calculadora de interés compuesto",
-    title: `Calculadora de interés compuesto en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de interés compuesto en ${ctx.nombrePais}`, `Interés compuesto en ${ctx.nombrePais}`, "Calculadora de interés compuesto"),
     description: t(
       "Calcula cuánto crece tu dinero con interés compuesto y aportes mensuales. Ve el saldo final, los intereses ganados y la evolución año por año.",
       "Calcule cuánto crece su dinero con interés compuesto y aportes mensuales. Vea el saldo final, los intereses ganados y la evolución año por año.",

@@ -1,11 +1,11 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const ingreso = montoEjemplo(ctx, 2000);
   return {
     h1: "50/30/20 budget calculator",
-    title: `50/30/20 budget calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`50/30/20 budget calculator for ${ctx.nombrePais}`, `50/30/20 budget in ${ctx.nombrePais}`, "50/30/20 budget calculator"),
     description: "Split your monthly take-home pay with the 50/30/20 rule: how much goes to needs, to wants and to savings. Change the percentages if you need to.",
     intro: [
       "The 50/30/20 rule is a simple way to plan your month. Half goes to essentials, 30% to things you enjoy and 20% to savings.",

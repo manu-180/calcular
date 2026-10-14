@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { acumular, rentaMensual } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -11,7 +11,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const capital40 = a40[a40.length - 1].saldo;
   return {
     h1: "Retirement savings calculator",
-    title: `Retirement savings calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Retirement savings calculator for ${ctx.nombrePais}`, `Retirement savings in ${ctx.nombrePais}`, "Retirement savings calculator"),
     description: "See how much you could build for retirement with monthly contributions and what monthly income it would give you, in today's money.",
     intro: [
       "A state pension often is not enough to keep your standard of living. Savings of your own, even small ones, make a big difference if you start early.",

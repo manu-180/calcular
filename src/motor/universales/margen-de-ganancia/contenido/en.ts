@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { precioConMargen } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const precio = montoEjemplo(ctx, 100);
   return {
     h1: "Profit margin calculator",
-    title: `Profit margin calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Profit margin calculator for ${ctx.nombrePais}`, `Profit margin in ${ctx.nombrePais}`, "Profit margin calculator"),
     description: "Work out margin and markup from cost and price, or the selling price you need to hit the margin you want.",
     intro: [
       "Margin and markup get mixed up all the time, and the difference can cost you money. Both measure the same profit, but against a different base.",

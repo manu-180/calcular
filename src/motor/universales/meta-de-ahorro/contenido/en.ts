@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aporteNecesario } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -7,7 +7,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const actual = montoEjemplo(ctx, 1000);
   return {
     h1: "Savings goal calculator",
-    title: `Savings goal calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Savings goal calculator for ${ctx.nombrePais}`, `Savings goal in ${ctx.nombrePais}`, "Savings goal calculator"),
     description: "Find out how much to save each month to reach the amount you need by your deadline, counting what you have and what your savings earn.",
     intro: [
       "A trip, a car, a deposit on a home or a cushion for surprises. A goal with an amount and a date is much easier to hit.",

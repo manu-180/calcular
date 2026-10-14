@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -7,7 +7,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const aporte = montoEjemplo(ctx, 300);
   return {
     h1: "Calculadora de fondo de emergencia",
-    title: `Fondo de emergencia: cuánto ahorrar en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Fondo de emergencia: cuánto ahorrar en ${ctx.nombrePais}`, `Fondo de emergencia en ${ctx.nombrePais}`, "Calculadora de fondo de emergencia"),
     description: t(
       "Calcula de cuánto tiene que ser tu fondo de emergencia según tus gastos esenciales y en cuántos meses lo completas con lo que puedes ahorrar.",
       "Calcule de cuánto tiene que ser su fondo de emergencia según sus gastos esenciales y en cuántos meses lo completa con lo que puede ahorrar.",

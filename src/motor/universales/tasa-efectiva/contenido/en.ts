@@ -1,11 +1,11 @@
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aEfectiva, aNominal } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const p = (n: number) => `${formatearNumero(ctx, n, 2)}%`;
   return {
     h1: "APR to APY calculator",
-    title: `APR to APY calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`APR to APY calculator for ${ctx.nombrePais}`, `APR to APY in ${ctx.nombrePais}`, "APR to APY calculator"),
     description: "Convert a nominal annual rate (APR) to an effective annual rate (APY) and back, with monthly, quarterly, semiannual or daily compounding.",
     intro: [
       "Two offers with the same rate can cost different amounts. The difference is how often interest is charged or paid.",

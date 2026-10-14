@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
@@ -6,7 +6,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const hora = montoEjemplo(ctx, 20);
   return {
     h1: "Hourly to salary calculator",
-    title: `Hourly to salary calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Hourly to salary calculator for ${ctx.nombrePais}`, `Hourly to salary in ${ctx.nombrePais}`, "Hourly to salary calculator"),
     description: "Convert your pay between hourly, daily, weekly, semimonthly, monthly and yearly, using your real hours and paid weeks.",
     intro: [
       "How much is your salary per hour? What does an hourly offer come to per year? Enter an amount, pick the period and we show all the others.",

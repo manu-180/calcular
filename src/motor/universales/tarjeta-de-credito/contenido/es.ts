@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { saldar } from "../definicion";
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
@@ -12,7 +12,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const conMinimo = saldar(saldo, 30, { modo: "minimo", fijo: 0, porcentaje: 5, piso: montoEjemplo(ctx, 25) }, r2);
   return {
     h1: "Calculadora para pagar la tarjeta de crédito",
-    title: `Pagar la tarjeta de crédito en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Pagar la tarjeta de crédito en ${ctx.nombrePais}`, `Pagar la tarjeta en ${ctx.nombrePais}`, "Calculadora para pagar la tarjeta de crédito"),
     description: t(
       "Calcula en cuántos meses saldas tu tarjeta de crédito y cuánto pagas de intereses, con un pago fijo o pagando el mínimo.",
       "Calcule en cuántos meses salda su tarjeta de crédito y cuánto paga de intereses, con un pago fijo o pagando el mínimo.",

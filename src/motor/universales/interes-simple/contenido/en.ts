@@ -1,11 +1,11 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const capital = montoEjemplo(ctx, 1000);
   return {
     h1: "Simple interest calculator",
-    title: `Simple interest calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Simple interest calculator for ${ctx.nombrePais}`, `Simple interest in ${ctx.nombrePais}`, "Simple interest calculator"),
     description: "Work out simple interest on a principal at an annual rate over days, months or years. Choose a 365 or 360 day year and see the total.",
     intro: [
       "Simple interest is always worked out on the original principal: interest is not added to the balance during the term.",

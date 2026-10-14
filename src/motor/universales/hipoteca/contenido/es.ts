@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { cuotaFrancesa, interesesTotales } from "../../prestamo/definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -10,7 +10,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const cuota15 = cuotaFrancesa(prestado, 7, 180);
   return {
     h1: "Calculadora de hipoteca",
-    title: `Calculadora de hipoteca en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de hipoteca en ${ctx.nombrePais}`, `Hipoteca en ${ctx.nombrePais}`, "Calculadora de hipoteca"),
     description: t(
       "Calcula la cuota de tu hipoteca según el precio, la entrada, la tasa y el plazo. Mira cuánto pagas de intereses y cómo baja la deuda año a año.",
       "Calcule la cuota de su hipoteca según el precio, la entrada, la tasa y el plazo. Vea cuánto paga de intereses y cómo baja la deuda año a año.",

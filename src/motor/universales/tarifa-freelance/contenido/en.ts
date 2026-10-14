@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { tarifa } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const r = tarifa({ ingreso, gastos, impuestos: 25, diasLibres: 30, diasSemana: 5, horasSemana: 25 });
   return {
     h1: "Freelance rate calculator",
-    title: `Freelance hourly rate calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Freelance hourly rate calculator for ${ctx.nombrePais}`, `Freelance rate in ${ctx.nombrePais}`, "Freelance rate calculator"),
     description: "Work out your hourly and day rate as a freelancer from what you want to earn, your expenses, taxes, time off and billable hours.",
     intro: [
       "The most common freelance mistake is taking the salary you would want as an employee and dividing it by 160 hours. That leaves out taxes, expenses, vacation and every hour you can't bill.",

@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { horarios, minutosTrabajados } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -11,7 +11,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const extra = larga * 5 - 40;
   return {
     h1: "Time card calculator",
-    title: `Time card calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Time card calculator for ${ctx.nombrePais}`, `Time card for ${ctx.nombrePais}`, "Time card calculator"),
     description: "Add up the hours you worked this week from start time, end time and breaks, and work out your pay with overtime included.",
     intro: [
       "Pick the start and end time for each day, your unpaid break and your hourly pay. We show total hours, overtime and your pay for the week.",

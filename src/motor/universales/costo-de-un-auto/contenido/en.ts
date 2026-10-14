@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { costoMensual, type GastosAuto } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -19,7 +19,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const unidad = imperial ? "mile" : "kilometer";
   return {
     h1: "Car cost calculator",
-    title: `Car cost calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Car cost calculator for ${ctx.nombrePais}`, `Car costs in ${ctx.nombrePais}`, "Car cost calculator"),
     description: `Work out what your car really costs per month, per year and per ${unidad}: fuel, insurance, maintenance, parking and the value it loses.`,
     intro: [
       "Most people know what they spend on fuel. Few add up insurance, maintenance, parking and, above all, the value the car loses every year.",

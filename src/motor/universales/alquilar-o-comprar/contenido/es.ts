@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { comparar } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -12,7 +12,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const quien = (a: { comprar: number; alquilar: number }) => (a.comprar >= a.alquilar ? "comprar" : "alquilar");
   return {
     h1: "¿Alquilar o comprar vivienda?",
-    title: `Alquilar o comprar vivienda en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Alquilar o comprar vivienda en ${ctx.nombrePais}`, `Alquilar o comprar en ${ctx.nombrePais}`, "¿Alquilar o comprar vivienda?"),
     description: t(
       "Compara alquilar con comprar con hipoteca a los años que elijas. Te decimos qué conviene, desde qué año y cuánto patrimonio tendrías en cada caso.",
       "Compare alquilar con comprar con hipoteca a los años que elija. Le decimos qué conviene, desde qué año y cuánto patrimonio tendría en cada caso.",

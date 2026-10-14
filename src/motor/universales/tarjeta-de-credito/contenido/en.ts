@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { saldar } from "../definicion";
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
@@ -11,7 +11,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const conMinimo = saldar(saldo, 22, { modo: "minimo", fijo: 0, porcentaje: 3, piso: montoEjemplo(ctx, 25) }, r2);
   return {
     h1: "Credit card payoff calculator",
-    title: `Credit card payoff calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Credit card payoff calculator for ${ctx.nombrePais}`, `Credit card payoff in ${ctx.nombrePais}`, "Credit card payoff calculator"),
     description: "Find out how many months it takes to pay off your credit card and how much interest you pay, with a fixed payment or the minimum.",
     intro: [
       "A credit card is usually the most expensive debt you have. Paying only the minimum stretches it out for years and piles on interest.",

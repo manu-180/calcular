@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -6,7 +6,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const ingreso = montoEjemplo(ctx, 2000);
   return {
     h1: "Calculadora de presupuesto 50/30/20",
-    title: `Presupuesto 50/30/20 en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Presupuesto 50/30/20 en ${ctx.nombrePais}`, "Calculadora de presupuesto 50/30/20", "Presupuesto 50/30/20"),
     description: t(
       "Reparte tu ingreso mensual con la regla 50/30/20: cuánto va a necesidades, cuánto a gustos y cuánto a ahorro. Cambia los porcentajes si lo necesitas.",
       "Reparta su ingreso mensual con la regla 50/30/20: cuánto va a necesidades, cuánto a gustos y cuánto a ahorro. Cambie los porcentajes si lo necesita.",

@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { cuotaFrancesa, interesesTotales } from "../../prestamo/definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const cuota15 = cuotaFrancesa(prestado, 7, 180);
   return {
     h1: "Mortgage calculator",
-    title: `Mortgage calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Mortgage calculator for ${ctx.nombrePais}`, `Mortgages in ${ctx.nombrePais}`, "Mortgage calculator"),
     description: "Work out your monthly mortgage payment from the price, down payment, rate and term. See the total interest and how the balance falls each year.",
     intro: [
       "A mortgage is the biggest debt most households ever take on. It pays to see the full numbers before you talk to a lender.",

@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
@@ -6,7 +6,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const aporte = montoEjemplo(ctx, 300);
   return {
     h1: "Emergency fund calculator",
-    title: `Emergency fund calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Emergency fund calculator for ${ctx.nombrePais}`, `Emergency fund in ${ctx.nombrePais}`, "Emergency fund calculator"),
     description: "Work out how big your emergency fund should be from your essential expenses, and how many months it takes to build with what you can save.",
     intro: [
       "An emergency fund is money set aside for what you can't plan for: losing your job, a health problem or an urgent home repair.",

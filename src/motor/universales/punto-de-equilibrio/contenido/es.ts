@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { equilibrio } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -12,7 +12,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const meta = equilibrio(fijos + objetivo, precio, variable);
   return {
     h1: "Calculadora de punto de equilibrio",
-    title: `Calculadora de punto de equilibrio en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de punto de equilibrio en ${ctx.nombrePais}`, `Punto de equilibrio en ${ctx.nombrePais}`, "Calculadora de punto de equilibrio"),
     description: t(
       "Calcula cuántas unidades tienes que vender y cuánto facturar por mes para cubrir tus costos. También cuánto vender para ganar lo que te propones.",
       "Calcule cuántas unidades tiene que vender y cuánto facturar por mes para cubrir sus costos. También cuánto vender para ganar lo que se propone.",

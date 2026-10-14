@@ -1,4 +1,4 @@
-import { formatearNumero, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aEfectiva, aNominal } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -6,7 +6,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const p = (n: number) => `${formatearNumero(ctx, n, 2)} %`;
   return {
     h1: "Calculadora de tasa efectiva anual",
-    title: `Calculadora de tasa efectiva anual en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de tasa efectiva anual en ${ctx.nombrePais}`, `Tasa efectiva anual en ${ctx.nombrePais}`, "Calculadora de tasa efectiva anual"),
     description: t(
       "Pasa una tasa nominal anual a tasa efectiva anual y al revés, con capitalización mensual, trimestral, semestral o diaria.",
       "Pase una tasa nominal anual a tasa efectiva anual y al revés, con capitalización mensual, trimestral, semestral o diaria.",

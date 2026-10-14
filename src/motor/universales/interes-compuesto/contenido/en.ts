@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { proyectar } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const a20 = proyectar(capital, aporte, 7, 20, "mensual")[19].saldo;
   return {
     h1: "Compound interest calculator",
-    title: `Compound interest calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Compound interest calculator for ${ctx.nombrePais}`, `Compound interest in ${ctx.nombrePais}`, "Compound interest calculator"),
     description: "See how your money grows with compound interest and monthly contributions. Get the final balance, interest earned and a year by year table.",
     intro: [
       "With compound interest, the interest is added to your balance and starts earning interest of its own. That is why savings grow faster and faster.",

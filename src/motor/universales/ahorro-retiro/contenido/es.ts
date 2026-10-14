@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { acumular, rentaMensual } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -12,7 +12,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const capital40 = a40[a40.length - 1].saldo;
   return {
     h1: "Calculadora de ahorro para el retiro",
-    title: `Ahorro para el retiro en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Ahorro para el retiro en ${ctx.nombrePais}`, `Retiro en ${ctx.nombrePais}`, "Calculadora de ahorro para el retiro"),
     description: t(
       "Calcula cuánto juntarías para tu retiro con aportes mensuales y qué ingreso mensual te daría ese ahorro. En dinero de hoy, sin contar la jubilación pública.",
       "Calcule cuánto juntaría para su retiro con aportes mensuales y qué ingreso mensual le daría ese ahorro. En dinero de hoy, sin contar la jubilación pública.",

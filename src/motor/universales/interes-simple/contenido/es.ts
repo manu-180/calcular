@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -6,7 +6,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const capital = montoEjemplo(ctx, 1000);
   return {
     h1: "Calculadora de interés simple",
-    title: `Calculadora de interés simple en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de interés simple en ${ctx.nombrePais}`, `Interés simple en ${ctx.nombrePais}`, "Calculadora de interés simple"),
     description: t(
       "Calcula el interés simple de un capital a una tasa anual por días, meses o años. Elige año de 365 o de 360 días y ve el monto final.",
       "Calcule el interés simple de un capital a una tasa anual por días, meses o años. Elija año de 365 o de 360 días y vea el monto final.",

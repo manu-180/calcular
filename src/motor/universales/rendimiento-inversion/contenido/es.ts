@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { cagr, roi } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const final = montoEjemplo(ctx, 15000);
   return {
     h1: "Calculadora de rendimiento de una inversión",
-    title: `Rendimiento de una inversión (ROI) en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Rendimiento de una inversión (ROI) en ${ctx.nombrePais}`, `Rendimiento de inversión en ${ctx.nombrePais}`, "Calculadora de rendimiento de una inversión"),
     description: t(
       "Calcula el rendimiento total (ROI) y el rendimiento anual (CAGR) de una inversión a partir de lo que pusiste, lo que vale hoy y los años.",
       "Calcule el rendimiento total (ROI) y el rendimiento anual (CAGR) de una inversión a partir de lo que puso, lo que vale hoy y los años.",

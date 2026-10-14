@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { tarifa } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const r = tarifa({ ingreso, gastos, impuestos: 25, diasLibres: 30, diasSemana: 5, horasSemana: 25 });
   return {
     h1: "¿Cuánto cobrar por hora como freelance?",
-    title: `Cuánto cobrar por hora freelance en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Cuánto cobrar por hora freelance en ${ctx.nombrePais}`, `Tarifa freelance en ${ctx.nombrePais}`, "Cuánto cobrar por hora como freelance"),
     description: t(
       "Calcula tu tarifa por hora y por día como independiente a partir de lo que quieres ganar, tus gastos, impuestos, vacaciones y horas facturables.",
       "Calcule su tarifa por hora y por día como independiente a partir de lo que quiere ganar, sus gastos, impuestos, vacaciones y horas facturables.",

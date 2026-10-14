@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { equilibrio } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -11,7 +11,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const meta = equilibrio(fijos + objetivo, precio, variable);
   return {
     h1: "Break-even calculator",
-    title: `Break-even calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Break-even calculator for ${ctx.nombrePais}`, `Break-even in ${ctx.nombrePais}`, "Break-even calculator"),
     description: "Find out how many units you need to sell and how much revenue you need each month to cover your costs, and to reach your target profit.",
     intro: [
       "The break-even point is the level of sales where a business neither makes nor loses money. Below it you lose, above it you start to profit.",

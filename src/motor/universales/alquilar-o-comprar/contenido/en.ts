@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { comparar } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -11,7 +11,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const quien = (a: { comprar: number; alquilar: number }) => (a.comprar >= a.alquilar ? "buying" : "renting");
   return {
     h1: "Rent vs buy calculator",
-    title: `Rent vs buy calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Rent vs buy calculator for ${ctx.nombrePais}`, `Rent vs buy in ${ctx.nombrePais}`, "Rent vs buy calculator"),
     description: "Compare renting with buying a home over the years you choose. See which one leaves you better off, from which year, and by how much.",
     intro: [
       "Comparing the mortgage payment with the rent is not enough. Buyers pay interest, upkeep and property tax, but they end up owning the home. Renters can keep the down payment invested.",

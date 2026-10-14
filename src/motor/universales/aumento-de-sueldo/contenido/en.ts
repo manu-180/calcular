@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aumentoReal } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -7,7 +7,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const sueldo = montoEjemplo(ctx, 4000);
   return {
     h1: "Pay raise calculator",
-    title: `Pay raise calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Pay raise calculator for ${ctx.nombrePais}`, `Pay raise in ${ctx.nombrePais}`, "Pay raise calculator"),
     description: "Work out your new pay after a raise, the difference per month and per year, and whether you beat inflation with your real raise.",
     intro: [
       "You have been offered a raise, or you are about to ask for one. Enter your pay and the raise, as a percentage or an amount, and see how much changes each month and year.",

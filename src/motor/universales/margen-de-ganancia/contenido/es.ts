@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { precioConMargen } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const precio = montoEjemplo(ctx, 100);
   return {
     h1: "Calculadora de margen de ganancia",
-    title: `Calculadora de margen de ganancia en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de margen de ganancia en ${ctx.nombrePais}`, `Margen de ganancia en ${ctx.nombrePais}`, "Calculadora de margen de ganancia"),
     description: t(
       "Calcula el margen y el markup de un producto a partir del costo y el precio, o el precio de venta que necesitas para ganar el margen que buscas.",
       "Calcule el margen y el markup de un producto a partir del costo y el precio, o el precio de venta que necesita para ganar el margen que busca.",

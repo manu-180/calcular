@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aumentoReal } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const sueldo = montoEjemplo(ctx, 1500);
   return {
     h1: "Calculadora de aumento de sueldo",
-    title: `Calculadora de aumento de sueldo en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de aumento de sueldo en ${ctx.nombrePais}`, `Aumento de sueldo en ${ctx.nombrePais}`, "Calculadora de aumento de sueldo"),
     description: t(
       "Calcula tu nuevo sueldo después de un aumento, la diferencia por mes y por año, y si le ganas a la inflación con el aumento real.",
       "Calcule su nuevo sueldo después de un aumento, la diferencia por mes y por año, y si le gana a la inflación con el aumento real.",

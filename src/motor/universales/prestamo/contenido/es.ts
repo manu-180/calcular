@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { cuotaFrancesa, interesesTotales } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const cuota60 = cuotaFrancesa(monto, 12, 60);
   return {
     h1: "Calculadora de préstamos",
-    title: `Calculadora de préstamos en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de préstamos en ${ctx.nombrePais}`, `Préstamos en ${ctx.nombrePais}`, "Calculadora de préstamos"),
     description: t(
       "Calcula la cuota mensual de un préstamo, cuánto pagas de intereses y la tabla de amortización mes a mes. Prueba qué pasa si adelantas pagos.",
       "Calcule la cuota mensual de un préstamo, cuánto paga de intereses y la tabla de amortización mes a mes. Pruebe qué pasa si adelanta pagos.",

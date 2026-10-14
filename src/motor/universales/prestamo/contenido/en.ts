@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { cuotaFrancesa, interesesTotales } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const cuota60 = cuotaFrancesa(monto, 12, 60);
   return {
     h1: "Loan calculator",
-    title: `Loan calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Loan calculator for ${ctx.nombrePais}`, `Loans in ${ctx.nombrePais}`, "Loan calculator"),
     description: "Work out the monthly payment on a loan, the total interest and the full amortization schedule. See how much extra payments save you.",
     intro: [
       "Before you sign for a loan, two numbers matter: what you pay each month and what the loan costs you in interest.",

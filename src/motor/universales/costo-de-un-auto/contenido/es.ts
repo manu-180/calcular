@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { costoMensual, type GastosAuto } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -20,7 +20,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const unidad = imperial ? "milla" : "kilómetro";
   return {
     h1: "Calculadora del costo de tener un auto",
-    title: `Cuánto cuesta tener un auto en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Cuánto cuesta tener un auto en ${ctx.nombrePais}`, `Costo de tener auto en ${ctx.nombrePais}`, "Cuánto cuesta tener un auto"),
     description: t(
       "Calcula el costo real de tu auto por mes, por año y por kilómetro: combustible, seguro, mantenimiento, estacionamiento y lo que pierde de valor.",
       "Calcule el costo real de su auto por mes, por año y por kilómetro: combustible, seguro, mantenimiento, estacionamiento y lo que pierde de valor.",

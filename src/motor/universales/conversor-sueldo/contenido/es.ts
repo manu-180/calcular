@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -7,7 +7,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const hora = montoEjemplo(ctx, 15);
   return {
     h1: "Conversor de sueldo por hora, mes y año",
-    title: `Sueldo por hora, mes y año en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Sueldo por hora, mes y año en ${ctx.nombrePais}`, `Sueldo por hora en ${ctx.nombrePais}`, "Conversor de sueldo por hora, mes y año"),
     description: t(
       "Pasa tu sueldo de mensual a por hora, por día, por semana, por quincena o por año, y al revés. Con tus horas y semanas de trabajo reales.",
       "Pase su sueldo de mensual a por hora, por día, por semana, por quincena o por año, y al revés. Con sus horas y semanas de trabajo reales.",

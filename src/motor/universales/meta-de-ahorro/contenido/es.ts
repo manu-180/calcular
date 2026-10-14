@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aporteNecesario } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const actual = montoEjemplo(ctx, 1000);
   return {
     h1: "Calculadora de meta de ahorro",
-    title: `Calculadora de meta de ahorro en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de meta de ahorro en ${ctx.nombrePais}`, `Meta de ahorro en ${ctx.nombrePais}`, "Calculadora de meta de ahorro"),
     description: t(
       "Calcula cuánto ahorrar por mes para juntar el dinero que necesitas en el plazo que elijas. Suma lo que ya tienes y lo que rinde tu ahorro.",
       "Calcule cuánto ahorrar por mes para juntar el dinero que necesita en el plazo que elija. Sume lo que ya tiene y lo que rinde su ahorro.",

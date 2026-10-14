@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { horarios, minutosTrabajados } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -12,7 +12,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const extra = larga * 5 - 40;
   return {
     h1: "Calculadora de horas trabajadas",
-    title: `Calculadora de horas trabajadas en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de horas trabajadas en ${ctx.nombrePais}`, `Horas trabajadas en ${ctx.nombrePais}`, "Calculadora de horas trabajadas"),
     description: t(
       "Suma tus horas trabajadas de la semana con entrada, salida y pausa, y calcula cuánto te corresponde cobrar con horas extra incluidas.",
       "Sume sus horas trabajadas de la semana con entrada, salida y pausa, y calcule cuánto le corresponde cobrar con horas extra incluidas.",
