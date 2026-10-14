@@ -16,10 +16,16 @@ import transitievergoedingBerekenen from "./calculadoras/transitievergoeding-ber
 import contenidoTransitievergoedingBerekenen from "./contenido/transitievergoeding-berekenen";
 import opzegtermijnBerekenen from "./calculadoras/opzegtermijn-berekenen";
 import contenidoOpzegtermijnBerekenen from "./contenido/opzegtermijn-berekenen";
+import wwUitkeringBerekenen from "./calculadoras/ww-uitkering-berekenen";
+import contenidoWwUitkeringBerekenen from "./contenido/ww-uitkering-berekenen";
+import zzpBelastingBerekenen from "./calculadoras/zzp-belasting-berekenen";
+import contenidoZzpBelastingBerekenen from "./contenido/zzp-belasting-berekenen";
 import arbeidskortingBerekenen from "./calculadoras/arbeidskorting-berekenen";
 import contenidoArbeidskortingBerekenen from "./contenido/arbeidskorting-berekenen";
 import algemeneHeffingskortingBerekenen from "./calculadoras/algemene-heffingskorting-berekenen";
 import contenidoAlgemeneHeffingskortingBerekenen from "./contenido/algemene-heffingskorting-berekenen";
+import box3Berekenen from "./calculadoras/box-3-berekenen";
+import contenidoBox3Berekenen from "./contenido/box-3-berekenen";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -40,8 +46,11 @@ export default definirPais({
     { definicion: vakantiedagenBerekenen, contenido: contenidoVakantiedagenBerekenen, cliente: () => import("./calculadoras/vakantiedagen-berekenen.cliente") },
     { definicion: transitievergoedingBerekenen, contenido: contenidoTransitievergoedingBerekenen, cliente: () => import("./calculadoras/transitievergoeding-berekenen.cliente") },
     { definicion: opzegtermijnBerekenen, contenido: contenidoOpzegtermijnBerekenen, cliente: () => import("./calculadoras/opzegtermijn-berekenen.cliente") },
+    { definicion: wwUitkeringBerekenen, contenido: contenidoWwUitkeringBerekenen, cliente: () => import("./calculadoras/ww-uitkering-berekenen.cliente") },
+    { definicion: zzpBelastingBerekenen, contenido: contenidoZzpBelastingBerekenen, cliente: () => import("./calculadoras/zzp-belasting-berekenen.cliente") },
     { definicion: arbeidskortingBerekenen, contenido: contenidoArbeidskortingBerekenen, cliente: () => import("./calculadoras/arbeidskorting-berekenen.cliente") },
     { definicion: algemeneHeffingskortingBerekenen, contenido: contenidoAlgemeneHeffingskortingBerekenen, cliente: () => import("./calculadoras/algemene-heffingskorting-berekenen.cliente") },
+    { definicion: box3Berekenen, contenido: contenidoBox3Berekenen, cliente: () => import("./calculadoras/box-3-berekenen.cliente") },
   ],
   universales: "todas",
   novedades,
