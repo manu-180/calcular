@@ -1,9 +1,15 @@
 import type { TextosUi } from "../../tipos";
 import type { UiHipoteca } from "../definicion";
 
+const CUOTAS_COMUNIDAD: Readonly<Record<string, string>> = {
+  "en-US": "HOA fees",
+  "en-AU": "strata fees",
+  "en-CA": "condo fees",
+};
+
 export const textosEn: TextosUi<UiHipoteca> = {
   slug: "mortgage",
-  ui: () => ({
+  ui: (_trato, locale) => ({
     precio: "Home price",
     entradaPorcentaje: "Down payment (% of price)",
     entradaMonto: "Down payment amount (optional)",
@@ -11,7 +17,7 @@ export const textosEn: TextosUi<UiHipoteca> = {
     tasa: "Annual interest rate (%)",
     anios: "Term in years",
     gastos: "Monthly housing costs (optional)",
-    gastosAyuda: "Property tax, home insurance or HOA fees you pay along with the mortgage.",
+    gastosAyuda: `Property tax, home insurance or ${CUOTAS_COMUNIDAD[locale] ?? "service charges"} you pay along with the mortgage.`,
     cuota: "Monthly mortgage payment",
     cuotaTotal: "Monthly payment with costs",
     entrada: "Down payment",

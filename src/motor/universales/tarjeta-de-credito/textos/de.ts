@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiTarjetaDeCredito } from "../definicion";
 
-export const textosDe: TextosUi<UiTarjetaDeCredito> = {
+const textos: TextosUi<UiTarjetaDeCredito> = {
   slug: "kreditkarte-abbezahlen",
   ui: () => ({
     saldo: "Offener Betrag auf der Karte",
@@ -38,3 +39,5 @@ export const textosDe: TextosUi<UiTarjetaDeCredito> = {
     observacionNoGastar: "Angenommen ist, dass Sie während der Rückzahlung nichts Neues mit der Karte bezahlen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

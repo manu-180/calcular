@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiFondoDeEmergencia } from "../definicion";
 
-export const textosEs: TextosUi<UiFondoDeEmergencia> = {
+const base: TextosUi<UiFondoDeEmergencia> = {
   slug: "fondo-de-emergencia",
   ui: (trato) => ({
     gastos: "Gastos esenciales por mes",
@@ -24,8 +25,8 @@ export const textosEs: TextosUi<UiFondoDeEmergencia> = {
       vos: "Escribí tus gastos esenciales de un mes.",
     }),
     yaCubierto: segunTrato(trato, {
-      tu: "Ya tienes el fondo completo. Lo que ahorres de ahora en más puede ir a otras metas.",
-      usted: "Ya tiene el fondo completo. Lo que ahorre de ahora en más puede ir a otras metas.",
+      tu: "Ya tienes el fondo completo. Lo que ahorres de ahora en adelante puede ir a otras metas.",
+      usted: "Ya tiene el fondo completo. Lo que ahorre de ahora en adelante puede ir a otras metas.",
       vos: "Ya tenés el fondo completo. Lo que ahorres de ahora en más puede ir a otras metas.",
     }),
     sinAporte: segunTrato(trato, {
@@ -37,3 +38,15 @@ export const textosEs: TextosUi<UiFondoDeEmergencia> = {
       "Conviene tenerlo en una cuenta aparte, que se pueda retirar en el día y que no pierda valor: una caja de ahorro o un fondo de liquidez inmediata.",
   }),
 };
+
+const espana = (): Partial<UiFondoDeEmergencia> => ({
+  gastos: "Gastos esenciales al mes",
+  gastosAyuda: "Lo que no puedes dejar de pagar: vivienda, comida, suministros, transporte, salud y deudas.",
+  aporte: "Lo que puedes ahorrar al mes (opcional)",
+  falta: "Lo que falta por ahorrar",
+  sinAporte: "Escribe cuánto puedes ahorrar al mes y te decimos en cuánto tiempo lo completas.",
+  observacionDonde:
+    "Conviene tenerlo en una cuenta aparte, de la que puedas sacar el dinero al momento y que no pierda valor: una cuenta remunerada o un depósito sin penalización por retirarlo.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

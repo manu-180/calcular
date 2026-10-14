@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiTarifaFreelance } from "../definicion";
 
-export const textosFr: TextosUi<UiTarifaFreelance> = {
+const base: TextosUi<UiTarifaFreelance> = {
   slug: "calcul-tjm-freelance",
   ui: () => ({
     ingreso: "Ce que vous voulez gagner net par an",
@@ -27,3 +28,10 @@ export const textosFr: TextosUi<UiTarifaFreelance> = {
     observacionFacturables: "Si vous facturez moins, vous gagnerez moins que prévu ou travaillerez plus d’heures.",
   }),
 };
+
+const canada = (): Partial<UiTarifaFreelance> => ({
+  ingresoAyuda: "Après impôts, cotisations et dépenses. C’est votre salaire de travailleur autonome.",
+  gastosAyuda: "Matériel, logiciels, internet, formations, comptable, assurances collectives et épargne-retraite (REER).",
+});
+
+export const textosFr = conVariantes(base, { "fr-CA": canada });

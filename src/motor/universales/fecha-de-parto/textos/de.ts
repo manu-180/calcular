@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiFechaDeParto } from "../definicion";
 
-export const textosDe: TextosUi<UiFechaDeParto> = {
+const textos: TextosUi<UiFechaDeParto> = {
   slug: "geburtstermin-rechner",
   ui: () => ({
     metodo: "Welches Datum kennen Sie?",
@@ -24,3 +25,5 @@ export const textosDe: TextosUi<UiFechaDeParto> = {
     aviso: "Das ist eine Schätzung. Nur wenige Babys kommen genau am errechneten Termin. Den genauesten Termin bestimmen Ihre Frauenärztin, Ihr Frauenarzt oder Ihre Hebamme, etwa per Ultraschall.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

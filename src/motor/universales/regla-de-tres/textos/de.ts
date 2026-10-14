@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiReglaDeTres } from "../definicion";
 
-export const textosDe: TextosUi<UiReglaDeTres> = {
+const textos: TextosUi<UiReglaDeTres> = {
   slug: "dreisatz",
   ui: () => ({
     tipo: "Art des Dreisatzes",
@@ -17,3 +18,5 @@ export const textosDe: TextosUi<UiReglaDeTres> = {
     fraseInversa: (a, b, c, x) => `Wenn ${a} zu ${b} führt, führt ${c} zu ${x}. Rechnung: ${a} × ${b} ÷ ${c}.`,
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

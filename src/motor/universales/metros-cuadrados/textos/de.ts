@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiMetrosCuadrados } from "../definicion";
 
-export const textosDe: TextosUi<UiMetrosCuadrados> = {
+const textos: TextosUi<UiMetrosCuadrados> = {
   slug: "quadratmeter-rechner",
   ui: () => ({
     forma: (n) => `Fläche ${n}: Form`,
@@ -19,3 +20,5 @@ export const textosDe: TextosUi<UiMetrosCuadrados> = {
     errorMedida: "Dieser Wert fehlt oder ist 0.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

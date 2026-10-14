@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiCombustible } from "../definicion";
 
-export const textosEs: TextosUi<UiCombustible> = {
+const base: TextosUi<UiCombustible> = {
   slug: "costo-de-combustible",
   ui: (trato) => ({
     distancia: (u) => `Distancia del viaje (${u})`,
@@ -27,3 +28,11 @@ export const textosEs: TextosUi<UiCombustible> = {
     errorPersonas: "Tiene que haber al menos una persona.",
   }),
 };
+
+const espana = (): Partial<UiCombustible> => ({
+  consumoAyuda: "Lo encuentras en el manual o en el ordenador de a bordo. En carretera suele ser más bajo que en ciudad.",
+  costo: "Coste del combustible",
+  costoPorDistancia: (u) => `Coste por ${u}`,
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

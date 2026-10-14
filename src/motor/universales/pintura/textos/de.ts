@@ -1,9 +1,10 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPintura } from "../definicion";
 
 const volumen = (u: string) => (u === "L" ? "Liter" : "Gallonen");
 
-export const textosDe: TextosUi<UiPintura> = {
+const textos: TextosUi<UiPintura> = {
   slug: "farbbedarf-rechner",
   ui: () => ({
     modo: "Was haben Sie gemessen?",
@@ -28,3 +29,5 @@ export const textosDe: TextosUi<UiPintura> = {
     errorRendimiento: "Die Ergiebigkeit muss über 0 liegen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

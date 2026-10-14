@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiFondoDeEmergencia } from "../definicion";
 
-export const textosDe: TextosUi<UiFondoDeEmergencia> = {
+const textos: TextosUi<UiFondoDeEmergencia> = {
   slug: "notgroschen-rechner",
   ui: () => ({
     gastos: "Feste Ausgaben pro Monat",
@@ -20,3 +21,5 @@ export const textosDe: TextosUi<UiFondoDeEmergencia> = {
     observacionDonde: "Legen Sie ihn auf ein eigenes Konto, von dem Sie jederzeit abheben können und das nicht schwankt, zum Beispiel ein Tagesgeldkonto.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

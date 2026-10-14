@@ -1,7 +1,8 @@
+import { paraSuiza } from "../../comun/locales";
 import { aDia, aFecha, esHabil, fechaLarga } from "../../comun/fechas";
 import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoDe: ContenidoUniversal = (ctx) => {
+const contenido: ContenidoUniversal = (ctx) => {
   const f = (iso: string) => fechaLarga(ctx.locale, iso);
   const inicio = "2026-03-02";
   const mas90 = aFecha(aDia(inicio) + 90);
@@ -54,3 +55,5 @@ export const contenidoDe: ContenidoUniversal = (ctx) => {
   };
   return ctx.locale === "de-CH" ? JSON.parse(JSON.stringify(c).replace(/ß/g, "ss")) : c;
 };
+
+export const contenidoDe: ContenidoUniversal = (ctx) => paraSuiza(ctx.locale, contenido(ctx));

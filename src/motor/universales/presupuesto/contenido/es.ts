@@ -1,6 +1,7 @@
-import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const m = (n: number) => formatearMonto(ctx, n);
   const ingreso = montoEjemplo(ctx, 2000);
@@ -55,3 +56,40 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const m = (n: number) => formatearMonto(ctx, n);
+  const ingreso = montoEjemplo(ctx, 2000);
+  return {
+    intro: [
+      "La regla 50/30/20 es una forma sencilla de ordenar el dinero del mes. La mitad va a lo imprescindible, un 30 % a lo que se disfruta y un 20 % al ahorro.",
+      "Escribe lo que cobras en neto y te mostramos cuánto corresponde a cada parte. Si tu realidad es otra, por ejemplo un alquiler alto, ajusta los porcentajes.",
+    ],
+    ejemplo: [
+      `Con un ingreso de ${m(ingreso)} al mes: ${m(ingreso * 0.5)} para necesidades, ${m(ingreso * 0.3)} para gustos y ${m(ingreso * 0.2)} para ahorro.`,
+      `En un año, ese 20 % suma ${m(ingreso * 0.2 * 12)} ahorrados.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿Qué entra en necesidades y qué en gustos?",
+        respuesta:
+          "Necesidades es lo que se paga sí o sí: vivienda, comida básica, suministros, transporte, salud y el mínimo de las deudas. Gustos es lo que podría recortarse si hiciera falta.",
+      },
+      {
+        pregunta: "¿Y si mis necesidades pasan del 50 %?",
+        respuesta: "Es habitual, sobre todo con alquileres altos. Usa por ejemplo 60/20/20 o 70/20/10 e intenta no bajar el ahorro a cero.",
+      },
+      {
+        pregunta: "¿El ahorro incluye pagar deudas?",
+        respuesta:
+          "El pago mínimo va en necesidades. Lo que se paga de más para cancelar antes una deuda cuenta como ahorro, porque mejora el patrimonio igual que ahorrar.",
+      },
+    ],
+    glosario: [
+      { termino: "Ingreso neto", definicion: "Lo que se cobra después de la retención de IRPF y las cotizaciones." },
+      { termino: "Regla 50/30/20", definicion: "Un reparto del ingreso entre necesidades, gustos y ahorro." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

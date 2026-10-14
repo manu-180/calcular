@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAlquilarOComprar } from "../definicion";
 
-export const textosPt: TextosUi<UiAlquilarOComprar> = {
+const base: TextosUi<UiAlquilarOComprar> = {
   slug: "alugar-ou-comprar",
   ui: () => ({
     precio: "Valor do imóvel",
@@ -40,3 +41,29 @@ export const textosPt: TextosUi<UiAlquilarOComprar> = {
       "A conta compara o patrimônio que você teria em cada caso. Se alugar, a entrada e o que sobrar a cada mês ficam investidos. Os custos de uma venda futura não são descontados.",
   }),
 };
+
+const portugal = (): Partial<UiAlquilarOComprar> => ({
+  gastosCompraAyuda: "Escritura, registo, IMT, imposto do selo, comissão da imobiliária e avaliação.",
+  tasa: "Taxa de juro do crédito habitação (% ao ano)",
+  aniosHipoteca: "Prazo do crédito em anos",
+  alquiler: "Renda mensal de uma casa parecida",
+  aumentoAlquiler: "Atualização anual da renda (%)",
+  gastosPropietarioAyuda: "Manutenção, IMI, condomínio e seguro. O habitual é de 1% a 2%.",
+  rendimientoAyuda: "O que ganharia se investisse a entrada em vez de comprar.",
+  patrimonioComprar: "Património no final se comprar",
+  patrimonioAlquilar: "Património no final se arrendar",
+  pagadoAlquilando: "Total pago em renda",
+  pagadoComprando: "Total de prestações e gastos do proprietário",
+  colComprar: "Se comprar",
+  colAlquilar: "Se arrendar",
+  errorPrecio: "Indique o valor do imóvel.",
+  errorAlquiler: "Indique quanto custaria arrendar uma casa parecida.",
+  convieneComprar: (anios, diferencia) => `Comprar compensa mais: ao fim de ${anios} anos teria mais ${diferencia}.`,
+  convieneAlquilar: (anios, diferencia) => `Arrendar compensa mais: ao fim de ${anios} anos teria mais ${diferencia}.`,
+  empate: (anios) => `Ao fim de ${anios} anos as duas opções dão o mesmo resultado.`,
+  observacionDesde: (anio) => `Comprar passa à frente de arrendar no ano ${anio} e não volta a ficar para trás.`,
+  observacionMetodo:
+    "A conta compara o património que teria em cada caso. Se arrendar, a entrada e o que sobrar todos os meses ficam investidos. Os custos de uma venda futura não são descontados.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

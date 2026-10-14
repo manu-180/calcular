@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAhorroRetiro } from "../definicion";
 
-export const textosDe: TextosUi<UiAhorroRetiro> = {
+const textos: TextosUi<UiAhorroRetiro> = {
   slug: "altersvorsorge-rechner",
   ui: () => ({
     edadActual: "Ihr Alter heute",
@@ -26,3 +27,5 @@ export const textosDe: TextosUi<UiAhorroRetiro> = {
     observacionPublica: "Das ist nur Ihre private Vorsorge. Die gesetzliche Rente und Betriebsrenten sind nicht enthalten.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

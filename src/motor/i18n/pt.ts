@@ -66,7 +66,7 @@ const base: TextosSitio = {
     novedades: "Últimas novidades",
     verNovedades: "Ver todas as novidades",
     sinCalculadoras: "Ainda não há calculadoras publicadas para este país.",
-    descripcion: (pais) => `Calculadoras trabalhistas, de impostos e de dinheiro ${g.de(pais)}, com o valor oficial em vigor, a fonte e a data de conferência.`,
+    descripcion: (pais) => `Calculadoras de salário, impostos, empréstimos, poupança, saúde, datas e casa ${g.de(pais)}, com o valor oficial em vigor e a fonte.`,
     irASeccion: "Ir para uma seção",
   },
   fuentes: {

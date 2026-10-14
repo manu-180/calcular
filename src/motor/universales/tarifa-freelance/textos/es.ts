@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiTarifaFreelance } from "../definicion";
 
-export const textosEs: TextosUi<UiTarifaFreelance> = {
+const base: TextosUi<UiTarifaFreelance> = {
   slug: "cuanto-cobrar-por-hora",
   ui: (trato) => ({
     ingreso: segunTrato(trato, {
@@ -52,3 +53,27 @@ export const textosEs: TextosUi<UiTarifaFreelance> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiTarifaFreelance> => ({
+  ingreso: "Lo que quieres ganar en neto al año",
+  ingresoAyuda: "Después de impuestos y gastos. Es tu sueldo como autónomo.",
+  gastos: "Gastos del negocio al año",
+  gastosAyuda: "Equipo, software, internet, formación, gestoría, seguro de salud y plan de pensiones.",
+  impuestos: "Impuestos y cuota de autónomo estimados (%)",
+  impuestosAyuda:
+    "Lo que se va en IRPF y cuota de autónomo sobre lo que facturas, menos los gastos. Si no lo sabes, pregunta a tu gestor. Un 25 % es un punto de partida.",
+  diasLibres: "Días sin trabajar al año",
+  diasLibresAyuda: "Vacaciones, festivos y días de baja. Como nadie te los paga, hay que cubrirlos con la tarifa.",
+  diasSemana: "Días de trabajo a la semana",
+  horasSemana: "Horas facturables a la semana",
+  horasSemanaAyuda:
+    "Solo las horas que se cobran. Las de buscar clientes, gestionar y formarse no se facturan. Entre 20 y 30 de 40 es lo habitual.",
+  facturacionMensual: "Facturación necesaria al mes",
+  facturacionAnual: "Facturación necesaria al año",
+  horasAnio: "Horas facturables al año",
+  errorIngreso: "Escribe cuánto quieres ganar al año.",
+  errorImpuestos: "Los impuestos tienen que ser menores que el 100 %.",
+  errorHoras: "Escribe cuántas horas a la semana puedes facturar.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

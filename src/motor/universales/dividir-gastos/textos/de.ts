@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiDividirGastos } from "../definicion";
 
-export const textosDe: TextosUi<UiDividirGastos> = {
+const textos: TextosUi<UiDividirGastos> = {
   slug: "kosten-teilen",
   ui: () => ({
     persona: (n) => `Person ${n}`,
@@ -18,3 +19,5 @@ export const textosDe: TextosUi<UiDividirGastos> = {
     aMano: "Alles ausgeglichen. Alle haben gleich viel bezahlt.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

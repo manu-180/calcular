@@ -1,6 +1,7 @@
+import { paraSuiza } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoDe: ContenidoUniversal = (ctx) => {
+const contenido: ContenidoUniversal = (ctx) => {
   const tasa = `{{${ctx.datos.tasa}}}`;
   const precio = formatearMonto(ctx, montoEjemplo(ctx, 100));
   const c = {
@@ -53,3 +54,5 @@ export const contenidoDe: ContenidoUniversal = (ctx) => {
   if (ctx.locale !== "de-CH") return c;
   return JSON.parse(JSON.stringify(c).replace(/ß/g, "ss").replace(/MwSt\.-Rechner/g, "MWST-Rechner").replace(/MwSt\./g, "MWST"));
 };
+
+export const contenidoDe: ContenidoUniversal = (ctx) => paraSuiza(ctx.locale, contenido(ctx));

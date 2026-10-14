@@ -24,6 +24,6 @@ export const textosFr: TextosUi<UiInteresCompuesto> = {
     colIntereses: "Intérêts",
     colSaldo: "Capital en fin d’année",
     errorSinDinero: "Saisissez un capital de départ ou un versement mensuel.",
-    observacionIntereses: (porcentaje) => `${porcentaje.replace(".", ",")} % du capital final vient des intérêts.`,
+    observacionIntereses: (porcentaje) => `${porcentaje} % du capital final vient des intérêts.`,
   }),
 };

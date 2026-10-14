@@ -13,6 +13,6 @@ export const textosFr: TextosUi<UiDescuento> = {
     descuentoTotal: "Remise totale",
     errorMayorA100: "Une remise ne peut pas dépasser 100 %.",
     observacionDoble: (efectivo) =>
-      `Deux remises successives ne s’additionnent pas : au total, vous payez ${efectivo.replace(".", ",")} % de moins.`,
+      `Deux remises successives ne s’additionnent pas : au total, vous payez ${efectivo} % de moins.`,
   }),
 };

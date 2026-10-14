@@ -65,7 +65,7 @@ const base: TextosSitio = {
     novedades: "Laatste wijzigingen",
     verNovedades: "Alle wijzigingen bekijken",
     sinCalculadoras: "Voor dit land zijn er nog geen rekenhulpen.",
-    descripcion: (pais) => `Rekenhulpen voor salaris, belastingen en geldzaken ${g.en(pais)}, met de geldende officiële waarde, de bron en de controledatum.`,
+    descripcion: (pais) => `Rekenhulpen voor salaris, belastingen, leningen, sparen, gezondheid, datums en wonen ${g.en(pais)}, met de geldende officiële waarde en de bron.`,
     irASeccion: "Naar een onderdeel gaan",
   },
   fuentes: {

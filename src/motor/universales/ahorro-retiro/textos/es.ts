@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiAhorroRetiro } from "../definicion";
 
-export const textosEs: TextosUi<UiAhorroRetiro> = {
+const base: TextosUi<UiAhorroRetiro> = {
   slug: "ahorro-para-el-retiro",
   ui: (trato) => ({
     edadActual: segunTrato(trato, { tu: "Tu edad hoy", usted: "Su edad hoy", vos: "Tu edad hoy" }),
@@ -42,3 +43,17 @@ export const textosEs: TextosUi<UiAhorroRetiro> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiAhorroRetiro> => ({
+  edadRetiro: "Edad a la que te quieres jubilar",
+  aporte: "Aportación mensual",
+  rendimientoAyuda: "Lo que rinde la inversión por encima de la inflación. Entre un 2 % y un 5 % es una suposición prudente a largo plazo.",
+  aniosRenta: "Años de jubilación a cubrir",
+  capital: "Ahorro al jubilarte",
+  errorEdades: "La edad de jubilación tiene que ser mayor que tu edad de hoy.",
+  errorSinAhorro: "Escribe un ahorro inicial o una aportación mensual.",
+  observacionDineroDeHoy: "Las cantidades están en dinero de hoy, porque el rendimiento ya descuenta la inflación.",
+  observacionPublica: "Es solo tu ahorro propio. No incluye la pensión de la Seguridad Social que puedas cobrar.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

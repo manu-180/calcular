@@ -1,6 +1,7 @@
+import { paraSuiza } from "../../comun/locales";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoDe: ContenidoUniversal = (ctx) => {
+const contenido: ContenidoUniversal = (ctx) => {
   const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
   const imperial = ctx.unidades === "imperial";
   const ejemplo = imperial
@@ -59,3 +60,5 @@ export const contenidoDe: ContenidoUniversal = (ctx) => {
   };
   return ctx.locale === "de-CH" ? JSON.parse(JSON.stringify(c).replace(/ß/g, "ss")) : c;
 };
+
+export const contenidoDe: ContenidoUniversal = (ctx) => paraSuiza(ctx.locale, contenido(ctx));

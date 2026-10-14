@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiTarifaFreelance } from "../definicion";
 
-export const textosDe: TextosUi<UiTarifaFreelance> = {
+const textos: TextosUi<UiTarifaFreelance> = {
   slug: "stundensatz-rechner",
   ui: () => ({
     ingreso: "Gewünschtes Nettoeinkommen pro Jahr",
@@ -27,3 +28,5 @@ export const textosDe: TextosUi<UiTarifaFreelance> = {
     observacionFacturables: "Verlangen Sie weniger, verdienen Sie weniger als geplant oder arbeiten mehr Stunden.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);
