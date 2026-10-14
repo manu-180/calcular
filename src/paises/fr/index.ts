@@ -17,9 +17,9 @@ import calculInflation from "./calculadoras/calcul-inflation";
 import baremeKilometrique from "./calculadoras/bareme-kilometrique";
 import droitsDeSuccession from "./calculadoras/droits-de-succession";
 import droitsDeDonation from "./calculadoras/droits-de-donation";
-import indemnitesJournalieres from "./calculadoras/indemnites-journalieres";
-import allocationChomage from "./calculadoras/allocation-chomage";
-import interetsLivretA from "./calculadoras/interets-livret-a";
+import indemnitesJournalieresMaladie from "./calculadoras/indemnites-journalieres-maladie";
+import calculAllocationChomage from "./calculadoras/calcul-allocation-chomage";
+import calculInteretsLivretA from "./calculadoras/calcul-interets-livret-a";
 import contenidoSalaireBrutNet from "./contenido/salaire-brut-net";
 import contenidoSmic from "./contenido/smic";
 import contenidoCalculTva from "./contenido/calcul-tva";
@@ -37,9 +37,9 @@ import contenidoCalculInflation from "./contenido/calcul-inflation";
 import contenidoBaremeKilometrique from "./contenido/bareme-kilometrique";
 import contenidoDroitsDeSuccession from "./contenido/droits-de-succession";
 import contenidoDroitsDeDonation from "./contenido/droits-de-donation";
-import contenidoIndemnitesJournalieres from "./contenido/indemnites-journalieres";
-import contenidoAllocationChomage from "./contenido/allocation-chomage";
-import contenidoInteretsLivretA from "./contenido/interets-livret-a";
+import contenidoIndemnitesJournalieresMaladie from "./contenido/indemnites-journalieres-maladie";
+import contenidoCalculAllocationChomage from "./contenido/calcul-allocation-chomage";
+import contenidoCalculInteretsLivretA from "./contenido/calcul-interets-livret-a";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -71,9 +71,9 @@ export default definirPais({
     { definicion: baremeKilometrique, contenido: contenidoBaremeKilometrique, cliente: () => import("./calculadoras/bareme-kilometrique.cliente") },
     { definicion: droitsDeSuccession, contenido: contenidoDroitsDeSuccession, cliente: () => import("./calculadoras/droits-de-succession.cliente") },
     { definicion: droitsDeDonation, contenido: contenidoDroitsDeDonation, cliente: () => import("./calculadoras/droits-de-donation.cliente") },
-    { definicion: indemnitesJournalieres, contenido: contenidoIndemnitesJournalieres, cliente: () => import("./calculadoras/indemnites-journalieres.cliente") },
-    { definicion: allocationChomage, contenido: contenidoAllocationChomage, cliente: () => import("./calculadoras/allocation-chomage.cliente") },
-    { definicion: interetsLivretA, contenido: contenidoInteretsLivretA, cliente: () => import("./calculadoras/interets-livret-a.cliente") },
+    { definicion: indemnitesJournalieresMaladie, contenido: contenidoIndemnitesJournalieresMaladie, cliente: () => import("./calculadoras/indemnites-journalieres-maladie.cliente") },
+    { definicion: calculAllocationChomage, contenido: contenidoCalculAllocationChomage, cliente: () => import("./calculadoras/calcul-allocation-chomage.cliente") },
+    { definicion: calculInteretsLivretA, contenido: contenidoCalculInteretsLivretA, cliente: () => import("./calculadoras/calcul-interets-livret-a.cliente") },
   ],
   universales: "todas",
 });

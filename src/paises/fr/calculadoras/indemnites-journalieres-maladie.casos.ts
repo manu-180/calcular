@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import ij from "./indemnites-journalieres";
+import ij from "./indemnites-journalieres-maladie";
 
 const F3053 = "https://www.service-public.gouv.fr/particuliers/vosdroits/F3053";
 

@@ -7,7 +7,7 @@ export default definirContenido({
   description:
     "Calculez les intérêts de votre livret A au taux de {{fr.livret-a-taux}} : règle des quinzaines, dates de valeur des dépôts et retraits, capitalisation au 31 décembre.",
   intro: [
-    "Le livret A rapporte {{fr.livret-a-taux}} par an depuis le {{fr.livret-a-taux#desde}}. Les intérêts sont nets d'impôt et de prélèvements sociaux.",
+    "Le livret A rapporte {{fr.livret-a-taux}} par an. Les intérêts sont nets d'impôt et de prélèvements sociaux.",
     "Ils se calculent par quinzaine entière : une somme ne rapporte qu'à partir du 1er ou du 16 du mois qui suit son dépôt.",
   ],
   comoSeCalcula: [

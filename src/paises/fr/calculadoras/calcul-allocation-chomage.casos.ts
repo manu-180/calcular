@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import are from "./allocation-chomage";
+import are from "./calcul-allocation-chomage";
 
 export default definirCasos(are, [
   {

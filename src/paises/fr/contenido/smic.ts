@@ -7,7 +7,7 @@ export default definirContenido({
   description:
     "Montant du Smic en 2026 : {{fr.smic-horaire}} brut de l'heure. Calculez le Smic mensuel brut et net selon vos heures, à temps plein ou à temps partiel.",
   intro: [
-    "Le Smic est le salaire horaire minimum que doit recevoir tout salarié majeur en France. Depuis le {{fr.smic-horaire#desde}}, il est de {{fr.smic-horaire}} brut de l'heure.",
+    "Le Smic est le salaire horaire minimum que doit recevoir tout salarié majeur en France. Il est aujourd'hui de {{fr.smic-horaire}} brut de l'heure.",
     "Indiquez vos heures par semaine : la calculatrice donne le Smic mensuel brut, le net après cotisations et le total sur la période qui vous intéresse.",
   ],
   comoSeCalcula: [

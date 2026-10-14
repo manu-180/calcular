@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import livret from "./interets-livret-a";
+import livret from "./calcul-interets-livret-a";
 
 export default definirCasos(livret, [
   {
