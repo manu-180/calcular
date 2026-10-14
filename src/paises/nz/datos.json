@@ -1,0 +1,942 @@
+{
+  "mercado": "nz",
+  "datos": [
+    {
+      "id": "nz.income-tax-rates",
+      "nombre": "Income tax rates for individuals",
+      "tipo": "escala",
+      "unidad": "NZD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 15600,
+              "tasa": 10.5
+            },
+            {
+              "desde": 15600,
+              "hasta": 53500,
+              "tasa": 17.5
+            },
+            {
+              "desde": 53500,
+              "hasta": 78100,
+              "tasa": 30
+            },
+            {
+              "desde": 78100,
+              "hasta": 180000,
+              "tasa": 33
+            },
+            {
+              "desde": 180000,
+              "hasta": null,
+              "tasa": 39
+            }
+          ],
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Tax rates for individuals (from 1 April 2025)",
+            "url": "https://www.ird.govt.nz/income-tax/income-tax-for-individuals/tax-codes-and-tax-rates-for-individuals/tax-rates-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.acc-earners-levy-rate",
+      "nombre": "ACC earners' levy rate (includes GST)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2028-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": 1.67,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "ACC earners' levy rates",
+            "url": "https://www.ird.govt.nz/acclevy",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 1.75,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "ACC earners' levy rates",
+            "url": "https://www.ird.govt.nz/acclevy",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-04-01",
+          "hasta": "2028-03-31",
+          "valor": 1.83,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "ACC earners' levy rates",
+            "url": "https://www.ird.govt.nz/acclevy",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.acc-max-liable-earnings",
+      "nombre": "Maximum liable earnings for the ACC earners' levy",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2028-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": 152790,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "ACC earners' levy rates",
+            "url": "https://www.ird.govt.nz/acclevy",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 156641,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "ACC earners' levy rates",
+            "url": "https://www.ird.govt.nz/acclevy",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-04-01",
+          "hasta": "2028-03-31",
+          "valor": 160244,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "ACC earners' levy rates",
+            "url": "https://www.ird.govt.nz/acclevy",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.student-loan-threshold",
+      "nombre": "Student loan annual repayment threshold",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 24128,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Weekly threshold $464, fortnightly $928, four-weekly $1,856, monthly $2,010.66."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.student-loan-rate",
+      "nombre": "Student loan repayment rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.ietc-annual",
+      "nombre": "Independent earner tax credit, full amount a year",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 520,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Independent earner tax credit (IETC)",
+            "url": "https://www.ird.govt.nz/income-tax/income-tax-for-individuals/individual-tax-credits/independent-earner-tax-credit-ietc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.ietc-lower-threshold",
+      "nombre": "IETC lower income threshold",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 24000,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Independent earner tax credit (IETC)",
+            "url": "https://www.ird.govt.nz/income-tax/income-tax-for-individuals/individual-tax-credits/independent-earner-tax-credit-ietc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.ietc-abatement-threshold",
+      "nombre": "IETC abatement starts",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 66000,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Independent earner tax credit (IETC)",
+            "url": "https://www.ird.govt.nz/income-tax/income-tax-for-individuals/individual-tax-credits/independent-earner-tax-credit-ietc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.ietc-upper-threshold",
+      "nombre": "IETC upper income threshold",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 70000,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Independent earner tax credit (IETC)",
+            "url": "https://www.ird.govt.nz/income-tax/income-tax-for-individuals/individual-tax-credits/independent-earner-tax-credit-ietc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.ietc-abatement-rate",
+      "nombre": "IETC abatement rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Independent earner tax credit (IETC)",
+            "url": "https://www.ird.govt.nz/income-tax/income-tax-for-individuals/individual-tax-credits/independent-earner-tax-credit-ietc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.kiwisaver-employer-rate",
+      "nombre": "KiwiSaver compulsory employer contribution rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2028-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "The rate rose from 3% to 3.5% for paydays on or after 1 April 2026."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2028-03-31",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-04-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Legislated increase for paydays on or after 1 April 2028."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.kiwisaver-default-rate",
+      "nombre": "KiwiSaver default employee contribution rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2028-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "The rate rose from 3% to 3.5% for paydays on or after 1 April 2026."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2028-03-31",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-04-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Legislated increase for paydays on or after 1 April 2028."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.kiwisaver-reduced-rate",
+      "nombre": "KiwiSaver temporary rate reduction (stay on the old rate)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2028-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Members can apply to stay at 3% for 12 months, then reapply."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.esct-rates",
+      "nombre": "Employer superannuation contribution tax (ESCT) rate thresholds",
+      "tipo": "escala",
+      "unidad": "NZD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 18720,
+              "tasa": 10.5
+            },
+            {
+              "desde": 18720,
+              "hasta": 64200,
+              "tasa": 17.5
+            },
+            {
+              "desde": 64200,
+              "hasta": 93720,
+              "tasa": 30
+            },
+            {
+              "desde": 93720,
+              "hasta": 216000,
+              "tasa": 33
+            },
+            {
+              "desde": 216000,
+              "hasta": null,
+              "tasa": 39
+            }
+          ],
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Payroll Calculations and Business Rules Specification, 1 April 2026 to 31 March 2027",
+            "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/digital-service-providers/software-providers/payroll-calculations-business-rules-specifications/payroll-calculations-and-business-rules-specification.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.kiwisaver-government-rate",
+      "nombre": "KiwiSaver government contribution per dollar saved",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Getting the KiwiSaver government contribution",
+            "url": "https://www.ird.govt.nz/en/kiwisaver/kiwisaver-individuals/growing-my-kiwisaver-account/getting-the-kiwisaver-government-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.kiwisaver-government-max",
+      "nombre": "Maximum KiwiSaver government contribution a year (1 July to 30 June)",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 260.72,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Getting the KiwiSaver government contribution",
+            "url": "https://www.ird.govt.nz/en/kiwisaver/kiwisaver-individuals/growing-my-kiwisaver-account/getting-the-kiwisaver-government-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.kiwisaver-government-income-cap",
+      "nombre": "Taxable income above which there is no government contribution",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 180000,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Getting the KiwiSaver government contribution",
+            "url": "https://www.ird.govt.nz/en/kiwisaver/kiwisaver-individuals/growing-my-kiwisaver-account/getting-the-kiwisaver-government-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.gst-rate",
+      "nombre": "GST rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Charging GST",
+            "url": "https://www.ird.govt.nz/gst/charging-gst",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.minimum-wage",
+      "nombre": "Minimum wage per hour (before tax)",
+      "tipo": "mapa",
+      "unidad": "NZD",
+      "etiquetas": {
+        "adult": "Adult minimum wage",
+        "starting-out": "Starting-out minimum wage",
+        "training": "Training minimum wage"
+      },
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": {
+            "adult": 23.5,
+            "starting-out": 18.8,
+            "training": 18.8
+          },
+          "fuente": {
+            "organismo": "Employment New Zealand",
+            "titulo": "Minimum wage is increasing on 1 April 2026",
+            "url": "https://www.employment.govt.nz/news-and-updates/minimum-wage-is-increasing-on-1-april-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": {
+            "adult": 23.95,
+            "starting-out": 19.16,
+            "training": 19.16
+          },
+          "fuente": {
+            "organismo": "Employment New Zealand",
+            "titulo": "Minimum wage is increasing on 1 April 2026",
+            "url": "https://www.employment.govt.nz/news-and-updates/minimum-wage-is-increasing-on-1-april-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.annual-holidays-weeks",
+      "nombre": "Annual holidays after 12 months of continuous employment",
+      "tipo": "numero",
+      "unidad": "numero",
+      "proximaRevision": "2028-08-06",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Employment New Zealand",
+            "titulo": "Annual holidays",
+            "url": "https://www.employment.govt.nz/leave-and-holidays/annual-holidays",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.holiday-pay-payg-rate",
+      "nombre": "Pay-as-you-go holiday pay and holiday pay on leaving before 12 months",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2028-08-06",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Employment New Zealand",
+            "titulo": "Managing annual holidays",
+            "url": "https://www.employment.govt.nz/leave-and-holidays/annual-holidays/managing-annual-holidays",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.public-holiday-pay-factor",
+      "nombre": "Minimum pay for working on a public holiday (time and a half)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "proximaRevision": "2028-08-06",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Employment New Zealand",
+            "titulo": "Public holidays rights for employees",
+            "url": "https://www.employment.govt.nz/leave-and-holidays/public-holidays/public-holidays-rights-for-employees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.public-holidays-max",
+      "nombre": "Maximum public holidays a year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2028-08-06",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Employment New Zealand",
+            "titulo": "Public holidays rights for employees",
+            "url": "https://www.employment.govt.nz/leave-and-holidays/public-holidays/public-holidays-rights-for-employees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.sick-leave-days",
+      "nombre": "Paid sick leave days a year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2028-08-06",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Employment New Zealand",
+            "titulo": "Taking sick leave",
+            "url": "https://www.employment.govt.nz/leave-and-holidays/sick-leave/taking-sick-leave",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.sick-leave-max-balance",
+      "nombre": "Maximum sick leave balance",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2028-08-06",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Employment New Zealand",
+            "titulo": "Taking sick leave",
+            "url": "https://www.employment.govt.nz/leave-and-holidays/sick-leave/taking-sick-leave",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.sick-leave-qualifying-months",
+      "nombre": "Months of continuous employment before sick leave starts",
+      "tipo": "numero",
+      "unidad": "meses",
+      "proximaRevision": "2028-08-06",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Employment New Zealand",
+            "titulo": "Taking sick leave",
+            "url": "https://www.employment.govt.nz/leave-and-holidays/sick-leave/taking-sick-leave",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.parental-leave-max-weekly",
+      "nombre": "Maximum parental leave payment a week (before tax)",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": 788.66,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Employees: how we work out your paid parental leave entitlement",
+            "url": "https://www.ird.govt.nz/paid-parental-leave/working-out-your-entitlement/employees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": 811.05,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Employees: how we work out your paid parental leave entitlement",
+            "url": "https://www.ird.govt.nz/paid-parental-leave/working-out-your-entitlement/employees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.parental-leave-self-employed-min",
+      "nombre": "Minimum parental leave payment a week for self-employed people",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": 235,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Paid parental leave rates from 1 July 2026",
+            "url": "https://www.ird.govt.nz/updates/news-folder/2026/paid-parental-leave",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": 239.5,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Paid parental leave rates from 1 July 2026",
+            "url": "https://www.ird.govt.nz/updates/news-folder/2026/paid-parental-leave",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.parental-leave-weeks",
+      "nombre": "Weeks of parental leave payments",
+      "tipo": "numero",
+      "unidad": "numero",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "Paid parental leave overview",
+            "url": "https://www.ird.govt.nz/paid-parental-leave/overview",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.bright-line-years",
+      "nombre": "Bright-line period for residential property sold on or after 1 July 2024",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Inland Revenue",
+            "titulo": "The bright-line property rule",
+            "url": "https://www.ird.govt.nz/brightline",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.nz-super-gross",
+      "nombre": "NZ Super a fortnight before tax",
+      "tipo": "mapa",
+      "unidad": "NZD",
+      "etiquetas": {
+        "single-alone": "Single, living alone",
+        "single-sharing": "Single, sharing accommodation",
+        "couple-each": "Couple, each partner"
+      },
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": {
+            "single-alone": 1294.74,
+            "single-sharing": 1191.14,
+            "couple-each": 984.28
+          },
+          "fuente": {
+            "organismo": "Work and Income",
+            "titulo": "Benefit rates at 1 April 2026",
+            "url": "https://www.workandincome.govt.nz/products/benefit-rates/benefit-rates-april-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.nz-super-net-m",
+      "nombre": "NZ Super a fortnight after tax at the M tax code",
+      "tipo": "mapa",
+      "unidad": "NZD",
+      "etiquetas": {
+        "single-alone": "Single, living alone",
+        "single-sharing": "Single, sharing accommodation",
+        "couple-each": "Couple, each partner"
+      },
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": {
+            "single-alone": 1110.3,
+            "single-sharing": 1024.9,
+            "couple-each": 854.08
+          },
+          "fuente": {
+            "organismo": "Work and Income",
+            "titulo": "Benefit rates at 1 April 2026",
+            "url": "https://www.workandincome.govt.nz/products/benefit-rates/benefit-rates-april-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nz.acc-weekly-compensation-rate",
+      "nombre": "ACC weekly compensation as a share of earnings before the injury",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-07-01",
+          "valor": 80,
+          "motivo": "acc.co.nz only renders with JavaScript and the Act on legislation.govt.nz blocks automated reading, so the rate could not be read on a primary source."
+        }
+      ]
+    },
+    {
+      "id": "nz.acc-weekly-compensation-max",
+      "nombre": "Maximum ACC weekly compensation (before tax)",
+      "tipo": "numero",
+      "unidad": "NZD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-07-01",
+          "valor": 2466.2,
+          "motivo": "Seen only in trade press (Insurance Business NZ). The ACC page could not be read."
+        }
+      ]
+    }
+  ]
+}
