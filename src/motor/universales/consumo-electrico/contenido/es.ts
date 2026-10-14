@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -7,7 +7,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const kwhMes = (1000 * 4 * 30) / 1000;
   return {
     h1: "Calculadora de consumo eléctrico",
-    title: `Consumo eléctrico de un aparato en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Consumo eléctrico de un aparato en ${ctx.nombrePais}`, `Consumo eléctrico en ${ctx.nombrePais}`, "Calculadora de consumo eléctrico"),
     description: t(
       "Calcula cuánta luz gasta un aparato y cuánto te cuesta por día, por mes y por año, con su potencia, las horas de uso y el precio del kWh.",
       "Calcule cuánta luz gasta un aparato y cuánto le cuesta por día, por mes y por año, con su potencia, las horas de uso y el precio del kWh.",

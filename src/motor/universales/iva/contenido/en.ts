@@ -1,11 +1,11 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const tasa = `{{${ctx.datos.tasa}}}`;
   const precio = formatearMonto(ctx, montoEjemplo(ctx, 100));
   return {
     h1: `VAT calculator for ${ctx.nombrePais}`,
-    title: `VAT calculator (${tasa}) for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`VAT calculator (${tasa}) for ${ctx.nombrePais}`, `VAT (${tasa}) for ${ctx.nombrePais}`, `VAT calculator (${tasa})`),
     description: `Add or remove ${tasa} VAT or sales tax on any price in one step: the price before tax, the tax and the total, to the cent.`,
     intro: [
       `The standard rate used here for ${ctx.nombrePais} is ${tasa}.`,

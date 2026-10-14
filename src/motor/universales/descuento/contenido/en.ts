@@ -1,11 +1,11 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const precio = montoEjemplo(ctx, 80);
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Discount calculator",
-    title: `Discount calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Discount calculator for ${ctx.nombrePais}`, "Discount calculator"),
     description: "Work out the sale price and how much you save, including stacked discounts like 30% off plus an extra 10%.",
     intro: [
       "Enter the price and the discount and you see right away what you pay and how much you save.",

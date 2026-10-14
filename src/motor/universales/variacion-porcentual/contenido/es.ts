@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -7,7 +7,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Calculadora de variación porcentual",
-    title: `Variación porcentual: calculadora en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Variación porcentual: calculadora en ${ctx.nombrePais}`, `Variación porcentual en ${ctx.nombrePais}`, "Calculadora de variación porcentual"),
     description: t(
       "Calcula cuánto subió o bajó un valor en porcentaje: precios, sueldos, ventas o cualquier cifra que cambió de un momento a otro.",
       "Calcule cuánto subió o bajó un valor en porcentaje: precios, sueldos, ventas o cualquier cifra que cambió de un momento a otro.",

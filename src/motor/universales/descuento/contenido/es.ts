@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -8,7 +8,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Calculadora de descuentos",
-    title: `Calculadora de descuentos en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de descuentos en ${ctx.nombrePais}`, `Descuentos en ${ctx.nombrePais}`, "Calculadora de descuentos"),
     description: t(
       "Calcula el precio final con descuento y cuánto ahorras. También con dos descuentos seguidos, como el 30 % más 10 %.",
       "Calcule el precio final con descuento y cuánto ahorra. También con dos descuentos seguidos, como el 30 % más 10 %.",

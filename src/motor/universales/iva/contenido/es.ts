@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -6,7 +6,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const precio = formatearMonto(ctx, montoEjemplo(ctx, 100));
   return {
     h1: `Calculadora de IVA en ${ctx.nombrePais}`,
-    title: `Calculadora de IVA del ${tasa} en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de IVA del ${tasa} en ${ctx.nombrePais}`, `IVA del ${tasa} en ${ctx.nombrePais}`, `Calculadora de IVA del ${tasa}`),
     description: t(
       `Agrega o quita el IVA del ${tasa} a cualquier precio en un paso: precio sin IVA, IVA y precio final, al centavo.`,
       `Agregue o quite el IVA del ${tasa} a cualquier precio en un paso: precio sin IVA, IVA y precio final, al centavo.`,

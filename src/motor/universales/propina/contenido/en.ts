@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const cuenta = montoEjemplo(ctx, 60);
@@ -6,7 +6,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Tip calculator",
-    title: `Tip calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Tip calculator for ${ctx.nombrePais}`, "Tip calculator"),
     description: "Work out the tip, the total bill and what each person pays when you split it. You can round each share up to a whole amount.",
     intro: [
       "Enter the bill, the tip percentage and how many people are paying. You see the tip, the total and each share.",

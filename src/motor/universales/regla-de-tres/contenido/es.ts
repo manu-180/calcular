@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -7,7 +7,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Calculadora de regla de tres",
-    title: `Regla de tres simple: calculadora en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Regla de tres simple: calculadora en ${ctx.nombrePais}`, `Regla de tres en ${ctx.nombrePais}`, "Calculadora de regla de tres simple"),
     description: t(
       "Resuelve una regla de tres simple, directa o inversa, en un segundo. Escribe tres valores y obtienes el cuarto con la cuenta a la vista.",
       "Resuelva una regla de tres simple, directa o inversa, en un segundo. Escriba tres valores y obtiene el cuarto con la cuenta a la vista.",

@@ -1,5 +1,5 @@
-import { aDia, aFecha, fechaLarga } from "../../dias-entre-fechas/fechas";
-import type { ContenidoUniversal } from "../../tipos";
+import { aDia, aFecha, fechaLarga } from "../../comun/fechas";
+import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { FASE_LUTEA, ventana } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const v = ventana(aDia(fum), 28);
   return {
     h1: "Ovulation calculator",
-    title: `Ovulation calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Ovulation calculator for ${ctx.nombrePais}`, "Ovulation calculator"),
     description: "Work out your ovulation day, your fertile window and when your next period is due, with the next three cycles.",
     intro: [
       "Enter the first day of your last period and how long your cycle is. You see the estimated ovulation, your fertile days and your next period.",

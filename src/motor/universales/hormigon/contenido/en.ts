@@ -1,4 +1,4 @@
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { MEZCLA } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -21,7 +21,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
       })();
   return {
     h1: "Concrete calculator",
-    title: `Concrete calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Concrete calculator for ${ctx.nombrePais}`, "Concrete calculator"),
     description: `Work out how much concrete you need for a slab, in ${imperial ? "cubic yards" : "cubic metres"}, plus roughly how much cement, sand and gravel to buy.`,
     intro: [
       "Enter the length, width and thickness. You see the concrete volume and the approximate materials to mix it.",

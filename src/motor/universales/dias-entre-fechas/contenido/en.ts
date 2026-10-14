@@ -1,5 +1,5 @@
-import type { ContenidoUniversal } from "../../tipos";
-import { aDia, fechaLarga, habilesEntre } from "../fechas";
+import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { aDia, fechaLarga, habilesEntre } from "../../comun/fechas";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const desde = "2026-03-02";
@@ -9,7 +9,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const f = (iso: string) => fechaLarga(ctx.locale, iso);
   return {
     h1: "Days between dates calculator",
-    title: `Days between dates calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Days between dates calculator for ${ctx.nombrePais}`, `Days between dates for ${ctx.nombrePais}`, "Days between dates calculator"),
     description: "Count the days between two dates: calendar days, weeks, months and business days from Monday to Friday.",
     intro: [
       "Pick a start date and an end date. You see the calendar days, the same span in weeks and months, and the business days.",

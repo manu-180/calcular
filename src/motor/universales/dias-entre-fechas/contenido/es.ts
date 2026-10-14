@@ -1,5 +1,5 @@
-import { segunTrato, type ContenidoUniversal } from "../../tipos";
-import { aDia, fechaLarga, habilesEntre } from "../fechas";
+import { segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { aDia, fechaLarga, habilesEntre } from "../../comun/fechas";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -10,7 +10,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const f = (iso: string) => fechaLarga(ctx.locale, iso);
   return {
     h1: "Días entre dos fechas",
-    title: `Calcular días entre fechas en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calcular días entre fechas en ${ctx.nombrePais}`, `Días entre fechas en ${ctx.nombrePais}`, "Calcular días entre fechas"),
     description: t(
       "Calcula cuántos días hay entre dos fechas: días corridos, semanas, meses y días hábiles de lunes a viernes.",
       "Calcule cuántos días hay entre dos fechas: días corridos, semanas, meses y días hábiles de lunes a viernes.",

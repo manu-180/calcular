@@ -1,6 +1,6 @@
-import { aDia, fechaLarga, mesesYDias } from "../../dias-entre-fechas/fechas";
+import { aDia, fechaLarga, mesesYDias } from "../../comun/fechas";
 import { duracionEs } from "../../dias-entre-fechas/textos/es";
-import { formatearNumero, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -10,7 +10,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const total = aDia(ref) - aDia(nac);
   return {
     h1: "Calculadora de edad",
-    title: `Calculadora de edad exacta en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de edad exacta en ${ctx.nombrePais}`, `Calculadora de edad en ${ctx.nombrePais}`, "Calculadora de edad exacta"),
     description: t(
       "Calcula tu edad exacta en años, meses y días, cuántos días viviste y cuánto falta para tu próximo cumpleaños.",
       "Calcule su edad exacta en años, meses y días, cuántos días vivió y cuánto falta para su próximo cumpleaños.",

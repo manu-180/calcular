@@ -1,4 +1,4 @@
-import { formatearNumero, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { MEZCLA } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const cemento = MEZCLA.cementoKg * volumen;
   return {
     h1: "Calculadora de hormigón",
-    title: `Calculadora de hormigón y materiales en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de hormigón y materiales en ${ctx.nombrePais}`, `Calculadora de hormigón en ${ctx.nombrePais}`, "Calculadora de hormigón y materiales"),
     description: t(
       "Calcula los metros cúbicos de hormigón para una losa o un contrapiso y cuánto cemento, arena y piedra necesitas, con las bolsas a comprar.",
       "Calcule los metros cúbicos de hormigón para una losa o un contrapiso y cuánto cemento, arena y piedra necesita, con las bolsas a comprar.",

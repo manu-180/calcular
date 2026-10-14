@@ -1,4 +1,4 @@
-import { formatearNumero, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { KG_POR_LB, M_POR_PULGADA } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -16,7 +16,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
       ];
   return {
     h1: "BMI calculator",
-    title: `BMI calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`BMI calculator for ${ctx.nombrePais}`, "BMI calculator"),
     description: "Work out your body mass index from your weight and height, see your WHO category and the healthy weight range for your height.",
     intro: [
       "Enter your weight and height. You see your BMI, its category according to the World Health Organization and the healthy weight range for your height.",

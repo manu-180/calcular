@@ -1,5 +1,5 @@
-import { aDia, aFecha, fechaLarga } from "../../dias-entre-fechas/fechas";
-import type { ContenidoUniversal } from "../../tipos";
+import { aDia, aFecha, fechaLarga } from "../../comun/fechas";
+import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DURACION } from "../definicion";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
@@ -9,7 +9,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const fpp32 = aFecha(aDia(fum) + DURACION + 4);
   return {
     h1: "Due date calculator",
-    title: `Due date calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Due date calculator for ${ctx.nombrePais}`, "Due date calculator"),
     description: "Work out your estimated due date from your last period or the conception date, and how many weeks pregnant you are today.",
     intro: [
       "Enter the first day of your last period (or the conception date, if you know it). You see your estimated due date, how far along you are and the trimester.",

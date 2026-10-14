@@ -1,4 +1,4 @@
-import { formatearNumero, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { MARGEN } from "../definicion";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
@@ -8,7 +8,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const litros = (neta * 2) / 10;
   return {
     h1: "¿Cuánta pintura necesito?",
-    title: `Calculadora de pintura para paredes en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de pintura para paredes en ${ctx.nombrePais}`, `Calculadora de pintura en ${ctx.nombrePais}`, "Calculadora de pintura para paredes"),
     description: t(
       "Calcula cuántos litros de pintura necesitas para tus paredes según las medidas, las puertas y ventanas, las manos y el rendimiento de la lata.",
       "Calcule cuántos litros de pintura necesita para sus paredes según las medidas, las puertas y ventanas, las manos y el rendimiento de la lata.",

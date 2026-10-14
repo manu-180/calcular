@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const a = montoEjemplo(ctx, 90);
@@ -7,7 +7,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Split the bill calculator",
-    title: `Split bill calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Split bill calculator for ${ctx.nombrePais}`, "Split bill calculator"),
     description: "Split a shared cost between up to 8 people: each person's share and who pays whom, with as few payments as possible.",
     intro: [
       "Use it for a trip, a dinner, a party or a shared rental where everyone paid a different amount.",

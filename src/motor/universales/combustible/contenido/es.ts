@@ -1,4 +1,4 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -7,7 +7,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const litros = (600 * 8) / 100;
   return {
     h1: "Calculadora de costo de combustible",
-    title: `Costo de combustible de un viaje en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Costo de combustible de un viaje en ${ctx.nombrePais}`, `Costo de combustible en ${ctx.nombrePais}`, "Costo de combustible de un viaje"),
     description: t(
       "Calcula cuánto gastas en nafta, gasolina o diésel en un viaje según la distancia, el consumo del auto y el precio, y cuánto pone cada uno.",
       "Calcule cuánto gasta en nafta, gasolina o diésel en un viaje según la distancia, el consumo del auto y el precio, y cuánto pone cada uno.",

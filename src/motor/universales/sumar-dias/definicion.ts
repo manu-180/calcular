@@ -1,6 +1,6 @@
 import { definirCalculadora, ErrorEntrada } from "../../calculo";
 import type { DefinicionCalculadora } from "../../tipos";
-import { aDia, aFecha, diaDeSemana, esHabil } from "../dias-entre-fechas/fechas";
+import { aDia, aFecha, diaDeSemana, esHabil } from "../comun/fechas";
 import type { ContextoUniversal } from "../tipos";
 
 export interface UiSumarDias {

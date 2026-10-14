@@ -1,4 +1,4 @@
-import { formatearNumero, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearNumero, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -7,7 +7,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const piezas = Math.ceil((20 * 1.1) / pieza - 1e-9);
   return {
     h1: "¿Cuántos cerámicos necesito?",
-    title: `Calculadora de cerámicos en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Calculadora de cerámicos en ${ctx.nombrePais}`, `Cerámicos en ${ctx.nombrePais}`, "Calculadora de cerámicos"),
     description: t(
       "Calcula cuántas piezas de cerámico, porcelanato o baldosa necesitas para un piso o una pared, con el desperdicio y las cajas a comprar.",
       "Calcule cuántas piezas de cerámico, porcelanato o baldosa necesita para un piso o una pared, con el desperdicio y las cajas a comprar.",

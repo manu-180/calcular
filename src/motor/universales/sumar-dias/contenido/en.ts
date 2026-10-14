@@ -1,5 +1,5 @@
-import { aDia, aFecha, esHabil, fechaLarga } from "../../dias-entre-fechas/fechas";
-import type { ContenidoUniversal } from "../../tipos";
+import { aDia, aFecha, esHabil, fechaLarga } from "../../comun/fechas";
+import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const f = (iso: string) => fechaLarga(ctx.locale, iso);
@@ -9,7 +9,7 @@ export const contenidoEn: ContenidoUniversal = (ctx) => {
   for (let n = 0; n < 15; ) if (esHabil(++habil)) n++;
   return {
     h1: "Add days to a date",
-    title: `Add days to a date calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Add days to a date calculator for ${ctx.nombrePais}`, `Add days to a date for ${ctx.nombrePais}`, "Add days to a date calculator"),
     description: "Add or subtract calendar days or business days from a date and see which day it lands on. Handy for deadlines and due dates.",
     intro: [
       "Pick a date, a number of days and whether to add or subtract. You see the resulting date and the day of the week.",

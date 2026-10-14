@@ -1,11 +1,11 @@
-import { formatearMonto, formatearNumero, montoEjemplo, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEn: ContenidoUniversal = (ctx) => {
   const precio3 = montoEjemplo(ctx, 6);
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Rule of three calculator",
-    title: `Rule of three calculator for ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Rule of three calculator for ${ctx.nombrePais}`, `Rule of three for ${ctx.nombrePais}`, "Rule of three calculator"),
     description: "Solve a direct or inverse proportion in a second. Enter three values and get the fourth, with the working shown.",
     intro: [
       "The rule of three works when two quantities change together and you know three of the four values.",

@@ -1,4 +1,4 @@
-import { formatearMonto, montoEjemplo, segunTrato, type ContenidoUniversal } from "../../tipos";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoEs: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
@@ -8,7 +8,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   return {
     h1: "Calculadora para dividir gastos",
-    title: `Dividir gastos entre amigos en ${ctx.nombrePais}`,
+    title: tituloQueEntre(`Dividir gastos entre amigos en ${ctx.nombrePais}`, `Dividir gastos en ${ctx.nombrePais}`, "Dividir gastos entre amigos"),
     description: t(
       "Divide un gasto compartido entre hasta 8 personas: cuánto le toca a cada uno y quién le paga a quién, con la menor cantidad de pagos.",
       "Divida un gasto compartido entre hasta 8 personas: cuánto le toca a cada uno y quién le paga a quién, con la menor cantidad de pagos.",
