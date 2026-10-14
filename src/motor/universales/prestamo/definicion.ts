@@ -1,6 +1,6 @@
 import { definirCalculadora, ErrorEntrada } from "../../calculo";
 import type { DefinicionCalculadora, TablaResultado } from "../../tipos";
-import { formatearMonto, montoEjemplo, type ContextoUniversal } from "../tipos";
+import { formatearCifra, formatearMonto, montoEjemplo, type ContextoUniversal } from "../tipos";
 
 export interface UiPrestamo {
   monto: string;
@@ -104,7 +104,7 @@ export function definir(ctx: ContextoUniversal, ui: UiPrestamo): DefinicionCalcu
         filas: plan.filas,
       };
       const observaciones = [ui.observacionCostos];
-      if (extra > 0) observaciones.push(ui.observacionExtra(String(plan.meses), formatearMonto(ctx, ahorro)));
+      if (extra > 0) observaciones.push(ui.observacionExtra(formatearCifra(ctx, plan.meses, 0), formatearMonto(ctx, ahorro)));
       return {
         cuota,
         intereses: plan.intereses,

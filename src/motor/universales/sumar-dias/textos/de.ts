@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiSumarDias } from "../definicion";
 
-export const textosDe: TextosUi<UiSumarDias> = {
+const textos: TextosUi<UiSumarDias> = {
   slug: "datum-plus-tage",
   ui: () => ({
     fecha: "Ausgangsdatum",
@@ -20,3 +21,5 @@ export const textosDe: TextosUi<UiSumarDias> = {
     notaHabiles: "Bei Arbeitstagen werden Samstage und Sonntage übersprungen, Feiertage aber nicht. Liegt einer dazwischen, rechnen Sie ihn bitte dazu.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiVariacion } from "../definicion";
 
-export const textosDe: TextosUi<UiVariacion> = {
+const textos: TextosUi<UiVariacion> = {
   slug: "prozentuale-veraenderung",
   ui: () => ({
     inicial: "Alter Wert",
@@ -16,3 +17,5 @@ export const textosDe: TextosUi<UiVariacion> = {
     igual: "Keine Veränderung. Beide Werte sind gleich.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

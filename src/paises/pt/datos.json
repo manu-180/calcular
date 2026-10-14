@@ -1,0 +1,1436 @@
+{
+  "mercado": "pt",
+  "datos": [
+    {
+      "id": "pt.iva-taxas",
+      "nombre": "Taxas do IVA",
+      "tipo": "mapa",
+      "unidad": "%",
+      "regiones": [
+        "continente",
+        "acores",
+        "madeira"
+      ],
+      "etiquetas": {
+        "reduzida": "Taxa reduzida",
+        "intermedia": "Taxa intermédia",
+        "normal": "Taxa normal"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "continente",
+          "desde": "2024-10-01",
+          "valor": {
+            "reduzida": 6,
+            "intermedia": 13,
+            "normal": 23
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IVA, artigo 18.º (taxas)",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/civa_rep/Pages/iva18.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "acores",
+          "desde": "2024-10-01",
+          "valor": {
+            "reduzida": 4,
+            "intermedia": 9,
+            "normal": 16
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Ofício Circulado n.º 25045, de 6 de dezembro de 2024: taxas do IVA nas Regiões Autónomas",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/instrucoes_administrativas/Documents/Oficio_circulado_25045_2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "madeira",
+          "desde": "2024-10-01",
+          "valor": {
+            "reduzida": 4,
+            "intermedia": 12,
+            "normal": 22
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Ofício Circulado n.º 25045, de 6 de dezembro de 2024: taxas do IVA nas Regiões Autónomas",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/instrucoes_administrativas/Documents/Oficio_circulado_25045_2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.iva-limite-isencao",
+      "nombre": "Volume de negócios máximo para a isenção do artigo 53.º do IVA",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IVA, artigo 53.º (regime de isenção)",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/civa_rep/Pages/artigo-53-o-do-civa.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.rmmg",
+      "nombre": "Retribuição mínima mensal garantida",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 920,
+          "fuente": {
+            "organismo": "DGERT",
+            "titulo": "Retribuição mínima mensal garantida para 2026 (Decreto-Lei n.º 139/2025, de 29 de dezembro)",
+            "url": "https://www.dgert.gov.pt/retribuicao-minima-mensal-garantida-para-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ias",
+      "nombre": "Indexante dos apoios sociais (IAS)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 537.13,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Portaria n.º 480-A/2025/1, de 30 de dezembro (texto do Diário da República publicado pelo Governo Regional da Madeira)",
+            "url": "https://www.madeira.gov.pt//Portals/35/Users/116/72/372/10.%20Portaria%20n.%20480-A_2025_1%2C%20de%2030%20de%20dezembro.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ss-trabalhador",
+      "nombre": "Taxa contributiva do trabalhador por conta de outrem",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 11,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código dos Regimes Contributivos, artigo 53.º (taxa contributiva global)",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34514575",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ss-empregador",
+      "nombre": "Taxa contributiva da entidade empregadora",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 23.75,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código dos Regimes Contributivos, artigo 53.º (taxa contributiva global)",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34514575",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ss-independente-taxa",
+      "nombre": "Taxa contributiva do trabalhador independente",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 21.4,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código dos Regimes Contributivos, artigos 162.º, 163.º e 168.º (trabalhadores independentes)",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34514575",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ss-independente-rendimento-relevante",
+      "nombre": "Parte do rendimento que conta para a Segurança Social do independente",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "servicos": "Prestação de serviços",
+        "bens": "Produção e venda de bens"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "servicos": 70,
+            "bens": 20
+          },
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código dos Regimes Contributivos, artigos 162.º, 163.º e 168.º (trabalhadores independentes)",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34514575",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ss-independente-teto-ias",
+      "nombre": "Limite da base de incidência mensal do independente, em IAS",
+      "tipo": "numero",
+      "unidad": "factor",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código dos Regimes Contributivos, artigos 162.º, 163.º e 168.º (trabalhadores independentes)",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34514575",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.irs-escaloes",
+      "nombre": "Escalões do IRS (taxa normal)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 8342,
+              "tasa": 12.5
+            },
+            {
+              "desde": 8342,
+              "hasta": 12587,
+              "tasa": 15.7
+            },
+            {
+              "desde": 12587,
+              "hasta": 17838,
+              "tasa": 21.2
+            },
+            {
+              "desde": 17838,
+              "hasta": 23089,
+              "tasa": 24.1
+            },
+            {
+              "desde": 23089,
+              "hasta": 29397,
+              "tasa": 31.1
+            },
+            {
+              "desde": 29397,
+              "hasta": 43090,
+              "tasa": 34.9
+            },
+            {
+              "desde": 43090,
+              "hasta": 46566,
+              "tasa": 43.1
+            },
+            {
+              "desde": 46566,
+              "hasta": 86634,
+              "tasa": 44.6
+            },
+            {
+              "desde": 86634,
+              "hasta": null,
+              "tasa": 48
+            }
+          ],
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IRS, artigo 68.º (taxas gerais), redação da Lei n.º 73-A/2025",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs68.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.irs-deducao-especifica-ias",
+      "nombre": "Dedução específica da categoria A, em IAS",
+      "tipo": "numero",
+      "unidad": "factor",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8.54,
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IRS, artigo 25.º (dedução específica da categoria A)",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs25.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.irs-minimo-existencia",
+      "nombre": "Valor de referência do mínimo de existência",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "nota": "O artigo 70.º manda usar o maior entre 12 880 € e 1,5 × 14 × IAS; com o IAS de 2026 vale 12 880 €.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12880,
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IRS, artigo 70.º (mínimo de existência)",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs70.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.irs-minimo-existencia-fatores",
+      "nombre": "Fatores da fórmula do mínimo de existência",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "reducao": "Redução entre o valor de referência e L",
+        "reducao-final": "Redução acima de L",
+        "divisor": "Divisor da fórmula de L",
+        "exclusao-ias": "Limite de exclusão (× 14 × IAS)"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "reducao": 2.6,
+            "reducao-final": 1.35,
+            "divisor": 3.6,
+            "exclusao-ias": 2.2
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IRS, artigo 70.º (mínimo de existência)",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs70.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.irs-despesas-gerais-limite",
+      "nombre": "Limite da dedução de despesas gerais familiares por sujeito passivo",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 250,
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IRS, artigo 78.º-B (despesas gerais familiares)",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs78b.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.irs-despesas-gerais-percentagem",
+      "nombre": "Percentagem dedutível das despesas gerais familiares",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IRS, artigo 78.º-B (despesas gerais familiares)",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs78b.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.irs-deducao-dependentes",
+      "nombre": "Deduções à coleta por dependente",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "dependente": "Por dependente",
+        "ate-3-anos": "Acréscimo até 3 anos",
+        "segundo-ate-6-anos": "Acréscimo do 2.º e seguintes até 6 anos"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "dependente": 600,
+            "ate-3-anos": 126,
+            "segundo-ate-6-anos": 300
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IRS, artigo 78.º-A (deduções dos descendentes)",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs78a.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.retencao-tabela-i",
+      "nombre": "Retenção na fonte 2026, continente, tabela I (não casado sem dependentes ou casado dois titulares)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "nota": "Na 2.ª e na 3.ª linha a parcela a abater é uma fórmula (taxa × fator × (limite − R)): os fatores e limites estão no dado das fórmulas. Aqui a parcela dessas linhas fica a zero.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 920,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 920,
+              "hasta": 1042,
+              "tasa": 12.5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 1042,
+              "hasta": 1108,
+              "tasa": 15.7,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 1108,
+              "hasta": 1154,
+              "tasa": 15.7,
+              "cuotaFija": 94.71
+            },
+            {
+              "desde": 1154,
+              "hasta": 1212,
+              "tasa": 21.2,
+              "cuotaFija": 158.18
+            },
+            {
+              "desde": 1212,
+              "hasta": 1819,
+              "tasa": 24.1,
+              "cuotaFija": 193.33
+            },
+            {
+              "desde": 1819,
+              "hasta": 2119,
+              "tasa": 31.1,
+              "cuotaFija": 320.66
+            },
+            {
+              "desde": 2119,
+              "hasta": 2499,
+              "tasa": 34.9,
+              "cuotaFija": 401.19
+            },
+            {
+              "desde": 2499,
+              "hasta": 3305,
+              "tasa": 38.36,
+              "cuotaFija": 487.66
+            },
+            {
+              "desde": 3305,
+              "hasta": 5547,
+              "tasa": 39.69,
+              "cuotaFija": 531.62
+            },
+            {
+              "desde": 5547,
+              "hasta": 20221,
+              "tasa": 44.95,
+              "cuotaFija": 823.4
+            },
+            {
+              "desde": 20221,
+              "hasta": null,
+              "tasa": 47.17,
+              "cuotaFija": 1272.31
+            }
+          ],
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.retencao-tabela-ii",
+      "nombre": "Retenção na fonte 2026, continente, tabela II (não casado com dependentes)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "nota": "Na 2.ª e na 3.ª linha a parcela a abater é uma fórmula (taxa × fator × (limite − R)): os fatores e limites estão no dado das fórmulas. Aqui a parcela dessas linhas fica a zero.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 920,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 920,
+              "hasta": 1042,
+              "tasa": 12.5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 1042,
+              "hasta": 1108,
+              "tasa": 15.7,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 1108,
+              "hasta": 1154,
+              "tasa": 15.7,
+              "cuotaFija": 94.71
+            },
+            {
+              "desde": 1154,
+              "hasta": 1212,
+              "tasa": 21.2,
+              "cuotaFija": 158.18
+            },
+            {
+              "desde": 1212,
+              "hasta": 1819,
+              "tasa": 24.1,
+              "cuotaFija": 193.33
+            },
+            {
+              "desde": 1819,
+              "hasta": 2119,
+              "tasa": 31.1,
+              "cuotaFija": 320.66
+            },
+            {
+              "desde": 2119,
+              "hasta": 2499,
+              "tasa": 34.9,
+              "cuotaFija": 401.19
+            },
+            {
+              "desde": 2499,
+              "hasta": 3305,
+              "tasa": 38.36,
+              "cuotaFija": 487.66
+            },
+            {
+              "desde": 3305,
+              "hasta": 5547,
+              "tasa": 39.69,
+              "cuotaFija": 531.62
+            },
+            {
+              "desde": 5547,
+              "hasta": 20221,
+              "tasa": 44.95,
+              "cuotaFija": 823.4
+            },
+            {
+              "desde": 20221,
+              "hasta": null,
+              "tasa": 47.17,
+              "cuotaFija": 1272.31
+            }
+          ],
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.retencao-tabela-iii",
+      "nombre": "Retenção na fonte 2026, continente, tabela III (casado, único titular)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "nota": "Na 2.ª e na 3.ª linha a parcela a abater é uma fórmula (taxa × fator × (limite − R)): os fatores e limites estão no dado das fórmulas. Aqui a parcela dessas linhas fica a zero.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 991,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 991,
+              "hasta": 1042,
+              "tasa": 12.5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 1042,
+              "hasta": 1108,
+              "tasa": 12.5,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 1108,
+              "hasta": 1119,
+              "tasa": 12.5,
+              "cuotaFija": 96.17
+            },
+            {
+              "desde": 1119,
+              "hasta": 1432,
+              "tasa": 12.72,
+              "cuotaFija": 98.64
+            },
+            {
+              "desde": 1432,
+              "hasta": 1962,
+              "tasa": 15.7,
+              "cuotaFija": 141.32
+            },
+            {
+              "desde": 1962,
+              "hasta": 2240,
+              "tasa": 19.38,
+              "cuotaFija": 213.53
+            },
+            {
+              "desde": 2240,
+              "hasta": 2773,
+              "tasa": 22.77,
+              "cuotaFija": 289.47
+            },
+            {
+              "desde": 2773,
+              "hasta": 3389,
+              "tasa": 25.7,
+              "cuotaFija": 370.72
+            },
+            {
+              "desde": 3389,
+              "hasta": 5965,
+              "tasa": 28.81,
+              "cuotaFija": 476.12
+            },
+            {
+              "desde": 5965,
+              "hasta": 20265,
+              "tasa": 38.43,
+              "cuotaFija": 1049.96
+            },
+            {
+              "desde": 20265,
+              "hasta": null,
+              "tasa": 47.17,
+              "cuotaFija": 2821.13
+            }
+          ],
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.retencao-formulas",
+      "nombre": "Parcelas a abater em fórmula nas tabelas de retenção 2026",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "i-fator-2": "Tabelas I e II, 2.ª linha: fator",
+        "i-limite-2": "Tabelas I e II, 2.ª linha: limite",
+        "i-fator-3": "Tabelas I e II, 3.ª linha: fator",
+        "i-limite-3": "Tabelas I e II, 3.ª linha: limite",
+        "iii-fator-2": "Tabela III, 2.ª linha: fator",
+        "iii-limite-2": "Tabela III, 2.ª linha: limite",
+        "iii-fator-3": "Tabela III, 3.ª linha: fator",
+        "iii-limite-3": "Tabela III, 3.ª linha: limite"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "i-fator-2": 2.6,
+            "i-limite-2": 1273.85,
+            "i-fator-3": 1.35,
+            "i-limite-3": 1554.83,
+            "iii-fator-2": 2.6,
+            "iii-limite-2": 1372.15,
+            "iii-fator-3": 1.35,
+            "iii-limite-3": 1677.85
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.retencao-parcela-dependente",
+      "nombre": "Parcela adicional a abater por dependente",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "i": "Tabela I",
+        "ii": "Tabela II",
+        "iii": "Tabela III"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "i": 21.43,
+            "ii": 34.29,
+            "iii": 42.86
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.retencao-percentagem",
+      "nombre": "Parte da retenção das tabelas que se aplica no mês",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-01",
+      "nota": "Em novembro de 2026 retém-se metade do valor das tabelas, salvo acima do limite do penúltimo escalão (Despacho n.º 12523-A/2026, n.os 2 e 3).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-10-31",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-11-01",
+          "hasta": "2026-11-30",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Despacho n.º 12523-A/2026, de 14 de outubro: ajustamentos às tabelas de retenção para novembro de 2026",
+            "url": "https://diariodarepublica.pt/dr/detalhe/despacho/12523-a-2026-1180337885",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-12-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Despacho n.º 12523-A/2026, de 14 de outubro: ajustamentos às tabelas de retenção para novembro de 2026",
+            "url": "https://diariodarepublica.pt/dr/detalhe/despacho/12523-a-2026-1180337885",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.retencao-reducao-3-dependentes",
+      "nombre": "Redução da taxa marginal com três ou mais dependentes",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Despacho n.º 233-A/2026, de 6 de janeiro: tabelas de retenção na fonte para o continente",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/Despachos_SEAF/Documents/Despacho-SEAF-2026-01-05-XXV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.recibo-verde-retencao",
+      "nombre": "Taxas de retenção na fonte da categoria B",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "artigo-151": "Atividades profissionais da tabela do artigo 151.º",
+        "outros": "Outras prestações de serviços"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "artigo-151": 23,
+            "outros": 11.5
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IRS, artigo 101.º (retenção sobre outras categorias)",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs101.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ct-ferias-dias",
+      "nombre": "Duração mínima do período anual de férias",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código do Trabalho, artigo 238.º",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34546475",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ct-ferias-admissao",
+      "nombre": "Férias no ano de admissão",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "por-mes": "Dias úteis por mês de contrato",
+        "maximo": "Máximo no ano de admissão"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "por-mes": 2,
+            "maximo": 20
+          },
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código do Trabalho, artigo 239.º",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34546475",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ct-trabalho-suplementar",
+      "nombre": "Acréscimos do trabalho suplementar",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "util-primeira": "Dia útil, 1.ª hora",
+        "util-seguintes": "Dia útil, horas seguintes",
+        "descanso": "Descanso ou feriado",
+        "util-primeira-100": "Acima de 100 horas, dia útil, 1.ª hora",
+        "util-seguintes-100": "Acima de 100 horas, dia útil, horas seguintes",
+        "descanso-100": "Acima de 100 horas, descanso ou feriado"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "util-primeira": 25,
+            "util-seguintes": 37.5,
+            "descanso": 50,
+            "util-primeira-100": 50,
+            "util-seguintes-100": 75,
+            "descanso-100": 100
+          },
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código do Trabalho, artigo 268.º",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34546475",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ct-limite-horas-suplementares",
+      "nombre": "Horas anuais de trabalho suplementar com os acréscimos menores",
+      "tipo": "numero",
+      "unidad": "horas",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código do Trabalho, artigo 268.º",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34546475",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ct-trabalho-noturno",
+      "nombre": "Acréscimo do trabalho noturno",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código do Trabalho, artigo 266.º",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34546475",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ct-compensacao",
+      "nombre": "Compensação por cessação do contrato",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "despedimento": "Despedimento coletivo ou extinção do posto",
+        "termo": "Caducidade do contrato a termo certo"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "despedimento": 14,
+            "termo": 24
+          },
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código do Trabalho, artigos 344.º e 366.º",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34546475",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ct-compensacao-limites",
+      "nombre": "Limites da compensação do artigo 366.º",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "retribuicao-rmmg": "Retribuição máxima considerada (× RMMG)",
+        "total-meses": "Compensação máxima (× retribuição)",
+        "total-rmmg": "Compensação máxima com retribuição limitada (× RMMG)"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "retribuicao-rmmg": 20,
+            "total-meses": 12,
+            "total-rmmg": 240
+          },
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código do Trabalho, artigo 366.º",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34546475",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.ct-aviso-previo-trabalhador",
+      "nombre": "Aviso prévio da denúncia pelo trabalhador",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "ate-2-anos": "Até dois anos de antiguidade",
+        "mais-2-anos": "Mais de dois anos",
+        "termo-6-meses": "Contrato a termo de 6 meses ou mais",
+        "termo-menos-6-meses": "Contrato a termo de menos de 6 meses"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ate-2-anos": 30,
+            "mais-2-anos": 60,
+            "termo-6-meses": 30,
+            "termo-menos-6-meses": 15
+          },
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Código do Trabalho, artigo 400.º",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2009-34546475",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.desemprego-percentagens",
+      "nombre": "Percentagens do subsídio de desemprego",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "montante": "Percentagem da remuneração de referência",
+        "liquido": "Máximo em percentagem do líquido da remuneração de referência"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "montante": 65,
+            "liquido": 75
+          },
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Decreto-Lei n.º 220/2006, artigos 28.º e 29.º (montante do subsídio de desemprego)",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/2006-34533075",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.desemprego-limites-ias",
+      "nombre": "Limites do subsídio de desemprego em IAS",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "maximo": "Máximo",
+        "minimo": "Mínimo",
+        "majoracao": "Mínimo majorado"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "maximo": 2.5,
+            "minimo": 1,
+            "majoracao": 1.15
+          },
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Decreto-Lei n.º 220/2006, artigos 28.º e 29.º (montante do subsídio de desemprego)",
+            "url": "https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/2006-34533075",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.imt-hpp",
+      "nombre": "IMT na habitação própria e permanente (taxas marginais)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 106346,
+              "tasa": 0
+            },
+            {
+              "desde": 106346,
+              "hasta": 145470,
+              "tasa": 2
+            },
+            {
+              "desde": 145470,
+              "hasta": 198347,
+              "tasa": 5
+            },
+            {
+              "desde": 198347,
+              "hasta": 330539,
+              "tasa": 7
+            },
+            {
+              "desde": 330539,
+              "hasta": 660982,
+              "tasa": 8
+            }
+          ],
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IMT, artigo 17.º (taxas), limites da Lei n.º 73-A/2025",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cimt/Pages/cimt17.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.imt-hpp-jovem",
+      "nombre": "IMT na primeira habitação própria e permanente até 35 anos (taxas marginais)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 330539,
+              "tasa": 0
+            },
+            {
+              "desde": 330539,
+              "hasta": 660982,
+              "tasa": 8
+            }
+          ],
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IMT, artigo 17.º (taxas), limites da Lei n.º 73-A/2025",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cimt/Pages/cimt17.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.imt-hpp-taxa-unica",
+      "nombre": "IMT na habitação própria e permanente acima de 660 982 € (taxa única)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 660982,
+              "hasta": 1150853,
+              "tasa": 6
+            },
+            {
+              "desde": 1150853,
+              "hasta": null,
+              "tasa": 7.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IMT, artigo 17.º (taxas), limites da Lei n.º 73-A/2025",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cimt/Pages/cimt17.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.imt-secundaria",
+      "nombre": "IMT noutra habitação (taxas marginais)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 106346,
+              "tasa": 1
+            },
+            {
+              "desde": 106346,
+              "hasta": 145470,
+              "tasa": 2
+            },
+            {
+              "desde": 145470,
+              "hasta": 198347,
+              "tasa": 5
+            },
+            {
+              "desde": 198347,
+              "hasta": 330539,
+              "tasa": 7
+            },
+            {
+              "desde": 330539,
+              "hasta": 633931,
+              "tasa": 8
+            }
+          ],
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IMT, artigo 17.º (taxas), limites da Lei n.º 73-A/2025",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cimt/Pages/cimt17.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.imt-secundaria-taxa-unica",
+      "nombre": "IMT noutra habitação acima de 633 931 € (taxa única)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 633931,
+              "hasta": 1150853,
+              "tasa": 6
+            },
+            {
+              "desde": 1150853,
+              "hasta": null,
+              "tasa": 7.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IMT, artigo 17.º (taxas), limites da Lei n.º 73-A/2025",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cimt/Pages/cimt17.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.imt-outros",
+      "nombre": "IMT noutros prédios",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "urbano": "Outros prédios urbanos",
+        "rustico": "Prédios rústicos"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "urbano": 6.5,
+            "rustico": 5
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Código do IMT, artigo 17.º (taxas), limites da Lei n.º 73-A/2025",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cimt/Pages/cimt17.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pt.imposto-selo",
+      "nombre": "Imposto do Selo na compra de casa e no crédito",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "aquisicao": "Aquisição de imóvel (verba 1.1)",
+        "credito-5-anos": "Crédito a 5 anos ou mais (verba 17.1.3)"
+      },
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "aquisicao": 0.8,
+            "credito-5-anos": 0.6
+          },
+          "fuente": {
+            "organismo": "Autoridade Tributária e Aduaneira",
+            "titulo": "Tabela Geral do Imposto do Selo, verbas 1.1 e 17.1",
+            "url": "https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/selo/Pages/ccod-selo-tabgiselo.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPropina } from "../definicion";
 
-export const textosDe: TextosUi<UiPropina> = {
+const textos: TextosUi<UiPropina> = {
   slug: "trinkgeldrechner",
   ui: () => ({
     cuenta: "Rechnungsbetrag",
@@ -18,3 +19,5 @@ export const textosDe: TextosUi<UiPropina> = {
     observacionRedondeo: (efectiva) => `Nach dem Aufrunden beträgt das Trinkgeld ${efectiva} % der Rechnung.`,
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

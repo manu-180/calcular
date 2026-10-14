@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAumentoDeSueldo } from "../definicion";
 
-export const textosPt: TextosUi<UiAumentoDeSueldo> = {
+const base: TextosUi<UiAumentoDeSueldo> = {
   slug: "aumento-salarial",
   ui: () => ({
     sueldo: "Salário mensal atual",
@@ -26,3 +27,17 @@ export const textosPt: TextosUi<UiAumentoDeSueldo> = {
     observacionIgual: "O aumento empatou com a inflação: o seu salário compra o mesmo que antes.",
   }),
 };
+
+const portugal = (): Partial<UiAumentoDeSueldo> => ({
+  aumentoMontoAyuda: "Se o aumento for um valor fixo, indique-o aqui. É usado em vez da percentagem.",
+  sueldosAnio: "Salários por ano",
+  sueldosAnioAyuda: "14 se recebe os subsídios de férias e de Natal à parte. 12 se os recebe em duodécimos.",
+  porcentaje: "Aumento em percentagem",
+  errorSueldo: "Indique o seu salário atual.",
+  errorSinAumento: "Indique o aumento em percentagem ou em valor.",
+  observacionGana: (puntos) => `Ficou acima da inflação: o seu salário compra mais ${puntos}% do que antes.`,
+  observacionPierde: (puntos) => `O aumento ficou abaixo da inflação: o seu salário compra menos ${puntos}% do que antes.`,
+  observacionIgual: "O aumento igualou a inflação: o seu salário compra o mesmo que antes.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

@@ -1,6 +1,6 @@
 import { definirCalculadora, ErrorEntrada } from "../../calculo";
 import type { DefinicionCalculadora, TablaResultado } from "../../tipos";
-import { montoEjemplo, type ContextoUniversal } from "../tipos";
+import { formatearCifra, montoEjemplo, type ContextoUniversal } from "../tipos";
 
 export interface UiInteresCompuesto {
   capital: string;
@@ -101,7 +101,7 @@ export function definir(ctx: ContextoUniversal, ui: UiInteresCompuesto): Definic
         aportado,
         intereses,
         evolucion: tabla,
-        observaciones: intereses > 0 ? [ui.observacionIntereses(String(parteIntereses))] : [],
+        observaciones: intereses > 0 ? [ui.observacionIntereses(formatearCifra(ctx, parteIntereses, 0))] : [],
       };
     },
     resultado: [

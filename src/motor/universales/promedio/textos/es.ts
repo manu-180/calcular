@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiPromedio } from "../definicion";
 
-export const textosEs: TextosUi<UiPromedio> = {
+const base: TextosUi<UiPromedio> = {
   slug: "promedio-ponderado",
   ui: (trato) => ({
     nota: (n) => `Nota ${n}`,
@@ -31,3 +32,11 @@ export const textosEs: TextosUi<UiPromedio> = {
     sinPesos: "Sin pesos, el promedio ponderado es igual al simple.",
   }),
 };
+
+const espana = (): Partial<UiPromedio> => ({
+  ponderado: "Media ponderada",
+  simple: "Media simple",
+  sinPesos: "Sin pesos, la media ponderada es igual a la simple.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

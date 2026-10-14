@@ -1,7 +1,8 @@
-import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 import { acumular, rentaMensual } from "../definicion";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const m = (n: number) => formatearMonto(ctx, n);
   const actual = montoEjemplo(ctx, 5000);
@@ -68,3 +69,54 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const m = (n: number) => formatearMonto(ctx, n);
+  const actual = montoEjemplo(ctx, 5000);
+  const aporte = montoEjemplo(ctx, 200);
+  const a30 = acumular(30, 65, actual, aporte, 4);
+  const capital30 = a30[a30.length - 1].saldo;
+  const a40 = acumular(40, 65, actual, aporte, 4);
+  const capital40 = a40[a40.length - 1].saldo;
+  return {
+    h1: "Calculadora de ahorro para la jubilación",
+    title: tituloQueEntre(`Ahorro para la jubilación en ${ctx.nombrePais}`, `Jubilación en ${ctx.nombrePais}`, "Calculadora de ahorro para la jubilación"),
+    description:
+      "Calcula cuánto reunirías para tu jubilación ahorrando cada mes y qué ingreso mensual te daría. En dinero de hoy, sin contar la pensión pública.",
+    intro: [
+      "La pensión pública muchas veces no basta para mantener el nivel de vida. Un ahorro propio, aunque sea pequeño, cambia mucho si empiezas pronto.",
+      "Escribe tu edad, cuándo te quieres jubilar, lo que ya tienes y lo que puedes aportar al mes. Te mostramos el ahorro al jubilarte y cuánto podrías cobrar de él cada mes.",
+    ],
+    comoSeCalcula: [
+      "El ahorro crece cada mes con el rendimiento real, que es el rendimiento menos la inflación. Por eso el resultado queda en dinero de hoy.",
+      "Al jubilarse, el ahorro se reparte en cantidades mensuales iguales durante los años elegidos. Mientras tanto, lo que queda sigue rindiendo.",
+      "No incluye la pensión pública, ni impuestos, ni comisiones de la inversión.",
+    ],
+    ejemplo: [
+      `Con ${m(actual)} ahorrados a los 30 años y ${m(aporte)} al mes al 4 % real, a los 65 se reúnen ${m(capital30)}. Eso da ${m(rentaMensual(capital30, 4, 25))} al mes durante 25 años.`,
+      `Si se empieza a los 40 con lo mismo, se llega a ${m(capital40)}. Diez años de diferencia cambian mucho el resultado.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿Qué es el rendimiento real?",
+        respuesta:
+          "Es lo que rinde una inversión después de descontar la inflación. Si una inversión da un 7 % y la inflación es del 3 %, el rendimiento real ronda el 4 %.",
+      },
+      {
+        pregunta: "¿Esto sustituye a la pensión pública?",
+        respuesta:
+          "No. Es un ahorro propio que se suma a la pensión de la Seguridad Social o a un plan de pensiones. Para conocer tu pensión pública, consulta tu informe en la Seguridad Social.",
+      },
+      {
+        pregunta: "¿Cuánto debería ahorrar para la jubilación?",
+        respuesta: "No hay un número único. Una referencia habitual es apartar entre el 10 % y el 15 % de lo que ganas. Lo más importante es empezar cuanto antes.",
+      },
+    ],
+    glosario: [
+      { termino: "Rendimiento real", definicion: "El rendimiento de una inversión por encima de la inflación." },
+      { termino: "Dinero de hoy", definicion: "Una cantidad futura expresada según lo que se puede comprar hoy con ella." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

@@ -9,9 +9,9 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     h1: "Calculadora de metros cuadrados",
     title: tituloQueEntre(`Calcular metros cuadrados en ${ctx.nombrePais}`, `Metros cuadrados en ${ctx.nombrePais}`, "Calcular metros cuadrados"),
     description: t(
-      "Calcula los metros cuadrados de un terreno, un piso o un ambiente: rectángulos, triángulos y círculos, y suma hasta cinco superficies.",
-      "Calcule los metros cuadrados de un terreno, un piso o un ambiente: rectángulos, triángulos y círculos, y sume hasta cinco superficies.",
-      "Calculá los metros cuadrados de un terreno, un piso o un ambiente: rectángulos, triángulos y círculos, y sumá hasta cinco superficies.",
+      "Calcula los metros cuadrados de un terreno, un piso o una habitación: rectángulos, triángulos y círculos, y suma hasta cinco superficies.",
+      "Calcule los metros cuadrados de un terreno, un piso o una habitación: rectángulos, triángulos y círculos, y sume hasta cinco superficies.",
+      "Calculá los metros cuadrados de un terreno, un piso o una habitación: rectángulos, triángulos y círculos, y sumá hasta cinco superficies.",
     ),
     intro: [
       t(

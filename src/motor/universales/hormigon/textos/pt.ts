@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiHormigon } from "../definicion";
 
-export const textosPt: TextosUi<UiHormigon> = {
+const base: TextosUi<UiHormigon> = {
   slug: "calculadora-de-concreto",
   ui: () => ({
     largo: (u) => `Comprimento (${u})`,
@@ -23,3 +24,14 @@ export const textosPt: TextosUi<UiHormigon> = {
     aviso: "Os materiais são uma referência para um traço de uso geral 1:2:3 (cerca de 350 kg de cimento por m³). Mudam conforme o traço, a obra e os materiais da região: confirme com quem conduz a obra.",
   }),
 };
+
+const portugal = (): Partial<UiHormigon> => ({
+  espesorAyuda: "Um pavimento de pátio ou de quintal costuma ter 10 cm. Uma entrada de garagem, de 12 a 15 cm.",
+  margenAyuda: "Para desníveis do terreno e perdas. O habitual é de 5% a 10%.",
+  volumen: (u) => `Volume exato de betão (${u})`,
+  volumenTotal: (u) => `Betão necessário (${u})`,
+  errorMedida: "Esta medida tem de ser maior do que 0.",
+  aviso: "Os materiais são uma referência para uma dosagem de uso geral 1:2:3 (cerca de 350 kg de cimento por m³). Mudam conforme a dosagem, a obra e os materiais da região: confirme com quem dirige a obra.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

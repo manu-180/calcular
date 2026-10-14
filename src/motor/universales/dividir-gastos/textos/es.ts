@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiDividirGastos } from "../definicion";
 
-export const textosEs: TextosUi<UiDividirGastos> = {
+const base: TextosUi<UiDividirGastos> = {
   slug: "dividir-gastos",
   ui: (trato) => ({
     persona: (n) => `Persona ${n}`,
@@ -22,3 +23,11 @@ export const textosEs: TextosUi<UiDividirGastos> = {
     aMano: "Están a mano: todos pusieron lo mismo.",
   }),
 };
+
+const espana = (): Partial<UiDividirGastos> => ({
+  transferencias: "Pagos para saldar cuentas",
+  colMonto: "Importe",
+  aMano: "Nadie debe nada: todos han puesto lo mismo.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

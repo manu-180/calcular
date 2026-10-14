@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiInteresCompuesto } from "../definicion";
 
-export const textosEs: TextosUi<UiInteresCompuesto> = {
+const base: TextosUi<UiInteresCompuesto> = {
   slug: "interes-compuesto",
   ui: (trato) => ({
     capital: "Capital inicial",
@@ -35,3 +36,13 @@ export const textosEs: TextosUi<UiInteresCompuesto> = {
     observacionIntereses: (porcentaje) => `El ${porcentaje} % del saldo final son intereses.`,
   }),
 };
+
+const espana = (): Partial<UiInteresCompuesto> => ({
+  aporte: "Aportación mensual (opcional)",
+  aporteAyuda: "Lo que añadirías cada mes. Se suma al final de cada mes.",
+  tasa: "Tipo de interés anual (%)",
+  colAportado: "Aportaciones del año",
+  errorSinDinero: "Escribe un capital inicial o una aportación mensual.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

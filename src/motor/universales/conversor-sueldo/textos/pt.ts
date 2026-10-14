@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiConversorSueldo } from "../definicion";
 
-export const textosPt: TextosUi<UiConversorSueldo> = {
+const base: TextosUi<UiConversorSueldo> = {
   slug: "salario-por-hora",
   ui: () => ({
     monto: "Salário",
@@ -27,3 +28,12 @@ export const textosPt: TextosUi<UiConversorSueldo> = {
     observacionBruto: "É o mesmo valor mostrado em outros períodos. Não soma bônus nem desconta impostos.",
   }),
 };
+
+const portugal = (): Partial<UiConversorSueldo> => ({
+  semanasAnioAyuda: "52 se tem férias pagas. Se só recebe pelas semanas que trabalha, retire as outras.",
+  errorHoras: "Indique quantas horas trabalha por semana.",
+  errorSemanas: "As semanas pagas por ano têm de ser mais do que zero.",
+  observacionBruto: "É o mesmo valor noutros períodos. Não soma subsídios nem prémios, nem desconta impostos.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

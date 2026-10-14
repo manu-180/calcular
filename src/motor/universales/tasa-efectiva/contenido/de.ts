@@ -1,7 +1,8 @@
+import { paraSuiza } from "../../comun/locales";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aEfectiva, aNominal } from "../definicion";
 
-export const contenidoDe: ContenidoUniversal = (ctx) => {
+const contenido: ContenidoUniversal = (ctx) => {
   const p = (n: number) => `${formatearNumero(ctx, n, 2)} %`;
   const c = {
     h1: "Effektivzins berechnen",
@@ -50,3 +51,5 @@ export const contenidoDe: ContenidoUniversal = (ctx) => {
   };
   return ctx.locale === "de-CH" ? JSON.parse(JSON.stringify(c).replace(/ß/g, "ss")) : c;
 };
+
+export const contenidoDe: ContenidoUniversal = (ctx) => paraSuiza(ctx.locale, contenido(ctx));

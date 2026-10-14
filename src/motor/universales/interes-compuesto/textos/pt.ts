@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiInteresCompuesto } from "../definicion";
 
-export const textosPt: TextosUi<UiInteresCompuesto> = {
+const base: TextosUi<UiInteresCompuesto> = {
   slug: "juros-compostos",
   ui: () => ({
     capital: "Valor inicial",
@@ -27,3 +28,14 @@ export const textosPt: TextosUi<UiInteresCompuesto> = {
     observacionIntereses: (porcentaje) => `${porcentaje}% do saldo final são juros.`,
   }),
 };
+
+const portugal = (): Partial<UiInteresCompuesto> => ({
+  aporte: "Reforço mensal (opcional)",
+  aporteAyuda: "O que somaria todos os meses. Entra no fim de cada mês.",
+  tasa: "Taxa de juro anual (%)",
+  aportado: "Total investido",
+  colAportado: "Reforços",
+  errorSinDinero: "Indique um valor inicial ou um reforço mensal.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

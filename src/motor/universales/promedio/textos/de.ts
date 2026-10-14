@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPromedio } from "../definicion";
 
-export const textosDe: TextosUi<UiPromedio> = {
+const textos: TextosUi<UiPromedio> = {
   slug: "notendurchschnitt",
   ui: () => ({
     nota: (n) => `Note ${n}`,
@@ -19,3 +20,5 @@ export const textosDe: TextosUi<UiPromedio> = {
     sinPesos: "Ohne Gewichtung ist der gewichtete Durchschnitt gleich dem einfachen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

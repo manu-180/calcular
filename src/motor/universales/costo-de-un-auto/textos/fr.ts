@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiCostoDeUnAuto } from "../definicion";
 
-export const textosFr: TextosUi<UiCostoDeUnAuto> = {
+const base: TextosUi<UiCostoDeUnAuto> = {
   slug: "cout-reel-voiture",
   ui: () => ({
     precio: "Valeur de la voiture",
@@ -34,3 +35,9 @@ export const textosFr: TextosUi<UiCostoDeUnAuto> = {
       "La mensualité du crédit n’entre pas dans le coût réel, car une partie paie la voiture, déjà comptée dans la perte de valeur. Les intérêts du crédit sont un coût en plus.",
   }),
 };
+
+const canada = (): Partial<UiCostoDeUnAuto> => ({
+  otrosAyuda: "Immatriculation, permis de conduire, péages et contraventions, ramenés au mois.",
+});
+
+export const textosFr = conVariantes(base, { "fr-CA": canada });

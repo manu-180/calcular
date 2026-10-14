@@ -1,6 +1,7 @@
-import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const m = (n: number) => formatearMonto(ctx, n);
   const gastos = montoEjemplo(ctx, 1500);
@@ -53,3 +54,47 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const m = (n: number) => formatearMonto(ctx, n);
+  const gastos = montoEjemplo(ctx, 1500);
+  const aporte = montoEjemplo(ctx, 300);
+  return {
+    intro: [
+      "Un fondo de emergencia es dinero apartado para lo que no se puede prever: quedarse sin trabajo, un problema de salud o una reparación urgente en casa.",
+      "Tenerlo evita endeudarte con la tarjeta justo cuando peor estás. Escribe tus gastos esenciales y cuántos meses quieres cubrir.",
+    ],
+    comoSeCalcula: [
+      "Fondo recomendado = gastos esenciales al mes × meses a cubrir.",
+      "Lo que falta = fondo recomendado − lo que ya está ahorrado.",
+      "Meses para completarlo = lo que falta ÷ lo que se puede ahorrar al mes, redondeado hacia arriba.",
+    ],
+    ejemplo: [
+      `Con ${m(gastos)} de gastos esenciales al mes, un fondo de 6 meses es de ${m(gastos * 6)}.`,
+      `Ahorrando ${m(aporte)} al mes, se completa en ${Math.ceil((gastos * 6) / aporte)} meses.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿De cuántos meses tiene que ser el fondo de emergencia?",
+        respuesta:
+          "La referencia más usada es de 3 a 6 meses de gastos esenciales. Si el ingreso es variable, si trabajas como autónomo o si solo entra un sueldo en casa, conviene apuntar a 6 a 12 meses.",
+      },
+      {
+        pregunta: "¿Dónde guardo el fondo de emergencia?",
+        respuesta:
+          "En un sitio seguro del que puedas sacar el dinero al momento, separado de la cuenta del día a día. No es para invertir con riesgo: su trabajo es estar disponible.",
+      },
+      {
+        pregunta: "¿Primero el fondo o pagar deudas?",
+        respuesta:
+          "Una opción habitual es reunir primero un mes de gastos, después pagar las deudas más caras (como la tarjeta) y luego completar el fondo.",
+      },
+    ],
+    glosario: [
+      { termino: "Gastos esenciales", definicion: "Los que hay que pagar aunque se pierda el ingreso: vivienda, comida, suministros, salud." },
+      { termino: "Liquidez", definicion: "Lo rápido que se puede usar un dinero sin perder valor." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

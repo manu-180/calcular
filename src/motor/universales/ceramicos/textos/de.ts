@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiCeramicos } from "../definicion";
 
-export const textosDe: TextosUi<UiCeramicos> = {
+const textos: TextosUi<UiCeramicos> = {
   slug: "fliesenrechner",
   ui: () => ({
     superficie: (u) => `Zu fliesende Fläche (${u})`,
@@ -19,3 +20,5 @@ export const textosDe: TextosUi<UiCeramicos> = {
     errorPieza: "Länge und Breite der Fliese müssen über 0 liegen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

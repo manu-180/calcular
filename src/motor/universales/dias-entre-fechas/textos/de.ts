@@ -1,3 +1,4 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiDiasEntreFechas } from "../definicion";
 
@@ -15,7 +16,7 @@ export function duracionDe(anios: number, meses: number, dias: number): string {
   return aufzaehlen(teile);
 }
 
-export const textosDe: TextosUi<UiDiasEntreFechas> = {
+const textos: TextosUi<UiDiasEntreFechas> = {
   slug: "tagerechner",
   ui: () => ({
     desde: "Startdatum",
@@ -36,3 +37,5 @@ export const textosDe: TextosUi<UiDiasEntreFechas> = {
     notaInvertidas: "Das Enddatum lag vor dem Startdatum. Die beiden wurden deshalb getauscht.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

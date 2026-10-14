@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiOvulacion } from "../definicion";
 
-export const textosDe: TextosUi<UiOvulacion> = {
+const textos: TextosUi<UiOvulacion> = {
   slug: "eisprung-rechner",
   ui: () => ({
     fum: "Erster Tag der letzten Periode",
@@ -21,3 +22,5 @@ export const textosDe: TextosUi<UiOvulacion> = {
     aviso: "Das ist eine Schätzung für Zyklen, die immer etwa gleich lang sind. Sie ist keine Verhütungsmethode und ersetzt keine ärztliche Beratung.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

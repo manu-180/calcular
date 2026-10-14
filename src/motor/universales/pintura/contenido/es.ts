@@ -42,7 +42,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
       },
       {
         pregunta: "¿Se descuentan puertas y ventanas?",
-        respuesta: "Sí, si son grandes. Las aberturas chicas conviene no restarlas: ese sobrante compensa los bordes y los recortes.",
+        respuesta: "Sí, si son grandes. Las aberturas pequeñas conviene no restarlas: ese sobrante compensa los bordes y los recortes.",
       },
     ],
     glosario: [

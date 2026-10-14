@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiCostoDeUnAuto } from "../definicion";
 
-export const textosEs: TextosUi<UiCostoDeUnAuto> = {
+const base: TextosUi<UiCostoDeUnAuto> = {
   slug: "costo-de-tener-auto",
   ui: (trato) => ({
     precio: "Valor del auto",
@@ -42,3 +43,29 @@ export const textosEs: TextosUi<UiCostoDeUnAuto> = {
       "La cuota no entra en el costo real porque una parte paga el auto, que ya está contado en la pérdida de valor. Los intereses del préstamo sí son un costo extra.",
   }),
 };
+
+const espana = (): Partial<UiCostoDeUnAuto> => ({
+  precio: "Valor del coche",
+  depreciacionAyuda: "Un coche nuevo pierde entre un 15 % y un 25 % el primer año. Uno de segunda mano, menos.",
+  cuota: "Cuota mensual del préstamo (opcional)",
+  cuotaAyuda: "Solo para ver cuánto sale de la cuenta cada mes. No se suma al coste real.",
+  seguro: "Seguro al mes",
+  distanciaKm: "Kilómetros al mes",
+  distanciaMi: "Millas al mes",
+  mantenimiento: "Mantenimiento al mes",
+  mantenimientoAyuda: "Revisiones, cambios de aceite, neumáticos, reparaciones y lavados, de media al mes.",
+  estacionamiento: "Aparcamiento o garaje al mes (opcional)",
+  otros: "Impuestos, peajes y otros al mes (opcional)",
+  otrosAyuda: "El impuesto de circulación, la ITV, los peajes y las multas, de media al mes.",
+  costoMensual: "Coste real al mes",
+  costoAnual: "Coste real al año",
+  porKm: "Coste por kilómetro",
+  porMilla: "Coste por milla",
+  combustible: "Combustible al mes",
+  depreciacionMensual: "Pérdida de valor al mes",
+  errorConsumo: "Escribe el consumo del coche para calcular el combustible.",
+  observacionCuota:
+    "La cuota no entra en el coste real porque una parte paga el coche, que ya está contado en la pérdida de valor. Los intereses del préstamo sí son un coste extra.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });
