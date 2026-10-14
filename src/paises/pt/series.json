@@ -597,7 +597,7 @@
       "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "INE",
-        "titulo": "IPC total, índice base 2025 (série 12559545 do BPstat do Banco de Portugal)",
+        "titulo": "IPC total, índice (série 12559545 do BPstat do Banco de Portugal)",
         "url": "https://bpstat.bportugal.pt/data/v1/domains/12/datasets/fd8f42946d3f4c45c144e9d62065dc72/?lang=PT&series_ids=12559545&obs_since=2025-01-01",
         "tipo": "primaria",
         "verificadoEl": "2026-10-14",
