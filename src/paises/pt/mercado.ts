@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["EUR"],
   zonaHoraria: "Europe/Lisbon",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "continente", nombre: "Continente" },
     { id: "acores", nombre: "Região Autónoma dos Açores" },
