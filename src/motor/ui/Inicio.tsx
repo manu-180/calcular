@@ -41,7 +41,7 @@ function scriptVuelta(destinos: Readonly<Record<string, string>>): string {
 
 export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; externos?: readonly PaisExterno[] }) {
   const t = ctx.textos;
-  const ti = textosInicio(ctx.mercado.idioma, ctx.mercado.trato);
+  const ti = textosInicio(ctx.mercado.idioma, ctx.mercado.trato, ctx.mercado.locale);
   const frescuras = new Map<string, FrescuraPais | null>(ctx.paises.map((m) => [m.codigo, frescuraDePais(ctx.registro, m.codigo, hoyEn(m))]));
   const tarjetas = [
     ...ctx.paises.map((m) => ({
@@ -58,7 +58,7 @@ export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; exter
   const fechaDe = (iso: FechaISO | undefined, locale: string) => (iso ? { iso, absoluta: formatearFecha(iso, locale) } : undefined);
   const arranque: PaisArranque[] = [
     ...ctx.paises.map((m) => {
-      const tm = textosInicio(m.idioma, m.trato);
+      const tm = textosInicio(m.idioma, m.trato, m.locale);
       const f = frescuras.get(m.codigo);
       const fecha = fechaDe(masNueva(f?.verificadoEl, f?.actualizadoEl), m.locale);
       return {
@@ -175,7 +175,7 @@ export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; exter
 // y el "hoy"/"ayer" lo decide el navegador (FechaViva), no el HTML cacheado.
 function DatosVivos({ ctx, f }: { ctx: ContextoSitio; f: FrescuraPais }) {
   const m = ctx.mercado;
-  const tv = textosInicio(m.idioma, m.trato).vivo;
+  const tv = textosInicio(m.idioma, m.trato, m.locale).vivo;
   const automatica = [...f.series].filter((s) => s.automatica).sort((a, b) => b.fecha.localeCompare(a.fecha))[0];
   return (
     <section className="cy-vivo" aria-labelledby="cy-vivo-titulo">

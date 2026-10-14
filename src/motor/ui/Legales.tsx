@@ -9,7 +9,7 @@ import { JsonLd, Migas } from "./Sitio";
 export const MAIL_CONTACTO = "manunv97@gmail.com";
 
 export function paginasLegales(idioma: Idioma, trato: Trato, locale: string): PaginasLegales {
-  return resolverLegales(idioma, trato, { actualizado: formatearFecha(ACTUALIZACION_PAGINAS_GLOBALES, locale), mail: MAIL_CONTACTO });
+  return resolverLegales(idioma, trato, { actualizado: formatearFecha(ACTUALIZACION_PAGINAS_GLOBALES, locale), mail: MAIL_CONTACTO }, locale);
 }
 
 function conMail(texto: string) {

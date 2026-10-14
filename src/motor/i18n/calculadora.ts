@@ -92,6 +92,6 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
   },
 };
 
-export function textosCalculadora(idioma: Idioma, trato: Trato): TextosCalculadora {
-  return resolver(DICCIONARIOS_CALCULADORA, idioma, trato);
+export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {
+  return resolver(DICCIONARIOS_CALCULADORA, idioma, trato, locale);
 }

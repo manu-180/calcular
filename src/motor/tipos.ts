@@ -36,7 +36,7 @@ export const UNIDADES_REFERENCIA = [
 ] as const;
 export type UnidadReferencia = (typeof UNIDADES_REFERENCIA)[number];
 
-export const UNIDADES_SIMPLES = ["%", "dias", "horas", "meses", "anios", "numero", "factor"] as const;
+export const UNIDADES_SIMPLES = ["%", "dias", "semanas", "horas", "meses", "anios", "numero", "factor"] as const;
 export type UnidadSimple = (typeof UNIDADES_SIMPLES)[number];
 
 export type Unidad = Moneda | UnidadReferencia | UnidadSimple;
@@ -250,9 +250,12 @@ export interface CampoSiNo extends CampoBase {
   porDefecto?: boolean;
 }
 
+// regiones: un subconjunto de las del mercado, para una calculadora que no aplica en todas (el
+// impuesto provincial de Canadá sin Quebec). Sin la lista, todas.
 export interface CampoRegion extends CampoBase {
   tipo: "region";
   porDefecto?: string;
+  regiones?: readonly string[];
 }
 
 export interface CampoOpcionDato extends CampoBase {
@@ -313,7 +316,7 @@ interface FilaComun {
   ocultarSiCero?: boolean;
 }
 
-export type FormatoNumerico = "moneda" | "numero" | "porcentaje" | "dias" | "meses" | "horas" | "anios";
+export type FormatoNumerico = "moneda" | "numero" | "porcentaje" | "dias" | "semanas" | "meses" | "horas" | "anios";
 
 export type FilaResultado<R> =
   | (FilaComun & {
@@ -459,10 +462,20 @@ export interface PropsCalculadora {
 
 export type ModuloCliente = { default: ComponentType<PropsCalculadora> };
 
+// Una calculadora del país traducida por una edición en otro idioma (ca-fr traduce ca.vacation-pay):
+// el navegador arma la definición con la del país (src/paises/<mercado>/calculadoras/<archivo>.ts) y
+// los textos de la edición (src/paises/<edición>/textos/<archivo>.ts).
+export interface OrigenTraduccion {
+  mercado: CodigoMercado;
+  archivo: string;
+  id: string;
+}
+
 export interface EntradaCalculadora {
   definicion: DefinicionCalculadora;
   contenido: ContenidoCalculadora;
   cliente: () => Promise<ModuloCliente>;
+  traduccion?: OrigenTraduccion;
 }
 
 export interface DeclaracionPais {
@@ -484,4 +497,6 @@ export interface PaisDefinido {
   novedades: readonly Novedad[];
   detectores: readonly Detector[];
   errores: readonly string[];
+  // El mercado del país cuando este es una edición en otro idioma (ca-fr es edición de ca).
+  edicionDe?: CodigoMercado;
 }

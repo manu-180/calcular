@@ -29,7 +29,7 @@ export function contextoSitio(registro: Registro, codigo: CodigoMercado): Contex
     modo,
     mercado,
     fecha: hoyEn(mercado),
-    textos: textosSitio(mercado.idioma, mercado.trato),
+    textos: textosSitio(mercado.idioma, mercado.trato, mercado.locale),
     paises,
   };
 }

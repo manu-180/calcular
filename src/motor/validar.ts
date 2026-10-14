@@ -1,8 +1,15 @@
 import { esConcepto } from "./conceptos";
 import { esIdDelMercado, paisDelMercado, RE_SLUG, validarFuente, validarUrl } from "./datos";
-import { hayLlavesSueltas, marcadoresDe, mercadoVisible, resolverValores } from "./registro";
+import { hayLlavesSueltas, marcadoresDe, mercadoVisible, rellenarContenido, resolverValores } from "./registro";
 import { diasEntre, esFechaISO, sumarDias, valorSerie, vigente } from "./vigencia";
-import type { ContenidoCalculadora, DefinicionCalculadora, FechaISO, PaisDefinido, Requisito } from "./tipos";
+import type { ContenidoCalculadora, DefinicionCalculadora, FechaISO, PaisDefinido, Requisito, Unidad } from "./tipos";
+
+function unidadesDe(pais: PaisDefinido): Record<string, Unidad> {
+  const u: Record<string, Unidad> = {};
+  for (const d of pais.datos) u[d.id] = d.unidad;
+  for (const s of pais.series) u[s.id] = s.unidad;
+  return u;
+}
 
 export const SLUGS_RESERVADOS = [
   "fuentes",
@@ -89,7 +96,12 @@ function validarDefinicion(pais: PaisDefinido, def: DefinicionCalculadora, e: st
     if (c.tipo === "region") {
       const regs = (pais.mercado.regiones ?? []).map((r) => r.id);
       if (regs.length === 0) e.push(`${donde}: campo ${c.id} es de tipo region pero el mercado no declara regiones`);
-      if (c.porDefecto !== undefined && !regs.includes(c.porDefecto)) e.push(`${donde}: campo ${c.id} porDefecto no es una región del mercado`);
+      if (c.regiones !== undefined) {
+        if (c.regiones.length === 0) e.push(`${donde}: campo ${c.id} con regiones vacías`);
+        for (const r of c.regiones) if (!regs.includes(r)) e.push(`${donde}: campo ${c.id} lista la región "${r}", que no está en mercado.regiones`);
+      }
+      const validas = c.regiones ?? regs;
+      if (c.porDefecto !== undefined && !validas.includes(c.porDefecto)) e.push(`${donde}: campo ${c.id} porDefecto no es una de sus regiones`);
     }
     if (c.tipo === "opcion-dato" && def.requiere[c.dato] !== "mapa") e.push(`${donde}: campo ${c.id} toma opciones de "${c.dato}", que tiene que estar en requiere como "mapa"`);
     if (c.tipo === "moneda" || c.tipo === "numero" || c.tipo === "entero" || c.tipo === "porcentaje") {
@@ -133,7 +145,10 @@ function validarContenido(pais: PaisDefinido, def: DefinicionCalculadora, c: Con
         if (!porRegion || !dato?.regiones?.includes(m.region)) e.push(`${donde}: ${m.texto} usa una región que el dato no tiene`);
       }
       const base = req.replace("-por-region", "");
-      if (base === "escala") e.push(`${donde}: ${m.texto} no se puede mostrar (una escala no es un número)`);
+      if (base === "escala" && !m.desde && (m.campo === undefined || !/^-?\d+$/.test(m.clave ?? ""))) {
+        e.push(`${donde}: ${m.texto} es una escala: mostrá una fila con [n].tasa, [n].desde, [n].hasta o [n].cuotaFija (n desde 0, -1 la última)`);
+      }
+      if (base !== "escala" && m.campo !== undefined) e.push(`${donde}: ${m.texto} usa .${m.campo}, que solo vale para filas de una escala`);
       if (base === "mapa" && m.clave === undefined && !m.desde) e.push(`${donde}: ${m.texto} necesita [clave] porque el dato es un mapa`);
     }
   }
@@ -179,6 +194,9 @@ export function validarPais(pais: PaisDefinido, opciones: OpcionesValidacion): I
     if (e.length > antes || def.estado === "borrador") continue;
     const r = resolverValores(pais, def, hoy);
     if (r.ok) {
+      const sinResolver: string[] = [];
+      rellenarContenido(entrada.contenido, { valores: r.valores, usados: r.usados, unidades: unidadesDe(pais), locale: m.locale, alFallar: (x) => sinResolver.push(x) });
+      for (const x of new Set(sinResolver)) e.push(`contenido de ${def.id}: el marcador ${x} no se resuelve hoy (${hoy}): índice de fila fuera de la escala, clave o región que no está, o campo vacío`);
       publicablesHoy++;
       const r30 = resolverValores(pais, def, enMas);
       if (!r30.ok) a.push(`calculadora ${def.id}: deja de ser publicable antes del ${enMas}: ${r30.motivos.join("; ")}`);

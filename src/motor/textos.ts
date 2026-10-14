@@ -245,8 +245,8 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
   },
 };
 
-export function textosMotor(idioma: Idioma, trato: Trato): TextosMotor {
-  return resolver(DICCIONARIOS_MOTOR, idioma, trato);
+export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {
+  return resolver(DICCIONARIOS_MOTOR, idioma, trato, locale);
 }
 
 export function interpolar(plantilla: string, params: Readonly<Record<string, string>> = {}): string {

@@ -171,7 +171,7 @@ export function PielCalculadora({
   tablas?: DefinicionCalculadora["tablas"];
 }) {
   const idBase = useId();
-  const t = useMemo(() => textosCalculadora(contexto.idioma, contexto.trato), [contexto.idioma, contexto.trato]);
+  const t = useMemo(() => textosCalculadora(contexto.idioma, contexto.trato, contexto.locale), [contexto.idioma, contexto.trato, contexto.locale]);
   const { estado, campos } = control;
   const notas = avisos.filter((a) => a.nivel !== "bloquea");
 

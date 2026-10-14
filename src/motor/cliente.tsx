@@ -26,7 +26,7 @@ export type DefinicionVisible = Pick<DefinicionCalculadora, "id" | "campos" | "r
 // cuando el navegador está ocioso y un resultado que aparece solo, segundos después de cargar, mueve
 // la página (CLS). Un campo vacío y obligatorio no muestra error: falta un dato, no hay nada mal.
 function useControl(visible: DefinicionVisible, props: PropsCalculadora, inicial: DefinicionCalculadora | null, cargar?: () => Promise<DefinicionCalculadora>): CalculadoraControlada & { precargar: () => void } {
-  const textos = useMemo(() => textosMotor(props.contexto.idioma, props.contexto.trato), [props.contexto.idioma, props.contexto.trato]);
+  const textos = useMemo(() => textosMotor(props.contexto.idioma, props.contexto.trato, props.contexto.locale), [props.contexto.idioma, props.contexto.trato, props.contexto.locale]);
   const [crudos, setCrudos] = useState<Crudos>(() => valoresIniciales(visible.campos, props.contexto, props.opcionesDinamicas));
   const [definicion, setDefinicion] = useState<DefinicionCalculadora | null>(inicial);
   const [tocado, setTocado] = useState(false);

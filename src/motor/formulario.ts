@@ -40,7 +40,10 @@ export type EstadoCalculo =
 
 export function opcionesDe(campo: Campo, contexto: ContextoSerializado, dinamicas: PropsCalculadora["opcionesDinamicas"]): readonly OpcionDinamica[] {
   if (campo.tipo === "opcion") return campo.opciones;
-  if (campo.tipo === "region") return contexto.regiones.map((r) => ({ valor: r.id, etiqueta: r.nombre }));
+  if (campo.tipo === "region") {
+    const solo = campo.regiones;
+    return contexto.regiones.filter((r) => !solo || solo.includes(r.id)).map((r) => ({ valor: r.id, etiqueta: r.nombre }));
+  }
   if (campo.tipo === "opcion-dato") return dinamicas[campo.id] ?? [];
   return [];
 }
@@ -73,8 +76,8 @@ function ejemploDe(campo: Campo, locale: string): string {
   return formatearNumero(campo.tipo === "porcentaje" ? 12.5 : campo.tipo === "entero" ? 12 : 1234.5, locale, campo.tipo === "entero" ? 0 : undefined);
 }
 
-function mensajeMilesAmbiguos(sugerido: string, separador: string, idioma: Idioma, trato: Trato): string {
-  const t = textosMotor(idioma, trato);
+function mensajeMilesAmbiguos(sugerido: string, separador: string, idioma: Idioma, trato: Trato, locale: string): string {
+  const t = textosMotor(idioma, trato, locale);
   return interpolar(t.milesAmbiguos, { sugerido, signos: separador === "." ? t.separadores.punto : t.separadores.coma });
 }
 
@@ -120,7 +123,7 @@ export function parsearEntrada(
         const milesAmbiguos = c.tipo === "moneda" || c.tipo === "entero";
         const n = parsearNumero(texto, contexto.locale, { milesAmbiguos });
         const sugerencia = n === null && milesAmbiguos ? sugerenciaMiles(texto, contexto.locale) : null;
-        if (sugerencia) errores[c.id] = { mensaje: mensajeMilesAmbiguos(sugerencia.sugerido, sugerencia.separador, contexto.idioma, contexto.trato) };
+        if (sugerencia) errores[c.id] = { mensaje: mensajeMilesAmbiguos(sugerencia.sugerido, sugerencia.separador, contexto.idioma, contexto.trato, contexto.locale) };
         else if (n === null) errores[c.id] = { codigo: "numero-invalido", params: { ejemplo: ejemploDe(c, contexto.locale) } };
         else if (c.tipo === "entero" && !Number.isInteger(n)) errores[c.id] = { codigo: "entero-invalido" };
         else if (c.min !== undefined && n < c.min) errores[c.id] = { codigo: "menor-que-min", params: { min: formatearNumero(c.min, contexto.locale) } };
