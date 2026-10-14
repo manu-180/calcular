@@ -32,6 +32,12 @@ import stampDutyCalculatorVic from "./calculadoras/stamp-duty-calculator-vic";
 import contenidoStampDutyCalculatorVic from "./contenido/stamp-duty-calculator-vic";
 import stampDutyCalculatorQld from "./calculadoras/stamp-duty-calculator-qld";
 import contenidoStampDutyCalculatorQld from "./contenido/stamp-duty-calculator-qld";
+import workFromHomeDeduction from "./calculadoras/work-from-home-deduction";
+import contenidoWorkFromHomeDeduction from "./contenido/work-from-home-deduction";
+import carExpensesCalculator from "./calculadoras/car-expenses-calculator";
+import contenidoCarExpensesCalculator from "./contenido/car-expenses-calculator";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +66,9 @@ export default definirPais({
     { definicion: stampDutyCalculatorNsw, contenido: contenidoStampDutyCalculatorNsw, cliente: () => import("./calculadoras/stamp-duty-calculator-nsw.cliente") },
     { definicion: stampDutyCalculatorVic, contenido: contenidoStampDutyCalculatorVic, cliente: () => import("./calculadoras/stamp-duty-calculator-vic.cliente") },
     { definicion: stampDutyCalculatorQld, contenido: contenidoStampDutyCalculatorQld, cliente: () => import("./calculadoras/stamp-duty-calculator-qld.cliente") },
+    { definicion: workFromHomeDeduction, contenido: contenidoWorkFromHomeDeduction, cliente: () => import("./calculadoras/work-from-home-deduction.cliente") },
+    { definicion: carExpensesCalculator, contenido: contenidoCarExpensesCalculator, cliente: () => import("./calculadoras/car-expenses-calculator.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
   universales: "todas",
   novedades,

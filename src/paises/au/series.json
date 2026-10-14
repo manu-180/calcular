@@ -6,7 +6,7 @@
       "nombre": "Consumer Price Index, all groups, weighted average of eight capital cities",
       "unidad": "numero",
       "frecuencia": "trimestral",
-      "maxAntiguedadDias": 220,
+      "maxAntiguedadDias": 250,
       "fuente": {
         "organismo": "Australian Bureau of Statistics",
         "titulo": "CPI index numbers, all groups, eight capitals, original (ABS Data API, dataflow CPI 2.0.0)",
