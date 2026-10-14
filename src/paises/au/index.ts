@@ -24,6 +24,14 @@ import redundancyPayCalculator from "./calculadoras/redundancy-pay-calculator";
 import contenidoRedundancyPayCalculator from "./contenido/redundancy-pay-calculator";
 import noticePeriodCalculator from "./calculadoras/notice-period-calculator";
 import contenidoNoticePeriodCalculator from "./contenido/notice-period-calculator";
+import capitalGainsTaxCalculator from "./calculadoras/capital-gains-tax-calculator";
+import contenidoCapitalGainsTaxCalculator from "./contenido/capital-gains-tax-calculator";
+import stampDutyCalculatorNsw from "./calculadoras/stamp-duty-calculator-nsw";
+import contenidoStampDutyCalculatorNsw from "./contenido/stamp-duty-calculator-nsw";
+import stampDutyCalculatorVic from "./calculadoras/stamp-duty-calculator-vic";
+import contenidoStampDutyCalculatorVic from "./contenido/stamp-duty-calculator-vic";
+import stampDutyCalculatorQld from "./calculadoras/stamp-duty-calculator-qld";
+import contenidoStampDutyCalculatorQld from "./contenido/stamp-duty-calculator-qld";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +56,10 @@ export default definirPais({
     { definicion: sickLeaveCalculator, contenido: contenidoSickLeaveCalculator, cliente: () => import("./calculadoras/sick-leave-calculator.cliente") },
     { definicion: redundancyPayCalculator, contenido: contenidoRedundancyPayCalculator, cliente: () => import("./calculadoras/redundancy-pay-calculator.cliente") },
     { definicion: noticePeriodCalculator, contenido: contenidoNoticePeriodCalculator, cliente: () => import("./calculadoras/notice-period-calculator.cliente") },
+    { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
+    { definicion: stampDutyCalculatorNsw, contenido: contenidoStampDutyCalculatorNsw, cliente: () => import("./calculadoras/stamp-duty-calculator-nsw.cliente") },
+    { definicion: stampDutyCalculatorVic, contenido: contenidoStampDutyCalculatorVic, cliente: () => import("./calculadoras/stamp-duty-calculator-vic.cliente") },
+    { definicion: stampDutyCalculatorQld, contenido: contenidoStampDutyCalculatorQld, cliente: () => import("./calculadoras/stamp-duty-calculator-qld.cliente") },
   ],
   universales: "todas",
   novedades,
