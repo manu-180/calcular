@@ -3,7 +3,7 @@
   "series": [
     {
       "id": "us.cpi-u",
-      "nombre": "Consumer Price Index for All Urban Consumers (CPI-U), U.S. city average, all items, not seasonally adjusted",
+      "nombre": "Consumer Price Index (CPI-U)",
       "unidad": "numero",
       "frecuencia": "mensual",
       "maxAntiguedadDias": 100,
