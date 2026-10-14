@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiTarjetaDeCredito } from "../definicion";
 
-export const textosEs: TextosUi<UiTarjetaDeCredito> = {
+const base: TextosUi<UiTarjetaDeCredito> = {
   slug: "pagar-tarjeta-de-credito",
   ui: (trato) => ({
     saldo: "Saldo de la tarjeta",
@@ -71,3 +72,21 @@ export const textosEs: TextosUi<UiTarjetaDeCredito> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiTarjetaDeCredito> => ({
+  saldo: "Deuda de la tarjeta",
+  tasa: "Tipo de interés anual (TIN, %)",
+  tasaAyuda: "El tipo nominal anual del aplazamiento. Lo encuentras en el extracto o en el contrato de la tarjeta.",
+  modoFijo: "Un importe fijo al mes",
+  pagoFijo: "Pago fijo al mes",
+  minimoPorcentajeAyuda: "Lo que pide el banco cada mes. Si no lo sabes, un 5 % es un valor habitual.",
+  minimoPiso: "Pago mínimo nunca inferior a",
+  meses: "Meses para liquidarla",
+  errorSaldo: "Escribe lo que debes en la tarjeta.",
+  errorFaltaPago: "Escribe cuánto vas a pagar al mes.",
+  errorMuyLargo: "Con ese pago tardarías más de 50 años en liquidarla. Sube el pago.",
+  observacionFijo: (pago, meses, ahorro) =>
+    `Si pagas siempre ${pago}, como el primer mínimo, la liquidas en ${meses} meses y te ahorras ${ahorro} de intereses.`,
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

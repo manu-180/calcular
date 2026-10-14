@@ -112,8 +112,11 @@ export function montoEjemplo(ctx: Pick<ContextoUniversal, "escala">, base: numbe
   return Math.round(mejor * magnitud * 100) / 100;
 }
 
+// Sin decimales pedidos, un monto entero va sin ",00" («200 000 €», no «200 000,00 €»): los ejemplos
+// y las observaciones son prosa. Los que no son enteros llevan los decimales de la moneda.
 export function formatearMonto(ctx: Pick<ContextoUniversal, "locale" | "moneda">, n: number, decimales?: number): string {
   const opciones: Intl.NumberFormatOptions = { style: "currency", currency: ctx.moneda };
+  if (decimales === undefined && Math.abs(n - Math.round(n)) < 0.005) decimales = 0;
   if (decimales !== undefined) {
     opciones.minimumFractionDigits = decimales;
     opciones.maximumFractionDigits = decimales;
@@ -123,4 +126,10 @@ export function formatearMonto(ctx: Pick<ContextoUniversal, "locale" | "moneda">
 
 export function formatearNumero(ctx: Pick<ContextoUniversal, "locale">, n: number, decimales = 0): string {
   return new Intl.NumberFormat(ctx.locale, { minimumFractionDigits: decimales, maximumFractionDigits: decimales }).format(n);
+}
+
+// Un número para meter en una frase con el separador del locale y hasta `maximo` decimales, sin ceros
+// de relleno: 37 da «37», 33.33 da «33,33» en es-ES y «33.33» en en-US.
+export function formatearCifra(ctx: Pick<ContextoUniversal, "locale">, n: number, maximo = 2): string {
+  return new Intl.NumberFormat(ctx.locale, { minimumFractionDigits: 0, maximumFractionDigits: maximo }).format(n);
 }

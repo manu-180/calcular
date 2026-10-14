@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiHipoteca } from "../definicion";
 
-export const textosPt: TextosUi<UiHipoteca> = {
+const base: TextosUi<UiHipoteca> = {
   slug: "financiamento-imobiliario",
   ui: () => ({
     precio: "Valor do imóvel",
@@ -29,3 +30,20 @@ export const textosPt: TextosUi<UiHipoteca> = {
     observacionCostos: "Os custos de compra (escritura, impostos, avaliação) não estão incluídos. Separe esse dinheiro além da entrada.",
   }),
 };
+
+const portugal = (): Partial<UiHipoteca> => ({
+  entradaMontoAyuda: "Se a preencher, é usada em vez da percentagem.",
+  tasa: "Taxa de juro anual (%)",
+  gastosAyuda: "IMI, seguros ou condomínio que paga juntamente com a prestação.",
+  cuota: "Prestação mensal do crédito",
+  cuotaTotal: "Prestação com os gastos",
+  prestado: "Montante do crédito",
+  total: "Total das prestações",
+  colSaldo: "Capital em dívida no fim do ano",
+  errorPrecio: "Indique o valor do imóvel.",
+  errorEntrada: "A entrada cobre o valor todo, por isso não há crédito para calcular. Reduza a entrada.",
+  observacionPrestado: (porcentaje) => `Pede emprestado ${porcentaje}% do valor do imóvel. Quanto maior essa parte, mais exigências o banco costuma fazer.`,
+  observacionCostos: "Os custos de compra (escritura, registo, IMT, imposto do selo, avaliação) não estão incluídos. Reserve esse dinheiro além da entrada.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiHorasTrabajadas } from "../definicion";
 
-export const textosEs: TextosUi<UiHorasTrabajadas> = {
+const base: TextosUi<UiHorasTrabajadas> = {
   slug: "horas-trabajadas",
   ui: (trato) => ({
     dias: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
@@ -49,3 +50,13 @@ export const textosEs: TextosUi<UiHorasTrabajadas> = {
       "Es un cálculo general. La jornada máxima, el recargo y el pago del trabajo nocturno o de feriados dependen de la ley y del convenio de cada país.",
   }),
 };
+
+const espana = (): Partial<UiHorasTrabajadas> => ({
+  pausa: "Pausa al día (minutos)",
+  pausaAyuda: "El tiempo de comida o descanso que no se paga. Se descuenta en cada día trabajado.",
+  umbral: "Horas ordinarias a la semana (opcional)",
+  horasNormales: "Horas ordinarias",
+  pagoNormal: "Pago de horas ordinarias",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

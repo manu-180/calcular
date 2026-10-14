@@ -66,7 +66,7 @@ const base: TextosSitio = {
     novedades: "Dernières nouveautés",
     verNovedades: "Voir toutes les nouveautés",
     sinCalculadoras: "Aucun calculateur n'est encore publié pour ce pays.",
-    descripcion: (pais) => `Calculateurs de salaire, d'impôts et de budget ${g.para(pais)}, avec la valeur officielle en vigueur, sa source et sa date de vérification.`,
+    descripcion: (pais) => `Calculateurs de salaire, d'impôts, de crédit, d'épargne, de santé, de dates et pour la maison ${g.para(pais)}, avec la valeur officielle et sa source.`,
     irASeccion: "Aller à une section",
   },
   fuentes: {

@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiRitmo } from "../definicion";
 
-export const textosPt: TextosUi<UiRitmo> = {
+const base: TextosUi<UiRitmo> = {
   slug: "calculadora-de-pace",
   ui: () => ({
     calcular: "O que você quer calcular?",
@@ -30,3 +31,19 @@ export const textosPt: TextosUi<UiRitmo> = {
     errorRitmo: "Coloque o pace: minutos e segundos por unidade de distância.",
   }),
 };
+
+const portugal = (): Partial<UiRitmo> => ({
+  calcular: "O que quer calcular?",
+  calcRitmo: "Ritmo (pela distância e o tempo)",
+  calcTiempo: "Tempo (pela distância e o ritmo)",
+  calcDistancia: "Distância (pelo tempo e o ritmo)",
+  distanciaAyuda: "Escolha uma prova, ou “Outra” para escrever a distância.",
+  ritmoMin: (u) => `Ritmo: minutos por ${u}`,
+  ritmoSeg: "Ritmo: segundos",
+  ritmo: (u) => `Ritmo (min/${u})`,
+  errorDistancia: "Indique uma distância maior do que 0.",
+  errorTiempo: "Indique o tempo: horas, minutos ou segundos.",
+  errorRitmo: "Indique o ritmo: minutos e segundos por unidade de distância.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

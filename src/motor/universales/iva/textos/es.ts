@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiIva } from "../definicion";
 
-export const textosEs: TextosUi<UiIva> = {
+const base: TextosUi<UiIva> = {
   slug: "iva",
   ui: (trato) => ({
     operacion: segunTrato(trato, { tu: "¿Qué quieres hacer?", usted: "¿Qué quiere hacer?", vos: "¿Qué querés hacer?" }),
@@ -26,3 +27,14 @@ export const textosEs: TextosUi<UiIva> = {
     errorTasa: "La tasa de IVA no es válida.",
   }),
 };
+
+const espana = (): Partial<UiIva> => ({
+  agregar: "Añadir el IVA a un precio sin IVA",
+  montoAyuda: "Sin IVA si vas a añadirlo; con IVA si vas a quitarlo.",
+  otraTasa: "Otro tipo de IVA (%)",
+  otraTasaAyuda: "Opcional. Si tu producto tiene un tipo reducido o superreducido, escríbelo. Si no, se usa el tipo general.",
+  tasaUsada: "Tipo aplicado",
+  errorTasa: "El tipo de IVA no es válido.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

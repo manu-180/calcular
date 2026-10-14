@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiCeramicos } from "../definicion";
 
-export const textosEs: TextosUi<UiCeramicos> = {
+const base: TextosUi<UiCeramicos> = {
   slug: "cuantos-ceramicos",
   ui: (trato) => ({
     superficie: (u) => `Superficie a cubrir (${u})`,
@@ -23,3 +24,12 @@ export const textosEs: TextosUi<UiCeramicos> = {
     errorPieza: "Las medidas de la pieza tienen que ser mayores que 0.",
   }),
 };
+
+const espana = (): Partial<UiCeramicos> => ({
+  largo: (u) => `Largo de cada baldosa (${u})`,
+  ancho: (u) => `Ancho de cada baldosa (${u})`,
+  piezas: "Baldosas necesarias",
+  errorPieza: "Las medidas de la baldosa tienen que ser mayores que 0.",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

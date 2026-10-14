@@ -1,6 +1,7 @@
-import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const a = montoEjemplo(ctx, 90);
   const b = montoEjemplo(ctx, 30);
@@ -15,7 +16,7 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
       "Dividí un gasto compartido entre hasta 8 personas: cuánto le toca a cada uno y quién le paga a quién, con la menor cantidad de pagos.",
     ),
     intro: [
-      "Sirve para un viaje, un asado, una cena o el alquiler de una casa: cada uno pagó una parte distinta y hay que emparejar.",
+      "Sirve para un viaje, una comida con amigos o el alquiler de una casa: cada uno pagó una parte distinta y hay que hacer cuentas.",
       t(
         "Escribe lo que puso cada persona. La calculadora te dice la parte de cada uno y los pagos justos para quedar a mano.",
         "Escriba lo que puso cada persona. La calculadora le dice la parte de cada uno y los pagos justos para quedar a mano.",
@@ -55,3 +56,27 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (_ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => ({
+  intro: [
+    "Sirve para un viaje, una comida con amigos o el alquiler de una casa: cada uno ha pagado una parte distinta y hay que hacer cuentas.",
+    "Escribe lo que puso cada persona. La calculadora te dice la parte de cada uno y los pagos justos para saldar cuentas.",
+  ],
+  faq: [
+    {
+      pregunta: "¿Cómo se divide un gasto si cada uno pagó distinto?",
+      respuesta: "Se suma todo, se divide entre el número de personas y se compara con lo que puso cada uno. La diferencia es lo que debe o lo que le deben.",
+    },
+    {
+      pregunta: "¿Qué hago si alguien no pagó nada?",
+      respuesta: "Escribe 0 en su casilla. Así cuenta para dividir el gasto. Si la dejas vacía, se queda fuera.",
+    },
+    {
+      pregunta: "¿Por qué hay menos pagos que personas?",
+      respuesta:
+        "Porque la calculadora agrupa las deudas: el que más debe le paga al que más puso, y así hasta saldar cuentas. Nunca hacen falta más pagos que personas menos una.",
+    },
+  ],
+});
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

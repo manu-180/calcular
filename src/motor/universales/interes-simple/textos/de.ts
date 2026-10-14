@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiInteresSimple } from "../definicion";
 
-export const textosDe: TextosUi<UiInteresSimple> = {
+const textos: TextosUi<UiInteresSimple> = {
   slug: "zinsrechner",
   ui: () => ({
     capital: "Kapital",
@@ -21,3 +22,5 @@ export const textosDe: TextosUi<UiInteresSimple> = {
     errorCapital: "Geben Sie ein Kapital über null ein.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

@@ -1,7 +1,8 @@
-import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 import { cuotaFrancesa, interesesTotales } from "../definicion";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const m = (n: number) => formatearMonto(ctx, n);
   const monto = montoEjemplo(ctx, 10000);
@@ -72,3 +73,54 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const m = (n: number) => formatearMonto(ctx, n);
+  const monto = montoEjemplo(ctx, 10000);
+  const cuota36 = cuotaFrancesa(monto, 12, 36);
+  const cuota60 = cuotaFrancesa(monto, 12, 60);
+  return {
+    intro: [
+      "Antes de firmar un préstamo conviene saber dos números: cuánto vas a pagar al mes y cuánto te cuesta en intereses.",
+      "Escribe el importe, el tipo de interés y el plazo. Si piensas pagar algo extra cada mes, súmalo y verás cuánto antes terminas.",
+    ],
+    comoSeCalcula: [
+      "Usa el sistema francés, el de cuota fija, que es el más habitual en préstamos personales, de coche e hipotecas.",
+      "Tipo mensual = TIN ÷ 12.",
+      "Cuota = importe × tipo mensual ÷ (1 − (1 + tipo mensual) elevado a menos el número de cuotas).",
+      "Cada mes, el interés se calcula sobre lo que queda de deuda. El resto de la cuota amortiza capital.",
+    ],
+    ejemplo: [
+      `Un préstamo de ${m(monto)} al 12 % de TIN a 36 meses tiene una cuota de ${m(cuota36)}. En total se pagan ${m(interesesTotales(monto, 12, 36))} de intereses.`,
+      `El mismo préstamo a 60 meses baja la cuota a ${m(cuota60)}, pero los intereses suben a ${m(interesesTotales(monto, 12, 60))}.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿Qué es el sistema francés?",
+        respuesta:
+          "Es el sistema de cuota fija. Todas las cuotas son iguales, pero al principio casi todo es interés y al final casi todo es capital. Por eso la deuda baja despacio los primeros meses.",
+      },
+      {
+        pregunta: "¿Compensa amortizar anticipadamente?",
+        respuesta:
+          "Casi siempre sí, si la comisión por amortización anticipada es baja. Lo que adelantas va directo al capital y deja de generar intereses. Cuanto antes lo hagas, más ahorras.",
+      },
+      {
+        pregunta: "¿Compensa un plazo más largo?",
+        respuesta: "La cuota baja, pero pagas mucho más de intereses en total. Compara los dos números antes de decidir.",
+      },
+      {
+        pregunta: "¿Por qué el banco me da otra cuota?",
+        respuesta:
+          "Porque suele añadir seguros, comisiones e impuestos, o usa un tipo distinto del que se ve en el anuncio. Para comparar ofertas, mira la TAE y el coste total, no solo el TIN.",
+      },
+    ],
+    glosario: [
+      { termino: "Capital", definicion: "La parte de la deuda que todavía no se ha devuelto." },
+      { termino: "TIN", definicion: "El tipo de interés nominal anual: se divide entre 12 para sacar el interés de cada mes." },
+      { termino: "Amortización", definicion: "La parte de cada cuota que reduce la deuda." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

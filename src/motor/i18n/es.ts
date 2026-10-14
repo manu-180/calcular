@@ -66,7 +66,7 @@ const base: TextosSitio = {
     novedades: "Últimas novedades",
     verNovedades: "Ver todas las novedades",
     sinCalculadoras: "Todavía no hay calculadoras publicadas para este país.",
-    descripcion: (pais) => `Calculadoras laborales y de impuestos ${g.de(pais)}: sueldo, liquidación y más, con el valor oficial vigente, su fuente y la fecha de revisión.`,
+    descripcion: (pais) => `Calculadoras ${g.de(pais)} para sueldo, impuestos, préstamos, ahorro, salud, fechas y hogar, con el dato oficial vigente y su fuente.`,
     irASeccion: "Ir a una sección",
   },
   fuentes: {

@@ -35,6 +35,30 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## 14/10/2026 17:30 · 29 países publicados · PR borrador #31
+
+| País | Calculadoras | | País | Calculadoras |
+|---|---|---|---|---|
+| Estados Unidos | 63 | | Canadá (en) | 61 |
+| Reino Unido | 61 | | Países Bajos | 63 |
+| Brasil | 63 | | Irlanda | 61 |
+| Francia | 60 | | Austria | 62 |
+| Alemania | 67 | | Portugal | 62 |
+| España | 59 | | Australia | 59 |
+| Italia | 57 | | 16 de Latinoamérica | ~80 cada uno |
+
+Verde con 30 mercados (con global y zz): check_motor 1516, check_paises_casos 3319, check_textos_paises
+43893, check_hreflang 4105 páginas, check_seo_intl 4292 páginas, check_universales 2660 casos, eol.
+Integrado también el pulido (`claude/mundo-pulido`): es-ES, pt-PT, fr-CA, de-CH, redondeo, «1er» en fr.
+
+En curso (retomados a las 17:21 tras el tercer corte por límite de uso, con el avance guardado como
+WIP en cada rama): motor 2 (`claude/mundo-motor-2`: ediciones de idioma, marcadores de series y
+escalas, semanas, cargadores en dev, check_ofertas más rápido), India, Singapur, Sudáfrica, Suiza (de),
+Nueva Zelanda y Bélgica (nl).
+
+Procedimiento ante un corte por límite: en cada worktree de agente, `git checkout -- src/paises/index.ts`
+(registro local de prueba), commit WIP de `src`/`scripts`, push de la rama y SendMessage para retomar.
+
 ## Hoy (14/10/2026 08:50) · PR borrador: https://github.com/manu-180/calcular/pull/31
 
 | País | Calculadoras | Rama |

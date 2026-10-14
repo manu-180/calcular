@@ -1,6 +1,6 @@
 import { definirCalculadora, ErrorEntrada } from "../../calculo";
 import type { DefinicionCalculadora, TablaResultado } from "../../tipos";
-import { formatearMonto, montoEjemplo, type ContextoUniversal } from "../tipos";
+import { formatearCifra, formatearMonto, montoEjemplo, type ContextoUniversal } from "../tipos";
 
 export interface UiTarjetaDeCredito {
   saldo: string;
@@ -114,11 +114,11 @@ export function definir(ctx: ContextoUniversal, ui: UiTarjetaDeCredito): Definic
       if (!r.cubre) throw new ErrorEntrada(ui.errorMuyLargo, campoPago);
       const primerPago = r.filas[0][1];
       const observaciones: string[] = [];
-      if (r.meses >= 12) observaciones.push(ui.observacionAnios(String(Math.floor(r.meses / 12)), String(r.meses % 12)));
+      if (r.meses >= 12) observaciones.push(ui.observacionAnios(formatearCifra(ctx, Math.floor(r.meses / 12), 0), formatearCifra(ctx, r.meses % 12, 0)));
       if (entrada.modo === "minimo") {
         const fijo = saldar(entrada.saldo, entrada.tasa, { ...pago, modo: "fijo", fijo: primerPago }, redondear);
         if (fijo.cubre && fijo.meses < r.meses) {
-          observaciones.push(ui.observacionFijo(formatearMonto(ctx, primerPago), String(fijo.meses), formatearMonto(ctx, redondear(r.intereses - fijo.intereses))));
+          observaciones.push(ui.observacionFijo(formatearMonto(ctx, primerPago), formatearCifra(ctx, fijo.meses, 0), formatearMonto(ctx, redondear(r.intereses - fijo.intereses))));
         }
       }
       observaciones.push(ui.observacionNoGastar);

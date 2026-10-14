@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiMetaDeAhorro } from "../definicion";
 
-export const textosDe: TextosUi<UiMetaDeAhorro> = {
+const textos: TextosUi<UiMetaDeAhorro> = {
   slug: "sparziel-rechner",
   ui: () => ({
     meta: "Wie viel möchten Sie sparen?",
@@ -17,3 +18,5 @@ export const textosDe: TextosUi<UiMetaDeAhorro> = {
     yaLlegas: "Ihr bisheriges Erspartes erreicht das Ziel in dieser Zeit auch ohne weitere Einzahlungen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiAlquilarOComprar } from "../definicion";
 
-export const textosEs: TextosUi<UiAlquilarOComprar> = {
+const base: TextosUi<UiAlquilarOComprar> = {
   slug: "alquilar-o-comprar",
   ui: (trato) => ({
     precio: "Precio de la vivienda",
@@ -65,3 +66,16 @@ export const textosEs: TextosUi<UiAlquilarOComprar> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiAlquilarOComprar> => ({
+  gastosCompraAyuda: "Notaría, registro, impuestos de la compraventa (ITP o IVA), gestoría, inmobiliaria y tasación.",
+  tasa: "Tipo de interés de la hipoteca (% anual)",
+  aumentoAlquiler: "Subida del alquiler al año (%)",
+  gastosPropietario: "Gastos del propietario al año (% del valor)",
+  gastosPropietarioAyuda: "Mantenimiento, IBI, comunidad y seguro. Entre un 1 % y un 2 % es habitual.",
+  revalorizacion: "Revalorización de la vivienda al año (%)",
+  pagadoComprando: "Total pagado en cuotas y gastos del propietario",
+  observacionDesde: (anio) => `Comprar empieza a salir mejor que alquilar en el año ${anio} y ya no vuelve a quedarse atrás.`,
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

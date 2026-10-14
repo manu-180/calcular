@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import { segunTrato, type TextosUi } from "../../tipos";
 import type { UiInteresSimple } from "../definicion";
 
-export const textosEs: TextosUi<UiInteresSimple> = {
+const base: TextosUi<UiInteresSimple> = {
   slug: "interes-simple",
   ui: (trato) => ({
     capital: "Capital",
@@ -29,3 +30,10 @@ export const textosEs: TextosUi<UiInteresSimple> = {
     }),
   }),
 };
+
+const espana = (): Partial<UiInteresSimple> => ({
+  tasa: "Tipo de interés anual (%)",
+  tasaPeriodo: "Tipo del periodo",
+});
+
+export const textosEs = conVariantes(base, { "es-ES": espana });

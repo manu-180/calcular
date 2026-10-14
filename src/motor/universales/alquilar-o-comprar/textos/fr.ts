@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAlquilarOComprar } from "../definicion";
 
-export const textosFr: TextosUi<UiAlquilarOComprar> = {
+const base: TextosUi<UiAlquilarOComprar> = {
   slug: "louer-ou-acheter",
   ui: () => ({
     precio: "Prix du logement",
@@ -40,3 +41,16 @@ export const textosFr: TextosUi<UiAlquilarOComprar> = {
       "Le calcul compare ce que vous posséderiez dans chaque cas. Si vous louez, l’apport et ce que vous économisez chaque mois restent placés. Les frais de revente ne sont pas déduits.",
   }),
 };
+
+const canada = (): Partial<UiAlquilarOComprar> => ({
+  entrada: "Mise de fonds (% du prix)",
+  gastosCompraAyuda: "Notaire, taxe de bienvenue, inspection et frais de courtage.",
+  tasa: "Taux du prêt hypothécaire (% par an)",
+  gastosPropietarioAyuda: "Entretien, taxes municipales et scolaires et assurance habitation. On compte souvent 1 % à 2 %.",
+  rendimientoAyuda: "Ce que rapporterait la mise de fonds si vous la placiez au lieu d’acheter.",
+  pagadoComprando: "Total des versements et frais de propriétaire",
+  observacionMetodo:
+    "Le calcul compare ce que vous posséderiez dans chaque cas. Si vous louez, la mise de fonds et ce que vous économisez chaque mois restent placés. Les frais de revente ne sont pas déduits.",
+});
+
+export const textosFr = conVariantes(base, { "fr-CA": canada });

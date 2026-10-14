@@ -1,7 +1,8 @@
+import { conVariantes } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiPorcentaje } from "../definicion";
 
-export const textosPt: TextosUi<UiPorcentaje> = {
+const base: TextosUi<UiPorcentaje> = {
   slug: "porcentagem",
   ui: () => ({
     modo: "O que você quer calcular?",
@@ -22,3 +23,12 @@ export const textosPt: TextosUi<UiPorcentaje> = {
     fraseRebaja: (x, y, r, d) => `${y} menos ${x}% é ${r}: descontam-se ${d}.`,
   }),
 };
+
+const portugal = (): Partial<UiPorcentaje> => ({
+  modo: "O que quer calcular?",
+  xAyuda: "É a percentagem. Se escolher “X é quantos por cento de Y?”, é a parte.",
+  porcentaje: "Percentagem",
+  errorYCero: "Y não pode ser 0: não existe percentagem de zero.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal });

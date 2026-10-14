@@ -18,7 +18,9 @@ function correr(n: number, decimales: number): number {
 export function redondear(n: number, regla: ReglaRedondeo): number {
   if (!Number.isFinite(n)) return n;
   const signo = n < 0 ? -1 : 1;
-  const abs = Math.abs(n);
+  // Un resultado como 2166.655 llega como 2166.6549999999997 y sin limpiar redondea a 2166.65. Se
+  // recorta a 15 cifras significativas (lo que un double garantiza) antes de correr la coma.
+  const abs = Number(Math.abs(n).toPrecision(15));
   const escalado = correr(abs, regla.decimales);
   let entero: number;
   if (regla.modo === "truncar") {
@@ -67,11 +69,18 @@ export function formatearPorcentaje(porcentaje: number, locale: string, decimale
   }).format(porcentaje / 100);
 }
 
+// En francés el primer día del mes es ordinal («1er juin»); Intl escribe «1 juin».
 export function formatearFecha(fecha: FechaISO, locale: string, estilo: "larga" | "corta" = "larga"): string {
-  return new Date(`${fecha}T12:00:00Z`).toLocaleDateString(locale, {
+  const f = new Intl.DateTimeFormat(locale, {
     timeZone: "UTC",
     ...(estilo === "larga" ? { day: "numeric", month: "long", year: "numeric" } : { day: "2-digit", month: "2-digit", year: "numeric" }),
   });
+  const d = new Date(`${fecha}T12:00:00Z`);
+  if (estilo !== "larga" || idiomaDeLocale(locale) !== "fr") return f.format(d);
+  return f
+    .formatToParts(d)
+    .map((p) => (p.type === "day" && p.value === "1" ? "1er" : p.value))
+    .join("");
 }
 
 function nombreDeUnidad(n: number, unidad: string, locale: string): string | null {

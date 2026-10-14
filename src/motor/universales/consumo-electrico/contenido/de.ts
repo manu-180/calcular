@@ -1,6 +1,7 @@
+import { paraSuiza } from "../../comun/locales";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoDe: ContenidoUniversal = (ctx) => {
+const contenido: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const precio = montoEjemplo(ctx, 0.4);
   const kwhMes = (1000 * 4 * 30) / 1000;
@@ -52,3 +53,5 @@ export const contenidoDe: ContenidoUniversal = (ctx) => {
   };
   return ctx.locale === "de-CH" ? JSON.parse(JSON.stringify(c).replace(/ß/g, "ss")) : c;
 };
+
+export const contenidoDe: ContenidoUniversal = (ctx) => paraSuiza(ctx.locale, contenido(ctx));

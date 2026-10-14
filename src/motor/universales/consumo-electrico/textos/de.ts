@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiConsumoElectrico } from "../definicion";
 
-export const textosDe: TextosUi<UiConsumoElectrico> = {
+const textos: TextosUi<UiConsumoElectrico> = {
   slug: "stromkosten-rechner",
   ui: () => ({
     potencia: "Leistung des Geräts (W)",
@@ -20,3 +21,5 @@ export const textosDe: TextosUi<UiConsumoElectrico> = {
     errorHoras: "Ein Tag hat 24 Stunden. Die Nutzung muss zwischen 0 und 24 liegen.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

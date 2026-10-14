@@ -1,7 +1,8 @@
+import { textosConSuiza } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiMargenDeGanancia } from "../definicion";
 
-export const textosDe: TextosUi<UiMargenDeGanancia> = {
+const textos: TextosUi<UiMargenDeGanancia> = {
   slug: "margenrechner",
   ui: () => ({
     modo: "Was möchten Sie berechnen?",
@@ -27,3 +28,5 @@ export const textosDe: TextosUi<UiMargenDeGanancia> = {
     observacionPerdida: "Zu diesem Preis verkaufen Sie unter den Kosten und machen bei jedem Verkauf Verlust.",
   }),
 };
+
+export const textosDe = textosConSuiza(textos);

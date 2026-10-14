@@ -1,7 +1,8 @@
-import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearMonto, formatearNumero, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 import { horarios, minutosTrabajados } from "../definicion";
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const m = (x: number) => formatearMonto(ctx, x);
   const n = (x: number, decimales = 0) => formatearNumero(ctx, x, decimales);
@@ -59,3 +60,49 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const m = (x: number) => formatearMonto(ctx, x);
+  const n = (x: number, decimales = 0) => formatearNumero(ctx, x, decimales);
+  const hora = (v: string) => horarios(ctx.locale).find((o) => o.valor === v)?.etiqueta ?? v;
+  const pago = montoEjemplo(ctx, 15);
+  const jornada = minutosTrabajados("09:00", "17:30", 30) / 60;
+  const larga = minutosTrabajados("08:00", "18:00", 60) / 60;
+  const extra = larga * 5 - 40;
+  return {
+    intro: [
+      "Elige la hora de entrada y de salida de cada día, la pausa no retribuida y lo que cobras por hora. Te mostramos el total de horas, las extra y el pago de la semana.",
+      "Sirve para revisar la nómina, llevar tu registro de jornada o cobrar un trabajo por horas.",
+    ],
+    comoSeCalcula: [
+      "Horas del día = salida − entrada − pausa. Si la salida es antes que la entrada, el turno termina al día siguiente.",
+      "Horas extra = total de la semana − horas ordinarias, si el total las supera.",
+      "Pago = horas ordinarias × pago por hora + horas extra × pago por hora × (1 + recargo).",
+    ],
+    ejemplo: [
+      `De ${hora("09:00")} a ${hora("17:30")} con 30 minutos de pausa son ${n(jornada)} horas al día. De lunes a viernes, ${n(jornada * 5)} horas: a ${m(pago)} la hora, ${m(jornada * 5 * pago)}.`,
+      `De ${hora("08:00")} a ${hora("18:00")} con una hora de pausa son ${n(larga * 5)} horas en la semana: ${n(extra)} son extra. Con un recargo del 50 %, se cobran ${m(40 * pago + extra * pago * 1.5)}.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿Cómo se calculan las horas trabajadas?",
+        respuesta: "Se resta la hora de entrada a la de salida y se descuenta la pausa. Después se suman todos los días de la semana.",
+      },
+      {
+        pregunta: "¿Cómo paso los minutos a horas decimales?",
+        respuesta: `Se dividen los minutos entre 60. Media hora es ${n(0.5, 1)}; 15 minutos, ${n(0.25, 2)}; 45 minutos, ${n(0.75, 2)}. Así 7 horas y 45 minutos son ${n(7.75, 2)} horas.`,
+      },
+      {
+        pregunta: "¿Cuántas horas extra se pueden hacer y cuánto se pagan?",
+        respuesta:
+          "Depende del Estatuto de los Trabajadores y de tu convenio. Esta calculadora usa el recargo y las horas ordinarias que escribas, sin aplicar ninguna norma en particular.",
+      },
+    ],
+    glosario: [
+      { termino: "Horas extra", definicion: "Las horas trabajadas por encima de la jornada ordinaria, que se pagan con recargo o se compensan con descanso." },
+      { termino: "Recargo", definicion: "El porcentaje que se suma al valor de la hora ordinaria." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });

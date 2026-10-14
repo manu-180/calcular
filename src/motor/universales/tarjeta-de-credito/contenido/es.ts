@@ -1,9 +1,10 @@
-import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { contenidoConVariantes } from "../../comun/locales";
+import { formatearMonto, montoEjemplo, segunTrato, tituloQueEntre, type ContenidoUniversal, type ContextoUniversal } from "../../tipos";
 import { saldar } from "../definicion";
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
 
-export const contenidoEs: ContenidoUniversal = (ctx) => {
+const base: ContenidoUniversal = (ctx) => {
   const t = (tu: string, usted: string, vos: string) => segunTrato(ctx.trato, { tu, usted, vos });
   const m = (n: number) => formatearMonto(ctx, n);
   const saldo = montoEjemplo(ctx, 2000);
@@ -64,3 +65,50 @@ export const contenidoEs: ContenidoUniversal = (ctx) => {
     ],
   };
 };
+
+const espana = (ctx: ContextoUniversal): Partial<ReturnType<ContenidoUniversal>> => {
+  const m = (n: number) => formatearMonto(ctx, n);
+  const saldo = montoEjemplo(ctx, 2000);
+  const fijo = montoEjemplo(ctx, 100);
+  const conFijo = saldar(saldo, 30, { modo: "fijo", fijo, porcentaje: 0, piso: 0 }, r2);
+  const conMinimo = saldar(saldo, 30, { modo: "minimo", fijo: 0, porcentaje: 5, piso: montoEjemplo(ctx, 25) }, r2);
+  return {
+    description:
+      "Calcula en cuántos meses liquidas la deuda de tu tarjeta de crédito y cuánto pagas de intereses, con un pago fijo o pagando el mínimo.",
+    intro: [
+      "La tarjeta de crédito suele ser la deuda más cara, sobre todo si es revolving. Pagar solo el mínimo la alarga durante años y multiplica los intereses.",
+      "Escribe la deuda, el tipo de interés y cuánto puedes pagar al mes. Te mostramos cuándo terminas, cuánto pagas de intereses y el plan mes a mes.",
+    ],
+    comoSeCalcula: [
+      "Cada mes se suma el interés: deuda × TIN ÷ 12.",
+      "Después se resta el pago. Con el pago mínimo, el pago es un porcentaje de lo que se debe, con un mínimo fijo.",
+      "Se repite hasta que la deuda llega a cero. Si el pago no supera el interés, la deuda no baja nunca.",
+    ],
+    ejemplo: [
+      `Una deuda de ${m(saldo)} al 30 % anual pagando ${m(fijo)} fijos al mes se liquida en ${conFijo.meses} meses, con ${m(conFijo.intereses)} de intereses.`,
+      `Pagando solo el mínimo del 5 % se tarda ${conMinimo.meses} meses y los intereses suben a ${m(conMinimo.intereses)}.`,
+    ],
+    faq: [
+      {
+        pregunta: "¿Qué pasa si pago solo el mínimo?",
+        respuesta:
+          "Como el mínimo baja junto con la deuda, cada mes pagas menos y la deuda se alarga durante años. Si puedes, paga un importe fijo más alto, aunque sea un poco.",
+      },
+      {
+        pregunta: "¿Compensa pasar la deuda a un préstamo personal?",
+        respuesta:
+          "Si el tipo de interés del préstamo es bastante más bajo que el de la tarjeta, suele compensar. Compara el total de intereses de las dos opciones, con comisiones incluidas.",
+      },
+      {
+        pregunta: "Si tengo varias tarjetas, ¿cuál pago primero?",
+        respuesta: "Paga el mínimo en todas y el resto ponlo en la de tipo de interés más alto. Así es como menos intereses pagas en total.",
+      },
+    ],
+    glosario: [
+      { termino: "Pago mínimo", definicion: "Lo menos que se puede pagar en el mes sin caer en impago. No cancela la deuda." },
+      { termino: "Revolving", definicion: "Tarjeta en la que la deuda se paga a plazos con cuotas que se recalculan sobre lo que queda. Suele tener intereses muy altos." },
+    ],
+  };
+};
+
+export const contenidoEs = contenidoConVariantes(base, { "es-ES": espana });
