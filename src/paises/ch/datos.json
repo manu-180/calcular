@@ -1,0 +1,1213 @@
+{
+  "mercado": "ch",
+  "datos": [
+    {
+      "id": "ch.mwst-normalsatz",
+      "nombre": "Mehrwertsteuer, Normalsatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 8.1,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 25 Abs. 1 MWSTG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/2009/615/de#art_25",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.mwst-reduziert",
+      "nombre": "Mehrwertsteuer, reduzierter Satz",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2.6,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 25 Abs. 2 MWSTG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/2009/615/de#art_25",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.mwst-beherbergung",
+      "nombre": "Mehrwertsteuer, Sondersatz für Beherbergung",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-12-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2027-12-31",
+          "valor": 3.8,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 25 Abs. 4 MWSTG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/2009/615/de#art_25",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Der Sondersatz gilt laut Gesetz bis längstens 31. Dezember 2027."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.ahv-iv-eo-beitragssatz",
+      "nombre": "AHV/IV/EO-Beitragssatz auf dem Lohn (Arbeitgeber und Arbeitnehmer zusammen)",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "AHV 8,7 %, IV 1,4 %, EO 0,5 %. Je die Hälfte zahlen Arbeitgeber und Arbeitnehmer.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10.6,
+          "fuente": {
+            "organismo": "Informationsstelle AHV/IV",
+            "titulo": "Merkblatt 2.01 Beiträge an die AHV, die IV und die EO, Stand 1. Januar 2026",
+            "url": "https://www.ahv-iv.ch/p/2.01.d",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.ahv-freibetrag-rentner",
+      "nombre": "AHV-Freibetrag für Erwerbstätige ab dem Referenzalter, pro Jahr",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 16800,
+          "fuente": {
+            "organismo": "Informationsstelle AHV/IV",
+            "titulo": "Merkblatt 2.01 Beiträge an die AHV, die IV und die EO, Stand 1. Januar 2026",
+            "url": "https://www.ahv-iv.ch/p/2.01.d",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.alv-beitragssatz",
+      "nombre": "ALV-Beitragssatz (Arbeitgeber und Arbeitnehmer zusammen)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.2,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 3 Abs. 2 und 3 AVIG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1982/2184_2184_2184/de#art_3",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.hoechster-versicherter-verdienst",
+      "nombre": "Höchstbetrag des versicherten Verdienstes (UVG und ALV), pro Jahr",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 148200,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 22 Abs. 1 UVV",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1983/38_38_38/de#art_22",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.bvg-eintrittsschwelle",
+      "nombre": "BVG-Eintrittsschwelle (Jahreslohn)",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 22680,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 2 Abs. 1 und Art. 7 Abs. 1 BVG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1983/797_797_797/de#art_7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.bvg-koordinationsabzug",
+      "nombre": "BVG-Koordinationsabzug",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 26460,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 8 Abs. 1 BVG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1983/797_797_797/de#art_8",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.bvg-obere-grenze",
+      "nombre": "Oberer Grenzbetrag des BVG-Jahreslohns",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 90720,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 8 Abs. 1 BVG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1983/797_797_797/de#art_8",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.bvg-min-koordinierter-lohn",
+      "nombre": "Minimaler koordinierter Lohn",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 3780,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 8 Abs. 2 BVG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1983/797_797_797/de#art_8",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.bvg-altersgutschriften",
+      "nombre": "BVG-Altersgutschriften in Prozent des koordinierten Lohns",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "25-34": "25 bis 34 Jahre",
+        "35-44": "35 bis 44 Jahre",
+        "45-54": "45 bis 54 Jahre",
+        "55-65": "55 bis 65 Jahre"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "25-34": 7,
+            "35-44": 10,
+            "45-54": 15,
+            "55-65": 18
+          },
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 16 BVG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1983/797_797_797/de#art_16",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.bvg-mindestzins",
+      "nombre": "BVG-Mindestzinssatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1.25,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 12 Bst. k BVV 2",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1984/543_543_543/de#art_12",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.bvg-umwandlungssatz",
+      "nombre": "BVG-Mindestumwandlungssatz im Referenzalter 65",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6.8,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 14 Abs. 2 BVG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1983/797_797_797/de#art_14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.saeule-3a-mit-pk",
+      "nombre": "Säule 3a, Maximalbetrag mit Pensionskasse",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2026-12-31",
+          "valor": 7258,
+          "fuente": {
+            "organismo": "Bundesamt für Sozialversicherungen",
+            "titulo": "Medienmitteilung vom 2. Oktober 2026: AHV/IV-Minimalrente steigt um 20 Franken",
+            "url": "https://www.bsv.admin.ch/de/newnsb/BqB41FVYi5FB",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Nennt die Werte bis Ende 2026 und ab 1. Januar 2027."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 7373,
+          "fuente": {
+            "organismo": "Bundesamt für Sozialversicherungen",
+            "titulo": "Medienmitteilung vom 2. Oktober 2026: AHV/IV-Minimalrente steigt um 20 Franken",
+            "url": "https://www.bsv.admin.ch/de/newnsb/BqB41FVYi5FB",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Nennt die Werte bis Ende 2026 und ab 1. Januar 2027."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.saeule-3a-ohne-pk",
+      "nombre": "Säule 3a, Maximalbetrag ohne Pensionskasse",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2026-12-31",
+          "valor": 36288,
+          "fuente": {
+            "organismo": "Bundesamt für Sozialversicherungen",
+            "titulo": "Medienmitteilung vom 2. Oktober 2026: AHV/IV-Minimalrente steigt um 20 Franken",
+            "url": "https://www.bsv.admin.ch/de/newnsb/BqB41FVYi5FB",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Nennt die Werte bis Ende 2026 und ab 1. Januar 2027."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 36864,
+          "fuente": {
+            "organismo": "Bundesamt für Sozialversicherungen",
+            "titulo": "Medienmitteilung vom 2. Oktober 2026: AHV/IV-Minimalrente steigt um 20 Franken",
+            "url": "https://www.bsv.admin.ch/de/newnsb/BqB41FVYi5FB",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Nennt die Werte bis Ende 2026 und ab 1. Januar 2027."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.saeule-3a-ohne-pk-satz",
+      "nombre": "Säule 3a ohne Pensionskasse, Anteil am Erwerbseinkommen",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 7 Abs. 1 Bst. b BVV 3",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1985/1778_1778_1778/de#art_7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.dbst-tarif-alleinstehend",
+      "nombre": "Direkte Bundessteuer, Tarif für Alleinstehende (Franken je 100 Franken als Satz)",
+      "tipo": "escala",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 15200,
+              "tasa": 0
+            },
+            {
+              "desde": 15200,
+              "hasta": 33200,
+              "tasa": 0.77,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 33200,
+              "hasta": 43500,
+              "tasa": 0.88,
+              "cuotaFija": 138.6
+            },
+            {
+              "desde": 43500,
+              "hasta": 58000,
+              "tasa": 2.64,
+              "cuotaFija": 229.2
+            },
+            {
+              "desde": 58000,
+              "hasta": 76200,
+              "tasa": 2.97,
+              "cuotaFija": 612.0
+            },
+            {
+              "desde": 76200,
+              "hasta": 82100,
+              "tasa": 5.94,
+              "cuotaFija": 1152.5
+            },
+            {
+              "desde": 82100,
+              "hasta": 108900,
+              "tasa": 6.6,
+              "cuotaFija": 1502.95
+            },
+            {
+              "desde": 108900,
+              "hasta": 141500,
+              "tasa": 8.8,
+              "cuotaFija": 3271.75
+            },
+            {
+              "desde": 141500,
+              "hasta": 185100,
+              "tasa": 11.0,
+              "cuotaFija": 6140.55
+            },
+            {
+              "desde": 185100,
+              "hasta": 793900,
+              "tasa": 13.2,
+              "cuotaFija": 10936.55
+            },
+            {
+              "desde": 793900,
+              "hasta": 794000,
+              "tasa": 13.2,
+              "cuotaFija": 91298.15
+            },
+            {
+              "desde": 794000,
+              "hasta": null,
+              "tasa": 11.5,
+              "cuotaFija": 91310.0
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 36 Abs. 1 DBG (Fassung ab 1. Januar 2026)",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1991/1184_1184_1184/de#art_36",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.dbst-tarif-verheiratet",
+      "nombre": "Direkte Bundessteuer, Tarif für Verheiratete und Einelternfamilien",
+      "tipo": "escala",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 29700,
+              "tasa": 0
+            },
+            {
+              "desde": 29700,
+              "hasta": 53400,
+              "tasa": 1.0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 53400,
+              "hasta": 61300,
+              "tasa": 2.0,
+              "cuotaFija": 237.0
+            },
+            {
+              "desde": 61300,
+              "hasta": 79100,
+              "tasa": 3.0,
+              "cuotaFija": 395.0
+            },
+            {
+              "desde": 79100,
+              "hasta": 94900,
+              "tasa": 4.0,
+              "cuotaFija": 929.0
+            },
+            {
+              "desde": 94900,
+              "hasta": 108700,
+              "tasa": 5.0,
+              "cuotaFija": 1561.0
+            },
+            {
+              "desde": 108700,
+              "hasta": 120600,
+              "tasa": 6.0,
+              "cuotaFija": 2251.0
+            },
+            {
+              "desde": 120600,
+              "hasta": 130500,
+              "tasa": 7.0,
+              "cuotaFija": 2965.0
+            },
+            {
+              "desde": 130500,
+              "hasta": 138400,
+              "tasa": 8.0,
+              "cuotaFija": 3658.0
+            },
+            {
+              "desde": 138400,
+              "hasta": 144300,
+              "tasa": 9.0,
+              "cuotaFija": 4290.0
+            },
+            {
+              "desde": 144300,
+              "hasta": 148300,
+              "tasa": 10.0,
+              "cuotaFija": 4821.0
+            },
+            {
+              "desde": 148300,
+              "hasta": 150400,
+              "tasa": 11.0,
+              "cuotaFija": 5221.0
+            },
+            {
+              "desde": 150400,
+              "hasta": 152400,
+              "tasa": 12.0,
+              "cuotaFija": 5452.0
+            },
+            {
+              "desde": 152400,
+              "hasta": 941300,
+              "tasa": 13.0,
+              "cuotaFija": 5692.0
+            },
+            {
+              "desde": 941300,
+              "hasta": 941400,
+              "tasa": 13.0,
+              "cuotaFija": 108249.0
+            },
+            {
+              "desde": 941400,
+              "hasta": null,
+              "tasa": 11.5,
+              "cuotaFija": 108261.0
+            }
+          ],
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 36 Abs. 2 DBG (Fassung ab 1. Januar 2026)",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1991/1184_1184_1184/de#art_36",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.dbst-kinderermaessigung",
+      "nombre": "Direkte Bundessteuer, Ermässigung je Kind",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 263,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 36 Abs. 2bis DBG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1991/1184_1184_1184/de#art_36",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.dbst-mindestbetrag",
+      "nombre": "Direkte Bundessteuer, kleinster erhobener Betrag",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 36 Abs. 3 DBG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1991/1184_1184_1184/de#art_36",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.ahv-minimalrente",
+      "nombre": "Minimale AHV-Altersrente (Vollrente, pro Monat)",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2029-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1260,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 34 Abs. 5 AHVG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_34",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 1280,
+          "fuente": {
+            "organismo": "Bundesamt für Sozialversicherungen",
+            "titulo": "Medienmitteilung vom 2. Oktober 2026: AHV/IV-Minimalrente steigt um 20 Franken",
+            "url": "https://www.bsv.admin.ch/de/newnsb/BqB41FVYi5FB",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Nennt die Werte bis Ende 2026 und ab 1. Januar 2027."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.ahv-mindestbeitrag-selbststaendige",
+      "nombre": "Mindestbeitrag AHV/IV/EO für Selbstständigerwerbende, pro Jahr",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 530,
+          "fuente": {
+            "organismo": "Informationsstelle AHV/IV",
+            "titulo": "Merkblatt 2.02 Beiträge der Selbstständigerwerbenden an die AHV, die IV und die EO, Stand 1. Januar 2026",
+            "url": "https://www.ahv-iv.ch/p/2.02.d",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.ahv-skala-selbststaendige",
+      "nombre": "Sinkende Beitragsskala AHV/IV/EO für Selbstständigerwerbende",
+      "tipo": "escala",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 10100,
+              "hasta": 17600,
+              "tasa": 5.371
+            },
+            {
+              "desde": 17600,
+              "hasta": 23000,
+              "tasa": 5.494
+            },
+            {
+              "desde": 23000,
+              "hasta": 25500,
+              "tasa": 5.617
+            },
+            {
+              "desde": 25500,
+              "hasta": 28000,
+              "tasa": 5.741
+            },
+            {
+              "desde": 28000,
+              "hasta": 30500,
+              "tasa": 5.864
+            },
+            {
+              "desde": 30500,
+              "hasta": 33000,
+              "tasa": 5.987
+            },
+            {
+              "desde": 33000,
+              "hasta": 35500,
+              "tasa": 6.235
+            },
+            {
+              "desde": 35500,
+              "hasta": 38000,
+              "tasa": 6.481
+            },
+            {
+              "desde": 38000,
+              "hasta": 40500,
+              "tasa": 6.728
+            },
+            {
+              "desde": 40500,
+              "hasta": 43000,
+              "tasa": 6.976
+            },
+            {
+              "desde": 43000,
+              "hasta": 45500,
+              "tasa": 7.222
+            },
+            {
+              "desde": 45500,
+              "hasta": 48000,
+              "tasa": 7.469
+            },
+            {
+              "desde": 48000,
+              "hasta": 50500,
+              "tasa": 7.84
+            },
+            {
+              "desde": 50500,
+              "hasta": 53000,
+              "tasa": 8.209
+            },
+            {
+              "desde": 53000,
+              "hasta": 55500,
+              "tasa": 8.58
+            },
+            {
+              "desde": 55500,
+              "hasta": 58000,
+              "tasa": 8.951
+            },
+            {
+              "desde": 58000,
+              "hasta": 60500,
+              "tasa": 9.321
+            },
+            {
+              "desde": 60500,
+              "hasta": null,
+              "tasa": 10.0
+            }
+          ],
+          "fuente": {
+            "organismo": "Informationsstelle AHV/IV",
+            "titulo": "Merkblatt 2.02 Beiträge der Selbstständigerwerbenden an die AHV, die IV und die EO, Stand 1. Januar 2026",
+            "url": "https://www.ahv-iv.ch/p/2.02.d",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.alv-taggeld-voll",
+      "nombre": "ALV, volles Taggeld in Prozent des versicherten Verdienstes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 22 Abs. 1 AVIG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1982/2184_2184_2184/de#art_22",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.alv-taggeld-reduziert",
+      "nombre": "ALV, Taggeld ohne Unterhaltspflicht in Prozent des versicherten Verdienstes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 22 Abs. 2 AVIG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1982/2184_2184_2184/de#art_22",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.alv-schwelle-volles-taggeld",
+      "nombre": "ALV, volles Taggeld, bis zu dem 80 % gelten",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 140,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 22 Abs. 2 Bst. b AVIG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1982/2184_2184_2184/de#art_22",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.alv-mindestverdienst",
+      "nombre": "ALV, Mindestverdienst pro Monat",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 40 AVIV",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1983/1205_1205_1205/de#art_40",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.alv-tage-pro-monat",
+      "nombre": "ALV, Umrechnung Monatsverdienst in Tagesverdienst (Teiler)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 21.7,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 40a AVIV",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1983/1205_1205_1205/de#art_40_a",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.kinderzulage",
+      "nombre": "Kinderzulage, gesetzlicher Mindestansatz pro Monat",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 215,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 5 Abs. 1 FamZG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/2008/51/de#art_5",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.ausbildungszulage",
+      "nombre": "Ausbildungszulage, gesetzlicher Mindestansatz pro Monat",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 268,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 5 Abs. 2 FamZG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/2008/51/de#art_5",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.eo-taggeld-satz",
+      "nombre": "EO, Taggeld bei Mutterschaft und für den andern Elternteil in Prozent des Erwerbseinkommens",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 16e Abs. 2 EOG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1952/1021_1046_1050/de#art_16_e",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.eo-hoechstbetrag-taggeld",
+      "nombre": "EO, Höchstbetrag des Taggeldes bei Mutterschaft und Vaterschaft",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 220,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 16f Abs. 1 EOG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1952/1021_1046_1050/de#art_16_f",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.mutterschaft-tage",
+      "nombre": "Dauer der Mutterschaftsentschädigung in Tagen",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 98,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 16c Abs. 2 EOG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1952/1021_1046_1050/de#art_16_c",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.vaterschaft-taggelder",
+      "nombre": "Taggelder des andern Elternteils (Vaterschaftsurlaub)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 16k Abs. 2 EOG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1952/1021_1046_1050/de#art_16_k",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.ferien-wochen",
+      "nombre": "Mindestferien pro Dienstjahr in Wochen",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 329a Abs. 1 OR",
+            "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_329_a",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.ferien-wochen-jugendliche",
+      "nombre": "Mindestferien bis zum vollendeten 20. Altersjahr in Wochen",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 329a Abs. 1 OR",
+            "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_329_a",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.ueberstunden-zuschlag",
+      "nombre": "Mindestzuschlag für Überstunden",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 321c Abs. 3 OR",
+            "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_321_c",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.kuendigungsfristen",
+      "nombre": "Gesetzliche Kündigungsfristen",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "probezeit-tage": "Probezeit (Tage)",
+        "dienstjahr-1": "1. Dienstjahr (Monate)",
+        "dienstjahr-2-9": "2. bis 9. Dienstjahr (Monate)",
+        "ab-dienstjahr-10": "ab dem 10. Dienstjahr (Monate)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "probezeit-tage": 7,
+            "dienstjahr-1": 1,
+            "dienstjahr-2-9": 2,
+            "ab-dienstjahr-10": 3
+          },
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 335b und 335c OR",
+            "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_335_c",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.verzugszins",
+      "nombre": "Gesetzlicher Verzugszins",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 104 Abs. 1 OR",
+            "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_104",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.referenzzinssatz",
+      "nombre": "Hypothekarischer Referenzzinssatz für Mietverhältnisse",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-02",
+          "valor": 1.25,
+          "fuente": {
+            "organismo": "Bundesamt für Wohnungswesen",
+            "titulo": "Hypothekarischer Referenzzinssatz",
+            "url": "https://www.bwo.admin.ch/de/referenzzinssatz",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Gilt seit 2. September 2025, am 1. September 2026 bestätigt. Nächste Publikation am 1. Dezember 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.mietzins-hypothekarzins",
+      "nombre": "Mietzinsanpassung je Viertelprozent Hypothekarzins bei Sätzen unter 5 %",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 13 Abs. 1 Bst. c VMWG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1990/835_835_835/de#art_13",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch.mietzins-teuerungsanteil",
+      "nombre": "Anteil der Teuerung, der auf den Mietzins überwälzt werden darf",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Bundeskanzlei (fedlex.admin.ch)",
+            "titulo": "Art. 16 VMWG",
+            "url": "https://www.fedlex.admin.ch/eli/cc/1990/835_835_835/de#art_16",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}
