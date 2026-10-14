@@ -1,5 +1,6 @@
 import { crearRegistro, definirPais } from "@/motor/registro";
 import zz from "./zz";
+import zzEn from "./zz-en";
 import cl from "./cl";
 import co from "./co";
 import mx from "./mx";
@@ -48,6 +49,6 @@ const global = definirPais({
   },
 });
 
-export const PAISES = [global, zz, cl, co, mx, pe, uy, ec, cr, gt, py, rd, sv, pa, hn, ni, ve, bo, us, br, gb, fr, de, es, it, ca, nl, ie, at, pt, au] as const;
+export const PAISES = [global, zz, zzEn, cl, co, mx, pe, uy, ec, cr, gt, py, rd, sv, pa, hn, ni, ve, bo, us, br, gb, fr, de, es, it, ca, nl, ie, at, pt, au] as const;
 
 export const registro = crearRegistro(PAISES);

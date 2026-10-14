@@ -66,6 +66,7 @@ export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; exter
         pais: m.pais,
         nombre: m.nombre,
         href: rutaIntl(m.codigo),
+        ...(ctx.conEdiciones.has(m.pais) ? { idioma: m.idioma } : {}),
         estas: tm.arranque.estasEn(m.nombre),
         resumen: tm.arranque.resumen(t.global.calculadoras(calculadorasDe(ctx, m).length)),
         ultimoDato: tm.arranque.ultimoDato,

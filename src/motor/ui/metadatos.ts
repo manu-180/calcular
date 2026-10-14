@@ -16,6 +16,7 @@ import {
   tituloConPais,
   urlImagenOg,
   urlIntl,
+  type Idiomas,
   type MetadataSeo,
 } from "../seo";
 import { calculadorasDe, type ContextoSitio } from "./contexto";
@@ -89,9 +90,26 @@ export function imagenDe(ctx: ContextoSitio, r: PaginaIntl | null): string {
   return urlImagenOg(m.codigo, r ? slugDe(r) : undefined, version);
 }
 
+// Inicio, fuentes y novedades de un país con varias ediciones (/ca y /ca-fr) son la misma página en
+// otro idioma: forman su propio clúster. Un país con una sola edición no lleva hreflang ahí.
+export function hreflangDeEdiciones(ctx: ContextoSitio, slug?: "fuentes" | "novedades"): Idiomas | undefined {
+  if (ctx.mercado.codigo === "global") return undefined;
+  const ediciones = ctx.registro.ediciones(ctx.mercado.codigo, ctx.modo);
+  if (ediciones.length < 2) return undefined;
+  const idiomas: Idiomas = {};
+  for (const e of ediciones) idiomas[e.locale] = urlIntl(e.codigo, slug);
+  idiomas["x-default"] = urlIntl("global");
+  return idiomas;
+}
+
 export function metadatosDe(ctx: ContextoSitio, r: PaginaIntl | null): MetadataSeo {
   const { title, description } = textosDe(ctx, r);
-  const idiomas = r?.tipo === "calculadora" ? hreflangDelHead(r.pagina.calculadora.concepto, r.pagina.equivalentes) : undefined;
+  const idiomas =
+    r?.tipo === "calculadora"
+      ? hreflangDelHead(r.pagina.calculadora.concepto, r.pagina.equivalentes)
+      : !r || r.tipo === "fuentes" || r.tipo === "novedades"
+        ? hreflangDeEdiciones(ctx, r?.tipo)
+        : undefined;
   return metadataDe({
     mercado: ctx.mercado,
     ...(r ? { slug: slugDe(r) } : {}),

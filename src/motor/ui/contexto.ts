@@ -13,6 +13,8 @@ export interface ContextoSitio {
   fecha: FechaISO;
   textos: TextosSitio;
   paises: Mercado[];
+  // ISO de los países con más de una edición visible (CA con ca y ca-fr).
+  conEdiciones: ReadonlySet<string>;
 }
 
 export function contextoSitio(registro: Registro, codigo: CodigoMercado): ContextoSitio | null {
@@ -20,8 +22,11 @@ export function contextoSitio(registro: Registro, codigo: CodigoMercado): Contex
   const visibles = registro.mercados(modo);
   const mercado = visibles.find((m) => m.codigo === codigo);
   if (!mercado) return null;
+  const porIso = new Map<string, number>();
+  for (const m of visibles) if (m.pais) porIso.set(m.pais, (porIso.get(m.pais) ?? 0) + 1);
+  const conEdiciones = new Set([...porIso].filter(([, n]) => n > 1).map(([iso]) => iso));
   const paises = ordenarPorNombre(
-    visibles.filter((m) => m.codigo !== "global").map((m) => ({ m, nombre: nombreDePais(m, mercado.locale) })),
+    visibles.filter((m) => m.codigo !== "global").map((m) => ({ m, nombre: nombreDePais(m, mercado.locale, conEdiciones.has(m.pais)) })),
     mercado.locale,
   ).map((x) => x.m);
   return {
@@ -31,15 +36,22 @@ export function contextoSitio(registro: Registro, codigo: CodigoMercado): Contex
     fecha: hoyEn(mercado),
     textos: textosSitio(mercado.idioma, mercado.trato, mercado.locale),
     paises,
+    conEdiciones,
   };
 }
 
 export function nombreEnPagina(ctx: ContextoSitio, m: Mercado): string {
-  return nombreDePais(m, ctx.mercado.locale);
+  return nombreDePais(m, ctx.mercado.locale, ctx.conEdiciones.has(m.pais));
 }
 
 export function opcionesSelector(ctx: ContextoSitio): OpcionPais[] {
-  return ctx.paises.map((m) => ({ codigo: m.codigo, nombre: nombreEnPagina(ctx, m), pais: m.pais, href: rutaIntl(m.codigo) }));
+  return ctx.paises.map((m) => ({
+    codigo: m.codigo,
+    nombre: nombreEnPagina(ctx, m),
+    pais: m.pais,
+    href: rutaIntl(m.codigo),
+    ...(ctx.conEdiciones.has(m.pais) ? { idioma: m.idioma } : {}),
+  }));
 }
 
 // La lista que viaja al navegador (ProveedorPaises): los mercados más los países de otro sitio

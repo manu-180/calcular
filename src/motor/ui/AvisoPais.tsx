@@ -5,6 +5,7 @@ import { Bandera } from "./Bandera";
 import { mapaDeConcepto, paisDelVisitante, recordarPais } from "./geo-cliente";
 import { IconoCerrar, IconoFlecha } from "./Iconos";
 import { usePaises } from "./ListaPaises";
+import { edicionPara, idiomasDelNavegador } from "./paises";
 import type { Idioma, Trato } from "../tipos";
 import { textosInicio } from "./textos-inicio";
 
@@ -42,6 +43,7 @@ export function AvisoPais({
   paisActual,
   idioma,
   trato,
+  locale,
   concepto,
   plantillas,
   cerrar,
@@ -50,6 +52,7 @@ export function AvisoPais({
   paisActual: string;
   idioma: Idioma;
   trato: Trato;
+  locale?: string;
   concepto?: string;
   plantillas: { texto: string; ir: string };
   cerrar: string;
@@ -65,7 +68,8 @@ export function AvisoPais({
       const pais = await paisDelVisitante();
       // Solo mercados de calcularya (href propio): Argentina está en la lista del selector, pero el
       // aviso nunca la ofreció.
-      const opcion = pais && pais !== paisActual ? opciones.find((o) => o.pais === pais && o.codigo !== mercado && o.href.startsWith("/")) : undefined;
+      const candidatas = opciones.filter((o) => o.codigo !== mercado && o.href.startsWith("/"));
+      const opcion = pais && pais !== paisActual ? edicionPara(candidatas, pais, idiomasDelNavegador()) : undefined;
       if (!opcion) return;
       let href = opcion.href;
       let ir = plantillas.ir.replace(MARCA, opcion.nombre);
@@ -74,7 +78,7 @@ export function AvisoPais({
         const slug = Object.keys(mapa?.porMercado[opcion.codigo] ?? {})[0];
         if (slug) {
           href = `${opcion.href}/${slug}`;
-          ir = textosInicio(idioma, trato).aviso.mismaCalculadora(opcion.nombre);
+          ir = textosInicio(idioma, trato, locale).aviso.mismaCalculadora(opcion.nombre);
         }
       }
       if (!vivo) return;
@@ -91,7 +95,7 @@ export function AvisoPais({
       vivo = false;
       window.removeEventListener("load", enOcio);
     };
-  }, [mercado, paisActual, idioma, trato, concepto, plantillas, opciones]);
+  }, [mercado, paisActual, idioma, trato, locale, concepto, plantillas, opciones]);
 
   if (!destino) return null;
 

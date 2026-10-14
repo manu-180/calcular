@@ -5,7 +5,7 @@ import { Bandera } from "./Bandera";
 import { destinoEquivalente, mapaEquivalentes, paisDelVisitante, recordarPais, type MapaEquivalentes } from "./geo-cliente";
 import { IconoChevron, IconoGlobo } from "./Iconos";
 import { usePaises } from "./ListaPaises";
-import type { OpcionPais } from "./paises";
+import { edicionPara, idiomasDelNavegador, type OpcionPais } from "./paises";
 import type { Idioma, Trato } from "../tipos";
 import { textosInicio } from "./textos-inicio";
 
@@ -66,7 +66,8 @@ export function SelectorPais({ actual, idioma, trato, textos }: Props) {
       const d = destinoEquivalente(mapa, ruta, o);
       return { ...o, clave: `${ubicacion ? "u" : "l"}-${o.codigo}`, destino: d.href, mismaCalculadora: d.mismaCalculadora, ubicacion };
     };
-    const sugerida = !q && geo ? opciones.find((o) => o.pais === geo && o.codigo !== actual?.codigo) : undefined;
+    const enGeo = !q && geo ? edicionPara(opciones, geo, idiomasDelNavegador()) : undefined;
+    const sugerida = enGeo && enGeo.codigo !== actual?.codigo ? enGeo : undefined;
     const filtradas = opciones.filter((o) => !q || normal(o.nombre).includes(q) || o.codigo === q);
     return [...(sugerida ? [conDestino(sugerida, true)] : []), ...filtradas.map((o) => conDestino(o, false))];
   }, [consulta, geo, mapa, ruta, opciones, actual]);
