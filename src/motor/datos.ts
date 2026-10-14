@@ -11,7 +11,7 @@ import type {
   TipoDato,
   Tramo,
 } from "./tipos";
-import { MONEDAS, UNIDADES_REFERENCIA, UNIDADES_SIMPLES } from "./tipos";
+import { esCodigoMercado, esMoneda, IDIOMAS, UNIDADES_REFERENCIA, UNIDADES_SIMPLES } from "./tipos";
 
 export interface Validacion<T> {
   valor: T | null;
@@ -21,10 +21,15 @@ export interface Validacion<T> {
 export const RE_ID_LOCAL = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 export const RE_SLUG = RE_ID_LOCAL;
 
+// Los datos son del país y las ediciones por idioma los comparten: ca.iva sirve para ca y para ca-fr.
+export function paisDelMercado(mercado: CodigoMercado): string {
+  return mercado.split("-")[0];
+}
+
 export function esIdDelMercado(id: unknown, mercado: CodigoMercado): id is string {
   if (typeof id !== "string") return false;
   const [pref, ...resto] = id.split(".");
-  return pref === mercado && resto.length === 1 && RE_ID_LOCAL.test(resto[0]);
+  return (pref === mercado || pref === paisDelMercado(mercado)) && resto.length === 1 && RE_ID_LOCAL.test(resto[0]);
 }
 
 type Obj = Record<string, unknown>;
@@ -32,7 +37,8 @@ const esObj = (v: unknown): v is Obj => typeof v === "object" && v !== null && !
 const esTexto = (v: unknown): v is string => typeof v === "string" && v.trim().length > 0;
 const esNumero = (v: unknown): v is number => typeof v === "number" && Number.isFinite(v);
 
-const UNIDADES: readonly string[] = [...MONEDAS, ...UNIDADES_REFERENCIA, ...UNIDADES_SIMPLES];
+const UNIDADES_FIJAS: readonly string[] = [...UNIDADES_REFERENCIA, ...UNIDADES_SIMPLES];
+const esUnidad = (u: string): boolean => esMoneda(u) || UNIDADES_FIJAS.includes(u);
 const HOSTS_DE_PRUEBA = /(^|\.)example\.(org|com|net)$/;
 
 export function validarUrl(url: unknown, donde: string, mercado: CodigoMercado): string[] {
@@ -155,7 +161,7 @@ function validarDato(d: unknown, i: number, mercado: Mercado, hoy: FechaISO): st
   if (!esIdDelMercado(d.id, mercado.codigo)) e.push(`datos[${i}].id "${id}" tiene que ser "${mercado.codigo}.<kebab-case>"`);
   if (!esTexto(d.nombre)) e.push(`${id}.nombre vacío`);
   if (d.tipo !== "numero" && d.tipo !== "mapa" && d.tipo !== "escala") e.push(`${id}.tipo tiene que ser "numero", "mapa" o "escala"`);
-  if (typeof d.unidad !== "string" || !UNIDADES.includes(d.unidad)) e.push(`${id}.unidad "${String(d.unidad)}" no es una unidad conocida`);
+  if (typeof d.unidad !== "string" || !esUnidad(d.unidad)) e.push(`${id}.unidad "${String(d.unidad)}" no es una unidad conocida`);
   if (d.regiones !== undefined) {
     const declaradas = (mercado.regiones ?? []).map((r) => r.id);
     if (!Array.isArray(d.regiones) || d.regiones.length === 0) e.push(`${id}.regiones tiene que ser una lista no vacía`);
@@ -198,7 +204,7 @@ export function validarArchivoSeries(json: unknown, mercado: Mercado, hoy: Fecha
     const id = String(s.id);
     if (!esIdDelMercado(s.id, mercado.codigo)) e.push(`series[${i}].id "${id}" tiene que ser "${mercado.codigo}.<kebab-case>"`);
     if (!esTexto(s.nombre)) e.push(`${id}.nombre vacío`);
-    if (typeof s.unidad !== "string" || !UNIDADES.includes(s.unidad)) e.push(`${id}.unidad desconocida`);
+    if (typeof s.unidad !== "string" || !esUnidad(s.unidad)) e.push(`${id}.unidad desconocida`);
     if (!["diaria", "semanal", "mensual", "trimestral", "anual"].includes(String(s.frecuencia))) e.push(`${id}.frecuencia inválida`);
     if (!esNumero(s.maxAntiguedadDias) || s.maxAntiguedadDias <= 0) e.push(`${id}.maxAntiguedadDias tiene que ser un número positivo`);
     e.push(...validarFuente(s.fuente, `${id}.fuente`, mercado.codigo, hoy));
@@ -243,9 +249,15 @@ export function validarMercado(m: unknown): string[] {
   } catch {
     e.push(`mercado ${cod}: locale inválido`);
   }
-  if (m.idioma !== "es" && m.idioma !== "pt") e.push(`mercado ${cod}: idioma tiene que ser "es" o "pt"`);
+  if (!(IDIOMAS as readonly unknown[]).includes(m.idioma)) e.push(`mercado ${cod}: idioma tiene que ser uno de ${IDIOMAS.join(", ")}`);
+  if (!esCodigoMercado(cod)) e.push(`mercado ${cod}: el código tiene que ser global, zz o un ISO 3166-1 alfa-2 en minúscula con sufijo de idioma opcional`);
+  else if (cod !== "global" && cod !== "zz") {
+    const [pais, sufijo] = cod.split("-");
+    if (pais !== String(m.pais).toLowerCase()) e.push(`mercado ${cod}: el código no coincide con el país ${String(m.pais)}`);
+    if (sufijo !== undefined && sufijo !== m.idioma) e.push(`mercado ${cod}: una edición con sufijo -${sufijo} tiene que tener idioma "${sufijo}"`);
+  }
   if (!["vos", "tu", "usted"].includes(String(m.trato))) e.push(`mercado ${cod}: trato tiene que ser vos, tu o usted`);
-  if (!Array.isArray(m.monedas) || m.monedas.length === 0 || !m.monedas.every((x) => (MONEDAS as readonly string[]).includes(x))) e.push(`mercado ${cod}: monedas inválidas`);
+  if (!Array.isArray(m.monedas) || m.monedas.length === 0 || !m.monedas.every((x) => typeof x === "string" && esMoneda(x))) e.push(`mercado ${cod}: monedas inválidas`);
   try {
     new Intl.DateTimeFormat("en", { timeZone: String(m.zonaHoraria) });
   } catch {

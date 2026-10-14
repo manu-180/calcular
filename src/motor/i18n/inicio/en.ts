@@ -1,0 +1,87 @@
+import { GRAMATICA } from "../gramatica";
+import type { Diccionario } from "../resolver";
+import type { TextosInicio } from "./tipos";
+
+const g = GRAMATICA.en;
+
+const base: TextosInicio = {
+  arranque: {
+    estasEn: (pais) => `You're ${g.en(pais)}`,
+    resumen: (calculadoras) => `${calculadoras} with the official values in force.`,
+    ultimoDato: "Latest figure loaded",
+    ir: (pais) => `Go to ${g.nombre(pais)}`,
+    otro: "Choose another country",
+    argentina: "Your calculators are at calcular.ar, with Argentina's official data.",
+    argentinaIr: "Go to calcular.ar",
+    neutroTitulo: (paises) => `${paises} countries, each with its own laws and currency`,
+    neutroTexto: "We check the official sources every day.",
+    neutroIr: "See countries",
+  },
+  selector: {
+    buscar: "Search for a country",
+    sinResultados: (q) => `No country matches “${q}”`,
+    ubicacion: "Current location",
+    mismaCalculadora: "Same calculator",
+    paises: "Countries",
+  },
+  aviso: { mismaCalculadora: (pais) => `Calculate it with data ${g.para(pais)}` },
+  vivo: {
+    titulo: "Official data, updated automatically",
+    vigilado: "An automated process checks the official sources every day. Rule changes go live after we verify them.",
+    sinVigilar: "Every value has its official source and the date we checked it.",
+    verificado: "Last review of the rules",
+    automatico: "Latest automatic figure",
+    fuentes: "Official sources",
+    nFuentes: (n) => (n === 1 ? "1 official document" : `${n} official documents`),
+    verFuentes: "See sources",
+    verNovedades: "See updates",
+    hoy: "today",
+    ayer: "yesterday",
+    elDia: (fecha) => `on ${fecha}`,
+    actualizadoSerie: (serie, cuando) => `${serie}, ${cuando}`,
+  },
+  sello: {
+    verificado: (fecha) => `Data checked against the official source on ${fecha}.`,
+    serie: (serie, cuando, organismo) => `${serie}: updated ${cuando}, with the latest figure from ${organismo}.`,
+    diario: "We check the official sources automatically, every day.",
+    actualizado: "Updated",
+  },
+  novedades: {
+    pildora: "Updates",
+    titulo: (pais) => `What changed in the official data ${g.para(pais)}`,
+    acento: "the day it changed",
+    bajada: "Every new figure that reaches the calculators is logged here: what changed, when it takes effect and where it came from.",
+    ultimoCambio: "Latest change",
+    revision: "Source review",
+    diaria: "Every day",
+    porNorma: "With every new rule",
+    siguiendo: "Sources we follow",
+    masOrganismos: (n) => `and ${n} more`,
+    proximos: "Published, coming into force soon",
+    proximosTexto: "Official values already loaded that take effect in the coming days.",
+    registro: "Change log",
+    rss: "Follow via RSS",
+    vacio: "No changes logged for this country yet.",
+    etiqueta: { editorial: "Rule", dato: "New figure", proximo: "Coming soon", serie: "Automatic", revision: "Review" },
+    rige: (fecha) => `In force from ${fecha}`,
+    rigeDesdeHasta: (desde, hasta) => `In force from ${desde} to ${hasta}`,
+    antes: (valor, fecha) => `Before: ${valor} (${fecha})`,
+    revisados: (n) => (n === 1 ? "We checked 1 figure against the official source" : `We checked ${n} figures against the official source`),
+    revisadosTexto: (organismos) => `The values in force were confirmed with ${organismos}.`,
+    verDatos: (n) => (n === 1 ? "See the figure" : `See the ${n} figures`),
+    calculadoras: "Used by",
+    rango: (min, max, zonas) => `from ${min} to ${max} depending on the area (${zonas} areas)`,
+    tabla: (filas) => `table with ${filas} brackets`,
+    valores: (n) => `${n} values`,
+    pasosTitulo: "How it stays current",
+    pasos: [
+      { titulo: "An agency publishes", texto: "A regulation, an index or an exchange rate comes out in the official source." },
+      { titulo: "Checked before use", texto: "Indexes and exchange rates arrive automatically, with range checks. Rules are loaded with the official document in hand." },
+      { titulo: "The calculators update", texto: "The calculators switch to the new figure, and the change is logged here with its source." },
+    ],
+    feedTitulo: (pais) => `${pais} updates on CalcularYa`,
+    feedSubtitulo: (pais) => `Changes to the official data behind the calculators ${g.para(pais)}, with effective dates and sources.`,
+  },
+};
+
+export const en: Diccionario<TextosInicio> = { base };
