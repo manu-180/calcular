@@ -1,0 +1,34 @@
+{
+  "mercado": "nl",
+  "avisos": [
+    {
+      "id": "nl.box3-voorlopig",
+      "nivel": "cautela",
+      "desde": "2026-01-01",
+      "hasta": "2027-06-30",
+      "aplicaA": ["nl.box-3-berekenen"],
+      "texto": "De rendementspercentages voor banktegoeden en schulden over 2026 zijn nog voorlopig. De Belastingdienst stelt ze begin 2027 vast. Is je werkelijke rendement lager dan het forfaitaire rendement, dan kun je dat later aantonen en betaal je minder.",
+      "fuente": {
+        "organismo": "Belastingdienst",
+        "titulo": "Berekening box 3-inkomen voorlopige aanslag 2026",
+        "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    },
+    {
+      "id": "nl.aow-leeftijd-verwacht",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["nl.aow-berekenen"],
+      "texto": "Voor wie op of na 1 oktober 1964 is geboren, ligt de AOW-leeftijd nog niet vast. De SVB geeft een verwachte leeftijd op basis van de levensverwachting. Die kan elk jaar veranderen.",
+      "fuente": {
+        "organismo": "SVB",
+        "titulo": "AOW-leeftijd",
+        "url": "https://www.svb.nl/nl/aow/aow-leeftijd/uw-aow-leeftijd",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    }
+  ]
+}
