@@ -522,6 +522,66 @@
       ]
     },
     {
+      "id": "gb.smp-earnings-percent",
+      "nombre": "Statutory Maternity Pay as a share of average weekly earnings",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-05",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Department for Work and Pensions",
+            "titulo": "Maternity pay and leave: pay",
+            "url": "https://www.gov.uk/maternity-pay-leave/pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gb.smp-higher-weeks",
+      "nombre": "Weeks of Statutory Maternity Pay at 90% of earnings",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-05",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Department for Work and Pensions",
+            "titulo": "Maternity pay and leave: pay",
+            "url": "https://www.gov.uk/maternity-pay-leave/pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gb.smp-total-weeks",
+      "nombre": "Total weeks of Statutory Maternity Pay",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-05",
+          "valor": 39,
+          "fuente": {
+            "organismo": "Department for Work and Pensions",
+            "titulo": "Maternity pay and leave: pay",
+            "url": "https://www.gov.uk/maternity-pay-leave/pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
       "id": "gb.class4-main-rate",
       "nombre": "Class 4 rate between £12,570 and £50,270 of profits",
       "tipo": "numero",

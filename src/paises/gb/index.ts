@@ -16,8 +16,16 @@ import minimumWage from "./calculadoras/minimum-wage";
 import contenidoMinimumWage from "./contenido/minimum-wage";
 import redundancyPay from "./calculadoras/redundancy-pay";
 import contenidoRedundancyPay from "./contenido/redundancy-pay";
+import holidayEntitlement from "./calculadoras/holiday-entitlement";
+import contenidoHolidayEntitlement from "./contenido/holiday-entitlement";
+import maternityPay from "./calculadoras/maternity-pay";
+import contenidoMaternityPay from "./contenido/maternity-pay";
+import statutorySickPay from "./calculadoras/statutory-sick-pay";
+import contenidoStatutorySickPay from "./contenido/statutory-sick-pay";
 import employerNiCalculator from "./calculadoras/employer-ni-calculator";
 import contenidoEmployerNiCalculator from "./contenido/employer-ni-calculator";
+import noticePeriod from "./calculadoras/notice-period";
+import contenidoNoticePeriod from "./contenido/notice-period";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -38,7 +46,11 @@ export default definirPais({
     { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
     { definicion: redundancyPay, contenido: contenidoRedundancyPay, cliente: () => import("./calculadoras/redundancy-pay.cliente") },
+    { definicion: holidayEntitlement, contenido: contenidoHolidayEntitlement, cliente: () => import("./calculadoras/holiday-entitlement.cliente") },
+    { definicion: maternityPay, contenido: contenidoMaternityPay, cliente: () => import("./calculadoras/maternity-pay.cliente") },
+    { definicion: statutorySickPay, contenido: contenidoStatutorySickPay, cliente: () => import("./calculadoras/statutory-sick-pay.cliente") },
     { definicion: employerNiCalculator, contenido: contenidoEmployerNiCalculator, cliente: () => import("./calculadoras/employer-ni-calculator.cliente") },
+    { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
   ],
   universales: "todas",
   novedades,

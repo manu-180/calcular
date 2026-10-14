@@ -22,6 +22,7 @@ const HOLIDAY_IRREGULAR = fuente(
   "Para años de vacaciones que empiezan desde el 1 de abril de 2024.",
 );
 const SSP = fuente("HMRC", "Statutory Sick Pay (SSP): employer guide", "https://www.gov.uk/employers-sick-pay/entitlement", "Desde el 6 de abril de 2026 se paga desde el primer día y sin piso de ingresos (Employment Rights Act 2025).");
+const SMP = fuente("Department for Work and Pensions", "Maternity pay and leave: pay", "https://www.gov.uk/maternity-pay-leave/pay");
 const SELF_EMPLOYED = fuente("HMRC", "Self-employed National Insurance rates", "https://www.gov.uk/self-employed-national-insurance-rates");
 const DIVIDENDS = fuente("HMRC", "Tax on dividends", "https://www.gov.uk/tax-on-dividends");
 const CGT_RATES = fuente("HMRC", "Capital Gains Tax: what you pay it on, rates and allowances", "https://www.gov.uk/capital-gains-tax/rates");
@@ -106,6 +107,9 @@ const datos = [
     proximaRevision: "2027-04-04",
     tramos: [{ estado: "verificado", desde: "2026-04-05", hasta: "2027-04-03", valor: 194.32, fuente: EMPLEADORES }],
   },
+  { id: "gb.smp-earnings-percent", nombre: "Statutory Maternity Pay as a share of average weekly earnings", tipo: "numero", unidad: "%", tramos: desde("2026-04-05", 90, SMP) },
+  { id: "gb.smp-higher-weeks", nombre: "Weeks of Statutory Maternity Pay at 90% of earnings", tipo: "numero", unidad: "numero", tramos: desde("2026-04-05", 6, SMP) },
+  { id: "gb.smp-total-weeks", nombre: "Total weeks of Statutory Maternity Pay", tipo: "numero", unidad: "numero", tramos: desde("2026-04-05", 39, SMP) },
   { id: "gb.class4-main-rate", nombre: "Class 4 rate between £12,570 and £50,270 of profits", tipo: "numero", unidad: "%", proximaRevision: PROXIMO, tramos: anual(6, SELF_EMPLOYED) },
   { id: "gb.class4-upper-rate", nombre: "Class 4 rate above £50,270 of profits", tipo: "numero", unidad: "%", proximaRevision: PROXIMO, tramos: anual(2, SELF_EMPLOYED) },
   { id: "gb.class4-lower-profits-limit", nombre: "Class 4 Lower Profits Limit", tipo: "numero", unidad: "GBP", proximaRevision: PROXIMO, tramos: anual(12570, SELF_EMPLOYED) },
