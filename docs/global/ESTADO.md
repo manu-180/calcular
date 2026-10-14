@@ -15,6 +15,26 @@ Rama de integración: `claude/global-calculators-multipa-s-dfbec3` (incluye el P
 | Universales cotidianas, salud, hogar e IVA (21) | `claude/mundo-univ-cotidianas` | `src/motor/universales/<21 ids>/**`, `universales/cotidianas.ts` |
 | Investigación de los países del mundo | `claude/mundo-paises-research` | `docs/global/PAISES.md` |
 
+## Integrado en la rama (14/10/2026)
+
+- Contrato de universales, 40 conceptos, 6 categorías, `check_universales`, `gen_idiomas_universales`.
+- **41 universales** en es (tú, usted, vos) y en: 1.157 casos en verde, incluidos mercados con nombre
+  de país largo. Frentes cerrados: `claude/mundo-univ-finanzas`, `claude/mundo-univ-cotidianas`.
+- `docs/global/PAISES.md`: 199 países, tier 1 = US DE GB IN FR CA AU BR IT ES NL CH ZA BE AT.
+
+## Traducción de universales (en curso)
+
+Un agente por idioma, cada uno crea solo `textos/<idioma>.ts` y `contenido/<idioma>.ts`; el cableado
+lo hace `gen_idiomas_universales`: `claude/mundo-trad-{pt,fr,de,it,nl}`. Registro fijo por idioma:
+pt «você», fr «vous», de «Sie», it «tu», nl «je».
+
+## Pedidos al motor anotados
+
+- `NOMBRES_UNIDAD` por idioma (hoy «meses», «días» salen en español en páginas en inglés).
+- Tipo de campo `hora` (horas-trabajadas usa listas de 96 horarios) y campos condicionales por modo.
+- `ui()` sin locale: los textos de `ui` evitan números con decimales.
+- Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
+
 ## Próximo
 
 Ronda 2: integrar las ramas de la ronda 1, traducir universales a pt fr de it nl, País y edición
