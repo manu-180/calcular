@@ -32,6 +32,10 @@ import eigenwoningforfaitBerekenen from "./calculadoras/eigenwoningforfait-berek
 import contenidoEigenwoningforfaitBerekenen from "./contenido/eigenwoningforfait-berekenen";
 import overdrachtsbelastingBerekenen from "./calculadoras/overdrachtsbelasting-berekenen";
 import contenidoOverdrachtsbelastingBerekenen from "./contenido/overdrachtsbelasting-berekenen";
+import aowBerekenen from "./calculadoras/aow-berekenen";
+import contenidoAowBerekenen from "./contenido/aow-berekenen";
+import kinderbijslagBerekenen from "./calculadoras/kinderbijslag-berekenen";
+import contenidoKinderbijslagBerekenen from "./contenido/kinderbijslag-berekenen";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +64,8 @@ export default definirPais({
     { definicion: hypotheekrenteaftrekBerekenen, contenido: contenidoHypotheekrenteaftrekBerekenen, cliente: () => import("./calculadoras/hypotheekrenteaftrek-berekenen.cliente") },
     { definicion: eigenwoningforfaitBerekenen, contenido: contenidoEigenwoningforfaitBerekenen, cliente: () => import("./calculadoras/eigenwoningforfait-berekenen.cliente") },
     { definicion: overdrachtsbelastingBerekenen, contenido: contenidoOverdrachtsbelastingBerekenen, cliente: () => import("./calculadoras/overdrachtsbelasting-berekenen.cliente") },
+    { definicion: aowBerekenen, contenido: contenidoAowBerekenen, cliente: () => import("./calculadoras/aow-berekenen.cliente") },
+    { definicion: kinderbijslagBerekenen, contenido: contenidoKinderbijslagBerekenen, cliente: () => import("./calculadoras/kinderbijslag-berekenen.cliente") },
   ],
   universales: "todas",
   novedades,
