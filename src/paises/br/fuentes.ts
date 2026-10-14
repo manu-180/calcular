@@ -16,10 +16,23 @@ function deSgs(f: unknown): FechaISO | null {
   return esFechaISO(iso) ? iso : null;
 }
 
-async function sgs(http: Http, codigo: number, ultimos: number): Promise<PuntoSerie[] | null> {
-  const json = await http.json(`${SGS}.${codigo}/dados/ultimos/${ultimos}?formato=json`);
-  if (!Array.isArray(json)) return null;
+function aSgs(f: FechaISO): string {
+  const [a, m, d] = f.split("-");
+  return `${d}/${m}/${a}`;
+}
+
+function diasAntes(f: FechaISO, dias: number): FechaISO {
+  const d = new Date(`${f}T12:00:00Z`);
+  d.setUTCDate(d.getUTCDate() - dias);
+  return d.toISOString().slice(0, 10) as FechaISO;
+}
+
+// "ultimos/N" aceita no máximo 20 e, na meta Selic, os últimos 20 pontos podem ser todos futuros
+// (a série vai até a próxima reunião do Copom). Por isso se pede um intervalo de datas até hoje.
+async function sgs(http: Http, codigo: number, dias: number): Promise<PuntoSerie[] | null> {
   const hoje = hojeBrasil();
+  const json = await http.json(`${SGS}.${codigo}/dados?formato=json&dataInicial=${aSgs(diasAntes(hoje, dias))}&dataFinal=${aSgs(hoje)}`);
+  if (!Array.isArray(json)) return null;
   const pontos: PuntoSerie[] = [];
   for (const fila of json as { data?: unknown; valor?: unknown }[]) {
     const fecha = deSgs(fila.data);
@@ -97,27 +110,27 @@ export const detectores: readonly Detector[] = [
     carril: "serie",
     serie: "br.dolar-ptax",
     metodo: "api-json",
-    url: `${SGS}.1/dados/ultimos/10?formato=json`,
+    url: `${SGS}.1/dados?formato=json`,
     banda: { min: 3, max: 9, saltoRelativoMax: 0.06 },
-    traer: (http) => sgs(http, 1, 10),
+    traer: (http) => sgs(http, 1, 15),
   },
   {
     id: "br.selic-sgs",
     carril: "serie",
     serie: "br.selic-meta",
     metodo: "api-json",
-    url: `${SGS}.432/dados/ultimos/40?formato=json`,
+    url: `${SGS}.432/dados?formato=json`,
     banda: { min: 2, max: 25, saltoRelativoMax: 0.15 },
-    traer: (http) => sgs(http, 432, 40),
+    traer: (http) => sgs(http, 432, 15),
   },
   {
     id: "br.tr-sgs",
     carril: "serie",
     serie: "br.tr",
     metodo: "api-json",
-    url: `${SGS}.7811/dados/ultimos/3?formato=json`,
+    url: `${SGS}.7811/dados?formato=json`,
     banda: { min: 0, max: 1.5, saltoRelativoMax: 2 },
-    traer: (http) => sgs(http, 7811, 3),
+    traer: (http) => sgs(http, 7811, 100),
   },
   {
     id: "br.ipca-sidra",

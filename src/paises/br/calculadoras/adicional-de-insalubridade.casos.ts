@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import insalubridade from "./insalubridade";
+import insalubridade from "./adicional-de-insalubridade";
 
 export default definirCasos(insalubridade, [
   {

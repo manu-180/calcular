@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import correcaoIpca from "./correcao-ipca";
+import correcaoIpca from "./correcao-pelo-ipca";
 
 const SIDRA = "https://apisidra.ibge.gov.br/values/t/1737/n1/all/v/2266/p/all";
 

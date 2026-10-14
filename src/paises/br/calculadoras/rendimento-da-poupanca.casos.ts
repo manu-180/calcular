@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import rendimentoPoupanca from "./rendimento-poupanca";
+import rendimentoPoupanca from "./rendimento-da-poupanca";
 
 export default definirCasos(rendimentoPoupanca, [
   {

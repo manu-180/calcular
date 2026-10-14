@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import abonoSalarial from "./abono-salarial";
+import abonoSalarial from "./abono-salarial-pis";
 
 const MTE = "https://www.gov.br/trabalho-e-emprego/pt-br/servicos/trabalhador/abono-salarial";
 

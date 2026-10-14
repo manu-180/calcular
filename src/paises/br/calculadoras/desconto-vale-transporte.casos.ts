@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import valeTransporte from "./vale-transporte";
+import valeTransporte from "./desconto-vale-transporte";
 
 export default definirCasos(valeTransporte, [
   {

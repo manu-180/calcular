@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import periculosidade from "./periculosidade";
+import periculosidade from "./adicional-de-periculosidade";
 
 export default definirCasos(periculosidade, [
   {

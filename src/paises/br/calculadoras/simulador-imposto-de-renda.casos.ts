@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import impostoDeRendaAnual from "./imposto-de-renda-anual";
+import impostoDeRendaAnual from "./simulador-imposto-de-renda";
 
 const ZERO = { dependentes: 0, saude: 0, instrucao: 0, pensao: 0, pgbl: 0 };
 

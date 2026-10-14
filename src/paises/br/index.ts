@@ -24,26 +24,26 @@ import salarioMinimo from "./calculadoras/salario-minimo";
 import contenidoSalarioMinimo from "./contenido/salario-minimo";
 import seguroDesemprego from "./calculadoras/seguro-desemprego";
 import contenidoSeguroDesemprego from "./contenido/seguro-desemprego";
-import abonoSalarial from "./calculadoras/abono-salarial";
-import contenidoAbonoSalarial from "./contenido/abono-salarial";
+import abonoSalarialPis from "./calculadoras/abono-salarial-pis";
+import contenidoAbonoSalarialPis from "./contenido/abono-salarial-pis";
 import dasMei from "./calculadoras/das-mei";
 import contenidoDasMei from "./contenido/das-mei";
 import inssAutonomo from "./calculadoras/inss-autonomo";
 import contenidoInssAutonomo from "./contenido/inss-autonomo";
-import insalubridade from "./calculadoras/insalubridade";
-import contenidoInsalubridade from "./contenido/insalubridade";
-import periculosidade from "./calculadoras/periculosidade";
-import contenidoPericulosidade from "./contenido/periculosidade";
-import valeTransporte from "./calculadoras/vale-transporte";
-import contenidoValeTransporte from "./contenido/vale-transporte";
-import impostoDeRendaAnual from "./calculadoras/imposto-de-renda-anual";
-import contenidoImpostoDeRendaAnual from "./contenido/imposto-de-renda-anual";
-import correcaoIpca from "./calculadoras/correcao-ipca";
-import contenidoCorrecaoIpca from "./contenido/correcao-ipca";
+import adicionalDeInsalubridade from "./calculadoras/adicional-de-insalubridade";
+import contenidoAdicionalDeInsalubridade from "./contenido/adicional-de-insalubridade";
+import adicionalDePericulosidade from "./calculadoras/adicional-de-periculosidade";
+import contenidoAdicionalDePericulosidade from "./contenido/adicional-de-periculosidade";
+import descontoValeTransporte from "./calculadoras/desconto-vale-transporte";
+import contenidoDescontoValeTransporte from "./contenido/desconto-vale-transporte";
+import simuladorImpostoDeRenda from "./calculadoras/simulador-imposto-de-renda";
+import contenidoSimuladorImpostoDeRenda from "./contenido/simulador-imposto-de-renda";
+import correcaoPeloIpca from "./calculadoras/correcao-pelo-ipca";
+import contenidoCorrecaoPeloIpca from "./contenido/correcao-pelo-ipca";
 import dolarPtax from "./calculadoras/dolar-ptax";
 import contenidoDolarPtax from "./contenido/dolar-ptax";
-import rendimentoPoupanca from "./calculadoras/rendimento-poupanca";
-import contenidoRendimentoPoupanca from "./contenido/rendimento-poupanca";
+import rendimentoDaPoupanca from "./calculadoras/rendimento-da-poupanca";
+import contenidoRendimentoDaPoupanca from "./contenido/rendimento-da-poupanca";
 import calculoRescisao from "./calculadoras/calculo-rescisao";
 import contenidoCalculoRescisao from "./contenido/calculo-rescisao";
 import datos from "./datos.json";
@@ -70,16 +70,16 @@ export default definirPais({
     { definicion: adicionalNoturno, contenido: contenidoAdicionalNoturno, cliente: () => import("./calculadoras/adicional-noturno.cliente") },
     { definicion: salarioMinimo, contenido: contenidoSalarioMinimo, cliente: () => import("./calculadoras/salario-minimo.cliente") },
     { definicion: seguroDesemprego, contenido: contenidoSeguroDesemprego, cliente: () => import("./calculadoras/seguro-desemprego.cliente") },
-    { definicion: abonoSalarial, contenido: contenidoAbonoSalarial, cliente: () => import("./calculadoras/abono-salarial.cliente") },
+    { definicion: abonoSalarialPis, contenido: contenidoAbonoSalarialPis, cliente: () => import("./calculadoras/abono-salarial-pis.cliente") },
     { definicion: dasMei, contenido: contenidoDasMei, cliente: () => import("./calculadoras/das-mei.cliente") },
     { definicion: inssAutonomo, contenido: contenidoInssAutonomo, cliente: () => import("./calculadoras/inss-autonomo.cliente") },
-    { definicion: insalubridade, contenido: contenidoInsalubridade, cliente: () => import("./calculadoras/insalubridade.cliente") },
-    { definicion: periculosidade, contenido: contenidoPericulosidade, cliente: () => import("./calculadoras/periculosidade.cliente") },
-    { definicion: valeTransporte, contenido: contenidoValeTransporte, cliente: () => import("./calculadoras/vale-transporte.cliente") },
-    { definicion: impostoDeRendaAnual, contenido: contenidoImpostoDeRendaAnual, cliente: () => import("./calculadoras/imposto-de-renda-anual.cliente") },
-    { definicion: correcaoIpca, contenido: contenidoCorrecaoIpca, cliente: () => import("./calculadoras/correcao-ipca.cliente") },
+    { definicion: adicionalDeInsalubridade, contenido: contenidoAdicionalDeInsalubridade, cliente: () => import("./calculadoras/adicional-de-insalubridade.cliente") },
+    { definicion: adicionalDePericulosidade, contenido: contenidoAdicionalDePericulosidade, cliente: () => import("./calculadoras/adicional-de-periculosidade.cliente") },
+    { definicion: descontoValeTransporte, contenido: contenidoDescontoValeTransporte, cliente: () => import("./calculadoras/desconto-vale-transporte.cliente") },
+    { definicion: simuladorImpostoDeRenda, contenido: contenidoSimuladorImpostoDeRenda, cliente: () => import("./calculadoras/simulador-imposto-de-renda.cliente") },
+    { definicion: correcaoPeloIpca, contenido: contenidoCorrecaoPeloIpca, cliente: () => import("./calculadoras/correcao-pelo-ipca.cliente") },
     { definicion: dolarPtax, contenido: contenidoDolarPtax, cliente: () => import("./calculadoras/dolar-ptax.cliente") },
-    { definicion: rendimentoPoupanca, contenido: contenidoRendimentoPoupanca, cliente: () => import("./calculadoras/rendimento-poupanca.cliente") },
+    { definicion: rendimentoDaPoupanca, contenido: contenidoRendimentoDaPoupanca, cliente: () => import("./calculadoras/rendimento-da-poupanca.cliente") },
     { definicion: calculoRescisao, contenido: contenidoCalculoRescisao, cliente: () => import("./calculadoras/calculo-rescisao.cliente") },
   ],
   universales: "todas",
