@@ -5,8 +5,8 @@ export const textosNl: TextosUi<UiReglaDeTres> = {
   slug: "verhoudingen-berekenen",
   ui: () => ({
     tipo: "Soort verhouding",
-    directa: "Recht evenredig (A meer, dan B meer)",
-    inversa: "Omgekeerd evenredig (A meer, dan B minder)",
+    directa: "Recht evenredig (meer A geeft meer B)",
+    inversa: "Omgekeerd evenredig (meer A geeft minder B)",
     a: "A",
     aAyuda: "Lees het zo: A staat tot B zoals C tot X. Vul A, B en C in.",
     b: "B",

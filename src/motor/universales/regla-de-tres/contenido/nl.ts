@@ -22,7 +22,7 @@ export const contenidoNl: ContenidoUniversal = (ctx) => {
     ],
     ejemplo: [
       `Kost 3 kilo ${m(precio3)}, dan kost 5 kilo ${m((precio3 * 5) / 3)}.`,
-      `Schilderen 4 mensen een huis in 12 dagen, dan doen 6 mensen het in ${n((4 * 12) / 6)} dagen.`,
+      `Doen 4 schilders 12 dagen over een huis, dan zijn 6 schilders in ${n((4 * 12) / 6)} dagen klaar.`,
     ],
     faq: [
       {
@@ -31,7 +31,7 @@ export const contenidoNl: ContenidoUniversal = (ctx) => {
       },
       {
         pregunta: "Hoe reken je een verhouding met de hand uit?",
-        respuesta: `Vermenigvuldig kruislings de twee bekende getallen die schuin tegenover elkaar staan en deel door het getal dat overblijft. Hoort 600 bij 3, dan hoort bij 5 600 × 5 ÷ 3 = ${n((600 * 5) / 3)}.`,
+        respuesta: `Vermenigvuldig kruislings de twee bekende getallen die schuin tegenover elkaar staan en deel door het getal dat overblijft. Hoort 600 bij 3, dan hoort bij 5 het getal 600 × 5 ÷ 3 =${n((600 * 5) / 3)}.`,
       },
       {
         pregunta: "Kan ik dit ook voor procenten gebruiken?",

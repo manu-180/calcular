@@ -8,16 +8,16 @@ export const contenidoNl: ContenidoUniversal = (ctx) => {
         const precio = montoEjemplo(ctx, 3.5);
         const galones = 300 / 30;
         return [
-          `Een rit van 150 mijl heen en terug met een auto die 30 mpg rijdt, kost ${formatearNumero(ctx, galones)} gallon brandstof.`,
-          `Bij ${m(precio)} per gallon is dat ${m(galones * precio)}. Met z'n tweeën betaalt ieder ${m((galones * precio) / 2)}.`,
+          `Voor een rit van 150 mijl heen en terug met een auto die 30 mpg rijdt, heb je ${formatearNumero(ctx, galones)} gallon brandstof nodig.`,
+          `Bij ${m(precio)} per gallon is dat ${m(galones * precio)}. Rij je met z'n tweeën, dan betaalt ieder ${m((galones * precio) / 2)}.`,
         ];
       })()
     : (() => {
         const precio = montoEjemplo(ctx, 1.2);
         const litros = (600 * 8) / 100;
         return [
-          `Een rit van 300 km heen en terug met een auto die 8 liter per 100 km verbruikt, kost ${formatearNumero(ctx, litros)} liter brandstof.`,
-          `Bij ${m(precio)} per liter is dat ${m(litros * precio)}. Met z'n tweeën betaalt ieder ${m((litros * precio) / 2)}.`,
+          `Voor een rit van 300 km heen en terug met een auto die 8 liter per 100 km verbruikt, heb je ${formatearNumero(ctx, litros)} liter brandstof nodig.`,
+          `Bij ${m(precio)} per liter is dat ${m(litros * precio)}. Rij je met z'n tweeën, dan betaalt ieder ${m((litros * precio) / 2)}.`,
         ];
       })();
   return {

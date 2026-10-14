@@ -15,11 +15,11 @@ export const contenidoNl: ContenidoUniversal = (ctx) => {
     description: "Bereken je maandlast met de koopsom, je eigen geld, de rente en de looptijd. Zie de totale rente en hoe je restschuld elk jaar daalt.",
     intro: [
       `Een ${lening} is voor de meeste mensen de grootste schuld die ze ooit aangaan. Het loont om alle bedragen te zien voordat je met een geldverstrekker praat.`,
-      "Vul de koopsom in, je eigen geld, de rente en de looptijd. Betaal je ook belastingen of verzekeringen voor je woning, tel die erbij op en zie je echte maandlast.",
+      "Vul de koopsom in, je eigen geld, de rente en de looptijd. Betaal je ook belastingen of verzekeringen voor je woning? Tel die erbij op, dan zie je je echte maandlast.",
     ],
     comoSeCalcula: [
       "Hypotheekbedrag = koopsom − eigen geld.",
-      "De rekenhulp gaat uit van een annuïteitenhypotheek: een vast maandbedrag met de jaarrente gedeeld door 12 en de looptijd in maanden.",
+      "De rekenhulp gaat uit van een annuïteitenhypotheek: elke maand hetzelfde bedrag, berekend met de jaarrente gedeeld door 12 en de looptijd in maanden.",
       "Per jaar telt de rekenhulp de betaalde rente en aflossing op en laat zien wat je nog schuldig bent.",
     ],
     ejemplo: [
