@@ -1,5 +1,6 @@
 // Fronteras de imports (ADR 0001, D1): lo internacional tiene que poder irse a otro proyecto tal cual.
 // - Un país (src/paises/<m>, scripts/paises/<m>) solo importa de sí mismo, de src/motor y de react.
+//   Una edición (src/paises/ca-fr) también importa de su país base (src/paises/ca), nunca al revés.
 // - El motor no importa de ningún país ni de lo de Argentina (src/lib, src/data, src/app, src/components).
 // - Argentina (src/lib, src/data, src/components y src/app fuera de (intl) y api) no importa
 //   el interior de un país (src/paises/<m>/...). El registro src/paises y el motor sí, para hreflang.
@@ -88,7 +89,8 @@ for (const archivo of paisesYScripts) {
       continue;
     }
     const otro = paisDe(r.ruta);
-    if (otro !== null && otro !== propio) fallas.push(`${donde}: un país no importa de otro país (${otro})`);
+    const deSuBase = otro !== null && propio.includes("-") && otro === propio.split("-")[0];
+    if (otro !== null && otro !== propio && !deSuBase) fallas.push(`${donde}: un país no importa de otro país (${otro})`);
     // Los scripts de prueba de un país usan el mismo Http que el cron para probar sus detectores igual que en producción.
     else if (otro === null && !dentro(r.ruta, path.join(SRC, "motor")) && !(rel(archivo).startsWith("scripts/") && dentro(r.ruta, path.join(RAIZ, "scripts", "datos-paises", "lib")))) fallas.push(`${donde}: un país solo importa de su carpeta y de src/motor`);
   }

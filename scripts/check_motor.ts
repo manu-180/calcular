@@ -9,9 +9,10 @@ import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
-import { formatearFecha, formatearMoneda, formatearPorcentaje, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
-import { ejecutar, mensajeDeError, parsearEntrada } from "../src/motor/formulario";
-import { crearRegistro, definirPais, esUniversal, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
+import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
+import { textosSitio } from "../src/motor/i18n";
+import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
 import { textosMotor } from "../src/motor/textos";
@@ -370,6 +371,78 @@ for (const concepto of ["bono-semestral", "iva", "descuento"]) {
   igual(`equivalentes de ${concepto} por índice`, [...indexado].sort(), [...directo].sort());
 }
 
+// Ediciones (ADR 0002, D3): zz-en reusa los datos de zz, traduce bono y suma las universales en inglés.
+const zzEn = registroReal.pais("zz-en");
+verdad("zz-en existe y no tiene errores", Boolean(zzEn) && zzEn!.errores.length === 0, zzEn?.errores.join("; ") ?? "no está en el registro");
+if (zzEn) {
+  igual("edición: edicionDe", zzEn.edicionDe, "zz");
+  igual("edición: hereda moneda, zona y redondeo", [zzEn.mercado.monedas, zzEn.mercado.zonaHoraria, zzEn.mercado.redondeo], [zz.mercado.monedas, zz.mercado.zonaHoraria, zz.mercado.redondeo]);
+  igual("edición: datos del país", zzEn.datos.map((d) => d.id), zz.datos.map((d) => d.id));
+  igual("edición: nombre de un dato traducido", zzEn.datos.find((d) => d.id === "zz.minimo")?.nombre, "Minimum wage by zone");
+  igual("edición: sin detectores propios", zzEn.detectores.length, 0);
+  const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
+  igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
+  verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en"]);
+  igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
+  const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
+  verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
+  igual("edición: aviso traducido", pEn?.props.avisos.map((a) => a.texto.slice(0, 22)), ["Zetaland is a test cou"]);
+  igual("edición: regiones con nombre en el idioma", pEn?.props.contexto.regiones.map((r) => r.nombre), ["North zone", "South zone"]);
+  verdad("edición: la página lista a su hermana en el otro idioma", Boolean(pEn?.equivalentes.some((e) => e.mercado === "zz" && e.slug === "bono")));
+  if (pEn && trad) {
+    const d = trad.definicion;
+    igual("edición: etiquetas y opciones traducidas", [d.campos[0].etiqueta, d.campos[3].tipo === "opcion" ? d.campos[3].opciones[1].etiqueta : ""], ["Gross monthly pay", "Small company"]);
+    const est = ejecutar(d, { sueldo: "900", meses: "3", region: "norte", regimen: "general" }, pEn.props, textosMotor("en", "tu"));
+    verdad("edición: misma fórmula, observación traducida", est.tipo === "ok" && est.filas.find((f) => f.clave === "total")?.texto.includes("599.50") === true && est.observaciones[0]?.startsWith("Your pay"), JSON.stringify(est));
+    let mensaje = "";
+    try {
+      d.calcular({ sueldo: 900, meses: 9, region: "norte", regimen: "general" } as never, pEn.props.valores as never, { fecha: "2026-10-15", mercado: "zz-en", moneda: "XTS", redondear: (n) => n });
+    } catch (e) {
+      mensaje = e instanceof ErrorEntrada ? `${e.campo}: ${e.message}` : String(e);
+    }
+    igual("edición: error propio de calcular() traducido", mensaje, "meses: Months go from 1 to 6.");
+  }
+}
+const textosRotos = { calculadora: "zz-xx.bono", base: "zz.bono", slug: "x", campos: {}, filas: {} };
+const edRota = definirEdicion(zz, { mercado: { codigo: "zz-fr", nombre: "Zétalie", locale: "fr-FR", idioma: "fr", trato: "usted", estado: "interno" }, traducciones: [{ textos: textosRotos, contenido: zz.calculadoras[0].contenido }] });
+verdad("edición: textos incompletos dan error", edRota.errores.some((e) => e.includes("falta traducir campo sueldo")), edRota.errores.join("; "));
+verdad("edición: id de la traducción mal formado da error", edRota.errores.some((e) => e.includes('"zz-fr.bono"')));
+verdad("edición: aviso sin traducir da error", edRota.errores.some((e) => e.includes("zz.mercado-de-prueba")));
+const edMismoIdioma = definirEdicion(zz, { mercado: { codigo: "zz-es", nombre: "Z", locale: "es-ES", idioma: "es", trato: "tu", estado: "interno" } });
+verdad("edición en el idioma del país da error", edMismoIdioma.errores.some((e) => e.includes("mismo idioma")));
+verdad("edición de prueba publicada da error", definirEdicion(zz, { mercado: { codigo: "zz-en", nombre: "Z", locale: "en-001", idioma: "en", trato: "tu", estado: "publicado" } }).errores.some((e) => e.includes("nunca puede estar publicado")));
+
+// Marcadores de series y filas de escala.
+const zzSerie = zz.series[0];
+const reqMarcadores = { [zzSerie.id]: "serie", "zz.escala-impuesto": "escala" } as const;
+const rM = resolverValores(zz, { ...bono, requiere: reqMarcadores } as never, "2026-10-08");
+verdad("resolver serie y escala para marcadores", rM.ok, rM.ok ? "" : rM.motivos.join("; "));
+if (rM.ok) {
+  const unidades = { [zzSerie.id]: zzSerie.unidad, "zz.escala-impuesto": "XTS" } as const;
+  const c = rellenarContenido(
+    { calculadora: "zz.bono", h1: `{{${zzSerie.id}}} al {{${zzSerie.id}#desde}}`, title: "{{zz.escala-impuesto[1].tasa}} desde {{zz.escala-impuesto[1].desde}}", description: "{{zz.escala-impuesto[-1].tasa}}", intro: ["{{zz.escala-impuesto#desde}}"], comoSeCalcula: ["{{zz.escala-impuesto[9].tasa}}"], faq: [], glosario: [] },
+    { valores: rM.valores, usados: rM.usados, unidades, locale: "es-419", alFallar: () => undefined },
+  );
+  verdad("marcador de serie: valor y fecha del punto", /\d/.test(c.h1) && c.h1.includes("de 2026"), c.h1);
+  const escalaZz = (datosZz.datos.find((d) => d.id === "zz.escala-impuesto")!.tramos[0].valor as { desde: number; tasa: number }[]);
+  verdad("marcador de fila de escala: tasa y desde", c.title.startsWith(`${escalaZz[1].tasa}`) && c.title.includes(String(escalaZz[1].desde).slice(0, 1)), c.title);
+  verdad("marcador de la última fila con -1", c.description.startsWith(`${escalaZz[escalaZz.length - 1].tasa}`), c.description);
+  verdad("#desde de una escala", c.intro[0].includes("de 20"), c.intro[0]);
+  verdad("fila fuera de la escala queda sin resolver", c.comoSeCalcula[0].includes("{{"), c.comoSeCalcula[0]);
+}
+igual("marcadoresDe con fila de escala y región", marcadoresDe("{{ca.x[2].tasa@on}}").map((m) => [m.id, m.clave, m.campo, m.region]), [["ca.x", "2", "tasa", "on"]]);
+
+// Semanas, regiones de un campo y diccionarios por locale.
+igual("semanas en inglés", formatearValorUnidad(2, "semanas", "en-CA"), "2 weeks");
+igual("semana en singular (de)", formatearValorUnidad(1, "semanas", "de-DE"), "1 Woche");
+igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 weken");
+const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
+igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
+verdad("de-CH sin ß en el sitio", !JSON.stringify(textosSitio("de", "usted", "de-CH")).includes("ß") && JSON.stringify(textosSitio("de", "usted", "de-DE")).includes("ß"));
+igual("de-CH en funciones del diccionario", textosSitio("de", "usted", "de-CH").avisoPais.cerrar.includes("ß"), false);
+
 // Cargadores del cliente intl en dos niveles: cargadores/index.ts (un import() por mercado publicado)
 // y cargadores/<m>.ts (un import() literal por calculadora local), así el JS de una página lleva el
 // índice y baja solo el mapa de su país. Las universales tienen el suyo en
@@ -381,25 +454,37 @@ const GENERAR = process.argv.includes("--generar-cargadores");
 const AVISO_GENERADO = `// Generado por \`npx tsx scripts/check_motor.ts --generar-cargadores\`. No editar a mano: check_motor
 // falla si no coincide con el registro.`;
 const DIR_CARGADORES = path.join(RAIZ, "src", "app", "(intl)", "intl", "[mercado]", "[slug]", "cargadores");
-// index.ts no es generado: arma la carga en dos pasos y la API vieja que usa el informe.
-const FIJOS = new Set(["index.ts"]);
+// index.ts y dev.ts no son generados: la carga en dos pasos, la API vieja del informe y la de `next dev`.
+const FIJOS = new Set(["index.ts", "dev.ts"]);
 const esperados = new Map<string, string>();
 const publicados = registroReal.paises
   .filter((p) => p.mercado.estado === "publicado" && p.mercado.codigo !== "global" && p.mercado.codigo !== "zz")
   .map((p) => p.mercado.codigo)
   .sort();
 for (const codigo of publicados) {
-  const slugs = registroReal
+  const locales = registroReal
     .pais(codigo)!
     .calculadoras.filter((c) => !esUniversal(c))
-    .map((c) => c.definicion.slug)
-    .sort();
-  for (const slug of slugs) {
+    .sort((a, b) => a.definicion.slug.localeCompare(b.definicion.slug));
+  const lineas: string[] = [];
+  for (const c of locales) {
+    const slug = c.definicion.slug;
+    const t = c.traduccion;
+    if (t) {
+      // Traducción de una edición: definición del país y textos de la edición, los dos por nombre de archivo.
+      const def = path.join(RAIZ, "src", "paises", t.mercado, "calculadoras", `${t.archivo}.ts`);
+      const textos = path.join(RAIZ, "src", "paises", codigo, "textos", `${t.archivo}.ts`);
+      verdad(`cargador ${codigo}/${slug}: existe la definición del país`, existsSync(def), def);
+      verdad(`cargador ${codigo}/${slug}: existen los textos de la edición`, existsSync(textos), textos);
+      lineas.push(`  ${JSON.stringify(slug)}: () => traducida(import("@/paises/${t.mercado}/calculadoras/${t.archivo}"), import("@/paises/${codigo}/textos/${t.archivo}")),`);
+      continue;
+    }
     const archivo = path.join(RAIZ, "src", "paises", codigo, "calculadoras", `${slug}.ts`);
     verdad(`cargador ${codigo}/${slug}: existe el archivo`, existsSync(archivo), archivo);
+    lineas.push(`  ${JSON.stringify(slug)}: () => import("@/paises/${codigo}/calculadoras/${slug}"),`);
   }
-  const lineas = slugs.map((slug) => `  ${JSON.stringify(slug)}: () => import("@/paises/${codigo}/calculadoras/${slug}"),`);
-  esperados.set(`${codigo}.ts`, `${AVISO_GENERADO}\nimport type { Cargador } from "./tipos";\n\nexport const CARGADORES: Readonly<Record<string, Cargador>> = {\n${lineas.join(NL)}\n};\n`);
+  const imports = locales.some((c) => c.traduccion) ? `import { traducida } from "@/motor/edicion";\n` : "";
+  esperados.set(`${codigo}.ts`, `${AVISO_GENERADO}\n${imports}import type { Cargador } from "./tipos";\n\nexport const CARGADORES: Readonly<Record<string, Cargador>> = {\n${lineas.join(NL)}\n};\n`);
 }
 esperados.set(
   "tipos.ts",
