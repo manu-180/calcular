@@ -10,7 +10,7 @@ export default definirUniversal<UiPuntoDeEquilibrio>({
   id: "punto-de-equilibrio",
   concepto: "punto-de-equilibrio",
   definir,
-  textos: { es: textosEs, en: textosEn },
-  contenido: { es: contenidoEs, en: contenidoEn },
+  textos: { en: textosEn, es: textosEs },
+  contenido: { en: contenidoEn, es: contenidoEs },
   casos,
 });

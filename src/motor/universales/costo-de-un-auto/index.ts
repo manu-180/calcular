@@ -10,7 +10,7 @@ export default definirUniversal<UiCostoDeUnAuto>({
   id: "costo-de-un-auto",
   concepto: "costo-de-un-auto",
   definir,
-  textos: { es: textosEs, en: textosEn },
-  contenido: { es: contenidoEs, en: contenidoEn },
+  textos: { en: textosEn, es: textosEs },
+  contenido: { en: contenidoEn, es: contenidoEs },
   casos,
 });

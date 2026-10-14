@@ -10,7 +10,7 @@ export default definirUniversal<UiAlquilarOComprar>({
   id: "alquilar-o-comprar",
   concepto: "alquilar-o-comprar",
   definir,
-  textos: { es: textosEs, en: textosEn },
-  contenido: { es: contenidoEs, en: contenidoEn },
+  textos: { en: textosEn, es: textosEs },
+  contenido: { en: contenidoEn, es: contenidoEs },
   casos,
 });

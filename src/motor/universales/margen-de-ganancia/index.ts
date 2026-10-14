@@ -10,7 +10,7 @@ export default definirUniversal<UiMargenDeGanancia>({
   id: "margen-de-ganancia",
   concepto: "margen-de-ganancia",
   definir,
-  textos: { es: textosEs, en: textosEn },
-  contenido: { es: contenidoEs, en: contenidoEn },
+  textos: { en: textosEn, es: textosEs },
+  contenido: { en: contenidoEn, es: contenidoEs },
   casos,
 });

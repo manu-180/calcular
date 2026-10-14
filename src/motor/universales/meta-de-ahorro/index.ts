@@ -10,7 +10,7 @@ export default definirUniversal<UiMetaDeAhorro>({
   id: "meta-de-ahorro",
   concepto: "meta-de-ahorro",
   definir,
-  textos: { es: textosEs, en: textosEn },
-  contenido: { es: contenidoEs, en: contenidoEn },
+  textos: { en: textosEn, es: textosEs },
+  contenido: { en: contenidoEn, es: contenidoEs },
   casos,
 });
