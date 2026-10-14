@@ -16,6 +16,18 @@ import minimumWage from "./calculadoras/minimum-wage";
 import contenidoMinimumWage from "./contenido/minimum-wage";
 import redundancyPay from "./calculadoras/redundancy-pay";
 import contenidoRedundancyPay from "./contenido/redundancy-pay";
+import annualLeave from "./calculadoras/annual-leave";
+import contenidoAnnualLeave from "./contenido/annual-leave";
+import publicHolidayPay from "./calculadoras/public-holiday-pay";
+import contenidoPublicHolidayPay from "./contenido/public-holiday-pay";
+import maternityBenefit from "./calculadoras/maternity-benefit";
+import contenidoMaternityBenefit from "./contenido/maternity-benefit";
+import jobseekersBenefit from "./calculadoras/jobseekers-benefit";
+import contenidoJobseekersBenefit from "./contenido/jobseekers-benefit";
+import illnessBenefit from "./calculadoras/illness-benefit";
+import contenidoIllnessBenefit from "./contenido/illness-benefit";
+import childBenefit from "./calculadoras/child-benefit";
+import contenidoChildBenefit from "./contenido/child-benefit";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +48,12 @@ export default definirPais({
     { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
     { definicion: redundancyPay, contenido: contenidoRedundancyPay, cliente: () => import("./calculadoras/redundancy-pay.cliente") },
+    { definicion: annualLeave, contenido: contenidoAnnualLeave, cliente: () => import("./calculadoras/annual-leave.cliente") },
+    { definicion: publicHolidayPay, contenido: contenidoPublicHolidayPay, cliente: () => import("./calculadoras/public-holiday-pay.cliente") },
+    { definicion: maternityBenefit, contenido: contenidoMaternityBenefit, cliente: () => import("./calculadoras/maternity-benefit.cliente") },
+    { definicion: jobseekersBenefit, contenido: contenidoJobseekersBenefit, cliente: () => import("./calculadoras/jobseekers-benefit.cliente") },
+    { definicion: illnessBenefit, contenido: contenidoIllnessBenefit, cliente: () => import("./calculadoras/illness-benefit.cliente") },
+    { definicion: childBenefit, contenido: contenidoChildBenefit, cliente: () => import("./calculadoras/child-benefit.cliente") },
   ],
   universales: "todas",
   novedades,
