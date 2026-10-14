@@ -1,6 +1,6 @@
 import { definirCalculadora, ErrorEntrada } from "../../calculo";
 import type { DefinicionCalculadora } from "../../tipos";
-import { montoEjemplo, type ContextoUniversal } from "../tipos";
+import { formatearCifra, montoEjemplo, type ContextoUniversal } from "../tipos";
 
 export interface UiDescuento {
   precio: string;
@@ -37,7 +37,7 @@ export function definir(ctx: ContextoUniversal, ui: UiDescuento): DefinicionCalc
         final,
         ahorro,
         efectivo,
-        observaciones: segundo > 0 ? [ui.observacionDoble(String(efectivo))] : [],
+        observaciones: segundo > 0 ? [ui.observacionDoble(formatearCifra(ctx, efectivo))] : [],
       };
     },
     resultado: [
