@@ -4,7 +4,10 @@ import { cagr, roi } from "../definicion";
 
 export const contenidoIt: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
-  const del = (n: number) => percento(formatearNumero(ctx, n, 2), "di");
+  const del = (n: number) => {
+    const r = Math.round(n * 100) / 100;
+    return percento(formatearNumero(ctx, r, Number.isInteger(r) ? 0 : 2), "di");
+  };
   const iniziale = montoEjemplo(ctx, 10000);
   const finale = montoEjemplo(ctx, 15000);
   return {

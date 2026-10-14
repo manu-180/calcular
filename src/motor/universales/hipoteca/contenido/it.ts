@@ -15,13 +15,13 @@ export const contenidoIt: ContenidoUniversal = (ctx) => {
     title: tituloQueEntre(`Calcolo rata mutuo e piano di ammortamento | ${ctx.nombrePais}`, `Calcolo rata mutuo | ${ctx.nombrePais}`, "Calcolo rata mutuo"),
     description: "Calcola la rata mensile del mutuo da prezzo, anticipo, tasso e durata. Vedi gli interessi totali e come scende il debito anno per anno.",
     intro: [
-      "Il mutuo è il debito più grande che una famiglia si prende di solito. Conviene vedere tutti i numeri prima di parlare con la banca.",
+      "Per quasi tutte le famiglie il mutuo è il debito più grande della vita. Conviene vedere tutti i numeri prima di parlare con la banca.",
       "Inserisci il prezzo, l'anticipo, il tasso e la durata. Se insieme alla rata paghi assicurazione o altre spese, aggiungile per vedere quanto esce davvero ogni mese.",
     ],
     comoSeCalcula: [
       "Importo del mutuo = prezzo della casa − anticipo.",
-      "Rata mensile costante, con il tasso annuo diviso per 12 e la durata in mesi.",
-      "Per ogni anno somma gli interessi e il capitale pagati e mostra il debito che resta.",
+      "La rata è costante: si calcola con il tasso annuo diviso per 12 e la durata in mesi.",
+      "Per ogni anno, la tabella somma interessi e capitale pagati e mostra il debito che resta.",
     ],
     ejemplo: [
       `Una casa da ${m(prezzo)} con il 20% di anticipo richiede un mutuo di ${m(mutuo)}. Al ${t}% per 30 anni, la rata è di ${m(rata30)}.`,

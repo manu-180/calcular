@@ -21,7 +21,7 @@ export const contenidoIt: ContenidoUniversal = (ctx) => {
     ],
     ejemplo: [
       `Uno stipendio di ${m(stipendio)} al mese con un aumento del 5% diventa ${m(stipendio * 1.05)}: ${m(stipendio * 0.05)} in più al mese e ${m(stipendio * 0.05 * 13)} in più all'anno su 13 mensilità.`,
-      `Se nel periodo l'inflazione è stata del 3%, l'aumento reale è ${il(aumentoReal(5, 3))}. Con l'inflazione al 6%, è ${il(aumentoReal(5, 6))}.`,
+      `Se nel periodo l'inflazione è stata del 3%, l'aumento reale è ${il(aumentoReal(5, 3))}. Con l'inflazione al 6%, invece, perdi ${il(Math.abs(aumentoReal(5, 6)))} di potere d'acquisto.`,
     ],
     faq: [
       {
