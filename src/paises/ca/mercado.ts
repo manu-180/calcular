@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["CAD"],
   zonaHoraria: "America/Toronto",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "ab", nombre: "Alberta" },
     { id: "bc", nombre: "British Columbia" },
