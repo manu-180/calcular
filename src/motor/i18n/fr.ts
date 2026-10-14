@@ -13,7 +13,7 @@ const base: TextosSitio = {
   header: {
     inicio: "Accueil",
     elegirPais: "Choisir un pays",
-    paisActual: (pais) => `Pays : ${pais}`,
+    paisActual: (pais) => `Pays : ${pais}`,
     cerrar: "Fermer",
     todos: "Tous les pays",
     latinoamerica: MUNDO,
@@ -27,14 +27,14 @@ const base: TextosSitio = {
     terminos: "Conditions d'utilisation",
     contacto: "Contact",
     sobre: "Qui sommes-nous",
-    argentina: "Tu es en Argentine ? Tes calculateurs sont sur calcular.ar",
+    argentina: "Tu es en Argentine ? Tes calculateurs sont sur calcular.ar",
     descargo: "Les résultats sont indicatifs. Avant une décision importante, vérifie-les auprès de l'organisme officiel ou d'un professionnel.",
     derechos: (anio) => `© ${anio} CalcularYa`,
   },
   sello: {
     titulo: "Données officielles à jour",
     verificado: (organismos, fecha) => `Données vérifiées auprès de ${organismos}, mises à jour le ${fecha}.`,
-    serie: (nombre, organismo, fecha) => `${nombre} se met à jour automatiquement depuis ${organismo}. Dernière valeur : ${fecha}.`,
+    serie: (nombre, organismo, fecha) => `${nombre} se met à jour automatiquement depuis ${organismo}. Dernière valeur : ${fecha}.`,
     verTodas: "Voir toutes les sources",
   },
   calculadora: {
@@ -79,10 +79,10 @@ const base: TextosSitio = {
     region: "Zone",
     series: "Valeurs mises à jour automatiquement",
     ultimoDato: "Dernière valeur",
-    proximo: (valor, fecha) => `Déjà publié pour le ${fecha} : ${valor}.`,
+    proximo: (valor, fecha) => `Déjà publié pour le ${fecha} : ${valor}.`,
     sinVerificar: "Aucune valeur vérifiée pour aujourd'hui",
     tramos: (n) => `Barème de ${n} tranches`,
-    description: (pais) => `Les données officielles ${g.para(pais)} utilisées par les calculateurs : valeur en vigueur, date d'effet, source et date de vérification.`,
+    description: (pais) => `Les données officielles ${g.para(pais)} utilisées par les calculateurs : valeur en vigueur, date d'effet, source et date de vérification.`,
   },
   novedades: {
     titulo: (pais) => `Nouveautés ${g.para(pais)}`,
@@ -118,11 +118,11 @@ const base: TextosSitio = {
   },
   migas: { inicio: "Accueil", etiqueta: "Fil d'Ariane" },
   seo: {
-    tituloGlobal: "CalcularYa : calculateurs gratuits aux données officielles",
+    tituloGlobal: "CalcularYa : calculateurs gratuits aux données officielles",
     descripcionGlobal: "Calculateurs gratuits de salaire, de crédit, d'impôts et plus pour chaque pays, avec la valeur officielle en vigueur et sa source.",
-    tituloPais: (pais, anio) => [`${pais} : calculateurs de salaire et d'impôts ${anio}`, `${pais} : calculateurs ${anio}`, `Calculateurs ${g.para(pais)}`],
-    tituloFuentes: (pais) => [`${pais} : données officielles en vigueur et sources`, `Sources et données ${g.para(pais)}`],
-    tituloNovedades: (pais, anio) => [`${pais} : nouveautés salaires et impôts ${anio}`, `${pais} : nouveautés ${anio}`, `Nouveautés ${g.para(pais)}`],
+    tituloPais: (pais, anio) => [`${pais} : calculateurs de salaire et d'impôts ${anio}`, `${pais} : calculateurs ${anio}`, `Calculateurs ${g.para(pais)}`],
+    tituloFuentes: (pais) => [`${pais} : données officielles en vigueur et sources`, `Sources et données ${g.para(pais)}`],
+    tituloNovedades: (pais, anio) => [`${pais} : nouveautés salaires et impôts ${anio}`, `${pais} : nouveautés ${anio}`, `Nouveautés ${g.para(pais)}`],
   },
   og: {
     datosOficiales: "Données officielles et sourcées",
@@ -145,11 +145,11 @@ const base: TextosSitio = {
     },
     buscador: {
       dialogo: "Rechercher sur CalcularYa",
-      pregunta: "Que veux-tu calculer ?",
+      pregunta: "Que veux-tu calculer ?",
       recientes: "Reprends là où tu t'étais arrêté",
       masUsado: "Les plus utilisés",
-      sinResultados: "Aucun résultat pour « {q} »",
-      sugerencia: "Essaie un autre mot, comme « salaire », « crédit » ou « TVA ».",
+      sinResultados: "Aucun résultat pour « {q} »",
+      sugerencia: "Essaie un autre mot, comme « salaire », « crédit » ou « TVA ».",
       verTodas: "Voir tous les calculateurs",
       borrar: "Effacer la recherche",
       cerrar: "Fermer",
@@ -178,7 +178,7 @@ export const fr: Diccionario<TextosSitio> = {
   base,
   usted: {
     footer: {
-      argentina: "Vous êtes en Argentine ? Vos calculateurs sont sur calcular.ar",
+      argentina: "Vous êtes en Argentine ? Vos calculateurs sont sur calcular.ar",
       descargo: "Les résultats sont indicatifs. Avant une décision importante, vérifiez-les auprès de l'organisme officiel ou d'un professionnel.",
     },
     global: {
@@ -195,9 +195,9 @@ export const fr: Diccionario<TextosSitio> = {
     noEncontrada: { paises: "Ou choisissez un pays" },
     shell: {
       buscador: {
-        pregunta: "Que voulez-vous calculer ?",
+        pregunta: "Que voulez-vous calculer ?",
         recientes: "Reprenez là où vous vous étiez arrêté",
-        sugerencia: "Essayez un autre mot, comme « salaire », « crédit » ou « TVA ».",
+        sugerencia: "Essayez un autre mot, comme « salaire », « crédit » ou « TVA ».",
       },
       pie: { cuenta: "Votre compte", cuentaNota: "Facultatif. Il sert à enregistrer vos calculs pour les garder sous la main." },
     },

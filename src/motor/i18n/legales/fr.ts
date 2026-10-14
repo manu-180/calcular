@@ -12,14 +12,14 @@ export const fr: DiccionarioLegal = ({ actualizado, mail }) => ({
       bloques: [
         {
           parrafos: [
-            "CalcularYa est un site de calculateurs pour les calculs du quotidien : salaire, crédit, impôts, dates et bien plus.",
+            "CalcularYa est un site de calculateurs pour les calculs du quotidien : salaire, crédit, impôts, dates et bien plus.",
             "Il est conçu par Manuel Navarro, qui édite aussi calcular.ar, le site de calculateurs pour l'Argentine.",
           ],
         },
         {
           titulo: "Notre méthode",
           parrafos: [
-            "Quand un calcul dépend d'une règle (un salaire minimum, un taux de cotisation, un plafond), nous lisons la valeur dans la source officielle du pays : journal officiel, ministère, banque centrale ou administration fiscale.",
+            "Quand un calcul dépend d'une règle (un salaire minimum, un taux de cotisation, un plafond), nous lisons la valeur dans la source officielle du pays : journal officiel, ministère, banque centrale ou administration fiscale.",
             "Nous gardons le lien et la date de notre vérification, et les affichons à côté de chaque calculateur.",
             "Si une valeur n'a pas pu être confirmée dans la source officielle, le calculateur qui l'utilise n'est pas publié.",
             "Quand une règle change, le calculateur suit, et le changement est noté dans les nouveautés de chaque pays.",
@@ -32,7 +32,7 @@ export const fr: DiccionarioLegal = ({ actualizado, mail }) => ({
       title: "Contact | CalcularYa",
       description: "Écris-nous si une donnée n'est plus à jour, si un résultat te surprend ou s'il manque un calculateur ou un pays.",
       h1: "Contact",
-      bajada: `Notre adresse : ${mail}.`,
+      bajada: `Notre adresse : ${mail}.`,
       bloques: [
         {
           parrafos: [
@@ -45,9 +45,9 @@ export const fr: DiccionarioLegal = ({ actualizado, mail }) => ({
     },
     privacidad: {
       title: "Confidentialité | CalcularYa",
-      description: "Les données utilisées par CalcularYa : ce qui est saisi dans un calculateur est traité dans le navigateur et n'est pas conservé.",
+      description: "Les données utilisées par CalcularYa : ce qui est saisi dans un calculateur est traité dans le navigateur et n'est pas conservé.",
       h1: "Confidentialité",
-      bajada: `Dernière mise à jour : ${actualizado}.`,
+      bajada: `Dernière mise à jour : ${actualizado}.`,
       bloques: [
         {
           titulo: "Ce qui est saisi dans un calculateur",
@@ -84,7 +84,7 @@ export const fr: DiccionarioLegal = ({ actualizado, mail }) => ({
       title: "Conditions d'utilisation | CalcularYa",
       description: "Les calculateurs de CalcularYa donnent une estimation avec les données officielles en vigueur. Ils servent de repère et ne remplacent pas un conseil.",
       h1: "Conditions d'utilisation",
-      bajada: `Dernière mise à jour : ${actualizado}.`,
+      bajada: `Dernière mise à jour : ${actualizado}.`,
       bloques: [
         {
           titulo: "À quoi servent les calculateurs",
@@ -108,7 +108,7 @@ export const fr: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Responsabilité",
           parrafos: ["Nous ne sommes pas responsables des décisions prises sur la seule base d'un résultat du site. Avant de signer, de payer ou de faire une réclamation, mieux vaut faire confirmer le calcul par la bonne personne."],
         },
-        { titulo: "Contact", parrafos: [`Notre adresse : ${mail}.`] },
+        { titulo: "Contact", parrafos: [`Notre adresse : ${mail}.`] },
       ],
     },
   },

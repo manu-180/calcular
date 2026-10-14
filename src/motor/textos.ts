@@ -136,7 +136,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "region-invalida": "Choisis une région.",
         "calculo-fallido": "Le calcul n'a pas abouti avec ces données. Vérifie les valeurs et réessaie.",
       },
-      milesAmbiguos: "Tu voulais dire {sugerido} ? Écris-le sans {signos}.",
+      milesAmbiguos: "Tu voulais dire {sugerido} ? Écris-le sans {signos}.",
       separadores: { punto: "points", coma: "virgules" },
     },
     usted: {
@@ -149,7 +149,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "region-invalida": "Choisissez une région.",
         "calculo-fallido": "Le calcul n'a pas abouti avec ces données. Vérifiez les valeurs et réessayez.",
       },
-      milesAmbiguos: "Vouliez-vous dire {sugerido} ? Écrivez-le sans {signos}.",
+      milesAmbiguos: "Vouliez-vous dire {sugerido} ? Écrivez-le sans {signos}.",
     },
   },
   de: {
