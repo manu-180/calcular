@@ -12,6 +12,14 @@ import vakantiegeldBerekenen from "./calculadoras/vakantiegeld-berekenen";
 import contenidoVakantiegeldBerekenen from "./contenido/vakantiegeld-berekenen";
 import vakantiedagenBerekenen from "./calculadoras/vakantiedagen-berekenen";
 import contenidoVakantiedagenBerekenen from "./contenido/vakantiedagen-berekenen";
+import transitievergoedingBerekenen from "./calculadoras/transitievergoeding-berekenen";
+import contenidoTransitievergoedingBerekenen from "./contenido/transitievergoeding-berekenen";
+import opzegtermijnBerekenen from "./calculadoras/opzegtermijn-berekenen";
+import contenidoOpzegtermijnBerekenen from "./contenido/opzegtermijn-berekenen";
+import arbeidskortingBerekenen from "./calculadoras/arbeidskorting-berekenen";
+import contenidoArbeidskortingBerekenen from "./contenido/arbeidskorting-berekenen";
+import algemeneHeffingskortingBerekenen from "./calculadoras/algemene-heffingskorting-berekenen";
+import contenidoAlgemeneHeffingskortingBerekenen from "./contenido/algemene-heffingskorting-berekenen";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -30,6 +38,10 @@ export default definirPais({
     { definicion: minimumloonBerekenen, contenido: contenidoMinimumloonBerekenen, cliente: () => import("./calculadoras/minimumloon-berekenen.cliente") },
     { definicion: vakantiegeldBerekenen, contenido: contenidoVakantiegeldBerekenen, cliente: () => import("./calculadoras/vakantiegeld-berekenen.cliente") },
     { definicion: vakantiedagenBerekenen, contenido: contenidoVakantiedagenBerekenen, cliente: () => import("./calculadoras/vakantiedagen-berekenen.cliente") },
+    { definicion: transitievergoedingBerekenen, contenido: contenidoTransitievergoedingBerekenen, cliente: () => import("./calculadoras/transitievergoeding-berekenen.cliente") },
+    { definicion: opzegtermijnBerekenen, contenido: contenidoOpzegtermijnBerekenen, cliente: () => import("./calculadoras/opzegtermijn-berekenen.cliente") },
+    { definicion: arbeidskortingBerekenen, contenido: contenidoArbeidskortingBerekenen, cliente: () => import("./calculadoras/arbeidskorting-berekenen.cliente") },
+    { definicion: algemeneHeffingskortingBerekenen, contenido: contenidoAlgemeneHeffingskortingBerekenen, cliente: () => import("./calculadoras/algemene-heffingskorting-berekenen.cliente") },
   ],
   universales: "todas",
   novedades,
