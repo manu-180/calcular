@@ -18,6 +18,10 @@ import kuendigungsfristRechner from "./calculadoras/kuendigungsfrist-rechner";
 import kinderzulagenRechner from "./calculadoras/kinderzulagen-rechner";
 import mutterschaftsentschaedigungRechner from "./calculadoras/mutterschaftsentschaedigung-rechner";
 import vaterschaftsentschaedigungRechner from "./calculadoras/vaterschaftsentschaedigung-rechner";
+import teuerungsrechner from "./calculadoras/teuerungsrechner";
+import mietzinsrechner from "./calculadoras/mietzinsrechner";
+import verzugszinsrechner from "./calculadoras/verzugszinsrechner";
+import saronHypothekRechner from "./calculadoras/saron-hypothek-rechner";
 import contenidoBruttoNettoRechner from "./contenido/brutto-netto-rechner";
 import contenidoNettoBruttoRechner from "./contenido/netto-brutto-rechner";
 import contenidoLohnkostenRechner from "./contenido/lohnkosten-rechner";
@@ -36,6 +40,10 @@ import contenidoKuendigungsfristRechner from "./contenido/kuendigungsfrist-rechn
 import contenidoKinderzulagenRechner from "./contenido/kinderzulagen-rechner";
 import contenidoMutterschaftsentschaedigungRechner from "./contenido/mutterschaftsentschaedigung-rechner";
 import contenidoVaterschaftsentschaedigungRechner from "./contenido/vaterschaftsentschaedigung-rechner";
+import contenidoTeuerungsrechner from "./contenido/teuerungsrechner";
+import contenidoMietzinsrechner from "./contenido/mietzinsrechner";
+import contenidoVerzugszinsrechner from "./contenido/verzugszinsrechner";
+import contenidoSaronHypothekRechner from "./contenido/saron-hypothek-rechner";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -66,6 +74,10 @@ export default definirPais({
     { definicion: kinderzulagenRechner, contenido: contenidoKinderzulagenRechner, cliente: () => import("./calculadoras/kinderzulagen-rechner.cliente") },
     { definicion: mutterschaftsentschaedigungRechner, contenido: contenidoMutterschaftsentschaedigungRechner, cliente: () => import("./calculadoras/mutterschaftsentschaedigung-rechner.cliente") },
     { definicion: vaterschaftsentschaedigungRechner, contenido: contenidoVaterschaftsentschaedigungRechner, cliente: () => import("./calculadoras/vaterschaftsentschaedigung-rechner.cliente") },
+    { definicion: teuerungsrechner, contenido: contenidoTeuerungsrechner, cliente: () => import("./calculadoras/teuerungsrechner.cliente") },
+    { definicion: mietzinsrechner, contenido: contenidoMietzinsrechner, cliente: () => import("./calculadoras/mietzinsrechner.cliente") },
+    { definicion: verzugszinsrechner, contenido: contenidoVerzugszinsrechner, cliente: () => import("./calculadoras/verzugszinsrechner.cliente") },
+    { definicion: saronHypothekRechner, contenido: contenidoSaronHypothekRechner, cliente: () => import("./calculadoras/saron-hypothek-rechner.cliente") },
   ],
   universales: { todas: true },
   novedades,
