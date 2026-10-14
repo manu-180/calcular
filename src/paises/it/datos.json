@@ -1,0 +1,1016 @@
+{
+  "mercado": "it",
+  "datos": [
+    {
+      "id": "it.aliquote-iva",
+      "nombre": "Aliquote IVA",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ordinaria": "Ordinaria (22%)",
+        "ridotta-10": "Ridotta (10%)",
+        "ridotta-5": "Ridotta (5%)",
+        "minima-4": "Minima (4%)"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Dal 2027 il DPR 633/1972 viene riordinato nel testo unico IVA: verificare che le aliquote restino uguali.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": {
+            "ordinaria": 22,
+            "ridotta-10": 10,
+            "ridotta-5": 5,
+            "minima-4": 4
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "DPR 633/1972, art. 16, commi 1 e 2 (aliquote IVA)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1972-10-26;633~art16!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.irpef-scaglioni",
+      "nombre": "Scaglioni e aliquote IRPEF",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "nota": "Dal 2027 il TUIR è sostituito dal D.Lgs. 117/2026: rileggere gli scaglioni nel nuovo testo.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 28000,
+              "tasa": 23
+            },
+            {
+              "desde": 28000,
+              "hasta": 50000,
+              "tasa": 35
+            },
+            {
+              "desde": 50000,
+              "hasta": null,
+              "tasa": 43
+            }
+          ],
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "DPR 917/1986 (TUIR), art. 11, comma 1, testo vigente dall'1/1/2025 al 31/12/2025",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1986-12-22;917~art11!vig=2025-06-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 28000,
+              "tasa": 23
+            },
+            {
+              "desde": 28000,
+              "hasta": 50000,
+              "tasa": 33
+            },
+            {
+              "desde": 50000,
+              "hasta": null,
+              "tasa": 43
+            }
+          ],
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "DPR 917/1986 (TUIR), art. 11, comma 1, testo vigente dal 1/1/2026",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1986-12-22;917~art11!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Seconda aliquota portata al 33% dalla legge 199/2025 (bilancio 2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.detrazione-lavoro",
+      "nombre": "Detrazione per redditi di lavoro dipendente",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "importo1": 1955,
+            "minimo": 690,
+            "minimo-tempo-determinato": 1380,
+            "importo2": 1910,
+            "aggiuntivo2": 1190,
+            "soglia1": 15000,
+            "soglia2": 28000,
+            "soglia3": 50000,
+            "maggiorazione": 65,
+            "maggiorazione-da": 25000,
+            "maggiorazione-a": 35000
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "DPR 917/1986 (TUIR), art. 13, commi 1, 1.1, 3 e 3-bis, testo vigente dall'1/1/2025",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1986-12-22;917~art13!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.detrazione-pensione",
+      "nombre": "Detrazione per redditi di pensione",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "importo1": 1955,
+            "minimo": 713,
+            "base2": 700,
+            "aggiuntivo2": 1255,
+            "soglia1": 8500,
+            "soglia2": 28000,
+            "soglia3": 50000,
+            "maggiorazione": 50,
+            "maggiorazione-da": 25000,
+            "maggiorazione-a": 29000
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "DPR 917/1986 (TUIR), art. 13, commi 1, 1.1, 3 e 3-bis, testo vigente dall'1/1/2025",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1986-12-22;917~art13!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.cuneo-fiscale",
+      "nombre": "Taglio del cuneo fiscale per i lavoratori dipendenti",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "percentuale1": 7.1,
+            "percentuale2": 5.3,
+            "percentuale3": 4.8,
+            "soglia1": 8500,
+            "soglia2": 15000,
+            "soglia-somma": 20000,
+            "detrazione": 1000,
+            "soglia-piena": 32000,
+            "soglia-massima": 40000
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "Legge 207/2024, art. 1, commi 4, 5 e 6 (taglio del cuneo fiscale)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2024-12-30;207~art1!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.trattamento-integrativo",
+      "nombre": "Trattamento integrativo",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "importo": 1200,
+            "soglia": 15000,
+            "soglia-massima": 28000,
+            "riduzione": 75
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "DL 3/2020, art. 1, comma 1 (trattamento integrativo)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2020-02-05;3~art1!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.contributi-dipendente",
+      "nombre": "Contributi IVS a carico del lavoratore dipendente",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 9.19,
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 13 del 28/1/2013, aliquote IVS a carico del lavoratore",
+            "url": "https://servizi2.inps.it/CircolariZIP/Circolare%20numero%2013%20del%2028-01-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La quota a carico del lavoratore ha raggiunto la misura piena del 9,19% (8,89% + 0,30)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.aliquota-aggiuntiva",
+      "nombre": "Contributo aggiuntivo oltre la prima fascia pensionabile",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 14 del 9/2/2026, contributi artigiani e commercianti 2026",
+            "url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.fascia-pensionabile",
+      "nombre": "Prima fascia di retribuzione pensionabile",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 56224,
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 14 del 9/2/2026, contributi artigiani e commercianti 2026",
+            "url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.massimale-contributivo",
+      "nombre": "Massimale annuo della base contributiva (iscritti dal 1996)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 122295,
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 14 del 9/2/2026, contributi artigiani e commercianti 2026",
+            "url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.massimale-ante-1996",
+      "nombre": "Massimale di reddito artigiani e commercianti con anzianità al 31/12/1995",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 93707,
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 14 del 9/2/2026, contributi artigiani e commercianti 2026",
+            "url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.minimale-autonomi",
+      "nombre": "Minimale di reddito per artigiani, commercianti e Gestione separata",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 18808,
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 14 del 9/2/2026, contributi artigiani e commercianti 2026",
+            "url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.aliquote-artigiani-commercianti",
+      "nombre": "Aliquote IVS artigiani e commercianti",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "artigiano": "Artigiano (24%)",
+        "commerciante": "Commerciante (24,48%)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "artigiano": 24,
+            "commerciante": 24.48
+          },
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 14 del 9/2/2026, contributi artigiani e commercianti 2026",
+            "url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.maternita-autonomi",
+      "nombre": "Contributo di maternità mensile artigiani e commercianti",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 0.62,
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 14 del 9/2/2026, contributi artigiani e commercianti 2026",
+            "url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.riduzione-forfettari",
+      "nombre": "Riduzione dei contributi per artigiani e commercianti in regime forfetario",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "Legge 190/2014, art. 1, commi 54, 64, 65, 71 e 77 (regime forfetario)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190~art1!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.aliquote-gestione-separata",
+      "nombre": "Aliquote della Gestione separata INPS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "professionista": "Libero professionista senza altra cassa (26,07%)",
+        "professionista-pensionato": "Professionista pensionato o con altra previdenza (24%)",
+        "collaboratore": "Collaboratore o amministratore con DIS-COLL (35,03%)",
+        "collaboratore-senza-dis-coll": "Collaboratore senza DIS-COLL (33,72%)",
+        "collaboratore-pensionato": "Collaboratore pensionato o con altra previdenza (24%)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "professionista": 26.07,
+            "professionista-pensionato": 24,
+            "collaboratore": 35.03,
+            "collaboratore-senza-dis-coll": 33.72,
+            "collaboratore-pensionato": 24
+          },
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 8 del 3/2/2026, Gestione separata: aliquote, minimale e massimale 2026",
+            "url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15153/Allegati/16573_Circolare-numero-8-del-03-02-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.tfr",
+      "nombre": "Regole del trattamento di fine rapporto",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1982-06-01",
+          "valor": {
+            "divisore": 13.5,
+            "tasso-fisso": 1.5,
+            "quota-istat": 75
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "Codice civile, art. 2120 (trattamento di fine rapporto)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262:2~art2120!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.tfr-contributo",
+      "nombre": "Contributo aggiuntivo detratto dalla quota TFR",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1983-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "Legge 297/1982, art. 3 (contributo aggiuntivo dello 0,30% e dello 0,20% detratto dalla quota TFR)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1982-05-29;297~art3!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.tfr-imposta-rivalutazione",
+      "nombre": "Imposta sostitutiva sulla rivalutazione del TFR",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 17,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "D.Lgs. 47/2000, art. 11, comma 3 (imposta sostitutiva sulla rivalutazione del TFR)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2000-02-18;47~art11!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.forfettario-coefficienti",
+      "nombre": "Coefficienti di redditività del regime forfetario",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "alimentari": "Industrie alimentari e delle bevande (40%)",
+        "commercio": "Commercio all'ingrosso e al dettaglio (40%)",
+        "ambulante-alimentari": "Commercio ambulante di alimentari e bevande (40%)",
+        "ambulante-altro": "Commercio ambulante di altri prodotti (54%)",
+        "costruzioni-immobiliare": "Costruzioni e attività immobiliari (86%)",
+        "intermediari": "Intermediari del commercio (62%)",
+        "alloggio-ristorazione": "Alloggio e ristorazione (40%)",
+        "professioni": "Professioni, servizi tecnici, sanitari, istruzione, finanza (78%)",
+        "altre": "Altre attività economiche (67%)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": {
+            "alimentari": 40,
+            "commercio": 40,
+            "ambulante-alimentari": 40,
+            "ambulante-altro": 54,
+            "costruzioni-immobiliare": 86,
+            "intermediari": 62,
+            "alloggio-ristorazione": 40,
+            "professioni": 78,
+            "altre": 67
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "Legge 190/2014, allegato n. 4 (coefficienti di redditività per gruppo ATECO)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190~art1!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Allegato 4 nella versione vigente (versione 3 dell'allegato)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.forfettario-aliquote",
+      "nombre": "Imposta sostitutiva del regime forfetario",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ordinaria": "Ordinaria (15%)",
+        "avvio": "Nuova attività, primi 5 anni (5%)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": {
+            "ordinaria": 15,
+            "avvio": 5
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "Legge 190/2014, art. 1, commi 54, 64, 65, 71 e 77 (regime forfetario)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190~art1!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.forfettario-soglie",
+      "nombre": "Soglie di ricavi del regime forfetario",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "accesso": 85000,
+            "uscita-immediata": 100000
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "Legge 190/2014, art. 1, commi 54, 64, 65, 71 e 77 (regime forfetario)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190~art1!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.naspi-importi",
+      "nombre": "Importi NASpI dell'anno",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "retribuzione-riferimento": 1456.72,
+            "massimo": 1584.7
+          },
+          "fuente": {
+            "organismo": "INPS",
+            "titulo": "Circolare n. 4 del 28/1/2026, importi 2026 delle prestazioni a sostegno del reddito (par. 6, NASpI)",
+            "url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/01/Circolare_15147/Allegati/16539_Circolare-numero-4-del-28-01-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.naspi-regole",
+      "nombre": "Regole di calcolo della NASpI",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "quota": 75,
+            "quota-eccedenza": 25,
+            "riduzione-mensile": 3,
+            "mese-riduzione": 6,
+            "mese-riduzione-over55": 8,
+            "settimane-mese": 4.33
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "D.Lgs. 22/2015, art. 4 (calcolo e misura della NASpI)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-03-04;22~art4!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.naspi-durata",
+      "nombre": "Durata della NASpI in proporzione alle settimane di contribuzione",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-05-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "D.Lgs. 22/2015, art. 5 (durata della NASpI)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-03-04;22~art5!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.cedolare-secca",
+      "nombre": "Aliquote della cedolare secca",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "libero": "Canone libero (21%)",
+        "concordato": "Canone concordato (10%)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "libero": 21,
+            "concordato": 10
+          },
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "D.Lgs. 23/2011, art. 3, comma 2 (cedolare secca)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2011-03-14;23~art3!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.riduzione-canone",
+      "nombre": "Riduzione forfetaria del canone ai fini IRPEF",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "DPR 917/1986 (TUIR), art. 37, comma 4-bis",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1986-12-22;917~art37!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.riduzione-concordato",
+      "nombre": "Ulteriore riduzione per i contratti a canone concordato",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-12-30",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "Legge 431/1998, art. 8, comma 1 (canone concordato)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1998-12-09;431~art8!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.imposte-prima-casa",
+      "nombre": "Imposte sull'acquisto della prima casa",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": {
+            "registro": 2,
+            "minimo-registro": 1000,
+            "ipotecaria": 50,
+            "catastale": 50,
+            "iva": 4,
+            "fissa-iva": 200,
+            "coefficiente": 110,
+            "rivalutazione-rendita": 5
+          },
+          "fuente": {
+            "organismo": "Agenzia delle Entrate",
+            "titulo": "L'acquisto con i benefici prima casa",
+            "url": "https://www.agenziaentrate.gov.it/portale/l-acquisto-con-i-benefici-prima-casa",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.imposte-altre-case",
+      "nombre": "Imposte sull'acquisto di una casa senza benefici prima casa",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": {
+            "registro": 9,
+            "minimo-registro": 1000,
+            "ipotecaria": 50,
+            "catastale": 50,
+            "iva": 10,
+            "fissa-iva": 200,
+            "coefficiente": 120,
+            "rivalutazione-rendita": 5
+          },
+          "fuente": {
+            "organismo": "Agenzia delle Entrate",
+            "titulo": "L'acquisto di una casa: le imposte",
+            "url": "https://www.agenziaentrate.gov.it/portale/acquisto-di-una-casa-le-imposte",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.interesse-legale",
+      "nombre": "Saggio degli interessi legali",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-15",
+      "nota": "Il nuovo saggio esce in Gazzetta entro il 15 dicembre di ogni anno (art. 1284 c.c.).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2023-12-31",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Gazzetta Ufficiale",
+            "titulo": "DM Economia 13/12/2022 (GU n. 292 del 15/12/2022)",
+            "url": "https://www.gazzettaufficiale.it/atto/serie_generale/caricaDettaglioAtto/originario?atto.dataPubblicazioneGazzetta=2022-12-15&atto.codiceRedazionale=22A07140",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2024-12-31",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Gazzetta Ufficiale",
+            "titulo": "DM Economia 29/11/2023 (GU n. 288 dell'11/12/2023)",
+            "url": "https://www.gazzettaufficiale.it/atto/serie_generale/caricaDettaglioAtto/originario?atto.dataPubblicazioneGazzetta=2023-12-11&atto.codiceRedazionale=23A06669",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Gazzetta Ufficiale",
+            "titulo": "DM Economia 10/12/2024 (GU n. 294 del 16/12/2024)",
+            "url": "https://www.gazzettaufficiale.it/atto/serie_generale/caricaDettaglioAtto/originario?atto.dataPubblicazioneGazzetta=2024-12-16&atto.codiceRedazionale=24A06721",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.6,
+          "fuente": {
+            "organismo": "Gazzetta Ufficiale",
+            "titulo": "DM Economia 10/12/2025 (GU n. 289 del 13/12/2025)",
+            "url": "https://www.gazzettaufficiale.it/atto/serie_generale/caricaDettaglioAtto/originario?atto.dataPubblicazioneGazzetta=2025-12-13&atto.codiceRedazionale=25A06705",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.ritenuta-acconto",
+      "nombre": "Ritenuta d'acconto sui compensi di lavoro autonomo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2001-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "DPR 600/1973, art. 25, primo comma (ritenuta sui compensi di lavoro autonomo)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1973-09-29;600~art25!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Il testo dell'articolo riporta ancora il 15% originario: la nota di aggiornamento (54) registra la sostituzione con il 20% fatta dalla legge 449/1997, art. 21, comma 11."
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.rivalsa-inps",
+      "nombre": "Rivalsa INPS sui compensi dei professionisti in Gestione separata",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-09-26",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "Legge 662/1996, art. 1, comma 212 (rivalsa del 4% sui compensi)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1996-12-23;662~art1-com212!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.orario-normale",
+      "nombre": "Orario normale di lavoro settimanale",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-04-29",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "D.Lgs. 66/2003, art. 3 (orario normale di lavoro)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2003-04-08;66~art3!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.straordinario-massimo",
+      "nombre": "Limite annuo dello straordinario senza disciplina collettiva",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-04-29",
+          "valor": 250,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "D.Lgs. 66/2003, art. 5, comma 3 (limite annuo dello straordinario)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2003-04-08;66~art5!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.ferie-minime",
+      "nombre": "Ferie minime annue (settimane)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-04-29",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "D.Lgs. 66/2003, art. 10, comma 1 (ferie annuali)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2003-04-08;66~art10!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.maternita-indennita",
+      "nombre": "Indennità di maternità",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2001-04-27",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "D.Lgs. 151/2001, art. 22, comma 1 (indennità di maternità)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-26;151~art22!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it.congedo-maternita",
+      "nombre": "Durata del congedo di maternità",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2001-04-27",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Normattiva",
+            "titulo": "D.Lgs. 151/2001, art. 16 (congedo di maternità)",
+            "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-26;151~art16!vig=2026-10-14",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}

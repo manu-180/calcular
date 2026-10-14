@@ -1,0 +1,19 @@
+{
+  "mercado": "it",
+  "avisos": [
+    {
+      "id": "it.addizionali-irpef",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["it.stipendio-netto"],
+      "texto": "Le addizionali regionale e comunale cambiano da comune a comune. Se non inserisci le aliquote della tua regione e del tuo comune, il netto che vedi è un po' più alto di quello reale.",
+      "fuente": {
+        "organismo": "Normattiva",
+        "titulo": "DPR 917/1986 (TUIR), art. 11",
+        "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1986-12-22;917~art11!vig=2026-10-14",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    }
+  ]
+}
