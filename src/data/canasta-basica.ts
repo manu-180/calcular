@@ -1,7 +1,7 @@
 // Canasta básica alimentaria (CBA) y canasta básica total (CBT) del ADULTO EQUIVALENTE,
 // Gran Buenos Aires (INDEC). GENERADO por scripts/gen_canasta_basica.ts — NO editar a mano.
 //   https://apis.datos.gob.ar/series/api/series/?ids=150.1_CSTA_BARIA_0_D_26,150.1_CSTA_BATAL_0_D_20,150.1_LA_INDICIA_0_D_16,150.1_LA_POBREZA_0_D_13&format=json&limit=1000
-// Descargado el 2026-10-07. Último período: agosto 2026 (CBA 235103.36 · CBT 519578.43).
+// Descargado el 2026-10-15. Último período: agosto 2026 (CBA 235103.36 · CBT 519578.43).
 //
 // QUÉ SIGNIFICAN (metodología INDEC N° 22):
 //   · CBA = costo mensual de los alimentos que cubren los requerimientos kilocalóricos y proteicos
@@ -163,6 +163,6 @@ export const CANASTA_BASICA_FUENTE = {
   informe: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149",
   serie: "https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_cba_cbt.xls",
   metodologia: "https://www.indec.gob.ar/ftp/cuadros/sociedad/EPH_metodologia_22_pobreza.pdf",
-  consultadoEl: "2026-10-07",
+  consultadoEl: "2026-10-15",
   ultimoPeriodo: "2026-08",
 };
