@@ -1,20 +1,19 @@
 name: datos-vivos
 
-# El motor que mantiene calcular.ar al día sin que nadie lo corra. Tres veces por día trae los datos
+# El motor que mantiene calcular.ar al día sin que nadie lo corra. Una vez por día trae los datos
 # oficiales (INDEC, BCRA, ANSES/Boletín Oficial, datos.gob.ar), valida cada uno contra sus checks y
 # contra check-all, y si algo cambió lo commitea a main: Vercel está conectado al repo, así que ese
 # push ES el deploy a producción. El detalle está en scripts/datos-vivos/correr.ts.
 #
-# Horarios (ART): 03:10 → toma el cambio de mes del día 1 y el B.O. de la madrugada; 18:30 → B.O. del
-# día y el INDEC, que publica IPC y canastas a las 16:00. La corrida de las 12:30 se sacó el 14/10/2026:
-# los minutos de Actions de la cuenta se agotaron y el B.O. del día lo agarra igual la de las 18:30.
+# Una vez por día, 18:30 ART: agarra el B.O. del día y el INDEC, que publica IPC y canastas a las
+# 16:00; el cambio de mes del día 1 entra esa misma tarde. Eran tres corridas (03:10, 12:30, 18:30) y
+# se bajó a una el 14/10/2026: los minutos de Actions de la cuenta se agotaron y frenaron todo.
 #
 # Lo que no se puede cargar solo (circulares de gremios, PDFs de ARCA, una resolución que no pasó
 # su ancla) abre o actualiza el issue "datos-vivos" y deja un mensaje en el dashboard.
 
 on:
   schedule:
-    - cron: "10 6 * * *"
     - cron: "30 21 * * *"
   workflow_dispatch:
 
