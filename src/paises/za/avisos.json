@@ -1,0 +1,19 @@
+{
+  "mercado": "za",
+  "avisos": [
+    {
+      "id": "za.transfer-duty-vat",
+      "nivel": "info",
+      "desde": "2025-04-01",
+      "aplicaA": ["za.transfer-duty-calculator"],
+      "texto": "Transfer duty is only payable on property sales that are not subject to VAT. If the seller charges VAT on the sale, this calculation does not apply.",
+      "fuente": {
+        "organismo": "SARS",
+        "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+        "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    }
+  ]
+}
