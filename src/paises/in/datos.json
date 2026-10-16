@@ -874,6 +874,86 @@
           }
         }
       ]
+    },
+    {
+      "id": "in.ppf-min-deposit",
+      "nombre": "Minimum PPF deposit in a financial year",
+      "tipo": "numero",
+      "unidad": "INR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-12-12",
+          "valor": 500,
+          "fuente": {
+            "organismo": "National Savings Institute (Ministry of Finance)",
+            "titulo": "Public Provident Fund Scheme, 2019 (G.S.R. 915(E)), paragraph 4",
+            "url": "https://www.nsiindia.gov.in/writereaddata/SchemeRules/PublicProvidentFundSchemeRule.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.ppf-max-deposit",
+      "nombre": "Maximum PPF deposit in a financial year",
+      "tipo": "numero",
+      "unidad": "INR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-12-12",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "National Savings Institute (Ministry of Finance)",
+            "titulo": "Public Provident Fund Scheme, 2019 (G.S.R. 915(E)), paragraph 4",
+            "url": "https://www.nsiindia.gov.in/writereaddata/SchemeRules/PublicProvidentFundSchemeRule.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.ssy-min-deposit",
+      "nombre": "Minimum Sukanya Samriddhi deposit in a financial year",
+      "tipo": "numero",
+      "unidad": "INR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-12-12",
+          "valor": 250,
+          "fuente": {
+            "organismo": "National Savings Institute (Ministry of Finance)",
+            "titulo": "Sukanya Samriddhi Account Scheme, 2019 (G.S.R. 914(E)), paragraph 4",
+            "url": "https://www.nsiindia.gov.in/writereaddata/SchemeRules/SukanyaSamriddhiAccountSchemeRule.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.ssy-max-deposit",
+      "nombre": "Maximum Sukanya Samriddhi deposit in a financial year",
+      "tipo": "numero",
+      "unidad": "INR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-12-12",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "National Savings Institute (Ministry of Finance)",
+            "titulo": "Sukanya Samriddhi Account Scheme, 2019 (G.S.R. 914(E)), paragraph 4",
+            "url": "https://www.nsiindia.gov.in/writereaddata/SchemeRules/SukanyaSamriddhiAccountSchemeRule.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
     }
   ]
 }
