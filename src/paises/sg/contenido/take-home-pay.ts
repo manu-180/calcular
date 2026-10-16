@@ -38,7 +38,7 @@ export default definirContenido({
     },
   ],
   glosario: [
-    { termino: "CPF", definicion: "Central Provident Fund, the savings scheme for retirement, housing and healthcare that employees and employers pay into." },
+    { termino: "CPF", definicion: "Central Provident Fund, the savings scheme that employees and employers pay into every month." },
     { termino: "Ordinary Wages (OW)", definicion: "Pay for work done in the month, such as your basic salary and fixed allowances." },
     { termino: "Additional Wages (AW)", definicion: "Pay that is not for the month's work, such as bonuses. They have their own CPF ceiling." },
   ],
