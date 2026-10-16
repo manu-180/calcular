@@ -4,7 +4,7 @@ import type { TextosSitio } from "./tipos";
 const MUNDO_HANT = "國際";
 const MUNDO_HANS = "国际";
 
-// 繁體（台灣、香港）為基礎，用詞避開兩地說法不同的字眼。稱呼一律用「您」。
+// Base en tradicional (Taiwán y Hong Kong), con palabras que valen en los dos. Siempre «您».
 const base: TextosSitio = {
   marca: { nombre: "CalcularYa", lema: "依據官方數據的計算工具" },
   saltar: "跳至主要內容",
@@ -173,7 +173,8 @@ const base: TextosSitio = {
   },
 };
 
-// 简体（中国大陆、新加坡）：逐句改写，不是自动转换，用词也按大陆习惯（数据、账户、贷款）。
+// Simplificado (China continental, Singapur): reescrito frase por frase, no convertido, y con el
+// vocabulario de allá (数据, 账户, 工资).
 const hans: TextosSitio = {
   marca: { nombre: "CalcularYa", lema: "基于官方数据的计算工具" },
   saltar: "跳到主要内容",

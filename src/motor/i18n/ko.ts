@@ -3,7 +3,8 @@ import type { TextosSitio } from "./tipos";
 
 const MUNDO = "해외";
 
-// 해요체로 통일. 반말이나 합니다체를 섞지 않는다.
+// 해요체 en todo el sitio, sin mezclar 합니다체 ni 반말. Detrás de un valor variable no va partícula
+// que dependa de la última sílaba (이/가, 을/를): se arma la frase para que no haga falta.
 const base: TextosSitio = {
   marca: { nombre: "CalcularYa", lema: "공식 데이터로 계산하는 계산기" },
   saltar: "본문 바로가기",

@@ -3,7 +3,7 @@ import type { TextosSitio } from "./tipos";
 
 const MUNDO = "海外・その他";
 
-// です/ます体で統一。呼びかけの「あなた」は使わず、主語を省いて書く。
+// です/ます en todo el sitio. Sin «あなた»: en japonés web el sujeto se omite.
 const base: TextosSitio = {
   marca: { nombre: "CalcularYa", lema: "公的データにもとづく計算ツール" },
   saltar: "本文へ移動",
