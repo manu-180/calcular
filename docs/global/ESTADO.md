@@ -35,6 +35,21 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## 14/10/2026 23:30 · 31 países publicados
+
+Nueva Zelanda (60 calculadoras) y Sudáfrica (60) publicadas. Verde con 32 mercados: check_motor 1559,
+check_paises_casos 3487, check_textos_paises 45680, check_hreflang 4345, check_seo_intl 4544.
+
+El límite semanal cortó a los demás a las 18:00; avance pusheado y retomados a las 23:30: motor 2,
+India (solo había investigado, sin código), Singapur, Suiza (de, en verificación final) y Bélgica (nl,
+WIP `7315719`). Nuevos: Filipinas (`claude/pais-ph`) y Hong Kong en inglés (`claude/pais-hk`).
+
+Pendientes de los países:
+- `nz.ocr`: el RBNZ da 403 a Node (curl da 200). Vence el 2026-12-11; pedido al motor.
+- `za`: marcadores de series en textos (prime). IPC y prime vencen el 2026-11-13 si el cron no corre.
+- Universal hipoteca dice «Down payment»; en NZ se dice «deposit».
+- Montos escritos a mano en escalas y FAQ de nz y za: revisar en abril y marzo de 2027.
+
 ## 14/10/2026 17:30 · 29 países publicados · PR borrador #31
 
 | País | Calculadoras | | País | Calculadoras |
