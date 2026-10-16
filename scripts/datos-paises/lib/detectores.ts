@@ -9,7 +9,10 @@ export const TIMEOUT_DETECTOR_MS = 90_000;
 // corrida de un país vuelque meses de diario oficial al issue.
 export const VENTANA_NORMAS_DIAS = 90;
 
-export type EstadoDetector = "sin-novedad" | "actualizado" | "rechazado" | "fuente-caida" | "norma-nueva" | "error";
+// "manual": detector con metodo "manual" (la fuente no se puede leer con un programa, por ejemplo
+// detrás de un desafío anti-bots): no se consulta y el punto se carga a mano. El semáforo avisa con
+// DIAS_HORIZONTE de anticipación antes de que la serie venza.
+export type EstadoDetector = "sin-novedad" | "actualizado" | "rechazado" | "fuente-caida" | "norma-nueva" | "manual" | "error";
 
 export interface ResultadoDetector {
   id: string;
@@ -198,6 +201,10 @@ export async function correrDetectores(pais: PaisDefinido, httpBase: Http, op: O
   for (const det of pais.detectores) {
     const llamadas: LlamadaHttp[] = [];
     const http = httpParaDetector(httpBase, det, llamadas);
+    if (det.metodo === "manual") {
+      resultados.push({ id: det.id, carril: det.carril, objetivo: det.carril === "serie" ? det.serie : det.datos.join(", "), estado: "manual", detalle: "carga manual: no se consulta la fuente", llamadas });
+      continue;
+    }
     if (det.carril === "serie") {
       if (conErrores) {
         resultados.push({ id: det.id, carril: "serie", objetivo: det.serie, estado: "error", detalle: `el país tiene ${pais.errores.length} error(es) de datos: no se escriben series hasta corregirlos`, llamadas });
