@@ -6,7 +6,7 @@
       "nombre": "Consumer Price Index, all-items, Canada (2002=100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 75,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Statistics Canada",
         "titulo": "Table 18-10-0004-01, vector v41690973 (Web Data Service)",
