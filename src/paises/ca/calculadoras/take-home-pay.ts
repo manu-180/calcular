@@ -29,7 +29,7 @@ export default definirCalculadora({
   ],
   calcular(entrada, v, { redondear }) {
     validarIngreso(entrada.salario, "salario");
-    const aportes = aportesEmpleado(entrada.salario, v);
+    const aportes = aportesEmpleado(entrada.salario, v, false, entrada.provincia === "qc");
     const aportePension = redondear((entrada.salario * entrada.pension) / 100);
     const base = { provincia: entrada.provincia, empleo: entrada.salario, otros: 0, deducciones: aportePension, aportes };
     const r = impuestoAnual(base, v);
@@ -38,7 +38,8 @@ export default definirCalculadora({
     const cpp = redondear(aportes.cpp);
     const cpp2 = redondear(aportes.cpp2);
     const ei = redondear(aportes.ei);
-    const anual = redondear(entrada.salario - federal - provincial - cpp - cpp2 - ei - aportePension);
+    const qpip = redondear(aportes.qpip);
+    const anual = redondear(entrada.salario - federal - provincial - cpp - cpp2 - ei - qpip - aportePension);
     const pagos = PERIODOS[entrada.periodo];
     return {
       anual,
@@ -49,9 +50,13 @@ export default definirCalculadora({
       cpp,
       cpp2,
       ei,
+      qpip,
       aportePension,
       marginal: redondear(tasaMarginal(base, v)),
-      observaciones: ["Your payslip can differ by a few dollars each pay, because payroll spreads the CPP and EI maximums and the tax credits over the year."],
+      observaciones: [
+        "Your payslip can differ by a few dollars each pay, because payroll spreads the CPP and EI maximums and the tax credits over the year.",
+        ...(entrada.provincia === "qc" ? ["In Quebec the federal tax already takes off the 16.5% Quebec abatement, and Quebec tax only counts the basic personal amount and the deduction for workers."] : []),
+      ],
     };
   },
   resultado: [
@@ -60,9 +65,10 @@ export default definirCalculadora({
     { clave: "mensual", etiqueta: "Take-home pay a month", formato: "moneda" },
     { clave: "federal", etiqueta: "Federal income tax", formato: "moneda" },
     { clave: "provincial", etiqueta: "Provincial or territorial income tax", formato: "moneda" },
-    { clave: "cpp", etiqueta: "CPP contributions", formato: "moneda" },
-    { clave: "cpp2", etiqueta: "Second CPP contributions (CPP2)", formato: "moneda", ocultarSiCero: true },
+    { clave: "cpp", etiqueta: "CPP contributions (QPP in Quebec)", formato: "moneda" },
+    { clave: "cpp2", etiqueta: "Second CPP or QPP contributions", formato: "moneda", ocultarSiCero: true },
     { clave: "ei", etiqueta: "EI premiums", formato: "moneda" },
+    { clave: "qpip", etiqueta: "QPIP premiums", formato: "moneda", ocultarSiCero: true },
     { clave: "aportePension", etiqueta: "Your RRSP or pension contribution", formato: "moneda", ocultarSiCero: true },
     { clave: "marginal", etiqueta: "Marginal tax rate", formato: "porcentaje", decimales: 2 },
   ],

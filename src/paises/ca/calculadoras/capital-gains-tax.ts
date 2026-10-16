@@ -25,7 +25,7 @@ export default definirCalculadora({
     if (ganancia <= 0) throw new ErrorEntrada("There is no capital gain: the selling price is not above what you paid.", "venta");
     const inclusion = v["ca.capital-gains-inclusion-rate"];
     const gravable = redondear(porcentaje(ganancia, inclusion));
-    const aportes = aportesEmpleado(entrada.empleo, v);
+    const aportes = aportesEmpleado(entrada.empleo, v, false, entrada.provincia === "qc");
     const base = { provincia: entrada.provincia, empleo: entrada.empleo, otros: 0, deducciones: 0, aportes };
     const sin = impuestoAnual(base, v).total;
     const con = impuestoAnual({ ...base, otros: gravable }, v).total;
