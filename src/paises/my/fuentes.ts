@@ -7,7 +7,7 @@ const VERIFICADO: FechaISO = "2026-10-16";
 // última verificación, la tabla pudo cambiar y hay que volver a leerla.
 async function paginaHasil(http: Http, url: string, titulo: string): Promise<readonly HallazgoNorma[] | null> {
   const html = await http.texto(url, { userAgentNavegador: true });
-  const m = /Dikemas kini pada:\s*(\d{2})\/(\d{2})\/(\d{4})/.exec(html);
+  const m = /Dikemas kini pada:\s*(?:<[^>]+>\s*)*(\d{2})\/(\d{2})\/(\d{4})/.exec(html);
   if (!m) return null;
   const fecha = `${m[3]}-${m[2]}-${m[1]}`;
   if (!esFechaISO(fecha)) return null;
@@ -86,7 +86,7 @@ export const detectores: readonly Detector[] = [
     metodo: "html",
     url: "https://www.perkeso.gov.my/en/rate-of-contribution.html",
     traer(http) {
-      return marcadores(http, this.url, "PERKESO contribution rate page changed", /PERKESO/, [/wage ceiling for contributions from RM5,000 to RM6,000/, /NewContributionRateIncludingSKBBK\.pdf/, /151124-Rate Contribution ACT 800\.pdf/]);
+      return marcadores(http, this.url, "PERKESO contribution rate page changed", /PERKESO/, [/RM5,000 to (?:<[^>]+>\s*)*RM6,000/, /NewContributionRateIncludingSKBBK\.pdf/, /151124-Rate Contribution ACT 800\.pdf/]);
     },
   },
   {
