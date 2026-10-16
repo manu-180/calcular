@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Gratuity calculator",
   title: "Gratuity calculator under the Code on Social Security",
   description:
-    "Calculate your gratuity: {{in.gratuity-days}} days of wages for each year of service, with a month counted as {{in.gratuity-divisor}} days. Rules for fixed-term jobs included.",
+    "Calculate your gratuity: {{in.gratuity-days}} of wages for each year of service, with a month counted as {{in.gratuity-divisor}} days. Rules for fixed-term jobs included.",
   intro: [
     "Gratuity is a lump sum your employer pays when you leave after years of service. Enter your last wages and your years, and see the amount.",
     "Since 21 November 2025 gratuity follows the Code on Social Security, 2020, which replaced the Payment of Gratuity Act.",

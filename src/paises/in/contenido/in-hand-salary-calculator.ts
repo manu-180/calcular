@@ -12,7 +12,7 @@ export default definirContenido({
   ],
   comoSeCalcula: [
     "Basic salary is the share of CTC you enter. PF is {{in.epf-rate}} of basic, paid by you and again by your employer. Many employers stop at the wage ceiling of {{in.epf-wage-ceiling}} a month.",
-    "If gratuity is part of your CTC, the yearly provision is {{in.gratuity-days}} days of basic for each year, with a month counted as {{in.gratuity-divisor}} days.",
+    "If gratuity is part of your CTC, the yearly provision is {{in.gratuity-days}} of basic for each year, with a month counted as {{in.gratuity-divisor}} days.",
     "Gross salary is CTC minus employer PF and gratuity. Income tax is worked out on gross salary with the regime you pick, cess included.",
     "In-hand salary is gross salary minus your PF, professional tax and income tax.",
   ],

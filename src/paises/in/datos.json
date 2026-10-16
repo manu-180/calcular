@@ -732,7 +732,7 @@
       "id": "in.gratuity-divisor",
       "nombre": "Divisor of the monthly wage for gratuity",
       "tipo": "numero",
-      "unidad": "dias",
+      "unidad": "numero",
       "tramos": [
         {
           "estado": "verificado",
