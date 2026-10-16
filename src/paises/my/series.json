@@ -6,7 +6,7 @@
       "nombre": "Consumer Price Index, overall (2010 = 100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 100,
+      "maxAntiguedadDias": 120,
       "fuente": {
         "organismo": "Department of Statistics Malaysia (DOSM)",
         "titulo": "OpenDOSM data catalogue: cpi_headline, division overall",
