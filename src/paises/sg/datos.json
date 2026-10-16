@@ -64,6 +64,25 @@
             "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW00000DuRCiYAN",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "55-y-menos": 17,
+            "55-60": 16.5,
+            "60-65": 13,
+            "65-70": 9,
+            "mas-70": 7.5
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "What are the changes to the CPF contribution rates for senior workers that will take effect from 1 January 2027?",
+            "url": "https://www.cpf.gov.sg/service/article/what-are-the-changes-to-the-cpf-contribution-rates-for-senior-workers-that-will-take-effect-from-1-january-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
           }
         }
       ]
@@ -98,6 +117,25 @@
             "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW00000DuRCiYAN",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "55-y-menos": 20,
+            "55-60": 19,
+            "60-65": 13,
+            "65-70": 7.5,
+            "mas-70": 5
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "What are the changes to the CPF contribution rates for senior workers that will take effect from 1 January 2027?",
+            "url": "https://www.cpf.gov.sg/service/article/what-are-the-changes-to-the-cpf-contribution-rates-for-senior-workers-that-will-take-effect-from-1-january-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
           }
         }
       ]
@@ -132,6 +170,26 @@
             "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW00000DuRCiYAN",
             "tipo": "primaria",
             "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "55-y-menos": 0.6,
+            "55-60": 0.57,
+            "60-65": 0.39,
+            "65-70": 0.225,
+            "mas-70": 0.15
+          },
+          "motivo": "El CPF Board dice que las tasas graduales de $500 a $750 suben en proporción, pero todavía no publicó la tabla 2027. El valor es 3 veces la tasa del empleado, la relación que cumple la tabla 2026; falta leerlo en la tabla oficial.",
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "What are the changes to the CPF contribution rates for senior workers that will take effect from 1 January 2027?",
+            "url": "https://www.cpf.gov.sg/service/article/what-are-the-changes-to-the-cpf-contribution-rates-for-senior-workers-that-will-take-effect-from-1-january-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
           }
         }
       ]

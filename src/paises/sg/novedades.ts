@@ -2,6 +2,22 @@ import type { Novedad } from "@/motor/tipos";
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "sg.cpf-rates-january-2027",
+    fecha: "2026-10-15",
+    titulo: "CPF rates for workers above 55 to 65 go up again on 1 January 2027",
+    texto:
+      "From 1 January 2027, workers above 55 to 60 will pay 19% and their employers 16.5%. Above 60 to 65, both will pay 13%. Rates for other ages stay the same. The CPF calculators will switch once the CPF Board publishes the full 2027 rate table.",
+    vigenteDesde: "2027-01-01",
+    calculadoras: ["sg.take-home-pay", "sg.cpf-contribution-calculator", "sg.employer-cost-calculator"],
+    fuente: {
+      organismo: "CPF Board",
+      titulo: "Changes to the CPF contribution rates for senior workers from 1 January 2027",
+      url: "https://www.cpf.gov.sg/service/article/what-are-the-changes-to-the-cpf-contribution-rates-for-senior-workers-that-will-take-effect-from-1-january-2027",
+      tipo: "primaria",
+      verificadoEl: "2026-10-15",
+    },
+  },
+  {
     id: "sg.cpf-rates-january-2026",
     fecha: "2026-10-14",
     titulo: "Higher CPF rates for workers above 55 and an $8,000 wage ceiling",
