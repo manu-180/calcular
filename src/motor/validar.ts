@@ -1,4 +1,5 @@
 import { esConcepto } from "./conceptos";
+import { RE_HORA } from "./formulario";
 import { esIdDelMercado, paisDelMercado, RE_SLUG, validarFuente, validarUrl } from "./datos";
 import { hayLlavesSueltas, marcadoresDe, mercadoVisible, rellenarContenido, resolverValores } from "./registro";
 import { diasEntre, esFechaISO, sumarDias, valorSerie, vigente } from "./vigencia";
@@ -110,6 +111,17 @@ function validarDefinicion(pais: PaisDefinido, def: DefinicionCalculadora, e: st
       if (c.moneda !== undefined && !pais.mercado.monedas.includes(c.moneda)) e.push(`${donde}: campo ${c.id} en ${c.moneda}, que no es moneda del mercado`);
     }
     if (c.tipo === "fecha" && c.porDefecto !== undefined && c.porDefecto !== "hoy" && !esFechaISO(c.porDefecto)) e.push(`${donde}: campo ${c.id} porDefecto no es fecha`);
+    if (c.tipo === "hora") {
+      for (const [k, v] of [["porDefecto", c.porDefecto], ["min", c.min], ["max", c.max]] as const) if (v !== undefined && !RE_HORA.test(v)) e.push(`${donde}: campo ${c.id} ${k} "${v}" no es una hora HH:MM`);
+    }
+    for (const [otro, valores] of Object.entries(c.visibleSi ?? {})) {
+      const ref = def.campos.find((x) => x.id === otro);
+      if (!ref || ref === c) e.push(`${donde}: campo ${c.id} visibleSi nombra "${otro}", que no es otro campo de la calculadora`);
+      else if (ref.visibleSi) e.push(`${donde}: campo ${c.id} depende de "${otro}", que también es condicional (una sola capa)`);
+      else if (valores.length === 0) e.push(`${donde}: campo ${c.id} visibleSi.${otro} sin valores`);
+      else if (ref.tipo === "opcion" && valores.some((v) => !ref.opciones.some((o) => o.valor === v))) e.push(`${donde}: campo ${c.id} visibleSi.${otro} usa un valor que no es opción de ${otro}`);
+      else if (ref.tipo === "si-no" && valores.some((v) => typeof v !== "boolean")) e.push(`${donde}: campo ${c.id} visibleSi.${otro} tiene que ser true o false`);
+    }
   }
 
   if (def.resultado.length === 0) e.push(`${donde}: sin filas de resultado`);

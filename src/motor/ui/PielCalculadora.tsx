@@ -136,6 +136,8 @@ function CampoPiel({ campo, control, idBase, contexto, ancho }: { campo: Campo; 
         ) : null}
         {campo.tipo === "fecha" ? (
           <input {...comunes} type="date" value={String(valor ?? "")} min={campo.min} max={campo.max} onChange={(ev) => control.cambiar(campo.id, ev.target.value)} />
+        ) : campo.tipo === "hora" ? (
+          <input {...comunes} type="time" value={String(valor ?? "")} min={campo.min} max={campo.max} onChange={(ev) => control.cambiar(campo.id, ev.target.value)} />
         ) : (
           <input
             {...comunes}

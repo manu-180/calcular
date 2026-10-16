@@ -212,11 +212,14 @@ export type ValorResuelto =
   | Readonly<Record<string, ValorDato>>;
 export type ValoresSerializados = Readonly<Record<string, ValorResuelto>>;
 
+// visibleSi: el campo se muestra solo cuando cada campo nombrado tiene uno de esos valores
+// ({ modo: ["horas"] }). Oculto no se valida y llega a calcular() como null.
 interface CampoBase {
   id: string;
   etiqueta: string;
   ayuda?: string;
   requerido?: boolean;
+  visibleSi?: Readonly<Record<string, readonly (string | boolean)[]>>;
 }
 
 export interface CampoNumerico extends CampoBase {
@@ -232,6 +235,14 @@ export interface CampoFecha extends CampoBase {
   min?: FechaISO;
   max?: FechaISO;
   porDefecto?: FechaISO | "hoy";
+}
+
+// Hora del día "HH:MM" (00:00 a 23:59), con selector nativo del navegador.
+export interface CampoHora extends CampoBase {
+  tipo: "hora";
+  min?: string;
+  max?: string;
+  porDefecto?: string;
 }
 
 export interface OpcionCampo<V extends string = string> {
@@ -264,7 +275,7 @@ export interface CampoOpcionDato extends CampoBase {
   porDefecto?: string;
 }
 
-export type Campo = CampoNumerico | CampoFecha | CampoOpcion | CampoSiNo | CampoRegion | CampoOpcionDato;
+export type Campo = CampoNumerico | CampoFecha | CampoHora | CampoOpcion | CampoSiNo | CampoRegion | CampoOpcionDato;
 export type TipoCampo = Campo["tipo"];
 
 type ValorDeCampo<K> = K extends { tipo: "moneda" | "numero" | "entero" | "porcentaje" }
@@ -277,7 +288,7 @@ type ValorDeCampo<K> = K extends { tipo: "moneda" | "numero" | "entero" | "porce
         ? boolean
         : string;
 
-type ConOpcionalidad<K, T> = K extends { requerido: false } ? T | null : T;
+type ConOpcionalidad<K, T> = K extends { requerido: false } | { visibleSi: object } ? T | null : T;
 
 export type EntradaDe<C extends readonly Campo[]> = {
   readonly [K in C[number] as K["id"]]: ConOpcionalidad<K, ValorDeCampo<K>>;

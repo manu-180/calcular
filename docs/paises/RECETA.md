@@ -319,6 +319,13 @@ tramo verificado a la fecha, la calculadora no se publica.
 | `si-no` | `boolean` | |
 | `region` | id de región | las opciones salen de `mercado.regiones`; `regiones: ["on", "bc"]` deja solo esas (un impuesto que no aplica en una provincia) |
 | `opcion-dato` | clave del mapa | `dato: "<id>"`, que tiene que estar en `requiere` como `"mapa"`; las opciones salen del mapa y sus `etiquetas` |
+| `hora` | `"HH:MM"` | selector de hora del navegador; `min`, `max` y `porDefecto` en `"HH:MM"` |
+
+
+Campos condicionales: `visibleSi: { modo: ["horas"] }` muestra el campo solo cuando `modo` vale uno
+de esos valores (con varias claves, todas tienen que cumplirse; con un `si-no`, `[true]`). Oculto no se
+valida y llega a `calcular` como `null` (el tipo ya lo dice). Una sola capa: un campo condicional no
+puede depender de otro condicional.
 
 `id` del campo en camelCase. `requerido: false` hace que llegue `null` si está vacío. El parseo de
 números por locale (`1,474.77` en Perú, `1.750.905` en Colombia) lo hace el motor.

@@ -10,7 +10,7 @@ import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada 
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
 import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
-import { ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
+import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
@@ -440,6 +440,21 @@ igual("semana en singular (de)", formatearValorUnidad(1, "semanas", "de-DE"), "1
 igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 weken");
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
+// Campo hora y campos condicionales (visibleSi).
+const camposModo = [
+  { id: "modo", tipo: "opcion", etiqueta: "Modo", opciones: [{ valor: "horas", etiqueta: "Horas" }, { valor: "total", etiqueta: "Total" }] },
+  { id: "entrada", tipo: "hora", etiqueta: "Entrada", visibleSi: { modo: ["horas"] } },
+  { id: "total", tipo: "numero", etiqueta: "Total", visibleSi: { modo: ["total"] } },
+] as const;
+const conHoras = parsearEntrada(camposModo, { modo: "horas", entrada: "08:30", total: "" }, ctxRegiones, {});
+igual("hora válida y el campo oculto llega null", conHoras.ok ? conHoras.entrada : conHoras.errores, { modo: "horas", entrada: "08:30", total: null });
+const horaMala = parsearEntrada(camposModo, { modo: "horas", entrada: "25:00", total: "" }, ctxRegiones, {});
+igual("hora inválida da hora-invalida", horaMala.ok ? null : horaMala.errores.entrada, { codigo: "hora-invalida" });
+const conTotal = parsearEntrada(camposModo, { modo: "total", entrada: "", total: "40" }, ctxRegiones, {});
+igual("con el otro modo, la hora oculta no se pide", conTotal.ok ? conTotal.entrada : conTotal.errores, { modo: "total", entrada: null, total: 40 });
+igual("campoVisible", [campoVisible(camposModo[1], { modo: "horas" }), campoVisible(camposModo[1], { modo: "total" })], [true, false]);
+igual("texto del error de hora en inglés", textosMotor("en", "tu").errores["hora-invalida"], "Choose a valid time.");
+
 verdad("de-CH sin ß en el sitio", !JSON.stringify(textosSitio("de", "usted", "de-CH")).includes("ß") && JSON.stringify(textosSitio("de", "usted", "de-DE")).includes("ß"));
 igual("de-CH en funciones del diccionario", textosSitio("de", "usted", "de-CH").avisoPais.cerrar.includes("ß"), false);
 

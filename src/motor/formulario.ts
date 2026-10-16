@@ -48,6 +48,14 @@ export function opcionesDe(campo: Campo, contexto: ContextoSerializado, dinamica
   return [];
 }
 
+// Un campo con visibleSi se muestra y se valida solo si cada campo nombrado tiene uno de sus valores.
+export function campoVisible(campo: Campo, crudos: Crudos): boolean {
+  if (!campo.visibleSi) return true;
+  return Object.entries(campo.visibleSi).every(([otro, valores]) => valores.includes(crudos[otro] as string | boolean));
+}
+
+export const RE_HORA = /^([01]\d|2[0-3]):[0-5]\d$/;
+
 export function valoresIniciales(campos: readonly Campo[], contexto: ContextoSerializado, dinamicas: PropsCalculadora["opcionesDinamicas"]): Crudos {
   const crudos: Record<string, string | boolean> = {};
   for (const c of campos) {
@@ -57,6 +65,9 @@ export function valoresIniciales(campos: readonly Campo[], contexto: ContextoSer
         break;
       case "fecha":
         crudos[c.id] = c.porDefecto === "hoy" ? contexto.fecha : (c.porDefecto ?? "");
+        break;
+      case "hora":
+        crudos[c.id] = c.porDefecto ?? "";
         break;
       case "opcion":
       case "region":
@@ -92,6 +103,10 @@ export function parsearEntrada(
   for (const c of campos) {
     const crudo = crudos[c.id];
     const requerido = c.requerido !== false;
+    if (!campoVisible(c, crudos)) {
+      entrada[c.id] = null;
+      continue;
+    }
     if (c.tipo === "si-no") {
       entrada[c.id] = crudo === true;
       continue;
@@ -109,6 +124,13 @@ export function parsearEntrada(
         else if (c.min && f < c.min) errores[c.id] = { codigo: "menor-que-min", params: { min: formatearFecha(c.min, contexto.locale) } };
         else if (c.max && f > c.max) errores[c.id] = { codigo: "mayor-que-max", params: { max: formatearFecha(c.max, contexto.locale) } };
         else entrada[c.id] = f;
+        break;
+      }
+      case "hora": {
+        if (!RE_HORA.test(texto)) errores[c.id] = { codigo: "hora-invalida" };
+        else if (c.min && texto < c.min) errores[c.id] = { codigo: "menor-que-min", params: { min: c.min } };
+        else if (c.max && texto > c.max) errores[c.id] = { codigo: "mayor-que-max", params: { max: c.max } };
+        else entrada[c.id] = texto;
         break;
       }
       case "opcion":
