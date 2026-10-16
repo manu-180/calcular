@@ -35,6 +35,13 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## 16/10/2026 04:30 · 34 países publicados
+
+Bélgica (nl, 56 calculadoras) publicada. Verde con 36 mercados: check_paises_casos 3737,
+check_textos_paises 48544, check_hreflang 4742, check_seo_intl 4962. El límite de sesión cortó a los 8
+agentes a las 01:45; avance guardado como WIP en cada rama y retomados a las 04:21: India, Filipinas,
+Hong Kong, Malasia, ediciones ca-fr, ch-fr/ch-it y be-fr, y motor 3 (ja, ko, zh).
+
 ## 16/10/2026 01:00 · 33 países publicados
 
 Suiza (de, 62 calculadoras) y Singapur (61) publicadas; motor 2 integrado (ediciones de idioma con
