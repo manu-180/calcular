@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ph.sss-contribution",
   h1: "SSS contribution calculator",
-  title: "SSS contribution calculator 2026: employee and employer share",
+  title: "SSS contribution calculator 2026: employee and employer",
   description:
     "Find your SSS monthly salary credit and contribution with the schedule in force since January 2025: your share, the employer share, EC and MPF.",
   intro: [

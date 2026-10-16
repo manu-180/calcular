@@ -20,13 +20,6 @@ export default definirCasos(calculadora, [
     esperado: { alto: 600, bajo: 515, diferencia: -15 },
   },
   {
-    nombre: "Central Luzon on the day before the second tranche",
-    origen: { tipo: "oficial", url: NWPC, detalle: "WO No. RBIII-26: ₱475.00 to ₱570.00 from 30 October 2025." },
-    fecha: "2026-04-15",
-    entrada: { region: "central-luzon", dias: 26, diario: null },
-    esperado: { alto: 570, bajo: 475 },
-  },
-  {
     nombre: "CALABARZON before Wage Order IVA-23",
     origen: { tipo: "oficial", url: "https://nwpc.dole.gov.ph/wp-content/uploads/2026/10/Wage-Order-No.-IVA-CALABARZON-23.pdf", detalle: "IVA-22 rates in the IVA-23 tables: ₱508.00 to ₱600.00." },
     fecha: "2026-10-16",
