@@ -190,15 +190,127 @@
     },
     {
       "id": "ph.vat-rate",
-      "nombre": "Value-added tax rate (Sec. 106 and 108, Tax Code)",
+      "nombre": "Value-added tax rate (Sec. 106, Tax Code)",
       "tipo": "numero",
       "unidad": "%",
       "tramos": [
         {
-          "estado": "no-verificado",
-          "desde": "2006-02-01",
+          "estado": "verificado",
+          "desde": "2018-01-01",
           "valor": 12,
-          "motivo": "La web de la BIR carga el Tax Code por JavaScript y el Official Gazette pide un desafío de Cloudflare; no se pudo leer la tasa en una fuente primaria en esta sesión."
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.estate-tax-rate",
+      "nombre": "Estate tax rate on the net estate (Sec. 84)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.estate-standard-deduction",
+      "nombre": "Standard deduction for the estate of a citizen or resident (Sec. 86)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 5000000,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.estate-family-home-cap",
+      "nombre": "Maximum deduction for the family home (Sec. 86)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 10000000,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.donors-tax-rate",
+      "nombre": "Donor's tax rate (Sec. 99)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.donors-tax-exemption",
+      "nombre": "Exempt gifts per calendar year (Sec. 99)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 250000,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
         }
       ]
     },
@@ -639,6 +751,156 @@
             "tipo": "primaria",
             "verificadoEl": "2026-10-16",
             "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.day-rates",
+      "nombre": "Pay for the first 8 hours of work, as a percentage of the regular daily wage",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ordinary": "Ordinary working day",
+        "rest-day": "Scheduled rest day",
+        "special": "Special day",
+        "special-rest-day": "Special day that falls on your rest day",
+        "regular-holiday": "Regular holiday",
+        "regular-holiday-rest-day": "Regular holiday that falls on your rest day"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1989-05-27",
+          "valor": {
+            "ordinary": 100,
+            "rest-day": 130,
+            "special": 130,
+            "special-rest-day": 150,
+            "regular-holiday": 200,
+            "regular-holiday-rest-day": 260
+          },
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Omnibus Rules Implementing the Labor Code, Book III",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=21826&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Rule I sección 7 (descanso y feriados especiales), Rule II (nocturno), Rule IV (feriados regulares) y Rule V (service incentive leave)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.overtime-premium",
+      "nombre": "Overtime premium over the hourly rate of the day",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ordinary": "Ordinary working day",
+        "rest-or-holiday": "Rest day or holiday"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-12-16",
+          "valor": {
+            "ordinary": 25,
+            "rest-or-holiday": 30
+          },
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Presidential Decree No. 850 (Articles 86 to 95 of the Labor Code)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=8736&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.night-shift-differential",
+      "nombre": "Night shift differential (10 pm to 6 am)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-12-16",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Presidential Decree No. 850 (Articles 86 to 95 of the Labor Code)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=8736&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.normal-hours",
+      "nombre": "Normal hours of work in a day",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-12-16",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Presidential Decree No. 850 (Articles 86 to 95 of the Labor Code)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=8736&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.service-incentive-leave",
+      "nombre": "Yearly service incentive leave with pay",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-12-16",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Presidential Decree No. 850 (Articles 86 to 95 of the Labor Code)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=8736&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.separation-pay",
+      "nombre": "Separation pay for authorized causes, in months of pay per year of service",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "redundancy": "Redundancy or labor-saving devices",
+        "retrenchment": "Retrenchment or closure not due to serious losses"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1981-08-21",
+          "valor": {
+            "redundancy": 1,
+            "retrenchment": 0.5
+          },
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Batas Pambansa Blg. 130 (Article 284 of the Labor Code, now Article 298)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=4920&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
           }
         }
       ]
