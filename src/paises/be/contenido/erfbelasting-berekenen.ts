@@ -11,9 +11,9 @@ export default definirContenido({
     "Partners en verwanten in rechte lijn betalen het minst. Broers en zussen en andere erfgenamen betalen hogere tarieven.",
   ],
   comoSeCalcula: [
-    "Rechte lijn en partners: per erfgenaam, apart op het roerende en het onroerende deel. 3 % tot € 50.000, 9 % tot € 250.000 en 27 % daarboven.",
-    "Broers en zussen: per erfgenaam op het hele erfdeel. 25 % tot € 35.000, 30 % tot € 75.000 en 55 % daarboven.",
-    "Andere personen: op de erfdelen van alle erfgenamen in die groep samen. 25 % tot € 35.000, 45 % tot € 75.000 en 55 % daarboven.",
+    "Rechte lijn en partners: per erfgenaam, apart op het roerende en het onroerende deel. {{be.erfbelasting-vl-rechte-lijn[0].tasa}} tot {{be.erfbelasting-vl-rechte-lijn[0].hasta}}, {{be.erfbelasting-vl-rechte-lijn[1].tasa}} tot {{be.erfbelasting-vl-rechte-lijn[1].hasta}} en {{be.erfbelasting-vl-rechte-lijn[-1].tasa}} daarboven.",
+    "Broers en zussen: per erfgenaam op het hele erfdeel. {{be.erfbelasting-vl-broers-zussen[0].tasa}} tot {{be.erfbelasting-vl-broers-zussen[0].hasta}}, {{be.erfbelasting-vl-broers-zussen[1].tasa}} tot {{be.erfbelasting-vl-broers-zussen[1].hasta}} en {{be.erfbelasting-vl-broers-zussen[-1].tasa}} daarboven.",
+    "Andere personen: op de erfdelen van alle erfgenamen in die groep samen. {{be.erfbelasting-vl-anderen[0].tasa}} tot {{be.erfbelasting-vl-anderen[0].hasta}}, {{be.erfbelasting-vl-anderen[1].tasa}} tot {{be.erfbelasting-vl-anderen[1].hasta}} en {{be.erfbelasting-vl-anderen[-1].tasa}} daarboven.",
     "Elke schijf wordt aan haar eigen tarief belast.",
   ],
   ejemplo: [
