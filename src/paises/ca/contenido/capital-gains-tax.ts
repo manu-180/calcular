@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ca.capital-gains-tax",
   h1: "Capital gains tax calculator for Canada 2026",
   title: "Capital gains tax calculator 2026 for Canada",
-  description: "Estimate the tax on a capital gain in 2026. Only {{ca.capital-gains-inclusion-rate}} of the gain is taxed, at your federal and provincial rates, Quebec included.",
+  description: "Estimate the tax on a capital gain in 2026. Only {{ca.capital-gains-inclusion-rate}} of the gain is taxed, at your federal and provincial rates. All provinces except Quebec.",
   intro: [
     "Enter what you sold for, what you paid and your other income to see how much tax the gain adds to your 2026 return.",
     "The capital gains inclusion rate stays at one half: the proposed increase to two thirds was cancelled.",
@@ -28,7 +28,7 @@ export default definirContenido({
     },
     {
       pregunta: "Does it work for Quebec?",
-      respuesta: "Yes. For Quebec it uses the Quebec tax table and takes the {{ca.qc-abatement}} Quebec abatement off federal tax.",
+      respuesta: "No. Quebec residents pay Quebec provincial income tax through Revenu Québec, which this calculator does not cover yet.",
     },
   ],
   glosario: [
