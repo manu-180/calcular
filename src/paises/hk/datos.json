@@ -1,0 +1,1102 @@
+{
+  "mercado": "hk",
+  "datos": [
+    {
+      "id": "hk.salaries-tax-rates",
+      "nombre": "Salaries tax progressive rates (on net chargeable income)",
+      "tipo": "escala",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000,
+              "tasa": 2
+            },
+            {
+              "desde": 50000,
+              "hasta": 100000,
+              "tasa": 6
+            },
+            {
+              "desde": 100000,
+              "hasta": 150000,
+              "tasa": 10
+            },
+            {
+              "desde": 150000,
+              "hasta": 200000,
+              "tasa": 14
+            },
+            {
+              "desde": 200000,
+              "hasta": null,
+              "tasa": 17
+            }
+          ],
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "Tax Rates of Salaries Tax & Personal Assessment",
+            "url": "https://www.gov.hk/en/residents/taxes/taxfiling/taxrates/salariesrates.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Unchanged since 2018/19; listed for 2024/25 onwards until superseded."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.standard-rates",
+      "nombre": "Two-tiered standard rates (on net income)",
+      "tipo": "escala",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000000,
+              "tasa": 15
+            },
+            {
+              "desde": 5000000,
+              "hasta": null,
+              "tasa": 16
+            }
+          ],
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "Tax Rates of Salaries Tax & Personal Assessment",
+            "url": "https://www.gov.hk/en/residents/taxes/taxfiling/taxrates/salariesrates.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.basic-allowance",
+      "nombre": "Basic allowance by year of assessment",
+      "tipo": "mapa",
+      "unidad": "HKD",
+      "etiquetas": {
+        "2024-25": "2024/25",
+        "2025-26": "2025/26",
+        "2026-27": "2026/27"
+      },
+      "proximaRevision": "2027-05-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "hasta": "2026-05-21",
+          "valor": {
+            "2024-25": 132000,
+            "2025-26": 132000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-22",
+          "valor": {
+            "2024-25": 132000,
+            "2025-26": 132000,
+            "2026-27": 145000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "2026/27 amounts from the 2026-27 Budget, gazetted on 22 May 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.married-allowance",
+      "nombre": "Married person's allowance by year of assessment",
+      "tipo": "mapa",
+      "unidad": "HKD",
+      "etiquetas": {
+        "2024-25": "2024/25",
+        "2025-26": "2025/26",
+        "2026-27": "2026/27"
+      },
+      "proximaRevision": "2027-05-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "hasta": "2026-05-21",
+          "valor": {
+            "2024-25": 264000,
+            "2025-26": 264000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-22",
+          "valor": {
+            "2024-25": 264000,
+            "2025-26": 264000,
+            "2026-27": 290000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "2026/27 amounts from the 2026-27 Budget, gazetted on 22 May 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.child-allowance",
+      "nombre": "Child allowance by year of assessment (each of the 1st to 9th child; the additional allowance for a newborn is the same amount)",
+      "tipo": "mapa",
+      "unidad": "HKD",
+      "etiquetas": {
+        "2024-25": "2024/25",
+        "2025-26": "2025/26",
+        "2026-27": "2026/27"
+      },
+      "proximaRevision": "2027-05-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "hasta": "2026-05-21",
+          "valor": {
+            "2024-25": 130000,
+            "2025-26": 130000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-22",
+          "valor": {
+            "2024-25": 130000,
+            "2025-26": 130000,
+            "2026-27": 140000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "2026/27 amounts from the 2026-27 Budget, gazetted on 22 May 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.single-parent-allowance",
+      "nombre": "Single parent allowance by year of assessment",
+      "tipo": "mapa",
+      "unidad": "HKD",
+      "etiquetas": {
+        "2024-25": "2024/25",
+        "2025-26": "2025/26",
+        "2026-27": "2026/27"
+      },
+      "proximaRevision": "2027-05-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "hasta": "2026-05-21",
+          "valor": {
+            "2024-25": 132000,
+            "2025-26": 132000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-22",
+          "valor": {
+            "2024-25": 132000,
+            "2025-26": 132000,
+            "2026-27": 145000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "2026/27 amounts from the 2026-27 Budget, gazetted on 22 May 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.dependent-parent-60",
+      "nombre": "Dependent parent or grandparent allowance, aged 60 or above (each; the additional allowance for living together is the same amount)",
+      "tipo": "mapa",
+      "unidad": "HKD",
+      "etiquetas": {
+        "2024-25": "2024/25",
+        "2025-26": "2025/26",
+        "2026-27": "2026/27"
+      },
+      "proximaRevision": "2027-05-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "hasta": "2026-05-21",
+          "valor": {
+            "2024-25": 50000,
+            "2025-26": 50000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-22",
+          "valor": {
+            "2024-25": 50000,
+            "2025-26": 50000,
+            "2026-27": 55000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "2026/27 amounts from the 2026-27 Budget, gazetted on 22 May 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.dependent-parent-55",
+      "nombre": "Dependent parent or grandparent allowance, aged 55 to 59 (each; the additional allowance for living together is the same amount)",
+      "tipo": "mapa",
+      "unidad": "HKD",
+      "etiquetas": {
+        "2024-25": "2024/25",
+        "2025-26": "2025/26",
+        "2026-27": "2026/27"
+      },
+      "proximaRevision": "2027-05-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "hasta": "2026-05-21",
+          "valor": {
+            "2024-25": 25000,
+            "2025-26": 25000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-22",
+          "valor": {
+            "2024-25": 25000,
+            "2025-26": 25000,
+            "2026-27": 27500
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "2026/27 amounts from the 2026-27 Budget, gazetted on 22 May 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.elderly-care-limit",
+      "nombre": "Maximum deduction for elderly residential care expenses by year of assessment",
+      "tipo": "mapa",
+      "unidad": "HKD",
+      "etiquetas": {
+        "2024-25": "2024/25",
+        "2025-26": "2025/26",
+        "2026-27": "2026/27"
+      },
+      "proximaRevision": "2027-05-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "hasta": "2026-05-21",
+          "valor": {
+            "2024-25": 100000,
+            "2025-26": 100000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-22",
+          "valor": {
+            "2024-25": 100000,
+            "2025-26": 100000,
+            "2026-27": 110000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "2026/27 amounts from the 2026-27 Budget, gazetted on 22 May 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.tax-reduction-cap",
+      "nombre": "One-off reduction of final salaries tax and profits tax (100%, capped per case)",
+      "tipo": "mapa",
+      "unidad": "HKD",
+      "etiquetas": {
+        "2024-25": "2024/25",
+        "2025-26": "2025/26",
+        "2026-27": "2026/27"
+      },
+      "proximaRevision": "2027-05-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "hasta": "2026-05-21",
+          "valor": {
+            "2024-25": 1500
+          },
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "Tax Rates of Salaries Tax & Personal Assessment",
+            "url": "https://www.gov.hk/en/residents/taxes/taxfiling/taxrates/salariesrates.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-22",
+          "valor": {
+            "2024-25": 1500,
+            "2025-26": 3000
+          },
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "Tax Rates of Salaries Tax & Personal Assessment",
+            "url": "https://www.gov.hk/en/residents/taxes/taxfiling/taxrates/salariesrates.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "The 2025/26 reduction was gazetted on 22 May 2026. It does not apply to provisional tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.deduction-limits",
+      "nombre": "Maximum deductions for salaries tax",
+      "tipo": "mapa",
+      "unidad": "HKD",
+      "etiquetas": {
+        "mpf": "Mandatory contributions to MPF or other recognised retirement schemes",
+        "tvc-annuity": "Qualifying annuity premiums and tax deductible MPF voluntary contributions",
+        "self-education": "Self-education expenses",
+        "domestic-rent": "Domestic rent (basic ceiling)",
+        "home-loan": "Home loan interest (basic ceiling)",
+        "vhis": "VHIS premiums for each insured person"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": {
+            "mpf": 18000,
+            "tvc-annuity": 60000,
+            "self-education": 100000,
+            "domestic-rent": 100000,
+            "home-loan": 100000,
+            "vhis": 8000
+          },
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "PAM 61(e): Allowances, Deductions and Tax Rate Table (August 2026)",
+            "url": "https://www.ird.gov.hk/eng/pdf/pam61e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.property-tax-rate",
+      "nombre": "Property tax standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-04-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "Tax Rates of Property Tax",
+            "url": "https://www.gov.hk/en/residents/taxes/taxfiling/taxrates/propertyrates.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.property-repairs-allowance",
+      "nombre": "Statutory allowance for repairs and outgoings",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-04-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "How Property Tax is computed",
+            "url": "https://www.gov.hk/en/residents/taxes/property/propertycompute.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.profits-tax-corporations",
+      "nombre": "Profits tax two-tiered rates for corporations",
+      "tipo": "escala",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000000,
+              "tasa": 8.25
+            },
+            {
+              "desde": 2000000,
+              "hasta": null,
+              "tasa": 16.5
+            }
+          ],
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "Tax Rates of Profits Tax",
+            "url": "https://www.gov.hk/en/residents/taxes/taxfiling/taxrates/profitsrates.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.profits-tax-unincorporated",
+      "nombre": "Profits tax two-tiered rates for unincorporated businesses",
+      "tipo": "escala",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000000,
+              "tasa": 7.5
+            },
+            {
+              "desde": 2000000,
+              "hasta": null,
+              "tasa": 15
+            }
+          ],
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "Tax Rates of Profits Tax",
+            "url": "https://www.gov.hk/en/residents/taxes/taxfiling/taxrates/profitsrates.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.avd-residential",
+      "nombre": "Ad valorem stamp duty on residential property (Part 1 of Scale 1 and Scale 2)",
+      "tipo": "escala",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-26",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 4000000,
+              "tasa": 0,
+              "cuotaFija": 100
+            },
+            {
+              "desde": 4000000,
+              "hasta": 4323780,
+              "tasa": 20,
+              "cuotaFija": 100
+            },
+            {
+              "desde": 4323780,
+              "hasta": 4500000,
+              "tasa": 1.5
+            },
+            {
+              "desde": 4500000,
+              "hasta": 4935480,
+              "tasa": 10,
+              "cuotaFija": 67500
+            },
+            {
+              "desde": 4935480,
+              "hasta": 6000000,
+              "tasa": 2.25
+            },
+            {
+              "desde": 6000000,
+              "hasta": 6642860,
+              "tasa": 10,
+              "cuotaFija": 135000
+            },
+            {
+              "desde": 6642860,
+              "hasta": 9000000,
+              "tasa": 3
+            },
+            {
+              "desde": 9000000,
+              "hasta": 10080000,
+              "tasa": 10,
+              "cuotaFija": 270000
+            },
+            {
+              "desde": 10080000,
+              "hasta": 20000000,
+              "tasa": 3.75
+            },
+            {
+              "desde": 20000000,
+              "hasta": 21739120,
+              "tasa": 10,
+              "cuotaFija": 750000
+            },
+            {
+              "desde": 21739120,
+              "hasta": 100000000,
+              "tasa": 4.25
+            },
+            {
+              "desde": 100000000,
+              "hasta": 109574470,
+              "tasa": 30,
+              "cuotaFija": 4250000
+            },
+            {
+              "desde": 109574470,
+              "hasta": null,
+              "tasa": 6.5
+            }
+          ],
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "Rates of Stamp Duty",
+            "url": "https://www.gov.hk/en/residents/taxes/stamp/stamp_duty_rates.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Rows with cuotaFija are marginal relief bands (fixed amount plus a share of the excess over desde); the others charge the rate on the whole consideration."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.avd-non-residential",
+      "nombre": "Ad valorem stamp duty on non-residential property (Scale 3)",
+      "tipo": "escala",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-26",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 4000000,
+              "tasa": 0,
+              "cuotaFija": 100
+            },
+            {
+              "desde": 4000000,
+              "hasta": 4323780,
+              "tasa": 20,
+              "cuotaFija": 100
+            },
+            {
+              "desde": 4323780,
+              "hasta": 4500000,
+              "tasa": 1.5
+            },
+            {
+              "desde": 4500000,
+              "hasta": 4935480,
+              "tasa": 10,
+              "cuotaFija": 67500
+            },
+            {
+              "desde": 4935480,
+              "hasta": 6000000,
+              "tasa": 2.25
+            },
+            {
+              "desde": 6000000,
+              "hasta": 6642860,
+              "tasa": 10,
+              "cuotaFija": 135000
+            },
+            {
+              "desde": 6642860,
+              "hasta": 9000000,
+              "tasa": 3
+            },
+            {
+              "desde": 9000000,
+              "hasta": 10080000,
+              "tasa": 10,
+              "cuotaFija": 270000
+            },
+            {
+              "desde": 10080000,
+              "hasta": 20000000,
+              "tasa": 3.75
+            },
+            {
+              "desde": 20000000,
+              "hasta": 21739120,
+              "tasa": 10,
+              "cuotaFija": 750000
+            },
+            {
+              "desde": 21739120,
+              "hasta": null,
+              "tasa": 4.25
+            }
+          ],
+          "fuente": {
+            "organismo": "GovHK",
+            "titulo": "Rates of Stamp Duty",
+            "url": "https://www.gov.hk/en/residents/taxes/stamp/stamp_duty_rates.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Same structure as the residential scale, without the bands above $100 million."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.mpf-rate",
+      "nombre": "MPF mandatory contribution rate (employee and employer, each)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-06-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Mandatory Provident Fund Schemes Authority",
+            "titulo": "Mandatory contributions: employees",
+            "url": "https://www.mpfa.org.hk/en/mpf-system/mandatory-contributions/employees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.mpf-min-relevant-income",
+      "nombre": "Minimum relevant income level (monthly)",
+      "tipo": "numero",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-06-01",
+          "valor": 7100,
+          "fuente": {
+            "organismo": "Mandatory Provident Fund Schemes Authority",
+            "titulo": "Mandatory contributions: employees",
+            "url": "https://www.mpfa.org.hk/en/mpf-system/mandatory-contributions/employees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "In force since 1 November 2013."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.mpf-max-relevant-income",
+      "nombre": "Maximum relevant income level (monthly)",
+      "tipo": "numero",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-06-01",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "Mandatory Provident Fund Schemes Authority",
+            "titulo": "Mandatory contributions: employees",
+            "url": "https://www.mpfa.org.hk/en/mpf-system/mandatory-contributions/employees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.minimum-wage",
+      "nombre": "Statutory minimum wage (per hour)",
+      "tipo": "numero",
+      "unidad": "HKD",
+      "proximaRevision": "2027-05-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 43.1,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "Statutory Minimum Wage",
+            "url": "https://www.labour.gov.hk/eng/news/mwo.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.smw-record-cap",
+      "nombre": "Monthly wage below which the employer must record hours worked",
+      "tipo": "numero",
+      "unidad": "HKD",
+      "proximaRevision": "2027-05-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 17600,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "Statutory Minimum Wage: keeping records of hours worked",
+            "url": "https://www.labour.gov.hk/eng/faq/smw_keeping_record.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.annual-leave-days",
+      "nombre": "Paid annual leave by years of service",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-01",
+          "valor": {
+            "1": 7,
+            "2": 7,
+            "3": 8,
+            "4": 9,
+            "5": 10,
+            "6": 11,
+            "7": 12,
+            "8": 13,
+            "9": 14
+          },
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Key 9 covers 9 years or more."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.statutory-holidays",
+      "nombre": "Statutory holidays in the year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "hasta": "2029-12-31",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2030-01-01",
+          "valor": 17,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.leave-pay-fraction",
+      "nombre": "Daily rate of sickness allowance, maternity leave pay and paternity leave pay (share of average daily wages)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Four-fifths of the 12-month average daily wages."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.sick-days-accrual",
+      "nombre": "Paid sickness days accumulated per completed month",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "first-12-months": "First 12 months",
+        "after-12-months": "After 12 months",
+        "maximum": "Maximum held at any time"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-01",
+          "valor": {
+            "first-12-months": 2,
+            "after-12-months": 4,
+            "maximum": 120
+          },
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.maternity-leave-weeks",
+      "nombre": "Paid maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-12-11",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.maternity-pay-cap",
+      "nombre": "Cap on maternity leave pay for the 11th to 14th weeks",
+      "tipo": "numero",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-12-11",
+          "valor": 80000,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.paternity-leave-days",
+      "nombre": "Paid paternity leave per confinement",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-18",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.sp-lsp-wage-cap",
+      "nombre": "Monthly wages cap for severance and long service payment",
+      "tipo": "numero",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-01",
+          "valor": 22500,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Two thirds of $22,500, i.e. $15,000 per year of service at most."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hk.sp-lsp-maximum",
+      "nombre": "Maximum severance or long service payment",
+      "tipo": "numero",
+      "unidad": "HKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-01",
+          "valor": 390000,
+          "fuente": {
+            "organismo": "Labour Department",
+            "titulo": "A Concise Guide to the Employment Ordinance (December 2025)",
+            "url": "https://www.labour.gov.hk/eng/public/wcp/ConciseGuide/EO_guide_full.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    }
+  ]
+}
