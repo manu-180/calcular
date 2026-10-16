@@ -666,7 +666,35 @@
       "nombre": "Sociale bijdragen zelfstandigen 2026 (zonder beheerskosten)",
       "tipo": "mapa",
       "unidad": "EUR",
-      "nota": "tarief1 en tarief2 in %. Bedragen in EUR per jaar, behalve de kwartaalbedragen.",
+      "nota": "Bedragen in EUR per jaar. De tarieven staan in be.rsvz-tarieven.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "grens-1": 75024.54,
+            "grens-2": 110562.42,
+            "minimum-inkomen": 17374.08,
+            "minimum-inkomen-primostarter": 8972.07,
+            "drempel-bijberoep": 1922.16
+          },
+          "fuente": {
+            "organismo": "FOD Sociale Zekerheid",
+            "titulo": "Sociale bijdragen 2026 (zonder de beheerskosten)",
+            "url": "https://socialsecurity.belgium.be/sites/default/files/content/docs/nl/sociaal-beleid-vorm-geven/zelfstandigen/bijdragennota_2026_tabel_nl.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.rsvz-tarieven",
+      "nombre": "Sociale bijdragen zelfstandigen 2026: tarieven",
+      "tipo": "mapa",
+      "unidad": "%",
       "proximaRevision": "2027-01-01",
       "tramos": [
         {
@@ -675,12 +703,7 @@
           "hasta": "2026-12-31",
           "valor": {
             "tarief-1": 20.5,
-            "tarief-2": 14.16,
-            "grens-1": 75024.54,
-            "grens-2": 110562.42,
-            "minimum-inkomen": 17374.08,
-            "minimum-inkomen-primostarter": 8972.07,
-            "drempel-bijberoep": 1922.16
+            "tarief-2": 14.16
           },
           "fuente": {
             "organismo": "FOD Sociale Zekerheid",

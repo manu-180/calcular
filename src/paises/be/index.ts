@@ -16,6 +16,14 @@ import vakantiegeldBerekenen from "./calculadoras/vakantiegeld-berekenen";
 import contenidoVakantiegeldBerekenen from "./contenido/vakantiegeld-berekenen";
 import opzeggingstermijnBerekenen from "./calculadoras/opzeggingstermijn-berekenen";
 import contenidoOpzeggingstermijnBerekenen from "./contenido/opzeggingstermijn-berekenen";
+import overurenBerekenen from "./calculadoras/overuren-berekenen";
+import contenidoOverurenBerekenen from "./contenido/overuren-berekenen";
+import socialeBijdragenZelfstandige from "./calculadoras/sociale-bijdragen-zelfstandige";
+import contenidoSocialeBijdragenZelfstandige from "./contenido/sociale-bijdragen-zelfstandige";
+import groeipakketBerekenen from "./calculadoras/groeipakket-berekenen";
+import contenidoGroeipakketBerekenen from "./contenido/groeipakket-berekenen";
+import maaltijdchequesBerekenen from "./calculadoras/maaltijdcheques-berekenen";
+import contenidoMaaltijdchequesBerekenen from "./contenido/maaltijdcheques-berekenen";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: minimumloonBerekenen, contenido: contenidoMinimumloonBerekenen, cliente: () => import("./calculadoras/minimumloon-berekenen.cliente") },
     { definicion: vakantiegeldBerekenen, contenido: contenidoVakantiegeldBerekenen, cliente: () => import("./calculadoras/vakantiegeld-berekenen.cliente") },
     { definicion: opzeggingstermijnBerekenen, contenido: contenidoOpzeggingstermijnBerekenen, cliente: () => import("./calculadoras/opzeggingstermijn-berekenen.cliente") },
+    { definicion: overurenBerekenen, contenido: contenidoOverurenBerekenen, cliente: () => import("./calculadoras/overuren-berekenen.cliente") },
+    { definicion: socialeBijdragenZelfstandige, contenido: contenidoSocialeBijdragenZelfstandige, cliente: () => import("./calculadoras/sociale-bijdragen-zelfstandige.cliente") },
+    { definicion: groeipakketBerekenen, contenido: contenidoGroeipakketBerekenen, cliente: () => import("./calculadoras/groeipakket-berekenen.cliente") },
+    { definicion: maaltijdchequesBerekenen, contenido: contenidoMaaltijdchequesBerekenen, cliente: () => import("./calculadoras/maaltijdcheques-berekenen.cliente") },
   ],
   universales: "todas",
   novedades,

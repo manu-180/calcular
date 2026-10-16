@@ -7,7 +7,7 @@ export default definirContenido({
   description:
     "Bereken wat een werknemer je als werkgever kost: brutoloon, werkgeversbijdragen RSZ, vakantiegeld van arbeiders en dubbel vakantiegeld van bedienden.",
   intro: [
-    "Een werknemer kost meer dan zijn brutoloon. Bovenop het loon betaal je als werkgever RSZ-bijdragen: een basisbijdrage en een loonmatigingsbijdrage, samen 25 % voor de meeste werknemers in de privésector.",
+    "Een werknemer kost meer dan zijn brutoloon. Bovenop het loon betaal je als werkgever RSZ-bijdragen: een basisbijdrage van {{be.rsz-werkgever[basis]}} en een loonmatigingsbijdrage van {{be.rsz-werkgever[loonmatiging]}} voor de meeste werknemers in de privésector.",
     "Vul het brutoloon in en kies bediende of arbeider. Je ziet de loonkost per maand en per jaar, zonder de verminderingen waar je misschien recht op hebt.",
   ],
   comoSeCalcula: [
@@ -21,14 +21,14 @@ export default definirContenido({
   ],
   faq: [
     {
-      pregunta: "Betaal ik als werkgever altijd 25 %?",
+      pregunta: "Betaal ik als werkgever altijd hetzelfde tarief?",
       respuesta:
-        "Het tarief van 25 % (19,88 % basisbijdrage en 5,12 % loonmatiging) geldt voor de meeste werknemers in de privésector. Andere categorieën, zoals de openbare sector, hebben andere percentages. Verminderingen kunnen de echte kost flink verlagen.",
+        "Het tarief van {{be.rsz-werkgever[basis]}} basisbijdrage en {{be.rsz-werkgever[loonmatiging]}} loonmatiging geldt voor de meeste werknemers in de privésector. Andere categorieën, zoals de openbare sector, hebben andere percentages. Verminderingen kunnen de echte kost flink verlagen.",
     },
     {
       pregunta: "Waarom zijn de bijdragen voor arbeiders hoger?",
       respuesta:
-        "Voor arbeiders worden de bijdragen berekend op 108 % van het brutoloon, en betaal je een extra bijdrage van 15,84 % op dat bedrag voor de vakantieregeling. Daarmee financier je het vakantiegeld dat de RJV of een vakantiefonds uitbetaalt.",
+        "Voor arbeiders worden de bijdragen berekend op 108 % van het brutoloon, en betaal je een extra bijdrage van {{be.rsz-werkgever[vakantie-arbeiders]}} op dat bedrag voor de vakantieregeling. Daarmee financier je het vakantiegeld dat de RJV of een vakantiefonds uitbetaalt.",
     },
     {
       pregunta: "Wat zit er niet in deze berekening?",
@@ -39,6 +39,6 @@ export default definirContenido({
   glosario: [
     { termino: "Loonmatigingsbijdrage", definicion: "Een werkgeversbijdrage bovenop de basisbijdrage, die voor bijna alle werknemers verschuldigd is." },
     { termino: "Structurele vermindering", definicion: "Een korting op de werkgeversbijdragen, vooral voor lage lonen." },
-    { termino: "Dubbel vakantiegeld", definicion: "Het extra vakantiegeld dat een bediende één keer per jaar krijgt, 92 % van het maandloon." },
+    { termino: "Dubbel vakantiegeld", definicion: "Het extra vakantiegeld dat een bediende één keer per jaar krijgt, {{be.vakantiegeld[dubbel-bediende]}} van het maandloon." },
   ],
 });
