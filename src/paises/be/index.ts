@@ -8,6 +8,14 @@ import contenidoBedrijfsvoorheffingBerekenen from "./contenido/bedrijfsvoorheffi
 import contenidoBrutoNettoBerekenen from "./contenido/bruto-netto-berekenen";
 import contenidoBtwBerekenen from "./contenido/btw-berekenen";
 import contenidoRszBerekenen from "./contenido/rsz-berekenen";
+import loonkostBerekenen from "./calculadoras/loonkost-berekenen";
+import contenidoLoonkostBerekenen from "./contenido/loonkost-berekenen";
+import minimumloonBerekenen from "./calculadoras/minimumloon-berekenen";
+import contenidoMinimumloonBerekenen from "./contenido/minimumloon-berekenen";
+import vakantiegeldBerekenen from "./calculadoras/vakantiegeld-berekenen";
+import contenidoVakantiegeldBerekenen from "./contenido/vakantiegeld-berekenen";
+import opzeggingstermijnBerekenen from "./calculadoras/opzeggingstermijn-berekenen";
+import contenidoOpzeggingstermijnBerekenen from "./contenido/opzeggingstermijn-berekenen";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -24,6 +32,10 @@ export default definirPais({
     { definicion: bedrijfsvoorheffingBerekenen, contenido: contenidoBedrijfsvoorheffingBerekenen, cliente: () => import("./calculadoras/bedrijfsvoorheffing-berekenen.cliente") },
     { definicion: rszBerekenen, contenido: contenidoRszBerekenen, cliente: () => import("./calculadoras/rsz-berekenen.cliente") },
     { definicion: btwBerekenen, contenido: contenidoBtwBerekenen, cliente: () => import("./calculadoras/btw-berekenen.cliente") },
+    { definicion: loonkostBerekenen, contenido: contenidoLoonkostBerekenen, cliente: () => import("./calculadoras/loonkost-berekenen.cliente") },
+    { definicion: minimumloonBerekenen, contenido: contenidoMinimumloonBerekenen, cliente: () => import("./calculadoras/minimumloon-berekenen.cliente") },
+    { definicion: vakantiegeldBerekenen, contenido: contenidoVakantiegeldBerekenen, cliente: () => import("./calculadoras/vakantiegeld-berekenen.cliente") },
+    { definicion: opzeggingstermijnBerekenen, contenido: contenidoOpzeggingstermijnBerekenen, cliente: () => import("./calculadoras/opzeggingstermijn-berekenen.cliente") },
   ],
   universales: "todas",
   novedades,
