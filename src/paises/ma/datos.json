@@ -1,0 +1,437 @@
+{
+  "mercado": "ma",
+  "datos": [
+    {
+      "id": "ma.tva-normal",
+      "nombre": "TVA, taux normal",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.tva-reduit",
+      "nombre": "TVA, taux réduit",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.ir-bareme",
+      "nombre": "Barème de l'impôt sur le revenu (annuel)",
+      "tipo": "escala",
+      "unidad": "MAD",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 73-I du CGI, applicable aux revenus acquis à partir du 1er janvier 2025.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 40000,
+              "tasa": 0
+            },
+            {
+              "desde": 40000,
+              "hasta": 60000,
+              "tasa": 10
+            },
+            {
+              "desde": 60000,
+              "hasta": 80000,
+              "tasa": 20
+            },
+            {
+              "desde": 80000,
+              "hasta": 100000,
+              "tasa": 30
+            },
+            {
+              "desde": 100000,
+              "hasta": 180000,
+              "tasa": 34
+            },
+            {
+              "desde": 180000,
+              "hasta": null,
+              "tasa": 37
+            }
+          ],
+          "fuente": {
+            "organismo": "Bulletin officiel",
+            "titulo": "Loi de finances n° 60-24 pour l'année budgétaire 2025 (BO n° 7362 du 19-12-2024)",
+            "url": "https://www.sgg.gov.ma/BO/FR/2873/2024/BO_7362_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.frais-professionnels-taux",
+      "nombre": "Déduction forfaitaire pour frais professionnels : taux",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "Article 59-I-A du CGI.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "jusqu-au-seuil": 35,
+            "au-dela": 25
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.frais-professionnels-limites",
+      "nombre": "Déduction forfaitaire pour frais professionnels : seuil et plafond annuels",
+      "tipo": "mapa",
+      "unidad": "MAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "seuil": 78000,
+            "plafond": 35000
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.charges-de-famille",
+      "nombre": "Réduction pour charges de famille (annuelle)",
+      "tipo": "mapa",
+      "unidad": "MAD",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 74-I du CGI.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "par-personne": 500,
+            "plafond": 3000
+          },
+          "fuente": {
+            "organismo": "Bulletin officiel",
+            "titulo": "Loi de finances n° 60-24 pour l'année budgétaire 2025 (BO n° 7362 du 19-12-2024)",
+            "url": "https://www.sgg.gov.ma/BO/FR/2873/2024/BO_7362_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          },
+          "hasta": "2025-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "par-personne": 600,
+            "plafond": 3600
+          },
+          "fuente": {
+            "organismo": "Bulletin officiel",
+            "titulo": "Loi de finances n° 50-25 pour l'année budgétaire 2026 (BO n° 7465 bis du 16-12-2025)",
+            "url": "https://www.sgg.gov.ma/BO/FR/2873/2025/BO_7465-bis_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.is-taux",
+      "nombre": "Impôt sur les sociétés : taux normaux (exercices ouverts à partir du 1er janvier 2026)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "Article 19-I du CGI et fin de la période transitoire de l'article 247-XXXVII-A.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "normal": 20,
+            "grandes-entreprises": 35,
+            "etablissements-financiers": 40
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.is-seuil",
+      "nombre": "Impôt sur les sociétés : seuil de bénéfice net pour le taux de 35 %",
+      "tipo": "numero",
+      "unidad": "MAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000000,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.auto-entrepreneur-taux",
+      "nombre": "Auto-entrepreneur : taux de l'impôt sur le chiffre d'affaires encaissé",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "Article 73-III du CGI.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "commerce": 0.5,
+            "services": 1
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.auto-entrepreneur-plafonds",
+      "nombre": "Auto-entrepreneur : plafonds de chiffre d'affaires annuel",
+      "tipo": "mapa",
+      "unidad": "MAD",
+      "nota": "Article 42 ter-II du CGI.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "commerce": 500000,
+            "services": 200000
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.droits-enregistrement",
+      "nombre": "Droits d'enregistrement sur les acquisitions immobilières",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "Article 133-I (F et G) du CGI : 4 % pour les locaux construits, 5 % pour les terrains nus.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "locaux-construits": 4,
+            "terrains-nus": 5
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.droits-enregistrement-minimum",
+      "nombre": "Droits d'enregistrement : minimum de perception",
+      "tipo": "numero",
+      "unidad": "MAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts, édition 2026",
+            "url": "https://web.archive.org/web/20251231114204/https://www.tax.gov.ma/wps/wcm/connect/08712531-1e81-4e28-a38b-2bd9edf8e09e/CGI+2026+FR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-08712531-1e81-4e28-a38b-2bd9edf8e09e-pM5DEs1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Edition publiée par la DGI sur tax.gov.ma, lue dans la copie du 31/12/2025 conservée par web.archive.org : tax.gov.ma refuse les connexions depuis notre environnement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.heures-supplementaires",
+      "nombre": "Majorations pour heures supplémentaires (activités non agricoles)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "Article 201 du code du travail.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-06-08",
+          "valor": {
+            "jour": 25,
+            "nuit": 50,
+            "repos-jour": 50,
+            "repos-nuit": 100
+          },
+          "fuente": {
+            "organismo": "Ministère de la Justice (Adala)",
+            "titulo": "Loi n° 65-99 formant code du travail, version consolidée",
+            "url": "https://adala.justice.gov.ma/api/uploads/2024/04/30/code%20du%20travail-1714463246806.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.duree-travail",
+      "nombre": "Durée normale du travail (activités non agricoles)",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "nota": "Article 184 du code du travail.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-06-08",
+          "valor": {
+            "annuelle": 2288,
+            "hebdomadaire": 44
+          },
+          "fuente": {
+            "organismo": "Ministère de la Justice (Adala)",
+            "titulo": "Loi n° 65-99 formant code du travail, version consolidée",
+            "url": "https://adala.justice.gov.ma/api/uploads/2024/04/30/code%20du%20travail-1714463246806.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.indemnite-licenciement",
+      "nombre": "Indemnité de licenciement : heures de salaire par année d'ancienneté",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "nota": "Article 53 du code du travail.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-06-08",
+          "valor": {
+            "ans-1-a-5": 96,
+            "ans-6-a-10": 144,
+            "ans-11-a-15": 192,
+            "au-dela-de-15": 240
+          },
+          "fuente": {
+            "organismo": "Ministère de la Justice (Adala)",
+            "titulo": "Loi n° 65-99 formant code du travail, version consolidée",
+            "url": "https://adala.justice.gov.ma/api/uploads/2024/04/30/code%20du%20travail-1714463246806.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ma.conges-payes",
+      "nombre": "Congé annuel payé : jours ouvrables",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "nota": "Articles 231 et 232 du code du travail.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-06-08",
+          "valor": {
+            "par-mois": 1.5,
+            "par-mois-moins-de-18-ans": 2,
+            "par-tranche-de-5-ans": 1.5,
+            "maximum": 30
+          },
+          "fuente": {
+            "organismo": "Ministère de la Justice (Adala)",
+            "titulo": "Loi n° 65-99 formant code du travail, version consolidée",
+            "url": "https://adala.justice.gov.ma/api/uploads/2024/04/30/code%20du%20travail-1714463246806.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    }
+  ]
+}
