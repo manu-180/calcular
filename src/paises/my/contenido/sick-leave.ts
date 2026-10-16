@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "my.sick-leave",
   h1: "Sick leave calculator Malaysia",
   title: "Sick leave entitlement under the Employment Act 1955",
-  description: "See your paid sick leave under section 60F: 14, 18 or 22 days a year by length of service, and up to 60 days when you need hospitalisation.",
+  description: "See your paid sick leave under section 60F: {{my.sick-leave-days[under-2]}}, {{my.sick-leave-days[2-to-5]}} or {{my.sick-leave-days[5-plus]}} a year by length of service, and up to {{my.sick-leave-days[hospitalisation]}} when you need hospitalisation.",
   intro: [
     "Enter your years of service to see how many days of paid sick leave you get each calendar year and how many you have left.",
     "Sick leave needs a certificate from a registered medical practitioner, a medical officer or a dental surgeon.",

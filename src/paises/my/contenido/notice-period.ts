@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "my.notice-period",
   h1: "Notice period calculator Malaysia",
   title: "Notice period Malaysia: minimum notice and pay in lieu",
-  description: "Find the minimum notice of termination under section 12 of the Employment Act (4, 6 or 8 weeks) and estimate the pay in lieu of notice.",
+  description: "Find the minimum notice of termination under section 12 of the Employment Act (by length of service) and estimate the pay in lieu of notice.",
   intro: [
     "When your contract says nothing in writing about notice, the Employment Act sets a minimum that depends on how long you have worked.",
     "The same notice applies to both sides: the employer and the employee.",

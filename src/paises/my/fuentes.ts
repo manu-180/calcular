@@ -86,7 +86,7 @@ export const detectores: readonly Detector[] = [
     metodo: "html",
     url: "https://www.perkeso.gov.my/en/rate-of-contribution.html",
     traer(http) {
-      return marcadores(http, this.url, "PERKESO contribution rate page changed", /PERKESO/, [/RM5,000 to (?:<[^>]+>\s*)*RM6,000/, /NewContributionRateIncludingSKBBK\.pdf/, /151124-Rate Contribution ACT 800\.pdf/]);
+      return marcadores(http, this.url, "PERKESO contribution rate page changed", /PERKESO/, [/RM5,000\s+to\s*(?:<[^>]+>\s*)*RM6,000/, /NewContributionRateIncludingSKBBK\.pdf/, /151124-Rate Contribution ACT 800\.pdf/]);
     },
   },
   {
