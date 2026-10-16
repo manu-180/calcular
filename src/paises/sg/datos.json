@@ -312,7 +312,7 @@
     },
     {
       "id": "sg.cpf-interes-extra",
-      "nombre": "CPF extra interest on the first $60,000",
+      "nombre": "CPF extra interest on the first $60,000 (members below 55)",
       "tipo": "numero",
       "unidad": "%",
       "proximaRevision": "2027-01-01",
@@ -323,10 +323,38 @@
           "valor": 1,
           "fuente": {
             "organismo": "CPF Board",
-            "titulo": "Earning attractive interest",
-            "url": "https://www.cpf.gov.sg/member/growing-your-savings/earning-higher-returns/earning-attractive-interest",
+            "titulo": "News release, 22 September 2026: interest rates from 1 October to 31 December 2026",
+            "url": "https://www.cpf.gov.sg/member/infohub/news/news-releases/government-extends-4-per-cent-interest-rate-floor-on-special-medisave-and-retirement-account-monies-until-31-december-2027",
             "tipo": "primaria",
-            "verificadoEl": "2026-10-14"
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-extra-55",
+      "nombre": "CPF extra interest for members aged 55 and above",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "primeros": "On the first $30,000",
+        "siguientes": "On the next $30,000"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "primeros": 2,
+            "siguientes": 1
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "News release, 22 September 2026: interest rates from 1 October to 31 December 2026",
+            "url": "https://www.cpf.gov.sg/member/infohub/news/news-releases/government-extends-4-per-cent-interest-rate-floor-on-special-medisave-and-retirement-account-monies-until-31-december-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
           }
         }
       ]
@@ -338,7 +366,8 @@
       "unidad": "SGD",
       "etiquetas": {
         "total": "Combined balances",
-        "oa": "Of which Ordinary Account"
+        "oa": "Of which Ordinary Account",
+        "tramo-55": "First tier for members aged 55 and above"
       },
       "tramos": [
         {
@@ -346,14 +375,202 @@
           "desde": "2026-10-01",
           "valor": {
             "total": 60000,
-            "oa": 20000
+            "oa": 20000,
+            "tramo-55": 30000
           },
           "fuente": {
             "organismo": "CPF Board",
-            "titulo": "Earning attractive interest",
-            "url": "https://www.cpf.gov.sg/member/growing-your-savings/earning-higher-returns/earning-attractive-interest",
+            "titulo": "News release, 22 September 2026: interest rates from 1 October to 31 December 2026",
+            "url": "https://www.cpf.gov.sg/member/infohub/news/news-releases/government-extends-4-per-cent-interest-rate-floor-on-special-medisave-and-retirement-account-monies-until-31-december-2027",
             "tipo": "primaria",
-            "verificadoEl": "2026-10-14"
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.hdb-tasa-concesional",
+      "nombre": "HDB concessionary housing loan interest rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 2.6,
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "News release, 22 September 2026: interest rates from 1 October to 31 December 2026",
+            "url": "https://www.cpf.gov.sg/member/infohub/news/news-releases/government-extends-4-per-cent-interest-rate-floor-on-special-medisave-and-retirement-account-monies-until-31-december-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "sg.sdl-tasa",
+      "nombre": "Skills Development Levy rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "How do I calculate and pay the Skills Development Levy (SDL)?",
+            "url": "https://www.cpf.gov.sg/service/article/how-do-i-calculate-and-pay-the-skills-development-levy-sdl",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.sdl-limites",
+      "nombre": "Skills Development Levy minimum and maximum",
+      "tipo": "mapa",
+      "unidad": "SGD",
+      "etiquetas": {
+        "minimo": "Minimum levy",
+        "maximo": "Maximum levy",
+        "salario-minimo": "Minimum applies below",
+        "salario-maximo": "Maximum applies above"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "minimo": 2,
+            "maximo": 11.25,
+            "salario-minimo": 800,
+            "salario-maximo": 4500
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "How do I calculate and pay the Skills Development Levy (SDL)?",
+            "url": "https://www.cpf.gov.sg/service/article/how-do-i-calculate-and-pay-the-skills-development-levy-sdl",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.tdsr",
+      "nombre": "Total Debt Servicing Ratio threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-12-16",
+          "valor": 55,
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "MSR and TDSR rules for new housing loans",
+            "url": "https://www.mas.gov.sg/regulation/explainers/new-housing-loans/msr-and-tdsr-rules",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.msr",
+      "nombre": "Mortgage Servicing Ratio cap (HDB flats and ECs)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "MSR and TDSR rules for new housing loans",
+            "url": "https://www.mas.gov.sg/regulation/explainers/new-housing-loans/msr-and-tdsr-rules",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.tdsr-tasa-piso",
+      "nombre": "Medium-term interest rate floor for TDSR",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "residencial": "Residential property",
+        "no-residencial": "Non-residential property"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "residencial": 4,
+            "no-residencial": 5
+          },
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "Calculating TDSR for property loans",
+            "url": "https://www.mas.gov.sg/regulation/explainers/tdsr-for-property-loans/calculating-tdsr",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.tdsr-descuento-variable",
+      "nombre": "Minimum haircut on variable and rental income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "Calculating TDSR for property loans",
+            "url": "https://www.mas.gov.sg/regulation/explainers/tdsr-for-property-loans/calculating-tdsr",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.plazo-maximo-prestamo",
+      "nombre": "Maximum loan tenure for bank housing loans",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "hdb": "HDB flat",
+        "otros": "Other property"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "hdb": 30,
+            "otros": 35
+          },
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "New housing loans: housing loan rules",
+            "url": "https://www.mas.gov.sg/regulation/explainers/new-housing-loans",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
           }
         }
       ]

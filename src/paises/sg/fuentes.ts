@@ -57,7 +57,7 @@ export const detectores: readonly Detector[] = [
   {
     id: "sg.cpf-interes",
     carril: "norma",
-    datos: ["sg.cpf-interes-oa", "sg.cpf-interes-sma", "sg.cpf-interes-extra", "sg.cpf-extra-topes"],
+    datos: ["sg.cpf-interes-oa", "sg.cpf-interes-sma", "sg.cpf-interes-extra", "sg.cpf-extra-55", "sg.cpf-extra-topes", "sg.hdb-tasa-concesional"],
     metodo: "html",
     url: "https://www.cpf.gov.sg/member/growing-your-savings/earning-higher-returns/earning-attractive-interest",
     userAgentNavegador: true,

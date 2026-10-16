@@ -8,6 +8,10 @@ import cpfContributionCalculator from "./calculadoras/cpf-contribution-calculato
 import contenidoCpfContributionCalculator from "./contenido/cpf-contribution-calculator";
 import cpfAllocation from "./calculadoras/cpf-allocation";
 import contenidoCpfAllocation from "./contenido/cpf-allocation";
+import cpfInterest from "./calculadoras/cpf-interest";
+import contenidoCpfInterest from "./contenido/cpf-interest";
+import employerCostCalculator from "./calculadoras/employer-cost-calculator";
+import contenidoEmployerCostCalculator from "./contenido/employer-cost-calculator";
 import gstCalculator from "./calculadoras/gst-calculator";
 import contenidoGstCalculator from "./contenido/gst-calculator";
 import nonResidentTax from "./calculadoras/non-resident-tax";
@@ -22,6 +26,10 @@ import sellerStampDuty from "./calculadoras/seller-stamp-duty";
 import contenidoSellerStampDuty from "./contenido/seller-stamp-duty";
 import propertyTaxCalculator from "./calculadoras/property-tax-calculator";
 import contenidoPropertyTaxCalculator from "./contenido/property-tax-calculator";
+import tdsrCalculator from "./calculadoras/tdsr-calculator";
+import contenidoTdsrCalculator from "./contenido/tdsr-calculator";
+import hdbLoan from "./calculadoras/hdb-loan";
+import contenidoHdbLoan from "./contenido/hdb-loan";
 import annualLeave from "./calculadoras/annual-leave";
 import contenidoAnnualLeave from "./contenido/annual-leave";
 import overtimePay from "./calculadoras/overtime-pay";
@@ -50,6 +58,8 @@ export default definirPais({
     { definicion: incomeTaxCalculator, contenido: contenidoIncomeTaxCalculator, cliente: () => import("./calculadoras/income-tax-calculator.cliente") },
     { definicion: cpfContributionCalculator, contenido: contenidoCpfContributionCalculator, cliente: () => import("./calculadoras/cpf-contribution-calculator.cliente") },
     { definicion: cpfAllocation, contenido: contenidoCpfAllocation, cliente: () => import("./calculadoras/cpf-allocation.cliente") },
+    { definicion: cpfInterest, contenido: contenidoCpfInterest, cliente: () => import("./calculadoras/cpf-interest.cliente") },
+    { definicion: employerCostCalculator, contenido: contenidoEmployerCostCalculator, cliente: () => import("./calculadoras/employer-cost-calculator.cliente") },
     { definicion: gstCalculator, contenido: contenidoGstCalculator, cliente: () => import("./calculadoras/gst-calculator.cliente") },
     { definicion: nonResidentTax, contenido: contenidoNonResidentTax, cliente: () => import("./calculadoras/non-resident-tax.cliente") },
     { definicion: srsTaxSavings, contenido: contenidoSrsTaxSavings, cliente: () => import("./calculadoras/srs-tax-savings.cliente") },
@@ -57,6 +67,8 @@ export default definirPais({
     { definicion: absdCalculator, contenido: contenidoAbsdCalculator, cliente: () => import("./calculadoras/absd-calculator.cliente") },
     { definicion: sellerStampDuty, contenido: contenidoSellerStampDuty, cliente: () => import("./calculadoras/seller-stamp-duty.cliente") },
     { definicion: propertyTaxCalculator, contenido: contenidoPropertyTaxCalculator, cliente: () => import("./calculadoras/property-tax-calculator.cliente") },
+    { definicion: tdsrCalculator, contenido: contenidoTdsrCalculator, cliente: () => import("./calculadoras/tdsr-calculator.cliente") },
+    { definicion: hdbLoan, contenido: contenidoHdbLoan, cliente: () => import("./calculadoras/hdb-loan.cliente") },
     { definicion: annualLeave, contenido: contenidoAnnualLeave, cliente: () => import("./calculadoras/annual-leave.cliente") },
     { definicion: overtimePay, contenido: contenidoOvertimePay, cliente: () => import("./calculadoras/overtime-pay.cliente") },
     { definicion: sickLeave, contenido: contenidoSickLeave, cliente: () => import("./calculadoras/sick-leave.cliente") },
