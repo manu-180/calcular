@@ -37,4 +37,39 @@ export const detectores: readonly Detector[] = [
       return puntos.length ? puntos : null;
     },
   },
+  {
+    // El menú de leyes del NRS lista cada ley con su año en el slug (nigeria-tax-act-2025). Una ley
+    // o enmienda de un año posterior puede cambiar bandas, tasas o exenciones.
+    id: "ng.nrs-tax-laws",
+    carril: "norma",
+    datos: [
+      "ng.paye-bands",
+      "ng.rent-relief-rate",
+      "ng.rent-relief-cap",
+      "ng.vat",
+      "ng.cit-rate",
+      "ng.small-company-turnover",
+      "ng.small-company-assets",
+      "ng.development-levy",
+      "ng.stamp-duty-transfer",
+      "ng.stamp-duty-transfer-threshold",
+      "ng.compensation-exemption",
+    ],
+    metodo: "html",
+    url: "https://www.nrs.gov.ng/tax-laws/nrs-act",
+    userAgentNavegador: true,
+    async traer(http) {
+      const html = await http.texto(this.url, { userAgentNavegador: true });
+      const slugs = new Set([...html.matchAll(/href="\/tax-laws\/([a-z0-9-]+)"/g)].map((m) => m[1]));
+      if (!slugs.size) return null;
+      const hallazgos = [];
+      for (const slug of slugs) {
+        const anio = /-(20\d{2})$/.exec(slug)?.[1];
+        if (anio && Number(anio) > 2025) {
+          hallazgos.push({ titulo: slug.replace(/-/g, " "), url: `https://www.nrs.gov.ng/tax-laws/${slug}`, fecha: `${anio}-01-01` });
+        }
+      }
+      return hallazgos;
+    },
+  },
 ];
