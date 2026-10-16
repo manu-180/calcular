@@ -1,0 +1,879 @@
+{
+  "mercado": "in",
+  "datos": [
+    {
+      "id": "in.new-regime-slabs",
+      "nombre": "Income-tax slabs under section 202(1) (new regime), tax year 2026-27",
+      "tipo": "escala",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 400000,
+              "tasa": 0
+            },
+            {
+              "desde": 400000,
+              "hasta": 800000,
+              "tasa": 5
+            },
+            {
+              "desde": 800000,
+              "hasta": 1200000,
+              "tasa": 10
+            },
+            {
+              "desde": 1200000,
+              "hasta": 1600000,
+              "tasa": 15
+            },
+            {
+              "desde": 1600000,
+              "hasta": 2000000,
+              "tasa": 20
+            },
+            {
+              "desde": 2000000,
+              "hasta": 2400000,
+              "tasa": 25
+            },
+            {
+              "desde": 2400000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025 as amended by the Finance Act, 2026, section 202(1)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.old-regime-slabs",
+      "nombre": "Income-tax slabs under the old regime (Part I-B of the First Schedule), below 60 years",
+      "tipo": "escala",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 250000,
+              "tasa": 0
+            },
+            {
+              "desde": 250000,
+              "hasta": 500000,
+              "tasa": 5
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 20
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministry of Finance",
+            "titulo": "Memorandum explaining the provisions in the Finance Bill, 2026: rates of tax for tax year 2026-27",
+            "url": "https://www.indiabudget.gov.in/doc/memo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.old-regime-slabs-senior",
+      "nombre": "Income-tax slabs under the old regime, resident aged 60 to 79",
+      "tipo": "escala",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 300000,
+              "tasa": 0
+            },
+            {
+              "desde": 300000,
+              "hasta": 500000,
+              "tasa": 5
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 20
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministry of Finance",
+            "titulo": "Memorandum explaining the provisions in the Finance Bill, 2026: rates of tax for tax year 2026-27",
+            "url": "https://www.indiabudget.gov.in/doc/memo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.old-regime-slabs-super-senior",
+      "nombre": "Income-tax slabs under the old regime, resident aged 80 or more",
+      "tipo": "escala",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 500000,
+              "tasa": 0
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 20
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministry of Finance",
+            "titulo": "Memorandum explaining the provisions in the Finance Bill, 2026: rates of tax for tax year 2026-27",
+            "url": "https://www.indiabudget.gov.in/doc/memo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.surcharge-new",
+      "nombre": "Surcharge on income-tax by total income, new regime",
+      "tipo": "escala",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000000,
+              "tasa": 0
+            },
+            {
+              "desde": 5000000,
+              "hasta": 10000000,
+              "tasa": 10
+            },
+            {
+              "desde": 10000000,
+              "hasta": 20000000,
+              "tasa": 15
+            },
+            {
+              "desde": 20000000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministry of Finance",
+            "titulo": "Memorandum explaining the provisions in the Finance Bill, 2026: rates of tax for tax year 2026-27",
+            "url": "https://www.indiabudget.gov.in/doc/memo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.surcharge-old",
+      "nombre": "Surcharge on income-tax by total income, old regime",
+      "tipo": "escala",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000000,
+              "tasa": 0
+            },
+            {
+              "desde": 5000000,
+              "hasta": 10000000,
+              "tasa": 10
+            },
+            {
+              "desde": 10000000,
+              "hasta": 20000000,
+              "tasa": 15
+            },
+            {
+              "desde": 20000000,
+              "hasta": 50000000,
+              "tasa": 25
+            },
+            {
+              "desde": 50000000,
+              "hasta": null,
+              "tasa": 37
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministry of Finance",
+            "titulo": "Memorandum explaining the provisions in the Finance Bill, 2026: rates of tax for tax year 2026-27",
+            "url": "https://www.indiabudget.gov.in/doc/memo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.standard-deduction-new",
+      "nombre": "Standard deduction on salary, new regime",
+      "tipo": "numero",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 75000,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 19(1), Table Sl. No. 2(a)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.standard-deduction-old",
+      "nombre": "Standard deduction on salary, old regime",
+      "tipo": "numero",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 19(1), Table Sl. No. 2(b)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.rebate-new-limit",
+      "nombre": "Income limit for the full rebate, new regime",
+      "tipo": "numero",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 1200000,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 156(2)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.rebate-new-max",
+      "nombre": "Maximum rebate, new regime",
+      "tipo": "numero",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 156(2)(a)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.rebate-old-limit",
+      "nombre": "Income limit for the rebate, old regime",
+      "tipo": "numero",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 156(1)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.rebate-old-max",
+      "nombre": "Maximum rebate, old regime",
+      "tipo": "numero",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 12500,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 156(1)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.cess",
+      "nombre": "Health and Education Cess",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministry of Finance",
+            "titulo": "Memorandum explaining the provisions in the Finance Bill, 2026: rates of tax for tax year 2026-27",
+            "url": "https://www.indiabudget.gov.in/doc/memo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.section-123-limit",
+      "nombre": "Limit of the section 123 deduction (formerly 80C)",
+      "tipo": "numero",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 123",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.stcg-equity-rate",
+      "nombre": "Tax rate on short-term capital gains on listed equity (section 196)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 196(1)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.ltcg-equity-rate",
+      "nombre": "Tax rate on long-term capital gains on listed equity (section 198)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 12.5,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 198(2)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.ltcg-equity-exemption",
+      "nombre": "Long-term capital gains on listed equity not taxed (section 198)",
+      "tipo": "numero",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 125000,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 198(2)(a)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.advance-tax-threshold",
+      "nombre": "Tax payable from which advance tax is due",
+      "tipo": "numero",
+      "unidad": "INR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 404",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.advance-tax-instalments",
+      "nombre": "Cumulative share of advance tax due by each instalment",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "jun15": "By 15 June",
+        "sep15": "By 15 September",
+        "dec15": "By 15 December",
+        "mar15": "By 15 March"
+      },
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": {
+            "jun15": 15,
+            "sep15": 45,
+            "dec15": 75,
+            "mar15": 100
+          },
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Act, 2025, section 408(1)",
+            "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.hra-salary-percent",
+      "nombre": "Share of salary for the HRA exemption, by city",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "metro": "Mumbai, Kolkata, Delhi, Chennai, Hyderabad, Pune, Ahmedabad or Bengaluru",
+        "other": "Any other city or town"
+      },
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": {
+            "metro": 50,
+            "other": 40
+          },
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Rules, 2026 (Notification 22/2026, G.S.R. 198(E)), rule 279",
+            "url": "https://www.incometaxindia.gov.in/documents/81799/11848482/En-Notified-IT-Rules-2026-20-03-2026.pdf/a332bf2a-da14-8b94-dde2-5a2ea1428318",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.hra-rent-excess",
+      "nombre": "Share of salary taken off rent for the HRA exemption",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Income Tax Department (CBDT)",
+            "titulo": "Income-tax Rules, 2026 (Notification 22/2026, G.S.R. 198(E)), rule 279",
+            "url": "https://www.incometaxindia.gov.in/documents/81799/11848482/En-Notified-IT-Rules-2026-20-03-2026.pdf/a332bf2a-da14-8b94-dde2-5a2ea1428318",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.gst-rates",
+      "nombre": "GST rates on goods and services",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "merit": "5% (merit rate)",
+        "standard": "18% (standard rate)",
+        "demerit": "40% (special de-merit rate)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-22",
+          "valor": {
+            "merit": 5,
+            "standard": 18,
+            "demerit": 40
+          },
+          "fuente": {
+            "organismo": "GST Council (PIB, Ministry of Finance)",
+            "titulo": "Recommendations of the 56th meeting of the GST Council, 3 September 2025",
+            "url": "https://gstcouncil.gov.in/sites/default/files/2025-09/press_release_press_information_bureau.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.epf-rate",
+      "nombre": "EPF contribution by the employee and by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-11-21",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Ministry of Labour and Employment (Gazette of India)",
+            "titulo": "S.O. 3582(E) of 1 July 2026: twelve percent contribution under section 16(1)(a) of the Code on Social Security",
+            "url": "https://egazette.gov.in/WriteReadData/2026/274112.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.eps-share",
+      "nombre": "Part of the employer contribution that goes to the pension fund (EPS)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-11-21",
+          "valor": 8.33,
+          "fuente": {
+            "organismo": "Ministry of Labour and Employment",
+            "titulo": "Code on Social Security, 2020, section 16(1)(b)(i): eight and one-third per cent",
+            "url": "https://www.labour.gov.in/static/uploads/2025/07/b0620548445580767b5c0d18c95c26f7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.epf-wage-ceiling",
+      "nombre": "EPF wage ceiling per month",
+      "tipo": "numero",
+      "unidad": "INR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-17",
+          "valor": 25000,
+          "fuente": {
+            "organismo": "Ministry of Labour and Employment (Gazette of India)",
+            "titulo": "S.O. 5109(E) of 17 September 2026: wage ceiling of 25,000 rupees a month",
+            "url": "https://egazette.gov.in/WriteReadData/2026/276299.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.gratuity-days",
+      "nombre": "Days of wages for each year of service (gratuity)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-11-21",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministry of Labour and Employment",
+            "titulo": "Code on Social Security, 2020, section 53(2)",
+            "url": "https://www.labour.gov.in/static/uploads/2025/07/b0620548445580767b5c0d18c95c26f7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.gratuity-divisor",
+      "nombre": "Divisor of the monthly wage for gratuity",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-11-21",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Ministry of Labour and Employment",
+            "titulo": "Code on Social Security, 2020, section 53, Explanation 3",
+            "url": "https://www.labour.gov.in/static/uploads/2025/07/b0620548445580767b5c0d18c95c26f7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.gratuity-min-years",
+      "nombre": "Years of continuous service for gratuity on resignation or retirement",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-11-21",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministry of Labour and Employment",
+            "titulo": "Code on Social Security, 2020, section 53(1)",
+            "url": "https://www.labour.gov.in/static/uploads/2025/07/b0620548445580767b5c0d18c95c26f7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.small-savings-rates",
+      "nombre": "Interest rates of post office small savings schemes",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ppf": "Public Provident Fund",
+        "ssy": "Sukanya Samriddhi Account",
+        "nsc": "National Savings Certificate",
+        "scss": "Senior Citizens Savings Scheme",
+        "mis": "Post Office Monthly Income Scheme",
+        "rd": "5-year Recurring Deposit",
+        "td1": "1-year Time Deposit",
+        "td2": "2-year Time Deposit",
+        "td3": "3-year Time Deposit",
+        "td5": "5-year Time Deposit",
+        "kvp": "Kisan Vikas Patra"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2026-09-30",
+          "valor": {
+            "ppf": 7.1,
+            "ssy": 8.2,
+            "nsc": 7.7,
+            "scss": 8.2,
+            "mis": 7.4,
+            "rd": 6.7,
+            "td1": 6.9,
+            "td2": 7.0,
+            "td3": 7.1,
+            "td5": 7.5,
+            "kvp": 7.5
+          },
+          "fuente": {
+            "organismo": "National Savings Institute (Ministry of Finance)",
+            "titulo": "Interest rates of small savings schemes, 01.01.2024 to 30.09.2026",
+            "url": "https://www.nsiindia.gov.in/InternalPage.aspx?Id_Pk=185",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "ppf": 7.1,
+            "ssy": 8.2,
+            "nsc": 7.7,
+            "scss": 8.2,
+            "mis": 7.4,
+            "rd": 6.7,
+            "td1": 6.9,
+            "td2": 7.0,
+            "td3": 7.1,
+            "td5": 7.5,
+            "kvp": 7.5
+          },
+          "fuente": {
+            "organismo": "Ministry of Finance, Department of Economic Affairs",
+            "titulo": "Office Memorandum of 30.09.2026: small savings rates for Q3 FY 2026-27 unchanged",
+            "url": "https://dea.gov.in/files/budget_division_documents/R.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "in.kvp-months",
+      "nombre": "Months for a Kisan Vikas Patra to double",
+      "tipo": "numero",
+      "unidad": "meses",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-01",
+          "hasta": "2026-09-30",
+          "valor": 115,
+          "fuente": {
+            "organismo": "National Savings Institute (Ministry of Finance)",
+            "titulo": "Interest rates of small savings schemes, 01.01.2024 to 30.09.2026",
+            "url": "https://www.nsiindia.gov.in/InternalPage.aspx?Id_Pk=180",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "hasta": "2026-12-31",
+          "valor": 115,
+          "fuente": {
+            "organismo": "Ministry of Finance, Department of Economic Affairs",
+            "titulo": "Office Memorandum of 30.09.2026: small savings rates for Q3 FY 2026-27 unchanged",
+            "url": "https://dea.gov.in/files/budget_division_documents/R.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}
