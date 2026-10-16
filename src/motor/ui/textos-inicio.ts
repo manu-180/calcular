@@ -13,6 +13,6 @@ export type { TextosInicio } from "../i18n/inicio/tipos";
 
 export const DICCIONARIOS_INICIO: Diccionarios<TextosInicio> = { es, pt, en, fr, de, it, nl };
 
-export function textosInicio(idioma: Idioma, trato: Trato): TextosInicio {
-  return resolver(DICCIONARIOS_INICIO, idioma, trato);
+export function textosInicio(idioma: Idioma, trato: Trato, locale?: string): TextosInicio {
+  return resolver(DICCIONARIOS_INICIO, idioma, trato, locale);
 }

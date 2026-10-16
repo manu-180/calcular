@@ -16,8 +16,8 @@ export type { Categoria, TextosSitio } from "./tipos";
 // y vos) y su línea acá; el Record obliga a que estén todos.
 export const DICCIONARIOS_SITIO: Diccionarios<TextosSitio> = { es, pt, en, fr, de, it, nl };
 
-export function textosSitio(idioma: Idioma, trato: Trato): TextosSitio {
-  return resolver(DICCIONARIOS_SITIO, idioma, trato);
+export function textosSitio(idioma: Idioma, trato: Trato, locale?: string): TextosSitio {
+  return resolver(DICCIONARIOS_SITIO, idioma, trato, locale);
 }
 
 export const ORDEN_CATEGORIAS: readonly Categoria[] = [

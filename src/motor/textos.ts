@@ -8,6 +8,7 @@ export type CodigoError =
   | "menor-que-min"
   | "mayor-que-max"
   | "fecha-invalida"
+  | "hora-invalida"
   | "opcion-invalida"
   | "region-invalida"
   | "calculo-fallido";
@@ -41,6 +42,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "menor-que-min": "El mínimo es {min}.",
         "mayor-que-max": "El máximo es {max}.",
         "fecha-invalida": "Elige una fecha válida.",
+        "hora-invalida": "Elige una hora válida.",
         "opcion-invalida": "Elige una opción.",
         "region-invalida": "Elige una región.",
         "calculo-fallido": "No pudimos hacer la cuenta con estos datos. Revisa los valores e inténtalo de nuevo.",
@@ -54,6 +56,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "numero-invalido": "Escriba un número, por ejemplo {ejemplo}.",
         "entero-invalido": "Escriba un número entero, sin decimales.",
         "fecha-invalida": "Elija una fecha válida.",
+        "hora-invalida": "Elija una hora válida.",
         "opcion-invalida": "Elija una opción.",
         "region-invalida": "Elija una región.",
         "calculo-fallido": "No pudimos hacer la cuenta con estos datos. Revise los valores e inténtelo de nuevo.",
@@ -66,6 +69,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "numero-invalido": "Escribí un número, por ejemplo {ejemplo}.",
         "entero-invalido": "Escribí un número entero, sin decimales.",
         "fecha-invalida": "Elegí una fecha válida.",
+        "hora-invalida": "Elegí una hora válida.",
         "opcion-invalida": "Elegí una opción.",
         "region-invalida": "Elegí una región.",
         "calculo-fallido": "No pudimos hacer la cuenta con estos datos. Revisá los valores y probá de nuevo.",
@@ -87,6 +91,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "menor-que-min": "O mínimo é {min}.",
         "mayor-que-max": "O máximo é {max}.",
         "fecha-invalida": "Escolha uma data válida.",
+        "hora-invalida": "Escolha um horário válido.",
         "opcion-invalida": "Escolha uma opção.",
         "region-invalida": "Escolha uma região.",
         "calculo-fallido": "Não conseguimos fazer a conta com esses dados. Revise os valores e tente de novo.",
@@ -110,6 +115,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "menor-que-min": "The minimum is {min}.",
         "mayor-que-max": "The maximum is {max}.",
         "fecha-invalida": "Choose a valid date.",
+        "hora-invalida": "Choose a valid time.",
         "opcion-invalida": "Choose an option.",
         "region-invalida": "Choose a region.",
         "calculo-fallido": "We couldn't run the numbers with these details. Check the values and try again.",
@@ -132,6 +138,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "menor-que-min": "Le minimum est {min}.",
         "mayor-que-max": "Le maximum est {max}.",
         "fecha-invalida": "Choisis une date valide.",
+        "hora-invalida": "Choisis une heure valide.",
         "opcion-invalida": "Choisis une option.",
         "region-invalida": "Choisis une région.",
         "calculo-fallido": "Le calcul n'a pas abouti avec ces données. Vérifie les valeurs et réessaie.",
@@ -145,6 +152,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "numero-invalido": "Saisissez un nombre, par exemple {ejemplo}.",
         "entero-invalido": "Saisissez un nombre entier, sans décimales.",
         "fecha-invalida": "Choisissez une date valide.",
+        "hora-invalida": "Choisissez une heure valide.",
         "opcion-invalida": "Choisissez une option.",
         "region-invalida": "Choisissez une région.",
         "calculo-fallido": "Le calcul n'a pas abouti avec ces données. Vérifiez les valeurs et réessayez.",
@@ -166,6 +174,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "menor-que-min": "Der Mindestwert ist {min}.",
         "mayor-que-max": "Der Höchstwert ist {max}.",
         "fecha-invalida": "Wähle ein gültiges Datum.",
+        "hora-invalida": "Wähle eine gültige Uhrzeit.",
         "opcion-invalida": "Wähle eine Option.",
         "region-invalida": "Wähle eine Region.",
         "calculo-fallido": "Mit diesen Angaben konnten wir nicht rechnen. Prüf die Werte und versuch es noch einmal.",
@@ -179,6 +188,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "numero-invalido": "Geben Sie eine Zahl ein, zum Beispiel {ejemplo}.",
         "entero-invalido": "Geben Sie eine ganze Zahl ohne Nachkommastellen ein.",
         "fecha-invalida": "Wählen Sie ein gültiges Datum.",
+        "hora-invalida": "Wählen Sie eine gültige Uhrzeit.",
         "opcion-invalida": "Wählen Sie eine Option.",
         "region-invalida": "Wählen Sie eine Region.",
         "calculo-fallido": "Mit diesen Angaben konnten wir nicht rechnen. Prüfen Sie die Werte und versuchen Sie es noch einmal.",
@@ -200,6 +210,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "menor-que-min": "Il minimo è {min}.",
         "mayor-que-max": "Il massimo è {max}.",
         "fecha-invalida": "Scegli una data valida.",
+        "hora-invalida": "Scegli un orario valido.",
         "opcion-invalida": "Scegli un'opzione.",
         "region-invalida": "Scegli una regione.",
         "calculo-fallido": "Non siamo riusciti a fare il calcolo con questi dati. Controlla i valori e riprova.",
@@ -213,6 +224,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "numero-invalido": "Inserisca un numero, per esempio {ejemplo}.",
         "entero-invalido": "Inserisca un numero intero, senza decimali.",
         "fecha-invalida": "Scelga una data valida.",
+        "hora-invalida": "Scelga un orario valido.",
         "opcion-invalida": "Scelga un'opzione.",
         "region-invalida": "Scelga una regione.",
         "calculo-fallido": "Non siamo riusciti a fare il calcolo con questi dati. Controlli i valori e riprovi.",
@@ -234,6 +246,7 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
         "menor-que-min": "Het minimum is {min}.",
         "mayor-que-max": "Het maximum is {max}.",
         "fecha-invalida": "Kies een geldige datum.",
+        "hora-invalida": "Kies een geldige tijd.",
         "opcion-invalida": "Kies een optie.",
         "region-invalida": "Kies een regio.",
         "calculo-fallido": "Met deze gegevens lukte de berekening niet. Controleer de waarden en probeer het opnieuw.",
@@ -245,8 +258,8 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
   },
 };
 
-export function textosMotor(idioma: Idioma, trato: Trato): TextosMotor {
-  return resolver(DICCIONARIOS_MOTOR, idioma, trato);
+export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {
+  return resolver(DICCIONARIOS_MOTOR, idioma, trato, locale);
 }
 
 export function interpolar(plantilla: string, params: Readonly<Record<string, string>> = {}): string {

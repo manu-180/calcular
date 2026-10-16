@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType } from "react";
-import { ejecutar, mensajeDeError, opcionesDe, valoresIniciales, type Crudos, type EstadoCalculo } from "./formulario";
+import { campoVisible, ejecutar, mensajeDeError, opcionesDe, valoresIniciales, type Crudos, type EstadoCalculo } from "./formulario";
 import { textosMotor, type TextosMotor } from "./textos";
 import { PielCalculadora } from "./ui/PielCalculadora";
 import type { Campo, DefinicionCalculadora, OpcionDinamica, PropsCalculadora, Requisitos, ResultadoBase } from "./tipos";
@@ -26,7 +26,7 @@ export type DefinicionVisible = Pick<DefinicionCalculadora, "id" | "campos" | "r
 // cuando el navegador está ocioso y un resultado que aparece solo, segundos después de cargar, mueve
 // la página (CLS). Un campo vacío y obligatorio no muestra error: falta un dato, no hay nada mal.
 function useControl(visible: DefinicionVisible, props: PropsCalculadora, inicial: DefinicionCalculadora | null, cargar?: () => Promise<DefinicionCalculadora>): CalculadoraControlada & { precargar: () => void } {
-  const textos = useMemo(() => textosMotor(props.contexto.idioma, props.contexto.trato), [props.contexto.idioma, props.contexto.trato]);
+  const textos = useMemo(() => textosMotor(props.contexto.idioma, props.contexto.trato, props.contexto.locale), [props.contexto.idioma, props.contexto.trato, props.contexto.locale]);
   const [crudos, setCrudos] = useState<Crudos>(() => valoresIniciales(visible.campos, props.contexto, props.opcionesDinamicas));
   const [definicion, setDefinicion] = useState<DefinicionCalculadora | null>(inicial);
   const [tocado, setTocado] = useState(false);
@@ -73,7 +73,9 @@ function useControl(visible: DefinicionVisible, props: PropsCalculadora, inicial
   );
   const opciones = useCallback((campo: Campo) => opcionesDe(campo, props.contexto, props.opcionesDinamicas), [props.contexto, props.opcionesDinamicas]);
 
-  return { campos: visible.campos, crudos, estado, textos, opciones, error, cambiar, calcular, precargar };
+  // Solo los campos que se muestran con lo que eligió la persona (visibleSi).
+  const campos = useMemo(() => visible.campos.filter((c) => campoVisible(c, crudos)), [visible.campos, crudos]);
+  return { campos, crudos, estado, textos, opciones, error, cambiar, calcular, precargar };
 }
 
 export function useCalculadora(definicion: DefinicionCalculadora, props: PropsCalculadora): CalculadoraControlada {

@@ -37,12 +37,16 @@ function fechaValida(v: unknown): v is FechaISO {
 }
 
 function valorDeCampo(c: Campo, v: unknown, pais: PaisDefinido, dinamicas: Readonly<Record<string, readonly { valor: string }[]>>): ValorEntrada | undefined {
-  if (v === null || v === undefined) return c.requerido === false && c.tipo !== "si-no" ? null : undefined;
+  if (v === null || v === undefined) return (c.requerido === false || c.visibleSi) && c.tipo !== "si-no" ? null : undefined;
   switch (c.tipo) {
     case "si-no":
       return typeof v === "boolean" ? v : undefined;
     case "fecha":
       if (!fechaValida(v)) return undefined;
+      if ((c.min && v < c.min) || (c.max && v > c.max)) return undefined;
+      return v;
+    case "hora":
+      if (typeof v !== "string" || !/^([01]\d|2[0-3]):[0-5]\d$/.test(v)) return undefined;
       if ((c.min && v < c.min) || (c.max && v > c.max)) return undefined;
       return v;
     case "opcion":

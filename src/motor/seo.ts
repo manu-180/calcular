@@ -64,11 +64,13 @@ export type Idiomas = Record<string, string>;
 
 // Clúster por concepto (ADR 0001, D6): cada página lista a todas sus equivalentes publicadas,
 // incluida ella misma, más x-default. Si hay una sola (ella misma), no hay clúster: no se emite.
+// Una calculadora "propio" solo tiene clúster con sus traducciones en las ediciones del país
+// (registro.pagina() las pone en equivalentes).
 export function hreflangDe(concepto: string, equivalentes: readonly Equivalente[]): Idiomas | undefined {
-  if (concepto === "propio" || !esConcepto(concepto)) return undefined;
+  if (!esConcepto(concepto)) return undefined;
   const idiomas: Idiomas = {};
   for (const e of equivalentes) idiomas[e.locale] = urlIntl(e.mercado, e.slug);
-  const rutaAR = (CONCEPTOS[concepto] as { rutaAR?: string }).rutaAR;
+  const rutaAR = concepto === "propio" ? undefined : (CONCEPTOS[concepto] as { rutaAR?: string }).rutaAR;
   if (hreflangARActivo() && rutaAR) idiomas["es-AR"] = `${origenAR()}${rutaAR}`;
   if (Object.keys(idiomas).length < 2) return undefined;
   idiomas["x-default"] = urlIntl("global");

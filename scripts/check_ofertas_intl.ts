@@ -21,6 +21,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { crearContexto, ErrorEntrada, type CasosCalculadora } from "../src/motor/calculo";
 import { CONCEPTOS, type Concepto } from "../src/motor/conceptos";
+import { esMercadoDePrueba } from "../src/motor/datos";
 import { parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { resolverValores } from "../src/motor/registro";
 import { textosMotor } from "../src/motor/textos";
@@ -54,12 +55,19 @@ const check = (nombre: string, cond: boolean) => {
 
 const filtro = process.argv[2];
 
+// Un índice de casos por mercado, armado una vez: buscar archivo por archivo en cada calculadora eran
+// decenas de miles de import() (cacheados, pero no gratis) y la mayor parte de los minutos del check.
+const casosPorMercado = new Map<string, Promise<ReadonlyMap<string, CasosCalculadora>>>();
+
 async function casosDe(mercado: string, def: DefinicionCalculadora): Promise<CasosCalculadora | null> {
-  for (const archivo of archivosBajo(path.join(DIR_PAISES, mercado, "calculadoras"), /\.casos\.ts$/)) {
-    const m = await importar<CasosCalculadora>(archivo);
-    if (m?.calculadora?.id === def.id) return m;
+  let indice = casosPorMercado.get(mercado);
+  if (!indice) {
+    indice = Promise.all(archivosBajo(path.join(DIR_PAISES, mercado, "calculadoras"), /\.casos\.ts$/).map((a) => importar<CasosCalculadora>(a))).then(
+      (mods) => new Map(mods.filter((m) => m?.calculadora?.id).map((m) => [m.calculadora.id, m])),
+    );
+    casosPorMercado.set(mercado, indice);
   }
-  return null;
+  return (await indice).get(def.id) ?? null;
 }
 
 const igual = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
@@ -100,7 +108,7 @@ function checkCobertura(): Map<string, { oferta: string; paises: Set<string> }[]
   const sinEscenario: string[] = [];
   for (const pais of registro.paises) {
     const m = pais.mercado.codigo;
-    if (m === "global" || m === "zz" || (filtro && m !== filtro)) continue;
+    if (m === "global" || esMercadoDePrueba(m) || (filtro && m !== filtro)) continue;
     const ofertas = ofertasDeMercado(m);
     if (!ofertas.textos) fallo(`${m}: el JSON de ofertas no trae los textos de la tarjeta`);
     for (const de of Object.values(ofertas.porCalculadora)) for (const o of de.ofertas) if (!ofertas.copy?.[o.familia]) fallo(`${m}: el JSON de ofertas no trae el copy de ${o.familia}`);
@@ -379,7 +387,7 @@ function checkTextos() {
   }
   for (const pais of registro.paises) {
     const m = pais.mercado as Mercado;
-    if (m.codigo === "global" || m.codigo === "zz") continue;
+    if (m.codigo === "global" || esMercadoDePrueba(m.codigo)) continue;
     const tx = textosPlanillas(m);
     const prods = PRODUCTOS_INTL.filter((p) => p.mercado === m.codigo);
     const textos = textosDe([
@@ -421,12 +429,20 @@ function checkTextos() {
 }
 
 async function main() {
-  checkCatalogo();
-  checkCobertura();
-  await checkInformes();
-  checkHostil();
-  await checkPlanillas();
-  checkTextos();
+  const tiempos: string[] = [];
+  const medir = async (nombre: string, f: () => unknown) => {
+    const t = Date.now();
+    await f();
+    tiempos.push(`${nombre} ${((Date.now() - t) / 1000).toFixed(1)} s`);
+  };
+  await medir("catálogo", checkCatalogo);
+  await medir("cobertura", checkCobertura);
+  await medir("informes", checkInformes);
+  await medir("hostil", checkHostil);
+  await medir("planillas", checkPlanillas);
+  await medir("textos", checkTextos);
+  console.log(`
+tiempos: ${tiempos.join(" · ")}`);
   console.log(fallas ? `\n${fallas} FALLAS` : "\nTODO OK check_ofertas_intl");
   process.exit(fallas ? 1 : 0);
 }

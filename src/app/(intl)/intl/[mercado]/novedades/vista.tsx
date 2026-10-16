@@ -51,7 +51,7 @@ function Calculadoras({ lista, etiqueta }: { lista: readonly CalculadoraEnlazada
 
 function Entrada({ e, r }: { e: EntradaFeed; r: RegistroNovedades }) {
   const { ctx, tn } = r;
-  const tv = textosInicio(ctx.mercado.idioma, ctx.mercado.trato).vivo;
+  const tv = textosInicio(ctx.mercado.idioma, ctx.mercado.trato, ctx.mercado.locale).vivo;
   const { titulo } = textoDe(e, r);
   const etiqueta = e.tipo === "dato" && e.proximo ? "proximo" : e.tipo;
   let cuerpo: ReactNode;
@@ -148,7 +148,7 @@ export function NovedadesVivas({ ctx }: { ctx: ContextoSitio }) {
   const t = ctx.textos;
   const r = registroNovedades(ctx);
   const { tn } = r;
-  const tv = textosInicio(m.idioma, m.trato).vivo;
+  const tv = textosInicio(m.idioma, m.trato, m.locale).vivo;
   const frescura = frescuraDePais(ctx.registro, m.codigo, ctx.fecha);
   const ultimo = ultimaEntrada(r.registro);
   const organismos = [...new Set((frescura?.fuentes ?? []).map((f) => f.organismo))];

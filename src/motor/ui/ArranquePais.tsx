@@ -6,12 +6,14 @@ import { Bandera } from "./Bandera";
 import { FechaViva } from "./FechaViva";
 import { paisDelVisitante, recordarPais } from "./geo-cliente";
 import { IconoFlecha } from "./Iconos";
+import { edicionPara, idiomasDelNavegador } from "./paises";
 
 export interface PaisArranque {
   codigo: string;
   pais: string;
   nombre: string;
   href: string;
+  idioma?: string;
   estas: string;
   resumen: string;
   ultimoDato: string;
@@ -45,7 +47,7 @@ export function ArranquePais({ paises, neutro, hoy, ayer, ancla }: Props) {
   useEffect(() => {
     let vivo = true;
     void paisDelVisitante().then((iso) => {
-      const p = iso ? paises.find((x) => x.pais === iso) : undefined;
+      const p = iso ? edicionPara(paises, iso, idiomasDelNavegador()) : undefined;
       if (vivo && p) setPais(p);
     });
     // Elegir un país en la grilla también es una elección explícita: se guarda para la próxima vez.

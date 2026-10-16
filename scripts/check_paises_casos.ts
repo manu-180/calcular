@@ -7,7 +7,7 @@ import path from "node:path";
 import { crearContexto, ErrorEntrada, type CasosCalculadora } from "../src/motor/calculo";
 import { formatearFilas } from "../src/motor/formulario";
 import { esUniversal, resolverValores } from "../src/motor/registro";
-import type { ContextoSerializado, PaisDefinido, ResultadoBase, ValorResuelto } from "../src/motor/tipos";
+import type { ContextoSerializado, DefinicionCalculadora, PaisDefinido, ResultadoBase, ValorResuelto } from "../src/motor/tipos";
 import { esFechaISO } from "../src/motor/vigencia";
 import { archivosBajo, cargarPaises, DIR_PAISES, importar, rel } from "./paises_comun";
 
@@ -56,6 +56,7 @@ async function main() {
   const conCasos = new Set<string>();
   const conDatosReales = new Set<string>();
   const conCero = new Set(Object.keys(SUELDO_CERO));
+  const casosPorId = new Map<string, CasosCalculadora>();
   let total = 0;
 
   const archivos = archivosBajo(DIR_PAISES, /\.casos\.ts$/).filter((f) => !filtro || rel(f).startsWith(`src/paises/${filtro}/`));
@@ -83,6 +84,7 @@ async function main() {
     if (!pais.calculadoras.some((c) => c.definicion === def)) fallas.push(`${donde}: ${def.id} no está en las calculadoras de src/paises/${carpeta}/index.ts`);
     if (modulo.casos.length === 0) fallas.push(`${donde}: sin casos`);
     conCasos.add(def.id);
+    casosPorId.set(def.id, modulo);
 
     const campoCero = SUELDO_CERO[def.id];
     const base = modulo.casos.find((c) => !c.esperaError);
@@ -161,8 +163,20 @@ async function main() {
   for (const [carpeta, pais] of paises) {
     if (filtro && carpeta !== filtro) continue;
     // Las universales tienen sus casos en src/motor/universales/<id>/casos.ts (check_universales).
-    for (const { definicion: d } of pais.calculadoras.filter((c) => !esUniversal(c))) {
+    for (const { definicion: d, traduccion } of pais.calculadoras.filter((c) => !esUniversal(c))) {
       if (d.estado === "borrador") continue;
+      if (traduccion) {
+        let casosBase = casosPorId.get(traduccion.id);
+        if (!casosBase) {
+          try {
+            casosBase = await importar<CasosCalculadora>(path.join(DIR_PAISES, traduccion.mercado, "calculadoras", `${traduccion.archivo}.casos.ts`));
+          } catch {
+            casosBase = undefined;
+          }
+        }
+        total += revisarTraduccion(pais, d, casosBase, fallas);
+        continue;
+      }
       if (!conCasos.has(d.id)) fallas.push(`${d.id} (${d.estado}) no tiene src/paises/${carpeta}/calculadoras/${d.slug}.casos.ts`);
       else if (!conDatosReales.has(d.id)) fallas.push(`${d.id}: al menos un caso tiene que usar los datos del repo (sin "valores")`);
     }
@@ -172,6 +186,51 @@ async function main() {
   for (const f of fallas) console.error(`❌ ${f}`);
   console.log(fallas.length ? `${fallas.length} FALLAS en ${total} casos` : `TODO OK: ${total} casos en ${archivos.length} archivos`);
   process.exit(fallas.length ? 1 : 0);
+}
+
+// Una traducción de una edición corre los casos de la calculadora del país: los números tienen que
+// dar igual (misma fórmula) y todo texto que devuelva o tire calcular() tiene que salir traducido
+// (si sale igual que en el país, a la edición le falta un mensaje en textos.mensajes).
+function revisarTraduccion(pais: PaisDefinido, def: DefinicionCalculadora, modulo: CasosCalculadora | undefined, fallas: string[]): number {
+  if (!modulo) {
+    fallas.push(`${def.id}: la calculadora del país no tiene casos para probar la traducción`);
+    return 0;
+  }
+  const base = modulo.calculadora;
+  const textos = (v: unknown): string[] => (typeof v === "string" ? [v] : Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : []);
+  const conLetras = (t: string) => /\p{L}{3}/u.test(t) && !/^\d{4}-\d{2}-\d{2}$/.test(t);
+  let n = 0;
+  for (const caso of modulo.casos) {
+    n++;
+    const id = `${def.id} con el caso «${caso.nombre}» de ${base.id}`;
+    const r = resolverValores(pais, def, caso.fecha);
+    const valores = { ...(r.ok ? r.valores : {}), ...((caso.valores ?? {}) as Record<string, ValorResuelto>) };
+    if (Object.keys(def.requiere).some((k) => !(k in valores))) continue;
+    const correr = (d: DefinicionCalculadora) => {
+      try {
+        return { ok: true as const, r: d.calcular(caso.entrada as never, valores as never, crearContexto(pais.mercado, caso.fecha, d)) };
+      } catch (err) {
+        return { ok: false as const, mensaje: err instanceof ErrorEntrada && err.codigo === null ? err.message : null };
+      }
+    };
+    const a = correr(base);
+    const b = correr(def);
+    if (a.ok !== b.ok) {
+      fallas.push(`${id}: el país ${a.ok ? "calcula" : "tira error"} y la edición no`);
+      continue;
+    }
+    if (!a.ok || !b.ok) {
+      if (!a.ok && !b.ok && a.mensaje && a.mensaje === b.mensaje && conLetras(a.mensaje)) fallas.push(`${id}: mensaje de error sin traducir: «${a.mensaje}»`);
+      continue;
+    }
+    for (const [k, v] of Object.entries(a.r)) {
+      const w = b.r[k];
+      if (typeof v === "number" && v !== w) fallas.push(`${id}: ${k} da ${String(w)} y en el país ${v}`);
+      const iguales = textos(w).filter((t) => textos(v).includes(t) && conLetras(t));
+      for (const t of iguales) fallas.push(`${id}: ${k} sin traducir: «${t}»`);
+    }
+  }
+  return n;
 }
 
 main().catch((err) => {
