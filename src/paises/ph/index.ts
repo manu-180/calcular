@@ -30,6 +30,22 @@ import retirementPay from "./calculadoras/retirement-pay";
 import contenidoRetirementPay from "./contenido/retirement-pay";
 import inflationCalculator from "./calculadoras/inflation-calculator";
 import contenidoInflationCalculator from "./contenido/inflation-calculator";
+import vatCalculator from "./calculadoras/vat-calculator";
+import contenidoVatCalculator from "./contenido/vat-calculator";
+import overtimePay from "./calculadoras/overtime-pay";
+import contenidoOvertimePay from "./contenido/overtime-pay";
+import nightDifferential from "./calculadoras/night-differential";
+import contenidoNightDifferential from "./contenido/night-differential";
+import holidayPay from "./calculadoras/holiday-pay";
+import contenidoHolidayPay from "./contenido/holiday-pay";
+import serviceIncentiveLeave from "./calculadoras/service-incentive-leave";
+import contenidoServiceIncentiveLeave from "./contenido/service-incentive-leave";
+import separationPay from "./calculadoras/separation-pay";
+import contenidoSeparationPay from "./contenido/separation-pay";
+import estateTax from "./calculadoras/estate-tax";
+import contenidoEstateTax from "./contenido/estate-tax";
+import donorsTax from "./calculadoras/donors-tax";
+import contenidoDonorsTax from "./contenido/donors-tax";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +73,14 @@ export default definirPais({
     { definicion: kasambahayMinimumWage, contenido: contenidoKasambahayMinimumWage, cliente: () => import("./calculadoras/kasambahay-minimum-wage.cliente") },
     { definicion: retirementPay, contenido: contenidoRetirementPay, cliente: () => import("./calculadoras/retirement-pay.cliente") },
     { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
+    { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
+    { definicion: overtimePay, contenido: contenidoOvertimePay, cliente: () => import("./calculadoras/overtime-pay.cliente") },
+    { definicion: nightDifferential, contenido: contenidoNightDifferential, cliente: () => import("./calculadoras/night-differential.cliente") },
+    { definicion: holidayPay, contenido: contenidoHolidayPay, cliente: () => import("./calculadoras/holiday-pay.cliente") },
+    { definicion: serviceIncentiveLeave, contenido: contenidoServiceIncentiveLeave, cliente: () => import("./calculadoras/service-incentive-leave.cliente") },
+    { definicion: separationPay, contenido: contenidoSeparationPay, cliente: () => import("./calculadoras/separation-pay.cliente") },
+    { definicion: estateTax, contenido: contenidoEstateTax, cliente: () => import("./calculadoras/estate-tax.cliente") },
+    { definicion: donorsTax, contenido: contenidoDonorsTax, cliente: () => import("./calculadoras/donors-tax.cliente") },
   ],
   universales: "todas",
   novedades,

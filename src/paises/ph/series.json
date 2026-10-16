@@ -6,7 +6,7 @@
       "nombre": "Consumer Price Index for all income households, all items, Philippines (2018=100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 75,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Philippine Statistics Authority",
         "titulo": "OpenSTAT tables 0012M4ACP22 (January 2018 onwards) and 0012M4ACP28 (backcasted January 1994 to December 2017)",

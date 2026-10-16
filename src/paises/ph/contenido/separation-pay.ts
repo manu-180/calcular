@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Separation pay calculator Philippines",
   title: "Separation pay calculator: redundancy, retrenchment, closure",
   description:
-    "Compute separation pay for authorized causes under the Labor Code: one month per year for redundancy, half a month for retrenchment or closure, with a one-month minimum.",
+    "Separation pay under the Labor Code: one month per year for redundancy, half a month for retrenchment or closure, never less than one month.",
   intro: [
     "When your employment ends for an authorized cause, such as redundancy or retrenchment, the Labor Code gives you separation pay.",
     "Pick the reason, enter your monthly pay and your years of service.",
@@ -31,7 +31,7 @@ export default definirContenido({
     },
   ],
   glosario: [
-    { termino: "Authorized causes", definicion: "Reasons for ending employment that come from the business, such as redundancy, retrenchment or closure." },
-    { termino: "Redundancy", definicion: "When a position is more than what the business actually needs." },
+    { termino: "Authorized causes", definicion: "Reasons for ending employment listed in the Labor Code: labor-saving devices, redundancy, retrenchment to prevent losses and closure." },
+    { termino: "Separation pay", definicion: "The amount the employer pays when it ends your employment for an authorized cause." },
   ],
 });
