@@ -17,8 +17,10 @@ export const detectores: readonly Detector[] = [
     metodo: "html",
     url: "https://dea.gov.in/budget-division/475",
     userAgentNavegador: true,
+    // dea.gov.in no manda el certificado intermedio y Node corta la conexión sin tlsTolerante.
+    tlsTolerante: true,
     async traer(http) {
-      const html = await http.texto(this.url, { userAgentNavegador: true });
+      const html = await http.texto(this.url, { userAgentNavegador: true, tlsTolerante: true });
       const re = /(Revision of [^<]{0,40}rates?[^<]{0,40}Small Sav[^<]{0,80})<[\s\S]{0,400}?(\d{2})\.(\d{2})\.(\d{4})/gi;
       let vistos = 0;
       const hallazgos: HallazgoNorma[] = [];
