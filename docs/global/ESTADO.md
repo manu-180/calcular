@@ -31,7 +31,8 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 ## Pedidos al motor anotados
 
 - `NOMBRES_UNIDAD` por idioma: hecho; filas, tablas e informe formatean con el locale del mercado.
-- Tipo de campo `hora` (horas-trabajadas usa listas de 96 horarios) y campos condicionales por modo.
+- Tipo de campo `hora` y campos condicionales (`visibleSi`): hechos en motor 2 (RECETA, sección 7).
+  Falta migrar horas-trabajadas de sus listas de 96 horarios a `hora`.
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
@@ -63,6 +64,41 @@ ch-it, y motor 3 (`claude/mundo-motor-3`: ja, ko y zh para Japón, Corea, Taiwá
 RBNZ: la página y el xlsx tienen el desafío anti-bots de Cloudflare. No se saltea: `nz.ocr` pasa a
 manual.
 
+## Edición ca-fr (`claude/edicion-ca-fr`, interno y sin registrar)
+
+13 calculadoras de `ca` traducidas al francés de Quebec (vous, fr-CA) más las universales en
+francés: TPS/TVQ, salario mínimo, RRQ/RPC, cotizaciones y prestaciones de assurance-emploi, costo
+empleador (con RQAP), ACE, recuperación de la SV, REER, CELI, inflación, USD/CAD e hipoteca variable.
+Por defecto abren en Quebec (región qc, plan RRQ). Pendientes, porque `ca` no las tiene para Quebec:
+impuesto sobre la renta y sueldo neto con el impuesto provincial de Quebec, ganancias de capital,
+taxe de bienvenue (droits de mutation), y las laborales de la CNESST (vacances, heures
+supplémentaires, préavis, indemnité). Las ofertas en francés dicen «Rapport de TVA» para la familia
+de IVA: en Quebec se diría TPS/TVQ (textos de `src/lib/pagos`).
+
+## Motor 2 (`claude/mundo-motor-2`, integrado el 16/10/2026)
+
+- **País y edición (ADR 0002, D3):** `definirEdicion(base, {...})` en `src/motor/registro.ts` y
+  `definirTextos` en `src/motor/edicion.ts`. Una edición (`ca-fr`) reusa datos, series, avisos y
+  detectores del país y escribe solo textos. Edición de prueba: `src/paises/zz-en`. Receta en
+  `docs/global/BRIEF-PAIS.md` («Ediciones»). Hreflang entre ediciones (calculadoras, inicio, fuentes y
+  novedades), selector con «País (Idioma)», geo por `navigator.languages`, cargadores generados para
+  traducciones y `check_paises_casos` que marca textos sin traducir.
+- **i18n con locale:** los diccionarios del sitio reciben el locale; de-CH y de-LI sin «ß»; parches
+  `regional` por locale para variantes futuras.
+- **Marcadores:** `{{serie}}` y `{{serie#desde}}` (la serie tiene que estar en `requiere`), filas de
+  escala `{{id[n].tasa|desde|hasta|cuotaFija}}` con `-1` para la última, `#desde` en escalas.
+  `check_paises` falla si un marcador no se resuelve hoy.
+- **Unidad `semanas`** en los 7 idiomas; campo `region` con subconjunto (`regiones: [...]`).
+- **`next dev` calcula en mercados internos** sin publicarlos (`cargadores/dev.ts` +
+  `src/paises/cargadores-dev.ts`); producción sigue con los mapas generados.
+- **`check_ofertas_intl`** con índice de casos: de 128 s a unos 30 s en esta máquina.
+- **`nz.ocr`:** el RBNZ está detrás del desafío anti-bots de Cloudflare (`cf-mitigated: challenge`)
+  y no se saltea. El motor no tiene vía para series manuales (`metodo: "manual"` es solo una etiqueta;
+  el detector igual corre). Queda así: el semáforo (`scripts/datos-paises/semaforo.ts`) avisa desde 30
+  días antes del vencimiento (2026-12-11) y el punto nuevo se carga a mano en `src/paises/nz/series.json`
+  después de cada decisión del RBNZ. Pedido al motor: que un detector `manual` no corra y figure como
+  «carga manual» en el resumen del cron.
+
 ## 14/10/2026 23:30 · 31 países publicados
 
 Nueva Zelanda (60 calculadoras) y Sudáfrica (60) publicadas. Verde con 32 mercados: check_motor 1559,
@@ -73,8 +109,8 @@ India (solo había investigado, sin código), Singapur, Suiza (de, en verificaci
 WIP `7315719`). Nuevos: Filipinas (`claude/pais-ph`) y Hong Kong en inglés (`claude/pais-hk`).
 
 Pendientes de los países:
-- `nz.ocr`: el RBNZ da 403 a Node (curl da 200). Vence el 2026-12-11; pedido al motor.
-- `za`: marcadores de series en textos (prime). IPC y prime vencen el 2026-11-13 si el cron no corre.
+- `nz.ocr`: carga manual (ver «Motor 2»). Vence el 2026-12-11.
+- `za`: los marcadores de series ya existen (`{{za.prime-rate}}`). IPC y prime vencen el 2026-11-13 si el cron no corre.
 - Universal hipoteca dice «Down payment»; en NZ se dice «deposit».
 - Montos escritos a mano en escalas y FAQ de nz y za: revisar en abril y marzo de 2027.
 
