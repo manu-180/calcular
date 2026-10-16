@@ -84,11 +84,24 @@ manual.
 13 calculadoras de `ca` traducidas al francés de Quebec (vous, fr-CA) más las universales en
 francés: TPS/TVQ, salario mínimo, RRQ/RPC, cotizaciones y prestaciones de assurance-emploi, costo
 empleador (con RQAP), ACE, recuperación de la SV, REER, CELI, inflación, USD/CAD e hipoteca variable.
-Por defecto abren en Quebec (región qc, plan RRQ). Pendientes, porque `ca` no las tiene para Quebec:
-impuesto sobre la renta y sueldo neto con el impuesto provincial de Quebec, ganancias de capital,
-taxe de bienvenue (droits de mutation), y las laborales de la CNESST (vacances, heures
-supplémentaires, préavis, indemnité). Las ofertas en francés dicen «Rapport de TVA» para la familia
-de IVA: en Quebec se diría TPS/TVQ (textos de `src/lib/pagos`).
+Por defecto abren en Quebec (región qc, plan RRQ).
+
+**Quebec en `ca` (`claude/quebec`):**
+- Impuesto de Quebec en sueldo neto e impuesto a la renta. Usa la tabla 2026, el monto de base y la
+  deducción para trabajadores (Finanzas Quebec). Del lado federal suma el abatimiento del 16,5 % (CRA
+  T4032-QC), y aplica QPP, EI de Quebec y RQAP. Traducidas en ca-fr (`calcul-salaire-net`,
+  `calcul-impot-revenu`).
+- Taxe de bienvenue 2026 (Québec.ca) en land-transfer-tax, sin Montreal. Traducida en ca-fr
+  (`calcul-taxe-de-bienvenue`).
+- Vacances, heures supplémentaires y préavis (LNT) en **borrador**: Légis Québec y la CNESST
+  responden 403 a las herramientas (Cloudflare y CloudFront). Hay que abrir la ley en un navegador,
+  confirmar los valores de `ca.qc-vacation-pay`, `ca.qc-overtime` y `ca.qc-notice`, pasarlos a
+  verificado y publicar las tres calculadoras (ya están traducidas).
+- Pendientes:
+  - ganancias de capital con Quebec, porque falta verificar la tasa de inclusión de Quebec;
+  - las tasas de Montreal en la taxe de bienvenue;
+  - créditos de Quebec además del de base (personne seule, âge, revenus de retraite).
+- Ofertas fr-CA: la familia de facturación dice TPS/TVQ (`src/lib/pagos/textos/fr-ca.ts`).
 
 ## Motor 2 (`claude/mundo-motor-2`, integrado el 16/10/2026)
 
@@ -124,7 +137,7 @@ India (solo había investigado, sin código), Singapur, Suiza (de, en verificaci
 WIP `7315719`). Nuevos: Filipinas (`claude/pais-ph`) y Hong Kong en inglés (`claude/pais-hk`).
 
 Pendientes de los países:
-- `nz.ocr`: carga manual (ver «Motor 2»). Vence el 2026-12-11.
+- `nz.ocr`: detector `manual` (el cron no lo corre; el semáforo avisa 30 días antes). Vence el 2026-12-11.
 - `za`: los marcadores de series ya existen (`{{za.prime-rate}}`). IPC y prime vencen el 2026-11-13 si el cron no corre.
 - Universal hipoteca dice «Down payment»; en NZ se dice «deposit».
 - Montos escritos a mano en escalas y FAQ de nz y za: revisar en abril y marzo de 2027.
