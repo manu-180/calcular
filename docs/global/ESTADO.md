@@ -36,6 +36,14 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## 16/10/2026 14:30 · 36 países y 4 ediciones publicados
+
+Hong Kong (en, 60 calculadoras) publicado. Verde con 42 mercados: check_paises_casos 4172,
+check_textos_paises 52855, check_hreflang 5434, check_seo_intl 5690. Tercer corte por límite de sesión
+del día (10:15); avance guardado como WIP y retomados a las 14:29: Filipinas, Malasia, Nigeria,
+Marruecos (fr), Luxemburgo (fr + lu-de), Emiratos (en), Quebec completo (taxe de bienvenue ya hecha) y
+motor 3 (ja, ko, zh; universales en curso).
+
 ## 16/10/2026 05:45 · 35 países y 4 ediciones publicados
 
 India (57 calculadoras) publicada, con las ediciones ch-fr (62), ch-it (62), ca-fr (53) y be-fr (52).
