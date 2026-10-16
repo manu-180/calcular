@@ -313,6 +313,26 @@
       ]
     },
     {
+      "id": "ng.compensation-exemption",
+      "nombre": "Compensation for loss of office or employment not taxed",
+      "tipo": "numero",
+      "unidad": "NGN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50000000,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 50(1)",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
       "id": "ng.minimum-wage",
       "nombre": "National minimum wage a month",
       "tipo": "numero",
