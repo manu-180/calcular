@@ -1,5 +1,5 @@
 import { esFechaISO } from "@/motor/vigencia";
-import type { Detector, PuntoSerie } from "@/motor/tipos";
+import type { Detector, HallazgoNorma, PuntoSerie } from "@/motor/tipos";
 
 const MESES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -62,11 +62,12 @@ export const detectores: readonly Detector[] = [
       const html = await http.texto(this.url, { userAgentNavegador: true });
       const slugs = new Set([...html.matchAll(/href="\/tax-laws\/([a-z0-9-]+)"/g)].map((m) => m[1]));
       if (!slugs.size) return null;
-      const hallazgos = [];
+      const hallazgos: HallazgoNorma[] = [];
       for (const slug of slugs) {
         const anio = /-(20\d{2})$/.exec(slug)?.[1];
-        if (anio && Number(anio) > 2025) {
-          hallazgos.push({ titulo: slug.replace(/-/g, " "), url: `https://www.nrs.gov.ng/tax-laws/${slug}`, fecha: `${anio}-01-01` });
+        const fecha = `${anio}-01-01`;
+        if (anio && Number(anio) > 2025 && esFechaISO(fecha)) {
+          hallazgos.push({ titulo: slug.replace(/-/g, " "), url: `https://www.nrs.gov.ng/tax-laws/${slug}`, fecha });
         }
       }
       return hallazgos;
