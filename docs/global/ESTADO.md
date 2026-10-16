@@ -36,6 +36,17 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## Edición ca-fr (`claude/edicion-ca-fr`, interno y sin registrar)
+
+13 calculadoras de `ca` traducidas al francés de Quebec (vous, fr-CA) más las universales en
+francés: TPS/TVQ, salario mínimo, RRQ/RPC, cotizaciones y prestaciones de assurance-emploi, costo
+empleador (con RQAP), ACE, recuperación de la SV, REER, CELI, inflación, USD/CAD e hipoteca variable.
+Por defecto abren en Quebec (región qc, plan RRQ). Pendientes, porque `ca` no las tiene para Quebec:
+impuesto sobre la renta y sueldo neto con el impuesto provincial de Quebec, ganancias de capital,
+taxe de bienvenue (droits de mutation), y las laborales de la CNESST (vacances, heures
+supplémentaires, préavis, indemnité). Las ofertas en francés dicen «Rapport de TVA» para la familia
+de IVA: en Quebec se diría TPS/TVQ (textos de `src/lib/pagos`).
+
 ## Motor 2 (`claude/mundo-motor-2`, integrado el 16/10/2026)
 
 - **País y edición (ADR 0002, D3):** `definirEdicion(base, {...})` en `src/motor/registro.ts` y

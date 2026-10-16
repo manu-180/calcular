@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ca-fr.tfsa-contribution-room",
   h1: "Calcul des droits de cotisation au CELI 2026",
   title: "Droits de cotisation au CELI 2026 : calcul",
-  description: "Additionnez les plafonds du CELI depuis vos 18 ans (à partir de 2009), ajoutez les retraits passés et soustrayez les cotisations. Le plafond de 2026 est de {{ca.tfsa-annual-limits[2026]}}.",
+  description: "Additionnez les plafonds du CELI depuis vos 18 ans (dès 2009), ajoutez les retraits passés et soustrayez les cotisations. Plafond de 2026 : {{ca.tfsa-annual-limits[2026]}}.",
   intro: [
     "Inscrivez l'année où vous êtes devenu admissible, vos cotisations et vos retraits faits avant cette année pour estimer vos droits de cotisation au CELI aujourd'hui.",
     "Le calcul utilise le plafond annuel du CELI de chaque année depuis 2009, publié par l'Agence du revenu du Canada.",
