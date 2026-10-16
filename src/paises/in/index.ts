@@ -22,6 +22,20 @@ import capitalGainsTaxCalculator from "./calculadoras/capital-gains-tax-calculat
 import contenidoCapitalGainsTaxCalculator from "./contenido/capital-gains-tax-calculator";
 import advanceTaxCalculator from "./calculadoras/advance-tax-calculator";
 import contenidoAdvanceTaxCalculator from "./contenido/advance-tax-calculator";
+import ppfCalculator from "./calculadoras/ppf-calculator";
+import contenidoPpfCalculator from "./contenido/ppf-calculator";
+import sukanyaSamriddhiCalculator from "./calculadoras/sukanya-samriddhi-calculator";
+import contenidoSukanyaSamriddhiCalculator from "./contenido/sukanya-samriddhi-calculator";
+import nscCalculator from "./calculadoras/nsc-calculator";
+import contenidoNscCalculator from "./contenido/nsc-calculator";
+import scssCalculator from "./calculadoras/scss-calculator";
+import contenidoScssCalculator from "./contenido/scss-calculator";
+import postOfficeMisCalculator from "./calculadoras/post-office-mis-calculator";
+import contenidoPostOfficeMisCalculator from "./contenido/post-office-mis-calculator";
+import postOfficeRdCalculator from "./calculadoras/post-office-rd-calculator";
+import contenidoPostOfficeRdCalculator from "./contenido/post-office-rd-calculator";
+import kvpCalculator from "./calculadoras/kvp-calculator";
+import contenidoKvpCalculator from "./contenido/kvp-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -45,6 +59,13 @@ export default definirPais({
     { definicion: fdCalculator, contenido: contenidoFdCalculator, cliente: () => import("./calculadoras/fd-calculator.cliente") },
     { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
     { definicion: advanceTaxCalculator, contenido: contenidoAdvanceTaxCalculator, cliente: () => import("./calculadoras/advance-tax-calculator.cliente") },
+    { definicion: ppfCalculator, contenido: contenidoPpfCalculator, cliente: () => import("./calculadoras/ppf-calculator.cliente") },
+    { definicion: sukanyaSamriddhiCalculator, contenido: contenidoSukanyaSamriddhiCalculator, cliente: () => import("./calculadoras/sukanya-samriddhi-calculator.cliente") },
+    { definicion: nscCalculator, contenido: contenidoNscCalculator, cliente: () => import("./calculadoras/nsc-calculator.cliente") },
+    { definicion: scssCalculator, contenido: contenidoScssCalculator, cliente: () => import("./calculadoras/scss-calculator.cliente") },
+    { definicion: postOfficeMisCalculator, contenido: contenidoPostOfficeMisCalculator, cliente: () => import("./calculadoras/post-office-mis-calculator.cliente") },
+    { definicion: postOfficeRdCalculator, contenido: contenidoPostOfficeRdCalculator, cliente: () => import("./calculadoras/post-office-rd-calculator.cliente") },
+    { definicion: kvpCalculator, contenido: contenidoKvpCalculator, cliente: () => import("./calculadoras/kvp-calculator.cliente") },
   ],
   universales: "todas",
   novedades,

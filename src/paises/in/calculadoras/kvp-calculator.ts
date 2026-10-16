@@ -8,6 +8,7 @@ export default definirCalculadora({
   estado: "publicado",
   requiere: {
     "in.kvp-months": "numero",
+    "in.small-savings-rates": "mapa",
   },
   campos: [{ id: "monto", tipo: "moneda", etiqueta: "Amount invested", min: 0, porDefecto: 100000 }],
   calcular(entrada, v, { redondear }) {
