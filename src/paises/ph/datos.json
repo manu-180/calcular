@@ -518,6 +518,132 @@
       ]
     },
     {
+      "id": "ph.retirement-days",
+      "nombre": "Days of salary per year of service in retirement pay (besides 1/12 of the 13th month pay)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-sil-days",
+      "nombre": "Days of service incentive leave added to retirement pay per year of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-minimum-age",
+      "nombre": "Minimum optional retirement age",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-compulsory-age",
+      "nombre": "Compulsory retirement age",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 65,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-minimum-service",
+      "nombre": "Minimum years of service in the establishment",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-exempt-employees",
+      "nombre": "Retail, service and agricultural establishments with this many workers or fewer are exempt",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
       "id": "ph.minimum-wage-low",
       "nombre": "Lowest daily minimum wage in the region (all sectors)",
       "tipo": "numero",
