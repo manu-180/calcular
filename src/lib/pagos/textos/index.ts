@@ -4,6 +4,7 @@ import { de } from "./de";
 import { en } from "./en";
 import { es } from "./es";
 import { fr } from "./fr";
+import { frCA } from "./fr-ca";
 import { it } from "./it";
 import { nl } from "./nl";
 import { pt } from "./pt";
@@ -43,8 +44,12 @@ export function resolver<T>(valor: T, trato: Trato): Resuelto<T> {
 
 export type FamiliaResuelta = Resuelto<TextosFamilia>;
 
-export function textosFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato): FamiliaResuelta {
-  return resolver(diccionarioVenta(idioma).familias[clave], trato);
+// Familias que cambian de palabra según el país dentro del mismo idioma (fr-CA: TPS y TVQ, no TVA).
+export const FAMILIAS_POR_LOCALE: Readonly<Record<string, Partial<Record<ClaveFamilia, TextosFamilia>>>> = { "fr-CA": frCA };
+
+export function textosFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato, locale?: string): FamiliaResuelta {
+  const regional = locale ? FAMILIAS_POR_LOCALE[locale]?.[clave] : undefined;
+  return resolver(regional ?? diccionarioVenta(idioma).familias[clave], trato);
 }
 
 export function textosVenta(idioma: Idioma, trato: Trato): Resuelto<Omit<DiccionarioVenta, "familias">> {
@@ -57,8 +62,8 @@ export function textosTarjeta(idioma: Idioma, trato: Trato): TextosTarjeta {
   return { ...resolver(d.tarjeta, trato), ...d.general, aviso: resolver(d.aviso, trato) };
 }
 
-export function copyFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato): CopyTarjeta {
-  const f = textosFamilia(clave, idioma, trato);
+export function copyFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato, locale?: string): CopyTarjeta {
+  const f = textosFamilia(clave, idioma, trato, locale);
   return { nombre: f.nombre, gancho: f.gancho, incluye: f.incluye };
 }
 
