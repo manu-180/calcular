@@ -35,6 +35,27 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## 16/10/2026 01:00 · 33 países publicados
+
+Suiza (de, 62 calculadoras) y Singapur (61) publicadas; motor 2 integrado (ediciones de idioma con
+`definirEdicion`, marcadores de escalas, semanas, hora, campos condicionales, cargadores en dev,
+check_ofertas más rápido; zz-en de prueba). Verde con 35 mercados: check_motor 1645,
+check_paises_casos 3670, check_textos_paises 47778, check_hreflang 4632, check_seo_intl 4846.
+Hipoteca y alquilar o comprar dicen «deposit» en en-GB/IE/AU/NZ/ZA. IPC de ca y at con margen de
+100 días (el de 75 dejaba un hueco cada mes por el atraso de publicación).
+
+Ojo: a la medianoche de Argentina, check_hreflang puede fallar si una serie vence justo entre la fecha
+de dos zonas horarias (los clústeres se arman con la fecha de cada mercado). Se ve con
+`CALCULAR_HOY=AAAA-MM-DD` fijo.
+
+En curso (retomados a las 00:52 tras un timeout de la API que cortó a todos; avance pusheado):
+India, Bélgica (nl, en checks finales), Filipinas, Hong Kong (en), Malasia (en), edición ca-fr
+(+ check_ofertas: it/calcolo-tfr y za.bond-calculator; nz.ocr a detector manual), ediciones ch-fr y
+ch-it, y motor 3 (`claude/mundo-motor-3`: ja, ko y zh para Japón, Corea, Taiwán y HK en chino).
+
+RBNZ: la página y el xlsx tienen el desafío anti-bots de Cloudflare. No se saltea: `nz.ocr` pasa a
+manual.
+
 ## 14/10/2026 23:30 · 31 países publicados
 
 Nueva Zelanda (60 calculadoras) y Sudáfrica (60) publicadas. Verde con 32 mercados: check_motor 1559,
