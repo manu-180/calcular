@@ -36,6 +36,21 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## 16/10/2026 05:45 · 35 países y 4 ediciones publicados
+
+India (57 calculadoras) publicada, con las ediciones ch-fr (62), ch-it (62), ca-fr (53) y be-fr (52).
+Verde con 41 mercados: check_motor 1823, check_paises_casos 4076, check_textos_paises 51879,
+check_hreflang 5314, check_seo_intl 5564, check_datos_paises 85. dea.gov.in (India) usa la raíz ISRG
+Root YR, que Node no trae: se versionó su cruce firmado por ISRG Root X1 en `scripts/datos-paises/certs`
+(tlsTolerante suma intermedios, nunca apaga la verificación).
+
+En curso: Filipinas, Hong Kong (en), Malasia (en), Nigeria, Marruecos (fr), Luxemburgo (fr + lu-de),
+Quebec completo en ca y ca-fr (impôt QC, CNESST, taxe de bienvenue, ofertas TPS/TVQ, detector manual
+para nz.ocr) y motor 3 (ja, ko, zh).
+
+Pedidos al motor anotados por los países: título de la fuente traducible en ediciones (be-fr muestra
+el documento en neerlandés).
+
 ## 16/10/2026 04:30 · 34 países publicados
 
 Bélgica (nl, 56 calculadoras) publicada. Verde con 36 mercados: check_paises_casos 3737,
