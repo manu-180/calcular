@@ -7,7 +7,7 @@ export const mercado: MercadoEdicion = {
   locale: "fr-CA",
   idioma: "fr",
   trato: "usted",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "ab", nombre: "Alberta" },
     { id: "bc", nombre: "Colombie-Britannique" },
