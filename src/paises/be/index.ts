@@ -24,6 +24,14 @@ import groeipakketBerekenen from "./calculadoras/groeipakket-berekenen";
 import contenidoGroeipakketBerekenen from "./contenido/groeipakket-berekenen";
 import maaltijdchequesBerekenen from "./calculadoras/maaltijdcheques-berekenen";
 import contenidoMaaltijdchequesBerekenen from "./contenido/maaltijdcheques-berekenen";
+import inflatieBerekenen from "./calculadoras/inflatie-berekenen";
+import contenidoInflatieBerekenen from "./contenido/inflatie-berekenen";
+import registratierechtenBerekenen from "./calculadoras/registratierechten-berekenen";
+import contenidoRegistratierechtenBerekenen from "./contenido/registratierechten-berekenen";
+import erfbelastingBerekenen from "./calculadoras/erfbelasting-berekenen";
+import contenidoErfbelastingBerekenen from "./contenido/erfbelasting-berekenen";
+import huurindexatieBerekenen from "./calculadoras/huurindexatie-berekenen";
+import contenidoHuurindexatieBerekenen from "./contenido/huurindexatie-berekenen";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +56,10 @@ export default definirPais({
     { definicion: socialeBijdragenZelfstandige, contenido: contenidoSocialeBijdragenZelfstandige, cliente: () => import("./calculadoras/sociale-bijdragen-zelfstandige.cliente") },
     { definicion: groeipakketBerekenen, contenido: contenidoGroeipakketBerekenen, cliente: () => import("./calculadoras/groeipakket-berekenen.cliente") },
     { definicion: maaltijdchequesBerekenen, contenido: contenidoMaaltijdchequesBerekenen, cliente: () => import("./calculadoras/maaltijdcheques-berekenen.cliente") },
+    { definicion: inflatieBerekenen, contenido: contenidoInflatieBerekenen, cliente: () => import("./calculadoras/inflatie-berekenen.cliente") },
+    { definicion: registratierechtenBerekenen, contenido: contenidoRegistratierechtenBerekenen, cliente: () => import("./calculadoras/registratierechten-berekenen.cliente") },
+    { definicion: erfbelastingBerekenen, contenido: contenidoErfbelastingBerekenen, cliente: () => import("./calculadoras/erfbelasting-berekenen.cliente") },
+    { definicion: huurindexatieBerekenen, contenido: contenidoHuurindexatieBerekenen, cliente: () => import("./calculadoras/huurindexatie-berekenen.cliente") },
   ],
   universales: "todas",
   novedades,

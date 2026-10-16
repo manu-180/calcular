@@ -751,18 +751,40 @@
       ]
     },
     {
-      "id": "be.verkooprecht-vlaanderen",
-      "nombre": "Verkooprecht (registratiebelasting) bij aankoop in het Vlaams Gewest",
+      "id": "be.verkooprecht-vlaanderen-tarieven",
+      "nombre": "Verkooprecht (registratiebelasting) bij aankoop in het Vlaams Gewest: tarieven",
       "tipo": "mapa",
-      "unidad": "EUR",
-      "nota": "algemeen en enigeEigenWoning in %. vermindering: bijkomende vermindering voor een bescheiden enige eigen woning. maxBescheiden en maxBescheidenKern: maximale aankoopprijs voor die vermindering.",
+      "unidad": "%",
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2025-01-01",
           "valor": {
             "algemeen": 12,
-            "enige-eigen-woning": 2,
+            "enige-eigen-woning": 2
+          },
+          "fuente": {
+            "organismo": "Vlaamse Belastingdienst",
+            "titulo": "Het verkooprecht bij de aankoop van de enige eigen woning: overzicht",
+            "url": "https://www.vlaanderen.be/belastingen-en-begroting/vlaamse-belastingen/registratiebelasting/verkooprecht/tarieven-in-het-verkooprecht/het-verkooprecht-bij-de-aankoop-van-de-enige-eigen-woning-overzicht",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Algemeen tarief van 12 % op https://www.vlaanderen.be/en/authorities/flemish-taxes/registration-taxes/sales-duty-on-real-estate en grenzen van de bescheiden woning op de pagina over de bijkomende vermindering."
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.verkooprecht-vlaanderen",
+      "nombre": "Verkooprecht Vlaams Gewest: vermindering voor een bescheiden enige eigen woning",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "nota": "vermindering: bijkomende vermindering. max-bescheiden en max-bescheiden-kern: maximale aankoopprijs voor die vermindering. De tarieven staan in be.verkooprecht-vlaanderen-tarieven.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
             "vermindering": 1867,
             "max-bescheiden": 220000,
             "max-bescheiden-kern": 240000
