@@ -41,7 +41,7 @@ export async function generateMetadata({
   const familiaTipo = hogaresDelMes(mes)[1].r;
 
   return {
-    title: `Canasta básica ${etiqueta}: línea de pobreza del INDEC`,
+    title: `Canasta básica ${etiqueta}: ${formatARS(familiaTipo.lineaPobreza, 0)} para la familia tipo`,
     description: `CBT de ${formatARS(mes.cbt, 0)} y CBA de ${formatARS(mes.cba, 0)} por adulto equivalente en ${etiqueta}. La familia tipo necesitó ${formatARS(familiaTipo.lineaPobreza, 0)} para no ser pobre. Dato del INDEC.`,
     alternates: { canonical: `/canasta-basica/${slug}` },
     robots: robotsArchivoMensual(

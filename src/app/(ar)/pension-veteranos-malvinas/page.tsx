@@ -26,7 +26,7 @@ const SERIE = serieMontos();
 const ULTIMOS = SERIE.slice(-7).reverse();
 
 export const metadata: Metadata = {
-  title: `Pensión de veteranos de Malvinas ${MES}: monto`,
+  title: `Pensión veteranos de Malvinas ${MES}: ${formatARS(MONTO, 0)}`,
   description:
     "La pensión honorífica de veteranos de Malvinas equivale a tres haberes mínimos (Decreto 1357/2004) y se cobra además de cualquier jubilación.",
   alternates: { canonical: "/pension-veteranos-malvinas" },

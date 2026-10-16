@@ -23,7 +23,7 @@ const JORNADA_COMPLETA = ACTIVO.find((f) => f.rango === "16-o-mas")!;
 const FALTA_OS_MENOS12 = JORNADA_COMPLETA.obraSocial! - MENOS12.obraSocial!;
 const PROPORCION_ART_MENOS12 = Math.round((MENOS12.art / MENOS12.total) * 100);
 
-const TITULO = `Aportes de empleada doméstica ${VIGENCIA_APORTES.mesVigente.replace(" de ", " ")}: tabla de ARCA`;
+const TITULO = `Aportes casas particulares ${VIGENCIA_APORTES.mesVigente.replace(" de ", " ")}: tabla de ARCA`;
 
 export const metadata: Metadata = {
   title: TITULO,
