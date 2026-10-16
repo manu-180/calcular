@@ -11,16 +11,15 @@ name: datos-paises
 # nada; publicar escribe main pero no corre npm ci y valida cada parche antes de aplicarlo; issues
 # solo toca issues y no hace checkout.
 #
-# Horarios en UTC: 11:20 (mañana en todo LatAm, diarios oficiales del día), 17:20 (mediodía, tipos de
-# cambio de la mañana) y 23:50 (cierre de BCRP, Banxico, BanRep y BCU).
+# Una vez por día, 23:50 UTC: toma los diarios oficiales del día y el cierre de BCRP, Banxico, BanRep
+# y BCU. Eran tres (11:20, 17:20, 23:50) y la matriz cuesta ~22 min por corrida: solo esto se comía
+# ~2.000 de los 3.000 minutos gratis del mes de la cuenta y frenó Actions en todos los repos (14/10/2026).
 #
 # Un workflow_dispatch desde una rama que no es main corre los detectores y deja el resumen, pero no
 # publica ni toca issues.
 
 on:
   schedule:
-    - cron: "20 11 * * *"
-    - cron: "20 17 * * *"
     - cron: "50 23 * * *"
   workflow_dispatch:
     inputs:
