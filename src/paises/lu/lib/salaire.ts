@@ -71,7 +71,7 @@ export function cotisationsSalarie(brut: number, t: TauxCotisations, redondear: 
 }
 
 function dixCentimesInferieurs(n: number): number {
-  return Math.floor(n * 10 + 1e-9) / 10;
+  return Math.floor(n * 10 + 1e-6) / 10;
 }
 
 export function escalaRetenue(classe: Classe, v: { readonly "lu.retenue-classe-1": readonly FilaEscala[]; readonly "lu.retenue-classe-1a": readonly FilaEscala[]; readonly "lu.retenue-classe-2": readonly FilaEscala[] }): readonly FilaEscala[] {
