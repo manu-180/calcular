@@ -17,7 +17,8 @@ export const detectores: readonly Detector[] = [
     metodo: "html",
     url: "https://dea.gov.in/budget-division/475",
     userAgentNavegador: true,
-    // dea.gov.in no manda el certificado intermedio y Node corta la conexión sin tlsTolerante.
+    // La cadena de dea.gov.in termina en ISRG Root YR, que Node todavía no trae; la versión firmada
+    // por ISRG Root X1 está en scripts/datos-paises/certs/isrg-root-yr-cross-x1.pem.
     tlsTolerante: true,
     async traer(http) {
       const html = await http.texto(this.url, { userAgentNavegador: true, tlsTolerante: true });
