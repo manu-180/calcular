@@ -1,5 +1,5 @@
 import { idiomaDeLocale } from "./i18n/resolver";
-import { NOMBRES_UNIDAD } from "./i18n/unidades";
+import { nombresUnidad, UNIDAD_PEGADA } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
 import type { FechaISO, Moneda, ReglaRedondeo, Unidad } from "./tipos";
 import { esMoneda, UNIDADES_REFERENCIA } from "./tipos";
@@ -84,7 +84,7 @@ export function formatearFecha(fecha: FechaISO, locale: string, estilo: "larga" 
 }
 
 function nombreDeUnidad(n: number, unidad: string, locale: string): string | null {
-  const nombres = NOMBRES_UNIDAD[idiomaDeLocale(locale) ?? "es"];
+  const nombres = nombresUnidad(idiomaDeLocale(locale) ?? "es", locale);
   if (!(unidad in nombres)) return null;
   const formas = nombres[unidad as keyof typeof nombres];
   return new Intl.PluralRules(locale).select(n) === "one" ? formas.uno : formas.otros;
@@ -105,7 +105,7 @@ export function formatearValorUnidad(n: number, unidad: Unidad, locale: string, 
   }
   if (unidad === "%") return formatearPorcentaje(n, locale, 4);
   const nombre = nombreDeUnidad(n, unidad, locale);
-  if (nombre) return `${formatearNumero(n, locale)} ${nombre}`;
+  if (nombre) return `${formatearNumero(n, locale)}${UNIDAD_PEGADA.has(idiomaDeLocale(locale) ?? "es") ? "" : " "}${nombre}`;
   if ((UNIDADES_REFERENCIA as readonly string[]).includes(unidad)) return `${formatearNumero(n, locale, undefined)} ${unidad}`;
   return formatearNumero(n, locale, n % 1 === 0 ? 0 : undefined);
 }
