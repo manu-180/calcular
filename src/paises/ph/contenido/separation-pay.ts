@@ -11,8 +11,8 @@ export default definirContenido({
     "Pick the reason, enter your monthly pay and your years of service.",
   ],
   comoSeCalcula: [
-    "Redundancy or installation of labor-saving devices: {{ph.separation-pay[redundancy]}} month of pay for every year of service, or one month of pay, whichever is higher.",
-    "Retrenchment to prevent losses, or closure not due to serious business losses: {{ph.separation-pay[retrenchment]}} month of pay for every year of service, or one month of pay, whichever is higher.",
+    "Redundancy or installation of labor-saving devices: {{ph.separation-pay[redundancy]}} of pay for every year of service, or one month of pay, whichever is higher.",
+    "Retrenchment to prevent losses, or closure not due to serious business losses: {{ph.separation-pay[retrenchment]}} of pay for every year of service, or one month of pay, whichever is higher.",
     "A fraction of at least 6 months counts as one whole year.",
   ],
   ejemplo: ["After 5 years with ₱25,000 a month, redundancy gives ₱125,000 of separation pay. Retrenchment gives half a month per year, but never less than ₱25,000."],

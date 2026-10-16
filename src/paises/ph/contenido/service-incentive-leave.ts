@@ -4,13 +4,13 @@ export default definirContenido({
   calculadora: "ph.service-incentive-leave",
   h1: "Service incentive leave calculator",
   title: "Service incentive leave (SIL) cash conversion calculator",
-  description: "Check your {{ph.service-incentive-leave}} days of service incentive leave and the cash value of the days you did not use, under the Labor Code.",
+  description: "Check your {{ph.service-incentive-leave}} of service incentive leave and the cash value of the days you did not use, under the Labor Code.",
   intro: [
-    "Every employee with at least one year of service earns {{ph.service-incentive-leave}} days of leave with pay each year, called service incentive leave (SIL).",
+    "Every employee with at least one year of service earns {{ph.service-incentive-leave}} of leave with pay each year, called service incentive leave (SIL).",
     "Days you do not use by the end of the year are converted to cash. Enter your daily wage to see how much they are worth.",
   ],
   comoSeCalcula: [
-    "You are entitled to {{ph.service-incentive-leave}} days a year once you have 12 months of service, continuous or broken.",
+    "You are entitled to {{ph.service-incentive-leave}} a year once you have 12 months of service, continuous or broken.",
     "Unused days are commutable to their money equivalent at the end of the year.",
     "Each day is worth your regular daily wage.",
   ],

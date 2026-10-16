@@ -8,11 +8,11 @@ export default definirContenido({
     "Work out the minimum retirement pay under RA 7641 for private employees with no company plan: 15 days, 1/12 of the 13th month and 5 leave days a year.",
   intro: [
     "If your company has no retirement plan, the Labor Code as amended by Republic Act No. 7641 sets a minimum retirement pay.",
-    "You qualify from age {{ph.retirement-minimum-age}} with at least {{ph.retirement-minimum-service}} years in the company. Retirement is compulsory at {{ph.retirement-compulsory-age}}.",
+    "You qualify from {{ph.retirement-minimum-age}} of age with at least {{ph.retirement-minimum-service}} in the company. Retirement is compulsory at {{ph.retirement-compulsory-age}} of age.",
   ],
   comoSeCalcula: [
     "For every year of service you get one-half month salary. A fraction of 6 months or more counts as a full year.",
-    "The law defines one-half month salary as {{ph.retirement-days}} days of pay, plus one-twelfth of your 13th month pay, plus the cash value of {{ph.retirement-sil-days}} days of service incentive leave.",
+    "The law defines one-half month salary as {{ph.retirement-days}} of pay, plus one-twelfth of your 13th month pay, plus the cash value of {{ph.retirement-sil-days}} of service incentive leave.",
     "The total is that amount times your years of service.",
   ],
   ejemplo: [
@@ -22,7 +22,7 @@ export default definirContenido({
     {
       pregunta: "Is one-half month salary just 15 days?",
       respuesta:
-        "No. The law adds one-twelfth of your 13th month pay and the cash value of up to {{ph.retirement-sil-days}} days of service incentive leave to the {{ph.retirement-days}} days, unless your employer gives broader inclusions.",
+        "No. The law adds one-twelfth of your 13th month pay and the cash value of up to {{ph.retirement-sil-days}} of service incentive leave to the {{ph.retirement-days}}, unless your employer gives broader inclusions.",
     },
     {
       pregunta: "Who is not covered?",

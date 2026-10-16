@@ -7,7 +7,7 @@ export default definirContenido({
   description:
     "Compute overtime pay under the Labor Code: {{ph.overtime-premium[ordinary]}} on ordinary days, {{ph.overtime-premium[rest-or-holiday]}} on rest days and holidays, plus night differential.",
   intro: [
-    "Work beyond {{ph.normal-hours}} hours a day is overtime and is paid with a premium on top of your hourly rate.",
+    "Work beyond {{ph.normal-hours}} a day is overtime and is paid with a premium on top of your hourly rate.",
     "Pick the day you worked, enter your hours and see what your overtime should come to.",
   ],
   comoSeCalcula: [
