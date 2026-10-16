@@ -7,7 +7,7 @@ export default definirCalculadora({
   concepto: "costo-empleador",
   slug: "employer-cost",
   estado: "publicado",
-  requiere: REQUIERE_PERKESO,
+  requiere: { ...REQUIERE_PERKESO, "my.socso-wage-ceiling": "numero" },
   campos: [
     { id: "sueldo", tipo: "moneda", etiqueta: "Monthly wages", min: 0, porDefecto: 4000 },
     { id: "epf", tipo: "moneda", etiqueta: "Employer EPF contribution a month", min: 0, porDefecto: 520, ayuda: "The employer share from your EPF contribution schedule." },

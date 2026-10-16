@@ -23,7 +23,7 @@ export default definirContenido({
     {
       pregunta: "What is LINDUNG 24 Jam on my payslip?",
       respuesta:
-        "It is PERKESO's Non-Employment Injury Scheme (SKBBK), which started on {{my.socso-skbbk#desde}}. It covers accidents outside working hours and adds an employee share to your SOCSO deduction.",
+        "It is PERKESO's Non-Employment Injury Scheme (SKBBK), which started on 1 June 2026. It covers accidents outside working hours and adds an employee share to your SOCSO deduction.",
     },
     {
       pregunta: "Why do SOCSO and EIS stop growing above a certain salary?",
@@ -37,7 +37,7 @@ export default definirContenido({
   ],
   glosario: [
     { termino: "EPF / KWSP", definicion: "Employees Provident Fund. You and your employer both contribute to it every month." },
-    { termino: "SOCSO / PERKESO", definicion: "Social Security Organisation. Its schemes cover work injuries, invalidity and, since {{my.socso-skbbk#desde}}, accidents outside work." },
+    { termino: "SOCSO / PERKESO", definicion: "Social Security Organisation. Its schemes cover work injuries, invalidity and, since 1 June 2026, accidents outside work." },
     { termino: "EIS", definicion: "Employment Insurance System under Act 800, run by PERKESO." },
   ],
 });
