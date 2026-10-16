@@ -1,0 +1,1740 @@
+{
+  "mercado": "lu",
+  "datos": [
+    {
+      "id": "lu.tva-normal",
+      "nombre": "TVA, taux normal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 17,
+          "fuente": {
+            "organismo": "Administration de l'enregistrement, des domaines et de la TVA",
+            "titulo": "Loi modifiée du 12 février 1979 concernant la TVA, texte coordonné au 1er janvier 2025, art. 39",
+            "url": "https://pfi.public.lu/dam-assets/pdf/tva/loi-tva-2025-01-01.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.tva-intermediaire",
+      "nombre": "TVA, taux intermédiaire",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Administration de l'enregistrement, des domaines et de la TVA",
+            "titulo": "Loi modifiée du 12 février 1979 concernant la TVA, texte coordonné au 1er janvier 2025, art. 39",
+            "url": "https://pfi.public.lu/dam-assets/pdf/tva/loi-tva-2025-01-01.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.tva-reduit",
+      "nombre": "TVA, taux réduit",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Administration de l'enregistrement, des domaines et de la TVA",
+            "titulo": "Loi modifiée du 12 février 1979 concernant la TVA, texte coordonné au 1er janvier 2025, art. 39",
+            "url": "https://pfi.public.lu/dam-assets/pdf/tva/loi-tva-2025-01-01.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.tva-super-reduit",
+      "nombre": "TVA, taux super-réduit",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Administration de l'enregistrement, des domaines et de la TVA",
+            "titulo": "Loi modifiée du 12 février 1979 concernant la TVA, texte coordonné au 1er janvier 2025, art. 39",
+            "url": "https://pfi.public.lu/dam-assets/pdf/tva/loi-tva-2025-01-01.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.ssm-non-qualifie",
+      "nombre": "Salaire social minimum mensuel, salarié non qualifié de 18 ans et plus",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-05-31",
+          "valor": 2703.74,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 2771.33,
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Paramètres sociaux à partir du 1er juin 2026",
+            "url": "https://guichet.public.lu/fr/citoyens/outils/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.ssm-qualifie",
+      "nombre": "Salaire social minimum mensuel, salarié qualifié",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 3325.59,
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Paramètres sociaux à partir du 1er juin 2026",
+            "url": "https://guichet.public.lu/fr/citoyens/outils/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.ssm-jeunes",
+      "nombre": "Salaire social minimum des adolescents, en pour-cent du salaire non qualifié",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "17-18": "17 à 18 ans",
+        "15-17": "15 à 17 ans"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": {
+            "17-18": 80,
+            "15-17": 75
+          },
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Paramètres sociaux à partir du 1er juin 2026",
+            "url": "https://guichet.public.lu/fr/citoyens/outils/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.heures-par-mois",
+      "nombre": "Nombre forfaitaire d'heures par mois",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 173,
+          "fuente": {
+            "organismo": "Service central de législation (legilux.public.lu)",
+            "titulo": "Code du travail, art. L. 211-27 (version consolidée au 10 mars 2026)",
+            "url": "https://legilux.public.lu/eli/etat/leg/code/travail/20260310",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.cotisation-maladie-soins",
+      "nombre": "Assurance maladie, soins de santé (total)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5.6,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.cotisation-maladie-especes",
+      "nombre": "Assurance maladie, prestations en espèces (total)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.cotisation-pension",
+      "nombre": "Assurance pension (total)",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "La charge est répartie par parts égales entre l'assuré et l'employeur (CCSS, Charge des cotisations).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 17,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.cotisation-dependance",
+      "nombre": "Assurance dépendance (à charge de l'assuré)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.4,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.cotisation-accident",
+      "nombre": "Assurance accident, taux unique (à charge de l'employeur)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.65,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.cotisation-sante-travail",
+      "nombre": "Santé au travail (à charge de l'employeur)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.14,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.cotisation-mutualite",
+      "nombre": "Mutualité des employeurs, par classe",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "classe-1": "Classe 1",
+        "classe-2": "Classe 2",
+        "classe-3": "Classe 3",
+        "classe-4": "Classe 4"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "classe-1": 0.23,
+            "classe-2": 0.95,
+            "classe-3": 1.56,
+            "classe-4": 2.66
+          },
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.plafond-cotisable",
+      "nombre": "Maximum cotisable mensuel (cinq fois le salaire social minimum)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-05-31",
+          "valor": 13518.68,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 13856.63,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.abattement-dependance",
+      "nombre": "Abattement sur l'assiette de la contribution dépendance (un quart du salaire social minimum)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 692.83,
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Paramètres sociaux à partir du 1er juin 2026",
+            "url": "https://guichet.public.lu/fr/citoyens/outils/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.retenue-classe-1",
+      "nombre": "Retenue mensuelle sur salaires, classe 1 (taux x R - déduction)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1190,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 1190,
+              "hasta": 1375,
+              "tasa": 8.0,
+              "cuotaFija": 0.2
+            },
+            {
+              "desde": 1375,
+              "hasta": 1560,
+              "tasa": 9.0,
+              "cuotaFija": 15.0375
+            },
+            {
+              "desde": 1560,
+              "hasta": 1740,
+              "tasa": 10.0,
+              "cuotaFija": 31.7375
+            },
+            {
+              "desde": 1740,
+              "hasta": 1925,
+              "tasa": 11.0,
+              "cuotaFija": 49.75
+            },
+            {
+              "desde": 1925,
+              "hasta": 2110,
+              "tasa": 12.0,
+              "cuotaFija": 70.125
+            },
+            {
+              "desde": 2110,
+              "hasta": 2300,
+              "tasa": 14.0,
+              "cuotaFija": 92.4
+            },
+            {
+              "desde": 2300,
+              "hasta": 2490,
+              "tasa": 16.0,
+              "cuotaFija": 119.05
+            },
+            {
+              "desde": 2490,
+              "hasta": 2685,
+              "tasa": 18.0,
+              "cuotaFija": 149.475
+            },
+            {
+              "desde": 2685,
+              "hasta": 2875,
+              "tasa": 20.0,
+              "cuotaFija": 184.675
+            },
+            {
+              "desde": 2875,
+              "hasta": 3065,
+              "tasa": 22.0,
+              "cuotaFija": 222.75
+            },
+            {
+              "desde": 3065,
+              "hasta": 3255,
+              "tasa": 24.0,
+              "cuotaFija": 264.6
+            },
+            {
+              "desde": 3255,
+              "hasta": 3450,
+              "tasa": 26.0,
+              "cuotaFija": 310.225
+            },
+            {
+              "desde": 3450,
+              "hasta": 3640,
+              "tasa": 28.0,
+              "cuotaFija": 361.025
+            },
+            {
+              "desde": 3640,
+              "hasta": 3830,
+              "tasa": 30.0,
+              "cuotaFija": 414.3
+            },
+            {
+              "desde": 3830,
+              "hasta": 4020,
+              "tasa": 32.0,
+              "cuotaFija": 471.35
+            },
+            {
+              "desde": 4020,
+              "hasta": 4215,
+              "tasa": 34.0,
+              "cuotaFija": 532.175
+            },
+            {
+              "desde": 4215,
+              "hasta": 4405,
+              "tasa": 36.0,
+              "cuotaFija": 598.575
+            },
+            {
+              "desde": 4405,
+              "hasta": 4595,
+              "tasa": 38.0,
+              "cuotaFija": 667.05
+            },
+            {
+              "desde": 4595,
+              "hasta": 9875,
+              "tasa": 39.0,
+              "cuotaFija": 739.275
+            },
+            {
+              "desde": 9875,
+              "hasta": 14770,
+              "tasa": 40.0,
+              "cuotaFija": 2798.5
+            },
+            {
+              "desde": 14770,
+              "hasta": 19660,
+              "tasa": 41.0,
+              "cuotaFija": 4756.55
+            },
+            {
+              "desde": 19660,
+              "hasta": null,
+              "tasa": 42.0,
+              "cuotaFija": 6761.475
+            }
+          ],
+          "fuente": {
+            "organismo": "Administration des contributions directes",
+            "titulo": "Formules du calcul automatisé de l'impôt, barème 2025 (règlement grand-ducal du 20 décembre 2024)",
+            "url": "https://impotsdirects.public.lu/dam-assets/fr/baremes/bareme-2025-format-excel.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Barème le plus récent publié par l'ACD au 16 octobre 2026 (impotsdirects.public.lu/fr/baremes.html)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.retenue-classe-1a",
+      "nombre": "Retenue mensuelle sur salaires, classe 1a",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2295,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 2295,
+              "hasta": 2440,
+              "tasa": 10.0,
+              "cuotaFija": 0.5
+            },
+            {
+              "desde": 2440,
+              "hasta": 2585,
+              "tasa": 11.25,
+              "cuotaFija": 15.0375
+            },
+            {
+              "desde": 2585,
+              "hasta": 2735,
+              "tasa": 12.5,
+              "cuotaFija": 31.3625
+            },
+            {
+              "desde": 2735,
+              "hasta": 2880,
+              "tasa": 13.75,
+              "cuotaFija": 50.1625
+            },
+            {
+              "desde": 2880,
+              "hasta": 3030,
+              "tasa": 15.0,
+              "cuotaFija": 70.125
+            },
+            {
+              "desde": 3030,
+              "hasta": 3180,
+              "tasa": 17.5,
+              "cuotaFija": 92.75
+            },
+            {
+              "desde": 3180,
+              "hasta": 3335,
+              "tasa": 20.0,
+              "cuotaFija": 119.05
+            },
+            {
+              "desde": 3335,
+              "hasta": 3485,
+              "tasa": 22.5,
+              "cuotaFija": 150.15
+            },
+            {
+              "desde": 3485,
+              "hasta": 3640,
+              "tasa": 25.0,
+              "cuotaFija": 183.925
+            },
+            {
+              "desde": 3640,
+              "hasta": 3795,
+              "tasa": 27.5,
+              "cuotaFija": 222.75
+            },
+            {
+              "desde": 3795,
+              "hasta": 3945,
+              "tasa": 30.0,
+              "cuotaFija": 265.5
+            },
+            {
+              "desde": 3945,
+              "hasta": 4100,
+              "tasa": 32.5,
+              "cuotaFija": 310.55
+            },
+            {
+              "desde": 4100,
+              "hasta": 4250,
+              "tasa": 35.0,
+              "cuotaFija": 361.025
+            },
+            {
+              "desde": 4250,
+              "hasta": 4405,
+              "tasa": 37.5,
+              "cuotaFija": 413.55
+            },
+            {
+              "desde": 4405,
+              "hasta": 9875,
+              "tasa": 39.0,
+              "cuotaFija": 471.72
+            },
+            {
+              "desde": 9875,
+              "hasta": 14770,
+              "tasa": 40.0,
+              "cuotaFija": 2605.045
+            },
+            {
+              "desde": 14770,
+              "hasta": 19660,
+              "tasa": 41.0,
+              "cuotaFija": 4563.095
+            },
+            {
+              "desde": 19660,
+              "hasta": null,
+              "tasa": 42.0,
+              "cuotaFija": 6568.02
+            }
+          ],
+          "fuente": {
+            "organismo": "Administration des contributions directes",
+            "titulo": "Formules du calcul automatisé de l'impôt, barème 2025 (règlement grand-ducal du 20 décembre 2024)",
+            "url": "https://impotsdirects.public.lu/dam-assets/fr/baremes/bareme-2025-format-excel.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Barème le plus récent publié par l'ACD au 16 octobre 2026 (impotsdirects.public.lu/fr/baremes.html)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.retenue-classe-2",
+      "nombre": "Retenue mensuelle sur salaires, classe 2",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2295,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 2295,
+              "hasta": 2660,
+              "tasa": 8.0,
+              "cuotaFija": 0.4
+            },
+            {
+              "desde": 2660,
+              "hasta": 3030,
+              "tasa": 9.0,
+              "cuotaFija": 29.625
+            },
+            {
+              "desde": 3030,
+              "hasta": 3395,
+              "tasa": 10.0,
+              "cuotaFija": 62.975
+            },
+            {
+              "desde": 3395,
+              "hasta": 3765,
+              "tasa": 11.0,
+              "cuotaFija": 99.5
+            },
+            {
+              "desde": 3765,
+              "hasta": 4130,
+              "tasa": 12.0,
+              "cuotaFija": 140.25
+            },
+            {
+              "desde": 4130,
+              "hasta": 4515,
+              "tasa": 14.0,
+              "cuotaFija": 184.1
+            },
+            {
+              "desde": 4515,
+              "hasta": 4895,
+              "tasa": 16.0,
+              "cuotaFija": 238.1
+            },
+            {
+              "desde": 4895,
+              "hasta": 5280,
+              "tasa": 18.0,
+              "cuotaFija": 298.95
+            },
+            {
+              "desde": 5280,
+              "hasta": 5660,
+              "tasa": 20.0,
+              "cuotaFija": 368.35
+            },
+            {
+              "desde": 5660,
+              "hasta": 6045,
+              "tasa": 22.0,
+              "cuotaFija": 444.4
+            },
+            {
+              "desde": 6045,
+              "hasta": 6425,
+              "tasa": 24.0,
+              "cuotaFija": 529.2
+            },
+            {
+              "desde": 6425,
+              "hasta": 6810,
+              "tasa": 26.0,
+              "cuotaFija": 620.45
+            },
+            {
+              "desde": 6810,
+              "hasta": 7190,
+              "tasa": 28.0,
+              "cuotaFija": 720.65
+            },
+            {
+              "desde": 7190,
+              "hasta": 7575,
+              "tasa": 30.0,
+              "cuotaFija": 827.1
+            },
+            {
+              "desde": 7575,
+              "hasta": 7955,
+              "tasa": 32.0,
+              "cuotaFija": 942.7
+            },
+            {
+              "desde": 7955,
+              "hasta": 8340,
+              "tasa": 34.0,
+              "cuotaFija": 1064.35
+            },
+            {
+              "desde": 8340,
+              "hasta": 8720,
+              "tasa": 36.0,
+              "cuotaFija": 1195.35
+            },
+            {
+              "desde": 8720,
+              "hasta": 9105,
+              "tasa": 38.0,
+              "cuotaFija": 1332.2
+            },
+            {
+              "desde": 9105,
+              "hasta": 19665,
+              "tasa": 39.0,
+              "cuotaFija": 1478.55
+            },
+            {
+              "desde": 19665,
+              "hasta": 29450,
+              "tasa": 40.0,
+              "cuotaFija": 5597.0
+            },
+            {
+              "desde": 29450,
+              "hasta": 39235,
+              "tasa": 41.0,
+              "cuotaFija": 9511.05
+            },
+            {
+              "desde": 39235,
+              "hasta": null,
+              "tasa": 42.0,
+              "cuotaFija": 13522.95
+            }
+          ],
+          "fuente": {
+            "organismo": "Administration des contributions directes",
+            "titulo": "Formules du calcul automatisé de l'impôt, barème 2025 (règlement grand-ducal du 20 décembre 2024)",
+            "url": "https://impotsdirects.public.lu/dam-assets/fr/baremes/bareme-2025-format-excel.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Barème le plus récent publié par l'ACD au 16 octobre 2026 (impotsdirects.public.lu/fr/baremes.html)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.fonds-emploi-retenue",
+      "nombre": "Majoration pour le fonds pour l'emploi sur la retenue mensuelle (seuil et déduction par classe)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "nota": "Jusqu'au seuil, l'impôt est majoré de 7 %. Au-delà, de (impôt x 0,09 - déduction).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "seuil-1": 12585,
+            "deduction-1": 77.65,
+            "seuil-1a": 12585,
+            "deduction-1a": 73.78,
+            "seuil-2": 25085,
+            "deduction-2": 155.3
+          },
+          "fuente": {
+            "organismo": "Administration des contributions directes",
+            "titulo": "Formules du calcul automatisé de l'impôt, barème 2025 (règlement grand-ducal du 20 décembre 2024)",
+            "url": "https://impotsdirects.public.lu/dam-assets/fr/baremes/bareme-2025-format-excel.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Barème le plus récent publié par l'ACD au 16 octobre 2026 (impotsdirects.public.lu/fr/baremes.html)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.impot-classe-1",
+      "nombre": "Impôt sur le revenu, classe 1 (taux x R - déduction)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 13250,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 13250,
+              "hasta": 15450,
+              "tasa": 8.0,
+              "cuotaFija": 1.6
+            },
+            {
+              "desde": 15450,
+              "hasta": 17650,
+              "tasa": 9.0,
+              "cuotaFija": 177.75
+            },
+            {
+              "desde": 17650,
+              "hasta": 19850,
+              "tasa": 10.0,
+              "cuotaFija": 375.85
+            },
+            {
+              "desde": 19850,
+              "hasta": 22100,
+              "tasa": 11.0,
+              "cuotaFija": 595.9
+            },
+            {
+              "desde": 22100,
+              "hasta": 24300,
+              "tasa": 12.0,
+              "cuotaFija": 843.9
+            },
+            {
+              "desde": 24300,
+              "hasta": 26600,
+              "tasa": 14.0,
+              "cuotaFija": 1108.8
+            },
+            {
+              "desde": 26600,
+              "hasta": 28850,
+              "tasa": 16.0,
+              "cuotaFija": 1431.8
+            },
+            {
+              "desde": 28850,
+              "hasta": 31150,
+              "tasa": 18.0,
+              "cuotaFija": 1791.9
+            },
+            {
+              "desde": 31150,
+              "hasta": 33450,
+              "tasa": 20.0,
+              "cuotaFija": 2206.1
+            },
+            {
+              "desde": 33450,
+              "hasta": 35750,
+              "tasa": 22.0,
+              "cuotaFija": 2666.4
+            },
+            {
+              "desde": 35750,
+              "hasta": 38050,
+              "tasa": 24.0,
+              "cuotaFija": 3172.8
+            },
+            {
+              "desde": 38050,
+              "hasta": 40350,
+              "tasa": 26.0,
+              "cuotaFija": 3725.3
+            },
+            {
+              "desde": 40350,
+              "hasta": 42650,
+              "tasa": 28.0,
+              "cuotaFija": 4323.9
+            },
+            {
+              "desde": 42650,
+              "hasta": 44950,
+              "tasa": 30.0,
+              "cuotaFija": 4968.6
+            },
+            {
+              "desde": 44950,
+              "hasta": 47250,
+              "tasa": 32.0,
+              "cuotaFija": 5659.4
+            },
+            {
+              "desde": 47250,
+              "hasta": 49550,
+              "tasa": 34.0,
+              "cuotaFija": 6396.3
+            },
+            {
+              "desde": 49550,
+              "hasta": 51800,
+              "tasa": 36.0,
+              "cuotaFija": 7179.3
+            },
+            {
+              "desde": 51800,
+              "hasta": 54100,
+              "tasa": 38.0,
+              "cuotaFija": 7989.4
+            },
+            {
+              "desde": 54100,
+              "hasta": 117500,
+              "tasa": 39.0,
+              "cuotaFija": 8863.5
+            },
+            {
+              "desde": 117500,
+              "hasta": 176200,
+              "tasa": 40.0,
+              "cuotaFija": 33590.0
+            },
+            {
+              "desde": 176200,
+              "hasta": 234900,
+              "tasa": 41.0,
+              "cuotaFija": 57070.4
+            },
+            {
+              "desde": 234900,
+              "hasta": null,
+              "tasa": 42.0,
+              "cuotaFija": 81137.7
+            }
+          ],
+          "fuente": {
+            "organismo": "Administration des contributions directes",
+            "titulo": "Formules du calcul automatisé de l'impôt, barème 2025 (règlement grand-ducal du 20 décembre 2024)",
+            "url": "https://impotsdirects.public.lu/dam-assets/fr/baremes/bareme-2025-format-excel.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Barème le plus récent publié par l'ACD au 16 octobre 2026 (impotsdirects.public.lu/fr/baremes.html)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.impot-classe-1a",
+      "nombre": "Impôt sur le revenu, classe 1a",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 26500,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 26500,
+              "hasta": 28250,
+              "tasa": 10.0,
+              "cuotaFija": 4.0
+            },
+            {
+              "desde": 28250,
+              "hasta": 30000,
+              "tasa": 11.25,
+              "cuotaFija": 179.325
+            },
+            {
+              "desde": 30000,
+              "hasta": 31800,
+              "tasa": 12.5,
+              "cuotaFija": 376.35
+            },
+            {
+              "desde": 31800,
+              "hasta": 33550,
+              "tasa": 13.75,
+              "cuotaFija": 601.95
+            },
+            {
+              "desde": 33550,
+              "hasta": 35300,
+              "tasa": 15.0,
+              "cuotaFija": 843.0
+            },
+            {
+              "desde": 35300,
+              "hasta": 37150,
+              "tasa": 17.5,
+              "cuotaFija": 1106.0
+            },
+            {
+              "desde": 37150,
+              "hasta": 39000,
+              "tasa": 20.0,
+              "cuotaFija": 1430.6
+            },
+            {
+              "desde": 39000,
+              "hasta": 40800,
+              "tasa": 22.5,
+              "cuotaFija": 1801.8
+            },
+            {
+              "desde": 40800,
+              "hasta": 42650,
+              "tasa": 25.0,
+              "cuotaFija": 2207.1
+            },
+            {
+              "desde": 42650,
+              "hasta": 44500,
+              "tasa": 27.5,
+              "cuotaFija": 2670.25
+            },
+            {
+              "desde": 44500,
+              "hasta": 46300,
+              "tasa": 30.0,
+              "cuotaFija": 3180.0
+            },
+            {
+              "desde": 46300,
+              "hasta": 48150,
+              "tasa": 32.5,
+              "cuotaFija": 3720.1
+            },
+            {
+              "desde": 48150,
+              "hasta": 50000,
+              "tasa": 35.0,
+              "cuotaFija": 4321.8
+            },
+            {
+              "desde": 50000,
+              "hasta": 51850,
+              "tasa": 37.5,
+              "cuotaFija": 4970.1
+            },
+            {
+              "desde": 51850,
+              "hasta": 117500,
+              "tasa": 39.0,
+              "cuotaFija": 5664.54
+            },
+            {
+              "desde": 117500,
+              "hasta": 176200,
+              "tasa": 40.0,
+              "cuotaFija": 31268.54
+            },
+            {
+              "desde": 176200,
+              "hasta": 234900,
+              "tasa": 41.0,
+              "cuotaFija": 54748.94
+            },
+            {
+              "desde": 234900,
+              "hasta": null,
+              "tasa": 42.0,
+              "cuotaFija": 78816.24
+            }
+          ],
+          "fuente": {
+            "organismo": "Administration des contributions directes",
+            "titulo": "Formules du calcul automatisé de l'impôt, barème 2025 (règlement grand-ducal du 20 décembre 2024)",
+            "url": "https://impotsdirects.public.lu/dam-assets/fr/baremes/bareme-2025-format-excel.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Barème le plus récent publié par l'ACD au 16 octobre 2026 (impotsdirects.public.lu/fr/baremes.html)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.impot-classe-2",
+      "nombre": "Impôt sur le revenu, classe 2",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 26500,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 26500,
+              "hasta": 30900,
+              "tasa": 8.0,
+              "cuotaFija": 3.2
+            },
+            {
+              "desde": 30900,
+              "hasta": 35300,
+              "tasa": 9.0,
+              "cuotaFija": 355.5
+            },
+            {
+              "desde": 35300,
+              "hasta": 39700,
+              "tasa": 10.0,
+              "cuotaFija": 751.7
+            },
+            {
+              "desde": 39700,
+              "hasta": 44150,
+              "tasa": 11.0,
+              "cuotaFija": 1191.8
+            },
+            {
+              "desde": 44150,
+              "hasta": 48550,
+              "tasa": 12.0,
+              "cuotaFija": 1681.8
+            },
+            {
+              "desde": 48550,
+              "hasta": 53150,
+              "tasa": 14.0,
+              "cuotaFija": 2210.6
+            },
+            {
+              "desde": 53150,
+              "hasta": 57700,
+              "tasa": 16.0,
+              "cuotaFija": 2855.6
+            },
+            {
+              "desde": 57700,
+              "hasta": 62300,
+              "tasa": 18.0,
+              "cuotaFija": 3583.8
+            },
+            {
+              "desde": 62300,
+              "hasta": 66900,
+              "tasa": 20.0,
+              "cuotaFija": 4412.2
+            },
+            {
+              "desde": 66900,
+              "hasta": 71500,
+              "tasa": 22.0,
+              "cuotaFija": 5332.8
+            },
+            {
+              "desde": 71500,
+              "hasta": 76100,
+              "tasa": 24.0,
+              "cuotaFija": 6345.6
+            },
+            {
+              "desde": 76100,
+              "hasta": 80650,
+              "tasa": 26.0,
+              "cuotaFija": 7450.6
+            },
+            {
+              "desde": 80650,
+              "hasta": 85250,
+              "tasa": 28.0,
+              "cuotaFija": 8633.8
+            },
+            {
+              "desde": 85250,
+              "hasta": 89850,
+              "tasa": 30.0,
+              "cuotaFija": 9922.2
+            },
+            {
+              "desde": 89850,
+              "hasta": 94450,
+              "tasa": 32.0,
+              "cuotaFija": 11302.8
+            },
+            {
+              "desde": 94450,
+              "hasta": 99050,
+              "tasa": 34.0,
+              "cuotaFija": 12775.6
+            },
+            {
+              "desde": 99050,
+              "hasta": 103600,
+              "tasa": 36.0,
+              "cuotaFija": 14340.6
+            },
+            {
+              "desde": 103600,
+              "hasta": 108200,
+              "tasa": 38.0,
+              "cuotaFija": 15978.8
+            },
+            {
+              "desde": 108200,
+              "hasta": 234950,
+              "tasa": 39.0,
+              "cuotaFija": 17727.0
+            },
+            {
+              "desde": 234950,
+              "hasta": 352350,
+              "tasa": 40.0,
+              "cuotaFija": 67160.0
+            },
+            {
+              "desde": 352350,
+              "hasta": 469750,
+              "tasa": 41.0,
+              "cuotaFija": 114120.3
+            },
+            {
+              "desde": 469750,
+              "hasta": null,
+              "tasa": 42.0,
+              "cuotaFija": 162254.4
+            }
+          ],
+          "fuente": {
+            "organismo": "Administration des contributions directes",
+            "titulo": "Formules du calcul automatisé de l'impôt, barème 2025 (règlement grand-ducal du 20 décembre 2024)",
+            "url": "https://impotsdirects.public.lu/dam-assets/fr/baremes/bareme-2025-format-excel.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Barème le plus récent publié par l'ACD au 16 octobre 2026 (impotsdirects.public.lu/fr/baremes.html)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.fonds-emploi-impot",
+      "nombre": "Majoration pour le fonds pour l'emploi sur l'impôt annuel (seuil et déduction par classe)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "seuil-1": 150000,
+            "deduction-1": 931.8,
+            "seuil-1a": 150000,
+            "deduction-1a": 885.36,
+            "seuil-2": 300000,
+            "deduction-2": 1863.6
+          },
+          "fuente": {
+            "organismo": "Administration des contributions directes",
+            "titulo": "Formules du calcul automatisé de l'impôt, barème 2025 (règlement grand-ducal du 20 décembre 2024)",
+            "url": "https://impotsdirects.public.lu/dam-assets/fr/baremes/bareme-2025-format-excel.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Barème le plus récent publié par l'ACD au 16 octobre 2026 (impotsdirects.public.lu/fr/baremes.html)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.cis",
+      "nombre": "Crédit d'impôt pour salariés (CIS) et CI-CO2 salarié, paramètres annuels",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "min": 936,
+            "palier-1": 11265,
+            "base": 300,
+            "pente-1": 0.029,
+            "plateau": 600,
+            "palier-2": 40000,
+            "pente-2": 0.015,
+            "max": 80000,
+            "co2": 216,
+            "pente-co2": 0.0054
+          },
+          "fuente": {
+            "organismo": "Administration des contributions directes",
+            "titulo": "CIS et CI-CO2 salarié à partir de l'année d'imposition 2026",
+            "url": "https://impotsdirects.public.lu/fr/az/c/credit-impot-salaries/cis2026.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.preavis-employeur",
+      "nombre": "Délai de préavis en cas de licenciement par l'employeur, en mois",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "moins-5": "moins de 5 ans",
+        "5-10": "5 à moins de 10 ans",
+        "10-plus": "10 ans et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "moins-5": 2,
+            "5-10": 4,
+            "10-plus": 6
+          },
+          "fuente": {
+            "organismo": "Service central de législation (legilux.public.lu)",
+            "titulo": "Code du travail, art. L. 124-3 (version consolidée au 10 mars 2026)",
+            "url": "https://legilux.public.lu/eli/etat/leg/code/travail/20260310",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.indemnite-depart",
+      "nombre": "Indemnité de départ minimale, en mois de salaire, par ancienneté",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "5": 1,
+            "10": 2,
+            "15": 3,
+            "20": 6,
+            "25": 9,
+            "30": 12
+          },
+          "fuente": {
+            "organismo": "Service central de législation (legilux.public.lu)",
+            "titulo": "Code du travail, art. L. 124-7 (version consolidée au 10 mars 2026)",
+            "url": "https://legilux.public.lu/eli/etat/leg/code/travail/20260310",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.conges-jours",
+      "nombre": "Congé annuel minimal en jours ouvrables",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Service central de législation (legilux.public.lu)",
+            "titulo": "Code du travail, art. L. 233-4 (version consolidée au 10 mars 2026)",
+            "url": "https://legilux.public.lu/eli/etat/leg/code/travail/20260310",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.majoration-heures-sup",
+      "nombre": "Majoration du salaire pour heure supplémentaire non récupérée",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Service central de législation (legilux.public.lu)",
+            "titulo": "Code du travail, art. L. 211-27 (version consolidée au 10 mars 2026)",
+            "url": "https://legilux.public.lu/eli/etat/leg/code/travail/20260310",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.allocation-familiale",
+      "nombre": "Allocation familiale par enfant et par mois",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 315.04,
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Paramètres sociaux à partir du 1er juin 2026",
+            "url": "https://guichet.public.lu/fr/citoyens/outils/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.majoration-age",
+      "nombre": "Majorations d'âge de l'allocation familiale, par mois",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "6-11": "6 à 11 ans",
+        "12-plus": "12 ans et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": {
+            "6-11": 23.81,
+            "12-plus": 59.44
+          },
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Paramètres sociaux à partir du 1er juin 2026",
+            "url": "https://guichet.public.lu/fr/citoyens/outils/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.allocation-rentree",
+      "nombre": "Allocation de rentrée scolaire par enfant",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "6-11": "6 à 11 ans",
+        "12-plus": "12 ans et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": {
+            "6-11": 115,
+            "12-plus": 235
+          },
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Paramètres sociaux à partir du 1er juin 2026",
+            "url": "https://guichet.public.lu/fr/citoyens/outils/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.allocation-naissance",
+      "nombre": "Allocation de naissance, montant par tranche (3 tranches)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 580.03,
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Paramètres sociaux à partir du 1er juin 2026",
+            "url": "https://guichet.public.lu/fr/citoyens/outils/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.droits-enregistrement",
+      "nombre": "Droits d'enregistrement sur l'achat d'un immeuble",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Crédit d'impôt sur les actes notariés (Bëllegen Akt)",
+            "url": "https://guichet.public.lu/fr/citoyens/logement/aides/aides-indirectes-avantages-fiscaux/credit-impot-actes-notaries.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.droits-transcription",
+      "nombre": "Droits de transcription sur l'achat d'un immeuble",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Crédit d'impôt sur les actes notariés (Bëllegen Akt)",
+            "url": "https://guichet.public.lu/fr/citoyens/logement/aides/aides-indirectes-avantages-fiscaux/credit-impot-actes-notaries.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.bellegen-akt",
+      "nombre": "Crédit d'impôt sur les actes notariés (Bëllegen Akt), par acquéreur",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 40000,
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Crédit d'impôt sur les actes notariés (Bëllegen Akt)",
+            "url": "https://guichet.public.lu/fr/citoyens/logement/aides/aides-indirectes-avantages-fiscaux/credit-impot-actes-notaries.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.droits-minimum",
+      "nombre": "Montant minimal perçu à titre de droits d'enregistrement et de transcription",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Guichet.lu",
+            "titulo": "Crédit d'impôt sur les actes notariés (Bëllegen Akt)",
+            "url": "https://guichet.public.lu/fr/citoyens/logement/aides/aides-indirectes-avantages-fiscaux/credit-impot-actes-notaries.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.cote-echeance",
+      "nombre": "Cote d'échéance de l'échelle mobile des salaires (IPCN, base 1948)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "hasta": "2026-05-31",
+          "valor": 1013.46,
+          "fuente": {
+            "organismo": "STATEC",
+            "titulo": "Échéances de l'échelle mobile des salaires (LUSTAT, DF_E5201)",
+            "url": "https://lustat.statec.lu/rest/data/LU1,DSD_PRIX_EMS@DF_E5201,1.0/all",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 1038.79,
+          "fuente": {
+            "organismo": "STATEC",
+            "titulo": "Échéances de l'échelle mobile des salaires (LUSTAT, DF_E5201)",
+            "url": "https://lustat.statec.lu/rest/data/LU1,DSD_PRIX_EMS@DF_E5201,1.0/all",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lu.nombre-indice",
+      "nombre": "Nombre indice applicable aux salaires",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "hasta": "2026-05-31",
+          "valor": 968.04,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": 992.24,
+          "fuente": {
+            "organismo": "Centre commun de la sécurité sociale",
+            "titulo": "Paramètres sociaux",
+            "url": "https://ccss.public.lu/fr/parametres-sociaux.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    }
+  ]
+}
