@@ -20,6 +20,14 @@ import paidLeave from "./calculadoras/paid-leave";
 import contenidoPaidLeave from "./contenido/paid-leave";
 import yearEndAdjustment from "./calculadoras/year-end-adjustment";
 import contenidoYearEndAdjustment from "./contenido/year-end-adjustment";
+import furusatoNozei from "./calculadoras/furusato-nozei";
+import contenidoFurusatoNozei from "./contenido/furusato-nozei";
+import retirementAllowanceTax from "./calculadoras/retirement-allowance-tax";
+import contenidoRetirementAllowanceTax from "./contenido/retirement-allowance-tax";
+import giftTax from "./calculadoras/gift-tax";
+import contenidoGiftTax from "./contenido/gift-tax";
+import inheritanceTax from "./calculadoras/inheritance-tax";
+import contenidoInheritanceTax from "./contenido/inheritance-tax";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -42,6 +50,10 @@ export default definirPais({
     { definicion: overtimePay, contenido: contenidoOvertimePay, cliente: () => import("./calculadoras/overtime-pay.cliente") },
     { definicion: paidLeave, contenido: contenidoPaidLeave, cliente: () => import("./calculadoras/paid-leave.cliente") },
     { definicion: yearEndAdjustment, contenido: contenidoYearEndAdjustment, cliente: () => import("./calculadoras/year-end-adjustment.cliente") },
+    { definicion: furusatoNozei, contenido: contenidoFurusatoNozei, cliente: () => import("./calculadoras/furusato-nozei.cliente") },
+    { definicion: retirementAllowanceTax, contenido: contenidoRetirementAllowanceTax, cliente: () => import("./calculadoras/retirement-allowance-tax.cliente") },
+    { definicion: giftTax, contenido: contenidoGiftTax, cliente: () => import("./calculadoras/gift-tax.cliente") },
+    { definicion: inheritanceTax, contenido: contenidoInheritanceTax, cliente: () => import("./calculadoras/inheritance-tax.cliente") },
   ],
   universales: "todas",
   novedades,

@@ -14,6 +14,7 @@ export default definirCalculadora({
     "jp.resident-tax-per-capita": "numero",
     "jp.forest-environment-tax": "numero",
     "jp.resident-adjustment": "mapa",
+    "jp.resident-adjustment-rate": "numero",
   },
   campos: [
     {
@@ -40,7 +41,8 @@ export default definirCalculadora({
       tasa: v["jp.resident-tax-rate"],
       kintowari: v["jp.resident-tax-per-capita"],
       shinrin: v["jp.forest-environment-tax"],
-      ajuste: v["jp.resident-adjustment"] as { gap: number; rate: number; threshold: number },
+      ajuste: v["jp.resident-adjustment"],
+      tasaAjuste: v["jp.resident-adjustment-rate"],
     });
     return {
       total: jm.total,

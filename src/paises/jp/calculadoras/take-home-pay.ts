@@ -25,6 +25,7 @@ export default definirCalculadora({
     "jp.resident-tax-per-capita": "numero",
     "jp.forest-environment-tax": "numero",
     "jp.resident-adjustment": "mapa",
+    "jp.resident-adjustment-rate": "numero",
   },
   campos: [
     { id: "nenshu", tipo: "moneda", etiqueta: "年収（額面）", min: 0, porDefecto: 5000000 },
@@ -62,7 +63,8 @@ export default definirCalculadora({
       tasa: v["jp.resident-tax-rate"],
       kintowari: v["jp.resident-tax-per-capita"],
       shinrin: v["jp.forest-environment-tax"],
-      ajuste: v["jp.resident-adjustment"] as { gap: number; rate: number; threshold: number },
+      ajuste: v["jp.resident-adjustment"],
+      tasaAjuste: v["jp.resident-adjustment-rate"],
     });
     const anual = entrada.nenshu - shakai - it.total - jm.total;
     const observaciones = ["住民税は前年の所得をもとに、翌年6月から12回に分けて給与から引かれます。ここでは同じ年収が続く場合の1年分を表示しています。"];

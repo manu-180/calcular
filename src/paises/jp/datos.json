@@ -439,12 +439,11 @@
     },
     {
       "id": "jp.resident-adjustment",
-      "nombre": "個人住民税の調整控除",
+      "nombre": "個人住民税の調整控除の金額",
       "tipo": "mapa",
       "unidad": "JPY",
       "etiquetas": {
         "gap": "基礎控除の人的控除額の差",
-        "rate": "控除率（％）",
         "threshold": "合計課税所得金額の区切り"
       },
       "tramos": [
@@ -453,7 +452,6 @@
           "desde": "2026-01-01",
           "valor": {
             "gap": 50000,
-            "rate": 5,
             "threshold": 2000000
           },
           "fuente": {
@@ -467,24 +465,75 @@
       ]
     },
     {
-      "id": "jp.furusato",
-      "nombre": "ふるさと納税の特例控除",
-      "tipo": "mapa",
-      "unidad": "JPY",
-      "etiquetas": {
-        "cap-rate": "特例控除の上限（住民税所得割額に対する％）",
-        "self-pay": "自己負担額",
-        "basic-rate": "基本控除の率（％）"
-      },
+      "id": "jp.resident-adjustment-rate",
+      "nombre": "個人住民税の調整控除の率",
+      "tipo": "numero",
+      "unidad": "%",
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2026-01-01",
-          "valor": {
-            "cap-rate": 20,
-            "self-pay": 2000,
-            "basic-rate": 10
-          },
+          "valor": 5,
+          "fuente": {
+            "organismo": "横浜市",
+            "titulo": "税額控除（調整控除・寄附金税額控除）",
+            "url": "https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/y-shizei/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/zeigakukoujo.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.furusato-cap-rate",
+      "nombre": "ふるさと納税の特例控除の上限（住民税所得割額に対する割合）",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "横浜市",
+            "titulo": "税額控除（調整控除・寄附金税額控除）",
+            "url": "https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/y-shizei/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/zeigakukoujo.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.furusato-basic-rate",
+      "nombre": "寄附金税額控除の基本控除の率（市民税と県民税の合計）",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "横浜市",
+            "titulo": "税額控除（調整控除・寄附金税額控除）",
+            "url": "https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/y-shizei/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/zeigakukoujo.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.furusato-self-pay",
+      "nombre": "ふるさと納税の自己負担額",
+      "tipo": "numero",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2000,
           "fuente": {
             "organismo": "横浜市",
             "titulo": "税額控除（調整控除・寄附金税額控除）",
@@ -3159,7 +3208,8 @@
         "per-year-to-20": "勤続20年以下の1年あたり",
         "per-year-over-20": "勤続20年超の1年あたり",
         "minimum": "最低額",
-        "disability": "障害者になったことによる退職の加算"
+        "disability": "障害者になったことによる退職の加算",
+        "short-term-limit": "短期退職手当等で2分の1計算が使える上限"
       },
       "tramos": [
         {
@@ -3169,7 +3219,8 @@
             "per-year-to-20": 400000,
             "per-year-over-20": 700000,
             "minimum": 800000,
-            "disability": 1000000
+            "disability": 1000000,
+            "short-term-limit": 3000000
           },
           "fuente": {
             "organismo": "国税庁",
@@ -3177,6 +3228,34 @@
             "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1420.htm",
             "tipo": "primaria",
             "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.retirement-resident-rates",
+      "nombre": "退職所得に対する住民税の税率",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "municipal": "市町村民税",
+        "prefectural": "道府県民税"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": {
+            "municipal": 6,
+            "prefectural": 4
+          },
+          "fuente": {
+            "organismo": "総務省",
+            "titulo": "平成25年1月1日以降の退職所得に対する住民税の特別徴収について",
+            "url": "https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/65871.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "市町村民税と道府県民税のそれぞれで100円未満を切り捨てる。"
           }
         }
       ]
@@ -3464,12 +3543,11 @@
     },
     {
       "id": "jp.medical-deduction",
-      "nombre": "医療費控除",
+      "nombre": "医療費控除の金額",
       "tipo": "mapa",
       "unidad": "JPY",
       "etiquetas": {
         "threshold": "差し引く額",
-        "income-rate": "総所得金額等200万円未満の人の率（％）",
         "cap": "控除の上限",
         "income-limit": "率を使う総所得金額等の上限"
       },
@@ -3479,10 +3557,29 @@
           "desde": "2026-01-01",
           "valor": {
             "threshold": 100000,
-            "income-rate": 5,
             "cap": 2000000,
             "income-limit": 2000000
           },
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.1120 医療費を支払ったとき（医療費控除）",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.medical-deduction-income-rate",
+      "nombre": "医療費控除で総所得金額等200万円未満の人が差し引く率",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
           "fuente": {
             "organismo": "国税庁",
             "titulo": "No.1120 医療費を支払ったとき（医療費控除）",

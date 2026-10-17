@@ -53,12 +53,6 @@ export function tasaMarginal(escala: readonly FilaEscala[], base: number): numbe
   return tasa;
 }
 
-export interface AjusteJumin {
-  gap: number;
-  rate: number;
-  threshold: number;
-}
-
 export interface Juminzei {
   kazei: number;
   shotokuwari: number;
@@ -77,7 +71,8 @@ export function juminzei(p: {
   tasa: number;
   kintowari: number;
   shinrin: number;
-  ajuste: AjusteJumin;
+  ajuste: Readonly<Record<string, number>>;
+  tasaAjuste: number;
 }): Juminzei {
   const kiso = montoDeFila(p.kisoEscala, p.shotoku);
   const kazei = sen(p.shotoku - p.kojo - kiso);
@@ -86,13 +81,9 @@ export function juminzei(p: {
   if (kazei > 0 && p.shotoku <= 25000000) {
     const a = p.ajuste;
     const base = kazei <= a.threshold ? Math.min(a.gap, kazei) : a.gap;
-    chosei = (base * a.rate) / 100;
+    chosei = (base * p.tasaAjuste) / 100;
   }
   const shotokuwari = cien(bruto - chosei);
   const kintowari = p.kintowari + p.shinrin;
   return { kazei, shotokuwari, chosei, kintowari, total: shotokuwari + kintowari };
-}
-
-export function yen(n: number): string {
-  return `${Math.round(n).toLocaleString("ja-JP")}円`;
 }
