@@ -614,6 +614,186 @@
       ]
     },
     {
+      "id": "ke.annual-leave-days",
+      "nombre": "Annual leave: working days after 12 months of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 28(1)(a)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.leave-days-per-month",
+      "nombre": "Annual leave on termination: days per completed month",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 1.75,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 28(1)(b)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.sick-full-pay-days",
+      "nombre": "Sick leave with full pay in 12 months",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 30(1)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.sick-half-pay-days",
+      "nombre": "Sick leave with half pay in 12 months",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 30(1)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.sick-qualifying-months",
+      "nombre": "Months of service before sick leave applies",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 30(1)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.maternity-months",
+      "nombre": "Maternity leave with full pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 29(1)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.paternity-weeks",
+      "nombre": "Paternity leave with full pay",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 29(8)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.notice-days-monthly",
+      "nombre": "Notice for monthly paid contracts",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 35(1)(c)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.redundancy-severance-days",
+      "nombre": "Redundancy severance: days of pay per completed year of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 40(1)(g)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
       "id": "ke.cgt-rate",
       "nombre": "Capital gains tax rate",
       "tipo": "numero",

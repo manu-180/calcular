@@ -14,6 +14,16 @@ import employerCostCalculator from "./calculadoras/employer-cost-calculator";
 import contenidoEmployerCostCalculator from "./contenido/employer-cost-calculator";
 import minimumWage from "./calculadoras/minimum-wage";
 import contenidoMinimumWage from "./contenido/minimum-wage";
+import annualLeaveCalculator from "./calculadoras/annual-leave-calculator";
+import contenidoAnnualLeaveCalculator from "./contenido/annual-leave-calculator";
+import sickLeaveCalculator from "./calculadoras/sick-leave-calculator";
+import contenidoSickLeaveCalculator from "./contenido/sick-leave-calculator";
+import maternityLeaveCalculator from "./calculadoras/maternity-leave-calculator";
+import contenidoMaternityLeaveCalculator from "./contenido/maternity-leave-calculator";
+import noticePeriodCalculator from "./calculadoras/notice-period-calculator";
+import contenidoNoticePeriodCalculator from "./contenido/notice-period-calculator";
+import redundancyCalculator from "./calculadoras/redundancy-calculator";
+import contenidoRedundancyCalculator from "./contenido/redundancy-calculator";
 import vatCalculator from "./calculadoras/vat-calculator";
 import contenidoVatCalculator from "./contenido/vat-calculator";
 import turnoverTaxCalculator from "./calculadoras/turnover-tax-calculator";
@@ -53,6 +63,11 @@ export default definirPais({
     { definicion: housingLevyCalculator, contenido: contenidoHousingLevyCalculator, cliente: () => import("./calculadoras/housing-levy-calculator.cliente") },
     { definicion: employerCostCalculator, contenido: contenidoEmployerCostCalculator, cliente: () => import("./calculadoras/employer-cost-calculator.cliente") },
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
+    { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
+    { definicion: sickLeaveCalculator, contenido: contenidoSickLeaveCalculator, cliente: () => import("./calculadoras/sick-leave-calculator.cliente") },
+    { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
+    { definicion: noticePeriodCalculator, contenido: contenidoNoticePeriodCalculator, cliente: () => import("./calculadoras/notice-period-calculator.cliente") },
+    { definicion: redundancyCalculator, contenido: contenidoRedundancyCalculator, cliente: () => import("./calculadoras/redundancy-calculator.cliente") },
     { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
     { definicion: turnoverTaxCalculator, contenido: contenidoTurnoverTaxCalculator, cliente: () => import("./calculadoras/turnover-tax-calculator.cliente") },
     { definicion: rentalIncomeTaxCalculator, contenido: contenidoRentalIncomeTaxCalculator, cliente: () => import("./calculadoras/rental-income-tax-calculator.cliente") },
