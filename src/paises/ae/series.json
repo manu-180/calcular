@@ -1,0 +1,34 @@
+{
+  "mercado": "ae",
+  "series": [
+    {
+      "id": "ae.eibor-3m",
+      "nombre": "Three-month EIBOR fixing",
+      "unidad": "%",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of the UAE",
+        "titulo": "EIBOR rates (3M column, current month)",
+        "url": "https://www.centralbank.ae/en/forex-eibor/eibor-rates/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17",
+        "nota": "Read in a browser: the page blocks automated requests, so new fixings may need to be loaded by hand."
+      },
+      "puntos": [
+        ["2026-10-01", 4.38905],
+        ["2026-10-02", 4.22276],
+        ["2026-10-05", 4.29833],
+        ["2026-10-06", 4.32047],
+        ["2026-10-07", 4.37044],
+        ["2026-10-08", 4.39404],
+        ["2026-10-09", 4.19178],
+        ["2026-10-12", 4.16715],
+        ["2026-10-13", 4.44348],
+        ["2026-10-14", 4.27253],
+        ["2026-10-15", 4.35288],
+        ["2026-10-16", 4.205]
+      ]
+    }
+  ]
+}
