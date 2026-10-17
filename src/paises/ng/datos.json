@@ -1,0 +1,357 @@
+{
+  "mercado": "ng",
+  "datos": [
+    {
+      "id": "ng.paye-bands",
+      "nombre": "Personal income tax bands (Fourth Schedule)",
+      "tipo": "escala",
+      "unidad": "NGN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 800000,
+              "tasa": 0
+            },
+            {
+              "desde": 800000,
+              "hasta": 3000000,
+              "tasa": 15
+            },
+            {
+              "desde": 3000000,
+              "hasta": 12000000,
+              "tasa": 18
+            },
+            {
+              "desde": 12000000,
+              "hasta": 25000000,
+              "tasa": 21
+            },
+            {
+              "desde": 25000000,
+              "hasta": 50000000,
+              "tasa": 23
+            },
+            {
+              "desde": 50000000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, Fourth Schedule",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.rent-relief-rate",
+      "nombre": "Rent relief: share of annual rent",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 30(2)(a)(vi)",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.rent-relief-cap",
+      "nombre": "Rent relief: maximum a year",
+      "tipo": "numero",
+      "unidad": "NGN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 30(2)(a)(vi)",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.vat",
+      "nombre": "VAT rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 147",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.cit-rate",
+      "nombre": "Companies income tax rate (other than small companies)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 56(b)",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.small-company-turnover",
+      "nombre": "Small company: maximum gross turnover a year",
+      "tipo": "numero",
+      "unidad": "NGN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000000,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 201, definition of small company",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.small-company-assets",
+      "nombre": "Small company: maximum total fixed assets",
+      "tipo": "numero",
+      "unidad": "NGN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 250000000,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 201, definition of small company",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.development-levy",
+      "nombre": "Development levy on assessable profits",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 59(1)",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.stamp-duty-transfer",
+      "nombre": "Stamp duty on an electronic transfer or receipt",
+      "tipo": "numero",
+      "unidad": "NGN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, Ninth Schedule, items 47 and 48",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.stamp-duty-transfer-threshold",
+      "nombre": "Electronic transfers from this amount pay stamp duty",
+      "tipo": "numero",
+      "unidad": "NGN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 184(1)(i) and Ninth Schedule, items 47 and 48",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.pension-employee",
+      "nombre": "Pension contribution by the employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-07-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "National Pension Commission (PenCom)",
+            "titulo": "Frequently asked questions on the Contributory Pension Scheme (Pension Reform Act 2014), question 7",
+            "url": "https://www.pencom.gov.ng/wp-content/uploads/2020/06/FREQUENTLY-ASK-QUESTION-2020-ENGLISH-MAIN-VISUAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.pension-employer",
+      "nombre": "Pension contribution by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "National Pension Commission (PenCom)",
+            "titulo": "Frequently asked questions on the Contributory Pension Scheme (Pension Reform Act 2014), question 7",
+            "url": "https://www.pencom.gov.ng/wp-content/uploads/2020/06/FREQUENTLY-ASK-QUESTION-2020-ENGLISH-MAIN-VISUAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.nhf-rate",
+      "nombre": "National Housing Fund contribution",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Federal Mortgage Bank of Nigeria",
+            "titulo": "National Housing Fund Act, Cap. N45, section 4(1)(a)",
+            "url": "https://fmbn.gov.ng/backend/storage/uploads/37UNgpzsyASabzhQCnHuyzFtIpnsfmW2ODvAmQSG.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.nsitf-rate",
+      "nombre": "Employees' Compensation Scheme contribution by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-16",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Nigeria Social Insurance Trust Fund (NSITF)",
+            "titulo": "Employees' Compensation Scheme: employer contribution of 1% of total monthly payroll",
+            "url": "https://nsitf.gov.ng/services",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.compensation-exemption",
+      "nombre": "Compensation for loss of office or employment not taxed",
+      "tipo": "numero",
+      "unidad": "NGN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50000000,
+          "fuente": {
+            "organismo": "National Assembly (Official Gazette No. 117)",
+            "titulo": "Nigeria Tax Act, 2025, section 50(1)",
+            "url": "https://nass.gov.ng/documents/download/11249",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng.minimum-wage",
+      "nombre": "National minimum wage a month",
+      "tipo": "numero",
+      "unidad": "NGN",
+      "proximaRevision": "2027-07-29",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-08-04",
+          "valor": 70000,
+          "fuente": {
+            "organismo": "State House, Abuja",
+            "titulo": "President Tinubu's broadcast of 4 August 2024: National Minimum Wage of at least N70,000 a month signed into law",
+            "url": "https://statehouse.gov.ng/president-tinubus-broadcast-on-the-nationwide-protest/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    }
+  ]
+}

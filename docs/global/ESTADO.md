@@ -31,9 +31,61 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 ## Pedidos al motor anotados
 
 - `NOMBRES_UNIDAD` por idioma: hecho; filas, tablas e informe formatean con el locale del mercado.
-- Tipo de campo `hora` (horas-trabajadas usa listas de 96 horarios) y campos condicionales por modo.
+- Tipo de campo `hora` y campos condicionales (`visibleSi`): hechos en motor 2 (RECETA, sección 7).
+  Falta migrar horas-trabajadas de sus listas de 96 horarios a `hora`.
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
+
+## 16/10/2026 19:30 · PAUSA pedida por Manuel · 38 países y 4 ediciones publicados
+
+Publicados desde la última entrada: Nigeria (55) y Malasia (60). Verde con 44 mercados:
+check_paises_casos 4282, check_textos_paises 54355, check_hreflang 5664, check_seo_intl 5932.
+
+Frenado de forma segura: ningún agente corriendo, todo commiteado y pusheado. Para retomar, cada frente
+tiene su rama y su worktree (`.claude/worktrees/agent-<id>`); con SendMessage al id se retoma con su
+contexto, o se lanza un agente nuevo con el encargo de BRIEF-PAIS sobre la misma rama.
+
+| Frente | Rama | Agente | Dónde quedó |
+|---|---|---|---|
+| Filipinas | claude/pais-ph | af4a25bad79056aa2 | checks finales antes de cerrar |
+| Luxemburgo fr + lu-de | claude/pais-lu | a8551c6c0f34cfe9e | 14 locales con casos; falta contenido, lu-de y checks |
+| Marruecos (fr) | claude/pais-ma | a38af4c77ca2794fb | 5 locales nuevas por registrar y checks |
+| Quebec en ca y ca-fr | claude/quebec | a09af92be368a2db8 | impôt QC, salaire net y taxe de bienvenue hechos; falta CNESST, ofertas TPS/TVQ, detector manual y ESTADO |
+| Motor 3 (ja, ko, zh) | claude/mundo-motor-3 | a2ac60979cc7a480b | núcleo hecho; universales en curso (iba por préstamo y tasa efectiva) |
+| Emiratos (en) | claude/pais-ae | ab9a66bde237e6a69 | sin código todavía |
+| Kuwait (en) | claude/pais-kw | a80b3b979be977cdc | sin código todavía |
+| Pakistán (en) | claude/pais-pk | afc298c5c5529a805 | sin código todavía |
+
+Al publicar un país: merge de su rama, `estado: "publicado"` en mercado.ts, import y alta en `PAISES`
+(`src/paises/index.ts`), `check_motor --generar-cargadores`, `check_medicion_mercados --escribir`, tsc y
+checks (paises, paises_casos, textos_paises, fronteras, eol, hreflang, seo_intl), commit y push.
+
+Pendientes que no dependen de agentes: SQL de métricas (docs/global/SQL-METRICAS.md, pasos 1 y 2, lo
+corre Manuel); EPF de Malasia (kwsp.gov.my detrás de Cloudflare, se verifica a mano); `nz.ocr` manual
+antes del 2026-12-11.
+
+## 16/10/2026 14:30 · 36 países y 4 ediciones publicados
+
+Hong Kong (en, 60 calculadoras) publicado. Verde con 42 mercados: check_paises_casos 4172,
+check_textos_paises 52855, check_hreflang 5434, check_seo_intl 5690. Tercer corte por límite de sesión
+del día (10:15); avance guardado como WIP y retomados a las 14:29: Filipinas, Malasia, Nigeria,
+Marruecos (fr), Luxemburgo (fr + lu-de), Emiratos (en), Quebec completo (taxe de bienvenue ya hecha) y
+motor 3 (ja, ko, zh; universales en curso).
+
+## 16/10/2026 05:45 · 35 países y 4 ediciones publicados
+
+India (57 calculadoras) publicada, con las ediciones ch-fr (62), ch-it (62), ca-fr (53) y be-fr (52).
+Verde con 41 mercados: check_motor 1823, check_paises_casos 4076, check_textos_paises 51879,
+check_hreflang 5314, check_seo_intl 5564, check_datos_paises 85. dea.gov.in (India) usa la raíz ISRG
+Root YR, que Node no trae: se versionó su cruce firmado por ISRG Root X1 en `scripts/datos-paises/certs`
+(tlsTolerante suma intermedios, nunca apaga la verificación).
+
+En curso: Filipinas, Hong Kong (en), Malasia (en), Nigeria, Marruecos (fr), Luxemburgo (fr + lu-de),
+Quebec completo en ca y ca-fr (impôt QC, CNESST, taxe de bienvenue, ofertas TPS/TVQ, detector manual
+para nz.ocr) y motor 3 (ja, ko, zh).
+
+Pedidos al motor anotados por los países: título de la fuente traducible en ediciones (be-fr muestra
+el documento en neerlandés).
 
 ## 16/10/2026 04:30 · 34 países publicados
 
@@ -63,6 +115,41 @@ ch-it, y motor 3 (`claude/mundo-motor-3`: ja, ko y zh para Japón, Corea, Taiwá
 RBNZ: la página y el xlsx tienen el desafío anti-bots de Cloudflare. No se saltea: `nz.ocr` pasa a
 manual.
 
+## Edición ca-fr (`claude/edicion-ca-fr`, interno y sin registrar)
+
+13 calculadoras de `ca` traducidas al francés de Quebec (vous, fr-CA) más las universales en
+francés: TPS/TVQ, salario mínimo, RRQ/RPC, cotizaciones y prestaciones de assurance-emploi, costo
+empleador (con RQAP), ACE, recuperación de la SV, REER, CELI, inflación, USD/CAD e hipoteca variable.
+Por defecto abren en Quebec (región qc, plan RRQ). Pendientes, porque `ca` no las tiene para Quebec:
+impuesto sobre la renta y sueldo neto con el impuesto provincial de Quebec, ganancias de capital,
+taxe de bienvenue (droits de mutation), y las laborales de la CNESST (vacances, heures
+supplémentaires, préavis, indemnité). Las ofertas en francés dicen «Rapport de TVA» para la familia
+de IVA: en Quebec se diría TPS/TVQ (textos de `src/lib/pagos`).
+
+## Motor 2 (`claude/mundo-motor-2`, integrado el 16/10/2026)
+
+- **País y edición (ADR 0002, D3):** `definirEdicion(base, {...})` en `src/motor/registro.ts` y
+  `definirTextos` en `src/motor/edicion.ts`. Una edición (`ca-fr`) reusa datos, series, avisos y
+  detectores del país y escribe solo textos. Edición de prueba: `src/paises/zz-en`. Receta en
+  `docs/global/BRIEF-PAIS.md` («Ediciones»). Hreflang entre ediciones (calculadoras, inicio, fuentes y
+  novedades), selector con «País (Idioma)», geo por `navigator.languages`, cargadores generados para
+  traducciones y `check_paises_casos` que marca textos sin traducir.
+- **i18n con locale:** los diccionarios del sitio reciben el locale; de-CH y de-LI sin «ß»; parches
+  `regional` por locale para variantes futuras.
+- **Marcadores:** `{{serie}}` y `{{serie#desde}}` (la serie tiene que estar en `requiere`), filas de
+  escala `{{id[n].tasa|desde|hasta|cuotaFija}}` con `-1` para la última, `#desde` en escalas.
+  `check_paises` falla si un marcador no se resuelve hoy.
+- **Unidad `semanas`** en los 7 idiomas; campo `region` con subconjunto (`regiones: [...]`).
+- **`next dev` calcula en mercados internos** sin publicarlos (`cargadores/dev.ts` +
+  `src/paises/cargadores-dev.ts`); producción sigue con los mapas generados.
+- **`check_ofertas_intl`** con índice de casos: de 128 s a unos 30 s en esta máquina.
+- **`nz.ocr`:** el RBNZ está detrás del desafío anti-bots de Cloudflare (`cf-mitigated: challenge`)
+  y no se saltea. El motor no tiene vía para series manuales (`metodo: "manual"` es solo una etiqueta;
+  el detector igual corre). Queda así: el semáforo (`scripts/datos-paises/semaforo.ts`) avisa desde 30
+  días antes del vencimiento (2026-12-11) y el punto nuevo se carga a mano en `src/paises/nz/series.json`
+  después de cada decisión del RBNZ. Pedido al motor: que un detector `manual` no corra y figure como
+  «carga manual» en el resumen del cron.
+
 ## 14/10/2026 23:30 · 31 países publicados
 
 Nueva Zelanda (60 calculadoras) y Sudáfrica (60) publicadas. Verde con 32 mercados: check_motor 1559,
@@ -73,8 +160,8 @@ India (solo había investigado, sin código), Singapur, Suiza (de, en verificaci
 WIP `7315719`). Nuevos: Filipinas (`claude/pais-ph`) y Hong Kong en inglés (`claude/pais-hk`).
 
 Pendientes de los países:
-- `nz.ocr`: el RBNZ da 403 a Node (curl da 200). Vence el 2026-12-11; pedido al motor.
-- `za`: marcadores de series en textos (prime). IPC y prime vencen el 2026-11-13 si el cron no corre.
+- `nz.ocr`: carga manual (ver «Motor 2»). Vence el 2026-12-11.
+- `za`: los marcadores de series ya existen (`{{za.prime-rate}}`). IPC y prime vencen el 2026-11-13 si el cron no corre.
 - Universal hipoteca dice «Down payment»; en NZ se dice «deposit».
 - Montos escritos a mano en escalas y FAQ de nz y za: revisar en abril y marzo de 2027.
 
