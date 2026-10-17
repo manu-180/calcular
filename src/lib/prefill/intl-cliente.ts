@@ -41,7 +41,7 @@ export function olvidarDatosIntl(producto: string): void {
 // Sin separador de miles a propósito: con él, "1.500" en un locale de coma decimal es ambiguo y la
 // calculadora lo rechaza («¿quisiste decir…?»). Lo vigila scripts/check_ofertas_intl.ts.
 export function crudoDeNumero(n: number, locale: string): string {
-  return new Intl.NumberFormat(locale, { useGrouping: false, maximumFractionDigits: 6 }).format(n);
+  return new Intl.NumberFormat(locale, { useGrouping: false, maximumFractionDigits: 12 }).format(n);
 }
 
 export function crudosDeEntrada(campos: readonly Campo[], entrada: EntradaIntl, locale: string, base: Crudos): Crudos {

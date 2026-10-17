@@ -1,9 +1,13 @@
-import type { Trato } from "../tipos";
+import { GRAMATICA } from "./gramatica";
+import type { Diccionario } from "./resolver";
 import type { TextosSitio } from "./tipos";
 
-// Neutro para toda Latinoamérica. Donde se puede, sin conjugar (títulos, botones con infinitivo o
-// sustantivo); donde no, en tú, con las variantes de vos y usted abajo.
-export const es: TextosSitio = {
+const g = GRAMATICA.es;
+const MUNDO = "Internacional";
+
+// Neutro para cualquier país de habla hispana. Donde se puede, sin conjugar (títulos, botones con
+// infinitivo o sustantivo); donde no, en tú, con las variantes de vos y usted abajo.
+const base: TextosSitio = {
   marca: { nombre: "CalcularYa", lema: "Calculadoras con datos oficiales" },
   saltar: "Ir al contenido",
   header: {
@@ -12,7 +16,7 @@ export const es: TextosSitio = {
     paisActual: (pais) => `País: ${pais}`,
     cerrar: "Cerrar",
     todos: "Todos los países",
-    latinoamerica: "Latinoamérica",
+    latinoamerica: MUNDO,
   },
   footer: {
     paises: "Países",
@@ -42,12 +46,12 @@ export const es: TextosSitio = {
     otrosPaises: "La misma cuenta en otros países",
   },
   global: {
-    eyebrow: "Latinoamérica",
-    titulo: "Las cuentas del trabajo, con los datos oficiales de tu país",
-    bajada: "Aguinaldo, liquidación, sueldo neto y más. Cada cifra sale de la fuente oficial, con su fecha y el enlace para revisarla.",
+    eyebrow: "Datos oficiales de cada país",
+    titulo: "Calculadoras para el trabajo, el dinero y el día a día, con los datos de tu país",
+    bajada: "Sueldo, préstamos, impuestos, fechas y más. Cuando la cuenta depende de una norma, el valor sale de la fuente oficial, con su fecha y el enlace para revisarlo.",
     elegir: "Elige tu país",
     calculadoras: (n) => (n === 1 ? "1 calculadora" : `${n} calculadoras`),
-    vacio: "Estamos sumando países. Mientras tanto, las calculadoras de Argentina están en calcular.ar.",
+    vacio: "Estamos sumando países. Vuelve pronto.",
     promesaTitulo: "Cómo trabajamos",
     promesas: [
       { titulo: "Dato oficial, con fuente", texto: "Cada valor muestra el organismo que lo publica, el enlace y la fecha en que lo revisamos." },
@@ -57,15 +61,16 @@ export const es: TextosSitio = {
   },
   pais: {
     eyebrow: "Datos oficiales actualizados",
-    titulo: (pais) => `Calculadoras de ${pais}`,
-    bajada: (pais) => `Con los valores vigentes en ${pais}, la fuente de cada uno y la fecha en que lo revisamos.`,
+    titulo: (pais) => `Calculadoras ${g.de(pais)}`,
+    bajada: (pais) => `Con los valores vigentes ${g.en(pais)}, la fuente de cada uno y la fecha en que lo revisamos.`,
     novedades: "Últimas novedades",
     verNovedades: "Ver todas las novedades",
     sinCalculadoras: "Todavía no hay calculadoras publicadas para este país.",
-    descripcion: (pais) => `Calculadoras laborales y de impuestos de ${pais}: sueldo, liquidación y más, con el valor oficial vigente, su fuente y la fecha de revisión.`,
+    descripcion: (pais) => `Calculadoras ${g.de(pais)} para sueldo, impuestos, préstamos, ahorro, salud, fechas y hogar, con el dato oficial vigente y su fuente.`,
+    irASeccion: "Ir a una sección",
   },
   fuentes: {
-    titulo: (pais) => `Fuentes y datos de ${pais}`,
+    titulo: (pais) => `Fuentes y datos ${g.de(pais)}`,
     bajada: "Todos los valores que usan las calculadoras, con su vigencia y el enlace a la fuente oficial.",
     vigente: "Valor vigente",
     desde: "Desde",
@@ -78,18 +83,18 @@ export const es: TextosSitio = {
     proximo: (valor, fecha) => `Ya publicado para el ${fecha}: ${valor}.`,
     sinVerificar: "Sin dato verificado para hoy",
     tramos: (n) => `Tabla de ${n} tramos`,
-    description: (pais) => `Los datos oficiales de ${pais} que usan las calculadoras: valor vigente, desde cuándo rige, fuente y fecha de revisión.`,
+    description: (pais) => `Los datos oficiales ${g.de(pais)} que usan las calculadoras: valor vigente, desde cuándo rige, fuente y fecha de revisión.`,
   },
   novedades: {
-    titulo: (pais) => `Novedades de ${pais}`,
+    titulo: (pais) => `Novedades ${g.de(pais)}`,
     bajada: "Los cambios en las normas que mueven las calculadoras, con la fecha en que empiezan a regir.",
     vigenteDesde: (fecha) => `Rige desde el ${fecha}`,
     vacio: "Todavía no hay novedades para este país.",
-    description: (pais) => `Cambios en salarios mínimos, aportes y otras normas de ${pais}, con la fecha en que rigen y su fuente oficial.`,
+    description: (pais) => `Cambios en salarios mínimos, aportes y otras normas ${g.de(pais)}, con la fecha en que rigen y su fuente oficial.`,
   },
   avisoPais: {
-    texto: (pais) => `Parece que estás en ${pais}.`,
-    ir: (pais) => `Ver calculadoras de ${pais}`,
+    texto: (pais) => `Parece que estás ${g.en(pais)}.`,
+    ir: (pais) => `Ver calculadoras ${g.de(pais)}`,
     cerrar: "Cerrar aviso",
   },
   noEncontrada: {
@@ -103,16 +108,22 @@ export const es: TextosSitio = {
     fin: "Fin del trabajo",
     impuestos: "Aportes e impuestos",
     dinero: "Dinero e índices",
+    finanzas: "Préstamos, ahorro e inversión",
+    negocio: "Negocio y trabajo independiente",
+    calculos: "Cuentas rápidas",
+    fechas: "Fechas y edad",
+    salud: "Salud y deporte",
+    hogar: "Casa, auto y obra",
     familia: "Familia y hogar",
     otras: "Otras calculadoras",
   },
   migas: { inicio: "Inicio", etiqueta: "Dónde estás" },
   seo: {
-    tituloGlobal: "CalcularYa: calculadoras laborales de Latinoamérica",
-    descripcionGlobal: "Calculadoras gratis de aguinaldo, liquidación, sueldo neto e impuestos para cada país de Latinoamérica, con el dato oficial vigente y su fuente.",
-    tituloPais: (pais, anio) => [`Calculadoras laborales y de impuestos de ${pais} ${anio}`, `Calculadoras laborales de ${pais} ${anio}`, `Calculadoras de ${pais}`],
-    tituloFuentes: (pais) => [`Datos oficiales vigentes de ${pais}: fuentes y fechas`, `Fuentes y datos de ${pais}`],
-    tituloNovedades: (pais, anio) => [`Novedades laborales y de impuestos de ${pais} ${anio}`, `Novedades laborales de ${pais} ${anio}`, `Novedades de ${pais}`],
+    tituloGlobal: "CalcularYa: calculadoras con datos oficiales de cada país",
+    descripcionGlobal: "Calculadoras gratis de sueldo, préstamos, impuestos y más para cada país, con el dato oficial vigente y su fuente.",
+    tituloPais: (pais, anio) => [`Calculadoras laborales y de impuestos ${g.de(pais)} ${anio}`, `Calculadoras laborales ${g.de(pais)} ${anio}`, `Calculadoras ${g.de(pais)}`],
+    tituloFuentes: (pais) => [`Datos oficiales vigentes ${g.de(pais)}: fuentes y fechas`, `Fuentes y datos ${g.de(pais)}`],
+    tituloNovedades: (pais, anio) => [`Novedades laborales y de impuestos ${g.de(pais)} ${anio}`, `Novedades laborales ${g.de(pais)} ${anio}`, `Novedades ${g.de(pais)}`],
   },
   og: {
     datosOficiales: "Datos oficiales, con fuente",
@@ -122,7 +133,7 @@ export const es: TextosSitio = {
   },
   shell: {
     irAlInicio: "ir al inicio",
-    menu: { trabajo: "Sueldo y trabajo", impuestos: "Impuestos", dinero: "Dinero e índices", novedades: "Novedades", planillas: "Planillas" },
+    menu: { trabajo: "Sueldo y trabajo", impuestos: "Impuestos", dinero: "Dinero e índices", vida: "Vida diaria", novedades: "Novedades", planillas: "Planillas" },
     encabezado: {
       principal: "Principal",
       buscar: "Buscar",
@@ -153,7 +164,8 @@ export const es: TextosSitio = {
     },
     paises: { titulo: "País", cambiar: "Cambiar de país" },
     pie: {
-      bajada: (lugar) => `Calculadoras claras para ${lugar}. Cada número sale del documento oficial que lo fija, con la fecha en que lo revisamos.`,
+      bajada: (lugar) =>
+        `Calculadoras claras para ${lugar === MUNDO ? "cada país" : g.nombre(lugar)}. Cada número sale del documento oficial que lo fija, con la fecha en que lo revisamos.`,
       todas: "Todas las calculadoras",
       cuenta: "Tu cuenta",
       cuentaNota: "Es opcional. Sirve para guardar tus cálculos y tenerlos a mano.",
@@ -163,46 +175,46 @@ export const es: TextosSitio = {
   },
 };
 
-const porTrato: Record<Exclude<Trato, "tu">, (base: TextosSitio) => TextosSitio> = {
-  vos: (b) => ({
-    ...b,
-    footer: { ...b.footer, descargo: "Los resultados son orientativos. Para una decisión importante, confirmalos con el organismo oficial o con un profesional." },
-    global: { ...b.global, elegir: "Elegí tu país" },
-    noEncontrada: { ...b.noEncontrada, paises: "O elegí un país" },
+export const es: Diccionario<TextosSitio> = {
+  base,
+  vos: {
+    footer: { descargo: "Los resultados son orientativos. Para una decisión importante, confirmalos con el organismo oficial o con un profesional." },
+    global: { elegir: "Elegí tu país", vacio: "Estamos sumando países. Volvé pronto." },
+    noEncontrada: { paises: "O elegí un país" },
     shell: {
-      ...b.shell,
       buscador: {
-        ...b.shell.buscador,
         pregunta: "¿Qué querés calcular?",
         recientes: "Seguí donde estabas",
         sugerencia: "Probá con otra palabra, como «sueldo», «vacaciones» o «IVA».",
       },
     },
-  }),
-  usted: (b) => ({
-    ...b,
+  },
+  usted: {
     footer: {
-      ...b.footer,
       argentina: "¿Está en Argentina? Sus calculadoras están en calcular.ar",
       descargo: "Los resultados son orientativos. Para una decisión importante, confírmelos con el organismo oficial o con un profesional.",
     },
-    global: { ...b.global, elegir: "Elija su país" },
-    avisoPais: { ...b.avisoPais, texto: (pais) => `Parece que está en ${pais}.` },
-    noEncontrada: { ...b.noEncontrada, paises: "O elija un país" },
+    global: {
+      titulo: "Calculadoras para el trabajo, el dinero y el día a día, con los datos de su país",
+      elegir: "Elija su país",
+      vacio: "Estamos sumando países. Vuelva pronto.",
+      promesas: [
+        { titulo: "Dato oficial, con fuente", texto: "Cada valor muestra el organismo que lo publica, el enlace y la fecha en que lo revisamos." },
+        { titulo: "Siempre al día", texto: "Cuando cambia un valor, la calculadora cambia con él. Cada cambio queda en novedades." },
+        { titulo: "Gratis y sin registro", texto: "La cuenta se hace en su navegador. No pedimos datos personales." },
+      ],
+    },
+    avisoPais: { texto: (pais) => `Parece que está ${g.en(pais)}.` },
+    noEncontrada: { paises: "O elija un país" },
+    migas: { etiqueta: "Dónde está" },
     shell: {
-      ...b.shell,
       buscador: {
-        ...b.shell.buscador,
         pregunta: "¿Qué desea calcular?",
         recientes: "Siga donde estaba",
         sugerencia: "Pruebe con otra palabra, como «sueldo», «vacaciones» o «IVA».",
         moverte: "para moverse",
       },
-      pie: { ...b.shell.pie, cuenta: "Su cuenta", cuentaNota: "Es opcional. Sirve para guardar sus cálculos y tenerlos a mano." },
+      pie: { cuenta: "Su cuenta", cuentaNota: "Es opcional. Sirve para guardar sus cálculos y tenerlos a mano." },
     },
-  }),
+  },
 };
-
-export function textosEs(trato: Trato): TextosSitio {
-  return trato === "tu" ? es : porTrato[trato](es);
-}

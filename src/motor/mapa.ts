@@ -1,7 +1,7 @@
 import { feedDe } from "./novedades";
 import { ACTUALIZACION_PAGINAS_GLOBALES, PAGINAS_GLOBALES, PAGINAS_MERCADO } from "./paginas";
 import { resolverValores, type DatoUsado, type PaginaResuelta, type Registro } from "./registro";
-import { origenPublicoIntl, urlIntl } from "./seo";
+import { hreflangDe, hreflangVaAlSitemap, origenPublicoIntl, urlIntl, type Idiomas } from "./seo";
 import { intlActivo, modoPublicacion } from "./sitio";
 import type { CodigoMercado, EntradaCalculadora, FechaISO, Mercado } from "./tipos";
 import { hoyEn } from "./vigencia";
@@ -52,13 +52,23 @@ export function actualizacionDeNovedades(registro: Registro, codigo: CodigoMerca
 export interface EntradaSitemap {
   url: string;
   lastmod?: FechaISO;
+  // Solo en clústeres que no entran en el <head> (seo.ts, MAX_HREFLANG_HEAD).
+  alternos?: Idiomas;
 }
 
-function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>): EntradaSitemap[] {
+// Mismos equivalentes que registro.pagina() (con la fecha del mercado de la página para todos), así
+// sitemap y <head> nunca describen dos clústeres distintos.
+function alternosEnSitemap(registro: Registro, c: EntradaCalculadora, fecha: FechaISO, modo: ReturnType<typeof modoPublicacion>): Idiomas | undefined {
+  const idiomas = hreflangDe(c.definicion.concepto, registro.equivalentes(c.definicion.concepto, () => fecha, modo));
+  return hreflangVaAlSitemap(idiomas) ? idiomas : undefined;
+}
+
+function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false): EntradaSitemap[] {
   const fecha = hoyEn(m);
-  const calculadoras = registro
-    .calculadorasPublicables(m.codigo, fecha, modo)
-    .map((c) => ({ url: urlIntl(m.codigo, c.definicion.slug), lastmod: actualizacionDeCalculadora(registro, m.codigo, c, fecha) }));
+  const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).map((c) => {
+    const alternos = conAlternos ? alternosEnSitemap(registro, c, fecha, modo) : undefined;
+    return { url: urlIntl(m.codigo, c.definicion.slug), lastmod: actualizacionDeCalculadora(registro, m.codigo, c, fecha), ...(alternos ? { alternos } : {}) };
+  });
   const fuentes = actualizacionDeFuentes(registro, m.codigo, fecha);
   const novedades = actualizacionDeNovedades(registro, m.codigo, fecha);
   const porPagina: Record<(typeof PAGINAS_MERCADO)[number], FechaISO | undefined> = { fuentes, novedades };
@@ -73,13 +83,15 @@ export function actualizacionDeInicioPais(registro: Registro, m: Mercado, modo: 
 
 // Lo que va en los sitemaps de calcularya: solo lo publicable en el modo actual. Lo usan los
 // route handlers y check_hreflang (para que sitemap y hreflang hablen de las mismas páginas).
-export function entradasDelMercado(registro: Registro, codigo: CodigoMercado): EntradaSitemap[] | null {
+// conAlternos: el sitemap del mercado (mapa-xml) y check_hreflang; el índice, llms.txt y las fechas
+// solo necesitan url y lastmod.
+export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, opciones: { conAlternos?: boolean } = {}): EntradaSitemap[] | null {
   if (!intlActivo()) return null;
   const modo = modoPublicacion();
   const mercados = registro.mercados(modo);
   const m = mercados.find((x) => x.codigo === codigo);
   if (!m) return null;
-  if (m.codigo !== "global") return entradasDePais(registro, m, modo);
+  if (m.codigo !== "global") return entradasDePais(registro, m, modo, opciones.conAlternos);
   const paises = mercados.filter((x) => x.codigo !== "global");
   const inicio = masNueva(
     paises.map((p) => entradasDePais(registro, p, modo)[0].lastmod),
@@ -105,8 +117,16 @@ export function sitemapsDelIndice(registro: Registro): EntradaSitemap[] | null {
 const escapar = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const lastmod = (f?: FechaISO) => (f ? `<lastmod>${f}</lastmod>` : "");
 
+const alternos = (a?: Idiomas) =>
+  a
+    ? Object.entries(a)
+        .map(([hreflang, href]) => `\n    <xhtml:link rel="alternate" hreflang="${escapar(hreflang)}" href="${escapar(href)}"/>`)
+        .join("") + "\n  "
+    : "";
+
 export function xmlUrlset(entradas: readonly EntradaSitemap[]): string {
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entradas.map((e) => `  <url><loc>${escapar(e.url)}</loc>${lastmod(e.lastmod)}</url>`).join("\n")}\n</urlset>\n`;
+  const xhtml = entradas.some((e) => e.alternos) ? ' xmlns:xhtml="http://www.w3.org/1999/xhtml"' : "";
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"${xhtml}>\n${entradas.map((e) => `  <url><loc>${escapar(e.url)}</loc>${lastmod(e.lastmod)}${alternos(e.alternos)}</url>`).join("\n")}\n</urlset>\n`;
 }
 
 export function xmlIndice(entradas: readonly EntradaSitemap[]): string {

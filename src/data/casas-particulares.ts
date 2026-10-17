@@ -217,9 +217,9 @@ export function escalaDe(mesId: string): CategoriaCasasParticulares[] {
 }
 
 /**
- * El último mes de la serie cuya vigencia ya empezó, resuelto en el BUILD.
+ * El último mes de la serie cuya vigencia ya empezó, resuelto en cada render.
  *
- * POR QUÉ SE DERIVA Y NO SE ESCRIBE (15/9/2026): hasta hoy `VIGENCIA.vigenteEn` era una constante
+ * POR QUÉ SE DERIVA Y NO SE ESCRIBE (15/9/2026): hasta hoy `vigenciaCasas().vigenteEn` era una constante
  * a mano («agosto de 2026») y el sitio estuvo liquidando septiembre con la escala de julio, porque
  * la resolución salió el 3/9 y nadie movió la constante. Con la serie completa cargada, el mes
  * vigente es una consecuencia de la fecha, no una decisión que alguien puede olvidar. Cuando la
@@ -232,25 +232,28 @@ export function mesVigente(hoy: Date | string = hoyAR()): MesEscala {
   return empezados.at(-1) ?? ESCALAS_POR_MES[0];
 }
 
-const MES_ACTUAL = mesVigente();
-
 /** La escala del mes que se está liquidando hoy. Misma forma que siempre: el resto del sitio la usa así. */
-export const ESCALA_VIGENTE: CategoriaCasasParticulares[] = escalaDe(MES_ACTUAL.id);
+export function escalaVigente(): CategoriaCasasParticulares[] {
+  return escalaDe(mesVigente().id);
+}
 
-export const VIGENCIA = {
-  /** Mes desde el que rige la escala que se muestra. */
-  desde: MES_ACTUAL.etiqueta,
-  /** Mes que se está liquidando con ella. Con la serie cargada, son el mismo. */
-  vigenteEn: MES_ACTUAL.etiqueta,
-  mesId: MES_ACTUAL.id,
-  anexo: MES_ACTUAL.anexo,
-  resolucion: "Resolución CNTCP 6/2026",
-  boletinOficial: "B.O. 3/9/2026",
-  /** Rectificó los anexos de noviembre y diciembre. El rastreador la cuenta como ya cargada. */
-  rectificadaPor: "Resolución CNTCP 7/2026",
-  /** Último mes con escala publicada: después de éste hay que buscar resolución nueva. */
-  ultimoMesPublicado: ESCALAS_POR_MES.at(-1)!.etiqueta,
-} as const;
+export function vigenciaCasas() {
+  const mes = mesVigente();
+  return {
+    /** Mes desde el que rige la escala que se muestra. */
+    desde: mes.etiqueta,
+    /** Mes que se está liquidando con ella. Con la serie cargada, son el mismo. */
+    vigenteEn: mes.etiqueta,
+    mesId: mes.id,
+    anexo: mes.anexo,
+    resolucion: "Resolución CNTCP 6/2026",
+    boletinOficial: "B.O. 3/9/2026",
+    /** Rectificó los anexos de noviembre y diciembre. El rastreador la cuenta como ya cargada. */
+    rectificadaPor: "Resolución CNTCP 7/2026",
+    /** Último mes con escala publicada: después de éste hay que buscar resolución nueva. */
+    ultimoMesPublicado: ESCALAS_POR_MES.at(-1)!.etiqueta,
+  } as const;
+}
 
 /**
  * Suma no remunerativa por única vez del art. 6 de la Resolución 6/2026: se paga con los salarios

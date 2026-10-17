@@ -1,0 +1,1014 @@
+{
+  "mercado": "za",
+  "datos": [
+    {
+      "id": "za.income-tax-bands",
+      "nombre": "Income tax rates for individuals (taxable income bands)",
+      "tipo": "escala",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "hasta": "2026-02-28",
+          "valor": [
+            { "desde": 0, "hasta": 237100, "tasa": 18 },
+            { "desde": 237100, "hasta": 370500, "tasa": 26 },
+            { "desde": 370500, "hasta": 512800, "tasa": 31 },
+            { "desde": 512800, "hasta": 673000, "tasa": 36 },
+            { "desde": 673000, "hasta": 857900, "tasa": 39 },
+            { "desde": 857900, "hasta": 1817000, "tasa": 41 },
+            { "desde": 1817000, "hasta": null, "tasa": 45 }
+          ],
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Rates of tax for individuals",
+            "url": "https://www.sars.gov.za/tax-rates/income-tax/rates-of-tax-for-individuals/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La página dice que el año 2026 no cambió respecto de 2025 ni 2025 respecto de 2024: la tabla es la publicada para 2024."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": [
+            { "desde": 0, "hasta": 245100, "tasa": 18 },
+            { "desde": 245100, "hasta": 383100, "tasa": 26 },
+            { "desde": 383100, "hasta": 530200, "tasa": 31 },
+            { "desde": 530200, "hasta": 695800, "tasa": 36 },
+            { "desde": 695800, "hasta": 887000, "tasa": 39 },
+            { "desde": 887000, "hasta": 1878600, "tasa": 41 },
+            { "desde": 1878600, "hasta": null, "tasa": 45 }
+          ],
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Rates of tax for individuals",
+            "url": "https://www.sars.gov.za/tax-rates/income-tax/rates-of-tax-for-individuals/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.tax-rebates",
+      "nombre": "Tax rebates for individuals",
+      "tipo": "mapa",
+      "unidad": "ZAR",
+      "etiquetas": {
+        "primary": "Primary rebate",
+        "secondary": "Secondary rebate (65 and older)",
+        "tertiary": "Tertiary rebate (75 and older)"
+      },
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "hasta": "2026-02-28",
+          "valor": {
+            "primary": 17235,
+            "secondary": 9444,
+            "tertiary": 3145
+          },
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Rates of tax for individuals",
+            "url": "https://www.sars.gov.za/tax-rates/income-tax/rates-of-tax-for-individuals/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": {
+            "primary": 17820,
+            "secondary": 9765,
+            "tertiary": 3249
+          },
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Rates of tax for individuals",
+            "url": "https://www.sars.gov.za/tax-rates/income-tax/rates-of-tax-for-individuals/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.tax-thresholds",
+      "nombre": "Tax thresholds (no tax below this taxable income)",
+      "tipo": "mapa",
+      "unidad": "ZAR",
+      "etiquetas": {
+        "under-65": "Under 65",
+        "65-to-74": "65 to 74",
+        "75-and-over": "75 and older"
+      },
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "hasta": "2026-02-28",
+          "valor": {
+            "under-65": 95750,
+            "65-to-74": 148217,
+            "75-and-over": 165689
+          },
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Rates of tax for individuals",
+            "url": "https://www.sars.gov.za/tax-rates/income-tax/rates-of-tax-for-individuals/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": {
+            "under-65": 99000,
+            "65-to-74": 153250,
+            "75-and-over": 171300
+          },
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Rates of tax for individuals",
+            "url": "https://www.sars.gov.za/tax-rates/income-tax/rates-of-tax-for-individuals/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.medical-tax-credits",
+      "nombre": "Medical scheme fees tax credit (per month)",
+      "tipo": "mapa",
+      "unidad": "ZAR",
+      "etiquetas": {
+        "main-member": "You (main member)",
+        "first-dependant": "First dependant",
+        "additional-dependant": "Each additional dependant"
+      },
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "hasta": "2026-02-28",
+          "valor": {
+            "main-member": 364,
+            "first-dependant": 364,
+            "additional-dependant": 246
+          },
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Medical tax credit rates",
+            "url": "https://www.sars.gov.za/tax-rates/medical-tax-credit-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": {
+            "main-member": 376,
+            "first-dependant": 376,
+            "additional-dependant": 254
+          },
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Medical tax credit rates",
+            "url": "https://www.sars.gov.za/tax-rates/medical-tax-credit-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.retirement-deduction-rate",
+      "nombre": "Retirement fund contributions: deduction limit (% of remuneration or taxable income)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 27.5,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.retirement-deduction-cap",
+      "nombre": "Retirement fund contributions: annual deduction cap",
+      "tipo": "numero",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 430000,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.lump-sum-withdrawal-table",
+      "nombre": "Retirement fund lump sum withdrawal benefits: tax table",
+      "tipo": "escala",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": [
+            { "desde": 0, "hasta": 27500, "tasa": 0 },
+            { "desde": 27500, "hasta": 726000, "tasa": 18 },
+            { "desde": 726000, "hasta": 1089000, "tasa": 27 },
+            { "desde": 1089000, "hasta": null, "tasa": 36 }
+          ],
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.lump-sum-retirement-table",
+      "nombre": "Retirement fund lump sum benefits and severance benefits: tax table",
+      "tipo": "escala",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": [
+            { "desde": 0, "hasta": 550000, "tasa": 0 },
+            { "desde": 550000, "hasta": 770000, "tasa": 18 },
+            { "desde": 770000, "hasta": 1155000, "tasa": 27 },
+            { "desde": 1155000, "hasta": null, "tasa": 36 }
+          ],
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.uif-employee-rate",
+      "nombre": "UIF contribution by the employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Unemployment Insurance Fund",
+            "url": "https://www.sars.gov.za/types-of-tax/unemployment-insurance-fund/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.uif-employer-rate",
+      "nombre": "UIF contribution by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Unemployment Insurance Fund",
+            "url": "https://www.sars.gov.za/types-of-tax/unemployment-insurance-fund/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.uif-ceiling-monthly",
+      "nombre": "UIF earnings ceiling per month",
+      "tipo": "numero",
+      "unidad": "ZAR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-01",
+          "valor": 17712,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Unemployment Insurance Fund",
+            "url": "https://www.sars.gov.za/types-of-tax/unemployment-insurance-fund/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.sdl-rate",
+      "nombre": "Skills Development Levy rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 1,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Skills Development Levy",
+            "url": "https://www.sars.gov.za/types-of-tax/skills-development-levy/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.sdl-threshold",
+      "nombre": "Skills Development Levy: annual payroll below which employers are exempt",
+      "tipo": "numero",
+      "unidad": "ZAR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Skills Development Levy",
+            "url": "https://www.sars.gov.za/types-of-tax/skills-development-levy/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Value-Added Tax",
+            "url": "https://www.sars.gov.za/types-of-tax/value-added-tax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La tasa general es 15 % desde 2018; se carga desde el año fiscal en que se verificó. Coincide con la guía del Budget 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.minimum-wage",
+      "nombre": "National minimum wage per ordinary hour",
+      "tipo": "mapa",
+      "unidad": "ZAR",
+      "etiquetas": {
+        "general": "Most workers",
+        "farm": "Farm workers",
+        "domestic": "Domestic workers",
+        "epwp": "Expanded Public Works Programme"
+      },
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": {
+            "general": 30.23,
+            "farm": 30.23,
+            "domestic": 30.23,
+            "epwp": 16.62
+          },
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "National Minimum Wage Act: amendment of Schedules 1 and 2 (GN R.7083, Government Gazette 54075, 3 February 2026)",
+            "url": "https://www.gov.za/sites/default/files/gcis_document/202602/54075rg11941gon7083.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.minimum-wage-contract-cleaning",
+      "nombre": "Contract cleaning sector minimum wage per hour (Sectoral Determination 1)",
+      "tipo": "mapa",
+      "unidad": "ZAR",
+      "etiquetas": {
+        "area-a": "Contract cleaning, Area A (main metros)",
+        "area-c": "Contract cleaning, rest of the country"
+      },
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": {
+            "area-a": 33.27,
+            "area-c": 30.33
+          },
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "National Minimum Wage Act: amendment of Schedules 1 and 2 (GN R.7083, Government Gazette 54075, 3 February 2026)",
+            "url": "https://www.gov.za/sites/default/files/gcis_document/202602/54075rg11941gon7083.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.weeks-per-month",
+      "nombre": "Weeks in a month for wage calculations",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": 4.333,
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "National Minimum Wage Act: amendment of Schedules 1 and 2 (GN R.7083, Government Gazette 54075, 3 February 2026)",
+            "url": "https://www.gov.za/sites/default/files/gcis_document/202602/54075rg11941gon7083.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La gaceta dice «Monthly rate is based on 4.333 weeks»; el artículo 35(3) de la BCEA dice cuatro y un tercio."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.bcea-earnings-threshold",
+      "nombre": "BCEA earnings threshold (per year)",
+      "tipo": "numero",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-05-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 269900.9,
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "Department of Employment and Labour sets a new threshold in the protection of employees (21 April 2026)",
+            "url": "https://www.labour.gov.za/Media-Desk/Media-Statements/Pages/Department-of-Employment-and-Labour-sets-a-new-threshold-in-the-protection-of-employees-.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Determinación publicada como GN 7384, Government Gazette 54544 del 17/4/2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.bcea-pay-multipliers",
+      "nombre": "BCEA minimum pay multipliers",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "overtime": "Overtime",
+        "sunday": "Sunday work",
+        "sunday-usual": "Sunday work for someone who normally works Sundays",
+        "public-holiday": "Public holiday worked"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "overtime": 1.5,
+            "sunday": 2,
+            "sunday-usual": 1.5,
+            "public-holiday": 2
+          },
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "Basic Conditions of Employment Act 75 of 1997",
+            "url": "https://www.labour.gov.za/DocumentCenter/Acts/Basic%20Conditions%20of%20Employment/Act%20-%20Basic%20Conditions%20of%20Employment.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Norma estable: rige desde mucho antes; se carga desde el año en que se verificó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.annual-leave-days",
+      "nombre": "Annual leave per 12-month cycle (consecutive days)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "Basic Conditions of Employment Act 75 of 1997",
+            "url": "https://www.labour.gov.za/DocumentCenter/Acts/Basic%20Conditions%20of%20Employment/Act%20-%20Basic%20Conditions%20of%20Employment.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Norma estable: rige desde mucho antes; se carga desde el año en que se verificó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.leave-accrual-days",
+      "nombre": "Days worked for each day of annual leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 17,
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "Basic Conditions of Employment Act 75 of 1997",
+            "url": "https://www.labour.gov.za/DocumentCenter/Acts/Basic%20Conditions%20of%20Employment/Act%20-%20Basic%20Conditions%20of%20Employment.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Norma estable: rige desde mucho antes; se carga desde el año en que se verificó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.sick-leave-weeks",
+      "nombre": "Paid sick leave per cycle (weeks of normal work)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "Basic Conditions of Employment Act 75 of 1997",
+            "url": "https://www.labour.gov.za/DocumentCenter/Acts/Basic%20Conditions%20of%20Employment/Act%20-%20Basic%20Conditions%20of%20Employment.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Norma estable: rige desde mucho antes; se carga desde el año en que se verificó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.sick-leave-cycle-months",
+      "nombre": "Length of the sick leave cycle",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 36,
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "Basic Conditions of Employment Act 75 of 1997",
+            "url": "https://www.labour.gov.za/DocumentCenter/Acts/Basic%20Conditions%20of%20Employment/Act%20-%20Basic%20Conditions%20of%20Employment.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Norma estable: rige desde mucho antes; se carga desde el año en que se verificó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.sick-leave-early-days",
+      "nombre": "First six months: days worked for each day of sick leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "Basic Conditions of Employment Act 75 of 1997",
+            "url": "https://www.labour.gov.za/DocumentCenter/Acts/Basic%20Conditions%20of%20Employment/Act%20-%20Basic%20Conditions%20of%20Employment.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Norma estable: rige desde mucho antes; se carga desde el año en que se verificó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.notice-weeks",
+      "nombre": "Minimum notice period",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "up-to-6-months": "Six months or less",
+        "6-to-12-months": "More than six months, up to a year",
+        "1-year-or-more": "A year or more",
+        "farm-domestic-over-6-months": "Farm or domestic worker, more than six months"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "up-to-6-months": 1,
+            "6-to-12-months": 2,
+            "1-year-or-more": 4,
+            "farm-domestic-over-6-months": 4
+          },
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "Basic Conditions of Employment Amendment Act 11 of 2002 (section 37 substituted)",
+            "url": "https://www.labour.gov.za/DocumentCenter/Acts/Basic%20Conditions%20of%20Employment/Amendment%20-%20Basic%20Conditions%20of%20Employment%20Act%202002.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Plazos del artículo 37 según la reforma de 2002 (seis meses en vez de cuatro semanas). Norma estable: se carga desde el año en que se verificó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.severance-weeks-per-year",
+      "nombre": "Severance pay: weeks of pay per completed year of service",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Department of Employment and Labour",
+            "titulo": "Basic Conditions of Employment Act 75 of 1997",
+            "url": "https://www.labour.gov.za/DocumentCenter/Acts/Basic%20Conditions%20of%20Employment/Act%20-%20Basic%20Conditions%20of%20Employment.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Norma estable: rige desde mucho antes; se carga desde el año en que se verificó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.cgt-inclusion-rate",
+      "nombre": "Capital gains inclusion rate for individuals",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Capital gains tax: inclusion rate",
+            "url": "https://www.sars.gov.za/types-of-tax/capital-gains-tax/proceeds/calculation-of-taxable-capital-gains-and-assessed-capital-losses/inclusion-rate/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "La tabla de la página está rotulada para 2018 y 2019; la guía del Budget 2026 confirma la tasa efectiva máxima de 18 % (40 % × 45 %)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.cgt-annual-exclusion",
+      "nombre": "Capital gains annual exclusion for individuals",
+      "tipo": "numero",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-03-01",
+          "hasta": "2026-02-28",
+          "valor": 40000,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Capital gains tax: annual exclusion",
+            "url": "https://www.sars.gov.za/types-of-tax/capital-gains-tax/proceeds/calculation-of-taxable-capital-gains-and-assessed-capital-losses/annual-exclusion/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Capital gains tax: annual exclusion",
+            "url": "https://www.sars.gov.za/types-of-tax/capital-gains-tax/proceeds/calculation-of-taxable-capital-gains-and-assessed-capital-losses/annual-exclusion/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.cgt-death-exclusion",
+      "nombre": "Capital gains exclusion in the year of death",
+      "tipo": "numero",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 440000,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Capital gains tax: annual exclusion",
+            "url": "https://www.sars.gov.za/types-of-tax/capital-gains-tax/proceeds/calculation-of-taxable-capital-gains-and-assessed-capital-losses/annual-exclusion/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.cgt-primary-residence-exclusion",
+      "nombre": "Capital gains primary residence exclusion",
+      "tipo": "numero",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 3000000,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.transfer-duty",
+      "nombre": "Transfer duty on property",
+      "tipo": "escala",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": [
+            { "desde": 0, "hasta": 1210000, "tasa": 0, "cuotaFija": 0 },
+            { "desde": 1210000, "hasta": 1663800, "tasa": 3, "cuotaFija": 0 },
+            { "desde": 1663800, "hasta": 2329300, "tasa": 6, "cuotaFija": 13614 },
+            { "desde": 2329300, "hasta": 2994800, "tasa": 8, "cuotaFija": 53544 },
+            { "desde": 2994800, "hasta": 13310000, "tasa": 11, "cuotaFija": 106784 },
+            { "desde": 13310000, "hasta": null, "tasa": 13, "cuotaFija": 1241456 }
+          ],
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Transfer duty",
+            "url": "https://www.sars.gov.za/tax-rates/transfer-duty/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabla con efecto desde el 1/4/2025; la página dice que no cambia desde el 1/4/2026. Coincide con la guía del Budget 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.estate-duty",
+      "nombre": "Estate duty rates on the dutiable amount",
+      "tipo": "escala",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": [
+            { "desde": 0, "hasta": 30000000, "tasa": 20 },
+            { "desde": 30000000, "hasta": null, "tasa": 25 }
+          ],
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.estate-duty-abatement",
+      "nombre": "Estate duty basic deduction (abatement)",
+      "tipo": "numero",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 3500000,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.donations-tax",
+      "nombre": "Donations tax rates on cumulative donations since 1 March 2018",
+      "tipo": "escala",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": [
+            { "desde": 0, "hasta": 30000000, "tasa": 20 },
+            { "desde": 30000000, "hasta": null, "tasa": 25 }
+          ],
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.donations-exemption",
+      "nombre": "Donations tax: annual exemption for individuals",
+      "tipo": "numero",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.turnover-tax",
+      "nombre": "Turnover tax for micro businesses",
+      "tipo": "escala",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": [
+            { "desde": 0, "hasta": 600000, "tasa": 0, "cuotaFija": 0 },
+            { "desde": 600000, "hasta": 950000, "tasa": 1, "cuotaFija": 0 },
+            { "desde": 950000, "hasta": 1400000, "tasa": 2, "cuotaFija": 3500 },
+            { "desde": 1400000, "hasta": null, "tasa": 3, "cuotaFija": 12500 }
+          ],
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.company-tax-rate",
+      "nombre": "Company income tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 27,
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "za.sbc-tax",
+      "nombre": "Small business corporation tax rates",
+      "tipo": "escala",
+      "unidad": "ZAR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": [
+            { "desde": 0, "hasta": 99000, "tasa": 0 },
+            { "desde": 99000, "hasta": 365000, "tasa": 7 },
+            { "desde": 365000, "hasta": 550000, "tasa": 21 },
+            { "desde": 550000, "hasta": null, "tasa": 27 }
+          ],
+          "fuente": {
+            "organismo": "SARS",
+            "titulo": "Budget 2026 Tax Guide (pocket guide 2026/27)",
+            "url": "https://www.treasury.gov.za/documents/National%20Budget/2026/sars/Budget%202026%20Tax%20guide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}

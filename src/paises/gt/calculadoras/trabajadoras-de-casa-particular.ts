@@ -1,4 +1,4 @@
-import { definirCalculadora, enMapa, porcentaje, porRegion } from "@/motor/calculo";
+import { definirCalculadora, enMapa, ErrorEntrada, porcentaje, porRegion } from "@/motor/calculo";
 
 export default definirCalculadora({
   id: "gt.trabajadoras-de-casa-particular",
@@ -18,6 +18,7 @@ export default definirCalculadora({
     { id: "region", tipo: "region", etiqueta: "Dónde está la casa", porDefecto: "ce1" },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const base = enMapa(porRegion(valores["gt.salario-minimo-mensual"], entrada.region), "no-agricola");
     const cuotaEmpleador = redondear(porcentaje(base, valores["gt.precapi-empleador"]));
     const cuotaTrabajadora = redondear(porcentaje(base, valores["gt.precapi-trabajadora"]));

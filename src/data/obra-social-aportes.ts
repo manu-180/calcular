@@ -53,7 +53,7 @@
 //     los aportes de los incisos a) y c) del art. 10 de la Ley 24.241.
 //   · Ley 26.682 texto actualizado (id 182180) — arts. 9, 10, 12 y 23.
 
-import { PRESTACIONES_VIGENTES } from "./prestaciones";
+import { prestacionesVigentes } from "./prestaciones";
 
 /** Desde cuándo rige el reparto plano 85/15. Dec. 600/2024, art. 6°: el 1° del mes siguiente al B.O. */
 export const VIGENCIA_REPARTO = "1 de agosto de 2024";
@@ -142,41 +142,43 @@ export const OBRA_SOCIAL_TEXTOS = {
     "Sustitúyese, con efecto para las contribuciones que se devenguen a partir del 1º de enero de 2027, el inciso a) del artículo 16 de la ley 23.660 y sus modificaciones, por el siguiente: a) Una contribución a cargo del empleador equivalente al seis por ciento (6%) de la remuneración de los trabajadores que presten servicios en relación de dependencia. La Superintendencia de Servicios de Salud (SSS) estará facultada para auditar el destino de las contribuciones referenciadas en el párrafo precedente.",
 } as const;
 
-export const OBRA_SOCIAL_FUENTES = {
-  consultadoEl: "5 de septiembre de 2026",
-  principal: {
-    nombre: "Ley 23.660, art. 19, texto actualizado en InfoLEG",
-    url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
-  },
-  lista: [
-    {
-      nombre: "Ley 23.660, texto actualizado",
+export function obraSocialFuentes() {
+  return {
+    consultadoEl: "5 de septiembre de 2026",
+    principal: {
+      nombre: "Ley 23.660, art. 19, texto actualizado en InfoLEG",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
-      detalle:
-        "Arts. 9 (beneficiarios y el adicional del 1,5%), 16 (aportes y contribuciones) y 19 (el reparto 85/15).",
     },
-    {
-      nombre: "Decreto 600/2024 (B.O. 10/7/2024), texto original",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/400000-404999/401319/norma.htm",
-      detalle:
-        "Sustituye el art. 19, deroga el art. 19 bis, reescribe los Anexos I y II del Decreto 576/93 y sustituye el art. 23 de la Ley 26.682. Rige desde el 1/8/2024.",
-    },
-    {
-      nombre: "Ley 26.682: marco regulatorio de la medicina prepaga",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/180000-184999/182180/texact.htm",
-      detalle:
-        "Arts. 9 (rescisión), 10 (carencias, declaración jurada y valores diferenciales), 12 (mayores de 65) y 23 (planes de adhesión voluntaria).",
-    },
-    {
-      nombre: "Decreto 491/2004 (B.O. 21/4/2004)",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/90000-94999/94384/norma.htm",
-      detalle:
-        "Deja el tope de la base imponible del art. 9 de la Ley 24.241 sólo para los aportes de los incisos a) y c) del art. 10: la contribución del empleador dejó de tener límite máximo.",
-    },
-    {
-      nombre: `${PRESTACIONES_VIGENTES.resolucion}: bases imponibles vigentes`,
-      url: PRESTACIONES_VIGENTES.resolucionUrl,
-      detalle: "La base máxima sobre la que se calculan los aportes personales.",
-    },
-  ],
-} as const;
+    lista: [
+      {
+        nombre: "Ley 23.660, texto actualizado",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/62/texact.htm",
+        detalle:
+          "Arts. 9 (beneficiarios y el adicional del 1,5%), 16 (aportes y contribuciones) y 19 (el reparto 85/15).",
+      },
+      {
+        nombre: "Decreto 600/2024 (B.O. 10/7/2024), texto original",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/400000-404999/401319/norma.htm",
+        detalle:
+          "Sustituye el art. 19, deroga el art. 19 bis, reescribe los Anexos I y II del Decreto 576/93 y sustituye el art. 23 de la Ley 26.682. Rige desde el 1/8/2024.",
+      },
+      {
+        nombre: "Ley 26.682: marco regulatorio de la medicina prepaga",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/180000-184999/182180/texact.htm",
+        detalle:
+          "Arts. 9 (rescisión), 10 (carencias, declaración jurada y valores diferenciales), 12 (mayores de 65) y 23 (planes de adhesión voluntaria).",
+      },
+      {
+        nombre: "Decreto 491/2004 (B.O. 21/4/2004)",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/90000-94999/94384/norma.htm",
+        detalle:
+          "Deja el tope de la base imponible del art. 9 de la Ley 24.241 sólo para los aportes de los incisos a) y c) del art. 10: la contribución del empleador dejó de tener límite máximo.",
+      },
+      {
+        nombre: `${prestacionesVigentes().resolucion}: bases imponibles vigentes`,
+        url: prestacionesVigentes().resolucionUrl,
+        detalle: "La base máxima sobre la que se calculan los aportes personales.",
+      },
+    ],
+  } as const;
+}

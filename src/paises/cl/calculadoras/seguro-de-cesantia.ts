@@ -1,4 +1,4 @@
-import { definirCalculadora, enMapa, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
 export default definirCalculadora({
   id: "cl.seguro-de-cesantia",
@@ -31,6 +31,7 @@ export default definirCalculadora({
     },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.promedio <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "promedio");
     const giro = (n: number) => {
       const clave = `${entrada.contrato}-${n}`;
       const bruto = porcentaje(entrada.promedio, enMapa(valores["cl.fcs-porcentaje"], clave));

@@ -20,10 +20,16 @@ export default definirCasos(tipoDeCambio, [
     entrada: { direccion: "soles-a-dolares", monto: 1000 },
     esperado: { conVenta: 290.95, conCompra: 291.46 },
   },
+  // Con la serie real, un caso fechado días después de su dato se rompía cada vez que entraba un
+  // punto nuevo en el medio, y eso frenaba la publicación de Perú (issue #16). El dato va fijo.
   {
-    nombre: "Siete días después todavía vale el último dato",
-    origen: { tipo: "recalculado", detalle: "La serie admite hasta 7 días de antigüedad." },
+    nombre: "Consulta días después del dato: el resultado lleva la fecha del dato",
+    origen: { tipo: "recalculado", detalle: "Dato SUNAT del 07/10/2026 (3.431 / 3.437) consultado el 14/10: 10 × 3.437 = 34.37." },
     fecha: "2026-10-14",
+    valores: {
+      "pe.tc-sunat-compra": { fecha: "2026-10-07", valor: 3.431 },
+      "pe.tc-sunat-venta": { fecha: "2026-10-07", valor: 3.437 },
+    },
     entrada: { direccion: "dolares-a-soles", monto: 10 },
     esperado: { conVenta: 34.37, fecha: "2026-10-07" },
   },

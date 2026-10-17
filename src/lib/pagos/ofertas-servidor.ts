@@ -2,6 +2,7 @@ import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import ExcelJS from "exceljs";
+import { esMercadoDePrueba } from "@/motor/datos";
 import type { CodigoMercado, FechaISO } from "@/motor/tipos";
 import { hoyEn } from "@/motor/vigencia";
 import { opcionesDinamicas, resolverValores } from "@/motor/registro";
@@ -9,7 +10,8 @@ import { registro } from "@/paises";
 import { validarDatosIntl, type DatosIntl } from "@/lib/prefill/intl";
 import { catalogoIntl, calculadorasDeFamilia, leerArchivoIntl, productosDeMercado, type ProductoIntl } from "./catalogo-intl";
 import { archivoMapa, leerMapa, valorDeCelda, type BloqueMapa, type MapaPlanilla } from "./mapa-planilla-intl";
-import { familiaDeConcepto, familiaPorClave, nombreDeCalculo, type OfertaPublica, type OfertasCalculadora, type OfertasMercado } from "./ofertas-intl";
+import { familiaDeConcepto, familiaPorClave, nombreDeCalculo, type CopyTarjeta, type OfertaPublica, type OfertasCalculadora, type OfertasMercado, type ReferenciaLocal } from "./ofertas-intl";
+import { copyFamilia, copyPlanilla, diccionarioVenta, textosTarjeta } from "./textos";
 import { ventaIntlActiva } from "./index";
 
 // ─── Mapa de la planilla ──────────────────────────────────────────────────────────────────────
@@ -85,9 +87,11 @@ function publica(p: ProductoIntl, hoja?: string): OfertaPublica {
 export function ofertasDeMercado(mercado: string): OfertasMercado {
   const pais = registro.pais(mercado as CodigoMercado);
   const porCalculadora: Record<string, OfertasCalculadora> = {};
-  if (!pais || mercado === "global" || mercado === "zz") return { activa: false, porCalculadora };
+  if (!pais || mercado === "global" || esMercadoDePrueba(mercado)) return { activa: false, porCalculadora, referencia: null };
+  const { idioma, trato } = pais.mercado;
   const productos = productosDeMercado(mercado);
   const planillas = productos.filter((p) => p.tipo === "planilla");
+  const copy: Record<string, CopyTarjeta> = {};
   for (const c of pais.calculadoras) {
     const def = c.definicion;
     if (def.estado === "borrador") continue;
@@ -98,9 +102,37 @@ export function ofertasDeMercado(mercado: string): OfertasMercado {
     const planilla = conHoja.map((x) => publica(x.p, x.b!.hoja));
     if (informe && f?.clave === "liquidacion") lista.push(publica(informe), ...planilla);
     else lista.push(...planilla, ...(informe ? [publica(informe)] : []));
-    if (lista.length) porCalculadora[def.id] = { calc: def.slug, nombre: nombreDeCalculo(c.contenido.h1, pais.mercado.nombre), ofertas: lista };
+    if (!lista.length) continue;
+    porCalculadora[def.id] = { calc: def.slug, nombre: nombreDeCalculo(c.contenido.h1), ofertas: lista };
+    for (const o of lista) {
+      if (copy[o.familia]) continue;
+      copy[o.familia] = o.familia === "planilla" ? copyPlanilla(idioma, trato) : copyFamilia(o.familia, idioma, trato);
+    }
   }
-  return { activa: ventaIntlActiva(), porCalculadora };
+  return {
+    activa: ventaIntlActiva(),
+    porCalculadora,
+    referencia: referenciaLocalDe(mercado),
+    locale: pais.mercado.locale,
+    textos: textosTarjeta(idioma, trato),
+    copy,
+  };
+}
+
+// El tipo de cambio del dólar que ya cargan los datos del país (la serie vigente, con su tope de
+// antigüedad). Entre compra y venta, la venta: es a la que la persona compra dólares. Un país que
+// cobra en su moneda (ec, pa, sv) o sin serie confiable (cl, pe) no tiene referencia.
+const RE_SERIE_DOLAR = /dolar|cambio|trm|tasa-bcv/;
+
+export function referenciaLocalDe(mercado: string): ReferenciaLocal | null {
+  const pais = registro.pais(mercado as CodigoMercado);
+  if (!pais) return null;
+  const local = pais.mercado.monedas[0];
+  if (!local || local === "USD") return null;
+  const candidatas = registro.fichasSeries(pais.mercado.codigo, hoyEn(pais.mercado)).filter((f) => f.serie.unidad === local && RE_SERIE_DOLAR.test(f.serie.id) && f.vigente);
+  const ficha = candidatas.find((f) => /venta/.test(f.serie.id)) ?? candidatas[0];
+  const tasa = ficha?.vigente?.valor;
+  return typeof tasa === "number" && tasa > 0 ? { moneda: local, locale: pais.mercado.locale, tasa } : null;
 }
 
 export function informesDeMercado(mercado: string): ProductoIntl[] {
@@ -145,6 +177,7 @@ export function resumenCalculos(p: ProductoIntl): Record<string, ResumenCalculo>
   const salida: Record<string, ResumenCalculo> = {};
   if (!pais) return salida;
   const hoy = hoyEn(pais.mercado);
+  const { si, no } = diccionarioVenta(pais.mercado.idioma).general;
   for (const slug of calculadorasDeProducto(p)) {
     const e = pais.calculadoras.find((c) => c.definicion.slug === slug);
     if (!e) continue;
@@ -152,7 +185,7 @@ export function resumenCalculos(p: ProductoIntl): Record<string, ResumenCalculo>
     const r = resolverValores(pais, def, hoy);
     const dinamicas = r.ok ? opcionesDinamicas(pais, def, r.valores) : {};
     salida[slug] = {
-      nombre: nombreDeCalculo(e.contenido.h1, pais.mercado.nombre),
+      nombre: nombreDeCalculo(e.contenido.h1),
       campos: def.campos.map((c) => {
         const ops =
           c.tipo === "opcion"
@@ -161,7 +194,12 @@ export function resumenCalculos(p: ProductoIntl): Record<string, ResumenCalculo>
               ? (pais.mercado.regiones ?? []).map((x) => ({ valor: x.id, etiqueta: x.nombre }))
               : c.tipo === "opcion-dato"
                 ? (dinamicas[c.id] ?? [])
-                : null;
+                : c.tipo === "si-no"
+                  ? [
+                      { valor: "true", etiqueta: si },
+                      { valor: "false", etiqueta: no },
+                    ]
+                  : null;
         return { id: c.id, etiqueta: c.etiqueta, tipo: c.tipo, ...(ops ? { opciones: Object.fromEntries(ops.map((o) => [o.valor, o.etiqueta])) } : {}) };
       }),
     };

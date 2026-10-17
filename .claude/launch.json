@@ -4,8 +4,24 @@
     {
       "name": "calcular-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "-p", "3231"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "-p",
+        "3231"
+      ],
       "port": 3231
+    },
+    {
+      "name": "calcularya-dev",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "P=${PORT:-3232}; NEXT_PUBLIC_SITIO_INTL_URL=http://intl.localhost:$P npx next dev -p $P"
+      ],
+      "port": 3232,
+      "url": "http://intl.localhost:3232"
     }
   ]
 }

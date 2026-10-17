@@ -1,51 +1,21 @@
 import type { ComponentType } from "react";
 import type { Concepto } from "./conceptos";
 
-export const CODIGOS_MERCADO = [
-  "global",
-  "zz",
-  "uy",
-  "py",
-  "bo",
-  "ve",
-  "mx",
-  "pe",
-  "co",
-  "cl",
-  "ec",
-  "cr",
-  "pa",
-  "ni",
-  "do",
-  "gt",
-  "sv",
-  "hn",
-  "br",
-] as const;
-export type CodigoMercado = (typeof CODIGOS_MERCADO)[number];
+// Los códigos de mercado y de moneda no se listan a mano: un mercado es "global", "zz" o un ISO
+// 3166-1 alfa-2 en minúscula con sufijo de idioma opcional (ca-fr), y una moneda es cualquier ISO
+// 4217 que conozca Intl (más XTS, el código reservado para pruebas que usa zz).
+export type CodigoMercado = string;
+export const RE_CODIGO_MERCADO = /^(?:global|zz|[a-z]{2}(?:-[a-z]{2,3})?)$/;
+export function esCodigoMercado(valor: string): valor is CodigoMercado {
+  return RE_CODIGO_MERCADO.test(valor);
+}
 
-// XTS es el código ISO 4217 reservado para pruebas: solo lo usa el mercado ficticio zz.
-export const MONEDAS = [
-  "UYU",
-  "PYG",
-  "BOB",
-  "PEN",
-  "CLP",
-  "COP",
-  "MXN",
-  "VES",
-  "USD",
-  "CRC",
-  "DOP",
-  "GTQ",
-  "HNL",
-  "NIO",
-  "PAB",
-  "BRL",
-  "ARS",
-  "XTS",
-] as const;
-export type Moneda = (typeof MONEDAS)[number];
+export type Moneda = string;
+let monedasIntl: ReadonlySet<string> | null = null;
+export function esMoneda(valor: string): valor is Moneda {
+  monedasIntl ??= new Set([...Intl.supportedValuesOf("currency"), "XTS"]);
+  return monedasIntl.has(valor);
+}
 
 export const UNIDADES_REFERENCIA = [
   "UIT",
@@ -66,7 +36,7 @@ export const UNIDADES_REFERENCIA = [
 ] as const;
 export type UnidadReferencia = (typeof UNIDADES_REFERENCIA)[number];
 
-export const UNIDADES_SIMPLES = ["%", "dias", "horas", "meses", "anios", "numero", "factor"] as const;
+export const UNIDADES_SIMPLES = ["%", "dias", "semanas", "horas", "meses", "anios", "numero", "factor"] as const;
 export type UnidadSimple = (typeof UNIDADES_SIMPLES)[number];
 
 export type Unidad = Moneda | UnidadReferencia | UnidadSimple;
@@ -74,8 +44,13 @@ export type Unidad = Moneda | UnidadReferencia | UnidadSimple;
 export type FechaISO = `${number}-${number}-${number}`;
 
 export type EstadoPublicacion = "borrador" | "interno" | "publicado";
+// El trato es el registro de la persona a la que se le habla, en cualquier idioma: "tu" es el
+// informal (tú, você, tu, du, you), "usted" el formal (usted, o senhor, vous, Sie, Lei) y "vos" el
+// voseo, que solo existe en español. Los nombres quedaron en español por historia del repo.
 export type Trato = "vos" | "tu" | "usted";
-export type Idioma = "es" | "pt";
+export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl"] as const;
+export type Idioma = (typeof IDIOMAS)[number];
+export type SistemaUnidades = "metrico" | "imperial";
 
 export type ModoRedondeo = "mitad-arriba" | "mitad-par" | "truncar";
 export interface ReglaRedondeo {
@@ -101,6 +76,10 @@ export interface Mercado {
   regiones?: readonly Region[];
   redondeo: ReglaRedondeo;
   simbolos?: Readonly<Partial<Record<Moneda, string>>>;
+  // Cuántas unidades de la moneda principal equivalen a "un dólar" redondeado a un número bonito.
+  // Solo escala montos de ejemplo y valores por defecto de las calculadoras universales.
+  escala?: number;
+  unidades?: SistemaUnidades;
 }
 
 export interface Fuente {
@@ -233,11 +212,14 @@ export type ValorResuelto =
   | Readonly<Record<string, ValorDato>>;
 export type ValoresSerializados = Readonly<Record<string, ValorResuelto>>;
 
+// visibleSi: el campo se muestra solo cuando cada campo nombrado tiene uno de esos valores
+// ({ modo: ["horas"] }). Oculto no se valida y llega a calcular() como null.
 interface CampoBase {
   id: string;
   etiqueta: string;
   ayuda?: string;
   requerido?: boolean;
+  visibleSi?: Readonly<Record<string, readonly (string | boolean)[]>>;
 }
 
 export interface CampoNumerico extends CampoBase {
@@ -253,6 +235,14 @@ export interface CampoFecha extends CampoBase {
   min?: FechaISO;
   max?: FechaISO;
   porDefecto?: FechaISO | "hoy";
+}
+
+// Hora del día "HH:MM" (00:00 a 23:59), con selector nativo del navegador.
+export interface CampoHora extends CampoBase {
+  tipo: "hora";
+  min?: string;
+  max?: string;
+  porDefecto?: string;
 }
 
 export interface OpcionCampo<V extends string = string> {
@@ -271,9 +261,12 @@ export interface CampoSiNo extends CampoBase {
   porDefecto?: boolean;
 }
 
+// regiones: un subconjunto de las del mercado, para una calculadora que no aplica en todas (el
+// impuesto provincial de Canadá sin Quebec). Sin la lista, todas.
 export interface CampoRegion extends CampoBase {
   tipo: "region";
   porDefecto?: string;
+  regiones?: readonly string[];
 }
 
 export interface CampoOpcionDato extends CampoBase {
@@ -282,7 +275,7 @@ export interface CampoOpcionDato extends CampoBase {
   porDefecto?: string;
 }
 
-export type Campo = CampoNumerico | CampoFecha | CampoOpcion | CampoSiNo | CampoRegion | CampoOpcionDato;
+export type Campo = CampoNumerico | CampoFecha | CampoHora | CampoOpcion | CampoSiNo | CampoRegion | CampoOpcionDato;
 export type TipoCampo = Campo["tipo"];
 
 type ValorDeCampo<K> = K extends { tipo: "moneda" | "numero" | "entero" | "porcentaje" }
@@ -295,7 +288,7 @@ type ValorDeCampo<K> = K extends { tipo: "moneda" | "numero" | "entero" | "porce
         ? boolean
         : string;
 
-type ConOpcionalidad<K, T> = K extends { requerido: false } ? T | null : T;
+type ConOpcionalidad<K, T> = K extends { requerido: false } | { visibleSi: object } ? T | null : T;
 
 export type EntradaDe<C extends readonly Campo[]> = {
   readonly [K in C[number] as K["id"]]: ConOpcionalidad<K, ValorDeCampo<K>>;
@@ -310,7 +303,19 @@ export interface ContextoCalculo {
   redondear: (n: number) => number;
 }
 
-export type ValorResultado = number | string | boolean | null | undefined | readonly string[];
+export interface ColumnaTabla {
+  clave: string;
+  etiqueta: string;
+  formato: FormatoNumerico | "texto" | "fecha";
+}
+// Tabla detallada de un resultado (por ejemplo, la amortización de un préstamo). La página muestra
+// las primeras filas y el informe pago la tabla entera.
+export interface TablaResultado {
+  readonly tipo: "tabla";
+  readonly columnas: readonly ColumnaTabla[];
+  readonly filas: readonly (readonly (number | string | null)[])[];
+}
+export type ValorResultado = number | string | boolean | null | undefined | readonly string[] | TablaResultado;
 export type ResultadoBase = { readonly [clave: string]: ValorResultado };
 
 type ClavesCon<R, T> = string extends keyof R ? string : { [K in keyof R]-?: Exclude<R[K], undefined> extends T ? K : never }[keyof R] & string;
@@ -322,7 +327,7 @@ interface FilaComun {
   ocultarSiCero?: boolean;
 }
 
-export type FormatoNumerico = "moneda" | "numero" | "porcentaje" | "dias" | "meses" | "horas" | "anios";
+export type FormatoNumerico = "moneda" | "numero" | "porcentaje" | "dias" | "semanas" | "meses" | "horas" | "anios";
 
 export type FilaResultado<R> =
   | (FilaComun & {
@@ -351,6 +356,7 @@ export interface DefinicionCalculadora<
   resultado: readonly FilaResultado<R>[];
   redondeo?: ReglaRedondeo;
   producto?: string;
+  tablas?: readonly { clave: string; titulo: string; filasVisibles?: number }[];
 }
 
 export interface PreguntaFrecuente {
@@ -467,10 +473,20 @@ export interface PropsCalculadora {
 
 export type ModuloCliente = { default: ComponentType<PropsCalculadora> };
 
+// Una calculadora del país traducida por una edición en otro idioma (ca-fr traduce ca.vacation-pay):
+// el navegador arma la definición con la del país (src/paises/<mercado>/calculadoras/<archivo>.ts) y
+// los textos de la edición (src/paises/<edición>/textos/<archivo>.ts).
+export interface OrigenTraduccion {
+  mercado: CodigoMercado;
+  archivo: string;
+  id: string;
+}
+
 export interface EntradaCalculadora {
   definicion: DefinicionCalculadora;
   contenido: ContenidoCalculadora;
   cliente: () => Promise<ModuloCliente>;
+  traduccion?: OrigenTraduccion;
 }
 
 export interface DeclaracionPais {
@@ -492,4 +508,6 @@ export interface PaisDefinido {
   novedades: readonly Novedad[];
   detectores: readonly Detector[];
   errores: readonly string[];
+  // El mercado del país cuando este es una edición en otro idioma (ca-fr es edición de ca).
+  edicionDe?: CodigoMercado;
 }

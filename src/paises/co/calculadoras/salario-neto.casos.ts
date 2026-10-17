@@ -46,4 +46,11 @@ export default definirCasos(salarioNeto, [
     entrada: { salario: 50000000, auxilio: false, dependiente: false },
     esperado: { salud: 1750905, pension: 1750905, fsp: 875453, retencion: 11513986, neto: 34108751 },
   },
+  {
+    nombre: "Con salario 0 pide el salario y no calcula un neto",
+    origen: { tipo: "recalculado", detalle: "Con salario 0 antes daba neto 109.023 (auxilio de transporte menos aportes sobre el mínimo). Ahora la función rechaza el 0." },
+    fecha: "2026-10-15",
+    entrada: { salario: 0, auxilio: true, dependiente: false },
+    esperaError: true,
+  },
 ]);

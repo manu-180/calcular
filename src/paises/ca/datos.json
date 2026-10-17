@@ -1,0 +1,2826 @@
+{
+  "mercado": "ca",
+  "datos": [
+    {
+      "id": "ca.federal-tax-brackets",
+      "nombre": "Federal income tax brackets",
+      "tipo": "escala",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 58523,
+              "tasa": 14
+            },
+            {
+              "desde": 58523,
+              "hasta": 117045,
+              "tasa": 20.5
+            },
+            {
+              "desde": 117045,
+              "hasta": 181440,
+              "tasa": 26
+            },
+            {
+              "desde": 181440,
+              "hasta": 258482,
+              "tasa": 29
+            },
+            {
+              "desde": 258482,
+              "hasta": null,
+              "tasa": 33
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.federal-bpa",
+      "nombre": "Federal basic personal amount (maximum and minimum)",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "etiquetas": {
+        "max": "Maximum",
+        "min": "Minimum"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "max": 16452,
+            "min": 14829
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.canada-employment-amount",
+      "nombre": "Canada employment amount",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1501,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.provincial-tax-brackets",
+      "nombre": "Provincial and territorial income tax brackets",
+      "tipo": "escala",
+      "unidad": "CAD",
+      "regiones": [
+        "ab",
+        "bc",
+        "mb",
+        "nb",
+        "nl",
+        "ns",
+        "nt",
+        "nu",
+        "on",
+        "pe",
+        "sk",
+        "yt"
+      ],
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "ab",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 61200,
+              "tasa": 8
+            },
+            {
+              "desde": 61200,
+              "hasta": 154259,
+              "tasa": 10
+            },
+            {
+              "desde": 154259,
+              "hasta": 185111,
+              "tasa": 12
+            },
+            {
+              "desde": 185111,
+              "hasta": 246813,
+              "tasa": 13
+            },
+            {
+              "desde": 246813,
+              "hasta": 370220,
+              "tasa": 14
+            },
+            {
+              "desde": 370220,
+              "hasta": null,
+              "tasa": 15
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bc",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50363,
+              "tasa": 5.6
+            },
+            {
+              "desde": 50363,
+              "hasta": 100728,
+              "tasa": 7.7
+            },
+            {
+              "desde": 100728,
+              "hasta": 115648,
+              "tasa": 10.5
+            },
+            {
+              "desde": 115648,
+              "hasta": 140430,
+              "tasa": 12.29
+            },
+            {
+              "desde": 140430,
+              "hasta": 190405,
+              "tasa": 14.7
+            },
+            {
+              "desde": 190405,
+              "hasta": 265545,
+              "tasa": 16.8
+            },
+            {
+              "desde": 265545,
+              "hasta": null,
+              "tasa": 20.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mb",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 47000,
+              "tasa": 10.8
+            },
+            {
+              "desde": 47000,
+              "hasta": 100000,
+              "tasa": 12.75
+            },
+            {
+              "desde": 100000,
+              "hasta": null,
+              "tasa": 17.4
+            }
+          ],
+          "fuente": {
+            "organismo": "Manitoba Finance",
+            "titulo": "Information Bulletin 125, Taxation changes, Budget 2025",
+            "url": "https://www.gov.mb.ca/finance/taxation/pubs/bulletins/2025budget.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Indexation frozen from 2025 at 2024 levels; matches T4127 2026. The CRA rates page shows indexed thresholds (47,564 and 101,200), which contradicts both."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nb",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 52333,
+              "tasa": 9.4
+            },
+            {
+              "desde": 52333,
+              "hasta": 104666,
+              "tasa": 14
+            },
+            {
+              "desde": 104666,
+              "hasta": 193861,
+              "tasa": 16
+            },
+            {
+              "desde": 193861,
+              "hasta": null,
+              "tasa": 19.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nl",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 44678,
+              "tasa": 8.7
+            },
+            {
+              "desde": 44678,
+              "hasta": 89354,
+              "tasa": 14.5
+            },
+            {
+              "desde": 89354,
+              "hasta": 159528,
+              "tasa": 15.8
+            },
+            {
+              "desde": 159528,
+              "hasta": 223340,
+              "tasa": 17.8
+            },
+            {
+              "desde": 223340,
+              "hasta": 285319,
+              "tasa": 19.8
+            },
+            {
+              "desde": 285319,
+              "hasta": 570638,
+              "tasa": 20.8
+            },
+            {
+              "desde": 570638,
+              "hasta": 1141275,
+              "tasa": 21.3
+            },
+            {
+              "desde": 1141275,
+              "hasta": null,
+              "tasa": 21.8
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ns",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30995,
+              "tasa": 8.79
+            },
+            {
+              "desde": 30995,
+              "hasta": 61991,
+              "tasa": 14.95
+            },
+            {
+              "desde": 61991,
+              "hasta": 97417,
+              "tasa": 16.67
+            },
+            {
+              "desde": 97417,
+              "hasta": 157124,
+              "tasa": 17.5
+            },
+            {
+              "desde": 157124,
+              "hasta": null,
+              "tasa": 21
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nt",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 53003,
+              "tasa": 5.9
+            },
+            {
+              "desde": 53003,
+              "hasta": 106009,
+              "tasa": 8.6
+            },
+            {
+              "desde": 106009,
+              "hasta": 172346,
+              "tasa": 12.2
+            },
+            {
+              "desde": 172346,
+              "hasta": null,
+              "tasa": 14.05
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nu",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 55801,
+              "tasa": 4
+            },
+            {
+              "desde": 55801,
+              "hasta": 111602,
+              "tasa": 7
+            },
+            {
+              "desde": 111602,
+              "hasta": 181439,
+              "tasa": 9
+            },
+            {
+              "desde": 181439,
+              "hasta": null,
+              "tasa": 11.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "on",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 53891,
+              "tasa": 5.05
+            },
+            {
+              "desde": 53891,
+              "hasta": 107785,
+              "tasa": 9.15
+            },
+            {
+              "desde": 107785,
+              "hasta": 150000,
+              "tasa": 11.16
+            },
+            {
+              "desde": 150000,
+              "hasta": 220000,
+              "tasa": 12.16
+            },
+            {
+              "desde": 220000,
+              "hasta": null,
+              "tasa": 13.16
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "pe",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 33928,
+              "tasa": 9.5
+            },
+            {
+              "desde": 33928,
+              "hasta": 65820,
+              "tasa": 13.47
+            },
+            {
+              "desde": 65820,
+              "hasta": 106890,
+              "tasa": 16.6
+            },
+            {
+              "desde": 106890,
+              "hasta": 142520,
+              "tasa": 17.62
+            },
+            {
+              "desde": 142520,
+              "hasta": 200000,
+              "tasa": 19
+            },
+            {
+              "desde": 200000,
+              "hasta": null,
+              "tasa": 20
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sk",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 54532,
+              "tasa": 10.5
+            },
+            {
+              "desde": 54532,
+              "hasta": 155805,
+              "tasa": 12.5
+            },
+            {
+              "desde": 155805,
+              "hasta": null,
+              "tasa": 14.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yt",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 58523,
+              "tasa": 6.4
+            },
+            {
+              "desde": 58523,
+              "hasta": 117045,
+              "tasa": 9
+            },
+            {
+              "desde": 117045,
+              "hasta": 181440,
+              "tasa": 10.9
+            },
+            {
+              "desde": 181440,
+              "hasta": 500000,
+              "tasa": 12.8
+            },
+            {
+              "desde": 500000,
+              "hasta": null,
+              "tasa": 15
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Current year tax rates and income brackets (2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.provincial-bpa",
+      "nombre": "Provincial and territorial basic personal amount",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "regiones": [
+        "ab",
+        "bc",
+        "mb",
+        "nb",
+        "nl",
+        "ns",
+        "nt",
+        "nu",
+        "on",
+        "pe",
+        "sk",
+        "yt"
+      ],
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "ab",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 22769,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bc",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 13216,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mb",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 15780,
+          "fuente": {
+            "organismo": "Manitoba Finance",
+            "titulo": "Information Bulletin 125, Taxation changes, Budget 2025",
+            "url": "https://www.gov.mb.ca/finance/taxation/pubs/bulletins/2025budget.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Indexation frozen from 2025 at 2024 levels; matches T4127 2026. The CRA rates page shows indexed thresholds (47,564 and 101,200), which contradicts both."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nb",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 13664,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nl",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 13094,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 123rd edition (July 1, 2026), annual values for Option 2",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jul/t4127-jul-payroll-deductions-formulas.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ns",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 11932,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nt",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 18198,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nu",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 19659,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "on",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 12989,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "pe",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 123rd edition (July 1, 2026), annual values for Option 2",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jul/t4127-jul-payroll-deductions-formulas.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sk",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 20381,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yt",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 16452,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.mb-bpa-phaseout",
+      "nombre": "Manitoba basic personal amount phase-out range",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "from": 200000,
+            "to": 400000
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.on-surtax-thresholds",
+      "nombre": "Ontario surtax thresholds",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "first": 5818,
+            "second": 7446
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.on-surtax-rates",
+      "nombre": "Ontario surtax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "first": 20,
+            "second": 36
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.on-tax-reduction",
+      "nombre": "Ontario tax reduction basic amount",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 300,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.on-health-premium",
+      "nombre": "Ontario Health Premium schedule",
+      "tipo": "escala",
+      "unidad": "CAD",
+      "nota": "cuotaFija is the premium at the start of the row; each row is capped at the next row's cuotaFija and the last row at ca.on-health-premium-max.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 20000,
+              "hasta": 36000,
+              "tasa": 6,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 36000,
+              "hasta": 48000,
+              "tasa": 6,
+              "cuotaFija": 300
+            },
+            {
+              "desde": 48000,
+              "hasta": 72000,
+              "tasa": 25,
+              "cuotaFija": 450
+            },
+            {
+              "desde": 72000,
+              "hasta": 200000,
+              "tasa": 25,
+              "cuotaFija": 600
+            },
+            {
+              "desde": 200000,
+              "hasta": null,
+              "tasa": 25,
+              "cuotaFija": 750
+            }
+          ],
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.on-health-premium-max",
+      "nombre": "Ontario Health Premium maximum",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 900,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.bc-tax-reduction",
+      "nombre": "BC tax reduction amount and income threshold",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "amount": 690,
+            "threshold": 25570
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 123rd edition (July 1, 2026), annual values for Option 2",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jul/t4127-jul-payroll-deductions-formulas.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.bc-tax-reduction-rate",
+      "nombre": "BC tax reduction phase-out rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3.56,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 123rd edition (July 1, 2026), annual values for Option 2",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jul/t4127-jul-payroll-deductions-formulas.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ab-supplemental-credit-threshold",
+      "nombre": "Alberta supplemental tax credit threshold",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 4896,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ab-supplemental-credit-rate",
+      "nombre": "Alberta supplemental tax credit rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.cpp",
+      "nombre": "CPP and QPP 2026 earnings limits",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "etiquetas": {
+        "ympe": "YMPE",
+        "yampe": "YAMPE",
+        "exemption": "Basic exemption"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "ympe": 74600,
+            "yampe": 85000,
+            "exemption": 3500
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.cpp-rates",
+      "nombre": "CPP 2026 employee contribution rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "base": 4.95,
+            "first": 1,
+            "second": 4
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qpp",
+      "nombre": "Quebec Pension Plan 2026 employee rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "base": 5.3,
+            "first": 1,
+            "second": 4
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ei-maximum",
+      "nombre": "EI maximum annual insurable earnings",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 68900,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ei-rates",
+      "nombre": "EI 2026 premium rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "employee": 1.63,
+            "employer": 2.282,
+            "employee-qc": 1.3,
+            "employer-qc": 1.82
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qpip-maximum",
+      "nombre": "QPIP maximum annual insurable earnings",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 103000,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qpip-rates",
+      "nombre": "QPIP 2026 premium rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "employee": 0.43,
+            "employer": 0.602
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4127 Payroll Deductions Formulas, 122nd edition (January 1, 2026)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ei-benefit-rate",
+      "nombre": "EI regular benefits basic rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 55,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "EI regular benefits: how much you could receive",
+            "url": "https://www.canada.ca/en/services/benefits/ei/ei-regular-benefit/benefit-amount.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ei-max-weekly-benefit",
+      "nombre": "EI maximum weekly benefit",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 729,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "EI regular benefits: how much you could receive",
+            "url": "https://www.canada.ca/en/services/benefits/ei/ei-regular-benefit/benefit-amount.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.gst-hst",
+      "nombre": "GST or HST rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "regiones": [
+        "ab",
+        "bc",
+        "mb",
+        "nb",
+        "nl",
+        "ns",
+        "nt",
+        "nu",
+        "on",
+        "pe",
+        "qc",
+        "sk",
+        "yt"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "ab",
+          "desde": "2025-04-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bc",
+          "desde": "2025-04-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mb",
+          "desde": "2025-04-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nb",
+          "desde": "2025-04-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nl",
+          "desde": "2025-04-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ns",
+          "desde": "2025-04-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nt",
+          "desde": "2025-04-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nu",
+          "desde": "2025-04-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "on",
+          "desde": "2025-04-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "pe",
+          "desde": "2025-04-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "qc",
+          "desde": "2025-04-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sk",
+          "desde": "2025-04-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yt",
+          "desde": "2025-04-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.pst",
+      "nombre": "Provincial sales tax rate (PST, RST or QST)",
+      "tipo": "numero",
+      "unidad": "%",
+      "regiones": [
+        "ab",
+        "bc",
+        "mb",
+        "nb",
+        "nl",
+        "ns",
+        "nt",
+        "nu",
+        "on",
+        "pe",
+        "qc",
+        "sk",
+        "yt"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "ab",
+          "desde": "2025-04-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bc",
+          "desde": "2025-04-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Government of British Columbia",
+            "titulo": "Provincial sales tax (PST)",
+            "url": "https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mb",
+          "desde": "2025-04-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Manitoba Finance",
+            "titulo": "Retail Sales Tax",
+            "url": "https://www.gov.mb.ca/finance/taxation/taxes/retail.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nb",
+          "desde": "2025-04-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nl",
+          "desde": "2025-04-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ns",
+          "desde": "2025-04-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nt",
+          "desde": "2025-04-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nu",
+          "desde": "2025-04-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "on",
+          "desde": "2025-04-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "pe",
+          "desde": "2025-04-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "qc",
+          "desde": "2025-04-01",
+          "valor": 9.975,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "QST rate read on the CRA table; revenuquebec.ca and legisquebec.gouv.qc.ca were not reachable from this network."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sk",
+          "desde": "2025-04-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Government of Saskatchewan",
+            "titulo": "Provincial Sales Tax",
+            "url": "https://www.saskatchewan.ca/business/taxes-licensing-and-reporting/provincial-taxes-policies-and-bulletins/provincial-sales-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yt",
+          "desde": "2025-04-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "GST/HST calculator (and rates): GST/HST and PST rates by province",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.minimum-wage",
+      "nombre": "General minimum wage per hour",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "regiones": [
+        "ab",
+        "bc",
+        "mb",
+        "nb",
+        "nl",
+        "ns",
+        "nt",
+        "nu",
+        "on",
+        "pe",
+        "qc",
+        "sk",
+        "yt"
+      ],
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "ab",
+          "desde": "2019-06-26",
+          "valor": 15.0,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bc",
+          "desde": "2026-06-01",
+          "valor": 18.25,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mb",
+          "desde": "2026-10-01",
+          "valor": 16.4,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nb",
+          "desde": "2026-04-01",
+          "valor": 15.9,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nl",
+          "desde": "2026-04-01",
+          "valor": 16.35,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nt",
+          "desde": "2026-09-01",
+          "valor": 17.2,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ns",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 16.75,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ns",
+          "desde": "2026-10-01",
+          "valor": 17.0,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nu",
+          "desde": "2026-09-01",
+          "valor": 20.17,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "on",
+          "desde": "2026-10-01",
+          "valor": 17.95,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "pe",
+          "desde": "2026-10-01",
+          "hasta": "2027-03-31",
+          "valor": 17.3,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "pe",
+          "desde": "2027-04-01",
+          "valor": 17.6,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "qc",
+          "desde": "2026-05-01",
+          "valor": 16.6,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sk",
+          "desde": "2026-10-01",
+          "valor": 15.7,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yt",
+          "desde": "2026-04-01",
+          "valor": 18.51,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.federal-minimum-wage",
+      "nombre": "Federal minimum wage per hour",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 18.15,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Current and Forthcoming General Minimum Wage Rates in Canada",
+            "url": "https://minwage-salairemin.service.canada.ca/en/general.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.vacation-pay-federal",
+      "nombre": "Vacation pay, federal (Canada Labour Code)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rate-0": 4,
+            "years-1": 5,
+            "rate-1": 6,
+            "years-2": 10,
+            "rate-2": 8
+          },
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Annual vacations and general holidays (Canada Labour Code)",
+            "url": "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards/vacations-holidays.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.vacation-pay-on",
+      "nombre": "Vacation pay, Ontario",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rate-0": 4,
+            "years-1": 5,
+            "rate-1": 6
+          },
+          "fuente": {
+            "organismo": "Government of Ontario",
+            "titulo": "Your guide to the Employment Standards Act: Vacation",
+            "url": "https://www.ontario.ca/document/your-guide-employment-standards-act-0/vacation",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.vacation-pay-bc",
+      "nombre": "Vacation pay, British Columbia",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rate-0": 4,
+            "years-1": 5,
+            "rate-1": 6
+          },
+          "fuente": {
+            "organismo": "Government of British Columbia",
+            "titulo": "Annual vacation (Employment Standards)",
+            "url": "https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/time-off/vacation",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.vacation-pay-ab",
+      "nombre": "Vacation pay, Alberta",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rate-0": 4,
+            "years-1": 5,
+            "rate-1": 6
+          },
+          "fuente": {
+            "organismo": "Government of Alberta",
+            "titulo": "Vacation pay",
+            "url": "https://www.alberta.ca/vacation-pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.overtime-federal",
+      "nombre": "Overtime rule, federal",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "daily": 8,
+            "weekly": 40,
+            "factor": 1.5
+          },
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Hours of work, federally regulated workplaces (Canada Labour Code)",
+            "url": "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards/work-hours.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.overtime-on",
+      "nombre": "Overtime rule, Ontario",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "weekly": 44,
+            "factor": 1.5
+          },
+          "fuente": {
+            "organismo": "Government of Ontario",
+            "titulo": "Your guide to the Employment Standards Act: Overtime pay",
+            "url": "https://www.ontario.ca/document/your-guide-employment-standards-act-0/overtime-pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.overtime-bc",
+      "nombre": "Overtime rule, British Columbia",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "daily": 8,
+            "daily-double": 12,
+            "weekly": 40,
+            "factor": 1.5,
+            "factor-double": 2
+          },
+          "fuente": {
+            "organismo": "Government of British Columbia",
+            "titulo": "Overtime pay (Employment Standards)",
+            "url": "https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/hours/overtime-pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.overtime-ab",
+      "nombre": "Overtime rule, Alberta",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "daily": 8,
+            "weekly": 44,
+            "factor": 1.5
+          },
+          "fuente": {
+            "organismo": "Government of Alberta",
+            "titulo": "Overtime hours and overtime pay",
+            "url": "https://www.alberta.ca/overtime-hours-overtime-pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.notice-federal",
+      "nombre": "Notice of termination, federal (weeks by months of service)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Keys are months of continuous employment; the value is the weeks of notice from that point on.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 2,
+            "36": 3,
+            "48": 4,
+            "60": 5,
+            "72": 6,
+            "84": 7,
+            "96": 8
+          },
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Termination, layoff or dismissal (Canada Labour Code)",
+            "url": "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards/termination.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.notice-on",
+      "nombre": "Notice of termination, Ontario (weeks by months of service)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Keys are months of continuous employment; the value is the weeks of notice from that point on.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 1,
+            "12": 2,
+            "36": 3,
+            "48": 4,
+            "60": 5,
+            "72": 6,
+            "84": 7,
+            "96": 8
+          },
+          "fuente": {
+            "organismo": "Government of Ontario",
+            "titulo": "Your guide to the Employment Standards Act: Termination of employment",
+            "url": "https://www.ontario.ca/document/your-guide-employment-standards-act-0/termination-employment",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.notice-bc",
+      "nombre": "Compensation for length of service, BC (weeks by months of service)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Keys are months of continuous employment; the value is the weeks of notice from that point on.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 1,
+            "12": 2,
+            "36": 3,
+            "48": 4,
+            "60": 5,
+            "72": 6,
+            "84": 7,
+            "96": 8
+          },
+          "fuente": {
+            "organismo": "Government of British Columbia",
+            "titulo": "Liability resulting from length of service, Act Part 8, Section 63",
+            "url": "https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/forms-resources/igm/esa-part-8-section-63",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.notice-ab",
+      "nombre": "Termination notice, Alberta (weeks by months of service)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Keys are months of continuous employment; the value is the weeks of notice from that point on. Alberta requires more than 90 days of employment.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 1,
+            "24": 2,
+            "48": 4,
+            "72": 5,
+            "96": 6,
+            "120": 8
+          },
+          "fuente": {
+            "organismo": "Government of Alberta",
+            "titulo": "Termination pay",
+            "url": "https://www.alberta.ca/termination-pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.severance-federal",
+      "nombre": "Severance pay, federal",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "min-months": 12,
+            "days-per-year": 2,
+            "min-days": 5
+          },
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Termination, layoff or dismissal (Canada Labour Code)",
+            "url": "https://www.canada.ca/en/services/jobs/workplace/federal-labour-standards/termination.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.severance-on",
+      "nombre": "Severance pay, Ontario",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "min-years": 5,
+            "weeks-per-year": 1,
+            "max-weeks": 26,
+            "min-payroll": 2500000
+          },
+          "fuente": {
+            "organismo": "Government of Ontario",
+            "titulo": "Your guide to the Employment Standards Act: Severance pay",
+            "url": "https://www.ontario.ca/document/your-guide-employment-standards-act-0/severance-pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.rrsp-dollar-limit",
+      "nombre": "RRSP dollar limit",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "proximaRevision": "2027-12-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 33810,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "MP, DB, RRSP, DPSP, ALDA, TFSA limits, YMPE and the YAMPE",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/registered-plans-administrators/pspa/mp-rrsp-dpsp-tfsa-limits-ympe.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 35390,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "MP, DB, RRSP, DPSP, ALDA, TFSA limits, YMPE and the YAMPE",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/registered-plans-administrators/pspa/mp-rrsp-dpsp-tfsa-limits-ympe.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.rrsp-earned-income-rate",
+      "nombre": "RRSP room as a share of earned income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "How contributions affect your RRSP deduction limit",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/rrsps-related-plans/contributing-a-rrsp-prpp/contributions-affect-your-rrsp-prpp-deduction-limit.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.tfsa-annual-limits",
+      "nombre": "TFSA dollar limit by year",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "2009": 5000,
+            "2010": 5000,
+            "2011": 5000,
+            "2012": 5000,
+            "2013": 5500,
+            "2014": 5500,
+            "2015": 10000,
+            "2016": 5500,
+            "2017": 5500,
+            "2018": 5500,
+            "2019": 6000,
+            "2020": 6000,
+            "2021": 6000,
+            "2022": 6000,
+            "2023": 6500,
+            "2024": 7000,
+            "2025": 7000,
+            "2026": 7000
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "MP, DB, RRSP, DPSP, ALDA, TFSA limits, YMPE and the YAMPE",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/registered-plans-administrators/pspa/mp-rrsp-dpsp-tfsa-limits-ympe.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.capital-gains-inclusion-rate",
+      "nombre": "Capital gains inclusion rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "What's new for corporations: proposed capital gains inclusion rate increase cancelled",
+            "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/corporations/whats-new-corporations.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "The CRA administers the enacted inclusion rate of one-half; the increase to two-thirds was cancelled."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.oas-recovery-threshold",
+      "nombre": "OAS recovery tax minimum income threshold by income year",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "2024": 90997,
+            "2025": 93454,
+            "2026": 95323
+          },
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Old Age Security pension recovery tax",
+            "url": "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.oas-recovery-rate",
+      "nombre": "OAS recovery tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Employment and Social Development Canada (Labour Program)",
+            "titulo": "Old Age Security pension recovery tax",
+            "url": "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ccb-maximum",
+      "nombre": "Canada child benefit maximum per child",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "etiquetas": {
+        "under-6": "Under 6",
+        "6-to-17": "6 to 17"
+      },
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": {
+            "under-6": 8157,
+            "6-to-17": 6883
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Canada child benefit: how much you can get (July 2026 to June 2027)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit/how-much.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ccb-thresholds",
+      "nombre": "Canada child benefit income thresholds",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": {
+            "first": 38237,
+            "second": 82847
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Canada child benefit: how much you can get (July 2026 to June 2027)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit/how-much.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ccb-rates-first",
+      "nombre": "Canada child benefit reduction rate between the thresholds",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": {
+            "1": 7,
+            "2": 13.5,
+            "3": 19,
+            "4": 23
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Canada child benefit: how much you can get (July 2026 to June 2027)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit/how-much.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ccb-rates-second",
+      "nombre": "Canada child benefit reduction rate above the second threshold",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": {
+            "1": 3.2,
+            "2": 5.7,
+            "3": 8,
+            "4": 9.5
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Canada child benefit: how much you can get (July 2026 to June 2027)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit/how-much.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.ccb-base-reduction",
+      "nombre": "Canada child benefit fixed reduction above the second threshold",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": {
+            "1": 3123,
+            "2": 6022,
+            "3": 8476,
+            "4": 10260
+          },
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "Canada child benefit: how much you can get (July 2026 to June 2027)",
+            "url": "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit/how-much.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.on-land-transfer-tax",
+      "nombre": "Ontario land transfer tax (one or two single family residences)",
+      "tipo": "escala",
+      "unidad": "CAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 55000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 55000,
+              "hasta": 250000,
+              "tasa": 1
+            },
+            {
+              "desde": 250000,
+              "hasta": 400000,
+              "tasa": 1.5
+            },
+            {
+              "desde": 400000,
+              "hasta": 2000000,
+              "tasa": 2
+            },
+            {
+              "desde": 2000000,
+              "hasta": null,
+              "tasa": 2.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Ontario Ministry of Finance",
+            "titulo": "Land transfer tax: calculating land transfer tax",
+            "url": "https://www.ontario.ca/document/land-transfer-tax/calculating-land-transfer-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.on-ltt-first-time-refund",
+      "nombre": "Ontario first-time homebuyer refund maximum",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 4000,
+          "fuente": {
+            "organismo": "Ontario Ministry of Finance",
+            "titulo": "Land transfer tax refunds for first-time homebuyers",
+            "url": "https://www.ontario.ca/document/land-transfer-tax/land-transfer-tax-refunds-first-time-homebuyers",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.toronto-mltt",
+      "nombre": "Toronto municipal land transfer tax (one or two single family residences)",
+      "tipo": "escala",
+      "unidad": "CAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 55000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 55000,
+              "hasta": 250000,
+              "tasa": 1
+            },
+            {
+              "desde": 250000,
+              "hasta": 400000,
+              "tasa": 1.5
+            },
+            {
+              "desde": 400000,
+              "hasta": 2000000,
+              "tasa": 2
+            },
+            {
+              "desde": 2000000,
+              "hasta": 3000000,
+              "tasa": 2.5
+            },
+            {
+              "desde": 3000000,
+              "hasta": 4000000,
+              "tasa": 4.4
+            },
+            {
+              "desde": 4000000,
+              "hasta": 5000000,
+              "tasa": 5.45
+            },
+            {
+              "desde": 5000000,
+              "hasta": 10000000,
+              "tasa": 6.5
+            },
+            {
+              "desde": 10000000,
+              "hasta": 20000000,
+              "tasa": 7.55
+            },
+            {
+              "desde": 20000000,
+              "hasta": null,
+              "tasa": 8.6
+            }
+          ],
+          "fuente": {
+            "organismo": "City of Toronto",
+            "titulo": "Municipal Land Transfer Tax (MLTT) rates and fees",
+            "url": "https://www.toronto.ca/services-payments/property-taxes-utilities/municipal-land-transfer-tax-mltt/municipal-land-transfer-tax-mltt-rates-and-fees/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.toronto-mltt-first-time-rebate",
+      "nombre": "Toronto first-time purchaser MLTT rebate maximum",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 4475,
+          "fuente": {
+            "organismo": "City of Toronto",
+            "titulo": "MLTT and MNRST rebate opportunities",
+            "url": "https://www.toronto.ca/services-payments/property-taxes-utilities/municipal-land-transfer-tax-mltt/municipal-land-transfer-tax-mltt-rebate-opportunities/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.bc-property-transfer-tax",
+      "nombre": "BC property transfer tax",
+      "tipo": "escala",
+      "unidad": "CAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 200000,
+              "tasa": 1
+            },
+            {
+              "desde": 200000,
+              "hasta": 2000000,
+              "tasa": 2
+            },
+            {
+              "desde": 2000000,
+              "hasta": null,
+              "tasa": 3
+            }
+          ],
+          "fuente": {
+            "organismo": "Government of British Columbia",
+            "titulo": "Property transfer tax",
+            "url": "https://www2.gov.bc.ca/gov/content/taxes/property-taxes/property-transfer-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.bc-ptt-surcharge-threshold",
+      "nombre": "BC further tax: residential value threshold",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3000000,
+          "fuente": {
+            "organismo": "Government of British Columbia",
+            "titulo": "Property transfer tax",
+            "url": "https://www2.gov.bc.ca/gov/content/taxes/property-taxes/property-transfer-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.bc-ptt-surcharge-rate",
+      "nombre": "BC further tax rate on residential value over the threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Government of British Columbia",
+            "titulo": "Property transfer tax",
+            "url": "https://www2.gov.bc.ca/gov/content/taxes/property-taxes/property-transfer-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.bc-first-time-exemption",
+      "nombre": "BC first time home buyers' exemption",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2024-04-01",
+          "valor": {
+            "full-exemption": 500000,
+            "max": 8000,
+            "phase-out-start": 835000,
+            "end": 860000
+          },
+          "motivo": "The current amounts page (full exemption up to $500,000, $8,000 up to $835,000, phase-out to $860,000) contradicts the official calculation examples page, which gives $4,000 at $700,000 and $1,600 at $850,000.",
+          "fuente": {
+            "organismo": "Government of British Columbia",
+            "titulo": "First time home buyers' exemption amounts",
+            "url": "https://www2.gov.bc.ca/gov/content/taxes/property-taxes/property-transfer-tax/exemptions/first-time-home-buyers/current-amount",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}

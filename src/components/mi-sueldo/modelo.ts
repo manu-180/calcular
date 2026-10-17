@@ -9,7 +9,7 @@ import { brutoANeto, type DesgloseNeto } from "@/lib/sueldo";
 import { nombrePeriodo, sueldoVsInflacion, sumarMeses, ULTIMO_PERIODO, type Periodo } from "@/lib/inflacion";
 import { calcularAguinaldo } from "@/lib/aguinaldo";
 import { DEDUCCIONES } from "@/data/ganancias";
-import { TOTAL_APORTES, TOPE_SIPA } from "@/data/sueldo";
+import { TOTAL_APORTES, topeSipa } from "@/data/sueldo";
 import type { Semestre } from "@/data/aguinaldo";
 import { PLANILLA_MS, type Datos } from "@/lib/prefill/mi-sueldo";
 
@@ -97,8 +97,8 @@ export function pisoGanancias(o: { sindicalPct: number; conyuge: boolean; hijos:
     o.hijos * DEDUCCIONES.hijo +
     o.otrasDeducciones;
   const sinTope = deducciones / (13 * (1 - TOTAL_APORTES - s));
-  if (sinTope <= TOPE_SIPA.baseMaxima) return sinTope;
-  return (deducciones / 13 + TOTAL_APORTES * TOPE_SIPA.baseMaxima) / (1 - s);
+  if (sinTope <= topeSipa().baseMaxima) return sinTope;
+  return (deducciones / 13 + TOTAL_APORTES * topeSipa().baseMaxima) / (1 - s);
 }
 
 export function resumenMiSueldo(d: Datos): ResumenMiSueldo {

@@ -10,14 +10,20 @@ import {
   ESTABILIDAD,
   EXCEDENCIA,
   LACTANCIA,
-  LICENCIAS_FUENTES,
+  licenciasFuentes,
   MATERNIDAD,
   PATERNIDAD,
 } from "@/data/licencias";
-import { ASIGNACIONES_VIGENTES as A } from "@/data/asignaciones";
+import { asignacionesVigentes } from "@/data/asignaciones";
 import { formatARS } from "@/lib/formato";
 
-const MES = A.vigencia;
+function datosDelMes() {
+  const A = asignacionesVigentes();
+  const MES = A.vigencia;
+  return { A, MES };
+}
+
+type DatosDelMes = ReturnType<typeof datosDelMes>;
 
 export const metadata: Metadata = {
   title: "Licencia por maternidad: fechas exactas y cuánto cobrás",
@@ -30,7 +36,7 @@ export const metadata: Metadata = {
   }),
 };
 
-const faqs = [
+const crearFaqs = ({ A, MES }: DatosDelMes) => [
   {
     q: "¿Cuántos días de licencia por maternidad me corresponden?",
     a: `${MATERNIDAD.diasTotal} días en total: ${MATERNIDAD.diasAntes} antes del parto y ${MATERNIDAD.diasDespues} después (art. 177 de la Ley de Contrato de Trabajo). El reparto no es fijo. Podés pedir que se achique la parte de antes del parto, hasta un mínimo de ${MATERNIDAD.diasAntesMinimo} días, y lo que no uses se suma a la de después. Llevado al extremo: ${MATERNIDAD.diasAntesMinimo} días antes y ${MATERNIDAD.diasTotal - MATERNIDAD.diasAntesMinimo} después.`,
@@ -74,6 +80,9 @@ const faqs = [
 ];
 
 export default function LicenciaMaternidadPage() {
+  const datos = datosDelMes();
+  const { A, MES } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -93,7 +102,7 @@ export default function LicenciaMaternidadPage() {
         descripcion:
           "Cálculo de las fechas de la licencia por maternidad con el art. 177 de la LCT, la opción de achicar la parte anterior al parto hasta 10 días y cómo paga ANSES la asignación por maternidad.",
         url: "/licencia-por-maternidad",
-        modificado: LICENCIAS_FUENTES.consultadoEl,
+        modificado: licenciasFuentes().consultadoEl,
       }),
       {
         "@type": "FAQPage",
@@ -122,7 +131,7 @@ export default function LicenciaMaternidadPage() {
         </p>
       </header>
 
-      <RespuestaPrimero actualizado={LICENCIAS_FUENTES.consultadoEl}>
+      <RespuestaPrimero actualizado={licenciasFuentes().consultadoEl}>
         <p>
           La licencia por maternidad es de <strong>{MATERNIDAD.diasTotal} días</strong>:{" "}
           {MATERNIDAD.diasAntes} antes del parto y {MATERNIDAD.diasDespues} después (art. 177 de la
@@ -284,7 +293,7 @@ export default function LicenciaMaternidadPage() {
       <section className="space-y-2 border-t border-zinc-200 pt-6 text-sm text-zinc-500">
         <h2 className="text-base font-semibold text-zinc-700">Fuentes</h2>
         <ul className="space-y-1">
-          {LICENCIAS_FUENTES.lista.map((f) => (
+          {licenciasFuentes().lista.map((f) => (
             <li key={f.url}>
               <a
                 href={f.url}
@@ -302,7 +311,7 @@ export default function LicenciaMaternidadPage() {
           Esta página es informativa. Usa el texto vigente de la Ley de Contrato de Trabajo y de la
           Ley 24.714, verificado en InfoLEG, y no reemplaza el consejo de un profesional ni a ANSES.
           Tu convenio puede mejorar estos pisos, y la liquidación concreta depende de cómo esté
-          registrado tu trabajo. Consultada el {LICENCIAS_FUENTES.consultadoEl}.
+          registrado tu trabajo. Consultada el {licenciasFuentes().consultadoEl}.
         </p>
       </section>
     </article>

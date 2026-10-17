@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType } from "react";
-import { ejecutar, mensajeDeError, opcionesDe, valoresIniciales, type Crudos, type EstadoCalculo } from "./formulario";
+import { campoVisible, ejecutar, mensajeDeError, opcionesDe, valoresIniciales, type Crudos, type EstadoCalculo } from "./formulario";
 import { textosMotor, type TextosMotor } from "./textos";
 import { PielCalculadora } from "./ui/PielCalculadora";
 import type { Campo, DefinicionCalculadora, OpcionDinamica, PropsCalculadora, Requisitos, ResultadoBase } from "./tipos";
@@ -19,14 +19,14 @@ export interface CalculadoraControlada {
 
 // La parte visible de una calculadora (campos y filas): datos planos que el servidor puede mandar
 // como props. La función calcular() no cruza esa frontera y llega aparte.
-export type DefinicionVisible = Pick<DefinicionCalculadora, "id" | "campos" | "resultado">;
+export type DefinicionVisible = Pick<DefinicionCalculadora, "id" | "campos" | "resultado" | "tablas">;
 
 // Como en calcular.ar, el resultado se recalcula con cada cambio y no hay botón. Hasta el primer
 // cambio no se calcula nada aunque los valores por defecto alcancen: el código de calcular() llega
 // cuando el navegador está ocioso y un resultado que aparece solo, segundos después de cargar, mueve
 // la página (CLS). Un campo vacío y obligatorio no muestra error: falta un dato, no hay nada mal.
 function useControl(visible: DefinicionVisible, props: PropsCalculadora, inicial: DefinicionCalculadora | null, cargar?: () => Promise<DefinicionCalculadora>): CalculadoraControlada & { precargar: () => void } {
-  const textos = useMemo(() => textosMotor(props.contexto.idioma, props.contexto.trato), [props.contexto.idioma, props.contexto.trato]);
+  const textos = useMemo(() => textosMotor(props.contexto.idioma, props.contexto.trato, props.contexto.locale), [props.contexto.idioma, props.contexto.trato, props.contexto.locale]);
   const [crudos, setCrudos] = useState<Crudos>(() => valoresIniciales(visible.campos, props.contexto, props.opcionesDinamicas));
   const [definicion, setDefinicion] = useState<DefinicionCalculadora | null>(inicial);
   const [tocado, setTocado] = useState(false);
@@ -73,7 +73,9 @@ function useControl(visible: DefinicionVisible, props: PropsCalculadora, inicial
   );
   const opciones = useCallback((campo: Campo) => opcionesDe(campo, props.contexto, props.opcionesDinamicas), [props.contexto, props.opcionesDinamicas]);
 
-  return { campos: visible.campos, crudos, estado, textos, opciones, error, cambiar, calcular, precargar };
+  // Solo los campos que se muestran con lo que eligió la persona (visibleSi).
+  const campos = useMemo(() => visible.campos.filter((c) => campoVisible(c, crudos)), [visible.campos, crudos]);
+  return { campos, crudos, estado, textos, opciones, error, cambiar, calcular, precargar };
 }
 
 export function useCalculadora(definicion: DefinicionCalculadora, props: PropsCalculadora): CalculadoraControlada {
@@ -82,7 +84,7 @@ export function useCalculadora(definicion: DefinicionCalculadora, props: PropsCa
 
 export function CalculadoraBasica({ definicion, ...props }: PropsCalculadora & { definicion: DefinicionCalculadora }) {
   const control = useCalculadora(definicion, props);
-  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} />;
+  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} tablas={definicion.tablas} />;
 }
 
 // Para el sitio intl: el formulario se pinta en el servidor con la parte visible y el código de
@@ -100,7 +102,7 @@ export function CalculadoraDiferida({ definicion, cargar, ...props }: PropsCalcu
     const t = setTimeout(precargar, 800);
     return () => clearTimeout(t);
   }, [precargar]);
-  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} />;
+  return <PielCalculadora id={definicion.id} control={control} contexto={props.contexto} avisos={props.avisos} tablas={definicion.tablas} />;
 }
 
 export function crearCalculadoraCliente<C extends readonly Campo[], Q extends Requisitos, R extends ResultadoBase>(

@@ -1,14 +1,16 @@
 // Ofertas dentro del resultado de calcularya.com (src/lib/pagos/ofertas-intl.ts y ofertas-servidor.ts):
-// - catálogo: cada informe con id, precio (USD 5 a 9) y familia válidos; ningún id hostil resuelve;
-// - cobertura: toda calculadora publicada de un concepto con familia tiene su informe, y la tabla
-//   concepto → oferta → países sale impresa;
+// - catálogo: cada informe con id, precio (USD 3 a 9) y familia válidos; ningún id hostil resuelve;
+// - cobertura: todo concepto tiene familia salvo los de SIN_FAMILIA; toda calculadora publicada de
+//   un concepto con familia tiene su informe; las que la familia promete con tabla la declaran; y la
+//   tabla concepto → oferta → países sale impresa;
 // - informe: con las entradas de los .casos.ts (y los valores por defecto) el viaje
 //   entrada → validación del servidor → texto del formulario → entrada da lo mismo, y los números del
 //   informe (ejecutar) son exactamente los de calcular() con los mismos datos oficiales;
 // - prefill hostil: __proto__, tipos cambiados, otra calculadora, otro país, texto gigante: null;
 // - planilla con datos: el mapa convierte igual que el generador y la planilla cargada con los
 //   números de la persona, recalculada con HyperFormula, da lo mismo que calcular();
-// - textos: sin rayas, sin emojis y en el trato del país.
+// - textos: los 7 idiomas con las mismas piezas por familia, sin rayas, sin emojis, sin marcas de
+//   plantilla sin llenar y, en español, en el trato del país.
 //
 // Uso: npx tsx scripts/check_ofertas_intl.ts [mercado]
 
@@ -18,27 +20,21 @@ import ExcelJS from "exceljs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { crearContexto, ErrorEntrada, type CasosCalculadora } from "../src/motor/calculo";
-import { CONCEPTOS } from "../src/motor/conceptos";
+import { CONCEPTOS, type Concepto } from "../src/motor/conceptos";
+import { esMercadoDePrueba } from "../src/motor/datos";
 import { parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { resolverValores } from "../src/motor/registro";
 import { textosMotor } from "../src/motor/textos";
-import type { CodigoMercado, DefinicionCalculadora, Mercado, Trato, ValorEntrada } from "../src/motor/tipos";
+import { IDIOMAS, type CodigoMercado, type DefinicionCalculadora, type Idioma, type Mercado, type Trato, type ValorEntrada } from "../src/motor/tipos";
 import { hoyEn } from "../src/motor/vigencia";
 import { registro } from "../src/paises";
 import { PRODUCTOS_INTL, productoIntl, productoIntlDe, leerReferenciaIntl, type ProductoIntl } from "../src/lib/pagos/catalogo-intl";
-import {
-  COPY_PLANILLA,
-  FAMILIAS,
-  TEXTOS_OFERTA,
-  bajadaOferta,
-  familiaDeConcepto,
-  nombreDeCalculo,
-  type FamiliaInforme,
-} from "../src/lib/pagos/ofertas-intl";
+import { FAMILIAS, SIN_FAMILIA, campoEscenario, familiaDeConcepto, nombreDeCalculo, precioUSD } from "../src/lib/pagos/ofertas-intl";
+import { DICCIONARIOS, resolver } from "../src/lib/pagos/textos";
 import { bloqueDe, calculadorasDeProducto, mapaDePlanillaIntl, ofertasDeMercado, planillaConDatos, validarDatosDeProducto } from "../src/lib/pagos/ofertas-servidor";
 import { calcularEscenarios, estadoDelInforme, filaClave } from "../src/lib/pagos/informe-intl";
 import { valorDeCelda } from "../src/lib/pagos/mapa-planilla-intl";
-import { entregaIntlHtml } from "../src/lib/pagos/email-intl";
+import { asuntoEntregaIntl, entregaIntlHtml } from "../src/lib/pagos/email-intl";
 import { crudosDeEntrada } from "../src/lib/prefill/intl-cliente";
 import { DATOS_INTL_MAX, parsearDatosIntl } from "../src/lib/prefill/intl";
 import { textosPlanillas } from "../src/app/(intl)/intl/[mercado]/planillas/_textos";
@@ -59,12 +55,19 @@ const check = (nombre: string, cond: boolean) => {
 
 const filtro = process.argv[2];
 
+// Un índice de casos por mercado, armado una vez: buscar archivo por archivo en cada calculadora eran
+// decenas de miles de import() (cacheados, pero no gratis) y la mayor parte de los minutos del check.
+const casosPorMercado = new Map<string, Promise<ReadonlyMap<string, CasosCalculadora>>>();
+
 async function casosDe(mercado: string, def: DefinicionCalculadora): Promise<CasosCalculadora | null> {
-  for (const archivo of archivosBajo(path.join(DIR_PAISES, mercado, "calculadoras"), /\.casos\.ts$/)) {
-    const m = await importar<CasosCalculadora>(archivo);
-    if (m?.calculadora?.id === def.id) return m;
+  let indice = casosPorMercado.get(mercado);
+  if (!indice) {
+    indice = Promise.all(archivosBajo(path.join(DIR_PAISES, mercado, "calculadoras"), /\.casos\.ts$/).map((a) => importar<CasosCalculadora>(a))).then(
+      (mods) => new Map(mods.filter((m) => m?.calculadora?.id).map((m) => [m.calculadora.id, m])),
+    );
+    casosPorMercado.set(mercado, indice);
   }
-  return null;
+  return (await indice).get(def.id) ?? null;
 }
 
 const igual = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
@@ -76,13 +79,22 @@ function checkCatalogo() {
   check(`catálogo: ${informes.length} informes generados desde el registro`, informes.length > 0);
   for (const p of informes) {
     if (p.id.length > 60) fallo(`${p.id}: id de más de 60 caracteres`);
-    if (p.precioCentavos < 500 || p.precioCentavos > 900) fallo(`${p.id}: precio fuera de USD 5 a 9`);
+    if (p.precioCentavos < 300 || p.precioCentavos > 900) fallo(`${p.id}: precio fuera de USD 3 a 9`);
     if (p.archivo !== "" || !p.familia) fallo(`${p.id}: un informe no tiene archivo y sí familia`);
     if (!calculadorasDeProducto(p).length) fallo(`${p.id}: no tiene calculadoras`);
   }
   const ids = PRODUCTOS_INTL.map((p) => p.id);
   check("catálogo: ids únicos", new Set(ids).size === ids.length);
-  for (const f of FAMILIAS) for (const c of f.conceptos) if (!(c in CONCEPTOS)) fallo(`familia ${f.clave}: concepto desconocido ${c}`);
+  for (const f of FAMILIAS) {
+    for (const c of f.conceptos) if (!(c in CONCEPTOS)) fallo(`familia ${f.clave}: concepto desconocido ${c}`);
+    if (f.precioCentavos < 300 || f.precioCentavos > 900 || f.precioCentavos % 100) fallo(`familia ${f.clave}: precio fuera de USD 3 a 9 enteros`);
+    for (const c of f.conTabla ?? []) if (!f.conceptos.includes(c)) fallo(`familia ${f.clave}: promete tabla en ${c}, que no es suyo`);
+  }
+  const slugs = FAMILIAS.map((f) => f.slug);
+  check("familias: slugs únicos", new Set(slugs).size === slugs.length);
+  const sinFamilia = (Object.keys(CONCEPTOS) as Concepto[]).filter((c) => !SIN_FAMILIA.includes(c) && !familiaDeConcepto(c));
+  check(`cobertura: todo concepto tiene familia salvo ${SIN_FAMILIA.join(", ")}${sinFamilia.length ? ` (faltan: ${sinFamilia.join(", ")})` : ""}`, !sinFamilia.length);
+  for (const c of SIN_FAMILIA) if (familiaDeConcepto(c)) fallo(`${c} figura sin familia y tiene una`);
   const hostiles = ["__proto__", "constructor", "mx/__proto__", "mx/constructor", "toString", "mx/informe-liquidacion/../x", "MX/INFORME-LIQUIDACION", " mx/informe-liquidacion"];
   check("productoIntl no resuelve ids hostiles", hostiles.every((h) => productoIntl(h) === null));
   check("productoIntlDe no resuelve slugs hostiles", ["__proto__", "constructor", "hasOwnProperty"].every((s) => productoIntlDe("mx", s) === null));
@@ -93,10 +105,13 @@ function checkCatalogo() {
 
 function checkCobertura(): Map<string, { oferta: string; paises: Set<string> }[]> {
   const tabla = new Map<string, Map<string, Set<string>>>();
+  const sinEscenario: string[] = [];
   for (const pais of registro.paises) {
     const m = pais.mercado.codigo;
-    if (m === "global" || m === "zz" || (filtro && m !== filtro)) continue;
+    if (m === "global" || esMercadoDePrueba(m) || (filtro && m !== filtro)) continue;
     const ofertas = ofertasDeMercado(m);
+    if (!ofertas.textos) fallo(`${m}: el JSON de ofertas no trae los textos de la tarjeta`);
+    for (const de of Object.values(ofertas.porCalculadora)) for (const o of de.ofertas) if (!ofertas.copy?.[o.familia]) fallo(`${m}: el JSON de ofertas no trae el copy de ${o.familia}`);
     for (const c of pais.calculadoras) {
       const def = c.definicion;
       if (def.estado === "borrador") continue;
@@ -104,7 +119,9 @@ function checkCobertura(): Map<string, { oferta: string; paises: Set<string> }[]
       const f = familiaDeConcepto(def.concepto);
       if (f && !de?.ofertas.some((o) => o.tipo === "informe" && o.familia === f.clave)) fallo(`${def.id}: el concepto ${def.concepto} tiene la familia ${f.clave} y la calculadora no la ofrece`);
       if (de && de.calc !== def.slug) fallo(`${def.id}: la oferta apunta a ${de.calc}`);
-      if (de && (!de.nombre || /calculadora/i.test(de.nombre))) fallo(`${def.id}: nombre del cálculo raro «${de.nombre}»`);
+      if (de && (!de.nombre || /\{\{/.test(de.nombre))) fallo(`${def.id}: nombre del cálculo raro «${de.nombre}»`);
+      if (f && (f.conTabla ?? []).includes(def.concepto) && !def.tablas?.length) fallo(`${def.id}: la familia ${f.clave} promete la tabla completa y la calculadora no declara tablas`);
+      if (f?.escenarios && !campoEscenario(f.escenarios, def.campos)) sinEscenario.push(def.id);
       const porConcepto = tabla.get(def.concepto) ?? new Map<string, Set<string>>();
       tabla.set(def.concepto, porConcepto);
       for (const o of de?.ofertas ?? []) {
@@ -114,6 +131,8 @@ function checkCobertura(): Map<string, { oferta: string; paises: Set<string> }[]
       if (!de) (porConcepto.get("sin oferta") ?? porConcepto.set("sin oferta", new Set()).get("sin oferta")!).add(m);
     }
   }
+  // Normal en los pagos que no dependen de horas ni de plazos (aguinaldo, vacaciones): se informa, no falla.
+  if (sinEscenario.length) console.log(`AVISO ${sinEscenario.length} calculadoras de familias con escenarios no tienen el campo que se varía: su informe sale sin esa tabla`);
   console.log("\nconcepto → oferta → países");
   const salida = new Map<string, { oferta: string; paises: Set<string> }[]>();
   for (const [concepto, ofertas] of [...tabla].sort()) {
@@ -172,7 +191,7 @@ async function checkInformes() {
           if (!igual(estado.resultado[f.clave], directo[f.clave])) fallo(`${p.id} ${slug}: ${f.clave} informe ${JSON.stringify(estado.resultado[f.clave])} calculadora ${JSON.stringify(directo[f.clave])}`);
         }
         if (familia.escenarios) {
-          const esc = calcularEscenarios(def, familia.escenarios.tipo, crudos, props, motor);
+          const esc = calcularEscenarios(def, familia.escenarios, crudos, props, motor);
           const clave = filaClave(estado.filas);
           const actual = esc?.filas.find((x) => x.actual);
           if (esc && actual && clave && esc.columnas.includes(clave.etiqueta) && actual.resultados[esc.columnas.indexOf(clave.etiqueta)] !== clave.texto) {
@@ -309,15 +328,18 @@ async function checkPlanillas() {
 
 const RAYA = /[–—]/;
 const EMOJI = /\p{Extended_Pictographic}/u;
-const VOSEO = /(?<![\p{L}])(tenés|podés|pagás|cambiás|querés|elegí|revisá|comparalo|pedí|guardá|llevate|tené|llegá|mirá|convertí|completala|firmala|entregala|aportás|imprimís|guardás|escribinos|respondé|probá|acá|abrilo|confirmá|buscá|usá|registrá|reservá|corregilo|volvé|esperá|compará|preguntá|descargala)(?![\p{L}])/iu;
+const PLANTILLA = /\{\w+\}|\{\{/;
+const VOSEO = /(?<![\p{L}])(tenés|podés|pagás|cambiás|querés|elegí|revisá|comparalo|pedí|guardá|llevate|tené|llegá|mirá|convertí|completala|firmala|entregala|aportás|imprimís|guardás|escribinos|respondé|probá|acá|abrilo|confirmá|buscá|usá|registrá|reservá|corregilo|volvé|esperá|compará|preguntá|descargala|terminás|pagás|ahorrás|cobrás|facturás|necesitás|buscás|sumá|dejá|armá|anotá|separá|mandá|compartí|hacé|partí|fijate|dedicale|contá|comés|movés|dormís|salí|entrená|sentís|pará|consultá|dividí|avisalo|desenchufá|comprá|presentá|hablá|negociá|programá|actualizá|bajás|ponés|ganás|llegás|conseguís|aportás|dejá|redondeá|descubrí|enviala)(?![\p{L}])/iu;
 // Sólo formas que no pueden ser de usted (las de tercera persona, «usa», «abre», «guarda», son
 // iguales al imperativo de tú y aparecen en textos de usted).
-const TUTEO = /(?<![\p{L}])(tú|tu|tus|te|ti|puedes|tienes|pagas|quieres|llévate|ábrelo|escríbenos|corrígelo|cambias|aportas|imprimes|guardas|pagarías)(?![\p{L}])/iu;
-const VOSEO_EN_VOS_NO = /(?<![\p{L}])(puedes|tienes|pagas|quieres|ábrelo|escríbenos|corrígelo|imprimes|guardas|cambias|aportas)(?![\p{L}])/iu;
+const TUTEO = /(?<![\p{L}])(tú|tu|tus|te|ti|puedes|tienes|pagas|quieres|llévate|ábrelo|escríbenos|corrígelo|cambias|aportas|imprimes|guardas|pagarías|terminas|ahorras|cobras|facturas|necesitas|buscas|calculaste|cargaste|usaste|comes|mueves|duermes|sientes|pones|ganas|llegas|consigues)(?![\p{L}])/iu;
+const VOSEO_EN_VOS_NO = /(?<![\p{L}])(puedes|tienes|pagas|quieres|ábrelo|escríbenos|corrígelo|imprimes|guardas|cambias|aportas|terminas|ahorras|cobras|facturas|necesitas|buscas|comes|mueves|duermes|sientes|pones|ganas|llegas|consigues)(?![\p{L}])/iu;
 
-function revisarTexto(origen: string, trato: Trato, s: string) {
+function revisarTexto(origen: string, idioma: Idioma, trato: Trato, s: string) {
+  if (!s.trim()) fallo(`${origen}: texto vacío`);
   if (RAYA.test(s)) fallo(`${origen}: raya en «${s}»`);
   if (EMOJI.test(s)) fallo(`${origen}: emoji en «${s}»`);
+  if (idioma !== "es") return;
   if (trato !== "vos" && VOSEO.test(s)) fallo(`${origen} (${trato}): voseo «${VOSEO.exec(s)![0]}» en «${s}»`);
   if (trato === "usted" && TUTEO.test(s)) fallo(`${origen} (usted): tuteo «${TUTEO.exec(s)![0]}» en «${s}»`);
   if (trato === "vos" && VOSEO_EN_VOS_NO.test(s)) fallo(`${origen} (vos): forma de tú «${VOSEO_EN_VOS_NO.exec(s)![0]}» en «${s}»`);
@@ -330,64 +352,97 @@ function textosDe(valor: unknown, salida: string[] = []): string[] {
   return salida;
 }
 
+const TRATOS: Record<Idioma, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"] };
+
+// Las piezas de cada familia tienen que ser las mismas en todos los idiomas: un paso, un punto o
+// una nota que falta en un idioma es una promesa que en ese país no se cumple.
+function forma(f: (typeof DICCIONARIOS)["es"]["familias"][keyof (typeof DICCIONARIOS)["es"]["familias"]]) {
+  return JSON.stringify({ d: f.descripcion.length, i: f.incluye.length, p: f.pasos?.items.length ?? 0, n: !!f.nota, e: !!f.escenarios, a: !!f.aviso });
+}
+
 function checkTextos() {
-  const tratos: Trato[] = ["tu", "usted", "vos"];
   let revisados = 0;
-  for (const t of tratos) {
-    const del = (o: unknown) => textosDe(o).length;
-    const deTrato = (f: FamiliaInforme) =>
-      textosDe([
-        f.paraQuien[t],
-        f.descripcion.map((d) => d[t]),
-        f.gancho[t],
-        f.incluye.map((p) => [p.titulo[t], p.texto[t]]),
-        f.pasos ? [f.pasos.titulo[t], f.pasos.items.map((x) => x[t])] : [],
-        f.nota ? [f.nota.titulo[t], f.nota.uso[t], f.nota.pedido, f.nota.cierre] : [],
-        f.escenarios ? [f.escenarios.titulo[t], f.escenarios.explica[t]] : [],
-        textosInforme(t, f),
-      ]);
-    for (const f of FAMILIAS) for (const s of deTrato(f)) (revisarTexto(`familia ${f.clave}`, t, s), revisados++);
-    const generales = textosDe([
-      COPY_PLANILLA.gancho[t],
-      COPY_PLANILLA.incluye.map((p) => [p.titulo[t], p.texto[t]]),
-      Object.values(TEXTOS_OFERTA).map((x) => (typeof x === "string" ? x : x[t])),
-      bajadaOferta({ tipo: "informe", trato: t, etiqueta: "Total", cifra: "$ 1.000", nombreCalculo: "finiquito" }),
-      bajadaOferta({ tipo: "planilla", trato: t, etiqueta: "Sueldo neto", cifra: "$ 1.000", hoja: "Sueldo neto", nombreCalculo: "sueldo neto" }),
-      textosVer(t),
-    ]);
-    for (const s of generales) (revisarTexto("ofertas", t, s), revisados++);
-    revisados += del([]);
+  for (const f of FAMILIAS) {
+    const base = forma(DICCIONARIOS.es.familias[f.clave]);
+    for (const idioma of IDIOMAS) {
+      const tf = DICCIONARIOS[idioma].familias[f.clave];
+      if (forma(tf) !== base) fallo(`familia ${f.clave} (${idioma}): piezas distintas del español ${forma(tf)} vs ${base}`);
+      if (!!f.escenarios !== !!tf.escenarios) fallo(`familia ${f.clave} (${idioma}): la estructura ${f.escenarios ? "tiene" : "no tiene"} escenarios y el texto no coincide`);
+    }
+  }
+  for (const idioma of IDIOMAS) {
+    const d = DICCIONARIOS[idioma];
+    for (const trato of TRATOS[idioma]) {
+      const { planillas: _p, correo: _c, catalogo: _k, tarjeta, ...resto } = resolver(d, trato);
+      for (const [clave, f] of Object.entries(resto.familias)) for (const s of textosDe(f)) (revisarTexto(`${idioma} familia ${clave}`, idioma, trato, s), revisados++);
+      for (const s of textosDe([resto.general, resto.aviso, resto.planilla, resto.informe])) {
+        revisarTexto(`${idioma} ofertas`, idioma, trato, s);
+        if (PLANTILLA.test(s)) fallo(`${idioma} ofertas: marca de plantilla en «${s}»`);
+        revisados++;
+      }
+      for (const s of textosDe(tarjeta)) (revisarTexto(`${idioma} tarjeta`, idioma, trato, s), revisados++);
+      if (!/\{monto\}/.test(tarjeta.equivale) || !/\{hoja\}/.test(tarjeta.bajadaPlanillaHoja)) fallo(`${idioma} tarjeta: falta {monto} o {hoja}`);
+      for (const s of textosDe([_p, _c, _k])) (revisarTexto(`${idioma} planillas, mail y catálogo`, idioma, trato, s), revisados++);
+    }
   }
   for (const pais of registro.paises) {
     const m = pais.mercado as Mercado;
-    if (m.codigo === "global" || m.codigo === "zz") continue;
+    if (m.codigo === "global" || esMercadoDePrueba(m.codigo)) continue;
     const tx = textosPlanillas(m);
     const prods = PRODUCTOS_INTL.filter((p) => p.mercado === m.codigo);
     const textos = textosDe([
-      Object.entries(tx).map(([, v]) => (typeof v === "function" ? prods.map((p) => (v as (p: ProductoIntl) => unknown)(p)) : v)),
-      prods.map((p) => [p.titulo, p.paraQuien, p.descripcion]),
+      Object.entries(tx).map(([, v]) => (typeof v === "function" ? prods.map((p) => (v as (p: ProductoIntl, x: boolean) => unknown)(p, true)) : v)),
+      prods.map((p) => [p.titulo, p.paraQuien, p.descripcion, precioUSD(p.precioCentavos, m.locale)]),
     ]).filter((s) => !/^\s*$/.test(s));
-    for (const s of textos) (revisarTexto(`textos ${m.codigo}`, m.trato, s), revisados++);
-    for (const p of prods.filter((x) => x.tipo === "informe")) {
-      const html = entregaIntlHtml({ producto: p, trato: m.trato, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" }).replace(/<[^>]+>/g, " ");
-      revisarTexto(`mail ${p.id}`, m.trato, html);
+    for (const s of textos) {
+      revisarTexto(`textos ${m.codigo}`, m.idioma, m.trato, s);
+      if (PLANTILLA.test(s)) fallo(`textos ${m.codigo}: marca de plantilla en «${s}»`);
+      revisados++;
+    }
+    for (const p of prods) {
+      const html = entregaIntlHtml({ producto: p, idioma: m.idioma, trato: m.trato, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" }).replace(/<[^>]+>/g, " ");
+      const asunto = asuntoEntregaIntl(p, m.idioma, m.trato);
+      revisarTexto(`mail ${p.id}`, m.idioma, m.trato, html);
+      if (PLANTILLA.test(html) || PLANTILLA.test(asunto)) fallo(`mail ${p.id}: marca de plantilla sin llenar`);
       revisados++;
     }
     for (const c of pais.calculadoras) {
-      const n = nombreDeCalculo(c.contenido.h1, m.nombre);
-      if (!n || /calculadora|\{\{/i.test(n)) fallo(`${c.definicion.id}: nombre del cálculo «${n}» a partir de «${c.contenido.h1}»`);
+      const n = nombreDeCalculo(c.contenido.h1);
+      if (!n || /\{\{/.test(n)) fallo(`${c.definicion.id}: nombre del cálculo «${n}» a partir de «${c.contenido.h1}»`);
+    }
+  }
+  // Ningún país en otro idioma vende todavía: el mail se prueba en los 7 con productos reales.
+  const muestra = [PRODUCTOS_INTL.find((p) => p.tipo === "informe"), PRODUCTOS_INTL.find((p) => p.tipo === "planilla")].filter((p): p is ProductoIntl => !!p);
+  for (const idioma of IDIOMAS) {
+    for (const trato of TRATOS[idioma]) {
+      for (const p of muestra) {
+        const html = entregaIntlHtml({ producto: p, idioma, trato, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" });
+        if (!html.includes(`<html lang="${idioma}">`)) fallo(`mail ${idioma}: sin lang`);
+        const texto = html.replace(/<[^>]+>/g, " ");
+        revisarTexto(`mail ${idioma} ${p.tipo}`, idioma, trato, texto);
+        if (PLANTILLA.test(texto) || PLANTILLA.test(asuntoEntregaIntl(p, idioma, trato))) fallo(`mail ${idioma} ${p.tipo}: marca de plantilla sin llenar`);
+        revisados++;
+      }
     }
   }
   check(`textos: ${revisados} revisados`, revisados > 0);
 }
 
 async function main() {
-  checkCatalogo();
-  checkCobertura();
-  await checkInformes();
-  checkHostil();
-  await checkPlanillas();
-  checkTextos();
+  const tiempos: string[] = [];
+  const medir = async (nombre: string, f: () => unknown) => {
+    const t = Date.now();
+    await f();
+    tiempos.push(`${nombre} ${((Date.now() - t) / 1000).toFixed(1)} s`);
+  };
+  await medir("catálogo", checkCatalogo);
+  await medir("cobertura", checkCobertura);
+  await medir("informes", checkInformes);
+  await medir("hostil", checkHostil);
+  await medir("planillas", checkPlanillas);
+  await medir("textos", checkTextos);
+  console.log(`
+tiempos: ${tiempos.join(" · ")}`);
   console.log(fallas ? `\n${fallas} FALLAS` : "\nTODO OK check_ofertas_intl");
   process.exit(fallas ? 1 : 0);
 }

@@ -15,7 +15,7 @@
 //      del haber mínimo de `prestaciones.ts` / `jubilaciones.ts`, jamás de una constante local.
 
 import { HABER_MINIMO_SERIE, HABER_MINIMO_ULTIMO } from "../src/data/jubilaciones";
-import { PRESTACIONES_VIGENTES } from "../src/data/prestaciones";
+import { prestacionesVigentes } from "../src/data/prestaciones";
 import {
   COMPATIBILIDADES,
   HABERES_MINIMOS_TITULAR,
@@ -71,15 +71,15 @@ check(
 // ===========================================================================
 check(
   "el monto del mes vigente es exactamente 3 × el haber mínimo de prestaciones.ts",
-  casi(montoTitular(PRESTACIONES_VIGENTES.periodo), PRESTACIONES_VIGENTES.haberMinimo * 3),
+  casi(montoTitular(prestacionesVigentes().periodo), prestacionesVigentes().haberMinimo * 3),
   {
-    monto: montoTitular(PRESTACIONES_VIGENTES.periodo),
-    esperado: PRESTACIONES_VIGENTES.haberMinimo * 3,
+    monto: montoTitular(prestacionesVigentes().periodo),
+    esperado: prestacionesVigentes().haberMinimo * 3,
   },
 );
 check(
   "la serie de haberes y prestaciones.ts coinciden en el mes vigente",
-  casi(haberMinimoDe(PRESTACIONES_VIGENTES.periodo) ?? -1, PRESTACIONES_VIGENTES.haberMinimo),
+  casi(haberMinimoDe(prestacionesVigentes().periodo) ?? -1, prestacionesVigentes().haberMinimo),
 );
 {
   const mal = serieMontos().filter((m) => !casi(m.monto, m.haberMinimo * 3));
@@ -105,7 +105,7 @@ check(
 // 3 · El reparto — que sume 100% en TODAS las combinaciones
 // ===========================================================================
 {
-  const p = PRESTACIONES_VIGENTES.periodo;
+  const p = prestacionesVigentes().periodo;
   const total = montoTitular(p);
   const combinaciones: { hayConyuge: boolean; hijos: number }[] = [];
   for (const hayConyuge of [true, false]) {
@@ -182,7 +182,7 @@ check(
 
 check(
   "el titular no arrastra reparto (sus partes están vacías)",
-  calcularVeteranos({ periodo: PRESTACIONES_VIGENTES.periodo, quien: "titular" }).partes.length === 0,
+  calcularVeteranos({ periodo: prestacionesVigentes().periodo, quien: "titular" }).partes.length === 0,
 );
 check(
   "las fracciones del reparto son las del decreto (1 · 0,5 · 0,5 · 1)",
@@ -275,6 +275,6 @@ if (fallas > 0) {
   process.exit(1);
 } else {
   console.log(
-    `Todos los checks de la pensión de veteranos de Malvinas OK (Dec. 1357/04 art. 2 y 7 · Dec. 886/05 · ${PRESTACIONES_VIGENTES.periodo}: ${montoTitular(PRESTACIONES_VIGENTES.periodo)}).`,
+    `Todos los checks de la pensión de veteranos de Malvinas OK (Dec. 1357/04 art. 2 y 7 · Dec. 886/05 · ${prestacionesVigentes().periodo}: ${montoTitular(prestacionesVigentes().periodo)}).`,
   );
 }

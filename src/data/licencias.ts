@@ -18,7 +18,7 @@
 //   · «te paga la empresa» → la paga ANSES, y por eso hace falta antigüedad de 3 meses.
 //   · «cobrás lo mismo que en el recibo» → cobrás el bruto, que es más que el neto.
 
-import { ASIGNACIONES_VIGENTES } from "./asignaciones";
+import { asignacionesVigentes } from "./asignaciones";
 
 /** Plazos de la licencia por maternidad (art. 177 LCT). */
 export const MATERNIDAD = {
@@ -71,26 +71,28 @@ export const LACTANCIA = {
 
 export type FuenteLicencia = { nombre: string; url: string; detalle: string };
 
-export const LICENCIAS_FUENTES: { consultadoEl: string; lista: FuenteLicencia[] } = {
-  consultadoEl: "2026-08-09",
-  lista: [
-    {
-      nombre: "Ley de Contrato de Trabajo 20.744 (texto actualizado)",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
-      detalle:
-        "Art. 177 (prohibición de trabajar y opción de reducir la licencia anterior al parto), art. 158 inc. a) y 160 (licencia por nacimiento), art. 178 y 182 (estabilidad e indemnización especial), art. 179 (lactancia) y art. 183 (excedencia). Texto consolidado tras la Ley 27.802.",
-    },
-    {
-      nombre: "Ley 24.714: Régimen de Asignaciones Familiares",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/39880/texact.htm",
-      detalle:
-        "Art. 6 (nómina de asignaciones), art. 11 (la asignación por maternidad es igual a la remuneración que se hubiera debido percibir y exige 3 meses de antigüedad) y art. 12 (asignación por nacimiento).",
-    },
-    {
-      nombre: `${ASIGNACIONES_VIGENTES.resolucion}: montos de asignaciones familiares`,
-      url: ASIGNACIONES_VIGENTES.resolucionUrl,
-      detalle:
-        `${ASIGNACIONES_VIGENTES.resolucionBO}: importes vigentes de las asignaciones de pago único (nacimiento, adopción, matrimonio) y de la asignación prenatal.`,
-    },
-  ],
-};
+export function licenciasFuentes(): { consultadoEl: string; lista: FuenteLicencia[] } {
+  return {
+    consultadoEl: "2026-08-09",
+    lista: [
+      {
+        nombre: "Ley de Contrato de Trabajo 20.744 (texto actualizado)",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+        detalle:
+          "Art. 177 (prohibición de trabajar y opción de reducir la licencia anterior al parto), art. 158 inc. a) y 160 (licencia por nacimiento), art. 178 y 182 (estabilidad e indemnización especial), art. 179 (lactancia) y art. 183 (excedencia). Texto consolidado tras la Ley 27.802.",
+      },
+      {
+        nombre: "Ley 24.714: Régimen de Asignaciones Familiares",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/39880/texact.htm",
+        detalle:
+          "Art. 6 (nómina de asignaciones), art. 11 (la asignación por maternidad es igual a la remuneración que se hubiera debido percibir y exige 3 meses de antigüedad) y art. 12 (asignación por nacimiento).",
+      },
+      {
+        nombre: `${asignacionesVigentes().resolucion}: montos de asignaciones familiares`,
+        url: asignacionesVigentes().resolucionUrl,
+        detalle:
+          `${asignacionesVigentes().resolucionBO}: importes vigentes de las asignaciones de pago único (nacimiento, adopción, matrimonio) y de la asignación prenatal.`,
+      },
+    ],
+  };
+}

@@ -6,11 +6,12 @@ import type { FechaISO } from "../tipos";
 import { hoyEn } from "../vigencia";
 import { ArranquePais, type PaisArranque } from "./ArranquePais";
 import { Bandera } from "./Bandera";
-import { calculadorasDe, porCategoria, tarjetaDe, type ContextoSitio } from "./contexto";
+import { calculadorasDe, nombreEnPagina, porCategoria, tarjetaDe, type ContextoSitio } from "./contexto";
 import { FechaViva } from "./FechaViva";
 import { CLAVE_PAIS } from "./geo-cliente";
 import { IconoFlecha } from "./Iconos";
 import { ldInicioGlobal, ldInicioPais } from "./metadatos";
+import { porGrupo } from "./menu";
 import { AvisoDePais, JsonLd } from "./Sitio";
 import { textosInicio } from "./textos-inicio";
 
@@ -40,24 +41,24 @@ function scriptVuelta(destinos: Readonly<Record<string, string>>): string {
 
 export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; externos?: readonly PaisExterno[] }) {
   const t = ctx.textos;
-  const ti = textosInicio(ctx.mercado.idioma, ctx.mercado.trato);
+  const ti = textosInicio(ctx.mercado.idioma, ctx.mercado.trato, ctx.mercado.locale);
   const frescuras = new Map<string, FrescuraPais | null>(ctx.paises.map((m) => [m.codigo, frescuraDePais(ctx.registro, m.codigo, hoyEn(m))]));
   const tarjetas = [
     ...ctx.paises.map((m) => ({
       codigo: m.codigo,
-      nombre: m.nombre,
+      nombre: nombreEnPagina(ctx, m),
       pais: m.pais,
       locale: m.locale,
       href: rutaIntl(m.codigo),
       calculadoras: calculadorasDe(ctx, m).length,
     })),
     ...externos,
-  ].sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+  ].sort((a, b) => a.nombre.localeCompare(b.nombre, ctx.mercado.locale));
 
   const fechaDe = (iso: FechaISO | undefined, locale: string) => (iso ? { iso, absoluta: formatearFecha(iso, locale) } : undefined);
   const arranque: PaisArranque[] = [
     ...ctx.paises.map((m) => {
-      const tm = textosInicio(m.idioma, m.trato);
+      const tm = textosInicio(m.idioma, m.trato, m.locale);
       const f = frescuras.get(m.codigo);
       const fecha = fechaDe(masNueva(f?.verificadoEl, f?.actualizadoEl), m.locale);
       return {
@@ -65,6 +66,7 @@ export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; exter
         pais: m.pais,
         nombre: m.nombre,
         href: rutaIntl(m.codigo),
+        ...(ctx.conEdiciones.has(m.pais) ? { idioma: m.idioma } : {}),
         estas: tm.arranque.estasEn(m.nombre),
         resumen: tm.arranque.resumen(t.global.calculadoras(calculadorasDe(ctx, m).length)),
         ultimoDato: tm.arranque.ultimoDato,
@@ -174,7 +176,7 @@ export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; exter
 // y el "hoy"/"ayer" lo decide el navegador (FechaViva), no el HTML cacheado.
 function DatosVivos({ ctx, f }: { ctx: ContextoSitio; f: FrescuraPais }) {
   const m = ctx.mercado;
-  const tv = textosInicio(m.idioma, m.trato).vivo;
+  const tv = textosInicio(m.idioma, m.trato, m.locale).vivo;
   const automatica = [...f.series].filter((s) => s.automatica).sort((a, b) => b.fecha.localeCompare(a.fecha))[0];
   return (
     <section className="cy-vivo" aria-labelledby="cy-vivo-titulo">
@@ -226,7 +228,7 @@ export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
   const t = ctx.textos;
   const m = ctx.mercado;
   const entradas = calculadorasDe(ctx, m);
-  const grupos = porCategoria(entradas);
+  const grupos = porGrupo(ctx, porCategoria(entradas));
   const pais = ctx.registro.pais(m.codigo);
   const novedades = [...(pais?.novedades ?? [])].sort((a, b) => b.fecha.localeCompare(a.fecha)).slice(0, 3);
   const frescura = frescuraDePais(ctx.registro, m.codigo, hoyEn(m));
@@ -246,25 +248,43 @@ export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
 
       <div className="cy-inicio-pais-cuerpo">
         <div className="cy-categorias">
+          {grupos.length > 2 ? (
+            <nav className="cy-grupos" aria-label={ctx.textos.pais.irASeccion}>
+              {grupos.map((g) => (
+                <a key={g.key} href={`#cy-grupo-${g.key}`} className="cy-grupo-enlace">
+                  {g.titulo}
+                  <span className="cy-grupo-n">{g.total}</span>
+                </a>
+              ))}
+            </nav>
+          ) : null}
           {grupos.length ? (
             grupos.map((g) => (
-              <section key={g.categoria} aria-labelledby={`cy-cat-${g.categoria}`}>
-                <h2 id={`cy-cat-${g.categoria}`} className="cy-seccion-titulo">
-                  {t.categorias[g.categoria]}
+              <section key={g.key} id={`cy-grupo-${g.key}`} className="cy-grupo" aria-labelledby={`cy-grupo-${g.key}-titulo`}>
+                <h2 id={`cy-grupo-${g.key}-titulo`} className="cy-grupo-titulo">
+                  {g.titulo}
                 </h2>
-                <ul className="cy-tarjetas">
-                  {g.entradas.map((e) => (
-                    <li key={e.definicion.id}>
-                      <a className="cy-tarjeta" href={rutaIntl(m.codigo, e.definicion.slug)}>
-                        <span className="cy-tarjeta-titulo">{tarjetaDe(ctx, m, e).titulo}</span>
-                        <span className="cy-tarjeta-texto">{tarjetaDe(ctx, m, e).resumen}</span>
-                        <span className="cy-boton-icono">
-                          <IconoFlecha />
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                {g.categorias.map((c) => (
+                  <div key={c.categoria} className="cy-grupo-categoria">
+                    {g.categorias.length > 1 ? <h3 className="cy-seccion-titulo">{t.categorias[c.categoria]}</h3> : null}
+                    <ul className="cy-tarjetas" data-compactas={g.key === "vida" || undefined}>
+                      {c.entradas.map((e) => {
+                        const tarjeta = tarjetaDe(ctx, m, e);
+                        return (
+                          <li key={e.definicion.id}>
+                            <a className="cy-tarjeta" href={rutaIntl(m.codigo, e.definicion.slug)}>
+                              <span className="cy-tarjeta-titulo">{tarjeta.titulo}</span>
+                              {g.key === "vida" ? null : <span className="cy-tarjeta-texto">{tarjeta.resumen}</span>}
+                              <span className="cy-boton-icono">
+                                <IconoFlecha />
+                              </span>
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ))}
               </section>
             ))
           ) : (

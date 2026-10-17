@@ -10,6 +10,8 @@ import {
   type TipoBien,
 } from "@/data/rimi";
 import { calcularRimi } from "@/lib/rimi";
+import { errorMonto, primerError, errorCantidad, parseMonto, parseDecimal } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -29,13 +31,18 @@ export function CalculadoraRimi() {
   const [monto, setMonto] = useState("250000");
   const [vidaUtil, setVidaUtil] = useState("10");
 
+  const error = primerError({
+    "Monto de la inversión": errorMonto(monto),
+    "Vida útil": errorCantidad(vidaUtil),
+  });
+
   const res = useMemo(
     () =>
       calcularRimi({
         categoria,
         tipoBien,
-        montoUsd: Number(monto) || 0,
-        vidaUtilAnios: Number(vidaUtil) || 0,
+        montoUsd: parseMonto(monto),
+        vidaUtilAnios: parseDecimal(vidaUtil),
       }),
     [categoria, tipoBien, monto, vidaUtil],
   );
@@ -128,7 +135,9 @@ export function CalculadoraRimi() {
         </p>
       )}
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Cargá un monto y una vida útil mayores que cero.
         </p>

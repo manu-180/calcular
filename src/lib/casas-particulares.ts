@@ -7,7 +7,7 @@
 // manda, que es exactamente la pregunta que la gente hace.
 
 import {
-  ESCALA_VIGENTE,
+  escalaVigente,
   escalaDe,
   HORAS_EXTRAS,
   JORNADA,
@@ -64,7 +64,7 @@ export type ResultadoCasasParticulares = {
 };
 
 export function categoriaPorId(id: string): CategoriaCasasParticulares | null {
-  return ESCALA_VIGENTE.find((c) => c.id === id) ?? null;
+  return escalaVigente().find((c) => c.id === id) ?? null;
 }
 
 /** Días de vacaciones del art. 29 según los años de antigüedad al 31 de diciembre. */

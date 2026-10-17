@@ -25,13 +25,13 @@ import {
   APORTE_TRABAJADOR,
   ART_19_BIS,
   CONTRIBUCION_EMPLEADOR,
-  OBRA_SOCIAL_FUENTES,
+  obraSocialFuentes,
   OBRA_SOCIAL_TEXTOS,
   REPARTO_ANTERIOR,
   REPARTO_VIGENTE,
   TIPOS_ENTIDAD,
 } from "../src/data/obra-social-aportes";
-import { TOPE_SIPA } from "../src/data/sueldo";
+import { topeSipa } from "../src/data/sueldo";
 import { calcularObraSocial, type EntradaObraSocial } from "../src/lib/obra-social-aportes";
 
 let fallas = 0;
@@ -101,17 +101,17 @@ check(
 // 3 · El tope de la base imponible es asimétrico (Decreto 491/2004)
 // ===========================================================================
 
-const alto = calcularObraSocial({ ...base, brutoMensual: TOPE_SIPA.baseMaxima * 2 });
+const alto = calcularObraSocial({ ...base, brutoMensual: topeSipa().baseMaxima * 2 });
 
 check("por encima de la base máxima el resultado avisa que se aplicó el tope", alto.topeAplicado);
 check(
   "el aporte del trabajador se topea en la base máxima",
-  cerca(alto.aporteTrabajador, TOPE_SIPA.baseMaxima * APORTE_TRABAJADOR),
+  cerca(alto.aporteTrabajador, topeSipa().baseMaxima * APORTE_TRABAJADOR),
   alto.aporteTrabajador,
 );
 check(
   "la contribución del empleador NO se topea: va sobre el bruto entero",
-  cerca(alto.contribucionEmpleador, TOPE_SIPA.baseMaxima * 2 * CONTRIBUCION_EMPLEADOR),
+  cerca(alto.contribucionEmpleador, topeSipa().baseMaxima * 2 * CONTRIBUCION_EMPLEADOR),
   alto.contribucionEmpleador,
 );
 check(
@@ -120,7 +120,7 @@ check(
 );
 check(
   "por debajo de la base máxima no se anuncia ningún tope",
-  !calcularObraSocial({ ...base, brutoMensual: TOPE_SIPA.baseMaxima - 1 }).topeAplicado,
+  !calcularObraSocial({ ...base, brutoMensual: topeSipa().baseMaxima - 1 }).topeAplicado,
 );
 
 // ===========================================================================
@@ -140,9 +140,9 @@ check(
 check(
   "el adicional también se calcula sobre la base topeada, no sobre el bruto",
   cerca(
-    calcularObraSocial({ ...base, brutoMensual: TOPE_SIPA.baseMaxima * 2, familiaresACargo: 1 })
+    calcularObraSocial({ ...base, brutoMensual: topeSipa().baseMaxima * 2, familiaresACargo: 1 })
       .aporteAdicional,
-    TOPE_SIPA.baseMaxima * APORTE_ADICIONAL_FAMILIAR,
+    topeSipa().baseMaxima * APORTE_ADICIONAL_FAMILIAR,
   ),
 );
 check("familiares negativos no restan", calcularObraSocial({ ...base, familiaresACargo: -3 }).aporteAdicional === 0);
@@ -250,16 +250,16 @@ check(
 // 9 · Fuentes
 // ===========================================================================
 
-check("hay al menos cinco fuentes oficiales listadas", OBRA_SOCIAL_FUENTES.lista.length >= 5);
+check("hay al menos cinco fuentes oficiales listadas", obraSocialFuentes().lista.length >= 5);
 check(
   "todas las fuentes apuntan a InfoLEG o al Boletín Oficial",
-  OBRA_SOCIAL_FUENTES.lista.every(
+  obraSocialFuentes().lista.every(
     (f) => f.url.includes("infoleg.gob.ar") || f.url.includes("boletinoficial.gob.ar"),
   ),
 );
 check(
   "el Decreto 600/2024 está entre las fuentes con su id de InfoLEG",
-  OBRA_SOCIAL_FUENTES.lista.some((f) => f.url.includes("401319")),
+  obraSocialFuentes().lista.some((f) => f.url.includes("401319")),
 );
 check("hay dos tipos de entidad para comparar", TIPOS_ENTIDAD.length === 2);
 

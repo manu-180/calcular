@@ -39,6 +39,7 @@ export default definirCalculadora({
     { id: "auxilio", tipo: "si-no", etiqueta: "Recibes auxilio de transporte", porDefecto: true },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const { salario, fechaIngreso, fechaRetiro } = entrada;
     if (fechaRetiro < fechaIngreso) throw new ErrorEntrada("La fecha de retiro tiene que ser posterior a la de ingreso.", "fechaRetiro");
     const vacDesde = entrada.vacacionesDesde ?? fechaIngreso;

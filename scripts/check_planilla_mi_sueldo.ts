@@ -15,7 +15,7 @@ import os from "node:os";
 import { existsSync, mkdtempSync, rmSync } from "node:fs";
 import { DetailedCellError } from "hyperformula";
 import { IPC_SERIE } from "../src/data/ipc-serie";
-import { TOPE_SIPA } from "../src/data/sueldo";
+import { topeSipa } from "../src/data/sueldo";
 import { brutoANeto } from "../src/lib/sueldo";
 import { MESES_LARGOS, nombrePeriodo, sueldoVsInflacion, sumarMeses, ULTIMO_PERIODO, type Periodo } from "../src/lib/inflacion";
 import { calcularAguinaldo } from "../src/lib/aguinaldo";
@@ -125,7 +125,7 @@ async function main() {
 
   // 4. Descuentos de ley contra brutoANeto (el motor de /sueldo-neto), con y sin tope.
   const inicio = sumarMeses(ULTIMO_PERIODO, -13);
-  const brutos = [250_000, 999_999.99, 1_200_000, 2_750_000, TOPE_SIPA.baseMaxima - 1, TOPE_SIPA.baseMaxima, TOPE_SIPA.baseMaxima + 1, 9_000_000];
+  const brutos = [250_000, 999_999.99, 1_200_000, 2_750_000, topeSipa().baseMaxima - 1, topeSipa().baseMaxima, topeSipa().baseMaxima + 1, 9_000_000];
   const sindicales = [0, 2, 2.5, 3];
   const malAportes: string[] = [];
   for (const s of sindicales) {
@@ -330,7 +330,7 @@ async function main() {
     if (!est(piso * (1 + 1e-6)).pagaGanancias) malG.push(`no paga por encima del piso ${piso}`);
   }
   check("el piso de Ganancias es donde estimarGananciasAnual empieza a cobrar (con y sin tope)", malG.length === 0, malG);
-  check("hay un caso de piso por encima del tope de aportes", pisoGanancias(cargas[2]) > TOPE_SIPA.baseMaxima, pisoGanancias(cargas[2]));
+  check("hay un caso de piso por encima del tope de aportes", pisoGanancias(cargas[2]) > topeSipa().baseMaxima, pisoGanancias(cargas[2]));
 
   // 10. Protección.
   const wsD = wb.getWorksheet(H.datos)!;

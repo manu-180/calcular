@@ -3,6 +3,7 @@ import { ventaIntlActiva } from "@/lib/pagos";
 import { productoIntlDe } from "@/lib/pagos/catalogo-intl";
 import { rutaLandingIntl } from "@/lib/pagos/flujo-intl";
 import { resumenCalculos } from "@/lib/pagos/ofertas-servidor";
+import { textosTarjeta } from "@/lib/pagos/textos";
 import { rutaIntl } from "@/motor/seo";
 import type { CodigoMercado } from "@/motor/tipos";
 import { contextoSitio } from "@/motor/ui/contexto";
@@ -56,6 +57,7 @@ export async function PaginaCompra({ params, searchParams, tipo }: ParamsCompra 
         <form method="post" action="/api/pagos/checkout" className="cy-calc-form" style={{ maxWidth: "34rem", paddingInline: 0 }}>
           <input type="hidden" name="p" value={p.id} />
           <input type="hidden" name="ruta" value={rutaLandingIntl(p)} />
+          <input type="hidden" name="vid" defaultValue="" data-ca-vid="" />
           <div style={OCULTO} aria-hidden="true">
             <label htmlFor="cy-sitio">Sitio web</label>
             <input id="cy-sitio" name="sitio" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
@@ -82,7 +84,7 @@ export async function PaginaCompra({ params, searchParams, tipo }: ParamsCompra 
         </form>
       ) : (
         <div style={{ maxWidth: "30rem" }}>
-          <AvisoPronto producto={p.id} trato={m.trato} />
+          <AvisoPronto producto={p.id} textos={textosTarjeta(m.idioma, m.trato).aviso} />
         </div>
       )}
     </div>

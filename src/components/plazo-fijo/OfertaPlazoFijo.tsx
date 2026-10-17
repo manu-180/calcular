@@ -5,6 +5,7 @@ import { CompraDialogo, abrirCompra } from "@/components/CompraDialogo";
 import { HojaCalculo } from "@/components/HojaCalculo";
 import { RegistroPrevia } from "@/components/plazo-fijo/RegistroPrevia";
 import type { PreviaPlazoFijo } from "@/components/plazo-fijo/hojas";
+import { PrecioArriba } from "@/components/oferta/PrecioArriba";
 import type { DatosOferta } from "@/lib/oferta";
 import { formatARS, formatPct } from "@/lib/formato";
 
@@ -73,6 +74,7 @@ export function OfertaPlazoFijo({ producto, previa }: { producto: DatosOferta; p
             {previa.registro.dias} días ya viene cargado. Sumás los de tus otros bancos y la planilla te dice cuándo vence
             cada uno, cuánto cobrás y si le ganó al IPC oficial del INDEC.
           </p>
+          <PrecioArriba slug={producto.slug} precio={producto.precio} />
         </header>
 
         <div className="min-w-0 md:col-start-1 md:row-span-2 md:row-start-1">

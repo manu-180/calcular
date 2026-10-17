@@ -1,26 +1,28 @@
 // Escribe src/data/vigencias.ts: qué mes rige hoy cada dato que el sitio elige por fecha.
 //
-// POR QUÉ EXISTE: las páginas son estáticas y eligen el dato vigente AL COMPILAR (src/lib/hoy.ts).
-// El día 1 el mes cambia, pero nada del repo cambió, así que nadie redeploya y el sitio seguiría
-// mostrando el mes anterior. Este archivo es el cambio: el workflow datos-vivos lo reescribe en cada
-// corrida y, si el mes (o cualquier dato elegido por fecha) cambió, hay diff → commit → Vercel
-// redeploya. Además deja en git la historia de cuándo entró en vigencia cada cosa.
+// POR QUÉ EXISTE: varias páginas eligen el dato vigente al cargar el módulo (const MES = vigenteEn(...)
+// fuera del componente), y eso solo cambia con un deploy nuevo. Este archivo es el cambio: el workflow
+// datos-vivos lo reescribe en cada corrida y, si el mes (o cualquier dato elegido por fecha) cambió,
+// hay diff → commit → Vercel redeploya. Además deja en git la historia de cuándo entró en vigencia
+// cada cosa. Sin Actions quedan dos redes: el revalidate de 1 h del layout de (ar) para lo que se
+// elige en el render, y el cron /api/cron/datos-vivos, que llama a VERCEL_DEPLOY_HOOK_URL cuando el
+// mes del build ya no es el de hoy.
 //
 // USO: npx -y tsx scripts/datos-vivos/vigencias.ts
 
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { periodoActualAR, periodoDeMes, vigenteEn } from "../../src/lib/hoy";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "../../src/data/prestaciones";
-import { ASIGNACIONES_VIGENTES } from "../../src/data/asignaciones";
+import { bonoVigente, prestacionesVigentes } from "../../src/data/prestaciones";
+import { asignacionesVigentes } from "../../src/data/asignaciones";
 import { MESES_UOCRA } from "../../src/data/convenios/uocra";
 import { MESES_COMERCIO } from "../../src/data/convenios/comercio";
 import { MESES_CAMIONEROS } from "../../src/data/convenios/camioneros";
 
 const vigencias = {
   mes: periodoActualAR(),
-  previsional: `${PRESTACIONES_VIGENTES.periodo} · ${PRESTACIONES_VIGENTES.resolucion} · ${BONO_VIGENTE.norma}`,
-  asignaciones: `${ASIGNACIONES_VIGENTES.periodo} · ${ASIGNACIONES_VIGENTES.resolucion}`,
+  previsional: `${prestacionesVigentes().periodo} · ${prestacionesVigentes().resolucion} · ${bonoVigente().norma}`,
+  asignaciones: `${asignacionesVigentes().periodo} · ${asignacionesVigentes().resolucion}`,
   uocra: vigenteEn(MESES_UOCRA, periodoDeMes).id,
   comercio: vigenteEn(MESES_COMERCIO, periodoDeMes).id,
   camioneros: vigenteEn(MESES_CAMIONEROS, periodoDeMes).id,

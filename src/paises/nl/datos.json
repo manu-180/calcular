@@ -1,0 +1,1239 @@
+{
+  "mercado": "nl",
+  "datos": [
+    {
+      "id": "nl.btw-hoog",
+      "nombre": "Btw, algemeen tarief",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Btw: tarieven en vrijstellingen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.btw-laag",
+      "nombre": "Btw, verlaagd tarief",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Btw: tarieven en vrijstellingen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.box1-schijven",
+      "nombre": "Tarieven box 1 (jonger dan de AOW-leeftijd)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "nota": "De eerste schijf bevat de premies volksverzekeringen.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 38883,
+              "tasa": 35.75
+            },
+            {
+              "desde": 38883,
+              "hasta": 78426,
+              "tasa": 37.56
+            },
+            {
+              "desde": 78426,
+              "hasta": null,
+              "tasa": 49.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Voorlopige aanslag 2026: gebruikte tarieven en heffingskortingen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.ahk",
+      "nombre": "Algemene heffingskorting (jonger dan de AOW-leeftijd)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "max": 3115,
+            "afbouwgrens": 29736
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Voorlopige aanslag 2026: gebruikte tarieven en heffingskortingen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.ahk-afbouw",
+      "nombre": "Afbouw algemene heffingskorting",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6.398,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Voorlopige aanslag 2026: gebruikte tarieven en heffingskortingen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.arbeidskorting-grenzen",
+      "nombre": "Arbeidskorting: grenzen en maxima",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "grens1": 11965,
+            "max1": 996,
+            "grens2": 25845,
+            "max2": 5300,
+            "grens3": 45592,
+            "max3": 5685,
+            "einde": 132920
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Voorlopige aanslag 2026: gebruikte tarieven en heffingskortingen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Ook in artikel 8.11 Wet IB 2001."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.arbeidskorting-tarieven",
+      "nombre": "Arbeidskorting: opbouw- en afbouwpercentages",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "opbouw1": 8.324,
+            "opbouw2": 31.009,
+            "opbouw3": 1.95,
+            "afbouw": 6.51
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Voorlopige aanslag 2026: gebruikte tarieven en heffingskortingen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.iack",
+      "nombre": "Inkomensafhankelijke combinatiekorting: drempel en maximum",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "drempel": 6239,
+            "max": 3032
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Voorlopige aanslag 2026: gebruikte tarieven en heffingskortingen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.iack-tarief",
+      "nombre": "Inkomensafhankelijke combinatiekorting: opbouwpercentage",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 11.45,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Voorlopige aanslag 2026: gebruikte tarieven en heffingskortingen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.aftrek-maximumtarief",
+      "nombre": "Maximaal tarief voor aftrekposten",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 37.56,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Afbouw tarief aftrekposten bij een hoog inkomen",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/aftrek-en-kortingen/content/afbouw-tarief-aftrekposten-bij-hoog-inkomen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.vakantiebijslag",
+      "nombre": "Minimumvakantiebijslag",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Overheid.nl (wetten.overheid.nl)",
+            "titulo": "Wet minimumloon en minimumvakantiebijslag, artikel 15",
+            "url": "https://wetten.overheid.nl/BWBR0002638/2026-01-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.vakantie-weken",
+      "nombre": "Wettelijke vakantie: aantal keer de arbeidsduur per week",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Overheid.nl (wetten.overheid.nl)",
+            "titulo": "Burgerlijk Wetboek Boek 7, artikelen 634, 672 en 673",
+            "url": "https://wetten.overheid.nl/BWBR0005290/2026-01-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Artikel 7:634 BW."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.minimumloon",
+      "nombre": "Wettelijk minimumuurloon naar leeftijd",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "21-plus": "21 jaar en ouder",
+        "20": "20 jaar",
+        "19": "19 jaar",
+        "18": "18 jaar",
+        "17": "17 jaar",
+        "16": "16 jaar",
+        "15": "15 jaar"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "21-plus": 14.71,
+            "20": 11.77,
+            "19": 8.83,
+            "18": 7.36,
+            "17": 5.81,
+            "16": 5.07,
+            "15": 4.41
+          },
+          "fuente": {
+            "organismo": "Rijksoverheid",
+            "titulo": "Bedragen minimumloon 2026",
+            "url": "https://www.rijksoverheid.nl/onderwerpen/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Bedragen per 1 januari 2026."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "21-plus": 14.99,
+            "20": 11.99,
+            "19": 8.99,
+            "18": 7.5,
+            "17": 5.92,
+            "16": 5.17,
+            "15": 4.5
+          },
+          "fuente": {
+            "organismo": "Rijksoverheid",
+            "titulo": "Bedragen minimumloon 2026",
+            "url": "https://www.rijksoverheid.nl/onderwerpen/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Bedragen per 1 juli 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.transitievergoeding-max",
+      "nombre": "Maximale transitievergoeding",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 102000,
+          "fuente": {
+            "organismo": "Overheid.nl (wetten.overheid.nl)",
+            "titulo": "Burgerlijk Wetboek Boek 7, artikelen 634, 672 en 673",
+            "url": "https://wetten.overheid.nl/BWBR0005290/2026-01-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Artikel 7:673 lid 2 BW: of een jaarsalaris als dat hoger is."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.opzegtermijn-werkgever",
+      "nombre": "Opzegtermijn voor de werkgever naar duur van het contract",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 1,
+            "5": 2,
+            "10": 3,
+            "15": 4
+          },
+          "fuente": {
+            "organismo": "Overheid.nl (wetten.overheid.nl)",
+            "titulo": "Burgerlijk Wetboek Boek 7, artikelen 634, 672 en 673",
+            "url": "https://wetten.overheid.nl/BWBR0005290/2026-01-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Artikel 7:672 lid 2 BW. De sleutel is het aantal jaren dienstverband vanaf."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.opzegtermijn-werknemer",
+      "nombre": "Opzegtermijn voor de werknemer",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Overheid.nl (wetten.overheid.nl)",
+            "titulo": "Burgerlijk Wetboek Boek 7, artikelen 634, 672 en 673",
+            "url": "https://wetten.overheid.nl/BWBR0005290/2026-01-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Artikel 7:672 lid 4 BW."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.ww-percentages",
+      "nombre": "WW-uitkering als percentage van het maandloon",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "eerste-twee-maanden": 75,
+            "daarna": 70
+          },
+          "fuente": {
+            "organismo": "UWV",
+            "titulo": "Hoogte WW-uitkering",
+            "url": "https://www.uwv.nl/nl/ww/hoogte-ww",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.ww-maximumdagloon",
+      "nombre": "Maximumdagloon werknemersverzekeringen",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": 304.25,
+          "motivo": "Alleen in een secundaire bron gezien; de bekendmaking in de Staatscourant is niet geopend."
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 309.91,
+          "fuente": {
+            "organismo": "UWV",
+            "titulo": "Hoogte WW-uitkering",
+            "url": "https://www.uwv.nl/nl/ww/hoogte-ww",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "UWV noemt dit bedrag als het huidige wettelijk maximumdagloon."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.ww-duur",
+      "nombre": "Duur WW-uitkering: minimum en maximum",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "minimum": 3,
+            "maximum": 24
+          },
+          "fuente": {
+            "organismo": "Overheid.nl (wetten.overheid.nl)",
+            "titulo": "Werkloosheidswet, artikelen 42 en 47",
+            "url": "https://wetten.overheid.nl/BWBR0004045",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Artikel 42 lid 1 Werkloosheidswet."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.zelfstandigenaftrek",
+      "nombre": "Zelfstandigenaftrek",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1200,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Zelfstandigenaftrek 2026",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/ondernemersaftrek-2026/zelfstandigenaftrek-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.startersaftrek",
+      "nombre": "Startersaftrek",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2123,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Zelfstandigenaftrek 2026",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/ondernemersaftrek-2026/zelfstandigenaftrek-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.mkb-winstvrijstelling",
+      "nombre": "Mkb-winstvrijstelling",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12.7,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Mkb-winstvrijstelling 2026",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/mkb-winstvrijstelling-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.zvw-bijdrage",
+      "nombre": "Inkomensafhankelijke bijdrage Zvw (aanslag of inhouding)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4.85,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Percentages inkomensafhankelijke bijdrage Zvw",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.zvw-werkgeversheffing",
+      "nombre": "Werkgeversheffing Zvw",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6.1,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Percentages inkomensafhankelijke bijdrage Zvw",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.zvw-maximum",
+      "nombre": "Maximumbijdrage-inkomen Zvw",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 79409,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Percentages inkomensafhankelijke bijdrage Zvw",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.box3-rendement",
+      "nombre": "Box 3: forfaitaire rendementspercentages",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "banktegoeden": "Banktegoeden",
+        "overige": "Beleggingen en andere bezittingen",
+        "schulden": "Schulden"
+      },
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "banktegoeden": 1.28,
+            "overige": 6,
+            "schulden": 2.7
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Berekening box 3-inkomen voorlopige aanslag 2026",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Banktegoeden en schulden zijn voorlopige percentages; de Belastingdienst stelt ze begin 2027 vast."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.box3-heffingsvrij",
+      "nombre": "Box 3: heffingsvrij vermogen per persoon",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 59357,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Berekening box 3-inkomen voorlopige aanslag 2026",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.box3-drempel",
+      "nombre": "Box 3: drempel voor schulden per persoon",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3800,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Box 3: drempel voor schulden",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.box3-tarief",
+      "nombre": "Box 3: tarief",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 36,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Berekening box 3-inkomen voorlopige aanslag 2026",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.eigenwoningforfait",
+      "nombre": "Eigenwoningforfait naar WOZ-waarde",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12500,
+              "tasa": 0
+            },
+            {
+              "desde": 12500.01,
+              "hasta": 25000,
+              "tasa": 0.1
+            },
+            {
+              "desde": 25000.01,
+              "hasta": 50000,
+              "tasa": 0.2
+            },
+            {
+              "desde": 50000.01,
+              "hasta": 75000,
+              "tasa": 0.25
+            },
+            {
+              "desde": 75000.01,
+              "hasta": 1350000,
+              "tasa": 0.35
+            },
+            {
+              "desde": 1350000.01,
+              "hasta": null,
+              "tasa": 2.35,
+              "cuotaFija": 4725
+            }
+          ],
+          "fuente": {
+            "organismo": "Overheid.nl (wetten.overheid.nl)",
+            "titulo": "Wet inkomstenbelasting 2001, geldend vanaf 1 januari 2026",
+            "url": "https://wetten.overheid.nl/BWBR0011353/2026-01-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Artikel 3.112 lid 1 Wet IB 2001. Zonder cuotaFija geldt het percentage over de hele waarde."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.hillen",
+      "nombre": "Aftrek wegens geen of geringe eigenwoningschuld (Wet Hillen)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 71.867,
+          "fuente": {
+            "organismo": "Overheid.nl (wetten.overheid.nl)",
+            "titulo": "Wet inkomstenbelasting 2001, geldend vanaf 1 januari 2026",
+            "url": "https://wetten.overheid.nl/BWBR0011353/2026-01-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Artikel 3.123a lid 2 Wet IB 2001."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.overdrachtsbelasting",
+      "nombre": "Tarieven overdrachtsbelasting",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "eigen-woning": "Woning waarin je zelf gaat wonen",
+        "overige-woning": "Woning waarin je niet zelf gaat wonen",
+        "niet-woning": "Geen woning (bedrijfspand, grond, losse garage)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "eigen-woning": 2,
+            "overige-woning": 8,
+            "niet-woning": 10.4
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Het tarief van de overdrachtsbelasting",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/woning/overdrachtsbelasting/tarieven_overdrachtsbelasting/het_tarief_van_de_overdrachtbelasting",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.startersvrijstelling-grens",
+      "nombre": "Startersvrijstelling: maximale woningwaarde",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 555000,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Startersvrijstelling overdrachtsbelasting: voorwaarden",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/woning/overdrachtsbelasting/startersvrijstelling/startersvrijstelling",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.startersvrijstelling-leeftijd",
+      "nombre": "Startersvrijstelling: jonger dan",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Startersvrijstelling overdrachtsbelasting: voorwaarden",
+            "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/woning/overdrachtsbelasting/startersvrijstelling/startersvrijstelling",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.kinderbijslag",
+      "nombre": "Kinderbijslag per kind per kwartaal",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "0-5": "0 tot en met 5 jaar",
+        "6-11": "6 tot en met 11 jaar",
+        "12-17": "12 tot en met 17 jaar"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "0-5": 295.07,
+            "6-11": 358.3,
+            "12-17": 421.53
+          },
+          "fuente": {
+            "organismo": "SVB",
+            "titulo": "Bedragen en betaaldagen kinderbijslag",
+            "url": "https://www.svb.nl/nl/kinderbijslag/bedragen-betaaldagen/bedragen-kinderbijslag",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Eerste en tweede kwartaal 2026."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "0-5": 298.4,
+            "6-11": 362.35,
+            "12-17": 426.29
+          },
+          "fuente": {
+            "organismo": "SVB",
+            "titulo": "Bedragen en betaaldagen kinderbijslag",
+            "url": "https://www.svb.nl/nl/kinderbijslag/bedragen-betaaldagen/bedragen-kinderbijslag",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Derde en vierde kwartaal 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.aow-bruto",
+      "nombre": "Volledige AOW per maand, bruto, zonder vakantiegeld",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "alleenstaand": "Je woont alleen",
+        "samenwonend": "Je bent getrouwd of woont samen"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "motivo": "Op de SVB-pagina staan alleen de bedragen vanaf 1 juli 2026."
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "alleenstaand": 1662.16,
+            "samenwonend": 1139.39
+          },
+          "fuente": {
+            "organismo": "SVB",
+            "titulo": "Bedragen AOW vanaf 1 juli 2026",
+            "url": "https://www.svb.nl/nl/aow/bedragen-aow/aow-bedragen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.aow-vakantiegeld",
+      "nombre": "Vakantiegeld bij een volledige AOW per maand, bruto",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "motivo": "Op de SVB-pagina staan alleen de bedragen vanaf 1 juli 2026."
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "alleenstaand": 104.78,
+            "samenwonend": 74.85
+          },
+          "fuente": {
+            "organismo": "SVB",
+            "titulo": "Bedragen AOW vanaf 1 juli 2026",
+            "url": "https://www.svb.nl/nl/aow/bedragen-aow/aow-bedragen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.aow-korting",
+      "nombre": "AOW-korting per jaar niet verzekerd",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Overheid.nl (wetten.overheid.nl)",
+            "titulo": "Algemene Ouderdomswet, artikel 13",
+            "url": "https://wetten.overheid.nl/BWBR0002221/2026-07-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.aow-leeftijd",
+      "nombre": "Vastgestelde AOW-leeftijd in maanden, naar geboortedatum vanaf",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1956-06-01": 802,
+            "1957-03-01": 804,
+            "1961-01-01": 807
+          },
+          "fuente": {
+            "organismo": "SVB",
+            "titulo": "AOW-leeftijd: vastgestelde en verwachte AOW-leeftijden",
+            "url": "https://www.svb.nl/nl/aow/aow-leeftijd/uw-aow-leeftijd",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Vastgesteld voor wie vóór 1 oktober 1964 is geboren."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.aow-leeftijd-verwacht",
+      "nombre": "Verwachte AOW-leeftijd in maanden, naar geboortedatum vanaf",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "proximaRevision": "2026-12-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1964-10-01": 807,
+            "1966-10-01": 810,
+            "1970-07-01": 813,
+            "1973-04-01": 816,
+            "1976-01-01": 819,
+            "1978-10-01": 822,
+            "1982-07-01": 825,
+            "1985-04-01": 828,
+            "1989-01-01": 831,
+            "1991-10-01": 834,
+            "1995-07-01": 837,
+            "1999-04-01": 840
+          },
+          "fuente": {
+            "organismo": "SVB",
+            "titulo": "AOW-leeftijd: vastgestelde en verwachte AOW-leeftijden",
+            "url": "https://www.svb.nl/nl/aow/aow-leeftijd/uw-aow-leeftijd",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Schatting van de SVB op basis van de levensverwachting van het CBS, voor geboortedata tot en met 31 december 2000."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.premies-werkgever",
+      "nombre": "Premies werknemersverzekeringen 2026",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "awf-laag": 2.74,
+            "awf-hoog": 7.74,
+            "aof-laag": 6.27,
+            "aof-hoog": 7.63,
+            "wko": 0.5
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Tarieven, bedragen en percentages loonheffingen vanaf 1 januari 2026 (bijlage Nieuwsbrief Loonheffingen 2026, uitgave 3)",
+            "url": "https://download.belastingdienst.nl/belastingdienst/docs/bijlage-nieuwsbrief-loonheffingen-2026-lh2091b63fd.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabel 9."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.maximumpremieloon",
+      "nombre": "Maximumpremieloon per jaar",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 79409,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Tarieven, bedragen en percentages loonheffingen vanaf 1 januari 2026 (bijlage Nieuwsbrief Loonheffingen 2026, uitgave 3)",
+            "url": "https://download.belastingdienst.nl/belastingdienst/docs/bijlage-nieuwsbrief-loonheffingen-2026-lh2091b63fd.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabel 11."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.bijtelling",
+      "nombre": "Bijtelling privégebruik auto",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "algemeen": 22,
+            "voor-2017": 25,
+            "youngtimer": 35
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Tarieven, bedragen en percentages loonheffingen vanaf 1 januari 2026 (bijlage Nieuwsbrief Loonheffingen 2026, uitgave 3)",
+            "url": "https://download.belastingdienst.nl/belastingdienst/docs/bijlage-nieuwsbrief-loonheffingen-2026-lh2091b63fd.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabel 12."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.bijtelling-korting-emissievrij",
+      "nombre": "Korting op de bijtelling voor een auto zonder CO2-uitstoot, naar jaar van eerste toelating",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "2026": 4,
+            "2025": 5,
+            "2023-2024": 6,
+            "2022": 6,
+            "2021-na-60": 4,
+            "2021-binnen-60": 10,
+            "2017-2020": 4
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Tarieven, bedragen en percentages loonheffingen vanaf 1 januari 2026 (bijlage Nieuwsbrief Loonheffingen 2026, uitgave 3)",
+            "url": "https://download.belastingdienst.nl/belastingdienst/docs/bijlage-nieuwsbrief-loonheffingen-2026-lh2091b63fd.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabel 12."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.bijtelling-cap",
+      "nombre": "Cataloguswaarde tot waar de korting geldt (cap), naar jaar van eerste toelating",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "2026": 30000,
+            "2025": 30000,
+            "2023-2024": 30000,
+            "2022": 35000,
+            "2021-na-60": 30000,
+            "2021-binnen-60": 40000,
+            "2017-2020": 30000
+          },
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Tarieven, bedragen en percentages loonheffingen vanaf 1 januari 2026 (bijlage Nieuwsbrief Loonheffingen 2026, uitgave 3)",
+            "url": "https://download.belastingdienst.nl/belastingdienst/docs/bijlage-nieuwsbrief-loonheffingen-2026-lh2091b63fd.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabel 12."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.kilometervergoeding",
+      "nombre": "Onbelaste reiskostenvergoeding per kilometer",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.23,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Tarieven, bedragen en percentages loonheffingen vanaf 1 januari 2026 (bijlage Nieuwsbrief Loonheffingen 2026, uitgave 3)",
+            "url": "https://download.belastingdienst.nl/belastingdienst/docs/bijlage-nieuwsbrief-loonheffingen-2026-lh2091b63fd.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabel 13."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nl.thuiswerkvergoeding",
+      "nombre": "Onbelaste thuiswerkvergoeding per dag",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.45,
+          "fuente": {
+            "organismo": "Belastingdienst",
+            "titulo": "Tarieven, bedragen en percentages loonheffingen vanaf 1 januari 2026 (bijlage Nieuwsbrief Loonheffingen 2026, uitgave 3)",
+            "url": "https://download.belastingdienst.nl/belastingdienst/docs/bijlage-nieuwsbrief-loonheffingen-2026-lh2091b63fd.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Tabel 13."
+          }
+        }
+      ]
+    }
+  ]
+}

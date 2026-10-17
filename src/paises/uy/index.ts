@@ -91,6 +91,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: "todas",
   calculadoras: [
     { definicion: sueldoLiquido, contenido: contenidoSueldoLiquido, cliente: () => import("./calculadoras/sueldo-liquido.cliente") },
     { definicion: liquidacionPorEgreso, contenido: contenidoLiquidacionPorEgreso, cliente: () => import("./calculadoras/liquidacion-por-egreso.cliente") },

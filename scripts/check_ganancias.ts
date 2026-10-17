@@ -2,7 +2,7 @@
 // Correr con: npx tsx scripts/check_ganancias.ts
 
 import { DEDUCCIONES, ESCALA_GANANCIAS } from "../src/data/ganancias";
-import { TOPE_SIPA, TOTAL_APORTES } from "../src/data/sueldo";
+import { topeSipa, TOTAL_APORTES } from "../src/data/sueldo";
 import { impuestoSegunEscala, calcularRetencionMensual } from "../src/lib/ganancias";
 
 let fallas = 0;
@@ -62,7 +62,7 @@ check("C1: diciembre tiene pico de retención por SAC", C1[11].retencionMes > pr
 // salvo la escala): aportes → GNI proporcional → extrapolación ×12 → impuesto → /12.
 // Se arma desde las constantes oficiales para que la rotación semestral de ARCA no lo rompa.
 const DEDUCCIONES_ANUALES = DEDUCCIONES.mni + DEDUCCIONES.deduccionEspecialDependencia;
-const aportesMes5M = Math.min(5_000_000, TOPE_SIPA.baseMaxima) * TOTAL_APORTES;
+const aportesMes5M = Math.min(5_000_000, topeSipa().baseMaxima) * TOTAL_APORTES;
 const gniPropEnero = 5_000_000 - aportesMes5M - DEDUCCIONES_ANUALES / 12;
 const retEneroEsperada = (impuestoSegunEscala(gniPropEnero * 12) / 12);
 check(
@@ -75,7 +75,7 @@ check(
 // Bruto anual = $5M×12 + medio aguinaldo ($2,5M) ×2; aportes sobre cada uno con tope SIPA.
 const brutoAnual5M = 5_000_000 * 12 + 2_500_000 * 2;
 const aportesAnual5M =
-  aportesMes5M * 12 + Math.min(2_500_000, TOPE_SIPA.baseMaxima) * TOTAL_APORTES * 2;
+  aportesMes5M * 12 + Math.min(2_500_000, topeSipa().baseMaxima) * TOTAL_APORTES * 2;
 const gniDicEsperada = brutoAnual5M - aportesAnual5M - DEDUCCIONES_ANUALES;
 check(
   "C1: GNI extrapolada de diciembre = GNI anual real",

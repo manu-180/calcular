@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { CORTE_ANIOS } from "@/data/reingreso";
 import { calcularReingreso } from "@/lib/reingreso";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 import { nombrePeriodo } from "@/lib/inflacion";
 
 const TONOS = {
@@ -24,15 +25,20 @@ export function CalculadoraReingreso() {
   const [despido, setDespido] = useState("2026-08-31");
   const [cobradoAntes, setCobradoAntes] = useState("900000");
 
+  const error = primerError({
+    "Mejor remuneración": errorMonto(remuneracion),
+    "Indemnización cobrada antes": errorMonto(cobradoAntes),
+  });
+
   const res = useMemo(
     () =>
       calcularReingreso({
-        mejorRemuneracion: Number(remuneracion) || 0,
+        mejorRemuneracion: parseMonto(remuneracion),
         ingresoAnterior,
         ceseAnterior,
         reingreso,
         despido,
-        cobradoAntes: Number(cobradoAntes) || 0,
+        cobradoAntes: parseMonto(cobradoAntes),
       }),
     [remuneracion, ingresoAnterior, ceseAnterior, reingreso, despido, cobradoAntes],
   );
@@ -129,7 +135,9 @@ export function CalculadoraReingreso() {
         </div>
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Revisá las fechas y el sueldo: el cese tiene que ser posterior al ingreso y el despido,
           posterior al reingreso.

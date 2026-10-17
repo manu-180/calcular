@@ -1,4 +1,4 @@
-import { definirCalculadora } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 import { aportesTrabajador, retencionMensual } from "../reglas";
 
 export default definirCalculadora({
@@ -42,6 +42,7 @@ export default definirCalculadora({
     },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const aportes = aportesTrabajador(
       entrada.salario,
       {

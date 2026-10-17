@@ -11,7 +11,7 @@
 
 import { DEDUCCIONES } from "../src/data/ganancias";
 import { HABER_MINIMO_SERIE } from "../src/data/jubilaciones";
-import { PRESTACIONES_VIGENTES } from "../src/data/prestaciones";
+import { prestacionesVigentes } from "../src/data/prestaciones";
 import { JUBILADOS_TEXTOS } from "../src/data/ganancias-jubilados";
 import { aporteSobre } from "../src/lib/descuento-pami";
 import {
@@ -48,8 +48,8 @@ check(
 );
 check(
   "el último haber mínimo publicado es el vigente de prestaciones.ts",
-  ultimoPublicado === PRESTACIONES_VIGENTES.haberMinimo,
-  { ultimoPublicado, vigente: PRESTACIONES_VIGENTES.haberMinimo },
+  ultimoPublicado === prestacionesVigentes().haberMinimo,
+  { ultimoPublicado, vigente: prestacionesVigentes().haberMinimo },
 );
 const suma = meses.reduce((s, m) => s + m.haberMinimo, 0);
 check("específica = 8 × suma de los haberes mínimos", casi(deduccionEspecificaAnual(), 8 * suma), deduccionEspecificaAnual());
@@ -99,10 +99,10 @@ for (const r of [base, conConyuge]) {
 check("el umbral en haberes mínimos queda entre 6 y 8", base.umbralEnHaberesMinimos > 6 && base.umbralEnHaberesMinimos < 8, base.umbralEnHaberesMinimos);
 
 // 5 · El haber máximo: la frase se deriva
-const maximo = calcularGananciasJubilados({ haberBruto: PRESTACIONES_VIGENTES.haberMaximo });
+const maximo = calcularGananciasJubilados({ haberBruto: prestacionesVigentes().haberMaximo });
 check(
   "el haber máximo paga si y sólo si supera el umbral",
-  maximo.pagaGanancias === PRESTACIONES_VIGENTES.haberMaximo >= base.umbralHaber,
+  maximo.pagaGanancias === prestacionesVigentes().haberMaximo >= base.umbralHaber,
 );
 check("haber cero no paga", !calcularGananciasJubilados({ haberBruto: 0 }).pagaGanancias);
 

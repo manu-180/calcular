@@ -6,24 +6,29 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
 import {
   MESES_VIGENCIA_OPCION,
-  PAMI_FUENTES,
+  pamiFuentes,
   PAMI_TEXTOS,
   REGIMENES,
 } from "@/data/descuento-pami";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { aporteSobre, escalaEfectiva, RANGO_EFECTIVO } from "@/lib/descuento-pami";
 import { formatARS } from "@/lib/formato";
 
-const MINIMO = PRESTACIONES_VIGENTES.haberMinimo;
-const MES = PRESTACIONES_VIGENTES.vigencia;
-const MES_CORTO = MES.replace(" de ", " ");
+function datosDelMes() {
+  const MINIMO = prestacionesVigentes().haberMinimo;
+  const MES = prestacionesVigentes().vigencia;
+  const MES_CORTO = MES.replace(" de ", " ");
 
-const EN_EL_MINIMO = aporteSobre(MINIMO, "dependencia").total;
-const ESCALA = escalaEfectiva("dependencia");
-const DOBLE = ESCALA.find((f) => f.vecesMinimo === 2)!;
-const AUTONOMO_DOBLE = aporteSobre(MINIMO * 2, "autonomos").total;
+  const EN_EL_MINIMO = aporteSobre(MINIMO, "dependencia").total;
+  const ESCALA = escalaEfectiva("dependencia");
+  const DOBLE = ESCALA.find((f) => f.vecesMinimo === 2)!;
+  const AUTONOMO_DOBLE = aporteSobre(MINIMO * 2, "autonomos").total;
+  return { MINIMO, MES, MES_CORTO, EN_EL_MINIMO, ESCALA, DOBLE, AUTONOMO_DOBLE };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MINIMO, MES, MES_CORTO }: DatosDelMes): Metadata => ({
   title: `Descuento de PAMI ${MES_CORTO}: cuánto te sacan del haber`,
   description: "El aporte de obra social del jubilado es 3% hasta el haber mínimo y 6% sobre el excedente. Calculá tu descuento y por qué irte del PAMI no lo baja.",
   alternates: { canonical: "/descuento-pami" },
@@ -39,9 +44,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ MINIMO, MES, EN_EL_MINIMO, DOBLE, AUTONOMO_DOBLE }: DatosDelMes) => [
   {
     q: `¿Cuánto me descuenta el PAMI de la jubilación en ${MES}?`,
     a: `Depende del haber: no es un porcentaje fijo. El artículo 8 inciso a) de la Ley 19.032 manda aportar el 3% sobre la parte del haber que no pasa del haber mínimo garantizado (${formatARS(MINIMO, 0)} en ${MES}) y el 6% sobre lo que lo supera. Si cobrás justo el mínimo, aportás ${formatARS(EN_EL_MINIMO, 0)}. Si cobrás el doble, ${formatARS(DOBLE.aporte, 0)}: un ${DOBLE.alicuotaEfectiva}% real, no un 6%. El descuento lo hace ANSeS y se lo pasa al PAMI de forma directa y automática.`,
@@ -68,7 +77,7 @@ const faqs = [
   },
   {
     q: "¿Y al bono extraordinario?",
-    a: `No. El ${BONO_VIGENTE.norma}, que fija el bono de ${formatARS(BONO_VIGENTE.monto, 0)}, lo declara no remunerativo y libre de descuentos. Por eso llega entero al bolsillo y no entra en la base del aporte. Es lo que confunde al mirar el recibo: dos montos que se cobran juntos y solo uno paga obra social.`,
+    a: `No. El ${bonoVigente().norma}, que fija el bono de ${formatARS(bonoVigente().monto, 0)}, lo declara no remunerativo y libre de descuentos. Por eso llega entero al bolsillo y no entra en la base del aporte. Es lo que confunde al mirar el recibo: dos montos que se cobran juntos y solo uno paga obra social.`,
   },
   {
     q: "Cobro una pensión no contributiva. ¿Cuánto me descuentan?",
@@ -81,6 +90,9 @@ const faqs = [
 ];
 
 export default function Page() {
+  const datos = datosDelMes();
+  const { MINIMO, MES, EN_EL_MINIMO, ESCALA, DOBLE } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -98,16 +110,16 @@ export default function Page() {
         descripcion:
           "Aporte del artículo 8 de la Ley 19.032 sobre las prestaciones previsionales: 3% hasta el haber mínimo garantizado y 6% sobre el excedente para los beneficiarios del inciso a), y 6% sobre el total para los del inciso b). Incluye la alícuota efectiva resultante en cada tramo, calculada sobre el haber mínimo vigente que fija la resolución mensual de ANSES.",
         url: "/descuento-pami",
-        modificado: PAMI_FUENTES.consultadoEl,
-        fuenteNombre: PAMI_FUENTES.lista[0].nombre,
-        fuenteUrl: PAMI_FUENTES.lista[0].url,
+        modificado: pamiFuentes().consultadoEl,
+        fuenteNombre: pamiFuentes().lista[0].nombre,
+        fuenteUrl: pamiFuentes().lista[0].url,
       }),
       articleSchema({
         titulo: "Descuento de PAMI sobre la jubilación: la escala del 3% y el 6%, y qué no aporta",
         descripcion:
           "El aporte de obra social se deduce del haber por mandato del art. 20 de la Ley 23.660, pero la alícuota vive en el art. 8 de la Ley 19.032 y es progresiva. Qué base incluye el aguinaldo, por qué el bono queda afuera, por qué cambiar de obra social no baja el descuento, y por qué las pensiones no contributivas no tienen alícuota fijada.",
         url: "/descuento-pami",
-        modificado: PAMI_FUENTES.consultadoEl,
+        modificado: pamiFuentes().consultadoEl,
       }),
       {
         "@type": "FAQPage",
@@ -136,7 +148,7 @@ export default function Page() {
         </p>
       </header>
 
-      <RespuestaPrimero actualizado={PAMI_FUENTES.consultadoEl}>
+      <RespuestaPrimero actualizado={pamiFuentes().consultadoEl}>
         <p>
           <strong>
             Se descuenta el 3% de la parte del haber que no pasa del haber mínimo garantizado (
@@ -162,7 +174,7 @@ export default function Page() {
         <h2 className="text-xl font-bold text-zinc-900">Tu caso</h2>
         <p className="text-sm text-zinc-600">
           Elegí por dónde aportaste y cargá tu haber bruto. La escala cambia de tramo en el haber
-          mínimo del mes, que fija la {PRESTACIONES_VIGENTES.resolucion}. Acá no estimamos ningún
+          mínimo del mes, que fija la {prestacionesVigentes().resolucion}. Acá no estimamos ningún
           monto.
         </p>
         <CalculadoraDescuentoPami />
@@ -327,7 +339,7 @@ export default function Page() {
       <section className="space-y-3 text-sm text-zinc-600">
         <h2 className="text-xl font-bold text-zinc-900">Fuentes</h2>
         <ul className="list-disc space-y-1.5 pl-5">
-          {PAMI_FUENTES.lista.map((f) => (
+          {pamiFuentes().lista.map((f) => (
             <li key={f.url}>
               <a
                 href={f.url}
@@ -351,7 +363,7 @@ export default function Page() {
           <Link href="/descuentos-del-sueldo" className="text-emerald-700 hover:underline">
             descuentos del sueldo
           </Link>
-          . Consultada el {PAMI_FUENTES.consultadoEl}.
+          . Consultada el {pamiFuentes().consultadoEl}.
         </p>
       </section>
     </article>

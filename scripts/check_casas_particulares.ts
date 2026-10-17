@@ -24,7 +24,7 @@
 import {
   CASAS_PARTICULARES_FUENTES,
   ESCALAS_POR_MES,
-  ESCALA_VIGENTE,
+  escalaVigente,
   HORAS_EXTRAS,
   JORNADA,
   SAC,
@@ -32,7 +32,7 @@ import {
   SUMA_NO_REMUNERATIVA,
   VACACIONES,
   VACACIONES_PROPORCIONAL,
-  VIGENCIA,
+  vigenciaCasas,
   ZONA_DESFAVORABLE,
   escalaDe,
   mesVigente,
@@ -99,9 +99,9 @@ const ANEXO_DEL_MES: Record<string, Record<string, [number | null, number, numbe
   },
 };
 
-const ANEXO_IV = ANEXO_DEL_MES[VIGENCIA.mesId];
+const ANEXO_IV = ANEXO_DEL_MES[vigenciaCasas().mesId];
 
-check("la escala tiene las 5 categorías del régimen", ESCALA_VIGENTE.length === 5, ESCALA_VIGENTE.length);
+check("la escala tiene las 5 categorías del régimen", escalaVigente().length === 5, escalaVigente().length);
 for (const [id, [hc, hs, mc, ms]] of Object.entries(ANEXO_IV)) {
   const c = categoriaPorId(id);
   check(`${id}: existe en la escala`, c !== null);
@@ -149,8 +149,8 @@ check(
   mesVigente(new Date("2026-01-05")).id === "2026-08",
 );
 check(
-  "VIGENCIA.vigenteEn es el mes derivado, no una constante suelta",
-  VIGENCIA.vigenteEn === mesVigente().etiqueta && VIGENCIA.mesId === mesVigente().id,
+  "vigenciaCasas().vigenteEn es el mes derivado, no una constante suelta",
+  vigenciaCasas().vigenteEn === mesVigente().etiqueta && vigenciaCasas().mesId === mesVigente().id,
 );
 
 // La derivación: (mes anterior + lo que se incorpora) × (1 + el % DEL ANEXO). Se prueba contra los
@@ -223,15 +223,15 @@ check(
 // ===========================================================================
 check(
   "sin retiro siempre paga más que con retiro, en toda categoría",
-  ESCALA_VIGENTE.every((c) => c.horaConRetiro === null || c.horaSinRetiro > c.horaConRetiro),
+  escalaVigente().every((c) => c.horaConRetiro === null || c.horaSinRetiro > c.horaConRetiro),
 );
 check(
   "el mínimo mensual sin retiro también supera al de con retiro",
-  ESCALA_VIGENTE.every((c) => c.mesConRetiro === null || c.mesSinRetiro > c.mesConRetiro),
+  escalaVigente().every((c) => c.mesConRetiro === null || c.mesSinRetiro > c.mesConRetiro),
 );
 check(
   "todos los importes son positivos",
-  ESCALA_VIGENTE.every(
+  escalaVigente().every(
     (c) =>
       c.horaSinRetiro > 0 &&
       c.mesSinRetiro > 0 &&
@@ -241,15 +241,15 @@ check(
 );
 check(
   "caseros es la única categoría sin modalidad «con retiro»",
-  ESCALA_VIGENTE.filter((c) => c.horaConRetiro === null).map((c) => c.id).join() === "caseros",
+  escalaVigente().filter((c) => c.horaConRetiro === null).map((c) => c.id).join() === "caseros",
 );
 check(
   "supervisor/a es la categoría mejor paga",
-  Math.max(...ESCALA_VIGENTE.map((c) => c.horaSinRetiro)) === categoriaPorId("supervisor")!.horaSinRetiro,
+  Math.max(...escalaVigente().map((c) => c.horaSinRetiro)) === categoriaPorId("supervisor")!.horaSinRetiro,
 );
 check(
   "tareas generales es el piso de la escala",
-  Math.min(...ESCALA_VIGENTE.map((c) => c.horaSinRetiro)) === categoriaPorId("tareas-generales")!.horaSinRetiro,
+  Math.min(...escalaVigente().map((c) => c.horaSinRetiro)) === categoriaPorId("tareas-generales")!.horaSinRetiro,
 );
 // El anexo repite el mismo valor en dos lugares: el sin retiro de tareas generales es igual al con
 // retiro de asistencia de personas y al de caseros. Si alguien "corrige" uno solo, esto lo detecta.
@@ -391,8 +391,8 @@ check(
 // ===========================================================================
 // 7 · Vigencia y fuentes: la trazabilidad es parte del dato
 // ===========================================================================
-check("la vigencia declara la resolución de origen", VIGENCIA.resolucion.includes("6/2026"));
-check("la vigencia declara la fecha del Boletín Oficial", VIGENCIA.boletinOficial.includes("2026"));
+check("la vigencia declara la resolución de origen", vigenciaCasas().resolucion.includes("6/2026"));
+check("la vigencia declara la fecha del Boletín Oficial", vigenciaCasas().boletinOficial.includes("2026"));
 check(
   "todas las fuentes son oficiales",
   CASAS_PARTICULARES_FUENTES.lista.every((f) =>
@@ -415,5 +415,5 @@ if (fallas > 0) {
   console.error(`\n${fallas} CHECK(S) FALLARON`);
   process.exit(1);
 } else {
-  console.log(`Todos los checks de casas particulares OK (escala ${VIGENCIA.desde}).`);
+  console.log(`Todos los checks de casas particulares OK (escala ${vigenciaCasas().desde}).`);
 }

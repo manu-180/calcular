@@ -167,7 +167,7 @@ research sin abrir la fuente.**
 |---|---|
 | `id` | `"<m>.<kebab-case>"`, único en el país |
 | `tipo` | `"numero"` (un valor), `"mapa"` (`{ "clave": número }`, por ejemplo comisiones por AFP), `"escala"` (tabla por tramos de ingreso) |
-| `unidad` | una moneda (`"PEN"`), `"%"`, `"dias"`, `"horas"`, `"meses"`, `"anios"`, `"numero"`, `"factor"` o una unidad de referencia (`UIT UF UTM UTA UMA UDI BPC UI UR UVT UVR SBU SMMLV IMM RMV`) |
+| `unidad` | una moneda (`"PEN"`), `"%"`, `"dias"`, `"semanas"`, `"horas"`, `"meses"`, `"anios"`, `"numero"`, `"factor"` o una unidad de referencia (`UIT UF UTM UTA UMA UDI BPC UI UR UVT UVR SBU SMMLV IMM RMV`) |
 | `regiones` | opcional. Si está, **cada** tramo lleva `region` y tiene que haber tramo verificado para **todas** las regiones para poder publicar |
 | `etiquetas` | opcional, solo en `mapa`: nombre visible de cada clave (`{ "habitat": "AFP Habitat" }`) |
 | `proximaRevision` | opcional: cuándo se espera el próximo cambio (alimenta el semáforo) |
@@ -317,8 +317,15 @@ tramo verificado a la fecha, la calculadora no se publica.
 | `fecha` | `"AAAA-MM-DD"` | `porDefecto: "hoy"` usa la fecha del servidor en la zona del mercado |
 | `opcion` | el `valor` elegido (tipado) | `opciones: [{ valor, etiqueta }]`, al menos dos |
 | `si-no` | `boolean` | |
-| `region` | id de región | las opciones salen de `mercado.regiones` |
+| `region` | id de región | las opciones salen de `mercado.regiones`; `regiones: ["on", "bc"]` deja solo esas (un impuesto que no aplica en una provincia) |
 | `opcion-dato` | clave del mapa | `dato: "<id>"`, que tiene que estar en `requiere` como `"mapa"`; las opciones salen del mapa y sus `etiquetas` |
+| `hora` | `"HH:MM"` | selector de hora del navegador; `min`, `max` y `porDefecto` en `"HH:MM"` |
+
+
+Campos condicionales: `visibleSi: { modo: ["horas"] }` muestra el campo solo cuando `modo` vale uno
+de esos valores (con varias claves, todas tienen que cumplirse; con un `si-no`, `[true]`). Oculto no se
+valida y llega a `calcular` como `null` (el tipo ya lo dice). Una sola capa: un campo condicional no
+puede depender de otro condicional.
 
 `id` del campo en camelCase. `requerido: false` hace que llegue `null` si está vacío. El parseo de
 números por locale (`1,474.77` en Perú, `1.750.905` en Colombia) lo hace el motor.
@@ -337,7 +344,7 @@ números por locale (`1,474.77` en Perú, `1.750.905` en Colombia) lo hace el mo
 ### `resultado`
 
 Cada fila: `clave` (una clave de lo que devuelve `calcular`), `etiqueta`, `formato`
-(`moneda numero porcentaje dias meses horas anios texto fecha`), y opcionales `moneda` (para
+(`moneda numero porcentaje dias semanas meses horas anios texto fecha`), y opcionales `moneda` (para
 mostrar en la segunda moneda), `decimales`, `destacada`, `ocultarSiCero`, `ayuda`.
 Si una clave no existe o es de otro tipo, TypeScript marca un error que dice
 `error: estas claves de resultado no salen de calcular() o tienen otro tipo` (aparece donde se usa
@@ -390,9 +397,17 @@ export default definirContenido({
 | `{{pe.rmv}}` | el valor (`S/ 1,230.00`, `9 %`, `90 UF`) |
 | `{{mx.salario-minimo@frontera-norte}}` | el valor de esa región (obligatorio en datos por región) |
 | `{{pe.comision-afp[habitat]}}` | una clave de un mapa |
-| `{{pe.rmv#desde}}` | la fecha desde la que rige (`1 de octubre de 2026`) |
+| `{{pe.rmv#desde}}` | la fecha desde la que rige (`1 de octubre de 2026`); también en escalas |
+| `{{cl.uf}}` (una serie) | el punto vigente a la fecha (con `maxAntiguedadDias`); `{{cl.uf#desde}}` da su fecha |
+| `{{de.einkommensteuer[2].tasa}}` | la tasa de la fila 2 de una escala (la primera es 0) |
+| `{{de.einkommensteuer[2].desde}}` | el límite inferior de esa fila; también `.hasta` y `.cuotaFija` |
+| `{{de.einkommensteuer[-1].tasa}}` | la última fila (`-2` la anteúltima) |
+| `{{ca.impuesto[0].tasa@on}}` | una fila de una escala por región |
 
-  Solo podés usar ids que estén en `requiere` de esa calculadora.
+  Solo podés usar ids que estén en `requiere` de esa calculadora. Los tramos de una escala no se
+  escriben a mano: con `[n].tasa` y `[n].desde` el texto cambia solo cuando cambia el año. Si al
+  año siguiente la escala tiene menos filas y un índice queda afuera, `check_paises` lo marca como
+  error (un marcador que hoy no se resuelve nunca llega a la página).
 
 ## 10. Casos: `calculadoras/<slug>.casos.ts`
 

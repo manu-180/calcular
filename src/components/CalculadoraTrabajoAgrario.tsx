@@ -8,7 +8,8 @@ import {
   MESES_PISO_ART22,
 } from "@/data/trabajo-agrario";
 import { calcularDespidoRural, type ModalidadRural } from "@/lib/trabajo-agrario";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, errorCantidad, parseMonto, parseDecimal } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -28,16 +29,23 @@ export function CalculadoraTrabajoAgrario() {
   const [devengadas, setDevengadas] = useState("3300000");
   const [mesesEfectivos, setMesesEfectivos] = useState("");
 
+  const error = primerError({
+    "Mejor remuneración": errorMonto(remuneracion),
+    "Tope indemnizatorio": errorMonto(tope),
+    "Remuneraciones devengadas": errorMonto(devengadas),
+    "Meses efectivos": errorCantidad(mesesEfectivos),
+  });
+
   const res = useMemo(
     () =>
       calcularDespidoRural({
         modalidad,
         ingresoISO: ingreso,
         egresoISO: egreso,
-        mejorRemuneracion: Number(remuneracion) || 0,
-        topeCCT: Number(tope) > 0 ? Number(tope) : undefined,
-        remuneracionesDevengadas: Number(devengadas) > 0 ? Number(devengadas) : undefined,
-        mesesEfectivos: Number(mesesEfectivos) > 0 ? Number(mesesEfectivos) : undefined,
+        mejorRemuneracion: parseMonto(remuneracion),
+        topeCCT: parseMonto(tope) > 0 ? parseMonto(tope) : undefined,
+        remuneracionesDevengadas: parseMonto(devengadas) > 0 ? parseMonto(devengadas) : undefined,
+        mesesEfectivos: parseDecimal(mesesEfectivos) > 0 ? parseDecimal(mesesEfectivos) : undefined,
       }),
     [modalidad, ingreso, egreso, remuneracion, tope, devengadas, mesesEfectivos],
   );
@@ -187,7 +195,9 @@ export function CalculadoraTrabajoAgrario() {
         )}
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Revisá las fechas y el sueldo: el ingreso tiene que ser anterior al egreso y la
           remuneración, mayor que cero.

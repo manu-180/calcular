@@ -4,18 +4,17 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState, type CSSPrope
 import { Bandera } from "./Bandera";
 import { destinoEquivalente, mapaEquivalentes, paisDelVisitante, recordarPais, type MapaEquivalentes } from "./geo-cliente";
 import { IconoChevron, IconoGlobo } from "./Iconos";
+import { usePaises } from "./ListaPaises";
+import { edicionPara, idiomasDelNavegador, type OpcionPais } from "./paises";
+import type { Idioma, Trato } from "../tipos";
 import { textosInicio } from "./textos-inicio";
 
-export interface OpcionPais {
-  codigo: string;
-  nombre: string;
-  pais: string;
-  href: string;
-}
+export type { OpcionPais };
 
 interface Props {
   actual: OpcionPais | null;
-  opciones: readonly OpcionPais[];
+  idioma: Idioma;
+  trato: Trato;
   textos: { elegir: string; latinoamerica: string; todos: string; hrefTodos: string };
 }
 
@@ -37,10 +36,13 @@ interface Item extends OpcionPais {
 // Selector del header. Cambiar de país desde una calculadora lleva a la del mismo concepto en el
 // destino (el mapa viene de /api/geo/equivalentes, pedido al primer hover o foco del botón); sin
 // mapa, sin JS o sin equivalente, al inicio del país. Combobox: el foco se queda en el buscador y las
-// flechas mueven la opción activa (aria-activedescendant).
-export function SelectorPais({ actual, opciones, textos }: Props) {
-  const ti = textosInicio(actual?.codigo === "br" ? "pt" : "es", "tu").selector;
+// flechas mueven la opción activa (aria-activedescendant). La lista se pinta recién al abrir: con 190
+// países eran cientos de links ocultos en el HTML de cada página.
+export function SelectorPais({ actual, idioma, trato, textos }: Props) {
+  const opciones = usePaises();
+  const ti = textosInicio(idioma, trato).selector;
   const [abierto, setAbierto] = useState(false);
+  const [montado, setMontado] = useState(false);
   const [consulta, setConsulta] = useState("");
   // La opción activa va por clave y no por índice: cuando llega el país de la IP se suma arriba la
   // sugerencia y los índices se corren, pero la selección tiene que quedarse donde estaba.
@@ -55,7 +57,7 @@ export function SelectorPais({ actual, opciones, textos }: Props) {
   const id = useId();
 
   const precargar = useCallback(() => {
-    void mapaEquivalentes().then((m) => m && setMapa(m));
+    void mapaEquivalentes(window.location.pathname).then((m) => m && setMapa(m));
   }, []);
 
   const items = useMemo<Item[]>(() => {
@@ -64,7 +66,8 @@ export function SelectorPais({ actual, opciones, textos }: Props) {
       const d = destinoEquivalente(mapa, ruta, o);
       return { ...o, clave: `${ubicacion ? "u" : "l"}-${o.codigo}`, destino: d.href, mismaCalculadora: d.mismaCalculadora, ubicacion };
     };
-    const sugerida = !q && geo ? opciones.find((o) => o.pais === geo && o.codigo !== actual?.codigo) : undefined;
+    const enGeo = !q && geo ? edicionPara(opciones, geo, idiomasDelNavegador()) : undefined;
+    const sugerida = enGeo && enGeo.codigo !== actual?.codigo ? enGeo : undefined;
     const filtradas = opciones.filter((o) => !q || normal(o.nombre).includes(q) || o.codigo === q);
     return [...(sugerida ? [conDestino(sugerida, true)] : []), ...filtradas.map((o) => conDestino(o, false))];
   }, [consulta, geo, mapa, ruta, opciones, actual]);
@@ -90,6 +93,7 @@ export function SelectorPais({ actual, opciones, textos }: Props) {
 
   useEffect(() => {
     if (!abierto) return;
+    setMontado(true);
     setRuta(window.location.pathname);
     precargar();
     void paisDelVisitante().then(setGeo);
@@ -168,7 +172,7 @@ export function SelectorPais({ actual, opciones, textos }: Props) {
         onPointerEnter={precargar}
         onFocus={precargar}
       >
-        {actual ? <Bandera pais={actual.pais} ancho={20} /> : <IconoGlobo className="cy-ps-globo" />}
+        {actual ? <Bandera pais={actual.pais} ancho={20} prioridad /> : <IconoGlobo className="cy-ps-globo" />}
         <span className="cy-ps-nombre">{actual ? actual.nombre : textos.latinoamerica}</span>
         <IconoChevron className="cy-ps-chevron" />
       </button>
@@ -197,7 +201,7 @@ export function SelectorPais({ actual, opciones, textos }: Props) {
           />
         </div>
         <ul ref={lista} id={idLista} className="cy-ps-lista" role="listbox" aria-label={ti.paises}>
-          {items.map((o, i) => {
+          {(montado ? items : []).map((o, i) => {
             const esActual = o.codigo === actual?.codigo;
             const primeraDeLista = i > 0 && items[i - 1].ubicacion && !o.ubicacion;
             return (
@@ -239,7 +243,7 @@ export function SelectorPais({ actual, opciones, textos }: Props) {
             );
           })}
         </ul>
-        {items.length === 0 ? (
+        {montado && items.length === 0 ? (
           <p className="cy-ps-vacio" role="status">
             {ti.sinResultados(consulta.trim())}
           </p>

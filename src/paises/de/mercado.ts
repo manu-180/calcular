@@ -1,0 +1,33 @@
+import type { Mercado } from "@/motor/tipos";
+
+export const mercado: Mercado = {
+  codigo: "de",
+  pais: "DE",
+  nombre: "Deutschland",
+  locale: "de-DE",
+  idioma: "de",
+  trato: "usted",
+  monedas: ["EUR"],
+  zonaHoraria: "Europe/Berlin",
+  estado: "publicado",
+  regiones: [
+    { id: "bw", nombre: "Baden-Württemberg" },
+    { id: "by", nombre: "Bayern" },
+    { id: "be", nombre: "Berlin" },
+    { id: "bb", nombre: "Brandenburg" },
+    { id: "hb", nombre: "Bremen" },
+    { id: "hh", nombre: "Hamburg" },
+    { id: "he", nombre: "Hessen" },
+    { id: "mv", nombre: "Mecklenburg-Vorpommern" },
+    { id: "ni", nombre: "Niedersachsen" },
+    { id: "nw", nombre: "Nordrhein-Westfalen" },
+    { id: "rp", nombre: "Rheinland-Pfalz" },
+    { id: "sl", nombre: "Saarland" },
+    { id: "sn", nombre: "Sachsen" },
+    { id: "st", nombre: "Sachsen-Anhalt" },
+    { id: "sh", nombre: "Schleswig-Holstein" },
+    { id: "th", nombre: "Thüringen" },
+  ],
+  redondeo: { decimales: 2, modo: "mitad-arriba" },
+  escala: 1,
+};

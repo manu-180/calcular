@@ -4,7 +4,6 @@ import { EmailCapture } from "@/components/EmailCapture";
 import { datosOferta } from "@/lib/oferta";
 import { CalculadoraComercio } from "@/components/CalculadoraComercio";
 import { JsonLd } from "@/components/JsonLd";
-import { PlanillaComercioCTA } from "@/components/PlanillaComercioCTA";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { CATEGORIAS_COMERCIO, COMERCIO_FUENTES, MESES_COMERCIO } from "@/data/convenios/comercio";
 import { calcularComercio } from "@/lib/convenios";
@@ -12,12 +11,17 @@ import { formatARS } from "@/lib/formato";
 import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
 import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
-const MES = vigenteEn(MESES_COMERCIO, periodoDeMes);
-const MES_ID = MES.id;
-const MES_TXT = MES.etiqueta.toLowerCase();
-const ACTUALIZADO_EL = COMERCIO_FUENTES.consultadoEl;
+function datosDelMes() {
+  const MES = vigenteEn(MESES_COMERCIO, periodoDeMes);
+  const MES_ID = MES.id;
+  const MES_TXT = MES.etiqueta.toLowerCase();
+  const ACTUALIZADO_EL = COMERCIO_FUENTES.consultadoEl;
+  return { MES, MES_ID, MES_TXT, ACTUALIZADO_EL };
+}
 
-const faqs = [
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const crearFaqs = ({  }: DatosDelMes) => [
   {
     q: "¿Por qué el neto de comercio no es el 83% del bruto?",
     a: "Porque en 2026 el CCT 130/75 tiene $120.000 de sumas no remunerativas que solo descuentan el 3% de obra social, no el 17% del sueldo básico. Así, el neto real es mayor que el que da la fórmula del 83%. Esa ventaja se va achicando entre diciembre de 2026 y mayo de 2027, cuando los $120.000 pasen al básico de a $20.000 por mes.",
@@ -52,6 +56,9 @@ export const metadata: Metadata = {
 };
 
 export default function SueldoNetoComercioPage() {
+  const datos = datosDelMes();
+  const { MES, MES_ID, MES_TXT, ACTUALIZADO_EL } = datos;
+  const faqs = crearFaqs(datos);
   const mesEtiqueta = MES.etiqueta;
 
   const grupos = [...new Set(CATEGORIAS_COMERCIO.map((c) => c.grupo))];
@@ -244,8 +251,6 @@ export default function SueldoNetoComercioPage() {
           vuelve al 83% del bruto.
         </p>
       </section>
-
-      <PlanillaComercioCTA />
 
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-zinc-900">Preguntas frecuentes</h2>

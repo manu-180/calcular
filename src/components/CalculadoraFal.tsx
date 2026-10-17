@@ -14,7 +14,8 @@ import {
   type EscenarioAlicuota,
   type TipoEmpleador,
 } from "@/lib/fal";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, errorCantidad, parseMonto, parseDecimal } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -34,16 +35,22 @@ export function CalculadoraFal() {
   const [remuneracion, setRemuneracion] = useState("1500000");
   const [antiguedad, setAntiguedad] = useState("5");
 
+  const error = primerError({
+    "Masa salarial mensual": errorMonto(masa),
+    "Sueldo de referencia": errorMonto(remuneracion),
+    "Años de antigüedad": errorCantidad(antiguedad),
+  });
+
   const res = useMemo(
     () =>
       calcularFal({
         tipoEmpleador,
-        masaSalarialMensual: Number(masa) || 0,
+        masaSalarialMensual: parseMonto(masa),
         escenario,
         enRifl,
         primerPeriodo,
-        mejorRemuneracion: Number(remuneracion) > 0 ? Number(remuneracion) : undefined,
-        aniosAntiguedad: Number(antiguedad) > 0 ? Number(antiguedad) : undefined,
+        mejorRemuneracion: parseMonto(remuneracion) > 0 ? parseMonto(remuneracion) : undefined,
+        aniosAntiguedad: parseDecimal(antiguedad) > 0 ? parseDecimal(antiguedad) : undefined,
       }),
     [tipoEmpleador, masa, escenario, enRifl, primerPeriodo, remuneracion, antiguedad],
   );
@@ -196,7 +203,9 @@ export function CalculadoraFal() {
         </div>
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Cargá una masa salarial mayor que cero y el mes de la primera contribución.
         </p>

@@ -7,6 +7,7 @@ import { leerReferenciaIntl, productoIntlDe } from "@/lib/pagos/catalogo-intl";
 import { rutaLandingIntl, rutaVerInformeIntl } from "@/lib/pagos/flujo-intl";
 import { calcularEscenarios, estadoDelInforme } from "@/lib/pagos/informe-intl";
 import { familiaPorClave } from "@/lib/pagos/ofertas-intl";
+import { textosFamilia } from "@/lib/pagos/textos";
 import { calculadorasDeProducto, validarDatosDeProducto } from "@/lib/pagos/ofertas-servidor";
 import { ID_PAYPAL } from "@/lib/pagos/paypal";
 import { pagoCubre, type PagoVerificado } from "@/lib/pagos/tipos";
@@ -56,7 +57,7 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
   const producto = ctx ? productoIntlDe(ctx.mercado.codigo, informe) : null;
   if (!ctx || !producto || producto.tipo !== "informe") notFound();
   const m = ctx.mercado;
-  const tv = textosVer(m.trato);
+  const tv = textosVer(m.idioma, m.trato);
   const landing = rutaLandingIntl(producto);
   const volver = producto.titulo;
 
@@ -109,8 +110,9 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
   const crudos = datos && datos.calc === slug ? crudosDeEntrada(def.campos, datos.entrada, m.locale, base) : base;
   const motor = textosMotor(m.idioma, m.trato);
   const estado = estadoDelInforme(def, crudos, props, motor);
-  const escenarios = familia.escenarios ? calcularEscenarios(def, familia.escenarios.tipo, crudos, props, motor) : null;
-  const t = m.trato;
+  const escenarios = familia.escenarios ? calcularEscenarios(def, familia.escenarios, crudos, props, motor) : null;
+  const textos = textosInforme(m.idioma, m.trato, familia.clave);
+  const tf = textosFamilia(familia.clave, m.idioma, m.trato);
   const otras = permitidas.length > 1 && !datos;
 
   const medio = (
@@ -123,12 +125,12 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
           ))}
         </ol>
       </section>
-      {familia.pasos ? (
+      {tf.pasos ? (
         <section>
-          <h2>{familia.pasos.titulo[t]}</h2>
+          <h2>{tf.pasos.titulo}</h2>
           <ul className="cy-informe-lista">
-            {familia.pasos.items.map((x) => (
-              <li key={x[t]}>{x[t]}</li>
+            {tf.pasos.items.map((x) => (
+              <li key={x}>{x}</li>
             ))}
           </ul>
         </section>
@@ -172,32 +174,36 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
         <InformeVivo
           mercado={m.codigo}
           slug={slug}
+          {...(pagina.universal ? { universal: pagina.universal } : {})}
           permitidas={permitidas}
           producto={producto.id}
-          definicion={{ id: def.id, campos: def.campos, resultado: def.resultado }}
+          definicion={{ id: def.id, campos: def.campos, resultado: def.resultado, tablas: def.tablas }}
           props={props}
           crudosIniciales={crudos}
           conDatos={!!datos}
           estadoInicial={estado}
           escenariosIniciales={escenarios}
-          tipoEscenario={familia.escenarios?.tipo ?? null}
-          textos={textosInforme(t, familia)}
+          escenario={familia.escenarios}
+          textos={textos}
           medio={medio}
         />
-        <section>
-          <h2>{tv.fuentes}</h2>
-          <ul className="cy-informe-fuentes">
-            {pagina.sello.fuentes.map((f) => (
-              <li key={f.url}>
-                <strong>{f.organismo}</strong>. {f.titulo}, {tv.verificado} {formatearFecha(f.verificadoEl, m.locale)}.{" "}
-                <a href={f.url} rel="noopener" target="_blank">
-                  {f.url}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <p className="cy-informe-legal">{tv.legal}</p>
+        {pagina.sello.fuentes.length ? (
+          <section>
+            <h2>{tv.fuentes}</h2>
+            <ul className="cy-informe-fuentes">
+              {pagina.sello.fuentes.map((f) => (
+                <li key={f.url}>
+                  <strong>{f.organismo}</strong>. {f.titulo}, {tv.verificado} {formatearFecha(f.verificadoEl, m.locale)}.{" "}
+                  <a href={f.url} rel="noopener" target="_blank">
+                    {f.url}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+        {tf.aviso ? <p className="cy-informe-legal">{tf.aviso}</p> : null}
+        <p className="cy-informe-legal">{pagina.sello.fuentes.length ? tv.legal : tv.legalSinFuentes}</p>
       </article>
     </div>
   );

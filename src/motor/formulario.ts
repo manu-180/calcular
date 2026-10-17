@@ -1,6 +1,6 @@
 import { contextoDesdeSerializado, ErrorEntrada } from "./calculo";
 import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearFecha, parsearNumero, sugerenciaMiles } from "./formato";
-import { interpolar, type CodigoError, type TextosMotor } from "./textos";
+import { interpolar, textosMotor, type CodigoError, type TextosMotor } from "./textos";
 import type {
   AvisoResuelto,
   Campo,
@@ -40,10 +40,21 @@ export type EstadoCalculo =
 
 export function opcionesDe(campo: Campo, contexto: ContextoSerializado, dinamicas: PropsCalculadora["opcionesDinamicas"]): readonly OpcionDinamica[] {
   if (campo.tipo === "opcion") return campo.opciones;
-  if (campo.tipo === "region") return contexto.regiones.map((r) => ({ valor: r.id, etiqueta: r.nombre }));
+  if (campo.tipo === "region") {
+    const solo = campo.regiones;
+    return contexto.regiones.filter((r) => !solo || solo.includes(r.id)).map((r) => ({ valor: r.id, etiqueta: r.nombre }));
+  }
   if (campo.tipo === "opcion-dato") return dinamicas[campo.id] ?? [];
   return [];
 }
+
+// Un campo con visibleSi se muestra y se valida solo si cada campo nombrado tiene uno de sus valores.
+export function campoVisible(campo: Campo, crudos: Crudos): boolean {
+  if (!campo.visibleSi) return true;
+  return Object.entries(campo.visibleSi).every(([otro, valores]) => valores.includes(crudos[otro] as string | boolean));
+}
+
+export const RE_HORA = /^([01]\d|2[0-3]):[0-5]\d$/;
 
 export function valoresIniciales(campos: readonly Campo[], contexto: ContextoSerializado, dinamicas: PropsCalculadora["opcionesDinamicas"]): Crudos {
   const crudos: Record<string, string | boolean> = {};
@@ -54,6 +65,9 @@ export function valoresIniciales(campos: readonly Campo[], contexto: ContextoSer
         break;
       case "fecha":
         crudos[c.id] = c.porDefecto === "hoy" ? contexto.fecha : (c.porDefecto ?? "");
+        break;
+      case "hora":
+        crudos[c.id] = c.porDefecto ?? "";
         break;
       case "opcion":
       case "region":
@@ -73,13 +87,9 @@ function ejemploDe(campo: Campo, locale: string): string {
   return formatearNumero(campo.tipo === "porcentaje" ? 12.5 : campo.tipo === "entero" ? 12 : 1234.5, locale, campo.tipo === "entero" ? 0 : undefined);
 }
 
-// Va acá y no en textos.ts porque lleva el número sugerido y el separador armados en la frase.
-function mensajeMilesAmbiguos(sugerido: string, separador: string, idioma: Idioma, trato: Trato): string {
-  if (idioma === "pt") return `Você quis dizer ${sugerido}? Escreva sem ${separador === "." ? "pontos" : "vírgulas"}.`;
-  const signos = separador === "." ? "puntos" : "comas";
-  if (trato === "usted") return `¿Quiso decir ${sugerido}? Escríbalo sin ${signos}.`;
-  if (trato === "vos") return `¿Quisiste decir ${sugerido}? Escribilo sin ${signos}.`;
-  return `¿Quisiste decir ${sugerido}? Escríbelo sin ${signos}.`;
+function mensajeMilesAmbiguos(sugerido: string, separador: string, idioma: Idioma, trato: Trato, locale: string): string {
+  const t = textosMotor(idioma, trato, locale);
+  return interpolar(t.milesAmbiguos, { sugerido, signos: separador === "." ? t.separadores.punto : t.separadores.coma });
 }
 
 export function parsearEntrada(
@@ -93,6 +103,10 @@ export function parsearEntrada(
   for (const c of campos) {
     const crudo = crudos[c.id];
     const requerido = c.requerido !== false;
+    if (!campoVisible(c, crudos)) {
+      entrada[c.id] = null;
+      continue;
+    }
     if (c.tipo === "si-no") {
       entrada[c.id] = crudo === true;
       continue;
@@ -112,6 +126,13 @@ export function parsearEntrada(
         else entrada[c.id] = f;
         break;
       }
+      case "hora": {
+        if (!RE_HORA.test(texto)) errores[c.id] = { codigo: "hora-invalida" };
+        else if (c.min && texto < c.min) errores[c.id] = { codigo: "menor-que-min", params: { min: c.min } };
+        else if (c.max && texto > c.max) errores[c.id] = { codigo: "mayor-que-max", params: { max: c.max } };
+        else entrada[c.id] = texto;
+        break;
+      }
       case "opcion":
       case "region":
       case "opcion-dato": {
@@ -124,7 +145,7 @@ export function parsearEntrada(
         const milesAmbiguos = c.tipo === "moneda" || c.tipo === "entero";
         const n = parsearNumero(texto, contexto.locale, { milesAmbiguos });
         const sugerencia = n === null && milesAmbiguos ? sugerenciaMiles(texto, contexto.locale) : null;
-        if (sugerencia) errores[c.id] = { mensaje: mensajeMilesAmbiguos(sugerencia.sugerido, sugerencia.separador, contexto.idioma, contexto.trato) };
+        if (sugerencia) errores[c.id] = { mensaje: mensajeMilesAmbiguos(sugerencia.sugerido, sugerencia.separador, contexto.idioma, contexto.trato, contexto.locale) };
         else if (n === null) errores[c.id] = { codigo: "numero-invalido", params: { ejemplo: ejemploDe(c, contexto.locale) } };
         else if (c.tipo === "entero" && !Number.isInteger(n)) errores[c.id] = { codigo: "entero-invalido" };
         else if (c.min !== undefined && n < c.min) errores[c.id] = { codigo: "menor-que-min", params: { min: formatearNumero(c.min, contexto.locale) } };

@@ -287,7 +287,16 @@ export type PropsEncabezado = {
   extra?: ReactNode;
   extraCajon?: ReactNode;
   rutasInternas?: boolean;
+  // Desde qué ancho va la barra de tabs. calcularya usa "xl": seis tabs más el selector de país no
+  // entran en 1024 px y la fila desbordaba la página.
+  navDesde?: "lg" | "xl";
 };
+
+// Clases enteras y no armadas con el breakpoint: Tailwind solo genera las que lee literales.
+const BREAKPOINTS = {
+  lg: { consulta: "(min-width: 1024px)", nav: "ml-4 hidden lg:block xl:ml-8", desde: "lg:inline-flex", hasta: "lg:hidden", bloque: "lg:block", tecla: "ca-tecla hidden xl:inline-flex" },
+  xl: { consulta: "(min-width: 1280px)", nav: "ml-4 hidden xl:block", desde: "xl:inline-flex", hasta: "xl:hidden", bloque: "xl:block", tecla: "ca-tecla hidden 2xl:inline-flex" },
+} as const;
 
 export default function SiteHeader({
   tabs,
@@ -299,7 +308,9 @@ export default function SiteHeader({
   extra,
   extraCajon,
   rutasInternas = false,
+  navDesde = "lg",
 }: PropsEncabezado) {
+  const bp = BREAKPOINTS[navDesde];
   const rutaCruda = usePathname() ?? "/";
   const pathname = rutasInternas ? rutaPublica(rutaCruda) : rutaCruda;
   const conBuscador = buscador !== null;
@@ -401,11 +412,11 @@ export default function SiteHeader({
   // detrás de un diálogo que ya no se ve (el cajón es lg:hidden).
   useEffect(() => {
     if (!mobileOpen) return;
-    const mq = window.matchMedia("(min-width: 1024px)");
+    const mq = window.matchMedia(bp.consulta);
     const onChange = () => mq.matches && terminarCierre();
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
-  }, [mobileOpen, terminarCierre]);
+  }, [mobileOpen, terminarCierre, bp.consulta]);
 
   // Barra activa deslizante: descansa bajo el tab de la sección actual y se
   // desliza al tab bajo el cursor. La animación la hace CSS (.ca-underline).
@@ -635,7 +646,7 @@ export default function SiteHeader({
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-4 sm:px-6">
           <Logo marca={marca} />
 
-          <nav className="ml-4 hidden lg:block xl:ml-8" aria-label={textos.principal} onPointerEnter={pedirNav} onFocusCapture={pedirNav}>
+          <nav className={bp.nav} aria-label={textos.principal} onPointerEnter={pedirNav} onFocusCapture={pedirNav}>
             <div ref={rowRef} className="relative flex items-center gap-0.5">
               {tabs.map((tab) => {
                 const active = activeKey === tab.key;
@@ -725,15 +736,15 @@ export default function SiteHeader({
               aria-haspopup="dialog"
               aria-keyshortcuts="Control+K Meta+K /"
               aria-label={textos.buscarCalculadora}
-              className="group hidden h-10 items-center gap-2 rounded-full border border-zinc-200/90 bg-white/80 pl-3.5 pr-2 text-sm text-zinc-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] outline-none transition-[border-color,background-color,color,transform] duration-200 ease-fluid hover:border-zinc-300 hover:bg-white hover:text-zinc-800 active:scale-[0.97] lg:inline-flex"
+              className={"group hidden h-10 items-center gap-2 rounded-full border border-zinc-200/90 bg-white/80 pl-3.5 pr-2 text-sm text-zinc-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] outline-none transition-[border-color,background-color,color,transform] duration-200 ease-fluid hover:border-zinc-300 hover:bg-white hover:text-zinc-800 active:scale-[0.97] " + bp.desde}
             >
               <IconoLupa className="size-4 transition-transform duration-300 ease-fluid group-hover:-rotate-6" />
               <span className="pr-1">{textos.buscar}</span>
-              <kbd className="ca-tecla hidden xl:inline-flex">{atajo}</kbd>
+              <kbd className={bp.tecla}>{atajo}</kbd>
             </button>
             )}
 
-            <MenuCuenta claseIngresar="hidden h-10 items-center rounded-full px-3.5 text-sm font-medium text-zinc-600 outline-none transition-[background-color,color,transform] duration-200 hover:bg-zinc-900/[0.04] hover:text-zinc-900 active:scale-[0.97] lg:inline-flex" />
+            <MenuCuenta claseIngresar={"hidden h-10 items-center rounded-full px-3.5 text-sm font-medium text-zinc-600 outline-none transition-[background-color,color,transform] duration-200 hover:bg-zinc-900/[0.04] hover:text-zinc-900 active:scale-[0.97] " + bp.desde} />
 
             {conBuscador && (
             <button
@@ -743,7 +754,7 @@ export default function SiteHeader({
               onPointerDown={precargarMotor}
               aria-haspopup="dialog"
               aria-label={textos.buscarCalculadora}
-              className="grid size-11 place-items-center rounded-full text-zinc-700 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-900/[0.05] active:scale-95 lg:hidden"
+              className={"grid size-11 place-items-center rounded-full text-zinc-700 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-900/[0.05] active:scale-95 " + bp.hasta}
             >
               <IconoLupa className="size-[22px]" />
             </button>
@@ -757,7 +768,7 @@ export default function SiteHeader({
               aria-label={textos.abrirMenu}
               aria-expanded={mobileOpen}
               aria-haspopup="dialog"
-              className="-mr-1.5 grid size-11 place-items-center rounded-full text-zinc-700 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-900/[0.05] active:scale-95 lg:hidden"
+              className={"-mr-1.5 grid size-11 place-items-center rounded-full text-zinc-700 outline-none transition-[background-color,transform] duration-200 hover:bg-zinc-900/[0.05] active:scale-95 " + bp.hasta}
             >
               <MenuIcon className="size-6" />
             </button>
@@ -768,7 +779,7 @@ export default function SiteHeader({
       {/* Mega-panel de escritorio: vive fuera de la barra para ocupar el ancho del contenedor sin
           depender de la posición del tab. El `max-h` + scroll interno garantiza que nunca se corte. */}
       {openTab && columnas && (
-        <div className="pointer-events-none absolute inset-x-0 top-full hidden lg:block">
+        <div className={"pointer-events-none absolute inset-x-0 top-full hidden " + bp.bloque}>
           <div ref={panelWrapRef} className="mx-auto w-full max-w-6xl px-4 sm:px-6">
             <div
               ref={panelRef}
@@ -841,7 +852,7 @@ export default function SiteHeader({
           Next igual prefetchea al tocar, y montados de golpe competían con el primer pintado. */}
       <dialog
         ref={cajonRef}
-        className="ca-cajon ca-bloquea lg:hidden"
+        className={"ca-cajon ca-bloquea " + bp.hasta}
         aria-label={textos.menu}
         onClose={() => setMobileOpen(false)}
         onCancel={(e) => {

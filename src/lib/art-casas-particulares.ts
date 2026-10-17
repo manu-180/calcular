@@ -14,7 +14,7 @@
 // `data/aportes-casas-particulares.ts` (la tabla mensual de ARCA) y los pisos y la fórmula de
 // `lib/riesgos-trabajo.ts`. Si mañana cambia cualquiera de las tres, esta página cambia sola.
 
-import { ESCALA_VIGENTE, type CategoriaCasasParticulares } from "@/data/casas-particulares";
+import { escalaVigente, type CategoriaCasasParticulares } from "@/data/casas-particulares";
 import {
   type CondicionTrabajador,
   type RangoHoras,
@@ -61,7 +61,7 @@ export type EntradaArtCasas = {
 };
 
 export function calcularArtCasas(e: EntradaArtCasas): ResultadoArtCasas | null {
-  const categoria = ESCALA_VIGENTE.find((c) => c.id === e.categoriaId);
+  const categoria = escalaVigente().find((c) => c.id === e.categoriaId);
   if (!categoria) return null;
 
   // La categoría de caseros sólo existe sin retiro: por definición vive en la vivienda. Pedirle
@@ -114,7 +114,7 @@ export function calcularArtCasas(e: EntradaArtCasas): ResultadoArtCasas | null {
   } else if (art) {
     avisos.push({
       tono: "atencion",
-      texto: `Acá la fórmula supera al piso, que es lo excepcional en este régimen: sólo pasa en las edades más jóvenes, donde el coeficiente 65/edad es máximo, y llega más lejos cuanto más alta es la base de la categoría. Desde los ${EDAD_PISO_SIEMPRE} años manda el piso en todas las categorías y modalidades.`,
+      texto: `Acá la fórmula supera al piso, que es lo excepcional en este régimen: sólo pasa en las edades más jóvenes, donde el coeficiente 65/edad es máximo, y llega más lejos cuanto más alta es la base de la categoría. Desde los ${edadPisoSiempre()} años manda el piso en todas las categorías y modalidades.`,
     });
   }
 
@@ -153,11 +153,11 @@ export const EDAD_MAXIMA_BARRIDO = 70;
 // escala sube todos los meses y el piso cada seis, así que una edad escrita a mano queda falsa al
 // mes siguiente (pasó el 1/10/2026: la página decía «desde los 19 años» y supervisor/a sin retiro
 // ya cortaba a los 20). El porcentaje es irrelevante para el cruce porque multiplica a los dos
-// lados; se barre con 100. Usa `calcularART` y no `calcularArtCasas` porque esta corre al cargar el
-// módulo y `calcularArtCasas` lee EDAD_PISO_SIEMPRE: llamarla acá es un ReferenceError (TDZ).
+// lados; se barre con 100. Usa `calcularART` y no `calcularArtCasas` porque esta última lee
+// edadPisoSiempre(), que a su vez llama a cortesDelPiso(): sería recursión infinita.
 export function cortesDelPiso(): CorteArtCasas[] {
   const cortes: CorteArtCasas[] = [];
-  for (const categoria of ESCALA_VIGENTE) {
+  for (const categoria of escalaVigente()) {
     const modalidades: Modalidad[] =
       categoria.mesConRetiro === null ? ["sin-retiro"] : ["con-retiro", "sin-retiro"];
     for (const modalidad of modalidades) {
@@ -177,11 +177,18 @@ export function cortesDelPiso(): CorteArtCasas[] {
   return cortes;
 }
 
-export const CORTES_ART_CASAS = cortesDelPiso();
 /** Desde esta edad el piso manda en todas las categorías y modalidades. */
-export const EDAD_PISO_SIEMPRE = Math.max(...CORTES_ART_CASAS.map((c) => c.edad));
-export const CORTE_MAS_TEMPRANO = CORTES_ART_CASAS.reduce((a, b) => (b.edad < a.edad ? b : a));
-export const CORTE_MAS_TARDIO = CORTES_ART_CASAS.reduce((a, b) => (b.edad > a.edad ? b : a));
+export function edadPisoSiempre(): number {
+  return Math.max(...cortesDelPiso().map((c) => c.edad));
+}
+
+export function corteMasTemprano(): CorteArtCasas {
+  return cortesDelPiso().reduce((a, b) => (b.edad < a.edad ? b : a));
+}
+
+export function corteMasTardio(): CorteArtCasas {
+  return cortesDelPiso().reduce((a, b) => (b.edad > a.edad ? b : a));
+}
 
 export function describirCorte(c: CorteArtCasas): string {
   return `${c.categoria.nombre.toLowerCase()} ${c.modalidad === "con-retiro" ? "con retiro" : "sin retiro"}`;

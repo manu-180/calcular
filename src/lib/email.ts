@@ -603,6 +603,20 @@ export async function sendSingle(payload: ResendPayload): Promise<boolean> {
   return res.ok;
 }
 
+const dormir = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+// Para lo que no puede perderse (la entrega de una compra): un 5xx o un corte de red de Resend suele
+// ser pasajero. Las esperas son cortas porque corre dentro del webhook, que tiene que contestar rápido.
+export async function sendSingleConReintentos(payload: ResendPayload, esperasMs: readonly number[] = [400, 1200]): Promise<boolean> {
+  for (let intento = 0; ; intento++) {
+    try {
+      if (await sendSingle(payload)) return true;
+    } catch {}
+    if (intento >= esperasMs.length) return false;
+    await dormir(esperasMs[intento]);
+  }
+}
+
 // Resend batch: hasta 100 mensajes por llamada
 export async function sendBatch(payloads: ResendPayload[]): Promise<{ sent: number; failed: number }> {
   let sent = 0;

@@ -22,6 +22,8 @@ export default definirCasos(inflacion, [
     nombre: "Un mes sin IPC publicado usa el último disponible",
     origen: { tipo: "recalculado", detalle: "Al 8/10/2026 el último IPC del INIDE es julio. Junio a julio: 1000 × 326.1628 / 326.3909 = 999.30." },
     fecha: "2026-10-08",
+    // El último dato va fijo: con la serie real el caso se rompía al entrar el mes siguiente y frenaba la publicación del país.
+    valores: { "ni.ipc": { fecha: "2026-07-01", valor: 326.1628 } },
     entrada: { monto: 1000, desde: "2026-06-01", hasta: "2026-10-08" },
     esperado: { montoActualizado: 999.3, mesDestino: "julio de 2026" },
   },

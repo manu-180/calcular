@@ -1,4 +1,4 @@
-import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
 const MESES = 12;
 
@@ -28,6 +28,7 @@ export default definirCalculadora({
     },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const minimo = valores["py.salario-minimo"];
     const base = Math.max(entrada.salario, minimo);
     const ips = redondear(porcentaje(base, valores["py.ips-empleador"]));

@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { calcularQuebranto } from "@/lib/quebrantos";
 import { nombrePeriodo } from "@/lib/inflacion";
+import { errorMonto, primerError, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -20,10 +22,14 @@ export function CalculadoraQuebrantos() {
   const [cierreOrigen, setCierreOrigen] = useState("2025-12");
   const [cierreLiquidado, setCierreLiquidado] = useState("2026-12");
 
+  const error = primerError({
+    "Quebranto a computar": errorMonto(monto),
+  });
+
   const res = useMemo(
     () =>
       calcularQuebranto({
-        monto: Number(monto) || 0,
+        monto: parseMonto(monto),
         cierreOrigen,
         cierreLiquidado,
       }),
@@ -83,7 +89,9 @@ export function CalculadoraQuebrantos() {
         </div>
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Revisá los datos: el quebranto tiene que ser mayor que cero y el ejercicio que se liquida
           tiene que cerrar después del ejercicio en que se originó.

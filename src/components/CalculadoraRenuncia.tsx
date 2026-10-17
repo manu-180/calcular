@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { PREAVISO_DEL_TRABAJADOR_DIAS } from "@/data/renuncia";
 import { calcularRenuncia } from "@/lib/renuncia";
-import { formatARS, parseMonto } from "@/lib/formato";
+import { formatARS, parseMonto, errorMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -37,6 +38,10 @@ export function CalculadoraRenuncia() {
       }),
     [sueldo, ingreso, egreso, preaviso],
   );
+
+  const error = primerError({
+    "Sueldo bruto mensual": errorMonto(sueldo),
+  });
 
   return (
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
@@ -102,7 +107,9 @@ export function CalculadoraRenuncia() {
         </div>
       </div>
 
-      {!res ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : !res ? (
         <div className="mt-6 rounded-xl border border-rose-200 bg-rose-50/70 p-5 text-sm text-rose-900">
           Cargá un sueldo mayor que cero y dos fechas válidas (la salida no puede ser anterior al
           ingreso).

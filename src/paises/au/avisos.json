@@ -1,0 +1,21 @@
+{
+  "mercado": "au",
+  "avisos": [
+    {
+      "id": "au.cgt-budget-2026-27",
+      "nivel": "cautela",
+      "desde": "2026-07-01",
+      "hasta": "2027-06-30",
+      "aplicaA": ["au.capital-gains-tax-calculator"],
+      "titulo": "CGT changes announced for gains after 1 July 2027",
+      "texto": "The 2026-27 Federal Budget proposes replacing the 50% CGT discount with an inflation-based discount and a minimum 30% tax on gains arising after 1 July 2027. It is not law yet. This calculator uses the current 50% discount, which still applies to gains made before that date.",
+      "fuente": {
+        "organismo": "Australian Government, Budget 2026-27",
+        "titulo": "Tax reform: capital gains tax",
+        "url": "https://budget.gov.au/content/04-tax-reform.htm",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    }
+  ]
+}

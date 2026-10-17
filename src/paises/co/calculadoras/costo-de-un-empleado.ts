@@ -1,4 +1,4 @@
-import { definirCalculadora } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 import { costoEmpleador } from "../lib/costo-empleador";
 
 export default definirCalculadora({
@@ -39,6 +39,7 @@ export default definirCalculadora({
     { id: "riesgo", tipo: "opcion-dato", etiqueta: "Clase de riesgo de la ARL", dato: "co.arl", porDefecto: "i" },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const costo = costoEmpleador(
       {
         salario: entrada.salario,

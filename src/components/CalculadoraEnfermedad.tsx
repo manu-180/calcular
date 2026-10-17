@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import { PLAZOS_ART_208, RECIDIVA_ANIOS } from "@/data/enfermedad";
 import { calcularEnfermedad } from "@/lib/enfermedad";
 import { fechaLarga } from "@/lib/licencias";
-import { formatARS, parseMonto } from "@/lib/formato";
+import { formatARS, parseMonto, errorMonto, primerError, CANTIDAD_MAXIMA } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -22,9 +23,14 @@ export function CalculadoraEnfermedad() {
 
   const bruto = useMemo(() => parseMonto(brutoInput), [brutoInput]);
   const diasUsados = useMemo(
-    () => (huboRecaida ? Math.max(0, Number(diasUsadosInput) || 0) : 0),
+    () => (huboRecaida ? Math.max(0, parseMonto(diasUsadosInput)) : 0),
     [huboRecaida, diasUsadosInput],
   );
+
+  const error = primerError({
+    "Días ya usados": errorMonto(diasUsadosInput, CANTIDAD_MAXIMA),
+    "Sueldo bruto mensual": errorMonto(brutoInput),
+  });
 
   const res = useMemo(
     () =>
@@ -164,7 +170,9 @@ export function CalculadoraEnfermedad() {
         </p>
       )}
 
-      {res && (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res && (
         <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
           <p className="text-sm text-zinc-600">Te corresponden</p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">

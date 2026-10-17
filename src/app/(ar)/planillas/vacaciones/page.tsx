@@ -28,12 +28,18 @@ export const metadata: Metadata = {
 // inicio que todavía se puede avisar a tiempo desde el día del deploy (así el ejemplo nunca muestra
 // un plazo vencido). Sale del motor de la calculadora (calcularVacaciones) y del cronograma, igual
 // que la oferta de /vacaciones; check_planilla_vacaciones.ts exige que el archivo dé lo mismo.
-const HOY = hoyAR();
-const CASO = { ingresoISO: `${ANIO_VACACIONES - 7}-03-11`, sueldo: 1450000, diasTramo: 0, inicioISO: inicioSugerido(HOY) };
-const ARCHIVO = datosOferta("planilla-vacaciones").archivo;
-const EJEMPLO = hojaVacaciones(ARCHIVO, CASO, HOY)!;
+function datosDelMes() {
+  const HOY = hoyAR();
+  const CASO = { ingresoISO: `${ANIO_VACACIONES - 7}-03-11`, sueldo: 1450000, diasTramo: 0, inicioISO: inicioSugerido(HOY) };
+  const ARCHIVO = datosOferta("planilla-vacaciones").archivo;
+  const EJEMPLO = hojaVacaciones(ARCHIVO, CASO, HOY)!;
+  return { HOY, CASO, ARCHIVO, EJEMPLO };
+}
+
+type DatosDelMes = ReturnType<typeof datosDelMes>;
 
 export default function PlanillaVacacionesPage() {
+  const { ARCHIVO, EJEMPLO } = datosDelMes();
   return (
     <PlanillaLanding
       personal={{

@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ARTICULO_DEROGADO, SUPUESTOS_RESERVA } from "@/data/reserva-empleo";
 import { calcularReservaEmpleo } from "@/lib/reserva-empleo";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 import type { SupuestoReserva } from "@/data/reserva-empleo";
 
 const TONOS = {
@@ -34,10 +35,14 @@ export function CalculadoraReservaEmpleo() {
   const [egreso, setEgreso] = useState("2026-08-31");
   const [supuestoId, setSupuestoId] = useState<SupuestoReserva["id"]>("electivo");
 
+  const error = primerError({
+    "Mejor remuneración": errorMonto(remuneracion),
+  });
+
   const res = useMemo(
     () =>
       calcularReservaEmpleo({
-        mejorRemuneracion: Number(remuneracion) || 0,
+        mejorRemuneracion: parseMonto(remuneracion),
         ingreso,
         inicioReserva,
         finFuncion,
@@ -150,7 +155,9 @@ export function CalculadoraReservaEmpleo() {
         </div>
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Revisá las fechas y el sueldo. Tienen que ir en este orden: ingreso, inicio de la reserva,
           fin de la función y, por último, el despido o la no reincorporación.

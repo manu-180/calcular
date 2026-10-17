@@ -9,7 +9,8 @@ import {
   type EscalonInfraccion,
 } from "@/data/practicas-desleales";
 import { calcularMultaPractica } from "@/lib/practicas-desleales";
-import { formatARS, parseMonto } from "@/lib/formato";
+import { formatARS, parseMonto, errorMonto, primerError, CANTIDAD_MAXIMA } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 import { etiquetaMes } from "@/lib/desempleo";
 
 const claseInput =
@@ -25,14 +26,20 @@ export function CalculadoraPracticasDesleales() {
 
   const info = ESCALONES.find((x) => x.id === escalon)!;
 
+  const error = primerError({
+    "Trabajadores afectados": errorMonto(trabajadores, CANTIDAD_MAXIMA),
+    "Cuotas sindicales": errorMonto(cuotasInput),
+    "Días de mora": errorMonto(diasMora, CANTIDAD_MAXIMA),
+  });
+
   const res = useMemo(
     () =>
       calcularMultaPractica({
         escalon,
-        trabajadores: Number(trabajadores.replace(/\D/g, "")) || 1,
+        trabajadores: parseMonto(trabajadores) || 1,
         reincidencia,
         cuotasDelMes: cuotasInput.trim() ? parseMonto(cuotasInput) : undefined,
-        diasDeMora: Number(diasMora.replace(/\D/g, "")) || 0,
+        diasDeMora: parseMonto(diasMora),
         reparadaEnPlazo: reparada,
       }),
     [escalon, trabajadores, reincidencia, cuotasInput, diasMora, reparada],
@@ -158,104 +165,110 @@ export function CalculadoraPracticasDesleales() {
         </label>
       </div>
 
-      <div className="mt-6 rounded-xl border-2 border-emerald-500 bg-white p-5">
-        <p className="text-sm font-semibold text-zinc-700">La multa, según el art. 55</p>
-        <p className="mt-1 text-3xl font-bold tracking-tight text-emerald-700">
-          {formatARS(res.minimoFinal, 0)} — {formatARS(res.maximoFinal, 0)}
-        </p>
-        <p className="mt-1 text-sm text-zinc-600">
-          Con el SMVM de {etiquetaMes(res.smvmPeriodo)} ({formatARS(res.smvmMensual, 0)}), que es el
-          «vigente al momento de la constatación de la infracción».
-        </p>
-      </div>
-
-      <dl className="mt-4 space-y-1.5 rounded-xl border border-zinc-200 bg-zinc-50 p-5 text-sm">
-        <div className="flex justify-between gap-3">
-          <dt className="text-zinc-600">
-            Escala del Anexo II
-            <span className="block text-xs text-zinc-400">
-              {Math.round(res.escalon.min * 100)}% a {Math.round(res.escalon.max * 100)}% del SMVM
-              {res.escalon.porTrabajador
-                ? ` × ${res.trabajadoresComputados} trabajador(es)`
-                : " (no se multiplica por trabajador)"}
-            </span>
-          </dt>
-          <dd className="shrink-0 font-medium text-zinc-900">
-            {formatARS(res.minimo, 0)} — {formatARS(res.maximo, 0)}
-          </dd>
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 rounded-xl border-2 border-emerald-500 bg-white p-5">
+          <p className="text-sm font-semibold text-zinc-700">La multa, según el art. 55</p>
+          <p className="mt-1 text-3xl font-bold tracking-tight text-emerald-700">
+            {formatARS(res.minimoFinal, 0)} — {formatARS(res.maximoFinal, 0)}
+          </p>
+          <p className="mt-1 text-sm text-zinc-600">
+            Con el SMVM de {etiquetaMes(res.smvmPeriodo)} ({formatARS(res.smvmMensual, 0)}), que es el
+            «vigente al momento de la constatación de la infracción».
+          </p>
         </div>
-        {reincidencia && (
+
+        <dl className="mt-4 space-y-1.5 rounded-xl border border-zinc-200 bg-zinc-50 p-5 text-sm">
           <div className="flex justify-between gap-3">
             <dt className="text-zinc-600">
-              Máximo quintuplicado (art. 55)
+              Escala del Anexo II
               <span className="block text-xs text-zinc-400">
-                sólo sube el techo; el piso queda igual
+                {Math.round(res.escalon.min * 100)}% a {Math.round(res.escalon.max * 100)}% del SMVM
+                {res.escalon.porTrabajador
+                  ? ` × ${res.trabajadoresComputados} trabajador(es)`
+                  : " (no se multiplica por trabajador)"}
               </span>
             </dt>
             <dd className="shrink-0 font-medium text-zinc-900">
-              {formatARS(res.maximoConReincidencia, 0)}
+              {formatARS(res.minimo, 0)} — {formatARS(res.maximo, 0)}
             </dd>
           </div>
-        )}
-        {res.topeCuotas !== null && (
-          <div className="flex justify-between gap-3">
-            <dt className="text-zinc-600">
-              Techo del {Math.round(TOPE_CUOTAS * 100)}% de las cuotas del mes
-              <span className="block text-xs text-zinc-400">
-                {res.topeCuotas < res.maximoConReincidencia
-                  ? "manda este techo: es menor que el máximo de la escala"
-                  : "no muerde: el máximo de la escala queda por debajo"}
-              </span>
-            </dt>
-            <dd className="shrink-0 font-medium text-zinc-900">{formatARS(res.topeCuotas, 0)}</dd>
-          </div>
-        )}
-        {res.tramosDeMora > 0 && (
-          <div className="flex justify-between gap-3">
-            <dt className="text-zinc-600">
-              Recargo por mora
-              <span className="block text-xs text-zinc-400">
-                {res.tramosDeMora} tramo(s) de {DIAS_TRAMO_MORA} días × 10%
-              </span>
-            </dt>
-            <dd className="shrink-0 font-medium text-zinc-900">
-              +{Math.round(res.recargoMora * 100)}%
-            </dd>
-          </div>
-        )}
-        {reparada && (
-          <div className="flex justify-between gap-3">
-            <dt className="text-zinc-600">Reducción por reparar en plazo</dt>
-            <dd className="shrink-0 font-medium text-zinc-900">−50%</dd>
-          </div>
-        )}
-      </dl>
+          {reincidencia && (
+            <div className="flex justify-between gap-3">
+              <dt className="text-zinc-600">
+                Máximo quintuplicado (art. 55)
+                <span className="block text-xs text-zinc-400">
+                  sólo sube el techo; el piso queda igual
+                </span>
+              </dt>
+              <dd className="shrink-0 font-medium text-zinc-900">
+                {formatARS(res.maximoConReincidencia, 0)}
+              </dd>
+            </div>
+          )}
+          {res.topeCuotas !== null && (
+            <div className="flex justify-between gap-3">
+              <dt className="text-zinc-600">
+                Techo del {Math.round(TOPE_CUOTAS * 100)}% de las cuotas del mes
+                <span className="block text-xs text-zinc-400">
+                  {res.topeCuotas < res.maximoConReincidencia
+                    ? "manda este techo: es menor que el máximo de la escala"
+                    : "no muerde: el máximo de la escala queda por debajo"}
+                </span>
+              </dt>
+              <dd className="shrink-0 font-medium text-zinc-900">{formatARS(res.topeCuotas, 0)}</dd>
+            </div>
+          )}
+          {res.tramosDeMora > 0 && (
+            <div className="flex justify-between gap-3">
+              <dt className="text-zinc-600">
+                Recargo por mora
+                <span className="block text-xs text-zinc-400">
+                  {res.tramosDeMora} tramo(s) de {DIAS_TRAMO_MORA} días × 10%
+                </span>
+              </dt>
+              <dd className="shrink-0 font-medium text-zinc-900">
+                +{Math.round(res.recargoMora * 100)}%
+              </dd>
+            </div>
+          )}
+          {reparada && (
+            <div className="flex justify-between gap-3">
+              <dt className="text-zinc-600">Reducción por reparar en plazo</dt>
+              <dd className="shrink-0 font-medium text-zinc-900">−50%</dd>
+            </div>
+          )}
+        </dl>
 
-      {res.topeChocaConElMinimo && (
-        <p className="mt-4 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2.5 text-sm text-amber-900">
-          Ojo: acá el techo del {Math.round(TOPE_CUOTAS * 100)}% de las cuotas (
-          {formatARS(res.topeCuotas!, 0)}) queda <strong>por debajo del mínimo</strong> de la escala
-          del Anexo II ({formatARS(res.minimo, 0)}). El art. 55 no resuelve ese choque: manda aplicar
-          el régimen de la Ley 25.212 «salvo las modificaciones que aquí se establecen» y después
-          pone el tope, sin decir cuál gana. Los dos números están arriba; la respuesta la va a dar
-          la jurisprudencia, no esta calculadora.
+        {res.topeChocaConElMinimo && (
+          <p className="mt-4 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2.5 text-sm text-amber-900">
+            Ojo: acá el techo del {Math.round(TOPE_CUOTAS * 100)}% de las cuotas (
+            {formatARS(res.topeCuotas!, 0)}) queda <strong>por debajo del mínimo</strong> de la escala
+            del Anexo II ({formatARS(res.minimo, 0)}). El art. 55 no resuelve ese choque: manda aplicar
+            el régimen de la Ley 25.212 «salvo las modificaciones que aquí se establecen» y después
+            pone el tope, sin decir cuál gana. Los dos números están arriba; la respuesta la va a dar
+            la jurisprudencia, no esta calculadora.
+          </p>
+        )}
+
+        {res.smvmVencido && (
+          <p className="mt-4 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2.5 text-sm text-amber-900">
+            La escala oficial del SMVM que tenemos cargada llega hasta {etiquetaMes(res.smvmPeriodo)}.
+            Mientras no salga la resolución nueva del Consejo del Salario, ese es el último valor
+            publicado: la multa de un mes posterior puede ser mayor.
+          </p>
+        )}
+
+        <p className="mt-4 text-xs text-zinc-500">
+          Orientativo. La multa la fija el juez dentro de esta escala, y el art. 55 agrega que «los
+          importes de las multas serán actualizados a la fecha del efectivo pago, de acuerdo a las
+          pautas de ajuste que correspondan a los créditos laborales». Eso se calcula aparte, con el
+          IPC más el 3% anual del art. 276 de la LCT.
         </p>
+        </>
       )}
-
-      {res.smvmVencido && (
-        <p className="mt-4 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2.5 text-sm text-amber-900">
-          La escala oficial del SMVM que tenemos cargada llega hasta {etiquetaMes(res.smvmPeriodo)}.
-          Mientras no salga la resolución nueva del Consejo del Salario, ese es el último valor
-          publicado: la multa de un mes posterior puede ser mayor.
-        </p>
-      )}
-
-      <p className="mt-4 text-xs text-zinc-500">
-        Orientativo. La multa la fija el juez dentro de esta escala, y el art. 55 agrega que «los
-        importes de las multas serán actualizados a la fecha del efectivo pago, de acuerdo a las
-        pautas de ajuste que correspondan a los créditos laborales». Eso se calcula aparte, con el
-        IPC más el 3% anual del art. 276 de la LCT.
-      </p>
     </div>
   );
 }

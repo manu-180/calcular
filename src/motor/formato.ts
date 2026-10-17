@@ -1,14 +1,16 @@
+import { idiomaDeLocale } from "./i18n/resolver";
+import { NOMBRES_UNIDAD } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
 import type { FechaISO, Moneda, ReglaRedondeo, Unidad } from "./tipos";
-import { MONEDAS, UNIDADES_REFERENCIA } from "./tipos";
+import { esMoneda, UNIDADES_REFERENCIA } from "./tipos";
 
-export function decimalesDeMoneda(moneda: Moneda, locale = "es"): number {
+export function decimalesDeMoneda(moneda: Moneda, locale: string): number {
   return new Intl.NumberFormat(locale, { style: "currency", currency: moneda }).resolvedOptions().maximumFractionDigits ?? 2;
 }
 
 // Redondeo decimal sin el error binario de Math.round(x * 100) / 100 (1.005 da 1.00 con el truco
 // clásico). Se corre la coma en la representación decimal con notación exponencial.
-function correr(n: number, decimales: number): number {
+function correrComa(n: number, decimales: number): number {
   const [mantisa, exponente = "0"] = String(n).split("e");
   return Number(`${mantisa}e${Number(exponente) + decimales}`);
 }
@@ -16,8 +18,10 @@ function correr(n: number, decimales: number): number {
 export function redondear(n: number, regla: ReglaRedondeo): number {
   if (!Number.isFinite(n)) return n;
   const signo = n < 0 ? -1 : 1;
-  const abs = Math.abs(n);
-  const escalado = correr(abs, regla.decimales);
+  // Un resultado como 2166.655 llega como 2166.6549999999997 y sin limpiar redondea a 2166.65. Se
+  // recorta a 15 cifras significativas (lo que un double garantiza) antes de correr la coma.
+  const abs = Number(Math.abs(n).toPrecision(15));
+  const escalado = correrComa(abs, regla.decimales);
   let entero: number;
   if (regla.modo === "truncar") {
     entero = Math.floor(escalado + 1e-9);
@@ -29,7 +33,7 @@ export function redondear(n: number, regla: ReglaRedondeo): number {
   } else {
     entero = Math.round(escalado);
   }
-  const resultado = signo * correr(entero, -regla.decimales);
+  const resultado = signo * correrComa(entero, -regla.decimales);
   return Object.is(resultado, -0) ? 0 : resultado;
 }
 
@@ -65,19 +69,26 @@ export function formatearPorcentaje(porcentaje: number, locale: string, decimale
   }).format(porcentaje / 100);
 }
 
+// En francés el primer día del mes es ordinal («1er juin»); Intl escribe «1 juin».
 export function formatearFecha(fecha: FechaISO, locale: string, estilo: "larga" | "corta" = "larga"): string {
-  return new Date(`${fecha}T12:00:00Z`).toLocaleDateString(locale, {
+  const f = new Intl.DateTimeFormat(locale, {
     timeZone: "UTC",
     ...(estilo === "larga" ? { day: "numeric", month: "long", year: "numeric" } : { day: "2-digit", month: "2-digit", year: "numeric" }),
   });
+  const d = new Date(`${fecha}T12:00:00Z`);
+  if (estilo !== "larga" || idiomaDeLocale(locale) !== "fr") return f.format(d);
+  return f
+    .formatToParts(d)
+    .map((p) => (p.type === "day" && p.value === "1" ? "1er" : p.value))
+    .join("");
 }
 
-const NOMBRES_UNIDAD: Record<string, [string, string]> = {
-  dias: ["día", "días"],
-  horas: ["hora", "horas"],
-  meses: ["mes", "meses"],
-  anios: ["año", "años"],
-};
+function nombreDeUnidad(n: number, unidad: string, locale: string): string | null {
+  const nombres = NOMBRES_UNIDAD[idiomaDeLocale(locale) ?? "es"];
+  if (!(unidad in nombres)) return null;
+  const formas = nombres[unidad as keyof typeof nombres];
+  return new Intl.PluralRules(locale).select(n) === "one" ? formas.uno : formas.otros;
+}
 
 function decimalesPropios(n: number): number {
   const [, dec = ""] = String(n).split(".");
@@ -87,14 +98,14 @@ function decimalesPropios(n: number): number {
 // Un dato se muestra con los decimales que trae la norma: el salario mínimo en COP o UYU es entero y
 // con ",00" se lee como un error; la UF (CLP) y la UI (UYU) tienen más decimales que su moneda.
 export function formatearValorUnidad(n: number, unidad: Unidad, locale: string, simbolos?: Readonly<Partial<Record<Moneda, string>>>): string {
-  if ((MONEDAS as readonly string[]).includes(unidad)) {
-    const moneda = unidad as Moneda;
+  if (esMoneda(unidad)) {
+    const moneda = unidad;
     const d = Number.isInteger(n) ? 0 : Math.min(6, Math.max(decimalesDeMoneda(moneda, locale), decimalesPropios(n)));
     return formatearMoneda(n, locale, moneda, d, simbolos?.[moneda]);
   }
   if (unidad === "%") return formatearPorcentaje(n, locale, 4);
-  const nombres = NOMBRES_UNIDAD[unidad];
-  if (nombres) return `${formatearNumero(n, locale)} ${n === 1 ? nombres[0] : nombres[1]}`;
+  const nombre = nombreDeUnidad(n, unidad, locale);
+  if (nombre) return `${formatearNumero(n, locale)} ${nombre}`;
   if ((UNIDADES_REFERENCIA as readonly string[]).includes(unidad)) return `${formatearNumero(n, locale, undefined)} ${unidad}`;
   return formatearNumero(n, locale, n % 1 === 0 ? 0 : undefined);
 }
@@ -113,11 +124,15 @@ export function separadoresDe(locale: string): Separadores {
 
 const ESPACIOS = /[\s   ]/g;
 
-function gruposValidos(entero: string, separador: string): boolean {
+// en-IN agrupa en lakhs y crores («12,00,000»): el formulario muestra los valores así y tiene que
+// poder leerlos de vuelta. Solo se acepta en los locales que formatean de esa manera.
+const conLakhs = (locale: string): boolean => new Intl.NumberFormat(locale).format(1234567).replace(/\D/g, ",") === "12,34,567";
+
+function gruposValidos(entero: string, separador: string, locale: string): boolean {
   const partes = entero.split(separador);
   if (partes.length === 1) return true;
-  if (!/^\d{1,3}$/.test(partes[0])) return false;
-  return partes.slice(1).every((p) => /^\d{3}$/.test(p));
+  if (/^\d{1,3}$/.test(partes[0]) && partes.slice(1).every((p) => /^\d{3}$/.test(p))) return true;
+  return conLakhs(locale) && /^\d{1,2}$/.test(partes[0]) && partes.slice(1, -1).every((p) => /^\d{2}$/.test(p)) && /^\d{3}$/.test(partes.at(-1)!);
 }
 
 // Reglas de parseo (D3 del ADR: un parseo equivocado multiplica por mil):
@@ -149,7 +164,7 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
     const pos = limpio.lastIndexOf(dec);
     entero = limpio.slice(0, pos);
     fraccion = limpio.slice(pos + 1);
-    if (entero.includes(dec) || fraccion.includes(grupo) || !gruposValidos(entero, grupo)) return null;
+    if (entero.includes(dec) || fraccion.includes(grupo) || !gruposValidos(entero, grupo, locale)) return null;
     entero = entero.split(grupo).join("");
   } else if (hayPunto || hayComa) {
     const sep = hayPunto ? "." : ",";
@@ -165,7 +180,7 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
         entero = cabeza;
         fraccion = resto[0];
       } else {
-        if (!gruposValidos(limpio, sep)) return null;
+        if (!gruposValidos(limpio, sep, locale)) return null;
         entero = limpio.split(sep).join("");
       }
     }

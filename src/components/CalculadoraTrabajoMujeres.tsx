@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { VIGENCIA_REFORMA } from "@/data/trabajo-mujeres";
 import { calcularTrabajoMujeres } from "@/lib/trabajo-mujeres";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, errorCantidad, parseDecimal, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -29,15 +30,21 @@ export function CalculadoraTrabajoMujeres() {
   const [enConvenio, setEnConvenio] = useState("no");
   const [sueldo, setSueldo] = useState("950000");
 
+  const error = primerError({
+    "Horas por día": errorCantidad(horasDiarias),
+    "Descanso del mediodía": errorCantidad(descanso),
+    "Sueldo bruto mensual": errorMonto(sueldo),
+  });
+
   const res = useMemo(
     () =>
       calcularTrabajoMujeres({
-        horasDiarias: Number(horasDiarias.replace(",", ".")) || 0,
+        horasDiarias: parseDecimal(horasDiarias),
         diasPorSemana: Number(diasPorSemana) || 0,
-        descansoMediodia: Number(descanso.replace(",", ".")) || 0,
+        descansoMediodia: parseDecimal(descanso),
         insalubreDeclarada: insalubre === "si",
         enConvenio: enConvenio === "si",
-        sueldoMensual: Number(sueldo) || 0,
+        sueldoMensual: parseMonto(sueldo),
       }),
     [horasDiarias, diasPorSemana, descanso, insalubre, enConvenio, sueldo],
   );
@@ -148,127 +155,133 @@ export function CalculadoraTrabajoMujeres() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-        <p className="text-sm text-zinc-600">
-          Horas de tu día que dejan de estar comprometidas si te pasan a horario continuo
-        </p>
-        <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
-          {horas(res.liberadasPorDia)} por día
-        </p>
-        <p className="mt-1 text-sm text-zinc-600">
-          {horas(res.liberadasPorSemana)} por semana y {horas(res.liberadasPorMes)} por mes. Las
-          horas trabajadas no cambian: seguís haciendo {horas(res.horasDiarias)} por día y{" "}
-          {horas(res.horasSemanales)} por semana. Lo que se achica es la amplitud (el tiempo entre
-          la primera entrada y la última salida), que pasa de {horas(res.amplitudAntes)} a{" "}
-          {horas(res.amplitudAhora)}.
-        </p>
-
-        <div className="mt-5 overflow-x-auto">
-          <table className="w-full min-w-[34rem] text-sm">
-            <thead>
-              <tr className="border-b border-zinc-300 text-left text-xs uppercase tracking-wide text-zinc-500">
-                <th className="pb-2 font-semibold">Concepto</th>
-                <th className="pb-2 text-right font-semibold">
-                  Hasta el 6/3/2026
-                  <span className="block text-[10px] font-normal normal-case tracking-normal">
-                    con el art. 174 vigente
-                  </span>
-                </th>
-                <th className="pb-2 text-right font-semibold">
-                  Texto vigente
-                  <span className="block text-[10px] font-normal normal-case tracking-normal">
-                    desde el {VIGENCIA_REFORMA}
-                  </span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-zinc-200 align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">Pausa obligatoria al mediodía</span>
-                  <span className="block text-xs text-zinc-500">
-                    sólo para la mujer que trabajaba mañana y tarde
-                  </span>
-                </td>
-                <td className="py-2 text-right text-zinc-600">2 h</td>
-                <td className="py-2 text-right font-semibold text-zinc-900">ninguna</td>
-              </tr>
-              <tr className="border-b border-zinc-200 align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">Amplitud del día</span>
-                  <span className="block text-xs text-zinc-500">
-                    de la primera entrada a la última salida
-                  </span>
-                </td>
-                <td className="py-2 text-right text-zinc-600">{horas(res.amplitudAntes)}</td>
-                <td className="py-2 text-right font-semibold text-zinc-900">
-                  {horas(res.amplitudAhora)}
-                </td>
-              </tr>
-              <tr className="border-b border-zinc-200 align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">Tope de jornada que te rige</span>
-                  <span className="block text-xs text-zinc-500">
-                    {res.regimen === "insalubre"
-                      ? "insalubridad declarada: art. 200 de la LCT"
-                      : "régimen general: art. 196 de la LCT y Ley 11.544"}
-                  </span>
-                </td>
-                <td className="py-2 text-right text-zinc-600">
-                  {res.topeDiario} h / {res.topeSemanal} h
-                </td>
-                <td className="py-2 text-right font-semibold text-zinc-900">
-                  {res.topeDiario} h / {res.topeSemanal} h
-                </td>
-              </tr>
-              <tr className="border-b border-zinc-200 align-top">
-                <td className="py-2 pr-3">
-                  <span className="font-medium text-zinc-800">
-                    Presunción del art. 195 por tarea prohibida
-                  </span>
-                  <span className="block text-xs text-zinc-500">
-                    responsabilidad del empleador sin admitirse prueba en contrario
-                  </span>
-                </td>
-                <td className="py-2 text-right text-zinc-600">alcanzaba a las mujeres</td>
-                <td className="py-2 text-right font-semibold text-zinc-900">no las alcanza</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        {res.excedenteSemanal > 0 && res.valorHora > 0 && (
-          <p className="mt-4 rounded-lg border border-rose-200 bg-rose-50/70 px-3 py-2 text-sm text-rose-900">
-            Las {horas(res.excedenteSemanal)} semanales que pasan del tope valen alrededor de{" "}
-            {formatARS(res.excedenteMensualEnPesos, 2)} por mes con el recargo del 50% del art. 201
-            (valor hora estimado: {formatARS(res.valorHora, 2)}). Es una estimación de orden de
-            magnitud: el cálculo fino está en la calculadora de horas extras.
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+          <p className="text-sm text-zinc-600">
+            Horas de tu día que dejan de estar comprometidas si te pasan a horario continuo
           </p>
-        )}
+          <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
+            {horas(res.liberadasPorDia)} por día
+          </p>
+          <p className="mt-1 text-sm text-zinc-600">
+            {horas(res.liberadasPorSemana)} por semana y {horas(res.liberadasPorMes)} por mes. Las
+            horas trabajadas no cambian: seguís haciendo {horas(res.horasDiarias)} por día y{" "}
+            {horas(res.horasSemanales)} por semana. Lo que se achica es la amplitud (el tiempo entre
+            la primera entrada y la última salida), que pasa de {horas(res.amplitudAntes)} a{" "}
+            {horas(res.amplitudAhora)}.
+          </p>
 
-        {res.avisos.length > 0 && (
-          <ul className="mt-4 space-y-2">
-            {res.avisos.map((a, i) => (
-              <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
-                {a.texto}
-              </li>
-            ))}
-          </ul>
-        )}
+          <div className="mt-5 overflow-x-auto">
+            <table className="w-full min-w-[34rem] text-sm">
+              <thead>
+                <tr className="border-b border-zinc-300 text-left text-xs uppercase tracking-wide text-zinc-500">
+                  <th className="pb-2 font-semibold">Concepto</th>
+                  <th className="pb-2 text-right font-semibold">
+                    Hasta el 6/3/2026
+                    <span className="block text-[10px] font-normal normal-case tracking-normal">
+                      con el art. 174 vigente
+                    </span>
+                  </th>
+                  <th className="pb-2 text-right font-semibold">
+                    Texto vigente
+                    <span className="block text-[10px] font-normal normal-case tracking-normal">
+                      desde el {VIGENCIA_REFORMA}
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-zinc-200 align-top">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium text-zinc-800">Pausa obligatoria al mediodía</span>
+                    <span className="block text-xs text-zinc-500">
+                      sólo para la mujer que trabajaba mañana y tarde
+                    </span>
+                  </td>
+                  <td className="py-2 text-right text-zinc-600">2 h</td>
+                  <td className="py-2 text-right font-semibold text-zinc-900">ninguna</td>
+                </tr>
+                <tr className="border-b border-zinc-200 align-top">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium text-zinc-800">Amplitud del día</span>
+                    <span className="block text-xs text-zinc-500">
+                      de la primera entrada a la última salida
+                    </span>
+                  </td>
+                  <td className="py-2 text-right text-zinc-600">{horas(res.amplitudAntes)}</td>
+                  <td className="py-2 text-right font-semibold text-zinc-900">
+                    {horas(res.amplitudAhora)}
+                  </td>
+                </tr>
+                <tr className="border-b border-zinc-200 align-top">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium text-zinc-800">Tope de jornada que te rige</span>
+                    <span className="block text-xs text-zinc-500">
+                      {res.regimen === "insalubre"
+                        ? "insalubridad declarada: art. 200 de la LCT"
+                        : "régimen general: art. 196 de la LCT y Ley 11.544"}
+                    </span>
+                  </td>
+                  <td className="py-2 text-right text-zinc-600">
+                    {res.topeDiario} h / {res.topeSemanal} h
+                  </td>
+                  <td className="py-2 text-right font-semibold text-zinc-900">
+                    {res.topeDiario} h / {res.topeSemanal} h
+                  </td>
+                </tr>
+                <tr className="border-b border-zinc-200 align-top">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium text-zinc-800">
+                      Presunción del art. 195 por tarea prohibida
+                    </span>
+                    <span className="block text-xs text-zinc-500">
+                      responsabilidad del empleador sin admitirse prueba en contrario
+                    </span>
+                  </td>
+                  <td className="py-2 text-right text-zinc-600">alcanzaba a las mujeres</td>
+                  <td className="py-2 text-right font-semibold text-zinc-900">no las alcanza</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-        <p className="mt-4 text-xs text-zinc-500">
-          Orientativo, no una liquidación. Para las horas suplementarias con recargo, el banco de
-          horas y los topes del Decreto 484/2000 está{" "}
-          <Link href="/horas-extras" className="font-medium text-emerald-700 hover:underline">
-            la calculadora de horas extras
-          </Link>
-          ; si trabajás menos de la jornada completa,{" "}
-          <Link href="/tiempo-parcial" className="font-medium text-emerald-700 hover:underline">
-            la de media jornada
-          </Link>
-          .
-        </p>
-      </div>
+          {res.excedenteSemanal > 0 && res.valorHora > 0 && (
+            <p className="mt-4 rounded-lg border border-rose-200 bg-rose-50/70 px-3 py-2 text-sm text-rose-900">
+              Las {horas(res.excedenteSemanal)} semanales que pasan del tope valen alrededor de{" "}
+              {formatARS(res.excedenteMensualEnPesos, 2)} por mes con el recargo del 50% del art. 201
+              (valor hora estimado: {formatARS(res.valorHora, 2)}). Es una estimación de orden de
+              magnitud: el cálculo fino está en la calculadora de horas extras.
+            </p>
+          )}
+
+          {res.avisos.length > 0 && (
+            <ul className="mt-4 space-y-2">
+              {res.avisos.map((a, i) => (
+                <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
+                  {a.texto}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <p className="mt-4 text-xs text-zinc-500">
+            Orientativo, no una liquidación. Para las horas suplementarias con recargo, el banco de
+            horas y los topes del Decreto 484/2000 está{" "}
+            <Link href="/horas-extras" className="font-medium text-emerald-700 hover:underline">
+              la calculadora de horas extras
+            </Link>
+            ; si trabajás menos de la jornada completa,{" "}
+            <Link href="/tiempo-parcial" className="font-medium text-emerald-700 hover:underline">
+              la de media jornada
+            </Link>
+            .
+          </p>
+        </div>
+        </>
+      )}
     </div>
   );
 }

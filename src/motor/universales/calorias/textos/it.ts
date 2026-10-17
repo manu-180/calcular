@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosIt: TextosUi<UiCalorias> = {
+  slug: "fabbisogno-calorico",
+  ui: () => ({
+    sexo: "Sesso",
+    mujer: "Donna",
+    hombre: "Uomo",
+    edad: "Età (anni)",
+    peso: (u) => `Peso (${u})`,
+    altura: (u) => `Altezza (${u})`,
+    pies: "Altezza: piedi (ft)",
+    pulgadas: "Altezza: pollici (in)",
+    actividad: "Livello di attività fisica",
+    sedentaria: "Scarsa o nulla",
+    ligera: "Leggera (da 1 a 3 giorni a settimana)",
+    moderada: "Moderata (da 3 a 5 giorni a settimana)",
+    alta: "Intensa (6 o 7 giorni a settimana)",
+    muyAlta: "Molto intensa (allenamenti duri o lavoro fisico)",
+    objetivo: "Obiettivo",
+    mantener: "Mantenere il peso",
+    bajar: "Dimagrire gradualmente",
+    subir: "Aumentare di peso gradualmente",
+    basal: "Metabolismo basale (kcal al giorno)",
+    basalAyuda: "Quello che il tuo corpo consuma a riposo completo.",
+    mantenimiento: "Calorie per mantenere il peso (kcal al giorno)",
+    calObjetivo: "Calorie per il tuo obiettivo (kcal al giorno)",
+    calObjetivoAyuda: "Un cambiamento moderato: 500 kcal in meno al giorno per dimagrire, 300 in più per aumentare.",
+    errorEdad: "La formula è pensata per persone dai 15 ai 100 anni.",
+    errorPeso: "Il peso deve essere maggiore di 0.",
+    errorAltura: "L'altezza deve essere maggiore di 0.",
+    notaMinimo: (kcal) => `Per dimagrire, il valore non scende sotto le ${kcal} kcal al giorno. Mangiare meno di così è meglio farlo con l'aiuto di un professionista.`,
+    aviso: "È una stima fatta con l'equazione di Mifflin-St Jeor. Ogni corpo è diverso: non sostituisce il parere del medico o di un nutrizionista.",
+  }),
+};

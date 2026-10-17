@@ -201,7 +201,7 @@ async function main() {
 //
 // Corte FIJO en ${CORTE} (primer mes del régimen mensual). NO convertirlo en ventana móvil.
 
-import { PRESTACIONES_VIGENTES } from "./prestaciones";
+import { prestacionesVigentes } from "./prestaciones";
 
 export type MesJubilacion = {
   periodo: string; // "2026-08"
@@ -218,7 +218,7 @@ ${cuerpo}
 // Una resolución puede salir antes de que empiece su mes (la de octubre de 2026, el 23/9): la
 // serie que ve el sitio se corta en el mes vigente de prestaciones.ts, que ya sabe la fecha.
 export const HABER_MINIMO_SERIE: MesJubilacion[] = SERIE_COMPLETA.filter(
-  (f) => f.periodo <= PRESTACIONES_VIGENTES.periodo,
+  (f) => f.periodo <= prestacionesVigentes().periodo,
 );
 
 /** Último mes con haber mínimo publicado por fuente oficial. */

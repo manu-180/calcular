@@ -6,6 +6,8 @@ export type ProductoVenta = {
   id: string;
   titulo: string;
   precioCentavos: number;
+  // Precios que tuvo antes: valen para los pagos que no traen el precio con que se creó la orden.
+  preciosAnterioresCentavos?: readonly number[];
   moneda: string;
 };
 
@@ -20,6 +22,8 @@ export type PagoVerificado = {
   referencia: string | null;
   email: string | null;
   fecha: string | null;
+  // Lo que cobró la orden según nuestro propio registro al crearla (lo llena el proveedor que lo sepa).
+  precioCobradoCentavos?: number | null;
 };
 
 export type CheckoutCreado = { id: string; urlPago: string };
@@ -67,13 +71,21 @@ export function decimal(centavosValor: number): string {
   return `${Math.floor(centavosValor / 100)}.${String(centavosValor % 100).padStart(2, "0")}`;
 }
 
-// El gate de entrega para cualquier proveedor: aprobado, monto exacto en centavos y moneda exacta.
+// El gate de entrega para cualquier proveedor: aprobado, monto exacto en centavos y moneda exacta. El
+// monto se compara con el precio con que se creó la compra si el pago lo trae, y si no con cualquier
+// precio que el producto haya tenido: subir un precio no puede dejar sin descarga a quien ya pagó.
+export function preciosValidos(pago: Pick<PagoVerificado, "precioCobradoCentavos">, producto: ProductoVenta): readonly number[] {
+  const cobrado = pago.precioCobradoCentavos;
+  if (typeof cobrado === "number" && Number.isInteger(cobrado) && cobrado > 0) return [cobrado];
+  return [producto.precioCentavos, ...(producto.preciosAnterioresCentavos ?? [])];
+}
+
 export function pagoCubre(pago: PagoVerificado | null | undefined, producto: ProductoVenta): boolean {
   return (
     !!pago &&
     pago.estado === "aprobado" &&
     pago.montoCentavos !== null &&
-    pago.montoCentavos === producto.precioCentavos &&
+    preciosValidos(pago, producto).includes(pago.montoCentavos) &&
     pago.moneda === producto.moneda
   );
 }

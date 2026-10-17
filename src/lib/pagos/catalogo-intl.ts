@@ -1,9 +1,11 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import type { CodigoMercado } from "@/motor/tipos";
+import { esMercadoDePrueba } from "@/motor/datos";
+import { RE_CODIGO_MERCADO, type CodigoMercado } from "@/motor/tipos";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
-import { FAMILIAS, type ClaveFamilia, type FamiliaInforme, type TipoProducto } from "./ofertas-intl";
+import { FAMILIAS, PRECIO_PLANILLA_CENTAVOS, type ClaveFamilia, type FamiliaInforme, type TipoProducto } from "./ofertas-intl";
+import { diccionarioVenta, rellenar, resolver, textosFamilia } from "./textos";
 import type { ProductoVenta } from "./tipos";
 
 // Planillas que vende calcularya.com. Cada una es de un país: el id es `<mercado>/<slug>` y el
@@ -14,6 +16,8 @@ import type { ProductoVenta } from "./tipos";
 // Nada más: catálogo, landing, cobro, webhook, mail y descarga leen de acá.
 // Los informes (tipo "informe") no tienen archivo: se arman desde ofertas-intl.ts, uno por familia y
 // por país con al menos una calculadora de la familia, y se entregan como página imprimible.
+// Los textos de cada producto salen del diccionario del idioma del país (textos/<idioma>.ts) con su
+// trato; la planilla es opcional: un país sin planilla escrita vende solo informes.
 
 export type ProductoIntl = ProductoVenta & {
   mercado: string;
@@ -31,12 +35,11 @@ export type ProductoIntl = ProductoVenta & {
 
 export type DefinicionProductoIntl = Omit<ProductoIntl, "id" | "moneda" | "tipo"> & { moneda?: "USD"; tipo?: TipoProducto };
 
-const RE_MERCADO = /^[a-z]{2,6}$/;
 const RE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const RE_ARCHIVO = /^[a-z0-9]+(?:-[a-z0-9]+)*\.xlsx$/;
 
 export function definirProductoIntl(d: DefinicionProductoIntl): ProductoIntl {
-  if (!RE_MERCADO.test(d.mercado) || d.mercado === "ar") throw new Error(`producto intl con mercado inválido: ${d.mercado}`);
+  if (!RE_CODIGO_MERCADO.test(d.mercado) || d.mercado === "ar") throw new Error(`producto intl con mercado inválido: ${d.mercado}`);
   if (d.slug === "comprar" || d.slug === "gracias") throw new Error(`producto intl: «${d.slug}» es una ruta de planillas`);
   if (!RE_SLUG.test(d.slug)) throw new Error(`producto intl con slug inválido: ${d.slug}`);
   const tipo = d.tipo ?? "planilla";
@@ -53,36 +56,21 @@ export function definirProductoIntl(d: DefinicionProductoIntl): ProductoIntl {
 
 // Planilla de sueldo y liquidación de cada país. La genera scripts/paises/gen_planillas_intl.ts en el
 // build y scripts/check_planillas_intl.ts falla si se vende la de un país cuyas fórmulas no dan lo
-// mismo que sus calculadoras.
-const CARGA = {
-  tu: "cargas tus datos en las celdas amarillas",
-  usted: "carga sus datos en las celdas amarillas",
-  vos: "cargás tus datos en las celdas amarillas",
-} as const;
-
-function planillaSueldo(d: {
-  mercado: string;
-  trato: keyof typeof CARGA;
-  titulo: string;
-  tituloCorto: string;
-  paraQuien: string;
-  incluye: string;
-  normas: string;
-  disparador: string;
-}): ProductoIntl {
+// mismo que sus calculadoras. Lo propio de cada país (título, normas, qué incluye) está escrito en el
+// idioma del país; el resto del texto sale del diccionario.
+function planillaSueldo(d: { mercado: string; titulo: string; tituloCorto: string; paraQuien: string; incluye: string; normas: string; disparador: string }): ProductoIntl {
   const anio = () => anioPlanillaIntl(d.mercado);
+  const m = registro.pais(d.mercado as CodigoMercado)!.mercado;
+  const cat = resolver(diccionarioVenta(m.idioma).catalogo, m.trato);
   const producto = definirProductoIntl({
     mercado: d.mercado,
     slug: "sueldo-y-liquidacion",
     titulo: `${d.titulo} ${anio()}`,
     tituloCorto: d.tituloCorto,
     paraQuien: d.paraQuien,
-    descripcion: [
-      `Una planilla de Excel lista para usar: ${CARGA[d.trato]} y las cuentas salen solas, con fórmulas que siguen ${d.normas}.`,
-      `Incluye ${d.incluye}. Cada hoja muestra el paso a paso, y la hoja de tablas oficiales trae cada valor con su fuente y la fecha en que lo verificamos.`,
-    ],
+    descripcion: [rellenar(cat.planillaDescripcion, { normas: d.normas }), rellenar(cat.planillaIncluye, { incluye: d.incluye })],
     disparadorActualizacion: d.disparador,
-    precioCentavos: 700,
+    precioCentavos: PRECIO_PLANILLA_CENTAVOS,
     archivo: archivoPlanillaSueldo(anio()),
   });
   // Getters y no valores: un proceso que sigue vivo al cambiar el año tiene que pasar a servir el
@@ -103,21 +91,20 @@ export function archivoPlanillaSueldo(anio: number): string {
   return `sueldo-y-liquidacion-${anio}.xlsx`;
 }
 
-const DISPARADOR_INFORME = "Cada vez que cambia un valor oficial que usa el cálculo";
-
 function informe(f: FamiliaInforme, mercado: string): ProductoIntl {
-  const pais = registro.pais(mercado as CodigoMercado)!;
-  const t = pais.mercado.trato;
+  const m = registro.pais(mercado as CodigoMercado)!.mercado;
+  const tx = textosFamilia(f.clave, m.idioma, m.trato);
+  const cat = diccionarioVenta(m.idioma).catalogo;
   return definirProductoIntl({
     mercado,
     slug: f.slug,
     tipo: "informe",
     familia: f.clave,
-    titulo: `${f.nombre} ${pais.mercado.nombre}`,
-    tituloCorto: f.tituloCorto,
-    paraQuien: f.paraQuien[t],
-    descripcion: f.descripcion.map((d) => d[t]),
-    disparadorActualizacion: DISPARADOR_INFORME,
+    titulo: rellenar(cat.tituloProducto, { nombre: tx.nombre, pais: m.nombre }),
+    tituloCorto: tx.tituloCorto,
+    paraQuien: tx.paraQuien,
+    descripcion: tx.descripcion,
+    disparadorActualizacion: cat.disparadorInforme,
     precioCentavos: f.precioCentavos,
     archivo: "",
   });
@@ -134,7 +121,7 @@ function informesDelRegistro(): ProductoIntl[] {
   const salida: ProductoIntl[] = [];
   for (const pais of registro.paises) {
     const m = pais.mercado.codigo;
-    if (m === "global" || m === "zz") continue;
+    if (m === "global" || esMercadoDePrueba(m)) continue;
     for (const f of FAMILIAS) if (calculadorasDeFamilia(f, m).length) salida.push(informe(f, m));
   }
   return salida;
@@ -143,7 +130,6 @@ function informesDelRegistro(): ProductoIntl[] {
 export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   planillaSueldo({
     mercado: "mx",
-    trato: "tu",
     titulo: "Planilla de sueldo y finiquito México",
     tituloCorto: "planilla de sueldo y finiquito",
     paraQuien: "Para calcular tu sueldo neto, tu aguinaldo y tu finiquito o liquidación con la ley vigente",
@@ -153,7 +139,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "co",
-    trato: "tu",
     titulo: "Planilla de salario y liquidación Colombia",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular tu salario neto, tu prima, tus cesantías y tu liquidación con la ley vigente",
@@ -163,7 +148,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "pe",
-    trato: "tu",
     titulo: "Planilla de sueldo y liquidación Perú",
     tituloCorto: "planilla de sueldo y liquidación",
     paraQuien: "Para calcular tu sueldo neto, tu gratificación, tu CTS y tu liquidación con la ley vigente",
@@ -173,7 +157,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "cl",
-    trato: "tu",
     titulo: "Planilla de sueldo y finiquito Chile",
     tituloCorto: "planilla de sueldo y finiquito",
     paraQuien: "Para calcular tu sueldo líquido, tu gratificación y tu finiquito con la ley vigente",
@@ -183,7 +166,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "uy",
-    trato: "vos",
     titulo: "Planilla de sueldo y liquidación Uruguay",
     tituloCorto: "planilla de sueldo y liquidación",
     paraQuien: "Para calcular tu sueldo líquido, tu aguinaldo, tu salario vacacional y tu liquidación con la ley vigente",
@@ -193,7 +175,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "ec",
-    trato: "tu",
     titulo: "Planilla de sueldo y liquidación Ecuador",
     tituloCorto: "planilla de sueldo y liquidación",
     paraQuien: "Para calcular tu sueldo neto, tus décimos y tu liquidación con la ley vigente",
@@ -203,7 +184,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "cr",
-    trato: "usted",
     titulo: "Planilla de salario y liquidación Costa Rica",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular su salario neto, su aguinaldo y su liquidación con la ley vigente",
@@ -213,7 +193,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "gt",
-    trato: "usted",
     titulo: "Planilla de salario y prestaciones Guatemala",
     tituloCorto: "planilla de salario y prestaciones",
     paraQuien: "Para calcular su ISR, su aguinaldo, su Bono 14 y su indemnización con la ley vigente",
@@ -223,7 +202,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "py",
-    trato: "vos",
     titulo: "Planilla de salario y liquidación Paraguay",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular tu salario neto, tu aguinaldo y tu liquidación con la ley vigente",
@@ -233,7 +211,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "do",
-    trato: "tu",
     titulo: "Planilla de salario y prestaciones República Dominicana",
     tituloCorto: "planilla de salario y prestaciones",
     paraQuien: "Para calcular tu salario neto, tu regalía pascual y tus prestaciones laborales con la ley vigente",
@@ -243,7 +220,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "sv",
-    trato: "usted",
     titulo: "Planilla de salario y prestaciones El Salvador",
     tituloCorto: "planilla de salario y prestaciones",
     paraQuien: "Para calcular su renta, su aguinaldo, su Quincena 25 y su indemnización con la ley vigente",
@@ -253,7 +229,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "pa",
-    trato: "tu",
     titulo: "Planilla de salario y liquidación Panamá",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular tu salario neto, tu décimo tercer mes y tu liquidación con la ley vigente",
@@ -263,7 +238,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "hn",
-    trato: "usted",
     titulo: "Planilla de salario y prestaciones Honduras",
     tituloCorto: "planilla de salario y prestaciones",
     paraQuien: "Para calcular su ISR, su décimo cuarto mes y sus prestaciones laborales con la ley vigente",
@@ -273,7 +247,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "ni",
-    trato: "vos",
     titulo: "Planilla de salario y liquidación Nicaragua",
     tituloCorto: "planilla de salario y liquidación",
     paraQuien: "Para calcular tu salario neto, tu aguinaldo y tu liquidación con la ley vigente",
@@ -283,7 +256,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "ve",
-    trato: "tu",
     titulo: "Planilla de prestaciones y liquidación Venezuela",
     tituloCorto: "planilla de prestaciones y liquidación",
     paraQuien: "Para calcular tus utilidades, tus vacaciones, tus prestaciones sociales y tu liquidación con la ley vigente",
@@ -293,7 +265,6 @@ export const PLANILLAS_SUELDO_INTL: readonly ProductoIntl[] = [
   }),
   planillaSueldo({
     mercado: "bo",
-    trato: "usted",
     titulo: "Planilla de sueldo y finiquito Bolivia",
     tituloCorto: "planilla de sueldo y finiquito",
     paraQuien: "Para calcular su líquido pagable, su aguinaldo y su finiquito con la ley vigente",
@@ -360,7 +331,7 @@ export function referenciaIntl(p: ProductoIntl, uuid: string = crypto.randomUUID
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export function leerReferenciaIntl(ref: string | null | undefined): { producto: ProductoIntl; checkoutId: string } | null {
-  const m = /^([a-z]{2,6}\/[a-z0-9-]+):([0-9a-f-]{36})$/i.exec(ref ?? "");
+  const m = /^((?:global|zz|[a-z]{2}(?:-[a-z]{2,3})?)\/[a-z0-9-]+):([0-9a-f-]{36})$/i.exec(ref ?? "");
   if (!m || !UUID_RE.test(m[2])) return null;
   const producto = productoIntl(m[1]);
   return producto ? { producto, checkoutId: m[2].toLowerCase() } : null;

@@ -11,7 +11,7 @@ import {
   TIPOS_ENTIDAD,
   type TipoEntidad,
 } from "@/data/obra-social-aportes";
-import { TOPE_SIPA } from "@/data/sueldo";
+import { topeSipa } from "@/data/sueldo";
 import { formatARS, formatPct, parseMonto } from "@/lib/formato";
 
 const claseInput =
@@ -239,8 +239,8 @@ export function CalculadoraObraSocial() {
 
       {res.topeAplicado ? (
         <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900">
-          Tu bruto supera la base máxima de {formatARS(TOPE_SIPA.baseMaxima, 0)} (
-          {TOPE_SIPA.vigencia}), así que <strong>tu aporte</strong> se calcula sobre esa base y no
+          Tu bruto supera la base máxima de {formatARS(topeSipa().baseMaxima, 0)} (
+          {topeSipa().vigencia}), así que <strong>tu aporte</strong> se calcula sobre esa base y no
           sobre el sueldo entero. La contribución del empleador sí va sobre el bruto completo: el
           Decreto 491/2004 le sacó el tope máximo.
         </p>

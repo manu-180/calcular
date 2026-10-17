@@ -93,6 +93,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: "todas",
   calculadoras: [
     { definicion: gratificacion, contenido: contenidoGratificacion, cliente: () => import("./calculadoras/gratificacion.cliente") },
     { definicion: cts, contenido: contenidoCts, cliente: () => import("./calculadoras/cts.cliente") },

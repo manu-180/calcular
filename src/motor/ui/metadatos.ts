@@ -5,7 +5,7 @@ import type { FechaISO } from "../tipos";
 import {
   elegirTitulo,
   grafo,
-  hreflangDe,
+  hreflangDelHead,
   ldFaq,
   ldLista,
   ldSitio,
@@ -16,10 +16,11 @@ import {
   tituloConPais,
   urlImagenOg,
   urlIntl,
+  type Idiomas,
   type MetadataSeo,
 } from "../seo";
 import { calculadorasDe, type ContextoSitio } from "./contexto";
-import { PAGINAS_LEGALES } from "./Legales";
+import { paginasLegales } from "./Legales";
 
 // Lo que va en el <head> y en el JSON-LD de cada página de calcularya, en un solo lugar: lo usan
 // las páginas de src/app/(intl) y scripts/check_seo_intl.ts, así el check mide lo mismo que sale.
@@ -68,8 +69,10 @@ function textosDe(ctx: ContextoSitio, r: PaginaIntl | null): { title: string; de
       : { title: elegirTitulo(t.seo.tituloPais(m.nombre, anio(ctx))), description: t.pais.descripcion(m.nombre) };
   }
   switch (r.tipo) {
-    case "legal":
-      return { title: PAGINAS_LEGALES[r.slug].title, description: PAGINAS_LEGALES[r.slug].description };
+    case "legal": {
+      const legal = paginasLegales(m.idioma, m.trato, m.locale)[r.slug];
+      return { title: legal.title, description: legal.description };
+    }
     case "fuentes":
       return { title: elegirTitulo(t.seo.tituloFuentes(m.nombre)), description: t.fuentes.description(m.nombre) };
     case "novedades":
@@ -87,9 +90,26 @@ export function imagenDe(ctx: ContextoSitio, r: PaginaIntl | null): string {
   return urlImagenOg(m.codigo, r ? slugDe(r) : undefined, version);
 }
 
+// Inicio, fuentes y novedades de un país con varias ediciones (/ca y /ca-fr) son la misma página en
+// otro idioma: forman su propio clúster. Un país con una sola edición no lleva hreflang ahí.
+export function hreflangDeEdiciones(ctx: ContextoSitio, slug?: "fuentes" | "novedades"): Idiomas | undefined {
+  if (ctx.mercado.codigo === "global") return undefined;
+  const ediciones = ctx.registro.ediciones(ctx.mercado.codigo, ctx.modo);
+  if (ediciones.length < 2) return undefined;
+  const idiomas: Idiomas = {};
+  for (const e of ediciones) idiomas[e.locale] = urlIntl(e.codigo, slug);
+  idiomas["x-default"] = urlIntl("global");
+  return idiomas;
+}
+
 export function metadatosDe(ctx: ContextoSitio, r: PaginaIntl | null): MetadataSeo {
   const { title, description } = textosDe(ctx, r);
-  const idiomas = r?.tipo === "calculadora" ? hreflangDe(r.pagina.calculadora.concepto, r.pagina.equivalentes) : undefined;
+  const idiomas =
+    r?.tipo === "calculadora"
+      ? hreflangDelHead(r.pagina.calculadora.concepto, r.pagina.equivalentes)
+      : !r || r.tipo === "fuentes" || r.tipo === "novedades"
+        ? hreflangDeEdiciones(ctx, r?.tipo)
+        : undefined;
   return metadataDe({
     mercado: ctx.mercado,
     ...(r ? { slug: slugDe(r) } : {}),

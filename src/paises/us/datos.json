@@ -1,0 +1,1960 @@
+{
+  "mercado": "us",
+  "datos": [
+    {
+      "id": "us.tax-brackets-single",
+      "nombre": "Federal income tax rates, single",
+      "tipo": "escala",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12400,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 12400,
+              "hasta": 50400,
+              "tasa": 12,
+              "cuotaFija": 1240
+            },
+            {
+              "desde": 50400,
+              "hasta": 105700,
+              "tasa": 22,
+              "cuotaFija": 5800
+            },
+            {
+              "desde": 105700,
+              "hasta": 201775,
+              "tasa": 24,
+              "cuotaFija": 17966
+            },
+            {
+              "desde": 201775,
+              "hasta": 256225,
+              "tasa": 32,
+              "cuotaFija": 41024
+            },
+            {
+              "desde": 256225,
+              "hasta": 640600,
+              "tasa": 35,
+              "cuotaFija": 58448
+            },
+            {
+              "desde": 640600,
+              "hasta": null,
+              "tasa": 37,
+              "cuotaFija": 192979.25
+            }
+          ],
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.tax-brackets-mfj",
+      "nombre": "Federal income tax rates, married filing jointly",
+      "tipo": "escala",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 24800,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 24800,
+              "hasta": 100800,
+              "tasa": 12,
+              "cuotaFija": 2480
+            },
+            {
+              "desde": 100800,
+              "hasta": 211400,
+              "tasa": 22,
+              "cuotaFija": 11600
+            },
+            {
+              "desde": 211400,
+              "hasta": 403550,
+              "tasa": 24,
+              "cuotaFija": 35932
+            },
+            {
+              "desde": 403550,
+              "hasta": 512450,
+              "tasa": 32,
+              "cuotaFija": 82048
+            },
+            {
+              "desde": 512450,
+              "hasta": 768700,
+              "tasa": 35,
+              "cuotaFija": 116896
+            },
+            {
+              "desde": 768700,
+              "hasta": null,
+              "tasa": 37,
+              "cuotaFija": 206583.5
+            }
+          ],
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.tax-brackets-mfs",
+      "nombre": "Federal income tax rates, married filing separately",
+      "tipo": "escala",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12400,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 12400,
+              "hasta": 50400,
+              "tasa": 12,
+              "cuotaFija": 1240
+            },
+            {
+              "desde": 50400,
+              "hasta": 105700,
+              "tasa": 22,
+              "cuotaFija": 5800
+            },
+            {
+              "desde": 105700,
+              "hasta": 201775,
+              "tasa": 24,
+              "cuotaFija": 17966
+            },
+            {
+              "desde": 201775,
+              "hasta": 256225,
+              "tasa": 32,
+              "cuotaFija": 41024
+            },
+            {
+              "desde": 256225,
+              "hasta": 384350,
+              "tasa": 35,
+              "cuotaFija": 58448
+            },
+            {
+              "desde": 384350,
+              "hasta": null,
+              "tasa": 37,
+              "cuotaFija": 103291.75
+            }
+          ],
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.tax-brackets-hoh",
+      "nombre": "Federal income tax rates, head of household",
+      "tipo": "escala",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 17700,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 17700,
+              "hasta": 67450,
+              "tasa": 12,
+              "cuotaFija": 1770
+            },
+            {
+              "desde": 67450,
+              "hasta": 105700,
+              "tasa": 22,
+              "cuotaFija": 7740
+            },
+            {
+              "desde": 105700,
+              "hasta": 201750,
+              "tasa": 24,
+              "cuotaFija": 16155
+            },
+            {
+              "desde": 201750,
+              "hasta": 256200,
+              "tasa": 32,
+              "cuotaFija": 39207
+            },
+            {
+              "desde": 256200,
+              "hasta": 640600,
+              "tasa": 35,
+              "cuotaFija": 56631
+            },
+            {
+              "desde": 640600,
+              "hasta": null,
+              "tasa": 37,
+              "cuotaFija": 191171
+            }
+          ],
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.standard-deduction",
+      "nombre": "Standard deduction",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "single": "Single",
+        "mfj": "Married filing jointly",
+        "mfs": "Married filing separately",
+        "hoh": "Head of household"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "single": 16100,
+            "mfj": 32200,
+            "mfs": 16100,
+            "hoh": 24150
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.additional-standard-deduction",
+      "nombre": "Additional standard deduction for age 65 or older or blind",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "married": "Married or surviving spouse",
+        "unmarried": "Unmarried"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "married": 1650,
+            "unmarried": 2050
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.senior-deduction",
+      "nombre": "Enhanced deduction for seniors, per eligible person",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2028-12-31",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Form 1040-ES (2026), Estimated Tax for Individuals",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040es.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.senior-deduction-threshold",
+      "nombre": "MAGI where the senior deduction starts to phase out",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "mfj": "Married filing jointly",
+        "other": "Other filing statuses"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2028-12-31",
+          "valor": {
+            "mfj": 150000,
+            "other": 75000
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Schedule 1-A (Form 1040), Additional Deductions",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.senior-deduction-phaseout-rate",
+      "nombre": "Senior deduction reduction per dollar of MAGI over the threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2028-12-31",
+          "valor": 6,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Schedule 1-A (Form 1040), Additional Deductions",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.tips-deduction-max",
+      "nombre": "Maximum deduction for qualified tips",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2028-12-31",
+          "valor": 25000,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Form 1040-ES (2026), Estimated Tax for Individuals",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040es.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.overtime-deduction-max",
+      "nombre": "Maximum deduction for qualified overtime",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "mfj": "Married filing jointly",
+        "other": "Other filing statuses"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2028-12-31",
+          "valor": {
+            "mfj": 25000,
+            "other": 12500
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Form 1040-ES (2026), Estimated Tax for Individuals",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040es.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.tips-overtime-threshold",
+      "nombre": "MAGI where the tips and overtime deductions start to phase out",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "mfj": "Married filing jointly",
+        "other": "Other filing statuses"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2028-12-31",
+          "valor": {
+            "mfj": 300000,
+            "other": 150000
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Schedule 1-A (Form 1040), Additional Deductions",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.tips-overtime-phaseout-step",
+      "nombre": "Reduction for each full $1,000 of MAGI over the threshold",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2028-12-31",
+          "valor": 100,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Schedule 1-A (Form 1040), Additional Deductions",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.cg-zero-max",
+      "nombre": "Top of the 0% long-term capital gains rate",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "single": "Single",
+        "mfj": "Married filing jointly",
+        "mfs": "Married filing separately",
+        "hoh": "Head of household"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "single": 49450,
+            "mfj": 98900,
+            "mfs": 49450,
+            "hoh": 66200
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.cg-15-max",
+      "nombre": "Top of the 15% long-term capital gains rate",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "single": "Single",
+        "mfj": "Married filing jointly",
+        "mfs": "Married filing separately",
+        "hoh": "Head of household"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "single": 545500,
+            "mfj": 613700,
+            "mfs": 306850,
+            "hoh": 579600
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.niit-rate",
+      "nombre": "Net investment income tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 3.8,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Topic no. 559, Net Investment Income Tax",
+            "url": "https://www.irs.gov/taxtopics/tc559",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.niit-threshold",
+      "nombre": "Net investment income tax threshold",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "single": "Single",
+        "mfj": "Married filing jointly",
+        "mfs": "Married filing separately",
+        "hoh": "Head of household"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": {
+            "single": 200000,
+            "mfj": 250000,
+            "mfs": 125000,
+            "hoh": 200000
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Topic no. 559, Net Investment Income Tax",
+            "url": "https://www.irs.gov/taxtopics/tc559",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.social-security-rate",
+      "nombre": "Social Security tax rate, employee share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6.2,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 15 (Circular E), Employer's Tax Guide for use in 2026",
+            "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.medicare-rate",
+      "nombre": "Medicare tax rate, employee share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.45,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 15 (Circular E), Employer's Tax Guide for use in 2026",
+            "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.additional-medicare-rate",
+      "nombre": "Additional Medicare Tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 0.9,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Topic no. 560, Additional Medicare Tax",
+            "url": "https://www.irs.gov/taxtopics/tc560",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.additional-medicare-threshold",
+      "nombre": "Additional Medicare Tax threshold",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "single": "Single",
+        "mfj": "Married filing jointly",
+        "mfs": "Married filing separately",
+        "hoh": "Head of household"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": {
+            "single": 200000,
+            "mfj": 250000,
+            "mfs": 125000,
+            "hoh": 200000
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Topic no. 560, Additional Medicare Tax",
+            "url": "https://www.irs.gov/taxtopics/tc560",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.additional-medicare-withholding",
+      "nombre": "Wages above which employers withhold Additional Medicare Tax",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 200000,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 15 (Circular E), Employer's Tax Guide for use in 2026",
+            "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.social-security-wage-base",
+      "nombre": "Social Security wage base",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 184500,
+          "fuente": {
+            "organismo": "Social Security Administration in the Federal Register",
+            "titulo": "Cost-of-Living Increase and Other Determinations for 2026 (FR Doc. 2025-19763)",
+            "url": "https://www.govinfo.gov/content/pkg/FR-2025-11-03/html/2025-19763.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.se-earnings-factor",
+      "nombre": "Share of net self-employment profit subject to SE tax",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 92.35,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Schedule SE (Form 1040), Self-Employment Tax",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040sse.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.se-minimum",
+      "nombre": "Minimum net earnings for self-employment tax",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 400,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Schedule SE (Form 1040), Self-Employment Tax",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040sse.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.ctc-amount",
+      "nombre": "Child tax credit per qualifying child",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2200,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.actc-max",
+      "nombre": "Refundable part of the child tax credit per child",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1700,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-32, inflation adjusted items for 2026",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.odc-amount",
+      "nombre": "Credit for other dependents",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 500,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Child Tax Credit",
+            "url": "https://www.irs.gov/credits-deductions/individuals/child-tax-credit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.ctc-threshold",
+      "nombre": "MAGI where the child tax credit starts to phase out",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "mfj": "Married filing jointly",
+        "other": "Other filing statuses"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "mfj": 400000,
+            "other": 200000
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Child Tax Credit",
+            "url": "https://www.irs.gov/credits-deductions/individuals/child-tax-credit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.ctc-phaseout-rate",
+      "nombre": "Child tax credit reduction per $1,000 of MAGI over the threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Schedule 8812 (Form 1040), Credits for Qualifying Children and Other Dependents",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040s8.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.actc-earned-income-floor",
+      "nombre": "Earned income needed before the refundable credit starts",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 2500,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Schedule 8812 (Form 1040), Credits for Qualifying Children and Other Dependents",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040s8.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.actc-rate",
+      "nombre": "Refundable credit rate on earned income over the floor",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Schedule 8812 (Form 1040), Credits for Qualifying Children and Other Dependents",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040s8.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.min-wage-federal",
+      "nombre": "Federal minimum wage",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-07-24",
+          "valor": 7.25,
+          "fuente": {
+            "organismo": "U.S. Department of Labor, Wage and Hour Division",
+            "titulo": "State Minimum Wage Laws (updated July 1, 2026)",
+            "url": "https://www.dol.gov/agencies/whd/minimum-wage/state",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.overtime-hours",
+      "nombre": "Weekly hours before FLSA overtime starts",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1940-10-24",
+          "valor": 40,
+          "fuente": {
+            "organismo": "U.S. Department of Labor, Wage and Hour Division",
+            "titulo": "Overtime Pay",
+            "url": "https://www.dol.gov/agencies/whd/overtime",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.overtime-multiplier",
+      "nombre": "FLSA overtime pay multiplier",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1940-10-24",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "U.S. Department of Labor, Wage and Hour Division",
+            "titulo": "Overtime Pay",
+            "url": "https://www.dol.gov/agencies/whd/overtime",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.supplemental-rate",
+      "nombre": "Optional flat withholding rate on supplemental wages",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 15 (Circular E), Employer's Tax Guide for use in 2026",
+            "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.supplemental-rate-over-1m",
+      "nombre": "Mandatory withholding rate on supplemental wages over $1 million",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 37,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 15 (Circular E), Employer's Tax Guide for use in 2026",
+            "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.supplemental-threshold",
+      "nombre": "Supplemental wages after which the mandatory rate applies",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 15 (Circular E), Employer's Tax Guide for use in 2026",
+            "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.futa-rate",
+      "nombre": "FUTA tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6.0,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 15 (Circular E), Employer's Tax Guide for use in 2026",
+            "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.futa-credit",
+      "nombre": "Maximum FUTA credit for state unemployment tax",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5.4,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 15 (Circular E), Employer's Tax Guide for use in 2026",
+            "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.futa-wage-base",
+      "nombre": "FUTA wage base per employee",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7000,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 15 (Circular E), Employer's Tax Guide for use in 2026",
+            "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.401k-limit",
+      "nombre": "401(k) elective deferral limit",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 24500,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2025-67, 2026 limitations for retirement plans and IRAs",
+            "url": "https://www.irs.gov/pub/irs-drop/n-25-67.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.401k-catch-up",
+      "nombre": "401(k) catch-up contribution, age 50 or older",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 8000,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2025-67, 2026 limitations for retirement plans and IRAs",
+            "url": "https://www.irs.gov/pub/irs-drop/n-25-67.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.401k-catch-up-60-63",
+      "nombre": "401(k) catch-up contribution, age 60 to 63",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 11250,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2025-67, 2026 limitations for retirement plans and IRAs",
+            "url": "https://www.irs.gov/pub/irs-drop/n-25-67.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.ira-limit",
+      "nombre": "IRA contribution limit",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 7500,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2025-67, 2026 limitations for retirement plans and IRAs",
+            "url": "https://www.irs.gov/pub/irs-drop/n-25-67.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.ira-catch-up",
+      "nombre": "IRA catch-up contribution, age 50 or older",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1100,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2025-67, 2026 limitations for retirement plans and IRAs",
+            "url": "https://www.irs.gov/pub/irs-drop/n-25-67.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.roth-phaseout-start",
+      "nombre": "MAGI where the Roth IRA limit starts to shrink",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "single": "Single",
+        "mfj": "Married filing jointly",
+        "mfs": "Married filing separately",
+        "hoh": "Head of household"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "single": 153000,
+            "mfj": 242000,
+            "mfs": 0,
+            "hoh": 153000
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2025-67, 2026 limitations for retirement plans and IRAs",
+            "url": "https://www.irs.gov/pub/irs-drop/n-25-67.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.roth-phaseout-end",
+      "nombre": "MAGI where the Roth IRA limit reaches zero",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "single": "Single",
+        "mfj": "Married filing jointly",
+        "mfs": "Married filing separately",
+        "hoh": "Head of household"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "single": 168000,
+            "mfj": 252000,
+            "mfs": 10000,
+            "hoh": 168000
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2025-67, 2026 limitations for retirement plans and IRAs",
+            "url": "https://www.irs.gov/pub/irs-drop/n-25-67.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.roth-minimum",
+      "nombre": "Smallest reduced Roth IRA limit before it reaches zero",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 200,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 590-A, Worksheet 2-2 (reduced Roth IRA contribution limit)",
+            "url": "https://www.irs.gov/pub/irs-pdf/p590a.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.hsa-self-only",
+      "nombre": "HSA contribution limit, self-only coverage",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 4400,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-19, 2026 HSA limits",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-19.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.hsa-family",
+      "nombre": "HSA contribution limit, family coverage",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 8750,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Rev. Proc. 2025-19, 2026 HSA limits",
+            "url": "https://www.irs.gov/pub/irs-drop/rp-25-19.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.hsa-catch-up",
+      "nombre": "HSA catch-up contribution, age 55 or older",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 969, Health Savings Accounts",
+            "url": "https://www.irs.gov/pub/irs-pdf/p969.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.rmd-age",
+      "nombre": "Age when required minimum distributions start",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 73,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 590-B, Appendix B, Table III (Uniform Lifetime)",
+            "url": "https://www.irs.gov/pub/irs-pdf/p590b.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.pia-formula",
+      "nombre": "Social Security PIA formula for people first eligible in 2026",
+      "tipo": "escala",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1286,
+              "tasa": 90
+            },
+            {
+              "desde": 1286,
+              "hasta": 7749,
+              "tasa": 32
+            },
+            {
+              "desde": 7749,
+              "hasta": null,
+              "tasa": 15
+            }
+          ],
+          "fuente": {
+            "organismo": "Social Security Administration in the Federal Register",
+            "titulo": "Cost-of-Living Increase and Other Determinations for 2026 (FR Doc. 2025-19763)",
+            "url": "https://www.govinfo.gov/content/pkg/FR-2025-11-03/html/2025-19763.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.estimated-tax-min",
+      "nombre": "Tax due after withholding that triggers estimated payments",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Form 1040-ES (2026), Estimated Tax for Individuals",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040es.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.safe-harbor-current",
+      "nombre": "Safe harbor share of this year's tax",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 90,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Form 1040-ES (2026), Estimated Tax for Individuals",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040es.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.safe-harbor-prior",
+      "nombre": "Safe harbor share of last year's tax",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 100,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Form 1040-ES (2026), Estimated Tax for Individuals",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040es.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.safe-harbor-prior-high",
+      "nombre": "Safe harbor share of last year's tax with higher AGI",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 110,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Form 1040-ES (2026), Estimated Tax for Individuals",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040es.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.safe-harbor-agi",
+      "nombre": "Prior year AGI above which the 110% rule applies",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "mfs": "Married filing separately",
+        "other": "Other filing statuses"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "mfs": 75000,
+            "other": 150000
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Form 1040-ES (2026), Estimated Tax for Individuals",
+            "url": "https://www.irs.gov/pub/irs-pdf/f1040es.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.mileage-business",
+      "nombre": "Standard mileage rate for business",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": 0.725,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2026-10, 2026 standard mileage rates",
+            "url": "https://www.irs.gov/pub/irs-drop/n-26-10.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": 0.76,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Announcement 2026-11 (Internal Revenue Bulletin 2026-29), revised rates from July 1, 2026",
+            "url": "https://www.irs.gov/pub/irs-irbs/irb26-29.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.mileage-medical",
+      "nombre": "Standard mileage rate for medical and moving",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": 0.205,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2026-10, 2026 standard mileage rates",
+            "url": "https://www.irs.gov/pub/irs-drop/n-26-10.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": 0.235,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Announcement 2026-11 (Internal Revenue Bulletin 2026-29), revised rates from July 1, 2026",
+            "url": "https://www.irs.gov/pub/irs-irbs/irb26-29.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.mileage-charity",
+      "nombre": "Standard mileage rate for charity",
+      "tipo": "numero",
+      "unidad": "USD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.14,
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Notice 2026-10, 2026 standard mileage rates",
+            "url": "https://www.irs.gov/pub/irs-drop/n-26-10.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.rmd-uniform-table",
+      "nombre": "Uniform Lifetime Table, distribution period by age",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "72": "Age 72",
+        "73": "Age 73",
+        "74": "Age 74",
+        "75": "Age 75",
+        "76": "Age 76",
+        "77": "Age 77",
+        "78": "Age 78",
+        "79": "Age 79",
+        "80": "Age 80",
+        "81": "Age 81",
+        "82": "Age 82",
+        "83": "Age 83",
+        "84": "Age 84",
+        "85": "Age 85",
+        "86": "Age 86",
+        "87": "Age 87",
+        "88": "Age 88",
+        "89": "Age 89",
+        "90": "Age 90",
+        "91": "Age 91",
+        "92": "Age 92",
+        "93": "Age 93",
+        "94": "Age 94",
+        "95": "Age 95",
+        "96": "Age 96",
+        "97": "Age 97",
+        "98": "Age 98",
+        "99": "Age 99",
+        "100": "Age 100",
+        "101": "Age 101",
+        "102": "Age 102",
+        "103": "Age 103",
+        "104": "Age 104",
+        "105": "Age 105",
+        "106": "Age 106",
+        "107": "Age 107",
+        "108": "Age 108",
+        "109": "Age 109",
+        "110": "Age 110",
+        "111": "Age 111",
+        "112": "Age 112",
+        "113": "Age 113",
+        "114": "Age 114",
+        "115": "Age 115",
+        "116": "Age 116",
+        "117": "Age 117",
+        "118": "Age 118",
+        "119": "Age 119",
+        "120": "Age 120 or older"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "72": 27.4,
+            "73": 26.5,
+            "74": 25.5,
+            "75": 24.6,
+            "76": 23.7,
+            "77": 22.9,
+            "78": 22.0,
+            "79": 21.1,
+            "80": 20.2,
+            "81": 19.4,
+            "82": 18.5,
+            "83": 17.7,
+            "84": 16.8,
+            "85": 16.0,
+            "86": 15.2,
+            "87": 14.4,
+            "88": 13.7,
+            "89": 12.9,
+            "90": 12.2,
+            "91": 11.5,
+            "92": 10.8,
+            "93": 10.1,
+            "94": 9.5,
+            "95": 8.9,
+            "96": 8.4,
+            "97": 7.8,
+            "98": 7.3,
+            "99": 6.8,
+            "100": 6.4,
+            "101": 6.0,
+            "102": 5.6,
+            "103": 5.2,
+            "104": 4.9,
+            "105": 4.6,
+            "106": 4.3,
+            "107": 4.1,
+            "108": 3.9,
+            "109": 3.7,
+            "110": 3.5,
+            "111": 3.4,
+            "112": 3.3,
+            "113": 3.1,
+            "114": 3.0,
+            "115": 2.9,
+            "116": 2.8,
+            "117": 2.7,
+            "118": 2.5,
+            "119": 2.3,
+            "120": 2.0
+          },
+          "fuente": {
+            "organismo": "IRS",
+            "titulo": "Publication 590-B, Appendix B, Table III (Uniform Lifetime)",
+            "url": "https://www.irs.gov/pub/irs-pdf/p590b.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "us.min-wage-state",
+      "nombre": "State minimum wage per hour",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "alabama": "Alabama (no state minimum wage)",
+        "alaska": "Alaska",
+        "arizona": "Arizona",
+        "arkansas": "Arkansas",
+        "california": "California",
+        "colorado": "Colorado",
+        "connecticut": "Connecticut",
+        "delaware": "Delaware",
+        "district-of-columbia": "District of Columbia",
+        "florida": "Florida",
+        "georgia": "Georgia",
+        "hawaii": "Hawaii",
+        "idaho": "Idaho",
+        "illinois": "Illinois",
+        "indiana": "Indiana",
+        "iowa": "Iowa",
+        "kansas": "Kansas",
+        "kentucky": "Kentucky",
+        "louisiana": "Louisiana (no state minimum wage)",
+        "maine": "Maine",
+        "maryland": "Maryland",
+        "massachusetts": "Massachusetts",
+        "michigan": "Michigan",
+        "minnesota": "Minnesota",
+        "mississippi": "Mississippi (no state minimum wage)",
+        "missouri": "Missouri",
+        "montana": "Montana (businesses with sales over $110,000)",
+        "nebraska": "Nebraska",
+        "nevada": "Nevada",
+        "new-hampshire": "New Hampshire",
+        "new-jersey": "New Jersey (6 or more employees)",
+        "new-mexico": "New Mexico",
+        "new-york-city-area": "New York (NYC, Long Island and Westchester)",
+        "new-york": "New York (rest of the state)",
+        "north-carolina": "North Carolina",
+        "north-dakota": "North Dakota",
+        "ohio": "Ohio (employers with gross receipts of $405,000 or more)",
+        "oklahoma": "Oklahoma",
+        "oregon": "Oregon (standard)",
+        "oregon-portland": "Oregon (Portland metro)",
+        "oregon-nonurban": "Oregon (nonurban counties)",
+        "pennsylvania": "Pennsylvania",
+        "rhode-island": "Rhode Island",
+        "south-carolina": "South Carolina (no state minimum wage)",
+        "south-dakota": "South Dakota",
+        "tennessee": "Tennessee (no state minimum wage)",
+        "texas": "Texas",
+        "utah": "Utah",
+        "vermont": "Vermont",
+        "virginia": "Virginia",
+        "washington": "Washington",
+        "west-virginia": "West Virginia",
+        "wisconsin": "Wisconsin",
+        "wyoming": "Wyoming"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "A value of 0 means the state has no minimum wage law and the federal minimum applies to covered jobs.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-09-29",
+          "valor": {
+            "alabama": 0,
+            "alaska": 14.0,
+            "arizona": 15.15,
+            "arkansas": 11.0,
+            "california": 16.9,
+            "colorado": 15.16,
+            "connecticut": 16.94,
+            "delaware": 15.0,
+            "district-of-columbia": 18.4,
+            "florida": 14.0,
+            "georgia": 5.15,
+            "hawaii": 16.0,
+            "idaho": 7.25,
+            "illinois": 15.0,
+            "indiana": 7.25,
+            "iowa": 7.25,
+            "kansas": 7.25,
+            "kentucky": 7.25,
+            "louisiana": 0,
+            "maine": 15.1,
+            "maryland": 15.0,
+            "massachusetts": 15.0,
+            "michigan": 13.73,
+            "minnesota": 11.41,
+            "mississippi": 0,
+            "missouri": 15.0,
+            "montana": 10.85,
+            "nebraska": 15.0,
+            "nevada": 12.0,
+            "new-hampshire": 7.25,
+            "new-jersey": 15.92,
+            "new-mexico": 12.0,
+            "new-york-city-area": 17.0,
+            "new-york": 16.0,
+            "north-carolina": 7.25,
+            "north-dakota": 7.25,
+            "ohio": 11.0,
+            "oklahoma": 7.25,
+            "oregon": 15.55,
+            "oregon-portland": 16.8,
+            "oregon-nonurban": 14.55,
+            "pennsylvania": 7.25,
+            "rhode-island": 16.0,
+            "south-carolina": 0,
+            "south-dakota": 11.85,
+            "tennessee": 0,
+            "texas": 7.25,
+            "utah": 7.25,
+            "vermont": 14.42,
+            "virginia": 12.77,
+            "washington": 17.13,
+            "west-virginia": 8.75,
+            "wisconsin": 7.25,
+            "wyoming": 5.15
+          },
+          "fuente": {
+            "organismo": "U.S. Department of Labor, Wage and Hour Division",
+            "titulo": "State Minimum Wage Laws (updated July 1, 2026)",
+            "url": "https://www.dol.gov/agencies/whd/minimum-wage/state",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-09-30",
+          "hasta": "2026-12-31",
+          "valor": {
+            "alabama": 0,
+            "alaska": 14.0,
+            "arizona": 15.15,
+            "arkansas": 11.0,
+            "california": 16.9,
+            "colorado": 15.16,
+            "connecticut": 16.94,
+            "delaware": 15.0,
+            "district-of-columbia": 18.4,
+            "florida": 15.0,
+            "georgia": 5.15,
+            "hawaii": 16.0,
+            "idaho": 7.25,
+            "illinois": 15.0,
+            "indiana": 7.25,
+            "iowa": 7.25,
+            "kansas": 7.25,
+            "kentucky": 7.25,
+            "louisiana": 0,
+            "maine": 15.1,
+            "maryland": 15.0,
+            "massachusetts": 15.0,
+            "michigan": 13.73,
+            "minnesota": 11.41,
+            "mississippi": 0,
+            "missouri": 15.0,
+            "montana": 10.85,
+            "nebraska": 15.0,
+            "nevada": 12.0,
+            "new-hampshire": 7.25,
+            "new-jersey": 15.92,
+            "new-mexico": 12.0,
+            "new-york-city-area": 17.0,
+            "new-york": 16.0,
+            "north-carolina": 7.25,
+            "north-dakota": 7.25,
+            "ohio": 11.0,
+            "oklahoma": 7.25,
+            "oregon": 15.55,
+            "oregon-portland": 16.8,
+            "oregon-nonurban": 14.55,
+            "pennsylvania": 7.25,
+            "rhode-island": 16.0,
+            "south-carolina": 0,
+            "south-dakota": 11.85,
+            "tennessee": 0,
+            "texas": 7.25,
+            "utah": 7.25,
+            "vermont": 14.42,
+            "virginia": 12.77,
+            "washington": 17.13,
+            "west-virginia": 8.75,
+            "wisconsin": 7.25,
+            "wyoming": 5.15
+          },
+          "fuente": {
+            "organismo": "U.S. Department of Labor, Wage and Hour Division",
+            "titulo": "State Minimum Wage Laws (updated July 1, 2026)",
+            "url": "https://www.dol.gov/agencies/whd/minimum-wage/state",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Florida reaches $15.00 on September 30, 2026 under Article X, Section 24 of the Florida Constitution (https://www.flsenate.gov/Laws/Constitution)."
+          }
+        }
+      ]
+    }
+  ]
+}

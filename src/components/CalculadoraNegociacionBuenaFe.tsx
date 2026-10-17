@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { REGLAS } from "@/data/negociacion-buena-fe";
-import { formatARS } from "@/lib/formato";
+import { CANTIDAD_MAXIMA, errorMonto, formatARS, parseMonto, primerError } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 import { calcularMulta, calcularPlazos } from "@/lib/negociacion-buena-fe";
 
 const TONOS = {
@@ -32,11 +33,16 @@ export function CalculadoraNegociacionBuenaFe() {
   const [notificacion, setNotificacion] = useState("2026-09-01");
   const [solicitud, setSolicitud] = useState("");
 
+  const error = primerError({
+    "Masa salarial": errorMonto(masa),
+    "Días de mora": errorMonto(mora, CANTIDAD_MAXIMA),
+  });
+
   const multa = useMemo(
     () =>
       calcularMulta({
-        masaSalarial: Number(masa) || 0,
-        diasDeMora: Number(mora) || 0,
+        masaSalarial: parseMonto(masa),
+        diasDeMora: parseMonto(mora),
         reincidencia,
         cesoEnDiez: ceso,
       }),
@@ -72,8 +78,6 @@ export function CalculadoraNegociacionBuenaFe() {
             </p>
             <input
               id="masa"
-              type="number"
-              min={0}
               inputMode="numeric"
               value={masa}
               onChange={(e) => setMasa(e.target.value)}
@@ -91,8 +95,6 @@ export function CalculadoraNegociacionBuenaFe() {
             </p>
             <input
               id="mora"
-              type="number"
-              min={0}
               inputMode="numeric"
               value={mora}
               onChange={(e) => setMora(e.target.value)}
@@ -126,7 +128,9 @@ export function CalculadoraNegociacionBuenaFe() {
           </label>
         </div>
 
-        {multa && (
+        {error ? (
+          <ErrorCalculo mensaje={error} />
+        ) : multa && (
           <div className="mt-6 space-y-5 border-t border-zinc-200 pt-6">
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4">

@@ -36,11 +36,37 @@ export interface MenuDelPais {
   masUsadas: string[];
 }
 
-const TABS: readonly { key: "trabajo" | "impuestos" | "dinero"; cols: readonly (readonly Categoria[])[] }[] = [
+export type ClaveGrupo = "trabajo" | "impuestos" | "dinero" | "vida";
+
+// Las 12 categorías en cuatro grupos, los mismos en el menú y en el inicio del país. Familia y
+// "otras" quedan en Dinero: son cuentas legales con plata (pensión de alimentos, jubilación,
+// trabajo doméstico), no de todos los días. Vida diaria es la casa de las universales cotidianas.
+export const GRUPOS: readonly { key: ClaveGrupo; cols: readonly (readonly Categoria[])[] }[] = [
   { key: "trabajo", cols: [["sueldo"], ["fin"]] },
   { key: "impuestos", cols: [["impuestos"]] },
-  { key: "dinero", cols: [["dinero"], ["familia", "otras"]] },
+  { key: "dinero", cols: [["dinero", "finanzas"], ["negocio", "familia", "otras"]] },
+  { key: "vida", cols: [["calculos", "fechas"], ["salud", "hogar"]] },
 ];
+
+export function etiquetaGrupo(ctx: ContextoSitio, key: ClaveGrupo): string {
+  return ctx.textos.shell.menu[key];
+}
+
+export interface GrupoInicio {
+  key: ClaveGrupo;
+  titulo: string;
+  total: number;
+  categorias: { categoria: Categoria; entradas: EntradaCalculadora[] }[];
+}
+
+export function porGrupo(ctx: ContextoSitio, categorias: readonly { categoria: Categoria; entradas: EntradaCalculadora[] }[]): GrupoInicio[] {
+  const porId = new Map(categorias.map((c) => [c.categoria, c]));
+  return GRUPOS.flatMap((g) => {
+    const presentes = g.cols.flat().flatMap((c) => porId.get(c) ?? []);
+    if (!presentes.length) return [];
+    return [{ key: g.key, titulo: etiquetaGrupo(ctx, g.key), total: presentes.reduce((n, c) => n + c.entradas.length, 0), categorias: presentes }];
+  });
+}
 
 // El H1 viene con año, país y a veces un marcador ({{cl.imm}}): para el menú queda el nombre corto.
 export function nombreCorto(h1: string, pais: string): string {
@@ -80,11 +106,11 @@ export function menuDelPais(ctx: ContextoSitio): MenuDelPais {
 
   const columnas: Record<string, SeccionDelMenu[][]> = {};
   const tabs: TabDelMenu[] = [];
-  for (const tab of TABS) {
+  for (const tab of GRUPOS) {
     const cols = tab.cols.map((col) => col.map((c) => porId.get(c)).filter((s): s is SeccionDelMenu => !!s)).filter((col) => col.length > 0);
     if (!cols.length) continue;
     columnas[tab.key] = cols;
-    tabs.push({ key: tab.key, label: t.shell.menu[tab.key], type: "group", match: cols.flat().flatMap((s) => s.paginas.map((p) => p.href)) });
+    tabs.push({ key: tab.key, label: etiquetaGrupo(ctx, tab.key), type: "group", match: cols.flat().flatMap((s) => s.paginas.map((p) => p.href)) });
   }
   const novedades = rutaIntl(m.codigo, "novedades");
   // Fuentes no va como tab: a 1024 px la barra no entraba con la cuenta. Queda en el cajón, el footer

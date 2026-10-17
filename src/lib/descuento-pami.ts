@@ -10,12 +10,12 @@
 // garantizado, que ANSES redetermina cada mes. Por eso la alícuota EFECTIVA (aporte/haber) es un
 // número distinto todos los meses aunque el haber no se mueva, y es el que la página muestra.
 //
-// No se copia ningún monto acá: el haber mínimo sale de PRESTACIONES_VIGENTES.
+// No se copia ningún monto acá: el haber mínimo sale de prestacionesVigentes().
 
 import {
   ALICUOTA_EXCEDENTE,
   ALICUOTA_HASTA_MINIMO,
-  HABER_MINIMO_VIGENTE,
+  haberMinimoVigente,
   REGIMENES,
   type RegimenPami,
 } from "@/data/descuento-pami";
@@ -32,7 +32,7 @@ export function regimenPorId(id: string): RegimenPami {
  * El aporte del art. 8 sobre una base. `haberMinimo` es el punto de corte del inciso a); en el
  * inciso b) las dos alícuotas son iguales, así que el corte no cambia el resultado.
  */
-export function aporteSobre(base: number, regimenId: string, haberMinimo = HABER_MINIMO_VIGENTE) {
+export function aporteSobre(base: number, regimenId: string, haberMinimo = haberMinimoVigente()) {
   const regimen = regimenPorId(regimenId);
   if (regimen.tramos === null || base <= 0) {
     return { tramoBajo: 0, tramoAlto: 0, baseBajo: 0, baseAlto: 0, total: 0 };
@@ -80,7 +80,7 @@ export type ResultadoPami = {
 
 export function calcularDescuentoPami(e: EntradaPami = {}): ResultadoPami {
   const regimen = regimenPorId(e.regimenId ?? "dependencia");
-  const haberMinimo = e.haberMinimo ?? HABER_MINIMO_VIGENTE;
+  const haberMinimo = e.haberMinimo ?? haberMinimoVigente();
   const cargado = Number.isFinite(e.haber) && (e.haber as number) > 0;
   const haber = cargado ? r2(e.haber as number) : haberMinimo;
   const bono = Number.isFinite(e.bono) && (e.bono as number) > 0 ? r2(e.bono as number) : 0;
@@ -175,7 +175,7 @@ export type FilaEscala = {
  */
 export function escalaEfectiva(
   regimenId = "dependencia",
-  haberMinimo = HABER_MINIMO_VIGENTE,
+  haberMinimo = haberMinimoVigente(),
   multiplos = [1, 1.5, 2, 3, 4, 6],
 ): FilaEscala[] {
   return multiplos.map((v) => {

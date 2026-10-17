@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { REGIMENES } from "@/data/descuento-pami";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { calcularDescuentoPami } from "@/lib/descuento-pami";
 import { formatARS, parseMonto } from "@/lib/formato";
 
@@ -27,7 +27,7 @@ export function CalculadoraDescuentoPami() {
       calcularDescuentoPami({
         haber: parseMonto(haber),
         regimenId,
-        bono: conBono ? BONO_VIGENTE.monto : 0,
+        bono: conBono ? bonoVigente().monto : 0,
         conAguinaldo,
       }),
     [haber, regimenId, conBono, conAguinaldo],
@@ -66,7 +66,7 @@ export function CalculadoraDescuentoPami() {
           </label>
           <p className="mt-0.5 text-xs text-zinc-500">
             En blanco se usa el haber mínimo garantizado de{" "}
-            {formatARS(PRESTACIONES_VIGENTES.haberMinimo, 0)}.
+            {formatARS(prestacionesVigentes().haberMinimo, 0)}.
           </p>
           <input
             id="pami-haber"
@@ -89,10 +89,10 @@ export function CalculadoraDescuentoPami() {
             />
             <label htmlFor="pami-bono" className="text-sm text-zinc-700">
               <span className="font-semibold text-zinc-800">
-                Cobro el bono de {formatARS(BONO_VIGENTE.monto, 0)}
+                Cobro el bono de {formatARS(bonoVigente().monto, 0)}
               </span>
               <span className="mt-0.5 block text-xs text-zinc-500">
-                {BONO_VIGENTE.norma}. Es no remunerativo y no sufre descuentos: suma al neto sin
+                {bonoVigente().norma}. Es no remunerativo y no sufre descuentos: suma al neto sin
                 pasar por el aporte.
               </span>
             </label>

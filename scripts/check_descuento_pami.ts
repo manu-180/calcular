@@ -10,7 +10,7 @@
 //      monótona y que en el haber mínimo exacto vale 3% clavado.
 //   2. **El punto de corte es el haber mínimo VIVO, no un número escrito.** Si alguien copia un
 //      monto a mano en el data, el aporte deja de moverse con la resolución mensual de ANSES y la
-//      página envejece en silencio. Se ancla contra PRESTACIONES_VIGENTES.
+//      página envejece en silencio. Se ancla contra prestacionesVigentes().
 //   3. **Las PNC no tienen alícuota, y eso no puede degradarse a cero silencioso.** El régimen
 //      tiene `tramos: null` a propósito: la página afirma que ninguna norma fija un porcentaje.
 //      Si alguien le pone 0 como número, la afirmación pasa a ser «aportan 0%», que es otra cosa.
@@ -22,14 +22,14 @@
 import {
   ALICUOTA_EXCEDENTE,
   ALICUOTA_HASTA_MINIMO,
-  HABER_MINIMO_VIGENTE,
+  haberMinimoVigente,
   MESES_VIGENCIA_OPCION,
   OPCIONES_POR_ANIO,
-  PAMI_FUENTES,
+  pamiFuentes,
   PAMI_TEXTOS,
   REGIMENES,
 } from "../src/data/descuento-pami";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "../src/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "../src/data/prestaciones";
 import {
   aporteSobre,
   calcularDescuentoPami,
@@ -109,19 +109,19 @@ check(
 // 2 · El punto de corte es el haber mínimo VIVO
 // ===========================================================================
 check(
-  "el punto de corte es el haber mínimo de PRESTACIONES_VIGENTES (no un número copiado)",
-  HABER_MINIMO_VIGENTE === PRESTACIONES_VIGENTES.haberMinimo,
-  { HABER_MINIMO_VIGENTE, vigente: PRESTACIONES_VIGENTES.haberMinimo },
+  "el punto de corte es el haber mínimo de prestacionesVigentes() (no un número copiado)",
+  haberMinimoVigente() === prestacionesVigentes().haberMinimo,
+  { haberMinimo: haberMinimoVigente(), vigente: prestacionesVigentes().haberMinimo },
 );
 check(
   "la fuente del haber mínimo apunta a la resolución vigente de ANSES",
-  PAMI_FUENTES.lista.some((f) => f.url === PRESTACIONES_VIGENTES.resolucionUrl),
+  pamiFuentes().lista.some((f) => f.url === prestacionesVigentes().resolucionUrl),
 );
 
 // ===========================================================================
 // 3 · La escala es progresiva y no puede salirse del rango
 // ===========================================================================
-const M = HABER_MINIMO_VIGENTE;
+const M = haberMinimoVigente();
 
 check(
   "con el haber mínimo exacto, el aporte del inc. a) es el 3% clavado",
@@ -185,11 +185,11 @@ check("el régimen de PNC tiene tramos = null, no un 0 numérico", pnc.tramos ==
 // 5 · Lo que NO entra en la base, y lo que sí
 // ===========================================================================
 {
-  const conBono = calcularDescuentoPami({ haber: M * 2, bono: BONO_VIGENTE.monto });
+  const conBono = calcularDescuentoPami({ haber: M * 2, bono: bonoVigente().monto });
   const sinBono = calcularDescuentoPami({ haber: M * 2 });
   check(
     "el bono no cambia el aporte (es no remunerativo) pero sí el neto",
-    conBono.aporte === sinBono.aporte && casi(conBono.neto - sinBono.neto, BONO_VIGENTE.monto),
+    conBono.aporte === sinBono.aporte && casi(conBono.neto - sinBono.neto, bonoVigente().monto),
     { conBono: conBono.aporte, sinBono: sinBono.aporte, deltaNeto: conBono.neto - sinBono.neto },
   );
 

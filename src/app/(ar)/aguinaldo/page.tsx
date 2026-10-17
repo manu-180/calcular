@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraAguinaldo } from "@/components/CalculadoraAguinaldo";
+import { datosOferta } from "@/lib/oferta";
 import { EmailCapture } from "@/components/EmailCapture";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
@@ -143,7 +144,7 @@ export default function AguinaldoPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraAguinaldo />
+      <CalculadoraAguinaldo oferta={datosOferta("planilla-mi-sueldo")} />
 
       <div className="grid gap-3 sm:grid-cols-2">
         <Link

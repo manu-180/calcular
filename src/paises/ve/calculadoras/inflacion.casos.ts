@@ -22,6 +22,8 @@ export default definirCasos(inflacion, [
     nombre: "Un mes sin INPC publicado usa el último disponible",
     origen: { tipo: "recalculado", detalle: "Al 8/10/2026 el último INPC es septiembre. Agosto a septiembre: 690.967.674.312.665 / 637.409.769.724.325,1 = 1,0840. Bs 1.000 → Bs 1.084,02." },
     fecha: "2026-10-08",
+    // El último dato va fijo: con la serie real el caso se rompía al entrar el mes siguiente y frenaba la publicación del país.
+    valores: { "ve.inpc": { fecha: "2026-09-01", valor: 690967674312665 } },
     entrada: { monto: 1000, desde: "2026-08-01", hasta: "2026-10-08" },
     esperado: { montoActualizado: 1084.02, mesDestino: "septiembre de 2026" },
   },

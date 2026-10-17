@@ -1,0 +1,35 @@
+{
+  "mercado": "ch",
+  "avisos": [
+    {
+      "id": "ch.bvg-grenzbetraege-2027",
+      "nivel": "info",
+      "desde": "2026-10-14",
+      "hasta": "2026-12-31",
+      "aplicaA": ["ch.brutto-netto-rechner", "ch.netto-brutto-rechner", "ch.lohnkosten-rechner", "ch.bvg-rechner"],
+      "texto": "Ab 1. Januar 2027 steigen die BVG-Eintrittsschwelle auf 23 040 Franken und der Koordinationsabzug auf 26 880 Franken. Dieser Rechner zeigt die Werte für 2026.",
+      "fuente": {
+        "organismo": "Bundesamt für Sozialversicherungen",
+        "titulo": "Medienmitteilung vom 2. Oktober 2026: AHV/IV-Minimalrente steigt um 20 Franken",
+        "url": "https://www.bsv.admin.ch/de/newnsb/BqB41FVYi5FB",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    },
+    {
+      "id": "ch.selbststaendige-2027",
+      "nivel": "info",
+      "desde": "2026-10-14",
+      "hasta": "2026-12-31",
+      "aplicaA": ["ch.ahv-beitraege-selbststaendige"],
+      "texto": "Ab 1. Januar 2027 steigt der Mindestbeitrag für Selbstständigerwerbende auf 541 Franken im Jahr. Dieser Rechner zeigt die Werte für 2026.",
+      "fuente": {
+        "organismo": "Bundesamt für Sozialversicherungen",
+        "titulo": "Medienmitteilung vom 2. Oktober 2026: AHV/IV-Minimalrente steigt um 20 Franken",
+        "url": "https://www.bsv.admin.ch/de/newnsb/BqB41FVYi5FB",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    }
+  ]
+}

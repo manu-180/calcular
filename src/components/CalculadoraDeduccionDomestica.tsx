@@ -5,7 +5,8 @@ import Link from "next/link";
 import { CONDICIONES, VIGENCIA_APORTES, type CondicionTrabajador } from "@/data/aportes-casas-particulares";
 import { DEDUCCION_VIGENCIA } from "@/data/deduccion-domestica";
 import { calcularDeduccionDomestica } from "@/lib/deduccion-domestica";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, CANTIDAD_MAXIMA, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -26,17 +27,23 @@ export function CalculadoraDeduccionDomestica() {
   const [conyuge, setConyuge] = useState(false);
   const [hijos, setHijos] = useState("0");
 
+  const error = primerError({
+    "Sueldo que le pagás": errorMonto(sueldoMensual),
+    "Tu sueldo bruto mensual": errorMonto(brutoEmpleador),
+    "Hijos a cargo": errorMonto(hijos, CANTIDAD_MAXIMA),
+  });
+
   const res = useMemo(
     () =>
       calcularDeduccionDomestica({
-        sueldoMensual: Number(sueldoMensual) || 0,
+        sueldoMensual: parseMonto(sueldoMensual),
         mesesTrabajados: Number(mesesTrabajados) || 0,
         incluirAguinaldo,
         horasSemanales,
         condicion,
-        brutoMensualEmpleador: Number(brutoEmpleador) || 0,
+        brutoMensualEmpleador: parseMonto(brutoEmpleador),
         conyuge,
-        hijos: Number(hijos) || 0,
+        hijos: parseMonto(hijos),
       }),
     [sueldoMensual, mesesTrabajados, incluirAguinaldo, horasSemanales, condicion, brutoEmpleador, conyuge, hijos],
   );
@@ -169,89 +176,95 @@ export function CalculadoraDeduccionDomestica() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-        <p className="text-sm text-zinc-600">Lo que te vuelve en el año por esta deducción</p>
-        <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
-          {formatARS(res.ahorroAnual, 2)}
-        </p>
-        <p className="mt-1 text-sm text-zinc-600">
-          {res.ahorroAnual > 0 ? (
-            <>
-              {formatARS(res.ahorroMensual, 2)} por mes · te devuelve el{" "}
-              <strong>
-                {(res.alicuotaEfectiva * 100).toLocaleString("es-AR", { maximumFractionDigits: 1 })}%
-              </strong>{" "}
-              de lo que deducís, no el total
-            </>
-          ) : (
-            "no hay ahorro: la deducción baja la base imponible, pero no estás pagando el impuesto"
-          )}
-        </p>
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+          <p className="text-sm text-zinc-600">Lo que te vuelve en el año por esta deducción</p>
+          <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
+            {formatARS(res.ahorroAnual, 2)}
+          </p>
+          <p className="mt-1 text-sm text-zinc-600">
+            {res.ahorroAnual > 0 ? (
+              <>
+                {formatARS(res.ahorroMensual, 2)} por mes · te devuelve el{" "}
+                <strong>
+                  {(res.alicuotaEfectiva * 100).toLocaleString("es-AR", { maximumFractionDigits: 1 })}%
+                </strong>{" "}
+                de lo que deducís, no el total
+              </>
+            ) : (
+              "no hay ahorro: la deducción baja la base imponible, pero no estás pagando el impuesto"
+            )}
+          </p>
 
-        <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Sueldos + aguinaldo del año</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.remuneracionAnual, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Contribuciones (SIPA + salud)</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.contribucionesAnual, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Total computable</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.computable, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Tope anual (ganancia no imponible)</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.tope, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Deducción que podés computar</dt>
-            <dd className="font-semibold text-emerald-700">{formatARS(res.deduccionAplicada, 2)}</dd>
-          </div>
-          {topeAlcanzado && (
+          <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
             <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-              <dt className="text-zinc-600">Excedente que se pierde</dt>
-              <dd className="font-semibold text-amber-700">{formatARS(res.excedente, 2)}</dd>
+              <dt className="text-zinc-600">Sueldos + aguinaldo del año</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.remuneracionAnual, 2)}</dd>
             </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Contribuciones (SIPA + salud)</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.contribucionesAnual, 2)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Total computable</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.computable, 2)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Tope anual (ganancia no imponible)</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.tope, 2)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Deducción que podés computar</dt>
+              <dd className="font-semibold text-emerald-700">{formatARS(res.deduccionAplicada, 2)}</dd>
+            </div>
+            {topeAlcanzado && (
+              <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+                <dt className="text-zinc-600">Excedente que se pierde</dt>
+                <dd className="font-semibold text-amber-700">{formatARS(res.excedente, 2)}</dd>
+              </div>
+            )}
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Cuota ART del año (pagada, no computada)</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.artAnual, 2)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Tu Ganancias del año: antes → después</dt>
+              <dd className="font-medium text-zinc-900">
+                {formatARS(res.impuestoSin.impuestoAnual, 2)} → {formatARS(res.impuestoCon.impuestoAnual, 2)}
+              </dd>
+            </div>
+          </dl>
+
+          {res.avisos.length > 0 && (
+            <ul className="mt-4 space-y-2">
+              {res.avisos.map((a, i) => (
+                <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
+                  {a.texto}
+                </li>
+              ))}
+            </ul>
           )}
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Cuota ART del año (pagada, no computada)</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.artAnual, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Tu Ganancias del año: antes → después</dt>
-            <dd className="font-medium text-zinc-900">
-              {formatARS(res.impuestoSin.impuestoAnual, 2)} → {formatARS(res.impuestoCon.impuestoAnual, 2)}
-            </dd>
-          </div>
-        </dl>
 
-        {res.avisos.length > 0 && (
-          <ul className="mt-4 space-y-2">
-            {res.avisos.map((a, i) => (
-              <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
-                {a.texto}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <p className="mt-4 text-xs text-zinc-500">
-          Tope y escala del impuesto: {DEDUCCION_VIGENCIA}. Contribuciones: tabla de ARCA de{" "}
-          {VIGENCIA_APORTES.mesVigente}, tomadas como referencia para todos los meses del año (si
-          durante el año hubo tablas distintas, el número real es algo mayor). Estimación orientativa,
-          no una liquidación: el sueldo lo calculás en{" "}
-          <Link href="/empleada-domestica" className="font-medium text-emerald-700 hover:underline">
-            la escala de casas particulares
-          </Link>{" "}
-          y tu impuesto, mes a mes, en{" "}
-          <Link href="/ganancias" className="font-medium text-emerald-700 hover:underline">
-            la calculadora de Ganancias
-          </Link>
-          .
-        </p>
-      </div>
+          <p className="mt-4 text-xs text-zinc-500">
+            Tope y escala del impuesto: {DEDUCCION_VIGENCIA}. Contribuciones: tabla de ARCA de{" "}
+            {VIGENCIA_APORTES.mesVigente}, tomadas como referencia para todos los meses del año (si
+            durante el año hubo tablas distintas, el número real es algo mayor). Estimación orientativa,
+            no una liquidación: el sueldo lo calculás en{" "}
+            <Link href="/empleada-domestica" className="font-medium text-emerald-700 hover:underline">
+              la escala de casas particulares
+            </Link>{" "}
+            y tu impuesto, mes a mes, en{" "}
+            <Link href="/ganancias" className="font-medium text-emerald-700 hover:underline">
+              la calculadora de Ganancias
+            </Link>
+            .
+          </p>
+        </div>
+        </>
+      )}
     </div>
   );
 }

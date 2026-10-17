@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraSalarioMinimo } from "@/components/CalculadoraSalarioMinimo";
+import { datosOferta } from "@/lib/oferta";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
@@ -17,19 +18,24 @@ import { etiquetaMes, smvmVigente } from "@/lib/desempleo";
 import { variacionMensual } from "@/lib/salario-minimo";
 import { formatARS } from "@/lib/formato";
 
-const SMVM = smvmVigente().mes;
-const MES = etiquetaMes(SMVM.periodo);
-const FIN = SMVM_SERIE[SMVM_SERIE.length - 1];
-const MES_FIN = etiquetaMes(FIN.periodo);
+function datosDelMes() {
+  const SMVM = smvmVigente().mes;
+  const MES = etiquetaMes(SMVM.periodo);
+  const FIN = SMVM_SERIE[SMVM_SERIE.length - 1];
+  const MES_FIN = etiquetaMes(FIN.periodo);
 
-// La tabla arranca dos meses antes del vigente: lo que importa es el mes en curso y todo lo que
-// ya tiene norma hacia adelante, no el final de la escala.
-const I_VIGENTE = SMVM_SERIE.findIndex((m) => m.periodo === SMVM.periodo);
-const ESCALA = SMVM_SERIE.slice(Math.max(0, I_VIGENTE - 2));
+  // La tabla arranca dos meses antes del vigente: lo que importa es el mes en curso y todo lo que
+  // ya tiene norma hacia adelante, no el final de la escala.
+  const I_VIGENTE = SMVM_SERIE.findIndex((m) => m.periodo === SMVM.periodo);
+  const ESCALA = SMVM_SERIE.slice(Math.max(0, I_VIGENTE - 2));
 
-const MEDIA_JORNADA = Math.round(SMVM.mensual / 2);
+  const MEDIA_JORNADA = Math.round(SMVM.mensual / 2);
+  return { SMVM, MES, FIN, MES_FIN, I_VIGENTE, ESCALA, MEDIA_JORNADA };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ SMVM, MES, MES_FIN }: DatosDelMes): Metadata => ({
   title: `Salario mínimo ${MES}: cuánto es por mes y hora`,
   description: `El salario mínimo de ${MES}: ${formatARS(SMVM.mensual, 0)} por mes y ${formatARS(SMVM.porHora, 0)} por hora. Escala fijada hasta ${MES_FIN} (Resolución 4/2026) y lo que determina.`,
   alternates: { canonical: "/salario-minimo" },
@@ -45,9 +51,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ SMVM, MES, FIN, MES_FIN, MEDIA_JORNADA }: DatosDelMes) => [
   {
     q: `¿Cuánto es el salario mínimo en ${MES}?`,
     a: `${formatARS(SMVM.mensual, 0)} por mes si sos mensualizado y cumplís la jornada legal completa, y ${formatARS(SMVM.porHora, 0)} por hora si sos jornalizado. Lo fijó el artículo 1º de la Resolución 4/2026 del Consejo Nacional del Empleo, la Productividad y el Salario Mínimo, Vital y Móvil, publicada en el Boletín Oficial el 2 de septiembre de 2026. Es un monto bruto y no incluye las asignaciones familiares.`,
@@ -91,6 +101,9 @@ const faqs = [
 ];
 
 export default function SalarioMinimoPage() {
+  const datos = datosDelMes();
+  const { SMVM, MES, FIN, MES_FIN, ESCALA, MEDIA_JORNADA } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -174,7 +187,7 @@ export default function SalarioMinimoPage() {
           Elegí el mes y cargá tus horas semanales. Si además ponés tu sueldo bruto, la calculadora
           te dice cuánto te falta (o te sobra) para llegar al piso legal de esa jornada.
         </p>
-        <CalculadoraSalarioMinimo />
+        <CalculadoraSalarioMinimo oferta={datosOferta("planilla-mi-sueldo")} />
       </section>
 
       <section className="space-y-3">

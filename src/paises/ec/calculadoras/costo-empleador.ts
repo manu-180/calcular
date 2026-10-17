@@ -1,4 +1,4 @@
-import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
 const MESES = 12;
 
@@ -18,6 +18,7 @@ export default definirCalculadora({
     { id: "masDeUnAnio", tipo: "si-no", etiqueta: "Lleva más de un año en la empresa", porDefecto: true },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.sueldo <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "sueldo");
     const aportePatronal = redondear(porcentaje(entrada.sueldo, valores["ec.aporte-patronal-iess"]));
     const decimoTercero = redondear(entrada.sueldo / MESES);
     const decimoCuarto = redondear(valores["ec.sbu"] / MESES);

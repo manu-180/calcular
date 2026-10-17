@@ -1,16 +1,16 @@
 import SiteHeader from "@/components/SiteHeader";
 import { productosDeMercado } from "@/lib/pagos/catalogo-intl";
 import { rutaIntl } from "@/motor/seo";
-import { opcionesSelector, type ContextoSitio } from "@/motor/ui/contexto";
+import type { ContextoSitio } from "@/motor/ui/contexto";
 import { menuDelPais } from "@/motor/ui/menu";
-import { SelectorPais, type OpcionPais } from "@/motor/ui/SelectorPais";
+import type { OpcionPais } from "@/motor/ui/paises";
+import { SelectorPais } from "@/motor/ui/SelectorPais";
 import { ARGENTINA } from "./argentina";
 import { PaisesCajon } from "./PaisesCajon";
 
-export function opcionesConArgentina(ctx: ContextoSitio): OpcionPais[] {
-  const ar: OpcionPais = { codigo: ARGENTINA.codigo, nombre: ARGENTINA.nombre, pais: ARGENTINA.pais, href: ARGENTINA.href };
-  return [...opcionesSelector(ctx), ar].sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
-}
+// Países de otro sitio que el selector y el cajón listan junto a los mercados (ProveedorPaises, en
+// el layout intl): Argentina vive en calcular.ar.
+export const EXTERNOS: readonly OpcionPais[] = [{ codigo: ARGENTINA.codigo, nombre: ARGENTINA.nombre, pais: ARGENTINA.pais, href: ARGENTINA.href }];
 
 export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
   const t = ctx.textos;
@@ -23,7 +23,6 @@ export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
   const conPlanillas = planillas
     ? [...tabs.filter((x) => x.key !== "novedades"), { key: "planillas", label: t.shell.menu.planillas, type: "link" as const, href: planillas, match: [planillas] }, ...tabs.filter((x) => x.key === "novedades")]
     : tabs;
-  const opciones = opcionesConArgentina(ctx);
   const nombre = t.marca.nombre;
   const corte = nombre.endsWith("Ya") ? nombre.length - 2 : nombre.length;
   const actual = enPais ? { codigo: m.codigo, nombre: m.nombre, pais: m.pais, href: rutaIntl(m.codigo) } : null;
@@ -54,13 +53,15 @@ export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
           <div className="ca-selector-pais">
             <SelectorPais
               actual={actual}
-              opciones={opciones}
+              idioma={m.idioma}
+              trato={m.trato}
               textos={{ elegir: t.header.elegirPais, latinoamerica: t.header.latinoamerica, todos: t.header.todos, hrefTodos: rutaIntl("global") }}
             />
           </div>
         }
-        extraCajon={<PaisesCajon actual={actual} opciones={opciones} abierto={!enPais} textos={{ elegir: t.header.elegirPais, cambiar: t.shell.paises.cambiar }} />}
+        extraCajon={<PaisesCajon actual={actual} abierto={!enPais} textos={{ elegir: t.header.elegirPais, cambiar: t.shell.paises.cambiar }} />}
         rutasInternas
+        navDesde="xl"
       />
     </div>
   );

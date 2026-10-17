@@ -8,10 +8,15 @@ export type CeldaMapa =
   | { ref: string; tipo: "valor"; valores: Readonly<Record<string, string | number | boolean | null>> }
   | { ref: string; tipo: "fecha-serial" };
 
+export type ValorMuestra = string | number | boolean | null;
+
 export interface BloqueMapa {
   calculadora: string;
   hoja: string;
   celdas: Readonly<Record<string, CeldaMapa>>;
+  // Lo que trae la hoja al abrirla, ya en valores de la calculadora: con eso la landing calcula la
+  // vista previa con los números reales de hoy, sin leer el .xlsx.
+  muestra?: Readonly<Record<string, ValorMuestra>>;
 }
 
 export interface MapaPlanilla {

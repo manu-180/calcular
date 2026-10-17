@@ -66,7 +66,7 @@ export type ResultadoMulta = {
   maximoFinal: number;
 };
 
-export function calcularMultaPractica(e: EntradaMulta, hoy: Date = new Date()): ResultadoMulta {
+export function calcularMultaPractica(e: EntradaMulta, hoy?: Date): ResultadoMulta {
   const escalon = ESCALONES.find((x) => x.id === e.escalon) ?? ESCALONES[0];
   const smvm = smvmVigente(hoy);
   const smvmMensual = e.smvmMensual && e.smvmMensual > 0 ? e.smvmMensual : smvm.mes.mensual;

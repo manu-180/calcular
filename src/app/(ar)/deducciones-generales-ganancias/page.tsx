@@ -18,29 +18,34 @@ import {
 import { calcularDeduccionesGenerales } from "@/lib/deducciones-generales";
 import { formatARS } from "@/lib/formato";
 
-const TOPES = topesSegurosDerivados();
+function datosDelMes() {
+  const TOPES = topesSegurosDerivados();
 
-const CASO = calcularDeduccionesGenerales({
-  brutoMensual: 3_500_000,
-  conyuge: false,
-  hijos: 0,
-  prepagaAnual: 180_000 * 12,
-  honorariosFacturadosAnual: 600_000,
-  honorariosReintegradosAnual: 0,
-  seguroVidaAnual: 400_000,
-  seguroRetiroAnual: 0,
-  donacionesAnual: 0,
-  interesesHipotecariosAnual: 0,
-});
-const PREPAGA = CASO.lineas.find((l) => l.id === "prepaga")!;
-const HONORARIOS = CASO.lineas.find((l) => l.id === "honorarios")!;
+  const CASO = calcularDeduccionesGenerales({
+    brutoMensual: 3_500_000,
+    conyuge: false,
+    hijos: 0,
+    prepagaAnual: 180_000 * 12,
+    honorariosFacturadosAnual: 600_000,
+    honorariosReintegradosAnual: 0,
+    seguroVidaAnual: 400_000,
+    seguroRetiroAnual: 0,
+    donacionesAnual: 0,
+    interesesHipotecariosAnual: 0,
+  });
+  const PREPAGA = CASO.lineas.find((l) => l.id === "prepaga")!;
+  const HONORARIOS = CASO.lineas.find((l) => l.id === "honorarios")!;
 
-const pct = (n: number) => (n * 100).toLocaleString("es-AR", { maximumFractionDigits: 1 });
-const TOPE_TXT = formatARS(TOPE_SEGUROS_VIGENTE, 2);
+  const pct = (n: number) => (n * 100).toLocaleString("es-AR", { maximumFractionDigits: 1 });
+  const TOPE_TXT = formatARS(TOPE_SEGUROS_VIGENTE, 2);
 
-const ANIO = ANIO_FISCAL_VIGENTE;
+  const ANIO = ANIO_FISCAL_VIGENTE;
+  return { TOPES, CASO, PREPAGA, HONORARIOS, pct, TOPE_TXT, ANIO };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ ANIO }: DatosDelMes): Metadata => ({
   title: `Deducciones de Ganancias ${ANIO}: prepaga, médicos, seguros`,
   description: `Topes ${ANIO_FISCAL_VIGENTE} de prepaga, honorarios médicos, donaciones y seguro de vida en Ganancias. Calculá cuánto deducís y cuánto te vuelve según tu sueldo.`,
   alternates: { canonical: "/deducciones-generales-ganancias" },
@@ -53,9 +58,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ CASO, PREPAGA, HONORARIOS, pct, TOPE_TXT }: DatosDelMes) => [
   {
     q: `¿Cuál es el tope del seguro de vida en Ganancias ${ANIO_FISCAL_VIGENTE}?`,
     a: `${TOPE_TXT} por año. Y el mismo monto, aparte, para lo que pongas en un seguro de retiro privado. No sale de un decreto nuevo cada año: el art. 78 de la Ley 27.743 dispuso que el monto de 2022 (${formatARS(TOPE_SEGUROS_BASE.monto, 2)}, del Decreto 18/2023) se ajuste solo desde 2023 «considerando la variación anual del Índice de Precios al Consumidor (IPC)… correspondiente al mes de octubre del año anterior al del ajuste respecto del mismo mes del año anterior». Con los índices oficiales del INDEC, esa cuenta da exactamente la tabla que publica ARCA, al centavo.`,
@@ -99,6 +108,9 @@ const faqs = [
 ];
 
 export default function DeduccionesGeneralesPage() {
+  const datos = datosDelMes();
+  const { TOPES, CASO, TOPE_TXT } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [

@@ -10,9 +10,10 @@
 //   2. Se agrega la fila del mes en RESOLUCIONES de scripts/gen_jubilaciones.ts y se corre ese script.
 //   3. `npx -y tsx scripts/check_jubilaciones.ts` — verifica que cada mes sea el anterior movido por la
 //      movilidad (IPC de dos meses antes): un número mal tipeado no llega a producción.
-// El día 1 el sitio pasa solo al mes nuevo: PRESTACIONES_VIGENTES es el último mes COMPLETO (con
-// resolución y decreto del bono) cuyo período ya empezó, según src/lib/hoy.ts. El workflow
-// datos-vivos redeploya el día 1 a la madrugada para que las páginas estáticas lo tomen.
+// El día 1 el sitio pasa solo al mes nuevo: prestacionesVigentes() es el último mes COMPLETO (con
+// resolución y decreto del bono) cuyo período ya empezó, según src/lib/hoy.ts. Se resuelve en cada
+// render y no al cargar el módulo: la revalidación de 1 h de (ar) lo toma sin redeploy
+// (scripts/check_mes_en_render.ts lo vigila).
 //
 // POR QUÉ SE EXIGE EL BONO PARA ENTRAR EN VIGENCIA: toda página previsional muestra "haber + bono".
 // Un mes sin decreto mostraría el bono del mes anterior como si rigiera. Mientras el decreto no
@@ -103,35 +104,43 @@ export const MESES_PREVISIONALES: MesPrevisional[] = [
 ];
 
 const COMPLETOS = MESES_PREVISIONALES.filter((m) => m.bono !== null);
-const VIGENTE = vigenteEn(COMPLETOS, (m) => m.periodo);
 
-/** El mes que se liquida hoy. Sin el campo `bono`: el bono se lee de BONO_VIGENTE. */
-export const PRESTACIONES_VIGENTES: Omit<MesPrevisional, "bono"> = (({ bono: _bono, ...resto }) => resto)(VIGENTE);
+function mesCompletoVigente(): MesPrevisional {
+  return vigenteEn(COMPLETOS, (m) => m.periodo);
+}
 
-/** Bono del mes vigente: siempre el del MISMO período que PRESTACIONES_VIGENTES. */
-export const BONO_VIGENTE: BonoPrevisional & { periodo: string } = {
-  periodo: VIGENTE.periodo,
-  ...(VIGENTE.bono as BonoPrevisional),
-};
+/** El mes que se liquida hoy. Sin el campo `bono`: el bono se lee de bonoVigente(). */
+export function prestacionesVigentes(): Omit<MesPrevisional, "bono"> {
+  const { bono: _bono, ...resto } = mesCompletoVigente();
+  return resto;
+}
+
+/** Bono del mes vigente: siempre el del MISMO período que prestacionesVigentes(). */
+export function bonoVigente(): BonoPrevisional & { periodo: string } {
+  const vigente = mesCompletoVigente();
+  return { periodo: vigente.periodo, ...(vigente.bono as BonoPrevisional) };
+}
 
 /**
  * Resolución del mes SIGUIENTE, cuando ANSES la dicta antes de que empiece ese mes. No reemplaza a
- * PRESTACIONES_VIGENTES: el mes en curso se sigue liquidando con su resolución. check_jubilaciones
+ * prestacionesVigentes(): el mes en curso se sigue liquidando con su resolución. check_jubilaciones
  * exige que el haber mínimo coincida al centavo con el que ya derivaba la fórmula.
  */
-export const RESOLUCION_PROXIMA: Omit<MesPrevisional, "bono" | "vigencia" | "movilidad"> | null = (() => {
-  const siguiente = MESES_PREVISIONALES.find((m) => m.periodo > VIGENTE.periodo);
+export function resolucionProxima(): Omit<MesPrevisional, "bono" | "vigencia" | "movilidad"> | null {
+  const vigente = mesCompletoVigente();
+  const siguiente = MESES_PREVISIONALES.find((m) => m.periodo > vigente.periodo);
   if (!siguiente) return null;
   const { bono: _b, vigencia: _v, movilidad: _m, ...resto } = siguiente;
   return resto;
-})();
+}
 
 /**
- * true cuando ya empezó un mes cuya resolución está cargada pero cuyo decreto del bono todavía no:
- * el sitio sigue mostrando el mes anterior entero. Lo lee el semáforo para gritarlo.
+ * El período cuando ya empezó un mes cuya resolución está cargada pero cuyo decreto del bono todavía
+ * no: el sitio sigue mostrando el mes anterior entero. Lo lee el semáforo para gritarlo.
  */
-export const MES_PREVISIONAL_SIN_BONO: string | null =
-  MESES_PREVISIONALES.find((m) => m.bono === null && m.periodo <= periodoActualAR())?.periodo ?? null;
+export function mesPrevisionalSinBono(): string | null {
+  return MESES_PREVISIONALES.find((m) => m.bono === null && m.periodo <= periodoActualAR())?.periodo ?? null;
+}
 
 export const PRESTACIONES_FUENTES = {
   movilidad: {

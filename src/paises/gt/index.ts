@@ -83,6 +83,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: "todas",
   calculadoras: [
     { definicion: bono14, contenido: contenidoBono14, cliente: () => import("./calculadoras/bono-14.cliente") },
     { definicion: aguinaldo, contenido: contenidoAguinaldo, cliente: () => import("./calculadoras/aguinaldo.cliente") },

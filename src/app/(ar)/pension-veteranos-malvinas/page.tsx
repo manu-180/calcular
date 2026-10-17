@@ -12,20 +12,25 @@ import {
   VETERANOS_FUENTES,
   VETERANOS_TEXTOS,
 } from "@/data/veteranos-malvinas";
-import { PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { prestacionesVigentes } from "@/data/prestaciones";
 import { etiquetaPeriodo } from "@/lib/jubilacion";
 import { montoTitular, serieMontos } from "@/lib/veteranos-malvinas";
 import { formatARS } from "@/lib/formato";
 
-const PERIODO = PRESTACIONES_VIGENTES.periodo;
-const MES = etiquetaPeriodo(PERIODO);
-const MINIMO = PRESTACIONES_VIGENTES.haberMinimo;
-const MONTO = montoTitular(PERIODO);
+function datosDelMes() {
+  const PERIODO = prestacionesVigentes().periodo;
+  const MES = etiquetaPeriodo(PERIODO);
+  const MINIMO = prestacionesVigentes().haberMinimo;
+  const MONTO = montoTitular(PERIODO);
 
-const SERIE = serieMontos();
-const ULTIMOS = SERIE.slice(-7).reverse();
+  const SERIE = serieMontos();
+  const ULTIMOS = SERIE.slice(-7).reverse();
+  return { PERIODO, MES, MINIMO, MONTO, SERIE, ULTIMOS };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MES, MONTO }: DatosDelMes): Metadata => ({
   title: `Pensión veteranos de Malvinas ${MES}: ${formatARS(MONTO, 0)}`,
   description:
     "La pensión honorífica de veteranos de Malvinas equivale a tres haberes mínimos (Decreto 1357/2004) y se cobra además de cualquier jubilación.",
@@ -39,9 +44,13 @@ export const metadata: Metadata = {
     title: `Pensión de Veteranos de Malvinas: ${formatARS(MONTO, 0)} en ${MES}`,
     description: `Tres veces el haber mínimo (Dec. 1357/2004). Se cobra junto con cualquier jubilación o retiro, y la pensión de la familia es el 100% del beneficio del veterano.`,
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ MES, MINIMO, MONTO }: DatosDelMes) => [
   {
     q: `¿Cuánto cobra un veterano de Malvinas en ${MES}?`,
     a: `${formatARS(MONTO, 0)} por mes. ANSES no publica ese número. El artículo 2º del Decreto 1357/2004 fija la pensión en tres veces el haber mínimo jubilatorio, y el haber mínimo de ${MES} es ${formatARS(MINIMO, 0)}. Por eso la resolución mensual de ANSES (la del haber mínimo, el máximo, las bases imponibles, la PBU y la PUAM) ni nombra a esta pensión: el monto no se publica, se calcula. Además, el titular cobra las asignaciones familiares que le toquen, con los mismos requisitos y derechos que cualquier jubilado.`,
@@ -80,11 +89,14 @@ const faqs = [
   },
   {
     q: "¿El monto sube todos los meses?",
-    a: `Sí, solo. Como es tres veces el haber mínimo, se mueve con la misma movilidad. El Decreto 274/2024 actualiza los haberes cada mes según la inflación (IPC) de dos meses antes. Así que cuando el INDEC publica un IPC, ya se sabe cuánto va a ser esta pensión dos meses después, antes incluso de que salga la resolución de ANSES. En ${MES} la movilidad fue del ${PRESTACIONES_VIGENTES.movilidad}%.`,
+    a: `Sí, solo. Como es tres veces el haber mínimo, se mueve con la misma movilidad. El Decreto 274/2024 actualiza los haberes cada mes según la inflación (IPC) de dos meses antes. Así que cuando el INDEC publica un IPC, ya se sabe cuánto va a ser esta pensión dos meses después, antes incluso de que salga la resolución de ANSES. En ${MES} la movilidad fue del ${prestacionesVigentes().movilidad}%.`,
   },
 ];
 
 export default function VeteranosPage() {
+  const datos = datosDelMes();
+  const { PERIODO, MES, MINIMO, MONTO, ULTIMOS } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [

@@ -4,21 +4,27 @@ import { CalculadoraEdadAvanzada } from "@/components/CalculadoraEdadAvanzada";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
-import { PEA, PEA_CARACTERES, PEA_FUENTES, PEA_REQUISITOS } from "@/data/edad-avanzada";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES as V } from "@/data/prestaciones";
+import { PEA, PEA_CARACTERES, peaFuentes, PEA_REQUISITOS } from "@/data/edad-avanzada";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { haberPea, pensionDerivada, promedioParaSuperarElMinimo } from "@/lib/edad-avanzada";
 import { formatARS, formatPct } from "@/lib/formato";
 
-const MES = V.vigencia;
-const MES_CORTO = MES.replace(" de ", " ");
+function datosDelMes() {
+  const V = prestacionesVigentes();
+  const MES = V.vigencia;
+  const MES_CORTO = MES.replace(" de ", " ");
 
-/** El caso típico: 10 años de aportes, todos posteriores al SIJP, sin promedio declarado. */
-const BASE = haberPea(0, PEA.aniosServiciosConAportes, 0);
-/** El umbral derivado con esos mismos 10 años: el sueldo desde el que la fórmula le gana al piso. */
-const UMBRAL = promedioParaSuperarElMinimo(PEA.aniosServiciosConAportes, 0);
-const BRECHA = Math.round((V.haberMinimo - BASE.componentePbu) * 100) / 100;
+  /** El caso típico: 10 años de aportes, todos posteriores al SIJP, sin promedio declarado. */
+  const BASE = haberPea(0, PEA.aniosServiciosConAportes, 0);
+  /** El umbral derivado con esos mismos 10 años: el sueldo desde el que la fórmula le gana al piso. */
+  const UMBRAL = promedioParaSuperarElMinimo(PEA.aniosServiciosConAportes, 0);
+  const BRECHA = Math.round((V.haberMinimo - BASE.componentePbu) * 100) / 100;
+  return { V, MES, MES_CORTO, BASE, UMBRAL, BRECHA };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MES, MES_CORTO }: DatosDelMes): Metadata => ({
   title: `Pensión por edad avanzada ${MES_CORTO}: cuánto se cobra`,
   description: "Requisitos a los 70 años con 10 de aportes y cuánto se cobra de verdad: el art. 125 garantiza el haber mínimo, no el 70% de la PBU que repiten todos.",
   alternates: { canonical: "/edad-avanzada" },
@@ -31,12 +37,16 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ V, MES, BASE, UMBRAL, BRECHA }: DatosDelMes) => [
   {
     q: `¿Cuánto se cobra por la prestación por edad avanzada en ${MES}?`,
-    a: `Casi siempre, el haber mínimo garantizado: ${formatARS(V.haberMinimo, 2)}, más el bono de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma}. O sea, ${formatARS(BASE.total, 2)} depositados. El número que repiten las notas (el 70% de la PBU, ${formatARS(BASE.componentePbu, 2)} en ${MES}) es una cita correcta del artículo 34 bis apartado 3, pero no es lo que se cobra: queda ${formatARS(BRECHA, 2)} por debajo del mínimo. Y el artículo 125 de la Ley 24.241 garantiza el haber mínimo del artículo 17 a quienes cobran del régimen público, y esta prestación está en el inciso f) de ese artículo.`,
+    a: `Casi siempre, el haber mínimo garantizado: ${formatARS(V.haberMinimo, 2)}, más el bono de ${formatARS(bonoVigente().monto, 0)} del ${bonoVigente().norma}. O sea, ${formatARS(BASE.total, 2)} depositados. El número que repiten las notas (el 70% de la PBU, ${formatARS(BASE.componentePbu, 2)} en ${MES}) es una cita correcta del artículo 34 bis apartado 3, pero no es lo que se cobra: queda ${formatARS(BRECHA, 2)} por debajo del mínimo. Y el artículo 125 de la Ley 24.241 garantiza el haber mínimo del artículo 17 a quienes cobran del régimen público, y esta prestación está en el inciso f) de ese artículo.`,
   },
   {
     q: "¿Cuántos años de aportes hacen falta y cómo tienen que estar distribuidos?",
@@ -79,6 +89,9 @@ const faqs = [
 ];
 
 export default function EdadAvanzadaPage() {
+  const datos = datosDelMes();
+  const { V, MES, BASE, UMBRAL, BRECHA } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -95,7 +108,7 @@ export default function EdadAvanzadaPage() {
       },
       datasetSchema({
         nombre: `Prestación por edad avanzada: haber y requisitos vigentes en ${MES}`,
-        descripcion: `Haber de la prestación por edad avanzada (art. 34 bis de la Ley 24.241) en ${MES}: el 70% de la PBU son ${formatARS(BASE.componentePbu, 2)}, pero el art. 125 garantiza el haber mínimo de ${formatARS(V.haberMinimo, 2)} (${V.resolucion}), que con el bono de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma} da ${formatARS(BASE.total, 2)}. Incluye los requisitos del art. 34 bis ap. 2, el requisito de servicio doméstico que agrega la cartilla de ANSES y el umbral de sueldo derivado a partir del cual la fórmula supera el piso.`,
+        descripcion: `Haber de la prestación por edad avanzada (art. 34 bis de la Ley 24.241) en ${MES}: el 70% de la PBU son ${formatARS(BASE.componentePbu, 2)}, pero el art. 125 garantiza el haber mínimo de ${formatARS(V.haberMinimo, 2)} (${V.resolucion}), que con el bono de ${formatARS(bonoVigente().monto, 0)} del ${bonoVigente().norma} da ${formatARS(BASE.total, 2)}. Incluye los requisitos del art. 34 bis ap. 2, el requisito de servicio doméstico que agrega la cartilla de ANSES y el umbral de sueldo derivado a partir del cual la fórmula supera el piso.`,
         url: "/edad-avanzada",
         modificado: `${V.periodo}-01`,
         fuenteNombre: V.resolucion,
@@ -106,7 +119,7 @@ export default function EdadAvanzadaPage() {
         descripcion:
           "Por qué el 70% de la PBU que publica toda la web no es lo que se cobra, cuál es el piso garantizado, el requisito de los 5 años dentro de los últimos 8 y el que ANSES agrega fuera de la ley.",
         url: "/edad-avanzada",
-        modificado: PEA_FUENTES.consultadoEl,
+        modificado: peaFuentes().consultadoEl,
       }),
       {
         "@type": "FAQPage",
@@ -139,14 +152,14 @@ export default function EdadAvanzadaPage() {
         </p>
       </header>
 
-      <RespuestaPrimero actualizado={PEA_FUENTES.consultadoEl}>
+      <RespuestaPrimero actualizado={peaFuentes().consultadoEl}>
         <p>
           En {MES} el 70% de la PBU son <strong>{formatARS(BASE.componentePbu, 2)}</strong>:{" "}
           {formatARS(BRECHA, 2)} <strong>menos</strong> que el haber mínimo garantizado de{" "}
           {formatARS(V.haberMinimo, 2)}. Como el art. 125 garantiza ese mínimo a quienes cobran del
           régimen público, y esta prestación está en el art. 17 inc. f), lo que se cobra es{" "}
           <strong>{formatARS(BASE.haber, 2)}</strong>. Con el bono de{" "}
-          {formatARS(BONO_VIGENTE.monto, 0)} se depositan <strong>{formatARS(BASE.total, 2)}</strong>
+          {formatARS(bonoVigente().monto, 0)} se depositan <strong>{formatARS(BASE.total, 2)}</strong>
           . Se pide a los {PEA.edadMinima} años con {PEA.aniosServiciosConAportes} de aportes, y{" "}
           <strong>{PEA.aniosDentroDeLaVentana} de ellos tienen que caer en los últimos{" "}
           {PEA.ventanaAniosAnteriores}</strong> antes de dejar de trabajar. <strong>Te deja seguir
@@ -202,7 +215,7 @@ export default function EdadAvanzadaPage() {
                   <td className="px-4 py-2.5 text-right text-zinc-900">
                     {formatARS(BASE.bono, 0)}
                   </td>
-                  <td className="px-4 py-2.5 text-zinc-500">{BONO_VIGENTE.norma}, arts. 3 y 4</td>
+                  <td className="px-4 py-2.5 text-zinc-500">{bonoVigente().norma}, arts. 3 y 4</td>
                 </tr>
                 <tr className="border-t border-zinc-100 bg-emerald-50/60">
                   <td className="px-4 py-2.5 font-medium text-zinc-800">Lo que se deposita</td>
@@ -409,7 +422,7 @@ export default function EdadAvanzadaPage() {
       <section className="space-y-2 border-t border-zinc-200 pt-6 text-sm text-zinc-500">
         <h2 className="text-base font-semibold text-zinc-700">Fuentes</h2>
         <ul className="space-y-1">
-          {PEA_FUENTES.lista.map((f) => (
+          {peaFuentes().lista.map((f) => (
             <li key={f.url}>
               <a
                 href={f.url}
@@ -428,7 +441,7 @@ export default function EdadAvanzadaPage() {
           InfoLEG, la cartilla oficial de ANSES y las normas del Boletín Oficial que fijan la PBU, el
           haber mínimo y el bono del mes. No otorga ni liquida beneficios: los años que cuentan y el
           haber final los define ANSES con tu certificación de servicios. Texto legal consultado el{" "}
-          {PEA_FUENTES.consultadoEl}.
+          {peaFuentes().consultadoEl}.
         </p>
       </section>
     </article>

@@ -1,5 +1,5 @@
 import { DEDUCCIONES, ESCALA_GANANCIAS } from "@/data/ganancias";
-import { TOTAL_APORTES, TOPE_SIPA } from "@/data/sueldo";
+import { TOTAL_APORTES, topeSipa } from "@/data/sueldo";
 
 // Aplica la escala progresiva del art. 94 a una ganancia neta imponible ANUAL.
 // Devuelve el impuesto anual determinado. gni ≤ 0 → 0.
@@ -79,8 +79,8 @@ export function calcularRetencionMensual(opts: {
     const sac = incluirSAC && (mes === 6 || mes === 12) ? brutoMensual * 0.5 : 0;
     const brutoMes = brutoMensual + sac;
 
-    const aportesBruto = Math.min(brutoMensual, TOPE_SIPA.baseMaxima) * TOTAL_APORTES;
-    const aportesSAC = sac > 0 ? Math.min(sac, TOPE_SIPA.baseMaxima) * TOTAL_APORTES : 0;
+    const aportesBruto = Math.min(brutoMensual, topeSipa().baseMaxima) * TOTAL_APORTES;
+    const aportesSAC = sac > 0 ? Math.min(sac, topeSipa().baseMaxima) * TOTAL_APORTES : 0;
     const aportesMes = aportesBruto + aportesSAC;
 
     gananciaAcumulada += brutoMes;
@@ -140,7 +140,7 @@ export function estimarGananciasAnual(opts: {
 
   const meses = 13; // 12 sueldos + 1 SAC
   const gananciaBrutaAnual = brutoMensual * meses;
-  const baseAportes = Math.min(brutoMensual, TOPE_SIPA.baseMaxima);
+  const baseAportes = Math.min(brutoMensual, topeSipa().baseMaxima);
   const aportesAnual = baseAportes * TOTAL_APORTES * meses;
   const sindicalAnual = brutoMensual * sindicalPct * meses;
 

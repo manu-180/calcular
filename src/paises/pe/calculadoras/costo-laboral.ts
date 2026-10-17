@@ -1,4 +1,4 @@
-import { definirCalculadora, enMapa, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
 export default definirCalculadora({
   id: "pe.costo-laboral",
@@ -30,6 +30,7 @@ export default definirCalculadora({
     { id: "seguro", tipo: "opcion-dato", etiqueta: "Seguro de salud del trabajador", dato: "pe.bonificacion-extraordinaria", porDefecto: "essalud" },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.sueldo <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "sueldo");
     const asignacion = entrada.asignacionFamiliar ? redondear(porcentaje(valores["pe.rmv"], valores["pe.asignacion-familiar"])) : 0;
     const remuneracion = redondear(entrada.sueldo + asignacion);
     const essalud = redondear(porcentaje(Math.max(remuneracion, valores["pe.rmv"]), valores["pe.aporte-essalud"]));

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { FROM, welcomeEmailHtml } from "@/lib/email";
+import { ipDelPedido } from "@/lib/acceso-entrega";
+import { permitido } from "@/lib/limite";
 
 const SUPABASE_URL = process.env.SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY!;
@@ -27,16 +29,29 @@ async function sendWelcome(email: string, token: string): Promise<void> {
 }
 
 export async function POST(req: NextRequest) {
-  let email: string, source: string;
+  // Cada alta nueva dispara el mail de bienvenida: sin cupo, un script usa el form para escribirle a
+  // direcciones ajenas desde nuestro dominio.
+  // 30 y no 5: las móviles argentinas usan CGNAT y mucha gente legítima sale por la misma IP.
+  if (!(await permitido(`subscribe:${ipDelPedido(req.headers) ?? "sin-ip"}`, 30, 3600))) {
+    return NextResponse.json({ error: "Demasiados intentos" }, { status: 429 });
+  }
+
+  let cuerpo: unknown;
   try {
-    ({ email, source } = await req.json());
+    cuerpo = await req.json();
   } catch {
     return NextResponse.json({ error: "Solicitud inválida" }, { status: 400 });
   }
+  const { email: emailCrudo, source: sourceCrudo } = (cuerpo && typeof cuerpo === "object" ? cuerpo : {}) as Record<string, unknown>;
 
-  if (!email || !EMAIL_RE.test(email)) {
+  if (typeof emailCrudo !== "string") {
     return NextResponse.json({ error: "Email inválido" }, { status: 400 });
   }
+  const email = emailCrudo.trim();
+  if (email.length > 254 || !EMAIL_RE.test(email)) {
+    return NextResponse.json({ error: "Email inválido" }, { status: 400 });
+  }
+  const source = typeof sourceCrudo === "string" ? sourceCrudo.slice(0, 80) : "";
 
   // Generar token aquí para tenerlo antes del INSERT
   const unsubscribeToken = crypto.randomUUID();
@@ -50,7 +65,7 @@ export async function POST(req: NextRequest) {
       Prefer: "return=minimal",
     },
     body: JSON.stringify({
-      email: email.toLowerCase().trim(),
+      email: email.toLowerCase(),
       source: source || "unknown",
       unsubscribe_token: unsubscribeToken,
     }),
@@ -63,7 +78,7 @@ export async function POST(req: NextRequest) {
 
   // Solo enviar welcome a suscriptores nuevos
   if (res.status === 201 && process.env.RESEND_API_KEY) {
-    sendWelcome(email.toLowerCase().trim(), unsubscribeToken).catch(() => {});
+    sendWelcome(email.toLowerCase(), unsubscribeToken).catch(() => {});
   }
 
   return NextResponse.json({ ok: true });

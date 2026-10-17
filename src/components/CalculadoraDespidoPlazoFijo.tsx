@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ANIOS_MAXIMO_PLAZO, ARTICULO_REFORMADO } from "@/data/despido-plazo-fijo";
 import { calcularDespidoPlazoFijo } from "@/lib/despido-plazo-fijo";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -22,14 +23,19 @@ export function CalculadoraDespidoPlazoFijo() {
   const [despido, setDespido] = useState("2026-06-15");
   const [tope, setTope] = useState("");
 
+  const error = primerError({
+    "Mejor remuneración": errorMonto(remuneracion),
+    "Tope indemnizatorio": errorMonto(tope),
+  });
+
   const res = useMemo(
     () =>
       calcularDespidoPlazoFijo({
         inicioISO: inicio,
         finPactadoISO: finPactado,
         despidoISO: despido,
-        mejorRemuneracion: Number(remuneracion) || 0,
-        topeCCT: Number(tope) > 0 ? Number(tope) : undefined,
+        mejorRemuneracion: parseMonto(remuneracion),
+        topeCCT: parseMonto(tope) > 0 ? parseMonto(tope) : undefined,
       }),
     [inicio, finPactado, despido, remuneracion, tope],
   );
@@ -119,7 +125,9 @@ export function CalculadoraDespidoPlazoFijo() {
         </div>
       </div>
 
-      {res === null ? (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : res === null ? (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
           Revisá las fechas y el sueldo. El inicio del contrato tiene que ser anterior al despido y
           al fin del plazo pactado.

@@ -36,12 +36,12 @@ import path from "node:path";
 // (importarla es justamente lo que garantiza que no haya dos copias de la regla).
 import { ventanaRecategorizacion } from "../../src/data/monotributo";
 import {
-  BONO_VIGENTE,
-  MES_PREVISIONAL_SIN_BONO,
-  PRESTACIONES_VIGENTES,
-  RESOLUCION_PROXIMA,
+  bonoVigente,
+  mesPrevisionalSinBono,
+  prestacionesVigentes,
+  resolucionProxima,
 } from "../../src/data/prestaciones";
-import { ASIGNACIONES_PROXIMAS, ASIGNACIONES_VIGENTES } from "../../src/data/asignaciones";
+import { asignacionesProximas, asignacionesVigentes } from "../../src/data/asignaciones";
 // Para verificar contra la fuente oficial antes de declarar vencido el IPC (ver más abajo).
 import { httpGetJsonTolerante } from "./datos-oficiales";
 // Para preguntarle al rastreador si el gremio publicó, sin parsear su salida de consola.
@@ -246,31 +246,33 @@ for (const gremio of ["comercio", "uocra", "camioneros"] as const) {
 {
   const mesDe = (periodo: string) => Object.keys(MESES).find((k) => MESES[k] === Number(periodo.slice(5, 7))) ?? "?";
   const finDe = (periodo: string) => new Date(Date.UTC(Number(periodo.slice(0, 4)), Number(periodo.slice(5, 7)), 0));
-  const P = PRESTACIONES_VIGENTES;
+  const P = prestacionesVigentes();
+  const proximaAnses = resolucionProxima();
+  const proximaAsignaciones = asignacionesProximas();
   filas.push({
     vence: finDe(P.periodo),
     campo: "Haberes, bono y bases imponibles (ANSES)",
-    valorActual: `${P.resolucion} + ${BONO_VIGENTE.norma} — rige ${mesDe(P.periodo)} ${P.periodo.slice(0, 4)}`,
+    valorActual: `${P.resolucion} + ${bonoVigente().norma} — rige ${mesDe(P.periodo)} ${P.periodo.slice(0, 4)}`,
     venceTexto: `${fmtFecha(finDe(P.periodo))} (resolución mensual)`,
-    accion: RESOLUCION_PROXIMA
-      ? `Nada a mano: ${RESOLUCION_PROXIMA.resolucion} (${RESOLUCION_PROXIMA.periodo}) ya está cargada y el sitio pasa solo el día 1` +
-        (MES_PREVISIONAL_SIN_BONO ? ` — FALTA el decreto del bono de ${MES_PREVISIONAL_SIN_BONO}: sin él el mes no entra en vigencia` : "")
+    accion: proximaAnses
+      ? `Nada a mano: ${proximaAnses.resolucion} (${proximaAnses.periodo}) ya está cargada y el sitio pasa solo el día 1` +
+        (mesPrevisionalSinBono() ? ` — FALTA el decreto del bono de ${mesPrevisionalSinBono()}: sin él el mes no entra en vigencia` : "")
       : "La carga scripts/datos-vivos/cargar_anses.ts apenas sale en el B.O. (~día 23-30). Si el workflow avisó que NO pasó el ancla, leer el aviso y cargar a mano en MESES_PREVISIONALES de prestaciones.ts + RESOLUCIONES de gen_jubilaciones.ts",
   });
-  const A = ASIGNACIONES_VIGENTES;
+  const A = asignacionesVigentes();
   filas.push({
     vence: finDe(A.periodo),
     campo: "Asignaciones familiares y AUH (ANSES)",
     valorActual: `${A.resolucion} — rige ${mesDe(A.periodo)} ${A.periodo.slice(0, 4)}`,
     venceTexto: `${fmtFecha(finDe(A.periodo))} (resolución mensual)`,
-    accion: ASIGNACIONES_PROXIMAS
-      ? `Nada a mano: ${ASIGNACIONES_PROXIMAS.resolucion} (${ASIGNACIONES_PROXIMAS.periodo}) ya está cargada; la tabla se deriva con ceil (art. 3) y el día 1 entra sola`
+    accion: proximaAsignaciones
+      ? `Nada a mano: ${proximaAsignaciones.resolucion} (${proximaAsignaciones.periodo}) ya está cargada; la tabla se deriva con ceil (art. 3) y el día 1 entra sola`
       : "La carga scripts/datos-vivos/cargar_anses.ts (% del art. 1 + tope del art. 4, que tiene que reproducirse al peso). Si no pasó el ancla, agregar la fila a RESOLUCIONES_ASIGNACIONES_SIGUIENTES a mano y correr check_asignaciones.ts",
   });
   // Un mes cargado por adelantado ya es cobertura: la fila no vence mientras exista el siguiente.
   for (const f of filas.slice(-2)) {
-    if ((f.campo.startsWith("Haberes") && RESOLUCION_PROXIMA && !MES_PREVISIONAL_SIN_BONO) ||
-        (f.campo.startsWith("Asignaciones") && ASIGNACIONES_PROXIMAS)) {
+    if ((f.campo.startsWith("Haberes") && resolucionProxima() && !mesPrevisionalSinBono()) ||
+        (f.campo.startsWith("Asignaciones") && asignacionesProximas())) {
       f.vence = new Date(f.vence.getTime() + 31 * 86_400_000);
     }
   }

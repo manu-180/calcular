@@ -5,23 +5,29 @@ import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
 import { openGraphDe } from "@/lib/seo";
-import { INCAPACIDAD_MINIMA_INVALIDEZ_LABORAL, PNC_FUENTES } from "@/data/pnc";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES as V } from "@/data/prestaciones";
+import { INCAPACIDAD_MINIMA_INVALIDEZ_LABORAL, pncFuentes } from "@/data/pnc";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { smvmVigente } from "@/lib/desempleo";
 import { montosVigentes, prestacionPorClave, montoDe, totalMinimaConBono } from "@/lib/pnc";
 import { formatARS, formatPct } from "@/lib/formato";
 
-const MES = V.vigencia;
-const MES_CORTO = MES.replace(" de ", " ");
-const MONTOS = montosVigentes();
-const DISCAPACIDAD = montoDe(prestacionPorClave("discapacidad"));
-const MADRE7 = montoDe(prestacionPorClave("madre7hijos"));
-const SMVM = smvmVigente().mes;
-const TOPE_INGRESOS = Math.round(SMVM.mensual * 2 * 100) / 100;
-const MINIMA_CON_BONO = totalMinimaConBono();
-const LETRA_CHICA = prestacionPorClave("madre7hijos").letraChica ?? [];
+function datosDelMes() {
+  const V = prestacionesVigentes();
+  const MES = V.vigencia;
+  const MES_CORTO = MES.replace(" de ", " ");
+  const MONTOS = montosVigentes();
+  const DISCAPACIDAD = montoDe(prestacionPorClave("discapacidad"));
+  const MADRE7 = montoDe(prestacionPorClave("madre7hijos"));
+  const SMVM = smvmVigente().mes;
+  const TOPE_INGRESOS = Math.round(SMVM.mensual * 2 * 100) / 100;
+  const MINIMA_CON_BONO = totalMinimaConBono();
+  const LETRA_CHICA = prestacionPorClave("madre7hijos").letraChica ?? [];
+  return { V, MES, MES_CORTO, MONTOS, DISCAPACIDAD, MADRE7, SMVM, TOPE_INGRESOS, MINIMA_CON_BONO, LETRA_CHICA };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MES, MES_CORTO }: DatosDelMes): Metadata => ({
   title: `Pensión no contributiva ${MES_CORTO}: monto y requisitos`,
   description: `Cuánto pagan en ${MES_CORTO} la pensión por discapacidad, la de vejez y la de madre de 7 hijos, y hasta cuánto podés trabajar sin perderla.`,
   alternates: { canonical: "/pension-no-contributiva" },
@@ -30,12 +36,16 @@ export const metadata: Metadata = {
     titulo: `Pensiones no contributivas · ${MES}`,
     bajada: "Cuánto paga cada una y hasta cuánto podés trabajar",
   }),
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ V, MES, DISCAPACIDAD, MADRE7, SMVM, TOPE_INGRESOS }: DatosDelMes) => [
   {
     q: `¿Cuánto cobra una pensión no contributiva en ${MES}?`,
-    a: `Depende de cuál. La Pensión no Contributiva por Discapacidad para Protección Social y la pensión a la vejez pagan el 70% del haber mínimo: ${formatARS(DISCAPACIDAD.haber, 2)}. Con el bono extraordinario de ${formatARS(BONO_VIGENTE.monto, 0)} llegan a ${formatARS(DISCAPACIDAD.total, 2)}. La pensión vitalicia para madres de 7 hijos o más es el 100% del haber mínimo: ${formatARS(MADRE7.haber, 2)}, y ${formatARS(MADRE7.total, 2)} con el bono. La PUAM es el 80%.`,
+    a: `Depende de cuál. La Pensión no Contributiva por Discapacidad para Protección Social y la pensión a la vejez pagan el 70% del haber mínimo: ${formatARS(DISCAPACIDAD.haber, 2)}. Con el bono extraordinario de ${formatARS(bonoVigente().monto, 0)} llegan a ${formatARS(DISCAPACIDAD.total, 2)}. La pensión vitalicia para madres de 7 hijos o más es el 100% del haber mínimo: ${formatARS(MADRE7.haber, 2)}, y ${formatARS(MADRE7.total, 2)} con el bono. La PUAM es el 80%.`,
   },
   {
     q: "¿Por qué el monto cambia todos los meses sin que salga una resolución de pensiones?",
@@ -59,7 +69,7 @@ const faqs = [
   },
   {
     q: "¿El bono extraordinario alcanza a las pensiones no contributivas?",
-    a: `Sí, y lo dice el texto del decreto. El artículo 2 inciso c del ${BONO_VIGENTE.norma} nombra a quienes cobran pensiones no contributivas por vejez, invalidez, madres de siete hijos o más y demás pensiones no contributivas, además de la PUAM. Como todas cobran menos que el haber mínimo, les toca el bono completo de ${formatARS(BONO_VIGENTE.monto, 0)}. El bono no es fijo: lo pone un decreto cada mes y puede no salir.`,
+    a: `Sí, y lo dice el texto del decreto. El artículo 2 inciso c del ${bonoVigente().norma} nombra a quienes cobran pensiones no contributivas por vejez, invalidez, madres de siete hijos o más y demás pensiones no contributivas, además de la PUAM. Como todas cobran menos que el haber mínimo, les toca el bono completo de ${formatARS(bonoVigente().monto, 0)}. El bono no es fijo: lo pone un decreto cada mes y puede no salir.`,
   },
   {
     q: "¿Quién otorga cada pensión y quién la paga?",
@@ -96,6 +106,9 @@ const faqs = [
 ];
 
 export default function PensionNoContributivaPage() {
+  const datos = datosDelMes();
+  const { V, MES, MES_CORTO, MONTOS, DISCAPACIDAD, MADRE7, SMVM, TOPE_INGRESOS, MINIMA_CON_BONO, LETRA_CHICA } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -123,7 +136,7 @@ export default function PensionNoContributivaPage() {
         descripcion:
           "Montos de las pensiones no contributivas según el haber mínimo, requisitos vigentes después de la Ley 27.793 y el Decreto 84/2026, y el tope de ingresos para trabajar sin perderla.",
         url: "/pension-no-contributiva",
-        modificado: PNC_FUENTES.consultadoEl,
+        modificado: pncFuentes().consultadoEl,
       }),
       {
         "@type": "FAQPage",
@@ -152,11 +165,11 @@ export default function PensionNoContributivaPage() {
         </p>
       </header>
 
-      <RespuestaPrimero actualizado={PNC_FUENTES.consultadoEl}>
+      <RespuestaPrimero actualizado={pncFuentes().consultadoEl}>
         <p>
           En {MES}, la <strong>pensión por discapacidad</strong> y la{" "}
           <strong>pensión a la vejez</strong> pagan {formatARS(DISCAPACIDAD.haber, 2)} (el 70% del
-          haber mínimo). Con el bono de {formatARS(BONO_VIGENTE.monto, 0)} llegan a{" "}
+          haber mínimo). Con el bono de {formatARS(bonoVigente().monto, 0)} llegan a{" "}
           <strong>{formatARS(DISCAPACIDAD.total, 2)}</strong>. La pensión para{" "}
           <strong>madres de 7 hijos</strong> es el 100% del haber mínimo:{" "}
           <strong>{formatARS(MADRE7.total, 2)}</strong> con el bono. Ninguno de esos montos tiene
@@ -223,7 +236,7 @@ export default function PensionNoContributivaPage() {
         </div>
         <p className="text-sm text-zinc-500">
           Un detalle que no vas a ver en otro lado: el bono <em>no</em> es proporcional. Son los
-          mismos {formatARS(BONO_VIGENTE.monto, 0)} para todos, así que achica la diferencia. La
+          mismos {formatARS(bonoVigente().monto, 0)} para todos, así que achica la diferencia. La
           pensión del 70% termina cobrando el{" "}
           {formatPct(DISCAPACIDAD.proporcionSobreMinimaConBono * 100, 1)} de lo que cobra un
           jubilado de la mínima, no el 70%. El mes que no salga el decreto del bono, la diferencia
@@ -384,7 +397,7 @@ export default function PensionNoContributivaPage() {
       <section className="space-y-2 border-t border-zinc-200 pt-6 text-sm text-zinc-500">
         <h2 className="text-base font-semibold text-zinc-700">Fuentes</h2>
         <ul className="space-y-1">
-          {PNC_FUENTES.lista.map((f) => (
+          {pncFuentes().lista.map((f) => (
             <li key={f.url}>
               <a
                 href={f.url}
@@ -402,7 +415,7 @@ export default function PensionNoContributivaPage() {
           Esta página es informativa y usa normas publicadas en el Boletín Oficial e InfoLEG. No da
           ni liquida beneficios: el alta depende del Certificado Único de Discapacidad, de la
           evaluación socioeconómica y de los controles del organismo. Consultada el{" "}
-          {PNC_FUENTES.consultadoEl}.
+          {pncFuentes().consultadoEl}.
         </p>
       </section>
     </article>

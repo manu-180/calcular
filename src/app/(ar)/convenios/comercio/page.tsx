@@ -36,20 +36,25 @@ export const metadata: Metadata = {
 // Ejemplo de referencia de las FAQ, computado desde la escala (regla 2-2: cero números a
 // mano — al rotar la escala, las respuestas se actualizan solas). El mes es el que se liquida
 // hoy (src/lib/hoy.ts), no uno fijo: la página no se queda anclada en un mes viejo.
-const AGOSTO = vigenteEn(MESES_COMERCIO, periodoDeMes);
-const MES_TXT = AGOSTO.etiqueta.toLowerCase();
-const AGOSTO_VENDEDOR_B = calcularComercio({
-  mesId: AGOSTO.id,
-  categoriaId: "vendedor-b",
-  aniosAntiguedad: 0,
-  jornadaFactor: 1,
-  conPresentismo: true,
-})!;
-const AGOSTO_MIN = Math.min(...Object.values(AGOSTO.basicos));
-const AGOSTO_MAX = Math.max(...Object.values(AGOSTO.basicos));
-const $ = (n: number) => formatARS(n, 0);
+function datosDelMes() {
+  const AGOSTO = vigenteEn(MESES_COMERCIO, periodoDeMes);
+  const MES_TXT = AGOSTO.etiqueta.toLowerCase();
+  const AGOSTO_VENDEDOR_B = calcularComercio({
+    mesId: AGOSTO.id,
+    categoriaId: "vendedor-b",
+    aniosAntiguedad: 0,
+    jornadaFactor: 1,
+    conPresentismo: true,
+  })!;
+  const AGOSTO_MIN = Math.min(...Object.values(AGOSTO.basicos));
+  const AGOSTO_MAX = Math.max(...Object.values(AGOSTO.basicos));
+  const $ = (n: number) => formatARS(n, 0);
+  return { AGOSTO, MES_TXT, AGOSTO_VENDEDOR_B, AGOSTO_MIN, AGOSTO_MAX, $ };
+}
 
-const faqs = [
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const crearFaqs = ({ AGOSTO, MES_TXT, AGOSTO_VENDEDOR_B, AGOSTO_MIN, AGOSTO_MAX, $ }: DatosDelMes) => [
   {
     q: `¿Cuánto cobra un empleado de comercio en ${MES_TXT}?`,
     a: `Tomemos la categoría más común en locales (Vendedor B), con jornada completa y sin antigüedad: ${$(AGOSTO.basicos["vendedor-b"])} de básico + ${$(AGOSTO.noRemunerativo)} no remunerativos${AGOSTO.asignacionExtraordinaria ? ` + ${$(AGOSTO.asignacionExtraordinaria)} de asignación extraordinaria por única vez` : ""} = ${$(AGOSTO.basicos["vendedor-b"] + AGOSTO.noRemunerativo + (AGOSTO.asignacionExtraordinaria ?? 0))} brutos. Con presentismo sube a ${$(AGOSTO_VENDEDOR_B.bruto)}. En mano quedan unos ${$(AGOSTO_VENDEDOR_B.neto)} (antes de la cuota sindical y Ganancias). Las demás categorías van de ${$(AGOSTO_MIN)} (Maestranza A) a ${$(AGOSTO_MAX)} (Vendedor D y Administrativo F) de básico, siempre más los ${$(AGOSTO.noRemunerativo)}.`,
@@ -101,6 +106,9 @@ const faqs = [
 ];
 
 export default function ComercioPage() {
+  const datos = datosDelMes();
+  const { AGOSTO, MES_TXT, AGOSTO_VENDEDOR_B } = datos;
+  const faqs = crearFaqs(datos);
   // Mes destacado = el que se liquida hoy.
   const destacado = AGOSTO;
   const vendedorB = AGOSTO_VENDEDOR_B;

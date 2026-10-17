@@ -23,7 +23,6 @@ export function BuscadorHero() {
       onTouchStart={precargarMotor}
       onFocus={precargarMotor}
       aria-haspopup="dialog"
-      aria-label="Buscar una calculadora"
       aria-keyshortcuts="Control+K Meta+K"
       className="ca-hero-buscar group"
     >
@@ -31,8 +30,9 @@ export function BuscadorHero() {
         <IconoLupa className="size-5" />
       </span>
       <span className="min-w-0 flex-1 truncate text-left">
-        <span className="text-zinc-400">Probá con </span>
-        <span className="text-zinc-500">aguinaldo, me echaron o monotributo</span>
+        <span className="sr-only">Buscar una calculadora. </span>
+        <span className="text-zinc-600">Probá con </span>
+        <span className="text-zinc-700">aguinaldo, me echaron o monotributo</span>
       </span>
       <kbd className="ca-tecla hidden sm:inline-flex">{atajo}</kbd>
     </button>

@@ -2,14 +2,15 @@
 
 import { useMemo, useState } from "react";
 import { PUAM } from "@/data/puam";
-import { BONO_VIGENTE } from "@/data/prestaciones";
+import { bonoVigente } from "@/data/prestaciones";
 import {
   compararConMinima,
   evaluarPuam,
   type Ciudadania,
   type TrabajoPuam,
 } from "@/lib/puam";
-import { formatARS, formatPct } from "@/lib/formato";
+import { formatARS, formatPct, errorMonto, primerError, CANTIDAD_MAXIMA, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -39,8 +40,13 @@ export function CalculadoraPuam() {
   const [cobraDesempleo, setCobraDesempleo] = useState(false);
   const [trabajo, setTrabajo] = useState<TrabajoPuam>("no");
 
-  const edad = Number(edadInput.replace(/\D/g, "")) || 0;
-  const aniosResidencia = Number(residenciaInput.replace(/\D/g, "")) || 0;
+  const edad = parseMonto(edadInput);
+  const aniosResidencia = parseMonto(residenciaInput);
+
+  const error = primerError({
+    "Edad": errorMonto(edadInput, CANTIDAD_MAXIMA),
+    "Años de residencia": errorMonto(residenciaInput, CANTIDAD_MAXIMA),
+  });
 
   const res = useMemo(
     () =>
@@ -176,53 +182,59 @@ export function CalculadoraPuam() {
         </label>
       </div>
 
-      <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-        <p className="text-sm text-zinc-600">
-          {res.cumpleRequisitosObjetivos
-            ? "Cumplís los requisitos con número. Esto es lo que se deposita este mes"
-            : "Hoy hay un requisito que no se cumple. Si se destrabara, este es el monto del mes"}
-        </p>
-        <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
-          {formatARS(res.monto.total, 2)}
-        </p>
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+          <p className="text-sm text-zinc-600">
+            {res.cumpleRequisitosObjetivos
+              ? "Cumplís los requisitos con número. Esto es lo que se deposita este mes"
+              : "Hoy hay un requisito que no se cumple. Si se destrabara, este es el monto del mes"}
+          </p>
+          <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
+            {formatARS(res.monto.total, 2)}
+          </p>
 
-        <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">
-              Haber ({formatPct(PUAM.proporcionHaberMinimo * 100, 0)} del mínimo)
-            </dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.monto.haber, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Bono ({BONO_VIGENTE.norma})</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.monto.bono, 0)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Un jubilado de la mínima cobra</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(comp.totalMinima, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">O sea que cobrás el</dt>
-            <dd className="font-medium text-zinc-900">
-              {formatPct(comp.proporcionTotal * 100, 1)} de eso
-            </dd>
-          </div>
-        </dl>
+          <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">
+                Haber ({formatPct(PUAM.proporcionHaberMinimo * 100, 0)} del mínimo)
+              </dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.monto.haber, 2)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Bono ({bonoVigente().norma})</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.monto.bono, 0)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Un jubilado de la mínima cobra</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(comp.totalMinima, 2)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">O sea que cobrás el</dt>
+              <dd className="font-medium text-zinc-900">
+                {formatPct(comp.proporcionTotal * 100, 1)} de eso
+              </dd>
+            </div>
+          </dl>
 
-        <ul className="mt-4 space-y-2">
-          {res.observaciones.map((o, i) => (
-            <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[o.tono]}`}>
-              {o.texto}
-            </li>
-          ))}
-        </ul>
+          <ul className="mt-4 space-y-2">
+            {res.observaciones.map((o, i) => (
+              <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[o.tono]}`}>
+                {o.texto}
+              </li>
+            ))}
+          </ul>
 
-        <p className="mt-4 text-xs text-zinc-500">
-          Esto aplica los artículos 13 a 16 de la Ley 27.260 a lo que declaraste. El otorgamiento no
-          depende solo de eso: ANSES hace una evaluación socioeconómica y patrimonial previa, caso
-          por caso.
-        </p>
-      </div>
+          <p className="mt-4 text-xs text-zinc-500">
+            Esto aplica los artículos 13 a 16 de la Ley 27.260 a lo que declaraste. El otorgamiento no
+            depende solo de eso: ANSES hace una evaluación socioeconómica y patrimonial previa, caso
+            por caso.
+          </p>
+        </div>
+        </>
+      )}
     </div>
   );
 }

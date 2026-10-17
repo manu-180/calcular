@@ -12,6 +12,7 @@ import { prefill as indemnizacion } from "./indemnizacion";
 import { prefill as ganancias } from "./ganancias";
 import { prefill as inflacion } from "./inflacion";
 import { prefill as creditoLaboral } from "./credito-laboral";
+import { prefill as monotributo } from "./monotributo";
 
 export const PREFILLS: Record<string, Prefill<unknown>> = {
   "planilla-comercio": comercio as Prefill<unknown>,
@@ -27,4 +28,5 @@ export const PREFILLS: Record<string, Prefill<unknown>> = {
   "informe-ganancias": ganancias as Prefill<unknown>,
   "informe-inflacion": inflacion as Prefill<unknown>,
   "informe-credito-laboral": creditoLaboral as Prefill<unknown>,
+  "planilla-monotributo": monotributo as Prefill<unknown>,
 };

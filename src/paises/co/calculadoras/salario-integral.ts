@@ -1,4 +1,4 @@
-import { definirCalculadora, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 import { aportesTrabajador, retencionMensual } from "../reglas";
 
 export default definirCalculadora({
@@ -32,6 +32,7 @@ export default definirCalculadora({
     { id: "dependiente", tipo: "si-no", etiqueta: "Tienes personas a cargo (dependientes)", porDefecto: false },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     const smmlv = valores["co.smmlv"];
     const factor = valores["co.salario-integral-factor"];
     const minimo = redondear(valores["co.salario-integral-minimo"] * smmlv * (1 + factor / 100));

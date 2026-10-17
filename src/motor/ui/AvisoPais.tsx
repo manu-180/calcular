@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { Bandera } from "./Bandera";
-import { paisDelVisitante, recordarPais } from "./geo-cliente";
+import { mapaDeConcepto, paisDelVisitante, recordarPais } from "./geo-cliente";
 import { IconoCerrar, IconoFlecha } from "./Iconos";
+import { usePaises } from "./ListaPaises";
+import { edicionPara, idiomasDelNavegador } from "./paises";
+import type { Idioma, Trato } from "../tipos";
 import { textosInicio } from "./textos-inicio";
 
-export interface DestinoPais {
+interface Destino {
   pais: string;
   href: string;
   texto: string;
@@ -14,6 +17,8 @@ export interface DestinoPais {
 }
 
 const CLAVE_DESCARTE = "cy-aviso-pais";
+// La misma marca que MARCA_PAIS de contexto.ts (no se importa: ese módulo es del servidor).
+const MARCA = "{{pais}}";
 
 function descartado(): boolean {
   try {
@@ -29,34 +34,56 @@ function descartar() {
   } catch {}
 }
 
-// destinosAviso() (contexto.ts) ya resuelve la calculadora del mismo concepto en cada país: si el
-// href tiene slug es la misma cuenta, y el botón lo dice. El nombre sale de Intl.DisplayNames con el
-// idioma de la página, porque el destino solo trae el código ISO y los textos armados.
-function conMismaCalculadora(d: DestinoPais, paisActual: string): DestinoPais {
-  const partes = d.href.split("/").filter(Boolean);
-  if (partes.length < 2) return d;
-  const lang = document.documentElement.lang || "es";
-  const nombre = new Intl.DisplayNames([lang], { type: "region" }).of(d.pais) ?? d.pais;
-  const t = textosInicio(paisActual === "BR" ? "pt" : "es", "tu");
-  return { ...d, ir: t.aviso.mismaCalculadora(nombre) };
-}
-
 // Sugiere, nunca redirige (ADR 0001, D6). Pide el país recién después de load + idle para no
-// competir con el render, y la barra es fixed: aparecer no mueve nada de la página (CLS 0).
-export function AvisoPais({ paisActual, destinos, cerrar }: { paisActual: string; destinos: readonly DestinoPais[]; cerrar: string }) {
-  const [destino, setDestino] = useState<DestinoPais | null>(null);
+// competir con el render, y la barra es fixed: aparecer no mueve nada de la página (CLS 0). El país
+// sale de la lista compacta (ProveedorPaises) y, en una calculadora, la del mismo concepto en ese
+// país se pide aparte (/api/geo/equivalentes?c=): el HTML ya no lleva un destino armado por país.
+export function AvisoPais({
+  mercado,
+  paisActual,
+  idioma,
+  trato,
+  locale,
+  concepto,
+  plantillas,
+  cerrar,
+}: {
+  mercado: string;
+  paisActual: string;
+  idioma: Idioma;
+  trato: Trato;
+  locale?: string;
+  concepto?: string;
+  plantillas: { texto: string; ir: string };
+  cerrar: string;
+}) {
+  const opciones = usePaises();
+  const [destino, setDestino] = useState<Destino | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!destinos.length || descartado()) return;
+    if (descartado()) return;
     let vivo = true;
     const buscar = async () => {
       const pais = await paisDelVisitante();
-      const d = pais && pais !== paisActual ? destinos.find((x) => x.pais === pais) : undefined;
-      if (vivo && d) {
-        setDestino(conMismaCalculadora(d, paisActual));
-        requestAnimationFrame(() => requestAnimationFrame(() => vivo && setVisible(true)));
+      // Solo mercados de calcularya (href propio): Argentina está en la lista del selector, pero el
+      // aviso nunca la ofreció.
+      const candidatas = opciones.filter((o) => o.codigo !== mercado && o.href.startsWith("/"));
+      const opcion = pais && pais !== paisActual ? edicionPara(candidatas, pais, idiomasDelNavegador()) : undefined;
+      if (!opcion) return;
+      let href = opcion.href;
+      let ir = plantillas.ir.replace(MARCA, opcion.nombre);
+      if (concepto && concepto !== "propio") {
+        const mapa = await mapaDeConcepto(concepto);
+        const slug = Object.keys(mapa?.porMercado[opcion.codigo] ?? {})[0];
+        if (slug) {
+          href = `${opcion.href}/${slug}`;
+          ir = textosInicio(idioma, trato, locale).aviso.mismaCalculadora(opcion.nombre);
+        }
       }
+      if (!vivo) return;
+      setDestino({ pais: opcion.pais, href, texto: plantillas.texto.replace(MARCA, opcion.nombre), ir });
+      requestAnimationFrame(() => requestAnimationFrame(() => vivo && setVisible(true)));
     };
     const enOcio = () => {
       if (typeof window.requestIdleCallback === "function") window.requestIdleCallback(() => void buscar(), { timeout: 3000 });
@@ -68,7 +95,7 @@ export function AvisoPais({ paisActual, destinos, cerrar }: { paisActual: string
       vivo = false;
       window.removeEventListener("load", enOcio);
     };
-  }, [paisActual, destinos]);
+  }, [mercado, paisActual, idioma, trato, locale, concepto, plantillas, opciones]);
 
   if (!destino) return null;
 

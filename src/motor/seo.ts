@@ -64,15 +64,31 @@ export type Idiomas = Record<string, string>;
 
 // Clúster por concepto (ADR 0001, D6): cada página lista a todas sus equivalentes publicadas,
 // incluida ella misma, más x-default. Si hay una sola (ella misma), no hay clúster: no se emite.
+// Una calculadora "propio" solo tiene clúster con sus traducciones en las ediciones del país
+// (registro.pagina() las pone en equivalentes).
 export function hreflangDe(concepto: string, equivalentes: readonly Equivalente[]): Idiomas | undefined {
-  if (concepto === "propio" || !esConcepto(concepto)) return undefined;
+  if (!esConcepto(concepto)) return undefined;
   const idiomas: Idiomas = {};
   for (const e of equivalentes) idiomas[e.locale] = urlIntl(e.mercado, e.slug);
-  const rutaAR = (CONCEPTOS[concepto] as { rutaAR?: string }).rutaAR;
+  const rutaAR = concepto === "propio" ? undefined : (CONCEPTOS[concepto] as { rutaAR?: string }).rutaAR;
   if (hreflangARActivo() && rutaAR) idiomas["es-AR"] = `${origenAR()}${rutaAR}`;
   if (Object.keys(idiomas).length < 2) return undefined;
   idiomas["x-default"] = urlIntl("global");
   return idiomas;
+}
+
+// Más de 20 alternativos no van en el <head>: con una universal en 190 países eran ~35 KB por página
+// (cada link viaja en el HTML y en el payload RSC). Ese clúster va en el sitemap de cada mercado
+// (xhtml:link), que Google acepta igual que el <head>; se usa uno de los dos, nunca los dos a medias.
+export const MAX_HREFLANG_HEAD = 20;
+
+export function hreflangVaAlSitemap(idiomas: Idiomas | undefined): boolean {
+  return idiomas !== undefined && Object.keys(idiomas).filter((k) => k !== "x-default").length > MAX_HREFLANG_HEAD;
+}
+
+export function hreflangDelHead(concepto: string, equivalentes: readonly Equivalente[]): Idiomas | undefined {
+  const idiomas = hreflangDe(concepto, equivalentes);
+  return hreflangVaAlSitemap(idiomas) ? undefined : idiomas;
 }
 
 // Lo que tendrían que llevar las páginas de calcular.ar del clúster cuando Manuel lo apruebe
@@ -84,7 +100,12 @@ export function hreflangParaAR(concepto: string, equivalentes: readonly Equivale
 
 export interface ImagenSeo {
   url: string;
+  width: number;
+  height: number;
 }
+
+// Las mismas medidas que devuelve la ruta og/[[...slug]] (ImageResponse 1200 x 630).
+const MEDIDAS_OG = { width: 1200, height: 630 } as const;
 
 export interface MetadataSeo {
   title: { absolute: string };
@@ -106,11 +127,12 @@ export interface MetadataSeo {
 // openGraph de la página que no repita site_name, locale y url los pierde (pasó en calcular.ar,
 // ver openGraphDe en src/lib/seo.ts). `absolute` para que ningún template de un layout lo toque.
 // Cada meta del <head> viaja dos veces (en el HTML y en el payload RSC) y las calculadoras ya pasan
-// los 130 KB: sin og:locale:alternate (15 metas por clúster que solo lee Facebook) ni og:image:alt,
-// :type, :width y :height (las redes leen el PNG igual; el alt repetía el título).
+// los 130 KB: sin og:locale:alternate (15 metas por clúster que solo lee Facebook) ni og:image:alt
+// ni :type (el alt repetía el título). :width y :height sí van: sin ellas las redes bajan la imagen
+// para medirla antes de mostrar la tarjeta.
 export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; description: string; idiomas?: Idiomas; imagen: string }): MetadataSeo {
   const url = urlIntl(p.mercado.codigo, p.slug);
-  const imagen: ImagenSeo = { url: p.imagen };
+  const imagen: ImagenSeo = { url: p.imagen, ...MEDIDAS_OG };
   return {
     title: { absolute: p.title },
     description: p.description,

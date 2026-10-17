@@ -1,16 +1,39 @@
 import type { Concepto } from "../conceptos";
 import type { Idioma, Trato } from "../tipos";
-import { textosEs } from "./es";
+import { de } from "./de";
+import { en } from "./en";
+import { es } from "./es";
+import { fr } from "./fr";
+import { it } from "./it";
+import { nl } from "./nl";
 import { pt } from "./pt";
+import { resolver, type Diccionarios } from "./resolver";
 import type { Categoria, TextosSitio } from "./tipos";
 
 export type { Categoria, TextosSitio } from "./tipos";
 
-export function textosSitio(idioma: Idioma, trato: Trato): TextosSitio {
-  return idioma === "pt" ? pt : textosEs(trato);
+// Un idioma nuevo entra con su archivo (base en el registro informal y, si cambia, parches de usted
+// y vos) y su línea acá; el Record obliga a que estén todos.
+export const DICCIONARIOS_SITIO: Diccionarios<TextosSitio> = { es, pt, en, fr, de, it, nl };
+
+export function textosSitio(idioma: Idioma, trato: Trato, locale?: string): TextosSitio {
+  return resolver(DICCIONARIOS_SITIO, idioma, trato, locale);
 }
 
-export const ORDEN_CATEGORIAS: readonly Categoria[] = ["sueldo", "fin", "impuestos", "dinero", "familia", "otras"];
+export const ORDEN_CATEGORIAS: readonly Categoria[] = [
+  "sueldo",
+  "fin",
+  "impuestos",
+  "dinero",
+  "finanzas",
+  "negocio",
+  "calculos",
+  "fechas",
+  "salud",
+  "hogar",
+  "familia",
+  "otras",
+];
 
 const CATEGORIA_DE: Record<Concepto, Categoria> = {
   "sueldo-neto": "sueldo",
@@ -37,6 +60,46 @@ const CATEGORIA_DE: Record<Concepto, Categoria> = {
   "trabajo-domestico": "familia",
   "pension-alimentos": "familia",
   jubilacion: "familia",
+  prestamo: "finanzas",
+  "tasa-efectiva": "finanzas",
+  hipoteca: "finanzas",
+  "interes-compuesto": "finanzas",
+  "interes-simple": "finanzas",
+  "meta-de-ahorro": "finanzas",
+  "ahorro-retiro": "finanzas",
+  "tarjeta-de-credito": "finanzas",
+  presupuesto: "finanzas",
+  "fondo-de-emergencia": "finanzas",
+  "alquilar-o-comprar": "finanzas",
+  "costo-de-un-auto": "finanzas",
+  "rendimiento-inversion": "negocio",
+  "margen-de-ganancia": "negocio",
+  "punto-de-equilibrio": "negocio",
+  "tarifa-freelance": "negocio",
+  "conversor-sueldo": "sueldo",
+  "aumento-de-sueldo": "sueldo",
+  "horas-trabajadas": "sueldo",
+  porcentaje: "calculos",
+  "variacion-porcentual": "calculos",
+  "regla-de-tres": "calculos",
+  descuento: "calculos",
+  propina: "calculos",
+  "dividir-gastos": "calculos",
+  promedio: "calculos",
+  edad: "fechas",
+  "dias-entre-fechas": "fechas",
+  "sumar-dias": "fechas",
+  imc: "salud",
+  calorias: "salud",
+  "fecha-de-parto": "salud",
+  ovulacion: "salud",
+  "ritmo-de-carrera": "salud",
+  combustible: "hogar",
+  "consumo-electrico": "hogar",
+  pintura: "hogar",
+  "metros-cuadrados": "hogar",
+  ceramicos: "hogar",
+  hormigon: "hogar",
   propio: "otras",
 };
 

@@ -5,7 +5,7 @@
 // Idempotente: mientras haya un aviso sin leer con el mismo asunto, no se apila otro (el workflow
 // corre tres veces por día). Sin credenciales, sale 0 sin hacer nada: el canal es opcional.
 //
-// ENV: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+// ENV: SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY o SUPABASE_SERVICE_KEY (el cron de Vercel nació con este nombre)
 
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -20,9 +20,9 @@ async function main(): Promise<void> {
     return;
   }
   const url = process.env.SUPABASE_URL?.replace(/\/$/, "");
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
   if (!url || !key) {
-    console.log("::notice::Sin SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY: el aviso queda sólo en el issue.");
+    console.log("::notice::Sin SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY (o SUPABASE_SERVICE_KEY): el aviso queda sólo en el issue.");
     return;
   }
   const headers = { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json" };

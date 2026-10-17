@@ -40,7 +40,7 @@
 // CÓMO SE ROTA: no se rota. Se mueve solo cuando se actualiza `prestaciones.ts`. Si aparece una
 // norma que toque los arts. 30, 34 bis, 24 o 125, se relee el `texact`.
 
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "./prestaciones";
+import { bonoVigente, prestacionesVigentes } from "./prestaciones";
 
 /** Parámetros numéricos de la PEA, cada uno con el artículo del que sale. */
 export const PEA = {
@@ -150,44 +150,46 @@ export const PEA_CARACTERES: { signo: "a favor" | "en contra"; texto: string; no
 
 export type FuentePea = { nombre: string; url: string; detalle: string };
 
-export const PEA_FUENTES: { consultadoEl: string; lista: FuentePea[] } = {
-  consultadoEl: "2026-09-01",
-  lista: [
-    {
-      nombre: "Ley 24.241 (texto actualizado): Sistema Integrado de Jubilaciones y Pensiones",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/639/texact.htm",
-      detalle:
-        "Art. 17 inc. f) (la PEA es una prestación del SIPA), art. 34 bis (requisitos, haber, incompatibilidad e invalidez después de los 65), arts. 23 y 24 (prestación compensatoria: servicios anteriores al SIJP, 1,5% por año con tope de 35 y promedio de los últimos 10 años), art. 30 inc. b) (prestación adicional por permanencia: 1,5% por año, misma forma y metodología que la PC), art. 125 (garantía del haber mínimo) y art. 125 bis (la garantía del 82% del SMVM, que exige 30 años).",
-    },
-    {
-      nombre: "ANSES: cartilla oficial de la Prestación por Edad Avanzada",
-      url: "https://www.anses.gob.ar/sites/default/files/cartilla/2020-07/cartilla%20prestacion%20por%20edad%20avanzada.pdf",
-      detalle:
-        "Reproduce los requisitos del art. 34 bis ap. 2 y agrega uno que no está en la ley: «No acreditar tareas en calidad de servicio doméstico». También detalla la documentación del trámite (formularios PS.6.284, PS.6.2, SICAM para autónomos).",
-    },
-    {
-      nombre: "ANSES: página oficial de la Prestación por Edad Avanzada",
-      url: "https://www.anses.gob.ar/jubilaciones-y-pensiones/regimenes-jubilatorios/prestacion-por-edad-avanzada-0/prestacion-por-edad-avanzada",
-      detalle:
-        "Ficha del trámite. Tiene además dos variantes con requisitos propios: prestación por edad avanzada para trabajadores rurales y por invalidez.",
-    },
-    {
-      nombre: `${PRESTACIONES_VIGENTES.resolucion}: haber mínimo, haber máximo y PBU`,
-      url: PRESTACIONES_VIGENTES.resolucionUrl,
-      detalle:
-        `${PRESTACIONES_VIGENTES.resolucionBO}. De acá salen los tres números que deciden la cuenta: el haber mínimo garantizado (el piso del art. 125), el haber máximo (el techo del art. 17) y la PBU sobre la que se calcula el 70%.`,
-    },
-    {
-      nombre: `${BONO_VIGENTE.norma}: bono extraordinario previsional`,
-      url: BONO_VIGENTE.normaUrl,
-      detalle:
-        `${BONO_VIGENTE.normaBO}. Arts. 3 y 4: bono completo para quien cobra hasta el mínimo y parcial hasta mínimo + bono. Es discrecional: lo fija un decreto mes a mes y puede no salir.`,
-    },
-    {
-      nombre: "Decreto 274/2024: movilidad mensual por IPC",
-      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/305905/20240322",
-      detalle:
-        "El haber mínimo y la PBU se actualizan todos los meses por el IPC de dos meses antes: por eso la PEA cambia de monto sin que se anuncie ningún aumento propio.",
-    },
-  ],
-};
+export function peaFuentes(): { consultadoEl: string; lista: FuentePea[] } {
+  return {
+    consultadoEl: "2026-09-01",
+    lista: [
+      {
+        nombre: "Ley 24.241 (texto actualizado): Sistema Integrado de Jubilaciones y Pensiones",
+        url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/639/texact.htm",
+        detalle:
+          "Art. 17 inc. f) (la PEA es una prestación del SIPA), art. 34 bis (requisitos, haber, incompatibilidad e invalidez después de los 65), arts. 23 y 24 (prestación compensatoria: servicios anteriores al SIJP, 1,5% por año con tope de 35 y promedio de los últimos 10 años), art. 30 inc. b) (prestación adicional por permanencia: 1,5% por año, misma forma y metodología que la PC), art. 125 (garantía del haber mínimo) y art. 125 bis (la garantía del 82% del SMVM, que exige 30 años).",
+      },
+      {
+        nombre: "ANSES: cartilla oficial de la Prestación por Edad Avanzada",
+        url: "https://www.anses.gob.ar/sites/default/files/cartilla/2020-07/cartilla%20prestacion%20por%20edad%20avanzada.pdf",
+        detalle:
+          "Reproduce los requisitos del art. 34 bis ap. 2 y agrega uno que no está en la ley: «No acreditar tareas en calidad de servicio doméstico». También detalla la documentación del trámite (formularios PS.6.284, PS.6.2, SICAM para autónomos).",
+      },
+      {
+        nombre: "ANSES: página oficial de la Prestación por Edad Avanzada",
+        url: "https://www.anses.gob.ar/jubilaciones-y-pensiones/regimenes-jubilatorios/prestacion-por-edad-avanzada-0/prestacion-por-edad-avanzada",
+        detalle:
+          "Ficha del trámite. Tiene además dos variantes con requisitos propios: prestación por edad avanzada para trabajadores rurales y por invalidez.",
+      },
+      {
+        nombre: `${prestacionesVigentes().resolucion}: haber mínimo, haber máximo y PBU`,
+        url: prestacionesVigentes().resolucionUrl,
+        detalle:
+          `${prestacionesVigentes().resolucionBO}. De acá salen los tres números que deciden la cuenta: el haber mínimo garantizado (el piso del art. 125), el haber máximo (el techo del art. 17) y la PBU sobre la que se calcula el 70%.`,
+      },
+      {
+        nombre: `${bonoVigente().norma}: bono extraordinario previsional`,
+        url: bonoVigente().normaUrl,
+        detalle:
+          `${bonoVigente().normaBO}. Arts. 3 y 4: bono completo para quien cobra hasta el mínimo y parcial hasta mínimo + bono. Es discrecional: lo fija un decreto mes a mes y puede no salir.`,
+      },
+      {
+        nombre: "Decreto 274/2024: movilidad mensual por IPC",
+        url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/305905/20240322",
+        detalle:
+          "El haber mínimo y la PBU se actualizan todos los meses por el IPC de dos meses antes: por eso la PEA cambia de monto sin que se anuncie ningún aumento propio.",
+      },
+    ],
+  };
+}

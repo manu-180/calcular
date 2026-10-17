@@ -10,10 +10,10 @@ import {
   HABER_MINIMO_ULTIMO,
 } from "@/data/jubilaciones";
 import {
-  BONO_VIGENTE,
+  bonoVigente,
   PRESTACIONES_FUENTES,
-  PRESTACIONES_VIGENTES,
-  RESOLUCION_PROXIMA,
+  prestacionesVigentes,
+  resolucionProxima,
 } from "@/data/prestaciones";
 import {
   etiquetaPeriodo,
@@ -23,19 +23,24 @@ import {
 } from "@/lib/jubilacion";
 import { formatARS, formatPct } from "@/lib/formato";
 
-const V = PRESTACIONES_VIGENTES;
-const MES = etiquetaPeriodo(V.periodo);
-const TOPE_BONO = Math.round((V.haberMinimo + BONO_VIGENTE.monto) * 100) / 100;
+function datosDelMes() {
+  const V = prestacionesVigentes();
+  const MES = etiquetaPeriodo(V.periodo);
+  const TOPE_BONO = Math.round((V.haberMinimo + bonoVigente().monto) * 100) / 100;
 
-const PROXIMO = proximoMesDeterminado();
-const OFICIAL =
-  PROXIMO && RESOLUCION_PROXIMA?.periodo === PROXIMO.periodo ? RESOLUCION_PROXIMA : null;
-const INTERANUAL = varInteranualHaber(V.periodo);
+  const PROXIMO = proximoMesDeterminado();
+  const OFICIAL =
+    PROXIMO && resolucionProxima()?.periodo === PROXIMO.periodo ? resolucionProxima() : null;
+  const INTERANUAL = varInteranualHaber(V.periodo);
 
-// Últimos 12 meses de la serie, del más nuevo al más viejo.
-const ULTIMOS = [...HABER_MINIMO_SERIE].slice(-12).reverse();
+  // Últimos 12 meses de la serie, del más nuevo al más viejo.
+  const ULTIMOS = [...HABER_MINIMO_SERIE].slice(-12).reverse();
+  return { V, MES, TOPE_BONO, PROXIMO, OFICIAL, INTERANUAL, ULTIMOS };
+}
 
-export const metadata: Metadata = {
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const metadataDelMes = ({ MES }: DatosDelMes): Metadata => ({
   title: `Jubilación ${MES}: cuánto cobrás con aumento y bono`,
   description: `Haber mínimo y bono de ${MES} según la resolución de ANSES. Poné tu haber real: si cobrás más que la mínima el bono se recorta, y acá ves cuánto.`,
   alternates: { canonical: "/jubilacion" },
@@ -48,12 +53,16 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+});
 
-const faqs = [
+export function generateMetadata(): Metadata {
+  return metadataDelMes(datosDelMes());
+}
+
+const crearFaqs = ({ V, MES, TOPE_BONO, PROXIMO, OFICIAL }: DatosDelMes) => [
   {
     q: `¿Cuánto cobra un jubilado en ${MES}?`,
-    a: `El haber mínimo de ${MES} es de ${formatARS(V.haberMinimo, 0)}, con el aumento de ${formatPct(V.movilidad)} que fijó la ${V.resolucion}. Con el bono de ${formatARS(BONO_VIGENTE.monto, 0)} del ${BONO_VIGENTE.norma}, quien cobra la mínima recibe ${formatARS(TOPE_BONO, 0)}. Si cobrás más que la mínima, el bono es más chico: solo completa hasta ${formatARS(TOPE_BONO, 0)}.`,
+    a: `El haber mínimo de ${MES} es de ${formatARS(V.haberMinimo, 0)}, con el aumento de ${formatPct(V.movilidad)} que fijó la ${V.resolucion}. Con el bono de ${formatARS(bonoVigente().monto, 0)} del ${bonoVigente().norma}, quien cobra la mínima recibe ${formatARS(TOPE_BONO, 0)}. Si cobrás más que la mínima, el bono es más chico: solo completa hasta ${formatARS(TOPE_BONO, 0)}.`,
   },
   ...(OFICIAL
     ? [
@@ -94,6 +103,9 @@ const faqs = [
 ];
 
 export default function JubilacionPage() {
+  const datos = datosDelMes();
+  const { V, MES, TOPE_BONO, PROXIMO, OFICIAL, INTERANUAL, ULTIMOS } = datos;
+  const faqs = crearFaqs(datos);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -144,7 +156,7 @@ export default function JubilacionPage() {
         </h1>
         <p className="text-zinc-600">
           Todos los meses sale la noticia con el número de la mínima y el bono de{" "}
-          {formatARS(BONO_VIGENTE.monto, 0)}. Lo que casi nunca se aclara es que, si cobrás más que
+          {formatARS(bonoVigente().monto, 0)}. Lo que casi nunca se aclara es que, si cobrás más que
           la mínima, el bono se te recorta. Poné tu haber real y mirá lo que te toca a vos, con los
           valores de la resolución oficial del mes.
         </p>
@@ -154,8 +166,8 @@ export default function JubilacionPage() {
         <p>
           En {MES} el haber mínimo es de <strong>{formatARS(V.haberMinimo, 0)}</strong>, con un
           aumento de <strong>{formatPct(V.movilidad)}</strong> ({V.resolucion}, {V.resolucionBO}).
-          Con el bono de <strong>{formatARS(BONO_VIGENTE.monto, 0)}</strong> del{" "}
-          {BONO_VIGENTE.norma}, quien cobra la mínima recibe{" "}
+          Con el bono de <strong>{formatARS(bonoVigente().monto, 0)}</strong> del{" "}
+          {bonoVigente().norma}, quien cobra la mínima recibe{" "}
           <strong>{formatARS(TOPE_BONO, 0)}</strong>. Si cobrás más que la mínima, el bono te llega{" "}
           <strong>recortado</strong>: solo completa hasta {formatARS(TOPE_BONO, 0)}. Por eso todos
           los haberes entre{" "}
@@ -464,14 +476,14 @@ export default function JubilacionPage() {
           </li>
           <li>
             <a
-              href={BONO_VIGENTE.normaUrl}
+              href={bonoVigente().normaUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline"
             >
-              {BONO_VIGENTE.norma}
+              {bonoVigente().norma}
             </a>
-            : bono extraordinario previsional de {MES} ({BONO_VIGENTE.normaBO}).
+            : bono extraordinario previsional de {MES} ({bonoVigente().normaBO}).
           </li>
           <li>
             <a

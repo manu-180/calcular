@@ -1,14 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import type { EmbudoProducto, PanelDatos } from "@/lib/panel/tipos";
-import { deCada100, numero, pesos } from "@/lib/panel/formato";
+import { deCada100, importe, numero } from "@/lib/panel/formato";
 import { NOMBRE_PASO, fraseEmbudo, pasosEmbudo } from "./meta";
 import { Bandeja, Chip, Seccion, TARJETA } from "./ui";
 
 const ORDEN = ["vio_oferta", "abrio_compra", "fue_a_pagar", "pago"] as const;
 
+const VISIBLES = 6;
+
 export function Embudos({ datos }: { datos: PanelDatos }) {
+  const [todos, setTodos] = useState(false);
   const embudos = [...datos.embudos].sort(
-    (a, b) => pasosEmbudo(b.pasos).vio - pasosEmbudo(a.pasos).vio || b.ingresos - a.ingresos,
+    (a, b) => pasosEmbudo(b.pasos).vio - pasosEmbudo(a.pasos).vio || b.ingresosUsd - a.ingresosUsd || b.ingresos - a.ingresos,
   );
+  const mostrados = todos ? embudos : embudos.slice(0, VISIBLES);
   const total = embudos.reduce(
     (acc, e) => {
       const p = pasosEmbudo(e.pasos);
@@ -25,16 +32,27 @@ export function Embudos({ datos }: { datos: PanelDatos }) {
     >
       <Bandeja>
         <p className={`${TARJETA} px-5 py-4 text-[15px] leading-relaxed text-zinc-800`}>
-          <span className="font-semibold text-zinc-900">Todas las planillas juntas: </span>
+          <span className="font-semibold text-zinc-900">Todos los productos juntos: </span>
           {fraseEmbudo(total)}
         </p>
         <ul className="mt-1.5 grid gap-1.5 md:grid-cols-2">
-          {embudos.map((e) => (
+          {mostrados.map((e) => (
             <li key={e.producto} className={`${TARJETA} p-5`}>
               <EmbudoTarjeta embudo={e} />
             </li>
           ))}
         </ul>
+        {embudos.length > VISIBLES ? (
+          <div className="mt-1.5 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setTodos((t) => !t)}
+              className="h-10 rounded-full px-4 text-sm font-medium text-zinc-700 transition-[background-color,transform] duration-200 hover:bg-white/70 active:scale-[0.97]"
+            >
+              {todos ? "Mostrar menos" : `Ver los ${numero(embudos.length)} productos`}
+            </button>
+          </div>
+        ) : null}
       </Bandeja>
     </Seccion>
   );
@@ -57,10 +75,10 @@ export function EmbudoTarjeta({ embudo, compacto = false }: { embudo: EmbudoProd
           <div className="min-w-0">
             <h3 className="text-[15px] font-semibold text-zinc-900">{embudo.titulo}</h3>
             <p className="mt-0.5 text-sm text-zinc-600">
-              {embudo.ingresos > 0 ? `${pesos(embudo.ingresos)} cobrados` : "Sin ventas en este período"}
+              {embudo.ingresos > 0 ? `${importe(embudo.ingresos, embudo.moneda)} cobrados` : "Sin ventas en este período"}
             </p>
           </div>
-          <span className="shrink-0 text-sm font-medium tabular-nums text-zinc-700">{pesos(embudo.precio)}</span>
+          <span className="shrink-0 text-sm font-medium tabular-nums text-zinc-700">{embudo.precio > 0 ? importe(embudo.precio, embudo.moneda) : null}</span>
         </div>
       ) : null}
       <ol className={compacto ? "" : "mt-4"}>

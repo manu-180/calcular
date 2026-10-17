@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { PEA } from "@/data/edad-avanzada";
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES as V } from "@/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { evaluarPea, pensionDerivada, type CondicionPea } from "@/lib/edad-avanzada";
 import { formatARS, formatPct, parseMonto } from "@/lib/formato";
 
@@ -21,6 +21,7 @@ const campo =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-lg font-medium text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
 
 export function CalculadoraEdadAvanzada() {
+  const V = prestacionesVigentes();
   const [edadInput, setEdadInput] = useState("70");
   const [aportesInput, setAportesInput] = useState("10");
   const [antesSijpInput, setAntesSijpInput] = useState("0");
@@ -264,7 +265,7 @@ export function CalculadoraEdadAvanzada() {
             <dd className="font-medium text-zinc-900">{formatARS(h.haberMinimo, 2)}</dd>
           </div>
           <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Bono ({BONO_VIGENTE.norma})</dt>
+            <dt className="text-zinc-600">Bono ({bonoVigente().norma})</dt>
             <dd className="font-medium text-zinc-900">{formatARS(h.bono, 0)}</dd>
           </div>
         </dl>

@@ -91,6 +91,7 @@ export default definirPais({
   datos,
   series,
   avisos,
+  universales: { todas: true, excepto: ["prestamo"] },
   calculadoras: [
     { definicion: decimoCuartoSueldo, contenido: contenidoDecimoCuartoSueldo, cliente: () => import("./calculadoras/decimo-cuarto-sueldo.cliente") },
     { definicion: decimoTercerSueldo, contenido: contenidoDecimoTercerSueldo, cliente: () => import("./calculadoras/decimo-tercer-sueldo.cliente") },

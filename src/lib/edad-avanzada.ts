@@ -14,7 +14,7 @@
 //      el resultado es un sueldo promedio altísimo — o sea: casi nadie. Ese «casi nadie» es la
 //      respuesta que falta.
 
-import { BONO_VIGENTE, PRESTACIONES_VIGENTES } from "@/data/prestaciones";
+import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
 import { PEA } from "@/data/edad-avanzada";
 import { bonoDeHaber } from "@/lib/pnc";
 
@@ -87,13 +87,13 @@ export function haberPea(
   const aniosPc = Math.min(antes, PEA.topeAniosPc);
   const aniosPap = total - antes;
 
-  const componentePbu = r2(PRESTACIONES_VIGENTES.pbu * PEA.proporcionPbu);
+  const componentePbu = r2(prestacionesVigentes().pbu * PEA.proporcionPbu);
   const componentePc = r2(promedio * PEA.porcentajePorAnio * aniosPc);
   const componentePap = r2(promedio * PEA.porcentajePorAnio * aniosPap);
   const haberFormula = r2(componentePbu + componentePc + componentePap);
 
-  const haberMinimo = PRESTACIONES_VIGENTES.haberMinimo;
-  const haberMaximo = PRESTACIONES_VIGENTES.haberMaximo;
+  const haberMinimo = prestacionesVigentes().haberMinimo;
+  const haberMaximo = prestacionesVigentes().haberMaximo;
   const acotado = r2(Math.min(Math.max(haberFormula, haberMinimo), haberMaximo));
   const bono = bonoDeHaber(acotado);
 
@@ -132,8 +132,8 @@ export function promedioParaSuperarElMinimo(
   const computables = Math.min(antes, PEA.topeAniosPc) + (total - antes);
   if (computables <= 0) return null;
 
-  const componentePbu = PRESTACIONES_VIGENTES.pbu * PEA.proporcionPbu;
-  const falta = PRESTACIONES_VIGENTES.haberMinimo - componentePbu;
+  const componentePbu = prestacionesVigentes().pbu * PEA.proporcionPbu;
+  const falta = prestacionesVigentes().haberMinimo - componentePbu;
   if (falta <= 0) return null;
 
   return r2(falta / (PEA.porcentajePorAnio * computables));
@@ -268,4 +268,6 @@ export function pensionDerivada(haber: number): number {
 }
 
 /** Reexportado para las páginas: el bono del mes, por si no hay decreto y hay que decirlo. */
-export const BONO_DEL_MES = BONO_VIGENTE;
+export function bonoDelMes() {
+  return bonoVigente();
+}

@@ -4,14 +4,17 @@
 // y bandas de series. Usa el mercado ficticio zz y datos sintéticos. Sin red y sin reloj.
 // También compara el mapa de cargadores del cliente intl con el registro:
 //   npx tsx scripts/check_motor.ts --generar-cargadores     lo reescribe
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
-import { formatearFecha, formatearMoneda, formatearPorcentaje, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
-import { ejecutar, mensajeDeError, parsearEntrada } from "../src/motor/formulario";
-import { crearRegistro, definirPais, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
+import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
+import { textosSitio } from "../src/motor/i18n";
+import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
+import { UNIVERSALES } from "../src/motor/universales";
+import { idiomasDe } from "../src/motor/universales/tipos";
 import { textosMotor } from "../src/motor/textos";
 import type { Dato, FechaISO, Mercado, PaisDefinido, PropsCalculadora, Serie, Tramo } from "../src/motor/tipos";
 import { validarPais } from "../src/motor/validar";
@@ -251,11 +254,14 @@ verdad("un no-verificado no habilita", !publicabilidad(soloPendiente, soloPendie
 // Registro
 const reg = crearRegistro([zz]);
 igual("zz nunca aparece en producción", reg.mercados("produccion").length, 0);
+// Un global con errores de datos desaparece de todos los checks que recorren mercados() y corta el
+// build de producción: tiene que fallar acá, con el motivo.
+verdad("global sin errores y visible en producción", registroReal.mercados("produccion").some((m) => m.codigo === "global"), registroReal.pais("global")?.errores.join("; ") ?? "no existe");
 igual("zz aparece en modo interno", reg.mercados("interno").map((m) => m.codigo), ["zz"]);
-igual("calculadoras publicables de zz (interno)", reg.calculadorasPublicables("zz", "2026-10-15", "interno").map((c) => c.definicion.id), ["zz.bono"]);
+igual("calculadoras locales publicables de zz (interno)", reg.calculadorasPublicables("zz", "2026-10-15", "interno").filter((c) => !esUniversal(c)).map((c) => c.definicion.id), ["zz.bono"]);
 igual("calculadoras publicables de zz (producción)", reg.calculadorasPublicables("zz", "2026-10-15", "produccion").length, 0);
 igual("equivalentes de bono-semestral", reg.equivalentes("bono-semestral", () => "2026-10-15", "interno"), [{ mercado: "zz", locale: "es-419", slug: "bono" }]);
-igual("rutas internas", reg.rutas(() => "2026-10-15", "interno"), [{ mercado: "zz", slug: "bono" }]);
+igual("rutas internas", reg.rutas(() => "2026-10-15", "interno").filter((r) => r.slug === "bono"), [{ mercado: "zz", slug: "bono" }]);
 const pagina = reg.pagina("zz", "bono", "2026-10-15", "interno");
 verdad("página de zz/bono resuelta", pagina !== null);
 if (pagina) {
@@ -330,35 +336,243 @@ verdad("requiere por región pedido como número", errMal.some((e) => e.includes
 verdad("requiere de serie inexistente", errMal.some((e) => e.includes("zz.inexistente")));
 verdad("dos calculadoras con el mismo concepto", !errMal.some((e) => e.includes("concepto")));
 
-// Mapa de cargadores de calculadora-intl.tsx: solo mercados publicados, un import() literal por
-// calculadora para que el navegador baje solo el chunk de la página (sin zz, internos ni casos).
+// Universales: "todas" suma las que tienen textos en el idioma del mercado y no chocan con una local;
+// una lista explícita que choca deja el error en el país (y el país no se publica).
+const localesZz = zz.calculadoras.filter((c) => !esUniversal(c));
+const zzTodas = definirPais({ mercado: mercadoZz, datos: datosZz, calculadoras: localesZz, universales: "todas" });
+const descuentoZz = zzTodas.calculadoras.find((c) => esUniversal(c) && c.universal.id === "descuento");
+verdad("universal descuento entra con universales: todas", Boolean(descuentoZz));
+verdad("universal sin errores en el país", zzTodas.errores.length === 0, zzTodas.errores.join("; "));
+if (descuentoZz && esUniversal(descuentoZz)) {
+  igual("universal: id con el mercado", descuentoZz.definicion.id, "zz.descuento");
+  igual("universal: contexto con el slug resuelto", descuentoZz.universal.contexto.slug, descuentoZz.definicion.slug);
+  igual("universal: moneda del mercado", descuentoZz.universal.contexto.moneda, "XTS");
+  verdad("universal: contenido con h1", descuentoZz.contenido.h1.length > 0);
+  const regZz = crearRegistro([zzTodas]);
+  verdad("universal publicable en interno", regZz.calculadorasPublicables("zz", "2026-10-15", "interno").includes(descuentoZz));
+  verdad("universal: pagina() trae el origen para el cliente", regZz.pagina("zz", descuentoZz.definicion.slug, "2026-10-15", "interno")?.universal?.id === "descuento");
+}
+const zzChoque = definirPais({ mercado: mercadoZz, datos: datosZz, calculadoras: localesZz, universales: [{ id: "descuento", slug: bono.slug }, "no-existe"] });
+verdad("universal con slug repetido da error", zzChoque.errores.some((e) => e.includes("slug")));
+verdad("universal inexistente da error", zzChoque.errores.some((e) => e.includes("no-existe")));
+verdad("universal que choca no entra", !zzChoque.calculadoras.some(esUniversal));
+const zzExcepto = definirPais({ mercado: mercadoZz, datos: datosZz, calculadoras: localesZz, universales: { todas: true, excepto: ["descuento"] } });
+verdad("universales todas con excepto", !zzExcepto.calculadoras.some((c) => esUniversal(c) && c.universal.id === "descuento"));
+
+// Registro: equivalentes por índice de concepto, iguales a recorrer todo.
+for (const concepto of ["bono-semestral", "iva", "descuento"]) {
+  const directo = registroReal.paises.flatMap((p) =>
+    registroReal
+      .calculadorasPublicables(p.mercado.codigo, "2026-10-15", "interno")
+      .filter((c) => c.definicion.concepto === concepto)
+      .map((c) => `${p.mercado.codigo}/${c.definicion.slug}`),
+  );
+  const indexado = registroReal.equivalentes(concepto, () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`);
+  igual(`equivalentes de ${concepto} por índice`, [...indexado].sort(), [...directo].sort());
+}
+
+// Ediciones (ADR 0002, D3): zz-en reusa los datos de zz, traduce bono y suma las universales en inglés.
+const zzEn = registroReal.pais("zz-en");
+verdad("zz-en existe y no tiene errores", Boolean(zzEn) && zzEn!.errores.length === 0, zzEn?.errores.join("; ") ?? "no está en el registro");
+if (zzEn) {
+  igual("edición: edicionDe", zzEn.edicionDe, "zz");
+  igual("edición: hereda moneda, zona y redondeo", [zzEn.mercado.monedas, zzEn.mercado.zonaHoraria, zzEn.mercado.redondeo], [zz.mercado.monedas, zz.mercado.zonaHoraria, zz.mercado.redondeo]);
+  igual("edición: datos del país", zzEn.datos.map((d) => d.id), zz.datos.map((d) => d.id));
+  igual("edición: nombre de un dato traducido", zzEn.datos.find((d) => d.id === "zz.minimo")?.nombre, "Minimum wage by zone");
+  igual("edición: sin detectores propios", zzEn.detectores.length, 0);
+  const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
+  igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
+  verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en"]);
+  igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
+  const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
+  verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
+  igual("edición: aviso traducido", pEn?.props.avisos.map((a) => a.texto.slice(0, 22)), ["Zetaland is a test cou"]);
+  igual("edición: regiones con nombre en el idioma", pEn?.props.contexto.regiones.map((r) => r.nombre), ["North zone", "South zone"]);
+  verdad("edición: la página lista a su hermana en el otro idioma", Boolean(pEn?.equivalentes.some((e) => e.mercado === "zz" && e.slug === "bono")));
+  if (pEn && trad) {
+    const d = trad.definicion;
+    igual("edición: etiquetas y opciones traducidas", [d.campos[0].etiqueta, d.campos[3].tipo === "opcion" ? d.campos[3].opciones[1].etiqueta : ""], ["Gross monthly pay", "Small company"]);
+    const est = ejecutar(d, { sueldo: "900", meses: "3", region: "norte", regimen: "general" }, pEn.props, textosMotor("en", "tu"));
+    verdad("edición: misma fórmula, observación traducida", est.tipo === "ok" && est.filas.find((f) => f.clave === "total")?.texto.includes("599.50") === true && est.observaciones[0]?.startsWith("Your pay"), JSON.stringify(est));
+    let mensaje = "";
+    try {
+      d.calcular({ sueldo: 900, meses: 9, region: "norte", regimen: "general" } as never, pEn.props.valores as never, { fecha: "2026-10-15", mercado: "zz-en", moneda: "XTS", redondear: (n) => n });
+    } catch (e) {
+      mensaje = e instanceof ErrorEntrada ? `${e.campo}: ${e.message}` : String(e);
+    }
+    igual("edición: error propio de calcular() traducido", mensaje, "meses: Months go from 1 to 6.");
+  }
+}
+const textosRotos = { calculadora: "zz-xx.bono", base: "zz.bono", slug: "x", campos: {}, filas: {} };
+const edRota = definirEdicion(zz, { mercado: { codigo: "zz-fr", nombre: "Zétalie", locale: "fr-FR", idioma: "fr", trato: "usted", estado: "interno" }, traducciones: [{ textos: textosRotos, contenido: zz.calculadoras[0].contenido }] });
+verdad("edición: textos incompletos dan error", edRota.errores.some((e) => e.includes("falta traducir campo sueldo")), edRota.errores.join("; "));
+verdad("edición: id de la traducción mal formado da error", edRota.errores.some((e) => e.includes('"zz-fr.bono"')));
+verdad("edición: aviso sin traducir da error", edRota.errores.some((e) => e.includes("zz.mercado-de-prueba")));
+const edMismoIdioma = definirEdicion(zz, { mercado: { codigo: "zz-es", nombre: "Z", locale: "es-ES", idioma: "es", trato: "tu", estado: "interno" } });
+verdad("edición en el idioma del país da error", edMismoIdioma.errores.some((e) => e.includes("mismo idioma")));
+verdad("edición de prueba publicada da error", definirEdicion(zz, { mercado: { codigo: "zz-en", nombre: "Z", locale: "en-001", idioma: "en", trato: "tu", estado: "publicado" } }).errores.some((e) => e.includes("nunca puede estar publicado")));
+
+// Marcadores de series y filas de escala.
+const zzSerie = zz.series[0];
+const reqMarcadores = { [zzSerie.id]: "serie", "zz.escala-impuesto": "escala" } as const;
+const rM = resolverValores(zz, { ...bono, requiere: reqMarcadores } as never, "2026-10-08");
+verdad("resolver serie y escala para marcadores", rM.ok, rM.ok ? "" : rM.motivos.join("; "));
+if (rM.ok) {
+  const unidades = { [zzSerie.id]: zzSerie.unidad, "zz.escala-impuesto": "XTS" } as const;
+  const c = rellenarContenido(
+    { calculadora: "zz.bono", h1: `{{${zzSerie.id}}} al {{${zzSerie.id}#desde}}`, title: "{{zz.escala-impuesto[1].tasa}} desde {{zz.escala-impuesto[1].desde}}", description: "{{zz.escala-impuesto[-1].tasa}}", intro: ["{{zz.escala-impuesto#desde}}"], comoSeCalcula: ["{{zz.escala-impuesto[9].tasa}}"], faq: [], glosario: [] },
+    { valores: rM.valores, usados: rM.usados, unidades, locale: "es-419", alFallar: () => undefined },
+  );
+  verdad("marcador de serie: valor y fecha del punto", /\d/.test(c.h1) && c.h1.includes("de 2026"), c.h1);
+  const escalaZz = (datosZz.datos.find((d) => d.id === "zz.escala-impuesto")!.tramos[0].valor as { desde: number; tasa: number }[]);
+  verdad("marcador de fila de escala: tasa y desde", c.title.startsWith(`${escalaZz[1].tasa}`) && c.title.includes(String(escalaZz[1].desde).slice(0, 1)), c.title);
+  verdad("marcador de la última fila con -1", c.description.startsWith(`${escalaZz[escalaZz.length - 1].tasa}`), c.description);
+  verdad("#desde de una escala", c.intro[0].includes("de 20"), c.intro[0]);
+  verdad("fila fuera de la escala queda sin resolver", c.comoSeCalcula[0].includes("{{"), c.comoSeCalcula[0]);
+}
+igual("marcadoresDe con fila de escala y región", marcadoresDe("{{ca.x[2].tasa@on}}").map((m) => [m.id, m.clave, m.campo, m.region]), [["ca.x", "2", "tasa", "on"]]);
+
+// Semanas, regiones de un campo y diccionarios por locale.
+igual("semanas en inglés", formatearValorUnidad(2, "semanas", "en-CA"), "2 weeks");
+igual("semana en singular (de)", formatearValorUnidad(1, "semanas", "de-DE"), "1 Woche");
+igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 weken");
+const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
+igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
+// Campo hora y campos condicionales (visibleSi).
+const camposModo = [
+  { id: "modo", tipo: "opcion", etiqueta: "Modo", opciones: [{ valor: "horas", etiqueta: "Horas" }, { valor: "total", etiqueta: "Total" }] },
+  { id: "entrada", tipo: "hora", etiqueta: "Entrada", visibleSi: { modo: ["horas"] } },
+  { id: "total", tipo: "numero", etiqueta: "Total", visibleSi: { modo: ["total"] } },
+] as const;
+const conHoras = parsearEntrada(camposModo, { modo: "horas", entrada: "08:30", total: "" }, ctxRegiones, {});
+igual("hora válida y el campo oculto llega null", conHoras.ok ? conHoras.entrada : conHoras.errores, { modo: "horas", entrada: "08:30", total: null });
+const horaMala = parsearEntrada(camposModo, { modo: "horas", entrada: "25:00", total: "" }, ctxRegiones, {});
+igual("hora inválida da hora-invalida", horaMala.ok ? null : horaMala.errores.entrada, { codigo: "hora-invalida" });
+const conTotal = parsearEntrada(camposModo, { modo: "total", entrada: "", total: "40" }, ctxRegiones, {});
+igual("con el otro modo, la hora oculta no se pide", conTotal.ok ? conTotal.entrada : conTotal.errores, { modo: "total", entrada: null, total: 40 });
+igual("campoVisible", [campoVisible(camposModo[1], { modo: "horas" }), campoVisible(camposModo[1], { modo: "total" })], [true, false]);
+igual("texto del error de hora en inglés", textosMotor("en", "tu").errores["hora-invalida"], "Choose a valid time.");
+
+verdad("de-CH sin ß en el sitio", !JSON.stringify(textosSitio("de", "usted", "de-CH")).includes("ß") && JSON.stringify(textosSitio("de", "usted", "de-DE")).includes("ß"));
+igual("de-CH en funciones del diccionario", textosSitio("de", "usted", "de-CH").avisoPais.cerrar.includes("ß"), false);
+
+// Cargadores del cliente intl en dos niveles: cargadores/index.ts (un import() por mercado publicado)
+// y cargadores/<m>.ts (un import() literal por calculadora local), así el JS de una página lleva el
+// índice y baja solo el mapa de su país. Las universales tienen el suyo en
+// src/motor/universales/cargadores.ts (un import() por definición y otro por idioma de textos).
+// Sin zz, internos ni casos.
 const RAIZ = path.resolve(import.meta.dirname, "..");
 const NL = "\n";
-const ARCHIVO_CARGADORES = path.join(RAIZ, "src", "app", "(intl)", "intl", "[mercado]", "[slug]", "cargadores.ts");
-const publicados = registroReal.paises.filter((p) => p.mercado.estado === "publicado" && p.mercado.codigo !== "global" && p.mercado.codigo !== "zz");
-const bloques = publicados
+const GENERAR = process.argv.includes("--generar-cargadores");
+const AVISO_GENERADO = `// Generado por \`npx tsx scripts/check_motor.ts --generar-cargadores\`. No editar a mano: check_motor
+// falla si no coincide con el registro.`;
+const DIR_CARGADORES = path.join(RAIZ, "src", "app", "(intl)", "intl", "[mercado]", "[slug]", "cargadores");
+// index.ts y dev.ts no son generados: la carga en dos pasos, la API vieja del informe y la de `next dev`.
+const FIJOS = new Set(["index.ts", "dev.ts"]);
+const esperados = new Map<string, string>();
+const publicados = registroReal.paises
+  .filter((p) => p.mercado.estado === "publicado" && p.mercado.codigo !== "global" && p.mercado.codigo !== "zz")
   .map((p) => p.mercado.codigo)
-  .sort()
-  .map((codigo) => {
-    const slugs = registroReal.pais(codigo)!.calculadoras.map((c) => c.definicion.slug).sort();
-    for (const slug of slugs) {
-      const archivo = path.join(RAIZ, "src", "paises", codigo, "calculadoras", `${slug}.ts`);
-      verdad(`cargador ${codigo}/${slug}: existe el archivo`, existsSync(archivo), archivo);
+  .sort();
+for (const codigo of publicados) {
+  const locales = registroReal
+    .pais(codigo)!
+    .calculadoras.filter((c) => !esUniversal(c))
+    .sort((a, b) => a.definicion.slug.localeCompare(b.definicion.slug));
+  const lineas: string[] = [];
+  for (const c of locales) {
+    const slug = c.definicion.slug;
+    const t = c.traduccion;
+    if (t) {
+      // Traducción de una edición: definición del país y textos de la edición, los dos por nombre de archivo.
+      const def = path.join(RAIZ, "src", "paises", t.mercado, "calculadoras", `${t.archivo}.ts`);
+      const textos = path.join(RAIZ, "src", "paises", codigo, "textos", `${t.archivo}.ts`);
+      verdad(`cargador ${codigo}/${slug}: existe la definición del país`, existsSync(def), def);
+      verdad(`cargador ${codigo}/${slug}: existen los textos de la edición`, existsSync(textos), textos);
+      lineas.push(`  ${JSON.stringify(slug)}: () => traducida(import("@/paises/${t.mercado}/calculadoras/${t.archivo}"), import("@/paises/${codigo}/textos/${t.archivo}")),`);
+      continue;
     }
-    const lineas = slugs.map((slug) => `    ${JSON.stringify(slug)}: () => import("@/paises/${codigo}/calculadoras/${slug}"),`);
-    return [`  ${JSON.stringify(codigo)}: {`, ...lineas, "  },"].join(NL);
-  });
-const esperadoCargadores = `// Generado por \`npx tsx scripts/check_motor.ts --generar-cargadores\`. No editar a mano: check_motor
-// falla si no coincide con los mercados publicados del registro.
-export type Cargador = () => Promise<{ default: unknown }>;
+    const archivo = path.join(RAIZ, "src", "paises", codigo, "calculadoras", `${slug}.ts`);
+    verdad(`cargador ${codigo}/${slug}: existe el archivo`, existsSync(archivo), archivo);
+    lineas.push(`  ${JSON.stringify(slug)}: () => import("@/paises/${codigo}/calculadoras/${slug}"),`);
+  }
+  const imports = locales.some((c) => c.traduccion) ? `import { traducida } from "@/motor/edicion";\n` : "";
+  esperados.set(`${codigo}.ts`, `${AVISO_GENERADO}\n${imports}import type { Cargador } from "./tipos";\n\nexport const CARGADORES: Readonly<Record<string, Cargador>> = {\n${lineas.join(NL)}\n};\n`);
+}
+esperados.set(
+  "tipos.ts",
+  `${AVISO_GENERADO}\nexport type Cargador = () => Promise<{ default: unknown }>;\nexport type CargadoresMercado = () => Promise<{ CARGADORES: Readonly<Record<string, Cargador>> }>;\n`,
+);
+esperados.set(
+  "mercados.ts",
+  `${AVISO_GENERADO}\nimport type { CargadoresMercado } from "./tipos";\n\nexport const MERCADOS: Readonly<Record<string, CargadoresMercado>> = {\n${publicados.map((c) => `  ${JSON.stringify(c)}: () => import("./${c}"),`).join(NL)}\n};\n`,
+);
 
-export const CARGADORES: Readonly<Record<string, Readonly<Record<string, Cargador>>>> = {
-${bloques.join(NL)}
+const capital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const DIR_UNIVERSALES = path.join(RAIZ, "src", "motor", "universales");
+const bloquesUniversales = [...UNIVERSALES]
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .map((u) => {
+    const definicion = path.join(DIR_UNIVERSALES, u.id, "definicion.ts");
+    const textoDef = existsSync(definicion) ? readFileSync(definicion, "utf8") : "";
+    verdad(`universal ${u.id}: definicion.ts exporta definir()`, /export function definir\b/.test(textoDef), definicion);
+    const idiomas = idiomasDe(u).sort();
+    for (const i of idiomas) {
+      const textos = path.join(DIR_UNIVERSALES, u.id, "textos", `${i}.ts`);
+      const contenido = existsSync(textos) ? readFileSync(textos, "utf8") : "";
+      verdad(`universal ${u.id}: textos/${i}.ts exporta textos${capital(i)}`, new RegExp(`export const textos${capital(i)}\\b`).test(contenido), textos);
+    }
+    const lineas = idiomas.map((i) => `      ${JSON.stringify(i)}: () => import("./${u.id}/textos/${i}").then((m) => m.textos${capital(i)} as TextosUi<never>),`);
+    return [
+      `  ${JSON.stringify(u.id)}: {`,
+      `    definir: () => import("./${u.id}/definicion").then((m) => m.definir as Definir),`,
+      "    textos: {",
+      ...lineas,
+      "    },",
+      "  },",
+    ].join(NL);
+  });
+const ARCHIVO_UNIVERSALES = path.join(DIR_UNIVERSALES, "cargadores.ts");
+const esperadoUniversales = `${AVISO_GENERADO}
+// Lo usa solo el navegador (calculadora-intl.tsx): rearma la definición de una universal con el
+// contexto plano que manda el servidor. Un import() por definición y otro por idioma, así una página
+// baja la cuenta y los textos de su idioma y nada más.
+import type { DefinicionCalculadora, Idioma } from "../tipos";
+import type { ContextoUniversal, TextosUi } from "./tipos";
+
+type Definir = (ctx: ContextoUniversal, ui: never) => DefinicionCalculadora;
+
+interface CargadorUniversal {
+  definir: () => Promise<Definir>;
+  textos: Partial<Record<Idioma, () => Promise<TextosUi<never>>>>;
+}
+
+const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
+${bloquesUniversales.join(NL)}
 };
+
+export async function cargarUniversal(id: string, contexto: ContextoUniversal): Promise<DefinicionCalculadora> {
+  const cargador = CARGADORES[id];
+  const textos = cargador?.textos[contexto.idioma];
+  if (!cargador || !textos) throw new Error(\`sin cargador para la universal \${id} en \${contexto.idioma}\`);
+  const [definir, t] = await Promise.all([cargador.definir(), textos()]);
+  return definir(contexto, t.ui(contexto.trato, contexto.locale) as never);
+}
 `;
-if (process.argv.includes("--generar-cargadores")) writeFileSync(ARCHIVO_CARGADORES, esperadoCargadores);
-const actualCargadores = existsSync(ARCHIVO_CARGADORES) ? readFileSync(ARCHIVO_CARGADORES, "utf8").replace(/\r\n/g, NL) : "";
-verdad("cargadores.ts coincide con el registro (npx tsx scripts/check_motor.ts --generar-cargadores)", actualCargadores === esperadoCargadores);
+
+if (GENERAR) {
+  mkdirSync(DIR_CARGADORES, { recursive: true });
+  for (const f of readdirSync(DIR_CARGADORES)) if (!esperados.has(f) && !FIJOS.has(f)) unlinkSync(path.join(DIR_CARGADORES, f));
+  for (const [f, texto] of esperados) writeFileSync(path.join(DIR_CARGADORES, f), texto);
+  writeFileSync(ARCHIVO_UNIVERSALES, esperadoUniversales);
+}
+const leer = (archivo: string) => (existsSync(archivo) ? readFileSync(archivo, "utf8").replace(/\r\n/g, NL) : "");
+const sobrantes = existsSync(DIR_CARGADORES) ? readdirSync(DIR_CARGADORES).filter((f) => !esperados.has(f) && !FIJOS.has(f)) : [];
+verdad("cargadores/ no tiene archivos de mercados que ya no se publican", sobrantes.length === 0, sobrantes.join(", "));
+for (const [f, texto] of esperados) verdad(`cargadores/${f} coincide con el registro (npx tsx scripts/check_motor.ts --generar-cargadores)`, leer(path.join(DIR_CARGADORES, f)) === texto);
+verdad("src/motor/universales/cargadores.ts coincide con UNIVERSALES (npx tsx scripts/check_motor.ts --generar-cargadores)", leer(ARCHIVO_UNIVERSALES) === esperadoUniversales);
 
 // Bandas de series con el detector de prueba de zz y un Http falso.
 const det = detectores.find((d) => d.carril === "serie");

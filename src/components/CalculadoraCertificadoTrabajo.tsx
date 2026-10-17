@@ -9,7 +9,8 @@ import {
   VIGENCIA_REFORMA,
 } from "@/data/certificado-trabajo";
 import { calcularCertificado, formatFechaLarga } from "@/lib/certificado-trabajo";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -52,11 +53,15 @@ export function CalculadoraCertificadoTrabajo() {
     setHoy(new Date().toISOString().slice(0, 10));
   }, []);
 
+  const error = primerError({
+    "Mejor remuneración": errorMonto(remuneracion),
+  });
+
   const res = useMemo(
     () =>
       calcularCertificado({
         fechaExtincion,
-        mejorRemuneracion: Number(remuneracion) || 0,
+        mejorRemuneracion: parseMonto(remuneracion),
         fechaRequerimiento: huboRequerimiento ? fechaRequerimiento : undefined,
         hoy,
       }),
@@ -141,13 +146,15 @@ export function CalculadoraCertificadoTrabajo() {
         </div>
       </div>
 
-      {!res && (
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : !res && (
         <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
           Cargá una fecha de extinción válida para ver qué régimen se aplica.
         </p>
       )}
 
-      {res && rotulo && (
+      {!error && res && rotulo && (
         <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
           <span
             className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${rotulo.clase}`}

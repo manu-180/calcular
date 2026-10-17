@@ -15,6 +15,7 @@ export default definirCalculadora({
     { id: "jornada", tipo: "numero", etiqueta: "Horas de tu jornada diaria", min: 1, max: 8, porDefecto: 8 },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.sueldo <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "sueldo");
     if (entrada.jornada <= 0 || entrada.jornada > 8) throw new ErrorEntrada("La jornada ordinaria va de 1 a 8 horas por día.", "jornada");
     const rmv = valores["pe.rmv"];
     const minimo = redondear(rmv + porcentaje(rmv, valores["pe.sobretasa-nocturna"]));

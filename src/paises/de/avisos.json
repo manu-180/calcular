@@ -1,0 +1,20 @@
+{
+  "mercado": "de",
+  "avisos": [
+    {
+      "id": "de.minijob-2027",
+      "nivel": "info",
+      "desde": "2026-10-14",
+      "hasta": "2026-12-31",
+      "aplicaA": ["de.minijob-rechner"],
+      "texto": "Ab 2027 steigt der Mindestlohn auf 14,60 Euro, damit auch die Minijob-Grenze, und der Pauschalbeitrag zur Krankenversicherung ändert sich. Dieser Rechner zeigt die Werte für 2026.",
+      "fuente": {
+        "organismo": "Bundesministerium der Justiz (gesetze-im-internet.de)",
+        "titulo": "§ 1 Fünfte Mindestlohnanpassungsverordnung",
+        "url": "https://www.gesetze-im-internet.de/milov5/__1.html",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-14"
+      }
+    }
+  ]
+}

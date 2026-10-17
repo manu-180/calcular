@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ALQUILER_VIGENCIA } from "@/data/deduccion-alquiler";
 import { calcularDeduccionAlquiler } from "@/lib/deduccion-alquiler";
-import { formatARS } from "@/lib/formato";
+import { formatARS, errorMonto, primerError, CANTIDAD_MAXIMA, parseMonto } from "@/lib/formato";
+import { ErrorCalculo } from "@/components/ErrorCalculo";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -27,14 +28,20 @@ export function CalculadoraDeduccionAlquiler() {
   const [titularDeInmueble, setTitularDeInmueble] = useState(false);
   const [computarDiezPorCiento, setComputarDiezPorCiento] = useState(false);
 
+  const error = primerError({
+    "Alquiler mensual": errorMonto(alquilerMensual),
+    "Sueldo bruto mensual": errorMonto(brutoMensual),
+    "Hijos a cargo": errorMonto(hijos, CANTIDAD_MAXIMA),
+  });
+
   const res = useMemo(
     () =>
       calcularDeduccionAlquiler({
-        alquilerMensual: Number(alquilerMensual) || 0,
+        alquilerMensual: parseMonto(alquilerMensual),
         mesesPagados: Number(mesesPagados) || 0,
-        brutoMensual: Number(brutoMensual) || 0,
+        brutoMensual: parseMonto(brutoMensual),
         conyuge,
-        hijos: Number(hijos) || 0,
+        hijos: parseMonto(hijos),
         titularDeInmueble,
         computarDiezPorCiento,
       }),
@@ -152,93 +159,99 @@ export function CalculadoraDeduccionAlquiler() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-        <p className="text-sm text-zinc-600">Lo que te vuelve en el año por deducir el alquiler</p>
-        <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
-          {formatARS(res.ahorroAnual, 2)}
-        </p>
-        <p className="mt-1 text-sm text-zinc-600">
-          {res.ahorroAnual > 0 ? (
-            <>
-              {formatARS(res.ahorroMensual, 2)} por mes · equivale a{" "}
-              <strong>
-                {meses.toLocaleString("es-AR", { maximumFractionDigits: 1 })}{" "}
-                {meses >= 2 ? "meses" : "mes"} de alquiler
-              </strong>{" "}
-              · te devuelve el{" "}
-              {(res.alicuotaEfectiva * 100).toLocaleString("es-AR", { maximumFractionDigits: 1 })}%
-              de lo que deducís, no el total
-            </>
-          ) : (
-            "no hay ahorro: la deducción baja la base imponible, pero no estás pagando el impuesto"
-          )}
-        </p>
+      {error ? (
+        <ErrorCalculo mensaje={error} />
+      ) : (
+        <>
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+          <p className="text-sm text-zinc-600">Lo que te vuelve en el año por deducir el alquiler</p>
+          <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
+            {formatARS(res.ahorroAnual, 2)}
+          </p>
+          <p className="mt-1 text-sm text-zinc-600">
+            {res.ahorroAnual > 0 ? (
+              <>
+                {formatARS(res.ahorroMensual, 2)} por mes · equivale a{" "}
+                <strong>
+                  {meses.toLocaleString("es-AR", { maximumFractionDigits: 1 })}{" "}
+                  {meses >= 2 ? "meses" : "mes"} de alquiler
+                </strong>{" "}
+                · te devuelve el{" "}
+                {(res.alicuotaEfectiva * 100).toLocaleString("es-AR", { maximumFractionDigits: 1 })}%
+                de lo que deducís, no el total
+              </>
+            ) : (
+              "no hay ahorro: la deducción baja la base imponible, pero no estás pagando el impuesto"
+            )}
+          </p>
 
-        <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Alquiler pagado en el año</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.alquilerAnual, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">40% del art. 85 inc. h)</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.cuarentaPorCiento, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Tope anual (ganancia no imponible)</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.tope, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Deducción del inc. h) que podés computar</dt>
-            <dd className="font-semibold text-emerald-700">{formatARS(res.deduccionIncH, 2)}</dd>
-          </div>
-          {res.excedente > 0 && (
+          <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
             <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-              <dt className="text-zinc-600">Excedente que se pierde</dt>
-              <dd className="font-semibold text-amber-700">{formatARS(res.excedente, 2)}</dd>
+              <dt className="text-zinc-600">Alquiler pagado en el año</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.alquilerAnual, 2)}</dd>
             </div>
-          )}
-          {computarDiezPorCiento && (
             <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-              <dt className="text-zinc-600">10% del inc. k) (hasta 2025)</dt>
-              <dd className="font-medium text-zinc-900">{formatARS(res.deduccionIncK, 2)}</dd>
+              <dt className="text-zinc-600">40% del art. 85 inc. h)</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.cuarentaPorCiento, 2)}</dd>
             </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Tope anual (ganancia no imponible)</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.tope, 2)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Deducción del inc. h) que podés computar</dt>
+              <dd className="font-semibold text-emerald-700">{formatARS(res.deduccionIncH, 2)}</dd>
+            </div>
+            {res.excedente > 0 && (
+              <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+                <dt className="text-zinc-600">Excedente que se pierde</dt>
+                <dd className="font-semibold text-amber-700">{formatARS(res.excedente, 2)}</dd>
+              </div>
+            )}
+            {computarDiezPorCiento && (
+              <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+                <dt className="text-zinc-600">10% del inc. k) (hasta 2025)</dt>
+                <dd className="font-medium text-zinc-900">{formatARS(res.deduccionIncK, 2)}</dd>
+              </div>
+            )}
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Total deducido</dt>
+              <dd className="font-medium text-zinc-900">{formatARS(res.deduccionTotal, 2)}</dd>
+            </div>
+            <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+              <dt className="text-zinc-600">Tu Ganancias del año: antes → después</dt>
+              <dd className="font-medium text-zinc-900">
+                {formatARS(res.impuestoSin.impuestoAnual, 2)} →{" "}
+                {formatARS(res.impuestoCon.impuestoAnual, 2)}
+              </dd>
+            </div>
+          </dl>
+
+          {res.avisos.length > 0 && (
+            <ul className="mt-4 space-y-2">
+              {res.avisos.map((a, i) => (
+                <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
+                  {a.texto}
+                </li>
+              ))}
+            </ul>
           )}
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Total deducido</dt>
-            <dd className="font-medium text-zinc-900">{formatARS(res.deduccionTotal, 2)}</dd>
-          </div>
-          <div className="flex justify-between border-b border-zinc-200 pb-1.5">
-            <dt className="text-zinc-600">Tu Ganancias del año: antes → después</dt>
-            <dd className="font-medium text-zinc-900">
-              {formatARS(res.impuestoSin.impuestoAnual, 2)} →{" "}
-              {formatARS(res.impuestoCon.impuestoAnual, 2)}
-            </dd>
-          </div>
-        </dl>
 
-        {res.avisos.length > 0 && (
-          <ul className="mt-4 space-y-2">
-            {res.avisos.map((a, i) => (
-              <li key={i} className={`rounded-lg border px-3 py-2 text-sm ${TONOS[a.tono]}`}>
-                {a.texto}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <p className="mt-4 text-xs text-zinc-500">
-          Tope y escala del impuesto: {ALQUILER_VIGENCIA}. Estimación orientativa, no una
-          liquidación: tu impuesto mes a mes, con el método acumulado que usa tu empleador, está en{" "}
-          <Link href="/ganancias" className="font-medium text-emerald-700 hover:underline">
-            la calculadora de Ganancias
-          </Link>
-          , y el ajuste de tu alquiler por índice en{" "}
-          <Link href="/inflacion/alquiler" className="font-medium text-emerald-700 hover:underline">
-            la de aumento de alquiler
-          </Link>
-          .
-        </p>
-      </div>
+          <p className="mt-4 text-xs text-zinc-500">
+            Tope y escala del impuesto: {ALQUILER_VIGENCIA}. Estimación orientativa, no una
+            liquidación: tu impuesto mes a mes, con el método acumulado que usa tu empleador, está en{" "}
+            <Link href="/ganancias" className="font-medium text-emerald-700 hover:underline">
+              la calculadora de Ganancias
+            </Link>
+            , y el ajuste de tu alquiler por índice en{" "}
+            <Link href="/inflacion/alquiler" className="font-medium text-emerald-700 hover:underline">
+              la de aumento de alquiler
+            </Link>
+            .
+          </p>
+        </div>
+        </>
+      )}
     </div>
   );
 }

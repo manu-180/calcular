@@ -53,6 +53,9 @@ type ProductoComun = {
    *  «Ese enlace no vence: …, actualizamos la planilla»). */
   disparadorActualizacion: string;
   precio: number;
+  /** Precios que tuvo antes. Solo pesan en pagos cuya preferencia no guardó `metadata.precio` (las
+   *  anteriores al 13/10/2026): al subir un precio, el viejo va acá o esos compradores pierden la descarga. */
+  preciosAnteriores?: readonly number[];
   moneda: "ARS";
   /** Dónde se entrega, con `?payment_id=`: la ruta de descarga del .xlsx o la página del informe.
    *  Es el enlace del mail de entrega y del botón de gracias, y siempre re-verifica el pago. */
@@ -479,8 +482,9 @@ export const METADATA_MAX = 3800;
  *  snake_case (en la preferencia quedan como se mandaron). Por eso las claves son una palabra en
  *  minúscula y `datos` viaja como texto JSON: sus claves internas no las toca nadie. Si no entra
  *  en el tope, sale sin `datos`. */
-export function metadataPreferencia(producto: Producto, datos?: string | null): Record<string, string> {
-  const base = { producto: producto.slug };
+export function metadataPreferencia(producto: Producto, datos?: string | null, email?: string | null): Record<string, string> {
+  const correo = emailValido(email);
+  const base: Record<string, string> = { producto: producto.slug, precio: String(producto.precio), ...(correo ? { email: correo } : {}) };
   if (!datos) return base;
   const con = { ...base, datos };
   return JSON.stringify(con).length <= METADATA_MAX ? con : base;
@@ -518,7 +522,7 @@ async function postPreferencia(p: CrearPreferenciaParams, metadata: Record<strin
 
 // Crea la preferencia de Checkout Pro y devuelve el init_point al que redirigir.
 export async function crearPreferencia(p: CrearPreferenciaParams): Promise<MpPreference> {
-  const metadata = metadataPreferencia(p.producto, p.datos);
+  const metadata = metadataPreferencia(p.producto, p.datos, p.emailComprador);
   let res = await postPreferencia(p, metadata);
   // Los datos de la calculadora son un extra: si MP rechaza la preferencia por su contenido (400),
   // se cobra igual sin ellos y la persona recibe el entregable genérico. Un 401/403/429 no es por
@@ -526,7 +530,7 @@ export async function crearPreferencia(p: CrearPreferenciaParams): Promise<MpPre
   if (res.status === 400 && "datos" in metadata) {
     const detalle = await res.text().catch(() => "");
     console.error(`[mp] preferencia rechazada con datos (${res.status}), reintento sin datos:`, p.producto.slug, detalle.slice(0, 200));
-    res = await postPreferencia(p, metadataPreferencia(p.producto, null));
+    res = await postPreferencia(p, metadataPreferencia(p.producto, null, p.emailComprador));
   }
 
   if (!res.ok) {
@@ -578,16 +582,37 @@ export async function obtenerPagoSiExiste(id: string): Promise<MpPayment | null>
   return (await buscarPago(id))?.pago ?? null;
 }
 
-// ¿El pago habilita la entrega DE ESTE producto? approved + monto EXACTO + moneda EXACTA.
-// (Defensivo: con campos undefined, las comparaciones estrictas dan false.)
-// Evita que alguien pague $1 y baje el archivo, o que un pago de un producto habilite otro
-// (hoy los dos valen lo mismo: el gate real es que `productoDePago` devuelva ESTE producto).
+/** Precio con el que se creó la preferencia (`metadata.precio`), o null en las preferencias viejas. */
+export function precioCobrado(p: MpPayment): number | null {
+  const v = p.metadata?.precio;
+  const n = typeof v === "number" ? v : typeof v === "string" && /^\d{1,9}(\.\d{1,2})?$/.test(v.trim()) ? Number(v) : NaN;
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+/** Mail que la persona dejó en el formulario de compra (`metadata.email`). */
+export function emailDelFormulario(p: MpPayment): string | null {
+  const v = p.metadata?.email;
+  return typeof v === "string" ? emailValido(v) : null;
+}
+
+/** A quién se manda la entrega, en orden: el mail que expone MP y, si es otro, el del formulario. */
+export function destinosDeEntrega(p: MpPayment): string[] {
+  return [...new Set([emailValido(p.payer?.email), emailDelFormulario(p)].filter((e): e is string => !!e))];
+}
+
+// ¿El pago habilita la entrega DE ESTE producto? approved + monto EXACTO + moneda EXACTA. El monto se
+// compara con el precio de la preferencia y no con el del catálogo de hoy: si sube un precio, los
+// enlaces de quienes compraron antes siguen andando. Sin `metadata.precio` (preferencias viejas) vale
+// cualquier precio que el producto haya tenido. `metadata` la escribe sólo nuestro servidor.
+// El gate de producto (un pago de uno no habilita otro) es `productoDePago`, en habilitaDescarga.
 export function pagoAprobado(p: MpPayment, producto: Producto = PRODUCTO): boolean {
-  return (
-    p.status === "approved" &&
-    p.transaction_amount === producto.precio &&
-    p.currency_id === producto.moneda
-  );
+  if (p.status !== "approved" || p.currency_id !== producto.moneda || typeof p.transaction_amount !== "number") return false;
+  // La cuenta legado tiene cobros ajenos que caen en Comercio por default: a esos sólo les vale el
+  // precio de hoy, nunca un metadata.precio que no escribimos nosotros.
+  if (!esPagoDePlanilla(p)) return p.transaction_amount === producto.precio;
+  const cobrado = precioCobrado(p);
+  const validos = cobrado !== null ? [cobrado] : [producto.precio, ...(producto.preciosAnteriores ?? [])];
+  return validos.includes(p.transaction_amount);
 }
 
 /** Gate completo de entrega: el pago está aprobado Y corresponde a este producto. */

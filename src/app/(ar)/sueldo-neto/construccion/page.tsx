@@ -17,23 +17,28 @@ import { formatARS } from "@/lib/formato";
 import { ORGANIZACION, articleSchema, datasetSchema } from "@/lib/schema";
 import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
-const ACTUALIZADO_EL = UOCRA_FUENTES.consultadoEl;
-const MES = vigenteEn(MESES_UOCRA, periodoDeMes);
-const MES_ID = MES.id;
-const MES_TXT = MES.etiqueta.toLowerCase();
-const ZONA_REF = "a"; // Zona A: la más poblada (CABA, Buenos Aires, Córdoba, Santa Fe, etc.)
-const HORAS_REF = Math.round(UOCRA_HORAS_MES_PROMEDIO);
-const OFICIAL_REF = calcularUocra({
-  mesId: MES_ID,
-  categoriaId: "oficial",
-  zonaId: ZONA_REF,
-  horasMes: HORAS_REF,
-  conAsistencia: true,
-  conAporteSindical: false,
-})!;
-const redondeo = (n: number) => Math.round(n / 10_000) * 10_000;
+function datosDelMes() {
+  const ACTUALIZADO_EL = UOCRA_FUENTES.consultadoEl;
+  const MES = vigenteEn(MESES_UOCRA, periodoDeMes);
+  const MES_ID = MES.id;
+  const MES_TXT = MES.etiqueta.toLowerCase();
+  const ZONA_REF = "a"; // Zona A: la más poblada (CABA, Buenos Aires, Córdoba, Santa Fe, etc.)
+  const HORAS_REF = Math.round(UOCRA_HORAS_MES_PROMEDIO);
+  const OFICIAL_REF = calcularUocra({
+    mesId: MES_ID,
+    categoriaId: "oficial",
+    zonaId: ZONA_REF,
+    horasMes: HORAS_REF,
+    conAsistencia: true,
+    conAporteSindical: false,
+  })!;
+  const redondeo = (n: number) => Math.round(n / 10_000) * 10_000;
+  return { ACTUALIZADO_EL, MES, MES_ID, MES_TXT, ZONA_REF, HORAS_REF, OFICIAL_REF, redondeo };
+}
 
-const faqs = [
+type DatosDelMes = ReturnType<typeof datosDelMes>;
+
+const crearFaqs = ({ MES_TXT, HORAS_REF, OFICIAL_REF, redondeo }: DatosDelMes) => [
   {
     q: "¿Cuánto cobra un obrero de la construcción en mano en 2026?",
     a: `Depende de la categoría, la zona y las horas trabajadas. Un Oficial de Zona A, con jornada completa (≈${HORAS_REF} horas/mes) y asistencia perfecta, tiene en ${MES_TXT} un bruto cercano a ${formatARS(redondeo(OFICIAL_REF.bruto), 0)} y le quedan en mano alrededor de ${formatARS(redondeo(OFICIAL_REF.neto), 0)}. El jornal es por hora, así que el sueldo final cambia según las horas que trabajaste en el mes.`,
@@ -64,6 +69,9 @@ export const metadata: Metadata = {
 };
 
 export default function SueldoNetoConstruccionPage() {
+  const datos = datosDelMes();
+  const { ACTUALIZADO_EL, MES, MES_ID, MES_TXT, ZONA_REF, HORAS_REF } = datos;
+  const faqs = crearFaqs(datos);
   const mesEtiqueta = MES.etiqueta;
   const zonaRef = ZONAS_UOCRA.find((z) => z.id === ZONA_REF);
 

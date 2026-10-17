@@ -16,12 +16,12 @@
 
 import { HABER_MINIMO_SERIE, HABER_MINIMO_ULTIMO, NORMAS_POR_PERIODO } from "../src/data/jubilaciones";
 import {
-  BONO_VIGENTE,
+  bonoVigente,
   MESES_PREVISIONALES,
-  PRESTACIONES_VIGENTES,
-  RESOLUCION_PROXIMA,
+  prestacionesVigentes,
+  resolucionProxima,
 } from "../src/data/prestaciones";
-import { TOPE_SIPA } from "../src/data/sueldo";
+import { topeSipa } from "../src/data/sueldo";
 import { IPC_SERIE } from "../src/data/ipc-serie";
 import {
   actualizarHaber,
@@ -46,7 +46,7 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
 }
 const aprox = (a: number, b: number, tol = 0.02) => Math.abs(a - b) < tol;
 
-const V = PRESTACIONES_VIGENTES;
+const V = prestacionesVigentes();
 
 // ===========================================================================
 // 1 · Los valores de cada resolución cargada
@@ -189,24 +189,24 @@ if (V.periodo === "2026-09") {
 // ===========================================================================
 {
   check(
-    "TOPE_SIPA.baseMaxima coincide con la resolución vigente",
-    aprox(TOPE_SIPA.baseMaxima, V.baseImponibleMaxima),
-    { sueldo: TOPE_SIPA.baseMaxima, resolucion: V.baseImponibleMaxima },
+    "topeSipa().baseMaxima coincide con la resolución vigente",
+    aprox(topeSipa().baseMaxima, V.baseImponibleMaxima),
+    { sueldo: topeSipa().baseMaxima, resolucion: V.baseImponibleMaxima },
   );
   check(
-    "TOPE_SIPA.baseMinima coincide con la resolución vigente",
-    aprox(TOPE_SIPA.baseMinima, V.baseImponibleMinima),
-    { sueldo: TOPE_SIPA.baseMinima, resolucion: V.baseImponibleMinima },
+    "topeSipa().baseMinima coincide con la resolución vigente",
+    aprox(topeSipa().baseMinima, V.baseImponibleMinima),
+    { sueldo: topeSipa().baseMinima, resolucion: V.baseImponibleMinima },
   );
   check(
-    "TOPE_SIPA declara la vigencia del mes vigente",
-    TOPE_SIPA.vigencia === V.vigencia,
-    { sueldo: TOPE_SIPA.vigencia, esperado: V.vigencia },
+    "topeSipa() declara la vigencia del mes vigente",
+    topeSipa().vigencia === V.vigencia,
+    { sueldo: topeSipa().vigencia, esperado: V.vigencia },
   );
   check(
-    "TOPE_SIPA cita la misma resolución",
-    TOPE_SIPA.fuente.includes(V.resolucion),
-    TOPE_SIPA.fuente,
+    "topeSipa() cita la misma resolución",
+    topeSipa().fuente.includes(V.resolucion),
+    topeSipa().fuente,
   );
   // Que la base imponible siga la movilidad mes a mes lo verifica la cadena de la sección 1.
 }
@@ -216,15 +216,15 @@ if (V.periodo === "2026-09") {
 // ===========================================================================
 {
   const min = V.haberMinimo;
-  const b = BONO_VIGENTE.monto;
+  const b = bonoVigente().monto;
   const tope = Math.round((min + b) * 100) / 100;
 
   check("el bono vigente es de $70.000", b === 70_000, b);
-  check("el bono es del mes vigente", BONO_VIGENTE.periodo === V.periodo);
-  check("el bono cita su decreto", /^Decreto \d+\/\d{4}$/.test(BONO_VIGENTE.norma), BONO_VIGENTE.norma);
+  check("el bono es del mes vigente", bonoVigente().periodo === V.periodo);
+  check("el bono cita su decreto", /^Decreto \d+\/\d{4}$/.test(bonoVigente().norma), bonoVigente().norma);
   check(
     "el link del decreto apunta al Boletín Oficial",
-    BONO_VIGENTE.normaUrl.startsWith("https://www.boletinoficial.gob.ar/"),
+    bonoVigente().normaUrl.startsWith("https://www.boletinoficial.gob.ar/"),
   );
 
   // Haber exactamente en el mínimo → bono completo.
@@ -432,8 +432,8 @@ if (V.periodo === "2026-09") {
 // ===========================================================================
 // 9 · Resolución del mes siguiente dictada antes de tiempo
 // ===========================================================================
-if (RESOLUCION_PROXIMA) {
-  const R = RESOLUCION_PROXIMA;
+const R = resolucionProxima();
+if (R) {
   const prox = proximoMesDeterminado();
   check("la resolución próxima es del mes siguiente al vigente", R.periodo === sumarMeses(V.periodo, 1));
   check("la resolución próxima no quedó vieja (el vigente no la alcanzó)", R.periodo > V.periodo);

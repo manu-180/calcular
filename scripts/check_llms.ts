@@ -56,6 +56,7 @@ const EXCLUIDAS = new Set<string>([
   "/recuperar",
   "/cuenta",
   "/dashboard",
+  "/jubilaciones", // redirección permanente a /jubilacion, no es una página
 ]);
 
 /** Prefijos excluidos por rama entera (los posts del blog no se enumeran uno por uno). */

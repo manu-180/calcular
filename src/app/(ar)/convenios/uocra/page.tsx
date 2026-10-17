@@ -22,19 +22,24 @@ import { hoyAR, periodoDeMes, vigenteEn } from "@/lib/hoy";
 
 // El mes que se muestra es el que se liquida hoy (o el último cargado si la escala no llegó): así
 // la página no se queda anclada en un mes viejo cuando entra una escala nueva.
-const MES = vigenteEn(MESES_UOCRA, periodoDeMes);
-const MES_TXT = MES.etiqueta.toLowerCase();
-const ULTIMO = MESES_UOCRA[MESES_UOCRA.length - 1];
-const OFICIAL_A = calcularUocra({
-  mesId: MES.id,
-  categoriaId: "oficial",
-  zonaId: "a",
-  horasMes: 190.67,
-  conAsistencia: true,
-  conAporteSindical: false,
-})!;
-const SNR_OFICIAL_A = MES.snr.oficial.a;
-const TIENE_SNR = SNR_OFICIAL_A > 0;
+function datosDelMes() {
+  const MES = vigenteEn(MESES_UOCRA, periodoDeMes);
+  const MES_TXT = MES.etiqueta.toLowerCase();
+  const ULTIMO = MESES_UOCRA[MESES_UOCRA.length - 1];
+  const OFICIAL_A = calcularUocra({
+    mesId: MES.id,
+    categoriaId: "oficial",
+    zonaId: "a",
+    horasMes: 190.67,
+    conAsistencia: true,
+    conAporteSindical: false,
+  })!;
+  const SNR_OFICIAL_A = MES.snr.oficial.a;
+  const TIENE_SNR = SNR_OFICIAL_A > 0;
+  return { MES, MES_TXT, ULTIMO, OFICIAL_A, SNR_OFICIAL_A, TIENE_SNR };
+}
+
+type DatosDelMes = ReturnType<typeof datosDelMes>;
 
 export const metadata: Metadata = {
   title: "Sueldos UOCRA 2026: jornales por categoría y zona",
@@ -52,7 +57,7 @@ export const metadata: Metadata = {
   },
 };
 
-const faqs = [
+const crearFaqs = ({ MES, MES_TXT, ULTIMO, OFICIAL_A, SNR_OFICIAL_A, TIENE_SNR }: DatosDelMes) => [
   {
     q: `¿Cuánto cobra un oficial de la construcción en ${MES_TXT}?`,
     a:
@@ -108,6 +113,9 @@ const faqs = [
 ];
 
 export default function UocraPage() {
+  const datos = datosDelMes();
+  const { MES, MES_TXT, ULTIMO, OFICIAL_A, TIENE_SNR } = datos;
+  const faqs = crearFaqs(datos);
   const catsJornal = CATEGORIAS_UOCRA.filter((c) => !c.mensual);
   const sereno = CATEGORIAS_UOCRA.find((c) => c.mensual)!;
 

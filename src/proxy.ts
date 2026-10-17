@@ -14,6 +14,10 @@ const PROTEGIDAS = ["/cuenta", "/dashboard"];
 const PRIVADAS = ["/cuenta", "/dashboard", "/login", "/registro", "/recuperar", "/auth", "/api/cuenta"];
 const SOLO_SIN_SESION = ["/login", "/registro"];
 
+// En Vercel, /login%5C daba 500 (MODULE_NOT_FOUND); en next start y en dev da 404 y no se reproduce.
+// El matcher de abajo manda cualquier path con %5C al proxy y acá se corta con un 404 antes del ruteo.
+const RE_BARRA_INVERTIDA = /%5c|\\/i;
+
 const bajo = (path: string, bases: string[]) => bases.some((b) => path === b || path.startsWith(`${b}/`));
 
 async function leerSesion(request: NextRequest, respuesta: { actual: NextResponse }, estricta: boolean): Promise<boolean> {
@@ -84,6 +88,7 @@ export async function proxy(request: NextRequest) {
   // Con las cuentas prendidas, /api/cuenta sí existe en calcularya (hosts.ts la deja pasar) y tiene
   // que refrescar la sesión igual que en calcular.ar.
   const intl = esSitioIntl(request);
+  if (RE_BARRA_INVERTIDA.test(request.nextUrl.pathname)) return intl ? NextResponse.next() : noEncontrada(request);
   const apiCuenta = CUENTAS_ACTIVAS && bajo(request.nextUrl.pathname, ["/api/cuenta"]);
   if (request.nextUrl.pathname.startsWith("/api/") && intl && !apiCuenta) return NextResponse.next();
 
@@ -127,6 +132,7 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
+    "/:barra(.*%5[cC].*)",
     "/cuenta/:path*",
     "/dashboard/:path*",
     "/login",

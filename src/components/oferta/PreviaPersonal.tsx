@@ -6,13 +6,18 @@ import { leerDatosCompra, suscribirDatosCompra } from "@/lib/prefill/cliente";
 import { prefill as prefillComercio } from "@/lib/prefill/comercio";
 import { prefill as prefillUocra } from "@/lib/prefill/uocra";
 import { prefill as prefillCasas } from "@/lib/prefill/casas";
-import { hojaCasas, hojaComercio, hojaUocra } from "@/components/oferta/hojas";
+import { prefill as prefillMonotributo } from "@/lib/prefill/monotributo";
+import { hojaCasas, hojaComercio, hojaMonotributo, hojaUocra } from "@/components/oferta/hojas";
 
 // La landing, cuando la persona viene de la calculadora: en vez del caso de ejemplo muestra SU
 // caso, que es exactamente el archivo que va a descargar (los datos viajan con el pago). En el
 // server y al hidratar no hay localStorage: se ve el ejemplo y recién después el caso propio.
 
-export type SlugPersonalizable = "planilla-comercio" | "planilla-uocra" | "planilla-casas-particulares";
+export type SlugPersonalizable =
+  | "planilla-comercio"
+  | "planilla-uocra"
+  | "planilla-casas-particulares"
+  | "planilla-monotributo";
 
 function usePrevia(producto: SlugPersonalizable, archivo: string): { hoja: HojaPrevia; etiqueta: string } | null {
   // El snapshot es texto para que useSyncExternalStore compare por valor y no re-renderice en loop.
@@ -36,10 +41,15 @@ function usePrevia(producto: SlugPersonalizable, archivo: string): { hoja: HojaP
               const d = prefillUocra.validar(raw);
               return d && hojaUocra(archivo, d);
             })()
-          : (() => {
-              const d = prefillCasas.validar(raw);
-              return d && hojaCasas(archivo, d);
-            })();
+          : producto === "planilla-monotributo"
+            ? (() => {
+                const d = prefillMonotributo.validar(raw);
+                return d && hojaMonotributo(archivo, d);
+              })()
+            : (() => {
+                const d = prefillCasas.validar(raw);
+                return d && hojaCasas(archivo, d);
+              })();
     return r ? { hoja: r.hoja, etiqueta: r.resumen.etiqueta } : null;
   }, [crudo, producto, archivo]);
 }

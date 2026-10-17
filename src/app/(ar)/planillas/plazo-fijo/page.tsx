@@ -28,21 +28,27 @@ export const metadata: Metadata = {
   }),
 };
 
-// Caso de la vista previa: $1.000.000 a 30 días con la TNA promedio del BCRA, renovado un año, con
-// la última inflación oficial como estimación. Sale de previaPlazoFijo(), el mismo armado que la
-// oferta de /plazo-fijo (motor de la calculadora): scripts/check_planilla_plazo_fijo.ts comprueba
-// que el archivo da exactamente esto.
-const EJEMPLO = previaPlazoFijo(PRODUCTO.archivo!, {
-  capital: 1_000_000,
-  dias: 30,
-  tnaPct: TNA_FALLBACK.valor,
-  renovaciones: 0,
-  inflacionMensualPct: INFLACION_DEFAULT.mensualPct,
-  uvaTnaAdicionalPct: UVA.tnaAdicionalDefaultPct,
-  fecha: hoyAR(),
-})!;
+function datosDelMes() {
+  // Caso de la vista previa: $1.000.000 a 30 días con la TNA promedio del BCRA, renovado un año, con
+  // la última inflación oficial como estimación. Sale de previaPlazoFijo(), el mismo armado que la
+  // oferta de /plazo-fijo (motor de la calculadora): scripts/check_planilla_plazo_fijo.ts comprueba
+  // que el archivo da exactamente esto.
+  const EJEMPLO = previaPlazoFijo(PRODUCTO.archivo!, {
+    capital: 1_000_000,
+    dias: 30,
+    tnaPct: TNA_FALLBACK.valor,
+    renovaciones: 0,
+    inflacionMensualPct: INFLACION_DEFAULT.mensualPct,
+    uvaTnaAdicionalPct: UVA.tnaAdicionalDefaultPct,
+    fecha: hoyAR(),
+  })!;
+  return { EJEMPLO };
+}
+
+type DatosDelMes = ReturnType<typeof datosDelMes>;
 
 export default function PlanillaPlazoFijoPage() {
+  const { EJEMPLO } = datosDelMes();
   return (
     <PlanillaLanding
       personal={{

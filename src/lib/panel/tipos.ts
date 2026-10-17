@@ -32,6 +32,9 @@ export type FilaPagina = {
   interesCompra: number;
   checkouts: number;
   ventas: number;
+  // Vistas de la oferta en la página y plata de las ventas que se le atribuyen, en dólares.
+  ofertas: number;
+  ingresosUsd: number;
   producto: string | null;
   serieUsos: number[];
 };
@@ -44,9 +47,14 @@ export type PasoEmbudo = {
 export type EmbudoProducto = {
   producto: string;
   titulo: string;
+  // null = calcular.ar; si no, el mercado de calcularya que vende el producto.
+  mercado: string | null;
+  // precio e ingresos van en esta moneda; ingresosUsd, en dólares.
+  moneda: string;
   precio: number;
   pasos: PasoEmbudo[];
   ingresos: number;
+  ingresosUsd: number;
 };
 
 export type FilaFuente = {
@@ -66,6 +74,10 @@ export type Compra = {
   producto: string;
   monto: number;
   moneda: string;
+  montoUsd: number | null;
+  // País real de quien compró (IP del checkout), no el mercado del contenido.
+  pais: string | null;
+  mercado: string | null;
   emailEnmascarado: string;
   conCuenta: boolean;
   desde: string | null;
@@ -90,7 +102,24 @@ export type FilaMercado = {
   usos: number;
   ventas: number;
   ingresos: Importe[];
+  ingresosUsd: number;
+  // Pasos del embudo con una persona por día (ver ca_resumen_mercado). null = la base no los tiene.
+  embudo: EmbudoMercado | null;
 };
+
+export type EmbudoMercado = {
+  visitas: number;
+  usaron: number;
+  ofertas: number;
+  clics: number;
+  checkouts: number;
+  ventas: number;
+};
+
+export type IngresoMoneda = { moneda: string; monto: number; montoUsd: number | null; ventas: number };
+
+// moneda = en qué está el KPI de ingresos: USD con la migración de métricas del mundo, ARS antes.
+export type Ingresos = { moneda: string; porMoneda: IngresoMoneda[]; sinCotizacion: number };
 
 export type Lectura = {
   id: string;
@@ -109,11 +138,14 @@ export type PanelDatos = {
   generado: string;
   granularidad: "hora" | "dia";
   kpis: Kpi[];
+  ingresos: Ingresos;
   paginas: FilaPagina[];
   embudos: EmbudoProducto[];
   fuentes: FilaFuente[];
   dispositivos: Reparto[];
   paises: Reparto[];
+  // País real de quienes compraron. null = la base todavía no lo guarda.
+  paisesCompra: Reparto[] | null;
   busquedas: Busqueda[];
   compras: Compra[];
   cuentas: Cuentas;

@@ -26,6 +26,7 @@ export default definirCalculadora({
     { id: "auxilio", tipo: "si-no", etiqueta: "Recibes auxilio de transporte", porDefecto: true },
   ],
   calcular(entrada, valores, { redondear }) {
+    if (entrada.salario <= 0) throw new ErrorEntrada({ codigo: "requerido" }, "salario");
     if (entrada.dias < 1 || entrada.dias > 180) throw new ErrorEntrada("Un semestre tiene entre 1 y 180 días.", "dias");
     const conAuxilio = entrada.auxilio && recibeAuxilio(entrada.salario, valores["co.smmlv"], valores["co.auxilio-tope"]);
     const auxilio = conAuxilio ? valores["co.auxilio-transporte"] : 0;

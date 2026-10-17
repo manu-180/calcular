@@ -1008,6 +1008,38 @@
   color: var(--cy-texto-suave, #52525b);
 }
 
+@media (min-width: 80rem) and (max-width: 95.99rem) {
+  .cy-ps-nombre {
+    display: none;
+  }
+}
+
+@media (max-width: 39.99rem) {
+  .cy-ps {
+    position: static;
+  }
+
+  .cy-ps-boton {
+    width: 2.75rem;
+    height: 2.75rem;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .cy-ps-nombre,
+  .cy-ps-boton .cy-ps-chevron {
+    display: none;
+  }
+
+  .cy-ps-panel {
+    right: 1rem;
+  }
+}
+
 @media (max-width: 39.99rem) {
   .cy-nov-entrada {
     grid-template-columns: minmax(0, 1fr);

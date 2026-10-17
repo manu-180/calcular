@@ -15,10 +15,10 @@
 //      tramos y la excepción de hijo con discapacidad (que no tiene tope de ingresos).
 
 import {
-  ASIGNACIONES_FUENTES,
-  ASIGNACIONES_MES_ANTERIOR,
-  ASIGNACIONES_PROXIMAS,
-  ASIGNACIONES_VIGENTES,
+  asignacionesFuentes,
+  asignacionesMesAnterior,
+  asignacionesProximas,
+  asignacionesVigentes,
   GRUPOS_MONOTRIBUTO,
   RESOLUCIONES_ASIGNACIONES_SIGUIENTES,
   PAGO_UNICO,
@@ -48,8 +48,8 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
   }
 }
 
-const V = ASIGNACIONES_VIGENTES;
-const P = ASIGNACIONES_MES_ANTERIOR;
+const V = asignacionesVigentes();
+const P = asignacionesMesAnterior();
 const COEF = 1 + V.movilidad / 100;
 const ZONA_IDS = ZONAS.map((z) => z.id);
 
@@ -109,7 +109,7 @@ if (V.periodo === "2026-09") {
   );
   check(
     "todas las fuentes citadas son oficiales (.gob.ar)",
-    Object.values(ASIGNACIONES_FUENTES)
+    Object.values(asignacionesFuentes())
       .filter((f) => typeof f === "object")
       .every((f) => /https:\/\/[a-z.]*gob\.ar\//.test((f as { url: string }).url)),
   );
@@ -527,14 +527,15 @@ const DISC_T3 = V.hijoDiscapacidad[2].montos.general;
   );
   check(
     "las dos cartillas de pago único están citadas y son de anses.gob.ar",
-    [ASIGNACIONES_FUENTES.cartillaNacimiento.url, ASIGNACIONES_FUENTES.cartillaMatrimonio.url].every(
+    [asignacionesFuentes().cartillaNacimiento.url, asignacionesFuentes().cartillaMatrimonio.url].every(
       (u) => u.startsWith("https://www.anses.gob.ar/sites/default/files/cartilla/"),
     ),
   );
 }
 
-if (ASIGNACIONES_PROXIMAS) {
-  const P = ASIGNACIONES_PROXIMAS;
+const PROXIMA = asignacionesProximas();
+if (PROXIMA) {
+  const P = PROXIMA;
   const [a, m] = V.periodo.split("-").map(Number);
   const siguiente = m === 12 ? `${a + 1}-01` : `${a}-${String(m + 1).padStart(2, "0")}`;
   check("la resolución próxima es del mes siguiente al vigente", P.periodo === siguiente, P.periodo);
@@ -545,11 +546,11 @@ if (ASIGNACIONES_PROXIMAS) {
   );
   check(
     "moverAlMesSiguiente reproduce la rotación del mes anterior al vigente (tope individual)",
-    moverAlMesSiguiente(ASIGNACIONES_MES_ANTERIOR.topeIgfIndividual, V.movilidad) === V.topeIgfIndividual,
+    moverAlMesSiguiente(asignacionesMesAnterior().topeIgfIndividual, V.movilidad) === V.topeIgfIndividual,
   );
   check(
     "moverAlMesSiguiente reproduce la rotación del mes anterior al vigente (AUH general)",
-    moverAlMesSiguiente(ASIGNACIONES_MES_ANTERIOR.universales.hijo.general, V.movilidad) ===
+    moverAlMesSiguiente(asignacionesMesAnterior().universales.hijo.general, V.movilidad) ===
       V.universales.hijo.general,
   );
 } else {

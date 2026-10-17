@@ -3,9 +3,9 @@ import { formatearFecha } from "@/motor/formato";
 import { NOMBRE_SITIO_INTL, intlActivo } from "@/motor/sitio";
 import { origenPublicoIntl, rutaIntl } from "@/motor/seo";
 import type { CodigoMercado } from "@/motor/tipos";
-import { BanderaPlana } from "@/motor/ui/Bandera";
+import { BanderaPlana } from "@/motor/ui/BanderaPlana";
 import { contextoSitio, type ContextoSitio } from "@/motor/ui/contexto";
-import { PAGINAS_LEGALES } from "@/motor/ui/Legales";
+import { paginasLegales } from "@/motor/ui/Legales";
 import { actualizacionDe, resolverPagina, type PaginaIntl } from "@/motor/ui/metadatos";
 import { registro } from "@/paises";
 
@@ -100,7 +100,7 @@ function tituloDe(ctx: ContextoSitio, r: PaginaIntl | null): string {
     case "novedades":
       return t.novedades.titulo(m.nombre);
     case "legal":
-      return PAGINAS_LEGALES[r.slug].h1;
+      return paginasLegales(m.idioma, m.trato, m.locale)[r.slug].h1;
   }
 }
 
