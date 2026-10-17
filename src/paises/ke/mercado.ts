@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["KES"],
   zonaHoraria: "Africa/Nairobi",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "cities", nombre: "Nairobi, Mombasa, Kisumu, Nakuru and Eldoret" },
     { id: "municipalities", nombre: "Former municipalities of Mavoko, Ruiru and Limuru" },
