@@ -1,4 +1,5 @@
 import { aplicarEscala, definirCalculadora, ErrorEntrada } from "@/motor/calculo";
+import type { TablaResultado } from "@/motor/tipos";
 
 function cuota(prestamo: number, tasaAnual: number, meses: number): number {
   const r = tasaAnual / 100 / 12;
@@ -30,6 +31,31 @@ export default definirCalculadora({
     const prestado = redondear(entrada.precio - entrada.deposito);
     const meses = entrada.anios * 12;
     const pago = cuota(prestado, tasa, meses);
+    const r = tasa / 100 / 12;
+    let saldo = prestado;
+    const filas: (readonly number[])[] = [];
+    for (let anio = 1; anio <= entrada.anios; anio++) {
+      let interesAnio = 0;
+      let capitalAnio = 0;
+      for (let m = 0; m < 12; m++) {
+        const interes = saldo * r;
+        const capital = Math.min(saldo, pago - interes);
+        interesAnio += interes;
+        capitalAnio += capital;
+        saldo -= capital;
+      }
+      filas.push([anio, redondear(interesAnio), redondear(capitalAnio), redondear(Math.max(0, saldo))]);
+    }
+    const anual: TablaResultado = {
+      tipo: "tabla",
+      columnas: [
+        { clave: "anio", etiqueta: "Year", formato: "numero" },
+        { clave: "intereses", etiqueta: "Interest paid", formato: "moneda" },
+        { clave: "capital", etiqueta: "Capital paid", formato: "moneda" },
+        { clave: "saldo", etiqueta: "Balance at year end", formato: "moneda" },
+      ],
+      filas,
+    };
     return {
       pago: redondear(pago),
       tasa,
@@ -39,6 +65,7 @@ export default definirCalculadora({
       total: redondear(pago * meses),
       siSube: redondear(cuota(prestado, tasa + 0.25, meses) - pago),
       derecho: redondear(aplicarEscala(v["za.transfer-duty"], entrada.precio)),
+      anual,
       observaciones: ["If your bond is linked to prime, your repayment changes every time prime changes."],
     };
   },
@@ -52,4 +79,5 @@ export default definirCalculadora({
     { clave: "total", etiqueta: "Total repaid", formato: "moneda" },
     { clave: "derecho", etiqueta: "Transfer duty on the price", formato: "moneda" },
   ],
+  tablas: [{ clave: "anual", titulo: "Year by year", filasVisibles: 12 }],
 });

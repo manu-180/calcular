@@ -18,7 +18,7 @@ import { calcularComercio } from "@/lib/convenios";
 import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
 export const metadata: Metadata = {
-  title: "Sueldo de Comercio 2026: escala CCT 130/75 y calculadora",
+  title: "Sueldo de Comercio 2026: calculadora y escala FAECYS",
   description:
     "Cuánto cobra un empleado de comercio en 2026 por categoría, con antigüedad, presentismo y jornada parcial. Escala oficial de FAECYS mes a mes.",
   alternates: { canonical: "/convenios/comercio" },
@@ -198,6 +198,13 @@ export default function ComercioPage() {
           {formatARS(vendedorB.bruto, 0)} con presentismo) y le quedan{" "}
           <strong>unos {formatARS(vendedorB.neto, 0)} en mano</strong>. La escala de FAECYS es un
           piso obligatorio para toda la actividad, estés afiliado al sindicato o no.
+        </p>
+        <p>
+          ¿Trabajás media jornada? Mirá{" "}
+          <Link href="/convenios/comercio/por-horas">
+            cuánto cobra un empleado de comercio por 4, 6 y 8 horas
+          </Link>
+          , categoría por categoría.
         </p>
       </RespuestaPrimero>
 

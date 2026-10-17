@@ -1,0 +1,937 @@
+{
+  "mercado": "be",
+  "datos": [
+    {
+      "id": "be.btw-standaard",
+      "nombre": "Btw, standaardtarief",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 21,
+          "fuente": {
+            "organismo": "FOD Financiën",
+            "titulo": "Btw-tarieven",
+            "url": "https://financien.belgium.be/nl/ondernemingen/btw/btw-plicht/tarieven-en-berekening/btw-tarieven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.btw-tussen",
+      "nombre": "Btw, tussentarief",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "FOD Financiën",
+            "titulo": "Btw-tarieven",
+            "url": "https://financien.belgium.be/nl/ondernemingen/btw/btw-plicht/tarieven-en-berekening/btw-tarieven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.btw-verlaagd",
+      "nombre": "Btw, verlaagd tarief",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "FOD Financiën",
+            "titulo": "Btw-tarieven",
+            "url": "https://financien.belgium.be/nl/ondernemingen/btw/btw-plicht/tarieven-en-berekening/btw-tarieven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.rsz-werknemer",
+      "nombre": "Persoonlijke RSZ-bijdrage van de werknemer",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Pensioenen 7,50 + geneeskundige verzorging 3,55 + uitkeringen 1,15 + werkloosheid 0,87.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 13.07,
+          "fuente": {
+            "organismo": "RSZ",
+            "titulo": "Administratieve instructies RSZ 2026/3: de bijdragen",
+            "url": "https://www.socialsecurity.be/employer/instructions/dmfa/nl/latest/instructions/socialsecuritycontributions/contributions/ordinarycontributions.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.rsz-werkgever",
+      "nombre": "Werkgeversbijdragen RSZ, privésector categorie 1 (basisbijdrage en loonmatiging)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "Basisbijdrage 19,88 % en loonmatiging 5,12 % voor werknemers van categorie 1 van de structurele vermindering. Arbeiders: bijdragen op 108 % van het brutoloon, plus 15,84 % voor de vakantieregeling (5,57 % per kwartaal en 10,27 % jaarlijks).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "basis": 19.88,
+            "loonmatiging": 5.12,
+            "vakantie-arbeiders": 15.84
+          },
+          "fuente": {
+            "organismo": "RSZ",
+            "titulo": "Administratieve instructies RSZ 2026/3: de bijdragen",
+            "url": "https://www.socialsecurity.be/employer/instructions/dmfa/nl/latest/instructions/socialsecuritycontributions/contributions/ordinarycontributions.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.werkbonus",
+      "nombre": "Sociale werkbonus: loongrenzen, basisbedragen en hellingscoëfficiënten",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "nota": "Luik A (lage lonen) en luik B (zeer lage lonen), voor bedienden (aangegeven aan 100 %) en arbeiders (aangegeven aan 108 %). Bedragen per maand voor een voltijdse werknemer met volledige prestaties.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-08-31",
+          "valor": {
+            "grens-a": 2937.93,
+            "plafond-a": 3336.98,
+            "basis-a-bediende": 127.54,
+            "basis-a-arbeider": 137.74,
+            "helling-a-bediende": 0.3196,
+            "helling-a-arbeider": 0.3452,
+            "grens-b": 2300.62,
+            "plafond-b": 2937.93,
+            "basis-b-bediende": 171.99,
+            "basis-b-arbeider": 185.75,
+            "helling-b-bediende": 0.2699,
+            "helling-b-arbeider": 0.2915
+          },
+          "fuente": {
+            "organismo": "RSZ",
+            "titulo": "Administratieve instructies RSZ 2026/3: werkbonus",
+            "url": "https://www.socialsecurity.be/employer/instructions/dmfa/nl/latest/instructions/deductions/workers_reductions/workbonus.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": {
+            "grens-a": 2937.93,
+            "plafond-a": 3403.62,
+            "basis-a-bediende": 127.54,
+            "basis-a-arbeider": 137.74,
+            "helling-a-bediende": 0.2739,
+            "helling-a-arbeider": 0.2958,
+            "grens-b": 2300.62,
+            "plafond-b": 2937.93,
+            "basis-b-bediende": 171.99,
+            "basis-b-arbeider": 185.75,
+            "helling-b-bediende": 0.2699,
+            "helling-b-arbeider": 0.2915
+          },
+          "fuente": {
+            "organismo": "RSZ",
+            "titulo": "Administratieve instructies RSZ 2026/3: werkbonus",
+            "url": "https://www.socialsecurity.be/employer/instructions/dmfa/nl/latest/instructions/deductions/workers_reductions/workbonus.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.bbsz-individueel",
+      "nombre": "Bijzondere bijdrage sociale zekerheid per kwartaal, individuele aanslag",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "nota": "Op het kwartaalloon (arbeiders aan 108 %). Vaste bedragen per kwartaal.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5836.14,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 5836.14,
+              "hasta": 6570.54,
+              "tasa": 4.22,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 6570.54,
+              "hasta": 11211,
+              "tasa": 1.1,
+              "cuotaFija": 30.99
+            },
+            {
+              "desde": 11211,
+              "hasta": 12300,
+              "tasa": 3.38,
+              "cuotaFija": 82.05
+            },
+            {
+              "desde": 12300,
+              "hasta": 18116.46,
+              "tasa": 1.1,
+              "cuotaFija": 118.83
+            },
+            {
+              "desde": 18116.46,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 182.82
+            }
+          ],
+          "fuente": {
+            "organismo": "RSZ",
+            "titulo": "Administratieve instructies RSZ 2026/3: bijzondere bijdrage voor de sociale zekerheid",
+            "url": "https://www.socialsecurity.be/employer/instructions/dmfa/nl/latest/instructions/special_contributions/other_specialcontributions/specialsocialsecuritycontribution.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.bbsz-gemeenschappelijk",
+      "nombre": "Bijzondere bijdrage sociale zekerheid per kwartaal, gemeenschappelijke aanslag",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "nota": "Op het kwartaalloon (arbeiders aan 108 %). De grenzen per gezinstype staan in be.bbsz-grenzen.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 3285.29,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 3285.29,
+              "hasta": 5836.14,
+              "tasa": 0,
+              "cuotaFija": 15.45
+            },
+            {
+              "desde": 5836.14,
+              "hasta": 6570.54,
+              "tasa": 5.9,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 6570.54,
+              "hasta": null,
+              "tasa": 1.1,
+              "cuotaFija": 43.32
+            }
+          ],
+          "fuente": {
+            "organismo": "RSZ",
+            "titulo": "Administratieve instructies RSZ 2026/3: bijzondere bijdrage voor de sociale zekerheid",
+            "url": "https://www.socialsecurity.be/employer/instructions/dmfa/nl/latest/instructions/special_contributions/other_specialcontributions/specialsocialsecuritycontribution.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.bbsz-grenzen",
+      "nombre": "Bijzondere bijdrage sociale zekerheid: minimum en maximum per kwartaal",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ondergrens-partner-met-inkomen": 3285.29,
+            "ondergrens-partner-zonder-inkomen": 5836.14,
+            "minimum-partner-met-inkomen": 15.45,
+            "maximum-partner-met-inkomen": 154.92,
+            "maximum-partner-zonder-inkomen": 182.82
+          },
+          "fuente": {
+            "organismo": "RSZ",
+            "titulo": "Administratieve instructies RSZ 2026/3: bijzondere bijdrage voor de sociale zekerheid",
+            "url": "https://www.socialsecurity.be/employer/instructions/dmfa/nl/latest/instructions/special_contributions/other_specialcontributions/specialsocialsecuritycontribution.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.bv-schaal",
+      "nombre": "Bedrijfsvoorheffing: basisschaal (bijlage 1 van de sleutelformule)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "nota": "Bevat al 7 % aanvullende gemeentebelasting. Vaste bedragen per schijf zoals in de sleutelformule.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 16710,
+              "tasa": 26.75,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 16710,
+              "hasta": 29500,
+              "tasa": 42.8,
+              "cuotaFija": 4469.93
+            },
+            {
+              "desde": 29500,
+              "hasta": 51050,
+              "tasa": 48.15,
+              "cuotaFija": 9944.05
+            },
+            {
+              "desde": 51050,
+              "hasta": null,
+              "tasa": 53.5,
+              "cuotaFija": 20320.38
+            }
+          ],
+          "fuente": {
+            "organismo": "FOD Financiën",
+            "titulo": "Sleutelformule vanaf 1 januari 2026 (BEO-DR/2025-0928)",
+            "url": "https://eservices.minfin.fgov.be/myminfin-web/pages/public/fisconet/document/821b117c-eebc-497a-8297-ed2bb1e99d75",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.bv-gezin",
+      "nombre": "Bedrijfsvoorheffing: belastingvrije som, beroepskosten en huwelijksquotiënt",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "nota": "belastingVrijeSom is de belasting op de belastingvrije som die van de basisbelasting af gaat. forfaitPct en forfaitMax: forfaitaire beroepskosten van werknemers. hqPct en hqMax: het toegekende inkomen aan een partner zonder beroepsinkomen.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-10-31",
+          "valor": {
+            "belasting-vrije-som": 2987.98,
+            "forfait-pct": 30,
+            "forfait-max": 6070,
+            "hq-pct": 30,
+            "hq-max": 13790,
+            "alleenstaande-ouder": 624
+          },
+          "fuente": {
+            "organismo": "FOD Financiën",
+            "titulo": "Sleutelformule vanaf 1 januari 2026 (BEO-DR/2025-0928)",
+            "url": "https://eservices.minfin.fgov.be/myminfin-web/pages/public/fisconet/document/821b117c-eebc-497a-8297-ed2bb1e99d75",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-11-01",
+          "valor": {
+            "belasting-vrije-som": 3089.63,
+            "forfait-pct": 30,
+            "forfait-max": 6070,
+            "hq-pct": 30,
+            "hq-max": 11780,
+            "alleenstaande-ouder": 636
+          },
+          "fuente": {
+            "organismo": "FOD Financiën",
+            "titulo": "Simulator bedrijfsvoorheffing 2026, versie geldig vanaf 1 november 2026",
+            "url": "https://eservices.minfin.fgov.be/myminfin-rest/fisconetPlus/public/document/addenda/SimulatorBV2026novemberverrouille.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Gepubliceerd op de pagina Bedrijfsvoorheffing berekenen van Fisconetplus, laatst bijgewerkt op 6 oktober 2026. Volgt uit de wet van 15 juli 2026 tot hervorming van de personenbelasting."
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.bv-kinderen",
+      "nombre": "Bedrijfsvoorheffing: vermindering voor kinderen ten laste per jaar (bijlage 3)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "nota": "Sleutel = aantal kinderen ten laste (een kind met een handicap telt voor twee). 'extra' is het bedrag per kind boven het achtste.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-10-31",
+          "valor": {
+            "0": 0,
+            "1": 624,
+            "2": 1656,
+            "3": 4404,
+            "4": 7620,
+            "5": 11100,
+            "6": 14592,
+            "7": 18120,
+            "8": 21996,
+            "extra": 3864
+          },
+          "fuente": {
+            "organismo": "FOD Financiën",
+            "titulo": "Sleutelformule vanaf 1 januari 2026 (BEO-DR/2025-0928)",
+            "url": "https://eservices.minfin.fgov.be/myminfin-web/pages/public/fisconet/document/821b117c-eebc-497a-8297-ed2bb1e99d75",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-11-01",
+          "valor": {
+            "0": 0,
+            "1": 684,
+            "2": 1644,
+            "3": 4344,
+            "4": 7488,
+            "5": 10884,
+            "6": 14292,
+            "7": 17712,
+            "8": 21492,
+            "extra": 3780
+          },
+          "fuente": {
+            "organismo": "FOD Financiën",
+            "titulo": "Simulator bedrijfsvoorheffing 2026, versie geldig vanaf 1 november 2026",
+            "url": "https://eservices.minfin.fgov.be/myminfin-rest/fisconetPlus/public/document/addenda/SimulatorBV2026novemberverrouille.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.bv-werkbonus",
+      "nombre": "Bedrijfsvoorheffing: fiscale werkbonus in procent van de sociale werkbonus",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-07-31",
+          "valor": {
+            "luik-a": 33.14,
+            "luik-b": 52.54
+          },
+          "fuente": {
+            "organismo": "FOD Financiën",
+            "titulo": "Sleutelformule vanaf 1 januari 2026 (BEO-DR/2025-0928), nr. 20",
+            "url": "https://eservices.minfin.fgov.be/myminfin-web/pages/public/fisconet/document/821b117c-eebc-497a-8297-ed2bb1e99d75",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": {
+            "luik-a": 33.14,
+            "luik-b": 63
+          },
+          "fuente": {
+            "organismo": "Belgisch Staatsblad",
+            "titulo": "Koninklijk besluit van 24 juli 2026 tot wijziging van de toepassingsregels voor de bedrijfsvoorheffing",
+            "url": "https://www.ejustice.just.fgov.be/eli/besluit/2026/07/24/2026005690/staatsblad",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.ggmmi",
+      "nombre": "Gewaarborgd gemiddeld minimum maandinkomen (18 jaar en ouder)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-03-31",
+          "valor": 2154.11,
+          "fuente": {
+            "organismo": "Nationale Arbeidsraad",
+            "titulo": "Tabel cao-bedragen bijgewerkt op 1 juli 2026 (cao nr. 43/18)",
+            "url": "https://cnt-nar.be/sites/default/files/documents/fr/Tableau-Tabel-Montants%20CCT-CAO%20Bedragen-2026-07-01.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2026-06-30",
+          "valor": 2189.81,
+          "fuente": {
+            "organismo": "Nationale Arbeidsraad",
+            "titulo": "Tabel cao-bedragen bijgewerkt op 1 juli 2026 (cao nr. 43/18)",
+            "url": "https://cnt-nar.be/sites/default/files/documents/fr/Tableau-Tabel-Montants%20CCT-CAO%20Bedragen-2026-07-01.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 2233.61,
+          "fuente": {
+            "organismo": "Nationale Arbeidsraad",
+            "titulo": "Tabel cao-bedragen bijgewerkt op 1 juli 2026 (cao nr. 43/18)",
+            "url": "https://cnt-nar.be/sites/default/files/documents/fr/Tableau-Tabel-Montants%20CCT-CAO%20Bedragen-2026-07-01.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.vakantiegeld",
+      "nombre": "Vakantiegeld: percentages",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "dubbelBediende: dubbel vakantiegeld bedienden in % van het maandloon. arbeider: bruto vakantiegeld arbeiders in % van het brutoloon aan 108 %. vertrek: vertrekvakantiegeld bedienden (enkel + dubbel).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "dubbel-bediende": 92,
+            "arbeider": 15.38,
+            "vertrek": 15.34
+          },
+          "fuente": {
+            "organismo": "RSZ",
+            "titulo": "Administratieve instructies RSZ 2026/3: vakantiegeld",
+            "url": "https://www.socialsecurity.be/employer/instructions/dmfa/nl/latest/instructions/salary/particularcases/holidaypay.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.opzegging-werkgever",
+      "nombre": "Opzeggingstermijn bij ontslag door de werkgever (weken)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Sleutel mN = vanaf N maanden anciënniteit. Vanaf 5 jaar 3 weken per begonnen jaar, vanaf 20 jaar 2 weken, vanaf 21 jaar 1 week. Contracten gestart vanaf 1 juni 2026: 52 weken vanaf 17 jaar anciënniteit.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": {
+            "m-0": 1,
+            "m-6": 6,
+            "m-9": 7,
+            "m-12": 8,
+            "m-15": 9,
+            "m-18": 10,
+            "m-21": 11,
+            "m-24": 12,
+            "m-36": 13,
+            "m-48": 15,
+            "per-jaar-vanaf-5": 3,
+            "per-jaar-vanaf-20": 2,
+            "per-jaar-vanaf-21": 1,
+            "plafond-nieuwe-contracten": 52,
+            "plafond-vanaf-jaren": 17
+          },
+          "fuente": {
+            "organismo": "Justel",
+            "titulo": "Wet van 3 juli 1978 betreffende de arbeidsovereenkomsten, art. 37/2 (geconsolideerd)",
+            "url": "https://www.ejustice.just.fgov.be/eli/wet/1978/07/03/1978070303/justel",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.opzegging-werknemer",
+      "nombre": "Opzeggingstermijn bij ontslag door de werknemer (weken)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Sleutel mN = vanaf N maanden anciënniteit. tN = tegenopzegging na ontslag door de werkgever.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": {
+            "m-0": 1,
+            "m-6": 3,
+            "m-12": 4,
+            "m-18": 5,
+            "m-24": 6,
+            "m-48": 7,
+            "m-60": 9,
+            "m-72": 10,
+            "m-84": 12,
+            "m-96": 13,
+            "t-0": 1,
+            "t-6": 3,
+            "t-12": 4
+          },
+          "fuente": {
+            "organismo": "Justel",
+            "titulo": "Wet van 3 juli 1978 betreffende de arbeidsovereenkomsten, art. 37/2 (geconsolideerd)",
+            "url": "https://www.ejustice.just.fgov.be/eli/wet/1978/07/03/1978070303/justel",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.overloon",
+      "nombre": "Wettelijk overloon",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "week": 50,
+            "zondag-feestdag": 100
+          },
+          "fuente": {
+            "organismo": "FOD WASO",
+            "titulo": "Arbeidsduur en vermindering van arbeidsduur: overloon",
+            "url": "https://werk.belgie.be/nl/themas/arbeidsreglementering/arbeidsduur-en-rusttijden/arbeidsduur-en-vermindering-van-arbeidsduur",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.rsvz",
+      "nombre": "Sociale bijdragen zelfstandigen 2026 (zonder beheerskosten)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "nota": "Bedragen in EUR per jaar. De tarieven staan in be.rsvz-tarieven.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "grens-1": 75024.54,
+            "grens-2": 110562.42,
+            "minimum-inkomen": 17374.08,
+            "minimum-inkomen-primostarter": 8972.07,
+            "drempel-bijberoep": 1922.16
+          },
+          "fuente": {
+            "organismo": "FOD Sociale Zekerheid",
+            "titulo": "Sociale bijdragen 2026 (zonder de beheerskosten)",
+            "url": "https://socialsecurity.belgium.be/sites/default/files/content/docs/nl/sociaal-beleid-vorm-geven/zelfstandigen/bijdragennota_2026_tabel_nl.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.rsvz-tarieven",
+      "nombre": "Sociale bijdragen zelfstandigen 2026: tarieven",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "tarief-1": 20.5,
+            "tarief-2": 14.16
+          },
+          "fuente": {
+            "organismo": "FOD Sociale Zekerheid",
+            "titulo": "Sociale bijdragen 2026 (zonder de beheerskosten)",
+            "url": "https://socialsecurity.belgium.be/sites/default/files/content/docs/nl/sociaal-beleid-vorm-geven/zelfstandigen/bijdragennota_2026_tabel_nl.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.groeipakket",
+      "nombre": "Vlaams Groeipakket voor kinderen geboren sinds 1 januari 2019",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "nota": "Bedragen per maand, behalve startbedrag (eenmalig) en schoolbonus (per jaar). Inkomensgrenzen per jaar.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": {
+            "startbedrag": 1310.75,
+            "basisbedrag": 190.66,
+            "schoolbonus-0-tot-4": 23.82,
+            "schoolbonus-5-tot-11": 41.7,
+            "schoolbonus-12-tot-17": 59.57,
+            "schoolbonus-18-tot-24": 71.48,
+            "inkomensgrens-1": 42020.32,
+            "inkomensgrens-2": 49023.71,
+            "inkomensgrens-3": 79041.2,
+            "sociaal-12-laag": 76.09,
+            "sociaal-12-midden": 38.53,
+            "sociaal-3-laag": 111.83,
+            "sociaal-3-midden": 88.01
+          },
+          "fuente": {
+            "organismo": "Vlaamse overheid",
+            "titulo": "Vlaams Groeipakket: bedragen en betaaldata",
+            "url": "https://www.vlaanderen.be/vlaams-groeipakket/bedragen-en-betaaldata",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.verkooprecht-vlaanderen-tarieven",
+      "nombre": "Verkooprecht (registratiebelasting) bij aankoop in het Vlaams Gewest: tarieven",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "algemeen": 12,
+            "enige-eigen-woning": 2
+          },
+          "fuente": {
+            "organismo": "Vlaamse Belastingdienst",
+            "titulo": "Het verkooprecht bij de aankoop van de enige eigen woning: overzicht",
+            "url": "https://www.vlaanderen.be/belastingen-en-begroting/vlaamse-belastingen/registratiebelasting/verkooprecht/tarieven-in-het-verkooprecht/het-verkooprecht-bij-de-aankoop-van-de-enige-eigen-woning-overzicht",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Algemeen tarief van 12 % op https://www.vlaanderen.be/en/authorities/flemish-taxes/registration-taxes/sales-duty-on-real-estate en grenzen van de bescheiden woning op de pagina over de bijkomende vermindering."
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.verkooprecht-vlaanderen",
+      "nombre": "Verkooprecht Vlaams Gewest: vermindering voor een bescheiden enige eigen woning",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "nota": "vermindering: bijkomende vermindering. max-bescheiden en max-bescheiden-kern: maximale aankoopprijs voor die vermindering. De tarieven staan in be.verkooprecht-vlaanderen-tarieven.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "vermindering": 1867,
+            "max-bescheiden": 220000,
+            "max-bescheiden-kern": 240000
+          },
+          "fuente": {
+            "organismo": "Vlaamse Belastingdienst",
+            "titulo": "Het verkooprecht bij de aankoop van de enige eigen woning: overzicht",
+            "url": "https://www.vlaanderen.be/belastingen-en-begroting/vlaamse-belastingen/registratiebelasting/verkooprecht/tarieven-in-het-verkooprecht/het-verkooprecht-bij-de-aankoop-van-de-enige-eigen-woning-overzicht",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14",
+            "nota": "Algemeen tarief van 12 % op https://www.vlaanderen.be/en/authorities/flemish-taxes/registration-taxes/sales-duty-on-real-estate en grenzen van de bescheiden woning op de pagina over de bijkomende vermindering."
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.erfbelasting-vl-rechte-lijn",
+      "nombre": "Erfbelasting Vlaanderen in rechte lijn en tussen partners",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "nota": "Per erfgenaam, afzonderlijk op het roerende en het onroerende deel.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000,
+              "tasa": 3
+            },
+            {
+              "desde": 50000,
+              "hasta": 250000,
+              "tasa": 9
+            },
+            {
+              "desde": 250000,
+              "hasta": null,
+              "tasa": 27
+            }
+          ],
+          "fuente": {
+            "organismo": "Vlaamse Belastingdienst",
+            "titulo": "Algemeen tarief in de erfbelasting",
+            "url": "https://www.vlaanderen.be/belastingen-en-begroting/vlaamse-belastingen/erfbelasting/tarieven-in-de-erfbelasting/algemeen-tarief-in-de-erfbelasting",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.erfbelasting-vl-broers-zussen",
+      "nombre": "Erfbelasting Vlaanderen tussen broers en zussen (overlijdens vanaf 1 september 2018)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 35000,
+              "tasa": 25
+            },
+            {
+              "desde": 35000,
+              "hasta": 75000,
+              "tasa": 30
+            },
+            {
+              "desde": 75000,
+              "hasta": null,
+              "tasa": 55
+            }
+          ],
+          "fuente": {
+            "organismo": "Vlaamse Belastingdienst",
+            "titulo": "Algemeen tarief in de erfbelasting",
+            "url": "https://www.vlaanderen.be/belastingen-en-begroting/vlaamse-belastingen/erfbelasting/tarieven-in-de-erfbelasting/algemeen-tarief-in-de-erfbelasting",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.erfbelasting-vl-anderen",
+      "nombre": "Erfbelasting Vlaanderen tussen andere personen (overlijdens vanaf 1 september 2018)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "nota": "Op het totaal van de nettoverkrijgingen van deze erfgenamen samen.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 35000,
+              "tasa": 25
+            },
+            {
+              "desde": 35000,
+              "hasta": 75000,
+              "tasa": 45
+            },
+            {
+              "desde": 75000,
+              "hasta": null,
+              "tasa": 55
+            }
+          ],
+          "fuente": {
+            "organismo": "Vlaamse Belastingdienst",
+            "titulo": "Algemeen tarief in de erfbelasting",
+            "url": "https://www.vlaanderen.be/belastingen-en-begroting/vlaamse-belastingen/erfbelasting/tarieven-in-de-erfbelasting/algemeen-tarief-in-de-erfbelasting",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "be.maaltijdcheque",
+      "nombre": "Maaltijdcheque: maximale werkgeversbijdrage en minimale werknemersbijdrage",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "werkgever-max": 8.91,
+            "werknemer-min": 1.09
+          },
+          "fuente": {
+            "organismo": "FOD WASO",
+            "titulo": "Maaltijdcheques",
+            "url": "https://werk.belgie.be/nl/themas/verloning/maaltijdcheques",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}

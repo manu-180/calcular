@@ -6,10 +6,13 @@ import type { Campo, CampoOpcion, DefinicionCalculadora, Requisitos, ResultadoBa
 // tablas y los mensajes que devuelve calcular() (errores propios, observaciones, columnas). Lo usan el
 // servidor (registro) y el navegador (cargadores), así que este módulo no importa nada del registro.
 
+// porDefecto: el valor inicial en la edición cuando su público es otro (Quebec en ca-fr elige la
+// región qc o el plan RRQ). No es texto, pero sin esto la edición abre con el valor del país base.
 export interface TextoCampo {
   etiqueta: string;
   ayuda?: string;
   opciones?: Readonly<Record<string, string>>;
+  porDefecto?: string | number | boolean;
 }
 
 export interface TextoFila {
@@ -79,7 +82,7 @@ export function aplicarTextos(base: DefinicionCalculadora, t: TextosEdicion): De
   const campos = base.campos.map((c): Campo => {
     const x = t.campos[c.id];
     if (!x) return c;
-    const conTexto = { ...c, etiqueta: x.etiqueta, ...(x.ayuda ? { ayuda: x.ayuda } : {}) };
+    const conTexto = { ...c, etiqueta: x.etiqueta, ...(x.ayuda ? { ayuda: x.ayuda } : {}), ...(x.porDefecto !== undefined ? { porDefecto: x.porDefecto } : {}) };
     if (c.tipo !== "opcion") return conTexto as Campo;
     return { ...(conTexto as CampoOpcion), opciones: c.opciones.map((o) => ({ ...o, etiqueta: x.opciones?.[o.valor] ?? o.etiqueta })) };
   });

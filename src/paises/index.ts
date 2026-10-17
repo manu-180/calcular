@@ -34,6 +34,15 @@ import nz from "./nz";
 import za from "./za";
 import ch from "./ch";
 import sg from "./sg";
+import be from "./be";
+import chFr from "./ch-fr";
+import chIt from "./ch-it";
+import caFr from "./ca-fr";
+import beFr from "./be-fr";
+import inn from "./in";
+import hk from "./hk";
+import ng from "./ng";
+import my from "./my";
 
 // "global" no es un país: es la home de calcularya.com con el selector y el x-default de cada clúster
 // hreflang, en inglés (ADR 0002, D2). No tiene datos ni calculadoras. Un global con errores de datos
@@ -53,6 +62,6 @@ const global = definirPais({
   },
 });
 
-export const PAISES = [global, zz, zzEn, cl, co, mx, pe, uy, ec, cr, gt, py, rd, sv, pa, hn, ni, ve, bo, us, br, gb, fr, de, es, it, ca, nl, ie, at, pt, au, nz, za, ch, sg] as const;
+export const PAISES = [global, zz, zzEn, cl, co, mx, pe, uy, ec, cr, gt, py, rd, sv, pa, hn, ni, ve, bo, us, br, gb, fr, de, es, it, ca, nl, ie, at, pt, au, nz, za, ch, sg, be, chFr, chIt, caFr, beFr, inn, hk, ng, my] as const;
 
 export const registro = crearRegistro(PAISES);
