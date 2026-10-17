@@ -12,6 +12,14 @@ import employmentInsurance from "./calculadoras/employment-insurance";
 import contenidoEmploymentInsurance from "./contenido/employment-insurance";
 import consumptionTax from "./calculadoras/consumption-tax";
 import contenidoConsumptionTax from "./contenido/consumption-tax";
+import minimumWage from "./calculadoras/minimum-wage";
+import contenidoMinimumWage from "./contenido/minimum-wage";
+import overtimePay from "./calculadoras/overtime-pay";
+import contenidoOvertimePay from "./contenido/overtime-pay";
+import paidLeave from "./calculadoras/paid-leave";
+import contenidoPaidLeave from "./contenido/paid-leave";
+import yearEndAdjustment from "./calculadoras/year-end-adjustment";
+import contenidoYearEndAdjustment from "./contenido/year-end-adjustment";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -30,6 +38,10 @@ export default definirPais({
     { definicion: socialInsurance, contenido: contenidoSocialInsurance, cliente: () => import("./calculadoras/social-insurance.cliente") },
     { definicion: employmentInsurance, contenido: contenidoEmploymentInsurance, cliente: () => import("./calculadoras/employment-insurance.cliente") },
     { definicion: consumptionTax, contenido: contenidoConsumptionTax, cliente: () => import("./calculadoras/consumption-tax.cliente") },
+    { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
+    { definicion: overtimePay, contenido: contenidoOvertimePay, cliente: () => import("./calculadoras/overtime-pay.cliente") },
+    { definicion: paidLeave, contenido: contenidoPaidLeave, cliente: () => import("./calculadoras/paid-leave.cliente") },
+    { definicion: yearEndAdjustment, contenido: contenidoYearEndAdjustment, cliente: () => import("./calculadoras/year-end-adjustment.cliente") },
   ],
   universales: "todas",
   novedades,
