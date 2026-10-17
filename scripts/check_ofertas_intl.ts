@@ -374,7 +374,12 @@ function checkTextos() {
       const tf = familias[f.clave];
       if (!tf) continue;
       if (forma(tf) !== base) fallo(`familia ${f.clave} (${locale}): piezas distintas del español ${forma(tf)} vs ${base}`);
-      for (const trato of TRATOS[idiomaDeLocale(locale) ?? "es"]) for (const s of textosDe(resolver(tf, trato))) (revisarTexto(`${locale} familia ${f.clave}`, idiomaDeLocale(locale) ?? "es", trato, s), revisados++);
+      const idiomaLocale = idiomaDeLocale(locale);
+      if (!idiomaLocale || !tieneVenta(idiomaLocale)) {
+        fallo(`familia ${f.clave} (${locale}): el locale no es de un idioma con diccionario de venta`);
+        continue;
+      }
+      for (const trato of TRATOS[idiomaLocale]) for (const s of textosDe(resolver(tf, trato))) (revisarTexto(`${locale} familia ${f.clave}`, idiomaLocale, trato, s), revisados++);
     }
   }
   for (const idioma of IDIOMAS_VENTA) {
