@@ -29,6 +29,8 @@ const IGUALES_PERMITIDOS = new Set([
   "pt:inicio.novedades.antes",
   // pt comparte con el español palabras idénticas
   "pt:sitio.global.calculadoras",
+  "pt:unidades.semanas.uno",
+  "pt:unidades.semanas.otros",
   "pt:sitio.header.paisActual",
   "pt:sitio.header.latinoamerica",
   "pt:sitio.footer.paises",

@@ -1,10 +1,12 @@
 import { esConcepto } from "./conceptos";
-import { validarArchivoAvisos, validarArchivoDatos, validarArchivoSeries, validarMercado } from "./datos";
+import { esMercadoDePrueba, validarArchivoAvisos, validarArchivoDatos, validarArchivoSeries, validarMercado } from "./datos";
+import { aplicarTextos, faltantesDeTextos, type TextosEdicion } from "./edicion";
 import { formatearFecha, formatearValorUnidad } from "./formato";
 import { UNIVERSALES } from "./universales";
 import { idiomasDe, instanciar, type ContextoUniversal, type Universal } from "./universales/tipos";
 import { avisosVigentes, hoyMasAdelantado, ultimoPunto, valorSerie, vigente, vigentePorRegion } from "./vigencia";
 import type {
+  Aviso,
   CodigoMercado,
   ContenidoCalculadora,
   Dato,
@@ -15,10 +17,12 @@ import type {
   FechaISO,
   Fuente,
   Mercado,
+  Novedad,
   OpcionDinamica,
   PaisDefinido,
   PropsCalculadora,
   PuntoSerie,
+  Region,
   Requisito,
   Serie,
   TipoDato,
@@ -177,6 +181,136 @@ export function definirPais(declaracion: DeclaracionConUniversales): PaisDefinid
   };
 }
 
+// Edición de un país en otro idioma (ADR 0002, D3): /ca-fr reusa datos, series, avisos y detectores
+// de /ca y escribe solo textos. Una calculadora del país entra cuando la edición trae sus textos y su
+// contenido (traducciones); las que no, no se publican en la edición. Monedas, zona horaria,
+// redondeo, escala y unidades son las del país: la edición declara código, nombre, locale, idioma,
+// trato, estado y, si quiere, los nombres de las regiones en su idioma (mismos ids).
+export type MercadoEdicion = Pick<Mercado, "codigo" | "nombre" | "locale" | "idioma" | "trato" | "estado"> & Partial<Pick<Mercado, "pais" | "regiones" | "simbolos">>;
+
+export interface TraduccionCalculadora {
+  textos: TextosEdicion;
+  contenido: ContenidoCalculadora;
+}
+
+export interface DeclaracionEdicion {
+  mercado: MercadoEdicion;
+  traducciones?: readonly TraduccionCalculadora[];
+  // Calculadoras propias de la edición (mercado e id con el código de la edición).
+  calculadoras?: readonly EntradaCalculadora[];
+  universales?: SeleccionUniversales;
+  // Título y texto de cada aviso del país en el idioma de la edición, por id. Un aviso que alcanza a
+  // la edición sin traducción es un error: un aviso que bloquea no se puede perder por el idioma.
+  avisos?: Readonly<Record<string, { titulo?: string; texto: string }>>;
+  // Nombre y etiquetas (opciones de un mapa) de datos y series del país, por id.
+  datos?: Readonly<Record<string, { nombre?: string; etiquetas?: Readonly<Record<string, string>> }>>;
+  novedades?: readonly Novedad[];
+}
+
+const sinClienteTraducido = () =>
+  Promise.reject(new Error("una calculadora traducida no tiene <slug>.cliente: la arman los cargadores con la definición del país y los textos de la edición"));
+
+function mercadoDeEdicion(base: Mercado, m: MercadoEdicion, errores: string[]): Mercado {
+  const cod = m.codigo;
+  if (base.codigo.includes("-") || base.codigo === "global") errores.push(`edición ${cod}: el país base ${base.codigo} no puede ser otra edición ni global`);
+  if (cod !== `${base.codigo}-${m.idioma}`) errores.push(`edición ${cod}: el código tiene que ser ${base.codigo}-${m.idioma}`);
+  if (m.idioma === base.idioma) errores.push(`edición ${cod}: está en ${m.idioma}, el mismo idioma que ${base.codigo}`);
+  if (m.pais !== undefined && m.pais !== base.pais) errores.push(`edición ${cod}: pais ${m.pais} no es el de ${base.codigo} (${base.pais})`);
+  let regiones: readonly Region[] | undefined = base.regiones;
+  if (m.regiones) {
+    const ids = (r?: readonly Region[]) => (r ?? []).map((x) => x.id).join(",");
+    if (ids(m.regiones) !== ids(base.regiones)) errores.push(`edición ${cod}: las regiones tienen que ser las de ${base.codigo}, en el mismo orden (${ids(base.regiones)})`);
+    else regiones = m.regiones;
+  }
+  return {
+    ...base,
+    codigo: cod,
+    nombre: m.nombre,
+    locale: m.locale,
+    idioma: m.idioma,
+    trato: m.trato,
+    estado: m.estado,
+    ...(regiones ? { regiones } : {}),
+    ...(m.simbolos ? { simbolos: m.simbolos } : {}),
+  };
+}
+
+export function definirEdicion(base: PaisDefinido, declaracion: DeclaracionEdicion): PaisDefinido {
+  const errores: string[] = [];
+  const mercado = mercadoDeEdicion(base.mercado, declaracion.mercado, errores);
+  errores.push(...validarMercado(mercado));
+  const cod = mercado.codigo;
+  if (base.errores.length) errores.push(`edición ${cod}: el país ${base.mercado.codigo} tiene ${base.errores.length} errores de datos`);
+  if (base.edicionDe) errores.push(`edición ${cod}: ${base.mercado.codigo} ya es una edición de ${base.edicionDe}`);
+
+  const delPais = new Map(base.calculadoras.filter((c) => !esUniversal(c)).map((c) => [c.definicion.id, c]));
+  const traducidas: EntradaCalculadora[] = [];
+  const idsTraducidos = new Map<string, string>();
+  for (const { textos, contenido } of declaracion.traducciones ?? []) {
+    const original = delPais.get(textos.base);
+    const donde = `edición ${cod}: textos de ${textos.base}`;
+    if (!original) {
+      errores.push(`${donde}: no es una calculadora local de ${base.mercado.codigo}`);
+      continue;
+    }
+    const local = textos.base.slice(textos.base.indexOf(".") + 1);
+    if (textos.calculadora !== `${cod}.${local}`) errores.push(`${donde}: calculadora tiene que ser "${cod}.${local}"`);
+    const faltan = faltantesDeTextos(original.definicion, textos);
+    if (faltan.length) errores.push(`${donde}: falta traducir ${faltan.join(", ")}`);
+    traducidas.push({
+      definicion: aplicarTextos(original.definicion, textos),
+      contenido,
+      cliente: sinClienteTraducido,
+      traduccion: { mercado: base.mercado.codigo, archivo: original.definicion.slug, id: original.definicion.id },
+    });
+    idsTraducidos.set(textos.base, textos.calculadora);
+  }
+
+  const textosDatos = declaracion.datos ?? {};
+  for (const id of Object.keys(textosDatos)) {
+    if (!base.datos.some((d) => d.id === id) && !base.series.some((x) => x.id === id)) errores.push(`edición ${cod}: datos.${id} no es un dato ni una serie de ${base.mercado.codigo}`);
+  }
+  const datos = base.datos.map((d) => {
+    const t = textosDatos[d.id];
+    return t ? { ...d, ...(t.nombre ? { nombre: t.nombre } : {}), ...(t.etiquetas ? { etiquetas: { ...d.etiquetas, ...t.etiquetas } } : {}) } : d;
+  });
+  const series = base.series.map((x) => {
+    const nombre = textosDatos[x.id]?.nombre;
+    return nombre ? { ...x, nombre } : x;
+  });
+
+  const textosAvisos = declaracion.avisos ?? {};
+  const avisos: Aviso[] = [];
+  for (const a of base.avisos) {
+    let aplicaA: Aviso["aplicaA"] = "*";
+    if (a.aplicaA !== "*") {
+      aplicaA = a.aplicaA.flatMap((x) => (esConcepto(x) ? [x] : idsTraducidos.has(x) ? [idsTraducidos.get(x)!] : []));
+      if (aplicaA.length === 0) continue;
+    }
+    const t = textosAvisos[a.id];
+    if (!t?.texto?.trim()) {
+      errores.push(`edición ${cod}: el aviso ${a.id} alcanza a la edición y no tiene texto en ${mercado.idioma}`);
+      continue;
+    }
+    avisos.push({ ...a, aplicaA, texto: t.texto, ...(t.titulo ? { titulo: t.titulo } : {}) });
+  }
+  for (const id of Object.keys(textosAvisos)) if (!base.avisos.some((a) => a.id === id)) errores.push(`edición ${cod}: avisos.${id} no es un aviso de ${base.mercado.codigo}`);
+
+  const locales = [...traducidas, ...(declaracion.calculadoras ?? [])];
+  const universales = declaracion.universales ? universalesDelPais(mercado, locales, declaracion.universales, errores) : [];
+  return {
+    mercado,
+    datos,
+    series,
+    avisos,
+    calculadoras: [...locales, ...universales],
+    novedades: declaracion.novedades ?? [],
+    detectores: [],
+    errores,
+    edicionDe: base.mercado.codigo,
+  };
+}
+
 export interface DatoUsado {
   id: string;
   nombre: string;
@@ -278,7 +412,7 @@ function estadoVisible(estado: string, modo: ModoPublicacion): boolean {
 
 export function mercadoVisible(pais: PaisDefinido, modo: ModoPublicacion): boolean {
   if (pais.errores.length) return false;
-  if (pais.mercado.codigo === "zz" && modo === "produccion") return false;
+  if (esMercadoDePrueba(pais.mercado.codigo) && modo === "produccion") return false;
   return estadoVisible(pais.mercado.estado, modo);
 }
 
@@ -300,12 +434,18 @@ export function publicabilidad(pais: PaisDefinido, entrada: EntradaCalculadora, 
   return { publicable: motivos.length === 0, motivos };
 }
 
-const RE_MARCADOR = /\{\{\s*([a-z0-9]{2,6}\.[a-z0-9-]+)(?:\[([a-z0-9-]+)\])?(?:@([a-z0-9-]+))?(?:#(desde))?\s*\}\}/g;
+// {{id}} número o serie (el punto vigente a la fecha) · {{id[clave]}} mapa · {{id[n].tasa}} fila n de
+// una escala (desde 0; -1 es la última) y su campo: desde, hasta, tasa o cuotaFija · @region para
+// datos por región · #desde la fecha desde la que rige (o la del punto de la serie).
+const RE_MARCADOR = /\{\{\s*([a-z0-9]{2,6}\.[a-z0-9-]+)(?:\[(-?[a-z0-9-]+)\](?:\.(desde|hasta|tasa|cuotaFija))?)?(?:@([a-z0-9-]+))?(?:#(desde))?\s*\}\}/g;
+
+export type CampoFila = "desde" | "hasta" | "tasa" | "cuotaFija";
 
 export interface Marcador {
   texto: string;
   id: string;
   clave?: string;
+  campo?: CampoFila;
   region?: string;
   desde: boolean;
 }
@@ -315,9 +455,17 @@ export function marcadoresDe(texto: string): Marcador[] {
     texto: m[0],
     id: m[1],
     ...(m[2] ? { clave: m[2] } : {}),
-    ...(m[3] ? { region: m[3] } : {}),
-    desde: m[4] === "desde",
+    ...(m[3] ? { campo: m[3] as CampoFila } : {}),
+    ...(m[4] ? { region: m[4] } : {}),
+    desde: m[5] === "desde",
   }));
+}
+
+function filaDeEscala(valor: unknown, indice: string, campo: CampoFila): unknown {
+  if (!Array.isArray(valor) || !/^-?\d+$/.test(indice)) return undefined;
+  const n = Number(indice);
+  const fila: unknown = valor[n < 0 ? valor.length + n : n];
+  return fila && typeof fila === "object" ? (fila as Record<string, unknown>)[campo] : undefined;
 }
 
 export function hayLlavesSueltas(texto: string): boolean {
@@ -330,21 +478,28 @@ interface ContextoRelleno {
   unidades: Readonly<Record<string, Unidad>>;
   locale: string;
   simbolos?: Mercado["simbolos"];
+  // Sin esto, un marcador que no se resuelve queda en el texto y sale por console.error.
+  alFallar?: (marcador: string) => void;
 }
 
 function rellenar(texto: string, ctx: ContextoRelleno): string {
-  return texto.replace(RE_MARCADOR, (todo, id: string, clave?: string, region?: string, desde?: string) => {
-    const unidad = ctx.unidades[id];
+  return texto.replace(RE_MARCADOR, (todo, id: string, clave?: string, campo?: CampoFila, region?: string, desde?: string) => {
+    let unidad: Unidad | undefined = ctx.unidades[id];
     let valor: unknown = ctx.valores[id];
     if (desde) {
       const u = ctx.usados.find((x) => x.id === id && (region === undefined || x.region === region));
-      return u ? formatearFecha(u.desde, ctx.locale) : todo;
+      if (u) return formatearFecha(u.desde, ctx.locale);
+      (ctx.alFallar ?? ((m) => console.error(`[motor] marcador sin resolver: ${m}`)))(todo);
+      return todo;
     }
     if (region !== undefined) valor = (valor as Record<string, unknown> | undefined)?.[region];
-    if (clave !== undefined) valor = (valor as Record<string, unknown> | undefined)?.[clave];
+    if (campo !== undefined && clave !== undefined) {
+      valor = filaDeEscala(valor, clave, campo);
+      if (campo === "tasa") unidad = "%";
+    } else if (clave !== undefined) valor = (valor as Record<string, unknown> | undefined)?.[clave];
     if (valor !== null && typeof valor === "object" && "valor" in valor) valor = (valor as { valor: unknown }).valor;
     if (typeof valor !== "number" || unidad === undefined) {
-      console.error(`[motor] marcador sin resolver: ${todo}`);
+      (ctx.alFallar ?? ((m) => console.error(`[motor] marcador sin resolver: ${m}`)))(todo);
       return todo;
     }
     return formatearValorUnidad(valor, unidad, ctx.locale, ctx.simbolos);
@@ -425,6 +580,11 @@ export interface Registro {
   publicabilidad(codigo: CodigoMercado, slug: string, fecha: FechaISO, modo?: ModoPublicacion): Publicabilidad;
   pagina(codigo: CodigoMercado, slug: string, fecha: FechaISO, modo?: ModoPublicacion): PaginaResuelta | null;
   equivalentes(concepto: string, fechaDe: (m: Mercado) => FechaISO, modo?: ModoPublicacion): Equivalente[];
+  // La misma calculadora en las ediciones del país (ca/vacation-pay y ca-fr/paie-de-vacances),
+  // incluida ella; vacío si no tiene. Es el clúster de una calculadora "propio" entre idiomas.
+  hermanas(codigo: CodigoMercado, slug: string, fechaDe: (m: Mercado) => FechaISO, modo?: ModoPublicacion): Equivalente[];
+  // Las ediciones visibles del país del mercado (ca y ca-fr), o solo él si tiene una.
+  ediciones(codigo: CodigoMercado, modo?: ModoPublicacion): Mercado[];
   fichas(codigo: CodigoMercado, fecha: FechaISO): FichaDato[];
   fichasSeries(codigo: CodigoMercado, fecha: FechaISO): FichaSerie[];
 }
@@ -453,14 +613,21 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
   }
   const porSlug = new Map<CodigoMercado, ReadonlyMap<string, EntradaCalculadora>>();
   const porConcepto = new Map<string, { pais: PaisDefinido; entrada: EntradaCalculadora }[]>();
+  // Clave: id de la calculadora en el país base; agrupa la original con sus traducciones.
+  const porOrigen = new Map<string, { pais: PaisDefinido; entrada: EntradaCalculadora }[]>();
+  const porPaisIso = new Map<string, PaisDefinido[]>();
+  const agregar = <K, V>(mapa: Map<K, V[]>, clave: K, valor: V) => {
+    let lista = mapa.get(clave);
+    if (!lista) mapa.set(clave, (lista = []));
+    lista.push(valor);
+  };
   for (const p of paises) {
     porSlug.set(p.mercado.codigo, new Map(p.calculadoras.map((c) => [c.definicion.slug, c])));
+    if (p.mercado.pais) agregar(porPaisIso, p.mercado.pais, p);
     for (const entrada of p.calculadoras) {
+      if (!esUniversal(entrada)) agregar(porOrigen, entrada.traduccion?.id ?? entrada.definicion.id, { pais: p, entrada });
       const concepto = entrada.definicion.concepto;
-      if (concepto === "propio") continue;
-      let lista = porConcepto.get(concepto);
-      if (!lista) porConcepto.set(concepto, (lista = []));
-      lista.push({ pais: p, entrada });
+      if (concepto !== "propio") agregar(porConcepto, concepto, { pais: p, entrada });
     }
   }
 
@@ -491,6 +658,24 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
       if (!publicablesDe(p, fechaDe(p.mercado), modo).conjunto.has(entrada)) continue;
       salida.push({ mercado: p.mercado.codigo, locale: p.mercado.locale, slug: entrada.definicion.slug });
     }
+    return salida;
+  };
+
+  const hermanasDe = (entrada: EntradaCalculadora, fechaDe: (m: Mercado) => FechaISO, modo: ModoPublicacion): Equivalente[] => {
+    if (esUniversal(entrada)) return [];
+    const grupo = porOrigen.get(entrada.traduccion?.id ?? entrada.definicion.id) ?? [];
+    if (grupo.length < 2) return [];
+    return grupo
+      .filter(({ pais: p, entrada: e }) => publicablesDe(p, fechaDe(p.mercado), modo).conjunto.has(e))
+      .map(({ pais: p, entrada: e }) => ({ mercado: p.mercado.codigo, locale: p.mercado.locale, slug: e.definicion.slug }));
+  };
+
+  // Concepto más hermanas, sin repetir mercado: una calculadora "propio" traducida forma su clúster
+  // con las hermanas; una de concepto canónico ya las trae en el concepto.
+  const equivalentesDe = (entrada: EntradaCalculadora, fechaDe: (m: Mercado) => FechaISO, modo: ModoPublicacion): Equivalente[] => {
+    const salida = equivalentes(entrada.definicion.concepto, fechaDe, modo);
+    const vistos = new Set(salida.map((e) => e.mercado));
+    for (const h of hermanasDe(entrada, fechaDe, modo)) if (!vistos.has(h.mercado)) salida.push(h);
     return salida;
   };
 
@@ -550,12 +735,21 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
         },
         sello: selloDe(r.usados),
         usados: r.usados,
-        equivalentes: equivalentes(def.concepto, () => fecha, modo),
+        equivalentes: equivalentesDe(entrada, () => fecha, modo),
         cliente: entrada.cliente,
         ...(esUniversal(entrada) ? { universal: entrada.universal } : {}),
       };
     },
     equivalentes,
+    hermanas: (codigo, slug, fechaDe, modo = "produccion") => {
+      const entrada = calculadora(codigo, slug);
+      return entrada ? hermanasDe(entrada, fechaDe, modo) : [];
+    },
+    ediciones: (codigo, modo = "produccion") => {
+      const p = pais(codigo);
+      if (!p?.mercado.pais) return p && mercadoVisible(p, modo) ? [p.mercado] : [];
+      return (porPaisIso.get(p.mercado.pais) ?? []).filter((x) => mercadoVisible(x, modo)).map((x) => x.mercado);
+    },
     fichas: (codigo, fecha) => {
       const p = pais(codigo);
       if (!p) return [];

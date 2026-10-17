@@ -6,7 +6,7 @@
       "nombre": "Verbraucherpreisindex 2000 (Jahresdurchschnitt 2000 = 100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 80,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Statistik Austria",
         "titulo": "Open Data: Verbraucherpreisindex 2000, Gesamtindex (OGD_vpi00_VPI_2000_1)",

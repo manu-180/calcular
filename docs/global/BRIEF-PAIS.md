@@ -85,14 +85,68 @@ idioma (están en `src/motor/universales/*/textos/<idioma>.ts`).
 **Lecciones de la primera tanda (us, gb, de, fr, br):**
 - El archivo de cada calculadora se llama **igual que su slug** (`calculadoras/take-home-pay.ts`):
   el generador de cargadores del cliente lo exige.
-- Un mercado en `interno` no genera cargadores, así que sus locales no calculan en `next dev`. Para
-  probar: poné `publicado` en tu `mercado.ts`, registralo en `src/paises/index.ts`, corré
-  `npx tsx scripts/check_motor.ts --generar-cargadores` y, antes de commitear, revertí los tres
-  (`git checkout -- src/paises/index.ts src/app && git checkout -- src/paises/<m>/mercado.ts` o
-  dejá `interno` a mano).
-- Valores que viven en escalas no se pueden mostrar con marcadores: si los escribís en el texto,
-  anotalos en el informe para revisarlos cuando cambie el año.
+- Un mercado en `interno` calcula en `next dev` sin publicarlo: el cargador de desarrollo
+  (`src/app/(intl)/intl/[mercado]/[slug]/cargadores/dev.ts`) lo resuelve. Alcanza con registrarlo
+  localmente en `src/paises/index.ts` (sin commitear ese cambio). No hace falta pasarlo a
+  `publicado` ni generar cargadores.
+- Los tramos de una escala se muestran con marcadores: `{{de.einkommensteuer[2].tasa}}`,
+  `{{...[2].desde}}`, `{{...[-1].tasa}}` (RECETA, sección 9). No los escribas a mano. Una serie
+  muestra su punto vigente con `{{id}}` y su fecha con `{{id#desde}}`.
+- Unidad y formato `semanas` disponibles (plural según el idioma).
 - Nada de afirmaciones en FAQ sin fuente primaria: si no lo leíste en una fuente oficial, no va.
+
+## Ediciones: un país con varios idiomas (ADR 0002, D3)
+
+Canadá en francés, Suiza en francés e italiano, Bélgica en francés. La edición es otra carpeta,
+`src/paises/<m>-<idioma>/` (`ca-fr`), que **reusa** datos, series, avisos y detectores del país
+(`src/paises/ca/`) y escribe solo textos. Las fórmulas no se copian nunca. Modelo: `src/paises/zz-en/`.
+
+1. `mercado.ts`: un `MercadoEdicion` con `codigo: "ca-fr"`, `pais: "CA"`, `nombre`, `locale: "fr-CA"`,
+   `idioma: "fr"`, `trato: "usted"`, `estado: "interno"` y, si querés, `regiones` con los nombres en
+   el idioma (mismos ids y orden que el país). Moneda, zona horaria, redondeo y escala son del país.
+2. `textos/<archivo>.ts`, uno por calculadora del país que traducís, con el **mismo nombre de archivo**
+   que la del país (`textos/vacation-pay.ts` traduce `ca/calculadoras/vacation-pay.ts`):
+   ```ts
+   import { definirTextos } from "@/motor/edicion";
+   import vacationPay from "../../ca/calculadoras/vacation-pay";
+   export default definirTextos(vacationPay, {
+     calculadora: "ca-fr.vacation-pay", // <edición>.<id local del país>
+     slug: "paie-de-vacances", // el slug que busca la gente en ese idioma
+     campos: { salario: { etiqueta: "..." }, jurisdiccion: { etiqueta: "...", opciones: { on: "Ontario" } } },
+     filas: { pago: { etiqueta: "..." } },
+     tablas: {}, // clave de la tabla: título
+     mensajes: { "Enter the wages you earned in the year.": "Indiquez ..." },
+   });
+   ```
+   `campos` está tipado con los de la definición: si falta uno, no compila. Filas, opciones, ayudas y
+   tablas que falten son error de `check_paises`. `mensajes` traduce por texto exacto lo que
+   `calcular()` tira o devuelve (errores propios, observaciones, columnas); para textos armados con
+   números, `traducir: (t) => ...`. `check_paises_casos` corre los casos del país con la edición y
+   marca todo texto que sale igual que en el país y todo número que no da igual.
+3. `contenido/<archivo>.ts`: el contenido de siempre, con `calculadora: "ca-fr.vacation-pay"` y los
+   marcadores de los datos del país (`{{ca.vacation-pay-on[rate-0]}}`).
+4. `index.ts`:
+   ```ts
+   import { definirEdicion } from "@/motor/registro";
+   import ca from "../ca";
+   export default definirEdicion(ca, {
+     mercado,
+     traducciones: [{ textos: textosVacationPay, contenido: contenidoVacationPay }],
+     calculadoras: [], // propias de la edición, si hacen falta: mercado "ca-fr", id "ca-fr.<x>"
+     universales: "todas",
+     avisos: { "ca.algo": { titulo: "...", texto: "..." } }, // todo aviso que alcance a la edición
+     datos: { "ca.iva": { nombre: "...", etiquetas: { on: "Ontario" } } }, // opcional
+   });
+   ```
+   Una calculadora del país sin traducción no entra en la edición. Las universales entran en el idioma
+   de la edición, con sus slugs. Los detectores los corre el país; la edición no tiene.
+
+Lo demás sale solo: país y edición forman clúster hreflang (calculadoras, inicio, fuentes y
+novedades), el selector muestra «Canada (English)» y «Canada (Français)», el aviso de país y el
+arranque eligen la edición por `navigator.languages`, cambiar de país desde una calculadora lleva a
+su traducción, y los cargadores generados (`check_motor --generar-cargadores`) arman la definición
+con la del país y los textos de la edición. Una edición solo importa de su país base
+(`check_fronteras`). Checks: `check_paises <m>-<idioma>`, `check_paises_casos <m>-<idioma>`.
 
 ## Archivos
 

@@ -58,11 +58,20 @@ export default async function PaginaDeMercado({ params }: Props) {
       return <PaginaNovedades ctx={ctx} />;
     case "calculadora": {
       // La parte visible viaja como props; calcular() la baja el navegador aparte (calculadora-intl.tsx).
-      const { id, campos, resultado, tablas } = registro.calculadora(ctx.mercado.codigo, slug)!.definicion;
+      const entrada = registro.calculadora(ctx.mercado.codigo, slug)!;
+      const { id, campos, resultado, tablas } = entrada.definicion;
       const definicion = { id, campos, resultado, ...(tablas ? { tablas } : {}) };
       const universal = r.pagina.universal;
+      const traduccion = entrada.traduccion;
       const Cliente = (props: PropsCalculadora) => (
-        <CalculadoraIntl mercado={ctx.mercado.codigo} slug={slug} definicion={definicion} {...(universal ? { universal } : {})} {...props} />
+        <CalculadoraIntl
+          mercado={ctx.mercado.codigo}
+          slug={slug}
+          definicion={definicion}
+          {...(universal ? { universal } : {})}
+          {...(traduccion ? { traduccion } : {})}
+          {...props}
+        />
       );
       return <PaginaCalculadora ctx={ctx} pagina={r.pagina} Cliente={Cliente} />;
     }

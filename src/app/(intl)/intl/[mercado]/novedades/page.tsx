@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ctx = contexto(mercado);
   if (!ctx) return {};
   const md = metadatosDe(ctx, { tipo: "novedades" });
-  const feed = textosInicio(ctx.mercado.idioma, ctx.mercado.trato).novedades.feedTitulo(ctx.mercado.nombre);
+  const feed = textosInicio(ctx.mercado.idioma, ctx.mercado.trato, ctx.mercado.locale).novedades.feedTitulo(ctx.mercado.nombre);
   return { ...md, alternates: { ...md.alternates, types: { "application/atom+xml": [{ url: urlIntl(ctx.mercado.codigo, "novedades.xml"), title: feed }] } } };
 }
 

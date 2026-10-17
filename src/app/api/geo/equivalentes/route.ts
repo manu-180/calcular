@@ -31,6 +31,16 @@ export function GET(req: NextRequest) {
     const mercado = registro.mercados(modo).find((x) => x.codigo === m);
     const entrada = mercado ? registro.calculadora(mercado.codigo as CodigoMercado, s) : undefined;
     concepto = entrada && registro.calculadorasPublicables(mercado!.codigo, hoyEn(mercado!), modo).includes(entrada) ? entrada.definicion.concepto : "";
+    // Una calculadora "propio" traducida en otra edición del país (/ca y /ca-fr): el clúster son sus
+    // hermanas, con una clave propia que el cliente compara igual que un concepto.
+    if (concepto === "propio") {
+      const hermanas = registro.hermanas(m as CodigoMercado, s, (x) => hoyEn(x), modo);
+      if (!hermanas.length) return NextResponse.json(vacio, { headers: CACHE });
+      const clave = `hermanas:${m}/${s}`;
+      const porMercado: Record<string, Record<string, string>> = {};
+      for (const e of hermanas) porMercado[e.mercado] = { [e.slug]: clave };
+      return NextResponse.json({ porMercado, ar: {}, origenAR: origenAR() }, { headers: CACHE });
+    }
   }
   if (!concepto || concepto === "propio" || !esConcepto(concepto)) return NextResponse.json(vacio, { headers: CACHE });
   const porMercado: Record<string, Record<string, string>> = {};

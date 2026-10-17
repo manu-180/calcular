@@ -53,7 +53,7 @@ export function registrados(): string[] {
   const indice = path.join(DIR_PAISES, "index.ts");
   if (!existsSync(indice)) return [];
   const texto = readFileSync(indice, "utf8");
-  return [...texto.matchAll(/from\s+["']\.\/([a-z]{2,6})["']/g)].map((m) => m[1]);
+  return [...texto.matchAll(/from\s+["']\.\/([a-z]{2,6}(?:-[a-z]{2,3})?)["']/g)].map((m) => m[1]);
 }
 
 export function archivosBajo(dir: string, filtro: RegExp): string[] {

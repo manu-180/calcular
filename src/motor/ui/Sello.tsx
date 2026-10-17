@@ -34,7 +34,7 @@ function enlaceFuente(f: Fuente, contenido: ReactNode) {
 // no cambia: la arma PaginaCalculadora, que no se toca desde este frente.
 export function Sello({ sello, usados, locale, trato, textos, hrefFuentes }: { sello: DatosSello; usados: readonly DatoUsado[]; locale: string; trato: Trato; textos: TextosSitio; hrefFuentes: string }) {
   const t = textos.sello;
-  const ti = textosInicio(idiomaDeLocale(locale) ?? "es", trato);
+  const ti = textosInicio(idiomaDeLocale(locale) ?? "es", trato, locale);
   const f = frescuraDeUsados(usados);
   const fuentes = f.fuentes.length ? f.fuentes : sello.fuentes;
   return (

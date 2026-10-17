@@ -1,0 +1,1433 @@
+{
+  "mercado": "sg",
+  "datos": [
+    {
+      "id": "sg.gst",
+      "nombre": "Goods and Services Tax (GST) rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2023-12-31",
+          "valor": 8,
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Current GST rates",
+            "url": "https://www.iras.gov.sg/taxes/goods-services-tax-(gst)/basics-of-gst/current-gst-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Current GST rates",
+            "url": "https://www.iras.gov.sg/taxes/goods-services-tax-(gst)/basics-of-gst/current-gst-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-tasa-empleador",
+      "nombre": "CPF employer share by age (wages above $750)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "55-y-menos": "55 and below",
+        "55-60": "Above 55 to 60",
+        "60-65": "Above 60 to 65",
+        "65-70": "Above 65 to 70",
+        "mas-70": "Above 70"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "55-y-menos": 17,
+            "55-60": 16,
+            "60-65": 12.5,
+            "65-70": 9,
+            "mas-70": 7.5
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "CPF Contribution Rate Table from 1 January 2026 (Table 1)",
+            "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW00000DuRCiYAN",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "55-y-menos": 17,
+            "55-60": 16.5,
+            "60-65": 13,
+            "65-70": 9,
+            "mas-70": 7.5
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "What are the changes to the CPF contribution rates for senior workers that will take effect from 1 January 2027?",
+            "url": "https://www.cpf.gov.sg/service/article/what-are-the-changes-to-the-cpf-contribution-rates-for-senior-workers-that-will-take-effect-from-1-january-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-tasa-empleado",
+      "nombre": "CPF employee share by age (wages above $750)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "55-y-menos": "55 and below",
+        "55-60": "Above 55 to 60",
+        "60-65": "Above 60 to 65",
+        "65-70": "Above 65 to 70",
+        "mas-70": "Above 70"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "55-y-menos": 20,
+            "55-60": 18,
+            "60-65": 12.5,
+            "65-70": 7.5,
+            "mas-70": 5
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "CPF Contribution Rate Table from 1 January 2026 (Table 1)",
+            "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW00000DuRCiYAN",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "55-y-menos": 20,
+            "55-60": 19,
+            "60-65": 13,
+            "65-70": 7.5,
+            "mas-70": 5
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "What are the changes to the CPF contribution rates for senior workers that will take effect from 1 January 2027?",
+            "url": "https://www.cpf.gov.sg/service/article/what-are-the-changes-to-the-cpf-contribution-rates-for-senior-workers-that-will-take-effect-from-1-january-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-factor-gradual",
+      "nombre": "CPF employee share factor for wages above $500 to $750",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "55-y-menos": "55 and below",
+        "55-60": "Above 55 to 60",
+        "60-65": "Above 60 to 65",
+        "65-70": "Above 65 to 70",
+        "mas-70": "Above 70"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "55-y-menos": 0.6,
+            "55-60": 0.54,
+            "60-65": 0.375,
+            "65-70": 0.225,
+            "mas-70": 0.15
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "CPF Contribution Rate Table from 1 January 2026 (Table 1)",
+            "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW00000DuRCiYAN",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "55-y-menos": 0.6,
+            "55-60": 0.57,
+            "60-65": 0.39,
+            "65-70": 0.225,
+            "mas-70": 0.15
+          },
+          "motivo": "El CPF Board dice que las tasas graduales de $500 a $750 suben en proporción, pero todavía no publicó la tabla 2027. El valor es 3 veces la tasa del empleado, la relación que cumple la tabla 2026; falta leerlo en la tabla oficial.",
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "What are the changes to the CPF contribution rates for senior workers that will take effect from 1 January 2027?",
+            "url": "https://www.cpf.gov.sg/service/article/what-are-the-changes-to-the-cpf-contribution-rates-for-senior-workers-that-will-take-effect-from-1-january-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-tope-ow",
+      "nombre": "CPF Ordinary Wage ceiling (monthly)",
+      "tipo": "numero",
+      "unidad": "SGD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8000,
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "CPF Contribution Rate Table from 1 January 2026 (Table 1)",
+            "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW00000DuRCiYAN",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-tramos-salario",
+      "nombre": "CPF wage bands (total wages for the month)",
+      "tipo": "mapa",
+      "unidad": "SGD",
+      "etiquetas": {
+        "sin-aporte": "No CPF at or below",
+        "solo-empleador": "Employer share only up to",
+        "pleno": "Full rates above"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sin-aporte": 50,
+            "solo-empleador": 500,
+            "pleno": 750
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "CPF Contribution Rate Table from 1 January 2026 (Table 1)",
+            "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW00000DuRCiYAN",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-asignacion-ma",
+      "nombre": "CPF allocation to MediSave (ratio of contribution)",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "35-y-menos": "35 and below",
+        "35-45": "Above 35 to 45",
+        "45-50": "Above 45 to 50",
+        "50-55": "Above 50 to 55",
+        "55-60": "Above 55 to 60",
+        "60-65": "Above 60 to 65",
+        "65-70": "Above 65 to 70",
+        "mas-70": "Above 70"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "35-y-menos": 0.2162,
+            "35-45": 0.2432,
+            "45-50": 0.2702,
+            "50-55": 0.2837,
+            "55-60": 0.3088,
+            "60-65": 0.42,
+            "65-70": 0.6363,
+            "mas-70": 0.84
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "CPF Allocation Rates from 1 January 2026",
+            "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW000005qFrJYAU",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-asignacion-sa-ra",
+      "nombre": "CPF allocation to Special or Retirement Account (ratio of contribution)",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "35-y-menos": "35 and below",
+        "35-45": "Above 35 to 45",
+        "45-50": "Above 45 to 50",
+        "50-55": "Above 50 to 55",
+        "55-60": "Above 55 to 60",
+        "60-65": "Above 60 to 65",
+        "65-70": "Above 65 to 70",
+        "mas-70": "Above 70"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "35-y-menos": 0.1621,
+            "35-45": 0.1891,
+            "45-50": 0.2162,
+            "50-55": 0.3108,
+            "55-60": 0.3382,
+            "60-65": 0.44,
+            "65-70": 0.303,
+            "mas-70": 0.08
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "CPF Allocation Rates from 1 January 2026",
+            "url": "https://www.cpf.gov.sg/service/sfc/servlet.shepherd/document/download/069IW000005qFrJYAU",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-interes-oa",
+      "nombre": "CPF Ordinary Account interest rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "Earning attractive interest",
+            "url": "https://www.cpf.gov.sg/member/growing-your-savings/earning-higher-returns/earning-attractive-interest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-interes-sma",
+      "nombre": "CPF Special, MediSave and Retirement Account interest rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "Earning attractive interest",
+            "url": "https://www.cpf.gov.sg/member/growing-your-savings/earning-higher-returns/earning-attractive-interest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-interes-extra",
+      "nombre": "CPF extra interest on the first $60,000 (members below 55)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "News release, 22 September 2026: interest rates from 1 October to 31 December 2026",
+            "url": "https://www.cpf.gov.sg/member/infohub/news/news-releases/government-extends-4-per-cent-interest-rate-floor-on-special-medisave-and-retirement-account-monies-until-31-december-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-extra-55",
+      "nombre": "CPF extra interest for members aged 55 and above",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "primeros": "On the first $30,000",
+        "siguientes": "On the next $30,000"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "primeros": 2,
+            "siguientes": 1
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "News release, 22 September 2026: interest rates from 1 October to 31 December 2026",
+            "url": "https://www.cpf.gov.sg/member/infohub/news/news-releases/government-extends-4-per-cent-interest-rate-floor-on-special-medisave-and-retirement-account-monies-until-31-december-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.cpf-extra-topes",
+      "nombre": "CPF extra interest limits",
+      "tipo": "mapa",
+      "unidad": "SGD",
+      "etiquetas": {
+        "total": "Combined balances",
+        "oa": "Of which Ordinary Account",
+        "tramo-55": "First tier for members aged 55 and above"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "total": 60000,
+            "oa": 20000,
+            "tramo-55": 30000
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "News release, 22 September 2026: interest rates from 1 October to 31 December 2026",
+            "url": "https://www.cpf.gov.sg/member/infohub/news/news-releases/government-extends-4-per-cent-interest-rate-floor-on-special-medisave-and-retirement-account-monies-until-31-december-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.hdb-tasa-concesional",
+      "nombre": "HDB concessionary housing loan interest rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 2.6,
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "News release, 22 September 2026: interest rates from 1 October to 31 December 2026",
+            "url": "https://www.cpf.gov.sg/member/infohub/news/news-releases/government-extends-4-per-cent-interest-rate-floor-on-special-medisave-and-retirement-account-monies-until-31-december-2027",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "sg.sdl-tasa",
+      "nombre": "Skills Development Levy rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "How do I calculate and pay the Skills Development Levy (SDL)?",
+            "url": "https://www.cpf.gov.sg/service/article/how-do-i-calculate-and-pay-the-skills-development-levy-sdl",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.sdl-limites",
+      "nombre": "Skills Development Levy minimum and maximum",
+      "tipo": "mapa",
+      "unidad": "SGD",
+      "etiquetas": {
+        "minimo": "Minimum levy",
+        "maximo": "Maximum levy",
+        "salario-minimo": "Minimum applies below",
+        "salario-maximo": "Maximum applies above"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "minimo": 2,
+            "maximo": 11.25,
+            "salario-minimo": 800,
+            "salario-maximo": 4500
+          },
+          "fuente": {
+            "organismo": "CPF Board",
+            "titulo": "How do I calculate and pay the Skills Development Levy (SDL)?",
+            "url": "https://www.cpf.gov.sg/service/article/how-do-i-calculate-and-pay-the-skills-development-levy-sdl",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.tdsr",
+      "nombre": "Total Debt Servicing Ratio threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-12-16",
+          "valor": 55,
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "MSR and TDSR rules for new housing loans",
+            "url": "https://www.mas.gov.sg/regulation/explainers/new-housing-loans/msr-and-tdsr-rules",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.msr",
+      "nombre": "Mortgage Servicing Ratio cap (HDB flats and ECs)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "MSR and TDSR rules for new housing loans",
+            "url": "https://www.mas.gov.sg/regulation/explainers/new-housing-loans/msr-and-tdsr-rules",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.tdsr-tasa-piso",
+      "nombre": "Medium-term interest rate floor for TDSR",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "residencial": "Residential property",
+        "no-residencial": "Non-residential property"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "residencial": 4,
+            "no-residencial": 5
+          },
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "Calculating TDSR for property loans",
+            "url": "https://www.mas.gov.sg/regulation/explainers/tdsr-for-property-loans/calculating-tdsr",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.tdsr-descuento-variable",
+      "nombre": "Minimum haircut on variable and rental income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "Calculating TDSR for property loans",
+            "url": "https://www.mas.gov.sg/regulation/explainers/tdsr-for-property-loans/calculating-tdsr",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.plazo-maximo-prestamo",
+      "nombre": "Maximum loan tenure for bank housing loans",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "hdb": "HDB flat",
+        "otros": "Other property"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "hdb": 30,
+            "otros": 35
+          },
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "New housing loans: housing loan rules",
+            "url": "https://www.mas.gov.sg/regulation/explainers/new-housing-loans",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.renta-residentes",
+      "nombre": "Resident income tax rates (from YA 2024)",
+      "tipo": "escala",
+      "unidad": "SGD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20000,
+              "tasa": 0
+            },
+            {
+              "desde": 20000,
+              "hasta": 30000,
+              "tasa": 2
+            },
+            {
+              "desde": 30000,
+              "hasta": 40000,
+              "tasa": 3.5
+            },
+            {
+              "desde": 40000,
+              "hasta": 80000,
+              "tasa": 7
+            },
+            {
+              "desde": 80000,
+              "hasta": 120000,
+              "tasa": 11.5
+            },
+            {
+              "desde": 120000,
+              "hasta": 160000,
+              "tasa": 15
+            },
+            {
+              "desde": 160000,
+              "hasta": 200000,
+              "tasa": 18
+            },
+            {
+              "desde": 200000,
+              "hasta": 240000,
+              "tasa": 19
+            },
+            {
+              "desde": 240000,
+              "hasta": 280000,
+              "tasa": 19.5
+            },
+            {
+              "desde": 280000,
+              "hasta": 320000,
+              "tasa": 20
+            },
+            {
+              "desde": 320000,
+              "hasta": 500000,
+              "tasa": 22
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 23
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 24
+            }
+          ],
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Individual Income Tax rates",
+            "url": "https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-residency-and-tax-rates/individual-income-tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.alivio-ingreso-ganado",
+      "nombre": "Earned Income Relief by age",
+      "tipo": "mapa",
+      "unidad": "SGD",
+      "etiquetas": {
+        "menos-55": "Below 55",
+        "55-59": "55 to 59",
+        "60-y-mas": "60 and above"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "menos-55": 1000,
+            "55-59": 6000,
+            "60-y-mas": 8000
+          },
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Earned Income Relief",
+            "url": "https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/earned-income-relief",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.tope-alivios",
+      "nombre": "Personal income tax relief cap",
+      "tipo": "numero",
+      "unidad": "SGD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 80000,
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Supplementary Retirement Scheme (SRS) relief",
+            "url": "https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/supplementary-retirement-scheme-(srs)-relief",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.no-residente-empleo",
+      "nombre": "Non-resident flat rate on employment income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Individual Income Tax rates",
+            "url": "https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-residency-and-tax-rates/individual-income-tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.no-residente-otros",
+      "nombre": "Non-resident rate on other income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Individual Income Tax rates",
+            "url": "https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-residency-and-tax-rates/individual-income-tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.srs-tope",
+      "nombre": "Yearly maximum SRS contribution",
+      "tipo": "mapa",
+      "unidad": "SGD",
+      "etiquetas": {
+        "ciudadano-pr": "Singapore Citizen or PR",
+        "extranjero": "Foreigner"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "ciudadano-pr": 15300,
+            "extranjero": 35700
+          },
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Supplementary Retirement Scheme (SRS) relief",
+            "url": "https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/supplementary-retirement-scheme-(srs)-relief",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.bsd-residencial",
+      "nombre": "Buyer's Stamp Duty, residential property",
+      "tipo": "escala",
+      "unidad": "SGD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-02-15",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 180000,
+              "tasa": 1
+            },
+            {
+              "desde": 180000,
+              "hasta": 360000,
+              "tasa": 2
+            },
+            {
+              "desde": 360000,
+              "hasta": 1000000,
+              "tasa": 3
+            },
+            {
+              "desde": 1000000,
+              "hasta": 1500000,
+              "tasa": 4
+            },
+            {
+              "desde": 1500000,
+              "hasta": 3000000,
+              "tasa": 5
+            },
+            {
+              "desde": 3000000,
+              "hasta": null,
+              "tasa": 6
+            }
+          ],
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Buyer's Stamp Duty (BSD)",
+            "url": "https://www.iras.gov.sg/taxes/stamp-duty/for-property/buying-or-acquiring-property/buyer's-stamp-duty-(bsd)",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.bsd-no-residencial",
+      "nombre": "Buyer's Stamp Duty, non-residential property",
+      "tipo": "escala",
+      "unidad": "SGD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-02-15",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 180000,
+              "tasa": 1
+            },
+            {
+              "desde": 180000,
+              "hasta": 360000,
+              "tasa": 2
+            },
+            {
+              "desde": 360000,
+              "hasta": 1000000,
+              "tasa": 3
+            },
+            {
+              "desde": 1000000,
+              "hasta": 1500000,
+              "tasa": 4
+            },
+            {
+              "desde": 1500000,
+              "hasta": null,
+              "tasa": 5
+            }
+          ],
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Buyer's Stamp Duty (BSD)",
+            "url": "https://www.iras.gov.sg/taxes/stamp-duty/for-property/buying-or-acquiring-property/buyer's-stamp-duty-(bsd)",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.absd",
+      "nombre": "Additional Buyer's Stamp Duty rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "sc-1": "Singapore Citizen, first home",
+        "sc-2": "Singapore Citizen, second home",
+        "sc-3": "Singapore Citizen, third or later home",
+        "pr-1": "Singapore PR, first home",
+        "pr-2": "Singapore PR, second home",
+        "pr-3": "Singapore PR, third or later home",
+        "extranjero": "Foreigner, any home",
+        "entidad": "Entity, any home"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-27",
+          "valor": {
+            "sc-1": 0,
+            "sc-2": 20,
+            "sc-3": 30,
+            "pr-1": 5,
+            "pr-2": 30,
+            "pr-3": 35,
+            "extranjero": 60,
+            "entidad": 65
+          },
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Additional Buyer's Stamp Duty (ABSD)",
+            "url": "https://www.iras.gov.sg/taxes/stamp-duty/for-property/buying-or-acquiring-property/additional-buyer's-stamp-duty-(absd)",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.ssd-2017",
+      "nombre": "Seller's Stamp Duty for homes bought from 11 Mar 2017 to 3 Jul 2025",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1": "Sold within 1 year",
+        "2": "More than 1 and up to 2 years",
+        "3": "More than 2 and up to 3 years"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-03-11",
+          "valor": {
+            "1": 12,
+            "2": 8,
+            "3": 4
+          },
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Seller's Stamp Duty (SSD) for residential property",
+            "url": "https://www.iras.gov.sg/taxes/stamp-duty/for-property/selling-or-disposing-property/seller's-stamp-duty-(ssd)-for-residential-property",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.ssd-2025",
+      "nombre": "Seller's Stamp Duty for homes bought on or after 4 Jul 2025",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1": "Sold within 1 year",
+        "2": "More than 1 and up to 2 years",
+        "3": "More than 2 and up to 3 years",
+        "4": "More than 3 and up to 4 years"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-04",
+          "valor": {
+            "1": 16,
+            "2": 12,
+            "3": 8,
+            "4": 4
+          },
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Seller's Stamp Duty (SSD) for residential property",
+            "url": "https://www.iras.gov.sg/taxes/stamp-duty/for-property/selling-or-disposing-property/seller's-stamp-duty-(ssd)-for-residential-property",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.impuesto-propiedad-ocupada",
+      "nombre": "Property tax, owner-occupied residential",
+      "tipo": "escala",
+      "unidad": "SGD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12000,
+              "tasa": 0
+            },
+            {
+              "desde": 12000,
+              "hasta": 40000,
+              "tasa": 4
+            },
+            {
+              "desde": 40000,
+              "hasta": 50000,
+              "tasa": 6
+            },
+            {
+              "desde": 50000,
+              "hasta": 75000,
+              "tasa": 10
+            },
+            {
+              "desde": 75000,
+              "hasta": 85000,
+              "tasa": 14
+            },
+            {
+              "desde": 85000,
+              "hasta": 100000,
+              "tasa": 20
+            },
+            {
+              "desde": 100000,
+              "hasta": 140000,
+              "tasa": 26
+            },
+            {
+              "desde": 140000,
+              "hasta": null,
+              "tasa": 32
+            }
+          ],
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Property tax rates",
+            "url": "https://www.iras.gov.sg/taxes/property-tax/property-owners/property-tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.impuesto-propiedad-no-ocupada",
+      "nombre": "Property tax, non-owner-occupied residential",
+      "tipo": "escala",
+      "unidad": "SGD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30000,
+              "tasa": 12
+            },
+            {
+              "desde": 30000,
+              "hasta": 45000,
+              "tasa": 20
+            },
+            {
+              "desde": 45000,
+              "hasta": 60000,
+              "tasa": 28
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 36
+            }
+          ],
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Property tax rates",
+            "url": "https://www.iras.gov.sg/taxes/property-tax/property-owners/property-tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.impuesto-propiedad-otros",
+      "nombre": "Property tax, non-residential property",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "IRAS",
+            "titulo": "Property tax rates",
+            "url": "https://www.iras.gov.sg/taxes/property-tax/property-owners/property-tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.vacaciones-dias",
+      "nombre": "Annual leave days by year of service (Employment Act)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "1": "1st year",
+        "2": "2nd year",
+        "3": "3rd year",
+        "4": "4th year",
+        "5": "5th year",
+        "6": "6th year",
+        "7": "7th year",
+        "8": "8th year and after"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "1": 7,
+            "2": 8,
+            "3": 9,
+            "4": 10,
+            "5": 11,
+            "6": 12,
+            "7": 13,
+            "8": 14
+          },
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Annual leave: eligibility and entitlement",
+            "url": "https://www.mom.gov.sg/employment-practices/leave/annual-leave/eligibility-and-entitlement",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.meses-minimos-licencias",
+      "nombre": "Months of service before paid leave applies",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Annual leave: eligibility and entitlement",
+            "url": "https://www.mom.gov.sg/employment-practices/leave/annual-leave/eligibility-and-entitlement",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.horas-extra-factor",
+      "nombre": "Minimum overtime rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Hours of work, overtime and rest days",
+            "url": "https://www.mom.gov.sg/employment-practices/hours-of-work-overtime-and-rest-days",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.horas-extra-topes",
+      "nombre": "Overtime coverage salary limits",
+      "tipo": "mapa",
+      "unidad": "SGD",
+      "etiquetas": {
+        "no-manual": "Non-workman",
+        "manual": "Workman"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "no-manual": 2600,
+            "manual": 4500
+          },
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Hours of work, overtime and rest days",
+            "url": "https://www.mom.gov.sg/employment-practices/hours-of-work-overtime-and-rest-days",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.horas-extra-tope-hora",
+      "nombre": "Hourly basic rate cap for non-workmen",
+      "tipo": "numero",
+      "unidad": "SGD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 13.6,
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Hours of work, overtime and rest days",
+            "url": "https://www.mom.gov.sg/employment-practices/hours-of-work-overtime-and-rest-days",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.horas-extra-max-mes",
+      "nombre": "Maximum overtime hours in a month",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 72,
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Hours of work, overtime and rest days",
+            "url": "https://www.mom.gov.sg/employment-practices/hours-of-work-overtime-and-rest-days",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.horas-semanales",
+      "nombre": "Normal hours of work in a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 44,
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Hours of work, overtime and rest days",
+            "url": "https://www.mom.gov.sg/employment-practices/hours-of-work-overtime-and-rest-days",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.licencia-ambulatoria",
+      "nombre": "Paid outpatient sick leave by months of service",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "3": 5,
+            "4": 8,
+            "5": 11,
+            "6": 14
+          },
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Sick leave: eligibility and entitlement",
+            "url": "https://www.mom.gov.sg/employment-practices/leave/sick-leave/eligibility-and-entitlement",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.licencia-hospitalizacion",
+      "nombre": "Paid hospitalisation leave by months of service",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "3": 15,
+            "4": 30,
+            "5": 45,
+            "6": 60
+          },
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Sick leave: eligibility and entitlement",
+            "url": "https://www.mom.gov.sg/employment-practices/leave/sick-leave/eligibility-and-entitlement",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.preaviso-dias",
+      "nombre": "Notice period when the contract is silent",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "menos-26-semanas": "Less than 26 weeks",
+        "26-semanas-2-anios": "26 weeks to less than 2 years",
+        "2-5-anios": "2 years to less than 5 years",
+        "5-anios-o-mas": "5 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "menos-26-semanas": 1,
+            "26-semanas-2-anios": 7,
+            "2-5-anios": 14,
+            "5-anios-o-mas": 28
+          },
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Termination with notice",
+            "url": "https://www.mom.gov.sg/employment-practices/termination-of-employment/termination-with-notice",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sg.retrenchment-norma",
+      "nombre": "Retrenchment benefit prevailing norm",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "anios-minimos": "Years of service to be eligible",
+        "semanas-minimas": "Lower end, weeks of salary per year",
+        "meses-maximos": "Upper end, months of salary per year"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "anios-minimos": 2,
+            "semanas-minimas": 2,
+            "meses-maximos": 1
+          },
+          "fuente": {
+            "organismo": "Ministry of Manpower",
+            "titulo": "Responsible retrenchment",
+            "url": "https://www.mom.gov.sg/employment-practices/retrenchment/responsible-retrenchment",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-14"
+          }
+        }
+      ]
+    }
+  ]
+}

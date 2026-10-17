@@ -26,6 +26,11 @@ export function paisDelMercado(mercado: CodigoMercado): string {
   return mercado.split("-")[0];
 }
 
+// zz y sus ediciones (zz-en) son de prueba: nunca se publican ni se ven en producción.
+export function esMercadoDePrueba(mercado: CodigoMercado): boolean {
+  return paisDelMercado(mercado) === "zz";
+}
+
 export function esIdDelMercado(id: unknown, mercado: CodigoMercado): id is string {
   if (typeof id !== "string") return false;
   const [pref, ...resto] = id.split(".");
@@ -50,7 +55,7 @@ export function validarUrl(url: unknown, donde: string, mercado: CodigoMercado):
     return [`${donde}: url inválida (${url})`];
   }
   if (u.protocol !== "https:") return [`${donde}: la url tiene que ser https (${url})`];
-  if (mercado !== "zz" && HOSTS_DE_PRUEBA.test(u.hostname)) return [`${donde}: url de ejemplo (${url}), solo vale en zz`];
+  if (!esMercadoDePrueba(mercado) && HOSTS_DE_PRUEBA.test(u.hostname)) return [`${donde}: url de ejemplo (${url}), solo vale en zz`];
   return [];
 }
 
@@ -264,7 +269,7 @@ export function validarMercado(m: unknown): string[] {
     e.push(`mercado ${cod}: zonaHoraria "${String(m.zonaHoraria)}" no existe`);
   }
   if (!["borrador", "interno", "publicado"].includes(String(m.estado))) e.push(`mercado ${cod}: estado inválido`);
-  if (m.codigo === "zz" && m.estado === "publicado") e.push("mercado zz: es de prueba y nunca puede estar publicado");
+  if (esMercadoDePrueba(cod) && m.estado === "publicado") e.push(`mercado ${cod}: es de prueba y nunca puede estar publicado`);
   if (m.regiones !== undefined) {
     if (!Array.isArray(m.regiones) || m.regiones.length < 2) e.push(`mercado ${cod}: regiones, si existe, lleva al menos dos`);
     else {

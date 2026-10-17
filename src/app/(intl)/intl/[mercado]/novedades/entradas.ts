@@ -38,7 +38,7 @@ export function valorTexto(v: ValorFeed, tn: TextosInicio["novedades"]): string 
 
 export function registroNovedades(ctx: ContextoSitio): RegistroNovedades {
   const m = ctx.mercado;
-  const tn = textosInicio(m.idioma, m.trato).novedades;
+  const tn = textosInicio(m.idioma, m.trato, m.locale).novedades;
   const feed = feedDe(ctx.registro, m.codigo, ctx.fecha);
   const publicadas = calculadorasDe(ctx, m);
   const enlace = (c: EntradaCalculadora): CalculadoraEnlazada => ({ id: c.definicion.id, titulo: tarjetaDe(ctx, m, c).titulo, href: rutaIntl(m.codigo, c.definicion.slug) });

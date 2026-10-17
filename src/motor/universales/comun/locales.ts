@@ -6,6 +6,11 @@ export const esPortugal = (locale: string): boolean => locale === "pt-PT";
 export const esCanadaFrances = (locale: string): boolean => locale === "fr-CA";
 export const esSuiza = (locale: string): boolean => locale.endsWith("-CH");
 
+// El ahorro propio al comprar una casa se llama «deposit» en el inglés británico y en el de los países
+// que lo siguen; «down payment» es de EE. UU. y Canadá y es lo que se usa en Asia.
+const CON_DEPOSIT = new Set(["en-GB", "en-IE", "en-AU", "en-NZ", "en-ZA"]);
+export const entradaDeCasaEn = (locale: string): "deposit" | "down payment" => (CON_DEPOSIT.has(locale) ? "deposit" : "down payment");
+
 // En Suiza el alemán no usa «ß»: siempre «ss» («Körpergrösse»). Es una regla ortográfica sin
 // excepciones, así que se aplica a todo el texto en vez de ramificar etiqueta por etiqueta. Las
 // funciones de ui se envuelven para que lo que devuelvan también pase por acá.

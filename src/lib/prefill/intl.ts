@@ -1,6 +1,7 @@
 import { ErrorEntrada, crearContexto } from "@/motor/calculo";
 import { opcionesDinamicas, resolverValores } from "@/motor/registro";
 import type { Campo, CodigoMercado, DefinicionCalculadora, FechaISO, PaisDefinido, ValorEntrada } from "@/motor/tipos";
+import { campoVisible, type Crudos } from "@/motor/formulario";
 import { esFechaISO } from "@/motor/vigencia";
 import { registro } from "@/paises";
 import { objeto, type Crudo } from "./_campos";
@@ -37,12 +38,16 @@ function fechaValida(v: unknown): v is FechaISO {
 }
 
 function valorDeCampo(c: Campo, v: unknown, pais: PaisDefinido, dinamicas: Readonly<Record<string, readonly { valor: string }[]>>): ValorEntrada | undefined {
-  if (v === null || v === undefined) return c.requerido === false && c.tipo !== "si-no" ? null : undefined;
+  if (v === null || v === undefined) return c.visibleSi || (c.requerido === false && c.tipo !== "si-no") ? null : undefined;
   switch (c.tipo) {
     case "si-no":
       return typeof v === "boolean" ? v : undefined;
     case "fecha":
       if (!fechaValida(v)) return undefined;
+      if ((c.min && v < c.min) || (c.max && v > c.max)) return undefined;
+      return v;
+    case "hora":
+      if (typeof v !== "string" || !/^([01]\d|2[0-3]):[0-5]\d$/.test(v)) return undefined;
       if ((c.min && v < c.min) || (c.max && v > c.max)) return undefined;
       return v;
     case "opcion":
@@ -80,6 +85,12 @@ export function validarEntradaIntl(pais: PaisDefinido, def: DefinicionCalculador
     const v = valorDeCampo(c, propio(o, c.id), pais, dinamicas);
     if (v === undefined) return null;
     entrada[c.id] = v;
+  }
+  // Igual que parsearEntrada: un campo oculto por visibleSi vale null, y uno visible sí/no no puede
+  // faltar. Si no, la entrada guardada no coincide con la que el formulario arma al reabrirla.
+  for (const c of def.campos) {
+    if (!campoVisible(c, entrada as Crudos)) entrada[c.id] = null;
+    else if (c.tipo === "si-no" && entrada[c.id] === null) return null;
   }
   try {
     def.calcular(entrada as never, r.valores as never, crearContexto(pais.mercado, fecha, def));
