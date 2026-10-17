@@ -64,5 +64,28 @@ export default definirCasos(calculadora, [
       "ei": 815
     },
     "tolerancia": 0.011
+  },
+  {
+    "nombre": "Quebec, $70,000",
+    "origen": {
+      "tipo": "recalculado",
+      "detalle": "QPP (66,500 × 5.3%) 3,524.50 + 665 = 4,189.50; EI 68,900 × 1.30% = 895.70; QPIP 70,000 × 0.43% = 301. Federal: taxable 69,335; 10,409.68 - 14% × (16,452 + 1,501 + 3,524.50 + 895.70 + 301) = 7,235.29, less the 16.5% Quebec abatement = 6,041.47. Quebec: taxable 69,335 - 1,450 (workers) = 67,885; 10,180.90 - 14% × 18,952 = 7,527.62. Take-home 51,044.71."
+    },
+    "fecha": "2026-10-16",
+    "entrada": {
+      "salario": 70000,
+      "provincia": "qc",
+      "periodo": "biweekly",
+      "pension": 0
+    },
+    "esperado": {
+      "anual": 51044.71,
+      "federal": 6041.47,
+      "provincial": 7527.62,
+      "cpp": 4189.5,
+      "ei": 895.7,
+      "qpip": 301
+    },
+    "tolerancia": 0.011
   }
 ]);

@@ -93,7 +93,7 @@ export function archivoPlanillaSueldo(anio: number): string {
 
 function informe(f: FamiliaInforme, mercado: string): ProductoIntl {
   const m = registro.pais(mercado as CodigoMercado)!.mercado;
-  const tx = textosFamilia(f.clave, m.idioma, m.trato);
+  const tx = textosFamilia(f.clave, m.idioma, m.trato, m.locale);
   const cat = diccionarioVenta(m.idioma).catalogo;
   return definirProductoIntl({
     mercado,
