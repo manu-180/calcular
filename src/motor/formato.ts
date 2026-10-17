@@ -1,3 +1,4 @@
+import { formaAr } from "./i18n/arabe";
 import { idiomaDeLocale } from "./i18n/resolver";
 import { NOMBRES_UNIDAD } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
@@ -87,7 +88,8 @@ function nombreDeUnidad(n: number, unidad: string, locale: string): string | nul
   const nombres = NOMBRES_UNIDAD[idiomaDeLocale(locale) ?? "es"];
   if (!(unidad in nombres)) return null;
   const formas = nombres[unidad as keyof typeof nombres];
-  return new Intl.PluralRules(locale).select(n) === "one" ? formas.uno : formas.otros;
+  if ("dos" in formas) return formaAr(n, formas);
+  return `{n} ${new Intl.PluralRules(locale).select(n) === "one" ? formas.uno : formas.otros}`;
 }
 
 function decimalesPropios(n: number): number {
@@ -105,7 +107,7 @@ export function formatearValorUnidad(n: number, unidad: Unidad, locale: string, 
   }
   if (unidad === "%") return formatearPorcentaje(n, locale, 4);
   const nombre = nombreDeUnidad(n, unidad, locale);
-  if (nombre) return `${formatearNumero(n, locale)} ${nombre}`;
+  if (nombre) return nombre.replace("{n}", formatearNumero(n, locale));
   if ((UNIDADES_REFERENCIA as readonly string[]).includes(unidad)) return `${formatearNumero(n, locale, undefined)} ${unidad}`;
   return formatearNumero(n, locale, n % 1 === 0 ? 0 : undefined);
 }

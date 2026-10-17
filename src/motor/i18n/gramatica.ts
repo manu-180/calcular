@@ -251,4 +251,13 @@ const nl: GramaticaPais = (() => {
   return { nombre, de: (p) => `van ${nombre(p)}`, en: (p) => `in ${nombre(p)}`, para: (p) => `voor ${nombre(p)}` };
 })();
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl };
+// La pertenencia va por idafa (el nombre suelto detrás del sustantivo, que no lleva «ال»: «حاسبات مصر»);
+// «ل» se pega al nombre y con artículo queda «لل» («للسعودية»).
+const ar: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => p,
+  en: (p) => `في ${p}`,
+  para: (p) => (p.startsWith("ال") ? `لل${p.slice(2)}` : `ل${p}`),
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ar };

@@ -256,6 +256,29 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
     },
     usted: { milesAmbiguos: "Bedoelt u {sugerido}? Schrijf het zonder {signos}." },
   },
+  ar: {
+    base: {
+      calcular: "احسب",
+      resultado: "النتيجة",
+      si: "نعم",
+      no: "لا",
+      sinResultado: "لا نعرض هذه النتيجة في الوقت الحالي.",
+      errores: {
+        requerido: "املأ هذا الحقل.",
+        "numero-invalido": "اكتب رقمًا، مثل {ejemplo}.",
+        "entero-invalido": "اكتب عددًا صحيحًا بلا كسور.",
+        "menor-que-min": "الحد الأدنى هو {min}.",
+        "mayor-que-max": "الحد الأقصى هو {max}.",
+        "fecha-invalida": "اختر تاريخًا صحيحًا.",
+        "hora-invalida": "اختر وقتًا صحيحًا.",
+        "opcion-invalida": "اختر أحد الخيارات.",
+        "region-invalida": "اختر المنطقة.",
+        "calculo-fallido": "تعذّر إجراء الحساب بهذه البيانات. راجع القيم وحاول مرة أخرى.",
+      },
+      milesAmbiguos: "هل تقصد {sugerido}؟ اكتبه بلا {signos}.",
+      separadores: { punto: "نقاط", coma: "فواصل" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {
