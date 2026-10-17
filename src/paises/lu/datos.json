@@ -392,7 +392,7 @@
     },
     {
       "id": "lu.retenue-classe-1",
-      "nombre": "Retenue mensuelle sur salaires, classe 1 (taux x R - déduction)",
+      "nombre": "Retenue mensuelle sur salaires, classe 1 (barème de l'ACD)",
       "tipo": "escala",
       "unidad": "EUR",
       "proximaRevision": "2027-01-01",
@@ -881,7 +881,7 @@
     },
     {
       "id": "lu.impot-classe-1",
-      "nombre": "Impôt sur le revenu, classe 1 (taux x R - déduction)",
+      "nombre": "Impôt sur le revenu, classe 1 (barème de l'ACD)",
       "tipo": "escala",
       "unidad": "EUR",
       "proximaRevision": "2027-01-01",
