@@ -15,6 +15,7 @@ interface Props {
   actual: OpcionPais | null;
   idioma: Idioma;
   trato: Trato;
+  locale: string;
   textos: { elegir: string; latinoamerica: string; todos: string; hrefTodos: string };
 }
 
@@ -38,9 +39,9 @@ interface Item extends OpcionPais {
 // mapa, sin JS o sin equivalente, al inicio del país. Combobox: el foco se queda en el buscador y las
 // flechas mueven la opción activa (aria-activedescendant). La lista se pinta recién al abrir: con 190
 // países eran cientos de links ocultos en el HTML de cada página.
-export function SelectorPais({ actual, idioma, trato, textos }: Props) {
+export function SelectorPais({ actual, idioma, trato, locale, textos }: Props) {
   const opciones = usePaises();
-  const ti = textosInicio(idioma, trato).selector;
+  const ti = textosInicio(idioma, trato, locale).selector;
   const [abierto, setAbierto] = useState(false);
   const [montado, setMontado] = useState(false);
   const [consulta, setConsulta] = useState("");

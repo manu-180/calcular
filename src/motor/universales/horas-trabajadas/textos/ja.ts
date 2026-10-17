@@ -1,0 +1,38 @@
+import type { TextosUi } from "../../tipos";
+import type { UiHorasTrabajadas } from "../definicion";
+
+export const textosJa: TextosUi<UiHorasTrabajadas> = {
+  slug: "time-card",
+  ui: () => ({
+    dias: ["月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日", "日曜日"],
+    entrada: (dia) => `${dia}：出勤`,
+    salida: (dia) => `${dia}：退勤`,
+    horarioAyuda: "働かなかった日は空欄のままにしてください。深夜0時を過ぎて終わった場合も、同じ勤務として数えます。",
+    pausa: "1日の無給休憩（分）",
+    pausaAyuda: "給与が出ない昼休みや休憩です。働いた日ごとに差し引きます。",
+    pagoHora: "時給",
+    umbral: "週の所定労働時間（任意）",
+    umbralAyuda: "これを超えた時間は割増賃金で計算します。残業がなければ空欄にしてください。",
+    recargo: "残業の割増率（%）",
+    recargoAyuda: "残業1時間あたり、どれだけ多く支払われるかです。25%なら1.25倍です。",
+    horasTotales: "労働時間",
+    horasReloj: "時間と分で表すと",
+    horasNormales: "所定時間内",
+    horasExtra: "残業時間",
+    pagoNormal: "所定時間内の給与",
+    pagoExtra: "残業代",
+    pagoTotal: "1週間の給与合計",
+    tabla: "日ごとの内訳",
+    colDia: "曜日",
+    colEntrada: "出勤",
+    colSalida: "退勤",
+    colHoras: "時間",
+    errorFaltaSalida: (dia) => `${dia}の退勤時刻が入っていません。`,
+    errorFaltaEntrada: (dia) => `${dia}の出勤時刻が入っていません。`,
+    errorIguales: (dia) => `${dia}の出勤と退勤が同じ時刻です。`,
+    errorPausa: (dia) => `休憩が${dia}の勤務時間と同じか、それより長くなっています。`,
+    errorSinDias: "少なくとも1日分、出勤と退勤の時刻を入れてください。",
+    observacionNoche: "翌日にまたがる勤務があります。その分は、勤務を始めた日にまとめて数えています。",
+    observacionGenerico: "一般的な計算です。労働時間の上限、残業のルール、深夜や休日の割増は、法律と雇用契約によって決まります。",
+  }),
+};

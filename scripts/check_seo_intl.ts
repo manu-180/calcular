@@ -19,6 +19,7 @@ import { createElement, type ComponentType, type ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { AppRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { PathnameContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
+import { anchoVisual } from "../src/motor/ancho";
 import type { ContextoSitio } from "../src/motor/ui/contexto";
 import type { PaginaIntl } from "../src/motor/ui/metadatos";
 import type { Registro } from "../src/motor/registro";
@@ -43,9 +44,9 @@ const decodificar = (s: string) =>
 export function revisarTexto(id: string, title: string, description: string): string[] {
   const e: string[] = [];
   if (!title.trim()) e.push(`${id}: title vacío`);
-  if (title.length > LARGO_TITULO) e.push(`${id}: title de ${title.length} caracteres (máx. ${LARGO_TITULO}): ${title}`);
+  if (anchoVisual(title) > LARGO_TITULO) e.push(`${id}: title de ${anchoVisual(title)} de ancho (máx. ${LARGO_TITULO}): ${title}`);
   if (!description.trim()) e.push(`${id}: description vacía`);
-  if (description.length > LARGO_DESCRIPCION) e.push(`${id}: description de ${description.length} caracteres (máx. ${LARGO_DESCRIPCION})`);
+  if (anchoVisual(description) > LARGO_DESCRIPCION) e.push(`${id}: description de ${anchoVisual(description)} de ancho (máx. ${LARGO_DESCRIPCION})`);
   if (/\{\{|\}\}/.test(title + description)) e.push(`${id}: marcador {{...}} sin resolver en title o description`);
   return e;
 }

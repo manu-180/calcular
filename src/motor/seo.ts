@@ -1,3 +1,4 @@
+import { anchoVisual } from "./ancho";
 import { CONCEPTOS, esConcepto } from "./conceptos";
 import type { Equivalente } from "./registro";
 import { hreflangARActivo, NOMBRE_SITIO_INTL, origenAR, origenIntl } from "./sitio";
@@ -49,7 +50,7 @@ const sinTildes = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLo
 // títulos rotos a la mitad de una palabra, y eso lo marca el check, no esta función.
 export function elegirTitulo(candidatos: readonly string[]): string {
   const limpios = candidatos.map((c) => c.trim()).filter(Boolean);
-  return limpios.find((c) => c.length <= LARGO_TITULO) ?? [...limpios].sort((a, b) => a.length - b.length)[0] ?? "";
+  return limpios.find((c) => anchoVisual(c) <= LARGO_TITULO) ?? [...limpios].sort((a, b) => anchoVisual(a) - anchoVisual(b))[0] ?? "";
 }
 
 // El dominio es .com y compite con sitios de cada país: el nombre del país en el título es lo que
