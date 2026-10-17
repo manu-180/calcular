@@ -1,0 +1,17 @@
+export const OCUPACIONES = [
+  { valor: "general", etiqueta: "General labourer, cleaner, gardener, house servant, day watchman, messenger" },
+  { valor: "miner", etiqueta: "Miner, stone cutter, turnboy, waiter, cook, logger, line cutter" },
+  { valor: "night-watchman", etiqueta: "Night watchman" },
+  { valor: "machine-attendant", etiqueta: "Machine attendant, sawmill sawyer, bakery worker, tailor's assistant" },
+  { valor: "machinist", etiqueta: "Machinist, vehicle service worker, laundry operator, junior clerk, light tractor driver" },
+  { valor: "operator", etiqueta: "Machine operator, shop assistant, copy typist, driver (cars and light vans)" },
+  { valor: "clerk", etiqueta: "Pattern designer, dress cutter, general clerk, telephone operator, receptionist, storekeeper" },
+  { valor: "tailor", etiqueta: "Tailor, driver (medium sized vehicle)" },
+  { valor: "dyer", etiqueta: "Dyer, crawler tractor driver, salesman" },
+  { valor: "saw-doctor", etiqueta: "Saw doctor, caretaker (buildings)" },
+  { valor: "cashier", etiqueta: "Cashier, driver (heavy commercial vehicles), salesman driver" },
+  { valor: "ungraded-artisan", etiqueta: "Ungraded artisan" },
+  { valor: "artisan-3", etiqueta: "Artisan Grade III" },
+  { valor: "artisan-2", etiqueta: "Artisan Grade II" },
+  { valor: "artisan-1", etiqueta: "Artisan Grade I" },
+] as const;
