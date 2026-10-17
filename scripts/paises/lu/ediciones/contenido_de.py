@@ -175,7 +175,7 @@ CONTENIDO = {
     "preavis-licenciement": {
         "h1": "Kündigungsfrist in Luxemburg berechnen",
         "title": "Kündigungsfrist Luxemburg: Rechner für das Vertragsende",
-        "description": "Kündigungsfrist in Luxemburg nach Betriebszugehörigkeit: 2, 4 oder 6 Monate bei Kündigung durch den Arbeitgeber, die Hälfte durch den Arbeitnehmer. Beginn am 15. oder 1.",
+        "description": "Kündigungsfrist in Luxemburg nach Betriebszugehörigkeit: 2, 4 oder 6 Monate bei Kündigung durch den Arbeitgeber, die Hälfte, wenn der Arbeitnehmer kündigt.",
         "intro": [
             "Bei Kündigung durch den Arbeitgeber hängt die Frist von der Betriebszugehörigkeit ab: 2 Monate unter 5 Jahren, 4 Monate von 5 bis unter 10 Jahren, 6 Monate ab 10 Jahren.",
             "Kündigt der Arbeitnehmer, ist die Frist halb so lang: 1, 2 oder 3 Monate.",
