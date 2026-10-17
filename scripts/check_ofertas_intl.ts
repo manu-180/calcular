@@ -30,7 +30,8 @@ import { hoyEn } from "../src/motor/vigencia";
 import { registro } from "../src/paises";
 import { PRODUCTOS_INTL, productoIntl, productoIntlDe, leerReferenciaIntl, type ProductoIntl } from "../src/lib/pagos/catalogo-intl";
 import { FAMILIAS, SIN_FAMILIA, campoEscenario, familiaDeConcepto, nombreDeCalculo, precioUSD } from "../src/lib/pagos/ofertas-intl";
-import { DICCIONARIOS, resolver } from "../src/lib/pagos/textos";
+import { DICCIONARIOS, FAMILIAS_POR_LOCALE, resolver } from "../src/lib/pagos/textos";
+import { idiomaDeLocale } from "../src/motor/i18n/resolver";
 import { bloqueDe, calculadorasDeProducto, mapaDePlanillaIntl, ofertasDeMercado, planillaConDatos, validarDatosDeProducto } from "../src/lib/pagos/ofertas-servidor";
 import { calcularEscenarios, estadoDelInforme, filaClave } from "../src/lib/pagos/informe-intl";
 import { valorDeCelda } from "../src/lib/pagos/mapa-planilla-intl";
@@ -368,6 +369,12 @@ function checkTextos() {
       const tf = DICCIONARIOS[idioma].familias[f.clave];
       if (forma(tf) !== base) fallo(`familia ${f.clave} (${idioma}): piezas distintas del español ${forma(tf)} vs ${base}`);
       if (!!f.escenarios !== !!tf.escenarios) fallo(`familia ${f.clave} (${idioma}): la estructura ${f.escenarios ? "tiene" : "no tiene"} escenarios y el texto no coincide`);
+    }
+    for (const [locale, familias] of Object.entries(FAMILIAS_POR_LOCALE)) {
+      const tf = familias[f.clave];
+      if (!tf) continue;
+      if (forma(tf) !== base) fallo(`familia ${f.clave} (${locale}): piezas distintas del español ${forma(tf)} vs ${base}`);
+      for (const trato of TRATOS[idiomaDeLocale(locale) ?? "es"]) for (const s of textosDe(resolver(tf, trato))) (revisarTexto(`${locale} familia ${f.clave}`, idiomaDeLocale(locale) ?? "es", trato, s), revisados++);
     }
   }
   for (const idioma of IDIOMAS) {

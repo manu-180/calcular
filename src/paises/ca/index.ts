@@ -24,6 +24,12 @@ import oasClawback from "./calculadoras/oas-clawback";
 import contenidoOasClawback from "./contenido/oas-clawback";
 import overtimeCalculator from "./calculadoras/overtime-calculator";
 import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
+import quebecNoticeOfTermination from "./calculadoras/quebec-notice-of-termination";
+import contenidoQuebecNoticeOfTermination from "./contenido/quebec-notice-of-termination";
+import quebecOvertime from "./calculadoras/quebec-overtime";
+import contenidoQuebecOvertime from "./contenido/quebec-overtime";
+import quebecVacationPay from "./calculadoras/quebec-vacation-pay";
+import contenidoQuebecVacationPay from "./contenido/quebec-vacation-pay";
 import rrspContributionLimit from "./calculadoras/rrsp-contribution-limit";
 import contenidoRrspContributionLimit from "./contenido/rrsp-contribution-limit";
 import salesTaxCalculator from "./calculadoras/sales-tax-calculator";
@@ -66,6 +72,9 @@ export default definirPais({
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
     { definicion: oasClawback, contenido: contenidoOasClawback, cliente: () => import("./calculadoras/oas-clawback.cliente") },
     { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
+    { definicion: quebecNoticeOfTermination, contenido: contenidoQuebecNoticeOfTermination, cliente: () => import("./calculadoras/quebec-notice-of-termination.cliente") },
+    { definicion: quebecOvertime, contenido: contenidoQuebecOvertime, cliente: () => import("./calculadoras/quebec-overtime.cliente") },
+    { definicion: quebecVacationPay, contenido: contenidoQuebecVacationPay, cliente: () => import("./calculadoras/quebec-vacation-pay.cliente") },
     { definicion: rrspContributionLimit, contenido: contenidoRrspContributionLimit, cliente: () => import("./calculadoras/rrsp-contribution-limit.cliente") },
     { definicion: salesTaxCalculator, contenido: contenidoSalesTaxCalculator, cliente: () => import("./calculadoras/sales-tax-calculator.cliente") },
     { definicion: severancePay, contenido: contenidoSeverancePay, cliente: () => import("./calculadoras/severance-pay.cliente") },

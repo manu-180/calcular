@@ -36,6 +36,33 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
 
+## 16/10/2026 23:20 · En main y producción; se retoma la expansión a todo el mundo
+
+PR #31 (y #30) mergeados a main el 16/10 22:36, deploy READY: 38 países, 4 ediciones. Antes del merge
+se arreglaron: lakhs en en-IN (`parsearNumero`), prefill intl con null en campos ocultos, tabla del
+EMI de India, mes por render en Comercio por horas y `uy.dolar` vencido (hreflang).
+
+Misión de Manuel: todos los países del mundo, cada uno en su idioma, lo más completo posible, con
+fuentes citadas y al día, sin frenar. Frentes en curso (cada uno en su worktree y rama):
+
+| Frente | Rama | Agente |
+|---|---|---|
+| Filipinas | claude/pais-ph | af4a25bad79056aa2 |
+| Luxemburgo fr + lu-de | claude/pais-lu | a8551c6c0f34cfe9e |
+| Marruecos | claude/pais-ma | a38af4c77ca2794fb |
+| Quebec | claude/quebec | a09af92be368a2db8 |
+| Motor 3 (ja/ko/zh) | claude/mundo-motor-3 | a2ac60979cc7a480b |
+| Emiratos | claude/pais-ae | ab9a66bde237e6a69 |
+| Kuwait | claude/pais-kw | a80b3b979be977cdc |
+| Pakistán | claude/pais-pk | afc298c5c5529a805 |
+| Kenia | claude/pais-ke | ada73c81be98bb517 |
+| Costa de Marfil | claude/pais-ci | ab0048b77b06a4135 |
+| Angola | claude/pais-ao | a3758a764dbcf8a03 |
+| Motor árabe (RTL) | claude/mundo-motor-ar | a69696ff45bde473e |
+| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | a83bcd96f30132acb |
+
+Publicar sigue el procedimiento de la entrada de la pausa. Un PR nuevo contra main por tanda.
+
 ## 16/10/2026 19:30 · PAUSA pedida por Manuel · 38 países y 4 ediciones publicados
 
 Publicados desde la última entrada: Nigeria (55) y Malasia (60). Verde con 44 mercados:
@@ -120,11 +147,24 @@ manual.
 13 calculadoras de `ca` traducidas al francés de Quebec (vous, fr-CA) más las universales en
 francés: TPS/TVQ, salario mínimo, RRQ/RPC, cotizaciones y prestaciones de assurance-emploi, costo
 empleador (con RQAP), ACE, recuperación de la SV, REER, CELI, inflación, USD/CAD e hipoteca variable.
-Por defecto abren en Quebec (región qc, plan RRQ). Pendientes, porque `ca` no las tiene para Quebec:
-impuesto sobre la renta y sueldo neto con el impuesto provincial de Quebec, ganancias de capital,
-taxe de bienvenue (droits de mutation), y las laborales de la CNESST (vacances, heures
-supplémentaires, préavis, indemnité). Las ofertas en francés dicen «Rapport de TVA» para la familia
-de IVA: en Quebec se diría TPS/TVQ (textos de `src/lib/pagos`).
+Por defecto abren en Quebec (región qc, plan RRQ).
+
+**Quebec en `ca` (`claude/quebec`):**
+- Impuesto de Quebec en sueldo neto e impuesto a la renta. Usa la tabla 2026, el monto de base y la
+  deducción para trabajadores (Finanzas Quebec). Del lado federal suma el abatimiento del 16,5 % (CRA
+  T4032-QC), y aplica QPP, EI de Quebec y RQAP. Traducidas en ca-fr (`calcul-salaire-net`,
+  `calcul-impot-revenu`).
+- Taxe de bienvenue 2026 (Québec.ca) en land-transfer-tax, sin Montreal. Traducida en ca-fr
+  (`calcul-taxe-de-bienvenue`).
+- Vacances, heures supplémentaires y préavis (LNT) en **borrador**: Légis Québec y la CNESST
+  responden 403 a las herramientas (Cloudflare y CloudFront). Hay que abrir la ley en un navegador,
+  confirmar los valores de `ca.qc-vacation-pay`, `ca.qc-overtime` y `ca.qc-notice`, pasarlos a
+  verificado y publicar las tres calculadoras (ya están traducidas).
+- Pendientes:
+  - ganancias de capital con Quebec, porque falta verificar la tasa de inclusión de Quebec;
+  - las tasas de Montreal en la taxe de bienvenue;
+  - créditos de Quebec además del de base (personne seule, âge, revenus de retraite).
+- Ofertas fr-CA: la familia de facturación dice TPS/TVQ (`src/lib/pagos/textos/fr-ca.ts`).
 
 ## Motor 2 (`claude/mundo-motor-2`, integrado el 16/10/2026)
 
@@ -160,7 +200,7 @@ India (solo había investigado, sin código), Singapur, Suiza (de, en verificaci
 WIP `7315719`). Nuevos: Filipinas (`claude/pais-ph`) y Hong Kong en inglés (`claude/pais-hk`).
 
 Pendientes de los países:
-- `nz.ocr`: carga manual (ver «Motor 2»). Vence el 2026-12-11.
+- `nz.ocr`: detector `manual` (el cron no lo corre; el semáforo avisa 30 días antes). Vence el 2026-12-11.
 - `za`: los marcadores de series ya existen (`{{za.prime-rate}}`). IPC y prime vencen el 2026-11-13 si el cron no corre.
 - Universal hipoteca dice «Down payment»; en NZ se dice «deposit».
 - Montos escritos a mano en escalas y FAQ de nz y za: revisar en abril y marzo de 2027.

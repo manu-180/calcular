@@ -106,7 +106,7 @@ export function ofertasDeMercado(mercado: string): OfertasMercado {
     porCalculadora[def.id] = { calc: def.slug, nombre: nombreDeCalculo(c.contenido.h1), ofertas: lista };
     for (const o of lista) {
       if (copy[o.familia]) continue;
-      copy[o.familia] = o.familia === "planilla" ? copyPlanilla(idioma, trato) : copyFamilia(o.familia, idioma, trato);
+      copy[o.familia] = o.familia === "planilla" ? copyPlanilla(idioma, trato) : copyFamilia(o.familia, idioma, trato, pais.mercado.locale);
     }
   }
   return {
