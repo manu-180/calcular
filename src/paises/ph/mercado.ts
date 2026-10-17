@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["PHP"],
   zonaHoraria: "Asia/Manila",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "ncr", nombre: "National Capital Region (NCR)" },
     { id: "car", nombre: "Cordillera Administrative Region (CAR)" },
