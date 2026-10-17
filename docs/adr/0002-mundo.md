@@ -91,6 +91,59 @@ lo aplica Manuel (la base no es accesible desde las herramientas de esta máquin
 | 3 | Traducción de universales y diccionarios a `pt fr de it nl` | países de esos idiomas |
 | 4+ | Países por tandas, primero por tráfico y monetización: US GB CA AU IN BR ES PT FR DE IT NL ... | |
 
+### D8. Japonés, coreano y chino (2026-10-17)
+
+`IDIOMAS` suma `ja`, `ko` y `zh`. Motor, sitio, inicio, legales, mensajes de error y las 41
+universales están en los tres. Las ofertas no (ver abajo).
+
+**Trato.** Cada idioma tiene un solo registro para la web y sus mercados van con `trato: "usted"`.
+Los diccionarios lo escriben en `base`, sin parches.
+
+| Idioma | Registro | Por qué |
+|---|---|---|
+| ja | です/ます (丁寧語), sin «あなた» | Es el registro estándar de sitios de servicio; el sujeto se omite. Nada de 尊敬語 recargado ni de 常体 (だ／である). |
+| ko | 해요체 | El de los servicios digitales coreanos (bancos y fintech incluidos): cortés y cercano. Sin 합니다체 ni 반말. Detrás de un valor variable no va partícula que dependa de la última sílaba (이/가, 을/를); la frase se arma con partículas fijas (의, 에, 씩) o con dos puntos. |
+| zh | 您 en todas las variantes | Es el trato de servicios, bancos y gobierno tanto en Taiwán y Hong Kong como en China continental. |
+
+**Variantes del chino.** Base en tradicional (zh-TW, y zh-HK por defecto) y parche `regional` completo
+para `zh-CN` y `zh-SG` en simplificado (`src/motor/i18n/escritura.ts`). El simplificado está escrito
+a mano frase por frase, con el vocabulario de allá (数据, 账户, 工资, 房贷, 增值税), nunca convertido.
+Las universales tienen un solo `textos/zh.ts` y `contenido/zh.ts` con las dos escrituras
+(`universales/comun/chino.ts`); Hong Kong cambia solo donde el vocabulario difiere (按揭/首期 en vez de
+房貸/頭期款, 差餉, 平方呎). Comillas: 「」 en ja y en chino tradicional, “” en simplificado (norma
+GB/T 15834). `resolverLegales` ahora aplica también el parche regional.
+
+**Slugs.** ja, ko y zh usan el slug en inglés de las universales (columna `en` del catálogo). La
+romanización del japonés y del coreano es larga y poco legible, y el pinyin sin tonos es ambiguo;
+el slug en inglés es corto, estable y ya está curado. zh-TW, zh-HK y zh-CN comparten slug. Para las
+calculadoras locales de esos países: término en inglés si se usa, y si no la romanización estándar
+(Hepburn sin macrones, Revisada para el coreano, pinyin sin tonos), por ejemplo `furusato-nozei`.
+
+**Formato.** Intl de ja-JP, ko-KR, zh-TW, zh-HK y zh-CN. Unidades de tiempo sin plural y pegadas al
+número (3日, 3개월, 3個月/3个月). `parsearNumero` normaliza los dígitos de ancho completo del IME y
+lee las unidades de 10⁴ que se escriben a mano (3万, 1億2000万, 5천만, 12萬): sin eso «3万» daba 3.
+
+**Largos de SEO.** Title (60) y description (70 a 160) se miden en ancho visual: un carácter CJK
+cuenta doble (`src/motor/ancho.ts`), porque así corta Google. En textos latinos no cambia nada.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`): sin exclamaciones; ja y zh sin puntuación de ancho
+medio pegada a texto CJK (。、，：？（）); ja sin，．ni comillas latinas, sin 常体 y sin «あなた»; ko sin
+puntuación de ancho completo, sin 합니다체 ni 반말; zh sin «你» y con control de escritura (caracteres
+simplificados en zh-TW/HK y tradicionales en zh-CN, comillas de la otra variante).
+
+**Tipografía.** Sin descargar fuentes CJK: Geist sigue para latín y cifras, y los ideogramas y el
+hangul caen en la fuente del sistema de cada escritura (Hiragino/Yu Gothic/Meiryo, Apple SD Gothic
+Neo/Malgun Gothic, PingFang TC/HK/SC, Microsoft JhengHei/YaHei), con Noto Sans JP/KR/TC/HK/SC de
+respaldo si está instalada. `line-break: strict` en ja y zh, `word-break: keep-all` en ko, tracking 0
+en títulos CJK. El peso de las páginas latinas no cambia.
+
+**Ofertas.** El diccionario de venta (`src/lib/pagos/textos`) sigue en los siete idiomas de antes:
+`IDIOMAS_VENTA`. Un mercado ja, ko o zh no genera informes ni ofertas, y `check_ofertas_intl` falla si
+se registra un país real de esos idiomas sin su diccionario de venta. Traducirlo es el paso siguiente.
+
+**Prueba.** `zz-ja` (Zetaland en japonés) es una edición interna como `zz-en`. `check_universales`
+prueba ja-JP, ko-KR, zh-TW, zh-HK y zh-CN, con nombres de país largos.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.
