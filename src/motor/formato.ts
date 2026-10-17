@@ -1,5 +1,5 @@
 import { idiomaDeLocale } from "./i18n/resolver";
-import { NOMBRES_UNIDAD } from "./i18n/unidades";
+import { NOMBRES_UNIDAD, type FormasUnidad } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
 import type { FechaISO, Moneda, ReglaRedondeo, Unidad } from "./tipos";
 import { esMoneda, UNIDADES_REFERENCIA } from "./tipos";
@@ -86,8 +86,12 @@ export function formatearFecha(fecha: FechaISO, locale: string, estilo: "larga" 
 function nombreDeUnidad(n: number, unidad: string, locale: string): string | null {
   const nombres = NOMBRES_UNIDAD[idiomaDeLocale(locale) ?? "es"];
   if (!(unidad in nombres)) return null;
-  const formas = nombres[unidad as keyof typeof nombres];
-  return new Intl.PluralRules(locale).select(n) === "one" ? formas.uno : formas.otros;
+  const formas: FormasUnidad = nombres[unidad as keyof typeof nombres];
+  const categoria = new Intl.PluralRules(locale).select(n);
+  if (categoria === "one") return formas.uno;
+  if (categoria === "few") return formas.pocos ?? formas.otros;
+  if (categoria === "many") return formas.muchos ?? formas.otros;
+  return formas.otros;
 }
 
 function decimalesPropios(n: number): number {
