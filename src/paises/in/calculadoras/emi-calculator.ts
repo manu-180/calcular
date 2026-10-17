@@ -1,4 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
+import type { TablaResultado } from "@/motor/tipos";
 
 export default definirCalculadora({
   id: "in.emi-calculator",
@@ -22,17 +23,37 @@ export default definirCalculadora({
     const total = emi * n;
     let saldo = entrada.monto;
     let interesAnio1 = 0;
-    for (let m = 0; m < Math.min(12, n); m++) {
-      const interes = saldo * r;
-      interesAnio1 += interes;
-      saldo -= emi - interes;
+    const filas: (readonly number[])[] = [];
+    for (let anio = 1, m = 0; m < n; anio++) {
+      let interesAnio = 0;
+      let capitalAnio = 0;
+      for (const fin = Math.min(n, m + 12); m < fin; m++) {
+        const interes = saldo * r;
+        const capital = Math.min(saldo, emi - interes);
+        interesAnio += interes;
+        capitalAnio += capital;
+        saldo -= capital;
+      }
+      if (anio === 1) interesAnio1 = interesAnio;
+      filas.push([anio, redondear(interesAnio), redondear(capitalAnio), redondear(Math.max(0, saldo))]);
     }
+    const anual: TablaResultado = {
+      tipo: "tabla",
+      columnas: [
+        { clave: "anio", etiqueta: "Year", formato: "numero" },
+        { clave: "intereses", etiqueta: "Interest paid", formato: "moneda" },
+        { clave: "capital", etiqueta: "Principal repaid", formato: "moneda" },
+        { clave: "saldo", etiqueta: "Outstanding at year end", formato: "moneda" },
+      ],
+      filas,
+    };
     return {
       emi: redondear(emi),
       interes: redondear(total - entrada.monto),
       total: redondear(total),
       interesAnio1: redondear(interesAnio1),
       meses: n,
+      anual,
     };
   },
   resultado: [
@@ -42,4 +63,5 @@ export default definirCalculadora({
     { clave: "interesAnio1", etiqueta: "Interest in the first 12 EMIs", formato: "moneda" },
     { clave: "meses", etiqueta: "Number of EMIs", formato: "numero", decimales: 0 },
   ],
+  tablas: [{ clave: "anual", titulo: "Year by year", filasVisibles: 12 }],
 });
