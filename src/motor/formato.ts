@@ -10,7 +10,7 @@ export function decimalesDeMoneda(moneda: Moneda, locale: string): number {
 
 // Redondeo decimal sin el error binario de Math.round(x * 100) / 100 (1.005 da 1.00 con el truco
 // clásico). Se corre la coma en la representación decimal con notación exponencial.
-function correr(n: number, decimales: number): number {
+function correrComa(n: number, decimales: number): number {
   const [mantisa, exponente = "0"] = String(n).split("e");
   return Number(`${mantisa}e${Number(exponente) + decimales}`);
 }
@@ -21,7 +21,7 @@ export function redondear(n: number, regla: ReglaRedondeo): number {
   // Un resultado como 2166.655 llega como 2166.6549999999997 y sin limpiar redondea a 2166.65. Se
   // recorta a 15 cifras significativas (lo que un double garantiza) antes de correr la coma.
   const abs = Number(Math.abs(n).toPrecision(15));
-  const escalado = correr(abs, regla.decimales);
+  const escalado = correrComa(abs, regla.decimales);
   let entero: number;
   if (regla.modo === "truncar") {
     entero = Math.floor(escalado + 1e-9);
@@ -33,7 +33,7 @@ export function redondear(n: number, regla: ReglaRedondeo): number {
   } else {
     entero = Math.round(escalado);
   }
-  const resultado = signo * correr(entero, -regla.decimales);
+  const resultado = signo * correrComa(entero, -regla.decimales);
   return Object.is(resultado, -0) ? 0 : resultado;
 }
 
@@ -124,11 +124,15 @@ export function separadoresDe(locale: string): Separadores {
 
 const ESPACIOS = /[\s   ]/g;
 
-function gruposValidos(entero: string, separador: string): boolean {
+// en-IN agrupa en lakhs y crores («12,00,000»): el formulario muestra los valores así y tiene que
+// poder leerlos de vuelta. Solo se acepta en los locales que formatean de esa manera.
+const conLakhs = (locale: string): boolean => new Intl.NumberFormat(locale).format(1234567).replace(/\D/g, ",") === "12,34,567";
+
+function gruposValidos(entero: string, separador: string, locale: string): boolean {
   const partes = entero.split(separador);
   if (partes.length === 1) return true;
-  if (!/^\d{1,3}$/.test(partes[0])) return false;
-  return partes.slice(1).every((p) => /^\d{3}$/.test(p));
+  if (/^\d{1,3}$/.test(partes[0]) && partes.slice(1).every((p) => /^\d{3}$/.test(p))) return true;
+  return conLakhs(locale) && /^\d{1,2}$/.test(partes[0]) && partes.slice(1, -1).every((p) => /^\d{2}$/.test(p)) && /^\d{3}$/.test(partes.at(-1)!);
 }
 
 // Reglas de parseo (D3 del ADR: un parseo equivocado multiplica por mil):
@@ -160,7 +164,7 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
     const pos = limpio.lastIndexOf(dec);
     entero = limpio.slice(0, pos);
     fraccion = limpio.slice(pos + 1);
-    if (entero.includes(dec) || fraccion.includes(grupo) || !gruposValidos(entero, grupo)) return null;
+    if (entero.includes(dec) || fraccion.includes(grupo) || !gruposValidos(entero, grupo, locale)) return null;
     entero = entero.split(grupo).join("");
   } else if (hayPunto || hayComa) {
     const sep = hayPunto ? "." : ",";
@@ -176,7 +180,7 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
         entero = cabeza;
         fraccion = resto[0];
       } else {
-        if (!gruposValidos(limpio, sep)) return null;
+        if (!gruposValidos(limpio, sep, locale)) return null;
         entero = limpio.split(sep).join("");
       }
     }
