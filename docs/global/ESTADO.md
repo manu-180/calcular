@@ -3,6 +3,18 @@
 Plan y decisiones: `docs/adr/0002-mundo.md`. Receta de universales: `docs/global/RECETA-UNIVERSAL.md`.
 Rama de integración: `claude/global-calculators-multipa-s-dfbec3` (incluye el PR #30 de auditoría).
 
+## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
+
+ja, ko y zh (tradicional zh-TW/zh-HK y simplificado zh-CN/zh-SG) en motor, sitio, inicio, legales,
+errores y las 41 universales. Decisiones en ADR 0002, D8. Edición de prueba `zz-ja`.
+
+Falta para el primer país asiático (Japón, Corea, Taiwán o Hong Kong en chino):
+- Diccionario de venta en ja/ko/zh (`src/lib/pagos/textos`, sumar a `IDIOMAS_VENTA`); sin él el país
+  no ofrece informes ni planillas y `check_ofertas_intl` falla al registrarlo.
+- El país en sí (BRIEF-PAIS): datos verificados, calculadoras locales, slugs locales con la convención
+  de D8. Taiwán usa la tasa de 營業稅 en la universal `iva`; Hong Kong no tiene IVA.
+- Revisión de un hablante nativo de cada idioma sobre una muestra de páginas antes de publicar.
+
 ## Ronda 1 (13/10/2026, en curso)
 
 | Frente | Rama | Archivos que posee |

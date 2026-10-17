@@ -1,0 +1,35 @@
+import type { TextosUi } from "../../tipos";
+import type { UiTarjetaDeCredito } from "../definicion";
+
+export const textosJa: TextosUi<UiTarjetaDeCredito> = {
+  slug: "credit-card-payoff",
+  ui: () => ({
+    saldo: "カードの残高",
+    tasa: "年利（%）",
+    tasaAyuda: "ショッピングの実質年率です。利用明細で確認できます。",
+    modo: "返し方",
+    modoFijo: "毎月決まった金額",
+    modoMinimo: "最低支払額",
+    pagoFijo: "毎月の返済額",
+    minimoPorcentaje: "最低支払額（残高の%）",
+    minimoPorcentajeAyuda: "カード会社が毎月求める金額です。わからなければ5%が一般的です。",
+    minimoPiso: "最低支払額の下限",
+    meses: "完済までの月数",
+    intereses: "払う利息",
+    total: "支払総額",
+    primerPago: "初回の最低支払額",
+    tabla: "月ごとの返済計画",
+    colMes: "月",
+    colPago: "返済額",
+    colInteres: "利息",
+    colCapital: "元金",
+    colSaldo: "残高",
+    errorSaldo: "カードの残高を入れてください。",
+    errorFaltaPago: "毎月いくら返すかを入れてください。",
+    errorNoCubre: (interes) => `その返済額では残高が減りません。最初の月の利息だけで${interes}かかります。返済額を増やしてください。`,
+    errorMuyLargo: "その返済額では完済まで50年以上かかります。返済額を増やしてください。",
+    observacionAnios: (anios, meses) => (meses === "0" ? `${anios}年です。` : `${anios}年${meses}か月です。`),
+    observacionFijo: (pago, meses, ahorro) => `初回の最低支払額と同じ${pago}を毎月払い続ければ、${meses}か月で完済でき、利息を${ahorro}減らせます。`,
+    observacionNoGastar: "返済中にこのカードで新しい買い物をしない前提です。",
+  }),
+};

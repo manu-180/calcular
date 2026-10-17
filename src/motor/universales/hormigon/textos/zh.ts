@@ -1,0 +1,45 @@
+import { textosPorEscritura } from "../../comun/chino";
+import type { TextosUi } from "../../tipos";
+import type { UiHormigon } from "../definicion";
+
+export const textosZh: TextosUi<UiHormigon> = textosPorEscritura<UiHormigon>(
+  "concrete-calculator",
+  () => ({
+    largo: (u) => `長度（${u}）`,
+    ancho: (u) => `寬度（${u}）`,
+    espesor: (u) => `厚度（${u}）`,
+    espesorAyuda: "庭院或步道地坪通常約 10 公分，車道約 12 到 15 公分。",
+    margen: "預留量（%）",
+    margenAyuda: "用於地面不平和灑漏，一般抓 5% 到 10%。",
+    bolsa: (u) => `每包水泥重量（${u}）`,
+    volumen: (u) => `實際體積（${u}）`,
+    volumenTotal: (u) => `需要的混凝土（${u}）`,
+    volumenPies: "需要的混凝土（立方英尺）",
+    cemento: (u) => `水泥（${u}）`,
+    bolsas: "水泥包數",
+    arena: (u) => `砂（${u}）`,
+    piedra: (u) => `碎石（${u}）`,
+    agua: (u) => (u === "L" ? "水（公升）" : "水（加侖）"),
+    errorMedida: "這個尺寸必須大於 0。",
+    aviso: "材料用量以一般用途的 1:2:3 配比（每立方公尺約 350 公斤水泥）為參考。實際會依配比、工程和當地材料而不同，請和施工人員確認。",
+  }),
+  () => ({
+    largo: (u) => `长度（${u}）`,
+    ancho: (u) => `宽度（${u}）`,
+    espesor: (u) => `厚度（${u}）`,
+    espesorAyuda: "庭院或步道地坪通常约 10 厘米，车道约 12 到 15 厘米。",
+    margen: "预留量（%）",
+    margenAyuda: "用于地面不平和洒漏，一般按 5% 到 10%。",
+    bolsa: (u) => `每袋水泥重量（${u}）`,
+    volumen: (u) => `实际体积（${u}）`,
+    volumenTotal: (u) => `需要的混凝土（${u}）`,
+    volumenPies: "需要的混凝土（立方英尺）",
+    cemento: (u) => `水泥（${u}）`,
+    bolsas: "水泥袋数",
+    arena: (u) => `砂（${u}）`,
+    piedra: (u) => `碎石（${u}）`,
+    agua: (u) => (u === "L" ? "水（升）" : "水（加仑）"),
+    errorMedida: "这个尺寸必须大于 0。",
+    aviso: "材料用量以通用的 1:2:3 配合比（每立方米约 350 千克水泥）为参考。实际会因配合比、工程和当地材料而不同，请和施工人员确认。",
+  }),
+);

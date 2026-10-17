@@ -1,0 +1,35 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCostoDeUnAuto } from "../definicion";
+
+export const textosKo: TextosUi<UiCostoDeUnAuto> = {
+  slug: "car-cost",
+  ui: () => ({
+    precio: "차량 가치",
+    precioAyuda: "산 가격, 또는 한동안 탔다면 지금의 시세예요.",
+    depreciacion: "1년 감가율(%)",
+    depreciacionAyuda: "새 차는 첫해에 15~25% 떨어져요. 중고차는 그보다 덜해요.",
+    cuota: "월 할부금(선택)",
+    cuotaAyuda: "매달 통장에서 나가는 돈을 보여 주는 데만 써요. 실제 비용에는 더하지 않아요.",
+    seguro: "월 보험료",
+    distanciaKm: "한 달 주행 거리(km)",
+    distanciaMi: "한 달 주행 거리(마일)",
+    consumoL100: "연비(100km당 리터)",
+    consumoMpg: "연비(마일/갤런)",
+    precioLitro: "리터당 기름값",
+    precioGalon: "갤런당 기름값",
+    mantenimiento: "월 정비비",
+    mantenimientoAyuda: "점검, 타이어, 수리, 세차 비용을 한 달 평균으로 낸 금액이에요.",
+    estacionamiento: "월 주차비(선택)",
+    otros: "세금, 통행료 등 기타 월 비용(선택)",
+    otrosAyuda: "자동차세, 검사, 통행료, 과태료 등을 한 달 평균으로 낸 금액이에요.",
+    costoMensual: "한 달 실제 비용",
+    costoAnual: "1년 실제 비용",
+    porKm: "1km당 비용",
+    porMilla: "1마일당 비용",
+    combustible: "한 달 주유비",
+    depreciacionMensual: "한 달 감가",
+    gastoBolsillo: "매달 통장에서 나가는 돈",
+    errorConsumo: "주유비를 계산하려면 차량 연비를 넣으세요.",
+    observacionCuota: "할부금은 실제 비용에 넣지 않았어요. 할부금 일부는 차값 자체이고, 그건 이미 감가로 계산했기 때문이에요. 할부 이자는 그와 별도로 드는 비용이에요.",
+  }),
+};

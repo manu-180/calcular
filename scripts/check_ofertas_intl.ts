@@ -25,12 +25,12 @@ import { esMercadoDePrueba } from "../src/motor/datos";
 import { parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { resolverValores } from "../src/motor/registro";
 import { textosMotor } from "../src/motor/textos";
-import { IDIOMAS, type CodigoMercado, type DefinicionCalculadora, type Idioma, type Mercado, type Trato, type ValorEntrada } from "../src/motor/tipos";
+import { type CodigoMercado, type DefinicionCalculadora, type Idioma, type Mercado, type Trato, type ValorEntrada } from "../src/motor/tipos";
 import { hoyEn } from "../src/motor/vigencia";
 import { registro } from "../src/paises";
 import { PRODUCTOS_INTL, productoIntl, productoIntlDe, leerReferenciaIntl, type ProductoIntl } from "../src/lib/pagos/catalogo-intl";
 import { FAMILIAS, SIN_FAMILIA, campoEscenario, familiaDeConcepto, nombreDeCalculo, precioUSD } from "../src/lib/pagos/ofertas-intl";
-import { DICCIONARIOS, FAMILIAS_POR_LOCALE, resolver } from "../src/lib/pagos/textos";
+import { DICCIONARIOS, FAMILIAS_POR_LOCALE, IDIOMAS_VENTA, resolver, tieneVenta, type IdiomaVenta } from "../src/lib/pagos/textos";
 import { idiomaDeLocale } from "../src/motor/i18n/resolver";
 import { bloqueDe, calculadorasDeProducto, mapaDePlanillaIntl, ofertasDeMercado, planillaConDatos, validarDatosDeProducto } from "../src/lib/pagos/ofertas-servidor";
 import { calcularEscenarios, estadoDelInforme, filaClave } from "../src/lib/pagos/informe-intl";
@@ -353,7 +353,7 @@ function textosDe(valor: unknown, salida: string[] = []): string[] {
   return salida;
 }
 
-const TRATOS: Record<Idioma, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"] };
+const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"] };
 
 // Las piezas de cada familia tienen que ser las mismas en todos los idiomas: un paso, un punto o
 // una nota que falta en un idioma es una promesa que en ese país no se cumple.
@@ -365,7 +365,7 @@ function checkTextos() {
   let revisados = 0;
   for (const f of FAMILIAS) {
     const base = forma(DICCIONARIOS.es.familias[f.clave]);
-    for (const idioma of IDIOMAS) {
+    for (const idioma of IDIOMAS_VENTA) {
       const tf = DICCIONARIOS[idioma].familias[f.clave];
       if (forma(tf) !== base) fallo(`familia ${f.clave} (${idioma}): piezas distintas del español ${forma(tf)} vs ${base}`);
       if (!!f.escenarios !== !!tf.escenarios) fallo(`familia ${f.clave} (${idioma}): la estructura ${f.escenarios ? "tiene" : "no tiene"} escenarios y el texto no coincide`);
@@ -377,7 +377,7 @@ function checkTextos() {
       for (const trato of TRATOS[idiomaDeLocale(locale) ?? "es"]) for (const s of textosDe(resolver(tf, trato))) (revisarTexto(`${locale} familia ${f.clave}`, idiomaDeLocale(locale) ?? "es", trato, s), revisados++);
     }
   }
-  for (const idioma of IDIOMAS) {
+  for (const idioma of IDIOMAS_VENTA) {
     const d = DICCIONARIOS[idioma];
     for (const trato of TRATOS[idioma]) {
       const { planillas: _p, correo: _c, catalogo: _k, tarjeta, ...resto } = resolver(d, trato);
@@ -395,6 +395,10 @@ function checkTextos() {
   for (const pais of registro.paises) {
     const m = pais.mercado as Mercado;
     if (m.codigo === "global" || esMercadoDePrueba(m.codigo)) continue;
+    if (!tieneVenta(m.idioma)) {
+      fallo(`${m.codigo}: el idioma ${m.idioma} no tiene diccionario de venta (src/lib/pagos/textos); sin él el país no ofrece nada`);
+      continue;
+    }
     const tx = textosPlanillas(m);
     const prods = PRODUCTOS_INTL.filter((p) => p.mercado === m.codigo);
     const textos = textosDe([
@@ -420,7 +424,7 @@ function checkTextos() {
   }
   // Ningún país en otro idioma vende todavía: el mail se prueba en los 7 con productos reales.
   const muestra = [PRODUCTOS_INTL.find((p) => p.tipo === "informe"), PRODUCTOS_INTL.find((p) => p.tipo === "planilla")].filter((p): p is ProductoIntl => !!p);
-  for (const idioma of IDIOMAS) {
+  for (const idioma of IDIOMAS_VENTA) {
     for (const trato of TRATOS[idioma]) {
       for (const p of muestra) {
         const html = entregaIntlHtml({ producto: p, idioma, trato, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" });

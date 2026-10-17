@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosJa: TextosUi<UiCalorias> = {
+  slug: "calorie-calculator",
+  ui: () => ({
+    sexo: "性別",
+    mujer: "女性",
+    hombre: "男性",
+    edad: "年齢（歳）",
+    peso: (u) => `体重（${u}）`,
+    altura: (u) => `身長（${u}）`,
+    pies: "身長：フィート（ft）",
+    pulgadas: "身長：インチ（in）",
+    actividad: "活動量",
+    sedentaria: "ほとんど運動しない",
+    ligera: "軽い運動（週1〜3日）",
+    moderada: "適度な運動（週3〜5日）",
+    alta: "活発な運動（週6〜7日）",
+    muyAlta: "非常に活発（激しいトレーニングや肉体労働）",
+    objetivo: "目標",
+    mantener: "体重を維持する",
+    bajar: "ゆるやかに減量する",
+    subir: "ゆるやかに増量する",
+    basal: "基礎代謝量（kcal／日）",
+    basalAyuda: "まったく動かずに安静にしているときに体が消費するエネルギーです。",
+    mantenimiento: "体重を維持するカロリー（kcal／日）",
+    calObjetivo: "目標に合わせたカロリー（kcal／日）",
+    calObjetivoAyuda: "無理のない変化にしています。減量なら1日500kcal減、増量なら300kcal増です。",
+    errorEdad: "この計算式は15歳から100歳までを対象としています。",
+    errorPeso: "体重は0より大きい値を入れてください。",
+    errorAltura: "身長は0より大きい値を入れてください。",
+    notaMinimo: (kcal) => `減量の場合も、1日${kcal}kcalを下回る値は表示しません。それより少なくするなら、専門家のサポートを受けながら行ってください。`,
+    aviso: "Mifflin-St Jeorの式による推定値です。体には個人差があります。医師や管理栄養士などの専門家への相談に代わるものではありません。",
+  }),
+};

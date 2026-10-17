@@ -8,6 +8,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import ts from "typescript";
+import { anchoVisual } from "../src/motor/ancho";
 import { marcadoresDe, rellenarContenido, resolverValores } from "../src/motor/registro";
 import type { Unidad } from "../src/motor/tipos";
 import { hoyEn } from "../src/motor/vigencia";
@@ -16,7 +17,7 @@ import { problemasDeTexto } from "./reglas_idioma";
 
 const MAX_TITLE = 60;
 const MAX_DESCRIPTION = 160;
-const PROSA = /[\s\p{Lu}¿¡]|[áéíóúñàâçèêëîïôûùüäößãõœ]/u;
+const PROSA = /[\s\p{Lu}¿¡]|[áéíóúñàâçèêëîïôûùüäößãõœ]|[\p{sc=Han}\p{sc=Hiragana}\p{sc=Katakana}\p{sc=Hangul}]/u;
 const CLAVES_NO_TEXTO = new Set(["id", "url", "desde", "hasta", "fecha", "verificadoEl", "estado", "tipo", "unidad", "region", "regiones", "mercado", "nivel", "aplicaA", "frecuencia", "proximaRevision"]);
 
 function textosTs(archivo: string): { texto: string; linea: number }[] {
@@ -70,7 +71,7 @@ async function main() {
       for (const { texto, linea } of lista) {
         if (!PROSA.test(texto)) continue;
         revisados++;
-        for (const p of problemasDeTexto(texto, idioma, trato)) fallas.push(`${rel(archivo)}:${linea}: ${p} en «${texto.trim().slice(0, 70)}»`);
+        for (const p of problemasDeTexto(texto, idioma, trato, pais.mercado.locale)) fallas.push(`${rel(archivo)}:${linea}: ${p} en «${texto.trim().slice(0, 70)}»`);
       }
     }
     const unidades: Record<string, Unidad> = {};
@@ -83,8 +84,8 @@ async function main() {
       // Un title con {{ }} cambia de largo con el valor del día: con PAISES_TOLERANTE=1 eso es aviso.
       // Sin marcadores el largo es estructura y sigue rojo.
       const delDia = (t: string) => tolerante && marcadoresDe(t).length > 0;
-      if (c.title.length > MAX_TITLE) (delDia(contenido.title) ? avisos : fallas).push(`${definicion.id}: title de ${c.title.length} caracteres (máximo ${MAX_TITLE}): «${c.title}»`);
-      if (c.description.length > MAX_DESCRIPTION) (delDia(contenido.description) ? avisos : fallas).push(`${definicion.id}: description de ${c.description.length} caracteres (máximo ${MAX_DESCRIPTION})`);
+      if (anchoVisual(c.title) > MAX_TITLE) (delDia(contenido.title) ? avisos : fallas).push(`${definicion.id}: title de ${anchoVisual(c.title)} de ancho (máximo ${MAX_TITLE}): «${c.title}»`);
+      if (anchoVisual(c.description) > MAX_DESCRIPTION) (delDia(contenido.description) ? avisos : fallas).push(`${definicion.id}: description de ${anchoVisual(c.description)} de ancho (máximo ${MAX_DESCRIPTION})`);
     }
   }
   for (const a of avisos) console.log(`⚠️  ${a}`);

@@ -11,7 +11,7 @@ import { validarDatosIntl, type DatosIntl } from "@/lib/prefill/intl";
 import { catalogoIntl, calculadorasDeFamilia, leerArchivoIntl, productosDeMercado, type ProductoIntl } from "./catalogo-intl";
 import { archivoMapa, leerMapa, valorDeCelda, type BloqueMapa, type MapaPlanilla } from "./mapa-planilla-intl";
 import { familiaDeConcepto, familiaPorClave, nombreDeCalculo, type CopyTarjeta, type OfertaPublica, type OfertasCalculadora, type OfertasMercado, type ReferenciaLocal } from "./ofertas-intl";
-import { copyFamilia, copyPlanilla, diccionarioVenta, textosTarjeta } from "./textos";
+import { copyFamilia, copyPlanilla, diccionarioVenta, textosTarjeta, tieneVenta } from "./textos";
 import { ventaIntlActiva } from "./index";
 
 // ─── Mapa de la planilla ──────────────────────────────────────────────────────────────────────
@@ -87,7 +87,7 @@ function publica(p: ProductoIntl, hoja?: string): OfertaPublica {
 export function ofertasDeMercado(mercado: string): OfertasMercado {
   const pais = registro.pais(mercado as CodigoMercado);
   const porCalculadora: Record<string, OfertasCalculadora> = {};
-  if (!pais || mercado === "global" || esMercadoDePrueba(mercado)) return { activa: false, porCalculadora, referencia: null };
+  if (!pais || mercado === "global" || esMercadoDePrueba(mercado) || !tieneVenta(pais.mercado.idioma)) return { activa: false, porCalculadora, referencia: null };
   const { idioma, trato } = pais.mercado;
   const productos = productosDeMercado(mercado);
   const planillas = productos.filter((p) => p.tipo === "planilla");
