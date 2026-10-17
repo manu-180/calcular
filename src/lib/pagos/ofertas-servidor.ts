@@ -106,7 +106,7 @@ export function ofertasDeMercado(mercado: string): OfertasMercado {
     porCalculadora[def.id] = { calc: def.slug, nombre: nombreDeCalculo(c.contenido.h1), ofertas: lista };
     for (const o of lista) {
       if (copy[o.familia]) continue;
-      copy[o.familia] = o.familia === "planilla" ? copyPlanilla(idioma, trato) : copyFamilia(o.familia, idioma, trato);
+      copy[o.familia] = o.familia === "planilla" ? copyPlanilla(idioma, trato, pais.mercado.locale) : copyFamilia(o.familia, idioma, trato, pais.mercado.locale);
     }
   }
   return {
@@ -114,7 +114,7 @@ export function ofertasDeMercado(mercado: string): OfertasMercado {
     porCalculadora,
     referencia: referenciaLocalDe(mercado),
     locale: pais.mercado.locale,
-    textos: textosTarjeta(idioma, trato),
+    textos: textosTarjeta(idioma, trato, pais.mercado.locale),
     copy,
   };
 }
@@ -177,7 +177,7 @@ export function resumenCalculos(p: ProductoIntl): Record<string, ResumenCalculo>
   const salida: Record<string, ResumenCalculo> = {};
   if (!pais) return salida;
   const hoy = hoyEn(pais.mercado);
-  const { si, no } = diccionarioVenta(pais.mercado.idioma).general;
+  const { si, no } = diccionarioVenta(pais.mercado.idioma, pais.mercado.locale).general;
   for (const slug of calculadorasDeProducto(p)) {
     const e = pais.calculadoras.find((c) => c.definicion.slug === slug);
     if (!e) continue;

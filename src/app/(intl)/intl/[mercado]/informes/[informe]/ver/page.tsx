@@ -57,7 +57,7 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
   const producto = ctx ? productoIntlDe(ctx.mercado.codigo, informe) : null;
   if (!ctx || !producto || producto.tipo !== "informe") notFound();
   const m = ctx.mercado;
-  const tv = textosVer(m.idioma, m.trato);
+  const tv = textosVer(m.idioma, m.trato, m.locale);
   const landing = rutaLandingIntl(producto);
   const volver = producto.titulo;
 
@@ -111,8 +111,8 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
   const motor = textosMotor(m.idioma, m.trato);
   const estado = estadoDelInforme(def, crudos, props, motor);
   const escenarios = familia.escenarios ? calcularEscenarios(def, familia.escenarios, crudos, props, motor) : null;
-  const textos = textosInforme(m.idioma, m.trato, familia.clave);
-  const tf = textosFamilia(familia.clave, m.idioma, m.trato);
+  const textos = textosInforme(m.idioma, m.trato, familia.clave, m.locale);
+  const tf = textosFamilia(familia.clave, m.idioma, m.trato, m.locale);
   const otras = permitidas.length > 1 && !datos;
 
   const medio = (

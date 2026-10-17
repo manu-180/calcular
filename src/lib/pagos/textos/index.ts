@@ -5,25 +5,35 @@ import { en } from "./en";
 import { es } from "./es";
 import { fr } from "./fr";
 import { it } from "./it";
+import { ja } from "./ja";
+import { ko } from "./ko";
 import { nl } from "./nl";
 import { pt } from "./pt";
 import type { DiccionarioVenta, TextosFamilia } from "./tipos";
+import { zh } from "./zh";
+import { zhHans } from "./zh-hans";
 
 export { rellenar, segunTrato, type DiccionarioVenta, type TextosFamilia, type Variante } from "./tipos";
 
-// ja, ko y zh entraron al motor sin diccionario de venta (frente aparte): sus mercados no generan
-// informes ni ofertas (catalogo-intl, ofertas-servidor) y check_ofertas_intl falla si se registra un
-// país real de esos idiomas antes de que exista. Al sumar el diccionario, el idioma pasa a esta lista.
-export const IDIOMAS_VENTA = ["es", "pt", "en", "fr", "de", "it", "nl"] as const satisfies readonly Idioma[];
+// Todo idioma de IDIOMAS que tenga mercados reales necesita su diccionario de venta: sin él, sus
+// mercados no generan informes ni ofertas (catalogo-intl, ofertas-servidor) y check_ofertas_intl
+// falla al registrar un país. Un idioma nuevo del motor entra acá cuando tiene el suyo.
+export const IDIOMAS_VENTA = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh"] as const satisfies readonly Idioma[];
 export type IdiomaVenta = (typeof IDIOMAS_VENTA)[number];
 
-export const DICCIONARIOS: Readonly<Record<IdiomaVenta, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl };
+export const DICCIONARIOS: Readonly<Record<IdiomaVenta, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+
+// La escritura del chino cambia el diccionario entero, no solo palabras: zh.ts es tradicional
+// (zh-TW, zh-HK) y zh-hans.ts simplificado. Por eso las funciones de abajo reciben el locale.
+const REGIONALES: Readonly<Record<string, DiccionarioVenta>> = { "zh-CN": zhHans, "zh-SG": zhHans };
 
 export function tieneVenta(idioma: Idioma): idioma is IdiomaVenta {
   return (IDIOMAS_VENTA as readonly Idioma[]).includes(idioma);
 }
 
-export function diccionarioVenta(idioma: Idioma): DiccionarioVenta {
+export function diccionarioVenta(idioma: Idioma, locale?: string): DiccionarioVenta {
+  const regional = locale ? REGIONALES[locale] : undefined;
+  if (regional && idioma === "zh") return regional;
   return tieneVenta(idioma) ? DICCIONARIOS[idioma] : DICCIONARIOS.en;
 }
 
@@ -52,27 +62,27 @@ export function resolver<T>(valor: T, trato: Trato): Resuelto<T> {
 
 export type FamiliaResuelta = Resuelto<TextosFamilia>;
 
-export function textosFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato): FamiliaResuelta {
-  return resolver(diccionarioVenta(idioma).familias[clave], trato);
+export function textosFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato, locale?: string): FamiliaResuelta {
+  return resolver(diccionarioVenta(idioma, locale).familias[clave], trato);
 }
 
-export function textosVenta(idioma: Idioma, trato: Trato): Resuelto<Omit<DiccionarioVenta, "familias">> {
-  const { familias: _familias, ...resto } = diccionarioVenta(idioma);
+export function textosVenta(idioma: Idioma, trato: Trato, locale?: string): Resuelto<Omit<DiccionarioVenta, "familias">> {
+  const { familias: _familias, ...resto } = diccionarioVenta(idioma, locale);
   return resolver(resto, trato);
 }
 
-export function textosTarjeta(idioma: Idioma, trato: Trato): TextosTarjeta {
-  const d = diccionarioVenta(idioma);
+export function textosTarjeta(idioma: Idioma, trato: Trato, locale?: string): TextosTarjeta {
+  const d = diccionarioVenta(idioma, locale);
   return { ...resolver(d.tarjeta, trato), ...d.general, aviso: resolver(d.aviso, trato) };
 }
 
-export function copyFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato): CopyTarjeta {
-  const f = textosFamilia(clave, idioma, trato);
+export function copyFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato, locale?: string): CopyTarjeta {
+  const f = textosFamilia(clave, idioma, trato, locale);
   return { nombre: f.nombre, gancho: f.gancho, incluye: f.incluye };
 }
 
-export function copyPlanilla(idioma: Idioma, trato: Trato): CopyTarjeta {
-  const d = diccionarioVenta(idioma);
+export function copyPlanilla(idioma: Idioma, trato: Trato, locale?: string): CopyTarjeta {
+  const d = diccionarioVenta(idioma, locale);
   const p = resolver(d.planilla, trato);
   return { nombre: d.tarjeta.cejaPlanilla, gancho: p.gancho, incluye: p.incluye };
 }

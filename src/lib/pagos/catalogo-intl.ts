@@ -61,7 +61,7 @@ export function definirProductoIntl(d: DefinicionProductoIntl): ProductoIntl {
 function planillaSueldo(d: { mercado: string; titulo: string; tituloCorto: string; paraQuien: string; incluye: string; normas: string; disparador: string }): ProductoIntl {
   const anio = () => anioPlanillaIntl(d.mercado);
   const m = registro.pais(d.mercado as CodigoMercado)!.mercado;
-  const cat = resolver(diccionarioVenta(m.idioma).catalogo, m.trato);
+  const cat = resolver(diccionarioVenta(m.idioma, m.locale).catalogo, m.trato);
   const producto = definirProductoIntl({
     mercado: d.mercado,
     slug: "sueldo-y-liquidacion",
@@ -93,8 +93,8 @@ export function archivoPlanillaSueldo(anio: number): string {
 
 function informe(f: FamiliaInforme, mercado: string): ProductoIntl {
   const m = registro.pais(mercado as CodigoMercado)!.mercado;
-  const tx = textosFamilia(f.clave, m.idioma, m.trato);
-  const cat = diccionarioVenta(m.idioma).catalogo;
+  const tx = textosFamilia(f.clave, m.idioma, m.trato, m.locale);
+  const cat = diccionarioVenta(m.idioma, m.locale).catalogo;
   return definirProductoIntl({
     mercado,
     slug: f.slug,
