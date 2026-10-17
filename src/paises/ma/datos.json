@@ -432,6 +432,91 @@
           }
         }
       ]
+    },
+    {
+      "id": "ma.cnss-salarie",
+      "nombre": "Cotisations salariales CNSS et AMO",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "prestations-sociales": 4.48,
+            "amo": 2.26
+          },
+          "motivo": "cnss.ma ne répond pas depuis notre environnement et le décret fixant les taux n'a pas été lu au Bulletin officiel. Valeurs concordantes de guides de paie, à vérifier."
+        }
+      ]
+    },
+    {
+      "id": "ma.cnss-employeur",
+      "nombre": "Cotisations patronales CNSS, AMO et taxe de formation professionnelle",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "prestations-sociales": 8.98,
+            "allocations-familiales": 6.4,
+            "amo": 4.11,
+            "formation-professionnelle": 1.6
+          },
+          "motivo": "cnss.ma ne répond pas depuis notre environnement et le décret fixant les taux n'a pas été lu au Bulletin officiel. Valeurs concordantes de guides de paie, à vérifier."
+        }
+      ]
+    },
+    {
+      "id": "ma.cnss-plafond",
+      "nombre": "Plafond mensuel des prestations sociales CNSS",
+      "tipo": "numero",
+      "unidad": "MAD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 6000,
+          "motivo": "cnss.ma ne répond pas depuis notre environnement et le décret fixant les taux n'a pas été lu au Bulletin officiel. Valeurs concordantes de guides de paie, à vérifier."
+        }
+      ]
+    },
+    {
+      "id": "ma.smig-horaire",
+      "nombre": "Salaire minimum interprofessionnel garanti (SMIG) horaire",
+      "tipo": "numero",
+      "unidad": "MAD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 17.92,
+          "motivo": "Décret n° 2-25-983 publié au BO arabe n° 7469 ; sa traduction n'apparaît dans aucune édition française du BO consultée (7466 à 7544). Montant repris de la presse."
+        }
+      ]
+    },
+    {
+      "id": "ma.preavis",
+      "nombre": "Délai de préavis selon le décret n° 2-04-469 (jours)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2005-01-06",
+          "valor": {
+            "cadre-moins-1-an": 30,
+            "cadre-1-a-5-ans": 60,
+            "cadre-plus-5-ans": 90,
+            "employe-moins-1-an": 8,
+            "employe-1-a-5-ans": 30,
+            "employe-plus-5-ans": 60
+          },
+          "motivo": "Le BO n° 5280 (6 janvier 2005) qui publie le décret n'a pas pu être téléchargé depuis sgg.gov.ma. Durées reprises de mémoire et de guides, à vérifier."
+        }
+      ]
     }
   ]
 }
