@@ -794,6 +794,160 @@
       ]
     },
     {
+      "id": "ke.normal-week-hours",
+      "nombre": "Normal working week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 52,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.night-week-hours",
+      "nombre": "Normal working week on night work",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.overtime-normal-factor",
+      "nombre": "Overtime on normal days: times the normal hourly rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.overtime-rest-day-factor",
+      "nombre": "Overtime on rest days and public holidays: times the normal hourly rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.overtime-hourly-divisor",
+      "nombre": "Monthly wage divisor for the basic hourly rate",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 225,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.stamp-duty-per-1000",
+      "nombre": "Stamp duty on a transfer of land: per KSh 1,000 or part above KSh 2,000",
+      "tipo": "mapa",
+      "unidad": "KES",
+      "etiquetas": {
+        "municipality": "Within a municipality",
+        "other": "Outside a municipality"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "municipality": 40,
+            "other": 20
+          },
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Stamp Duty Act (Cap. 480), Schedule, items 11 and 12A",
+            "url": "https://new.kenyalaw.org/akn/ke/act/1958/31/eng@2026-07-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.stamp-duty-first-2000",
+      "nombre": "Stamp duty on a transfer of land: duty on the first KSh 2,000",
+      "tipo": "mapa",
+      "unidad": "KES",
+      "etiquetas": {
+        "municipality": "Within a municipality",
+        "other": "Outside a municipality"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "municipality": 80,
+            "other": 40
+          },
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Stamp Duty Act (Cap. 480), Schedule, items 11 and 12A",
+            "url": "https://new.kenyalaw.org/akn/ke/act/1958/31/eng@2026-07-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
       "id": "ke.cgt-rate",
       "nombre": "Capital gains tax rate",
       "tipo": "numero",

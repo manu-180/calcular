@@ -14,6 +14,8 @@ import employerCostCalculator from "./calculadoras/employer-cost-calculator";
 import contenidoEmployerCostCalculator from "./contenido/employer-cost-calculator";
 import minimumWage from "./calculadoras/minimum-wage";
 import contenidoMinimumWage from "./contenido/minimum-wage";
+import overtimeCalculator from "./calculadoras/overtime-calculator";
+import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
 import annualLeaveCalculator from "./calculadoras/annual-leave-calculator";
 import contenidoAnnualLeaveCalculator from "./contenido/annual-leave-calculator";
 import sickLeaveCalculator from "./calculadoras/sick-leave-calculator";
@@ -32,6 +34,8 @@ import rentalIncomeTaxCalculator from "./calculadoras/rental-income-tax-calculat
 import contenidoRentalIncomeTaxCalculator from "./contenido/rental-income-tax-calculator";
 import capitalGainsTaxCalculator from "./calculadoras/capital-gains-tax-calculator";
 import contenidoCapitalGainsTaxCalculator from "./contenido/capital-gains-tax-calculator";
+import stampDutyCalculator from "./calculadoras/stamp-duty-calculator";
+import contenidoStampDutyCalculator from "./contenido/stamp-duty-calculator";
 import withholdingTaxCalculator from "./calculadoras/withholding-tax-calculator";
 import contenidoWithholdingTaxCalculator from "./contenido/withholding-tax-calculator";
 import advanceTaxCalculator from "./calculadoras/advance-tax-calculator";
@@ -63,6 +67,7 @@ export default definirPais({
     { definicion: housingLevyCalculator, contenido: contenidoHousingLevyCalculator, cliente: () => import("./calculadoras/housing-levy-calculator.cliente") },
     { definicion: employerCostCalculator, contenido: contenidoEmployerCostCalculator, cliente: () => import("./calculadoras/employer-cost-calculator.cliente") },
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
+    { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
     { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
     { definicion: sickLeaveCalculator, contenido: contenidoSickLeaveCalculator, cliente: () => import("./calculadoras/sick-leave-calculator.cliente") },
     { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
@@ -72,6 +77,7 @@ export default definirPais({
     { definicion: turnoverTaxCalculator, contenido: contenidoTurnoverTaxCalculator, cliente: () => import("./calculadoras/turnover-tax-calculator.cliente") },
     { definicion: rentalIncomeTaxCalculator, contenido: contenidoRentalIncomeTaxCalculator, cliente: () => import("./calculadoras/rental-income-tax-calculator.cliente") },
     { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
+    { definicion: stampDutyCalculator, contenido: contenidoStampDutyCalculator, cliente: () => import("./calculadoras/stamp-duty-calculator.cliente") },
     { definicion: withholdingTaxCalculator, contenido: contenidoWithholdingTaxCalculator, cliente: () => import("./calculadoras/withholding-tax-calculator.cliente") },
     { definicion: advanceTaxCalculator, contenido: contenidoAdvanceTaxCalculator, cliente: () => import("./calculadoras/advance-tax-calculator.cliente") },
     { definicion: payePenaltyCalculator, contenido: contenidoPayePenaltyCalculator, cliente: () => import("./calculadoras/paye-penalty-calculator.cliente") },

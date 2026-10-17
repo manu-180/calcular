@@ -42,7 +42,7 @@ async function cbrCbk(http: Http, url: string): Promise<readonly PuntoSerie[] | 
     if (c.length !== 2) continue;
     const fecha = fechaDma(c[0]);
     const valor = Number(c[1]);
-    if (fecha && esFechaISO(fecha) && fecha >= "2024-01-01" && Number.isFinite(valor)) puntos.push({ fecha, valor });
+    if (fecha && esFechaISO(fecha) && fecha >= "2024-08-01" && Number.isFinite(valor)) puntos.push({ fecha, valor });
   }
   return ordenar(puntos);
 }
@@ -68,6 +68,30 @@ async function financeActKra(http: Http, url: string, ultima: number, titulo: st
   if (!/Kenya Revenue Authority/i.test(html)) return null;
   const nueva = Math.max(0, ...anios);
   return nueva > ultima ? [{ titulo: `${titulo}: Finance Act ${nueva}`, url, fecha: `${nueva}-07-01` }] : [];
+}
+
+// Cada ley en new.kenyalaw.org lista sus versiones consolidadas como "eng@AAAA-MM-DD". Una versión
+// posterior a la que leímos quiere decir que la ley o la orden se modificó.
+async function versionKenyaLaw(http: Http, url: string, leida: FechaISO, titulo: string): Promise<readonly HallazgoNorma[] | null> {
+  const html = await http.texto(url, { userAgentNavegador: true });
+  const fechas = [...html.matchAll(/eng@(\d{4}-\d{2}-\d{2})/g)].map((m) => m[1]).filter((f) => esFechaISO(f));
+  if (!fechas.length) return null;
+  const ultima = fechas.sort().at(-1)!;
+  return ultima > leida ? [{ titulo, url: `${url}/eng@${ultima}`, fecha: ultima as FechaISO }] : [];
+}
+
+function kenyaLaw(id: string, ruta: string, leida: FechaISO, datos: readonly string[], titulo: string): Detector {
+  return {
+    id,
+    carril: "norma",
+    datos,
+    metodo: "html",
+    url: `https://new.kenyalaw.org/akn/ke/act/${ruta}` as `https://${string}`,
+    userAgentNavegador: true,
+    traer(http) {
+      return versionKenyaLaw(http, this.url, leida, titulo);
+    },
+  };
 }
 
 function kra(id: string, pagina: string, datos: readonly string[], ultima: number, titulo: string): Detector {
@@ -143,6 +167,32 @@ export const detectores: readonly Detector[] = [
   kra("ke.kra-mri", "residential-rental-income", ["ke.mri-rate", "ke.mri-lower", "ke.mri-upper"], 2023, "KRA rental income page cites a newer Finance Act"),
   kra("ke.kra-wht", "individual-withholding-tax", ["ke.wht-resident", "ke.wht-non-resident", "ke.tbill-wht"], 2023, "KRA withholding tax page cites a newer Finance Act"),
   kra("ke.kra-cgt", "capital-gains-tax", ["ke.cgt-rate"], 2023, "KRA capital gains tax page cites a newer Finance Act"),
+  kenyaLaw(
+    "ke.kenyalaw-wages-order",
+    "ln/1982/120",
+    "2026-06-26",
+    ["ke.minimum-wage-monthly", "ke.minimum-wage-hourly", "ke.normal-week-hours", "ke.night-week-hours", "ke.overtime-normal-factor", "ke.overtime-rest-day-factor", "ke.overtime-hourly-divisor"],
+    "New version of the Regulation of Wages (General) Order",
+  ),
+  kenyaLaw(
+    "ke.kenyalaw-employment-act",
+    "2007/11",
+    "2024-04-26",
+    [
+      "ke.annual-leave-days",
+      "ke.leave-days-per-month",
+      "ke.sick-full-pay-days",
+      "ke.sick-half-pay-days",
+      "ke.sick-qualifying-months",
+      "ke.maternity-months",
+      "ke.paternity-weeks",
+      "ke.notice-days-monthly",
+      "ke.redundancy-severance-days",
+    ],
+    "New version of the Employment Act",
+  ),
+  kenyaLaw("ke.kenyalaw-stamp-duty", "1958/31", "2026-07-01", ["ke.stamp-duty-per-1000", "ke.stamp-duty-first-2000"], "New version of the Stamp Duty Act"),
+  kenyaLaw("ke.kenyalaw-income-tax", "1973/16", "2026-07-01", ["ke.mri-lower"], "New version of the Income Tax Act"),
   {
     // El NSSF publica cada cambio de tasas como entrada de WordPress (así salió el aviso del Year 4).
     id: "ke.nssf-posts",
