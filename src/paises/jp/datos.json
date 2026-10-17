@@ -1,0 +1,3719 @@
+{
+  "mercado": "jp",
+  "datos": [
+    {
+      "id": "jp.consumption-tax-standard",
+      "nombre": "消費税の標準税率（国税＋地方消費税）",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-10-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.6303 消費税および地方消費税の税率",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6303.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.consumption-tax-reduced",
+      "nombre": "消費税の軽減税率（国税＋地方消費税）",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "nota": "令和9年4月1日から令和11年3月31日まで飲食料品の税率が引き下げられる。新しい率は国税庁の特設サイトで確認してから追加する。",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-10-01",
+          "hasta": "2027-03-31",
+          "valor": 8,
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.6303 消費税および地方消費税の税率",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6303.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.consumption-tax-national-standard",
+      "nombre": "標準税率のうち消費税（国税）",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-10-01",
+          "valor": 7.8,
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.6303 消費税および地方消費税の税率",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6303.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.consumption-tax-national-reduced",
+      "nombre": "軽減税率のうち消費税（国税）",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-10-01",
+          "hasta": "2027-03-31",
+          "valor": 6.24,
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.6303 消費税および地方消費税の税率",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6303.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.income-tax-brackets",
+      "nombre": "所得税の税率（課税される所得金額に対する超過累進税率）",
+      "tipo": "escala",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1950000,
+              "tasa": 5
+            },
+            {
+              "desde": 1950000,
+              "hasta": 3300000,
+              "tasa": 10
+            },
+            {
+              "desde": 3300000,
+              "hasta": 6950000,
+              "tasa": 20
+            },
+            {
+              "desde": 6950000,
+              "hasta": 9000000,
+              "tasa": 23
+            },
+            {
+              "desde": 9000000,
+              "hasta": 18000000,
+              "tasa": 33
+            },
+            {
+              "desde": 18000000,
+              "hasta": 40000000,
+              "tasa": 40
+            },
+            {
+              "desde": 40000000,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.2260 所得税の税率",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.income-surtax-rate",
+      "nombre": "所得税額に上乗せされる特別所得税の合計税率",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.1,
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.2260 所得税の税率",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "令和8年までは復興特別所得税2.1％。令和9年1月1日以後は復興特別所得税1.1％と防衛特別所得税1％で、合計は変わらない（No.1420にも同じ説明）。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.basic-deduction",
+      "nombre": "所得税の基礎控除（合計所得金額ごとの控除額、cuotaFija）",
+      "tipo": "escala",
+      "unidad": "JPY",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 4890000,
+              "tasa": 0,
+              "cuotaFija": 1040000
+            },
+            {
+              "desde": 4890000.01,
+              "hasta": 6550000,
+              "tasa": 0,
+              "cuotaFija": 670000
+            },
+            {
+              "desde": 6550000.01,
+              "hasta": 23500000,
+              "tasa": 0,
+              "cuotaFija": 620000
+            },
+            {
+              "desde": 23500000.01,
+              "hasta": 24000000,
+              "tasa": 0,
+              "cuotaFija": 480000
+            },
+            {
+              "desde": 24000000.01,
+              "hasta": 24500000,
+              "tasa": 0,
+              "cuotaFija": 320000
+            },
+            {
+              "desde": 24500000.01,
+              "hasta": 25000000,
+              "tasa": 0,
+              "cuotaFija": 160000
+            },
+            {
+              "desde": 25000000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.1199 基礎控除",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1320000,
+              "tasa": 0,
+              "cuotaFija": 990000
+            },
+            {
+              "desde": 1320000.01,
+              "hasta": 23500000,
+              "tasa": 0,
+              "cuotaFija": 620000
+            },
+            {
+              "desde": 23500000.01,
+              "hasta": 24000000,
+              "tasa": 0,
+              "cuotaFija": 480000
+            },
+            {
+              "desde": 24000000.01,
+              "hasta": 24500000,
+              "tasa": 0,
+              "cuotaFija": 320000
+            },
+            {
+              "desde": 24500000.01,
+              "hasta": 25000000,
+              "tasa": 0,
+              "cuotaFija": 160000
+            },
+            {
+              "desde": 25000000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.1199 基礎控除",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.employment-income-deduction",
+      "nombre": "給与所得控除（収入金額×tasa＋cuotaFija）",
+      "tipo": "escala",
+      "unidad": "JPY",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2200000,
+              "tasa": 0,
+              "cuotaFija": 740000
+            },
+            {
+              "desde": 2200000.01,
+              "hasta": 3600000,
+              "tasa": 30,
+              "cuotaFija": 80000
+            },
+            {
+              "desde": 3600000.01,
+              "hasta": 6600000,
+              "tasa": 20,
+              "cuotaFija": 440000
+            },
+            {
+              "desde": 6600000.01,
+              "hasta": 8500000,
+              "tasa": 10,
+              "cuotaFija": 1100000
+            },
+            {
+              "desde": 8500000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 1950000
+            }
+          ],
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.1410 給与所得控除",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "令和8年分・令和9年分の表（令和8年12月1日施行）。660万円未満は年末調整で所得税法別表第五を使うため、数百円の差が出ることがあります。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.resident-tax-rate",
+      "nombre": "個人住民税 所得割の標準税率（道府県民税4％＋市町村民税6％）",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "総務省",
+            "titulo": "地方税制度 個人住民税",
+            "url": "https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/150790_06.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.resident-tax-per-capita",
+      "nombre": "個人住民税 均等割の標準税率（道府県民税1,000円＋市町村民税3,000円）",
+      "tipo": "numero",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4000,
+          "fuente": {
+            "organismo": "総務省",
+            "titulo": "地方税制度 個人住民税",
+            "url": "https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/150790_06.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.forest-environment-tax",
+      "nombre": "森林環境税（均等割とあわせて徴収）",
+      "tipo": "numero",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "総務省",
+            "titulo": "地方税制度 個人住民税",
+            "url": "https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/150790_06.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.resident-basic-deduction",
+      "nombre": "個人住民税の基礎控除（合計所得金額ごとの控除額、cuotaFija）",
+      "tipo": "escala",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 24000000,
+              "tasa": 0,
+              "cuotaFija": 430000
+            },
+            {
+              "desde": 24000000.01,
+              "hasta": 24500000,
+              "tasa": 0,
+              "cuotaFija": 290000
+            },
+            {
+              "desde": 24500000.01,
+              "hasta": 25000000,
+              "tasa": 0,
+              "cuotaFija": 150000
+            },
+            {
+              "desde": 25000000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "横浜市",
+            "titulo": "所得控除（個人住民税）",
+            "url": "https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/y-shizei/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/shotokukoujo.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "最高43万円が令和8年度以降も同じことは総務省「個人住民税の基礎控除等について」（https://www.soumu.go.jp/main_content/001075462.pdf）で確認。令和8年度税制改正の大綱でも個人住民税の基礎控除は改正なし。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.resident-adjustment",
+      "nombre": "個人住民税の調整控除",
+      "tipo": "mapa",
+      "unidad": "JPY",
+      "etiquetas": {
+        "gap": "基礎控除の人的控除額の差",
+        "rate": "控除率（％）",
+        "threshold": "合計課税所得金額の区切り"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "gap": 50000,
+            "rate": 5,
+            "threshold": 2000000
+          },
+          "fuente": {
+            "organismo": "横浜市",
+            "titulo": "税額控除（調整控除・寄附金税額控除）",
+            "url": "https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/y-shizei/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/zeigakukoujo.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.furusato",
+      "nombre": "ふるさと納税の特例控除",
+      "tipo": "mapa",
+      "unidad": "JPY",
+      "etiquetas": {
+        "cap-rate": "特例控除の上限（住民税所得割額に対する％）",
+        "self-pay": "自己負担額",
+        "basic-rate": "基本控除の率（％）"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "cap-rate": 20,
+            "self-pay": 2000,
+            "basic-rate": 10
+          },
+          "fuente": {
+            "organismo": "横浜市",
+            "titulo": "税額控除（調整控除・寄附金税額控除）",
+            "url": "https://www.city.yokohama.lg.jp/kurashi/koseki-zei-hoken/zeikin/y-shizei/kojin-shiminzei-kenminzei/kojin-shiminzei-shosai/zeigakukoujo.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.health-insurance-rate",
+      "nombre": "協会けんぽの健康保険料率（都道府県別、労使合計）",
+      "tipo": "numero",
+      "unidad": "%",
+      "regiones": [
+        "hokkaido",
+        "aomori",
+        "iwate",
+        "miyagi",
+        "akita",
+        "yamagata",
+        "fukushima",
+        "ibaraki",
+        "tochigi",
+        "gunma",
+        "saitama",
+        "chiba",
+        "tokyo",
+        "kanagawa",
+        "niigata",
+        "toyama",
+        "ishikawa",
+        "fukui",
+        "yamanashi",
+        "nagano",
+        "gifu",
+        "shizuoka",
+        "aichi",
+        "mie",
+        "shiga",
+        "kyoto",
+        "osaka",
+        "hyogo",
+        "nara",
+        "wakayama",
+        "tottori",
+        "shimane",
+        "okayama",
+        "hiroshima",
+        "yamaguchi",
+        "tokushima",
+        "kagawa",
+        "ehime",
+        "kochi",
+        "fukuoka",
+        "saga",
+        "nagasaki",
+        "kumamoto",
+        "oita",
+        "miyazaki",
+        "kagoshima",
+        "okinawa"
+      ],
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "hokkaido",
+          "desde": "2026-03-01",
+          "valor": 10.28,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "aomori",
+          "desde": "2026-03-01",
+          "valor": 9.85,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "iwate",
+          "desde": "2026-03-01",
+          "valor": 9.51,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "miyagi",
+          "desde": "2026-03-01",
+          "valor": 10.1,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "akita",
+          "desde": "2026-03-01",
+          "valor": 10.01,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yamagata",
+          "desde": "2026-03-01",
+          "valor": 9.75,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "fukushima",
+          "desde": "2026-03-01",
+          "valor": 9.5,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ibaraki",
+          "desde": "2026-03-01",
+          "valor": 9.52,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tochigi",
+          "desde": "2026-03-01",
+          "valor": 9.82,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "gunma",
+          "desde": "2026-03-01",
+          "valor": 9.68,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "saitama",
+          "desde": "2026-03-01",
+          "valor": 9.67,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "chiba",
+          "desde": "2026-03-01",
+          "valor": 9.73,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tokyo",
+          "desde": "2026-03-01",
+          "valor": 9.85,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kanagawa",
+          "desde": "2026-03-01",
+          "valor": 9.92,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "niigata",
+          "desde": "2026-03-01",
+          "valor": 9.21,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "toyama",
+          "desde": "2026-03-01",
+          "valor": 9.59,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ishikawa",
+          "desde": "2026-03-01",
+          "valor": 9.7,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "fukui",
+          "desde": "2026-03-01",
+          "valor": 9.71,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yamanashi",
+          "desde": "2026-03-01",
+          "valor": 9.55,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nagano",
+          "desde": "2026-03-01",
+          "valor": 9.63,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "gifu",
+          "desde": "2026-03-01",
+          "valor": 9.8,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "shizuoka",
+          "desde": "2026-03-01",
+          "valor": 9.61,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "aichi",
+          "desde": "2026-03-01",
+          "valor": 9.93,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mie",
+          "desde": "2026-03-01",
+          "valor": 9.77,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "shiga",
+          "desde": "2026-03-01",
+          "valor": 9.88,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kyoto",
+          "desde": "2026-03-01",
+          "valor": 9.89,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "osaka",
+          "desde": "2026-03-01",
+          "valor": 10.13,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "hyogo",
+          "desde": "2026-03-01",
+          "valor": 10.12,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nara",
+          "desde": "2026-03-01",
+          "valor": 9.91,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "wakayama",
+          "desde": "2026-03-01",
+          "valor": 10.06,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tottori",
+          "desde": "2026-03-01",
+          "valor": 9.86,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "shimane",
+          "desde": "2026-03-01",
+          "valor": 9.94,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "okayama",
+          "desde": "2026-03-01",
+          "valor": 10.05,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "hiroshima",
+          "desde": "2026-03-01",
+          "valor": 9.78,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yamaguchi",
+          "desde": "2026-03-01",
+          "valor": 10.15,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tokushima",
+          "desde": "2026-03-01",
+          "valor": 10.24,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kagawa",
+          "desde": "2026-03-01",
+          "valor": 10.02,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ehime",
+          "desde": "2026-03-01",
+          "valor": 9.98,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kochi",
+          "desde": "2026-03-01",
+          "valor": 10.05,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "fukuoka",
+          "desde": "2026-03-01",
+          "valor": 10.11,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "saga",
+          "desde": "2026-03-01",
+          "valor": 10.55,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nagasaki",
+          "desde": "2026-03-01",
+          "valor": 10.06,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kumamoto",
+          "desde": "2026-03-01",
+          "valor": 10.08,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "oita",
+          "desde": "2026-03-01",
+          "valor": 10.08,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "miyazaki",
+          "desde": "2026-03-01",
+          "valor": 9.77,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kagoshima",
+          "desde": "2026-03-01",
+          "valor": 10.13,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "okinawa",
+          "desde": "2026-03-01",
+          "valor": 9.44,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.long-term-care-rate",
+      "nombre": "介護保険料率（40歳から64歳、労使合計）",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": 1.62,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.child-support-rate",
+      "nombre": "子ども・子育て支援金率（労使合計）",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 0.23,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年度都道府県単位保険料率",
+            "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.pension-insurance-rate",
+      "nombre": "厚生年金保険料率（労使合計）",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-09-01",
+          "valor": 18.3,
+          "fuente": {
+            "organismo": "日本年金機構",
+            "titulo": "厚生年金保険料額表",
+            "url": "https://www.nenkin.go.jp/service/kounen/hokenryo/ryogaku/ryogakuhyo/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.standard-monthly-remuneration",
+      "nombre": "健康保険の標準報酬月額（報酬月額の区分ごと、cuotaFija）",
+      "tipo": "escala",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 63000,
+              "tasa": 0,
+              "cuotaFija": 58000
+            },
+            {
+              "desde": 63000,
+              "hasta": 73000,
+              "tasa": 0,
+              "cuotaFija": 68000
+            },
+            {
+              "desde": 73000,
+              "hasta": 83000,
+              "tasa": 0,
+              "cuotaFija": 78000
+            },
+            {
+              "desde": 83000,
+              "hasta": 93000,
+              "tasa": 0,
+              "cuotaFija": 88000
+            },
+            {
+              "desde": 93000,
+              "hasta": 101000,
+              "tasa": 0,
+              "cuotaFija": 98000
+            },
+            {
+              "desde": 101000,
+              "hasta": 107000,
+              "tasa": 0,
+              "cuotaFija": 104000
+            },
+            {
+              "desde": 107000,
+              "hasta": 114000,
+              "tasa": 0,
+              "cuotaFija": 110000
+            },
+            {
+              "desde": 114000,
+              "hasta": 122000,
+              "tasa": 0,
+              "cuotaFija": 118000
+            },
+            {
+              "desde": 122000,
+              "hasta": 130000,
+              "tasa": 0,
+              "cuotaFija": 126000
+            },
+            {
+              "desde": 130000,
+              "hasta": 138000,
+              "tasa": 0,
+              "cuotaFija": 134000
+            },
+            {
+              "desde": 138000,
+              "hasta": 146000,
+              "tasa": 0,
+              "cuotaFija": 142000
+            },
+            {
+              "desde": 146000,
+              "hasta": 155000,
+              "tasa": 0,
+              "cuotaFija": 150000
+            },
+            {
+              "desde": 155000,
+              "hasta": 165000,
+              "tasa": 0,
+              "cuotaFija": 160000
+            },
+            {
+              "desde": 165000,
+              "hasta": 175000,
+              "tasa": 0,
+              "cuotaFija": 170000
+            },
+            {
+              "desde": 175000,
+              "hasta": 185000,
+              "tasa": 0,
+              "cuotaFija": 180000
+            },
+            {
+              "desde": 185000,
+              "hasta": 195000,
+              "tasa": 0,
+              "cuotaFija": 190000
+            },
+            {
+              "desde": 195000,
+              "hasta": 210000,
+              "tasa": 0,
+              "cuotaFija": 200000
+            },
+            {
+              "desde": 210000,
+              "hasta": 230000,
+              "tasa": 0,
+              "cuotaFija": 220000
+            },
+            {
+              "desde": 230000,
+              "hasta": 250000,
+              "tasa": 0,
+              "cuotaFija": 240000
+            },
+            {
+              "desde": 250000,
+              "hasta": 270000,
+              "tasa": 0,
+              "cuotaFija": 260000
+            },
+            {
+              "desde": 270000,
+              "hasta": 290000,
+              "tasa": 0,
+              "cuotaFija": 280000
+            },
+            {
+              "desde": 290000,
+              "hasta": 310000,
+              "tasa": 0,
+              "cuotaFija": 300000
+            },
+            {
+              "desde": 310000,
+              "hasta": 330000,
+              "tasa": 0,
+              "cuotaFija": 320000
+            },
+            {
+              "desde": 330000,
+              "hasta": 350000,
+              "tasa": 0,
+              "cuotaFija": 340000
+            },
+            {
+              "desde": 350000,
+              "hasta": 370000,
+              "tasa": 0,
+              "cuotaFija": 360000
+            },
+            {
+              "desde": 370000,
+              "hasta": 395000,
+              "tasa": 0,
+              "cuotaFija": 380000
+            },
+            {
+              "desde": 395000,
+              "hasta": 425000,
+              "tasa": 0,
+              "cuotaFija": 410000
+            },
+            {
+              "desde": 425000,
+              "hasta": 455000,
+              "tasa": 0,
+              "cuotaFija": 440000
+            },
+            {
+              "desde": 455000,
+              "hasta": 485000,
+              "tasa": 0,
+              "cuotaFija": 470000
+            },
+            {
+              "desde": 485000,
+              "hasta": 515000,
+              "tasa": 0,
+              "cuotaFija": 500000
+            },
+            {
+              "desde": 515000,
+              "hasta": 545000,
+              "tasa": 0,
+              "cuotaFija": 530000
+            },
+            {
+              "desde": 545000,
+              "hasta": 575000,
+              "tasa": 0,
+              "cuotaFija": 560000
+            },
+            {
+              "desde": 575000,
+              "hasta": 605000,
+              "tasa": 0,
+              "cuotaFija": 590000
+            },
+            {
+              "desde": 605000,
+              "hasta": 635000,
+              "tasa": 0,
+              "cuotaFija": 620000
+            },
+            {
+              "desde": 635000,
+              "hasta": 665000,
+              "tasa": 0,
+              "cuotaFija": 650000
+            },
+            {
+              "desde": 665000,
+              "hasta": 695000,
+              "tasa": 0,
+              "cuotaFija": 680000
+            },
+            {
+              "desde": 695000,
+              "hasta": 730000,
+              "tasa": 0,
+              "cuotaFija": 710000
+            },
+            {
+              "desde": 730000,
+              "hasta": 770000,
+              "tasa": 0,
+              "cuotaFija": 750000
+            },
+            {
+              "desde": 770000,
+              "hasta": 810000,
+              "tasa": 0,
+              "cuotaFija": 790000
+            },
+            {
+              "desde": 810000,
+              "hasta": 855000,
+              "tasa": 0,
+              "cuotaFija": 830000
+            },
+            {
+              "desde": 855000,
+              "hasta": 905000,
+              "tasa": 0,
+              "cuotaFija": 880000
+            },
+            {
+              "desde": 905000,
+              "hasta": 955000,
+              "tasa": 0,
+              "cuotaFija": 930000
+            },
+            {
+              "desde": 955000,
+              "hasta": 1005000,
+              "tasa": 0,
+              "cuotaFija": 980000
+            },
+            {
+              "desde": 1005000,
+              "hasta": 1055000,
+              "tasa": 0,
+              "cuotaFija": 1030000
+            },
+            {
+              "desde": 1055000,
+              "hasta": 1115000,
+              "tasa": 0,
+              "cuotaFija": 1090000
+            },
+            {
+              "desde": 1115000,
+              "hasta": 1175000,
+              "tasa": 0,
+              "cuotaFija": 1150000
+            },
+            {
+              "desde": 1175000,
+              "hasta": 1235000,
+              "tasa": 0,
+              "cuotaFija": 1210000
+            },
+            {
+              "desde": 1235000,
+              "hasta": 1295000,
+              "tasa": 0,
+              "cuotaFija": 1270000
+            },
+            {
+              "desde": 1295000,
+              "hasta": 1355000,
+              "tasa": 0,
+              "cuotaFija": 1330000
+            },
+            {
+              "desde": 1355000,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 1390000
+            }
+          ],
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年3月分（4月納付分）からの健康保険・厚生年金保険の保険料額表（東京支部）",
+            "url": "https://www.kyoukaikenpo.or.jp/assets/R8_13tokyo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "等級と報酬月額の区分は全国共通。厚生年金は健康保険の4等級（8万8千円）から35等級（65万円）まで。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.pension-remuneration-limits",
+      "nombre": "厚生年金の標準報酬月額の下限と上限",
+      "tipo": "mapa",
+      "unidad": "JPY",
+      "etiquetas": {
+        "min": "下限",
+        "max": "上限"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": {
+            "min": 88000,
+            "max": 650000
+          },
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "令和8年3月分（4月納付分）からの健康保険・厚生年金保険の保険料額表（東京支部）",
+            "url": "https://www.kyoukaikenpo.or.jp/assets/R8_13tokyo.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "等級と報酬月額の区分は全国共通。厚生年金は健康保険の4等級（8万8千円）から35等級（65万円）まで。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.employment-insurance-worker",
+      "nombre": "雇用保険料率（労働者負担）",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "一般の事業",
+        "agriculture": "農林水産・清酒製造の事業",
+        "construction": "建設の事業"
+      },
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": {
+            "general": 0.5,
+            "agriculture": 0.6,
+            "construction": 0.6
+          },
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8（2026）年度 雇用保険料率のご案内",
+            "url": "https://www.mhlw.go.jp/content/001692566.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "適用期間は令和8年4月1日から令和9年3月31日まで。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.employment-insurance-employer",
+      "nombre": "雇用保険料率（事業主負担）",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "一般の事業",
+        "agriculture": "農林水産・清酒製造の事業",
+        "construction": "建設の事業"
+      },
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": {
+            "general": 0.85,
+            "agriculture": 0.95,
+            "construction": 1.05
+          },
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8（2026）年度 雇用保険料率のご案内",
+            "url": "https://www.mhlw.go.jp/content/001692566.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "適用期間は令和8年4月1日から令和9年3月31日まで。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.minimum-wage",
+      "nombre": "地域別最低賃金（時間額）",
+      "tipo": "numero",
+      "unidad": "JPY",
+      "regiones": [
+        "hokkaido",
+        "aomori",
+        "iwate",
+        "miyagi",
+        "akita",
+        "yamagata",
+        "fukushima",
+        "ibaraki",
+        "tochigi",
+        "gunma",
+        "saitama",
+        "chiba",
+        "tokyo",
+        "kanagawa",
+        "niigata",
+        "toyama",
+        "ishikawa",
+        "fukui",
+        "yamanashi",
+        "nagano",
+        "gifu",
+        "shizuoka",
+        "aichi",
+        "mie",
+        "shiga",
+        "kyoto",
+        "osaka",
+        "hyogo",
+        "nara",
+        "wakayama",
+        "tottori",
+        "shimane",
+        "okayama",
+        "hiroshima",
+        "yamaguchi",
+        "tokushima",
+        "kagawa",
+        "ehime",
+        "kochi",
+        "fukuoka",
+        "saga",
+        "nagasaki",
+        "kumamoto",
+        "oita",
+        "miyazaki",
+        "kagoshima",
+        "okinawa"
+      ],
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "hokkaido",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1075,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "hokkaido",
+          "desde": "2026-10-01",
+          "valor": 1131,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "aomori",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-28",
+          "valor": 1029,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "aomori",
+          "desde": "2026-10-29",
+          "valor": 1090,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "iwate",
+          "desde": "2026-04-01",
+          "hasta": "2026-11-30",
+          "valor": 1031,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "iwate",
+          "desde": "2026-12-01",
+          "valor": 1090,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "miyagi",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1038,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "miyagi",
+          "desde": "2026-10-01",
+          "valor": 1098,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "akita",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-13",
+          "valor": 1031,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "akita",
+          "desde": "2026-10-14",
+          "valor": 1090,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yamagata",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-29",
+          "valor": 1032,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yamagata",
+          "desde": "2026-10-30",
+          "valor": 1092,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "fukushima",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-15",
+          "valor": 1033,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "fukushima",
+          "desde": "2026-10-16",
+          "valor": 1094,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ibaraki",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-17",
+          "valor": 1074,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ibaraki",
+          "desde": "2026-10-18",
+          "valor": 1136,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tochigi",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1068,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tochigi",
+          "desde": "2026-10-01",
+          "valor": 1125,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "gunma",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-02",
+          "valor": 1063,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "gunma",
+          "desde": "2026-10-03",
+          "valor": 1120,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "saitama",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1141,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "saitama",
+          "desde": "2026-10-01",
+          "valor": 1196,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "chiba",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1140,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "chiba",
+          "desde": "2026-10-01",
+          "valor": 1195,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tokyo",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1226,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tokyo",
+          "desde": "2026-10-01",
+          "valor": 1280,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kanagawa",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1225,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kanagawa",
+          "desde": "2026-10-01",
+          "valor": 1279,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "niigata",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1050,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "niigata",
+          "desde": "2026-10-01",
+          "valor": 1108,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "toyama",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1062,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "toyama",
+          "desde": "2026-10-01",
+          "valor": 1119,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ishikawa",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-02",
+          "valor": 1054,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ishikawa",
+          "desde": "2026-10-03",
+          "valor": 1113,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "fukui",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-03",
+          "valor": 1053,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "fukui",
+          "desde": "2026-10-04",
+          "valor": 1112,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yamanashi",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-31",
+          "valor": 1052,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yamanashi",
+          "desde": "2026-11-01",
+          "valor": 1113,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nagano",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-01",
+          "valor": 1061,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nagano",
+          "desde": "2026-10-02",
+          "valor": 1117,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "gifu",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1065,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "gifu",
+          "desde": "2026-10-01",
+          "valor": 1121,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "shizuoka",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-14",
+          "valor": 1097,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "shizuoka",
+          "desde": "2026-10-15",
+          "valor": 1154,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "aichi",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1140,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "aichi",
+          "desde": "2026-10-01",
+          "valor": 1195,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mie",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1087,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mie",
+          "desde": "2026-10-01",
+          "valor": 1143,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "shiga",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-02",
+          "valor": 1080,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "shiga",
+          "desde": "2026-10-03",
+          "valor": 1136,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kyoto",
+          "desde": "2026-04-01",
+          "hasta": "2026-11-15",
+          "valor": 1122,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kyoto",
+          "desde": "2026-11-16",
+          "valor": 1180,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "osaka",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1177,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "osaka",
+          "desde": "2026-10-01",
+          "valor": 1231,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "hyogo",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1116,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "hyogo",
+          "desde": "2026-10-01",
+          "valor": 1172,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nara",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-03",
+          "valor": 1051,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nara",
+          "desde": "2026-10-04",
+          "valor": 1107,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "wakayama",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-02",
+          "valor": 1045,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "wakayama",
+          "desde": "2026-10-03",
+          "valor": 1101,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tottori",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-02",
+          "valor": 1030,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tottori",
+          "desde": "2026-10-03",
+          "valor": 1090,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "shimane",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-09",
+          "valor": 1033,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "shimane",
+          "desde": "2026-10-10",
+          "valor": 1092,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "okayama",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-01",
+          "valor": 1047,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "okayama",
+          "desde": "2026-10-02",
+          "valor": 1104,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "hiroshima",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-10",
+          "valor": 1085,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "hiroshima",
+          "desde": "2026-10-11",
+          "valor": 1141,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yamaguchi",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-07",
+          "valor": 1043,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "yamaguchi",
+          "desde": "2026-10-08",
+          "valor": 1101,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tokushima",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-31",
+          "valor": 1046,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "tokushima",
+          "desde": "2026-11-01",
+          "valor": 1103,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kagawa",
+          "desde": "2026-04-01",
+          "hasta": "2026-09-30",
+          "valor": 1036,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kagawa",
+          "desde": "2026-10-01",
+          "valor": 1092,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ehime",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-31",
+          "valor": 1033,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ehime",
+          "desde": "2026-11-01",
+          "valor": 1093,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kochi",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-28",
+          "valor": 1023,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kochi",
+          "desde": "2026-10-29",
+          "valor": 1086,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "fukuoka",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-03",
+          "valor": 1057,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "fukuoka",
+          "desde": "2026-10-04",
+          "valor": 1114,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "saga",
+          "desde": "2026-04-01",
+          "hasta": "2026-11-14",
+          "valor": 1030,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "saga",
+          "desde": "2026-11-15",
+          "valor": 1095,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nagasaki",
+          "desde": "2026-04-01",
+          "hasta": "2026-11-01",
+          "valor": 1031,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nagasaki",
+          "desde": "2026-11-02",
+          "valor": 1087,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kumamoto",
+          "desde": "2026-04-01",
+          "hasta": "2026-11-30",
+          "valor": 1034,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kumamoto",
+          "desde": "2026-12-01",
+          "valor": 1092,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "oita",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-31",
+          "valor": 1035,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "oita",
+          "desde": "2026-11-01",
+          "valor": 1096,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "miyazaki",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-23",
+          "valor": 1023,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "miyazaki",
+          "desde": "2026-10-24",
+          "valor": 1085,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kagoshima",
+          "desde": "2026-04-01",
+          "hasta": "2026-10-24",
+          "valor": 1026,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kagoshima",
+          "desde": "2026-10-25",
+          "valor": 1090,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "okinawa",
+          "desde": "2026-04-01",
+          "hasta": "2026-12-01",
+          "valor": 1023,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "okinawa",
+          "desde": "2026-12-02",
+          "valor": 1086,
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "令和8年度地域別最低賃金全国一覧",
+            "url": "https://www.mhlw.go.jp/content/11200000/001753404.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "改定後の額と都道府県ごとの発効日。括弧内の改定前の額は、令和8年4月1日にはすべての都道府県で発効済み。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.overtime-premium",
+      "nombre": "法定割増賃金率",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "overtime": "時間外労働",
+        "over-60": "月60時間を超える時間外労働",
+        "holiday": "法定休日労働",
+        "night": "深夜労働（22時から5時）"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-01",
+          "valor": {
+            "overtime": 25,
+            "over-60": 50,
+            "holiday": 35,
+            "night": 25
+          },
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "時間外・休日労働と割増賃金（確かめよう労働条件）",
+            "url": "https://www.check-roudou.mhlw.go.jp/study/roudousya_jikangai.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "月60時間超の50％は中小企業にも2023年4月1日から適用（厚生労働省リーフレット https://www.mhlw.go.jp/content/000930914.pdf）。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.paid-leave-days",
+      "nombre": "年次有給休暇の付与日数（週の所定労働日数と勤続年数ごと）",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "nota": "d5 は通常の労働者（週5日以上または週30時間以上）。末尾の数字は6か月からの年数（0は6か月、6は6年6か月以上）。",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "d5-0": 10,
+            "d5-1": 11,
+            "d5-2": 12,
+            "d5-3": 14,
+            "d5-4": 16,
+            "d5-5": 18,
+            "d5-6": 20,
+            "d4-0": 7,
+            "d4-1": 8,
+            "d4-2": 9,
+            "d4-3": 10,
+            "d4-4": 12,
+            "d4-5": 13,
+            "d4-6": 15,
+            "d3-0": 5,
+            "d3-1": 6,
+            "d3-2": 6,
+            "d3-3": 8,
+            "d3-4": 9,
+            "d3-5": 10,
+            "d3-6": 11,
+            "d2-0": 3,
+            "d2-1": 4,
+            "d2-2": 4,
+            "d2-3": 5,
+            "d2-4": 6,
+            "d2-5": 6,
+            "d2-6": 7,
+            "d1-0": 1,
+            "d1-1": 2,
+            "d1-2": 2,
+            "d1-3": 2,
+            "d1-4": 3,
+            "d1-5": 3,
+            "d1-6": 3
+          },
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "年次有給休暇とはどのような制度ですか",
+            "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/faq/kijyunhou_6_00001.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.retirement-deduction",
+      "nombre": "退職所得控除額の計算に使う金額",
+      "tipo": "mapa",
+      "unidad": "JPY",
+      "etiquetas": {
+        "per-year-to-20": "勤続20年以下の1年あたり",
+        "per-year-over-20": "勤続20年超の1年あたり",
+        "minimum": "最低額",
+        "disability": "障害者になったことによる退職の加算"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "per-year-to-20": 400000,
+            "per-year-over-20": 700000,
+            "minimum": 800000,
+            "disability": 1000000
+          },
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.1420 退職金を受け取ったとき（退職所得）",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1420.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.gift-tax-basic-exemption",
+      "nombre": "贈与税の基礎控除額（暦年課税）",
+      "tipo": "numero",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1100000,
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.4408 贈与税の計算と税率（暦年課税）",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/zoyo/4408.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.gift-tax-general",
+      "nombre": "贈与税の税率（一般贈与財産、超過累進）",
+      "tipo": "escala",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000000,
+              "tasa": 10
+            },
+            {
+              "desde": 2000000,
+              "hasta": 3000000,
+              "tasa": 15
+            },
+            {
+              "desde": 3000000,
+              "hasta": 4000000,
+              "tasa": 20
+            },
+            {
+              "desde": 4000000,
+              "hasta": 6000000,
+              "tasa": 30
+            },
+            {
+              "desde": 6000000,
+              "hasta": 10000000,
+              "tasa": 40
+            },
+            {
+              "desde": 10000000,
+              "hasta": 15000000,
+              "tasa": 45
+            },
+            {
+              "desde": 15000000,
+              "hasta": 30000000,
+              "tasa": 50
+            },
+            {
+              "desde": 30000000,
+              "hasta": null,
+              "tasa": 55
+            }
+          ],
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.4408 贈与税の計算と税率（暦年課税）",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/zoyo/4408.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.gift-tax-special",
+      "nombre": "贈与税の税率（特例贈与財産、超過累進）",
+      "tipo": "escala",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000000,
+              "tasa": 10
+            },
+            {
+              "desde": 2000000,
+              "hasta": 4000000,
+              "tasa": 15
+            },
+            {
+              "desde": 4000000,
+              "hasta": 6000000,
+              "tasa": 20
+            },
+            {
+              "desde": 6000000,
+              "hasta": 10000000,
+              "tasa": 30
+            },
+            {
+              "desde": 10000000,
+              "hasta": 15000000,
+              "tasa": 40
+            },
+            {
+              "desde": 15000000,
+              "hasta": 30000000,
+              "tasa": 45
+            },
+            {
+              "desde": 30000000,
+              "hasta": 45000000,
+              "tasa": 50
+            },
+            {
+              "desde": 45000000,
+              "hasta": null,
+              "tasa": 55
+            }
+          ],
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.4408 贈与税の計算と税率（暦年課税）",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/zoyo/4408.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.inheritance-tax",
+      "nombre": "相続税の税率（法定相続分に応ずる取得金額、超過累進）",
+      "tipo": "escala",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 10000000,
+              "tasa": 10
+            },
+            {
+              "desde": 10000000,
+              "hasta": 30000000,
+              "tasa": 15
+            },
+            {
+              "desde": 30000000,
+              "hasta": 50000000,
+              "tasa": 20
+            },
+            {
+              "desde": 50000000,
+              "hasta": 100000000,
+              "tasa": 30
+            },
+            {
+              "desde": 100000000,
+              "hasta": 200000000,
+              "tasa": 40
+            },
+            {
+              "desde": 200000000,
+              "hasta": 300000000,
+              "tasa": 45
+            },
+            {
+              "desde": 300000000,
+              "hasta": 600000000,
+              "tasa": 50
+            },
+            {
+              "desde": 600000000,
+              "hasta": null,
+              "tasa": 55
+            }
+          ],
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.4155 相続税の税率",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4155.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.inheritance-basic-exemption",
+      "nombre": "相続税の基礎控除額",
+      "tipo": "mapa",
+      "unidad": "JPY",
+      "etiquetas": {
+        "fixed": "定額部分",
+        "per-heir": "法定相続人1人あたり"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "fixed": 30000000,
+            "per-heir": 6000000
+          },
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.4152 相続税の計算",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.spouse-tax-relief",
+      "nombre": "配偶者の税額軽減の基準額",
+      "tipo": "numero",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 160000000,
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.4158 配偶者の税額の軽減",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4158.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.withholding-fee",
+      "nombre": "報酬・料金等の源泉徴収税率（復興特別所得税を含む）",
+      "tipo": "escala",
+      "unidad": "JPY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1000000,
+              "tasa": 10.21
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 20.42
+            }
+          ],
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.2795 原稿料や講演料を支払ったとき",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2795.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.medical-deduction",
+      "nombre": "医療費控除",
+      "tipo": "mapa",
+      "unidad": "JPY",
+      "etiquetas": {
+        "threshold": "差し引く額",
+        "income-rate": "総所得金額等200万円未満の人の率（％）",
+        "cap": "控除の上限",
+        "income-limit": "率を使う総所得金額等の上限"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "threshold": 100000,
+            "income-rate": 5,
+            "cap": 2000000,
+            "income-limit": 2000000
+          },
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.1120 医療費を支払ったとき（医療費控除）",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.housing-loan-limit",
+      "nombre": "住宅ローン控除の各年の控除限度額（令和8年・令和9年に新築等に入居）",
+      "tipo": "mapa",
+      "unidad": "JPY",
+      "etiquetas": {
+        "certified": "認定住宅",
+        "certified-family": "認定住宅（特例対象個人）",
+        "zeh": "ZEH水準省エネ住宅",
+        "zeh-family": "ZEH水準省エネ住宅（特例対象個人）",
+        "energy": "省エネ基準適合住宅",
+        "energy-family": "省エネ基準適合住宅（特例対象個人）",
+        "other": "その他の住宅（建築確認が令和5年12月31日まで）"
+      },
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": {
+            "certified": 315000,
+            "certified-family": 350000,
+            "zeh": 245000,
+            "zeh-family": 315000,
+            "energy": 140000,
+            "energy-family": 210000,
+            "other": 140000
+          },
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.1211-1 住宅の新築等をし、令和4年以降に居住の用に供した場合（住宅借入金等特別控除）",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1211-1.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "令和8年・令和9年に新築等の住宅に入居した場合の控除限度額。特例対象個人の上乗せは（注1）から（注4）。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.housing-loan-rate",
+      "nombre": "住宅ローン控除の控除率",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 0.7,
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.1211-1 住宅の新築等をし、令和4年以降に居住の用に供した場合（住宅借入金等特別控除）",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1211-1.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "令和8年・令和9年に新築等の住宅に入居した場合の控除限度額。特例対象個人の上乗せは（注1）から（注4）。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.housing-loan-years",
+      "nombre": "住宅ローン控除の控除期間（令和8年・令和9年に新築等に入居）",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "certified": "認定住宅",
+        "zeh": "ZEH水準省エネ住宅",
+        "energy": "省エネ基準適合住宅",
+        "other": "その他の住宅"
+      },
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": {
+            "certified": 13,
+            "zeh": 13,
+            "energy": 13,
+            "other": 10
+          },
+          "fuente": {
+            "organismo": "国税庁",
+            "titulo": "No.1211-1 住宅の新築等をし、令和4年以降に居住の用に供した場合（住宅借入金等特別控除）",
+            "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1211-1.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "令和8年・令和9年に新築等の住宅に入居した場合の控除限度額。特例対象個人の上乗せは（注1）から（注4）。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.basic-pension-full",
+      "nombre": "老齢基礎年金の満額（年額）",
+      "tipo": "numero",
+      "unidad": "JPY",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 847300,
+          "fuente": {
+            "organismo": "日本年金機構",
+            "titulo": "老齢基礎年金の受給要件・支給開始時期・年金額",
+            "url": "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "昭和31年4月2日以後生まれの方の満額（令和8年4月分から）。20歳から60歳までの40年間（480か月）を納めた場合。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.basic-pension-months",
+      "nombre": "老齢基礎年金の満額に必要な納付月数",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 480,
+          "fuente": {
+            "organismo": "日本年金機構",
+            "titulo": "老齢基礎年金の受給要件・支給開始時期・年金額",
+            "url": "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "昭和31年4月2日以後生まれの方の満額（令和8年4月分から）。20歳から60歳までの40年間（480か月）を納めた場合。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.child-allowance",
+      "nombre": "児童手当の月額（児童1人あたり）",
+      "tipo": "mapa",
+      "unidad": "JPY",
+      "etiquetas": {
+        "under-3": "3歳未満",
+        "from-3": "3歳以上高校生年代まで",
+        "third": "第3子以降"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": {
+            "under-3": 15000,
+            "from-3": 10000,
+            "third": 30000
+          },
+          "fuente": {
+            "organismo": "こども家庭庁",
+            "titulo": "児童手当制度のご案内",
+            "url": "https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.childcare-benefit-rate",
+      "nombre": "育児休業給付金の支給率",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "first": "休業開始から180日まで",
+        "after": "181日目から"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": {
+            "first": 67,
+            "after": 50
+          },
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "高年齢雇用継続給付金、介護休業給付金、育児休業等給付の支給限度額の変更（令和8年8月1日から）",
+            "url": "https://www.mhlw.go.jp/content/001728499.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.childcare-benefit-wage",
+      "nombre": "育児休業給付金の休業開始時賃金月額の上限と下限",
+      "tipo": "mapa",
+      "unidad": "JPY",
+      "etiquetas": {
+        "max": "上限額",
+        "min": "下限額"
+      },
+      "proximaRevision": "2027-08-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": {
+            "max": 496200,
+            "min": 96090
+          },
+          "fuente": {
+            "organismo": "厚生労働省",
+            "titulo": "高年齢雇用継続給付金、介護休業給付金、育児休業等給付の支給限度額の変更（令和8年8月1日から）",
+            "url": "https://www.mhlw.go.jp/content/001728499.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    }
+  ]
+}
