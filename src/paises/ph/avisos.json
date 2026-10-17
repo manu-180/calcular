@@ -1,0 +1,19 @@
+{
+  "mercado": "ph",
+  "avisos": [
+    {
+      "id": "ph.ncr-27-pending",
+      "nivel": "info",
+      "desde": "2026-09-26",
+      "aplicaA": ["salario-minimo"],
+      "texto": "Wage Order No. NCR-27 never took effect because of court orders, and its case is still pending. The NCR rates shown here are the ones set by Wage Order No. NCR-28 from 26 September 2026.",
+      "fuente": {
+        "organismo": "RTWPB-NCR",
+        "titulo": "Wage Order No. NCR-28",
+        "url": "https://nwpc.dole.gov.ph/wp-content/uploads/2026/09/Wage-Order-No.-NCR-28.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-16"
+      }
+    }
+  ]
+}
