@@ -48,7 +48,7 @@ export type EstadoPublicacion = "borrador" | "interno" | "publicado";
 // informal (tú, você, tu, du, you), "usted" el formal (usted, o senhor, vous, Sie, Lei) y "vos" el
 // voseo, que solo existe en español. Los nombres quedaron en español por historia del repo.
 export type Trato = "vos" | "tu" | "usted";
-export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl"] as const;
+export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "pl"] as const;
 export type Idioma = (typeof IDIOMAS)[number];
 export type SistemaUnidades = "metrico" | "imperial";
 

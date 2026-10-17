@@ -123,6 +123,10 @@ export function separadoresDe(locale: string): Separadores {
 }
 
 const ESPACIOS = /[\s   ]/g;
+// sv, nb y fi escriben el negativo con el signo menos de Unicode (U+2212) y el formulario muestra los
+// valores así: sin normalizarlo, «−12 345» se leía como 12345.
+const MENOS = /−/g;
+const normalizar = (texto: string) => texto.replace(ESPACIOS, "").replace(MENOS, "-");
 
 // en-IN agrupa en lakhs y crores («12,00,000»): el formulario muestra los valores así y tiene que
 // poder leerlos de vuelta. Solo se acepta en los locales que formatean de esa manera.
@@ -147,7 +151,7 @@ function gruposValidos(entero: string, separador: string, locale: string): boole
 //    casi siempre quiso decir miles, y leerlo como 5 divide el resultado por mil sin avisar.
 // Cualquier otra forma devuelve null: se le pide a la persona que lo escriba de nuevo.
 export function parsearNumero(texto: string, locale: string, opciones: { milesAmbiguos?: boolean } = {}): number | null {
-  const sinEspacios = texto.replace(ESPACIOS, "");
+  const sinEspacios = normalizar(texto);
   const negativo = /^[^\d]*-/.test(sinEspacios);
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
   if (!/\d/.test(limpio)) return null;
@@ -193,7 +197,7 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
 // El número que la persona probablemente quiso escribir cuando parsearNumero lo rechazó por
 // milesAmbiguos ("5.000" da "5000"); null si el texto no es ese caso.
 export function sugerenciaMiles(texto: string, locale: string): { sugerido: string; separador: string } | null {
-  const sinEspacios = texto.replace(ESPACIOS, "");
+  const sinEspacios = normalizar(texto);
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
   const dec = separadoresDe(locale).decimal;
   const otro = dec === "." ? "," : ".";
