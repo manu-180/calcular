@@ -102,6 +102,23 @@ const ambiguos: [string, string, number | null][] = [
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
+// Unidades de 10⁴ en ja, zh y ko, y dígitos de ancho completo del IME: «3万» no puede dar 3.
+const cjk: [string, string, number | null][] = [
+  ["ja-JP", "3万", 30000],
+  ["ja-JP", "1億2000万", 120000000],
+  ["ja-JP", "１２３，４５６", 123456],
+  ["ja-JP", "1.5万円", 15000],
+  ["ja-JP", "-2万", -20000],
+  ["ko-KR", "5천만 원", 50000000],
+  ["ko-KR", "3억 5천만", 350000000],
+  ["ko-KR", "2만5000", 25000],
+  ["zh-TW", "12萬", 120000],
+  ["zh-CN", "300万", 3000000],
+  ["ja-JP", "3万2万", null],
+  ["ja-JP", "3万20000", null],
+  ["ja-JP", "1,234.5", 1234.5],
+];
+for (const [locale, texto, esperado] of cjk) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 igual("sugerencia es-MX", sugerenciaMiles("$5.000", "es-MX"), { sugerido: "5000", separador: "." });
 igual("sugerencia es-CL", sugerenciaMiles("5,000", "es-CL"), { sugerido: "5000", separador: "," });
 igual("sin sugerencia para 5.5", sugerenciaMiles("5.5", "es-MX"), null);
