@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ma.indemnite-licenciement",
   h1: "Calcul de l'indemnité de licenciement au Maroc",
-  title: "Indemnité de licenciement Maroc : calcul selon le code du travail",
+  title: "Indemnité de licenciement au Maroc : le calcul légal",
   description:
     "Calculez votre indemnité de licenciement selon l'article 53 du code du travail : de {{ma.indemnite-licenciement[ans-1-a-5]}} à {{ma.indemnite-licenciement[au-dela-de-15]}} de salaire par année d'ancienneté.",
   intro: [
