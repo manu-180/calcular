@@ -1,0 +1,3423 @@
+{
+  "mercado": "my",
+  "datos": [
+    {
+      "id": "my.income-tax-rates",
+      "nombre": "Income tax rates for resident individuals",
+      "tipo": "escala",
+      "unidad": "MYR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2025-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000,
+              "tasa": 0
+            },
+            {
+              "desde": 5000,
+              "hasta": 20000,
+              "tasa": 1
+            },
+            {
+              "desde": 20000,
+              "hasta": 35000,
+              "tasa": 3
+            },
+            {
+              "desde": 35000,
+              "hasta": 50000,
+              "tasa": 6
+            },
+            {
+              "desde": 50000,
+              "hasta": 70000,
+              "tasa": 11
+            },
+            {
+              "desde": 70000,
+              "hasta": 100000,
+              "tasa": 19
+            },
+            {
+              "desde": 100000,
+              "hasta": 400000,
+              "tasa": 25
+            },
+            {
+              "desde": 400000,
+              "hasta": 600000,
+              "tasa": 26
+            },
+            {
+              "desde": 600000,
+              "hasta": 2000000,
+              "tasa": 28
+            },
+            {
+              "desde": 2000000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Kadar Cukai: Tahun Taksiran 2023, 2024 & 2025",
+            "url": "https://www.hasil.gov.my/individu/kadar-cukai/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000,
+              "tasa": 0
+            },
+            {
+              "desde": 5000,
+              "hasta": 20000,
+              "tasa": 1
+            },
+            {
+              "desde": 20000,
+              "hasta": 35000,
+              "tasa": 3
+            },
+            {
+              "desde": 35000,
+              "hasta": 50000,
+              "tasa": 6
+            },
+            {
+              "desde": 50000,
+              "hasta": 70000,
+              "tasa": 11
+            },
+            {
+              "desde": 70000,
+              "hasta": 100000,
+              "tasa": 19
+            },
+            {
+              "desde": 100000,
+              "hasta": 400000,
+              "tasa": 25
+            },
+            {
+              "desde": 400000,
+              "hasta": 600000,
+              "tasa": 26
+            },
+            {
+              "desde": 600000,
+              "hasta": 2000000,
+              "tasa": 28
+            },
+            {
+              "desde": 2000000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Specification for Monthly Tax Deduction (MTD) Calculations Using Computerised Calculation for 2026",
+            "url": "https://www.hasil.gov.my/wp-content/uploads/spesifikasi-kaedah-pengiraan-berkomputer-pcb-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.tax-rebate-individual",
+      "nombre": "Tax rebate for an individual with chargeable income up to RM35,000",
+      "tipo": "numero",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-01-01",
+          "valor": 400,
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Rebat cukai pendapatan individu",
+            "url": "https://www.hasil.gov.my/individu/rebat/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.tax-rebate-spouse",
+      "nombre": "Extra tax rebate for a husband or wife with no income (joint assessment)",
+      "tipo": "numero",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-01-01",
+          "valor": 400,
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Rebat cukai pendapatan individu",
+            "url": "https://www.hasil.gov.my/individu/rebat/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.tax-rebate-threshold",
+      "nombre": "Chargeable income limit for the tax rebate",
+      "tipo": "numero",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-01-01",
+          "valor": 35000,
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Rebat cukai pendapatan individu",
+            "url": "https://www.hasil.gov.my/individu/rebat/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.tax-reliefs",
+      "nombre": "Personal tax reliefs (limits)",
+      "tipo": "mapa",
+      "unidad": "MYR",
+      "etiquetas": {
+        "individual": "Individual and dependent relatives",
+        "spouse": "Husband or wife with no income (or joint assessment)",
+        "child-under-18": "Each unmarried child under 18",
+        "child-higher-education": "Each child 18 or older at diploma level or higher",
+        "disabled-individual": "Disabled individual",
+        "disabled-spouse": "Disabled husband or wife",
+        "parents-medical": "Medical, special needs and carer expenses for parents",
+        "epf": "EPF or other approved scheme",
+        "life-insurance": "Life insurance, family takaful or voluntary EPF",
+        "education-medical-insurance": "Education and medical insurance",
+        "prs": "Private Retirement Scheme and deferred annuity",
+        "socso": "SOCSO and EIS contributions",
+        "lifestyle": "Lifestyle: books, devices, internet, courses",
+        "sports": "Sports equipment, facilities and gym",
+        "childcare": "Childcare centre or kindergarten fees",
+        "sspn": "Net savings in SSPN"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": {
+            "individual": 9000,
+            "spouse": 4000,
+            "child-under-18": 2000,
+            "child-higher-education": 8000,
+            "disabled-individual": 7000,
+            "disabled-spouse": 6000,
+            "parents-medical": 8000,
+            "epf": 4000,
+            "life-insurance": 3000,
+            "education-medical-insurance": 4000,
+            "prs": 3000,
+            "socso": 350,
+            "lifestyle": 2500,
+            "sports": 1000,
+            "childcare": 3000,
+            "sspn": 8000
+          },
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Pelepasan Cukai: Tahun Taksiran 2025",
+            "url": "https://www.hasil.gov.my/individu/pelepasan-cukai/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "individual": 9000,
+            "spouse": 4000,
+            "child-under-18": 2000,
+            "child-higher-education": 8000,
+            "disabled-individual": 7000,
+            "disabled-spouse": 6000,
+            "parents-medical": 8000,
+            "epf": 4000,
+            "life-insurance": 3000,
+            "education-medical-insurance": 4000,
+            "prs": 3000,
+            "socso": 350,
+            "lifestyle": 2500,
+            "sports": 1000,
+            "childcare": 3000,
+            "sspn": 8000
+          },
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Specification for Monthly Tax Deduction (MTD) Calculations Using Computerised Calculation for 2026",
+            "url": "https://www.hasil.gov.my/wp-content/uploads/spesifikasi-kaedah-pengiraan-berkomputer-pcb-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.mtd-minimum",
+      "nombre": "Smallest MTD (PCB) amount an employer deducts",
+      "tipo": "numero",
+      "unidad": "MYR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Specification for Monthly Tax Deduction (MTD) Calculations Using Computerised Calculation for 2026",
+            "url": "https://www.hasil.gov.my/wp-content/uploads/spesifikasi-kaedah-pengiraan-berkomputer-pcb-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.socso-employer",
+      "nombre": "SOCSO employer share, first category (Employment Injury and Invalidity)",
+      "tipo": "escala",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30,
+              "tasa": 0,
+              "cuotaFija": 0.4
+            },
+            {
+              "desde": 30.01,
+              "hasta": 50.0,
+              "tasa": 0,
+              "cuotaFija": 0.7
+            },
+            {
+              "desde": 50.01,
+              "hasta": 70.0,
+              "tasa": 0,
+              "cuotaFija": 1.1
+            },
+            {
+              "desde": 70.01,
+              "hasta": 100.0,
+              "tasa": 0,
+              "cuotaFija": 1.5
+            },
+            {
+              "desde": 100.01,
+              "hasta": 140.0,
+              "tasa": 0,
+              "cuotaFija": 2.1
+            },
+            {
+              "desde": 140.01,
+              "hasta": 200.0,
+              "tasa": 0,
+              "cuotaFija": 2.95
+            },
+            {
+              "desde": 200.01,
+              "hasta": 300.0,
+              "tasa": 0,
+              "cuotaFija": 4.35
+            },
+            {
+              "desde": 300.01,
+              "hasta": 400.0,
+              "tasa": 0,
+              "cuotaFija": 6.15
+            },
+            {
+              "desde": 400.01,
+              "hasta": 500.0,
+              "tasa": 0,
+              "cuotaFija": 7.85
+            },
+            {
+              "desde": 500.01,
+              "hasta": 600.0,
+              "tasa": 0,
+              "cuotaFija": 9.65
+            },
+            {
+              "desde": 600.01,
+              "hasta": 700.0,
+              "tasa": 0,
+              "cuotaFija": 11.35
+            },
+            {
+              "desde": 700.01,
+              "hasta": 800.0,
+              "tasa": 0,
+              "cuotaFija": 13.15
+            },
+            {
+              "desde": 800.01,
+              "hasta": 900.0,
+              "tasa": 0,
+              "cuotaFija": 14.85
+            },
+            {
+              "desde": 900.01,
+              "hasta": 1000.0,
+              "tasa": 0,
+              "cuotaFija": 16.65
+            },
+            {
+              "desde": 1000.01,
+              "hasta": 1100.0,
+              "tasa": 0,
+              "cuotaFija": 18.35
+            },
+            {
+              "desde": 1100.01,
+              "hasta": 1200.0,
+              "tasa": 0,
+              "cuotaFija": 20.15
+            },
+            {
+              "desde": 1200.01,
+              "hasta": 1300.0,
+              "tasa": 0,
+              "cuotaFija": 21.85
+            },
+            {
+              "desde": 1300.01,
+              "hasta": 1400.0,
+              "tasa": 0,
+              "cuotaFija": 23.65
+            },
+            {
+              "desde": 1400.01,
+              "hasta": 1500.0,
+              "tasa": 0,
+              "cuotaFija": 25.35
+            },
+            {
+              "desde": 1500.01,
+              "hasta": 1600.0,
+              "tasa": 0,
+              "cuotaFija": 27.15
+            },
+            {
+              "desde": 1600.01,
+              "hasta": 1700.0,
+              "tasa": 0,
+              "cuotaFija": 28.85
+            },
+            {
+              "desde": 1700.01,
+              "hasta": 1800.0,
+              "tasa": 0,
+              "cuotaFija": 30.65
+            },
+            {
+              "desde": 1800.01,
+              "hasta": 1900.0,
+              "tasa": 0,
+              "cuotaFija": 32.35
+            },
+            {
+              "desde": 1900.01,
+              "hasta": 2000.0,
+              "tasa": 0,
+              "cuotaFija": 34.15
+            },
+            {
+              "desde": 2000.01,
+              "hasta": 2100.0,
+              "tasa": 0,
+              "cuotaFija": 35.85
+            },
+            {
+              "desde": 2100.01,
+              "hasta": 2200.0,
+              "tasa": 0,
+              "cuotaFija": 37.65
+            },
+            {
+              "desde": 2200.01,
+              "hasta": 2300.0,
+              "tasa": 0,
+              "cuotaFija": 39.35
+            },
+            {
+              "desde": 2300.01,
+              "hasta": 2400.0,
+              "tasa": 0,
+              "cuotaFija": 41.15
+            },
+            {
+              "desde": 2400.01,
+              "hasta": 2500.0,
+              "tasa": 0,
+              "cuotaFija": 42.85
+            },
+            {
+              "desde": 2500.01,
+              "hasta": 2600.0,
+              "tasa": 0,
+              "cuotaFija": 44.65
+            },
+            {
+              "desde": 2600.01,
+              "hasta": 2700.0,
+              "tasa": 0,
+              "cuotaFija": 46.35
+            },
+            {
+              "desde": 2700.01,
+              "hasta": 2800.0,
+              "tasa": 0,
+              "cuotaFija": 48.15
+            },
+            {
+              "desde": 2800.01,
+              "hasta": 2900.0,
+              "tasa": 0,
+              "cuotaFija": 49.85
+            },
+            {
+              "desde": 2900.01,
+              "hasta": 3000.0,
+              "tasa": 0,
+              "cuotaFija": 51.65
+            },
+            {
+              "desde": 3000.01,
+              "hasta": 3100.0,
+              "tasa": 0,
+              "cuotaFija": 53.35
+            },
+            {
+              "desde": 3100.01,
+              "hasta": 3200.0,
+              "tasa": 0,
+              "cuotaFija": 55.15
+            },
+            {
+              "desde": 3200.01,
+              "hasta": 3300.0,
+              "tasa": 0,
+              "cuotaFija": 56.85
+            },
+            {
+              "desde": 3300.01,
+              "hasta": 3400.0,
+              "tasa": 0,
+              "cuotaFija": 58.65
+            },
+            {
+              "desde": 3400.01,
+              "hasta": 3500.0,
+              "tasa": 0,
+              "cuotaFija": 60.35
+            },
+            {
+              "desde": 3500.01,
+              "hasta": 3600.0,
+              "tasa": 0,
+              "cuotaFija": 62.15
+            },
+            {
+              "desde": 3600.01,
+              "hasta": 3700.0,
+              "tasa": 0,
+              "cuotaFija": 63.85
+            },
+            {
+              "desde": 3700.01,
+              "hasta": 3800.0,
+              "tasa": 0,
+              "cuotaFija": 65.65
+            },
+            {
+              "desde": 3800.01,
+              "hasta": 3900.0,
+              "tasa": 0,
+              "cuotaFija": 67.35
+            },
+            {
+              "desde": 3900.01,
+              "hasta": 4000.0,
+              "tasa": 0,
+              "cuotaFija": 69.15
+            },
+            {
+              "desde": 4000.01,
+              "hasta": 4100.0,
+              "tasa": 0,
+              "cuotaFija": 70.85
+            },
+            {
+              "desde": 4100.01,
+              "hasta": 4200.0,
+              "tasa": 0,
+              "cuotaFija": 72.65
+            },
+            {
+              "desde": 4200.01,
+              "hasta": 4300.0,
+              "tasa": 0,
+              "cuotaFija": 74.35
+            },
+            {
+              "desde": 4300.01,
+              "hasta": 4400.0,
+              "tasa": 0,
+              "cuotaFija": 76.15
+            },
+            {
+              "desde": 4400.01,
+              "hasta": 4500.0,
+              "tasa": 0,
+              "cuotaFija": 77.85
+            },
+            {
+              "desde": 4500.01,
+              "hasta": 4600.0,
+              "tasa": 0,
+              "cuotaFija": 79.65
+            },
+            {
+              "desde": 4600.01,
+              "hasta": 4700.0,
+              "tasa": 0,
+              "cuotaFija": 81.35
+            },
+            {
+              "desde": 4700.01,
+              "hasta": 4800.0,
+              "tasa": 0,
+              "cuotaFija": 83.15
+            },
+            {
+              "desde": 4800.01,
+              "hasta": 4900.0,
+              "tasa": 0,
+              "cuotaFija": 84.85
+            },
+            {
+              "desde": 4900.01,
+              "hasta": 5000.0,
+              "tasa": 0,
+              "cuotaFija": 86.65
+            },
+            {
+              "desde": 5000.01,
+              "hasta": 5100.0,
+              "tasa": 0,
+              "cuotaFija": 88.35
+            },
+            {
+              "desde": 5100.01,
+              "hasta": 5200.0,
+              "tasa": 0,
+              "cuotaFija": 90.15
+            },
+            {
+              "desde": 5200.01,
+              "hasta": 5300.0,
+              "tasa": 0,
+              "cuotaFija": 91.85
+            },
+            {
+              "desde": 5300.01,
+              "hasta": 5400.0,
+              "tasa": 0,
+              "cuotaFija": 93.65
+            },
+            {
+              "desde": 5400.01,
+              "hasta": 5500.0,
+              "tasa": 0,
+              "cuotaFija": 95.35
+            },
+            {
+              "desde": 5500.01,
+              "hasta": 5600.0,
+              "tasa": 0,
+              "cuotaFija": 97.15
+            },
+            {
+              "desde": 5600.01,
+              "hasta": 5700.0,
+              "tasa": 0,
+              "cuotaFija": 98.85
+            },
+            {
+              "desde": 5700.01,
+              "hasta": 5800.0,
+              "tasa": 0,
+              "cuotaFija": 100.65
+            },
+            {
+              "desde": 5800.01,
+              "hasta": 5900.0,
+              "tasa": 0,
+              "cuotaFija": 102.35
+            },
+            {
+              "desde": 5900.01,
+              "hasta": 6000.0,
+              "tasa": 0,
+              "cuotaFija": 104.15
+            },
+            {
+              "desde": 6000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 104.15
+            }
+          ],
+          "fuente": {
+            "organismo": "PERKESO",
+            "titulo": "Employees' Social Security Act 1969 (Act 4): new contribution rate including the Non-Employment Injury Scheme (SKBBK)",
+            "url": "https://www.perkeso.gov.my/images/lindung/lindung-24-jam/NewContributionRateIncludingSKBBK.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "SKBBK (LINDUNG 24 Jam) starts on 1 June 2026, per PERKESO media statement of 2 June 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.socso-employee",
+      "nombre": "SOCSO employee share for the Invalidity Scheme, first category",
+      "tipo": "escala",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30,
+              "tasa": 0,
+              "cuotaFija": 0.1
+            },
+            {
+              "desde": 30.01,
+              "hasta": 50.0,
+              "tasa": 0,
+              "cuotaFija": 0.2
+            },
+            {
+              "desde": 50.01,
+              "hasta": 70.0,
+              "tasa": 0,
+              "cuotaFija": 0.3
+            },
+            {
+              "desde": 70.01,
+              "hasta": 100.0,
+              "tasa": 0,
+              "cuotaFija": 0.4
+            },
+            {
+              "desde": 100.01,
+              "hasta": 140.0,
+              "tasa": 0,
+              "cuotaFija": 0.6
+            },
+            {
+              "desde": 140.01,
+              "hasta": 200.0,
+              "tasa": 0,
+              "cuotaFija": 0.85
+            },
+            {
+              "desde": 200.01,
+              "hasta": 300.0,
+              "tasa": 0,
+              "cuotaFija": 1.25
+            },
+            {
+              "desde": 300.01,
+              "hasta": 400.0,
+              "tasa": 0,
+              "cuotaFija": 1.75
+            },
+            {
+              "desde": 400.01,
+              "hasta": 500.0,
+              "tasa": 0,
+              "cuotaFija": 2.25
+            },
+            {
+              "desde": 500.01,
+              "hasta": 600.0,
+              "tasa": 0,
+              "cuotaFija": 2.75
+            },
+            {
+              "desde": 600.01,
+              "hasta": 700.0,
+              "tasa": 0,
+              "cuotaFija": 3.25
+            },
+            {
+              "desde": 700.01,
+              "hasta": 800.0,
+              "tasa": 0,
+              "cuotaFija": 3.75
+            },
+            {
+              "desde": 800.01,
+              "hasta": 900.0,
+              "tasa": 0,
+              "cuotaFija": 4.25
+            },
+            {
+              "desde": 900.01,
+              "hasta": 1000.0,
+              "tasa": 0,
+              "cuotaFija": 4.75
+            },
+            {
+              "desde": 1000.01,
+              "hasta": 1100.0,
+              "tasa": 0,
+              "cuotaFija": 5.25
+            },
+            {
+              "desde": 1100.01,
+              "hasta": 1200.0,
+              "tasa": 0,
+              "cuotaFija": 5.75
+            },
+            {
+              "desde": 1200.01,
+              "hasta": 1300.0,
+              "tasa": 0,
+              "cuotaFija": 6.25
+            },
+            {
+              "desde": 1300.01,
+              "hasta": 1400.0,
+              "tasa": 0,
+              "cuotaFija": 6.75
+            },
+            {
+              "desde": 1400.01,
+              "hasta": 1500.0,
+              "tasa": 0,
+              "cuotaFija": 7.25
+            },
+            {
+              "desde": 1500.01,
+              "hasta": 1600.0,
+              "tasa": 0,
+              "cuotaFija": 7.75
+            },
+            {
+              "desde": 1600.01,
+              "hasta": 1700.0,
+              "tasa": 0,
+              "cuotaFija": 8.25
+            },
+            {
+              "desde": 1700.01,
+              "hasta": 1800.0,
+              "tasa": 0,
+              "cuotaFija": 8.75
+            },
+            {
+              "desde": 1800.01,
+              "hasta": 1900.0,
+              "tasa": 0,
+              "cuotaFija": 9.25
+            },
+            {
+              "desde": 1900.01,
+              "hasta": 2000.0,
+              "tasa": 0,
+              "cuotaFija": 9.75
+            },
+            {
+              "desde": 2000.01,
+              "hasta": 2100.0,
+              "tasa": 0,
+              "cuotaFija": 10.25
+            },
+            {
+              "desde": 2100.01,
+              "hasta": 2200.0,
+              "tasa": 0,
+              "cuotaFija": 10.75
+            },
+            {
+              "desde": 2200.01,
+              "hasta": 2300.0,
+              "tasa": 0,
+              "cuotaFija": 11.25
+            },
+            {
+              "desde": 2300.01,
+              "hasta": 2400.0,
+              "tasa": 0,
+              "cuotaFija": 11.75
+            },
+            {
+              "desde": 2400.01,
+              "hasta": 2500.0,
+              "tasa": 0,
+              "cuotaFija": 12.25
+            },
+            {
+              "desde": 2500.01,
+              "hasta": 2600.0,
+              "tasa": 0,
+              "cuotaFija": 12.75
+            },
+            {
+              "desde": 2600.01,
+              "hasta": 2700.0,
+              "tasa": 0,
+              "cuotaFija": 13.25
+            },
+            {
+              "desde": 2700.01,
+              "hasta": 2800.0,
+              "tasa": 0,
+              "cuotaFija": 13.75
+            },
+            {
+              "desde": 2800.01,
+              "hasta": 2900.0,
+              "tasa": 0,
+              "cuotaFija": 14.25
+            },
+            {
+              "desde": 2900.01,
+              "hasta": 3000.0,
+              "tasa": 0,
+              "cuotaFija": 14.75
+            },
+            {
+              "desde": 3000.01,
+              "hasta": 3100.0,
+              "tasa": 0,
+              "cuotaFija": 15.25
+            },
+            {
+              "desde": 3100.01,
+              "hasta": 3200.0,
+              "tasa": 0,
+              "cuotaFija": 15.75
+            },
+            {
+              "desde": 3200.01,
+              "hasta": 3300.0,
+              "tasa": 0,
+              "cuotaFija": 16.25
+            },
+            {
+              "desde": 3300.01,
+              "hasta": 3400.0,
+              "tasa": 0,
+              "cuotaFija": 16.75
+            },
+            {
+              "desde": 3400.01,
+              "hasta": 3500.0,
+              "tasa": 0,
+              "cuotaFija": 17.25
+            },
+            {
+              "desde": 3500.01,
+              "hasta": 3600.0,
+              "tasa": 0,
+              "cuotaFija": 17.75
+            },
+            {
+              "desde": 3600.01,
+              "hasta": 3700.0,
+              "tasa": 0,
+              "cuotaFija": 18.25
+            },
+            {
+              "desde": 3700.01,
+              "hasta": 3800.0,
+              "tasa": 0,
+              "cuotaFija": 18.75
+            },
+            {
+              "desde": 3800.01,
+              "hasta": 3900.0,
+              "tasa": 0,
+              "cuotaFija": 19.25
+            },
+            {
+              "desde": 3900.01,
+              "hasta": 4000.0,
+              "tasa": 0,
+              "cuotaFija": 19.75
+            },
+            {
+              "desde": 4000.01,
+              "hasta": 4100.0,
+              "tasa": 0,
+              "cuotaFija": 20.25
+            },
+            {
+              "desde": 4100.01,
+              "hasta": 4200.0,
+              "tasa": 0,
+              "cuotaFija": 20.75
+            },
+            {
+              "desde": 4200.01,
+              "hasta": 4300.0,
+              "tasa": 0,
+              "cuotaFija": 21.25
+            },
+            {
+              "desde": 4300.01,
+              "hasta": 4400.0,
+              "tasa": 0,
+              "cuotaFija": 21.75
+            },
+            {
+              "desde": 4400.01,
+              "hasta": 4500.0,
+              "tasa": 0,
+              "cuotaFija": 22.25
+            },
+            {
+              "desde": 4500.01,
+              "hasta": 4600.0,
+              "tasa": 0,
+              "cuotaFija": 22.75
+            },
+            {
+              "desde": 4600.01,
+              "hasta": 4700.0,
+              "tasa": 0,
+              "cuotaFija": 23.25
+            },
+            {
+              "desde": 4700.01,
+              "hasta": 4800.0,
+              "tasa": 0,
+              "cuotaFija": 23.75
+            },
+            {
+              "desde": 4800.01,
+              "hasta": 4900.0,
+              "tasa": 0,
+              "cuotaFija": 24.25
+            },
+            {
+              "desde": 4900.01,
+              "hasta": 5000.0,
+              "tasa": 0,
+              "cuotaFija": 24.75
+            },
+            {
+              "desde": 5000.01,
+              "hasta": 5100.0,
+              "tasa": 0,
+              "cuotaFija": 25.25
+            },
+            {
+              "desde": 5100.01,
+              "hasta": 5200.0,
+              "tasa": 0,
+              "cuotaFija": 25.75
+            },
+            {
+              "desde": 5200.01,
+              "hasta": 5300.0,
+              "tasa": 0,
+              "cuotaFija": 26.25
+            },
+            {
+              "desde": 5300.01,
+              "hasta": 5400.0,
+              "tasa": 0,
+              "cuotaFija": 26.75
+            },
+            {
+              "desde": 5400.01,
+              "hasta": 5500.0,
+              "tasa": 0,
+              "cuotaFija": 27.25
+            },
+            {
+              "desde": 5500.01,
+              "hasta": 5600.0,
+              "tasa": 0,
+              "cuotaFija": 27.75
+            },
+            {
+              "desde": 5600.01,
+              "hasta": 5700.0,
+              "tasa": 0,
+              "cuotaFija": 28.25
+            },
+            {
+              "desde": 5700.01,
+              "hasta": 5800.0,
+              "tasa": 0,
+              "cuotaFija": 28.75
+            },
+            {
+              "desde": 5800.01,
+              "hasta": 5900.0,
+              "tasa": 0,
+              "cuotaFija": 29.25
+            },
+            {
+              "desde": 5900.01,
+              "hasta": 6000.0,
+              "tasa": 0,
+              "cuotaFija": 29.75
+            },
+            {
+              "desde": 6000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 29.75
+            }
+          ],
+          "fuente": {
+            "organismo": "PERKESO",
+            "titulo": "Employees' Social Security Act 1969 (Act 4): new contribution rate including the Non-Employment Injury Scheme (SKBBK)",
+            "url": "https://www.perkeso.gov.my/images/lindung/lindung-24-jam/NewContributionRateIncludingSKBBK.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "SKBBK (LINDUNG 24 Jam) starts on 1 June 2026, per PERKESO media statement of 2 June 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.socso-skbbk",
+      "nombre": "SOCSO employee share for the Non-Employment Injury Scheme (LINDUNG 24 Jam), first category",
+      "tipo": "escala",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30,
+              "tasa": 0,
+              "cuotaFija": 0.2
+            },
+            {
+              "desde": 30.01,
+              "hasta": 50.0,
+              "tasa": 0,
+              "cuotaFija": 0.3
+            },
+            {
+              "desde": 50.01,
+              "hasta": 70.0,
+              "tasa": 0,
+              "cuotaFija": 0.5
+            },
+            {
+              "desde": 70.01,
+              "hasta": 100.0,
+              "tasa": 0,
+              "cuotaFija": 0.65
+            },
+            {
+              "desde": 100.01,
+              "hasta": 140.0,
+              "tasa": 0,
+              "cuotaFija": 0.9
+            },
+            {
+              "desde": 140.01,
+              "hasta": 200.0,
+              "tasa": 0,
+              "cuotaFija": 1.25
+            },
+            {
+              "desde": 200.01,
+              "hasta": 300.0,
+              "tasa": 0,
+              "cuotaFija": 1.85
+            },
+            {
+              "desde": 300.01,
+              "hasta": 400.0,
+              "tasa": 0,
+              "cuotaFija": 2.65
+            },
+            {
+              "desde": 400.01,
+              "hasta": 500.0,
+              "tasa": 0,
+              "cuotaFija": 3.35
+            },
+            {
+              "desde": 500.01,
+              "hasta": 600.0,
+              "tasa": 0,
+              "cuotaFija": 4.15
+            },
+            {
+              "desde": 600.01,
+              "hasta": 700.0,
+              "tasa": 0,
+              "cuotaFija": 4.85
+            },
+            {
+              "desde": 700.01,
+              "hasta": 800.0,
+              "tasa": 0,
+              "cuotaFija": 5.65
+            },
+            {
+              "desde": 800.01,
+              "hasta": 900.0,
+              "tasa": 0,
+              "cuotaFija": 6.35
+            },
+            {
+              "desde": 900.01,
+              "hasta": 1000.0,
+              "tasa": 0,
+              "cuotaFija": 7.15
+            },
+            {
+              "desde": 1000.01,
+              "hasta": 1100.0,
+              "tasa": 0,
+              "cuotaFija": 7.85
+            },
+            {
+              "desde": 1100.01,
+              "hasta": 1200.0,
+              "tasa": 0,
+              "cuotaFija": 8.65
+            },
+            {
+              "desde": 1200.01,
+              "hasta": 1300.0,
+              "tasa": 0,
+              "cuotaFija": 9.35
+            },
+            {
+              "desde": 1300.01,
+              "hasta": 1400.0,
+              "tasa": 0,
+              "cuotaFija": 10.15
+            },
+            {
+              "desde": 1400.01,
+              "hasta": 1500.0,
+              "tasa": 0,
+              "cuotaFija": 10.85
+            },
+            {
+              "desde": 1500.01,
+              "hasta": 1600.0,
+              "tasa": 0,
+              "cuotaFija": 11.65
+            },
+            {
+              "desde": 1600.01,
+              "hasta": 1700.0,
+              "tasa": 0,
+              "cuotaFija": 12.35
+            },
+            {
+              "desde": 1700.01,
+              "hasta": 1800.0,
+              "tasa": 0,
+              "cuotaFija": 13.15
+            },
+            {
+              "desde": 1800.01,
+              "hasta": 1900.0,
+              "tasa": 0,
+              "cuotaFija": 13.85
+            },
+            {
+              "desde": 1900.01,
+              "hasta": 2000.0,
+              "tasa": 0,
+              "cuotaFija": 14.65
+            },
+            {
+              "desde": 2000.01,
+              "hasta": 2100.0,
+              "tasa": 0,
+              "cuotaFija": 15.35
+            },
+            {
+              "desde": 2100.01,
+              "hasta": 2200.0,
+              "tasa": 0,
+              "cuotaFija": 16.15
+            },
+            {
+              "desde": 2200.01,
+              "hasta": 2300.0,
+              "tasa": 0,
+              "cuotaFija": 16.85
+            },
+            {
+              "desde": 2300.01,
+              "hasta": 2400.0,
+              "tasa": 0,
+              "cuotaFija": 17.65
+            },
+            {
+              "desde": 2400.01,
+              "hasta": 2500.0,
+              "tasa": 0,
+              "cuotaFija": 18.35
+            },
+            {
+              "desde": 2500.01,
+              "hasta": 2600.0,
+              "tasa": 0,
+              "cuotaFija": 19.15
+            },
+            {
+              "desde": 2600.01,
+              "hasta": 2700.0,
+              "tasa": 0,
+              "cuotaFija": 19.85
+            },
+            {
+              "desde": 2700.01,
+              "hasta": 2800.0,
+              "tasa": 0,
+              "cuotaFija": 20.65
+            },
+            {
+              "desde": 2800.01,
+              "hasta": 2900.0,
+              "tasa": 0,
+              "cuotaFija": 21.35
+            },
+            {
+              "desde": 2900.01,
+              "hasta": 3000.0,
+              "tasa": 0,
+              "cuotaFija": 22.15
+            },
+            {
+              "desde": 3000.01,
+              "hasta": 3100.0,
+              "tasa": 0,
+              "cuotaFija": 22.85
+            },
+            {
+              "desde": 3100.01,
+              "hasta": 3200.0,
+              "tasa": 0,
+              "cuotaFija": 23.65
+            },
+            {
+              "desde": 3200.01,
+              "hasta": 3300.0,
+              "tasa": 0,
+              "cuotaFija": 24.35
+            },
+            {
+              "desde": 3300.01,
+              "hasta": 3400.0,
+              "tasa": 0,
+              "cuotaFija": 25.15
+            },
+            {
+              "desde": 3400.01,
+              "hasta": 3500.0,
+              "tasa": 0,
+              "cuotaFija": 25.85
+            },
+            {
+              "desde": 3500.01,
+              "hasta": 3600.0,
+              "tasa": 0,
+              "cuotaFija": 26.65
+            },
+            {
+              "desde": 3600.01,
+              "hasta": 3700.0,
+              "tasa": 0,
+              "cuotaFija": 27.35
+            },
+            {
+              "desde": 3700.01,
+              "hasta": 3800.0,
+              "tasa": 0,
+              "cuotaFija": 28.15
+            },
+            {
+              "desde": 3800.01,
+              "hasta": 3900.0,
+              "tasa": 0,
+              "cuotaFija": 28.85
+            },
+            {
+              "desde": 3900.01,
+              "hasta": 4000.0,
+              "tasa": 0,
+              "cuotaFija": 29.65
+            },
+            {
+              "desde": 4000.01,
+              "hasta": 4100.0,
+              "tasa": 0,
+              "cuotaFija": 30.35
+            },
+            {
+              "desde": 4100.01,
+              "hasta": 4200.0,
+              "tasa": 0,
+              "cuotaFija": 31.15
+            },
+            {
+              "desde": 4200.01,
+              "hasta": 4300.0,
+              "tasa": 0,
+              "cuotaFija": 31.85
+            },
+            {
+              "desde": 4300.01,
+              "hasta": 4400.0,
+              "tasa": 0,
+              "cuotaFija": 32.65
+            },
+            {
+              "desde": 4400.01,
+              "hasta": 4500.0,
+              "tasa": 0,
+              "cuotaFija": 33.35
+            },
+            {
+              "desde": 4500.01,
+              "hasta": 4600.0,
+              "tasa": 0,
+              "cuotaFija": 34.15
+            },
+            {
+              "desde": 4600.01,
+              "hasta": 4700.0,
+              "tasa": 0,
+              "cuotaFija": 34.85
+            },
+            {
+              "desde": 4700.01,
+              "hasta": 4800.0,
+              "tasa": 0,
+              "cuotaFija": 35.65
+            },
+            {
+              "desde": 4800.01,
+              "hasta": 4900.0,
+              "tasa": 0,
+              "cuotaFija": 36.35
+            },
+            {
+              "desde": 4900.01,
+              "hasta": 5000.0,
+              "tasa": 0,
+              "cuotaFija": 37.15
+            },
+            {
+              "desde": 5000.01,
+              "hasta": 5100.0,
+              "tasa": 0,
+              "cuotaFija": 37.85
+            },
+            {
+              "desde": 5100.01,
+              "hasta": 5200.0,
+              "tasa": 0,
+              "cuotaFija": 38.65
+            },
+            {
+              "desde": 5200.01,
+              "hasta": 5300.0,
+              "tasa": 0,
+              "cuotaFija": 39.35
+            },
+            {
+              "desde": 5300.01,
+              "hasta": 5400.0,
+              "tasa": 0,
+              "cuotaFija": 40.15
+            },
+            {
+              "desde": 5400.01,
+              "hasta": 5500.0,
+              "tasa": 0,
+              "cuotaFija": 40.85
+            },
+            {
+              "desde": 5500.01,
+              "hasta": 5600.0,
+              "tasa": 0,
+              "cuotaFija": 41.65
+            },
+            {
+              "desde": 5600.01,
+              "hasta": 5700.0,
+              "tasa": 0,
+              "cuotaFija": 42.35
+            },
+            {
+              "desde": 5700.01,
+              "hasta": 5800.0,
+              "tasa": 0,
+              "cuotaFija": 43.15
+            },
+            {
+              "desde": 5800.01,
+              "hasta": 5900.0,
+              "tasa": 0,
+              "cuotaFija": 43.85
+            },
+            {
+              "desde": 5900.01,
+              "hasta": 6000.0,
+              "tasa": 0,
+              "cuotaFija": 44.65
+            },
+            {
+              "desde": 6000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 44.65
+            }
+          ],
+          "fuente": {
+            "organismo": "PERKESO",
+            "titulo": "Employees' Social Security Act 1969 (Act 4): new contribution rate including the Non-Employment Injury Scheme (SKBBK)",
+            "url": "https://www.perkeso.gov.my/images/lindung/lindung-24-jam/NewContributionRateIncludingSKBBK.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "SKBBK (LINDUNG 24 Jam) starts on 1 June 2026, per PERKESO media statement of 2 June 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.socso-employer-second",
+      "nombre": "SOCSO employer share, second category (Employment Injury only)",
+      "tipo": "escala",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30,
+              "tasa": 0,
+              "cuotaFija": 0.3
+            },
+            {
+              "desde": 30.01,
+              "hasta": 50.0,
+              "tasa": 0,
+              "cuotaFija": 0.5
+            },
+            {
+              "desde": 50.01,
+              "hasta": 70.0,
+              "tasa": 0,
+              "cuotaFija": 0.8
+            },
+            {
+              "desde": 70.01,
+              "hasta": 100.0,
+              "tasa": 0,
+              "cuotaFija": 1.1
+            },
+            {
+              "desde": 100.01,
+              "hasta": 140.0,
+              "tasa": 0,
+              "cuotaFija": 1.5
+            },
+            {
+              "desde": 140.01,
+              "hasta": 200.0,
+              "tasa": 0,
+              "cuotaFija": 2.1
+            },
+            {
+              "desde": 200.01,
+              "hasta": 300.0,
+              "tasa": 0,
+              "cuotaFija": 3.1
+            },
+            {
+              "desde": 300.01,
+              "hasta": 400.0,
+              "tasa": 0,
+              "cuotaFija": 4.4
+            },
+            {
+              "desde": 400.01,
+              "hasta": 500.0,
+              "tasa": 0,
+              "cuotaFija": 5.6
+            },
+            {
+              "desde": 500.01,
+              "hasta": 600.0,
+              "tasa": 0,
+              "cuotaFija": 6.9
+            },
+            {
+              "desde": 600.01,
+              "hasta": 700.0,
+              "tasa": 0,
+              "cuotaFija": 8.1
+            },
+            {
+              "desde": 700.01,
+              "hasta": 800.0,
+              "tasa": 0,
+              "cuotaFija": 9.4
+            },
+            {
+              "desde": 800.01,
+              "hasta": 900.0,
+              "tasa": 0,
+              "cuotaFija": 10.6
+            },
+            {
+              "desde": 900.01,
+              "hasta": 1000.0,
+              "tasa": 0,
+              "cuotaFija": 11.9
+            },
+            {
+              "desde": 1000.01,
+              "hasta": 1100.0,
+              "tasa": 0,
+              "cuotaFija": 13.1
+            },
+            {
+              "desde": 1100.01,
+              "hasta": 1200.0,
+              "tasa": 0,
+              "cuotaFija": 14.4
+            },
+            {
+              "desde": 1200.01,
+              "hasta": 1300.0,
+              "tasa": 0,
+              "cuotaFija": 15.6
+            },
+            {
+              "desde": 1300.01,
+              "hasta": 1400.0,
+              "tasa": 0,
+              "cuotaFija": 16.9
+            },
+            {
+              "desde": 1400.01,
+              "hasta": 1500.0,
+              "tasa": 0,
+              "cuotaFija": 18.1
+            },
+            {
+              "desde": 1500.01,
+              "hasta": 1600.0,
+              "tasa": 0,
+              "cuotaFija": 19.4
+            },
+            {
+              "desde": 1600.01,
+              "hasta": 1700.0,
+              "tasa": 0,
+              "cuotaFija": 20.6
+            },
+            {
+              "desde": 1700.01,
+              "hasta": 1800.0,
+              "tasa": 0,
+              "cuotaFija": 21.9
+            },
+            {
+              "desde": 1800.01,
+              "hasta": 1900.0,
+              "tasa": 0,
+              "cuotaFija": 23.1
+            },
+            {
+              "desde": 1900.01,
+              "hasta": 2000.0,
+              "tasa": 0,
+              "cuotaFija": 24.4
+            },
+            {
+              "desde": 2000.01,
+              "hasta": 2100.0,
+              "tasa": 0,
+              "cuotaFija": 25.6
+            },
+            {
+              "desde": 2100.01,
+              "hasta": 2200.0,
+              "tasa": 0,
+              "cuotaFija": 26.9
+            },
+            {
+              "desde": 2200.01,
+              "hasta": 2300.0,
+              "tasa": 0,
+              "cuotaFija": 28.1
+            },
+            {
+              "desde": 2300.01,
+              "hasta": 2400.0,
+              "tasa": 0,
+              "cuotaFija": 29.4
+            },
+            {
+              "desde": 2400.01,
+              "hasta": 2500.0,
+              "tasa": 0,
+              "cuotaFija": 30.6
+            },
+            {
+              "desde": 2500.01,
+              "hasta": 2600.0,
+              "tasa": 0,
+              "cuotaFija": 31.9
+            },
+            {
+              "desde": 2600.01,
+              "hasta": 2700.0,
+              "tasa": 0,
+              "cuotaFija": 33.1
+            },
+            {
+              "desde": 2700.01,
+              "hasta": 2800.0,
+              "tasa": 0,
+              "cuotaFija": 34.4
+            },
+            {
+              "desde": 2800.01,
+              "hasta": 2900.0,
+              "tasa": 0,
+              "cuotaFija": 35.6
+            },
+            {
+              "desde": 2900.01,
+              "hasta": 3000.0,
+              "tasa": 0,
+              "cuotaFija": 36.9
+            },
+            {
+              "desde": 3000.01,
+              "hasta": 3100.0,
+              "tasa": 0,
+              "cuotaFija": 38.1
+            },
+            {
+              "desde": 3100.01,
+              "hasta": 3200.0,
+              "tasa": 0,
+              "cuotaFija": 39.4
+            },
+            {
+              "desde": 3200.01,
+              "hasta": 3300.0,
+              "tasa": 0,
+              "cuotaFija": 40.6
+            },
+            {
+              "desde": 3300.01,
+              "hasta": 3400.0,
+              "tasa": 0,
+              "cuotaFija": 41.9
+            },
+            {
+              "desde": 3400.01,
+              "hasta": 3500.0,
+              "tasa": 0,
+              "cuotaFija": 43.1
+            },
+            {
+              "desde": 3500.01,
+              "hasta": 3600.0,
+              "tasa": 0,
+              "cuotaFija": 44.4
+            },
+            {
+              "desde": 3600.01,
+              "hasta": 3700.0,
+              "tasa": 0,
+              "cuotaFija": 45.6
+            },
+            {
+              "desde": 3700.01,
+              "hasta": 3800.0,
+              "tasa": 0,
+              "cuotaFija": 46.9
+            },
+            {
+              "desde": 3800.01,
+              "hasta": 3900.0,
+              "tasa": 0,
+              "cuotaFija": 48.1
+            },
+            {
+              "desde": 3900.01,
+              "hasta": 4000.0,
+              "tasa": 0,
+              "cuotaFija": 49.4
+            },
+            {
+              "desde": 4000.01,
+              "hasta": 4100.0,
+              "tasa": 0,
+              "cuotaFija": 50.6
+            },
+            {
+              "desde": 4100.01,
+              "hasta": 4200.0,
+              "tasa": 0,
+              "cuotaFija": 51.9
+            },
+            {
+              "desde": 4200.01,
+              "hasta": 4300.0,
+              "tasa": 0,
+              "cuotaFija": 53.1
+            },
+            {
+              "desde": 4300.01,
+              "hasta": 4400.0,
+              "tasa": 0,
+              "cuotaFija": 54.4
+            },
+            {
+              "desde": 4400.01,
+              "hasta": 4500.0,
+              "tasa": 0,
+              "cuotaFija": 55.6
+            },
+            {
+              "desde": 4500.01,
+              "hasta": 4600.0,
+              "tasa": 0,
+              "cuotaFija": 56.9
+            },
+            {
+              "desde": 4600.01,
+              "hasta": 4700.0,
+              "tasa": 0,
+              "cuotaFija": 58.1
+            },
+            {
+              "desde": 4700.01,
+              "hasta": 4800.0,
+              "tasa": 0,
+              "cuotaFija": 59.4
+            },
+            {
+              "desde": 4800.01,
+              "hasta": 4900.0,
+              "tasa": 0,
+              "cuotaFija": 60.6
+            },
+            {
+              "desde": 4900.01,
+              "hasta": 5000.0,
+              "tasa": 0,
+              "cuotaFija": 61.9
+            },
+            {
+              "desde": 5000.01,
+              "hasta": 5100.0,
+              "tasa": 0,
+              "cuotaFija": 63.1
+            },
+            {
+              "desde": 5100.01,
+              "hasta": 5200.0,
+              "tasa": 0,
+              "cuotaFija": 64.4
+            },
+            {
+              "desde": 5200.01,
+              "hasta": 5300.0,
+              "tasa": 0,
+              "cuotaFija": 65.6
+            },
+            {
+              "desde": 5300.01,
+              "hasta": 5400.0,
+              "tasa": 0,
+              "cuotaFija": 66.9
+            },
+            {
+              "desde": 5400.01,
+              "hasta": 5500.0,
+              "tasa": 0,
+              "cuotaFija": 68.1
+            },
+            {
+              "desde": 5500.01,
+              "hasta": 5600.0,
+              "tasa": 0,
+              "cuotaFija": 69.4
+            },
+            {
+              "desde": 5600.01,
+              "hasta": 5700.0,
+              "tasa": 0,
+              "cuotaFija": 70.6
+            },
+            {
+              "desde": 5700.01,
+              "hasta": 5800.0,
+              "tasa": 0,
+              "cuotaFija": 71.9
+            },
+            {
+              "desde": 5800.01,
+              "hasta": 5900.0,
+              "tasa": 0,
+              "cuotaFija": 73.1
+            },
+            {
+              "desde": 5900.01,
+              "hasta": 6000.0,
+              "tasa": 0,
+              "cuotaFija": 74.4
+            },
+            {
+              "desde": 6000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 74.4
+            }
+          ],
+          "fuente": {
+            "organismo": "PERKESO",
+            "titulo": "Employees' Social Security Act 1969 (Act 4): new contribution rate including the Non-Employment Injury Scheme (SKBBK)",
+            "url": "https://www.perkeso.gov.my/images/lindung/lindung-24-jam/NewContributionRateIncludingSKBBK.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "SKBBK (LINDUNG 24 Jam) starts on 1 June 2026, per PERKESO media statement of 2 June 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.socso-skbbk-second",
+      "nombre": "SOCSO employee share for the Non-Employment Injury Scheme, second category",
+      "tipo": "escala",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30,
+              "tasa": 0,
+              "cuotaFija": 0.2
+            },
+            {
+              "desde": 30.01,
+              "hasta": 50.0,
+              "tasa": 0,
+              "cuotaFija": 0.3
+            },
+            {
+              "desde": 50.01,
+              "hasta": 70.0,
+              "tasa": 0,
+              "cuotaFija": 0.5
+            },
+            {
+              "desde": 70.01,
+              "hasta": 100.0,
+              "tasa": 0,
+              "cuotaFija": 0.65
+            },
+            {
+              "desde": 100.01,
+              "hasta": 140.0,
+              "tasa": 0,
+              "cuotaFija": 0.9
+            },
+            {
+              "desde": 140.01,
+              "hasta": 200.0,
+              "tasa": 0,
+              "cuotaFija": 1.25
+            },
+            {
+              "desde": 200.01,
+              "hasta": 300.0,
+              "tasa": 0,
+              "cuotaFija": 1.85
+            },
+            {
+              "desde": 300.01,
+              "hasta": 400.0,
+              "tasa": 0,
+              "cuotaFija": 2.65
+            },
+            {
+              "desde": 400.01,
+              "hasta": 500.0,
+              "tasa": 0,
+              "cuotaFija": 3.35
+            },
+            {
+              "desde": 500.01,
+              "hasta": 600.0,
+              "tasa": 0,
+              "cuotaFija": 4.15
+            },
+            {
+              "desde": 600.01,
+              "hasta": 700.0,
+              "tasa": 0,
+              "cuotaFija": 4.85
+            },
+            {
+              "desde": 700.01,
+              "hasta": 800.0,
+              "tasa": 0,
+              "cuotaFija": 5.65
+            },
+            {
+              "desde": 800.01,
+              "hasta": 900.0,
+              "tasa": 0,
+              "cuotaFija": 6.35
+            },
+            {
+              "desde": 900.01,
+              "hasta": 1000.0,
+              "tasa": 0,
+              "cuotaFija": 7.15
+            },
+            {
+              "desde": 1000.01,
+              "hasta": 1100.0,
+              "tasa": 0,
+              "cuotaFija": 7.85
+            },
+            {
+              "desde": 1100.01,
+              "hasta": 1200.0,
+              "tasa": 0,
+              "cuotaFija": 8.65
+            },
+            {
+              "desde": 1200.01,
+              "hasta": 1300.0,
+              "tasa": 0,
+              "cuotaFija": 9.35
+            },
+            {
+              "desde": 1300.01,
+              "hasta": 1400.0,
+              "tasa": 0,
+              "cuotaFija": 10.15
+            },
+            {
+              "desde": 1400.01,
+              "hasta": 1500.0,
+              "tasa": 0,
+              "cuotaFija": 10.85
+            },
+            {
+              "desde": 1500.01,
+              "hasta": 1600.0,
+              "tasa": 0,
+              "cuotaFija": 11.65
+            },
+            {
+              "desde": 1600.01,
+              "hasta": 1700.0,
+              "tasa": 0,
+              "cuotaFija": 12.35
+            },
+            {
+              "desde": 1700.01,
+              "hasta": 1800.0,
+              "tasa": 0,
+              "cuotaFija": 13.15
+            },
+            {
+              "desde": 1800.01,
+              "hasta": 1900.0,
+              "tasa": 0,
+              "cuotaFija": 13.85
+            },
+            {
+              "desde": 1900.01,
+              "hasta": 2000.0,
+              "tasa": 0,
+              "cuotaFija": 14.65
+            },
+            {
+              "desde": 2000.01,
+              "hasta": 2100.0,
+              "tasa": 0,
+              "cuotaFija": 15.35
+            },
+            {
+              "desde": 2100.01,
+              "hasta": 2200.0,
+              "tasa": 0,
+              "cuotaFija": 16.15
+            },
+            {
+              "desde": 2200.01,
+              "hasta": 2300.0,
+              "tasa": 0,
+              "cuotaFija": 16.85
+            },
+            {
+              "desde": 2300.01,
+              "hasta": 2400.0,
+              "tasa": 0,
+              "cuotaFija": 17.65
+            },
+            {
+              "desde": 2400.01,
+              "hasta": 2500.0,
+              "tasa": 0,
+              "cuotaFija": 18.35
+            },
+            {
+              "desde": 2500.01,
+              "hasta": 2600.0,
+              "tasa": 0,
+              "cuotaFija": 19.15
+            },
+            {
+              "desde": 2600.01,
+              "hasta": 2700.0,
+              "tasa": 0,
+              "cuotaFija": 19.85
+            },
+            {
+              "desde": 2700.01,
+              "hasta": 2800.0,
+              "tasa": 0,
+              "cuotaFija": 20.65
+            },
+            {
+              "desde": 2800.01,
+              "hasta": 2900.0,
+              "tasa": 0,
+              "cuotaFija": 21.35
+            },
+            {
+              "desde": 2900.01,
+              "hasta": 3000.0,
+              "tasa": 0,
+              "cuotaFija": 22.15
+            },
+            {
+              "desde": 3000.01,
+              "hasta": 3100.0,
+              "tasa": 0,
+              "cuotaFija": 22.85
+            },
+            {
+              "desde": 3100.01,
+              "hasta": 3200.0,
+              "tasa": 0,
+              "cuotaFija": 23.65
+            },
+            {
+              "desde": 3200.01,
+              "hasta": 3300.0,
+              "tasa": 0,
+              "cuotaFija": 24.35
+            },
+            {
+              "desde": 3300.01,
+              "hasta": 3400.0,
+              "tasa": 0,
+              "cuotaFija": 25.15
+            },
+            {
+              "desde": 3400.01,
+              "hasta": 3500.0,
+              "tasa": 0,
+              "cuotaFija": 25.85
+            },
+            {
+              "desde": 3500.01,
+              "hasta": 3600.0,
+              "tasa": 0,
+              "cuotaFija": 26.65
+            },
+            {
+              "desde": 3600.01,
+              "hasta": 3700.0,
+              "tasa": 0,
+              "cuotaFija": 27.35
+            },
+            {
+              "desde": 3700.01,
+              "hasta": 3800.0,
+              "tasa": 0,
+              "cuotaFija": 28.15
+            },
+            {
+              "desde": 3800.01,
+              "hasta": 3900.0,
+              "tasa": 0,
+              "cuotaFija": 28.85
+            },
+            {
+              "desde": 3900.01,
+              "hasta": 4000.0,
+              "tasa": 0,
+              "cuotaFija": 29.65
+            },
+            {
+              "desde": 4000.01,
+              "hasta": 4100.0,
+              "tasa": 0,
+              "cuotaFija": 30.35
+            },
+            {
+              "desde": 4100.01,
+              "hasta": 4200.0,
+              "tasa": 0,
+              "cuotaFija": 31.15
+            },
+            {
+              "desde": 4200.01,
+              "hasta": 4300.0,
+              "tasa": 0,
+              "cuotaFija": 31.85
+            },
+            {
+              "desde": 4300.01,
+              "hasta": 4400.0,
+              "tasa": 0,
+              "cuotaFija": 32.65
+            },
+            {
+              "desde": 4400.01,
+              "hasta": 4500.0,
+              "tasa": 0,
+              "cuotaFija": 33.35
+            },
+            {
+              "desde": 4500.01,
+              "hasta": 4600.0,
+              "tasa": 0,
+              "cuotaFija": 34.15
+            },
+            {
+              "desde": 4600.01,
+              "hasta": 4700.0,
+              "tasa": 0,
+              "cuotaFija": 34.85
+            },
+            {
+              "desde": 4700.01,
+              "hasta": 4800.0,
+              "tasa": 0,
+              "cuotaFija": 35.65
+            },
+            {
+              "desde": 4800.01,
+              "hasta": 4900.0,
+              "tasa": 0,
+              "cuotaFija": 36.35
+            },
+            {
+              "desde": 4900.01,
+              "hasta": 5000.0,
+              "tasa": 0,
+              "cuotaFija": 37.15
+            },
+            {
+              "desde": 5000.01,
+              "hasta": 5100.0,
+              "tasa": 0,
+              "cuotaFija": 37.85
+            },
+            {
+              "desde": 5100.01,
+              "hasta": 5200.0,
+              "tasa": 0,
+              "cuotaFija": 38.65
+            },
+            {
+              "desde": 5200.01,
+              "hasta": 5300.0,
+              "tasa": 0,
+              "cuotaFija": 39.35
+            },
+            {
+              "desde": 5300.01,
+              "hasta": 5400.0,
+              "tasa": 0,
+              "cuotaFija": 40.15
+            },
+            {
+              "desde": 5400.01,
+              "hasta": 5500.0,
+              "tasa": 0,
+              "cuotaFija": 40.85
+            },
+            {
+              "desde": 5500.01,
+              "hasta": 5600.0,
+              "tasa": 0,
+              "cuotaFija": 41.65
+            },
+            {
+              "desde": 5600.01,
+              "hasta": 5700.0,
+              "tasa": 0,
+              "cuotaFija": 42.35
+            },
+            {
+              "desde": 5700.01,
+              "hasta": 5800.0,
+              "tasa": 0,
+              "cuotaFija": 43.15
+            },
+            {
+              "desde": 5800.01,
+              "hasta": 5900.0,
+              "tasa": 0,
+              "cuotaFija": 43.85
+            },
+            {
+              "desde": 5900.01,
+              "hasta": 6000.0,
+              "tasa": 0,
+              "cuotaFija": 44.65
+            },
+            {
+              "desde": 6000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 44.65
+            }
+          ],
+          "fuente": {
+            "organismo": "PERKESO",
+            "titulo": "Employees' Social Security Act 1969 (Act 4): new contribution rate including the Non-Employment Injury Scheme (SKBBK)",
+            "url": "https://www.perkeso.gov.my/images/lindung/lindung-24-jam/NewContributionRateIncludingSKBBK.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "SKBBK (LINDUNG 24 Jam) starts on 1 June 2026, per PERKESO media statement of 2 June 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.socso-wage-ceiling",
+      "nombre": "SOCSO and EIS wage ceiling a month",
+      "tipo": "numero",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "PERKESO",
+            "titulo": "Contribution Rate (wage ceiling RM6,000 from 1 October 2024)",
+            "url": "https://www.perkeso.gov.my/en/rate-of-contribution.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.eis",
+      "nombre": "EIS contribution (employer and employee pay the same)",
+      "tipo": "escala",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30,
+              "tasa": 0,
+              "cuotaFija": 0.05
+            },
+            {
+              "desde": 30.01,
+              "hasta": 50,
+              "tasa": 0,
+              "cuotaFija": 0.1
+            },
+            {
+              "desde": 50.01,
+              "hasta": 70,
+              "tasa": 0,
+              "cuotaFija": 0.15
+            },
+            {
+              "desde": 70.01,
+              "hasta": 100,
+              "tasa": 0,
+              "cuotaFija": 0.2
+            },
+            {
+              "desde": 100.01,
+              "hasta": 140,
+              "tasa": 0,
+              "cuotaFija": 0.25
+            },
+            {
+              "desde": 140.01,
+              "hasta": 200,
+              "tasa": 0,
+              "cuotaFija": 0.35
+            },
+            {
+              "desde": 200.01,
+              "hasta": 300,
+              "tasa": 0,
+              "cuotaFija": 0.5
+            },
+            {
+              "desde": 300.01,
+              "hasta": 400,
+              "tasa": 0,
+              "cuotaFija": 0.7
+            },
+            {
+              "desde": 400.01,
+              "hasta": 500,
+              "tasa": 0,
+              "cuotaFija": 0.9
+            },
+            {
+              "desde": 500.01,
+              "hasta": 600,
+              "tasa": 0,
+              "cuotaFija": 1.1
+            },
+            {
+              "desde": 600.01,
+              "hasta": 700,
+              "tasa": 0,
+              "cuotaFija": 1.3
+            },
+            {
+              "desde": 700.01,
+              "hasta": 800,
+              "tasa": 0,
+              "cuotaFija": 1.5
+            },
+            {
+              "desde": 800.01,
+              "hasta": 900,
+              "tasa": 0,
+              "cuotaFija": 1.7
+            },
+            {
+              "desde": 900.01,
+              "hasta": 1000,
+              "tasa": 0,
+              "cuotaFija": 1.9
+            },
+            {
+              "desde": 1000.01,
+              "hasta": 1100,
+              "tasa": 0,
+              "cuotaFija": 2.1
+            },
+            {
+              "desde": 1100.01,
+              "hasta": 1200,
+              "tasa": 0,
+              "cuotaFija": 2.3
+            },
+            {
+              "desde": 1200.01,
+              "hasta": 1300,
+              "tasa": 0,
+              "cuotaFija": 2.5
+            },
+            {
+              "desde": 1300.01,
+              "hasta": 1400,
+              "tasa": 0,
+              "cuotaFija": 2.7
+            },
+            {
+              "desde": 1400.01,
+              "hasta": 1500,
+              "tasa": 0,
+              "cuotaFija": 2.9
+            },
+            {
+              "desde": 1500.01,
+              "hasta": 1600,
+              "tasa": 0,
+              "cuotaFija": 3.1
+            },
+            {
+              "desde": 1600.01,
+              "hasta": 1700,
+              "tasa": 0,
+              "cuotaFija": 3.3
+            },
+            {
+              "desde": 1700.01,
+              "hasta": 1800,
+              "tasa": 0,
+              "cuotaFija": 3.5
+            },
+            {
+              "desde": 1800.01,
+              "hasta": 1900,
+              "tasa": 0,
+              "cuotaFija": 3.7
+            },
+            {
+              "desde": 1900.01,
+              "hasta": 2000,
+              "tasa": 0,
+              "cuotaFija": 3.9
+            },
+            {
+              "desde": 2000.01,
+              "hasta": 2100,
+              "tasa": 0,
+              "cuotaFija": 4.1
+            },
+            {
+              "desde": 2100.01,
+              "hasta": 2200,
+              "tasa": 0,
+              "cuotaFija": 4.3
+            },
+            {
+              "desde": 2200.01,
+              "hasta": 2300,
+              "tasa": 0,
+              "cuotaFija": 4.5
+            },
+            {
+              "desde": 2300.01,
+              "hasta": 2400,
+              "tasa": 0,
+              "cuotaFija": 4.7
+            },
+            {
+              "desde": 2400.01,
+              "hasta": 2500,
+              "tasa": 0,
+              "cuotaFija": 4.9
+            },
+            {
+              "desde": 2500.01,
+              "hasta": 2600,
+              "tasa": 0,
+              "cuotaFija": 5.1
+            },
+            {
+              "desde": 2600.01,
+              "hasta": 2700,
+              "tasa": 0,
+              "cuotaFija": 5.3
+            },
+            {
+              "desde": 2700.01,
+              "hasta": 2800,
+              "tasa": 0,
+              "cuotaFija": 5.5
+            },
+            {
+              "desde": 2800.01,
+              "hasta": 2900,
+              "tasa": 0,
+              "cuotaFija": 5.7
+            },
+            {
+              "desde": 2900.01,
+              "hasta": 3000,
+              "tasa": 0,
+              "cuotaFija": 5.9
+            },
+            {
+              "desde": 3000.01,
+              "hasta": 3100,
+              "tasa": 0,
+              "cuotaFija": 6.1
+            },
+            {
+              "desde": 3100.01,
+              "hasta": 3200,
+              "tasa": 0,
+              "cuotaFija": 6.3
+            },
+            {
+              "desde": 3200.01,
+              "hasta": 3300,
+              "tasa": 0,
+              "cuotaFija": 6.5
+            },
+            {
+              "desde": 3300.01,
+              "hasta": 3400,
+              "tasa": 0,
+              "cuotaFija": 6.7
+            },
+            {
+              "desde": 3400.01,
+              "hasta": 3500,
+              "tasa": 0,
+              "cuotaFija": 6.9
+            },
+            {
+              "desde": 3500.01,
+              "hasta": 3600,
+              "tasa": 0,
+              "cuotaFija": 7.1
+            },
+            {
+              "desde": 3600.01,
+              "hasta": 3700,
+              "tasa": 0,
+              "cuotaFija": 7.3
+            },
+            {
+              "desde": 3700.01,
+              "hasta": 3800,
+              "tasa": 0,
+              "cuotaFija": 7.5
+            },
+            {
+              "desde": 3800.01,
+              "hasta": 3900,
+              "tasa": 0,
+              "cuotaFija": 7.7
+            },
+            {
+              "desde": 3900.01,
+              "hasta": 4000,
+              "tasa": 0,
+              "cuotaFija": 7.9
+            },
+            {
+              "desde": 4000.01,
+              "hasta": 4100,
+              "tasa": 0,
+              "cuotaFija": 8.1
+            },
+            {
+              "desde": 4100.01,
+              "hasta": 4200,
+              "tasa": 0,
+              "cuotaFija": 8.3
+            },
+            {
+              "desde": 4200.01,
+              "hasta": 4300,
+              "tasa": 0,
+              "cuotaFija": 8.5
+            },
+            {
+              "desde": 4300.01,
+              "hasta": 4400,
+              "tasa": 0,
+              "cuotaFija": 8.7
+            },
+            {
+              "desde": 4400.01,
+              "hasta": 4500,
+              "tasa": 0,
+              "cuotaFija": 8.9
+            },
+            {
+              "desde": 4500.01,
+              "hasta": 4600,
+              "tasa": 0,
+              "cuotaFija": 9.1
+            },
+            {
+              "desde": 4600.01,
+              "hasta": 4700,
+              "tasa": 0,
+              "cuotaFija": 9.3
+            },
+            {
+              "desde": 4700.01,
+              "hasta": 4800,
+              "tasa": 0,
+              "cuotaFija": 9.5
+            },
+            {
+              "desde": 4800.01,
+              "hasta": 4900,
+              "tasa": 0,
+              "cuotaFija": 9.7
+            },
+            {
+              "desde": 4900.01,
+              "hasta": 5000,
+              "tasa": 0,
+              "cuotaFija": 9.9
+            },
+            {
+              "desde": 5000.01,
+              "hasta": 5100,
+              "tasa": 0,
+              "cuotaFija": 10.1
+            },
+            {
+              "desde": 5100.01,
+              "hasta": 5200,
+              "tasa": 0,
+              "cuotaFija": 10.3
+            },
+            {
+              "desde": 5200.01,
+              "hasta": 5300,
+              "tasa": 0,
+              "cuotaFija": 10.5
+            },
+            {
+              "desde": 5300.01,
+              "hasta": 5400,
+              "tasa": 0,
+              "cuotaFija": 10.7
+            },
+            {
+              "desde": 5400.01,
+              "hasta": 5500,
+              "tasa": 0,
+              "cuotaFija": 10.9
+            },
+            {
+              "desde": 5500.01,
+              "hasta": 5600,
+              "tasa": 0,
+              "cuotaFija": 11.1
+            },
+            {
+              "desde": 5600.01,
+              "hasta": 5700,
+              "tasa": 0,
+              "cuotaFija": 11.3
+            },
+            {
+              "desde": 5700.01,
+              "hasta": 5800,
+              "tasa": 0,
+              "cuotaFija": 11.5
+            },
+            {
+              "desde": 5800.01,
+              "hasta": 5900,
+              "tasa": 0,
+              "cuotaFija": 11.7
+            },
+            {
+              "desde": 5900.01,
+              "hasta": 6000,
+              "tasa": 0,
+              "cuotaFija": 11.9
+            },
+            {
+              "desde": 6000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 11.9
+            }
+          ],
+          "fuente": {
+            "organismo": "PERKESO",
+            "titulo": "Rate of Contribution Employment Insurance System (Act 800)",
+            "url": "https://www.perkeso.gov.my/images/dokumen/151124-Rate%20Contribution%20ACT%20800.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.minimum-wage-monthly",
+      "nombre": "Minimum wage a month",
+      "tipo": "numero",
+      "unidad": "MYR",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "valor": 1700,
+          "fuente": {
+            "organismo": "Kementerian Sumber Manusia",
+            "titulo": "Minimum Wages Order 2024, P.U. (A) 376",
+            "url": "https://gajiminimum.mohr.gov.my/wp-content/uploads/PUA%20376.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.minimum-wage-hourly",
+      "nombre": "Minimum wage an hour",
+      "tipo": "numero",
+      "unidad": "MYR",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "valor": 8.72,
+          "fuente": {
+            "organismo": "Kementerian Sumber Manusia",
+            "titulo": "Minimum Wages Order 2024, P.U. (A) 376",
+            "url": "https://gajiminimum.mohr.gov.my/wp-content/uploads/PUA%20376.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.minimum-wage-daily",
+      "nombre": "Minimum wage a day by working days a week",
+      "tipo": "mapa",
+      "unidad": "MYR",
+      "etiquetas": {
+        "6": "6 days a week",
+        "5": "5 days a week",
+        "4": "4 days a week"
+      },
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "valor": {
+            "6": 65.38,
+            "5": 78.46,
+            "4": 98.08
+          },
+          "fuente": {
+            "organismo": "Kementerian Sumber Manusia",
+            "titulo": "Minimum Wages Order 2024, P.U. (A) 376",
+            "url": "https://gajiminimum.mohr.gov.my/wp-content/uploads/PUA%20376.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.ordinary-rate-divisor",
+      "nombre": "Divisor for the ordinary rate of pay of a monthly-rated employee",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment Act 1955 (Act 265), updated text as at 1 January 2023",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.ordinary-rate-divisor-weekly",
+      "nombre": "Divisor for the ordinary rate of pay of a weekly-rated employee",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment Act 1955 (Act 265), updated text as at 1 January 2023",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.max-normal-hours-week",
+      "nombre": "Maximum normal hours of work a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment Act 1955 (Act 265), updated text as at 1 January 2023",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.overtime-multipliers",
+      "nombre": "Overtime, rest day and public holiday pay rates",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "overtime": "Overtime on a normal working day",
+        "rest-day-overtime": "Overtime on a rest day",
+        "public-holiday": "Work on a paid public holiday (days' wages)",
+        "public-holiday-overtime": "Overtime on a paid public holiday"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "overtime": 1.5,
+            "rest-day-overtime": 2,
+            "public-holiday": 2,
+            "public-holiday-overtime": 3
+          },
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment Act 1955 (Act 265), updated text as at 1 January 2023",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.annual-leave-days",
+      "nombre": "Paid annual leave for every 12 months of service",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "under-2": "Less than 2 years",
+        "2-to-5": "2 to less than 5 years",
+        "5-plus": "5 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "under-2": 8,
+            "2-to-5": 12,
+            "5-plus": 16
+          },
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment Act 1955 (Act 265), updated text as at 1 January 2023",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.sick-leave-days",
+      "nombre": "Paid sick leave a year",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "under-2": "Less than 2 years",
+        "2-to-5": "2 to less than 5 years",
+        "5-plus": "5 years or more",
+        "hospitalisation": "Hospitalisation"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "under-2": 14,
+            "2-to-5": 18,
+            "5-plus": 22,
+            "hospitalisation": 60
+          },
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment Act 1955 (Act 265), updated text as at 1 January 2023",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.maternity-leave-days",
+      "nombre": "Maternity leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 98,
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment Act 1955 (Act 265), updated text as at 1 January 2023",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.paternity-leave-days",
+      "nombre": "Paternity leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment Act 1955 (Act 265), updated text as at 1 January 2023",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.notice-weeks",
+      "nombre": "Minimum notice of termination",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "under-2": "Less than 2 years",
+        "2-to-5": "2 to less than 5 years",
+        "5-plus": "5 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "under-2": 4,
+            "2-to-5": 6,
+            "5-plus": 8
+          },
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment Act 1955 (Act 265), updated text as at 1 January 2023",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.termination-benefit-days",
+      "nombre": "Termination and lay-off benefits: days' wages for each year of service",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "under-2": "Less than 2 years",
+        "2-to-5": "2 to less than 5 years",
+        "5-plus": "5 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "under-2": 10,
+            "2-to-5": 15,
+            "5-plus": 20
+          },
+          "fuente": {
+            "organismo": "JTKSM",
+            "titulo": "Employment (Termination and Lay-Off Benefits) Regulations 1980, regulation 6",
+            "url": "https://jtksm.mohr.gov.my/sites/default/files/2023-03/8.%20EMPLOYMENT%20%28TERMINATION%20%26%20LAY%20OFF%20BENEFITS%29%20REGULATIONS%201980.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.sales-tax-rates",
+      "nombre": "Sales tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "5": "5%",
+        "10": "10%"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "5": 5,
+            "10": 10
+          },
+          "fuente": {
+            "organismo": "Royal Malaysian Customs Department",
+            "titulo": "FAQ Sales Tax",
+            "url": "https://mysst.customs.gov.my/faq-sales-tax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.service-tax-rates",
+      "nombre": "Service tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "8%: most taxable services",
+        "reduced": "6%: food and beverage, telecommunications, parking, logistics, construction, private healthcare and education"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "standard": 8,
+            "reduced": 6
+          },
+          "fuente": {
+            "organismo": "Royal Malaysian Customs Department",
+            "titulo": "FAQ Service Tax",
+            "url": "https://mysst.customs.gov.my/faq-services-tax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.rpgt-citizen",
+      "nombre": "RPGT rates for Malaysian citizens and permanent residents (Part I)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "y1-3": "Within 3 years",
+        "y4": "In the 4th year",
+        "y5": "In the 5th year",
+        "y6": "6th year onwards"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "y1-3": 30,
+            "y4": 20,
+            "y5": 15,
+            "y6": 0
+          },
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Kadar Cukai Keuntungan Harta Tanah",
+            "url": "https://www.hasil.gov.my/ckht/kadar-cukai-keuntungan-harta-tanah/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.rpgt-company",
+      "nombre": "RPGT rates for companies incorporated in Malaysia and trustees (Part II)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "y1-3": "Within 3 years",
+        "y4": "In the 4th year",
+        "y5": "In the 5th year",
+        "y6": "6th year onwards"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": {
+            "y1-3": 30,
+            "y4": 20,
+            "y5": 15,
+            "y6": 10
+          },
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Kadar Cukai Keuntungan Harta Tanah",
+            "url": "https://www.hasil.gov.my/ckht/kadar-cukai-keuntungan-harta-tanah/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.rpgt-foreigner",
+      "nombre": "RPGT rates for non-citizens and foreign companies (Part III)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "y1-3": "Within 3 years",
+        "y4": "In the 4th year",
+        "y5": "In the 5th year",
+        "y6": "6th year onwards"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": {
+            "y1-3": 30,
+            "y4": 30,
+            "y5": 30,
+            "y6": 10
+          },
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Kadar Cukai Keuntungan Harta Tanah",
+            "url": "https://www.hasil.gov.my/ckht/kadar-cukai-keuntungan-harta-tanah/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.rpgt-exemption-amount",
+      "nombre": "RPGT exemption for individuals: fixed amount",
+      "tipo": "numero",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "CKHT: Pengecualian",
+            "url": "https://www.hasil.gov.my/ckht/pengecualian/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.rpgt-exemption-rate",
+      "nombre": "RPGT exemption for individuals: share of the chargeable gain",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "CKHT: Pengecualian",
+            "url": "https://www.hasil.gov.my/ckht/pengecualian/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.stamp-duty-transfer",
+      "nombre": "Stamp duty on a property transfer (item 32(a))",
+      "tipo": "escala",
+      "unidad": "MYR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 100000,
+              "tasa": 1
+            },
+            {
+              "desde": 100000,
+              "hasta": 500000,
+              "tasa": 2
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 3
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 4
+            }
+          ],
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Garis Panduan Pengenaan Duti Setem bagi Surat Cara yang Tertakluk kepada Jadual Pertama Akta Setem 1949",
+            "url": "https://www.hasil.gov.my/wp-content/uploads/garis-panduan-pengenaan-duti-setem-jadual-pertama-as-1949.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.stamp-duty-foreign",
+      "nombre": "Stamp duty on property sold to a foreign company or non-citizen (item 32(aa))",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Garis Panduan Pengenaan Duti Setem bagi Surat Cara yang Tertakluk kepada Jadual Pertama Akta Setem 1949",
+            "url": "https://www.hasil.gov.my/wp-content/uploads/garis-panduan-pengenaan-duti-setem-jadual-pertama-as-1949.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.stamp-duty-foreign-residential",
+      "nombre": "Stamp duty on residential property sold to a foreign company or non-citizen (item 32(ab))",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "LHDN (HASiL)",
+            "titulo": "Garis Panduan Pengenaan Duti Setem bagi Surat Cara yang Tertakluk kepada Jadual Pertama Akta Setem 1949",
+            "url": "https://www.hasil.gov.my/wp-content/uploads/garis-panduan-pengenaan-duti-setem-jadual-pertama-as-1949.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my.epf-employee-rate",
+      "nombre": "EPF employee contribution rate (under 60)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-07-01",
+          "valor": 11,
+          "motivo": "kwsp.gov.my answers every automated request with a Cloudflare challenge; we did not get past it, so the Third Schedule could not be read at the source."
+        }
+      ]
+    },
+    {
+      "id": "my.epf-employer-rate",
+      "nombre": "EPF employer contribution rate (under 60)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "up-to-5000": "Wages up to RM5,000",
+        "above-5000": "Wages above RM5,000"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "up-to-5000": 13,
+            "above-5000": 12
+          },
+          "motivo": "kwsp.gov.my answers every automated request with a Cloudflare challenge; we did not get past it, so the Third Schedule could not be read at the source."
+        }
+      ]
+    }
+  ]
+}
