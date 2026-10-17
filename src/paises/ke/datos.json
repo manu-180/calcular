@@ -474,6 +474,146 @@
       ]
     },
     {
+      "id": "ke.paye-late-filing-rate",
+      "nombre": "PAYE late filing penalty: share of the tax due",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.paye-late-filing-min",
+      "nombre": "PAYE late filing penalty: minimum",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.late-payment-penalty",
+      "nombre": "Late payment penalty: share of the tax due",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.late-payment-interest",
+      "nombre": "Late payment interest a month or part of a month",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.advance-tax-per-ton",
+      "nombre": "Advance tax on goods vehicles per ton of load capacity a year",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Advance tax on commercial and public service vehicles",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/advance-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.advance-tax-per-passenger",
+      "nombre": "Advance tax on passenger vehicles per passenger a month",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Advance tax on commercial and public service vehicles",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/advance-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.advance-tax-minimum",
+      "nombre": "Advance tax minimum a year",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2400,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Advance tax on commercial and public service vehicles",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/advance-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
       "id": "ke.cgt-rate",
       "nombre": "Capital gains tax rate",
       "tipo": "numero",

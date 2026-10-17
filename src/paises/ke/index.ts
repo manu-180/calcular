@@ -24,6 +24,10 @@ import capitalGainsTaxCalculator from "./calculadoras/capital-gains-tax-calculat
 import contenidoCapitalGainsTaxCalculator from "./contenido/capital-gains-tax-calculator";
 import withholdingTaxCalculator from "./calculadoras/withholding-tax-calculator";
 import contenidoWithholdingTaxCalculator from "./contenido/withholding-tax-calculator";
+import advanceTaxCalculator from "./calculadoras/advance-tax-calculator";
+import contenidoAdvanceTaxCalculator from "./contenido/advance-tax-calculator";
+import payePenaltyCalculator from "./calculadoras/paye-penalty-calculator";
+import contenidoPayePenaltyCalculator from "./contenido/paye-penalty-calculator";
 import treasuryBillCalculator from "./calculadoras/treasury-bill-calculator";
 import contenidoTreasuryBillCalculator from "./contenido/treasury-bill-calculator";
 import dollarToShilling from "./calculadoras/dollar-to-shilling";
@@ -54,6 +58,8 @@ export default definirPais({
     { definicion: rentalIncomeTaxCalculator, contenido: contenidoRentalIncomeTaxCalculator, cliente: () => import("./calculadoras/rental-income-tax-calculator.cliente") },
     { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
     { definicion: withholdingTaxCalculator, contenido: contenidoWithholdingTaxCalculator, cliente: () => import("./calculadoras/withholding-tax-calculator.cliente") },
+    { definicion: advanceTaxCalculator, contenido: contenidoAdvanceTaxCalculator, cliente: () => import("./calculadoras/advance-tax-calculator.cliente") },
+    { definicion: payePenaltyCalculator, contenido: contenidoPayePenaltyCalculator, cliente: () => import("./calculadoras/paye-penalty-calculator.cliente") },
     { definicion: treasuryBillCalculator, contenido: contenidoTreasuryBillCalculator, cliente: () => import("./calculadoras/treasury-bill-calculator.cliente") },
     { definicion: dollarToShilling, contenido: contenidoDollarToShilling, cliente: () => import("./calculadoras/dollar-to-shilling.cliente") },
     { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
