@@ -1,0 +1,185 @@
+{
+  "mercado": "ao",
+  "datos": [
+    {
+      "id": "ao.irt-grupo-a",
+      "nombre": "Tabela do IRT (Grupo A, rendimentos por conta de outrem)",
+      "tipo": "escala",
+      "unidad": "AOA",
+      "proximaRevision": "2027-01-01",
+      "nota": "Cada linha aplica-se acima do limite inferior: a parcela fixa mais a taxa sobre o excesso desse limite.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 150000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 150000,
+              "hasta": 200000,
+              "tasa": 16,
+              "cuotaFija": 12500
+            },
+            {
+              "desde": 200000,
+              "hasta": 300000,
+              "tasa": 18,
+              "cuotaFija": 31250
+            },
+            {
+              "desde": 300000,
+              "hasta": 500000,
+              "tasa": 19,
+              "cuotaFija": 49250
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 20,
+              "cuotaFija": 87250
+            },
+            {
+              "desde": 1000000,
+              "hasta": 1500000,
+              "tasa": 21,
+              "cuotaFija": 187250
+            },
+            {
+              "desde": 1500000,
+              "hasta": 2000000,
+              "tasa": 22,
+              "cuotaFija": 292250
+            },
+            {
+              "desde": 2000000,
+              "hasta": 2500000,
+              "tasa": 23,
+              "cuotaFija": 402250
+            },
+            {
+              "desde": 2500000,
+              "hasta": 5000000,
+              "tasa": 24,
+              "cuotaFija": 517250
+            },
+            {
+              "desde": 5000000,
+              "hasta": 10000000,
+              "tasa": 24.5,
+              "cuotaFija": 1117250
+            },
+            {
+              "desde": 10000000,
+              "hasta": null,
+              "tasa": 25,
+              "cuotaFija": 2342250
+            }
+          ],
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 14/25, de 30 de dezembro (OGE 2026), I Série n.º 244, Anexo I (artigo 21.º, n.º 3)",
+            "url": "https://tcontas.ao/wp-content/uploads/2026/09/Lei-14-25-de-30-de-Dezembro-OGE-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ceoc",
+      "nombre": "Contribuição Especial sobre Operações Cambiais",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "singular": "Pessoa singular",
+        "colectiva": "Pessoa colectiva (empresa)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "singular": 2.5,
+            "colectiva": 10
+          },
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 14/25, de 30 de dezembro (OGE 2026), I Série n.º 244, artigo 16.º, n.º 7",
+            "url": "https://tcontas.ao/wp-content/uploads/2026/09/Lei-14-25-de-30-de-Dezembro-OGE-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.irt-grupo-c-taxa",
+      "nombre": "Taxa do IRT do Grupo C sobre o volume de vendas (até 10 milhões de Kz)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6.5,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 14/25, de 30 de dezembro (OGE 2026), I Série n.º 244, artigo 21.º, n.º 1",
+            "url": "https://tcontas.ao/wp-content/uploads/2026/09/Lei-14-25-de-30-de-Dezembro-OGE-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.irt-grupo-c-limite",
+      "nombre": "Volume de facturação máximo para a taxa de 6,5 % do Grupo C",
+      "tipo": "numero",
+      "unidad": "AOA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10000000,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 14/25, de 30 de dezembro (OGE 2026), I Série n.º 244, artigo 21.º, n.º 1",
+            "url": "https://tcontas.ao/wp-content/uploads/2026/09/Lei-14-25-de-30-de-Dezembro-OGE-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.irt-grupo-c-agricola",
+      "nombre": "Taxa do IRT do Grupo C para actividades agrícolas, silvícolas, pecuárias e piscatórias acima do limite",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 14/25, de 30 de dezembro (OGE 2026), I Série n.º 244, artigo 21.º, n.º 4",
+            "url": "https://tcontas.ao/wp-content/uploads/2026/09/Lei-14-25-de-30-de-Dezembro-OGE-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    }
+  ]
+}
