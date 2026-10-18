@@ -1,0 +1,19 @@
+{
+  "mercado": "tz",
+  "avisos": [
+    {
+      "id": "tz.mainland-only",
+      "nivel": "info",
+      "desde": "2024-07-01",
+      "aplicaA": ["tz.paye-calculator", "tz.net-salary-calculator", "tz.vat-calculator", "tz.sdl-calculator"],
+      "texto": "These figures are for Tanzania Mainland. Zanzibar has its own VAT law, so check the Zanzibar rules if you work or trade there.",
+      "fuente": {
+        "organismo": "Tanzania Revenue Authority",
+        "titulo": "Value Added Tax (VAT): scope in Mainland Tanzania",
+        "url": "https://www.tra.go.tz/page/value-added-tax-vat",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17"
+      }
+    }
+  ]
+}
