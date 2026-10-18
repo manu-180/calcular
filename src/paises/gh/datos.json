@@ -1,0 +1,616 @@
+{
+  "mercado": "gh",
+  "datos": [
+    {
+      "id": "gh.paye-annual-bands",
+      "nombre": "Annual income tax bands for resident individuals",
+      "tipo": "escala",
+      "unidad": "GHS",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 7056,
+              "tasa": 0
+            },
+            {
+              "desde": 7056,
+              "hasta": 8016,
+              "tasa": 5
+            },
+            {
+              "desde": 8016,
+              "hasta": 9216,
+              "tasa": 10
+            },
+            {
+              "desde": 9216,
+              "hasta": 44016,
+              "tasa": 17.5
+            },
+            {
+              "desde": 44016,
+              "hasta": 236016,
+              "tasa": 25
+            },
+            {
+              "desde": 236016,
+              "hasta": 600000,
+              "tasa": 30
+            },
+            {
+              "desde": 600000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Amendments: Income Tax Act, 2026 (Act 1178)",
+            "url": "https://gra.gov.gh/wp-content/uploads/2026/09/Amendments-To-The-Income-Tax-2015-Act-896_Updated-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Las bandas rigen desde el 1 de septiembre de 2026; la tabla anterior no figura en la web de la GRA y no se cargó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.non-resident-rate",
+      "nombre": "Flat income tax rate for non-resident individuals",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 25,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Pay As You Earn (PAYE)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/paye/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.ssnit-employee-rate",
+      "nombre": "SSNIT contribution deducted from the worker",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 5.5,
+          "fuente": {
+            "organismo": "SSNIT",
+            "titulo": "Become an Employer",
+            "url": "https://www.ssnit.org.gh/become-an-employer/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.ssnit-employer-rate",
+      "nombre": "SSNIT contribution added by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 13,
+          "fuente": {
+            "organismo": "SSNIT",
+            "titulo": "Become an Employer",
+            "url": "https://www.ssnit.org.gh/become-an-employer/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.ssnit-tier1-rate",
+      "nombre": "Part of the total contribution remitted to SSNIT (Tier 1)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 13.5,
+          "fuente": {
+            "organismo": "SSNIT",
+            "titulo": "Become an Employer",
+            "url": "https://www.ssnit.org.gh/become-an-employer/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.ssnit-tier2-rate",
+      "nombre": "Part of the total contribution remitted to Tier 2",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 5,
+          "fuente": {
+            "organismo": "SSNIT",
+            "titulo": "Become an Employer",
+            "url": "https://www.ssnit.org.gh/become-an-employer/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.provident-fund-relief",
+      "nombre": "Maximum provident fund contribution deductible for PAYE (share of basic salary)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 16.5,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Pay As You Earn (PAYE)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/paye/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.bonus-rate",
+      "nombre": "Tax on bonus up to the bonus limit",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 5,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Pay As You Earn (PAYE)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/paye/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.bonus-limit",
+      "nombre": "Bonus taxed at the flat rate, as a share of annual basic salary",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 15,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Pay As You Earn (PAYE)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/paye/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.overtime-tax",
+      "nombre": "Tax on overtime of qualifying junior staff",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "up-to-half": "Overtime up to 50% of monthly basic salary",
+        "above-half": "Overtime above 50% of monthly basic salary"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": {
+            "up-to-half": 5,
+            "above-half": 10
+          },
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Pay As You Earn (PAYE)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/paye/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.overtime-half-limit",
+      "nombre": "Overtime limit for the lower rate, as a share of monthly basic salary",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 50,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Pay As You Earn (PAYE)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/paye/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.overtime-income-limit",
+      "nombre": "Qualifying employment income limit for the overtime rate",
+      "tipo": "numero",
+      "unidad": "GHS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 18000,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Pay As You Earn (PAYE)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/paye/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.casual-worker-rate",
+      "nombre": "Tax deducted from payments to casual workers",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 5,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Pay As You Earn (PAYE)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/paye/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.vat-rates",
+      "nombre": "VAT and levies on the value of a supply (since 1 January 2026)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vat": "VAT",
+        "nhil": "National Health Insurance Levy (NHIL)",
+        "getfund": "GETFund Levy"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vat": 15,
+            "nhil": 2.5,
+            "getfund": 2.5
+          },
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Value Added Tax: VAT reforms 2026 (VAT Act, 2025, Act 1151)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/vat/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.vat-threshold-goods",
+      "nombre": "VAT registration threshold for businesses dealing in goods",
+      "tipo": "numero",
+      "unidad": "GHS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 750000,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Value Added Tax: VAT reforms 2026 (VAT Act, 2025, Act 1151)",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/vat/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.rent-tax",
+      "nombre": "Rent income tax",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "residential": "Residential premises",
+        "commercial": "Commercial and non-residential premises"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": {
+            "residential": 8,
+            "commercial": 15
+          },
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Rent Income Tax",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/rent-income-tax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.cgt-rate",
+      "nombre": "Capital gains tax for individuals",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 15,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Capital Gains Tax",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/capital-gains-tax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.gift-tax",
+      "nombre": "Tax on gifts from investment",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "resident": "Resident",
+        "non-resident": "Non-resident"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": {
+            "resident": 15,
+            "non-resident": 25
+          },
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Gift Tax",
+            "url": "https://gra.gov.gh/domestic-tax/tax-types/gift-tax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.mts-rate",
+      "nombre": "Presumptive tax under the Modified Taxation Scheme",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Amendments: Income Tax Act, 2026 (Act 1178)",
+            "url": "https://gra.gov.gh/wp-content/uploads/2026/09/Amendments-To-The-Income-Tax-2015-Act-896_Updated-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Las bandas rigen desde el 1 de septiembre de 2026; la tabla anterior no figura en la web de la GRA y no se cargó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.mts-lower",
+      "nombre": "Turnover above which the Modified Taxation Scheme applies",
+      "tipo": "numero",
+      "unidad": "GHS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Amendments: Income Tax Act, 2026 (Act 1178)",
+            "url": "https://gra.gov.gh/wp-content/uploads/2026/09/Amendments-To-The-Income-Tax-2015-Act-896_Updated-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Las bandas rigen desde el 1 de septiembre de 2026; la tabla anterior no figura en la web de la GRA y no se cargó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.mts-upper",
+      "nombre": "Maximum turnover under the Modified Taxation Scheme",
+      "tipo": "numero",
+      "unidad": "GHS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 750000,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Amendments: Income Tax Act, 2026 (Act 1178)",
+            "url": "https://gra.gov.gh/wp-content/uploads/2026/09/Amendments-To-The-Income-Tax-2015-Act-896_Updated-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Las bandas rigen desde el 1 de septiembre de 2026; la tabla anterior no figura en la web de la GRA y no se cargó."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.minimum-wage",
+      "nombre": "National Daily Minimum Wage",
+      "tipo": "numero",
+      "unidad": "GHS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 21.77,
+          "fuente": {
+            "organismo": "Fair Wages and Salaries Commission",
+            "titulo": "Communique by the National Tripartite Committee on the 2026 National Daily Minimum Wage",
+            "url": "https://fairwages.gov.gh/wp-content/uploads/2025/11/2026-National-Daily-Minimum-Wage.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.pension-min-months",
+      "nombre": "Months of contribution for the minimum pension right",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 180,
+          "fuente": {
+            "organismo": "SSNIT",
+            "titulo": "Old Age Benefit",
+            "url": "https://www.ssnit.org.gh/old-age-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.pension-min-right",
+      "nombre": "Minimum pension right",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 37.5,
+          "fuente": {
+            "organismo": "SSNIT",
+            "titulo": "Old Age Benefit",
+            "url": "https://www.ssnit.org.gh/old-age-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.pension-max-right",
+      "nombre": "Maximum pension right",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 60,
+          "fuente": {
+            "organismo": "SSNIT",
+            "titulo": "Old Age Benefit",
+            "url": "https://www.ssnit.org.gh/old-age-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.pension-yearly-step",
+      "nombre": "Pension right added for each additional year of contribution",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 1.125,
+          "fuente": {
+            "organismo": "SSNIT",
+            "titulo": "Old Age Benefit",
+            "url": "https://www.ssnit.org.gh/old-age-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gh.pension-full-age",
+      "nombre": "Age for a full old age pension",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-18",
+          "valor": 60,
+          "fuente": {
+            "organismo": "SSNIT",
+            "titulo": "Old Age Benefit",
+            "url": "https://www.ssnit.org.gh/old-age-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    }
+  ]
+}
