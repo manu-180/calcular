@@ -251,4 +251,47 @@ const nl: GramaticaPais = (() => {
   return { nombre, de: (p) => `van ${nombre(p)}`, en: (p) => `in ${nombre(p)}`, para: (p) => `voor ${nombre(p)}` };
 })();
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl };
+// En polaco el nombre se declina: «Polska», «dla Polski», «w Polsce». La tabla cubre los países con
+// forma irregular o con «na»/«we»; el resto sale por terminación (-ia y -ja dan -ii y -ji, -ka da
+// -ki y -ce, -a da -y e -ie) y, si no termina en -a, se deja sin declinar.
+const pl: GramaticaPais = (() => {
+  const TABELA: Readonly<Record<string, readonly [string, string]>> = {
+    Polska: ["Polski", "w Polsce"],
+    Niemcy: ["Niemiec", "w Niemczech"],
+    Francja: ["Francji", "we Francji"],
+    Włochy: ["Włoch", "we Włoszech"],
+    "Wielka Brytania": ["Wielkiej Brytanii", "w Wielkiej Brytanii"],
+    "Stany Zjednoczone": ["Stanów Zjednoczonych", "w Stanach Zjednoczonych"],
+    Czechy: ["Czech", "w Czechach"],
+    Słowacja: ["Słowacji", "na Słowacji"],
+    Ukraina: ["Ukrainy", "w Ukrainie"],
+    Litwa: ["Litwy", "na Litwie"],
+    Łotwa: ["Łotwy", "na Łotwie"],
+    Węgry: ["Węgier", "na Węgrzech"],
+    Niderlandy: ["Niderlandów", "w Niderlandach"],
+    Chiny: ["Chin", "w Chinach"],
+    Indie: ["Indii", "w Indiach"],
+    Filipiny: ["Filipin", "na Filipinach"],
+    Kanada: ["Kanady", "w Kanadzie"],
+    Szwecja: ["Szwecji", "w Szwecji"],
+    Meksyk: ["Meksyku", "w Meksyku"],
+    Izrael: ["Izraela", "w Izraelu"],
+    Cypr: ["Cypru", "na Cyprze"],
+    Malta: ["Malty", "na Malcie"],
+    Islandia: ["Islandii", "na Islandii"],
+    Estonia: ["Estonii", "w Estonii"],
+    Luksemburg: ["Luksemburga", "w Luksemburgu"],
+    Singapur: ["Singapuru", "w Singapurze"],
+    Japonia: ["Japonii", "w Japonii"],
+  };
+  const formy = (p: string): readonly [string, string] => {
+    if (TABELA[p]) return TABELA[p];
+    if (/[ij]a$/.test(p)) return [`${p.slice(0, -1)}i`, `w ${p.slice(0, -1)}i`];
+    if (/ka$/.test(p)) return [`${p.slice(0, -1)}i`, `w ${p.slice(0, -2)}ce`];
+    if (/[^aeiouy]a$/.test(p)) return [`${p.slice(0, -1)}y`, `w ${p.slice(0, -1)}ie`];
+    return [p, `w ${p}`];
+  };
+  return { nombre: (p) => p, de: (p) => formy(p)[0], en: (p) => formy(p)[1], para: (p) => `dla ${formy(p)[0]}` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, pl };

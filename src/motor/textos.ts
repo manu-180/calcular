@@ -256,6 +256,29 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
     },
     usted: { milesAmbiguos: "Bedoelt u {sugerido}? Schrijf het zonder {signos}." },
   },
+  pl: {
+    base: {
+      calcular: "Oblicz",
+      resultado: "Wynik",
+      si: "Tak",
+      no: "Nie",
+      sinResultado: "Na razie nie pokazujemy tego wyniku.",
+      errores: {
+        requerido: "Uzupełnij to pole.",
+        "numero-invalido": "Wpisz liczbę, na przykład {ejemplo}.",
+        "entero-invalido": "Wpisz liczbę całkowitą, bez części dziesiętnej.",
+        "menor-que-min": "Najmniejsza wartość to {min}.",
+        "mayor-que-max": "Największa wartość to {max}.",
+        "fecha-invalida": "Wybierz poprawną datę.",
+        "hora-invalida": "Wybierz poprawną godzinę.",
+        "opcion-invalida": "Wybierz jedną z opcji.",
+        "region-invalida": "Wybierz region.",
+        "calculo-fallido": "Z tymi danymi nie udało się wykonać obliczeń. Sprawdź wartości i spróbuj jeszcze raz.",
+      },
+      milesAmbiguos: "Chodziło ci o {sugerido}? Wpisz liczbę bez {signos}.",
+      separadores: { punto: "kropek", coma: "przecinków" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

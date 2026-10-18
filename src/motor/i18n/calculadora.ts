@@ -90,6 +90,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
     },
     usted: { datos: "Uw gegevens", vacio: "Vul de gegevens in en tik op Berekenen om de uitkomst te zien." },
   },
+  pl: {
+    base: {
+      datos: "Twoje dane",
+      resultado: "Wynik",
+      vacio: "Uzupełnij dane i naciśnij Oblicz, aby zobaczyć wynik.",
+      sinResultado: "Na razie nie pokazujemy tego wyniku.",
+      avisos: { info: "Dobrze wiedzieć", cautela: "Uwaga", bloquea: "Dlaczego nie pokazujemy wyniku" },
+      fuenteDelAviso: "Źródło",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

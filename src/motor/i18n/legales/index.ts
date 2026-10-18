@@ -6,12 +6,13 @@ import { es } from "./es";
 import { fr } from "./fr";
 import { it } from "./it";
 import { nl } from "./nl";
+import { pl } from "./pl";
 import { pt } from "./pt";
 import type { DatosLegales, DiccionarioLegal, PaginasLegales } from "./tipos";
 
 export type { BloqueLegal, DatosLegales, PaginaLegal, PaginasLegales } from "./tipos";
 
-export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl };
+export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl, pl };
 
 export function resolverLegales(idioma: Idioma, trato: Trato, datos: DatosLegales, locale?: string): PaginasLegales {
   const dic = DICCIONARIOS_LEGALES[idioma](datos);
