@@ -4,14 +4,14 @@ export default definirContenido({
   "calculadora": "tz.sick-leave-calculator",
   "h1": "Sick leave calculator Tanzania",
   "title": "Sick leave calculator Tanzania: full and half pay days",
-  "description": "See your paid sick leave in Tanzania: {{tz.sick-full-days}} days on full wages and {{tz.sick-half-days}} on half wages in each leave cycle.",
+  "description": "See your paid sick leave in Tanzania: {{tz.sick-full-days}} on full wages and {{tz.sick-half-days}} on half wages in each leave cycle.",
   "intro": [
     "Enter the sick days you had in this leave cycle to see how many are on full and on half wages.",
     "Add your daily wage to see the amount."
   ],
   "comoSeCalcula": [
     "You are entitled to sick leave of at least 126 days in a leave cycle.",
-    "The first {{tz.sick-full-days}} days are paid at full wages and the next {{tz.sick-half-days}} at half wages.",
+    "The first {{tz.sick-full-days}} are paid at full wages and the next {{tz.sick-half-days}} at half wages.",
     "Your employer can refuse to pay if you do not produce a medical certificate."
   ],
   "ejemplo": [

@@ -4,14 +4,14 @@ export default definirContenido({
   "calculadora": "tz.maternity-leave-calculator",
   "h1": "Maternity leave calculator Tanzania",
   "title": "Maternity leave calculator Tanzania: when your leave ends",
-  "description": "Find the last day of your leave: {{tz.maternity-days}} days of paid maternity leave, {{tz.maternity-days-multiple}} for twins, or {{tz.paternity-days}} of paternity leave.",
+  "description": "Find the last day of your leave: {{tz.maternity-days}} of paid maternity leave, {{tz.maternity-days-multiple}} for twins, or {{tz.paternity-days}} of paternity leave.",
   "intro": [
     "Enter the first day of your leave to see when it ends.",
     "Maternity and paternity leave are paid under the Employment and Labour Relations Act."
   ],
   "comoSeCalcula": [
-    "Maternity leave is at least {{tz.maternity-days}} paid days, or {{tz.maternity-days-multiple}} if you have more than one baby at the same birth.",
-    "Paternity leave is at least {{tz.paternity-days}} paid days, taken within seven days of the birth.",
+    "Maternity leave is at least {{tz.maternity-days}} of paid leave, or {{tz.maternity-days-multiple}} if you have more than one baby at the same birth.",
+    "Paternity leave is at least {{tz.paternity-days}} of paid leave, taken within seven days of the birth.",
     "The calculator counts calendar days from the first day of leave."
   ],
   "ejemplo": [

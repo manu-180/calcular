@@ -11,7 +11,7 @@ export default definirContenido({
   ],
   "comoSeCalcula": [
     "Annual pension = number of contributions × annual pensionable emoluments / {{tz.nssf-pension-divisor}}, up to {{tz.nssf-max-pension}} of your emoluments.",
-    "{{tz.nssf-commuted-share}} is paid at once as a lump sum, worked out over {{tz.nssf-pension-years}} years.",
+    "{{tz.nssf-commuted-share}} is paid at once as a lump sum, worked out over {{tz.nssf-pension-years}}.",
     "The rest is paid as a monthly pension. You need at least {{tz.nssf-min-contributions}} monthly contributions."
   ],
   "ejemplo": [

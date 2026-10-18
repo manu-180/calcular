@@ -4,14 +4,14 @@ export default definirContenido({
   "calculadora": "tz.severance-pay-calculator",
   "h1": "Severance pay calculator Tanzania",
   "title": "Severance pay calculator Tanzania: 7 days a year of service",
-  "description": "Work out severance pay in Tanzania: at least {{tz.severance-days}} days' basic wage for each completed year of service, up to {{tz.severance-max-years}} years.",
+  "description": "Work out severance pay in Tanzania: at least {{tz.severance-days}}' basic wage for each completed year of service, up to {{tz.severance-max-years}}.",
   "intro": [
     "When your employer ends your employment after at least 12 months, you are owed severance pay. Enter your daily basic wage and your years of service.",
     "Severance is not paid for a fair dismissal for misconduct."
   ],
   "comoSeCalcula": [
-    "Severance pay is at least {{tz.severance-days}} days' basic wage for each completed year of continuous service.",
-    "Only the first {{tz.severance-max-years}} years count.",
+    "Severance pay is at least {{tz.severance-days}}' basic wage for each completed year of continuous service.",
+    "Only the first {{tz.severance-max-years}} count.",
     "It is due when you have completed 12 months of continuous service and the employer ends the employment."
   ],
   "ejemplo": [
