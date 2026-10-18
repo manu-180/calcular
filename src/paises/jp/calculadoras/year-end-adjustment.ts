@@ -1,5 +1,5 @@
 import { aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { cien, kyuyoShotoku, montoDeFila, sen } from "../lib/impuestos";
+import { cien, kyuyoShotoku, montoDeFila, piso, sen } from "../lib/impuestos";
 
 export default definirCalculadora({
   id: "jp.year-end-adjustment",
@@ -25,7 +25,7 @@ export default definirCalculadora({
     const shotoku = kyuyoShotoku(entrada.kyuyo, v["jp.employment-income-deduction"]);
     const kiso = montoDeFila(v["jp.basic-deduction"], shotoku);
     const kazei = sen(shotoku - Math.min(shotoku, entrada.shakai + entrada.otros + kiso));
-    const sanshutsu = Math.floor(aplicarEscalaMarginal(v["jp.income-tax-brackets"], kazei));
+    const sanshutsu = piso(aplicarEscalaMarginal(v["jp.income-tax-brackets"], kazei));
     const trasPrestamo = Math.max(0, sanshutsu - entrada.jutaku);
     const nenzei = cien((trasPrestamo * (100 + v["jp.income-surtax-rate"])) / 100);
     const diferencia = entrada.gensen - nenzei;

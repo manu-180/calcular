@@ -19,15 +19,18 @@ export function filaDe(escala: readonly FilaEscala[], valor: number): FilaEscala
 export function kyuyoShotokuKojo(ingreso: number, escala: readonly FilaEscala[]): number {
   if (ingreso <= 0) return 0;
   const f = filaDe(escala, ingreso);
-  return Math.min(ingreso, Math.floor((ingreso * f.tasa) / 100 + (f.cuotaFija ?? 0)));
+  return Math.min(ingreso, piso((ingreso * f.tasa) / 100 + (f.cuotaFija ?? 0)));
 }
 
 export function kyuyoShotoku(ingreso: number, escala: readonly FilaEscala[]): number {
   return Math.max(0, ingreso - kyuyoShotokuKojo(ingreso, escala));
 }
 
-export const sen = (n: number): number => Math.floor(Math.max(0, n) / 1000) * 1000;
-export const cien = (n: number): number => Math.floor(Math.max(0, n) / 100) * 100;
+// Los porcentajes con decimales (2.1, 20.42) dejan restos binarios como 20453.999999: se trunca con
+// un margen para no perder un yen.
+export const piso = (n: number): number => Math.floor(n + 1e-6);
+export const sen = (n: number): number => piso(Math.max(0, n) / 1000) * 1000;
+export const cien = (n: number): number => piso(Math.max(0, n) / 100) * 100;
 
 export interface Shotokuzei {
   kazei: number;
@@ -41,8 +44,8 @@ export interface Shotokuzei {
 // impuesto base y el total va a 100円未満切捨て, como en el 確定申告.
 export function shotokuzei(kazeiBruto: number, escala: readonly FilaEscala[], tokubetsu: number): Shotokuzei {
   const kazei = sen(kazeiBruto);
-  const base = Math.floor(aplicarEscalaMarginal(escala, kazei));
-  const extra = Math.floor((base * tokubetsu) / 100);
+  const base = piso(aplicarEscalaMarginal(escala, kazei));
+  const extra = piso((base * tokubetsu) / 100);
   return { kazei, base, tokubetsu: extra, total: cien(base + extra), marginal: tasaMarginal(escala, kazei) };
 }
 

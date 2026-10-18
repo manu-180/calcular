@@ -28,6 +28,22 @@ import giftTax from "./calculadoras/gift-tax";
 import contenidoGiftTax from "./contenido/gift-tax";
 import inheritanceTax from "./calculadoras/inheritance-tax";
 import contenidoInheritanceTax from "./contenido/inheritance-tax";
+import housingLoanDeduction from "./calculadoras/housing-loan-deduction";
+import contenidoHousingLoanDeduction from "./contenido/housing-loan-deduction";
+import basicPension from "./calculadoras/basic-pension";
+import contenidoBasicPension from "./contenido/basic-pension";
+import childAllowance from "./calculadoras/child-allowance";
+import contenidoChildAllowance from "./contenido/child-allowance";
+import maternityAllowance from "./calculadoras/maternity-allowance";
+import contenidoMaternityAllowance from "./contenido/maternity-allowance";
+import sicknessAllowance from "./calculadoras/sickness-allowance";
+import contenidoSicknessAllowance from "./contenido/sickness-allowance";
+import childcareLeaveBenefit from "./calculadoras/childcare-leave-benefit";
+import contenidoChildcareLeaveBenefit from "./contenido/childcare-leave-benefit";
+import withholdingTax from "./calculadoras/withholding-tax";
+import contenidoWithholdingTax from "./contenido/withholding-tax";
+import medicalExpenseDeduction from "./calculadoras/medical-expense-deduction";
+import contenidoMedicalExpenseDeduction from "./contenido/medical-expense-deduction";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -54,6 +70,14 @@ export default definirPais({
     { definicion: retirementAllowanceTax, contenido: contenidoRetirementAllowanceTax, cliente: () => import("./calculadoras/retirement-allowance-tax.cliente") },
     { definicion: giftTax, contenido: contenidoGiftTax, cliente: () => import("./calculadoras/gift-tax.cliente") },
     { definicion: inheritanceTax, contenido: contenidoInheritanceTax, cliente: () => import("./calculadoras/inheritance-tax.cliente") },
+    { definicion: housingLoanDeduction, contenido: contenidoHousingLoanDeduction, cliente: () => import("./calculadoras/housing-loan-deduction.cliente") },
+    { definicion: basicPension, contenido: contenidoBasicPension, cliente: () => import("./calculadoras/basic-pension.cliente") },
+    { definicion: childAllowance, contenido: contenidoChildAllowance, cliente: () => import("./calculadoras/child-allowance.cliente") },
+    { definicion: maternityAllowance, contenido: contenidoMaternityAllowance, cliente: () => import("./calculadoras/maternity-allowance.cliente") },
+    { definicion: sicknessAllowance, contenido: contenidoSicknessAllowance, cliente: () => import("./calculadoras/sickness-allowance.cliente") },
+    { definicion: childcareLeaveBenefit, contenido: contenidoChildcareLeaveBenefit, cliente: () => import("./calculadoras/childcare-leave-benefit.cliente") },
+    { definicion: withholdingTax, contenido: contenidoWithholdingTax, cliente: () => import("./calculadoras/withholding-tax.cliente") },
+    { definicion: medicalExpenseDeduction, contenido: contenidoMedicalExpenseDeduction, cliente: () => import("./calculadoras/medical-expense-deduction.cliente") },
   ],
   universales: "todas",
   novedades,

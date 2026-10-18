@@ -1,5 +1,5 @@
 import { aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { cien, sen } from "../lib/impuestos";
+import { cien, piso, sen } from "../lib/impuestos";
 
 export default definirCalculadora({
   id: "jp.inheritance-tax",
@@ -27,7 +27,7 @@ export default definirCalculadora({
     const parteConyuge = entrada.conyuge ? 1 / 2 : 0;
     const parteHijo = (1 - parteConyuge) / entrada.hijos;
     const escala = v["jp.inheritance-tax"];
-    const impuestoDe = (parte: number) => Math.floor(aplicarEscalaMarginal(escala, sen(kazei * parte)));
+    const impuestoDe = (parte: number) => piso(aplicarEscalaMarginal(escala, sen(kazei * parte)));
     const total = cien((entrada.conyuge ? impuestoDe(parteConyuge) : 0) + impuestoDe(parteHijo) * entrada.hijos);
     const conyugeAntes = Math.floor(total * parteConyuge);
     const pagar = total - conyugeAntes;

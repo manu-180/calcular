@@ -1,5 +1,5 @@
 import { aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { cien, sen } from "../lib/impuestos";
+import { cien, piso, sen } from "../lib/impuestos";
 
 export default definirCalculadora({
   id: "jp.retirement-allowance-tax",
@@ -28,8 +28,8 @@ export default definirCalculadora({
     const tope = d["short-term-limit"];
     const mitad = corto ? Math.min(exceso, tope) / 2 + Math.max(0, exceso - tope) : exceso / 2;
     const shotoku = sen(mitad);
-    const base = Math.floor(aplicarEscalaMarginal(v["jp.income-tax-brackets"], shotoku));
-    const shotokuzei = Math.floor((base * (100 + v["jp.income-surtax-rate"])) / 100);
+    const base = piso(aplicarEscalaMarginal(v["jp.income-tax-brackets"], shotoku));
+    const shotokuzei = piso((base * (100 + v["jp.income-surtax-rate"])) / 100);
     const r = v["jp.retirement-resident-rates"];
     const juminzei = cien((shotoku * r.municipal) / 100) + cien((shotoku * r.prefectural) / 100);
     const observaciones = ["「退職所得の受給に関する申告書」を出していない場合は、退職金の20.42％が源泉徴収され、確定申告で精算します。"];

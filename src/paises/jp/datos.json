@@ -3811,6 +3811,78 @@
           }
         }
       ]
+    },
+    {
+      "id": "jp.maternity-allowance-days",
+      "nombre": "出産手当金の支給対象期間",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "prenatal": "出産の日以前",
+        "prenatal-multiple": "出産の日以前（多胎妊娠）",
+        "postnatal": "出産の翌日以後"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "prenatal": 42,
+            "prenatal-multiple": 98,
+            "postnatal": 56
+          },
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "出産手当金",
+            "url": "https://www.kyoukaikenpo.or.jp/benefit/childbirth/001/index.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "1日あたりの額は支給開始日以前12か月の標準報酬月額の平均÷30（10円未満四捨五入）×2/3（1円未満四捨五入）。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.sickness-waiting-days",
+      "nombre": "傷病手当金の待期期間",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "傷病手当金",
+            "url": "https://www.kyoukaikenpo.or.jp/g3/sb3040/r139/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "1日あたりの額の計算は出産手当金と同じ。支給期間は支給開始日から通算1年6か月。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jp.sickness-max-months",
+      "nombre": "傷病手当金の支給期間（通算）",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "全国健康保険協会（協会けんぽ）",
+            "titulo": "傷病手当金",
+            "url": "https://www.kyoukaikenpo.or.jp/g3/sb3040/r139/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "1日あたりの額の計算は出産手当金と同じ。支給期間は支給開始日から通算1年6か月。"
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { tasaMarginal } from "../lib/impuestos";
+import { piso, tasaMarginal } from "../lib/impuestos";
 
 export default definirCalculadora({
   id: "jp.gift-tax",
@@ -29,7 +29,7 @@ export default definirCalculadora({
     if (entrada.monto <= 0) throw new ErrorEntrada("もらった財産の額を入力してください。", "monto");
     const escala = entrada.tipo === "special" ? v["jp.gift-tax-special"] : v["jp.gift-tax-general"];
     const kazei = Math.max(0, entrada.monto - v["jp.gift-tax-basic-exemption"]);
-    const impuesto = Math.floor(aplicarEscalaMarginal(escala, kazei));
+    const impuesto = piso(aplicarEscalaMarginal(escala, kazei));
     return {
       impuesto,
       kazei,
