@@ -4,18 +4,18 @@ export default definirContenido({
   calculadora: "ke.notice-period-calculator",
   h1: "Notice period calculator Kenya",
   title: "Notice period calculator Kenya: days and pay in lieu",
-  description: "Find the minimum notice to end a job in Kenya: {{ke.notice-days-monthly}} days for monthly pay, one pay period for weekly pay, and the pay in lieu of notice.",
+  description: "Find the minimum notice to end a job in Kenya: {{ke.notice-days-monthly}} for monthly pay, one pay period for weekly pay, and the pay in lieu of notice.",
   intro: [
     "Either side can end an employment contract by giving written notice. How much depends on how often you are paid.",
     "Instead of notice, either side can pay what would have been earned during the notice period.",
   ],
   comoSeCalcula: [
-    "Paid monthly or less often: {{ke.notice-days-monthly}} days' written notice.",
+    "Paid monthly or less often: {{ke.notice-days-monthly}}' written notice.",
     "Paid weekly or every two weeks: the contract ends at the end of the next pay period after written notice.",
     "Paid daily: the contract can end at the close of any day without notice.",
     "If your contract gives longer notice, the longer period applies.",
   ],
-  ejemplo: ["On KSh 50,000 a month you must give or receive {{ke.notice-days-monthly}} days' notice, or KSh 50,000 in lieu."],
+  ejemplo: ["On KSh 50,000 a month you must give or receive {{ke.notice-days-monthly}}' notice, or KSh 50,000 in lieu."],
   faq: [
     {
       pregunta: "Does notice have to be in writing?",

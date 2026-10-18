@@ -10,7 +10,7 @@ export default definirContenido({
     "If you earn a monthly wage, the calculator turns it into an hourly rate the way the wages order says.",
   ],
   comoSeCalcula: [
-    "The normal working week is up to {{ke.normal-week-hours}} hours over six days. Hours beyond that are overtime.",
+    "The normal working week is up to {{ke.normal-week-hours}} over six days. Hours beyond that are overtime.",
     "Overtime on normal days is paid at {{ke.overtime-normal-factor}} times the normal hourly rate. Work on your rest day or a public holiday is paid at {{ke.overtime-rest-day-factor}} times.",
     "For monthly paid employees the hourly rate is at least the basic monthly wage divided by {{ke.overtime-hourly-divisor}}.",
   ],

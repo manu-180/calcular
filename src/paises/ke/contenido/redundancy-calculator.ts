@@ -4,13 +4,13 @@ export default definirContenido({
   calculadora: "ke.redundancy-calculator",
   h1: "Redundancy pay calculator Kenya",
   title: "Redundancy calculator Kenya: severance pay and notice",
-  description: "Work out your redundancy package: severance of at least {{ke.redundancy-severance-days}} days' pay per completed year, a month in lieu of notice and leave pay.",
+  description: "Work out your redundancy package: severance of at least {{ke.redundancy-severance-days}}' pay per completed year, a month in lieu of notice and leave pay.",
   intro: [
     "If your job is declared redundant, the Employment Act sets a minimum package. Enter your pay and years of service to see it.",
     "Your contract or a collective agreement can give you more, never less.",
   ],
   comoSeCalcula: [
-    "Severance pay is at least {{ke.redundancy-severance-days}} days' pay for each completed year of service.",
+    "Severance pay is at least {{ke.redundancy-severance-days}}' pay for each completed year of service.",
     "Your employer must also give one month's notice or pay one month's wages instead.",
     "Any leave due to you is paid off in cash.",
   ],

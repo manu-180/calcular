@@ -4,13 +4,13 @@ export default definirContenido({
   calculadora: "ke.maternity-leave-calculator",
   h1: "Maternity and paternity leave calculator",
   title: "Maternity leave calculator Kenya: when your leave ends",
-  description: "Find the last day of your leave in Kenya: {{ke.maternity-months}} months of maternity leave or {{ke.paternity-weeks}} of paternity leave, both with full pay.",
+  description: "Find the last day of your leave in Kenya: {{ke.maternity-months}} of maternity leave or {{ke.paternity-weeks}} of paternity leave, both with full pay.",
   intro: [
     "Enter the first day of your leave to see when it ends.",
     "Both maternity and paternity leave are on full pay under the Employment Act.",
   ],
   comoSeCalcula: [
-    "Maternity leave lasts {{ke.maternity-months}} months with full pay.",
+    "Maternity leave lasts {{ke.maternity-months}} with full pay.",
     "Paternity leave lasts {{ke.paternity-weeks}} with full pay.",
     "The calculator counts calendar days from the first day of leave.",
   ],
