@@ -126,6 +126,25 @@ export function separadoresDe(locale: string): Separadores {
 
 const ESPACIOS = /[\s   ]/g;
 
+// Teclados árabes y persas escriben ٣٬٥٠٠٫٧٥ (dígitos arábigo-índicos, ٬ de miles y ٫ decimal) y la
+// coma «،». Se pasan a ASCII antes de las reglas: ٫ y ٬ dicen sin ambigüedad qué son, así que van
+// al decimal y al separador de miles del locale; «،» se lee como una coma más.
+const DIGITO_ARABE = /[٠-٩۰-۹]/g;
+
+function aLatino(texto: string, seps: Separadores): string {
+  if (!/[؀-ۿ]/.test(texto)) return texto;
+  return texto
+    .replace(DIGITO_ARABE, (d) => String(d.charCodeAt(0) & 0xf))
+    .replace(/٫/g, seps.decimal)
+    .replace(/٬/g, seps.grupo)
+    .replace(/،/g, ",");
+}
+
+function separadoresAscii(locale: string): Separadores {
+  const { decimal, grupo } = separadoresDe(locale);
+  return { decimal: decimal === "٫" ? "." : decimal, grupo: grupo === "٬" ? "," : grupo };
+}
+
 // en-IN agrupa en lakhs y crores («12,00,000»): el formulario muestra los valores así y tiene que
 // poder leerlos de vuelta. Solo se acepta en los locales que formatean de esa manera.
 const conLakhs = (locale: string): boolean => new Intl.NumberFormat(locale).format(1234567).replace(/\D/g, ",") === "12,34,567";
@@ -149,13 +168,14 @@ function gruposValidos(entero: string, separador: string, locale: string): boole
 //    casi siempre quiso decir miles, y leerlo como 5 divide el resultado por mil sin avisar.
 // Cualquier otra forma devuelve null: se le pide a la persona que lo escriba de nuevo.
 export function parsearNumero(texto: string, locale: string, opciones: { milesAmbiguos?: boolean } = {}): number | null {
-  const sinEspacios = texto.replace(ESPACIOS, "");
+  const seps = separadoresAscii(locale);
+  const sinEspacios = aLatino(texto, seps).replace(ESPACIOS, "");
   const negativo = /^[^\d]*-/.test(sinEspacios);
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
   if (!/\d/.test(limpio)) return null;
   if (/[.,]{2,}/.test(limpio)) return null;
   if (/[.,]$/.test(limpio) || (/^[.,]/.test(limpio) && !/^[.,]\d+$/.test(limpio))) return null;
-  const decLocale = separadoresDe(locale).decimal;
+  const decLocale = seps.decimal;
   const hayPunto = limpio.includes(".");
   const hayComa = limpio.includes(",");
   let entero = limpio;
@@ -195,9 +215,10 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
 // El número que la persona probablemente quiso escribir cuando parsearNumero lo rechazó por
 // milesAmbiguos ("5.000" da "5000"); null si el texto no es ese caso.
 export function sugerenciaMiles(texto: string, locale: string): { sugerido: string; separador: string } | null {
-  const sinEspacios = texto.replace(ESPACIOS, "");
+  const seps = separadoresAscii(locale);
+  const sinEspacios = aLatino(texto, seps).replace(ESPACIOS, "");
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
-  const dec = separadoresDe(locale).decimal;
+  const dec = seps.decimal;
   const otro = dec === "." ? "," : ".";
   if (limpio.includes(otro)) return null;
   const partes = limpio.split(dec);
