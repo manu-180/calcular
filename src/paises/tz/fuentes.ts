@@ -109,7 +109,10 @@ export const detectores: readonly Detector[] = [
       return inflacionNbs(http, this.url);
     },
   },
-  vigila("tz.tra-individuals", `${TRA}income-tax-for-individuals`, [
+  // TRA responde con un encabezado Content-Security-Policy partido en varias líneas, que el parser
+  // estricto de Node rechaza (HPE_INVALID_HEADER_TOKEN). Hasta que el motor tenga un modo tolerante,
+  // sus páginas se revisan a mano.
+  manual("tz.tra-individuals", `${TRA}income-tax-for-individuals`, [
     "tz.paye-bands",
     "tz.presumptive-threshold",
     "tz.presumptive-ceiling",
@@ -121,25 +124,25 @@ export const detectores: readonly Detector[] = [
     "tz.presumptive-band-2-base",
     "tz.presumptive-complete-rate",
     "tz.presumptive-transport",
-  ], ["270,000", "Tshs. 128,000/= plus 30%", "4% of turnover", "Tshs 90,000/= plus 3%"], "TRA individual income tax page changed"),
-  vigila("tz.tra-paye", `${TRA}pay-as-you-earn`, ["tz.non-resident-employee-rate"], ["flat rate of 15%"], "TRA PAYE page changed"),
-  vigila("tz.tra-sdl", `${TRA}skills-development-levy-sdl`, ["tz.sdl-rate", "tz.sdl-min-employees"], ["3.5%", "ten or more employees"], "TRA SDL page changed"),
-  vigila("tz.tra-vat", `${TRA}value-added-tax-vat`, ["tz.vat", "tz.vat-electronic", "tz.vat-threshold"], ["18%", "16%", "TZS 200 million"], "TRA VAT page changed"),
-  vigila("tz.tra-wht", `${TRA}withholding-tax`, ["tz.wht-resident", "tz.wht-non-resident"], ["Service Fees", "Directors Fee"], "TRA withholding tax page changed"),
-  vigila("tz.tra-cgt", `${TRA}capital-gains-tax`, [
+  ]),
+  manual("tz.tra-paye", `${TRA}pay-as-you-earn`, ["tz.non-resident-employee-rate"]),
+  manual("tz.tra-sdl", `${TRA}skills-development-levy-sdl`, ["tz.sdl-rate", "tz.sdl-min-employees"]),
+  manual("tz.tra-vat", `${TRA}value-added-tax-vat`, ["tz.vat", "tz.vat-electronic", "tz.vat-threshold"]),
+  manual("tz.tra-wht", `${TRA}withholding-tax`, ["tz.wht-resident", "tz.wht-non-resident"]),
+  manual("tz.tra-cgt", `${TRA}capital-gains-tax`, [
     "tz.cgt-land-resident",
     "tz.cgt-land-non-resident",
     "tz.cgt-land-no-records",
     "tz.cgt-residence-exempt-gain",
-  ], ["10% of the gain", "30% of the gain", "3% of the incomings", "15,000,000"], "TRA capital gains page changed"),
-  vigila("tz.tra-stamp", `${TRA}stamp-duty`, ["tz.stamp-lease-rate", "tz.stamp-share-transfer-rate", "tz.stamp-agreement", "tz.stamp-memorandum"], ["1 percent of the annual reserved rent"], "TRA stamp duty page changed"),
-  vigila("tz.tra-penalties", `${TRA}interest-penalties-offences`, [
+  ]),
+  manual("tz.tra-stamp", `${TRA}stamp-duty`, ["tz.stamp-lease-rate", "tz.stamp-share-transfer-rate", "tz.stamp-agreement", "tz.stamp-memorandum"]),
+  manual("tz.tra-penalties", `${TRA}interest-penalties-offences`, [
     "tz.late-filing-rate",
     "tz.late-filing-points-individual",
     "tz.late-filing-points-company",
     "tz.currency-point",
-  ], ["2.5%", "20,000 shillings"], "TRA penalties page changed"),
-  vigila("tz.tra-motor", `${TRA}motor`, ["tz.vehicle-licence-fee", "tz.vehicle-hiv-levy", "tz.vehicle-registration-tax", "tz.vehicle-transfer-fee"], ["TZS 250,000.00", "HIV Response Levy"], "TRA motor vehicle page changed"),
+  ]),
+  manual("tz.tra-motor", `${TRA}motor`, ["tz.vehicle-licence-fee", "tz.vehicle-hiv-levy", "tz.vehicle-registration-tax", "tz.vehicle-transfer-fee"]),
   vigila("tz.nssf-contributions", "https://www.nssf.go.tz/pages/payment-of-contributions", ["tz.nssf-rate", "tz.nssf-employee-max", "tz.nssf-late-penalty"], ["20% of the employees", "10% of his monthly wage"], "NSSF contribution page changed"),
   vigila("tz.nssf-pension", "https://www.nssf.go.tz/benefits/old-age-pension", [
     "tz.nssf-pension-divisor",
