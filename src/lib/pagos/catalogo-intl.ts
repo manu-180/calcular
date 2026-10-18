@@ -5,7 +5,7 @@ import { RE_CODIGO_MERCADO, type CodigoMercado } from "@/motor/tipos";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
 import { FAMILIAS, PRECIO_PLANILLA_CENTAVOS, type ClaveFamilia, type FamiliaInforme, type TipoProducto } from "./ofertas-intl";
-import { diccionarioVenta, rellenar, resolver, textosFamilia } from "./textos";
+import { diccionarioVenta, rellenar, resolver, textosFamilia, tieneVenta } from "./textos";
 import type { ProductoVenta } from "./tipos";
 
 // Planillas que vende calcularya.com. Cada una es de un país: el id es `<mercado>/<slug>` y el
@@ -93,7 +93,7 @@ export function archivoPlanillaSueldo(anio: number): string {
 
 function informe(f: FamiliaInforme, mercado: string): ProductoIntl {
   const m = registro.pais(mercado as CodigoMercado)!.mercado;
-  const tx = textosFamilia(f.clave, m.idioma, m.trato);
+  const tx = textosFamilia(f.clave, m.idioma, m.trato, m.locale);
   const cat = diccionarioVenta(m.idioma).catalogo;
   return definirProductoIntl({
     mercado,
@@ -121,7 +121,7 @@ function informesDelRegistro(): ProductoIntl[] {
   const salida: ProductoIntl[] = [];
   for (const pais of registro.paises) {
     const m = pais.mercado.codigo;
-    if (m === "global" || esMercadoDePrueba(m)) continue;
+    if (m === "global" || esMercadoDePrueba(m) || !tieneVenta(pais.mercado.idioma)) continue;
     for (const f of FAMILIAS) if (calculadorasDeFamilia(f, m).length) salida.push(informe(f, m));
   }
   return salida;

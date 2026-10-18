@@ -3,9 +3,9 @@ import { diccionarioVenta, textosFamilia, textosVenta } from "@/lib/pagos/textos
 import type { Idioma, Trato } from "@/motor/tipos";
 import type { TextosInforme } from "./[informe]/ver/_informe-vivo";
 
-export function textosInforme(idioma: Idioma, trato: Trato, clave: ClaveFamilia): TextosInforme {
+export function textosInforme(idioma: Idioma, trato: Trato, clave: ClaveFamilia, locale?: string): TextosInforme {
   const i = textosVenta(idioma, trato).informe;
-  const f = textosFamilia(clave, idioma, trato);
+  const f = textosFamilia(clave, idioma, trato, locale);
   const { si, no } = diccionarioVenta(idioma).general;
   return {
     tusDatos: i.tusDatos,

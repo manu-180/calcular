@@ -1,0 +1,38 @@
+import type { TextosUi } from "../../tipos";
+import type { UiHorasTrabajadas } from "../definicion";
+
+export const textosKo: TextosUi<UiHorasTrabajadas> = {
+  slug: "time-card",
+  ui: () => ({
+    dias: ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"],
+    entrada: (dia) => `${dia}: 출근`,
+    salida: (dia) => `${dia}: 퇴근`,
+    horarioAyuda: "일하지 않은 날은 비워 두세요. 자정을 넘겨 끝나도 같은 근무로 세요.",
+    pausa: "하루 무급 휴게 시간(분)",
+    pausaAyuda: "급여가 나오지 않는 점심이나 휴식 시간이에요. 일한 날마다 빼요.",
+    pagoHora: "시급",
+    umbral: "주 소정 근로시간(선택)",
+    umbralAyuda: "이 시간을 넘는 부분은 연장근로 가산율로 계산해요. 연장근로가 없다면 비워 두세요.",
+    recargo: "연장근로 가산율(%)",
+    recargoAyuda: "연장근로 한 시간에 얼마나 더 받는지예요. 50%면 1.5배예요.",
+    horasTotales: "근무 시간",
+    horasReloj: "시간과 분으로",
+    horasNormales: "소정 근로시간",
+    horasExtra: "연장근로 시간",
+    pagoNormal: "기본 급여",
+    pagoExtra: "연장근로 수당",
+    pagoTotal: "한 주 급여 합계",
+    tabla: "요일별 내역",
+    colDia: "요일",
+    colEntrada: "출근",
+    colSalida: "퇴근",
+    colHoras: "시간",
+    errorFaltaSalida: (dia) => `${dia} 퇴근 시간이 비어 있어요.`,
+    errorFaltaEntrada: (dia) => `${dia} 출근 시간이 비어 있어요.`,
+    errorIguales: (dia) => `${dia} 출근과 퇴근 시간이 같아요.`,
+    errorPausa: (dia) => `휴게 시간이 ${dia} 근무 시간과 같거나 더 길어요.`,
+    errorSinDias: "최소 하루는 출근과 퇴근 시간을 넣으세요.",
+    observacionNoche: "다음 날까지 이어진 근무가 있어요. 그 시간은 근무를 시작한 날에 모두 셌어요.",
+    observacionGenerico: "일반적인 계산이에요. 최대 근로시간, 연장근로 규정, 야간·휴일 수당은 법과 근로계약에 따라 달라요.",
+  }),
+};

@@ -3,6 +3,7 @@
 // (muletillas y trato tú/vos/usted) solo corren en textos en español; cada otro idioma suma lo
 // mínimo propio: signos de exclamación de vendedor y el registro equivocado (Sie en un mercado de
 // du, tu en uno de vous).
+import { escrituraZh } from "../src/motor/i18n/escritura";
 import type { Idioma, Trato } from "../src/motor/tipos";
 
 const RAYA = /[–—]/;
@@ -95,7 +96,53 @@ function registro(texto: string, idioma: Idioma, trato: Trato): string[] {
   return prohibidos.filter((d) => d.re.test(texto)).map((d) => `${d.nombre} en un mercado ${idioma} de ${trato === "usted" ? "registro formal" : "registro informal"}`);
 }
 
-export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato): string[] {
+// ja y zh escriben con puntuación de ancho completo (。、「」（）：？); un signo de ancho medio pegado a
+// un carácter CJK es mezcla. Entre dígitos («1,000», «3.5») y en marcadores no cuenta.
+const CJK = String.raw`[\p{sc=Han}\p{sc=Hiragana}\p{sc=Katakana}]`;
+const ANCHO_MEDIO_TRAS_CJK = new RegExp(`${CJK}[,.!?:;()]`, "u");
+const PARENTESIS_ANTES_DE_CJK = new RegExp(`[()]${CJK}`, "u");
+const COMILLAS_LATINAS_CJK = new RegExp(`${CJK}["“”]|["“”]${CJK}`, "u");
+const CORCHETES_JA = /[「」『』]/;
+
+// Pares simplificado/tradicional frecuentes en el vocabulario de las calculadoras. Solo caracteres
+// que no existen como forma normal en la otra escritura (nada de 台, 后, 里, 干, 准, 只, 面).
+const PARES_ZH =
+  "们們 这這 个個 来來 时時 对對 会會 为為 发發 动動 务務 经經 进進 过過 还還 关關 开開 门門 问問 间間 题題 种種 实實 现現 东東 车車 费費 贷貸 价價 钱錢 买買 卖賣 资資 产產 税稅 计計 数數 据據 银銀 额額 总總 让讓 认認 证證 说說 读讀 请請 选選 输輸 结結 统統 历歷 页頁 显顯 应應 该該 网網 络絡 设設 备備 从從 与與 么麼 样樣 国國 区區 万萬 亿億 预預 报報 险險 养養 医醫 疗療 体體 积積 长長 宽寬 电電 气氣 热熱 减減 优優 单單 换換 载載 龄齡 笔筆 层層 钟鐘 录錄 岁歲 条條 营營 业業 汇匯 换換 宝寶 险險 购購 运運 线線 场場 园園 项項 务務 际際 级級 时時 视視 观觀 记記 订訂 议議 课課 调調 质質 双雙 贴貼 账帳";
+const SIMPLIFICADOS = new Set(PARES_ZH.split(" ").map((p) => p[0]));
+const TRADICIONALES = new Set(PARES_ZH.split(" ").map((p) => p[1]));
+
+// Escritura del chino según el locale: un carácter de la otra escritura delata una conversión mal
+// hecha o un texto copiado de la otra variante.
+export function problemasDeEscritura(texto: string, locale: string): string[] {
+  const hans = escrituraZh(locale) === "hans";
+  const ajenos = [...new Set([...texto].filter((c) => (hans ? TRADICIONALES : SIMPLIFICADOS).has(c)))];
+  const p = ajenos.length ? [`${hans ? "tradicional" : "simplificado"} en ${locale}: ${ajenos.join(" ")}`] : [];
+  if (hans && CORCHETES_JA.test(texto)) p.push(`「」 en ${locale}: el chino simplificado usa “”`);
+  if (!hans && /[“”]/.test(texto) && new RegExp(CJK, "u").test(texto)) p.push(`“” en ${locale}: el chino tradicional usa 「」`);
+  return p;
+}
+
+function reglasCjk(texto: string, idioma: Idioma): string[] {
+  const p: string[] = [];
+  if (/[!！]/.test(texto)) p.push("signo de exclamación");
+  if (idioma === "ko") {
+    if (/[。、「」『』]/.test(texto)) p.push("puntuación de ancho completo en coreano (va . , y comillas “”)");
+    if (/(?:니다|니까|십시오)(?=[.?\s]|$)/.test(texto)) p.push("합니다체 en un mercado de 해요체");
+    if (/[가-힣](?<!니)다\.(?:\s|$)/u.test(texto)) p.push("반말 (해라체) en un mercado de 해요체");
+    return p;
+  }
+  if (ANCHO_MEDIO_TRAS_CJK.test(texto) || PARENTESIS_ANTES_DE_CJK.test(texto)) p.push("puntuación de ancho medio junto a texto CJK (va 。、，：？（）)");
+  if (idioma === "ja") {
+    if (/[，．]/.test(texto)) p.push("，o ． en japonés (va 、 y 。)");
+    if (COMILLAS_LATINAS_CJK.test(texto)) p.push("comillas latinas en japonés (va 「」)");
+    if (/(?:だ|である|だろう)。/.test(texto)) p.push("常体 (だ／である) en un mercado de です／ます");
+    if (texto.includes("あなた")) p.push("«あなた»: en la web se omite el sujeto");
+  }
+  if (idioma === "zh" && /你/.test(texto)) p.push("«你» en un mercado de «您»");
+  return p;
+}
+
+export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, locale?: string): string[] {
   const p: string[] = [];
   if (RAYA.test(texto)) p.push("raya («—» o «–»): usá paréntesis o dos oraciones");
   if (GUION_PAUSA.test(texto)) p.push("guion como pausa ( - ): usá paréntesis o dos oraciones");
@@ -104,6 +151,11 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato): s
     const bajo = texto.toLowerCase();
     for (const mul of MULETILLAS_ES) if (bajo.includes(mul)) p.push(`muletilla «${mul}»`);
     return [...p, ...tratoEs(texto, trato)];
+  }
+  if (idioma === "ja" || idioma === "ko" || idioma === "zh") {
+    p.push(...reglasCjk(texto, idioma));
+    if (idioma === "zh") p.push(...problemasDeEscritura(texto, locale ?? "zh-TW"));
+    return p;
   }
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
   return [...p, ...registro(texto, idioma, trato)];

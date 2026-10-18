@@ -64,7 +64,7 @@ export default async function LandingInformeIntl({ params }: Props) {
   const m = ctx.mercado;
   const tx = textosPlanillas(m);
   const tarjeta = textosTarjeta(m.idioma, m.trato);
-  const tf = textosFamilia(familia.clave, m.idioma, m.trato);
+  const tf = textosFamilia(familia.clave, m.idioma, m.trato, m.locale);
 
   // La muestra es real: la primera calculadora del informe con sus valores por defecto y los datos
   // oficiales de hoy, por la misma función que arma el informe pagado.
