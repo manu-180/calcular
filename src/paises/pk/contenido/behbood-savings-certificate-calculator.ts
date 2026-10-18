@@ -14,7 +14,7 @@ export default definirContenido({
   faq: [
     {
       pregunta: "Who can buy Behbood certificates?",
-      respuesta: "They are meant for senior citizens, widows and persons with disabilities, under the scheme's rules. Check eligibility at a National Savings centre.",
+      respuesta: "Eligibility is set by the scheme's rules. Ask at a National Savings centre or check the scheme page before you invest.",
     },
     {
       pregunta: "Does the rate change after I buy?",
