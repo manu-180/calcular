@@ -31,6 +31,6 @@ export default definirContenido({
   ],
   glosario: [
     { termino: "Tier 1", definicion: "The basic national social security scheme managed by SSNIT." },
-    { termino: "Tier 2", definicion: "The occupational pension scheme that receives 5% of basic salary." },
+    { termino: "Tier 2", definicion: "The second tier of the pension system, which receives 5% of basic salary." },
   ],
 });
