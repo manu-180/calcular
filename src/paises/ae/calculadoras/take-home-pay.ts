@@ -33,7 +33,8 @@ export default definirCalculadora({
     const pension = entrada.emirati ? redondear(aportesGpssa(base, v["ae.gpssa"]).empleado) : 0;
     const seguro = entrada.iloe ? primaIloe(entrada.basico, v["ae.iloe"]) : 0;
     const neto = redondear(entrada.total - pension - seguro);
-    const observaciones = ["There's no personal income tax on salaries in the UAE, so nothing is withheld for tax."];
+    const observaciones: string[] = [];
+    if (entrada.emirati) observaciones.push("Your employer adds its own GPSSA contribution on top. It doesn't come out of your pay.");
     return { neto, pension, seguro, anual: redondear(neto * 12), observaciones };
   },
   resultado: [
