@@ -27,8 +27,8 @@ export default definirContenido({
       "respuesta": "From four weeks before the expected date of birth, or earlier if a doctor says it is needed."
     },
     {
-      "pregunta": "What if the baby is premature?",
-      "respuesta": "The 2025 labour law amendments add paid leave for a premature birth. Ask your employer or the Labour Office how it applies to you."
+      "pregunta": "What if the baby dies in its first year?",
+      "respuesta": "You are entitled to another {{tz.maternity-days}} of paid maternity leave within the leave cycle."
     }
   ],
   "glosario": [
