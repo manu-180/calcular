@@ -16,7 +16,7 @@ export default definirCalculadora({
     const p = v["sn.parite-euro"];
     const enCfa = e.sens === "eur-xof";
     const brut = enCfa ? e.montant * p : e.montant / p;
-    return { resultat: Math.round(brut * (enCfa ? 1 : 100)) / (enCfa ? 1 : 100), devise: enCfa ? "Francs CFA (XOF)" : "Euros (EUR)", parite: p };
+    return { resultat: Math.round(brut * 100) / 100, devise: enCfa ? "Francs CFA (XOF)" : "Euros (EUR)", parite: p };
   },
   resultado: [
     { clave: "resultat", etiqueta: "Montant converti", formato: "numero", decimales: 2, destacada: true },
