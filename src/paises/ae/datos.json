@@ -54,7 +54,6 @@
       "tipo": "mapa",
       "unidad": "AED",
       "etiquetas": {
-        "share": "Share of the VAT refunded (%)",
         "fee-per-tag": "Fee per tax-free tag",
         "minimum-purchase": "Minimum purchase"
       },
@@ -63,7 +62,6 @@
           "estado": "verificado",
           "desde": "2018-10-01",
           "valor": {
-            "share": 85,
             "fee-per-tag": 4.8,
             "minimum-purchase": 250
           },
@@ -72,8 +70,27 @@
             "titulo": "Tax refund for tourists",
             "url": "https://u.ae/en/information-and-services/finance-and-investment/taxation/vat/tax-refund-for-tourists",
             "tipo": "primaria",
-            "verificadoEl": "2026-10-17",
-            "nota": "share is the percentage of the VAT paid that the tourist receives."
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.tourist-refund-share",
+      "nombre": "Share of the VAT paid that a tourist receives",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-10-01",
+          "valor": 85,
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Tax refund for tourists",
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/taxation/vat/tax-refund-for-tourists",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
           }
         }
       ]
