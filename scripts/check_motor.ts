@@ -9,7 +9,7 @@ import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
-import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
@@ -54,6 +54,11 @@ igual("porcentaje es-PE", sinNbsp(formatearPorcentaje(9, "es-PE")), "9%");
 igual("porcentaje es-CO", sinNbsp(formatearPorcentaje(1.37, "es-CO")), "1,37%");
 igual("moneda es-PA con símbolo local", sinNbsp(formatearMoneda(1250.5, "es-PA", "USD", undefined, "B/.")), "B/. 1,250.50");
 igual("fecha es-MX", formatearFecha("2026-12-20", "es-MX"), "20 de diciembre de 2026");
+igual("fecha ar-SA gregoriana con dígitos latinos", formatearFecha("2026-12-20", "ar-SA-u-ca-gregory-nu-latn"), "20 ديسمبر 2026");
+igual("número ar-EG con dígitos latinos", formatearNumero(1234567.5, "ar-EG-u-ca-gregory-nu-latn"), "1,234,567.5");
+igual("dual árabe", formatearValorUnidad(2, "dias", "ar-EG-u-ca-gregory-nu-latn"), "يومان");
+igual("plural árabe de 3 a 10", formatearValorUnidad(3, "meses", "ar-EG-u-ca-gregory-nu-latn"), "3 أشهر");
+igual("plural árabe de 11 a 99", formatearValorUnidad(11, "anios", "ar-EG-u-ca-gregory-nu-latn"), "11 سنة");
 
 // Parseo por locale: el error que multiplica por mil.
 const parseos: [string, string, number | null][] = [
@@ -85,6 +90,16 @@ const parseos: [string, string, number | null][] = [
   ["es-PE", "", null],
   ["es-PE", "1,", null],
   ["es-PE", "1,2345", null],
+  ["ar-EG-u-ca-gregory-nu-latn", "٣٬٥٠٠٫٧٥", 3500.75],
+  ["ar-EG-u-ca-gregory-nu-latn", "١٢٫٥", 12.5],
+  ["ar-EG-u-ca-gregory-nu-latn", "٢٥٠٠٠", 25000],
+  ["ar-EG-u-ca-gregory-nu-latn", "3,500.75", 3500.75],
+  ["ar-EG-u-ca-gregory-nu-latn", "-١٢", -12],
+  ["ar-EG-u-ca-gregory-nu-latn", "١٢،٥", 12.5],
+  ["ar-EG-u-ca-gregory-nu-latn", "۱۲۰۰", 1200],
+  ["ar-MA-u-ca-gregory-nu-latn", "1.234,5", 1234.5],
+  ["ar-MA-u-ca-gregory-nu-latn", "١٫٢٥", 1.25],
+  ["ar-EG", "٣٬٥٠٠٫٧٥", 3500.75],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
