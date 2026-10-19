@@ -1,0 +1,540 @@
+{
+  "mercado": "ci",
+  "datos": [
+    {
+      "id": "ci.smig",
+      "nombre": "Salaire minimum interprofessionnel garanti (SMIG), mensuel",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 75000,
+          "fuente": {
+            "organismo": "Gouvernement de Côte d'Ivoire",
+            "titulo": "Communiqué du Conseil des ministres du 21 décembre 2022 (décret portant revalorisation du SMIG)",
+            "url": "https://www.gouv.ci/uploads/publications/1671692497Communique-du-Conseil-des-Ministres-du-mercredi-21-decembre-2022.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.its-bareme",
+      "nombre": "Barème mensuel de l'impôt sur les traitements et salaires (ITS)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 75000,
+              "tasa": 0
+            },
+            {
+              "desde": 75000,
+              "hasta": 240000,
+              "tasa": 16
+            },
+            {
+              "desde": 240000,
+              "hasta": 800000,
+              "tasa": 21
+            },
+            {
+              "desde": 800000,
+              "hasta": 2400000,
+              "tasa": 24
+            },
+            {
+              "desde": 2400000,
+              "hasta": 8000000,
+              "tasa": 28
+            },
+            {
+              "desde": 8000000,
+              "hasta": null,
+              "tasa": 32
+            }
+          ],
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.its-ricf",
+      "nombre": "Réduction d'impôt pour charges de famille (RICF), montant mensuel par nombre de parts",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "10": "1 part",
+        "15": "1,5 part",
+        "20": "2 parts",
+        "25": "2,5 parts",
+        "30": "3 parts",
+        "35": "3,5 parts",
+        "40": "4 parts",
+        "45": "4,5 parts",
+        "50": "5 parts"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "10": 0,
+            "15": 5500,
+            "20": 11000,
+            "25": 16500,
+            "30": 22000,
+            "35": 27500,
+            "40": 33000,
+            "45": 38500,
+            "50": 44000
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.its-parts-max",
+      "nombre": "Nombre maximal de parts pour la RICF",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.its-abattement-pension",
+      "nombre": "Abattement mensuel sur les pensions de retraite et rentes viagères",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 320000,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.its-abattement-retraite-70-ans",
+      "nombre": "Abattement sur l'impôt des retraités de plus de 70 ans",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.contribution-employeur",
+      "nombre": "Contribution à la charge des employeurs",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "local": "Personnel local",
+        "expatrie": "Personnel expatrié"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "local": 0,
+            "expatrie": 9.2
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.taxe-apprentissage",
+      "nombre": "Taxe d'apprentissage",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.4,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.tva-normal",
+      "nombre": "TVA, taux de droit commun",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.tva-reduit",
+      "nombre": "TVA, taux réduit",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.cnps-taux",
+      "nombre": "Taux des cotisations CNPS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "retraite-salarie": "Retraite, part salariale",
+        "retraite-employeur": "Retraite, part patronale",
+        "prestations-familiales": "Prestations familiales",
+        "maternite": "Assurance maternité"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": {
+            "retraite-salarie": 6.3,
+            "retraite-employeur": 7.7,
+            "prestations-familiales": 5,
+            "maternite": 0.75
+          },
+          "fuente": {
+            "organismo": "CNPS",
+            "titulo": "Espace employeur : cotisations sociales, plafonds et taux",
+            "url": "https://www.cnps.ci/employeur",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.cnps-accident-travail",
+      "nombre": "Taux de la cotisation accidents du travail et maladies professionnelles",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "minimum": "Taux minimum",
+        "maximum": "Taux maximum"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": {
+            "minimum": 2,
+            "maximum": 5
+          },
+          "fuente": {
+            "organismo": "CNPS",
+            "titulo": "Espace employeur : cotisations sociales, plafonds et taux",
+            "url": "https://www.cnps.ci/employeur",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.cnps-plafond-prestations",
+      "nombre": "Plafond mensuel des prestations familiales, de la maternité et des accidents du travail",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 70000,
+          "fuente": {
+            "organismo": "CNPS",
+            "titulo": "Espace employeur : cotisations sociales, plafonds et taux",
+            "url": "https://www.cnps.ci/employeur",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.cnps-plafond-retraite-smig",
+      "nombre": "Plafond de la cotisation retraite, en nombre de SMIG",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "CNPS",
+            "titulo": "Espace employeur : cotisations sociales, plafonds et taux",
+            "url": "https://www.cnps.ci/employeur",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.entreprenant-taxe-communale",
+      "nombre": "Taxe communale de l'entreprenant",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "commerce": "Commerce ou négoce",
+        "autres": "Autres activités"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "commerce": 2,
+            "autres": 2.5
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.entreprenant-taxe-etat",
+      "nombre": "Taxe d'État de l'entreprenant",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "commerce": "Commerce ou négoce",
+        "autres": "Autres activités"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "commerce": 4,
+            "autres": 5
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.entreprenant-reduction-cga",
+      "nombre": "Réduction de la taxe d'État de l'entreprenant pour les adhérents d'un CGA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.microentreprises-taux",
+      "nombre": "Impôt des microentreprises",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "normal": "Taux normal",
+        "adherent": "Adhérent d'un CGA ou suivi par un expert-comptable conventionné"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "normal": 6,
+            "adherent": 4
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.regimes-seuils",
+      "nombre": "Plafonds de chiffre d'affaires annuel TTC des régimes d'imposition",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "taxe-communale": "Taxe communale de l'entreprenant",
+        "taxe-etat": "Taxe d'État de l'entreprenant",
+        "microentreprises": "Régime des microentreprises",
+        "reel-simplifie": "Réel simplifié"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "taxe-communale": 5000000,
+            "taxe-etat": 50000000,
+            "microentreprises": 200000000,
+            "reel-simplifie": 500000000
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.bic-taux",
+      "nombre": "Taux de l'impôt sur les bénéfices industriels et commerciaux",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Droit commun",
+        "telecom": "Télécommunications et TIC"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "general": 25,
+            "telecom": 30
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Le système fiscal ivoirien (publication de la Direction générale des Impôts)",
+            "url": "https://www.dgi.gouv.ci/assets/documents/EBOOK/LE_SYTEME_FISCAL_IVOIRIEN/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Livre numérique publié sur dgi.gouv.ci, à jour du barème de l'ITS issu de l'ordonnance n° 2023-719 (en vigueur depuis le 1er janvier 2024)."
+          }
+        }
+      ]
+    }
+  ]
+}
