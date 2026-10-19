@@ -13,6 +13,10 @@ export default definirContenido({
   ejemplo: ["Spending Rs. 100,000 abroad adds Rs. 500 of advance tax."],
   faq: [
     {
+      pregunta: "Is it charged on payments in Pakistan in rupees?",
+      respuesta: "No. It applies to payments made abroad or in foreign currency with an international card.",
+    },
+    {
       pregunta: "Can I adjust this tax?",
       respuesta: "Advance tax collected by your bank can generally be adjusted against your income tax when you file your return.",
     },

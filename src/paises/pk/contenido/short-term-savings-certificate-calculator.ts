@@ -13,6 +13,10 @@ export default definirContenido({
   ejemplo: ["Rs. 500,000 for one year at 11.31% earns Rs. 56,550, or Rs. 48,067.50 after a filer's tax."],
   faq: [
     {
+      pregunta: "When is the profit paid?",
+      respuesta: "This calculator assumes the profit is paid with the amount at the end of the term.",
+    },
+    {
       pregunta: "Which term pays most?",
       respuesta: "From 1 October 2026 the one-year certificate has the highest rate, {{pk.nss-rates[stsc1y]}}.",
     },

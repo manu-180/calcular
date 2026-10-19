@@ -9,6 +9,7 @@ export default definirCalculadora({
   requiere: {
     "pk.salary-tax-slabs": "escala",
     "pk.eobi-employee": "numero",
+    "pk.eobi-employer": "numero",
     "pk.minimum-wage": "numero",
   },
   campos: [

@@ -13,6 +13,10 @@ export default definirContenido({
   ejemplo: ["Rs. 500,000 for a year earns Rs. 50,000, or Rs. 42,500 for a filer."],
   faq: [
     {
+      pregunta: "Is a non-filer taxed more?",
+      respuesta: "Yes. National Savings deducts {{pk.nss-wht-nonfiler}} from a non-filer's profit, against {{pk.nss-wht-filer}} for a filer.",
+    },
+    {
       pregunta: "Did the savings account rate change on 1 October 2026?",
       respuesta: "No. National Savings noted that the Savings Account rate stayed at {{pk.nss-rates[sa]}}.",
     },

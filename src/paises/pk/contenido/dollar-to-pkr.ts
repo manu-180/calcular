@@ -16,6 +16,10 @@ export default definirContenido({
   ejemplo: ["At Rs. 276.91 per dollar, US$100 is Rs. 27,691.15."],
   faq: [
     {
+      pregunta: "How often is the rate updated?",
+      respuesta: "The State Bank publishes it for each working day. On other days the last published rate is used.",
+    },
+    {
       pregunta: "What is the M2M rate?",
       respuesta: "The mark-to-market revaluation rate the State Bank publishes each day for the dollar.",
     },
