@@ -3,6 +3,62 @@
 Plan y decisiones: `docs/adr/0002-mundo.md`. Receta de universales: `docs/global/RECETA-UNIVERSAL.md`.
 Rama de integración: `claude/global-calculators-multipa-s-dfbec3` (incluye el PR #30 de auditoría).
 
+## 19/10/2026 · CÓMO RETOMAR (leer primero)
+
+Manuel pidió cerrar los países empezados sin sumar nuevos, publicar y dejar esto listo para seguir
+país por país en otra sesión hasta completar el planeta.
+
+**En producción:** 45 países contando Argentina, y 5 ediciones (ch-fr, ch-it, ca-fr, be-fr, lu-de).
+Los últimos en salir fueron Kenia (PR #36) y Tanzania (66 calculadoras, 63 datos), que salió junto con el arreglo de la unidad
+duplicada en los textos de Kenia (`claude/fix-ke-unidades`).
+
+**Empezados y sin terminar.** Cada uno tiene su rama remota con WIP pusheado. Las sesiones se cortaron
+varias veces por límite de uso.
+
+| Frente | Rama | Dónde quedó |
+|---|---|---|
+| Japón + diccionario de venta ja/ko/zh | claude/pais-jp | depurando un 404 de `jp/take-home-pay` en el registro |
+| Ghana | claude/pais-gh | segundo bloque de calculadoras; `postJson` opcional en el Http del cron |
+| Senegal | claude/pais-sn | escribiendo contenidos (fr, vous, CGI y BCEAO) |
+| Túnez | claude/pais-tn | en curso |
+| Liechtenstein, después us-es | claude/pais-li, claude/edicion-us-es | mercado, avisos, novedades, fuentes, lib de Lohn |
+| Emiratos | claude/pais-ae | ILOE, Emiratisation y mínimo para emiratíes commiteados; depende del motor árabe |
+| Kuwait | claude/pais-kw | en curso; depende del motor árabe |
+| Pakistán | claude/pais-pk | faltaban STSC, cuenta de ahorro, tarjeta extranjera y dólar |
+| Costa de Marfil | claude/pais-ci | en curso |
+| Angola | claude/pais-ao | en curso |
+| Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
+| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
+
+Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
+`docs/global/BRIEF-PAIS.md`, y terminarlo en un worktree propio. Los agentes de esta sesión no
+sobreviven a una sesión nueva; el estado vive en las ramas.
+
+**Publicar un país terminado** (receta probada con Kenia y Tanzania):
+1. En la rama de integración: merge de `origin/main` y de la rama del país.
+2. `estado: "publicado"` en `src/paises/<m>/mercado.ts`; import y alta al final de `PAISES` en
+   `src/paises/index.ts`.
+3. `npx tsx scripts/check_motor.ts --generar-cargadores`, `npx tsx scripts/check_medicion_mercados.ts --escribir`, `npx tsc --noEmit -p .`.
+4. Build y `scripts/check-all.ts` (144 suites) en un worktree aparte, nunca en el de la sesión: el
+   hook Stop commitea lo suelto. Si falla check_hreflang por una serie vencida, correr
+   `npx tsx scripts/datos-paises/correr.ts --mercado <m>` y copiar el `series.json`.
+5. PR contra main, `gh run watch <runId>` hasta `conclusion == success`, merge, curl a una página.
+
+**Orden sugerido para seguir:** terminar la tabla de arriba (motor árabe antes que ae y kw; Japón
+antes que cualquier otro asiático), después avanzar por tiers de `docs/global/PAISES.md` (199
+países): primero los del tier 1 y 2 que faltan, después de a uno por región.
+
+**Pendientes de Manuel:** pasos 1 y 2 de `docs/global/SQL-METRICAS.md`. Verificar en navegador
+la LNT de Quebec. Revisar los borradores de Marruecos (CNSS, SMIG, preaviso) y el EPF de Malasia.
+Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/zh antes de publicar Japón.
+
+**Pedidos al motor abiertos:**
+- `post` en el Http del cron, para la PSA de Filipinas y el CBK de Kenia (Ghana lo está sumando).
+- Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
+
+El cron datos-paises no está actualizando uy, hn y bo.
+
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 
 ja, ko y zh (tradicional zh-TW/zh-HK y simplificado zh-CN/zh-SG) en motor, sitio, inicio, legales,
