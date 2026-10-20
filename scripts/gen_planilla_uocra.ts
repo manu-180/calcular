@@ -33,6 +33,11 @@ import {
   ZONAS_UOCRA,
   type CategoriaUocraId,
 } from "../src/data/convenios/uocra";
+import {
+  MESES_UOCRA_HISTORICO,
+  UOCRA_FUENTES_HISTORICO,
+  UOCRA_HISTORICO_CONSULTADO_EL,
+} from "../src/data/convenios/uocra-historico";
 import { textoProximaParitaria } from "../src/lib/convenios";
 import {
   ARS_FMT,
@@ -49,7 +54,12 @@ import {
   titulo,
 } from "./gen_planilla_estilos";
 
-const ESC = "Escala 2026";
+const ESC = "Escalas";
+export const HOJA_DIFERENCIAS_UOCRA = "Diferencias";
+
+// La escala del archivo arranca en junio 2024 para poder reclamar diferencias salariales; la
+// calculadora del sitio sigue usando sólo MESES_UOCRA.
+const MESES = [...MESES_UOCRA_HISTORICO, ...MESES_UOCRA];
 
 // Coordenadas del Liquidador que lee src/lib/prefill/uocra.ts para entregar la planilla con los
 // datos de la calculadora. scripts/check_prefill_planillas.ts compara las dos copias.
@@ -74,7 +84,7 @@ const FILA_JORNAL_FIN = FILA_JORNAL_INI + COMBOS - 1;
 const FILA_SNR_INI = FILA_JORNAL_FIN + 2; // una fila de aire entre bloques
 const FILA_SNR_FIN = FILA_SNR_INI + COMBOS - 1;
 const COL_MES_INI = 4; // D
-const COL_MES_FIN = COL_MES_INI + MESES_UOCRA.length - 1;
+const COL_MES_FIN = COL_MES_INI + MESES.length - 1;
 
 function letraCol(n: number): string {
   let s = "";
@@ -88,6 +98,18 @@ function letraCol(n: number): string {
 
 const L_MES_INI = letraCol(COL_MES_INI);
 const L_MES_FIN = letraCol(COL_MES_FIN);
+
+// Con 30 meses la lista en línea pasa los 255 caracteres que acepta Excel: el desplegable apunta
+// a la fila de encabezados de la escala.
+function desplegableMeses(): ExcelJS.DataValidation {
+  return {
+    type: "list",
+    allowBlank: false,
+    formulae: [`'${ESC}'!$${L_MES_INI}$${FILA_HEADER}:$${L_MES_FIN}$${FILA_HEADER}`],
+    showErrorMessage: true,
+    error: "Elegí un mes de la lista.",
+  };
+}
 
 // Todas las combinaciones categoría × zona, en el orden en que se escriben las filas.
 const COMBINACIONES = CATEGORIAS_UOCRA.flatMap((cat) =>
@@ -106,8 +128,9 @@ function buildInstrucciones(wb: ExcelJS.Workbook) {
     ["1", "Andá a la hoja «Liquidador» (la segunda pestaña, abajo a la izquierda)."],
     ["2", "Completá solo las celdas amarillas: categoría, zona, mes, horas trabajadas, asistencia perfecta y aporte solidario. Las demás se calculan solas."],
     ["3", "Las celdas verdes son el resultado: básico, asistencia perfecta, suma no remunerativa, bruto y neto estimado. No las toques ni las pises con números."],
-    ["4", "La hoja «Escala 2026» tiene los jornales oficiales por categoría y zona, mes por mes. Es de donde el Liquidador saca los valores."],
-    ["5", "La hoja «Fuentes» tiene el link a cada acuerdo paritario firmado y la fecha en que se verificó. Si alguien te discute un número, ahí está el PDF."],
+    ["4", `La hoja «Diferencias» calcula lo que se le debe a un trabajador mal registrado o mal pagado: elegís la categoría que le corresponde, la que figura en el recibo (o cargás lo que cobró) y el período, desde ${MESES[0].etiqueta}. Suma sueldo, suma no remunerativa, aguinaldo y fondo de cese.`],
+    ["5", `La hoja «${ESC}» tiene los jornales oficiales por categoría y zona, mes por mes, de ${MESES[0].etiqueta} a ${MESES.at(-1)!.etiqueta}. Es de donde salen todos los valores.`],
+    ["6", "La hoja «Fuentes» tiene el link a cada acuerdo paritario firmado y la fecha en que se verificó. Si alguien te discute un número, ahí está el PDF."],
   ];
   pasos.forEach(([n, t], i) => {
     const r = 3 + i;
@@ -169,12 +192,12 @@ function buildEscala(wb: ExcelJS.Workbook) {
     { width: 34 },
     { width: 24 },
     { width: 16 },
-    ...MESES_UOCRA.map(() => ({ width: 15 })),
+    ...MESES.map(() => ({ width: 15 })),
   ];
 
-  titulo(ws, `A1:${L_MES_FIN}1`, "Escala oficial UOCRA 2026 — CCT 76/75 (jornales y sumas no remunerativas)", "FF1565C0");
+  titulo(ws, `A1:${L_MES_FIN}1`, `Escala oficial UOCRA ${MESES[0].etiqueta} a ${MESES.at(-1)!.etiqueta} — CCT 76/75 (jornales y sumas no remunerativas)`, "FF1565C0");
 
-  const headers = ["Clave", "Categoría", "Zona", ...MESES_UOCRA.map((m) => m.etiqueta)];
+  const headers = ["Clave", "Categoría", "Zona", ...MESES.map((m) => m.etiqueta)];
   headers.forEach((h, i) => {
     const c = ws.getCell(FILA_HEADER, i + 1);
     c.value = h;
@@ -188,7 +211,7 @@ function buildEscala(wb: ExcelJS.Workbook) {
   const bloques: Array<{
     inicio: number;
     prefijo: "J" | "S";
-    valor: (cat: (typeof CATEGORIAS_UOCRA)[number], zonaId: string, mes: (typeof MESES_UOCRA)[number]) => number;
+    valor: (cat: (typeof CATEGORIAS_UOCRA)[number], zonaId: string, mes: (typeof MESES)[number]) => number;
   }> = [
     {
       inicio: FILA_JORNAL_INI,
@@ -228,7 +251,7 @@ function buildEscala(wb: ExcelJS.Workbook) {
       zc.fill = fill;
       zc.border = BORDE;
 
-      MESES_UOCRA.forEach((mes, j) => {
+      MESES.forEach((mes, j) => {
         const c = ws.getCell(r, COL_MES_INI + j);
         c.value = bloque.valor(cat, zona.id, mes);
         c.numFmt = ARS_FMT;
@@ -255,7 +278,7 @@ function buildEscala(wb: ExcelJS.Workbook) {
   nota(
     ws,
     `A${r}:${L_MES_FIN}${r}`,
-    `Agosto 2026 no tiene suma no remunerativa: el acuerdo del 19/5/2026 la absorbió al jornal. Verificado el ${UOCRA_FUENTES.consultadoEl} contra los acuerdos firmados (ver hoja Fuentes).`,
+    `Agosto 2026 no tiene suma no remunerativa: el acuerdo del 19/5/2026 la absorbió al jornal. Abril a noviembre 2026 verificado el ${UOCRA_FUENTES.consultadoEl}; ${MESES[0].etiqueta} a marzo 2026, el ${UOCRA_HISTORICO_CONSULTADO_EL}, contra los acuerdos firmados (ver hoja Fuentes). Julio 2024 y abril 2025 repiten el mes anterior porque no hubo acuerdo para esos meses.`,
   );
   r++;
   nota(ws, `A${r}:${L_MES_FIN}${r}`, "La columna «Clave» la usa el Liquidador para buscar los valores. No la borres ni la edites.");
@@ -283,7 +306,7 @@ function buildLiquidador(wb: ExcelJS.Workbook) {
   const inputs: Array<[number, string, string | number, ExcelJS.DataValidation | null]> = [
     [5, "Categoría", "Oficial", desplegable(CATEGORIAS_UOCRA.map((c) => c.nombre), "Elegí una categoría de la lista.")],
     [6, "Zona", "Zona A", desplegable(ZONAS_UOCRA.map((z) => z.nombre), "Elegí una zona de la lista.")],
-    [7, "Mes a liquidar", MESES_UOCRA.at(-1)!.etiqueta, desplegable(MESES_UOCRA.map((m) => m.etiqueta), "Elegí un mes de la lista.")],
+    [7, "Mes a liquidar", MESES_UOCRA.at(-1)!.etiqueta, desplegableMeses()],
     [8, "Horas trabajadas en el mes", Number(UOCRA_HORAS_MES_PROMEDIO.toFixed(2)), {
       type: "decimal",
       operator: "between",
@@ -373,6 +396,253 @@ function buildLiquidador(wb: ExcelJS.Workbook) {
   ws.views = [{ state: "frozen", ySplit: 4 }];
 }
 
+// ─── Hoja 4: DIFERENCIAS SALARIALES ──────────────────────────────────────────
+// Para el trabajador registrado en una categoría inferior (o pagado por debajo de la escala) que
+// reclama lo adeudado. Una fila por mes de la escala; las filas fuera del período elegido quedan
+// a la vista pero no suman. scripts/check_planilla_uocra.ts replica estas fórmulas.
+
+export const OTRO_COBRADO = "Otro: cargo lo cobrado";
+export const CELDAS_DIFERENCIAS = {
+  corresponde: "B5",
+  registrada: "B6",
+  zona: "B7",
+  desde: "B8",
+  hasta: "B9",
+  asistencia: "B10",
+  horas: "B11",
+  antiguedad: "B12",
+  meses: "I5",
+  sueldo: "I6",
+  snr: "I7",
+  sac: "I8",
+  fondoCese: "I9",
+  total: "I10",
+} as const;
+export const FILA_DIF_INI = 16;
+
+function semestreDe(m: (typeof MESES)[number]): { clave: string; etiqueta: string } {
+  const s = m.mes <= 6 ? 1 : 2;
+  return { clave: `${m.anio}-${s}`, etiqueta: `${s === 1 ? "1er" : "2do"} semestre ${m.anio}` };
+}
+
+function buildDiferencias(wb: ExcelJS.Workbook) {
+  const ws = wb.addWorksheet(HOJA_DIFERENCIAS_UOCRA, { properties: { tabColor: { argb: "FFB71C1C" } } });
+  ws.columns = [
+    { width: 40 }, { width: 24 }, { width: 13 }, { width: 16 }, { width: 14 },
+    { width: 16 }, { width: 14 }, { width: 16 }, { width: 18 }, { width: 14 }, { width: 9 },
+  ];
+
+  titulo(ws, "A1:K1", "Diferencias salariales — UOCRA (CCT 76/75)", "FFB71C1C");
+  ws.mergeCells("A2:K2");
+  const sub = ws.getCell("A2");
+  sub.value = `Lo que le correspondía cobrar contra lo que cobró, mes por mes, con las escalas oficiales de ${MESES[0].etiqueta} a ${MESES.at(-1)!.etiqueta}. Completá las celdas amarillas.`;
+  sub.font = { italic: true, size: 10, color: { argb: "FF555555" } };
+  sub.fill = S.label;
+  sub.alignment = { horizontal: "center", wrapText: true };
+  ws.getRow(2).height = 28;
+
+  bandaSeccion(ws, "A4:B4", "DATOS DEL RECLAMO");
+  const cats = CATEGORIAS_UOCRA.map((c) => c.nombre);
+  const hoy = new Date();
+  const mesActual = MESES.find((m) => m.anio === hoy.getFullYear() && m.mes === hoy.getMonth() + 1) ?? MESES.at(-1)!;
+  const inputs: Array<[string, string, string | number, ExcelJS.DataValidation]> = [
+    [CELDAS_DIFERENCIAS.corresponde, "Categoría que le corresponde", "Oficial", desplegable(cats, "Elegí una categoría.")],
+    [CELDAS_DIFERENCIAS.registrada, "Categoría con la que figura en el recibo", "Ayudante", desplegable([...cats, OTRO_COBRADO], "Elegí una categoría o la opción de cargar lo cobrado.")],
+    [CELDAS_DIFERENCIAS.zona, "Zona", "Zona A", desplegable(ZONAS_UOCRA.map((zz) => zz.nombre), "Elegí una zona.")],
+    [CELDAS_DIFERENCIAS.desde, "Desde", MESES[0].etiqueta, desplegableMeses()],
+    [CELDAS_DIFERENCIAS.hasta, "Hasta", mesActual.etiqueta, desplegableMeses()],
+    [CELDAS_DIFERENCIAS.asistencia, "¿Le corresponde asistencia perfecta?", "Sí", desplegable(["Sí", "No"], "Elegí Sí o No.")],
+    [CELDAS_DIFERENCIAS.horas, "Horas por mes (mes completo = 190,67)", Number(UOCRA_HORAS_MES_PROMEDIO.toFixed(2)), {
+      type: "decimal", operator: "between", showErrorMessage: true, formulae: [0, 300],
+      error: "Ingresá las horas del mes (entre 0 y 300).",
+    }],
+    [CELDAS_DIFERENCIAS.antiguedad, "Meses que llevaba trabajando al empezar el período", 12, {
+      type: "whole", operator: "between", showErrorMessage: true, formulae: [0, 600],
+      error: "Ingresá un número de meses.",
+    }],
+  ];
+  for (const [ref, etiqueta, valor, val] of inputs) {
+    celdaEtiqueta(ws, ref.replace("B", "A"), etiqueta);
+    const c = celdaInput(ws, ref, valor);
+    c.dataValidation = val;
+    if (typeof valor === "number") c.alignment = { horizontal: "right" };
+  }
+  ws.getCell(CELDAS_DIFERENCIAS.horas).numFmt = "0.00";
+
+  const hdr = `'${ESC}'!$${L_MES_INI}$${FILA_HEADER}:$${L_MES_FIN}$${FILA_HEADER}`;
+  const escJ = `'${ESC}'!$${L_MES_INI}$${FILA_JORNAL_INI}:$${L_MES_FIN}$${FILA_JORNAL_FIN}`;
+  const keyJ = `'${ESC}'!$A$${FILA_JORNAL_INI}:$A$${FILA_JORNAL_FIN}`;
+  const escS = `'${ESC}'!$${L_MES_INI}$${FILA_SNR_INI}:$${L_MES_FIN}$${FILA_SNR_FIN}`;
+  const keyS = `'${ESC}'!$A$${FILA_SNR_INI}:$A$${FILA_SNR_FIN}`;
+  const serenoNombre = CATEGORIAS_UOCRA.find((c) => c.mensual)!.nombre;
+  const { corresponde, registrada, zona, desde, hasta, asistencia, horas, antiguedad } = CELDAS_DIFERENCIAS;
+  const abs = (ref: string) => ref.replace(/^([A-Z]+)(\d+)$/, "$$$1$$$2");
+
+  // Auxiliares ocultos en P: índices del período, claves de búsqueda y modos.
+  const aux: Array<[string, string]> = [
+    ["P5", `MATCH(${abs(desde)},${hdr},0)`],
+    ["P6", `MATCH(${abs(hasta)},${hdr},0)`],
+    ["P7", `CONCATENATE("J|",${abs(corresponde)},"|",${abs(zona)})`],
+    ["P8", `CONCATENATE("S|",${abs(corresponde)},"|",${abs(zona)})`],
+    ["P9", `CONCATENATE("J|",${abs(registrada)},"|",${abs(zona)})`],
+    ["P10", `CONCATENATE("S|",${abs(registrada)},"|",${abs(zona)})`],
+    ["P11", `IF(${abs(corresponde)}="${serenoNombre}",1,0)`],
+    ["P12", `IF(${abs(registrada)}="${serenoNombre}",1,0)`],
+    ["P13", `IF(${abs(registrada)}="${OTRO_COBRADO}",1,0)`],
+    ["P14", `1+IF(${abs(asistencia)}="Sí",${UOCRA_ASISTENCIA_PERFECTA},0)`],
+  ];
+  for (const [ref, f] of aux) ws.getCell(ref).value = { formula: f };
+  for (const col of ["M", "N", "O", "P", "Q"]) ws.getColumn(col).hidden = true;
+
+  const filaHdr = FILA_DIF_INI - 1;
+  const encabezados = [
+    "Mes", "Horas trabajadas", "Jornal que corresponde", "Sueldo que corresponde", "No remunerativo que corresponde",
+    "Sueldo cobrado", "No remunerativo cobrado", "Diferencia de sueldo", "Diferencia no remunerativa", "Fondo de cese", "¿Entra?",
+  ];
+  encabezados.forEach((h, i) => {
+    const c = ws.getCell(filaHdr, i + 1);
+    c.value = h;
+    c.font = { bold: true, color: { argb: "FFFFFFFF" }, size: 10 };
+    c.fill = relleno("FFC62828");
+    c.border = BORDE;
+    c.alignment = { horizontal: "center", vertical: "middle", wrapText: true };
+  });
+  ws.getRow(filaHdr).height = 42;
+
+  const filaFin = FILA_DIF_INI + MESES.length - 1;
+  MESES.forEach((m, j) => {
+    const r = FILA_DIF_INI + j;
+    const col = j + 1;
+    const fill = j % 2 === 0 ? S.white : S.cebra;
+    const jornalReg = `INDEX(${escJ},MATCH($P$9,${keyJ},0),${col})`;
+    const formulas: Record<string, string> = {
+      C: `INDEX(${escJ},MATCH($P$7,${keyJ},0),${col})`,
+      D: `IF($P$11=1,C${r},C${r}*B${r})*$P$14`,
+      E: `INDEX(${escS},MATCH($P$8,${keyS},0),${col})`,
+      F: `IF($P$13=1,0,IF($P$12=1,${jornalReg},${jornalReg}*B${r})*$P$14)`,
+      G: `IF($P$13=1,0,INDEX(${escS},MATCH($P$10,${keyS},0),${col}))`,
+      H: `IF(Q${r}=1,D${r}-F${r},0)`,
+      I: `IF(Q${r}=1,E${r}-G${r},0)`,
+      J: `H${r}*IF(${abs(antiguedad)}+O${r}-$P$5<12,0.12,0.08)`,
+      K: `IF(Q${r}=1,"Sí","—")`,
+      M: `IF(Q${r}=1,D${r},0)`,
+      N: `IF(Q${r}=1,F${r},0)`,
+      Q: `IF(AND(O${r}>=$P$5,O${r}<=$P$6),1,0)`,
+    };
+    const a = ws.getCell(`A${r}`);
+    a.value = m.etiqueta;
+    a.fill = fill;
+    a.border = BORDE;
+    const b = celdaInput(ws, `B${r}`, 0);
+    b.value = { formula: abs(horas) };
+    b.numFmt = "0.00";
+    b.alignment = { horizontal: "right" };
+    for (const [colL, f] of Object.entries(formulas)) {
+      const c = ws.getCell(`${colL}${r}`);
+      c.value = { formula: f };
+      if ("CDEFGHIJ".includes(colL)) {
+        c.numFmt = ARS_FMT;
+        c.border = BORDE;
+        c.alignment = { horizontal: "right" };
+        c.fill = colL === "F" || colL === "G" ? S.input : colL >= "H" ? S.output : fill;
+      }
+      if (colL === "K") {
+        c.border = BORDE;
+        c.fill = fill;
+        c.alignment = { horizontal: "center" };
+      }
+    }
+    ws.getCell(`O${r}`).value = col;
+  });
+
+  // Aguinaldo: Ley 23.041, 50% de la mejor remuneración mensual del semestre, proporcional a los
+  // meses del período que caen en él. La suma no remunerativa no entra.
+  let r = filaFin + 2;
+  bandaSeccion(ws, `A${r}:H${r}`, "AGUINALDO (SAC) POR SEMESTRE");
+  r++;
+  ["Semestre", "Meses en el período", "Mejor sueldo que corresponde", "Mejor sueldo cobrado", "SAC que corresponde", "SAC cobrado", "", "Diferencia de SAC"].forEach((h, i) => {
+    if (!h) return;
+    const c = ws.getCell(r, i + 1);
+    c.value = h;
+    c.font = { bold: true, size: 10 };
+    c.fill = S.label;
+    c.border = BORDE;
+    c.alignment = { horizontal: "center", wrapText: true };
+  });
+  ws.getRow(r).height = 30;
+  const semestres = [...new Map(MESES.map((m) => [semestreDe(m).clave, semestreDe(m)])).values()];
+  const sacIni = r + 1;
+  const rngQ = `$Q$${FILA_DIF_INI}:$Q$${filaFin}`;
+  for (const s of semestres) {
+    r++;
+    // Los meses de un semestre son filas contiguas: MAX sobre su rango fijo anda en cualquier Excel.
+    const idx = MESES.map((m, j) => (semestreDe(m).clave === s.clave ? FILA_DIF_INI + j : -1)).filter((x) => x > 0);
+    const [a0, a1] = [idx[0], idx.at(-1)!];
+    ws.getCell(`A${r}`).value = s.etiqueta;
+    const f: Record<string, string> = {
+      B: `SUM(Q${a0}:Q${a1})`,
+      C: `MAX(M${a0}:M${a1})`,
+      D: `MAX(N${a0}:N${a1})`,
+      E: `C${r}/2*B${r}/6`,
+      F: `D${r}/2*B${r}/6`,
+      H: `E${r}-F${r}`,
+    };
+    for (const [colL, fx] of Object.entries(f)) {
+      const c = ws.getCell(`${colL}${r}`);
+      c.value = { formula: fx };
+      c.numFmt = colL === "B" ? "0" : ARS_FMT;
+      c.border = BORDE;
+      c.alignment = { horizontal: "right" };
+      c.fill = colL === "H" ? S.output : S.white;
+    }
+    ws.getCell(`A${r}`).border = BORDE;
+  }
+  const sacFin = r;
+
+  bandaSeccion(ws, "D4:I4", "RESULTADO DEL RECLAMO");
+  const resultado: Array<[string, string, string, boolean]> = [
+    [CELDAS_DIFERENCIAS.meses, "Meses incluidos", `SUM(${rngQ})`, false],
+    [CELDAS_DIFERENCIAS.sueldo, "Diferencias de sueldo (remunerativo)", `SUM(H${FILA_DIF_INI}:H${filaFin})`, false],
+    [CELDAS_DIFERENCIAS.snr, "Diferencias de suma no remunerativa", `SUM(I${FILA_DIF_INI}:I${filaFin})`, false],
+    [CELDAS_DIFERENCIAS.sac, "Diferencias de aguinaldo (SAC)", `SUM(H${sacIni}:H${sacFin})`, false],
+    [CELDAS_DIFERENCIAS.fondoCese, "Diferencias de fondo de cese laboral", `SUM(J${FILA_DIF_INI}:J${filaFin})`, false],
+    [CELDAS_DIFERENCIAS.total, "TOTAL ADEUDADO (sin intereses)", `I6+I7+I8+I9`, true],
+  ];
+  for (const [ref, etiqueta, f, total] of resultado) {
+    const fila = Number(ref.slice(1));
+    ws.mergeCells(`D${fila}:H${fila}`);
+    const l = ws.getCell(`D${fila}`);
+    l.value = etiqueta;
+    l.fill = total ? S.total : S.output;
+    l.border = BORDE;
+    l.alignment = { horizontal: "left", indent: 1 };
+    if (total) l.font = { bold: true };
+    const v = ws.getCell(ref);
+    v.value = { formula: f };
+    v.numFmt = ref === CELDAS_DIFERENCIAS.meses ? "0" : ARS_FMT;
+    v.fill = total ? S.total : S.output;
+    v.border = BORDE;
+    v.alignment = { horizontal: "right" };
+    if (total) v.font = { bold: true, size: 12 };
+  }
+
+  r = sacFin + 2;
+  const notas = [
+    "Cómo se calcula: sueldo = jornal de la escala × horas del mes (el sereno cobra mensual), más 20% de asistencia perfecta si corresponde (art. 52 CCT 76/75). Si tenés los recibos, pisá las columnas amarillas «Sueldo cobrado» y «No remunerativo cobrado» con lo que dice cada uno: es la forma más precisa. Si cobró algo y no figura, elegí «" + OTRO_COBRADO + "» y cargá los montos.",
+    "Horas: si en algún mes trabajó menos (o más) que el mes completo, cambiá las horas de esa fila. Las horas extra no están incluidas: van al 50% o 100% según el día.",
+    "Aguinaldo: 50% de la mejor remuneración mensual de cada semestre (Ley 23.041), proporcional a los meses del período. La suma no remunerativa no lo integra.",
+    "Fondo de cese laboral (Ley 22.250): el empleador debía depositar 12% de la remuneración durante el primer año de la relación y 8% después. Acá se calcula sobre las diferencias de sueldo de cada mes.",
+    "No incluye: intereses ni actualización (los fija el juzgado según la tasa de cada jurisdicción), las multas por registración deficiente (Ley 24.013 y Ley 25.323), indemnizaciones, vacaciones, horas extra ni los aportes que no se ingresaron. Eso lo calcula el abogado o el perito contador.",
+    "Es una herramienta de cálculo con las escalas oficiales, no asesoramiento legal. Para presentar un reclamo, llevá esta hoja a un abogado laboralista: le ahorra la parte más larga del trabajo.",
+  ];
+  for (const t of notas) {
+    nota(ws, `A${r}:K${r}`, t);
+    ws.getRow(r).height = 30;
+    r++;
+  }
+
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 export async function generarPlanillaUocra(): Promise<string> {
@@ -385,6 +655,7 @@ export async function generarPlanillaUocra(): Promise<string> {
   buildInstrucciones(wb);
   buildEscala(wb);
   buildLiquidador(wb);
+  buildDiferencias(wb);
   hojaFuentes(
     wb,
     [
@@ -394,6 +665,7 @@ export async function generarPlanillaUocra(): Promise<string> {
       UOCRA_FUENTES.cct,
       UOCRA_FUENTES.ley22250,
       UOCRA_FUENTES.uocra,
+      ...UOCRA_FUENTES_HISTORICO,
     ],
     UOCRA_FUENTES.consultadoEl,
     [UOCRA_HOMOLOGACIONES.tramo1, UOCRA_HOMOLOGACIONES.tramo2],
@@ -411,8 +683,8 @@ if (process.argv[1] && /gen_planilla_uocra\.ts$/.test(process.argv[1])) {
   generarPlanillaUocra()
     .then((salida) => {
       console.log(`Planilla UOCRA generada: ${salida}`);
-      console.log(`   Hojas: Instrucciones | ${ESC} | Liquidador | Fuentes`);
-      console.log(`   ${MESES_UOCRA.length} meses: ${MESES_UOCRA.map((m) => m.etiqueta).join(" · ")}`);
+      console.log(`   Hojas: Instrucciones | ${ESC} | Liquidador | ${HOJA_DIFERENCIAS_UOCRA} | Fuentes`);
+      console.log(`   ${MESES.length} meses: ${MESES[0].etiqueta} a ${MESES.at(-1)!.etiqueta}`);
       console.log(`   ${COMBOS} combinaciones categoría × zona`);
     })
     .catch((e) => {
