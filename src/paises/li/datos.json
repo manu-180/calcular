@@ -1,0 +1,778 @@
+{
+  "mercado": "li",
+  "datos": [
+    {
+      "id": "li.mwst-normalsatz",
+      "nombre": "Mehrwertsteuer, Normalsatz",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 8.1,
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Mehrwertsteuergesetz (MWSTG, LGBl. 2009 Nr. 330), Art. 25",
+            "url": "https://www.gesetze.li/konso/2009330000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.mwst-reduziert",
+      "nombre": "Mehrwertsteuer, reduzierter Satz",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2.6,
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Mehrwertsteuergesetz (MWSTG, LGBl. 2009 Nr. 330), Art. 25",
+            "url": "https://www.gesetze.li/konso/2009330000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.mwst-beherbergung",
+      "nombre": "Mehrwertsteuer, Sondersatz für Beherbergung",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 3.8,
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Mehrwertsteuergesetz (MWSTG, LGBl. 2009 Nr. 330), Art. 25",
+            "url": "https://www.gesetze.li/konso/2009330000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.beitraege-arbeitnehmer",
+      "nombre": "Beiträge AHV, IV und FAK des Arbeitnehmers in Prozent des Lohns",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ahv": "AHV",
+        "iv": "IV",
+        "fak": "FAK"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ahv": 4.025,
+            "iv": 0.675,
+            "fak": 0.2
+          },
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Beitragsansätze AHV / IV / FAK / VK (gültig ab 01.01.2026)",
+            "url": "https://www.ahv.li/beitraege/arbeitnehmer-arbeitgeber/beitragsansaetze-ahv-iv-fak-vk-gueltig-ab-01012021-1-1-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.beitraege-arbeitgeber",
+      "nombre": "Beiträge AHV, IV, FAK und Verwaltungskosten des Arbeitgebers in Prozent des Lohns",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ahv": "AHV",
+        "iv": "IV",
+        "fak": "FAK",
+        "vk": "Verwaltungskosten"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ahv": 4.225,
+            "iv": 0.675,
+            "fak": 1.9,
+            "vk": 0.585
+          },
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Beitragsansätze AHV / IV / FAK / VK (gültig ab 01.01.2026)",
+            "url": "https://www.ahv.li/beitraege/arbeitnehmer-arbeitgeber/beitragsansaetze-ahv-iv-fak-vk-gueltig-ab-01012021-1-1-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.alv-satz",
+      "nombre": "Beitragssatz ALV (Arbeitgeber und Arbeitnehmer zusammen)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-01-01",
+          "valor": 1.0,
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Beitragssätze ALV (gültig ab 01.01.2011)",
+            "url": "https://www.ahv.li/beitraege/arbeitnehmer-arbeitgeber/beitragssaetze-alv-gueltig-ab-01012011",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.alv-hoechstlohn",
+      "nombre": "Höchstgrenze des ALV-pflichtigen Jahreslohns",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-01-01",
+          "valor": 126000,
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Beitragssätze ALV (gültig ab 01.01.2011)",
+            "url": "https://www.ahv.li/beitraege/arbeitnehmer-arbeitgeber/beitragssaetze-alv-gueltig-ab-01012011",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.ahv-mindestrente",
+      "nombre": "Minimale monatliche AHV-Altersrente (Vollrente)",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 1225,
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Rentenhöhe der AHV",
+            "url": "https://www.ahv.li/leistungen/ahv/rentenhoehe",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.ahv-hoechstrente",
+      "nombre": "Maximale monatliche AHV-Altersrente (Vollrente)",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 2450,
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Rentenhöhe der AHV",
+            "url": "https://www.ahv.li/leistungen/ahv/rentenhoehe",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.bpv-altersbeitrag",
+      "nombre": "Mindestbeitrag an die Altersversicherung der betrieblichen Personalvorsorge, in Prozent des versicherten Lohns",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Gesetz über die betriebliche Personalvorsorge (BPVG, LGBl. 1988 Nr. 12), Art. 7 Abs. 2 und 4",
+            "url": "https://www.gesetze.li/konso/1988012000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.ferien-wochen",
+      "nombre": "Mindestferien pro Dienstjahr in Wochen",
+      "tipo": "numero",
+      "unidad": "Wochen",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "ABGB, § 1173a Art. 30 (Arbeitsvertrag)",
+            "url": "https://www.gesetze.li/konso/1003001000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.ferien-wochen-jugendliche",
+      "nombre": "Mindestferien bis zum vollendeten 20. Altersjahr in Wochen",
+      "tipo": "numero",
+      "unidad": "Wochen",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "ABGB, § 1173a Art. 30 (Arbeitsvertrag)",
+            "url": "https://www.gesetze.li/konso/1003001000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.ueberstunden-zuschlag",
+      "nombre": "Gesetzlicher Zuschlag für nicht ausgeglichene Überstunden",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1990-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "ABGB, § 1173a Art. 6 Abs. 3 (Arbeitsvertrag)",
+            "url": "https://www.gesetze.li/konso/1003001000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.kuendigungsfristen",
+      "nombre": "Gesetzliche Kündigungsfristen (Probezeit in Tagen, danach in Monaten auf ein Monatsende)",
+      "tipo": "mapa",
+      "unidad": "Monate",
+      "etiquetas": {
+        "probezeit-tage": "Probezeit (Tage)",
+        "dienstjahr-1": "1. Dienstjahr",
+        "dienstjahr-2-9": "2. bis 9. Dienstjahr",
+        "ab-dienstjahr-10": "ab 10. Dienstjahr"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-01-01",
+          "valor": {
+            "probezeit-tage": 7,
+            "dienstjahr-1": 1,
+            "dienstjahr-2-9": 2,
+            "ab-dienstjahr-10": 3
+          },
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "ABGB, § 1173a Art. 45b und 45c (Arbeitsvertrag)",
+            "url": "https://www.gesetze.li/konso/1003001000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.sperrfristen",
+      "nombre": "Sperrfristen bei Krankheit oder Unfall nach der Probezeit, in Tagen",
+      "tipo": "mapa",
+      "unidad": "Tage",
+      "etiquetas": {
+        "dienstjahr-1": "1. Dienstjahr",
+        "dienstjahr-2-5": "2. bis 5. Dienstjahr",
+        "ab-dienstjahr-6": "ab 6. Dienstjahr"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-01-01",
+          "valor": {
+            "dienstjahr-1": 30,
+            "dienstjahr-2-5": 90,
+            "ab-dienstjahr-6": 180
+          },
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "ABGB, § 1173a Art. 49 (Arbeitsvertrag)",
+            "url": "https://www.gesetze.li/konso/1003001000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.kinderzulage",
+      "nombre": "Kinderzulage pro Kind und Monat",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 310,
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Kinderzulagen",
+            "url": "https://www.ahv.li/leistungen/fak/kinderzulagen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.kinderzulage-erhoeht",
+      "nombre": "Kinderzulage ab dem 10. Altersjahr, für Zwillinge und ab dem dritten Kind, pro Kind und Monat",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 360,
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Kinderzulagen",
+            "url": "https://www.ahv.li/leistungen/fak/kinderzulagen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.alleinerziehendenzulage",
+      "nombre": "Alleinerziehendenzulage pro Kind und Monat",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 120,
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Alleinerziehendenzulagen",
+            "url": "https://www.ahv.li/leistungen/fak/alleinerziehendenzulagen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.geburtszulage",
+      "nombre": "Geburtszulage pro Kind",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2520,
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Geburtszulagen",
+            "url": "https://www.ahv.li/leistungen/fak/geburtszulagen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.geburtszulage-mehrlinge",
+      "nombre": "Geburtszulage pro Kind bei Mehrlingsgeburten",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3070,
+          "fuente": {
+            "organismo": "Liechtensteinische AHV-IV-FAK",
+            "titulo": "Geburtszulagen",
+            "url": "https://www.ahv.li/leistungen/fak/geburtszulagen",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.steuertarif-alleinstehend",
+      "nombre": "Tarif der Landessteuer für Alleinstehende",
+      "tipo": "escala",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 15855,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 15855,
+              "hasta": 21140,
+              "tasa": 1.0,
+              "cuotaFija": -0.45
+            },
+            {
+              "desde": 21140,
+              "hasta": 42280,
+              "tasa": 3.0,
+              "cuotaFija": 53.2
+            },
+            {
+              "desde": 42280,
+              "hasta": 73990,
+              "tasa": 4.0,
+              "cuotaFija": 687.2
+            },
+            {
+              "desde": 73990,
+              "hasta": 105700,
+              "tasa": 5.0,
+              "cuotaFija": 1955.5
+            },
+            {
+              "desde": 105700,
+              "hasta": 137410,
+              "tasa": 6.0,
+              "cuotaFija": 3541.0
+            },
+            {
+              "desde": 137410,
+              "hasta": 169120,
+              "tasa": 6.5,
+              "cuotaFija": 5443.65
+            },
+            {
+              "desde": 169120,
+              "hasta": 211400,
+              "tasa": 7.0,
+              "cuotaFija": 7504.4
+            },
+            {
+              "desde": 211400,
+              "hasta": null,
+              "tasa": 8.0,
+              "cuotaFija": 10464.0
+            }
+          ],
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Steuergesetz (SteG, LGBl. 2010 Nr. 340), Art. 19 Abs. 1 Bst. a",
+            "url": "https://www.gesetze.li/konso/2010340000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Gelesen in den Fassungen 01.01.2026 bis 30.06.2026 und ab 01.07.2026; gleicher Wortlaut."
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.steuertarif-alleinerziehend",
+      "nombre": "Tarif der Landessteuer für Alleinerziehende",
+      "tipo": "escala",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 23783,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 23783,
+              "hasta": 31710,
+              "tasa": 1.0,
+              "cuotaFija": -0.17
+            },
+            {
+              "desde": 31710,
+              "hasta": 63420,
+              "tasa": 3.0,
+              "cuotaFija": 79.3
+            },
+            {
+              "desde": 63420,
+              "hasta": 110985,
+              "tasa": 4.0,
+              "cuotaFija": 1030.8
+            },
+            {
+              "desde": 110985,
+              "hasta": 158550,
+              "tasa": 5.0,
+              "cuotaFija": 2933.25
+            },
+            {
+              "desde": 158550,
+              "hasta": 206115,
+              "tasa": 6.0,
+              "cuotaFija": 5311.0
+            },
+            {
+              "desde": 206115,
+              "hasta": 253680,
+              "tasa": 6.5,
+              "cuotaFija": 8165.475
+            },
+            {
+              "desde": 253680,
+              "hasta": 317100,
+              "tasa": 7.0,
+              "cuotaFija": 11256.6
+            },
+            {
+              "desde": 317100,
+              "hasta": null,
+              "tasa": 8.0,
+              "cuotaFija": 15696.0
+            }
+          ],
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Steuergesetz (SteG, LGBl. 2010 Nr. 340), Art. 19 Abs. 1 Bst. b",
+            "url": "https://www.gesetze.li/konso/2010340000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Gelesen in den Fassungen 01.01.2026 bis 30.06.2026 und ab 01.07.2026; gleicher Wortlaut."
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.steuertarif-ehegatten",
+      "nombre": "Tarif der Landessteuer für gemeinsam veranlagte Ehegatten",
+      "tipo": "escala",
+      "unidad": "CHF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 31710,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 31710,
+              "hasta": 42280,
+              "tasa": 1.0,
+              "cuotaFija": 0.1
+            },
+            {
+              "desde": 42280,
+              "hasta": 84560,
+              "tasa": 3.0,
+              "cuotaFija": 105.4
+            },
+            {
+              "desde": 84560,
+              "hasta": 147980,
+              "tasa": 4.0,
+              "cuotaFija": 1374.4
+            },
+            {
+              "desde": 147980,
+              "hasta": 211400,
+              "tasa": 5.0,
+              "cuotaFija": 3911.0
+            },
+            {
+              "desde": 211400,
+              "hasta": 274820,
+              "tasa": 6.0,
+              "cuotaFija": 7082.0
+            },
+            {
+              "desde": 274820,
+              "hasta": 338240,
+              "tasa": 6.5,
+              "cuotaFija": 10887.3
+            },
+            {
+              "desde": 338240,
+              "hasta": 422800,
+              "tasa": 7.0,
+              "cuotaFija": 15009.8
+            },
+            {
+              "desde": 422800,
+              "hasta": null,
+              "tasa": 8.0,
+              "cuotaFija": 20929.0
+            }
+          ],
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Steuergesetz (SteG, LGBl. 2010 Nr. 340), Art. 19 Abs. 1 Bst. c",
+            "url": "https://www.gesetze.li/konso/2010340000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Gelesen in den Fassungen 01.01.2026 bis 30.06.2026 und ab 01.07.2026; gleicher Wortlaut."
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.gemeindezuschlag",
+      "nombre": "Spannweite des Gemeindezuschlags in Prozent der Landessteuer",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "min": "Mindestens",
+        "max": "Höchstens"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "min": 150,
+            "max": 250
+          },
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Steuergesetz (SteG, LGBl. 2010 Nr. 340), Art. 75 Abs. 3",
+            "url": "https://www.gesetze.li/konso/2010340000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Gelesen in den Fassungen 01.01.2026 bis 30.06.2026 und ab 01.07.2026; gleicher Wortlaut."
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.gewinnungskosten-pauschale",
+      "nombre": "Pauschalabzug für Gewinnungskosten bei unselbständiger Tätigkeit",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1600,
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Steuergesetz (SteG, LGBl. 2010 Nr. 340), Art. 16 Abs. 2 Bst. c",
+            "url": "https://www.gesetze.li/konso/2010340000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Gelesen in den Fassungen 01.01.2026 bis 30.06.2026 und ab 01.07.2026; gleicher Wortlaut."
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.kinderabzug",
+      "nombre": "Abzug pro Kind",
+      "tipo": "numero",
+      "unidad": "CHF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12700,
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Steuergesetz (SteG, LGBl. 2010 Nr. 340), Art. 16 Abs. 3 Bst. a",
+            "url": "https://www.gesetze.li/konso/2010340000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Gelesen in den Fassungen 01.01.2026 bis 30.06.2026 und ab 01.07.2026; gleicher Wortlaut."
+          }
+        }
+      ]
+    },
+    {
+      "id": "li.versicherungsabzug",
+      "nombre": "Höchstabzug für Versicherungsprämien (Leben, Kranken, Unfall)",
+      "tipo": "mapa",
+      "unidad": "CHF",
+      "etiquetas": {
+        "person": "pro steuerpflichtige Person",
+        "ehegatten": "gemeinsam veranlagte Ehegatten",
+        "kind": "pro Kind"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "person": 3700,
+            "ehegatten": 7400,
+            "kind": 2200
+          },
+          "fuente": {
+            "organismo": "Lilex, Gesetzesdatenbank des Fürstentums Liechtenstein (gesetze.li)",
+            "titulo": "Steuergesetz (SteG, LGBl. 2010 Nr. 340), Art. 16 Abs. 3 Bst. d",
+            "url": "https://www.gesetze.li/konso/2010340000",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Gelesen in den Fassungen 01.01.2026 bis 30.06.2026 und ab 01.07.2026; gleicher Wortlaut."
+          }
+        }
+      ]
+    }
+  ]
+}
