@@ -402,6 +402,9 @@ export interface OpcionesHttp {
 export interface Http {
   json(url: string, opciones?: OpcionesHttp): Promise<unknown>;
   texto(url: string, opciones?: OpcionesHttp): Promise<string>;
+  // Opcional: algunas APIs de datos (PXWeb de la PSA de Filipinas) solo responden a un POST con la
+  // consulta en JSON. Un detector que lo use devuelve null si el Http no lo trae.
+  postJson?(url: string, cuerpo: unknown, opciones?: OpcionesHttp): Promise<unknown>;
 }
 
 export interface BandaSerie {

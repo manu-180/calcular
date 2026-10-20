@@ -1,5 +1,5 @@
 import { esFechaISO } from "@/motor/vigencia";
-import type { Detector, FechaISO, HallazgoNorma, Http } from "@/motor/tipos";
+import type { Detector, FechaISO, HallazgoNorma, Http, PuntoSerie } from "@/motor/tipos";
 
 const VERIFICADO: FechaISO = "2026-10-16";
 const MESES = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
@@ -55,7 +55,56 @@ async function circularesPhilhealth(http: Http, url: string): Promise<readonly H
   return vistos === 0 ? null : hallazgos;
 }
 
+const MESES_CORTOS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// PXWeb de la PSA solo devuelve datos a un POST con la consulta. Se piden todos los años y meses de
+// Philippines (Geolocation 0) y All items (Commodity 0); la respuesta json-stat trae los valores en
+// el orden de las dimensiones, con Year y Period variando más rápido al final.
+async function ipcPsa(http: Http, url: string): Promise<readonly PuntoSerie[] | null> {
+  if (!http.postJson) return null;
+  const consulta = {
+    query: [
+      { code: "Geolocation", selection: { filter: "item", values: ["0"] } },
+      { code: "Commodity Description", selection: { filter: "item", values: ["0"] } },
+      { code: "Year", selection: { filter: "all", values: ["*"] } },
+      { code: "Period", selection: { filter: "all", values: ["*"] } },
+    ],
+    response: { format: "json-stat" },
+  };
+  const r = (await http.postJson(url, consulta)) as {
+    dataset?: { dimension?: Record<string, { category?: { index?: Record<string, number>; label?: Record<string, string> } }>; value?: (number | null)[] };
+  };
+  const anios = r.dataset?.dimension?.Year?.category;
+  const periodos = r.dataset?.dimension?.Period?.category;
+  const valores = r.dataset?.value;
+  if (!anios?.index || !anios.label || !periodos?.index || !periodos.label || !Array.isArray(valores)) return null;
+  const nPeriodos = Object.keys(periodos.index).length;
+  const puntos: PuntoSerie[] = [];
+  for (const [ka, ia] of Object.entries(anios.index)) {
+    for (const [kp, ip] of Object.entries(periodos.index)) {
+      const mes = MESES_CORTOS.indexOf(periodos.label[kp]);
+      const valor = valores[ia * nPeriodos + ip];
+      if (mes < 0 || typeof valor !== "number") continue;
+      const fecha = `${anios.label[ka]}-${String(mes + 1).padStart(2, "0")}-01`;
+      if (esFechaISO(fecha)) puntos.push({ fecha, valor });
+    }
+  }
+  puntos.sort((a, b) => (a.fecha < b.fecha ? -1 : 1));
+  return puntos.length ? puntos : null;
+}
+
 export const detectores: readonly Detector[] = [
+  {
+    id: "ph.psa-cpi",
+    carril: "serie",
+    serie: "ph.cpi",
+    metodo: "api-json",
+    url: "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/2M/PI/CPI/2018NEW/0012M4ACP22.px",
+    banda: { min: 90, max: 250, saltoRelativoMax: 0.03 },
+    traer(http) {
+      return ipcPsa(http, this.url);
+    },
+  },
   {
     id: "ph.nwpc-wage-orders",
     carril: "norma",
