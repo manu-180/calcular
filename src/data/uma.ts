@@ -71,6 +71,7 @@ export type FilaUma = {
  * la CSJN. No editar a mano: correr el script.
  */
 export const SERIE_UMA: FilaUma[] = [
+  { desde: "2026-08-01", valor: 105991, resolucion: "2372/2026", resolucionFecha: "2026-09-24", docId: 182351 },
   { desde: "2026-07-01", valor: 104220, resolucion: "1930/2026", resolucionFecha: "2026-08-20", docId: 160993 },
   { desde: "2026-06-01", valor: 102076, resolucion: "1785/2026", resolucionFecha: "2026-08-03", docId: 160573 },
   { desde: "2026-05-01", valor: 100173, resolucion: "1718/2026", resolucionFecha: "2026-07-13", docId: 160400 },
