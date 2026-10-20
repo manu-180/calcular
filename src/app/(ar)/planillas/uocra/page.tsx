@@ -10,6 +10,7 @@ import {
   UOCRA_PROXIMA_PARITARIA,
   ZONAS_UOCRA,
 } from "@/data/convenios/uocra";
+import { MESES_UOCRA_HISTORICO } from "@/data/convenios/uocra-historico";
 import { textoProximaParitaria } from "@/lib/convenios";
 import { PRODUCTOS } from "@/lib/mp";
 import { openGraphDe } from "@/lib/seo";
@@ -18,7 +19,7 @@ import { hoyAR } from "@/lib/hoy";
 export const metadata: Metadata = {
   title: "Planilla de sueldos UOCRA 2026 en Excel (CCT 76/75)",
   description:
-    "Excel y Google Sheets para liquidar la construcción: jornales de UOCRA por categoría y zona, asistencia perfecta, no remunerativos y neto. Pago único.",
+    "Excel y Google Sheets para la construcción: jornales de UOCRA por categoría y zona desde junio 2024, liquidación del mes y cálculo de diferencias salariales. Pago único.",
   alternates: { canonical: "/planillas/uocra" },
   openGraph: openGraphDe({
     ruta: "/planillas/uocra",
@@ -32,6 +33,8 @@ export const metadata: Metadata = {
 // de /convenios/uocra): la previa no puede mostrar un número que la planilla no dé. Quien viene de
 // la calculadora ve su propio caso en lugar de éste.
 const MES = MESES_UOCRA.at(-1)!;
+const MESES_ARCHIVO = [...MESES_UOCRA_HISTORICO, ...MESES_UOCRA];
+const DESDE = MESES_ARCHIVO[0].etiqueta.toLowerCase();
 const CATEGORIA = CATEGORIAS_UOCRA.find((c) => c.id === "oficial")!;
 const ZONA = ZONAS_UOCRA.find((z) => z.id === "a")!;
 const EJEMPLO = hojaUocra(datosOferta("planilla-uocra").archivo, {
@@ -55,7 +58,7 @@ export default function PlanillaUocraPage() {
           <span className="text-emerald-600">de las cuatro zonas, ya cargados</span>
         </>
       }
-      bajada="La planilla de Excel y Google Sheets para la construcción. Elegís categoría, zona, mes y horas, y te da el básico, la asistencia perfecta del 20%, la suma no remunerativa y el neto. Los jornales salen de los acuerdos firmados por UOCRA y CAMARCO, no de un resumen."
+      bajada={`La planilla de Excel y Google Sheets para la construcción. Elegís categoría, zona, mes y horas, y te da el básico, la asistencia perfecta del 20%, la suma no remunerativa y el neto. Y si a alguien lo registraron en una categoría más baja, calcula lo que le deben desde ${DESDE}. Los jornales salen de los acuerdos firmados por UOCRA y CAMARCO, no de un resumen.`}
       respuestaPrimero={
         <p>
           La planilla de sueldos de UOCRA (CCT 76/75) es una hoja de{" "}
@@ -65,7 +68,9 @@ export default function PlanillaUocraPage() {
           </strong>{" "}
           ya cargados. Elegís categoría, zona, mes y horas trabajadas, y te da el{" "}
           <strong>bruto desglosado y el neto estimado</strong>, con la asistencia perfecta del 20%
-          (art. 52) y la suma no remunerativa de ese mes. Verificamos los valores el{" "}
+          (art. 52) y la suma no remunerativa de ese mes. Trae todas las escalas desde {DESDE} y una
+          hoja que calcula las <strong>diferencias salariales</strong> de quien está mal registrado:
+          sueldo, no remunerativo, aguinaldo y fondo de cese, mes por mes. Verificamos los valores el{" "}
           {UOCRA_FUENTES.consultadoEl} contra los acuerdos paritarios firmados por UOCRA y CAMARCO.
           Pago único de <strong>$14.900</strong>, con las actualizaciones del año incluidas y 7 días
           para pedir la devolución si no te sirve.
@@ -85,8 +90,12 @@ export default function PlanillaUocraPage() {
             "Elegís categoría, zona, mes y horas. Te desglosa jornal, básico del mes, asistencia perfecta, suma no remunerativa, aportes y neto. Incluye el fondo de cese laboral como referencia del costo del empleador.",
         },
         {
-          titulo: "Escala 2026",
-          descripcion: `Los jornales por hora de las ${CATEGORIAS_UOCRA.length} categorías en las ${ZONAS_UOCRA.length} zonas, mes por mes, más el sueldo mensual del sereno y la suma no remunerativa de cada combinación. ${CATEGORIAS_UOCRA.length * ZONAS_UOCRA.length * MESES_UOCRA.length * 2} valores oficiales.`,
+          titulo: "Diferencias",
+          descripcion: `Para el que cobra como ayudante y trabaja de oficial, o al revés: elegís la categoría que le corresponde, la que figura en el recibo y el período desde ${DESDE}. Te da mes por mes lo que se le debe de sueldo y no remunerativo, más el aguinaldo y el fondo de cese. Si tenés los recibos, cargás lo cobrado y queda exacto.`,
+        },
+        {
+          titulo: "Escalas",
+          descripcion: `Los jornales por hora de las ${CATEGORIAS_UOCRA.length} categorías en las ${ZONAS_UOCRA.length} zonas, mes por mes desde ${DESDE}, más el sueldo mensual del sereno y la suma no remunerativa de cada combinación. ${CATEGORIAS_UOCRA.length * ZONAS_UOCRA.length * MESES_ARCHIVO.length * 2} valores oficiales.`,
         },
         {
           titulo: "Fuentes",
@@ -121,6 +130,10 @@ export default function PlanillaUocraPage() {
         {
           q: "¿Trae las cuatro zonas o solo la mía?",
           a: `Las cuatro: Zona A, Zona B, Zona C y Zona C Austral, con el adicional por zona desfavorable ya incluido en cada jornal. Si liquidás obras en más de una provincia, cambiás el desplegable y listo.`,
+        },
+        {
+          q: "¿Sirve para reclamar diferencias salariales?",
+          a: `Sí, para eso está la hoja «Diferencias». Si un trabajador figura como ayudante o medio oficial y hace tareas de oficial, elegís las dos categorías, la zona y desde cuándo, y la planilla calcula lo que se le debe con las escalas oficiales de cada mes desde ${DESDE}: sueldo, suma no remunerativa, aguinaldo y fondo de cese. No suma intereses ni multas: eso lo define el abogado o el juzgado, pero le llevás la cuenta hecha y con las fuentes.`,
         },
         {
           q: "¿Incluye al sereno?",
