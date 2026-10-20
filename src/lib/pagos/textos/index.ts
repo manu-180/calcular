@@ -6,13 +6,14 @@ import { es } from "./es";
 import { fr } from "./fr";
 import { it } from "./it";
 import { nl } from "./nl";
+import { pl } from "./pl";
 import { pt } from "./pt";
 import type { DiccionarioVenta, TextosFamilia } from "./tipos";
 
 export { rellenar, segunTrato, type DiccionarioVenta, type TextosFamilia, type Variante } from "./tipos";
 
 // Record<Idioma, …>: un idioma nuevo en IDIOMAS no compila hasta que tenga su diccionario de venta.
-export const DICCIONARIOS: Readonly<Record<Idioma, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl };
+export const DICCIONARIOS: Readonly<Record<Idioma, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, pl };
 
 export function diccionarioVenta(idioma: Idioma): DiccionarioVenta {
   return DICCIONARIOS[idioma] ?? DICCIONARIOS.es;

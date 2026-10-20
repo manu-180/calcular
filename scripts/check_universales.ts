@@ -9,6 +9,7 @@ import { formatearFilas } from "../src/motor/formulario";
 import type { CodigoMercado, ContextoSerializado, Idioma, Moneda, ResultadoBase, TablaResultado, Trato } from "../src/motor/tipos";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe, instanciar, type ContextoUniversal } from "../src/motor/universales/tipos";
+import { problemasDeTexto } from "./reglas_idioma";
 
 const TOLERANCIA = 0.005;
 const RE_SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -43,7 +44,15 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   ],
   it: [{ mercado: "it" as CodigoMercado, pais: "IT", nombrePais: "Italia", locale: "it-IT", trato: "tu", moneda: "EUR" as Moneda, escala: 1 }],
   nl: [{ mercado: "nl" as CodigoMercado, pais: "NL", nombrePais: "Nederland", locale: "nl-NL", trato: "tu", moneda: "EUR" as Moneda, escala: 1 }],
+  pl: [
+    { mercado: "pl" as CodigoMercado, pais: "PL", nombrePais: "Polska", locale: "pl-PL", trato: "tu", moneda: "PLN" as Moneda, escala: 4 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent i Grenadyny", locale: "pl-PL", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
 };
+
+// Idiomas que corren las reglas de redacción y registro (scripts/reglas_idioma.ts) sobre toda la
+// página, ui incluida: los que entraron después del primer lote de traducciones.
+const CON_REGLAS: ReadonlySet<Idioma> = new Set<Idioma>(["pl"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy
@@ -234,6 +243,12 @@ async function main() {
         for (const t of textosVisibles(inst)) {
           if (RE_RAYA.test(t)) fallas.push(`${donde}: raya en «${t.slice(0, 60)}»`);
           if (RE_EMOJI.test(t)) fallas.push(`${donde}: emoji en «${t.slice(0, 60)}»`);
+        }
+        if (CON_REGLAS.has(idioma)) {
+          const ui = textosDeUi(u.textos[idioma]!.ui(ctx.trato, ctx.locale));
+          for (const t of new Set([...ui, ...textosVisibles(inst)])) {
+            for (const p of problemasDeTexto(t, idioma, ctx.trato)) fallas.push(`${u.id} [${ctx.locale}]: ${p} en «${t.slice(0, 70)}»`);
+          }
         }
         const vocabulario = VOCABULARIO[ctx.locale];
         if (vocabulario) {

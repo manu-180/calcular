@@ -86,6 +86,10 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     informal: [{ re: palabras("je|jij|jou|jouw|jezelf"), nombre: "je-vorm" }],
     formal: [{ re: palabras("u|uw|uzelf"), nombre: "u-vorm" }],
   },
+  // pl, sv, da, nb y fi tienen un solo registro en la web (ty, du, sinä; docs/global/IDIOMAS-EU.md):
+  // no hay formas informales que prohibir y se atrapa el formal que se cuela. Mayúscula fuera del
+  // comienzo de oración, como en alemán: «De» al comienzo en danés también es «ellos».
+  pl: { informal: [], formal: [{ re: /(?<!\p{L})(?:Pan|Pani|Pana|Panu|Panią|Państwo|Państwa|Pańsk\p{L}*)(?!\p{L})/u, nombre: "forma Pan/Pani" }] },
 };
 
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {

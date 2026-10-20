@@ -352,7 +352,7 @@ function textosDe(valor: unknown, salida: string[] = []): string[] {
   return salida;
 }
 
-const TRATOS: Record<Idioma, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"] };
+const TRATOS: Record<Idioma, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], pl: ["tu"] };
 
 // Las piezas de cada familia tienen que ser las mismas en todos los idiomas: un paso, un punto o
 // una nota que falta en un idioma es una promesa que en ese país no se cumple.
