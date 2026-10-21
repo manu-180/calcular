@@ -262,8 +262,9 @@ async function main() {
     case "informar":
       return aManuel(id, a2, "informe");
     case "nota": {
+      // envkit run pasa por cmd.exe, que escapa paréntesis y demás con ^.
       const { h } = await hilo(id);
-      const notas = [h.notas, `[${new Date().toISOString().slice(0, 16)}] ${process.argv.slice(4).join(" ")}`].filter(Boolean).join("\n");
+      const notas = [h.notas, `[${new Date().toISOString().slice(0, 16)}] ${process.argv.slice(4).join(" ").replace(/\^([()&|<>^])/g, "$1")}`].filter(Boolean).join("\n");
       await db.from("ca_soporte_hilos").update({ notas }).eq("id", id);
       return console.log(JSON.stringify({ ok: true }));
     }
