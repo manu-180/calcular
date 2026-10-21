@@ -36,7 +36,6 @@ export interface Mapa {
   (clave: string): string;
   opciones: OpcionHoja[];
   valores: string;
-  etiquetas: string;
   de(ref: string): string;
 }
 
@@ -139,7 +138,6 @@ export class Tablas {
       {
         opciones,
         valores: `${PREFIJO_TABLAS}$C$${primera}:$C$${ultima}`,
-        etiquetas: `${PREFIJO_TABLAS}$B$${primera}:$B$${ultima}`,
         de: (ref: string) => `INDEX(${PREFIJO_TABLAS}$C$${primera}:$C$${ultima},MATCH(${ref},${PREFIJO_TABLAS}$B$${primera}:$B$${ultima},0))`,
       },
     );
@@ -326,10 +324,13 @@ export class BloqueHoja {
   }
 }
 
+const COL_LISTAS = "Z";
+
 export class Hoja {
   readonly ws: ExcelJS.Worksheet;
   private fila = 3;
   private filaPaso = 4;
+  private filaLista = 1;
 
   constructor(
     private readonly libro: Libro,
@@ -409,17 +410,21 @@ export class Hoja {
     return { ref: `B${r}`, convertir: (v) => (v === null || v === undefined ? null : Number(v)) };
   }
 
-  // Con `rango`, el desplegable lista las celdas de la hoja de tablas: así una etiqueta oficial con
-  // comas (un sector, un tamaño de empresa) no se parte en dos opciones.
-  opcion(etiqueta: string, opciones: readonly OpcionHoja[], defecto: string, ayuda?: string, rango?: string): Entrada {
+  // Con `enCeldas`, el desplegable lista celdas en vez de un texto en línea: así una etiqueta oficial
+  // con comas (un sector, un tamaño de empresa) no se parte en dos opciones. Las celdas son una copia
+  // oculta en esta misma hoja: si apuntan a «Tablas oficiales», Google Sheets y Excel del celular
+  // muestran el desplegable vacío, y exceljs borra los «$» y fusiona celdas con validación idéntica,
+  // así que la segunda lee la lista corrida (le pasó a una compradora de UOCRA el 21/10/2026). Por
+  // eso cada una lleva además su propio mensaje de error.
+  opcion(etiqueta: string, opciones: readonly OpcionHoja[], defecto: string, ayuda?: string, enCeldas = false): Entrada {
     const r = this.filaEntrada(etiqueta, ayuda);
     const c = this.ws.getCell(`B${r}`);
     const def = opciones.find((o) => o.valor === defecto);
     if (!def) throw new Error(`${this.nombre}: el valor por defecto ${defecto} no está entre las opciones`);
     c.value = def.etiqueta;
     c.alignment = { horizontal: "left", indent: 1 };
-    c.dataValidation = rango
-      ? { type: "list", allowBlank: false, showErrorMessage: true, error: "Elige una opción de la lista.", formulae: [rango] }
+    c.dataValidation = enCeldas
+      ? { type: "list", allowBlank: false, showErrorMessage: true, error: `Elige una opción de la lista (${etiqueta}).`, formulae: [this.listaOculta(opciones.map((o) => o.etiqueta))] }
       : desplegable(
           opciones.map((o) => o.etiqueta),
           "Elige una opción de la lista.",
@@ -432,6 +437,15 @@ export class Hoja {
         return o.etiqueta;
       },
     };
+  }
+
+  private listaOculta(valores: readonly string[]): string {
+    const ini = this.filaLista;
+    valores.forEach((v) => {
+      this.ws.getCell(`${COL_LISTAS}${this.filaLista++}`).value = v;
+    });
+    this.ws.getColumn(COL_LISTAS).hidden = true;
+    return `'${this.nombre}'!$${COL_LISTAS}$${ini}:$${COL_LISTAS}$${this.filaLista - 1}`;
   }
 
   siNo(etiqueta: string, defecto: boolean, ayuda?: string): Entrada {
@@ -448,7 +462,7 @@ export class Hoja {
   }
 
   opcionDato(etiqueta: string, mapa: Mapa, defecto: string, ayuda?: string): Entrada {
-    return this.opcion(etiqueta, mapa.opciones, defecto, ayuda, mapa.etiquetas);
+    return this.opcion(etiqueta, mapa.opciones, defecto, ayuda, true);
   }
 
   region(etiqueta: string, tabla: PorRegion, defecto: string, ayuda?: string): Entrada {
@@ -458,7 +472,7 @@ export class Hoja {
       regiones.map((r) => ({ valor: r.id, etiqueta: r.nombre })),
       defecto,
       ayuda,
-      tabla.nombres,
+      true,
     );
   }
 
