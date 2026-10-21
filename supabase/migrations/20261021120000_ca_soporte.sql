@@ -42,4 +42,6 @@ create index if not exists ca_soporte_mensajes_msgid_idx on public.ca_soporte_me
 
 alter table public.ca_soporte_hilos enable row level security;
 alter table public.ca_soporte_mensajes enable row level security;
+alter table public.ca_soporte_hilos force row level security;
+alter table public.ca_soporte_mensajes force row level security;
 revoke all on public.ca_soporte_hilos, public.ca_soporte_mensajes from anon, authenticated;
