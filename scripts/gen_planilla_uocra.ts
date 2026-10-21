@@ -98,16 +98,21 @@ function letraCol(n: number): string {
 
 const L_MES_INI = letraCol(COL_MES_INI);
 const L_MES_FIN = letraCol(COL_MES_FIN);
+const COL_LISTA_MESES_LIQ = "G";
 
-// Con 30 meses la lista en línea pasa los 255 caracteres que acepta Excel: el desplegable apunta
-// a la fila de encabezados de la escala.
-function desplegableMeses(): ExcelJS.DataValidation {
+// Con 30 meses la lista en línea pasa los 255 caracteres que acepta Excel, así que el desplegable
+// lee una columna de la MISMA hoja. Apuntarlo a otra hoja (la fila de encabezados de «Escalas»)
+// dejaba el desplegable vacío en Google Sheets y en Excel del celular: una compradora no pudo
+// elegir junio 2024 (21/10/2026). check_planilla_uocra_diferencias.ts lo vigila.
+// Cada celda lleva su propio mensaje: con dos validaciones idénticas exceljs las junta en un solo
+// rango (B8:B9) y Google Sheets, al importar, corre una fila la lista de la segunda celda.
+function desplegableMeses(hoja: string, col: string, filaIni: number, error = "Elegí un mes de la lista."): ExcelJS.DataValidation {
   return {
     type: "list",
     allowBlank: false,
-    formulae: [`'${ESC}'!$${L_MES_INI}$${FILA_HEADER}:$${L_MES_FIN}$${FILA_HEADER}`],
+    formulae: [`'${hoja}'!${col}${filaIni}:${col}${filaIni + MESES.length - 1}`],
     showErrorMessage: true,
-    error: "Elegí un mes de la lista.",
+    error,
   };
 }
 
@@ -306,7 +311,7 @@ function buildLiquidador(wb: ExcelJS.Workbook) {
   const inputs: Array<[number, string, string | number, ExcelJS.DataValidation | null]> = [
     [5, "Categoría", "Oficial", desplegable(CATEGORIAS_UOCRA.map((c) => c.nombre), "Elegí una categoría de la lista.")],
     [6, "Zona", "Zona A", desplegable(ZONAS_UOCRA.map((z) => z.nombre), "Elegí una zona de la lista.")],
-    [7, "Mes a liquidar", MESES_UOCRA.at(-1)!.etiqueta, desplegableMeses()],
+    [7, "Mes a liquidar", MESES_UOCRA.at(-1)!.etiqueta, desplegableMeses("Liquidador", COL_LISTA_MESES_LIQ, 5)],
     [8, "Horas trabajadas en el mes", Number(UOCRA_HORAS_MES_PROMEDIO.toFixed(2)), {
       type: "decimal",
       operator: "between",
@@ -327,6 +332,12 @@ function buildLiquidador(wb: ExcelJS.Workbook) {
     }
     if (validacion) c.dataValidation = validacion;
   }
+
+  // Lista de meses para el desplegable de B7, en una columna oculta de esta misma hoja.
+  MESES.forEach((m, i) => {
+    ws.getCell(`${COL_LISTA_MESES_LIQ}${5 + i}`).value = m.etiqueta;
+  });
+  ws.getColumn(COL_LISTA_MESES_LIQ).hidden = true;
 
   // ── Auxiliares ocultos (columna D) ──
   // D5: columna del mes dentro de la grilla de la Escala.
@@ -449,8 +460,8 @@ function buildDiferencias(wb: ExcelJS.Workbook) {
     [CELDAS_DIFERENCIAS.corresponde, "Categoría que le corresponde", "Oficial", desplegable(cats, "Elegí una categoría.")],
     [CELDAS_DIFERENCIAS.registrada, "Categoría con la que figura en el recibo", "Ayudante", desplegable([...cats, OTRO_COBRADO], "Elegí una categoría o la opción de cargar lo cobrado.")],
     [CELDAS_DIFERENCIAS.zona, "Zona", "Zona A", desplegable(ZONAS_UOCRA.map((zz) => zz.nombre), "Elegí una zona.")],
-    [CELDAS_DIFERENCIAS.desde, "Desde", MESES[0].etiqueta, desplegableMeses()],
-    [CELDAS_DIFERENCIAS.hasta, "Hasta", mesActual.etiqueta, desplegableMeses()],
+    [CELDAS_DIFERENCIAS.desde, "Desde", MESES[0].etiqueta, desplegableMeses(HOJA_DIFERENCIAS_UOCRA, "A", FILA_DIF_INI, "Elegí el primer mes del reclamo.")],
+    [CELDAS_DIFERENCIAS.hasta, "Hasta", mesActual.etiqueta, desplegableMeses(HOJA_DIFERENCIAS_UOCRA, "A", FILA_DIF_INI, "Elegí el último mes del reclamo.")],
     [CELDAS_DIFERENCIAS.asistencia, "¿Le corresponde asistencia perfecta?", "Sí", desplegable(["Sí", "No"], "Elegí Sí o No.")],
     [CELDAS_DIFERENCIAS.horas, "Horas por mes (mes completo = 190,67)", Number(UOCRA_HORAS_MES_PROMEDIO.toFixed(2)), {
       type: "decimal", operator: "between", showErrorMessage: true, formulae: [0, 300],
