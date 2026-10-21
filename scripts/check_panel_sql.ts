@@ -69,8 +69,8 @@ function chequeosEstaticos() {
   const tablas = [...todo.matchAll(/create table if not exists public\.(ca_\w+)/g)].map((m) => m[1]);
   igual(
     tablas.sort(),
-    ["ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_opiniones", "ca_perfiles", "ca_resumen", "ca_resumen_mercado", "ca_tipo_cambio", "ca_vistas"],
-    "están las 11 tablas",
+    ["ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_opiniones", "ca_perfiles", "ca_resumen", "ca_resumen_mercado", "ca_soporte_hilos", "ca_soporte_mensajes", "ca_tipo_cambio", "ca_vistas"],
+    "están las 13 tablas",
   );
   for (const t of tablas) {
     ok(todo.includes(`alter table public.${t} enable row level security;`), `${t}: enable row level security`);

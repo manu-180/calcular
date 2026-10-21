@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-const CONTACTO = "manunv97@gmail.com";
+const CONTACTO = "soporte@calcular.ar";
 
 function Seccion({ id, titulo, children }: { id: string; titulo: string; children: React.ReactNode }) {
   return (

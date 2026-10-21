@@ -3,7 +3,7 @@ import type { ProductoIntl } from "./catalogo-intl";
 import { rellenar, textosVenta } from "./textos";
 
 // Mismo remitente verificado en Resend que calcular.ar; cambia sólo el nombre que ve la persona.
-export const FROM_INTL = "CalcularYa <soporte@theapexweb.com>";
+export const FROM_INTL = "CalcularYa <soporte@calcular.ar>";
 
 const MARCA = "CalcularYa";
 
