@@ -9,6 +9,7 @@
 // Correr con: npx tsx scripts/check_planilla_uocra_diferencias.ts  (o vía scripts/check-all.ts)
 
 import path from "node:path";
+import ExcelJS from "exceljs";
 import { abrirLibro } from "./evaluar_xlsx";
 import { CELDAS_DIFERENCIAS, FILA_DIF_INI, HOJA_DIFERENCIAS_UOCRA, OTRO_COBRADO } from "./gen_planilla_uocra";
 import {
@@ -93,7 +94,49 @@ const CASOS: Caso[] = [
 ];
 
 async function main() {
+  // Un desplegable que lee su lista de OTRA hoja sale vacío en Google Sheets y en Excel del
+  // celular: el 21/10/2026 una compradora no pudo elegir junio 2024 por eso.
+  const wb = new ExcelJS.Workbook();
+  await wb.xlsx.readFile(ARCHIVO);
+  const cruzados: string[] = [];
+  const largos: string[] = [];
+  let listas = 0;
+  wb.eachSheet((ws) => {
+    const modelo = (ws as unknown as { dataValidations: { model: Record<string, ExcelJS.DataValidation> } }).dataValidations.model;
+    for (const [ref, v] of Object.entries(modelo)) {
+      if (v.type !== "list") continue;
+      listas++;
+      const f = String(v.formulae?.[0] ?? "");
+      if (f.startsWith('"')) {
+        if (f.length > 255) largos.push(`${ws.name}!${ref}`);
+        continue;
+      }
+      const hoja = f.match(/^'?(.+?)'?!/)?.[1];
+      if (hoja && hoja !== ws.name) cruzados.push(`${ws.name}!${ref} → ${f}`);
+    }
+  });
+  check(`ningún desplegable lee su lista de otra hoja (${listas} desplegables)`, cruzados.length === 0, cruzados);
+  check("ninguna lista en línea pasa los 255 caracteres de Excel", largos.length === 0, largos);
+
+  // exceljs borra los «$» de la lista y junta en un rango las celdas con validación idéntica: la
+  // segunda celda queda leyendo una lista corrida (en Google Sheets «Hasta» no dejaba elegir el mes).
+  const wsD = wb.getWorksheet(H)!;
+  const errDesde = wsD.getCell(CELDAS_DIFERENCIAS.desde).dataValidation?.error;
+  const errHasta = wsD.getCell(CELDAS_DIFERENCIAS.hasta).dataValidation?.error;
+  check("«Desde» y «Hasta» tienen validaciones distintas (no se fusionan en un rango)", !!errDesde && errDesde !== errHasta, { errDesde, errHasta });
+
   const libro = await abrirLibro(ARCHIVO);
+  const opciones = (hoja: string, ref: string): string[] => {
+    const v = wb.getWorksheet(hoja)!.getCell(ref).dataValidation;
+    const m = String(v?.formulae?.[0] ?? "").match(/!\$?([A-Z]+)\$?(\d+):\$?([A-Z]+)\$?(\d+)$/);
+    if (!m) return [];
+    const out: string[] = [];
+    for (let r = Number(m[2]); r <= Number(m[4]); r++) out.push(String(wb.getWorksheet(hoja)!.getCell(`${m[1]}${r}`).value));
+    return out;
+  };
+  const etiquetas = MESES.map((mm) => mm.etiqueta).join("|");
+  for (const [hoja, ref] of [[H, CELDAS_DIFERENCIAS.desde], [H, CELDAS_DIFERENCIAS.hasta], ["Liquidador", "B7"]] as const)
+    check(`el desplegable ${hoja}!${ref} ofrece los ${MESES.length} meses, de ${MESES[0].etiqueta} a ${MESES.at(-1)!.etiqueta}`, opciones(hoja, ref).join("|") === etiquetas, opciones(hoja, ref).slice(0, 3));
   check("la planilla trae la hoja «Diferencias»", libro.hojas.includes(H), libro.hojas);
 
   const filasMes = MESES.map((m, j) => String(libro.crudo(H, `A${FILA_DIF_INI + j}`)));
