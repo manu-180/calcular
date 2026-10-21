@@ -139,8 +139,8 @@ export default function SobrePage() {
           </p>
           <p>
             ¿Encontraste un error o querés proponer una calculadora? Escribime a{" "}
-            <a href="mailto:manunv97@gmail.com" className="text-emerald-700 underline">
-              manunv97@gmail.com
+            <a href="mailto:soporte@calcular.ar" className="text-emerald-700 underline">
+              soporte@calcular.ar
             </a>{" "}
             o desde la{" "}
             <Link href="/contacto" className="text-emerald-700 underline">

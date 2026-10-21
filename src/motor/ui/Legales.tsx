@@ -6,7 +6,7 @@ import type { Idioma, Trato } from "../tipos";
 import type { ContextoSitio } from "./contexto";
 import { JsonLd, Migas } from "./Sitio";
 
-export const MAIL_CONTACTO = "manunv97@gmail.com";
+export const MAIL_CONTACTO = "soporte@calcular.ar";
 
 export function paginasLegales(idioma: Idioma, trato: Trato, locale: string): PaginasLegales {
   return resolverLegales(idioma, trato, { actualizado: formatearFecha(ACTUALIZACION_PAGINAS_GLOBALES, locale), mail: MAIL_CONTACTO }, locale);
