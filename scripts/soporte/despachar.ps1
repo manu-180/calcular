@@ -44,8 +44,9 @@ try {
         Set-Content -Path $lockMarca -Value $lock -Encoding ASCII
     }
 
-    envkit run -- npx tsx scripts/soporte/soporte.ts sincronizar 2>&1 | Out-Null
-    $pend = (envkit run -- npx tsx scripts/soporte/soporte.ts pendientes 2>$null) -join "`n"
+    # PowerShell se come un -- suelto: envkit recibiria "run npx" y fallaria con su ayuda.
+    envkit run '--' npx tsx scripts/soporte/soporte.ts sincronizar 2>&1 | Out-Null
+    $pend = (envkit run '--' npx tsx scripts/soporte/soporte.ts pendientes 2>$null) -join "`n"
     if ($LASTEXITCODE -ne 0) { L "pendientes fallo: $pend"; exit 1 }
     if ($pend.Trim() -eq "[]") { exit 0 }
 

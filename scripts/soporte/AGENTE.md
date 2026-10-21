@@ -14,7 +14,7 @@ Nunca imprimas, copies ni mandes por mail valores de variables de entorno. Nunca
 
 ## Herramientas
 
-Todas por terminal, desde la raíz del worktree:
+Todas por terminal, desde la raíz del worktree (en la herramienta Bash; si usás PowerShell, el `--` va entre comillas: `envkit run '--' npx ...`, porque PowerShell se lo come):
 
 ```
 envkit run -- npx tsx scripts/soporte/soporte.ts sincronizar
