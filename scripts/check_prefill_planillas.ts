@@ -57,7 +57,9 @@ function opcionesDe(wb: ExcelJS.Workbook, v: ExcelJS.DataValidation): string[] {
   if (!m) throw new Error(`lista de validación que no sé leer: ${f}`);
   const ws = wb.getWorksheet(m[1])!;
   const fuera: string[] = [];
-  for (let r = Number(m[3]); r <= Number(m[5]); r++) fuera.push(String(ws.getCell(`${m[2]}${r}`).value));
+  const col = (l: string) => [...l].reduce((n, ch) => n * 26 + ch.charCodeAt(0) - 64, 0);
+  for (let r = Number(m[3]); r <= Number(m[5]); r++)
+    for (let c = col(m[2]); c <= col(m[4]); c++) fuera.push(String(ws.getCell(r, c).value));
   return fuera;
 }
 

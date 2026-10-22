@@ -36,6 +36,11 @@ import {
   type ZonaUocraId,
 } from "../src/data/convenios/uocra";
 import { calcularUocra, textoProximaParitaria } from "../src/lib/convenios";
+import { MESES_UOCRA_HISTORICO } from "../src/data/convenios/uocra-historico";
+
+// El archivo trae además el histórico desde junio 2024 (hoja Diferencias): la escala se compara
+// contra los dos bloques de datos.
+const MESES_ARCHIVO = [...MESES_UOCRA_HISTORICO, ...MESES_UOCRA];
 
 const RAIZ = process.cwd();
 const ARCHIVO = path.join(RAIZ, "private", "planilla-uocra-2026.xlsx");
@@ -263,7 +268,7 @@ async function main(): Promise<void> {
     if (t) mesesArchivo.push(t);
   }
 
-  const mesesEsperados = MESES_UOCRA.map((m) => m.etiqueta);
+  const mesesEsperados = MESES_ARCHIVO.map((m) => m.etiqueta);
   const faltantes = mesesEsperados.filter((m) => !mesesArchivo.includes(m));
   const sobrantes = mesesArchivo.filter((m) => !mesesEsperados.includes(m));
 
@@ -297,7 +302,7 @@ async function main(): Promise<void> {
       if (filaJ === undefined) drift.push({ clave: claveJ, problema: "no está en el archivo" });
       if (filaS === undefined) drift.push({ clave: claveS, problema: "no está en el archivo" });
 
-      for (const mes of MESES_UOCRA) {
+      for (const mes of MESES_ARCHIVO) {
         const col = mesesArchivo.indexOf(mes.etiqueta);
         if (col === -1) continue; // ya reportado como mes faltante
         const celda = COL_MES_INI + col;
