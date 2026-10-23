@@ -411,7 +411,7 @@ async function main() {
       [...TIPOS_EVENTO].sort(),
       [
         "busqueda", "checkout", "compartir", "copiar_resultado", "cta_compra", "descarga", "dialogo_compra",
-        "error", "guardar_calculo", "imprimir", "login", "registro", "suscripcion", "vista_oferta",
+        "error", "guardar_calculo", "imprimir", "llegada", "login", "puente_clic", "puente_visto", "registro", "suscripcion", "vista_oferta",
       ],
     );
     assert.ok(esTipoEvento("checkout") && !esTipoEvento("planilla_compra_completada"));

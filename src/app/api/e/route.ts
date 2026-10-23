@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
+import { TIPOS_BOCA_A_BOCA } from "@/lib/rastreo";
 import { servicio } from "@/lib/supabase/servicio";
 import {
   claveCliente,
@@ -10,6 +11,7 @@ import {
   pais,
   sitioDeOrigen,
   validarLote,
+  type FilaEvento,
   type Lote,
 } from "./protocolo";
 
@@ -31,6 +33,7 @@ function descartar(motivo: string) {
 // cargada sin ellas quedaría contada como Argentina, así que se descarta en vez de reintentarse.
 const SIN_COLUMNA = new Set(["PGRST204", "42703"]);
 let avisoSinColumna = false;
+let avisoSinTipos = false;
 
 function sinMigracion(error: { code?: string } | null, intl: boolean): boolean {
   if (!error || !intl || !SIN_COLUMNA.has(error.code ?? "")) return false;
@@ -62,11 +65,25 @@ async function escribir(lote: Lote, intl: boolean) {
     }),
     (async () => {
       if (!lote.eventos.length) return;
-      let { error } = await db.from("ca_eventos").insert(lote.eventos).abortSignal(tope());
-      // Antes de 20261014120000 ca_eventos no tiene país: el evento vale más que el país, va sin él.
-      if (error && SIN_COLUMNA.has(error.code ?? "")) {
-        const sinPais = lote.eventos.map(({ pais: _p, ...resto }) => resto);
-        ({ error } = await db.from("ca_eventos").insert(sinPais).abortSignal(tope()));
+      const insertar = async (filas: FilaEvento[]) => {
+        let { error } = await db.from("ca_eventos").insert(filas).abortSignal(tope());
+        // Antes de 20261014120000 ca_eventos no tiene país: el evento vale más que el país, va sin él.
+        if (error && SIN_COLUMNA.has(error.code ?? "")) {
+          const sinPais = filas.map(({ pais: _p, ...resto }) => resto);
+          ({ error } = await db.from("ca_eventos").insert(sinPais).abortSignal(tope()));
+        }
+        return error;
+      };
+      let error = await insertar(lote.eventos);
+      // 23514 = CHECK de tipo: antes de 20261023130000 la base no conoce llegada ni puente_*. Un tipo
+      // desconocido tira el insert entero, así que los demás eventos del lote se reintentan sin ellos.
+      if (error?.code === "23514" && lote.eventos.some((e) => TIPOS_BOCA_A_BOCA.has(e.tipo))) {
+        if (!avisoSinTipos) {
+          avisoSinTipos = true;
+          console.warn("[api/e] falta la migración de boca en boca: se descartan llegada y puente_* hasta correrla");
+        }
+        const previos = lote.eventos.filter((e) => !TIPOS_BOCA_A_BOCA.has(e.tipo));
+        error = previos.length ? await insertar(previos) : null;
       }
       if (error && !sinMigracion(error, intl)) console.error("[api/e] ca_eventos:", error.code, error.message);
     })(),

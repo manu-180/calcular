@@ -4,6 +4,7 @@ import { textosCalculadora } from "../i18n/calculadora";
 import type { AvisoResuelto, Campo, ContextoSerializado, DefinicionCalculadora, Moneda } from "../tipos";
 import { IconoExterno } from "./Iconos";
 import { OfertaResultado } from "./Oferta";
+import { PuenteResultado } from "./PuenteResultado";
 import { TablasResultado } from "./TablaResultado";
 
 // La piel copia la de las calculadoras de calcular.ar (src/components/Calculadora*.tsx): tarjeta con
@@ -266,6 +267,7 @@ export function PielCalculadora({
           ))}
         </div>
       ) : null}
+      {estado.tipo === "ok" ? <PuenteResultado calculadora={id} concepto={control.concepto ?? null} crudos={control.crudos} contexto={contexto} /> : null}
       <OfertaResultado calculadora={id} control={control} contexto={contexto} />
     </div>
   );
