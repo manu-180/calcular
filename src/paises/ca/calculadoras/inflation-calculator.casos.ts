@@ -24,9 +24,9 @@ export default definirCasos(calculadora, [
     "nombre": "End month not published yet",
     "origen": {
       "tipo": "recalculado",
-      "detalle": "On 2026-10-14 the latest CPI is August 2026."
+      "detalle": "On 2026-08-31 the latest CPI point is August 2026."
     },
-    "fecha": "2026-10-14",
+    "fecha": "2026-08-31",
     "entrada": {
       "importe": 100,
       "desde": "2025-08-01",

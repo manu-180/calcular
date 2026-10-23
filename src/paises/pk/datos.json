@@ -1,0 +1,354 @@
+{
+  "mercado": "pk",
+  "datos": [
+    {
+      "id": "pk.salary-tax-slabs",
+      "nombre": "Income tax rates for salaried individuals, tax year 2027 (First Schedule, Part I, Division I, clause 2)",
+      "tipo": "escala",
+      "unidad": "PKR",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 600000,
+              "tasa": 0
+            },
+            {
+              "desde": 600000,
+              "hasta": 1200000,
+              "tasa": 1
+            },
+            {
+              "desde": 1200000,
+              "hasta": 2200000,
+              "tasa": 11
+            },
+            {
+              "desde": 2200000,
+              "hasta": 3200000,
+              "tasa": 20
+            },
+            {
+              "desde": 3200000,
+              "hasta": 4100000,
+              "tasa": 25
+            },
+            {
+              "desde": 4100000,
+              "hasta": 5600000,
+              "tasa": 29
+            },
+            {
+              "desde": 5600000,
+              "hasta": 7000000,
+              "tasa": 32
+            },
+            {
+              "desde": 7000000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Federal Board of Revenue",
+            "titulo": "Circular No. 02 of 2026-27: Finance Act 2026, explanation of important amendments",
+            "url": "https://download1.fbr.gov.pk/Docs/202698139527880CircularNo.2of2026-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.sales-tax",
+      "nombre": "Sales tax standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Federal Board of Revenue",
+            "titulo": "Sales Tax Act, 1990 amended up to 30.06.2026, section 3(1)",
+            "url": "https://download1.fbr.gov.pk/Docs/20267171373418951SalesTaxAct1990updatedupto30.06.2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.wht-236c",
+      "nombre": "Advance tax on sale of immovable property (section 236C)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 2.75,
+          "fuente": {
+            "organismo": "Federal Board of Revenue",
+            "titulo": "Circular No. 02 of 2026-27: Finance Act 2026, explanation of important amendments",
+            "url": "https://download1.fbr.gov.pk/Docs/202698139527880CircularNo.2of2026-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.wht-236k",
+      "nombre": "Advance tax on purchase of immovable property (section 236K)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 1.25,
+          "fuente": {
+            "organismo": "Federal Board of Revenue",
+            "titulo": "Circular No. 02 of 2026-27: Finance Act 2026, explanation of important amendments",
+            "url": "https://download1.fbr.gov.pk/Docs/202698139527880CircularNo.2of2026-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.wht-foreign-card",
+      "nombre": "Advance tax on international card payments (Division XXVII)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Federal Board of Revenue",
+            "titulo": "Circular No. 02 of 2026-27: Finance Act 2026, explanation of important amendments",
+            "url": "https://download1.fbr.gov.pk/Docs/202698139527880CircularNo.2of2026-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.profit-on-debt-bank",
+      "nombre": "Tax on profit from bank deposits (section 7B)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Federal Board of Revenue",
+            "titulo": "Income Tax Ordinance, 2001 amended up to 30.06.2026, First Schedule, Division IIIA",
+            "url": "https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.eobi-employer",
+      "nombre": "EOBI contribution by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Pakistan Code (Ministry of Law and Justice)",
+            "titulo": "Employees' Old-Age Benefits Act, 1976, sections 2(p), 9 and 9B",
+            "url": "https://pakistancode.gov.pk/pdffiles/administratorf3be1ec8d21dfebb9c5d1733f43cffe6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.eobi-employee",
+      "nombre": "EOBI contribution by the insured person",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Pakistan Code (Ministry of Law and Justice)",
+            "titulo": "Employees' Old-Age Benefits Act, 1976, sections 2(p), 9 and 9B",
+            "url": "https://pakistancode.gov.pk/pdffiles/administratorf3be1ec8d21dfebb9c5d1733f43cffe6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.minimum-wage",
+      "nombre": "Minimum wage a month (federal)",
+      "tipo": "numero",
+      "unidad": "PKR",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 40700,
+          "fuente": {
+            "organismo": "Finance Division",
+            "titulo": "Office Memorandum of 21 August 2026: minimum wage of Rs.40,700 from 1 July 2026",
+            "url": "https://www.finance.gov.pk/circulars/circular_21082026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.zakat-rate",
+      "nombre": "Rate of zakat",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-16",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Pakistan Code (Ministry of Law and Justice)",
+            "titulo": "Zakat and Ushr Ordinance, 1980, First Schedule",
+            "url": "https://pakistancode.gov.pk/pdffiles/administratorfd19eec0a97080f151dac2a8406dea88.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.nisab",
+      "nombre": "Nisab of zakat, Zakat Year 1446-1447 A.H.",
+      "tipo": "numero",
+      "unidad": "PKR",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-16",
+          "valor": 503529,
+          "fuente": {
+            "organismo": "Ministry of Poverty Alleviation and Social Safety (via State Bank of Pakistan)",
+            "titulo": "Notification of 16 February 2026: Nisab of Zakat for Zakat Year 1446-1447 A.H.",
+            "url": "https://www.sbp.org.pk/assets/documents/circulars/CL3-Notification_%282%29.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.nss-rates",
+      "nombre": "National Savings profit rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ric": "Regular Income Certificate",
+        "bsc": "Behbood Savings Certificate",
+        "ssc": "Special Savings Certificate, first five half-years",
+        "ssc3": "Special Savings Certificate, final half-year",
+        "stsc3m": "Short Term Savings Certificate, 3 months",
+        "stsc6m": "Short Term Savings Certificate, 6 months",
+        "stsc1y": "Short Term Savings Certificate, 1 year",
+        "sa": "Savings Account"
+      },
+      "proximaRevision": "2026-11-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "ric": 11.76,
+            "bsc": 12.72,
+            "ssc": 11.6,
+            "ssc3": 12.9,
+            "stsc3m": 10.8,
+            "stsc6m": 11.08,
+            "stsc1y": 11.31,
+            "sa": 10
+          },
+          "fuente": {
+            "organismo": "Central Directorate of National Savings",
+            "titulo": "Summary of NSS profit rates w.e.f. 01-10-2026",
+            "url": "https://savings.gov.pk/latest-profit-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.nss-wht-filer",
+      "nombre": "Withholding tax on National Savings profit, filer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Central Directorate of National Savings",
+            "titulo": "Summary of NSS profit rates w.e.f. 01-10-2026",
+            "url": "https://savings.gov.pk/latest-profit-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk.nss-wht-nonfiler",
+      "nombre": "Withholding tax on National Savings profit, non-filer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Central Directorate of National Savings",
+            "titulo": "Summary of NSS profit rates w.e.f. 01-10-2026",
+            "url": "https://savings.gov.pk/latest-profit-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    }
+  ]
+}
