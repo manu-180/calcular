@@ -16,7 +16,7 @@ Mundial (`PA.NUS.PRVT.PP`): monto local = bruto × PPA.
 | `src/motor/mundo/grilla.ts` | candidatos del registro, corredor de cada calculadora, validación, armado y vencimiento |
 | `src/motor/mundo/adaptadores.ts` | cómo leer las 45 calculadoras de sueldo neto de hoy (campos, pagas, impuesto aparte) |
 | `src/motor/mundo/inferir.ts` | lectura automática para un país nuevo |
-| `src/motor/mundo/traspaso.ts` | lo que la persona cargó en su calculadora, como bruto anual / 12 en sessionStorage |
+| `src/motor/mundo/traspaso.ts` | lo que la persona cargó en su calculadora, como bruto anual en sessionStorage |
 | `src/motor/mundo/supuestos.ts` | `SUPUESTOS_MUNDO`, los supuestos que muestra la página |
 | `src/motor/mundo/ppa.json` | PPA por ISO2 con su año (generado) |
 | `src/lib/mundo/grilla.ts` | `grillaMundo()` e `informeMundo()` para las páginas (server-only) |
@@ -68,11 +68,31 @@ puntos se extendieron y por qué.
 mayor al bruto en sueldos bajos. Hasta un 15 % por encima se toma carga cero (neto = bruto); más es
 un adaptador roto y el país queda afuera.
 
-**Escalones de la ley.** Una caída del neto de hasta 0,1 % se acepta (el umbral del IRP de Paraguay).
-Entre dos puntos de la grilla que encierran un escalón, la interpolación lineal se aparta del valor
-exacto: 2,6 % en México cerca de 13.000 (subsidio para el empleo), 4,9 % en Paraguay cerca de 28.000
-y 2,6 % en Hong Kong cerca de 14.000 (medido el 2026-10-23). En el resto de la grilla el error es
-menor a 0,5 %. Achicarlo es densificar la grilla, que es cambiar el contrato.
+**Escalones de la ley.** Algunos umbrales se cobran sobre todo el sueldo apenas se pasan y el neto
+baja de golpe: México pierde el subsidio para el empleo (-4,9 % cerca de 12.700 dólares
+internacionales), Paraguay empieza a pagar IRP sobre todo lo cobrado (-9,1 % cerca de 27.800) y Hong
+Kong suma el MPF (-4,9 % cerca de 14.800). Con 56 brutos fijos la interpolación se apartaba hasta
+4,9 % (medido el 2026-10-23). Desde el 2026-10-24 la grilla agrega, por país, el medio geométrico de
+cada tramo donde el error pasa 0,4 % y sigue partiendo hasta que el tramo mide menos de 0,1 %
+(`ESCALON_LEY`): ahí es un escalón vertical. `validarPuntos` acepta una caída de hasta 15 % solo entre
+dos puntos así de pegados; entre puntos alejados la tolerancia sigue en 0,1 %. Resultado: 102 puntos
+agregados en 14 países, error en el medio de cada tramo ≤ 0,5 % en todos, payload al navegador 22 KB
+(antes 21). check_mundo falla arriba de 1 %.
+
+**Privacidad del link.** La primera versión llevaba `mercado.tasa.dia.ISO.ventaja` con la tasa en
+milésimas: con la grilla pública se deducía el bruto con ±1 %. Ahora la carga se calcula en el centro
+de una franja de bruto de razón 1,25 (±10,6 % alrededor del centro), la tasa va en puntos enteros
+múltiplos de 2, la ventaja en múltiplos de 5 y el día no viaja (sale de la tasa). Redondear solo la
+tasa no alcanzaba: donde la tasa sube rápido o hace un pico, una banda de 2 puntos encierra pocos
+sueldos. check_mundo barre el bruto de cada país en pasos de 0,2 % y falla si alguna carga sale de un
+tramo de menos de ±10 %. La pantalla muestra la tasa y el día de la carga, para que tarjeta y página
+digan lo mismo. Tasa 0 solo si la calculadora no descuenta nada en el centro ni en el borde de arriba
+de la franja; la página lo dice con texto propio, no «1 de enero».
+
+**Por mes.** Antes el mes era anual / 12 y en países con 13 o 14 pagas quien escribía su recibo
+quedaba 7-14 % abajo. Ahora «por mes» es el sueldo del recibo y el anual es mes × pagas de ley del país
+(las del adaptador; España declara 14). El neto «por mes» sigue siendo el promedio de 12 meses, para
+comparar países; la ayuda del campo lo dice. El traspaso guarda el bruto anual.
 
 **PPA vieja.** Se exige 2019 o posterior y no más de 3 años detrás de la más nueva de la tabla: el
 Banco Mundial extrapola cada año a todo país con inflación medida, y uno que quedó atrás es uno donde
@@ -87,7 +107,17 @@ rehacerse solo corre los países cuyo día cambió (caché por mercado, calculad
 clave de día en UTC+14, Nueva Zelanda veía la tabla de ayer casi todo el día. Armar la grilla entera
 tarda unos 2 s en una PC (41 países × 56 brutos); por pedido es una comparación de números.
 
-**Traspaso.** `guardarTraspaso` guarda bruto anual / 12, no el sueldo mensual: `compararDesde` lo
-multiplica por 12. Lee el monto como lo tipeó la persona sin saber el locale (separador seguido de 3
-dígitos = miles) y respeta el selector de período (quincena de México, semana de Australia). Recibe la
-definición como cuarto parámetro opcional, para los países que declaran `mundo` o se infieren.
+**Traspaso.** `guardarTraspaso` guarda el bruto ANUAL y la edición principal (`ca-fr` → `ca`: el
+registro exige códigos `<país>-<idioma>` y calculadoras `<edición>.<id local>`, así el adaptador es el
+de `<principal>.<id local>`). Si el adaptador lee el bruto del resultado (`brutoResultado` o
+`brutoAnual`: CTC de India, Países Bajos con vakantiegeld o 13.º mes, Ecuador) usa el resultado del
+cálculo; si no, el campo tal como lo tipeó la persona (separador seguido de 3 dígitos = miles) con el
+selector de período y las pagas de ley. Perú necesita datos del país que el navegador no tiene y usa
+el campo con 14 pagas.
+
+**Robustez.** Cada país y cada calculadora corren dentro de un try/catch: lo que tira va a `excluidos`
+con su motivo. Si igual algo tira al armar la grilla, `informeMundo()` devuelve una grilla vacía por 10
+minutos (la página da 404 y las homes no muestran la tarjeta) y `grillaPublicada()` nunca tira.
+
+**Año de la PPA.** «Último año disponible» es el máximo de la tabla del Banco Mundial
+(`fuentePpa.anio`), no el de Argentina llevada al mes actual, que se explica en los supuestos.

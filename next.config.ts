@@ -125,6 +125,8 @@ const nextConfig: NextConfig = {
     // en runtime las ofertas, el checkout, la compra y las landings (src/lib/pagos/ofertas-servidor.ts).
     "/api/pagos/**": ["./private/intl/**/*.mapa.json"],
     "/intl/**": ["./private/intl/**/*.mapa.json"],
+    // La OG de «Tu sueldo en el mundo» lee la bandera del disco (src/app/(intl)/intl/[mercado]/_mundo/og.tsx).
+    "/intl/*/*/og": ["./public/banderas/*.svg"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
   // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.

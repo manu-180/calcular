@@ -7,7 +7,7 @@ import { hoyEn } from "../vigencia";
 import { ADAPTADORES, esExclusion, type AdaptadorMundo, type ContextoAdaptador, type ValorFijo } from "./adaptadores";
 import { BRUTOS_GRILLA } from "./calculo";
 import { inferirMundo } from "./inferir";
-import type { GrillaMundo, PaisMundo, PuntoNeto } from "./tipos";
+import type { FuentePpa, GrillaMundo, PaisMundo, PuntoNeto } from "./tipos";
 
 export interface TablaPpa {
   consultadoEl: string;
@@ -27,6 +27,13 @@ export function anioMinimoPpa(ppa: TablaPpa): number {
 }
 export const FUENTE_PPA = { organismo: "Banco Mundial", indicador: "PA.NUS.PRVT.PP", url: "https://data.worldbank.org/indicator/PA.NUS.PRVT.PP" } as const;
 
+// El año que la página muestra como «último disponible» es el de la tabla del Banco Mundial, no el de una
+// PPA que el sitio lleva al día por su cuenta (Argentina, src/lib/mundo/ar.ts).
+export function fuentePpaDe(ppa: TablaPpa): FuentePpa {
+  const anios = Object.values(ppa.paises).map((p) => p.anio);
+  return { ...FUENTE_PPA, consultadoEl: ppa.consultadoEl, anio: anios.length ? Math.max(...anios) : 0 };
+}
+
 export type MetodoMundo = "declarado" | "motor" | "inferido" | "ar";
 export type Corrida = { ok: true; neto: number } | { ok: false; motivo: string };
 
@@ -43,6 +50,8 @@ export interface CandidatoMundo {
   fecha: string;
   zonaHoraria: string;
   metodo: MetodoMundo;
+  // Sueldos que paga la ley en el año (aguinaldo, 13.º, 14.º): «por mes» en la página es el del recibo.
+  pagas: number;
   nota?: string;
   // PPA propia cuando la del Banco Mundial está congelada (Argentina): reemplaza la de la tabla.
   ppa?: { valor: number; anio: number };
@@ -63,6 +72,7 @@ export interface IncluidoMundo {
   nota?: string;
   extendidos: number;
   motivoTramoBajo?: string;
+  agregados: number;
   recortados: number;
   ms: number;
 }
@@ -246,31 +256,50 @@ export function candidatosDelRegistro(registro: Registro, ahora: Date = new Date
   const candidatos: CandidatoMundo[] = [];
   const excluidos: ExclusionMundo[] = [];
   for (const pais of registro.paises) {
-    if (!esEdicionPrincipal(pais) || !mercadoVisible(pais, "produccion")) continue;
-    const m = pais.mercado;
-    const iso = m.pais.toUpperCase();
-    const fecha = hoyEn(m, ahora);
-    const sueldos = pais.calculadoras.filter((c) => c.definicion.concepto === "sueldo-neto");
-    if (!sueldos.length) {
-      excluidos.push({ mercado: m.codigo, iso, motivo: "no tiene calculadora de sueldo neto" });
-      continue;
+    // Un país roto (datos mal cargados, una zona horaria inválida, una calculadora que tira) queda
+    // afuera con su motivo: nunca rompe la grilla ni la página de los demás.
+    try {
+      if (!esEdicionPrincipal(pais) || !mercadoVisible(pais, "produccion")) continue;
+      const r = candidatoDe(registro, pais, ahora, opciones.soloInferencia === true);
+      if (Array.isArray(r)) excluidos.push(...r);
+      else candidatos.push(r);
+    } catch (err) {
+      const codigo = String(pais?.mercado?.codigo ?? "?");
+      excluidos.push({ mercado: codigo, iso: String(pais?.mercado?.pais ?? codigo).toUpperCase(), motivo: `el país tiró una excepción: ${mensaje(err)}` });
     }
-    const motivos: ExclusionMundo[] = [];
-    let elegido: CandidatoMundo | null = null;
-    for (const entrada of sueldos) {
-      const def = entrada.definicion;
-      const a = adaptadorDe(def, opciones.soloInferencia === true);
+  }
+  return { candidatos, excluidos };
+}
+
+function candidatoDe(registro: Registro, pais: PaisDefinido, ahora: Date, soloInferencia: boolean): CandidatoMundo | ExclusionMundo[] {
+  const m = pais.mercado;
+  const iso = m.pais.toUpperCase();
+  const fecha = hoyEn(m, ahora);
+  const sueldos = pais.calculadoras.filter((c) => c.definicion.concepto === "sueldo-neto");
+  if (!sueldos.length) return [{ mercado: m.codigo, iso, motivo: "no tiene calculadora de sueldo neto" }];
+  const motivos: ExclusionMundo[] = [];
+  for (const entrada of sueldos) {
+    const def = entrada.definicion;
+    let metodo: MetodoMundo | undefined;
+    try {
+      const a = adaptadorDe(def, soloInferencia);
+      metodo = a.metodo;
       if ("motivo" in a) {
-        motivos.push({ mercado: m.codigo, iso, calculadora: def.id, metodo: a.metodo, motivo: a.motivo });
+        motivos.push({ mercado: m.codigo, iso, calculadora: def.id, metodo, motivo: a.motivo });
+        continue;
+      }
+      const pagas = a.ad.pagasAnuales ?? 12;
+      if (!(pagas >= 12 && pagas <= 16)) {
+        motivos.push({ mercado: m.codigo, iso, calculadora: def.id, metodo, motivo: `pagasAnuales ${pagas} fuera de 12 a 16` });
         continue;
       }
       const c = corredor(registro, pais, entrada, a.ad, fecha);
       if (typeof c === "string") {
-        motivos.push({ mercado: m.codigo, iso, calculadora: def.id, metodo: a.metodo, motivo: c });
+        motivos.push({ mercado: m.codigo, iso, calculadora: def.id, metodo, motivo: c });
         continue;
       }
       const nota = "nota" in a.ad && typeof a.ad.nota === "string" ? a.ad.nota : undefined;
-      elegido = {
+      return {
         mercado: m.codigo,
         iso,
         moneda: m.monedas[0],
@@ -280,16 +309,16 @@ export function candidatosDelRegistro(registro: Registro, ahora: Date = new Date
         datosVerificadosEl: c.verificadoEl,
         fecha,
         zonaHoraria: m.zonaHoraria,
-        metodo: a.metodo,
+        metodo,
+        pagas,
         ...(nota ? { nota } : {}),
         netoAnual: c.correr,
       };
-      break;
+    } catch (err) {
+      motivos.push({ mercado: m.codigo, iso, calculadora: def.id, ...(metodo ? { metodo } : {}), motivo: `la calculadora tiró una excepción al prepararla: ${mensaje(err)}` });
     }
-    if (elegido) candidatos.push(elegido);
-    else excluidos.push(...motivos);
   }
-  return { candidatos, excluidos };
+  return motivos;
 }
 
 // Redondeo de centavos al repartir el bruto en pagas y al pasar a dólares internacionales.
@@ -297,6 +326,13 @@ const TOLERANCIA_BRUTO = 1e-6;
 // Una caída del neto de hasta 0,1 % al subir el bruto se acepta: son escalones que pone la ley (el
 // umbral desde el que se paga el IRP de Paraguay), no errores del adaptador.
 const TOLERANCIA_BAJADA = 1e-3;
+// Un umbral de la ley que se cobra sobre todo el sueldo apenas se pasa (el subsidio para el empleo de
+// México, el IRP de Paraguay, el MPF de Hong Kong) baja el neto de golpe: ganar un poco más deja menos
+// en mano. Medido el 2026-10-23: MX -4,6 %, PY -8 %, HK -5 %. La grilla lo guarda como un escalón, dos
+// puntos a menos de ESCALON_LEY de distancia (densificar), y entre ellos acepta una caída de hasta
+// CAIDA_ESCALON. Una caída así entre puntos alejados sigue siendo un adaptador roto.
+export const ESCALON_LEY = 1e-3;
+const CAIDA_ESCALON = 0.15;
 // Un crédito reembolsable (trattamento integrativo de Italia, CIS de Luxemburgo) puede dejar un neto
 // mayor al bruto en sueldos bajos. Hasta este margen la grilla toma carga cero; más arriba es un
 // adaptador roto (período mal puesto) y el país queda afuera.
@@ -315,7 +351,8 @@ export function validarPuntos(puntos: readonly PuntoNeto[]): string | null {
     if (!Number.isFinite(neto) || neto <= 0) return `en ${bruto} dólares internacionales el neto da ${neto}`;
     if (neto > bruto * (1 + TOLERANCIA_BRUTO)) return `en ${bruto} dólares internacionales el neto (${neto.toFixed(2)}) supera al bruto`;
     if (neto / bruto < 0.25) return `en ${bruto} dólares internacionales el neto es el ${((neto / bruto) * 100).toFixed(1)} % del bruto (mínimo 25 %)`;
-    if (i > 0 && neto < puntos[i - 1].neto * (1 - TOLERANCIA_BAJADA))
+    const escalon = i > 0 && bruto / puntos[i - 1].bruto < 1 + ESCALON_LEY;
+    if (i > 0 && neto < puntos[i - 1].neto * (1 - (escalon ? CAIDA_ESCALON : TOLERANCIA_BAJADA)))
       return `el neto baja de ${puntos[i - 1].neto.toFixed(2)} a ${neto.toFixed(2)} al pasar de ${puntos[i - 1].bruto} a ${bruto} dólares internacionales`;
   }
   return null;
@@ -327,23 +364,52 @@ export interface PuntosCorridos {
   // Puntos del tramo bajo extendidos desde el primero válido, con el motivo del primer rechazo.
   extendidos: number;
   motivoTramoBajo?: string;
+  // Puntos propios del país agregados entre dos BRUTOS_GRILLA (densificar).
+  agregados: number;
   // Puntos donde un crédito reembolsable dejaba el neto por encima del bruto y se tomó carga cero.
   recortados: number;
 }
 
+// Corre la calculadora en un bruto en dólares internacionales y aplica la regla de los créditos.
+function correrEn(c: CandidatoMundo, ppa: number, bruto: number) {
+  const r = c.netoAnual(bruto * ppa);
+  const donde = `en ${bruto} dólares internacionales (${Math.round(bruto * ppa)} ${c.moneda} al año)`;
+  if (!r.ok) return { bruto, ok: false as const, motivo: `${donde}: ${r.motivo}` };
+  let neto = r.neto / ppa;
+  let credito = false;
+  if (neto > bruto && neto <= bruto * (1 + MARGEN_CREDITO)) {
+    credito = neto > bruto * (1 + REDONDEO);
+    neto = bruto;
+  }
+  return { bruto, ok: true as const, neto: Math.round(neto * 100) / 100, credito };
+}
+
+// Entre dos puntos que encierran un escalón de la ley (el subsidio para el empleo de México, el umbral
+// del IRP de Paraguay) la interpolación lineal se aparta de la calculadora. Se agrega el medio
+// geométrico mientras el error ahí pase este margen; check_mundo mide ese mismo punto medio en cada
+// tramo final y falla arriba de 1 %. Un tramo más angosto que ESCALON_LEY ya es un escalón (el salto
+// de un umbral) y no se parte más: así un salto cuesta unas 7 corridas y no infinitas.
+export const ERROR_INTERPOLACION = 0.004;
+
+function densificar(c: CandidatoMundo, ppa: number, puntos: readonly PuntoNeto[], desde: number): PuntoNeto[] {
+  const refinar = (a: PuntoNeto, b: PuntoNeto, nivel: number): PuntoNeto[] => {
+    if (nivel >= 12 || b.bruto / a.bruto < 1 + ESCALON_LEY) return [];
+    const bruto = Math.round(Math.sqrt(a.bruto * b.bruto));
+    if (bruto <= a.bruto || bruto >= b.bruto) return [];
+    const r = correrEn(c, ppa, bruto);
+    if (!r.ok || !(r.neto > 0)) return [];
+    const lineal = a.neto + ((bruto - a.bruto) / (b.bruto - a.bruto)) * (b.neto - a.neto);
+    if (Math.abs(lineal - r.neto) / r.neto <= ERROR_INTERPOLACION) return [];
+    const p = { bruto, neto: r.neto };
+    return [...refinar(a, p, nivel + 1), p, ...refinar(p, b, nivel + 1)];
+  };
+  const salida: PuntoNeto[] = puntos.slice(0, desde + 1);
+  for (let i = desde; i < puntos.length - 1; i++) salida.push(...refinar(puntos[i], puntos[i + 1], 0), puntos[i + 1]);
+  return salida;
+}
+
 export function puntosDe(c: CandidatoMundo, ppa: number): PuntosCorridos | { ok: false; motivo: string } {
-  const corridas = BRUTOS_GRILLA.map((bruto) => {
-    const r = c.netoAnual(bruto * ppa);
-    const donde = `en ${bruto} dólares internacionales (${Math.round(bruto * ppa)} ${c.moneda} al año)`;
-    if (!r.ok) return { bruto, ok: false as const, motivo: `${donde}: ${r.motivo}` };
-    let neto = r.neto / ppa;
-    let credito = false;
-    if (neto > bruto && neto <= bruto * (1 + MARGEN_CREDITO)) {
-      credito = neto > bruto * (1 + REDONDEO);
-      neto = bruto;
-    }
-    return { bruto, ok: true as const, neto: Math.round(neto * 100) / 100, credito };
-  });
+  const corridas = BRUTOS_GRILLA.map((bruto) => correrEn(c, ppa, bruto));
   let primerMotivo: string | null = null;
   for (let k = 0; k < corridas.length && corridas[k].bruto < TECHO_TRAMO_BAJO; k++) {
     const resto = corridas.slice(k);
@@ -355,7 +421,11 @@ export function puntosDe(c: CandidatoMundo, ppa: number): PuntosCorridos | { ok:
     const proporcion = puntos[0].neto / puntos[0].bruto;
     const extendidos = BRUTOS_GRILLA.slice(0, k).map((b) => ({ bruto: b, neto: Math.round(b * proporcion * 100) / 100 }));
     const recortados = resto.filter((x) => x.ok && x.credito).length;
-    return { ok: true, puntos: [...extendidos, ...puntos], extendidos: k, recortados, ...(k && primerMotivo ? { motivoTramoBajo: primerMotivo } : {}) };
+    const base = [...extendidos, ...puntos];
+    // Si lo agregado no valida (un punto nuevo que baja más de lo tolerado), la grilla queda como estaba.
+    const densa = densificar(c, ppa, base, k);
+    const final = densa.length > base.length && !validarPuntos(densa) ? densa : base;
+    return { ok: true, puntos: final, extendidos: k, agregados: final.length - base.length, recortados, ...(k && primerMotivo ? { motivoTramoBajo: primerMotivo } : {}) };
   }
   return { ok: false, motivo: primerMotivo ?? "ningún bruto de la grilla dio resultado" };
 }
@@ -409,6 +479,7 @@ export function construirGrillaMundo(entrada: {
       moneda: c.moneda,
       ppa: dato.valor,
       anioPpa: dato.anio,
+      pagas: c.pagas,
       calculadora: c.calculadora,
       ruta: c.ruta,
       sitio: c.sitio,
@@ -422,6 +493,7 @@ export function construirGrillaMundo(entrada: {
       ...(c.nota ? { nota: c.nota } : {}),
       extendidos: r.extendidos,
       ...(r.motivoTramoBajo ? { motivoTramoBajo: r.motivoTramoBajo } : {}),
+      agregados: r.agregados,
       recortados: r.recortados,
       ms: Date.now() - t0,
     });
@@ -433,7 +505,7 @@ export function construirGrillaMundo(entrada: {
     grilla: {
       version: 1,
       generadoEl: entrada.generadoEl,
-      fuentePpa: { ...FUENTE_PPA, consultadoEl: entrada.ppa.consultadoEl },
+      fuentePpa: fuentePpaDe(entrada.ppa),
       paises,
     },
     incluidos,

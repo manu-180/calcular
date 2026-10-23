@@ -5,15 +5,11 @@ import { rastrear } from "../compartir/medir";
 import { IconoCompartir } from "../compartir/iconos";
 import { variantePuente, type VariantePuente } from "../compartir/ref";
 import { textosCompartir } from "../i18n/compartir";
-import { rutaMundo } from "../mundo/rutas";
+import { PAISES_PUENTE, rutaMundo } from "../mundo/rutas";
 import { guardarTraspaso } from "../mundo/traspaso";
 import type { ContextoSerializado, DefinicionCalculadora } from "../tipos";
 import { IconoFlecha } from "./Iconos";
 import "./estilos-compartir.css";
-
-// Cuántos países dice la línea-puente. Es un piso, no la cuenta exacta: sube cuando entren más
-// calculadoras de sueldo neto (hoy son 45) y nunca puede quedar por encima de las que hay.
-const PAISES_PUENTE = 40;
 
 // El menú y el share se bajan al aparecer el primer resultado, nunca con la carga de la página.
 const BotonCompartir = lazy(() => import("../compartir/BotonCompartir"));
@@ -43,12 +39,16 @@ export function PuenteResultado({
   crudos,
   contexto,
   leible,
+  resultado,
 }: {
   calculadora: string;
   concepto: string | null;
   crudos: Readonly<Record<string, unknown>>;
   leible?: Pick<DefinicionCalculadora, "campos" | "resultado" | "mundo"> | null;
   contexto: ContextoSerializado;
+  // El resultado del cálculo: donde el bruto anual sale de ahí (CTC de India, 13.º mes de Países Bajos),
+  // el traspaso usa ese número y no el campo.
+  resultado?: Readonly<Record<string, unknown>>;
 }) {
   const t = useMemo(() => textosCompartir(contexto.idioma, contexto.trato, contexto.locale), [contexto.idioma, contexto.trato, contexto.locale]);
   const esSueldo = concepto === "sueldo-neto";
@@ -67,7 +67,7 @@ export function PuenteResultado({
 
   const mostrarPuente = variante === "con";
   const alIrAlMundo = () => {
-    guardarTraspaso(contexto.mercado, calculadora, crudos, leible ?? undefined);
+    guardarTraspaso({ mercado: contexto.mercado, calculadora, crudos, definicion: leible ?? undefined, resultado });
     rastrear("puente_clic", { props: { v: "con" } });
   };
 

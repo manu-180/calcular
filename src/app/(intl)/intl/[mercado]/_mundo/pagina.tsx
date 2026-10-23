@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { textosMundo } from "@/motor/i18n/mundo";
-import { decodificarCarga } from "@/motor/mundo/calculo";
+import { codificarCarga, diaDeCarga, normalizarCarga } from "@/motor/mundo/calculo";
 import { SLUG_MUNDO } from "@/motor/mundo/rutas";
-import type { CargaCompartida } from "@/motor/mundo/tipos";
+import type { CargaCompartida, GrillaMundo } from "@/motor/mundo/tipos";
 import { PaginaMundo } from "@/motor/mundo/ui/PaginaMundo";
 import { hreflangMundo, urlMundo } from "@/motor/mundo/ui/seo";
-import { elegirTitulo, hreflangVaAlSitemap, metadataDe } from "@/motor/seo";
+import { elegirTitulo, hreflangVaAlSitemap, metadataDe, rutaIntl } from "@/motor/seo";
 import type { CodigoMercado, Idioma } from "@/motor/tipos";
 import { contextoSitio, type ContextoSitio } from "@/motor/ui/contexto";
 import { registro } from "@/paises";
@@ -20,13 +20,20 @@ import { grillaPublicada } from "./datos";
 
 type Props = { params: Promise<{ mercado: string; c?: string[] }> };
 
-function resolver(idioma: Idioma, mercado: string, c: string[] | undefined): { ctx: ContextoSitio; carga: CargaCompartida | null } | null {
+type Resuelto = { ctx: ContextoSitio; grilla: GrillaMundo; carga: CargaCompartida | null; canonica: boolean };
+
+// El `c` llega ya decodificado por Next y la forma canónica solo usa [a-zA-Z0-9.-]: nada que
+// decodificar de nuevo (un decodeURIComponent sobre «%» tiraba y daba 500). Una carga válida que no
+// está en su forma canónica (mayúsculas, ceros a la izquierda, fuera de la escala redondeada) va con
+// 308 a la canónica; una inválida es 404. Así cada tarjeta tiene una sola URL en caché.
+async function resolver(idioma: Idioma, mercado: string, c: string[] | undefined): Promise<Resuelto | null> {
   const ctx = contextoSitio(registro, mercado as CodigoMercado);
   if (!ctx || ctx.mercado.idioma !== idioma) return null;
-  if (!c?.length) return { ctx, carga: null };
+  const grilla = await grillaPublicada();
+  if (!c?.length) return { ctx, grilla, carga: null, canonica: true };
   if (c.length > 1) return null;
-  const carga = decodificarCarga(decodeURIComponent(c[0]));
-  return carga ? { ctx, carga } : null;
+  const n = normalizarCarga(c[0], grilla);
+  return n ? { ctx, grilla, carga: n.carga, canonica: n.canonica } : null;
 }
 
 function fechaCorta(dia: number, anio: number, locale: string): string {
@@ -47,12 +54,12 @@ export function crearPaginaMundo(idioma: Idioma) {
 
   async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { mercado, c } = await params;
-    const r = resolver(idioma, mercado, c);
-    if (!r) return {};
+    const r = await resolver(idioma, mercado, c);
+    if (!r || !r.canonica) return {};
     const m = r.ctx.mercado;
     const t = textosMundo(m.idioma, m.trato, m.locale);
-    const grilla = await grillaPublicada();
-    const n = grilla.paises.length;
+    const n = r.grilla.paises.length;
+    const codigo = r.carga ? codificarCarga(r.carga) : null;
     const title = elegirTitulo(m.codigo === "global" ? t.seo.tituloGlobal : t.seo.titulo(m.nombre));
     const description = m.codigo === "global" ? t.seo.descripcionGlobal(n) : t.seo.descripcion(m.nombre, n);
     const idiomas = hreflangMundo(registro, r.ctx.modo);
@@ -63,27 +70,27 @@ export function crearPaginaMundo(idioma: Idioma) {
       title,
       description,
       ...(idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}),
-      imagen: `${base}/og${r.carga ? `?c=${encodeURIComponent(c![0])}` : ""}`,
+      imagen: `${base}/og${codigo ? `?c=${codigo}` : ""}`,
     });
     if (!r.carga) return meta;
     // El duelo no se indexa (canonical a la página) y su vista previa es la tarjeta del amigo.
     const anio = Number(r.ctx.fecha.slice(0, 4));
-    const titulo = t.tarjeta.texto(fechaCorta(r.carga.dia, anio, m.locale));
+    const dia = diaDeCarga(r.carga, anio);
+    const titulo = dia > 0 ? t.tarjeta.texto(fechaCorta(dia, anio, m.locale)) : t.cero.texto;
     return {
       ...meta,
       title: { absolute: titulo },
       robots: { index: false, follow: true },
-      openGraph: { ...meta.openGraph, url: `${base}/${c![0]}`, title: titulo },
+      openGraph: { ...meta.openGraph, url: `${base}/${codigo}`, title: titulo },
     };
   }
 
   async function Pagina({ params }: Props) {
     const { mercado, c } = await params;
-    const r = resolver(idioma, mercado, c);
-    if (!r) notFound();
-    const grilla = await grillaPublicada();
-    if (!grilla.paises.length) notFound();
-    return <PaginaMundo ctx={r.ctx} grilla={grilla} carga={r.carga} />;
+    const r = await resolver(idioma, mercado, c);
+    if (!r || !r.grilla.paises.length) notFound();
+    if (r.carga && !r.canonica) permanentRedirect(rutaIntl(r.ctx.mercado.codigo, `${slug}/${codificarCarga(r.carga)}`));
+    return <PaginaMundo ctx={r.ctx} grilla={r.grilla} carga={r.carga} />;
   }
 
   return { generateStaticParams, generateMetadata, Pagina };

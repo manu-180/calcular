@@ -85,6 +85,7 @@ export function candidatoAr(registro: Registro, tabla: TablaPpa): CandidatoMundo
     datosVerificadosEl: (fechas as string[]).sort()[0],
     fecha: hoyAR(),
     zonaHoraria: "America/Argentina/Buenos_Aires",
+    pagas: PAGAS_AR,
     nota: `13 pagas con el SAC. Aportes del 17 % con tope SIPA y Ganancias estimada sobre el año, sin cuota sindical.${ppa.llevada ? ` PPA del Banco Mundial de ${ppa.llevada.anioBase} llevada a ${ppa.llevada.mes} con el IPC del INDEC y el CPI-U del BLS.` : ""}`,
     ppa: { valor: ppa.valor, anio: ppa.anio },
     netoAnual: (brutoAnual: number): Corrida => {
