@@ -52,12 +52,12 @@ export type Resuelto<T> = T extends string
 const esVariante = (v: object): v is { tu: string; usted: string; vos?: string } =>
   typeof (v as { tu?: unknown }).tu === "string" && typeof (v as { usted?: unknown }).usted === "string";
 
-export function resolver<T>(valor: T, trato: Trato): Resuelto<T> {
+export function resolverTrato<T>(valor: T, trato: Trato): Resuelto<T> {
   if (valor === null || typeof valor !== "object") return valor as Resuelto<T>;
-  if (Array.isArray(valor)) return valor.map((x) => resolver(x, trato)) as Resuelto<T>;
+  if (Array.isArray(valor)) return valor.map((x) => resolverTrato(x, trato)) as Resuelto<T>;
   if (esVariante(valor)) return (trato === "vos" ? (valor.vos ?? valor.tu) : valor[trato]) as Resuelto<T>;
   const salida: Record<string, unknown> = {};
-  for (const [k, v] of Object.entries(valor)) salida[k] = resolver(v, trato);
+  for (const [k, v] of Object.entries(valor)) salida[k] = resolverTrato(v, trato);
   return salida as Resuelto<T>;
 }
 
@@ -68,17 +68,17 @@ export const FAMILIAS_POR_LOCALE: Readonly<Record<string, Partial<Record<ClaveFa
 
 export function textosFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato, locale?: string): FamiliaResuelta {
   const regional = locale ? FAMILIAS_POR_LOCALE[locale]?.[clave] : undefined;
-  return resolver(regional ?? diccionarioVenta(idioma, locale).familias[clave], trato);
+  return resolverTrato(regional ?? diccionarioVenta(idioma, locale).familias[clave], trato);
 }
 
 export function textosVenta(idioma: Idioma, trato: Trato, locale?: string): Resuelto<Omit<DiccionarioVenta, "familias">> {
   const { familias: _familias, ...resto } = diccionarioVenta(idioma, locale);
-  return resolver(resto, trato);
+  return resolverTrato(resto, trato);
 }
 
 export function textosTarjeta(idioma: Idioma, trato: Trato, locale?: string): TextosTarjeta {
   const d = diccionarioVenta(idioma, locale);
-  return { ...resolver(d.tarjeta, trato), ...d.general, aviso: resolver(d.aviso, trato) };
+  return { ...resolverTrato(d.tarjeta, trato), ...d.general, aviso: resolverTrato(d.aviso, trato) };
 }
 
 export function copyFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato, locale?: string): CopyTarjeta {
@@ -88,6 +88,6 @@ export function copyFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato, l
 
 export function copyPlanilla(idioma: Idioma, trato: Trato, locale?: string): CopyTarjeta {
   const d = diccionarioVenta(idioma, locale);
-  const p = resolver(d.planilla, trato);
+  const p = resolverTrato(d.planilla, trato);
   return { nombre: d.tarjeta.cejaPlanilla, gancho: p.gancho, incluye: p.incluye };
 }
