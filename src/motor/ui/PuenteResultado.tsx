@@ -7,7 +7,7 @@ import { variantePuente, type VariantePuente } from "../compartir/ref";
 import { textosCompartir } from "../i18n/compartir";
 import { rutaMundo } from "../mundo/rutas";
 import { guardarTraspaso } from "../mundo/traspaso";
-import type { ContextoSerializado } from "../tipos";
+import type { ContextoSerializado, DefinicionCalculadora } from "../tipos";
 import { IconoFlecha } from "./Iconos";
 import "./estilos-compartir.css";
 
@@ -42,10 +42,12 @@ export function PuenteResultado({
   concepto,
   crudos,
   contexto,
+  leible,
 }: {
   calculadora: string;
   concepto: string | null;
   crudos: Readonly<Record<string, unknown>>;
+  leible?: Pick<DefinicionCalculadora, "campos" | "resultado" | "mundo"> | null;
   contexto: ContextoSerializado;
 }) {
   const t = useMemo(() => textosCompartir(contexto.idioma, contexto.trato, contexto.locale), [contexto.idioma, contexto.trato, contexto.locale]);
@@ -65,7 +67,7 @@ export function PuenteResultado({
 
   const mostrarPuente = variante === "con";
   const alIrAlMundo = () => {
-    guardarTraspaso(contexto.mercado, calculadora, crudos);
+    guardarTraspaso(contexto.mercado, calculadora, crudos, leible ?? undefined);
     rastrear("puente_clic", { props: { v: "con" } });
   };
 
