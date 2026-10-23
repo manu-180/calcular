@@ -494,6 +494,22 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     pasos: { titulo: "开发票之前", items: ["确认您的商品或服务适用哪档税率，或是否免税。", "需要时，在发票上分开列出不含税金额和税额。", "把这份报告和发票一起保存。"] },
     escenarios: OTROS_MONTOS,
   },
+  "informe-calculo": {
+    nombre: "计算报告",
+    tituloCorto: "计算报告",
+    paraQuien: "想把这次计算连同您的数字、前提假设和每个官方数值的出处，留下书面记录的您",
+    descripcion: [
+      "一份把您刚才的计算，用您的数据逐步整理的 PDF 报告：结果、计算的前提假设，以及用到的每个官方数值，附上出处和核对日期。",
+      "可以存档，也可以交给会计师、雇主或需要核对的人，不用再解释每个数字从哪来。",
+    ],
+    gancho: "把这次计算留成书面记录，附上出处",
+    incluye: [
+      { titulo: "用您的数据算出的结果", texto: "和您算的完全一样，可直接打印。" },
+      { titulo: "怎么算", texto: "步骤和前提假设，看清每个数字的来源。" },
+      { titulo: "官方出处", texto: "每个数值都附上发布机构、链接和核对日期。" },
+    ],
+    pasos: { titulo: "使用之前", items: ["确认上方的数据是您的：结果取决于这些数字。", "官方数值有变动就重新计算：报告采用购买当天有效的数值。"] },
+  },
 };
 
 export const zhHans: DiccionarioVenta = {
