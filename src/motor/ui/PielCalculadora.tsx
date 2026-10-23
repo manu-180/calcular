@@ -271,7 +271,7 @@ export function PielCalculadora({
           ))}
         </div>
       ) : null}
-      {estado.tipo === "ok" && !enEmbed ? <PuenteResultado calculadora={id} concepto={control.concepto ?? null} crudos={control.crudos} contexto={contexto} leible={control.leible} /> : null}
+      {estado.tipo === "ok" && !enEmbed ? <PuenteResultado calculadora={id} concepto={control.concepto ?? null} crudos={control.crudos} contexto={contexto} leible={control.leible} resultado={estado.resultado} /> : null}
       <OfertaResultado calculadora={id} control={control} contexto={contexto} />
     </div>
   );

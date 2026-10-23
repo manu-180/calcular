@@ -331,14 +331,7 @@ function Compartir({ t, url, imagen, texto, duelo }: { t: TextosCliente; url: st
     url,
     titulo: t.tarjeta.titulo2,
     texto,
-    imagen: async () => {
-      try {
-        const r = await fetch(imagen);
-        return r.ok ? await r.blob() : null;
-      } catch {
-        return null;
-      }
-    },
+    imagen,
   });
   const aviso = estado === "copiado" ? t.tarjeta.copiado : estado === "compartido" ? t.tarjeta.compartido : estado === "error" ? t.tarjeta.error : "";
   return (
