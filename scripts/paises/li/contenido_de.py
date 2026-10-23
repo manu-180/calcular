@@ -54,7 +54,7 @@ CONTENIDO = {
     "steuerrechner": {
         "h1": "Steuerrechner Liechtenstein: Landes- und Gemeindesteuer",
         "title": "Steuerrechner Liechtenstein: Erwerbssteuer 2026",
-        "description": "Erwerbssteuer in Liechtenstein nach dem Tarif des Steuergesetzes: Landessteuer von 1 bis 8 % plus Gemeindezuschlag, für Alleinstehende, Alleinerziehende und Ehepaare.",
+        "description": "Erwerbssteuer in Liechtenstein nach dem Steuergesetz: Landessteuer von 1 bis 8 % plus Gemeindezuschlag, für Alleinstehende, Alleinerziehende, Ehepaare.",
         "intro": [
             "Der Tarif der Landessteuer steigt in Stufen von 1 bis 8 %. Dazu kommt der Zuschlag Ihrer Wohngemeinde.",
             "Es gibt drei Tarife: für Alleinstehende, für Alleinerziehende und für gemeinsam veranlagte Ehegatten.",
@@ -178,7 +178,7 @@ CONTENIDO = {
     "ferienrechner": {
         "h1": "Ferienanspruch in Liechtenstein berechnen",
         "title": "Ferienrechner Liechtenstein: Ferienanspruch",
-        "description": "Wie viele Ferientage stehen Ihnen in Liechtenstein zu? Mindestens {{li.ferien-wochen}} Wochen, bis zum vollendeten 20. Altersjahr {{li.ferien-wochen-jugendliche}} Wochen, anteilig bei Ein- und Austritt.",
+        "description": "Wie viele Ferientage stehen Ihnen in Liechtenstein zu? Mindestens {{li.ferien-wochen}} Wochen, bis 20 Jahre {{li.ferien-wochen-jugendliche}} Wochen, anteilig bei Ein- und Austritt.",
         "intro": [
             "Der Arbeitgeber muss jedes Dienstjahr mindestens {{li.ferien-wochen}} Wochen Ferien gewähren. Bis zum vollendeten 20. Altersjahr sind es {{li.ferien-wochen-jugendliche}} Wochen.",
             "Für ein unvollständiges Dienstjahr gibt es Ferien im Verhältnis zur Dauer des Arbeitsverhältnisses.",

@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "li.steuerrechner",
   h1: "Steuerrechner Liechtenstein: Landes- und Gemeindesteuer",
   title: "Steuerrechner Liechtenstein: Erwerbssteuer 2026",
-  description: "Erwerbssteuer in Liechtenstein nach dem Tarif des Steuergesetzes: Landessteuer von 1 bis 8 % plus Gemeindezuschlag, für Alleinstehende, Alleinerziehende und Ehepaare.",
+  description: "Erwerbssteuer in Liechtenstein nach dem Steuergesetz: Landessteuer von 1 bis 8 % plus Gemeindezuschlag, für Alleinstehende, Alleinerziehende, Ehepaare.",
   intro: [
     "Der Tarif der Landessteuer steigt in Stufen von 1 bis 8 %. Dazu kommt der Zuschlag Ihrer Wohngemeinde.",
     "Es gibt drei Tarife: für Alleinstehende, für Alleinerziehende und für gemeinsam veranlagte Ehegatten.",

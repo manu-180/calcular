@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "li.ferienrechner",
   h1: "Ferienanspruch in Liechtenstein berechnen",
   title: "Ferienrechner Liechtenstein: Ferienanspruch",
-  description: "Wie viele Ferientage stehen Ihnen in Liechtenstein zu? Mindestens {{li.ferien-wochen}} Wochen, bis zum vollendeten 20. Altersjahr {{li.ferien-wochen-jugendliche}} Wochen, anteilig bei Ein- und Austritt.",
+  description: "Wie viele Ferientage stehen Ihnen in Liechtenstein zu? Mindestens {{li.ferien-wochen}} Wochen, bis 20 Jahre {{li.ferien-wochen-jugendliche}} Wochen, anteilig bei Ein- und Austritt.",
   intro: [
     "Der Arbeitgeber muss jedes Dienstjahr mindestens {{li.ferien-wochen}} Wochen Ferien gewähren. Bis zum vollendeten 20. Altersjahr sind es {{li.ferien-wochen-jugendliche}} Wochen.",
     "Für ein unvollständiges Dienstjahr gibt es Ferien im Verhältnis zur Dauer des Arbeitsverhältnisses.",
