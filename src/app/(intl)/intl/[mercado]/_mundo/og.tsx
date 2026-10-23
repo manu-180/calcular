@@ -71,7 +71,28 @@ function Marca({ tam }: { tam: number }) {
   );
 }
 
-function BanderaOChip({ iso, ancho }: { iso: string; ancho: number }) {
+// BanderaPlana solo dibuja las de LATAM: el resto sale del mismo SVG de public/banderas que usa el
+// sitio, pedido al propio origen (los archivos de public no viajan dentro de la función).
+async function banderaDe(iso: string, base: string): Promise<string | null> {
+  if (!/^[A-Z]{2}$/.test(iso)) return null;
+  try {
+    const r = await fetch(new URL(`/banderas/${iso.toLowerCase()}.svg`, base), { signal: AbortSignal.timeout(2500) });
+    if (!r.ok) return null;
+    return `data:image/svg+xml;base64,${Buffer.from(await r.arrayBuffer()).toString("base64")}`;
+  } catch (err) {
+    console.warn(`[og mundo] sin bandera ${iso}:`, err instanceof Error ? err.message : err);
+    return null;
+  }
+}
+
+function BanderaOChip({ iso, ancho, src }: { iso: string; ancho: number; src: string | null }) {
+  if (src) {
+    return (
+      <div style={{ display: "flex", borderRadius: ancho / 8, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.4)" }}>
+        <img src={src} width={ancho} height={Math.round((ancho * 2) / 3)} alt="" />
+      </div>
+    );
+  }
   const dibujo = BanderaPlana({ pais: iso, ancho });
   if (dibujo) {
     return <div style={{ display: "flex", borderRadius: ancho / 8, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.4)" }}>{dibujo}</div>;
@@ -139,9 +160,10 @@ interface Datos {
   hasta: [string, string];
   paises: number;
   familia: string;
+  bandera: string | null;
 }
 
-function Horizontal({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia }: Datos) {
+function Horizontal({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia, bandera }: Datos) {
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", padding: "56px 64px", color: CREMA, fontFamily: familia, ...fondo(1200, 630) }}>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, paddingRight: 40 }}>
@@ -163,7 +185,7 @@ function Horizontal({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia
           </div>
         )}
         <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 26 }}>
-          {carga ? <BanderaOChip iso={carga.mejor} ancho={42} /> : null}
+          {carga ? <BanderaOChip iso={carga.mejor} ancho={42} src={bandera} /> : null}
           <div style={{ display: "flex", maxWidth: 560 }}>{carga ? frase : `${t.tarjeta.cta} calcularya.com`}</div>
         </div>
       </div>
@@ -179,7 +201,7 @@ function Horizontal({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia
   );
 }
 
-function Historia({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia }: Datos) {
+function Historia({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia, bandera }: Datos) {
   const tamFecha = fecha.length <= 8 ? 210 : fecha.length <= 12 ? 172 : 136;
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "220px 84px 230px", color: CREMA, fontFamily: familia, ...fondo(1080, 1920) }}>
@@ -205,7 +227,7 @@ function Historia({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia }
       </div>
       {carga ? (
         <div style={{ display: "flex", alignItems: "center", gap: 24, fontSize: 46, lineHeight: 1.2 }}>
-          <BanderaOChip iso={carga.mejor} ancho={72} />
+          <BanderaOChip iso={carga.mejor} ancho={72} src={bandera} />
           <div style={{ display: "flex", flex: 1 }}>{frase}</div>
         </div>
       ) : null}
@@ -241,7 +263,8 @@ export function crearOgMundo(idioma: Idioma) {
     const frase = !carga ? "" : carga.ventaja === 0 || (origen && origen.iso === carga.mejor) ? t.tarjeta.mejorPropio(nombreOrigen || nombreMejor) : t.tarjeta.mejor(nombreMejor, pct);
     const cjk = FUENTE_CJK[m.idioma];
     const familiaCjk = cjk && m.idioma === "zh" && /^zh-(CN|SG)/i.test(m.locale) ? "Noto Sans SC" : cjk;
-    const datos: Datos = { t, carga, anio, fecha, tasa, frase, hasta: partir(t.tarjeta.hasta), paises: grilla.paises.length, familia: familiaCjk ? `Geist, "${familiaCjk}"` : "Geist" };
+    const bandera = carga ? await banderaDe(carga.mejor, req.url) : null;
+    const datos: Datos = { t, carga, anio, fecha, tasa, frase, hasta: partir(t.tarjeta.hasta), paises: grilla.paises.length, familia: familiaCjk ? `Geist, "${familiaCjk}"` : "Geist", bandera };
 
     const texto = [
       "CalcularYa calcularya.com 0123456789%.,",
