@@ -9,6 +9,11 @@ import { aniosDisponibles, ULTIMO_PERIODO } from '@/lib/inflacion'
 import { hoyAR } from '@/lib/hoy'
 import { ultimoCambio } from '@/lib/novedades'
 import { SITIO } from '@/lib/seo'
+import { RUTA_MUNDO_AR } from '@/motor/mundo/rutas'
+import { hreflangMundo } from '@/motor/mundo/ui/seo'
+import { hreflangVaAlSitemap } from '@/motor/seo'
+import { hreflangARActivo, intlActivo, modoPublicacion } from '@/motor/sitio'
+import { registro } from '@/paises'
 
 const BASE = SITIO
 
@@ -26,6 +31,7 @@ const PAGINAS: readonly (readonly [string, string])[] = [
   [`${BASE}/convenios/comercio/por-horas`, '2026-10-16'],
   [`${BASE}/sueldo-neto/camioneros`, '2026-09-28'],
   [`${BASE}/sueldo-neto/construccion`, '2026-09-28'],
+  [`${BASE}${RUTA_MUNDO_AR}`, '2026-10-23'],
   [`${BASE}/ganancias`, '2026-06-15'],
   [`${BASE}/monotributo`, '2026-06-13'],
   [`${BASE}/monotributo/categorias`, '2026-06-18'],
@@ -158,6 +164,14 @@ function delMes(ruta: string, anio: number, mes: number, hoy: string): Entrada {
   return fecha <= hoy ? { ruta, fecha } : { ruta }
 }
 
+// El clúster de «Tu sueldo en el mundo» pasa de MAX_HREFLANG_HEAD: con el flag de hreflang AR prendido va
+// acá (xhtml:link), igual que en el sitemap de cada mercado de calcularya. Apagado, el sitemap no cambia.
+function alternosMundo(): Record<string, string> | undefined {
+  if (!hreflangARActivo() || !intlActivo()) return undefined
+  const idiomas = hreflangMundo(registro, modoPublicacion())
+  return idiomas && hreflangVaAlSitemap(idiomas) ? idiomas : undefined
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const hoy = hoyAR()
 
@@ -204,8 +218,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const resto = [...fijas, ...hubs, ...convenios, ...cuota, ...canasta, ...inflacion, ...blog]
   const inicio: Entrada = { ruta: '/', fecha: mayor(resto.map((e) => e.fecha)) }
 
+  const mundo = alternosMundo()
   return [inicio, ...resto].map((e) => ({
     url: e.ruta === '/' ? BASE : `${BASE}${e.ruta}`,
     ...(e.fecha ? { lastModified: e.fecha } : {}),
+    ...(mundo && e.ruta === RUTA_MUNDO_AR ? { alternates: { languages: mundo } } : {}),
   }))
 }

@@ -6,6 +6,7 @@ import type { RegionMundo } from "../../i18n/mundo";
 import { cargaDesde, codificarCarga, compararDesde, decodificarCarga, diaDeCarga, diasDelAnio, fechaDelDia, type FilaMundo } from "../calculo";
 import { leerTraspaso } from "../traspaso";
 import type { CargaCompartida } from "../tipos";
+import { Afiliados } from "./Afiliados";
 import { expandir, type GrillaCliente, type PaisCliente } from "./compacta";
 import { ORDEN_REGIONES } from "./regiones";
 import { rellenar, type TextosCliente } from "./textos-cliente";
@@ -21,7 +22,16 @@ export interface PropsMundo {
   // URL absoluta de la página, sin el `c`. El link compartido es `${base}/${c}`.
   base: string;
   carga: CargaCompartida | null;
+  // El sitio que firma la tarjeta: calcular.ar usa la suya en su página (sin esto, CalcularYa).
+  marca?: MarcaMundo;
 }
+
+export interface MarcaMundo {
+  nombre: string;
+  dominio: string;
+}
+
+const MARCA_INTL: MarcaMundo = { nombre: "CalcularYa", dominio: "calcularya.com" };
 
 type Periodo = "mes" | "anio";
 const TOPE = 10;
@@ -291,6 +301,7 @@ export function TarjetaVista({
   frase,
   iso,
   cero,
+  marca = MARCA_INTL,
 }: {
   t: TextosCliente;
   fecha: string;
@@ -298,13 +309,14 @@ export function TarjetaVista({
   frase: string;
   iso: string | null;
   cero: boolean;
+  marca?: MarcaMundo;
 }) {
   const [antes, despues] = cero ? [t.cero.tarjetaAntes, ""] : t.tarjeta.hasta;
   return (
     <div className="cy-tarjeta-historia" aria-hidden="true">
       <div className="cy-th-marca">
         <span className="cy-th-logo" />
-        CalcularYa
+        {marca.nombre}
       </div>
       <div className="cy-th-nucleo">
         <p className="cy-th-antes">{antes}</p>
@@ -319,13 +331,13 @@ export function TarjetaVista({
       </p>
       <div className="cy-th-pie">
         <span>{t.tarjeta.yVos}</span>
-        <span className="cy-th-url">calcularya.com</span>
+        <span className="cy-th-url">{marca.dominio}</span>
       </div>
     </div>
   );
 }
 
-function Compartir({ t, url, imagen, texto, duelo }: { t: TextosCliente; url: string; imagen: string; texto: string; duelo: boolean }) {
+function Compartir({ t, url, imagen, texto, duelo, archivo }: { t: TextosCliente; url: string; imagen: string; texto: string; duelo: boolean; archivo: string }) {
   const { compartir, estado } = usarCompartir({
     origen: duelo ? "duelo" : "mundo",
     url,
@@ -344,7 +356,7 @@ function Compartir({ t, url, imagen, texto, duelo }: { t: TextosCliente; url: st
           </svg>
         </span>
       </button>
-      <a className="cy-mundo-enlace" href={imagen} download="calcularya.png">
+      <a className="cy-mundo-enlace" href={imagen} download={archivo}>
         {t.tarjeta.descargar}
       </a>
       <p className="cy-mundo-aviso" role="status" aria-live="polite">
@@ -356,7 +368,7 @@ function Compartir({ t, url, imagen, texto, duelo }: { t: TextosCliente; url: st
 
 // ─────────────────────────────── página ───────────────────────────────
 
-export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, meses, base, carga: cargaInicial }: PropsMundo) {
+export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, meses, base, carga: cargaInicial, marca = MARCA_INTL }: PropsMundo) {
   const f = usarFormatos(locale);
   const contrato = useMemo(() => expandir(grilla), [grilla]);
   const porMercado = useMemo(() => new Map(grilla.paises.map((p) => [p.mercado, p])), [grilla]);
@@ -600,6 +612,7 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
       </section>
 
       {filas.length ? <Ranking filas={filas} origen={origen} t={t} f={f} monedaOrigen={pais?.moneda ?? "USD"} porMercado={porMercado} /> : null}
+      {modo !== "ejemplo" && filas.length > 1 && filas[0].pais.mercado !== origen ? <Afiliados locale={locale} mejor={filas[0].pais.iso} /> : null}
 
       {carga && pais ? (
         <section className="cy-mundo-compartir" aria-labelledby="cy-mundo-compartir-titulo">
@@ -608,10 +621,10 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
               {t.tarjeta.titulo}
             </h2>
             <p className="cy-mundo-bajada">{t.tarjeta.bajada}</p>
-            <Compartir t={t} url={urlCompartir} imagen={imagen} texto={cero ? t.cero.texto : rellenar(t.tarjeta.texto, { fecha })} duelo={conDuelo} />
+            <Compartir t={t} url={urlCompartir} imagen={imagen} texto={cero ? t.cero.texto : rellenar(t.tarjeta.texto, { fecha })} duelo={conDuelo} archivo={`${marca.dominio.split(".")[0]}.png`} />
           </div>
           <div className="cy-mundo-compartir-vista">
-            <TarjetaVista t={t} fecha={fecha} tasa={tasa} frase={frase} iso={mejorIso} cero={cero} />
+            <TarjetaVista t={t} fecha={fecha} tasa={tasa} frase={frase} iso={mejorIso} cero={cero} marca={marca} />
           </div>
         </section>
       ) : null}
