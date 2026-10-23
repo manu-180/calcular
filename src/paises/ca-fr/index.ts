@@ -13,6 +13,18 @@ import contenidoSalesTaxCalculator from "./contenido/sales-tax-calculator";
 import contenidoTfsaContributionRoom from "./contenido/tfsa-contribution-room";
 import contenidoUsdToCad from "./contenido/usd-to-cad";
 import contenidoVariableRateMortgage from "./contenido/variable-rate-mortgage";
+import contenidoTakeHomePay from "./contenido/take-home-pay";
+import textosTakeHomePay from "./textos/take-home-pay";
+import contenidoIncomeTaxCalculator from "./contenido/income-tax-calculator";
+import textosIncomeTaxCalculator from "./textos/income-tax-calculator";
+import contenidoLandTransferTax from "./contenido/land-transfer-tax";
+import textosLandTransferTax from "./textos/land-transfer-tax";
+import contenidoQuebecVacationPay from "./contenido/quebec-vacation-pay";
+import textosQuebecVacationPay from "./textos/quebec-vacation-pay";
+import contenidoQuebecOvertime from "./contenido/quebec-overtime";
+import textosQuebecOvertime from "./textos/quebec-overtime";
+import contenidoQuebecNoticeOfTermination from "./contenido/quebec-notice-of-termination";
+import textosQuebecNoticeOfTermination from "./textos/quebec-notice-of-termination";
 import { mercado } from "./mercado";
 import textosCanadaChildBenefit from "./textos/canada-child-benefit";
 import textosCppCalculator from "./textos/cpp-calculator";
@@ -28,10 +40,9 @@ import textosTfsaContributionRoom from "./textos/tfsa-contribution-room";
 import textosUsdToCad from "./textos/usd-to-cad";
 import textosVariableRateMortgage from "./textos/variable-rate-mortgage";
 
-// Edición en francés de Canadá para Quebec. Quedan afuera las calculadoras de ca que no cubren
-// Quebec: impuesto sobre la renta, sueldo neto y ganancias de capital (sin el impuesto provincial
-// de Quebec), impuesto de transferencia (solo ON, Toronto y BC) y las laborales de ON, BC, AB y
-// federal (vacaciones, horas extra, preaviso e indemnización, sin las normas de la CNESST).
+// Edición en francés de Canadá para Quebec. Quedan afuera ganancias de capital (Quebec sin verificar
+// la tasa de inclusión) y las laborales de ON, BC, AB y federal: Quebec tiene las suyas
+// (quebec-vacation-pay, quebec-overtime, quebec-notice-of-termination, en borrador en ca).
 export default definirEdicion(ca, {
   mercado,
   traducciones: [
@@ -48,6 +59,12 @@ export default definirEdicion(ca, {
     { textos: textosInflationCalculator, contenido: contenidoInflationCalculator },
     { textos: textosUsdToCad, contenido: contenidoUsdToCad },
     { textos: textosVariableRateMortgage, contenido: contenidoVariableRateMortgage },
+    { textos: textosTakeHomePay, contenido: contenidoTakeHomePay },
+    { textos: textosIncomeTaxCalculator, contenido: contenidoIncomeTaxCalculator },
+    { textos: textosLandTransferTax, contenido: contenidoLandTransferTax },
+    { textos: textosQuebecVacationPay, contenido: contenidoQuebecVacationPay },
+    { textos: textosQuebecOvertime, contenido: contenidoQuebecOvertime },
+    { textos: textosQuebecNoticeOfTermination, contenido: contenidoQuebecNoticeOfTermination },
   ],
   universales: "todas",
 });

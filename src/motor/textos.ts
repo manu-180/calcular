@@ -26,6 +26,28 @@ export interface TextosMotor {
   separadores: { punto: string; coma: string };
 }
 
+const ZH_HANS_MOTOR: TextosMotor = {
+  calcular: "计算",
+  resultado: "计算结果",
+  si: "是",
+  no: "否",
+  sinResultado: "暂不显示这项结果。",
+  errores: {
+    requerido: "请填写此项。",
+    "numero-invalido": "请输入数字，例如 {ejemplo}。",
+    "entero-invalido": "请输入整数，不要带小数。",
+    "menor-que-min": "最小值为 {min}。",
+    "mayor-que-max": "最大值为 {max}。",
+    "fecha-invalida": "请选择有效的日期。",
+    "hora-invalida": "请选择有效的时间。",
+    "opcion-invalida": "请选择一个选项。",
+    "region-invalida": "请选择地区。",
+    "calculo-fallido": "无法用这些数据完成计算。请检查数值后重试。",
+  },
+  milesAmbiguos: "您要输入的是 {sugerido} 吗？请不要加{signos}。",
+  separadores: { punto: "句点", coma: "逗号" },
+};
+
 // Solo texto con {marcadores}, sin funciones: así el diccionario se puede serializar.
 export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
   es: {
@@ -256,6 +278,77 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
     },
     usted: { milesAmbiguos: "Bedoelt u {sugerido}? Schrijf het zonder {signos}." },
   },
+  ja: {
+    base: {
+      calcular: "計算する",
+      resultado: "計算結果",
+      si: "はい",
+      no: "いいえ",
+      sinResultado: "この結果は現在表示していません。",
+      errores: {
+        requerido: "この項目を入力してください。",
+        "numero-invalido": "数字で入力してください（例：{ejemplo}）。",
+        "entero-invalido": "小数点のない整数で入力してください。",
+        "menor-que-min": "{min}以上で入力してください。",
+        "mayor-que-max": "{max}以下で入力してください。",
+        "fecha-invalida": "正しい日付を選んでください。",
+        "hora-invalida": "正しい時刻を選んでください。",
+        "opcion-invalida": "選択肢から選んでください。",
+        "region-invalida": "地域を選んでください。",
+        "calculo-fallido": "この内容では計算できませんでした。入力した値を確認して、もう一度お試しください。",
+      },
+      milesAmbiguos: "{sugerido}のことですか？{signos}を付けずに入力してください。",
+      separadores: { punto: "ピリオド", coma: "カンマ" },
+    },
+  },
+  ko: {
+    base: {
+      calcular: "계산하기",
+      resultado: "계산 결과",
+      si: "예",
+      no: "아니요",
+      sinResultado: "이 결과는 지금은 보여 드리지 않아요.",
+      errores: {
+        requerido: "이 항목을 입력해 주세요.",
+        "numero-invalido": "숫자로 입력해 주세요. 예: {ejemplo}",
+        "entero-invalido": "소수점 없이 정수로 입력해 주세요.",
+        "menor-que-min": "{min} 이상으로 입력해 주세요.",
+        "mayor-que-max": "{max} 이하로 입력해 주세요.",
+        "fecha-invalida": "올바른 날짜를 선택해 주세요.",
+        "hora-invalida": "올바른 시간을 선택해 주세요.",
+        "opcion-invalida": "항목을 하나 선택해 주세요.",
+        "region-invalida": "지역을 선택해 주세요.",
+        "calculo-fallido": "입력한 내용으로는 계산할 수 없었어요. 값을 확인하고 다시 시도해 주세요.",
+      },
+      milesAmbiguos: "{sugerido}을(를) 입력하려고 하셨나요? {signos} 없이 입력해 주세요.",
+      separadores: { punto: "마침표", coma: "쉼표" },
+    },
+  },
+  zh: {
+    base: {
+      calcular: "計算",
+      resultado: "計算結果",
+      si: "是",
+      no: "否",
+      sinResultado: "目前暫不顯示這項結果。",
+      errores: {
+        requerido: "請填寫這個欄位。",
+        "numero-invalido": "請輸入數字，例如 {ejemplo}。",
+        "entero-invalido": "請輸入整數，不含小數。",
+        "menor-que-min": "最小值為 {min}。",
+        "mayor-que-max": "最大值為 {max}。",
+        "fecha-invalida": "請選擇有效的日期。",
+        "hora-invalida": "請選擇有效的時間。",
+        "opcion-invalida": "請選擇一個選項。",
+        "region-invalida": "請選擇地區。",
+        "calculo-fallido": "無法用這些資料完成計算。請檢查數值後再試一次。",
+      },
+      milesAmbiguos: "您要輸入的是 {sugerido} 嗎？請不要加{signos}。",
+      separadores: { punto: "句點", coma: "逗號" },
+    },
+    regional: {
+      "zh-CN": ZH_HANS_MOTOR,
+      "zh-SG": ZH_HANS_MOTOR,
   ar: {
     base: {
       calcular: "احسب",

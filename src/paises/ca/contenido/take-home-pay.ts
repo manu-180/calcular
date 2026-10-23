@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ca.take-home-pay",
   h1: "Take-home pay calculator 2026 for Canada",
   title: "Take-home pay calculator 2026: salary after tax",
-  description: "Turn your 2026 salary into take-home pay after federal and provincial tax, CPP, CPP2 and EI. Weekly, biweekly or monthly, for every province except Quebec.",
+  description: "Turn your 2026 salary into take-home pay after federal and provincial tax, CPP, CPP2 and EI. Weekly, biweekly or monthly, in every province, Quebec included.",
   intro: [
     "Enter your gross salary and your province or territory to see what you take home each year, each month and each pay.",
     "It takes off federal and provincial income tax, CPP and CPP2 contributions and EI premiums with the 2026 figures published by the Canada Revenue Agency.",
@@ -29,7 +29,7 @@ export default definirContenido({
     },
     {
       pregunta: "Does it work for Quebec?",
-      respuesta: "Not yet. Quebec has its own provincial tax, QPP instead of CPP, a lower EI rate and QPIP premiums.",
+      respuesta: "Yes. In Quebec it uses QPP instead of CPP, the lower Quebec EI rate, QPIP premiums, Quebec tax with the basic personal amount of {{ca.qc-bpa}} and the deduction for workers, and the {{ca.qc-abatement}} Quebec abatement on federal tax.",
     },
     {
       pregunta: "Are RRSP contributions taken off before tax?",

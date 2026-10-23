@@ -26,7 +26,7 @@ export const AUTOR = {
   "@id": `${SITIO}/#autor`,
   name: "Manuel Navarro",
   url: `${SITIO}/sobre`,
-  email: "manunv97@gmail.com",
+  email: "soporte@calcular.ar",
   nationality: "AR",
   description:
     "Desarrollador argentino. Construye las calculadoras de CalculAR y verifica cada dato contra el documento oficial del que sale.",

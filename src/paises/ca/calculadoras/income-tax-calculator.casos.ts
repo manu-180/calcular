@@ -116,5 +116,26 @@ export default definirCasos(calculadora, [
       "rrsp": 0
     },
     "esperaError": true
+  },
+  {
+    "nombre": "Quebec, $70,000 of employment income",
+    "origen": {
+      "tipo": "recalculado",
+      "detalle": "Federal 7,235.29 of basic federal tax less the 16.5% Quebec abatement = 6,041.47. Quebec tax on 67,885 (after the 1,450 deduction for workers): 7,608.30 + 13,540 × 19% - 14% × 18,952 = 7,527.62. Total 13,569.09."
+    },
+    "fecha": "2026-10-16",
+    "entrada": {
+      "provincia": "qc",
+      "empleo": 70000,
+      "otros": 0,
+      "rrsp": 0
+    },
+    "esperado": {
+      "total": 13569.09,
+      "federal": 6041.47,
+      "provincial": 7527.62,
+      "gravable": 69335
+    },
+    "tolerancia": 0.011
   }
 ]);

@@ -1,0 +1,1725 @@
+{
+  "mercado": "tz",
+  "datos": [
+    {
+      "id": "tz.paye-bands",
+      "nombre": "Monthly income tax bands for resident individuals, Tanzania Mainland",
+      "tipo": "escala",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 270000,
+              "tasa": 0
+            },
+            {
+              "desde": 270000,
+              "hasta": 520000,
+              "tasa": 8
+            },
+            {
+              "desde": 520000,
+              "hasta": 760000,
+              "tasa": 20
+            },
+            {
+              "desde": 760000,
+              "hasta": 1000000,
+              "tasa": 25
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.non-resident-employee-rate",
+      "nombre": "PAYE on non-resident employees",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Pay As You Earn",
+            "url": "https://www.tra.go.tz/page/pay-as-you-earn",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.nssf-rate",
+      "nombre": "NSSF contribution, employer and employee together",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Payment of contributions: rates and penalties",
+            "url": "https://www.nssf.go.tz/pages/payment-of-contributions",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.nssf-employee-max",
+      "nombre": "NSSF: most the employee's share can be",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Payment of contributions: rates and penalties",
+            "url": "https://www.nssf.go.tz/pages/payment-of-contributions",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.nssf-late-penalty",
+      "nombre": "NSSF penalty for late contributions, each month or part",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Payment of contributions: rates and penalties",
+            "url": "https://www.nssf.go.tz/pages/payment-of-contributions",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.sdl-rate",
+      "nombre": "Skills Development Levy rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Skills Development Levy (SDL)",
+            "url": "https://www.tra.go.tz/page/skills-development-levy-sdl",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.sdl-min-employees",
+      "nombre": "Employees needed before SDL applies",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Skills Development Levy (SDL)",
+            "url": "https://www.tra.go.tz/page/skills-development-levy-sdl",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.wcf-rate",
+      "nombre": "Workers Compensation Fund contribution",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Workers Compensation Fund",
+            "titulo": "Contribution rate (homepage notice)",
+            "url": "https://www.wcf.go.tz/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "The WCF homepage says contributions are 0.5% for the public and private sectors."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.heslb-rate",
+      "nombre": "HESLB loan repayment, share of basic salary",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Higher Education Students' Loans Board",
+            "titulo": "About loan repayment",
+            "url": "https://www.heslb.go.tz/loanrepayment/about-loan-repayment",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Value Added Tax (VAT): rates and registration",
+            "url": "https://www.tra.go.tz/page/value-added-tax-vat",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.vat-electronic",
+      "nombre": "VAT on supplies paid electronically by individuals not registered for VAT",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Value Added Tax (VAT): rates and registration",
+            "url": "https://www.tra.go.tz/page/value-added-tax-vat",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.vat-threshold",
+      "nombre": "VAT registration threshold in 12 months",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 200000000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Value Added Tax (VAT): rates and registration",
+            "url": "https://www.tra.go.tz/page/value-added-tax-vat",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.wht-resident",
+      "nombre": "Withholding tax rates for residents",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "service-fees": "Service fees",
+        "directors-fees": "Fees to directors who are not full time",
+        "rent": "Rent (commercial purposes)",
+        "interest": "Interest",
+        "dividends-dse": "Dividends from DSE listed companies",
+        "dividends-other": "Dividends from other companies",
+        "royalties": "Royalties",
+        "natural-resources": "Natural resource payments",
+        "vehicle-hire": "Hire of a motor vehicle",
+        "goods-government": "Goods supplied to Government and its institutions"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": {
+            "service-fees": 5,
+            "directors-fees": 15,
+            "rent": 10,
+            "interest": 10,
+            "dividends-dse": 5,
+            "dividends-other": 10,
+            "royalties": 10,
+            "natural-resources": 15,
+            "vehicle-hire": 10,
+            "goods-government": 2
+          },
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Withholding tax rates",
+            "url": "https://www.tra.go.tz/page/withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.wht-non-resident",
+      "nombre": "Withholding tax rates for non-residents",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "service-fees": "Service fees",
+        "directors-fees": "Fees to directors who are not full time",
+        "rent": "Rent (commercial purposes)",
+        "interest": "Interest",
+        "dividends-dse": "Dividends from DSE listed companies",
+        "dividends-other": "Dividends from other companies",
+        "royalties": "Royalties",
+        "natural-resources": "Natural resource payments"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": {
+            "service-fees": 15,
+            "directors-fees": 15,
+            "rent": 10,
+            "interest": 10,
+            "dividends-dse": 5,
+            "dividends-other": 10,
+            "royalties": 10,
+            "natural-resources": 15
+          },
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Withholding tax rates",
+            "url": "https://www.tra.go.tz/page/withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.cgt-land-resident",
+      "nombre": "Tax on the gain from land or buildings, resident",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Capital gains tax on land and buildings",
+            "url": "https://www.tra.go.tz/page/capital-gains-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.cgt-land-non-resident",
+      "nombre": "Tax on the gain from land or buildings, non-resident",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Capital gains tax on land and buildings",
+            "url": "https://www.tra.go.tz/page/capital-gains-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.cgt-land-no-records",
+      "nombre": "Tax on the value of land or buildings when the cost cannot be proved",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Capital gains tax on land and buildings",
+            "url": "https://www.tra.go.tz/page/capital-gains-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.cgt-residence-exempt-gain",
+      "nombre": "Exempt gain on a home owned and lived in for three years",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 15000000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Capital gains tax on land and buildings",
+            "url": "https://www.tra.go.tz/page/capital-gains-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-threshold",
+      "nombre": "Presumptive tax: turnover with no tax up to",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 4000000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-ceiling",
+      "nombre": "Presumptive tax: maximum turnover",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 200000000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-top-rate",
+      "nombre": "Presumptive tax on turnover above TZS 11 million",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-band-1-limit",
+      "nombre": "Presumptive tax: top of the first band",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 7000000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-band-2-limit",
+      "nombre": "Presumptive tax: top of the second band",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 11000000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-band-1-incomplete",
+      "nombre": "Presumptive tax, first band, incomplete records",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-band-2-incomplete",
+      "nombre": "Presumptive tax, second band, incomplete records",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 250000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-band-2-base",
+      "nombre": "Presumptive tax, second band, complete records: fixed amount",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 90000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-complete-rate",
+      "nombre": "Presumptive tax with complete records: rate on turnover above the band start",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.presumptive-transport",
+      "nombre": "Presumptive income tax for transport of passengers or goods, a year",
+      "tipo": "mapa",
+      "unidad": "TZS",
+      "etiquetas": {
+        "psv-5": "Passenger service: up to 5 passengers or a three wheeler",
+        "psv-15": "Passenger service: 6 to 15 passengers",
+        "tour-15": "Tour service: up to 15 tourists",
+        "tour-25": "Tour service: 16 to 25 tourists",
+        "tour-45": "Tour service: 26 to 45 tourists",
+        "tour-65": "Tour service: 46 to 65 tourists",
+        "tour-over": "Tour service: above 65 tourists",
+        "goods-half": "Goods: up to 500 kg",
+        "goods-1": "Goods: above 500 kg but less than 1 tonne",
+        "goods-5": "Goods: 1 to 5 tonnes",
+        "goods-10": "Goods: 6 to 10 tonnes",
+        "goods-15": "Goods: 11 to 15 tonnes",
+        "goods-20": "Goods: 16 to 20 tonnes",
+        "goods-25": "Goods: 21 to 25 tonnes",
+        "goods-30": "Goods: 26 to 30 tonnes",
+        "goods-over": "Goods: more than 30 tonnes",
+        "taxi": "Private hire: taxi",
+        "ride-hailing": "Private hire: ride hailing",
+        "ride-sharing": "Private hire: ride sharing",
+        "special-hire": "Private hire: special hire"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": {
+            "psv-5": 120000,
+            "psv-15": 250000,
+            "tour-15": 650000,
+            "tour-25": 900000,
+            "tour-45": 1300000,
+            "tour-65": 1800000,
+            "tour-over": 2400000,
+            "goods-half": 120000,
+            "goods-1": 250000,
+            "goods-5": 500000,
+            "goods-10": 750000,
+            "goods-15": 1100000,
+            "goods-20": 1300000,
+            "goods-25": 1650000,
+            "goods-30": 1900000,
+            "goods-over": 2200000,
+            "taxi": 180000,
+            "ride-hailing": 350000,
+            "ride-sharing": 450000,
+            "special-hire": 750000
+          },
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Income tax for individuals: rates for Tanzania Mainland and presumptive tax",
+            "url": "https://www.tra.go.tz/page/income-tax-for-individuals",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.late-filing-rate",
+      "nombre": "Late filing penalty: share of the tax each month or part",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Interest, penalties and offences",
+            "url": "https://www.tra.go.tz/page/interest-penalties-offences",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.late-filing-points-individual",
+      "nombre": "Late filing penalty for individuals: currency points a month",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Interest, penalties and offences",
+            "url": "https://www.tra.go.tz/page/interest-penalties-offences",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.late-filing-points-company",
+      "nombre": "Late filing penalty for companies: currency points a month",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Interest, penalties and offences",
+            "url": "https://www.tra.go.tz/page/interest-penalties-offences",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.currency-point",
+      "nombre": "Value of one currency point",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Interest, penalties and offences",
+            "url": "https://www.tra.go.tz/page/interest-penalties-offences",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.stamp-lease-rate",
+      "nombre": "Stamp duty on a lease: share of the annual rent",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Stamp duty: rates applicable to instruments",
+            "url": "https://www.tra.go.tz/page/stamp-duty",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.stamp-share-transfer-rate",
+      "nombre": "Stamp duty on a transfer of shares",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Stamp duty: rates applicable to instruments",
+            "url": "https://www.tra.go.tz/page/stamp-duty",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.stamp-agreement",
+      "nombre": "Stamp duty on an agreement, affidavit or power of attorney",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 2000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Stamp duty: rates applicable to instruments",
+            "url": "https://www.tra.go.tz/page/stamp-duty",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.stamp-memorandum",
+      "nombre": "Stamp duty on a memorandum of association",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Stamp duty: rates applicable to instruments",
+            "url": "https://www.tra.go.tz/page/stamp-duty",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.vehicle-licence-fee",
+      "nombre": "Motor vehicle licence fee on first registration",
+      "tipo": "mapa",
+      "unidad": "TZS",
+      "etiquetas": {
+        "cc-1000": "501 to 1000 cc",
+        "cc-1500": "1001 to 1500 cc",
+        "cc-2500": "1501 to 2500 cc",
+        "cc-over": "2501 cc and above"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": {
+            "cc-1000": 200000,
+            "cc-1500": 200000,
+            "cc-2500": 250000,
+            "cc-over": 300000
+          },
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Motor vehicle registration: fees, registration tax and HIV Response Levy",
+            "url": "https://www.tra.go.tz/page/motor",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.vehicle-hiv-levy",
+      "nombre": "HIV Response Levy on first registration",
+      "tipo": "mapa",
+      "unidad": "TZS",
+      "etiquetas": {
+        "cc-1000": "501 to 1000 cc",
+        "cc-1500": "1001 to 1500 cc",
+        "cc-2500": "1501 to 2500 cc",
+        "cc-over": "2501 cc and above"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": {
+            "cc-1000": 50000,
+            "cc-1500": 100000,
+            "cc-2500": 150000,
+            "cc-over": 200000
+          },
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Motor vehicle registration: fees, registration tax and HIV Response Levy",
+            "url": "https://www.tra.go.tz/page/motor",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.vehicle-registration-tax",
+      "nombre": "Motor vehicle registration tax",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 250000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Motor vehicle registration: fees, registration tax and HIV Response Levy",
+            "url": "https://www.tra.go.tz/page/motor",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.vehicle-transfer-fee",
+      "nombre": "Motor vehicle transfer fee",
+      "tipo": "numero",
+      "unidad": "TZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Tanzania Revenue Authority",
+            "titulo": "Motor vehicle registration: fees, registration tax and HIV Response Levy",
+            "url": "https://www.tra.go.tz/page/motor",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.annual-leave-days",
+      "nombre": "Annual leave in each leave cycle",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 31(1)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.sick-full-days",
+      "nombre": "Sick leave on full wages in a leave cycle",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 63,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 32",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.sick-half-days",
+      "nombre": "Sick leave on half wages in a leave cycle",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 63,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 32",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.maternity-days",
+      "nombre": "Paid maternity leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 84,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 33(6)(a)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.maternity-days-multiple",
+      "nombre": "Paid maternity leave for more than one child at a birth",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 33(6)(b)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.paternity-days",
+      "nombre": "Paid paternity leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 34(1)(a)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.notice-first-month",
+      "nombre": "Notice in the first month of employment",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 41(1)(a)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.notice-daily-weekly",
+      "nombre": "Notice for daily or weekly employees",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 41(1)(b)(i)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.notice-monthly",
+      "nombre": "Notice for monthly employees",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 41(1)(b)(ii)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.severance-days",
+      "nombre": "Severance pay: days of basic wage per completed year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 42(1)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.severance-max-years",
+      "nombre": "Severance pay: most years counted",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 42(1)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.overtime-factor",
+      "nombre": "Overtime: times the basic wage",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 19(5)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.night-premium",
+      "nombre": "Night work premium for each hour",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 20(4)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.ordinary-week-hours",
+      "nombre": "Maximum ordinary hours a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Employment and Labour Relations Act, 2004 (Act No. 6 of 2004), section 19(2)(b)",
+            "url": "https://commons.laws.africa/akn/tz/act/2004/6/media/publication/tz-act-2004-6-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Gazetted text of the Act as published in 2004."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.nssf-pension-divisor",
+      "nombre": "NSSF pension replacement rate divisor",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-07-01",
+          "valor": 580,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Old age pension: qualifying conditions and formula",
+            "url": "https://www.nssf.go.tz/benefits/old-age-pension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.nssf-pension-years",
+      "nombre": "NSSF estimated pension period",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-07-01",
+          "valor": 12.5,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Old age pension: qualifying conditions and formula",
+            "url": "https://www.nssf.go.tz/benefits/old-age-pension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.nssf-commuted-share",
+      "nombre": "NSSF share of pension paid as lump sum",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-07-01",
+          "valor": 33,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Old age pension: qualifying conditions and formula",
+            "url": "https://www.nssf.go.tz/benefits/old-age-pension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.nssf-min-contributions",
+      "nombre": "NSSF contributions needed for a pension",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-07-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Old age pension: qualifying conditions and formula",
+            "url": "https://www.nssf.go.tz/benefits/old-age-pension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.nssf-max-pension",
+      "nombre": "NSSF maximum pension: share of annual pensionable emoluments",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-07-01",
+          "valor": 72.5,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Old age pension: qualifying conditions and formula",
+            "url": "https://www.nssf.go.tz/benefits/old-age-pension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.nssf-maternity-days",
+      "nombre": "NSSF maternity cash benefit: days paid",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 84,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Maternity benefits",
+            "url": "https://www.nssf.go.tz/benefits/maternity-benefits",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.minimum-wage-monthly",
+      "nombre": "Minimum monthly wage by sector",
+      "tipo": "mapa",
+      "unidad": "TZS",
+      "etiquetas": {
+        "agri-crops": "Agriculture: crop or animal production",
+        "agri-forestry": "Agriculture: forestry",
+        "agri-fishing": "Agriculture: fishing and aquaculture",
+        "health-hospital": "Health: hospital",
+        "health-centre": "Health: health centre",
+        "health-polyclinic": "Health: polyclinic",
+        "health-dispensary": "Health: dispensary",
+        "health-pharmacy": "Health: pharmacy",
+        "comms-media": "Communications: programme, advertising and media",
+        "comms-telecom": "Communications: telecommunication services",
+        "comms-call-centre": "Communications: call centre",
+        "domestic-diplomats": "Domestic workers employed by diplomats and major businessmen",
+        "domestic-officers": "Domestic workers employed by entitled officers",
+        "domestic-non-resident": "Domestic workers who do not live in the employer's household",
+        "domestic-other": "Other domestic workers",
+        "hotel-4-5-star": "Hotels: five and four star",
+        "hotel-3-star": "Hotels: three star",
+        "hotel-other": "Hotels with one or two stars, guest houses, bars and restaurants",
+        "hotel-porter": "Tourist luggage porter",
+        "hotel-tour-guide": "Tour guide",
+        "hotel-hunting": "Hunting and related activities",
+        "security-international": "Private security: international companies",
+        "security-domestic": "Private security: domestic companies",
+        "energy-international": "Energy: international companies",
+        "energy-domestic": "Energy: domestic companies",
+        "transport-aviation": "Transport: aviation services",
+        "transport-freight": "Transport: freight clearing and forwarding",
+        "transport-inland": "Transport: inland transport services",
+        "transport-postal": "Transport: postal and courier services",
+        "construction-class-1": "Construction: contractors Class I",
+        "construction-class-2-4": "Construction: contractors Class II to IV",
+        "construction-class-5-7": "Construction: contractors Class V to VII",
+        "mining-prospecting": "Mining: mining and prospecting minerals",
+        "mining-primary-licence": "Mining: primary mining licence",
+        "mining-dealer": "Mining: dealer licence",
+        "mining-broker": "Mining: broker licence",
+        "school-primary": "Private schools: pre-primary and primary",
+        "school-secondary": "Private schools: secondary",
+        "school-college": "Private colleges and vocational training institutes",
+        "school-higher": "Private higher education institutions",
+        "trade-business": "Trade: business",
+        "finance-commercial-banks": "Finance: commercial banks",
+        "finance-community-banks": "Finance: community banks",
+        "finance-microcredit": "Finance: micro credit services",
+        "finance-insurance": "Finance: insurance companies",
+        "finance-other": "Finance: other financial institutions",
+        "industrial": "Industrial sector",
+        "sports-arts": "Sport, arts, entertainment and gaming",
+        "waste": "Waste collection, processing and disposal",
+        "other": "Any other sector not specified"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "agri-crops": 175000,
+            "agri-forestry": 185000,
+            "agri-fishing": 300000,
+            "health-hospital": 250000,
+            "health-centre": 240000,
+            "health-polyclinic": 240000,
+            "health-dispensary": 230000,
+            "health-pharmacy": 240000,
+            "comms-media": 289000,
+            "comms-telecom": 644000,
+            "comms-call-centre": 380000,
+            "domestic-diplomats": 328000,
+            "domestic-officers": 265000,
+            "domestic-non-resident": 160000,
+            "domestic-other": 80000,
+            "hotel-4-5-star": 375000,
+            "hotel-3-star": 225000,
+            "hotel-other": 195000,
+            "hotel-porter": 225000,
+            "hotel-tour-guide": 320000,
+            "hotel-hunting": 200000,
+            "security-international": 292000,
+            "security-domestic": 197000,
+            "energy-international": 765900,
+            "energy-domestic": 297000,
+            "transport-aviation": 498000,
+            "transport-freight": 464000,
+            "transport-inland": 398500,
+            "transport-postal": 287500,
+            "construction-class-1": 515000,
+            "construction-class-2-4": 464500,
+            "construction-class-5-7": 398500,
+            "mining-prospecting": 695000,
+            "mining-primary-licence": 397600,
+            "mining-dealer": 595000,
+            "mining-broker": 333500,
+            "school-primary": 276500,
+            "school-secondary": 281300,
+            "school-college": 281500,
+            "school-higher": 300700,
+            "trade-business": 200500,
+            "finance-commercial-banks": 733000,
+            "finance-community-banks": 698400,
+            "finance-microcredit": 699000,
+            "finance-insurance": 699700,
+            "finance-other": 699500,
+            "industrial": 200000,
+            "sports-arts": 287500,
+            "waste": 188500,
+            "other": 175000
+          },
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Labour Institutions (Minimum Wage for Private Sector) Order, 2025, GN No. 605A, Second Schedule",
+            "url": "https://commons.laws.africa/akn/tz/act/gn/2025/605a/media/publication/tz-act-gn-2025-605a-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Special Supplement No. 9 to the Gazette of 13 October 2025. In force from 1 January 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.minimum-wage-hourly",
+      "nombre": "Minimum hourly wage by sector",
+      "tipo": "mapa",
+      "unidad": "TZS",
+      "etiquetas": {
+        "agri-crops": "Agriculture: crop or animal production",
+        "agri-forestry": "Agriculture: forestry",
+        "agri-fishing": "Agriculture: fishing and aquaculture",
+        "health-hospital": "Health: hospital",
+        "health-centre": "Health: health centre",
+        "health-polyclinic": "Health: polyclinic",
+        "health-dispensary": "Health: dispensary",
+        "health-pharmacy": "Health: pharmacy",
+        "comms-media": "Communications: programme, advertising and media",
+        "comms-telecom": "Communications: telecommunication services",
+        "comms-call-centre": "Communications: call centre",
+        "domestic-diplomats": "Domestic workers employed by diplomats and major businessmen",
+        "domestic-officers": "Domestic workers employed by entitled officers",
+        "domestic-non-resident": "Domestic workers who do not live in the employer's household",
+        "domestic-other": "Other domestic workers",
+        "hotel-4-5-star": "Hotels: five and four star",
+        "hotel-3-star": "Hotels: three star",
+        "hotel-other": "Hotels with one or two stars, guest houses, bars and restaurants",
+        "hotel-porter": "Tourist luggage porter",
+        "hotel-tour-guide": "Tour guide",
+        "hotel-hunting": "Hunting and related activities",
+        "security-international": "Private security: international companies",
+        "security-domestic": "Private security: domestic companies",
+        "energy-international": "Energy: international companies",
+        "energy-domestic": "Energy: domestic companies",
+        "transport-aviation": "Transport: aviation services",
+        "transport-freight": "Transport: freight clearing and forwarding",
+        "transport-inland": "Transport: inland transport services",
+        "transport-postal": "Transport: postal and courier services",
+        "construction-class-1": "Construction: contractors Class I",
+        "construction-class-2-4": "Construction: contractors Class II to IV",
+        "construction-class-5-7": "Construction: contractors Class V to VII",
+        "mining-prospecting": "Mining: mining and prospecting minerals",
+        "mining-primary-licence": "Mining: primary mining licence",
+        "mining-dealer": "Mining: dealer licence",
+        "mining-broker": "Mining: broker licence",
+        "school-primary": "Private schools: pre-primary and primary",
+        "school-secondary": "Private schools: secondary",
+        "school-college": "Private colleges and vocational training institutes",
+        "school-higher": "Private higher education institutions",
+        "trade-business": "Trade: business",
+        "finance-commercial-banks": "Finance: commercial banks",
+        "finance-community-banks": "Finance: community banks",
+        "finance-microcredit": "Finance: micro credit services",
+        "finance-insurance": "Finance: insurance companies",
+        "finance-other": "Finance: other financial institutions",
+        "industrial": "Industrial sector",
+        "sports-arts": "Sport, arts, entertainment and gaming",
+        "waste": "Waste collection, processing and disposal",
+        "other": "Any other sector not specified"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "agri-crops": 897,
+            "agri-forestry": 949,
+            "agri-fishing": 1538,
+            "health-hospital": 1282,
+            "health-centre": 1231,
+            "health-polyclinic": 1231,
+            "health-dispensary": 1179,
+            "health-pharmacy": 1231,
+            "comms-media": 1482,
+            "comms-telecom": 3303,
+            "comms-call-centre": 1949,
+            "domestic-diplomats": 1682,
+            "domestic-officers": 1359,
+            "domestic-non-resident": 821,
+            "domestic-other": 410,
+            "hotel-4-5-star": 1923,
+            "hotel-3-star": 1154,
+            "hotel-other": 1000,
+            "hotel-porter": 1154,
+            "hotel-tour-guide": 1641,
+            "hotel-hunting": 1025,
+            "security-international": 1497,
+            "security-domestic": 1010,
+            "energy-international": 3928,
+            "energy-domestic": 1523,
+            "transport-aviation": 2554,
+            "transport-freight": 2379,
+            "transport-inland": 2044,
+            "transport-postal": 1474,
+            "construction-class-1": 2641,
+            "construction-class-2-4": 2382,
+            "construction-class-5-7": 2044,
+            "mining-prospecting": 3564,
+            "mining-primary-licence": 2039,
+            "mining-dealer": 3051,
+            "mining-broker": 1710,
+            "school-primary": 1418,
+            "school-secondary": 1443,
+            "school-college": 1444,
+            "school-higher": 1542,
+            "trade-business": 1028,
+            "finance-commercial-banks": 3759,
+            "finance-community-banks": 3582,
+            "finance-microcredit": 3585,
+            "finance-insurance": 3588,
+            "finance-other": 3587,
+            "industrial": 1025,
+            "sports-arts": 1474,
+            "waste": 967,
+            "other": 897
+          },
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Labour Institutions (Minimum Wage for Private Sector) Order, 2025, GN No. 605A, Second Schedule",
+            "url": "https://commons.laws.africa/akn/tz/act/gn/2025/605a/media/publication/tz-act-gn-2025-605a-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Special Supplement No. 9 to the Gazette of 13 October 2025. In force from 1 January 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tz.minimum-wage-daily",
+      "nombre": "Minimum daily wage by sector",
+      "tipo": "mapa",
+      "unidad": "TZS",
+      "etiquetas": {
+        "agri-crops": "Agriculture: crop or animal production",
+        "agri-forestry": "Agriculture: forestry",
+        "agri-fishing": "Agriculture: fishing and aquaculture",
+        "health-hospital": "Health: hospital",
+        "health-centre": "Health: health centre",
+        "health-polyclinic": "Health: polyclinic",
+        "health-dispensary": "Health: dispensary",
+        "health-pharmacy": "Health: pharmacy",
+        "comms-media": "Communications: programme, advertising and media",
+        "comms-telecom": "Communications: telecommunication services",
+        "comms-call-centre": "Communications: call centre",
+        "domestic-diplomats": "Domestic workers employed by diplomats and major businessmen",
+        "domestic-officers": "Domestic workers employed by entitled officers",
+        "domestic-non-resident": "Domestic workers who do not live in the employer's household",
+        "domestic-other": "Other domestic workers",
+        "hotel-4-5-star": "Hotels: five and four star",
+        "hotel-3-star": "Hotels: three star",
+        "hotel-other": "Hotels with one or two stars, guest houses, bars and restaurants",
+        "hotel-porter": "Tourist luggage porter",
+        "hotel-tour-guide": "Tour guide",
+        "hotel-hunting": "Hunting and related activities",
+        "security-international": "Private security: international companies",
+        "security-domestic": "Private security: domestic companies",
+        "energy-international": "Energy: international companies",
+        "energy-domestic": "Energy: domestic companies",
+        "transport-aviation": "Transport: aviation services",
+        "transport-freight": "Transport: freight clearing and forwarding",
+        "transport-inland": "Transport: inland transport services",
+        "transport-postal": "Transport: postal and courier services",
+        "construction-class-1": "Construction: contractors Class I",
+        "construction-class-2-4": "Construction: contractors Class II to IV",
+        "construction-class-5-7": "Construction: contractors Class V to VII",
+        "mining-prospecting": "Mining: mining and prospecting minerals",
+        "mining-primary-licence": "Mining: primary mining licence",
+        "mining-dealer": "Mining: dealer licence",
+        "mining-broker": "Mining: broker licence",
+        "school-primary": "Private schools: pre-primary and primary",
+        "school-secondary": "Private schools: secondary",
+        "school-college": "Private colleges and vocational training institutes",
+        "school-higher": "Private higher education institutions",
+        "trade-business": "Trade: business",
+        "finance-commercial-banks": "Finance: commercial banks",
+        "finance-community-banks": "Finance: community banks",
+        "finance-microcredit": "Finance: micro credit services",
+        "finance-insurance": "Finance: insurance companies",
+        "finance-other": "Finance: other financial institutions",
+        "industrial": "Industrial sector",
+        "sports-arts": "Sport, arts, entertainment and gaming",
+        "waste": "Waste collection, processing and disposal",
+        "other": "Any other sector not specified"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "agri-crops": 6731,
+            "agri-forestry": 7115,
+            "agri-fishing": 11539,
+            "health-hospital": 9615,
+            "health-centre": 9231,
+            "health-polyclinic": 9231,
+            "health-dispensary": 8846,
+            "health-pharmacy": 9231,
+            "comms-media": 11115,
+            "comms-telecom": 24769,
+            "comms-call-centre": 14615,
+            "domestic-diplomats": 12615,
+            "domestic-officers": 10192,
+            "domestic-non-resident": 6154,
+            "domestic-other": 3077,
+            "hotel-4-5-star": 14423,
+            "hotel-3-star": 8654,
+            "hotel-other": 7500,
+            "hotel-porter": 8654,
+            "hotel-tour-guide": 12308,
+            "hotel-hunting": 7692,
+            "security-international": 11231,
+            "security-domestic": 7577,
+            "energy-international": 29458,
+            "energy-domestic": 11423,
+            "transport-aviation": 19154,
+            "transport-freight": 17846,
+            "transport-inland": 15327,
+            "transport-postal": 11058,
+            "construction-class-1": 19808,
+            "construction-class-2-4": 17865,
+            "construction-class-5-7": 15327,
+            "mining-prospecting": 26731,
+            "mining-primary-licence": 15292,
+            "mining-dealer": 22885,
+            "mining-broker": 12827,
+            "school-primary": 10635,
+            "school-secondary": 10819,
+            "school-college": 10827,
+            "school-higher": 11565,
+            "trade-business": 7712,
+            "finance-commercial-banks": 28192,
+            "finance-community-banks": 26862,
+            "finance-microcredit": 26885,
+            "finance-insurance": 26912,
+            "finance-other": 26904,
+            "industrial": 7692,
+            "sports-arts": 11058,
+            "waste": 7250,
+            "other": 6731
+          },
+          "fuente": {
+            "organismo": "Government Gazette (Laws.Africa commons)",
+            "titulo": "Labour Institutions (Minimum Wage for Private Sector) Order, 2025, GN No. 605A, Second Schedule",
+            "url": "https://commons.laws.africa/akn/tz/act/gn/2025/605a/media/publication/tz-act-gn-2025-605a-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Special Supplement No. 9 to the Gazette of 13 October 2025. In force from 1 January 2026."
+          }
+        }
+      ]
+    }
+  ]
+}

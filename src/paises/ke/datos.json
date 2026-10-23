@@ -1,0 +1,1303 @@
+{
+  "mercado": "ke",
+  "datos": [
+    {
+      "id": "ke.paye-bands",
+      "nombre": "Monthly PAYE bands",
+      "tipo": "escala",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 24000,
+              "tasa": 10
+            },
+            {
+              "desde": 24000,
+              "hasta": 32333,
+              "tasa": 25
+            },
+            {
+              "desde": 32333,
+              "hasta": 500000,
+              "tasa": 30
+            },
+            {
+              "desde": 500000,
+              "hasta": 800000,
+              "tasa": 32.5
+            },
+            {
+              "desde": 800000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.personal-relief",
+      "nombre": "Personal relief a month",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 2400,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.insurance-relief-rate",
+      "nombre": "Insurance relief: share of premiums",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.insurance-relief-cap",
+      "nombre": "Insurance relief: maximum a year",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.pension-deduction-cap",
+      "nombre": "Pension contributions you can deduct a month",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-12-27",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.mortgage-interest-cap",
+      "nombre": "Mortgage interest you can deduct a month",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-12-27",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.medical-fund-cap",
+      "nombre": "Post-retirement medical fund contributions you can deduct a month",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-12-27",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.housing-levy-rate",
+      "nombre": "Affordable Housing Levy, employee and employer each",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-19",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.shif-rate",
+      "nombre": "SHIF contribution rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 2.75,
+          "fuente": {
+            "organismo": "Social Health Authority",
+            "titulo": "Premium rates for the Social Health Insurance Fund",
+            "url": "https://www.sha.go.ke/premium-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.shif-minimum",
+      "nombre": "SHIF minimum contribution a month",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 300,
+          "fuente": {
+            "organismo": "Social Health Authority",
+            "titulo": "Premium rates for the Social Health Insurance Fund",
+            "url": "https://www.sha.go.ke/premium-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.nssf-rate",
+      "nombre": "NSSF contribution rate, employee and employer each",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "National Social Security Fund Act, 2013, section 20 and Third Schedule",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2013/45/eng@2022-12-31",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.nssf-lel",
+      "nombre": "NSSF lower earnings limit (Tier I)",
+      "tipo": "numero",
+      "unidad": "KES",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "hasta": "2027-01-31",
+          "valor": 9000,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Notice to employers: Year 4 (2026) NSSF contribution rates",
+            "url": "https://www.nssf.or.ke/notice-to-employers-year-4-2026-nssf-contribution-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Posted on 18 February 2026 and signed by the NSSF Managing Trustee. Year 4 of the Third Schedule runs from February 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.nssf-uel",
+      "nombre": "NSSF upper earnings limit (Tier II)",
+      "tipo": "numero",
+      "unidad": "KES",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "hasta": "2027-01-31",
+          "valor": 108000,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Notice to employers: Year 4 (2026) NSSF contribution rates",
+            "url": "https://www.nssf.or.ke/notice-to-employers-year-4-2026-nssf-contribution-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Posted on 18 February 2026 and signed by the NSSF Managing Trustee. Year 4 of the Third Schedule runs from February 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.vat",
+      "nombre": "VAT general rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Value Added Tax (VAT): rates and registration",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/value-added-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.vat-threshold",
+      "nombre": "VAT registration threshold a year",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 5000000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Value Added Tax (VAT): rates and registration",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/value-added-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.tot-rate",
+      "nombre": "Turnover tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Turnover Tax (TOT)",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/turnover-tax-tot",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.tot-lower",
+      "nombre": "Turnover tax: turnover must be more than",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Turnover Tax (TOT)",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/turnover-tax-tot",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.tot-upper",
+      "nombre": "Turnover tax: turnover up to",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 25000000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Turnover Tax (TOT)",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/turnover-tax-tot",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.mri-rate",
+      "nombre": "Monthly rental income tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Residential Rental Income Tax (MRI)",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/residential-rental-income",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.mri-upper",
+      "nombre": "Monthly rental income tax: rent up to a year",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 15000000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Residential Rental Income Tax (MRI)",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/residential-rental-income",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.mri-lower",
+      "nombre": "Monthly rental income tax: rent must be more than a year",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 288000,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Income Tax Act (Cap. 470), section 6A",
+            "url": "https://new.kenyalaw.org/akn/ke/act/1973/16/eng@2026-07-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.tbill-wht",
+      "nombre": "Withholding tax on Treasury bill discount",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Central Bank of Kenya",
+            "titulo": "Frequently asked questions on Government securities: tax on Treasury bills and bonds",
+            "url": "https://www.centralbank.go.ke/images/FAQs/FAQsGoKSecurities.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.paye-late-filing-rate",
+      "nombre": "PAYE late filing penalty: share of the tax due",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.paye-late-filing-min",
+      "nombre": "PAYE late filing penalty: minimum",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.late-payment-penalty",
+      "nombre": "Late payment penalty: share of the tax due",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.late-payment-interest",
+      "nombre": "Late payment interest a month or part of a month",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "PAYE: individual income tax rates, reliefs and allowable deductions",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.advance-tax-per-ton",
+      "nombre": "Advance tax on goods vehicles per ton of load capacity a year",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Advance tax on commercial and public service vehicles",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/advance-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.advance-tax-per-passenger",
+      "nombre": "Advance tax on passenger vehicles per passenger a month",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Advance tax on commercial and public service vehicles",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/advance-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.advance-tax-minimum",
+      "nombre": "Advance tax minimum a year",
+      "tipo": "numero",
+      "unidad": "KES",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2400,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Advance tax on commercial and public service vehicles",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/advance-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.annual-leave-days",
+      "nombre": "Annual leave: working days after 12 months of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 28(1)(a)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.leave-days-per-month",
+      "nombre": "Annual leave on termination: days per completed month",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 1.75,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 28(1)(b)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.sick-full-pay-days",
+      "nombre": "Sick leave with full pay in 12 months",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 30(1)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.sick-half-pay-days",
+      "nombre": "Sick leave with half pay in 12 months",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 30(1)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.sick-qualifying-months",
+      "nombre": "Months of service before sick leave applies",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 30(1)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.maternity-months",
+      "nombre": "Maternity leave with full pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 29(1)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.paternity-weeks",
+      "nombre": "Paternity leave with full pay",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 29(8)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.notice-days-monthly",
+      "nombre": "Notice for monthly paid contracts",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 35(1)(c)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.redundancy-severance-days",
+      "nombre": "Redundancy severance: days of pay per completed year of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-06-02",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Employment Act, 2007 (Cap. 226), section 40(1)(g)",
+            "url": "https://new.kenyalaw.org/akn/ke/act/2007/11/eng@2024-04-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.normal-week-hours",
+      "nombre": "Normal working week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 52,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.night-week-hours",
+      "nombre": "Normal working week on night work",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.overtime-normal-factor",
+      "nombre": "Overtime on normal days: times the normal hourly rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.overtime-rest-day-factor",
+      "nombre": "Overtime on rest days and public holidays: times the normal hourly rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.overtime-hourly-divisor",
+      "nombre": "Monthly wage divisor for the basic hourly rate",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 225,
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Regulation of Wages (General) Order, paragraphs 5 and 6",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/1982/120/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.stamp-duty-per-1000",
+      "nombre": "Stamp duty on a transfer of land: per KSh 1,000 or part above KSh 2,000",
+      "tipo": "mapa",
+      "unidad": "KES",
+      "etiquetas": {
+        "municipality": "Within a municipality",
+        "other": "Outside a municipality"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "municipality": 40,
+            "other": 20
+          },
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Stamp Duty Act (Cap. 480), Schedule, items 11 and 12A",
+            "url": "https://new.kenyalaw.org/akn/ke/act/1958/31/eng@2026-07-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.stamp-duty-first-2000",
+      "nombre": "Stamp duty on a transfer of land: duty on the first KSh 2,000",
+      "tipo": "mapa",
+      "unidad": "KES",
+      "etiquetas": {
+        "municipality": "Within a municipality",
+        "other": "Outside a municipality"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "municipality": 80,
+            "other": 40
+          },
+          "fuente": {
+            "organismo": "Kenya Law",
+            "titulo": "Stamp Duty Act (Cap. 480), Schedule, items 11 and 12A",
+            "url": "https://new.kenyalaw.org/akn/ke/act/1958/31/eng@2026-07-01",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.cgt-rate",
+      "nombre": "Capital gains tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Capital Gains Tax",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/capital-gains-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.wht-resident",
+      "nombre": "Withholding tax rates for residents",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "professional": "Professional fees",
+        "management": "Management fees",
+        "consultancy": "Consultancy and agency fees",
+        "training": "Training fees",
+        "contractual": "Contractual fees",
+        "royalties": "Royalties",
+        "digital-content": "Digital content monetisation",
+        "marketing": "Sales promotion, marketing and advertising",
+        "rent-buildings": "Rent of buildings",
+        "interest-bank": "Bank interest",
+        "winnings": "Betting and gaming winnings"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "professional": 5,
+            "management": 5,
+            "consultancy": 5,
+            "training": 5,
+            "contractual": 3,
+            "royalties": 5,
+            "digital-content": 5,
+            "marketing": 5,
+            "rent-buildings": 10,
+            "interest-bank": 15,
+            "winnings": 20
+          },
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Withholding tax rates for residents and non-residents",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/individual-withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.wht-non-resident",
+      "nombre": "Withholding tax rates for non-residents",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "professional": "Professional fees",
+        "management": "Management fees",
+        "consultancy": "Consultancy and agency fees",
+        "training": "Training fees",
+        "contractual": "Contractual fees",
+        "royalties": "Royalties",
+        "digital-content": "Digital content monetisation",
+        "marketing": "Sales promotion, marketing and advertising",
+        "rent-buildings": "Rent of buildings",
+        "interest-bank": "Bank interest",
+        "winnings": "Betting and gaming winnings"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "professional": 20,
+            "management": 20,
+            "consultancy": 20,
+            "training": 20,
+            "contractual": 20,
+            "royalties": 20,
+            "digital-content": 20,
+            "marketing": 20,
+            "rent-buildings": 30,
+            "interest-bank": 15,
+            "winnings": 20
+          },
+          "fuente": {
+            "organismo": "Kenya Revenue Authority",
+            "titulo": "Withholding tax rates for residents and non-residents",
+            "url": "https://www.kra.go.ke/individual/filing-paying/types-of-taxes/individual-withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.minimum-wage-monthly",
+      "nombre": "Basic minimum monthly wage by occupation and area",
+      "tipo": "mapa",
+      "unidad": "KES",
+      "regiones": [
+        "cities",
+        "municipalities",
+        "other"
+      ],
+      "etiquetas": {
+        "general": "General labourer, cleaner, gardener, house servant, day watchman, messenger",
+        "miner": "Miner, stone cutter, turnboy, waiter, cook, logger, line cutter",
+        "night-watchman": "Night watchman",
+        "machine-attendant": "Machine attendant, sawmill sawyer, bakery worker, tailor's assistant",
+        "machinist": "Machinist, vehicle service worker, laundry operator, junior clerk, light tractor driver",
+        "operator": "Machine operator, shop assistant, copy typist, driver (cars and light vans)",
+        "clerk": "Pattern designer, dress cutter, general clerk, telephone operator, receptionist, storekeeper",
+        "tailor": "Tailor, driver (medium sized vehicle)",
+        "dyer": "Dyer, crawler tractor driver, salesman",
+        "saw-doctor": "Saw doctor, caretaker (buildings)",
+        "cashier": "Cashier, driver (heavy commercial vehicles), salesman driver",
+        "ungraded-artisan": "Ungraded artisan",
+        "artisan-3": "Artisan Grade III",
+        "artisan-2": "Artisan Grade II",
+        "artisan-1": "Artisan Grade I"
+      },
+      "proximaRevision": "2027-05-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "cities",
+          "desde": "2026-05-01",
+          "valor": {
+            "general": 18047.4,
+            "miner": 19491.33,
+            "night-watchman": 20133.72,
+            "machine-attendant": 20454.86,
+            "machinist": 23350.21,
+            "operator": 24358.73,
+            "clerk": 27796.51,
+            "tailor": 30634.69,
+            "dyer": 33820.24,
+            "saw-doctor": 37426.84,
+            "cashier": 40724.23,
+            "ungraded-artisan": 24358.79,
+            "artisan-3": 30634.74,
+            "artisan-2": 33087.44,
+            "artisan-1": 40724.23
+          },
+          "fuente": {
+            "organismo": "Kenya Law (Kenya Gazette Supplement No. 160)",
+            "titulo": "Regulation of Wages (General) (Amendment) Order, 2026, Legal Notice 108 of 2026, Schedule",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/2026/108/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Republished on 26 June 2026 after Legal Notice 95. Deemed in force from 1 May 2026. Monthly wages exclude housing allowance."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "municipalities",
+          "desde": "2026-05-01",
+          "valor": {
+            "general": 16650.95,
+            "miner": 17046.83,
+            "night-watchman": 18665.88,
+            "machine-attendant": 19034.56,
+            "machinist": 21844.12,
+            "operator": 22481.83,
+            "clerk": 25412.61,
+            "tailor": 28155.87,
+            "dyer": 31555.31,
+            "saw-doctor": 34947.96,
+            "cashier": 38323.71,
+            "ungraded-artisan": 22481.83,
+            "artisan-3": 28155.87,
+            "artisan-2": 31555.31,
+            "artisan-1": 38323.71
+          },
+          "fuente": {
+            "organismo": "Kenya Law (Kenya Gazette Supplement No. 160)",
+            "titulo": "Regulation of Wages (General) (Amendment) Order, 2026, Legal Notice 108 of 2026, Schedule",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/2026/108/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Republished on 26 June 2026 after Legal Notice 95. Deemed in force from 1 May 2026. Monthly wages exclude housing allowance."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "other",
+          "desde": "2026-05-01",
+          "valor": {
+            "general": 9628.07,
+            "miner": 11124.42,
+            "night-watchman": 11483.43,
+            "machine-attendant": 15427.97,
+            "machinist": 17859.17,
+            "operator": 18582.41,
+            "clerk": 21668.18,
+            "tailor": 25105.72,
+            "dyer": 28479.38,
+            "saw-doctor": 32556.94,
+            "cashier": 35932.75,
+            "ungraded-artisan": 18582.77,
+            "artisan-3": 25058.23,
+            "artisan-2": 28479.38,
+            "artisan-1": 35932.86
+          },
+          "fuente": {
+            "organismo": "Kenya Law (Kenya Gazette Supplement No. 160)",
+            "titulo": "Regulation of Wages (General) (Amendment) Order, 2026, Legal Notice 108 of 2026, Schedule",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/2026/108/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Republished on 26 June 2026 after Legal Notice 95. Deemed in force from 1 May 2026. Monthly wages exclude housing allowance."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ke.minimum-wage-hourly",
+      "nombre": "Minimum hourly rate by occupation and area",
+      "tipo": "mapa",
+      "unidad": "KES",
+      "regiones": [
+        "cities",
+        "municipalities",
+        "other"
+      ],
+      "etiquetas": {
+        "general": "General labourer, cleaner, gardener, house servant, day watchman, messenger",
+        "miner": "Miner, stone cutter, turnboy, waiter, cook, logger, line cutter",
+        "night-watchman": "Night watchman",
+        "machine-attendant": "Machine attendant, sawmill sawyer, bakery worker, tailor's assistant",
+        "machinist": "Machinist, vehicle service worker, laundry operator, junior clerk, light tractor driver",
+        "operator": "Machine operator, shop assistant, copy typist, driver (cars and light vans)",
+        "clerk": "Pattern designer, dress cutter, general clerk, telephone operator, receptionist, storekeeper",
+        "tailor": "Tailor, driver (medium sized vehicle)",
+        "dyer": "Dyer, crawler tractor driver, salesman",
+        "saw-doctor": "Saw doctor, caretaker (buildings)",
+        "cashier": "Cashier, driver (heavy commercial vehicles), salesman driver",
+        "ungraded-artisan": "Ungraded artisan",
+        "artisan-3": "Artisan Grade III",
+        "artisan-2": "Artisan Grade II",
+        "artisan-1": "Artisan Grade I"
+      },
+      "proximaRevision": "2027-05-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "cities",
+          "desde": "2026-05-01",
+          "valor": {
+            "general": 161.34,
+            "miner": 175.46,
+            "night-watchman": 181.64,
+            "machine-attendant": 188.47,
+            "machinist": 209.54,
+            "operator": 219.28,
+            "clerk": 250.38,
+            "tailor": 272.7,
+            "dyer": 303.92,
+            "saw-doctor": 336.69,
+            "cashier": 366.96,
+            "ungraded-artisan": 219.28,
+            "artisan-3": 272.64,
+            "artisan-2": 303.92,
+            "artisan-1": 366.96
+          },
+          "fuente": {
+            "organismo": "Kenya Law (Kenya Gazette Supplement No. 160)",
+            "titulo": "Regulation of Wages (General) (Amendment) Order, 2026, Legal Notice 108 of 2026, Schedule",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/2026/108/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Republished on 26 June 2026 after Legal Notice 95. Deemed in force from 1 May 2026. Monthly wages exclude housing allowance."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "municipalities",
+          "desde": "2026-05-01",
+          "valor": {
+            "general": 147.45,
+            "miner": 149.47,
+            "night-watchman": 165.26,
+            "machine-attendant": 166.86,
+            "machinist": 175.65,
+            "operator": 199.98,
+            "clerk": 201.35,
+            "tailor": 250.74,
+            "dyer": 282.67,
+            "saw-doctor": 313.54,
+            "cashier": 346.42,
+            "ungraded-artisan": 199.98,
+            "artisan-3": 250.74,
+            "artisan-2": 282.67,
+            "artisan-1": 346.42
+          },
+          "fuente": {
+            "organismo": "Kenya Law (Kenya Gazette Supplement No. 160)",
+            "titulo": "Regulation of Wages (General) (Amendment) Order, 2026, Legal Notice 108 of 2026, Schedule",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/2026/108/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Republished on 26 June 2026 after Legal Notice 95. Deemed in force from 1 May 2026. Monthly wages exclude housing allowance."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "other",
+          "desde": "2026-05-01",
+          "valor": {
+            "general": 90.17,
+            "miner": 100.56,
+            "night-watchman": 105.9,
+            "machine-attendant": 138.66,
+            "machinist": 161.34,
+            "operator": 165.14,
+            "clerk": 194.58,
+            "tailor": 225.03,
+            "dyer": 251.09,
+            "saw-doctor": 291.1,
+            "cashier": 323.16,
+            "ungraded-artisan": 166.15,
+            "artisan-3": 225.15,
+            "artisan-2": 251.39,
+            "artisan-1": 323.27
+          },
+          "fuente": {
+            "organismo": "Kenya Law (Kenya Gazette Supplement No. 160)",
+            "titulo": "Regulation of Wages (General) (Amendment) Order, 2026, Legal Notice 108 of 2026, Schedule",
+            "url": "https://new.kenyalaw.org/akn/ke/act/ln/2026/108/eng@2026-06-26",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Republished on 26 June 2026 after Legal Notice 95. Deemed in force from 1 May 2026. Monthly wages exclude housing allowance."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -251,6 +251,14 @@ const nl: GramaticaPais = (() => {
   return { nombre, de: (p) => `van ${nombre(p)}`, en: (p) => `in ${nombre(p)}`, para: (p) => `voor ${nombre(p)}` };
 })();
 
+// Sin artículos ni plural: el país lleva la partícula detrás. Lugar y destino cambian el orden de
+// toda la frase, así que los diccionarios de estos idiomas arman la oración con el nombre suelto y
+// usan estas formas solo donde encajan tal cual.
+const ja: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}の`, en: (p) => `${p}で`, para: (p) => `${p}向け` };
+const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `${p}에서`, para: (p) => `${p}용` };
+// 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
+const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
+
 // La pertenencia va por idafa (el nombre suelto detrás del sustantivo, que no lleva «ال»: «حاسبات مصر»);
 // «ل» se pega al nombre y con artículo queda «لل» («للسعودية»).
 const ar: GramaticaPais = {
@@ -260,4 +268,4 @@ const ar: GramaticaPais = {
   para: (p) => (p.startsWith("ال") ? `لل${p.slice(2)}` : `ل${p}`),
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ar };
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, ar };

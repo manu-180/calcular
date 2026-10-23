@@ -1,0 +1,35 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCostoDeUnAuto } from "../definicion";
+
+export const textosJa: TextosUi<UiCostoDeUnAuto> = {
+  slug: "car-cost",
+  ui: () => ({
+    precio: "車の価値",
+    precioAyuda: "購入価格、またはしばらく乗っているなら今の価値です。",
+    depreciacion: "1年で下がる価値（%）",
+    depreciacionAyuda: "新車は最初の1年で15〜25%下がります。中古車はそれより少なめです。",
+    cuota: "毎月のローン返済額（任意）",
+    cuotaAyuda: "毎月口座から出ていく金額を見るためだけに使います。実際のコストには足しません。",
+    seguro: "毎月の保険料",
+    distanciaKm: "1か月の走行距離（km）",
+    distanciaMi: "1か月の走行距離（マイル）",
+    consumoL100: "燃費（100kmあたりのリットル数）",
+    consumoMpg: "燃費（マイル／ガロン）",
+    precioLitro: "燃料1リットルあたりの価格",
+    precioGalon: "燃料1ガロンあたりの価格",
+    mantenimiento: "毎月のメンテナンス費",
+    mantenimientoAyuda: "点検、タイヤ、修理、洗車などを月平均にした金額です。",
+    estacionamiento: "毎月の駐車場代（任意）",
+    otros: "税金、高速料金などそのほかの月額費用（任意）",
+    otrosAyuda: "自動車税、車検、高速料金、違反金などを月平均にした金額です。",
+    costoMensual: "1か月の実際のコスト",
+    costoAnual: "1年の実際のコスト",
+    porKm: "1kmあたりのコスト",
+    porMilla: "1マイルあたりのコスト",
+    combustible: "1か月の燃料代",
+    depreciacionMensual: "1か月で下がる価値",
+    gastoBolsillo: "毎月口座から出ていく金額",
+    errorConsumo: "燃料代を計算するために、車の燃費を入れてください。",
+    observacionCuota: "ローンの返済額は実際のコストに含めていません。返済の一部は車そのものの代金で、それはすでに価値の目減りとして数えているからです。ローンの利息は、それとは別のコストです。",
+  }),
+};

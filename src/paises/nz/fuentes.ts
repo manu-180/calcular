@@ -91,7 +91,10 @@ export const detectores: readonly Detector[] = [
     id: "nz.ocr-rbnz",
     carril: "serie",
     serie: "nz.ocr",
-    metodo: "html",
+    // Manual: el sitio del RBNZ responde con un desafío anti-bots de Cloudflare (cf-mitigated:
+    // challenge) y no se saltea. El cron no lo corre; el semáforo avisa 30 días antes de que nz.ocr
+    // venza y el punto se carga a mano después de cada decisión. traer() queda para probarlo a mano.
+    metodo: "manual",
     url: "https://www.rbnz.govt.nz/monetary-policy/monetary-policy-decisions",
     userAgentNavegador: true,
     // Entre las decisiones de noviembre de 2019 y noviembre de 2020 el OCR pasó de 1 % a 0,25 %: un
