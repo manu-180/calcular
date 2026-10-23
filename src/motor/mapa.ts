@@ -6,6 +6,7 @@ import { intlActivo, modoPublicacion } from "./sitio";
 import type { CodigoMercado, EntradaCalculadora, FechaISO, Mercado } from "./tipos";
 import { hoyEn } from "./vigencia";
 import { hreflangMundo, urlMundo } from "./mundo/ui/seo";
+import { hreflangIndice, hreflangRanking, urlsRankings } from "./rankings/seo";
 
 const masNueva = (fechas: readonly (FechaISO | undefined)[], tope: FechaISO): FechaISO | undefined =>
   fechas.filter((f): f is FechaISO => Boolean(f) && f! <= tope).sort().at(-1);
@@ -72,6 +73,15 @@ function entradaMundo(registro: Registro, m: Mercado, modo: ReturnType<typeof mo
   return { url: urlMundo(m), ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
 }
 
+// Rankings de países de la edición: el índice y cada ranking, como «Tu sueldo en el mundo» (sin
+// lastmod y con el clúster entero acá cuando pasa de MAX_HREFLANG_HEAD).
+function entradasRankings(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean): EntradaSitemap[] {
+  return urlsRankings(m).map(({ url, id }) => {
+    const idiomas = conAlternos ? (id ? hreflangRanking(registro, modo, id) : hreflangIndice(registro, modo)) : undefined;
+    return { url, ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
+  });
+}
+
 function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false): EntradaSitemap[] {
   const fecha = hoyEn(m);
   const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).map((c) => {
@@ -85,6 +95,7 @@ function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof 
   return [
     { url: urlIntl(m.codigo), lastmod: inicio },
     entradaMundo(registro, m, modo, conAlternos),
+    ...entradasRankings(registro, m, modo, conAlternos),
     ...calculadoras,
     ...PAGINAS_MERCADO.map((p) => ({ url: urlIntl(m.codigo, p), lastmod: porPagina[p] })),
   ];
@@ -114,6 +125,7 @@ export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, op
   return [
     { url: urlIntl("global"), lastmod: inicio },
     entradaMundo(registro, m, modo, opciones.conAlternos ?? false),
+    ...entradasRankings(registro, m, modo, opciones.conAlternos ?? false),
     ...PAGINAS_GLOBALES.map((p) => ({ url: urlIntl("global", p), lastmod: ACTUALIZACION_PAGINAS_GLOBALES })),
   ];
 }
