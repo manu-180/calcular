@@ -10,7 +10,7 @@
       "fuente": {
         "organismo": "Central Bank of the UAE",
         "titulo": "EIBOR rates (3M column, current month)",
-        "url": "https://www.centralbank.ae/en/forex-eibor/eibor-rates/",
+        "url": "https://centralbank.ae/en/forex-eibor/eibor-rates/",
         "tipo": "primaria",
         "verificadoEl": "2026-10-17",
         "nota": "Read in a browser: the page blocks automated requests, so new fixings may need to be loaded by hand."

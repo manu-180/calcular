@@ -58,7 +58,7 @@ export const detectores: readonly Detector[] = [
     carril: "serie",
     serie: "ae.eibor-3m",
     metodo: "html",
-    url: "https://www.centralbank.ae/en/forex-eibor/eibor-rates/",
+    url: "https://centralbank.ae/en/forex-eibor/eibor-rates/",
     userAgentNavegador: true,
     banda: { min: 0, max: 15, saltoRelativoMax: 0.2 },
     traer(http) {
