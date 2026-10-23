@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { requireAdmin } from "@/lib/auth/admin";
 import { cargarPanel, leerMercado } from "@/lib/panel/datos";
-import { RANGOS, type PanelDatos, type Rango } from "@/lib/panel/tipos";
+import { hoyAR, leerRango } from "@/lib/panel/fechas";
+import type { PanelDatos } from "@/lib/panel/tipos";
 import Panel from "@/components/panel/Panel";
 import PanelError from "@/components/panel/PanelError";
 import { EnlaceOpiniones } from "@/components/opiniones/EnlaceOpiniones";
@@ -15,13 +16,9 @@ export const metadata: Metadata = {
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
-function leerRango(valor: string | string[] | undefined): Rango {
-  return typeof valor === "string" && (RANGOS as string[]).includes(valor) ? (valor as Rango) : "7d";
-}
-
 export default async function DashboardPage({ searchParams }: Props) {
   const sp = await searchParams;
-  const rango = leerRango(sp.r);
+  const rango = leerRango(sp.r, hoyAR()) ?? "7d";
   const mercado = leerMercado(sp.mercado);
 
   // Sin variable intermedia a propósito: Next reemplaza `process.env.NODE_ENV` por un literal en
