@@ -64,8 +64,11 @@ mal, contalo en el reporte. `scripts/paises_comun.ts` descubre tu país por carp
 
 `npx tsc --noEmit`; `npx tsx scripts/check_paises.ts`, `check_paises_casos.ts`,
 `check_textos_paises.ts`, `check_fronteras.ts` verdes; detectores probados contra la red real.
-Si tenés calculadora de `sueldo-neto`, `npx tsx scripts/check_mundo.ts` dice si entró a «Tu sueldo
-en el mundo»; si sale excluida, declarás `mundo` en esa calculadora (RECETA §7).
+Si tenés calculadora de `sueldo-neto`, declarás siempre `mundo` en ella (RECETA §7): la inferencia
+del motor no sabe si tu neto descuenta el impuesto a la renta, y un país mal leído publica una
+comparación falsa en todas las ediciones. Si el neto no lo descuenta, `mundo: { excluir: "…" }`.
+`npx tsx scripts/check_mundo.ts` confirma que entró y con qué tasa a 15k/50k/150k: compará esas tasas
+con las de la autoridad fiscal del país antes de entregar.
 
 ## Formato de retorno (breve, sin pegar archivos)
 
