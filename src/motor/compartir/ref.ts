@@ -1,30 +1,17 @@
-const CLAVE_CODIGO = "cy-ref";
 const CLAVE_VARIANTE = "cy-ab-puente";
 const ALFABETO = "abcdefghijklmnopqrstuvwxyz0123456789";
 
+// /api/e (src/app/api/e/protocolo.ts) valida contra estas mismas constantes: si cambian acá, cambia allá.
 export const REF_VALIDO = /^[a-z0-9]{6,12}$/;
-export const ORIGEN_VALIDO = /^[a-z0-9]{1,6}$/;
+export const ORIGENES_COMPARTIR = ["calculadora", "mundo", "duelo"] as const;
+export type OrigenCompartir = (typeof ORIGENES_COMPARTIR)[number];
+const CORTOS: Readonly<Record<OrigenCompartir, string>> = { calculadora: "c", mundo: "m", duelo: "d" };
+export const ORIGENES_CORTOS: readonly string[] = Object.values(CORTOS);
+export const VARIANTES_PUENTE = ["con", "sin"] as const;
 
-export type VariantePuente = "con" | "sin";
+export type VariantePuente = (typeof VARIANTES_PUENTE)[number];
 
-// Sin localStorage (modo privado, bloqueado) el código y la variante viven lo que dura la pestaña:
-// la persona no cambia de variante a mitad de la sesión y un compartido sigue llevando un ref.
-let codigoEfimero = "";
 let varianteEfimera: VariantePuente | "" = "";
-
-function leer(clave: string): string {
-  try {
-    return localStorage.getItem(clave) ?? "";
-  } catch {
-    return "";
-  }
-}
-
-function escribir(clave: string, valor: string): void {
-  try {
-    localStorage.setItem(clave, valor);
-  } catch {}
-}
 
 function aleatorio(n: number): string {
   const bytes = new Uint8Array(n);
@@ -33,37 +20,36 @@ function aleatorio(n: number): string {
   return Array.from(bytes, (b) => ALFABETO[b % ALFABETO.length]).join("");
 }
 
-// El código que identifica a quien comparte. No es el id de visitante de la medición (ca_vid): ese no
-// puede viajar en una URL que otros ven y reenvían.
-export function leerCodigoPropio(): string {
-  const guardado = leer(CLAVE_CODIGO);
-  return REF_VALIDO.test(guardado) ? guardado : codigoEfimero;
+// Uno nuevo por cada compartido y no se guarda en ningún lado: viaja en una URL que otros ven y
+// reenvían, así que no puede ser un seudónimo de quien comparte. El evento `compartir` lleva el mismo
+// código que la `llegada` que trae ese link, y así se cuenta qué compartido trajo gente. Las llegadas
+// de quien abre su propio link se separan en la base comparando el vid de los dos eventos.
+export function codigoCompartido(): string {
+  return aleatorio(8);
 }
 
-export function codigoPropio(): string {
-  const actual = leerCodigoPropio();
-  if (actual) return actual;
-  codigoEfimero = aleatorio(8);
-  escribir(CLAVE_CODIGO, codigoEfimero);
-  return codigoEfimero;
-}
-
-// «calculadora:mx.sueldo-neto» → «c». El origen viaja corto para que el link compartido siga siendo corto.
-const ORIGENES: Readonly<Record<string, string>> = { calculadora: "c", mundo: "m", duelo: "d" };
-
-export function origenCorto(origen: string): string {
+// «calculadora:mx.sueldo-neto» → «c». El origen viaja corto para que el link compartido siga siendo
+// corto. Un origen fuera de la lista no viaja: /api/e descartaría la llegada.
+export function origenCorto(origen: string): string | null {
   const tipo = origen.split(":")[0].toLowerCase();
-  return ORIGENES[tipo] ?? tipo.replace(/[^a-z0-9]/g, "").slice(0, 3);
+  return (ORIGENES_COMPARTIR as readonly string[]).includes(tipo) ? CORTOS[tipo as OrigenCompartir] : null;
 }
 
 // 50 / 50 estable por persona. La variante «sin» no ve la línea-puente: sirve de control para saber
-// si la línea baja el uso de la calculadora.
+// si la línea baja el uso de la calculadora. Va en localStorage porque es una preferencia de cómo se
+// ve el sitio, no un dato de la persona, y nunca sale del navegador más que como «con» o «sin» (lo
+// cuenta la política de privacidad, src/motor/i18n/legales). Sin localStorage dura lo que la pestaña.
 export function variantePuente(): VariantePuente {
-  const guardada = leer(CLAVE_VARIANTE);
+  let guardada = "";
+  try {
+    guardada = localStorage.getItem(CLAVE_VARIANTE) ?? "";
+  } catch {}
   if (guardada === "con" || guardada === "sin") return guardada;
   if (varianteEfimera) return varianteEfimera;
   const nueva: VariantePuente = Math.random() < 0.5 ? "con" : "sin";
   varianteEfimera = nueva;
-  escribir(CLAVE_VARIANTE, nueva);
+  try {
+    localStorage.setItem(CLAVE_VARIANTE, nueva);
+  } catch {}
   return nueva;
 }

@@ -55,19 +55,28 @@ export const en: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Your country",
           parrafos: [
             "To suggest the right country's calculators, we look up which country your visit comes from. Our hosting provider infers it from your IP address.",
-            "We don't store your IP address or your country. The answer stays in your browser for the length of the visit.",
+            "We don't store your IP address. The answer stays in your browser for the length of the visit.",
           ],
         },
         {
           titulo: "What your browser stores",
           parrafos: [
-            "We use your browser's session storage to remember the country you chose and whether you closed the notice that suggests it. It's cleared when you close the tab.",
+            "Your browser's session storage, which is cleared when you close the tab, remembers your visit's country, whether you closed the notice that suggests it and, if you arrived through a shared link, that link's code.",
+            "Local storage, which stays until you clear it in your browser, keeps the country you picked yourself, a random number used to count visits, and the version of a design test you're shown, so the site looks the same every time you come back. None of it says who you are.",
             "We don't use advertising or tracking cookies.",
           ],
         },
         {
           titulo: "Hosting",
           parrafos: ["The site is hosted on Vercel. Like any server, it logs technical data for each visit (IP address and browser) so the site works and stays secure."],
+        },
+        {
+          titulo: "How we count visits",
+          parrafos: [
+            "We measure how the site is used with our own tool: which pages are opened and how much they're used, which site you came from, your device type and your country. The random number your browser keeps tells a new visit from a returning one. We don't store your IP address or anything you type into a calculator.",
+            "Links shared from the site carry a random code, different every time something is shared, so we can count how many visits each one brings. That code doesn't identify anyone.",
+            "The amounts you type into a calculator never leave your browser inside a link.",
+          ],
         },
         {
           titulo: "Changes and questions",
