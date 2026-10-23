@@ -3,6 +3,7 @@
 // textos cumplan lo básico (largo de title y description, FAQ, sin rayas ni emojis). En las variantes
 // de un idioma (es-ES, pt-PT, fr-CA, de-CH) revisa además que no se cuele el vocabulario de otra.
 // Uso: npx tsx scripts/check_universales.ts [id]
+import { anchoVisual } from "../src/motor/ancho";
 import { ErrorEntrada, crearContexto } from "../src/motor/calculo";
 import { CONCEPTOS } from "../src/motor/conceptos";
 import { formatearFilas } from "../src/motor/formulario";
@@ -44,15 +45,29 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   ],
   it: [{ mercado: "it" as CodigoMercado, pais: "IT", nombrePais: "Italia", locale: "it-IT", trato: "tu", moneda: "EUR" as Moneda, escala: 1 }],
   nl: [{ mercado: "nl" as CodigoMercado, pais: "NL", nombrePais: "Nederland", locale: "nl-NL", trato: "tu", moneda: "EUR" as Moneda, escala: 1 }],
+  ja: [
+    { mercado: "jp" as CodigoMercado, pais: "JP", nombrePais: "日本", locale: "ja-JP", trato: "usted", moneda: "JPY" as Moneda, escala: 150 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "セントビンセント及びグレナディーン諸島", locale: "ja-JP", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  ko: [
+    { mercado: "kr" as CodigoMercado, pais: "KR", nombrePais: "대한민국", locale: "ko-KR", trato: "usted", moneda: "KRW" as Moneda, escala: 1400 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "세인트빈센트 그레나딘", locale: "ko-KR", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  zh: [
+    { mercado: "tw" as CodigoMercado, pais: "TW", nombrePais: "台灣", locale: "zh-TW", trato: "usted", moneda: "TWD" as Moneda, escala: 30 },
+    { mercado: "hk-zh" as CodigoMercado, pais: "HK", nombrePais: "香港", locale: "zh-HK", trato: "usted", moneda: "HKD" as Moneda, escala: 8 },
+    { mercado: "cn" as CodigoMercado, pais: "CN", nombrePais: "中国", locale: "zh-CN", trato: "usted", moneda: "CNY" as Moneda, escala: 7 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "聖文森及格瑞那丁", locale: "zh-TW", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
   pl: [
     { mercado: "pl" as CodigoMercado, pais: "PL", nombrePais: "Polska", locale: "pl-PL", trato: "tu", moneda: "PLN" as Moneda, escala: 4 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent i Grenadyny", locale: "pl-PL", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
 };
 
-// Idiomas que corren las reglas de redacción y registro (scripts/reglas_idioma.ts) sobre toda la
-// página, ui incluida: los que entraron después del primer lote de traducciones.
-const CON_REGLAS: ReadonlySet<Idioma> = new Set<Idioma>(["pl"]);
+// En ja, ko, zh y los idiomas que entraron después (pl, sv, da, nb, fi) las reglas de puntuación,
+// registro y escritura (scripts/reglas_idioma.ts) corren sobre toda la página.
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "pl"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy
@@ -234,20 +249,20 @@ async function main() {
         if (d.id !== ctx.id || d.mercado !== ctx.mercado || d.slug !== slug || d.concepto !== u.concepto) fallas.push(`${donde}: id, mercado, slug o concepto no salen del contexto`);
         const idsCampos = d.campos.map((c) => c.id);
         if (new Set(idsCampos).size !== idsCampos.length) fallas.push(`${donde}: ids de campo repetidos`);
-        const largoTitle = k.title.replace(MARCADOR, "XXXXXXX").length;
-        if (largoTitle > 60) fallas.push(`${donde}: title de ${largoTitle} caracteres (máximo 60)`);
-        const largoDesc = k.description.replace(MARCADOR, "XXXXXXX").length;
-        if (largoDesc > 160 || largoDesc < 70) fallas.push(`${donde}: description de ${largoDesc} caracteres (entre 70 y 160)`);
+        const largoTitle = anchoVisual(k.title.replace(MARCADOR, "XXXXXXX"));
+        if (largoTitle > 60) fallas.push(`${donde}: title de ${largoTitle} de ancho (máximo 60)`);
+        const largoDesc = anchoVisual(k.description.replace(MARCADOR, "XXXXXXX"));
+        if (largoDesc > 160 || largoDesc < 70) fallas.push(`${donde}: description de ${largoDesc} de ancho (entre 70 y 160)`);
         if (k.faq.length < 3) fallas.push(`${donde}: menos de 3 preguntas frecuentes`);
         if (!k.intro.length || !k.comoSeCalcula.length) fallas.push(`${donde}: falta intro o comoSeCalcula`);
         for (const t of textosVisibles(inst)) {
           if (RE_RAYA.test(t)) fallas.push(`${donde}: raya en «${t.slice(0, 60)}»`);
           if (RE_EMOJI.test(t)) fallas.push(`${donde}: emoji en «${t.slice(0, 60)}»`);
         }
-        if (CON_REGLAS.has(idioma)) {
+        if (REGLAS_COMPLETAS.has(idioma)) {
           const ui = textosDeUi(u.textos[idioma]!.ui(ctx.trato, ctx.locale));
           for (const t of new Set([...ui, ...textosVisibles(inst)])) {
-            for (const p of problemasDeTexto(t, idioma, ctx.trato)) fallas.push(`${u.id} [${ctx.locale}]: ${p} en «${t.slice(0, 70)}»`);
+            for (const p of problemasDeTexto(t, idioma, ctx.trato, ctx.locale)) fallas.push(`${u.id} [${ctx.locale}]: ${p} en «${t.slice(0, 70)}»`);
           }
         }
         const vocabulario = VOCABULARIO[ctx.locale];

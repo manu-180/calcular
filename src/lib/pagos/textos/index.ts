@@ -4,6 +4,7 @@ import { de } from "./de";
 import { en } from "./en";
 import { es } from "./es";
 import { fr } from "./fr";
+import { frCA } from "./fr-ca";
 import { it } from "./it";
 import { nl } from "./nl";
 import { pl } from "./pl";
@@ -12,11 +13,20 @@ import type { DiccionarioVenta, TextosFamilia } from "./tipos";
 
 export { rellenar, segunTrato, type DiccionarioVenta, type TextosFamilia, type Variante } from "./tipos";
 
-// Record<Idioma, …>: un idioma nuevo en IDIOMAS no compila hasta que tenga su diccionario de venta.
-export const DICCIONARIOS: Readonly<Record<Idioma, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, pl };
+// ja, ko y zh entraron al motor sin diccionario de venta (frente aparte): sus mercados no generan
+// informes ni ofertas (catalogo-intl, ofertas-servidor) y check_ofertas_intl falla si se registra un
+// país real de esos idiomas antes de que exista. Al sumar el diccionario, el idioma pasa a esta lista.
+export const IDIOMAS_VENTA = ["es", "pt", "en", "fr", "de", "it", "nl", "pl"] as const satisfies readonly Idioma[];
+export type IdiomaVenta = (typeof IDIOMAS_VENTA)[number];
+
+export const DICCIONARIOS: Readonly<Record<IdiomaVenta, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, pl };
+
+export function tieneVenta(idioma: Idioma): idioma is IdiomaVenta {
+  return (IDIOMAS_VENTA as readonly Idioma[]).includes(idioma);
+}
 
 export function diccionarioVenta(idioma: Idioma): DiccionarioVenta {
-  return DICCIONARIOS[idioma] ?? DICCIONARIOS.es;
+  return tieneVenta(idioma) ? DICCIONARIOS[idioma] : DICCIONARIOS.en;
 }
 
 // Variante → string, en todo el árbol.
@@ -44,8 +54,12 @@ export function resolver<T>(valor: T, trato: Trato): Resuelto<T> {
 
 export type FamiliaResuelta = Resuelto<TextosFamilia>;
 
-export function textosFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato): FamiliaResuelta {
-  return resolver(diccionarioVenta(idioma).familias[clave], trato);
+// Familias que cambian de palabra según el país dentro del mismo idioma (fr-CA: TPS y TVQ, no TVA).
+export const FAMILIAS_POR_LOCALE: Readonly<Record<string, Partial<Record<ClaveFamilia, TextosFamilia>>>> = { "fr-CA": frCA };
+
+export function textosFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato, locale?: string): FamiliaResuelta {
+  const regional = locale ? FAMILIAS_POR_LOCALE[locale]?.[clave] : undefined;
+  return resolver(regional ?? diccionarioVenta(idioma).familias[clave], trato);
 }
 
 export function textosVenta(idioma: Idioma, trato: Trato): Resuelto<Omit<DiccionarioVenta, "familias">> {
@@ -58,8 +72,8 @@ export function textosTarjeta(idioma: Idioma, trato: Trato): TextosTarjeta {
   return { ...resolver(d.tarjeta, trato), ...d.general, aviso: resolver(d.aviso, trato) };
 }
 
-export function copyFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato): CopyTarjeta {
-  const f = textosFamilia(clave, idioma, trato);
+export function copyFamilia(clave: ClaveFamilia, idioma: Idioma, trato: Trato, locale?: string): CopyTarjeta {
+  const f = textosFamilia(clave, idioma, trato, locale);
   return { nombre: f.nombre, gancho: f.gancho, incluye: f.incluye };
 }
 

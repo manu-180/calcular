@@ -1,5 +1,5 @@
 import { idiomaDeLocale } from "./i18n/resolver";
-import { NOMBRES_UNIDAD, type FormasUnidad } from "./i18n/unidades";
+import { nombresUnidad, UNIDAD_PEGADA, type FormasUnidad } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
 import type { FechaISO, Moneda, ReglaRedondeo, Unidad } from "./tipos";
 import { esMoneda, UNIDADES_REFERENCIA } from "./tipos";
@@ -84,7 +84,7 @@ export function formatearFecha(fecha: FechaISO, locale: string, estilo: "larga" 
 }
 
 function nombreDeUnidad(n: number, unidad: string, locale: string): string | null {
-  const nombres = NOMBRES_UNIDAD[idiomaDeLocale(locale) ?? "es"];
+  const nombres = nombresUnidad(idiomaDeLocale(locale) ?? "es", locale);
   if (!(unidad in nombres)) return null;
   const formas: FormasUnidad = nombres[unidad as keyof typeof nombres];
   const categoria = new Intl.PluralRules(locale).select(n);
@@ -109,7 +109,7 @@ export function formatearValorUnidad(n: number, unidad: Unidad, locale: string, 
   }
   if (unidad === "%") return formatearPorcentaje(n, locale, 4);
   const nombre = nombreDeUnidad(n, unidad, locale);
-  if (nombre) return `${formatearNumero(n, locale)} ${nombre}`;
+  if (nombre) return `${formatearNumero(n, locale)}${UNIDAD_PEGADA.has(idiomaDeLocale(locale) ?? "es") ? "" : " "}${nombre}`;
   if ((UNIDADES_REFERENCIA as readonly string[]).includes(unidad)) return `${formatearNumero(n, locale, undefined)} ${unidad}`;
   return formatearNumero(n, locale, n % 1 === 0 ? 0 : undefined);
 }
@@ -154,8 +154,52 @@ function gruposValidos(entero: string, separador: string, locale: string): boole
 //    una sola vez y con exactamente 3 dígitos detrás ("5.000" en es-MX) da null. Quien lo escribe
 //    casi siempre quiso decir miles, y leerlo como 5 divide el resultado por mil sin avisar.
 // Cualquier otra forma devuelve null: se le pide a la persona que lo escriba de nuevo.
+// En japonés, chino y coreano se escriben montos con unidades de 10⁴ («3万», «1億2000万», «5천만»).
+// Sin esto parsearNumero tiraría la unidad como si fuera una letra y «3万» daría 3: un error de diez
+// mil veces. Las unidades grandes (万, 億, 兆) van de mayor a menor; 千 vale dentro de cada tramo
+// («5천만» es 5000 × 10⁴) y el último tramo puede ir sin unidad.
+const GRANDES_CJK: Readonly<Record<string, number>> = { 万: 1e4, 萬: 1e4, 만: 1e4, 億: 1e8, 亿: 1e8, 억: 1e8, 兆: 1e12, 조: 1e12 };
+const RE_UNIDAD_CJK = /[千천万萬만億亿억兆조]/;
+
+function tramoCjk(texto: string, locale: string, opciones: { milesAmbiguos?: boolean }): number | null {
+  const partes = texto.split(/[千천]/);
+  if (partes.length > 2) return null;
+  if (partes.length === 1) return texto ? parsearNumero(texto, locale, opciones) : 1;
+  const miles = partes[0] ? parsearNumero(partes[0], locale, opciones) : 1;
+  const resto = partes[1] ? parsearNumero(partes[1], locale, opciones) : 0;
+  if (miles === null || resto === null || resto < 0 || resto >= 1000) return null;
+  return miles * 1000 + resto;
+}
+
+function conUnidadesCjk(texto: string, locale: string, opciones: { milesAmbiguos?: boolean }): number | null {
+  const negativo = /^[^\d]*-/.test(texto);
+  let resto = texto.replace(/[^\d.,千천万萬만億亿억兆조]/g, "");
+  let total = 0;
+  let anterior = Infinity;
+  for (;;) {
+    const m = /^([\d.,千천]*)([万萬만億亿억兆조])/.exec(resto);
+    if (!m) break;
+    const unidad = GRANDES_CJK[m[2]];
+    if (unidad >= anterior) return null;
+    const cifra = tramoCjk(m[1], locale, opciones);
+    if (cifra === null || cifra < 0) return null;
+    total += cifra * unidad;
+    anterior = unidad;
+    resto = resto.slice(m[0].length);
+  }
+  if (resto) {
+    const cola = tramoCjk(resto, locale, opciones);
+    if (cola === null || cola < 0 || cola >= anterior) return null;
+    total += cola;
+  }
+  if (!Number.isFinite(total)) return null;
+  return negativo ? -total : total;
+}
+
 export function parsearNumero(texto: string, locale: string, opciones: { milesAmbiguos?: boolean } = {}): number | null {
-  const sinEspacios = normalizar(texto);
+  const normal = texto.normalize("NFKC");
+  if (RE_UNIDAD_CJK.test(normal)) return conUnidadesCjk(normal, locale, opciones);
+  const sinEspacios = normalizar(normal);
   const negativo = /^[^\d]*-/.test(sinEspacios);
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
   if (!/\d/.test(limpio)) return null;

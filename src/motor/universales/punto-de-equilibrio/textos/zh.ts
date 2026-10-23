@@ -1,0 +1,45 @@
+import { textosPorEscritura } from "../../comun/chino";
+import type { TextosUi } from "../../tipos";
+import type { UiPuntoDeEquilibrio } from "../definicion";
+
+export const textosZh: TextosUi<UiPuntoDeEquilibrio> = textosPorEscritura<UiPuntoDeEquilibrio>(
+  "break-even",
+  () => ({
+    fijos: "每月固定成本",
+    fijosAyuda: "就算什麼都沒賣出也要付的費用：租金、固定薪資、水電、軟體。",
+    precio: "單位售價",
+    variable: "單位變動成本",
+    variableAyuda: "每賣出一件要花的成本：材料、進貨、佣金、運費。",
+    objetivo: "每月目標利潤（選填）",
+    objetivoAyuda: "看看在打平成本之外，還要多賣多少。",
+    unidades: "損益兩平銷售量",
+    facturacion: "損益兩平營業額",
+    contribucion: "單位邊際貢獻",
+    contribucionAyuda: "每賣出一件能用來支付固定成本的金額：售價減變動成本。",
+    contribucionPct: "邊際貢獻率（%）",
+    unidadesObjetivo: "達成目標利潤的銷售量",
+    facturacionObjetivo: "達成目標利潤的營業額",
+    errorPrecio: "請輸入一件的售價。",
+    errorMargen: "變動成本等於或高於售價：每賣一件都虧錢，永遠無法打平。請檢查售價或成本。",
+    observacionRedondeo: "銷售量已無條件進位，因為無法只賣一件的一部分。",
+  }),
+  () => ({
+    fijos: "每月固定成本",
+    fijosAyuda: "就算什么都没卖出也要付的费用：房租、固定工资、水电、软件。",
+    precio: "单位售价",
+    variable: "单位变动成本",
+    variableAyuda: "每卖出一件要花的成本：材料、进货、佣金、运费。",
+    objetivo: "每月目标利润（选填）",
+    objetivoAyuda: "看看在覆盖成本之外，还要多卖多少。",
+    unidades: "盈亏平衡销量",
+    facturacion: "盈亏平衡销售额",
+    contribucion: "单位边际贡献",
+    contribucionAyuda: "每卖出一件能用来支付固定成本的金额：售价减变动成本。",
+    contribucionPct: "边际贡献率（%）",
+    unidadesObjetivo: "实现目标利润的销量",
+    facturacionObjetivo: "实现目标利润的销售额",
+    errorPrecio: "请输入一件的售价。",
+    errorMargen: "变动成本等于或高于售价：每卖一件都亏钱，永远无法盈亏平衡。请检查售价或成本。",
+    observacionRedondeo: "销量已向上取整，因为不能只卖一件的一部分。",
+  }),
+);

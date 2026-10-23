@@ -1,0 +1,35 @@
+import type { TextosUi } from "../../tipos";
+import type { UiTarjetaDeCredito } from "../definicion";
+
+export const textosKo: TextosUi<UiTarjetaDeCredito> = {
+  slug: "credit-card-payoff",
+  ui: () => ({
+    saldo: "카드 잔액",
+    tasa: "연 이자율(%)",
+    tasaAyuda: "리볼빙이나 할부에 붙는 연 이자율이에요. 카드 명세서에서 확인할 수 있어요.",
+    modo: "어떻게 갚을까요?",
+    modoFijo: "매달 같은 금액",
+    modoMinimo: "최소 결제 금액",
+    pagoFijo: "매달 갚을 금액",
+    minimoPorcentaje: "최소 결제 비율(잔액의 %)",
+    minimoPorcentajeAyuda: "카드사가 매달 요구하는 금액이에요. 잘 모르겠다면 5%가 흔해요.",
+    minimoPiso: "최소 결제 금액 하한",
+    meses: "다 갚는 데 걸리는 개월 수",
+    intereses: "내는 이자",
+    total: "총결제액",
+    primerPago: "첫 달 최소 결제 금액",
+    tabla: "월별 상환 계획",
+    colMes: "회차",
+    colPago: "결제액",
+    colInteres: "이자",
+    colCapital: "원금",
+    colSaldo: "잔액",
+    errorSaldo: "카드에 남은 잔액을 넣으세요.",
+    errorFaltaPago: "매달 얼마를 갚을지 넣으세요.",
+    errorNoCubre: (interes) => `그 금액으로는 잔액이 줄지 않아요. 첫 달 이자만 ${interes}에 달해요. 금액을 늘려 주세요.`,
+    errorMuyLargo: "그 금액으로는 다 갚는 데 50년이 넘게 걸려요. 금액을 늘려 주세요.",
+    observacionAnios: (anios, meses) => (meses === "0" ? `${anios}년이 걸려요.` : `${anios}년 ${meses}개월이 걸려요.`),
+    observacionFijo: (pago, meses, ahorro) => `첫 달 최소 결제 금액과 같은 ${pago}씩 계속 내면 ${meses}개월 만에 다 갚고 이자를 ${ahorro} 아낄 수 있어요.`,
+    observacionNoGastar: "갚는 동안 이 카드로 새로 결제하지 않는다고 가정해요.",
+  }),
+};

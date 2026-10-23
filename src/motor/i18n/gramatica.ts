@@ -294,4 +294,13 @@ const pl: GramaticaPais = (() => {
   return { nombre: (p) => p, de: (p) => formy(p)[0], en: (p) => formy(p)[1], para: (p) => `dla ${formy(p)[0]}` };
 })();
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, pl };
+
+// Sin artículos ni plural: el país lleva la partícula detrás. Lugar y destino cambian el orden de
+// toda la frase, así que los diccionarios de estos idiomas arman la oración con el nombre suelto y
+// usan estas formas solo donde encajan tal cual.
+const ja: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}の`, en: (p) => `${p}で`, para: (p) => `${p}向け` };
+const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `${p}에서`, para: (p) => `${p}용` };
+// 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
+const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl };

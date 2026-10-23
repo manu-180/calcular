@@ -1,0 +1,47 @@
+import { textosPorEscritura } from "../../comun/chino";
+import type { TextosUi } from "../../tipos";
+import type { UiFechaDeParto } from "../definicion";
+
+export const textosZh: TextosUi<UiFechaDeParto> = textosPorEscritura<UiFechaDeParto>(
+  "due-date",
+  () => ({
+    metodo: "您知道哪個日期？",
+    fum: "最後一次月經的第一天",
+    concepcion: "受孕日",
+    fecha: "日期",
+    fechaAyuda: "如果選擇最後一次月經，請填出血的第一天。",
+    ciclo: "月經週期（天）",
+    cicloAyuda: "只在用最後一次月經計算時使用。不清楚的話，保留 28 即可。",
+    fpp: "預產期",
+    edadGestacional: "今天的懷孕週數",
+    trimestre: "孕期階段",
+    faltan: "距離預產期還有",
+    fechaConcepcion: "推估受孕日",
+    semanasYDias: (s, d) => (d ? `${s} 週又 ${d} 天` : `${s} 週`),
+    trimestres: ["第一孕期", "第二孕期", "第三孕期"],
+    errorFutura: "日期不能晚於今天。",
+    errorCiclo: "月經週期必須在 20 到 45 天之間。",
+    notaPasada: "從那天起已超過 42 週，所以不顯示懷孕週數。",
+    aviso: "這是估計值：很少有寶寶剛好在預產期出生。超音波和產檢能給出最準確的日期。",
+  }),
+  () => ({
+    metodo: "您知道哪个日期？",
+    fum: "末次月经的第一天",
+    concepcion: "受孕日",
+    fecha: "日期",
+    fechaAyuda: "如果选择末次月经，请填出血的第一天。",
+    ciclo: "月经周期（天）",
+    cicloAyuda: "只在用末次月经计算时使用。不清楚的话，保留 28 即可。",
+    fpp: "预产期",
+    edadGestacional: "今天的孕周",
+    trimestre: "孕期阶段",
+    faltan: "距离预产期还有",
+    fechaConcepcion: "推算受孕日",
+    semanasYDias: (s, d) => (d ? `${s} 周零 ${d} 天` : `${s} 周`),
+    trimestres: ["孕早期", "孕中期", "孕晚期"],
+    errorFutura: "日期不能晚于今天。",
+    errorCiclo: "月经周期必须在 20 到 45 天之间。",
+    notaPasada: "从那天起已超过 42 周，所以不显示孕周。",
+    aviso: "这是估计值：很少有宝宝正好在预产期出生。B 超和产检能给出最准确的日期。",
+  }),
+);

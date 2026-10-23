@@ -1,0 +1,45 @@
+import { textosPorEscritura } from "../../comun/chino";
+import type { TextosUi } from "../../tipos";
+import type { UiCombustible } from "../definicion";
+
+export const textosZh: TextosUi<UiCombustible> = textosPorEscritura<UiCombustible>(
+  "fuel-cost",
+  () => ({
+    distancia: (u) => `行駛距離（${u}）`,
+    idaYVuelta: "來回",
+    tipoConsumo: "油耗的表示方式",
+    l100: "每 100 公里耗油公升數",
+    kml: "每公升可行駛公里數（km/L）",
+    consumo: "油耗",
+    consumoMpg: "油耗（英里／加侖）",
+    consumoAyuda: "可在車主手冊或行車電腦查到。一般來說，高速公路比市區省油。",
+    precio: (u) => (u === "L" ? "每公升油價" : "每加侖油價"),
+    personas: "分攤人數",
+    costo: "油錢",
+    porPersona: "每人",
+    combustible: (u) => (u === "L" ? "所需燃料（公升）" : "所需燃料（加侖）"),
+    distanciaTotal: (u) => `總距離（${u}）`,
+    costoPorDistancia: (u) => `每${u}費用`,
+    errorConsumo: "油耗必須大於 0。",
+    errorPersonas: "至少要有一個人。",
+  }),
+  () => ({
+    distancia: (u) => `行驶距离（${u}）`,
+    idaYVuelta: "往返",
+    tipoConsumo: "油耗的表示方式",
+    l100: "百公里油耗（升）",
+    kml: "每升可行驶公里数（km/L）",
+    consumo: "油耗",
+    consumoMpg: "油耗（英里／加仑）",
+    consumoAyuda: "可在车辆说明书或行车电脑上查到。一般来说，高速公路比市区省油。",
+    precio: (u) => (u === "L" ? "每升油价" : "每加仑油价"),
+    personas: "分摊人数",
+    costo: "油费",
+    porPersona: "每人",
+    combustible: (u) => (u === "L" ? "所需燃油（升）" : "所需燃油（加仑）"),
+    distanciaTotal: (u) => `总距离（${u}）`,
+    costoPorDistancia: (u) => `每${u}费用`,
+    errorConsumo: "油耗必须大于 0。",
+    errorPersonas: "至少要有一个人。",
+  }),
+);

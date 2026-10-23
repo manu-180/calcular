@@ -51,6 +51,10 @@ const ESC_FILA_HEADER = 2;
 const ESC_FILA_CAT_INI = 3;
 const ESC_FILA_CAT_FIN = ESC_FILA_CAT_INI + CATEGORIAS.length - 1; // 21 categorías
 const ESC_FILA_NOREM = ESC_FILA_CAT_FIN + 1;
+// Copia oculta de las categorías dentro de «Liquidación»: un desplegable que lee de otra hoja sale
+// vacío o corrido en Google Sheets (pasó con UOCRA el 21/10/2026).
+const COL_LISTA_CAT_LIQ = "G";
+const FILA_LISTA_CAT_INI = 5;
 const ESC_FILA_ASIG = ESC_FILA_NOREM + 1;
 const ESC_COL_INI = "B";
 // Última columna de meses (B = primer mes). Con 9 meses → "J".
@@ -148,7 +152,7 @@ function buildLiquidacion(wb: ExcelJS.Workbook) {
     ["Categoría del convenio", "B5", {
       type: "list", allowBlank: false, showErrorMessage: true,
       error: "Seleccioná una categoría de la lista.",
-      formulae: [`'${ESC}'!$A$${ESC_FILA_CAT_INI}:$A$${ESC_FILA_CAT_FIN}`],
+      formulae: [`'Liquidación'!$${COL_LISTA_CAT_LIQ}$${FILA_LISTA_CAT_INI}:$${COL_LISTA_CAT_LIQ}$${FILA_LISTA_CAT_INI + CATEGORIAS.length - 1}`],
     }],
     ["Mes a liquidar", "B6", {
       type: "list", allowBlank: false, showErrorMessage: true,
@@ -227,6 +231,10 @@ function buildLiquidacion(wb: ExcelJS.Workbook) {
   // Ocultar columna D
   ws.getColumn("D").hidden = true;
   ws.getColumn("E").hidden = true;
+  CATEGORIAS.forEach((cat, i) => {
+    ws.getCell(`${COL_LISTA_CAT_LIQ}${FILA_LISTA_CAT_INI + i}`).value = cat;
+  });
+  ws.getColumn(COL_LISTA_CAT_LIQ).hidden = true;
 
   // ── Separador ──
   ws.getRow(10).height = 6;

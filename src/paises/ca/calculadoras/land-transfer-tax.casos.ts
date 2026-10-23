@@ -86,5 +86,24 @@ export default definirCasos(calculadora, [
       "provincial": 111475,
       "municipal": 159975
     }
+  },
+  {
+    "nombre": "Quebec, $350,000 (example on Québec.ca)",
+    "origen": {
+      "tipo": "oficial",
+      "url": "https://www.quebec.ca/gouvernement/gestion-municipale/finances-fiscalite-municipales/fiscalite/droits-mutations-immobilieres",
+      "detalle": "62,900 × 0.5% = 315; 252,100 × 1% = 2,521; 35,000 × 1.5% = 525; total 3,361."
+    },
+    "fecha": "2026-10-16",
+    "entrada": {
+      "lugar": "qc",
+      "precio": 350000,
+      "primeraVez": false
+    },
+    "esperado": {
+      "total": 3361,
+      "provincial": 0,
+      "municipal": 3361
+    }
   }
 ]);

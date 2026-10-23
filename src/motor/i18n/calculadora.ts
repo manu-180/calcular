@@ -12,6 +12,15 @@ export interface TextosCalculadora {
   fuenteDelAviso: string;
 }
 
+const ZH_HANS_CALCULADORA: TextosCalculadora = {
+  datos: "您的数据",
+  resultado: "计算结果",
+  vacio: "填写数据后点击“计算”，即可看到结果。",
+  sinResultado: "暂不显示这项结果。",
+  avisos: { info: "温馨提示", cautela: "请注意", bloquea: "为什么不显示结果" },
+  fuenteDelAviso: "来源",
+};
+
 export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
   es: {
     base: {
@@ -98,6 +107,38 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       sinResultado: "Na razie nie pokazujemy tego wyniku.",
       avisos: { info: "Dobrze wiedzieć", cautela: "Uwaga", bloquea: "Dlaczego nie pokazujemy wyniku" },
       fuenteDelAviso: "Źródło",
+  ja: {
+    base: {
+      datos: "入力項目",
+      resultado: "計算結果",
+      vacio: "項目を入力して「計算する」を押すと、結果が表示されます。",
+      sinResultado: "この結果は現在表示していません。",
+      avisos: { info: "ご参考に", cautela: "ご注意ください", bloquea: "結果を表示しない理由" },
+      fuenteDelAviso: "出典",
+    },
+  },
+  ko: {
+    base: {
+      datos: "입력 정보",
+      resultado: "계산 결과",
+      vacio: "항목을 입력하고 계산하기를 누르면 결과가 나와요.",
+      sinResultado: "이 결과는 지금은 보여 드리지 않아요.",
+      avisos: { info: "알아 두세요", cautela: "주의하세요", bloquea: "결과를 보여 드리지 않는 이유" },
+      fuenteDelAviso: "출처",
+    },
+  },
+  zh: {
+    base: {
+      datos: "您的資料",
+      resultado: "計算結果",
+      vacio: "填寫資料後按下「計算」，即可看到結果。",
+      sinResultado: "目前暫不顯示這項結果。",
+      avisos: { info: "小提醒", cautela: "請注意", bloquea: "為什麼不顯示結果" },
+      fuenteDelAviso: "資料來源",
+    },
+    regional: {
+      "zh-CN": ZH_HANS_CALCULADORA,
+      "zh-SG": ZH_HANS_CALCULADORA,
     },
   },
 };
