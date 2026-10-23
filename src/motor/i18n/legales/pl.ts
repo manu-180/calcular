@@ -66,7 +66,7 @@ export const pl: DiccionarioLegal = ({ actualizado, mail }) => ({
           ],
         },
         {
-          titulo: "Hosting",
+          titulo: "Hosting strony",
           parrafos: ["Strona działa na serwerach Vercel. Jak każdy serwer, zapisują one dane techniczne odwiedzin (adres IP i przeglądarkę), żeby strona działała i była bezpieczna."],
         },
         {
