@@ -1,0 +1,42 @@
+import type { Idioma } from "../tipos";
+
+// Slug de «Tu sueldo en el mundo» por idioma. Es el mismo en todas las ediciones de un idioma, así el
+// clúster hreflang se arma solo para cualquier país nuevo.
+export const SLUG_MUNDO: Record<Idioma, string> = {
+  es: "sueldo-en-el-mundo",
+  pt: "salario-pelo-mundo",
+  en: "salary-around-the-world",
+  fr: "salaire-dans-le-monde",
+  de: "gehalt-weltweit",
+  it: "stipendio-nel-mondo",
+  nl: "salaris-wereldwijd",
+  ja: "sekai-no-kyuyo",
+  ko: "segye-yeonbong",
+  zh: "shijie-gongzi",
+};
+
+export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";
+
+export function rutaMundo(mercado: string, idioma: Idioma): string {
+  return mercado === "ar" ? RUTA_MUNDO_AR : `/${mercado}/${SLUG_MUNDO[idioma]}`;
+}
+
+// El sueldo que la persona ya cargó en su calculadora viaja a la página del mundo por sessionStorage,
+// nunca en la URL: un monto en la query queda en logs, historial y en lo que se comparte.
+export const CLAVE_TRASPASO = "cy-mundo-bruto";
+
+// Cuántos países promete el link a la página desde cada calculadora de sueldo («más de N países»).
+// Es un piso con margen, no la cuenta: check_mundo falla si la grilla no tiene más que esto.
+export const PAISES_PUENTE = 35;
+
+// Una edición en otro idioma (ca-fr, be-fr, lu-de) tiene código `<país>-<idioma>` y sus calculadoras
+// `<edición>.<id local>`: lo exige el registro (mercadoDeEdicion y definirEdicion en motor/registro.ts).
+// La grilla tiene solo la edición principal, así que el traspaso guarda esa y busca su adaptador.
+export function edicionPrincipal(mercado: string): string {
+  return mercado.split("-")[0];
+}
+
+export function calculadoraPrincipal(mercado: string, calculadora: string): string {
+  const principal = edicionPrincipal(mercado);
+  return principal !== mercado && calculadora.startsWith(`${mercado}.`) ? `${principal}.${calculadora.slice(mercado.length + 1)}` : calculadora;
+}

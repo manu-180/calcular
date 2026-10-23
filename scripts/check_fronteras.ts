@@ -16,6 +16,7 @@ const SRC = path.join(RAIZ, "src");
 // pueden cruzar, y solo a esos módulos; cualquier otro cruce sigue siendo falla.
 const PUENTES_INTL: Record<string, RegExp> = {
   "src/motor/ui/Oferta.tsx": /^src\/lib\/(pagos\/[a-z-]*intl[a-z-]*|prefill\/intl(-cliente)?|rastreo)(\.tsx?)?$/,
+  "src/motor/compartir/medir.ts": /^src\/lib\/rastreo(\.tsx?)?$/,
   "scripts/paises/gen_planillas_intl.ts": /^src\/lib\/pagos\/[a-z-]*intl[a-z-]*(\.tsx?)?$/,
 };
 function puente(archivo: string, destino: string): boolean {
