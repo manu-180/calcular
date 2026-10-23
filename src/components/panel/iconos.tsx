@@ -150,3 +150,10 @@ export const IcoBrujula = (p: P) => (
     <path d="m15.5 8.5-2 5-5 2 2-5z" />
   </Base>
 );
+
+export const IcoCalendario = (p: P) => (
+  <Base {...p}>
+    <rect x="4" y="5" width="16" height="15" rx="3" />
+    <path d="M4 10h16M8.5 3v4M15.5 3v4" />
+  </Base>
+);
