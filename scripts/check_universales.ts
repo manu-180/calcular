@@ -63,11 +63,16 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "pl" as CodigoMercado, pais: "PL", nombrePais: "Polska", locale: "pl-PL", trato: "tu", moneda: "PLN" as Moneda, escala: 4 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent i Grenadyny", locale: "pl-PL", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  sv: [
+    { mercado: "se" as CodigoMercado, pais: "SE", nombrePais: "Sverige", locale: "sv-SE", trato: "tu", moneda: "SEK" as Moneda, escala: 10 },
+    { mercado: "fi-sv" as CodigoMercado, pais: "FI", nombrePais: "Finland", locale: "sv-FI", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent och Grenadinerna", locale: "sv-SE", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
 };
 
 // En ja, ko, zh y los idiomas que entraron después (pl, sv, da, nb, fi) las reglas de puntuación,
 // registro y escritura (scripts/reglas_idioma.ts) corren sobre toda la página.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "pl"]);
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "pl", "sv"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy

@@ -374,6 +374,29 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       "zh-SG": ZH_HANS_MOTOR,
     },
   },
+  sv: {
+    base: {
+      calcular: "Beräkna",
+      resultado: "Resultat",
+      si: "Ja",
+      no: "Nej",
+      sinResultado: "Vi visar inte det här resultatet just nu.",
+      errores: {
+        requerido: "Fyll i det här fältet.",
+        "numero-invalido": "Skriv ett tal, till exempel {ejemplo}.",
+        "entero-invalido": "Skriv ett heltal, utan decimaler.",
+        "menor-que-min": "Lägsta värdet är {min}.",
+        "mayor-que-max": "Högsta värdet är {max}.",
+        "fecha-invalida": "Välj ett giltigt datum.",
+        "hora-invalida": "Välj en giltig tid.",
+        "opcion-invalida": "Välj ett alternativ.",
+        "region-invalida": "Välj ett område.",
+        "calculo-fallido": "Vi kunde inte räkna med de här uppgifterna. Kontrollera värdena och försök igen.",
+      },
+      milesAmbiguos: "Menade du {sugerido}? Skriv talet utan {signos}.",
+      separadores: { punto: "punkter", coma: "kommatecken" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

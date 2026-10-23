@@ -7,6 +7,7 @@ import { fr } from "./fr";
 import { frCA } from "./fr-ca";
 import { it } from "./it";
 import { nl } from "./nl";
+import { sv } from "./sv";
 import { pl } from "./pl";
 import { pt } from "./pt";
 import type { DiccionarioVenta, TextosFamilia } from "./tipos";
@@ -16,10 +17,10 @@ export { rellenar, segunTrato, type DiccionarioVenta, type TextosFamilia, type V
 // ja, ko y zh entraron al motor sin diccionario de venta (frente aparte): sus mercados no generan
 // informes ni ofertas (catalogo-intl, ofertas-servidor) y check_ofertas_intl falla si se registra un
 // país real de esos idiomas antes de que exista. Al sumar el diccionario, el idioma pasa a esta lista.
-export const IDIOMAS_VENTA = ["es", "pt", "en", "fr", "de", "it", "nl", "pl"] as const satisfies readonly Idioma[];
+export const IDIOMAS_VENTA = ["es", "pt", "en", "fr", "de", "it", "nl", "pl", "sv"] as const satisfies readonly Idioma[];
 export type IdiomaVenta = (typeof IDIOMAS_VENTA)[number];
 
-export const DICCIONARIOS: Readonly<Record<IdiomaVenta, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, pl };
+export const DICCIONARIOS: Readonly<Record<IdiomaVenta, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, pl, sv };
 
 export function tieneVenta(idioma: Idioma): idioma is IdiomaVenta {
   return (IDIOMAS_VENTA as readonly Idioma[]).includes(idioma);

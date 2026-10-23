@@ -143,6 +143,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       "zh-SG": ZH_HANS_CALCULADORA,
     },
   },
+  sv: {
+    base: {
+      datos: "Dina uppgifter",
+      resultado: "Resultat",
+      vacio: "Fyll i uppgifterna och tryck på Beräkna för att se resultatet.",
+      sinResultado: "Vi visar inte det här resultatet just nu.",
+      avisos: { info: "Bra att veta", cautela: "Observera", bloquea: "Därför visar vi inget resultat" },
+      fuenteDelAviso: "Källa",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {
