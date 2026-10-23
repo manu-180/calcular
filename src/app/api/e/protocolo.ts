@@ -153,6 +153,7 @@ const ESQUEMAS: Partial<Record<TipoEvento, Esquema>> = {
   llegada: { requeridas: { ref: conForma(REF_VALIDO) }, opcionales: { origen: enLista(ORIGENES_CORTOS), nuevo: booleano } },
   puente_visto: { requeridas: { v: VARIANTE } },
   puente_clic: { requeridas: { v: VARIANTE } },
+  afiliado_clic: { requeridas: { socio: enLista(["wise", "deel"]) }, opcionales: { pais: conForma(/^[A-Z]{2}$/) } },
   compartir: {
     requeridas: { canal: enLista(CANALES) },
     opcionales: { origen: enLista(ORIGENES_COMPARTIR), calc: conForma(CALCULADORA), ref: conForma(REF_VALIDO), v: VARIANTE },
