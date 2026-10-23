@@ -227,7 +227,7 @@
       "id": "li.ferien-wochen",
       "nombre": "Mindestferien pro Dienstjahr in Wochen",
       "tipo": "numero",
-      "unidad": "Wochen",
+      "unidad": "semanas",
       "tramos": [
         {
           "estado": "verificado",
@@ -247,7 +247,7 @@
       "id": "li.ferien-wochen-jugendliche",
       "nombre": "Mindestferien bis zum vollendeten 20. Altersjahr in Wochen",
       "tipo": "numero",
-      "unidad": "Wochen",
+      "unidad": "semanas",
       "tramos": [
         {
           "estado": "verificado",
@@ -287,7 +287,7 @@
       "id": "li.kuendigungsfristen",
       "nombre": "Gesetzliche Kündigungsfristen (Probezeit in Tagen, danach in Monaten auf ein Monatsende)",
       "tipo": "mapa",
-      "unidad": "Monate",
+      "unidad": "meses",
       "etiquetas": {
         "probezeit-tage": "Probezeit (Tage)",
         "dienstjahr-1": "1. Dienstjahr",
@@ -318,7 +318,7 @@
       "id": "li.sperrfristen",
       "nombre": "Sperrfristen bei Krankheit oder Unfall nach der Probezeit, in Tagen",
       "tipo": "mapa",
-      "unidad": "Tage",
+      "unidad": "dias",
       "etiquetas": {
         "dienstjahr-1": "1. Dienstjahr",
         "dienstjahr-2-5": "2. bis 5. Dienstjahr",
