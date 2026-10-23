@@ -8,6 +8,12 @@
 //   caería en ellas y daría 404.
 // - El tipo host compara solo el hostname (sin puerto) y el value es una regex anclada.
 
+import { SLUG_MUNDO } from "./mundo/rutas";
+
+// «Tu sueldo en el mundo» de la home global: la home está en inglés (ADR 0002, D2), así que su slug es
+// el de en. Con sus duelos (/<slug>/<c>) y su imagen (/<slug>/og).
+const SLUG_MUNDO_GLOBAL = SLUG_MUNDO.en;
+
 export type Condicion = { type: "host"; value: string } | { type: "cookie"; key: string; value: string };
 
 export interface Regla {
@@ -85,7 +91,7 @@ export function reglasPorHost(o: OpcionesHosts): ReglasHosts {
   const intl: Condicion[] = o.cookiePreview ? [porHost, porCookie] : [porHost];
 
   const cuentas = o.cuentas === true;
-  const reservados = new Set([...o.mercados, ...o.paginasGlobales, "intl", "api", "og", "_next", ...(cuentas ? RUTAS_CUENTA : [])]);
+  const reservados = new Set([...o.mercados, ...o.paginasGlobales, SLUG_MUNDO_GLOBAL, "intl", "api", "og", "_next", ...(cuentas ? RUTAS_CUENTA : [])]);
   const apiNegadas = negadas(cuentas ? [...API_INTL_PERMITIDAS, "cuenta"] : API_INTL_PERMITIDAS);
   const mercados = alternativas(o.mercados);
   const globales = alternativas(o.paginasGlobales);
@@ -128,6 +134,10 @@ export function reglasPorHost(o: OpcionesHosts): ReglasHosts {
       { source: "/og/:path*", has: [c], destination: "/intl/global/og/:path*" },
     );
     if (globales) beforeFiles.push({ source: `/:pagina(${globales})`, has: [c], destination: "/intl/global/:pagina" });
+    beforeFiles.push(
+      { source: `/${SLUG_MUNDO_GLOBAL}`, has: [c], destination: `/intl/global/${SLUG_MUNDO_GLOBAL}` },
+      { source: `/${SLUG_MUNDO_GLOBAL}/:resto+`, has: [c], destination: `/intl/global/${SLUG_MUNDO_GLOBAL}/:resto+` },
+    );
     if (cuentas) beforeFiles.push({ source: `/:ruta(${alternativas(RUTAS_CUENTA)})/:resto*`, has: [c], destination: "/intl/global/:ruta/:resto*" });
   }
   if (mercados) {

@@ -57,19 +57,28 @@ export const nl: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Het land van het bezoek",
           parrafos: [
             "Om de rekenhulpen van het juiste land voor te stellen, kijken we uit welk land een bezoek komt. Onze hostingprovider leidt dat af uit het IP-adres.",
-            "We bewaren het IP-adres en het land niet. Het antwoord blijft in de browser zolang het bezoek duurt.",
+            "We bewaren het IP-adres niet. Het antwoord blijft in de browser zolang het bezoek duurt.",
           ],
         },
         {
           titulo: "Wat de browser bewaart",
           parrafos: [
-            "Via de sessieopslag van de browser onthouden we het gekozen land en of de melding met dat voorstel gesloten is. Alles wordt gewist bij het sluiten van het tabblad.",
+            "In de sessieopslag van de browser, die gewist wordt bij het sluiten van het tabblad, onthouden we het land van het bezoek, of de melding met dat voorstel gesloten is en, als het bezoek via een gedeelde link kwam, de code van die link.",
+            "In de lokale opslag, die blijft tot hij in de browser gewist wordt, bewaren we het zelf gekozen land, een willekeurig getal om bezoeken te tellen en de getoonde versie van een ontwerptest, zodat de site er bij elk bezoek hetzelfde uitziet. Niets daarvan zegt wie iemand is.",
             "We gebruiken geen advertentie- of trackingcookies.",
           ],
         },
         {
           titulo: "Hosting",
           parrafos: ["De site wordt gehost bij Vercel. Zoals elke server legt die technische gegevens van elk bezoek vast (IP-adres en browser), zodat de site werkt en veilig blijft."],
+        },
+        {
+          titulo: "Hoe we bezoeken tellen",
+          parrafos: [
+            "We meten het gebruik van de site met een eigen hulpmiddel: welke pagina's worden geopend en hoeveel ze worden gebruikt, van welke site het bezoek komt, het soort apparaat en het land. Met het willekeurige getal in de browser onderscheiden we een nieuw bezoek van een terugkerend. We bewaren het IP-adres niet en ook niet wat in een rekenhulp wordt ingevuld.",
+            "Links die vanaf de site worden gedeeld, krijgen een willekeurige code die bij elke keer delen anders is, om te tellen hoeveel bezoeken elke link oplevert. Die code identificeert niemand.",
+            "Bedragen die in een rekenhulp worden ingevuld, verlaten de browser nooit in een link.",
+          ],
         },
         {
           titulo: "Wijzigingen en vragen",
