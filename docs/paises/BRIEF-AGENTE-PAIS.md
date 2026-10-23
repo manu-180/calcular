@@ -64,6 +64,8 @@ mal, contalo en el reporte. `scripts/paises_comun.ts` descubre tu país por carp
 
 `npx tsc --noEmit`; `npx tsx scripts/check_paises.ts`, `check_paises_casos.ts`,
 `check_textos_paises.ts`, `check_fronteras.ts` verdes; detectores probados contra la red real.
+Si tenés calculadora de `sueldo-neto`, `npx tsx scripts/check_mundo.ts` dice si entró a «Tu sueldo
+en el mundo»; si sale excluida, declarás `mundo` en esa calculadora (RECETA §7).
 
 ## Formato de retorno (breve, sin pegar archivos)
 
