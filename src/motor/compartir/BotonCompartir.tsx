@@ -5,6 +5,7 @@ import { textosCompartir } from "../i18n/compartir";
 import type { ContextoSerializado } from "../tipos";
 import { usarCompartir, type CanalCompartir } from "./index";
 import { IconoCheck, IconoCompartir } from "./iconos";
+import type { VariantePuente } from "./ref";
 
 // Se baja recién cuando hay un resultado en pantalla (PuenteResultado lo precarga en un momento
 // ocioso): el hook de compartir, el menú de escritorio y su medición no pesan en la carga de la página.
@@ -32,14 +33,14 @@ export default function BotonCompartir({
 }: {
   calculadora: string;
   contexto: ContextoSerializado;
-  variante: string | null;
+  variante: VariantePuente | null;
   abrirAlMontar: boolean;
 }) {
   const t = useMemo(() => textosCompartir(contexto.idioma, contexto.trato, contexto.locale), [contexto.idioma, contexto.trato, contexto.locale]);
   const [pagina] = useState(paginaActual);
   const datos = useMemo(() => (variante ? { v: variante } : undefined), [variante]);
   const opciones = useMemo(
-    () => ({ origen: `calculadora:${calculadora}`, url: pagina.url, titulo: pagina.titulo, texto: t.mensaje(pagina.titulo), datos }),
+    () => ({ origen: `calculadora:${calculadora}` as const, url: pagina.url, titulo: pagina.titulo, texto: t.mensaje(pagina.titulo), datos }),
     [calculadora, pagina, t, datos],
   );
   const { compartir, compartirEn, estado, soportaNativo } = usarCompartir(opciones);
