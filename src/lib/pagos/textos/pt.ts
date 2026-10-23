@@ -641,6 +641,25 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: OUTROS_VALORES,
   },
+  "informe-calculo": {
+    nombre: "Relatório do cálculo",
+    tituloCorto: "relatório do cálculo",
+    paraQuien: "Para ter este cálculo por escrito, com os seus números, o que ele considera e de onde vem cada valor oficial",
+    descripcion: [
+      "Um relatório em PDF com o cálculo que você fez, passo a passo e com os seus dados: o resultado, as premissas usadas e cada valor oficial com a fonte e a data em que foi conferido.",
+      "Serve para guardar ou mostrar ao seu contador, ao seu empregador ou a quem precisar conferir, sem ter que explicar de novo de onde saiu cada número.",
+    ],
+    gancho: "Leve este cálculo por escrito, com as fontes",
+    incluye: [
+      { titulo: "O resultado com os seus dados", texto: "Do jeito que você calculou, pronto para imprimir." },
+      { titulo: "Como se calcula", texto: "Os passos e as premissas, para ver de onde sai cada número." },
+      { titulo: "As fontes oficiais", texto: "Cada valor com o órgão, o link e a data em que foi conferido." },
+    ],
+    pasos: {
+      titulo: "Antes de usar",
+      items: ["Confira se os dados no topo são os seus: o resultado depende deles.", "Se um valor oficial mudou, calcule de novo: o relatório usa os vigentes no dia da compra."],
+    },
+  },
 };
 
 export const pt: DiccionarioVenta = {
