@@ -299,6 +299,8 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       },
       milesAmbiguos: "Chodziło ci o {sugerido}? Wpisz liczbę bez {signos}.",
       separadores: { punto: "kropek", coma: "przecinków" },
+    },
+  },
   ja: {
     base: {
       calcular: "計算する",

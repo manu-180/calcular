@@ -107,6 +107,8 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       sinResultado: "Na razie nie pokazujemy tego wyniku.",
       avisos: { info: "Dobrze wiedzieć", cautela: "Uwaga", bloquea: "Dlaczego nie pokazujemy wyniku" },
       fuenteDelAviso: "Źródło",
+    },
+  },
   ja: {
     base: {
       datos: "入力項目",
