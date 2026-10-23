@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["KWD"],
   zonaHoraria: "Asia/Kuwait",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 3, modo: "mitad-arriba" },
   escala: 0.31,
 };
