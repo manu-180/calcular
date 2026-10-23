@@ -3,7 +3,7 @@
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { usarCompartir } from "../../compartir";
 import type { RegionMundo } from "../../i18n/mundo";
-import { cargaDesde, codificarCarga, compararDesde, decodificarCarga, diaDeLibertad, fechaDelDia, type FilaMundo } from "../calculo";
+import { cargaDesde, codificarCarga, compararDesde, decodificarCarga, diaDeCarga, diasDelAnio, fechaDelDia, type FilaMundo } from "../calculo";
 import { leerTraspaso } from "../traspaso";
 import type { CargaCompartida } from "../tipos";
 import { expandir, type GrillaCliente, type PaisCliente } from "./compacta";
@@ -290,13 +290,16 @@ export function TarjetaVista({
   tasa,
   frase,
   iso,
+  cero,
 }: {
   t: TextosCliente;
   fecha: string;
   tasa: string;
   frase: string;
   iso: string | null;
+  cero: boolean;
 }) {
+  const [antes, despues] = cero ? [t.cero.tarjetaAntes, ""] : t.tarjeta.hasta;
   return (
     <div className="cy-tarjeta-historia" aria-hidden="true">
       <div className="cy-th-marca">
@@ -304,10 +307,10 @@ export function TarjetaVista({
         CalcularYa
       </div>
       <div className="cy-th-nucleo">
-        <p className="cy-th-antes">{t.tarjeta.hasta[0]}</p>
-        <p className="cy-th-fecha">{fecha}</p>
-        {t.tarjeta.hasta[1] ? <p className="cy-th-antes">{t.tarjeta.hasta[1]}</p> : null}
-        <p className="cy-th-tasa">{rellenar(t.tarjeta.tasa, { pct: tasa })}</p>
+        <p className="cy-th-antes">{antes}</p>
+        <p className="cy-th-fecha">{cero ? t.cero.dia : fecha}</p>
+        {despues ? <p className="cy-th-antes">{despues}</p> : null}
+        <p className="cy-th-tasa">{cero ? t.cero.motivo : rellenar(t.tarjeta.tasa, { pct: tasa })}</p>
       </div>
       <div className="cy-th-puntos" />
       <p className="cy-th-frase">
@@ -366,6 +369,8 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
   const porMercado = useMemo(() => new Map(grilla.paises.map((p) => [p.mercado, p])), [grilla]);
   const ordenados = useMemo(() => [...grilla.paises].sort((a, b) => a.nombre.localeCompare(b.nombre, locale)), [grilla, locale]);
   const ejemploDe = (mercado: string) => dosCifras(EJEMPLO_PPA_MENSUAL * (porMercado.get(mercado)?.ppa ?? 1));
+  // «Por mes» es el sueldo del recibo: el año son esas pagas de ley (13 con aguinaldo, 14 en España).
+  const pagasDe = (mercado: string) => porMercado.get(mercado)?.pagas ?? 12;
 
   const [origen, setOrigen] = useState(origenInicial);
   const [periodo, setPeriodo] = useState<Periodo>("mes");
@@ -384,26 +389,31 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
     if (tr && porMercado.has(tr.mercado)) {
       setOrigen(tr.mercado);
       setPeriodo("mes");
-      setTexto(f.numero(Math.round(tr.brutoMensual)));
+      setTexto(f.numero(Math.round(tr.brutoAnual / pagasDe(tr.mercado))));
       setModo("traspaso");
     }
     if (!cargaInicial) {
-      const c = decodificarCarga(new URLSearchParams(window.location.search).get("c"));
+      const c = decodificarCarga(new URLSearchParams(window.location.search).get("c"), grilla);
       if (c) setAmigo(c);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const pais = porMercado.get(origen);
+  const pagas = pagasDe(origen);
   const monto = parsear(texto, locale);
   const valido = monto !== null && monto > 0;
-  const mensual = valido ? (periodo === "anio" ? monto / 12 : monto) : 0;
-  const filas = useMemo(() => (mensual > 0 ? compararDesde(contrato, origen, mensual) : []), [contrato, origen, mensual]);
+  const anual = valido ? (periodo === "anio" ? monto : monto * pagas) : 0;
+  const filas = useMemo(() => (anual > 0 ? compararDesde(contrato, origen, anual) : []), [contrato, origen, anual]);
   const propia = filas.find((x) => x.pais.mercado === origen);
-  const carga = useMemo(() => (mensual > 0 ? cargaDesde(contrato, origen, mensual, anio) : null), [contrato, origen, mensual, anio]);
-  const total = new Date(Date.UTC(anio, 1, 29)).getUTCMonth() === 1 ? 366 : 365;
-  const dia = propia ? diaDeLibertad(propia.tasa, anio) : 1;
-  const fecha = f.fecha(fechaDelDia(dia, anio));
+  // La tasa y el día que se ven son los de la carga que se comparte (redondeados sobre la franja del
+  // sueldo): la tarjeta, el link y esta pantalla dicen lo mismo.
+  const carga = useMemo(() => (anual > 0 ? cargaDesde(contrato, origen, anual) : null), [contrato, origen, anual]);
+  const total = diasDelAnio(anio);
+  const dia = carga ? diaDeCarga(carga, anio) : 0;
+  const cero = carga?.tasa === 0;
+  const fecha = dia > 0 ? f.fecha(fechaDelDia(dia, anio)) : "";
+  const tasa = carga ? f.pct(carga.tasa / 100) : "";
   const mejorIso = carga?.mejor ?? null;
   const frase = carga && mejorIso && pais ? (mejorIso === pais.iso || carga.ventaja === 0 ? t.tarjeta.mejorPropio[pais.iso] : rellenar(t.tarjeta.mejor[mejorIso] ?? "", { pct: f.pct(carga.ventaja / 100) })) : "";
   const c = carga ? codificarCarga(carga) : null;
@@ -414,22 +424,26 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
   const cambiarPais = (m: string) => {
     setVivo(true);
     setOrigen(m);
-    setTexto(f.numero(periodo === "anio" ? ejemploDe(m) * 12 : ejemploDe(m)));
+    setTexto(f.numero(periodo === "anio" ? ejemploDe(m) * pagasDe(m) : ejemploDe(m)));
     setModo("ejemplo");
   };
   const cambiarPeriodo = (p: Periodo) => {
     if (p === periodo) return;
     setVivo(true);
     setPeriodo(p);
-    if (valido) setTexto(f.numero(Math.round(p === "anio" ? monto * 12 : monto / 12)));
+    if (valido) setTexto(f.numero(Math.round(p === "anio" ? monto * pagas : monto / pagas)));
   };
 
   const simbolo = pais ? f.simbolo(pais.moneda) : "";
   const antes = pais ? f.simboloAntes(pais.moneda) : true;
   const amigoPais = amigo ? porMercado.get(amigo.mercado) : undefined;
-  const fechaAmigo = amigo ? f.fecha(fechaDelDia(amigo.dia, anio)) : "";
+  const diaAmigo = amigo ? diaDeCarga(amigo, anio) : 0;
+  const fechaAmigo = diaAmigo > 0 ? f.fecha(fechaDelDia(diaAmigo, anio)) : "";
   const conDuelo = Boolean(amigo);
   const mostrarComparacion = conDuelo && modo !== "ejemplo" && carga;
+  const notaPagas = periodo === "mes" && pagas > 12 ? t.form.pagas : "";
+  const ayuda = !valido ? t.form.invalido : [modo === "ejemplo" ? t.form.ejemploAyuda : modo === "traspaso" ? t.form.propio : "", notaPagas].filter(Boolean).join(" ") || " ";
+  const fechaDe = (d: number) => (d > 0 ? f.fecha(fechaDelDia(d, anio)) : t.cero.dia);
 
   return (
     <div className="cy-mundo-app" data-duelo={conDuelo || undefined} data-vivo={vivo || undefined}>
@@ -437,28 +451,32 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
         <section className="cy-duelo" aria-labelledby="cy-duelo-titulo">
           <p className="cy-duelo-titulo" id="cy-duelo-titulo">
             {amigoPais ? <Bandera iso={amigoPais.iso} ancho={26} /> : null}
-            <span>
-              {t.duelo.amigo[0]} <strong>{fechaAmigo}</strong>
-              {t.duelo.amigo[1]}
-            </span>
+            {diaAmigo > 0 ? (
+              <span>
+                {t.duelo.amigo[0]} <strong>{fechaAmigo}</strong>
+                {t.duelo.amigo[1]}
+              </span>
+            ) : (
+              <span>{t.cero.amigo}</span>
+            )}
           </p>
           <p className="cy-duelo-pregunta">{t.duelo.yVos}</p>
           {mostrarComparacion ? (
             <div className="cy-duelo-tabla">
               {[
-                { quien: t.duelo.vos, dia: carga.dia, tasa: carga.tasa, mejor: carga.mejor, propio: true },
-                { quien: t.duelo.elAmigo, dia: amigo.dia, tasa: amigo.tasa, mejor: amigo.mejor, propio: false },
+                { quien: t.duelo.vos, dia, tasa: carga.tasa, mejor: carga.mejor, propio: true },
+                { quien: t.duelo.elAmigo, dia: diaAmigo, tasa: amigo.tasa, mejor: amigo.mejor, propio: false },
               ].map((p) => (
-                <div key={p.quien} className="cy-duelo-lado" data-propio={p.propio || undefined} data-gana={(p.propio ? carga.dia < amigo.dia : amigo.dia < carga.dia) || undefined}>
+                <div key={p.quien} className="cy-duelo-lado" data-propio={p.propio || undefined} data-gana={(p.propio ? dia < diaAmigo : diaAmigo < dia) || undefined}>
                   <p className="cy-duelo-quien">{p.quien}</p>
                   <dl>
                     <div>
                       <dt>{t.duelo.dia}</dt>
-                      <dd className="cy-duelo-fecha">{f.fecha(fechaDelDia(p.dia, anio))}</dd>
+                      <dd className="cy-duelo-fecha">{fechaDe(p.dia)}</dd>
                     </div>
                     <div>
                       <dt>{t.duelo.tasa}</dt>
-                      <dd>{f.tasa(p.tasa / 1000)}</dd>
+                      <dd>{f.pct(p.tasa / 100)}</dd>
                     </div>
                     <div>
                       <dt>{t.duelo.mejorPais}</dt>
@@ -471,15 +489,15 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
                 </div>
               ))}
               <p className="cy-duelo-veredicto" aria-live="polite">
-                {carga.dia === amigo.dia
+                {dia === diaAmigo
                   ? t.duelo.empate
-                  : carga.dia < amigo.dia
-                    ? amigo.dia - carga.dia === 1
+                  : dia < diaAmigo
+                    ? diaAmigo - dia === 1
                       ? t.duelo.antes1
-                      : rellenar(t.duelo.antes, { n: amigo.dia - carga.dia })
-                    : carga.dia - amigo.dia === 1
+                      : rellenar(t.duelo.antes, { n: diaAmigo - dia })
+                    : dia - diaAmigo === 1
                       ? t.duelo.despues1
-                      : rellenar(t.duelo.despues, { n: carga.dia - amigo.dia })}
+                      : rellenar(t.duelo.despues, { n: dia - diaAmigo })}
               </p>
             </div>
           ) : (
@@ -528,7 +546,7 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
                 {modo === "ejemplo" ? <span className="cy-mundo-ejemplo">{t.form.ejemplo}</span> : null}
               </div>
               <p className="cy-mundo-ayuda" id={idAyuda} data-error={!valido || undefined}>
-                {!valido ? t.form.invalido : modo === "ejemplo" ? t.form.ejemploAyuda : modo === "traspaso" ? t.form.propio : " "}
+                {ayuda}
               </p>
             </div>
             <div className="cy-mundo-campo">
@@ -552,16 +570,16 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
           </form>
 
           <div className="cy-mundo-resultado">
-            <p className="cy-mundo-antes">{t.heroe.hasta[0]}</p>
-            <p className="cy-mundo-fecha" key={fecha}>
-              {propia ? fecha : " "}
+            <p className="cy-mundo-antes">{cero ? t.cero.heroeAntes : t.heroe.hasta[0]}</p>
+            <p className="cy-mundo-fecha" key={cero ? "cero" : fecha}>
+              {propia && carga ? (cero ? t.cero.dia : fecha) : " "}
             </p>
-            {t.heroe.hasta[1] ? <p className="cy-mundo-antes">{t.heroe.hasta[1]}</p> : null}
-            {propia ? (
+            {cero ? <p className="cy-mundo-antes">{t.cero.motivo}</p> : t.heroe.hasta[1] ? <p className="cy-mundo-antes">{t.heroe.hasta[1]}</p> : null}
+            {propia && carga ? (
               <div className="cy-mundo-cifras">
                 <div>
                   <p className="cy-mundo-cifra" aria-describedby={`${idAyuda}-t`}>
-                    {f.tasa(propia.tasa)}
+                    {tasa}
                   </p>
                   <p className="cy-mundo-cifra-texto" id={`${idAyuda}-t`}>
                     {t.duelo.tasa}
@@ -597,10 +615,10 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
               {t.tarjeta.titulo}
             </h2>
             <p className="cy-mundo-bajada">{t.tarjeta.bajada}</p>
-            <Compartir t={t} url={urlCompartir} imagen={imagen} texto={rellenar(t.tarjeta.texto, { fecha })} duelo={conDuelo} />
+            <Compartir t={t} url={urlCompartir} imagen={imagen} texto={cero ? t.cero.texto : rellenar(t.tarjeta.texto, { fecha })} duelo={conDuelo} />
           </div>
           <div className="cy-mundo-compartir-vista">
-            <TarjetaVista t={t} fecha={fecha} tasa={f.tasa(carga.tasa / 1000)} frase={frase} iso={mejorIso} />
+            <TarjetaVista t={t} fecha={fecha} tasa={tasa} frase={frase} iso={mejorIso} cero={cero} />
           </div>
         </section>
       ) : null}

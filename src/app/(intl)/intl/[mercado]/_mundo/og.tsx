@@ -1,6 +1,8 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { textosMundo, type TextosMundo } from "@/motor/i18n/mundo";
-import { decodificarCarga } from "@/motor/mundo/calculo";
+import { decodificarCarga, diaDeCarga } from "@/motor/mundo/calculo";
 import type { CargaCompartida } from "@/motor/mundo/tipos";
 import { intlActivo } from "@/motor/sitio";
 import type { CodigoMercado, Idioma } from "@/motor/tipos";
@@ -11,8 +13,9 @@ import { registro } from "@/paises";
 import { grillaPublicada } from "./datos";
 
 // Tarjeta de «Tu sueldo en el mundo»: /<m>/<slug>/og (1200 x 630, la vista previa del link) y
-// ?formato=historia (1080 x 1920, la que se sube a Stories). Lee solo `c`: porcentaje, día y país,
-// nunca un monto. Un `c` inválido no da error: da la tarjeta genérica, así un link roto igual se ve bien.
+// ?formato=historia (1080 x 1920, la que se sube a Stories). Lee solo `c` (porcentaje y países, nunca
+// un monto) y `formato`; cualquier otro parámetro es 404, así nadie llena la caché con variantes. Un `c`
+// inválido no da error: da la tarjeta genérica, así un link roto igual se ve bien.
 
 const TINTA = "#0b1110";
 const CREMA = "#f4f0e6";
@@ -21,6 +24,9 @@ const VERDE = "#34d399";
 const VERDE_SUAVE = "rgba(52,211,153,0.22)";
 
 const CABECERAS = { "cache-control": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800" };
+// Sin bandera o sin fuentes la tarjeta sale igual, pero peor: no se guarda una semana.
+const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
+const ESPERA_FUENTE_MS = 3000;
 
 const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC" };
 
@@ -34,15 +40,20 @@ function fuente(familia: string, peso: number, texto: string): Promise<ArrayBuff
   if (!p) {
     p = (async () => {
       try {
-        const css = await (await fetch(`https://fonts.googleapis.com/css2?family=${encodeURIComponent(familia)}:wght@${peso}&text=${encodeURIComponent(texto)}`)).text();
-        const url = css.match(/src: url\((.+?)\) format\('(?:opentype|truetype)'\)/)?.[1];
+        const pedido = await fetch(`https://fonts.googleapis.com/css2?family=${encodeURIComponent(familia)}:wght@${peso}&text=${encodeURIComponent(texto)}`, { signal: AbortSignal.timeout(ESPERA_FUENTE_MS) });
+        if (!pedido.ok) return null;
+        const url = (await pedido.text()).match(/src: url\((.+?)\) format\('(?:opentype|truetype)'\)/)?.[1];
         if (!url) return null;
-        const r = await fetch(url);
+        const r = await fetch(url, { signal: AbortSignal.timeout(ESPERA_FUENTE_MS) });
         return r.ok ? await r.arrayBuffer() : null;
       } catch {
         return null;
       }
     })();
+    // Una fuente que falló no queda en memoria: el próximo pedido la vuelve a intentar.
+    p.then((x) => {
+      if (!x) fuentes.delete(clave);
+    });
     if (fuentes.size > 200) fuentes.clear();
     fuentes.set(clave, p);
   }
@@ -72,13 +83,14 @@ function Marca({ tam }: { tam: number }) {
 }
 
 // BanderaPlana solo dibuja las de LATAM: el resto sale del mismo SVG de public/banderas que usa el
-// sitio, pedido al propio origen (los archivos de public no viajan dentro de la función).
-async function banderaDe(iso: string, base: string): Promise<string | null> {
+// sitio, leído del disco. Los archivos de public no viajan solos dentro de la función: next.config.ts
+// los suma al trace de estas rutas (outputFileTracingIncludes). Nunca se piden a req.url: el host lo
+// pone quien hace el pedido.
+async function banderaDe(iso: string): Promise<string | null> {
   if (!/^[A-Z]{2}$/.test(iso)) return null;
   try {
-    const r = await fetch(new URL(`/banderas/${iso.toLowerCase()}.svg`, base), { signal: AbortSignal.timeout(2500) });
-    if (!r.ok) return null;
-    return `data:image/svg+xml;base64,${Buffer.from(await r.arrayBuffer()).toString("base64")}`;
+    const svg = await readFile(path.join(process.cwd(), "public", "banderas", `${iso.toLowerCase()}.svg`));
+    return `data:image/svg+xml;base64,${svg.toString("base64")}`;
   } catch (err) {
     console.warn(`[og mundo] sin bandera ${iso}:`, err instanceof Error ? err.message : err);
     return null;
@@ -154,8 +166,11 @@ interface Datos {
   t: TextosMundo;
   carga: CargaCompartida | null;
   anio: number;
+  // 0 con carga cero: el año entero queda en verde.
+  dia: number;
   fecha: string;
-  tasa: string;
+  // Debajo de la fecha: el porcentaje, o por qué no hay ningún día para el Estado.
+  tasaLinea: string;
   frase: string;
   hasta: [string, string];
   paises: number;
@@ -163,7 +178,7 @@ interface Datos {
   bandera: string | null;
 }
 
-function Horizontal({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia, bandera }: Datos) {
+function Horizontal({ t, carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, familia, bandera }: Datos) {
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", padding: "56px 64px", color: CREMA, fontFamily: familia, ...fondo(1200, 630) }}>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, paddingRight: 40 }}>
@@ -176,7 +191,7 @@ function Horizontal({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia
             <div style={{ display: "flex", fontSize: 30, color: SUAVE }}>{hasta[0]}</div>
             <div style={{ display: "flex", fontSize: fecha.length > 12 ? 92 : 116, fontWeight: 700, letterSpacing: -4, lineHeight: 1.02 }}>{fecha}</div>
             {hasta[1] ? <div style={{ display: "flex", fontSize: 30, color: SUAVE }}>{hasta[1]}</div> : null}
-            <div style={{ display: "flex", marginTop: 18, fontSize: 30, color: VERDE, fontWeight: 700 }}>{t.tarjeta.tasa(tasa)}</div>
+            <div style={{ display: "flex", marginTop: 18, fontSize: 30, color: VERDE, fontWeight: 700 }}>{tasaLinea}</div>
           </div>
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
@@ -190,7 +205,7 @@ function Horizontal({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-end", gap: 22 }}>
-        <Anio dia={carga?.dia ?? 138} anio={anio} celda={11} hueco={4} />
+        <Anio dia={carga ? dia : 138} anio={anio} celda={11} hueco={4} />
         {carga ? (
           <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 20px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 24, fontWeight: 700 }}>
             {`${t.tarjeta.yVos} calcularya.com`}
@@ -201,7 +216,7 @@ function Horizontal({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia
   );
 }
 
-function Historia({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia, bandera }: Datos) {
+function Historia({ t, carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, familia, bandera }: Datos) {
   const tamFecha = fecha.length <= 8 ? 210 : fecha.length <= 12 ? 172 : 136;
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "220px 84px 230px", color: CREMA, fontFamily: familia, ...fondo(1080, 1920) }}>
@@ -214,7 +229,7 @@ function Historia({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia, 
           <div style={{ display: "flex", fontSize: 50, color: SUAVE, lineHeight: 1.2 }}>{hasta[0]}</div>
           <div style={{ display: "flex", fontSize: tamFecha, fontWeight: 700, letterSpacing: -7, lineHeight: 0.98, marginTop: 10 }}>{fecha}</div>
           {hasta[1] ? <div style={{ display: "flex", fontSize: 50, color: SUAVE }}>{hasta[1]}</div> : null}
-          <div style={{ display: "flex", marginTop: 34, fontSize: 52, color: VERDE, fontWeight: 700 }}>{t.tarjeta.tasa(tasa)}</div>
+          <div style={{ display: "flex", marginTop: 34, fontSize: 52, color: VERDE, fontWeight: 700 }}>{tasaLinea}</div>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
@@ -223,7 +238,7 @@ function Historia({ t, carga, anio, fecha, tasa, frase, hasta, paises, familia, 
         </div>
       )}
       <div style={{ display: "flex" }}>
-        <Anio dia={carga?.dia ?? 138} anio={anio} celda={22} hueco={8} />
+        <Anio dia={carga ? dia : 138} anio={anio} celda={22} hueco={8} />
       </div>
       {carga ? (
         <div style={{ display: "flex", alignItems: "center", gap: 24, fontSize: 46, lineHeight: 1.2 }}>
@@ -249,13 +264,20 @@ export function crearOgMundo(idioma: Idioma) {
     const m = ctx.mercado;
     const t = textosMundo(m.idioma, m.trato, m.locale);
     const busqueda = new URL(req.url).searchParams;
-    const historia = busqueda.get("formato") === "historia";
+    // nxtP… son los parámetros de ruta que Next pasa por la query en algunos entornos.
+    const claves = [...busqueda.keys()].filter((k) => !k.startsWith("nxtP"));
+    if (claves.some((k) => k !== "c" && k !== "formato") || busqueda.getAll("c").length > 1 || busqueda.getAll("formato").length > 1) return new Response("No encontrado", { status: 404 });
+    const formato = busqueda.get("formato");
+    if (formato !== null && formato !== "historia") return new Response("No encontrado", { status: 404 });
+    const historia = formato === "historia";
     const anio = Number(ctx.fecha.slice(0, 4));
     const grilla = await grillaPublicada();
-    const carga = decodificarCarga(busqueda.get("c"));
+    const carga = decodificarCarga(busqueda.get("c"), grilla);
+    const dia = carga ? diaDeCarga(carga, anio) : 0;
+    const cero = carga?.tasa === 0;
 
-    const tasa = carga ? new Intl.NumberFormat(m.locale, { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(carga.tasa / 1000) : "";
-    const fecha = carga ? fechaLarga(carga.dia, anio, m.locale) : "";
+    const tasa = carga ? new Intl.NumberFormat(m.locale, { style: "percent", maximumFractionDigits: 0 }).format(carga.tasa / 100) : "";
+    const fecha = !carga ? "" : cero ? t.cero.dia : fechaLarga(dia, anio, m.locale);
     const nombreMejor = carga ? nombreDePais({ codigo: carga.mejor.toLowerCase(), pais: carga.mejor, nombre: carga.mejor, idioma: m.idioma }, m.locale) : "";
     const origen = carga ? grilla.paises.find((p) => p.mercado === carga.mercado) : undefined;
     const nombreOrigen = origen ? nombreDePais({ codigo: origen.mercado, pais: origen.iso, nombre: origen.iso, idioma: m.idioma }, m.locale) : "";
@@ -263,14 +285,26 @@ export function crearOgMundo(idioma: Idioma) {
     const frase = !carga ? "" : carga.ventaja === 0 || (origen && origen.iso === carga.mejor) ? t.tarjeta.mejorPropio(nombreOrigen || nombreMejor) : t.tarjeta.mejor(nombreMejor, pct);
     const cjk = FUENTE_CJK[m.idioma];
     const familiaCjk = cjk && m.idioma === "zh" && /^zh-(CN|SG)/i.test(m.locale) ? "Noto Sans SC" : cjk;
-    const bandera = carga ? await banderaDe(carga.mejor, req.url) : null;
-    const datos: Datos = { t, carga, anio, fecha, tasa, frase, hasta: partir(t.tarjeta.hasta), paises: grilla.paises.length, familia: familiaCjk ? `Geist, "${familiaCjk}"` : "Geist", bandera };
+    const bandera = carga ? await banderaDe(carga.mejor) : null;
+    const datos: Datos = {
+      t,
+      carga,
+      anio,
+      dia,
+      fecha,
+      tasaLinea: !carga ? "" : cero ? t.cero.motivo : t.tarjeta.tasa(tasa),
+      frase,
+      hasta: cero ? [t.cero.tarjetaAntes, ""] : partir(t.tarjeta.hasta),
+      paises: grilla.paises.length,
+      familia: familiaCjk ? `Geist, "${familiaCjk}"` : "Geist",
+      bandera,
+    };
 
     const texto = [
       "CalcularYa calcularya.com 0123456789%.,",
       datos.hasta.join(" "),
       fecha,
-      carga ? t.tarjeta.tasa(tasa) : "",
+      datos.tasaLinea,
       frase,
       t.tarjeta.yVos,
       t.tarjeta.cta,
@@ -292,7 +326,7 @@ export function crearOgMundo(idioma: Idioma) {
     return new ImageResponse(elemento, {
       width: historia ? 1080 : 1200,
       height: historia ? 1920 : 630,
-      headers: CABECERAS,
+      headers: (carga && !bandera) || fonts.length < pedidas.length ? CABECERAS_INCOMPLETA : CABECERAS,
       ...(fonts.length ? { fonts } : {}),
     });
   };

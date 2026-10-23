@@ -36,6 +36,8 @@ export interface TextosMundo {
     ejemploAyuda: string;
     propio: string;
     invalido: string;
+    // Ayuda del modo «por mes» en un país con más de 12 pagas de ley.
+    pagas: string;
   };
   heroe: {
     // La página parte la frase en la fecha para dibujarla grande: en japonés, coreano y chino el
@@ -104,6 +106,16 @@ export interface TextosMundo {
     empate: string;
     desde: (pais: string) => string;
   };
+  // Carga cero: la calculadora no descuenta nada. En vez de «hasta el 1 de enero», la página dice
+  // `heroeAntes` + `dia` (grande) + `motivo`; la tarjeta, `tarjetaAntes` + `dia` + `motivo`.
+  cero: {
+    dia: string;
+    heroeAntes: string;
+    tarjetaAntes: string;
+    motivo: string;
+    texto: string;
+    amigo: string;
+  };
   metodo: {
     titulo: string;
     estimacion: string;
@@ -152,6 +164,7 @@ const es: Diccionario<TextosMundo> = {
       ejemploAyuda: "Es un sueldo de ejemplo. Escribe el tuyo y todo se recalcula al instante.",
       propio: "Lo trajimos de tu cálculo.",
       invalido: "Escribe un monto mayor que cero.",
+      pagas: "Tu sueldo mensual de recibo: sumamos el aguinaldo y los sueldos extra de ley. Lo que te queda en mano es el promedio de los 12 meses.",
     },
     heroe: {
       hasta: (fecha) => `Trabajas para el Estado hasta el ${fecha}`,
@@ -218,6 +231,7 @@ const es: Diccionario<TextosMundo> = {
       empate: "Se liberan el mismo día.",
       desde: (pais) => `Trabaja ${gEs.en(pais)}`,
     },
+    cero: { dia: "cero días", heroeAntes: "Para el Estado trabajas", tarjetaAntes: "Para el Estado trabajo", motivo: "Con este sueldo no se descuenta impuesto a la renta ni aportes.", texto: "Este año no trabajo ni un día para el Estado. ¿Y tú?", amigo: "Tu amigo no trabaja ni un día para el Estado." },
     metodo: {
       titulo: "Cómo lo calculamos",
       estimacion: "Es una estimación para comparar países, no un recibo de sueldo. Deducciones, hijos o bonos pueden mover tu número.",
@@ -272,6 +286,7 @@ const es: Diccionario<TextosMundo> = {
     },
   },
   vos: {
+    cero: { heroeAntes: "Para el Estado trabajás", texto: "Este año no trabajo ni un día para el Estado. ¿Y vos?" },
     seo: {
       descripcion: (pais, n) => `Mirá hasta qué día trabajás para el Estado con tu sueldo ${gEs.de(pais)} y cuánto te quedaría en mano en ${n} países. Gratis y sin registro.`,
       descripcionGlobal: (n) => `Mirá hasta qué día trabajás para el Estado y cuánto te quedaría en mano con tu sueldo en ${n} países. Gratis y sin registro.`,
@@ -342,6 +357,7 @@ const es: Diccionario<TextosMundo> = {
     },
   },
   usted: {
+    cero: { heroeAntes: "Para el Estado trabaja", texto: "Este año no trabajo ni un día para el Estado. ¿Y usted?", amigo: "Quien le mandó esto no trabaja ni un día para el Estado." },
     nombre: "Su sueldo en el mundo",
     seo: {
       titulo: (pais) => [`${SEO_ES} | ${pais}`, SEO_ES, "Su sueldo en el mundo"],
@@ -352,6 +368,7 @@ const es: Diccionario<TextosMundo> = {
     h1: "¿Hasta qué día del año trabaja para el Estado?",
     bajada: (n) => `Escriba su sueldo bruto y vea su fecha. Después compárelo en ${n} países, con el mismo poder de compra y la ley de cada uno.`,
     form: {
+      pagas: "Su sueldo mensual de recibo: sumamos el aguinaldo y los sueldos extra de ley. Lo que le queda en mano es el promedio de los 12 meses.",
       titulo: "Su sueldo",
       pais: "País donde trabaja",
       ejemploAyuda: "Es un sueldo de ejemplo. Escriba el suyo y todo se recalcula al instante.",
@@ -467,6 +484,7 @@ const en: Diccionario<TextosMundo> = {
       ejemploAyuda: "This is a sample salary. Type yours and everything updates instantly.",
       propio: "Brought over from your calculation.",
       invalido: "Enter an amount above zero.",
+      pagas: "Your monthly payslip salary: we add the extra payments required by law (13th or 14th salary). Take-home pay is the average over 12 months.",
     },
     heroe: {
       hasta: (fecha) => `You work for the government until ${fecha}`,
@@ -533,6 +551,7 @@ const en: Diccionario<TextosMundo> = {
       empate: "You're both free on the same day.",
       desde: (pais) => `Works ${gEn.en(pais)}`,
     },
+    cero: { dia: "zero days", heroeAntes: "You work for the government", tarjetaAntes: "I work for the government", motivo: "On this salary, no income tax or payroll contributions are deducted.", texto: "I don't work a single day for the government this year. What about you?", amigo: "Your friend doesn't work a single day for the government." },
     metodo: {
       titulo: "How we calculate it",
       estimacion: "This is an estimate to compare countries, not a payslip. Deductions, children or bonuses can move your number.",
@@ -621,6 +640,7 @@ const pt: Diccionario<TextosMundo> = {
       ejemploAyuda: "É um salário de exemplo. Digite o seu e tudo se recalcula na hora.",
       propio: "Trouxemos do seu cálculo.",
       invalido: "Digite um valor maior que zero.",
+      pagas: "Seu salário mensal do holerite: somamos o 13º e os pagamentos extras previstos em lei. O líquido é a média dos 12 meses.",
     },
     heroe: {
       hasta: (fecha) => `Você trabalha para o governo até ${fecha}`,
@@ -687,6 +707,7 @@ const pt: Diccionario<TextosMundo> = {
       empate: "Vocês se libertam no mesmo dia.",
       desde: (pais) => `Trabalha ${gPt.en(pais)}`,
     },
+    cero: { dia: "zero dias", heroeAntes: "Você trabalha para o governo", tarjetaAntes: "Trabalho para o governo", motivo: "Com este salário não há desconto de imposto de renda nem de contribuições.", texto: "Este ano não trabalho nenhum dia para o governo. E você?", amigo: "Seu amigo não trabalha nenhum dia para o governo." },
     metodo: {
       titulo: "Como calculamos",
       estimacion: "É uma estimativa para comparar países, não um holerite. Deduções, filhos ou bônus podem mudar o seu número.",
@@ -743,6 +764,7 @@ const pt: Diccionario<TextosMundo> = {
   // Portugal: «Estado», «partilhar», «recibo de vencimento» e o tratamento sem «você».
   regional: {
     "pt-PT": {
+      cero: { heroeAntes: "Trabalha para o Estado", tarjetaAntes: "Trabalho para o Estado", motivo: "Com este salário não há desconto de IRS nem de contribuições.", texto: "Este ano não trabalho nenhum dia para o Estado. E o seu dia?", amigo: "Quem lhe enviou isto não trabalha nenhum dia para o Estado." },
       nombre: "O seu salário pelo mundo",
       seo: {
         titulo: (pais) => [`Dia da libertação fiscal e salário líquido no mundo | ${pais}`, "Dia da libertação fiscal e salário líquido no mundo", "O seu salário pelo mundo"],
@@ -754,6 +776,7 @@ const pt: Diccionario<TextosMundo> = {
       h1: "Até que dia do ano trabalha para o Estado?",
       bajada: (n) => `Introduza o seu salário bruto e veja a sua data. Depois compare em ${n} países, com o mesmo poder de compra e as regras de cada um.`,
       form: {
+        pagas: "O seu salário mensal do recibo: somamos os subsídios de férias e de Natal. O líquido é a média dos 12 meses.",
         titulo: "O seu salário",
         pais: "País onde trabalha",
         ejemploAyuda: "É um salário de exemplo. Introduza o seu e tudo se recalcula de imediato.",
@@ -876,6 +899,7 @@ const frBase: TextosMundo = {
     ejemploAyuda: "C'est un salaire d'exemple. Saisis le tien et tout se recalcule aussitôt.",
     propio: "Repris de ton calcul.",
     invalido: "Saisis un montant supérieur à zéro.",
+    pagas: "Ton salaire mensuel de la fiche de paie : on ajoute le 13e mois et les primes prévues par la loi. Le net est la moyenne sur 12 mois.",
   },
   heroe: {
     hasta: (fecha) => `Tu travailles pour l'État jusqu'au ${fecha}`,
@@ -942,6 +966,7 @@ const frBase: TextosMundo = {
     empate: "Libérés le même jour.",
     desde: (pais) => `Travaille ${gFr.en(pais)}`,
   },
+  cero: { dia: "zéro jour", heroeAntes: "Tu travailles pour l'État", tarjetaAntes: "Je travaille pour l'État", motivo: "Avec ce salaire, ni impôt sur le revenu ni cotisations ne sont prélevés.", texto: "Cette année, je ne travaille pas un seul jour pour l'État. Et toi ?", amigo: "Ton ami ne travaille pas un seul jour pour l'État." },
   metodo: {
     titulo: "Comment nous le calculons",
     estimacion: "C'est une estimation pour comparer des pays, pas une fiche de paie. Déductions, enfants ou primes peuvent changer ton chiffre.",
@@ -999,6 +1024,7 @@ const frBase: TextosMundo = {
 const fr: Diccionario<TextosMundo> = {
   base: frBase,
   usted: {
+    cero: { heroeAntes: "Vous travaillez pour l'État", texto: "Cette année, je ne travaille pas un seul jour pour l'État. Et vous ?", amigo: "La personne qui vous l'a envoyé ne travaille pas un seul jour pour l'État." },
     nombre: "Votre salaire dans le monde",
     seo: {
       titulo: (pais) => [`${SEO_FR} | ${pais}`, SEO_FR, "Votre salaire dans le monde"],
@@ -1009,6 +1035,7 @@ const fr: Diccionario<TextosMundo> = {
     h1: "Jusqu'à quel jour de l'année travaillez-vous pour l'État ?",
     bajada: (n) => `Saisissez votre salaire brut pour voir votre date. Puis comparez-le dans ${n} pays, à pouvoir d'achat égal et avec les règles de chacun.`,
     form: {
+      pagas: "Votre salaire mensuel de la fiche de paie : on ajoute le 13e mois et les primes prévues par la loi. Le net est la moyenne sur 12 mois.",
       titulo: "Votre salaire",
       pais: "Pays où vous travaillez",
       ejemploAyuda: "C'est un salaire d'exemple. Saisissez le vôtre et tout se recalcule aussitôt.",
@@ -1121,6 +1148,7 @@ const de: Diccionario<TextosMundo> = {
       ejemploAyuda: "Das ist ein Beispielgehalt. Gib deins ein, und alles rechnet sich sofort neu.",
       propio: "Aus deiner Berechnung übernommen.",
       invalido: "Gib einen Betrag über null ein.",
+      pagas: "Dein Monatsgehalt laut Abrechnung: Wir rechnen die gesetzlichen Sonderzahlungen (13. oder 14. Gehalt) dazu. Netto ist der Durchschnitt über 12 Monate.",
     },
     heroe: {
       hasta: (fecha) => `Du arbeitest für den Staat bis zum ${fecha}`,
@@ -1187,6 +1215,7 @@ const de: Diccionario<TextosMundo> = {
       empate: "Ihr seid am selben Tag frei.",
       desde: (pais) => `Arbeitet ${gDe.en(pais)}`,
     },
+    cero: { dia: "null Tage", heroeAntes: "Du arbeitest für den Staat", tarjetaAntes: "Ich arbeite für den Staat", motivo: "Bei diesem Gehalt werden weder Einkommensteuer noch Sozialabgaben abgezogen.", texto: "Dieses Jahr arbeite ich keinen einzigen Tag für den Staat. Und du?", amigo: "Dein Freund arbeitet keinen einzigen Tag für den Staat." },
     metodo: {
       titulo: "So rechnen wir",
       estimacion: "Das ist eine Schätzung, um Länder zu vergleichen, keine Gehaltsabrechnung. Freibeträge, Kinder oder Boni können deine Zahl verändern.",
@@ -1241,6 +1270,7 @@ const de: Diccionario<TextosMundo> = {
     },
   },
   usted: {
+    cero: { heroeAntes: "Sie arbeiten für den Staat", texto: "Dieses Jahr arbeite ich keinen einzigen Tag für den Staat. Und bei Ihnen?", amigo: "Die Person, die Ihnen das geschickt hat, arbeitet keinen einzigen Tag für den Staat." },
     nombre: "Ihr Gehalt weltweit",
     seo: {
       titulo: (pais) => [`${SEO_DE} | ${pais}`, SEO_DE, "Ihr Gehalt weltweit"],
@@ -1252,6 +1282,7 @@ const de: Diccionario<TextosMundo> = {
     h1: "Bis zu welchem Tag im Jahr arbeiten Sie für den Staat?",
     bajada: (n) => `Geben Sie Ihr Bruttogehalt ein und sehen Sie Ihr Datum. Dann vergleichen Sie es in ${n} Ländern, bei gleicher Kaufkraft und mit den Regeln jedes Landes.`,
     form: {
+      pagas: "Ihr Monatsgehalt laut Abrechnung: Wir rechnen die gesetzlichen Sonderzahlungen (13. oder 14. Gehalt) dazu. Netto ist der Durchschnitt über 12 Monate.",
       titulo: "Ihr Gehalt",
       pais: "Land, in dem Sie arbeiten",
       ejemploAyuda: "Das ist ein Beispielgehalt. Geben Sie Ihres ein, und alles rechnet sich sofort neu.",
@@ -1365,6 +1396,7 @@ const it: Diccionario<TextosMundo> = {
       ejemploAyuda: "È uno stipendio di esempio. Scrivi il tuo e tutto si ricalcola subito.",
       propio: "Preso dal tuo calcolo.",
       invalido: "Inserisci un importo maggiore di zero.",
+      pagas: "Il tuo stipendio mensile in busta paga: aggiungiamo le mensilità extra previste per legge. Il netto è la media su 12 mesi.",
     },
     heroe: {
       hasta: (fecha) => `Lavori per lo Stato fino al ${fecha}`,
@@ -1431,6 +1463,7 @@ const it: Diccionario<TextosMundo> = {
       empate: "Vi liberate lo stesso giorno.",
       desde: (pais) => `Lavora ${gIt.en(pais)}`,
     },
+    cero: { dia: "zero giorni", heroeAntes: "Per lo Stato lavori", tarjetaAntes: "Per lo Stato lavoro", motivo: "Con questo stipendio non vengono trattenute né imposta sul reddito né contributi.", texto: "Quest'anno non lavoro neanche un giorno per lo Stato. E tu?", amigo: "Il tuo amico non lavora neanche un giorno per lo Stato." },
     metodo: {
       titulo: "Come lo calcoliamo",
       estimacion: "È una stima per confrontare paesi, non una busta paga. Detrazioni, figli o bonus possono cambiare il tuo numero.",
@@ -1485,6 +1518,7 @@ const it: Diccionario<TextosMundo> = {
     },
   },
   usted: {
+    cero: { heroeAntes: "Per lo Stato lavora", texto: "Quest'anno non lavoro neanche un giorno per lo Stato. E Lei?", amigo: "Chi Le ha mandato questo non lavora neanche un giorno per lo Stato." },
     nombre: "Lo stipendio nel mondo",
     seo: {
       titulo: (pais) => [`${SEO_IT} | ${pais}`, SEO_IT, "Lo stipendio nel mondo"],
@@ -1495,6 +1529,7 @@ const it: Diccionario<TextosMundo> = {
     h1: "Fino a che giorno dell'anno lavora per lo Stato?",
     bajada: (n) => `Inserisca lo stipendio lordo e guardi la Sua data. Poi lo confronti in ${n} paesi, a parità di potere d'acquisto e con le regole di ciascuno.`,
     form: {
+      pagas: "Il Suo stipendio mensile in busta paga: aggiungiamo le mensilità extra previste per legge. Il netto è la media su 12 mesi.",
       titulo: "Lo stipendio",
       pais: "Paese in cui lavora",
       ejemploAyuda: "È uno stipendio di esempio. Scriva il Suo e tutto si ricalcola subito.",
@@ -1608,6 +1643,7 @@ const nl: Diccionario<TextosMundo> = {
       ejemploAyuda: "Dit is een voorbeeldsalaris. Vul het jouwe in en alles rekent meteen opnieuw.",
       propio: "Overgenomen uit je berekening.",
       invalido: "Vul een bedrag boven nul in.",
+      pagas: "Je maandsalaris volgens je loonstrook: we tellen de wettelijke extra uitbetalingen erbij op. Netto is het gemiddelde over 12 maanden.",
     },
     heroe: {
       hasta: (fecha) => `Je werkt voor de staat tot ${fecha}`,
@@ -1674,6 +1710,7 @@ const nl: Diccionario<TextosMundo> = {
       empate: "Jullie zijn op dezelfde dag vrij.",
       desde: (pais) => `Werkt ${gNl.en(pais)}`,
     },
+    cero: { dia: "nul dagen", heroeAntes: "Voor de staat werk je", tarjetaAntes: "Voor de staat werk ik", motivo: "Bij dit salaris wordt geen inkomstenbelasting of premie ingehouden.", texto: "Dit jaar werk ik geen enkele dag voor de staat. En jij?", amigo: "Je vriend werkt geen enkele dag voor de staat." },
     metodo: {
       titulo: "Zo rekenen we",
       estimacion: "Dit is een schatting om landen te vergelijken, geen loonstrook. Aftrekposten, kinderen of bonussen kunnen je getal veranderen.",
@@ -1728,6 +1765,7 @@ const nl: Diccionario<TextosMundo> = {
     },
   },
   usted: {
+    cero: { heroeAntes: "Voor de staat werkt u", texto: "Dit jaar werk ik geen enkele dag voor de staat. En u?", amigo: "Wie u dit stuurde, werkt geen enkele dag voor de staat." },
     nombre: "Uw salaris wereldwijd",
     seo: {
       titulo: (pais) => [`${SEO_NL} | ${pais}`, SEO_NL, "Uw salaris wereldwijd"],
@@ -1739,6 +1777,7 @@ const nl: Diccionario<TextosMundo> = {
     h1: "Tot welke dag van het jaar werkt u voor de staat?",
     bajada: (n) => `Vul uw brutosalaris in en zie uw datum. Vergelijk het daarna in ${n} landen, met dezelfde koopkracht en de regels van elk land.`,
     form: {
+      pagas: "Uw maandsalaris volgens uw loonstrook: we tellen de wettelijke extra uitbetalingen erbij op. Netto is het gemiddelde over 12 maanden.",
       titulo: "Uw salaris",
       pais: "Land waar u werkt",
       ejemploAyuda: "Dit is een voorbeeldsalaris. Vul het uwe in en alles rekent meteen opnieuw.",
@@ -1851,6 +1890,7 @@ const ja: Diccionario<TextosMundo> = {
       ejemploAyuda: "これは例の金額です。ご自身の給与を入力すると、すぐに計算し直します。",
       propio: "計算結果から引き継ぎました。",
       invalido: "0より大きい金額を入力してください。",
+      pagas: "給与明細の月給です。法律で定められた追加の支給分を加えて計算します。手取りは12か月の平均です。",
     },
     heroe: {
       hasta: (fecha) => `税金のために働くのは${fecha}までです`,
@@ -1917,6 +1957,7 @@ const ja: Diccionario<TextosMundo> = {
       empate: "解放される日は同じです。",
       desde: (pais) => `${gJa.en(pais)}勤務`,
     },
+    cero: { dia: "0日", heroeAntes: "税金のために働く日数は", tarjetaAntes: "税金のために働く日数は", motivo: "この給与では所得税も社会保険料も差し引かれません。", texto: "今年、税金のために働く日は0日です。何日まで働いているか計算してみませんか", amigo: "送り主が税金のために働く日は0日です。" },
     metodo: {
       titulo: "計算方法",
       estimacion: "国どうしを比べるための目安で、給与明細ではありません。控除、扶養家族、賞与などで数字は変わります。",
@@ -1997,6 +2038,7 @@ const ko: Diccionario<TextosMundo> = {
       ejemploAyuda: "예시 금액이에요. 실제 급여를 입력하면 바로 다시 계산해요.",
       propio: "앞선 계산에서 가져왔어요.",
       invalido: "0보다 큰 금액을 입력해 주세요.",
+      pagas: "급여명세서의 월급이에요. 법으로 정한 추가 급여를 더해 계산해요. 실수령액은 12개월 평균이에요.",
     },
     heroe: {
       hasta: (fecha) => `세금을 위해 일하는 날: ${fecha}까지`,
@@ -2063,6 +2105,7 @@ const ko: Diccionario<TextosMundo> = {
       empate: "해방되는 날이 같아요.",
       desde: (pais) => `근무지: ${pais}`,
     },
+    cero: { dia: "0일", heroeAntes: "세금을 위해 일하는 날", tarjetaAntes: "세금을 위해 일하는 날", motivo: "이 급여에서는 소득세와 사회보험료가 공제되지 않아요.", texto: "올해 세금을 위해 일하는 날: 0일. 내 날짜도 확인해 보세요", amigo: "보낸 사람이 세금을 위해 일하는 날: 0일" },
     metodo: {
       titulo: "계산 방법",
       estimacion: "나라를 비교하기 위한 추정치이고 급여명세서가 아니에요. 공제, 부양가족, 상여금에 따라 숫자가 달라져요.",
@@ -2142,6 +2185,7 @@ const zhHant: TextosMundo = {
     ejemploAyuda: "這是範例金額。輸入您的薪資，結果會立刻重新計算。",
     propio: "已帶入您先前的計算。",
     invalido: "請輸入大於零的金額。",
+    pagas: "薪資單上的月薪。我們會加上法定的額外月薪。實領為 12 個月的平均。",
   },
   heroe: {
     hasta: (fecha) => `您為稅工作到${fecha}`,
@@ -2208,6 +2252,7 @@ const zhHant: TextosMundo = {
     empate: "兩位在同一天解放。",
     desde: (pais) => `${gZh.en(pais)}工作`,
   },
+  cero: { dia: "0 天", heroeAntes: "您為稅工作", tarjetaAntes: "我為稅工作", motivo: "以這份薪資，不扣所得稅也不扣社會保險費。", texto: "今年我為稅工作 0 天。您呢？", amigo: "傳給您的人今年為稅工作 0 天。" },
   metodo: {
     titulo: "計算方式",
     estimacion: "這是用來比較國家的估算，不是薪資單。扣除額、子女或獎金都可能改變您的數字。",
@@ -2283,6 +2328,7 @@ const zhHans: TextosMundo = {
     ejemploAyuda: "这是示例金额。输入您的工资，结果会立即重新计算。",
     propio: "已带入您之前的计算。",
     invalido: "请输入大于零的金额。",
+    pagas: "工资单上的月薪。我们会加上法定的额外月薪。到手为 12 个月的平均。",
   },
   heroe: {
     hasta: (fecha) => `您为税工作到${fecha}`,
@@ -2349,6 +2395,7 @@ const zhHans: TextosMundo = {
     empate: "两位在同一天解放。",
     desde: (pais) => `${gZh.en(pais)}工作`,
   },
+  cero: { dia: "0 天", heroeAntes: "您为税工作", tarjetaAntes: "我为税工作", motivo: "按这份工资，不扣个人所得税也不扣社保。", texto: "今年我为税工作 0 天。您呢？", amigo: "发给您的人今年为税工作 0 天。" },
   metodo: {
     titulo: "计算方法",
     estimacion: "这是用来对比国家的估算，不是工资条。扣除项、子女或奖金都可能改变您的数字。",

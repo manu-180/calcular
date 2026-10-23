@@ -42,7 +42,8 @@ export function PaginaMundo({ ctx, grilla, carga }: { ctx: ContextoSitio; grilla
   const url = urlMundo(m);
   const faq = t.faq(n);
   const fuente = grilla.fuentePpa;
-  const anioPpa = Math.max(...grilla.paises.map((p) => p.anioPpa));
+  // El año del Banco Mundial, no el de la PPA de Argentina llevada al día (eso lo explica un supuesto).
+  const anioPpa = fuente.anio;
   const masVieja = [...grilla.paises.map((p) => p.datosVerificadosEl)].sort()[0];
   const organismo = fuente.organismo === "Banco Mundial" ? t.metodo.bancoMundial : fuente.organismo;
   const fuentes = [...cliente.paises].sort((a, b) => a.nombre.localeCompare(b.nombre, m.locale));

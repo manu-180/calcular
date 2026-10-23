@@ -175,7 +175,7 @@ export const ADAPTADORES: Readonly<Record<string, EntradaAdaptadores>> = {
     },
   },
   "de.brutto-netto-rechner": { bruto: "brutto", periodoBruto: "mes", neto: "netto", periodoNeto: "mes", nota: "Steuerklasse I, Nordrhein-Westfalen, sin iglesia." },
-  "es.sueldo-neto": { bruto: "bruto", periodoBruto: "anio", neto: "netoAnual", periodoNeto: "anio", entrada: { pagas: "14" }, nota: "14 pagas, contrato indefinido." },
+  "es.sueldo-neto": { bruto: "bruto", periodoBruto: "anio", neto: "netoAnual", periodoNeto: "anio", pagasAnuales: 14, entrada: { pagas: "14" }, nota: "14 pagas (las dos extraordinarias del Estatuto de los Trabajadores), contrato indefinido." },
   "it.stipendio-netto": { bruto: "ral", periodoBruto: "anio", neto: "nettoAnnuo", periodoNeto: "anio" },
   "ca.take-home-pay": { bruto: "salario", periodoBruto: "anio", neto: "anual", periodoNeto: "anio", entrada: { pension: 0 }, nota: "Ontario." },
   "nl.bruto-netto-salaris": {

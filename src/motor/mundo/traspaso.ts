@@ -1,14 +1,31 @@
-import type { DefinicionCalculadora } from "../tipos";
-import { ADAPTADORES, esExclusion, type AdaptadorMundo } from "./adaptadores";
+import type { DefinicionCalculadora, ResultadoBase } from "../tipos";
+import { ADAPTADORES, esExclusion, type AdaptadorMundo, type ContextoAdaptador } from "./adaptadores";
 import { inferirMundo } from "./inferir";
-import { CLAVE_TRASPASO } from "./rutas";
+import { calculadoraPrincipal, CLAVE_TRASPASO, edicionPrincipal } from "./rutas";
 
+// Lo que viaja de la calculadora a la página del mundo: el bruto ANUAL (con aguinaldo y pagas extra) en
+// la moneda del país. La página lo muestra «por mes» dividido por las pagas de ley del país, que es el
+// sueldo del recibo, y la grilla lo compara como anual: ida y vuelta en la misma unidad.
 export interface Traspaso {
   mercado: string;
-  brutoMensual: number;
+  brutoAnual: number;
 }
 
 type Leible = Pick<DefinicionCalculadora, "campos" | "resultado" | "mundo">;
+
+export interface EntradaTraspaso {
+  // Edición donde se calculó (ca-fr también vale: se guarda la principal).
+  mercado: string;
+  calculadora: string;
+  // Lo que tiene el formulario: textos tal como se tipearon, o números ya leídos.
+  crudos: Readonly<Record<string, unknown>>;
+  // Opcional: sin ella alcanza la tabla de adaptadores del motor; con ella también entra un país que
+  // declaró `mundo` o que se infiere.
+  definicion?: Leible;
+  // El resultado del cálculo. Donde el adaptador lee el bruto del resultado (CTC de India, Países Bajos
+  // con vakantiegeld o 13.º mes) es ese número, no el campo.
+  resultado?: Readonly<Record<string, unknown>>;
+}
 
 // Número de lo que tipeó la persona sin saber el locale: el último separador seguido de 1 o 2 dígitos
 // es el decimal; uno seguido de 3 dígitos es de miles («1.500» y «1,500» son mil quinientos, que en
@@ -16,7 +33,7 @@ type Leible = Pick<DefinicionCalculadora, "campos" | "resultado" | "mundo">;
 export function leerMonto(valor: unknown): number | null {
   if (typeof valor === "number") return Number.isFinite(valor) && valor > 0 ? valor : null;
   if (typeof valor !== "string") return null;
-  const limpio = valor.replace(/[\s  '’]/g, "").replace(/[^\d.,-]/g, "");
+  const limpio = valor.replace(/[\s  '’]/g, "").replace(/[^\d.,-]/g, "");
   if (!/\d/.test(limpio)) return null;
   const ultimo = Math.max(limpio.lastIndexOf("."), limpio.lastIndexOf(","));
   let texto = limpio;
@@ -32,21 +49,52 @@ export function leerMonto(valor: unknown): number | null {
   return Number.isFinite(n) && n > 0 ? n : null;
 }
 
-function adaptadorPara(calculadora: string, definicion?: Leible): AdaptadorMundo | null {
+function adaptadorPara(calculadora: string, principal: string, definicion?: Leible): AdaptadorMundo | null {
   if (definicion?.mundo) return "excluir" in definicion.mundo ? null : definicion.mundo;
-  const tabla = ADAPTADORES[calculadora];
+  const tabla = ADAPTADORES[calculadora] ?? ADAPTADORES[principal];
   if (tabla) return esExclusion(tabla) ? null : tabla;
   if (!definicion) return null;
   const inf = inferirMundo(definicion);
   return inf.ok ? inf.mundo : null;
 }
 
-// Bruto anual / 12 de lo que la persona cargó: con aguinaldo u otras pagas de ley, el mensual que
-// viaja es el total del año repartido en 12 (compararDesde lo multiplica por 12).
-export function brutoMensualDeTraspaso(calculadora: string, crudos: Readonly<Record<string, unknown>>, definicion?: Leible): number | null {
-  const ad = adaptadorPara(calculadora, definicion);
+const positivo = (v: unknown): number | null => (typeof v === "number" && Number.isFinite(v) && v > 0 ? v : null);
+
+// En el navegador no están los valores del país: un adaptador que los pide (Perú) tira y se usa el
+// campo con las pagas de ley.
+function brutoDelResultado(ad: AdaptadorMundo, resultado: Readonly<Record<string, unknown>>, crudos: Readonly<Record<string, unknown>>): number | null {
+  const pagas = ad.pagasAnuales ?? 12;
+  if (ad.brutoAnual) {
+    const textos: Record<string, string | boolean> = {};
+    for (const [k, v] of Object.entries(crudos)) if (typeof v === "string" || typeof v === "boolean") textos[k] = v;
+    const ctx: ContextoAdaptador = {
+      valores: {},
+      crudos: textos,
+      numero: (id) => {
+        throw new Error(`sin el dato ${id} en el navegador`);
+      },
+    };
+    try {
+      return positivo(ad.brutoAnual(resultado as ResultadoBase, ctx));
+    } catch {
+      return null;
+    }
+  }
+  if (ad.brutoResultado) {
+    const v = positivo(resultado[ad.brutoResultado]);
+    return v === null ? null : ad.periodoNeto === "anio" ? v : v * pagas;
+  }
+  return null;
+}
+
+export function traspasoDe(e: EntradaTraspaso): Traspaso | null {
+  const ad = adaptadorPara(e.calculadora, calculadoraPrincipal(e.mercado, e.calculadora), e.definicion);
   if (!ad) return null;
+  const { crudos } = e;
   if (ad.traspasoSi && Object.entries(ad.traspasoSi).some(([k, v]) => crudos[k] !== v)) return null;
+  const mercado = edicionPrincipal(e.mercado);
+  const delResultado = e.resultado ? brutoDelResultado(ad, e.resultado, crudos) : null;
+  if (delResultado !== null) return { mercado, brutoAnual: Math.round(delResultado * 100) / 100 };
   const base = leerMonto(crudos[ad.bruto]);
   if (base === null) return null;
   const monto = base + (ad.sumarAlBruto ?? []).reduce((suma, id) => suma + (leerMonto(crudos[id]) ?? 0), 0);
@@ -60,18 +108,16 @@ export function brutoMensualDeTraspaso(calculadora: string, crudos: Readonly<Rec
   } else {
     anual = ad.periodoBruto === "anio" ? monto : monto * pagas;
   }
-  const mensual = Math.round((anual / 12) * 100) / 100;
-  return mensual > 0 ? mensual : null;
+  const brutoAnual = Math.round(anual * 100) / 100;
+  return brutoAnual > 0 ? { mercado, brutoAnual } : null;
 }
 
-// crudos: lo que tiene el formulario (textos tal como se tipearon, o números ya leídos). definicion es
-// opcional: sin ella alcanza la tabla de adaptadores del motor; con ella también entra un país que
-// declaró `mundo` o que se infiere. Sin bruto legible no se guarda nada.
-export function guardarTraspaso(mercado: string, calculadora: string, crudos: Readonly<Record<string, unknown>>, definicion?: Leible): void {
-  const brutoMensual = brutoMensualDeTraspaso(calculadora, crudos, definicion);
-  if (brutoMensual === null) return;
+// Sin bruto legible no se guarda nada.
+export function guardarTraspaso(e: EntradaTraspaso): void {
+  const t = traspasoDe(e);
+  if (!t) return;
   try {
-    sessionStorage.setItem(CLAVE_TRASPASO, JSON.stringify({ mercado, brutoMensual } satisfies Traspaso));
+    sessionStorage.setItem(CLAVE_TRASPASO, JSON.stringify(t satisfies Traspaso));
   } catch (err) {
     console.warn("[mundo] no se pudo guardar el sueldo para la página del mundo", err);
   }
@@ -82,7 +128,7 @@ export function leerTraspaso(): Traspaso | null {
     const crudo = sessionStorage.getItem(CLAVE_TRASPASO);
     if (!crudo) return null;
     const t = JSON.parse(crudo) as Partial<Traspaso>;
-    return typeof t.mercado === "string" && typeof t.brutoMensual === "number" && Number.isFinite(t.brutoMensual) && t.brutoMensual > 0 ? { mercado: t.mercado, brutoMensual: t.brutoMensual } : null;
+    return typeof t.mercado === "string" && positivo(t.brutoAnual) !== null ? { mercado: t.mercado, brutoAnual: t.brutoAnual! } : null;
   } catch {
     return null;
   }

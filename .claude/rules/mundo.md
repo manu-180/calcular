@@ -30,5 +30,21 @@ Historia y porqués: `docs/decisiones/mundo.md`.
   país nuevo que entre «inferido».
 - `informeMundo()` vale hasta la próxima medianoche de alguna zona y al rehacerse solo corre los
   países cuyo día cambió. No memoizar por día UTC: Nueva Zelanda vería la tabla de ayer todo el día.
-- Cambiar `BRUTOS_GRILLA` (contrato en `calculo.ts`) cambia los links y las OG compartidas: no se
-  toca desde este frente.
+- La carga del link (`mercado.tasa.ISO.ventaja`) se calcula en el centro de una franja de bruto de
+  razón `RAZON_FRANJA` (1,25), no en el sueldo: así cada carga cubre ±10 % de sueldos. Redondear solo
+  la tasa no alcanza (picos y tramos empinados). El día no viaja: sale de la tasa (`diaDeCarga`). La
+  página muestra la tasa y el día de la carga, no los exactos. check_mundo prueba el ±10 % con la grilla
+  real: si falla, se agranda la franja.
+- `decodificarCarga` solo acepta la forma canónica y pide la grilla; el duelo manda con 308 a la
+  canónica (`normalizarCarga`) y da 404 a lo inválido; la OG da 404 a parámetros que no son `c` ni
+  `formato`. Nunca `decodeURIComponent` sobre el path (tiraba con `%`).
+- «Por mes» es el sueldo del recibo: anual = mes × `pagas` del país (de `pagasAnuales` del adaptador;
+  12 si no dice). El traspaso guarda el bruto ANUAL y la edición principal (`ca-fr` → `ca`).
+- Un umbral de la ley que se cobra sobre todo el sueldo (MX, PY, HK) baja el neto de golpe: la grilla
+  lo guarda como escalón (dos puntos a menos de `ESCALON_LEY`) y `validarPuntos` acepta ahí una caída
+  de hasta 15 %; entre puntos alejados la tolerancia sigue en 0,1 %. check_mundo falla si la
+  interpolación pasa 1 % en el medio de un tramo.
+- `PAISES_PUENTE` (rutas.ts) es lo que promete el link de cada calculadora («más de N países»):
+  check_mundo falla si la grilla no lo supera.
+- La OG lee la bandera del disco (`public/banderas`, sumada al trace en `next.config.ts`), nunca de
+  `req.url`.

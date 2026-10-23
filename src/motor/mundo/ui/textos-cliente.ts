@@ -27,6 +27,7 @@ export function textosCliente(t: TextosMundo, paises: readonly { iso: string; no
   const porPais = (f: (pais: string) => string) => Object.fromEntries(paises.map((p) => [p.iso, f(p.nombre)]));
   return {
     form: t.form,
+    cero: t.cero,
     heroe: {
       hasta: partir(t.heroe.hasta),
       tasa: t.heroe.tasa("{pct}"),
