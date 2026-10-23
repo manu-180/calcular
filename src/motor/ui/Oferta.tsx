@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
+import { useContext, useEffect, useId, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { rastrear } from "@/lib/rastreo";
 import {
   avisoRespaldo,
@@ -17,6 +17,7 @@ import {
 import { olvidarDatosIntl, recordarDatosIntl } from "@/lib/prefill/intl-cliente";
 import type { DatosIntl } from "@/lib/prefill/intl";
 import type { CalculadoraControlada } from "../cliente";
+import { ContextoEmbed } from "../embed/proveedor";
 import { parsearEntrada, type FilaFormateada } from "../formulario";
 import type { ContextoSerializado, OpcionDinamica } from "../tipos";
 import { IconoFlecha } from "./Iconos";
@@ -59,7 +60,15 @@ function rutaLanding(mercado: string, o: OfertaPublica): string {
   return `/${mercado}/${o.tipo === "informe" ? "informes" : "planillas"}/${o.slug}`;
 }
 
-export function OfertaResultado({ calculadora, control, contexto }: { calculadora: string; control: CalculadoraControlada; contexto: ContextoSerializado }) {
+type PropsOferta = { calculadora: string; control: CalculadoraControlada; contexto: ContextoSerializado };
+
+// Separada en dos para que el embed (src/motor/embed) no pida las ofertas ni monte nada: un hook no
+// puede salir antes de tiempo, así que el corte va en este envoltorio y no adentro de OfertaViva.
+export function OfertaResultado(props: PropsOferta) {
+  return useContext(ContextoEmbed) ? null : <OfertaViva {...props} />;
+}
+
+function OfertaViva({ calculadora, control, contexto }: PropsOferta) {
   const [ofertas, setOfertas] = useState<OfertasMercado | null>(null);
   const mercado = contexto.mercado;
 
