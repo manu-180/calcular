@@ -131,6 +131,8 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
     regional: {
       "zh-CN": ZH_HANS_CALCULADORA,
       "zh-SG": ZH_HANS_CALCULADORA,
+    },
+  },
   ar: {
     base: {
       datos: "بياناتك",

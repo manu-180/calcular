@@ -142,6 +142,23 @@ function reglasCjk(texto: string, idioma: Idioma): string[] {
   return p;
 }
 
+// El árabe lleva su propia puntuación (، ؛ ؟) y comillas «»; una coma o un signo latino pegado a una
+// letra árabe es texto armado a mano o copiado de una traducción automática. Los números van con
+// dígitos latinos, igual que los formatea Intl en los mercados árabes (-u-nu-latn).
+const LETRA_ARABE = String.raw`[ء-يٱ-ۓ]`;
+const SIGNO_LATINO_TRAS_ARABE = new RegExp(`${LETRA_ARABE}[,;?]`, "u");
+const COMILLAS_LATINAS_AR = new RegExp(`${LETRA_ARABE}["“”]|["“”]${LETRA_ARABE}`, "u");
+
+function reglasAr(texto: string): string[] {
+  const p: string[] = [];
+  if (/[!！]/.test(texto)) p.push("signo de exclamación");
+  if (SIGNO_LATINO_TRAS_ARABE.test(texto)) p.push("puntuación latina junto a texto árabe (va ، ؛ ؟)");
+  if (COMILLAS_LATINAS_AR.test(texto)) p.push("comillas latinas en árabe (va «»)");
+  if (/[٠-٩۰-۹]/.test(texto)) p.push("dígitos arábigo-índicos (los mercados árabes van con dígitos latinos)");
+  if (/ـ/.test(texto)) p.push("tatweel (ـ) de adorno");
+  return p;
+}
+
 export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, locale?: string): string[] {
   const p: string[] = [];
   if (RAYA.test(texto)) p.push("raya («—» o «–»): usá paréntesis o dos oraciones");
@@ -157,6 +174,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
     if (idioma === "zh") p.push(...problemasDeEscritura(texto, locale ?? "zh-TW"));
     return p;
   }
+  if (idioma === "ar") return [...p, ...reglasAr(texto)];
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
   return [...p, ...registro(texto, idioma, trato)];
 }

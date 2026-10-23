@@ -349,6 +349,8 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
     regional: {
       "zh-CN": ZH_HANS_MOTOR,
       "zh-SG": ZH_HANS_MOTOR,
+    },
+  },
   ar: {
     base: {
       calcular: "احسب",
