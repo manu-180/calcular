@@ -506,11 +506,12 @@
         "titulo": "Key figures: discount rate",
         "url": "https://www.cbk.gov.kw/en/",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-18",
+        "verificadoEl": "2026-10-23",
         "nota": "Cifra del cuadro Key Figures, actualizado el 15.10.2026."
       },
       "puntos": [
-        ["2026-10-15", 3.5]
+        ["2026-10-15", 3.5],
+        ["2026-10-22", 3.5]
       ]
     },
     {
@@ -524,11 +525,69 @@
         "titulo": "Zakat calculator: gold price per gram (linked to Ministry of Commerce prices)",
         "url": "https://www.zakathouse.org.kw/calculate.aspx",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-18",
+        "verificadoEl": "2026-10-23",
         "nota": "Precios del 18/10/2026: 24 ct 41.61, 22 ct 38.18, 21 ct 36.44, 18 ct 31.24 KD el gramo."
       },
       "puntos": [
-        ["2026-10-18", 41.61]
+        ["2026-10-18", 41.61],
+        ["2026-10-23", 41.04]
+      ]
+    },
+    {
+      "id": "kw.gold-22k",
+      "nombre": "Price of one gram of 22 carat gold used for zakat",
+      "unidad": "KWD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Kuwait Zakat House",
+        "titulo": "Zakat calculator: gold price per gram (linked to Ministry of Commerce prices)",
+        "url": "https://www.zakathouse.org.kw/calculate.aspx",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-23",
+        "nota": "Precios del 18/10/2026: 24 ct 41.61, 22 ct 38.18, 21 ct 36.44, 18 ct 31.24 KD el gramo."
+      },
+      "puntos": [
+        ["2026-10-18", 38.18],
+        ["2026-10-23", 37.65]
+      ]
+    },
+    {
+      "id": "kw.gold-21k",
+      "nombre": "Price of one gram of 21 carat gold used for zakat",
+      "unidad": "KWD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Kuwait Zakat House",
+        "titulo": "Zakat calculator: gold price per gram (linked to Ministry of Commerce prices)",
+        "url": "https://www.zakathouse.org.kw/calculate.aspx",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-23",
+        "nota": "Precios del 18/10/2026: 24 ct 41.61, 22 ct 38.18, 21 ct 36.44, 18 ct 31.24 KD el gramo."
+      },
+      "puntos": [
+        ["2026-10-18", 36.44],
+        ["2026-10-23", 35.94]
+      ]
+    },
+    {
+      "id": "kw.gold-18k",
+      "nombre": "Price of one gram of 18 carat gold used for zakat",
+      "unidad": "KWD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Kuwait Zakat House",
+        "titulo": "Zakat calculator: gold price per gram (linked to Ministry of Commerce prices)",
+        "url": "https://www.zakathouse.org.kw/calculate.aspx",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-23",
+        "nota": "Precios del 18/10/2026: 24 ct 41.61, 22 ct 38.18, 21 ct 36.44, 18 ct 31.24 KD el gramo."
+      },
+      "puntos": [
+        ["2026-10-18", 31.24],
+        ["2026-10-23", 30.81]
       ]
     }
   ]

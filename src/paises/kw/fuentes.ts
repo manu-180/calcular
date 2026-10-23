@@ -41,6 +41,27 @@ function fx(codigo: string, min: number, max: number): Detector {
   };
 }
 
+// Bait Al-Zakat publica «آخر تحديث DD / mes / AAAA» y una fila por quilate con el precio del gramo.
+function oro(quilates: number, min: number, max: number): Detector {
+  return {
+    id: `kw.zakat-house-gold-${quilates}k`,
+    carril: "serie",
+    serie: `kw.gold-${quilates}k`,
+    metodo: "html",
+    url: "https://www.zakathouse.org.kw/calculate.aspx",
+    userAgentNavegador: true,
+    banda: { min, max, saltoRelativoMax: 0.1 },
+    async traer(http) {
+      const texto = sinEtiquetas(await http.texto(this.url, { userAgentNavegador: true }));
+      const f = /آخر تحديث\s*(\d{1,2})\s*\/\s*(\S+)\s*\/\s*(20\d{2})/.exec(texto);
+      const p = new RegExp(`${quilates}ct\\s*\\|?\\s*(\\d+\\.\\d+)`).exec(texto);
+      if (!f || !p || !MESES_AR[f[2]]) return null;
+      const fecha = `${f[3]}-${MESES_AR[f[2]]}-${f[1].padStart(2, "0")}`;
+      return esFechaISO(fecha) ? [{ fecha, valor: Number(p[1]) }] : null;
+    },
+  };
+}
+
 export const detectores: readonly Detector[] = [
   fx("usd", 0.25, 0.4),
   fx("eur", 0.25, 0.45),
@@ -69,23 +90,10 @@ export const detectores: readonly Detector[] = [
       return esFechaISO(fecha) ? [{ fecha, valor: Number(m[4]) }] : null;
     },
   },
-  {
-    id: "kw.zakat-house-gold",
-    carril: "serie",
-    serie: "kw.gold-24k",
-    metodo: "html",
-    url: "https://www.zakathouse.org.kw/calculate.aspx",
-    userAgentNavegador: true,
-    banda: { min: 20, max: 80, saltoRelativoMax: 0.1 },
-    async traer(http) {
-      const texto = sinEtiquetas(await http.texto(this.url, { userAgentNavegador: true }));
-      const f = /آخر تحديث\s*(\d{1,2})\s*\/\s*(\S+)\s*\/\s*(20\d{2})/.exec(texto);
-      const p = /24ct\s*\|?\s*(\d+\.\d+)/.exec(texto);
-      if (!f || !p || !MESES_AR[f[2]]) return null;
-      const fecha = `${f[3]}-${MESES_AR[f[2]]}-${f[1].padStart(2, "0")}`;
-      return esFechaISO(fecha) ? [{ fecha, valor: Number(p[1]) }] : null;
-    },
-  },
+  oro(24, 20, 80),
+  oro(22, 18, 75),
+  oro(21, 17, 70),
+  oro(18, 15, 60),
   {
     id: "kw.pifss-guide",
     carril: "norma",
