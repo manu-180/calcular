@@ -1,0 +1,2410 @@
+import { GRAMATICA } from "./gramatica";
+import { resolver, type Diccionario, type Diccionarios } from "./resolver";
+import type { Idioma, Trato } from "../tipos";
+
+// «Tu sueldo en el mundo». El servidor resuelve el diccionario y le pasa al navegador solo cadenas
+// (src/motor/mundo/ui/textos-cliente.ts): las funciones no cruzan a un Client Component y así el JS de
+// la página no carga los diez idiomas.
+
+export type RegionMundo = "americas" | "europa" | "asia" | "africa";
+
+export interface PreguntaMundo {
+  pregunta: string;
+  respuesta: string;
+}
+
+export interface TextosMundo {
+  nombre: string;
+  seo: {
+    // Candidatos de mayor a menor; elegirTitulo toma el primero que entra en 60 de ancho.
+    titulo: (pais: string) => readonly string[];
+    tituloGlobal: readonly string[];
+    descripcion: (pais: string, paises: number) => string;
+    descripcionGlobal: (paises: number) => string;
+  };
+  ceja: string;
+  h1: string;
+  bajada: (paises: number) => string;
+  form: {
+    titulo: string;
+    sueldo: string;
+    mes: string;
+    anio: string;
+    periodo: string;
+    pais: string;
+    ejemplo: string;
+    ejemploAyuda: string;
+    propio: string;
+    invalido: string;
+  };
+  heroe: {
+    // La página parte la frase en la fecha para dibujarla grande: en japonés, coreano y chino el
+    // verbo va después de la fecha.
+    hasta: (fecha: string) => string;
+    tasa: (pct: string) => string;
+    dias: (n: number, total: number) => string;
+    enMano: string;
+    porMes: string;
+    anio: (anio: number, n: number, total: number) => string;
+    resto: string;
+  };
+  ranking: {
+    titulo: string;
+    bajada: string;
+    lista: string;
+    buscar: string;
+    filtrar: string;
+    todas: string;
+    regiones: Record<RegionMundo, string>;
+    tuPais: string;
+    mejor: string;
+    enMano: string;
+    enTuMoneda: string;
+    vsTuPais: string;
+    verTodos: (n: number) => string;
+    verMenos: string;
+    sinResultados: (q: string) => string;
+    abrir: (pais: string) => string;
+    mas: (pct: string) => string;
+    menos: (pct: string) => string;
+    igual: string;
+    puesto: (posicion: number, total: number) => string;
+  };
+  tarjeta: {
+    titulo: string;
+    bajada: string;
+    hasta: (fecha: string) => string;
+    tasa: (pct: string) => string;
+    mejor: (pais: string, pct: string) => string;
+    mejorPropio: (pais: string) => string;
+    yVos: string;
+    cta: string;
+    generica: string;
+    genericaBajada: (paises: number) => string;
+    compartir: string;
+    compartirDuelo: string;
+    descargar: string;
+    copiado: string;
+    compartido: string;
+    error: string;
+    texto: (fecha: string) => string;
+    alt: string;
+  };
+  duelo: {
+    amigo: (fecha: string) => string;
+    yVos: string;
+    invitacion: string;
+    vos: string;
+    elAmigo: string;
+    dia: string;
+    tasa: string;
+    mejorPais: string;
+    antes: (dias: number) => string;
+    despues: (dias: number) => string;
+    empate: string;
+    desde: (pais: string) => string;
+  };
+  metodo: {
+    titulo: string;
+    estimacion: string;
+    supuestos: readonly string[];
+    ppaTitulo: string;
+    // Nombre del organismo de la PPA en el idioma de la página (la grilla lo trae en español).
+    bancoMundial: string;
+    ppa: (organismo: string, indicador: string, anio: string) => string;
+    consultado: (fecha: string) => string;
+    verFuente: string;
+    fuentesTitulo: string;
+    fuentesBajada: string;
+    verificado: (fecha: string) => string;
+    sello: (fecha: string) => string;
+  };
+  faqTitulo: string;
+  faq: (paises: number) => readonly PreguntaMundo[];
+  destacado: { ceja: string; titulo: string; texto: string; ir: string };
+}
+
+// ───────────────────────────── es ─────────────────────────────
+
+const gEs = GRAMATICA.es;
+const SEO_ES = "Día de libertad tributaria y sueldo neto en el mundo";
+
+const es: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Tu sueldo en el mundo",
+    seo: {
+      titulo: (pais) => [`${SEO_ES} | ${pais}`, SEO_ES, "Tu sueldo en el mundo"],
+      tituloGlobal: [SEO_ES, "Tu sueldo en el mundo"],
+      descripcion: (pais, n) => `Mira hasta qué día trabajas para el Estado con tu sueldo ${gEs.de(pais)} y cuánto te quedaría en mano en ${n} países. Gratis y sin registro.`,
+      descripcionGlobal: (n) => `Mira hasta qué día trabajas para el Estado y cuánto te quedaría en mano con tu sueldo en ${n} países. Gratis y sin registro.`,
+    },
+    ceja: "Día de libertad tributaria",
+    h1: "¿Hasta qué día del año trabajas para el Estado?",
+    bajada: (n) => `Escribe tu sueldo bruto y mira tu fecha. Después compáralo en ${n} países, con el mismo poder de compra y la ley de cada uno.`,
+    form: {
+      titulo: "Tu sueldo",
+      sueldo: "Sueldo bruto",
+      mes: "Por mes",
+      anio: "Por año",
+      periodo: "Período del sueldo",
+      pais: "País donde trabajas",
+      ejemplo: "Ejemplo",
+      ejemploAyuda: "Es un sueldo de ejemplo. Escribe el tuyo y todo se recalcula al instante.",
+      propio: "Lo trajimos de tu cálculo.",
+      invalido: "Escribe un monto mayor que cero.",
+    },
+    heroe: {
+      hasta: (fecha) => `Trabajas para el Estado hasta el ${fecha}`,
+      tasa: (pct) => `Se va el ${pct} de tu sueldo en impuesto a la renta y aportes.`,
+      dias: (n, total) => `${n} de ${total} días`,
+      enMano: "Te queda en mano",
+      porMes: "por mes",
+      anio: (anio, n, total) => `Año ${anio}: ${n} de ${total} días para el Estado.`,
+      resto: "Desde el día siguiente, lo que ganas es tuyo.",
+    },
+    ranking: {
+      titulo: "Tu mismo sueldo, país por país",
+      bajada: "Con el mismo poder de compra, esto te quedaría en mano en cada país. Cada fila sale de la calculadora oficial de ese país.",
+      lista: "Países ordenados por lo que te queda en mano",
+      buscar: "Buscar un país",
+      filtrar: "Filtrar por región",
+      todas: "Todos",
+      regiones: { americas: "América", europa: "Europa", asia: "Asia y Oceanía", africa: "África y Medio Oriente" },
+      tuPais: "Tu país",
+      mejor: "Donde más rinde",
+      enMano: "En mano por mes",
+      enTuMoneda: "En tu moneda",
+      vsTuPais: "Contra tu país",
+      verTodos: (n) => `Ver los ${n} países`,
+      verMenos: "Ver menos",
+      sinResultados: (q) => `Ningún país coincide con «${q}».`,
+      abrir: (pais) => `Abrir la calculadora ${gEs.de(pais)}`,
+      mas: (pct) => `${pct} más`,
+      menos: (pct) => `${pct} menos`,
+      igual: "Igual",
+      puesto: (p, total) => `Tu país queda en el puesto ${p} de ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Tu tarjeta para compartir",
+      bajada: "Muestra tu fecha y porcentajes. Nunca cuánto ganas.",
+      hasta: (fecha) => `Trabajo para el Estado hasta el ${fecha}`,
+      tasa: (pct) => `Se va el ${pct} de mi sueldo`,
+      mejor: (pais, pct) => `Con mi sueldo, ${gEs.en(pais)} me quedaría ${pct} más en mano`,
+      mejorPropio: (pais) => `Con mi sueldo, ningún país me deja más en mano que ${gEs.nombre(pais)}`,
+      yVos: "¿Y tú?",
+      cta: "Calcula el tuyo en",
+      generica: "¿Hasta qué día trabajas para el Estado?",
+      genericaBajada: (n) => `Tu sueldo en ${n} países, con la calculadora oficial de cada uno`,
+      compartir: "Compartir mi tarjeta",
+      compartirDuelo: "Devolver el desafío",
+      descargar: "Descargar imagen",
+      copiado: "Link copiado. Pégalo donde quieras.",
+      compartido: "Listo, ya la compartiste.",
+      error: "No pudimos compartirla. Prueba de nuevo.",
+      texto: (fecha) => `Trabajo para el Estado hasta el ${fecha}. ¿Y tú?`,
+      alt: "Vista previa de tu tarjeta",
+    },
+    duelo: {
+      amigo: (fecha) => `Tu amigo trabaja para el Estado hasta el ${fecha}.`,
+      yVos: "¿Y tú?",
+      invitacion: "Escribe tu sueldo y compáralo.",
+      vos: "Tú",
+      elAmigo: "Tu amigo",
+      dia: "Para el Estado hasta el",
+      tasa: "Impuestos y aportes",
+      mejorPais: "Donde más rinde",
+      antes: (d) => (d === 1 ? "Te liberas 1 día antes que tu amigo." : `Te liberas ${d} días antes que tu amigo.`),
+      despues: (d) => (d === 1 ? "Tu amigo se libera 1 día antes que tú." : `Tu amigo se libera ${d} días antes que tú.`),
+      empate: "Se liberan el mismo día.",
+      desde: (pais) => `Trabaja ${gEs.en(pais)}`,
+    },
+    metodo: {
+      titulo: "Cómo lo calculamos",
+      estimacion: "Es una estimación para comparar países, no un recibo de sueldo. Deducciones, hijos o bonos pueden mover tu número.",
+      supuestos: [
+        "Una persona soltera, sin hijos, con los valores por defecto de la calculadora de cada país.",
+        "El neto es lo que queda después del impuesto a la renta y de los aportes que paga la persona. No incluye IVA ni lo que paga el empleador.",
+        "El aguinaldo y los sueldos extra se reparten en el año como manda la ley de cada país.",
+        "En Estados Unidos no se suma impuesto estatal ni local: solo el federal y los aportes.",
+        "Para llevar tu sueldo a otro país usamos la paridad de poder adquisitivo (PPA): el mismo nivel de vida, no el tipo de cambio del día.",
+        "La PPA de Argentina se lleva al año actual con el IPC del INDEC, porque el Banco Mundial la publica hasta 2021.",
+        "El día de libertad reparte tu carga desde el 1 de enero. Si se va el 30 % de tu sueldo, trabajas para el Estado el 30 % del año.",
+      ],
+      ppaTitulo: "Paridad de poder adquisitivo", bancoMundial: "Banco Mundial",
+      ppa: (organismo, indicador, anio) => `${organismo}, indicador ${indicador}, último año disponible ${anio}.`,
+      consultado: (fecha) => `Consultado el ${fecha}.`,
+      verFuente: "Ver la fuente",
+      fuentesTitulo: "La fuente de cada país",
+      fuentesBajada: "Cada fila usa la calculadora de sueldo neto de ese país, con sus datos oficiales.",
+      verificado: (fecha) => `Datos verificados el ${fecha}`,
+      sello: (fecha) => `Datos oficiales revisados en la fuente de cada país. La revisión más antigua es del ${fecha}.`,
+    },
+    faqTitulo: "Preguntas frecuentes",
+    faq: (n) => [
+      {
+        pregunta: "¿Qué es el día de libertad tributaria?",
+        respuesta:
+          "Es el día del año en que terminas de pagar tus impuestos y aportes, si todo lo que ganas desde el 1 de enero fuera primero al Estado. Acá lo calculamos con tu sueldo, no con el promedio del país.",
+      },
+      {
+        pregunta: "¿Por qué se compara en poder de compra?",
+        respuesta: "Con el tipo de cambio, un sueldo parece enorme o mínimo según el día. La PPA compara lo que se puede comprar con ese dinero en cada país.",
+      },
+      {
+        pregunta: "¿Se guarda mi sueldo?",
+        respuesta: "No. La cuenta corre en tu navegador. Lo que compartes solo lleva fechas, porcentajes y países.",
+      },
+      {
+        pregunta: "¿Por qué mi sueldo neto real es distinto?",
+        respuesta:
+          "Usamos una persona soltera, sin hijos y con los valores por defecto. Deducciones, bonos o regímenes especiales cambian el número. Para tu caso exacto, abre la calculadora de tu país.",
+      },
+      {
+        pregunta: "¿Qué países están incluidos?",
+        respuesta: `Hoy son ${n} países, cada uno con su calculadora de sueldo neto y sus datos oficiales. Sumamos más a medida que verificamos sus leyes.`,
+      },
+    ],
+    destacado: {
+      ceja: "Comparador mundial",
+      titulo: "¿Hasta qué día trabajas para el Estado?",
+      texto: "Escribe tu sueldo y mira cuánto te quedaría en mano en otros países.",
+      ir: "Calcular mi fecha",
+    },
+  },
+  vos: {
+    seo: {
+      descripcion: (pais, n) => `Mirá hasta qué día trabajás para el Estado con tu sueldo ${gEs.de(pais)} y cuánto te quedaría en mano en ${n} países. Gratis y sin registro.`,
+      descripcionGlobal: (n) => `Mirá hasta qué día trabajás para el Estado y cuánto te quedaría en mano con tu sueldo en ${n} países. Gratis y sin registro.`,
+    },
+    h1: "¿Hasta qué día del año trabajás para el Estado?",
+    bajada: (n) => `Escribí tu sueldo bruto y mirá tu fecha. Después comparalo en ${n} países, con el mismo poder de compra y la ley de cada uno.`,
+    form: {
+      pais: "País donde trabajás",
+      ejemploAyuda: "Es un sueldo de ejemplo. Escribí el tuyo y todo se recalcula al instante.",
+      invalido: "Escribí un monto mayor que cero.",
+    },
+    heroe: { hasta: (fecha) => `Trabajás para el Estado hasta el ${fecha}`, resto: "Desde el día siguiente, lo que ganás es tuyo." },
+    tarjeta: {
+      bajada: "Muestra tu fecha y porcentajes. Nunca cuánto ganás.",
+      yVos: "¿Y vos?",
+      cta: "Calculá el tuyo en",
+      generica: "¿Hasta qué día trabajás para el Estado?",
+      copiado: "Link copiado. Pegalo donde quieras.",
+      compartido: "Listo, ya la compartiste.",
+      error: "No pudimos compartirla. Probá de nuevo.",
+      texto: (fecha) => `Trabajo para el Estado hasta el ${fecha}. ¿Y vos?`,
+    },
+    duelo: {
+      yVos: "¿Y vos?",
+      invitacion: "Escribí tu sueldo y comparalo.",
+      vos: "Vos",
+      antes: (d) => (d === 1 ? "Te liberás 1 día antes que tu amigo." : `Te liberás ${d} días antes que tu amigo.`),
+      despues: (d) => (d === 1 ? "Tu amigo se libera 1 día antes que vos." : `Tu amigo se libera ${d} días antes que vos.`),
+    },
+    metodo: {
+      supuestos: [
+        "Una persona soltera, sin hijos, con los valores por defecto de la calculadora de cada país.",
+        "El neto es lo que queda después del impuesto a la renta y de los aportes que paga la persona. No incluye IVA ni lo que paga el empleador.",
+        "El aguinaldo y los sueldos extra se reparten en el año como manda la ley de cada país.",
+        "En Estados Unidos no se suma impuesto estatal ni local: solo el federal y los aportes.",
+        "Para llevar tu sueldo a otro país usamos la paridad de poder adquisitivo (PPA): el mismo nivel de vida, no el tipo de cambio del día.",
+        "La PPA de Argentina se lleva al año actual con el IPC del INDEC, porque el Banco Mundial la publica hasta 2021.",
+        "El día de libertad reparte tu carga desde el 1 de enero. Si se va el 30 % de tu sueldo, trabajás para el Estado el 30 % del año.",
+      ],
+    },
+    faq: (n) => [
+      {
+        pregunta: "¿Qué es el día de libertad tributaria?",
+        respuesta:
+          "Es el día del año en que terminás de pagar tus impuestos y aportes, si todo lo que ganás desde el 1 de enero fuera primero al Estado. Acá lo calculamos con tu sueldo, no con el promedio del país.",
+      },
+      {
+        pregunta: "¿Por qué se compara en poder de compra?",
+        respuesta: "Con el tipo de cambio, un sueldo parece enorme o mínimo según el día. La PPA compara lo que se puede comprar con ese dinero en cada país.",
+      },
+      {
+        pregunta: "¿Se guarda mi sueldo?",
+        respuesta: "No. La cuenta corre en tu navegador. Lo que compartís solo lleva fechas, porcentajes y países.",
+      },
+      {
+        pregunta: "¿Por qué mi sueldo neto real es distinto?",
+        respuesta:
+          "Usamos una persona soltera, sin hijos y con los valores por defecto. Deducciones, bonos o regímenes especiales cambian el número. Para tu caso exacto, abrí la calculadora de tu país.",
+      },
+      {
+        pregunta: "¿Qué países están incluidos?",
+        respuesta: `Hoy son ${n} países, cada uno con su calculadora de sueldo neto y sus datos oficiales. Sumamos más a medida que verificamos sus leyes.`,
+      },
+    ],
+    destacado: {
+      titulo: "¿Hasta qué día trabajás para el Estado?",
+      texto: "Escribí tu sueldo y mirá cuánto te quedaría en mano en otros países.",
+    },
+  },
+  usted: {
+    nombre: "Su sueldo en el mundo",
+    seo: {
+      titulo: (pais) => [`${SEO_ES} | ${pais}`, SEO_ES, "Su sueldo en el mundo"],
+      tituloGlobal: [SEO_ES, "Su sueldo en el mundo"],
+      descripcion: (pais, n) => `Vea hasta qué día trabaja para el Estado con su sueldo ${gEs.de(pais)} y cuánto le quedaría en mano en ${n} países. Gratis y sin registro.`,
+      descripcionGlobal: (n) => `Vea hasta qué día trabaja para el Estado y cuánto le quedaría en mano con su sueldo en ${n} países. Gratis y sin registro.`,
+    },
+    h1: "¿Hasta qué día del año trabaja para el Estado?",
+    bajada: (n) => `Escriba su sueldo bruto y vea su fecha. Después compárelo en ${n} países, con el mismo poder de compra y la ley de cada uno.`,
+    form: {
+      titulo: "Su sueldo",
+      pais: "País donde trabaja",
+      ejemploAyuda: "Es un sueldo de ejemplo. Escriba el suyo y todo se recalcula al instante.",
+      propio: "Lo trajimos de su cálculo.",
+      invalido: "Escriba un monto mayor que cero.",
+    },
+    heroe: {
+      hasta: (fecha) => `Trabaja para el Estado hasta el ${fecha}`,
+      tasa: (pct) => `Se va el ${pct} de su sueldo en impuesto a la renta y aportes.`,
+      enMano: "Le queda en mano",
+      resto: "Desde el día siguiente, lo que gana es suyo.",
+    },
+    ranking: {
+      titulo: "Su mismo sueldo, país por país",
+      bajada: "Con el mismo poder de compra, esto le quedaría en mano en cada país. Cada fila sale de la calculadora oficial de ese país.",
+      lista: "Países ordenados por lo que le queda en mano",
+      tuPais: "Su país",
+      enTuMoneda: "En su moneda",
+      vsTuPais: "Contra su país",
+      puesto: (p, total) => `Su país queda en el puesto ${p} de ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Su tarjeta para compartir",
+      bajada: "Muestra su fecha y porcentajes. Nunca cuánto gana.",
+      yVos: "¿Y usted?",
+      cta: "Calcule el suyo en",
+      generica: "¿Hasta qué día trabaja para el Estado?",
+      genericaBajada: (n) => `Su sueldo en ${n} países, con la calculadora oficial de cada uno`,
+      copiado: "Link copiado. Péguelo donde quiera.",
+      compartido: "Listo, ya la compartió.",
+      error: "No pudimos compartirla. Pruebe de nuevo.",
+      texto: (fecha) => `Trabajo para el Estado hasta el ${fecha}. ¿Y usted?`,
+      alt: "Vista previa de su tarjeta",
+    },
+    duelo: {
+      amigo: (fecha) => `Quien le mandó esto trabaja para el Estado hasta el ${fecha}.`,
+      yVos: "¿Y usted?",
+      invitacion: "Escriba su sueldo y compárelo.",
+      vos: "Usted",
+      elAmigo: "Quien lo envió",
+      antes: (d) => (d === 1 ? "Usted se libera 1 día antes." : `Usted se libera ${d} días antes.`),
+      despues: (d) => (d === 1 ? "Quien lo envió se libera 1 día antes." : `Quien lo envió se libera ${d} días antes.`),
+    },
+    metodo: {
+      estimacion: "Es una estimación para comparar países, no un recibo de sueldo. Deducciones, hijos o bonos pueden mover su número.",
+      supuestos: [
+        "Una persona soltera, sin hijos, con los valores por defecto de la calculadora de cada país.",
+        "El neto es lo que queda después del impuesto a la renta y de los aportes que paga la persona. No incluye IVA ni lo que paga el empleador.",
+        "El aguinaldo y los sueldos extra se reparten en el año como manda la ley de cada país.",
+        "En Estados Unidos no se suma impuesto estatal ni local: solo el federal y los aportes.",
+        "Para llevar su sueldo a otro país usamos la paridad de poder adquisitivo (PPA): el mismo nivel de vida, no el tipo de cambio del día.",
+        "La PPA de Argentina se lleva al año actual con el IPC del INDEC, porque el Banco Mundial la publica hasta 2021.",
+        "El día de libertad reparte su carga desde el 1 de enero. Si se va el 30 % de su sueldo, trabaja para el Estado el 30 % del año.",
+      ],
+    },
+    faq: (n) => [
+      {
+        pregunta: "¿Qué es el día de libertad tributaria?",
+        respuesta:
+          "Es el día del año en que termina de pagar sus impuestos y aportes, si todo lo que gana desde el 1 de enero fuera primero al Estado. Acá lo calculamos con su sueldo, no con el promedio del país.",
+      },
+      {
+        pregunta: "¿Por qué se compara en poder de compra?",
+        respuesta: "Con el tipo de cambio, un sueldo parece enorme o mínimo según el día. La PPA compara lo que se puede comprar con ese dinero en cada país.",
+      },
+      {
+        pregunta: "¿Se guarda mi sueldo?",
+        respuesta: "No. La cuenta corre en su navegador. Lo que comparte solo lleva fechas, porcentajes y países.",
+      },
+      {
+        pregunta: "¿Por qué mi sueldo neto real es distinto?",
+        respuesta:
+          "Usamos una persona soltera, sin hijos y con los valores por defecto. Deducciones, bonos o regímenes especiales cambian el número. Para su caso exacto, abra la calculadora de su país.",
+      },
+      {
+        pregunta: "¿Qué países están incluidos?",
+        respuesta: `Hoy son ${n} países, cada uno con su calculadora de sueldo neto y sus datos oficiales. Sumamos más a medida que verificamos sus leyes.`,
+      },
+    ],
+    destacado: {
+      titulo: "¿Hasta qué día trabaja para el Estado?",
+      texto: "Escriba su sueldo y vea cuánto le quedaría en mano en otros países.",
+      ir: "Calcular su fecha",
+    },
+  },
+};
+
+// ───────────────────────────── en ─────────────────────────────
+
+const gEn = GRAMATICA.en;
+const SEO_EN = "Your Tax Freedom Day and take-home pay worldwide";
+
+const en: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Your salary around the world",
+    seo: {
+      titulo: (pais) => [`${SEO_EN} | ${pais}`, SEO_EN, "Your salary around the world"],
+      tituloGlobal: [SEO_EN, "Your salary around the world"],
+      descripcion: (pais, n) => `See the day you stop working for the government on a salary ${gEn.en(pais)}, and what you'd take home in ${n} countries. Free, no sign-up.`,
+      descripcionGlobal: (n) => `See the day you stop working for the government, and what your salary would take home in ${n} countries. Free, no sign-up.`,
+    },
+    ceja: "Your Tax Freedom Day",
+    h1: "Until what day of the year do you work for the government?",
+    bajada: (n) => `Enter your gross salary to see your date. Then compare it across ${n} countries, with the same buying power and each country's tax rules.`,
+    form: {
+      titulo: "Your salary",
+      sueldo: "Gross salary",
+      mes: "Monthly",
+      anio: "Yearly",
+      periodo: "Pay period",
+      pais: "Country you work in",
+      ejemplo: "Example",
+      ejemploAyuda: "This is a sample salary. Type yours and everything updates instantly.",
+      propio: "Brought over from your calculation.",
+      invalido: "Enter an amount above zero.",
+    },
+    heroe: {
+      hasta: (fecha) => `You work for the government until ${fecha}`,
+      tasa: (pct) => `${pct} of your pay goes to income tax and payroll contributions.`,
+      dias: (n, total) => `${n} of ${total} days`,
+      enMano: "You take home",
+      porMes: "a month",
+      anio: (anio, n, total) => `${anio}: ${n} of ${total} days for the government.`,
+      resto: "From the next day on, what you earn is yours.",
+    },
+    ranking: {
+      titulo: "The same salary, country by country",
+      bajada: "With the same buying power, this is what you'd take home in each country. Every row comes from that country's official calculator.",
+      lista: "Countries ranked by take-home pay",
+      buscar: "Search a country",
+      filtrar: "Filter by region",
+      todas: "All",
+      regiones: { americas: "Americas", europa: "Europe", asia: "Asia and Oceania", africa: "Africa and Middle East" },
+      tuPais: "Your country",
+      mejor: "Goes furthest",
+      enMano: "Take-home a month",
+      enTuMoneda: "In your currency",
+      vsTuPais: "Versus your country",
+      verTodos: (n) => `See all ${n} countries`,
+      verMenos: "See fewer",
+      sinResultados: (q) => `No country matches “${q}”.`,
+      abrir: (pais) => `Open the calculator for ${gEn.nombre(pais)}`,
+      mas: (pct) => `${pct} more`,
+      menos: (pct) => `${pct} less`,
+      igual: "Same",
+      puesto: (p, total) => `Your country ranks ${p} of ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Your card to share",
+      bajada: "It shows your date and percentages. Never what you earn.",
+      hasta: (fecha) => `I work for the government until ${fecha}`,
+      tasa: (pct) => `${pct} of my pay goes in taxes`,
+      mejor: (pais, pct) => `On my salary, I'd take home ${pct} more ${gEn.en(pais)}`,
+      mejorPropio: (pais) => `On my salary, no country leaves me more than ${gEn.nombre(pais)}`,
+      yVos: "What about you?",
+      cta: "Find yours at",
+      generica: "Until what day do you work for the government?",
+      genericaBajada: (n) => `Your salary in ${n} countries, run through each one's official calculator`,
+      compartir: "Share my card",
+      compartirDuelo: "Send the challenge back",
+      descargar: "Download image",
+      copiado: "Link copied. Paste it anywhere.",
+      compartido: "Done, it's shared.",
+      error: "Couldn't share it. Try again.",
+      texto: (fecha) => `I work for the government until ${fecha}. What about you?`,
+      alt: "Preview of your card",
+    },
+    duelo: {
+      amigo: (fecha) => `Your friend works for the government until ${fecha}.`,
+      yVos: "What about you?",
+      invitacion: "Enter your salary to compare.",
+      vos: "You",
+      elAmigo: "Your friend",
+      dia: "Works for the government until",
+      tasa: "Tax and contributions",
+      mejorPais: "Goes furthest in",
+      antes: (d) => (d === 1 ? "You're free 1 day before your friend." : `You're free ${d} days before your friend.`),
+      despues: (d) => (d === 1 ? "Your friend is free 1 day before you." : `Your friend is free ${d} days before you.`),
+      empate: "You're both free on the same day.",
+      desde: (pais) => `Works ${gEn.en(pais)}`,
+    },
+    metodo: {
+      titulo: "How we calculate it",
+      estimacion: "This is an estimate to compare countries, not a payslip. Deductions, children or bonuses can move your number.",
+      supuestos: [
+        "A single person with no children, using the default values of each country's calculator.",
+        "Take-home pay is what's left after income tax and the employee's own contributions. It leaves out sales tax and what the employer pays.",
+        "A 13th-month salary or other mandatory extra pay is spread over the year as each country's law says.",
+        "In the United States no state or local income tax is added: only federal tax and payroll contributions.",
+        "To carry your salary to another country we use purchasing power parity (PPP): the same standard of living, not today's exchange rate.",
+        "Argentina's PPP is brought forward with INDEC's consumer price index, because the World Bank only publishes it up to 2021.",
+        "Your freedom day spreads your tax over the year from 1 January. If 30% of your pay goes in tax, you work for the government 30% of the year.",
+      ],
+      ppaTitulo: "Purchasing power parity", bancoMundial: "World Bank",
+      ppa: (organismo, indicador, anio) => `${organismo}, indicator ${indicador}, latest year available ${anio}.`,
+      consultado: (fecha) => `Checked on ${fecha}.`,
+      verFuente: "See the source",
+      fuentesTitulo: "Each country's source",
+      fuentesBajada: "Every row uses that country's take-home pay calculator and its official data.",
+      verificado: (fecha) => `Data verified on ${fecha}`,
+      sello: (fecha) => `Official data checked at each country's source. The oldest check is from ${fecha}.`,
+    },
+    faqTitulo: "Frequently asked questions",
+    faq: (n) => [
+      {
+        pregunta: "What is Tax Freedom Day?",
+        respuesta:
+          "It's the day of the year when you finish paying your taxes, if everything you earned from 1 January went to the government first. Here it's worked out from your salary, not the national average.",
+      },
+      {
+        pregunta: "Why compare by buying power?",
+        respuesta: "Exchange rates make a salary look huge or tiny depending on the day. PPP compares what that money can actually buy in each country.",
+      },
+      {
+        pregunta: "Is my salary stored?",
+        respuesta: "No. The math runs in your browser. What you share only carries dates, percentages and countries.",
+      },
+      {
+        pregunta: "Why is my real take-home pay different?",
+        respuesta:
+          "We assume a single person with no children and default values. Deductions, bonuses or special schemes change the number. For your exact case, open your country's calculator.",
+      },
+      {
+        pregunta: "Which countries are included?",
+        respuesta: `${n} countries today, each with its own take-home pay calculator and official data. We add more as we verify their tax rules.`,
+      },
+    ],
+    destacado: {
+      ceja: "World comparison",
+      titulo: "Until what day do you work for the government?",
+      texto: "Enter your salary and see what you'd take home in other countries.",
+      ir: "Find my date",
+    },
+  },
+  regional: {
+    "en-GB": {
+      tarjeta: { compartido: "Done, it's been shared." },
+    },
+  },
+};
+
+// ───────────────────────────── pt ─────────────────────────────
+
+const gPt = GRAMATICA.pt;
+const SEO_PT = "Dia da liberdade de impostos e salário líquido no mundo";
+
+const pt: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Seu salário pelo mundo",
+    seo: {
+      titulo: (pais) => [`${SEO_PT} | ${pais}`, SEO_PT, "Seu salário pelo mundo"],
+      tituloGlobal: [SEO_PT, "Seu salário pelo mundo"],
+      descripcion: (pais, n) => `Veja até que dia você trabalha para o governo com seu salário ${gPt.en(pais)} e quanto sobraria líquido em ${n} países. Grátis e sem cadastro.`,
+      descripcionGlobal: (n) => `Veja até que dia você trabalha para o governo e quanto sobraria líquido com seu salário em ${n} países. Grátis e sem cadastro.`,
+    },
+    ceja: "Dia da liberdade de impostos",
+    h1: "Até que dia do ano você trabalha para o governo?",
+    bajada: (n) => `Digite seu salário bruto e veja a sua data. Depois compare em ${n} países, com o mesmo poder de compra e as regras de cada um.`,
+    form: {
+      titulo: "Seu salário",
+      sueldo: "Salário bruto",
+      mes: "Por mês",
+      anio: "Por ano",
+      periodo: "Período do salário",
+      pais: "País onde você trabalha",
+      ejemplo: "Exemplo",
+      ejemploAyuda: "É um salário de exemplo. Digite o seu e tudo se recalcula na hora.",
+      propio: "Trouxemos do seu cálculo.",
+      invalido: "Digite um valor maior que zero.",
+    },
+    heroe: {
+      hasta: (fecha) => `Você trabalha para o governo até ${fecha}`,
+      tasa: (pct) => `Vão ${pct} do seu salário em imposto de renda e contribuições.`,
+      dias: (n, total) => `${n} de ${total} dias`,
+      enMano: "Sobra líquido",
+      porMes: "por mês",
+      anio: (anio, n, total) => `Ano ${anio}: ${n} de ${total} dias para o governo.`,
+      resto: "A partir do dia seguinte, o que você ganha é seu.",
+    },
+    ranking: {
+      titulo: "O mesmo salário, país por país",
+      bajada: "Com o mesmo poder de compra, isto sobraria líquido em cada país. Cada linha sai da calculadora oficial daquele país.",
+      lista: "Países ordenados pelo salário líquido",
+      buscar: "Buscar um país",
+      filtrar: "Filtrar por região",
+      todas: "Todos os países",
+      regiones: { americas: "Américas", europa: "Europa", asia: "Ásia e Oceania", africa: "África e Oriente Médio" },
+      tuPais: "Seu país",
+      mejor: "Onde mais rende",
+      enMano: "Líquido por mês",
+      enTuMoneda: "Na sua moeda",
+      vsTuPais: "Contra seu país",
+      verTodos: (n) => `Ver os ${n} países`,
+      verMenos: "Mostrar menos",
+      sinResultados: (q) => `Nenhum país corresponde a “${q}”.`,
+      abrir: (pais) => `Abrir a calculadora ${gPt.de(pais)}`,
+      mas: (pct) => `${pct} a mais`,
+      menos: (pct) => `${pct} a menos`,
+      igual: "Igual ao seu",
+      puesto: (p, total) => `Seu país fica em ${p}º de ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Seu cartão para compartilhar",
+      bajada: "Mostra a sua data e porcentagens. Nunca quanto você ganha.",
+      hasta: (fecha) => `Trabalho para o governo até ${fecha}`,
+      tasa: (pct) => `Vão ${pct} do meu salário`,
+      mejor: (pais, pct) => `Com meu salário, ${gPt.en(pais)} sobrariam ${pct} a mais líquido`,
+      mejorPropio: (pais) => `Com meu salário, nenhum país me deixa mais líquido que ${gPt.nombre(pais)}`,
+      yVos: "E você?",
+      cta: "Calcule o seu em",
+      generica: "Até que dia você trabalha para o governo?",
+      genericaBajada: (n) => `Seu salário em ${n} países, com a calculadora oficial de cada um`,
+      compartir: "Compartilhar meu cartão",
+      compartirDuelo: "Devolver o desafio",
+      descargar: "Baixar imagem",
+      copiado: "Link copiado. Cole onde quiser.",
+      compartido: "Pronto, compartilhado.",
+      error: "Não deu para compartilhar. Tente de novo.",
+      texto: (fecha) => `Trabalho para o governo até ${fecha}. E você?`,
+      alt: "Prévia do seu cartão",
+    },
+    duelo: {
+      amigo: (fecha) => `Seu amigo trabalha para o governo até ${fecha}.`,
+      yVos: "E você?",
+      invitacion: "Digite seu salário e compare.",
+      vos: "Você",
+      elAmigo: "Seu amigo",
+      dia: "Para o governo até",
+      tasa: "Impostos e contribuições",
+      mejorPais: "Onde mais rende",
+      antes: (d) => (d === 1 ? "Você se liberta 1 dia antes do seu amigo." : `Você se liberta ${d} dias antes do seu amigo.`),
+      despues: (d) => (d === 1 ? "Seu amigo se liberta 1 dia antes de você." : `Seu amigo se liberta ${d} dias antes de você.`),
+      empate: "Vocês se libertam no mesmo dia.",
+      desde: (pais) => `Trabalha ${gPt.en(pais)}`,
+    },
+    metodo: {
+      titulo: "Como calculamos",
+      estimacion: "É uma estimativa para comparar países, não um holerite. Deduções, filhos ou bônus podem mudar o seu número.",
+      supuestos: [
+        "Uma pessoa solteira, sem filhos, com os valores padrão da calculadora de cada país.",
+        "O líquido é o que sobra depois do imposto de renda e das contribuições pagas pela pessoa. Não inclui impostos sobre consumo nem o que o empregador paga.",
+        "O 13º salário ou outros pagamentos extras são distribuídos no ano conforme a lei de cada país.",
+        "Nos Estados Unidos não somamos imposto estadual nem local: só o federal e as contribuições.",
+        "Para levar seu salário a outro país usamos a paridade do poder de compra (PPC): o mesmo padrão de vida, não o câmbio do dia.",
+        "A PPC da Argentina é atualizada com o índice de preços do INDEC, porque o Banco Mundial só a publica até 2021.",
+        "O dia da liberdade distribui sua carga a partir de 1º de janeiro. Se vão 30% do salário, você trabalha para o governo 30% do ano.",
+      ],
+      ppaTitulo: "Paridade do poder de compra", bancoMundial: "Banco Mundial",
+      ppa: (organismo, indicador, anio) => `${organismo}, indicador ${indicador}, último ano disponível ${anio}.`,
+      consultado: (fecha) => `Consultado em ${fecha}.`,
+      verFuente: "Ver a fonte",
+      fuentesTitulo: "A fonte de cada país",
+      fuentesBajada: "Cada linha usa a calculadora de salário líquido daquele país, com seus dados oficiais.",
+      verificado: (fecha) => `Dados verificados em ${fecha}`,
+      sello: (fecha) => `Dados oficiais conferidos na fonte de cada país. A conferência mais antiga é de ${fecha}.`,
+    },
+    faqTitulo: "Perguntas frequentes",
+    faq: (n) => [
+      {
+        pregunta: "O que é o dia da liberdade de impostos?",
+        respuesta:
+          "É o dia do ano em que você termina de pagar seus impostos e contribuições, se tudo o que ganha desde 1º de janeiro fosse primeiro para o governo. Aqui calculamos com o seu salário, não com a média do país.",
+      },
+      {
+        pregunta: "Por que comparar pelo poder de compra?",
+        respuesta: "Pelo câmbio, um salário parece enorme ou mínimo conforme o dia. A PPC compara o que esse dinheiro compra de verdade em cada país.",
+      },
+      {
+        pregunta: "Meu salário fica guardado?",
+        respuesta: "Não. A conta roda no seu navegador. O que você compartilha leva apenas datas, porcentagens e países.",
+      },
+      {
+        pregunta: "Por que meu líquido real é diferente?",
+        respuesta:
+          "Usamos uma pessoa solteira, sem filhos e com os valores padrão. Deduções, bônus ou regimes especiais mudam o número. Para o seu caso exato, abra a calculadora do seu país.",
+      },
+      {
+        pregunta: "Quais países estão incluídos?",
+        respuesta: `Hoje são ${n} países, cada um com sua calculadora de salário líquido e seus dados oficiais. Somamos mais conforme verificamos as regras de cada um.`,
+      },
+    ],
+    destacado: {
+      ceja: "Comparação mundial",
+      titulo: "Até que dia você trabalha para o governo?",
+      texto: "Digite seu salário e veja quanto sobraria líquido em outros países.",
+      ir: "Calcular minha data",
+    },
+  },
+  // Portugal: «Estado», «partilhar», «recibo de vencimento» e o tratamento sem «você».
+  regional: {
+    "pt-PT": {
+      nombre: "O seu salário pelo mundo",
+      seo: {
+        titulo: (pais) => [`Dia da libertação fiscal e salário líquido no mundo | ${pais}`, "Dia da libertação fiscal e salário líquido no mundo", "O seu salário pelo mundo"],
+        tituloGlobal: ["Dia da libertação fiscal e salário líquido no mundo", "O seu salário pelo mundo"],
+        descripcion: (pais, n) => `Veja até que dia trabalha para o Estado com o seu salário ${gPt.en(pais)} e quanto lhe ficaria líquido em ${n} países. Grátis e sem registo.`,
+        descripcionGlobal: (n) => `Veja até que dia trabalha para o Estado e quanto lhe ficaria líquido com o seu salário em ${n} países. Grátis e sem registo.`,
+      },
+      ceja: "Dia da libertação fiscal",
+      h1: "Até que dia do ano trabalha para o Estado?",
+      bajada: (n) => `Introduza o seu salário bruto e veja a sua data. Depois compare em ${n} países, com o mesmo poder de compra e as regras de cada um.`,
+      form: {
+        titulo: "O seu salário",
+        pais: "País onde trabalha",
+        ejemploAyuda: "É um salário de exemplo. Introduza o seu e tudo se recalcula de imediato.",
+        propio: "Trouxemos do seu cálculo.",
+        invalido: "Introduza um valor superior a zero.",
+      },
+      heroe: {
+        hasta: (fecha) => `Trabalha para o Estado até ${fecha}`,
+        tasa: (pct) => `Vão ${pct} do seu salário em IRS e contribuições.`,
+        enMano: "Fica-lhe líquido",
+        anio: (anio, n, total) => `Ano ${anio}: ${n} de ${total} dias para o Estado.`,
+        resto: "A partir do dia seguinte, o que ganha é seu.",
+      },
+      ranking: {
+        bajada: "Com o mesmo poder de compra, isto ficar-lhe-ia líquido em cada país. Cada linha vem da calculadora oficial desse país.",
+        buscar: "Procurar um país",
+        regiones: { americas: "Américas", europa: "Europa", asia: "Ásia e Oceânia", africa: "África e Médio Oriente" },
+        tuPais: "O seu país",
+        enTuMoneda: "Na sua moeda",
+        vsTuPais: "Face ao seu país",
+        puesto: (p, total) => `O seu país fica em ${p}.º de ${total}.`,
+      },
+      tarjeta: {
+        titulo: "O seu cartão para partilhar",
+        bajada: "Mostra a sua data e percentagens. Nunca quanto ganha.",
+        hasta: (fecha) => `Trabalho para o Estado até ${fecha}`,
+        mejor: (pais, pct) => `Com o meu salário, ${gPt.en(pais)} ficavam-me ${pct} a mais líquidos`,
+        mejorPropio: (pais) => `Com o meu salário, nenhum país me deixa mais líquido do que ${gPt.nombre(pais)}`,
+        yVos: "E o seu?",
+        generica: "Até que dia trabalha para o Estado?",
+        genericaBajada: (n) => `O seu salário em ${n} países, com a calculadora oficial de cada um`,
+        compartir: "Partilhar o meu cartão",
+        descargar: "Descarregar imagem",
+        compartido: "Pronto, partilhado.",
+        error: "Não foi possível partilhar. Tente novamente.",
+        texto: (fecha) => `Trabalho para o Estado até ${fecha}. E o seu dia?`,
+        alt: "Pré-visualização do seu cartão",
+      },
+      duelo: {
+        amigo: (fecha) => `Quem lhe enviou isto trabalha para o Estado até ${fecha}.`,
+        yVos: "E o seu dia?",
+        invitacion: "Introduza o seu salário e compare.",
+        vos: "O seu",
+        elAmigo: "Quem enviou",
+        dia: "Para o Estado até",
+        antes: (d) => (d === 1 ? "Liberta-se 1 dia antes." : `Liberta-se ${d} dias antes.`),
+        despues: (d) => (d === 1 ? "Quem enviou liberta-se 1 dia antes." : `Quem enviou liberta-se ${d} dias antes.`),
+        empate: "Libertam-se no mesmo dia.",
+      },
+      metodo: {
+        estimacion: "É uma estimativa para comparar países, não um recibo de vencimento. Deduções, filhos ou prémios podem mudar o seu número.",
+        supuestos: [
+          "Uma pessoa solteira, sem filhos, com os valores predefinidos da calculadora de cada país.",
+          "O líquido é o que fica depois do imposto sobre o rendimento e das contribuições pagas pela pessoa. Não inclui IVA nem o que paga a entidade patronal.",
+          "Os subsídios de férias e de Natal ou outros pagamentos extra são repartidos no ano conforme a lei de cada país.",
+          "Nos Estados Unidos não se soma imposto estadual nem local: só o federal e as contribuições.",
+          "Para levar o seu salário a outro país usamos a paridade do poder de compra (PPC): o mesmo nível de vida, não o câmbio do dia.",
+          "A PPC da Argentina é atualizada com o índice de preços do INDEC, porque o Banco Mundial só a publica até 2021.",
+          "O dia da libertação reparte a sua carga a partir de 1 de janeiro. Se vão 30% do salário, trabalha para o Estado 30% do ano.",
+        ],
+        fuentesBajada: "Cada linha usa a calculadora de salário líquido desse país, com os seus dados oficiais.",
+      },
+      faq: (n) => [
+        {
+          pregunta: "O que é o dia da libertação fiscal?",
+          respuesta:
+            "É o dia do ano em que acaba de pagar os seus impostos e contribuições, se tudo o que ganha desde 1 de janeiro fosse primeiro para o Estado. Aqui calculamos com o seu salário, não com a média do país.",
+        },
+        {
+          pregunta: "Porquê comparar pelo poder de compra?",
+          respuesta: "Pelo câmbio, um salário parece enorme ou mínimo consoante o dia. A PPC compara o que esse dinheiro compra de facto em cada país.",
+        },
+        {
+          pregunta: "O meu salário fica guardado?",
+          respuesta: "Não. A conta corre no seu navegador. O que partilha leva apenas datas, percentagens e países.",
+        },
+        {
+          pregunta: "Porque é que o meu líquido real é diferente?",
+          respuesta:
+            "Usamos uma pessoa solteira, sem filhos e com os valores predefinidos. Deduções, prémios ou regimes especiais mudam o número. Para o seu caso exato, abra a calculadora do seu país.",
+        },
+        {
+          pregunta: "Que países estão incluídos?",
+          respuesta: `Hoje são ${n} países, cada um com a sua calculadora de salário líquido e os seus dados oficiais. Juntamos mais à medida que verificamos as regras de cada um.`,
+        },
+      ],
+      destacado: {
+        titulo: "Até que dia trabalha para o Estado?",
+        texto: "Introduza o seu salário e veja quanto lhe ficaria líquido noutros países.",
+        ir: "Calcular a minha data",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── fr ─────────────────────────────
+
+const gFr = GRAMATICA.fr;
+const SEO_FR = "Jour de libération fiscale et salaire net dans le monde";
+
+const frBase: TextosMundo = {
+  nombre: "Ton salaire dans le monde",
+  seo: {
+    titulo: (pais) => [`${SEO_FR} | ${pais}`, SEO_FR, "Ton salaire dans le monde"],
+    tituloGlobal: [SEO_FR, "Ton salaire dans le monde"],
+    descripcion: (pais, n) => `Découvre jusqu'à quel jour tu travailles pour l'État avec ton salaire ${gFr.en(pais)} et ce qu'il te resterait net dans ${n} pays. Gratuit.`,
+    descripcionGlobal: (n) => `Découvre jusqu'à quel jour tu travailles pour l'État et ce que ton salaire te laisserait net dans ${n} pays. Gratuit, sans inscription.`,
+  },
+  ceja: "Jour de libération fiscale",
+  h1: "Jusqu'à quel jour de l'année travailles-tu pour l'État ?",
+  bajada: (n) => `Saisis ton salaire brut pour voir ta date. Puis compare-le dans ${n} pays, à pouvoir d'achat égal et avec les règles de chacun.`,
+  form: {
+    titulo: "Ton salaire",
+    sueldo: "Salaire brut",
+    mes: "Par mois",
+    anio: "Par an",
+    periodo: "Période du salaire",
+    pais: "Pays où tu travailles",
+    ejemplo: "Exemple",
+    ejemploAyuda: "C'est un salaire d'exemple. Saisis le tien et tout se recalcule aussitôt.",
+    propio: "Repris de ton calcul.",
+    invalido: "Saisis un montant supérieur à zéro.",
+  },
+  heroe: {
+    hasta: (fecha) => `Tu travailles pour l'État jusqu'au ${fecha}`,
+    tasa: (pct) => `${pct} de ton salaire part en impôt sur le revenu et cotisations.`,
+    dias: (n, total) => `${n} jours sur ${total}`,
+    enMano: "Il te reste net",
+    porMes: "par mois",
+    anio: (anio, n, total) => `Année ${anio} : ${n} jours sur ${total} pour l'État.`,
+    resto: "Dès le lendemain, ce que tu gagnes est à toi.",
+  },
+  ranking: {
+    titulo: "Le même salaire, pays par pays",
+    bajada: "À pouvoir d'achat égal, voici ce qu'il te resterait net dans chaque pays. Chaque ligne vient du calculateur officiel de ce pays.",
+    lista: "Pays classés selon le salaire net",
+    buscar: "Chercher un pays",
+    filtrar: "Filtrer par région",
+    todas: "Tous les pays",
+    regiones: { americas: "Amériques", europa: "Europe", asia: "Asie et Océanie", africa: "Afrique et Moyen-Orient" },
+    tuPais: "Ton pays",
+    mejor: "Là où il rapporte le plus",
+    enMano: "Net par mois",
+    enTuMoneda: "Dans ta monnaie",
+    vsTuPais: "Par rapport à ton pays",
+    verTodos: (n) => `Voir les ${n} pays`,
+    verMenos: "Voir moins",
+    sinResultados: (q) => `Aucun pays ne correspond à « ${q} ».`,
+    abrir: (pais) => `Ouvrir le calculateur ${gFr.de(pais)}`,
+    mas: (pct) => `${pct} de plus`,
+    menos: (pct) => `${pct} de moins`,
+    igual: "Identique",
+    puesto: (p, total) => `Ton pays se classe ${p}e sur ${total}.`,
+  },
+  tarjeta: {
+    titulo: "Ta carte à partager",
+    bajada: "Elle montre ta date et des pourcentages. Jamais ce que tu gagnes.",
+    hasta: (fecha) => `Je travaille pour l'État jusqu'au ${fecha}`,
+    tasa: (pct) => `${pct} de mon salaire part en impôts`,
+    mejor: (pais, pct) => `Avec mon salaire, ${gFr.en(pais)} il me resterait ${pct} de plus`,
+    mejorPropio: (pais) => `Avec mon salaire, aucun pays ne me laisse plus que ${gFr.nombre(pais)}`,
+    yVos: "Et toi ?",
+    cta: "Calcule le tien sur",
+    generica: "Jusqu'à quel jour travailles-tu pour l'État ?",
+    genericaBajada: (n) => `Ton salaire dans ${n} pays, passé par le calculateur officiel de chacun`,
+    compartir: "Partager ma carte",
+    compartirDuelo: "Relever le défi",
+    descargar: "Télécharger l'image",
+    copiado: "Lien copié. Colle-le où tu veux.",
+    compartido: "C'est partagé.",
+    error: "Le partage n'a pas marché. Réessaie.",
+    texto: (fecha) => `Je travaille pour l'État jusqu'au ${fecha}. Et toi ?`,
+    alt: "Aperçu de ta carte",
+  },
+  duelo: {
+    amigo: (fecha) => `Ton ami travaille pour l'État jusqu'au ${fecha}.`,
+    yVos: "Et toi ?",
+    invitacion: "Saisis ton salaire pour comparer.",
+    vos: "Toi",
+    elAmigo: "Ton ami",
+    dia: "Pour l'État jusqu'au",
+    tasa: "Impôts et cotisations",
+    mejorPais: "Rapporte le plus",
+    antes: (d) => (d === 1 ? "Tu es libéré 1 jour avant ton ami." : `Tu es libéré ${d} jours avant ton ami.`),
+    despues: (d) => (d === 1 ? "Ton ami est libéré 1 jour avant toi." : `Ton ami est libéré ${d} jours avant toi.`),
+    empate: "Libérés le même jour.",
+    desde: (pais) => `Travaille ${gFr.en(pais)}`,
+  },
+  metodo: {
+    titulo: "Comment nous le calculons",
+    estimacion: "C'est une estimation pour comparer des pays, pas une fiche de paie. Déductions, enfants ou primes peuvent changer ton chiffre.",
+    supuestos: [
+      "Une personne célibataire, sans enfant, avec les valeurs par défaut du calculateur de chaque pays.",
+      "Le net est ce qui reste après l'impôt sur le revenu et les cotisations payées par la personne. Ni la TVA ni la part de l'employeur ne sont comptées.",
+      "Le treizième mois ou les primes obligatoires sont répartis sur l'année selon la loi de chaque pays.",
+      "Aux États-Unis, aucun impôt d'État ni local n'est ajouté : seulement l'impôt fédéral et les cotisations.",
+      "Pour transposer ton salaire dans un autre pays, nous utilisons la parité de pouvoir d'achat (PPA) : le même niveau de vie, pas le taux de change du jour.",
+      "La PPA de l'Argentine est actualisée avec l'indice des prix de l'INDEC, car la Banque mondiale ne la publie que jusqu'en 2021.",
+      "Le jour de libération répartit ta charge à partir du 1er janvier. Si 30 % de ton salaire part en impôts, tu travailles pour l'État 30 % de l'année.",
+    ],
+    ppaTitulo: "Parité de pouvoir d'achat", bancoMundial: "Banque mondiale",
+    ppa: (organismo, indicador, anio) => `${organismo}, indicateur ${indicador}, dernière année disponible ${anio}.`,
+    consultado: (fecha) => `Consulté le ${fecha}.`,
+    verFuente: "Voir la source",
+    fuentesTitulo: "La source de chaque pays",
+    fuentesBajada: "Chaque ligne utilise le calculateur de salaire net de ce pays, avec ses données officielles.",
+    verificado: (fecha) => `Données vérifiées le ${fecha}`,
+    sello: (fecha) => `Données officielles vérifiées à la source de chaque pays. La vérification la plus ancienne date du ${fecha}.`,
+  },
+  faqTitulo: "Questions fréquentes",
+  faq: (n) => [
+    {
+      pregunta: "Qu'est-ce que le jour de libération fiscale ?",
+      respuesta:
+        "C'est le jour de l'année où tu as fini de payer tes impôts et cotisations, si tout ce que tu gagnes depuis le 1er janvier allait d'abord à l'État. Ici, il est calculé avec ton salaire, pas avec la moyenne du pays.",
+    },
+    {
+      pregunta: "Pourquoi comparer en pouvoir d'achat ?",
+      respuesta: "Au taux de change, un salaire paraît énorme ou minuscule selon le jour. La PPA compare ce que cet argent permet vraiment d'acheter dans chaque pays.",
+    },
+    {
+      pregunta: "Mon salaire est-il enregistré ?",
+      respuesta: "Non. Le calcul se fait dans ton navigateur. Ce que tu partages ne contient que des dates, des pourcentages et des pays.",
+    },
+    {
+      pregunta: "Pourquoi mon net réel est-il différent ?",
+      respuesta:
+        "Nous prenons une personne célibataire, sans enfant et avec les valeurs par défaut. Déductions, primes ou régimes particuliers changent le chiffre. Pour ton cas précis, ouvre le calculateur de ton pays.",
+    },
+    {
+      pregunta: "Quels pays sont inclus ?",
+      respuesta: `${n} pays aujourd'hui, chacun avec son calculateur de salaire net et ses données officielles. Nous en ajoutons à mesure que nous vérifions leurs règles.`,
+    },
+  ],
+  destacado: {
+    ceja: "Comparateur mondial",
+    titulo: "Jusqu'à quel jour travailles-tu pour l'État ?",
+    texto: "Saisis ton salaire et vois ce qu'il te resterait net dans d'autres pays.",
+    ir: "Calculer ma date",
+  },
+};
+
+const fr: Diccionario<TextosMundo> = {
+  base: frBase,
+  usted: {
+    nombre: "Votre salaire dans le monde",
+    seo: {
+      titulo: (pais) => [`${SEO_FR} | ${pais}`, SEO_FR, "Votre salaire dans le monde"],
+      tituloGlobal: [SEO_FR, "Votre salaire dans le monde"],
+      descripcion: (pais, n) => `Découvrez jusqu'à quel jour vous travaillez pour l'État avec votre salaire ${gFr.en(pais)} et ce qu'il resterait net dans ${n} pays. Gratuit.`,
+      descripcionGlobal: (n) => `Découvrez jusqu'à quel jour vous travaillez pour l'État et ce que votre salaire laisserait net dans ${n} pays. Gratuit, sans inscription.`,
+    },
+    h1: "Jusqu'à quel jour de l'année travaillez-vous pour l'État ?",
+    bajada: (n) => `Saisissez votre salaire brut pour voir votre date. Puis comparez-le dans ${n} pays, à pouvoir d'achat égal et avec les règles de chacun.`,
+    form: {
+      titulo: "Votre salaire",
+      pais: "Pays où vous travaillez",
+      ejemploAyuda: "C'est un salaire d'exemple. Saisissez le vôtre et tout se recalcule aussitôt.",
+      propio: "Repris de votre calcul.",
+      invalido: "Saisissez un montant supérieur à zéro.",
+    },
+    heroe: {
+      hasta: (fecha) => `Vous travaillez pour l'État jusqu'au ${fecha}`,
+      tasa: (pct) => `${pct} de votre salaire part en impôt sur le revenu et cotisations.`,
+      enMano: "Il vous reste net",
+      resto: "Dès le lendemain, ce que vous gagnez est à vous.",
+    },
+    ranking: {
+      bajada: "À pouvoir d'achat égal, voici ce qu'il vous resterait net dans chaque pays. Chaque ligne vient du calculateur officiel de ce pays.",
+      tuPais: "Votre pays",
+      enTuMoneda: "Dans votre monnaie",
+      vsTuPais: "Par rapport à votre pays",
+      puesto: (p, total) => `Votre pays se classe ${p}e sur ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Votre carte à partager",
+      bajada: "Elle montre votre date et des pourcentages. Jamais ce que vous gagnez.",
+      yVos: "Et vous ?",
+      cta: "Calculez le vôtre sur",
+      generica: "Jusqu'à quel jour travaillez-vous pour l'État ?",
+      genericaBajada: (n) => `Votre salaire dans ${n} pays, passé par le calculateur officiel de chacun`,
+      copiado: "Lien copié. Collez-le où vous voulez.",
+      error: "Le partage n'a pas marché. Réessayez.",
+      texto: (fecha) => `Je travaille pour l'État jusqu'au ${fecha}. Et vous ?`,
+      alt: "Aperçu de votre carte",
+    },
+    duelo: {
+      amigo: (fecha) => `La personne qui vous l'a envoyé travaille pour l'État jusqu'au ${fecha}.`,
+      yVos: "Et vous ?",
+      invitacion: "Saisissez votre salaire pour comparer.",
+      vos: "Vous",
+      elAmigo: "L'expéditeur",
+      antes: (d) => (d === 1 ? "Vous êtes libéré 1 jour plus tôt." : `Vous êtes libéré ${d} jours plus tôt.`),
+      despues: (d) => (d === 1 ? "L'expéditeur est libéré 1 jour plus tôt." : `L'expéditeur est libéré ${d} jours plus tôt.`),
+    },
+    metodo: {
+      estimacion: "C'est une estimation pour comparer des pays, pas une fiche de paie. Déductions, enfants ou primes peuvent changer votre chiffre.",
+      supuestos: [
+        "Une personne célibataire, sans enfant, avec les valeurs par défaut du calculateur de chaque pays.",
+        "Le net est ce qui reste après l'impôt sur le revenu et les cotisations payées par la personne. Ni la TVA ni la part de l'employeur ne sont comptées.",
+        "Le treizième mois ou les primes obligatoires sont répartis sur l'année selon la loi de chaque pays.",
+        "Aux États-Unis, aucun impôt d'État ni local n'est ajouté : seulement l'impôt fédéral et les cotisations.",
+        "Pour transposer votre salaire dans un autre pays, nous utilisons la parité de pouvoir d'achat (PPA) : le même niveau de vie, pas le taux de change du jour.",
+        "La PPA de l'Argentine est actualisée avec l'indice des prix de l'INDEC, car la Banque mondiale ne la publie que jusqu'en 2021.",
+        "Le jour de libération répartit votre charge à partir du 1er janvier. Si 30 % de votre salaire part en impôts, vous travaillez pour l'État 30 % de l'année.",
+      ],
+    },
+    faq: (n) => [
+      {
+        pregunta: "Qu'est-ce que le jour de libération fiscale ?",
+        respuesta:
+          "C'est le jour de l'année où vous avez fini de payer vos impôts et cotisations, si tout ce que vous gagnez depuis le 1er janvier allait d'abord à l'État. Ici, il est calculé avec votre salaire, pas avec la moyenne du pays.",
+      },
+      {
+        pregunta: "Pourquoi comparer en pouvoir d'achat ?",
+        respuesta: "Au taux de change, un salaire paraît énorme ou minuscule selon le jour. La PPA compare ce que cet argent permet vraiment d'acheter dans chaque pays.",
+      },
+      {
+        pregunta: "Mon salaire est-il enregistré ?",
+        respuesta: "Non. Le calcul se fait dans votre navigateur. Ce que vous partagez ne contient que des dates, des pourcentages et des pays.",
+      },
+      {
+        pregunta: "Pourquoi mon net réel est-il différent ?",
+        respuesta:
+          "Nous prenons une personne célibataire, sans enfant et avec les valeurs par défaut. Déductions, primes ou régimes particuliers changent le chiffre. Pour votre cas précis, ouvrez le calculateur de votre pays.",
+      },
+      {
+        pregunta: "Quels pays sont inclus ?",
+        respuesta: `${n} pays aujourd'hui, chacun avec son calculateur de salaire net et ses données officielles. Nous en ajoutons à mesure que nous vérifions leurs règles.`,
+      },
+    ],
+    destacado: {
+      titulo: "Jusqu'à quel jour travaillez-vous pour l'État ?",
+      texto: "Saisissez votre salaire et voyez ce qu'il vous resterait net dans d'autres pays.",
+      ir: "Calculer votre date",
+    },
+  },
+};
+
+// ───────────────────────────── de ─────────────────────────────
+
+const gDe = GRAMATICA.de;
+const SEO_DE = "Steuerzahlergedenktag und Nettogehalt weltweit";
+
+const de: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Dein Gehalt weltweit",
+    seo: {
+      titulo: (pais) => [`${SEO_DE} | ${pais}`, SEO_DE, "Dein Gehalt weltweit"],
+      tituloGlobal: [SEO_DE, "Dein Gehalt weltweit"],
+      descripcion: (pais, n) => `Bis zu welchem Tag arbeitest du mit deinem Gehalt ${gDe.en(pais)} für den Staat, und was bliebe dir netto in ${n} Ländern? Kostenlos.`,
+      descripcionGlobal: (n) => `Bis zu welchem Tag arbeitest du für den Staat, und was bliebe dir von deinem Gehalt netto in ${n} Ländern? Kostenlos, ohne Anmeldung.`,
+    },
+    ceja: "Dein Steuerzahlergedenktag",
+    h1: "Bis zu welchem Tag im Jahr arbeitest du für den Staat?",
+    bajada: (n) => `Gib dein Bruttogehalt ein und sieh dein Datum. Dann vergleiche es in ${n} Ländern, bei gleicher Kaufkraft und mit den Regeln jedes Landes.`,
+    form: {
+      titulo: "Dein Gehalt",
+      sueldo: "Bruttogehalt",
+      mes: "Pro Monat",
+      anio: "Pro Jahr",
+      periodo: "Zeitraum des Gehalts",
+      pais: "Land, in dem du arbeitest",
+      ejemplo: "Beispiel",
+      ejemploAyuda: "Das ist ein Beispielgehalt. Gib deins ein, und alles rechnet sich sofort neu.",
+      propio: "Aus deiner Berechnung übernommen.",
+      invalido: "Gib einen Betrag über null ein.",
+    },
+    heroe: {
+      hasta: (fecha) => `Du arbeitest für den Staat bis zum ${fecha}`,
+      tasa: (pct) => `${pct} deines Gehalts gehen an Einkommensteuer und Sozialabgaben.`,
+      dias: (n, total) => `${n} von ${total} Tagen`,
+      enMano: "Netto bleiben dir",
+      porMes: "im Monat",
+      anio: (anio, n, total) => `Jahr ${anio}: ${n} von ${total} Tagen für den Staat.`,
+      resto: "Ab dem nächsten Tag gehört dir, was du verdienst.",
+    },
+    ranking: {
+      titulo: "Dasselbe Gehalt, Land für Land",
+      bajada: "Bei gleicher Kaufkraft bliebe dir in jedem Land so viel netto. Jede Zeile stammt aus dem offiziellen Rechner des Landes.",
+      lista: "Länder nach Nettogehalt sortiert",
+      buscar: "Land suchen",
+      filtrar: "Nach Region filtern",
+      todas: "Alle",
+      regiones: { americas: "Amerika", europa: "Europa", asia: "Asien und Ozeanien", africa: "Afrika und Nahost" },
+      tuPais: "Dein Land",
+      mejor: "Bringt am meisten",
+      enMano: "Netto im Monat",
+      enTuMoneda: "In deiner Währung",
+      vsTuPais: "Im Vergleich zu deinem Land",
+      verTodos: (n) => `Alle ${n} Länder ansehen`,
+      verMenos: "Weniger anzeigen",
+      sinResultados: (q) => `Kein Land passt zu „${q}“.`,
+      abrir: (pais) => `Rechner für ${gDe.nombre(pais)} öffnen`,
+      mas: (pct) => `${pct} mehr`,
+      menos: (pct) => `${pct} weniger`,
+      igual: "Gleich",
+      puesto: (p, total) => `Dein Land liegt auf Platz ${p} von ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Deine Karte zum Teilen",
+      bajada: "Sie zeigt dein Datum und Prozente. Nie, was du verdienst.",
+      hasta: (fecha) => `Ich arbeite für den Staat bis zum ${fecha}`,
+      tasa: (pct) => `${pct} meines Gehalts gehen an den Staat`,
+      mejor: (pais, pct) => `Mit meinem Gehalt bliebe mir ${gDe.en(pais)} ${pct} mehr netto`,
+      mejorPropio: (pais) => `Mit meinem Gehalt bleibt mir nirgends mehr als ${gDe.en(pais)}`,
+      yVos: "Und du?",
+      cta: "Berechne deins auf",
+      generica: "Bis zu welchem Tag arbeitest du für den Staat?",
+      genericaBajada: (n) => `Dein Gehalt in ${n} Ländern, mit dem offiziellen Rechner jedes Landes`,
+      compartir: "Meine Karte teilen",
+      compartirDuelo: "Den Spieß umdrehen",
+      descargar: "Bild herunterladen",
+      copiado: "Link kopiert. Füg ihn ein, wo du willst.",
+      compartido: "Fertig, geteilt.",
+      error: "Teilen hat nicht geklappt. Versuch es noch einmal.",
+      texto: (fecha) => `Ich arbeite für den Staat bis zum ${fecha}. Und du?`,
+      alt: "Vorschau deiner Karte",
+    },
+    duelo: {
+      amigo: (fecha) => `Dein Freund arbeitet für den Staat bis zum ${fecha}.`,
+      yVos: "Und du?",
+      invitacion: "Gib dein Gehalt ein und vergleiche.",
+      vos: "Du",
+      elAmigo: "Dein Freund",
+      dia: "Für den Staat bis zum",
+      tasa: "Steuern und Abgaben",
+      mejorPais: "Bringt am meisten in",
+      antes: (d) => (d === 1 ? "Du bist 1 Tag früher frei als dein Freund." : `Du bist ${d} Tage früher frei als dein Freund.`),
+      despues: (d) => (d === 1 ? "Dein Freund ist 1 Tag früher frei als du." : `Dein Freund ist ${d} Tage früher frei als du.`),
+      empate: "Ihr seid am selben Tag frei.",
+      desde: (pais) => `Arbeitet ${gDe.en(pais)}`,
+    },
+    metodo: {
+      titulo: "So rechnen wir",
+      estimacion: "Das ist eine Schätzung, um Länder zu vergleichen, keine Gehaltsabrechnung. Freibeträge, Kinder oder Boni können deine Zahl verändern.",
+      supuestos: [
+        "Eine ledige Person ohne Kinder, mit den Standardwerten des Rechners jedes Landes.",
+        "Netto ist, was nach Einkommensteuer und den Abgaben der Person bleibt. Mehrwertsteuer und der Anteil des Arbeitgebers zählen nicht.",
+        "Ein 13. Monatsgehalt oder andere Pflicht-Sonderzahlungen werden so aufs Jahr verteilt, wie es das Gesetz des Landes vorsieht.",
+        "In den USA kommt keine Steuer der Bundesstaaten oder Gemeinden dazu: nur die Bundessteuer und die Abgaben.",
+        "Um dein Gehalt in ein anderes Land zu übertragen, nutzen wir Kaufkraftparitäten (KKP): derselbe Lebensstandard, nicht der Wechselkurs des Tages.",
+        "Die KKP für Argentinien wird mit dem Verbraucherpreisindex des INDEC fortgeschrieben, weil die Weltbank sie nur bis 2021 veröffentlicht.",
+        "Der Gedenktag verteilt deine Last ab dem 1. Januar. Gehen 30 % deines Gehalts an den Staat, arbeitest du 30 % des Jahres für ihn.",
+      ],
+      ppaTitulo: "Kaufkraftparität", bancoMundial: "Weltbank",
+      ppa: (organismo, indicador, anio) => `${organismo}, Indikator ${indicador}, letztes verfügbares Jahr ${anio}.`,
+      consultado: (fecha) => `Abgerufen am ${fecha}.`,
+      verFuente: "Quelle ansehen",
+      fuentesTitulo: "Die Quelle jedes Landes",
+      fuentesBajada: "Jede Zeile nutzt den Nettogehaltsrechner des Landes mit seinen amtlichen Daten.",
+      verificado: (fecha) => `Daten geprüft am ${fecha}`,
+      sello: (fecha) => `Amtliche Daten, an der Quelle jedes Landes geprüft. Die älteste Prüfung ist vom ${fecha}.`,
+    },
+    faqTitulo: "Häufige Fragen",
+    faq: (n) => [
+      {
+        pregunta: "Was ist der Steuerzahlergedenktag?",
+        respuesta:
+          "Der Tag im Jahr, an dem du deine Steuern und Abgaben abbezahlt hättest, wenn alles, was du ab dem 1. Januar verdienst, zuerst an den Staat ginge. Hier rechnen wir mit deinem Gehalt, nicht mit dem Landesdurchschnitt.",
+      },
+      {
+        pregunta: "Warum der Vergleich nach Kaufkraft?",
+        respuesta: "Nach Wechselkurs wirkt ein Gehalt je nach Tag riesig oder winzig. Die KKP vergleicht, was man mit dem Geld in jedem Land wirklich kaufen kann.",
+      },
+      {
+        pregunta: "Wird mein Gehalt gespeichert?",
+        respuesta: "Nein. Die Rechnung läuft in deinem Browser. Was du teilst, enthält nur Daten, Prozente und Länder.",
+      },
+      {
+        pregunta: "Warum weicht mein echtes Netto ab?",
+        respuesta:
+          "Wir rechnen mit einer ledigen Person ohne Kinder und Standardwerten. Freibeträge, Boni oder Sonderregeln ändern die Zahl. Für deinen genauen Fall öffne den Rechner deines Landes.",
+      },
+      {
+        pregunta: "Welche Länder sind dabei?",
+        respuesta: `Heute ${n} Länder, jedes mit eigenem Nettogehaltsrechner und amtlichen Daten. Weitere kommen dazu, sobald wir ihre Regeln geprüft haben.`,
+      },
+    ],
+    destacado: {
+      ceja: "Weltweiter Vergleich",
+      titulo: "Bis zu welchem Tag arbeitest du für den Staat?",
+      texto: "Gib dein Gehalt ein und sieh, was dir in anderen Ländern netto bliebe.",
+      ir: "Mein Datum berechnen",
+    },
+  },
+  usted: {
+    nombre: "Ihr Gehalt weltweit",
+    seo: {
+      titulo: (pais) => [`${SEO_DE} | ${pais}`, SEO_DE, "Ihr Gehalt weltweit"],
+      tituloGlobal: [SEO_DE, "Ihr Gehalt weltweit"],
+      descripcion: (pais, n) => `Bis zu welchem Tag arbeiten Sie mit Ihrem Gehalt ${gDe.en(pais)} für den Staat, und was bliebe netto in ${n} Ländern? Kostenlos.`,
+      descripcionGlobal: (n) => `Bis zu welchem Tag arbeiten Sie für den Staat, und was bliebe von Ihrem Gehalt netto in ${n} Ländern? Kostenlos, ohne Anmeldung.`,
+    },
+    ceja: "Ihr Steuerzahlergedenktag",
+    h1: "Bis zu welchem Tag im Jahr arbeiten Sie für den Staat?",
+    bajada: (n) => `Geben Sie Ihr Bruttogehalt ein und sehen Sie Ihr Datum. Dann vergleichen Sie es in ${n} Ländern, bei gleicher Kaufkraft und mit den Regeln jedes Landes.`,
+    form: {
+      titulo: "Ihr Gehalt",
+      pais: "Land, in dem Sie arbeiten",
+      ejemploAyuda: "Das ist ein Beispielgehalt. Geben Sie Ihres ein, und alles rechnet sich sofort neu.",
+      propio: "Aus Ihrer Berechnung übernommen.",
+      invalido: "Geben Sie einen Betrag über null ein.",
+    },
+    heroe: {
+      hasta: (fecha) => `Sie arbeiten für den Staat bis zum ${fecha}`,
+      tasa: (pct) => `${pct} Ihres Gehalts gehen an Einkommensteuer und Sozialabgaben.`,
+      enMano: "Netto bleiben Ihnen",
+      resto: "Ab dem nächsten Tag gehört Ihnen, was Sie verdienen.",
+    },
+    ranking: {
+      bajada: "Bei gleicher Kaufkraft bliebe Ihnen in jedem Land so viel netto. Jede Zeile stammt aus dem offiziellen Rechner des Landes.",
+      tuPais: "Ihr Land",
+      enTuMoneda: "In Ihrer Währung",
+      vsTuPais: "Im Vergleich zu Ihrem Land",
+      puesto: (p, total) => `Ihr Land liegt auf Platz ${p} von ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Ihre Karte zum Teilen",
+      bajada: "Sie zeigt Ihr Datum und Prozente. Nie, was Sie verdienen.",
+      yVos: "Und bei Ihnen?",
+      cta: "Berechnen Sie Ihres auf",
+      generica: "Bis zu welchem Tag arbeiten Sie für den Staat?",
+      genericaBajada: (n) => `Ihr Gehalt in ${n} Ländern, mit dem offiziellen Rechner jedes Landes`,
+      copiado: "Link kopiert. Fügen Sie ihn ein, wo Sie möchten.",
+      error: "Teilen hat nicht geklappt. Versuchen Sie es noch einmal.",
+      texto: (fecha) => `Ich arbeite für den Staat bis zum ${fecha}. Und bei Ihnen?`,
+      alt: "Vorschau Ihrer Karte",
+    },
+    duelo: {
+      amigo: (fecha) => `Die Person, die Ihnen das geschickt hat, arbeitet für den Staat bis zum ${fecha}.`,
+      yVos: "Und bei Ihnen?",
+      invitacion: "Geben Sie Ihr Gehalt ein und vergleichen Sie.",
+      vos: "Sie",
+      elAmigo: "Absender",
+      antes: (d) => (d === 1 ? "Sie sind 1 Tag früher frei." : `Sie sind ${d} Tage früher frei.`),
+      despues: (d) => (d === 1 ? "Der Absender ist 1 Tag früher frei." : `Der Absender ist ${d} Tage früher frei.`),
+      empate: "Beide sind am selben Tag frei.",
+    },
+    metodo: {
+      estimacion: "Das ist eine Schätzung, um Länder zu vergleichen, keine Gehaltsabrechnung. Freibeträge, Kinder oder Boni können Ihre Zahl verändern.",
+      supuestos: [
+        "Eine ledige Person ohne Kinder, mit den Standardwerten des Rechners jedes Landes.",
+        "Netto ist, was nach Einkommensteuer und den Abgaben der Person bleibt. Mehrwertsteuer und der Anteil des Arbeitgebers zählen nicht.",
+        "Ein 13. Monatsgehalt oder andere Pflicht-Sonderzahlungen werden so aufs Jahr verteilt, wie es das Gesetz des Landes vorsieht.",
+        "In den USA kommt keine Steuer der Bundesstaaten oder Gemeinden dazu: nur die Bundessteuer und die Abgaben.",
+        "Um Ihr Gehalt in ein anderes Land zu übertragen, nutzen wir Kaufkraftparitäten (KKP): derselbe Lebensstandard, nicht der Wechselkurs des Tages.",
+        "Die KKP für Argentinien wird mit dem Verbraucherpreisindex des INDEC fortgeschrieben, weil die Weltbank sie nur bis 2021 veröffentlicht.",
+        "Der Gedenktag verteilt Ihre Last ab dem 1. Januar. Gehen 30 % Ihres Gehalts an den Staat, arbeiten Sie 30 % des Jahres für ihn.",
+      ],
+    },
+    faq: (n) => [
+      {
+        pregunta: "Was ist der Steuerzahlergedenktag?",
+        respuesta:
+          "Der Tag im Jahr, an dem Sie Ihre Steuern und Abgaben abbezahlt hätten, wenn alles, was Sie ab dem 1. Januar verdienen, zuerst an den Staat ginge. Hier rechnen wir mit Ihrem Gehalt, nicht mit dem Landesdurchschnitt.",
+      },
+      {
+        pregunta: "Warum der Vergleich nach Kaufkraft?",
+        respuesta: "Nach Wechselkurs wirkt ein Gehalt je nach Tag riesig oder winzig. Die KKP vergleicht, was man mit dem Geld in jedem Land wirklich kaufen kann.",
+      },
+      {
+        pregunta: "Wird mein Gehalt gespeichert?",
+        respuesta: "Nein. Die Rechnung läuft in Ihrem Browser. Was Sie teilen, enthält nur Daten, Prozente und Länder.",
+      },
+      {
+        pregunta: "Warum weicht mein echtes Netto ab?",
+        respuesta:
+          "Wir rechnen mit einer ledigen Person ohne Kinder und Standardwerten. Freibeträge, Boni oder Sonderregeln ändern die Zahl. Für Ihren genauen Fall öffnen Sie den Rechner Ihres Landes.",
+      },
+      {
+        pregunta: "Welche Länder sind dabei?",
+        respuesta: `Heute ${n} Länder, jedes mit eigenem Nettogehaltsrechner und amtlichen Daten. Weitere kommen dazu, sobald wir ihre Regeln geprüft haben.`,
+      },
+    ],
+    destacado: {
+      titulo: "Bis zu welchem Tag arbeiten Sie für den Staat?",
+      texto: "Geben Sie Ihr Gehalt ein und sehen Sie, was Ihnen in anderen Ländern netto bliebe.",
+      ir: "Datum berechnen",
+    },
+  },
+};
+
+// ───────────────────────────── it ─────────────────────────────
+
+const gIt = GRAMATICA.it;
+const SEO_IT = "Giorno di liberazione fiscale e stipendio netto nel mondo";
+
+const it: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Il tuo stipendio nel mondo",
+    seo: {
+      titulo: (pais) => [`${SEO_IT} | ${pais}`, SEO_IT, "Il tuo stipendio nel mondo"],
+      tituloGlobal: [SEO_IT, "Il tuo stipendio nel mondo"],
+      descripcion: (pais, n) => `Scopri fino a che giorno lavori per lo Stato con il tuo stipendio ${gIt.en(pais)} e quanto ti resterebbe netto in ${n} paesi. Gratis.`,
+      descripcionGlobal: (n) => `Scopri fino a che giorno lavori per lo Stato e quanto ti resterebbe netto del tuo stipendio in ${n} paesi. Gratis, senza registrazione.`,
+    },
+    ceja: "Giorno di liberazione fiscale",
+    h1: "Fino a che giorno dell'anno lavori per lo Stato?",
+    bajada: (n) => `Inserisci lo stipendio lordo e guarda la tua data. Poi confrontalo in ${n} paesi, a parità di potere d'acquisto e con le regole di ciascuno.`,
+    form: {
+      titulo: "Il tuo stipendio",
+      sueldo: "Stipendio lordo",
+      mes: "Al mese",
+      anio: "All'anno",
+      periodo: "Periodo dello stipendio",
+      pais: "Paese in cui lavori",
+      ejemplo: "Esempio",
+      ejemploAyuda: "È uno stipendio di esempio. Scrivi il tuo e tutto si ricalcola subito.",
+      propio: "Preso dal tuo calcolo.",
+      invalido: "Inserisci un importo maggiore di zero.",
+    },
+    heroe: {
+      hasta: (fecha) => `Lavori per lo Stato fino al ${fecha}`,
+      tasa: (pct) => `Il ${pct} del tuo stipendio va in imposta sul reddito e contributi.`,
+      dias: (n, total) => `${n} giorni su ${total}`,
+      enMano: "Ti resta netto",
+      porMes: "al mese",
+      anio: (anio, n, total) => `Anno ${anio}: ${n} giorni su ${total} per lo Stato.`,
+      resto: "Dal giorno dopo, quello che guadagni è tuo.",
+    },
+    ranking: {
+      titulo: "Lo stesso stipendio, paese per paese",
+      bajada: "A parità di potere d'acquisto, ecco quanto ti resterebbe netto in ogni paese. Ogni riga viene dal calcolatore ufficiale di quel paese.",
+      lista: "Paesi in ordine di stipendio netto",
+      buscar: "Cerca un paese",
+      filtrar: "Filtra per area",
+      todas: "Tutti",
+      regiones: { americas: "Americhe", europa: "Europa", asia: "Asia e Oceania", africa: "Africa e Medio Oriente" },
+      tuPais: "Il tuo paese",
+      mejor: "Dove rende di più",
+      enMano: "Netto al mese",
+      enTuMoneda: "Nella tua valuta",
+      vsTuPais: "Rispetto al tuo paese",
+      verTodos: (n) => `Vedi tutti i ${n} paesi`,
+      verMenos: "Vedi meno",
+      sinResultados: (q) => `Nessun paese corrisponde a «${q}».`,
+      abrir: (pais) => `Apri il calcolatore ${gIt.de(pais)}`,
+      mas: (pct) => `${pct} in più`,
+      menos: (pct) => `${pct} in meno`,
+      igual: "Uguale",
+      puesto: (p, total) => `Il tuo paese è al ${p}º posto su ${total}.`,
+    },
+    tarjeta: {
+      titulo: "La tua scheda da condividere",
+      bajada: "Mostra la tua data e delle percentuali. Mai quanto guadagni.",
+      hasta: (fecha) => `Lavoro per lo Stato fino al ${fecha}`,
+      tasa: (pct) => `Il ${pct} del mio stipendio va allo Stato`,
+      mejor: (pais, pct) => `Con il mio stipendio, ${gIt.en(pais)} mi resterebbe il ${pct} in più`,
+      mejorPropio: (pais) => `Con il mio stipendio, nessun paese mi lascia più ${gIt.de(pais)}`,
+      yVos: "E tu?",
+      cta: "Calcola il tuo su",
+      generica: "Fino a che giorno lavori per lo Stato?",
+      genericaBajada: (n) => `Il tuo stipendio in ${n} paesi, con il calcolatore ufficiale di ciascuno`,
+      compartir: "Condividi la mia scheda",
+      compartirDuelo: "Rilancia la sfida",
+      descargar: "Scarica l'immagine",
+      copiado: "Link copiato. Incollalo dove vuoi.",
+      compartido: "Fatto, condivisa.",
+      error: "Condivisione non riuscita. Riprova.",
+      texto: (fecha) => `Lavoro per lo Stato fino al ${fecha}. E tu?`,
+      alt: "Anteprima della tua scheda",
+    },
+    duelo: {
+      amigo: (fecha) => `Il tuo amico lavora per lo Stato fino al ${fecha}.`,
+      yVos: "E tu?",
+      invitacion: "Inserisci il tuo stipendio e confronta.",
+      vos: "Tu",
+      elAmigo: "Il tuo amico",
+      dia: "Per lo Stato fino al",
+      tasa: "Imposte e contributi",
+      mejorPais: "Rende di più in",
+      antes: (d) => (d === 1 ? "Ti liberi 1 giorno prima del tuo amico." : `Ti liberi ${d} giorni prima del tuo amico.`),
+      despues: (d) => (d === 1 ? "Il tuo amico si libera 1 giorno prima di te." : `Il tuo amico si libera ${d} giorni prima di te.`),
+      empate: "Vi liberate lo stesso giorno.",
+      desde: (pais) => `Lavora ${gIt.en(pais)}`,
+    },
+    metodo: {
+      titulo: "Come lo calcoliamo",
+      estimacion: "È una stima per confrontare paesi, non una busta paga. Detrazioni, figli o bonus possono cambiare il tuo numero.",
+      supuestos: [
+        "Una persona single, senza figli, con i valori predefiniti del calcolatore di ogni paese.",
+        "Il netto è quello che resta dopo l'imposta sul reddito e i contributi a carico della persona. Non include l'IVA né la parte del datore di lavoro.",
+        "La tredicesima o le altre mensilità obbligatorie sono distribuite sull'anno come prevede la legge di ogni paese.",
+        "Negli Stati Uniti non si aggiungono imposte statali né locali: solo quella federale e i contributi.",
+        "Per portare il tuo stipendio in un altro paese usiamo la parità di potere d'acquisto (PPA): lo stesso tenore di vita, non il cambio del giorno.",
+        "La PPA dell'Argentina è aggiornata con l'indice dei prezzi dell'INDEC, perché la Banca Mondiale la pubblica solo fino al 2021.",
+        "Il giorno di liberazione distribuisce il tuo carico dal 1º gennaio. Se va allo Stato il 30 % dello stipendio, lavori per lo Stato il 30 % dell'anno.",
+      ],
+      ppaTitulo: "Parità di potere d'acquisto", bancoMundial: "Banca Mondiale",
+      ppa: (organismo, indicador, anio) => `${organismo}, indicatore ${indicador}, ultimo anno disponibile ${anio}.`,
+      consultado: (fecha) => `Consultato il ${fecha}.`,
+      verFuente: "Vedi la fonte",
+      fuentesTitulo: "La fonte di ogni paese",
+      fuentesBajada: "Ogni riga usa il calcolatore dello stipendio netto di quel paese, con i suoi dati ufficiali.",
+      verificado: (fecha) => `Dati verificati il ${fecha}`,
+      sello: (fecha) => `Dati ufficiali verificati alla fonte di ogni paese. La verifica più vecchia è del ${fecha}.`,
+    },
+    faqTitulo: "Domande frequenti",
+    faq: (n) => [
+      {
+        pregunta: "Che cos'è il giorno di liberazione fiscale?",
+        respuesta:
+          "È il giorno dell'anno in cui finisci di pagare imposte e contributi, se tutto quello che guadagni dal 1º gennaio andasse prima allo Stato. Qui lo calcoliamo con il tuo stipendio, non con la media del paese.",
+      },
+      {
+        pregunta: "Perché confrontare in potere d'acquisto?",
+        respuesta: "Con il cambio, uno stipendio sembra enorme o minimo a seconda del giorno. La PPA confronta quello che quei soldi comprano davvero in ogni paese.",
+      },
+      {
+        pregunta: "Il mio stipendio viene salvato?",
+        respuesta: "No. Il calcolo avviene nel tuo browser. Quello che condividi contiene solo date, percentuali e paesi.",
+      },
+      {
+        pregunta: "Perché il mio netto reale è diverso?",
+        respuesta:
+          "Usiamo una persona single, senza figli e con i valori predefiniti. Detrazioni, bonus o regimi speciali cambiano il numero. Per il tuo caso preciso, apri il calcolatore del tuo paese.",
+      },
+      {
+        pregunta: "Quali paesi sono inclusi?",
+        respuesta: `Oggi ${n} paesi, ognuno con il suo calcolatore dello stipendio netto e i suoi dati ufficiali. Ne aggiungiamo altri man mano che verifichiamo le loro regole.`,
+      },
+    ],
+    destacado: {
+      ceja: "Confronto mondiale",
+      titulo: "Fino a che giorno lavori per lo Stato?",
+      texto: "Inserisci lo stipendio e guarda quanto ti resterebbe netto in altri paesi.",
+      ir: "Calcola la mia data",
+    },
+  },
+  usted: {
+    nombre: "Lo stipendio nel mondo",
+    seo: {
+      titulo: (pais) => [`${SEO_IT} | ${pais}`, SEO_IT, "Lo stipendio nel mondo"],
+      tituloGlobal: [SEO_IT, "Lo stipendio nel mondo"],
+      descripcion: (pais, n) => `Scopra fino a che giorno lavora per lo Stato con il Suo stipendio ${gIt.en(pais)} e quanto Le resterebbe netto in ${n} paesi. Gratis.`,
+      descripcionGlobal: (n) => `Scopra fino a che giorno lavora per lo Stato e quanto Le resterebbe netto dello stipendio in ${n} paesi. Gratis, senza registrazione.`,
+    },
+    h1: "Fino a che giorno dell'anno lavora per lo Stato?",
+    bajada: (n) => `Inserisca lo stipendio lordo e guardi la Sua data. Poi lo confronti in ${n} paesi, a parità di potere d'acquisto e con le regole di ciascuno.`,
+    form: {
+      titulo: "Lo stipendio",
+      pais: "Paese in cui lavora",
+      ejemploAyuda: "È uno stipendio di esempio. Scriva il Suo e tutto si ricalcola subito.",
+      propio: "Preso dal Suo calcolo.",
+      invalido: "Inserisca un importo maggiore di zero.",
+    },
+    heroe: {
+      hasta: (fecha) => `Lavora per lo Stato fino al ${fecha}`,
+      tasa: (pct) => `Il ${pct} dello stipendio va in imposta sul reddito e contributi.`,
+      enMano: "Netto Le resta",
+      resto: "Dal giorno dopo, quello che guadagna è Suo.",
+    },
+    ranking: {
+      bajada: "A parità di potere d'acquisto, ecco quanto Le resterebbe netto in ogni paese. Ogni riga viene dal calcolatore ufficiale di quel paese.",
+      tuPais: "Il Suo paese",
+      enTuMoneda: "Nella Sua valuta",
+      vsTuPais: "Rispetto al Suo paese",
+      puesto: (p, total) => `Il Suo paese è al ${p}º posto su ${total}.`,
+    },
+    tarjeta: {
+      titulo: "La scheda da condividere",
+      bajada: "Mostra la data e delle percentuali. Mai quanto guadagna.",
+      yVos: "E Lei?",
+      cta: "Calcoli il Suo su",
+      generica: "Fino a che giorno lavora per lo Stato?",
+      genericaBajada: (n) => `Lo stipendio in ${n} paesi, con il calcolatore ufficiale di ciascuno`,
+      copiado: "Link copiato. Lo incolli dove vuole.",
+      error: "Condivisione non riuscita. Riprovi.",
+      texto: (fecha) => `Lavoro per lo Stato fino al ${fecha}. E Lei?`,
+      alt: "Anteprima della scheda",
+    },
+    duelo: {
+      amigo: (fecha) => `Chi Le ha mandato questo lavora per lo Stato fino al ${fecha}.`,
+      yVos: "E Lei?",
+      invitacion: "Inserisca lo stipendio e confronti.",
+      vos: "Lei",
+      elAmigo: "Chi l'ha inviato",
+      antes: (d) => (d === 1 ? "Si libera 1 giorno prima." : `Si libera ${d} giorni prima.`),
+      despues: (d) => (d === 1 ? "Chi l'ha inviato si libera 1 giorno prima." : `Chi l'ha inviato si libera ${d} giorni prima.`),
+      empate: "Vi liberate lo stesso giorno.",
+    },
+    metodo: {
+      estimacion: "È una stima per confrontare paesi, non una busta paga. Detrazioni, figli o bonus possono cambiare il numero.",
+      supuestos: [
+        "Una persona single, senza figli, con i valori predefiniti del calcolatore di ogni paese.",
+        "Il netto è quello che resta dopo l'imposta sul reddito e i contributi a carico della persona. Non include l'IVA né la parte del datore di lavoro.",
+        "La tredicesima o le altre mensilità obbligatorie sono distribuite sull'anno come prevede la legge di ogni paese.",
+        "Negli Stati Uniti non si aggiungono imposte statali né locali: solo quella federale e i contributi.",
+        "Per portare lo stipendio in un altro paese usiamo la parità di potere d'acquisto (PPA): lo stesso tenore di vita, non il cambio del giorno.",
+        "La PPA dell'Argentina è aggiornata con l'indice dei prezzi dell'INDEC, perché la Banca Mondiale la pubblica solo fino al 2021.",
+        "Il giorno di liberazione distribuisce il carico dal 1º gennaio. Se va allo Stato il 30 % dello stipendio, si lavora per lo Stato il 30 % dell'anno.",
+      ],
+    },
+    faq: (n) => [
+      {
+        pregunta: "Che cos'è il giorno di liberazione fiscale?",
+        respuesta:
+          "È il giorno dell'anno in cui finisce di pagare imposte e contributi, se tutto quello che guadagna dal 1º gennaio andasse prima allo Stato. Qui lo calcoliamo con il Suo stipendio, non con la media del paese.",
+      },
+      {
+        pregunta: "Perché confrontare in potere d'acquisto?",
+        respuesta: "Con il cambio, uno stipendio sembra enorme o minimo a seconda del giorno. La PPA confronta quello che quei soldi comprano davvero in ogni paese.",
+      },
+      {
+        pregunta: "Lo stipendio viene salvato?",
+        respuesta: "No. Il calcolo avviene nel browser. Quello che condivide contiene solo date, percentuali e paesi.",
+      },
+      {
+        pregunta: "Perché il netto reale è diverso?",
+        respuesta:
+          "Usiamo una persona single, senza figli e con i valori predefiniti. Detrazioni, bonus o regimi speciali cambiano il numero. Per il Suo caso preciso, apra il calcolatore del Suo paese.",
+      },
+      {
+        pregunta: "Quali paesi sono inclusi?",
+        respuesta: `Oggi ${n} paesi, ognuno con il suo calcolatore dello stipendio netto e i suoi dati ufficiali. Ne aggiungiamo altri man mano che verifichiamo le loro regole.`,
+      },
+    ],
+    destacado: {
+      titulo: "Fino a che giorno lavora per lo Stato?",
+      texto: "Inserisca lo stipendio e guardi quanto Le resterebbe netto in altri paesi.",
+      ir: "Calcoli la data",
+    },
+  },
+};
+
+// ───────────────────────────── nl ─────────────────────────────
+
+const gNl = GRAMATICA.nl;
+const SEO_NL = "Belastingvrijheidsdag en nettosalaris wereldwijd";
+
+const nl: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Je salaris wereldwijd",
+    seo: {
+      titulo: (pais) => [`${SEO_NL} | ${pais}`, SEO_NL, "Je salaris wereldwijd"],
+      tituloGlobal: [SEO_NL, "Je salaris wereldwijd"],
+      descripcion: (pais, n) => `Zie tot welke dag je met je salaris ${gNl.en(pais)} voor de staat werkt, en wat je netto overhoudt in ${n} landen. Gratis, zonder account.`,
+      descripcionGlobal: (n) => `Zie tot welke dag je voor de staat werkt, en wat je van je salaris netto overhoudt in ${n} landen. Gratis, zonder account.`,
+    },
+    ceja: "Je belastingvrijheidsdag",
+    h1: "Tot welke dag van het jaar werk je voor de staat?",
+    bajada: (n) => `Vul je brutosalaris in en zie je datum. Vergelijk het daarna in ${n} landen, met dezelfde koopkracht en de regels van elk land.`,
+    form: {
+      titulo: "Je salaris",
+      sueldo: "Brutosalaris",
+      mes: "Per maand",
+      anio: "Per jaar",
+      periodo: "Periode van het salaris",
+      pais: "Land waar je werkt",
+      ejemplo: "Voorbeeld",
+      ejemploAyuda: "Dit is een voorbeeldsalaris. Vul het jouwe in en alles rekent meteen opnieuw.",
+      propio: "Overgenomen uit je berekening.",
+      invalido: "Vul een bedrag boven nul in.",
+    },
+    heroe: {
+      hasta: (fecha) => `Je werkt voor de staat tot ${fecha}`,
+      tasa: (pct) => `${pct} van je salaris gaat naar inkomstenbelasting en premies.`,
+      dias: (n, total) => `${n} van ${total} dagen`,
+      enMano: "Netto hou je over",
+      porMes: "per maand",
+      anio: (anio, n, total) => `Jaar ${anio}: ${n} van ${total} dagen voor de staat.`,
+      resto: "Vanaf de dag erna is wat je verdient van jou.",
+    },
+    ranking: {
+      titulo: "Hetzelfde salaris, land per land",
+      bajada: "Met dezelfde koopkracht hou je dit netto over in elk land. Elke rij komt uit de officiële rekenhulp van dat land.",
+      lista: "Landen gesorteerd op nettosalaris",
+      buscar: "Zoek een land",
+      filtrar: "Filter op regio",
+      todas: "Alle landen",
+      regiones: { americas: "Amerika", europa: "Europa", asia: "Azië en Oceanië", africa: "Afrika en Midden-Oosten" },
+      tuPais: "Jouw land",
+      mejor: "Levert het meest op",
+      enMano: "Netto per maand",
+      enTuMoneda: "In jouw munt",
+      vsTuPais: "Ten opzichte van jouw land",
+      verTodos: (n) => `Alle ${n} landen bekijken`,
+      verMenos: "Minder tonen",
+      sinResultados: (q) => `Geen land past bij ‘${q}’.`,
+      abrir: (pais) => `Rekenhulp ${gNl.de(pais)} openen`,
+      mas: (pct) => `${pct} meer`,
+      menos: (pct) => `${pct} minder`,
+      igual: "Gelijk",
+      puesto: (p, total) => `Jouw land staat op plaats ${p} van ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Je kaart om te delen",
+      bajada: "Hij toont je datum en percentages. Nooit wat je verdient.",
+      hasta: (fecha) => `Ik werk voor de staat tot ${fecha}`,
+      tasa: (pct) => `${pct} van mijn salaris gaat naar de staat`,
+      mejor: (pais, pct) => `Met mijn salaris hield ik ${gNl.en(pais)} ${pct} meer netto over`,
+      mejorPropio: (pais) => `Met mijn salaris hou ik nergens meer over dan ${gNl.en(pais)}`,
+      yVos: "En jij?",
+      cta: "Bereken de jouwe op",
+      generica: "Tot welke dag werk je voor de staat?",
+      genericaBajada: (n) => `Je salaris in ${n} landen, met de officiële rekenhulp van elk land`,
+      compartir: "Mijn kaart delen",
+      compartirDuelo: "Daag terug uit",
+      descargar: "Afbeelding downloaden",
+      copiado: "Link gekopieerd. Plak hem waar je wilt.",
+      compartido: "Klaar, gedeeld.",
+      error: "Delen lukte niet. Probeer het opnieuw.",
+      texto: (fecha) => `Ik werk voor de staat tot ${fecha}. En jij?`,
+      alt: "Voorbeeld van je kaart",
+    },
+    duelo: {
+      amigo: (fecha) => `Je vriend werkt voor de staat tot ${fecha}.`,
+      yVos: "En jij?",
+      invitacion: "Vul je salaris in en vergelijk.",
+      vos: "Jij",
+      elAmigo: "Je vriend",
+      dia: "Voor de staat tot",
+      tasa: "Belasting en premies",
+      mejorPais: "Levert het meest op in",
+      antes: (d) => (d === 1 ? "Jij bent 1 dag eerder vrij dan je vriend." : `Jij bent ${d} dagen eerder vrij dan je vriend.`),
+      despues: (d) => (d === 1 ? "Je vriend is 1 dag eerder vrij dan jij." : `Je vriend is ${d} dagen eerder vrij dan jij.`),
+      empate: "Jullie zijn op dezelfde dag vrij.",
+      desde: (pais) => `Werkt ${gNl.en(pais)}`,
+    },
+    metodo: {
+      titulo: "Zo rekenen we",
+      estimacion: "Dit is een schatting om landen te vergelijken, geen loonstrook. Aftrekposten, kinderen of bonussen kunnen je getal veranderen.",
+      supuestos: [
+        "Een alleenstaande zonder kinderen, met de standaardwaarden van de rekenhulp van elk land.",
+        "Netto is wat overblijft na inkomstenbelasting en de premies die de persoon zelf betaalt. Btw en het deel van de werkgever tellen niet mee.",
+        "Een dertiende maand of verplicht vakantiegeld wordt over het jaar verdeeld zoals de wet van elk land voorschrijft.",
+        "In de Verenigde Staten tellen we geen staats- of lokale belasting mee: alleen de federale belasting en de premies.",
+        "Om je salaris naar een ander land te brengen gebruiken we koopkrachtpariteit (KKP): dezelfde levensstandaard, niet de wisselkoers van vandaag.",
+        "De KKP van Argentinië wordt bijgewerkt met de prijsindex van het INDEC, omdat de Wereldbank hem maar tot 2021 publiceert.",
+        "De vrijheidsdag verdeelt je last vanaf 1 januari. Gaat 30 % van je salaris naar de staat, dan werk je 30 % van het jaar voor de staat.",
+      ],
+      ppaTitulo: "Koopkrachtpariteit", bancoMundial: "Wereldbank",
+      ppa: (organismo, indicador, anio) => `${organismo}, indicator ${indicador}, laatst beschikbare jaar ${anio}.`,
+      consultado: (fecha) => `Geraadpleegd op ${fecha}.`,
+      verFuente: "Bron bekijken",
+      fuentesTitulo: "De bron van elk land",
+      fuentesBajada: "Elke rij gebruikt de nettosalaris-rekenhulp van dat land, met zijn officiële gegevens.",
+      verificado: (fecha) => `Gegevens gecontroleerd op ${fecha}`,
+      sello: (fecha) => `Officiële gegevens, gecontroleerd bij de bron van elk land. De oudste controle is van ${fecha}.`,
+    },
+    faqTitulo: "Veelgestelde vragen",
+    faq: (n) => [
+      {
+        pregunta: "Wat is belastingvrijheidsdag?",
+        respuesta:
+          "De dag van het jaar waarop je je belasting en premies hebt afbetaald, als alles wat je vanaf 1 januari verdient eerst naar de staat ging. Hier rekenen we met jouw salaris, niet met het landelijke gemiddelde.",
+      },
+      {
+        pregunta: "Waarom vergelijken op koopkracht?",
+        respuesta: "Met de wisselkoers lijkt een salaris, afhankelijk van de dag, enorm of piepklein. KKP vergelijkt wat je met dat geld in elk land echt kunt kopen.",
+      },
+      {
+        pregunta: "Wordt mijn salaris opgeslagen?",
+        respuesta: "Nee. De berekening draait in je browser. Wat je deelt bevat alleen datums, percentages en landen.",
+      },
+      {
+        pregunta: "Waarom wijkt mijn echte netto af?",
+        respuesta:
+          "We rekenen met een alleenstaande zonder kinderen en standaardwaarden. Aftrekposten, bonussen of bijzondere regelingen veranderen het getal. Open voor jouw precieze geval de rekenhulp van je land.",
+      },
+      {
+        pregunta: "Welke landen doen mee?",
+        respuesta: `Vandaag ${n} landen, elk met een eigen nettosalaris-rekenhulp en officiële gegevens. We voegen er meer toe zodra we hun regels hebben gecontroleerd.`,
+      },
+    ],
+    destacado: {
+      ceja: "Wereldwijde vergelijking",
+      titulo: "Tot welke dag werk je voor de staat?",
+      texto: "Vul je salaris in en zie wat je netto overhoudt in andere landen.",
+      ir: "Mijn datum berekenen",
+    },
+  },
+  usted: {
+    nombre: "Uw salaris wereldwijd",
+    seo: {
+      titulo: (pais) => [`${SEO_NL} | ${pais}`, SEO_NL, "Uw salaris wereldwijd"],
+      tituloGlobal: [SEO_NL, "Uw salaris wereldwijd"],
+      descripcion: (pais, n) => `Zie tot welke dag u met uw salaris ${gNl.en(pais)} voor de staat werkt, en wat u netto overhoudt in ${n} landen. Gratis, zonder account.`,
+      descripcionGlobal: (n) => `Zie tot welke dag u voor de staat werkt, en wat u van uw salaris netto overhoudt in ${n} landen. Gratis, zonder account.`,
+    },
+    ceja: "Uw belastingvrijheidsdag",
+    h1: "Tot welke dag van het jaar werkt u voor de staat?",
+    bajada: (n) => `Vul uw brutosalaris in en zie uw datum. Vergelijk het daarna in ${n} landen, met dezelfde koopkracht en de regels van elk land.`,
+    form: {
+      titulo: "Uw salaris",
+      pais: "Land waar u werkt",
+      ejemploAyuda: "Dit is een voorbeeldsalaris. Vul het uwe in en alles rekent meteen opnieuw.",
+      propio: "Overgenomen uit uw berekening.",
+      invalido: "Vul een bedrag boven nul in.",
+    },
+    heroe: {
+      hasta: (fecha) => `U werkt voor de staat tot ${fecha}`,
+      tasa: (pct) => `${pct} van uw salaris gaat naar inkomstenbelasting en premies.`,
+      enMano: "Netto houdt u over",
+      resto: "Vanaf de dag erna is wat u verdient van u.",
+    },
+    ranking: {
+      bajada: "Met dezelfde koopkracht houdt u dit netto over in elk land. Elke rij komt uit de officiële rekenhulp van dat land.",
+      tuPais: "Uw land",
+      enTuMoneda: "In uw munt",
+      vsTuPais: "Ten opzichte van uw land",
+      puesto: (p, total) => `Uw land staat op plaats ${p} van ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Uw kaart om te delen",
+      bajada: "Hij toont uw datum en percentages. Nooit wat u verdient.",
+      yVos: "En u?",
+      cta: "Bereken de uwe op",
+      generica: "Tot welke dag werkt u voor de staat?",
+      genericaBajada: (n) => `Uw salaris in ${n} landen, met de officiële rekenhulp van elk land`,
+      copiado: "Link gekopieerd. Plak hem waar u wilt.",
+      error: "Delen lukte niet. Probeer het opnieuw.",
+      texto: (fecha) => `Ik werk voor de staat tot ${fecha}. En u?`,
+      alt: "Voorbeeld van uw kaart",
+    },
+    duelo: {
+      amigo: (fecha) => `Wie u dit stuurde, werkt voor de staat tot ${fecha}.`,
+      yVos: "En u?",
+      invitacion: "Vul uw salaris in en vergelijk.",
+      vos: "U",
+      elAmigo: "Afzender",
+      antes: (d) => (d === 1 ? "U bent 1 dag eerder vrij." : `U bent ${d} dagen eerder vrij.`),
+      despues: (d) => (d === 1 ? "De afzender is 1 dag eerder vrij." : `De afzender is ${d} dagen eerder vrij.`),
+      empate: "Allebei op dezelfde dag vrij.",
+    },
+    metodo: {
+      estimacion: "Dit is een schatting om landen te vergelijken, geen loonstrook. Aftrekposten, kinderen of bonussen kunnen uw getal veranderen.",
+      supuestos: [
+        "Een alleenstaande zonder kinderen, met de standaardwaarden van de rekenhulp van elk land.",
+        "Netto is wat overblijft na inkomstenbelasting en de premies die de persoon zelf betaalt. Btw en het deel van de werkgever tellen niet mee.",
+        "Een dertiende maand of verplicht vakantiegeld wordt over het jaar verdeeld zoals de wet van elk land voorschrijft.",
+        "In de Verenigde Staten tellen we geen staats- of lokale belasting mee: alleen de federale belasting en de premies.",
+        "Om uw salaris naar een ander land te brengen gebruiken we koopkrachtpariteit (KKP): dezelfde levensstandaard, niet de wisselkoers van vandaag.",
+        "De KKP van Argentinië wordt bijgewerkt met de prijsindex van het INDEC, omdat de Wereldbank hem maar tot 2021 publiceert.",
+        "De vrijheidsdag verdeelt uw last vanaf 1 januari. Gaat 30 % van uw salaris naar de staat, dan werkt u 30 % van het jaar voor de staat.",
+      ],
+    },
+    faq: (n) => [
+      {
+        pregunta: "Wat is belastingvrijheidsdag?",
+        respuesta:
+          "De dag van het jaar waarop u uw belasting en premies hebt afbetaald, als alles wat u vanaf 1 januari verdient eerst naar de staat ging. Hier rekenen we met uw salaris, niet met het landelijke gemiddelde.",
+      },
+      {
+        pregunta: "Waarom vergelijken op koopkracht?",
+        respuesta: "Met de wisselkoers lijkt een salaris, afhankelijk van de dag, enorm of piepklein. KKP vergelijkt wat dat geld in elk land echt kan kopen.",
+      },
+      {
+        pregunta: "Wordt mijn salaris opgeslagen?",
+        respuesta: "Nee. De berekening draait in uw browser. Wat u deelt bevat alleen datums, percentages en landen.",
+      },
+      {
+        pregunta: "Waarom wijkt mijn echte netto af?",
+        respuesta:
+          "We rekenen met een alleenstaande zonder kinderen en standaardwaarden. Aftrekposten, bonussen of bijzondere regelingen veranderen het getal. Open voor uw precieze geval de rekenhulp van uw land.",
+      },
+      {
+        pregunta: "Welke landen doen mee?",
+        respuesta: `Vandaag ${n} landen, elk met een eigen nettosalaris-rekenhulp en officiële gegevens. We voegen er meer toe zodra we hun regels hebben gecontroleerd.`,
+      },
+    ],
+    destacado: {
+      titulo: "Tot welke dag werkt u voor de staat?",
+      texto: "Vul uw salaris in en zie wat u netto overhoudt in andere landen.",
+      ir: "Datum berekenen",
+    },
+  },
+};
+
+// ───────────────────────────── ja ─────────────────────────────
+
+const gJa = GRAMATICA.ja;
+
+const ja: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "世界で見る給与",
+    seo: {
+      titulo: (pais) => [`税金からの解放日と世界の手取り｜${pais}`, "税金からの解放日と世界の手取り比較", "世界で見る給与"],
+      tituloGlobal: ["税金からの解放日と世界の手取り比較", "世界で見る給与"],
+      descripcion: (pais, n) => `${gJa.de(pais)}給与で、何月何日まで税金のために働くのかを計算します。同じ給与なら${n}か国で手取りがいくらになるかも比較できます。無料です。`,
+      descripcionGlobal: (n) => `何月何日まで税金のために働くのかを計算し、同じ給与なら${n}か国で手取りがいくらになるかを比較します。無料で登録も不要です。`,
+    },
+    ceja: "税金からの解放日",
+    h1: "1年のうち何日まで税金のために働いていますか",
+    bajada: (n) => `額面の給与を入力すると日付が出ます。続けて${n}か国で比べられます。購買力をそろえ、各国のルールで計算します。`,
+    form: {
+      titulo: "給与",
+      sueldo: "額面給与",
+      mes: "月額",
+      anio: "年額",
+      periodo: "給与の期間",
+      pais: "働いている国",
+      ejemplo: "例",
+      ejemploAyuda: "これは例の金額です。ご自身の給与を入力すると、すぐに計算し直します。",
+      propio: "計算結果から引き継ぎました。",
+      invalido: "0より大きい金額を入力してください。",
+    },
+    heroe: {
+      hasta: (fecha) => `税金のために働くのは${fecha}までです`,
+      tasa: (pct) => `給与の${pct}が所得税と社会保険料になります。`,
+      dias: (n, total) => `${total}日のうち${n}日`,
+      enMano: "手取り",
+      porMes: "月額",
+      anio: (anio, n, total) => `${anio}年：${total}日のうち${n}日が税金のための労働です。`,
+      resto: "その翌日から、稼いだ分はご自身のものです。",
+    },
+    ranking: {
+      titulo: "同じ給与を国ごとに比較",
+      bajada: "購買力をそろえると、各国での手取りはこうなります。どの行もその国の公式計算ツールの結果です。",
+      lista: "手取りの多い順に並べた国",
+      buscar: "国を検索",
+      filtrar: "地域で絞り込む",
+      todas: "すべて",
+      regiones: { americas: "南北アメリカ", europa: "ヨーロッパ", asia: "アジア・オセアニア", africa: "アフリカ・中東" },
+      tuPais: "ご自身の国",
+      mejor: "手取りが最も多い国",
+      enMano: "月の手取り",
+      enTuMoneda: "自国通貨で",
+      vsTuPais: "自国との差",
+      verTodos: (n) => `${n}か国すべてを見る`,
+      verMenos: "表示を減らす",
+      sinResultados: (q) => `「${q}」に一致する国はありません。`,
+      abrir: (pais) => `${gJa.de(pais)}計算ツールを開く`,
+      mas: (pct) => `${pct}多い`,
+      menos: (pct) => `${pct}少ない`,
+      igual: "同じ",
+      puesto: (p, total) => `ご自身の国は${total}か国中${p}位です。`,
+    },
+    tarjeta: {
+      titulo: "シェア用カード",
+      bajada: "表示するのは日付と割合だけです。給与額は出ません。",
+      hasta: (fecha) => `税金のために働くのは${fecha}まで`,
+      tasa: (pct) => `給与の${pct}が税金と社会保険料`,
+      mejor: (pais, pct) => `同じ給与なら、${gJa.en(pais)}手取りが${pct}増えます`,
+      mejorPropio: (pais) => `同じ給与で、${pais}より手取りが多い国はありません`,
+      yVos: "ご自身は何日まで？",
+      cta: "計算はこちら",
+      generica: "何日まで税金のために働いていますか",
+      genericaBajada: (n) => `${n}か国の公式計算ツールで、同じ給与を比較`,
+      compartir: "カードをシェア",
+      compartirDuelo: "こちらも送り返す",
+      descargar: "画像を保存",
+      copiado: "リンクをコピーしました。好きな場所に貼り付けてください。",
+      compartido: "シェアしました。",
+      error: "シェアできませんでした。もう一度お試しください。",
+      texto: (fecha) => `税金のために働くのは${fecha}までです。何日まで働いているか計算してみませんか`,
+      alt: "カードのプレビュー",
+    },
+    duelo: {
+      amigo: (fecha) => `送り主は${fecha}まで税金のために働いています。`,
+      yVos: "ご自身はいつまででしょうか",
+      invitacion: "給与を入力して比べてみましょう。",
+      vos: "ご自身",
+      elAmigo: "送り主",
+      dia: "税金のために働く期間",
+      tasa: "税金と社会保険料",
+      mejorPais: "手取りが最も多い国",
+      antes: (d) => `送り主より${d}日早く解放されます。`,
+      despues: (d) => `送り主のほうが${d}日早く解放されます。`,
+      empate: "解放される日は同じです。",
+      desde: (pais) => `${gJa.en(pais)}勤務`,
+    },
+    metodo: {
+      titulo: "計算方法",
+      estimacion: "国どうしを比べるための目安で、給与明細ではありません。控除、扶養家族、賞与などで数字は変わります。",
+      supuestos: [
+        "独身で子どもなし、各国の計算ツールの初期値を使います。",
+        "手取りは、所得税と本人負担の社会保険料を引いた残りです。消費税や会社負担分は含みません。",
+        "賞与や13か月目の給与は、各国の法律どおりに1年に割り振ります。",
+        "アメリカは州税と地方税を加えず、連邦税と社会保険料だけで計算します。",
+        "給与を他国に置き換えるときは購買力平価を使います。その日の為替レートではなく、同じ生活水準で比べます。",
+        "アルゼンチンの購買力平価は、世界銀行の公表が2021年までのため、INDECの消費者物価指数で延長しています。",
+        "解放日は、負担を1月1日から順に割り当てて求めます。給与の30%が税金なら、1年の30%を税金のために働く計算です。",
+      ],
+      ppaTitulo: "購買力平価", bancoMundial: "世界銀行",
+      ppa: (organismo, indicador, anio) => `${organismo}、指標 ${indicador}、最新年 ${anio}年。`,
+      consultado: (fecha) => `${fecha}に確認しました。`,
+      verFuente: "出典を見る",
+      fuentesTitulo: "各国の出典",
+      fuentesBajada: "どの行も、その国の手取り計算ツールと公式データを使っています。",
+      verificado: (fecha) => `${fecha}にデータを確認`,
+      sello: (fecha) => `各国の公式データを出典で確認しています。最も古い確認日は${fecha}です。`,
+    },
+    faqTitulo: "よくある質問",
+    faq: (n) => [
+      {
+        pregunta: "税金からの解放日とは何ですか",
+        respuesta: "1月1日から稼いだ分をすべて先に税金に回したとして、税金と社会保険料を払い終える日です。ここでは国の平均ではなく、入力した給与で計算します。",
+      },
+      {
+        pregunta: "なぜ購買力で比べるのですか",
+        respuesta: "為替レートで換算すると、日によって給与が大きくも小さくも見えます。購買力平価なら、そのお金で各国で実際に何が買えるかを比べられます。",
+      },
+      {
+        pregunta: "給与は保存されますか",
+        respuesta: "いいえ。計算はブラウザの中で行います。シェアする内容は日付、割合、国だけです。",
+      },
+      {
+        pregunta: "実際の手取りと違うのはなぜですか",
+        respuesta: "独身で子どもなし、初期値で計算しているためです。控除、賞与、特別な制度で数字は変わります。正確に知りたい場合は、ご自身の国の計算ツールを開いてください。",
+      },
+      {
+        pregunta: "どの国が対象ですか",
+        respuesta: `現在は${n}か国で、どの国にも手取り計算ツールと公式データがあります。ルールを確認できた国から順に追加しています。`,
+      },
+    ],
+    destacado: {
+      ceja: "世界比較",
+      titulo: "何日まで税金のために働いていますか",
+      texto: "給与を入力すると、他の国での手取りもわかります。",
+      ir: "日付を計算する",
+    },
+  },
+};
+
+// ───────────────────────────── ko ─────────────────────────────
+
+const gKo = GRAMATICA.ko;
+
+const ko: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "세계 속 내 연봉",
+    seo: {
+      titulo: (pais) => [`세금 해방의 날과 세계 실수령액 비교 | ${pais}`, "세금 해방의 날과 세계 실수령액 비교", "세계 속 내 연봉"],
+      tituloGlobal: ["세금 해방의 날과 세계 실수령액 비교", "세계 속 내 연봉"],
+      descripcion: (pais, n) => `${gKo.de(pais)} 급여로 며칠까지 세금을 위해 일하는지 계산해요. 같은 급여의 실수령액도 ${n}개국에서 비교할 수 있어요. 무료예요.`,
+      descripcionGlobal: (n) => `며칠까지 세금을 위해 일하는지 계산하고, 같은 급여의 실수령액을 ${n}개국에서 비교해요. 무료이고 가입도 필요 없어요.`,
+    },
+    ceja: "세금 해방의 날",
+    h1: "1년 중 며칠까지 세금을 위해 일할까요?",
+    bajada: (n) => `세전 급여를 입력하면 날짜가 나와요. 이어서 ${n}개국과 비교해 보세요. 구매력을 맞추고 각 나라의 규칙으로 계산해요.`,
+    form: {
+      titulo: "급여",
+      sueldo: "세전 급여",
+      mes: "월급",
+      anio: "연봉",
+      periodo: "급여 기준",
+      pais: "일하는 나라",
+      ejemplo: "예시",
+      ejemploAyuda: "예시 금액이에요. 실제 급여를 입력하면 바로 다시 계산해요.",
+      propio: "앞선 계산에서 가져왔어요.",
+      invalido: "0보다 큰 금액을 입력해 주세요.",
+    },
+    heroe: {
+      hasta: (fecha) => `세금을 위해 일하는 날: ${fecha}까지`,
+      tasa: (pct) => `급여의 ${pct}가 소득세와 사회보험료로 나가요.`,
+      dias: (n, total) => `${total}일 중 ${n}일`,
+      enMano: "실수령액",
+      porMes: "월 기준",
+      anio: (anio, n, total) => `${anio}년: ${total}일 중 ${n}일은 세금을 위한 날이에요.`,
+      resto: "그다음 날부터 버는 돈은 온전히 내 몫이에요.",
+    },
+    ranking: {
+      titulo: "같은 급여, 나라별 비교",
+      bajada: "구매력을 맞추면 나라마다 실수령액이 이렇게 달라요. 모든 행은 그 나라의 공식 계산기에서 나왔어요.",
+      lista: "실수령액 순으로 정렬한 나라",
+      buscar: "나라 검색",
+      filtrar: "지역으로 거르기",
+      todas: "전체",
+      regiones: { americas: "아메리카", europa: "유럽", asia: "아시아·오세아니아", africa: "아프리카·중동" },
+      tuPais: "내 나라",
+      mejor: "실수령액 1위",
+      enMano: "월 실수령액",
+      enTuMoneda: "내 통화로",
+      vsTuPais: "내 나라 대비",
+      verTodos: (n) => `${n}개국 모두 보기`,
+      verMenos: "접기",
+      sinResultados: (q) => `‘${q}’에 맞는 나라가 없어요.`,
+      abrir: (pais) => `${gKo.de(pais)} 계산기 열기`,
+      mas: (pct) => `${pct} 많음`,
+      menos: (pct) => `${pct} 적음`,
+      igual: "같음",
+      puesto: (p, total) => `내 나라 순위: ${total}개국 중 ${p}위예요.`,
+    },
+    tarjeta: {
+      titulo: "공유용 카드",
+      bajada: "날짜와 비율만 보여요. 급여 금액은 나오지 않아요.",
+      hasta: (fecha) => `세금을 위해 일하는 날: ${fecha}까지`,
+      tasa: (pct) => `급여의 ${pct}가 세금과 보험료`,
+      mejor: (pais, pct) => `같은 급여면 ${gKo.en(pais)} 실수령액이 ${pct} 더 많아요`,
+      mejorPropio: (pais) => `같은 급여로는 ${pais}보다 실수령액이 많은 나라가 없어요`,
+      yVos: "내 날짜도 확인해 보세요",
+      cta: "계산하기:",
+      generica: "며칠까지 세금을 위해 일할까요?",
+      genericaBajada: (n) => `${n}개국 공식 계산기로 같은 급여를 비교해요`,
+      compartir: "카드 공유하기",
+      compartirDuelo: "나도 보내기",
+      descargar: "이미지 저장",
+      copiado: "링크를 복사했어요. 원하는 곳에 붙여 넣으세요.",
+      compartido: "공유했어요.",
+      error: "공유하지 못했어요. 다시 시도해 주세요.",
+      texto: (fecha) => `세금을 위해 일하는 날: ${fecha}까지. 내 날짜도 확인해 보세요`,
+      alt: "카드 미리 보기",
+    },
+    duelo: {
+      amigo: (fecha) => `보낸 사람의 세금 해방일: ${fecha}`,
+      yVos: "내 날짜는 언제일까요?",
+      invitacion: "급여를 입력하고 비교해 보세요.",
+      vos: "나",
+      elAmigo: "보낸 사람",
+      dia: "세금을 위해 일하는 날",
+      tasa: "세금과 보험료",
+      mejorPais: "실수령액 1위 나라",
+      antes: (d) => `보낸 사람보다 ${d}일 먼저 해방돼요.`,
+      despues: (d) => `보낸 사람이 ${d}일 먼저 해방돼요.`,
+      empate: "해방되는 날이 같아요.",
+      desde: (pais) => `근무지: ${pais}`,
+    },
+    metodo: {
+      titulo: "계산 방법",
+      estimacion: "나라를 비교하기 위한 추정치이고 급여명세서가 아니에요. 공제, 부양가족, 상여금에 따라 숫자가 달라져요.",
+      supuestos: [
+        "미혼에 자녀가 없고, 각 나라 계산기의 기본값을 써요.",
+        "실수령액은 소득세와 본인이 내는 사회보험료를 뺀 금액이에요. 부가가치세와 회사 부담분은 넣지 않아요.",
+        "상여금이나 13월급은 각 나라의 법에 따라 1년에 나눠 반영해요.",
+        "미국은 주세와 지방세를 넣지 않고 연방세와 사회보험료만 계산해요.",
+        "급여를 다른 나라로 옮길 때는 구매력평가를 써요. 그날의 환율이 아니라 같은 생활 수준으로 비교해요.",
+        "아르헨티나의 구매력평가는 세계은행 자료가 2021년까지라서 INDEC 소비자물가지수로 연장해요.",
+        "해방일은 부담을 1월 1일부터 차례로 채워서 구해요. 급여의 30%가 세금이면 1년의 30%를 세금을 위해 일하는 셈이에요.",
+      ],
+      ppaTitulo: "구매력평가", bancoMundial: "세계은행",
+      ppa: (organismo, indicador, anio) => `${organismo}, 지표 ${indicador}, 최신 연도 ${anio}년.`,
+      consultado: (fecha) => `확인일: ${fecha}`,
+      verFuente: "출처 보기",
+      fuentesTitulo: "나라별 출처",
+      fuentesBajada: "모든 행은 그 나라의 실수령액 계산기와 공식 데이터를 써요.",
+      verificado: (fecha) => `데이터 확인일: ${fecha}`,
+      sello: (fecha) => `각 나라의 공식 데이터를 출처에서 확인해요. 가장 오래된 확인일은 ${fecha}예요.`,
+    },
+    faqTitulo: "자주 묻는 질문",
+    faq: (n) => [
+      {
+        pregunta: "세금 해방의 날이 뭔가요?",
+        respuesta: "1월 1일부터 번 돈을 모두 먼저 세금에 낸다고 할 때, 세금과 사회보험료를 다 내는 날이에요. 여기서는 나라 평균이 아니라 입력한 급여로 계산해요.",
+      },
+      {
+        pregunta: "왜 구매력으로 비교하나요?",
+        respuesta: "환율로 바꾸면 날에 따라 급여가 크게도 작게도 보여요. 구매력평가는 그 돈으로 각 나라에서 실제로 살 수 있는 것을 비교해요.",
+      },
+      {
+        pregunta: "내 급여가 저장되나요?",
+        respuesta: "아니요. 계산은 브라우저 안에서만 해요. 공유하는 내용에는 날짜, 비율, 나라만 들어가요.",
+      },
+      {
+        pregunta: "실제 실수령액과 왜 다른가요?",
+        respuesta: "미혼, 무자녀, 기본값으로 계산하기 때문이에요. 공제, 상여금, 특별 제도에 따라 숫자가 바뀌어요. 정확한 금액은 내 나라 계산기에서 확인해 보세요.",
+      },
+      {
+        pregunta: "어떤 나라가 들어 있나요?",
+        respuesta: `지금은 ${n}개국이고, 나라마다 실수령액 계산기와 공식 데이터가 있어요. 규칙을 확인한 나라부터 계속 추가해요.`,
+      },
+    ],
+    destacado: {
+      ceja: "세계 비교",
+      titulo: "며칠까지 세금을 위해 일할까요?",
+      texto: "급여를 입력하면 다른 나라의 실수령액도 볼 수 있어요.",
+      ir: "내 날짜 계산하기",
+    },
+  },
+};
+
+// ───────────────────────────── zh ─────────────────────────────
+
+const gZh = GRAMATICA.zh;
+
+const zhHant: TextosMundo = {
+  nombre: "您的薪資在世界各地",
+  seo: {
+    titulo: (pais) => [`稅務自由日與全球實領薪資比較｜${pais}`, "稅務自由日與全球實領薪資比較", "您的薪資在世界各地"],
+    tituloGlobal: ["稅務自由日與全球實領薪資比較", "您的薪資在世界各地"],
+    descripcion: (pais, n) => `用您在${pais}的薪資，算出一年要為稅工作到哪一天，並比較同樣的薪資在 ${n} 個國家實領多少。免費使用。`,
+    descripcionGlobal: (n) => `算出一年要為稅工作到哪一天，並比較同樣的薪資在 ${n} 個國家實領多少。免費使用，不必註冊。`,
+  },
+  ceja: "稅務自由日",
+  h1: "您一年要為稅工作到哪一天？",
+  bajada: (n) => `輸入稅前薪資，就能看到您的日期。接著在 ${n} 個國家比較：購買力相同，並依各國規則計算。`,
+  form: {
+    titulo: "您的薪資",
+    sueldo: "稅前薪資",
+    mes: "月薪",
+    anio: "年薪",
+    periodo: "薪資期間",
+    pais: "您工作的國家",
+    ejemplo: "範例",
+    ejemploAyuda: "這是範例金額。輸入您的薪資，結果會立刻重新計算。",
+    propio: "已帶入您先前的計算。",
+    invalido: "請輸入大於零的金額。",
+  },
+  heroe: {
+    hasta: (fecha) => `您為稅工作到${fecha}`,
+    tasa: (pct) => `薪資的 ${pct} 用於所得稅和社會保險費。`,
+    dias: (n, total) => `${total} 天中的 ${n} 天`,
+    enMano: "實領",
+    porMes: "每月",
+    anio: (anio, n, total) => `${anio}年：${total} 天中有 ${n} 天是為稅工作。`,
+    resto: "從隔天起，您賺的錢都屬於您。",
+  },
+  ranking: {
+    titulo: "同樣的薪資，逐國比較",
+    bajada: "在購買力相同的情況下，這是您在各國的實領金額。每一列都來自該國的官方計算工具。",
+    lista: "依實領金額排序的國家",
+    buscar: "搜尋國家",
+    filtrar: "依地區篩選",
+    todas: "全部",
+    regiones: { americas: "美洲", europa: "歐洲", asia: "亞洲與大洋洲", africa: "非洲與中東" },
+    tuPais: "您的國家",
+    mejor: "實領最多",
+    enMano: "每月實領",
+    enTuMoneda: "換成您的貨幣",
+    vsTuPais: "與您的國家相比",
+    verTodos: (n) => `查看全部 ${n} 個國家`,
+    verMenos: "收合",
+    sinResultados: (q) => `找不到符合「${q}」的國家。`,
+    abrir: (pais) => `開啟${pais}的計算工具`,
+    mas: (pct) => `多 ${pct}`,
+    menos: (pct) => `少 ${pct}`,
+    igual: "相同",
+    puesto: (p, total) => `您的國家在 ${total} 國中排第 ${p} 名。`,
+  },
+  tarjeta: {
+    titulo: "分享用卡片",
+    bajada: "只顯示日期和比例，絕不顯示您賺多少。",
+    hasta: (fecha) => `我為稅工作到${fecha}`,
+    tasa: (pct) => `我的薪資有 ${pct} 繳稅`,
+    mejor: (pais, pct) => `同樣的薪資，${gZh.en(pais)}能多領 ${pct}`,
+    mejorPropio: (pais) => `同樣的薪資，沒有國家比${pais}實領更多`,
+    yVos: "您呢？",
+    cta: "計算您的日期：",
+    generica: "您要為稅工作到哪一天？",
+    genericaBajada: (n) => `用 ${n} 個國家的官方計算工具比較同樣的薪資`,
+    compartir: "分享我的卡片",
+    compartirDuelo: "回敬挑戰",
+    descargar: "下載圖片",
+    copiado: "連結已複製，貼到任何地方都可以。",
+    compartido: "已分享。",
+    error: "無法分享，請再試一次。",
+    texto: (fecha) => `我為稅工作到${fecha}。您呢？`,
+    alt: "卡片預覽",
+  },
+  duelo: {
+    amigo: (fecha) => `傳給您的人為稅工作到${fecha}。`,
+    yVos: "您呢？",
+    invitacion: "輸入薪資來比較。",
+    vos: "您",
+    elAmigo: "傳送者",
+    dia: "為稅工作到",
+    tasa: "稅與社會保險費",
+    mejorPais: "實領最多的國家",
+    antes: (d) => `您比對方早 ${d} 天解放。`,
+    despues: (d) => `對方比您早 ${d} 天解放。`,
+    empate: "兩位在同一天解放。",
+    desde: (pais) => `${gZh.en(pais)}工作`,
+  },
+  metodo: {
+    titulo: "計算方式",
+    estimacion: "這是用來比較國家的估算，不是薪資單。扣除額、子女或獎金都可能改變您的數字。",
+    supuestos: [
+      "單身、沒有子女，採用各國計算工具的預設值。",
+      "實領是扣掉所得稅和個人負擔的社會保險費後剩下的金額，不含營業稅，也不含雇主負擔的部分。",
+      "年終獎金或第十三個月薪資，依各國法律分攤到全年。",
+      "美國不計州稅和地方稅，只計聯邦稅和社會保險費。",
+      "把薪資換到別的國家時，我們使用購買力平價：比較相同的生活水準，而不是當天的匯率。",
+      "世界銀行只公布到 2021 年的阿根廷購買力平價，因此我們用 INDEC 的消費者物價指數推估到今年。",
+      "自由日是把負擔從 1 月 1 日起依序分配。若薪資的 30% 用於繳稅，就等於一年有 30% 的時間為稅工作。",
+    ],
+    ppaTitulo: "購買力平價", bancoMundial: "世界銀行",
+    ppa: (organismo, indicador, anio) => `${organismo}，指標 ${indicador}，最新年度 ${anio} 年。`,
+    consultado: (fecha) => `查詢日期：${fecha}`,
+    verFuente: "查看來源",
+    fuentesTitulo: "各國來源",
+    fuentesBajada: "每一列都使用該國的實領薪資計算工具和官方數據。",
+    verificado: (fecha) => `數據查證日期：${fecha}`,
+    sello: (fecha) => `各國官方數據都在來源處查證。最早的一次查證是 ${fecha}。`,
+  },
+  faqTitulo: "常見問題",
+  faq: (n) => [
+    {
+      pregunta: "什麼是稅務自由日？",
+      respuesta: "假設從 1 月 1 日起賺的錢都先拿去繳稅，繳完稅和社會保險費的那一天就是稅務自由日。這裡用您輸入的薪資計算，不是用全國平均。",
+    },
+    {
+      pregunta: "為什麼用購買力比較？",
+      respuesta: "用匯率換算，同一份薪資會因日子不同而顯得很多或很少。購買力平價比較的是這筆錢在各國實際能買到什麼。",
+    },
+    {
+      pregunta: "我的薪資會被儲存嗎？",
+      respuesta: "不會。計算只在您的瀏覽器中進行。分享的內容只有日期、比例和國家。",
+    },
+    {
+      pregunta: "為什麼和我實際的實領不同？",
+      respuesta: "我們以單身、沒有子女、預設值計算。扣除額、獎金或特別制度都會改變數字。想知道確切金額，請開啟您所在國家的計算工具。",
+    },
+    {
+      pregunta: "包含哪些國家？",
+      respuesta: `目前有 ${n} 個國家，每個國家都有實領薪資計算工具和官方數據。我們查證完規則後會陸續增加。`,
+    },
+  ],
+  destacado: {
+    ceja: "全球比較",
+    titulo: "您要為稅工作到哪一天？",
+    texto: "輸入薪資，就能看到在其他國家的實領金額。",
+    ir: "計算我的日期",
+  },
+};
+
+// 简体中文：逐句手写，用大陆的说法（工资、税后到手、数据）。
+const zhHans: TextosMundo = {
+  nombre: "您的工资在世界各地",
+  seo: {
+    titulo: (pais) => [`税务自由日与全球税后工资对比｜${pais}`, "税务自由日与全球税后工资对比", "您的工资在世界各地"],
+    tituloGlobal: ["税务自由日与全球税后工资对比", "您的工资在世界各地"],
+    descripcion: (pais, n) => `用您在${pais}的工资，算出一年要为税工作到哪一天，并对比同样的工资在 ${n} 个国家到手多少。免费使用。`,
+    descripcionGlobal: (n) => `算出一年要为税工作到哪一天，并对比同样的工资在 ${n} 个国家到手多少。免费使用，无需注册。`,
+  },
+  ceja: "税务自由日",
+  h1: "您一年要为税工作到哪一天？",
+  bajada: (n) => `输入税前工资，就能看到您的日期。接着在 ${n} 个国家对比：购买力相同，并按各国规则计算。`,
+  form: {
+    titulo: "您的工资",
+    sueldo: "税前工资",
+    mes: "月薪",
+    anio: "年薪",
+    periodo: "工资周期",
+    pais: "您工作的国家",
+    ejemplo: "示例",
+    ejemploAyuda: "这是示例金额。输入您的工资，结果会立即重新计算。",
+    propio: "已带入您之前的计算。",
+    invalido: "请输入大于零的金额。",
+  },
+  heroe: {
+    hasta: (fecha) => `您为税工作到${fecha}`,
+    tasa: (pct) => `工资的 ${pct} 用于个人所得税和社保。`,
+    dias: (n, total) => `${total} 天中的 ${n} 天`,
+    enMano: "到手",
+    porMes: "每月",
+    anio: (anio, n, total) => `${anio}年：${total} 天中有 ${n} 天是为税工作。`,
+    resto: "从第二天起，您挣的钱都归您。",
+  },
+  ranking: {
+    titulo: "同样的工资，逐国对比",
+    bajada: "在购买力相同的情况下，这是您在各国的到手金额。每一行都来自该国的官方计算工具。",
+    lista: "按到手金额排序的国家",
+    buscar: "搜索国家",
+    filtrar: "按地区筛选",
+    todas: "全部",
+    regiones: { americas: "美洲", europa: "欧洲", asia: "亚洲和大洋洲", africa: "非洲和中东" },
+    tuPais: "您的国家",
+    mejor: "到手最多",
+    enMano: "每月到手",
+    enTuMoneda: "换成您的货币",
+    vsTuPais: "与您的国家相比",
+    verTodos: (n) => `查看全部 ${n} 个国家`,
+    verMenos: "收起",
+    sinResultados: (q) => `没有符合“${q}”的国家。`,
+    abrir: (pais) => `打开${pais}的计算工具`,
+    mas: (pct) => `多 ${pct}`,
+    menos: (pct) => `少 ${pct}`,
+    igual: "相同",
+    puesto: (p, total) => `您的国家在 ${total} 国中排第 ${p} 名。`,
+  },
+  tarjeta: {
+    titulo: "分享卡片",
+    bajada: "只显示日期和比例，绝不显示您挣多少。",
+    hasta: (fecha) => `我为税工作到${fecha}`,
+    tasa: (pct) => `我的工资有 ${pct} 用来缴税`,
+    mejor: (pais, pct) => `同样的工资，${gZh.en(pais)}能多到手 ${pct}`,
+    mejorPropio: (pais) => `同样的工资，没有国家比${pais}到手更多`,
+    yVos: "您呢？",
+    cta: "计算您的日期：",
+    generica: "您要为税工作到哪一天？",
+    genericaBajada: (n) => `用 ${n} 个国家的官方计算工具对比同样的工资`,
+    compartir: "分享我的卡片",
+    compartirDuelo: "回敬挑战",
+    descargar: "下载图片",
+    copiado: "链接已复制，可以粘贴到任何地方。",
+    compartido: "已分享。",
+    error: "分享失败，请再试一次。",
+    texto: (fecha) => `我为税工作到${fecha}。您呢？`,
+    alt: "卡片预览",
+  },
+  duelo: {
+    amigo: (fecha) => `发给您的人为税工作到${fecha}。`,
+    yVos: "您呢？",
+    invitacion: "输入工资来对比。",
+    vos: "您",
+    elAmigo: "发送者",
+    dia: "为税工作到",
+    tasa: "税和社保",
+    mejorPais: "到手最多的国家",
+    antes: (d) => `您比对方早 ${d} 天解放。`,
+    despues: (d) => `对方比您早 ${d} 天解放。`,
+    empate: "两位在同一天解放。",
+    desde: (pais) => `${gZh.en(pais)}工作`,
+  },
+  metodo: {
+    titulo: "计算方法",
+    estimacion: "这是用来对比国家的估算，不是工资条。扣除项、子女或奖金都可能改变您的数字。",
+    supuestos: [
+      "单身、没有子女，采用各国计算工具的默认值。",
+      "到手是扣除个人所得税和个人缴纳的社保后剩下的金额，不含增值税，也不含单位缴纳的部分。",
+      "年终奖或第十三个月工资，按各国法律分摊到全年。",
+      "美国不计州税和地方税，只计联邦税和社保。",
+      "把工资换到别的国家时，我们使用购买力平价：对比相同的生活水平，而不是当天的汇率。",
+      "世界银行只公布到 2021 年的阿根廷购买力平价，因此我们用 INDEC 的居民消费价格指数推算到今年。",
+      "自由日是把负担从 1 月 1 日起依次分配。如果工资的 30% 用来缴税，就相当于一年有 30% 的时间为税工作。",
+    ],
+    ppaTitulo: "购买力平价", bancoMundial: "世界银行",
+    ppa: (organismo, indicador, anio) => `${organismo}，指标 ${indicador}，最新年度 ${anio} 年。`,
+    consultado: (fecha) => `查询日期：${fecha}`,
+    verFuente: "查看来源",
+    fuentesTitulo: "各国来源",
+    fuentesBajada: "每一行都使用该国的税后工资计算工具和官方数据。",
+    verificado: (fecha) => `数据核实日期：${fecha}`,
+    sello: (fecha) => `各国官方数据都在来源处核实。最早的一次核实是 ${fecha}。`,
+  },
+  faqTitulo: "常见问题",
+  faq: (n) => [
+    {
+      pregunta: "什么是税务自由日？",
+      respuesta: "假设从 1 月 1 日起挣的钱都先拿去缴税，缴完税和社保的那一天就是税务自由日。这里用您输入的工资计算，不是用全国平均。",
+    },
+    {
+      pregunta: "为什么用购买力对比？",
+      respuesta: "用汇率换算，同一份工资会因日子不同而显得很多或很少。购买力平价对比的是这笔钱在各国实际能买到什么。",
+    },
+    {
+      pregunta: "我的工资会被保存吗？",
+      respuesta: "不会。计算只在您的浏览器中进行。分享的内容只有日期、比例和国家。",
+    },
+    {
+      pregunta: "为什么和我实际到手不同？",
+      respuesta: "我们按单身、没有子女、默认值计算。扣除项、奖金或特殊政策都会改变数字。想知道确切金额，请打开您所在国家的计算工具。",
+    },
+    {
+      pregunta: "包含哪些国家？",
+      respuesta: `目前有 ${n} 个国家，每个国家都有税后工资计算工具和官方数据。我们核实完规则后会陆续增加。`,
+    },
+  ],
+  destacado: {
+    ceja: "全球对比",
+    titulo: "您要为税工作到哪一天？",
+    texto: "输入工资，就能看到在其他国家的到手金额。",
+    ir: "计算我的日期",
+  },
+};
+
+const zh: Diccionario<TextosMundo> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+
+export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
+  return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);
+}

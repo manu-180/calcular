@@ -13,6 +13,7 @@ import { nombresUnidad } from "../src/motor/i18n/unidades";
 import { DICCIONARIOS_MOTOR } from "../src/motor/textos";
 import { IDIOMAS, type Idioma, type Trato } from "../src/motor/tipos";
 import { DICCIONARIOS_INICIO } from "../src/motor/ui/textos-inicio";
+import { DICCIONARIOS_MUNDO } from "../src/motor/i18n/mundo";
 import { anchoVisual } from "../src/motor/ancho";
 import { problemasDeTexto } from "./reglas_idioma";
 
@@ -22,6 +23,8 @@ const MUESTRA = "7";
 // Textos que pueden coincidir con el español porque son la misma palabra en ese idioma, una sigla o
 // una marca. Clave: "idioma:diccionario.ruta" (ruta sin el trato); "*:" vale para todos los idiomas.
 const IGUALES_PERMITIDOS = new Set([
+  "*:mundo.ranking.regiones.europa",
+  "pt:mundo.metodo.bancoMundial",
   "*:sitio.marca.nombre",
   "*:sitio.footer.sitio",
   "*:sitio.footer.derechos",
@@ -92,6 +95,7 @@ const FUENTES: readonly Fuente[] = [
   desde("calculadora", DICCIONARIOS_CALCULADORA),
   desde("motor", DICCIONARIOS_MOTOR),
   desde("inicio", DICCIONARIOS_INICIO),
+  desde("mundo", DICCIONARIOS_MUNDO),
   { nombre: "legales", resolver: (i, t, l) => resolverLegales(i, t, { actualizado: "13/10/2026", mail: "correo@calcularya.test" }, l) },
   { nombre: "unidades", resolver: (i, _t, l) => nombresUnidad(i, l ?? i) },
 ];
