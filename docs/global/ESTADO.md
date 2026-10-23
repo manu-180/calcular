@@ -3,6 +3,24 @@
 Plan y decisiones: `docs/adr/0002-mundo.md`. Receta de universales: `docs/global/RECETA-UNIVERSAL.md`.
 Rama de integración: `claude/global-calculators-multipa-s-dfbec3` (incluye el PR #30 de auditoría).
 
+## PLAN DE PAÍSES (Manuel, 23/10/2026): hay que hacerlos todos
+
+`docs/global/plan-paises/2026-10-23-tope-paises-calcular.md` (y el `.csv` con los portales probados
+por país) es el plan vigente. Manda sobre `docs/global/PAISES.md`.
+- Nivel A, 87 países: primero, en el orden de «Orden sugerido para los A pendientes» (por usuarios
+  de internet).
+- Nivel B, 58 países: después. Lo que no tenga fuente legible queda en borrador.
+- Nivel C, 50 países: no se hacen salvo que Manuel diga lo contrario. Liechtenstein se hizo igual:
+  ahv.li y gesetze.li fueron legibles.
+
+Barra para cada país: entre 40 y 60 calculadoras, cada una con oferta de venta, en su idioma
+(textos nativos, no traducidos) y con SEO propio por página con las búsquedas reales del país.
+
+Al 23/10 están publicados o en camino a main: ar (calcular.ar) y en calcularya cl co mx pe uy ec cr
+gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be in hk ng my ph ma
+lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
+desde `PAISES` en `src/paises/index.ts`.
+
 ## 19/10/2026 · CÓMO RETOMAR (leer primero)
 
 Manuel pidió cerrar los países empezados sin sumar nuevos, publicar y dejar esto listo para seguir
