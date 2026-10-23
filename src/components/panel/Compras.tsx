@@ -1,7 +1,7 @@
 "use client";
 
 import type { Compra, PanelDatos, Rango } from "@/lib/panel/tipos";
-import { PERIODO, fechaYHora, importe } from "@/lib/panel/formato";
+import { periodo, fechaYHora, importe } from "@/lib/panel/formato";
 import { useAhora } from "./hooks";
 import { tituloDePagina, tituloDeProducto } from "./meta";
 import { Bandeja, Chip, Seccion, TARJETA, Vacio } from "./ui";
@@ -58,7 +58,7 @@ export function Compras({ datos, rango }: { datos: PanelDatos; rango: Rango }) {
       titulo="Últimas compras"
       bajada={
         aprobadas.length
-          ? `${aprobadas.length === 1 ? "1 compra" : `${aprobadas.length} compras`} por ${total} ${PERIODO[rango]}.`
+          ? `${aprobadas.length === 1 ? "1 compra" : `${aprobadas.length} compras`} por ${total} ${periodo(rango)}.`
           : undefined
       }
     >
@@ -67,7 +67,7 @@ export function Compras({ datos, rango }: { datos: PanelDatos; rango: Rango }) {
           {datos.compras.length ? (
             <ListaCompras datos={datos} compras={datos.compras.slice(0, 8)} />
           ) : (
-            <Vacio>No hubo compras {PERIODO[rango]}. Cuando alguien pague, aparece acá.</Vacio>
+            <Vacio>No hubo compras {periodo(rango)}. Cuando alguien pague, aparece acá.</Vacio>
           )}
         </div>
       </Bandeja>
