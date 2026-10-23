@@ -4,7 +4,7 @@ export const mercado: MercadoEdicion = {
   codigo: "zz-ja",
   pais: "ZZ",
   nombre: "ゼータランド",
-  locale: "ja-JP",
+  locale: "ja-001",
   idioma: "ja",
   trato: "usted",
   estado: "interno",

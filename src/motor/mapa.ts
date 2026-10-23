@@ -5,6 +5,7 @@ import { hreflangDe, hreflangVaAlSitemap, origenPublicoIntl, urlIntl, type Idiom
 import { intlActivo, modoPublicacion } from "./sitio";
 import type { CodigoMercado, EntradaCalculadora, FechaISO, Mercado } from "./tipos";
 import { hoyEn } from "./vigencia";
+import { hreflangMundo, urlMundo } from "./mundo/ui/seo";
 
 const masNueva = (fechas: readonly (FechaISO | undefined)[], tope: FechaISO): FechaISO | undefined =>
   fechas.filter((f): f is FechaISO => Boolean(f) && f! <= tope).sort().at(-1);
@@ -63,6 +64,14 @@ function alternosEnSitemap(registro: Registro, c: EntradaCalculadora, fecha: Fec
   return hreflangVaAlSitemap(idiomas) ? idiomas : undefined;
 }
 
+// «Tu sueldo en el mundo» de la edición. Su clúster (todas las ediciones) pasa de MAX_HREFLANG_HEAD,
+// así que con conAlternos va acá entero y no en el <head>. Sin lastmod: la fecha es la de la grilla, que
+// vive del lado del servidor (server-only) y este módulo lo usan también los checks.
+function entradaMundo(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean): EntradaSitemap {
+  const idiomas = conAlternos ? hreflangMundo(registro, modo) : undefined;
+  return { url: urlMundo(m), ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
+}
+
 function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false): EntradaSitemap[] {
   const fecha = hoyEn(m);
   const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).map((c) => {
@@ -73,7 +82,12 @@ function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof 
   const novedades = actualizacionDeNovedades(registro, m.codigo, fecha);
   const porPagina: Record<(typeof PAGINAS_MERCADO)[number], FechaISO | undefined> = { fuentes, novedades };
   const inicio = masNueva([...calculadoras.map((c) => c.lastmod), novedades], fecha);
-  return [{ url: urlIntl(m.codigo), lastmod: inicio }, ...calculadoras, ...PAGINAS_MERCADO.map((p) => ({ url: urlIntl(m.codigo, p), lastmod: porPagina[p] }))];
+  return [
+    { url: urlIntl(m.codigo), lastmod: inicio },
+    entradaMundo(registro, m, modo, conAlternos),
+    ...calculadoras,
+    ...PAGINAS_MERCADO.map((p) => ({ url: urlIntl(m.codigo, p), lastmod: porPagina[p] })),
+  ];
 }
 
 // La home de un país cambia cuando cambia cualquiera de sus calculadoras o llega una novedad.
@@ -97,7 +111,11 @@ export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, op
     paises.map((p) => entradasDePais(registro, p, modo)[0].lastmod),
     hoyEn(m),
   );
-  return [{ url: urlIntl("global"), lastmod: inicio }, ...PAGINAS_GLOBALES.map((p) => ({ url: urlIntl("global", p), lastmod: ACTUALIZACION_PAGINAS_GLOBALES }))];
+  return [
+    { url: urlIntl("global"), lastmod: inicio },
+    entradaMundo(registro, m, modo, opciones.conAlternos ?? false),
+    ...PAGINAS_GLOBALES.map((p) => ({ url: urlIntl("global", p), lastmod: ACTUALIZACION_PAGINAS_GLOBALES })),
+  ];
 }
 
 export function urlsDelMercado(registro: Registro, codigo: CodigoMercado): string[] | null {

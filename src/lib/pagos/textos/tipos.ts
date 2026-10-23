@@ -75,6 +75,8 @@ export interface DiccionarioVenta {
     documento: string;
     // En alemán los sustantivos van con mayúscula: la etiqueta entre paréntesis no se pasa a minúscula.
     etiquetaEnMinuscula: boolean;
+    // ja y zh: la carta va con puntuación de ancho completo (：、（）、。) en vez de la latina.
+    anchoCompleto?: boolean;
     comoSeCalcula: string;
     fuentes: string;
     verificado: string;

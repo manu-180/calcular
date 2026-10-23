@@ -23,6 +23,7 @@ import {
   type Lote,
 } from "../src/app/api/e/protocolo";
 import { TIPOS_EVENTO, esTipoEvento, hostExterno, normalizarRuta } from "../src/lib/rastreo";
+import { codigoCompartido, origenCorto, REF_VALIDO } from "../src/motor/compartir/ref";
 import {
   PRODUCTOS,
   checkoutIdDeReferencia,
@@ -360,7 +361,7 @@ async function main() {
       validarLote(
         lote([
           { t: "v", id: VISTA, p: "/mx/aguinaldo", m: "mx" },
-          { t: "e", k: "compartir", p: "/mx/aguinaldo", m: "mx" },
+          { t: "e", k: "compartir", p: "/mx/aguinaldo", m: "mx", pp: { canal: "copiar" } },
           { t: "e", k: "busqueda", p: "/do/salario" },
           { t: "e", k: "imprimir" },
           { t: "v", id: VISTA.replace("3333-4", "4444-4"), p: "/", m: "global" },
@@ -375,6 +376,101 @@ async function main() {
     const ar = ok(validarLote(lote([{ t: "v", id: VISTA, p: "/mx/aguinaldo", m: "mx" }, { t: "e", k: "imprimir", m: "mx" }]), ctx));
     assert.ok(!("sitio" in ar.vistas[0]) && !("mercado" in ar.vistas[0]), "en AR el m del cliente se ignora");
     assert.ok(!("sitio" in ar.eventos[0]) && !("mercado" in ar.eventos[0]));
+  });
+  // ── Boca en boca: props cerradas por tipo ─────────────────────────────────────────────
+  const props = (i: unknown[]) => ok(validarLote(lote(i), ctx)).eventos.map((e) => e.props);
+  const cuantos = (i: unknown[]) => ok(validarLote(lote(i), ctx)).eventos.length;
+  await prueba("llegada: ref, origen corto y nuevo; una clave de más se tira", () => {
+    assert.deepEqual(props([{ t: "e", k: "llegada", pp: { ref: "ab12cd34", origen: "c", nuevo: true, monto: 123456, nombre: "Ana" } }]), [
+      { ref: "ab12cd34", origen: "c", nuevo: true },
+    ]);
+    assert.deepEqual(props([{ t: "e", k: "llegada", pp: { ref: "ab12cd34" } }]), [{ ref: "ab12cd34" }]);
+  });
+  await prueba("llegada con ref, origen o nuevo inválidos, o sin ref → descartada", () => {
+    for (const pp of [
+      { ref: "<b>hola</b>" },
+      { ref: "AB12CD34" },
+      { ref: "ab12" },
+      { ref: 12345678 },
+      { ref: "ab12cd34", origen: "zz" },
+      { ref: "ab12cd34", origen: "" },
+      { ref: "ab12cd34", nuevo: "true" },
+      { origen: "c", nuevo: true },
+      undefined,
+      "ab12cd34",
+    ])
+      assert.equal(cuantos([{ t: "e", k: "llegada", pp }]), 0, `entró y no debía: ${JSON.stringify(pp)}`);
+    assert.equal(cuantos([{ t: "e", k: "llegada", pp: { ref: "ab12cd34" }, va: 5000 }]), 0, "valor numérico en un evento del boca en boca");
+    assert.equal(cuantos([{ t: "e", k: "llegada", pp: { ref: "ab12cd34" }, pr: "mx/sueldo" }]), 0);
+  });
+  await prueba("puente_visto y puente_clic: solo v ∈ {con, sin}", () => {
+    assert.deepEqual(props([{ t: "e", k: "puente_visto", pp: { v: "con", monto: 99 } }, { t: "e", k: "puente_clic", pp: { v: "sin" } }]), [{ v: "con" }, { v: "sin" }]);
+    for (const pp of [{ v: "otra" }, { v: 1 }, {}, undefined]) {
+      assert.equal(cuantos([{ t: "e", k: "puente_visto", pp }]), 0, JSON.stringify(pp));
+      assert.equal(cuantos([{ t: "e", k: "puente_clic", pp }]), 0, JSON.stringify(pp));
+    }
+  });
+  await prueba("compartir del motor, de la barra de calcular.ar y del botón de WhatsApp entran", () => {
+    assert.deepEqual(
+      props([
+        { t: "e", k: "compartir", pp: { origen: "calculadora", canal: "nativo", calc: "mx.sueldo-neto", ref: "k3j9x0aa", v: "con" } },
+        { t: "e", k: "compartir", pp: { origen: "mundo", canal: "whatsapp", ref: "k3j9x0ab" } },
+        { t: "e", k: "compartir", pp: { origen: "duelo", canal: "copiar", ref: "k3j9x0ac" } },
+        { t: "e", k: "compartir", pp: { canal: "link" } },
+        { t: "e", k: "compartir", pp: { canal: "whatsapp" } },
+        { t: "e", k: "compartir", pp: { origen: "calculadora", canal: "x", calc: "pk.short-term-savings-certificate-calculator", ref: "k3j9x0ad", monto: 123456, html: "<script>" } },
+      ]),
+      [
+        { origen: "calculadora", canal: "nativo", calc: "mx.sueldo-neto", ref: "k3j9x0aa", v: "con" },
+        { origen: "mundo", canal: "whatsapp", ref: "k3j9x0ab" },
+        { origen: "duelo", canal: "copiar", ref: "k3j9x0ac" },
+        { canal: "link" },
+        { canal: "whatsapp" },
+        { origen: "calculadora", canal: "x", calc: "pk.short-term-savings-certificate-calculator", ref: "k3j9x0ad" },
+      ],
+    );
+  });
+  await prueba("compartir con canal, origen, calc, ref o v inválidos → descartado", () => {
+    for (const pp of [
+      {},
+      undefined,
+      { canal: "fax" },
+      { canal: "x", origen: "evil" },
+      { canal: "x", calc: "../etc" },
+      { canal: "x", calc: "mx.<b>" },
+      { canal: "x", calc: 42 },
+      { canal: "x", ref: "<img src=x onerror=alert(1)>" },
+      { canal: "x", ref: 123456 },
+      { canal: "x", v: "talvez" },
+    ])
+      assert.equal(cuantos([{ t: "e", k: "compartir", pp }]), 0, `entró y no debía: ${JSON.stringify(pp)}`);
+    assert.equal(cuantos([{ t: "e", k: "compartir", pp: { canal: "x" }, va: 123456 }]), 0);
+  });
+  await prueba("ningún evento del boca en boca guarda un número", () => {
+    const r = ok(
+      validarLote(
+        lote([
+          { t: "e", k: "llegada", pp: { ref: "ab12cd34", origen: "m", nuevo: false, a: 1, b: 2.5 } },
+          { t: "e", k: "compartir", pp: { canal: "copiar", ref: "ab12cd35", monto: 1e6, sueldo: 45000 } },
+          { t: "e", k: "puente_visto", pp: { v: "sin", bruto: 30000 } },
+        ]),
+        ctx,
+      ),
+    );
+    assert.equal(r.eventos.length, 3);
+    for (const e of r.eventos) {
+      assert.equal(e.valor, null);
+      for (const v of Object.values(e.props ?? {})) assert.notEqual(typeof v, "number", JSON.stringify(e.props));
+    }
+  });
+  await prueba("el código de un compartido es nuevo cada vez y pasa la validación del servidor", () => {
+    const codigos = new Set(Array.from({ length: 200 }, codigoCompartido));
+    assert.equal(codigos.size, 200);
+    for (const c of codigos) assert.match(c, REF_VALIDO);
+    assert.equal(origenCorto("calculadora:mx.sueldo-neto"), "c");
+    assert.equal(origenCorto("mundo"), "m");
+    assert.equal(origenCorto("duelo"), "d");
+    assert.equal(origenCorto("cualquiera"), null);
   });
   await prueba("calcularya como referer no es una fuente", () => {
     assert.equal(limpiarHost("calcularya.com"), null);
@@ -411,7 +507,7 @@ async function main() {
       [...TIPOS_EVENTO].sort(),
       [
         "busqueda", "checkout", "compartir", "copiar_resultado", "cta_compra", "descarga", "dialogo_compra",
-        "error", "guardar_calculo", "imprimir", "login", "registro", "suscripcion", "vista_oferta",
+        "error", "guardar_calculo", "imprimir", "llegada", "login", "puente_clic", "puente_visto", "registro", "suscripcion", "vista_oferta",
       ],
     );
     assert.ok(esTipoEvento("checkout") && !esTipoEvento("planilla_compra_completada"));
