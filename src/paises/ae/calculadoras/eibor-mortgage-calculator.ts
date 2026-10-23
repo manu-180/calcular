@@ -11,7 +11,7 @@ export default definirCalculadora({
   mercado: "ae",
   concepto: "propio",
   slug: "eibor-mortgage-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "ae.eibor-3m": "serie",
   },
