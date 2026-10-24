@@ -55,19 +55,28 @@ export const pl: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Kraj odwiedzin",
           parrafos: [
             "Żeby zaproponować kalkulatory właściwego kraju, sprawdzamy, z jakiego kraju pochodzą odwiedziny. Nasz dostawca hostingu ustala to na podstawie adresu IP.",
-            "Nie zapisujemy ani adresu IP, ani kraju. Odpowiedź zostaje w przeglądarce do końca wizyty.",
+            "Nie zapisujemy adresu IP. Odpowiedź zostaje w przeglądarce do końca wizyty.",
           ],
         },
         {
           titulo: "Co zapisuje przeglądarka",
           parrafos: [
-            "W pamięci sesji przeglądarki zapamiętujemy wybrany kraj i to, czy komunikat z tą propozycją został zamknięty. Wszystko znika po zamknięciu karty.",
+            "W pamięci sesji przeglądarki, którą czyści zamknięcie karty, zapamiętujemy kraj odwiedzin, to, czy komunikat z tą propozycją został zamknięty, i (jeśli wejście było z udostępnionego linku) kod tego linku.",
+            "W pamięci lokalnej, która zostaje, dopóki nie wyczyścisz jej w przeglądarce, trzymamy kraj wybrany ręcznie, losową liczbę do liczenia odwiedzin i wersję testu wyglądu, którą widzisz, żeby strona przy każdej wizycie wyglądała tak samo. Nic z tego nie mówi, kim jesteś.",
             "Nie używamy plików cookie reklamowych ani śledzących.",
           ],
         },
         {
           titulo: "Hosting strony",
           parrafos: ["Strona działa na serwerach Vercel. Jak każdy serwer, zapisują one dane techniczne odwiedzin (adres IP i przeglądarkę), żeby strona działała i była bezpieczna."],
+        },
+        {
+          titulo: "Jak liczymy odwiedziny",
+          parrafos: [
+            "Korzystanie ze strony mierzymy własnym narzędziem: które strony są otwierane i jak często się z nich korzysta, z jakiej strony przychodzą odwiedziny, rodzaj urządzenia i kraj. Losowa liczba w przeglądarce pozwala odróżnić nowe odwiedziny od powrotu. Nie zapisujemy adresu IP ani niczego, co wpisujesz w kalkulatorze.",
+            "Linki udostępniane ze strony mają losowy kod, inny przy każdym udostępnieniu. Dzięki niemu liczymy, ile odwiedzin przynosi każdy link. Ten kod nikogo nie identyfikuje.",
+            "Kwoty wpisane w kalkulatorze nigdy nie opuszczają przeglądarki w linku.",
+          ],
         },
         {
           titulo: "Zmiany i pytania",

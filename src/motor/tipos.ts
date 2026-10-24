@@ -50,7 +50,7 @@ export type EstadoPublicacion = "borrador" | "interno" | "publicado";
 // ja, ko y zh tienen un solo registro para la web y sus mercados van con "usted": です/ます en
 // japonés, 해요체 en coreano y 您 en chino (ADR 0002, D8). Los diccionarios lo escriben en base.
 export type Trato = "vos" | "tu" | "usted";
-export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "pl", "sv", "da"] as const;
+export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "pl", "sv", "da", "nb", "fi"] as const;
 export type Idioma = (typeof IDIOMAS)[number];
 export type SistemaUnidades = "metrico" | "imperial";
 
@@ -131,6 +131,24 @@ export interface TramoNoVerificado<V = ValorDato> extends TramoComun<V> {
 
 export type Tramo<V = ValorDato> = TramoVerificado<V> | TramoNoVerificado<V>;
 
+// Fecha que se repite cada año y que la ley de este dato fija (pago del aguinaldo hasta el 20 de
+// diciembre, décimo cuarto hasta el 15 de agosto). La fuente es la del tramo verificado que rige ese
+// día: sin tramo verificado, la fecha no sale. Detalle en docs/paises/RECETA.md («Fechas de calendario»).
+export interface FechaCalendario {
+  id: string;
+  tipo: "pago" | "vencimiento";
+  mes: number;
+  dia: number;
+  titulo: string;
+  texto?: string;
+  // Id de la calculadora del país que corresponde (sin esto, la primera publicada que usa el dato).
+  calculadora?: string;
+  // Solo para un dato por región: la región a la que aplica la fecha.
+  region?: string;
+  // Título y texto en el idioma de cada edición del país (ca-fr, ch-it), por idioma.
+  traducciones?: Readonly<Partial<Record<Idioma, { titulo: string; texto?: string }>>>;
+}
+
 export interface Dato<T extends TipoDato = TipoDato> {
   id: string;
   nombre: string;
@@ -141,6 +159,7 @@ export interface Dato<T extends TipoDato = TipoDato> {
   tramos: readonly Tramo<ValorPorTipo[T]>[];
   proximaRevision?: FechaISO;
   nota?: string;
+  calendario?: readonly FechaCalendario[];
 }
 
 export type PuntoSerieTupla = readonly [FechaISO, number];

@@ -72,11 +72,21 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "dk" as CodigoMercado, pais: "DK", nombrePais: "Danmark", locale: "da-DK", trato: "tu", moneda: "DKK" as Moneda, escala: 7 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent og Grenadinerne", locale: "da-DK", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  nb: [
+    { mercado: "no" as CodigoMercado, pais: "NO", nombrePais: "Norge", locale: "nb-NO", trato: "tu", moneda: "NOK" as Moneda, escala: 10 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent og Grenadinene", locale: "nb-NO", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  // Finés: el país se declina (GRAMATICA.fi); Yhdysvallat prueba la tabla de plurales y Malta el adesivo.
+  fi: [
+    { mercado: "fi" as CodigoMercado, pais: "FI", nombrePais: "Suomi", locale: "fi-FI", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "mt" as CodigoMercado, pais: "MT", nombrePais: "Malta", locale: "fi-FI", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent ja Grenadiinit", locale: "fi-FI", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
 };
 
 // En ja, ko, zh y los idiomas que entraron después (pl, sv, da, nb, fi) las reglas de puntuación,
 // registro y escritura (scripts/reglas_idioma.ts) corren sobre toda la página.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "pl", "sv", "da"]);
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "pl", "sv", "da", "nb", "fi"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy

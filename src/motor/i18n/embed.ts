@@ -1,4 +1,5 @@
 import type { Idioma, Trato } from "../tipos";
+import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Textos de la calculadora embebible (src/motor/embed) y del generador del código. Va aparte del
@@ -486,7 +487,186 @@ const zh: Diccionario<TextosEmbed> = {
   regional: { "zh-CN": zhHans, "zh-SG": zhHans },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// pl, sv, da, nb y fi: un solo registro informal (ADR 0002, D9), sin parche de usted.
+const gPl = GRAMATICA.pl;
+const gFi = GRAMATICA.fi;
+
+const pl: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulator CalcularYa",
+    marcaNuevaPestana: "(otwiera się w nowej karcie)",
+    noDisponible: { titulo: "Ten kalkulator jest niedostępny", texto: "Możliwe, że zmienił adres." },
+    insertar: "Wstaw na swoją stronę",
+    pagina: {
+      titulo: (pais) => [`Darmowe kalkulatory na twoją stronę | ${pais}`, "Darmowe kalkulatory na twoją stronę"],
+      descripcion: (pais) => `Wybierz kalkulator ${gPl.para(pais)}, skopiuj kod i wklej go na bloga lub stronę. Za darmo, z oficjalnymi danymi zawsze aktualnymi.`,
+      h1: "Wstaw kalkulator na swoją stronę",
+      bajada: "Wybierz kalkulator, skopiuj kod i wklej go, gdzie chcesz. Za darmo, a dane aktualizują się same.",
+      calculadora: "Kalkulator",
+      buscar: "Szukaj kalkulatora",
+      sinResultados: "Nie ma takiego kalkulatora.",
+      tema: "Motyw",
+      claro: "Jasny",
+      oscuro: "Ciemny",
+      ancho: "Szerokość",
+      anchoCompleto: "Pełna szerokość",
+      acento: "Kolor akcentu",
+      colores: ["Zielony", "Niebieski", "Pomarańczowy", "Różowy", "Grafitowy"],
+      credito: "Dodaj pod kalkulatorem link do źródła",
+      vistaPrevia: "Podgląd",
+      codigo: "Kod do wklejenia",
+      copiar: "Kopiuj kod",
+      copiado: "Kod skopiowany",
+      ayudaScript: "Skrypt jest opcjonalny: sam dopasowuje wysokość kalkulatora.",
+      ventajas: ["Za darmo, bez konta", "Oficjalne dane, zawsze aktualne", "Pasuje do każdej szerokości"],
+      nota: "Na dole kalkulatora jest link do CalcularYa. Prosimy, zostaw go.",
+      verTodas: (pais) => `Zobacz wszystkie kalkulatory ${gPl.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulator CalcularYa`,
+    },
+  },
+};
+
+const sv: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkylator från CalcularYa",
+    marcaNuevaPestana: "(öppnas i en ny flik)",
+    noDisponible: { titulo: "Den här kalkylatorn är inte tillgänglig", texto: "Adressen kan ha ändrats." },
+    insertar: "Lägg in på din webbplats",
+    pagina: {
+      titulo: (pais) => [`Gratis kalkylatorer till din webbplats | ${pais}`, "Gratis kalkylatorer till din webbplats"],
+      descripcion: (pais) => `Välj en kalkylator för ${pais}, kopiera koden och klistra in den i din blogg eller på din webbplats. Gratis, med officiella uppgifter som alltid är aktuella.`,
+      h1: "Lägg in en kalkylator på din webbplats",
+      bajada: "Välj kalkylatorn, kopiera koden och klistra in den där du vill. Gratis, och uppgifterna uppdateras av sig själva.",
+      calculadora: "Kalkylator",
+      buscar: "Sök kalkylator",
+      sinResultados: "Vi hittade ingen sådan kalkylator.",
+      tema: "Tema",
+      claro: "Ljust",
+      oscuro: "Mörkt",
+      ancho: "Bredd",
+      anchoCompleto: "Full bredd",
+      acento: "Accentfärg",
+      colores: ["Grön", "Blå", "Orange", "Rosa", "Skiffer"],
+      credito: "Lägg till en källänk under kalkylatorn",
+      vistaPrevia: "Förhandsvisning",
+      codigo: "Kod att klistra in",
+      copiar: "Kopiera koden",
+      copiado: "Koden är kopierad",
+      ayudaScript: "Skriptet är valfritt: det anpassar kalkylatorns höjd automatiskt.",
+      ventajas: ["Gratis, utan konto", "Officiella uppgifter, alltid aktuella", "Passar alla bredder"],
+      nota: "Längst ner i kalkylatorn finns en länk till CalcularYa. Låt den gärna vara kvar.",
+      verTodas: (pais) => `Se alla kalkylatorer för ${pais}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkylator från CalcularYa`,
+    },
+  },
+};
+
+const da: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Beregner fra CalcularYa",
+    marcaNuevaPestana: "(åbner i en ny fane)",
+    noDisponible: { titulo: "Denne beregner er ikke tilgængelig", texto: "Adressen kan være ændret." },
+    insertar: "Indsæt på dit site",
+    pagina: {
+      titulo: (pais) => [`Gratis beregnere til dit website | ${pais}`, "Gratis beregnere til dit website"],
+      descripcion: (pais) => `Vælg en beregner for ${pais}, kopiér koden, og indsæt den på din blog eller dit website. Gratis, med officielle tal, der altid er opdaterede.`,
+      h1: "Sæt en beregner på dit website",
+      bajada: "Vælg beregneren, kopiér koden, og indsæt den, hvor du vil. Gratis, og tallene opdaterer sig selv.",
+      calculadora: "Beregner",
+      buscar: "Søg efter beregner",
+      sinResultados: "Vi fandt ingen beregner med det navn.",
+      tema: "Tema",
+      claro: "Lyst",
+      oscuro: "Mørkt",
+      ancho: "Bredde",
+      anchoCompleto: "Fuld bredde",
+      acento: "Accentfarve",
+      colores: ["Grøn", "Blå", "Orange", "Pink", "Skifer"],
+      credito: "Tilføj et kildelink under beregneren",
+      vistaPrevia: "Forhåndsvisning",
+      codigo: "Kode til at indsætte",
+      copiar: "Kopiér koden",
+      copiado: "Koden er kopieret",
+      ayudaScript: "Scriptet er valgfrit: det tilpasser selv beregnerens højde.",
+      ventajas: ["Gratis, uden konto", "Officielle tal, altid opdaterede", "Passer til enhver bredde"],
+      nota: "Nederst i beregneren er der et link til CalcularYa. Lad det gerne blive.",
+      verTodas: (pais) => `Se alle beregnere for ${pais}`,
+      tituloIframe: (nombre) => `${nombre} | Beregner fra CalcularYa`,
+    },
+  },
+};
+
+const nb: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulator fra CalcularYa",
+    marcaNuevaPestana: "(åpnes i en ny fane)",
+    noDisponible: { titulo: "Denne kalkulatoren er ikke tilgjengelig", texto: "Adressen kan ha endret seg." },
+    insertar: "Legg inn på nettstedet ditt",
+    pagina: {
+      titulo: (pais) => [`Gratis kalkulatorer til nettstedet ditt | ${pais}`, "Gratis kalkulatorer til nettstedet ditt"],
+      descripcion: (pais) => `Velg en kalkulator for ${pais}, kopier koden og lim den inn i bloggen eller på nettstedet ditt. Gratis, med offisielle tall som alltid er oppdatert.`,
+      h1: "Legg en kalkulator på nettstedet ditt",
+      bajada: "Velg kalkulatoren, kopier koden og lim den inn der du vil. Gratis, og tallene oppdateres av seg selv.",
+      calculadora: "Kalkulator",
+      buscar: "Søk etter kalkulator",
+      sinResultados: "Vi fant ingen slik kalkulator.",
+      tema: "Tema",
+      claro: "Lyst",
+      oscuro: "Mørkt",
+      ancho: "Bredde",
+      anchoCompleto: "Full bredde",
+      acento: "Aksentfarge",
+      colores: ["Grønn", "Blå", "Oransje", "Rosa", "Skifer"],
+      credito: "Legg til en kildelenke under kalkulatoren",
+      vistaPrevia: "Forhåndsvisning",
+      codigo: "Kode til å lime inn",
+      copiar: "Kopier koden",
+      copiado: "Koden er kopiert",
+      ayudaScript: "Skriptet er valgfritt: det tilpasser høyden på kalkulatoren selv.",
+      ventajas: ["Gratis, uten konto", "Offisielle tall, alltid oppdatert", "Passer til alle bredder"],
+      nota: "Nederst i kalkulatoren er det en lenke til CalcularYa. La den gjerne stå.",
+      verTodas: (pais) => `Se alle kalkulatorene for ${pais}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulator fra CalcularYa`,
+    },
+  },
+};
+
+const fi: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa-laskuri",
+    marcaNuevaPestana: "(avautuu uuteen välilehteen)",
+    noDisponible: { titulo: "Tämä laskuri ei ole käytettävissä", texto: "Sen osoite on ehkä muuttunut." },
+    insertar: "Lisää omalle sivustollesi",
+    pagina: {
+      titulo: (pais) => [`Maksuttomat laskurit omalle sivustollesi | ${pais}`, "Maksuttomat laskurit omalle sivustollesi"],
+      descripcion: (pais) => `Valitse ${gFi.de(pais)} laskuri, kopioi koodi ja liitä se blogiisi tai sivustollesi. Maksuton, ja viralliset tiedot pysyvät aina ajan tasalla.`,
+      h1: "Lisää laskuri omalle sivustollesi",
+      bajada: "Valitse laskuri, kopioi koodi ja liitä se haluamaasi paikkaan. Maksuton, ja tiedot päivittyvät itsestään.",
+      calculadora: "Laskuri",
+      buscar: "Hae laskuria",
+      sinResultados: "Laskuria ei löytynyt.",
+      tema: "Teema",
+      claro: "Vaalea",
+      oscuro: "Tumma",
+      ancho: "Leveys",
+      anchoCompleto: "Koko leveys",
+      acento: "Korostusväri",
+      colores: ["Vihreä", "Sininen", "Oranssi", "Pinkki", "Liuskeenharmaa"],
+      credito: "Lisää lähdelinkki laskurin alle",
+      vistaPrevia: "Esikatselu",
+      codigo: "Liitettävä koodi",
+      copiar: "Kopioi koodi",
+      copiado: "Koodi kopioitu",
+      ayudaScript: "Skripti on vapaaehtoinen: se sovittaa laskurin korkeuden itse.",
+      ventajas: ["Maksuton, ei tiliä", "Viralliset tiedot aina ajan tasalla", "Sopii mihin tahansa leveyteen"],
+      nota: "Laskurin alareunassa on linkki CalcularYaan. Jätäthän linkin paikalleen.",
+      verTodas: (pais) => `Katso kaikki ${gFi.de(pais)} laskurit`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa-laskuri`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

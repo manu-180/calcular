@@ -5,7 +5,7 @@ import type { TextosSitio } from "./tipos";
 const g = GRAMATICA.nb;
 const MUNDO = "Verden";
 
-// Registro «du», como las calculadoras de bancos y de Forbrukerrådet (docs/global/IDIOMAS-EU.md):
+// Registro «du», como las calculadoras de bancos y de Forbrukerrådet (ADR 0002, D9):
 // los mercados en noruego bokmål van con trato "tu" y el diccionario solo tiene base.
 const base: TextosSitio = {
   marca: { nombre: "CalcularYa", lema: "Kalkulatorer med offisielle tall" },
