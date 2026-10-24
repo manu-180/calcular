@@ -3,6 +3,7 @@ import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { TIPOS_BOCA_A_BOCA } from "@/lib/rastreo";
 import { servicio } from "@/lib/supabase/servicio";
 import {
+  CLAVES_BASE_CIERRE,
   claveCliente,
   dentroDelLimite,
   dispositivo,
@@ -11,6 +12,7 @@ import {
   pais,
   sitioDeOrigen,
   validarLote,
+  type ArgsCierre,
   type FilaEvento,
   type Lote,
 } from "./protocolo";
@@ -34,6 +36,27 @@ function descartar(motivo: string) {
 const SIN_COLUMNA = new Set(["PGRST204", "42703"]);
 let avisoSinColumna = false;
 let avisoSinTipos = false;
+let avisoSinFugas = false;
+
+function sinFugas() {
+  if (!avisoSinFugas) {
+    avisoSinFugas = true;
+    console.warn("[api/e] falta la migración 20261024160000 (fugas): se guarda sólo el cierre básico");
+  }
+}
+
+// Sin ca_cerrar_vista2 (antes de la migración) el cierre básico sigue entrando por la función vieja;
+// los vitals sueltos no tienen dónde ir y se pierden.
+async function cerrarVista(db: ReturnType<typeof servicio>, c: ArgsCierre, tope: () => AbortSignal) {
+  const { error } = await db.rpc("ca_cerrar_vista2", c).abortSignal(tope());
+  if (!error) return;
+  if (error.code !== "PGRST202") return console.error("[api/e] ca_cerrar_vista2:", error.code, error.message);
+  sinFugas();
+  if (c.p_activo_ms === undefined) return;
+  const base = Object.fromEntries(CLAVES_BASE_CIERRE.map((k) => [k, c[k] ?? (k === "p_uso" ? false : 0)]));
+  const viejo = await db.rpc("ca_cerrar_vista", base).abortSignal(tope());
+  if (viejo.error) console.error("[api/e] ca_cerrar_vista:", viejo.error.code, viejo.error.message);
+}
 
 function sinMigracion(error: { code?: string } | null, intl: boolean): boolean {
   if (!error || !intl || !SIN_COLUMNA.has(error.code ?? "")) return false;
@@ -51,18 +74,18 @@ async function escribir(lote: Lote, intl: boolean) {
   // Las vistas primero: el cierre y los eventos del mismo lote pueden apuntar a una vista que
   // recién se abre en este mismo envío.
   if (lote.vistas.length) {
-    const { error } = await db
-      .from("ca_vistas")
-      .upsert(lote.vistas, { onConflict: "id", ignoreDuplicates: true })
-      .abortSignal(tope());
+    const upsert = (filas: Lote["vistas"]) =>
+      db.from("ca_vistas").upsert(filas, { onConflict: "id", ignoreDuplicates: true }).abortSignal(tope());
+    let { error } = await upsert(lote.vistas);
+    if (error && SIN_COLUMNA.has(error.code ?? "") && lote.vistas.some((v) => v.exp)) {
+      sinFugas();
+      ({ error } = await upsert(lote.vistas.map(({ exp: _e, ...resto }) => resto)));
+    }
     if (error && !sinMigracion(error, intl)) console.error("[api/e] ca_vistas:", error.code, error.message);
   }
 
   await Promise.all([
-    ...lote.cierres.map(async (c) => {
-      const { error } = await db.rpc("ca_cerrar_vista", c).abortSignal(tope());
-      if (error) console.error("[api/e] ca_cerrar_vista:", error.code, error.message);
-    }),
+    ...lote.cierres.map((c) => cerrarVista(db, c, tope)),
     (async () => {
       if (!lote.eventos.length) return;
       const insertar = async (filas: FilaEvento[]) => {
