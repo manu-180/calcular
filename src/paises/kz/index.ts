@@ -14,6 +14,14 @@ import minimalnayaZarplata from "./calculadoras/minimalnaya-zarplata";
 import contenidoMinimalnayaZarplata from "./contenido/minimalnaya-zarplata";
 import kalkulyatorNds from "./calculadoras/kalkulyator-nds";
 import contenidoKalkulyatorNds from "./contenido/kalkulyator-nds";
+import uproshchennayaDeklaratsiya from "./calculadoras/uproshchennaya-deklaratsiya";
+import contenidoUproshchennayaDeklaratsiya from "./contenido/uproshchennaya-deklaratsiya";
+import vznosyIpZaSebya from "./calculadoras/vznosy-ip-za-sebya";
+import contenidoVznosyIpZaSebya from "./contenido/vznosy-ip-za-sebya";
+import otpusknye from "./calculadoras/otpusknye";
+import contenidoOtpusknye from "./contenido/otpusknye";
+import raschetPriUvolnenii from "./calculadoras/raschet-pri-uvolnenii";
+import contenidoRaschetPriUvolnenii from "./contenido/raschet-pri-uvolnenii";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -33,6 +41,10 @@ export default definirPais({
     { definicion: mrpVTenge, contenido: contenidoMrpVTenge, cliente: () => import("./calculadoras/mrp-v-tenge.cliente") },
     { definicion: minimalnayaZarplata, contenido: contenidoMinimalnayaZarplata, cliente: () => import("./calculadoras/minimalnaya-zarplata.cliente") },
     { definicion: kalkulyatorNds, contenido: contenidoKalkulyatorNds, cliente: () => import("./calculadoras/kalkulyator-nds.cliente") },
+    { definicion: uproshchennayaDeklaratsiya, contenido: contenidoUproshchennayaDeklaratsiya, cliente: () => import("./calculadoras/uproshchennaya-deklaratsiya.cliente") },
+    { definicion: vznosyIpZaSebya, contenido: contenidoVznosyIpZaSebya, cliente: () => import("./calculadoras/vznosy-ip-za-sebya.cliente") },
+    { definicion: otpusknye, contenido: contenidoOtpusknye, cliente: () => import("./calculadoras/otpusknye.cliente") },
+    { definicion: raschetPriUvolnenii, contenido: contenidoRaschetPriUvolnenii, cliente: () => import("./calculadoras/raschet-pri-uvolnenii.cliente") },
   ],
   universales: "todas",
   novedades,
