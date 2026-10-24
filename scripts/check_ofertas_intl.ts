@@ -1,7 +1,7 @@
 // Ofertas dentro del resultado de calcularya.com (src/lib/pagos/ofertas-intl.ts y ofertas-servidor.ts):
 // - catálogo: cada informe con id, precio (USD 3 a 9) y familia válidos; ningún id hostil resuelve;
-// - cobertura: todo concepto tiene familia salvo los de SIN_FAMILIA; toda calculadora publicada de
-//   un concepto con familia tiene su informe; las que la familia promete con tabla la declaran; y la
+// - cobertura: todo concepto tiene familia salvo los de SIN_FAMILIA (hoy ninguno); toda calculadora
+//   publicada tiene un informe a la venta y el de la familia de su concepto; las que la familia promete con tabla la declaran; y la
 //   tabla concepto → oferta → países sale impresa;
 // - informe: con las entradas de los .casos.ts (y los valores por defecto) el viaje
 //   entrada → validación del servidor → texto del formulario → entrada da lo mismo, y los números del
@@ -121,6 +121,7 @@ function checkCobertura(): Map<string, { oferta: string; paises: Set<string> }[]
       const de = ofertas.porCalculadora[def.id];
       const f = familiaDeConcepto(def.concepto);
       if (f && !de?.ofertas.some((o) => o.tipo === "informe" && o.familia === f.clave)) fallo(`${def.id}: el concepto ${def.concepto} tiene la familia ${f.clave} y la calculadora no la ofrece`);
+      if (!de?.ofertas.some((o) => o.tipo === "informe")) fallo(`${def.id}: publicada sin oferta de venta (concepto ${def.concepto})`);
       if (de && de.calc !== def.slug) fallo(`${def.id}: la oferta apunta a ${de.calc}`);
       if (de && (!de.nombre || /\{\{/.test(de.nombre))) fallo(`${def.id}: nombre del cálculo raro «${de.nombre}»`);
       if (f && (f.conTabla ?? []).includes(def.concepto) && !def.tablas?.length) fallo(`${def.id}: la familia ${f.clave} promete la tabla completa y la calculadora no declara tablas`);
