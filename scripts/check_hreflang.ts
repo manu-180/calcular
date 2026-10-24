@@ -182,6 +182,24 @@ async function main() {
       if (global) fallas.push(...revisarClusteres(horas, publicadas, horasSeo.urlHoras(global, producto), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
       revisadas += horas.length;
     }
+    // Calendario laboral: una página por edición con fechas por delante; las ediciones de un mismo
+    // país forman su clúster (x-default en la edición principal) y un país de una sola edición no lleva.
+    const cal = await import("../src/motor/calendario/rutas");
+    const porPais = new Map<string, PaginaConIdiomas[]>();
+    for (const m of mercados) {
+      if (!cal.calendarioPublicado(registro, m, modo)) continue;
+      const url = cal.urlCalendario(m);
+      if (!publicadas.has(url)) fallas.push(`[${modo}] ${url}: el calendario se publica y no está en el sitemap del mercado`);
+      if (enSitemap.has(url)) fallas.push(`[${modo}] ${url}: clúster chico del calendario repetido en el sitemap`);
+      const idiomas = cal.hreflangCalendario(registro, m.codigo, modo);
+      if (registro.ediciones(m.codigo, modo).filter((e) => cal.calendarioPublicado(registro, e, modo)).length > 1 && !idiomas) fallas.push(`[${modo}] ${url}: país con varias ediciones y el calendario sin hreflang`);
+      porPais.set(m.pais, [...(porPais.get(m.pais) ?? []), { url, locale: m.locale, concepto: `calendario-${m.pais}`, idiomas }]);
+    }
+    for (const grupo of porPais.values()) {
+      const xd = grupo.find((p) => p.idiomas)?.idiomas?.["x-default"];
+      if (xd) fallas.push(...revisarClusteres(grupo, publicadas, xd, false).map((e) => `[${modo}] ${e}`));
+      revisadas += grupo.length;
+    }
   }
 
   for (const f of fallas) console.error(`❌ ${f}`);

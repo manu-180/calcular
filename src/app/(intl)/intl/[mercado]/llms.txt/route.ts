@@ -1,5 +1,6 @@
 import { entradasDelMercado } from "@/motor/mapa";
 import { urlMundo } from "@/motor/mundo/ui/seo";
+import { calendarioPublicado, urlCalendario } from "@/motor/calendario/rutas";
 import { rutaDatos } from "@/motor/rankings/rutas";
 import { urlIndice } from "@/motor/rankings/urls";
 import { urlHoras } from "@/motor/horas/ui/seo";
@@ -40,6 +41,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
         `- [${m.nombre}: salary around the world](${urlMundo(m)}): the day of the year you stop working for the government on a salary in this country, and what that salary would leave in hand in every country at the same purchasing power.`,
         `- [${m.nombre}: country rankings](${urlIndice(m)}): where the same salary goes furthest, Tax Freedom Day and how much of a raise is kept, with this country's rank in each, updated daily.`,
         `- [${m.nombre}: hours of work](${urlHoras(m)}): how many hours of minimum wage work an iPhone, a MacBook Air or Spotify Premium costs in this country and in every other one, from official store prices.`,
+        ...(calendarioPublicado(registro, m, modo) ? [`- [${m.nombre}: pay and tax calendar](${urlCalendario(m)}): upcoming dates that change pay (minimum wage, tax and contribution changes, payment deadlines), each from an official source, linked to its calculator and downloadable as .ics.`] : []),
         ...lineas,
         `- [${m.nombre}: official sources](${urlIntl(m.codigo, "fuentes")}): every value the calculators use, with its effective dates, a link to the rule and the date it was checked.`,
         `- [${m.nombre}: updates](${urlIntl(m.codigo, "novedades")}): rule changes that affect the calculators.`,

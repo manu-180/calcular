@@ -9,6 +9,7 @@ import { hreflangMundo, urlMundo } from "./mundo/ui/seo";
 import { hreflangIndice, hreflangRanking, urlsRankings } from "./rankings/seo";
 import { PRODUCTOS } from "./horas/productos";
 import { hreflangHoras, urlHoras } from "./horas/ui/seo";
+import { calendarioPublicado, urlCalendario } from "./calendario/rutas";
 
 const masNueva = (fechas: readonly (FechaISO | undefined)[], tope: FechaISO): FechaISO | undefined =>
   fechas.filter((f): f is FechaISO => Boolean(f) && f! <= tope).sort().at(-1);
@@ -93,6 +94,14 @@ function entradasHoras(registro: Registro, m: Mercado, modo: ReturnType<typeof m
   });
 }
 
+// Calendario laboral de la edición, solo si tiene fechas por delante. Su lastmod es la última fecha que
+// ya pasó o la última verificación de sus fuentes: lo que cambia lo que muestra la página.
+function entradaCalendario(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>): EntradaSitemap[] {
+  const c = calendarioPublicado(registro, m, modo);
+  if (!c) return [];
+  return [{ url: urlCalendario(m), lastmod: masNueva(c.eventos.flatMap((e) => [e.fecha, e.fuente.verificadoEl]), c.fecha) }];
+}
+
 function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false): EntradaSitemap[] {
   const fecha = hoyEn(m);
   const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).map((c) => {
@@ -108,6 +117,7 @@ function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof 
     entradaMundo(registro, m, modo, conAlternos),
     ...entradasRankings(registro, m, modo, conAlternos),
     ...entradasHoras(registro, m, modo, conAlternos),
+    ...entradaCalendario(registro, m, modo),
     ...calculadoras,
     ...PAGINAS_MERCADO.map((p) => ({ url: urlIntl(m.codigo, p), lastmod: porPagina[p] })),
   ];
