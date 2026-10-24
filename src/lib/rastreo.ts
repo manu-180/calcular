@@ -1,3 +1,4 @@
+import { expDeLaVista } from "@/lib/experimentos";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import type { Sitio } from "@/lib/medicion/mercados";
 import { origenIntl } from "@/motor/sitio";
@@ -74,6 +75,17 @@ let campo: EventTarget | null = null;
 let midiendo = false;
 let ultimoCierre = "";
 let contexto: ContextoVista = CONTEXTO_AR;
+let abierta = 0;
+let resultadoMs: number | null = null;
+let base = "";
+let pendiente = false;
+let mo: MutationObserver | undefined;
+let revisar: ReturnType<typeof setTimeout> | undefined;
+let campoUlt = "";
+let rabia = 0;
+let rabiaEl = "";
+let clics: { t: number; x: number; y: number }[] = [];
+let vistaInicial = "";
 
 const local = () => localStorage;
 const sesionAlmacen = () => sessionStorage;
@@ -173,7 +185,14 @@ function medirScroll() {
 
 function cierre(): Item {
   sumar(performance.now());
-  return { t: "x", id: vista, a: Math.round(activo), n, s: scroll, u: uso };
+  const c: Item = { t: "x", id: vista, a: Math.round(activo), n, s: scroll, u: uso };
+  if (resultadoMs !== null) c.r = resultadoMs;
+  if (campoUlt) c.c = campoUlt;
+  if (rabia) {
+    c.g = rabia;
+    c.ge = rabiaEl;
+  }
+  return c;
 }
 
 function cerrar() {
@@ -193,6 +212,102 @@ function alCambiarVisibilidad() {
   else cerrar();
 }
 
+function selector(el: Element | null): string {
+  const partes: string[] = [];
+  for (let e = el; e && e !== document.body && partes.length < 3; e = e.parentElement) {
+    let s = e.tagName.toLowerCase();
+    const id = e.id && !/[:«»]/.test(e.id) ? e.id : "";
+    const clase = typeof e.className === "string" ? e.className.trim().split(/\s+/)[0] : "";
+    if (id) s += `#${id}`;
+    else if (clase) s += `.${clase}`;
+    partes.unshift(s);
+    if (id) break;
+  }
+  return partes.join(">").slice(-80);
+}
+
+// El texto del label es lo que el informe necesita para decir «se traban en "Sueldo bruto"».
+function claveCampo(t: HTMLInputElement): string {
+  const l = (t.labels?.[0]?.textContent || t.getAttribute("aria-label") || "").replace(/\s+/g, " ").trim();
+  if (l) return l.slice(0, 40);
+  if (/^[A-Za-z][\w-]{0,39}$/.test(t.name || "")) return t.name;
+  return t.id && !/[:«»]/.test(t.id) ? t.id.slice(0, 40) : t.tagName.toLowerCase();
+}
+
+// Las calculadoras muestran el resultado en una región aria-live dentro de <main> (las de calcular.ar y
+// PielCalculadora del motor). Si esa región cambia de número después de que la persona tocó un campo,
+// llegó a un resultado. Comparar contra la huella de antes de editar hace que un resultado precargado
+// con valores de ejemplo no cuente como propio.
+function huella(): string {
+  let s = "";
+  document.querySelectorAll<HTMLElement>("main [aria-live]").forEach((el) => {
+    if (!el.closest("dialog") && el.dataset.estado !== "error") s += el.textContent ?? "";
+  });
+  return /\d/.test(s) ? s.slice(0, 2000) : "";
+}
+
+function verResultado() {
+  revisar = undefined;
+  if (!pendiente || resultadoMs !== null) return;
+  const h = huella();
+  if (h && h !== base) {
+    resultadoMs = Math.round(performance.now() - abierta);
+    pendiente = false;
+    mo?.disconnect();
+  }
+}
+
+function alMutar() {
+  revisar ??= setTimeout(verResultado, 250);
+}
+
+// Corre en la fase de captura de window, antes que React: el DOM todavía muestra el resultado anterior.
+function esperarResultado() {
+  if (resultadoMs !== null) return;
+  if (!pendiente) {
+    base = huella();
+    pendiente = true;
+  }
+  if (!mo && typeof MutationObserver !== "undefined") mo = new MutationObserver(alMutar);
+  const main = document.querySelector("main");
+  if (main) mo?.observe(main, { childList: true, subtree: true, characterData: true });
+  alMutar();
+}
+
+// Tres toques en menos de 800 ms en el mismo lugar = algo que la persona espera que responda y no
+// responde. Los campos y los botones de sumar/restar se tocan seguido a propósito: no cuentan.
+function alPulsar(e: PointerEvent) {
+  const el = e.target as Element | null;
+  if (!e.isTrusted || !el?.closest || el.closest("input,select,textarea,label,[data-repetible]")) return;
+  const t = performance.now();
+  clics = clics.filter((c) => t - c.t < 800 && Math.abs(c.x - e.clientX) < 30 && Math.abs(c.y - e.clientY) < 30);
+  clics.push({ t, x: e.clientX, y: e.clientY });
+  if (clics.length < 3) return;
+  rabia++;
+  if (!rabiaEl) rabiaEl = selector(el);
+  clics = [];
+}
+
+// Sólo la página de entrada: es la carga real (las navegaciones internas no tienen LCP propio) y la
+// que decide si la persona se queda. INP y CLS se reportan al esconder la página; si para entonces
+// navegó a otra, mezclan las dos y se tiran.
+function medirVitals(id: string) {
+  import("web-vitals/attribution")
+    .then(({ onLCP, onINP, onCLS, onTTFB }) => {
+      const mandar = (it: Item) => {
+        if (estado !== 1) return;
+        cola.push({ t: "w", id, ...it });
+        if (document.hidden) enviar();
+        else timer ??= setTimeout(enviar, 4000);
+      };
+      onLCP((m) => mandar({ lcp: m.value, le: m.attribution.target ?? "" }));
+      onTTFB((m) => mandar({ ttfb: m.value }));
+      onINP((m) => vista === id && mandar({ inp: m.value, ie: m.attribution.interactionTarget }));
+      onCLS((m) => vista === id && mandar({ cls: Math.round(m.value * 1000) }));
+    })
+    .catch(() => {});
+}
+
 function alEditar(e: Event) {
   // Restaurar un link compartido dispara input/change sintéticos: eso no es alguien usando la calculadora.
   if (!e.isTrusted || document.documentElement.dataset.caRestaurando) return;
@@ -200,6 +315,8 @@ function alEditar(e: Event) {
   if (!/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName || "") || !t.closest("main") || t.closest("dialog")) return;
   if (/^(email|search|hidden|password)$/.test(t.type)) return;
   uso = true;
+  campoUlt = claveCampo(t);
+  esperarResultado();
   if (t !== campo) n++;
   campo = t;
   actividad();
@@ -307,6 +424,7 @@ export function iniciar(): void {
   addEventListener("input", alEditar, pasivo);
   addEventListener("change", alEditar, pasivo);
   addEventListener("click", alClick, pasivo);
+  addEventListener("pointerdown", alPulsar as EventListener, pasivo);
   addEventListener("submit", alEnviar, { capture: true });
   addEventListener("error", alError);
   addEventListener("unhandledrejection", alError);
@@ -357,14 +475,28 @@ export function abrirVista(pathname: string, ctx: ContextoVista = CONTEXTO_AR): 
   contexto = ctx;
   vista = crypto.randomUUID();
   const ya = performance.now();
-  activo = n = scroll = errores = 0;
-  marca = ultima = ya;
+  activo = n = scroll = errores = rabia = 0;
+  marca = ultima = abierta = ya;
+  resultadoMs = null;
+  pendiente = false;
+  base = campoUlt = rabiaEl = "";
+  clics = [];
+  mo?.disconnect();
+  clearTimeout(revisar);
+  revisar = undefined;
   uso = false;
   campo = null;
   visible = !document.hidden;
   ofertas = new Set();
   for (const it of cola) if (it.t === "e" && !it.v) it.v = vista;
-  cola.push(ctx.sitio === "intl" ? { t: "v", id: vista, p, ...fuente, m: ctx.mercado } : { t: "v", id: vista, p, ...fuente });
+  const v: Item = ctx.sitio === "intl" ? { t: "v", id: vista, p, ...fuente, m: ctx.mercado } : { t: "v", id: vista, p, ...fuente };
+  const exp = expDeLaVista(p);
+  if (exp) v.x = exp;
+  cola.push(v);
+  if (primera) {
+    vistaInicial = vista;
+    medirVitals(vistaInicial);
+  }
   clearTimeout(timer);
   timer = setTimeout(enviar, 50);
 

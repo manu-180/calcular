@@ -77,7 +77,7 @@ function chequeosEstaticos() {
     ok(todo.includes(`alter table public.${t} force row level security;`), `${t}: force row level security`);
   }
   const bloques = [...todo.matchAll(/create or replace function public\.(\w+)\(([\s\S]*?)\n\$\$;/g)];
-  igual(bloques.length, 35, "se encontraron las 35 definiciones de funciones");
+  igual(bloques.length, 38, "se encontraron las 38 definiciones de funciones");
   const revocadas = [...todo.matchAll(/revoke execute on function([\s\S]*?)from public, anon, authenticated;/g)].map((m) => m[1]).join("\n");
   for (const [, nombre, cuerpo] of bloques) {
     ok(/\nset search_path = ''\n/.test(cuerpo), `${nombre}: set search_path = ''`);
@@ -1384,6 +1384,71 @@ async function probarCargaMundo(PGlite: new (dataDir?: string) => Db) {
   }
 }
 
+// Medición de fugas (20261024160000): cierre parcial sin pisar datos, vitals sueltos y el informe.
+async function probarFugas(PGlite: new (dataDir?: string) => Db) {
+  seccion("fugas: ca_cerrar_vista2 y ca_fugas");
+  const db = await nuevaBase(PGlite, "legado");
+  try {
+    const ahora = "now() - interval '1 hour'";
+    await como(db, "service_role", null, () =>
+      db.exec(`
+        insert into public.ca_vistas (id, ts, vid, sid, path, dispositivo, exp) values
+          ('${V(1)}', ${ahora}, '${U.a}', '${S(1)}', '/sueldo-neto', 'movil', '{"hero":"a"}'),
+          ('${V(2)}', ${ahora}, '${U.b}', '${S(2)}', '/sueldo-neto', 'escritorio', '{"hero":"b"}'),
+          ('${V(3)}', ${ahora}, '${U.c}', '${S(3)}', '/sueldo-neto', 'movil', null),
+          ('${V(4)}', ${ahora} + interval '1 minute', '${U.c}', '${S(3)}', '/aguinaldo', 'movil', null);
+        insert into public.ca_eventos (vid, sid, vista_id, tipo, path) values
+          ('${U.b}', '${S(2)}', '${V(2)}', 'compartir', '/sueldo-neto'),
+          ('${U.c}', '${S(3)}', '${V(3)}', 'error', '/sueldo-neto');
+      `),
+    );
+    const cerrar = (args: Record<string, unknown>) =>
+      como(db, "service_role", null, () => {
+        const claves = Object.keys(args);
+        const sql = `select public.ca_cerrar_vista2(${claves.map((k, i) => `${k} => $${i + 1}`).join(", ")}) as ok`;
+        return db.query(sql, Object.values(args));
+      });
+    await cerrar({ p_id: V(1), p_lcp_ms: 3100, p_lcp_el: "main>h1", p_ttfb_ms: 400 });
+    await cerrar({ p_id: V(1), p_activo_ms: 20000, p_interacciones: 3, p_scroll: 60, p_uso: true, p_campo_ult: "Sueldo bruto" });
+    await cerrar({ p_id: V(1), p_inp_ms: 350, p_inp_el: "button.calc", p_cls_milli: 120 });
+    await cerrar({ p_id: V(1), p_inp_ms: 90, p_inp_el: "a.otro", p_lcp_ms: 2900 });
+    await cerrar({ p_id: V(2), p_activo_ms: 40000, p_interacciones: 5, p_scroll: 90, p_uso: true, p_resultado_ms: 8000, p_rabia: 2, p_rabia_el: "button#calcular" });
+    await cerrar({ p_id: V(2), p_resultado_ms: 99000, p_rabia: 1, p_activo_ms: 1000 });
+    const [v1] = await filas(db, `select * from public.ca_vistas where id = '${V(1)}'`);
+    igual(
+      { a: v1.activo_ms, u: v1.uso_calc, c: v1.campo_ult, lcp: v1.lcp_ms, le: v1.lcp_el, inp: v1.inp_ms, ie: v1.inp_el, cls: v1.cls_milli, ttfb: v1.ttfb_ms, r: v1.resultado_ms },
+      { a: 20000, u: true, c: "Sueldo bruto", lcp: 2900, le: "main>h1", inp: 350, ie: "button.calc", cls: 120, ttfb: 400, r: null },
+      "los vitals sueltos no pisan el cierre, INP queda con el peor y LCP con el último",
+    );
+    const [v2] = await filas(db, `select * from public.ca_vistas where id = '${V(2)}'`);
+    igual({ a: v2.activo_ms, r: v2.resultado_ms, g: v2.rabia }, { a: 40000, r: 8000, g: 2 }, "el primer resultado y el mayor activo quedan");
+    await falla(como(db, "anon", null, () => db.query(`select public.ca_cerrar_vista2('${V(1)}')`)), "42501", "anon no puede cerrar vistas");
+    await falla(como(db, "anon", null, () => db.query("select public.ca_fugas(now() - interval '1 day', now())")), "42501", "anon no lee el informe");
+
+    const [{ f }] = await como(db, "service_role", null, () =>
+      filas(db, "select public.ca_fugas(now() - interval '1 day', now() + interval '1 hour', 1) as f"),
+    );
+    const inf = f as Record<string, Array<Record<string, unknown>>>;
+    const sn = inf.paginas.find((x) => x.path === "/sueldo-neto")!;
+    igual(
+      { vistas: sn.vistas, entradas: sn.entradas, usos: sn.usos, medidos: sn.usos_medidos, resultados: sn.resultados, acciones: sn.acciones, salidas: sn.salidas, rabia: sn.con_rabia, error: sn.con_error, rebotes: sn.rebotes },
+      { vistas: 3, entradas: 3, usos: 2, medidos: 1, resultados: 1, acciones: 1, salidas: 2, rabia: 1, error: 1, rebotes: 0 },
+      "embudo por página",
+    );
+    igual(inf.campos.map((c) => [c.path, c.campo, c.n]), [["/sueldo-neto", "Sueldo bruto", 1]], "campo donde se trabó quien no llegó al resultado");
+    igual(
+      inf.experimentos.map((x) => [x.exp, x.variante, x.vistas, x.resultados]).sort(),
+      [["hero", "a", 1, 0], ["hero", "b", 1, 1]],
+      "experimentos por variante",
+    );
+    igual(inf.mercados.map((m) => [m.mercado, m.sesiones, m.vistas]), [["ar", 3, 4]], "totales por mercado");
+    await aplicarMigraciones(db);
+    ok(true, "la migración de fugas se re-aplica sobre una base con datos");
+  } finally {
+    await db.close();
+  }
+}
+
 async function main() {
   chequeosEstaticos();
   const PGlite = cargarPGlite();
@@ -1410,6 +1475,7 @@ async function main() {
     await probarMercados(PGlite);
     await probarPagos(PGlite);
     await probarMundo(PGlite, mods);
+    await probarFugas(PGlite);
     if (process.env.CA_PANEL_MUNDO) await probarCargaMundo(PGlite);
     const carga = Number(process.env.CA_PANEL_CARGA ?? 0);
     if (carga > 0) await probarCarga(PGlite, carga);
