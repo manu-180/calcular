@@ -121,3 +121,37 @@ minutos (la página da 404 y las homes no muestran la tarjeta) y `grillaPublicad
 
 **Año de la PPA.** «Último año disponible» es el máximo de la tabla del Banco Mundial
 (`fuentePpa.anio`), no el de Argentina llevada al mes actual, que se explica en los supuestos.
+
+## calcular.ar (2026-10-23)
+
+**Página.** `/sueldo-en-el-mundo` en `src/app/(ar)/sueldo-en-el-mundo` (`mundo-ar.tsx`), con su duelo
+(`[c]`) y su OG (`og/route.tsx`, mismo contrato que la de calcularya: solo `c` y `formato`). Reusa
+`MundoCliente` con Argentina de origen, `textosMundo("es", "vos", "es-AR")` y la marca del sitio
+(`marca` en `MundoCliente`, que firma la tarjeta; sin la prop sigue CalcularYa). No reusa `PaginaMundo`
+porque arma URLs de calcularya (`urlMundo`) y links relativos al sitio intl: en calcular.ar la fila
+argentina va a `/sueldo-neto` y las demás a `origenIntl()` (o calcularya.com).
+
+**Estilos.** `estilos-mundo.css` lee tokens `--cy-*` de `src/motor/ui/estilos.css`, que calcular.ar no
+carga: `estilos-ar.css` los declara con la misma paleta, solo dentro de `.ca-mundo`. Desde 1024 px la
+página sale del `<main>` de 56rem a 72rem (el ancho de calcularya): a 56rem la cifra en mano se partía.
+
+**Barra de herramientas.** El `<article>` lleva `data-sin-herramientas`: si no, la barra de calcular.ar
+serializaba el sueldo en el hash del link que comparte, justo lo que la página promete no hacer.
+
+**Puente.** `src/components/mundo/PuenteMundo.tsx`, debajo del resultado de sueldo neto, con el mismo A/B
+50 % (`variantePuente`) y los eventos `puente_visto` / `puente_clic`. El traspaso va por
+`src/lib/mundo/traspaso-ar.ts`: bruto del recibo × `PAGAS_AR`, que ahora vive en `pagas-ar.ts` para que
+el navegador no cargue `ar.ts` (IPC, registro, escalas).
+
+**Compartido medido.** La barra de calcular.ar ya compartía el link de cada calculadora: ahí se sumó el
+código por compartido (`?r=&o=c`, `conRef` y `codigoCompartido` de `src/motor/compartir`) y el evento
+`compartir` lleva `origen`, `calc` y `ref`. La llegada la captura `CapturaLlegada`, que en calcular.ar
+monta el `Rastreador` (hijo, para que su efecto corra antes de `iniciar()`); así el HTML de las 251
+rutas no cambió (check_rutas_ar).
+
+**hreflang.** `hreflangMundo` suma `es-AR` solo con `NEXT_PUBLIC_HREFLANG_AR=1`. El clúster pasa de 20,
+así que en calcular.ar va al sitemap (`alternates.languages` de `/sueldo-en-el-mundo`), no al `<head>`.
+
+**Pendiente fuera de esta rama.** `next.config.ts`: sumar `"/sueldo-en-el-mundo/og":
+["./public/banderas/*.svg"]` a `outputFileTracingIncludes`. Mientras tanto la OG lee la bandera de
+`origenAR()` por red si no está en el disco.
