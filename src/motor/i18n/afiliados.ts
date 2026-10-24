@@ -150,6 +150,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  tr: {
+    base: {
+      titulo: "Yurt dışına taşınmayı ya da başka bir ülkeden ödeme almayı mı düşünüyorsunuz?",
+      etiqueta: "Sponsorlu bağlantılar",
+      socios: {
+        wise: "Ülkeler arasında piyasa ortalaması kurla para almak ve göndermek için çok para birimli hesap; ücreti işlemden önce görünür.",
+        deel: "Bir ülkeden başka bir ülkedeki şirket için çalışanlara sözleşme ve ödeme hizmeti.",
+      },
+      nota: "Bu bağlantılarla hesap açılırsa site komisyon alabilir. Kaydolan kişi bu yüzden daha fazla ödemez.",
+      nuevaPestana: "yeni sekmede açılır",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {
