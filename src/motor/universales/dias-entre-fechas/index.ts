@@ -1,5 +1,6 @@
 import { definirUniversal } from "../tipos";
 import { casos } from "./casos";
+import { contenidoBn } from "./contenido/bn";
 import { contenidoDe } from "./contenido/de";
 import { contenidoEn } from "./contenido/en";
 import { contenidoEs } from "./contenido/es";
@@ -11,6 +12,7 @@ import { contenidoNl } from "./contenido/nl";
 import { contenidoPt } from "./contenido/pt";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiDiasEntreFechas } from "./definicion";
+import { textosBn } from "./textos/bn";
 import { textosDe } from "./textos/de";
 import { textosEn } from "./textos/en";
 import { textosEs } from "./textos/es";
@@ -26,7 +28,7 @@ export default definirUniversal<UiDiasEntreFechas>({
   id: "dias-entre-fechas",
   concepto: "dias-entre-fechas",
   definir,
-  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
-  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
+  textos: { bn: textosBn, de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
+  contenido: { bn: contenidoBn, de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
   casos,
 });
