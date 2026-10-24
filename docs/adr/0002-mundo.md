@@ -146,6 +146,65 @@ zh (`informe.anchoCompleto`); en coreano la carta va en 합니다체, que es el 
 **Prueba.** `zz-ja` (Zetaland en japonés) es una edición interna como `zz-en`. `check_universales`
 prueba ja-JP, ko-KR, zh-TW, zh-HK y zh-CN, con nombres de país largos.
 
+### D9. Polaco, sueco, danés, noruego y finés (2026-10-24)
+
+`IDIOMAS` suma `pl`, `sv`, `da`, `nb` y `fi`. Motor, mensajes de error, calculadora, sitio, inicio,
+legales, compartir, embed, «Tu sueldo en el mundo» y el diccionario de venta completo (ofertas,
+informes, planillas y mails) están en los cinco. Las 41 universales no: las escriben las ramas
+`claude/mundo-trad-<idioma>`, que solo crean `textos/<idioma>.ts` y `contenido/<idioma>.ts`; el
+cableado lo hace `gen_idiomas_universales`. Hasta que entren, un mercado de estos idiomas no tiene
+universales (`universales: "todas"` toma las que tienen textos en el idioma).
+
+**Trato.** Un solo registro informal por idioma, el de los bancos y servicios digitales del país. Los
+mercados van con `trato: "tu"` y los diccionarios escriben solo `base`, sin parches.
+
+| Idioma | Registro | Por qué |
+|---|---|---|
+| pl | Ty implícito: imperativo y 2.ª persona sin pronombre («Sprawdź», «Twoje wynagrodzenie»), formas impersonales donde suena mejor («liczy się», «można») | PKO BP, mBank, ING y los servicios de gobierno en línea tutean o usan impersonales; «Pan/Pani» suena a carta de oficina y obliga a elegir género. |
+| sv | du | Es el trato universal en Suecia (du-reformen); «Ni» de cortesía se lee anticuado. |
+| da | du | El de bancos y del Forbrugerrådet Tænk; «De» formal casi no se usa. |
+| nb | du | El de DNB, Sbanken, Forbrukerrådet y NAV. |
+| fi | sinä implícito: imperativo de 2.ª persona singular y sufijos posesivos («Laske», «palkkasi»), pasiva donde suena natural («lasketaan») | El de OP, Nordea y S-Pankki; Vero.fi usa formas impersonales. Nada de teitittely (Te, -kaa). |
+
+**Gramática del país.** sv, da y nb no declinan: «i Sverige», «för Sverige». pl declina por tabla y
+terminación («dla Polski», «w Polsce», «na Litwie»). fi declina y no usa preposiciones:
+`GRAMATICA.fi.de` y `.para` dan el genitivo, que va delante del sustantivo («Suomen laskurit»), y
+`.en` el caso de lugar completo («Suomessa», «Maltalla»). Tabla para compuestos, plurales y los que
+van con adesivo (islas, Venäjä); el resto por regla (gradación nti/lta/kk/tt/pp, -in tras consonante,
+armonía vocálica de la última palabra). Donde un valor variable no encaja en un caso, la frase lo deja
+en nominativo detrás de dos puntos («Taulukot ja raportit: {pais}»).
+
+**Formato.** Intl de pl-PL, sv-SE, sv-FI, da-DK, nb-NO y fi-FI. `parsearNumero` acepta el signo menos
+de Unicode (U+2212), que es como Intl escribe el negativo en sv, nb y fi, y el espacio duro de miles.
+Unidades de tiempo con `Intl.PluralRules`: en polaco las categorías few y many (2 dni, 5 lat) y el
+genitivo singular para fracciones (1,5 roku); en finés partitivo singular tras todo número distinto
+de 1 (3 päivää, 1,5 vuotta).
+
+**Slugs.** Latinos en ASCII, con la palabra que se busca en cada idioma y sin diacríticos
+(ł → l, ą → a, å → a o aa en danés, ø → o, ä → a, ö → o). «Tu sueldo en el mundo»:
+`wynagrodzenie-na-swiecie`, `lon-i-varlden`, `lon-i-verden`, `lonn-i-verden`, `palkka-maailmalla`.
+Las páginas que trajo main después (24/10, bb530d7a), en el mismo orden pl, sv, da, nb, fi:
+calendario `kalendarz-placowy`, `lonekalender`, `lonkalender`, `lonnskalender`, `palkkakalenteri`;
+horas de trabajo `ile-godzin-pracy`, `arbetstimmar`, `arbejdstimer`, `arbeidstimer`, `tyotunnit`;
+rankings `ranking-krajow`, `landsrankning`, `landerangliste`, `landrangering`, `maiden-vertailu`;
+«Sueldos reales» `prawdziwe-zarobki`, `verkliga-loner`, `rigtige-lonninger`, `faktiske-lonninger`,
+`todelliset-palkat`. Los tres rankings llevan slug propio en cada idioma (no el inglés, que D8 usa
+solo para escrituras no latinas), y el del día de liberación fiscal repite el nombre que ya usaba
+«Tu sueldo en el mundo»: `dzien-wolnosci-podatkowej`, `skattefrihetsdagen`, `skattefridag`,
+`skattefridagen`, `verovapauden-paiva`. En horas, sv, da y nb nombran el producto con artículo
+indefinido («en iPhone 17») y pl y fi en nominativo; en «Sueldos reales», pl y fi dejan
+{ocupacion} en nominativo (tras dos puntos) para no declinarla.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales): sin
+exclamaciones ni rayas, y se atrapa el registro formal que se cuela: pl «Pan/Pani/Państwo» (por eso
+«państwo» como Estado va en minúscula), sv «Ni/Er» con mayúscula a mitad de frase, da y nb
+«De/Dem/Deres» con mayúscula a mitad de frase, fi «Te/Teidän/Teille...» con mayúscula y el
+imperativo plural de los verbos de formulario (no se busca -kaa suelto: «aikaa» es partitivo).
+
+**Prueba.** Ediciones internas `zz-pl`, `zz-sv`, `zz-da`, `zz-nb` y `zz-fi` (Zetaland, Zetalandia,
+Zetamaa) con locale `<idioma>-001`, como `zz-ja`. `check_universales` prueba pl-PL, sv-SE, sv-FI,
+da-DK, nb-NO y fi-FI (con Suomi, Malta por el adesivo y San Vicente por el nombre largo).
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

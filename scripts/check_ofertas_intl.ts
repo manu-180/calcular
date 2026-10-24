@@ -358,7 +358,7 @@ function textosDe(valor: unknown, salida: string[] = []): string[] {
   return salida;
 }
 
-const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"], pl: ["tu"], sv: ["tu"], da: ["tu"] };
+const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"], pl: ["tu"], sv: ["tu"], da: ["tu"], nb: ["tu"], fi: ["tu"] };
 
 // Cada diccionario que se revisa, con el locale de su escritura (el chino simplificado es aparte).
 const REVISADOS: readonly { nombre: string; idioma: IdiomaVenta; locale?: string; d: DiccionarioVenta }[] = [

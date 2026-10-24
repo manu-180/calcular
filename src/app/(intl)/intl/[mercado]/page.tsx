@@ -6,6 +6,7 @@ import { contextoSitio } from "@/motor/ui/contexto";
 import { InicioGlobal, InicioPais } from "@/motor/ui/Inicio";
 import { metadatosDe } from "@/motor/ui/metadatos";
 import { DestacadoMundo } from "@/motor/mundo/ui/Destacado";
+import { DestacadoCalendario } from "@/motor/calendario/ui/Destacado";
 import { registro } from "@/paises";
 import { grillaPublicada } from "./_mundo/datos";
 
@@ -26,5 +27,16 @@ export default async function InicioMercado({ params }: Props) {
   if (!ctx) notFound();
   // La tarjeta de «Tu sueldo en el mundo» solo aparece si la página existe (la grilla tiene países).
   const destacado = (await grillaPublicada()).paises.length ? <DestacadoMundo mercado={ctx.mercado} /> : null;
-  return ctx.mercado.codigo === "global" ? <InicioGlobal ctx={ctx} externos={[ARGENTINA]} destacado={destacado} /> : <InicioPais ctx={ctx} destacado={destacado} />;
+  if (ctx.mercado.codigo === "global") return <InicioGlobal ctx={ctx} externos={[ARGENTINA]} destacado={destacado} />;
+  return (
+    <InicioPais
+      ctx={ctx}
+      destacado={
+        <>
+          {destacado}
+          <DestacadoCalendario ctx={ctx} />
+        </>
+      }
+    />
+  );
 }

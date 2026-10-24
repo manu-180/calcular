@@ -55,19 +55,28 @@ export const sv: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Besökets land",
           parrafos: [
             "För att föreslå rätt lands kalkylatorer tittar vi på vilket land ett besök kommer från. Vår webbhotelleverantör räknar ut det från IP-adressen.",
-            "Vi sparar varken IP-adressen eller landet. Svaret stannar i webbläsaren så länge besöket varar.",
+            "Vi sparar inte IP-adressen. Svaret stannar i webbläsaren så länge besöket varar.",
           ],
         },
         {
           titulo: "Det webbläsaren sparar",
           parrafos: [
-            "I webbläsarens sessionslagring kommer vi ihåg det valda landet och om meddelandet med förslaget har stängts. Allt raderas när fliken stängs.",
+            "I webbläsarens sessionslagring, som töms när fliken stängs, kommer vi ihåg besökets land, om meddelandet med förslaget har stängts och, om du kom via en delad länk, länkens kod.",
+            "I den lokala lagringen, som finns kvar tills du rensar den i webbläsaren, ligger landet du själv valt, ett slumptal för att räkna besök och vilken version av ett designtest du ser, så att webbplatsen ser likadan ut varje gång. Inget av det säger vem du är.",
             "Vi använder inga kakor för annonser eller spårning.",
           ],
         },
         {
           titulo: "Webbhotell",
           parrafos: ["Webbplatsen ligger hos Vercel. Som alla servrar registrerar de tekniska uppgifter om varje besök (IP-adress och webbläsare) för att webbplatsen ska fungera och vara säker."],
+        },
+        {
+          titulo: "Så räknar vi besök",
+          parrafos: [
+            "Vi mäter hur webbplatsen används med ett eget verktyg: vilka sidor som öppnas och hur mycket de används, vilken webbplats besöket kommer från, typ av enhet och land. Slumptalet i webbläsaren skiljer ett nytt besök från ett återkommande. Vi sparar inte IP-adressen och inget av det du skriver i en kalkylator.",
+            "Länkar som delas från webbplatsen har en slumpkod som är ny varje gång något delas. Med den räknar vi hur många besök varje länk ger. Koden identifierar ingen.",
+            "Belopp du skriver i en kalkylator lämnar aldrig webbläsaren i en länk.",
+          ],
         },
         {
           titulo: "Ändringar och frågor",

@@ -420,6 +420,53 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "punktummer", coma: "kommaer" },
     },
   },
+  nb: {
+    base: {
+      calcular: "Beregn",
+      resultado: "Resultat",
+      si: "Ja",
+      no: "Nei",
+      sinResultado: "Vi viser ikke dette resultatet akkurat nå.",
+      errores: {
+        requerido: "Fyll ut dette feltet.",
+        "numero-invalido": "Skriv et tall, for eksempel {ejemplo}.",
+        "entero-invalido": "Skriv et helt tall uten desimaler.",
+        "menor-que-min": "Den laveste verdien er {min}.",
+        "mayor-que-max": "Den høyeste verdien er {max}.",
+        "fecha-invalida": "Velg en gyldig dato.",
+        "hora-invalida": "Velg et gyldig klokkeslett.",
+        "opcion-invalida": "Velg et alternativ.",
+        "region-invalida": "Velg et område.",
+        "calculo-fallido": "Vi kunne ikke regne med disse opplysningene. Sjekk verdiene og prøv igjen.",
+      },
+      milesAmbiguos: "Mente du {sugerido}? Skriv tallet uten {signos}.",
+      separadores: { punto: "punktum", coma: "komma" },
+    },
+  },
+  // Finés: «ilman» rige partitivo («ilman pisteitä»), por eso los separadores van en partitivo plural.
+  fi: {
+    base: {
+      calcular: "Laske",
+      resultado: "Tulos",
+      si: "Kyllä",
+      no: "Ei",
+      sinResultado: "Emme näytä tätä tulosta juuri nyt.",
+      errores: {
+        requerido: "Täytä tämä kenttä.",
+        "numero-invalido": "Kirjoita luku, esimerkiksi {ejemplo}.",
+        "entero-invalido": "Kirjoita kokonaisluku ilman desimaaleja.",
+        "menor-que-min": "Pienin sallittu arvo on {min}.",
+        "mayor-que-max": "Suurin sallittu arvo on {max}.",
+        "fecha-invalida": "Valitse kelvollinen päivämäärä.",
+        "hora-invalida": "Valitse kelvollinen kellonaika.",
+        "opcion-invalida": "Valitse jokin vaihtoehto.",
+        "region-invalida": "Valitse alue.",
+        "calculo-fallido": "Näillä tiedoilla laskeminen ei onnistunut. Tarkista arvot ja yritä uudelleen.",
+      },
+      milesAmbiguos: "Tarkoititko {sugerido}? Kirjoita luku ilman {signos}.",
+      separadores: { punto: "pisteitä", coma: "pilkkuja" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {
