@@ -13,6 +13,10 @@ import gelirVergisiHesaplama from "./calculadoras/gelir-vergisi-hesaplama";
 import kdvHesaplama from "./calculadoras/kdv-hesaplama";
 import tapuHarciHesaplama from "./calculadoras/tapu-harci-hesaplama";
 import emlakVergisiHesaplama from "./calculadoras/emlak-vergisi-hesaplama";
+import kiraArtisOraniHesaplama from "./calculadoras/kira-artis-orani-hesaplama";
+import enflasyonHesaplama from "./calculadoras/enflasyon-hesaplama";
+import dovizHesaplama from "./calculadoras/doviz-hesaplama";
+import mevduatFaiziHesaplama from "./calculadoras/mevduat-faizi-hesaplama";
 import contenidoBruttenNeteMaasHesaplama from "./contenido/brutten-nete-maas-hesaplama";
 import contenidoNettenBruteMaasHesaplama from "./contenido/netten-brute-maas-hesaplama";
 import contenidoAsgariUcretHesaplama from "./contenido/asgari-ucret-hesaplama";
@@ -26,6 +30,10 @@ import contenidoGelirVergisiHesaplama from "./contenido/gelir-vergisi-hesaplama"
 import contenidoKdvHesaplama from "./contenido/kdv-hesaplama";
 import contenidoTapuHarciHesaplama from "./contenido/tapu-harci-hesaplama";
 import contenidoEmlakVergisiHesaplama from "./contenido/emlak-vergisi-hesaplama";
+import contenidoKiraArtisOraniHesaplama from "./contenido/kira-artis-orani-hesaplama";
+import contenidoEnflasyonHesaplama from "./contenido/enflasyon-hesaplama";
+import contenidoDovizHesaplama from "./contenido/doviz-hesaplama";
+import contenidoMevduatFaiziHesaplama from "./contenido/mevduat-faizi-hesaplama";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -51,6 +59,10 @@ export default definirPais({
     { definicion: kdvHesaplama, contenido: contenidoKdvHesaplama, cliente: () => import("./calculadoras/kdv-hesaplama.cliente") },
     { definicion: tapuHarciHesaplama, contenido: contenidoTapuHarciHesaplama, cliente: () => import("./calculadoras/tapu-harci-hesaplama.cliente") },
     { definicion: emlakVergisiHesaplama, contenido: contenidoEmlakVergisiHesaplama, cliente: () => import("./calculadoras/emlak-vergisi-hesaplama.cliente") },
+    { definicion: kiraArtisOraniHesaplama, contenido: contenidoKiraArtisOraniHesaplama, cliente: () => import("./calculadoras/kira-artis-orani-hesaplama.cliente") },
+    { definicion: enflasyonHesaplama, contenido: contenidoEnflasyonHesaplama, cliente: () => import("./calculadoras/enflasyon-hesaplama.cliente") },
+    { definicion: dovizHesaplama, contenido: contenidoDovizHesaplama, cliente: () => import("./calculadoras/doviz-hesaplama.cliente") },
+    { definicion: mevduatFaiziHesaplama, contenido: contenidoMevduatFaiziHesaplama, cliente: () => import("./calculadoras/mevduat-faizi-hesaplama.cliente") },
   ],
   universales: { todas: true },
   novedades,
