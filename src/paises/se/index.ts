@@ -16,6 +16,14 @@ import uppsagningstid from "./calculadoras/uppsagningstid";
 import contenidoUppsagningstid from "./contenido/uppsagningstid";
 import sjuklon from "./calculadoras/sjuklon";
 import contenidoSjuklon from "./contenido/sjuklon";
+import foraldrapenning from "./calculadoras/foraldrapenning";
+import contenidoForaldrapenning from "./contenido/foraldrapenning";
+import sjukpenning from "./calculadoras/sjukpenning";
+import contenidoSjukpenning from "./contenido/sjukpenning";
+import barnbidrag from "./calculadoras/barnbidrag";
+import contenidoBarnbidrag from "./contenido/barnbidrag";
+import momskalkylator from "./calculadoras/momskalkylator";
+import contenidoMomskalkylator from "./contenido/momskalkylator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: semesterdagar, contenido: contenidoSemesterdagar, cliente: () => import("./calculadoras/semesterdagar.cliente") },
     { definicion: uppsagningstid, contenido: contenidoUppsagningstid, cliente: () => import("./calculadoras/uppsagningstid.cliente") },
     { definicion: sjuklon, contenido: contenidoSjuklon, cliente: () => import("./calculadoras/sjuklon.cliente") },
+    { definicion: foraldrapenning, contenido: contenidoForaldrapenning, cliente: () => import("./calculadoras/foraldrapenning.cliente") },
+    { definicion: sjukpenning, contenido: contenidoSjukpenning, cliente: () => import("./calculadoras/sjukpenning.cliente") },
+    { definicion: barnbidrag, contenido: contenidoBarnbidrag, cliente: () => import("./calculadoras/barnbidrag.cliente") },
+    { definicion: momskalkylator, contenido: contenidoMomskalkylator, cliente: () => import("./calculadoras/momskalkylator.cliente") },
   ],
   universales: "todas",
   novedades,
