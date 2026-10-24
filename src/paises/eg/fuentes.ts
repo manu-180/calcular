@@ -55,7 +55,7 @@ function hallazgosNosi(datos: unknown): readonly HallazgoNorma[] | null {
   for (const p of lista as PaginaNosi[]) {
     if (typeof p.Title !== "string" || typeof p.Created !== "string" || typeof p.FileRef !== "string") continue;
     const fecha = p.Created.slice(0, 10);
-    if (!esFechaISO(fecha) || fecha <= "2025-11-30") continue;
+    if (!esFechaISO(fecha) || fecha <= LEIDO) continue;
     if (/أجر الاشتراك|الاشتراك التأميني|نسب الاشتراك|الحد الأدنى للمعاش/.test(p.Title)) {
       salida.push({ titulo: p.Title.trim(), url: `https://www.nosi.gov.eg${p.FileRef}`, fecha });
     }
@@ -114,7 +114,7 @@ export const detectores: readonly Detector[] = [
     metodo: "html",
     url: "https://www.labour.gov.eg/ar/%D8%A7%D9%84%D9%82%D9%88%D8%A7%D9%86%D9%8A%D9%86-%D9%88%D8%A7%D9%84%D8%AA%D8%B4%D8%B1%D9%8A%D8%B9%D8%A7%D8%AA/",
     userAgentNavegador: true,
-    // La página de leyes de la Secretaría de Trabajo lista cada norma como un PDF con el año en el nombre.
+    // La página de leyes del Ministerio de Trabajo lista cada norma como un PDF con el año en el nombre.
     // Una ley o un reglamento posterior al que leímos («لسنة-2025») puede tocar vacaciones, horas extra o despido.
     async traer(http) {
       const html = await http.texto(this.url, { userAgentNavegador: true });

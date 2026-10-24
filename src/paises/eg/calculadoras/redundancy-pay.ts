@@ -17,8 +17,8 @@ export default definirCalculadora({
     const m = v["eg.redundancy"];
     const primeros = Math.min(e.anios, 5);
     const resto = Math.max(0, e.anios - 5);
-    const mesesPrimeros = primeros * enMapa(m, "first5");
-    const mesesResto = resto * enMapa(m, "after5");
+    const mesesPrimeros = (primeros * enMapa(m, "first5")) / 100;
+    const mesesResto = (resto * enMapa(m, "after5")) / 100;
     const observaciones: string[] = [];
     if (!Number.isInteger(e.anios)) observaciones.push("كسر السنة محسوب بنسبته.");
     return {

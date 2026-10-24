@@ -23,8 +23,8 @@ export default definirCalculadora({
     if (e.salario <= 0) throw new ErrorEntrada("أدخل آخر أجر شهري.", "salario");
     if (e.anios <= 0) throw new ErrorEntrada("أدخل سنوات الخدمة.", "anios");
     const m = v["eg.after60-reward"];
-    const mesesPrimeros = Math.min(e.anios, 5) * enMapa(m, "first5");
-    const mesesResto = Math.max(0, e.anios - 5) * enMapa(m, "after5");
+    const mesesPrimeros = (Math.min(e.anios, 5) * enMapa(m, "first5")) / 100;
+    const mesesResto = (Math.max(0, e.anios - 5) * enMapa(m, "after5")) / 100;
     const observaciones: string[] = [];
     if (!Number.isInteger(e.anios)) observaciones.push("كسر السنة محسوب بنسبته.");
     return {

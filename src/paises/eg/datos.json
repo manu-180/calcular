@@ -635,9 +635,9 @@
     },
     {
       "id": "eg.redundancy",
-      "nombre": "مكافأة الإنهاء لأسباب اقتصادية عن كل سنة خدمة",
+      "nombre": "مكافأة الإنهاء لأسباب اقتصادية عن كل سنة خدمة (من الأجر الشهري)",
       "tipo": "mapa",
-      "unidad": "meses",
+      "unidad": "%",
       "etiquetas": {
         "first5": "كل سنة من السنوات الخمس الأولى",
         "after5": "كل سنة بعد ذلك"
@@ -647,8 +647,8 @@
           "estado": "verificado",
           "desde": "2025-09-01",
           "valor": {
-            "first5": 1,
-            "after5": 1.5
+            "first5": 100,
+            "after5": 150
           },
           "fuente": {
             "organismo": "وزارة العمل",
@@ -663,9 +663,9 @@
     },
     {
       "id": "eg.after60-reward",
-      "nombre": "مكافأة العمل بعد سن الستين عن كل سنة",
+      "nombre": "مكافأة العمل بعد سن الستين عن كل سنة (من الأجر الشهري)",
       "tipo": "mapa",
-      "unidad": "meses",
+      "unidad": "%",
       "etiquetas": {
         "first5": "كل سنة من السنوات الخمس الأولى",
         "after5": "كل سنة بعد ذلك"
@@ -675,8 +675,8 @@
           "estado": "verificado",
           "desde": "2025-09-01",
           "valor": {
-            "first5": 0.5,
-            "after5": 1
+            "first5": 50,
+            "after5": 100
           },
           "fuente": {
             "organismo": "وزارة العمل",
