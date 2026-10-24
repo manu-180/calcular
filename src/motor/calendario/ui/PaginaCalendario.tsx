@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { etiquetaIdioma } from "../../i18n/direccion";
+import { coma, etiquetaIdioma, puntoYComa } from "../../i18n/direccion";
 import type { TextosCalendario } from "../../i18n/calendario";
 import { grafo, ldPagina, rutaIntl, urlIntl } from "../../seo";
 import { Bandera } from "../../ui/Bandera";
@@ -106,7 +106,9 @@ function Proxima({ e, v, cuenta }: { e: EventoVista; v: VistaCalendario; cuenta:
             <CuentaGrande fecha={e.fecha} dias={e.dias} textos={cuenta} otros={v.t.cuenta.dias(2)} />
           </p>
           <time className="cy-cal-heroe-fecha" dateTime={e.fecha}>
-            {e.semana}, {e.fechaLarga}
+            {e.semana}
+            {coma(v.m.idioma)}
+            {e.fechaLarga}
           </time>
         </div>
         <div className="cy-cal-heroe-detalle">
@@ -176,7 +178,7 @@ function Meses({ v }: { v: VistaCalendario }) {
         return (
           <li key={mes.clave} className="cy-cal-mes" data-tipos={tipos || undefined} data-vacio={primero ? undefined : ""}>
             {primero ? (
-              <a href={`#${primero.id}`} aria-label={`${mes.nombre} ${mes.anio}: ${mes.eventos.map((e) => `${e.fechaLarga}, ${e.titulo}`).join("; ")}`}>
+              <a href={`#${primero.id}`} aria-label={`${mes.nombre} ${mes.anio}: ${mes.eventos.map((e) => `${e.fechaLarga}${coma(v.m.idioma)}${e.titulo}`).join(puntoYComa(v.m.idioma))}`}>
                 {cuerpo}
               </a>
             ) : (

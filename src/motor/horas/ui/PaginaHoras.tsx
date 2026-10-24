@@ -1,4 +1,4 @@
-import { etiquetaIdioma } from "../../i18n/direccion";
+import { coma, etiquetaIdioma } from "../../i18n/direccion";
 import { formatearFecha } from "../../formato";
 import { GRAMATICA } from "../../i18n/gramatica";
 import { rellenarHoras, textosHoras, type TextosHoras } from "../../i18n/horas";
@@ -70,7 +70,9 @@ function FuentePais({ f, t, locale, idioma }: { f: FilaHoras; t: TextosHoras; lo
         <div>
           <dt>{t.metodo.salario}</dt>
           <dd>
-            {m.nombre} · {formatoPrecioConCodigo(locale, m.porHora, m.moneda)} / h · {conversionTexto(t, m.conversion, locale)} · {m.fuente.organismo}, {rellenarHoras(t.metodo.verificado, { fecha: fecha(m.fuente.verificadoEl) })}. <Enlace url={m.fuente.url} texto={t.metodo.verFuente} />
+            {m.nombre} · {formatoPrecioConCodigo(locale, m.porHora, m.moneda)} / h · {conversionTexto(t, m.conversion, locale)} · {m.fuente.organismo}
+            {coma(idioma)}
+            {rellenarHoras(t.metodo.verificado, { fecha: fecha(m.fuente.verificadoEl) })}. <Enlace url={m.fuente.url} texto={t.metodo.verFuente} />
           </dd>
         </div>
         {m.jornada ? (
