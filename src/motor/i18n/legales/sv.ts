@@ -23,7 +23,7 @@ export const sv: DiccionarioLegal = ({ actualizado, mail }) => ({
             "När en regel ändras ändras kalkylatorn också, och ändringen hamnar i landets ändringslogg.",
           ],
         },
-        { titulo: "Gratis", parrafos: ["Kalkylatorerna är gratis och fungerar utan konto."] },
+        { titulo: "Kostnadsfritt", parrafos: ["Kalkylatorerna är gratis och fungerar utan konto."] },
       ],
     },
     contacto: {
