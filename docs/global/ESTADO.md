@@ -47,6 +47,7 @@ varias veces por límite de uso.
 | Angola | claude/pais-ao | en curso |
 | Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
 | Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Motor uzbeko (uz, latino) | claude/mundo-motor-uz | terminado el 24/10 (núcleo, venta, módulos nuevos y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -76,6 +77,24 @@ Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/z
 - Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
 
 El cron datos-paises no está actualizando uy, hn y bo.
+
+## 24/10/2026 · Motor uzbeko latino (`claude/mundo-motor-uz`)
+
+uz en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`mamlakatlar-boyicha-ish-haqi`), horas de trabajo, rankings, sueldos reales, calendario, afiliados,
+venta completa (`IDIOMAS_VENTA`) y las 41 universales con slugs en uzbeko ASCII
+(`kredit-kalkulyatori`, `ipoteka-kalkulyatori`, `qqs-kalkulyatori`...). Escritura latina oficial con
+oʻ y gʻ en U+02BB y la tutuq en U+02BC; registro «Siz» de soliq.uz, my.gov.uz y los bancos; mercados
+con `trato: "usted"`. `GRAMATICA.uz` pega -ning/-da al nombre y usa «uchun» suelto. Formato de Intl
+uz-UZ («1 234 567,50 soʻm»). Decisiones en ADR 0002, D16. Edición de prueba `zz-uz`.
+
+Falta para publicar Uzbekistán:
+- El país en sí (BRIEF-PAIS): ish haqi kalkulyatori (daromad soligʻi, INPS y demás aportes),
+  eng kam ish haqi, BHM (bazaviy hisoblash miqdori), QQS, ijtimoiy soliq, con datos verificados en
+  fuentes oficiales (soliq.uz, lex.uz, mehnat.uz, cbu.uz). Redondeo del soʻm en su mercado.
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar (dudas anotadas en
+  los commits de las universales: choychaqa, daromadlilik, marjinal daromad, temp).
+- Una edición en ruso, si se decide, sería aparte.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 
