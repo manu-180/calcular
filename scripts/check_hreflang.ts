@@ -130,6 +130,21 @@ async function main() {
     }
     revisadas += paginas.length;
     fallas.push(...revisarClusteres(paginas, publicadas, seo.urlIntl("global"), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
+
+    // «Tu sueldo en el mundo»: una página por edición, todas en un clúster, x-default en la de global.
+    const mundoSeo = await import("../src/motor/mundo/ui/seo");
+    const idiomasMundo = mundoSeo.hreflangMundo(registro, modo);
+    const mundo: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: mundoSeo.urlMundo(m), locale: m.locale, concepto: "mundo", idiomas: idiomasMundo }));
+    for (const p of mundo) {
+      if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «sueldo en el mundo» no está en el sitemap del mercado`);
+      const sitemap = enSitemap.get(p.url);
+      const vaAlSitemap = seo.hreflangVaAlSitemap(idiomasMundo);
+      if (vaAlSitemap && JSON.stringify(Object.entries(sitemap ?? {}).sort()) !== JSON.stringify(Object.entries(idiomasMundo ?? {}).sort())) fallas.push(`[${modo}] ${p.url}: el sitemap no lista el clúster entero`);
+      if (!vaAlSitemap && sitemap) fallas.push(`[${modo}] ${p.url}: clúster chico repetido en el sitemap`);
+    }
+    const global = registro.mercados(modo).find((m) => m.codigo === "global");
+    if (global) fallas.push(...revisarClusteres(mundo, publicadas, mundoSeo.urlMundo(global), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
+    revisadas += mundo.length;
   }
 
   for (const f of fallas) console.error(`❌ ${f}`);

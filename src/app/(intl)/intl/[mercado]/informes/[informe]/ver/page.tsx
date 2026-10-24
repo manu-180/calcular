@@ -57,7 +57,7 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
   const producto = ctx ? productoIntlDe(ctx.mercado.codigo, informe) : null;
   if (!ctx || !producto || producto.tipo !== "informe") notFound();
   const m = ctx.mercado;
-  const tv = textosVer(m.idioma, m.trato);
+  const tv = textosVer(m.idioma, m.trato, m.locale);
   const landing = rutaLandingIntl(producto);
   const volver = producto.titulo;
 

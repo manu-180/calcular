@@ -340,6 +340,31 @@ export type FilaResultado<R> =
     })
   | (FilaComun & { clave: ClavesCon<R, string | null>; formato: "texto" | "fecha" });
 
+export type PeriodoMundo = "mes" | "anio";
+
+// Cómo entra una calculadora de sueldo neto a «Tu sueldo en el mundo» (src/motor/mundo). Sin esto el
+// motor la infiere; se declara cuando scripts/check_mundo.ts la marca excluida.
+export interface MundoCalculadora {
+  // Campo de moneda con el sueldo bruto y el período en que lo pide.
+  bruto: string;
+  periodoBruto: PeriodoMundo;
+  // Clave del resultado con el neto y su período.
+  neto: string;
+  periodoNeto: PeriodoMundo;
+  // Sueldos que paga la ley en el año (13 con aguinaldo, 14 con dos extras). Sin esto, 12.
+  pagasAnuales?: number;
+  // Valores fijos para otros campos (un selector de período en "anual", un subsidio apagado).
+  entrada?: Readonly<Record<string, string | number | boolean>>;
+  // Clave del resultado con el bruto real, del mismo período que el neto, cuando el campo no lo es
+  // (un CTC que incluye aportes del empleador). La grilla busca el valor del campo que da ese bruto.
+  brutoResultado?: string;
+}
+
+// Para sacarla de la grilla a propósito (su neto no descuenta el impuesto a la renta, por ejemplo).
+export interface MundoExcluida {
+  excluir: string;
+}
+
 export interface DefinicionCalculadora<
   C extends readonly Campo[] = readonly Campo[],
   Q extends Requisitos = Requisitos,
@@ -359,6 +384,7 @@ export interface DefinicionCalculadora<
   redondeo?: ReglaRedondeo;
   producto?: string;
   tablas?: readonly { clave: string; titulo: string; filasVisibles?: number }[];
+  mundo?: MundoCalculadora | MundoExcluida;
 }
 
 export interface PreguntaFrecuente {
@@ -402,6 +428,9 @@ export interface OpcionesHttp {
 export interface Http {
   json(url: string, opciones?: OpcionesHttp): Promise<unknown>;
   texto(url: string, opciones?: OpcionesHttp): Promise<string>;
+  // Opcional: algunas APIs de datos (PXWeb de la PSA de Filipinas) solo responden a un POST con la
+  // consulta en JSON. Un detector que lo use devuelve null si el Http no lo trae.
+  postJson?(url: string, cuerpo: unknown, opciones?: OpcionesHttp): Promise<unknown>;
 }
 
 export interface BandaSerie {

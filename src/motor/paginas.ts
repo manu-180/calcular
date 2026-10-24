@@ -5,7 +5,7 @@ export type PaginaGlobal = (typeof PAGINAS_GLOBALES)[number];
 
 // Última vez que cambió el texto de las páginas globales (privacidad, términos, contacto, sobre):
 // es su lastmod en el sitemap. Moverla a mano cuando se edite src/motor/ui/Legales.tsx.
-export const ACTUALIZACION_PAGINAS_GLOBALES: FechaISO = "2026-10-13";
+export const ACTUALIZACION_PAGINAS_GLOBALES: FechaISO = "2026-10-23";
 
 export const PAGINAS_MERCADO = ["fuentes", "novedades"] as const;
 export type PaginaMercado = (typeof PAGINAS_MERCADO)[number];
