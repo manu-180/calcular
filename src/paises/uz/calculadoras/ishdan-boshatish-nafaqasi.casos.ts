@@ -6,7 +6,7 @@ const MK = "https://lex.uz/uz/docs/-6257288";
 export default definirCasos(nafaqa, [
   {
     nombre: "Staj 4 yil, shtat qisqarishi",
-    origen: { tipo: "recalculado", url: MK, detalle: "173-modda uchinchi qismi: 3–5 yil, 75%; 6 000 000 × 75% = 4 500 000." },
+    origen: { tipo: "recalculado", url: MK, detalle: "173-modda uchinchi qismi: 3-5 yil, 75%; 6 000 000 × 75% = 4 500 000." },
     fecha: "2026-10-24",
     entrada: { oylik: 6000000, staj: 4, sabab: "ish-beruvchi" },
     esperado: { nafaqa: 4500000, foiz: 75 },
@@ -20,7 +20,7 @@ export default definirCasos(nafaqa, [
   },
   {
     nombre: "Staj 12 yil, yangi shartlarni rad etish",
-    origen: { tipo: "recalculado", url: MK, detalle: "173-modda ikkinchi qismi; 10–15 yil: 150%; 9 000 000." },
+    origen: { tipo: "recalculado", url: MK, detalle: "173-modda ikkinchi qismi; 10-15 yil: 150%; 9 000 000." },
     fecha: "2026-10-24",
     entrada: { oylik: 6000000, staj: 12, sabab: "rad-etish" },
     esperado: { nafaqa: 9000000, foiz: 150 },

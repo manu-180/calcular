@@ -9,7 +9,7 @@ export default definirCasos(otpusknoy, [
     origen: {
       tipo: "recalculado",
       url: MK,
-      detalle: "2–22-noyabr: yakshanbalar 8, 15, 22 (233-modda: haq toʻlanmaydi); 18 kun. 257-modda: 6 000 000 / 25,3 × 18 = 4 268 774,7 → 4 268 775; soliq 12% = 512 253.",
+      detalle: "2-22-noyabr: yakshanbalar 8, 15, 22 (233-modda: haq toʻlanmaydi); 18 kun. 257-modda: 6 000 000 / 25,3 × 18 = 4 268 774,7 → 4 268 775; soliq 12% = 512 253.",
     },
     fecha: "2026-10-24",
     entrada: { manba: "oylik", jami: null, oylar: null, oylik: 6000000, boshlanish: "2026-11-02", kunlar: 21 },
