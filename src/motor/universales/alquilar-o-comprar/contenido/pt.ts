@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { comparar } from "../definicion";
 
@@ -8,7 +9,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const base = { precio, entrada: 20, gastosCompra: 4, tasa: 7, aniosHipoteca: 25, alquiler, aumentoAlquiler: 3, gastosPropietario: 1.5, revalorizacion: 3, rendimiento: 5 };
   const a10 = comparar({ ...base, horizonte: 10 }).anios[9];
   const a3 = comparar({ ...base, horizonte: 3 }).anios[2];
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const alugar = pt ? "arrendar" : "alugar";
   const oAluguel = pt ? "a renda" : "o aluguel";
   const umAluguel = pt ? "uma renda" : "um aluguel";

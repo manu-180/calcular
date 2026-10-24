@@ -1,8 +1,12 @@
+import { variantesDeLocale } from "../../i18n/variantes";
 import type { Trato } from "../../tipos";
 import type { ContenidoUniversal, ContextoUniversal, TextosUi } from "../tipos";
 
+// Norma europea del portugués: Portugal y los países lusófonos de África y Asia (todo pt-* menos
+// pt-BR). Las variantes escritas con la clave "pt-PT" valen para todos ellos.
+export { esPortuguesEuropeo, PT_EUROPEU, PT_LUSOFONIA } from "../../i18n/variantes";
+
 export const esEspana = (locale: string): boolean => locale === "es-ES";
-export const esPortugal = (locale: string): boolean => locale === "pt-PT";
 export const esCanadaFrances = (locale: string): boolean => locale === "fr-CA";
 export const esSuiza = (locale: string): boolean => locale.endsWith("-CH");
 
@@ -31,14 +35,18 @@ export function textosConSuiza<U>(textos: TextosUi<U>): TextosUi<U> {
 }
 
 // Las etiquetas que cambian en una variante del idioma (es-ES, pt-PT, fr-CA) se pisan sobre las de
-// la base; lo que la variante no nombra queda igual. La clave es el locale del mercado.
+// la base; lo que la variante no nombra queda igual. La clave es el locale del mercado, con la cadena
+// de variantesDeLocale: pt-AO toma la de "pt-PT", después la de PT_LUSOFONIA y al final la suya.
 export function conVariantes<U>(textos: TextosUi<U>, variantes: Readonly<Record<string, (trato: Trato) => Partial<U>>>): TextosUi<U> {
   return {
     slug: textos.slug,
     ui: (trato, locale) => {
-      const base = textos.ui(trato, locale);
-      const variante = variantes[locale];
-      return variante ? { ...base, ...variante(trato) } : base;
+      let salida = textos.ui(trato, locale);
+      for (const k of variantesDeLocale(locale)) {
+        const variante = variantes[k];
+        if (variante) salida = { ...salida, ...variante(trato) };
+      }
+      return salida;
     },
   };
 }
@@ -49,7 +57,11 @@ export function contenidoConVariantes(
   variantes: Readonly<Record<string, (ctx: ContextoUniversal) => Partial<ReturnType<ContenidoUniversal>>>>,
 ): ContenidoUniversal {
   return (ctx) => {
-    const variante = variantes[ctx.locale];
-    return variante ? { ...base(ctx), ...variante(ctx) } : base(ctx);
+    let salida = base(ctx);
+    for (const k of variantesDeLocale(ctx.locale)) {
+      const variante = variantes[k];
+      if (variante) salida = { ...salida, ...variante(ctx) };
+    }
+    return salida;
   };
 }

@@ -1,4 +1,4 @@
-import { conVariantes } from "../../comun/locales";
+import { conVariantes, PT_LUSOFONIA } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAumentoDeSueldo } from "../definicion";
 
@@ -40,4 +40,10 @@ const portugal = (): Partial<UiAumentoDeSueldo> => ({
   observacionIgual: "O aumento igualou a inflação: o seu salário compra o mesmo que antes.",
 });
 
-export const textosPt = conVariantes(base, { "pt-PT": portugal });
+// Fuera de Portugal (Angola, Mozambique, Cabo Verde...) la norma es la europea, pero los impuestos y
+// la seguridad social tienen otro nombre: lo propio de Portugal se dice en palabras de cualquier país.
+const lusofonia = (): Partial<UiAumentoDeSueldo> => ({
+  sueldosAnioAyuda: "14 se recebe os subsídios de férias e de Natal à parte. 12 se não os recebe ou se vêm no salário de cada mês.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal, [PT_LUSOFONIA]: lusofonia });

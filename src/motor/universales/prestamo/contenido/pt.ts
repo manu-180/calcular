@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { cuotaFrancesa, interesesTotales } from "../definicion";
 
@@ -6,7 +7,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const monto = montoEjemplo(ctx, 10000);
   const cuota36 = cuotaFrancesa(monto, 12, 36);
   const cuota60 = cuotaFrancesa(monto, 12, 60);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const parcela = pt ? "prestação" : "parcela";
   return {
     h1: pt ? "Simulador de crédito pessoal" : "Simulador de empréstimo",

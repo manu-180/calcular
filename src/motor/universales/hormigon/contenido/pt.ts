@@ -1,10 +1,11 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { MEZCLA } from "../definicion";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
   const imperial = ctx.unidades === "imperial";
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const material = pt ? "betão" : "concreto";
   const ejemplo = imperial
     ? (() => {

@@ -1,8 +1,9 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const n = (x: number, d = 1) => formatearNumero(ctx, x, d);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora de média ponderada",
     title: tituloQueEntre(`Calculadora de média ponderada (${ctx.nombrePais})`, `Média ponderada (${ctx.nombrePais})`, "Calculadora de média ponderada"),

@@ -1,5 +1,6 @@
 import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
+import { PT_LUSOFONIA } from "./variantes";
 import type { Idioma, Trato } from "../tipos";
 
 // «Tu sueldo en el mundo». El servidor resuelve el diccionario y le pasa al navegador solo cadenas
@@ -868,6 +869,12 @@ const pt: Diccionario<TextosMundo> = {
         texto: "Introduza o seu salário e veja quanto lhe ficaria líquido noutros países.",
         ir: "Calcular a minha data",
       },
+    },
+    // Angola, Mozambique, Cabo Verde y el resto de la lusofonía toman el parche de Portugal
+    // (variantesDeLocale); acá se pisa lo que nombra impuestos de Portugal.
+    [PT_LUSOFONIA]: {
+      cero: { motivo: "Com este salário não há desconto de imposto sobre o rendimento nem de contribuições." },
+      heroe: { tasa: (pct) => `Vão ${pct} do seu salário em impostos e contribuições.` },
     },
   },
 };
