@@ -7,8 +7,9 @@
 //   entrada → validación del servidor → texto del formulario → entrada da lo mismo, y los números del
 //   informe (ejecutar) son exactamente los de calcular() con los mismos datos oficiales;
 // - prefill hostil: __proto__, tipos cambiados, otra calculadora, otro país, texto gigante: null;
-// - planilla con datos: el mapa convierte igual que el generador y la planilla cargada con los
-//   números de la persona, recalculada con HyperFormula, da lo mismo que calcular();
+// - planilla con datos: el mapa convierte igual que el generador y la planilla de hoy (armada en
+//   memoria, como en el prebuild) cargada con los números de la persona, recalculada con
+//   HyperFormula, da lo mismo que calcular();
 // - textos: los 7 idiomas con las mismas piezas por familia, sin rayas, sin emojis, sin marcas de
 //   plantilla sin llenar y, en español, en el trato del país.
 //
@@ -263,6 +264,13 @@ async function checkPlanillas() {
       }
       if (mapa.archivo !== prod.archivo) fallo(`${m}: el mapa es de ${mapa.archivo} y la planilla a la venta es ${prod.archivo}`);
       const pais = construida.libro.pais;
+      // La planilla que se carga con los datos es la de hoy, armada en memoria igual que la arma el
+      // prebuild (gen_planilla_todas, también en CI antes de check-all), no la copia de
+      // private/intl del repo: esa queda con la UF o el tipo de cambio del día en que alguien la
+      // regeneró y, en cuanto la serie suma un punto, da otro tope que la calculadora de hoy (cl: tope
+      // imponible e indemnización en UF). Que el archivo del repo y su mapa estén al día lo cuidan
+      // check_planillas_intl y el chequeo de mapa.archivo de arriba.
+      const deHoy = Buffer.from(await construida.libro.wb.xlsx.writeBuffer());
       for (const b of construida.libro.bloques) {
         const bm = bloqueDe(prod, b.calculadora);
         if (!bm) {
@@ -282,7 +290,7 @@ async function checkPlanillas() {
             const esperado = b.entradas[campo].convertir(v as ValorEntrada);
             if (!igual(valorDeCelda(celda, v), esperado)) fallo(`${m}/${b.calculadora}: el mapa convierte ${campo}=${JSON.stringify(v)} en ${JSON.stringify(valorDeCelda(celda, v))} y la hoja en ${JSON.stringify(esperado)}`);
           }
-          const bytes = await planillaConDatos(prod, datos);
+          const bytes = await planillaConDatos(prod, datos, deHoy);
           const ruta = path.join(tmp, `${m}-${b.calculadora}-${probadas}.xlsx`);
           writeFileSync(ruta, bytes);
           const libro = await abrirLibro(ruta);
