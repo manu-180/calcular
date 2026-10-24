@@ -87,6 +87,15 @@ export const de: DiccionarioLegal = ({ actualizado, mail }) => ({
             `Fragen zu personenbezogenen Daten beantworten wir unter ${mail}.`,
           ],
         },
+        {
+          titulo: "Geteilte Gehälter",
+          parrafos: [
+            "Bei „Echte Gehälter“ lässt sich ein Gehalt anonym und freiwillig beitragen, nur nach ausdrücklicher Zustimmung. Gespeichert werden das Land, der Beruf (aus einer festen Liste), die Erfahrungsstufe, das monatliche Bruttogehalt auf zwei signifikante Stellen gerundet und der Monat. Nicht gespeichert werden IP-Adresse, Browser, Konto oder das genaue Datum.",
+            "Veröffentlicht werden nur Median und Spanne von Gruppen ab 10 Personen. Ein einzelnes Gehalt wird nie gezeigt.",
+            "Damit dasselbe Land nicht zweimal im selben Monat beigetragen wird, merkt sich der Browser im lokalen Speicher Land und Monat des Beitrags, nie den Betrag.",
+            "Da ein Beitrag mit niemandem verknüpft ist, lässt er sich später nicht wiederfinden und löschen.",
+          ],
+        },
       ],
     },
     terminos: {

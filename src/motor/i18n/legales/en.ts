@@ -85,6 +85,15 @@ export const en: DiccionarioLegal = ({ actualizado, mail }) => ({
             `For any question about your data, email us at ${mail}.`,
           ],
         },
+        {
+          titulo: "Salaries people share",
+          parrafos: [
+            "On “Real salaries” anyone can add a salary anonymously, and only after ticking an explicit consent box. We store the country, the occupation (from a fixed list), the experience range, the gross monthly salary rounded to two significant figures and the month. We do not store the IP address, the browser, an account or the exact date.",
+            "We only publish the median and the range for groups of 10 people or more. No individual salary is ever shown.",
+            "To avoid adding the same country twice in one month, the browser keeps the country and month of the entry in local storage, never the amount.",
+            "Because an entry is not linked to anyone, there is no way to find it later to delete it.",
+          ],
+        },
       ],
     },
     terminos: {

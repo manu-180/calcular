@@ -85,6 +85,15 @@ export const pt: DiccionarioLegal = ({ actualizado, mail }) => ({
             `Para qualquer dúvida sobre dados pessoais, nosso e-mail é ${mail}.`,
           ],
         },
+        {
+          titulo: "Os salários informados",
+          parrafos: [
+            "Em «Salários reais» é possível informar um salário de forma anônima e opcional, só com consentimento explícito. Guardamos o país, a profissão (de uma lista fechada), a faixa de anos de experiência, o salário bruto por mês arredondado a dois dígitos e o mês. Não guardamos IP, navegador, conta nem a data exata.",
+            "Só publicamos a mediana e a faixa de grupos de 10 pessoas ou mais. Nenhum salário individual é mostrado.",
+            "Para não repetir o mesmo país no mesmo mês, o navegador lembra no armazenamento local o país e o mês da contribuição, nunca o valor.",
+            "Como a contribuição não fica ligada a ninguém, não há como encontrá-la depois para apagá-la.",
+          ],
+        },
       ],
     },
     terminos: {
