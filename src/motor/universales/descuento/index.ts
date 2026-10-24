@@ -4,6 +4,7 @@ import { contenidoDe } from "./contenido/de";
 import { contenidoEn } from "./contenido/en";
 import { contenidoEs } from "./contenido/es";
 import { contenidoFr } from "./contenido/fr";
+import { contenidoId } from "./contenido/id";
 import { contenidoIt } from "./contenido/it";
 import { contenidoJa } from "./contenido/ja";
 import { contenidoKo } from "./contenido/ko";
@@ -15,6 +16,7 @@ import { textosDe } from "./textos/de";
 import { textosEn } from "./textos/en";
 import { textosEs } from "./textos/es";
 import { textosFr } from "./textos/fr";
+import { textosId } from "./textos/id";
 import { textosIt } from "./textos/it";
 import { textosJa } from "./textos/ja";
 import { textosKo } from "./textos/ko";
@@ -26,7 +28,7 @@ export default definirUniversal<UiDescuento>({
   id: "descuento",
   concepto: "descuento",
   definir,
-  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
-  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
+  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
+  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
   casos,
 });
