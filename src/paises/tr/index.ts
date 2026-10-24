@@ -9,6 +9,10 @@ import kidemTazminatiHesaplama from "./calculadoras/kidem-tazminati-hesaplama";
 import ihbarTazminatiHesaplama from "./calculadoras/ihbar-tazminati-hesaplama";
 import yillikIzinHesaplama from "./calculadoras/yillik-izin-hesaplama";
 import fazlaMesaiHesaplama from "./calculadoras/fazla-mesai-hesaplama";
+import gelirVergisiHesaplama from "./calculadoras/gelir-vergisi-hesaplama";
+import kdvHesaplama from "./calculadoras/kdv-hesaplama";
+import tapuHarciHesaplama from "./calculadoras/tapu-harci-hesaplama";
+import emlakVergisiHesaplama from "./calculadoras/emlak-vergisi-hesaplama";
 import contenidoBruttenNeteMaasHesaplama from "./contenido/brutten-nete-maas-hesaplama";
 import contenidoNettenBruteMaasHesaplama from "./contenido/netten-brute-maas-hesaplama";
 import contenidoAsgariUcretHesaplama from "./contenido/asgari-ucret-hesaplama";
@@ -18,6 +22,10 @@ import contenidoKidemTazminatiHesaplama from "./contenido/kidem-tazminati-hesapl
 import contenidoIhbarTazminatiHesaplama from "./contenido/ihbar-tazminati-hesaplama";
 import contenidoYillikIzinHesaplama from "./contenido/yillik-izin-hesaplama";
 import contenidoFazlaMesaiHesaplama from "./contenido/fazla-mesai-hesaplama";
+import contenidoGelirVergisiHesaplama from "./contenido/gelir-vergisi-hesaplama";
+import contenidoKdvHesaplama from "./contenido/kdv-hesaplama";
+import contenidoTapuHarciHesaplama from "./contenido/tapu-harci-hesaplama";
+import contenidoEmlakVergisiHesaplama from "./contenido/emlak-vergisi-hesaplama";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -39,6 +47,10 @@ export default definirPais({
     { definicion: ihbarTazminatiHesaplama, contenido: contenidoIhbarTazminatiHesaplama, cliente: () => import("./calculadoras/ihbar-tazminati-hesaplama.cliente") },
     { definicion: yillikIzinHesaplama, contenido: contenidoYillikIzinHesaplama, cliente: () => import("./calculadoras/yillik-izin-hesaplama.cliente") },
     { definicion: fazlaMesaiHesaplama, contenido: contenidoFazlaMesaiHesaplama, cliente: () => import("./calculadoras/fazla-mesai-hesaplama.cliente") },
+    { definicion: gelirVergisiHesaplama, contenido: contenidoGelirVergisiHesaplama, cliente: () => import("./calculadoras/gelir-vergisi-hesaplama.cliente") },
+    { definicion: kdvHesaplama, contenido: contenidoKdvHesaplama, cliente: () => import("./calculadoras/kdv-hesaplama.cliente") },
+    { definicion: tapuHarciHesaplama, contenido: contenidoTapuHarciHesaplama, cliente: () => import("./calculadoras/tapu-harci-hesaplama.cliente") },
+    { definicion: emlakVergisiHesaplama, contenido: contenidoEmlakVergisiHesaplama, cliente: () => import("./calculadoras/emlak-vergisi-hesaplama.cliente") },
   ],
   universales: { todas: true },
   novedades,
