@@ -1,5 +1,5 @@
 import type { PanelDatos, Rango } from "@/lib/panel/tipos";
-import { PERIODO, nombrePerfil, numero } from "@/lib/panel/formato";
+import { periodo, nombrePerfil, numero } from "@/lib/panel/formato";
 import { Barras } from "./Barras";
 import { filasReparto } from "./Origen";
 import { Bandeja, Seccion, TARJETA, Vacio } from "./ui";
@@ -23,7 +23,7 @@ export function Cuentas({ datos, rango }: { datos: PanelDatos; rango: Rango }) {
                   <p className="mt-1 text-4xl font-semibold tracking-[-0.03em] text-zinc-900">{numero(c.total)}</p>
                 </div>
                 <p className="text-sm font-medium text-emerald-700">
-                  {c.nuevas > 0 ? `+${numero(c.nuevas)} ${PERIODO[rango]}` : `Ninguna nueva ${PERIODO[rango]}`}
+                  {c.nuevas > 0 ? `+${numero(c.nuevas)} ${periodo(rango)}` : `Ninguna nueva ${periodo(rango)}`}
                 </p>
               </div>
               <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-zinc-100 pt-4 text-sm">

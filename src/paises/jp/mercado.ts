@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["JPY"],
   zonaHoraria: "Asia/Tokyo",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "hokkaido", nombre: "北海道" },
     { id: "aomori", nombre: "青森県" },

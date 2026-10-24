@@ -63,9 +63,11 @@ export function httpParaDetector(base: Http, detector: DetectorHttp, registro: L
       throw err;
     }
   };
+  const post = base.postJson;
   return {
     json: (url, opciones) => anotar(url, opciones, (o) => base.json(url, o)),
     texto: (url, opciones) => anotar(url, opciones, (o) => base.texto(url, o)),
+    ...(post ? { postJson: (url: string, cuerpo: unknown, opciones?: OpcionesHttp) => anotar(url, opciones, (o) => post(url, cuerpo, o)) } : {}),
   };
 }
 
@@ -90,7 +92,7 @@ function descomprimir(buf: Buffer, codificacion: string | undefined): Buffer {
   return buf;
 }
 
-function pedir(url: string, opciones: OpcionesEfectivas, timeoutMs: number, origen: URL | null, saltos: number): Promise<string> {
+function pedir(url: string, opciones: OpcionesEfectivas, timeoutMs: number, origen: URL | null, saltos: number, cuerpo?: string): Promise<string> {
   return new Promise((resolve, reject) => {
     let u: URL;
     try {
@@ -105,14 +107,16 @@ function pedir(url: string, opciones: OpcionesEfectivas, timeoutMs: number, orig
     }
     const inicio = origen ?? u;
     const modulo = u.protocol === "https:" ? https : http;
-    const req = modulo.get(
+    const req = modulo.request(
       u,
       {
+        method: cuerpo === undefined ? "GET" : "POST",
         headers: {
           "User-Agent": opciones.userAgentNavegador ? UA_NAVEGADOR : UA_PROPIO,
           Accept: "application/json, text/html, application/xml, text/plain, */*",
           "Accept-Encoding": "gzip, deflate, br",
           "Accept-Language": "es-419,es;q=0.9",
+          ...(cuerpo === undefined ? {} : { "Content-Type": "application/json", "Content-Length": String(Buffer.byteLength(cuerpo)) }),
           ...(opciones.encabezados ?? {}),
         },
         timeout: timeoutMs,
@@ -131,6 +135,7 @@ function pedir(url: string, opciones: OpcionesEfectivas, timeoutMs: number, orig
           }
           const motivo = redireccionPermitida(u, destino, inicio, Boolean(opciones.mismoHost));
           if (motivo) return reject(new Error(motivo));
+          if (cuerpo !== undefined) return reject(new Error(`un POST no sigue redirecciones (${destino.host})`));
           pedir(destino.toString(), opciones, timeoutMs, inicio, saltos - 1).then(resolve, reject);
           return;
         }
@@ -159,28 +164,35 @@ function pedir(url: string, opciones: OpcionesEfectivas, timeoutMs: number, orig
     );
     req.on("timeout", () => req.destroy(new Error(`timeout tras ${Math.round(timeoutMs / 1000)} s`)));
     req.on("error", reject);
+    req.end(cuerpo);
   });
 }
 
 export function crearHttpReal(timeoutMs = 30_000): Http {
-  const texto = async (url: string, opciones: OpcionesEfectivas = {}): Promise<string> => {
+  const texto = async (url: string, opciones: OpcionesEfectivas = {}, cuerpo?: string): Promise<string> => {
     try {
-      return await pedir(url, opciones, timeoutMs, null, MAX_REDIRECCIONES);
+      return await pedir(url, opciones, timeoutMs, null, MAX_REDIRECCIONES, cuerpo);
     } catch (err) {
       const codigo = (err as NodeJS.ErrnoException).code ?? "";
       if (codigo) (err as Error).message = `${(err as Error).message} (${codigo})`;
       throw err;
     }
   };
+  const parsear = (cuerpo: string): unknown => {
+    try {
+      return JSON.parse(cuerpo.replace(/^\uFEFF/, "")) as unknown;
+    } catch {
+      throw new Error(`la respuesta no es JSON válido (empieza con ${JSON.stringify(cuerpo.slice(0, 60))})`);
+    }
+  };
+  const conJson = (opciones: OpcionesEfectivas): OpcionesEfectivas => ({ ...opciones, encabezados: { Accept: "application/json", ...(opciones.encabezados ?? {}) } });
   return {
-    texto,
+    texto: (url, opciones) => texto(url, opciones),
     async json(url, opciones = {}) {
-      const cuerpo = await texto(url, { ...opciones, encabezados: { Accept: "application/json", ...(opciones.encabezados ?? {}) } });
-      try {
-        return JSON.parse(cuerpo.replace(/^﻿/, "")) as unknown;
-      } catch {
-        throw new Error(`la respuesta no es JSON válido (empieza con ${JSON.stringify(cuerpo.slice(0, 60))})`);
-      }
+      return parsear(await texto(url, conJson(opciones)));
+    },
+    async postJson(url, cuerpo, opciones = {}) {
+      return parsear(await texto(url, conJson(opciones), JSON.stringify(cuerpo)));
     },
   };
 }

@@ -1,0 +1,25 @@
+{
+  "mercado": "pk",
+  "series": [
+    {
+      "id": "pk.usd-pkr",
+      "nombre": "USD/PKR M2M revaluation rate",
+      "unidad": "PKR",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "State Bank of Pakistan",
+        "titulo": "USD/PKR M2M revaluation rate",
+        "url": "https://www.sbp.org.pk/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17"
+      },
+      "puntos": [
+        [
+          "2026-10-16",
+          276.9115
+        ]
+      ]
+    }
+  ]
+}

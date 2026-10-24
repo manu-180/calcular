@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from "react";
 import type { KpiClave, PanelDatos, Rango } from "@/lib/panel/tipos";
 import {
-  PERIODO,
+  periodo,
   deCada100,
   diaConSemana,
   duracion,
@@ -26,7 +26,7 @@ import { filasFuentes, filasReparto } from "./Origen";
 
 function resumen(clave: KpiClave, datos: PanelDatos, rango: Rango): string {
   const k = kpiDe(datos, clave);
-  const periodo = PERIODO[rango];
+  const enElPeriodo = periodo(rango);
   const mejor = k.serie.reduce<{ t: string; v: number } | null>((m, p) => (!m || p.v > m.v ? p : m), null);
   const cuando =
     mejor && mejor.v > 0 && k.serie.length > 1
@@ -39,27 +39,27 @@ function resumen(clave: KpiClave, datos: PanelDatos, rango: Rango): string {
   const ingresos = kpiDe(datos, "ingresos").valor;
   switch (clave) {
     case "visitantes":
-      return `Entraron ${plural(k.valor, "persona", "personas")} ${periodo}.${cuando}`;
+      return `Entraron ${plural(k.valor, "persona", "personas")} ${enElPeriodo}.${cuando}`;
     case "usos":
-      return `Usaron una calculadora ${k.valor === 1 ? "1 vez" : `${numero(k.valor)} veces`} ${periodo}.${cuando}`;
+      return `Usaron una calculadora ${k.valor === 1 ? "1 vez" : `${numero(k.valor)} veces`} ${enElPeriodo}.${cuando}`;
     case "tiempo":
       return k.valor > 0
         ? `La mitad de las personas pasa más de ${duracion(k.valor)} usando la calculadora.`
         : "Todavía no hay usos para medir el tiempo.";
     case "interes":
-      return `${k.valor === 1 ? "1 persona quiso" : `${numero(k.valor)} personas quisieron`} comprar una planilla ${periodo}.`;
+      return `${k.valor === 1 ? "1 persona quiso" : `${numero(k.valor)} personas quisieron`} comprar una planilla ${enElPeriodo}.`;
     case "checkouts":
-      return `${k.valor === 1 ? "1 persona llegó" : `${numero(k.valor)} personas llegaron`} a la pantalla de pago ${periodo}.${
+      return `${k.valor === 1 ? "1 persona llegó" : `${numero(k.valor)} personas llegaron`} a la pantalla de pago ${enElPeriodo}.${
         interes > 0 ? ` Son ${deCada100(k.valor / interes)} de las que quisieron comprar.` : ""
       }`;
     case "ventas":
     case "ingresos": {
       const ventas = kpiDe(datos, "ventas").valor;
       if (ventas === 0)
-        return `No hubo ventas ${periodo}.${
+        return `No hubo ventas ${enElPeriodo}.${
           checkouts > 0 ? ` ${checkouts === 1 ? "1 persona fue" : `${numero(checkouts)} personas fueron`} a pagar y no terminó.` : ""
         }`;
-      return `${plural(ventas, "venta", "ventas")} ${periodo}, por ${plata(ingresos, datos.ingresos.moneda)}.${
+      return `${plural(ventas, "venta", "ventas")} ${enElPeriodo}, por ${plata(ingresos, datos.ingresos.moneda)}.${
         checkouts > 0 ? ` Pagaron ${deCada100(ventas / checkouts)} de los que fueron a pagar.` : ""
       }`;
     }
@@ -300,7 +300,7 @@ export function DetalleKpi({
           granularidad={datos.granularidad}
           formatoEje={(n) => ejeKpi(serieClave, n, datos.ingresos.moneda)}
           formatoValor={(n) => metaKpi(serieClave, datos).valor(n)}
-          titulo={`${META_KPI[serieClave].etiqueta}, ${PERIODO[rango]}`}
+          titulo={`${META_KPI[serieClave].etiqueta}, ${periodo(rango)}`}
           resumen={texto}
           parcial={ultimoEsParcial(datos)}
           forma={clave === "ventas" ? "columnas" : "linea"}

@@ -1,7 +1,7 @@
 // Ofertas dentro del resultado de calcularya.com (src/lib/pagos/ofertas-intl.ts y ofertas-servidor.ts):
 // - catálogo: cada informe con id, precio (USD 3 a 9) y familia válidos; ningún id hostil resuelve;
-// - cobertura: todo concepto tiene familia salvo los de SIN_FAMILIA; toda calculadora publicada de
-//   un concepto con familia tiene su informe; las que la familia promete con tabla la declaran; y la
+// - cobertura: todo concepto tiene familia salvo los de SIN_FAMILIA (hoy ninguno); toda calculadora
+//   publicada tiene un informe a la venta y el de la familia de su concepto; las que la familia promete con tabla la declaran; y la
 //   tabla concepto → oferta → países sale impresa;
 // - informe: con las entradas de los .casos.ts (y los valores por defecto) el viaje
 //   entrada → validación del servidor → texto del formulario → entrada da lo mismo, y los números del
@@ -30,7 +30,7 @@ import { hoyEn } from "../src/motor/vigencia";
 import { registro } from "../src/paises";
 import { PRODUCTOS_INTL, productoIntl, productoIntlDe, leerReferenciaIntl, type ProductoIntl } from "../src/lib/pagos/catalogo-intl";
 import { FAMILIAS, SIN_FAMILIA, campoEscenario, familiaDeConcepto, nombreDeCalculo, precioUSD } from "../src/lib/pagos/ofertas-intl";
-import { DICCIONARIOS, FAMILIAS_POR_LOCALE, IDIOMAS_VENTA, resolver, tieneVenta, type DiccionarioVenta, type IdiomaVenta } from "../src/lib/pagos/textos";
+import { DICCIONARIOS, FAMILIAS_POR_LOCALE, IDIOMAS_VENTA, resolverTrato, tieneVenta, type DiccionarioVenta, type IdiomaVenta } from "../src/lib/pagos/textos";
 import { zhHans } from "../src/lib/pagos/textos/zh-hans";
 import { idiomaDeLocale } from "../src/motor/i18n/resolver";
 import { problemasDeTexto } from "./reglas_idioma";
@@ -121,6 +121,7 @@ function checkCobertura(): Map<string, { oferta: string; paises: Set<string> }[]
       const de = ofertas.porCalculadora[def.id];
       const f = familiaDeConcepto(def.concepto);
       if (f && !de?.ofertas.some((o) => o.tipo === "informe" && o.familia === f.clave)) fallo(`${def.id}: el concepto ${def.concepto} tiene la familia ${f.clave} y la calculadora no la ofrece`);
+      if (!de?.ofertas.some((o) => o.tipo === "informe")) fallo(`${def.id}: publicada sin oferta de venta (concepto ${def.concepto})`);
       if (de && de.calc !== def.slug) fallo(`${def.id}: la oferta apunta a ${de.calc}`);
       if (de && (!de.nombre || /\{\{/.test(de.nombre))) fallo(`${def.id}: nombre del cálculo raro «${de.nombre}»`);
       if (f && (f.conTabla ?? []).includes(def.concepto) && !def.tablas?.length) fallo(`${def.id}: la familia ${f.clave} promete la tabla completa y la calculadora no declara tablas`);
@@ -389,14 +390,14 @@ function checkTextos() {
         fallo(`familia ${f.clave} (${locale}): el locale no es de un idioma con diccionario de venta`);
         continue;
       }
-      for (const trato of TRATOS[idiomaLocale]) for (const s of textosDe(resolver(tf, trato))) (revisarTexto(`${locale} familia ${f.clave}`, idiomaLocale, trato, s), revisados++);
+      for (const trato of TRATOS[idiomaLocale]) for (const s of textosDe(resolverTrato(tf, trato))) (revisarTexto(`${locale} familia ${f.clave}`, idiomaLocale, trato, s), revisados++);
     }
   }
   for (const { nombre: idioma, idioma: id, locale, d } of REVISADOS) {
     for (const trato of TRATOS[id]) {
       const rev = (origen: string, t: string) => revisarTexto(origen, id, trato, t, locale);
-      const carta = new Set(Object.values(resolver(d.familias, trato)).flatMap((f) => (f.nota ? [f.nota.pedido, f.nota.cierre] : [])));
-      const { planillas: _p, correo: _c, catalogo: _k, tarjeta, ...resto } = resolver(d, trato);
+      const carta = new Set(Object.values(resolverTrato(d.familias, trato)).flatMap((f) => (f.nota ? [f.nota.pedido, f.nota.cierre] : [])));
+      const { planillas: _p, correo: _c, catalogo: _k, tarjeta, ...resto } = resolverTrato(d, trato);
       for (const [clave, f] of Object.entries(resto.familias)) for (const t of textosDe(f)) (revisarTexto(`${idioma} familia ${clave}`, id, trato, t, locale, carta.has(t)), revisados++);
       for (const t of textosDe([resto.general, resto.aviso, resto.planilla, resto.informe])) {
         rev(`${idioma} ofertas`, t);

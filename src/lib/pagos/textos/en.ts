@@ -643,6 +643,25 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: OTHER_AMOUNTS,
   },
+  "informe-calculo": {
+    nombre: "Calculation report",
+    tituloCorto: "calculation report",
+    paraQuien: "To have this calculation in writing, with your numbers, what it assumes and where each official figure comes from",
+    descripcion: [
+      "A PDF report of the calculation you just made, step by step with your data: the result, the assumptions behind it and every official figure with its source and the date it was checked.",
+      "Keep it on file or hand it to your accountant, your employer or anyone who needs to check it, without explaining every number again.",
+    ],
+    gancho: "Get this calculation in writing, with its sources",
+    incluye: [
+      { titulo: "Your result", texto: "Exactly as you calculated it, ready to print." },
+      { titulo: "How it's worked out", texto: "The steps and assumptions, so every number can be traced." },
+      { titulo: "The official sources", texto: "Each figure with the agency, the link and the date it was checked." },
+    ],
+    pasos: {
+      titulo: "Before you use it",
+      items: ["Check that the details at the top are yours: the result depends on them.", "If an official figure has changed, run it again: the report uses the ones in force on the day you bought it."],
+    },
+  },
 };
 
 export const en: DiccionarioVenta = {
