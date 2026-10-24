@@ -131,6 +131,12 @@
     line-break: strict;
     word-break: normal;
   }
+  /* Bengalí (ADR 0002, D14): Geist no trae la escritura y no se descarga ninguna fuente. Cae en la del
+     sistema: Noto Sans Bengali (Android y Linux), Kohinoor Bangla (macOS e iOS), Nirmala UI y Vrinda
+     (Windows). Las cifras bengalíes también salen de ahí. */
+  .cy-cuerpo:lang(bn) {
+    font-family: var(--font-geist), "Noto Sans Bengali", "Kohinoor Bangla", "Nirmala UI", Vrinda, sans-serif;
+  }
 
   input,
   textarea,
@@ -2311,6 +2317,12 @@
 
 /* Fuera de @layer base a propósito: tiene que ganarle al tracking negativo de los títulos, que es
    de Geist y en CJK amontona los caracteres. */
-.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh)) :is(h1, h2, h3, h4) {
+.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn)) :is(h1, h2, h3, h4) {
   letter-spacing: 0;
+}
+
+/* En bengalí los signos vocálicos van sobre y bajo la línea (ি, ু, ৃ): con el interlineado apretado de
+   los títulos latinos se pisan entre renglones. */
+.cy-cuerpo:lang(bn) :is(h1, h2, h3, h4) {
+  line-height: 1.35;
 }

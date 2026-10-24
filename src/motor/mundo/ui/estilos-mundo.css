@@ -104,8 +104,12 @@
   font-variant-numeric: tabular-nums;
 }
 
-:is(.cy-cuerpo:lang(ja), .cy-cuerpo:lang(ko), .cy-cuerpo:lang(zh)) :is(.cy-mundo-h1, .cy-mundo-h2, .cy-mundo-fecha, .cy-th-fecha) {
+:is(.cy-cuerpo:lang(ja), .cy-cuerpo:lang(ko), .cy-cuerpo:lang(zh), .cy-cuerpo:lang(bn)) :is(.cy-mundo-h1, .cy-mundo-h2, .cy-mundo-fecha, .cy-th-fecha) {
   letter-spacing: 0;
+}
+
+.cy-cuerpo:lang(bn) :is(.cy-mundo-h1, .cy-mundo-h2) {
+  line-height: 1.35;
 }
 
 /* ---------- Panel en tinta: formulario, fecha y año ---------- */

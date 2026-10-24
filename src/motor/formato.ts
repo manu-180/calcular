@@ -258,6 +258,12 @@ export function sugerenciaMiles(texto: string, locale: string): { sugerido: stri
   return { sugerido: HAY_BENGALI.test(texto) ? aBengali(sugerido) : sugerido, separador: dec };
 }
 
+// Un resultado de texto armado por la calculadora («5:30», «3 de 10») trae cifras ASCII; en bengalí van
+// con dígitos ০-৯ como el resto de la página (ADR 0002, D14). En los demás idiomas queda igual.
+export function textoDelLocale(texto: string, locale: string): string {
+  return idiomaDeLocale(locale) === "bn" ? aBengali(texto) : texto;
+}
+
 export function parsearEntero(texto: string, locale: string): number | null {
   const n = parsearNumero(texto, locale);
   return n !== null && Number.isInteger(n) ? n : null;

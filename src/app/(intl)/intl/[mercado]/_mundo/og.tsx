@@ -28,7 +28,10 @@ const CABECERAS = { "cache-control": "public, max-age=86400, s-maxage=604800, st
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
 const ESPERA_FUENTE_MS = 3000;
 
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC" };
+// Escrituras que Geist no trae. El bengalí entra acá por los glifos; Satori no reordena los signos
+// vocálicos (ি va antes de la consonante), así que la tarjeta en bn puede salir con algún conjunto mal
+// armado (ADR 0002, D14).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 

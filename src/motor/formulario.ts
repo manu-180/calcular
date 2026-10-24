@@ -1,5 +1,5 @@
 import { contextoDesdeSerializado, ErrorEntrada } from "./calculo";
-import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearFecha, parsearNumero, sugerenciaMiles } from "./formato";
+import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearFecha, parsearNumero, sugerenciaMiles, textoDelLocale } from "./formato";
 import { interpolar, textosMotor, type CodigoError, type TextosMotor } from "./textos";
 import type {
   AvisoResuelto,
@@ -159,7 +159,7 @@ export function parsearEntrada(
 
 function textoFila(valor: ValorResultado, fila: DefinicionCalculadora["resultado"][number], contexto: ContextoSerializado): string | null {
   if (valor === null || valor === undefined) return null;
-  if (fila.formato === "texto") return typeof valor === "string" ? valor : null;
+  if (fila.formato === "texto") return typeof valor === "string" ? textoDelLocale(valor, contexto.locale) : null;
   if (fila.formato === "fecha") return typeof valor === "string" ? formatearFecha(valor as `${number}-${number}-${number}`, contexto.locale) : null;
   if (typeof valor !== "number" || !Number.isFinite(valor)) return null;
   if (fila.ocultarSiCero && valor === 0) return null;
