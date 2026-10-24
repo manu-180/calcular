@@ -2,6 +2,7 @@ import { actualizacionDeFuentes, actualizacionDeInicioPais, actualizacionDeNoved
 import { ACTUALIZACION_PAGINAS_GLOBALES, esPaginaGlobal, type PaginaGlobal } from "../paginas";
 import type { PaginaResuelta } from "../registro";
 import type { FechaISO } from "../tipos";
+import { etiquetaIdioma } from "../i18n/direccion";
 import {
   elegirTitulo,
   grafo,
@@ -97,7 +98,7 @@ export function hreflangDeEdiciones(ctx: ContextoSitio, slug?: "fuentes" | "nove
   const ediciones = ctx.registro.ediciones(ctx.mercado.codigo, ctx.modo);
   if (ediciones.length < 2) return undefined;
   const idiomas: Idiomas = {};
-  for (const e of ediciones) idiomas[e.locale] = urlIntl(e.codigo, slug);
+  for (const e of ediciones) idiomas[etiquetaIdioma(e.locale)] = urlIntl(e.codigo, slug);
   idiomas["x-default"] = urlIntl("global");
   return idiomas;
 }

@@ -9,6 +9,7 @@
 // - un clúster de más de MAX_HREFLANG_HEAD no está entero en el sitemap del mercado (xhtml:link) o
 //   sigue en el <head>, o uno chico no está en el <head> o aparece repetido en el sitemap.
 // No necesita server: corre en check-all.
+import { etiquetaIdioma } from "../src/motor/i18n/direccion";
 import type { ModoPublicacion, Registro } from "../src/motor/registro";
 import type { Idiomas } from "../src/motor/seo";
 
@@ -125,7 +126,7 @@ async function main() {
           if (!igual(head, idiomas)) fallas.push(`[${modo}] ${url}: el <head> no lleva el clúster`);
           if (sitemap) fallas.push(`[${modo}] ${url}: clúster chico repetido en el sitemap`);
         }
-        paginas.push({ url, locale: m.locale, concepto: p.calculadora.concepto, idiomas });
+        paginas.push({ url, locale: etiquetaIdioma(m.locale), concepto: p.calculadora.concepto, idiomas });
       }
     }
     revisadas += paginas.length;
@@ -134,7 +135,7 @@ async function main() {
     // «Tu sueldo en el mundo»: una página por edición, todas en un clúster, x-default en la de global.
     const mundoSeo = await import("../src/motor/mundo/ui/seo");
     const idiomasMundo = mundoSeo.hreflangMundo(registro, modo);
-    const mundo: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: mundoSeo.urlMundo(m), locale: m.locale, concepto: "mundo", idiomas: idiomasMundo }));
+    const mundo: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: mundoSeo.urlMundo(m), locale: etiquetaIdioma(m.locale), concepto: "mundo", idiomas: idiomasMundo }));
     for (const p of mundo) {
       if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «sueldo en el mundo» no está en el sitemap del mercado`);
       const sitemap = enSitemap.get(p.url);

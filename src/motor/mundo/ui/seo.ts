@@ -1,4 +1,5 @@
 import type { ModoPublicacion, Registro } from "../../registro";
+import { etiquetaIdioma } from "../../i18n/direccion";
 import { urlIntl, type Idiomas } from "../../seo";
 import type { Mercado } from "../../tipos";
 import { SLUG_MUNDO } from "../rutas";
@@ -14,7 +15,7 @@ export function urlMundo(m: Pick<Mercado, "codigo" | "idioma">): string {
 export function hreflangMundo(registro: Registro, modo: ModoPublicacion): Idiomas | undefined {
   const mercados = registro.mercados(modo);
   const idiomas: Idiomas = {};
-  for (const m of mercados) idiomas[m.locale] = urlMundo(m);
+  for (const m of mercados) idiomas[etiquetaIdioma(m.locale)] = urlMundo(m);
   if (Object.keys(idiomas).length < 2) return undefined;
   const global = mercados.find((m) => m.codigo === "global");
   if (global) idiomas["x-default"] = urlMundo(global);
