@@ -1,4 +1,42 @@
 {
   "mercado": "ug",
-  "series": []
+  "series": [
+    {
+      "id": "ug.usd",
+      "nombre": "Bank of Uganda opening middle rate, shillings per US dollar",
+      "unidad": "UGX",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 21,
+      "fuente": {
+        "organismo": "Bank of Uganda",
+        "titulo": "Exchange rates, opening (interbank average middle rate)",
+        "url": "https://bou.or.ug/interest_rates_exchange_rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24",
+        "nota": "Read from the daily OPENING RATES file the page links to (https://bou.or.ug/uploads/OPENING_RATES_4ffc75da06.xlsx)."
+      },
+      "puntos": [["2026-10-22", 4209.76]]
+    },
+    {
+      "id": "ug.inflation",
+      "nombre": "Annual headline inflation (CPI)",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 90,
+      "fuente": {
+        "organismo": "Uganda Bureau of Statistics",
+        "titulo": "Consumer Price Indices and Inflation, press release for September 2026",
+        "url": "https://www.ubos.org/wp-content/uploads/publications/09_2026CPI_Press_Release_September_2026.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24",
+        "nota": "Each month is stored on its first day. June and July 2026 come from the July 2026 press release."
+      },
+      "puntos": [
+        ["2026-06-01", 3.7],
+        ["2026-07-01", 4.0],
+        ["2026-08-01", 4.1],
+        ["2026-09-01", 4.6]
+      ]
+    }
+  ]
 }
