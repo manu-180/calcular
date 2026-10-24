@@ -1,0 +1,62 @@
+{
+  "mercado": "id",
+  "series": [
+    {
+      "id": "id.jisdor",
+      "nombre": "Kurs referensi JISDOR (USD/IDR)",
+      "unidad": "IDR",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Bank Indonesia",
+        "titulo": "Jakarta Interbank Spot Dollar Rate (JISDOR)",
+        "url": "https://www.bi.go.id/id/statistik/informasi-kurs/jisdor/default.aspx",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      },
+      "puntos": [
+        ["2026-10-06", 17910],
+        ["2026-10-07", 17880],
+        ["2026-10-08", 17890],
+        ["2026-10-09", 17884],
+        ["2026-10-12", 17899],
+        ["2026-10-13", 17930],
+        ["2026-10-14", 17898],
+        ["2026-10-15", 17948],
+        ["2026-10-16", 18052],
+        ["2026-10-19", 18050],
+        ["2026-10-20", 18006],
+        ["2026-10-21", 17986],
+        ["2026-10-22", 18047],
+        ["2026-10-23", 18069]
+      ]
+    },
+    {
+      "id": "id.inflasi-tahunan",
+      "nombre": "Inflasi IHK tahunan (year on year)",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 70,
+      "fuente": {
+        "organismo": "Bank Indonesia",
+        "titulo": "Data Inflasi (IHK, sumber BPS)",
+        "url": "https://www.bi.go.id/id/statistik/indikator/data-inflasi.aspx",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24",
+        "nota": "Bank Indonesia menampilkan inflasi tahunan IHK yang dirilis BPS."
+      },
+      "puntos": [
+        ["2025-12-01", 2.92],
+        ["2026-01-01", 3.55],
+        ["2026-02-01", 4.76],
+        ["2026-03-01", 3.48],
+        ["2026-04-01", 2.42],
+        ["2026-05-01", 3.08],
+        ["2026-06-01", 3.34],
+        ["2026-07-01", 2.88],
+        ["2026-08-01", 3.19],
+        ["2026-09-01", 3.28]
+      ]
+    }
+  ]
+}

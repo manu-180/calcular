@@ -1,0 +1,2110 @@
+{
+  "mercado": "id",
+  "datos": [
+    {
+      "id": "id.ter-kategori-a",
+      "nombre": "Tarif efektif rata-rata (TER) bulanan kategori A",
+      "tipo": "escala",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5400000,
+              "tasa": 0
+            },
+            {
+              "desde": 5400000,
+              "hasta": 5650000,
+              "tasa": 0.25
+            },
+            {
+              "desde": 5650000,
+              "hasta": 5950000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 5950000,
+              "hasta": 6300000,
+              "tasa": 0.75
+            },
+            {
+              "desde": 6300000,
+              "hasta": 6750000,
+              "tasa": 1
+            },
+            {
+              "desde": 6750000,
+              "hasta": 7500000,
+              "tasa": 1.25
+            },
+            {
+              "desde": 7500000,
+              "hasta": 8550000,
+              "tasa": 1.5
+            },
+            {
+              "desde": 8550000,
+              "hasta": 9650000,
+              "tasa": 1.75
+            },
+            {
+              "desde": 9650000,
+              "hasta": 10050000,
+              "tasa": 2
+            },
+            {
+              "desde": 10050000,
+              "hasta": 10350000,
+              "tasa": 2.25
+            },
+            {
+              "desde": 10350000,
+              "hasta": 10700000,
+              "tasa": 2.5
+            },
+            {
+              "desde": 10700000,
+              "hasta": 11050000,
+              "tasa": 3
+            },
+            {
+              "desde": 11050000,
+              "hasta": 11600000,
+              "tasa": 3.5
+            },
+            {
+              "desde": 11600000,
+              "hasta": 12500000,
+              "tasa": 4
+            },
+            {
+              "desde": 12500000,
+              "hasta": 13750000,
+              "tasa": 5
+            },
+            {
+              "desde": 13750000,
+              "hasta": 15100000,
+              "tasa": 6
+            },
+            {
+              "desde": 15100000,
+              "hasta": 16950000,
+              "tasa": 7
+            },
+            {
+              "desde": 16950000,
+              "hasta": 19750000,
+              "tasa": 8
+            },
+            {
+              "desde": 19750000,
+              "hasta": 24150000,
+              "tasa": 9
+            },
+            {
+              "desde": 24150000,
+              "hasta": 26450000,
+              "tasa": 10
+            },
+            {
+              "desde": 26450000,
+              "hasta": 28000000,
+              "tasa": 11
+            },
+            {
+              "desde": 28000000,
+              "hasta": 30050000,
+              "tasa": 12
+            },
+            {
+              "desde": 30050000,
+              "hasta": 32400000,
+              "tasa": 13
+            },
+            {
+              "desde": 32400000,
+              "hasta": 35400000,
+              "tasa": 14
+            },
+            {
+              "desde": 35400000,
+              "hasta": 39100000,
+              "tasa": 15
+            },
+            {
+              "desde": 39100000,
+              "hasta": 43850000,
+              "tasa": 16
+            },
+            {
+              "desde": 43850000,
+              "hasta": 47800000,
+              "tasa": 17
+            },
+            {
+              "desde": 47800000,
+              "hasta": 51400000,
+              "tasa": 18
+            },
+            {
+              "desde": 51400000,
+              "hasta": 56300000,
+              "tasa": 19
+            },
+            {
+              "desde": 56300000,
+              "hasta": 62200000,
+              "tasa": 20
+            },
+            {
+              "desde": 62200000,
+              "hasta": 68600000,
+              "tasa": 21
+            },
+            {
+              "desde": 68600000,
+              "hasta": 77500000,
+              "tasa": 22
+            },
+            {
+              "desde": 77500000,
+              "hasta": 89000000,
+              "tasa": 23
+            },
+            {
+              "desde": 89000000,
+              "hasta": 103000000,
+              "tasa": 24
+            },
+            {
+              "desde": 103000000,
+              "hasta": 125000000,
+              "tasa": 25
+            },
+            {
+              "desde": 125000000,
+              "hasta": 157000000,
+              "tasa": 26
+            },
+            {
+              "desde": 157000000,
+              "hasta": 206000000,
+              "tasa": 27
+            },
+            {
+              "desde": 206000000,
+              "hasta": 337000000,
+              "tasa": 28
+            },
+            {
+              "desde": 337000000,
+              "hasta": 454000000,
+              "tasa": 29
+            },
+            {
+              "desde": 454000000,
+              "hasta": 550000000,
+              "tasa": 30
+            },
+            {
+              "desde": 550000000,
+              "hasta": 695000000,
+              "tasa": 31
+            },
+            {
+              "desde": 695000000,
+              "hasta": 910000000,
+              "tasa": 32
+            },
+            {
+              "desde": 910000000,
+              "hasta": 1400000000,
+              "tasa": 33
+            },
+            {
+              "desde": 1400000000,
+              "hasta": null,
+              "tasa": 34
+            }
+          ],
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 58 Tahun 2023, Lampiran (tarif efektif bulanan)",
+            "url": "https://jdih.kemenkeu.go.id/download/e47c3fc4-a912-4bf1-bcad-335fee3f71f8/2023pp058.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.ter-kategori-b",
+      "nombre": "Tarif efektif rata-rata (TER) bulanan kategori B",
+      "tipo": "escala",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 6200000,
+              "tasa": 0
+            },
+            {
+              "desde": 6200000,
+              "hasta": 6500000,
+              "tasa": 0.25
+            },
+            {
+              "desde": 6500000,
+              "hasta": 6850000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 6850000,
+              "hasta": 7300000,
+              "tasa": 0.75
+            },
+            {
+              "desde": 7300000,
+              "hasta": 9200000,
+              "tasa": 1
+            },
+            {
+              "desde": 9200000,
+              "hasta": 10750000,
+              "tasa": 1.5
+            },
+            {
+              "desde": 10750000,
+              "hasta": 11250000,
+              "tasa": 2
+            },
+            {
+              "desde": 11250000,
+              "hasta": 11600000,
+              "tasa": 2.5
+            },
+            {
+              "desde": 11600000,
+              "hasta": 12600000,
+              "tasa": 3
+            },
+            {
+              "desde": 12600000,
+              "hasta": 13600000,
+              "tasa": 4
+            },
+            {
+              "desde": 13600000,
+              "hasta": 14950000,
+              "tasa": 5
+            },
+            {
+              "desde": 14950000,
+              "hasta": 16400000,
+              "tasa": 6
+            },
+            {
+              "desde": 16400000,
+              "hasta": 18450000,
+              "tasa": 7
+            },
+            {
+              "desde": 18450000,
+              "hasta": 21850000,
+              "tasa": 8
+            },
+            {
+              "desde": 21850000,
+              "hasta": 26000000,
+              "tasa": 9
+            },
+            {
+              "desde": 26000000,
+              "hasta": 27700000,
+              "tasa": 10
+            },
+            {
+              "desde": 27700000,
+              "hasta": 29350000,
+              "tasa": 11
+            },
+            {
+              "desde": 29350000,
+              "hasta": 31450000,
+              "tasa": 12
+            },
+            {
+              "desde": 31450000,
+              "hasta": 33950000,
+              "tasa": 13
+            },
+            {
+              "desde": 33950000,
+              "hasta": 37100000,
+              "tasa": 14
+            },
+            {
+              "desde": 37100000,
+              "hasta": 41100000,
+              "tasa": 15
+            },
+            {
+              "desde": 41100000,
+              "hasta": 45800000,
+              "tasa": 16
+            },
+            {
+              "desde": 45800000,
+              "hasta": 49500000,
+              "tasa": 17
+            },
+            {
+              "desde": 49500000,
+              "hasta": 53800000,
+              "tasa": 18
+            },
+            {
+              "desde": 53800000,
+              "hasta": 58500000,
+              "tasa": 19
+            },
+            {
+              "desde": 58500000,
+              "hasta": 64000000,
+              "tasa": 20
+            },
+            {
+              "desde": 64000000,
+              "hasta": 71000000,
+              "tasa": 21
+            },
+            {
+              "desde": 71000000,
+              "hasta": 80000000,
+              "tasa": 22
+            },
+            {
+              "desde": 80000000,
+              "hasta": 93000000,
+              "tasa": 23
+            },
+            {
+              "desde": 93000000,
+              "hasta": 109000000,
+              "tasa": 24
+            },
+            {
+              "desde": 109000000,
+              "hasta": 129000000,
+              "tasa": 25
+            },
+            {
+              "desde": 129000000,
+              "hasta": 163000000,
+              "tasa": 26
+            },
+            {
+              "desde": 163000000,
+              "hasta": 211000000,
+              "tasa": 27
+            },
+            {
+              "desde": 211000000,
+              "hasta": 374000000,
+              "tasa": 28
+            },
+            {
+              "desde": 374000000,
+              "hasta": 459000000,
+              "tasa": 29
+            },
+            {
+              "desde": 459000000,
+              "hasta": 555000000,
+              "tasa": 30
+            },
+            {
+              "desde": 555000000,
+              "hasta": 704000000,
+              "tasa": 31
+            },
+            {
+              "desde": 704000000,
+              "hasta": 957000000,
+              "tasa": 32
+            },
+            {
+              "desde": 957000000,
+              "hasta": 1405000000,
+              "tasa": 33
+            },
+            {
+              "desde": 1405000000,
+              "hasta": null,
+              "tasa": 34
+            }
+          ],
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 58 Tahun 2023, Lampiran (tarif efektif bulanan)",
+            "url": "https://jdih.kemenkeu.go.id/download/e47c3fc4-a912-4bf1-bcad-335fee3f71f8/2023pp058.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.ter-kategori-c",
+      "nombre": "Tarif efektif rata-rata (TER) bulanan kategori C",
+      "tipo": "escala",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 6600000,
+              "tasa": 0
+            },
+            {
+              "desde": 6600000,
+              "hasta": 6950000,
+              "tasa": 0.25
+            },
+            {
+              "desde": 6950000,
+              "hasta": 7350000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 7350000,
+              "hasta": 7800000,
+              "tasa": 0.75
+            },
+            {
+              "desde": 7800000,
+              "hasta": 8850000,
+              "tasa": 1
+            },
+            {
+              "desde": 8850000,
+              "hasta": 9800000,
+              "tasa": 1.25
+            },
+            {
+              "desde": 9800000,
+              "hasta": 10950000,
+              "tasa": 1.5
+            },
+            {
+              "desde": 10950000,
+              "hasta": 11200000,
+              "tasa": 1.75
+            },
+            {
+              "desde": 11200000,
+              "hasta": 12050000,
+              "tasa": 2
+            },
+            {
+              "desde": 12050000,
+              "hasta": 12950000,
+              "tasa": 3
+            },
+            {
+              "desde": 12950000,
+              "hasta": 14150000,
+              "tasa": 4
+            },
+            {
+              "desde": 14150000,
+              "hasta": 15550000,
+              "tasa": 5
+            },
+            {
+              "desde": 15550000,
+              "hasta": 17050000,
+              "tasa": 6
+            },
+            {
+              "desde": 17050000,
+              "hasta": 19500000,
+              "tasa": 7
+            },
+            {
+              "desde": 19500000,
+              "hasta": 22700000,
+              "tasa": 8
+            },
+            {
+              "desde": 22700000,
+              "hasta": 26600000,
+              "tasa": 9
+            },
+            {
+              "desde": 26600000,
+              "hasta": 28100000,
+              "tasa": 10
+            },
+            {
+              "desde": 28100000,
+              "hasta": 30100000,
+              "tasa": 11
+            },
+            {
+              "desde": 30100000,
+              "hasta": 32600000,
+              "tasa": 12
+            },
+            {
+              "desde": 32600000,
+              "hasta": 35400000,
+              "tasa": 13
+            },
+            {
+              "desde": 35400000,
+              "hasta": 38900000,
+              "tasa": 14
+            },
+            {
+              "desde": 38900000,
+              "hasta": 43000000,
+              "tasa": 15
+            },
+            {
+              "desde": 43000000,
+              "hasta": 47400000,
+              "tasa": 16
+            },
+            {
+              "desde": 47400000,
+              "hasta": 51200000,
+              "tasa": 17
+            },
+            {
+              "desde": 51200000,
+              "hasta": 55800000,
+              "tasa": 18
+            },
+            {
+              "desde": 55800000,
+              "hasta": 60400000,
+              "tasa": 19
+            },
+            {
+              "desde": 60400000,
+              "hasta": 66700000,
+              "tasa": 20
+            },
+            {
+              "desde": 66700000,
+              "hasta": 74500000,
+              "tasa": 21
+            },
+            {
+              "desde": 74500000,
+              "hasta": 83200000,
+              "tasa": 22
+            },
+            {
+              "desde": 83200000,
+              "hasta": 95600000,
+              "tasa": 23
+            },
+            {
+              "desde": 95600000,
+              "hasta": 110000000,
+              "tasa": 24
+            },
+            {
+              "desde": 110000000,
+              "hasta": 134000000,
+              "tasa": 25
+            },
+            {
+              "desde": 134000000,
+              "hasta": 169000000,
+              "tasa": 26
+            },
+            {
+              "desde": 169000000,
+              "hasta": 221000000,
+              "tasa": 27
+            },
+            {
+              "desde": 221000000,
+              "hasta": 390000000,
+              "tasa": 28
+            },
+            {
+              "desde": 390000000,
+              "hasta": 463000000,
+              "tasa": 29
+            },
+            {
+              "desde": 463000000,
+              "hasta": 561000000,
+              "tasa": 30
+            },
+            {
+              "desde": 561000000,
+              "hasta": 709000000,
+              "tasa": 31
+            },
+            {
+              "desde": 709000000,
+              "hasta": 965000000,
+              "tasa": 32
+            },
+            {
+              "desde": 965000000,
+              "hasta": 1419000000,
+              "tasa": 33
+            },
+            {
+              "desde": 1419000000,
+              "hasta": null,
+              "tasa": 34
+            }
+          ],
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 58 Tahun 2023, Lampiran (tarif efektif bulanan)",
+            "url": "https://jdih.kemenkeu.go.id/download/e47c3fc4-a912-4bf1-bcad-335fee3f71f8/2023pp058.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.tarif-pasal-17",
+      "nombre": "Tarif PPh Pasal 17 ayat (1) huruf a, wajib pajak orang pribadi",
+      "tipo": "escala",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 60000000,
+              "tasa": 5
+            },
+            {
+              "desde": 60000000,
+              "hasta": 250000000,
+              "tasa": 15
+            },
+            {
+              "desde": 250000000,
+              "hasta": 500000000,
+              "tasa": 25
+            },
+            {
+              "desde": 500000000,
+              "hasta": 5000000000,
+              "tasa": 30
+            },
+            {
+              "desde": 5000000000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 7 Tahun 2021 (Harmonisasi Peraturan Perpajakan)",
+            "url": "https://jdih.kemenkeu.go.id/api/download/a9faab97-aca7-4f87-9fdc-faa8123d1454/7TAHUN2021UU.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.ptkp-diri",
+      "nombre": "PTKP untuk diri wajib pajak",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 54000000,
+          "fuente": {
+            "organismo": "Badan Kebijakan Fiskal, Kementerian Keuangan",
+            "titulo": "PMK Nomor 101/PMK.010/2016 tentang Penyesuaian Besarnya PTKP",
+            "url": "https://fiskal.kemenkeu.go.id/files/peraturan/file/PMK1010102016.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.ptkp-kawin",
+      "nombre": "Tambahan PTKP untuk wajib pajak kawin",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 4500000,
+          "fuente": {
+            "organismo": "Badan Kebijakan Fiskal, Kementerian Keuangan",
+            "titulo": "PMK Nomor 101/PMK.010/2016 tentang Penyesuaian Besarnya PTKP",
+            "url": "https://fiskal.kemenkeu.go.id/files/peraturan/file/PMK1010102016.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.ptkp-tanggungan",
+      "nombre": "Tambahan PTKP untuk setiap tanggungan",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 4500000,
+          "fuente": {
+            "organismo": "Badan Kebijakan Fiskal, Kementerian Keuangan",
+            "titulo": "PMK Nomor 101/PMK.010/2016 tentang Penyesuaian Besarnya PTKP",
+            "url": "https://fiskal.kemenkeu.go.id/files/peraturan/file/PMK1010102016.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.ptkp-tanggungan-maks",
+      "nombre": "Jumlah tanggungan paling banyak",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Badan Kebijakan Fiskal, Kementerian Keuangan",
+            "titulo": "PMK Nomor 101/PMK.010/2016 tentang Penyesuaian Besarnya PTKP",
+            "url": "https://fiskal.kemenkeu.go.id/files/peraturan/file/PMK1010102016.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.biaya-jabatan-tarif",
+      "nombre": "Biaya jabatan",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PMK Nomor 168 Tahun 2023",
+            "url": "https://jdih.kemenkeu.go.id/api/download/e60a82e0-b218-40f5-9d18-b924aa1e11ce/2023pmkeuangan168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.biaya-jabatan-maks-tahun",
+      "nombre": "Biaya jabatan paling banyak setahun",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 6000000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PMK Nomor 168 Tahun 2023",
+            "url": "https://jdih.kemenkeu.go.id/api/download/e60a82e0-b218-40f5-9d18-b924aa1e11ce/2023pmkeuangan168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.biaya-jabatan-maks-bulan",
+      "nombre": "Biaya jabatan paling banyak sebulan",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PMK Nomor 168 Tahun 2023",
+            "url": "https://jdih.kemenkeu.go.id/api/download/e60a82e0-b218-40f5-9d18-b924aa1e11ce/2023pmkeuangan168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.dpp-bukan-pegawai",
+      "nombre": "Dasar pemotongan PPh 21 bukan pegawai",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PMK Nomor 168 Tahun 2023",
+            "url": "https://jdih.kemenkeu.go.id/api/download/e60a82e0-b218-40f5-9d18-b924aa1e11ce/2023pmkeuangan168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.tarif-pph-pesangon",
+      "nombre": "Tarif PPh 21 final atas uang pesangon",
+      "tipo": "escala",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-11-16",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000000,
+              "tasa": 0
+            },
+            {
+              "desde": 50000000,
+              "hasta": 100000000,
+              "tasa": 5
+            },
+            {
+              "desde": 100000000,
+              "hasta": 500000000,
+              "tasa": 15
+            },
+            {
+              "desde": 500000000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 68 Tahun 2009, Pasal 4 dan Pasal 5",
+            "url": "https://jdih.kemenkeu.go.id/api/download/fulltext/2009/68TAHUN2009PP.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.tarif-pph-jht-sekaligus",
+      "nombre": "Tarif PPh 21 final atas JHT, THT atau manfaat pensiun sekaligus",
+      "tipo": "escala",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-11-16",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000000,
+              "tasa": 0
+            },
+            {
+              "desde": 50000000,
+              "hasta": null,
+              "tasa": 5
+            }
+          ],
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 68 Tahun 2009, Pasal 4 dan Pasal 5",
+            "url": "https://jdih.kemenkeu.go.id/api/download/fulltext/2009/68TAHUN2009PP.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.ppn-tarif",
+      "nombre": "Tarif PPN",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PMK Nomor 131 Tahun 2024, Pasal 2 dan Pasal 3",
+            "url": "https://jdih.kemenkeu.go.id/api/download/f128868e-3cf6-4596-8407-c34eeca0e7be/2024pmkeuangan131.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.ppn-dpp-pembilang",
+      "nombre": "DPP nilai lain PPN (pembilang)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 11,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PMK Nomor 131 Tahun 2024, Pasal 2 dan Pasal 3",
+            "url": "https://jdih.kemenkeu.go.id/api/download/f128868e-3cf6-4596-8407-c34eeca0e7be/2024pmkeuangan131.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.ppn-dpp-penyebut",
+      "nombre": "DPP nilai lain PPN (penyebut)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PMK Nomor 131 Tahun 2024, Pasal 2 dan Pasal 3",
+            "url": "https://jdih.kemenkeu.go.id/api/download/f128868e-3cf6-4596-8407-c34eeca0e7be/2024pmkeuangan131.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.pph-final-umkm",
+      "nombre": "Tarif PPh final UMKM",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-20",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 20 Tahun 2026 (perubahan PP 55/2022), Pasal 56 dan Pasal 57",
+            "url": "https://jdih.kemenkeu.go.id/api/download/d057ff82-50e7-4127-b66b-f704a36f071d/2026pp020.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.umkm-batas-omzet",
+      "nombre": "Batas peredaran bruto setahun untuk PPh final UMKM",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-20",
+          "valor": 4800000000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 20 Tahun 2026 (perubahan PP 55/2022), Pasal 56 dan Pasal 57",
+            "url": "https://jdih.kemenkeu.go.id/api/download/d057ff82-50e7-4127-b66b-f704a36f071d/2026pp020.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.umkm-omzet-tidak-kena-pajak",
+      "nombre": "Peredaran bruto setahun yang tidak dikenai PPh (orang pribadi)",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-12-20",
+          "valor": 500000000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 55 Tahun 2022, Pasal 60 ayat (2)",
+            "url": "https://jdih.kemenkeu.go.id/api/download/cab6ec99-3dbc-47c6-adbf-ea5f0f7117d6/55TAHUN2022PP.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.pph-sewa",
+      "nombre": "Tarif PPh final sewa tanah dan/atau bangunan",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-09-06",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 34 Tahun 2017, Pasal 3",
+            "url": "https://jdih.kemenkeu.go.id/api/download/fulltext/2017/34TAHUN2017PP.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.bphtb-tarif-maks",
+      "nombre": "Tarif BPHTB paling tinggi",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-05",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 1 Tahun 2022 (HKPD), Pasal 40, 41, 46 dan 47",
+            "url": "https://jdih.kemenkeu.go.id/api/download/770ecf1d-664b-48a1-88f4-8849b8ca7258/1TAHUN2022UU.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.npoptkp-minimal",
+      "nombre": "NPOPTKP paling sedikit (perolehan hak pertama)",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-05",
+          "valor": 80000000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 1 Tahun 2022 (HKPD), Pasal 40, 41, 46 dan 47",
+            "url": "https://jdih.kemenkeu.go.id/api/download/770ecf1d-664b-48a1-88f4-8849b8ca7258/1TAHUN2022UU.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.npoptkp-waris-minimal",
+      "nombre": "NPOPTKP paling sedikit untuk waris atau hibah wasiat keluarga inti",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-05",
+          "valor": 300000000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 1 Tahun 2022 (HKPD), Pasal 40, 41, 46 dan 47",
+            "url": "https://jdih.kemenkeu.go.id/api/download/770ecf1d-664b-48a1-88f4-8849b8ca7258/1TAHUN2022UU.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.pbb-tarif-maks",
+      "nombre": "Tarif PBB-P2 paling tinggi",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-05",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 1 Tahun 2022 (HKPD), Pasal 40, 41, 46 dan 47",
+            "url": "https://jdih.kemenkeu.go.id/api/download/770ecf1d-664b-48a1-88f4-8849b8ca7258/1TAHUN2022UU.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.njoptkp-minimal",
+      "nombre": "NJOP tidak kena pajak paling sedikit",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-05",
+          "valor": 10000000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 1 Tahun 2022 (HKPD), Pasal 40, 41, 46 dan 47",
+            "url": "https://jdih.kemenkeu.go.id/api/download/770ecf1d-664b-48a1-88f4-8849b8ca7258/1TAHUN2022UU.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.pbb-persen-njop-min",
+      "nombre": "Persentase NJOP untuk perhitungan PBB-P2, paling rendah",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-05",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 1 Tahun 2022 (HKPD), Pasal 40, 41, 46 dan 47",
+            "url": "https://jdih.kemenkeu.go.id/api/download/770ecf1d-664b-48a1-88f4-8849b8ca7258/1TAHUN2022UU.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.pbb-persen-njop-maks",
+      "nombre": "Persentase NJOP untuk perhitungan PBB-P2, paling tinggi",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-05",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 1 Tahun 2022 (HKPD), Pasal 40, 41, 46 dan 47",
+            "url": "https://jdih.kemenkeu.go.id/api/download/770ecf1d-664b-48a1-88f4-8849b8ca7258/1TAHUN2022UU.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.jht-pekerja",
+      "nombre": "Iuran JHT ditanggung pekerja",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 46 Tahun 2015 (Jaminan Hari Tua), Pasal 16",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP_NOMOR_46_TAHUN2015OK.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.jht-pemberi-kerja",
+      "nombre": "Iuran JHT ditanggung pemberi kerja",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-01",
+          "valor": 3.7,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 46 Tahun 2015 (Jaminan Hari Tua), Pasal 16",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP_NOMOR_46_TAHUN2015OK.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.jp-pekerja",
+      "nombre": "Iuran Jaminan Pensiun ditanggung pekerja",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 45 Tahun 2015 (Jaminan Pensiun), Pasal 28",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP_NOMOR_45_TAHUN2015.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.jp-pemberi-kerja",
+      "nombre": "Iuran Jaminan Pensiun ditanggung pemberi kerja",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 45 Tahun 2015 (Jaminan Pensiun), Pasal 28",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP_NOMOR_45_TAHUN2015.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.jp-batas-upah",
+      "nombre": "Batas upah tertinggi iuran Jaminan Pensiun",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-03-01",
+          "valor": 11086300,
+          "motivo": "BPJS Ketenagakerjaan mengumumkan batas upah setiap Maret (PP 45/2015 Pasal 29). Angka 2026 hanya terlihat di akun X resmi BPJS Ketenagakerjaan dan di media; situs bpjsketenagakerjaan.go.id tidak bisa dibuka dari sini dan surat edarannya tidak ditemukan di sumber resmi yang bisa dibaca."
+        }
+      ]
+    },
+    {
+      "id": "id.jkm",
+      "nombre": "Iuran Jaminan Kematian",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-01",
+          "valor": 0.3,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 44 Tahun 2015 (JKK dan JKM)",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP_NOMOR_44_TAHUN2015OK.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.jkk",
+      "nombre": "Iuran Jaminan Kecelakaan Kerja menurut tingkat risiko",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "sangat-rendah": "Sangat rendah (0,24%)",
+        "rendah": "Rendah (0,54%)",
+        "sedang": "Sedang (0,89%)",
+        "tinggi": "Tinggi (1,27%)",
+        "sangat-tinggi": "Sangat tinggi (1,74%)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-01",
+          "valor": {
+            "sangat-rendah": 0.24,
+            "rendah": 0.54,
+            "sedang": 0.89,
+            "tinggi": 1.27,
+            "sangat-tinggi": 1.74
+          },
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 44 Tahun 2015 (JKK dan JKM)",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP_NOMOR_44_TAHUN2015OK.PDF",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.bpjs-kes-pekerja",
+      "nombre": "Iuran BPJS Kesehatan ditanggung pekerja (PPU)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-05-06",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "Perpres Nomor 64 Tahun 2020, Pasal 30, 32 dan 34",
+            "url": "https://jdih.kemenkeu.go.id/api/download/179608f7-a2a0-41c0-aaec-e7d60eb36054/64TAHUN2020PERPRES.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.bpjs-kes-pemberi-kerja",
+      "nombre": "Iuran BPJS Kesehatan ditanggung pemberi kerja (PPU)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-05-06",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "Perpres Nomor 64 Tahun 2020, Pasal 30, 32 dan 34",
+            "url": "https://jdih.kemenkeu.go.id/api/download/179608f7-a2a0-41c0-aaec-e7d60eb36054/64TAHUN2020PERPRES.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.bpjs-kes-batas-upah",
+      "nombre": "Batas upah tertinggi iuran BPJS Kesehatan (PPU)",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-05-06",
+          "valor": 12000000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "Perpres Nomor 64 Tahun 2020, Pasal 30, 32 dan 34",
+            "url": "https://jdih.kemenkeu.go.id/api/download/179608f7-a2a0-41c0-aaec-e7d60eb36054/64TAHUN2020PERPRES.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.bpjs-kes-mandiri",
+      "nombre": "Iuran BPJS Kesehatan peserta mandiri per orang per bulan",
+      "tipo": "mapa",
+      "unidad": "IDR",
+      "etiquetas": {
+        "kelas-1": "Kelas I",
+        "kelas-2": "Kelas II",
+        "kelas-3": "Kelas III"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": {
+            "kelas-1": 150000,
+            "kelas-2": 100000,
+            "kelas-3": 35000
+          },
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "Perpres Nomor 64 Tahun 2020, Pasal 30, 32 dan 34",
+            "url": "https://jdih.kemenkeu.go.id/api/download/179608f7-a2a0-41c0-aaec-e7d60eb36054/64TAHUN2020PERPRES.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.bpjs-kes-bantuan-kelas-3",
+      "nombre": "Bantuan iuran pemerintah untuk peserta mandiri kelas III",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 7000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "Perpres Nomor 64 Tahun 2020, Pasal 30, 32 dan 34",
+            "url": "https://jdih.kemenkeu.go.id/api/download/179608f7-a2a0-41c0-aaec-e7d60eb36054/64TAHUN2020PERPRES.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.lembur-pembagi",
+      "nombre": "Pembagi upah sejam (1/173 upah sebulan)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-02",
+          "valor": 173,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 35 Tahun 2021",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP352021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.lembur-maks-hari",
+      "nombre": "Lembur paling lama sehari",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-02",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 35 Tahun 2021",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP352021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.lembur-maks-minggu",
+      "nombre": "Lembur paling lama seminggu",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-02",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 35 Tahun 2021",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP352021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.lembur-pengali",
+      "nombre": "Pengali upah sejam untuk lembur",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "hari-kerja-jam-pertama": "Hari kerja, jam pertama",
+        "hari-kerja-jam-berikutnya": "Hari kerja, jam berikutnya",
+        "libur-awal": "Hari libur, jam awal",
+        "libur-jam-berikut": "Hari libur, satu jam berikutnya",
+        "libur-akhir": "Hari libur, jam terakhir"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-02",
+          "valor": {
+            "hari-kerja-jam-pertama": 1.5,
+            "hari-kerja-jam-berikutnya": 2,
+            "libur-awal": 2,
+            "libur-jam-berikut": 3,
+            "libur-akhir": 4
+          },
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 35 Tahun 2021",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP352021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.upah-sebulan-pengali-harian",
+      "nombre": "Upah sehari dikali untuk upah sebulan",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "6-hari": "6 hari kerja seminggu",
+        "5-hari": "5 hari kerja seminggu"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-02",
+          "valor": {
+            "6-hari": 25,
+            "5-hari": 21
+          },
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 35 Tahun 2021",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP352021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.uang-pesangon",
+      "nombre": "Uang pesangon menurut masa kerja (tahun penuh)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-02",
+          "valor": {
+            "0": 1,
+            "1": 2,
+            "2": 3,
+            "3": 4,
+            "4": 5,
+            "5": 6,
+            "6": 7,
+            "7": 8,
+            "8": 9
+          },
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 35 Tahun 2021",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP352021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.uang-penghargaan-masa-kerja",
+      "nombre": "Uang penghargaan masa kerja menurut masa kerja (tahun penuh)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-02",
+          "valor": {
+            "3": 2,
+            "6": 3,
+            "9": 4,
+            "12": 5,
+            "15": 6,
+            "18": 7,
+            "21": 8,
+            "24": 10
+          },
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 35 Tahun 2021",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP352021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.pesangon-pengali",
+      "nombre": "Pengali uang pesangon menurut alasan PHK",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "efisiensi-mencegah-rugi": "Efisiensi untuk mencegah kerugian",
+        "efisiensi-rugi": "Efisiensi karena perusahaan rugi",
+        "penggabungan": "Penggabungan, peleburan atau pemisahan perusahaan",
+        "pengambilalihan": "Pengambilalihan perusahaan",
+        "pengambilalihan-syarat-berubah": "Pengambilalihan dengan syarat kerja berubah dan pekerja menolak",
+        "tutup-rugi": "Perusahaan tutup karena rugi 2 tahun",
+        "tutup-bukan-rugi": "Perusahaan tutup bukan karena rugi",
+        "force-majeure-tutup": "Keadaan memaksa dan perusahaan tutup",
+        "force-majeure-tidak-tutup": "Keadaan memaksa tanpa perusahaan tutup",
+        "pkpu-rugi": "PKPU karena perusahaan rugi",
+        "pkpu-bukan-rugi": "PKPU bukan karena rugi",
+        "pailit": "Perusahaan pailit",
+        "pelanggaran-pengusaha": "Pekerja mengajukan PHK karena pengusaha melanggar",
+        "surat-peringatan": "Pelanggaran setelah surat peringatan ketiga",
+        "sakit-berkepanjangan": "Sakit berkepanjangan atau cacat akibat kecelakaan kerja",
+        "pensiun": "Memasuki usia pensiun",
+        "meninggal": "Pekerja meninggal dunia",
+        "mengundurkan-diri": "Mengundurkan diri atas kemauan sendiri"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-02",
+          "valor": {
+            "efisiensi-mencegah-rugi": 1,
+            "efisiensi-rugi": 0.5,
+            "penggabungan": 1,
+            "pengambilalihan": 1,
+            "pengambilalihan-syarat-berubah": 0.5,
+            "tutup-rugi": 0.5,
+            "tutup-bukan-rugi": 1,
+            "force-majeure-tutup": 0.5,
+            "force-majeure-tidak-tutup": 0.75,
+            "pkpu-rugi": 0.5,
+            "pkpu-bukan-rugi": 1,
+            "pailit": 0.5,
+            "pelanggaran-pengusaha": 1,
+            "surat-peringatan": 0.5,
+            "sakit-berkepanjangan": 2,
+            "pensiun": 1.75,
+            "meninggal": 2,
+            "mengundurkan-diri": 0
+          },
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 35 Tahun 2021",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP352021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.upmk-pengali",
+      "nombre": "Pengali uang penghargaan masa kerja menurut alasan PHK",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "efisiensi-mencegah-rugi": "Efisiensi untuk mencegah kerugian",
+        "efisiensi-rugi": "Efisiensi karena perusahaan rugi",
+        "penggabungan": "Penggabungan, peleburan atau pemisahan perusahaan",
+        "pengambilalihan": "Pengambilalihan perusahaan",
+        "pengambilalihan-syarat-berubah": "Pengambilalihan dengan syarat kerja berubah dan pekerja menolak",
+        "tutup-rugi": "Perusahaan tutup karena rugi 2 tahun",
+        "tutup-bukan-rugi": "Perusahaan tutup bukan karena rugi",
+        "force-majeure-tutup": "Keadaan memaksa dan perusahaan tutup",
+        "force-majeure-tidak-tutup": "Keadaan memaksa tanpa perusahaan tutup",
+        "pkpu-rugi": "PKPU karena perusahaan rugi",
+        "pkpu-bukan-rugi": "PKPU bukan karena rugi",
+        "pailit": "Perusahaan pailit",
+        "pelanggaran-pengusaha": "Pekerja mengajukan PHK karena pengusaha melanggar",
+        "surat-peringatan": "Pelanggaran setelah surat peringatan ketiga",
+        "sakit-berkepanjangan": "Sakit berkepanjangan atau cacat akibat kecelakaan kerja",
+        "pensiun": "Memasuki usia pensiun",
+        "meninggal": "Pekerja meninggal dunia",
+        "mengundurkan-diri": "Mengundurkan diri atas kemauan sendiri"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-02-02",
+          "valor": {
+            "efisiensi-mencegah-rugi": 1,
+            "efisiensi-rugi": 1,
+            "penggabungan": 1,
+            "pengambilalihan": 1,
+            "pengambilalihan-syarat-berubah": 1,
+            "tutup-rugi": 1,
+            "tutup-bukan-rugi": 1,
+            "force-majeure-tutup": 1,
+            "force-majeure-tidak-tutup": 1,
+            "pkpu-rugi": 1,
+            "pkpu-bukan-rugi": 1,
+            "pailit": 1,
+            "pelanggaran-pengusaha": 1,
+            "surat-peringatan": 1,
+            "sakit-berkepanjangan": 1,
+            "pensiun": 1,
+            "meninggal": 1,
+            "mengundurkan-diri": 0
+          },
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "PP Nomor 35 Tahun 2021",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/PP352021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.cuti-tahunan",
+      "nombre": "Cuti tahunan paling sedikit",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-31",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 6 Tahun 2023 (Cipta Kerja), Pasal 81 angka 25 (Pasal 79 UU Ketenagakerjaan)",
+            "url": "https://jdih.kemenkeu.go.id/api/download/53aa253f-c2e0-4a7a-9f33-51606c127c3b/2023uu006.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.cuti-tahunan-masa-kerja",
+      "nombre": "Masa kerja terus-menerus untuk hak cuti tahunan",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-31",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "UU Nomor 6 Tahun 2023 (Cipta Kerja), Pasal 81 angka 25 (Pasal 79 UU Ketenagakerjaan)",
+            "url": "https://jdih.kemenkeu.go.id/api/download/53aa253f-c2e0-4a7a-9f33-51606c127c3b/2023uu006.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.thr-masa-kerja-penuh",
+      "nombre": "Masa kerja untuk THR penuh (1 bulan upah)",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-03-08",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "Permenaker Nomor 6 Tahun 2016, Pasal 2 dan Pasal 3",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/permenaker_6_2016.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.thr-masa-kerja-minimal",
+      "nombre": "Masa kerja paling singkat untuk berhak THR",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-03-08",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Kementerian Ketenagakerjaan (JDIH)",
+            "titulo": "Permenaker Nomor 6 Tahun 2016, Pasal 2 dan Pasal 3",
+            "url": "https://jdih.kemnaker.go.id/asset/data_puu/permenaker_6_2016.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.zakat-nisab-bulan",
+      "nombre": "Nisab zakat pendapatan dan jasa per bulan",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-02-21",
+          "valor": 7640144,
+          "motivo": "Keputusan Ketua BAZNAS Nomor 15 Tahun 2026 hanya terbaca di media; baznas.go.id menolak akses (403) dan kajian PDF-nya tidak bisa dibaca utuh."
+        }
+      ]
+    },
+    {
+      "id": "id.zakat-kadar",
+      "nombre": "Kadar zakat pendapatan",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2019-01-01",
+          "valor": 2.5,
+          "motivo": "Kadar 2,5% tercantum di PMA 31/2019 menurut media; teksnya belum dibaca di JDIH Kementerian Agama."
+        }
+      ]
+    },
+    {
+      "id": "id.ump",
+      "nombre": "Upah minimum provinsi (UMP) 2026",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "regiones": [
+        "dki-jakarta",
+        "jawa-timur",
+        "jawa-tengah",
+        "sulawesi-selatan",
+        "nusa-tenggara-timur",
+        "bali",
+        "kalimantan-timur",
+        "sumatera-selatan",
+        "nusa-tenggara-barat",
+        "kepulauan-riau",
+        "papua-tengah",
+        "sumatera-utara"
+      ],
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "dki-jakarta",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 5729876,
+          "fuente": {
+            "organismo": "Pemprov DKI Jakarta (JDIH)",
+            "titulo": "Keputusan Gubernur DKI Jakarta Nomor 1142 Tahun 2025",
+            "url": "https://jdih.jakarta.go.id/dokumenPeraturanDirectory/0031/2025KEPGUB00311142.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "jawa-timur",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2446880.68,
+          "fuente": {
+            "organismo": "Pemprov Jawa Timur (JDIH)",
+            "titulo": "Keputusan Gubernur Jawa Timur Nomor 100.3.3.1/934/013/2025",
+            "url": "https://files.jdih.jatimprov.go.id/jdih-prod/uploads/topics/2025kg00350934.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "jawa-tengah",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2327386.07,
+          "fuente": {
+            "organismo": "Pemprov Jawa Tengah (JDIH)",
+            "titulo": "Keputusan Gubernur Jawa Tengah Nomor 100.3.3.1/504 Tahun 2025",
+            "url": "https://jdih.jatengprov.go.id/produk_hukum/kepgub/sk_100.3.3.1-504_th_2025_auten.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sulawesi-selatan",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3921088.79,
+          "fuente": {
+            "organismo": "Pemprov Sulawesi Selatan",
+            "titulo": "Keputusan Gubernur Sulawesi Selatan Nomor 2129/XII/Tahun 2025",
+            "url": "https://saoraja.sulselprov.go.id/storage/dokumen-publikasi/4qgbikHQgnZzEjm2dUh61wm3936gX8GydWdboYDb.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nusa-tenggara-timur",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2455898,
+          "fuente": {
+            "organismo": "Pemprov NTT (JDIH)",
+            "titulo": "Keputusan Gubernur NTT Nomor 528/KEP/HK/2025",
+            "url": "https://jdih.nttprov.go.id/dokumen/view-lampiran?id=4491",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bali",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3207459,
+          "fuente": {
+            "organismo": "Disnaker ESDM Provinsi Bali",
+            "titulo": "Keputusan Gubernur Bali Nomor 1011/03-M/HK/2025",
+            "url": "https://cloud-ng.baliprov.go.id/disnakeresdm/2025/12/PENGUMUMAN-DAN-SK-UMP-UMSP-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kalimantan-timur",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3762431,
+          "fuente": {
+            "organismo": "Pemprov Kalimantan Timur (JDIH)",
+            "titulo": "Keputusan Gubernur Kalimantan Timur Nomor 100.3.3.1/K.481/2025",
+            "url": "https://jdih.kaltimprov.go.id/storage/dokumen/f7bxChKEN0yvpr3Z5eD2TsQi1xecQcn5lxYeZci3.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sumatera-selatan",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3942963,
+          "fuente": {
+            "organismo": "Disnakertrans Provinsi Sumatera Selatan",
+            "titulo": "Keputusan Nomor 963/KPTS/DISNAKERTRANS/2025",
+            "url": "https://disnakertrans.sumselprov.go.id/news_detail/upah-minimum-dan-upah-sektoral-provinsi-sumatera-selatan-thaun-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "La página es una SPA; el texto se leyó desde su API."
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "nusa-tenggara-barat",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2673861,
+          "fuente": {
+            "organismo": "Disnakertrans Provinsi NTB",
+            "titulo": "Keputusan Gubernur NTB Nomor 100.3.3.1-683 Tahun 2025",
+            "url": "https://disnakertrans.ntbprov.go.id/gubernur-ntb-tetapkan-ump-2026-sebesar-rp267-juta-pengawasan-jadi-fokus-utama/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "kepulauan-riau",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3879520,
+          "fuente": {
+            "organismo": "Pemprov Kepulauan Riau",
+            "titulo": "SK Gubernur Kepulauan Riau Nomor 1327 Tahun 2025 (siaran pers)",
+            "url": "https://www.kepriprov.go.id/siaran-pers/832-rilis-diskominfo-xii-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "papua-tengah",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 4285848,
+          "fuente": {
+            "organismo": "Pemprov Papua Tengah",
+            "titulo": "SK Gubernur Papua Tengah Nomor 100.3.3.1/334 Tahun 2025 (siaran pers)",
+            "url": "https://papuatengahprov.go.id/2025/12/24/pemprov-papua-tengah-tetapkan-ump-2026-sebesar-rp4-285-848/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "sumatera-utara",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3228971,
+          "fuente": {
+            "organismo": "Disnaker Provinsi Sumatera Utara",
+            "titulo": "Penetapan UMP Sumatera Utara 2026 (pengumuman Disnaker)",
+            "url": "https://disnaker.sumutprov.go.id/artikel/gubernur-sumut-bapak-bobby-nasution-menetapkan-ump-sumut-2026-naik-79",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Media menulis Rp3.228.949; dipakai angka halaman resmi."
+          }
+        }
+      ]
+    }
+  ]
+}
