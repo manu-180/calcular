@@ -69,6 +69,7 @@ const IGUALES_PERMITIDOS = new Set([
   // la misma palabra en ese idioma
   "de:embed.pagina.colores.3",
   "it:embed.pagina.colores.0",
+  "ro:embed.pagina.colores.0",
   "it:embed.pagina.colores.3",
   "it:embed.pagina.tema",
   "pt:embed.pagina.buscar",

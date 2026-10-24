@@ -1,4 +1,5 @@
 import type { Idioma, Trato } from "../tipos";
+import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Textos de la calculadora embebible (src/motor/embed) y del generador del código. Va aparte del
@@ -486,7 +487,43 @@ const zh: Diccionario<TextosEmbed> = {
   regional: { "zh-CN": zhHans, "zh-SG": zhHans },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Rumano (ADR 0002, D18): «dumneavoastră» implícito y 2.ª del plural; el país con «pentru».
+const ro: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Calculator CalcularYa",
+    marcaNuevaPestana: "(se deschide într-o filă nouă)",
+    noDisponible: { titulo: "Acest calculator nu este disponibil", texto: "Este posibil să i se fi schimbat adresa." },
+    insertar: "Adăugați-l pe site-ul dumneavoastră",
+    pagina: {
+      titulo: (pais) => [`Calculatoare gratuite pentru site-ul dumneavoastră | ${pais}`, "Calculatoare gratuite pentru site-ul dumneavoastră"],
+      descripcion: (pais) => `Alegeți un calculator ${GRAMATICA.ro.para(pais)}, copiați codul și lipiți-l în blogul sau pe site-ul dumneavoastră. Gratuit, cu date oficiale mereu la zi.`,
+      h1: "Adăugați un calculator pe site-ul dumneavoastră",
+      bajada: "Alegeți calculatorul, copiați codul și lipiți-l unde doriți. Gratuit, iar datele se actualizează singure.",
+      calculadora: "Calculator",
+      buscar: "Căutați un calculator",
+      sinResultados: "Niciun calculator nu corespunde căutării.",
+      tema: "Aspect",
+      claro: "Luminos",
+      oscuro: "Întunecat",
+      ancho: "Lățime",
+      anchoCompleto: "Pe toată lățimea",
+      acento: "Culoare de accent",
+      colores: ["Verde", "Albastru", "Portocaliu", "Roz", "Gri ardezie"],
+      credito: "Afișați linkul către sursă sub calculator",
+      vistaPrevia: "Previzualizare",
+      codigo: "Codul de inserat",
+      copiar: "Copiați codul",
+      copiado: "Codul a fost copiat",
+      ayudaScript: "Scriptul este opțional: potrivește înălțimea calculatorului după conținut.",
+      ventajas: ["Gratuit, fără înregistrare", "Date oficiale mereu la zi", "Se potrivește la orice lățime"],
+      nota: "Sub calculator apare un link către CalcularYa. Vă rugăm să nu îl ștergeți.",
+      verTodas: (pais) => `Vedeți toate calculatoarele ${GRAMATICA.ro.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Calculator CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ro };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

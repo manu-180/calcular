@@ -133,6 +133,17 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       "zh-SG": ZH_HANS_CALCULADORA,
     },
   },
+  // Rumano (ADR 0002, D18): «dumneavoastră» implícito; el botón es «Calculați».
+  ro: {
+    base: {
+      datos: "Datele dumneavoastră",
+      resultado: "Rezultat",
+      vacio: "Completați datele și apăsați „Calculați” ca să vedeți rezultatul.",
+      sinResultado: "Deocamdată nu afișăm acest rezultat.",
+      avisos: { info: "Bine de știut", cautela: "Atenție", bloquea: "De ce nu afișăm rezultatul" },
+      fuenteDelAviso: "Sursa",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

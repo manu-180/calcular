@@ -150,6 +150,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  // Rumano (ADR 0002, D18): «dumneavoastră» implícito y 2.ª del plural.
+  ro: {
+    base: {
+      titulo: "Vă mutați în altă țară sau primiți bani din străinătate?",
+      etiqueta: "Linkuri de afiliere",
+      socios: {
+        wise: "Un cont în mai multe valute, ca să primiți și să trimiteți bani între țări la cursul mediu al pieței, cu un comision afișat dinainte.",
+        deel: "Contracte și plăți pentru cei care lucrează dintr-o țară pentru o firmă din altă țară.",
+      },
+      nota: "Dacă deschideți un cont prin aceste linkuri, site-ul poate primi un comision. Cine se înregistrează nu plătește nimic în plus din cauza asta.",
+      nuevaPestana: "se deschide într-o filă nouă",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

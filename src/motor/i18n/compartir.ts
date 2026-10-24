@@ -1,4 +1,5 @@
 import type { Idioma, Trato } from "../tipos";
+import { pluralRo } from "./plural";
 import { resolver, type Diccionarios } from "./resolver";
 
 // Textos de «Compartir» y de la línea que lleva a «Tu sueldo en el mundo». Viajan en el JS de la
@@ -224,6 +225,24 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
     regional: {
       "zh-CN": ZH_HANS_COMPARTIR,
       "zh-SG": ZH_HANS_COMPARTIR,
+    },
+  },
+  // Rumano (ADR 0002, D18): «dumneavoastră» implícito y 2.ª del plural; «în peste 40 de țări» con
+  // pluralRo.
+  ro: {
+    base: {
+      boton: "Distribuiți",
+      botonAria: "Distribuiți acest calculator",
+      menuTitulo: "Distribuiți pe",
+      copiar: "Copiați linkul",
+      copiado: "Linkul a fost copiat",
+      compartido: "Trimis",
+      errorCorto: "Nu s-a putut copia",
+      errorAyuda: "Nu am putut copia linkul. Copiați-l din bara de adrese a browserului.",
+      nuevaPestana: "se deschide într-o filă nouă",
+      mensaje: (nombre) => `${nombre}. Gratuit, calculul durează un minut.`,
+      puenteIntro: "Și în alte țări?",
+      puenteEnlace: (n) => `Vedeți cât ați primi net în peste ${pluralRo(n, "țară", "țări")}`,
     },
   },
 };

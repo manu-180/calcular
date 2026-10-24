@@ -1,4 +1,5 @@
 import { GRAMATICA } from "./gramatica";
+import { pluralRo } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import type { Idioma, Trato } from "../tipos";
 
@@ -2450,7 +2451,173 @@ const zhHans: TextosMundo = {
 
 const zh: Diccionario<TextosMundo> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── ro ─────────────────────────────
+
+// Rumano (ADR 0002, D18): «dumneavoastră» implícito y 2.ª del plural, como en ANAF SPV, BCR e ING
+// Home'Bank. La tarjeta y el texto para compartir van en 1.ª persona y sin concordar con el género
+// («aș primi net cu 12% mai mult»); el desafío nombra a «persoana care v-a trimis provocarea» para no
+// suponer el género del amigo. El país va con GRAMATICA.ro («în România», «calculatorul României» o
+// «calculatorul din Chile») y los números con pluralRo («în 41 de țări», «în 3 țări»).
+const gRo = GRAMATICA.ro;
+const SEO_RO = "Ziua libertății fiscale și salariul net în fiecare țară";
+const zileRo = (d: number) => pluralRo(d, "zi", "zile");
+const enTariRo = (n: number) => `în ${pluralRo(n, "țară", "țări")}`;
+
+const ro: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Salariul dumneavoastră în lume",
+    seo: {
+      titulo: (pais) => [`${SEO_RO} | ${pais}`, SEO_RO, "Salariul dumneavoastră în lume"],
+      tituloGlobal: [SEO_RO, "Salariul dumneavoastră în lume"],
+      descripcion: (pais, n) => `Aflați până în ce zi a anului lucrați pentru stat cu un salariu ${gRo.en(pais)} și cât ați primi net ${enTariRo(n)}. Gratuit, fără cont.`,
+      descripcionGlobal: (n) => `Aflați până în ce zi a anului lucrați pentru stat și cât ar însemna salariul dumneavoastră net ${enTariRo(n)}. Gratuit, fără cont.`,
+    },
+    ceja: "Ziua dumneavoastră a libertății fiscale",
+    h1: "Până în ce zi a anului lucrați pentru stat?",
+    bajada: (n) => `Introduceți salariul brut ca să vedeți data. Apoi comparați-o ${enTariRo(n)}, cu aceeași putere de cumpărare și regulile fiscale ale fiecărei țări.`,
+    form: {
+      titulo: "Salariul dumneavoastră",
+      sueldo: "Salariul brut",
+      mes: "Pe lună",
+      anio: "Pe an",
+      periodo: "Perioada salariului",
+      pais: "Țara în care lucrați",
+      ejemplo: "Exemplu",
+      ejemploAyuda: "Este un salariu de exemplu. Introduceți-l pe al dumneavoastră și toate cifrele se actualizează imediat.",
+      propio: "Preluat din calculul dumneavoastră.",
+      invalido: "Introduceți o sumă mai mare decât zero.",
+      pagas: "Salariul lunar din fluturașul de salariu: plățile suplimentare obligatorii prin lege (al 13-lea sau al 14-lea salariu) le adăugăm noi. Salariul net este media pe 12 luni.",
+    },
+    heroe: {
+      hasta: (fecha) => `Lucrați pentru stat până la ${fecha}`,
+      tasa: (pct) => `${pct} din salariul dumneavoastră merge la impozitul pe venit și la contribuțiile obligatorii.`,
+      dias: (n, total) => `${n} din ${zileRo(total)}`,
+      enMano: "Net",
+      porMes: "pe lună",
+      anio: (anio, n, total) => `${anio}: ${n} din ${zileRo(total)} pentru stat.`,
+      resto: "Din ziua următoare, tot ce câștigați rămâne la dumneavoastră.",
+    },
+    ranking: {
+      titulo: "Același salariu în fiecare țară",
+      bajada: "Atât ați primi net în fiecare țară, cu aceeași putere de cumpărare. Fiecare rând vine din calculatorul oficial al țării respective.",
+      lista: "Țări după salariul net",
+      buscar: "Căutați o țară",
+      filtrar: "Filtrați după regiune",
+      todas: "Toate",
+      regiones: { americas: "America", europa: "Europa", asia: "Asia și Oceania", africa: "Africa și Orientul Mijlociu" },
+      tuPais: "Țara dumneavoastră",
+      mejor: "Cea mai avantajoasă",
+      enMano: "Net pe lună",
+      enTuMoneda: "În moneda dumneavoastră",
+      vsTuPais: "Față de țara dumneavoastră",
+      verTodos: (n) => `Vedeți toate țările (${n})`,
+      verMenos: "Vedeți mai puține",
+      sinResultados: (q) => `Nicio țară nu corespunde căutării „${q}”.`,
+      abrir: (pais) => `Deschideți calculatorul ${gRo.de(pais)}`,
+      mas: (pct) => `cu ${pct} mai mult`,
+      menos: (pct) => `cu ${pct} mai puțin`,
+      igual: "La fel",
+      puesto: (p, total) => `Țara dumneavoastră este pe locul ${p} din ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Imaginea dumneavoastră de distribuit",
+      bajada: "Arată data și procentele dumneavoastră. Cât câștigați nu apare niciodată.",
+      hasta: (fecha) => `Lucrez pentru stat până la ${fecha}`,
+      tasa: (pct) => `${pct} din salariul meu merge la impozite`,
+      mejor: (pais, pct) => `Cu salariul meu, ${gRo.en(pais)} aș primi net cu ${pct} mai mult`,
+      mejorPropio: (pais) => `Cu salariul meu, cea mai avantajoasă țară pentru mine rămâne ${gRo.nombre(pais)}`,
+      yVos: "Dar dumneavoastră?",
+      cta: "Aflați-vă data:",
+      generica: "Până în ce zi a anului lucrați pentru stat?",
+      genericaBajada: (n) => `Salariul dumneavoastră ${enTariRo(n)}, cu calculatorul oficial al fiecăreia`,
+      compartir: "Distribuiți imaginea",
+      compartirDuelo: "Acceptați provocarea",
+      descargar: "Descărcați imaginea",
+      copiado: "Linkul a fost copiat. Lipiți-l unde doriți.",
+      compartido: "Gata, a fost trimisă.",
+      error: "Nu s-a putut distribui. Încercați din nou.",
+      texto: (fecha) => `Lucrez pentru stat până la ${fecha}. Dar dumneavoastră?`,
+      alt: "Previzualizarea imaginii dumneavoastră",
+    },
+    duelo: {
+      amigo: (fecha) => `Persoana care v-a trimis provocarea lucrează pentru stat până la ${fecha}.`,
+      yVos: "Dar dumneavoastră?",
+      invitacion: "Introduceți salariul ca să comparați.",
+      vos: "Dumneavoastră",
+      elAmigo: "Cealaltă persoană",
+      dia: "Lucrează pentru stat până la",
+      tasa: "Impozite și contribuții",
+      mejorPais: "Cea mai avantajoasă țară",
+      antes: (d) => `Vă eliberați cu ${zileRo(d)} mai devreme decât cealaltă persoană.`,
+      despues: (d) => `Cealaltă persoană se eliberează cu ${zileRo(d)} mai devreme decât dumneavoastră.`,
+      empate: "Aveți aceeași zi a libertății fiscale.",
+      desde: (pais) => `Lucrează ${gRo.en(pais)}`,
+    },
+    cero: {
+      dia: "nicio zi",
+      heroeAntes: "Lucrați pentru stat",
+      tarjetaAntes: "Lucrez pentru stat",
+      motivo: "Din acest salariu nu se rețin nici impozit pe venit, nici contribuții obligatorii.",
+      texto: "Anul acesta nu lucrez nicio zi pentru stat. Dar dumneavoastră?",
+      amigo: "Persoana care v-a trimis provocarea nu lucrează nicio zi pentru stat.",
+    },
+    metodo: {
+      titulo: "Cum calculăm",
+      estimacion: "Este o estimare pentru a compara țări, nu un fluturaș de salariu. Deducerile, copiii sau primele pot schimba cifra dumneavoastră.",
+      supuestos: [
+        "O persoană necăsătorită și fără copii, cu valorile implicite din calculatorul fiecărei țări.",
+        "Salariul net este ce rămâne după impozitul pe venit și contribuțiile plătite de angajat. Taxele pe consum și contribuțiile angajatorului nu intră în calcul.",
+        "Al 13-lea salariu și celelalte plăți suplimentare obligatorii se împart pe an așa cum prevede legea fiecărei țări.",
+        "În Statele Unite nu se adaugă impozitul statal și cel local: doar impozitul federal și contribuțiile pe salariu.",
+        "Ca să mutăm salariul dumneavoastră în altă țară folosim paritatea puterii de cumpărare (PPC): același nivel de trai, nu cursul de schimb de astăzi.",
+        "PPC-ul Argentinei se actualizează cu indicele prețurilor de consum al INDEC, pentru că Banca Mondială îl publică doar până în 2021.",
+        "Ziua libertății împarte impozitele pe tot anul, începând cu 1 ianuarie. Dacă 30% din salariu merge la impozite, lucrați pentru stat 30% din an.",
+      ],
+      ppaTitulo: "Paritatea puterii de cumpărare",
+      bancoMundial: "Banca Mondială",
+      ppa: (organismo, indicador, anio) => `${organismo}, indicatorul ${indicador}, ultimul an disponibil: ${anio}.`,
+      consultado: (fecha) => `Consultat la ${fecha}.`,
+      verFuente: "Vedeți sursa",
+      fuentesTitulo: "Sursa fiecărei țări",
+      fuentesBajada: "Fiecare rând folosește calculatorul de salariu net al țării respective și datele ei oficiale.",
+      verificado: (fecha) => `Date verificate la ${fecha}`,
+      sello: (fecha) => `Date oficiale verificate la sursa fiecărei țări. Cea mai veche verificare: ${fecha}.`,
+    },
+    faqTitulo: "Întrebări frecvente",
+    faq: (n) => [
+      {
+        pregunta: "Ce este ziua libertății fiscale?",
+        respuesta:
+          "Este ziua din an în care terminați de plătit impozitele, dacă tot ce câștigați de la 1 ianuarie ar merge mai întâi la stat. Aici se calculează cu salariul dumneavoastră, nu cu media țării.",
+      },
+      {
+        pregunta: "De ce comparația se face după puterea de cumpărare?",
+        respuesta: "Din cauza cursului de schimb, un salariu poate părea uriaș sau foarte mic în funcție de zi. PPC-ul compară ce se poate cumpăra cu adevărat cu acești bani în fiecare țară.",
+      },
+      {
+        pregunta: "Se salvează salariul meu?",
+        respuesta: "Nu. Calculul se face în browserul dumneavoastră. Ce distribuiți conține doar date, procente și țări.",
+      },
+      {
+        pregunta: "De ce salariul meu net real este altul?",
+        respuesta:
+          "Pornim de la o persoană necăsătorită, fără copii și cu valorile implicite. Deducerile, primele sau regimurile speciale schimbă cifra. Pentru un calcul exact pentru situația dumneavoastră, deschideți calculatorul țării în care lucrați.",
+      },
+      {
+        pregunta: "Ce țări sunt incluse?",
+        respuesta: `Astăzi lista are ${pluralRo(n, "țară", "țări")}, fiecare cu calculatorul ei de salariu net și cu date oficiale. Adăugăm altele imediat ce le verificăm regulile fiscale.`,
+      },
+    ],
+    destacado: {
+      ceja: "Comparație mondială",
+      titulo: "Până în ce zi a anului lucrați pentru stat?",
+      texto: "Introduceți salariul și vedeți cât ați primi net în alte țări.",
+      ir: "Aflați-vă data",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ro };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

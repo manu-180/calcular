@@ -1,6 +1,7 @@
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
 import { GRAMATICA } from "./gramatica";
+import { pluralRo } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Calendario laboral y fiscal de cada edición. Los textos no le hablan a nadie en segunda persona a
@@ -739,7 +740,83 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Rumano (ADR 0002, D18): impersonal como los demás; el país va con «pentru» o «în» (GRAMATICA.ro),
+// que no cambian con la terminación del nombre, y los días con pluralRo («3 zile», «20 de zile»).
+const gRo = GRAMATICA.ro;
+const zileRo = (n: number) => pluralRo(n, "zi", "zile");
+const ro: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Calendar salarial și fiscal",
+    seo: {
+      titulo: (pais, anios) => [
+        `Calendar salarial și fiscal ${anios} ${gRo.para(pais)}: date-cheie`,
+        `Calendar salarial și fiscal ${anios} ${gRo.para(pais)}`,
+        `Calendar salarial ${gRo.para(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Datele care schimbă salariul ${gRo.en(pais)}, din surse oficiale: ${proximas}. Fiecare are calculatorul ei.`,
+      descripcionSin: (pais) => `Datele care schimbă salariul ${gRo.en(pais)}, din surse oficiale și cu calculatorul potrivit. Se pot adăuga în calendarul telefonului.`,
+    },
+    ceja: (anios) => `Calendarul ${anios}`,
+    h1: (pais) => `Calendar salarial și fiscal ${gRo.para(pais)}`,
+    acento: "datele de care depinde salariul",
+    bajada: "Fiecare dată vine dintr-o sursă oficială și duce la calculatorul pe care îl influențează. Pagina se actualizează singură când se publică o valoare nouă.",
+    proxima: "Următoarea dată",
+    cuenta: {
+      hoy: "Astăzi",
+      manana: "Mâine",
+      ayer: "Ieri",
+      en: (n) => `Peste ${zileRo(n)}`,
+      hace: (n) => `Acum ${zileRo(n)}`,
+      dias: (n) => (Number(n) === 1 ? "zi" : "zile"),
+    },
+    queViene: "Ce urmează",
+    yaRige: "Ce se aplică deja",
+    mesPorMes: "Anul lună cu lună",
+    sinFechas: "Nu s-au anunțat schimbări",
+    filtro: "Filtrare după temă",
+    todo: "Toate",
+    tipos: { pago: "Plăți", "salario-minimo": "Salariul minim", impuestos: "Impozite", aportes: "Contribuții și pensii", laboral: "Reguli de muncă", indices: "Valori de referință" },
+    pasa: (antes, despues) => `Se schimbă de la ${antes} la ${despues}`,
+    queda: (valor) => `Rămâne la ${valor}`,
+    cambian: "Valorile se schimbă",
+    zonas: (lista) => `Regiuni: ${lista}`,
+    limite: "Termen limită",
+    agregar: "Adăugați în calendarul meu",
+    descargar: "Apple, Outlook și altele (fișier .ics)",
+    google: "Google Calendar",
+    calcular: "Calculați",
+    tambien: "Și în calculatoarele",
+    fuente: (organismo, fecha) => `Sursa: ${organismo}. Verificat la ${fecha}.`,
+    verificado: (fecha) => `Verificat la ${fecha}`,
+    suscribir: {
+      titulo: "Tot calendarul, mereu la zi",
+      texto: "Cu abonamentul, datele noi apar singure în calendarul de pe telefon sau de pe calculator.",
+      boton: "Abonați-vă la calendar",
+      copiar: "Copiați linkul",
+      copiado: "Linkul a fost copiat",
+    },
+    fuentes: {
+      titulo: "De unde vine fiecare dată",
+      texto: "Aici intră doar datele stabilite deja printr-un act normativ sau printr-o valoare publicată de instituția oficială. Ce nu s-a publicat încă nu apare.",
+    },
+    vacio: "Pentru această temă nu există date în următoarele douăsprezece luni.",
+    destacado: {
+      ceja: "Calendar salarial",
+      titulo: "Datele de care depinde salariul anul acesta",
+      ir: "Vedeți calendarul",
+      proxima: (titulo, fecha) => `Următoarea: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Calendar salarial și fiscal ${gRo.para(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Datele salariale și fiscale ${gRo.en(pais)}, din surse oficiale.`,
+      calculadora: "Calculator",
+      fuente: "Sursa",
+    },
+    og: { proxima: "Următoarea dată", mas: (n) => `Și încă ${pluralRo(n, "dată", "date")} anul acesta` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ro };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);
