@@ -47,6 +47,7 @@ varias veces por límite de uso.
 | Angola | claude/pais-ao | en curso |
 | Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
 | Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Motor tailandés (th) | claude/mundo-motor-th | terminado el 24/10 (núcleo, venta y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -76,6 +77,25 @@ Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/z
 - Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
 
 El cron datos-paises no está actualizando uy, hn y bo.
+
+## 24/10/2026 · Motor tailandés (`claude/mundo-motor-th`)
+
+th en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`ngoen-duean-thua-lok`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con el slug en inglés
+del catálogo (como ja, ko y zh). Registro cortés y neutro de SCB, Kasikorn y กรมสรรพากร: sin คุณ/ท่าน,
+sin ครับ/ค่ะ y sin punto final; mercados con `trato: "usted"`. Fechas en พ.ศ. (calendario por defecto de
+th en Intl) y cifras arábigas; `parsearNumero` lee «2.5 ล้าน» y los dígitos tailandeses; `anchoVisual`
+no cuenta vocales ni tonos apilados. CSS con `word-break: normal` para el corte por diccionario.
+Decisiones en ADR 0002, D13. Edición de prueba `zz-th`.
+
+Falta para publicar Tailandia:
+- El país en sí (BRIEF-PAIS): ภาษีเงินได้บุคคลธรรมดา (escala y deducciones de rd.go.th), ประกันสังคม
+  (sso.go.th, 5 % con tope), ค่าจ้างขั้นต่ำ por provincia, ภาษีมูลค่าเพิ่ม 7 %, ภาษีหัก ณ ที่จ่าย,
+  ค่าชดเชย por despido (Ley de protección laboral), con datos verificados en fuentes oficiales.
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- La OG de las calculadoras intl (`og/[[...slug]]`) no carga fuentes CJK ni tailandesas (igual que hoy
+  para ja/ko/zh): con un título tailandés puede salir con cuadritos. Solo la tarjeta del mundo carga
+  Noto Sans Thai.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 
