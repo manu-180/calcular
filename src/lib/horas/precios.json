@@ -1,0 +1,921 @@
+{
+  "version": 1,
+  "actualizadoEl": "2026-10-23",
+  "precios": {
+    "AR": {
+      "spotify-premium": {
+        "monto": 4499,
+        "moneda": "ARS",
+        "url": "https://www.spotify.com/ar/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "AT": {
+      "iphone-17": {
+        "monto": 1099,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/at/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1449,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/at/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1399,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/at/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 12.99,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/at/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "AU": {
+      "iphone-17": {
+        "monto": 1549,
+        "moneda": "AUD",
+        "url": "https://www.apple.com/au/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 2099,
+        "moneda": "AUD",
+        "url": "https://www.apple.com/au/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 2099,
+        "moneda": "AUD",
+        "url": "https://www.apple.com/au/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 15.99,
+        "moneda": "AUD",
+        "url": "https://www.spotify.com/au/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "BE": {
+      "iphone-17": {
+        "monto": 1119,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/be-fr/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1479,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/be-fr/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1429,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/be-fr/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 13.99,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/be-nl/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "BO": {
+      "spotify-premium": {
+        "monto": 6.49,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/bo/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "BR": {
+      "iphone-17": {
+        "monto": 8299,
+        "moneda": "BRL",
+        "url": "https://www.apple.com/br/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 11999,
+        "moneda": "BRL",
+        "url": "https://www.apple.com/br/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 15999,
+        "moneda": "BRL",
+        "url": "https://www.apple.com/br/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 23.9,
+        "moneda": "BRL",
+        "url": "https://www.spotify.com/br-pt/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "CA": {
+      "iphone-17": {
+        "monto": 1299,
+        "moneda": "CAD",
+        "url": "https://www.apple.com/ca/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1749,
+        "moneda": "CAD",
+        "url": "https://www.apple.com/ca/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1799,
+        "moneda": "CAD",
+        "url": "https://www.apple.com/ca/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 13.99,
+        "moneda": "CAD",
+        "url": "https://www.spotify.com/ca-en/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "CH": {
+      "iphone-17": {
+        "monto": 899,
+        "moneda": "CHF",
+        "url": "https://www.apple.com/ch-de/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1199,
+        "moneda": "CHF",
+        "url": "https://www.apple.com/ch-de/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1249,
+        "moneda": "CHF",
+        "url": "https://www.apple.com/ch-de/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 15.95,
+        "moneda": "CHF",
+        "url": "https://www.spotify.com/ch-de/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "CL": {
+      "iphone-17": {
+        "monto": 1099990,
+        "moneda": "CLP",
+        "url": "https://www.apple.com/cl/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1549990,
+        "moneda": "CLP",
+        "url": "https://www.apple.com/cl/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1499990,
+        "moneda": "CLP",
+        "url": "https://www.apple.com/cl/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 4950,
+        "moneda": "CLP",
+        "url": "https://www.spotify.com/cl/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "CO": {
+      "spotify-premium": {
+        "monto": 18500,
+        "moneda": "COP",
+        "url": "https://www.spotify.com/co-es/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "CR": {
+      "spotify-premium": {
+        "monto": 6.99,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/cr/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "DE": {
+      "iphone-17": {
+        "monto": 1099,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/de/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1449,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/de/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1399,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/de/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 12.99,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/de/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "DO": {
+      "spotify-premium": {
+        "monto": 6.49,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/do/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "EC": {
+      "spotify-premium": {
+        "monto": 6.99,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/ec/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "ES": {
+      "iphone-17": {
+        "monto": 1109,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/es/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1469,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/es/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1429,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/es/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 11.99,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/es/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "FR": {
+      "iphone-17": {
+        "monto": 1119,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/fr/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1479,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/fr/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1399,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/fr/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 12.14,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/fr/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "GB": {
+      "iphone-17": {
+        "monto": 899,
+        "moneda": "GBP",
+        "url": "https://www.apple.com/uk/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1199,
+        "moneda": "GBP",
+        "url": "https://www.apple.com/uk/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1299,
+        "moneda": "GBP",
+        "url": "https://www.apple.com/uk/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 12.99,
+        "moneda": "GBP",
+        "url": "https://www.spotify.com/uk/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "GH": {
+      "spotify-premium": {
+        "monto": 24,
+        "moneda": "GHS",
+        "url": "https://www.spotify.com/gh/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "GT": {
+      "spotify-premium": {
+        "monto": 6.49,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/gt/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "HK": {
+      "iphone-17": {
+        "monto": 7799,
+        "moneda": "HKD",
+        "url": "https://www.apple.com/hk/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 10499,
+        "moneda": "HKD",
+        "url": "https://www.apple.com/hk/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 10499,
+        "moneda": "HKD",
+        "url": "https://www.apple.com/hk/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 78,
+        "moneda": "HKD",
+        "url": "https://www.spotify.com/hk-zh/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "HN": {
+      "spotify-premium": {
+        "monto": 6.49,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/hn/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "IE": {
+      "iphone-17": {
+        "monto": 1129,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/ie/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1489,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/ie/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1449,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/ie/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 12.99,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/ie/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "IN": {
+      "iphone-17": {
+        "monto": 99900,
+        "moneda": "INR",
+        "url": "https://www.apple.com/in/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 164900,
+        "moneda": "INR",
+        "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 149900,
+        "moneda": "INR",
+        "url": "https://www.apple.com/in/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "IT": {
+      "iphone-17": {
+        "monto": 1129,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/it/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1489,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/it/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1449,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/it/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 11.99,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/it/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "KE": {
+      "spotify-premium": {
+        "monto": 419,
+        "moneda": "KES",
+        "url": "https://www.spotify.com/ke-en/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "LU": {
+      "iphone-17": {
+        "monto": 1082,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/lu/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1430.1,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/lu/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1381.76,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/lu/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 13.99,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/lu-fr/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "MA": {
+      "spotify-premium": {
+        "monto": 45,
+        "moneda": "MAD",
+        "url": "https://www.spotify.com/ma-fr/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "MX": {
+      "iphone-17": {
+        "monto": 21999,
+        "moneda": "MXN",
+        "url": "https://www.apple.com/mx/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 29999,
+        "moneda": "MXN",
+        "url": "https://www.apple.com/mx/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 29999,
+        "moneda": "MXN",
+        "url": "https://www.apple.com/mx/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 139,
+        "moneda": "MXN",
+        "url": "https://www.spotify.com/mx/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "MY": {
+      "iphone-17": {
+        "monto": 4299,
+        "moneda": "MYR",
+        "url": "https://www.apple.com/my/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 5499,
+        "moneda": "MYR",
+        "url": "https://www.apple.com/my/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 5499,
+        "moneda": "MYR",
+        "url": "https://www.apple.com/my/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 17.5,
+        "moneda": "MYR",
+        "url": "https://www.spotify.com/my-en/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "NG": {
+      "spotify-premium": {
+        "monto": 1600,
+        "moneda": "NGN",
+        "url": "https://www.spotify.com/ng/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "NI": {
+      "spotify-premium": {
+        "monto": 6.49,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/ni/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "NL": {
+      "iphone-17": {
+        "monto": 1119,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/nl/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1479,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/nl/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1429,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/nl/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 13.99,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/nl/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "NZ": {
+      "iphone-17": {
+        "monto": 1899,
+        "moneda": "NZD",
+        "url": "https://www.apple.com/nz/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 2549,
+        "moneda": "NZD",
+        "url": "https://www.apple.com/nz/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 2599,
+        "moneda": "NZD",
+        "url": "https://www.apple.com/nz/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 20.99,
+        "moneda": "NZD",
+        "url": "https://www.spotify.com/nz/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "PA": {
+      "spotify-premium": {
+        "monto": 6.99,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/pa/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "PE": {
+      "spotify-premium": {
+        "monto": 20.9,
+        "moneda": "PEN",
+        "url": "https://www.spotify.com/pe/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "PH": {
+      "iphone-17": {
+        "monto": 69990,
+        "moneda": "PHP",
+        "url": "https://www.apple.com/ph/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 94990,
+        "moneda": "PHP",
+        "url": "https://www.apple.com/ph/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 89990,
+        "moneda": "PHP",
+        "url": "https://www.apple.com/ph/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 169,
+        "moneda": "PHP",
+        "url": "https://www.spotify.com/ph-en/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "PK": {
+      "spotify-premium": {
+        "monto": 379,
+        "moneda": "PKR",
+        "url": "https://www.spotify.com/pk-en/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "PT": {
+      "iphone-17": {
+        "monto": 1139,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/pt/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1499,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/pt/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1449,
+        "moneda": "EUR",
+        "url": "https://www.apple.com/pt/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 8.99,
+        "moneda": "EUR",
+        "url": "https://www.spotify.com/pt-pt/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "PY": {
+      "spotify-premium": {
+        "monto": 5.99,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/py/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "SG": {
+      "iphone-17": {
+        "monto": 1449,
+        "moneda": "SGD",
+        "url": "https://www.apple.com/sg/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1899,
+        "moneda": "SGD",
+        "url": "https://www.apple.com/sg/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1899,
+        "moneda": "SGD",
+        "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 11.98,
+        "moneda": "SGD",
+        "url": "https://www.spotify.com/sg-en/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "SN": {
+      "spotify-premium": {
+        "monto": 3.29,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/sn-fr/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "SV": {
+      "spotify-premium": {
+        "monto": 6.49,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/sv/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "TZ": {
+      "spotify-premium": {
+        "monto": 7500,
+        "moneda": "TZS",
+        "url": "https://www.spotify.com/tz-en/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "US": {
+      "iphone-17": {
+        "monto": 899,
+        "moneda": "USD",
+        "url": "https://www.apple.com/shop/buy-iphone/iphone-17",
+        "consultadoEl": "2026-10-23"
+      },
+      "iphone-18-pro": {
+        "monto": 1199,
+        "moneda": "USD",
+        "url": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+        "consultadoEl": "2026-10-23"
+      },
+      "macbook-air": {
+        "monto": 1299,
+        "moneda": "USD",
+        "url": "https://www.apple.com/shop/buy-mac/macbook-air",
+        "consultadoEl": "2026-10-23"
+      },
+      "spotify-premium": {
+        "monto": 12.99,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/us/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "UY": {
+      "spotify-premium": {
+        "monto": 8.99,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/uy/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    },
+    "VE": {
+      "spotify-premium": {
+        "monto": 6.49,
+        "moneda": "USD",
+        "url": "https://www.spotify.com/ve-es/premium/",
+        "consultadoEl": "2026-10-23"
+      }
+    }
+  },
+  "sinDato": {
+    "AR": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "BO": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "CO": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "CR": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "DO": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "EC": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "GH": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "GT": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "HN": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "IN": {
+      "spotify-premium": "el país no tiene el plan Premium Individual"
+    },
+    "KE": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "MA": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "NG": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "NI": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "PA": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "PE": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "PK": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "PY": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "SN": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "SV": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "TZ": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "UY": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "VE": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online"
+    },
+    "ZA": {
+      "iphone-17": "el país no tiene tienda oficial online",
+      "iphone-18-pro": "el país no tiene tienda oficial online",
+      "macbook-air": "el país no tiene tienda oficial online",
+      "spotify-premium": "el país no tiene el plan Premium Individual"
+    }
+  }
+}
