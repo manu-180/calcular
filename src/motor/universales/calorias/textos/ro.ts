@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosRo: TextosUi<UiCalorias> = {
+  slug: "calculator-calorii",
+  ui: () => ({
+    sexo: "Sex",
+    mujer: "Feminin",
+    hombre: "Masculin",
+    edad: "Vârsta (ani)",
+    peso: (u) => `Greutatea (${u})`,
+    altura: (u) => `Înălțimea (${u})`,
+    pies: "Înălțimea: picioare (ft)",
+    pulgadas: "Înălțimea: inci",
+    actividad: "Nivel de activitate",
+    sedentaria: "Puțină sau deloc",
+    ligera: "Ușoară (1 până la 3 zile pe săptămână)",
+    moderada: "Moderată (3 până la 5 zile pe săptămână)",
+    alta: "Intensă (6 sau 7 zile pe săptămână)",
+    muyAlta: "Foarte intensă (antrenamente grele sau muncă fizică)",
+    objetivo: "Obiectiv",
+    mantener: "Să îmi mențin greutatea",
+    bajar: "Să slăbesc treptat",
+    subir: "Să mă îngraș treptat",
+    basal: "Metabolismul bazal (kcal pe zi)",
+    basalAyuda: "Ce arde corpul în repaus complet.",
+    mantenimiento: "Calorii pentru menținerea greutății (kcal pe zi)",
+    calObjetivo: "Calorii pentru obiectiv (kcal pe zi)",
+    calObjetivoAyuda: "O schimbare moderată: cu 500 kcal mai puțin pe zi pentru slăbit, cu 300 mai mult pentru îngrășat.",
+    errorEdad: "Formula este pentru persoane între 15 și 100 de ani.",
+    errorPeso: "Greutatea trebuie să fie mai mare decât 0.",
+    errorAltura: "Înălțimea trebuie să fie mai mare decât 0.",
+    notaMinimo: (kcal) => `Pentru slăbit, cifra nu coboară sub ${kcal} kcal pe zi. O alimentație sub acest nivel se face cu sprijinul unui specialist.`,
+    aviso: "Este o estimare cu ecuația Mifflin-St Jeor. Fiecare corp este diferit: nu înlocuiește consultul unui medic sau al unui nutriționist.",
+  }),
+};
