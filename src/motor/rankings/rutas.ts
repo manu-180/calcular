@@ -15,6 +15,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   ja: "kunibetsu-ranking",
   ko: "gukgabyeol-sunwi",
   zh: "guojia-paiming",
+  uk: "reitynh-krain",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -33,6 +34,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   ja: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   ko: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   zh: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
+  // uk con la transliteración oficial ucraniana (resolución 55/2010; ADR 0002, D15).
+  uk: { rinde: "kupivelna-spromozhnist-zarplaty", libertad: "den-podatkovoi-svobody", aumento: "skilky-zalyshaietsia-vid-pidvyshchennia" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {
