@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["BDT"],
   zonaHoraria: "Asia/Dhaka",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 120,
 };
