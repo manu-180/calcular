@@ -153,7 +153,13 @@ const TUMI_TUI = palabrasBn("তুমি|তোমার|তোমাকে|ত
 const IMPERATIVO_TUMI = palabrasBn("করো|দাও|দেখো|লেখো|জানাও|চাপো|রাখো|পড়ো|শোনো|বলো|এসো|যাও|ভাবো|নিও|দিও|কোরো");
 const PUNTO_LATINO_BN = /[\p{sc=Beng}%)]\.(?=\s|$)/u;
 
-function reglasBn(texto: string): string[] {
+// Lo que va entre {{ }} es un marcador que el motor rellena con el número ya formateado en bn-BD (o
+// una expresión, como el índice [1] de una escala): se mide como una cifra bengalí, «০», para que ni
+// su índice latino ni el «।» que lo sigue cuenten como error.
+const MARCADOR_BN = /\{\{[\s\S]*?\}\}/g;
+
+function reglasBn(original: string): string[] {
+  const texto = original.replace(MARCADOR_BN, "০");
   const p: string[] = [];
   if (texto.includes("!")) p.push("signo de exclamación");
   if (PUNTO_LATINO_BN.test(texto)) p.push("punto latino al final de una oración en bengalí (va el dari «।»)");

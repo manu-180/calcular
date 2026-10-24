@@ -65,7 +65,8 @@ const prueba = clasificar([{ iso: "AA", clave: 9 }, { iso: "BB", clave: 7 }, { i
 if (prueba !== "1,2,2,4") fallas.push(`clasificar da ${prueba} en vez de 1,2,2,4`);
 
 // ---------- Frase de posición por edición ----------
-const numeros = (s: string) => (s.match(/\d+/g) ?? []).map(Number);
+// bn escribe las cifras con dígitos bengalíes (ADR 0002, D14): se leen como ASCII antes de buscarlas.
+const numeros = (s: string) => (s.replace(/[০-৯]/g, (d) => String(d.charCodeAt(0) - 0x09e6)).match(/\d+/g) ?? []).map(Number);
 let ediciones = 0;
 for (const modo of ["produccion", "interno"] as const) {
   for (const m of registro.mercados(modo)) {

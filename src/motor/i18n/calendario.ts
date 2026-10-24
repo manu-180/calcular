@@ -1,5 +1,6 @@
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
+import { cifrasBn } from "./bengali";
 import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
@@ -739,7 +740,72 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Bengalí (ADR 0002, D14): «আপনি» con las formas corteses, dari «।» y dígitos bengalíes (cifrasBn
+// para lo que llega como número). El bengalí no flexiona detrás de un número («৩ দিন»).
+const gBn = GRAMATICA.bn;
+const cBn = cifrasBn;
+const bn: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "বেতন ও করের ক্যালেন্ডার",
+    seo: {
+      titulo: (pais, anios) => [`${gBn.de(pais)} বেতন ও করের ক্যালেন্ডার ${cBn(anios)}: জরুরি তারিখ`, `${gBn.de(pais)} বেতন ও করের ক্যালেন্ডার ${cBn(anios)}`, `${gBn.de(pais)} বেতন ক্যালেন্ডার`],
+      descripcion: (pais, proximas) => `${gBn.en(pais)} বেতনে প্রভাব ফেলে এমন তারিখ, সরকারি সূত্র থেকে: ${cBn(proximas)}। প্রতিটির সঙ্গে তার ক্যালকুলেটর।`,
+      descripcionSin: (pais) => `${gBn.en(pais)} বেতনে প্রভাব ফেলে এমন তারিখ, সরকারি সূত্র থেকে, প্রতিটির সঙ্গে তার ক্যালকুলেটর। ফোনের ক্যালেন্ডারে যোগ করে নিন।`,
+    },
+    ceja: (anios) => `${cBn(anios)} সালের ক্যালেন্ডার`,
+    h1: (pais) => `${gBn.de(pais)} বেতন ও করের ক্যালেন্ডার`,
+    acento: "যে তারিখগুলো আপনার বেতন বদলায়",
+    bajada: "প্রতিটি তারিখ সরকারি সূত্র থেকে নেওয়া, আর যে ক্যালকুলেটরে তার প্রভাব পড়ে সেটির সঙ্গে যুক্ত। নতুন মান প্রকাশ হলে পাতাটি নিজেই হালনাগাদ হয়।",
+    proxima: "পরের তারিখ",
+    cuenta: { hoy: "আজ", manana: "আগামীকাল", ayer: "গতকাল", en: (n) => `${cBn(n)} দিন পর`, hace: (n) => `${cBn(n)} দিন আগে`, dias: () => "দিন" },
+    queViene: "সামনে যা আছে",
+    yaRige: "এখন চালু আছে",
+    mesPorMes: "মাসে মাসে পুরো বছর",
+    sinFechas: "কোনো পরিবর্তনের ঘোষণা নেই",
+    filtro: "বিষয় অনুযায়ী বাছাই",
+    todo: "সব",
+    tipos: { pago: "পরিশোধ", "salario-minimo": "ন্যূনতম মজুরি", impuestos: "কর", aportes: "চাঁদা ও পেনশন", laboral: "শ্রমের নিয়ম", indices: "হিসাবের সূচক" },
+    pasa: (antes, despues) => `আগে: ${cBn(antes)}। এখন: ${cBn(despues)}`,
+    queda: (valor) => `নতুন মান: ${cBn(valor)}`,
+    cambian: "অঙ্ক বদলায়",
+    zonas: (lista) => `যে এলাকায় প্রযোজ্য: ${lista}`,
+    limite: "শেষ তারিখ",
+    agregar: "আমার ক্যালেন্ডারে যোগ করুন",
+    descargar: "Apple, Outlook ও অন্যান্য (.ics ফাইল)",
+    google: "Google ক্যালেন্ডার",
+    calcular: "হিসাব করুন",
+    tambien: "আরও দেখুন",
+    fuente: (organismo, fecha) => `সূত্র: ${organismo}। যাচাই ${cBn(fecha)} তারিখে।`,
+    verificado: (fecha) => `যাচাই ${cBn(fecha)} তারিখে`,
+    suscribir: {
+      titulo: "পুরো ক্যালেন্ডার, সব সময় হালনাগাদ",
+      texto: "একবার সাবস্ক্রাইব করলে নতুন তারিখগুলো ফোন বা কম্পিউটারের ক্যালেন্ডারে নিজে থেকেই চলে আসবে।",
+      boton: "ক্যালেন্ডারে সাবস্ক্রাইব করুন",
+      copiar: "লিংক কপি করুন",
+      copiado: "লিংক কপি হয়েছে",
+    },
+    fuentes: {
+      titulo: "প্রতিটি তারিখ কোথা থেকে আসে",
+      texto: "শুধু সেই তারিখগুলো থাকে, যার মান আইনে ঠিক করা বা কোনো সরকারি দপ্তর প্রকাশ করেছে। যা এখনো প্রকাশ হয়নি, তা দেখানো হয় না।",
+    },
+    vacio: "আগামী বারো মাসে এই বিষয়ে কোনো তারিখ নেই।",
+    destacado: {
+      ceja: "বেতন ক্যালেন্ডার",
+      titulo: "এ বছর যে তারিখগুলো আপনার বেতনে প্রভাব ফেলে",
+      ir: "ক্যালেন্ডার দেখুন",
+      proxima: (titulo, fecha) => `পরেরটি: ${titulo}, ${cBn(fecha)}`,
+    },
+    ics: {
+      nombre: (pais) => `${gBn.de(pais)} বেতন ও করের ক্যালেন্ডার (CalcularYa)`,
+      descripcion: (pais) => `${gBn.en(pais)} বেতন ও করের তারিখ, সরকারি সূত্র থেকে।`,
+      calculadora: "ক্যালকুলেটর",
+      fuente: "সূত্র",
+    },
+    og: { proxima: "পরের তারিখ", mas: (n) => `এ বছর আরও ${cBn(n)}টি তারিখ আছে` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, bn };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

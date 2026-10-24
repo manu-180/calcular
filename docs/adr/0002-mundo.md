@@ -194,6 +194,13 @@ h1 y FAQ sí van con la búsqueda en bengalí («লোন ক্যালকু
 calculadoras locales del país: el término en inglés que usa el sitio oficial (`income-tax`, `vat`,
 `sanchayapatra` solo si el agente de país lo encuentra así en las búsquedas). «Tu sueldo en el mundo»:
 `bishwe-beton` (transliteración de «বিশ্বে বেতন», como las romanizaciones de D8 para esa página).
+Las piezas que sumó main después (24/10) siguen esa transliteración: rankings en `desher-ranking`
+(`kothay-beton-beshi-chole`, `kor-mukti-dibos`, `beton-briddhir-koto-thake`), horas de trabajo en
+`koto-ghonta-kaj`, calendario en `beton-calendar` y sueldos reales en `asol-beton`. Los productos del
+índice de horas van en bengalí (আইফোন ১৭, ম্যাকবুক এয়ার), como se escriben en la prensa del país.
+Los `rellenar` de plantillas con {marcas} (horas, sueldos y los textos de mundo en el navegador) pasan
+a dígitos bengalíes los valores cuando la plantilla está en bengalí (`valorPara`); el resto de los
+idiomas queda igual.
 
 **Largos de SEO.** `anchoVisual` (`src/motor/ancho.ts`) mide el bengalí con los avances de Nirmala UI
 contra Arial: una letra o un dígito bengalí vale 1,5; el hasanta y los signos que van sobre o bajo la
