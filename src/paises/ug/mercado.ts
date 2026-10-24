@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["UGX"],
   zonaHoraria: "Africa/Kampala",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 0, modo: "mitad-arriba" },
   escala: 4000,
 };
