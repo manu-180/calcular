@@ -24,6 +24,14 @@ import barnbidrag from "./calculadoras/barnbidrag";
 import contenidoBarnbidrag from "./contenido/barnbidrag";
 import momskalkylator from "./calculadoras/momskalkylator";
 import contenidoMomskalkylator from "./contenido/momskalkylator";
+import ranteavdrag from "./calculadoras/ranteavdrag";
+import contenidoRanteavdrag from "./contenido/ranteavdrag";
+import skattPaBostadsforsaljning from "./calculadoras/skatt-pa-bostadsforsaljning";
+import contenidoSkattPaBostadsforsaljning from "./contenido/skatt-pa-bostadsforsaljning";
+import iskSkatt from "./calculadoras/isk-skatt";
+import contenidoIskSkatt from "./contenido/isk-skatt";
+import csnAterbetalning from "./calculadoras/csn-aterbetalning";
+import contenidoCsnAterbetalning from "./contenido/csn-aterbetalning";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +56,10 @@ export default definirPais({
     { definicion: sjukpenning, contenido: contenidoSjukpenning, cliente: () => import("./calculadoras/sjukpenning.cliente") },
     { definicion: barnbidrag, contenido: contenidoBarnbidrag, cliente: () => import("./calculadoras/barnbidrag.cliente") },
     { definicion: momskalkylator, contenido: contenidoMomskalkylator, cliente: () => import("./calculadoras/momskalkylator.cliente") },
+    { definicion: ranteavdrag, contenido: contenidoRanteavdrag, cliente: () => import("./calculadoras/ranteavdrag.cliente") },
+    { definicion: skattPaBostadsforsaljning, contenido: contenidoSkattPaBostadsforsaljning, cliente: () => import("./calculadoras/skatt-pa-bostadsforsaljning.cliente") },
+    { definicion: iskSkatt, contenido: contenidoIskSkatt, cliente: () => import("./calculadoras/isk-skatt.cliente") },
+    { definicion: csnAterbetalning, contenido: contenidoCsnAterbetalning, cliente: () => import("./calculadoras/csn-aterbetalning.cliente") },
   ],
   universales: "todas",
   novedades,
