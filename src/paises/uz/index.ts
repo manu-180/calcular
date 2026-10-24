@@ -20,6 +20,12 @@ import kasallikNafaqasi from "./calculadoras/kasallik-nafaqasi";
 import contenidoKasallikNafaqasi from "./contenido/kasallik-nafaqasi";
 import dekretPuliHisoblash from "./calculadoras/dekret-puli-hisoblash";
 import contenidoDekretPuliHisoblash from "./contenido/dekret-puli-hisoblash";
+import ishdanBoshatishNafaqasi from "./calculadoras/ishdan-boshatish-nafaqasi";
+import contenidoIshdanBoshatishNafaqasi from "./contenido/ishdan-boshatish-nafaqasi";
+import ogohlantirishMuddati from "./calculadoras/ogohlantirish-muddati";
+import contenidoOgohlantirishMuddati from "./contenido/ogohlantirish-muddati";
+import ortiqchaIshVaqti from "./calculadoras/ortiqcha-ish-vaqti";
+import contenidoOrtiqchaIshVaqti from "./contenido/ortiqcha-ish-vaqti";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -42,6 +48,9 @@ export default definirPais({
     { definicion: ortachaIshHaqiHisoblash, contenido: contenidoOrtachaIshHaqiHisoblash, cliente: () => import("./calculadoras/ortacha-ish-haqi-hisoblash.cliente") },
     { definicion: kasallikNafaqasi, contenido: contenidoKasallikNafaqasi, cliente: () => import("./calculadoras/kasallik-nafaqasi.cliente") },
     { definicion: dekretPuliHisoblash, contenido: contenidoDekretPuliHisoblash, cliente: () => import("./calculadoras/dekret-puli-hisoblash.cliente") },
+    { definicion: ishdanBoshatishNafaqasi, contenido: contenidoIshdanBoshatishNafaqasi, cliente: () => import("./calculadoras/ishdan-boshatish-nafaqasi.cliente") },
+    { definicion: ogohlantirishMuddati, contenido: contenidoOgohlantirishMuddati, cliente: () => import("./calculadoras/ogohlantirish-muddati.cliente") },
+    { definicion: ortiqchaIshVaqti, contenido: contenidoOrtiqchaIshVaqti, cliente: () => import("./calculadoras/ortiqcha-ish-vaqti.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "uz.qqs" } }] },
   novedades,
