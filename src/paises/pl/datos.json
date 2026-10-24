@@ -661,6 +661,26 @@
       ]
     },
     {
+      "id": "pl.wspolczynnik-malego-zus",
+      "nombre": "Współczynnik podstawy małego ZUS plus (art. 18c ust. 3)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o systemie ubezpieczeń społecznych, tekst jednolity Dz.U. 2026 poz. 199",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
       "id": "pl.limit-malego-zus",
       "nombre": "Limit przychodu z poprzedniego roku dla małego ZUS plus",
       "tipo": "numero",
@@ -925,6 +945,41 @@
           "valor": {
             "ponizej-10": 20,
             "od-10": 26
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Kodeks pracy, tekst jednolity Dz.U. 2026 poz. 1245",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001245",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.staz-za-szkole",
+      "nombre": "Lata stażu urlopowego za ukończoną szkołę (art. 155 § 1 k.p.)",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "brak": "Bez szkoły zawodowej, średniej ani wyższej",
+        "zasadnicza": "Zasadnicza szkoła zawodowa",
+        "srednia-zawodowa": "Średnia szkoła zawodowa",
+        "srednia-ogolna": "Liceum ogólnokształcące",
+        "policealna": "Szkoła policealna",
+        "wyzsza": "Studia wyższe"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "brak": 0,
+            "zasadnicza": 3,
+            "srednia-zawodowa": 5,
+            "srednia-ogolna": 4,
+            "policealna": 6,
+            "wyzsza": 8
           },
           "fuente": {
             "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
