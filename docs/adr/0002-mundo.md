@@ -207,7 +207,7 @@ venta y al mail.
 **Ofertas.** `src/lib/pagos/textos/ar.ts` está en `IDIOMAS_VENTA`, con las mismas piezas por familia
 que el español. Un mercado árabe vende desde el día en que se registra.
 
-**Prueba.** `zz-ar` (زيتالاند) es una edición interna de zz en `ar-EG-u-ca-gregory-nu-latn`.
+**Prueba.** `zz-ar` (زيتالاند) es una edición interna de zz en `ar-001-u-ca-gregory-nu-latn` (árabe sin país, como `en-001` y `ja-001`): con `ar-EG` compartía locale con Egipto y sumaba fallas de hreflang en modo interno.
 `check_universales` prueba eg, sa, ma-ar y un nombre de país largo; `check_motor` prueba el parseo
 de dígitos arábigo-índicos y los plurales.
 

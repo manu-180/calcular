@@ -4,7 +4,7 @@ export const mercado: MercadoEdicion = {
   codigo: "zz-ar",
   pais: "ZZ",
   nombre: "زيتالاند",
-  locale: "ar-EG-u-ca-gregory-nu-latn",
+  locale: "ar-001-u-ca-gregory-nu-latn",
   idioma: "ar",
   trato: "usted",
   estado: "interno",
