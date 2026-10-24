@@ -8,6 +8,7 @@ import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { openGraphDe } from "@/lib/seo";
 import { AGUINALDO_FUENTES, SEMESTRES_2026 } from "@/data/aguinaldo";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 export const metadata: Metadata = {
   title: "Calculadora de aguinaldo 2026: cuánto cobrás de SAC",
@@ -405,6 +406,7 @@ export default function AguinaldoPage() {
           .
         </p>
       </section>
+      <OtrosPaises concepto="bono-semestral" />
     </article>
   );
 }
