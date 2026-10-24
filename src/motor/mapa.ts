@@ -10,6 +10,8 @@ import { hreflangIndice, hreflangRanking, urlsRankings } from "./rankings/seo";
 import { PRODUCTOS } from "./horas/productos";
 import { hreflangHoras, urlHoras } from "./horas/ui/seo";
 import { calendarioPublicado, urlCalendario } from "./calendario/rutas";
+import { edicionPrincipal } from "./mundo/rutas";
+import { hreflangSueldos, urlSueldosIntl } from "./sueldos/seo";
 
 const masNueva = (fechas: readonly (FechaISO | undefined)[], tope: FechaISO): FechaISO | undefined =>
   fechas.filter((f): f is FechaISO => Boolean(f) && f! <= tope).sort().at(-1);
@@ -102,7 +104,16 @@ function entradaCalendario(registro: Registro, m: Mercado, modo: ReturnType<type
   return [{ url: urlCalendario(m), lastmod: masNueva(c.eventos.flatMap((e) => [e.fecha, e.fuente.verificadoEl]), c.fecha) }];
 }
 
-function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false): EntradaSitemap[] {
+// «Sueldos reales» del país, solo si tiene alguna ocupación publicada (la página es noindex hasta
+// entonces). `sueldos` son los países publicados, leídos de la base por quien arma el sitemap; sin él
+// (los checks, llms.txt, las fechas) la página no entra. Sin lastmod: la foto se rehace cada día.
+function entradaSueldos(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean, sueldos?: ReadonlySet<string>): EntradaSitemap[] {
+  if (!sueldos?.has(edicionPrincipal(m.codigo))) return [];
+  const idiomas = conAlternos ? hreflangSueldos(registro, modo, edicionPrincipal(m.codigo)) : undefined;
+  return [{ url: urlSueldosIntl(m), ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) }];
+}
+
+function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false, sueldos?: ReadonlySet<string>): EntradaSitemap[] {
   const fecha = hoyEn(m);
   const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).map((c) => {
     const alternos = conAlternos ? alternosEnSitemap(registro, c, fecha, modo) : undefined;
@@ -118,6 +129,7 @@ function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof 
     ...entradasRankings(registro, m, modo, conAlternos),
     ...entradasHoras(registro, m, modo, conAlternos),
     ...entradaCalendario(registro, m, modo),
+    ...entradaSueldos(registro, m, modo, conAlternos, sueldos),
     ...calculadoras,
     ...PAGINAS_MERCADO.map((p) => ({ url: urlIntl(m.codigo, p), lastmod: porPagina[p] })),
   ];
@@ -132,13 +144,13 @@ export function actualizacionDeInicioPais(registro: Registro, m: Mercado, modo: 
 // route handlers y check_hreflang (para que sitemap y hreflang hablen de las mismas páginas).
 // conAlternos: el sitemap del mercado (mapa-xml) y check_hreflang; el índice, llms.txt y las fechas
 // solo necesitan url y lastmod.
-export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, opciones: { conAlternos?: boolean } = {}): EntradaSitemap[] | null {
+export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, opciones: { conAlternos?: boolean; sueldos?: ReadonlySet<string> } = {}): EntradaSitemap[] | null {
   if (!intlActivo()) return null;
   const modo = modoPublicacion();
   const mercados = registro.mercados(modo);
   const m = mercados.find((x) => x.codigo === codigo);
   if (!m) return null;
-  if (m.codigo !== "global") return entradasDePais(registro, m, modo, opciones.conAlternos);
+  if (m.codigo !== "global") return entradasDePais(registro, m, modo, opciones.conAlternos, opciones.sueldos);
   const paises = mercados.filter((x) => x.codigo !== "global");
   const inicio = masNueva(
     paises.map((p) => entradasDePais(registro, p, modo)[0].lastmod),

@@ -13,7 +13,8 @@ import { PaginaSueldos } from "@/motor/sueldos/ui/PaginaSueldos";
 import "../sueldo-en-el-mundo/estilos-ar.css";
 
 // «Sueldos reales» de Argentina en calcular.ar: la misma página de calcularya, con voseo, en pesos y con
-// el aporte en /sueldo-en-el-mundo. Sin ocupaciones publicadas, fuera del índice.
+// el aporte en /sueldo-en-el-mundo. Sin ocupaciones publicadas, fuera del índice y del sitemap
+// (sitemap.ts lee los mismos datos).
 
 export const revalidate = 3600;
 

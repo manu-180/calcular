@@ -7,15 +7,21 @@ import { esPeriodoIndexable } from '@/lib/archivo-mensual'
 import { MESES_CANASTA, slugDeMesCanasta } from '@/lib/canasta-basica-meses'
 import { aniosDisponibles, ULTIMO_PERIODO } from '@/lib/inflacion'
 import { hoyAR } from '@/lib/hoy'
+import { paisesConSueldos } from '@/lib/sueldos/lectura'
 import { ultimoCambio } from '@/lib/novedades'
 import { SITIO } from '@/lib/seo'
 import { RUTA_MUNDO_AR } from '@/motor/mundo/rutas'
 import { hreflangMundo } from '@/motor/mundo/ui/seo'
+import { RUTA_SUELDOS_AR } from '@/motor/sueldos/rutas'
 import { hreflangVaAlSitemap } from '@/motor/seo'
 import { hreflangARActivo, intlActivo, modoPublicacion } from '@/motor/sitio'
 import { registro } from '@/paises'
 
 const BASE = SITIO
+
+// «Sueldos reales» entra cuando la foto diaria publica una ocupación de Argentina: se rearma cada hora
+// para enterarse sin deploy (la lectura está cacheada y tiene tope de espera).
+export const revalidate = 3600
 
 // Sin changeFrequency ni priority: Google y Bing los ignoran. Lo único que usan es lastmod, y solo
 // mientras sea creíble, así que cada fecha es la del último cambio real de la página: la misma que
@@ -172,8 +178,15 @@ function alternosMundo(): Record<string, string> | undefined {
   return idiomas && hreflangVaAlSitemap(idiomas) ? idiomas : undefined
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Sin base o con error el conjunto viene vacío: la página queda afuera y el sitemap sale igual.
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  return armarSitemap((await paisesConSueldos()).has('ar'))
+}
+
+// Sincrónica y aparte para los checks (check_seo, check_archivo_mensual), que no esperan a la base.
+export function armarSitemap(conSueldos = false): MetadataRoute.Sitemap {
   const hoy = hoyAR()
+  const sueldos: Entrada[] = conSueldos ? [{ ruta: RUTA_SUELDOS_AR }] : []
 
   const fijas: Entrada[] = PAGINAS.map(([url, fecha]) => ({ ruta: url.slice(BASE.length), fecha }))
   const blog: Entrada[] = BLOG_POSTS.map(([slug, fecha]) => ({ ruta: `/blog/${slug}`, fecha }))
@@ -215,7 +228,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ] as const
   ).map(([url, fecha]) => ({ ruta: url.slice(BASE.length), fecha }))
 
-  const resto = [...fijas, ...hubs, ...convenios, ...cuota, ...canasta, ...inflacion, ...blog]
+  const resto = [...fijas, ...sueldos, ...hubs, ...convenios, ...cuota, ...canasta, ...inflacion, ...blog]
   const inicio: Entrada = { ruta: '/', fecha: mayor(resto.map((e) => e.fecha)) }
 
   const mundo = alternosMundo()

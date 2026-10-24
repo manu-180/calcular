@@ -32,13 +32,13 @@ export function BarraRango({ p25, p50, p75, propio, tope }: { p25: number; p50: 
   );
 }
 
-// Cuántos aportes tiene la celda de los K que hacen falta, en puntos (como el año de la página del
-// mundo). El texto accesible lo pone quien lo usa.
-export function PuntosProgreso({ n, k, etiqueta }: { n: number; k: number; etiqueta: string }) {
-  const llenos = Math.min(n, k);
+// Qué tan cerca está una celda de publicarse, en tres pasos: con aportes, falta poco, publicada. Nunca
+// la cuenta exacta (ver Tramo en tipos.ts). El texto accesible lo pone quien lo usa.
+export function TramoProgreso({ tramo, etiqueta }: { tramo: "lejos" | "cerca" | null; etiqueta: string }) {
+  const llenos = tramo === "cerca" ? 2 : tramo === "lejos" ? 1 : 0;
   return (
-    <span className="cy-su-puntos" role="img" aria-label={etiqueta}>
-      {Array.from({ length: k }, (_, i) => (
+    <span className="cy-su-tramo" role="img" aria-label={etiqueta}>
+      {[0, 1, 2].map((i) => (
         <i key={i} data-lleno={i < llenos ? "" : undefined} style={{ "--i": i } as CSSProperties} />
       ))}
     </span>

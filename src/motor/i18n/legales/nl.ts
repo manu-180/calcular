@@ -90,8 +90,8 @@ export const nl: DiccionarioLegal = ({ actualizado, mail }) => ({
         {
           titulo: "Gedeelde salarissen",
           parrafos: [
-            "Bij ‘Echte salarissen’ kan iedereen anoniem en vrijwillig een salaris toevoegen, alleen na uitdrukkelijke toestemming. We bewaren het land, het beroep (uit een vaste lijst), de ervaringsgroep, het bruto maandsalaris afgerond op twee significante cijfers en de maand. We bewaren geen IP-adres, browser, account of exacte datum.",
-            "We publiceren alleen de mediaan en de spreiding van groepen van 10 mensen of meer. Een individueel salaris wordt nooit getoond.",
+            "Bij ‘Echte salarissen’ kan iedereen anoniem en vrijwillig een salaris toevoegen, alleen na uitdrukkelijke toestemming. We bewaren het land, het beroep (uit een vaste lijst), de ervaringsgroep, het bruto maandsalaris afgerond op twee significante cijfers en de maand. We bewaren geen IP-adres, browser of account. Tot de update van de volgende dag bewaren we ook de dag van de bijdrage en een vingerafdruk van de verbinding, versleuteld met een sleutel die elke dag verandert en waarmee het IP-adres niet te achterhalen is; aan het eind van de dag worden beide gewist.",
+            "De cijfers worden één keer per dag gepubliceerd. Een beroep verschijnt vanaf 10 bijdragen, gedaan op meerdere dagen en in minstens twee verschillende maanden. We tonen alleen de mediaan en de spreiding, afgerond, en het aantal bijdragen in bereiken. Zo kan niemand het salaris van een persoon afleiden door de pagina op twee dagen te vergelijken. Een individueel salaris wordt nooit getoond.",
             "Om te voorkomen dat hetzelfde land twee keer in dezelfde maand wordt toegevoegd, onthoudt de browser in de lokale opslag het land en de maand van de bijdrage, nooit het bedrag.",
             "Omdat een bijdrage aan niemand gekoppeld is, is ze later niet terug te vinden om te verwijderen.",
           ],

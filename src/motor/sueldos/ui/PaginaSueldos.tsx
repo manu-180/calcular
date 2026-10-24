@@ -2,7 +2,7 @@ import type { TextosSueldos } from "../../i18n/sueldos";
 import type { Idioma } from "../../tipos";
 import { JsonLd } from "../../ui/Sitio";
 import { EXPERIENCIAS, OCUPACIONES, type Ocupacion } from "../catalogo";
-import type { AgregadosPais, OcupacionPublica } from "../tipos";
+import { TRAMOS, type AgregadosPais, type OcupacionPublica, type TramoPublicado } from "../tipos";
 import { dinero, lugares, mesLegible, rellenar } from "./comun";
 import { BarraRango } from "./piezas";
 import "../../mundo/ui/estilos-mundo.css";
@@ -33,7 +33,11 @@ export function PaginaSueldos({ t, idioma, locale, nombrePais, moneda, datos, k,
   const plata = (n: number) => dinero(n, datos?.moneda || moneda, locale);
   const filas: Fila[] = datos ? OCUPACIONES.flatMap((o) => (datos.ocupaciones[o] ? [{ o, d: datos.ocupaciones[o]! }] : [])) : [];
   const publicadas = filas.filter((f) => f.d.cifras).sort((a, b) => b.d.cifras!.p50 - a.d.cifras!.p50);
-  const enCamino = filas.filter((f) => !f.d.cifras && f.d.total > 0).sort((a, b) => b.d.total - a.d.total);
+  // Las que tienen aportes pero no se publican: primero las que están cerca, después en el orden del idioma.
+  const enCamino = filas
+    .filter((f) => !f.d.cifras)
+    .sort((a, b) => TRAMOS.indexOf(b.d.tramo) - TRAMOS.indexOf(a.d.tramo) || t.ocupaciones[a.o].localeCompare(t.ocupaciones[b.o], locale));
+  const tramo = (x: string) => t.tramos[x as TramoPublicado] ?? "";
   const titulo = rellenar(tp.h1, { enPais, pais: nombrePais });
   const cifrasTabla = publicadas.flatMap(({ d }) => [d.cifras!, ...EXPERIENCIAS.flatMap((e) => (d.porExperiencia[e]?.cifras ? [d.porExperiencia[e]!.cifras!] : []))]);
   const tope = cifrasTabla.length ? { min: Math.min(...cifrasTabla.map((c) => c.p25)), max: Math.max(...cifrasTabla.map((c) => c.p75)) } : undefined;
@@ -110,12 +114,13 @@ export function PaginaSueldos({ t, idioma, locale, nombrePais, moneda, datos, k,
                         <td className="cy-su-barra-celda cy-su-ocultar-movil">
                           <BarraRango p25={c.p25} p50={c.p50} p75={c.p75} tope={tope} />
                         </td>
-                        <td className="cy-su-num">{c.n}</td>
+                        <td className="cy-su-num">{tramo(d.tramo)}</td>
                       </tr>
                     );
                     const subs = EXPERIENCIAS.flatMap((e) => {
-                      const ce = d.porExperiencia[e]?.cifras;
-                      if (!ce) return [];
+                      const sub = d.porExperiencia[e];
+                      const ce = sub?.cifras;
+                      if (!sub || !ce) return [];
                       return [
                         <tr key={`${o}-${e}`} data-sub="">
                           <th scope="row">{t.experiencias[e]}</th>
@@ -124,7 +129,7 @@ export function PaginaSueldos({ t, idioma, locale, nombrePais, moneda, datos, k,
                           <td className="cy-su-barra-celda cy-su-ocultar-movil">
                             <BarraRango p25={ce.p25} p50={ce.p50} p75={ce.p75} tope={tope} />
                           </td>
-                          <td className="cy-su-num">{ce.n}</td>
+                          <td className="cy-su-num">{tramo(sub.tramo)}</td>
                         </tr>,
                       ];
                     });
@@ -156,18 +161,15 @@ export function PaginaSueldos({ t, idioma, locale, nombrePais, moneda, datos, k,
             <h2 id="cy-su-camino-titulo" className="cy-mundo-h2">
               {tp.enCaminoTitulo}
             </h2>
-            <p className="cy-mundo-bajada">{rellenar(tp.enCaminoBajada, { k })}</p>
+            <p className="cy-mundo-bajada">{tp.enCaminoBajada}</p>
           </div>
           <ul className="cy-su-en-camino">
-            {enCamino.map(({ o, d }) => {
-              const faltan = Math.max(1, k - d.total);
-              return (
-                <li key={o}>
-                  {t.ocupaciones[o]}
-                  <span>{faltan === 1 ? tp.falta1 : rellenar(tp.faltan, { n: faltan })}</span>
-                </li>
-              );
-            })}
+            {enCamino.map(({ o, d }) => (
+              <li key={o}>
+                {t.ocupaciones[o]}
+                <span>{d.tramo === "cerca" ? tp.cerca : tp.lejos}</span>
+              </li>
+            ))}
           </ul>
         </section>
       ) : null}

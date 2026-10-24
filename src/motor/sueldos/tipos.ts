@@ -1,13 +1,20 @@
 import type { Trato } from "../tipos";
 import type { Experiencia, Ocupacion } from "./catalogo";
 
-// Lo que la base publica de una celda: siempre la cuenta de aportes (para decir «somos 6 de 10») y las
-// cifras solo con K o más. La cuenta no dice cuánto gana nadie; las cifras salen de 10 personas o más.
+// Cuántos aportes tiene una celda, nunca la cuenta exacta (comparar dos fotos diría cuántos entraron):
+// sin publicar, «lejos» o «cerca» (CERCA de catalogo.ts); publicada, el rango.
+export const TRAMOS_PUBLICADOS = ["10-19", "20-49", "50+"] as const;
+export type TramoPublicado = (typeof TRAMOS_PUBLICADOS)[number];
+export type Tramo = "lejos" | "cerca" | TramoPublicado;
+export const TRAMOS: readonly Tramo[] = ["lejos", "cerca", ...TRAMOS_PUBLICADOS];
+export const esTramoPublicado = (t: Tramo): t is TramoPublicado => (TRAMOS_PUBLICADOS as readonly string[]).includes(t);
+
+// Lo que la foto diaria publica de una celda: el tramo siempre y las cifras solo si se publica (K
+// aportes de varios días y meses). Las cifras van redondeadas al 5 % de la mediana y a dos cifras.
 export interface CeldaPublica {
-  // Aportes de la ventana (con atípicos incluidos): lo que falta para llegar a K.
-  total: number;
+  tramo: Tramo;
   // null = todavía no se publica.
-  cifras: { n: number; p25: number; p50: number; p75: number } | null;
+  cifras: { p25: number; p50: number; p75: number } | null;
 }
 
 export interface OcupacionPublica extends CeldaPublica {
@@ -36,5 +43,6 @@ export type RespuestaAgregados =
     }
   | { ok: false };
 
-// POST /api/sueldos. Sin motivo en el rechazo: a quien manda basura no se le dice qué estuvo mal.
-export type RespuestaAporte = { ok: true; celda: OcupacionPublica | null } | { ok: false };
+// POST /api/sueldos. Sin motivo en el rechazo: a quien manda basura no se le dice qué estuvo mal. Y sin
+// celda en el éxito: el aporte entra en la foto del día siguiente, nunca en una respuesta.
+export type RespuestaAporte = { ok: true } | { ok: false };

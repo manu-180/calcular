@@ -88,8 +88,8 @@ export const en: DiccionarioLegal = ({ actualizado, mail }) => ({
         {
           titulo: "Salaries people share",
           parrafos: [
-            "On “Real salaries” anyone can add a salary anonymously, and only after ticking an explicit consent box. We store the country, the occupation (from a fixed list), the experience range, the gross monthly salary rounded to two significant figures and the month. We do not store the IP address, the browser, an account or the exact date.",
-            "We only publish the median and the range for groups of 10 people or more. No individual salary is ever shown.",
+            "On “Real salaries” anyone can add a salary anonymously, and only after ticking an explicit consent box. We store the country, the occupation (from a fixed list), the experience range, the gross monthly salary rounded to two significant figures and the month. We do not store the IP address, the browser or an account. Until the next day's update we also keep the day of the entry and a fingerprint of the connection, encrypted with a key that changes every day and that cannot be turned back into the IP address; both are deleted when the day closes.",
+            "Figures are published once a day. An occupation appears once it has 10 or more entries, made on several days and in at least two different months. We only show the median and the range, rounded, and the number of entries in ranges, so nobody can work out a person's salary by comparing the page on two days. No individual salary is ever shown.",
             "To avoid adding the same country twice in one month, the browser keeps the country and month of the entry in local storage, never the amount.",
             "Because an entry is not linked to anyone, there is no way to find it later to delete it.",
           ],

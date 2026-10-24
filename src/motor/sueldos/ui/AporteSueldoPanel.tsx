@@ -8,10 +8,10 @@ import { EXPERIENCIAS, OCUPACIONES, type Experiencia, type Ocupacion } from "../
 import { percentilAproximado } from "../estadistica";
 import { dentroDeLimites, dosCifras } from "../reglas";
 import { API_SUELDOS } from "../rutas";
-import type { CeldaPublica, OcupacionPublica, RespuestaAgregados, RespuestaAporte } from "../tipos";
+import { TRAMOS, type CeldaPublica, type OcupacionPublica, type RespuestaAgregados, type RespuestaAporte, type TramoPublicado } from "../tipos";
 import type { PropsAporteSueldo } from "./AporteSueldo";
 import { dinero, edicionDeBase, enFrase, idiomaDeLocale, lugares, nuevoId, porcentaje, recordarAporte, rellenar, yaAporto } from "./comun";
-import { BarraRango, PuntosProgreso } from "./piezas";
+import { BarraRango, TramoProgreso } from "./piezas";
 
 // Tope de espera donde el navegador lo soporta (AbortSignal.any y timeout faltan en Safari viejo: ahí
 // queda solo la señal propia, o ninguna).
@@ -55,8 +55,6 @@ export default function AporteSueldoPanel({ mercado, moneda, ppa, nombrePais, lo
   const [acepta, setAcepta] = useState(false);
   const [envio, setEnvio] = useState<Envio>("listo");
   const [ya, setYa] = useState(false);
-  // Lo que devolvió el envío (la celda recién agregada), encima de lo cacheado.
-  const [fresca, setFresca] = useState<Partial<Record<Ocupacion, OcupacionPublica>>>({});
   const idEnvio = useRef<string | null>(null);
   const idOcupacion = useId();
   const idTitulo = useId();
@@ -65,7 +63,6 @@ export default function AporteSueldoPanel({ mercado, moneda, ppa, nombrePais, lo
   useEffect(() => {
     setYa(yaAporto(mercado));
     setEnvio("listo");
-    setFresca({});
     idEnvio.current = null;
   }, [mercado]);
 
@@ -98,11 +95,12 @@ export default function AporteSueldoPanel({ mercado, moneda, ppa, nombrePais, lo
   const k = vigente?.k ?? 10;
   const { enPais } = lugares(idioma, nombrePais);
   const nombreOcupacion = ocupacion ? enFrase(t.ocupaciones[ocupacion], idioma) : "";
-  const celda: OcupacionPublica | undefined = ocupacion ? (fresca[ocupacion] ?? vigente?.datos.ocupaciones[ocupacion]) : undefined;
+  // Siempre la foto publicada (cacheada): el aporte propio entra recién en la del día siguiente, así que
+  // la posición se calcula acá contra lo que ya ve cualquiera.
+  const celda: OcupacionPublica | undefined = ocupacion ? vigente?.datos.ocupaciones[ocupacion] : undefined;
   const celdaExp: CeldaPublica | undefined = experiencia ? celda?.porExperiencia[experiencia] : undefined;
   const mostrada = celdaExp?.cifras ? celdaExp.cifras : (celda?.cifras ?? null);
   const soloOcupacion = Boolean(experiencia && celda?.cifras && !celdaExp?.cifras);
-  const cuenta = celda?.total ?? 0;
   const pais = { mercado, moneda, ppa };
   const brutoRedondo = bruto !== null ? dosCifras(bruto) : null;
   const valido = brutoRedondo !== null && dentroDeLimites(brutoRedondo, pais);
@@ -113,10 +111,7 @@ export default function AporteSueldoPanel({ mercado, moneda, ppa, nombrePais, lo
   const enviar = async () => {
     if (!puede || !ocupacion || !experiencia || bruto === null) return;
     const o = ocupacion;
-    const antes = fresca[o];
-    // Optimista: el «gracias» y la cuenta nueva se ven al tocar; si el servidor dice que no, vuelve atrás.
-    if (celda && !celda.cifras) setFresca((f) => ({ ...f, [o]: { ...celda, total: celda.total + 1 } }));
-    else if (!celda) setFresca((f) => ({ ...f, [o]: { total: 1, cifras: null, porExperiencia: {} } }));
+    // Optimista: el «gracias» se ve al tocar; si el servidor dice que no, vuelve al formulario con el aviso.
     setEnvio("ok");
     idEnvio.current ??= nuevoId();
     try {
@@ -132,20 +127,17 @@ export default function AporteSueldoPanel({ mercado, moneda, ppa, nombrePais, lo
       recordarAporte(mercado);
       setYa(true);
       setEnvio("ok");
-      if (x.celda) setFresca((f) => ({ ...f, [o]: x.celda as OcupacionPublica }));
     } catch {
-      setFresca((f) => ({ ...f, [o]: antes as OcupacionPublica }));
       setEnvio("error");
     }
   };
 
-  // Atajos mientras no hay ocupación elegida: las que ya tienen datos, las de más aportes primero.
-  const conDatos = vigente
-    ? OCUPACIONES.filter((o) => vigente.datos.ocupaciones[o]?.cifras)
-        .sort((a, b) => (vigente.datos.ocupaciones[b]?.total ?? 0) - (vigente.datos.ocupaciones[a]?.total ?? 0))
-        .slice(0, 8)
-    : [];
-  const etiquetaPuntos =rellenar(t.aporte.faltan, { n: cuenta, k, ocupacion: nombreOcupacion, enPais, pais: nombrePais });
+  // Atajos mientras no hay ocupación elegida: las que ya tienen datos, las de más aportes primero (por
+  // tramo; dentro del mismo tramo, en el orden del idioma).
+  const peso = (o: Ocupacion) => TRAMOS.indexOf(vigente?.datos.ocupaciones[o]?.tramo ?? "lejos");
+  const conDatos = vigente ? ordenadas.filter((o) => vigente.datos.ocupaciones[o]?.cifras).sort((a, b) => peso(b) - peso(a)).slice(0, 8) : [];
+  const tramoCelda = celda && !celda.cifras && (celda.tramo === "lejos" || celda.tramo === "cerca") ? celda.tramo : null;
+  const textoTramo = rellenar(tramoCelda === "cerca" ? t.aporte.cerca : t.aporte.lejos, { ocupacion: nombreOcupacion, enPais, pais: nombrePais });
 
   return (
     <section className="cy-su" aria-labelledby={idTitulo} data-cargando={cargando || undefined}>
@@ -225,7 +217,7 @@ export default function AporteSueldoPanel({ mercado, moneda, ppa, nombrePais, lo
                   </>
                 ) : (
                   <>
-                    <PuntosProgreso n={0} k={k} etiqueta="" />
+                    <TramoProgreso tramo={null} etiqueta="" />
                     <p className="cy-su-faltan-texto">{t.aporte.elegir}</p>
                   </>
                 )}
@@ -244,15 +236,15 @@ export default function AporteSueldoPanel({ mercado, moneda, ppa, nombrePais, lo
                 ) : null}
                 <p className="cy-su-nota-clara">
                   {soloOcupacion && experiencia
-                    ? rellenar(t.aporte.soloOcupacion, { experiencia: t.experiencias[experiencia], n: celdaExp?.total ?? 0, k })
-                    : rellenar(t.aporte.basadoEn, { n: mostrada.n })}
+                    ? rellenar(t.aporte.soloOcupacion, { experiencia: t.experiencias[experiencia] })
+                    : rellenar(t.aporte.basadoEn, { n: t.tramos[(celdaExp?.cifras ? celdaExp.tramo : celda?.tramo) as TramoPublicado] ?? "" })}
                 </p>
               </div>
             ) : (
               <div className="cy-su-faltan" key={ocupacion}>
-                <PuntosProgreso n={cuenta} k={k} etiqueta={etiquetaPuntos} />
+                <TramoProgreso tramo={tramoCelda} etiqueta={tramoCelda ? textoTramo : ""} />
                 <p className="cy-su-faltan-texto">
-                  {cuenta > 0 ? etiquetaPuntos : rellenar(t.aporte.nadie, { ocupacion: nombreOcupacion, enPais, pais: nombrePais, k })}
+                  {tramoCelda ? textoTramo : rellenar(t.aporte.nadie, { ocupacion: nombreOcupacion, enPais, pais: nombrePais, k })}
                 </p>
                 <p className="cy-su-nota-clara">{t.aporte.compartirPedido}</p>
                 {pagina ? (

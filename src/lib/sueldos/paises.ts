@@ -38,6 +38,13 @@ export function urlSueldos(mercado: string): string {
   return urlIntl(edicionPrincipal(mercado) as CodigoMercado, SLUG_SUELDOS[idiomaDe(edicionPrincipal(mercado))]);
 }
 
+// Las ediciones que pueden preguntar por el trato: las del registro, "ar" (calcular.ar) y "global".
+export function edicionValida(edicion: string): boolean {
+  if (edicion === "ar" || edicion === "global") return true;
+  if (!/^[a-z]{2,6}(-[a-z]{2})?$/.test(edicion)) return false;
+  return Boolean(registro.pais(edicion as CodigoMercado));
+}
+
 // El trato de la edición desde la que se pregunta (la página del mundo de /ca-fr usa «vous» aunque el
 // país sea Canadá). "ar" es calcular.ar, que no está en el registro.
 export function tratoDeEdicion(edicion: string | null): Trato {

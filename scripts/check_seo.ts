@@ -10,7 +10,7 @@
 import "./sin-server-only";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import sitemap from "../src/app/sitemap";
+import { armarSitemap } from "../src/app/sitemap";
 import robots from "../src/app/robots";
 import { fechaISO, migas, prepararJsonLd, grafoDelSitio, SITIO } from "../src/lib/seo";
 import { AUTOR } from "../src/lib/schema";
@@ -32,7 +32,6 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
 
 /** Rutas que a propósito no van al sitemap: privadas, noindex o transaccionales. */
 const FUERA_DEL_SITEMAP = new Set<string>([
-  "/sueldos-reales", // noindex hasta que una ocupación junte 10 aportes (docs/decisiones/sueldos.md)
   "/contacto",
   "/privacidad",
   "/terminos",
@@ -44,6 +43,10 @@ const FUERA_DEL_SITEMAP = new Set<string>([
   "/dashboard",
   // Redirección permanente a /jubilacion (src/app/(ar)/jubilaciones/page.tsx), no es una página.
   "/jubilaciones",
+]);
+/** Rutas que entran al sitemap solo cuando sus datos lo piden: ni obligatorias ni prohibidas. */
+const CONDICIONALES = new Set<string>([
+  "/sueldos-reales", // entra cuando la foto diaria publica una ocupación (paisesConSueldos); si no, noindex
 ]);
 const PREFIJOS_FUERA = ["/cuenta", "/dashboard/", "/auth/", "/informes/cuota-alimentaria/ver", "/informes/indemnizacion/ver", "/informes/ganancias/ver", "/informes/inflacion/ver", "/informes/credito-laboral/ver"];
 
@@ -58,7 +61,7 @@ function rutasEnDisco(dir: string, base = ""): string[] {
 }
 
 const hoy = hoyAR();
-const entradas = sitemap();
+const entradas = armarSitemap(true);
 const porRuta = new Map(
   entradas.map((e) => [e.url === SITIO ? "/" : e.url.slice(SITIO.length), e.lastModified ? String(e.lastModified).slice(0, 10) : ""]),
 );
@@ -68,7 +71,7 @@ const porRuta = new Map(
 // ===========================================================================
 {
   const estaticas = rutasEnDisco(APP).filter((r) => !r.includes("["));
-  const deben = estaticas.filter((r) => !FUERA_DEL_SITEMAP.has(r) && !PREFIJOS_FUERA.some((p) => r.startsWith(p)));
+  const deben = estaticas.filter((r) => !FUERA_DEL_SITEMAP.has(r) && !CONDICIONALES.has(r) && !PREFIJOS_FUERA.some((p) => r.startsWith(p)));
   check(`las ${deben.length} páginas estáticas indexables están en el sitemap`, deben.every((r) => porRuta.has(r)), deben.filter((r) => !porRuta.has(r)));
 
   const privadas = [...porRuta.keys()].filter((r) => FUERA_DEL_SITEMAP.has(r) || PREFIJOS_FUERA.some((p) => r.startsWith(p)));

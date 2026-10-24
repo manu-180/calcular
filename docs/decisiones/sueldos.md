@@ -65,4 +65,54 @@ el servidor dice que no, vuelve atrás). Debajo de K: puntos de progreso y compa
 
 `/<m>/<slug por idioma>` (SLUG_SUELDOS) y `/sueldos-reales` en calcular.ar, con OG propia. `noindex`
 hasta que haya una ocupación publicada, y fuera del sitemap por ahora: una página casi vacía no suma.
-Cuando haya países con datos, sumarlas al sitemap leyendo `ca_sueldos_agregados` (pendiente).
+Desde el endurecimiento, el sitemap las suma solo cuando hay datos publicados (ver abajo).
+
+## Endurecimiento (2026-10-24, migración `20261024150000_ca_sueldos_endurecer.sql`)
+
+La auditoría encontró dos ataques confirmados antes de salir a producción:
+
+- **Diferenciación con aportes falsos (alto).** Con 9 aportes armados se publicaba la celda de una sola
+  persona real, y con la celda publicada alcanzaba comparar antes y después de un aporte (el POST además
+  devolvía la celda recalculada al instante, y `total` iba exacto).
+- **Envenenamiento de la mediana (medio).** Con muchos valores iguales el IQR daba 0 y las vallas de Tukey
+  sacaban a todos los sueldos reales.
+
+Qué cambió:
+
+- **Publicación por foto diaria.** Los aportes del día van a `ca_sueldos_pendientes` (con el día UTC) y
+  `ca_sueldos_publicar` los pasa a `ca_sueldos_aportes` (sin fecha) recién al día siguiente, y rehace
+  `ca_sueldos_publicados`. Corre con pg_cron si el proyecto lo tiene (00:07 UTC) y, si no, la primera lectura
+  del día. Se eligió así para no depender de infraestructura: la lectura publica sola si hace falta y, si la
+  publicación falla, sirve la foto anterior. Un candado (exclusivo al publicar, compartido al sumar) evita
+  que un aporte a medio guardar a medianoche cuente su día dos veces.
+- **Diversidad.** Una celda se publica con 10 aportes limpios de al menos 3 días y 2 meses distintos. Los
+  días se cuentan en `ca_sueldos_dias` (cuenta por celda y mes, ninguna fecha). Un ataque concentrado en
+  minutos no completa nada.
+- **Sin cuenta exacta.** Tramos `lejos` / `cerca` (7 o más) sin publicar y `10-19`, `20-49`, `50+` publicada.
+- **Redondeo más grueso.** Múltiplo del 5 % de la mediana (el paso redondeado a una cifra: si no, la grilla
+  misma se corría con la mediana) y dos cifras. Con la foto de antes y la de después, un aporte nuevo deja
+  ver a lo sumo en qué cuarto cayó, nunca el monto (check_sueldos lo prueba).
+- **El POST responde `{ ok }`.** La persona ve su posición contra la foto ya publicada (cacheada), calculada
+  en el navegador, y el «gracias» dice que entra en la próxima actualización diaria.
+- **Topes en la base** (`ca_sueldos_sumar`): 3 aportes por huella y día, 1 por huella y celda, 30 por celda y
+  día. La huella es HMAC-SHA256 de la IP con una clave que deriva de `SUELDOS_SECRETO` (o de la clave de
+  servicio si no existe) y del día UTC: cambia cada día, la base nunca ve la IP y la tabla se borra al
+  cerrar el día. El tope de 5000 por celda y mes (trigger) se fue: con el lote de la publicación habría
+  tirado abajo la foto entera si una celda se llenaba.
+- **Piso del IQR** en 10 % de la mediana: 30 valores iguales ya no borran a los reales cercanos (±30 %).
+- **Sin lectura con la anon key.** Se borraron `ca_sueldos_agregados` (lectura en vivo concedida a anon) y
+  `ca_sueldos_aportar`; anon y authenticated no ejecutan ninguna función de sueldos. Lee el Route Handler con
+  la service role.
+- **`?e=`** solo con ediciones reales.
+- **Sitemap.** Las páginas entran cuando su país tiene una ocupación publicada (`ca_sueldos_paises`, cacheado,
+  3 s de tope; sin base, afuera). Hreflang solo entre ediciones del mismo país.
+
+Riesgos que quedan, a propósito:
+
+- Un atacante con muchas IP, paciencia (3 días y 2 meses) y 9 aportes falsos sigue pudiendo rodear a una
+  sola persona real. Lo que saca es el cuarto en que cae su sueldo dentro de cifras redondeadas al 5 %, no el
+  monto, y no sabe cuándo entró el aporte (la cuenta va en rangos).
+- La ocupación entera y sus rangos de experiencia se publican por separado: comparar las dos da algo sobre
+  el rango que no se publica. Con cuartiles redondeados (no promedios) es poco.
+- En el borde de medianoche la huella del endpoint (día de Node) y el día de la base pueden no coincidir por
+  segundos: como mucho un aporte de más por huella.

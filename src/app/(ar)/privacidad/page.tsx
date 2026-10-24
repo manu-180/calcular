@@ -228,16 +228,23 @@ export default function PrivacidadPage() {
       <Seccion id="compartir-y-sueldos" titulo="Links compartidos, tu sueldo en el mundo y los sueldos que se aportan">
         <p>
           Cuando compartís un cálculo, el link lleva un código al azar, distinto en cada compartido, para contar
-          cuántas visitas trae. No identifica a nadie. Los montos que escribís nunca viajan dentro de un link: la
-          página «Tu sueldo en el mundo» los recibe dentro de tu navegador, y la tarjeta que compartís muestra
-          solo porcentajes, fechas y países.
+          cuántas visitas trae. Ese código no identifica a nadie. En calcular.ar, el link de un cálculo además
+          guarda los datos del formulario después del signo «#», para que quien lo abra vea la misma cuenta. Esa
+          parte del link no se envía a ningún servidor, pero la ve cualquiera que reciba el link. La tarjeta que
+          compartís desde «Tu sueldo en el mundo» muestra solo porcentajes, fechas y países, nunca montos.
         </p>
         <p>
           En «Sueldos reales» podés sumar tu sueldo de forma anónima y opcional, sólo si das tu consentimiento.
           Guardamos el país, la ocupación (de una lista cerrada), el rango de años de experiencia, el sueldo
-          bruto por mes redondeado a dos cifras y el mes. No guardamos la IP, el navegador, una cuenta ni la
-          fecha exacta. Sólo publicamos la mediana y el rango de grupos de 10 personas o más: nunca se muestra
-          un sueldo individual.
+          bruto por mes redondeado a dos cifras y el mes. No guardamos la IP, el navegador ni una cuenta. Hasta la
+          publicación del día siguiente guardamos además el día del aporte y una huella de la conexión, cifrada con
+          una clave que cambia cada día y que no permite volver a la IP; al cerrar el día se borran las dos.
+        </p>
+        <p>
+          Las cifras se publican una vez por día. Una ocupación aparece recién con 10 aportes o más, cargados en
+          varios días y en al menos dos meses distintos. Sólo mostramos la mediana y el rango, redondeados, y la
+          cantidad de aportes en rangos (por ejemplo, de 10 a 19): así nadie puede deducir el sueldo de una persona
+          comparando la página de un día con la del siguiente.
         </p>
       </Seccion>
 

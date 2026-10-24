@@ -45,9 +45,14 @@ export const EXPERIENCIAS = ["0-2", "3-5", "6-10", "11+"] as const;
 export type Experiencia = (typeof EXPERIENCIAS)[number];
 
 // k-anonimato: una celda (país, ocupación y, si va, experiencia) se publica recién con K aportes que
-// sobreviven al filtro de atípicos. La base aplica el mismo número (migración 20261024120000): si se
-// cambia acá, se cambia allá en una migración nueva.
+// sobreviven al filtro de atípicos, cargados en MIN_DIAS días y MIN_MESES meses distintos (así un ataque
+// concentrado en minutos no completa una celda). Con CERCA o más todavía sin publicar, la celda dice
+// «falta poco». La base aplica los mismos números (ca_sueldos_calcular, migración 20261024150000): si se
+// cambian acá, se cambian allá en una migración nueva.
 export const K = 10;
+export const MIN_DIAS = 3;
+export const MIN_MESES = 2;
+export const CERCA = 7;
 
 // Meses de aportes que entran en cada cifra. La base usa la misma ventana.
 export const VENTANA_MESES = 12;
