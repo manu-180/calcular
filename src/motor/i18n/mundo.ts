@@ -1,3 +1,4 @@
+import { pluralAr } from "./arabe";
 import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import type { Idioma, Trato } from "../tipos";
@@ -2450,7 +2451,169 @@ const zhHans: TextosMundo = {
 
 const zh: Diccionario<TextosMundo> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── ar ─────────────────────────────
+
+// Árabe estándar moderno, segunda persona del masculino genérico como en el resto del sitio. Los días
+// van con pluralAr (يوم واحد، يومان، 3 أيام، 11 يومًا، 100 يوم); detrás de «بـ» el dual va en genitivo.
+const gAr = GRAMATICA.ar;
+const SEO_AR = "يوم التحرر الضريبي وصافي الراتب حول العالم";
+const DIAS_AR = { uno: "يوم واحد", dos: "يومان", pocos: "{n} أيام", muchos: "{n} يومًا", otros: "{n} يوم" };
+const POR_DIAS_AR = { uno: "بيوم واحد", dos: "بيومين", pocos: "بـ{n} أيام", muchos: "بـ{n} يومًا", otros: "بـ{n} يوم" };
+const PAISES_AR = { uno: "دولة واحدة", dos: "دولتين", pocos: "{n} دول", muchos: "{n} دولة", otros: "{n} دولة" };
+
+const ar: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "راتبك حول العالم",
+    seo: {
+      titulo: (pais) => [`${SEO_AR} | ${pais}`, SEO_AR, "راتبك حول العالم"],
+      tituloGlobal: [SEO_AR, "راتبك حول العالم"],
+      descripcion: (pais, n) => `اعرف حتى أي يوم تعمل لصالح الدولة براتبك ${gAr.en(pais)}، وكم يبقى لك منه في ${pluralAr(n, PAISES_AR)}. مجانًا وبلا تسجيل.`,
+      descripcionGlobal: (n) => `اعرف حتى أي يوم تعمل لصالح الدولة، وكم يبقى لك من راتبك في ${pluralAr(n, PAISES_AR)}. مجانًا وبلا تسجيل.`,
+    },
+    ceja: "يوم تحررك الضريبي",
+    h1: "حتى أي يوم من السنة تعمل لصالح الدولة؟",
+    bajada: (n) => `أدخل راتبك الإجمالي لتعرف تاريخك. ثم قارنه في ${pluralAr(n, PAISES_AR)}، بالقدرة الشرائية نفسها وبقواعد الضرائب في كل دولة.`,
+    form: {
+      titulo: "راتبك",
+      sueldo: "الراتب الإجمالي",
+      mes: "شهري",
+      anio: "سنوي",
+      periodo: "فترة الراتب",
+      pais: "الدولة التي تعمل فيها",
+      ejemplo: "مثال",
+      ejemploAyuda: "هذا راتب للتجربة. اكتب راتبك وستتحدّث النتائج فورًا.",
+      propio: "منقول من حسابك السابق.",
+      invalido: "أدخل مبلغًا أكبر من صفر.",
+      pagas: "هو الراتب الشهري في قسيمة الراتب، ونضيف إليه الدفعات الإضافية التي يفرضها القانون. صافي الراتب هو المتوسط على 12 شهرًا.",
+    },
+    heroe: {
+      hasta: (fecha) => `تعمل لصالح الدولة حتى ${fecha}`,
+      tasa: (pct) => `يذهب ${pct} من راتبك إلى ضريبة الدخل واشتراكات التأمينات.`,
+      dias: (n, total) => `${n} من أصل ${pluralAr(total, DIAS_AR)}`,
+      enMano: "يبقى لك",
+      porMes: "شهريًا",
+      anio: (anio, n, total) => `${anio}: ${n} من أصل ${pluralAr(total, DIAS_AR)} لصالح الدولة.`,
+      resto: "ومن اليوم التالي، ما تكسبه لك.",
+    },
+    ranking: {
+      titulo: "الراتب نفسه، دولة بدولة",
+      bajada: "بالقدرة الشرائية نفسها، هذا ما يبقى لك في كل دولة. كل سطر مأخوذ من الحاسبة الرسمية لتلك الدولة.",
+      lista: "الدول مرتبة حسب صافي الراتب",
+      buscar: "ابحث عن دولة",
+      filtrar: "التصفية حسب المنطقة",
+      todas: "الكل",
+      regiones: { americas: "الأمريكتان", europa: "أوروبا", asia: "آسيا وأوقيانوسيا", africa: "أفريقيا والشرق الأوسط" },
+      tuPais: "دولتك",
+      mejor: "الأعلى صافيًا",
+      enMano: "الصافي شهريًا",
+      enTuMoneda: "بعملتك",
+      vsTuPais: "مقارنة بدولتك",
+      verTodos: (n) => `عرض الدول كلها (${n})`,
+      verMenos: "عرض أقل",
+      sinResultados: (q) => `لا توجد دولة تطابق «${q}».`,
+      abrir: (pais) => `فتح حاسبة ${gAr.de(pais)}`,
+      mas: (pct) => `أكثر بنسبة ${pct}`,
+      menos: (pct) => `أقل بنسبة ${pct}`,
+      igual: "متساوٍ",
+      puesto: (p, total) => `ترتيب دولتك ${p} من أصل ${total}.`,
+    },
+    tarjeta: {
+      titulo: "بطاقتك للمشاركة",
+      bajada: "تعرض تاريخك والنسب فقط، ولا تعرض راتبك أبدًا.",
+      hasta: (fecha) => `أعمل لصالح الدولة حتى ${fecha}`,
+      tasa: (pct) => `يذهب ${pct} من راتبي إلى الضرائب`,
+      mejor: (pais, pct) => `براتبي نفسه، يبقى لي ${pct} أكثر ${gAr.en(pais)}`,
+      mejorPropio: (pais) => `براتبي نفسه، لا توجد دولة تُبقي لي أكثر من ${gAr.nombre(pais)}`,
+      yVos: "وأنت؟",
+      cta: "اعرف تاريخك على",
+      generica: "حتى أي يوم تعمل لصالح الدولة؟",
+      genericaBajada: (n) => `راتبك في ${pluralAr(n, PAISES_AR)}، محسوبًا بالحاسبة الرسمية لكل دولة`,
+      compartir: "مشاركة بطاقتي",
+      compartirDuelo: "رُدّ التحدي",
+      descargar: "تنزيل الصورة",
+      copiado: "تم نسخ الرابط. الصقه حيث تشاء.",
+      compartido: "تمت المشاركة.",
+      error: "تعذّرت المشاركة. حاول مرة أخرى.",
+      texto: (fecha) => `أعمل لصالح الدولة حتى ${fecha}. وأنت؟`,
+      alt: "معاينة بطاقتك",
+    },
+    duelo: {
+      amigo: (fecha) => `صديقك يعمل لصالح الدولة حتى ${fecha}.`,
+      yVos: "وأنت؟",
+      invitacion: "أدخل راتبك للمقارنة.",
+      vos: "أنت",
+      elAmigo: "صديقك",
+      dia: "يعمل لصالح الدولة حتى",
+      tasa: "الضرائب والاشتراكات",
+      mejorPais: "الأعلى صافيًا في",
+      antes: (d) => `تتحرر قبل صديقك ${pluralAr(d, POR_DIAS_AR)}.`,
+      despues: (d) => `يتحرر صديقك قبلك ${pluralAr(d, POR_DIAS_AR)}.`,
+      empate: "تتحرران في اليوم نفسه.",
+      desde: (pais) => `يعمل ${gAr.en(pais)}`,
+    },
+    cero: {
+      dia: "صفر أيام",
+      heroeAntes: "تعمل لصالح الدولة",
+      tarjetaAntes: "أعمل لصالح الدولة",
+      motivo: "بهذا الراتب لا تُخصم ضريبة دخل ولا اشتراكات تأمينات.",
+      texto: "لا أعمل يومًا واحدًا لصالح الدولة هذه السنة. وأنت؟",
+      amigo: "صديقك لا يعمل يومًا واحدًا لصالح الدولة.",
+    },
+    metodo: {
+      titulo: "طريقة الحساب",
+      estimacion: "هذا تقدير للمقارنة بين الدول، وليس قسيمة راتب. الخصومات أو الأبناء أو المكافآت قد تغيّر رقمك.",
+      supuestos: [
+        "شخص أعزب بلا أبناء، بالقيم الافتراضية لحاسبة كل دولة.",
+        "صافي الراتب هو ما يبقى بعد ضريبة الدخل واشتراكات الموظف. ولا يشمل ضريبة المبيعات ولا ما يدفعه صاحب العمل.",
+        "الراتب الثالث عشر وغيره من الدفعات الإلزامية يوزَّع على السنة كما ينص قانون كل دولة.",
+        "في الولايات المتحدة لا تُضاف ضريبة دخل الولاية أو المدينة: الضريبة الاتحادية والاشتراكات فقط.",
+        "لنقل راتبك إلى دولة أخرى نستخدم تعادل القوة الشرائية، أي مستوى المعيشة نفسه، لا سعر الصرف اليوم.",
+        "تعادل القوة الشرائية للأرجنتين يُحدَّث بمؤشر أسعار المستهلك الصادر عن INDEC، لأن البنك الدولي لا ينشره إلا حتى 2021.",
+        "يوم تحررك يوزّع ضريبتك على السنة بدءًا من 1 يناير. إذا ذهب 30% من راتبك إلى الضرائب، فأنت تعمل لصالح الدولة 30% من السنة.",
+      ],
+      ppaTitulo: "تعادل القوة الشرائية",
+      bancoMundial: "البنك الدولي",
+      ppa: (organismo, indicador, anio) => `${organismo}، المؤشر ${indicador}، آخر سنة متاحة ${anio}.`,
+      consultado: (fecha) => `اطّلعنا عليه في ${fecha}.`,
+      verFuente: "عرض المصدر",
+      fuentesTitulo: "مصدر كل دولة",
+      fuentesBajada: "كل سطر يستخدم حاسبة صافي الراتب لتلك الدولة وبياناتها الرسمية.",
+      verificado: (fecha) => `تمت مراجعة البيانات في ${fecha}`,
+      sello: (fecha) => `بيانات رسمية راجعناها لدى مصدر كل دولة. أقدم مراجعة بتاريخ ${fecha}.`,
+    },
+    faqTitulo: "أسئلة شائعة",
+    faq: (n) => [
+      {
+        pregunta: "ما يوم التحرر الضريبي؟",
+        respuesta: "هو اليوم من السنة الذي تنتهي فيه من دفع ضرائبك، لو ذهب كل ما كسبته منذ 1 يناير إلى الدولة أولًا. وهنا يُحسب من راتبك أنت، لا من المتوسط الوطني.",
+      },
+      {
+        pregunta: "لماذا نقارن بالقدرة الشرائية؟",
+        respuesta: "سعر الصرف يجعل الراتب يبدو ضخمًا أو ضئيلًا حسب اليوم. أما تعادل القوة الشرائية فيقارن ما يمكن شراؤه فعلًا بهذا المال في كل دولة.",
+      },
+      {
+        pregunta: "هل يُحفظ راتبي؟",
+        respuesta: "لا. الحساب يجري في متصفحك، وما تشاركه لا يحمل إلا تواريخ ونسبًا وأسماء دول.",
+      },
+      {
+        pregunta: "لماذا يختلف صافي راتبي الحقيقي؟",
+        respuesta: "نفترض شخصًا أعزب بلا أبناء وبالقيم الافتراضية. الخصومات أو المكافآت أو الأنظمة الخاصة تغيّر الرقم. لحالتك بالتحديد، افتح حاسبة دولتك.",
+      },
+      {
+        pregunta: "ما الدول المشمولة؟",
+        respuesta: `${pluralAr(n, PAISES_AR)} اليوم، لكل منها حاسبة صافي الراتب الخاصة بها وبياناتها الرسمية. ونضيف المزيد كلما راجعنا قواعدها الضريبية.`,
+      },
+    ],
+    destacado: {
+      ceja: "مقارنة عالمية",
+      titulo: "حتى أي يوم تعمل لصالح الدولة؟",
+      texto: "أدخل راتبك واعرف كم يبقى لك في دول أخرى.",
+      ir: "اعرف تاريخي",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);
