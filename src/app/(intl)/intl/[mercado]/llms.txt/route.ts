@@ -1,5 +1,6 @@
 import { entradasDelMercado } from "@/motor/mapa";
 import { urlMundo } from "@/motor/mundo/ui/seo";
+import { calendarioPublicado, urlCalendario } from "@/motor/calendario/rutas";
 import { urlIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import { hoyEn } from "@/motor/vigencia";
@@ -35,6 +36,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
         "",
         `- [${m.nombre}: calculators](${urlIntl(m.codigo)}): every calculator for the country, grouped by topic.`,
         `- [${m.nombre}: salary around the world](${urlMundo(m)}): the day of the year you stop working for the government on a salary in this country, and what that salary would leave in hand in every country at the same purchasing power.`,
+        ...(calendarioPublicado(registro, m, modo) ? [`- [${m.nombre}: pay and tax calendar](${urlCalendario(m)}): upcoming dates that change pay (minimum wage, tax and contribution changes, payment deadlines), each from an official source, linked to its calculator and downloadable as .ics.`] : []),
         ...lineas,
         `- [${m.nombre}: official sources](${urlIntl(m.codigo, "fuentes")}): every value the calculators use, with its effective dates, a link to the rule and the date it was checked.`,
         `- [${m.nombre}: updates](${urlIntl(m.codigo, "novedades")}): rule changes that affect the calculators.`,
