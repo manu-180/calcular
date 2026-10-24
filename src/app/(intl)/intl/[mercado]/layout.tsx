@@ -4,6 +4,7 @@ import { origenPublicoIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import type { CodigoMercado } from "@/motor/tipos";
 import { AcordeonesFluidos } from "@/components/AcordeonesFluidos";
+import { ScriptExperimentos } from "@/components/Experimentos";
 import { Rastreador } from "@/components/Rastreador";
 import { CapturaLlegada } from "@/motor/compartir/CapturaLlegada";
 import { EncabezadoIntl, EXTERNOS } from "@/components/shell/EncabezadoIntl";
@@ -70,7 +71,11 @@ export default async function LayoutIntl({ children, params }: { children: React
   // chrome de global: el 404 intl siempre tiene header, footer y lang.
   const ctx = contextoSitio(registro, mercado as CodigoMercado) ?? contextoSitio(registro, "global")!;
   return (
-    <html lang={etiquetaIdioma(ctx.mercado.locale)} dir={direccionDe(ctx.mercado.idioma)} className={`${geist.variable} ${arabe.variable}`}>
+    // suppressHydrationWarning: ScriptExperimentos le pone data-x-* a <html> antes de que React hidrate.
+    <html lang={etiquetaIdioma(ctx.mercado.locale)} dir={direccionDe(ctx.mercado.idioma)} className={`${geist.variable} ${arabe.variable}`} suppressHydrationWarning>
+      <head>
+        <ScriptExperimentos />
+      </head>
       <body className="cy-cuerpo">
         <a href="#contenido" className="cy-saltar">
           {ctx.textos.saltar}
