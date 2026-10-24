@@ -183,6 +183,17 @@ de 1 (3 päivää, 1,5 vuotta).
 **Slugs.** Latinos en ASCII, con la palabra que se busca en cada idioma y sin diacríticos
 (ł → l, ą → a, å → a o aa en danés, ø → o, ä → a, ö → o). «Tu sueldo en el mundo»:
 `wynagrodzenie-na-swiecie`, `lon-i-varlden`, `lon-i-verden`, `lonn-i-verden`, `palkka-maailmalla`.
+Las páginas que trajo main después (24/10, bb530d7a), en el mismo orden pl, sv, da, nb, fi:
+calendario `kalendarz-placowy`, `lonekalender`, `lonkalender`, `lonnskalender`, `palkkakalenteri`;
+horas de trabajo `ile-godzin-pracy`, `arbetstimmar`, `arbejdstimer`, `arbeidstimer`, `tyotunnit`;
+rankings `ranking-krajow`, `landsrankning`, `landerangliste`, `landrangering`, `maiden-vertailu`;
+«Sueldos reales» `prawdziwe-zarobki`, `verkliga-loner`, `rigtige-lonninger`, `faktiske-lonninger`,
+`todelliset-palkat`. Los tres rankings llevan slug propio en cada idioma (no el inglés, que D8 usa
+solo para escrituras no latinas), y el del día de liberación fiscal repite el nombre que ya usaba
+«Tu sueldo en el mundo»: `dzien-wolnosci-podatkowej`, `skattefrihetsdagen`, `skattefridag`,
+`skattefridagen`, `verovapauden-paiva`. En horas, sv, da y nb nombran el producto con artículo
+indefinido («en iPhone 17») y pl y fi en nominativo; en «Sueldos reales», pl y fi dejan
+{ocupacion} en nominativo (tras dos puntos) para no declinarla.
 
 **Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales): sin
 exclamaciones ni rayas, y se atrapa el registro formal que se cuela: pl «Pan/Pani/Państwo» (por eso

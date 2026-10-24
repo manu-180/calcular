@@ -82,7 +82,9 @@ El cron datos-paises no está actualizando uy, hn y bo.
 pl, sv, da, nb y fi en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu
 sueldo en el mundo» y venta completa (`IDIOMAS_VENTA`). Un registro informal por idioma (Ty
 implícito, du, sinä implícito). Decisiones en ADR 0002, D9. Ediciones de prueba `zz-pl`, `zz-sv`,
-`zz-da`, `zz-nb` y `zz-fi`.
+`zz-da`, `zz-nb` y `zz-fi`. Puesto al día con main bb530d7a en `claude/mundo-motor-eu-al-dia`:
+calendario laboral, horas de trabajo, rankings de países, «Sueldos reales» y afiliados en los cinco,
+con sus carpetas de ruta, y las carpetas de «Tu sueldo en el mundo» que faltaban (slugs en D9).
 
 Falta para el primer país de estos idiomas (Polonia, Suecia, Dinamarca, Noruega, Finlandia):
 - Las 41 universales en cada idioma: ramas `claude/mundo-trad-<idioma>` (solo `textos/<idioma>.ts` y
