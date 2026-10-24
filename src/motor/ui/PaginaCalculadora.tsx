@@ -51,7 +51,7 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
             return (
               <a key={e.definicion.id} className="cy-acceso" href={rutaIntl(mercado.codigo, e.definicion.slug)}>
                 <span className="cy-acceso-titulo">
-                  {tarjeta.titulo} <span aria-hidden="true">→</span>
+                  {tarjeta.titulo} <span className="cy-flecha-texto" aria-hidden="true">→</span>
                 </span>
                 <span className="cy-acceso-texto">{tarjeta.resumen}</span>
               </a>

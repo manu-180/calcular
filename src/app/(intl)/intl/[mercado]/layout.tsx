@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Noto_Sans_Arabic } from "next/font/google";
 import { origenPublicoIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import type { CodigoMercado } from "@/motor/tipos";
@@ -14,10 +14,14 @@ import "@/motor/ui/estilos.css";
 // Arranque por país, selector, datos vivos y novedades (frente aparte, para no pisar estilos.css).
 import "@/motor/ui/estilos-inicio.css";
 import { registro } from "@/paises";
+import { direccionDe, etiquetaIdioma } from "@/motor/i18n/direccion";
 
 // optional y no swap: si Geist no llegó para el primer pintado se queda la fallback ajustada por
 // next/font, y el H1 (el LCP de casi todas las páginas) no se vuelve a pintar al cambiar de fuente.
 const geist = Geist({ variable: "--font-geist", subsets: ["latin"], display: "optional" });
+// Geist no trae árabe. Sin preload y con el unicode-range del subset, el navegador baja la fuente solo
+// en páginas con texto árabe: el resto de los mercados no paga nada por declararla acá.
+const arabe = Noto_Sans_Arabic({ variable: "--font-arabe", subsets: ["arabic"], display: "swap", preload: false });
 
 // La fecha de referencia (hoyEn, en la zona del mercado) decide tramos, avisos y qué calculadoras
 // se publican. Sin esto la página quedaba con el día del build hasta el próximo deploy. Next toma el
@@ -65,7 +69,7 @@ export default async function LayoutIntl({ children, params }: { children: React
   // chrome de global: el 404 intl siempre tiene header, footer y lang.
   const ctx = contextoSitio(registro, mercado as CodigoMercado) ?? contextoSitio(registro, "global")!;
   return (
-    <html lang={ctx.mercado.locale} className={geist.variable}>
+    <html lang={etiquetaIdioma(ctx.mercado.locale)} dir={direccionDe(ctx.mercado.idioma)} className={`${geist.variable} ${arabe.variable}`}>
       <body className="cy-cuerpo">
         <a href="#contenido" className="cy-saltar">
           {ctx.textos.saltar}

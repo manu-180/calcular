@@ -3,6 +3,7 @@ import { urlIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
+import { etiquetaIdioma } from "@/motor/i18n/direccion";
 
 // /llms.txt de calcularya, en inglés como la home global (llega por rewrite, ver RUTA_LLMS en src/motor/hosts.ts). El de public/
 // describe calcular.ar y no puede salir en este dominio: check_routing_hosts.ts exige que este no
@@ -30,7 +31,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
       return [
         `## ${m.nombre}`,
         "",
-        `Currency: ${m.monedas[0]}. Language: ${m.locale}.`,
+        `Currency: ${m.monedas[0]}. Language: ${etiquetaIdioma(m.locale)}.`,
         "",
         `- [${m.nombre}: calculators](${urlIntl(m.codigo)}): every calculator for the country, grouped by topic.`,
         ...lineas,
