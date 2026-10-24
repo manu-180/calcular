@@ -12,7 +12,7 @@ const mayuscula = (s: string) => `${s.charAt(0).toUpperCase()}${s.slice(1)}`;
 
 // Los textos de las páginas de catálogo, landing, compra y gracias, en el idioma y el trato del país.
 export function textosPlanillas(m: Mercado) {
-  const x = textosVenta(m.idioma, m.trato).planillas;
+  const x = textosVenta(m.idioma, m.trato, m.locale).planillas;
   const conPais = (s: string) => rellenar(s, { pais: m.nombre });
   return {
     migaPlanillas: x.migaPlanillas,

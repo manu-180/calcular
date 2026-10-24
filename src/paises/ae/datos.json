@@ -1,0 +1,722 @@
+{
+  "mercado": "ae",
+  "datos": [
+    {
+      "id": "ae.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Value added tax (VAT)",
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/taxation/vat/valueaddedtaxvat",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.vat-registration",
+      "nombre": "VAT registration thresholds (taxable supplies and imports per year)",
+      "tipo": "mapa",
+      "unidad": "AED",
+      "etiquetas": {
+        "mandatory": "Mandatory registration",
+        "voluntary": "Voluntary registration"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": {
+            "mandatory": 375000,
+            "voluntary": 187500
+          },
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Value added tax (VAT)",
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/taxation/vat/valueaddedtaxvat",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.tourist-refund",
+      "nombre": "VAT refund for tourists",
+      "tipo": "mapa",
+      "unidad": "AED",
+      "etiquetas": {
+        "fee-per-tag": "Fee per tax-free tag",
+        "minimum-purchase": "Minimum purchase"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-10-01",
+          "valor": {
+            "fee-per-tag": 4.8,
+            "minimum-purchase": 250
+          },
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Tax refund for tourists",
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/taxation/vat/tax-refund-for-tourists",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.tourist-refund-share",
+      "nombre": "Share of the VAT paid that a tourist receives",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-10-01",
+          "valor": 85,
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Tax refund for tourists",
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/taxation/vat/tax-refund-for-tourists",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.corporate-tax",
+      "nombre": "Corporate tax rates",
+      "tipo": "escala",
+      "unidad": "AED",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 375000,
+              "tasa": 0
+            },
+            {
+              "desde": 375000,
+              "hasta": null,
+              "tasa": 9
+            }
+          ],
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Corporate tax (text sourced from the Ministry of Finance)",
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/taxation/corporate-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Read on the page updated on 30 March 2026; the rates apply since the law took effect."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.gratuity",
+      "nombre": "End-of-service gratuity for foreign full-time workers (Article 51)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "first-5-years": "Days of basic wage per year, first five years",
+        "after-5-years": "Days of basic wage per year after five years",
+        "cap-years": "Cap (years of wage)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-02-02",
+          "valor": {
+            "first-5-years": 21,
+            "after-5-years": 30,
+            "cap-years": 2
+          },
+          "fuente": {
+            "organismo": "UAE Legislations",
+            "titulo": "Federal Decree by Law No. 33 of 2021 Concerning Regulating Labour Relations",
+            "url": "https://uaelegislation.gov.ae/en/legislations/1541",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "cap-years is the cap in years of wage, not days."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.annual-leave",
+      "nombre": "Annual leave (Article 29)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "per-year": "Days for each year of service",
+        "per-month": "Days per month between six months and one year"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-02-02",
+          "valor": {
+            "per-year": 30,
+            "per-month": 2
+          },
+          "fuente": {
+            "organismo": "UAE Legislations",
+            "titulo": "Federal Decree by Law No. 33 of 2021 Concerning Regulating Labour Relations",
+            "url": "https://uaelegislation.gov.ae/en/legislations/1541",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.overtime",
+      "nombre": "Overtime premiums (Article 19)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "normal": "Overtime",
+        "night": "Overtime between 10 pm and 4 am",
+        "rest-day": "Work on the rest day"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-02-02",
+          "valor": {
+            "normal": 25,
+            "night": 50,
+            "rest-day": 50
+          },
+          "fuente": {
+            "organismo": "UAE Legislations",
+            "titulo": "Federal Decree by Law No. 33 of 2021 Concerning Regulating Labour Relations",
+            "url": "https://uaelegislation.gov.ae/en/legislations/1541",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.sick-leave",
+      "nombre": "Paid and unpaid sick leave per year (Article 31)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "full-pay": "Full pay",
+        "half-pay": "Half pay",
+        "unpaid": "Unpaid"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-02-02",
+          "valor": {
+            "full-pay": 15,
+            "half-pay": 30,
+            "unpaid": 45
+          },
+          "fuente": {
+            "organismo": "UAE Legislations",
+            "titulo": "Federal Decree by Law No. 33 of 2021 Concerning Regulating Labour Relations",
+            "url": "https://uaelegislation.gov.ae/en/legislations/1541",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.maternity-leave",
+      "nombre": "Maternity leave (Article 30)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "full-pay": "Full pay",
+        "half-pay": "Half pay"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-02-02",
+          "valor": {
+            "full-pay": 45,
+            "half-pay": 15
+          },
+          "fuente": {
+            "organismo": "UAE Legislations",
+            "titulo": "Federal Decree by Law No. 33 of 2021 Concerning Regulating Labour Relations",
+            "url": "https://uaelegislation.gov.ae/en/legislations/1541",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.notice-period",
+      "nombre": "Notice period limits (Article 43)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "minimum": "Minimum",
+        "maximum": "Maximum"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-02-02",
+          "valor": {
+            "minimum": 30,
+            "maximum": 90
+          },
+          "fuente": {
+            "organismo": "UAE Legislations",
+            "titulo": "Federal Decree by Law No. 33 of 2021 Concerning Regulating Labour Relations",
+            "url": "https://uaelegislation.gov.ae/en/legislations/1541",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.gpssa",
+      "nombre": "GPSSA pension contributions for Emiratis in the private sector (% of salary)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employee": "Employee",
+        "employer": "Employer",
+        "government": "Government"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-15",
+          "valor": {
+            "employee": 5,
+            "employer": 12.5,
+            "government": 2.5
+          },
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Emiratis' employment in the private sector (text provided by MoHRE)",
+            "url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/emiratis-employment-in-private-sector",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Page updated 15 October 2026, citing Federal Decree-Law No. 7 of 1999 and its amendments."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.emirati-minimum-wage",
+      "nombre": "Minimum monthly wage for Emiratis in the private sector",
+      "tipo": "numero",
+      "unidad": "AED",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Emiratis' employment in the private sector (text provided by MoHRE)",
+            "url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/emiratis-employment-in-private-sector",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.emiratisation-contribution",
+      "nombre": "Annual contribution for each Emirati not hired against the target",
+      "tipo": "numero",
+      "unidad": "AED",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 96000,
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Emiratis' employment in the private sector (text provided by MoHRE)",
+            "url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/emiratis-employment-in-private-sector",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Charged in January 2025 for 2024."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 108000,
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Emiratis' employment in the private sector (text provided by MoHRE)",
+            "url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/emiratis-employment-in-private-sector",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Charged in January 2026 for 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.iloe",
+      "nombre": "Unemployment insurance (ILOE)",
+      "tipo": "mapa",
+      "unidad": "AED",
+      "etiquetas": {
+        "threshold": "Basic salary that separates the categories",
+        "premium-low": "Monthly premium, first category",
+        "premium-high": "Monthly premium, second category",
+        "benefit-rate": "Compensation (% of basic salary)",
+        "cap-low": "Monthly cap, first category",
+        "cap-high": "Monthly cap, second category",
+        "months": "Months of compensation",
+        "minimum-months": "Months subscribed before claiming"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-08",
+          "valor": {
+            "threshold": 16000,
+            "premium-low": 5,
+            "premium-high": 10,
+            "benefit-rate": 60,
+            "cap-low": 10000,
+            "cap-high": 20000,
+            "months": 3,
+            "minimum-months": 12
+          },
+          "fuente": {
+            "organismo": "UAE Government portal (u.ae)",
+            "titulo": "Unemployment insurance scheme (source: MoHRE)",
+            "url": "https://u.ae/en/information-and-services/jobs/Workplace-regulations/insurance/unemployment-insurance-scheme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dld-transfer-fee",
+      "nombre": "Dubai Land Department fee on a sale (% of sale value)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-14",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Dubai Land Department",
+            "titulo": "Registering the sale of a mortgaged property: service fees",
+            "url": "https://dubailand.gov.ae/en/eservices/registering-the-sale-of-a-mortgaged-property/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dld-registrar-fee",
+      "nombre": "Registration trustee fee for a sale",
+      "tipo": "mapa",
+      "unidad": "AED",
+      "etiquetas": {
+        "below-500k": "Price below AED 500,000",
+        "from-500k": "Price of AED 500,000 or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-14",
+          "valor": {
+            "below-500k": 2100,
+            "from-500k": 4200
+          },
+          "fuente": {
+            "organismo": "Dubai Land Department",
+            "titulo": "Registering the sale of a mortgaged property: service fees",
+            "url": "https://dubailand.gov.ae/en/eservices/registering-the-sale-of-a-mortgaged-property/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dld-mortgage-fee",
+      "nombre": "Mortgage registration fee (% of the mortgage value)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-14",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "Dubai Land Department",
+            "titulo": "Registering the sale of a mortgaged property: service fees",
+            "url": "https://dubailand.gov.ae/en/eservices/registering-the-sale-of-a-mortgaged-property/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dld-title-deed",
+      "nombre": "Title deed fee",
+      "tipo": "numero",
+      "unidad": "AED",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-14",
+          "valor": 250,
+          "fuente": {
+            "organismo": "Dubai Land Department",
+            "titulo": "Registering the sale of a mortgaged property: service fees",
+            "url": "https://dubailand.gov.ae/en/eservices/registering-the-sale-of-a-mortgaged-property/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dewa-electricity-residential",
+      "nombre": "DEWA electricity slab tariff, residential and commercial (fils per kWh)",
+      "tipo": "escala",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-16",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000,
+              "tasa": 23
+            },
+            {
+              "desde": 2000,
+              "hasta": 4000,
+              "tasa": 28
+            },
+            {
+              "desde": 4000,
+              "hasta": 6000,
+              "tasa": 32
+            },
+            {
+              "desde": 6000,
+              "hasta": null,
+              "tasa": 38
+            }
+          ],
+          "fuente": {
+            "organismo": "Dubai Electricity & Water Authority",
+            "titulo": "Slab tariff",
+            "url": "https://www.dewa.gov.ae/en/consumer/billing/slab-tariff",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Rates are in fils (1/100 dirham) per unit, so the marginal scale returns dirhams."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dewa-electricity-industrial",
+      "nombre": "DEWA electricity slab tariff, industrial (fils per kWh)",
+      "tipo": "escala",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-16",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 10000,
+              "tasa": 23
+            },
+            {
+              "desde": 10000,
+              "hasta": null,
+              "tasa": 38
+            }
+          ],
+          "fuente": {
+            "organismo": "Dubai Electricity & Water Authority",
+            "titulo": "Slab tariff",
+            "url": "https://www.dewa.gov.ae/en/consumer/billing/slab-tariff",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Rates are in fils (1/100 dirham) per unit, so the marginal scale returns dirhams."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dewa-water-residential",
+      "nombre": "DEWA water slab tariff, residential (fils per cubic metre)",
+      "tipo": "escala",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-16",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 27,
+              "tasa": 770
+            },
+            {
+              "desde": 27,
+              "hasta": 54,
+              "tasa": 880
+            },
+            {
+              "desde": 54,
+              "hasta": null,
+              "tasa": 1012
+            }
+          ],
+          "fuente": {
+            "organismo": "Dubai Electricity & Water Authority",
+            "titulo": "Slab tariff",
+            "url": "https://www.dewa.gov.ae/en/consumer/billing/slab-tariff",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Rates are in fils (1/100 dirham) per unit, so the marginal scale returns dirhams."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dewa-water-commercial",
+      "nombre": "DEWA water slab tariff, commercial and industrial (fils per cubic metre)",
+      "tipo": "escala",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-16",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 45,
+              "tasa": 770
+            },
+            {
+              "desde": 45,
+              "hasta": 91,
+              "tasa": 880
+            },
+            {
+              "desde": 91,
+              "hasta": null,
+              "tasa": 1012
+            }
+          ],
+          "fuente": {
+            "organismo": "Dubai Electricity & Water Authority",
+            "titulo": "Slab tariff",
+            "url": "https://www.dewa.gov.ae/en/consumer/billing/slab-tariff",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Rates are in fils (1/100 dirham) per unit, so the marginal scale returns dirhams."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dewa-meter-charge",
+      "nombre": "DEWA meter service charge per month",
+      "tipo": "mapa",
+      "unidad": "AED",
+      "etiquetas": {
+        "electricity-1": "Electricity meter type 1",
+        "electricity-2": "Electricity meter type 2",
+        "electricity-3": "Electricity meter type 3",
+        "water-1": "Water meter type 1",
+        "water-2": "Water meter type 2"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-16",
+          "valor": {
+            "electricity-1": 5,
+            "electricity-2": 6,
+            "electricity-3": 35,
+            "water-1": 5,
+            "water-2": 7
+          },
+          "fuente": {
+            "organismo": "Dubai Electricity & Water Authority",
+            "titulo": "Slab tariff",
+            "url": "https://www.dewa.gov.ae/en/consumer/billing/slab-tariff",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae.dewa-fuel-surcharge",
+      "nombre": "DEWA fuel surcharge (fils per unit)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "electricity": "Electricity (fils per kWh)",
+        "water": "Water (fils per cubic metre)"
+      },
+      "proximaRevision": "2026-11-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "electricity": 6,
+            "water": 110
+          },
+          "fuente": {
+            "organismo": "Dubai Electricity & Water Authority",
+            "titulo": "Slab tariff",
+            "url": "https://www.dewa.gov.ae/en/consumer/billing/slab-tariff",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-17",
+            "nota": "Fuel surcharge for October 2026; it changes with fuel prices."
+          }
+        }
+      ]
+    }
+  ]
+}
