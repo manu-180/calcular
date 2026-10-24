@@ -4,6 +4,7 @@ import { de } from "./de";
 import { en } from "./en";
 import { es } from "./es";
 import { fr } from "./fr";
+import { id } from "./id";
 import { it } from "./it";
 import { ja } from "./ja";
 import { ko } from "./ko";
@@ -14,7 +15,7 @@ import { zh } from "./zh";
 
 export type { BloqueLegal, DatosLegales, PaginaLegal, PaginasLegales } from "./tipos";
 
-export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, id };
 
 export function resolverLegales(idioma: Idioma, trato: Trato, datos: DatosLegales, locale?: string): PaginasLegales {
   const dic = DICCIONARIOS_LEGALES[idioma](datos);

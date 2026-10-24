@@ -82,6 +82,8 @@ const IGUALES_PERMITIDOS = new Set([
   "nl:legales.privacidad.bloques.3.titulo",
   "it:legales.privacidad.bloques.3.titulo",
   "nl:legales.sobre.bloques.2.titulo",
+  // «Gratis» es también la palabra indonesia
+  "id:legales.sobre.bloques.2.titulo",
 ]);
 
 type Hoja = { ruta: string; texto: string };
