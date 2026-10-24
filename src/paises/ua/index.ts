@@ -16,6 +16,14 @@ import kalkuliatorPdv from "./calculadoras/kalkuliator-pdv";
 import contenidoKalkuliatorPdv from "./contenido/kalkuliator-pdv";
 import kalkuliatorPdfo from "./calculadoras/kalkuliator-pdfo";
 import contenidoKalkuliatorPdfo from "./contenido/kalkuliator-pdfo";
+import rozrakhunokVidpusknykh from "./calculadoras/rozrakhunok-vidpusknykh";
+import contenidoRozrakhunokVidpusknykh from "./contenido/rozrakhunok-vidpusknykh";
+import kompensatsiiaVidpustky from "./calculadoras/kompensatsiia-vidpustky";
+import contenidoKompensatsiiaVidpustky from "./contenido/kompensatsiia-vidpustky";
+import likarniani from "./calculadoras/likarniani";
+import contenidoLikarniani from "./contenido/likarniani";
+import dekretni from "./calculadoras/dekretni";
+import contenidoDekretni from "./contenido/dekretni";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: yesvDliaFop, contenido: contenidoYesvDliaFop, cliente: () => import("./calculadoras/yesv-dlia-fop.cliente") },
     { definicion: kalkuliatorPdv, contenido: contenidoKalkuliatorPdv, cliente: () => import("./calculadoras/kalkuliator-pdv.cliente") },
     { definicion: kalkuliatorPdfo, contenido: contenidoKalkuliatorPdfo, cliente: () => import("./calculadoras/kalkuliator-pdfo.cliente") },
+    { definicion: rozrakhunokVidpusknykh, contenido: contenidoRozrakhunokVidpusknykh, cliente: () => import("./calculadoras/rozrakhunok-vidpusknykh.cliente") },
+    { definicion: kompensatsiiaVidpustky, contenido: contenidoKompensatsiiaVidpustky, cliente: () => import("./calculadoras/kompensatsiia-vidpustky.cliente") },
+    { definicion: likarniani, contenido: contenidoLikarniani, cliente: () => import("./calculadoras/likarniani.cliente") },
+    { definicion: dekretni, contenido: contenidoDekretni, cliente: () => import("./calculadoras/dekretni.cliente") },
   ],
   universales: "todas",
   novedades,
