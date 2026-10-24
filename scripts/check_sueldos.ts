@@ -504,6 +504,7 @@ const IGUALES = new Set([
   "it:ocupaciones.cocina",
   "it:pagina.colMediana",
   "nl:ocupaciones.marketing",
+  "cs:ocupaciones.marketing",
   "ja:aporte.cargando",
   "*:pagina.entre",
 ]);

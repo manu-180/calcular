@@ -1,4 +1,5 @@
 import type { Idioma, Trato } from "../tipos";
+import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Textos de la calculadora embebible (src/motor/embed) y del generador del código. Va aparte del
@@ -486,7 +487,44 @@ const zh: Diccionario<TextosEmbed> = {
   regional: { "zh-CN": zhHans, "zh-SG": zhHans },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Checo (ADR 0002, D19): vykání con «vy» en minúscula, como Finanční správa y los bancos; el país va
+// con «pro» y acusativo (GRAMATICA.cs: «pro Česko»).
+const cs: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulačka CalcularYa",
+    marcaNuevaPestana: "(otevře se v nové záložce)",
+    noDisponible: { titulo: "Tato kalkulačka není k dispozici", texto: "Možná se změnila její adresa." },
+    insertar: "Vložte na svůj web",
+    pagina: {
+      titulo: (pais) => [`Kalkulačky zdarma pro váš web | ${pais}`, "Kalkulačky zdarma pro váš web"],
+      descripcion: (pais) => `Vyberte kalkulačku ${GRAMATICA.cs.para(pais)}, zkopírujte kód a vložte ho na svůj blog nebo web. Zdarma, s oficiálními údaji, které jsou vždy aktuální.`,
+      h1: "Vložte kalkulačku na svůj web",
+      bajada: "Vyberte kalkulačku, zkopírujte kód a vložte ho, kam potřebujete. Zdarma a údaje se aktualizují samy.",
+      calculadora: "Kalkulačka",
+      buscar: "Najděte kalkulačku",
+      sinResultados: "Vašemu hledání neodpovídá žádná kalkulačka.",
+      tema: "Vzhled",
+      claro: "Světlý",
+      oscuro: "Tmavý",
+      ancho: "Šířka",
+      anchoCompleto: "Na celou šířku",
+      acento: "Barva zvýraznění",
+      colores: ["Zelená", "Modrá", "Oranžová", "Růžová", "Grafitová"],
+      credito: "Zobrazit pod kalkulačkou odkaz na zdroj",
+      vistaPrevia: "Náhled",
+      codigo: "Kód pro vložení",
+      copiar: "Zkopírovat kód",
+      copiado: "Kód zkopírován",
+      ayudaScript: "Skript je volitelný: přizpůsobuje výšku kalkulačky jejímu obsahu.",
+      ventajas: ["Zdarma a bez registrace", "Vždy aktuální oficiální údaje", "Přizpůsobí se jakékoli šířce"],
+      nota: "Pod kalkulačkou je odkaz na CalcularYa. Prosíme, neodstraňujte ho.",
+      verTodas: (pais) => `Zobrazit všechny kalkulačky ${GRAMATICA.cs.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulačka CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, cs };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

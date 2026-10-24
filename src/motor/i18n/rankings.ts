@@ -1,6 +1,7 @@
 import type { IdNivel } from "../rankings/calculo";
 import type { IdRanking } from "../rankings/rutas";
 import type { Idioma, Trato } from "../tipos";
+import { formaCs, pluralCs } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Rankings de países. Todo el texto es impersonal (sin tú, vos, usted, du, Sie, tu, vous, je, u):
@@ -1364,7 +1365,126 @@ const zhHans: TextosRankings = {
 
 const zh: Diccionario<TextosRankings> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── cs ─────────────────────────────
+
+// Checo (ADR 0002, D19): impersonal, como el resto de los rankings. La posición va con el ordinal
+// en cifra y punto («Česko: 27. místo z 41»), que en checo no concuerda con nada.
+const zemeCs = (n: number | string) => pluralCs(n, "země", "země", "zemí");
+
+const cs: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Žebříčky zemí",
+    seo: {
+      titulo: ["Žebříčky zemí podle mzdy a daní", "Žebříčky zemí"],
+      descripcion: (n) => `Kde stejná mzda vystačí nejdál, Den daňové svobody a kolik zbyde ze zvýšení mzdy v ${n} zemích. Oficiální údaje, aktualizace každý den.`,
+    },
+    ceja: "Otevřená data",
+    h1: "Mzdy a daně, země po zemi",
+    bajada: (n) => `${zemeCs(n)} se stejnou kupní silou, každá s vlastní oficiální kalkulačkou. Žebříčky se aktualizují samy každý den.`,
+    actualizado: (f) => `Aktualizováno ${f}`,
+    ver: "Zobrazit žebříček",
+    niveles: { titulo: "Výchozí mzda", nombres: { bajo: "Nízká mzda", medio: "Střední mzda", alto: "Vysoká mzda" }, anual: (m) => `${m} ročně` },
+    tramos: { titulo: "Výše zvýšení", nombre: (a, b) => `Z ${a} na ${b}` },
+    referencia: {
+      nivel: (m) => `hrubá mzda ${m} mezinárodních dolarů ročně`,
+      tramo: (a, b) => `zvýšení hrubé mzdy z ${a} na ${b} mezinárodních dolarů ročně`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${p}. místo z ${total}`,
+    de: (t) => `z ${t}`,
+    empate: (o) => (Number(o) === 1 ? "stejně jako jedna další země" : `stejně jako ${formaCs(o, "další", "další", "dalších")} ${zemeCs(o)}`),
+    fuera: (pais) => `${pais} zatím v těchto žebříčcích není: ke srovnání je potřeba kalkulačka čisté mzdy, která ještě není hotová.`,
+    lider: "První místo v žebříčku",
+    global: (n) => `${zemeCs(n)} od první po poslední`,
+    valores: {
+      porMes: (m) => `${m} měsíčně`,
+      ningunDia: "Ani jeden den",
+      deCada: (n) => `${n} ze 100`,
+      carga: (pct) => `${pct} na daň z příjmů a pojistné`,
+      cargaAumento: (pct) => `${pct} zvýšení jde na daně a pojistné`,
+    },
+    cambio: {
+      titulo: (mes) => `Změna oproti měsíci: ${mes}`,
+      sube: (n) => `O ${pluralCs(n, "příčku", "příčky", "příček")} výš`,
+      baja: (n) => `O ${pluralCs(n, "příčku", "příčky", "příček")} níž`,
+      igual: "Beze změny",
+      nuevo: "Nově v žebříčku",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Místo",
+      pais: "Země",
+      edicion: "Tato verze",
+      unidad: "V mezinárodních dolarech",
+    },
+    kit: {
+      titulo: "Pro média",
+      bajada: "Věta, graf a odkaz na tento žebříček, připravené ke zveřejnění.",
+      compartir: "Sdílet",
+      descargar: "Stáhnout graf",
+      copiar: "Zkopírovat citaci",
+      copiado: "Citace je zkopírovaná",
+      enlace: "Odkaz je zkopírovaný",
+      compartido: "Odesláno",
+      error: "Kopírování se nepovedlo. Text výše lze zkopírovat ručně.",
+      cita: (frase, ranking, ref, fecha) => `${frase} v žebříčku „${ranking}“ (${ref}). Zdroj: CalcularYa, údaje k ${fecha}.`,
+      texto: (frase, ranking) => `${frase} v žebříčku „${ranking}“.`,
+      alt: (ranking) => `Graf žebříčku „${ranking}“`,
+    },
+    metodo: {
+      titulo: "Jak žebříček vzniká",
+      bajada: "Každá země projde svou oficiální kalkulačkou čisté mzdy s dnešními pravidly. Země se pak porovnají při stejné kupní síle.",
+      niveles: (b, m, a) => `Výchozí mzdy: ${b}, ${m} a ${a} mezinárodních dolarů hrubého ročně.`,
+      empates: "Dvě země se stejnou hodnotou v tabulce sdílejí místo a další ho přeskočí (1, 2, 2, 4).",
+      historial: "Změna místa se měří proti snímku žebříčku, který se ukládá každý měsíc. Bez snímku za minulý měsíc se změna nezobrazuje.",
+      actualizacion: "Tabulka se přepočítává každý den s platnými údaji každé země. Nová země přibude, jakmile začne fungovat její kalkulačka.",
+      ver: "Úplná metodika",
+    },
+    datos: {
+      titulo: "Otevřená data",
+      bajada: "Čísla, ze kterých tyto žebříčky vycházejí, země po zemi, ve formátech JSON a CSV. Aktualizují se každý den.",
+      json: "Data v JSON",
+      csv: "Data v CSV",
+      licencia: "Licence CC BY 4.0: data lze volně používat, šířit a zveřejňovat s uvedením CalcularYa a odkazem na tuto stránku.",
+      atribucion: "Doporučená citace",
+    },
+    mundo: { titulo: "S konkrétní mzdou", texto: (n) => `Pro výpočet s vlastní mzdou a datem každé země slouží stránka „${n}“.`, ir: "Spočítat" },
+    otros: "Další žebříčky",
+    rankings: {
+      rinde: {
+        titulo: "Kde stejná mzda vystačí nejdál",
+        corto: "Kde mzda vystačí nejdál",
+        seo: ["Kde stejná mzda vystačí nejdál: žebříček zemí", "Kde stejná mzda vystačí nejdál"],
+        descripcion: (n) => `Stejná mzda se stejnou kupní silou v ${n} zemích: kolik zbyde čistého po daňových pravidlech každé z nich. Aktualizace každý den.`,
+        bajada: "Stejná hrubá mzda se stejnou kupní silou projde pravidly každé země. Nahoře jsou ty, kde zbyde nejvíc čistého.",
+        metrica: "Čistého měsíčně",
+        carga: "Daně a pojistné",
+        como: "Čistá měsíční mzda je průměr za 12 měsíců, v mezinárodních dolarech.",
+      },
+      libertad: {
+        titulo: "Den daňové svobody podle zemí",
+        corto: "Den daňové svobody",
+        seo: ["Den daňové svobody podle zemí: žebříček", "Den daňové svobody podle zemí"],
+        descripcion: (n) => `Den v roce, kdy je zaplacená daň z příjmů a pojistné, se stejnou mzdou v ${n} zemích. Aktualizace každý den.`,
+        bajada: "Den v roce, kdy je zaplacená daň z příjmů a pojistné, se stejnou mzdou v každé zemi. Nahoře jsou ty, kde přijde nejdřív.",
+        metrica: "Práce pro stát do",
+        carga: "Daně a pojistné",
+        como: "Datum rozkládá daně do roku od 1. ledna: při daňovém zatížení 30 % se pro stát pracuje 30 % roku.",
+      },
+      aumento: {
+        titulo: "Kolik zbyde ze zvýšení mzdy",
+        corto: "Co zbyde ze zvýšení",
+        seo: ["Kolik zbyde ze zvýšení mzdy: žebříček zemí", "Kolik zbyde ze zvýšení mzdy"],
+        descripcion: (n) => `Ze 100 přidaných k hrubé mzdě kolik zbyde po dani z příjmů a pojistném v ${n} zemích. Aktualizace každý den.`,
+        bajada: "Ze 100 přidaných k hrubé mzdě kolik skutečně dojde do peněženky po dani z příjmů a pojistném. Nahoře jsou ty, kde zbyde nejvíc.",
+        metrica: "Zbyde ze 100",
+        carga: "Mezní sazba",
+        como: "Je to mezní sazba mezi dvěma mzdami: podíl zvýšení, který odejde na daně a pojistné.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, cs };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

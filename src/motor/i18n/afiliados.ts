@@ -150,6 +150,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  cs: {
+    base: {
+      titulo: "Stěhujete se do zahraničí nebo platíte z jiné země?",
+      etiqueta: "Partnerské odkazy",
+      socios: {
+        wise: "Účet ve více měnách pro příjem a odesílání peněz mezi zeměmi za středový tržní kurz, s poplatkem, který vidíte předem.",
+        deel: "Smlouvy a výplaty pro ty, kdo pracují z jedné země pro firmu z jiné.",
+      },
+      nota: "Pokud si přes tyto odkazy otevřete účet, web může dostat provizi. Vy kvůli tomu nezaplatíte nic navíc.",
+      nuevaPestana: "otevře se v nové kartě",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

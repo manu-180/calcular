@@ -1,6 +1,7 @@
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
 import { GRAMATICA } from "./gramatica";
+import { formaCs, pluralCs } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Calendario laboral y fiscal de cada edición. Los textos no le hablan a nadie en segunda persona a
@@ -739,7 +740,82 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Checo (ADR 0002, D19): impersonal como los demás; el país se declina con GRAMATICA.cs («v Česku»)
+// y los días con formaCs/pluralCs (one/few/other; «před 5 dny» va en instrumental).
+const gCs = GRAMATICA.cs;
+const cs: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Výplatní a daňový kalendář",
+    seo: {
+      titulo: (pais, anios) => [
+        `Výplatní a daňový kalendář ${anios} ${gCs.en(pais)}: důležitá data`,
+        `Výplatní a daňový kalendář ${anios} ${gCs.en(pais)}`,
+        `Výplatní kalendář ${gCs.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Data, která mění mzdu ${gCs.en(pais)}, z oficiálních zdrojů: ${proximas}. Ke každému je kalkulačka.`,
+      descripcionSin: (pais) => `Data, která mění mzdu ${gCs.en(pais)}, z oficiálních zdrojů a ke každému kalkulačka. Přidejte si je do kalendáře v telefonu.`,
+    },
+    ceja: (anios) => `Kalendář na rok ${anios}`,
+    h1: (pais) => `Výplatní a daňový kalendář ${gCs.en(pais)}`,
+    acento: "data, na kterých závisí mzda",
+    bajada: "Každé datum pochází z oficiálního zdroje a vede ke kalkulačce, kterou ovlivňuje. Stránka se aktualizuje sama, jakmile se zveřejní nová hodnota.",
+    proxima: "Nejbližší datum",
+    cuenta: {
+      hoy: "Dnes",
+      manana: "Zítra",
+      ayer: "Včera",
+      en: (n) => `Za ${pluralCs(n, "den", "dny", "dní")}`,
+      hace: (n) => `Před ${pluralCs(n, "dnem", "dny", "dny")}`,
+      dias: (n) => formaCs(n, "den", "dny", "dní"),
+    },
+    queViene: "Brzy",
+    yaRige: "Už platí",
+    mesPorMes: "Rok po měsících",
+    sinFechas: "Žádné změny nebyly oznámeny",
+    filtro: "Filtrovat podle tématu",
+    todo: "Vše",
+    tipos: { pago: "Výplaty", "salario-minimo": "Minimální mzda", impuestos: "Daně", aportes: "Pojistné a důchody", laboral: "Pracovní pravidla", indices: "Referenční hodnoty" },
+    pasa: (antes, despues) => `Mění se z ${antes} na ${despues}`,
+    queda: (valor) => `Platí: ${valor}`,
+    cambian: "Částky se mění",
+    zonas: (lista) => `Regiony: ${lista}`,
+    limite: "Poslední termín",
+    agregar: "Přidat do mého kalendáře",
+    descargar: "Apple, Outlook a další (soubor .ics)",
+    google: "Kalendář Google",
+    calcular: "Spočítat",
+    tambien: "Také v kalkulačkách",
+    fuente: (organismo, fecha) => `Zdroj: ${organismo}. Ověřeno ${fecha}.`,
+    verificado: (fecha) => `Ověřeno ${fecha}`,
+    suscribir: {
+      titulo: "Celý kalendář, vždy aktuální",
+      texto: "Přihlaste se k odběru jednou a nová data se vám sama objeví v kalendáři v telefonu nebo počítači.",
+      boton: "Odebírat kalendář",
+      copiar: "Zkopírovat odkaz",
+      copiado: "Odkaz zkopírován",
+    },
+    fuentes: {
+      titulo: "Odkud se bere každé datum",
+      texto: "Patří sem jen data, která už stanovil právní předpis nebo hodnota zveřejněná oficiálním úřadem. Co ještě není zveřejněné, tady není.",
+    },
+    vacio: "V příštích dvanácti měsících k tomuto tématu žádná data nejsou.",
+    destacado: {
+      ceja: "Výplatní kalendář",
+      titulo: "Data, na kterých letos závisí mzda",
+      ir: "Zobrazit kalendář",
+      proxima: (titulo, fecha) => `Nejbližší: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Výplatní a daňový kalendář ${gCs.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Výplatní a daňové termíny ${gCs.en(pais)} z oficiálních zdrojů.`,
+      calculadora: "Kalkulačka",
+      fuente: "Zdroj",
+    },
+    og: { proxima: "Nejbližší datum", mas: (n) => `A ještě ${pluralCs(n, "další termín", "další termíny", "dalších termínů")} letos` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, cs };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);
