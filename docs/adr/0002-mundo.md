@@ -146,6 +146,105 @@ zh (`informe.anchoCompleto`); en coreano la carta va en 합니다체, que es el 
 **Prueba.** `zz-ja` (Zetaland en japonés) es una edición interna como `zz-en`. `check_universales`
 prueba ja-JP, ko-KR, zh-TW, zh-HK y zh-CN, con nombres de país largos.
 
+### D18. Rumano, para Rumania y Moldavia (2026-10-24)
+
+D9 a D17 los usan otras ramas sin mergear (`claude/mundo-motor-eu`, `-tr`, `-uk`, `-uz`, `-ru` y las
+demás); esta entrada toma el D18 para no chocar al mergear.
+
+**Por qué.** El rumano es la lengua oficial de Rumania y de la República de Moldavia (allí la
+Constitución lo llama así desde 2023). Con un solo motor entran los dos países: `ro` (leu, RON) y `md`
+(leu moldovenesc, MDL). Se busca en rumano y con las palabras de los bancos: «calculator salariu
+net», «calculator credit ipotecar», «calculator TVA», «calculator dobândă», «calculator DAE».
+
+`IDIOMAS` suma `ro`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`salariu-in-lume`), rankings (`clasamentul-tarilor`), horas de
+trabajo (`cate-ore-de-munca`), calendario (`calendar-salarial`), sueldos reales (`salarii-reale`), el
+diccionario de venta completo y las 41 universales están en rumano.
+
+**Trato.** Un solo registro, el de ANAF SPV, BCR e ING Home'Bank: «dumneavoastră» implícito, con el
+imperativo y el presente de 2.ª del plural («introduceți», «calculați», «puteți»), los clíticos «vă» y
+«-vă» y el posesivo «dumneavoastră» cuando hace falta; nunca «tu» ni la abreviatura «dvs.». Los
+botones también van en 2.ª del plural («Calculați», «Copiați linkul», «Abonați-vă»). Se descartó el
+imperativo corto («Calculează»), que muchas webs usan en los botones, porque en rumano coincide con la
+2.ª del singular y en una misma pantalla mezclaría personas con el texto en «dumneavoastră»; además
+así el check puede atrapar la 2.ª del singular en cualquier lugar. Se descartó el infinitivo largo
+(«Calculare»), que suena a menú de software y no a botón de servicio. Los mercados van con
+`trato: "usted"`, como ja, ko, zh y ru; los diccionarios escriben solo `base`. La tarjeta para
+compartir va en 1.ª persona («Lucrez pentru stat până la...») y cierra con «Dar dumneavoastră?». Las
+páginas impersonales (rankings, horas, calendario) siguen impersonales. Vocabulario: calculator
+salariu net, salariu brut, impozit pe venit, CAS, CASS, TVA, credit ipotecar, credit de nevoi
+personale, dobândă, DAE, rată lunară, avans, adaos comercial, foaie de calcul (planilla).
+
+**Textos neutrales de país.** Las universales y las páginas del idioma las usan Rumania y Moldavia:
+nada de organismos de uno solo (ni ANAF ni SFS, ni BNR ni BNM, ni ROBOR, ni rovinietă), la moneda
+siempre formateada por el mercado y las cifras legales (cota de TVA, mínimos) del dato del país.
+
+**Escritura.** ș y ț con coma debajo (U+0219, U+021B, U+0218, U+021A), nunca con cedilla (ş, ţ),
+como pide la norma y como escriben los sitios oficiales hoy. â e î según la norma de la Academia
+(1993): î al comienzo y al final de palabra y después de prefijo («în», «coborî», «neîncredere»), â
+adentro («România», «câștig»); «sunt», no «sînt». Comillas „” (las «» quedan para citas dentro de
+citas y no se usan). Sin rayas: las fórmulas usan «=» y las pausas, paréntesis o dos oraciones.
+
+**Plurales.** `Intl.PluralRules("ro")` da tres categorías: one (solo 1), few (0, 2 a 19, los que
+terminan en 01 a 19 como 101 y 1.019, y las fracciones) y other (20 a 100, 120, 1.000...). En other
+el rumano pone «de» entre el número y el sustantivo: «1 an», «2 ani», «19 ani», «20 de ani», «101
+ani», «1,5 ani», «1.000 de lei». `src/motor/i18n/plural.ts` da `formaRo(n, uno, varios)` (la forma
+detrás del número, con «de» en other), `pluralRo(n, uno, varios)` y `deRo(n)` (solo el «de»); aceptan
+el número ya formateado («1.250»). Las unidades de tiempo usan `FormasUnidad` (la misma interfaz que
+las ramas eu, uk y ru): `pocos` = «ani», `otros` = «de ani». Con un monto formateado con código («1.250
+RON») no va «de». El contador del buscador suma `resultadosDe` («20 de rezultate»).
+
+**Gramática del país.** El artículo es enclítico y el genitivo cambia la terminación. `GRAMATICA.ro`:
+`nombre(p)` la forma de sujeto («Mexicul», «Filipinele», «România»); `de(p)` el genitivo que va
+detrás de un sustantivo articulado («calculatoarele României», «Republicii Moldova», «Mexicului»,
+«Statelor Unite ale Americii», «Regatului Unit», «Țărilor de Jos», «Arabiei Saudite», «Coreei de
+Sud», «Africii de Sud», «Noii Zeelande», «Ciprului»); `en(p)` «în» + el nombre («în România», «în
+Mexic»); `para(p)` «pentru» + el nombre. Por regla sobre los nombres de Intl.DisplayNames en ro: -ia
+da -iei, -ea da -eei, -ca da -căi, el resto de -a da -ei; en un compuesto la primera palabra declina
+(-ul da -ului, -ele/-ile dan -elor/-ilor) y los adjetivos en -ă que siguen dan -e; los masculinos en
+consonante suman -ului. Una tabla lleva lo irregular (Africa, America, Republica, Noua Zeelandă,
+Filipine, Costa Rica, Bosnia și Herțegovina). Los que en el uso no se declinan (Chile, Peru,
+Singapore, Haiti, Togo, El Salvador, siglas, nombres con coma, guion, paréntesis o «și», como «Saint
+Vincent și Grenadinele») devuelven «din X», que entra en el mismo lugar del genitivo («calculatoarele
+din Chile»). Por eso los diccionarios usan `de(p)` solo detrás de un sustantivo articulado.
+
+**Formato.** Intl de ro-RO: punto de miles, coma decimal, el código detrás («1.234.567,50 RON») y el
+porcentaje con espacio («19,5 %»); fechas «1 octombrie 2026». En ro-MD Intl escribe el leu moldavo
+como «L»: el mercado `md` tiene que fijar `simbolos: { MDL: "MDL" }` (o «lei», si así lo escriben sus
+fuentes) en su `mercado.ts`. `parsearNumero` no cambia: lee «RON», «lei» y «MDL» como letras (casos
+nuevos en `check_motor`). `inferir.ts` reconoce «anual», «anuală», «lunar», «lunară», «luna». El
+buscador ya pasa ș, ț, ă, â, î a ASCII con NFD. Las OG cargan Noto Sans de respaldo en ro por si Geist
+no trae ș y ț con coma.
+
+**Slugs.** ASCII sin diacríticos, con la frase que se busca: `calculator-credit`,
+`calculator-credit-ipotecar`, `calculator-tva`, `calculator-dae`, `calculator-dobanda-compusa`,
+`calculator-dobanda-simpla`, `calculator-card-de-credit`, `randament-investitie`,
+`calculator-economii-pensie`, `calculator-economii`, `fond-de-urgenta`, `calculator-adaos-comercial`,
+`prag-de-rentabilitate`, `tarif-orar-freelancer`, `calculator-salariu-pe-ora`,
+`calculator-marire-salariu`, `calculator-ore-lucrate`, `buget-50-30-20`,
+`chirie-sau-cumparare-locuinta`, `cost-intretinere-masina`, `calculator-procente`,
+`variatie-procentuala`, `calculator-reducere`, `calculator-bacsis`, `impartire-cheltuieli`,
+`regula-de-trei-simpla`, `calculator-medie`, `zile-intre-doua-date`, `adauga-zile-la-data`,
+`calculator-varsta`, `calculator-imc`, `calculator-calorii`, `calculator-sarcina`,
+`calculator-ovulatie`, `calculator-ritm-alergare`, `calculator-consum-combustibil`,
+`calculator-consum-energie`, `calculator-metri-patrati`, `calculator-vopsea`,
+`calculator-gresie-faianta` y `calculator-beton`. Rankings: `puterea-de-cumparare-a-salariului`,
+`ziua-libertatii-fiscale`, `cat-ramane-din-marire`. El slug de «Tu sueldo en el mundo» es
+`salariu-in-lume` (sin «tău», que sería tuteo).
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): las comunes (sin exclamaciones, rayas, guion como pausa ni emojis) más ş/ţ con cedilla, «â»
+al comienzo o al final de palabra, «î» adentro salvo después de prefijo, «sînt», comillas que no son
+„”, las palabras más comunes sin diacríticos («si», «in», «daca», «fara», «dupa», «pana», «tara»), el
+«tu» con sus clíticos y posesivos y las formas de 2.ª del singular que no coinciden con la 3.ª
+(«ești», «poți», «vrei», «introdu»), los posesivos de «voi» y «dvs.». «intre» quedó fuera de la lista
+porque también es el subjuntivo correcto de «a intra» («să intre»).
+
+**Prueba.** `zz-ro` (Zetalandia, locale `ro-001`) es una edición interna como `zz-ja`.
+`check_universales` prueba ro-RO con RON («România»), ro-MD con MDL («Republica Moldova»), «Saint
+Vincent și Grenadinele» por el nombre largo que no se declina y «Statele Unite ale Americii» por el
+compuesto que sí.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

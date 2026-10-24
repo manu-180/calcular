@@ -47,6 +47,7 @@ varias veces por límite de uso.
 | Angola | claude/pais-ao | en curso |
 | Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
 | Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Motor rumano (ro) | claude/mundo-motor-ro | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Rumania y Moldavia |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -76,6 +77,36 @@ Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/z
 - Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
 
 El cron datos-paises no está actualizando uy, hn y bo.
+
+## 24/10/2026 · Motor rumano (`claude/mundo-motor-ro`)
+
+ro en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`salariu-in-lume`), rankings (`clasamentul-tarilor`), horas de trabajo
+(`cate-ore-de-munca`), calendario (`calendar-salarial`), sueldos reales (`salarii-reale`), venta
+completa (`IDIOMAS_VENTA`) y las 41 universales con slugs ASCII (`calculator-credit`,
+`calculator-tva`, `calculator-credit-ipotecar`...). Registro de ANAF SPV, BCR e ING Home'Bank:
+«dumneavoastră» implícito y 2.ª del plural, también en los botones («Calculați»); mercados con
+`trato: "usted"`. ș y ț con coma, â/î de la Academia, comillas „”. Plurales one/few/other con «de»
+(`formaRo`/`pluralRo`/`deRo`: «20 de ani», «101 ani»). `GRAMATICA.ro` declina el país con el
+artículo enclítico («României», «Mexicului», «din Chile»). Textos neutrales para Rumania y Moldavia.
+Decisiones en ADR 0002, D18. Edición de prueba `zz-ro`; `check_universales` prueba ro-RO con RON,
+ro-MD con MDL y dos nombres largos.
+
+Falta para publicar Rumania y Moldavia:
+- Los países en sí (BRIEF-PAIS): en `ro` el calculator salariu net (CAS, CASS, impozit pe venit,
+  deducere personală), salariul minim, TVA, concediu de odihnă, indemnizație de creștere a copilului
+  y credit ipotecar, con datos verificados en fuentes oficiales (legislatie.just.ro, anaf.ro, bnr.ro,
+  insse.ro); en `md` salariu net (impozit pe venit, contribuțiile CNAS y CNAM del empleado),
+  salariul minim y TVA, con legis.md, sfs.md, bnm.md y statistica.md. Ninguna tasa está cargada
+  todavía: todas se leen en la fuente.
+- El mercado `md` tiene que fijar `simbolos: { MDL: "MDL" }` (Intl escribe «L»).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- Al mergear con `claude/mundo-motor-eu`, `-uk` y `-ru`: `src/motor/i18n/plural.ts` choca (todas lo
+  crean) y hay que dejar `pluralPl`, `formaUk`/`pluralUk`, `formaRu`/`pluralRu` y
+  `formaRo`/`pluralRo`/`deRo` juntos; `FormasUnidad` en `unidades.ts` y `nombreDeUnidad` en
+  `formato.ts` son el mismo cambio. En el buscador, `resultadosPocos` (eslavos) y `resultadosDe`
+  (rumano) conviven en `cuantosResultados`. `IDIOMAS`, los `Record<Idioma>` y `src/paises/index.ts`
+  chocan por la lista.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 
