@@ -63,7 +63,7 @@ async function ipcNbu(http: Http, url: string): Promise<readonly PuntoSerie[] | 
   for (const fecha of [...zminy.keys()].sort()) {
     if (fecha <= "2009-12-01" || !esFechaISO(fecha)) continue;
     riven = (riven * (100 + (zminy.get(fecha) ?? 0))) / 100;
-    puntos.push({ fecha, valor: Math.round(riven * 10000) / 10000 });
+    puntos.push({ fecha, valor: Math.round(riven * 1e8) / 1e8 });
   }
   return puntos.length > 1 ? puntos : null;
 }

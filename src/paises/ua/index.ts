@@ -34,6 +34,16 @@ import podatokZProdazhuNeruhomosti from "./calculadoras/podatok-z-prodazhu-neruh
 import contenidoPodatokZProdazhuNeruhomosti from "./contenido/podatok-z-prodazhu-neruhomosti";
 import podatokZProdazhuAvto from "./calculadoras/podatok-z-prodazhu-avto";
 import contenidoPodatokZProdazhuAvto from "./contenido/podatok-z-prodazhu-avto";
+import kursValiutNbu from "./calculadoras/kurs-valiut-nbu";
+import contenidoKursValiutNbu from "./contenido/kurs-valiut-nbu";
+import indeksInfliatsii from "./calculadoras/indeks-infliatsii";
+import contenidoIndeksInfliatsii from "./contenido/indeks-infliatsii";
+import tryVidsotkyRichnykh from "./calculadoras/try-vidsotky-richnykh";
+import contenidoTryVidsotkyRichnykh from "./contenido/try-vidsotky-richnykh";
+import kalkuliatorPeni from "./calculadoras/kalkuliator-peni";
+import contenidoKalkuliatorPeni from "./contenido/kalkuliator-peni";
+import kalkuliatorAlimentiv from "./calculadoras/kalkuliator-alimentiv";
+import contenidoKalkuliatorAlimentiv from "./contenido/kalkuliator-alimentiv";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -63,6 +73,11 @@ export default definirPais({
     { definicion: podatokNaDepozyt, contenido: contenidoPodatokNaDepozyt, cliente: () => import("./calculadoras/podatok-na-depozyt.cliente") },
     { definicion: podatokZProdazhuNeruhomosti, contenido: contenidoPodatokZProdazhuNeruhomosti, cliente: () => import("./calculadoras/podatok-z-prodazhu-neruhomosti.cliente") },
     { definicion: podatokZProdazhuAvto, contenido: contenidoPodatokZProdazhuAvto, cliente: () => import("./calculadoras/podatok-z-prodazhu-avto.cliente") },
+    { definicion: kursValiutNbu, contenido: contenidoKursValiutNbu, cliente: () => import("./calculadoras/kurs-valiut-nbu.cliente") },
+    { definicion: indeksInfliatsii, contenido: contenidoIndeksInfliatsii, cliente: () => import("./calculadoras/indeks-infliatsii.cliente") },
+    { definicion: tryVidsotkyRichnykh, contenido: contenidoTryVidsotkyRichnykh, cliente: () => import("./calculadoras/try-vidsotky-richnykh.cliente") },
+    { definicion: kalkuliatorPeni, contenido: contenidoKalkuliatorPeni, cliente: () => import("./calculadoras/kalkuliator-peni.cliente") },
+    { definicion: kalkuliatorAlimentiv, contenido: contenidoKalkuliatorAlimentiv, cliente: () => import("./calculadoras/kalkuliator-alimentiv.cliente") },
   ],
   universales: "todas",
   novedades,
