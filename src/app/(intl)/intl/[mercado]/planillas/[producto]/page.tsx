@@ -53,7 +53,7 @@ export default async function LandingPlanillaIntl({ params }: Props) {
   const t = textosPlanillas(m);
   const precio = precioIntl(p, m.locale);
   const referencia = referenciaLocalDe(m.codigo);
-  const tarjeta = textosTarjeta(m.idioma, m.trato);
+  const tarjeta = textosTarjeta(m.idioma, m.trato, m.locale);
   const cobro = leyendaDeCobro(p.precioCentavos, referencia, tarjeta);
   const muestra = muestraDePlanilla(ctx, p);
   const faq = t.faq(p, referencia !== null);

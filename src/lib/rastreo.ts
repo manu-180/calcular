@@ -17,7 +17,14 @@ export const TIPOS_EVENTO = [
   "login",
   "descarga",
   "error",
+  "llegada",
+  "puente_visto",
+  "puente_clic",
 ] as const;
+
+// Los tipos de boca en boca entran a la base con la migración 20261023130000. Antes de aplicarla el
+// CHECK de ca_eventos los rechaza, y /api/e los saca del lote para no perder los demás eventos.
+export const TIPOS_BOCA_A_BOCA: ReadonlySet<string> = new Set(["llegada", "puente_visto", "puente_clic"]);
 
 export type TipoEvento = (typeof TIPOS_EVENTO)[number];
 

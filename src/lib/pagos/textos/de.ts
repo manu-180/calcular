@@ -785,6 +785,40 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: ANDERE_BETRAEGE,
   },
+  "informe-calculo": {
+    nombre: "Berechnungsbericht",
+    tituloCorto: "Berechnungsbericht",
+    paraQuien: F(
+      "Um diese Berechnung schriftlich zu haben, mit deinen Zahlen, ihren Annahmen und der Quelle jedes amtlichen Werts",
+      "Um diese Berechnung schriftlich zu haben, mit Ihren Zahlen, ihren Annahmen und der Quelle jedes amtlichen Werts",
+    ),
+    descripcion: [
+      F(
+        "Ein PDF-Bericht über die Berechnung, die du gerade gemacht hast, Schritt für Schritt mit deinen Angaben: das Ergebnis, die Annahmen dahinter und jeder amtliche Wert mit Quelle und Prüfdatum.",
+        "Ein PDF-Bericht über die Berechnung, die Sie gerade gemacht haben, Schritt für Schritt mit Ihren Angaben: das Ergebnis, die Annahmen dahinter und jeder amtliche Wert mit Quelle und Prüfdatum.",
+      ),
+      F(
+        "Zum Ablegen oder um ihn deiner Steuerberatung, deinem Arbeitgeber oder anderen zu zeigen, die ihn prüfen müssen, ohne jede Zahl neu zu erklären.",
+        "Zum Ablegen oder um ihn Ihrer Steuerberatung, Ihrem Arbeitgeber oder anderen zu zeigen, die ihn prüfen müssen, ohne jede Zahl neu zu erklären.",
+      ),
+    ],
+    gancho: F("Nimm diese Berechnung schriftlich mit, samt Quellen", "Nehmen Sie diese Berechnung schriftlich mit, samt Quellen"),
+    incluye: [
+      { titulo: "Das Ergebnis mit den Angaben", texto: "Genau wie berechnet, druckfertig." },
+      { titulo: "Wie gerechnet wird", texto: "Die Schritte und Annahmen, damit jede Zahl nachvollziehbar ist." },
+      { titulo: "Die amtlichen Quellen", texto: "Jeder Wert mit Behörde, Link und Prüfdatum." },
+    ],
+    pasos: {
+      titulo: "Vor der Verwendung",
+      items: [
+        F("Prüfe, ob die Angaben oben deine sind: Das Ergebnis hängt davon ab.", "Prüfen Sie, ob die Angaben oben Ihre sind: Das Ergebnis hängt davon ab."),
+        F(
+          "Hat sich ein amtlicher Wert geändert, rechne neu: Der Bericht nutzt die am Kauftag gültigen Werte.",
+          "Hat sich ein amtlicher Wert geändert, rechnen Sie neu: Der Bericht nutzt die am Kauftag gültigen Werte.",
+        ),
+      ],
+    },
+  },
 };
 
 export const de: DiccionarioVenta = {

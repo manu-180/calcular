@@ -194,8 +194,8 @@ export function nombreRango(r: Rango): string {
   const a = partesDia(inicio);
   if (inicio === fin) return `${a.dia} ${MESES[a.mes]}`;
   const b = partesDia(fin);
-  if (a.anio === b.anio && a.mes === b.mes) return `${a.dia} – ${b.dia} ${MESES[b.mes]}`;
-  return `${a.dia} ${MESES[a.mes]} – ${b.dia} ${MESES[b.mes]}`;
+  if (a.anio === b.anio && a.mes === b.mes) return `${a.dia} al ${b.dia} ${MESES[b.mes]}`;
+  return `${a.dia} ${MESES[a.mes]} al ${b.dia} ${MESES[b.mes]}`;
 }
 
 export function periodo(r: Rango): string {

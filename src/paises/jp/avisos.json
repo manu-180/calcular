@@ -1,0 +1,34 @@
+{
+  "mercado": "jp",
+  "avisos": [
+    {
+      "id": "jp.food-tax-cut-2027",
+      "nivel": "info",
+      "desde": "2026-10-17",
+      "hasta": "2027-03-31",
+      "aplicaA": ["jp.consumption-tax"],
+      "texto": "令和9年4月1日から令和11年3月31日までの2年間、飲食料品の消費税率が引き下げられます。それまでは軽減税率8％のままです。",
+      "fuente": {
+        "organismo": "国税庁",
+        "titulo": "No.6303 消費税および地方消費税の税率",
+        "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6303.htm",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17"
+      }
+    },
+    {
+      "id": "jp.kenpo-kyokai-only",
+      "nivel": "info",
+      "desde": "2026-03-01",
+      "aplicaA": ["jp.take-home-pay", "jp.social-insurance"],
+      "texto": "健康保険料は協会けんぽの都道府県別料率で計算しています。健康保険組合や共済組合に加入している場合は、加入先の料率をご確認ください。",
+      "fuente": {
+        "organismo": "全国健康保険協会（協会けんぽ）",
+        "titulo": "令和8年度都道府県単位保険料率",
+        "url": "https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/rate_prefectures/r08/index.html",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17"
+      }
+    }
+  ]
+}
