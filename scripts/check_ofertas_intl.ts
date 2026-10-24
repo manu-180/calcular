@@ -32,6 +32,7 @@ import { PRODUCTOS_INTL, productoIntl, productoIntlDe, leerReferenciaIntl, type 
 import { FAMILIAS, SIN_FAMILIA, campoEscenario, familiaDeConcepto, nombreDeCalculo, precioUSD } from "../src/lib/pagos/ofertas-intl";
 import { DICCIONARIOS, FAMILIAS_POR_LOCALE, IDIOMAS_VENTA, resolverTrato, tieneVenta, type DiccionarioVenta, type IdiomaVenta } from "../src/lib/pagos/textos";
 import { zhHans } from "../src/lib/pagos/textos/zh-hans";
+import { direccionDe } from "../src/motor/i18n/direccion";
 import { idiomaDeLocale } from "../src/motor/i18n/resolver";
 import { problemasDeTexto } from "./reglas_idioma";
 import { bloqueDe, calculadorasDeProducto, mapaDePlanillaIntl, ofertasDeMercado, planillaConDatos, validarDatosDeProducto } from "../src/lib/pagos/ofertas-servidor";
@@ -344,7 +345,7 @@ function revisarTexto(origen: string, idioma: Idioma, trato: Trato, s: string, l
   if (!s.trim()) fallo(`${origen}: texto vacío`);
   if (RAYA.test(s)) fallo(`${origen}: raya en «${s}»`);
   if (EMOJI.test(s)) fallo(`${origen}: emoji en «${s}»`);
-  if (idioma === "ja" || idioma === "ko" || idioma === "zh") for (const p of problemasDeTexto(s, idioma, trato, locale)) if (!(carta && p.startsWith("합니다체"))) fallo(`${origen}: ${p} en «${s.slice(0, 60)}»`);
+  if (idioma === "ja" || idioma === "ko" || idioma === "zh" || idioma === "ar") for (const p of problemasDeTexto(s, idioma, trato, locale)) if (!(carta && p.startsWith("합니다체"))) fallo(`${origen}: ${p} en «${s.slice(0, 60)}»`);
   if (idioma !== "es") return;
   if (trato !== "vos" && VOSEO.test(s)) fallo(`${origen} (${trato}): voseo «${VOSEO.exec(s)![0]}» en «${s}»`);
   if (trato === "usted" && TUTEO.test(s)) fallo(`${origen} (usted): tuteo «${TUTEO.exec(s)![0]}» en «${s}»`);
@@ -358,7 +359,7 @@ function textosDe(valor: unknown, salida: string[] = []): string[] {
   return salida;
 }
 
-const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"] };
+const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"], ar: ["usted"] };
 
 // Cada diccionario que se revisa, con el locale de su escritura (el chino simplificado es aparte).
 const REVISADOS: readonly { nombre: string; idioma: IdiomaVenta; locale?: string; d: DiccionarioVenta }[] = [
@@ -445,7 +446,7 @@ function checkTextos() {
     for (const trato of TRATOS[idioma]) {
       for (const p of muestra) {
         const html = entregaIntlHtml({ producto: p, idioma, trato, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" });
-        if (!html.includes(`<html lang="${idioma}">`)) fallo(`mail ${idioma}: sin lang`);
+        if (!html.includes(`<html lang="${idioma}"${direccionDe(idioma) === "rtl" ? ' dir="rtl"' : ""}>`)) fallo(`mail ${idioma}: sin lang o sin dir`);
         const texto = html.replace(/<[^>]+>/g, " ");
         revisarTexto(`mail ${idioma} ${p.tipo}`, idioma, trato, texto);
         if (PLANTILLA.test(texto) || PLANTILLA.test(asuntoEntregaIntl(p, idioma, trato))) fallo(`mail ${idioma} ${p.tipo}: marca de plantilla sin llenar`);
