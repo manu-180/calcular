@@ -47,6 +47,7 @@ varias veces por límite de uso.
 | Angola | claude/pais-ao | en curso |
 | Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
 | Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Motor indonesio (id) | claude/mundo-motor-id | terminado el 24/10 (núcleo, venta y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -76,6 +77,19 @@ Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/z
 - Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
 
 El cron datos-paises no está actualizando uy, hn y bo.
+
+## 24/10/2026 · Motor indonesio (`claude/mundo-motor-id`)
+
+id en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`gaji-di-dunia`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con slugs en indonesio
+(`kalkulator-kpr`, `kalkulator-pinjaman`, `kalkulator-ppn`...). Registro «Anda» con mayúscula, el de
+BCA, Mandiri, OJK y DJP Online; mercados con `trato: "usted"`. Decisiones en ADR 0002, D11. Edición de
+prueba `zz-id`.
+
+Falta para publicar Indonesia:
+- El país en sí (BRIEF-PAIS): PPh 21 con TER, BPJS Kesehatan y Ketenagakerjaan, UMP/UMK por provincia,
+  PPN, THR, pesangon, con datos verificados en fuentes oficiales (pajak.go.id, bpjs, kemnaker).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 

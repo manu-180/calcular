@@ -146,6 +146,56 @@ zh (`informe.anchoCompleto`); en coreano la carta va en 합니다체, que es el 
 **Prueba.** `zz-ja` (Zetaland en japonés) es una edición interna como `zz-en`. `check_universales`
 prueba ja-JP, ko-KR, zh-TW, zh-HK y zh-CN, con nombres de país largos.
 
+### D11. Indonesio (2026-10-24)
+
+D9 (pl, sv, da, nb, fi) y D10 (árabe) están en ramas sin mergear (`claude/mundo-motor-eu`,
+`claude/mundo-motor-ar`); esta entrada toma el número siguiente para no chocar al mergear.
+
+`IDIOMAS` suma `id`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+«Tu sueldo en el mundo» (`gaji-di-dunia`), el diccionario de venta completo (las 27 familias,
+`informe-calculo` incluida, informes, planillas y mails) y las 41 universales están en indonesio.
+
+**Trato.** Un solo registro, el de los bancos y servicios digitales de Indonesia (BCA, Mandiri, OJK,
+DJP Online): «Anda» con mayúscula, imperativo corto sin «-lah» («Masukkan», «Pilih», «Hitung») y
+frases breves. Nada de «kamu», «aku» ni jerga de chat (yuk, dong, aja, nggak), que en una web de
+servicio suenan a publicidad o a mensaje entre amigos. «Anda» es la forma de cortesía estándar, por
+eso los mercados van con `trato: "usted"`, como ja, ko y zh; los diccionarios escriben solo `base`.
+Las cartas del informe van en primera persona formal y las tarjetas para compartir en primera persona
+(«Saya»).
+
+**Gramática del país.** El indonesio no tiene artículos ni declinación. `GRAMATICA.id`: el poseedor va
+detrás sin preposición (`de(p)` = p: «Kalkulator Indonesia», «pajak Indonesia»), el lugar con «di» y el
+destino con «untuk».
+
+**Formato.** Intl de id-ID: miles con punto y decimales con coma («Rp 1.500.000», «1,5 tahun»), igual
+que es-CO o de-DE, así que `parsearNumero` no cambia (casos nuevos en `check_motor`). La rupia sale sin
+decimales porque así la formatea Intl en id-ID; los ejemplos de las universales usan `montoEjemplo`, que
+da cifras redondas en la escala de IDR (millones). Fechas largas «24 Oktober 2026». El indonesio no
+marca plural después de un número: las dos formas de cada unidad son iguales («3 hari», «1 tahun») y los
+diccionarios no ramifican por n.
+
+**Slugs.** ASCII en indonesio, con la palabra que se busca en Google Indonesia, casi siempre con el
+prefijo «kalkulator»: `kalkulator-pinjaman`, `kalkulator-kpr`, `kalkulator-ppn`, `kalkulator-bunga-efektif`,
+`kalkulator-bunga-majemuk`, `kalkulator-bunga-tunggal`, `kalkulator-tabungan`, `kalkulator-dana-pensiun`,
+`kalkulator-dana-darurat`, `kalkulator-gaji-per-jam`, `kalkulator-kenaikan-gaji`, `kalkulator-bep`,
+`kalkulator-roi`, `kalkulator-persen`, `kalkulator-diskon`, `kalkulator-patungan`, `kalkulator-umur`,
+`kalkulator-bmi`, `kalkulator-hpl`, `kalkulator-masa-subur`, `kalkulator-listrik`, `kalkulator-keramik`,
+`kalkulator-beton`; sin prefijo donde la búsqueda es una frase (`sewa-atau-beli-rumah`,
+`biaya-kepemilikan-mobil`, `perbandingan-senilai`, `selisih-tanggal`, `tambah-hari-ke-tanggal`,
+`tarif-freelance-per-jam`). «Tu sueldo en el mundo»: `gaji-di-dunia`.
+
+**Universales.** Textos nativos de Indonesia (cicilan, tenor, uang muka, bunga fixed/floating, bunga
+efektif frente a bunga flat, PPN, HPP, BEP, HPHT y HPL, sak semen, dus de keramik), sin cifras legales
+tipeadas ni organismos: la tasa de `iva` sale del dato del país. Los ejemplos se calculan con las
+funciones de cada `definicion.ts`.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): sin exclamaciones, rayas ni guion como pausa, y se atrapan «kamu/aku/gue/lo», la jerga de
+chat, «anda» en minúscula y los posesivos con -mu más comunes (no se busca -mu suelto: «umum», «ilmu»).
+
+**Prueba.** `zz-id` (Zetaland, locale `id-001`) es una edición interna como `zz-ja`. `check_universales`
+prueba id-ID con IDR (escala 16000) y «Saint Vincent dan Grenadine» por el nombre largo.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.
