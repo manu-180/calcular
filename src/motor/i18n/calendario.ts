@@ -739,7 +739,76 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Turco (ADR 0002, D12): impersonal como los demás; el país lleva el sufijo con GRAMATICA.tr y nada se
+// pega a cifras, fechas ni valores interpolados (van sueltos o tras dos puntos). Tras un número el
+// sustantivo va en singular («3 gün»).
+const gTr = GRAMATICA.tr;
+const tr: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Maaş ve vergi takvimi",
+    seo: {
+      titulo: (pais, anios) => [
+        `${gTr.de(pais)} ${anios} maaş ve vergi takvimi: önemli tarihler`,
+        `${gTr.de(pais)} ${anios} maaş ve vergi takvimi`,
+        `${gTr.de(pais)} maaş takvimi`,
+      ],
+      descripcion: (pais, proximas) => `${gTr.en(pais)} maaşı değiştiren tarihler, resmî kaynaklarıyla: ${proximas}. Her biri kendi hesaplama aracıyla.`,
+      descripcionSin: (pais) => `${gTr.en(pais)} maaşı değiştiren tarihler, resmî kaynakları ve hesaplama araçlarıyla. Telefon takvimine eklemek için hazır.`,
+    },
+    ceja: (anios) => `Takvim: ${anios}`,
+    h1: (pais) => `${gTr.de(pais)} maaş ve vergi takvimi`,
+    acento: "maaşı etkileyen tarihler",
+    bajada: "Her tarih resmî bir kaynaktan gelir ve ilgili hesaplama aracına götürür. Yeni bir değer yayımlandığında sayfa kendiliğinden güncellenir.",
+    proxima: "Sıradaki tarih",
+    cuenta: { hoy: "Bugün", manana: "Yarın", ayer: "Dün", en: (n) => `${n} gün sonra`, hace: (n) => `${n} gün önce`, dias: () => "gün" },
+    queViene: "Yaklaşanlar",
+    yaRige: "Yürürlükte olanlar",
+    mesPorMes: "Ay ay bütün yıl",
+    sinFechas: "Açıklanmış bir değişiklik yok",
+    filtro: "Konuya göre süz",
+    todo: "Tümü",
+    tipos: { pago: "Ödemeler", "salario-minimo": "Asgari ücret", impuestos: "Vergiler", aportes: "Primler ve emeklilik", laboral: "Çalışma kuralları", indices: "Endeksler" },
+    pasa: (antes, despues) => `Eski değer: ${antes}. Yeni değer: ${despues}`,
+    queda: (valor) => `Belirlenen değer: ${valor}`,
+    cambian: "Tutarlar değişiyor",
+    zonas: (lista) => `Geçerli olduğu yerler: ${lista}`,
+    limite: "Son gün",
+    agregar: "Takvimime ekle",
+    descargar: "Apple, Outlook ve diğerleri (.ics dosyası)",
+    google: "Google Takvim",
+    calcular: "Hesapla",
+    tambien: "Şu hesaplama araçlarında da",
+    fuente: (organismo, fecha) => `Kaynak: ${organismo}. Doğrulama tarihi: ${fecha}.`,
+    verificado: (fecha) => `Doğrulama tarihi: ${fecha}`,
+    suscribir: {
+      titulo: "Bütün takvim, her zaman güncel",
+      texto: "Abone olduğunuzda yeni tarihler telefonunuzun ya da bilgisayarınızın takviminde kendiliğinden görünür.",
+      boton: "Takvime abone ol",
+      copiar: "Bağlantıyı kopyala",
+      copiado: "Bağlantı kopyalandı",
+    },
+    fuentes: {
+      titulo: "Her tarih nereden geliyor",
+      texto: "Yalnızca bir mevzuatta yer alan ya da resmî kurumun yayımladığı bir değere dayanan tarihler girer. Henüz yayımlanmamış bir şey burada görünmez.",
+    },
+    vacio: "Önümüzdeki on iki ayda bu konuda bir tarih yok.",
+    destacado: {
+      ceja: "Maaş takvimi",
+      titulo: "Bu yıl maaşı etkileyen tarihler",
+      ir: "Takvimi gör",
+      proxima: (titulo, fecha) => `Sıradaki: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `${gTr.de(pais)} maaş ve vergi takvimi (CalcularYa)`,
+      descripcion: (pais) => `${gTr.de(pais)} maaş ve vergi tarihleri, resmî kaynaklarıyla.`,
+      calculadora: "Hesaplama aracı",
+      fuente: "Kaynak",
+    },
+    og: { proxima: "Sıradaki tarih", mas: (n) => `Bu yıl ${n} tarih daha var` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, tr };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

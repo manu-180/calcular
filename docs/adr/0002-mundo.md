@@ -217,6 +217,14 @@ chat, el apóstrofo tipográfico y el porcentaje detrás del número.
 prueba tr-TR con TRY, «Saint Vincent ve Grenadinler» por el nombre largo y «Demokratik Kongo
 Cumhuriyeti» por el largo con posesivo.
 
+**Puesta al día con main (7d190a68).** Calendario laboral y fiscal (`maas-takvimi`), «¿Cuántas horas de
+trabajo cuesta?» (`kac-saatlik-calisma`, con el nombre «Kaç saat çalışmak gerekir?», la frase que se
+busca en Turquía), rankings (`ulke-siralamasi`: `maasin-alim-gucu`, `vergi-ozgurluk-gunu`,
+`zamdan-ne-kalir`), «Sueldos reales» (`gercek-maaslar`) y afiliados en turco, con las mismas reglas:
+calendario, horas y rankings impersonales, sueldos y afiliados con «siz»; las cifras, fechas y montos
+van sueltos o tras dos puntos («Doğrulama tarihi: ...», «Sıra: 3 / 40»). Las imágenes OG no suman
+fuente de respaldo: Geist cubre ç, ğ, ı, İ, ö, ş y ü.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

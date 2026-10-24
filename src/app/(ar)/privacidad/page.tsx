@@ -95,6 +95,13 @@ export default function PrivacidadPage() {
           guardamos tu dirección IP ni los datos de tu navegador</strong>, ni los valores que escribís.
         </p>
         <p>
+          Para encontrar dónde se traba la gente también medimos si la calculadora llegó a darte un
+          resultado, el nombre del último campo que tocaste (por ejemplo «Sueldo bruto», nunca lo que
+          pusiste), cuánto tardó la página en cargar y en responder, y si tocaste varias veces seguidas
+          algo que no respondía. A veces mostramos dos versiones de una página para ver cuál se entiende
+          mejor; te toca siempre la misma.
+        </p>
+        <p>
           Si usás el buscador, guardamos lo que buscaste para mejorar los resultados. Si la búsqueda
           parece un dato personal (un número largo como un DNI o un CUIT, o un mail), no se guarda.
         </p>
