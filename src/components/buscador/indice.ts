@@ -21,7 +21,8 @@ export function normalizar(texto: string): string {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
+    // El cirílico (ucraniano) cuenta como letra: sin esto «кредит» quedaba vacío.
+    .replace(/[^a-z0-9\u0400-\u04ff]+/g, " ")
     .trim();
 }
 

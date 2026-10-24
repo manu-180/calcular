@@ -351,6 +351,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       "zh-SG": ZH_HANS_MOTOR,
     },
   },
+  // Ucraniano (ADR 0002, D15): «ви» con minúscula y las formas corteses, como en Дія, ПриватБанк y
+  // monobank. El botón va en infinitivo («Розрахувати»), como los botones de esos sitios; las
+  // oraciones, en imperativo de cortesía («введіть», «оберіть»).
+  uk: {
+    base: {
+      calcular: "Розрахувати",
+      resultado: "Результат",
+      si: "Так",
+      no: "Ні",
+      sinResultado: "Наразі ми не показуємо цей результат.",
+      errores: {
+        requerido: "Заповніть це поле.",
+        "numero-invalido": "Введіть число, наприклад {ejemplo}.",
+        "entero-invalido": "Введіть ціле число без десяткових знаків.",
+        "menor-que-min": "Мінімальне значення: {min}.",
+        "mayor-que-max": "Максимальне значення: {max}.",
+        "fecha-invalida": "Оберіть правильну дату.",
+        "hora-invalida": "Оберіть правильний час.",
+        "opcion-invalida": "Оберіть один із варіантів.",
+        "region-invalida": "Оберіть регіон.",
+        "calculo-fallido": "З цими даними розрахунок не вдався. Перевірте значення і спробуйте ще раз.",
+      },
+      milesAmbiguos: "Ви мали на увазі {sugerido}? Введіть число без {signos}.",
+      separadores: { punto: "крапок", coma: "ком" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {
