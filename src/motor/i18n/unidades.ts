@@ -3,10 +3,19 @@ import { escrituraZh } from "./escritura";
 
 export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 
-type Formas = Readonly<Record<UnidadDeTiempo, { uno: string; otros: string }>>;
+// La forma se elige con Intl.PluralRules del locale: "uno" es la categoría "one", "pocos" la "few",
+// "muchos" la "many" y "otros" todas las demás (sin "pocos" o "muchos" se usa "otros"). En checo
+// "few" es 2 a 4 (2 dny, 3 týdny), "other" 0 y 5 en adelante (5 let) y "many" las fracciones, que van
+// en genitivo singular (1,5 roku): por eso en cs "muchos" lleva la forma de fracción.
+export interface FormasUnidad {
+  uno: string;
+  otros: string;
+  pocos?: string;
+  muchos?: string;
+}
 
-// La forma se elige con Intl.PluralRules del locale: "uno" es la categoría "one" y "otros" todas las
-// demás. Alcanza para estos idiomas; uno con dual o paucal (ar, ru, pl) va a pedir más formas.
+type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad>>;
+
 // ja, ko y zh no tienen plural: las dos formas son iguales y la unidad va pegada al número (3日).
 export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   es: { dias: { uno: "día", otros: "días" }, semanas: { uno: "semana", otros: "semanas" }, horas: { uno: "hora", otros: "horas" }, meses: { uno: "mes", otros: "meses" }, anios: { uno: "año", otros: "años" } },
@@ -19,6 +28,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   ja: { dias: { uno: "日", otros: "日" }, semanas: { uno: "週間", otros: "週間" }, horas: { uno: "時間", otros: "時間" }, meses: { uno: "か月", otros: "か月" }, anios: { uno: "年", otros: "年" } },
   ko: { dias: { uno: "일", otros: "일" }, semanas: { uno: "주", otros: "주" }, horas: { uno: "시간", otros: "시간" }, meses: { uno: "개월", otros: "개월" }, anios: { uno: "년", otros: "년" } },
   zh: { dias: { uno: "天", otros: "天" }, semanas: { uno: "週", otros: "週" }, horas: { uno: "小時", otros: "小時" }, meses: { uno: "個月", otros: "個月" }, anios: { uno: "年", otros: "年" } },
+  cs: {
+    dias: { uno: "den", pocos: "dny", muchos: "dne", otros: "dní" },
+    semanas: { uno: "týden", pocos: "týdny", muchos: "týdne", otros: "týdnů" },
+    horas: { uno: "hodina", pocos: "hodiny", muchos: "hodiny", otros: "hodin" },
+    meses: { uno: "měsíc", pocos: "měsíce", muchos: "měsíce", otros: "měsíců" },
+    anios: { uno: "rok", pocos: "roky", muchos: "roku", otros: "let" },
+  },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

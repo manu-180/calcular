@@ -13,6 +13,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   ja: "sekai-no-kyuyo",
   ko: "segye-yeonbong",
   zh: "shijie-gongzi",
+  cs: "mzda-ve-svete",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";

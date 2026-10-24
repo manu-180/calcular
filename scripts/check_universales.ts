@@ -59,11 +59,19 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "cn" as CodigoMercado, pais: "CN", nombrePais: "中国", locale: "zh-CN", trato: "usted", moneda: "CNY" as Moneda, escala: 7 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "聖文森及格瑞那丁", locale: "zh-TW", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  // Checo (ADR 0002, D19): koruna con «Kč» detrás y espacio de miles, un nombre largo que se declina
+  // por partes («na Svatém Vincenci a Grenadinách») y uno plural con adjetivos delante («ve Spojených
+  // arabských emirátech»).
+  cs: [
+    { mercado: "cz" as CodigoMercado, pais: "CZ", nombrePais: "Česko", locale: "cs-CZ", trato: "usted", moneda: "CZK" as Moneda, escala: 23 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Svatý Vincenc a Grenadiny", locale: "cs-CZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Spojené arabské emiráty", locale: "cs-CZ", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
 };
 
-// En ja, ko y zh las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
+// En ja, ko, zh y cs las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
 // sobre toda la página: los traductores de los idiomas latinos no las necesitaban.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh"]);
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "cs"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy

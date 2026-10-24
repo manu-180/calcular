@@ -259,4 +259,157 @@ const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `
 // 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
 const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh };
+// Checo (ADR 0002, D19): el nombre del país se declina. `de(p)` da el genitivo suelto («Česka»,
+// «Německa», «Spojených států»), `en(p)` el lugar con su preposición («v Česku», «ve Francii», «na
+// Slovensku», «na Filipínách») y `para(p)` «pro» + acusativo («pro Česko», «pro Kanadu», «pro
+// Francii»). Los nombres llegan como los escribe Intl.DisplayNames en cs, así que la regla cubre los
+// de una palabra por terminación (-o neutro: -a/-u; -ie: -ie/-ii/-ii; -a dura: -y, -ě/-e con la
+// alternancia k→c, h/g→z, ch→š, r→ř, y -u; -a blanda: -e/-i/-u; consonante dura: -u; blanda: -e/-i;
+// plurales en -y: sin -y y -ách) y los compuestos (adjetivos delante en -á, -ý, -é, -í y -ovy; partes
+// unidas con « a »; un agregado entre paréntesis o tras « – » queda igual). La tabla lleva los
+// irregulares y CON_NA los países e islas que van con «na». La preposición es «ve» ante v/f y ante
+// s, z, š, ž seguidas de consonante (salvo r: «v Srbsku»). Lo que termina en -i, -u o -e (Chile,
+// Peru, Haiti, Zimbabwe) no se declina. `padyCs` deja los tres casos y la preposición sueltos para
+// las frases que los necesitan por separado.
+export interface PadyCs {
+  genitiv: string;
+  lokal: string;
+  akuzativ: string;
+  // «v», «ve» o «na»
+  predlozka: string;
+}
+
+export const padyCs: (pais: string) => PadyCs = (() => {
+  // [genitivo, locativo, acusativo] sin preposición.
+  type Formas = readonly [string, string, string];
+  const TABLA: Readonly<Record<string, Formas>> = {
+    Egypt: ["Egypta", "Egyptě", "Egypt"],
+    Izrael: ["Izraele", "Izraeli", "Izrael"],
+    Keňa: ["Keni", "Keni", "Keňu"],
+    Uruguay: ["Uruguaye", "Uruguayi", "Uruguay"],
+    Paraguay: ["Paraguaye", "Paraguayi", "Paraguay"],
+    Mauricius: ["Mauricia", "Mauriciu", "Mauricius"],
+    "Spojené státy": ["Spojených států", "Spojených státech", "Spojené státy"],
+    "Spojené arabské emiráty": ["Spojených arabských emirátů", "Spojených arabských emirátech", "Spojené arabské emiráty"],
+    "Burkina Faso": ["Burkiny Faso", "Burkině Faso", "Burkinu Faso"],
+    "Guinea-Bissau": ["Guineje-Bissau", "Guineji-Bissau", "Guineu-Bissau"],
+    "Papua-Nová Guinea": ["Papuy-Nové Guineje", "Papui-Nové Guineji", "Papuu-Novou Guineu"],
+    "Pobřeží slonoviny": ["Pobřeží slonoviny", "Pobřeží slonoviny", "Pobřeží slonoviny"],
+    "Palestinská území": ["Palestinských území", "Palestinských územích", "Palestinská území"],
+    "Svatý Kryštof a Nevis": ["Svatého Kryštofa a Nevisu", "Svatém Kryštofu a Nevisu", "Svatý Kryštof a Nevis"],
+    "Svatý Tomáš a Princův ostrov": ["Svatého Tomáše a Princova ostrova", "Svatém Tomáši a Princově ostrově", "Svatý Tomáš a Princův ostrov"],
+    "Ostrov Man": ["Ostrova Man", "Ostrově Man", "Ostrov Man"],
+    Ålandy: ["Ålandských ostrovů", "Ålandských ostrovech", "Ålandy"],
+    "Svatý Martin": ["Svatého Martina", "Svatém Martinu", "Svatý Martin"],
+    "Tristan da Cunha": ["Tristanu da Cunha", "Tristanu da Cunha", "Tristan da Cunha"],
+    "Diego García": ["Diega Garcíi", "Diegu Garcíi", "Diega Garcíu"],
+    "Francouzská jižní území": ["Francouzských jižních území", "Francouzských jižních územích", "Francouzská jižní území"],
+    "Menší odlehlé ostrovy USA": ["Menších odlehlých ostrovů USA", "Menších odlehlých ostrovech USA", "Menší odlehlé ostrovy USA"],
+  };
+  const CON_NA = new Set([
+    "Slovensko", "Ukrajina", "Kypr", "Malta", "Kuba", "Island", "Filipíny", "Jamajka", "Madagaskar", "Nový Zéland",
+    "Srí Lanka", "Tchaj-wan", "Bahamy", "Maledivy", "Seychely", "Mauricius", "Barbados", "Haiti", "Fidži", "Bermudy",
+    "Komory", "Kapverdy", "Dominika", "Grenada", "Trinidad a Tobago", "Antigua a Barbuda", "Svatá Lucie",
+    "Svatý Vincenc a Grenadiny", "Svatý Kryštof a Nevis", "Svatý Tomáš a Princův ostrov", "Aruba", "Tonga", "Samoa",
+    "Marshallovy ostrovy", "Šalamounovy ostrovy", "Kajmanské ostrovy", "Faerské ostrovy", "Kanárské ostrovy",
+    "Cookovy ostrovy", "Kokosové ostrovy", "Falklandské ostrovy", "Martinik", "Guadeloupe", "Réunion", "Nauru",
+    "Tuvalu", "Palau", "Vanuatu", "Kiribati", "Guam", "Špicberky a Jan Mayen", "Ostrov Man", "Ålandy",
+    "Palestinská území", "Severní Mariany", "Britské Panenské ostrovy", "Americké Panenské ostrovy", "Curaçao",
+    "Pitcairnovy ostrovy", "Wallis a Futuna", "Svatá Helena", "Turks a Caicos", "Svatý Martin (Francie)", "Svatý Martin (Nizozemsko)",
+  ]);
+  // -ey (Jersey, Guernsey) no se declina; «ostrov» y los posesivos en -ův van aparte.
+  // Plurales masculinos (los demás plurales en -y se declinan como femeninos).
+  const PLURAL_MASCULINO = /(?:ostrovy|státy|emiráty)$/;
+  const ALTERNANCIA: Readonly<Record<string, string>> = { k: "c", h: "z", g: "z", r: "ř" };
+  type Genero = "f" | "n" | "m" | "pl";
+  const genero = (w: string): Genero => {
+    if (/y$/.test(w)) return "pl";
+    if (/[aeě]$/.test(w)) return "f";
+    if (/[oí]$/.test(w)) return "n";
+    return "m";
+  };
+  const sustantivo = (w: string): Formas => {
+    const guion = w.lastIndexOf("-");
+    if (guion > 0) {
+      const [g, l, a] = sustantivo(w.slice(guion + 1));
+      const pre = w.slice(0, guion + 1);
+      return [pre + g, pre + l, pre + a];
+    }
+    if (/^[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]{2,}$/.test(w)) return [w, w, w];
+    const raiz = w.slice(0, -1);
+    if (/ey$/.test(w)) return [w, w, w];
+    if (w === "ostrov") return ["ostrova", "ostrově", w];
+    if (PLURAL_MASCULINO.test(w)) return [`${raiz}ů`, `${raiz}ech`, w];
+    if (/y$/.test(w)) return [raiz, `${raiz}ách`, w];
+    if (/[iy]e$/.test(w)) return [w, `${raiz}i`, `${raiz}i`];
+    if (/ea$/.test(w)) return [`${raiz}je`, `${raiz}ji`, `${raiz}u`];
+    if (/[aeiouyáéíóúůý]a$/.test(w)) return [`${raiz}y`, `${raiz}i`, `${raiz}u`];
+    if (/[žščřcjďťň]a$/.test(w)) return [`${raiz}e`, `${raiz}i`, `${raiz}u`];
+    if (/cha$/.test(w)) return [`${raiz}y`, `${w.slice(0, -3)}še`, `${raiz}u`];
+    if (/a$/.test(w)) {
+      const c = raiz.at(-1) ?? "";
+      const base = raiz.slice(0, -1);
+      const lok = ALTERNANCIA[c] ? `${base}${ALTERNANCIA[c]}e` : "lsz".includes(c) ? `${raiz}e` : `${raiz}ě`;
+      return [`${raiz}y`, lok, `${raiz}u`];
+    }
+    if (/o$/.test(w)) return [`${raiz}a`, `${raiz}u`, w];
+    if (/[žščřcjďťň]$/.test(w)) return [`${w}e`, `${w}i`, w];
+    if (/[bcdfghjklmnpqrstvwxz]$/.test(w)) return [`${w}u`, `${w}u`, w];
+    return [w, w, w];
+  };
+  // Un adjetivo delante del sustantivo, según el género del sustantivo.
+  const adjetivo = (w: string, g: Genero): Formas => {
+    const r = w.slice(0, -1);
+    if (g === "pl") {
+      if (/ovy$/.test(w)) return [`${r}ých`, `${r}ých`, w];
+      if (/[éá]$/.test(w)) return [`${r}ých`, `${r}ých`, w];
+      if (/í$/.test(w)) return [`${r}ích`, `${r}ích`, w];
+      return [w, w, w];
+    }
+    if (/ův$/.test(w)) return [`${w.slice(0, -2)}ova`, `${w.slice(0, -2)}ově`, w];
+    if (/á$/.test(w)) return [`${r}é`, `${r}é`, `${r}ou`];
+    if (/[ýé]$/.test(w)) return [`${r}ého`, `${r}ém`, w];
+    if (/í$/.test(w)) return g === "f" ? [w, w, w] : [`${w}ho`, `${w}m`, w];
+    return [w, w, w];
+  };
+  const unir = (partes: readonly Formas[], sep: string): Formas => [
+    partes.map((f) => f[0]).join(sep),
+    partes.map((f) => f[1]).join(sep),
+    partes.map((f) => f[2]).join(sep),
+  ];
+  const frase = (p: string): Formas => {
+    const palabras = p.split(" ");
+    const g = genero(palabras[palabras.length - 1]);
+    return unir(palabras.map((w, i) => (i === palabras.length - 1 ? sustantivo(w) : adjetivo(w, g))), " ");
+  };
+  const formas = (p: string): Formas => {
+    if (TABLA[p]) return TABLA[p];
+    for (const sep of [" – ", " ("]) {
+      const i = p.indexOf(sep);
+      if (i > 0) {
+        const [g, l, a] = formas(p.slice(0, i));
+        return [g + p.slice(i), l + p.slice(i), a + p.slice(i)];
+      }
+    }
+    if (p.includes(" a ")) return unir(p.split(" a ").map(formas), " a ");
+    return frase(p);
+  };
+  const VE = /^(?:[VvFfWw]|[Rr]w|[SsZzŠšŽž][^aeiouyáéíóúůýěrAEIOUYÁÉÍÓÚŮÝĚ\s])/;
+  return (p: string): PadyCs => {
+    const [genitiv, lokal, akuzativ] = formas(p);
+    const predlozka = CON_NA.has(p) || /ostrov/i.test(p) ? "na" : VE.test(lokal) ? "ve" : "v";
+    return { genitiv, lokal, akuzativ, predlozka };
+  };
+})();
+
+const cs: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => padyCs(p).genitiv,
+  en: (p) => {
+    const f = padyCs(p);
+    return `${f.predlozka} ${f.lokal}`;
+  },
+  para: (p) => `pro ${padyCs(p).akuzativ}`,
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, cs };

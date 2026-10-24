@@ -87,7 +87,32 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     informal: [{ re: palabras("je|jij|jou|jouw|jezelf"), nombre: "je-vorm" }],
     formal: [{ re: palabras("u|uw|uzelf"), nombre: "u-vorm" }],
   },
+  // Checo: un solo registro, el de Finanční správa, ČSOB y Česká spořitelna (vykání con «vy» en
+  // minúscula; ADR 0002, D19). Se atrapa el tykání (pronombre y posesivos), los imperativos y
+  // presentes de segunda del singular que aparecen en un formulario y el «Vy» con mayúscula a mitad
+  // de oración, que en la web de servicio se escribe con minúscula.
+  cs: {
+    informal: [
+      { re: palabras("tebe|tobě|tebou|tvůj|tvoje|tvá|tvé|tvého|tvému|tvém|tvým|tvou|tví|tvých|tvými|sis|ses"), nombre: "tykání («ty»)" },
+      {
+        re: palabras("zadej|spočítej|vypočítej|vyber|klikni|zjisti|zkontroluj|porovnej|zkus|vyplň|uveď|podívej|získej|zkopíruj|sdílej|stáhni|otevři|přidej|ulož|začni|napiš|použij|nastav|zvol|změň|odečti|přičti"),
+        nombre: "imperativo de tykání (va -te)",
+      },
+      { re: palabras("můžeš|máš|chceš|víš|dostaneš|platíš|vyděláváš|vidíš|pracuješ|utrácíš|ušetříš|musíš|potřebuješ|zaplatíš|jsi|budeš|dáš|zadáš|vybereš"), nombre: "segunda persona de tykání" },
+      { re: /[^.?!:„(\s]\s+(?:Vy|Vás|Vám|Vámi|Váš|Vaše|Vašeho|Vašemu|Vašem|Vaším|Vaši|Vašich|Vašim|Vašimi)(?!\p{L})/u, nombre: "«Vy» con mayúscula (va «vy»)" },
+    ],
+    formal: [],
+  },
 };
+
+// Checo: comillas „ “ (abre abajo, cierra arriba), nada de «», "" ni ” (las del inglés o el
+// francés).
+function reglasCs(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en checo van „ “");
+  if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en checo abren con „ (abajo)");
+  return p;
+}
 
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {
   const r = REGISTRO[idioma];
@@ -158,5 +183,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
     return p;
   }
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
+  if (idioma === "cs") p.push(...reglasCs(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }
