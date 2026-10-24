@@ -35,6 +35,7 @@ export type TextosInforme = {
     documento: string;
     etiquetaEnMinuscula: boolean;
     anchoCompleto: boolean;
+    puntoFinal: string;
   } | null;
 };
 
@@ -300,7 +301,7 @@ export function InformeVivo({
               </p>
             ) : (
               <p>
-                {textos.nota.pedido} <strong>{clave.texto}</strong> ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLowerCase() : clave.etiqueta}).
+                {textos.nota.pedido} <strong>{clave.texto}</strong> ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLowerCase() : clave.etiqueta}){textos.nota.puntoFinal}
               </p>
             )}
             <p>{textos.nota.cierre}</p>
