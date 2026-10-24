@@ -739,7 +739,337 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── pl ─────────────────────────────
+
+const gPl = GRAMATICA.pl;
+const dniKalendarzPl = (n: number) => (n === 1 ? "dzień" : "dni");
+const pl: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Kalendarz płacowy i podatkowy",
+    seo: {
+      titulo: (pais, anios) => [`Kalendarz płacowy ${anios} ${gPl.en(pais)}: ważne terminy`, `Kalendarz płacowy ${anios} ${gPl.en(pais)}`, `Kalendarz płacowy ${gPl.en(pais)}`],
+      descripcion: (pais, proximas) => `Terminy, które zmieniają wynagrodzenie ${gPl.en(pais)}, z oficjalnym źródłem: ${proximas}. Przy każdym odpowiedni kalkulator.`,
+      descripcionSin: (pais) => `Terminy, które zmieniają wynagrodzenie ${gPl.en(pais)}, z oficjalnym źródłem i odpowiednim kalkulatorem. Do dodania w kalendarzu telefonu.`,
+    },
+    ceja: (anios) => `Kalendarz ${anios}`,
+    h1: (pais) => `Kalendarz płacowy i podatkowy ${gPl.en(pais)}`,
+    acento: "terminy, które zmieniają pensję",
+    bajada: "Każda data pochodzi z oficjalnego źródła i prowadzi do kalkulatora, którego dotyczy. Strona aktualizuje się sama, gdy pojawia się nowa wartość.",
+    proxima: "Najbliższy termin",
+    cuenta: { hoy: "Dziś", manana: "Jutro", ayer: "Wczoraj", en: (n) => `Za ${n} ${dniKalendarzPl(n)}`, hace: (n) => `${n} ${dniKalendarzPl(n)} temu`, dias: (n) => dniKalendarzPl(n) },
+    queViene: "Co przed nami",
+    yaRige: "Już obowiązuje",
+    mesPorMes: "Rok miesiąc po miesiącu",
+    sinFechas: "Brak zapowiedzianych zmian",
+    filtro: "Filtruj według tematu",
+    todo: "Wszystko",
+    tipos: { pago: "Wypłaty", "salario-minimo": "Płaca minimalna", impuestos: "Podatki", aportes: "Składki i emerytury", laboral: "Prawo pracy", indices: "Wskaźniki" },
+    pasa: (antes, despues) => `Zmiana z ${antes} na ${despues}`,
+    queda: (valor) => `Nowa wartość: ${valor}`,
+    cambian: "Zmieniają się wartości",
+    zonas: (lista) => `Dotyczy: ${lista}`,
+    limite: "Ostateczny termin",
+    agregar: "Dodaj do kalendarza",
+    descargar: "Apple, Outlook i inne (plik .ics)",
+    google: "Kalendarz Google",
+    calcular: "Oblicz",
+    tambien: "Także w",
+    fuente: (organismo, fecha) => `Źródło: ${organismo}. Sprawdzono ${fecha}.`,
+    verificado: (fecha) => `Sprawdzono ${fecha}`,
+    suscribir: {
+      titulo: "Cały kalendarz, zawsze aktualny",
+      texto: "Po zasubskrybowaniu nowe terminy same pojawiają się w kalendarzu w telefonie albo na komputerze.",
+      boton: "Subskrybuj kalendarz",
+      copiar: "Kopiuj link",
+      copiado: "Link skopiowany",
+    },
+    fuentes: {
+      titulo: "Skąd pochodzi każda data",
+      texto: "Trafiają tu tylko daty zapisane w przepisach albo w wartości opublikowanej przez oficjalną instytucję. Jeśli coś nie zostało jeszcze opublikowane, nie ma tego w kalendarzu.",
+    },
+    vacio: "W najbliższych dwunastu miesiącach nie ma terminów z tego tematu.",
+    destacado: {
+      ceja: "Kalendarz płacowy",
+      titulo: "Terminy, które w tym roku zmieniają pensję",
+      ir: "Zobacz kalendarz",
+      proxima: (titulo, fecha) => `Najbliższy: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Kalendarz płacowy ${gPl.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Terminy płacowe i podatkowe ${gPl.en(pais)}, z oficjalnym źródłem.`,
+      calculadora: "Kalkulator",
+      fuente: "Źródło",
+    },
+    og: { proxima: "Najbliższy termin", mas: (n) => `I jeszcze ${n} ${n === 1 ? "termin" : [2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100) ? "terminy" : "terminów"} w tym roku` },
+  },
+};
+
+// ───────────────────────────── sv ─────────────────────────────
+
+const gSv = GRAMATICA.sv;
+const sv: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Löne- och skattekalender",
+    seo: {
+      titulo: (pais, anios) => [`Lönekalender ${anios} ${gSv.de(pais)}: viktiga datum`, `Lönekalender ${anios} ${gSv.de(pais)}`, `Lönekalender ${gSv.de(pais)}`],
+      descripcion: (pais, proximas) => `Datumen som påverkar lönen ${gSv.en(pais)}, med officiell källa: ${proximas}. Varje datum har sin kalkylator.`,
+      descripcionSin: (pais) => `Datumen som påverkar lönen ${gSv.en(pais)}, med officiell källa och tillhörande kalkylator. Lägg in dem i kalendern i mobilen.`,
+    },
+    ceja: (anios) => `Kalender ${anios}`,
+    h1: (pais) => `Löne- och skattekalender ${gSv.de(pais)}`,
+    acento: "datumen som påverkar lönen",
+    bajada: "Varje datum kommer från en officiell källa och leder till kalkylatorn det gäller. Sidan uppdateras av sig själv när ett nytt värde publiceras.",
+    proxima: "Nästa datum",
+    cuenta: { hoy: "I dag", manana: "I morgon", ayer: "I går", en: (n) => `Om ${n} dagar`, hace: (n) => `För ${n} dagar sedan`, dias: (n) => (n === 1 ? "dag" : "dagar") },
+    queViene: "Det som kommer",
+    yaRige: "Det som redan gäller",
+    mesPorMes: "Året månad för månad",
+    sinFechas: "Inga aviserade ändringar",
+    filtro: "Filtrera efter ämne",
+    todo: "Allt",
+    tipos: { pago: "Utbetalningar", "salario-minimo": "Minimilön", impuestos: "Skatter", aportes: "Avgifter och pension", laboral: "Arbetsrättsliga regler", indices: "Referensvärden" },
+    pasa: (antes, despues) => `Går från ${antes} till ${despues}`,
+    queda: (valor) => `Fastställs till ${valor}`,
+    cambian: "Beloppen ändras",
+    zonas: (lista) => `Gäller ${lista}`,
+    limite: "Sista dag",
+    agregar: "Lägg till i min kalender",
+    descargar: "Apple, Outlook med flera (.ics-fil)",
+    google: "Google Kalender",
+    calcular: "Räkna",
+    tambien: "Finns även i",
+    fuente: (organismo, fecha) => `Källa: ${organismo}. Kontrollerat ${fecha}.`,
+    verificado: (fecha) => `Kontrollerat ${fecha}`,
+    suscribir: {
+      titulo: "Hela kalendern, alltid aktuell",
+      texto: "Med en prenumeration dyker nya datum upp av sig själva i kalendern i mobilen eller datorn.",
+      boton: "Prenumerera på kalendern",
+      copiar: "Kopiera länken",
+      copiado: "Länken är kopierad",
+    },
+    fuentes: {
+      titulo: "Var varje datum kommer ifrån",
+      texto: "Bara datum som redan står i en författning eller i ett värde som den ansvariga myndigheten har publicerat kommer med. Det som inte är publicerat än syns inte.",
+    },
+    vacio: "Inga datum inom det här ämnet de kommande tolv månaderna.",
+    destacado: {
+      ceja: "Lönekalender",
+      titulo: "Datumen som påverkar lönen i år",
+      ir: "Se kalendern",
+      proxima: (titulo, fecha) => `Nästa: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Lönekalender ${gSv.de(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Löne- och skattedatum ${gSv.de(pais)}, med officiell källa.`,
+      calculadora: "Kalkylator",
+      fuente: "Källa",
+    },
+    og: { proxima: "Nästa datum", mas: (n) => `Och ${n} datum till under året` },
+  },
+};
+
+// ───────────────────────────── da ─────────────────────────────
+
+const gDa = GRAMATICA.da;
+const da: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Løn- og skattekalender",
+    seo: {
+      titulo: (pais, anios) => [`Løn- og skattekalender ${anios} ${gDa.de(pais)}: vigtige datoer`, `Lønkalender ${anios} ${gDa.de(pais)}`, `Lønkalender ${gDa.de(pais)}`],
+      descripcion: (pais, proximas) => `Datoerne, der ændrer lønnen ${gDa.en(pais)}, med officiel kilde: ${proximas}. Hver dato med sin beregner.`,
+      descripcionSin: (pais) => `Datoerne, der ændrer lønnen ${gDa.en(pais)}, med officiel kilde og beregner. Klar til kalenderen på din telefon.`,
+    },
+    ceja: (anios) => `Kalender ${anios}`,
+    h1: (pais) => `Løn- og skattekalender ${gDa.de(pais)}`,
+    acento: "datoerne, der flytter lønnen",
+    bajada: "Hver dato kommer fra en officiel kilde og fører til den beregner, den hører til. Siden opdaterer sig selv, når en ny værdi bliver offentliggjort.",
+    proxima: "Næste dato",
+    cuenta: { hoy: "I dag", manana: "I morgen", ayer: "I går", en: (n) => `Om ${n} dage`, hace: (n) => `For ${n} dage siden`, dias: (n) => (n === 1 ? "dag" : "dage") },
+    queViene: "Det kommer",
+    yaRige: "Det gælder allerede",
+    mesPorMes: "Året måned for måned",
+    sinFechas: "Ingen varslede ændringer",
+    filtro: "Filtrér efter emne",
+    todo: "Alt",
+    tipos: { pago: "Udbetalinger", "salario-minimo": "Mindsteløn", impuestos: "Skat", aportes: "Bidrag og pension", laboral: "Regler på arbejdsmarkedet", indices: "Satser og indeks" },
+    pasa: (antes, despues) => `Går fra ${antes} til ${despues}`,
+    queda: (valor) => `Fastsat til ${valor}`,
+    cambian: "Satserne ændres",
+    zonas: (lista) => `Gælder i ${lista}`,
+    limite: "Frist",
+    agregar: "Føj til min kalender",
+    descargar: "Apple, Outlook og andre (.ics-fil)",
+    google: "Google Kalender",
+    calcular: "Beregn",
+    tambien: "Også i",
+    fuente: (organismo, fecha) => `Kilde: ${organismo}. Tjekket ${fecha}.`,
+    verificado: (fecha) => `Tjekket ${fecha}`,
+    suscribir: {
+      titulo: "Hele kalenderen, altid opdateret",
+      texto: "Med et abonnement dukker nye datoer selv op i kalenderen på telefonen eller computeren.",
+      boton: "Abonnér på kalenderen",
+      copiar: "Kopiér linket",
+      copiado: "Linket er kopieret",
+    },
+    fuentes: {
+      titulo: "Hvor hver dato kommer fra",
+      texto: "Kun datoer, der allerede står i en regel eller i en værdi offentliggjort af den officielle myndighed, kommer med. Er noget endnu ikke offentliggjort, vises det ikke.",
+    },
+    vacio: "Der er ingen datoer om dette emne de næste tolv måneder.",
+    destacado: {
+      ceja: "Lønkalender",
+      titulo: "Datoerne, der flytter lønnen i år",
+      ir: "Se kalenderen",
+      proxima: (titulo, fecha) => `Næste: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Lønkalender ${gDa.de(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Løn- og skattedatoer ${gDa.de(pais)}, med officiel kilde.`,
+      calculadora: "Beregner",
+      fuente: "Kilde",
+    },
+    og: { proxima: "Næste dato", mas: (n) => `Og ${n} datoer mere i år` },
+  },
+};
+
+// ───────────────────────────── nb ─────────────────────────────
+
+const gNb = GRAMATICA.nb;
+const nb: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Lønns- og skattekalender",
+    seo: {
+      titulo: (pais, anios) => [`Lønns- og skattekalender ${anios} ${gNb.de(pais)}: viktige datoer`, `Lønns- og skattekalender ${anios} ${gNb.de(pais)}`, `Lønnskalender ${gNb.de(pais)}`],
+      descripcion: (pais, proximas) => `Datoene som endrer lønnen ${gNb.en(pais)}, med offisiell kilde: ${proximas}. Hver dato med sin kalkulator.`,
+      descripcionSin: (pais) => `Datoene som endrer lønnen ${gNb.en(pais)}, med offisiell kilde og egen kalkulator. Klare til å legges inn i kalenderen på mobilen.`,
+    },
+    ceja: (anios) => `Kalender ${anios}`,
+    h1: (pais) => `Lønns- og skattekalender ${gNb.de(pais)}`,
+    acento: "datoene som påvirker lønnen",
+    bajada: "Hver dato kommer fra en offisiell kilde og fører til kalkulatoren den gjelder. Siden oppdateres av seg selv når en ny verdi blir publisert.",
+    proxima: "Neste dato",
+    cuenta: { hoy: "I dag", manana: "I morgen", ayer: "I går", en: (n) => (n === 1 ? "Om 1 dag" : `Om ${n} dager`), hace: (n) => (n === 1 ? "For 1 dag siden" : `For ${n} dager siden`), dias: (n) => (n === 1 ? "dag" : "dager") },
+    queViene: "Dette kommer",
+    yaRige: "Dette gjelder allerede",
+    mesPorMes: "Året måned for måned",
+    sinFechas: "Ingen varslede endringer",
+    filtro: "Filtrer etter tema",
+    todo: "Alt",
+    tipos: { pago: "Utbetalinger", "salario-minimo": "Minstelønn", impuestos: "Skatt", aportes: "Avgifter og pensjon", laboral: "Arbeidsregler", indices: "Satser og indekser" },
+    pasa: (antes, despues) => `Endres fra ${antes} til ${despues}`,
+    queda: (valor) => `Fastsatt til ${valor}`,
+    cambian: "Satsene endres",
+    zonas: (lista) => `I ${lista}`,
+    limite: "Frist",
+    agregar: "Legg til i kalenderen min",
+    descargar: "Apple, Outlook og andre (.ics-fil)",
+    google: "Google Kalender",
+    calcular: "Regn ut",
+    tambien: "Også i",
+    fuente: (organismo, fecha) => `Kilde: ${organismo}. Sjekket ${fecha}.`,
+    verificado: (fecha) => `Sjekket ${fecha}`,
+    suscribir: {
+      titulo: "Hele kalenderen, alltid oppdatert",
+      texto: "Med et abonnement dukker nye datoer opp av seg selv i kalenderen på mobilen eller datamaskinen.",
+      boton: "Abonner på kalenderen",
+      copiar: "Kopier lenken",
+      copiado: "Lenken er kopiert",
+    },
+    fuentes: {
+      titulo: "Hvor hver dato kommer fra",
+      texto: "Bare datoer som allerede står i en lov eller forskrift, eller i en verdi som myndigheten har publisert, kommer med. Det som ikke er publisert ennå, vises ikke.",
+    },
+    vacio: "Ingen datoer om dette temaet de neste tolv månedene.",
+    destacado: {
+      ceja: "Lønnskalender",
+      titulo: "Datoene som påvirker lønnen i år",
+      ir: "Se kalenderen",
+      proxima: (titulo, fecha) => `Neste: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Lønns- og skattekalender ${gNb.de(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Lønns- og skattedatoer ${gNb.de(pais)}, med offisiell kilde.`,
+      calculadora: "Kalkulator",
+      fuente: "Kilde",
+    },
+    og: { proxima: "Neste dato", mas: (n) => (n === 1 ? "Og 1 dato til i år" : `Og ${n} datoer til i år`) },
+  },
+};
+
+// ───────────────────────────── fi ─────────────────────────────
+
+// Finés (ADR 0002, D9): sin segunda persona, como el resto del calendario. gFi.de da el genitivo que va
+// delante del sustantivo («Suomen palkkakalenteri») y gFi.en el caso de lugar completo («Suomessa»).
+const gFi = GRAMATICA.fi;
+const fi: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Palkka- ja verokalenteri",
+    seo: {
+      titulo: (pais, anios) => [`${gFi.de(pais)} palkka- ja verokalenteri ${anios}: tärkeät päivät`, `${gFi.de(pais)} palkkakalenteri ${anios}`, `${gFi.de(pais)} palkkakalenteri`],
+      descripcion: (pais, proximas) => `Päivät, jotka muuttavat palkkaa ${gFi.en(pais)}, virallisine lähteineen: ${proximas}. Jokaisella oma laskurinsa.`,
+      descripcionSin: (pais) => `Päivät, jotka muuttavat palkkaa ${gFi.en(pais)}, virallisine lähteineen ja laskureineen. Lisää ne puhelimen kalenteriin.`,
+    },
+    ceja: (anios) => `Kalenteri ${anios}`,
+    h1: (pais) => `${gFi.de(pais)} palkka- ja verokalenteri`,
+    acento: "päivät, jotka vaikuttavat palkkaan",
+    bajada: "Jokainen päivä tulee virallisesta lähteestä ja vie siihen liittyvään laskuriin. Sivu päivittyy itsestään, kun uusi arvo julkaistaan.",
+    proxima: "Seuraava päivä",
+    cuenta: {
+      hoy: "Tänään",
+      manana: "Huomenna",
+      ayer: "Eilen",
+      en: (n) => `${n} päivän päästä`,
+      hace: (n) => (n === 1 ? "1 päivä sitten" : `${n} päivää sitten`),
+      dias: (n) => (n === 1 ? "päivä" : "päivää"),
+    },
+    queViene: "Tulossa",
+    yaRige: "Jo voimassa",
+    mesPorMes: "Vuosi kuukausi kerrallaan",
+    sinFechas: "Ei ilmoitettuja muutoksia",
+    filtro: "Rajaa aiheen mukaan",
+    todo: "Kaikki",
+    tipos: { pago: "Maksut", "salario-minimo": "Minimipalkka", impuestos: "Verot", aportes: "Maksut ja eläkkeet", laboral: "Työelämän säännöt", indices: "Indeksit" },
+    pasa: (antes, despues) => `Muuttuu: ${antes} → ${despues}`,
+    queda: (valor) => `Uusi arvo: ${valor}`,
+    cambian: "Arvot muuttuvat",
+    zonas: (lista) => `Koskee: ${lista}`,
+    limite: "Määräpäivä",
+    agregar: "Lisää kalenteriini",
+    descargar: "Apple, Outlook ja muut (.ics-tiedosto)",
+    google: "Google-kalenteri",
+    calcular: "Laske",
+    tambien: "Myös täällä",
+    fuente: (organismo, fecha) => `Lähde: ${organismo}. Tarkistettu ${fecha}.`,
+    verificado: (fecha) => `Tarkistettu ${fecha}`,
+    suscribir: {
+      titulo: "Koko kalenteri, aina ajan tasalla",
+      texto: "Tilauksen jälkeen uudet päivät ilmestyvät itsestään puhelimen tai tietokoneen kalenteriin.",
+      boton: "Tilaa kalenteri",
+      copiar: "Kopioi linkki",
+      copiado: "Linkki kopioitu",
+    },
+    fuentes: {
+      titulo: "Mistä päivät tulevat",
+      texto: "Mukana on vain päiviä, jotka on jo kirjattu säädökseen tai viranomaisen julkaisemaan arvoon. Mitä ei ole vielä julkaistu, ei näy täällä.",
+    },
+    vacio: "Tästä aiheesta ei ole päiviä seuraavan kahdentoista kuukauden aikana.",
+    destacado: {
+      ceja: "Palkkakalenteri",
+      titulo: "Tämän vuoden päivät, jotka vaikuttavat palkkaan",
+      ir: "Katso kalenteri",
+      proxima: (titulo, fecha) => `Seuraavaksi: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `${gFi.de(pais)} palkkakalenteri (CalcularYa)`,
+      descripcion: (pais) => `${gFi.de(pais)} palkka- ja veropäivät virallisine lähteineen.`,
+      calculadora: "Laskuri",
+      fuente: "Lähde",
+    },
+    og: { proxima: "Seuraava päivämäärä", mas: (n) => (n === 1 ? "Ja vielä 1 päivämäärä tänä vuonna" : `Ja vielä ${n} päivämäärää tänä vuonna`) },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);
