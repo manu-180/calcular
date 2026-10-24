@@ -374,7 +374,7 @@
       "nombre": "Índice de Preços no Consumidor Nacional (IPCN, Dezembro de 2020 = 100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 75,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "INE",
         "titulo": "Índice de Preços no Consumidor Nacional (IPCN), Setembro 2026: série 2015 a 2026 (Excel)",
