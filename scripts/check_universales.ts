@@ -59,11 +59,16 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "cn" as CodigoMercado, pais: "CN", nombrePais: "中国", locale: "zh-CN", trato: "usted", moneda: "CNY" as Moneda, escala: 7 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "聖文森及格瑞那丁", locale: "zh-TW", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  // Tailandés (ADR 0002, D13): baht con escala de THB, fechas en พ.ศ. (th-TH) y un nombre de país largo.
+  th: [
+    { mercado: "th" as CodigoMercado, pais: "TH", nombrePais: "ไทย", locale: "th-TH", trato: "usted", moneda: "THB" as Moneda, escala: 35 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "เซนต์วินเซนต์และเกรนาดีนส์", locale: "th-TH", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
 };
 
-// En ja, ko y zh las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
+// En ja, ko, zh y th las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
 // sobre toda la página: los traductores de los idiomas latinos no las necesitaban.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh"]);
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "th"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy

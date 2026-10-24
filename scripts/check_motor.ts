@@ -8,6 +8,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFile
 import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
+import { anchoVisual } from "../src/motor/ancho";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
 import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
@@ -85,6 +86,16 @@ const parseos: [string, string, number | null][] = [
   ["es-PE", "", null],
   ["es-PE", "1,", null],
   ["es-PE", "1,2345", null],
+  // Tailandés (ADR 0002, D13): miles con coma, palabras de unidad (ล้าน, แสน, หมื่น) y dígitos tailandeses.
+  ["th-TH", "1,234.50", 1234.5],
+  ["th-TH", "฿1,500,000", 1500000],
+  ["th-TH", "2.5 ล้าน", 2500000],
+  ["th-TH", "1 ล้าน 5 แสน", 1500000],
+  ["th-TH", "3 หมื่นบาท", 30000],
+  ["th-TH", "1 ล้าน 250,000", 1250000],
+  ["th-TH", "๑,๒๐๐", 1200],
+  ["th-TH", "5 แสน 2 ล้าน", null],
+  ["th-TH", "1 ล้าน 2,000,000", null],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -99,6 +110,8 @@ const ambiguos: [string, string, number | null][] = [
   ["es-MX", "5,000.000", 5000],
   ["es-CL", "5,000", null],
   ["es-CO", "5.000", 5000],
+  ["th-TH", "5,000", 5000],
+  ["th-TH", "5.000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -455,6 +468,12 @@ igual("marcadoresDe con fila de escala y región", marcadoresDe("{{ca.x[2].tasa@
 igual("semanas en inglés", formatearValorUnidad(2, "semanas", "en-CA"), "2 weeks");
 igual("semana en singular (de)", formatearValorUnidad(1, "semanas", "de-DE"), "1 Woche");
 igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 weken");
+// Tailandés: sin plural, la unidad separada por un espacio y las fechas en พ.ศ. (calendario de th-TH).
+igual("días en tailandés", formatearValorUnidad(3, "dias", "th-TH"), "3 วัน");
+igual("fracción de año en tailandés", formatearValorUnidad(1.5, "anios", "th-TH"), "1.5 ปี");
+igual("fecha larga en พ.ศ.", formatearFecha("2026-10-24", "th-TH"), "24 ตุลาคม 2569");
+igual("fecha corta en พ.ศ.", formatearFecha("2026-10-24", "th-TH", "corta"), "24/10/2569");
+igual("ancho visual sin tonos ni vocales apiladas", anchoVisual("ภาษีมูลค่าเพิ่ม"), 10);
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).

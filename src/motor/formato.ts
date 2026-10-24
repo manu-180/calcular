@@ -188,9 +188,47 @@ function conUnidadesCjk(texto: string, locale: string, opciones: { milesAmbiguos
   return negativo ? -total : total;
 }
 
+// En tailandés se escriben montos con palabras de unidad («2.5 ล้าน», «1 ล้าน 5 แสน», «3 หมื่น»): igual que
+// con 万, sin esto «2 ล้าน» daría 2 en vez de 2.000.000. Van de mayor a menor y la cola puede ir sin
+// unidad. Los dígitos tailandeses (๐ a ๙) se pasan a arábigos antes de leer.
+const UNIDADES_TH: Readonly<Record<string, number>> = { ล้าน: 1e6, แสน: 1e5, หมื่น: 1e4, พัน: 1e3 };
+const RE_UNIDAD_TH = /ล้าน|แสน|หมื่น|พัน/;
+
+function conUnidadesTh(texto: string, locale: string, opciones: { milesAmbiguos?: boolean }): number | null {
+  const negativo = /^[^\d]*-/.test(texto);
+  // Solo cuentan las cifras y las palabras de unidad: «บาท», espacios y signos se ignoran.
+  const fichas = [...texto.matchAll(/ล้าน|แสน|หมื่น|พัน|[\d.,]+/g)].map((m) => m[0]);
+  let total = 0;
+  let anterior = Infinity;
+  for (let i = 0; i < fichas.length; i++) {
+    const unidad = UNIDADES_TH[fichas[i]];
+    const siguiente = UNIDADES_TH[fichas[i + 1] ?? ""];
+    if (unidad === undefined && siguiente === undefined) {
+      // Cola sin unidad: tiene que ser la última y menor que la unidad anterior.
+      if (i !== fichas.length - 1) return null;
+      const cola = parsearNumero(fichas[i], locale, opciones);
+      if (cola === null || cola < 0 || cola >= anterior) return null;
+      total += cola;
+      continue;
+    }
+    const valor = unidad ?? siguiente;
+    if (valor >= anterior) return null;
+    const cifra = unidad === undefined ? parsearNumero(fichas[i], locale, opciones) : 1;
+    if (cifra === null || cifra < 0) return null;
+    total += cifra * valor;
+    anterior = valor;
+    if (unidad === undefined) i++;
+  }
+  if (!fichas.length || !Number.isFinite(total)) return null;
+  return negativo ? -total : total;
+}
+
+const digitosArabigos = (t: string) => t.replace(/[๐-๙]/g, (d) => String(d.charCodeAt(0) - 0x0e50));
+
 export function parsearNumero(texto: string, locale: string, opciones: { milesAmbiguos?: boolean } = {}): number | null {
-  const normal = texto.normalize("NFKC");
+  const normal = digitosArabigos(texto.normalize("NFKC"));
   if (RE_UNIDAD_CJK.test(normal)) return conUnidadesCjk(normal, locale, opciones);
+  if (RE_UNIDAD_TH.test(normal)) return conUnidadesTh(normal, locale, opciones);
   const sinEspacios = normal.replace(ESPACIOS, "");
   const negativo = /^[^\d]*-/.test(sinEspacios);
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
