@@ -32,6 +32,14 @@ import iskSkatt from "./calculadoras/isk-skatt";
 import contenidoIskSkatt from "./contenido/isk-skatt";
 import csnAterbetalning from "./calculadoras/csn-aterbetalning";
 import contenidoCsnAterbetalning from "./contenido/csn-aterbetalning";
+import inflationskalkylator from "./calculadoras/inflationskalkylator";
+import contenidoInflationskalkylator from "./contenido/inflationskalkylator";
+import valutaomvandlare from "./calculadoras/valutaomvandlare";
+import contenidoValutaomvandlare from "./contenido/valutaomvandlare";
+import prisbasbelopp from "./calculadoras/prisbasbelopp";
+import contenidoPrisbasbelopp from "./contenido/prisbasbelopp";
+import drojsmalsranta from "./calculadoras/drojsmalsranta";
+import contenidoDrojsmalsranta from "./contenido/drojsmalsranta";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +68,10 @@ export default definirPais({
     { definicion: skattPaBostadsforsaljning, contenido: contenidoSkattPaBostadsforsaljning, cliente: () => import("./calculadoras/skatt-pa-bostadsforsaljning.cliente") },
     { definicion: iskSkatt, contenido: contenidoIskSkatt, cliente: () => import("./calculadoras/isk-skatt.cliente") },
     { definicion: csnAterbetalning, contenido: contenidoCsnAterbetalning, cliente: () => import("./calculadoras/csn-aterbetalning.cliente") },
+    { definicion: inflationskalkylator, contenido: contenidoInflationskalkylator, cliente: () => import("./calculadoras/inflationskalkylator.cliente") },
+    { definicion: valutaomvandlare, contenido: contenidoValutaomvandlare, cliente: () => import("./calculadoras/valutaomvandlare.cliente") },
+    { definicion: prisbasbelopp, contenido: contenidoPrisbasbelopp, cliente: () => import("./calculadoras/prisbasbelopp.cliente") },
+    { definicion: drojsmalsranta, contenido: contenidoDrojsmalsranta, cliente: () => import("./calculadoras/drojsmalsranta.cliente") },
   ],
   universales: "todas",
   novedades,
