@@ -147,8 +147,8 @@ function reglasCjk(texto: string, idioma: Idioma): string[] {
 // los bancos y servicios digitales: sin partículas de cortesía (ครับ, ค่ะ), sin pronombre de segunda
 // persona (คุณ, ท่าน: el sujeto se omite) ni de primera con género. Fechas en พ.ศ. y cifras arábigas.
 const TH = String.raw`[ก-๎]`;
-// «คุณ» también es el comienzo de palabras comunes (คุณภาพ, คุณสมบัติ, คุณค่า): esas no cuentan.
-const CUN_PRONOMBRE = /คุณ(?!ภาพ|สมบัติ|ค่า|ประโยชน์|ลักษณะ|ธรรม|วุฒิ|งาม|ูปการ|ากร|นาย)/u;
+// «คุณ» también es parte de palabras comunes (คุณภาพ, คุณสมบัติ, คุณค่า, ขอบคุณ): esas no cuentan.
+const CUN_PRONOMBRE = /(?<!ขอบ)คุณ(?!ภาพ|สมบัติ|ค่า|ประโยชน์|ลักษณะ|ธรรม|วุฒิ|งาม|ูปการ|ากร|นาย)/u;
 // Un punto detrás de tres o más letras tailandesas es fin de oración; las abreviaturas (พ.ศ., ต.ค.,
 // กม., ตร.ม., มี.ค.) tienen como mucho dos letras entre puntos.
 const PUNTO_FINAL_TH = new RegExp(`${TH}{3,}[.?](?=\\s|$|["”)])`, "u");
