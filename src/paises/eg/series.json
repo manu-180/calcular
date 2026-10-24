@@ -6,7 +6,7 @@
       "nombre": "الرقم القياسي العام لأسعار المستهلكين لإجمالي الجمهورية",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 75,
+      "maxAntiguedadDias": 85,
       "fuente": {
         "organismo": "الجهاز المركزي للتعبئة العامة والإحصاء",
         "titulo": "الأرقام القياسية لأسعار المستهلكين سبتمبر 2026",

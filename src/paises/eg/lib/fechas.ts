@@ -22,6 +22,18 @@ export function sumarMeses(fecha: string, meses: number): string {
   return aTexto(anio, mes, Math.min(d, diasDelMes(anio, mes)));
 }
 
+function numeroDeDia(fecha: string): number {
+  const [a, m, d] = partes(fecha);
+  let n = d;
+  for (let mes = 1; mes < m; mes++) n += diasDelMes(a, mes);
+  const y = a - 1;
+  return n + y * 365 + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400);
+}
+
+export function diasEntre(desde: string, hasta: string): number {
+  return numeroDeDia(hasta) - numeroDeDia(desde);
+}
+
 export function sumarDias(fecha: string, dias: number): string {
   let [a, m, d] = partes(fecha);
   d += dias;

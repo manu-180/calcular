@@ -32,6 +32,16 @@ import unemploymentBenefit from "./calculadoras/unemployment-benefit";
 import contenidoUnemploymentBenefit from "./contenido/unemployment-benefit";
 import sickPay from "./calculadoras/sick-pay";
 import contenidoSickPay from "./contenido/sick-pay";
+import maternityLeave from "./calculadoras/maternity-leave";
+import contenidoMaternityLeave from "./contenido/maternity-leave";
+import annualRaise from "./calculadoras/annual-raise";
+import contenidoAnnualRaise from "./contenido/annual-raise";
+import realEstateTax from "./calculadoras/real-estate-tax";
+import contenidoRealEstateTax from "./contenido/real-estate-tax";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
+import dollarToPound from "./calculadoras/dollar-to-pound";
+import contenidoDollarToPound from "./contenido/dollar-to-pound";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +70,11 @@ export default definirPais({
     { definicion: lumpSum, contenido: contenidoLumpSum, cliente: () => import("./calculadoras/lump-sum.cliente") },
     { definicion: unemploymentBenefit, contenido: contenidoUnemploymentBenefit, cliente: () => import("./calculadoras/unemployment-benefit.cliente") },
     { definicion: sickPay, contenido: contenidoSickPay, cliente: () => import("./calculadoras/sick-pay.cliente") },
+    { definicion: maternityLeave, contenido: contenidoMaternityLeave, cliente: () => import("./calculadoras/maternity-leave.cliente") },
+    { definicion: annualRaise, contenido: contenidoAnnualRaise, cliente: () => import("./calculadoras/annual-raise.cliente") },
+    { definicion: realEstateTax, contenido: contenidoRealEstateTax, cliente: () => import("./calculadoras/real-estate-tax.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
+    { definicion: dollarToPound, contenido: contenidoDollarToPound, cliente: () => import("./calculadoras/dollar-to-pound.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "eg.vat" } }] },
   novedades,
