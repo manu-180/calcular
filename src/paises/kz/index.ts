@@ -32,6 +32,16 @@ import posobiePoUkhoduZaRebenkom from "./calculadoras/posobie-po-ukhodu-za-reben
 import contenidoPosobiePoUkhoduZaRebenkom from "./contenido/posobie-po-ukhodu-za-rebenkom";
 import posobieNaRozhdenie from "./calculadoras/posobie-na-rozhdenie";
 import contenidoPosobieNaRozhdenie from "./contenido/posobie-na-rozhdenie";
+import nalogNaImushchestvo from "./calculadoras/nalog-na-imushchestvo";
+import contenidoNalogNaImushchestvo from "./contenido/nalog-na-imushchestvo";
+import transportnyyNalog from "./calculadoras/transportnyy-nalog";
+import contenidoTransportnyyNalog from "./contenido/transportnyy-nalog";
+import kursValyut from "./calculadoras/kurs-valyut";
+import contenidoKursValyut from "./contenido/kurs-valyut";
+import kalkulyatorInflyatsii from "./calculadoras/kalkulyator-inflyatsii";
+import contenidoKalkulyatorInflyatsii from "./contenido/kalkulyator-inflyatsii";
+import pensionnyeNakopleniya from "./calculadoras/pensionnye-nakopleniya";
+import contenidoPensionnyeNakopleniya from "./contenido/pensionnye-nakopleniya";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +70,11 @@ export default definirPais({
     { definicion: dekretnye, contenido: contenidoDekretnye, cliente: () => import("./calculadoras/dekretnye.cliente") },
     { definicion: posobiePoUkhoduZaRebenkom, contenido: contenidoPosobiePoUkhoduZaRebenkom, cliente: () => import("./calculadoras/posobie-po-ukhodu-za-rebenkom.cliente") },
     { definicion: posobieNaRozhdenie, contenido: contenidoPosobieNaRozhdenie, cliente: () => import("./calculadoras/posobie-na-rozhdenie.cliente") },
+    { definicion: nalogNaImushchestvo, contenido: contenidoNalogNaImushchestvo, cliente: () => import("./calculadoras/nalog-na-imushchestvo.cliente") },
+    { definicion: transportnyyNalog, contenido: contenidoTransportnyyNalog, cliente: () => import("./calculadoras/transportnyy-nalog.cliente") },
+    { definicion: kursValyut, contenido: contenidoKursValyut, cliente: () => import("./calculadoras/kurs-valyut.cliente") },
+    { definicion: kalkulyatorInflyatsii, contenido: contenidoKalkulyatorInflyatsii, cliente: () => import("./calculadoras/kalkulyator-inflyatsii.cliente") },
+    { definicion: pensionnyeNakopleniya, contenido: contenidoPensionnyeNakopleniya, cliente: () => import("./calculadoras/pensionnye-nakopleniya.cliente") },
   ],
   universales: "todas",
   novedades,
