@@ -24,6 +24,14 @@ import redundancyPay from "./calculadoras/redundancy-pay";
 import contenidoRedundancyPay from "./contenido/redundancy-pay";
 import endOfService from "./calculadoras/end-of-service";
 import contenidoEndOfService from "./contenido/end-of-service";
+import pension from "./calculadoras/pension";
+import contenidoPension from "./contenido/pension";
+import lumpSum from "./calculadoras/lump-sum";
+import contenidoLumpSum from "./contenido/lump-sum";
+import unemploymentBenefit from "./calculadoras/unemployment-benefit";
+import contenidoUnemploymentBenefit from "./contenido/unemployment-benefit";
+import sickPay from "./calculadoras/sick-pay";
+import contenidoSickPay from "./contenido/sick-pay";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +56,10 @@ export default definirPais({
     { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
     { definicion: redundancyPay, contenido: contenidoRedundancyPay, cliente: () => import("./calculadoras/redundancy-pay.cliente") },
     { definicion: endOfService, contenido: contenidoEndOfService, cliente: () => import("./calculadoras/end-of-service.cliente") },
+    { definicion: pension, contenido: contenidoPension, cliente: () => import("./calculadoras/pension.cliente") },
+    { definicion: lumpSum, contenido: contenidoLumpSum, cliente: () => import("./calculadoras/lump-sum.cliente") },
+    { definicion: unemploymentBenefit, contenido: contenidoUnemploymentBenefit, cliente: () => import("./calculadoras/unemployment-benefit.cliente") },
+    { definicion: sickPay, contenido: contenidoSickPay, cliente: () => import("./calculadoras/sick-pay.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "eg.vat" } }] },
   novedades,
