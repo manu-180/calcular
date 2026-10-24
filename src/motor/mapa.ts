@@ -6,6 +6,8 @@ import { intlActivo, modoPublicacion } from "./sitio";
 import type { CodigoMercado, EntradaCalculadora, FechaISO, Mercado } from "./tipos";
 import { hoyEn } from "./vigencia";
 import { hreflangMundo, urlMundo } from "./mundo/ui/seo";
+import { PRODUCTOS } from "./horas/productos";
+import { hreflangHoras, urlHoras } from "./horas/ui/seo";
 
 const masNueva = (fechas: readonly (FechaISO | undefined)[], tope: FechaISO): FechaISO | undefined =>
   fechas.filter((f): f is FechaISO => Boolean(f) && f! <= tope).sort().at(-1);
@@ -72,6 +74,15 @@ function entradaMundo(registro: Registro, m: Mercado, modo: ReturnType<typeof mo
   return { url: urlMundo(m), ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
 }
 
+// «¿Cuántas horas de trabajo cuesta?»: el índice y una página por producto, cada una con su clúster entre
+// ediciones. Sin lastmod por la misma razón que el mundo (los precios viven del lado del servidor).
+function entradasHoras(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean): EntradaSitemap[] {
+  return [undefined, ...PRODUCTOS.map((p) => p.id)].map((producto) => {
+    const idiomas = conAlternos ? hreflangHoras(registro, modo, producto) : undefined;
+    return { url: urlHoras(m, producto), ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
+  });
+}
+
 function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false): EntradaSitemap[] {
   const fecha = hoyEn(m);
   const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).map((c) => {
@@ -85,6 +96,7 @@ function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof 
   return [
     { url: urlIntl(m.codigo), lastmod: inicio },
     entradaMundo(registro, m, modo, conAlternos),
+    ...entradasHoras(registro, m, modo, conAlternos),
     ...calculadoras,
     ...PAGINAS_MERCADO.map((p) => ({ url: urlIntl(m.codigo, p), lastmod: porPagina[p] })),
   ];
@@ -114,6 +126,7 @@ export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, op
   return [
     { url: urlIntl("global"), lastmod: inicio },
     entradaMundo(registro, m, modo, opciones.conAlternos ?? false),
+    ...entradasHoras(registro, m, modo, opciones.conAlternos ?? false),
     ...PAGINAS_GLOBALES.map((p) => ({ url: urlIntl("global", p), lastmod: ACTUALIZACION_PAGINAS_GLOBALES })),
   ];
 }

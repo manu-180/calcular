@@ -15,6 +15,7 @@ import { DICCIONARIOS_MOTOR } from "../src/motor/textos";
 import { IDIOMAS, type Idioma, type Trato } from "../src/motor/tipos";
 import { DICCIONARIOS_INICIO } from "../src/motor/ui/textos-inicio";
 import { DICCIONARIOS_MUNDO } from "../src/motor/i18n/mundo";
+import { DICCIONARIOS_HORAS } from "../src/motor/i18n/horas";
 import { anchoVisual } from "../src/motor/ancho";
 import { problemasDeTexto } from "./reglas_idioma";
 
@@ -25,6 +26,7 @@ const MUESTRA = "7";
 // una marca. Clave: "idioma:diccionario.ruta" (ruta sin el trato); "*:" vale para todos los idiomas.
 const IGUALES_PERMITIDOS = new Set([
   "*:mundo.ranking.regiones.europa",
+  "pt:horas.ranking.horas",
   "pt:mundo.metodo.bancoMundial",
   "*:sitio.marca.nombre",
   "*:sitio.footer.sitio",
@@ -111,6 +113,7 @@ const FUENTES: readonly Fuente[] = [
   desde("motor", DICCIONARIOS_MOTOR),
   desde("inicio", DICCIONARIOS_INICIO),
   desde("mundo", DICCIONARIOS_MUNDO),
+  desde("horas", DICCIONARIOS_HORAS),
   { nombre: "legales", resolver: (i, t, l) => resolverLegales(i, t, { actualizado: "13/10/2026", mail: "correo@calcularya.test" }, l) },
   { nombre: "unidades", resolver: (i, _t, l) => nombresUnidad(i, l ?? i) },
 ];
