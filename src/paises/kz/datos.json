@@ -1,0 +1,1245 @@
+{
+  "mercado": "kz",
+  "datos": [
+    {
+      "id": "kz.mrp",
+      "nombre": "Месячный расчетный показатель (МРП)",
+      "tipo": "numero",
+      "unidad": "KZT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4325,
+          "fuente": {
+            "organismo": "Комитет государственных доходов (gov.kz)",
+            "titulo": "Закон РК «О республиканском бюджете на 2026-2028 годы» от 8 декабря 2025 г. № 239-VIII, статья 7",
+            "url": "https://www.gov.kz/memleket/entities/kgd-ulytau/documents/details/939202?lang=ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "kz.mzp",
+      "nombre": "Минимальный размер заработной платы (МЗП)",
+      "tipo": "numero",
+      "unidad": "KZT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 85000,
+          "fuente": {
+            "organismo": "Комитет государственных доходов (gov.kz)",
+            "titulo": "Закон РК «О республиканском бюджете на 2026-2028 годы» от 8 декабря 2025 г. № 239-VIII, статья 7",
+            "url": "https://www.gov.kz/memleket/entities/kgd-ulytau/documents/details/939202?lang=ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "kz.prozhitochnyy-minimum",
+      "nombre": "Размер прожиточного минимума",
+      "tipo": "numero",
+      "unidad": "KZT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50851,
+          "fuente": {
+            "organismo": "Комитет государственных доходов (gov.kz)",
+            "titulo": "Закон РК «О республиканском бюджете на 2026-2028 годы» от 8 декабря 2025 г. № 239-VIII, статья 7",
+            "url": "https://www.gov.kz/memleket/entities/kgd-ulytau/documents/details/939202?lang=ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "kz.minimalnaya-pensiya",
+      "nombre": "Минимальный размер пенсии",
+      "tipo": "numero",
+      "unidad": "KZT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 69049,
+          "fuente": {
+            "organismo": "Комитет государственных доходов (gov.kz)",
+            "titulo": "Закон РК «О республиканском бюджете на 2026-2028 годы» от 8 декабря 2025 г. № 239-VIII, статья 7",
+            "url": "https://www.gov.kz/memleket/entities/kgd-ulytau/documents/details/939202?lang=ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "kz.bazovaya-pensiya-min",
+      "nombre": "Минимальный размер государственной базовой пенсионной выплаты",
+      "tipo": "numero",
+      "unidad": "KZT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 35596,
+          "fuente": {
+            "organismo": "Комитет государственных доходов (gov.kz)",
+            "titulo": "Закон РК «О республиканском бюджете на 2026-2028 годы» от 8 декабря 2025 г. № 239-VIII, статья 7",
+            "url": "https://www.gov.kz/memleket/entities/kgd-ulytau/documents/details/939202?lang=ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "kz.ipn-shkala",
+      "nombre": "Ставки ИПН с доходов работника за год (границы в МРП)",
+      "tipo": "escala",
+      "unidad": "numero",
+      "nota": "Границы шкалы в МРП, действующих на 1 января года.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 8500,
+              "tasa": 10
+            },
+            {
+              "desde": 8500,
+              "hasta": null,
+              "tasa": 15
+            }
+          ],
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 363, подпункт 1",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.ipn-shkala-ip",
+      "nombre": "Ставки ИПН для ИП на общеустановленном порядке (границы в МРП)",
+      "tipo": "escala",
+      "unidad": "numero",
+      "nota": "Границы шкалы в МРП, действующих на 1 января года.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 230000,
+              "tasa": 10
+            },
+            {
+              "desde": 230000,
+              "hasta": null,
+              "tasa": 15
+            }
+          ],
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 363, подпункт 4",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.ipn-shkala-dividendy",
+      "nombre": "Ставки ИПН с дивидендов (границы в МРП)",
+      "tipo": "escala",
+      "unidad": "numero",
+      "nota": "Границы шкалы в МРП, действующих на 1 января года.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 230000,
+              "tasa": 5
+            },
+            {
+              "desde": 230000,
+              "hasta": null,
+              "tasa": 15
+            }
+          ],
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 363, подпункт 3",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.ipn-chastnaya-praktika",
+      "nombre": "Ставка ИПН для лиц, занимающихся частной практикой",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 363, подпункт 2",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.bazovyy-vychet-mrp",
+      "nombre": "Базовый налоговый вычет в месяц (в МРП)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 403",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.opv",
+      "nombre": "Обязательные пенсионные взносы (ОПВ)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 249",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.opv-maks-mzp",
+      "nombre": "Наибольший доход для ОПВ в месяц (в МЗП)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 249",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.opvr",
+      "nombre": "Обязательные пенсионные взносы работодателя (ОПВР)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 251",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 4.5,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 251",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 251",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.opvr-predely",
+      "nombre": "Доход для ОПВР в месяц: наименьший и наибольший (в МЗП)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "min": "Не меньше",
+        "maks": "Не больше"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "min": 1,
+            "maks": 50
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 251, пункт 2",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.vosms",
+      "nombre": "Взносы работника на ОСМС (ВОСМС)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Закон РК «Об обязательном социальном медицинском страховании» от 16 ноября 2015 г. № 405-V, статья 28, пункт 1",
+            "url": "https://adilet.zan.kz/rus/docs/Z1500000405",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 17 мая 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.vosms-maks-mzp",
+      "nombre": "Наибольший доход для ВОСМС в месяц (в МЗП)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Закон РК «Об обязательном социальном медицинском страховании» от 16 ноября 2015 г. № 405-V, статья 28, пункт 5-2",
+            "url": "https://adilet.zan.kz/rus/docs/Z1500000405",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 17 мая 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.oosms",
+      "nombre": "Отчисления работодателя на ОСМС (ООСМС)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Закон РК «Об обязательном социальном медицинском страховании» от 16 ноября 2015 г. № 405-V, статья 27, пункт 1",
+            "url": "https://adilet.zan.kz/rus/docs/Z1500000405",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 17 мая 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.oosms-maks-mzp",
+      "nombre": "Наибольший доход для ООСМС в месяц (в МЗП)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Закон РК «Об обязательном социальном медицинском страховании» от 16 ноября 2015 г. № 405-V, статья 27, пункт 2-2",
+            "url": "https://adilet.zan.kz/rus/docs/Z1500000405",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 17 мая 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.vosms-ip",
+      "nombre": "Взносы ИП на ОСМС за себя: ставка (%) и база (в МЗП)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "stavka": "Ставка, %",
+        "baza-mzp": "База, МЗП"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "stavka": 5,
+            "baza-mzp": 1.4
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Закон РК «Об обязательном социальном медицинском страховании» от 16 ноября 2015 г. № 405-V, статья 28, пункты 3 и 5",
+            "url": "https://adilet.zan.kz/rus/docs/Z1500000405",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 17 мая 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.so",
+      "nombre": "Социальные отчисления (СО)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 244",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.so-predely",
+      "nombre": "Объект СО в месяц: наименьший и наибольший (в МЗП)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "min": "Не меньше",
+        "maks": "Не больше"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "min": 1,
+            "maks": 7
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 245",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.sotsialnyy-nalog",
+      "nombre": "Социальный налог",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 557, пункт 1",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.sotsialnyy-nalog-min-mrp",
+      "nombre": "Наименьший объект социального налога в месяц (в МРП)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 556, пункт 3",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.sotsialnyy-nalog-ip",
+      "nombre": "Социальный налог ИП на общеустановленном порядке (в МРП в месяц)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "za-sebya": "За себя",
+        "za-rabotnika": "За каждого работника"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "za-sebya": 2,
+            "za-rabotnika": 1
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 557, пункт 3",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.nds",
+      "nombre": "Ставки НДС",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "osnovnaya": "Основная ставка",
+        "lekarstva": "Лекарства, медицинские изделия и медицинские услуги",
+        "pechat": "Отечественные периодические печатные издания"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "osnovnaya": 16,
+            "lekarstva": 5,
+            "pechat": 10
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 503",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "osnovnaya": 16,
+            "lekarstva": 10,
+            "pechat": 10
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 503",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.nds-osnovnaya",
+      "nombre": "Основная ставка НДС",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 503, пункт 1",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.uproshchenka-stavka",
+      "nombre": "Ставка налога по упрощенной декларации",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 726",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.uproshchenka-korrektirovka",
+      "nombre": "На сколько маслихат может понизить или повысить ставку упрощенной декларации",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 726",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.uproshchenka-predel-mrp",
+      "nombre": "Предельный доход за год для упрощенной декларации (в МРП)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 600000,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 723, пункт 1",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.nalog-na-imushchestvo",
+      "nombre": "Налог на имущество физических лиц",
+      "tipo": "escala",
+      "unidad": "KZT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000000,
+              "tasa": 0.05,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 2000000,
+              "hasta": 4000000,
+              "tasa": 0.08,
+              "cuotaFija": 1000
+            },
+            {
+              "desde": 4000000,
+              "hasta": 6000000,
+              "tasa": 0.1,
+              "cuotaFija": 2600
+            },
+            {
+              "desde": 6000000,
+              "hasta": 8000000,
+              "tasa": 0.15,
+              "cuotaFija": 4600
+            },
+            {
+              "desde": 8000000,
+              "hasta": 10000000,
+              "tasa": 0.2,
+              "cuotaFija": 7600
+            },
+            {
+              "desde": 10000000,
+              "hasta": 12000000,
+              "tasa": 0.25,
+              "cuotaFija": 11600
+            },
+            {
+              "desde": 12000000,
+              "hasta": 14000000,
+              "tasa": 0.3,
+              "cuotaFija": 16600
+            },
+            {
+              "desde": 14000000,
+              "hasta": 16000000,
+              "tasa": 0.35,
+              "cuotaFija": 22600
+            },
+            {
+              "desde": 16000000,
+              "hasta": 18000000,
+              "tasa": 0.4,
+              "cuotaFija": 29600
+            },
+            {
+              "desde": 18000000,
+              "hasta": 20000000,
+              "tasa": 0.45,
+              "cuotaFija": 37600
+            },
+            {
+              "desde": 20000000,
+              "hasta": 75000000,
+              "tasa": 0.5,
+              "cuotaFija": 46600
+            },
+            {
+              "desde": 75000000,
+              "hasta": 100000000,
+              "tasa": 0.6,
+              "cuotaFija": 321600
+            },
+            {
+              "desde": 100000000,
+              "hasta": 150000000,
+              "tasa": 0.65,
+              "cuotaFija": 471600
+            },
+            {
+              "desde": 150000000,
+              "hasta": 350000000,
+              "tasa": 0.7,
+              "cuotaFija": 796600
+            },
+            {
+              "desde": 350000000,
+              "hasta": 450000000,
+              "tasa": 0.75,
+              "cuotaFija": 2196600
+            },
+            {
+              "desde": 450000000,
+              "hasta": null,
+              "tasa": 2,
+              "cuotaFija": 2946600
+            }
+          ],
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 602, пункт 1",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.transportnyy-nalog-legkovye",
+      "nombre": "Налог на легковые автомобили по объему двигателя (ставка в МРП)",
+      "tipo": "escala",
+      "unidad": "numero",
+      "nota": "Границы в кубических сантиметрах; в колонке ставки число МРП, а не процент.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1100,
+              "tasa": 1
+            },
+            {
+              "desde": 1100,
+              "hasta": 1500,
+              "tasa": 2
+            },
+            {
+              "desde": 1500,
+              "hasta": 2000,
+              "tasa": 3
+            },
+            {
+              "desde": 2000,
+              "hasta": 2500,
+              "tasa": 6
+            },
+            {
+              "desde": 2500,
+              "hasta": 3000,
+              "tasa": 9
+            },
+            {
+              "desde": 3000,
+              "hasta": 4000,
+              "tasa": 15
+            },
+            {
+              "desde": 4000,
+              "hasta": null,
+              "tasa": 117
+            }
+          ],
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 565, пункт 1",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.transportnyy-nalog-nadbavka",
+      "nombre": "Надбавка за каждый куб. см сверх нижней границы (двигатель больше 1500 куб. см)",
+      "tipo": "numero",
+      "unidad": "KZT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 565, пункт 4",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.transportnyy-nalog-vozrast",
+      "nombre": "Поправочные коэффициенты для легковых автомобилей по сроку эксплуатации",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "10-20": "Больше 10 и до 20 лет",
+        "svyshe-20": "Больше 20 лет"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "10-20": 0.7,
+            "svyshe-20": 0.5
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 565, пункт 8",
+            "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 1 сентября 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.otpusk-dney",
+      "nombre": "Основной оплачиваемый ежегодный трудовой отпуск",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Трудовой кодекс РК от 23 ноября 2015 г. № 414-V, статья 88",
+            "url": "https://adilet.zan.kz/rus/docs/K1500000414",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.sverkhurochnye-koeffitsient",
+      "nombre": "Наименьший коэффициент оплаты сверхурочной работы, работы в выходные, праздники и ночью",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Трудовой кодекс РК от 23 ноября 2015 г. № 414-V, статьи 108, 109 и 110",
+            "url": "https://adilet.zan.kz/rus/docs/K1500000414",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.sverkhurochnye-limity",
+      "nombre": "Предел сверхурочных работ (в часах)",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "sutki": "В сутки",
+        "mesyats": "В месяц",
+        "god-summirovannyy": "В год при суммированном учете"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sutki": 2,
+            "mesyats": 12,
+            "god-summirovannyy": 120
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Трудовой кодекс РК от 23 ноября 2015 г. № 414-V, статья 78",
+            "url": "https://adilet.zan.kz/rus/docs/K1500000414",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.bolnichnye-limit-mrp",
+      "nombre": "Наибольшее пособие по временной нетрудоспособности за месяц (в МРП)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Трудовой кодекс РК от 23 ноября 2015 г. № 414-V, статья 133, пункт 4-1",
+            "url": "https://adilet.zan.kz/rus/docs/K1500000414",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.dekret-dni",
+      "nombre": "Продолжительность отпуска по беременности и родам",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "normalnye": "Нормальные роды",
+        "oslozhnennye": "Осложненные роды или двое и более детей",
+        "zona-normalnye": "Зона ядерных испытаний, нормальные роды",
+        "zona-oslozhnennye": "Зона ядерных испытаний, осложненные роды или двое и более детей"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "normalnye": 126,
+            "oslozhnennye": 140,
+            "zona-normalnye": 170,
+            "zona-oslozhnennye": 184
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Трудовой кодекс РК от 23 ноября 2015 г. № 414-V, статья 99, пункт 3",
+            "url": "https://adilet.zan.kz/rus/docs/K1500000414",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.opv-s-sotsvyplat",
+      "nombre": "ОПВ, удерживаемые из социальных выплат по беременности и родам и по уходу за ребенком",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 76",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.ukhod-koeffitsient",
+      "nombre": "Коэффициент замещения дохода для выплаты по уходу за ребенком до полутора лет",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.4,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 85",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.ukhod-maks-mzp",
+      "nombre": "Выплата по уходу считается не больше чем от этого дохода (в МЗП)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 85, пункт 2",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.posobie-po-ukhodu-mrp",
+      "nombre": "Пособие по уходу за ребенком из бюджета (в МРП в месяц)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "1": "Первый ребенок",
+        "2": "Второй ребенок",
+        "3": "Третий ребенок",
+        "4": "Четвертый и следующие"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 5.76,
+            "2": 6.81,
+            "3": 7.85,
+            "4": 8.9
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 82",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.posobie-na-rozhdenie-mrp",
+      "nombre": "Единовременное пособие на рождение (в МРП)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "1-3": "Первый, второй или третий ребенок",
+        "4": "Четвертый и следующие"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1-3": 38,
+            "4": 63
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 80",
+            "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kz.kompensatsiya-poterya-raboty",
+      "nombre": "Компенсация в связи с потерей работы (в средних месячных зарплатах)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "likvidatsiya": "Ликвидация работодателя",
+        "sokrashchenie": "Сокращение численности или штата",
+        "narushenie": "Уход по инициативе работника из-за нарушения договора работодателем",
+        "snizhenie": "Снижение объема производства"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "likvidatsiya": 1,
+            "sokrashchenie": 1,
+            "narushenie": 1,
+            "snizhenie": 2
+          },
+          "fuente": {
+            "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+            "titulo": "Трудовой кодекс РК от 23 ноября 2015 г. № 414-V, статья 131",
+            "url": "https://adilet.zan.kz/rus/docs/K1500000414",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Редакция на 10 июня 2026 г."
+          }
+        }
+      ]
+    }
+  ]
+}
