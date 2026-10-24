@@ -146,6 +146,90 @@ zh (`informe.anchoCompleto`); en coreano la carta va en 합니다체, que es el 
 **Prueba.** `zz-ja` (Zetaland en japonés) es una edición interna como `zz-en`. `check_universales`
 prueba ja-JP, ko-KR, zh-TW, zh-HK y zh-CN, con nombres de país largos.
 
+### D15. Ucraniano (2026-10-24)
+
+D9 a D14 los usan otras ramas sin mergear (`claude/mundo-motor-eu`, `claude/mundo-motor-tr` y las
+demás); esta entrada toma el D15 para no chocar al mergear.
+
+`IDIOMAS` suma `uk`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`zarplata-u-sviti`), rankings (`reitynh-krain`), horas de trabajo
+(`skilky-hodyn-roboty`), calendario (`kalendar-vyplat`), sueldos reales (`realni-zarplaty`), el
+diccionario de venta completo (las 29 familias, `informe-calculo` incluida, informes, planillas y
+mails) y las 41 universales están en ucraniano.
+
+**Trato.** Un solo registro, el de los bancos y servicios digitales de Ucrania (Дія, ПриватБанк,
+monobank, el portal de la ДПС): «ви» siempre con minúscula (como escriben esos sitios, no la «Ви» de
+carta) y las formas corteses en las oraciones («введіть», «оберіть», «розрахуйте», «ваша
+зарплата»), nunca «ти». Los botones van en infinitivo («Розрахувати», «Скопіювати посилання») o en
+imperativo cortés breve («Оберіть країну»), como en esos sitios. Los mercados van con
+`trato: "usted"`, como ja, ko, zh y tr; los diccionarios escriben solo `base`. Las cartas del informe
+van en primera persona formal («Прошу виплатити...»). La tarjeta para compartir va en primera persona.
+Vocabulario real ucraniano y nunca calcos del ruso: калькулятор зарплати, податок на доходи фізичних
+осіб, військовий збір, ЄСВ, ПДВ, іпотека, кредит, відсотки, перший внесок, тіло кредиту.
+
+**Plurales.** El ucraniano tiene cuatro categorías en `Intl.PluralRules("uk")`: one (1, 21, 31...),
+few (2 a 4, 22 a 24...), many (0, 5 a 20, 25...) y other (las fracciones, que van en genitivo
+singular: «1,5 року»). `src/motor/i18n/plural.ts` da `formaUk` y `pluralUk(n, uno, pocos, muchos,
+fracción?)`; las unidades de tiempo suman las formas `pocos` y `muchos` (`FormasUnidad`, la misma
+interfaz que la rama del motor eu) y `formatearValorUnidad` elige por categoría («1 рік», «3 роки»,
+«5 років»). El contador del buscador acepta una forma few opcional (`resultadosPocos`).
+
+**Gramática del país.** El nombre se declina. `GRAMATICA.uk`: `nombre(p)` = p; `de(p)` es el
+genitivo suelto, que va detrás del sustantivo («калькулятори України»); `en(p)` el lugar con su
+preposición («в Україні», «у Німеччині», «на Філіппінах»; «в» ante vocal y «у» ante consonante,
+nunca «на Україні»); `para(p)` = «для» + genitivo. Los nombres llegan como los escribe
+Intl.DisplayNames en uk, así que se declinan por regla: -ія da -ії; -а da -и/-і con la alternancia
+к→ц, г→з y х→с en el locativo («у Мексиці»); los masculinos en consonante dan -у e -і («Люксембургу»,
+«у Люксембурзі»; en -к el locativo es -у: «в Іраку»); -й y -ь dan -ю e -ї/-і; en los compuestos los
+adjetivos de delante en -а, -і, -е o -ий concuerdan («у Великій Британії», «в Обʼєднаних Арабських
+Еміратах») y los plurales en -и dan -ів y -ах. Una tabla lleva los irregulares (Білорусь, Єгипет,
+Філіппіни, «Сент-Вінсент і Гренадіни») y otra los nombres de isla que van con «на» (Кіпр, Мальта,
+Куба, Ямайка...). Lo que termina en otra vocal (Чилі, Перу, Марокко) y las siglas no se declinan.
+Los marcadores `{pais}` del diccionario de venta no pasan por esta función: ahí el país va en
+nominativo entre paréntesis o detrás de dos puntos. Probado con los ~110 nombres de Intl de los países
+del sitio y del plan.
+
+**Formato.** Intl de uk-UA: miles con espacio (U+00A0), decimal con coma, la grivna detrás con «₴»
+(«1 234,50 ₴», que es lo que da Intl; «грн» también se lee al parsear) y el porcentaje pegado
+(«19,5%»). `parsearNumero` no cambia (casos nuevos en `check_motor`). Fechas largas «24 жовтня
+2026 р.». `inferir.ts` reconoce «місячна» y «річна» por prefijo. El índice del buscador cuenta el
+cirílico como letra (antes `[^a-z0-9]` lo borraba y una búsqueda en ucraniano no daba nada). Las
+imágenes OG cargan Noto Sans de respaldo en uk por si Geist no trae algún glifo.
+
+**Slugs.** Transliteración oficial ucraniana al latín (resolución del Gabinete de Ministros 55/2010:
+и→y, і→i, г→h, х→kh, ц→ts, ч→ch, ш→sh, щ→shch, ж→zh, є/ї/й/ю/я→ie/i/i/iu/ia dentro de palabra, sin
+ь ni apóstrofo), en kebab-case ASCII, sobre la frase que busca la gente en Google Ucrania:
+`kalkuliator-kredytu`, `efektyvna-vidsotkova-stavka`, `kalkuliator-ipoteky`,
+`orenda-chy-kupivlia-zhytla`, `skladni-vidsotky`, `prosti-vidsotky`, `kalkuliator-zaoshchadzhen`,
+`zaoshchadzhennia-na-pensiiu`, `pohashennia-kredytnoi-kartky`, `biudzhet-50-30-20`,
+`podushka-bezpeky`, `vartist-utrymannia-avto`, `rentabelnist-investytsii`, `kalkuliator-marzhi`,
+`tochka-bezzbytkovosti`, `stavka-frylansera`, `zarplata-za-hodynu`, `pidvyshchennia-zarplaty`,
+`oblik-robochoho-chasu`, `kalkuliator-vidsotkiv`, `zmina-u-vidsotkakh`, `proportsiia`,
+`kalkuliator-znyzhky`, `chaiovi`, `podilyty-rakhunok`, `serednie-zvazhene`, `kalkuliator-viku`,
+`kilkist-dniv-mizh-datamy`, `dodaty-dni-do-daty`, `indeks-masy-tila`, `kalkuliator-kalorii`,
+`data-polohiv`, `kalkuliator-ovuliatsii`, `temp-bihu`, `vytrata-palnoho`,
+`spozhyvannia-elektroenerhii`, `skilky-farby-potribno`, `kalkuliator-ploshchi`,
+`skilky-plytky-potribno`, `kalkuliator-betonu` y `kalkuliator-pdv`. Se eligió la transliteración y no
+el slug en inglés (como D8 con ja/ko/zh) porque es la norma oficial del país, legible por quien busca
+y estable. Rankings: `kupivelna-spromozhnist-zarplaty`, `den-podatkovoi-svobody`,
+`skilky-zalyshaietsia-vid-pidvyshchennia`.
+
+**Universales.** Textos nativos de Ucrania y neutrales de país: sin organismos de un solo país (nada
+de НБУ, ДПС ni ПФУ en las universales) y sin cifras legales tipeadas; la tasa de `iva` (ПДВ) sale del
+dato del país. Los ejemplos se calculan con las funciones de cada `definicion.ts`. Salud con la
+oración de que no reemplaza la consulta con un médico.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): sin exclamaciones, rayas ni guion como pausa; se atrapan «ти» y sus posesivos, los
+imperativos y presentes de segunda del singular de un formulario («введи», «можеш»), la «Ви» con
+mayúscula a mitad de oración, las letras que solo tiene el ruso (ы, э, ё, ъ), las comillas que no son
+«», el apóstrofo que no es ʼ ni ', y los calcos del ruso más frecuentes («являється», «слідуючий»,
+«на протязі», «приймати участь»).
+
+**Prueba.** `zz-uk` (Зеталенд, locale `uk-001`) es una edición interna como `zz-ja`.
+`check_universales` prueba uk-UA con UAH, «Сент-Вінсент і Гренадіни» por el nombre largo que se
+declina por partes y «Обʼєднані Арабські Емірати» por los adjetivos delante.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

@@ -47,6 +47,7 @@ varias veces por límite de uso.
 | Angola | claude/pais-ao | en curso |
 | Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
 | Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Motor ucraniano (uk) | claude/mundo-motor-uk | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -76,6 +77,27 @@ Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/z
 - Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
 
 El cron datos-paises no está actualizando uy, hn y bo.
+
+## 24/10/2026 · Motor ucraniano (`claude/mundo-motor-uk`)
+
+uk en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`zarplata-u-sviti`), rankings, horas de trabajo, calendario, sueldos reales, venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con slugs en la transliteración oficial ucraniana
+(`kalkuliator-kredytu`, `kalkuliator-pdv`, `skladni-vidsotky`...). Registro «ви» con minúscula y
+formas corteses, el de Дія y los bancos; mercados con `trato: "usted"`. Plurales one/few/many/other
+(`pluralUk`, unidades de tiempo con `pocos`/`muchos`). `GRAMATICA.uk` declina el país («в Україні»,
+«для України», «на Кіпрі»). El buscador ahora indexa cirílico. Decisiones en ADR 0002, D15. Edición de
+prueba `zz-uk`.
+
+Falta para publicar Ucrania:
+- El país en sí (BRIEF-PAIS): калькулятор зарплати з ПДФО, військовим збором і ЄСВ del
+  empleador, ФОП (групи єдиного податку), відпускні, лікарняні, мінімальна зарплата, прожитковий
+  мінімум, ПДВ, con datos verificados en fuentes oficiales (zakon.rada.gov.ua, tax.gov.ua, bank.gov.ua,
+  ukrstat.gov.ua).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar (las dudas de
+  vocabulario de los forks están en el cuerpo del PR).
+- Al mergear con `claude/mundo-motor-eu`: `src/motor/i18n/plural.ts` choca (los dos lo crean) y hay
+  que dejar `pluralPl` y `formaUk`/`pluralUk` juntos; `FormasUnidad` en `unidades.ts` es la misma.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 
