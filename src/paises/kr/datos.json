@@ -912,22 +912,18 @@
       "id": "kr.housing-acquisition-tax",
       "nombre": "주택 유상취득 취득세율",
       "tipo": "mapa",
-      "unidad": "numero",
+      "unidad": "%",
       "etiquetas": {
-        "rate-low": "6억원 이하 세율(%)",
-        "rate-high": "9억원 초과 세율(%)",
-        "limit-low": "낮은 구간 상한(원)",
-        "limit-high": "높은 구간 하한(원)"
+        "low": "6억원 이하",
+        "high": "9억원 초과"
       },
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2026-01-01",
           "valor": {
-            "rate-low": 1,
-            "rate-high": 3,
-            "limit-low": 600000000,
-            "limit-high": 900000000
+            "low": 1,
+            "high": 3
           },
           "fuente": {
             "organismo": "국가법령정보센터(법제처)",
@@ -941,13 +937,41 @@
       ]
     },
     {
+      "id": "kr.housing-acquisition-brackets",
+      "nombre": "주택 취득세율 구간 경계",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "low": "1% 구간 상한",
+        "high": "3% 구간 하한"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "low": 600000000,
+            "high": 900000000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "지방세법 제11조",
+            "url": "https://www.law.go.kr/법령/지방세법/제11조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "제1항 제8호 가목부터 다목"
+          }
+        }
+      ]
+    },
+    {
       "id": "kr.local-education-tax",
       "nombre": "지방교육세(주택 유상취득)",
       "tipo": "mapa",
       "unidad": "%",
       "etiquetas": {
         "rate-factor": "취득세율에 곱하는 비율",
-        "tasa": "지방교육세율"
+        "rate": "지방교육세율"
       },
       "tramos": [
         {
@@ -955,7 +979,7 @@
           "desde": "2026-01-01",
           "valor": {
             "rate-factor": 50,
-            "tasa": 20
+            "rate": 20
           },
           "fuente": {
             "organismo": "국가법령정보센터(법제처)",
@@ -975,7 +999,7 @@
       "unidad": "%",
       "etiquetas": {
         "base-rate": "적용 표준세율",
-        "tasa": "농어촌특별세율"
+        "rate": "농어촌특별세율"
       },
       "tramos": [
         {
@@ -983,7 +1007,7 @@
           "desde": "2026-01-01",
           "valor": {
             "base-rate": 2,
-            "tasa": 10
+            "rate": 10
           },
           "fuente": {
             "organismo": "국가법령정보센터(법제처)",
@@ -1072,6 +1096,27 @@
             "url": "https://www.law.go.kr/법령/상속세및증여세법/제53조",
             "tipo": "primaria",
             "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.gift-inheritance-minimum",
+      "nombre": "상속세·증여세 과세최저한",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "상속세 및 증여세법 제55조",
+            "url": "https://www.law.go.kr/법령/상속세및증여세법/제55조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "과세표준이 50만원 미만이면 증여세를 부과하지 않아요. 상속세도 같아요(제25조 제2항)."
           }
         }
       ]

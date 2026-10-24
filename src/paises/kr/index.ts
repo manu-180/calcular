@@ -24,6 +24,14 @@ import incomeTax from "./calculadoras/income-tax";
 import contenidoIncomeTax from "./contenido/income-tax";
 import yearEndTaxSettlement from "./calculadoras/year-end-tax-settlement";
 import contenidoYearEndTaxSettlement from "./contenido/year-end-tax-settlement";
+import capitalGainsTax from "./calculadoras/capital-gains-tax";
+import contenidoCapitalGainsTax from "./contenido/capital-gains-tax";
+import acquisitionTax from "./calculadoras/acquisition-tax";
+import contenidoAcquisitionTax from "./contenido/acquisition-tax";
+import giftTax from "./calculadoras/gift-tax";
+import contenidoGiftTax from "./contenido/gift-tax";
+import inheritanceTax from "./calculadoras/inheritance-tax";
+import contenidoInheritanceTax from "./contenido/inheritance-tax";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +56,10 @@ export default definirPais({
     { definicion: parentalLeaveBenefit, contenido: contenidoParentalLeaveBenefit, cliente: () => import("./calculadoras/parental-leave-benefit.cliente") },
     { definicion: incomeTax, contenido: contenidoIncomeTax, cliente: () => import("./calculadoras/income-tax.cliente") },
     { definicion: yearEndTaxSettlement, contenido: contenidoYearEndTaxSettlement, cliente: () => import("./calculadoras/year-end-tax-settlement.cliente") },
+    { definicion: capitalGainsTax, contenido: contenidoCapitalGainsTax, cliente: () => import("./calculadoras/capital-gains-tax.cliente") },
+    { definicion: acquisitionTax, contenido: contenidoAcquisitionTax, cliente: () => import("./calculadoras/acquisition-tax.cliente") },
+    { definicion: giftTax, contenido: contenidoGiftTax, cliente: () => import("./calculadoras/gift-tax.cliente") },
+    { definicion: inheritanceTax, contenido: contenidoInheritanceTax, cliente: () => import("./calculadoras/inheritance-tax.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "kr.vat" } }] },
   novedades,
