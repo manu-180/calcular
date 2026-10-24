@@ -134,6 +134,9 @@ export interface TextosShell {
     resultados: string;
     resultado: string;
     resultadosPlural: string;
+    // Rumano: del 20 en adelante (salvo las que terminan en 01 a 19) va «de» delante del sustantivo
+    // («20 de rezultate», «3 rezultate»; ADR 0002, D18). Sin ella, resultadosPlural.
+    resultadosDe?: string;
   };
   paises: { titulo: string; cambiar: string };
   pie: {

@@ -87,7 +87,40 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     informal: [{ re: palabras("je|jij|jou|jouw|jezelf"), nombre: "je-vorm" }],
     formal: [{ re: palabras("u|uw|uzelf"), nombre: "u-vorm" }],
   },
+  // Rumano: un solo registro, el de ANAF SPV, BCR e ING Home'Bank («dumneavoastră» implícito y el
+  // imperativo de 2.ª del plural: «introduceți», «calculați»; ADR 0002, D18). Se atrapa el «tu» con
+  // sus clíticos y posesivos (te, îți, ți-, -ți, tău, ta, tăi, tale), las formas de 2.ª del singular
+  // que no coinciden con la 3.ª (ești, poți, vrei, știi, introdu, vezi, alege-ți) y los posesivos de
+  // «voi» (vostru, voastră), que en la web de servicio no se usan.
+  ro: {
+    informal: [
+      { re: palabras("tu|te|ție|îți|ți|tău|ta|tăi|tale|ești|poți|vrei|știi|introdu|vezi|primești|plătești|câștigi|economisești|trebuie să introduci"), nombre: "«tu» (va 2.ª del plural: «introduceți», «puteți»)" },
+      { re: palabras("vostru|voastră|voștri|voastre"), nombre: "posesivo de «voi»" },
+      { re: /(?<!\p{L})(?:Dvs|dvs|D-voastră)\.?(?!\p{L})/u, nombre: "abreviatura de «dumneavoastră»" },
+    ],
+    formal: [],
+  },
 };
+
+// Rumano: ș y ț con coma debajo (U+0219, U+021B), nunca con cedilla (ş U+015F, ţ U+0163); â e î
+// según la norma de la Academia (î al comienzo y al final de palabra y después de prefijo, â adentro:
+// «încărcare», «coborî», «neîncredere», «România», «câștig»); «sunt», no «sînt»; comillas „”; y sin
+// las palabras más comunes escritas sin diacríticos («si», «in», «daca»), que delatan un texto
+// tipeado sin teclado rumano (ADR 0002, D18).
+const PREFIJOS_RO = /^(?:ne|re|pre|dez|răs|bine|nemai|auto|semi|supra|sub|ante|contra|inter|post|extra)î/;
+const SIN_DIACRITICOS_RO = palabras("si|in|daca|fara|dupa|pana|catre|cand|tara|tarii|lunara|suma totala|sa (?:calculati|introduceti|platiti|aveti)");
+function reglasRo(texto: string): string[] {
+  const p: string[] = [];
+  if (/[şţŞŢ]/.test(texto)) p.push("ş o ţ con cedilla: en rumano van con coma (ș U+0219, ț U+021B)");
+  if (/(?<!\p{L})[âÂ]|[âÂ](?!\p{L})/u.test(texto)) p.push("«â» al comienzo o al final de palabra (va «î»)");
+  for (const m of texto.matchAll(/\p{L}*\p{L}î\p{L}+/gu)) {
+    if (!PREFIJOS_RO.test(m[0].toLowerCase())) p.push(`«î» dentro de «${m[0]}» (va «â», salvo después de prefijo)`);
+  }
+  if (palabras("sînt|sîntem|sînteți").test(texto)) p.push("«sînt»: la norma es «sunt»");
+  if (/«|»|"(?=\p{L})|(?<=\p{L}[.,?:;]?)"/u.test(texto)) p.push("comillas: en rumano van „”");
+  if (SIN_DIACRITICOS_RO.test(texto)) p.push(`palabra sin diacríticos («${SIN_DIACRITICOS_RO.exec(texto)![0]}»)`);
+  return p;
+}
 
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {
   const r = REGISTRO[idioma];
@@ -158,5 +191,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
     return p;
   }
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
+  if (idioma === "ro") p.push(...reglasRo(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

@@ -54,6 +54,15 @@ function esEditable(t: EventTarget | null): boolean {
   return t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName);
 }
 
+// «1 resultado», «5 resultados»; en rumano la forma con «de» del 20 en adelante («20 de rezultate»,
+// pero «101 rezultate»), con la regla de Intl.PluralRules("ro").
+function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "resultadosPlural" | "resultadosDe">): string {
+  if (n === 1) return `${n} ${t.resultado}`;
+  const c = n % 100;
+  if (t.resultadosDe !== undefined && n >= 20 && (c === 0 || c >= 20)) return `${n} ${t.resultadosDe}`;
+  return `${n} ${t.resultadosPlural}`;
+}
+
 function plano(s: string): string {
   return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
@@ -401,7 +410,7 @@ export function Buscador({ fuente }: { fuente?: FuenteBuscador } = {}) {
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain [scrollbar-width:thin]">{cuerpo}</div>
 
         <p className="sr-only" aria-live="polite">
-          {buscando && motor ? `${opciones.length} ${opciones.length === 1 ? t.resultado : t.resultadosPlural}` : ""}
+          {buscando && motor ? cuantosResultados(opciones.length, t) : ""}
         </p>
 
         <div className="hidden shrink-0 items-center gap-4 border-t border-zinc-100 px-4 py-2.5 text-xs text-zinc-500 sm:flex">

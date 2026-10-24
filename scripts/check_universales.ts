@@ -59,11 +59,21 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "cn" as CodigoMercado, pais: "CN", nombrePais: "中国", locale: "zh-CN", trato: "usted", moneda: "CNY" as Moneda, escala: 7 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "聖文森及格瑞那丁", locale: "zh-TW", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  // Rumano (ADR 0002, D18): Rumania con el leu (RON, punto de miles y coma decimal), Moldavia con el
+  // leu moldavo (MDL, ro-MD) y un nombre largo que no se declina y va con «din» («din Saint Vincent și
+  // Grenadinele»), más uno compuesto que sí («Statelor Unite ale Americii»).
+  ro: [
+    { mercado: "ro" as CodigoMercado, pais: "RO", nombrePais: "România", locale: "ro-RO", trato: "usted", moneda: "RON" as Moneda, escala: 4.6 },
+    { mercado: "md" as CodigoMercado, pais: "MD", nombrePais: "Republica Moldova", locale: "ro-MD", trato: "usted", moneda: "MDL" as Moneda, escala: 18 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent și Grenadinele", locale: "ro-RO", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "Statele Unite ale Americii", locale: "ro-RO", trato: "usted", moneda: "USD" as Moneda, escala: 1 },
+  ],
 };
 
-// En ja, ko y zh las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
-// sobre toda la página: los traductores de los idiomas latinos no las necesitaban.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh"]);
+// En ja, ko, zh y ro las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
+// sobre toda la página: los traductores de los idiomas latinos no las necesitaban (en rumano, por la
+// coma de ș y ț, la norma de â/î y el registro de «dumneavoastră»).
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "ro"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy

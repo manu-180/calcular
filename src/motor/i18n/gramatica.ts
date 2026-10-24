@@ -259,4 +259,70 @@ const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `
 // 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
 const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh };
+// Rumano (ADR 0002, D18): el artículo va pegado al final del nombre (enclítico) y el genitivo cambia
+// la terminación. Los nombres llegan como los escribe Intl.DisplayNames en ro: los femeninos ya
+// articulados («România», «Germania», «Franța»), los masculinos y neutros sin artículo («Mexic»,
+// «Kazahstan», «Cipru») y los compuestos con el artículo en la primera palabra («Statele Unite ale
+// Americii», «Regatul Unit», «Țările de Jos»). `nombre(p)` da la forma de sujeto («Mexicul»,
+// «România»); `de(p)` el genitivo que va detrás de un sustantivo articulado («calculatoarele
+// României», «salariul minim al Mexicului» no: «salariul Mexicului»). Los que no se declinan en el uso
+// (Chile, Peru, Singapore, Haiti, Togo, siglas, nombres con coma, guion o paréntesis) van con «din»
+// («calculatoarele din Chile»), que entra en el mismo lugar. `en(p)` da el lugar («în România», «în
+// Mexic», «în Statele Unite ale Americii») y `para(p)` «pentru» con el nombre tal cual («pentru
+// România», «pentru Republica Moldova»). Genitivo: -ia da -iei («României»), -ea da -eei («Coreei»),
+// -ca da -căi («Jamaicăi»), el resto de -a da -ei («Franței», «Canadei», «Moldovei»); en la primera
+// palabra de un compuesto -ul da -ului y -ele/-ile dan -elor/-ilor, y los adjetivos en -ă que siguen
+// dan -e («Arabiei Saudite», «Republicii Dominicane»); los masculinos en consonante suman -ului
+// («Mexicului», «Kazahstanului»). La tabla lleva lo que no sale por regla (Africa, Republica, Noua
+// Zeelandă, Filipine, Costa Rica, Bosnia și Herțegovina).
+const ro: GramaticaPais = (() => {
+  // [genitivo, nominativo articulado]
+  const TABLA: Readonly<Record<string, readonly [string, string]>> = {
+    Africa: ["Africii", "Africa"],
+    America: ["Americii", "America"],
+    Republica: ["Republicii", "Republica"],
+    "Noua Zeelandă": ["Noii Zeelande", "Noua Zeelandă"],
+    Filipine: ["Filipinelor", "Filipinele"],
+    "Costa Rica": ["Costa Ricăi", "Costa Rica"],
+    "Bosnia și Herțegovina": ["Bosniei și Herțegovinei", "Bosnia și Herțegovina"],
+  };
+  // Van con «din» aunque la terminación pida otra cosa (vocal tónica final o nombre fijo).
+  const CON_DIN = new Set(["Chile", "Peru", "El Salvador", "Bahamas", "Sierra Leone", "Burkina Faso", "Tuvalu", "Vanuatu", "Palau", "Nauru"]);
+  const CONSONANTE = /[bcdfghjklmnpqrstvwxyzșț]$/;
+  // La primera palabra de un nombre ya articulado (o un nombre de una sola palabra).
+  const genitivoArticulado = (w: string): string | null => {
+    if (TABLA[w]) return TABLA[w][0];
+    if (/ia$/.test(w)) return `${w.slice(0, -1)}ei`;
+    if (/ea$/.test(w)) return `${w.slice(0, -1)}i`;
+    if (/ca$/.test(w)) return `${w.slice(0, -1)}ăi`;
+    if (/a$/.test(w)) return `${w.slice(0, -1)}ei`;
+    if (/ul$/.test(w)) return `${w}ui`;
+    if (/[ei]le$/.test(w)) return `${w.slice(0, -1)}or`;
+    return null;
+  };
+  const formas = (p: string): { gen: string | null; nom: string } => {
+    if (TABLA[p]) return { gen: TABLA[p][0], nom: TABLA[p][1] };
+    if (CON_DIN.has(p) || /[.,()’'\d-]/.test(p) || /^[A-ZĂÂÎȘȚ]{2,}$/.test(p) || p.includes(" și ")) return { gen: null, nom: p };
+    const palabras = p.split(" ");
+    if (palabras.length === 1) {
+      const art = genitivoArticulado(p);
+      if (art) return { gen: art, nom: p };
+      if (/[bcdfghjklmnpqrstvwxzșț]ru$/.test(p)) return { gen: `${p}lui`, nom: `${p}l` };
+      if (CONSONANTE.test(p)) return { gen: `${p}ului`, nom: `${p}ul` };
+      return { gen: null, nom: p };
+    }
+    const primera = genitivoArticulado(palabras[0]);
+    if (!primera) return { gen: null, nom: p };
+    // Los adjetivos femeninos en -ă que siguen al sustantivo concuerdan («Saudită» da «Saudite»).
+    const resto = palabras.slice(1).map((w) => (/^\p{Lu}/u.test(w) && /ă$/.test(w) ? `${w.slice(0, -1)}e` : w));
+    return { gen: [primera, ...resto].join(" "), nom: p };
+  };
+  return {
+    nombre: (p) => formas(p).nom,
+    de: (p) => formas(p).gen ?? `din ${p}`,
+    en: (p) => `în ${p}`,
+    para: (p) => `pentru ${p}`,
+  };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, ro };
