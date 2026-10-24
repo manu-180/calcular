@@ -1,4 +1,5 @@
 import type { Idioma, Trato } from "../tipos";
+import { formaRu } from "./plural";
 import { resolver, type Diccionarios } from "./resolver";
 
 // Textos de «Compartir» y de la línea que lleva a «Tu sueldo en el mundo». Viajan en el JS de la
@@ -240,7 +241,7 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       nuevaPestana: "откроется в новой вкладке",
       mensaje: (nombre) => `${nombre}. Бесплатно, расчет занимает минуту.`,
       puenteIntro: "А в других странах?",
-      puenteEnlace: (n) => `Посмотрите, сколько вы получали бы на руки в более чем ${n} странах`,
+      puenteEnlace: (n) => `Посмотрите, сколько вы получали бы на руки более чем в ${n} ${formaRu(n, "стране", "странах", "странах")}`,
     },
   },
 };

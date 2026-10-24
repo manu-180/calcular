@@ -1,6 +1,7 @@
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
 import { GRAMATICA } from "./gramatica";
+import { formaRu, pluralRu } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Calendario laboral y fiscal de cada edición. Los textos no le hablan a nadie en segunda persona a
@@ -739,7 +740,82 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Ruso (ADR 0002, D17): impersonal como los demás; el país se declina con GRAMATICA.ru y los días
+// con formaRu/pluralRu (one/few/many).
+const gRu = GRAMATICA.ru;
+const ru: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Календарь зарплаты и налогов",
+    seo: {
+      titulo: (pais, anios) => [
+        `Календарь зарплаты и налогов ${gRu.para(pais)} ${anios}: ключевые даты`,
+        `Календарь зарплаты и налогов ${gRu.para(pais)} ${anios}`,
+        `Календарь выплат ${gRu.para(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Даты, которые меняют зарплату ${gRu.en(pais)}, из официальных источников: ${proximas}. У каждой есть свой калькулятор.`,
+      descripcionSin: (pais) => `Даты, которые меняют зарплату ${gRu.en(pais)}, из официальных источников и с калькулятором для каждой. Добавьте их в календарь телефона.`,
+    },
+    ceja: (anios) => `Календарь на ${anios}`,
+    h1: (pais) => `Календарь зарплаты и налогов ${gRu.para(pais)}`,
+    acento: "даты, от которых зависит зарплата",
+    bajada: "Каждая дата взята из официального источника и ведет к калькулятору, на который она влияет. Страница обновляется сама, когда публикуют новое значение.",
+    proxima: "Ближайшая дата",
+    cuenta: {
+      hoy: "Сегодня",
+      manana: "Завтра",
+      ayer: "Вчера",
+      en: (n) => `Через ${pluralRu(n, "день", "дня", "дней")}`,
+      hace: (n) => `${pluralRu(n, "день", "дня", "дней")} назад`,
+      dias: (n) => formaRu(n, "день", "дня", "дней"),
+    },
+    queViene: "Скоро",
+    yaRige: "Уже действует",
+    mesPorMes: "Год по месяцам",
+    sinFechas: "Изменений не объявлено",
+    filtro: "Фильтр по теме",
+    todo: "Все",
+    tipos: { pago: "Выплаты", "salario-minimo": "Минимальная зарплата", impuestos: "Налоги", aportes: "Взносы и пенсии", laboral: "Трудовые правила", indices: "Справочные значения" },
+    pasa: (antes, despues) => `Меняется с ${antes} на ${despues}`,
+    queda: (valor) => `Установлено: ${valor}`,
+    cambian: "Суммы меняются",
+    zonas: (lista) => `Регионы: ${lista}`,
+    limite: "Крайний срок",
+    agregar: "Добавить в мой календарь",
+    descargar: "Apple, Outlook и другие (файл .ics)",
+    google: "Google Календарь",
+    calcular: "Рассчитать",
+    tambien: "Также в калькуляторах",
+    fuente: (organismo, fecha) => `Источник: ${organismo}. Проверено ${fecha}.`,
+    verificado: (fecha) => `Проверено ${fecha}`,
+    suscribir: {
+      titulo: "Весь календарь, всегда актуальный",
+      texto: "Подпишитесь один раз, и новые даты сами будут появляться в календаре на телефоне или компьютере.",
+      boton: "Подписаться на календарь",
+      copiar: "Скопировать ссылку",
+      copiado: "Ссылка скопирована",
+    },
+    fuentes: {
+      titulo: "Откуда берется каждая дата",
+      texto: "Сюда попадают только даты, уже установленные нормативным актом или значением, которое опубликовало официальное ведомство. Если что-то еще не опубликовано, этого здесь нет.",
+    },
+    vacio: "В ближайшие двенадцать месяцев дат по этой теме нет.",
+    destacado: {
+      ceja: "Календарь выплат",
+      titulo: "Даты, от которых зависит зарплата в этом году",
+      ir: "Посмотреть календарь",
+      proxima: (titulo, fecha) => `Ближайшая: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Календарь зарплаты и налогов ${gRu.para(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Даты выплат и налогов ${gRu.en(pais)} из официальных источников.`,
+      calculadora: "Калькулятор",
+      fuente: "Источник",
+    },
+    og: { proxima: "Ближайшая дата", mas: (n) => `И еще ${pluralRu(n, "дата", "даты", "дат")} в этом году` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ru };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);
