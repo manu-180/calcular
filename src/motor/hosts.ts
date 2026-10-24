@@ -59,7 +59,7 @@ export const SEGMENTO_404 = "404";
 // otro nombre y el /<m>/sitemap.xml público llega por rewrite.
 export const RUTA_SITEMAP = "mapa-xml";
 export const RUTA_LLMS = "llms.txt";
-export const API_INTL_PERMITIDAS = ["geo", "dev/sitio", "e", "pagos"] as const;
+export const API_INTL_PERMITIDAS = ["geo", "dev/sitio", "e", "pagos", "sueldos"] as const;
 // Las pantallas de cuenta de calcularya: mismo path público que en calcular.ar, servidas por
 // src/app/(intl)/intl/[mercado]/(cuenta) con la marca CalcularYa. /dashboard sigue sólo en AR.
 export const RUTAS_CUENTA = ["login", "registro", "recuperar", "cuenta", "auth"] as const;

@@ -39,6 +39,7 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
  */
 const EXCLUIDAS = new Set<string>([
   "/", // la home ya es el encabezado del archivo
+  "/sueldos-reales", // noindex hasta que una ocupación junte 10 aportes (docs/decisiones/sueldos.md)
   "/contacto",
   "/privacidad",
   "/terminos",

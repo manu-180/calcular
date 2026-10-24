@@ -29,7 +29,7 @@ export default function PrivacidadPage() {
     <article className="mx-auto max-w-2xl space-y-10">
       <header className="space-y-3">
         <h1 className="text-titular font-bold text-zinc-900">Política de privacidad</h1>
-        <p className="text-xs text-zinc-500">Última actualización: 6 de octubre de 2026</p>
+        <p className="text-xs text-zinc-500">Última actualización: 24 de octubre de 2026</p>
         <p className="text-[15px] leading-relaxed text-pretty text-zinc-600">
           Podés usar todas las calculadoras sin registrarte y sin darnos ningún dato. Acá está qué se
           guarda cuando usás el sitio, para qué, y cómo pedir que lo borremos.
@@ -222,6 +222,22 @@ export default function PrivacidadPage() {
             aboutads.info
           </a>
           . Si desactivás la personalización vas a seguir viendo anuncios, pero menos relacionados con vos.
+        </p>
+      </Seccion>
+
+      <Seccion id="compartir-y-sueldos" titulo="Links compartidos, tu sueldo en el mundo y los sueldos que se aportan">
+        <p>
+          Cuando compartís un cálculo, el link lleva un código al azar, distinto en cada compartido, para contar
+          cuántas visitas trae. No identifica a nadie. Los montos que escribís nunca viajan dentro de un link: la
+          página «Tu sueldo en el mundo» los recibe dentro de tu navegador, y la tarjeta que compartís muestra
+          solo porcentajes, fechas y países.
+        </p>
+        <p>
+          En «Sueldos reales» podés sumar tu sueldo de forma anónima y opcional, sólo si das tu consentimiento.
+          Guardamos el país, la ocupación (de una lista cerrada), el rango de años de experiencia, el sueldo
+          bruto por mes redondeado a dos cifras y el mes. No guardamos la IP, el navegador, una cuenta ni la
+          fecha exacta. Sólo publicamos la mediana y el rango de grupos de 10 personas o más: nunca se muestra
+          un sueldo individual.
         </p>
       </Seccion>
 

@@ -26,7 +26,7 @@ type Envio = "listo" | "enviando" | "ok" | "error";
 type Cargado = { mercado: string; resp: RespuestaAgregados };
 
 function Compartir({ t, url, titulo, texto }: { t: TextosSueldos; url: string; titulo: string; texto: string }) {
-  const { compartir, estado } = usarCompartir({ origen: "mundo", url, titulo, texto });
+  const { compartir, estado } = usarCompartir({ origen: "sueldos", url, titulo, texto });
   const aviso = estado === "copiado" ? t.aporte.copiado : estado === "compartido" ? t.aporte.compartido : estado === "error" ? t.aporte.errorCompartir : "";
   return (
     <div className="cy-su-compartir">
