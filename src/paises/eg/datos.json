@@ -1,0 +1,791 @@
+{
+  "mercado": "eg",
+  "datos": [
+    {
+      "id": "eg.income-tax",
+      "nombre": "شرائح الضريبة على المرتبات (صافي الدخل السنوي حتى 600 ألف جنيه)",
+      "tipo": "escala",
+      "unidad": "EGP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 40000,
+              "tasa": 0
+            },
+            {
+              "desde": 40000,
+              "hasta": 55000,
+              "tasa": 10
+            },
+            {
+              "desde": 55000,
+              "hasta": 70000,
+              "tasa": 15
+            },
+            {
+              "desde": 70000,
+              "hasta": 200000,
+              "tasa": 20
+            },
+            {
+              "desde": 200000,
+              "hasta": 400000,
+              "tasa": 22.5
+            },
+            {
+              "desde": 400000,
+              "hasta": 1200000,
+              "tasa": 25
+            },
+            {
+              "desde": 1200000,
+              "hasta": null,
+              "tasa": 27.5
+            }
+          ],
+          "fuente": {
+            "organismo": "مصلحة الضرائب المصرية",
+            "titulo": "القانون رقم 7 لسنة 2024 بتعديل بعض أحكام قانون الضريبة على الدخل (الجريدة الرسمية، العدد 7 مكرر (أ)، 21 فبراير 2024)",
+            "url": "https://eta.gov.eg/sites/default/files/2024-03/law_no.7-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 8 (الشرائح) والمادة 13 بند 1 (الإعفاء الشخصي). يُعمل به في ضريبة المرتبات من أول الشهر التالي للنشر."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.income-tax-thresholds",
+      "nombre": "حدود صافي الدخل التي تسقط بعدها الشرائح الأولى",
+      "tipo": "mapa",
+      "unidad": "EGP",
+      "etiquetas": {
+        "t1": "فوق 600 ألف: تسقط شريحة الإعفاء",
+        "t2": "فوق 700 ألف: تسقط شريحة 10%",
+        "t3": "فوق 800 ألف: تسقط شريحة 15%",
+        "t4": "فوق 900 ألف: تسقط شريحة 20%",
+        "t5": "فوق 1.2 مليون: تسقط شريحة 22.5%"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-01",
+          "valor": {
+            "t1": 600000,
+            "t2": 700000,
+            "t3": 800000,
+            "t4": 900000,
+            "t5": 1200000
+          },
+          "fuente": {
+            "organismo": "مصلحة الضرائب المصرية",
+            "titulo": "القانون رقم 7 لسنة 2024 بتعديل بعض أحكام قانون الضريبة على الدخل (الجريدة الرسمية، العدد 7 مكرر (أ)، 21 فبراير 2024)",
+            "url": "https://eta.gov.eg/sites/default/files/2024-03/law_no.7-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 8 (الشرائح) والمادة 13 بند 1 (الإعفاء الشخصي). يُعمل به في ضريبة المرتبات من أول الشهر التالي للنشر."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.personal-exemption",
+      "nombre": "الإعفاء الشخصي السنوي",
+      "tipo": "numero",
+      "unidad": "EGP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "مصلحة الضرائب المصرية",
+            "titulo": "القانون رقم 7 لسنة 2024 بتعديل بعض أحكام قانون الضريبة على الدخل (الجريدة الرسمية، العدد 7 مكرر (أ)، 21 فبراير 2024)",
+            "url": "https://eta.gov.eg/sites/default/files/2024-03/law_no.7-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 8 (الشرائح) والمادة 13 بند 1 (الإعفاء الشخصي). يُعمل به في ضريبة المرتبات من أول الشهر التالي للنشر."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.si-employee",
+      "nombre": "حصة المؤمن عليه في الاشتراكات (العاملون بالقطاع الخاص)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "old-age": "الشيخوخة والعجز والوفاة (المادة 19)",
+        "reward": "نظام المكافأة (المادة 36)",
+        "sickness": "تأمين المرض (المادة 70)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "old-age": 9,
+            "reward": 1,
+            "sickness": 1
+          },
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.si-employer",
+      "nombre": "حصة صاحب العمل في الاشتراكات (العاملون بالقطاع الخاص)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "old-age": "الشيخوخة والعجز والوفاة (المادة 19)",
+        "reward": "نظام المكافأة (المادة 36)",
+        "injury-care": "إصابات العمل: العلاج (المادة 46)",
+        "injury-cash": "إصابات العمل: الحقوق المالية (المادة 46)",
+        "sickness": "تأمين المرض (المادة 70)",
+        "unemployment": "تأمين البطالة (المادة 86)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "old-age": 12,
+            "reward": 1,
+            "injury-care": 1,
+            "injury-cash": 0.5,
+            "sickness": 3.25,
+            "unemployment": 1
+          },
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.si-wage-min",
+      "nombre": "الحد الأدنى لأجر الاشتراك الشهري",
+      "tipo": "numero",
+      "unidad": "EGP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2700,
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "رفع الحدين الأدنى والأقصى لأجر الاشتراك التأميني بدءًا من أول يناير 2026",
+            "url": "https://www.nosi.gov.eg/ar/news/Pages/2025-11-30.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.si-wage-max",
+      "nombre": "الحد الأقصى لأجر الاشتراك الشهري",
+      "tipo": "numero",
+      "unidad": "EGP",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 16700,
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "رفع الحدين الأدنى والأقصى لأجر الاشتراك التأميني بدءًا من أول يناير 2026",
+            "url": "https://www.nosi.gov.eg/ar/news/Pages/2025-11-30.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.pension-divisor",
+      "nombre": "المعامل عند سن الشيخوخة (60 سنة) في الجدول رقم 5",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.pension-cap",
+      "nombre": "الحد الأقصى للمعاش من أجر التسوية",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.pension-floor",
+      "nombre": "الحد الأدنى للمعاش من الحد الأدنى لأجر الاشتراك",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 65,
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.pension-min-months",
+      "nombre": "مدة الاشتراك الفعلية اللازمة لمعاش الشيخوخة",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.lump-sum-rate",
+      "nombre": "تعويض الدفعة الواحدة عن كل سنة اشتراك",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.unemployment-rates",
+      "nombre": "نسب تعويض البطالة من أجر الاشتراك الأخير",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "w1": "الأسابيع الأربعة الأولى",
+        "w2": "الأسابيع الأربعة الثانية",
+        "w3": "الأسابيع الأربعة الثالثة",
+        "w4": "باقي الأسابيع"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "w1": 75,
+            "w2": 65,
+            "w3": 55,
+            "w4": 45
+          },
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.unemployment-weeks",
+      "nombre": "مدة صرف تعويض البطالة",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "normal": "المدة العادية",
+        "extendida": "أول تعطل مع اشتراك يزيد على 36 شهرًا"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "normal": 12,
+            "extendida": 28
+          },
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.sick-pay",
+      "nombre": "تعويض الأجر في المرض من الأجر اليومي",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "first90": "أول 90 يومًا",
+        "after90": "بعد 90 يومًا"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "first90": 75,
+            "after90": 85
+          },
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.sick-pay-max-days",
+      "nombre": "أقصى مدة لتعويض المرض في السنة الميلادية",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "الهيئة القومية للتأمين الاجتماعي",
+            "titulo": "قانون التأمينات الاجتماعية والمعاشات الصادر بالقانون رقم 148 لسنة 2019",
+            "url": "https://www.nosi.gov.eg/ar/Lists/NOSILibrary/2-12-2019%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.min-wage-private",
+      "nombre": "الحد الأدنى للأجور في القطاع الخاص (شهريًا)",
+      "tipo": "numero",
+      "unidad": "EGP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "valor": 7000,
+          "fuente": {
+            "organismo": "وزارة التخطيط والتنمية الاقتصادية (المجلس القومي للأجور)",
+            "titulo": "الاجتماع الأول للمجلس القومي للأجور برئاسة وزيرة التخطيط، 9 فبراير 2025",
+            "url": "https://mped.gov.eg/singlenews?id=6009",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.min-wage-hourly",
+      "nombre": "الحد الأدنى لأجر الساعة في العمل لبعض الوقت (صافيًا)",
+      "tipo": "numero",
+      "unidad": "EGP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "valor": 28,
+          "fuente": {
+            "organismo": "وزارة التخطيط والتنمية الاقتصادية (المجلس القومي للأجور)",
+            "titulo": "الاجتماع الأول للمجلس القومي للأجور برئاسة وزيرة التخطيط، 9 فبراير 2025",
+            "url": "https://mped.gov.eg/singlenews?id=6009",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.min-income-public",
+      "nombre": "الحد الأدنى للدخل للعاملين بالدولة (شهريًا)",
+      "tipo": "numero",
+      "unidad": "EGP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 8000,
+          "fuente": {
+            "organismo": "مركز المعلومات ودعم اتخاذ القرار بمجلس الوزراء",
+            "titulo": "النشرة اليومية رقم 1327، 5 يوليو 2026 (تصريح وزير المالية عن زيادة الأجور في موازنة 2026/2027)",
+            "url": "https://idsc.gov.eg/upload/NewsLetter/AttachmentA/13605/%D8%A7%D9%84%D8%A3%D8%AD%D8%AF%205%20%D9%8A%D9%88%D9%84%D9%8A%D9%88%202026-%20%D8%B9%D8%AF%D8%AF%20%D8%B1%D9%82%D9%85%201327-%20%D8%A7%D9%84%D8%B3%D9%86%D8%A9%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3%D8%A9.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "الزيادة تبدأ مع مرتبات يوليو 2026، أول شهر في العام المالي 2026/2027."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.raise-rate",
+      "nombre": "الحد الأدنى للعلاوة الدورية السنوية من الأجر التأميني",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "وزارة العمل",
+            "titulo": "القانون رقم 14 لسنة 2025 بإصدار قانون العمل (الجريدة الرسمية، العدد 18 تابع، 3 مايو 2025)",
+            "url": "https://www.labour.gov.eg/media/0iedik3q/%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-14-%D9%84%D8%B3%D9%86%D8%A9-2025-%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يُعمل به من أول الشهر التالي لمرور تسعين يومًا على نشره، أي من 1 سبتمبر 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.raise-min",
+      "nombre": "الحد الأدنى للعلاوة الدورية بالجنيه شهريًا",
+      "tipo": "numero",
+      "unidad": "EGP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "valor": 250,
+          "fuente": {
+            "organismo": "وزارة التخطيط والتنمية الاقتصادية (المجلس القومي للأجور)",
+            "titulo": "الاجتماع الأول للمجلس القومي للأجور برئاسة وزيرة التخطيط، 9 فبراير 2025",
+            "url": "https://mped.gov.eg/singlenews?id=6009",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "قرار المجلس القومي للأجور في 9 فبراير 2025. لم يحدد البيان تاريخ بدء العلاوة، فاعتمدنا تاريخ سريان الحد الأدنى للأجور معه."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.annual-leave",
+      "nombre": "أيام الإجازة السنوية",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "first-year": "السنة الأولى",
+        "standard": "من السنة الثانية",
+        "long": "بعد 10 سنوات أو بعد سن الخمسين",
+        "disability": "الأشخاص ذوو الإعاقة والأقزام",
+        "hazard": "زيادة الأعمال الخطرة أو المناطق النائية"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-01",
+          "valor": {
+            "first-year": 15,
+            "standard": 21,
+            "long": 30,
+            "disability": 45,
+            "hazard": 7
+          },
+          "fuente": {
+            "organismo": "وزارة العمل",
+            "titulo": "القانون رقم 14 لسنة 2025 بإصدار قانون العمل (الجريدة الرسمية، العدد 18 تابع، 3 مايو 2025)",
+            "url": "https://www.labour.gov.eg/media/0iedik3q/%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-14-%D9%84%D8%B3%D9%86%D8%A9-2025-%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يُعمل به من أول الشهر التالي لمرور تسعين يومًا على نشره، أي من 1 سبتمبر 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.overtime",
+      "nombre": "الزيادة على أجر الساعة في العمل الإضافي",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "day": "ساعة نهارية",
+        "night": "ساعة ليلية",
+        "rest": "يوم الراحة الأسبوعية"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-01",
+          "valor": {
+            "day": 35,
+            "night": 70,
+            "rest": 100
+          },
+          "fuente": {
+            "organismo": "وزارة العمل",
+            "titulo": "القانون رقم 14 لسنة 2025 بإصدار قانون العمل (الجريدة الرسمية، العدد 18 تابع، 3 مايو 2025)",
+            "url": "https://www.labour.gov.eg/media/0iedik3q/%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-14-%D9%84%D8%B3%D9%86%D8%A9-2025-%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يُعمل به من أول الشهر التالي لمرور تسعين يومًا على نشره، أي من 1 سبتمبر 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.notice-months",
+      "nombre": "مهلة الإخطار بإنهاء العقد غير محدد المدة",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "وزارة العمل",
+            "titulo": "القانون رقم 14 لسنة 2025 بإصدار قانون العمل (الجريدة الرسمية، العدد 18 تابع، 3 مايو 2025)",
+            "url": "https://www.labour.gov.eg/media/0iedik3q/%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-14-%D9%84%D8%B3%D9%86%D8%A9-2025-%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يُعمل به من أول الشهر التالي لمرور تسعين يومًا على نشره، أي من 1 سبتمبر 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.unfair-dismissal-months",
+      "nombre": "الحد الأدنى للتعويض عن الفصل غير المشروع عن كل سنة خدمة",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "وزارة العمل",
+            "titulo": "القانون رقم 14 لسنة 2025 بإصدار قانون العمل (الجريدة الرسمية، العدد 18 تابع، 3 مايو 2025)",
+            "url": "https://www.labour.gov.eg/media/0iedik3q/%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-14-%D9%84%D8%B3%D9%86%D8%A9-2025-%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يُعمل به من أول الشهر التالي لمرور تسعين يومًا على نشره، أي من 1 سبتمبر 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.redundancy",
+      "nombre": "مكافأة الإنهاء لأسباب اقتصادية عن كل سنة خدمة",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "first5": "كل سنة من السنوات الخمس الأولى",
+        "after5": "كل سنة بعد ذلك"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-01",
+          "valor": {
+            "first5": 1,
+            "after5": 1.5
+          },
+          "fuente": {
+            "organismo": "وزارة العمل",
+            "titulo": "القانون رقم 14 لسنة 2025 بإصدار قانون العمل (الجريدة الرسمية، العدد 18 تابع، 3 مايو 2025)",
+            "url": "https://www.labour.gov.eg/media/0iedik3q/%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-14-%D9%84%D8%B3%D9%86%D8%A9-2025-%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يُعمل به من أول الشهر التالي لمرور تسعين يومًا على نشره، أي من 1 سبتمبر 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.after60-reward",
+      "nombre": "مكافأة العمل بعد سن الستين عن كل سنة",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "first5": "كل سنة من السنوات الخمس الأولى",
+        "after5": "كل سنة بعد ذلك"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-01",
+          "valor": {
+            "first5": 0.5,
+            "after5": 1
+          },
+          "fuente": {
+            "organismo": "وزارة العمل",
+            "titulo": "القانون رقم 14 لسنة 2025 بإصدار قانون العمل (الجريدة الرسمية، العدد 18 تابع، 3 مايو 2025)",
+            "url": "https://www.labour.gov.eg/media/0iedik3q/%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-14-%D9%84%D8%B3%D9%86%D8%A9-2025-%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يُعمل به من أول الشهر التالي لمرور تسعين يومًا على نشره، أي من 1 سبتمبر 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.maternity-months",
+      "nombre": "مدة إجازة الوضع",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "وزارة العمل",
+            "titulo": "القانون رقم 14 لسنة 2025 بإصدار قانون العمل (الجريدة الرسمية، العدد 18 تابع، 3 مايو 2025)",
+            "url": "https://www.labour.gov.eg/media/0iedik3q/%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-14-%D9%84%D8%B3%D9%86%D8%A9-2025-%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يُعمل به من أول الشهر التالي لمرور تسعين يومًا على نشره، أي من 1 سبتمبر 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.maternity-after-days",
+      "nombre": "أقل مدة للإجازة بعد الوضع",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-09-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "وزارة العمل",
+            "titulo": "القانون رقم 14 لسنة 2025 بإصدار قانون العمل (الجريدة الرسمية، العدد 18 تابع، 3 مايو 2025)",
+            "url": "https://www.labour.gov.eg/media/0iedik3q/%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%B1%D9%82%D9%85-14-%D9%84%D8%B3%D9%86%D8%A9-2025-%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يُعمل به من أول الشهر التالي لمرور تسعين يومًا على نشره، أي من 1 سبتمبر 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.vat",
+      "nombre": "السعر العام لضريبة القيمة المضافة",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-07-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "مصلحة الضرائب المصرية",
+            "titulo": "دليل قانون الضريبة على القيمة المضافة رقم 67 لسنة 2016، المادة 3",
+            "url": "https://eta.gov.eg/sites/default/files/2021-04/%D8%AF%D9%84%D9%8A%D9%84%20%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%B6%D8%B1%D9%8A%D8%A8%D8%A9%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D9%82%D9%8A%D9%85%D8%A9%20%D8%A7%D9%84%D9%85%D8%B6%D8%A7%D9%81%D8%A9%20%D9%88%D8%A7%D9%84%D9%86%D8%B5%20%D8%A7%D9%84%D9%85%D9%82%D8%A7%D8%A8%D9%84%20%D8%A3%D9%88%D8%A7%D9%84%D9%85%D9%83%D9%85%D9%84%20%D9%85%D9%86%20%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%A5%D8%AC%D8%B1%D8%A7%D8%A1%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B6%D8%B1%D9%8A%D8%A8%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D9%88%D8%AD%D8%AF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "السعر العام 14% اعتبارًا من العام المالي 2017/2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.real-estate-tax",
+      "nombre": "ضريبة التصرفات العقارية",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-05-19",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "مصلحة الضرائب المصرية",
+            "titulo": "دليل الممول التعريفي بتطبيق ضريبة التصرفات العقارية، الإصدار الأول 2026",
+            "url": "https://www.eta.gov.eg/sites/default/files/2026-08/taxpayer_guide_for_real-estate_transactions_app_v.1.0.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "الضريبة 2.5% من قيمة البيع بحسب نسبة حصة البائع في العقار. تسري بالنسبة نفسها منذ 19 مايو 2013 (القانون رقم 11 لسنة 2013)، بحسب بيان المصلحة في 29 يناير 2022."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eg.usd-rate",
+      "nombre": "سعر صرف الدولار الأمريكي (متوسط البنك المركزي المصري)",
+      "tipo": "numero",
+      "unidad": "EGP",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-10-24",
+          "valor": 0,
+          "motivo": "موقع البنك المركزي المصري (cbe.org.eg) يرد بالخطأ 403 على كل الطلبات من خارج مصر، ولم نتمكن من قراءة السعر الرسمي. الحاسبة تبقى مسودة حتى نقرأه."
+        }
+      ]
+    }
+  ]
+}

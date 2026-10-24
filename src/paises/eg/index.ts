@@ -1,0 +1,43 @@
+import { definirPais } from "@/motor/registro";
+import avisos from "./avisos.json";
+import netSalary from "./calculadoras/net-salary";
+import contenidoNetSalary from "./contenido/net-salary";
+import salaryTax from "./calculadoras/salary-tax";
+import contenidoSalaryTax from "./contenido/salary-tax";
+import socialInsurance from "./calculadoras/social-insurance";
+import contenidoSocialInsurance from "./contenido/social-insurance";
+import employerCost from "./calculadoras/employer-cost";
+import contenidoEmployerCost from "./contenido/employer-cost";
+import grossFromNet from "./calculadoras/gross-from-net";
+import contenidoGrossFromNet from "./contenido/gross-from-net";
+import minimumWage from "./calculadoras/minimum-wage";
+import contenidoMinimumWage from "./contenido/minimum-wage";
+import annualLeave from "./calculadoras/annual-leave";
+import contenidoAnnualLeave from "./contenido/annual-leave";
+import overtime from "./calculadoras/overtime";
+import contenidoOvertime from "./contenido/overtime";
+import datos from "./datos.json";
+import { detectores } from "./fuentes";
+import { mercado } from "./mercado";
+import { novedades } from "./novedades";
+import series from "./series.json";
+
+export default definirPais({
+  mercado,
+  datos,
+  series,
+  avisos,
+  calculadoras: [
+    { definicion: netSalary, contenido: contenidoNetSalary, cliente: () => import("./calculadoras/net-salary.cliente") },
+    { definicion: salaryTax, contenido: contenidoSalaryTax, cliente: () => import("./calculadoras/salary-tax.cliente") },
+    { definicion: socialInsurance, contenido: contenidoSocialInsurance, cliente: () => import("./calculadoras/social-insurance.cliente") },
+    { definicion: employerCost, contenido: contenidoEmployerCost, cliente: () => import("./calculadoras/employer-cost.cliente") },
+    { definicion: grossFromNet, contenido: contenidoGrossFromNet, cliente: () => import("./calculadoras/gross-from-net.cliente") },
+    { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
+    { definicion: annualLeave, contenido: contenidoAnnualLeave, cliente: () => import("./calculadoras/annual-leave.cliente") },
+    { definicion: overtime, contenido: contenidoOvertime, cliente: () => import("./calculadoras/overtime.cliente") },
+  ],
+  universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "eg.vat" } }] },
+  novedades,
+  detectores,
+});
