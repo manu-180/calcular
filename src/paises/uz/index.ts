@@ -26,6 +26,14 @@ import ogohlantirishMuddati from "./calculadoras/ogohlantirish-muddati";
 import contenidoOgohlantirishMuddati from "./contenido/ogohlantirish-muddati";
 import ortiqchaIshVaqti from "./calculadoras/ortiqcha-ish-vaqti";
 import contenidoOrtiqchaIshVaqti from "./contenido/ortiqcha-ish-vaqti";
+import aylanmaSoligiKalkulyatori from "./calculadoras/aylanma-soligi-kalkulyatori";
+import contenidoAylanmaSoligiKalkulyatori from "./contenido/aylanma-soligi-kalkulyatori";
+import molMulkSoligiKalkulyatori from "./calculadoras/mol-mulk-soligi-kalkulyatori";
+import contenidoMolMulkSoligiKalkulyatori from "./contenido/mol-mulk-soligi-kalkulyatori";
+import yerSoligiKalkulyatori from "./calculadoras/yer-soligi-kalkulyatori";
+import contenidoYerSoligiKalkulyatori from "./contenido/yer-soligi-kalkulyatori";
+import inflyatsiyaKalkulyatori from "./calculadoras/inflyatsiya-kalkulyatori";
+import contenidoInflyatsiyaKalkulyatori from "./contenido/inflyatsiya-kalkulyatori";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -51,6 +59,10 @@ export default definirPais({
     { definicion: ishdanBoshatishNafaqasi, contenido: contenidoIshdanBoshatishNafaqasi, cliente: () => import("./calculadoras/ishdan-boshatish-nafaqasi.cliente") },
     { definicion: ogohlantirishMuddati, contenido: contenidoOgohlantirishMuddati, cliente: () => import("./calculadoras/ogohlantirish-muddati.cliente") },
     { definicion: ortiqchaIshVaqti, contenido: contenidoOrtiqchaIshVaqti, cliente: () => import("./calculadoras/ortiqcha-ish-vaqti.cliente") },
+    { definicion: aylanmaSoligiKalkulyatori, contenido: contenidoAylanmaSoligiKalkulyatori, cliente: () => import("./calculadoras/aylanma-soligi-kalkulyatori.cliente") },
+    { definicion: molMulkSoligiKalkulyatori, contenido: contenidoMolMulkSoligiKalkulyatori, cliente: () => import("./calculadoras/mol-mulk-soligi-kalkulyatori.cliente") },
+    { definicion: yerSoligiKalkulyatori, contenido: contenidoYerSoligiKalkulyatori, cliente: () => import("./calculadoras/yer-soligi-kalkulyatori.cliente") },
+    { definicion: inflyatsiyaKalkulyatori, contenido: contenidoInflyatsiyaKalkulyatori, cliente: () => import("./calculadoras/inflyatsiya-kalkulyatori.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "uz.qqs" } }] },
   novedades,
