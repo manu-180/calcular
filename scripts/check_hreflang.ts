@@ -9,6 +9,8 @@
 // - un clúster de más de MAX_HREFLANG_HEAD no está entero en el sitemap del mercado (xhtml:link) o
 //   sigue en el <head>, o uno chico no está en el <head> o aparece repetido en el sitemap.
 // No necesita server: corre en check-all.
+import "./sin-server-only";
+import { paginasHoras } from "../src/motor/horas/publicacion";
 import type { ModoPublicacion, Registro } from "../src/motor/registro";
 import type { Idiomas } from "../src/motor/seo";
 
@@ -66,6 +68,8 @@ async function main() {
   const mapa = await import("../src/motor/mapa");
   const sitio = await import("../src/motor/sitio");
   const { hoyEn } = await import("../src/motor/vigencia");
+  const { publicacionHoras } = await import("../src/lib/horas/indice");
+  const pubHoras = publicacionHoras();
 
   // Prueba negativa: el checker tiene que ver un clúster roto.
   const a = "https://calcularya.com/aa/x";
@@ -97,7 +101,7 @@ async function main() {
     const publicadas = new Set<string>();
     const enSitemap = new Map<string, Idiomas>();
     for (const m of registro.mercados(modo)) {
-      for (const e of mapa.entradasDelMercado(registro, m.codigo, { conAlternos: true }) ?? []) {
+      for (const e of mapa.entradasDelMercado(registro, m.codigo, { conAlternos: true, horas: pubHoras }) ?? []) {
         publicadas.add(e.url);
         if (e.alternos) enSitemap.set(e.url, e.alternos);
       }
@@ -166,10 +170,16 @@ async function main() {
       if (global) fallas.push(...revisarClusteres(paginasRk, publicadas, c.url(global), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
       revisadas += paginasRk.length;
     }
-    // «¿Cuántas horas de trabajo cuesta?»: el índice y cada producto, un clúster por página entre ediciones.
+    // «¿Cuántas horas de trabajo cuesta?»: el índice y cada producto publicado (menos el del índice, que
+    // lleva canonical al índice), un clúster por página entre ediciones. Lo no publicado no va al sitemap.
     const horasSeo = await import("../src/motor/horas/ui/seo");
     const { PRODUCTOS } = await import("../src/motor/horas/productos");
+    const paginasH = paginasHoras(pubHoras);
     for (const producto of [undefined, ...PRODUCTOS.map((x) => x.id)]) {
+      if (!paginasH.includes(producto)) {
+        for (const m of registro.mercados(modo)) if (publicadas.has(horasSeo.urlHoras(m, producto))) fallas.push(`[${modo}] ${horasSeo.urlHoras(m, producto)}: «horas de trabajo» no se publica (o es el producto del índice) y está en el sitemap`);
+        continue;
+      }
       const idiomasHoras = horasSeo.hreflangHoras(registro, modo, producto);
       const horas: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: horasSeo.urlHoras(m, producto), locale: m.locale, concepto: `horas:${producto ?? "indice"}`, idiomas: idiomasHoras }));
       for (const p of horas) {

@@ -23,6 +23,10 @@ Historia y porqués: `docs/decisiones/calendario.md`.
   es el mes medido, no el día de publicación.
 - En una edición en otro idioma, un dato o serie con el nombre sin traducir se excluye (ca-fr hoy).
 - Cada evento necesita una calculadora publicada que use el dato; sin eso se excluye con motivo.
+- Una nota se funde con un tramo solo con candidato único: el dato lo pide la primera calculadora de la
+  nota, es el único de esos que cambia ese día y ninguna otra nota lo tomó. Si no, va aparte (caso Suiza
+  en check_calendario).
+- El año del título es el período de la grilla de 12 meses (`anios` en presentar.ts), no el de las fechas.
 - `calendarioDe` nunca tira: un país roto queda sin calendario. La página existe solo con al menos
   una fecha por delante (`esPublicable`); el sitemap, el hreflang, llms.txt y la tarjeta de la home
   usan la misma regla vía `calendarioPublicado`.

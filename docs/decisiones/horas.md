@@ -63,36 +63,50 @@ venta si hay dos). La resolución del registro exige que esté al día; si no, e
   medianoche de alguna zona). México sale solo el 2027-01-01 hasta cargar la jornada de 46 h.
 - Todo país y celda corren en try/catch; check_horas falla con menos de 10 países o algo vencido.
 
-## Cómo agendar el refresco
+## Publicación (2026-10-24, rama `claude/fase2-fix-datos`)
 
-GitHub Actions está frenado por billing. Hoy: correr a mano o por el Horno
-`npx tsx scripts/horas/actualizar_precios.ts`, revisar `npx tsx scripts/check_horas.ts` y commitear
-`src/lib/horas/precios.json`. Cuando vuelva Actions, este workflow (`.github/workflows/horas-precios.yml`)
-lo hace cada 30 días, muy por debajo de los 120 de vencimiento:
+Una sola regla, `publicacionDe()` en `src/motor/horas/publicacion.ts`, para la página (404), la OG, el
+sitemap, el hreflang, llms.txt y el selector de productos: un producto se publica con 2 países o más; el
+índice, con al menos `MINIMO_PAISES` (10) y algún producto. Antes la página daba 404 cuando vencían los
+precios pero el sitemap y llms.txt la seguían listando. `src/motor/mapa.ts` no puede leer los precios
+(viven en `src/lib`, server-only), así que recibe la publicación por parámetro (`opciones.horas`); sin
+ella no lista ninguna página de horas, nunca una de más.
 
-```yaml
-name: horas-precios
-on:
-  schedule: [{ cron: "17 6 1 * *" }]
-  workflow_dispatch: {}
-permissions: { contents: write }
-jobs:
-  precios:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: npm }
-      - run: npm ci
-      - run: npx tsx scripts/horas/actualizar_precios.ts
-      - run: npx tsx scripts/check_horas.ts
-      - run: |
-          git config user.name "manu-180"
-          git config user.email "157671390+manu-180@users.noreply.github.com"
-          git add src/lib/horas/precios.json
-          git diff --cached --quiet || git commit -m "datos(horas): precios oficiales del $(date -u +%F)" && git push
-```
+**Índice contra producto inicial:** `/<m>/<slug>` y `/<m>/<slug>/<inicial>` mostraban lo mismo. Gana el
+índice (es el que se enlaza y el que busca la gente sin nombrar producto): la página del producto inicial
+lleva canonical al índice, sin hreflang propio, y no va al sitemap; el selector, al volver a ese producto,
+deja la URL del índice. El inicial es `PRODUCTO_INICIAL` si se publica; si no, el primero publicado.
 
-Si el workflow no corre nunca, el vencimiento garantiza que no se muestre un precio viejo: los productos
-se apagan a los 120 días y la página muestra solo lo vigente (check_horas lo vigila).
+OG de horas: `s-maxage=86400` (un día): muestra horas que cambian con cada refresco.
+
+## check_horas y el paso del tiempo
+
+Que venzan los precios no es falla (las páginas se apagan solas): es un aviso ⚠️ desde 30 días antes
+de cada vencimiento. Falla por datos: algo vencido publicado, horas que no cierran, o que con los precios
+al día de su última lectura (`construirInformeHoras(ahora, { preciosAl })`) queden menos de 10 países o un
+producto en menos de 2. También falla si el sitemap lista una página que no se publica u omite una que sí.
+`CALCULAR_HOY=2027-02-21 npx tsx scripts/check_horas.ts`: 0 países, 5 avisos, exit 0, sitemap sin horas.
+
+## Refresco automático (ronda mensual)
+
+`scripts/cron/mensual.ts` corre `scripts/horas/actualizar_precios.ts` (solo si `precios.json` no es del
+mes, o con `--forzar`) y `scripts/rankings/foto_mensual.ts` (idempotente), valida con check_horas y
+check_rankings y, si cambió algo, commitea solo `src/lib/horas/precios.json` y
+`src/motor/rankings/historial/` con autor manu-180 y pushea a main (rebase sobre origin/main, 3 intentos),
+igual que datos-vivos: main no está protegida y el push es el deploy. `--dry` muestra qué haría
+(`CALCULARYA_CRON_MES=2026-11` simula el mes).
+
+- **PC (hoy):** tarea programada de Windows `CalcularYa-Mensual`, día 1 a las 06:17, «ejecutar lo antes
+  posible si se perdió». La registra `scripts/cron/registrar-tarea.ps1` (copia `mensual.ps1` a
+  `%LOCALAPPDATA%\calcularya-cron\`). `mensual.ps1` deja el worktree propio
+  `C:\MisProyectos\Armagedon\calcular-cron-mensual` en origin/main limpio, hace `npm ci` si cambió el
+  lock y corre `mensual.ts`. Logs en `%LOCALAPPDATA%\calcularya-cron\logs\`.
+- **Actions (cuando vuelva el billing):** `.github/workflows/mensual.yml`, día 1 15:17 UTC (6 h después
+  que la PC). Un job sin permisos de escritura corre `mensual.ts --sin-publicar` y sube los datos; otro
+  con `contents: write` y sin npm ci los commitea.
+- **Sin doble commit:** idempotencia por contenido. El segundo corredor ve los precios ya leídos en el
+  mes y la foto hecha, no cambia nada y no commitea; si igual difiere, el rebase choca y se queda con lo
+  que ya está en main.
+
+Si la ronda no corre nunca, el vencimiento de 120 días garantiza que no se muestre un precio viejo:
+la página, el sitemap y llms.txt sacan horas el mismo día.

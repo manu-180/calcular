@@ -26,7 +26,7 @@ export interface CalendarioIcs {
 }
 
 export function escaparTexto(s: string): string {
-  return s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+  return s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r\n|\r|\n/g, "\\n");
 }
 
 const codificador = new TextEncoder();
@@ -76,7 +76,7 @@ export function armarIcs(c: CalendarioIcs): string {
       `DTEND;VALUE=DATE:${fechaIcs(sumarDias(e.fecha, 1))}`,
       `SUMMARY;LANGUAGE=${c.idioma}:${escaparTexto(e.resumen)}`,
       `DESCRIPTION;LANGUAGE=${c.idioma}:${escaparTexto(e.descripcion)}`,
-      ...(e.url ? [`URL:${e.url}`] : []),
+      ...(e.url && /^https:\/\/[^\s]+$/.test(e.url) ? [`URL:${e.url}`] : []),
       ...(e.categoria ? [`CATEGORIES:${escaparTexto(e.categoria)}`] : []),
       "TRANSP:TRANSPARENT",
       "STATUS:CONFIRMED",

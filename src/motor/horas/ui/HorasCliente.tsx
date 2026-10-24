@@ -11,6 +11,8 @@ export interface PropsHoras {
   t: TextosHoras;
   locale: string;
   productoInicial: string;
+  // El producto que muestra el índice: su URL es la del índice, no /<slug>/<producto>.
+  productoIndice: string;
   paisInicial: string;
   // URL absoluta del índice en esta edición (sin producto). Las tarjetas son `${base}/${producto}/${iso}`.
   base: string;
@@ -82,7 +84,7 @@ function Compartir({ t, url, imagen, texto }: { t: TextosHoras; url: string; ima
   );
 }
 
-export function HorasCliente({ datos, t, locale, productoInicial, paisInicial, base, slug }: PropsHoras) {
+export function HorasCliente({ datos, t, locale, productoInicial, productoIndice, paisInicial, base, slug }: PropsHoras) {
   const [producto, setProducto] = useState(productoInicial);
   const [iso, setIso] = useState(paisInicial);
   const [todos, setTodos] = useState(false);
@@ -106,12 +108,13 @@ export function HorasCliente({ datos, t, locale, productoInicial, paisInicial, b
       if (i < 0) return;
       const raiz = ruta.slice(0, i + slug.length + 1);
       const resto = ruta.slice(raiz.length).split("/").filter(Boolean);
-      if (resto[0] === p.id || (!resto.length && p.id === productoInicial)) return;
-      window.history.replaceState(window.history.state, "", `${raiz}/${p.id}`);
+      // El producto del índice vive en el índice (su página propia lleva canonical ahí).
+      if (resto[0] === p.id || (!resto.length && p.id === productoIndice)) return;
+      window.history.replaceState(window.history.state, "", p.id === productoIndice ? raiz : `${raiz}/${p.id}`);
     } catch {
       // Sin History API la página sigue igual.
     }
-  }, [p.id, slug, productoInicial]);
+  }, [p.id, slug, productoIndice]);
 
   const horas = celda ? formatoHoras(locale, celda.horas) : null;
   const visibles = todos || ranking.length <= TOPE + 2 ? ranking : ranking.filter((x, i) => i < TOPE || x.iso === iso);

@@ -69,6 +69,8 @@ export interface VistaRanking {
   bajada: string;
   url: string;
   total: number;
+  // Día de actualización (ISO) y su texto: el de la zona de la edición, o UTC en global.
+  fechaIso: string;
   fecha: string;
   mesAnterior: string | null;
   tituloVariantes: string;
@@ -159,9 +161,16 @@ export interface EntradaVista {
   id: IdRanking;
   origenAR: string;
   fotos?: readonly FotoMensual[];
+  // Hoy en la zona de la edición (UTC en global). La grilla se fecha con la zona más adelantada del
+  // planeta, y mostrar esa fecha decía «actualizado el 25» a quien todavía estaba en el 24.
+  hoy?: string;
 }
 
-export function vistaRanking({ grilla, mercado: m, id, origenAR, fotos }: EntradaVista): VistaRanking | null {
+export function diaActualizacion(generadoEl: string, hoy?: string): string {
+  return generadoEl && hoy && hoy < generadoEl ? hoy : generadoEl;
+}
+
+export function vistaRanking({ grilla, mercado: m, id, origenAR, fotos, hoy }: EntradaVista): VistaRanking | null {
   const t = textosRankings(m.idioma, m.trato, m.locale);
   const tr = t.rankings[id];
   const f = formatos(m.locale);
@@ -170,7 +179,8 @@ export function vistaRanking({ grilla, mercado: m, id, origenAR, fotos }: Entrad
   const porMercado = new Map(grilla.paises.map((p) => [p.iso, p]));
   const mes = grilla.generadoEl.slice(0, 7);
   const foto = mes ? fotoAnterior(mes, fotos) : null;
-  const fecha = grilla.generadoEl ? formatoFecha(grilla.generadoEl, m.locale, true) : "";
+  const fechaIso = diaActualizacion(grilla.generadoEl, hoy);
+  const fecha = fechaIso ? formatoFecha(fechaIso, m.locale, true) : "";
   const url = urlRanking(m, id);
   const variantes: VarianteVista[] = [];
 
@@ -232,6 +242,7 @@ export function vistaRanking({ grilla, mercado: m, id, origenAR, fotos }: Entrad
     bajada: tr.bajada,
     url,
     total: variantes[0].filas.length,
+    fechaIso,
     fecha,
     mesAnterior: foto ? mesLargo(foto.mes, m.locale) : null,
     tituloVariantes: id === "aumento" ? t.tramos.titulo : t.niveles.titulo,

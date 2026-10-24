@@ -1,3 +1,4 @@
+import { publicacionHoras } from "@/lib/horas/indice";
 import { entradasDelMercado } from "@/motor/mapa";
 import { urlMundo } from "@/motor/mundo/ui/seo";
 import { calendarioPublicado, urlCalendario } from "@/motor/calendario/rutas";
@@ -18,6 +19,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
   const { mercado } = await params;
   if (mercado !== "global" || !intlActivo()) return new Response("Not found", { status: 404 });
   const modo = modoPublicacion();
+  // Horas de trabajo solo si su página se publica (la misma regla que el sitemap y el 404).
+  const conHoras = publicacionHoras().inicial !== null;
   const secciones = registro
     .mercados(modo)
     .filter((m) => m.codigo !== "global")
@@ -40,7 +43,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
         `- [${m.nombre}: calculators](${urlIntl(m.codigo)}): every calculator for the country, grouped by topic.`,
         `- [${m.nombre}: salary around the world](${urlMundo(m)}): the day of the year you stop working for the government on a salary in this country, and what that salary would leave in hand in every country at the same purchasing power.`,
         `- [${m.nombre}: country rankings](${urlIndice(m)}): where the same salary goes furthest, Tax Freedom Day and how much of a raise is kept, with this country's rank in each, updated daily.`,
-        `- [${m.nombre}: hours of work](${urlHoras(m)}): how many hours of minimum wage work an iPhone, a MacBook Air or Spotify Premium costs in this country and in every other one, from official store prices.`,
+        ...(conHoras ? [`- [${m.nombre}: hours of work](${urlHoras(m)}): how many hours of minimum wage work an iPhone, a MacBook Air or Spotify Premium costs in this country and in every other one, from official store prices.`] : []),
         ...(calendarioPublicado(registro, m, modo) ? [`- [${m.nombre}: pay and tax calendar](${urlCalendario(m)}): upcoming dates that change pay (minimum wage, tax and contribution changes, payment deadlines), each from an official source, linked to its calculator and downloadable as .ics.`] : []),
         ...lineas,
         `- [${m.nombre}: official sources](${urlIntl(m.codigo, "fuentes")}): every value the calculators use, with its effective dates, a link to the rule and the date it was checked.`,
@@ -57,8 +60,8 @@ If a value can't be confirmed in the official source, the calculator that uses i
 - [Country rankings](${urlIndice({ codigo: "global", idioma: "en" })}): where the same salary goes furthest, Tax Freedom Day by country and how much of a raise is kept, ranked at three reference salaries and updated daily. Includes the methodology and every country's source.
 - [Open data, JSON](${origenPublicoIntl()}${rutaDatos("json")}): the same figures country by country (take-home pay, effective rate and Tax Freedom Day at five gross salaries in international dollars, plus every rank). Licence CC BY 4.0, credit CalcularYa.
 - [Open data, CSV](${origenPublicoIntl()}${rutaDatos("csv")}): the same file as a spreadsheet, one row per country.
-- [How many hours of work does it cost?](${urlHoras({ codigo: "global", idioma: "en" })}): the official price of the same product in hours of minimum wage work, country by country, with the source and reading date of every price and wage.
-- [About us and how we work](${urlIntl("global", "sobre")})
+${conHoras ? `- [How many hours of work does it cost?](${urlHoras({ codigo: "global", idioma: "en" })}): the official price of the same product in hours of minimum wage work, country by country, with the source and reading date of every price and wage.
+` : ""}- [About us and how we work](${urlIntl("global", "sobre")})
 - [Contact](${urlIntl("global", "contacto")})
 
 ${secciones.join("\n\n")}

@@ -12,6 +12,7 @@ import { DIAS_ADELANTE, DIAS_ATRAS, calendarioDe, esPublicable, validarFechaCale
 import { armarIcs, escaparTexto, leerIcs, plegar } from "../src/motor/calendario/ics";
 import { SLUG_CALENDARIO } from "../src/motor/calendario/rutas";
 import { icsDe, vistaCalendario } from "../src/motor/calendario/ui/presentar";
+import { crearRegistro } from "../src/motor/registro";
 import { contextoSitio } from "../src/motor/ui/contexto";
 import { registro } from "../src/paises";
 import { esFechaISO, hoyEn, sumarDias } from "../src/motor/vigencia";
@@ -22,6 +23,9 @@ const fallas: string[] = [];
 
 // Pruebas del serializador: escape, plegado sin partir UTF-8 y lector estricto.
 if (escaparTexto("a,b;c\\d\ne") !== "a\\,b\\;c\\\\d\\ne") fallas.push("ics: escaparTexto no escapa , ; \\ y salto de línea");
+if (escaparTexto("a\rb\r\nc") !== "a\\nb\\nc") fallas.push("ics: escaparTexto deja un retorno de carro suelto");
+const conUrl = (url: string) => armarIcs({ nombre: "x", descripcion: "x", idioma: "es", eventos: [{ uid: "a@b", fecha: "2027-01-01", resumen: "x", descripcion: "x", url, sello: "2026-10-01" }] });
+if (conUrl("javascript:alert(1)").includes("URL:") || conUrl("http://x.test/").includes("URL:") || !conUrl("https://x.test/").includes("URL:https://x.test/")) fallas.push("ics: URL: tiene que ser https y nada más");
 const larga = plegar(`SUMMARY:${"ñ".repeat(80)}`);
 if (larga.split("\r\n").some((l) => new TextEncoder().encode(l).length > 75)) fallas.push("ics: plegar deja líneas de más de 75 octetos");
 if (larga.replace(/\r\n /g, "") !== `SUMMARY:${"ñ".repeat(80)}`) fallas.push("ics: plegar pierde o parte caracteres");
@@ -30,6 +34,31 @@ if (!roto.errores.length) fallas.push("ics: el lector no ve un archivo sin CRLF 
 const prueba = leerIcs(armarIcs({ nombre: "Prueba, uno", descripcion: "x", idioma: "es", eventos: [{ uid: "a@b", fecha: "2027-01-01", resumen: "Sube; baja, igual", descripcion: "línea 1\nlínea 2", sello: "2026-10-01" }] }));
 if (prueba.errores.length || prueba.eventos[0]?.DTEND !== "20270102") fallas.push(`ics: el archivo de prueba no pasa: ${prueba.errores.join("; ")}`);
 if (validarFechaCalendario({ id: "zz.x" }, { id: "x", tipo: "pago", mes: 2, dia: 30, titulo: "t" }).length === 0) fallas.push("calendario: acepta el 30 de febrero");
+
+// Una nota se funde con el tramo que anuncia solo si es el único dato de su calculadora que cambia ese día
+// y ninguna otra nota se lo llevó. Escenario real (Suiza, 2027-01-01): cambian el tarifario federal, la
+// rebaja por hijo, el tope del pilar 3a y la renta AHV. Antes la nota del tarifario titulaba al tope del 3a.
+{
+  const ch = registro.pais("ch");
+  if (!ch) fallas.push("calendario (caso Suiza): ch no está en el registro");
+  else {
+    const fuente = { organismo: "Prueba", titulo: "Prueba", url: "https://www.fedlex.admin.ch/", tipo: "primaria" as const, verificadoEl: "2026-10-14" as const };
+    const nota = (id: string, titulo: string, calculadoras: string[]) => ({ id, fecha: "2026-10-14" as const, titulo, texto: titulo, vigenteDesde: "2027-01-01" as const, calculadoras, fuente });
+    const prueba = crearRegistro([
+      { ...ch, novedades: [nota("prueba.tarif", "PRUEBA Bundessteuer 2027", ["ch.bundessteuer-rechner", "ch.saeule-3a-rechner"]), nota("prueba.ahv-1", "PRUEBA AHV uno", ["ch.ahv-rentenrechner"]), nota("prueba.ahv-2", "PRUEBA AHV dos", ["ch.ahv-rentenrechner"])] } as typeof ch,
+    ]);
+    const c = calendarioDe(prueba, "ch", "2026-10-24", "produccion");
+    const dia = c.ok ? c.eventos.filter((e) => e.fecha === "2027-01-01") : [];
+    const de = (id: string) => dia.find((e) => e.id === id);
+    if (!c.ok || !de("dato-ch.saeule-3a-mit-pk-2027-01-01") || !de("dato-ch.ahv-minimalrente-2027-01-01")) fallas.push(`calendario (caso Suiza): faltan los tramos del 2027-01-01 que usa la prueba${c.ok ? "" : ` (${c.motivo})`}`);
+    else {
+      if (dia.some((e) => e.origen === "dato" && e.titulo.startsWith("PRUEBA Bundessteuer"))) fallas.push("calendario (caso Suiza): la nota del tarifario quedó pegada a un tramo con varios candidatos");
+      if (!de("nota-prueba.tarif")) fallas.push("calendario (caso Suiza): la nota del tarifario tendría que ser un evento aparte");
+      if (de("dato-ch.ahv-minimalrente-2027-01-01")?.titulo !== "PRUEBA AHV uno") fallas.push("calendario (caso Suiza): la nota con un solo candidato no se fundió con su tramo");
+      if (!de("nota-prueba.ahv-2")) fallas.push("calendario (caso Suiza): la segunda nota sobre un tramo ya tomado tendría que ir aparte");
+    }
+  }
+}
 
 const slugs = new Set(Object.values(SLUG_CALENDARIO));
 for (const p of registro.paises) {

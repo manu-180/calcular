@@ -22,16 +22,19 @@ import { indicePublicado } from "./datos";
 
 type Props = { params: Promise<{ mercado: string; p?: string[] }> };
 
-type Resuelto = { ctx: ContextoSitio; indice: IndiceHoras; ruta: RutaResuelta };
+type Resuelto = { ctx: ContextoSitio; indice: IndiceHoras; ruta: RutaResuelta; inicial: string; productos: readonly string[] };
 
 async function resolver(idioma: Idioma, mercado: string, p: string[] | undefined): Promise<Resuelto | null> {
   const ctx = contextoSitio(registro, mercado as CodigoMercado);
   if (!ctx || ctx.mercado.idioma !== idioma) return null;
-  const ruta = resolverRuta(p);
-  if (!ruta) return null;
-  const indice = await indicePublicado();
+  const leida = resolverRuta(p);
+  if (!leida) return null;
+  const { indice, publicacion } = await indicePublicado();
+  if (!publicacion.inicial) return null;
+  const ruta = leida.esIndice ? { ...leida, producto: publicacion.inicial } : leida;
+  if (!publicacion.productos.includes(ruta.producto)) return null;
   if (ruta.pais && !indice.filas.some((f) => f.iso === ruta.pais)) return null;
-  return { ctx, indice, ruta };
+  return { ctx, indice, ruta, inicial: publicacion.inicial, productos: publicacion.productos };
 }
 
 export function crearPaginaHoras(idioma: Idioma) {
@@ -69,8 +72,11 @@ export function crearPaginaHoras(idioma: Idioma) {
           ? rellenarHoras(t.seo.descripcionProducto, { ...vars, en, horas: formatoHoras(m.locale, propia.horas).texto })
           : rellenarHoras(t.seo.descripcionProductoGlobal, vars);
     }
-    const ruta = r.ruta.esIndice ? slug : `${slug}/${prod.id}`;
-    const idiomas = hreflangHoras(registro, r.ctx.modo, r.ruta.esIndice ? undefined : prod.id);
+    // La página del producto que muestra el índice es la misma que el índice: canonical al índice y sin
+    // hreflang propio, así no compiten en el buscador.
+    const comoIndice = r.ruta.esIndice || prod.id === r.inicial;
+    const ruta = comoIndice ? slug : `${slug}/${prod.id}`;
+    const idiomas = hreflangHoras(registro, r.ctx.modo, comoIndice ? undefined : prod.id);
     const base = urlHoras(m);
     const meta = metadataDe({
       mercado: m,
@@ -92,8 +98,8 @@ export function crearPaginaHoras(idioma: Idioma) {
   async function Pagina({ params }: Props) {
     const { mercado, p } = await params;
     const r = await resolver(idioma, mercado, p);
-    if (!r || !r.indice.filas.length) notFound();
-    return <PaginaHoras ctx={r.ctx} indice={r.indice} producto={r.ruta.producto} esIndice={r.ruta.esIndice} pais={r.ruta.pais} />;
+    if (!r) notFound();
+    return <PaginaHoras ctx={r.ctx} indice={r.indice} producto={r.ruta.producto} esIndice={r.ruta.esIndice} pais={r.ruta.pais} inicial={r.inicial} productos={r.productos} />;
   }
 
   return { generateStaticParams, generateMetadata, Pagina };
