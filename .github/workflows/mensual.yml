@@ -1,0 +1,110 @@
+name: mensual
+
+# Ronda mensual de calcularya: precios de «¿Cuántas horas de trabajo cuesta?» y foto de los rankings.
+# Hoy la corre la tarea programada CalcularYa-Mensual de la PC (scripts/cron/mensual.ps1) porque Actions
+# está frenado por billing; este workflow es el mismo trabajo para cuando vuelva. Si corren los dos no hay
+# doble commit: mensual.ts no relee precios ya leídos en el mes ni rehace la foto, y publicar no commitea
+# si el contenido es igual al de main (idempotencia por contenido). Corre 6 horas después que la PC.
+#
+# Permisos mínimos por job, como datos-paises: actualizar hace npm ci y lee HTML de terceros, así que no
+# escribe nada; publicar escribe main pero no corre npm ci ni código del repo.
+
+on:
+  schedule:
+    - cron: "17 15 1 * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: mensual
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Precios, foto y checks
+        env:
+          CALCULARYA_CRON_LOG: ${{ runner.temp }}/mensual.log
+        run: npx tsx scripts/cron/mensual.ts --sin-publicar
+      - name: Juntar los datos
+        run: |
+          mkdir -p "$RUNNER_TEMP/datos/historial"
+          cp src/lib/horas/precios.json "$RUNNER_TEMP/datos/"
+          cp src/motor/rankings/historial/* "$RUNNER_TEMP/datos/historial/"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: datos-mensuales
+          path: ${{ runner.temp }}/datos
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: log-mensual
+          path: ${{ runner.temp }}/mensual.log
+          retention-days: 30
+
+  publicar:
+    needs: actualizar
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: datos-mensuales
+          path: ${{ runner.temp }}/datos
+      # Solo JSON de datos y el índice que los importa; cualquier otra cosa en el artefacto se ignora.
+      - name: Publicar (commit a main = deploy)
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/datos"
+          node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))' "$D/precios.json"
+          cp "$D/precios.json" src/lib/horas/precios.json
+          for f in "$D"/historial/*; do
+            n=$(basename "$f")
+            case "$n" in
+              [0-9][0-9][0-9][0-9]-[0-9][0-9].json) node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))' "$f"; cp "$f" "src/motor/rankings/historial/$n" ;;
+              indice.ts) cp "$f" src/motor/rankings/historial/indice.ts ;;
+            esac
+          done
+          if [ -z "$(git status --porcelain -- src/lib/horas/precios.json src/motor/rankings/historial)" ]; then
+            echo "Nada que publicar: main ya tiene estos datos."
+            exit 0
+          fi
+          git config user.name "manu-180"
+          git config user.email "157671390+manu-180@users.noreply.github.com"
+          git add -- src/lib/horas/precios.json src/motor/rankings/historial
+          git commit -q -m "datos(mensual): precios de horas y foto de rankings $(date -u +%Y-%m)" -m "Ronda mensual automática (.github/workflows/mensual.yml), validada con check_horas y check_rankings."
+          for intento in 1 2 3; do
+            git fetch -q origin main
+            if ! git rebase -q origin/main; then
+              git rebase --abort
+              echo "::warning::main cambió los mismos datos (la PC ya publicó el mes): no se pushea"
+              exit 0
+            fi
+            if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ]; then
+              echo "main ya tenía exactamente estos datos."
+              exit 0
+            fi
+            if git push -q origin HEAD:main; then
+              echo "Publicado: $(git log --oneline -1)"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::No pude pushear después de 3 intentos"
+          exit 1

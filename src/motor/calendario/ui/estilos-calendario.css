@@ -1,0 +1,1019 @@
+/* Calendario laboral y fiscal. Mismo papel, tinta y acento que el resto de calcularya; el héroe es la
+   pieza oscura de la página, hermana de la tarjeta de «Tu sueldo en el mundo». Sombras siempre negras,
+   el hover lo da el movimiento, y todo lo que se mueve tiene su salida con prefers-reduced-motion. */
+
+.cy-cal {
+  --cy-cal-noche: #0b1110;
+  --cy-cal-crema: #f4f0e6;
+  --cy-cal-crema-suave: rgb(244 240 230 / 0.66);
+  --cy-cal-t-pago: #059669;
+  --cy-cal-t-salario-minimo: #0f766e;
+  --cy-cal-t-impuestos: #b45309;
+  --cy-cal-t-aportes: #4338ca;
+  --cy-cal-t-laboral: #be185d;
+  --cy-cal-t-indices: #52525b;
+  display: grid;
+  gap: 0;
+}
+
+.cy-cal-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.cy-cal-cabeza {
+  display: grid;
+  justify-items: start;
+  gap: 1.125rem;
+  padding-block: 1.75rem 2rem;
+}
+
+.cy-cal-ceja {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem 0.375rem 0.75rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.72);
+  box-shadow: inset 0 0 0 1px var(--cy-linea);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-h1 {
+  display: grid;
+  max-width: 18ch;
+  font-size: clamp(2.25rem, 1.2rem + 4.6vw, 4.75rem);
+  font-weight: 680;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: var(--cy-tinta);
+  text-wrap: balance;
+}
+
+.cy-cal-h1 em {
+  font-style: normal;
+  font-weight: 520;
+  color: var(--cy-acento-tinta);
+}
+
+.cy-cal-bajada {
+  max-width: 58ch;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--cy-texto-suave);
+}
+
+/* ---------- Héroe: la próxima fecha ---------- */
+
+.cy-cal-heroe {
+  padding: 0.375rem;
+  border-radius: 2rem;
+  background: rgb(24 24 27 / 0.04);
+  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.06);
+}
+
+.cy-cal-heroe-nucleo {
+  display: grid;
+  gap: 1.75rem;
+  padding: 1.5rem 1.25rem 1.375rem;
+  border-radius: calc(2rem - 0.375rem);
+  color: var(--cy-cal-crema);
+  background:
+    radial-gradient(32rem 18rem at 100% 0%, rgb(52 211 153 / 0.22), transparent 62%),
+    radial-gradient(rgb(244 240 230 / 0.06) 1px, transparent 1.2px) 0 0 / 14px 14px,
+    var(--cy-cal-noche);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 32px 70px -36px rgb(0 0 0 / 0.55);
+}
+
+.cy-cal-heroe-ceja {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cy-cal-crema-suave);
+}
+
+.cy-cal-gran {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  margin-top: 0.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-cal-gran-numero {
+  font-size: clamp(5rem, 3rem + 10vw, 9.5rem);
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: -0.06em;
+}
+
+.cy-cal-gran-unidad,
+.cy-cal-gran-palabra {
+  font-size: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #6ee7b7;
+}
+
+.cy-cal-gran-palabra {
+  font-size: clamp(3.25rem, 2rem + 6vw, 6rem);
+  line-height: 0.95;
+  color: var(--cy-cal-crema);
+}
+
+.cy-cal-heroe-fecha {
+  display: block;
+  margin-top: 0.875rem;
+  font-size: 1rem;
+  color: var(--cy-cal-crema-suave);
+}
+
+.cy-cal-heroe-fecha::first-letter {
+  text-transform: uppercase;
+}
+
+.cy-cal-heroe-detalle {
+  display: grid;
+  justify-items: start;
+  gap: 0.875rem;
+  align-content: start;
+}
+
+.cy-cal-heroe-titulo {
+  color: var(--cy-cal-crema);
+  font-size: clamp(1.375rem, 1.1rem + 1.2vw, 2rem);
+  font-weight: 640;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.cy-cal-heroe-cambio {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: #a7f3d0;
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-cal-heroe-fuente a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  font-size: 0.8125rem;
+  color: var(--cy-cal-crema-suave);
+  text-decoration: underline;
+  text-decoration-color: rgb(244 240 230 / 0.28);
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .cy-cal-heroe-nucleo {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 2.5rem;
+    padding: 2.5rem 2.5rem 2.25rem;
+  }
+}
+
+/* ---------- Etiquetas de tema ---------- */
+
+.cy-cal-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-punto {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: none;
+  border-radius: 999px;
+  background: var(--cy-cal-c, var(--cy-acento));
+}
+
+[data-tipo="pago"] { --cy-cal-c: var(--cy-cal-t-pago); }
+[data-tipo="salario-minimo"] { --cy-cal-c: var(--cy-cal-t-salario-minimo); }
+[data-tipo="impuestos"] { --cy-cal-c: var(--cy-cal-t-impuestos); }
+[data-tipo="aportes"] { --cy-cal-c: var(--cy-cal-t-aportes); }
+[data-tipo="laboral"] { --cy-cal-c: var(--cy-cal-t-laboral); }
+[data-tipo="indices"] { --cy-cal-c: var(--cy-cal-t-indices); }
+
+.cy-cal-etiqueta-oscura {
+  padding: 0.3125rem 0.75rem 0.3125rem 0.625rem;
+  border-radius: 999px;
+  background: rgb(244 240 230 / 0.08);
+  box-shadow: inset 0 0 0 1px rgb(244 240 230 / 0.12);
+  color: var(--cy-cal-crema);
+}
+
+.cy-cal-etiqueta-oscura .cy-cal-punto {
+  background: #34d399;
+}
+
+/* ---------- Botones ---------- */
+
+.cy-cal-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.cy-cal-boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.375rem 0.375rem 1.125rem;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  list-style: none;
+  transition:
+    transform 160ms var(--ease-fluid),
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.cy-cal-boton::-webkit-details-marker {
+  display: none;
+}
+
+.cy-cal-boton:active {
+  transform: scale(0.97);
+}
+
+.cy-cal-boton:focus-visible {
+  outline: none;
+  box-shadow: var(--cy-anillo);
+}
+
+.cy-cal-boton .cy-boton-icono {
+  transition: transform 220ms var(--ease-fluid);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-cal-boton:hover .cy-boton-icono {
+    transform: translate(2px, -1px) scale(1.05);
+  }
+
+  .cy-cal-boton:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.cy-cal-boton-tinta {
+  background: var(--cy-tinta);
+  color: #fafaf9;
+  box-shadow: var(--cy-sombra-alzada);
+}
+
+.cy-cal-boton-crema {
+  background: var(--cy-cal-crema);
+  color: var(--cy-cal-noche);
+}
+
+.cy-cal-boton-crema .cy-boton-icono {
+  background: rgb(11 17 16 / 0.08);
+}
+
+.cy-cal-boton-claro {
+  padding-inline: 1rem;
+  background: rgb(255 255 255 / 0.8);
+  color: var(--cy-tinta);
+  box-shadow:
+    inset 0 0 0 1px var(--cy-linea-fuerte),
+    var(--cy-sombra-apoyo);
+}
+
+.cy-cal-heroe .cy-cal-boton-claro {
+  background: rgb(244 240 230 / 0.08);
+  color: var(--cy-cal-crema);
+  box-shadow: inset 0 0 0 1px rgb(244 240 230 / 0.2);
+}
+
+.cy-cal-boton-texto {
+  display: inline-flex;
+}
+
+/* «Agregar a mi calendario»: un <details> para que funcione sin JavaScript. */
+
+.cy-cal-agregar {
+  position: relative;
+}
+
+.cy-cal-agregar > summary {
+  padding-inline: 0.875rem 1rem;
+}
+
+.cy-cal-agregar-menu {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  display: grid;
+  min-width: min(18rem, calc(100vw - 2.5rem));
+  padding: 0.375rem;
+  border-radius: 1.125rem;
+  background: #fff;
+  box-shadow: var(--cy-sombra-flotante);
+  transform-origin: top left;
+  animation: cy-cal-menu 200ms var(--ease-fluid);
+}
+
+.cy-cal-agregar-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 550;
+  color: var(--cy-tinta);
+  text-decoration: none;
+  transition: background-color 160ms ease;
+}
+
+.cy-cal-agregar-menu a:hover,
+.cy-cal-agregar-menu a:focus-visible {
+  background: var(--cy-papel-hondo);
+  outline: none;
+}
+
+@keyframes cy-cal-menu {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.96);
+  }
+}
+
+/* ---------- Secciones ---------- */
+
+.cy-cal-seccion {
+  display: grid;
+  gap: 1.5rem;
+  padding-top: 3.5rem;
+}
+
+.cy-cal-h2 {
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+  font-weight: 660;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--cy-tinta);
+}
+
+/* Filtro por tema */
+
+.cy-cal-filtrable {
+  display: grid;
+}
+
+.cy-cal-filtro {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+  margin-inline: -1rem;
+  padding: 0.25rem 1rem 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.cy-cal-filtro::-webkit-scrollbar {
+  display: none;
+}
+
+.cy-cal-filtro button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.8);
+  box-shadow: inset 0 0 0 1px var(--cy-linea);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 560;
+  color: var(--cy-texto);
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    transform 160ms var(--ease-fluid);
+  touch-action: manipulation;
+}
+
+.cy-cal-filtro button:active {
+  transform: scale(0.97);
+}
+
+.cy-cal-filtro button:focus-visible {
+  outline: none;
+  box-shadow: var(--cy-anillo);
+}
+
+.cy-cal-filtro button[aria-pressed="true"] {
+  background: var(--cy-tinta);
+  color: #fafaf9;
+  box-shadow: none;
+}
+
+.cy-cal-filtro-n {
+  font-variant-numeric: tabular-nums;
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-filtro button[aria-pressed="true"] .cy-cal-filtro-n {
+  color: rgb(250 250 249 / 0.6);
+}
+
+.cy-cal-vacio {
+  display: none;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--cy-papel-hondo);
+  color: var(--cy-texto-suave);
+}
+
+/* ---------- El año mes por mes ---------- */
+
+.cy-cal-meses {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+@media (min-width: 768px) {
+  .cy-cal-meses {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .cy-cal-meses {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.cy-cal-mes > a,
+.cy-cal-mes > div {
+  display: grid;
+  gap: 0.625rem;
+  height: 100%;
+  min-height: 2.75rem;
+  padding: 0.875rem 0.75rem 0.75rem;
+  border-radius: 1.25rem;
+  background: rgb(255 255 255 / 0.86);
+  box-shadow:
+    inset 0 0 0 1px var(--cy-linea),
+    var(--cy-sombra-apoyo);
+  color: var(--cy-tinta);
+  text-decoration: none;
+  transition:
+    transform 220ms var(--ease-fluid),
+    box-shadow 220ms ease,
+    opacity 200ms ease;
+}
+
+.cy-cal-mes > div {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--cy-linea);
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-mes > a:focus-visible {
+  outline: none;
+  box-shadow: var(--cy-anillo);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-cal-mes > a:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 0 0 1px var(--cy-linea-fuerte),
+      var(--cy-sombra-alzada);
+  }
+}
+
+.cy-cal-mes-cabeza {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.cy-cal-mes-nombre {
+  font-size: 0.9375rem;
+  font-weight: 640;
+  letter-spacing: -0.01em;
+}
+
+.cy-cal-mes-nombre::first-letter {
+  text-transform: uppercase;
+}
+
+.cy-cal-mes-anio {
+  font-size: 0.75rem;
+  color: var(--cy-texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-cal-mini {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
+  font-size: 0.625rem;
+  line-height: 1;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-cal-mini b {
+  padding-bottom: 0.25rem;
+  font-weight: 600;
+  color: var(--cy-zinc-400);
+}
+
+.cy-cal-mini i {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  font-style: normal;
+  color: var(--cy-zinc-500);
+}
+
+.cy-cal-mini i[data-tipo] {
+  background: var(--cy-cal-c);
+  color: #fff;
+  font-weight: 700;
+}
+
+.cy-cal-mes-resumen {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--cy-texto-suave);
+}
+
+/* Un mes sin fechas no gasta espacio en dibujar sus días: queda el nombre y el «sin cambios». */
+.cy-cal-meses {
+  align-items: start;
+}
+
+.cy-cal-mes[data-vacio] .cy-cal-mini {
+  display: none;
+}
+
+.cy-cal-mes[data-vacio] > div {
+  gap: 0.25rem;
+  padding-block: 0.75rem;
+}
+
+/* ---------- Lista de fechas ---------- */
+
+.cy-cal-grupo {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cy-cal-grupo + .cy-cal-grupo {
+  margin-top: 1rem;
+}
+
+.cy-cal-grupo-mes {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-lista {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cy-cal-evento {
+  display: grid;
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.125rem 1rem 1.125rem 0.875rem;
+  border-radius: 1.5rem;
+  background: rgb(255 255 255 / 0.9);
+  box-shadow:
+    inset 0 0 0 1px var(--cy-linea),
+    var(--cy-sombra-apoyo);
+  scroll-margin-top: 6rem;
+}
+
+.cy-cal-evento:target {
+  box-shadow:
+    inset 0 0 0 2px var(--cy-acento),
+    var(--cy-sombra-alzada);
+}
+
+@media (min-width: 768px) {
+  .cy-cal-evento {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 1.25rem;
+  }
+}
+
+.cy-cal-fecha {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  padding-top: 0.125rem;
+  text-align: center;
+}
+
+.cy-cal-fecha-dia {
+  font-size: 2.25rem;
+  font-weight: 680;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--cy-tinta);
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-cal-fecha-mes {
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 620;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cy-cal-c);
+}
+
+.cy-cal-fecha-semana {
+  margin-top: 0.25rem;
+  font-size: 0.6875rem;
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-evento .cy-cal-fecha {
+  --cy-cal-c: inherit;
+}
+
+.cy-cal-cuerpo {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.cy-cal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.cy-cal-cuenta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cy-texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-cal-titulo {
+  font-size: 1.125rem;
+  font-weight: 640;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--cy-tinta);
+  overflow-wrap: anywhere;
+}
+
+.cy-cal-cambio {
+  font-size: 1rem;
+  font-weight: 560;
+  color: var(--cy-acento-tinta);
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-cal-texto {
+  max-width: 62ch;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cy-texto);
+}
+
+.cy-cal-fuente a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.25rem;
+  font-size: 0.8125rem;
+  color: var(--cy-texto-suave);
+  text-decoration: underline;
+  text-decoration-color: var(--cy-linea-fuerte);
+  text-underline-offset: 3px;
+}
+
+.cy-cal-cuerpo .cy-cal-acciones {
+  margin-top: 0.25rem;
+}
+
+.cy-cal-otras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-otras a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--cy-tinta);
+  text-underline-offset: 3px;
+}
+
+.cy-cal-lista-pasada .cy-cal-evento {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--cy-linea);
+}
+
+.cy-cal-lista-pasada .cy-cal-fecha-dia,
+.cy-cal-lista-pasada .cy-cal-titulo {
+  color: var(--cy-texto);
+}
+
+/* Filtro activo: se esconden las fechas de otros temas, sus meses vacíos se apagan y, si una sección
+   queda sin nada, aparece el aviso. Seis temas, seis reglas: sin JavaScript que recorra la lista. */
+
+.cy-cal-filtrable[data-filtro] .cy-cal-mes:not([data-tipos]) > div,
+.cy-cal-filtrable[data-filtro="pago"] .cy-cal-mes:not([data-tipos~="pago"]),
+.cy-cal-filtrable[data-filtro="salario-minimo"] .cy-cal-mes:not([data-tipos~="salario-minimo"]),
+.cy-cal-filtrable[data-filtro="impuestos"] .cy-cal-mes:not([data-tipos~="impuestos"]),
+.cy-cal-filtrable[data-filtro="aportes"] .cy-cal-mes:not([data-tipos~="aportes"]),
+.cy-cal-filtrable[data-filtro="laboral"] .cy-cal-mes:not([data-tipos~="laboral"]),
+.cy-cal-filtrable[data-filtro="indices"] .cy-cal-mes:not([data-tipos~="indices"]) {
+  opacity: 0.4;
+}
+
+.cy-cal-filtrable[data-filtro="pago"] .cy-cal-evento:not([data-tipo="pago"]),
+.cy-cal-filtrable[data-filtro="salario-minimo"] .cy-cal-evento:not([data-tipo="salario-minimo"]),
+.cy-cal-filtrable[data-filtro="impuestos"] .cy-cal-evento:not([data-tipo="impuestos"]),
+.cy-cal-filtrable[data-filtro="aportes"] .cy-cal-evento:not([data-tipo="aportes"]),
+.cy-cal-filtrable[data-filtro="laboral"] .cy-cal-evento:not([data-tipo="laboral"]),
+.cy-cal-filtrable[data-filtro="indices"] .cy-cal-evento:not([data-tipo="indices"]),
+.cy-cal-filtrable[data-filtro="pago"] .cy-cal-grupo:not(:has([data-tipo="pago"])),
+.cy-cal-filtrable[data-filtro="salario-minimo"] .cy-cal-grupo:not(:has([data-tipo="salario-minimo"])),
+.cy-cal-filtrable[data-filtro="impuestos"] .cy-cal-grupo:not(:has([data-tipo="impuestos"])),
+.cy-cal-filtrable[data-filtro="aportes"] .cy-cal-grupo:not(:has([data-tipo="aportes"])),
+.cy-cal-filtrable[data-filtro="laboral"] .cy-cal-grupo:not(:has([data-tipo="laboral"])),
+.cy-cal-filtrable[data-filtro="indices"] .cy-cal-grupo:not(:has([data-tipo="indices"])) {
+  display: none;
+}
+
+.cy-cal-filtrable[data-filtro="pago"] .cy-cal-seccion:not(:has(.cy-cal-evento[data-tipo="pago"])) .cy-cal-vacio,
+.cy-cal-filtrable[data-filtro="salario-minimo"] .cy-cal-seccion:not(:has(.cy-cal-evento[data-tipo="salario-minimo"])) .cy-cal-vacio,
+.cy-cal-filtrable[data-filtro="impuestos"] .cy-cal-seccion:not(:has(.cy-cal-evento[data-tipo="impuestos"])) .cy-cal-vacio,
+.cy-cal-filtrable[data-filtro="aportes"] .cy-cal-seccion:not(:has(.cy-cal-evento[data-tipo="aportes"])) .cy-cal-vacio,
+.cy-cal-filtrable[data-filtro="laboral"] .cy-cal-seccion:not(:has(.cy-cal-evento[data-tipo="laboral"])) .cy-cal-vacio,
+.cy-cal-filtrable[data-filtro="indices"] .cy-cal-seccion:not(:has(.cy-cal-evento[data-tipo="indices"])) .cy-cal-vacio {
+  display: block;
+}
+
+/* ---------- Suscripción y fuentes ---------- */
+
+.cy-cal-suscribir {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+  padding: 1.75rem 1.25rem;
+  border-radius: 2rem;
+  background:
+    radial-gradient(26rem 14rem at 0% 100%, rgb(16 185 129 / 0.1), transparent 70%),
+    var(--cy-papel-claro);
+  box-shadow:
+    inset 0 0 0 1px var(--cy-linea),
+    var(--cy-sombra-alzada);
+}
+
+.cy-cal-suscribir-texto {
+  display: grid;
+  gap: 0.625rem;
+  max-width: 52ch;
+}
+
+.cy-cal-suscribir-texto p {
+  color: var(--cy-texto-suave);
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .cy-cal-suscribir {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    padding: 2.25rem 2.5rem;
+  }
+}
+
+.cy-cal-fuentes {
+  display: grid;
+  gap: 1rem;
+  padding-block: 3.5rem 1rem;
+}
+
+.cy-cal-fuentes > p {
+  max-width: 62ch;
+  color: var(--cy-texto-suave);
+  line-height: 1.6;
+}
+
+.cy-cal-fuentes ul {
+  display: grid;
+  border-top: 1px solid var(--cy-linea);
+}
+
+.cy-cal-fuentes li {
+  display: grid;
+  gap: 0.125rem 1rem;
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--cy-linea);
+}
+
+@media (min-width: 768px) {
+  .cy-cal-fuentes li {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+}
+
+.cy-cal-fuentes a {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.625rem;
+  min-height: 2.75rem;
+  color: var(--cy-tinta);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cy-cal-fuentes-titulo {
+  font-weight: 400;
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-fuentes-fecha {
+  font-size: 0.8125rem;
+  color: var(--cy-texto-suave);
+}
+
+/* ---------- Tarjeta de la home del país ---------- */
+
+.cy-cal-destacado {
+  display: grid;
+  gap: 1.25rem;
+  margin-block: 0 2.5rem;
+  padding: 1.375rem;
+  border-radius: 1.75rem;
+  background: var(--cy-papel-claro);
+  box-shadow:
+    inset 0 0 0 1px var(--cy-linea),
+    var(--cy-sombra-alzada);
+  color: var(--cy-tinta);
+  text-decoration: none;
+  transition: transform 260ms var(--ease-fluid);
+}
+
+.cy-cal-destacado:focus-visible {
+  outline: none;
+  box-shadow: var(--cy-anillo);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-cal-destacado:hover {
+    transform: translateY(-2px);
+  }
+
+  .cy-cal-destacado:hover .cy-boton-icono {
+    transform: translate(2px, -1px) scale(1.05);
+  }
+}
+
+@media (min-width: 768px) {
+  .cy-cal-destacado {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.75rem;
+    padding: 1.5rem 1.75rem;
+  }
+}
+
+.cy-cal-destacado-fecha {
+  display: grid;
+  justify-items: center;
+  width: 4.75rem;
+  padding: 0.625rem 0 0.75rem;
+  border-radius: 1.125rem;
+  background: var(--cy-cal-noche, #0b1110);
+  color: #f4f0e6;
+}
+
+.cy-cal-destacado-fecha b {
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-cal-destacado-fecha span {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6ee7b7;
+}
+
+.cy-cal-destacado-texto {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.cy-cal-destacado-ceja {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-destacado-titulo {
+  font-size: 1.25rem;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.cy-cal-destacado-proxima {
+  font-size: 0.9375rem;
+  color: var(--cy-texto-suave);
+}
+
+.cy-cal-destacado-ir {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  justify-self: start;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.375rem 0.375rem 1.125rem;
+  border-radius: 999px;
+  background: var(--cy-tinta);
+  color: #fafaf9;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.cy-cal-destacado-ir .cy-boton-icono {
+  transition: transform 220ms var(--ease-fluid);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-cal *,
+  .cy-cal-destacado,
+  .cy-cal-destacado * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
