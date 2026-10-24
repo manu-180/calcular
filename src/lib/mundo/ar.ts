@@ -8,8 +8,9 @@ import { estimarGananciasAnual } from "@/lib/ganancias";
 import { hoyAR } from "@/lib/hoy";
 import { anioMinimoPpa, type CandidatoMundo, type Corrida, type ExclusionMundo, type TablaPpa } from "@/motor/mundo/grilla";
 import { serieDe, type Registro } from "@/motor/registro";
+import { PAGAS_AR } from "./pagas-ar";
 
-export const PAGAS_AR = 13;
+export { PAGAS_AR };
 
 const MESES: Record<string, string> = {
   enero: "01",

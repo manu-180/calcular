@@ -17,21 +17,25 @@ import { SelloVerificado } from "@/components/SelloVerificado";
 import { calcularComercio } from "@/lib/convenios";
 import { periodoDeMes, vigenteEn } from "@/lib/hoy";
 
-export const metadata: Metadata = {
-  title: "Sueldo de Comercio 2026: calculadora y escala FAECYS",
-  description:
-    "Cuánto cobra un empleado de comercio en 2026 por categoría, con antigüedad, presentismo y jornada parcial. Escala oficial de FAECYS mes a mes.",
-  alternates: { canonical: "/convenios/comercio" },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Empleados de Comercio 2026")}&s=${encodeURIComponent("Calculadora y escala oficial CCT 130/75")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-};
+// Title con la cifra de 8 horas del mes vigente: en Search Console la página sale para «cuánto
+// cobra un empleado de comercio por 8 / 4 horas» y casi nadie la elegía (bitácora 2026-10-24).
+export function generateMetadata(): Metadata {
+  const { MES_TXT, AGOSTO_VENDEDOR_B, $ } = datosDelMes();
+  return {
+    title: `Sueldo de Comercio ${MES_TXT}: ${$(AGOSTO_VENDEDOR_B.bruto)} por 8 horas`,
+    description: `Cuánto cobra un empleado de comercio por 8 horas en ${MES_TXT}: ${$(AGOSTO_VENDEDOR_B.bruto)} brutos un Vendedor B con presentismo, unos ${$(AGOSTO_VENDEDOR_B.neto)} en mano. Por 4 horas, la mitad. Calculá tu categoría con la escala de FAECYS.`,
+    alternates: { canonical: "/convenios/comercio" },
+    openGraph: {
+      images: [
+        {
+          url: `/og?t=${encodeURIComponent("Empleados de Comercio 2026")}&s=${encodeURIComponent("Calculadora y escala oficial CCT 130/75")}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+}
 
 // Ejemplo de referencia de las FAQ, computado desde la escala (regla 2-2: cero números a
 // mano — al rotar la escala, las respuestas se actualizan solas). El mes es el que se liquida
