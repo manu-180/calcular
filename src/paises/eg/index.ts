@@ -16,6 +16,14 @@ import annualLeave from "./calculadoras/annual-leave";
 import contenidoAnnualLeave from "./contenido/annual-leave";
 import overtime from "./calculadoras/overtime";
 import contenidoOvertime from "./contenido/overtime";
+import unfairDismissal from "./calculadoras/unfair-dismissal";
+import contenidoUnfairDismissal from "./contenido/unfair-dismissal";
+import noticePeriod from "./calculadoras/notice-period";
+import contenidoNoticePeriod from "./contenido/notice-period";
+import redundancyPay from "./calculadoras/redundancy-pay";
+import contenidoRedundancyPay from "./contenido/redundancy-pay";
+import endOfService from "./calculadoras/end-of-service";
+import contenidoEndOfService from "./contenido/end-of-service";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
     { definicion: annualLeave, contenido: contenidoAnnualLeave, cliente: () => import("./calculadoras/annual-leave.cliente") },
     { definicion: overtime, contenido: contenidoOvertime, cliente: () => import("./calculadoras/overtime.cliente") },
+    { definicion: unfairDismissal, contenido: contenidoUnfairDismissal, cliente: () => import("./calculadoras/unfair-dismissal.cliente") },
+    { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
+    { definicion: redundancyPay, contenido: contenidoRedundancyPay, cliente: () => import("./calculadoras/redundancy-pay.cliente") },
+    { definicion: endOfService, contenido: contenidoEndOfService, cliente: () => import("./calculadoras/end-of-service.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "eg.vat" } }] },
   novedades,
