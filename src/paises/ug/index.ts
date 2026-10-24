@@ -16,6 +16,14 @@ import withholdingTaxCalculator from "./calculadoras/withholding-tax-calculator"
 import contenidoWithholdingTaxCalculator from "./contenido/withholding-tax-calculator";
 import rentalIncomeTaxCalculator from "./calculadoras/rental-income-tax-calculator";
 import contenidoRentalIncomeTaxCalculator from "./contenido/rental-income-tax-calculator";
+import presumptiveTaxCalculator from "./calculadoras/presumptive-tax-calculator";
+import contenidoPresumptiveTaxCalculator from "./contenido/presumptive-tax-calculator";
+import annualLeaveCalculator from "./calculadoras/annual-leave-calculator";
+import contenidoAnnualLeaveCalculator from "./contenido/annual-leave-calculator";
+import overtimeCalculator from "./calculadoras/overtime-calculator";
+import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
+import noticePeriodCalculator from "./calculadoras/notice-period-calculator";
+import contenidoNoticePeriodCalculator from "./contenido/notice-period-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: nssfMidtermAccessCalculator, contenido: contenidoNssfMidtermAccessCalculator, cliente: () => import("./calculadoras/nssf-midterm-access-calculator.cliente") },
     { definicion: withholdingTaxCalculator, contenido: contenidoWithholdingTaxCalculator, cliente: () => import("./calculadoras/withholding-tax-calculator.cliente") },
     { definicion: rentalIncomeTaxCalculator, contenido: contenidoRentalIncomeTaxCalculator, cliente: () => import("./calculadoras/rental-income-tax-calculator.cliente") },
+    { definicion: presumptiveTaxCalculator, contenido: contenidoPresumptiveTaxCalculator, cliente: () => import("./calculadoras/presumptive-tax-calculator.cliente") },
+    { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
+    { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
+    { definicion: noticePeriodCalculator, contenido: contenidoNoticePeriodCalculator, cliente: () => import("./calculadoras/notice-period-calculator.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "ug.vat" } }] },
   novedades,
