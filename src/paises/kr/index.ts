@@ -32,6 +32,16 @@ import giftTax from "./calculadoras/gift-tax";
 import contenidoGiftTax from "./contenido/gift-tax";
 import inheritanceTax from "./calculadoras/inheritance-tax";
 import contenidoInheritanceTax from "./contenido/inheritance-tax";
+import brokerageFee from "./calculadoras/brokerage-fee";
+import contenidoBrokerageFee from "./contenido/brokerage-fee";
+import jeonwolseConversion from "./calculadoras/jeonwolse-conversion";
+import contenidoJeonwolseConversion from "./contenido/jeonwolse-conversion";
+import depositInterest from "./calculadoras/deposit-interest";
+import contenidoDepositInterest from "./contenido/deposit-interest";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
+import usdToKrw from "./calculadoras/usd-to-krw";
+import contenidoUsdToKrw from "./contenido/usd-to-krw";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +70,11 @@ export default definirPais({
     { definicion: acquisitionTax, contenido: contenidoAcquisitionTax, cliente: () => import("./calculadoras/acquisition-tax.cliente") },
     { definicion: giftTax, contenido: contenidoGiftTax, cliente: () => import("./calculadoras/gift-tax.cliente") },
     { definicion: inheritanceTax, contenido: contenidoInheritanceTax, cliente: () => import("./calculadoras/inheritance-tax.cliente") },
+    { definicion: brokerageFee, contenido: contenidoBrokerageFee, cliente: () => import("./calculadoras/brokerage-fee.cliente") },
+    { definicion: jeonwolseConversion, contenido: contenidoJeonwolseConversion, cliente: () => import("./calculadoras/jeonwolse-conversion.cliente") },
+    { definicion: depositInterest, contenido: contenidoDepositInterest, cliente: () => import("./calculadoras/deposit-interest.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
+    { definicion: usdToKrw, contenido: contenidoUsdToKrw, cliente: () => import("./calculadoras/usd-to-krw.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "kr.vat" } }] },
   novedades,
