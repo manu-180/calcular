@@ -704,7 +704,7 @@
       "nombre": "Imposto Predial sobre a detenção de prédios urbanos",
       "tipo": "escala",
       "unidad": "AOA",
-      "nota": "Até 5 milhões paga 0,1 % do valor patrimonial; de 5 a 6 milhões, um valor fixo de 5 000 Kz; acima de 6 milhões, 0,5 % sobre o excesso de 5 milhões.",
+      "nota": "Até 5 milhões: 0,1 % do valor patrimonial. De 5 a 6 milhões: 5 000 Kz fixos. Acima de 6 milhões: 0,5 % sobre o excesso de 5 milhões (o limite inferior da segunda linha).",
       "tramos": [
         {
           "estado": "verificado",
@@ -728,9 +728,9 @@
             }
           ],
           "fuente": {
-            "organismo": "Diário da República",
-            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 16.º, n.º 1",
-            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "organismo": "AGT",
+            "titulo": "Portal do Contribuinte, Impostos e taxas: Imposto Predial (Matéria colectável e Taxa)",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/impostos-e-taxas/imposto-predial-urbano",
             "tipo": "primaria",
             "verificadoEl": "2026-10-24"
           }
@@ -749,9 +749,9 @@
           "desde": "2026-01-01",
           "valor": 0.6,
           "fuente": {
-            "organismo": "Diário da República",
-            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 16.º, n.º 2",
-            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "organismo": "AGT",
+            "titulo": "Portal do Contribuinte, Impostos e taxas: Imposto Predial (Matéria colectável e Taxa)",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/impostos-e-taxas/imposto-predial-urbano",
             "tipo": "primaria",
             "verificadoEl": "2026-10-24"
           }
@@ -770,9 +770,9 @@
           "desde": "2026-01-01",
           "valor": 25,
           "fuente": {
-            "organismo": "Diário da República",
-            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 16.º, n.º 4",
-            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "organismo": "AGT",
+            "titulo": "Portal do Contribuinte, Impostos e taxas: Imposto Predial (Matéria colectável e Taxa)",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/impostos-e-taxas/imposto-predial-urbano",
             "tipo": "primaria",
             "verificadoEl": "2026-10-24"
           }
@@ -791,9 +791,9 @@
           "desde": "2026-01-01",
           "valor": 40,
           "fuente": {
-            "organismo": "Diário da República",
-            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 8.º, n.º 4",
-            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "organismo": "AGT",
+            "titulo": "Portal do Contribuinte, Impostos e taxas: Imposto Predial (Matéria colectável e Taxa)",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/impostos-e-taxas/imposto-predial-urbano",
             "tipo": "primaria",
             "verificadoEl": "2026-10-24"
           }
@@ -812,9 +812,9 @@
           "desde": "2026-01-01",
           "valor": 2,
           "fuente": {
-            "organismo": "Diário da República",
-            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 18.º",
-            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "organismo": "AGT",
+            "titulo": "Portal do Contribuinte, Impostos e taxas: Imposto Predial (Matéria colectável e Taxa)",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/impostos-e-taxas/imposto-predial-urbano",
             "tipo": "primaria",
             "verificadoEl": "2026-10-24"
           }
@@ -912,10 +912,136 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-01-01",
           "valor": 14,
-          "motivo": "Não conseguimos abrir o Código do IVA republicado (Lei n.º 14/23) numa fonte oficial: o portal da AGT não publica o texto e o Diário da República é pago."
+          "fuente": {
+            "organismo": "AGT",
+            "titulo": "Portal do Contribuinte, Impostos e taxas: Imposto sobre o Valor Acrescentado (Taxa)",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/impostos-e-taxas/imposto-sobre-valor-acrescentado",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.irt-subsidio-alimentacao",
+      "nombre": "Subsídio de alimentação não sujeito a IRT (limite mensal)",
+      "tipo": "numero",
+      "unidad": "AOA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "AGT",
+            "titulo": "Portal do Contribuinte, Impostos e taxas: IRT (Não sujeição)",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/impostos-e-taxas/imposto-sobre-rendimentos-do-trabalho",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.irt-subsidio-transporte",
+      "nombre": "Subsídio de transporte não sujeito a IRT (limite mensal)",
+      "tipo": "numero",
+      "unidad": "AOA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "AGT",
+            "titulo": "Portal do Contribuinte, Impostos e taxas: IRT (Não sujeição)",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/impostos-e-taxas/imposto-sobre-rendimentos-do-trabalho",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ip-adicional-desocupado",
+      "nombre": "Agravamento do Imposto Predial para prédios desocupados há mais de um ano",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "AGT",
+            "titulo": "Portal do Contribuinte, Impostos e taxas: Imposto Predial (Matéria colectável e Taxa)",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/impostos-e-taxas/imposto-predial-urbano",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.he-limite-mes",
+      "nombre": "Limite de horas extraordinárias por mês",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 185.º, n.º 1, alínea b",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.he-limite-ano",
+      "nombre": "Limite de horas extraordinárias por ano",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 200,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 185.º, n.º 1, alínea c",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.semanas-ano",
+      "nombre": "Semanas laborais do ano na fórmula do salário-hora",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 52,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 237.º, n.º 7",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
         }
       ]
     }
