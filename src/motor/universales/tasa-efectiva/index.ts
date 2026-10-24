@@ -9,6 +9,7 @@ import { contenidoJa } from "./contenido/ja";
 import { contenidoKo } from "./contenido/ko";
 import { contenidoNl } from "./contenido/nl";
 import { contenidoPt } from "./contenido/pt";
+import { contenidoRo } from "./contenido/ro";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiTasaEfectiva } from "./definicion";
 import { textosDe } from "./textos/de";
@@ -20,13 +21,14 @@ import { textosJa } from "./textos/ja";
 import { textosKo } from "./textos/ko";
 import { textosNl } from "./textos/nl";
 import { textosPt } from "./textos/pt";
+import { textosRo } from "./textos/ro";
 import { textosZh } from "./textos/zh";
 
 export default definirUniversal<UiTasaEfectiva>({
   id: "tasa-efectiva",
   concepto: "tasa-efectiva",
   definir,
-  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
-  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
+  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, ro: textosRo, zh: textosZh },
+  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, ro: contenidoRo, zh: contenidoZh },
   casos,
 });
