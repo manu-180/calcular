@@ -30,7 +30,7 @@ for (const d of detectores) {
     else if (d.carril === "serie") {
       const p = r as readonly { fecha: string; valor: number }[];
       console.log(`✅ ${d.id}: ${p.length} puntos, último ${p.at(-1)?.fecha} = ${p.at(-1)?.valor}`);
-    } else console.log(`✅ ${d.id}: ${r.length} hallazgos${r.length ? ` (${(r as { titulo: string }[]).map((h) => h.titulo).join(" | ")})` : ""}`);
+    } else console.log(`✅ ${d.id}: ${r.length} hallazgos${r.length ? ` (${(r as readonly { titulo: string }[]).map((h) => h.titulo).join(" | ")})` : ""}`);
   } catch (e) {
     console.log(`❌ ${d.id}: ${(e as Error).message}`);
   }

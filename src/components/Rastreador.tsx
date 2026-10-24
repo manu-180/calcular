@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { esMercadoIntl, mercadoDeRuta, type Sitio } from "@/lib/medicion/mercados";
 import { abrirVista, iniciar } from "@/lib/rastreo";
+import { CapturaLlegada } from "@/motor/compartir/CapturaLlegada";
 
 export function Rastreador({ sitio = "ar", mercado }: { sitio?: Sitio; mercado?: string }) {
   const pathname = usePathname();
@@ -19,7 +20,9 @@ export function Rastreador({ sitio = "ar", mercado }: { sitio?: Sitio; mercado?:
     const ruta = window.location.pathname;
     abrirVista(ruta, { sitio, mercado: esMercadoIntl(mercado) ? mercado : mercadoDeRuta(ruta) });
   }, [pathname, sitio, mercado]);
-  return null;
+  // La llegada por un link compartido se lee antes de que iniciar() cree ca_vid: el efecto del hijo corre
+  // antes que el de este componente. calcularya la monta aparte en su layout.
+  return sitio === "ar" ? <CapturaLlegada /> : null;
 }
 
 export default Rastreador;
