@@ -1,0 +1,1279 @@
+/* Rankings de países. Pieza de datos de un medio serio, de la familia de «Tu sueldo en el mundo»:
+   papel de siempre, un panel en tinta con el puesto enorme y esmeralda solo para el dato. Usa los
+   tokens de estilos.css (--cy-*, --ease-*) y clases propias cy-rk-*. Vetos de Manuel: sin marquee,
+   sin fondo plano, sombras siempre negras, sin numerar secciones (los puestos son el dato). Todo
+   movimiento tiene camino con prefers-reduced-motion. */
+
+.cy-rk {
+  --rk-tinta: #0b1110;
+  --rk-crema: #f4f0e6;
+  --rk-crema-suave: rgb(244 240 230 / 0.66);
+  --rk-crema-tenue: rgb(244 240 230 / 0.2);
+  --rk-verde: #34d399;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4.5rem;
+  padding-block: 1.5rem 3rem;
+}
+
+:is(.cy-rk-app, .cy-rk-panel-nucleo, .cy-rk-kit, .cy-rk-metodo, .cy-rk-datos-nucleo, .cy-rk-otros) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cy-rk-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.cy-rk-suave {
+  color: var(--cy-zinc-500);
+  font-size: 0.875rem;
+}
+
+/* ---------- Encabezado ---------- */
+
+.cy-rk-cabeza {
+  display: grid;
+  justify-items: start;
+  gap: 1.25rem;
+  padding-top: 1rem;
+}
+
+.cy-rk-ceja {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.625rem;
+  padding-block: 0.375rem;
+  padding-inline: 0.75rem 0.875rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.72);
+  box-shadow: inset 0 0 0 1px var(--cy-linea);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cy-texto-suave);
+}
+
+.cy-rk-ceja time {
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.cy-rk-ceja-sep {
+  width: 1px;
+  height: 0.75rem;
+  background: var(--cy-linea-fuerte);
+}
+
+.cy-rk-ceja-oscura {
+  background: rgb(244 240 230 / 0.08);
+  box-shadow: inset 0 0 0 1px rgb(244 240 230 / 0.14);
+  color: var(--rk-crema-suave);
+}
+
+.cy-rk-h1 {
+  max-width: 17ch;
+  font-size: clamp(2.375rem, 1.1rem + 5.2vw, 5.25rem);
+  font-weight: 680;
+  line-height: 0.98;
+  letter-spacing: -0.046em;
+  color: var(--cy-tinta);
+  text-wrap: balance;
+}
+
+.cy-rk-h2 {
+  font-size: clamp(1.75rem, 1.3rem + 1.9vw, 2.75rem);
+  font-weight: 660;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--cy-tinta);
+  text-wrap: balance;
+}
+
+.cy-rk-h3 {
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--cy-tinta);
+}
+
+.cy-rk-intro {
+  max-width: 58ch;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--cy-zinc-600);
+}
+
+:is(.cy-cuerpo:lang(ja), .cy-cuerpo:lang(ko), .cy-cuerpo:lang(zh)) :is(.cy-rk-h1, .cy-rk-h2, .cy-rk-puesto-n, .cy-rk-tarjeta-titulo) {
+  letter-spacing: 0;
+}
+
+.cy-rk-fuera {
+  max-width: 60ch;
+  padding: 1rem 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--cy-amber-50);
+  box-shadow: inset 0 0 0 1px rgb(146 64 14 / 0.14);
+  color: var(--cy-amber-900);
+  line-height: 1.55;
+}
+
+/* ---------- Botones: píldora con el ícono en su propia isla ---------- */
+
+.cy-rk-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.875rem;
+  min-height: 3rem;
+  padding-block: 0.375rem;
+  padding-inline: 1.25rem 0.375rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cy-papel-claro);
+  box-shadow:
+    inset 0 0 0 1px var(--cy-linea-fuerte),
+    var(--cy-sombra-apoyo);
+  color: var(--cy-tinta);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 620;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 0.16s var(--ease-fluid),
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.cy-rk-boton-icono {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: rgb(24 24 27 / 0.06);
+  transition: transform 0.3s var(--ease-fluid);
+}
+
+.cy-rk-boton-icono svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cy-rk-boton-principal {
+  background: var(--cy-tinta);
+  box-shadow: var(--cy-sombra-alzada);
+  color: #fff;
+}
+
+.cy-rk-boton-principal .cy-rk-boton-icono {
+  background: rgb(255 255 255 / 0.12);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-rk-boton:hover .cy-rk-boton-icono {
+    transform: translate(2px, -1px) scale(1.05);
+  }
+}
+
+.cy-rk-boton:active {
+  transform: scale(0.98);
+}
+
+:is(.cy-rk-boton, .cy-rk-opcion, .cy-rk-tarjeta, .cy-rk-tabla a, .cy-rk-enlace):focus-visible {
+  outline: none;
+  box-shadow: var(--cy-anillo);
+}
+
+.cy-rk-enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--cy-acento-tinta);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  border-radius: 0.25rem;
+}
+
+.cy-rk-enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+/* ---------- Selector de sueldo ---------- */
+
+.cy-rk-app {
+  gap: 2rem;
+}
+
+.cy-rk-selector {
+  display: grid;
+  gap: 0.625rem;
+}
+
+.cy-rk-selector-titulo {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cy-zinc-500);
+}
+
+.cy-rk-opciones {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.25rem;
+  padding: 0.3125rem;
+  border-radius: 1.375rem;
+  background: rgb(24 24 27 / 0.05);
+  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.07);
+}
+
+.cy-rk-opcion {
+  display: grid;
+  gap: 0.125rem;
+  min-height: 3.5rem;
+  padding: 0.5rem 0.625rem;
+  border: 0;
+  border-radius: 1.0625rem;
+  background: transparent;
+  color: var(--cy-zinc-700);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.16s var(--ease-fluid);
+}
+
+.cy-rk-opcion:active {
+  transform: scale(0.98);
+}
+
+.cy-rk-opcion[aria-pressed="true"] {
+  background: var(--cy-papel-claro);
+  box-shadow:
+    inset 0 0 0 1px rgb(24 24 27 / 0.06),
+    var(--cy-sombra-apoyo);
+  color: var(--cy-tinta);
+}
+
+.cy-rk-opcion-nombre {
+  font-size: 0.875rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.cy-rk-opcion-sub {
+  font-size: 0.75rem;
+  line-height: 1.25;
+  color: var(--cy-zinc-500);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 419px) {
+  .cy-rk-opcion {
+    padding: 0.5rem;
+  }
+
+  .cy-rk-opcion-nombre {
+    font-size: 0.8125rem;
+  }
+
+  .cy-rk-opcion-sub {
+    font-size: 0.6875rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .cy-rk-opciones {
+    justify-self: start;
+    grid-auto-columns: minmax(11rem, auto);
+  }
+
+  .cy-rk-opcion {
+    padding: 0.625rem 1rem;
+  }
+}
+
+/* ---------- Panel en tinta: el puesto de la edición ---------- */
+
+.cy-rk-panel {
+  padding: 0.375rem;
+  border-radius: 2rem;
+  background: rgb(24 24 27 / 0.05);
+  box-shadow:
+    inset 0 0 0 1px rgb(24 24 27 / 0.07),
+    var(--cy-sombra-flotante);
+}
+
+.cy-rk-panel-nucleo {
+  position: relative;
+  gap: 2rem;
+  padding: 1.5rem 1.25rem 1.375rem;
+  border-radius: calc(2rem - 0.375rem);
+  color: var(--rk-crema);
+  background:
+    radial-gradient(38rem 20rem at 100% 0%, rgb(52 211 153 / 0.2), transparent 62%),
+    radial-gradient(28rem 18rem at 0% 100%, rgb(244 240 230 / 0.06), transparent 60%),
+    radial-gradient(rgb(244 240 230 / 0.055) 1px, transparent 1.2px) 0 0 / 14px 14px,
+    var(--rk-tinta);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+  overflow: hidden;
+}
+
+.cy-rk-panel-texto {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.cy-rk-panel-ceja {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rk-crema-suave);
+}
+
+.cy-rk-panel-ceja .cy-bandera {
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.16);
+}
+
+.cy-rk-puesto {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.875rem;
+  line-height: 0.82;
+}
+
+.cy-rk-puesto-n {
+  font-size: clamp(6rem, 3.5rem + 12vw, 11rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums;
+  color: var(--rk-crema);
+}
+
+.cy-rk-puesto-de {
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  color: var(--rk-crema-suave);
+}
+
+.cy-rk-frase {
+  max-width: 34ch;
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+
+.cy-rk-panel-datos {
+  display: grid;
+  gap: 0.875rem 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(244 240 230 / 0.12);
+}
+
+.cy-rk-panel-datos div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.cy-rk-panel-datos dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rk-crema-suave);
+}
+
+.cy-rk-panel-datos dd {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* La franja: un palito por país, en el orden del ranking. El de la edición en esmeralda. Es
+   decoración del dato: la tabla de abajo tiene los números. */
+.cy-rk-franja {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 7.5rem;
+  min-width: 0;
+}
+
+.cy-rk-franja i {
+  flex: 1 1 0;
+  min-width: 2px;
+  height: 100%;
+  border-radius: 1px;
+  background: var(--rk-crema-tenue);
+  transform: scaleY(var(--h));
+  transform-origin: bottom;
+  transition: transform 0.5s var(--ease-fluid);
+}
+
+.cy-rk-franja i[data-propia] {
+  background: var(--rk-verde);
+}
+
+.cy-rk-franja-clara {
+  height: 3.5rem;
+  margin-top: auto;
+}
+
+.cy-rk-franja-clara i {
+  background: var(--cy-zinc-200);
+}
+
+.cy-rk-franja-clara i[data-propia] {
+  background: var(--cy-emerald-600);
+}
+
+@media (min-width: 768px) {
+  .cy-rk-panel-nucleo {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 2.5rem;
+    padding: 2.25rem 2.25rem 2rem;
+  }
+
+  .cy-rk-panel-datos {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+
+  .cy-rk-franja {
+    height: 15rem;
+    gap: 3px;
+  }
+}
+
+/* ---------- Tabla ---------- */
+
+.cy-rk-tabla-caja {
+  padding: 0.375rem;
+  border-radius: 1.75rem;
+  background: rgb(24 24 27 / 0.04);
+  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.06);
+}
+
+.cy-rk-tabla {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: calc(1.75rem - 0.375rem);
+  background: var(--cy-papel-claro);
+  box-shadow:
+    inset 0 0 0 1px rgb(24 24 27 / 0.05),
+    var(--cy-sombra-apoyo);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+}
+
+.cy-rk-tabla caption {
+  padding: 1.125rem 1.125rem 0.75rem;
+  caption-side: top;
+  text-align: start;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--cy-zinc-600);
+  background: var(--cy-papel-claro);
+  border-radius: calc(1.75rem - 0.375rem) calc(1.75rem - 0.375rem) 0 0;
+}
+
+.cy-rk-tabla thead th {
+  padding: 0.625rem 0.5rem;
+  border-bottom: 1px solid var(--cy-linea);
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: start;
+  vertical-align: bottom;
+  color: var(--cy-zinc-500);
+}
+
+.cy-rk-th-sub {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--cy-zinc-400);
+}
+
+.cy-rk-tabla tbody :is(td, th) {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid rgb(24 24 27 / 0.06);
+  vertical-align: middle;
+  text-align: start;
+  font-weight: 400;
+}
+
+.cy-rk-tabla tbody tr:last-child :is(td, th) {
+  border-bottom: 0;
+}
+
+.cy-rk-tabla :is(th, td):first-child {
+  padding-inline-start: 1rem;
+}
+
+.cy-rk-tabla :is(th, td):last-child {
+  padding-inline-end: 1rem;
+}
+
+.cy-rk-c-puesto {
+  width: 3rem;
+  white-space: nowrap;
+}
+
+.cy-rk-n {
+  font-size: 0.9375rem;
+  font-weight: 650;
+  color: var(--cy-tinta);
+}
+
+.cy-rk-empate {
+  margin-inline-start: 0.125rem;
+  font-size: 0.75rem;
+  color: var(--cy-zinc-400);
+}
+
+.cy-rk-tabla tbody th.cy-rk-c-pais a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  max-width: 100%;
+  border-radius: 0.375rem;
+  color: var(--cy-tinta);
+  font-weight: 620;
+  text-decoration: none;
+  line-height: 1.25;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-rk-tabla tbody th.cy-rk-c-pais a:hover span {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.cy-rk-c-pais .cy-bandera {
+  flex: none;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08);
+}
+
+.cy-rk-c-valor {
+  width: 34%;
+}
+
+.cy-rk-valor {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  color: var(--cy-tinta);
+  white-space: nowrap;
+}
+
+.cy-rk-barra {
+  display: block;
+  height: 0.25rem;
+  margin-top: 0.375rem;
+  border-radius: 999px;
+  background: var(--cy-zinc-100);
+  overflow: hidden;
+}
+
+.cy-rk-barra span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--cy-emerald-500);
+  transform-origin: left center;
+  transition: transform 0.55s var(--ease-fluid);
+}
+
+.cy-rk-c-carga {
+  display: none;
+  color: var(--cy-zinc-600);
+  white-space: nowrap;
+}
+
+.cy-rk-c-cambio {
+  width: 3.5rem;
+  text-align: end;
+}
+
+.cy-rk-tabla thead th.cy-rk-c-cambio {
+  text-align: end;
+}
+
+.cy-rk-cambio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 999px;
+  background: var(--cy-zinc-100);
+  color: var(--cy-zinc-700);
+  font-size: 0.75rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.cy-rk-cambio > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1875rem;
+}
+
+.cy-rk-cambio svg {
+  width: 0.5625rem;
+  height: 0.5625rem;
+  fill: currentColor;
+}
+
+.cy-rk-cambio[data-tipo="sube"] {
+  background: var(--cy-emerald-50);
+  color: var(--cy-emerald-800);
+}
+
+.cy-rk-cambio[data-tipo="baja"] {
+  background: var(--cy-rose-50);
+  color: var(--cy-rose-700);
+}
+
+.cy-rk-tabla tbody tr[data-propia] :is(td, th) {
+  background: var(--rk-tinta);
+  border-bottom-color: transparent;
+}
+
+.cy-rk-tabla tbody tr[data-propia] :is(.cy-rk-n, .cy-rk-valor, a) {
+  color: var(--rk-crema);
+}
+
+.cy-rk-tabla tbody tr[data-propia] :is(.cy-rk-c-carga, .cy-rk-empate) {
+  color: var(--rk-crema-suave);
+}
+
+.cy-rk-tabla tbody tr[data-propia] .cy-rk-barra {
+  background: rgb(244 240 230 / 0.14);
+}
+
+.cy-rk-tabla tbody tr[data-propia] .cy-rk-barra span {
+  background: var(--rk-verde);
+}
+
+.cy-rk-tabla tbody tr[data-propia] .cy-rk-cambio {
+  background: rgb(244 240 230 / 0.12);
+  color: var(--rk-crema);
+}
+
+.cy-rk-tabla tbody tr[data-propia] .cy-rk-c-pais a:focus-visible {
+  box-shadow: 0 0 0 2px var(--rk-tinta), 0 0 0 4px var(--rk-verde);
+}
+
+@media (min-width: 640px) {
+  .cy-rk-c-carga {
+    display: table-cell;
+  }
+
+  .cy-rk-tabla tbody :is(td, th) {
+    padding-block: 0.8125rem;
+  }
+
+  .cy-rk-tabla :is(th, td):first-child {
+    padding-inline-start: 1.5rem;
+  }
+
+  .cy-rk-tabla :is(th, td):last-child {
+    padding-inline-end: 1.5rem;
+  }
+
+  .cy-rk-tabla caption {
+    padding: 1.375rem 1.5rem 0.875rem;
+  }
+
+  .cy-rk-valor {
+    font-size: 1rem;
+  }
+}
+
+/* ---------- Kit de prensa ---------- */
+
+.cy-rk-kit {
+  gap: 1.25rem;
+  padding-top: 0.5rem;
+}
+
+.cy-rk-kit-cabeza {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.cy-rk-kit-cabeza p {
+  color: var(--cy-zinc-600);
+}
+
+.cy-rk-cita {
+  position: relative;
+  margin: 0;
+  padding-block: 1.25rem;
+  padding-inline: 1.5rem 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--cy-papel-claro);
+  box-shadow:
+    inset 0 0 0 1px rgb(24 24 27 / 0.07),
+    var(--cy-sombra-apoyo);
+}
+
+.cy-rk-cita::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 1.125rem;
+  bottom: 1.125rem;
+  width: 3px;
+  border-start-end-radius: 3px;
+  border-end-end-radius: 3px;
+  background: var(--cy-acento);
+}
+
+.cy-rk-cita p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cy-texto);
+  overflow-wrap: anywhere;
+}
+
+.cy-rk-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.cy-rk-aviso {
+  min-height: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--cy-acento-tinta);
+}
+
+.cy-rk-vista-previa {
+  margin: 0;
+  padding: 0.375rem;
+  border-radius: 1.5rem;
+  background: rgb(24 24 27 / 0.05);
+  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.07);
+}
+
+.cy-rk-vista-previa img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  border-radius: calc(1.5rem - 0.375rem);
+  background: var(--rk-tinta);
+}
+
+@media (min-width: 1024px) {
+  .cy-rk-kit {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "cabeza vista"
+      "cita vista"
+      "acciones vista"
+      "aviso vista";
+    align-items: start;
+    column-gap: 2.5rem;
+  }
+
+  .cy-rk-kit-cabeza {
+    grid-area: cabeza;
+  }
+
+  .cy-rk-cita {
+    grid-area: cita;
+  }
+
+  .cy-rk-acciones {
+    grid-area: acciones;
+  }
+
+  .cy-rk-aviso {
+    grid-area: aviso;
+  }
+
+  .cy-rk-vista-previa {
+    grid-area: vista;
+  }
+}
+
+/* ---------- Tarjetas de los rankings (índice y «otros») ---------- */
+
+.cy-rk-tarjetas {
+  display: grid;
+  gap: 1rem;
+}
+
+.cy-rk-tarjeta {
+  display: grid;
+  padding: 0.375rem;
+  border-radius: 1.75rem;
+  background: rgb(24 24 27 / 0.04);
+  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.06);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.35s var(--ease-fluid);
+}
+
+.cy-rk-tarjeta-nucleo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.875rem;
+  min-width: 0;
+  padding: 1.375rem 1.25rem 1.25rem;
+  border-radius: calc(1.75rem - 0.375rem);
+  background: var(--cy-papel-claro);
+  box-shadow:
+    inset 0 0 0 1px rgb(24 24 27 / 0.05),
+    var(--cy-sombra-apoyo);
+  transition: box-shadow 0.35s var(--ease-fluid);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-rk-tarjeta:hover {
+    transform: translateY(-3px);
+  }
+
+  .cy-rk-tarjeta:hover .cy-rk-tarjeta-nucleo {
+    box-shadow:
+      inset 0 0 0 1px rgb(24 24 27 / 0.07),
+      var(--cy-sombra-alzada);
+  }
+
+  .cy-rk-tarjeta:hover .cy-rk-boton-icono {
+    transform: translate(2px, -1px) scale(1.05);
+  }
+}
+
+.cy-rk-tarjeta:active {
+  transform: scale(0.99);
+}
+
+.cy-rk-tarjeta-ceja {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cy-zinc-500);
+}
+
+.cy-rk-tarjeta-titulo {
+  font-size: 1.375rem;
+  font-weight: 660;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--cy-tinta);
+  text-wrap: balance;
+}
+
+.cy-rk-tarjeta-dato {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  margin-top: 0.25rem;
+}
+
+.cy-rk-tarjeta-dato .cy-bandera {
+  align-self: center;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08);
+}
+
+.cy-rk-tarjeta-puesto {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  color: var(--cy-tinta);
+}
+
+.cy-rk-tarjeta-de {
+  font-size: 1rem;
+  font-weight: 560;
+  color: var(--cy-zinc-500);
+}
+
+.cy-rk-tarjeta-frase {
+  color: var(--cy-zinc-600);
+  line-height: 1.45;
+}
+
+.cy-rk-tarjeta-ir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+  color: var(--cy-tinta);
+  font-weight: 620;
+}
+
+.cy-rk-tarjeta-ir .cy-boton-icono,
+.cy-rk-tarjeta-ir .cy-rk-boton-icono {
+  background: var(--cy-tinta);
+  color: #fff;
+}
+
+.cy-rk-tarjeta-ir svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (min-width: 768px) {
+  .cy-rk-tarjetas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cy-rk-tarjetas[data-cuantas="3"] .cy-rk-tarjeta[data-grande] {
+    grid-row: span 2;
+  }
+
+  .cy-rk-tarjeta[data-grande] .cy-rk-tarjeta-nucleo {
+    padding: 2rem 2rem 1.75rem;
+    gap: 1.125rem;
+  }
+
+  .cy-rk-tarjeta[data-grande] .cy-rk-tarjeta-titulo {
+    font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem);
+  }
+
+  .cy-rk-tarjeta[data-grande] .cy-rk-tarjeta-puesto {
+    font-size: clamp(5rem, 3rem + 4vw, 7.5rem);
+  }
+
+  .cy-rk-tarjeta[data-grande] .cy-rk-franja-clara {
+    flex: 1 1 8rem;
+    height: auto;
+    min-height: 8rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cy-rk-tarjetas[data-cuantas="3"] {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+}
+
+.cy-rk-otros {
+  gap: 1.5rem;
+}
+
+/* ---------- Datos abiertos (panel en tinta) ---------- */
+
+.cy-rk-datos {
+  padding: 0.375rem;
+  border-radius: 2rem;
+  background: rgb(24 24 27 / 0.05);
+  box-shadow:
+    inset 0 0 0 1px rgb(24 24 27 / 0.07),
+    var(--cy-sombra-flotante);
+}
+
+.cy-rk-datos-nucleo {
+  gap: 1.75rem;
+  padding: 1.75rem 1.25rem;
+  border-radius: calc(2rem - 0.375rem);
+  color: var(--rk-crema);
+  background:
+    radial-gradient(34rem 18rem at 0% 0%, rgb(52 211 153 / 0.16), transparent 62%),
+    radial-gradient(rgb(244 240 230 / 0.05) 1px, transparent 1.2px) 0 0 / 14px 14px,
+    var(--rk-tinta);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+}
+
+.cy-rk-datos-texto {
+  display: grid;
+  justify-items: start;
+  gap: 0.875rem;
+  max-width: 44ch;
+}
+
+.cy-rk-datos .cy-rk-h2 {
+  color: var(--rk-crema);
+}
+
+.cy-rk-datos-texto > p {
+  line-height: 1.6;
+}
+
+.cy-rk-datos .cy-rk-suave {
+  color: var(--rk-crema-suave);
+}
+
+.cy-rk-datos-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  gap: 0.625rem;
+}
+
+.cy-rk-datos .cy-rk-boton {
+  background: rgb(244 240 230 / 0.08);
+  box-shadow: inset 0 0 0 1px rgb(244 240 230 / 0.16);
+  color: var(--rk-crema);
+}
+
+.cy-rk-datos .cy-rk-boton-icono {
+  background: rgb(244 240 230 / 0.1);
+}
+
+.cy-rk-datos .cy-rk-boton-principal {
+  background: var(--rk-crema);
+  box-shadow: none;
+  color: var(--rk-tinta);
+}
+
+.cy-rk-datos .cy-rk-boton-principal .cy-rk-boton-icono {
+  background: rgb(11 17 16 / 0.08);
+}
+
+.cy-rk-datos .cy-rk-boton:focus-visible {
+  box-shadow: 0 0 0 2px var(--rk-tinta), 0 0 0 4px var(--rk-verde);
+}
+
+.cy-rk-sugerida {
+  display: grid;
+  gap: 0.375rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 1rem 1.125rem;
+  border-radius: 1rem;
+  background: rgb(244 240 230 / 0.06);
+  box-shadow: inset 0 0 0 1px rgb(244 240 230 / 0.1);
+}
+
+.cy-rk-sugerida-titulo {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rk-crema-suave);
+}
+
+.cy-rk-sugerida code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 900px) {
+  .cy-rk-datos-nucleo {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+}
+
+/* ---------- Metodología ---------- */
+
+.cy-rk-metodo {
+  gap: 1.5rem;
+  max-width: 54rem;
+}
+
+.cy-rk-lista {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cy-rk-lista li {
+  position: relative;
+  padding-inline-start: 1.25rem;
+  line-height: 1.6;
+  color: var(--cy-texto);
+}
+
+.cy-rk-lista li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.66em;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 999px;
+  background: var(--cy-emerald-500);
+}
+
+.cy-rk-lista strong {
+  font-weight: 650;
+  color: var(--cy-tinta);
+}
+
+.cy-rk-fuentes {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.cy-rk-ppa {
+  display: grid;
+  gap: 0.375rem;
+  padding: 1.125rem 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--cy-papel-claro);
+  box-shadow:
+    inset 0 0 0 1px rgb(24 24 27 / 0.06),
+    var(--cy-sombra-apoyo);
+}
+
+.cy-rk-ppa-titulo {
+  font-weight: 650;
+  color: var(--cy-tinta);
+}
+
+.cy-rk-paises-fuente ul {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+}
+
+.cy-rk-paises-fuente li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--cy-linea);
+  font-size: 0.9375rem;
+}
+
+.cy-rk-paises-fuente a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cy-tinta);
+  font-weight: 560;
+}
+
+.cy-rk-paises-fuente time {
+  font-size: 0.8125rem;
+  color: var(--cy-zinc-500);
+}
+
+/* ---------- «Tu sueldo en el mundo» ---------- */
+
+.cy-rk-mundo {
+  padding: 0.375rem;
+  border-radius: 1.75rem;
+  background: rgb(24 24 27 / 0.04);
+  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.06);
+}
+
+.cy-rk-mundo-nucleo {
+  display: grid;
+  justify-items: start;
+  gap: 0.875rem;
+  padding: 1.5rem 1.25rem;
+  border-radius: calc(1.75rem - 0.375rem);
+  background:
+    radial-gradient(28rem 14rem at 100% 100%, rgb(16 185 129 / 0.1), transparent 65%),
+    var(--cy-papel-claro);
+  box-shadow: inset 0 0 0 1px rgb(24 24 27 / 0.05);
+}
+
+.cy-rk-mundo-nucleo p {
+  max-width: 52ch;
+  color: var(--cy-zinc-600);
+  line-height: 1.55;
+}
+
+@media (min-width: 768px) {
+  .cy-rk-mundo-nucleo {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 2rem;
+    padding: 1.75rem 2rem;
+  }
+
+  .cy-rk-mundo-nucleo .cy-rk-h3 {
+    grid-column: 1;
+  }
+
+  .cy-rk-mundo-nucleo p {
+    grid-column: 1;
+  }
+
+  .cy-rk-mundo-nucleo .cy-rk-boton {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-rk :is(.cy-rk-boton, .cy-rk-boton-icono, .cy-rk-opcion, .cy-rk-tarjeta, .cy-rk-tarjeta-nucleo, .cy-rk-barra span, .cy-rk-franja i) {
+    transition: none;
+  }
+
+  .cy-rk-tarjeta:hover {
+    transform: none;
+  }
+}
+
+/* rtl (ADR 0002, D10): las barras crecen desde el inicio de la línea y el empujón de hover de las
+   flechas va hacia la izquierda. */
+[dir="rtl"] .cy-rk-barra span {
+  transform-origin: right center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [dir="rtl"] :is(.cy-rk-boton, .cy-rk-tarjeta):hover .cy-rk-boton-icono {
+    transform: translate(-2px, -1px) scale(1.05);
+  }
+}
