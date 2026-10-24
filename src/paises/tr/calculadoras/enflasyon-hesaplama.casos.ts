@@ -5,14 +5,14 @@ const TCMB = "https://herkesicin.tcmb.gov.tr/wps/wcm/connect/ekonomi/hie/icerik/
 
 export default definirCasos(enflasyonHesaplama, [
   {
-    nombre: "Ocak 2020'den Eylül 2026'ya 10.000 TL",
+    nombre: "10.000 TL: Ocak 2020 ile Eylül 2026 arası",
     origen: { tipo: "oficial", url: TCMB, detalle: "TCMB enflasyon hesaplayıcı: 10.000 TL → 97.846,34 TL, toplam değişim %878,46 (endeks 446,45 → 4.368,35)." },
     fecha: "2026-10-24",
     entrada: { tutar: 10000, baslangic: "2020-01-01", bitis: "2026-09-30" },
     esperado: { guncel: 97846.34, eBas: 446.45, eBit: 4368.35 },
   },
   {
-    nombre: "Eylül 2025'ten Eylül 2026'ya: yıllık %29,73",
+    nombre: "Eylül 2025 ile Eylül 2026 arası: yıllık %29,73",
     origen: { tipo: "oficial", url: TCMB, detalle: "TÜİK Eylül 2026 yıllık TÜFE %29,73; 10.000 TL → 12.973,16 TL." },
     fecha: "2026-10-24",
     entrada: { tutar: 10000, baslangic: "2025-09-01", bitis: "2026-09-01" },

@@ -17,6 +17,9 @@ import kiraArtisOraniHesaplama from "./calculadoras/kira-artis-orani-hesaplama";
 import enflasyonHesaplama from "./calculadoras/enflasyon-hesaplama";
 import dovizHesaplama from "./calculadoras/doviz-hesaplama";
 import mevduatFaiziHesaplama from "./calculadoras/mevduat-faizi-hesaplama";
+import serbestMeslekMakbuzuHesaplama from "./calculadoras/serbest-meslek-makbuzu-hesaplama";
+import kiraStopajiHesaplama from "./calculadoras/kira-stopaji-hesaplama";
+import damgaVergisiHesaplama from "./calculadoras/damga-vergisi-hesaplama";
 import contenidoBruttenNeteMaasHesaplama from "./contenido/brutten-nete-maas-hesaplama";
 import contenidoNettenBruteMaasHesaplama from "./contenido/netten-brute-maas-hesaplama";
 import contenidoAsgariUcretHesaplama from "./contenido/asgari-ucret-hesaplama";
@@ -34,6 +37,9 @@ import contenidoKiraArtisOraniHesaplama from "./contenido/kira-artis-orani-hesap
 import contenidoEnflasyonHesaplama from "./contenido/enflasyon-hesaplama";
 import contenidoDovizHesaplama from "./contenido/doviz-hesaplama";
 import contenidoMevduatFaiziHesaplama from "./contenido/mevduat-faizi-hesaplama";
+import contenidoSerbestMeslekMakbuzuHesaplama from "./contenido/serbest-meslek-makbuzu-hesaplama";
+import contenidoKiraStopajiHesaplama from "./contenido/kira-stopaji-hesaplama";
+import contenidoDamgaVergisiHesaplama from "./contenido/damga-vergisi-hesaplama";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -63,6 +69,9 @@ export default definirPais({
     { definicion: enflasyonHesaplama, contenido: contenidoEnflasyonHesaplama, cliente: () => import("./calculadoras/enflasyon-hesaplama.cliente") },
     { definicion: dovizHesaplama, contenido: contenidoDovizHesaplama, cliente: () => import("./calculadoras/doviz-hesaplama.cliente") },
     { definicion: mevduatFaiziHesaplama, contenido: contenidoMevduatFaiziHesaplama, cliente: () => import("./calculadoras/mevduat-faizi-hesaplama.cliente") },
+    { definicion: serbestMeslekMakbuzuHesaplama, contenido: contenidoSerbestMeslekMakbuzuHesaplama, cliente: () => import("./calculadoras/serbest-meslek-makbuzu-hesaplama.cliente") },
+    { definicion: kiraStopajiHesaplama, contenido: contenidoKiraStopajiHesaplama, cliente: () => import("./calculadoras/kira-stopaji-hesaplama.cliente") },
+    { definicion: damgaVergisiHesaplama, contenido: contenidoDamgaVergisiHesaplama, cliente: () => import("./calculadoras/damga-vergisi-hesaplama.cliente") },
   ],
   universales: { todas: true },
   novedades,
