@@ -15,6 +15,7 @@ import {
   TNA_FALLBACK,
   UVA,
 } from "@/data/plazofijo";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 // Ejemplo canónico de la página ($1.000.000 a 30 días), DERIVADO de la tasa de
 // referencia con las MISMAS fórmulas testeadas que la calculadora. Regla 2-2: nunca
@@ -340,6 +341,7 @@ export default function PlazoFijoPage() {
         headline="Avisame cuando cambie la tasa de plazo fijo"
         subtext="El BCRA mueve la tasa seguido. Te aviso cuando cambie, así sabés si te conviene renovar. Sin spam."
       />
+      <OtrosPaises concepto="plazo-fijo" />
     </article>
   );
 }
