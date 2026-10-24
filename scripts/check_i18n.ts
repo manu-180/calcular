@@ -60,6 +60,11 @@ const IGUALES_PERMITIDOS = new Set([
   "pt:unidades.meses.otros",
   // la misma palabra en ese idioma
   "de:embed.pagina.colores.3",
+  "sv:embed.pagina.colores.3",
+  "nb:embed.pagina.colores.3",
+  "sv:embed.pagina.tema",
+  "da:embed.pagina.tema",
+  "nb:embed.pagina.tema",
   "it:embed.pagina.colores.0",
   "it:embed.pagina.colores.3",
   "it:embed.pagina.tema",
