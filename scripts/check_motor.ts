@@ -85,6 +85,10 @@ const parseos: [string, string, number | null][] = [
   ["es-PE", "", null],
   ["es-PE", "1,", null],
   ["es-PE", "1,2345", null],
+  ["id-ID", "1.234,50", 1234.5],
+  ["id-ID", "Rp 1.500.000", 1500000],
+  ["id-ID", "Rp 12.345.678,25", 12345678.25],
+  ["id-ID", "-250,75", -250.75],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -99,6 +103,8 @@ const ambiguos: [string, string, number | null][] = [
   ["es-MX", "5,000.000", 5000],
   ["es-CL", "5,000", null],
   ["es-CO", "5.000", 5000],
+  ["id-ID", "5.000", 5000],
+  ["id-ID", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -400,8 +406,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-id/bonus-semesteran"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-id"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -455,6 +461,10 @@ igual("marcadoresDe con fila de escala y región", marcadoresDe("{{ca.x[2].tasa@
 igual("semanas en inglés", formatearValorUnidad(2, "semanas", "en-CA"), "2 weeks");
 igual("semana en singular (de)", formatearValorUnidad(1, "semanas", "de-DE"), "1 Woche");
 igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 weken");
+// Indonesio: sin plural después del número y decimal con coma.
+igual("días en indonesio", formatearValorUnidad(3, "dias", "id-ID"), "3 hari");
+igual("un año en indonesio", formatearValorUnidad(1, "anios", "id-ID"), "1 tahun");
+igual("fracción de año en indonesio", formatearValorUnidad(1.5, "anios", "id-ID"), "1,5 tahun");
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).
