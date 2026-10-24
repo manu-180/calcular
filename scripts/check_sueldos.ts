@@ -1,10 +1,13 @@
-// Gate de «Sueldos reales»: k-anonimato (con 9 aportes no se publica nada, con 10 sí), filtro de
-// atípicos, espejo TypeScript = SQL, validación del endpoint, RLS (anon no lee ni escribe la tabla
-// cruda), textos en los diez idiomas y slugs sin choques. La parte de Postgres corre sobre PGlite con
-// los roles de Supabase simulados, igual que check_opiniones.ts.
+// Gate de «Sueldos reales»: k-anonimato con diversidad (10 aportes limpios de 3 días y 2 meses), que la
+// diferenciación con aportes falsos no publique nada, publicación diaria por foto, topes por huella y
+// por celda, piso del IQR, espejo TypeScript = SQL, validación del endpoint, que anon y authenticated no
+// ejecuten ni lean nada, textos en los diez idiomas y slugs sin choques. La parte de Postgres corre
+// sobre PGlite con los roles de Supabase simulados, igual que check_opiniones.ts, y aplica la migración
+// de endurecimiento encima de la primera (con datos) además de volver a correr las dos.
 //
 // Correr con: npx tsx scripts/check_sueldos.ts
 
+import "./sin-server-only";
 import { readdirSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
@@ -12,8 +15,9 @@ import { fileURLToPath } from "node:url";
 import { DICCIONARIOS_SUELDOS, textosSueldos, type TextosSueldos } from "../src/motor/i18n/sueldos";
 import { SLUG_MUNDO } from "../src/motor/mundo/rutas";
 import { PAGINAS_GLOBALES, PAGINAS_MERCADO } from "../src/motor/paginas";
-import { EXPERIENCIAS, K, OCUPACIONES } from "../src/motor/sueldos/catalogo";
-import { cifrasDe, percentil, percentilAproximado, sinAtipicos } from "../src/motor/sueldos/estadistica";
+import { edicionValida } from "../src/lib/sueldos/paises";
+import { CERCA, EXPERIENCIAS, K, MIN_DIAS, MIN_MESES, OCUPACIONES } from "../src/motor/sueldos/catalogo";
+import { celdaDe, percentil, percentilAproximado, redondearPublicado, sinAtipicos, tramoDe, type AporteCelda } from "../src/motor/sueldos/estadistica";
 import { agregadosDeFilas, type FilaAgregada } from "../src/motor/sueldos/filas";
 import { dentroDeLimites, dosCifras, limitesDe, mesDe, validarAporte, type PaisAportable } from "../src/motor/sueldos/reglas";
 import { SLUG_SUELDOS } from "../src/motor/sueldos/rutas";
@@ -28,7 +32,7 @@ interface Db {
   exec(sql: string): Promise<unknown>;
   close(): Promise<void>;
 }
-type Rol = "anon" | "authenticated" | "service_role";
+type Rol = "anon" | "authenticated" | "service_role" | "dueno";
 
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dir = path.join(raiz, "supabase", "migrations");
@@ -37,6 +41,7 @@ const migraciones = readdirSync(dir)
   .sort()
   .map((f) => ({ f, sql: readFileSync(path.join(dir, f), "utf8") }));
 const propia = migraciones.find((m) => /_ca_sueldos\.sql$/.test(m.f));
+const endurecer = migraciones.find((m) => /_ca_sueldos_endurecer\.sql$/.test(m.f));
 
 let pasadas = 0;
 let fallas = 0;
@@ -66,6 +71,33 @@ function estaticos() {
   ok(/revoke execute on function public\.ca_sueldos_aportar\([^)]*\) from public, anon, authenticated;/.test(sql), "aportar solo para service_role");
   ok(/revoke execute on function public\.ca_sueldos_tope\(\) from public, anon, authenticated;/.test(sql), "el tope no se ejecuta suelto");
   ok((sql.match(/set search_path = ''/g) ?? []).length >= 4, "toda función fija search_path");
+
+  seccion("migración de endurecimiento");
+  ok(!!endurecer, "existe supabase/migrations/*_ca_sueldos_endurecer.sql");
+  if (!endurecer) return;
+  const e = endurecer.sql;
+  ok(endurecer.f > propia.f, "va después de la primera");
+  ok(!/create policy/i.test(e), "sin policies");
+  ok(!/\bcreate table (?!if not exists)/i.test(e) && !/\bcreate function\b/i.test(e), "re-ejecutable: create table if not exists y create or replace");
+  ok(e.includes(`c.n >= ${K} and coalesce(d.dias, 0) >= ${MIN_DIAS} and c.meses >= ${MIN_MESES}`), `publica con K = ${K}, ${MIN_DIAS} días y ${MIN_MESES} meses, como catalogo.ts`);
+  ok(e.includes(`when j.n >= ${CERCA} then 'cerca'`), `«cerca» desde ${CERCA}, como catalogo.ts`);
+  ok(e.includes("greatest(q.q3 - q.q1, 0.1 * q.q2)"), "piso del IQR al 10 % de la mediana, como estadistica.ts");
+  ok(e.includes("drop function if exists public.ca_sueldos_agregados(text, text);"), "la lectura en vivo que tenía anon se borra");
+  ok(e.includes("drop function if exists public.ca_sueldos_aportar("), "la carga que devolvía la celda se borra");
+  for (const f of ["ca_sueldos_sumar", "ca_sueldos_leer", "ca_sueldos_paises", "ca_sueldos_publicar", "ca_sueldos_calcular", "ca_sueldos_redondear", "ca_sueldos_al_dia"]) {
+    ok(new RegExp(`revoke execute on function public\\.${f}\\([^)]*\\) from public, anon, authenticated`).test(e), `${f}: revoke de public, anon y authenticated`);
+  }
+  ok((e.match(/set search_path = ''/g) ?? []).length >= 7, "toda función fija search_path");
+  ok(!/\bip\b\s+(text|inet)/i.test(e), "ninguna tabla guarda la IP");
+
+  seccion("endpoints");
+  const post = readFileSync(path.join(raiz, "src", "app", "api", "sueldos", "route.ts"), "utf8");
+  ok(post.includes("json({ ok: true }, 200)") && !/celda/.test(post.replace(/\/\/.*$/gm, "")), "el POST responde solo { ok: true }, sin la celda");
+  ok(post.includes("ca_sueldos_sumar") && !post.includes("ca_sueldos_aportar"), "el POST usa ca_sueldos_sumar");
+  const lectura = readFileSync(path.join(raiz, "src", "lib", "sueldos", "lectura.ts"), "utf8");
+  ok(!lectura.includes("SUPABASE_ANON_KEY") && lectura.includes("ca_sueldos_leer"), "la lectura pasa por la service role y ca_sueldos_leer, nunca por la anon key");
+  ok(edicionValida("mx") && edicionValida("ar") && edicionValida("global"), "?e= acepta ediciones del registro, ar y global");
+  ok(!edicionValida("qq") && !edicionValida("mx-qq") && !edicionValida("MX") && !edicionValida("x".repeat(40)), "?e= rechaza lo que no es una edición");
 }
 
 const PAIS: PaisAportable = { mercado: "mx", moneda: "MXN", ppa: 10 };
@@ -100,18 +132,46 @@ function reglas() {
   ok(edicionDeBase("https://calcularya.com/salary-around-the-world") === "global", "la home global");
 }
 
+// Aportes con valores dados, repartidos en los meses (el día lo cuenta quien llama).
+const deMes = (valores: readonly number[], meses: readonly string[]): AporteCelda[] => valores.map((b, i) => ({ b, mes: meses[i % meses.length] }));
+
 function estadistica() {
   seccion("estadística (espejo de la base)");
   ok(percentil([1, 2, 3, 4], 0.5) === 2.5 && percentil([10], 0.75) === 10, "percentil como percentile_cont");
+  const dosMeses = ["2026-09", "2026-10"];
   const nueve = Array.from({ length: 9 }, (_, i) => 1000 + i * 100);
-  ok(cifrasDe(nueve) === null, "con 9 aportes no se publica");
-  ok(cifrasDe([...nueve, 1900])?.n === 10, "con 10 sí");
+  ok(celdaDe(deMes(nueve, dosMeses), 5).cifras === null, "con 9 aportes no se publica");
+  ok(celdaDe(deMes([...nueve, 1900], dosMeses), 5).cifras !== null, "con 10 de 3 días y 2 meses sí");
+  ok(celdaDe(deMes([...nueve, 1900], dosMeses), 2).cifras === null, "con 10 de 2 días, no");
+  ok(celdaDe(deMes([...nueve, 1900], ["2026-10"]), 9).cifras === null, "con 10 de un solo mes, no");
+  ok(
+    tramoDe(9, false) === "cerca" && tramoDe(6, false) === "lejos" && tramoDe(10, true) === "10-19" && tramoDe(20, true) === "20-49" && tramoDe(50, true) === "50+",
+    "tramos: lejos, cerca, 10-19, 20-49, 50+",
+  );
+  ok(celdaDe(deMes([...nueve, 1900], ["2026-10"]), 9).tramo === "cerca", "sin diversidad queda «cerca», nunca la cuenta");
   const quince = Array.from({ length: 15 }, (_, i) => 20000 + i * 1000);
   const conTroll = [...quince, 1_400_000];
   ok(sinAtipicos(conTroll).length === 15, "un sueldo absurdo queda fuera");
-  ok(cifrasDe(conTroll)?.p50 === cifrasDe(quince)?.p50, "y no mueve la mediana", [cifrasDe(conTroll), cifrasDe(quince)]);
-  const nueveYTroll = [...nueve, 9_000_000];
-  ok(cifrasDe(nueveYTroll) === null, "un atípico no completa una celda: 9 buenos y 1 absurdo no publican");
+  ok(celdaDe(deMes(conTroll, dosMeses), 9).cifras?.p50 === celdaDe(deMes(quince, dosMeses), 9).cifras?.p50, "y no mueve la mediana");
+  ok(celdaDe(deMes([...nueve, 9_000_000], dosMeses), 9).cifras === null, "un atípico no completa una celda: 9 buenos y 1 absurdo no publican");
+
+  seccion("piso del IQR (envenenamiento)");
+  const iguales = Array.from({ length: 30 }, () => 25000);
+  const reales = [20000, 21000, 22000, 23000, 24000, 26000, 27000, 28000, 29000, 30000];
+  ok(sinAtipicos([...iguales, ...reales]).length === 40, "30 valores iguales no borran a los sueldos reales cercanos", sinAtipicos([...iguales, ...reales]).length);
+  ok(sinAtipicos([...iguales, 90000]).length === 30, "pero un absurdo sigue afuera");
+
+  seccion("redondeo de publicación");
+  ok(redondearPublicado(23456, 23456) === 23000 && redondearPublicado(31234, 23456) === 31000, "múltiplo del 5 % de la mediana y dos cifras", [redondearPublicado(23456, 23456), redondearPublicado(31234, 23456)]);
+  ok(redondearPublicado(10, 23456) > 0, "nunca publica cero");
+  // Diferenciación con la foto de antes y la de después: el aporte nuevo solo mueve cada cuartil según de
+  // qué lado cae, así que 19 montos distintos dan a lo sumo 4 fotos distintas (el cuarto en que cayó),
+  // nunca el monto.
+  const base = Array.from({ length: 30 }, (_, i) => 20000 + i * 600);
+  const fotos = new Set<string>();
+  for (let v = 20000; v <= 38000; v += 1000) fotos.add(JSON.stringify(celdaDe(deMes([...base, v], dosMeses), 9).cifras));
+  ok(fotos.size <= 4, "con la foto de antes y la de después no se recupera el monto de un aporte", `${fotos.size} fotos para 19 montos`);
+
   const c = { p25: 1000, p50: 1500, p75: 2200 };
   ok(percentilAproximado(1500, c) === 50, "en la mediana, 50", percentilAproximado(1500, c));
   ok(percentilAproximado(1000, c) === 25 && percentilAproximado(2200, c) === 75, "en los cuartiles, 25 y 75", [percentilAproximado(1000, c), percentilAproximado(2200, c)]);
@@ -149,8 +209,8 @@ const SUPABASE = `
   alter default privileges for role dueno in schema public grant all on functions to anon, authenticated, service_role;
 `;
 
-async function aplicar(db: Db, soloPropia: boolean) {
-  for (const m of soloPropia ? [propia!] : migraciones) {
+async function aplicar(db: Db, lista: readonly { f: string; sql: string }[] = migraciones) {
+  for (const m of lista) {
     if (m.f.includes("_cron")) continue;
     await db.exec("set role dueno");
     try {
@@ -182,115 +242,244 @@ async function falla(p: Promise<unknown>, codigo: string, que: string) {
 
 let n = 0;
 const uuid = () => `00000000-0000-4000-8000-${String(++n).padStart(12, "0")}`;
+let nh = 0;
+const huella = () => `huella-de-prueba-${String(++nh).padStart(8, "0")}`;
 const MES = mesDe(new Date());
-const VIEJO = mesDe(new Date(Date.now() - 400 * 86_400_000));
+const DIA_MS = 86_400_000;
+const hace = (dias: number) => new Date(Date.now() - dias * DIA_MS).toISOString().slice(0, 10);
+// Día `dia` de hace `meses` meses calendario (UTC), siempre antes de hoy.
+const delMes = (meses: number, dia: number) => {
+  const h = new Date();
+  return new Date(Date.UTC(h.getUTCFullYear(), h.getUTCMonth() - meses, dia)).toISOString().slice(0, 10);
+};
+const mesDeDia = (dia: string) => dia.slice(0, 7);
 
-async function aportar(db: Db, o: { mercado?: string; ocupacion?: string; experiencia?: string; bruto: number; mes?: string; id?: string; moneda?: string }) {
+interface Aporte {
+  mercado?: string;
+  ocupacion?: string;
+  experiencia?: string;
+  bruto: number;
+  id?: string;
+  moneda?: string;
+  huella?: string;
+}
+
+// La carga real, como el endpoint: hoy (UTC) y con huella.
+async function sumar(db: Db, o: Aporte) {
   return como(db, "service_role", () =>
-    db.query("select * from public.ca_sueldos_aportar($1, $2, $3, $4, $5, $6, $7)", [o.id ?? uuid(), o.mercado ?? "mx", o.moneda ?? "MXN", o.ocupacion ?? "enfermeria", o.experiencia ?? "3-5", o.bruto, o.mes ?? MES]),
+    db.query("select public.ca_sueldos_sumar($1, $2, $3, $4, $5, $6, $7)", [o.id ?? uuid(), o.mercado ?? "mx", o.moneda ?? "MXN", o.ocupacion ?? "enfermeria", o.experiencia ?? "3-5", o.bruto, o.huella ?? huella()]),
   );
 }
 
+// Un aporte pendiente de un día dado (lo que habría dejado ca_sueldos_sumar ese día), para armar
+// celdas con varios días y meses sin esperar.
+async function sembrar(db: Db, o: Aporte & { dia: string }) {
+  return como(db, "dueno", () =>
+    db.query("insert into public.ca_sueldos_pendientes values ($1, $2, $3, $4, $5, $6, to_char($7::date, 'YYYY-MM'), $7::date)", [
+      o.id ?? uuid(),
+      o.mercado ?? "mx",
+      o.moneda ?? "MXN",
+      o.ocupacion ?? "enfermeria",
+      o.experiencia ?? "3-5",
+      o.bruto,
+      o.dia,
+    ]),
+  );
+}
+
+// Lo de hoy pasa a ser de hace `dias` días: así se prueba qué publica la foto de mañana.
+async function pasarDias(db: Db, dias: number) {
+  await como(db, "dueno", async () => {
+    await db.query("update public.ca_sueldos_pendientes set dia = dia - $1::int, mes = to_char(dia - $1::int, 'YYYY-MM') where dia >= (now() at time zone 'utc')::date", [dias]);
+    await db.query("update public.ca_sueldos_huellas set dia = dia - $1::int where dia >= (now() at time zone 'utc')::date", [dias]);
+  });
+}
+
+async function publicar(db: Db, forzar = true): Promise<boolean> {
+  const r = await como(db, "service_role", () => db.query("select public.ca_sueldos_publicar($1) as ok", [forzar]));
+  return r.rows[0]?.ok === true;
+}
+
 async function leer(db: Db, rol: Rol, mercado = "mx") {
-  return (await como(db, rol, () => db.query("select * from public.ca_sueldos_agregados($1)", [mercado]))).rows as unknown as FilaAgregada[];
+  return (await como(db, rol, () => db.query("select * from public.ca_sueldos_leer($1)", [mercado]))).rows as unknown as FilaAgregada[];
 }
 
 const celda = (filas: FilaAgregada[], ocupacion: string, experiencia: string | null = null) => filas.find((f) => f.ocupacion === ocupacion && f.experiencia === experiencia);
+const cuenta = async (db: Db, sql: string) => Number((await como(db, "dueno", () => db.query(sql))).rows[0]?.n);
+const COLUMNAS_LECTURA = "ocupacion,experiencia,moneda,tramo,p25,p50,p75,desde,hasta";
 
-async function postgres(PGlite: new () => Db) {
+function igualQueTs(fila: FilaAgregada | undefined, ts: ReturnType<typeof celdaDe>, que: string) {
+  const base = fila ? { tramo: fila.tramo, p25: fila.p25 === null ? null : Number(fila.p25), p50: fila.p50 === null ? null : Number(fila.p50), p75: fila.p75 === null ? null : Number(fila.p75) } : null;
+  const espejo = { tramo: ts.tramo, p25: ts.cifras?.p25 ?? null, p50: ts.cifras?.p50 ?? null, p75: ts.cifras?.p75 ?? null };
+  ok(JSON.stringify(base) === JSON.stringify(espejo), que, { base, ts: espejo });
+}
+
+async function sobreLaVieja(PGlite: new () => Db) {
+  seccion("la migración nueva sobre la vieja (con datos)");
   const db = new PGlite();
   try {
     await db.exec(SUPABASE);
-    await aplicar(db, false);
-    await aplicar(db, true);
-    ok(true, "las migraciones se aplican y la de sueldos se puede volver a correr");
-
-    seccion("k-anonimato");
-    const valores: number[] = [];
-    for (let i = 0; i < 9; i++) {
-      const b = dosCifras(18000 + i * 1500);
-      valores.push(b);
-      await aportar(db, { bruto: b, experiencia: i < 5 ? "3-5" : "6-10" });
+    await aplicar(db, migraciones.filter((m) => m !== endurecer));
+    for (let i = 0; i < 3; i++) {
+      await como(db, "service_role", () => db.query("select * from public.ca_sueldos_aportar($1, 'mx', 'MXN', 'cocina', '0-2', 20000, $2)", [uuid(), MES]));
     }
-    let filas = await leer(db, "anon");
-    let c = celda(filas, "enfermeria");
-    ok(Number(c?.total) === 9 && c?.n === null && c?.p50 === null, "con 9 aportes: la cuenta sí, las cifras no", c);
-    ok(filas.every((f) => f.p25 === null && f.p75 === null && f.desde === null), "con 9 aportes ninguna fila trae un monto");
-    const r10 = await aportar(db, { bruto: 33000, experiencia: "3-5" });
-    valores.push(33000);
-    c = (r10.rows as unknown as FilaAgregada[]).find((f) => f.ocupacion === "enfermeria" && f.experiencia === null);
-    ok(c?.n === 10, "con el décimo aporte se publica, y aportar lo devuelve al instante", c);
-    const esperado = cifrasDe(valores)!;
-    ok(Number(c?.p25) === esperado.p25 && Number(c?.p50) === esperado.p50 && Number(c?.p75) === esperado.p75, "las cifras de la base son las del espejo en TypeScript", { base: c, ts: esperado });
-    filas = await leer(db, "anon");
-    const exp35 = celda(filas, "enfermeria", "3-5");
-    const exp610 = celda(filas, "enfermeria", "6-10");
-    ok(Number(exp35?.total) === 6 && exp35?.p50 === null, "por experiencia también hace falta K (6 aportes: nada)", exp35);
-    ok(Number(exp610?.total) === 4 && exp610?.p50 === null, "4 aportes en otro rango: nada", exp610);
-    ok(c?.desde === MES && c?.hasta === MES, "el período es el mes, nunca un día");
+    await aplicar(db, [endurecer!]);
+    ok((await cuenta(db, "select count(*)::int as n from public.ca_sueldos_aportes")) === 3, "los aportes guardados con la primera siguen");
+    const viejas = await db.query("select proname from pg_proc where proname in ('ca_sueldos_aportar', 'ca_sueldos_agregados', 'ca_sueldos_tope')");
+    ok(viejas.rows.length === 0, "la lectura en vivo, la carga que devolvía la celda y el trigger viejo ya no existen", viejas.rows);
+    ok((await publicar(db)) === true, "se publica sobre los datos viejos");
+    const cocina = celda(await leer(db, "service_role"), "cocina");
+    ok(cocina?.tramo === "lejos" && cocina.p50 === null, "3 aportes viejos: «lejos», sin cifras", cocina);
+    await aplicar(db, [propia!, endurecer!]);
+    await aplicar(db, [endurecer!]);
+    const otraVez = await db.query("select proname from pg_proc where proname in ('ca_sueldos_aportar', 'ca_sueldos_agregados', 'ca_sueldos_tope')");
+    ok(otraVez.rows.length === 0 && (await cuenta(db, "select count(*)::int as n from public.ca_sueldos_aportes")) === 3, "volver a correr las dos deja el mismo estado y los mismos datos");
+  } finally {
+    await db.close();
+  }
+}
 
-    seccion("idempotencia y reintentos");
+async function postgres(PGlite: new () => Db) {
+  await sobreLaVieja(PGlite);
+  const db = new PGlite();
+  try {
+    await db.exec(SUPABASE);
+    await aplicar(db);
+    await aplicar(db, [endurecer!]);
+    ok(true, "las migraciones se aplican y la de endurecimiento se puede volver a correr");
+
+    seccion("diferenciación con aportes falsos");
+    for (let i = 0; i < 9; i++) await sumar(db, { bruto: 20000 + 1000 * i });
+    await sumar(db, { bruto: 33000 });
+    await publicar(db);
+    ok(!celda(await leer(db, "service_role"), "enfermeria"), "9 falsos + 1 real el mismo día: no se ve nada, ni la cuenta (la foto es de días anteriores)");
+    await pasarDias(db, 1);
+    await publicar(db);
+    let enf = celda(await leer(db, "service_role"), "enfermeria");
+    ok(enf?.tramo === "cerca" && enf.p25 === null && enf.p50 === null && enf.p75 === null && enf.desde === null, "al día siguiente: «falta poco» y ninguna cifra (un día y un mes no alcanzan)", enf);
+    for (let d = 2; d <= 4; d++) await sembrar(db, { bruto: 21000 + d * 1000, ocupacion: "farmacia", dia: delMes(1, d) });
+    for (let i = 0; i < 6; i++) await sembrar(db, { bruto: 24000 + i * 1000, ocupacion: "farmacia", dia: delMes(1, 6) });
+    await sembrar(db, { bruto: 30000, ocupacion: "farmacia", dia: delMes(1, 9) });
+    await publicar(db);
+    const far = celda(await leer(db, "service_role"), "farmacia");
+    ok(far?.tramo === "cerca" && far.p50 === null, "9 falsos en 3 días + 1 real, todo en un mes: tampoco publica", far);
+    const filas = await leer(db, "service_role");
+    ok(filas.every((f) => Object.keys(f).join(",") === COLUMNAS_LECTURA), "la lectura no trae cuenta exacta (ni total ni n)", Object.keys(filas[0] ?? {}));
+
+    seccion("publicación con diversidad");
+    const dias = [delMes(2, 3), delMes(2, 10), delMes(1, 5), delMes(1, 12), delMes(1, 20)];
+    const dev: AporteCelda[] = [];
+    for (let i = 0; i < 12; i++) {
+      const b = dosCifras(40000 + i * 2300);
+      const dia = dias[i % dias.length];
+      dev.push({ b, mes: mesDeDia(dia) });
+      await sembrar(db, { bruto: b, ocupacion: "desarrollo-software", dia });
+    }
+    for (let i = 0; i < 12; i++) await sembrar(db, { bruto: 30000 + i * 1000, ocupacion: "cocina", dia: delMes(1, 7) });
+    for (let i = 0; i < 12; i++) await sembrar(db, { bruto: 30000 + i * 1000, ocupacion: "ventas", dia: delMes(1, 3 + (i % 3)) });
+    for (let i = 0; i < 12; i++) await sembrar(db, { bruto: 30000 + i * 1000, ocupacion: "diseno", dia: i % 2 ? delMes(1, 8) : delMes(2, 8) });
+    await publicar(db);
+    let mx = await leer(db, "service_role");
+    const d = celda(mx, "desarrollo-software");
+    ok(d?.tramo === "10-19" && d.p50 !== null, "12 aportes de 5 días y 2 meses: se publica, con la cuenta en rango", d);
+    igualQueTs(d, celdaDe(dev, 5), "las cifras de la base son las del espejo en TypeScript");
+    igualQueTs(celda(mx, "desarrollo-software", "3-5"), celdaDe(dev, 5), "y la del rango de experiencia también");
+    ok(celda(mx, "cocina")?.p50 === null, "12 aportes de un solo día: no");
+    ok(celda(mx, "ventas")?.p50 === null, "12 aportes de 3 días de un mes: no");
+    ok(celda(mx, "diseno")?.p50 === null, "12 aportes de 2 días en 2 meses: no");
+    ok(d?.desde === mesDeDia(dias[0]) && d?.hasta === mesDeDia(dias[4]), "el período es de meses, nunca de días", d);
+
+    seccion("la foto es diaria");
+    ok((await publicar(db, false)) === false, "una segunda publicación el mismo día no corre");
+    const antes = JSON.stringify(await leer(db, "service_role"));
+    for (let i = 0; i < 3; i++) await sumar(db, { bruto: 52000, ocupacion: "desarrollo-software" });
+    ok(JSON.stringify(await leer(db, "service_role")) === antes, "aportes de hoy no cambian lo publicado hoy");
+    ok((await cuenta(db, "select count(*)::int as n from public.ca_sueldos_pendientes where dia < (now() at time zone 'utc')::date")) === 0, "no quedan pendientes de días cerrados");
+    ok((await cuenta(db, "select count(*)::int as n from public.ca_sueldos_huellas where dia < (now() at time zone 'utc')::date")) === 0, "ni huellas de días cerrados");
+    const cols = await db.query("select column_name from information_schema.columns where table_schema = 'public' and table_name = 'ca_sueldos_aportes' order by ordinal_position");
+    ok(cols.rows.map((r) => r.column_name).join(",") === "id,mercado,moneda,ocupacion,experiencia,bruto_mensual,mes", "lo publicado no guarda el día: la tabla sigue con 7 columnas", cols.rows);
+    const colsDias = await db.query("select column_name from information_schema.columns where table_schema = 'public' and table_name = 'ca_sueldos_dias' order by ordinal_position");
+    ok(colsDias.rows.map((r) => r.column_name).join(",") === "mercado,ocupacion,experiencia,mes,dias", "de los días solo queda la cuenta por celda y mes", colsDias.rows);
+
+    seccion("topes del día");
+    const h = huella();
     const id = uuid();
-    await aportar(db, { id, bruto: 21000, ocupacion: "cocina" });
-    await aportar(db, { id, bruto: 21000, ocupacion: "cocina" });
-    ok(Number(celda(await leer(db, "anon"), "cocina")?.total) === 1, "el mismo id dos veces cuenta una");
+    await sumar(db, { id, bruto: 30000, ocupacion: "seguridad", huella: h });
+    await sumar(db, { id, bruto: 30000, ocupacion: "seguridad", huella: h });
+    ok((await cuenta(db, `select count(*)::int as n from public.ca_sueldos_pendientes where id = '${id}'`)) === 1, "el mismo id dos veces es un reintento: cuenta una y no choca con los topes");
+    await falla(sumar(db, { bruto: 31000, ocupacion: "seguridad", huella: h }), "P0001", "la misma huella no carga dos veces la misma celda en el día");
+    await sumar(db, { bruto: 30000, ocupacion: "limpieza", huella: h });
+    await sumar(db, { bruto: 30000, ocupacion: "comercio", huella: h });
+    await falla(sumar(db, { bruto: 30000, ocupacion: "salon", huella: h }), "P0001", "una huella carga 3 aportes por día, no 4");
+    await falla(sumar(db, { bruto: 30000, ocupacion: "salon", huella: "corta" }), "P0001", "una huella con otra forma se rechaza");
+    for (let i = 0; i < 30; i++) await sumar(db, { bruto: 30000, ocupacion: "transporte" });
+    await falla(sumar(db, { bruto: 30000, ocupacion: "transporte" }), "P0001", "una celda recibe hasta 30 aportes por día");
+    await pasarDias(db, 1);
+    await publicar(db);
+    await sumar(db, { bruto: 30000, ocupacion: "transporte" });
+    ok(true, "al día siguiente la celda vuelve a recibir");
+    ok((await cuenta(db, "select count(*)::int as n from public.ca_sueldos_huellas where dia < (now() at time zone 'utc')::date")) === 0, "la publicación borra las huellas del día cerrado");
 
-    seccion("atípicos");
-    const buenos: number[] = [];
-    for (let i = 0; i < 14; i++) {
-      const b = dosCifras(40000 + i * 2000);
-      buenos.push(b);
-      await aportar(db, { bruto: b, ocupacion: "desarrollo-software" });
+    seccion("piso del IQR en la base");
+    const diasLog = [delMes(2, 4), delMes(1, 4), delMes(1, 14)];
+    const valoresLog = [...Array.from({ length: 15 }, () => 25000), 20000, 21000, 22000, 23000, 24000, 26000, 27000, 28000, 29000, 30000];
+    const log: AporteCelda[] = [];
+    for (const [i, b] of valoresLog.entries()) {
+      const dia = diasLog[i % 3];
+      log.push({ b, mes: mesDeDia(dia) });
+      await sembrar(db, { bruto: b, ocupacion: "logistica", dia });
     }
-    await aportar(db, { bruto: 1_400_000, ocupacion: "desarrollo-software" });
-    const dev = celda(await leer(db, "anon"), "desarrollo-software");
-    const espejo = cifrasDe([...buenos, 1_400_000])!;
-    ok(Number(dev?.n) === 14 && Number(dev?.total) === 14, "el atípico no entra en la cuenta", dev);
-    ok(Number(dev?.p50) === espejo.p50 && Number(dev?.p50) === cifrasDe(buenos)!.p50, "ni mueve la mediana", { base: dev?.p50, ts: espejo.p50 });
-    for (let i = 0; i < 9; i++) await aportar(db, { bruto: 25000, ocupacion: "limpieza" });
-    await aportar(db, { bruto: 900_000, ocupacion: "limpieza" });
-    const limp = celda(await leer(db, "anon"), "limpieza");
-    ok(limp?.n === null && Number(limp?.total) === 9, "9 buenos y un absurdo: no se publica", limp);
+    await publicar(db);
+    const lg = celda(await leer(db, "service_role"), "logistica");
+    ok(lg?.tramo === "20-49", "15 valores iguales no borran a los 10 reales (25 aportes: 20 a 49)", lg);
+    igualQueTs(lg, celdaDe(log, 3), "y la base filtra igual que el espejo");
 
     seccion("ventana y moneda");
-    for (let i = 0; i < 12; i++) await aportar(db, { bruto: 30000, ocupacion: "ventas", mes: VIEJO });
-    ok(!celda(await leer(db, "anon"), "ventas"), "aportes de hace más de 12 meses no cuentan");
-    for (let i = 0; i < 10; i++) await aportar(db, { bruto: 3000, mercado: "ve", moneda: "VEF", ocupacion: "ventas", mes: VIEJO });
-    for (let i = 0; i < 3; i++) await aportar(db, { bruto: 300, mercado: "ve", moneda: "VES", ocupacion: "ventas" });
-    const ve = await leer(db, "anon", "ve");
-    ok(ve.every((f) => f.moneda === "VES"), "una sola moneda por país, la del aporte más nuevo", ve);
+    for (let i = 0; i < 12; i++) await sembrar(db, { bruto: 30000, ocupacion: "periodismo", dia: hace(400 + (i % 3) * 20) });
+    for (let i = 0; i < 10; i++) await sembrar(db, { bruto: 3000, mercado: "ve", moneda: "VEF", ocupacion: "ventas", dia: delMes(3, 1 + i) });
+    for (let i = 0; i < 3; i++) await sembrar(db, { bruto: 300, mercado: "ve", moneda: "VES", ocupacion: "ventas", dia: delMes(1, 1 + i) });
+    await publicar(db);
+    ok(!celda(await leer(db, "service_role"), "periodismo"), "aportes de hace más de 12 meses no cuentan");
+    const ve = await leer(db, "service_role", "ve");
+    ok(ve.length > 0 && ve.every((f) => f.moneda === "VES"), "una sola moneda por país, la del aporte más nuevo", ve);
 
     seccion("checks de la tabla");
-    await falla(aportar(db, { bruto: 1234 }), "23514", "un monto sin redondear se rechaza");
-    await falla(aportar(db, { bruto: 0 }), "23514", "monto cero se rechaza");
-    await falla(aportar(db, { bruto: 1200, experiencia: "20+" }), "23514", "experiencia inventada");
-    await falla(aportar(db, { bruto: 1200, mes: "2026-13" }), "23514", "mes inválido");
-    await falla(aportar(db, { bruto: 1200, mercado: "MX" }), "23514", "mercado en mayúsculas");
+    await falla(sumar(db, { bruto: 1234, ocupacion: "mecanica" }), "23514", "un monto sin redondear se rechaza");
+    await falla(sumar(db, { bruto: 0, ocupacion: "mecanica" }), "23514", "monto cero se rechaza");
+    await falla(sumar(db, { bruto: 1200, experiencia: "20+", ocupacion: "mecanica" }), "23514", "experiencia inventada");
+    await falla(sumar(db, { bruto: 1200, mercado: "MX", ocupacion: "mecanica" }), "23514", "mercado en mayúsculas");
 
     seccion("RLS y grants");
+    const tablas = ["ca_sueldos_aportes", "ca_sueldos_pendientes", "ca_sueldos_huellas", "ca_sueldos_dias", "ca_sueldos_publicados", "ca_sueldos_estado"];
     for (const rol of ["anon", "authenticated"] as const) {
-      await como(db, rol, () => falla(db.query("select * from public.ca_sueldos_aportes"), "42501", `${rol} no lee la tabla cruda`));
+      for (const t of tablas) await como(db, rol, () => falla(db.query(`select * from public.${t}`), "42501", `${rol} no lee ${t}`));
+      await como(db, rol, () => falla(db.query("insert into public.ca_sueldos_pendientes values ($1, 'mx', 'MXN', 'cocina', '0-2', 20000, $2, current_date)", [uuid(), MES]), "42501", `${rol} no inserta directo`));
+      await como(db, rol, () => falla(db.query("select * from public.ca_sueldos_leer('mx')"), "42501", `${rol} no ejecuta ca_sueldos_leer`));
+      await como(db, rol, () => falla(db.query("select * from public.ca_sueldos_paises()"), "42501", `${rol} no ejecuta ca_sueldos_paises`));
+      await como(db, rol, () => falla(db.query("select public.ca_sueldos_publicar(true)"), "42501", `${rol} no ejecuta ca_sueldos_publicar`));
       await como(db, rol, () =>
-        falla(db.query("insert into public.ca_sueldos_aportes values ($1, 'mx', 'MXN', 'cocina', '0-2', 20000, $2)", [uuid(), MES]), "42501", `${rol} no inserta directo`),
+        falla(db.query("select public.ca_sueldos_sumar($1, 'mx', 'MXN', 'cocina', '0-2', 20000, $2)", [uuid(), huella()]), "42501", `${rol} no ejecuta ca_sueldos_sumar`),
       );
-      await como(db, rol, () => falla(db.query("delete from public.ca_sueldos_aportes"), "42501", `${rol} no borra`));
-      await como(db, rol, () =>
-        falla(db.query("select * from public.ca_sueldos_aportar($1, 'mx', 'MXN', 'cocina', '0-2', 20000, $2)", [uuid(), MES]), "42501", `${rol} no ejecuta aportar`),
+      const ejecutables = await db.query(
+        `select p.proname from pg_proc p join pg_namespace s on s.oid = p.pronamespace
+         where s.nspname = 'public' and p.proname like 'ca\\_sueldos\\_%' and p.proname <> 'ca_sueldos_dos_cifras' and has_function_privilege('${rol}', p.oid, 'execute')`,
       );
-      const lectura = await leer(db, rol);
-      ok(lectura.length > 0, `${rol} lee los agregados`);
+      ok(ejecutables.rows.length === 0, `${rol} no ejecuta ninguna función de sueldos`, ejecutables.rows);
     }
-    const crudo = await como(db, "service_role", () => db.query("select count(*)::int as n from public.ca_sueldos_aportes"));
-    ok(Number(crudo.rows[0]?.n) > 0, "service_role (el endpoint) lee la tabla pese a FORCE RLS");
-    const cols = await db.query("select column_name from information_schema.columns where table_schema = 'public' and table_name = 'ca_sueldos_aportes' order by ordinal_position");
-    ok(cols.rows.map((r) => r.column_name).join(",") === "id,mercado,moneda,ocupacion,experiencia,bruto_mensual,mes", "la tabla tiene solo las 7 columnas", cols.rows);
-    const definer = await db.query("select p.prosecdef, p.proconfig from pg_proc p where p.proname = 'ca_sueldos_agregados'");
-    ok(definer.rows[0]?.prosecdef === true && String(definer.rows[0]?.proconfig).includes("search_path="), "la lectura pública es security definer con search_path fijo");
+    const paises = await como(db, "service_role", () => db.query("select * from public.ca_sueldos_paises()"));
+    ok(paises.rows.map((r) => r.mercado).join(",") === "mx", "ca_sueldos_paises lista solo los países con algo publicado", paises.rows);
+    const firma = await db.query("select pg_get_function_result(p.oid) as r from pg_proc p where p.proname = 'ca_sueldos_sumar'");
+    ok(firma.rows[0]?.r === "void", "ca_sueldos_sumar no devuelve nada", firma.rows);
+    const definer = await db.query("select p.proname, p.prosecdef, p.proconfig from pg_proc p where p.proname in ('ca_sueldos_leer', 'ca_sueldos_sumar', 'ca_sueldos_publicar', 'ca_sueldos_paises')");
+    ok(definer.rows.length === 4 && definer.rows.every((r) => r.prosecdef === true && String(r.proconfig).includes("search_path=")), "lectura, carga y publicación son security definer con search_path fijo", definer.rows);
 
     seccion("forma de la página");
-    const pais = agregadosDeFilas("mx", await leer(db, "anon"));
-    ok(pais.moneda === "MXN" && pais.ocupaciones.enfermeria?.cifras?.n === 10 && pais.ocupaciones.cocina?.cifras === null, "agregadosDeFilas arma la ocupación publicada y la que falta", pais.ocupaciones.enfermeria);
-    ok(pais.ocupaciones.enfermeria?.porExperiencia["3-5"]?.total === 6, "y sus rangos de experiencia");
+    mx = await leer(db, "service_role");
+    const pais = agregadosDeFilas("mx", mx);
+    ok(pais.moneda === "MXN" && pais.ocupaciones["desarrollo-software"]?.cifras !== null && pais.ocupaciones["desarrollo-software"]?.tramo === "10-19", "agregadosDeFilas arma la ocupación publicada", pais.ocupaciones["desarrollo-software"]);
+    ok(pais.ocupaciones.enfermeria?.cifras === null && pais.ocupaciones.enfermeria?.tramo === "cerca", "y la que todavía no", pais.ocupaciones.enfermeria);
+    ok(pais.ocupaciones["desarrollo-software"]?.porExperiencia["3-5"]?.tramo === "10-19", "y sus rangos de experiencia");
+    ok(!JSON.stringify(pais).match(/"(total|n)":/), "la forma de la página no tiene cuenta exacta");
   } finally {
     await db.close();
   }
@@ -310,7 +499,6 @@ const IGUALES = new Set([
   "pt:experienciasCortas.6-10",
   "pt:pagina.colMediana",
   "pt:pagina.entre",
-  "pt:pagina.falta1",
   "pt:aporte.ceja",
   "en:ocupaciones.marketing",
   "it:ocupaciones.cocina",

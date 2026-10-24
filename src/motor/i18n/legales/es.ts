@@ -90,8 +90,8 @@ export const es: DiccionarioLegal = ({ actualizado, mail }) => ({
         {
           titulo: "Los sueldos que se aportan",
           parrafos: [
-            "En «Sueldos reales» se puede sumar un sueldo de forma anónima y opcional, solo con un consentimiento explícito. Se guarda el país, la ocupación (de una lista cerrada), el rango de años de experiencia, el sueldo bruto por mes redondeado a dos cifras y el mes. No se guarda la IP, el navegador, una cuenta ni la fecha exacta.",
-            "Solo publicamos la mediana y el rango de grupos de 10 personas o más. Nunca se muestra un sueldo individual.",
+            "En «Sueldos reales» se puede sumar un sueldo de forma anónima y opcional, solo con un consentimiento explícito. Se guarda el país, la ocupación (de una lista cerrada), el rango de años de experiencia, el sueldo bruto por mes redondeado a dos cifras y el mes. No se guarda la IP, el navegador ni una cuenta. Hasta la publicación del día siguiente también se guarda el día del aporte y una huella de la conexión, cifrada con una clave que cambia cada día y que no permite volver a la IP; al cerrar el día se borran las dos.",
+            "Las cifras se publican una vez por día. Una ocupación aparece con 10 aportes o más, cargados en varios días y en al menos dos meses distintos. Solo se muestran la mediana y el rango, redondeados, y la cantidad de aportes en rangos, así nadie puede deducir el sueldo de una persona comparando la página de dos días. Nunca se muestra un sueldo individual.",
             "Para no cargar dos veces el mismo país en el mismo mes, el navegador recuerda en su almacenamiento local el país y el mes del aporte, nunca el monto.",
             "Como el aporte no queda ligado a nadie, no hay forma de encontrarlo después para borrarlo.",
           ],

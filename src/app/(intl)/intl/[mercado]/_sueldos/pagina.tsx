@@ -6,11 +6,12 @@ import { ogSueldos } from "@/lib/sueldos/og";
 import { textosSueldos } from "@/motor/i18n/sueldos";
 import { edicionPrincipal } from "@/motor/mundo/rutas";
 import { urlMundo } from "@/motor/mundo/ui/seo";
-import { elegirTitulo, metadataDe, urlIntl } from "@/motor/seo";
-import { intlActivo, NOMBRE_SITIO_INTL } from "@/motor/sitio";
+import { elegirTitulo, hreflangVaAlSitemap, metadataDe, urlIntl } from "@/motor/seo";
+import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import { K } from "@/motor/sueldos/catalogo";
 import { ocupacionesPublicadas } from "@/motor/sueldos/filas";
 import { SLUG_SUELDOS } from "@/motor/sueldos/rutas";
+import { hreflangSueldos } from "@/motor/sueldos/seo";
 import { lugares, rellenar } from "@/motor/sueldos/ui/comun";
 import { PaginaSueldos } from "@/motor/sueldos/ui/PaginaSueldos";
 import type { CodigoMercado, Idioma } from "@/motor/tipos";
@@ -49,14 +50,19 @@ export function crearPaginaSueldos(idioma: Idioma) {
     if (!r) return {};
     const { enPais } = lugares(r.m.idioma, r.m.nombre);
     const datos = await agregadosDe(r.principal);
+    const publicada = Boolean(datos && ocupacionesPublicadas(datos) > 0);
+    // Mismo criterio que el sitemap (los datos del país): o todas las ediciones del país son indexables
+    // y se nombran entre sí, o ninguna.
+    const idiomas = publicada ? hreflangSueldos(registro, modoPublicacion(), r.principal) : undefined;
     const meta = metadataDe({
       mercado: r.m,
       slug,
       title: elegirTitulo([rellenar(r.t.pagina.seoTitulo, { enPais, pais: r.m.nombre }), rellenar(r.t.pagina.h1, { enPais, pais: r.m.nombre })]),
       description: rellenar(r.t.pagina.seoDescripcion, { enPais, pais: r.m.nombre, k: K }),
       imagen: `${urlIntl(r.m.codigo, slug)}/og`,
+      ...(idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}),
     });
-    return datos && ocupacionesPublicadas(datos) > 0 ? meta : { ...meta, robots: { index: false, follow: true } };
+    return publicada ? meta : { ...meta, robots: { index: false, follow: true } };
   }
 
   async function Pagina({ params }: Props) {

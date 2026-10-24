@@ -88,8 +88,8 @@ export const pt: DiccionarioLegal = ({ actualizado, mail }) => ({
         {
           titulo: "Os salários informados",
           parrafos: [
-            "Em «Salários reais» é possível informar um salário de forma anônima e opcional, só com consentimento explícito. Guardamos o país, a profissão (de uma lista fechada), a faixa de anos de experiência, o salário bruto por mês arredondado a dois dígitos e o mês. Não guardamos IP, navegador, conta nem a data exata.",
-            "Só publicamos a mediana e a faixa de grupos de 10 pessoas ou mais. Nenhum salário individual é mostrado.",
+            "Em «Salários reais» é possível informar um salário de forma anônima e opcional, só com consentimento explícito. Guardamos o país, a profissão (de uma lista fechada), a faixa de anos de experiência, o salário bruto por mês arredondado a dois dígitos e o mês. Não guardamos IP, navegador nem conta. Até a publicação do dia seguinte também guardamos o dia da contribuição e uma impressão da conexão, cifrada com uma chave que muda todo dia e que não permite voltar ao IP; ao fechar o dia, as duas são apagadas.",
+            "Os números são publicados uma vez por dia. Uma profissão aparece com 10 contribuições ou mais, feitas em vários dias e em pelo menos dois meses diferentes. Só mostramos a mediana e a faixa, arredondadas, e a quantidade de contribuições em faixas, assim ninguém consegue deduzir o salário de uma pessoa comparando a página de dois dias. Nenhum salário individual é mostrado.",
             "Para não repetir o mesmo país no mesmo mês, o navegador lembra no armazenamento local o país e o mês da contribuição, nunca o valor.",
             "Como a contribuição não fica ligada a ninguém, não há como encontrá-la depois para apagá-la.",
           ],

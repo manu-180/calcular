@@ -90,8 +90,8 @@ export const it: DiccionarioLegal = ({ actualizado, mail }) => ({
         {
           titulo: "Gli stipendi condivisi",
           parrafos: [
-            "In «Stipendi reali» è possibile aggiungere uno stipendio in forma anonima e facoltativa, solo dopo un consenso esplicito. Salviamo il paese, la professione (da un elenco chiuso), la fascia di anni di esperienza, lo stipendio lordo mensile arrotondato a due cifre significative e il mese. Non salviamo l'indirizzo IP, il browser, un account né la data esatta.",
-            "Pubblichiamo solo la mediana e l'intervallo di gruppi di almeno 10 persone. Nessuno stipendio individuale viene mostrato.",
+            "In «Stipendi reali» è possibile aggiungere uno stipendio in forma anonima e facoltativa, solo dopo un consenso esplicito. Salviamo il paese, la professione (da un elenco chiuso), la fascia di anni di esperienza, lo stipendio lordo mensile arrotondato a due cifre significative e il mese. Non salviamo l'indirizzo IP, il browser né un account. Fino all'aggiornamento del giorno dopo salviamo anche il giorno del contributo e un'impronta della connessione, cifrata con una chiave che cambia ogni giorno e che non permette di risalire all'indirizzo IP; a fine giornata vengono cancellati entrambi.",
+            "Le cifre si pubblicano una volta al giorno. Una professione compare con almeno 10 contributi, inviati in più giorni e in almeno due mesi diversi. Mostriamo solo la mediana e l'intervallo, arrotondati, e il numero di contributi per fasce: così nessuno può ricavare lo stipendio di una persona confrontando la pagina di due giorni. Nessuno stipendio individuale viene mostrato.",
             "Per evitare di aggiungere due volte lo stesso paese nello stesso mese, il browser ricorda nella memoria locale il paese e il mese del contributo, mai l'importo.",
             "Poiché un contributo non è legato a nessuno, non è possibile ritrovarlo in seguito per cancellarlo.",
           ],

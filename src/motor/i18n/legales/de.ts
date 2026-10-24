@@ -90,8 +90,8 @@ export const de: DiccionarioLegal = ({ actualizado, mail }) => ({
         {
           titulo: "Geteilte Gehälter",
           parrafos: [
-            "Bei „Echte Gehälter“ lässt sich ein Gehalt anonym und freiwillig beitragen, nur nach ausdrücklicher Zustimmung. Gespeichert werden das Land, der Beruf (aus einer festen Liste), die Erfahrungsstufe, das monatliche Bruttogehalt auf zwei signifikante Stellen gerundet und der Monat. Nicht gespeichert werden IP-Adresse, Browser, Konto oder das genaue Datum.",
-            "Veröffentlicht werden nur Median und Spanne von Gruppen ab 10 Personen. Ein einzelnes Gehalt wird nie gezeigt.",
+            "Bei „Echte Gehälter“ lässt sich ein Gehalt anonym und freiwillig beitragen, nur nach ausdrücklicher Zustimmung. Gespeichert werden das Land, der Beruf (aus einer festen Liste), die Erfahrungsstufe, das monatliche Bruttogehalt auf zwei signifikante Stellen gerundet und der Monat. Nicht gespeichert werden IP-Adresse, Browser oder Konto. Bis zur Aktualisierung am nächsten Tag werden außerdem der Tag des Beitrags und ein Fingerabdruck der Verbindung gespeichert, verschlüsselt mit einem Schlüssel, der sich täglich ändert und keinen Rückschluss auf die IP-Adresse erlaubt; beides wird am Ende des Tages gelöscht.",
+            "Die Werte werden einmal täglich veröffentlicht. Ein Beruf erscheint ab 10 Beiträgen, gemacht an mehreren Tagen und in mindestens zwei verschiedenen Monaten. Gezeigt werden nur Median und Spanne, gerundet, und die Zahl der Beiträge in Spannen. So lässt sich das Gehalt einer Person nicht herausfinden, indem man die Seite an zwei Tagen vergleicht. Ein einzelnes Gehalt wird nie gezeigt.",
             "Damit dasselbe Land nicht zweimal im selben Monat beigetragen wird, merkt sich der Browser im lokalen Speicher Land und Monat des Beitrags, nie den Betrag.",
             "Da ein Beitrag mit niemandem verknüpft ist, lässt er sich später nicht wiederfinden und löschen.",
           ],
