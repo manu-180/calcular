@@ -63,18 +63,39 @@ function seccion(nombre: string) {
 }
 
 // ─── Chequeos estáticos (sin base) ──────────────────────────────────────────────────────────
+// «Sueldos reales» (20261024120000_ca_sueldos y 20261024150000_ca_sueldos_endurecer) tiene su propio
+// gate, check_sueldos.ts, que prueba en PGlite que anon y authenticated no leen sus tablas ni ejecutan
+// sus funciones. Acá entran en las reglas generales (RLS forzado, search_path, revoke) con dos
+// diferencias de diseño: sus funciones de carga, lectura y publicación son security definer (leen
+// tablas con FORCE RLS sin policies y la migración exige un dueño con BYPASSRLS) y ca_sueldos_dos_cifras
+// queda ejecutable por anon.
+const TABLAS_SUELDOS = ["ca_sueldos_aportes", "ca_sueldos_dias", "ca_sueldos_estado", "ca_sueldos_huellas", "ca_sueldos_pendientes", "ca_sueldos_publicados"];
+const DEFINER_SUELDOS = new Set(["ca_sueldos_agregados", "ca_sueldos_publicar", "ca_sueldos_al_dia", "ca_sueldos_sumar", "ca_sueldos_leer", "ca_sueldos_paises"]);
+
 function chequeosEstaticos() {
   seccion("SQL estático");
   const todo = migraciones.map((m) => m.sql).join("\n");
   const tablas = [...todo.matchAll(/create table if not exists public\.(ca_\w+)/g)].map((m) => m[1]);
   igual(
     tablas.sort(),
-    ["ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_opiniones", "ca_perfiles", "ca_resumen", "ca_resumen_mercado", "ca_soporte_hilos", "ca_soporte_mensajes", "ca_tipo_cambio", "ca_vistas"],
-    "están las 13 tablas",
+    [
+      "ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_opiniones", "ca_perfiles", "ca_resumen", "ca_resumen_mercado", "ca_soporte_hilos", "ca_soporte_mensajes",
+      ...TABLAS_SUELDOS,
+      "ca_tipo_cambio", "ca_vistas",
+    ].sort(),
+    `están las ${13 + TABLAS_SUELDOS.length} tablas`,
   );
+  // RLS: la sentencia literal o un bucle `foreach t in array array['ca_x', ...] loop` que la ejecuta
+  // con format('alter table public.%I ...', t) (así encierra sus tablas 20261024150000_ca_sueldos_endurecer).
+  const enBucle = (accion: string) =>
+    [...todo.matchAll(/foreach (\w+) in array array\[([^\]]*)\] loop([\s\S]*?)end loop;/g)]
+      .filter(([, v, , cuerpo]) => cuerpo.includes(`execute format('alter table public.%I ${accion} row level security', ${v});`))
+      .flatMap(([, , lista]) => [...lista.matchAll(/'(ca_\w+)'/g)].map((m) => m[1]));
+  const habilitadas = new Set(enBucle("enable"));
+  const forzadas = new Set(enBucle("force"));
   for (const t of tablas) {
-    ok(todo.includes(`alter table public.${t} enable row level security;`), `${t}: enable row level security`);
-    ok(todo.includes(`alter table public.${t} force row level security;`), `${t}: force row level security`);
+    ok(todo.includes(`alter table public.${t} enable row level security;`) || habilitadas.has(t), `${t}: enable row level security`);
+    ok(todo.includes(`alter table public.${t} force row level security;`) || forzadas.has(t), `${t}: force row level security`);
   }
   const bloques = [...todo.matchAll(/create or replace function public\.(\w+)\(([\s\S]*?)\n\$\$;/g)];
   igual(bloques.length, 49, "se encontraron las 49 definiciones de funciones");
@@ -83,9 +104,16 @@ function chequeosEstaticos() {
     ok(/\nset search_path = ''\n/.test(cuerpo), `${nombre}: set search_path = ''`);
     ok(revocadas.includes(`public.${nombre}(`), `${nombre}: revoke execute de public, anon, authenticated`);
     const definer = /\nsecurity definer\n/.test(cuerpo);
-    ok(definer === (nombre === "ca_vincular_compras"), `${nombre}: security definer sólo en ca_vincular_compras`);
+    ok(definer === (nombre === "ca_vincular_compras" || DEFINER_SUELDOS.has(nombre)), `${nombre}: security definer sólo en ca_vincular_compras y las de sueldos que lo piden`);
   }
-  ok(!/\bto anon\b/.test(todo), "ningún grant a anon");
+  // Los grants a anon se buscan sentencia por sentencia. Los únicos permitidos son dos de
+  // 20261024120000_ca_sueldos: ca_sueldos_dos_cifras (redondeo puro, sin tablas; check_sueldos lo
+  // exceptúa a propósito) y ca_sueldos_agregados, que 20261024150000_ca_sueldos_endurecer borra.
+  const aAnon = [...todo.matchAll(/\bgrant [^;]*\bto [^;]*\banon\b[^;]*;/g)].map((m) => m[0]);
+  const anonPermitido = (g: string) =>
+    /^grant execute on function public\.ca_sueldos_dos_cifras\(double precision\) to /.test(g) ||
+    (/^grant execute on function public\.ca_sueldos_agregados\(text, text\) to /.test(g) && todo.includes("drop function if exists public.ca_sueldos_agregados(text, text);"));
+  igual(aAnon.filter((g) => !anonPermitido(g)), [], "ningún grant a anon (fuera de los dos de sueldos)");
   ok(!/grant (all|select|insert|update|delete)[^;]*\bon (table )?public\.ca_(vistas|eventos|checkouts|limites|resumen|resumen_mercado|tipo_cambio)\b[^;]*\bto authenticated/.test(todo), "tablas de medición sin grants a authenticated");
 }
 
