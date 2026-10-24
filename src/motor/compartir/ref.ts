@@ -3,9 +3,9 @@ const ALFABETO = "abcdefghijklmnopqrstuvwxyz0123456789";
 
 // /api/e (src/app/api/e/protocolo.ts) valida contra estas mismas constantes: si cambian acá, cambia allá.
 export const REF_VALIDO = /^[a-z0-9]{6,12}$/;
-export const ORIGENES_COMPARTIR = ["calculadora", "mundo", "duelo"] as const;
+export const ORIGENES_COMPARTIR = ["calculadora", "mundo", "duelo", "ranking", "horas", "sueldos", "calendario"] as const;
 export type OrigenCompartir = (typeof ORIGENES_COMPARTIR)[number];
-const CORTOS: Readonly<Record<OrigenCompartir, string>> = { calculadora: "c", mundo: "m", duelo: "d" };
+const CORTOS: Readonly<Record<OrigenCompartir, string>> = { calculadora: "c", mundo: "m", duelo: "d", ranking: "r", horas: "h", sueldos: "s", calendario: "k" };
 export const ORIGENES_CORTOS: readonly string[] = Object.values(CORTOS);
 export const VARIANTES_PUENTE = ["con", "sin"] as const;
 

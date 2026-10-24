@@ -127,6 +127,8 @@ const nextConfig: NextConfig = {
     "/intl/**": ["./private/intl/**/*.mapa.json"],
     // La OG de «Tu sueldo en el mundo» lee la bandera del disco (src/app/(intl)/intl/[mercado]/_mundo/og.tsx).
     "/intl/*/*/og": ["./public/banderas/*.svg"],
+    "/sueldo-en-el-mundo/og": ["./public/banderas/*.svg"],
+    "/sueldos-reales/og": ["./public/banderas/*.svg"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
   // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.
