@@ -22,6 +22,7 @@ import {
   varInteranualHaber,
 } from "@/lib/jubilacion";
 import { formatARS, formatPct } from "@/lib/formato";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 function datosDelMes() {
   const V = prestacionesVigentes();
@@ -525,6 +526,7 @@ export default function JubilacionPage() {
           descuentos, por el tipo de beneficio y por tu situación particular.
         </p>
       </section>
+      <OtrosPaises concepto="jubilacion" />
     </article>
   );
 }

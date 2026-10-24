@@ -10,6 +10,7 @@ import {
   LIG_ART26_EXENTO,
   LIG_ART26_NO_EXENTO,
 } from "@/data/indemnizacion";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 export const metadata: Metadata = {
   title: "Calculadora de indemnización por despido 2026",
@@ -451,6 +452,7 @@ export default function IndemnizacionPage() {
           .
         </p>
       </section>
+      <OtrosPaises concepto="liquidacion-final" />
     </article>
   );
 }

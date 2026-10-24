@@ -8,6 +8,7 @@ import { articleSchema, datasetSchema, ORGANIZACION } from "@/lib/schema";
 import { ESCALA_GANANCIAS, GANANCIAS_FUENTES, GANANCIAS_VIGENCIA, DEDUCCIONES } from "@/data/ganancias";
 import { formatARS } from "@/lib/formato";
 import { productoPorSlug } from "@/lib/mp";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 const ACTUALIZADO_EL = "15 de junio de 2026";
 
@@ -397,6 +398,7 @@ export default function GananciasPage() {
           headline="Avisame cuando se actualice la escala de Ganancias"
           subtext="La escala y las deducciones se actualizan en enero y julio con el IPC. Te aviso cuando cambien, así no pagás de más. Sin spam."
         />
+        <OtrosPaises concepto="impuesto-renta" />
       </article>
     </>
   );
