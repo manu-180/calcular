@@ -19,6 +19,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   ja: { dias: { uno: "日", otros: "日" }, semanas: { uno: "週間", otros: "週間" }, horas: { uno: "時間", otros: "時間" }, meses: { uno: "か月", otros: "か月" }, anios: { uno: "年", otros: "年" } },
   ko: { dias: { uno: "일", otros: "일" }, semanas: { uno: "주", otros: "주" }, horas: { uno: "시간", otros: "시간" }, meses: { uno: "개월", otros: "개월" }, anios: { uno: "년", otros: "년" } },
   zh: { dias: { uno: "天", otros: "天" }, semanas: { uno: "週", otros: "週" }, horas: { uno: "小時", otros: "小時" }, meses: { uno: "個月", otros: "個月" }, anios: { uno: "年", otros: "年" } },
+  // El indonesio no marca el plural después de un número (3 hari, 1,5 tahun): las dos formas son iguales.
+  id: { dias: { uno: "hari", otros: "hari" }, semanas: { uno: "minggu", otros: "minggu" }, horas: { uno: "jam", otros: "jam" }, meses: { uno: "bulan", otros: "bulan" }, anios: { uno: "tahun", otros: "tahun" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

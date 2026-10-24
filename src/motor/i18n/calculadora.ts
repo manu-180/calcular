@@ -133,6 +133,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       "zh-SG": ZH_HANS_CALCULADORA,
     },
   },
+  id: {
+    base: {
+      datos: "Data Anda",
+      resultado: "Hasil",
+      vacio: "Isi data Anda, lalu ketuk Hitung untuk melihat hasilnya.",
+      sinResultado: "Hasil ini belum kami tampilkan untuk saat ini.",
+      avisos: { info: "Perlu diketahui", cautela: "Perhatian", bloquea: "Mengapa hasilnya tidak kami tampilkan" },
+      fuenteDelAviso: "Sumber",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {
