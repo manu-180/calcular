@@ -8,8 +8,8 @@ export default definirTextos(employerPayrollTax, {
   campos: {
     salario: { etiqueta: "Salario anual por empleado" },
     empleados: { etiqueta: "Cantidad de empleados con ese salario" },
-    sutaTasa: { etiqueta: "Tasa de desempleo estatal (SUTA)", ayuda: "Figura en el aviso de tasa de la agencia laboral de su estado." },
-    sutaBase: { etiqueta: "Base salarial del SUTA en su estado", ayuda: "Déjelo en blanco para aplicar la tasa a todo el salario." },
+    sutaTasa: { etiqueta: "Tasa de desempleo estatal (SUTA)", ayuda: "Figura en el aviso de tasa de la agencia laboral de tu estado." },
+    sutaBase: { etiqueta: "Base salarial del SUTA en tu estado", ayuda: "Déjalo en blanco para aplicar la tasa a todo el salario." },
   },
   filas: {
     socialSecurity: { etiqueta: "Seguro Social del empleador" },

@@ -13,7 +13,7 @@ export default definirTextos(seniorDeduction, {
   },
   filas: {
     porPersona: { etiqueta: "Deducción por persona elegible" },
-    total: { etiqueta: "Deducción para mayores en su declaración" },
+    total: { etiqueta: "Deducción para mayores en tu declaración" },
     ahorro: { etiqueta: "Impuesto federal sobre el ingreso que se ahorra (estimado)" },
   },
   ...COMUN,

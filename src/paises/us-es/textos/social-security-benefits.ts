@@ -4,10 +4,10 @@ import { COMUN } from "../lib/comun";
 
 export default definirTextos(socialSecurityBenefits, {
   calculadora: "us-es.social-security-benefits",
-  slug: "calculadora-beneficios-seguro-social",
+  slug: "calculadora-seguro-social",
   campos: {
-    aime: { etiqueta: "Ganancias mensuales indexadas promedio (AIME)", ayuda: "Sus 35 años de mayores ganancias, indexados por el crecimiento salarial, divididos entre 420 meses. Su cuenta my Social Security muestra su historial de ganancias." },
-    anios: { etiqueta: "Edad a la que empieza a cobrar (años)" },
+    aime: { etiqueta: "Ganancias mensuales indexadas promedio (AIME)", ayuda: "Tus 35 años de mayores ganancias, indexados por el crecimiento salarial, divididos entre 420 meses. Tu cuenta my Social Security muestra tu historial de ganancias." },
+    anios: { etiqueta: "Edad a la que empiezas a cobrar (años)" },
     meses: { etiqueta: "Más meses" },
   },
   filas: {

@@ -7,9 +7,9 @@ export default definirTextos(capitalGainsTax, {
   slug: "calculadora-impuesto-ganancias-de-capital",
   campos: {
     estado: { etiqueta: "Estado civil para la declaración", opciones: ESTADO_CIVIL },
-    ganancia: { etiqueta: "Ganancia de capital", ayuda: "Precio de venta menos lo que pagó, incluidas las comisiones." },
-    plazo: { etiqueta: "Cuánto tiempo lo tuvo", opciones: { "largo": "Más de un año (largo plazo)", "corto": "Un año o menos (corto plazo)" } },
-    ordinario: { etiqueta: "Otros ingresos tributables", ayuda: "Su ingreso tributable del año sin esta ganancia, después de deducciones." },
+    ganancia: { etiqueta: "Ganancia de capital", ayuda: "Precio de venta menos lo que pagaste, incluidas las comisiones." },
+    plazo: { etiqueta: "Cuánto tiempo lo tuviste", opciones: { "largo": "Más de un año (largo plazo)", "corto": "Un año o menos (corto plazo)" } },
+    ordinario: { etiqueta: "Otros ingresos tributables", ayuda: "Tu ingreso tributable del año sin esta ganancia, después de deducciones." },
     magi: { etiqueta: "AGI modificado incluida la ganancia", ayuda: "Opcional. Se usa para el impuesto de 3.8% sobre ingresos netos de inversión." },
   },
   filas: {

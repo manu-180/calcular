@@ -7,9 +7,9 @@ export default definirTextos(quarterlyEstimatedTaxes, {
   slug: "calculadora-impuestos-estimados-trimestrales",
   campos: {
     estado: { etiqueta: "Estado civil para la declaración", opciones: ESTADO_CIVIL },
-    esperado: { etiqueta: "Impuesto total que espera para este año", ayuda: "Impuesto federal sobre el ingreso más el impuesto sobre el trabajo por cuenta propia, después de créditos." },
-    retencion: { etiqueta: "Impuesto retenido de sus cheques este año" },
-    anterior: { etiqueta: "Impuesto total en la declaración del año pasado", ayuda: "Déjelo en blanco si no declaró el año pasado o si cubrió menos de 12 meses." },
+    esperado: { etiqueta: "Impuesto total que esperas para este año", ayuda: "Impuesto federal sobre el ingreso más el impuesto sobre el trabajo por cuenta propia, después de créditos." },
+    retencion: { etiqueta: "Impuesto retenido de tus cheques este año" },
+    anterior: { etiqueta: "Impuesto total en la declaración del año pasado", ayuda: "Déjalo en blanco si no declaraste el año pasado o si esa declaración cubrió menos de 12 meses." },
     agiAnterior: { etiqueta: "AGI en la declaración del año pasado" },
   },
   filas: {

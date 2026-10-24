@@ -6,6 +6,6 @@ export const mercado: MercadoEdicion = {
   nombre: "Estados Unidos",
   locale: "es-US",
   idioma: "es",
-  trato: "usted",
+  trato: "tu",
   estado: "interno",
 };

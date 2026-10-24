@@ -6,13 +6,13 @@ export default definirTextos(rmdCalculator, {
   calculadora: "us-es.rmd-calculator",
   slug: "calculadora-distribucion-minima-requerida",
   campos: {
-    edad: { etiqueta: "Edad que cumple este año" },
+    edad: { etiqueta: "Edad que cumples este año" },
     saldo: { etiqueta: "Saldo de la cuenta al 31 de diciembre del año pasado" },
   },
   filas: {
     factor: { etiqueta: "Período de distribución" },
     rmd: { etiqueta: "Distribución mínima requerida (RMD)" },
-    porMes: { etiqueta: "Por mes si la reparte en el año" },
+    porMes: { etiqueta: "Por mes si la repartes en el año" },
     porcentajeSaldo: { etiqueta: "Porcentaje del saldo" },
   },
   ...COMUN,

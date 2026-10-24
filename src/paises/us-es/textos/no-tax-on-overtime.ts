@@ -7,7 +7,7 @@ export default definirTextos(noTaxOnOvertime, {
   slug: "horas-extras-sin-impuestos",
   campos: {
     estado: { etiqueta: "Estado civil para la declaración", opciones: ESTADO_CIVIL },
-    pagoExtra: { etiqueta: "Pago total de horas extras del año", ayuda: "Todo lo que le pagaron por horas sobre 40 a la semana a tiempo y medio. Si su W-2 muestra solo la prima, multiplíquela por 3." },
+    pagoExtra: { etiqueta: "Pago total de horas extras del año", ayuda: "Todo lo que te pagaron por horas sobre 40 a la semana a tiempo y medio. Si tu W-2 muestra solo la prima, multiplícala por 3." },
     magi: { etiqueta: "Ingreso bruto ajustado modificado (MAGI)", ayuda: "Para la mayoría de las personas es igual al AGI." },
     gravable: { etiqueta: "Ingreso tributable antes de esta deducción", ayuda: "Opcional. Sirve para estimar cuánto impuesto se ahorra." },
   },

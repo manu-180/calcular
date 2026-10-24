@@ -16,7 +16,7 @@ export default definirTextos(overtime, {
     pagoRegular: { etiqueta: "Pago regular" },
     pagoExtra: { etiqueta: "Pago de horas extras" },
     total: { etiqueta: "Pago total de la semana" },
-    prima: { etiqueta: "Prima de horas extras (la mitad adicional)", ayuda: "Es la parte que puede deducir con la regla de horas extras sin impuestos." },
+    prima: { etiqueta: "Prima de horas extras (la mitad adicional)", ayuda: "Es la parte que puedes deducir con la regla de horas extras sin impuestos." },
   },
   ...COMUN,
 });

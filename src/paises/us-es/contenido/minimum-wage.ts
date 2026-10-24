@@ -3,21 +3,22 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.minimum-wage",
   h1: "Salario mínimo por estado",
-  title: "Salario mínimo por estado 2026: por hora, semana y año",
-  description: "Consulte el salario mínimo de 2026 en su estado y cuánto suma por semana, mes y año. El mínimo federal es de {{us.min-wage-federal}} por hora. Tasas oficiales.",
+  title: "Salario mínimo por estado 2026: California, Florida y más",
+  description: "Consulta el salario mínimo de 2026 en tu estado y cuánto suma por semana, mes y año. El mínimo federal es de {{us.min-wage-federal}} por hora.",
   intro: [
-    "Elija su estado para ver su salario mínimo, el mínimo federal y el que su empleador le tiene que pagar.",
-    "Indique sus horas por semana para convertir la tarifa por hora en pago semanal, mensual y anual.",
+    "Elige tu estado para ver su salario mínimo, el mínimo federal y el que tu empleador te tiene que pagar.",
+    "Escribe tus horas por semana para convertir la tarifa por hora en pago semanal, mensual y anual.",
   ],
   comoSeCalcula: [
     "El salario mínimo federal es de {{us.min-wage-federal}} por hora para los empleos cubiertos por la Ley de Normas Justas de Trabajo (FLSA).",
     "Cuando un estado fija una tasa más alta, los trabajadores reciben la más alta. En California es de {{us.min-wage-state[california]}}, en la ciudad de Nueva York {{us.min-wage-state[new-york-city-area]}} y en Florida {{us.min-wage-state[florida]}}.",
-    "El pago semanal es la tarifa por hora por sus horas. Un año cuenta 52 semanas y un mes es la doceava parte.",
+    "El pago semanal es la tarifa por hora por tus horas. Un año cuenta 52 semanas y un mes es la doceava parte.",
   ],
   ejemplo: [
     "En California, una persona a tiempo completo que gana el mínimo recibe $676 por semana, unos $2,929 al mes o $35,152 al año.",
   ],
   faq: [
+    { pregunta: "¿Cuál es el salario mínimo en California en 2026?", respuesta: "{{us.min-wage-state[california]}} por hora. Es el mínimo general del estado: algunos sectores, como la comida rápida, tienen uno más alto, y varias ciudades, como Los Ángeles, San Francisco y San José, fijan un mínimo local por encima." },
     { pregunta: "¿Cuál es el salario mínimo federal en 2026?", respuesta: "{{us.min-wage-federal}} por hora. No cambia desde el 24 de julio de 2009." },
     { pregunta: "¿Qué estados pagan solo el mínimo federal?", respuesta: "Estados como Texas, Pennsylvania, Carolina del Norte e Indiana usan {{us.min-wage-federal}}. Alabama, Louisiana, Mississippi, Carolina del Sur y Tennessee no tienen ley de salario mínimo estatal, así que se aplica la tasa federal a los empleos cubiertos." },
     { pregunta: "Mi ciudad paga más que el estado. ¿Cuál vale?", respuesta: "El más alto. Ciudades y condados como Seattle, Denver y muchos de California fijan su propio salario mínimo por encima del estatal." },

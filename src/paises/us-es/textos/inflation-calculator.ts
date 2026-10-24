@@ -8,7 +8,7 @@ export default definirTextos(inflationCalculator, {
   campos: {
     monto: { etiqueta: "Monto en dólares" },
     desde: { etiqueta: "Mes del monto original", ayuda: "Se usa el CPI de ese mes. El día no importa." },
-    hasta: { etiqueta: "Mes con el que quiere comparar" },
+    hasta: { etiqueta: "Mes con el que quieres comparar" },
   },
   filas: {
     ajustado: { etiqueta: "Monto en dólares del mes final" },

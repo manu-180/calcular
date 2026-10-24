@@ -7,7 +7,7 @@ export default definirTextos(noTaxOnTips, {
   slug: "propinas-sin-impuestos",
   campos: {
     estado: { etiqueta: "Estado civil para la declaración", opciones: ESTADO_CIVIL },
-    propinas: { etiqueta: "Propinas que califican recibidas este año", ayuda: "Propinas en efectivo y con tarjeta declaradas a su empleador o en el Formulario 4137." },
+    propinas: { etiqueta: "Propinas que califican recibidas este año", ayuda: "Propinas en efectivo y con tarjeta declaradas a tu empleador o en el Formulario 4137." },
     magi: { etiqueta: "Ingreso bruto ajustado modificado (MAGI)", ayuda: "Para la mayoría de las personas es igual al AGI." },
     gravable: { etiqueta: "Ingreso tributable antes de esta deducción", ayuda: "Opcional. Sirve para estimar cuánto impuesto se ahorra." },
   },
