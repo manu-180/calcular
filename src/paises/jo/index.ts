@@ -44,7 +44,7 @@ import { mercado } from "./mercado";
 import { novedades } from "./novedades";
 import series from "./series.json";
 
-// El impuesto a las ventas es local (sales-tax-calculator, en borrador hasta verificar la tasa): la universal del mismo concepto no entra.
+// El impuesto a las ventas es local (sales-tax-calculator, con la tasa general y una tasa especial opcional): la universal del mismo concepto se cae sola.
 export default definirPais({
   mercado,
   datos,

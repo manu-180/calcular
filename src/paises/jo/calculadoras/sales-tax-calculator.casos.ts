@@ -1,8 +1,21 @@
 import { definirCasos } from "@/motor/calculo";
 import calculadora from "./sales-tax-calculator";
 
-// Casos de la fórmula con la tasa pisada: el dato todavía no está verificado.
 export default definirCasos(calculadora, [
+  {
+    nombre: "Tasa general de la ley",
+    origen: { tipo: "recalculado", detalle: "Art. 6 (a): 16 %. 250 × 16 % = 40. Total 290." },
+    fecha: "2026-10-24",
+    entrada: { operacion: "add", monto: 250, otraTasa: null },
+    esperado: { impuesto: 40, neto: 250, total: 290, tasa: 16 },
+  },
+  {
+    nombre: "Tasa especial ingresada a mano",
+    origen: { tipo: "recalculado", detalle: "Con 4 %: 104 / 1,04 = 100; impuesto 4." },
+    fecha: "2026-10-24",
+    entrada: { operacion: "extract", monto: 104, otraTasa: 4 },
+    esperado: { impuesto: 4, neto: 100, tasa: 4 },
+  },
   {
     nombre: "Agregar 16 % a 100",
     origen: { tipo: "recalculado", detalle: "100 × 16 % = 16. Total 116." },

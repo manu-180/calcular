@@ -111,6 +111,28 @@ export const detectores: readonly Detector[] = [
     },
   },
   {
+    id: "jo.istd-gst-law",
+    carril: "norma",
+    datos: ["jo.gst"],
+    metodo: "html",
+    // La página lista el texto consolidado con el mes y el año en el nombre del archivo
+    // («..._وتعديلاته_ايلول_2022.pdf»): un año posterior avisa que hay una versión nueva.
+    url: "https://istd.gov.jo/AR/Pages/%D9%82%D9%88%D8%A7%D9%86%D9%8A%D9%86_%D8%B6%D8%B1%D9%8A%D8%A8%D8%A9_%D8%A7%D9%84%D9%85%D8%A8%D9%8A%D8%B9%D8%A7%D8%AA",
+    async traer(http) {
+      const crudo = await http.texto(this.url, { userAgentNavegador: true, tlsTolerante: true });
+      let html = crudo;
+      try {
+        html = decodeURIComponent(crudo.replace(/%(?![0-9A-Fa-f]{2})/g, "%25"));
+      } catch {
+        // enlaces con escapes rotos: se lee el texto tal cual
+      }
+      if (!/المبيعات/.test(html)) return null;
+      const anios = [...html.matchAll(/المبيعات_وتعديلاته_[^"/]{0,20}?_(20\d\d)\.pdf/g)].map((m) => Number(m[1]));
+      const nuevo = anios.find((a) => a > 2022);
+      return nuevo ? [{ titulo: `نص موحد جديد لقانون الضريبة العامة على المبيعات (${nuevo})`, url: this.url, fecha: VERIFICADO }] : [];
+    },
+  },
+  {
     id: "jo.dos-cpi",
     carril: "serie",
     serie: "jo.cpi-yoy",

@@ -1,13 +1,13 @@
 import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
-// Borrador: la tasa general del impuesto a las ventas no se pudo leer en istd.gov.jo (no respondió el
-// 24/10/2026). Mientras tanto la universal «vat» tampoco entra: necesita la tasa verificada.
+// Tasa general del art. 6 (a) de la ley 6/1994. Las tasas especiales del cuadro 1 van por el campo
+// opcional: el cuadro no se carga entero.
 export default definirCalculadora({
   id: "jo.sales-tax-calculator",
   mercado: "jo",
   concepto: "iva",
   slug: "sales-tax-calculator",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "jo.gst": "numero",
   },
