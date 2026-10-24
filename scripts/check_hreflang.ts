@@ -166,6 +166,22 @@ async function main() {
       if (global) fallas.push(...revisarClusteres(paginasRk, publicadas, c.url(global), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
       revisadas += paginasRk.length;
     }
+    // «¿Cuántas horas de trabajo cuesta?»: el índice y cada producto, un clúster por página entre ediciones.
+    const horasSeo = await import("../src/motor/horas/ui/seo");
+    const { PRODUCTOS } = await import("../src/motor/horas/productos");
+    for (const producto of [undefined, ...PRODUCTOS.map((x) => x.id)]) {
+      const idiomasHoras = horasSeo.hreflangHoras(registro, modo, producto);
+      const horas: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: horasSeo.urlHoras(m, producto), locale: m.locale, concepto: `horas:${producto ?? "indice"}`, idiomas: idiomasHoras }));
+      for (const p of horas) {
+        if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «horas de trabajo» no está en el sitemap del mercado`);
+        const sitemap = enSitemap.get(p.url);
+        const vaAlSitemap = seo.hreflangVaAlSitemap(idiomasHoras);
+        if (vaAlSitemap && JSON.stringify(Object.entries(sitemap ?? {}).sort()) !== JSON.stringify(Object.entries(idiomasHoras ?? {}).sort())) fallas.push(`[${modo}] ${p.url}: el sitemap no lista el clúster entero`);
+        if (!vaAlSitemap && sitemap) fallas.push(`[${modo}] ${p.url}: clúster chico repetido en el sitemap`);
+      }
+      if (global) fallas.push(...revisarClusteres(horas, publicadas, horasSeo.urlHoras(global, producto), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
+      revisadas += horas.length;
+    }
   }
 
   for (const f of fallas) console.error(`❌ ${f}`);
