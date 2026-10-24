@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["PLN"],
   zonaHoraria: "Europe/Warsaw",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 4,
 };
