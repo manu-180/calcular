@@ -77,7 +77,7 @@ function chequeosEstaticos() {
     ok(todo.includes(`alter table public.${t} force row level security;`), `${t}: force row level security`);
   }
   const bloques = [...todo.matchAll(/create or replace function public\.(\w+)\(([\s\S]*?)\n\$\$;/g)];
-  igual(bloques.length, 38, "se encontraron las 38 definiciones de funciones");
+  igual(bloques.length, 49, "se encontraron las 49 definiciones de funciones");
   const revocadas = [...todo.matchAll(/revoke execute on function([\s\S]*?)from public, anon, authenticated;/g)].map((m) => m[1]).join("\n");
   for (const [, nombre, cuerpo] of bloques) {
     ok(/\nset search_path = ''\n/.test(cuerpo), `${nombre}: set search_path = ''`);
