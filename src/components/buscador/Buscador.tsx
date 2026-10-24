@@ -54,6 +54,15 @@ function esEditable(t: EventTarget | null): boolean {
   return t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName);
 }
 
+// «1 resultado», «5 resultados»; con la forma «few» de los idiomas eslavos (resultadosPocos) la
+// categoría sale de Intl.PluralRules con el idioma de la página: en checo «3 výsledky», «5 výsledků».
+function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "resultadosPlural" | "resultadosPocos">): string {
+  if (t.resultadosPocos === undefined) return `${n} ${n === 1 ? t.resultado : t.resultadosPlural}`;
+  const lang = typeof document === "undefined" ? "" : document.documentElement.lang;
+  const categoria = lang ? new Intl.PluralRules(lang).select(n) : n === 1 ? "one" : "other";
+  return `${n} ${categoria === "one" ? t.resultado : categoria === "few" ? t.resultadosPocos : t.resultadosPlural}`;
+}
+
 function plano(s: string): string {
   return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
@@ -401,7 +410,7 @@ export function Buscador({ fuente }: { fuente?: FuenteBuscador } = {}) {
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain [scrollbar-width:thin]">{cuerpo}</div>
 
         <p className="sr-only" aria-live="polite">
-          {buscando && motor ? `${opciones.length} ${opciones.length === 1 ? t.resultado : t.resultadosPlural}` : ""}
+          {buscando && motor ? cuantosResultados(opciones.length, t) : ""}
         </p>
 
         <div className="hidden shrink-0 items-center gap-4 border-t border-zinc-100 px-4 py-2.5 text-xs text-zinc-500 sm:flex">
