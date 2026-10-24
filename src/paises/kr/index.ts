@@ -16,6 +16,14 @@ import severancePay from "./calculadoras/severance-pay";
 import contenidoSeverancePay from "./contenido/severance-pay";
 import retirementIncomeTax from "./calculadoras/retirement-income-tax";
 import contenidoRetirementIncomeTax from "./contenido/retirement-income-tax";
+import unemploymentBenefit from "./calculadoras/unemployment-benefit";
+import contenidoUnemploymentBenefit from "./contenido/unemployment-benefit";
+import parentalLeaveBenefit from "./calculadoras/parental-leave-benefit";
+import contenidoParentalLeaveBenefit from "./contenido/parental-leave-benefit";
+import incomeTax from "./calculadoras/income-tax";
+import contenidoIncomeTax from "./contenido/income-tax";
+import yearEndTaxSettlement from "./calculadoras/year-end-tax-settlement";
+import contenidoYearEndTaxSettlement from "./contenido/year-end-tax-settlement";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: overtimePay, contenido: contenidoOvertimePay, cliente: () => import("./calculadoras/overtime-pay.cliente") },
     { definicion: severancePay, contenido: contenidoSeverancePay, cliente: () => import("./calculadoras/severance-pay.cliente") },
     { definicion: retirementIncomeTax, contenido: contenidoRetirementIncomeTax, cliente: () => import("./calculadoras/retirement-income-tax.cliente") },
+    { definicion: unemploymentBenefit, contenido: contenidoUnemploymentBenefit, cliente: () => import("./calculadoras/unemployment-benefit.cliente") },
+    { definicion: parentalLeaveBenefit, contenido: contenidoParentalLeaveBenefit, cliente: () => import("./calculadoras/parental-leave-benefit.cliente") },
+    { definicion: incomeTax, contenido: contenidoIncomeTax, cliente: () => import("./calculadoras/income-tax.cliente") },
+    { definicion: yearEndTaxSettlement, contenido: contenidoYearEndTaxSettlement, cliente: () => import("./calculadoras/year-end-tax-settlement.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "kr.vat" } }] },
   novedades,

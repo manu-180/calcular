@@ -89,22 +89,23 @@ export interface RentaAnual {
   marginal: number;
 }
 
-// Impuesto anual de un asalariado como en el 연말정산 sin deducciones especiales: 기본공제 por persona,
+// Impuesto anual de un asalariado como en el 연말정산 (sin otras deducciones, si no se pasan): 기본공제 por persona,
 // 연금보험료공제 y 보험료 공제 (건강·장기요양·고용) completos, 근로소득세액공제, 자녀세액공제 y 표준세액공제.
 export function rentaAsalariado(
-  e: { total: number; personas: number; hijos: number; pension: number; seguros: number },
+  e: { total: number; personas: number; hijos: number; pension: number; seguros: number; otrasDeducciones?: number; otrosCreditos?: number },
   v: ValoresRenta,
 ): RentaAnual {
   const total = Math.max(0, e.total);
   const deduccion = deduccionTrabajo(total, v.escalaTrabajo, v.topeTrabajo);
   const ingresoTrabajo = total - deduccion;
-  const deducciones = Math.min(ingresoTrabajo, v.basico * Math.max(1, e.personas) + e.pension + e.seguros);
+  const deducciones = Math.min(ingresoTrabajo, v.basico * Math.max(1, e.personas) + e.pension + e.seguros + (e.otrasDeducciones ?? 0));
   const base = Math.max(0, ingresoTrabajo - deducciones);
   const calculado = impuestoBasico(base, v.brackets);
   const cTrabajo = creditoTrabajo(calculado, total, v.escalaCredito, v.limitesCredito);
   const cHijos = creditoHijos(e.hijos, v.hijos);
   const resto = Math.max(0, calculado - cTrabajo - cHijos);
-  const cEstandar = Math.min(resto, v.estandar);
+  // 표준세액공제 solo si no se piden los 특별세액공제: se toma el mayor de los dos, como elige quien liquida.
+  const cEstandar = Math.min(resto, Math.max(v.estandar, e.otrosCreditos ?? 0));
   const determinado = truncar10(resto - cEstandar);
   return {
     total,
