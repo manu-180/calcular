@@ -50,6 +50,9 @@ try {
     $extra = @()
     if ($Dry) { $extra = @("--dry") }
     L "ronda -> $($env:CALCULARYA_CRON_LOG)"
+    # Otras sesiones dejan activa la cuenta developers-insights de gh y el push a manu-180/calcular da
+    # «Repository not found»: la tarea fija la cuenta antes de correr.
+    gh auth switch -u manu-180 2>$null | Out-Null
     npx tsx scripts/cron/mensual.ts @extra | Out-Null
     $codigo = $LASTEXITCODE
     L "mensual.ts termino exit=$codigo"
