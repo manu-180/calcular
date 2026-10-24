@@ -30,6 +30,14 @@ import periodeDEssai from "./calculadoras/periode-d-essai";
 import contenidoPeriodeDEssai from "./contenido/periode-d-essai";
 import indemniteLicenciementAbusif from "./calculadoras/indemnite-licenciement-abusif";
 import contenidoIndemniteLicenciementAbusif from "./contenido/indemnite-licenciement-abusif";
+import calculSalaireBrut from "./calculadoras/calcul-salaire-brut";
+import contenidoCalculSalaireBrut from "./contenido/calcul-salaire-brut";
+import congeMaternite from "./calculadoras/conge-maternite";
+import contenidoCongeMaternite from "./contenido/conge-maternite";
+import allocationsFamiliales from "./calculadoras/allocations-familiales";
+import contenidoAllocationsFamiliales from "./contenido/allocations-familiales";
+import cotisationsTravailleurNonSalarie from "./calculadoras/cotisations-travailleur-non-salarie";
+import contenidoCotisationsTravailleurNonSalarie from "./contenido/cotisations-travailleur-non-salarie";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +65,10 @@ export default definirPais({
     { definicion: delaiDePreavis, contenido: contenidoDelaiDePreavis, cliente: () => import("./calculadoras/delai-de-preavis.cliente") },
     { definicion: periodeDEssai, contenido: contenidoPeriodeDEssai, cliente: () => import("./calculadoras/periode-d-essai.cliente") },
     { definicion: indemniteLicenciementAbusif, contenido: contenidoIndemniteLicenciementAbusif, cliente: () => import("./calculadoras/indemnite-licenciement-abusif.cliente") },
+    { definicion: calculSalaireBrut, contenido: contenidoCalculSalaireBrut, cliente: () => import("./calculadoras/calcul-salaire-brut.cliente") },
+    { definicion: congeMaternite, contenido: contenidoCongeMaternite, cliente: () => import("./calculadoras/conge-maternite.cliente") },
+    { definicion: allocationsFamiliales, contenido: contenidoAllocationsFamiliales, cliente: () => import("./calculadoras/allocations-familiales.cliente") },
+    { definicion: cotisationsTravailleurNonSalarie, contenido: contenidoCotisationsTravailleurNonSalarie, cliente: () => import("./calculadoras/cotisations-travailleur-non-salarie.cliente") },
   ],
   universales: "todas",
   novedades,
