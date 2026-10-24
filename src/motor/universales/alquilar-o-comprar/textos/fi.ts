@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosFi: TextosUi<UiAlquilarOComprar> = {
+  slug: "vuokra-vai-omistusasunto",
+  ui: () => ({
+    precio: "Asunnon hinta",
+    entrada: "Omarahoitusosuus (% hinnasta)",
+    gastosCompra: "Kaupan kulut (% hinnasta)",
+    gastosCompraAyuda: "Varainsiirtovero, pankin kulut, kiinnitykset ja välityspalkkio.",
+    tasa: "Asuntolainan korko (% vuodessa)",
+    aniosHipoteca: "Laina-aika vuosina",
+    alquiler: "Vastaavan asunnon vuokra kuukaudessa",
+    aumentoAlquiler: "Vuokran korotus vuodessa (%)",
+    gastosPropietario: "Omistamisen kulut vuodessa (% arvosta)",
+    gastosPropietarioAyuda: "Korjaukset, kiinteistövero ja kotivakuutus. Usein yhden ja kahden prosentin välillä.",
+    revalorizacion: "Asunnon arvonnousu vuodessa (%)",
+    rendimiento: "Muiden sijoitusten tuotto (% vuodessa)",
+    rendimientoAyuda: "Se, minkä ansaitsisit sijoittamalla omarahoitusosuuden asunnon ostamisen sijaan.",
+    horizonte: "Vertailtavien vuosien määrä",
+    veredicto: "Tulos",
+    patrimonioComprar: "Varallisuus lopussa, jos ostat",
+    patrimonioAlquilar: "Varallisuus lopussa, jos asut vuokralla",
+    diferencia: "Ero",
+    anioDesde: "Vuosi, josta alkaen ostaminen kannattaa",
+    pagadoAlquilando: "Vuokrat yhteensä",
+    pagadoComprando: "Lainanmaksut ja omistamisen kulut yhteensä",
+    tabla: "Vertailu vuosi vuodelta",
+    colAnio: "Vuosi",
+    colComprar: "Ostaminen",
+    colAlquilar: "Vuokralla asuminen",
+    colDiferencia: "Ero",
+    errorPrecio: "Syötä asunnon hinta.",
+    errorAlquiler: "Syötä, paljonko vastaavan asunnon vuokra olisi.",
+    convieneComprar: (anios, diferencia) => `Ostaminen kannattaa paremmin. ${anios} vuoden jälkeen sinulla on ${diferencia} enemmän.`,
+    convieneAlquilar: (anios, diferencia) => `Vuokralla asuminen kannattaa paremmin. ${anios} vuoden jälkeen sinulla on ${diferencia} enemmän.`,
+    empate: (anios) => `${anios} vuoden jälkeen kumpikin vaihtoehto päätyy samaan.`,
+    observacionDesde: (anio) => `Ostaminen menee vuokralla asumisen ohi ${anio}. vuonna ja pysyy sen jälkeen edellä.`,
+    observacionMetodo:
+      "Laskuri vertaa, mitä omistat kummassakin tapauksessa. Jos asut vuokralla, omarahoitusosuus ja kuukausittain säästyvä raha pysyvät sijoitettuina. Myynnin kuluja ei vähennetä.",
+  }),
+};
