@@ -1,0 +1,331 @@
+{
+  "mercado": "ug",
+  "datos": [
+    {
+      "id": "ug.paye-bands",
+      "nombre": "Income tax rates for resident individuals (Schedule 4, Part I), year of income from 1 July 2026",
+      "tipo": "escala",
+      "unidad": "UGX",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 4020000,
+              "tasa": 0
+            },
+            {
+              "desde": 4020000,
+              "hasta": 4920000,
+              "tasa": 20
+            },
+            {
+              "desde": 4920000,
+              "hasta": 5820000,
+              "tasa": 25
+            },
+            {
+              "desde": 5820000,
+              "hasta": 120000000,
+              "tasa": 30
+            },
+            {
+              "desde": 120000000,
+              "hasta": null,
+              "tasa": 40
+            }
+          ],
+          "motivo": "Bands taken from the Income Tax (Amendment) Bill, 2026 as introduced (parliament.go.ug). The enacted Act 21 of 2026 is not readable: ULII pages are behind Cloudflare and ura.go.ug refuses connections. URA confirms only the new monthly threshold of Ushs 335,000.",
+          "fuente": {
+            "organismo": "Parliament of Uganda",
+            "titulo": "Income Tax (Amendment) Bill, 2026, clause 20",
+            "url": "https://www.parliament.go.ug/sites/default/files/Income%20Tax%20(Amendment)%20Bill%2C%202026.pdf",
+            "tipo": "secundaria"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.paye-threshold-monthly",
+      "nombre": "Monthly income on which no PAYE is due",
+      "tipo": "numero",
+      "unidad": "UGX",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 335000,
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "PAYE rates (page updated 14 September 2026)",
+            "url": "https://ura.go.ug/en/domestic-taxes/paye-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.rental-tax-rate",
+      "nombre": "Rental tax for individuals above the threshold (Schedule 4, Part II)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Income Tax Act, Chapter 338, Schedule 4, Part II",
+            "url": "https://media.ulii.org/media/legislation/112783/source_file/b86ae504ea791920/1997-11.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.rental-tax-threshold",
+      "nombre": "Annual gross rental income not taxed for individuals",
+      "tipo": "numero",
+      "unidad": "UGX",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2820000,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Income Tax Act, Chapter 338, Schedule 4, Part II",
+            "url": "https://media.ulii.org/media/legislation/112783/source_file/b86ae504ea791920/1997-11.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.company-tax-rate",
+      "nombre": "Income tax rate for companies other than mining (Schedule 4, Part III)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Income Tax Act, Chapter 338, Schedule 4, Part III",
+            "url": "https://media.ulii.org/media/legislation/112783/source_file/b86ae504ea791920/1997-11.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.nssf-employee",
+      "nombre": "NSSF contribution deducted from the employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-23",
+          "valor": 5,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Membership: 5% from the employee and 10% from the employer",
+            "url": "https://www.nssfug.org/about-us/membership/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.nssf-employer",
+      "nombre": "NSSF contribution paid by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-23",
+          "valor": 10,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Membership: 5% from the employee and 10% from the employer",
+            "url": "https://www.nssfug.org/about-us/membership/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.leave-days-per-4-months",
+      "nombre": "Annual leave days for each four months of continuous service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Chapter 226, section 53(1)(a)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.maternity-days",
+      "nombre": "Maternity leave in working days on full wages",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Chapter 226, section 55(1)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.overtime-normal",
+      "nombre": "Overtime pay on normal working days, times the hourly rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Chapter 226, section 52(8)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.overtime-holiday",
+      "nombre": "Overtime pay on gazetted public holidays, times the hourly rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Chapter 226, section 52(8)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.severance-months-per-year",
+      "nombre": "Severance allowance: months of salary per year worked",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-05",
+          "valor": 1,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment (Amendment) Act, 2026 (Act 10), section 27 substituting section 88",
+            "url": "https://media.ulii.org/media/legislation/128859/source_file/107fdd589735b99e/ug-act-2026-10-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.severance-min-months",
+      "nombre": "Continuous service needed for severance allowance",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Chapter 226, section 86",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.sick-full-pay-months",
+      "nombre": "Months of sick leave on full pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-05",
+          "valor": 2,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment (Amendment) Act, 2026 (Act 10), section 10 amending section 54",
+            "url": "https://media.ulii.org/media/legislation/128859/source_file/107fdd589735b99e/ug-act-2026-10-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.sick-half-pay-months",
+      "nombre": "Further months of sick leave on half pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-05",
+          "valor": 4,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment (Amendment) Act, 2026 (Act 10), section 10 amending section 54",
+            "url": "https://media.ulii.org/media/legislation/128859/source_file/107fdd589735b99e/ug-act-2026-10-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    }
+  ]
+}
