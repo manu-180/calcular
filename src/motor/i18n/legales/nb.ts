@@ -55,19 +55,28 @@ export const nb: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Besøkets land",
           parrafos: [
             "For å foreslå kalkulatorene for riktig land ser vi hvilket land et besøk kommer fra. Leverandøren av nettstedet vårt utleder det fra IP-adressen.",
-            "Vi lagrer verken IP-adressen eller landet. Svaret blir i nettleseren så lenge besøket varer.",
+            "Vi lagrer ikke IP-adressen. Svaret blir i nettleseren så lenge besøket varer.",
           ],
         },
         {
           titulo: "Det nettleseren lagrer",
           parrafos: [
-            "I nettleserens øktlagring husker vi det valgte landet og om meldingen med forslaget er lukket. Alt slettes når fanen lukkes.",
+            "I nettleserens øktlagring, som tømmes når fanen lukkes, husker vi besøkets land, om meldingen med forslaget er lukket og, hvis du kom via en delt lenke, koden til lenken.",
+            "I den lokale lagringen, som blir liggende til du sletter den i nettleseren, ligger landet du selv har valgt, et tilfeldig tall for å telle besøk og hvilken versjon av en designtest du ser, slik at nettstedet ser likt ut hver gang. Ingenting av dette sier hvem du er.",
             "Vi bruker ingen informasjonskapsler for reklame eller sporing.",
           ],
         },
         {
           titulo: "Drift av nettstedet",
           parrafos: ["Nettstedet driftes hos Vercel. Som alle servere registrerer de tekniske opplysninger om hvert besøk (IP-adresse og nettleser), slik at nettstedet fungerer og er sikkert."],
+        },
+        {
+          titulo: "Slik teller vi besøk",
+          parrafos: [
+            "Vi måler bruken av nettstedet med vårt eget verktøy: hvilke sider som åpnes og hvor mye de brukes, hvilket nettsted besøket kommer fra, typen enhet og landet. Det tilfeldige tallet i nettleseren skiller et nytt besøk fra et som kommer tilbake. Vi lagrer ikke IP-adressen og ingenting av det du skriver i en kalkulator.",
+            "Lenker som deles fra nettstedet, har en tilfeldig kode som er ny hver gang noe deles. Med den teller vi hvor mange besøk hver lenke gir. Koden identifiserer ingen.",
+            "Beløp du skriver i en kalkulator, forlater aldri nettleseren i en lenke.",
+          ],
         },
         {
           titulo: "Endringer og spørsmål",
