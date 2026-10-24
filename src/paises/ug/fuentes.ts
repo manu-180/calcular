@@ -140,6 +140,7 @@ export const detectores: readonly Detector[] = [
     "ug.notice-months-10y",
     "ug.severance-months-per-year",
     "ug.severance-min-months",
+    "ug.sick-min-service-months",
     "ug.sick-full-pay-months",
     "ug.sick-half-pay-months",
   ]),

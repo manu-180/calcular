@@ -718,6 +718,26 @@
       ]
     },
     {
+      "id": "ug.sick-min-service-months",
+      "nombre": "Continuous service needed for sick pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 54(1)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
       "id": "ug.sick-full-pay-months",
       "nombre": "Months of sick leave on full pay",
       "tipo": "numero",
