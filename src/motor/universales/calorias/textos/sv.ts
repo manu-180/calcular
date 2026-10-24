@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosSv: TextosUi<UiCalorias> = {
+  slug: "kaloribehov",
+  ui: () => ({
+    sexo: "Kön",
+    mujer: "Kvinna",
+    hombre: "Man",
+    edad: "Ålder (år)",
+    peso: (u) => `Vikt (${u})`,
+    altura: (u) => `Längd (${u})`,
+    pies: "Längd: fot (ft)",
+    pulgadas: "Längd: tum (in)",
+    actividad: "Aktivitetsnivå",
+    sedentaria: "Lite eller ingen",
+    ligera: "Lätt (1 till 3 dagar i veckan)",
+    moderada: "Måttlig (3 till 5 dagar i veckan)",
+    alta: "Hög (6 eller 7 dagar i veckan)",
+    muyAlta: "Mycket hög (hård träning eller fysiskt arbete)",
+    objetivo: "Mål",
+    mantener: "Behålla vikten",
+    bajar: "Gå ner i vikt i lugn takt",
+    subir: "Gå upp i vikt i lugn takt",
+    basal: "Basalmetabolism (kcal per dag)",
+    basalAyuda: "Det kroppen gör av med i fullständig vila.",
+    mantenimiento: "Kalorier för att behålla vikten (kcal per dag)",
+    calObjetivo: "Kalorier för ditt mål (kcal per dag)",
+    calObjetivoAyuda: "En måttlig förändring: 500 kcal mindre per dag för att gå ner, 300 mer för att gå upp.",
+    errorEdad: "Formeln gäller för personer mellan 15 och 100 år.",
+    errorPeso: "Vikten måste vara större än 0.",
+    errorAltura: "Längden måste vara större än 0.",
+    notaMinimo: (kcal) => `Vid viktnedgång går beräkningen inte under ${kcal} kcal per dag. Att äta mindre än så bör ske med stöd av vårdpersonal.`,
+    aviso: "Det här är en uppskattning med Mifflin-St Jeors formel. Alla kroppar är olika. Det ersätter inte en bedömning av dietist, läkare eller annan vårdpersonal.",
+  }),
+};
