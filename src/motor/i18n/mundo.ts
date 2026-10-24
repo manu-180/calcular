@@ -2450,7 +2450,167 @@ const zhHans: TextosMundo = {
 
 const zh: Diccionario<TextosMundo> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── id ─────────────────────────────
+
+// Indonesio (ADR 0002, D11): «Anda» con mayúscula, frases cortas, sin plural después de un número.
+const gId = GRAMATICA.id;
+const SEO_ID = "Hari Bebas Pajak dan gaji bersih di seluruh dunia";
+
+const idn: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Gaji Anda di seluruh dunia",
+    seo: {
+      titulo: (pais) => [`${SEO_ID} | ${pais}`, SEO_ID, "Gaji Anda di seluruh dunia"],
+      tituloGlobal: [SEO_ID, "Gaji Anda di seluruh dunia"],
+      descripcion: (pais, n) => `Lihat sampai tanggal berapa Anda bekerja untuk pajak dengan gaji ${gId.en(pais)}, dan berapa gaji bersih Anda di ${n} negara. Gratis, tanpa daftar.`,
+      descripcionGlobal: (n) => `Lihat sampai tanggal berapa Anda bekerja untuk pajak, dan berapa gaji bersih Anda di ${n} negara. Gratis, tanpa daftar.`,
+    },
+    ceja: "Hari Bebas Pajak Anda",
+    h1: "Sampai tanggal berapa Anda bekerja untuk negara?",
+    bajada: (n) => `Masukkan gaji kotor Anda untuk melihat tanggalnya. Lalu bandingkan di ${n} negara, dengan daya beli yang sama dan aturan pajak tiap negara.`,
+    form: {
+      titulo: "Gaji Anda",
+      sueldo: "Gaji kotor",
+      mes: "Per bulan",
+      anio: "Per tahun",
+      periodo: "Periode gaji",
+      pais: "Negara tempat Anda bekerja",
+      ejemplo: "Contoh",
+      ejemploAyuda: "Ini gaji contoh. Ketik gaji Anda dan semua angka langsung diperbarui.",
+      propio: "Diambil dari perhitungan Anda sebelumnya.",
+      invalido: "Masukkan jumlah di atas nol.",
+      pagas: "Gaji bulanan sesuai slip gaji Anda: kami menambahkan gaji tambahan yang diwajibkan undang-undang (gaji ke-13 atau ke-14). Gaji bersih adalah rata-rata 12 bulan.",
+    },
+    heroe: {
+      hasta: (fecha) => `Anda bekerja untuk negara sampai ${fecha}`,
+      tasa: (pct) => `${pct} dari gaji Anda dipakai untuk pajak penghasilan dan iuran wajib.`,
+      dias: (n, total) => `${n} dari ${total} hari`,
+      enMano: "Gaji bersih Anda",
+      porMes: "per bulan",
+      anio: (anio, n, total) => `${anio}: ${n} dari ${total} hari untuk negara.`,
+      resto: "Mulai hari berikutnya, penghasilan Anda sepenuhnya milik Anda.",
+    },
+    ranking: {
+      titulo: "Gaji yang sama, negara demi negara",
+      bajada: "Dengan daya beli yang sama, inilah gaji bersih Anda di tiap negara. Setiap baris berasal dari kalkulator resmi negara tersebut.",
+      lista: "Negara diurutkan menurut gaji bersih",
+      buscar: "Cari negara",
+      filtrar: "Saring menurut wilayah",
+      todas: "Semua",
+      regiones: { americas: "Amerika", europa: "Eropa", asia: "Asia dan Oseania", africa: "Afrika dan Timur Tengah" },
+      tuPais: "Negara Anda",
+      mejor: "Paling menguntungkan",
+      enMano: "Gaji bersih per bulan",
+      enTuMoneda: "Dalam mata uang Anda",
+      vsTuPais: "Dibanding negara Anda",
+      verTodos: (n) => `Lihat semua ${n} negara`,
+      verMenos: "Tampilkan lebih sedikit",
+      sinResultados: (q) => `Tidak ada negara yang cocok dengan “${q}”.`,
+      abrir: (pais) => `Buka kalkulator untuk ${gId.nombre(pais)}`,
+      mas: (pct) => `${pct} lebih banyak`,
+      menos: (pct) => `${pct} lebih sedikit`,
+      igual: "Sama",
+      puesto: (p, total) => `Negara Anda di peringkat ${p} dari ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Kartu Anda untuk dibagikan",
+      bajada: "Kartu ini menampilkan tanggal dan persentase Anda. Besar gaji Anda tidak pernah ditampilkan.",
+      hasta: (fecha) => `Saya bekerja untuk negara sampai ${fecha}`,
+      tasa: (pct) => `${pct} dari gaji saya untuk pajak`,
+      mejor: (pais, pct) => `Dengan gaji saya, ${gId.en(pais)} saya bisa membawa pulang ${pct} lebih banyak`,
+      mejorPropio: (pais) => `Dengan gaji saya, tidak ada negara yang lebih menguntungkan daripada ${gId.nombre(pais)}`,
+      yVos: "Bagaimana dengan Anda?",
+      cta: "Cek tanggal Anda di",
+      generica: "Sampai tanggal berapa Anda bekerja untuk negara?",
+      genericaBajada: (n) => `Gaji Anda di ${n} negara, dihitung dengan kalkulator resmi tiap negara`,
+      compartir: "Bagikan kartu saya",
+      compartirDuelo: "Balas tantangannya",
+      descargar: "Unduh gambar",
+      copiado: "Tautan disalin. Tempel di mana saja.",
+      compartido: "Selesai, sudah dibagikan.",
+      error: "Gagal membagikan. Coba lagi.",
+      texto: (fecha) => `Saya bekerja untuk negara sampai ${fecha}. Bagaimana dengan Anda?`,
+      alt: "Pratinjau kartu Anda",
+    },
+    duelo: {
+      amigo: (fecha) => `Teman Anda bekerja untuk negara sampai ${fecha}.`,
+      yVos: "Bagaimana dengan Anda?",
+      invitacion: "Masukkan gaji Anda untuk membandingkan.",
+      vos: "Anda",
+      elAmigo: "Teman Anda",
+      dia: "Bekerja untuk negara sampai",
+      tasa: "Pajak dan iuran",
+      mejorPais: "Paling menguntungkan di",
+      antes: (d) => `Anda bebas ${d} hari lebih awal daripada teman Anda.`,
+      despues: (d) => `Teman Anda bebas ${d} hari lebih awal daripada Anda.`,
+      empate: "Anda dan teman Anda bebas pada hari yang sama.",
+      desde: (pais) => `Bekerja ${gId.en(pais)}`,
+    },
+    cero: {
+      dia: "nol hari",
+      heroeAntes: "Anda bekerja untuk negara",
+      tarjetaAntes: "Saya bekerja untuk negara",
+      motivo: "Dengan gaji ini, tidak ada potongan pajak penghasilan maupun iuran wajib.",
+      texto: "Tahun ini saya tidak bekerja sehari pun untuk negara. Bagaimana dengan Anda?",
+      amigo: "Teman Anda tidak bekerja sehari pun untuk negara.",
+    },
+    metodo: {
+      titulo: "Cara kami menghitungnya",
+      estimacion: "Ini perkiraan untuk membandingkan negara, bukan slip gaji. Pengurang pajak, tanggungan anak, atau bonus bisa mengubah angka Anda.",
+      supuestos: [
+        "Satu orang lajang tanpa anak, dengan nilai bawaan kalkulator tiap negara.",
+        "Gaji bersih adalah sisa gaji setelah pajak penghasilan dan iuran yang ditanggung pekerja. Pajak konsumsi dan iuran yang dibayar pemberi kerja tidak dihitung.",
+        "Gaji ke-13 atau tambahan wajib lainnya dibagi rata sepanjang tahun sesuai undang-undang tiap negara.",
+        "Di Amerika Serikat tidak ditambahkan pajak penghasilan negara bagian atau lokal: hanya pajak federal dan iuran gaji.",
+        "Untuk membawa gaji Anda ke negara lain, kami memakai paritas daya beli (PPP): standar hidup yang sama, bukan kurs hari ini.",
+        "PPP Argentina diperbarui dengan indeks harga konsumen dari INDEC, karena Bank Dunia hanya menerbitkannya sampai 2021.",
+        "Hari bebas Anda membagi pajak Anda sepanjang tahun mulai 1 Januari. Jika 30% gaji Anda untuk pajak, Anda bekerja untuk negara selama 30% dari tahun itu.",
+      ],
+      ppaTitulo: "Paritas daya beli",
+      bancoMundial: "Bank Dunia",
+      ppa: (organismo, indicador, anio) => `${organismo}, indikator ${indicador}, tahun terakhir yang tersedia ${anio}.`,
+      consultado: (fecha) => `Dicek pada ${fecha}.`,
+      verFuente: "Lihat sumbernya",
+      fuentesTitulo: "Sumber tiap negara",
+      fuentesBajada: "Setiap baris memakai kalkulator gaji bersih negara tersebut dan data resminya.",
+      verificado: (fecha) => `Data diverifikasi pada ${fecha}`,
+      sello: (fecha) => `Data resmi dicek di sumber tiap negara. Pengecekan paling lama dilakukan pada ${fecha}.`,
+    },
+    faqTitulo: "Pertanyaan yang sering diajukan",
+    faq: (n) => [
+      {
+        pregunta: "Apa itu Hari Bebas Pajak?",
+        respuesta:
+          "Hari Bebas Pajak adalah hari ketika Anda selesai membayar pajak dalam setahun, seandainya semua penghasilan sejak 1 Januari lebih dulu disetor ke negara. Di sini hari itu dihitung dari gaji Anda, bukan dari rata-rata nasional.",
+      },
+      {
+        pregunta: "Mengapa dibandingkan dengan daya beli?",
+        respuesta: "Kurs bisa membuat gaji tampak besar atau kecil tergantung harinya. PPP membandingkan apa yang benar-benar bisa dibeli dengan uang itu di tiap negara.",
+      },
+      {
+        pregunta: "Apakah gaji saya disimpan?",
+        respuesta: "Tidak. Perhitungannya berjalan di browser Anda. Yang Anda bagikan hanya berisi tanggal, persentase, dan negara.",
+      },
+      {
+        pregunta: "Mengapa gaji bersih saya yang sebenarnya berbeda?",
+        respuesta:
+          "Kami menganggap Anda lajang tanpa anak dengan nilai bawaan. Pengurang pajak, bonus, atau skema khusus bisa mengubah angkanya. Untuk kasus Anda yang pasti, buka kalkulator negara Anda.",
+      },
+      {
+        pregunta: "Negara mana saja yang tersedia?",
+        respuesta: `Saat ini ada ${n} negara, masing-masing dengan kalkulator gaji bersih dan data resminya sendiri. Kami menambah negara baru setelah aturan pajaknya kami verifikasi.`,
+      },
+    ],
+    destacado: {
+      ceja: "Perbandingan dunia",
+      titulo: "Sampai tanggal berapa Anda bekerja untuk negara?",
+      texto: "Masukkan gaji Anda dan lihat berapa yang Anda bawa pulang di negara lain.",
+      ir: "Cek tanggal saya",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, id: idn };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

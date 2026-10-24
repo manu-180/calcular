@@ -226,6 +226,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       "zh-SG": ZH_HANS_COMPARTIR,
     },
   },
+  id: {
+    base: {
+      boton: "Bagikan",
+      botonAria: "Bagikan kalkulator ini",
+      menuTitulo: "Bagikan lewat",
+      copiar: "Salin tautan",
+      copiado: "Tautan disalin",
+      compartido: "Dibagikan",
+      errorCorto: "Gagal menyalin",
+      errorAyuda: "Tautan tidak dapat disalin. Salin langsung dari bilah alamat browser.",
+      nuevaPestana: "terbuka di tab baru",
+      mensaje: (nombre) => `${nombre}. Gratis, dan hitungannya selesai dalam satu menit.`,
+      puenteIntro: "Bagaimana di negara lain?",
+      puenteEnlace: (n) => `Lihat berapa gaji bersih Anda di lebih dari ${n} negara`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {
