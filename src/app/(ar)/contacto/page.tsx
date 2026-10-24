@@ -17,8 +17,8 @@ export default function ContactoPage() {
       </p>
       <p>
         Escribinos a{" "}
-        <a href="mailto:manunv97@gmail.com" className="text-emerald-700 underline">
-          manunv97@gmail.com
+        <a href="mailto:soporte@calcular.ar" className="text-emerald-700 underline">
+          soporte@calcular.ar
         </a>{" "}
         y te respondemos lo antes posible.
       </p>

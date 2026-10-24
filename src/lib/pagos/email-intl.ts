@@ -3,7 +3,7 @@ import type { ProductoIntl } from "./catalogo-intl";
 import { rellenar, textosVenta } from "./textos";
 
 // Mismo remitente verificado en Resend que calcular.ar; cambia sólo el nombre que ve la persona.
-export const FROM_INTL = "CalcularYa <soporte@theapexweb.com>";
+export const FROM_INTL = "CalcularYa <soporte@calcular.ar>";
 
 const MARCA = "CalcularYa";
 
@@ -11,8 +11,8 @@ function escapar(s: string): string {
   return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 }
 
-export function asuntoEntregaIntl(p: ProductoIntl, idioma: Idioma, trato: Trato): string {
-  const c = textosVenta(idioma, trato).correo;
+export function asuntoEntregaIntl(p: ProductoIntl, idioma: Idioma, trato: Trato, locale?: string): string {
+  const c = textosVenta(idioma, trato, locale).correo;
   return rellenar(p.tipo === "informe" ? c.asuntoInforme : c.asuntoPlanilla, { titulo: p.tituloCorto });
 }
 
@@ -20,6 +20,7 @@ export interface EntregaIntl {
   producto: ProductoIntl;
   idioma: Idioma;
   trato: Trato;
+  locale?: string;
   urlDescarga: string;
   urlLanding: string;
   origen: string;
@@ -29,7 +30,7 @@ export interface EntregaIntl {
 // El informe no se descarga: es una página que se abre, se imprime o se guarda en PDF. Todo lo que
 // entra en el HTML se escapa acá: los textos del diccionario y los del producto por igual.
 export function entregaIntlHtml(o: EntregaIntl): string {
-  const c = textosVenta(o.idioma, o.trato).correo;
+  const c = textosVenta(o.idioma, o.trato, o.locale).correo;
   const x = o.producto.tipo === "informe" ? c.informe : c.planilla;
   const titulo = `<strong>${escapar(o.producto.titulo)}</strong>`;
   const intro = escapar(x.intro).replace("{titulo}", titulo);

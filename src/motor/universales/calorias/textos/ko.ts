@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosKo: TextosUi<UiCalorias> = {
+  slug: "calorie-calculator",
+  ui: () => ({
+    sexo: "성별",
+    mujer: "여성",
+    hombre: "남성",
+    edad: "나이(세)",
+    peso: (u) => `몸무게(${u})`,
+    altura: (u) => `키(${u})`,
+    pies: "키: 피트(ft)",
+    pulgadas: "키: 인치(in)",
+    actividad: "활동량",
+    sedentaria: "거의 움직이지 않음",
+    ligera: "가벼운 운동(주 1~3일)",
+    moderada: "보통 운동(주 3~5일)",
+    alta: "많은 운동(주 6~7일)",
+    muyAlta: "매우 많음(고강도 훈련이나 육체노동)",
+    objetivo: "목표",
+    mantener: "체중 유지",
+    bajar: "천천히 감량",
+    subir: "천천히 증량",
+    basal: "기초대사량(kcal/일)",
+    basalAyuda: "완전히 쉬고 있을 때 몸이 쓰는 에너지예요.",
+    mantenimiento: "체중 유지 칼로리(kcal/일)",
+    calObjetivo: "목표 칼로리(kcal/일)",
+    calObjetivoAyuda: "무리 없는 변화예요. 감량은 하루 500kcal 적게, 증량은 300kcal 많이 잡아요.",
+    errorEdad: "이 공식은 15세에서 100세까지를 대상으로 해요.",
+    errorPeso: "몸무게는 0보다 커야 해요.",
+    errorAltura: "키는 0보다 커야 해요.",
+    notaMinimo: (kcal) => `감량할 때도 하루 ${kcal}kcal 아래로는 보여 드리지 않아요. 그보다 적게 먹으려면 전문가의 도움을 받는 게 좋아요.`,
+    aviso: "Mifflin-St Jeor 공식으로 낸 추정치예요. 몸은 사람마다 달라서, 의사나 영양사 등 전문가와의 상담을 대신하지 않아요.",
+  }),
+};

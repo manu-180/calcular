@@ -1,0 +1,348 @@
+{
+  "mercado": "kw",
+  "datos": [
+    {
+      "id": "kw.pifss-basic-employee-rate",
+      "nombre": "PIFSS Basic Insurance Fund, insured share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-basic-employer-rate",
+      "nombre": "PIFSS Basic Insurance Fund, employer share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-basic-max",
+      "nombre": "PIFSS maximum basic contribution salary",
+      "tipo": "numero",
+      "unidad": "KWD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-basic-min",
+      "nombre": "PIFSS minimum contribution salary (private sector)",
+      "tipo": "numero",
+      "unidad": "KWD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 230,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-supplementary-employee-rate",
+      "nombre": "PIFSS Supplementary Insurance Fund, insured share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-supplementary-employer-rate",
+      "nombre": "PIFSS Supplementary Insurance Fund, employer share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-supplementary-max",
+      "nombre": "PIFSS maximum supplementary contribution salary",
+      "tipo": "numero",
+      "unidad": "KWD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1250,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-increase-employee-rate",
+      "nombre": "PIFSS Pension Increase Fund, insured share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-increase-employer-rate",
+      "nombre": "PIFSS Pension Increase Fund, employer share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-increase-max",
+      "nombre": "PIFSS Pension Increase Fund salary ceiling",
+      "tipo": "numero",
+      "unidad": "KWD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2750,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-remuneration-rate",
+      "nombre": "PIFSS Remuneration Fund, insured share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-remuneration-years",
+      "nombre": "Years of contributions after which the Remuneration Fund stops",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.pifss-unemployment-rate",
+      "nombre": "Unemployment Insurance Fund, insured share (private and oil sectors)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "PIFSS",
+            "titulo": "Taminat Guide: summary of the Social Security Law (English)",
+            "url": "https://www.pifss.gov.kw/Lists/BriefLegislationGuideList/Attachments/1/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D8%A7%D9%94%D9%85%D9%8A%D9%86%D8%A7%D8%AA%20-English.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "La guía no trae fecha de vigencia; se toma la vigente al día de la lectura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.zakat-rate",
+      "nombre": "Zakat rate on money and gold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Kuwait Zakat House",
+            "titulo": "Zakat calculator (calculate.aspx)",
+            "url": "https://www.zakathouse.org.kw/calculate.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Nisab de zakat al-mal = 85 g de oro de 24 quilates; la calculadora oficial aplica 0.025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.zakat-nisab-grams",
+      "nombre": "Zakat nisab in grams of 24 carat gold",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 85,
+          "fuente": {
+            "organismo": "Kuwait Zakat House",
+            "titulo": "Zakat calculator (calculate.aspx)",
+            "url": "https://www.zakathouse.org.kw/calculate.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Nisab de zakat al-mal = 85 g de oro de 24 quilates; la calculadora oficial aplica 0.025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kw.eosi-days-first-5",
+      "nombre": "End of service indemnity: days' wages a year for the first 5 years (monthly paid)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2010-02-21",
+          "valor": 15,
+          "motivo": "pam.gov.kw no resuelve DNS desde acá y e.gov.kw responde 403, así que no pudimos leer la Ley 6/2010 en una fuente oficial. Valor tomado de resúmenes de estudios jurídicos (Mondaq, Al Tamimi)."
+        }
+      ]
+    },
+    {
+      "id": "kw.eosi-max-years",
+      "nombre": "End of service indemnity cap in years of wages",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2010-02-21",
+          "valor": 1.5,
+          "motivo": "pam.gov.kw no resuelve DNS desde acá y e.gov.kw responde 403, así que no pudimos leer la Ley 6/2010 en una fuente oficial. Valor tomado de resúmenes de estudios jurídicos (Mondaq, Al Tamimi)."
+        }
+      ]
+    }
+  ]
+}

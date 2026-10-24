@@ -7,6 +7,24 @@ import type { Novedad } from "@/lib/novedades";
 
 export const NOVEDADES_REGISTRADAS: Novedad[] = [
   {
+    "id": "uma-2026-09",
+    "serie": "uma",
+    "organismo": "Corte Suprema",
+    "tipo": "dato",
+    "publicadoEl": "2026-10-21",
+    "cargadoEl": "2026-10-21",
+    "rigeDesde": "2026-09-01",
+    "titulo": "UMA de septiembre: $ 108.005",
+    "detalle": "La Corte Suprema fijó el valor de la unidad que se usa para regular honorarios desde septiembre de 2026 (Resolución 2622/2026).",
+    "fuente": {
+      "nombre": "Corte Suprema · Resolución 2622/2026",
+      "url": "https://www.csjn.gov.ar/documentos/descargar?ID=182918"
+    },
+    "rutas": [
+      "/honorarios-periciales"
+    ]
+  },
+  {
     "id": "camioneros-2026-09-a-2027-02",
     "serie": "camioneros",
     "organismo": "Camioneros (FADEEAC)",
@@ -60,6 +78,24 @@ export const NOVEDADES_REGISTRADAS: Novedad[] = [
       "/jubilacion",
       "/puam",
       "/pension-no-contributiva"
+    ]
+  },
+  {
+    "id": "uma-2026-08",
+    "serie": "uma",
+    "organismo": "Corte Suprema",
+    "tipo": "dato",
+    "publicadoEl": "2026-09-24",
+    "cargadoEl": "2026-10-19",
+    "rigeDesde": "2026-08-01",
+    "titulo": "UMA de agosto: $ 105.991",
+    "detalle": "La Corte Suprema fijó el valor de la unidad que se usa para regular honorarios desde agosto de 2026 (Resolución 2372/2026).",
+    "fuente": {
+      "nombre": "Corte Suprema · Resolución 2372/2026",
+      "url": "https://www.csjn.gov.ar/documentos/descargar?ID=182351"
+    },
+    "rutas": [
+      "/honorarios-periciales"
     ]
   },
   {

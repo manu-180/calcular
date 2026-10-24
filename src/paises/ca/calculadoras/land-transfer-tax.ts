@@ -14,6 +14,7 @@ export default definirCalculadora({
     "ca.bc-property-transfer-tax": "escala",
     "ca.bc-ptt-surcharge-threshold": "numero",
     "ca.bc-ptt-surcharge-rate": "numero",
+    "ca.qc-transfer-duties": "escala",
   },
   campos: [
     {
@@ -24,6 +25,7 @@ export default definirCalculadora({
         { valor: "on", etiqueta: "Ontario, outside Toronto" },
         { valor: "toronto", etiqueta: "City of Toronto" },
         { valor: "bc", etiqueta: "British Columbia" },
+        { valor: "qc", etiqueta: "Quebec, outside Montreal (welcome tax)" },
       ],
       porDefecto: "on",
     },
@@ -36,7 +38,10 @@ export default definirCalculadora({
     let provincial = 0;
     let municipal = 0;
     let rebaja = 0;
-    if (entrada.lugar === "bc") {
+    if (entrada.lugar === "qc") {
+      // Quebec.ca rounds the duties to the dollar (3,360.50 on $350,000 is 3,361).
+      municipal = Math.round(aplicarEscalaMarginal(v["ca.qc-transfer-duties"], p));
+    } else if (entrada.lugar === "bc") {
       provincial = aplicarEscalaMarginal(v["ca.bc-property-transfer-tax"], p) + porcentaje(Math.max(0, p - v["ca.bc-ptt-surcharge-threshold"]), v["ca.bc-ptt-surcharge-rate"]);
     } else {
       provincial = aplicarEscalaMarginal(v["ca.on-land-transfer-tax"], p);
@@ -57,15 +62,17 @@ export default definirCalculadora({
       rebaja,
       efectiva: (total / p) * 100,
       observaciones:
-        entrada.lugar === "bc"
-          ? ["BC rates shown are the general property transfer tax for a home. The first time home buyers' exemption is not included yet, and foreign buyers can owe an additional tax."]
-          : ["Rates shown are for a home with one or two single family residences."],
+        entrada.lugar === "qc"
+          ? ["These are the Quebec rates for 2026. A municipality can set a higher rate, up to 3%, on the part above $500,000, and Montreal has its own higher rates."]
+          : entrada.lugar === "bc"
+            ? ["BC rates shown are the general property transfer tax for a home. The first time home buyers' exemption is not included yet, and foreign buyers can owe an additional tax."]
+            : ["Rates shown are for a home with one or two single family residences."],
     };
   },
   resultado: [
     { clave: "total", etiqueta: "Land transfer tax to pay", formato: "moneda", destacada: true },
     { clave: "provincial", etiqueta: "Provincial tax before rebates", formato: "moneda" },
-    { clave: "municipal", etiqueta: "Toronto municipal tax before rebates", formato: "moneda", ocultarSiCero: true },
+    { clave: "municipal", etiqueta: "Municipal tax before rebates (Toronto, or Quebec welcome tax)", formato: "moneda", ocultarSiCero: true },
     { clave: "rebaja", etiqueta: "First-time buyer refund or exemption", formato: "moneda", ocultarSiCero: true },
     { clave: "efectiva", etiqueta: "Tax as a share of the price", formato: "porcentaje", decimales: 2 },
   ],

@@ -67,10 +67,25 @@ export function semaforoPais(pais: PaisDefinido, hoy: FechaISO, horizonte = DIAS
     }
   }
 
+  // Una serie que solo alimentan detectores manuales no la actualiza el cron: el aviso llega con el
+  // horizonte entero de anticipación, para que alguien cargue el punto a mano.
+  const manuales = new Set(
+    pais.series
+      .map((s) => s.id)
+      .filter((id) => {
+        const dets = pais.detectores.filter((d) => d.carril === "serie" && d.serie === id);
+        return dets.length > 0 && dets.every((d) => d.metodo === "manual");
+      }),
+  );
   for (const s of pais.series) {
     const ultimo = ultimoPunto(s);
     if (!ultimo) continue;
     const edad = diasEntre(ultimo.fecha, hoy);
+    const vence = sumarDias(ultimo.fecha, s.maxAntiguedadDias + 1);
+    if (manuales.has(s.id) && edad <= s.maxAntiguedadDias && s.maxAntiguedadDias - edad <= horizonte) {
+      items.push({ clave: `${s.id}:serie`, nivel: "amarillo", tipo: "serie", texto: `${s.id}: carga manual; el último punto es del ${ultimo.fecha} y vence el ${vence}: cargá el punto nuevo en series.json` });
+      continue;
+    }
     if (edad > s.maxAntiguedadDias) {
       items.push({ clave: `${s.id}:serie`, nivel: "rojo", tipo: "serie", texto: `${s.id}: el último punto es del ${ultimo.fecha} (${edad} días, máximo ${s.maxAntiguedadDias}): las calculadoras que la usan no se publican` });
     } else if (s.maxAntiguedadDias - edad <= margenSerie(s.maxAntiguedadDias)) {

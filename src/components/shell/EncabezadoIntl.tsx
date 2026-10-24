@@ -55,6 +55,7 @@ export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
               actual={actual}
               idioma={m.idioma}
               trato={m.trato}
+              locale={m.locale}
               textos={{ elegir: t.header.elegirPais, latinoamerica: t.header.latinoamerica, todos: t.header.todos, hrefTodos: rutaIntl("global") }}
             />
           </div>

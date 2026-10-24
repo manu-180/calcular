@@ -5,6 +5,7 @@ import { CATALOGO, productoPorSlug } from "@/lib/mp";
 import { FORMA_MERCADO, MERCADO_AR, esMercadoIntl, esMercadoMedido, mercadoMedido } from "@/lib/medicion/mercados";
 import { catalogoIntl, type ProductoIntl } from "@/lib/pagos/catalogo-intl";
 import { generarLecturas } from "@/lib/panel/lecturas";
+import { extremos, sumarDias } from "@/lib/panel/fechas";
 import type {
   Busqueda,
   Compra,
@@ -26,8 +27,6 @@ import type {
 } from "@/lib/panel/tipos";
 
 const ZONA = "America/Argentina/Buenos_Aires";
-const DIA_MS = 86_400_000;
-const DIAS: Record<Rango, number> = { hoy: 1, "7d": 7, "30d": 30, "90d": 90 };
 const KPIS: KpiClave[] = ["visitantes", "usos", "tiempo", "interes", "checkouts", "ventas", "ingresos"];
 const PASOS: PasoEmbudo["paso"][] = ["vio_oferta", "abrio_compra", "fue_a_pagar", "pago"];
 const ESTADOS: Compra["estado"][] = ["aprobado", "reembolsado", "contracargo"];
@@ -45,9 +44,12 @@ export function limitesDelRango(rango: Rango, ahora: Date = new Date()): { desde
   const parte = (tipo: Intl.DateTimeFormatPartTypes) => partes.find((p) => p.type === tipo)?.value ?? "";
   const zona = parte("timeZoneName").replace("GMT", "");
   const offset = /^[+-]\d{2}:\d{2}$/.test(zona) ? zona : zona === "" ? "+00:00" : "-03:00";
-  const medianoche = new Date(`${parte("year")}-${parte("month")}-${parte("day")}T00:00:00${offset}`);
-  if (Number.isNaN(medianoche.getTime())) throw new Error(`No se pudo calcular la medianoche argentina para ${ahora.toISOString()}`);
-  return { desde: new Date(medianoche.getTime() - (DIAS[rango] - 1) * DIA_MS), hasta: ahora };
+  const hoy = `${parte("year")}-${parte("month")}-${parte("day")}`;
+  const { inicio, fin } = extremos(rango, hoy);
+  const desde = new Date(`${inicio}T00:00:00${offset}`);
+  if (Number.isNaN(desde.getTime())) throw new Error(`No se pudo calcular la medianoche argentina para ${ahora.toISOString()}`);
+  if (fin >= hoy) return { desde, hasta: ahora };
+  return { desde, hasta: new Date(`${sumarDias(fin, 1)}T00:00:00${offset}`) };
 }
 
 function objeto(valor: unknown, campo: string): Crudo {

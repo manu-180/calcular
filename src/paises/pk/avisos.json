@@ -1,0 +1,19 @@
+{
+  "mercado": "pk",
+  "avisos": [
+    {
+      "id": "pk.nss-rates-change",
+      "nivel": "info",
+      "desde": "2026-10-01",
+      "aplicaA": ["pk.behbood-savings-certificate-calculator", "pk.regular-income-certificate-calculator", "pk.special-savings-certificate-calculator", "pk.short-term-savings-certificate-calculator"],
+      "texto": "National Savings changes its profit rates often, sometimes more than once a month. These results use the rates in force from 1 October 2026. A certificate keeps the rate of the day you buy it.",
+      "fuente": {
+        "organismo": "Central Directorate of National Savings",
+        "titulo": "Summary of NSS profit rates w.e.f. 01-10-2026",
+        "url": "https://savings.gov.pk/latest-profit-rates/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17"
+      }
+    }
+  ]
+}

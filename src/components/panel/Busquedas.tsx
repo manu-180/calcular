@@ -1,5 +1,5 @@
 import type { PanelDatos, Rango } from "@/lib/panel/tipos";
-import { PERIODO, numero } from "@/lib/panel/formato";
+import { periodo, numero } from "@/lib/panel/formato";
 import { Barras } from "./Barras";
 import { IcoAlerta } from "./iconos";
 import { Bandeja, Seccion, TARJETA, Vacio } from "./ui";
@@ -13,7 +13,7 @@ export function Busquedas({ datos, rango }: { datos: PanelDatos; rango: Rango })
       <Bandeja>
         {!datos.busquedas.length ? (
           <div className={TARJETA}>
-            <Vacio>Nadie usó el buscador {PERIODO[rango]}.</Vacio>
+            <Vacio>Nadie usó el buscador {periodo(rango)}.</Vacio>
           </div>
         ) : (
           <>

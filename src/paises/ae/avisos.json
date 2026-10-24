@@ -1,0 +1,19 @@
+{
+  "mercado": "ae",
+  "avisos": [
+    {
+      "id": "ae.labour-law-scope",
+      "nivel": "info",
+      "desde": "2026-10-17",
+      "aplicaA": ["ae.gratuity-calculator", "ae.annual-leave", "ae.overtime-calculator", "ae.sick-leave-pay", "ae.maternity-leave-pay", "ae.notice-period"],
+      "texto": "This follows the UAE Labour Law for the private sector. It doesn't cover federal or local government staff or domestic workers, who have their own rules.",
+      "fuente": {
+        "organismo": "UAE Government portal (u.ae)",
+        "titulo": "Employment laws and regulations in the private sector",
+        "url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/employment-laws-and-regulations-in-the-private-sector",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17"
+      }
+    }
+  ]
+}

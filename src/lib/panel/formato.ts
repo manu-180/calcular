@@ -1,4 +1,5 @@
-import type { KpiClave, Rango } from "@/lib/panel/tipos";
+import type { KpiClave, Preset, Rango } from "@/lib/panel/tipos";
+import { diasEntre, esPreset, extremos, type Dia } from "@/lib/panel/fechas";
 
 const NBSP = " ";
 
@@ -161,33 +162,70 @@ export function etiquetaEje(iso: string, granularidad: "hora" | "dia"): string {
   return granularidad === "hora" ? hora(iso) : diaCorto(iso);
 }
 
-export const NOMBRE_RANGO: Record<Rango, string> = {
+const NOMBRE_PRESET: Record<Preset, string> = {
   hoy: "Hoy",
   "7d": "7 días",
   "30d": "30 días",
   "90d": "90 días",
 };
 
-export const PERIODO: Record<Rango, string> = {
+const PERIODO_PRESET: Record<Preset, string> = {
   hoy: "hoy",
   "7d": "en los últimos 7 días",
   "30d": "en los últimos 30 días",
   "90d": "en los últimos 90 días",
 };
 
-export const CONTRA: Record<Rango, string> = {
-  hoy: "ayer a esta hora",
-  "7d": "los 7 días anteriores",
-  "30d": "los 30 días anteriores",
-  "90d": "los 90 días anteriores",
-};
+const MESES_LARGOS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
-export const ANTES: Record<Rango, string> = {
-  hoy: "ayer a esta hora",
-  "7d": "en los 7 días anteriores",
-  "30d": "en los 30 días anteriores",
-  "90d": "en los 90 días anteriores",
-};
+function partesDia(d: Dia) {
+  const [a, m, dd] = d.split("-").map(Number);
+  return { anio: a, mes: m - 1, dia: dd };
+}
+
+function largo(d: Dia, conAnio: boolean): string {
+  const p = partesDia(d);
+  return `${p.dia} de ${MESES_LARGOS[p.mes]}${conAnio ? ` de ${p.anio}` : ""}`;
+}
+
+export function nombreRango(r: Rango): string {
+  if (esPreset(r)) return NOMBRE_PRESET[r];
+  const { inicio, fin } = extremos(r, "");
+  const a = partesDia(inicio);
+  if (inicio === fin) return `${a.dia} ${MESES[a.mes]}`;
+  const b = partesDia(fin);
+  if (a.anio === b.anio && a.mes === b.mes) return `${a.dia} al ${b.dia} ${MESES[b.mes]}`;
+  return `${a.dia} ${MESES[a.mes]} al ${b.dia} ${MESES[b.mes]}`;
+}
+
+export function periodo(r: Rango): string {
+  if (esPreset(r)) return PERIODO_PRESET[r];
+  const { inicio, fin } = extremos(r, "");
+  if (inicio === fin) return `el ${largo(inicio, false)}`;
+  const a = partesDia(inicio);
+  const b = partesDia(fin);
+  if (a.anio !== b.anio) return `del ${largo(inicio, true)} al ${largo(fin, true)}`;
+  if (a.mes === b.mes) return `del ${a.dia} al ${largo(fin, false)}`;
+  return `del ${largo(inicio, false)} al ${largo(fin, false)}`;
+}
+
+function diasDelRango(r: Rango): number {
+  if (esPreset(r)) return { hoy: 1, "7d": 7, "30d": 30, "90d": 90 }[r];
+  const { inicio, fin } = extremos(r, "");
+  return diasEntre(inicio, fin) + 1;
+}
+
+export function contra(r: Rango): string {
+  if (r === "hoy") return "ayer a esta hora";
+  const n = diasDelRango(r);
+  return n === 1 ? "el día anterior" : `los ${n} días anteriores`;
+}
+
+export function antes(r: Rango): string {
+  if (r === "hoy") return "ayer a esta hora";
+  const n = diasDelRango(r);
+  return n === 1 ? "el día anterior" : `en los ${n} días anteriores`;
+}
 
 export type Variacion =
   | { tipo: "sube" | "baja"; pct: number }

@@ -34,6 +34,7 @@ export type TextosInforme = {
     nombre: string;
     documento: string;
     etiquetaEnMinuscula: boolean;
+    anchoCompleto: boolean;
   } | null;
 };
 
@@ -283,14 +284,25 @@ export function InformeVivo({
           <p className="cy-informe-nota-uso cy-informe-pantalla">{textos.nota.uso}</p>
           <div className="cy-informe-nota">
             <p>
-              {textos.nota.lugar}: <span className="cy-informe-raya" />
+              {textos.nota.lugar}
+              {textos.nota.anchoCompleto ? "：" : ": "}
+              <span className="cy-informe-raya" />
             </p>
             <p>
-              {textos.nota.destinatario}: <span className="cy-informe-raya" />
+              {textos.nota.destinatario}
+              {textos.nota.anchoCompleto ? "：" : ": "}
+              <span className="cy-informe-raya" />
             </p>
-            <p>
-              {textos.nota.pedido} <strong>{clave.texto}</strong> ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLowerCase() : clave.etiqueta}).
-            </p>
+            {textos.nota.anchoCompleto ? (
+              <p>
+                {textos.nota.pedido}
+                <strong>{clave.texto}</strong>（{clave.etiqueta}）。
+              </p>
+            ) : (
+              <p>
+                {textos.nota.pedido} <strong>{clave.texto}</strong> ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLowerCase() : clave.etiqueta}).
+              </p>
+            )}
             <p>{textos.nota.cierre}</p>
             <div className="cy-informe-firmas">
               <span>{textos.nota.firma}</span>

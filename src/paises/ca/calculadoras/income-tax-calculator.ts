@@ -18,7 +18,7 @@ export default definirCalculadora({
     validarIngreso(entrada.empleo, "empleo");
     validarIngreso(entrada.otros, "otros");
     validarIngreso(entrada.rrsp, "rrsp");
-    const aportes = aportesEmpleado(entrada.empleo, v);
+    const aportes = aportesEmpleado(entrada.empleo, v, false, entrada.provincia === "qc");
     const base = { provincia: entrada.provincia, empleo: entrada.empleo, otros: entrada.otros, deducciones: entrada.rrsp, aportes };
     const r = impuestoAnual(base, v);
     const federal = redondear(r.federal);
@@ -28,6 +28,7 @@ export default definirCalculadora({
     const observaciones: string[] = [];
     if (entrada.provincia === "on") observaciones.push("The Ontario amount includes the Ontario surtax and the Ontario Health Premium, less the basic Ontario tax reduction.");
     if (entrada.provincia === "bc") observaciones.push("The BC amount already takes off the BC tax reduction for lower incomes.");
+    if (entrada.provincia === "qc") observaciones.push("In Quebec you file a separate Quebec return. The federal amount already takes off the 16.5% Quebec abatement, and the Quebec amount counts the basic personal amount and the deduction for workers only.");
     return {
       total,
       federal,
@@ -38,6 +39,7 @@ export default definirCalculadora({
       marginal: redondear(tasaMarginal(base, v)),
       cpp: redondear(aportes.cpp + aportes.cpp2),
       ei: redondear(aportes.ei),
+      qpip: redondear(aportes.qpip),
       observaciones,
     };
   },
@@ -49,7 +51,8 @@ export default definirCalculadora({
     { clave: "despues", etiqueta: "Income after tax (before CPP and EI)", formato: "moneda" },
     { clave: "promedio", etiqueta: "Average tax rate", formato: "porcentaje", decimales: 2 },
     { clave: "marginal", etiqueta: "Marginal tax rate on your next dollar", formato: "porcentaje", decimales: 2 },
-    { clave: "cpp", etiqueta: "CPP contributions on your pay", formato: "moneda", ocultarSiCero: true },
+    { clave: "cpp", etiqueta: "CPP or QPP contributions on your pay", formato: "moneda", ocultarSiCero: true },
     { clave: "ei", etiqueta: "EI premiums on your pay", formato: "moneda", ocultarSiCero: true },
+    { clave: "qpip", etiqueta: "QPIP premiums on your pay", formato: "moneda", ocultarSiCero: true },
   ],
 });
