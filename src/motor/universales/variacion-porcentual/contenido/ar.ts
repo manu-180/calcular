@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const antes = montoEjemplo(ctx, 40);
   const despues = antes * 1.25;
   const m = (n: number) => formatearMonto(ctx, n);
@@ -48,4 +49,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "النقطة المئوية", definicion: "الفرق البسيط بين نسبتين مئويتين." },
     ],
   };
-};
+});

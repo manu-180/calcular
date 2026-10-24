@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiInteresSimple } from "../definicion";
 
-export const textosAr: TextosUi<UiInteresSimple> = {
+export const textosAr: TextosUi<UiInteresSimple> = textosArabes({
   slug: "simple-interest",
   ui: () => ({
     capital: "المبلغ الأصلي",
@@ -20,4 +21,4 @@ export const textosAr: TextosUi<UiInteresSimple> = {
     tasaPeriodo: "معدل الفائدة عن المدة",
     errorCapital: "أدخل مبلغًا أصليًا أكبر من صفر.",
   }),
-};
+});

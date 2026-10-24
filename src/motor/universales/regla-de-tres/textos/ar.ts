@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiReglaDeTres } from "../definicion";
 
-export const textosAr: TextosUi<UiReglaDeTres> = {
+export const textosAr: TextosUi<UiReglaDeTres> = textosArabes({
   slug: "rule-of-three",
   ui: () => ({
     tipo: "نوع التناسب",
@@ -16,4 +17,4 @@ export const textosAr: TextosUi<UiReglaDeTres> = {
     fraseDirecta: (a, b, c, x) => `إذا كان ${a} يقابل ${b}، فإن ${c} يقابل ${x}. الحساب: ${b} × ${c} ÷ ${a}.`,
     fraseInversa: (a, b, c, x) => `إذا كان ${a} يعطي ${b}، فإن ${c} يعطي ${x}. الحساب: ${a} × ${b} ÷ ${c}.`,
   }),
-};
+});

@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const anual = montoEjemplo(ctx, 50000);
   const hora = montoEjemplo(ctx, 20);
@@ -41,4 +42,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "الأجر نصف الشهري", definicion: "أجر يُدفع مرتين في الشهر، أي 24 مرة في السنة." },
     ],
   };
-};
+});

@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import { pluralAr } from "../../../i18n/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiAlquilarOComprar } from "../definicion";
@@ -6,7 +7,7 @@ import type { UiAlquilarOComprar } from "../definicion";
 const anios = (cifra: string) =>
   pluralAr(Number(cifra.replace(/\D/g, "")), { uno: "سنة واحدة", dos: "سنتين", pocos: "{n} سنوات", muchos: "{n} سنة", otros: "{n} سنة" }, cifra);
 
-export const textosAr: TextosUi<UiAlquilarOComprar> = {
+export const textosAr: TextosUi<UiAlquilarOComprar> = textosArabes({
   slug: "rent-vs-buy",
   ui: () => ({
     precio: "سعر العقار",
@@ -44,4 +45,4 @@ export const textosAr: TextosUi<UiAlquilarOComprar> = {
     observacionMetodo:
       "تقارن الحاسبة ما تملكه في كل حالة. إذا استأجرت، تبقى الدفعة الأولى وما توفّره كل شهر مستثمرين. ولا تُخصم مصاريف البيع.",
   }),
-};
+});

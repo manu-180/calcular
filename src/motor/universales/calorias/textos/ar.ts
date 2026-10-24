@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiCalorias } from "../definicion";
 
-export const textosAr: TextosUi<UiCalorias> = {
+export const textosAr: TextosUi<UiCalorias> = textosArabes({
   slug: "calorie-calculator",
   ui: () => ({
     sexo: "الجنس",
@@ -33,4 +34,4 @@ export const textosAr: TextosUi<UiCalorias> = {
     notaMinimo: (kcal) => `عند إنقاص الوزن لا ينزل الرقم عن ${kcal} سعرة حرارية يوميًا. وتناول أقل من ذلك يكون الأفضل فيه بإشراف مختص.`,
     aviso: "هذا تقدير بمعادلة ميفلين سانت جيور (Mifflin-St Jeor)، وكل جسم يختلف عن غيره. ولا يغني عن استشارة الطبيب أو أخصائي التغذية.",
   }),
-};
+});

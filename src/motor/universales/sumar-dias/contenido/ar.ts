@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { aDia, aFecha, esHabil, fechaLarga } from "../../comun/fechas";
 import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const f = (iso: string) => fechaLarga(ctx.locale, iso);
   const inicio = "2026-03-02";
   const mas90 = aFecha(aDia(inicio) + 90);
@@ -47,4 +48,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "أيام العمل", definicion: "في هذه الحاسبة، من الاثنين إلى الجمعة." },
     ],
   };
-};
+});

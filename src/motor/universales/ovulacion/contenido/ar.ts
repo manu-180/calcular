@@ -1,9 +1,10 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { aDia, aFecha, fechaLarga } from "../../comun/fechas";
 import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { FASE_LUTEA, ventana } from "../definicion";
 
 // Familia de embarazo: se le habla en femenino a la persona gestante (ADR 0002, D10).
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const f = (iso: string) => fechaLarga(ctx.locale, iso);
   const fum = "2026-03-05";
   const v = ventana(aDia(fum), 28);
@@ -43,4 +44,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "أيام الخصوبة", definicion: "أيام الدورة التي يمكن أن يحدث فيها الحمل." },
     ],
   };
-};
+});

@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const ingreso = montoEjemplo(ctx, 2000);
   return {
@@ -36,4 +37,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "قاعدة 50/30/20", definicion: "طريقة لتوزيع الدخل بين الاحتياجات والرغبات والادخار." },
     ],
   };
-};
+});

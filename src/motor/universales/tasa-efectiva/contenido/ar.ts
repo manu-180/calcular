@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aEfectiva, aNominal } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const p = (n: number) => `${formatearNumero(ctx, n, 2)}%`;
   return {
     h1: "حاسبة المعدل السنوي الفعلي",
@@ -43,4 +44,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "دورية احتساب الفائدة", definicion: "عدد المرات التي تُضاف فيها الفائدة إلى الرصيد." },
     ],
   };
-};
+});

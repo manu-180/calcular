@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiConsumoElectrico } from "../definicion";
 
-export const textosAr: TextosUi<UiConsumoElectrico> = {
+export const textosAr: TextosUi<UiConsumoElectrico> = textosArabes({
   slug: "electricity-cost",
   ui: () => ({
     potencia: "قدرة الجهاز (واط)",
@@ -19,4 +20,4 @@ export const textosAr: TextosUi<UiConsumoElectrico> = {
     costoAnio: "التكلفة السنوية",
     errorHoras: "اليوم 24 ساعة، لذلك يجب أن تكون ساعات الاستخدام بين 0 و24.",
   }),
-};
+});

@@ -1,9 +1,10 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { pluralAr, type FormasAr } from "../../../i18n/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 const MESES: FormasAr = { uno: "شهر واحد", dos: "شهرين", pocos: "{n} أشهر", muchos: "{n} شهرًا", otros: "{n} شهر" };
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const gastos = montoEjemplo(ctx, 1500);
   const aporte = montoEjemplo(ctx, 300);
@@ -45,4 +46,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "السيولة", definicion: "سرعة استخدام المال دون أن يفقد شيئًا من قيمته." },
     ],
   };
-};
+});

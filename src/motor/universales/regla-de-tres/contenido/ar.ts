@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const precio3 = montoEjemplo(ctx, 6);
   const m = (n: number) => formatearMonto(ctx, n);
   return {
@@ -42,4 +43,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "التناسب العكسي", definicion: "تزيد إحدى الكميتين حين تنقص الأخرى." },
     ],
   };
-};
+});

@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiMetrosCuadrados } from "../definicion";
 
@@ -6,7 +7,7 @@ const UNIDAD: Readonly<Record<string, string>> = { m: "م", ft: "قدم", "m²":
 const unidad = (u: string) => UNIDAD[u] ?? u;
 const NOMBRE: Readonly<Record<string, string>> = { "m²": "المتر المربع", "ft²": "القدم المربع" };
 
-export const textosAr: TextosUi<UiMetrosCuadrados> = {
+export const textosAr: TextosUi<UiMetrosCuadrados> = textosArabes({
   slug: "square-footage",
   ui: () => ({
     forma: (n) => `الجزء ${n}: الشكل`,
@@ -23,4 +24,4 @@ export const textosAr: TextosUi<UiMetrosCuadrados> = {
     parcial: (n, u) => `مساحة الجزء ${n} (${unidad(u)})`,
     errorMedida: "هذا القياس ناقص أو يساوي 0.",
   }),
-};
+});

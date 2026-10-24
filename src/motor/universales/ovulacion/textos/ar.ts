@@ -1,8 +1,9 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiOvulacion } from "../definicion";
 
 // Familia de embarazo: se le habla en femenino a la persona gestante (ADR 0002, D10).
-export const textosAr: TextosUi<UiOvulacion> = {
+export const textosAr: TextosUi<UiOvulacion> = textosArabes({
   slug: "ovulation",
   ui: () => ({
     fum: "أول يوم من آخر دورة شهرية",
@@ -21,4 +22,4 @@ export const textosAr: TextosUi<UiOvulacion> = {
     errorCiclo: "يجب أن يكون طول الدورة بين 21 و45 يومًا.",
     aviso: "هذا تقدير للدورات المنتظمة. وهو ليس وسيلة لمنع الحمل، ولا يغني عن استشارة طبيبتك أو طبيبك.",
   }),
-};
+});

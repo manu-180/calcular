@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiPresupuesto } from "../definicion";
 
-export const textosAr: TextosUi<UiPresupuesto> = {
+export const textosAr: TextosUi<UiPresupuesto> = textosArabes({
   slug: "budget",
   ui: () => ({
     ingreso: "صافي الدخل الشهري",
@@ -20,4 +21,4 @@ export const textosAr: TextosUi<UiPresupuesto> = {
     errorSuma: (suma) => `مجموع النسب الثلاث ${suma}%، ويجب أن يكون 100%.`,
     observacionAhorroBajo: "ادخار أقل من 10% لا يترك مجالًا كبيرًا للمفاجآت. إن استطعت، فقلّل بعض الرغبات.",
   }),
-};
+});

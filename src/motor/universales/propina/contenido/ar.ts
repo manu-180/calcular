@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const cuenta = montoEjemplo(ctx, 60);
   const propina = cuenta * 0.15;
   const m = (n: number) => formatearMonto(ctx, n);
@@ -40,4 +41,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "رسوم الخدمة", definicion: "مبلغ يضيفه المكان إلى الفاتورة مقابل الخدمة." },
     ],
   };
-};
+});

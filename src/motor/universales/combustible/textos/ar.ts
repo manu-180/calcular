@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiCombustible } from "../definicion";
 
@@ -5,7 +6,7 @@ import type { UiCombustible } from "../definicion";
 const UNIDAD: Readonly<Record<string, string>> = { km: "كم", mi: "ميل", L: "لتر", gal: "غالون" };
 const unidad = (u: string) => UNIDAD[u] ?? u;
 
-export const textosAr: TextosUi<UiCombustible> = {
+export const textosAr: TextosUi<UiCombustible> = textosArabes({
   slug: "fuel-cost",
   ui: () => ({
     distancia: (u) => `مسافة الرحلة (${unidad(u)})`,
@@ -26,4 +27,4 @@ export const textosAr: TextosUi<UiCombustible> = {
     errorConsumo: "يجب أن يكون استهلاك الوقود أكبر من 0.",
     errorPersonas: "يجب أن يكون هناك شخص واحد على الأقل.",
   }),
-};
+});

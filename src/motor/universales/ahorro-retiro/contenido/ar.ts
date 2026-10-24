@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { acumular, rentaMensual } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const actual = montoEjemplo(ctx, 5000);
   const aporte = montoEjemplo(ctx, 200);
@@ -45,4 +46,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "قيمة المال اليوم", definicion: "مبلغ مستقبلي معبَّر عنه بما يمكن أن يشتريه اليوم." },
     ],
   };
-};
+});

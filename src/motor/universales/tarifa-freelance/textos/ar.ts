@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiTarifaFreelance } from "../definicion";
 
-export const textosAr: TextosUi<UiTarifaFreelance> = {
+export const textosAr: TextosUi<UiTarifaFreelance> = textosArabes({
   slug: "freelance-rate",
   ui: () => ({
     ingreso: "الدخل الصافي الذي تريده في السنة",
@@ -26,4 +27,4 @@ export const textosAr: TextosUi<UiTarifaFreelance> = {
     errorHoras: "أدخل عدد الساعات التي يمكنك فوترتها في الأسبوع.",
     observacionFacturables: "إذا طلبت أقل من هذا السعر فستكسب أقل مما خططت له أو ستعمل ساعات أكثر.",
   }),
-};
+});

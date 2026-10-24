@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { comparar } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const precio = montoEjemplo(ctx, 200000);
   const alquiler = montoEjemplo(ctx, 1000);
@@ -50,4 +51,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "تكلفة الفرصة البديلة", definicion: "ما كانت الدفعة الأولى ستكسبه لو استثمرتها." },
     ],
   };
-};
+});

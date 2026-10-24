@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiFondoDeEmergencia } from "../definicion";
 
-export const textosAr: TextosUi<UiFondoDeEmergencia> = {
+export const textosAr: TextosUi<UiFondoDeEmergencia> = textosArabes({
   slug: "emergency-fund",
   ui: () => ({
     gastos: "المصروفات الأساسية في الشهر",
@@ -19,4 +20,4 @@ export const textosAr: TextosUi<UiFondoDeEmergencia> = {
     sinAporte: "أدخل المبلغ الذي يمكنك ادخاره كل شهر لتعرف كم يستغرق إكمال الصندوق.",
     observacionDonde: "احتفظ به في حساب منفصل يمكنك السحب منه في اليوم نفسه ويحافظ على قيمته، مثل حساب التوفير أو صندوق أسواق النقد.",
   }),
-};
+});

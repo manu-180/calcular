@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiMetaDeAhorro } from "../definicion";
 
-export const textosAr: TextosUi<UiMetaDeAhorro> = {
+export const textosAr: TextosUi<UiMetaDeAhorro> = textosArabes({
   slug: "savings-goal",
   ui: () => ({
     meta: "كم تريد أن تدّخر؟",
@@ -16,4 +17,4 @@ export const textosAr: TextosUi<UiMetaDeAhorro> = {
     errorMeta: "أدخل المبلغ الذي تريد ادخاره.",
     yaLlegas: "ما لديك الآن يكفي للوصول إلى الهدف في هذه المدة من دون إيداعات جديدة.",
   }),
-};
+});

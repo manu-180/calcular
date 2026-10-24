@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const capital = montoEjemplo(ctx, 1000);
   return {
@@ -39,4 +40,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "السنة المصرفية", definicion: "سنة تُحسب 360 يومًا، وكل شهر فيها 30 يومًا." },
     ],
   };
-};
+});

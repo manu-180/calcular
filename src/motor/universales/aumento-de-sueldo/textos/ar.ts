@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiAumentoDeSueldo } from "../definicion";
 
-export const textosAr: TextosUi<UiAumentoDeSueldo> = {
+export const textosAr: TextosUi<UiAumentoDeSueldo> = textosArabes({
   slug: "pay-raise",
   ui: () => ({
     sueldo: "الراتب الشهري الحالي",
@@ -25,4 +26,4 @@ export const textosAr: TextosUi<UiAumentoDeSueldo> = {
     observacionPierde: (puntos) => `زيادتك أقل من التضخم، فراتبك يشتري ${puntos}% أقل مما كان يشتري.`,
     observacionIgual: "زيادتك تساوي التضخم، فراتبك يشتري ما كان يشتريه من قبل.",
   }),
-};
+});

@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiTasaEfectiva } from "../definicion";
 
-export const textosAr: TextosUi<UiTasaEfectiva> = {
+export const textosAr: TextosUi<UiTasaEfectiva> = textosArabes({
   slug: "apr-to-apy",
   ui: () => ({
     direccion: "ما المعدل الذي لديك؟",
@@ -21,4 +22,4 @@ export const textosAr: TextosUi<UiTasaEfectiva> = {
     errorNegativa: "لا يمكن أن يكون المعدل سالبًا. أدخل رقمًا من 0 فأكثر.",
     observacionDiferencia: (puntos) => `المعدل الفعلي أعلى من الاسمي بمقدار ${puntos} نقطة مئوية، لأن الفائدة تُحتسب أيضًا على الفوائد السابقة.`,
   }),
-};
+});

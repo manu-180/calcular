@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const tasa = `{{${ctx.datos.tasa}}}`;
   const precio = formatearMonto(ctx, montoEjemplo(ctx, 100));
   return {
@@ -43,4 +44,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "السعر الصافي", definicion: "السعر قبل إضافة الضريبة." },
     ],
   };
-};
+});

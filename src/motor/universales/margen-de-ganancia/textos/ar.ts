@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiMargenDeGanancia } from "../definicion";
 
-export const textosAr: TextosUi<UiMargenDeGanancia> = {
+export const textosAr: TextosUi<UiMargenDeGanancia> = textosArabes({
   slug: "profit-margin",
   ui: () => ({
     modo: "ماذا تريد أن تحسب؟",
@@ -26,4 +27,4 @@ export const textosAr: TextosUi<UiMargenDeGanancia> = {
     errorMargen100: "يجب أن يكون الهامش أقل من 100%، فهذه النسبة تعني أن السعر كله ربح بلا أي تكلفة.",
     observacionPerdida: "بهذا السعر تبيع بأقل من التكلفة، أي أنك تخسر في كل عملية بيع.",
   }),
-};
+});

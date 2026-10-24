@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { area, FT2_POR_M2 } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
   const imperial = ctx.unidades === "imperial";
   const u = imperial ? "قدم" : "م";
@@ -49,4 +50,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "القدم المربع (قدم²)", definicion: "مساحة مربع طول ضلعه قدم واحد." },
     ],
   };
-};
+});

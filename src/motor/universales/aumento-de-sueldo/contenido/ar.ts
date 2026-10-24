@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aumentoReal } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const p = (n: number) => `${formatearNumero(ctx, n, 2)}%`;
   const sueldo = montoEjemplo(ctx, 4000);
@@ -41,4 +42,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "القدرة الشرائية", definicion: "ما يستطيع راتبك أن يشتريه." },
     ],
   };
-};
+});

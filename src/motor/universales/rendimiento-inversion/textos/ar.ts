@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiRendimientoInversion } from "../definicion";
 
-export const textosAr: TextosUi<UiRendimientoInversion> = {
+export const textosAr: TextosUi<UiRendimientoInversion> = textosArabes({
   slug: "roi",
   ui: () => ({
     inicial: "المبلغ المستثمر",
@@ -19,4 +20,4 @@ export const textosAr: TextosUi<UiRendimientoInversion> = {
     observacionCorto: "مع مدة أقل من سنة، يمدّ العائد السنوي نتيجة قصيرة كأنها تتكرر طوال السنة، فاقرأه بحذر.",
     observacionInflacion: "لتعرف هل زادت قدرتك الشرائية، قارن العائد السنوي بمعدل التضخم في الفترة نفسها.",
   }),
-};
+});

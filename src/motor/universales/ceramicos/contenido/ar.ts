@@ -1,10 +1,11 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { type FormasAr, pluralAr } from "../../../i18n/arabe";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 const BLATAS: FormasAr = { uno: "بلاطة واحدة", dos: "بلاطتان", pocos: "{n} بلاطات", muchos: "{n} بلاطة", otros: "{n} بلاطة" };
 const CAJAS: FormasAr = { uno: "صندوق واحد", dos: "صندوقان", pocos: "{n} صناديق", muchos: "{n} صندوقًا", otros: "{n} صندوق" };
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
   const cuantas = (x: number, f: FormasAr) => pluralAr(x, f, formatearNumero(ctx, x, 0));
   const imperial = ctx.unidades === "imperial";
@@ -57,4 +58,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "دفعة الإنتاج", definicion: "الكمية المصنّعة في تشغيلة واحدة. وقد يختلف لون البلاط قليلًا من دفعة إلى أخرى." },
     ],
   };
-};
+});

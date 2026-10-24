@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const precio = montoEjemplo(ctx, 50);
   const m = (n: number) => formatearMonto(ctx, n);
   return {
@@ -44,4 +45,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "الأساس", definicion: "العدد الذي تُحسب منه النسبة المئوية (وهو Y في هذه الحاسبة)." },
     ],
   };
-};
+});

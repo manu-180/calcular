@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const n = (x: number, d = 1) => formatearNumero(ctx, x, d);
   return {
     h1: "حاسبة المتوسط المرجح",
@@ -42,4 +43,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "المتوسط المرجح", definicion: "متوسط تُضرب فيه كل قيمة في وزنها." },
     ],
   };
-};
+});

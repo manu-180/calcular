@@ -1,9 +1,10 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { pluralAr } from "../../../i18n/arabe";
 import { aDia, fechaLarga, mesesYDias } from "../../comun/fechas";
 import { DIAS_AR, duracionAr } from "../../dias-entre-fechas/textos/ar";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const nac = "1990-05-15";
   const ref = "2026-10-13";
   const { meses, dias } = mesesYDias(nac, ref);
@@ -44,4 +45,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "السنة الكبيسة", definicion: "سنة من 366 يومًا فيها يوم 29 فبراير. تأتي كل أربع سنوات، باستثناء بعض سنوات رأس القرن." },
     ],
   };
-};
+});

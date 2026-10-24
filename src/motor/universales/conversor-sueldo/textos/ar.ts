@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiConversorSueldo } from "../definicion";
 
-export const textosAr: TextosUi<UiConversorSueldo> = {
+export const textosAr: TextosUi<UiConversorSueldo> = textosArabes({
   slug: "hourly-to-salary",
   ui: () => ({
     monto: "الأجر",
@@ -26,4 +27,4 @@ export const textosAr: TextosUi<UiConversorSueldo> = {
     errorSemanas: "يجب أن يكون عدد الأسابيع المدفوعة في السنة أكبر من صفر.",
     observacionBruto: "هو المبلغ نفسه معروضًا لفترات أخرى، دون إضافة المكافآت ودون خصم الضرائب.",
   }),
-};
+});

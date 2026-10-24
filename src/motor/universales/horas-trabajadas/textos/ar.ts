@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiHorasTrabajadas } from "../definicion";
 
-export const textosAr: TextosUi<UiHorasTrabajadas> = {
+export const textosAr: TextosUi<UiHorasTrabajadas> = textosArabes({
   slug: "time-card",
   ui: () => ({
     dias: ["الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد"],
@@ -36,4 +37,4 @@ export const textosAr: TextosUi<UiHorasTrabajadas> = {
     observacionGenerico:
       "هذا حساب عام. الحد الأقصى لساعات العمل وقواعد العمل الإضافي وأجر العمل الليلي أو في أيام العطل تحددها القوانين وعقد عملك.",
   }),
-};
+});

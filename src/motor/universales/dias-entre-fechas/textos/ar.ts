@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import { pluralAr, type FormasAr } from "../../../i18n/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiDiasEntreFechas } from "../definicion";
@@ -16,7 +17,7 @@ export function duracionAr(anios: number, meses: number, dias: number): string {
   return partes.join(" و");
 }
 
-export const textosAr: TextosUi<UiDiasEntreFechas> = {
+export const textosAr: TextosUi<UiDiasEntreFechas> = textosArabes({
   slug: "days-between-dates",
   ui: () => ({
     desde: "تاريخ البداية",
@@ -37,4 +38,4 @@ export const textosAr: TextosUi<UiDiasEntreFechas> = {
       "تُحسب أيام العمل من الاثنين إلى الجمعة. في كثير من الدول العربية تكون العطلة الأسبوعية الجمعة والسبت، فقد يختلف العدد قليلًا. ولا تُخصم العطلات الرسمية لأنها تختلف من بلد إلى آخر.",
     notaInvertidas: "كان تاريخ النهاية قبل تاريخ البداية، فتم تبديلهما.",
   }),
-};
+});

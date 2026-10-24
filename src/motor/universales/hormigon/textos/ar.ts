@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiHormigon } from "../definicion";
 
@@ -15,7 +16,7 @@ const UNIDAD: Readonly<Record<string, string>> = {
 };
 const unidad = (u: string) => UNIDAD[u] ?? u;
 
-export const textosAr: TextosUi<UiHormigon> = {
+export const textosAr: TextosUi<UiHormigon> = textosArabes({
   slug: "concrete-calculator",
   ui: () => ({
     largo: (u) => `الطول (${unidad(u)})`,
@@ -36,4 +37,4 @@ export const textosAr: TextosUi<UiHormigon> = {
     errorMedida: "يجب أن يكون هذا القياس أكبر من 0.",
     aviso: "كميات المواد تقديرية لخلطة عامة بنسبة 1:2:3 (نحو 350 كغ من الإسمنت لكل م³). وهي تتغير حسب تصميم الخلطة ونوع العمل والمواد المتوفرة محليًا، فراجعها مع المسؤول عن التنفيذ.",
   }),
-};
+});

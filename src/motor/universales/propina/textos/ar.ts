@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiPropina } from "../definicion";
 
-export const textosAr: TextosUi<UiPropina> = {
+export const textosAr: TextosUi<UiPropina> = textosArabes({
   slug: "tip",
   ui: () => ({
     cuenta: "قيمة الفاتورة",
@@ -17,4 +18,4 @@ export const textosAr: TextosUi<UiPropina> = {
     errorPersonas: "يجب أن يدفع شخص واحد على الأقل.",
     observacionRedondeo: (efectiva) => `بعد التقريب إلى الأعلى أصبح البقشيش ${efectiva}% من قيمة الفاتورة.`,
   }),
-};
+});

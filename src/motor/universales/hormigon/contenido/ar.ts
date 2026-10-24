@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { MEZCLA } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
   const imperial = ctx.unidades === "imperial";
   const ejemplo = imperial
@@ -54,4 +55,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "المتر المكعب (م³)", definicion: "حجم مكعب طول ضلعه متر واحد، ويساوي 1000 لتر." },
     ],
   };
-};
+});

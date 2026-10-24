@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import { type FormasAr, pluralAr } from "../../../i18n/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiFechaDeParto } from "../definicion";
@@ -6,7 +7,7 @@ const SEMANAS: FormasAr = { uno: "أسبوع واحد", dos: "أسبوعان", p
 const DIAS: FormasAr = { uno: "يوم واحد", dos: "يومان", pocos: "{n} أيام", muchos: "{n} يومًا", otros: "{n} يوم" };
 
 // Familia de embarazo: se le habla en femenino a la persona gestante (ADR 0002, D10).
-export const textosAr: TextosUi<UiFechaDeParto> = {
+export const textosAr: TextosUi<UiFechaDeParto> = textosArabes({
   slug: "due-date",
   ui: () => ({
     metodo: "أي تاريخ تعرفين؟",
@@ -28,4 +29,4 @@ export const textosAr: TextosUi<UiFechaDeParto> = {
     notaPasada: "مرّ أكثر من 42 أسبوعًا على هذا التاريخ، لذلك لا يظهر عمر الحمل.",
     aviso: "هذا تقدير، فقليل من الأطفال يولدون في الموعد المتوقع بالضبط. والفحص بالموجات فوق الصوتية والمتابعة مع طبيبتك أو طبيبك يعطيان التاريخ الأدق، ولا تغني هذه النتيجة عن استشارتهما.",
   }),
-};
+});

@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiImc } from "../definicion";
 
-export const textosAr: TextosUi<UiImc> = {
+export const textosAr: TextosUi<UiImc> = textosArabes({
   slug: "bmi",
   ui: () => ({
     peso: (u) => `الوزن (${u})`,
@@ -24,4 +25,4 @@ export const textosAr: TextosUi<UiImc> = {
     aviso:
       "مؤشر كتلة الجسم دليل عام للبالغين، فهو لا يفرّق بين العضلات والدهون ولا يُقرأ بالطريقة نفسها أثناء الحمل أو لدى الأطفال. ولا يغني عن استشارة الطبيب أو المختص الصحي.",
   }),
-};
+});

@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiCeramicos } from "../definicion";
 
@@ -5,7 +6,7 @@ import type { UiCeramicos } from "../definicion";
 const UNIDAD: Readonly<Record<string, string>> = { "m²": "م²", "ft²": "قدم²", cm: "سم", in: "بوصة" };
 const unidad = (u: string) => UNIDAD[u] ?? u;
 
-export const textosAr: TextosUi<UiCeramicos> = {
+export const textosAr: TextosUi<UiCeramicos> = textosArabes({
   slug: "tile-calculator",
   ui: () => ({
     superficie: (u) => `المساحة المراد تبليطها (${unidad(u)})`,
@@ -22,4 +23,4 @@ export const textosAr: TextosUi<UiCeramicos> = {
     errorSuperficie: "يجب أن تكون المساحة أكبر من 0.",
     errorPieza: "يجب أن تكون مقاسات البلاطة أكبر من 0.",
   }),
-};
+});

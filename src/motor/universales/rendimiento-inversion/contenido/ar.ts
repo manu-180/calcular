@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { cagr, roi } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const p = (n: number) => `${formatearNumero(ctx, n, 2)}%`;
   const inicial = montoEjemplo(ctx, 10000);
@@ -46,4 +47,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "معدل النمو السنوي المركب (CAGR)", definicion: "متوسط العائد في السنة مع احتساب التراكم." },
     ],
   };
-};
+});

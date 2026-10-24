@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DISTANCIAS_KM, KM_POR_MILLA, reloj, ritmoTexto } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const imperial = ctx.unidades === "imperial";
   const u = imperial ? "ميل" : "كيلومتر";
   const corto = imperial ? "ميل" : "كم";
@@ -50,4 +51,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "متوسط السرعة", definicion: "المسافة المقطوعة في الساعة الواحدة." },
     ],
   };
-};
+});

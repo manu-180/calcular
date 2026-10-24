@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiSumarDias } from "../definicion";
 
-export const textosAr: TextosUi<UiSumarDias> = {
+export const textosAr: TextosUi<UiSumarDias> = textosArabes({
   slug: "add-days-to-date",
   ui: () => ({
     fecha: "تاريخ البداية",
@@ -20,4 +21,4 @@ export const textosAr: TextosUi<UiSumarDias> = {
     notaHabiles:
       "أيام العمل هنا تتخطى السبت والأحد ولا تتخطى العطلات الرسمية. وفي كثير من الدول العربية تكون العطلة الأسبوعية الجمعة والسبت، فراجع النتيجة إذا كانت هذه حالتك، وأضف أي عطلة رسمية تقع في المدة.",
   }),
-};
+});

@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiInteresCompuesto } from "../definicion";
 
-export const textosAr: TextosUi<UiInteresCompuesto> = {
+export const textosAr: TextosUi<UiInteresCompuesto> = textosArabes({
   slug: "compound-interest",
   ui: () => ({
     capital: "المبلغ الأولي",
@@ -26,4 +27,4 @@ export const textosAr: TextosUi<UiInteresCompuesto> = {
     errorSinDinero: "أدخل مبلغًا أوليًا أو إيداعًا شهريًا.",
     observacionIntereses: (porcentaje) => `${porcentaje}% من الرصيد النهائي فوائد.`,
   }),
-};
+});

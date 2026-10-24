@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { MARGEN } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const n = (x: number, d = 1) => formatearNumero(ctx, x, d);
   const imperial = ctx.unidades === "imperial";
   const ejemplo = imperial
@@ -54,4 +55,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "الطبقة", definicion: "كل وجه من الطلاء يُدهن على الجدار." },
     ],
   };
-};
+});

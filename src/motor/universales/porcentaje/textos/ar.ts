@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiPorcentaje } from "../definicion";
 
-export const textosAr: TextosUi<UiPorcentaje> = {
+export const textosAr: TextosUi<UiPorcentaje> = textosArabes({
   slug: "percentage",
   ui: () => ({
     modo: "ماذا تريد أن تحسب؟",
@@ -21,4 +22,4 @@ export const textosAr: TextosUi<UiPorcentaje> = {
     fraseAumento: (x, y, r, d) => `${y} مضافًا إليه ${x}% يساوي ${r}، أي بزيادة ${d}.`,
     fraseRebaja: (x, y, r, d) => `${y} مطروحًا منه ${x}% يساوي ${r}، أي بنقص ${d}.`,
   }),
-};
+});

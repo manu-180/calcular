@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiPuntoDeEquilibrio } from "../definicion";
 
-export const textosAr: TextosUi<UiPuntoDeEquilibrio> = {
+export const textosAr: TextosUi<UiPuntoDeEquilibrio> = textosArabes({
   slug: "break-even",
   ui: () => ({
     fijos: "التكاليف الثابتة في الشهر",
@@ -22,4 +23,4 @@ export const textosAr: TextosUi<UiPuntoDeEquilibrio> = {
     errorMargen: "التكلفة المتغيرة تساوي السعر أو تزيد عليه، فكل عملية بيع تخسر ولن تبلغ نقطة التعادل أبدًا. راجع السعر أو التكلفة.",
     observacionRedondeo: "عدد الوحدات مقرّب إلى الأعلى، لأنه لا يمكن بيع جزء من وحدة.",
   }),
-};
+});

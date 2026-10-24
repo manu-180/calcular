@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiAhorroRetiro } from "../definicion";
 
-export const textosAr: TextosUi<UiAhorroRetiro> = {
+export const textosAr: TextosUi<UiAhorroRetiro> = textosArabes({
   slug: "retirement-savings",
   ui: () => ({
     edadActual: "عمرك اليوم",
@@ -25,4 +26,4 @@ export const textosAr: TextosUi<UiAhorroRetiro> = {
     observacionDineroDeHoy: "المبالغ بقيمة المال اليوم، لأن العائد الحقيقي يستبعد التضخم.",
     observacionPublica: "هذه مدخراتك الخاصة فقط. لا تشمل معاش التقاعد من التأمينات الاجتماعية أو أي صندوق تقاعد قد تحصل عليه.",
   }),
-};
+});

@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiDividirGastos } from "../definicion";
 
-export const textosAr: TextosUi<UiDividirGastos> = {
+export const textosAr: TextosUi<UiDividirGastos> = textosArabes({
   slug: "split-bill",
   ui: () => ({
     persona: (n) => `الشخص ${n}`,
@@ -17,4 +18,4 @@ export const textosAr: TextosUi<UiDividirGastos> = {
     errorPocas: "تحتاج إلى شخصين على الأقل لتقسيم التكلفة.",
     aMano: "الحساب متساوٍ، فقد دفع الجميع المبلغ نفسه.",
   }),
-};
+});

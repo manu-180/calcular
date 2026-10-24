@@ -1,3 +1,4 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { pluralAr } from "../../../i18n/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { saldar } from "../definicion";
@@ -7,7 +8,7 @@ const r2 = (n: number) => Math.round(n * 100) / 100;
 // Detrás de «خلال» y «يستغرق» el dual va como «شهرين».
 const meses = (n: number) => pluralAr(n, { uno: "شهر واحد", dos: "شهرين", pocos: "{n} أشهر", muchos: "{n} شهرًا", otros: "{n} شهر" });
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const saldo = montoEjemplo(ctx, 2000);
   const fijo = montoEjemplo(ctx, 100);
@@ -50,4 +51,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "معدل الفائدة السنوي", definicion: "المعدل السنوي الذي تحسبه البطاقة على الرصيد المرحَّل." },
     ],
   };
-};
+});

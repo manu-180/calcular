@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import { pluralAr, type FormasAr } from "../../../i18n/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiTarjetaDeCredito } from "../definicion";
@@ -7,7 +8,7 @@ const entero = (cifra: string) => Number(cifra.replace(/\D/g, ""));
 const ANIOS: FormasAr = { uno: "سنة واحدة", dos: "سنتان", pocos: "{n} سنوات", muchos: "{n} سنة", otros: "{n} سنة" };
 const MESES: FormasAr = { uno: "شهر واحد", dos: "شهران", pocos: "{n} أشهر", muchos: "{n} شهرًا", otros: "{n} شهر" };
 
-export const textosAr: TextosUi<UiTarjetaDeCredito> = {
+export const textosAr: TextosUi<UiTarjetaDeCredito> = textosArabes({
   slug: "credit-card-payoff",
   ui: () => ({
     saldo: "رصيد البطاقة",
@@ -43,4 +44,4 @@ export const textosAr: TextosUi<UiTarjetaDeCredito> = {
       `إذا دفعت دائمًا ${pago}، أي قيمة أول حد أدنى، فإنك تنتهي من السداد في ${pluralAr(entero(meses), { uno: "شهر واحد", dos: "شهرين", pocos: "{n} أشهر", muchos: "{n} شهرًا", otros: "{n} شهر" }, meses)} وتوفّر ${ahorro} من الفوائد.`,
     observacionNoGastar: "تفترض الحاسبة أنك لا تشتري شيئًا جديدًا بالبطاقة في أثناء السداد.",
   }),
-};
+});

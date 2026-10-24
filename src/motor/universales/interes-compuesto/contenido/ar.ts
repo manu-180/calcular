@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { proyectar } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const capital = montoEjemplo(ctx, 1000);
   const aporte = montoEjemplo(ctx, 100);
@@ -45,4 +46,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "الفائدة المركبة", definicion: "فائدة تُحسب على الرصيد مضافًا إليه الفوائد المكتسبة من قبل." },
     ],
   };
-};
+});

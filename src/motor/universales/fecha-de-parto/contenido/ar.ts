@@ -1,9 +1,10 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { aDia, aFecha, fechaLarga } from "../../comun/fechas";
 import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DURACION } from "../definicion";
 
 // Familia de embarazo: se le habla en femenino a la persona gestante (ADR 0002, D10).
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const f = (iso: string) => fechaLarga(ctx.locale, iso);
   const fum = "2026-01-10";
   const fpp = aFecha(aDia(fum) + DURACION);
@@ -45,4 +46,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "قاعدة نيجل", definicion: "طريقة لتقدير موعد الولادة بإضافة 280 يومًا إلى أول يوم من آخر دورة شهرية." },
     ],
   };
-};
+});

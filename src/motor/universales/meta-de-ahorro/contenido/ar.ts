@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aporteNecesario } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const meta = montoEjemplo(ctx, 10000);
   const actual = montoEjemplo(ctx, 1000);
@@ -41,4 +42,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "العائد", definicion: "ما تكسبه مدخراتك في حساب أو استثمار." },
     ],
   };
-};
+});

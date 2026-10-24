@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const a = montoEjemplo(ctx, 90);
   const b = montoEjemplo(ctx, 30);
   const cuota = (a + b) / 3;
@@ -41,4 +42,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "الرصيد", definicion: "الفرق بين ما دفعه الشخص وحصته." },
     ],
   };
-};
+});

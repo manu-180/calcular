@@ -1,10 +1,11 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { pluralAr, type FormasAr } from "../../../i18n/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { horarios, minutosTrabajados } from "../definicion";
 
 const HORAS: FormasAr = { uno: "ساعة واحدة", dos: "ساعتين", pocos: "{n} ساعات", muchos: "{n} ساعة", otros: "{n} ساعة" };
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (x: number) => formatearMonto(ctx, x);
   const n = (x: number, decimales = 0) => formatearNumero(ctx, x, decimales);
   const h = (x: number) => pluralAr(Math.round(x), HORAS, n(x));
@@ -49,4 +50,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "أجر الساعة ونصفه", definicion: "أجر للعمل الإضافي يساوي مرة ونصف الأجر العادي، أي علاوة 50%." },
     ],
   };
-};
+});

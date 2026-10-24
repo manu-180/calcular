@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const precio = montoEjemplo(ctx, 0.15);
   const kwhMes = (1000 * 4 * 30) / 1000;
@@ -40,4 +41,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "الكيلوواط ساعة (kWh)", definicion: "1000 واط لمدة ساعة واحدة. وهو ما تدفع ثمنه في فاتورة الكهرباء." },
     ],
   };
-};
+});

@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiRitmo } from "../definicion";
 
@@ -5,7 +6,7 @@ import type { UiRitmo } from "../definicion";
 const UNIDAD: Readonly<Record<string, string>> = { km: "كم", mi: "ميل", "km/h": "كم/ساعة", mph: "ميل/ساعة" };
 const unidad = (u: string) => UNIDAD[u] ?? u;
 
-export const textosAr: TextosUi<UiRitmo> = {
+export const textosAr: TextosUi<UiRitmo> = textosArabes({
   slug: "running-pace",
   ui: () => ({
     calcular: "ماذا تريد أن تحسب؟",
@@ -33,4 +34,4 @@ export const textosAr: TextosUi<UiRitmo> = {
     errorTiempo: "أدخل الزمن: الساعات أو الدقائق أو الثواني.",
     errorRitmo: "أدخل الوتيرة: الدقائق والثواني لكل وحدة مسافة.",
   }),
-};
+});

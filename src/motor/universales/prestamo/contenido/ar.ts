@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { cuotaFrancesa, interesesTotales } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const monto = montoEjemplo(ctx, 10000);
   const cuota36 = cuotaFrancesa(monto, 12, 36);
@@ -51,4 +52,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "الاستهلاك", definicion: "الجزء من كل قسط الذي يخفّض الدين." },
     ],
   };
-};
+});

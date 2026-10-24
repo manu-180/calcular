@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiCostoDeUnAuto } from "../definicion";
 
-export const textosAr: TextosUi<UiCostoDeUnAuto> = {
+export const textosAr: TextosUi<UiCostoDeUnAuto> = textosArabes({
   slug: "car-cost",
   ui: () => ({
     precio: "قيمة السيارة",
@@ -33,4 +34,4 @@ export const textosAr: TextosUi<UiCostoDeUnAuto> = {
     observacionCuota:
       "القسط لا يدخل في التكلفة الحقيقية لأن جزءًا منه ثمن السيارة نفسها، وهو محسوب بالفعل في انخفاض القيمة. أما فوائد التمويل فهي تكلفة إضافية فوق ذلك.",
   }),
-};
+});

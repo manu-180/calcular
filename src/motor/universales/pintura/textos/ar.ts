@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiPintura } from "../definicion";
 
@@ -13,7 +14,7 @@ const UNIDAD: Readonly<Record<string, string>> = {
 const unidad = (u: string) => UNIDAD[u] ?? u;
 const volumen = (u: string) => (u === "L" ? "باللتر" : "بالغالون");
 
-export const textosAr: TextosUi<UiPintura> = {
+export const textosAr: TextosUi<UiPintura> = textosArabes({
   slug: "paint-calculator",
   ui: () => ({
     modo: "ما القياسات التي لديك؟",
@@ -37,4 +38,4 @@ export const textosAr: TextosUi<UiPintura> = {
     errorAberturas: "لا يمكن أن تشغل الأبواب والنوافذ الجدار كله.",
     errorRendimiento: "يجب أن تكون التغطية أكبر من 0.",
   }),
-};
+});

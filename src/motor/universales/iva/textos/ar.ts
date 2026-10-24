@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiIva } from "../definicion";
 
-export const textosAr: TextosUi<UiIva> = {
+export const textosAr: TextosUi<UiIva> = textosArabes({
   slug: "vat",
   ui: () => ({
     operacion: "ماذا تريد أن تفعل؟",
@@ -17,4 +18,4 @@ export const textosAr: TextosUi<UiIva> = {
     tasaUsada: "النسبة المطبّقة",
     errorTasa: "نسبة الضريبة غير صالحة.",
   }),
-};
+});

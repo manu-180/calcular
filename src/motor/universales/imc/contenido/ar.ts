@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { KG_POR_LB, M_POR_PULGADA } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const n = (x: number, d = 1) => formatearNumero(ctx, x, d);
   const imperial = ctx.unidades === "imperial";
   const m = 69 * M_POR_PULGADA;
@@ -49,4 +50,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "منظمة الصحة العالمية", definicion: "الجهة الدولية التي تضع تصنيفات مؤشر كتلة الجسم للبالغين." },
     ],
   };
-};
+});

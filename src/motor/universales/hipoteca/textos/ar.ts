@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiHipoteca } from "../definicion";
 
-export const textosAr: TextosUi<UiHipoteca> = {
+export const textosAr: TextosUi<UiHipoteca> = textosArabes({
   slug: "mortgage",
   ui: () => ({
     precio: "سعر العقار",
@@ -28,4 +29,4 @@ export const textosAr: TextosUi<UiHipoteca> = {
     observacionPrestado: (porcentaje) => `تقترض ${porcentaje}% من قيمة العقار. وكلما ارتفعت هذه النسبة زادت عادة الشروط التي تطلبها جهة التمويل.`,
     observacionCostos: "لا تشمل النتيجة مصاريف الشراء (رسوم التسجيل والضرائب والتقييم). احسب حسابها فوق الدفعة الأولى.",
   }),
-};
+});

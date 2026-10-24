@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { costoMensual, type GastosAuto } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const imperial = ctx.unidades === "imperial";
   const g: GastosAuto = {
@@ -58,4 +59,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: `التكلفة لكل ${unidad}`, definicion: `متوسط تكلفة كل ${unidad} تقطعه، مع احتساب كل التكاليف.` },
     ],
   };
-};
+});

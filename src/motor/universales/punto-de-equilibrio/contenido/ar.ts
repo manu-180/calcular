@@ -1,10 +1,11 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { pluralAr, type FormasAr } from "../../../i18n/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { equilibrio } from "../definicion";
 
 const UNIDADES: FormasAr = { uno: "وحدة واحدة", dos: "وحدتين", pocos: "{n} وحدات", muchos: "{n} وحدة", otros: "{n} وحدة" };
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const u = (n: number) => pluralAr(n, UNIDADES, formatearNumero(ctx, n));
   const fijos = montoEjemplo(ctx, 5000);
@@ -50,4 +51,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "هامش المساهمة", definicion: "ما تتركه كل عملية بيع لتغطية التكاليف الثابتة." },
     ],
   };
-};
+});

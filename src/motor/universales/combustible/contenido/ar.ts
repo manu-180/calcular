@@ -1,6 +1,7 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const imperial = ctx.unidades === "imperial";
   const ejemplo = imperial
@@ -55,4 +56,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "ميل لكل غالون (mpg)", definicion: "عدد الأميال التي تقطعها السيارة بغالون واحد. وكلما ارتفع كان أفضل." },
     ],
   };
-};
+});

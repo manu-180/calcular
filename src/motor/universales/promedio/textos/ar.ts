@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiPromedio } from "../definicion";
 
-export const textosAr: TextosUi<UiPromedio> = {
+export const textosAr: TextosUi<UiPromedio> = textosArabes({
   slug: "weighted-average",
   ui: () => ({
     nota: (n) => `الدرجة ${n}`,
@@ -18,4 +19,4 @@ export const textosAr: TextosUi<UiPromedio> = {
     errorPesosCero: "مجموع الأوزان صفر، ويجب أن يكون وزن واحد على الأقل أكبر من الصفر.",
     sinPesos: "بلا أوزان يساوي المتوسط المرجح المتوسط البسيط.",
   }),
-};
+});

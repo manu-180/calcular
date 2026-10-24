@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { precioConMargen } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const p = (n: number) => `${formatearNumero(ctx, n, 2)}%`;
   const costo = montoEjemplo(ctx, 60);
@@ -43,4 +44,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "نسبة الإضافة على التكلفة (Markup)", definicion: "الربح كنسبة مئوية من التكلفة." },
     ],
   };
-};
+});

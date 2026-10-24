@@ -1,3 +1,4 @@
+import { textosArabes } from "../../comun/arabe";
 import { pluralAr } from "../../../i18n/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiPrestamo } from "../definicion";
@@ -6,7 +7,7 @@ import type { UiPrestamo } from "../definicion";
 const meses = (cifra: string) =>
   pluralAr(Number(cifra.replace(/\D/g, "")), { uno: "شهر واحد", dos: "شهرين", pocos: "{n} أشهر", muchos: "{n} شهرًا", otros: "{n} شهر" }, cifra);
 
-export const textosAr: TextosUi<UiPrestamo> = {
+export const textosAr: TextosUi<UiPrestamo> = textosArabes({
   slug: "loan",
   ui: () => ({
     monto: "مبلغ القرض",
@@ -30,4 +31,4 @@ export const textosAr: TextosUi<UiPrestamo> = {
     observacionCostos: "القسط لا يشمل التأمين أو الرسوم أو الضرائب التي قد يضيفها المُقرض. اطلب التكلفة الإجمالية قبل التوقيع.",
     observacionExtra: (n, ahorro) => `مع الدفعة الإضافية تنتهي من السداد خلال ${meses(n)} وتوفّر ${ahorro} من الفوائد.`,
   }),
-};
+});

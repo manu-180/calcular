@@ -1,7 +1,8 @@
+import { textosArabes } from "../../comun/arabe";
 import type { TextosUi } from "../../tipos";
 import type { UiVariacion } from "../definicion";
 
-export const textosAr: TextosUi<UiVariacion> = {
+export const textosAr: TextosUi<UiVariacion> = textosArabes({
   slug: "percentage-change",
   ui: () => ({
     inicial: "القيمة الأولى",
@@ -15,4 +16,4 @@ export const textosAr: TextosUi<UiVariacion> = {
     bajo: (p) => `انخفضت القيمة بنسبة ${p}%.`,
     igual: "لا تغيير، فالقيمتان متساويتان.",
   }),
-};
+});

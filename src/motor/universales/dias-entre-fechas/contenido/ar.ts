@@ -1,9 +1,10 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { pluralAr } from "../../../i18n/arabe";
 import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aDia, fechaLarga, habilesEntre } from "../../comun/fechas";
 import { DIAS_AR } from "../textos/ar";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const desde = "2026-03-02";
   const hasta = "2026-06-30";
   const dias = aDia(hasta) - aDia(desde);
@@ -49,4 +50,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "أيام العمل", definicion: "في هذه الحاسبة، من الاثنين إلى الجمعة." },
     ],
   };
-};
+});

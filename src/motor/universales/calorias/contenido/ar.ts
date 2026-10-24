@@ -1,7 +1,8 @@
+import { contenidoArabe } from "../../comun/arabe";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DEFICIT, FACTORES, mifflin, SUPERAVIT } from "../definicion";
 
-export const contenidoAr: ContenidoUniversal = (ctx) => {
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
   const n = (x: number, d = 0) => formatearNumero(ctx, x, d);
   const imperial = ctx.unidades === "imperial";
   const ejemplo = imperial
@@ -52,4 +53,4 @@ export const contenidoAr: ContenidoUniversal = (ctx) => {
       { termino: "معدل الأيض الأساسي", definicion: "السعرات التي يحرقها جسمك وهو في راحة تامة." },
     ],
   };
-};
+});
