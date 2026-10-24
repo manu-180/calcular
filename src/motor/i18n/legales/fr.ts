@@ -87,6 +87,15 @@ export const fr: DiccionarioLegal = ({ actualizado, mail }) => ({
             `Pour toute question sur les données personnelles, notre adresse est ${mail}.`,
           ],
         },
+        {
+          titulo: "Les salaires partagés",
+          parrafos: [
+            "Sur « Salaires réels », il est possible d'ajouter un salaire de façon anonyme et facultative, uniquement après un consentement explicite. Nous enregistrons le pays, le métier (choisi dans une liste fermée), la tranche d'années d'expérience, le salaire brut mensuel arrondi à deux chiffres significatifs et le mois. Ni l'adresse IP, ni le navigateur, ni un compte, ni la date exacte ne sont enregistrés.",
+            "Nous ne publions que la médiane et la fourchette de groupes de 10 personnes ou plus. Aucun salaire individuel n'est affiché.",
+            "Pour éviter d'ajouter deux fois le même pays dans le même mois, le navigateur garde en stockage local le pays et le mois de la contribution, jamais le montant.",
+            "Comme une contribution n'est liée à personne, il n'est pas possible de la retrouver ensuite pour la supprimer.",
+          ],
+        },
       ],
     },
     terminos: {

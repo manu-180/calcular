@@ -4,6 +4,7 @@ import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSP
 import { usarCompartir } from "../../compartir";
 import type { RegionMundo } from "../../i18n/mundo";
 import { cargaDesde, codificarCarga, compararDesde, decodificarCarga, diaDeCarga, diasDelAnio, fechaDelDia, type FilaMundo } from "../calculo";
+import { AporteSueldo } from "../../sueldos/ui/AporteSueldo";
 import { leerTraspaso } from "../traspaso";
 import type { CargaCompartida } from "../tipos";
 import { Afiliados } from "./Afiliados";
@@ -613,6 +614,7 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
 
       {filas.length ? <Ranking filas={filas} origen={origen} t={t} f={f} monedaOrigen={pais?.moneda ?? "USD"} porMercado={porMercado} /> : null}
       {modo !== "ejemplo" && filas.length > 1 && filas[0].pais.mercado !== origen ? <Afiliados locale={locale} mejor={filas[0].pais.iso} /> : null}
+      {pais && filas.length ? <AporteSueldo mercado={origen} moneda={pais.moneda} ppa={pais.ppa} nombrePais={pais.nombre} locale={locale} base={base} bruto={modo !== "ejemplo" && valido ? Math.round(anual / pagas) : null} /> : null}
 
       {carga && pais ? (
         <section className="cy-mundo-compartir" aria-labelledby="cy-mundo-compartir-titulo">
