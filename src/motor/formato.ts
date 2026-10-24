@@ -126,28 +126,29 @@ export function separadoresDe(locale: string): Separadores {
 
 const ESPACIOS = /[\s   ]/g;
 
-// Los locales árabes del Golfo y del Levante (ar-KW, ar-BH, ar-OM, ar-JO, ar-IQ) formatean con
-// dígitos arábigo-índicos y sus propios separadores: «١٬٥٤٤٫١٣٦» es 1544,136. Para leerlos se pasan
-// a dígitos latinos, «٫» a punto decimal y «٬» a separador de miles (la convención del inglés).
-// También los dígitos persas (۰ a ۹), que escribe un teclado farsi o urdu.
-const RE_DIGITO_ARABE = /[٠-٩۰-۹]/g;
-function aLatino(texto: string): string {
+// Teclados árabes y persas escriben ٣٬٥٠٠٫٧٥ (dígitos arábigo-índicos, ٬ de miles y ٫ decimal) y la
+// coma «،». Se pasan a ASCII antes de las reglas: ٫ y ٬ dicen sin ambigüedad qué son, así que van
+// al decimal y al separador de miles del locale; «،» se lee como una coma más.
+const DIGITO_ARABE = /[٠-٩۰-۹]/g;
+
+function aLatino(texto: string, seps: Separadores): string {
+  if (!/[؀-ۿ]/.test(texto)) return texto;
   return texto
-    .replace(RE_DIGITO_ARABE, (d) => String(d.charCodeAt(0) - (d.charCodeAt(0) >= 0x06f0 ? 0x06f0 : 0x0660)))
-    .replace(/٫/g, ".")
-    .replace(/٬/g, ",");
+    .replace(DIGITO_ARABE, (d) => String(d.charCodeAt(0) & 0xf))
+    .replace(/٫/g, seps.decimal)
+    .replace(/٬/g, seps.grupo)
+    .replace(/،/g, ",");
+}
+
+function separadoresAscii(locale: string): Separadores {
+  const { decimal, grupo } = separadoresDe(locale);
+  return { decimal: decimal === "٫" ? "." : decimal, grupo: grupo === "٬" ? "," : grupo };
 }
 
 // El punto o la coma pegados a una letra o a «/» son del símbolo de la moneda, no del número:
 // «د.ك.» (ar-KW), «د.ب.» (ar-BH), «S/.» o «B/.». Sin esto, «١٬٥٤٤٫١٣٦ د.ك.» termina en punto y no se lee.
 function sinPuntosDeSimbolo(texto: string): string {
   return texto.replace(/(?<=[\p{L}/])[.,]+|[.,]+(?=[\p{L}/])/gu, "");
-}
-
-// El decimal del locale en la forma en que lo deja aLatino: «٫» pasa a ser el punto.
-function decimalLatino(locale: string): string {
-  const d = separadoresDe(locale).decimal;
-  return d === "٫" ? "." : d;
 }
 
 // en-IN agrupa en lakhs y crores («12,00,000»): el formulario muestra los valores así y tiene que
@@ -173,7 +174,8 @@ function gruposValidos(entero: string, separador: string, locale: string): boole
 //    casi siempre quiso decir miles, y leerlo como 5 divide el resultado por mil sin avisar. Salvo
 //    con decimales >= 3 (la moneda del campo los usa: KWD, BHD, OMR, JOD, TND, LYD): ahí
 //    «1544,136» en fr-TN o «5.000» en en-KW son montos con sus tres decimales.
-// 6. Los dígitos arábigo-índicos y persas y los separadores «٫» y «٬» se leen (aLatino).
+// 6. Los dígitos arábigo-índicos y persas, «٫», «٬» y «،» se leen (aLatino), y los puntos del
+//    símbolo de la moneda («د.ك.», «S/.») no cuentan (sinPuntosDeSimbolo).
 // Cualquier otra forma devuelve null: se le pide a la persona que lo escriba de nuevo.
 // En japonés, chino y coreano se escriben montos con unidades de 10⁴ («3万», «1億2000万», «5천만»).
 // Sin esto parsearNumero tiraría la unidad como si fuera una letra y «3万» daría 3: un error de diez
@@ -224,7 +226,8 @@ export interface OpcionesParseo {
 }
 
 export function parsearNumero(texto: string, locale: string, opciones: OpcionesParseo = {}): number | null {
-  const normal = aLatino(texto.normalize("NFKC"));
+  const seps = separadoresAscii(locale);
+  const normal = aLatino(texto, seps).normalize("NFKC");
   if (RE_UNIDAD_CJK.test(normal)) return conUnidadesCjk(normal, locale, opciones);
   const sinEspacios = sinPuntosDeSimbolo(normal.replace(ESPACIOS, ""));
   const negativo = /^[^\d]*-/.test(sinEspacios);
@@ -232,7 +235,7 @@ export function parsearNumero(texto: string, locale: string, opciones: OpcionesP
   if (!/\d/.test(limpio)) return null;
   if (/[.,]{2,}/.test(limpio)) return null;
   if (/[.,]$/.test(limpio) || (/^[.,]/.test(limpio) && !/^[.,]\d+$/.test(limpio))) return null;
-  const decLocale = decimalLatino(locale);
+  const decLocale = seps.decimal;
   const hayPunto = limpio.includes(".");
   const hayComa = limpio.includes(",");
   let entero = limpio;
@@ -272,9 +275,10 @@ export function parsearNumero(texto: string, locale: string, opciones: OpcionesP
 // El número que la persona probablemente quiso escribir cuando parsearNumero lo rechazó por
 // milesAmbiguos ("5.000" da "5000"); null si el texto no es ese caso.
 export function sugerenciaMiles(texto: string, locale: string): { sugerido: string; separador: string } | null {
-  const sinEspacios = sinPuntosDeSimbolo(aLatino(texto.normalize("NFKC")).replace(ESPACIOS, ""));
+  const seps = separadoresAscii(locale);
+  const sinEspacios = sinPuntosDeSimbolo(aLatino(texto, seps).normalize("NFKC").replace(ESPACIOS, ""));
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
-  const dec = decimalLatino(locale);
+  const dec = seps.decimal;
   const otro = dec === "." ? "," : ".";
   if (limpio.includes(otro)) return null;
   const partes = limpio.split(dec);
