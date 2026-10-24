@@ -24,6 +24,16 @@ import likarniani from "./calculadoras/likarniani";
 import contenidoLikarniani from "./contenido/likarniani";
 import dekretni from "./calculadoras/dekretni";
 import contenidoDekretni from "./contenido/dekretni";
+import ponadnormovi from "./calculadoras/ponadnormovi";
+import contenidoPonadnormovi from "./contenido/ponadnormovi";
+import vykhidnaDopomoha from "./calculadoras/vykhidna-dopomoha";
+import contenidoVykhidnaDopomoha from "./contenido/vykhidna-dopomoha";
+import podatokNaDepozyt from "./calculadoras/podatok-na-depozyt";
+import contenidoPodatokNaDepozyt from "./contenido/podatok-na-depozyt";
+import podatokZProdazhuNeruhomosti from "./calculadoras/podatok-z-prodazhu-neruhomosti";
+import contenidoPodatokZProdazhuNeruhomosti from "./contenido/podatok-z-prodazhu-neruhomosti";
+import podatokZProdazhuAvto from "./calculadoras/podatok-z-prodazhu-avto";
+import contenidoPodatokZProdazhuAvto from "./contenido/podatok-z-prodazhu-avto";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +58,11 @@ export default definirPais({
     { definicion: kompensatsiiaVidpustky, contenido: contenidoKompensatsiiaVidpustky, cliente: () => import("./calculadoras/kompensatsiia-vidpustky.cliente") },
     { definicion: likarniani, contenido: contenidoLikarniani, cliente: () => import("./calculadoras/likarniani.cliente") },
     { definicion: dekretni, contenido: contenidoDekretni, cliente: () => import("./calculadoras/dekretni.cliente") },
+    { definicion: ponadnormovi, contenido: contenidoPonadnormovi, cliente: () => import("./calculadoras/ponadnormovi.cliente") },
+    { definicion: vykhidnaDopomoha, contenido: contenidoVykhidnaDopomoha, cliente: () => import("./calculadoras/vykhidna-dopomoha.cliente") },
+    { definicion: podatokNaDepozyt, contenido: contenidoPodatokNaDepozyt, cliente: () => import("./calculadoras/podatok-na-depozyt.cliente") },
+    { definicion: podatokZProdazhuNeruhomosti, contenido: contenidoPodatokZProdazhuNeruhomosti, cliente: () => import("./calculadoras/podatok-z-prodazhu-neruhomosti.cliente") },
+    { definicion: podatokZProdazhuAvto, contenido: contenidoPodatokZProdazhuAvto, cliente: () => import("./calculadoras/podatok-z-prodazhu-avto.cliente") },
   ],
   universales: "todas",
   novedades,
