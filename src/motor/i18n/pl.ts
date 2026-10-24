@@ -7,7 +7,7 @@ const g = GRAMATICA.pl;
 const MUNDO = "Świat";
 
 // Registro «ty» en minúscula, como los calculadores de Bankier.pl y Money.pl y la banca en línea
-// (docs/global/IDIOMAS-EU.md): los mercados en polaco van con trato "tu" y el diccionario solo tiene base.
+// (ADR 0002, D9): los mercados en polaco van con trato "tu" y el diccionario solo tiene base.
 const base: TextosSitio = {
   marca: { nombre: "CalcularYa", lema: "Kalkulatory z oficjalnymi danymi" },
   saltar: "Przejdź do treści",

@@ -641,6 +641,28 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: ANDRE_BELOB,
   },
+  "informe-calculo": {
+    nombre: "Rapport om beregningen",
+    tituloCorto: "beregningsrapport",
+    paraQuien: "Til at have denne beregning på papir, med dine tal, forudsætningerne bag den og kilden til hver officiel værdi",
+    descripcion: [
+      "En pdf-rapport med den beregning, du lige har lavet, trin for trin med dine oplysninger: resultatet, forudsætningerne bag det og hver officiel værdi med kilde og dato for kontrollen.",
+      "Til dine papirer eller til at vise din revisor, din arbejdsgiver eller andre, der skal tjekke den, uden at forklare hvert tal igen.",
+    ],
+    gancho: "Tag beregningen med på papir, med kilderne",
+    incluye: [
+      { titulo: "Resultatet med dine oplysninger", texto: "Præcis som du regnede det, klar til at printe." },
+      { titulo: "Sådan regnes det", texto: "Trinene og forudsætningerne, så hvert tal kan følges." },
+      { titulo: "De officielle kilder", texto: "Hver værdi med myndighed, link og dato for kontrollen." },
+    ],
+    pasos: {
+      titulo: "Før du bruger den",
+      items: [
+        "Tjek, at oplysningerne øverst er dine: resultatet afhænger af dem.",
+        "Har en officiel værdi ændret sig, så regn igen: rapporten bruger de værdier, der gjaldt den dag, du købte den.",
+      ],
+    },
+  },
 };
 
 export const da: DiccionarioVenta = {

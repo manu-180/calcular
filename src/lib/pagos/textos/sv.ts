@@ -641,6 +641,28 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: ANDRA_BELOPP,
   },
+  "informe-calculo": {
+    nombre: "Rapport om beräkningen",
+    tituloCorto: "beräkningsrapport",
+    paraQuien: "För att ha den här beräkningen på papper, med dina siffror, antagandena bakom den och källan till varje officiellt värde",
+    descripcion: [
+      "En pdf-rapport med beräkningen du just gjorde, steg för steg med dina uppgifter: resultatet, antagandena bakom det och varje officiellt värde med källa och datum då det kontrollerades.",
+      "Att spara eller visa för din redovisningskonsult, din arbetsgivare eller någon annan som behöver granska den, utan att förklara varje siffra igen.",
+    ],
+    gancho: "Ta med dig beräkningen på papper, med källorna",
+    incluye: [
+      { titulo: "Resultatet med dina uppgifter", texto: "Precis som du räknade det, klart att skriva ut." },
+      { titulo: "Hur det räknas", texto: "Stegen och antagandena, så att varje siffra går att följa." },
+      { titulo: "De officiella källorna", texto: "Varje värde med myndighet, länk och kontrolldatum." },
+    ],
+    pasos: {
+      titulo: "Innan du använder den",
+      items: [
+        "Kontrollera att uppgifterna överst är dina: resultatet beror på dem.",
+        "Har ett officiellt värde ändrats, räkna om: rapporten använder de värden som gällde den dag du köpte den.",
+      ],
+    },
+  },
 };
 
 export const sv: DiccionarioVenta = {
