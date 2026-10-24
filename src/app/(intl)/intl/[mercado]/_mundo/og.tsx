@@ -28,7 +28,8 @@ const CABECERAS = { "cache-control": "public, max-age=86400, s-maxage=604800, st
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
 const ESPERA_FUENTE_MS = 3000;
 
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC" };
+// Geist no trae CJK ni tailandés: sin esta fuente la tarjeta saldría con cuadritos (ADR 0002, D8 y D13).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", th: "Noto Sans Thai" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 

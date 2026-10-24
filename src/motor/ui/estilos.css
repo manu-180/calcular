@@ -131,6 +131,16 @@
     line-break: strict;
     word-break: normal;
   }
+  /* El tailandés no separa las palabras con espacios: el navegador corta por diccionario con
+     word-break: normal (keep-all no cortaría nunca y break-all partiría las palabras al medio). Las
+     vocales y los tonos se apilan sobre la letra, así que el interlineado es algo mayor. Fuente del
+     sistema (Thonburi en Apple, Leelawadee UI en Windows), sin descargar nada (ADR 0002, D13). */
+  .cy-cuerpo:lang(th) {
+    font-family: var(--font-geist), Thonburi, "Leelawadee UI", "Noto Sans Thai", Tahoma, sans-serif;
+    word-break: normal;
+    line-break: auto;
+    line-height: 1.65;
+  }
 
   input,
   textarea,
@@ -2310,7 +2320,7 @@
 }
 
 /* Fuera de @layer base a propósito: tiene que ganarle al tracking negativo de los títulos, que es
-   de Geist y en CJK amontona los caracteres. */
-.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh)) :is(h1, h2, h3, h4) {
+   de Geist y en CJK y tailandés amontona los caracteres (y los tonos apilados). */
+.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(th)) :is(h1, h2, h3, h4) {
   letter-spacing: 0;
 }

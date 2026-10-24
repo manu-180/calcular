@@ -486,7 +486,43 @@ const zh: Diccionario<TextosEmbed> = {
   regional: { "zh-CN": zhHans, "zh-SG": zhHans },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Tailandés (ADR 0002, D13): cortés y neutro, sin pronombre ni ครับ/ค่ะ.
+const th: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "เครื่องคำนวณจาก CalcularYa",
+    marcaNuevaPestana: "(เปิดในแท็บใหม่)",
+    noDisponible: { titulo: "เครื่องคำนวณนี้ไม่พร้อมใช้งาน", texto: "ที่อยู่อาจมีการเปลี่ยนแปลง" },
+    insertar: "ติดตั้งบนเว็บไซต์",
+    pagina: {
+      titulo: (pais) => [`เครื่องคำนวณฟรีสำหรับเว็บไซต์ | ${pais}`, "เครื่องคำนวณฟรีสำหรับเว็บไซต์"],
+      descripcion: (pais) => `เลือกเครื่องคำนวณสำหรับ${pais} คัดลอกโค้ด แล้ววางในบล็อกหรือเว็บไซต์ ใช้ฟรี พร้อมข้อมูลทางการที่อัปเดตอยู่เสมอ`,
+      h1: "ติดตั้งเครื่องคำนวณบนเว็บไซต์",
+      bajada: "เลือกเครื่องคำนวณ คัดลอกโค้ด แล้ววางได้ทุกที่ ใช้ฟรี และข้อมูลอัปเดตเอง",
+      calculadora: "เครื่องคำนวณ",
+      buscar: "ค้นหาเครื่องคำนวณ",
+      sinResultados: "ไม่มีเครื่องคำนวณที่ตรงกับคำค้นหา",
+      tema: "ธีม",
+      claro: "สว่าง",
+      oscuro: "มืด",
+      ancho: "ความกว้าง",
+      anchoCompleto: "เต็มความกว้าง",
+      acento: "สีเน้น",
+      colores: ["เขียว", "น้ำเงิน", "ส้ม", "ชมพู", "เทาหิน"],
+      credito: "เพิ่มลิงก์แหล่งที่มาใต้เครื่องคำนวณ",
+      vistaPrevia: "ตัวอย่าง",
+      codigo: "โค้ดสำหรับวาง",
+      copiar: "คัดลอกโค้ด",
+      copiado: "คัดลอกโค้ดแล้ว",
+      ayudaScript: "สคริปต์นี้ไม่บังคับ ใช้เพื่อให้ความสูงของเครื่องคำนวณปรับตามเนื้อหา",
+      ventajas: ["ใช้ฟรี ไม่ต้องสมัคร", "ข้อมูลทางการล่าสุดเสมอ", "แสดงผลได้ทุกความกว้าง"],
+      nota: "ด้านล่างเครื่องคำนวณมีลิงก์ไปยัง CalcularYa กรุณาอย่าลบออก",
+      verTodas: (pais) => `ดูเครื่องคำนวณทั้งหมดสำหรับ${pais}`,
+      tituloIframe: (nombre) => `${nombre} | เครื่องคำนวณจาก CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, th };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);
