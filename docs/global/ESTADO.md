@@ -47,7 +47,7 @@ varias veces por límite de uso.
 | Angola | claude/pais-ao | en curso |
 | Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
 | Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
-| Motor indonesio (id) | claude/mundo-motor-id | terminado el 24/10 (núcleo, venta y las 41 universales) |
+| Motor indonesio (id) | claude/mundo-motor-id | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -85,6 +85,9 @@ id en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «T
 (`kalkulator-kpr`, `kalkulator-pinjaman`, `kalkulator-ppn`...). Registro «Anda» con mayúscula, el de
 BCA, Mandiri, OJK y DJP Online; mercados con `trato: "usted"`. Decisiones en ADR 0002, D11. Edición de
 prueba `zz-id`.
+
+Puesta al día con main 7d190a68: calendario (`kalender-gaji`), horas de trabajo (`berapa-jam-kerja`),
+rankings (`peringkat-negara`), «Sueldos reales» (`gaji-sebenarnya`) y afiliados en indonesio.
 
 Falta para publicar Indonesia:
 - El país en sí (BRIEF-PAIS): PPh 21 con TER, BPJS Kesehatan y Ketenagakerjaan, UMP/UMK por provincia,

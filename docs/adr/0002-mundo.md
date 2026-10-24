@@ -196,6 +196,15 @@ chat, «anda» en minúscula y los posesivos con -mu más comunes (no se busca -
 **Prueba.** `zz-id` (Zetaland, locale `id-001`) es una edición interna como `zz-ja`. `check_universales`
 prueba id-ID con IDR (escala 16000) y «Saint Vincent dan Grenadine» por el nombre largo.
 
+**Puesta al día con main (7d190a68).** Calendario laboral y fiscal (`kalender-gaji`), «¿Cuántas horas de
+trabajo cuesta?» (`berapa-jam-kerja`, con el nombre «Berapa jam kerja untuk membelinya?», la frase que
+se busca en Indonesia), rankings (`peringkat-negara`: `gaji-paling-bernilai`, `hari-bebas-pajak`,
+`sisa-kenaikan-gaji`), «Sueldos reales» (`gaji-sebenarnya`) y afiliados en indonesio. Calendario, horas,
+rankings y afiliados impersonales; sueldos con «Anda» en `base`, como el resto del idioma. «Upah minimum»
+por salario mínimo (el término general; UMP y UMK son los de cada provincia o ciudad), «iuran» por
+aportes y «kiriman» por cada sueldo aportado. Las imágenes OG no suman fuente de respaldo: Geist cubre
+el alfabeto latino del indonesio.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

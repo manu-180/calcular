@@ -2,6 +2,7 @@
 // aritmética de variaciones/IPC/acumulados contra los datos reales de cada cluster, y los casos
 // borde de navegación. Correr con: npx tsx scripts/check_archivo_mensual.ts
 
+import "./sin-server-only";
 import {
   MESES_INDEXADOS,
   acumuladoDesdeInicio,
@@ -23,7 +24,7 @@ import { MESES_CAMIONEROS, CAMIONEROS_BASE_MAYO, basicoCamioneros } from "../src
 import { CANASTA_BASICA } from "../src/data/canasta-basica";
 import { MESES_CANASTA, slugDeMesCanasta } from "../src/lib/canasta-basica-meses";
 import { MESES_CUOTA, slugDeMes } from "../src/lib/canasta-meses";
-import sitemap from "../src/app/sitemap";
+import { armarSitemap } from "../src/app/sitemap";
 
 let fallas = 0;
 
@@ -321,7 +322,7 @@ for (const [nombre, periodos] of [
   );
 }
 
-const urlsSitemap = new Set(sitemap().map((e) => e.url));
+const urlsSitemap = new Set(armarSitemap().map((e) => e.url));
 for (const [nombre, periodos, ruta, slug] of [
   ["canasta", periodosCanasta, "canasta-basica", (p: string) => slugDeMesCanasta(MESES_CANASTA.find((m) => m.periodo === p)!)],
   ["cuota", periodosCuota, "cuota-alimentaria", (p: string) => slugDeMes(MESES_CUOTA.find((m) => m.periodo === p)!)],
