@@ -5,9 +5,9 @@ import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import { origenIntl } from "@/motor/sitio";
 
 const RESEND_API = "https://api.resend.com";
-export const FROM = "CalculAR <soporte@theapexweb.com>";
+export const FROM = "CalculAR <soporte@calcular.ar>";
 // Mismo dominio verificado en Resend; cambia sólo el nombre que ve quien lo recibe.
-export const FROM_INTL = "CalcularYa <soporte@theapexweb.com>";
+export const FROM_INTL = "CalcularYa <soporte@calcular.ar>";
 const BASE = "https://calcular.ar";
 
 export const remitente = (sitio: "ar" | "intl") => (sitio === "intl" ? FROM_INTL : FROM);

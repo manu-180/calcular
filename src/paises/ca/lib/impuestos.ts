@@ -12,6 +12,7 @@ export const PROVINCIAS = [
   { valor: "nu", etiqueta: "Nunavut" },
   { valor: "on", etiqueta: "Ontario" },
   { valor: "pe", etiqueta: "Prince Edward Island" },
+  { valor: "qc", etiqueta: "Quebec" },
   { valor: "sk", etiqueta: "Saskatchewan" },
   { valor: "yt", etiqueta: "Yukon" },
 ] as const;
@@ -21,8 +22,11 @@ export type Provincia = (typeof PROVINCIAS)[number]["valor"];
 export const REQUIERE_APORTES = {
   "ca.cpp": "mapa",
   "ca.cpp-rates": "mapa",
+  "ca.qpp": "mapa",
   "ca.ei-maximum": "numero",
   "ca.ei-rates": "mapa",
+  "ca.qpip-maximum": "numero",
+  "ca.qpip-rates": "mapa",
 } as const;
 
 export const REQUIERE_RENTA = {
@@ -42,6 +46,10 @@ export const REQUIERE_RENTA = {
   "ca.bc-tax-reduction-rate": "numero",
   "ca.ab-supplemental-credit-threshold": "numero",
   "ca.ab-supplemental-credit-rate": "numero",
+  "ca.qc-tax-brackets": "escala",
+  "ca.qc-bpa": "numero",
+  "ca.qc-workers-deduction": "mapa",
+  "ca.qc-abatement": "numero",
 } as const;
 
 type ValoresAportes = ValoresDe<typeof REQUIERE_APORTES>;
@@ -51,27 +59,30 @@ export function dolares(n: number): string {
   return new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: n % 1 === 0 ? 0 : 2 }).format(n);
 }
 
+// En Quebec, cpp* son las cotizaciones al QPP (RRQ) y qpip las del RQAP; fuera de Quebec qpip es 0.
 export interface Aportes {
   cppBase: number;
   cppPrimera: number;
   cpp2: number;
   cpp: number;
   ei: number;
+  qpip: number;
 }
 
 // T4127, chapters 6 and 7: an employee pays CPP on earnings between the basic exemption and the
 // YMPE, CPP2 between the YMPE and the YAMPE, and EI up to the maximum insurable earnings. Only the
 // base part of CPP gives a tax credit; the first and second additional parts are a deduction.
-export function aportesEmpleado(ingreso: number, v: ValoresAportes, autonomo = false): Aportes {
+export function aportesEmpleado(ingreso: number, v: ValoresAportes, autonomo = false, quebec = false): Aportes {
   const c = v["ca.cpp"];
-  const t = v["ca.cpp-rates"];
+  const t = quebec ? v["ca.qpp"] : v["ca.cpp-rates"];
   const factor = autonomo ? 2 : 1;
   const base = Math.max(0, Math.min(ingreso, c.ympe) - c.exemption);
   const cppBase = porcentaje(base, t.base) * factor;
   const cppPrimera = porcentaje(base, t.first) * factor;
   const cpp2 = porcentaje(Math.max(0, Math.min(ingreso, c.yampe) - c.ympe), t.second) * factor;
-  const ei = autonomo ? 0 : porcentaje(Math.min(ingreso, v["ca.ei-maximum"]), v["ca.ei-rates"].employee);
-  return { cppBase, cppPrimera, cpp2, cpp: cppBase + cppPrimera, ei };
+  const ei = autonomo ? 0 : porcentaje(Math.min(ingreso, v["ca.ei-maximum"]), quebec ? v["ca.ei-rates"]["employee-qc"] : v["ca.ei-rates"].employee);
+  const qpip = quebec && !autonomo ? porcentaje(Math.min(ingreso, v["ca.qpip-maximum"]), v["ca.qpip-rates"].employee) : 0;
+  return { cppBase, cppPrimera, cpp2, cpp: cppBase + cppPrimera, ei, qpip };
 }
 
 function bpaFederal(neto: number, v: ValoresRenta): number {
@@ -129,6 +140,7 @@ function tasaMasBaja(escala: readonly FilaEscala[]): number {
 // base CPP and EI, all at the lowest rate. Provincial extras: Ontario surtax, health premium and
 // tax reduction; BC tax reduction; Alberta supplemental credit; Yukon employment amount.
 export function impuestoAnual(e: EntradaRenta, v: ValoresRenta): ResultadoRenta {
+  if (e.provincia === "qc") return impuestoQuebec(e, v);
   const deduccionCpp = e.aportes.cppPrimera + e.aportes.cpp2;
   const gravable = Math.max(0, e.empleo + e.otros - e.deducciones - deduccionCpp);
   const federalEscala = v["ca.federal-tax-brackets"];
@@ -158,6 +170,30 @@ export function impuestoAnual(e: EntradaRenta, v: ValoresRenta): ResultadoRenta 
     const reduccion = Math.max(0, Math.min(t4, r.amount - porcentaje(Math.max(0, gravable - r.threshold), v["ca.bc-tax-reduction-rate"])));
     provincial = t4 - reduccion;
   }
+  return { gravable, federal, provincial, total: federal + provincial };
+}
+
+// A Quebec resident files two returns. Federal: same taxable income and credits as elsewhere, with
+// QPP base, EI and QPIP as contribution credits (T4032-QC), less the refundable Quebec abatement of
+// 16.5% of basic federal tax. Quebec: taxable income also takes off the deduction for workers (6% of
+// employment income, capped); the only credit is the basic personal amount at the lowest rate,
+// because QPP, EI and QPIP contributions are already built into it (Finances Québec, Dépenses
+// fiscales 2025, 1.3.2). Other Quebec credits (living alone, age, retirement income) are not included.
+function impuestoQuebec(e: EntradaRenta, v: ValoresRenta): ResultadoRenta {
+  const deduccionQpp = e.aportes.cppPrimera + e.aportes.cpp2;
+  const gravable = Math.max(0, e.empleo + e.otros - e.deducciones - deduccionQpp);
+  const federalEscala = v["ca.federal-tax-brackets"];
+  const fBaja = tasaMasBaja(federalEscala);
+  const cea = Math.min(e.empleo, v["ca.canada-employment-amount"]);
+  const creditoAportes = e.aportes.cppBase + e.aportes.ei + e.aportes.qpip;
+  const basicoFederal = Math.max(0, aplicarEscalaMarginal(federalEscala, gravable) - porcentaje(bpaFederal(gravable, v) + cea + creditoAportes, fBaja));
+  const federal = basicoFederal - porcentaje(basicoFederal, v["ca.qc-abatement"]);
+
+  const trabajadores = v["ca.qc-workers-deduction"];
+  const deduccionTrabajadores = Math.min(porcentaje(e.empleo, trabajadores.rate), trabajadores.max);
+  const gravableQc = Math.max(0, gravable - deduccionTrabajadores);
+  const qcEscala = v["ca.qc-tax-brackets"];
+  const provincial = Math.max(0, aplicarEscalaMarginal(qcEscala, gravableQc) - porcentaje(v["ca.qc-bpa"], tasaMasBaja(qcEscala)));
   return { gravable, federal, provincial, total: federal + provincial };
 }
 

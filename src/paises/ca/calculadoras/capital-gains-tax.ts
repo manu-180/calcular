@@ -1,6 +1,9 @@
 import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 import { aportesEmpleado, impuestoAnual, PROVINCIAS, REQUIERE_RENTA, validarIngreso } from "../lib/impuestos";
 
+// Sin Quebec: falta verificar en una fuente de Quebec que la tasa de inclusión sea la misma que la federal.
+const PROVINCIAS_SIN_QC = PROVINCIAS.filter((p) => p.valor !== "qc");
+
 export default definirCalculadora({
   id: "ca.capital-gains-tax",
   mercado: "ca",
@@ -12,7 +15,7 @@ export default definirCalculadora({
     "ca.capital-gains-inclusion-rate": "numero",
   },
   campos: [
-    { id: "provincia", tipo: "opcion", etiqueta: "Province or territory where you live", opciones: PROVINCIAS, porDefecto: "on" },
+    { id: "provincia", tipo: "opcion", etiqueta: "Province or territory where you live", opciones: PROVINCIAS_SIN_QC, porDefecto: "on" },
     { id: "venta", tipo: "moneda", etiqueta: "Selling price after selling costs", min: 0, porDefecto: 50000 },
     { id: "costo", tipo: "moneda", etiqueta: "What you paid (adjusted cost base)", min: 0, porDefecto: 30000 },
     { id: "empleo", tipo: "moneda", etiqueta: "Your employment income for 2026", min: 0, porDefecto: 70000 },

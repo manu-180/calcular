@@ -641,6 +641,25 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: ALTRI_IMPORTI,
   },
+  "informe-calculo": {
+    nombre: "Report del calcolo",
+    tituloCorto: "report del calcolo",
+    paraQuien: "Per avere questo calcolo per iscritto, con i tuoi numeri, le ipotesi che usa e la fonte di ogni valore ufficiale",
+    descripcion: [
+      "Un report in PDF del calcolo che hai appena fatto, passo per passo e con i tuoi dati: il risultato, le ipotesi su cui si basa e ogni valore ufficiale con la fonte e la data di verifica.",
+      "Da conservare o da mostrare al tuo commercialista, al tuo datore di lavoro o a chi deve controllarlo, senza rispiegare ogni numero.",
+    ],
+    gancho: "Porta con te questo calcolo per iscritto, con le fonti",
+    incluye: [
+      { titulo: "Il risultato con i tuoi dati", texto: "Così come l'hai calcolato, pronto da stampare." },
+      { titulo: "Come si calcola", texto: "I passaggi e le ipotesi, per capire da dove viene ogni numero." },
+      { titulo: "Le fonti ufficiali", texto: "Ogni valore con l'ente, il link e la data di verifica." },
+    ],
+    pasos: {
+      titulo: "Prima di usarlo",
+      items: ["Controlla che i dati in alto siano i tuoi: il risultato dipende da quelli.", "Se un valore ufficiale è cambiato, rifai il calcolo: il report usa quelli in vigore il giorno dell'acquisto."],
+    },
+  },
 };
 
 export const it: DiccionarioVenta = {

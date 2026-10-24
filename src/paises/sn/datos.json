@@ -1,0 +1,466 @@
+{
+  "mercado": "sn",
+  "datos": [
+    {
+      "id": "sn.ir-bareme",
+      "nombre": "Barème de l'impôt sur le revenu",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 630000,
+              "tasa": 0
+            },
+            {
+              "desde": 630000,
+              "hasta": 1500000,
+              "tasa": 20
+            },
+            {
+              "desde": 1500000,
+              "hasta": 4000000,
+              "tasa": 30
+            },
+            {
+              "desde": 4000000,
+              "hasta": 8000000,
+              "tasa": 35
+            },
+            {
+              "desde": 8000000,
+              "hasta": 13500000,
+              "tasa": 37
+            },
+            {
+              "desde": 13500000,
+              "hasta": 50000000,
+              "tasa": 40
+            },
+            {
+              "desde": 50000000,
+              "hasta": null,
+              "tasa": 43
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 173",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.ir-plafond",
+      "nombre": "Plafond de l'impôt sur le revenu (en % du revenu imposable)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 43,
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 174",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.ir-abattement",
+      "nombre": "Abattement forfaitaire sur les salaires",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "taux": 30,
+            "plafond": 900000
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, articles 168 et 182",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.ir-reduction-taux",
+      "nombre": "Réduction d'impôt pour charges de famille : taux",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "1": 0,
+            "1-5": 10,
+            "2": 15,
+            "2-5": 20,
+            "3": 25,
+            "3-5": 30,
+            "4": 35,
+            "4-5": 40,
+            "5": 45
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 174",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.ir-reduction-min",
+      "nombre": "Réduction d'impôt pour charges de famille : minimum",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "1": 0,
+            "1-5": 100000,
+            "2": 200000,
+            "2-5": 300000,
+            "3": 400000,
+            "3-5": 500000,
+            "4": 600000,
+            "4-5": 700000,
+            "5": 800000
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 174",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.ir-reduction-max",
+      "nombre": "Réduction d'impôt pour charges de famille : maximum",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "1": 0,
+            "1-5": 300000,
+            "2": 650000,
+            "2-5": 1100000,
+            "3": 1650000,
+            "3-5": 2030000,
+            "4": 2490000,
+            "4-5": 2755000,
+            "5": 3180000
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 174",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.trimf",
+      "nombre": "Taxe représentative de l'impôt du minimum fiscal (TRIMF)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 600000,
+              "tasa": 0,
+              "cuotaFija": 900
+            },
+            {
+              "desde": 600000,
+              "hasta": 1000000,
+              "tasa": 0,
+              "cuotaFija": 3600
+            },
+            {
+              "desde": 1000000,
+              "hasta": 2000000,
+              "tasa": 0,
+              "cuotaFija": 4800
+            },
+            {
+              "desde": 2000000,
+              "hasta": 7000000,
+              "tasa": 0,
+              "cuotaFija": 12000
+            },
+            {
+              "desde": 7000000,
+              "hasta": 12000000,
+              "tasa": 0,
+              "cuotaFija": 18000
+            },
+            {
+              "desde": 12000000,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 36000
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 282",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.tva",
+      "nombre": "Taux de la TVA",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "normal": 18,
+            "hebergement": 10
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 369",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.tva-normal",
+      "nombre": "Taux normal de la TVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 369",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.is",
+      "nombre": "Taux de l'impôt sur les sociétés",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 36",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.imf",
+      "nombre": "Impôt minimum forfaitaire",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "taux": 0.5,
+            "plafond": 5000000
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 40",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.cfce",
+      "nombre": "Contribution forfaitaire à la charge de l'employeur (CFCE)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 267",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.rcm",
+      "nombre": "Retenue à la source sur les revenus de capitaux mobiliers",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "actions": 10,
+            "obligations": 13,
+            "obligations-5-ans": 6,
+            "lots": 15,
+            "autres": 16,
+            "depots": 8,
+            "bons-de-caisse": 20
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, article 173, point 2",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.contribution-fonciere",
+      "nombre": "Contribution foncière",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "batie": 5,
+            "non-batie": 5
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts et des Domaines (DGID)",
+            "titulo": "Code général des impôts annoté, édition janvier 2025, articles 294 et 302",
+            "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.taux-directeur",
+      "nombre": "Taux directeurs de la BCEAO",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-16",
+          "valor": {
+            "principal": 3,
+            "pret-marginal": 5
+          },
+          "fuente": {
+            "organismo": "Banque Centrale des États de l'Afrique de l'Ouest (BCEAO)",
+            "titulo": "Communiqué de la réunion ordinaire du Comité de Politique Monétaire du 9 septembre 2026",
+            "url": "https://www.bceao.int/fr/communique-presse/communique-de-presse-de-la-reunion-ordinaire-du-comite-de-politique-monetaire-19",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Taux maintenus, en vigueur depuis le 16 mars 2026 (baisse décidée le 4 mars 2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sn.parite-euro",
+      "nombre": "Parité fixe du franc CFA avec l'euro",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-01-01",
+          "valor": 655.957,
+          "fuente": {
+            "organismo": "Banque Centrale des États de l'Afrique de l'Ouest (BCEAO)",
+            "titulo": "Histoire du franc CFA : arrimage du FCFA à l'euro",
+            "url": "https://www.bceao.int/fr/content/histoire-du-franc-cfa",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    }
+  ]
+}

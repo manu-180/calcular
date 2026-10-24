@@ -641,6 +641,25 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: ANDERE_BEDRAGEN,
   },
+  "informe-calculo": {
+    nombre: "Rapport van de berekening",
+    tituloCorto: "rapport van de berekening",
+    paraQuien: "Om deze berekening op papier te hebben, met jouw cijfers, de aannames en de bron van elk officieel bedrag",
+    descripcion: [
+      "Een pdf-rapport van de berekening die je net hebt gemaakt, stap voor stap met jouw gegevens: de uitkomst, de aannames erachter en elk officieel bedrag met de bron en de datum van controle.",
+      "Om te bewaren of te laten zien aan je boekhouder, je werkgever of wie het moet controleren, zonder elk getal opnieuw uit te leggen.",
+    ],
+    gancho: "Neem deze berekening op papier mee, met de bronnen",
+    incluye: [
+      { titulo: "De uitkomst met jouw gegevens", texto: "Precies zoals je het hebt berekend, klaar om te printen." },
+      { titulo: "Hoe het wordt berekend", texto: "De stappen en aannames, zodat je elk getal kunt terugvinden." },
+      { titulo: "De officiële bronnen", texto: "Elk bedrag met de instantie, de link en de datum van controle." },
+    ],
+    pasos: {
+      titulo: "Voordat je het gebruikt",
+      items: ["Controleer of de gegevens bovenaan van jou zijn: de uitkomst hangt ervan af.", "Is een officieel bedrag veranderd, reken dan opnieuw: het rapport gebruikt de bedragen die golden op de dag van aankoop."],
+    },
+  },
 };
 
 export const nl: DiccionarioVenta = {
