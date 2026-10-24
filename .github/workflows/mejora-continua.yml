@@ -64,6 +64,13 @@ jobs:
     permissions:
       contents: write
       id-token: write
+    # La acción configura git como claude[bot] y Vercel deja BLOCKED un deploy cuyo autor no es el dueño
+    # del proyecto (pasó en la primera corrida, 24/10). Las variables de entorno ganan sobre git config.
+    env:
+      GIT_AUTHOR_NAME: manu-180
+      GIT_AUTHOR_EMAIL: 157671390+manu-180@users.noreply.github.com
+      GIT_COMMITTER_NAME: manu-180
+      GIT_COMMITTER_EMAIL: 157671390+manu-180@users.noreply.github.com
     steps:
       - uses: actions/checkout@v4
         with:

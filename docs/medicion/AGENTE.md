@@ -74,11 +74,20 @@ un país va en el texto o la configuración de ese mercado, no en el motor compa
 
 1. Leé y respetá `CLAUDE.md`/`AGENTS.md` del repo y las reglas de `.claude/rules/` que apliquen a los
    archivos que tocás (diseño, mundo, embed).
-2. `npx tsx scripts/check-all.ts` y `npm run build`, los dos verdes. Si algo falla por tu cambio,
-   arreglalo o descartalo; si falla algo que no tocaste, no publiques y anotalo.
-3. Commit con prefijo `mejora:` (en español, qué cambia para la persona), `git pull --rebase` y
-   `git push` a `main`. El push deploya. Si el rebase choca, abortá y anotalo: no fuerces nada.
-4. Agregá una entrada arriba de todo en `docs/medicion/BITACORA.md` con el formato de ahí y
+2. **Línea de base antes de tocar nada:** `npx tsx scripts/check-all.ts` sobre `main` limpio y anotá
+   qué suites fallan. Es común que `main` venga con suites rojas de otras sesiones (datos de países,
+   sueldos): no son tuyas y no las arreglás.
+3. Con tu cambio: `check-all` otra vez y `npm run build`. Se publica sólo si el build es verde y las
+   suites rojas son **las mismas o menos** que en la línea de base. Una suite nueva en rojo = tu
+   cambio rompió algo: arreglalo o descartalo. Anotá en la bitácora las suites heredadas.
+4. Commit con prefijo `mejora:` (en español, qué cambia para la persona) **siempre con el autor de
+   Manuel**: `git -c user.name=manu-180 -c user.email=157671390+manu-180@users.noreply.github.com commit …`.
+   Vercel deja BLOCKED, sin avisar, el deploy de un commit con otro autor (`claude[bot]` incluido).
+   Después `git pull --rebase` y `git push` a `main`: el push deploya. Si el rebase choca, abortá y
+   anotalo: no fuerces nada.
+5. Agregá una entrada arriba de todo en `docs/medicion/BITACORA.md` con el formato de ahí y
    commitealo junto con el cambio.
+6. Si la bitácora tiene un cambio «listo para la próxima corrida» que quedó sin publicar, retomalo
+   primero (revalidando con el informe nuevo) antes de elegir otro.
 
 Si no hay nada con evidencia suficiente para cambiar, también se anota: «sin cambios, por qué».
