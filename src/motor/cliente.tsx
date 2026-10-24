@@ -12,6 +12,11 @@ export interface CalculadoraControlada {
   estado: EstadoCalculo;
   textos: TextosMotor;
   opciones: (campo: Campo) => readonly OpcionDinamica[];
+  // Concepto de la calculadora. Es null hasta que baja el código de calcular(); con un resultado en pantalla siempre está.
+  concepto?: string | null;
+  // Lo que el traspaso a «Tu sueldo en el mundo» necesita para leer el bruto de un país que no está en
+  // la tabla de adaptadores del motor (declaró `mundo` o se infiere).
+  leible?: Pick<DefinicionCalculadora, "campos" | "resultado" | "mundo"> | null;
   error: (idCampo: string) => string | null;
   cambiar: (idCampo: string, valor: string | boolean) => void;
   calcular: () => void;
@@ -75,7 +80,8 @@ function useControl(visible: DefinicionVisible, props: PropsCalculadora, inicial
 
   // Solo los campos que se muestran con lo que eligió la persona (visibleSi).
   const campos = useMemo(() => visible.campos.filter((c) => campoVisible(c, crudos)), [visible.campos, crudos]);
-  return { campos, crudos, estado, textos, opciones, error, cambiar, calcular, precargar };
+  const concepto = definicion?.concepto ?? null;
+  return { campos, crudos, estado, textos, opciones, error, cambiar, calcular, precargar, concepto, leible: definicion };
 }
 
 export function useCalculadora(definicion: DefinicionCalculadora, props: PropsCalculadora): CalculadoraControlada {

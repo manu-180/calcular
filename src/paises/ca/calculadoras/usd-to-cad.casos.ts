@@ -8,7 +8,7 @@ export default definirCasos(calculadora, [
       "tipo": "recalculado",
       "detalle": "Bank of Canada FXUSDCAD 2026-10-13 = 1.4222; 100 × 1.4222 = 142.22."
     },
-    "fecha": "2026-10-14",
+    "fecha": "2026-10-13",
     "entrada": {
       "direccion": "usd-cad",
       "monto": 100
@@ -25,7 +25,7 @@ export default definirCasos(calculadora, [
       "tipo": "recalculado",
       "detalle": "100 / 1.4222 = 70.31."
     },
-    "fecha": "2026-10-14",
+    "fecha": "2026-10-13",
     "entrada": {
       "direccion": "cad-usd",
       "monto": 100
@@ -40,7 +40,7 @@ export default definirCasos(calculadora, [
       "tipo": "recalculado",
       "detalle": "Amount must be above zero."
     },
-    "fecha": "2026-10-14",
+    "fecha": "2026-10-13",
     "entrada": {
       "direccion": "usd-cad",
       "monto": 0

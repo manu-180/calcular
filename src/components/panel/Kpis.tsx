@@ -1,7 +1,7 @@
 "use client";
 
 import type { KpiClave, PanelDatos, Rango } from "@/lib/panel/tipos";
-import { CONTRA } from "@/lib/panel/formato";
+import { contra } from "@/lib/panel/formato";
 import { Delta } from "./Delta";
 import { DetalleKpi } from "./DetalleKpi";
 import { Desplegable } from "./Desplegable";
@@ -38,7 +38,7 @@ export function Kpis({
       id="kpis"
       indice={2}
       titulo="Los números"
-      bajada={`Tocá una tarjeta para ver el detalle. Las flechas comparan con ${CONTRA[rango]}.`}
+      bajada={`Tocá una tarjeta para ver el detalle. Las flechas comparan con ${contra(rango)}.`}
     >
       <Bandeja>
         <ul className="grid grid-cols-2 gap-1.5 md:grid-cols-3">

@@ -1,3 +1,4 @@
+import { diasEntre, extremos, hoyAR } from "@/lib/panel/fechas";
 import type {
   Busqueda,
   Compra,
@@ -205,16 +206,17 @@ const EMAILS = [
 function buckets(rango: Rango, ahora: number) {
   const local = ahora + OFFSET_AR;
   const inicioHoy = Math.floor(local / DIA) * DIA - OFFSET_AR;
-  if (rango === "hoy") {
-    const horas = Math.floor((ahora - inicioHoy) / HORA) + 1;
+  const { inicio, fin } = extremos(rango, hoyAR(ahora));
+  const desde = inicioHoy - diasEntre(inicio, hoyAR(ahora)) * DIA;
+  if (inicio === fin) {
+    const horas = fin === hoyAR(ahora) ? Math.floor((ahora - inicioHoy) / HORA) + 1 : 24;
     return {
-      desde: inicioHoy,
+      desde,
       granularidad: "hora" as const,
-      ts: Array.from({ length: horas }, (_, i) => inicioHoy + i * HORA),
+      ts: Array.from({ length: horas }, (_, i) => desde + i * HORA),
     };
   }
-  const dias = rango === "7d" ? 7 : rango === "30d" ? 30 : 90;
-  const desde = inicioHoy - (dias - 1) * DIA;
+  const dias = diasEntre(inicio, fin) + 1;
   return {
     desde,
     granularidad: "dia" as const,

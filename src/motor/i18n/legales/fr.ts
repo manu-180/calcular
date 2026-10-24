@@ -57,19 +57,28 @@ export const fr: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Le pays de la visite",
           parrafos: [
             "Pour suggérer les calculateurs du bon pays, nous regardons de quel pays vient la visite. Notre hébergeur le déduit de l'adresse IP.",
-            "Nous ne conservons ni l'adresse IP ni le pays. L'information reste dans le navigateur le temps de la visite.",
+            "Nous ne conservons pas l'adresse IP. L'information reste dans le navigateur le temps de la visite.",
           ],
         },
         {
           titulo: "Ce que conserve le navigateur",
           parrafos: [
-            "Nous utilisons le stockage de session du navigateur pour retenir le pays choisi et savoir si le message qui le suggère a été fermé. Tout est effacé à la fermeture de l'onglet.",
+            "Le stockage de session du navigateur, effacé à la fermeture de l'onglet, retient le pays de la visite, si le message qui le suggère a été fermé et, quand la visite arrive par un lien partagé, le code de ce lien.",
+            "Le stockage local, conservé jusqu'à ce qu'il soit effacé depuis le navigateur, garde le pays choisi à la main, un nombre aléatoire qui sert à compter les visites et la version affichée d'un test de design, pour que le site reste le même d'une visite à l'autre. Rien de tout cela ne dit qui est la personne.",
             "Nous n'utilisons ni cookies publicitaires ni cookies de suivi.",
           ],
         },
         {
           titulo: "Hébergement",
           parrafos: ["Le site est hébergé par Vercel. Comme tout serveur, il enregistre des données techniques à chaque visite (adresse IP et navigateur) pour que le site fonctionne et reste sûr."],
+        },
+        {
+          titulo: "Comment nous comptons les visites",
+          parrafos: [
+            "Nous mesurons l'usage du site avec un outil maison : les pages ouvertes et leur utilisation, le site d'où vient la visite, le type d'appareil et le pays. Le nombre aléatoire conservé par le navigateur permet de distinguer une nouvelle visite d'un retour. Nous ne conservons ni l'adresse IP ni ce qui est saisi dans un calculateur.",
+            "Les liens partagés depuis le site portent un code aléatoire, différent à chaque partage, pour compter combien de visites chacun apporte. Ce code n'identifie personne.",
+            "Les montants saisis dans un calculateur ne quittent jamais le navigateur dans un lien.",
+          ],
         },
         {
           titulo: "Changements et questions",

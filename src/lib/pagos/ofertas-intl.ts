@@ -15,11 +15,12 @@ import { segunTrato } from "./textos/tipos";
 //   países que ya la escribieron;
 // - los informes de esta lista: una página imprimible que vuelve a correr la misma calculadora con
 //   los datos de la compra, así el número del informe es por construcción el de la web.
-// Sin familia a propósito: salario mínimo, tipo de cambio, conversores de unidad (el número es el
-// dato oficial del día y no hay nada que agregarle), sueldo neto (lo cubre la planilla) y las
-// calculadoras propias.
+// Toda calculadora publicada tiene informe: los conceptos sin familia temática (propio, tipo de
+// cambio, conversores de unidad) caen en "informe-calculo", el informe genérico con el resultado,
+// los supuestos y las fuentes, que sirve para cualquier calculadora porque vuelve a correr la misma.
+// check_ofertas_intl falla si una calculadora publicada queda sin oferta.
 
-export const SIN_FAMILIA: readonly Concepto[] = ["salario-minimo", "tipo-de-cambio", "conversor-unidad", "sueldo-neto", "propio"];
+export const SIN_FAMILIA: readonly Concepto[] = [];
 
 export type ClaveFamilia =
   | "liquidacion"
@@ -49,7 +50,8 @@ export type ClaveFamilia =
   | "kit-viaje"
   | "kit-hogar"
   | "kit-obra"
-  | "kit-facturacion";
+  | "kit-facturacion"
+  | "informe-calculo";
 
 // moneda: el primer monto obligatorio · tasa: el primer porcentaje · horas y plazo: solo los ids que
 // declara la familia. Nunca se elige por la etiqueta: cambia con el idioma.
@@ -80,7 +82,7 @@ export const FAMILIAS: readonly FamiliaInforme[] = [
   {
     clave: "pagos-laborales",
     slug: "informe-pagos-laborales",
-    conceptos: ["bono-semestral", "decimo-cuarto", "vacaciones", "horas-extra", "reparto-utilidades", "fondo-cesantia"],
+    conceptos: ["bono-semestral", "decimo-cuarto", "vacaciones", "horas-extra", "reparto-utilidades", "fondo-cesantia", "salario-minimo"],
     precioCentavos: USD(5),
     escenarios: { tipo: "horas", campos: ["horas", "horasExtra", "horasDiurnas", "extraDiurnas", "diurnas", "suplementarias"] },
   },
@@ -124,7 +126,7 @@ export const FAMILIAS: readonly FamiliaInforme[] = [
     escenarios: { tipo: "moneda" },
   },
   { clave: "kit-freelance", slug: "kit-freelance", conceptos: ["tarifa-freelance"], precioCentavos: USD(5), escenarios: { tipo: "moneda" } },
-  { clave: "plan-sueldo", slug: "plan-sueldo", conceptos: ["conversor-sueldo", "aumento-de-sueldo", "horas-trabajadas"], precioCentavos: USD(4), escenarios: { tipo: "moneda" } },
+  { clave: "plan-sueldo", slug: "plan-sueldo", conceptos: ["conversor-sueldo", "aumento-de-sueldo", "horas-trabajadas", "sueldo-neto"], precioCentavos: USD(4), escenarios: { tipo: "moneda" } },
   { clave: "kit-calculos", slug: "kit-calculos", conceptos: ["porcentaje", "variacion-porcentual", "regla-de-tres", "descuento"], precioCentavos: USD(3), escenarios: { tipo: "moneda" } },
   { clave: "kit-gastos-grupo", slug: "kit-gastos-grupo", conceptos: ["propina", "dividir-gastos"], precioCentavos: USD(3), escenarios: { tipo: "moneda" } },
   { clave: "kit-estudio", slug: "kit-estudio", conceptos: ["promedio"], precioCentavos: USD(3), escenarios: null },
@@ -136,6 +138,7 @@ export const FAMILIAS: readonly FamiliaInforme[] = [
   { clave: "kit-hogar", slug: "kit-hogar", conceptos: ["consumo-electrico"], precioCentavos: USD(3), escenarios: { tipo: "moneda" } },
   { clave: "kit-obra", slug: "kit-obra", conceptos: ["pintura", "metros-cuadrados", "ceramicos", "hormigon"], precioCentavos: USD(5), escenarios: null },
   { clave: "kit-facturacion", slug: "kit-facturacion", conceptos: ["iva"], precioCentavos: USD(4), escenarios: { tipo: "moneda" } },
+  { clave: "informe-calculo", slug: "informe-calculo", conceptos: ["propio", "tipo-de-cambio", "conversor-unidad"], precioCentavos: USD(4), escenarios: null },
 ];
 
 export const PRECIO_PLANILLA_CENTAVOS = USD(7);

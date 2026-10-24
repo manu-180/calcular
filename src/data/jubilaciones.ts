@@ -1,7 +1,7 @@
 // Haber mínimo jubilatorio garantizado (ANSES), mes a mes, bajo el régimen de movilidad MENSUAL.
 // GENERADO por scripts/gen_jubilaciones.ts — NO editar a mano.
 //   https://apis.datos.gob.ar/series/api/series/?ids=58.1_MP_0_M_24&format=json&limit=5000&start_date=2024-01-01
-// Descargado el 2026-10-15. Último período: octubre 2026 ($435748.51).
+// Descargado el 2026-10-23. Último período: octubre 2026 ($435748.51).
 //
 // EL MOTOR (Decreto 274/2024): la movilidad de cada mes es la variación del IPC del INDEC de DOS
 // MESES ANTES, redondeada a dos decimales en porcentaje. El generador reconstruye toda la serie con
@@ -83,6 +83,6 @@ export const HABER_MINIMO_FUENTE = {
   movilidad:
     "Decreto 274/2024: movilidad mensual por IPC (INDEC), con dos meses de rezago",
   movilidadUrl: "https://www.boletinoficial.gob.ar/detalleAviso/primera/305905/20240322",
-  consultadoEl: "2026-10-15",
+  consultadoEl: "2026-10-23",
   ultimoPeriodo: "2026-10",
 };
