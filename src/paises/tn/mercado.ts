@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["TND"],
   zonaHoraria: "Africa/Tunis",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 3, modo: "mitad-arriba" },
   escala: 3,
 };
