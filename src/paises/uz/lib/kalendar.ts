@@ -42,6 +42,33 @@ export function yakshanbami(fecha: string): boolean {
   return new Date(ms(fecha)).getUTCDay() === 0;
 }
 
+export interface TatilDavri {
+  tugash: FechaISO;
+  yakshanba: number;
+  bayram: number;
+  haqTolanadigan: number;
+}
+
+// Mehnat kodeksi, 221 y 233: la licencia se cuenta en días corridos sin los feriados (que la alargan) y
+// el domingo no se paga.
+export function tatilDavri(dan: string, kunlar: number): TatilDavri {
+  let sanaldi = 0;
+  let yakshanba = 0;
+  let bayram = 0;
+  let i = 0;
+  let f = dan as FechaISO;
+  while (sanaldi < kunlar) {
+    f = kunQoshish(dan, i++);
+    if (belgilanganBayrammi(f)) {
+      bayram++;
+      continue;
+    }
+    sanaldi++;
+    if (yakshanbami(f)) yakshanba++;
+  }
+  return { tugash: f, yakshanba, bayram, haqTolanadigan: kunlar - yakshanba };
+}
+
 export interface DavrKunlari {
   kalendar: number;
   yakshanba: number;
