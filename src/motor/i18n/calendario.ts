@@ -1,5 +1,6 @@
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
+import { formaAr, pluralAr } from "./arabe";
 import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
@@ -739,7 +740,83 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── ar ─────────────────────────────
+
+// Árabe estándar moderno, impersonal como el resto del calendario (ADR 0002, D10). Los días van con
+// pluralAr; detrás de «بعد» y «قبل» el dual va en genitivo (بعد يومين).
+const gAr = GRAMATICA.ar;
+const TRAS_DIAS_AR = { uno: "يوم واحد", dos: "يومين", pocos: "{n} أيام", muchos: "{n} يومًا", otros: "{n} يوم" };
+const MAS_FECHAS_AR = { uno: "وموعد آخر", dos: "وموعدان آخران", pocos: "و{n} مواعيد أخرى", muchos: "و{n} موعدًا آخر", otros: "و{n} موعد آخر" };
+const ar: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "تقويم الرواتب والضرائب",
+    seo: {
+      titulo: (pais, anios) => [`تقويم الرواتب والضرائب ${gAr.en(pais)} ${anios}: أهم المواعيد`, `تقويم الرواتب والضرائب ${gAr.en(pais)} ${anios}`, `تقويم الرواتب ${gAr.en(pais)}`],
+      descripcion: (pais, proximas) => `المواعيد التي تغيّر الرواتب ${gAr.en(pais)}، من مصادر رسمية: ${proximas}. ولكل موعد حاسبته.`,
+      descripcionSin: (pais) => `المواعيد التي تغيّر الرواتب ${gAr.en(pais)}، من مصادر رسمية، ولكل موعد حاسبته. أضفها إلى تقويم الهاتف.`,
+    },
+    ceja: (anios) => `تقويم ${anios}`,
+    h1: (pais) => `تقويم الرواتب والضرائب ${gAr.en(pais)}`,
+    acento: "المواعيد التي تحرّك الراتب",
+    bajada: "كل موعد مأخوذ من مصدر رسمي ومرتبط بالحاسبة التي يؤثر فيها. وتتحدّث الصفحة وحدها عند نشر رقم جديد.",
+    proxima: "الموعد القادم",
+    cuenta: {
+      hoy: "اليوم",
+      manana: "غدًا",
+      ayer: "أمس",
+      en: (n) => `بعد ${pluralAr(n, TRAS_DIAS_AR)}`,
+      hace: (n) => `قبل ${pluralAr(n, TRAS_DIAS_AR)}`,
+      // La unidad debajo de la cifra grande: el número ya está a la vista, así que el 2 lleva el plural y no el dual.
+      dias: (n) => formaAr(n, { uno: "يوم", dos: "أيام", pocos: "أيام", muchos: "يومًا", otros: "يوم" }),
+    },
+    queViene: "القادم",
+    yaRige: "ساري المفعول",
+    mesPorMes: "السنة شهرًا بشهر",
+    sinFechas: "لا تغييرات معلنة",
+    filtro: "التصفية حسب الموضوع",
+    todo: "الكل",
+    tipos: { pago: "المدفوعات", "salario-minimo": "الحد الأدنى للأجور", impuestos: "الضرائب", aportes: "الاشتراكات والمعاشات", laboral: "قواعد العمل", indices: "القيم المرجعية" },
+    pasa: (antes, despues) => `من ${antes} إلى ${despues}`,
+    queda: (valor) => `يُحدَّد عند ${valor}`,
+    cambian: "تتغيّر الأرقام",
+    zonas: (lista) => `في ${lista}`,
+    limite: "آخر موعد",
+    agregar: "إضافة إلى تقويمي",
+    descargar: "Apple وOutlook وغيرها (ملف ics)",
+    google: "تقويم Google",
+    calcular: "احسب",
+    tambien: "متاح أيضًا في",
+    fuente: (organismo, fecha) => `المصدر: ${organismo}. تمت المراجعة في ${fecha}.`,
+    verificado: (fecha) => `تمت المراجعة في ${fecha}`,
+    suscribir: {
+      titulo: "التقويم كاملًا ومحدّثًا دائمًا",
+      texto: "اشتراك واحد يكفي، فتظهر المواعيد الجديدة وحدها في تقويم الهاتف أو الحاسوب.",
+      boton: "الاشتراك في التقويم",
+      copiar: "نسخ الرابط",
+      copiado: "تم نسخ الرابط",
+    },
+    fuentes: {
+      titulo: "مصدر كل موعد",
+      texto: "لا يدخل إلا ما حدّدته قاعدة قانونية أو رقم نشرته الجهة الرسمية. وما لم يُنشر بعد لا يظهر.",
+    },
+    vacio: "لا مواعيد في هذا الموضوع خلال الأشهر الاثني عشر القادمة.",
+    destacado: {
+      ceja: "تقويم الرواتب",
+      titulo: "المواعيد التي تحرّك الرواتب هذه السنة",
+      ir: "عرض التقويم",
+      proxima: (titulo, fecha) => `الموعد القادم: ${titulo}، ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `تقويم الرواتب والضرائب ${gAr.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `مواعيد الرواتب والضرائب ${gAr.en(pais)}، من مصادر رسمية.`,
+      calculadora: "الحاسبة",
+      fuente: "المصدر",
+    },
+    og: { proxima: "الموعد القادم", mas: (n) => `${pluralAr(n, MAS_FECHAS_AR)} هذه السنة` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

@@ -150,6 +150,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  // Árabe estándar moderno (ADR 0002, D10), impersonal como los demás.
+  ar: {
+    base: {
+      titulo: "هل تنوي الانتقال إلى الخارج أو تلقّي أموال من دولة أخرى؟",
+      etiqueta: "روابط مموّلة",
+      socios: {
+        wise: "حساب متعدد العملات لإرسال الأموال واستلامها بين الدول بسعر الصرف المتوسط في السوق، مع رسوم معروضة مسبقًا.",
+        deel: "عقود ومدفوعات لمن يعمل من دولة لصالح شركة في دولة أخرى.",
+      },
+      nota: "إذا فُتح حساب من هذه الروابط، قد يحصل الموقع على عمولة. ولا يدفع من يسجّل شيئًا إضافيًا مقابل ذلك.",
+      nuevaPestana: "يُفتح في علامة تبويب جديدة",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

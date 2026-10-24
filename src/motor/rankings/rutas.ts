@@ -15,13 +15,14 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   ja: "kunibetsu-ranking",
   ko: "gukgabyeol-sunwi",
   zh: "guojia-paiming",
+  ar: "tartib-alduwal",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
 export type IdRanking = (typeof IDS_RANKING)[number];
 
-// Slug de cada ranking dentro del índice (/<m>/<índice>/<ranking>). ja, ko y zh van con el slug en
-// inglés, como las universales (ADR 0002, D8). Ninguno puede ser «og»: esa carpeta es la imagen.
+// Slug de cada ranking dentro del índice (/<m>/<índice>/<ranking>). ja, ko, zh y ar van con el slug en
+// inglés, como las universales (ADR 0002, D8 y D10). Ninguno puede ser «og»: esa carpeta es la imagen.
 export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   es: { rinde: "donde-rinde-mas-el-sueldo", libertad: "dia-de-libertad-tributaria", aumento: "cuanto-queda-de-un-aumento" },
   pt: { rinde: "onde-o-salario-rende-mais", libertad: "dia-da-liberdade-de-impostos", aumento: "quanto-fica-de-um-aumento" },
@@ -33,6 +34,7 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   ja: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   ko: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   zh: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
+  ar: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

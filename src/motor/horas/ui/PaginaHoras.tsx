@@ -1,3 +1,4 @@
+import { etiquetaIdioma } from "../../i18n/direccion";
 import { formatearFecha } from "../../formato";
 import { GRAMATICA } from "../../i18n/gramatica";
 import { rellenarHoras, textosHoras, type TextosHoras } from "../../i18n/horas";
@@ -120,7 +121,7 @@ export function PaginaHoras({ ctx, indice, producto, esIndice, pais, inicial, pr
     name: t.nombre,
     description: descripcion,
     url,
-    inLanguage: m.locale,
+    inLanguage: etiquetaIdioma(m.locale),
     ...(lecturas.length ? { dateModified: lecturas.at(-1), temporalCoverage: `${lecturas[0]}/${lecturas.at(-1)}` } : {}),
     isAccessibleForFree: true,
     creator: { "@type": "Organization", name: "CalcularYa", url: `${origenPublicoIntl()}/` },

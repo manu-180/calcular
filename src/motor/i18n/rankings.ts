@@ -1,6 +1,7 @@
 import type { IdNivel } from "../rankings/calculo";
 import type { IdRanking } from "../rankings/rutas";
 import type { Idioma, Trato } from "../tipos";
+import { pluralAr } from "./arabe";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Rankings de países. Todo el texto es impersonal (sin tú, vos, usted, du, Sie, tu, vous, je, u):
@@ -1364,7 +1365,129 @@ const zhHans: TextosRankings = {
 
 const zh: Diccionario<TextosRankings> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── ar ─────────────────────────────
+
+// Árabe estándar moderno, impersonal (ADR 0002, D10). Las cuentas van con pluralAr y siempre detrás de
+// una preposición, así el dual queda en genitivo (في دولتين، مع دولتين أخريين). La posición va en
+// aposición, como en los otros idiomas: «مصر، المرتبة 27 من 41».
+const PAISES_EN_AR = { uno: "دولة واحدة", dos: "دولتين", pocos: "{n} دول", muchos: "{n} دولة", otros: "{n} دولة" };
+const OTROS_PAISES_AR = { uno: "دولة أخرى", dos: "دولتين أخريين", pocos: "{n} دول أخرى", muchos: "{n} دولة أخرى", otros: "{n} دولة أخرى" };
+const PUESTOS_AR = { uno: "مرتبة واحدة", dos: "مرتبتين", pocos: "{n} مراتب", muchos: "{n} مرتبة", otros: "{n} مرتبة" };
+
+const ar: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "ترتيب الدول",
+    seo: {
+      titulo: ["ترتيب الدول في الرواتب والضرائب", "ترتيب الدول"],
+      descripcion: (n) => `أين يكفي الراتب نفسه أكثر، ويوم التحرر الضريبي، وكم يبقى من الزيادة، في ${pluralAr(n, PAISES_EN_AR)}. بيانات رسمية تتحدّث يوميًا.`,
+    },
+    ceja: "بيانات مفتوحة",
+    h1: "الرواتب والضرائب، دولة بدولة",
+    bajada: (n) => `مقارنة بين ${pluralAr(n, PAISES_EN_AR)} بالقدرة الشرائية نفسها، وكل دولة محسوبة بحاسبتها الرسمية. ويتحدّث الترتيب وحده كل يوم.`,
+    actualizado: (f) => `آخر تحديث ${f}`,
+    ver: "عرض الترتيب",
+    niveles: { titulo: "الراتب المرجعي", nombres: { bajo: "راتب منخفض", medio: "راتب متوسط", alto: "راتب مرتفع" }, anual: (m) => `${m} سنويًا` },
+    tramos: { titulo: "حجم الزيادة", nombre: (a, b) => `من ${a} إلى ${b}` },
+    referencia: {
+      nivel: (m) => `راتب إجمالي قدره ${m} دولار دولي سنويًا`,
+      tramo: (a, b) => `زيادة من ${a} إلى ${b} دولار دولي إجمالي سنويًا`,
+    },
+    posicion: (pais, p, total) => `${pais}، المرتبة ${p} من ${total}`,
+    de: (t) => `من ${t}`,
+    empate: (o) => `بالتساوي مع ${pluralAr(o, OTROS_PAISES_AR)}`,
+    fuera: (pais) => `لا يشمل هذا الترتيب ${pais} بعد، إذ لا تتوفر حتى الآن حاسبة صافي راتب تناسب المقارنة.`,
+    lider: "في صدارة الترتيب",
+    global: (n) => `${pluralAr(n, { uno: "دولة واحدة", dos: "دولتان", pocos: "{n} دول", muchos: "{n} دولة", otros: "{n} دولة" })}، من الأولى إلى الأخيرة`,
+    valores: {
+      porMes: (m) => `${m} شهريًا`,
+      ningunDia: "ولا يوم واحد",
+      deCada: (n) => `${n} من كل 100`,
+      carga: (pct) => `${pct} ضريبة دخل واشتراكات`,
+      cargaAumento: (pct) => `يذهب ${pct} من الزيادة إلى الضرائب والاشتراكات`,
+    },
+    cambio: {
+      titulo: (mes) => `التغيّر منذ ${mes}`,
+      sube: (n) => `تقدّم ${pluralAr(n, PUESTOS_AR)}`,
+      baja: (n) => `تراجع ${pluralAr(n, PUESTOS_AR)}`,
+      igual: "المرتبة نفسها",
+      nuevo: "جديد في الترتيب",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}، على أساس ${ref}`,
+      puesto: "المرتبة",
+      pais: "الدولة",
+      edicion: "هذه النسخة",
+      unidad: "بالدولار الدولي",
+    },
+    kit: {
+      titulo: "للصحافة",
+      bajada: "العبارة والرسم البياني ورابط هذا الترتيب، جاهزة للنشر.",
+      compartir: "مشاركة",
+      descargar: "تنزيل الرسم البياني",
+      copiar: "نسخ الاقتباس",
+      copiado: "تم نسخ الاقتباس",
+      enlace: "تم نسخ الرابط",
+      compartido: "تمت المشاركة",
+      error: "تعذّر النسخ. النص موجود أعلاه لنسخه يدويًا.",
+      cita: (frase, ranking, ref, fecha) => `${frase} في «${ranking}» (${ref}). المصدر: CalcularYa، بيانات حتى ${fecha}.`,
+      texto: (frase, ranking) => `${frase} في «${ranking}».`,
+      alt: (ranking) => `رسم بياني لترتيب «${ranking}»`,
+    },
+    metodo: {
+      titulo: "طريقة الإعداد",
+      bajada: "كل دولة تمر بحاسبة صافي الراتب الرسمية الخاصة بها، بقواعد اليوم. ثم تُقارَن بالقدرة الشرائية نفسها.",
+      niveles: (b, m, a) => `الرواتب المرجعية: ${b} و${m} و${a} دولار دولي إجمالي سنويًا.`,
+      empates: "الدولتان اللتان لهما القيمة نفسها في الجدول تتشاركان المرتبة، وتُقفز المرتبة التالية (1، 2، 2، 4).",
+      historial: "يُقاس تغيّر المرتبة مقارنة بنسخة الترتيب المحفوظة كل شهر. ومن دون نسخة الشهر الماضي لا يظهر.",
+      actualizacion: "يُعاد بناء الجدول كل يوم ببيانات كل دولة السارية. وتنضم الدولة الجديدة بمجرد نشر حاسبتها.",
+      ver: "عرض المنهجية كاملة",
+    },
+    datos: {
+      titulo: "بيانات مفتوحة",
+      bajada: "الأرقام التي يقوم عليها هذا الترتيب، دولة بدولة، بصيغتي JSON وCSV. تتحدّث كل يوم.",
+      json: "البيانات بصيغة JSON",
+      csv: "البيانات بصيغة CSV",
+      licencia: "ترخيص CC BY 4.0: الاستخدام والنسخ والنشر متاحة مع نسب المصدر إلى CalcularYa ووضع رابط لهذه الصفحة.",
+      atribucion: "صيغة الاقتباس المقترحة",
+    },
+    mundo: { titulo: "براتب محدد", texto: (n) => `لحساب راتب بعينه ومعرفة تاريخ كل دولة، توجد صفحة «${n}».`, ir: "احسب الآن" },
+    otros: "ترتيبات أخرى",
+    rankings: {
+      rinde: {
+        titulo: "أين يكفي الراتب نفسه أكثر",
+        corto: "الراتب الذي يكفي أكثر",
+        seo: ["أين يكفي الراتب نفسه أكثر: ترتيب الدول", "أين يكفي الراتب نفسه أكثر"],
+        descripcion: (n) => `الراتب نفسه، بالقدرة الشرائية نفسها، في ${pluralAr(n, PAISES_EN_AR)}: ما يبقى بعد قواعد الضرائب في كل دولة. يتحدّث يوميًا.`,
+        bajada: "الراتب الإجمالي نفسه، بالقدرة الشرائية نفسها، يمر بقواعد كل دولة. وفي الصدارة، حيث يبقى أكثر في اليد.",
+        metrica: "الصافي شهريًا",
+        carga: "الضرائب والاشتراكات",
+        como: "صافي الراتب الشهري هو المتوسط على 12 شهرًا، بالدولار الدولي.",
+      },
+      libertad: {
+        titulo: "يوم التحرر الضريبي حسب الدولة",
+        corto: "يوم التحرر الضريبي",
+        seo: ["يوم التحرر الضريبي حسب الدولة: الترتيب", "يوم التحرر الضريبي حسب الدولة"],
+        descripcion: (n) => `اليوم من السنة الذي تُسدَّد فيه ضريبة الدخل والاشتراكات، بالراتب نفسه في ${pluralAr(n, PAISES_EN_AR)}. يتحدّث يوميًا.`,
+        bajada: "اليوم من السنة الذي تُسدَّد فيه ضريبة الدخل والاشتراكات، بالراتب نفسه في كل دولة. وفي الصدارة، حيث يأتي أبكر.",
+        metrica: "العمل لصالح الدولة حتى",
+        carga: "الضرائب والاشتراكات",
+        como: "التاريخ يوزّع الضريبة على السنة بدءًا من 1 يناير: مع عبء ضريبي قدره 30%، تذهب 30% من السنة في العمل لصالح الدولة.",
+      },
+      aumento: {
+        titulo: "كم يبقى من زيادة الراتب",
+        corto: "ما يبقى من الزيادة",
+        seo: ["كم يبقى من زيادة الراتب، حسب الدولة", "كم يبقى من زيادة الراتب"],
+        descripcion: (n) => `من كل 100 تُضاف إلى الراتب الإجمالي، كم يبقى بعد ضريبة الدخل والاشتراكات، في ${pluralAr(n, PAISES_EN_AR)}. يتحدّث يوميًا.`,
+        bajada: "من كل 100 تُضاف إلى الراتب الإجمالي، كم يصل إلى الجيب بعد ضريبة الدخل والاشتراكات. وفي الصدارة، حيث يبقى أكثر.",
+        metrica: "ما يبقى من كل 100",
+        carga: "المعدل الحدّي",
+        como: "هذا هو المعدل الحدّي بين راتبين: حصة الزيادة التي تذهب إلى الضرائب والاشتراكات.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

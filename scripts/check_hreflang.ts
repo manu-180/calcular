@@ -160,7 +160,7 @@ async function main() {
       ...rutasRk.IDS_RANKING.map((id) => ({ concepto: `ranking-${id}`, idiomas: rk.hreflangRanking(registro, modo, id), url: (m: (typeof mercados)[number]) => urlsRk.urlRanking(m, id) })),
     ];
     for (const c of clusteresRk) {
-      const paginasRk: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: c.url(m), locale: m.locale, concepto: c.concepto, idiomas: c.idiomas }));
+      const paginasRk: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: c.url(m), locale: etiquetaIdioma(m.locale), concepto: c.concepto, idiomas: c.idiomas }));
       for (const p of paginasRk) {
         if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «${c.concepto}» no está en el sitemap del mercado`);
         const sitemap = enSitemap.get(p.url);
@@ -182,7 +182,7 @@ async function main() {
         continue;
       }
       const idiomasHoras = horasSeo.hreflangHoras(registro, modo, producto);
-      const horas: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: horasSeo.urlHoras(m, producto), locale: m.locale, concepto: `horas:${producto ?? "indice"}`, idiomas: idiomasHoras }));
+      const horas: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: horasSeo.urlHoras(m, producto), locale: etiquetaIdioma(m.locale), concepto: `horas:${producto ?? "indice"}`, idiomas: idiomasHoras }));
       for (const p of horas) {
         if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «horas de trabajo» no está en el sitemap del mercado`);
         const sitemap = enSitemap.get(p.url);
@@ -204,7 +204,7 @@ async function main() {
       if (enSitemap.has(url)) fallas.push(`[${modo}] ${url}: clúster chico del calendario repetido en el sitemap`);
       const idiomas = cal.hreflangCalendario(registro, m.codigo, modo);
       if (registro.ediciones(m.codigo, modo).filter((e) => cal.calendarioPublicado(registro, e, modo)).length > 1 && !idiomas) fallas.push(`[${modo}] ${url}: país con varias ediciones y el calendario sin hreflang`);
-      porPais.set(m.pais, [...(porPais.get(m.pais) ?? []), { url, locale: m.locale, concepto: `calendario-${m.pais}`, idiomas }]);
+      porPais.set(m.pais, [...(porPais.get(m.pais) ?? []), { url, locale: etiquetaIdioma(m.locale), concepto: `calendario-${m.pais}`, idiomas }]);
     }
     for (const grupo of porPais.values()) {
       const xd = grupo.find((p) => p.idiomas)?.idiomas?.["x-default"];

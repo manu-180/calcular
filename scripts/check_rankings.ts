@@ -105,7 +105,9 @@ for (const idioma of IDIOMAS) {
     const f = t.posicion("Zetaland", 27, 41);
     if (!numeros(f).includes(27) || !numeros(f).includes(41) || !f.includes("Zetaland")) fallas.push(`${locale ?? idioma}: posicion() da «${f}»`);
     if (!numeros(t.de(41)).includes(41)) fallas.push(`${locale ?? idioma}: de() no dice el total`);
-    if (!numeros(t.empate(2)).includes(2)) fallas.push(`${locale ?? idioma}: empate() no dice cuántos`);
+    // El dual árabe dice el 2 con la palabra («مع دولتين أخريين»): ahí se prueba con 3.
+    const otros = idioma === "ar" ? 3 : 2;
+    if (!numeros(t.empate(otros)).includes(otros)) fallas.push(`${locale ?? idioma}: empate() no dice cuántos`);
   }
   if (!DICCIONARIOS_RANKINGS[idioma]) fallas.push(`${idioma}: falta el diccionario de rankings`);
 }
