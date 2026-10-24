@@ -55,6 +55,9 @@ igual("porcentaje es-CO", sinNbsp(formatearPorcentaje(1.37, "es-CO")), "1,37%");
 igual("moneda es-PA con símbolo local", sinNbsp(formatearMoneda(1250.5, "es-PA", "USD", undefined, "B/.")), "B/. 1,250.50");
 igual("fecha es-MX", formatearFecha("2026-12-20", "es-MX"), "20 de diciembre de 2026");
 igual("fecha ar-SA gregoriana con dígitos latinos", formatearFecha("2026-12-20", "ar-SA-u-ca-gregory-nu-latn"), "20 ديسمبر 2026");
+// En rtl el «$» de «US$» se iría al otro lado de las letras: lleva una LRM detrás (formatearMoneda).
+igual("moneda USD en ar-EG con LRM tras el símbolo", formatearMoneda(2849, "ar-EG-u-ca-gregory-nu-latn", "USD").endsWith("US$\u200e"), true);
+igual("moneda EGP en ar-EG sin LRM", formatearMoneda(2849, "ar-EG-u-ca-gregory-nu-latn", "EGP").includes("\u200e"), false);
 igual("número ar-EG con dígitos latinos", formatearNumero(1234567.5, "ar-EG-u-ca-gregory-nu-latn"), "1,234,567.5");
 igual("dual árabe", formatearValorUnidad(2, "dias", "ar-EG-u-ca-gregory-nu-latn"), "يومان");
 igual("plural árabe de 3 a 10", formatearValorUnidad(3, "meses", "ar-EG-u-ca-gregory-nu-latn"), "3 أشهر");

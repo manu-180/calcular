@@ -2,6 +2,7 @@ import { useContext, useId, useMemo, type CSSProperties, type FormEvent } from "
 import type { CalculadoraControlada } from "../cliente";
 import { ContextoEmbed } from "../embed/proveedor";
 import { textosCalculadora } from "../i18n/calculadora";
+import { simboloLegible } from "../i18n/direccion";
 import type { AvisoResuelto, Campo, ContextoSerializado, DefinicionCalculadora, Moneda } from "../tipos";
 import { IconoExterno } from "./Iconos";
 import { OfertaResultado } from "./Oferta";
@@ -21,7 +22,7 @@ function simboloDe(contexto: ContextoSerializado, moneda: Moneda): string {
   const propio = contexto.simbolos?.[moneda];
   if (propio) return propio;
   const partes = new Intl.NumberFormat(contexto.locale, { style: "currency", currency: moneda }).formatToParts(0);
-  return partes.find((p) => p.type === "currency")?.value ?? moneda;
+  return simboloLegible(partes.find((p) => p.type === "currency")?.value ?? moneda, contexto.locale);
 }
 
 export function AvisoCalculadora({ aviso, etiqueta, fuente }: { aviso: AvisoResuelto; etiqueta: string; fuente: string }) {

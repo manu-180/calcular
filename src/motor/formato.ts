@@ -1,4 +1,5 @@
 import { formaAr } from "./i18n/arabe";
+import { simboloLegible } from "./i18n/direccion";
 import { idiomaDeLocale } from "./i18n/resolver";
 import { nombresUnidad, UNIDAD_PEGADA } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
@@ -48,10 +49,10 @@ export function formatearMoneda(n: number, locale: string, moneda: Moneda, decim
     minimumFractionDigits: d,
     maximumFractionDigits: d,
   });
-  if (!simbolo) return f.format(n);
+  if (!simbolo && !/^ar(?:-|$)/i.test(locale)) return f.format(n);
   return f
     .formatToParts(n)
-    .map((p) => (p.type === "currency" ? simbolo : p.value))
+    .map((p) => (p.type === "currency" ? simboloLegible(simbolo ?? p.value, locale) : p.value))
     .join("");
 }
 
