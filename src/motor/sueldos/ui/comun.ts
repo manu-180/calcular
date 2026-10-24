@@ -1,3 +1,4 @@
+import { valorPara } from "../../i18n/bengali";
 import { GRAMATICA } from "../../i18n/gramatica";
 import { ocupacionEnFrase } from "../../i18n/sueldos";
 import { RUTA_MUNDO_AR, SLUG_MUNDO } from "../../mundo/rutas";
@@ -5,7 +6,8 @@ import { IDIOMAS, type Idioma } from "../../tipos";
 import { CLAVE_APORTES } from "../rutas";
 
 export function rellenar(plantilla: string, valores: Readonly<Record<string, string | number>>): string {
-  return plantilla.replace(/\{(\w+)\}/g, (todo, clave: string) => (clave in valores ? String(valores[clave]) : todo));
+  const valor = valorPara(plantilla);
+  return plantilla.replace(/\{(\w+)\}/g, (todo, clave: string) => (clave in valores ? valor(valores[clave]) : todo));
 }
 
 export function idiomaDeLocale(locale: string): Idioma {
