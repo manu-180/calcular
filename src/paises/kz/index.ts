@@ -22,6 +22,16 @@ import otpusknye from "./calculadoras/otpusknye";
 import contenidoOtpusknye from "./contenido/otpusknye";
 import raschetPriUvolnenii from "./calculadoras/raschet-pri-uvolnenii";
 import contenidoRaschetPriUvolnenii from "./contenido/raschet-pri-uvolnenii";
+import sverkhurochnye from "./calculadoras/sverkhurochnye";
+import contenidoSverkhurochnye from "./contenido/sverkhurochnye";
+import bolnichnye from "./calculadoras/bolnichnye";
+import contenidoBolnichnye from "./contenido/bolnichnye";
+import dekretnye from "./calculadoras/dekretnye";
+import contenidoDekretnye from "./contenido/dekretnye";
+import posobiePoUkhoduZaRebenkom from "./calculadoras/posobie-po-ukhodu-za-rebenkom";
+import contenidoPosobiePoUkhoduZaRebenkom from "./contenido/posobie-po-ukhodu-za-rebenkom";
+import posobieNaRozhdenie from "./calculadoras/posobie-na-rozhdenie";
+import contenidoPosobieNaRozhdenie from "./contenido/posobie-na-rozhdenie";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -45,6 +55,11 @@ export default definirPais({
     { definicion: vznosyIpZaSebya, contenido: contenidoVznosyIpZaSebya, cliente: () => import("./calculadoras/vznosy-ip-za-sebya.cliente") },
     { definicion: otpusknye, contenido: contenidoOtpusknye, cliente: () => import("./calculadoras/otpusknye.cliente") },
     { definicion: raschetPriUvolnenii, contenido: contenidoRaschetPriUvolnenii, cliente: () => import("./calculadoras/raschet-pri-uvolnenii.cliente") },
+    { definicion: sverkhurochnye, contenido: contenidoSverkhurochnye, cliente: () => import("./calculadoras/sverkhurochnye.cliente") },
+    { definicion: bolnichnye, contenido: contenidoBolnichnye, cliente: () => import("./calculadoras/bolnichnye.cliente") },
+    { definicion: dekretnye, contenido: contenidoDekretnye, cliente: () => import("./calculadoras/dekretnye.cliente") },
+    { definicion: posobiePoUkhoduZaRebenkom, contenido: contenidoPosobiePoUkhoduZaRebenkom, cliente: () => import("./calculadoras/posobie-po-ukhodu-za-rebenkom.cliente") },
+    { definicion: posobieNaRozhdenie, contenido: contenidoPosobieNaRozhdenie, cliente: () => import("./calculadoras/posobie-na-rozhdenie.cliente") },
   ],
   universales: "todas",
   novedades,
