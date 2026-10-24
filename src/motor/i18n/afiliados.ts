@@ -150,6 +150,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  // Indonesio (ADR 0002, D11): impersonal como los demás, frases cortas.
+  id: {
+    base: {
+      titulo: "Berencana pindah ke luar negeri atau menerima pembayaran dari negara lain?",
+      etiqueta: "Tautan bersponsor",
+      socios: {
+        wise: "Rekening multimata uang untuk mengirim dan menerima uang antarnegara dengan kurs tengah pasar. Biayanya terlihat sebelum transaksi.",
+        deel: "Kontrak dan pembayaran bagi orang yang bekerja dari satu negara untuk perusahaan di negara lain.",
+      },
+      nota: "Jika rekening dibuka lewat tautan ini, situs ini bisa mendapat komisi. Biaya untuk yang mendaftar tidak bertambah.",
+      nuevaPestana: "terbuka di tab baru",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

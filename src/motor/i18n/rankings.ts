@@ -1364,7 +1364,124 @@ const zhHans: TextosRankings = {
 
 const zh: Diccionario<TextosRankings> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── id ─────────────────────────────
+
+// Indonesio (ADR 0002, D11): impersonal, como el resto de los rankings. La posición va en aposición
+// («Indonesia, peringkat 27 dari 41») y tras un número no hay plural («3 negara»).
+const idn: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Peringkat negara",
+    seo: {
+      titulo: ["Peringkat gaji dan pajak menurut negara", "Peringkat negara"],
+      descripcion: (n) => `Di mana gaji yang sama paling bernilai, Hari Bebas Pajak, dan sisa kenaikan gaji di ${n} negara. Data resmi, diperbarui setiap hari.`,
+    },
+    ceja: "Data terbuka",
+    h1: "Gaji dan pajak, negara demi negara",
+    bajada: (n) => `${n} negara dibandingkan dengan daya beli yang sama, masing-masing lewat kalkulator resminya sendiri. Peringkat diperbarui sendiri setiap hari.`,
+    actualizado: (f) => `Diperbarui pada ${f}`,
+    ver: "Lihat peringkat",
+    niveles: { titulo: "Gaji acuan", nombres: { bajo: "Gaji rendah", medio: "Gaji menengah", alto: "Gaji tinggi" }, anual: (m) => `${m} per tahun` },
+    tramos: { titulo: "Besar kenaikan", nombre: (a, b) => `Dari ${a} ke ${b}` },
+    referencia: {
+      nivel: (m) => `gaji kotor ${m} dolar internasional per tahun`,
+      tramo: (a, b) => `kenaikan dari ${a} ke ${b} dolar internasional kotor per tahun`,
+    },
+    posicion: (pais, p, total) => `${pais}, peringkat ${p} dari ${total}`,
+    de: (t) => `dari ${t}`,
+    empate: (o) => (o === 1 ? "sama dengan satu negara lain" : `sama dengan ${o} negara lain`),
+    fuera: (pais) => `${pais} belum masuk peringkat ini: masih perlu kalkulator gaji bersih yang sesuai dengan perbandingannya.`,
+    lider: "Teratas di peringkat",
+    global: (n) => `${n} negara, dari yang pertama sampai terakhir`,
+    valores: {
+      porMes: (m) => `${m} per bulan`,
+      ningunDia: "Tidak sehari pun",
+      deCada: (n) => `${n} dari setiap 100`,
+      carga: (pct) => `${pct} untuk pajak penghasilan dan iuran`,
+      cargaAumento: (pct) => `${pct} dari kenaikan untuk pajak dan iuran`,
+    },
+    cambio: {
+      titulo: (mes) => `Perubahan sejak ${mes}`,
+      sube: (n) => `Naik ${n} peringkat`,
+      baja: (n) => `Turun ${n} peringkat`,
+      igual: "Peringkat sama",
+      nuevo: "Baru di peringkat",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, dengan ${ref}`,
+      puesto: "Peringkat",
+      pais: "Negara",
+      edicion: "Edisi ini",
+      unidad: "Dalam dolar internasional",
+    },
+    kit: {
+      titulo: "Untuk media",
+      bajada: "Kalimat, grafik, dan tautan peringkat ini, siap diterbitkan.",
+      compartir: "Bagikan",
+      descargar: "Unduh grafik",
+      copiar: "Salin kutipan",
+      copiado: "Kutipan disalin",
+      enlace: "Tautan disalin",
+      compartido: "Sudah dibagikan",
+      error: "Gagal menyalin. Teksnya ada di atas untuk disalin manual.",
+      cita: (frase, ranking, ref, fecha) => `${frase} dalam “${ranking}” (${ref}). Sumber: CalcularYa, data per ${fecha}.`,
+      texto: (frase, ranking) => `${frase} dalam “${ranking}”.`,
+      alt: (ranking) => `Grafik peringkat “${ranking}”`,
+    },
+    metodo: {
+      titulo: "Cara menyusunnya",
+      bajada: "Setiap negara dihitung dengan kalkulator gaji bersih resminya, memakai aturan hari ini. Lalu semua dibandingkan dengan daya beli yang sama.",
+      niveles: (b, m, a) => `Gaji acuan: ${b}, ${m}, dan ${a} dolar internasional kotor per tahun.`,
+      empates: "Dua negara dengan nilai yang sama di tabel berbagi peringkat, dan peringkat berikutnya dilewati (1, 2, 2, 4).",
+      historial: "Perubahan peringkat diukur terhadap rekaman peringkat yang disimpan setiap bulan. Tanpa rekaman bulan lalu, perubahan tidak ditampilkan.",
+      actualizacion: "Tabel dihitung ulang setiap hari dengan data terbaru tiap negara. Negara baru masuk begitu kalkulatornya terbit.",
+      ver: "Lihat metodologi lengkap",
+    },
+    datos: {
+      titulo: "Data terbuka",
+      bajada: "Angka di balik peringkat ini, negara demi negara, dalam format JSON dan CSV. Diperbarui setiap hari.",
+      json: "Data JSON",
+      csv: "Data CSV",
+      licencia: "Lisensi CC BY 4.0: bebas dipakai, diperbanyak, dan diterbitkan dengan menyebut CalcularYa dan menautkan halaman ini.",
+      atribucion: "Kutipan yang disarankan",
+    },
+    mundo: { titulo: "Dengan gaji tertentu", texto: (n) => `Untuk menghitung dengan gaji sendiri dan melihat tanggal tiap negara, tersedia halaman “${n}”.`, ir: "Hitung" },
+    otros: "Peringkat lainnya",
+    rankings: {
+      rinde: {
+        titulo: "Di mana gaji yang sama paling bernilai",
+        corto: "Gaji paling bernilai",
+        seo: ["Di mana gaji paling bernilai: peringkat negara", "Di mana gaji yang sama paling bernilai"],
+        descripcion: (n) => `Gaji yang sama, dengan daya beli yang sama, di ${n} negara: sisa yang diterima setelah aturan pajak tiap negara. Diperbarui setiap hari.`,
+        bajada: "Gaji kotor yang sama, dengan daya beli yang sama, dihitung dengan aturan tiap negara. Di urutan teratas, negara dengan sisa gaji paling besar.",
+        metrica: "Bersih per bulan",
+        carga: "Pajak dan iuran",
+        como: "Gaji bersih per bulan adalah rata-rata 12 bulan, dalam dolar internasional.",
+      },
+      libertad: {
+        titulo: "Hari Bebas Pajak menurut negara",
+        corto: "Hari Bebas Pajak",
+        seo: ["Hari Bebas Pajak menurut negara: peringkat", "Hari Bebas Pajak menurut negara"],
+        descripcion: (n) => `Hari dalam setahun ketika pajak penghasilan dan iuran selesai dibayar, dengan gaji yang sama di ${n} negara. Diperbarui setiap hari.`,
+        bajada: "Hari dalam setahun ketika pajak penghasilan dan iuran selesai dibayar, dengan gaji yang sama di semua negara. Di urutan teratas, negara yang paling awal.",
+        metrica: "Bekerja untuk negara sampai",
+        carga: "Pajak dan iuran",
+        como: "Tanggalnya membagi beban pajak sepanjang tahun mulai 1 Januari: dengan beban 30%, sebanyak 30% dari tahun itu dipakai untuk bekerja bagi negara.",
+      },
+      aumento: {
+        titulo: "Berapa sisa kenaikan gaji",
+        corto: "Sisa kenaikan gaji",
+        seo: ["Berapa sisa kenaikan gaji: peringkat negara", "Berapa sisa kenaikan gaji"],
+        descripcion: (n) => `Dari setiap 100 tambahan gaji kotor, berapa yang tersisa setelah pajak penghasilan dan iuran, di ${n} negara. Diperbarui setiap hari.`,
+        bajada: "Dari setiap 100 tambahan gaji kotor, berapa yang sampai ke kantong setelah pajak penghasilan dan iuran. Di urutan teratas, negara dengan sisa paling besar.",
+        metrica: "Sisa dari setiap 100",
+        carga: "Tarif marginal",
+        como: "Ini tarif marginal di antara dua gaji: bagian kenaikan yang dipakai untuk pajak dan iuran.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, id: idn };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

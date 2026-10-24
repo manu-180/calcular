@@ -1219,7 +1219,127 @@ const zhHans: TextosHoras = {
 
 const zh: Diccionario<TextosHoras> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── id ─────────────────────────────
+// Indonesio (ADR 0002, D11): impersonal como los demás, frases cortas. {en} trae «di» de GRAMATICA.id
+// (con mayúscula al empezar la frase: «Di Indonesia»); sin plural después de un número («120 jam»).
+
+const idn: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Berapa jam kerja untuk membelinya?",
+    seo: {
+      titulo: ["Berapa jam kerja untuk membeli iPhone {en}", "Jam kerja untuk membeli iPhone {en}", "Berapa jam kerja untuk membelinya?"],
+      tituloGlobal: ["Berapa jam kerja untuk membeli iPhone di seluruh dunia", "Berapa jam kerja untuk membelinya?"],
+      tituloProducto: ["Berapa jam kerja untuk membeli {producto} {en}", "Jam kerja untuk membeli {producto} {en}", "Berapa jam kerja untuk membeli {producto}"],
+      tituloProductoGlobal: ["Berapa jam kerja untuk membeli {producto} di seluruh dunia", "Berapa jam kerja untuk membeli {producto}"],
+      descripcion: "iPhone, MacBook, atau Spotify, dihitung dalam jam kerja dengan upah minimum {en} dan di {n} negara. Harga resmi dan sumber setiap data.",
+      descripcionGlobal: "iPhone, MacBook, atau Spotify, dihitung dalam jam kerja dengan upah minimum di {n} negara. Harga resmi dan sumber setiap data.",
+      descripcionProducto: "{en}, {producto} setara dengan {horas} kerja dengan upah minimum. Peringkat {n} negara dengan harga resmi dan sumber setiap data.",
+      descripcionProductoGlobal: "Berapa jam kerja dengan upah minimum untuk membeli {producto} di {n} negara. Harga resmi tiap toko dan sumber setiap data.",
+    },
+    ceja: "Indeks {mes}",
+    h1: "Berapa jam kerja untuk membelinya?",
+    h1Producto: "Berapa jam kerja untuk membeli {producto}?",
+    bajada: "Harga resmi produk yang sama, dihitung dalam jam kerja dengan upah minimum di {n} negara.",
+    form: { producto: "Produk", pais: "Negara", porMes: "per bulan" },
+    heroe: {
+      antes: "{en}, {producto} setara dengan",
+      despues: "kerja dengan upah minimum",
+      despuesMes: "kerja dengan upah minimum, setiap bulan",
+      jornadaUno: "{n} hari kerja 8 jam",
+      jornadaOtras: "{n} hari kerja 8 jam",
+      precio: "Harga resmi {precio}",
+      salario: "Upah minimum {monto} per jam",
+      sinPrecio: "{en} tidak ada toko resmi yang menjual produk ini.",
+      mejor: "{en} cukup {horas}.",
+      mejorPropio: "Tidak ada negara dalam indeks yang membutuhkan jam lebih sedikit.",
+      puesto: "Peringkat {p} dari {total}",
+      escalaHoras: "Setiap kotak adalah satu jam kerja",
+      escalaSemanas: "Setiap kotak adalah satu minggu kerja 40 jam",
+      masDeUnAnio: "Lebih dari satu tahun kerja",
+    },
+    ranking: {
+      titulo: "Negara demi negara",
+      bajada: "Dari jam paling sedikit sampai paling banyak. Setiap harga adalah harga resmi produsen di negara itu.",
+      lista: "Negara diurutkan menurut jam kerja",
+      verTodos: "Lihat semua {n} negara",
+      verMenos: "Tampilkan lebih sedikit",
+      elegido: "Dipilih",
+      sinPrecio: "Tidak ada data untuk {n} negara dalam indeks: tidak ada toko resmi yang menjual produk ini.",
+      horas: "Jam",
+      precio: "Harga resmi",
+    },
+    compartir: {
+      titulo: "Kartu untuk dibagikan",
+      bajada: "Semuanya data publik: harga resmi dan jam kerja dengan upah minimum.",
+      boton: "Bagikan kartu",
+      descargar: "Unduh untuk story",
+      copiado: "Tautan disalin.",
+      compartido: "Selesai, sudah dibagikan.",
+      error: "Saat ini tidak bisa dibagikan.",
+      texto: "{en}, {producto} setara dengan {horas} kerja dengan upah minimum. Bagaimana di negara lain?",
+      alt: "Pratinjau kartu",
+    },
+    metodo: {
+      titulo: "Cara kami menghitungnya",
+      estimacion: "Jam = harga resmi ÷ upah minimum per jam. Ini perbandingan harga resmi, bukan anggaran belanja.",
+      supuestos: [
+        "Harga adalah harga daftar versi termurah di toko resmi produsen, dibaca di halaman tiap negara.",
+        "Spotify Premium adalah paket individu satu bulan, tanpa promo awal.",
+        "Upah minimum adalah upah minimum umum yang berlaku hari ini untuk orang dewasa yang bekerja penuh waktu. Jika ada beberapa menurut sektor atau wilayah, yang dipakai adalah upah sektor perdagangan di wilayah utama.",
+        "Jika undang-undang menetapkan upah minimum per bulan atau per hari, angkanya diubah ke per jam dengan jam kerja resmi negara itu.",
+        "Di Spanyol dan Portugal upah minimum dibayar 14 kali setahun: angkanya dibagi rata ke 12 bulan, seperti yang dilakukan Eurostat.",
+        "Jika toko menjual dalam dolar, harganya diubah ke mata uang lokal dengan kurs resmi negara itu.",
+        "Agar bisa dibandingkan, satu hari kerja dihitung 8 jam di semua negara.",
+      ],
+      fuentesTitulo: "Sumber setiap data",
+      fuentesBajada: "Setiap negara dengan upah minimum, jam kerja, dan harga yang dibaca di toko, lengkap dengan tanggal setiap pembacaan.",
+      salario: "Upah minimum",
+      jornada: "Jam kerja",
+      precio: "Harga",
+      cambio: "Kurs",
+      consultado: "Dicek pada {fecha}",
+      verificado: "Diperiksa pada {fecha}",
+      verFuente: "Lihat sumbernya",
+      sello: "Harga dibaca antara {desde} dan {hasta}. Harga yang lebih lama dari 120 hari tidak ditampilkan lagi.",
+      conversion: {
+        hora: "Undang-undang menetapkan angka per jam.",
+        mes: "Bulanan × 12 ÷ 52 minggu ÷ jam per minggu ({h}).",
+        mesPagas: "Bulanan × jumlah pembayaran setahun ({p}) ÷ 52 minggu ÷ jam per minggu ({h}).",
+        anio: "Tahunan ÷ 52 minggu ÷ jam per minggu ({h}).",
+        semana: "Mingguan ÷ jam per minggu ({h}).",
+        dia: "Harian ÷ jam kerja per hari ({h}).",
+        diaPagado: "Harian × hari yang dibayar ({d}) ÷ jam per minggu ({h}).",
+        divisor: "Bulanan ÷ pembagi jam dalam peraturan ({d}).",
+      },
+    },
+    faqTitulo: "Pertanyaan yang sering diajukan",
+    faq: [
+      {
+        pregunta: "Bagaimana jamnya dihitung?",
+        respuesta: "Harga resmi produk dibagi dengan upah minimum per jam di negara itu. Jika undang-undang menetapkan upah minimum per bulan atau per hari, angkanya diubah ke per jam dengan jam kerja resmi negara tersebut.",
+      },
+      {
+        pregunta: "Mengapa memakai upah minimum?",
+        respuesta: "Upah minimum ditetapkan dengan peraturan di hampir semua negara dan bisa dicek di sumber resmi. Gaji rata-rata diukur dengan cara berbeda di tiap negara, jadi tidak bisa dibandingkan dengan cara yang sama.",
+      },
+      {
+        pregunta: "Apakah harganya sudah termasuk pajak?",
+        respuesta: "Harga adalah harga daftar yang tampil di toko resmi tiap negara. Di Amerika Serikat dan Kanada harga itu belum termasuk pajak penjualan, dan di negara lain toko juga bisa menambahkan pajak saat pembayaran.",
+      },
+      {
+        pregunta: "Mengapa sebuah negara tidak ada di daftar?",
+        respuesta: "Yang masuk hanya negara dengan upah minimum yang sudah diverifikasi dan berlaku, serta harga yang dibaca dari toko resmi. Jika tidak ada toko resmi daring, produk itu tidak punya data. Harga dari penjual lain tidak pernah dipakai.",
+      },
+      {
+        pregunta: "Seberapa sering datanya diperbarui?",
+        respuesta: "Harga dibaca dari tiap toko dan kedaluwarsa setelah 120 hari: harga yang lebih lama tidak ditampilkan lagi. Upah minimum berasal dari data resmi tiap negara dan berubah saat peraturannya berubah.",
+      },
+    ],
+    og: { de: "kerja dengan upah minimum", deMes: "kerja dengan upah minimum per bulan", generica: "Berapa jam kerja untuk membeli {producto}?", genericaBajada: "Harga resmi dalam jam kerja dengan upah minimum di {n} negara", menos: "Jam paling sedikit", cta: "Semua negara di" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, id: idn };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);
