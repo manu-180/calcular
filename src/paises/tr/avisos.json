@@ -1,0 +1,35 @@
+{
+  "mercado": "tr",
+  "avisos": [
+    {
+      "id": "tr.imalat-indirimi-2026",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["tr.isveren-maliyeti-hesaplama", "tr.asgari-ucret-hesaplama"],
+      "texto": "İmalat sektöründeki 5 puanlık SGK işveren indirimi 2026 yılı sonuna kadar uygulanır. Diğer sektörlerde indirim 2 puandır.",
+      "fuente": {
+        "organismo": "Sosyal Güvenlik Kurumu",
+        "titulo": "Sigorta primi teşvikleri 2026",
+        "url": "https://www.sgk.gov.tr/Download/DownloadFile?d=de85036d-ef64-49f1-834c-916a79f1a923&f=c94c643d-2190-4d85-9b14-a8c7c5d241e8.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "tr.kidem-tavan-donem",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["tr.kidem-tazminati-hesaplama"],
+      "texto": "Kıdem tazminatı tavanı her altı ayda bir değişir. Bu hesaplama, çıkış tarihinizin bulunduğu dönemin tavanını kullanır. 2027 Ocak tavanı açıklandığında güncellenecektir.",
+      "fuente": {
+        "organismo": "Çalışma ve Sosyal Güvenlik Bakanlığı",
+        "titulo": "Kıdem tazminatı tavan miktarları (1980 - 2026)",
+        "url": "https://www.csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}
