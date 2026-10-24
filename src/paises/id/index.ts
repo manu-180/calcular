@@ -1,7 +1,15 @@
 import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
+import kalkulatorBiayaKaryawan from "./calculadoras/kalkulator-biaya-karyawan";
+import contenidoKalkulatorBiayaKaryawan from "./contenido/kalkulator-biaya-karyawan";
+import kalkulatorBpjsKesehatan from "./calculadoras/kalkulator-bpjs-kesehatan";
+import contenidoKalkulatorBpjsKesehatan from "./contenido/kalkulator-bpjs-kesehatan";
+import kalkulatorBpjsKetenagakerjaan from "./calculadoras/kalkulator-bpjs-ketenagakerjaan";
+import contenidoKalkulatorBpjsKetenagakerjaan from "./contenido/kalkulator-bpjs-ketenagakerjaan";
 import kalkulatorGajiBersih from "./calculadoras/kalkulator-gaji-bersih";
 import contenidoKalkulatorGajiBersih from "./contenido/kalkulator-gaji-bersih";
+import kalkulatorPajakPesangon from "./calculadoras/kalkulator-pajak-pesangon";
+import contenidoKalkulatorPajakPesangon from "./contenido/kalkulator-pajak-pesangon";
 import kalkulatorPph21 from "./calculadoras/kalkulator-pph-21";
 import contenidoKalkulatorPph21 from "./contenido/kalkulator-pph-21";
 import kalkulatorPph21BukanPegawai from "./calculadoras/kalkulator-pph-21-bukan-pegawai";
@@ -20,7 +28,11 @@ export default definirPais({
   series,
   avisos,
   calculadoras: [
+    { definicion: kalkulatorBiayaKaryawan, contenido: contenidoKalkulatorBiayaKaryawan, cliente: () => import("./calculadoras/kalkulator-biaya-karyawan.cliente") },
+    { definicion: kalkulatorBpjsKesehatan, contenido: contenidoKalkulatorBpjsKesehatan, cliente: () => import("./calculadoras/kalkulator-bpjs-kesehatan.cliente") },
+    { definicion: kalkulatorBpjsKetenagakerjaan, contenido: contenidoKalkulatorBpjsKetenagakerjaan, cliente: () => import("./calculadoras/kalkulator-bpjs-ketenagakerjaan.cliente") },
     { definicion: kalkulatorGajiBersih, contenido: contenidoKalkulatorGajiBersih, cliente: () => import("./calculadoras/kalkulator-gaji-bersih.cliente") },
+    { definicion: kalkulatorPajakPesangon, contenido: contenidoKalkulatorPajakPesangon, cliente: () => import("./calculadoras/kalkulator-pajak-pesangon.cliente") },
     { definicion: kalkulatorPph21, contenido: contenidoKalkulatorPph21, cliente: () => import("./calculadoras/kalkulator-pph-21.cliente") },
     { definicion: kalkulatorPph21BukanPegawai, contenido: contenidoKalkulatorPph21BukanPegawai, cliente: () => import("./calculadoras/kalkulator-pph-21-bukan-pegawai.cliente") },
     { definicion: kalkulatorTerPph21, contenido: contenidoKalkulatorTerPph21, cliente: () => import("./calculadoras/kalkulator-ter-pph-21.cliente") },
