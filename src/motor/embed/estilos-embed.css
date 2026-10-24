@@ -1,0 +1,177 @@
+/* Calculadora embebida (/<m>/embed/<slug>). Se carga después de src/motor/ui/estilos.css y le
+   cambia tres cosas a la piel de la calculadora sin tocarla: la tarjeta pasa a ser la del embed
+   (un solo borde que lleva título, campos y marca), el acento sale de --cye-acento y el tema
+   oscuro redefine la escala de grises. Sombras siempre negras; nada de brillo del color de marca. */
+
+html.cye-html {
+  --cye-acento: #10b981;
+  --cye-superficie: #fff;
+  background: transparent;
+  --cy-emerald-50: color-mix(in oklab, var(--cye-acento) 8%, #fff);
+  --cy-emerald-200: color-mix(in oklab, var(--cye-acento) 30%, #fff);
+  --cy-emerald-400: color-mix(in oklab, var(--cye-acento) 70%, #fff);
+  --cy-emerald-500: var(--cye-acento);
+  --cy-emerald-600: color-mix(in oklab, var(--cye-acento) 88%, #000);
+  --cy-emerald-700: color-mix(in oklab, var(--cye-acento) 74%, #000);
+  --cy-emerald-800: color-mix(in oklab, var(--cye-acento) 60%, #000);
+  --cy-emerald-900: color-mix(in oklab, var(--cye-acento) 44%, #000);
+  --cy-anillo: 0 0 0 2px var(--cye-superficie), 0 0 0 4px color-mix(in oklab, var(--cye-acento) 60%, transparent);
+}
+
+html.cye-html[data-tema="oscuro"] {
+  color-scheme: dark;
+  --cye-superficie: #121214;
+  --cy-papel-claro: #121214;
+  --cy-zinc-50: #1a1a1e;
+  --cy-zinc-100: #202026;
+  --cy-zinc-200: #2c2c33;
+  --cy-zinc-300: #3b3b44;
+  --cy-zinc-400: #7b7b86;
+  --cy-zinc-500: #a1a1ab;
+  --cy-zinc-600: #b6b6bf;
+  --cy-zinc-700: #d0d0d7;
+  --cy-zinc-800: #e5e5e9;
+  --cy-zinc-900: #f6f6f7;
+  --cy-emerald-50: color-mix(in oklab, var(--cye-acento) 16%, #121214);
+  --cy-emerald-200: color-mix(in oklab, var(--cye-acento) 36%, #121214);
+  --cy-emerald-400: color-mix(in oklab, var(--cye-acento) 80%, #121214);
+  --cy-emerald-800: color-mix(in oklab, var(--cye-acento) 42%, #fff);
+  --cy-emerald-900: color-mix(in oklab, var(--cye-acento) 34%, #fff);
+  --cy-amber-50: #2a2110;
+  --cy-amber-200: #5a4713;
+  --cy-amber-900: #fde68a;
+  --cy-rose-50: #2d1519;
+  --cy-rose-200: #6a2a31;
+  --cy-rose-300: #9b3c47;
+  --cy-rose-500: #fb7185;
+  --cy-rose-700: #fda4af;
+  --cy-rose-900: #fecdd3;
+}
+
+.cye {
+  min-height: 0;
+  background: transparent;
+}
+
+/* El respiro de 2px deja lugar al anillo de foco y a la sombra de la tarjeta, que el iframe recortaría. */
+.cye-raiz {
+  padding: 2px;
+}
+
+.cye-tarjeta {
+  padding: 1.25rem;
+  border: 1px solid var(--cy-emerald-200);
+  border-radius: 1rem;
+  background: var(--cye-superficie);
+  box-shadow: var(--cy-sombra-sm);
+}
+
+/* La tarjeta de la piel (.cy-calc) deja de ser tarjeta: el borde y el fondo los pone .cye-tarjeta. */
+.cye .cy-calc {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.cye-titulo {
+  margin-bottom: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.375rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  color: var(--cy-zinc-900);
+}
+
+.cye-pie {
+  display: flex;
+  margin-top: 1.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--cy-zinc-200);
+}
+
+.cye-marca {
+  display: inline-flex;
+  min-height: 2.25rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 600;
+  color: var(--cy-zinc-600);
+  text-decoration: none;
+  transition: color 0.2s var(--ease-fluid);
+}
+
+.cye-marca:hover {
+  color: var(--cy-zinc-900);
+}
+
+.cye-marca span:not(.cye-solo-lector) {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s var(--ease-fluid);
+}
+
+.cye-marca:hover span:not(.cye-solo-lector) {
+  text-decoration-color: currentColor;
+}
+
+.cye-baldosa {
+  flex: none;
+}
+
+.cye-externo {
+  flex: none;
+  opacity: 0.7;
+  transition: transform 0.3s var(--ease-fluid);
+}
+
+.cye-marca:hover .cye-externo {
+  transform: translate(2px, -2px);
+}
+
+.cye-solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+html.cye-html[data-tema="oscuro"] .cy-entrada,
+html.cye-html[data-tema="oscuro"] .cy-select,
+html.cye-html[data-tema="oscuro"] .cy-segmento span {
+  background-color: var(--cye-superficie);
+}
+
+@media (min-width: 480px) {
+  .cye-tarjeta {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 359px) {
+  .cye-tarjeta {
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cye-marca,
+  .cye-marca span,
+  .cye-externo {
+    transition: none;
+  }
+
+  .cye-marca:hover .cye-externo {
+    transform: none;
+  }
+}

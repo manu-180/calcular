@@ -1,6 +1,10 @@
-export type Rango = "hoy" | "7d" | "30d" | "90d";
+export type Preset = "hoy" | "7d" | "30d" | "90d";
 
-export const RANGOS: Rango[] = ["hoy", "7d", "30d", "90d"];
+// Un día elegido en el calendario ("2026-10-05") o un tramo de días ("2026-10-01_2026-10-15"),
+// en fecha argentina y con los dos extremos incluidos.
+export type Rango = Preset | `${number}-${number}-${number}` | `${number}-${number}-${number}_${number}-${number}-${number}`;
+
+export const RANGOS: Preset[] = ["hoy", "7d", "30d", "90d"];
 
 export type Punto = { t: string; v: number };
 

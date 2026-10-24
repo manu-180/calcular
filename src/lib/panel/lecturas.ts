@@ -1,4 +1,4 @@
-import { plata } from "@/lib/panel/formato";
+import { contra, plata } from "@/lib/panel/formato";
 import type { EmbudoProducto, FilaPagina, Kpi, KpiClave, Lectura, PanelDatos, Rango } from "@/lib/panel/tipos";
 
 type Datos = Omit<PanelDatos, "lecturas">;
@@ -13,13 +13,6 @@ const POR_FAMILIA = 2;
 const PRECIO_REFERENCIA = 9900;
 const CONVERSION_REFERENCIA = 0.004;
 const ASISTENTES_IA = new Set(["ChatGPT", "Perplexity", "Gemini", "Claude", "Copilot"]);
-
-const CONTRA: Record<Rango, string> = {
-  hoy: "ayer a esta hora",
-  "7d": "los 7 días anteriores",
-  "30d": "los 30 días anteriores",
-  "90d": "los 90 días anteriores",
-};
 
 const entero = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 0 });
 // Sólo para ordenar lecturas por plata en juego: un producto en dólares se pesa en pesos con un cambio
@@ -191,7 +184,7 @@ function reglasBusquedas(datos: Datos): Candidata[] {
 
 function reglasVariacion(datos: Datos): Candidata[] {
   const salida: Candidata[] = [];
-  const contra = CONTRA[datos.rango];
+  const contraQue = contra(datos.rango);
   const reglas: { clave: KpiClave; minimo: number; nombre: string; valorPeso: number }[] = [
     { clave: "ventas", minimo: 3, nombre: "Las ventas", valorPeso: PRECIO_REFERENCIA },
     { clave: "visitantes", minimo: 50, nombre: "Las visitas", valorPeso: CONVERSION_REFERENCIA * PRECIO_REFERENCIA },
@@ -207,7 +200,7 @@ function reglasVariacion(datos: Datos): Candidata[] {
       id: `variacion-${r.clave}`,
       familia: "variacion",
       tono: sube ? "logro" : "alerta",
-      titulo: `${r.nombre} ${sube ? "subieron" : "bajaron"} ${n(Math.abs(cambio) * 100)} % contra ${contra}`,
+      titulo: `${r.nombre} ${sube ? "subieron" : "bajaron"} ${n(Math.abs(cambio) * 100)} % contra ${contraQue}`,
       detalle: sube
         ? `Pasaron de ${n(k.anterior)} a ${n(k.valor)}. Si fue por algo que cambiaste, es la pista de qué repetir.`
         : `Pasaron de ${n(k.anterior)} a ${n(k.valor)}. Si en el sitio no cambió nada, la tabla de páginas muestra dónde se cayó.`,
@@ -223,7 +216,7 @@ function reglasVariacion(datos: Datos): Candidata[] {
       familia: "variacion",
       tono: "logro",
       titulo: `Entraron ${ventas.valor === 1 ? "1 venta" : `${n(ventas.valor)} ventas`} por ${plata(ingresos.valor, datos.ingresos.moneda)}`,
-      detalle: `En ${contra} no hubo ninguna. El embudo muestra por qué producto entraron.`,
+      detalle: `En ${contraQue} no hubo ninguna. El embudo muestra por qué producto entraron.`,
       accion: { texto: "Ver el embudo", href: "#embudo" },
       peso: (datos.ingresos.moneda === "USD" ? ingresos.valor * ARS_POR_USD_APROX : ingresos.valor) * 0.5,
     });

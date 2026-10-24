@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ctx = contextoSitio(registro, mercado as CodigoMercado);
   const p = ctx ? productoIntlDe(ctx.mercado.codigo, informe) : null;
   if (!ctx || !p || p.tipo !== "informe") return {};
-  const tx = textosTarjeta(ctx.mercado.idioma, ctx.mercado.trato);
+  const tx = textosTarjeta(ctx.mercado.idioma, ctx.mercado.trato, ctx.mercado.locale);
   return {
     title: `${p.titulo} | CalcularYa`,
     description: `${p.paraQuien}. ${precioUSD(p.precioCentavos, ctx.mercado.locale)}, ${tx.pagoUnico}.`,
@@ -63,8 +63,8 @@ export default async function LandingInformeIntl({ params }: Props) {
   if (!ctx || !p || p.tipo !== "informe" || !familia) notFound();
   const m = ctx.mercado;
   const tx = textosPlanillas(m);
-  const tarjeta = textosTarjeta(m.idioma, m.trato);
-  const tf = textosFamilia(familia.clave, m.idioma, m.trato);
+  const tarjeta = textosTarjeta(m.idioma, m.trato, m.locale);
+  const tf = textosFamilia(familia.clave, m.idioma, m.trato, m.locale);
 
   // La muestra es real: la primera calculadora del informe con sus valores por defecto y los datos
   // oficiales de hoy, por la misma función que arma el informe pagado.

@@ -3,6 +3,92 @@
 Plan y decisiones: `docs/adr/0002-mundo.md`. Receta de universales: `docs/global/RECETA-UNIVERSAL.md`.
 Rama de integración: `claude/global-calculators-multipa-s-dfbec3` (incluye el PR #30 de auditoría).
 
+## PLAN DE PAÍSES (Manuel, 23/10/2026): hay que hacerlos todos
+
+`docs/global/plan-paises/2026-10-23-tope-paises-calcular.md` (y el `.csv` con los portales probados
+por país) es el plan vigente. Manda sobre `docs/global/PAISES.md`.
+- Nivel A, 87 países: primero, en el orden de «Orden sugerido para los A pendientes» (por usuarios
+  de internet).
+- Nivel B, 58 países: después. Lo que no tenga fuente legible queda en borrador.
+- Nivel C, 50 países: no se hacen salvo que Manuel diga lo contrario. Liechtenstein se hizo igual:
+  ahv.li y gesetze.li fueron legibles.
+
+Barra para cada país: entre 40 y 60 calculadoras, cada una con oferta de venta, en su idioma
+(textos nativos, no traducidos) y con SEO propio por página con las búsquedas reales del país.
+
+Al 23/10 están publicados o en camino a main: ar (calcular.ar) y en calcularya cl co mx pe uy ec cr
+gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be in hk ng my ph ma
+lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
+desde `PAISES` en `src/paises/index.ts`.
+
+## 19/10/2026 · CÓMO RETOMAR (leer primero)
+
+Manuel pidió cerrar los países empezados sin sumar nuevos, publicar y dejar esto listo para seguir
+país por país en otra sesión hasta completar el planeta.
+
+**En producción:** 45 países contando Argentina, y 5 ediciones (ch-fr, ch-it, ca-fr, be-fr, lu-de).
+Los últimos en salir fueron Kenia (PR #36) y Tanzania (66 calculadoras, 63 datos), que salió junto con el arreglo de la unidad
+duplicada en los textos de Kenia (`claude/fix-ke-unidades`).
+
+**Empezados y sin terminar.** Cada uno tiene su rama remota con WIP pusheado. Las sesiones se cortaron
+varias veces por límite de uso.
+
+| Frente | Rama | Dónde quedó |
+|---|---|---|
+| Japón + diccionario de venta ja/ko/zh | claude/pais-jp | depurando un 404 de `jp/take-home-pay` en el registro |
+| Ghana | claude/pais-gh | segundo bloque de calculadoras; `postJson` opcional en el Http del cron |
+| Senegal | claude/pais-sn | escribiendo contenidos (fr, vous, CGI y BCEAO) |
+| Túnez | claude/pais-tn | en curso |
+| Liechtenstein, después us-es | claude/pais-li, claude/edicion-us-es | mercado, avisos, novedades, fuentes, lib de Lohn |
+| Emiratos | claude/pais-ae | ILOE, Emiratisation y mínimo para emiratíes commiteados; depende del motor árabe |
+| Kuwait | claude/pais-kw | en curso; depende del motor árabe |
+| Pakistán | claude/pais-pk | faltaban STSC, cuenta de ahorro, tarjeta extranjera y dólar |
+| Costa de Marfil | claude/pais-ci | en curso |
+| Angola | claude/pais-ao | en curso |
+| Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
+| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
+
+Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
+`docs/global/BRIEF-PAIS.md`, y terminarlo en un worktree propio. Los agentes de esta sesión no
+sobreviven a una sesión nueva; el estado vive en las ramas.
+
+**Publicar un país terminado** (receta probada con Kenia y Tanzania):
+1. En la rama de integración: merge de `origin/main` y de la rama del país.
+2. `estado: "publicado"` en `src/paises/<m>/mercado.ts`; import y alta al final de `PAISES` en
+   `src/paises/index.ts`.
+3. `npx tsx scripts/check_motor.ts --generar-cargadores`, `npx tsx scripts/check_medicion_mercados.ts --escribir`, `npx tsc --noEmit -p .`.
+4. Build y `scripts/check-all.ts` (144 suites) en un worktree aparte, nunca en el de la sesión: el
+   hook Stop commitea lo suelto. Si falla check_hreflang por una serie vencida, correr
+   `npx tsx scripts/datos-paises/correr.ts --mercado <m>` y copiar el `series.json`.
+5. PR contra main, `gh run watch <runId>` hasta `conclusion == success`, merge, curl a una página.
+
+**Orden sugerido para seguir:** terminar la tabla de arriba (motor árabe antes que ae y kw; Japón
+antes que cualquier otro asiático), después avanzar por tiers de `docs/global/PAISES.md` (199
+países): primero los del tier 1 y 2 que faltan, después de a uno por región.
+
+**Pendientes de Manuel:** pasos 1 y 2 de `docs/global/SQL-METRICAS.md`. Verificar en navegador
+la LNT de Quebec. Revisar los borradores de Marruecos (CNSS, SMIG, preaviso) y el EPF de Malasia.
+Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/zh antes de publicar Japón.
+
+**Pedidos al motor abiertos:**
+- `post` en el Http del cron, para la PSA de Filipinas y el CBK de Kenia (Ghana lo está sumando).
+- Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
+
+El cron datos-paises no está actualizando uy, hn y bo.
+
+## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
+
+ja, ko y zh (tradicional zh-TW/zh-HK y simplificado zh-CN/zh-SG) en motor, sitio, inicio, legales,
+errores y las 41 universales. Decisiones en ADR 0002, D8. Edición de prueba `zz-ja`.
+
+Falta para el primer país asiático (Japón, Corea, Taiwán o Hong Kong en chino):
+- Diccionario de venta en ja/ko/zh (`src/lib/pagos/textos`, sumar a `IDIOMAS_VENTA`); sin él el país
+  no ofrece informes ni planillas y `check_ofertas_intl` falla al registrarlo.
+- El país en sí (BRIEF-PAIS): datos verificados, calculadoras locales, slugs locales con la convención
+  de D8. Taiwán usa la tasa de 營業稅 en la universal `iva`; Hong Kong no tiene IVA.
+- Revisión de un hablante nativo de cada idioma sobre una muestra de páginas antes de publicar.
+
 ## Ronda 1 (13/10/2026, en curso)
 
 | Frente | Rama | Archivos que posee |
@@ -35,6 +121,33 @@ pt «você», fr «vous», de «Sie», it «tu», nl «je».
   Falta migrar horas-trabajadas de sus listas de 96 horarios a `hora`.
 - `ui(trato, locale)`: hecho en `claude/mundo-integracion` (receta actualizada).
 - Tipado de campos generados en bucle o según unidades (hoy un cast a `Record` en `calcular`).
+
+## 16/10/2026 23:20 · En main y producción; se retoma la expansión a todo el mundo
+
+PR #31 (y #30) mergeados a main el 16/10 22:36, deploy READY: 38 países, 4 ediciones. Antes del merge
+se arreglaron: lakhs en en-IN (`parsearNumero`), prefill intl con null en campos ocultos, tabla del
+EMI de India, mes por render en Comercio por horas y `uy.dolar` vencido (hreflang).
+
+Misión de Manuel: todos los países del mundo, cada uno en su idioma, lo más completo posible, con
+fuentes citadas y al día, sin frenar. Frentes en curso (cada uno en su worktree y rama):
+
+| Frente | Rama | Agente |
+|---|---|---|
+| Filipinas | claude/pais-ph | af4a25bad79056aa2 |
+| Luxemburgo fr + lu-de | claude/pais-lu | a8551c6c0f34cfe9e |
+| Marruecos | claude/pais-ma | a38af4c77ca2794fb |
+| Quebec | claude/quebec | a09af92be368a2db8 |
+| Motor 3 (ja/ko/zh) | claude/mundo-motor-3 | a2ac60979cc7a480b |
+| Emiratos | claude/pais-ae | ab9a66bde237e6a69 |
+| Kuwait | claude/pais-kw | a80b3b979be977cdc |
+| Pakistán | claude/pais-pk | afc298c5c5529a805 |
+| Kenia | claude/pais-ke | ada73c81be98bb517 |
+| Costa de Marfil | claude/pais-ci | ab0048b77b06a4135 |
+| Angola | claude/pais-ao | a3758a764dbcf8a03 |
+| Motor árabe (RTL) | claude/mundo-motor-ar | a69696ff45bde473e |
+| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | a83bcd96f30132acb |
+
+Publicar sigue el procedimiento de la entrada de la pausa. Un PR nuevo contra main por tanda.
 
 ## 16/10/2026 19:30 · PAUSA pedida por Manuel · 38 países y 4 ediciones publicados
 
@@ -120,11 +233,24 @@ manual.
 13 calculadoras de `ca` traducidas al francés de Quebec (vous, fr-CA) más las universales en
 francés: TPS/TVQ, salario mínimo, RRQ/RPC, cotizaciones y prestaciones de assurance-emploi, costo
 empleador (con RQAP), ACE, recuperación de la SV, REER, CELI, inflación, USD/CAD e hipoteca variable.
-Por defecto abren en Quebec (región qc, plan RRQ). Pendientes, porque `ca` no las tiene para Quebec:
-impuesto sobre la renta y sueldo neto con el impuesto provincial de Quebec, ganancias de capital,
-taxe de bienvenue (droits de mutation), y las laborales de la CNESST (vacances, heures
-supplémentaires, préavis, indemnité). Las ofertas en francés dicen «Rapport de TVA» para la familia
-de IVA: en Quebec se diría TPS/TVQ (textos de `src/lib/pagos`).
+Por defecto abren en Quebec (región qc, plan RRQ).
+
+**Quebec en `ca` (`claude/quebec`):**
+- Impuesto de Quebec en sueldo neto e impuesto a la renta. Usa la tabla 2026, el monto de base y la
+  deducción para trabajadores (Finanzas Quebec). Del lado federal suma el abatimiento del 16,5 % (CRA
+  T4032-QC), y aplica QPP, EI de Quebec y RQAP. Traducidas en ca-fr (`calcul-salaire-net`,
+  `calcul-impot-revenu`).
+- Taxe de bienvenue 2026 (Québec.ca) en land-transfer-tax, sin Montreal. Traducida en ca-fr
+  (`calcul-taxe-de-bienvenue`).
+- Vacances, heures supplémentaires y préavis (LNT) en **borrador**: Légis Québec y la CNESST
+  responden 403 a las herramientas (Cloudflare y CloudFront). Hay que abrir la ley en un navegador,
+  confirmar los valores de `ca.qc-vacation-pay`, `ca.qc-overtime` y `ca.qc-notice`, pasarlos a
+  verificado y publicar las tres calculadoras (ya están traducidas).
+- Pendientes:
+  - ganancias de capital con Quebec, porque falta verificar la tasa de inclusión de Quebec;
+  - las tasas de Montreal en la taxe de bienvenue;
+  - créditos de Quebec además del de base (personne seule, âge, revenus de retraite).
+- Ofertas fr-CA: la familia de facturación dice TPS/TVQ (`src/lib/pagos/textos/fr-ca.ts`).
 
 ## Motor 2 (`claude/mundo-motor-2`, integrado el 16/10/2026)
 
@@ -160,7 +286,7 @@ India (solo había investigado, sin código), Singapur, Suiza (de, en verificaci
 WIP `7315719`). Nuevos: Filipinas (`claude/pais-ph`) y Hong Kong en inglés (`claude/pais-hk`).
 
 Pendientes de los países:
-- `nz.ocr`: carga manual (ver «Motor 2»). Vence el 2026-12-11.
+- `nz.ocr`: detector `manual` (el cron no lo corre; el semáforo avisa 30 días antes). Vence el 2026-12-11.
 - `za`: los marcadores de series ya existen (`{{za.prime-rate}}`). IPC y prime vencen el 2026-11-13 si el cron no corre.
 - Universal hipoteca dice «Down payment»; en NZ se dice «deposit».
 - Montos escritos a mano en escalas y FAQ de nz y za: revisar en abril y marzo de 2027.

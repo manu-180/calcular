@@ -6,13 +6,16 @@
 // Uso: npx tsx scripts/check_i18n.ts
 import { DICCIONARIOS_SITIO } from "../src/motor/i18n";
 import { DICCIONARIOS_CALCULADORA } from "../src/motor/i18n/calculadora";
+import { DICCIONARIOS_EMBED } from "../src/motor/i18n/embed";
 import { GRAMATICA } from "../src/motor/i18n/gramatica";
 import { resolverLegales } from "../src/motor/i18n/legales";
 import { resolver, type Diccionarios } from "../src/motor/i18n/resolver";
-import { NOMBRES_UNIDAD } from "../src/motor/i18n/unidades";
+import { nombresUnidad } from "../src/motor/i18n/unidades";
 import { DICCIONARIOS_MOTOR } from "../src/motor/textos";
 import { IDIOMAS, type Idioma, type Trato } from "../src/motor/tipos";
 import { DICCIONARIOS_INICIO } from "../src/motor/ui/textos-inicio";
+import { DICCIONARIOS_MUNDO } from "../src/motor/i18n/mundo";
+import { anchoVisual } from "../src/motor/ancho";
 import { problemasDeTexto } from "./reglas_idioma";
 
 const TRATOS: readonly Trato[] = ["tu", "usted", "vos"];
@@ -21,6 +24,8 @@ const MUESTRA = "7";
 // Textos que pueden coincidir con el español porque son la misma palabra en ese idioma, una sigla o
 // una marca. Clave: "idioma:diccionario.ruta" (ruta sin el trato); "*:" vale para todos los idiomas.
 const IGUALES_PERMITIDOS = new Set([
+  "*:mundo.ranking.regiones.europa",
+  "pt:mundo.metodo.bancoMundial",
   "*:sitio.marca.nombre",
   "*:sitio.footer.sitio",
   "*:sitio.footer.derechos",
@@ -54,6 +59,19 @@ const IGUALES_PERMITIDOS = new Set([
   "pt:unidades.horas.otros",
   "pt:unidades.meses.otros",
   // la misma palabra en ese idioma
+  "de:embed.pagina.colores.3",
+  "it:embed.pagina.colores.0",
+  "it:embed.pagina.colores.3",
+  "it:embed.pagina.tema",
+  "pt:embed.pagina.buscar",
+  "pt:embed.pagina.calculadora",
+  "pt:embed.pagina.claro",
+  "pt:embed.pagina.colores.0",
+  "pt:embed.pagina.colores.1",
+  "pt:embed.pagina.colores.3",
+  "pt:embed.pagina.copiado",
+  "pt:embed.pagina.copiar",
+  "pt:embed.pagina.tema",
   "en:motor.no",
   "it:motor.no",
   "it:sitio.fuentes.region",
@@ -79,16 +97,22 @@ function hojas(valor: unknown, ruta: string, salida: Hoja[]): Hoja[] {
 
 const marcadores = (t: string) => [...t.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort().join(",");
 
-type Fuente = { nombre: string; resolver: (idioma: Idioma, trato: Trato) => unknown };
-const desde = <T>(nombre: string, dics: Diccionarios<T>): Fuente => ({ nombre, resolver: (i, t) => resolver(dics, i, t) });
+// Locales con parche regional que cambia la escritura entera: se revisan como un idioma más.
+const LOCALES: Readonly<Partial<Record<Idioma, readonly string[]>>> = { zh: ["zh-TW", "zh-HK", "zh-CN", "zh-SG"] };
+const variantes = (idioma: Idioma): readonly (string | undefined)[] => LOCALES[idioma] ?? [undefined];
+
+type Fuente = { nombre: string; resolver: (idioma: Idioma, trato: Trato, locale?: string) => unknown };
+const desde = <T>(nombre: string, dics: Diccionarios<T>): Fuente => ({ nombre, resolver: (i, t, l) => resolver(dics, i, t, l) });
 
 const FUENTES: readonly Fuente[] = [
   desde("sitio", DICCIONARIOS_SITIO),
   desde("calculadora", DICCIONARIOS_CALCULADORA),
+  desde("embed", DICCIONARIOS_EMBED),
   desde("motor", DICCIONARIOS_MOTOR),
   desde("inicio", DICCIONARIOS_INICIO),
-  { nombre: "legales", resolver: (i, t) => resolverLegales(i, t, { actualizado: "13/10/2026", mail: "correo@calcularya.test" }) },
-  { nombre: "unidades", resolver: (i) => NOMBRES_UNIDAD[i] },
+  desde("mundo", DICCIONARIOS_MUNDO),
+  { nombre: "legales", resolver: (i, t, l) => resolverLegales(i, t, { actualizado: "13/10/2026", mail: "correo@calcularya.test" }, l) },
+  { nombre: "unidades", resolver: (i, _t, l) => nombresUnidad(i, l ?? i) },
 ];
 
 const fallas: string[] = [];
@@ -98,13 +122,13 @@ let revisadas = 0;
 for (const fuente of FUENTES) {
   for (const trato of TRATOS) {
     const es = new Map(hojas(fuente.resolver("es", trato), "", []).map((h) => [h.ruta, h.texto]));
-    for (const idioma of IDIOMAS) {
-      const lista = hojas(fuente.resolver(idioma, trato), "", []);
+    for (const idioma of IDIOMAS) for (const locale of variantes(idioma)) {
+      const lista = hojas(fuente.resolver(idioma, trato, locale), "", []);
       const rutas = new Set(lista.map((h) => h.ruta));
       for (const r of es.keys()) if (!rutas.has(r) && !/\.\d+(?:\.|$)/.test(r)) fallas.push(`${idioma}/${trato} ${fuente.nombre}.${r}: falta`);
       for (const { ruta, texto } of lista) {
         revisadas++;
-        const donde = `${idioma}/${trato} ${fuente.nombre}.${ruta}`;
+        const donde = `${locale ?? idioma}/${trato} ${fuente.nombre}.${ruta}`;
         if (!texto.trim()) {
           fallas.push(`${donde}: vacío`);
           continue;
@@ -117,17 +141,18 @@ for (const fuente of FUENTES) {
           if (permitida) usadas.add(permitida);
           else fallas.push(`${donde}: igual al español («${texto}»), ¿falta traducir?`);
         }
-        if (fuente.nombre !== "unidades") for (const p of problemasDeTexto(texto, idioma, trato)) fallas.push(`${donde}: ${p} en «${texto.slice(0, 70)}»`);
+        if (fuente.nombre !== "unidades") for (const p of problemasDeTexto(texto, idioma, trato, locale)) fallas.push(`${donde}: ${p} en «${texto.slice(0, 70)}»`);
       }
     }
   }
 }
 
 for (const idioma of IDIOMAS) {
-  for (const trato of TRATOS) {
-    const seo = resolver(DICCIONARIOS_SITIO, idioma, trato).seo;
-    if (seo.tituloGlobal.length > 60) fallas.push(`${idioma}/${trato} sitio.seo.tituloGlobal: ${seo.tituloGlobal.length} caracteres (máximo 60)`);
-    if (seo.descripcionGlobal.length > 160) fallas.push(`${idioma}/${trato} sitio.seo.descripcionGlobal: ${seo.descripcionGlobal.length} caracteres (máximo 160)`);
+  for (const trato of TRATOS) for (const locale of variantes(idioma)) {
+    const seo = resolver(DICCIONARIOS_SITIO, idioma, trato, locale).seo;
+    const donde = `${locale ?? idioma}/${trato} sitio.seo`;
+    if (anchoVisual(seo.tituloGlobal) > 60) fallas.push(`${donde}.tituloGlobal: ${anchoVisual(seo.tituloGlobal)} de ancho (máximo 60)`);
+    if (anchoVisual(seo.descripcionGlobal) > 160) fallas.push(`${donde}.descripcionGlobal: ${anchoVisual(seo.descripcionGlobal)} de ancho (máximo 160)`);
   }
   if (!GRAMATICA[idioma]) fallas.push(`${idioma}: falta la gramática de países`);
 }

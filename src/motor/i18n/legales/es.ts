@@ -57,19 +57,28 @@ export const es: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "El país de la visita",
           parrafos: [
             "Para sugerir las calculadoras del país correcto, consultamos desde qué país llega la visita. Lo deduce nuestro proveedor de hosting a partir de la dirección IP.",
-            "No guardamos ni la IP ni el país. La respuesta queda en el navegador mientras dura la visita.",
+            "No guardamos la IP. La respuesta queda en el navegador mientras dura la visita.",
           ],
         },
         {
           titulo: "Lo que guarda el navegador",
           parrafos: [
-            "Usamos el almacenamiento de sesión del navegador para recordar el país elegido y si se cerró el aviso que lo sugiere. Se borra al cerrar la pestaña.",
+            "En el almacenamiento de sesión del navegador, que se borra al cerrar la pestaña, recordamos el país de la visita, si se cerró el aviso que lo sugiere y, si se llegó por un enlace compartido, el código de ese enlace.",
+            "En el almacenamiento local, que queda hasta que se borra desde el navegador, guardamos el país que se eligió a mano, un número al azar para contar visitas y la versión que se muestra de una prueba de diseño, para que el sitio se vea igual en cada visita. Nada de eso dice quién es la persona.",
             "No usamos cookies de publicidad ni de seguimiento.",
           ],
         },
         {
           titulo: "Hosting",
           parrafos: ["El sitio está alojado en Vercel. Como todo servidor, registra datos técnicos de cada visita (la dirección IP y el navegador) para que el sitio funcione y sea seguro."],
+        },
+        {
+          titulo: "Cómo contamos las visitas",
+          parrafos: [
+            "Medimos el uso del sitio con una herramienta propia: qué páginas se abren y cuánto se usan, desde qué sitio se llegó, el tipo de dispositivo y el país. El número al azar que guarda el navegador sirve para distinguir una visita nueva de una que vuelve. No guardamos la IP ni lo que se escribe en una calculadora.",
+            "Los enlaces que se comparten desde el sitio llevan un código al azar, distinto en cada compartido, para contar cuántas visitas trae cada uno. Ese código no identifica a nadie.",
+            "Los montos que se escriben en una calculadora nunca salen del navegador dentro de un enlace.",
+          ],
         },
         {
           titulo: "Cambios y consultas",

@@ -18,6 +18,7 @@ import { agregarPuntos } from "./datos-paises/lib/series-json";
 import { leerParche, validarParche } from "./datos-paises/validar-parche.mjs";
 import { redireccionPermitida } from "./datos-paises/lib/http";
 import { revisarPuntos } from "../src/motor/bandas";
+import { sumarDias } from "../src/motor/vigencia";
 
 delete process.env.CALCULAR_HOY;
 delete process.env.CALCULAR_HOY_BUILD;
@@ -145,6 +146,21 @@ async function main() {
     verdad("fuente colgada: corta por timeout", colgada.resultados[0].estado === "fuente-caida" && colgada.resultados[0].detalle.includes("no respondió"));
     const rota = await correrDetectores(zz, httpFalso({ [URL_INDICE]: { error: "mantenimiento" }, [URL_DIARIO]: [] }), { hoy: HOY, vistos: new Set() });
     verdad("forma inesperada: fuente caída", rota.resultados[0].estado === "fuente-caida" && rota.puntosNuevos.size === 0);
+
+    // 3b. Detector manual: no se consulta la fuente, no escribe y el semáforo avisa con 30 días.
+    const zzManual = { ...zz, detectores: zz.detectores.map((d) => (d.id === "zz.indice-bcz" ? { ...d, metodo: "manual" as const } : d)) };
+    const httpManual = httpFalso({ [URL_INDICE]: new Error("no tendría que pedirse"), [URL_DIARIO]: [] });
+    const manual = await correrDetectores(zzManual, httpManual, { hoy: HOY, vistos: new Set() });
+    igual("manual: estado", manual.resultados.find((r) => r.id === "zz.indice-bcz")?.estado, "manual");
+    verdad("manual: no pide la url", !httpManual.pedidos.some((p) => p.url === URL_INDICE));
+    verdad("manual: no va al issue como problema", !issueDe(zzManual, manual).cuerpo.includes("fuente-caida"));
+    const serieManual = zzManual.series.find((s) => s.id === "zz.indice");
+    if (serieManual) {
+      const ultimo = serieManual.puntos[serieManual.puntos.length - 1][0];
+      const unMesAntes = sumarDias(ultimo, Math.max(0, serieManual.maxAntiguedadDias - 20));
+      const sem = semaforoPais(zzManual, unMesAntes);
+      verdad("manual: el semáforo avisa dentro del horizonte", sem.items.some((i) => i.clave === "zz.indice:serie" && i.texto.includes("carga manual")), JSON.stringify(sem.items.map((i) => i.texto)));
+    }
 
     // 4. Norma nueva: issue con link y casilla, nada de series, y no se repite.
     const norma = await correrDetectores(zz, httpFalso({ [URL_INDICE]: [], [URL_DIARIO]: [normaNueva, { titulo: "Decreto 2 de 2026 sobre salario mínimo", url: "https://example.org/zz/decreto-2-2026", fecha: "2026-03-01" }] }), { hoy: HOY, vistos: new Set() });

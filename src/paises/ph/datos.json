@@ -1,0 +1,2273 @@
+{
+  "mercado": "ph",
+  "datos": [
+    {
+      "id": "ph.income-tax-table",
+      "nombre": "Graduated income tax rates for individuals (Sec. 24(A)(2)(a), Tax Code)",
+      "tipo": "escala",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "hasta": "2022-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 250000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 250000,
+              "hasta": 400000,
+              "tasa": 20,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 400000,
+              "hasta": 800000,
+              "tasa": 25,
+              "cuotaFija": 30000
+            },
+            {
+              "desde": 800000,
+              "hasta": 2000000,
+              "tasa": 30,
+              "cuotaFija": 130000
+            },
+            {
+              "desde": 2000000,
+              "hasta": 8000000,
+              "tasa": 32,
+              "cuotaFija": 490000
+            },
+            {
+              "desde": 8000000,
+              "hasta": null,
+              "tasa": 35,
+              "cuotaFija": 2410000
+            }
+          ],
+          "fuente": {
+            "organismo": "BIR",
+            "titulo": "Digest of Revenue Regulations No. 8-2018 (TRAIN income tax)",
+            "url": "https://bir-cdn.bir.gov.ph/local/pdf/Digest%20RR%208-2018_copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 250000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 250000,
+              "hasta": 400000,
+              "tasa": 15,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 400000,
+              "hasta": 800000,
+              "tasa": 20,
+              "cuotaFija": 22500
+            },
+            {
+              "desde": 800000,
+              "hasta": 2000000,
+              "tasa": 25,
+              "cuotaFija": 102500
+            },
+            {
+              "desde": 2000000,
+              "hasta": 8000000,
+              "tasa": 30,
+              "cuotaFija": 402500
+            },
+            {
+              "desde": 8000000,
+              "hasta": null,
+              "tasa": 35,
+              "cuotaFija": 2202500
+            }
+          ],
+          "fuente": {
+            "organismo": "BIR",
+            "titulo": "Digest of Revenue Regulations No. 8-2018 (TRAIN income tax)",
+            "url": "https://bir-cdn.bir.gov.ph/local/pdf/Digest%20RR%208-2018_copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.thirteenth-month-exemption",
+      "nombre": "Tax-exempt ceiling of 13th month pay and other benefits",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 90000,
+          "fuente": {
+            "organismo": "BIR",
+            "titulo": "Digest of Revenue Regulations No. 8-2018 (TRAIN income tax)",
+            "url": "https://bir-cdn.bir.gov.ph/local/pdf/Digest%20RR%208-2018_copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.eight-percent-rate",
+      "nombre": "Optional 8% income tax rate for self-employed and professionals",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "BIR",
+            "titulo": "Digest of Revenue Regulations No. 8-2018 (TRAIN income tax)",
+            "url": "https://bir-cdn.bir.gov.ph/local/pdf/Digest%20RR%208-2018_copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.eight-percent-exclusion",
+      "nombre": "Amount excluded from the 8% tax base (purely self-employed)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 250000,
+          "fuente": {
+            "organismo": "BIR",
+            "titulo": "Digest of Revenue Regulations No. 8-2018 (TRAIN income tax)",
+            "url": "https://bir-cdn.bir.gov.ph/local/pdf/Digest%20RR%208-2018_copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.vat-threshold",
+      "nombre": "VAT threshold on gross sales or receipts",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 3000000,
+          "fuente": {
+            "organismo": "BIR",
+            "titulo": "Digest of Revenue Regulations No. 8-2018 (TRAIN income tax)",
+            "url": "https://bir-cdn.bir.gov.ph/local/pdf/Digest%20RR%208-2018_copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.vat-rate",
+      "nombre": "Value-added tax rate (Sec. 106, Tax Code)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.estate-tax-rate",
+      "nombre": "Estate tax rate on the net estate (Sec. 84)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.estate-standard-deduction",
+      "nombre": "Standard deduction for the estate of a citizen or resident (Sec. 86)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 5000000,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.estate-family-home-cap",
+      "nombre": "Maximum deduction for the family home (Sec. 86)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 10000000,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.donors-tax-rate",
+      "nombre": "Donor's tax rate (Sec. 99)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.donors-tax-exemption",
+      "nombre": "Exempt gifts per calendar year (Sec. 99)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 250000,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 10963 (TRAIN law)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=20145&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Texto de la ley en la E-Library de la Corte Suprema; secciones 31 (IVA), 22 y 23 (sucesiones) y 28 (donaciones). Rige desde el 1 de enero de 2018."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.percentage-tax-rate",
+      "nombre": "Percentage tax on non-VAT taxpayers (Sec. 116)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2023-06-30",
+          "valor": 1,
+          "fuente": {
+            "organismo": "BIR",
+            "titulo": "Revenue Memorandum Circular No. 69-2023",
+            "url": "https://bir-cdn.bir.gov.ph/local/pdf/RMC%20No.%2069-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "BIR",
+            "titulo": "Revenue Memorandum Circular No. 69-2023",
+            "url": "https://bir-cdn.bir.gov.ph/local/pdf/RMC%20No.%2069-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.sss-employee-rate",
+      "nombre": "SSS contribution rate, employee share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "SSS",
+            "titulo": "Circular No. 2024-006: Schedule of SSS contributions effective January 2025",
+            "url": "https://www.sss.gov.ph/wp-content/uploads/2024/12/Cir-2024-006-Employers-scaled.jpg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.sss-employer-rate",
+      "nombre": "SSS contribution rate, employer share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "SSS",
+            "titulo": "Circular No. 2024-006: Schedule of SSS contributions effective January 2025",
+            "url": "https://www.sss.gov.ph/wp-content/uploads/2024/12/Cir-2024-006-Employers-scaled.jpg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.sss-msc-minimum",
+      "nombre": "SSS minimum monthly salary credit",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 5000,
+          "fuente": {
+            "organismo": "SSS",
+            "titulo": "Circular No. 2024-006: Schedule of SSS contributions effective January 2025",
+            "url": "https://www.sss.gov.ph/wp-content/uploads/2024/12/Cir-2024-006-Employers-scaled.jpg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.sss-msc-maximum",
+      "nombre": "SSS maximum monthly salary credit (Regular SS plus MPF)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 35000,
+          "fuente": {
+            "organismo": "SSS",
+            "titulo": "Circular No. 2024-006: Schedule of SSS contributions effective January 2025",
+            "url": "https://www.sss.gov.ph/wp-content/uploads/2024/12/Cir-2024-006-Employers-scaled.jpg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.sss-regular-msc-maximum",
+      "nombre": "SSS maximum salary credit for the Regular SS program (above it goes to MPF)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "SSS",
+            "titulo": "Circular No. 2024-006: Schedule of SSS contributions effective January 2025",
+            "url": "https://www.sss.gov.ph/wp-content/uploads/2024/12/Cir-2024-006-Employers-scaled.jpg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.sss-ec",
+      "nombre": "Employees' Compensation (EC) contribution paid by the employer",
+      "tipo": "mapa",
+      "unidad": "PHP",
+      "etiquetas": {
+        "below-15000": "Salary credit below 15,000",
+        "from-15000": "Salary credit of 15,000 or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "below-15000": 10,
+            "from-15000": 30
+          },
+          "fuente": {
+            "organismo": "SSS",
+            "titulo": "Circular No. 2024-006: Schedule of SSS contributions effective January 2025",
+            "url": "https://www.sss.gov.ph/wp-content/uploads/2024/12/Cir-2024-006-Employers-scaled.jpg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.philhealth-rate",
+      "nombre": "PhilHealth premium rate for direct contributors",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "PhilHealth",
+            "titulo": "Advisory No. 2026-0042: Reimbursement Claims Abroad and Premium Contributions",
+            "url": "https://www.philhealth.gov.ph/advisories/2026/PA2026-0042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.philhealth-floor",
+      "nombre": "PhilHealth income floor",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "PhilHealth",
+            "titulo": "Premium contribution schedule for direct contributors (Circular No. 2019-0009)",
+            "url": "https://www.philhealth.gov.ph/partners/employers/ContributionTable_v2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "La tabla fija 5 % con piso de 10 000 y techo de 100 000 para 2024 y 2025; la Advisory 2026-0042 confirma el 5 % y el mínimo de 500 en 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.philhealth-ceiling",
+      "nombre": "PhilHealth income ceiling",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "PhilHealth",
+            "titulo": "Premium contribution schedule for direct contributors (Circular No. 2019-0009)",
+            "url": "https://www.philhealth.gov.ph/partners/employers/ContributionTable_v2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "La tabla fija 5 % con piso de 10 000 y techo de 100 000 para 2024 y 2025; la Advisory 2026-0042 confirma el 5 % y el mínimo de 500 en 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.philhealth-employee-share",
+      "nombre": "Share of the PhilHealth premium paid by the employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "PhilHealth",
+            "titulo": "Advisory No. 2018-0003",
+            "url": "https://www.philhealth.gov.ph/advisories/2018/adv2018-0003.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Dice que la prima se reparte en partes iguales entre el empleado y el empleador; las tablas posteriores no cambian ese reparto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.pagibig-max-fund-salary",
+      "nombre": "Pag-IBIG maximum fund salary",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-01",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "DBM",
+            "titulo": "Circular Letter No. 2024-2 (cites Pag-IBIG Fund Circular No. 460)",
+            "url": "https://www.dbm.gov.ph/wp-content/uploads/Issuances/2024/Circular-Letter/CIRCULAR-LETTER-NO-2024-2-DATED-FEBRUARY-01-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "La web de Pag-IBIG pide reCAPTCHA; el DBM transcribe la sección C de la Circular 460 con las tasas y el tope de 10 000."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.pagibig-low-salary-limit",
+      "nombre": "Pag-IBIG fund salary up to which the employee rate is 1%",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-01",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "DBM",
+            "titulo": "Circular Letter No. 2024-2 (cites Pag-IBIG Fund Circular No. 460)",
+            "url": "https://www.dbm.gov.ph/wp-content/uploads/Issuances/2024/Circular-Letter/CIRCULAR-LETTER-NO-2024-2-DATED-FEBRUARY-01-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "La web de Pag-IBIG pide reCAPTCHA; el DBM transcribe la sección C de la Circular 460 con las tasas y el tope de 10 000."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.pagibig-rates",
+      "nombre": "Pag-IBIG monthly savings rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employee-low": "Employee, fund salary of 1,500 or less",
+        "employee": "Employee, fund salary over 1,500",
+        "employer": "Employer"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-01",
+          "valor": {
+            "employee-low": 1,
+            "employee": 2,
+            "employer": 2
+          },
+          "fuente": {
+            "organismo": "DBM",
+            "titulo": "Circular Letter No. 2024-2 (cites Pag-IBIG Fund Circular No. 460)",
+            "url": "https://www.dbm.gov.ph/wp-content/uploads/Issuances/2024/Circular-Letter/CIRCULAR-LETTER-NO-2024-2-DATED-FEBRUARY-01-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "La web de Pag-IBIG pide reCAPTCHA; el DBM transcribe la sección C de la Circular 460 con las tasas y el tope de 10 000."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-days",
+      "nombre": "Days of salary per year of service in retirement pay (besides 1/12 of the 13th month pay)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-sil-days",
+      "nombre": "Days of service incentive leave added to retirement pay per year of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-minimum-age",
+      "nombre": "Minimum optional retirement age",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-compulsory-age",
+      "nombre": "Compulsory retirement age",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 65,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-minimum-service",
+      "nombre": "Minimum years of service in the establishment",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.retirement-exempt-employees",
+      "nombre": "Retail, service and agricultural establishments with this many workers or fewer are exempt",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1992-12-09",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Republic Act No. 7641 (Article 287 of the Labor Code, retirement pay)",
+            "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/1680",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Aprobada el 9 de diciembre de 1992; rige 15 días después de su publicación. El tramo arranca en la aprobación porque la fecha de publicación no figura en el texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.day-rates",
+      "nombre": "Pay for the first 8 hours of work, as a percentage of the regular daily wage",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ordinary": "Ordinary working day",
+        "rest-day": "Scheduled rest day",
+        "special": "Special day",
+        "special-rest-day": "Special day that falls on your rest day",
+        "regular-holiday": "Regular holiday",
+        "regular-holiday-rest-day": "Regular holiday that falls on your rest day"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1989-05-27",
+          "valor": {
+            "ordinary": 100,
+            "rest-day": 130,
+            "special": 130,
+            "special-rest-day": 150,
+            "regular-holiday": 200,
+            "regular-holiday-rest-day": 260
+          },
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Omnibus Rules Implementing the Labor Code, Book III",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=21826&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Rule I sección 7 (descanso y feriados especiales), Rule II (nocturno), Rule IV (feriados regulares) y Rule V (service incentive leave)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.overtime-premium",
+      "nombre": "Overtime premium over the hourly rate of the day",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ordinary": "Ordinary working day",
+        "rest-or-holiday": "Rest day or holiday"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-12-16",
+          "valor": {
+            "ordinary": 25,
+            "rest-or-holiday": 30
+          },
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Presidential Decree No. 850 (Articles 86 to 95 of the Labor Code)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=8736&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.night-shift-differential",
+      "nombre": "Night shift differential (10 pm to 6 am)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-12-16",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Presidential Decree No. 850 (Articles 86 to 95 of the Labor Code)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=8736&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.normal-hours",
+      "nombre": "Normal hours of work in a day",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-12-16",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Presidential Decree No. 850 (Articles 86 to 95 of the Labor Code)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=8736&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.service-incentive-leave",
+      "nombre": "Yearly service incentive leave with pay",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-12-16",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Presidential Decree No. 850 (Articles 86 to 95 of the Labor Code)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=8736&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.separation-pay",
+      "nombre": "Separation pay for authorized causes, in months of pay per year of service",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "redundancy": "Redundancy or labor-saving devices",
+        "retrenchment": "Retrenchment or closure not due to serious losses"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1981-08-21",
+          "valor": {
+            "redundancy": 1,
+            "retrenchment": 0.5
+          },
+          "fuente": {
+            "organismo": "Supreme Court E-Library",
+            "titulo": "Batas Pambansa Blg. 130 (Article 284 of the Labor Code, now Article 298)",
+            "url": "https://elibrary.judiciary.gov.ph/assets/dtSearch/dtSearch_system_files/dtisapi6.dll?cmd=getdoc&DocId=4920&Index=%2a2ceb34621b4a207c3a52af138f1e7bbf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.minimum-wage-low",
+      "nombre": "Lowest daily minimum wage in the region (all sectors)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "regiones": [
+        "ncr",
+        "car",
+        "ilocos",
+        "cagayan-valley",
+        "central-luzon",
+        "calabarzon",
+        "mimaropa",
+        "bicol",
+        "western-visayas",
+        "central-visayas",
+        "eastern-visayas",
+        "zamboanga-peninsula",
+        "northern-mindanao",
+        "davao",
+        "soccsksargen",
+        "caraga",
+        "barmm"
+      ],
+      "proximaRevision": "2027-06-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "ncr",
+          "desde": "2026-09-26",
+          "valor": 718,
+          "fuente": {
+            "organismo": "RTWPB-NCR",
+            "titulo": "Wage Order No. NCR-28",
+            "url": "https://nwpc.dole.gov.ph/wp-content/uploads/2026/09/Wage-Order-No.-NCR-28.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. NCR-28"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "car",
+          "desde": "2025-12-30",
+          "valor": 505,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. CAR-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ilocos",
+          "desde": "2025-11-19",
+          "valor": 480,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB1-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "cagayan-valley",
+          "desde": "2025-11-05",
+          "valor": 500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RTWPB 2-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-luzon",
+          "desde": "2025-10-30",
+          "hasta": "2026-04-15",
+          "valor": 475,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBIII-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-luzon",
+          "desde": "2026-04-16",
+          "valor": 515,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBIII-26, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "calabarzon",
+          "desde": "2025-10-05",
+          "hasta": "2026-10-25",
+          "valor": 508,
+          "fuente": {
+            "organismo": "RTWPB IV-A",
+            "titulo": "Wage Order No. IVA-23 (columna W.O. No. IVA-22)",
+            "url": "https://nwpc.dole.gov.ph/wp-content/uploads/2026/10/Wage-Order-No.-IVA-CALABARZON-23.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. IVA-22"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "calabarzon",
+          "desde": "2026-10-26",
+          "valor": 550,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. IVA-23"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mimaropa",
+          "desde": "2026-01-01",
+          "valor": 455,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-MIMAROPA-13"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bicol",
+          "desde": "2026-04-08",
+          "hasta": "2026-11-30",
+          "valor": 455,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBV-23"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bicol",
+          "desde": "2026-12-01",
+          "valor": 480,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBV-23, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "western-visayas",
+          "desde": "2025-11-19",
+          "valor": 520,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBVI-29"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-visayas",
+          "desde": "2026-10-14",
+          "valor": 542,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. ROVII-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "eastern-visayas",
+          "desde": "2025-12-08",
+          "hasta": "2026-05-31",
+          "valor": 422,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-VIII-25"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "eastern-visayas",
+          "desde": "2026-06-01",
+          "valor": 440,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-VIII-25, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "zamboanga-peninsula",
+          "desde": "2026-01-01",
+          "hasta": "2026-05-31",
+          "valor": 426,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RIX-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "zamboanga-peninsula",
+          "desde": "2026-06-01",
+          "valor": 451,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RIX-24, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "northern-mindanao",
+          "desde": "2026-01-16",
+          "hasta": "2026-04-30",
+          "valor": 471,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RX-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "northern-mindanao",
+          "desde": "2026-05-01",
+          "valor": 485,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RX-24, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "davao",
+          "desde": "2026-03-13",
+          "hasta": "2026-08-31",
+          "valor": 515,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB XI-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "davao",
+          "desde": "2026-09-01",
+          "valor": 525,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB XI-24, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "soccsksargen",
+          "desde": "2025-11-02",
+          "hasta": "2025-12-14",
+          "valor": 433,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXII-25"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "soccsksargen",
+          "desde": "2025-12-15",
+          "valor": 443,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXII-25, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "caraga",
+          "desde": "2026-01-03",
+          "hasta": "2026-04-30",
+          "valor": 455,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXIII-20"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "caraga",
+          "desde": "2026-05-01",
+          "valor": 475,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXIII-20, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "barmm",
+          "desde": "2026-08-06",
+          "hasta": "2026-11-30",
+          "valor": 401,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. BARMM-05"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "barmm",
+          "desde": "2026-12-01",
+          "valor": 426,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. BARMM-05, second tranche"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.minimum-wage-high",
+      "nombre": "Highest daily minimum wage in the region (all sectors)",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "regiones": [
+        "ncr",
+        "car",
+        "ilocos",
+        "cagayan-valley",
+        "central-luzon",
+        "calabarzon",
+        "mimaropa",
+        "bicol",
+        "western-visayas",
+        "central-visayas",
+        "eastern-visayas",
+        "zamboanga-peninsula",
+        "northern-mindanao",
+        "davao",
+        "soccsksargen",
+        "caraga",
+        "barmm"
+      ],
+      "proximaRevision": "2027-06-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "ncr",
+          "desde": "2026-09-26",
+          "valor": 755,
+          "fuente": {
+            "organismo": "RTWPB-NCR",
+            "titulo": "Wage Order No. NCR-28",
+            "url": "https://nwpc.dole.gov.ph/wp-content/uploads/2026/09/Wage-Order-No.-NCR-28.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. NCR-28"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "car",
+          "desde": "2025-12-30",
+          "valor": 505,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. CAR-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ilocos",
+          "desde": "2025-11-19",
+          "valor": 505,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB1-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "cagayan-valley",
+          "desde": "2025-11-05",
+          "valor": 500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RTWPB 2-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-luzon",
+          "desde": "2025-10-30",
+          "hasta": "2026-04-15",
+          "valor": 570,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBIII-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-luzon",
+          "desde": "2026-04-16",
+          "valor": 600,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBIII-26, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "calabarzon",
+          "desde": "2025-10-05",
+          "hasta": "2026-10-25",
+          "valor": 600,
+          "fuente": {
+            "organismo": "RTWPB IV-A",
+            "titulo": "Wage Order No. IVA-23 (columna W.O. No. IVA-22)",
+            "url": "https://nwpc.dole.gov.ph/wp-content/uploads/2026/10/Wage-Order-No.-IVA-CALABARZON-23.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. IVA-22"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "calabarzon",
+          "desde": "2026-10-26",
+          "valor": 645,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. IVA-23"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mimaropa",
+          "desde": "2026-01-01",
+          "valor": 455,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-MIMAROPA-13"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bicol",
+          "desde": "2026-04-08",
+          "hasta": "2026-11-30",
+          "valor": 455,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBV-23"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bicol",
+          "desde": "2026-12-01",
+          "valor": 480,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBV-23, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "western-visayas",
+          "desde": "2025-11-19",
+          "valor": 550,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBVI-29"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-visayas",
+          "desde": "2026-10-14",
+          "valor": 582,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. ROVII-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "eastern-visayas",
+          "desde": "2025-12-08",
+          "hasta": "2026-05-31",
+          "valor": 452,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-VIII-25"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "eastern-visayas",
+          "desde": "2026-06-01",
+          "valor": 470,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-VIII-25, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "zamboanga-peninsula",
+          "desde": "2026-01-01",
+          "hasta": "2026-05-31",
+          "valor": 439,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RIX-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "zamboanga-peninsula",
+          "desde": "2026-06-01",
+          "valor": 464,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RIX-24, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "northern-mindanao",
+          "desde": "2026-01-16",
+          "hasta": "2026-04-30",
+          "valor": 486,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RX-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "northern-mindanao",
+          "desde": "2026-05-01",
+          "valor": 500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RX-24, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "davao",
+          "desde": "2026-03-13",
+          "hasta": "2026-08-31",
+          "valor": 525,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB XI-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "davao",
+          "desde": "2026-09-01",
+          "valor": 540,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB XI-24, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "soccsksargen",
+          "desde": "2025-11-02",
+          "hasta": "2025-12-14",
+          "valor": 450,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXII-25"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "soccsksargen",
+          "desde": "2025-12-15",
+          "valor": 460,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXII-25, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "caraga",
+          "desde": "2026-01-03",
+          "hasta": "2026-04-30",
+          "valor": 455,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXIII-20"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "caraga",
+          "desde": "2026-05-01",
+          "valor": 475,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXIII-20, second tranche"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "barmm",
+          "desde": "2026-08-06",
+          "hasta": "2026-11-30",
+          "valor": 436,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. BARMM-05"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "barmm",
+          "desde": "2026-12-01",
+          "valor": 461,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. BARMM-05, second tranche"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.kasambahay-wage-low",
+      "nombre": "Lowest monthly minimum wage for domestic workers (kasambahay) in the region",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "regiones": [
+        "ncr",
+        "car",
+        "ilocos",
+        "cagayan-valley",
+        "central-luzon",
+        "calabarzon",
+        "mimaropa",
+        "bicol",
+        "western-visayas",
+        "central-visayas",
+        "eastern-visayas",
+        "zamboanga-peninsula",
+        "northern-mindanao",
+        "davao",
+        "soccsksargen",
+        "caraga",
+        "barmm"
+      ],
+      "proximaRevision": "2027-06-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "ncr",
+          "desde": "2026-02-07",
+          "valor": 7800,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. NCR-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "car",
+          "desde": "2025-12-30",
+          "valor": 6600,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. CAR-DW-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ilocos",
+          "desde": "2025-11-19",
+          "valor": 6700,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB1-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "cagayan-valley",
+          "desde": "2025-11-05",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. 02-DW-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-luzon",
+          "desde": "2025-10-30",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBIII-DW-05"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "calabarzon",
+          "desde": "2026-10-26",
+          "valor": 7500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-IVA (CALABARZON)-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mimaropa",
+          "desde": "2026-01-01",
+          "valor": 7000,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-MIMAROPA-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bicol",
+          "desde": "2025-04-05",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBV-DW-04"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "western-visayas",
+          "desde": "2025-11-19",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBVI-DW-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-visayas",
+          "desde": "2026-10-14",
+          "valor": 7500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. ROVII-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "eastern-visayas",
+          "desde": "2025-12-08",
+          "valor": 5800,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-VIII-DW"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "zamboanga-peninsula",
+          "desde": "2026-05-20",
+          "valor": 5500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RIX-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "northern-mindanao",
+          "desde": "2026-01-16",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RX-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "davao",
+          "desde": "2026-03-13",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB XI-DW-04"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "soccsksargen",
+          "desde": "2025-11-02",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXII-DW-05"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "caraga",
+          "desde": "2026-01-03",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXIII-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "barmm",
+          "desde": "2026-01-08",
+          "valor": 5500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. BARMM-DW-02"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ph.kasambahay-wage-high",
+      "nombre": "Highest monthly minimum wage for domestic workers (kasambahay) in the region",
+      "tipo": "numero",
+      "unidad": "PHP",
+      "regiones": [
+        "ncr",
+        "car",
+        "ilocos",
+        "cagayan-valley",
+        "central-luzon",
+        "calabarzon",
+        "mimaropa",
+        "bicol",
+        "western-visayas",
+        "central-visayas",
+        "eastern-visayas",
+        "zamboanga-peninsula",
+        "northern-mindanao",
+        "davao",
+        "soccsksargen",
+        "caraga",
+        "barmm"
+      ],
+      "proximaRevision": "2027-06-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "ncr",
+          "desde": "2026-02-07",
+          "valor": 7800,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. NCR-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "car",
+          "desde": "2025-12-30",
+          "valor": 6600,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. CAR-DW-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "ilocos",
+          "desde": "2025-11-19",
+          "valor": 6700,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB1-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "cagayan-valley",
+          "desde": "2025-11-05",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. 02-DW-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-luzon",
+          "desde": "2025-10-30",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBIII-DW-05"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "calabarzon",
+          "desde": "2026-10-26",
+          "valor": 7500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-IVA (CALABARZON)-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "mimaropa",
+          "desde": "2026-01-01",
+          "valor": 7000,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-MIMAROPA-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "bicol",
+          "desde": "2025-04-05",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBV-DW-04"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "western-visayas",
+          "desde": "2025-11-19",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RBVI-DW-07"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "central-visayas",
+          "desde": "2026-10-14",
+          "valor": 7500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. ROVII-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "eastern-visayas",
+          "desde": "2025-12-08",
+          "valor": 6400,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB-VIII-DW"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "zamboanga-peninsula",
+          "desde": "2026-05-20",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RIX-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "northern-mindanao",
+          "desde": "2026-01-16",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RX-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "davao",
+          "desde": "2026-03-13",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RB XI-DW-04"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "soccsksargen",
+          "desde": "2025-11-02",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXII-DW-05"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "caraga",
+          "desde": "2026-01-03",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. RXIII-DW-06"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "barmm",
+          "desde": "2026-01-08",
+          "valor": 5500,
+          "fuente": {
+            "organismo": "NWPC (DOLE)",
+            "titulo": "Daily minimum wage rates by region",
+            "url": "https://nwpc.dole.gov.ph/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "WO No. BARMM-DW-02"
+          }
+        }
+      ]
+    }
+  ]
+}

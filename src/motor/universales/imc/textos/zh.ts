@@ -1,0 +1,47 @@
+import { textosPorEscritura } from "../../comun/chino";
+import type { TextosUi } from "../../tipos";
+import type { UiImc } from "../definicion";
+
+export const textosZh: TextosUi<UiImc> = textosPorEscritura<UiImc>(
+  "bmi",
+  () => ({
+    peso: (u) => `體重（${u}）`,
+    altura: (u) => `身高（${u}）`,
+    pies: "身高：英尺（ft）",
+    pulgadas: "身高：英寸（in）",
+    imc: "身體質量指數（BMI）",
+    categoria: "分類（WHO 標準）",
+    pesoMin: (u) => `健康體重下限（${u}）`,
+    pesoMax: (u) => `健康體重上限（${u}）`,
+    rangoAyuda: "在這個身高下，BMI 落在健康範圍的體重區間。",
+    bajo: "體重過輕",
+    normal: "健康體重",
+    sobrepeso: "過重",
+    obesidad1: "一級肥胖",
+    obesidad2: "二級肥胖",
+    obesidad3: "三級肥胖",
+    errorPeso: "體重必須大於 0。",
+    errorAltura: "身高必須大於 0。",
+    aviso: "BMI 是成人的一般參考指標：無法分辨肌肉和脂肪，也不能同樣套用在孕婦和兒童身上。它不能取代醫師等專業人員的建議。",
+  }),
+  () => ({
+    peso: (u) => `体重（${u}）`,
+    altura: (u) => `身高（${u}）`,
+    pies: "身高：英尺（ft）",
+    pulgadas: "身高：英寸（in）",
+    imc: "身体质量指数（BMI）",
+    categoria: "分类（WHO 标准）",
+    pesoMin: (u) => `健康体重下限（${u}）`,
+    pesoMax: (u) => `健康体重上限（${u}）`,
+    rangoAyuda: "在这个身高下，BMI 落在健康范围的体重区间。",
+    bajo: "体重过低",
+    normal: "正常体重",
+    sobrepeso: "超重",
+    obesidad1: "一级肥胖",
+    obesidad2: "二级肥胖",
+    obesidad3: "三级肥胖",
+    errorPeso: "体重必须大于 0。",
+    errorAltura: "身高必须大于 0。",
+    aviso: "BMI 是成人的一般参考指标：无法区分肌肉和脂肪，也不能同样适用于孕妇和儿童。它不能代替医生等专业人员的建议。",
+  }),
+);

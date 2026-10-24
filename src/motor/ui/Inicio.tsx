@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { formatearFecha } from "../formato";
 import { frescuraDePais, type FrescuraPais } from "../frescura";
 import { rutaIntl } from "../seo";
@@ -39,7 +39,7 @@ function scriptVuelta(destinos: Readonly<Record<string, string>>): string {
   return `(function(){try{var r=document.referrer;if(r&&new URL(r).origin===location.origin)return;if(/(^|&)paises(=|&|$)/.test(location.search.slice(1)))return;var c=localStorage.getItem(${JSON.stringify(CLAVE_PAIS)});var m=${mapa};if(c&&Object.prototype.hasOwnProperty.call(m,c))location.replace(m[c])}catch(e){}})()`;
 }
 
-export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; externos?: readonly PaisExterno[] }) {
+export function InicioGlobal({ ctx, externos = [], destacado }: { ctx: ContextoSitio; externos?: readonly PaisExterno[]; destacado?: ReactNode }) {
   const t = ctx.textos;
   const ti = textosInicio(ctx.mercado.idioma, ctx.mercado.trato, ctx.mercado.locale);
   const frescuras = new Map<string, FrescuraPais | null>(ctx.paises.map((m) => [m.codigo, frescuraDePais(ctx.registro, m.codigo, hoyEn(m))]));
@@ -154,6 +154,8 @@ export function InicioGlobal({ ctx, externos = [] }: { ctx: ContextoSitio; exter
         </section>
       </div>
 
+      {destacado}
+
       <section className="cy-promesas" aria-labelledby="cy-promesas-titulo">
         <h2 id="cy-promesas-titulo" className="cy-seccion-titulo">
           {t.global.promesaTitulo}
@@ -224,7 +226,7 @@ function DatosVivos({ ctx, f }: { ctx: ContextoSitio; f: FrescuraPais }) {
   );
 }
 
-export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
+export function InicioPais({ ctx, destacado }: { ctx: ContextoSitio; destacado?: ReactNode }) {
   const t = ctx.textos;
   const m = ctx.mercado;
   const entradas = calculadorasDe(ctx, m);
@@ -245,6 +247,8 @@ export function InicioPais({ ctx }: { ctx: ContextoSitio }) {
         <p className="cy-bajada">{t.pais.bajada(m.nombre)}</p>
         {frescura && (frescura.verificadoEl || frescura.actualizadoEl) ? <DatosVivos ctx={ctx} f={frescura} /> : null}
       </header>
+
+      {destacado}
 
       <div className="cy-inicio-pais-cuerpo">
         <div className="cy-categorias">

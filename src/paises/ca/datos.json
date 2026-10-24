@@ -2821,6 +2821,233 @@
           }
         }
       ]
+    },
+    {
+      "id": "ca.qc-tax-brackets",
+      "nombre": "Québec income tax brackets",
+      "tipo": "escala",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 54345,
+              "tasa": 14
+            },
+            {
+              "desde": 54345,
+              "hasta": 108680,
+              "tasa": 19
+            },
+            {
+              "desde": 108680,
+              "hasta": 132245,
+              "tasa": 24
+            },
+            {
+              "desde": 132245,
+              "hasta": null,
+              "tasa": 25.75
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministère des Finances du Québec",
+            "titulo": "Paramètres du régime d'imposition des particuliers 2026 (novembre 2025), tableau 3",
+            "url": "https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/finances/publications-adm/parametres/AUTFR_RegimeImpot2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Seuils 2026 de la table d'impôt. Les taux (14 %, 19 %, 24 %, 25,75 %) sont ceux du Plan budgétaire 2023-2024, tableau B.3, inchangés depuis : https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/finances/publications-adm/Budget/2324/Budget2324_PlanBudgetaire.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qc-bpa",
+      "nombre": "Québec basic personal amount",
+      "tipo": "numero",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 18952,
+          "fuente": {
+            "organismo": "Ministère des Finances du Québec",
+            "titulo": "Paramètres du régime d'imposition des particuliers 2026 (novembre 2025), tableau 3",
+            "url": "https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/finances/publications-adm/parametres/AUTFR_RegimeImpot2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16",
+            "nota": "Seuils 2026 de la table d'impôt. Les taux (14 %, 19 %, 24 %, 25,75 %) sont ceux du Plan budgétaire 2023-2024, tableau B.3, inchangés depuis : https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/finances/publications-adm/Budget/2324/Budget2324_PlanBudgetaire.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qc-workers-deduction",
+      "nombre": "Québec deduction for workers",
+      "tipo": "mapa",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "rate": 6,
+            "max": 1450
+          },
+          "fuente": {
+            "organismo": "Ministère des Finances du Québec",
+            "titulo": "Dépenses fiscales, édition 2025, mesure 1.1.9.6 Déduction pour les travailleurs (tableau C.42)",
+            "url": "https://www.budget.finances.gouv.qc.ca/budget/outils/depenses-fiscales/documents/AUTFR_Depenses_fiscales_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qc-abatement",
+      "nombre": "Refundable Quebec abatement",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 16.5,
+          "fuente": {
+            "organismo": "Canada Revenue Agency",
+            "titulo": "T4032-QC, Payroll Deductions Tables, Quebec, January 1, 2026 (Quebec tax abatement)",
+            "url": "https://www.canada.ca/content/dam/cra-arc/migration/cra-arc/tx/bsnss/tpcs/pyrll/t4032/2026/t4032-qc-1-26e.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qc-transfer-duties",
+      "nombre": "Québec land transfer duties (welcome tax)",
+      "tipo": "escala",
+      "unidad": "CAD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 62900,
+              "tasa": 0.5
+            },
+            {
+              "desde": 62900,
+              "hasta": 315000,
+              "tasa": 1
+            },
+            {
+              "desde": 315000,
+              "hasta": null,
+              "tasa": 1.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Gouvernement du Québec",
+            "titulo": "Droits sur les mutations immobilières : taux pour l'exercice financier 2026",
+            "url": "https://www.quebec.ca/gouvernement/gestion-municipale/finances-fiscalite-municipales/fiscalite/droits-mutations-immobilieres",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qc-vacation-pay",
+      "nombre": "Québec vacation pay (Act respecting labour standards, s. 74)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rate-0": 4,
+            "rate-1": 6,
+            "years-1": 3
+          },
+          "motivo": "Légis Québec y la CNESST responden 403 a las herramientas de lectura (Cloudflare y CloudFront) y no se saltea: el valor sale del texto de la ley citado por un buscador, falta leerlo en la fuente",
+          "fuente": {
+            "organismo": "Légis Québec",
+            "titulo": "Loi sur les normes du travail (RLRQ, c. N-1.1)",
+            "url": "https://www.legisquebec.gouv.qc.ca/fr/document/lc/N-1.1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qc-overtime",
+      "nombre": "Québec overtime (Act respecting labour standards, s. 52 and 55)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "hours": 40,
+            "premium": 50
+          },
+          "motivo": "Légis Québec y la CNESST responden 403 a las herramientas de lectura (Cloudflare y CloudFront) y no se saltea: el valor sale del texto de la ley citado por un buscador, falta leerlo en la fuente",
+          "fuente": {
+            "organismo": "Légis Québec",
+            "titulo": "Loi sur les normes du travail (RLRQ, c. N-1.1)",
+            "url": "https://www.legisquebec.gouv.qc.ca/fr/document/lc/N-1.1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ca.qc-notice",
+      "nombre": "Québec notice of termination (Act respecting labour standards, s. 82)",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 1,
+            "12": 2,
+            "60": 4,
+            "120": 8
+          },
+          "motivo": "Légis Québec y la CNESST responden 403 a las herramientas de lectura (Cloudflare y CloudFront) y no se saltea: el valor sale del texto de la ley citado por un buscador, falta leerlo en la fuente",
+          "fuente": {
+            "organismo": "Légis Québec",
+            "titulo": "Loi sur les normes du travail (RLRQ, c. N-1.1)",
+            "url": "https://www.legisquebec.gouv.qc.ca/fr/document/lc/N-1.1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-16"
+          }
+        }
+      ]
     }
   ]
 }

@@ -1251,6 +1251,44 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: CON_OTROS_MONTOS,
   },
+  "informe-calculo": {
+    nombre: "Informe del cálculo",
+    tituloCorto: "informe del cálculo",
+    paraQuien: T(
+      "Para tener este cálculo por escrito, con tus números, lo que supone y de dónde sale cada valor oficial",
+      "Para tener este cálculo por escrito, con sus números, lo que supone y de dónde sale cada valor oficial",
+      "Para tener este cálculo por escrito, con tus números, lo que supone y de dónde sale cada valor oficial",
+    ),
+    descripcion: [
+      T(
+        "Un informe en PDF con el cálculo que hiciste, paso a paso y con tus datos: el resultado, los supuestos que usa y cada valor oficial con su fuente y la fecha en que se revisó.",
+        "Un informe en PDF con el cálculo que hizo, paso a paso y con sus datos: el resultado, los supuestos que usa y cada valor oficial con su fuente y la fecha en que se revisó.",
+        "Un informe en PDF con el cálculo que hiciste, paso a paso y con tus datos: el resultado, los supuestos que usa y cada valor oficial con su fuente y la fecha en que se revisó.",
+      ),
+      "Sirve para guardarlo o para mostrárselo al contador, al empleador o a quien tenga que revisarlo, sin explicar de nuevo de dónde salió cada número.",
+    ],
+    gancho: T("Llévate este cálculo por escrito, con sus fuentes", "Llévese este cálculo por escrito, con sus fuentes", "Llevate este cálculo por escrito, con sus fuentes"),
+    incluye: [
+      { titulo: T("El resultado con tus datos", "El resultado con sus datos", "El resultado con tus datos"), texto: T("Tal como lo calculaste, listo para imprimir.", "Tal como lo calculó, listo para imprimir.", "Tal como lo calculaste, listo para imprimir.") },
+      { titulo: "Cómo se calcula", texto: "Los pasos y los supuestos, para ver de dónde sale cada número." },
+      { titulo: "Las fuentes oficiales", texto: "Cada valor con el organismo, el enlace y la fecha en que se revisó." },
+    ],
+    pasos: {
+      titulo: "Antes de usarlo",
+      items: [
+        T(
+          "Revisa que los datos de arriba sean los tuyos: el resultado depende de ellos.",
+          "Revise que los datos de arriba sean los suyos: el resultado depende de ellos.",
+          "Revisá que los datos de arriba sean los tuyos: el resultado depende de ellos.",
+        ),
+        T(
+          "Si un valor oficial cambió, vuelve a calcular: el informe usa los vigentes al día de la compra.",
+          "Si un valor oficial cambió, vuelva a calcular: el informe usa los vigentes al día de la compra.",
+          "Si un valor oficial cambió, volvé a calcular: el informe usa los vigentes al día de la compra.",
+        ),
+      ],
+    },
+  },
 };
 
 export const es: DiccionarioVenta = {

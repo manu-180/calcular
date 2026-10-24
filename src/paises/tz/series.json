@@ -1,0 +1,183 @@
+{
+  "mercado": "tz",
+  "series": [
+    {
+      "id": "tz.usd",
+      "nombre": "Bank of Tanzania exchange rate, shillings per US dollar (mean)",
+      "unidad": "TZS",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Bank of Tanzania",
+        "titulo": "Exchange rates (mean of buying and selling)",
+        "url": "https://www.bot.go.tz/ExchangeRate/excRates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17"
+      },
+      "puntos": [
+        [
+          "2026-09-20",
+          2641.1997
+        ],
+        [
+          "2026-09-21",
+          2641.1997
+        ],
+        [
+          "2026-09-22",
+          2641.8564
+        ],
+        [
+          "2026-09-23",
+          2645.2794
+        ],
+        [
+          "2026-09-24",
+          2645.7172
+        ],
+        [
+          "2026-09-25",
+          2645.4486
+        ],
+        [
+          "2026-09-26",
+          2646.2347
+        ],
+        [
+          "2026-09-27",
+          2646.2347
+        ],
+        [
+          "2026-09-28",
+          2646.2347
+        ],
+        [
+          "2026-09-29",
+          2643.1301
+        ],
+        [
+          "2026-09-30",
+          2642.2545
+        ],
+        [
+          "2026-10-01",
+          2641.6176
+        ],
+        [
+          "2026-10-02",
+          2641.4186
+        ],
+        [
+          "2026-10-03",
+          2639.2494
+        ],
+        [
+          "2026-10-04",
+          2639.2494
+        ],
+        [
+          "2026-10-05",
+          2639.2494
+        ],
+        [
+          "2026-10-06",
+          2637.2394
+        ],
+        [
+          "2026-10-07",
+          2635.5677
+        ],
+        [
+          "2026-10-08",
+          2633.6771
+        ],
+        [
+          "2026-10-09",
+          2631.3587
+        ],
+        [
+          "2026-10-10",
+          2630.891
+        ],
+        [
+          "2026-10-11",
+          2630.891
+        ],
+        [
+          "2026-10-12",
+          2630.891
+        ],
+        [
+          "2026-10-13",
+          2631.4283
+        ],
+        [
+          "2026-10-14",
+          2631.9855
+        ],
+        [
+          "2026-10-15",
+          2631.9855
+        ],
+        [
+          "2026-10-16",
+          2633.1199
+        ],
+        [
+          "2026-10-17",
+          2633.1199
+        ],
+        ["2026-10-20", 2635.5876],
+        ["2026-10-22", 2636.2344],
+        ["2026-10-23", 2636.7419],
+        ["2026-10-24", 2637.8165]
+      ]
+    },
+    {
+      "id": "tz.cbr",
+      "nombre": "Central Bank Rate",
+      "unidad": "%",
+      "frecuencia": "trimestral",
+      "maxAntiguedadDias": 100,
+      "fuente": {
+        "organismo": "Bank of Tanzania",
+        "titulo": "Central Bank Rate, 4th Quarter 2026",
+        "url": "https://www.bot.go.tz/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17",
+        "nota": "Each point is the first day of the quarter the Monetary Policy Committee set the rate for."
+      },
+      "puntos": [
+        [
+          "2026-10-01",
+          6.25
+        ]
+      ]
+    },
+    {
+      "id": "tz.inflation",
+      "nombre": "Annual headline inflation",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 90,
+      "fuente": {
+        "organismo": "National Bureau of Statistics",
+        "titulo": "Annual headline inflation rate",
+        "url": "https://www.nbs.go.tz/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-17",
+        "nota": "Each month is stored on its first day."
+      },
+      "puntos": [
+        [
+          "2026-08-01",
+          4.3
+        ],
+        [
+          "2026-09-01",
+          4.3
+        ]
+      ]
+    }
+  ]
+}

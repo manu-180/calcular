@@ -3,10 +3,10 @@ import { diccionarioVenta, textosFamilia, textosVenta } from "@/lib/pagos/textos
 import type { Idioma, Trato } from "@/motor/tipos";
 import type { TextosInforme } from "./[informe]/ver/_informe-vivo";
 
-export function textosInforme(idioma: Idioma, trato: Trato, clave: ClaveFamilia): TextosInforme {
-  const i = textosVenta(idioma, trato).informe;
-  const f = textosFamilia(clave, idioma, trato);
-  const { si, no } = diccionarioVenta(idioma).general;
+export function textosInforme(idioma: Idioma, trato: Trato, clave: ClaveFamilia, locale?: string): TextosInforme {
+  const i = textosVenta(idioma, trato, locale).informe;
+  const f = textosFamilia(clave, idioma, trato, locale);
+  const { si, no } = diccionarioVenta(idioma, locale).general;
   return {
     tusDatos: i.tusDatos,
     resultado: i.resultado,
@@ -27,13 +27,14 @@ export function textosInforme(idioma: Idioma, trato: Trato, clave: ClaveFamilia)
           nombre: i.nombre,
           documento: i.documento,
           etiquetaEnMinuscula: i.etiquetaEnMinuscula,
+          anchoCompleto: i.anchoCompleto ?? false,
         }
       : null,
   };
 }
 
-export function textosVer(idioma: Idioma, trato: Trato) {
-  const i = textosVenta(idioma, trato).informe;
+export function textosVer(idioma: Idioma, trato: Trato, locale?: string) {
+  const i = textosVenta(idioma, trato, locale).informe;
   return {
     comoSeCalcula: i.comoSeCalcula,
     fuentes: i.fuentes,
