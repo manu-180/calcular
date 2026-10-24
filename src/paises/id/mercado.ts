@@ -11,7 +11,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["IDR"],
   zonaHoraria: "Asia/Jakarta",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "dki-jakarta", nombre: "DKI Jakarta" },
     { id: "jawa-tengah", nombre: "Jawa Tengah" },
