@@ -1,5 +1,6 @@
 import { definirUniversal } from "../tipos";
 import { casos } from "./casos";
+import { contenidoDa } from "./contenido/da";
 import { contenidoDe } from "./contenido/de";
 import { contenidoEn } from "./contenido/en";
 import { contenidoEs } from "./contenido/es";
@@ -11,6 +12,7 @@ import { contenidoNl } from "./contenido/nl";
 import { contenidoPt } from "./contenido/pt";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiAlquilarOComprar } from "./definicion";
+import { textosDa } from "./textos/da";
 import { textosDe } from "./textos/de";
 import { textosEn } from "./textos/en";
 import { textosEs } from "./textos/es";
@@ -26,7 +28,7 @@ export default definirUniversal<UiAlquilarOComprar>({
   id: "alquilar-o-comprar",
   concepto: "alquilar-o-comprar",
   definir,
-  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
-  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
+  textos: { da: textosDa, de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
+  contenido: { da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
   casos,
 });
