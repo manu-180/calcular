@@ -13,6 +13,7 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   ja: "jissai-no-kyuyo",
   ko: "silje-yeonbong",
   zh: "zhenshi-xinzi",
+  th: "ngoen-duean-ching",
 };
 
 export const RUTA_SUELDOS_AR = "/sueldos-reales";

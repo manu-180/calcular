@@ -18,6 +18,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   ja: "kyuyo-karenda",
   ko: "geupyeo-dallyeok",
   zh: "gongzi-rili",
+  th: "patithin-ngoen-duean",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";
