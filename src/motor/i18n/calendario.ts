@@ -739,7 +739,71 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Uzbeko (ADR 0002, D16): impersonal como los demás. Los sufijos de caso nunca van pegados a una cifra
+// ni a un valor interpolado: el número va con su sustantivo suelto («${n} kun», «${anios} yil»).
+const gUz = GRAMATICA.uz;
+const uz: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Ish haqi va soliqlar taqvimi",
+    seo: {
+      titulo: (pais, anios) => [`${gUz.de(pais)} ish haqi va soliqlar taqvimi ${anios}: muhim sanalar`, `${gUz.de(pais)} ish haqi va soliqlar taqvimi ${anios}`, `${gUz.de(pais)} ish haqi taqvimi`],
+      descripcion: (pais, proximas) => `${gUz.en(pais)} ish haqiga taʼsir qiladigan sanalar, rasmiy manbalardan: ${proximas}. Har biri oʻz kalkulyatori bilan.`,
+      descripcionSin: (pais) => `${gUz.en(pais)} ish haqiga taʼsir qiladigan sanalar, rasmiy manbalardan va har biri oʻz kalkulyatori bilan. Ularni telefon taqvimiga qoʻshish mumkin.`,
+    },
+    ceja: (anios) => `${anios} yil taqvimi`,
+    h1: (pais) => `${gUz.de(pais)} ish haqi va soliqlar taqvimi`,
+    acento: "maoshga taʼsir qiladigan sanalar",
+    bajada: "Har bir sana rasmiy manbadan olingan va u taʼsir qiladigan kalkulyatorga bogʻlangan. Yangi qiymat eʼlon qilinsa, sahifa oʻzi yangilanadi.",
+    proxima: "Navbatdagi sana",
+    cuenta: { hoy: "Bugun", manana: "Ertaga", ayer: "Kecha", en: (n) => `${n} kundan keyin`, hace: (n) => `${n} kun oldin`, dias: () => "kun" },
+    queViene: "Oldinda",
+    yaRige: "Allaqachon amalda",
+    mesPorMes: "Yil, oyma-oy",
+    sinFechas: "Eʼlon qilingan oʻzgarishlar yoʻq",
+    filtro: "Mavzu boʻyicha saralash",
+    todo: "Hammasi",
+    tipos: { pago: "Toʻlovlar", "salario-minimo": "Eng kam ish haqi", impuestos: "Soliqlar", aportes: "Badallar va pensiyalar", laboral: "Mehnat qoidalari", indices: "Hisob koʻrsatkichlari" },
+    pasa: (antes, despues) => `Oldin: ${antes}. Endi: ${despues}`,
+    queda: (valor) => `Yangi qiymat: ${valor}`,
+    cambian: "Summalar oʻzgaradi",
+    zonas: (lista) => `Amal qiladigan hudud: ${lista}`,
+    limite: "Soʻnggi muddat",
+    agregar: "Taqvimimga qoʻshish",
+    descargar: "Apple, Outlook va boshqalar (.ics fayl)",
+    google: "Google Taqvim",
+    calcular: "Hisoblash",
+    tambien: "Shuningdek",
+    fuente: (organismo, fecha) => `Manba: ${organismo}. Tekshirilgan sana: ${fecha}.`,
+    verificado: (fecha) => `Tekshirilgan sana: ${fecha}`,
+    suscribir: {
+      titulo: "Butun taqvim, doim yangilangan holda",
+      texto: "Bir marta obuna boʻlinsa, yangi sanalar telefon yoki kompyuterdagi taqvimda oʻzi paydo boʻladi.",
+      boton: "Taqvimga obuna boʻlish",
+      copiar: "Havolani nusxalash",
+      copiado: "Havola nusxalandi",
+    },
+    fuentes: {
+      titulo: "Har bir sana qayerdan olinadi",
+      texto: "Faqat qonunda belgilangan yoki rasmiy idora eʼlon qilgan qiymatga asoslangan sanalar kiritiladi. Hali eʼlon qilinmagan narsa koʻrsatilmaydi.",
+    },
+    vacio: "Keyingi oʻn ikki oyda bu mavzu boʻyicha sanalar yoʻq.",
+    destacado: {
+      ceja: "Ish haqi taqvimi",
+      titulo: "Bu yil maoshga taʼsir qiladigan sanalar",
+      ir: "Taqvimni koʻrish",
+      proxima: (titulo, fecha) => `Navbatdagisi: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `${gUz.de(pais)} ish haqi va soliqlar taqvimi (CalcularYa)`,
+      descripcion: (pais) => `${gUz.en(pais)} ish haqi va soliqlarga oid sanalar, rasmiy manbalardan.`,
+      calculadora: "Kalkulyator",
+      fuente: "Manba",
+    },
+    og: { proxima: "Navbatdagi sana", mas: (n) => `Bu yil yana ${n} ta sana bor` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, uz };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

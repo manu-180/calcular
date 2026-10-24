@@ -150,6 +150,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  // Uzbeko (ADR 0002, D16): impersonal, como los demás, para que sirva sin el trato del mercado.
+  uz: {
+    base: {
+      titulo: "Boshqa mamlakatga koʻchish yoki chet eldan maosh olish rejasi bormi?",
+      etiqueta: "Homiylik havolalari",
+      socios: {
+        wise: "Bir nechta valyutadagi hisob: mamlakatlar oʻrtasida bozorning oʻrtacha kursi boʻyicha pul yuborish va qabul qilish, komissiya oldindan koʻrsatiladi.",
+        deel: "Bir mamlakatda turib boshqa mamlakatdagi kompaniyaga ishlaydiganlar uchun shartnomalar va toʻlovlar.",
+      },
+      nota: "Shu havolalar orqali hisob ochilsa, sayt komissiya olishi mumkin. Roʻyxatdan oʻtgan kishi buning uchun ortiqcha toʻlamaydi.",
+      nuevaPestana: "yangi varaqda ochiladi",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {
