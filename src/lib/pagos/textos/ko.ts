@@ -591,6 +591,25 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: OTROS_MONTOS,
   },
+  "informe-calculo": {
+    nombre: "계산 보고서",
+    tituloCorto: "계산 보고서",
+    paraQuien: "이 계산을 내 숫자, 전제 조건, 공식 수치의 출처와 함께 문서로 남기고 싶은 분께",
+    descripcion: [
+      "방금 한 계산을 내 데이터로 한 단계씩 정리한 PDF 보고서예요. 결과, 계산의 전제, 사용한 공식 수치와 그 출처, 확인한 날짜가 들어 있어요.",
+      "보관해 두거나 세무사, 회사 등 확인이 필요한 사람에게 숫자의 근거를 다시 설명하지 않고 건넬 수 있어요.",
+    ],
+    gancho: "이 계산을 출처가 담긴 문서로 남기세요",
+    incluye: [
+      { titulo: "내 데이터로 낸 결과", texto: "계산한 그대로, 바로 인쇄할 수 있어요." },
+      { titulo: "계산 방법", texto: "단계와 전제 조건으로 각 숫자가 어디서 나왔는지 알 수 있어요." },
+      { titulo: "공식 출처", texto: "각 수치마다 발표 기관, 링크, 확인 날짜를 달았어요." },
+    ],
+    pasos: {
+      titulo: "쓰기 전에",
+      items: ["위의 데이터가 내 것인지 확인하세요. 결과는 그 숫자에 따라 달라져요.", "공식 수치가 바뀌었다면 다시 계산하세요. 보고서는 구매한 날 유효한 수치를 써요."],
+    },
+  },
 };
 
 export const ko: DiccionarioVenta = {
