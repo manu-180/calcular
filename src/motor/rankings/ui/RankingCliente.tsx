@@ -88,7 +88,7 @@ async function copiarTexto(texto: string): Promise<boolean> {
 }
 
 function Kit({ v, vista, t }: { v: VarianteVista; vista: VistaRanking; t: TextosRankingCliente }) {
-  const { compartir, estado } = usarCompartir({ origen: "mundo", url: vista.url, titulo: vista.titulo, texto: v.texto, imagen: v.og });
+  const { compartir, estado } = usarCompartir({ origen: "ranking", url: vista.url, titulo: vista.titulo, texto: v.texto, imagen: v.og });
   const [cita, setCita] = useState<"listo" | "copiado" | "error">("listo");
   const reloj = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const copiar = useCallback(async () => {
