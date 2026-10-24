@@ -3,19 +3,19 @@ import calculadora from "./calcul-salaire-brut";
 
 export default definirCasos(calculadora, [
   {
-    nombre: "1 544,136 DT net, chef de famille, 2 enfants : 2 000 DT brut",
-    origen: { tipo: "recalculado", detalle: "Inverse du cas 2 000 DT brut du calcul du salaire net (CNSS 183,6 ; IRPP 256,183 ; CSS 16,081)." },
+    nombre: "1 500 DT net, chef de famille, 2 enfants",
+    origen: { tipo: "recalculado", detalle: "Brut 1 934,327 : CNSS 177,571 ; IRPP 241,272 ; CSS 15,484 ; net 1 934,327 − 434,327 = 1 500." },
     fecha: "2026-10-24",
-    entrada: { net: 1544.136, chef: true, enfants: 2, etudiants: 0, infirmes: 0 },
-    esperado: { brut: 2000, cnss: 183.6, irpp: 256.183, css: 16.081 },
+    entrada: { net: 1500, chef: true, enfants: 2, etudiants: 0, infirmes: 0 },
+    esperado: { net: 1500, brut: 1934.327, cnss: 177.571, irpp: 241.272, css: 15.484 },
     tolerancia: 0.005,
   },
   {
-    nombre: "684,435 DT net, sans charges de famille : 800 DT brut",
-    origen: { tipo: "recalculado", detalle: "Inverse du cas 800 DT brut du calcul du salaire net." },
+    nombre: "700 DT net, sans charges de famille",
+    origen: { tipo: "recalculado", detalle: "Brut annuel 9 840,252 ; CNSS 903,335 ; frais 893,692 ; base 8 043,225 ; IRPP 15 % × 3 043,225 = 456,484 ; CSS 80,432. Mensuel : 820,021 − 75,278 − 38,040 − 6,703 = 700." },
     fecha: "2026-10-24",
-    entrada: { net: 684.435, chef: false, enfants: 0, etudiants: 0, infirmes: 0 },
-    esperado: { brut: 800, cnss: 73.44 },
+    entrada: { net: 700, chef: false, enfants: 0, etudiants: 0, infirmes: 0 },
+    esperado: { net: 700, brut: 820.021, cnss: 75.278, irpp: 38.04, css: 6.703 },
     tolerancia: 0.005,
   },
   {
