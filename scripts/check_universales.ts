@@ -59,11 +59,18 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "cn" as CodigoMercado, pais: "CN", nombrePais: "中国", locale: "zh-CN", trato: "usted", moneda: "CNY" as Moneda, escala: 7 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "聖文森及格瑞那丁", locale: "zh-TW", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  // Turco (ADR 0002, D12): liras con «₺» delante y coma decimal, el nombre largo de siempre y uno
+  // largo con posesivo («Demokratik Kongo Cumhuriyeti», que pide «Cumhuriyeti'nde» en el locativo).
+  tr: [
+    { mercado: "tr" as CodigoMercado, pais: "TR", nombrePais: "Türkiye", locale: "tr-TR", trato: "usted", moneda: "TRY" as Moneda, escala: 40 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent ve Grenadinler", locale: "tr-TR", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "cd" as CodigoMercado, pais: "CD", nombrePais: "Demokratik Kongo Cumhuriyeti", locale: "tr-TR", trato: "usted", moneda: "CDF" as Moneda, escala: 2800 },
+  ],
 };
 
-// En ja, ko y zh las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
+// En ja, ko, zh y tr las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
 // sobre toda la página: los traductores de los idiomas latinos no las necesitaban.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh"]);
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "tr"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy

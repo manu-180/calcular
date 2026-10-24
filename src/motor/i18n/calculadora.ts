@@ -133,6 +133,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       "zh-SG": ZH_HANS_CALCULADORA,
     },
   },
+  tr: {
+    base: {
+      datos: "Bilgileriniz",
+      resultado: "Sonuç",
+      vacio: "Bilgilerinizi girin ve sonucu görmek için Hesapla'ya dokunun.",
+      sinResultado: "Bu sonucu şimdilik göstermiyoruz.",
+      avisos: { info: "Bilmenizde fayda var", cautela: "Dikkat", bloquea: "Sonucu neden göstermiyoruz" },
+      fuenteDelAviso: "Kaynak",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

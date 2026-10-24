@@ -351,6 +351,31 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       "zh-SG": ZH_HANS_MOTOR,
     },
   },
+  // Turco (ADR 0002, D12): «siz» con las formas corteses, como en los bancos y en e-Devlet. El botón
+  // va en imperativo corto («Hesapla»), como los botones de esos sitios; las oraciones, en -in/-ın.
+  tr: {
+    base: {
+      calcular: "Hesapla",
+      resultado: "Sonuç",
+      si: "Evet",
+      no: "Hayır",
+      sinResultado: "Bu sonucu şimdilik göstermiyoruz.",
+      errores: {
+        requerido: "Bu alanı doldurun.",
+        "numero-invalido": "Bir sayı girin (örneğin {ejemplo}).",
+        "entero-invalido": "Ondalık kullanmadan bir tam sayı girin.",
+        "menor-que-min": "En düşük değer {min}.",
+        "mayor-que-max": "En yüksek değer {max}.",
+        "fecha-invalida": "Geçerli bir tarih seçin.",
+        "hora-invalida": "Geçerli bir saat seçin.",
+        "opcion-invalida": "Seçeneklerden birini seçin.",
+        "region-invalida": "Bir bölge seçin.",
+        "calculo-fallido": "Bu bilgilerle hesaplama yapılamadı. Değerleri kontrol edip tekrar deneyin.",
+      },
+      milesAmbiguos: "Bunu mu demek istediniz: {sugerido}? Lütfen {signos} kullanmadan yazın.",
+      separadores: { punto: "nokta", coma: "virgül" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

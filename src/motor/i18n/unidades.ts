@@ -19,6 +19,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   ja: { dias: { uno: "日", otros: "日" }, semanas: { uno: "週間", otros: "週間" }, horas: { uno: "時間", otros: "時間" }, meses: { uno: "か月", otros: "か月" }, anios: { uno: "年", otros: "年" } },
   ko: { dias: { uno: "일", otros: "일" }, semanas: { uno: "주", otros: "주" }, horas: { uno: "시간", otros: "시간" }, meses: { uno: "개월", otros: "개월" }, anios: { uno: "년", otros: "년" } },
   zh: { dias: { uno: "天", otros: "天" }, semanas: { uno: "週", otros: "週" }, horas: { uno: "小時", otros: "小時" }, meses: { uno: "個月", otros: "個月" }, anios: { uno: "年", otros: "年" } },
+  // El turco no pone plural después de un número (3 gün, 1,5 yıl): las dos formas son iguales.
+  tr: { dias: { uno: "gün", otros: "gün" }, semanas: { uno: "hafta", otros: "hafta" }, horas: { uno: "saat", otros: "saat" }, meses: { uno: "ay", otros: "ay" }, anios: { uno: "yıl", otros: "yıl" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

@@ -25,6 +25,7 @@ const normal = (s: string) =>
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
+    .replace(/ı/g, "i")
     .trim();
 
 interface Item extends OpcionPais {

@@ -21,6 +21,8 @@ export function normalizar(texto: string): string {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
+    // La ı del turco no se descompone en NFD: sin esto quedaría como separador («yıllık», «y ll k»).
+    .replace(/ı/g, "i")
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 }

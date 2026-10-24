@@ -55,7 +55,8 @@ function esEditable(t: EventTarget | null): boolean {
 }
 
 function plano(s: string): string {
-  return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  // La ı del turco no se descompone en NFD: se pasa a i para que «kalıp» y «kalip» coincidan.
+  return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i");
 }
 
 // NFD + sacar los diacríticos deja el texto en español con el mismo largo, así que los
