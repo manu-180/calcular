@@ -15,6 +15,7 @@ import {
 } from "@/data/ganancias";
 import { formatARS } from "@/lib/formato";
 import { datosOferta } from "@/lib/oferta";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 const ACTUALIZADO_EL = "13 de junio de 2026";
 
@@ -358,6 +359,7 @@ export default function SueldoNetoPage() {
           (sin horas extras ni aguinaldo).
         </p>
       </section>
+      <OtrosPaises concepto="sueldo-neto" />
     </article>
   );
 }

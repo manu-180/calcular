@@ -14,6 +14,49 @@ Formato:
 - Evaluado: <cambio anterior> → <resultado con números> · <se queda | se revierte>
 ```
 
+## 2026-10-24 (calcular.ar → calcularya: links por concepto)
+- **13 calculadoras de calcular.ar** (`/sueldo-neto`, `/aguinaldo`, `/indemnizacion`, `/vacaciones`,
+  `/horas-extras`, `/salario-minimo`, `/empleada-domestica`, `/ganancias`, `/monotributo`,
+  `/inflacion`, `/plazo-fijo`, `/cuota-alimentaria`, `/jubilacion`) y el footer de todo el sitio
+  - Cambio: al final de cada calculadora, «¿Vivís o trabajás en otro país?» con links dofollow
+    «<concepto> en <país>» a la calculadora equivalente de calcularya (`src/components/OtrosPaises.tsx`,
+    sale de `registro.equivalentes` del concepto en modo producción: un país nuevo se suma solo). Ocho
+    a la vista (Uruguay, Chile, España, México, Brasil, Paraguay, Estados Unidos, Italia primero) y el
+    resto en un desplegable. 367 links a 367 URLs distintas de calcularya, todas con 200 al probarlas.
+    Footer: «CalcularYa: calculadoras para otros países» a la home · directo
+  - Hipótesis: calcularya no tiene autoridad propia; los links desde calcular.ar (~5.000 clics/mes de
+    Google) son lo único que le pasa peso entre dominios.
+  - Antes: calcularya sin propiedad en Search Console (se da de alta hoy); casi ningún link de
+    calcular.ar hacia calcularya (solo `/sueldo-en-el-mundo`).
+  - Se evalúa: 2026-11-21 a 2026-12-05 (4 a 6 semanas), mirando impresiones y páginas indexadas de
+    calcularya en Search Console, por país de las calculadoras enlazadas.
+
+## 2026-10-24 (corrida del agente, publicada)
+- Se retoman los dos cambios «listos para la próxima corrida», revalidados con el mismo informe
+  (`informes/2026-10-23.md`: siguen siendo las fugas 1 y 2 de Google). Publicados con la regla de
+  la línea de base: `check-all` en `main` limpio da rojo en `check_hreflang`, `check_mes_en_render`,
+  `check_ofertas_intl` y `check_panel_sql` (heredadas, las mismas de la entrada de abajo); con el
+  cambio, las mismas cuatro y nada más (`check_mes_en_render` sigue con sus 11 páginas, ninguna de
+  comercio). `npm run build` verde, las dos páginas siguen estáticas.
+- **/convenios/comercio** · fuga buscador (0.9 % vs 4.9 %, 4610 impresiones, 181 perdidas)
+  - Cambio: title «Sueldo de Comercio octubre 2026: $ 1.458.545 por 8 horas» y description con el
+    bruto y el neto de 8 horas de un Vendedor B y «por 4 horas, la mitad», en `generateMetadata`
+    desde `calcularComercio` del mes vigente (rota solo) · directo
+  - Antes: «cuanto cobra un empleado de comercio por 8 horas» 0/214 (pos 7.6); «cuánto cobra un
+    empleado de comercio por 4 horas 2026» 2/198 (pos 4.2); «cuanto cobra un empleado de comercio
+    por 4 horas» 1/180 (pos 7.1). Página entera: 0.9 % de CTR sobre 4610 impresiones.
+  - Se evalúa: 2026-11-23 (4 semanas en Search Console). Ojo con `/convenios/comercio/por-horas`
+    (2026-10-16), que apunta a las mismas consultas: mirar los clics de las dos juntas.
+- **/convenios/comercio/[mes]** (fuga en `/convenios/comercio/octubre-2026`, 2.0 % vs 9.4 %, 1372
+  impresiones, 102 perdidas)
+  - Cambio: title «Sueldo de Comercio <mes>: desde <total más bajo de la escala>» (octubre:
+    $ 1.303.900) en vez de «Maestranza A <básico>»; la description arranca con «Cuánto cobra un
+    empleado de comercio en <mes>, categoría por categoría». Cambia todos los meses · directo
+  - Antes: «sueldo empleado de comercio octubre 2026» 14/733 (pos 4.1); «sueldo comercio octubre
+    2026» 0/72 (pos 2.4); «sueldo empleados de comercio octubre 2026» 2/66 (pos 2.7).
+  - Se evalúa: 2026-11-23, con las consultas equivalentes de noviembre si octubre ya no tiene
+    impresiones.
+
 ## 2026-10-24 (corrida del agente)
 - Sin cambios publicados: `check-all` da rojo en `main` limpio (probado con el cambio guardado
   aparte), en cuatro suites que no toqué:
