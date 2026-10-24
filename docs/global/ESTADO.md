@@ -81,8 +81,9 @@ El cron datos-paises no está actualizando uy, hn y bo.
 ## 24/10/2026 · Motor tailandés (`claude/mundo-motor-th`)
 
 th en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
-(`ngoen-duean-thua-lok`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con el slug en inglés
-del catálogo (como ja, ko y zh). Registro cortés y neutro de SCB, Kasikorn y กรมสรรพากร: sin คุณ/ท่าน,
+(`ngoen-duean-thua-lok`), calendario (`patithin-ngoen-duean`), horas de trabajo (`chua-mong-tham-ngan`),
+rankings (`andap-prathet`), «Sueldos reales» (`ngoen-duean-ching`), afiliados, venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con el slug en inglés del catálogo (como ja, ko y zh). Registro cortés y neutro de SCB, Kasikorn y กรมสรรพากร: sin คุณ/ท่าน,
 sin ครับ/ค่ะ y sin punto final; mercados con `trato: "usted"`. Fechas en พ.ศ. (calendario por defecto de
 th en Intl) y cifras arábigas; `parsearNumero` lee «2.5 ล้าน» y los dígitos tailandeses; `anchoVisual`
 no cuenta vocales ni tonos apilados. CSS con `word-break: normal` para el corte por diccionario.

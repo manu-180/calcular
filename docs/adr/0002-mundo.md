@@ -152,8 +152,10 @@ D9 a D12 los usan otras ramas sin mergear (`claude/mundo-motor-eu`, `claude/mund
 `claude/mundo-motor-id` y la que siga); esta entrada toma el D13 para no chocar al mergear.
 
 `IDIOMAS` suma `th`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
-«Tu sueldo en el mundo», el diccionario de venta completo (todas las familias, `informe-calculo`
-incluida, informes, planillas y mails) y las 41 universales están en tailandés.
+«Tu sueldo en el mundo», el calendario laboral, «¿Cuántas horas de trabajo cuesta?», los rankings de
+países, «Sueldos reales», los enlaces de afiliados, el diccionario de venta completo (todas las
+familias, `informe-calculo` incluida, informes, planillas y mails) y las 41 universales están en
+tailandés.
 
 **Trato.** Un solo registro, el de los bancos y servicios digitales de Tailandia (SCB, Kasikorn,
 กรมสรรพากร): cortés y neutro. Sin pronombre de segunda persona (ni คุณ ni ท่าน): el tailandés omite el
@@ -189,9 +191,12 @@ marca ค.ศ. y suena a traducción. Los diccionarios que reciben un año como 
 **Slugs.** Las universales usan el slug en inglés del catálogo, como D8: la romanización del tailandés
 (RTGS) es larga y ambigua (no marca tonos ni vocales largas, y casi nadie busca así),
 y el slug en inglés es corto, estable y ya está curado. Para las calculadoras locales de Tailandia:
-término en inglés si se usa (`vat`, `withholding-tax`), y si no RTGS sin tonos. «Tu sueldo en el
-mundo» va en `ngoen-duean-thua-lok` (RTGS de «เงินเดือนทั่วโลก»), porque `salary-around-the-world` ya es
-la ruta del inglés y cada idioma necesita la suya.
+término en inglés si se usa (`vat`, `withholding-tax`), y si no RTGS sin tonos. Las páginas que tienen
+una carpeta por idioma no pueden repetir la del inglés, así que van en RTGS, como las de ja, ko y zh:
+«Tu sueldo en el mundo» en `ngoen-duean-thua-lok` (เงินเดือนทั่วโลก), el calendario en
+`patithin-ngoen-duean` (ปฏิทินเงินเดือน), las horas de trabajo en `chua-mong-tham-ngan` (ชั่วโมงทำงาน),
+los rankings en `andap-prathet` (อันดับประเทศ) y «Sueldos reales» en `ngoen-duean-ching` (เงินเดือนจริง).
+Los rankings de adentro usan el slug en inglés (`take-home-pay`, `tax-freedom-day`, `pay-raise`).
 
 **Largos de SEO.** `anchoVisual` no cuenta las marcas combinantes (`\p{Mn}`): las vocales de arriba y
 de abajo y los tonos se apilan sobre la consonante y no ocupan ancho, aunque en `.length` cuenten. Así
