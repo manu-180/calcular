@@ -32,6 +32,12 @@ import sickPayCalculator from "./calculadoras/sick-pay-calculator";
 import contenidoSickPayCalculator from "./contenido/sick-pay-calculator";
 import maternityLeaveCalculator from "./calculadoras/maternity-leave-calculator";
 import contenidoMaternityLeaveCalculator from "./contenido/maternity-leave-calculator";
+import dollarToShilling from "./calculadoras/dollar-to-shilling";
+import contenidoDollarToShilling from "./contenido/dollar-to-shilling";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
+import stampDutyCalculator from "./calculadoras/stamp-duty-calculator";
+import contenidoStampDutyCalculator from "./contenido/stamp-duty-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +66,9 @@ export default definirPais({
     { definicion: terminalBenefitsCalculator, contenido: contenidoTerminalBenefitsCalculator, cliente: () => import("./calculadoras/terminal-benefits-calculator.cliente") },
     { definicion: sickPayCalculator, contenido: contenidoSickPayCalculator, cliente: () => import("./calculadoras/sick-pay-calculator.cliente") },
     { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
+    { definicion: dollarToShilling, contenido: contenidoDollarToShilling, cliente: () => import("./calculadoras/dollar-to-shilling.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
+    { definicion: stampDutyCalculator, contenido: contenidoStampDutyCalculator, cliente: () => import("./calculadoras/stamp-duty-calculator.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "ug.vat" } }] },
   novedades,
