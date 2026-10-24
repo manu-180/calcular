@@ -15,6 +15,7 @@ import {
   TOPES_DECRETO_484,
   VIGENCIA_REFORMA,
 } from "@/data/horas-extras";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 export const metadata: Metadata = {
   title: "Horas extras 2026: cuánto se pagan al 50% y al 100%",
@@ -354,6 +355,7 @@ export default function HorasExtrasPage() {
           Es informativa: no reemplaza el consejo de un profesional ni una liquidación. Consultada el {HORAS_EXTRAS_FUENTES.consultadoEl}.
         </p>
       </section>
+      <OtrosPaises concepto="horas-extra" />
     </article>
   );
 }

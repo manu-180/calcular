@@ -15,6 +15,7 @@ import {
 import { MESES_CUOTA, slugDeMes } from "@/lib/canasta-meses";
 import { ArchivoMensualLinks } from "@/components/ArchivoMensualLinks";
 import { formatARS } from "@/lib/formato";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 export const metadata: Metadata = {
   // Con el monto en el título: "cuota alimentaria por hijo 2026" tenía 0,4-0,6% de CTR en posición
@@ -372,6 +373,7 @@ export default function CuotaAlimentariaPage() {
           .
         </p>
       </section>
+      <OtrosPaises concepto="pension-alimentos" />
     </article>
   );
 }
