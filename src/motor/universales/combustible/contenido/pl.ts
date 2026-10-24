@@ -8,7 +8,7 @@ export const contenidoPl: ContenidoUniversal = (ctx) => {
         const precio = montoEjemplo(ctx, 3.5);
         const galones = 300 / 30;
         return [
-          `Trasa 150 mil w jedną stronę, tam i z powrotem, autem, które robi 30 mpg, to ${formatearNumero(ctx, galones)} galonów paliwa.`,
+          `Przejazd 150 mil w jedną stronę i z powrotem autem, które robi 30 mpg, wymaga ${formatearNumero(ctx, galones)} galonów paliwa.`,
           `Przy cenie ${m(precio)} za galon kosztuje ${m(galones * precio)}. Przy podziale na 2 osoby wychodzi ${m((galones * precio) / 2)} na osobę.`,
         ];
       })()
@@ -16,7 +16,7 @@ export const contenidoPl: ContenidoUniversal = (ctx) => {
         const precio = montoEjemplo(ctx, 1.2);
         const litros = (600 * 8) / 100;
         return [
-          `Trasa 300 km w jedną stronę, tam i z powrotem, autem, które pali 8 litrów na 100 km, to ${formatearNumero(ctx, litros)} litrów paliwa.`,
+          `Przejazd 300 km w jedną stronę i z powrotem autem, które pali 8 litrów na 100 km, wymaga ${formatearNumero(ctx, litros)} litrów paliwa.`,
           `Przy cenie ${m(precio)} za litr kosztuje ${m(litros * precio)}. Przy podziale na 2 osoby wychodzi ${m((litros * precio) / 2)} na osobę.`,
         ];
       })();
