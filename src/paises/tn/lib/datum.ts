@@ -16,3 +16,14 @@ export function dureeTexte(mois: number): string {
   const reste = mois % 12;
   return `${ans} ${ans < 2 ? "an" : "ans"} et ${reste} mois`;
 }
+
+// Ajoute des mois à une date ; le 31 janvier plus un mois donne le dernier jour de février.
+export function ajouterMois(iso: string, n: number): `${number}-${number}-${number}` {
+  const [a, m, j] = delen(iso);
+  const total = a * 12 + (m - 1) + n;
+  const an = Math.floor(total / 12);
+  const mois = (total % 12) + 1;
+  const dernier = new Date(Date.UTC(an, mois, 0)).getUTCDate();
+  const jour = Math.min(j, dernier);
+  return `${an}-${String(mois).padStart(2, "0")}-${String(jour).padStart(2, "0")}` as `${number}-${number}-${number}`;
+}

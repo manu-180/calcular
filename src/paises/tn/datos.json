@@ -535,15 +535,22 @@
       "unidad": "numero",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "1994-02-21",
           "valor": {
             "jours-par-mois": 1,
             "plafond-mois": 3
           },
-          "motivo": "Article 22 lu dans la version du code du travail publiée en 2023. La loi n° 2025-9 sur les contrats de travail n'a pas pu être téléchargée (social.gov.tn ne répond pas) : il reste à vérifier qu'elle ne modifie pas cet article."
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Code du travail, version consolidée (texte arabe)",
+            "url": "https://www.social.gov.tn/sites/default/files/2023-04/%D9%85%D8%AC%D9%84%D8%A9%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
         }
-      ]
+      ],
+      "nota": "Article 22 du code du travail (loi n° 94-29). La loi n° 2025-9 modifie les articles 6-2 à 6-4, 17, 28 à 30 et 94-2, pas l'article 22."
     },
     {
       "id": "tn.smig-mensuel",
@@ -558,7 +565,7 @@
             "regime-48h": 528.32,
             "regime-40h": 448.238
           },
-          "motivo": "Décret n° 2024-419 du 9 juillet 2024 lu sur social.gov.tn. L'article 15 de la LF 2026 annonce des hausses de salaires en 2026 fixées par décret, que nous n'avons pas pu consulter : le montant peut être dépassé."
+          "motivo": "Montants du décret n° 2024-419. Le décret n° 2026-67, publié au JORT du 30 avril 2026 avec effet au 1er janvier 2026, les a relevés : son texte n'est pas publié sur social.gov.tn et iort.gov.tn ne répond pas en HTTPS. L'assiette CNSS des non-salariés du 2e trimestre 2026 suppose un SMIG horaire de 2,667 dinars (régime de 48 heures), à confirmer dans le JORT."
         }
       ]
     },
@@ -575,7 +582,224 @@
             "regime-48h": 2.54,
             "regime-40h": 2.586
           },
-          "motivo": "Même source et même réserve que le SMIG mensuel."
+          "motivo": "Montants du décret n° 2024-419. Le décret n° 2026-67, publié au JORT du 30 avril 2026 avec effet au 1er janvier 2026, les a relevés : son texte n'est pas publié sur social.gov.tn et iort.gov.tn ne répond pas en HTTPS. L'assiette CNSS des non-salariés du 2e trimestre 2026 suppose un SMIG horaire de 2,667 dinars (régime de 48 heures), à confirmer dans le JORT."
+        }
+      ]
+    },
+    {
+      "id": "tn.preavis",
+      "nombre": "Délai de préavis du contrat à durée indéterminée",
+      "tipo": "numero",
+      "unidad": "meses",
+      "nota": "Article 14 bis du code du travail : lettre recommandée un mois avant la fin du contrat ; le salarié peut s'absenter pendant toute la seconde moitié du préavis pour chercher un emploi.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1994-02-21",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Code du travail, version consolidée (texte arabe)",
+            "url": "https://www.social.gov.tn/sites/default/files/2023-04/%D9%85%D8%AC%D9%84%D8%A9%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.periode-essai",
+      "nombre": "Période d'essai : durée maximale, renouvellement et délai pour y mettre fin",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Article 6-3 (nouveau) du code du travail, issu de la loi n° 2025-9 : six mois au plus, renouvelables une fois pour la même durée ; chaque partie prévient l'autre par écrit quinze jours avant de mettre fin à l'essai. Pas d'essai dans un contrat à durée déterminée.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-23",
+          "valor": {
+            "mois-max": 6,
+            "renouvellements": 1,
+            "preavis-jours": 15
+          },
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Loi n° 2025-9 du 21 mai 2025 relative à l'organisation des contrats de travail et à l'interdiction de la sous-traitance (JORT n° 61 du 23 mai 2025)",
+            "url": "https://www.social.gov.tn/sites/default/files/2025-09/%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%B9%D8%AF%D8%AF%209%20%D9%84%D8%B3%D9%86%D8%A9%202025%20%D9%8A%D8%AA%D8%B9%D9%84%D9%82%20%D8%A8%D8%AA%D9%86%D8%B8%D9%8A%D9%85%20%D8%B9%D9%82%D9%88%D8%AF%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84%20%D9%88%D9%85%D9%86%D8%B9%20%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%88%D9%84%D8%A9.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.licenciement-abusif",
+      "nombre": "Dommages et intérêts pour licenciement abusif",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Article 23 bis du code du travail : un à deux mois de salaire par année d'ancienneté, sans dépasser trois ans de salaire ; un à quatre mois quand le motif est réel et sérieux mais la procédure non respectée.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1994-02-21",
+          "valor": {
+            "mois-par-an-min": 1,
+            "mois-par-an-max": 2,
+            "plafond-mois": 36,
+            "procedure-min": 1,
+            "procedure-max": 4
+          },
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Code du travail, version consolidée (texte arabe)",
+            "url": "https://www.social.gov.tn/sites/default/files/2023-04/%D9%85%D8%AC%D9%84%D8%A9%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.conges-maternite",
+      "nombre": "Congés de maternité et de paternité",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Articles 3 à 6 de la loi n° 2024-44. Durées en jours ou en mois selon la clé.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-08-12",
+          "valor": {
+            "prenatal-jours": 15,
+            "naissance-mois": 3,
+            "naissance-mois-renforce": 4,
+            "mort-ne-mois": 1,
+            "postnatal-min-mois": 1,
+            "postnatal-max-mois": 4,
+            "paternite-jours": 7,
+            "paternite-jours-renforce": 10,
+            "paternite-mort-ne-jours": 3,
+            "paternite-delai-jours": 30
+          },
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Loi n° 2024-44 du 12 août 2024 relative à l'organisation des congés de maternité et de paternité (JORT n° 99 du 12 août 2024)",
+            "url": "https://www.social.gov.tn/sites/default/files/2024-11/%D9%82%D8%A7%D9%86%D9%80%D9%88%D9%86%20%D8%B9%D8%AF%D8%AF%2044%20%D9%84%D8%B3%D9%86%D8%A9%202024%20%D9%85%D8%A4%D8%B1%D8%AE%20%D9%81%D9%8A%2012%20%D8%A3%D9%88%D8%AA%202024%20%D9%8A%D8%AA%D8%B9%D9%84%D9%91%D9%82%20%D8%A8%D8%AA%D9%86%D8%B8%D9%8A%D9%85%20%D8%B9%D8%B7%D9%84%20%D8%A7%D9%84%D8%A3%D9%85%D9%88%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%A3%D8%A8%D9%88%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%88%D8%B8%D9%8A%D9%81%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%88%D9%85%D9%8A%D8%A9%20%D9%88%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%20%D9%88%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.allocations-familiales-taux",
+      "nombre": "Allocations familiales CNSS : taux par enfant",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "Pour les trois premiers enfants à charge, en pourcentage du revenu trimestriel retenu dans la limite du plafond.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-09-02",
+          "valor": {
+            "enfant-1": 18,
+            "enfant-2": 16,
+            "enfant-3": 14
+          },
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Salariés du secteur non agricole : allocations familiales (fiche en arabe)",
+            "url": "https://www.cnss.tn/web/salarie/sal_asset_services_avantages/-/asset_publisher/0xT7/content/sal-secteur_-non_agr1_prestation_familiales_allocation?secteur=1&champAppli=1&servActif=2&avantage=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.allocations-familiales-plafond",
+      "nombre": "Allocations familiales CNSS : revenu trimestriel retenu au plus",
+      "tipo": "numero",
+      "unidad": "TND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-09-02",
+          "valor": 122,
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Salariés du secteur non agricole : allocations familiales (fiche en arabe)",
+            "url": "https://www.cnss.tn/web/salarie/sal_asset_services_avantages/-/asset_publisher/0xT7/content/sal-secteur_-non_agr1_prestation_familiales_allocation?secteur=1&champAppli=1&servActif=2&avantage=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.cnss-tns-taux",
+      "nombre": "Cotisation des travailleurs non salariés (secteur non agricole)",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Entièrement à la charge du travailleur non salarié. Assurance accidents du travail facultative en plus.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 14.71,
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Travailleurs non salariés du secteur non agricole : cotisations (fiche en arabe)",
+            "url": "https://www.cnss.tn/web/non-salarie/non_sal_asset_services/-/asset_publisher/w1WU/content/non_sal-secteur_-non_agr1_cotisations?convention=false&categorie=1&secteur=1&champAppli=1&servActif=2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.cnss-tns-assiette",
+      "nombre": "Assiette trimestrielle des cotisations des non-salariés par classe de revenu",
+      "tipo": "mapa",
+      "unidad": "TND",
+      "nota": "SMIG horaire du régime de 48 heures × 2 400 heures par an, multiplié par le coefficient de la classe (1 à 18), puis divisé par quatre. Montants affichés par la CNSS à partir du 2e trimestre 2026.",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "classe-1": "Classe 1 (1 SMIG)",
+        "classe-2": "Classe 2 (1,5 SMIG)",
+        "classe-3": "Classe 3 (2 SMIG)",
+        "classe-4": "Classe 4 (3 SMIG)",
+        "classe-5": "Classe 5 (4 SMIG)",
+        "classe-6": "Classe 6 (6 SMIG)",
+        "classe-7": "Classe 7 (9 SMIG)",
+        "classe-8": "Classe 8 (12 SMIG)",
+        "classe-9": "Classe 9 (15 SMIG)",
+        "classe-10": "Classe 10 (18 SMIG)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": {
+            "classe-1": 1600.2,
+            "classe-2": 2400.3,
+            "classe-3": 3200.4,
+            "classe-4": 4800.6,
+            "classe-5": 6400.8,
+            "classe-6": 9601.2,
+            "classe-7": 14401.8,
+            "classe-8": 19202.4,
+            "classe-9": 24003,
+            "classe-10": 28803.6
+          },
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Travailleurs non salariés du secteur non agricole : cotisations (fiche en arabe)",
+            "url": "https://www.cnss.tn/web/non-salarie/non_sal_asset_services/-/asset_publisher/w1WU/content/non_sal-secteur_-non_agr1_cotisations?convention=false&categorie=1&secteur=1&champAppli=1&servActif=2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
         }
       ]
     }

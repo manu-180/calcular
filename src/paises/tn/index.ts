@@ -24,6 +24,12 @@ import contenidoImpotSurLesSocietes from "./contenido/impot-sur-les-societes";
 import contenidoImpotSurPension from "./contenido/impot-sur-pension";
 import contenidoIndemniteFinDeService from "./contenido/indemnite-fin-de-service";
 import contenidoSmigTunisie from "./contenido/smig-tunisie";
+import delaiDePreavis from "./calculadoras/delai-de-preavis";
+import contenidoDelaiDePreavis from "./contenido/delai-de-preavis";
+import periodeDEssai from "./calculadoras/periode-d-essai";
+import contenidoPeriodeDEssai from "./contenido/periode-d-essai";
+import indemniteLicenciementAbusif from "./calculadoras/indemnite-licenciement-abusif";
+import contenidoIndemniteLicenciementAbusif from "./contenido/indemnite-licenciement-abusif";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +54,9 @@ export default definirPais({
     { definicion: congesPayes, contenido: contenidoCongesPayes, cliente: () => import("./calculadoras/conges-payes.cliente") },
     { definicion: indemniteFinDeService, contenido: contenidoIndemniteFinDeService, cliente: () => import("./calculadoras/indemnite-fin-de-service.cliente") },
     { definicion: smigTunisie, contenido: contenidoSmigTunisie, cliente: () => import("./calculadoras/smig-tunisie.cliente") },
+    { definicion: delaiDePreavis, contenido: contenidoDelaiDePreavis, cliente: () => import("./calculadoras/delai-de-preavis.cliente") },
+    { definicion: periodeDEssai, contenido: contenidoPeriodeDEssai, cliente: () => import("./calculadoras/periode-d-essai.cliente") },
+    { definicion: indemniteLicenciementAbusif, contenido: contenidoIndemniteLicenciementAbusif, cliente: () => import("./calculadoras/indemnite-licenciement-abusif.cliente") },
   ],
   universales: "todas",
   novedades,

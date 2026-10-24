@@ -6,7 +6,7 @@ export default definirCalculadora({
   mercado: "tn",
   concepto: "indemnizacion-despido",
   slug: "indemnite-fin-de-service",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "tn.indemnite-fin-de-service": "mapa",
   },
